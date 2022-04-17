@@ -59,7 +59,7 @@ import { PlsComponent } from './components/projects/pls/pls.component';
         canActivate: [AuthGuard, OwnerAuthGuard],
       },
       {
-        path: 'projetcs/magnet',
+        path: 'projects/magnet',
         component: MagnetComponent,
         canActivate: [AuthGuard, OwnerAuthGuard],
       },
