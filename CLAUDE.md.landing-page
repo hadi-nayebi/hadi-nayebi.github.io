@@ -1,0 +1,162 @@
+# Landing Page - Working Memory
+
+## Purpose
+
+This CLAUDE.md serves as working memory for developing content for the landing page (`index.html`).
+
+## Current Phase: OBSERVE (Knowledge Gathering)
+
+**Status**: Absorbing context and requirements
+**Date**: 2025-11-08
+**Branch**: `claude/landing-page-content-011CUuqJn9qBHTemVAYhcAzo`
+
+---
+
+## CRITICAL: Compartmentalization
+
+**Focus**: Landing page ONLY (`index.html`)
+- Do NOT work on other pages (bio, template-agent, agents)
+- Do NOT change structure or styling
+- ONLY replace placeholder content with actual content
+
+---
+
+## Course Context (from User)
+
+### Course Name
+**Claude Code Engineering**
+
+### Course Format
+- **Cohort size**: 10-15 students
+- **Frequency**: Monthly cohorts
+- **Starting point**: Template agent
+
+### What Students Learn
+
+1. **The Template Agent**
+   - Base starting point for all students
+   - Has `.claude/` brain structure
+
+2. **Design Patterns for Control**
+   Students learn control mechanisms for their agents:
+   - **Instructions** - How to define agent behavior
+   - **Tools** - How to add capabilities
+   - **Hooks** - How to enforce patterns
+   - **Other control forms** - Additional mechanisms
+
+3. **Learning Process**
+   - Study the pattern on the template agent
+   - Design their own customized behavior
+   - Ask the agent to implement their design
+   - Result: Customized agent with unique behavior
+
+### Key Concept
+**All agents are Claude Code agents with `.claude/` brains**
+- Each agent has its own repository
+- Each agent has `.claude/` directory structure
+- Students learn to "build the brain"
+
+---
+
+## Assets to Review
+
+**Status**: WAITING for user to share asset folder
+
+**What to look for**:
+- Images for landing page
+- Logos or branding
+- Any visual assets that inform design
+- Examples of style/tone
+
+---
+
+## Questions to Clarify (Before Implementation)
+
+### About the Landing Page Content
+
+**Hero Section**:
+- [ ] Course title: "Claude Code Engineering" - confirmed?
+- [ ] Tagline: What's the hook? What feeling should it convey?
+- [ ] Call-to-action: What should the main button say and do?
+
+**Course Overview**:
+- [ ] What are the 3 key learning outcomes to highlight?
+- [ ] How technical should the language be?
+- [ ] What's the target audience background? (developers, no-code, mixed?)
+
+**Value Proposition**:
+- [ ] Why take this course vs. learning on your own?
+- [ ] What's unique about the approach?
+- [ ] What will students be able to do after?
+
+**Cohort Information**:
+- [ ] When does next cohort start?
+- [ ] How long is the course?
+- [ ] Price/cost information?
+- [ ] How to enroll? (link, email, form?)
+
+**Instructor/About**:
+- [ ] Should landing page mention instructor?
+- [ ] Brief intro or link to bio page?
+
+**Social Proof/Trust**:
+- [ ] Any testimonials?
+- [ ] Previous cohort results?
+- [ ] Showcase example projects?
+
+---
+
+## Implementation Plan (To Be Defined After Clarification)
+
+### Files to Modify
+- `index.html` - Replace placeholders with actual content
+
+### Files NOT to Touch
+- `bio.html` - Separate compartment
+- `template-agent.html` - Separate compartment
+- `agents/*.html` - Separate compartment
+- CSS files - Structure phase complete, no styling changes
+- Navigation structure - Already defined
+
+---
+
+## Design Constraints (Must Maintain)
+
+From `assets/CLAUDE.md` and root `CLAUDE.md`:
+- ✅ Dark glassy space aesthetic
+- ✅ "Easy, smooth, and relaxed" feeling
+- ✅ Generous whitespace
+- ✅ Placeholder format `[Description]` until replaced
+- ✅ No changes to CSS or structure
+- ✅ Mobile-responsive (already implemented)
+
+---
+
+## Next Steps
+
+1. ✅ Create branch
+2. ✅ Create local CLAUDE.md (this file)
+3. ⏳ **WAIT** for user to share assets
+4. ⏳ Review assets and absorb visual context
+5. ⏳ Ask clarifying questions
+6. ⏳ Get crystal clear image of landing page vision
+7. ⏳ Document plan in this CLAUDE.md
+8. ⏳ THEN implement content changes to index.html
+9. ⏳ Verify and test
+10. ⏳ Commit and push
+
+---
+
+## Notes
+
+**Current Status of index.html**:
+- Structure complete with placeholder text
+- Sections: Hero, Course Overview (3 cards), Template Agent Intro, Agent Examples, CTA
+- Navigation: Home, Template Agent, Agent Examples, About
+- All styling in place, just needs content
+
+**Tone/Voice to Maintain**:
+- Approachable, not intimidating
+- Clear and straightforward
+- Inspiring but realistic
+- Technical enough to be credible, simple enough to be welcoming
