@@ -134,10 +134,247 @@ Website
 
 ---
 
+---
+
+## Design Philosophy & Styling Requirements
+
+### Core Emotional Message
+
+**CRITICAL**: The website must visually communicate this feeling immediately:
+
+> "Engineering my own agents is not complex and overwhelming. Actually, it is easy, smooth, and relaxed, and you can learn it easily. Just follow along with me."
+
+The aesthetic itself teaches that this is **accessible, not scary**.
+
+### Visual Style: Dark Glassy Space
+
+**Theme**: Darker, spacious, glassy, floating elements in space
+
+**Key Characteristics**:
+- Dark background (space-like)
+- Glass morphism effects (frosted glass, transparency)
+- Floating elements (subtle shadows, elevation)
+- Minimal visible lines and boundaries
+- Generous whitespace
+- Smooth, soft edges
+- Calming, not overwhelming
+
+### Interactive Elements
+
+**Buttons & Clickables**:
+- Floating glass or matte glass appearance
+- Hover states: subtle glow or lift effect
+- No harsh borders
+- Smooth transitions
+
+**Navigation**:
+- Intuitive, minimal
+- No overwhelming menus
+- Clear visual hierarchy
+- Smooth page transitions
+
+### Typography & Layout
+
+- Clean, modern fonts
+- Generous line spacing
+- Not too much text on screen at once
+- Clear visual breathing room
+
+### Color Palette
+
+- **Base**: Dark grays, deep blues/purples (space-like)
+- **Accents**: Soft glows, subtle gradients
+- **Glass**: Semi-transparent whites/light grays
+- **Text**: High contrast but not harsh
+
+### UX Principles
+
+1. **Not Overwhelming**: Less is more
+2. **Intuitive**: No need to think about navigation
+3. **Smooth**: Everything flows naturally
+4. **Calming**: Relaxed, confident feeling
+5. **Approachable**: Friendly, welcoming
+
+---
+
+## Current Phase: Structure Only (No Content)
+
+**Compartmentalization**: Building website structure with placeholders ONLY
+
+- Use `[Placeholder text for ...]` throughout
+- Focus on structure, layout, and styling
+- Content development is a separate phase
+- This prevents distraction and scope creep
+
+---
+
+---
+
+## Technology Stack & Architecture
+
+### Decision: Static HTML/CSS/JS
+
+**Rationale**:
+- Simple, no build process required
+- Easy for agents to update (just edit HTML/markdown files)
+- Fast loading, no framework overhead
+- Perfect for GitHub Pages hosting
+- Direct visual inspection
+- No dependencies to manage
+
+### File Structure Plan
+
+```
+/
+├── CLAUDE.md (root instructions)
+├── .claude/ (knowledge management)
+├── index.html (landing page)
+├── bio.html (personal bio)
+├── template-agent.html (base template agent page)
+├── agents/
+│   ├── CLAUDE.md (agent pages working memory)
+│   ├── example-1.html (agent-managed page 1)
+│   ├── example-2.html (agent-managed page 2)
+│   └── example-3.html (agent-managed page 3)
+├── assets/
+│   ├── css/
+│   │   ├── main.css (core styling)
+│   │   ├── glassmorphism.css (glass effects)
+│   │   └── components.css (reusable components)
+│   ├── js/
+│   │   └── main.js (interactions, if needed)
+│   └── images/
+│       └── (placeholder images)
+└── README.md
+```
+
+### CSS Architecture
+
+**Modular CSS Files**:
+1. **main.css**: Core layout, typography, colors, base styles
+2. **glassmorphism.css**: Glass effects, shadows, floating elements
+3. **components.css**: Buttons, cards, navigation, reusable UI
+
+**CSS Variables**: Define design system in :root
+- Colors (dark theme, accents)
+- Spacing scale
+- Glass effect parameters
+- Typography scale
+
+### HTML Template Structure
+
+**Shared Elements Across All Pages**:
+- Navigation (minimal, floating glass bar)
+- Footer (simple, glass card)
+- Same base styling/classes
+- Consistent spacing and layout
+
+**Page-Specific Content**:
+- Each page has unique content area
+- All use placeholder text initially
+- Consistent visual treatment
+
+---
+
+## Files to Create (Defined Here, Generated Next)
+
+### 1. `/index.html` - Landing Page
+**Purpose**: Main course and template agent overview
+**Sections**:
+- Hero section (large, centered, minimal)
+- Course overview (brief, inviting)
+- Template agent introduction
+- Call-to-action (explore agents, view bio)
+**Placeholders**: All text as `[Placeholder for ...]`
+
+### 2. `/bio.html` - Personal Bio
+**Purpose**: Simple personal information
+**Sections**:
+- Brief intro
+- Background/experience
+- Contact or social links (optional)
+**Placeholders**: All biographical info
+
+### 3. `/template-agent.html` - Template Agent Page
+**Purpose**: Document base agent behaviors
+**Sections**:
+- What is the template agent
+- Basic behaviors list
+- How to customize
+- Link to example customized agents
+**Placeholders**: Technical documentation placeholders
+**Note**: Will reference user's example HTML pages when provided
+
+### 4. `/agents/example-1.html` - Agent-Managed Page 1
+**Purpose**: Showcase customized agent (topic TBD)
+**Structure**:
+- Page header identifying the agent
+- Agent description
+- Agent-generated content area
+- Last updated timestamp (for agent tracking)
+**Placeholders**: Agent topic and content
+
+### 5. `/agents/example-2.html` - Agent-Managed Page 2
+**Purpose**: Showcase customized agent (topic TBD)
+**Structure**: Same as example-1
+
+### 6. `/agents/example-3.html` - Agent-Managed Page 3
+**Purpose**: Showcase customized agent (topic TBD)
+**Structure**: Same as example-1
+
+### 7. `/agents/CLAUDE.md` - Agent Pages Working Memory
+**Purpose**: Document agent-managed pages context
+**Content**:
+- How agents update their pages
+- Topics for each agent page
+- Git workflow for agents
+- Consistency guidelines
+
+### 8. `/assets/css/main.css` - Core Styling
+**Content**:
+- CSS variables (design system)
+- Base layout (flexbox/grid)
+- Typography
+- Dark theme colors
+- Spacing utilities
+
+### 9. `/assets/css/glassmorphism.css` - Glass Effects
+**Content**:
+- Frosted glass backgrounds
+- Blur effects
+- Subtle shadows
+- Floating element elevation
+- Transparency layers
+
+### 10. `/assets/css/components.css` - UI Components
+**Content**:
+- Glass buttons
+- Navigation bar
+- Content cards
+- Footer
+- Links and hover states
+
+### 11. `/assets/js/main.js` - Interactions
+**Content**:
+- Smooth scroll (if needed)
+- Navigation highlighting
+- Any subtle animations
+- Minimal, lightweight
+
+### 12. `/README.md` - Repository Documentation
+**Content**:
+- Project overview
+- How to run locally
+- How agents update their pages
+- Build/deployment info
+
+---
+
 ## Next Steps
 
-- [ ] Wait for example HTML pages from user
-- [ ] Determine specific topics for agent-managed pages
-- [ ] Define how agents will update their pages (git workflow)
-- [ ] Choose technology stack based on requirements
+- [x] Tech stack defined
+- [ ] Generate all files based on above definitions
+- [ ] Apply glassmorphism styling
+- [ ] Verify visual design
+- [ ] Test in browser
 
