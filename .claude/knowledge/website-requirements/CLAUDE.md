@@ -85,5 +85,59 @@ TBD - will be defined in this CLAUDE.md first, then generated
 
 ## Notes from Discussion
 
-*(Will populate as user provides answers)*
+### Session 1: Site Structure (2025-11-08)
+
+**Website Structure Clarified:**
+
+1. **Primary Purpose**: Landing page for:
+   - The course
+   - The template agents
+
+2. **Side Pages Architecture**:
+   - Each side page = one customized template agent
+   - Each agent manages its own page autonomously
+   - Page content types:
+     - Content pages
+     - Research reports
+     - Other agent-generated content
+   - Each page showcases what that specific customized agent does
+   - Plan: A few such pages (not many, keep it simple)
+
+3. **Additional Pages**:
+   - **Personal Bio Page**: Simple, basic personal information
+   - **Template Agent Page**: Dedicated page for the base template agent
+     - Will document basic behaviors
+     - User has example HTML pages to share (pending)
+
+**Key Insight**: The site demonstrates the concept by example - each side page IS a working customized agent managing itself.
+
+---
+
+## Updated Site Structure
+
+```
+Website
+├── 🏠 Landing Page (main focus)
+│   └── Course + Template Agents overview
+│
+├── 🤖 Template Agent Page
+│   └── Base agent behaviors and documentation
+│
+├── 📄 Agent-Managed Side Pages (few examples)
+│   ├── Example 1: [Topic TBD] - managed by customized agent
+│   ├── Example 2: [Topic TBD] - managed by customized agent
+│   └── Example 3: [Topic TBD] - managed by customized agent
+│
+└── 👤 Personal Bio
+    └── Simple personal information page
+```
+
+---
+
+## Next Steps
+
+- [ ] Wait for example HTML pages from user
+- [ ] Determine specific topics for agent-managed pages
+- [ ] Define how agents will update their pages (git workflow)
+- [ ] Choose technology stack based on requirements
 
