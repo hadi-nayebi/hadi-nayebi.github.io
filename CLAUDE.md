@@ -19,56 +19,86 @@ This project uses a structured knowledge management system where CLAUDE.md files
 
 ### Core Workflow: OPEV(r+)
 
-When working on any task, follow this cycle:
+When working on any task, follow this cycle as a working *mindset* and as practical steps. These are modes you may freely transition between — the model is not strictly linear.
 
-1. **Observe** - Gather context from:
-   - User conversations
-   - Web research
-   - Other subdirectories' CLAUDE.md files
-   - Other repositories
-   - Existing codebase
+1. **Observe** - Gather and document context:
+   - Actively capture ideas, concepts, requirements, constraints, and sources.
+   - Save raw context and references in the relevant local CLAUDE.md or in `.claude/knowledge/<topic>/` if it is general knowledge.
+   - Sources: User conversations, web research, other CLAUDE.md files, other repositories, and the existing codebase.
+   - Observation is a documentation step as much as it is an information gathering step — do not skip writing down the context you observe.
 
-2. **Plan** - Document context in relevant local CLAUDE.md file, then create execution plan
+2. **Plan** - Draft the execution plan inside the relevant local CLAUDE.md:
+   - The local CLAUDE.md is the canonical *plan draft* for that area before execution begins.
+   - The Plan MUST enumerate every artifact (exhaustively) that must be created, modified, or deleted. For each artifact include:
+     - Exact filename and path (e.g., `index.html`, `assets/css/main.css`, `agents/example-1.html`)
+     - High-level purpose (one sentence)
+     - Brief content summary / scaffold (what should be inside, e.g., "landing page with hero and course outline")
+     - Any dependencies / references (other files, images, assets)
+   - The Plan MUST include verification plans:
+     - Acceptance criteria and pass/fail conditions
+     - Specific verification steps (manual checks, keyboard focus tests, sample inputs, browser/resolution checks)
+     - Files or artifacts used for verification (e.g., `test-checklist.md`, `verify-local.md`)
+     - Rollback or mitigation plan if verification fails
+   - Any gaps discovered during planning must be recorded. If these gaps require more context, shift back to Observe and immediately document the additional context.
 
-3. **Execute** - Implement based on documented context and plan
+3. **Execute** - Implement according to the documented Plan:
+   - Use the local CLAUDE.md as the authoritative checklist and progress tracker while implementing.
+   - Update the local CLAUDE.md incrementally as each planned artifact is created/modified and as obstacles arise.
+   - Do NOT deviate from the plan without documenting the deviation and its rationale in the local CLAUDE.md and, where relevant, in `.claude/knowledge/<topic>/`.
 
-4. **Verify** - Test and validate implementation
+4. **Verify** - Run the verification plan documented in the Plan phase:
+   - Follow the verification steps; record results in the local CLAUDE.md (pass/fail, screenshots, notes).
+   - If verification fails, return to Observe or Plan as appropriate, document what changed, and iterate.
+   - Verification is mandatory and must match the Plan's acceptance criteria.
 
-5. **Report** - Communicate results to user
+5. **Report** - Communicate results and finalize local documentation:
+   - Report outcomes to stakeholders and summarize results inside the local CLAUDE.md.
+   - Add a condensed summary (key decisions, files added/changed, verification results) to `.claude/knowledge/<topic>/` as described below.
 
-6. **(r+) Iterate** - Repeat as needed
+6. **(r+) Iterate** - Repeat as needed:
+   - These modes are flexible — you may switch back to any mode at any time. Consider OPEV(r+) a probabilistic/Markov-style model of work modes rather than a strict pipeline.
 
 ### Principle
 
 **Active, proactive, and retroactive use of CLAUDE.md files as working memory**
 
-- **Active**: Currently working with populated CLAUDE.md
-- **Proactive**: Create and populate before starting work
-- **Retroactive**: Review and update after completion
+- **Active**: Use the local CLAUDE.md while working; it should be populated and authoritative.
+- **Proactive**: Create and populate local CLAUDE.md before starting work.
+- **Retroactive**: Review and update the local CLAUDE.md and `.claude/knowledge/` after completion.
+
+### Mandatory Plan Requirements (explicit)
+- Before any implementation begins (Execution), a local CLAUDE.md file must exist containing:
+  - A concise problem statement.
+  - An exhaustive list of files to be added/changed/removed with one-line purpose and short content notes.
+  - Verification plans and acceptance criteria.
+  - Risks and rollback plan.
+  - Links to related CLAUDE.md and `.claude/knowledge` pages.
+- The team/agent MUST NOT begin implementation until the local CLAUDE.md Plan exists and is committed into the working branch.
 
 ### CLAUDE.md File Lifecycle
 
 #### During Development
-- Maintain detailed notes
-- Document decisions and context
-- Track dependencies and relationships
-- Note issues and resolutions
+- Maintain detailed notes and decisions.
+- Document the exhaustive file list described above.
+- Track dependencies and relationships.
+- Note issues and resolutions.
 
 #### After Successful Implementation
-- Condense to essential information only
-- Keep what's needed for:
-  - Future stability
-  - Permissions and access patterns
-  - Maintenance and updates
-  - Onboarding and understanding
+- Condense the local CLAUDE.md to essential information only.
+- Migrate condensed, reusable knowledge to `.claude/knowledge/<topic>/`:
+  - The migrated file must include: summary, key decisions, minimal reproducible examples, commands used, and links to relevant local CLAUDE.md.
+  - Local CLAUDE.md should retain a short summary and pointers to the knowledge file.
+- This migration must be exhaustive for the work done: do not leave important procedural or contextual notes only in commit messages or ephemeral locations.
+- The knowledge files are the long-term store. When you next work in the same topic, pull the relevant knowledge into the local CLAUDE.md as needed.
 
-### Rules
-
-1. **ALWAYS** populate local CLAUDE.md BEFORE starting work in that area
-2. **NEVER** skip documentation - it's your working memory
-3. **UPDATE** CLAUDE.md files as context evolves
-4. **CONDENSE** after successful completion to maintain clarity
-5. **REFERENCE** related CLAUDE.md files for cross-cutting concerns
+### Rules (strengthened and explicit)
+1. **ALWAYS** populate the local CLAUDE.md BEFORE starting work in that area — this must include the exhaustive file list and verification plan.
+2. **NEVER** skip documentation — it's your working memory.
+3. **UPDATE** CLAUDE.md files as context evolves; record any deviations from the Plan.
+4. **CONDENSE & MIGRATE** after successful completion — store distilled knowledge in `.claude/knowledge/<topic>/`.
+5. **REFERENCE** related CLAUDE.md files for cross-cutting concerns.
+6. **NO FILES SKIPPED** — when moving info between local CLAUDE.md and `.claude/knowledge/`, ensure every relevant file and its context is recorded. Be exhaustive.
+7. **PROTECTION** — consider `.claude/knowledge/` as the authoritative archive for condensed lessons and protect it (backups, access controls) as practical.
 
 ---
 
@@ -76,38 +106,30 @@ When working on any task, follow this cycle:
 
 **Work on different topics and aspects separately - not everything at once.**
 
+(Existing guidance retained — structure vs. content, design vs. implementation, focus on one aspect.)
+
 ### Separation of Concerns
 
 1. **Structure vs. Content**
-   - Build website structure/framework first with placeholders
-   - Add actual content separately in later phase
-   - Use `[Placeholder text for ...]` to maintain focus
+   - Build website structure/framework first with placeholders.
+   - Add content in a later phase.
+   - Use `[Placeholder text for ...]` to maintain focus.
 
 2. **Design vs. Implementation**
-   - Define styling and UX principles first
-   - Implement functionality separately
-   - Keep visual consistency documented in local CLAUDE.md
+   - Define styling and UX principles first; implement functionality separately.
+   - Keep visual consistency documented in local CLAUDE.md.
 
 3. **Focus on One Aspect at a Time**
-   - Complete one compartmentalized task fully
-   - Don't mix concerns (e.g., don't develop content while building framework)
-   - This prevents distraction and maintains clarity
-
-### Benefits
-
-- Clearer thinking and planning
-- Easier to verify each aspect independently
-- Better separation of concerns in codebase
-- Prevents scope creep and confusion
-- Enables parallel work on different compartments later
+   - Complete one compartmentalized task fully.
+   - Don't mix concerns (e.g., don't develop content while building framework).
 
 ---
 
 ## Project Overview
 
-**Repository**: hadi-nayebi.github.io
-**Purpose**: Course website for Claude Code Engineering
-**Status**: New static site with placeholders (structure complete)
+**Repository**: hadi-nayebi.github.io  
+**Purpose**: Course website for Claude Code Engineering  
+**Status**: New static site with placeholders (structure complete)  
 **Branch**: `claude/rebuild-legacy-website-011CUuqJn9qBHTemVAYhcAzo`
 
 See `.claude/knowledge/` for detailed project information.
@@ -120,19 +142,26 @@ See `.claude/knowledge/` for detailed project information.
 
 ### Technology Choices
 
-- **Pure HTML/CSS/JS** - No frameworks, no build process
-- **Static site** - No server-side rendering, no databases
-- **Vanilla JavaScript** - No jQuery, React, Vue, or other libraries
-- **No preprocessors** - No SASS, LESS, TypeScript compilation
-- **No package managers** - No npm, yarn (except for local dev server)
+- **Pure HTML/CSS/JS** - No frameworks, no build process.
+- **Static site** - No server-side rendering, no databases.
+- **Vanilla JavaScript** - No jQuery, React, Vue, or other libraries.
+- **No preprocessors** - No SASS, LESS, TypeScript compilation.
+- **No package managers** - No npm, yarn (except for local dev server).
 
 **Rationale**:
-1. Simple for agents to update (just edit HTML)
-2. No dependencies to manage or break
-3. Fast loading and performance
-4. Direct browser compatibility
-5. GitHub Pages compatible
-6. Easy to visually inspect
+1. Simple for agents to update (just edit HTML).
+2. No dependencies to manage or break.
+3. Fast loading and performance.
+4. Direct browser compatibility.
+5. GitHub Pages compatible.
+6. Easy to visually inspect.
+
+**Dynamic behavior rule (explicit)**:
+- The site is intended to be static. If any dynamic feature is required (forms, comments, calendars, scheduling, authentication, interactive widgets), it MUST be implemented via calls to external APIs or services (i.e., hosted off-GitHub). The decision to add a dynamic feature must be discussed and approved separately, and the plan must include:
+  - API provider(s) and endpoints.
+  - Data flows and security considerations.
+  - Where secrets/configuration will be stored (not in the repository).
+  - Acceptance and verification steps for the integration.
 
 ### File Structure
 
@@ -155,11 +184,11 @@ See `.claude/knowledge/` for detailed project information.
 
 ### HTML Standards
 
-- **HTML5** with semantic elements
-- **Mobile-first responsive**
-- **Accessibility** (ARIA labels, alt text, semantic structure)
-- **Consistent navigation** across all pages
-- **Same CSS/JS includes** on every page
+- **HTML5** with semantic elements.
+- **Mobile-first responsive**.
+- **Accessibility** (ARIA labels, alt text, semantic structure).
+- **Consistent navigation** across all pages.
+- **Same CSS/JS includes** on every page.
 
 ### CSS Load Order (CRITICAL)
 
@@ -171,7 +200,7 @@ All HTML pages MUST include CSS in this exact order:
 <link rel="stylesheet" href="assets/css/components.css">
 ```
 
-Changing this order will break styles.
+Changing this order will break styles. Consider adding a reminder comment in HTML files near these includes, and consider an automated check (optional) that validates this order.
 
 ### Design Philosophy (NON-NEGOTIABLE)
 
@@ -187,16 +216,40 @@ Every design decision must support this feeling. The aesthetic itself teaches th
 
 ## Current Phase: Structure Complete
 
-**Status**: All pages created with placeholders
+**Status**: All pages created with placeholders  
 **Next Phase**: Content development (separate compartmentalized task)
 
 **DO NOT**:
-- Mix content development with structural changes
-- Change tech stack without updating this file
-- Add dependencies or build tools
-- Modify design system colors/spacing arbitrarily
+- Mix content development with structural changes.
+- Change tech stack without updating this file.
+- Add dependencies or build tools.
+- Modify design system colors/spacing arbitrarily.
 
 **Always Reference**:
 - `assets/CLAUDE.md` for design system and styling
 - `agents/CLAUDE.md` for agent page workflows
 - `.claude/knowledge/website-requirements/CLAUDE.md` for requirements
+
+---
+
+## Templates & Recommended Local CLAUDE.md Fields (recommended)
+When creating a new local CLAUDE.md, include these fields:
+
+- Title:
+- Topic/Area:
+- Purpose / Problem statement:
+- Observations / Context (links, references):
+- Files to create/modify/delete (exhaustive list with paths and one-line purpose):
+- Plan steps / Implementation checklist:
+- Verification plan (steps, acceptance criteria, files used for verification):
+- Risks and mitigations:
+- Decisions / Rationale log (date, who, decision):
+- Migration target in `.claude/knowledge/`:
+- Summary (to be filled after completion with key lessons and links)
+
+---
+
+## Governance & Practical Suggestions
+- Consider adding a small CLAUDE.md template file in the repo (I can draft one if desired).
+- Consider an automated validator (GitHub Action) that checks presence of a local CLAUDE.md for PRs touching certain directories and that the CSS load order is not broken. These checks may run without adding a build step.
+- Define merge/publish workflow in a CONTRIBUTING.md if contributors will be external.
