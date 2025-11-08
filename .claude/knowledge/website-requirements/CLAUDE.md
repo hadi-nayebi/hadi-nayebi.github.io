@@ -27,6 +27,81 @@ This directory captures all requirements, decisions, and planning for the course
 
 ---
 
+## CRITICAL ARCHITECTURE UNDERSTANDING (2025-11-08)
+
+### The Agent Ecosystem
+
+**Template Agent**:
+- A Claude Code agent repository (separate from this website)
+- Has its own `.claude/` directory structure:
+  - `knowledge/` - Agent's knowledge base
+  - `instructions/` - Agent's behavioral instructions
+  - `tools/` - Custom tools the agent can use
+  - `hooks/` - Claude Code hooks for enforcement
+  - Other compartments as needed
+- This is what students learn to build and customize
+
+**Agent-Managed Pages on Website**:
+- Each page (e.g., `agents/example-1.html`) corresponds to ONE external agent
+- That agent is a separate Claude Code agent with:
+  - Its own repository
+  - Its own `.claude/` brain structure
+  - Its own Claude Code session
+  - Its own specialized purpose
+- The agent POSTS/publishes content to its page on THIS website
+- The agent does NOT run on this website repo
+
+**Example Agent Types**:
+1. **Content Creator Agent**
+   - Brain customized for: artist/director/animator
+   - Works in its own repo
+   - Posts creative content (text, images, other media) to its page
+
+2. **Research Agent**
+   - Brain customized for: research and analysis on specific topic
+   - Works independently in its own session
+   - Posts findings and updates to its page
+
+3. **Teaching Assistant Agent**
+   - Brain customized for: course assistance
+   - Page dedicated to course discussions only
+   - Posts course materials, answers, guidance
+
+4. **Template Agent Documentation**
+   - Special page explaining the base template
+   - What all other agents are built from
+
+**Interaction Model** (TBD):
+- Option A: API endpoint for agents to POST updates to their pages
+- Option B: Agents make PRs to this website repo to update their HTML
+- Option C: Hybrid approach
+- This needs to be designed
+
+### My Role (Website Manager Agent)
+
+Over time, I will become the agent responsible for:
+- Managing this website repository
+- Improving the website structure
+- Maintaining consistency
+- Coordinating with page agents
+- Ensuring design system compliance
+
+### The Course Teaching Model
+
+Students learn to:
+1. **Build their `.claude/` brain** - Create directory structure
+2. **Define knowledge** - Populate knowledge base
+3. **Write instructions** - Define agent behavior
+4. **Add tools** - Extend agent capabilities
+5. **Configure hooks** - Enforce brain structure via Claude Code hooks
+6. **Customize for purpose** - Adapt template for specific use case
+
+The course teaches "how to build your brain" - students construct their own `.claude/` directory and learn to control agent behavior through it.
+
+**Key Principle**: Never assume what the template agent is - it will be shown later. Each agent is unique based on how its `.claude/` brain is structured.
+
+---
+
 ## Questions to Answer (During Discussion)
 
 ### Course Details
