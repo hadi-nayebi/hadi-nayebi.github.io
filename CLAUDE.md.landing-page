@@ -60,13 +60,17 @@ This CLAUDE.md serves as working memory for developing content for the landing p
 
 ## Assets to Review
 
-**Status**: WAITING for user to share asset folder
+**Status**: Images directory ready - user uploading assets
 
-**What to look for**:
-- Images for landing page
-- Logos or branding
+**Location**: `assets/images/`
+
+**What to expect**:
+- Landing page images (hero backgrounds, illustrations)
+- Logos or branding elements
 - Any visual assets that inform design
-- Examples of style/tone
+- Icons or graphics
+
+**Action**: Review uploaded images to inform content and layout decisions
 
 ---
 
