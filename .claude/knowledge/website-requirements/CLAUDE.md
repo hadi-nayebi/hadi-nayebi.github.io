@@ -4,20 +4,38 @@
 
 This directory captures all requirements, decisions, and planning for the course website rebuild.
 
-## Current Phase: OBSERVE & PLAN
+## Current Phase: LANDING PAGE CONTENT DEVELOPMENT
 
-**Status**: Gathering requirements from user discussion
+**Status**: OBSERVE - Gathering requirements for landing page content
 **Date**: 2025-11-08
+**Branch**: `claude/landing-page-content-011CUuqJn9qBHTemVAYhcAzo`
+**Compartment**: Landing page ONLY (index.html)
 
 ---
 
 ## What We Know So Far
 
 ### Course Fundamentals
-- **Type**: Claude Code Engineering course
+- **Name**: Claude Code Engineering
 - **Format**: Monthly cohorts of 10-15 students
-- **Core Offering**: Template agent that students customize
-- **Teaching Goal**: Build personal assistants from template
+- **Starting Point**: Template agent (all students begin here)
+- **Core Learning**: Design patterns for agent control
+
+### What Students Learn
+
+**Control Mechanisms for Agents**:
+1. **Instructions** - How to define agent behavior
+2. **Tools** - How to add agent capabilities
+3. **Hooks** - How to enforce patterns with Claude Code hooks
+4. **Other control forms** - Additional control mechanisms
+
+**Learning Process**:
+1. Study the control pattern on the template agent
+2. Design their own customized behavior for their agent
+3. Ask their agent to implement the design
+4. Result: Customized Claude Code agent with unique behavior
+
+**Key Insight**: Students learn to "build the brain" (`.claude/` directory) to control agent behavior
 
 ### Website Needs
 1. Landing page for the course
