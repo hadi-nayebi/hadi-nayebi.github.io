@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Course Name] - Claude Code Engineering</title>
-  <meta name="description" content="[Placeholder for course description]">
+  <title>Claude Code Engineering - Build Your Own AI Agents</title>
+  <meta name="description" content="Learn to build and customize AI agents with Claude Code. Master the design patterns that give you control: Instructions, Tools, and Hooks. Monthly cohorts of 10-15 students.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,25 +20,42 @@
 
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="template-agent.html">Template Agent</a>
-    <a href="agents/example-1.html">Agent Examples</a>
-    <a href="bio.html">About</a>
+    <div style="display: flex; align-items: center; gap: 2rem;">
+      <a href="index.html" style="display: flex; align-items: center;">
+        <img src="../assets/images/hadosh-logo-dark.png" alt="Hadosh Academy" style="height: 40px; width: auto;">
+      </a>
+    </div>
+    <div style="display: flex; gap: 1.5rem;">
+      <a href="index.html">Home</a>
+      <a href="template-agent.html">Template Agent</a>
+      <a href="agents/example-1.html">Agent Examples</a>
+      <a href="bio.html">About</a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content fade-in">
-      <h1 class="hero-title">[Placeholder for Course Title]</h1>
+  <section class="hero" style="position: relative; overflow: hidden;">
+    <!-- Hero Background Image -->
+    <div style="position: absolute; top: 0; right: 0; width: 60%; height: 100%; opacity: 0.4; z-index: 0;">
+      <img src="../assets/images/hero-construction.png"
+           alt="Building your AI agent - construction metaphor illustration"
+           style="width: 100%; height: 100%; object-fit: contain; object-position: center right;">
+    </div>
+
+    <div class="hero-content fade-in" style="position: relative; z-index: 1;">
+      <div style="display: inline-block; padding: 0.5rem 1rem; background: rgba(255, 112, 67, 0.1); border: 1px solid rgba(255, 112, 67, 0.3); border-radius: 2rem; margin-bottom: 1rem;">
+        <span style="color: #FF7043; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em;">HADOSH ACADEMY PRESENTS</span>
+      </div>
+      <h1 class="hero-title">Claude Code Engineering</h1>
       <p class="hero-subtitle">
-        [Placeholder for course tagline - something inviting about learning to build AI agents easily and smoothly]
+        Build AI agents that actually work for you. Learn the design patterns that give you control—no overwhelming complexity, just clear, hands-on construction.
       </p>
       <div class="btn-group">
         <a href="template-agent.html" class="btn btn-accent">
-          [Explore Template Agent]
+          Explore Template Agent
         </a>
         <a href="agents/example-1.html" class="btn btn-glass">
-          [View Agent Examples]
+          View Agent Examples
         </a>
       </div>
     </div>
@@ -48,32 +65,32 @@
   <section class="section fade-in-delayed">
     <div class="container">
       <div class="hero-glass">
-        <h2 class="text-center">[What You'll Learn]</h2>
+        <h2 class="text-center">Master the Three Control Mechanisms</h2>
         <p class="text-center" style="max-width: 700px; margin: 0 auto;">
-          [Placeholder for course overview - describe how students will learn to customize template agents and build their own AI assistants. Emphasize ease and accessibility.]
+          Building an AI agent isn't about magic—it's about understanding the right design patterns. Start with our template agent and learn to shape it into exactly what you need using three fundamental control mechanisms.
         </p>
 
         <hr class="separator">
 
         <div class="grid grid-3 mt-xl">
           <div class="content-card glass-hover">
-            <h3>[Core Concept 1]</h3>
+            <h3>Instructions</h3>
             <p class="text-sm">
-              [Placeholder for first key learning outcome or course module]
+              Learn to write clear, effective instructions that guide your agent's behavior. Discover how to structure knowledge, define workflows, and create the cognitive framework your agent needs to understand its role.
             </p>
           </div>
 
           <div class="content-card glass-hover">
-            <h3>[Core Concept 2]</h3>
+            <h3>Tools</h3>
             <p class="text-sm">
-              [Placeholder for second key learning outcome or course module]
+              Extend your agent's capabilities by integrating tools and APIs. Understand how to give your agent access to file systems, web search, code execution, and custom functions that expand what it can accomplish.
             </p>
           </div>
 
           <div class="content-card glass-hover">
-            <h3>[Core Concept 3]</h3>
+            <h3>Hooks</h3>
             <p class="text-sm">
-              [Placeholder for third key learning outcome or course module]
+              Implement hooks to enforce patterns and automate behaviors. Learn to trigger actions at specific moments—session start, pre-commit, deployment—ensuring your agent maintains consistency and best practices.
             </p>
           </div>
         </div>
@@ -84,14 +101,17 @@
   <!-- Template Agent Introduction -->
   <section class="section">
     <div class="container">
-      <h2 class="text-center mb-lg">[The Template Agent]</h2>
+      <h2 class="text-center mb-lg">Start With the Template Agent</h2>
       <div class="content-card glass-accent" style="max-width: 800px; margin: 0 auto;">
         <p>
-          [Placeholder for template agent introduction - brief explanation of what it is and why it's the foundation for learning]
+          Every student begins their journey with the same foundation: our Template Agent. This fully functional Claude Code agent serves as your learning laboratory—a working example with a complete <code>.claude/</code> brain structure that you'll study, understand, and ultimately customize into your own unique agent.
+        </p>
+        <p style="margin-top: var(--space-md);">
+          The template isn't just documentation—it's a living reference that demonstrates every pattern you'll learn. By studying how it works and then designing your own modifications, you'll develop the practical understanding needed to build agents that truly serve your needs.
         </p>
         <div class="mt-lg text-center">
           <a href="template-agent.html" class="btn btn-glass">
-            [Learn More About the Template]
+            Explore the Template Agent
           </a>
         </div>
       </div>
@@ -101,30 +121,30 @@
   <!-- Agent Examples Showcase -->
   <section class="section">
     <div class="container">
-      <h2 class="text-center mb-lg">[Example Customized Agents]</h2>
+      <h2 class="text-center mb-lg">See What You'll Build</h2>
       <p class="text-center mb-lg" style="max-width: 600px; margin: 0 auto var(--space-lg);">
-        [Placeholder for explanation that these are examples of agents built from the template, each managing its own page]
+        These are examples of agents built from the template by applying the control patterns you'll master in the course. Each agent manages its own page, demonstrating how the same foundation can be customized for different specialized purposes.
       </p>
 
       <div class="grid grid-3">
         <a href="agents/example-1.html" class="agent-card">
-          <h3 class="agent-card-title">[Agent 1 Name]</h3>
+          <h3 class="agent-card-title">Documentation Agent</h3>
           <p class="agent-card-description">
-            [Placeholder for what this agent does and its specialty]
+            Specialized in maintaining technical documentation with consistent style, automatic updates, and intelligent cross-referencing across repository files.
           </p>
         </a>
 
         <a href="agents/example-2.html" class="agent-card">
-          <h3 class="agent-card-title">[Agent 2 Name]</h3>
+          <h3 class="agent-card-title">Code Review Agent</h3>
           <p class="agent-card-description">
-            [Placeholder for what this agent does and its specialty]
+            Enforces team standards through pre-commit hooks, performs architectural analysis, and provides constructive feedback on pull requests.
           </p>
         </a>
 
         <a href="agents/example-3.html" class="agent-card">
-          <h3 class="agent-card-title">[Agent 3 Name]</h3>
+          <h3 class="agent-card-title">Testing Agent</h3>
           <p class="agent-card-description">
-            [Placeholder for what this agent does and its specialty]
+            Generates comprehensive test suites, identifies edge cases, and maintains testing patterns that adapt as your codebase evolves.
           </p>
         </a>
       </div>
@@ -135,16 +155,16 @@
   <section class="section">
     <div class="container">
       <div class="hero-glass text-center">
-        <h2>[Ready to Start?]</h2>
+        <h2>Join the Next Cohort</h2>
         <p style="max-width: 600px; margin: 0 auto var(--space-lg);">
-          [Placeholder for enrollment information - cohort size (10-15), monthly schedule, how to join]
+          Claude Code Engineering runs monthly with small cohorts of 10-15 students, ensuring personalized attention and collaborative learning. Start with the Template Agent, master the control patterns, and build your own customized AI agent by the end of the course.
         </p>
         <div class="btn-group" style="justify-content: center;">
-          <a href="#" class="btn btn-accent">
-            [Enroll Now]
+          <a href="#enrollment" class="btn btn-accent">
+            Apply for Next Cohort
           </a>
           <a href="bio.html" class="btn btn-glass">
-            [Learn More About the Instructor]
+            Meet the Instructor
           </a>
         </div>
       </div>
@@ -158,11 +178,11 @@
         <a href="index.html">Home</a>
         <a href="template-agent.html">Template Agent</a>
         <a href="bio.html">About</a>
-        <a href="#">[Contact]</a>
+        <a href="mailto:contact@hadoshacademy.com">Contact</a>
       </div>
       <div class="footer-content">
         <p class="text-xs">
-          [Placeholder for copyright and footer text]
+          &copy; 2025 Hadosh Academy. All rights reserved. Claude Code Engineering is a course offering by Hadosh Academy.
         </p>
       </div>
     </div>

@@ -148,11 +148,26 @@ When adding new styles:
 
 ## Images
 
+**Directory**: `assets/images/`
+
+**Purpose**:
+- Store all visual assets for the website
+- Landing page images (hero backgrounds, illustrations, logos)
+- Icons and graphics
+- Agent page visuals
+- Any other imagery used across the site
+
+**Current Status**:
+- Directory created and ready for uploads
+- User will upload images for landing page development
+
 **Guidelines**:
 - Optimize before adding (compress, resize)
 - Use modern formats (WebP with fallback)
 - Include alt text in HTML
 - Dark mode compatible
+- Name files descriptively (e.g., `hero-background.jpg`, `logo-light.svg`)
+- Keep file sizes reasonable (compress images)
 
 ---
 
