@@ -271,8 +271,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: none;
-    /* Let clicks pass through to the circle content if needed */
+    pointer-events: auto;
+    /* Enable events so we can detect hover/scroll */
 }
 
 .central-circle {

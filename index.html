@@ -127,13 +127,21 @@
             });
 
             // Event Listeners
-            container.addEventListener('mouseenter', () => {
-                isHovering = true;
-                // Snap to nearest slot
-                // We want the item at 0 degrees (Right) to be centered.
-                // The ring rotates. If ring rotation is R, item at angle A is at R + A.
-                // Actually simpler: Just round currentRotation to nearest stepAngle
-                targetRotation = Math.round(currentRotation / stepAngle) * stepAngle;
+            // Smart Hover: Only activate "Wheel Mode" when mouse is on the right side (where text is)
+            container.addEventListener('mousemove', (e) => {
+                const screenWidth = window.innerWidth;
+                // Active zone: Right 45% of the screen
+                const activeZoneStart = screenWidth * 0.55;
+
+                if (e.clientX > activeZoneStart) {
+                    if (!isHovering) {
+                        isHovering = true;
+                        // Snap when entering zone
+                        targetRotation = Math.round(currentRotation / stepAngle) * stepAngle;
+                    }
+                } else {
+                    isHovering = false;
+                }
             });
 
             container.addEventListener('mouseleave', () => {
@@ -141,8 +149,9 @@
             });
 
             container.addEventListener('wheel', (e) => {
-                if (!isHovering) return;
-                e.preventDefault();
+                if (!isHovering) return; // Allow default page scroll if not in active zone
+
+                e.preventDefault(); // Block page scroll ONLY in active zone
 
                 const now = Date.now();
                 if (now - lastScrollTime > 50) { // Debounce slightly
