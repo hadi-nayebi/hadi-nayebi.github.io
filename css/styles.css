@@ -260,15 +260,14 @@ footer {
 /* Orbit Wheel UI */
 .orbit-container {
     position: relative;
-    width: 1000px;
-    /* Increased from 800px */
-    height: 1000px;
+    width: 1500px;
+    /* Increased to accommodate long text */
+    height: 1500px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    /* Ensure no scrollbars if it gets huge */
+    /* overflow: hidden; REMOVED to prevent text clipping */
 }
 
 .central-circle {
