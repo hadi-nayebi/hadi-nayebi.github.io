@@ -19,6 +19,14 @@ This website is the central hub for:
 -   **Landing Page**: The main entry point, introducing the Academy and the Skool community.
 
 ## Current Objectives
-1.  **Establish Landing Page**: Introduce "Claude Agent Engineering".
-2.  **Create Teaching Assistant Page**: A home for the first template agent instance.
-3.  **Integrate with Skool**: Drive traffic to the community.
+1.  **Revamp Website (v2.0)**:
+    -   **Landing Page**: Professional introduction to Hadosh Academy + Skool Gateway.
+    -   **Teaching Assistant Page**: "Coming Soon" page for Claude Agent Engineering.
+    -   **About Page**: Bio of Hadi Nayebi (Research: MSU background).
+    -   **Contact**: Form/Link to `hadinayebi@earthone.life`.
+2.  **Integrate with Skool**: Drive traffic to the community.
+
+## Content Strategy
+-   **Bio**: Search for "Hadi Nayebi MSU" to populate About page.
+-   **Style**: Premium, modern, "Academy" aesthetic.
+-   **Placeholders**: Use `[PLACEHOLDER]` for missing info.
