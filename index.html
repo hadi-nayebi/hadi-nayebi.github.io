@@ -129,14 +129,18 @@
             });
 
             // Event Listeners
-            // Smart Hover: Only activate "Wheel Mode" when mouse is on the right side (where text is)
+            // Smart Hover: Only activate "Wheel Mode" when mouse is on the right side AND in the middle vertical zone
             // Attached to DOCUMENT to ensure it works everywhere, even outside the container bounds
             document.addEventListener('mousemove', (e) => {
                 const screenWidth = window.innerWidth;
-                // Active zone: Right 45% of the screen
-                const activeZoneStart = screenWidth * 0.55;
+                const screenHeight = window.innerHeight;
 
-                if (e.clientX > activeZoneStart) {
+                // Active zone: Right 45% of width, Middle 50% of height
+                const activeZoneStartX = screenWidth * 0.55;
+                const activeZoneStartY = screenHeight * 0.25;
+                const activeZoneEndY = screenHeight * 0.75;
+
+                if (e.clientX > activeZoneStartX && e.clientY > activeZoneStartY && e.clientY < activeZoneEndY) {
                     if (!isHovering) {
                         isHovering = true;
                         // Snap when entering zone
@@ -266,10 +270,10 @@
         </div>
     </footer>
     <div id="debug-zone"
-        style="position: fixed; top: 0; right: 0; bottom: 0; width: 45%; border-left: 4px solid red; background: rgba(255, 0, 0, 0.1); pointer-events: none; z-index: 10000;">
+        style="position: fixed; top: 25%; right: 0; height: 50%; width: 45%; border: 4px solid red; border-right: none; background: rgba(255, 0, 0, 0.1); pointer-events: none; z-index: 10000;">
         <div
-            style="position: absolute; top: 50%; left: 10px; color: red; font-weight: bold; background: black; padding: 5px;">
-            Active Scroll Zone (45%)</div>
+            style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: red; font-weight: bold; background: black; padding: 5px;">
+            Active Scroll Zone (Middle 50%)</div>
     </div>
 </body>
 
