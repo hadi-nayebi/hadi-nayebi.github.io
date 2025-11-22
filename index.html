@@ -90,15 +90,24 @@
             ];
 
             const ring = document.getElementById('orbitRing');
-            const radius = 950; // Massive radius for the 1800px container
+            const container = document.querySelector('.orbit-container');
+            const radius = 950;
             const totalItems = hooks.length;
+            const stepAngle = 360 / totalItems; // Angle between items
 
+            // State
+            let currentRotation = 0;
+            let targetRotation = 0;
+            let isHovering = false;
+            let lastScrollTime = 0;
+
+            // Initialize Items
             hooks.forEach((hook, index) => {
                 const angle = (index / totalItems) * 2 * Math.PI;
                 const item = document.createElement('div');
                 item.className = 'orbit-item';
 
-                // Position calculation
+                // Position calculation (Standard circle math)
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -117,10 +126,55 @@
                 ring.appendChild(item);
             });
 
-            // Focus Logic: Smooth Gaussian Gradient
+            // Event Listeners
+            container.addEventListener('mouseenter', () => {
+                isHovering = true;
+                // Snap to nearest slot
+                // We want the item at 0 degrees (Right) to be centered.
+                // The ring rotates. If ring rotation is R, item at angle A is at R + A.
+                // Actually simpler: Just round currentRotation to nearest stepAngle
+                targetRotation = Math.round(currentRotation / stepAngle) * stepAngle;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                isHovering = false;
+            });
+
+            container.addEventListener('wheel', (e) => {
+                if (!isHovering) return;
+                e.preventDefault();
+
+                const now = Date.now();
+                if (now - lastScrollTime > 50) { // Debounce slightly
+                    const direction = e.deltaY > 0 ? 1 : -1;
+                    // "Ratchet" effect: Move one full step
+                    targetRotation += direction * stepAngle;
+                    lastScrollTime = now;
+                }
+            }, { passive: false });
+
+            // Physics Loop
+            function animate() {
+                if (isHovering) {
+                    // Lerp to target (Snap effect)
+                    // Smooth spring-like lerp
+                    currentRotation += (targetRotation - currentRotation) * 0.1;
+                } else {
+                    // Passive drift
+                    currentRotation += 0.02; // Slow rotation
+                }
+
+                // Apply rotation to ring
+                ring.style.transform = `rotate(${currentRotation}deg)`;
+
+                updateFocus();
+                requestAnimationFrame(animate);
+            }
+
+            // Focus Logic
             function updateFocus() {
                 const items = document.querySelectorAll('.orbit-item');
-                const containerRect = document.querySelector('.orbit-container').getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
                 const centerX = containerRect.left + containerRect.width / 2;
                 const centerY = containerRect.top + containerRect.height / 2;
 
@@ -132,23 +186,20 @@
                     // Calculate angle relative to center
                     const dx = itemX - centerX;
                     const dy = itemY - centerY;
-                    let angle = Math.atan2(dy, dx) * (180 / Math.PI); // -180 to 180
+                    let angle = Math.atan2(dy, dx) * (180 / Math.PI);
 
-                    // Normalize angle so "Right" (0 degrees) is the target
+                    // Normalize angle
                     let diff = Math.abs(angle);
                     if (diff > 180) diff = 360 - diff;
 
                     // Gaussian Falloff
-                    // We want a sharp peak at 0, falling off quickly
-                    const sigma = 12; // Controls the width of the focus beam
+                    const sigma = 12;
                     const intensity = Math.exp(-(diff * diff) / (2 * sigma * sigma));
 
-                    // Map intensity to CSS properties
-                    const opacity = 0.1 + (0.9 * intensity); // Min 0.1, Max 1.0
-                    const blur = 8 * (1 - intensity); // Max 8px blur, Min 0px
-                    const scale = 1.0 + (0.3 * intensity); // Max 1.3 scale, Min 1.0
+                    const opacity = 0.1 + (0.9 * intensity);
+                    const blur = 8 * (1 - intensity);
+                    const scale = 1.0 + (0.3 * intensity);
 
-                    // Apply styles
                     const text = item.querySelector('.orbit-text');
                     text.style.opacity = opacity;
                     text.style.filter = `blur(${blur}px)`;
@@ -158,16 +209,17 @@
                         text.style.color = '#fff';
                         text.style.textShadow = `0 0 ${20 * intensity}px var(--primary)`;
                         item.style.zIndex = 100;
+                        item.style.pointerEvents = 'auto'; // Clickable
                     } else {
                         text.style.color = 'var(--text-muted)';
                         text.style.textShadow = 'none';
                         item.style.zIndex = 1;
+                        item.style.pointerEvents = 'none'; // Not clickable
                     }
                 });
-                requestAnimationFrame(updateFocus);
             }
 
-            updateFocus();
+            animate();
         </script>
 
         <section class="container">

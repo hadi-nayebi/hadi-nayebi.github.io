@@ -322,10 +322,10 @@ footer {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    /* border: 1px dashed rgba(255, 255, 255, 0.05); */
-    /* Optional guide ring */
-    animation: rotate-ring 160s linear infinite;
-    /* Slower rotation for readability */
+    /* Animation removed for JS control */
+    /* animation: rotate-ring 160s linear infinite; */
+    transition: transform 0.1s linear;
+    /* Slight smoothing if needed, but JS will handle it */
 }
 
 .orbit-item {
