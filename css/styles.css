@@ -324,7 +324,7 @@ footer {
     border-radius: 50%;
     /* border: 1px dashed rgba(255, 255, 255, 0.05); */
     /* Optional guide ring */
-    animation: rotate-ring 80s linear infinite;
+    animation: rotate-ring 160s linear infinite;
     /* Slower rotation for readability */
 }
 
