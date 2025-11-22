@@ -30,7 +30,12 @@
                 <p>Interested in consulting, cohorts, or just want to say hello? Reach out directly.</p>
 
                 <div class="card" style="text-align: left; margin-top: 2rem;">
-                    <form action="mailto:hadinayebi@earthone.life" method="post" enctype="text/plain">
+                    <form action="https://formsubmit.co/hadinayebi+hadoshacademy@earthone.life" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Submission from Hadosh Academy Website">
+                        <input type="hidden" name="_next" value="https://hadosh-academy.github.io/thanks.html">
+                        <input type="hidden" name="_captcha" value="false">
+
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>
@@ -46,13 +51,6 @@
                         <button type="submit" class="btn btn-primary"
                             style="width: 100%; border: none; cursor: pointer;">Send Message</button>
                     </form>
-
-                    <div
-                        style="margin-top: 2rem; text-align: center; border-top: 1px solid var(--border); padding-top: 1rem;">
-                        <p style="margin-bottom: 0.5rem;">Or email directly:</p>
-                        <a href="mailto:hadinayebi@earthone.life"
-                            style="color: var(--primary); font-weight: 600; text-decoration: none;">hadinayebi@earthone.life</a>
-                    </div>
                 </div>
             </div>
         </section>
