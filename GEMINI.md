@@ -18,6 +18,10 @@ This website is the central hub for:
     -   Pages feature "About", "Capabilities", and potentially interactive elements.
 -   **Landing Page**: The main entry point, introducing the Academy and the Skool community.
 
+## Quality Assurance Rules
+- **Screenshot Analysis**: Screenshots are for **Debugging**, not just Verification. I must actively scrutinize every pixel for defects (broken images, layout shifts, cropped text, placeholders) before claiming a task is done. If I see a placeholder or a glitch, I must fix it immediately.
+- **Visual Polish**: "Good enough" is not enough. The design must be premium and flawless.
+
 ## Current Objectives
 1.  **Revamp Website (v2.0)**:
     -   **Landing Page**: Professional introduction to Hadosh Academy + Skool Gateway.
