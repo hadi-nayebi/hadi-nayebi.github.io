@@ -155,7 +155,7 @@
                 e.preventDefault(); // Block page scroll ONLY in active zone
 
                 const now = Date.now();
-                if (now - lastScrollTime > 50) { // Debounce slightly
+                if (now - lastScrollTime > 80) { // Debounce increased to 80ms (slower scroll)
                     const direction = e.deltaY > 0 ? 1 : -1;
                     // "Ratchet" effect: Move one full step
                     targetRotation += direction * stepAngle;
@@ -167,8 +167,8 @@
             function animate() {
                 if (isHovering) {
                     // Lerp to target (Snap effect)
-                    // Smooth spring-like lerp
-                    currentRotation += (targetRotation - currentRotation) * 0.1;
+                    // Increased to 0.2 for faster snap (less blur lag)
+                    currentRotation += (targetRotation - currentRotation) * 0.2;
                 } else {
                     // Passive drift
                     currentRotation += 0.02; // Slow rotation
