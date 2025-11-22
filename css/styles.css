@@ -261,8 +261,9 @@ footer {
 .orbit-container {
     position: relative;
     width: 1500px;
-    /* Increased to accommodate long text */
-    height: 1500px;
+    /* Keep wide for text */
+    height: 900px;
+    /* Reduced from 1500px to fix vertical alignment */
     margin: 0 auto;
     display: flex;
     justify-content: center;
