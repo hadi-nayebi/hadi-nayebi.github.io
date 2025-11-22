@@ -45,6 +45,12 @@
                     <!-- Orbit items injected by JS -->
                 </div>
             </div>
+            <div id="debug-zone"
+                style="position: absolute; top: 25%; right: 0; height: 50%; width: 45%; border: 4px solid red; border-right: none; background: rgba(255, 0, 0, 0.1); pointer-events: none; z-index: 10000;">
+                <div
+                    style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: red; font-weight: bold; background: black; padding: 5px;">
+                    Active Scroll Zone (Hero Middle 50%)</div>
+            </div>
         </section>
 
         <script>
@@ -129,18 +135,22 @@
             });
 
             // Event Listeners
-            // Smart Hover: Only activate "Wheel Mode" when mouse is on the right side AND in the middle vertical zone
-            // Attached to DOCUMENT to ensure it works everywhere, even outside the container bounds
-            document.addEventListener('mousemove', (e) => {
+            const hero = document.querySelector('.hero');
+
+            // Smart Hover: Only activate "Wheel Mode" when mouse is inside the Hero, on the right side, and in the middle vertical zone
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const relativeY = e.clientY - rect.top;
                 const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
 
-                // Active zone: Right 45% of width, Middle 50% of height
+                // Active zone: Right 45% of width
                 const activeZoneStartX = screenWidth * 0.55;
-                const activeZoneStartY = screenHeight * 0.25;
-                const activeZoneEndY = screenHeight * 0.75;
 
-                if (e.clientX > activeZoneStartX && e.clientY > activeZoneStartY && e.clientY < activeZoneEndY) {
+                // Vertical zone: Middle 50% of the HERO section
+                const activeZoneStartY = rect.height * 0.25;
+                const activeZoneEndY = rect.height * 0.75;
+
+                if (e.clientX > activeZoneStartX && relativeY > activeZoneStartY && relativeY < activeZoneEndY) {
                     if (!isHovering) {
                         isHovering = true;
                         // Snap when entering zone
@@ -151,11 +161,11 @@
                 }
             });
 
-            document.addEventListener('mouseleave', () => {
+            hero.addEventListener('mouseleave', () => {
                 isHovering = false;
             });
 
-            document.addEventListener('wheel', (e) => {
+            hero.addEventListener('wheel', (e) => {
                 if (!isHovering) return; // Allow default page scroll if not in active zone
 
                 e.preventDefault(); // Block page scroll ONLY in active zone
@@ -269,12 +279,6 @@
             <p>&copy; 2025 Hadosh Academy. All rights reserved.</p>
         </div>
     </footer>
-    <div id="debug-zone"
-        style="position: fixed; top: 25%; right: 0; height: 50%; width: 45%; border: 4px solid red; border-right: none; background: rgba(255, 0, 0, 0.1); pointer-events: none; z-index: 10000;">
-        <div
-            style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: red; font-weight: bold; background: black; padding: 5px;">
-            Active Scroll Zone (Middle 50%)</div>
-    </div>
 </body>
 
 </html>
