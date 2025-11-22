@@ -156,7 +156,7 @@
 
                 const now = Date.now();
                 if (now - lastScrollTime > 80) { // Debounce increased to 80ms (slower scroll)
-                    const direction = e.deltaY > 0 ? 1 : -1;
+                    const direction = e.deltaY > 0 ? -1 : 1; // Reversed direction
                     // "Ratchet" effect: Move one full step
                     targetRotation += direction * stepAngle;
                     lastScrollTime = now;
