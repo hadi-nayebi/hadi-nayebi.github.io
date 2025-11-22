@@ -45,18 +45,22 @@
 
         <script>
             const hooks = [
-                { text: "LLMs are not the agents", link: "#" },
-                { text: "The Brain vs The Engine", link: "#" },
-                { text: "Deterministic Pathways", link: "#" },
-                { text: "No More Random Walks", link: "#" },
-                { text: "Intention MCPs", link: "#" },
-                { text: "Hook System Stability", link: "#" },
-                { text: "Conversational Engineering", link: "#" },
-                { text: "Democratizing AI", link: "#" }
+                { text: "Why Chatbots Fail", link: "#" },
+                { text: "The Missing Piece of AI", link: "#" },
+                { text: "Reliable Results", link: "#" },
+                { text: "Stop Hallucinations", link: "#" },
+                { text: "Agents That Work", link: "#" },
+                { text: "Sleep Soundly", link: "#" },
+                { text: "Build With English", link: "#" },
+                { text: "No Coding Needed", link: "#" },
+                { text: "Your Own Workforce", link: "#" },
+                { text: "Scale Your Time", link: "#" },
+                { text: "Beyond The Chat", link: "#" },
+                { text: "Predictable AI", link: "#" }
             ];
 
             const ring = document.getElementById('orbitRing');
-            const radius = 350; // Distance from center
+            const radius = 420; // Distance from center (increased for larger circle)
             const totalItems = hooks.length;
 
             hooks.forEach((hook, index) => {
@@ -64,11 +68,15 @@
                 const item = document.createElement('div');
                 item.className = 'orbit-item';
 
-                // Initial position calculation (relative to center)
+                // Position calculation
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
-                item.style.transform = `translate(${x}px, ${y}px)`;
+                // Rotate the item so text radiates outward
+                // Angle in degrees + 90 (or 0 depending on text orientation)
+                const rotationDeg = angle * (180 / Math.PI);
+
+                item.style.transform = `translate(${x}px, ${y}px) rotate(${rotationDeg}deg)`;
 
                 const link = document.createElement('a');
                 link.href = hook.link;
@@ -95,17 +103,12 @@
                     // Calculate angle relative to center
                     const dx = itemX - centerX;
                     const dy = itemY - centerY;
-                    let angle = Math.atan2(dy, dx) * (180 / Math.PI); // -180 to 180
 
-                    // "Right side" is 0 degrees. Define a focus zone (e.g., -45 to 45)
-                    // Since the ring rotates, the items physically move.
-                    // However, we are rotating the RING container. The items are children.
-                    // So getBoundingClientRect() gives the FINAL screen position.
+                    // Right side is 0 degrees.
+                    // We want a wider zone to capture ~3 items.
+                    // 3 items out of 12 is 90 degrees (45 up, 45 down).
 
-                    // Check if item is roughly on the right side
-                    // Right side means x > centerX and y is close to centerY
-
-                    const isRightSide = (dx > 100) && (Math.abs(dy) < 150);
+                    const isRightSide = (dx > 150) && (Math.abs(dy) < 300); // Wider vertical zone
 
                     if (isRightSide) {
                         item.classList.add('focused');
@@ -113,8 +116,8 @@
                         item.style.filter = 'blur(0px)';
                     } else {
                         item.classList.remove('focused');
-                        item.style.opacity = '0.5';
-                        item.style.filter = 'blur(2px)';
+                        item.style.opacity = '0.1'; // Very dim
+                        item.style.filter = 'blur(4px)'; // Very blurry
                     }
                 });
                 requestAnimationFrame(updateFocus);
