@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hadosh Academy | Democratizing AI Agent Engineering</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -22,34 +24,126 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <span class="badge">The Future of Work</span>
-                <h1>Build Your Own <br><span>AI Workforce</span></h1>
-                <p>Democratizing Agent Engineering for professionals. No coding required. Build custom, robust agents purely through conversation.</p>
-                <div style="display: flex; gap: 1rem; justify-content: center;">
-                    <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank" class="btn btn-primary">Join the Community</a>
-                    <a href="teaching-assistant.html" class="btn btn-secondary">Meet the Agents</a>
+        <section class="hero" style="overflow: hidden;">
+            <div class="orbit-container">
+                <div class="central-circle">
+                    <span class="badge">The Future of Work</span>
+                    <h1>Build Your Own <br><span>AI Workforce</span></h1>
+                    <p style="margin-bottom: 1.5rem;">Democratizing Agent Engineering for professionals. No coding
+                        required.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank"
+                            class="btn btn-primary">Join the Community</a>
+                    </div>
+                </div>
+
+                <div class="orbit-ring" id="orbitRing">
+                    <!-- Orbit items injected by JS -->
                 </div>
             </div>
         </section>
+
+        <script>
+            const hooks = [
+                { text: "LLMs are not the agents", link: "#" },
+                { text: "The Brain vs The Engine", link: "#" },
+                { text: "Deterministic Pathways", link: "#" },
+                { text: "No More Random Walks", link: "#" },
+                { text: "Intention MCPs", link: "#" },
+                { text: "Hook System Stability", link: "#" },
+                { text: "Conversational Engineering", link: "#" },
+                { text: "Democratizing AI", link: "#" }
+            ];
+
+            const ring = document.getElementById('orbitRing');
+            const radius = 350; // Distance from center
+            const totalItems = hooks.length;
+
+            hooks.forEach((hook, index) => {
+                const angle = (index / totalItems) * 2 * Math.PI;
+                const item = document.createElement('div');
+                item.className = 'orbit-item';
+
+                // Initial position calculation (relative to center)
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+
+                item.style.transform = `translate(${x}px, ${y}px)`;
+
+                const link = document.createElement('a');
+                link.href = hook.link;
+                link.className = 'orbit-text';
+                link.textContent = hook.text;
+                link.style.textDecoration = 'none';
+
+                item.appendChild(link);
+                ring.appendChild(item);
+            });
+
+            // Focus Logic: Check positions every frame
+            function updateFocus() {
+                const items = document.querySelectorAll('.orbit-item');
+                const containerRect = document.querySelector('.orbit-container').getBoundingClientRect();
+                const centerX = containerRect.left + containerRect.width / 2;
+                const centerY = containerRect.top + containerRect.height / 2;
+
+                items.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const itemX = rect.left + rect.width / 2;
+                    const itemY = rect.top + rect.height / 2;
+
+                    // Calculate angle relative to center
+                    const dx = itemX - centerX;
+                    const dy = itemY - centerY;
+                    let angle = Math.atan2(dy, dx) * (180 / Math.PI); // -180 to 180
+
+                    // "Right side" is 0 degrees. Define a focus zone (e.g., -45 to 45)
+                    // Since the ring rotates, the items physically move.
+                    // However, we are rotating the RING container. The items are children.
+                    // So getBoundingClientRect() gives the FINAL screen position.
+
+                    // Check if item is roughly on the right side
+                    // Right side means x > centerX and y is close to centerY
+
+                    const isRightSide = (dx > 100) && (Math.abs(dy) < 150);
+
+                    if (isRightSide) {
+                        item.classList.add('focused');
+                        item.style.opacity = '1';
+                        item.style.filter = 'blur(0px)';
+                    } else {
+                        item.classList.remove('focused');
+                        item.style.opacity = '0.5';
+                        item.style.filter = 'blur(2px)';
+                    }
+                });
+                requestAnimationFrame(updateFocus);
+            }
+
+            updateFocus();
+        </script>
 
         <section class="container">
             <div class="grid">
                 <div class="card">
                     <h3>🎓 The Academy</h3>
-                    <p>Comprehensive education on Claude Agent Engineering. Learn the "Hook System", "Intention MCPs", and how to architect robust cognitive systems.</p>
+                    <p>Comprehensive education on Claude Agent Engineering. Learn the "Hook System", "Intention MCPs",
+                        and how to architect robust cognitive systems.</p>
                     <a href="about.html" style="color: var(--primary); text-decoration: none;">Learn more &rarr;</a>
                 </div>
                 <div class="card">
                     <h3>🚀 Skool Community</h3>
-                    <p>Join a vibrant community of lawyers, scientists, and creators building the next generation of AI tools. Share patterns, get help, and grow.</p>
-                    <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank" style="color: var(--primary); text-decoration: none;">Visit Skool &rarr;</a>
+                    <p>Join a vibrant community of lawyers, scientists, and creators building the next generation of AI
+                        tools. Share patterns, get help, and grow.</p>
+                    <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank"
+                        style="color: var(--primary); text-decoration: none;">Visit Skool &rarr;</a>
                 </div>
                 <div class="card">
                     <h3>🤖 Custom Agents</h3>
-                    <p>Explore our showcase of specialized agents, starting with the "Teaching Assistant" designed to help you master the framework.</p>
-                    <a href="teaching-assistant.html" style="color: var(--primary); text-decoration: none;">View Showcase &rarr;</a>
+                    <p>Explore our showcase of specialized agents, starting with the "Teaching Assistant" designed to
+                        help you master the framework.</p>
+                    <a href="teaching-assistant.html" style="color: var(--primary); text-decoration: none;">View
+                        Showcase &rarr;</a>
                 </div>
             </div>
         </section>
@@ -61,4 +155,5 @@
         </div>
     </footer>
 </body>
+
 </html>

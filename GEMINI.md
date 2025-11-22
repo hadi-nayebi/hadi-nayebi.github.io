@@ -21,6 +21,7 @@ This website is the central hub for:
 ## Current Objectives
 1.  **Revamp Website (v2.0)**:
     -   **Landing Page**: Professional introduction to Hadosh Academy + Skool Gateway.
+        -   *New Feature*: "Rotating Wheel" UI. Central circular hero content surrounded by orbiting phrases ("hooks") that focus on the right side.
     -   **Teaching Assistant Page**: "Coming Soon" page for Claude Agent Engineering.
     -   **About Page**: Bio of Hadi Nayebi (Research: MSU background).
     -   **Contact**: Form/Link to `hadinayebi@earthone.life`.
