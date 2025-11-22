@@ -259,35 +259,48 @@ footer {
 
 /* Orbit Wheel UI */
 .orbit-container {
-    position: relative;
-    width: 1500px;
-    /* Keep wide for text */
-    height: 900px;
-    /* Reduced from 1500px to fix vertical alignment */
-    margin: 0 auto;
+    position: absolute;
+    /* Changed to absolute for precise off-screen positioning */
+    top: 50%;
+    left: -600px;
+    /* Push far to the left */
+    transform: translateY(-50%);
+    width: 1800px;
+    /* Massive size */
+    height: 1800px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden; REMOVED to prevent text clipping */
+    pointer-events: none;
+    /* Let clicks pass through to the circle content if needed */
 }
 
 .central-circle {
-    width: 600px;
-    /* Increased from 450px */
-    height: 600px;
+    width: 1200px;
+    /* Massive circle */
+    height: 1200px;
     border-radius: 50%;
-    background: rgba(5, 5, 7, 0.8);
-    /* More opaque */
-    backdrop-filter: blur(20px);
+    background: rgba(5, 5, 7, 0.9);
+    /* High opacity to hide left side items */
+    backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 80px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 0 100px rgba(99, 102, 241, 0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 3rem;
+    align-items: flex-end;
+    /* Align content to the right edge of the circle */
+    padding-right: 150px;
+    /* Spacing from the edge */
     z-index: 10;
     position: relative;
+    pointer-events: auto;
+    /* Re-enable clicks */
+}
+
+.central-circle-content {
+    text-align: right;
+    max-width: 500px;
 }
 
 .central-circle::before {
@@ -296,11 +309,12 @@ footer {
     inset: -2px;
     border-radius: 50%;
     padding: 2px;
-    background: linear-gradient(135deg, var(--primary), transparent, var(--accent));
+    background: linear-gradient(90deg, transparent 50%, var(--primary), var(--accent));
+    /* Only show border on right side roughly */
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .orbit-ring {
