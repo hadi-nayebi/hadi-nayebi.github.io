@@ -128,7 +128,8 @@
 
             // Event Listeners
             // Smart Hover: Only activate "Wheel Mode" when mouse is on the right side (where text is)
-            container.addEventListener('mousemove', (e) => {
+            // Attached to DOCUMENT to ensure it works everywhere, even outside the container bounds
+            document.addEventListener('mousemove', (e) => {
                 const screenWidth = window.innerWidth;
                 // Active zone: Right 45% of the screen
                 const activeZoneStart = screenWidth * 0.55;
@@ -144,11 +145,11 @@
                 }
             });
 
-            container.addEventListener('mouseleave', () => {
+            document.addEventListener('mouseleave', () => {
                 isHovering = false;
             });
 
-            container.addEventListener('wheel', (e) => {
+            document.addEventListener('wheel', (e) => {
                 if (!isHovering) return; // Allow default page scroll if not in active zone
 
                 e.preventDefault(); // Block page scroll ONLY in active zone
