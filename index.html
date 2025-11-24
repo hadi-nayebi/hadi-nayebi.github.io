@@ -13,11 +13,11 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">Hadosh Academy</a>
-                <a href="index.html" class="logo">Hadosh Academy</a>
 
                 <div class="nav-links">
                     <a href="index.html" class="active">Home</a>
                     <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
                     <a href="teaching-assistant.html">Agents</a>
                     <a href="contact.html">Contact</a>
                 </div>
@@ -34,7 +34,8 @@
                         <h1>Build Your Own <br><span>AI Workforce</span></h1>
                         <p style="margin-bottom: 1.5rem;">Democratizing Agent Engineering for professionals. No coding
                             required.</p>
-                        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                        <div
+                            style="display: flex; gap: 1rem; justify-content: flex-end; position: relative; z-index: 1000;">
                             <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank"
                                 class="btn btn-primary">Join the Community</a>
                         </div>
@@ -47,46 +48,53 @@
             </div>
         </section>
 
+        <!-- Load theme manager first (needed for CTA injection) -->
+        <script src="js/theme-manager.js"></script>
+
         <script>
+            // Inject 3 random CTAs into hooks array
+            const randomCTAs = window.getRandomCTAPhrases ? window.getRandomCTAPhrases(3) : [];
+
             const hooks = [
-                { text: "The Death of the Chatbot", link: "#" },
-                { text: "Why Agents Need Intentions", link: "#" },
-                { text: "Memory Is Not Just Storage", link: "#" },
-                { text: "The Agentic Workforce", link: "#" },
-                { text: "Deterministic vs Probabilistic", link: "#" },
-                { text: "Building Cognitive Architectures", link: "#" },
-                { text: "The Three Layers of Agency", link: "#" },
-                { text: "From Chatbots to Colleagues", link: "#" },
-                { text: "The Biology of Code", link: "#" },
-                { text: "Architecting Intelligence", link: "#" },
-                { text: "The Human-in-the-Loop Pattern", link: "#" },
-                { text: "Scaling Cognitive Labor", link: "#" },
-                { text: "Beyond the Context Window", link: "#" },
-                { text: "The End of Prompt Engineering", link: "#" },
-                { text: "Structure Over Randomness", link: "#" },
-                { text: "The Triad Pattern", link: "#" },
-                { text: "Agents as Dynamic Tissue", link: "#" },
-                { text: "The OPEV Loop", link: "#" },
-                { text: "Hooks: The Rails of AI", link: "#" },
-                { text: "Intention Driven Design", link: "#" },
-                { text: "The Template Agent", link: "#" },
-                { text: "Democratizing Engineering", link: "#" },
-                { text: "Software Eating The World", link: "#" },
-                { text: "The New Industrial Revolution", link: "#" },
-                { text: "The Agent Operating System", link: "#" },
-                { text: "Context Is King", link: "#" },
-                { text: "Vertical AI Agents", link: "#" },
-                { text: "The End of SaaS", link: "#" },
-                { text: "The Agent Economy", link: "#" },
-                { text: "Building The Brain", link: "#" },
-                { text: "Cognitive Load Balancing", link: "#" },
-                { text: "The New Tech Stack", link: "#" },
-                { text: "Agentic Workflows", link: "#" },
-                { text: "The Future of Code", link: "#" },
-                { text: "Natural Language Programming", link: "#" },
-                { text: "The Rise of the MCP", link: "#" },
-                { text: "Infinite Context Windows", link: "#" },
-                { text: "Self-Healing Code", link: "#" },
+                ...randomCTAs, // Inject CTAs at the beginning
+                { text: "The Death of the Chatbot", link: "blog.html" },
+                { text: "Why Agents Need Intentions", link: "blog.html" },
+                { text: "Memory Is Not Just Storage", link: "blog.html" },
+                { text: "The Agentic Workforce", link: "blog.html" },
+                { text: "Deterministic vs Probabilistic", link: "blog.html" },
+                { text: "Building Cognitive Architectures", link: "blog.html" },
+                { text: "The Three Layers of Agency", link: "blog.html" },
+                { text: "From Chatbots to Colleagues", link: "blog.html" },
+                { text: "The Biology of Code", link: "blog.html" },
+                { text: "Architecting Intelligence", link: "blog.html" },
+                { text: "The Human-in-the-Loop Pattern", link: "blog.html" },
+                { text: "Scaling Cognitive Labor", link: "blog.html" },
+                { text: "Beyond the Context Window", link: "blog.html" },
+                { text: "The End of Prompt Engineering", link: "blog.html" },
+                { text: "Structure Over Randomness", link: "blog.html" },
+                { text: "The Triad Pattern", link: "blog.html" },
+                { text: "Agents as Dynamic Tissue", link: "blog.html" },
+                { text: "The OPEV Loop", link: "blog.html" },
+                { text: "Hooks: The Rails of AI", link: "blog.html" },
+                { text: "Intention Driven Design", link: "blog.html" },
+                { text: "The Template Agent", link: "blog.html" },
+                { text: "Democratizing Engineering", link: "blog.html" },
+                { text: "Software Eating The World", link: "blog.html" },
+                { text: "The New Industrial Revolution", link: "blog.html" },
+                { text: "The Agent Operating System", link: "blog.html" },
+                { text: "Context Is King", link: "blog.html" },
+                { text: "Vertical AI Agents", link: "blog.html" },
+                { text: "The End of SaaS", link: "blog.html" },
+                { text: "The Agent Economy", link: "blog.html" },
+                { text: "Building The Brain", link: "blog.html" },
+                { text: "Cognitive Load Balancing", link: "blog.html" },
+                { text: "The New Tech Stack", link: "blog.html" },
+                { text: "Agentic Workflows", link: "blog.html" },
+                { text: "The Future of Code", link: "blog.html" },
+                { text: "Natural Language Programming", link: "blog.html" },
+                { text: "The Rise of the MCP", link: "blog.html" },
+                { text: "Infinite Context Windows", link: "blog.html" },
+                { text: "Self-Healing Code", link: "blog.html" },
                 { text: "The Autonomous Enterprise", link: "#" },
                 { text: "Code That Thinks", link: "#" }
             ];
@@ -248,7 +256,7 @@
                     <h3>🎓 The Academy</h3>
                     <p>Comprehensive education on Claude Agent Engineering. Learn the "Hook System", "Intention MCPs",
                         and how to architect robust cognitive systems.</p>
-                    <a href="about.html" style="color: var(--primary); text-decoration: none;">Learn more &rarr;</a>
+                    <a href="blog.html" style="color: var(--primary); text-decoration: none;">Learn more &rarr;</a>
                 </div>
                 <div class="card">
                     <h3>🚀 Skool Community</h3>
@@ -273,7 +281,6 @@
             <p>&copy; 2025 Hadosh Academy. All rights reserved.</p>
         </div>
     </footer>
-    <script src="js/theme-manager.js"></script>
 </body>
 
 </html>

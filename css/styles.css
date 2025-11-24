@@ -56,6 +56,7 @@ nav {
     font-size: 1.5rem;
     font-weight: 700;
     background: linear-gradient(to right, #fff, #9ca3af);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
@@ -85,7 +86,8 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 140px;
+    /* Increased from 80px to prevent header overlap */
     position: relative;
 }
 
@@ -111,6 +113,7 @@ nav {
 
 .hero h1 span {
     background: linear-gradient(to right, var(--primary), var(--accent));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -280,6 +283,7 @@ footer {
 /* Utilities */
 .text-gradient {
     background: linear-gradient(to right, var(--primary), var(--accent));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -349,9 +353,11 @@ footer {
     padding: 2px;
     background: linear-gradient(90deg, transparent 50%, var(--primary), var(--accent));
     /* Only show border on right side roughly */
+    /* Only show border on right side roughly */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-    mask-composite: exclude;
     opacity: 0.6;
 }
 
@@ -410,4 +416,10 @@ footer {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Page Content Padding (for non-hero pages) */
+.page-content {
+    padding-top: 140px;
+    min-height: 100vh;
 }

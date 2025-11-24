@@ -56,16 +56,32 @@ function applyRandomTheme() {
     root.style.setProperty('--primary-glow', randomTheme.primaryGlow);
     root.style.setProperty('--accent', randomTheme.accent);
 
-    console.log(`Theme applied: ${randomTheme.name}`);
-
     // 2. Select Random Profile Pic (Only if element exists)
     const profileImg = document.getElementById('profile-image');
     if (profileImg) {
         const randomPic = profilePics[Math.floor(Math.random() * profilePics.length)];
         profileImg.src = randomPic;
-        console.log(`Profile pic applied: ${randomPic}`);
     }
 }
 
 // Apply immediately to avoid flash
 applyRandomTheme();
+
+// 3. Landing Page Dynamic CTAs
+// Inject random actionable phrases into the wheel
+const ctaPhrases = [
+    { text: "Join the Community", link: "https://www.skool.com/claude-agents-engineering-4513" },
+    { text: "Contact Us Today", link: "contact.html" },
+    { text: "Explore the Academy", link: "about.html" },
+    { text: "Read the Blog", link: "blog.html" },
+    { text: "See Custom Agents", link: "teaching-assistant.html" },
+    { text: "Start Your Journey", link: "about.html" },
+    { text: "Build Your Workforce", link: "https://www.skool.com/claude-agents-engineering-4513" },
+    { text: "Learn the Framework", link: "blog.html" }
+];
+
+// Export for use in index.html
+window.getRandomCTAPhrases = function (count = 3) {
+    const shuffled = [...ctaPhrases].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, count);
+};
