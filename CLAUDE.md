@@ -168,19 +168,29 @@ See `.claude/knowledge/` for detailed project information.
 
 ```
 /
-├── index.html (landing page)
-├── bio.html (personal bio)
-├── template-agent.html (template documentation)
-├── agents/ (agent-managed pages)
-│   ├── CLAUDE.md
-│   ├── example-1.html
-│   ├── example-2.html
-│   └── example-3.html
-└── assets/ (all static assets)
-    ├── CLAUDE.md (design system documentation)
-    ├── css/ (3 files, specific load order)
-    ├── js/ (minimal vanilla JS)
-    └── images/
+├── index.html (landing page with orbit wheel)
+├── about.html (bio page with dynamic profile pics)
+├── blog.html (blog with article system and sidebar)
+├── contact.html (contact form via FormSubmit.co)
+├── teaching-assistant.html (agent showcase page)
+├── 404.html (custom 404 page)
+├── thanks.html (form success page)
+├── css/
+│   └── styles.css (consolidated v2 design system)
+├── js/
+│   ├── theme-manager.js (dynamic themes & profile pics)
+│   └── wheel.js (orbit wheel animation)
+├── assets/
+│   ├── CLAUDE.md (asset documentation)
+│   └── images/ (shared images: logos, profile pics, illustrations)
+└── v1/ (legacy archive - complete v1 site)
+    ├── index.html
+    ├── bio.html
+    ├── template-agent.html
+    ├── agents/
+    └── assets/
+        ├── css/ (v1 styles: main, glassmorphism, components)
+        └── js/ (v1 scripts)
 ```
 
 ### HTML Standards
@@ -191,9 +201,19 @@ See `.claude/knowledge/` for detailed project information.
 - **Consistent navigation** across all pages.
 - **Same CSS/JS includes** on every page.
 
-### CSS Load Order (CRITICAL)
+### CSS Load Order
 
-All HTML pages MUST include CSS in this exact order:
+**v2.0 Architecture** (current):
+
+All HTML pages use a single consolidated stylesheet:
+
+```html
+<link rel="stylesheet" href="css/styles.css">
+```
+
+**v1.0 Architecture** (legacy - archived in `/v1/`):
+
+v1 used three separate files that had to load in exact order:
 
 ```html
 <link rel="stylesheet" href="assets/css/main.css">
@@ -201,7 +221,7 @@ All HTML pages MUST include CSS in this exact order:
 <link rel="stylesheet" href="assets/css/components.css">
 ```
 
-Changing this order will break styles. Consider adding a reminder comment in HTML files near these includes, and consider an automated check (optional) that validates this order.
+**Migration Note**: v2 consolidated these three files into a single `css/styles.css` for improved maintainability and reduced HTTP requests.
 
 ### Design Philosophy (NON-NEGOTIABLE)
 
@@ -215,21 +235,44 @@ Every design decision must support this feeling. The aesthetic itself teaches th
 
 ---
 
-## Current Phase: Structure Complete
+## Current Phase: v2.0 Complete
 
-**Status**: All pages created with placeholders  
-**Next Phase**: Content development (separate compartmentalized task)
+**Status**: v2 redesign complete and functional  
+**Branch**: `feature/website-revamp` (ready for review/merge)  
+**Architecture**: Consolidated CSS, dynamic theming, advanced UI features
 
-**DO NOT**:
-- Mix content development with structural changes.
-- Change tech stack without updating this file.
-- Add dependencies or build tools.
-- Modify design system colors/spacing arbitrarily.
+### v2 Features Implemented
 
-**Always Reference**:
-- `assets/CLAUDE.md` for design system and styling
-- `agents/CLAUDE.md` for agent page workflows
-- `.claude/knowledge/website-requirements/CLAUDE.md` for requirements
+**Core Pages**:
+- ✅ Landing page with orbit wheel hero animation
+- ✅ About page with dynamic profile picture randomization
+- ✅ Blog with inline article system and sticky sidebar
+- ✅ Contact form using FormSubmit.co API
+- ✅ Teaching Assistant agent showcase page
+- ✅ Custom 404 error page
+- ✅ Form success (thanks) page
+
+**Technical Enhancements**:
+- ✅ Consolidated CSS (`css/styles.css`)
+- ✅ Dynamic theme manager (`js/theme-manager.js`)
+- ✅ Physics-based orbit wheel (`js/wheel.js`)
+- ✅ Responsive design across all pages
+- ✅ SEO meta tags and semantic HTML
+
+**Legacy Archive**:
+- ✅ v1 site archived in `/v1/` directory
+- ✅ v1 assets moved to `/v1/assets/`
+- ✅ All v1 pages remain functional
+
+### Next Steps
+
+**Documentation**:
+- Continue refining knowledge base in `.claude/knowledge/`
+- Consider blog content development
+
+**Deployment**:
+- Merge `feature/website-revamp` to main
+- Deploy to GitHub Pages
 
 ---
 
