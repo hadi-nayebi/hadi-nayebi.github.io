@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0; url=/">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/glassmorphism.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-
-  <script>
-    // Immediate redirect to home
-    window.location.replace('/');
-  </script>
+  <title>Page Not Found | Hadosh Academy</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-  <section class="hero">
-    <div class="hero-content fade-in text-center">
-      <h1>Redirecting to home page...</h1>
-      <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="index.html" class="logo">Hadosh Academy</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="teaching-assistant.html">Agents</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
     </div>
-  </section>
+  </header>
+
+  <main class="hero">
+    <div class="container">
+      <div class="central-circle"
+        style="width: 400px; height: 400px; margin: 0 auto; display: flex; align-items: center; justify-content: center; padding: 0;">
+        <div style="text-align: center; z-index: 20;">
+          <h1 style="font-size: 6rem; margin-bottom: 0;">404</h1>
+          <p style="font-size: 1.5rem; margin-bottom: 2rem;">Page Not Found</p>
+          <a href="index.html" class="btn btn-primary">Return Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Hadosh Academy. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/theme-manager.js"></script>
 </body>
+
 </html>

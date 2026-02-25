@@ -1,3 +1,15 @@
+> [!IMPORTANT]
+> **v2 Architecture Note**: This directory primarily serves the v1 archive (located in `/v1/`).
+> 
+> **v2 uses**:
+> - CSS: `/css/styles.css` (consolidated)
+> - JS: `/js/theme-manager.js` and `/js/wheel.js`
+> - Images: `/assets/images/` (shared across versions)
+> 
+> The v1 CSS/JS files have been moved to `/v1/assets/` to match v1 page references.
+
+---
+
 # Assets - Working Memory
 
 ## Purpose
@@ -71,16 +83,16 @@ Use these consistently. DO NOT add arbitrary spacing values.
 
 ```
 assets/
-├── CLAUDE.md (this file)
-├── css/
-│   ├── main.css (design system, base styles)
-│   ├── glassmorphism.css (glass effects, animations)
-│   └── components.css (UI components, buttons, nav)
-├── js/
-│   └── main.js (minimal interactions)
-└── images/
-    └── (placeholder images, icons)
+├── CLAUDE.md (this file - v1 reference documentation)
+└── images/ (shared: v1 and v2)
+    ├── hadosh-logo-dark.png
+    ├── hadosh-logo-transparent.png
+    ├── hero-construction.png
+    ├── profile-pic1.png
+    └── profile-pic2.png
 ```
+
+**Note**: v1 CSS/JS files have been moved to `/v1/assets/css/` and `/v1/assets/js/` to keep the v1 archive complete.
 
 ### CSS Architecture
 
