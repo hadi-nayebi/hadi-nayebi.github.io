@@ -1,4 +1,5 @@
 # CLAUDE.md — Website Project Working Memory
+**Version:** v0.1.0
 
 ## Purpose
 
