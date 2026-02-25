@@ -1,176 +1,70 @@
 <!DOCTYPE html>
+<!-- Version: v0.2.0 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Hadosh Academy</title>
+    <meta name="description" content="Articles on agent engineering, AI architecture, and the future of building cognitive systems.">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <header id="site-header"></header>
 
-    <main class="container">
-        <div class="blog-layout">
-            <!-- Main Content Area -->
-            <div class="article-content" id="mainArticle">
-                <!-- Content injected by JS -->
-            </div>
+    <main class="page-content">
+        <section class="container">
+            <div class="blog-layout">
+                <!-- Main Content: Article Index -->
+                <div class="blog-index-cards">
+                    <div class="blog-index-header">
+                        <h1>Blog</h1>
+                        <p>Exploring agent engineering, cognitive architectures, and the future of AI.</p>
+                    </div>
 
-            <!-- Sidebar List -->
-            <aside class="sidebar">
-                <div class="sidebar-title">Latest Articles</div>
-                <div id="articleList">
-                    <!-- List injected by JS -->
+                    <!-- Article: LLMs Are Not the Agents -->
+                    <a href="blog/llms-are-not-the-agents.html" class="blog-index-card">
+                        <div class="blog-card-tags">
+                            <span class="tag tag-sm">Agents</span>
+                            <span class="tag tag-sm">AI</span>
+                            <span class="tag tag-sm">Fundamentals</span>
+                        </div>
+                        <h2>LLMs Are Not the Agents</h2>
+                        <div class="blog-card-meta">
+                            <span>February 2026</span>
+                            <span>&bull;</span>
+                            <span>8 min read</span>
+                        </div>
+                        <p class="blog-card-excerpt">Most people point at the model and call it "the agent." That is the root misunderstanding. The model is the engine. The agent is the engine plus a local brain — a filesystem that gives the model memory, structure, and identity.</p>
+                        <span class="blog-card-read-more">Read article &rarr;</span>
+                    </a>
                 </div>
-            </aside>
-        </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Latest Articles</div>
+                    <div>
+                        <a href="blog/llms-are-not-the-agents.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Fundamentals</span>
+                                </div>
+                                <h3>LLMs Are Not the Agents</h3>
+                                <div class="date">February 2026 &bull; 8 min read</div>
+                            </div>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
     </main>
 
     <footer id="site-footer"></footer>
 
     <script src="js/theme-manager.js"></script>
-    <script>
-        const articles = [
-            {
-                id: 0,
-                title: "Welcome to the Hadosh Academy Blog",
-                date: "Nov 23, 2025",
-                readTime: "2 min read",
-                tags: ["News", "Vision"],
-                content: `
-                    <h1>Welcome to the Hadosh Academy Blog</h1>
-                    <div class="article-meta">
-                        <span>Nov 23, 2025</span>
-                        <span>•</span>
-                        <span>2 min read</span>
-                        <div class="article-meta-tags">
-                            <span class="tag">News</span>
-                            <span class="tag">Vision</span>
-                        </div>
-                    </div>
-                    <div class="article-body">
-                        <p>Welcome to the official blog of Hadosh Academy. This is our digital garden where we explore the frontier of Agentic AI, cognitive architectures, and the future of software engineering.</p>
-                        <p>Our mission is simple: <strong>Democratize Agent Engineering</strong>.</p>
-                        <p>We believe that in the near future, building an AI workforce will be as fundamental as using a spreadsheet. It won't be limited to software engineers; it will be a skill possessed by lawyers, scientists, marketers, and creators.</p>
-                        <p>In this blog, we will cover:</p>
-                        <ul>
-                            <li><strong>Deep Dives:</strong> Technical breakdowns of the "Hook System" and Intention MCPs.</li>
-                            <li><strong>Philosophy:</strong> The ethical and societal implications of autonomous agents.</li>
-                            <li><strong>Tutorials:</strong> Practical guides on building your first agent.</li>
-                        </ul>
-                        <p>Stay tuned. The revolution is just beginning.</p>
-                    </div>
-                `
-            },
-            {
-                id: 1,
-                title: "The Death of the Chatbot",
-                date: "Coming Soon",
-                readTime: "5 min read",
-                tags: ["Architecture", "Opinion"],
-                content: `
-                    <h1>The Death of the Chatbot</h1>
-                    <div class="article-meta">
-                        <span>Coming Soon</span>
-                        <span>•</span>
-                        <span>5 min read</span>
-                        <div class="article-meta-tags">
-                            <span class="tag">Architecture</span>
-                            <span class="tag">Opinion</span>
-                        </div>
-                    </div>
-                    <div class="article-body">
-                        <p>The era of the passive chatbot is ending. We are moving towards a world of active, intention-driven agents.</p>
-                        <p><em>Full article coming soon...</em></p>
-                    </div>
-                `
-            },
-            {
-                id: 2,
-                title: "Why Agents Need Intentions",
-                date: "Coming Soon",
-                readTime: "7 min read",
-                tags: ["Framework", "Technical"],
-                content: `
-                    <h1>Why Agents Need Intentions</h1>
-                    <div class="article-meta">
-                        <span>Coming Soon</span>
-                        <span>•</span>
-                        <span>7 min read</span>
-                        <div class="article-meta-tags">
-                            <span class="tag">Framework</span>
-                            <span class="tag">Technical</span>
-                        </div>
-                    </div>
-                    <div class="article-body">
-                        <p>Without clear intentions, an LLM is just a stochastic parrot. With intentions, it becomes a goal-seeking missile.</p>
-                        <p><em>Full article coming soon...</em></p>
-                    </div>
-                `
-            },
-            {
-                id: 3,
-                title: "Memory Is Not Just Storage",
-                date: "Coming Soon",
-                readTime: "6 min read",
-                tags: ["Memory", "Cognition"],
-                content: `
-                    <h1>Memory Is Not Just Storage</h1>
-                    <div class="article-meta">
-                        <span>Coming Soon</span>
-                        <span>•</span>
-                        <span>6 min read</span>
-                        <div class="article-meta-tags">
-                            <span class="tag">Memory</span>
-                            <span class="tag">Cognition</span>
-                        </div>
-                    </div>
-                    <div class="article-body">
-                        <p>True agentic memory is dynamic, associative, and self-pruning. It's not a database; it's a hippocampus.</p>
-                        <p><em>Full article coming soon...</em></p>
-                    </div>
-                `
-            }
-        ];
-
-        let activeId = 0;
-
-        function renderSidebar() {
-            const list = document.getElementById('articleList');
-            list.innerHTML = articles.map(article => `
-                <div class="article-card ${article.id === activeId ? 'active' : ''}" onclick="selectArticle(${article.id})">
-                    <div class="article-card-tags">
-                        ${article.tags.map(tag => `<span class="tag tag-sm">${tag}</span>`).join('')}
-                    </div>
-                    <h3>${article.title}</h3>
-                    <div class="date">${article.date} • ${article.readTime}</div>
-                </div>
-            `).join('');
-        }
-
-        function selectArticle(id) {
-            activeId = id;
-            const article = articles.find(a => a.id === id);
-
-            // Animate content change
-            const contentDiv = document.getElementById('mainArticle');
-            contentDiv.style.opacity = '0';
-
-            setTimeout(() => {
-                contentDiv.innerHTML = article.content;
-                contentDiv.style.opacity = '1';
-                contentDiv.style.transition = 'opacity 0.3s ease';
-            }, 200);
-
-            renderSidebar();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Initialize
-        selectArticle(0);
-    </script>
     <script src="js/components.js"></script>
 </body>
 

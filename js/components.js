@@ -1,4 +1,4 @@
-// Version: v0.1.0
+// Version: v0.2.0
 // Shared nav/header and footer components — injected into placeholder elements.
 
 (function () {
@@ -7,6 +7,7 @@
     /**
      * Navigation items definition.
      * Each entry: { label, href }
+     * href values are relative to the site root.
      */
     var NAV_ITEMS = [
         { label: 'Home', href: 'index.html' },
@@ -15,6 +16,22 @@
         { label: 'About', href: 'about.html' },
         { label: 'Contact', href: 'contact.html' }
     ];
+
+    /**
+     * Detect if the page is inside a subdirectory (e.g. blog/).
+     * Returns the prefix needed to reach the site root (e.g. "../" or "").
+     */
+    function getPathPrefix() {
+        var path = window.location.pathname;
+        // Known subdirectories that contain pages
+        var subdirs = ['/blog/'];
+        for (var i = 0; i < subdirs.length; i++) {
+            if (path.indexOf(subdirs[i]) !== -1) {
+                return '../';
+            }
+        }
+        return '';
+    }
 
     /**
      * Determine the current page filename from the URL pathname.
@@ -43,17 +60,18 @@
         if (!header) return;
 
         var currentPage = getCurrentPage();
+        var prefix = getPathPrefix();
 
         // Build nav links HTML
         var linksHtml = NAV_ITEMS.map(function (item) {
             var activeClass = (currentPage === item.href) ? ' class="active"' : '';
-            return '<a href="' + item.href + '"' + activeClass + '>' + item.label + '</a>';
+            return '<a href="' + prefix + item.href + '"' + activeClass + '>' + item.label + '</a>';
         }).join('\n                    ');
 
         header.innerHTML =
             '<div class="container">\n' +
             '            <nav>\n' +
-            '                <a href="index.html" class="logo">Hadosh Academy</a>\n' +
+            '                <a href="' + prefix + 'index.html" class="logo">Hadosh Academy</a>\n' +
             '\n' +
             '                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">\n' +
             '                    <span class="nav-toggle-bar"></span>\n' +
