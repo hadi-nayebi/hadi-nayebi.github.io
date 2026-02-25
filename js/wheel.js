@@ -1,9 +1,11 @@
+// Version: v0.1.0
 document.addEventListener('DOMContentLoaded', () => {
     // Inject 3 random CTAs into hooks array
     const randomCTAs = window.getRandomCTAPhrases ? window.getRandomCTAPhrases(3) : [];
 
     const hooks = [
         ...randomCTAs, // Inject CTAs at the beginning
+        { text: "LLMs Are Not the Agents", link: "blog/llms-are-not-the-agents.html" },
         { text: "The Death of the Chatbot", link: "blog.html" },
         { text: "Why Agents Need Intentions", link: "blog.html" },
         { text: "Memory Is Not Just Storage", link: "blog.html" },
@@ -26,12 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "Intention Driven Design", link: "blog.html" },
         { text: "The Template Agent", link: "blog.html" },
         { text: "Democratizing Engineering", link: "blog.html" },
-        { text: "Software Eating The World", link: "blog.html" },
         { text: "The New Industrial Revolution", link: "blog.html" },
         { text: "The Agent Operating System", link: "blog.html" },
         { text: "Context Is King", link: "blog.html" },
         { text: "Vertical AI Agents", link: "blog.html" },
-        { text: "The End of SaaS", link: "blog.html" },
         { text: "The Agent Economy", link: "blog.html" },
         { text: "Building The Brain", link: "blog.html" },
         { text: "Cognitive Load Balancing", link: "blog.html" },
@@ -40,10 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "The Future of Code", link: "blog.html" },
         { text: "Natural Language Programming", link: "blog.html" },
         { text: "The Rise of the MCP", link: "blog.html" },
-        { text: "Infinite Context Windows", link: "blog.html" },
-        { text: "Self-Healing Code", link: "blog.html" },
-        { text: "The Autonomous Enterprise", link: "#" },
-        { text: "Code That Thinks", link: "#" }
+        { text: "Self-Healing Code", link: "blog.html" }
     ];
 
     const ring = document.getElementById('orbitRing');

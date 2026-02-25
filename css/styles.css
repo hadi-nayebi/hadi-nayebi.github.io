@@ -888,3 +888,28 @@ footer {
 .message-actions {
     margin-top: 2rem;
 }
+
+/* ============ Agents Page ============ */
+
+.agents-more-section {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem 0;
+}
+
+.agents-more-section h2 {
+    margin-bottom: 1rem;
+}
+
+.agents-more-section p {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    color: var(--text-secondary);
+}
+
+.card-link-disabled {
+    color: var(--text-muted);
+    text-decoration: none;
+    pointer-events: none;
+    opacity: 0.6;
+}

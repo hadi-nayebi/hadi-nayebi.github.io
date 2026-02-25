@@ -1,3 +1,4 @@
+// Version: v0.1.0
 /**
  * Hadosh Academy Theme Manager
  * Handles random color themes and profile picture selection.
@@ -74,7 +75,7 @@ const ctaPhrases = [
     { text: "Contact Us Today", link: "contact.html" },
     { text: "Explore the Academy", link: "about.html" },
     { text: "Read the Blog", link: "blog.html" },
-    { text: "See Custom Agents", link: "teaching-assistant.html" },
+    { text: "See Custom Agents", link: "agents.html" },
     { text: "Start Your Journey", link: "about.html" },
     { text: "Build Your Workforce", link: "https://www.skool.com/claude-agents-engineering-4513" },
     { text: "Learn the Framework", link: "blog.html" }
