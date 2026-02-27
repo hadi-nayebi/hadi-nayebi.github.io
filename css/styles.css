@@ -1,5 +1,5 @@
 /* Hadosh Academy Design System */
-/* Version: v0.1.0 */
+/* Version: v0.2.0 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -435,11 +435,7 @@ footer {
     min-height: 80vh;
 }
 
-@media (max-width: 768px) {
-    .blog-layout {
-        grid-template-columns: 1fr;
-    }
-}
+/* blog-layout responsive rule moved to consolidated responsive section */
 
 .article-content {
     background: var(--bg-card);
@@ -852,11 +848,7 @@ footer {
     margin-top: 2rem;
 }
 
-@media (max-width: 768px) {
-    .bio-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* bio-grid responsive rule moved to consolidated responsive section */
 
 .bio-heading {
     color: var(--primary);
@@ -973,4 +965,290 @@ footer {
     text-decoration: none;
     pointer-events: none;
     opacity: 0.6;
+}
+
+/* ============ Mobile Navigation Toggle ============ */
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 200;
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-main);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.nav-toggle.is-active .nav-toggle-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.is-active .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.is-active .nav-toggle-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============ Responsive: Small Desktop (≤1024px) ============ */
+
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .orbit-container .central-circle {
+        padding-right: 100px;
+    }
+
+    .central-circle-content {
+        max-width: 400px;
+    }
+}
+
+/* ============ Responsive: Tablet (≤768px) ============ */
+
+@media (max-width: 768px) {
+    /* --- Navigation --- */
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(5, 5, 7, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    /* --- Layout --- */
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    /* --- Hero --- */
+    .hero {
+        padding-top: 100px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .hero-overflow {
+        overflow: visible;
+    }
+
+    /* --- Orbit → Simplified Hero on mobile --- */
+    .orbit-container {
+        position: static;
+        width: 100%;
+        height: auto;
+        transform: none;
+    }
+
+    .orbit-container .central-circle {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        box-shadow: none;
+        padding: 2rem 1.5rem;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .orbit-container .central-circle::before {
+        display: none;
+    }
+
+    .central-circle-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .orbit-ring {
+        display: none;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* --- Cards --- */
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- About Page --- */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .bio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- Blog Layout --- */
+    .blog-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .article-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .article-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .article-meta {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .blog-index-header h1 {
+        font-size: 2rem;
+    }
+
+    .blog-index-card {
+        padding: 1.5rem;
+    }
+
+    /* --- 404 Page --- */
+    .error-circle {
+        width: 280px;
+        height: 280px;
+    }
+
+    .error-code {
+        font-size: 4rem;
+    }
+
+    .error-message {
+        font-size: 1.2rem;
+    }
+
+    /* --- Page Content --- */
+    .page-content {
+        padding-top: 100px;
+    }
+
+    /* --- Footer --- */
+    footer {
+        padding: 2rem 0;
+        margin-top: 2rem;
+    }
+}
+
+/* ============ Responsive: Small Phone (≤480px) ============ */
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .article-content {
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+    }
+
+    .article-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .article-body {
+        font-size: 1rem;
+    }
+
+    .article-body h2 {
+        font-size: 1.4rem;
+    }
+
+    .article-body h3 {
+        font-size: 1.15rem;
+    }
+
+    .article-body blockquote {
+        padding: 1rem;
+    }
+
+    .blog-index-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .blog-index-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .error-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .error-code {
+        font-size: 3rem;
+    }
 }
