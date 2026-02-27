@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.2.0 -->
+<!-- Version: v0.2.1 -->
 <html lang="en">
 
 <head>
@@ -191,11 +191,9 @@
 
                         <p>Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. <strong>Swap the filesystem?</strong> Now you have a completely different agent.</p>
 
-                        <figure class="blog-image-placeholder">
-                            <div class="placeholder-box">
-                                <p class="placeholder-prompt">Image prompt: Side-by-side comparison showing the same agent directory (.claude/ with knowledge, rules, and memory files) connected to three different platforms — Claude Code, OpenCode, and Gemini CLI — through thin adapter layers. The directory is large and central. The platforms are small and interchangeable. Title: "One Brain, Many Engines."</p>
-                            </div>
-                            <figcaption>The same agent brain can work across different platforms. The adapter layer translates platform events into the agent's rule system. The filesystem — the identity — stays constant.</figcaption>
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/one-brain-many-engines.jpg" alt="Hand-drawn sketch titled 'One Brain, Many Engines' showing an Agent Directory (.claude/) containing Knowledge, Rules, and Memory Files at center. Adapter Layers connect it to three interchangeable platforms: Claude Code, OpenCode, and Gemini CLI." loading="lazy">
+                            <figcaption>One brain, many engines. The same agent directory — with its knowledge, rules, and memory — connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.</figcaption>
                         </figure>
 
                         <p>A robust agent must be able to use <strong>any LLM provider</strong>. If your agent only works with one model on one platform, you have not built an agent. You have built a dependency.</p>
