@@ -64,8 +64,9 @@
 
         // Build nav links HTML
         var linksHtml = NAV_ITEMS.map(function (item) {
-            var activeClass = (currentPage === item.href) ? ' class="active"' : '';
-            return '<a href="' + prefix + item.href + '"' + activeClass + '>' + item.label + '</a>';
+            var isActive = (currentPage === item.href);
+            var attrs = isActive ? ' class="active" aria-current="page"' : '';
+            return '<a href="' + prefix + item.href + '"' + attrs + '>' + item.label + '</a>';
         }).join('\n                    ');
 
         header.innerHTML =

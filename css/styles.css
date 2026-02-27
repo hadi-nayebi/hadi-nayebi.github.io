@@ -300,6 +300,11 @@ footer {
     margin-bottom: 1rem;
 }
 
+.badge-coming-soon {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
 /* Orbit Wheel UI */
 .orbit-container {
     position: absolute;
@@ -353,7 +358,6 @@ footer {
     border-radius: 50%;
     padding: 2px;
     background: linear-gradient(90deg, transparent 50%, var(--primary), var(--accent));
-    /* Only show border on right side roughly */
     /* Only show border on right side roughly */
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
@@ -942,8 +946,6 @@ footer {
     margin-top: 2rem;
 }
 
-/* ============ Agents Page ============ */
-
 .agents-more-section {
     text-align: center;
     margin-top: 4rem;
@@ -957,7 +959,7 @@ footer {
 .agents-more-section p {
     max-width: 640px;
     margin: 0 auto 2rem;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 .card-link-disabled {
