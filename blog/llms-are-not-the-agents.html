@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Version: v0.1.0 -->
+<!-- Version: v0.2.0 -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LLMs Are Not the Agents | Hadosh Academy</title>
-    <meta name="description" content="Most people point at the model and call it the agent. That is the root misunderstanding. The model is the engine. The agent is the engine plus a local brain.">
+    <meta name="description" content="Most people point at the model and call it the agent. That is the root misunderstanding. The agent is the filesystem — the local files that give an LLM memory, structure, and identity. The LLM is just the engine.">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
@@ -24,7 +24,7 @@
                     <div class="article-meta">
                         <span>February 2026</span>
                         <span>&bull;</span>
-                        <span>8 min read</span>
+                        <span>12 min read</span>
                         <div class="article-meta-tags">
                             <span class="tag">Agents</span>
                             <span class="tag">AI</span>
@@ -33,38 +33,84 @@
                     </div>
 
                     <div class="article-body">
-                        <h2>The Core Misunderstanding</h2>
 
-                        <p>Most people point at the model — Claude, GPT, Gemini — and call <em>that</em> "the agent."</p>
-
-                        <p>That is the root misunderstanding.</p>
-
-                        <p>The <strong>model is not the agent</strong>. The <strong>model is the engine</strong>.</p>
-
-                        <p>An <strong>agent</strong> is the engine <strong>plus a local brain</strong>. That brain gives the engine:</p>
-
-                        <ul>
-                            <li>Memory</li>
-                            <li>Structure</li>
-                            <li>Reflexes</li>
-                            <li>Identity</li>
-                            <li>Continuity</li>
-                        </ul>
-
-                        <p>In CLI-based agents, that brain is not abstract. It is literal: <strong>a directory on your local disk</strong>. The agent is the files inside it. The LLM is the intelligence that <strong>builds and maintains</strong> those files.</p>
-
-                        <p>Running a fresh model in an empty folder is like plugging electricity into a room with no appliance. Which leads to the main analogy:</p>
+                        <!-- ======== 1. HOOK ======== -->
 
                         <blockquote>
-                            <p><strong>LLMs are electricity.</strong></p>
-                            <p><strong>Agents are toasters.</strong></p>
+                            <p><strong>LLMs are electricity. Agents are toasters.</strong></p>
                         </blockquote>
 
-                        <p>Electricity is powerful, but it does nothing useful until a structure shapes it into a repeatable outcome. LLMs provide raw reasoning. The filesystem provides the form. Together, they become an agent.</p>
+                        <p>Electricity is one of the most powerful forces on the planet. It can heat a room, run a hospital, or power a city. But plug it into nothing and it just arcs. It needs a <strong>structure</strong> to become useful.</p>
 
-                        <h2>The Default State: A Probabilistic Action Chain</h2>
+                        <p>A toaster is a simple structure. It takes raw electrical energy and channels it into a <strong>specific, repeatable outcome</strong> — toast, every time. Not because electricity "decided" to make toast. Because the wires, the timer, and the slots shaped the energy into a predictable result.</p>
 
-                        <p>Start a CLI agent in an empty folder and you get an LLM choosing its next step from an action space:</p>
+                        <p>This is the relationship between an LLM and an agent.</p>
+
+                        <p>The LLM provides <strong>raw reasoning power</strong>. It can write, analyze, plan, and create. But without structure, that power goes in a different direction every time. The agent provides the structure. It channels the LLM's intelligence into <strong>consistent, reliable behavior</strong>.</p>
+
+                        <p>Most people building with AI today are staring at the electricity and wondering why it does not make toast on its own.</p>
+
+                        <!-- ======== 2. THE MISUNDERSTANDING ======== -->
+
+                        <h2>The Misunderstanding</h2>
+
+                        <p>When people say "AI agent," they almost always mean the model. Claude, GPT, Gemini — pick your favorite. They point at the LLM and say: <em>"That is my agent."</em></p>
+
+                        <p><strong>That is the root misunderstanding.</strong></p>
+
+                        <p>The model is not the agent. The model is the <strong>engine</strong>. It is the part that thinks, generates, and reasons. But thinking alone does not make an agent. A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.</p>
+
+                        <p>Here is what happens when you treat the LLM as the agent:</p>
+
+                        <ul>
+                            <li><strong>No memory between sessions.</strong> The model forgets everything when the conversation ends. Every session starts from zero.</li>
+                            <li><strong>No consistent behavior.</strong> The same prompt can produce different results on different days. There are no habits, only probabilities.</li>
+                            <li><strong>No identity.</strong> The model does not know who "it" is in the context of your project. It adapts to whatever you tell it in the moment.</li>
+                            <li><strong>No growth.</strong> The model cannot learn from its own experience. It cannot refine itself over time. It cannot get better at <em>your</em> specific tasks.</li>
+                        </ul>
+
+                        <p>If your "agent" loses everything when you close the terminal, <strong>you do not have an agent</strong>. You have a very expensive autocomplete.</p>
+
+                        <p>The real agent is something else entirely.</p>
+
+                        <!-- ======== 3. WHAT IS AN AGENT, REALLY? ======== -->
+
+                        <h2>What Is an Agent, Really?</h2>
+
+                        <p>An agent is the engine <strong>plus a local brain</strong>.</p>
+
+                        <p>In CLI-based agents — tools like Claude Code, OpenCode, or Gemini CLI — that brain is not abstract or metaphorical. It is <strong>literal</strong>. It is a collection of files and directories on your local disk.</p>
+
+                        <p><strong>The agent is the filesystem.</strong></p>
+
+                        <p>That filesystem gives the LLM everything it cannot provide on its own:</p>
+
+                        <ul>
+                            <li><strong>Memory</strong> — knowledge files, past decisions, learned patterns</li>
+                            <li><strong>Structure</strong> — operational phases, rules, workflows</li>
+                            <li><strong>Reflexes</strong> — hooks and event handlers that fire automatically</li>
+                            <li><strong>Identity</strong> — who the agent is, how it behaves, what it prioritizes</li>
+                            <li><strong>Continuity</strong> — persistent state that survives across sessions</li>
+                        </ul>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/llm-engine-agent-directory.png" alt="Diagram comparing LLM as engine (reasoning, probabilistic, no persistent memory) versus Agent as directory brain (memory on disk, hooks and rules, intentions). Swapping the engine gives faster or smarter. Swapping the directory gives a different agent." loading="lazy">
+                            <figcaption>The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.</figcaption>
+                        </figure>
+
+                        <p>When you spin up Claude Code in an <strong>empty directory</strong>, you are giving an LLM access to a workspace. The LLM has capabilities — it can think, respond, use tools, delegate, ask permission, compact context, and stop. But all of those decisions are purely probabilistic. The LLM decides everything based on its training and the current conversation.</p>
+
+                        <p><strong>This is not yet an agent.</strong> This is a raw engine running with no car around it.</p>
+
+                        <p>But when you add a <code>.claude/</code> directory — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. Not the LLM. The LLM is just the engine. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
+
+                        <!-- ======== 4. THE DEFAULT STATE ======== -->
+
+                        <h2>The Default State: A Probabilistic Random Walk</h2>
+
+                        <p>To understand why structure matters, look at what happens <strong>without</strong> it.</p>
+
+                        <p>A CLI agent in an empty folder has an <strong>action space</strong> — the set of things it can do at any given moment:</p>
 
                         <ul>
                             <li>Respond in chat</li>
@@ -76,80 +122,137 @@
                             <li>Stop</li>
                         </ul>
 
-                        <p>At each moment, it chooses what to do next based on the current state. Then it does it again.</p>
+                        <p>At each step, the LLM picks one of these actions based on probabilities. Then it picks again. And again. This creates a <strong>probabilistic action chain</strong> — a sequence of decisions where each step depends on the current state of the conversation.</p>
 
-                        <p>That chain is <strong>probabilistic</strong>. Small context changes lead to different paths. That is why a fresh agent can feel like a random walk. Intelligence alone is not reliability. <strong>Structure is.</strong></p>
+                        <p>The problem? <strong>Small changes in context lead to completely different paths.</strong> Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.</p>
 
-                        <p>The action space is not fixed, either. As the agent matures, new behaviors emerge. Self-improvement primitives can modify any file. New intentions can be created. The base probabilistic chain expands as the agent learns. This is the natural consequence of giving an agent the ability to grow.</p>
-
-                        <blockquote>
-                            <p>In a new folder I can still help — but I don't have habits yet. Consistency starts when we write the habits down.</p>
-                        </blockquote>
-
-                        <h2>Where the Agent Lives</h2>
-
-                        <p>The agent lives in a dedicated directory — the brain. The rest of your project is where real work happens.</p>
-
-                        <p>So you have two parallel spaces:</p>
-
-                        <ul>
-                            <li><strong>Project space</strong> — the work</li>
-                            <li><strong>Agent space</strong> — the brain that guides the work</li>
-                        </ul>
-
-                        <p>The brain and the work are neighbors, not the same space. This separation is critical. It means the agent can reason about its own structure without mixing up its "thoughts" with the actual deliverables.</p>
-
-                        <p>Starting with an empty directory means there is <strong>no brain</strong>, only a bare engine. That is why "just talk to the model" feels inconsistent and fragile.</p>
-
-                        <h2>The Agent as a Seed</h2>
-
-                        <p>A well-designed agent is not just a configuration. It is a <strong>seed template</strong> for a cognitive system — built with a complex-systems mindset:</p>
-
-                        <ul>
-                            <li>Inspired by biological complexity</li>
-                            <li>Designed to evolve under selection pressure</li>
-                            <li>Built to be customized through conversation</li>
-                        </ul>
-
-                        <p>As users adopt the template and shape it through their unique workflows, each instance diverges. Different interactions lead to different rules. Different tasks lead to different memory structures. Different feedback leads to different self-improvement cycles.</p>
-
-                        <p>The template provides the genome. Experience provides the phenotype. Over time, a <strong>species</strong> of cognitive agents emerges.</p>
-
-                        <h2>The Prime Directive: Compartmentalization</h2>
-
-                        <p><strong>Compartmentalization is the core principle.</strong></p>
-
-                        <p>The agent's primary objective is to:</p>
+                        <p>This is why working with a bare LLM can feel like a <strong>random walk</strong>. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow.</p>
 
                         <blockquote>
-                            <p>Compartmentalize experience so identity stays coherent over time.</p>
+                            <p>Intelligence alone is not reliability. <strong>Structure is.</strong></p>
                         </blockquote>
 
-                        <p>Compartmentalization does three things:</p>
+                        <!-- ======== 5. STRUCTURE CHANGES EVERYTHING ======== -->
+
+                        <h2>Structure Changes Everything</h2>
+
+                        <p>Now watch what happens when you add structure.</p>
+
+                        <p>Modern CLI agents support <strong>hook systems</strong> — events that fire at specific points in the agent's lifecycle. These are not optional plugins. They are the mechanism that transforms a raw LLM into a structured agent.</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/hooks-and-action-space.png" alt="Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior." loading="lazy">
+                            <figcaption>The hook system in Claude Code. Every arrow is an event. Every hook is an interception point where your rules — not the LLM's probabilities — control what happens next.</figcaption>
+                        </figure>
+
+                        <p>Look at the diagram above. Every time the agent is about to take an action — use a tool, respond, compact context, stop — a <strong>hook fires</strong>. That hook can:</p>
 
                         <ul>
-                            <li>Information becomes bounded</li>
-                            <li>Structure becomes visible</li>
-                            <li>Behavior becomes evolvable</li>
+                            <li><strong>Block</strong> the action entirely</li>
+                            <li><strong>Modify</strong> the action before it executes</li>
+                            <li><strong>Trigger</strong> additional behaviors</li>
+                            <li><strong>Log</strong> what happened for future reference</li>
                         </ul>
 
-                        <p>It prevents "prompt soup" — the entropy that builds when every piece of context is dumped into a single undifferentiated conversation. It gives every piece of experience a <strong>home</strong>.</p>
+                        <p>This is how you turn a probabilistic chain into a <strong>deterministic pipeline</strong>. The LLM still does the thinking. But the hooks define the guardrails, the checkpoints, and the reflexes. The LLM proposes. The structure disposes.</p>
 
-                        <p>Without compartmentalization, an agent's context fills with noise. With it, the agent develops distinct areas of knowledge, clear operational phases, and the ability to grow without losing coherence.</p>
+                        <p>Beyond hooks, the <strong>instruction files</strong> shape behavior even more fundamentally. A <code>CLAUDE.md</code> file (or its equivalent in other platforms) acts as <strong>dynamic working memory</strong>. It tells the LLM what phase it is in, what it should focus on, what decisions have already been made, and how to approach the current task.</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/claude-md-working-memory.png" alt="Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory." loading="lazy">
+                            <figcaption>The working memory cycle. A CLAUDE.md file sits at the center, updated throughout each phase. This is how the agent maintains context, tracks progress, and learns from its work.</figcaption>
+                        </figure>
+
+                        <p>This cycle — <strong>Observe, Plan, Execute, Condense</strong> — is not something the LLM invented on its own. It is a structure defined in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space.</p>
+
+                        <p>The structure does not replace intelligence. It <strong>channels</strong> it. The same way a toaster does not generate electricity — it shapes electricity into toast.</p>
+
+                        <!-- ======== 6. PLATFORM DOESN'T MATTER ======== -->
+
+                        <h2>The Platform Does Not Matter</h2>
+
+                        <p>Here is where it gets really interesting.</p>
+
+                        <p>If the agent is the filesystem and the LLM is just the engine, then <strong>the platform is just the adapter</strong>.</p>
+
+                        <p>Right now, multiple CLI agent platforms support hook and event systems:</p>
+
+                        <ul>
+                            <li><strong>Claude Code</strong> — hooks via <code>.claude/settings.json</code> (PreToolUse, PostToolUse, Stop, Notification, etc.)</li>
+                            <li><strong>OpenCode</strong> — event hooks via <code>plugin.ts</code> files</li>
+                            <li><strong>Gemini CLI</strong> — extension and event system</li>
+                        </ul>
+
+                        <p>The syntax differs. The concepts are identical. Each platform provides <strong>interception points</strong> where your rules can override the LLM's default behavior.</p>
+
+                        <p>Think of it this way: <code>hook.sh</code> in Claude Code and <code>plugin.ts</code> in OpenCode are <strong>adapters</strong>. They translate platform-specific events into your agent's rule evaluation pipeline. The hook mechanism is an interchangeable sensory layer — like swapping out ears for antennae. The brain behind them stays the same.</p>
+
+                        <p>This means your agent's core identity — its <strong>knowledge, behaviors, rules, memory structures, and workflows</strong> — is platform-agnostic. Those files do not care which LLM reads them. They do not care which CLI runs them. The filesystem IS the identity.</p>
+
+                        <p>Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. <strong>Swap the filesystem?</strong> Now you have a completely different agent.</p>
+
+                        <figure class="blog-image-placeholder">
+                            <div class="placeholder-box">
+                                <p class="placeholder-prompt">Image prompt: Side-by-side comparison showing the same agent directory (.claude/ with knowledge, rules, and memory files) connected to three different platforms — Claude Code, OpenCode, and Gemini CLI — through thin adapter layers. The directory is large and central. The platforms are small and interchangeable. Title: "One Brain, Many Engines."</p>
+                            </div>
+                            <figcaption>The same agent brain can work across different platforms. The adapter layer translates platform events into the agent's rule system. The filesystem — the identity — stays constant.</figcaption>
+                        </figure>
+
+                        <p>A robust agent must be able to use <strong>any LLM provider</strong>. If your agent only works with one model on one platform, you have not built an agent. You have built a dependency.</p>
+
+                        <!-- ======== 7. COMPARTMENTALIZATION ======== -->
+
+                        <h2>The Core Principle: Compartmentalization</h2>
+
+                        <p>If the agent is the filesystem, then the quality of the agent depends on <strong>how well that filesystem is organized</strong>.</p>
+
+                        <p>This is where <strong>compartmentalization</strong> becomes the core principle.</p>
+
+                        <p>Compartmentalization means: <strong>every piece of knowledge has a home</strong>. Every behavior has a boundary. Every context is scoped to where it is needed.</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/CLAUDE-md-heirarchy.jpg" alt="Four-level hierarchy of CLAUDE.md files: Level 1 at ~/.claude/CLAUDE.md for Global User Context, Level 2 at ./CLAUDE.md for Agent Identity, Level 3 at ./.claude/CLAUDE.md for the Brain Manual, and Level 4 at ./**/CLAUDE.md for Local Working Memory in subdirectories. A tree diagram on the right shows how these nest within the filesystem." loading="lazy">
+                            <figcaption>The four levels of compartmentalized memory. Global context at the top, local working memory at the bottom. Each file scoped to exactly where it is needed.</figcaption>
+                        </figure>
+
+                        <p>Look at the hierarchy above. Information is not dumped into one giant prompt. Instead:</p>
+
+                        <ul>
+                            <li><strong>Global context</strong> lives at the user level — preferences, conventions, stable patterns</li>
+                            <li><strong>Agent identity</strong> lives at the project root — who the agent is, its operational phases, its personality</li>
+                            <li><strong>Brain documentation</strong> lives in the agent's brain directory — how the brain works, its growth rules, its structure</li>
+                            <li><strong>Local working memory</strong> lives in each subdirectory — task-specific context, scoped to exactly where it is needed</li>
+                        </ul>
+
+                        <p>Without compartmentalization, you get <strong>"prompt soup"</strong> — every piece of context dumped into a single undifferentiated blob. The LLM drowns in noise. Behavior becomes unpredictable. The agent loses coherence.</p>
+
+                        <p>With compartmentalization, you get <strong>bounded contexts</strong>. The agent loads only the information relevant to its current task. Knowledge is discoverable but not overwhelming. The agent can grow without collapsing under its own weight.</p>
+
+                        <p>This is also what gives the agent <strong>identity over time</strong>. When the filesystem is well-compartmentalized, the agent's "personality" — its rules, its preferences, its memory — persists across sessions, across context compactions, even across LLM swaps. The compartmentalized information <em>is</em> the agent's identity.</p>
+
+                        <!-- ======== 8. WHAT THIS MEANS FOR YOU ======== -->
 
                         <h2>What This Means for You</h2>
 
-                        <p>If you are working with AI agents, here is the shift in thinking:</p>
+                        <p>If you are building with AI agents — or want to start — here is the shift in thinking:</p>
 
                         <ol>
-                            <li><strong>Stop calling the model "the agent."</strong> The model is the engine. The agent is the system you build around it.</li>
-                            <li><strong>Give your agent a brain.</strong> A dedicated directory with structure, memory files, and operational rules.</li>
-                            <li><strong>Write the habits down.</strong> Consistency comes from structure, not from intelligence alone.</li>
-                            <li><strong>Separate brain from work.</strong> Keep agent reasoning and project deliverables in distinct spaces.</li>
-                            <li><strong>Think in compartments.</strong> Every piece of knowledge should have a home. Every behavior should be bounded.</li>
+                            <li><strong>Stop focusing on the LLM.</strong> The model is the engine. It matters, but it is not where you should spend most of your design effort. Focus on the structure around it. The engine will keep getting better on its own. Your architecture is what makes it useful.</li>
+
+                            <li><strong>Give your agent a brain.</strong> Create a dedicated directory with structure, knowledge files, operational rules, and memory. This is not configuration — this is the agent itself. Without it, you just have a smart engine with nowhere to go.</li>
+
+                            <li><strong>Write the habits down.</strong> Consistency comes from structure, not from intelligence. Define phases. Define workflows. Define what the agent should do at each event. If it is not written in a file, it does not exist.</li>
+
+                            <li><strong>Design for portability.</strong> Your agent's brain should not be locked to one platform or one model. Keep the core identity in plain files — markdown, JSON, scripts. Let the platform-specific hooks be thin adapters, not the whole system.</li>
+
+                            <li><strong>Think in compartments.</strong> Every piece of knowledge should have a home. Every behavior should be bounded. Every context should be scoped. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows.</li>
                         </ol>
 
-                        <p>The models will keep getting smarter. But smarter engines still need a well-built car to drive anywhere useful. The real leverage is in the architecture.</p>
+                        <p>The models will keep getting smarter. Next year's LLM will be faster, cheaper, and more capable than today's. But <strong>a smarter engine still needs a well-built car to drive anywhere useful</strong>.</p>
+
+                        <p>The real leverage is not in the engine.</p>
+
+                        <p><strong>The real leverage is in the architecture.</strong></p>
 
                     </div>
                 </div>
@@ -165,7 +268,7 @@
                                 <span class="tag tag-sm">Fundamentals</span>
                             </div>
                             <h3>LLMs Are Not the Agents</h3>
-                            <div class="date">February 2026 &bull; 8 min read</div>
+                            <div class="date">February 2026 &bull; 12 min read</div>
                         </div>
                     </div>
                 </aside>
