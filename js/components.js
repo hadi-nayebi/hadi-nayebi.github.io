@@ -1,4 +1,4 @@
-// Version: v0.2.0
+// Version: v0.3.0
 // Shared nav/header and footer components — injected into placeholder elements.
 
 (function () {
@@ -117,9 +117,23 @@
     /**
      * Initialize components when DOM is ready.
      */
+    /**
+     * Inject dev-only feedback widget on localhost.
+     */
+    function injectFeedbackWidget() {
+        var host = window.location.hostname;
+        if (host !== 'localhost' && host !== '127.0.0.1') return;
+
+        var prefix = getPathPrefix();
+        var script = document.createElement('script');
+        script.src = prefix + 'js/feedback.js';
+        document.body.appendChild(script);
+    }
+
     function init() {
         injectHeader();
         injectFooter();
+        injectFeedbackWidget();
     }
 
     if (document.readyState === 'loading') {
