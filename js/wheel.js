@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.orbit-container');
     if (!ring || !container) return;
 
-    const mql = window.matchMedia('(max-width: 768px)');
+    const mql = window.matchMedia('(max-width: 768px) and (orientation: portrait)');
     let activeMode = null; // 'desktop' | 'mobile'
     let cleanupFn = null;  // teardown for current mode
 
@@ -238,24 +238,29 @@ function initMobileCarousel(hooks, ring, container) {
     let lastTouchTime = 0;
     let rafId = null;
 
-    // Create items
+    // Create items with explicit initial styles
     hooks.forEach(hook => {
         const item = document.createElement('div');
         item.className = 'orbit-item';
+        item.style.transition = 'none';
+        item.style.position = 'absolute';
+        item.style.top = '50%';
+        item.style.left = '50%';
+        item.style.width = '90%';
+        item.style.textAlign = 'center';
 
         const link = document.createElement('a');
         link.href = hook.link;
         link.className = 'orbit-text';
         link.textContent = hook.text;
         link.style.textDecoration = 'none';
+        link.style.transition = 'none';
 
         item.appendChild(link);
         ring.appendChild(item);
     });
 
     const items = ring.querySelectorAll('.orbit-item');
-    const ringHeight = ring.offsetHeight;
-    const centerY = ringHeight / 2;
 
     // Gaussian sigma — controls how many items are in the clarity zone
     const sigma = itemSpacing * 2;
@@ -297,39 +302,22 @@ function initMobileCarousel(hooks, ring, container) {
     ring.addEventListener('touchmove', onTouchMove, { passive: false });
     ring.addEventListener('touchend', onTouchEnd, { passive: true });
 
-    function animate() {
-        if (!isDragging) {
-            if (Math.abs(velocity) > 0.1) {
-                // Inertia
-                scrollOffset += velocity;
-                velocity *= 0.95; // friction decay
-            } else {
-                // Auto-drift upward
-                scrollOffset += 0.5;
-                velocity = 0;
-            }
-        }
-
-        // Wrap scrollOffset into [0, totalHeight)
-        scrollOffset = ((scrollOffset % totalHeight) + totalHeight) % totalHeight;
-
-        // Position each item
+    // Position items at a given scrollOffset
+    function renderItems() {
         items.forEach((item, i) => {
-            // Raw Y position relative to ring center
             let rawY = (i * itemSpacing) - scrollOffset;
 
             // Wrap into [-totalHeight/2, totalHeight/2)
             rawY = ((rawY % totalHeight) + totalHeight + totalHeight / 2) % totalHeight - totalHeight / 2;
 
-            // Distance from center for Gaussian
             const dist = Math.abs(rawY);
 
-            // Only process items within visible range (perf)
+            // Hide items far from center
             if (dist > itemSpacing * 5) {
                 item.style.display = 'none';
                 return;
             }
-            item.style.display = '';
+            item.style.display = 'block';
 
             // Gaussian intensity
             const intensity = Math.exp(-(dist * dist) / (2 * sigma * sigma));
@@ -339,8 +327,6 @@ function initMobileCarousel(hooks, ring, container) {
             const scale = 0.85 + (0.15 * intensity);
 
             item.style.transform = `translate(-50%, -50%) translateY(${rawY}px) scale(${scale})`;
-            item.style.top = '50%';
-            item.style.left = '50%';
 
             const text = item.querySelector('.orbit-text');
             text.style.opacity = opacity;
@@ -358,7 +344,26 @@ function initMobileCarousel(hooks, ring, container) {
                 item.style.pointerEvents = 'none';
             }
         });
+    }
 
+    // Immediate first render (no waiting for rAF)
+    renderItems();
+
+    function animate() {
+        if (!isDragging) {
+            if (Math.abs(velocity) > 0.1) {
+                scrollOffset += velocity;
+                velocity *= 0.95;
+            } else {
+                scrollOffset += 0.5;
+                velocity = 0;
+            }
+        }
+
+        // Wrap scrollOffset into [0, totalHeight)
+        scrollOffset = ((scrollOffset % totalHeight) + totalHeight) % totalHeight;
+
+        renderItems();
         rafId = requestAnimationFrame(animate);
     }
 
