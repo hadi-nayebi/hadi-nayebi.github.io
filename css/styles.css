@@ -1,5 +1,5 @@
 /* Hadosh Academy Design System */
-/* Version: v0.3.0 */
+/* Version: v0.3.1 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -1214,6 +1214,51 @@ footer {
 
     .error-code {
         font-size: 3rem;
+    }
+}
+
+/* ============ Landscape Phone: Compact orbit for short viewports ============ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding-top: 60px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.85rem;
+    }
+
+    .hero-actions {
+        gap: 0.5rem;
+    }
+
+    .hero-actions .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .orbit-container {
+        width: 1200px;
+        height: 1200px;
+        left: -500px;
+    }
+
+    .orbit-container .central-circle {
+        width: 800px;
+        height: 800px;
+        padding-right: 60px;
+    }
+
+    .central-circle-content {
+        max-width: 300px;
+    }
+
+    .central-circle::before {
+        opacity: 0.4;
     }
 }
 

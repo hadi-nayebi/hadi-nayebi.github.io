@@ -1,5 +1,5 @@
 # CLAUDE.md — Website Project Working Memory
-**Version:** v0.2.0
+**Version:** v0.2.1
 
 ## Purpose
 
@@ -60,3 +60,29 @@ Local working memory for the Hadosh Academy website (`hadi-nayebi.github.io`).
 - Glassmorphism: `backdrop-filter: blur()`
 - Random theme rotation: 5 color schemes per visit
 - All styles in css/styles.css — zero inline, zero `<style>` blocks
+
+---
+
+## Content Language Guidelines (NON-NEGOTIABLE)
+
+**Tone ladder** — adjust language by content depth:
+- **Front-facing** (landing, agents, about): plain language, non-technical professionals
+- **Blog articles**: moderate technical, explain jargon or link to explanations
+- **Deep content** (architecture docs): full technical vocabulary OK
+
+**Positive framing** — lead with what we offer:
+- "Customize reliable seed agents through conversation"
+- "Scale your professional skills with a personalized agentic workforce"
+- Pair every negative ("not a chatbot") with a positive concept
+
+**Key messaging pillars:**
+- **Reliable & consistent** agents (not flaky AI)
+- **Customization through conversation** (no coding, just talk)
+- **Scaling professional skills** (lawyers, consultants, researchers extend themselves)
+
+**Agent descriptions** — frame as philosophy, not features:
+- "Job-based architecture" not "job scheduler agent" (general, not narrow)
+- Describe behaviors users see, not internal mechanisms
+- "Prevents the agent from stopping until all work is done" not "blocking stop hook"
+
+**Cross-referencing** — technical terms on front pages must link to blog/docs explanations
