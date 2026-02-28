@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadosh Academy Blog</title>
+    <link>https://hadi-nayebi.github.io/blog.html</link>
+    <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>LLMs Are Not the Agents</title>
+      <link>https://hadi-nayebi.github.io/blog/llms-are-not-the-agents.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/llms-are-not-the-agents.html</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description>Most people point at the model and call it the agent. That is the root misunderstanding. The agent is the filesystem — the local files that give an LLM memory, structure, and identity. The LLM is just the engine.</description>
+    </item>
+  </channel>
+</rss>

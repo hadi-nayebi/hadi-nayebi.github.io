@@ -18,6 +18,9 @@ yarn-error.log
 dev-server.py
 feedback.json
 
+# Agent working memory (not part of the website)
+CLAUDE.md
+
 # System files
 .DS_Store
 Thumbs.db

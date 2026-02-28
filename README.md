@@ -1,32 +1,43 @@
-**Version:** v0.1.0
+<!-- Version: v0.2.0 -->
 
 # Hadosh Academy
 
-The official website for [Hadosh Academy](https://hadi-nayebi.github.io) — training and custom agents for AI Agent Engineering.
+**Agentic architectures that evolve with you.**
 
-Pure HTML/CSS/JS. No frameworks, no build process. Deployed on GitHub Pages.
+Each agent is a seed — a starting architecture for a cognitive species. As you adopt and customize it through conversation, it evolves and diversifies while holding on to its core structural design.
 
-## Structure
+No coding required. Just conversation.
 
-```
-/
-├── index.html          # Landing page (orbit wheel)
-├── about.html          # About Hadi Nayebi
-├── blog.html           # Blog index
-├── blog/               # Individual blog posts (HTML)
-├── agents.html         # Agent showcase
-├── contact.html        # Contact form
-├── 404.html            # Custom 404
-├── thanks.html         # Form success
-├── css/styles.css      # Design system
-├── js/                 # Theme manager, wheel, components
-└── assets/images/      # Shared images
-```
+**[Visit the Website](https://hadi-nayebi.github.io)**
 
-## Local Development
+---
+
+## Our Agents
+
+Each agent has its own repo, its own architecture, and its own way of organizing information.
+
+| Agent | Description | Repo |
+|-------|-------------|------|
+| **Basic Agent** | Job-based architecture — organizes work into discrete jobs with memory, verification, and self-improvement. | *Coming soon* |
+
+More agents are on the way. Each will have an identifiable compartmentalization design — a signature way of structuring information that defines the species.
+
+---
+
+## Explore
+
+- **[Blog](https://hadi-nayebi.github.io/blog.html)** — Articles on agent engineering and cognitive architectures
+- **[Community](https://www.skool.com/claude-agents-engineering-4513)** — Agent Engineering on Skool
+- **[Contact](https://hadi-nayebi.github.io/contact.html)** — Consulting, collaboration, or just say hello
+
+---
+
+## About the Site
+
+Static HTML/CSS/JS — no frameworks, no build process. Deployed on GitHub Pages.
 
 ```bash
+# Local development
 python3 -m http.server 8000
+# Visit http://localhost:8000
 ```
-
-Visit `http://localhost:8000`
