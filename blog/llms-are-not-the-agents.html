@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.2.2 -->
+<!-- Version: v0.3.0 -->
 <html lang="en">
 
 <head>
@@ -117,7 +117,7 @@
 
                         <p><strong>This is not yet an agent.</strong> This is a raw engine running with no car around it.</p>
 
-                        <p>But when you add a <code>.claude/</code> directory — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. Not the LLM. The LLM is just the engine. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
+                        <p>But when you add a <code>.claude/</code> directory (or <code>AGENT.md</code> in platform-agnostic setups) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. Not the LLM. The LLM is just the engine. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
 
                         <!-- ======== 4. THE DEFAULT STATE ======== -->
 
@@ -171,7 +171,7 @@
 
                         <p>This is how you turn a probabilistic chain into a <strong>deterministic pipeline</strong>. The LLM still does the thinking. But the hooks define the guardrails, the checkpoints, and the reflexes. The LLM proposes. The structure disposes.</p>
 
-                        <p>Beyond hooks, the <strong>instruction files</strong> shape behavior even more fundamentally. A <code>CLAUDE.md</code> file (or its equivalent in other platforms) acts as <strong>dynamic working memory</strong>. It tells the LLM what phase it is in, what it should focus on, what decisions have already been made, and how to approach the current task.</p>
+                        <p>Beyond hooks, the <strong>instruction files</strong> shape behavior even more fundamentally. A <code>CLAUDE.md</code> file (or <code>AGENT.md</code> in platform-agnostic setups) acts as <strong>dynamic working memory</strong>. It tells the LLM what phase it is in, what it should focus on, what decisions have already been made, and how to approach the current task.</p>
 
                         <figure class="blog-image">
                             <img src="../assets/images/blog/claude-md-working-memory.png" alt="Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory." loading="lazy">
@@ -194,9 +194,11 @@
 
                         <ul>
                             <li><strong>Claude Code</strong> — hooks via <code>.claude/settings.json</code> (PreToolUse, PostToolUse, Stop, Notification, etc.)</li>
-                            <li><strong>OpenCode</strong> — event hooks via <code>plugin.ts</code> files</li>
-                            <li><strong>Gemini CLI</strong> — extension and event system</li>
+                            <li><strong>Gemini CLI</strong> — hook events shipped January 2026 (BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc.)</li>
+                            <li><strong>OpenCode</strong> — event hooks via plugin system (<code>tool.execute.before</code>, <code>tool.execute.after</code>, <code>session.idle</code>, <code>stop</code>)</li>
                         </ul>
+
+                        <p>Notably, <strong>OpenAI's Codex CLI</strong> still has no hook system — community pull requests for one have been declined. Without interception points, the model's probabilistic behavior cannot be regulated by structure. The engine runs, but the builder has no steering mechanism.</p>
 
                         <p>The syntax differs. The concepts are identical. Each platform provides <strong>interception points</strong> where your rules can override the LLM's default behavior.</p>
 
@@ -266,6 +268,10 @@
                         <p>The real leverage is not in the engine.</p>
 
                         <p><strong>The real leverage is in the architecture.</strong></p>
+
+                        <hr>
+
+                        <p><em>This essay establishes a foundation: the agent is the filesystem, not the model. The next essay takes this further — if the building blocks for durable, self-improving agents have been available for years, why are we still scaling only the engine? Read <a href="we-could-have-had-agi.html"><strong>"We Could Have Had AGI By Now"</strong></a> to explore what happens when you scale architecture instead of scaling the model.</em></p>
 
                     </div>
                 </div>
