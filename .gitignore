@@ -21,6 +21,10 @@ feedback.json
 # Agent working memory (not part of the website)
 CLAUDE.md
 
+# Content source files (local-only, HTML is source of truth)
+blog/*.md
+papers/*.md
+
 # System files
 .DS_Store
 Thumbs.db
