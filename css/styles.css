@@ -916,7 +916,8 @@ body.lightbox-open {
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 2.5rem;
-    transition: all 0.3s ease;
+    max-height: 600px;
+    transition: all 0.3s ease, max-height 0.3s ease, opacity 0.3s ease;
     backdrop-filter: blur(12px);
     text-decoration: none;
     color: inherit;

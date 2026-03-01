@@ -1,4 +1,4 @@
-// Version: v0.4.0
+// Version: v0.5.0
 // Shared nav/header and footer components — injected into placeholder elements.
 
 (function () {
@@ -280,10 +280,11 @@
                 var cardAud = card.getAttribute('data-audience');
                 var cardTags = (card.getAttribute('data-tags') || '').split(',').map(function (t) { return t.trim(); });
 
-                var matchAud = activeAudiences.length === 0 || activeAudiences.indexOf(cardAud) !== -1;
-                var matchTag = activeTags.length === 0 || activeTags.some(function (t) { return cardTags.indexOf(t) !== -1; });
+                var matchAud = activeAudiences.length > 0 && activeAudiences.indexOf(cardAud) !== -1;
+                var matchTag = activeTags.length > 0 && activeTags.some(function (t) { return cardTags.indexOf(t) !== -1; });
+                var noFilters = activeAudiences.length === 0 && activeTags.length === 0;
 
-                if (matchAud && matchTag) {
+                if (noFilters || matchAud || matchTag) {
                     card.classList.remove('filter-hidden');
                 } else {
                     card.classList.add('filter-hidden');
