@@ -55,19 +55,11 @@
 
                         <!-- ======== 1. OPENING ======== -->
 
-                        <p>The toaster works. Toast comes out. Every time.</p>
+                        <p>We could have had AGI by now.</p>
 
-                        <p>Now someone asks: "Can we get a kitchen?"</p>
+                        <p>Not the sci-fi kind. Not a god in a box. The practical kind — a system that learns a profession, keeps working for weeks, gets better from experience, and does not need someone watching it every thirty minutes.</p>
 
-                        <p>And the industry responds: "Sure. Let us make the electricity more powerful."</p>
-
-                        <p>That is the story of the last three years of AI. The default bet has been: <strong>scale the token generator until it becomes the whole agent</strong>. Make the model smarter, train it harder, give it more tools, and eventually it will plan its own workflows, remember its own history, and evolve into something we can call AGI.</p>
-
-                        <blockquote>
-                            <p><strong>We could have had something that behaves like a career-capable, long-horizon, self-improving agent years ago, with smaller models, if we had scaled architecture instead of scaling only the model.</strong></p>
-                        </blockquote>
-
-                        <p>Not a perfect god-model. Not a universal mind. But something close to what most people actually mean in practice when they say "AGI": a system that can learn a profession, keep working, get better from experience, and do it with minimal babysitting.</p>
+                        <p>The building blocks have been available for months. Persistent storage. Event hooks. Tool execution. Logging. None of this is exotic. None of this required a breakthrough. What it required was a different bet: <strong>scale the architecture, not just the model.</strong></p>
 
                         <!-- ======== 2. ELECTRICITY/TOASTERS AGAIN ======== -->
 
@@ -87,7 +79,7 @@
 
                         <p>A competent professional is a pipeline: intake and clarification, scoping, research, synthesis, drafting, review, iteration with stakeholders, and risk management. Most of these steps are not mysterious. They are repeatable.</p>
 
-                        <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes.</p>
+                        <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes. And none of that gets easier when your tokens vanish the moment the context window fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.</p>
 
                         <p>That is <strong>organization</strong>. Not intelligence.</p>
 
@@ -133,19 +125,27 @@
 
                         <p>Differentiation buys you local adaptation without global interference, specialization without entangling everything in one parameter space, replaceability (swap a module, keep the organism), multi-timescale learning (fast reflexes, slow remodeling), and robustness (one failure does not erase identity).</p>
 
+                        <p>And this is why biology keeps showing up. Not as metaphor. If something like AGI ever works, it will not be an engineered artifact — not a car, not a plane, not a very sophisticated toaster. It will be a complex system. Intelligence emerging from primitives interacting, not from any single component getting bigger. Biology is not the analogy here. It is the category.</p>
+
+                        <p>So if intelligence is a complex system, what are the primitives? You need compartmentalization. Bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.</p>
+
+                        <p>The smallest useful primitive already exists: prevent the agent from stopping before it is done. <a href="https://github.com/anthropics/claude-code-plugins" target="_blank" rel="noopener">Ralph Loop</a> does exactly this — block the stop signal, repeat a prompt, keep the agent working until the task is finished. That is compartmentalization at its most basic. One unit of work, one boundary, one rule: do not quit early.</p>
+
+                        <p>Now extend that idea. Give each unit a name, a state, a place on disk. Let units spawn other units. Let them carry observations that must be processed before they close. You are no longer just blocking a stop signal. You are building a job system.</p>
+
                         <!-- ======== 6. THE HEARTBEAT ======== -->
 
                         <h2>The Heartbeat: Where Agency Actually Begins</h2>
 
                         <p>Here is the smallest architectural feature that changes everything:</p>
 
-                        <p>Define a persistent list of <strong>jobs</strong> on disk (not in the model). Mark jobs active or completed. Install a hook that intercepts "Stop" and blocks it while any job is active. Make the agent loop: keep working until the job queue is empty.</p>
+                        <p>Define a persistent list of <strong>jobs</strong> on disk (not in the model). Mark jobs active or completed — or add whatever states and fields the work demands. Install a hook that intercepts "Stop" and blocks it while any job is active. Make the agent loop: keep working until the job queue is empty.</p>
 
                         <p>This is not fancy. It is a heartbeat.</p>
 
-                        <p>Then you scale it. Jobs can spawn other jobs. Jobs can schedule recurring jobs. Jobs can be retired or archived. Every job has an observation field that must be processed into long-term memory before completion.</p>
+                        <p>Then you scale it. Every job carries an observation field — what happened, what was learned, what went wrong. That field must be processed into long-term memory before the job can close. The system cannot mark "done" without first digesting what it did.</p>
 
-                        <p>You now have a system that cannot "forget" by accident. It must metabolize its experience. It must tidy its state.</p>
+                        <p>You now have a system that cannot "forget" by accident. It must metabolize its stream of tokens into something durable. It must tidy its state.</p>
 
                         <p>If you prefer different terminology, call them behaviors, intentions, processes, or obligations. The organizational principle is the same: <strong>persistent state plus enforcement hooks</strong>.</p>
 
@@ -161,15 +161,17 @@
 
                         <p>Each one is a place where the architecture — not the model — decides what happens next. The model proposes. The structure disposes.</p>
 
-                        <p>When hooks also log transactions, you get an experience stream. And that experience stream enables something crucial: sleep.</p>
+                        <p>Hooks are the agent's sensory layer — how it perceives its own actions, reacts to events, and builds a surface where processed experience can be written back as durable knowledge. Without them, the agent acts blind. Tokens flow, but nothing sticks.</p>
+
+                        <p>When hooks also log transactions, you get an experience stream. And that experience stream enables something crucial: learning from experience.</p>
 
                         <!-- ======== 8. SLEEP ======== -->
 
-                        <h2>Sleep: Where the System Learns</h2>
+                        <h2>Consolidation: Where the System Learns</h2>
 
                         <p>Humans do not improve only while acting. They consolidate.</p>
 
-                        <p>A long-running agent should do the same. During work: collect raw traces — tool calls, file edits, outcomes, feedback. During sleep: analyze traces, detect patterns, propose changes.</p>
+                        <p>A long-running agent should do the same. During work: collect raw traces — tool calls, file edits, outcomes, feedback. During consolidation: analyze traces, detect patterns, propose changes.</p>
 
                         <p>Crucially, changes are not magic. They are edits: update an instruction file (<code>CLAUDE.md</code>, <code>AGENT.md</code>, or equivalent), refine a checklist, add a guardrail hook, create a specialized skill module, fine-tune a small internal decision model for one narrow choice.</p>
 
@@ -177,16 +179,18 @@
 
                         <!-- ======== 9. THE SEED AGENT ======== -->
 
-                        <h2>The Seed Agent: An Organization in Miniature</h2>
+                        <h2>The Seed Agent: Small Structure That Grows</h2>
 
-                        <p>Instead of asking "how smart must the model be?", ask "what roles must the system perform?" A compact seed set:</p>
+                        <p>Instead of asking "how smart must the model be?", ask "what is the smallest organized structure I can plant that will grow into professional competence?"</p>
 
-                        <p><strong>Scheduler</strong> — jobs, priorities, budgets. <strong>Planner</strong> — decompose objectives into jobs. <strong>Executor</strong> — tool calls, file edits. <strong>Verifier</strong> — check outputs against criteria. <strong>Memory manager</strong> — store, retrieve, scope. <strong>Consolidator</strong> — distill experience into durable forms. <strong>Critic</strong> — detect recurring failure patterns. <strong>Skill builder</strong> — create new tools and workflows when missing. <strong>Watchdog</strong> — detect loops and runaway behavior.</p>
+                        <p>A seed agent is not a blueprint with nine named roles. It is a minimal structure built from the primitives this essay describes: persistent state, interception hooks, compartmentalized work, and consolidation mechanism. Four capabilities. That is enough to start.</p>
 
-                        <p>This is already an organization. Each role can be implemented as a job type, an intention, a module, or a specialized internal model. The key is differentiation — not having one undifferentiated engine try to do everything simultaneously.</p>
+                        <p>The important property is not what the seed contains on day one. It is that the seed grows. As the agent works, new patterns get codified. New operations emerge from experience. New guardrails get added after failures. The structure accumulates — but the identity holds. You can still point at it and say: this is the same agent, more experienced.</p>
+
+                        <p>This is what makes a seed different from a prompt. A prompt resets every session. A seed compounds. Different users, same seed, different cognitive organisms — because the growth depends on the work, the domain, and the failures encountered along the way.</p>
 
                         <figure class="blog-image-placeholder">
-                            <figcaption>Diagram: The Seed Agent — nine roles arranged as an organizational chart, each one a module rather than a monolithic capability</figcaption>
+                            <figcaption>Diagram: The Seed Agent — minimal structure with four capabilities (persistence, hooks, jobs, consolidation) that grows through experience into a unique organism</figcaption>
                         </figure>
 
                         <!-- ======== 10. INTERNALIZATION IS NOT THE ANSWER ======== -->
@@ -205,9 +209,9 @@
 
                         <h2>What a Year of Experience Looks Like</h2>
 
-                        <p>Imagine two systems learning the same profession for a year.</p>
+                        <p>Imagine two systems working and learning the same profession for a year.</p>
 
-                        <p><strong>System 1:</strong> a monolithic model session that regenerates its own state each time. Without retraining, it returns to baseline every session. It can be impressive, but it does not accumulate a personal history.</p>
+                        <p><strong>System 1:</strong> a monolithic model session that regenerates its own state each time. The only way it improves is through retraining — expensive reinforcement learning runs that require massive compute and touch every weight at once. Between those runs, it returns to baseline every session. It can be impressive, but it does not accumulate a personal history.</p>
 
                         <p><strong>System 2:</strong> an architecture that logs traces, maintains job state on disk, and runs consolidation loops. After a year, it has thousands of structured case notes, a playbook of checklists and failure modes, specialized templates, a library of reusable skills, refined guardrails, and a continuously evolving internal organization of knowledge.</p>
 
@@ -224,18 +228,18 @@
 
                             <li><strong>A hook system that enforces phases and permissions.</strong> Interception points where deterministic rules override probabilistic behavior. Claude Code hooks, OpenCode plugin events, Gemini CLI hooks — the mechanism varies, the principle is identical.</li>
 
-                            <li><strong>A job system that keeps the agent alive until obligations are met.</strong> Persistent jobs as structured objects. Stop-blocking hooks that prevent premature exit. Observation fields that must be processed before completion.</li>
+                            <li><strong>A job system that keeps the agent alive until obligations are met.</strong> Persistent jobs as structured objects. Stop-blocking hooks that prevent premature exit. Observation fields that must be processed before completion. And not just professional tasks — the agent also spends compute on its own maintenance: managing memory, refining instructions, consolidating experience. Like a cell that does not just process nutrients but also repairs itself, manages waste, and maintains its own membrane.</li>
 
-                            <li><strong>A consolidation loop that converts traces into durable upgrades.</strong> Sleep phases where logged experience is analyzed, distilled, and written back as improved instructions, refined checklists, and new skills.</li>
+                            <li><strong>A consolidation loop that converts traces into durable upgrades.</strong> Consolidation phases where logged experience is analyzed, distilled, and written back as improved instructions, refined checklists, and new skills.</li>
                         </ol>
 
-                        <p>The engine can be Claude, GPT, Gemini, or whatever comes next. If the architecture is sound, the organism survives engine swaps.</p>
+                        <p>The engine can be Claude, GPT, Gemini, or whatever token generator comes next. If the architecture is sound, the organism survives engine swaps.</p>
 
                         <!-- ======== 13. WHY I SAY WE COULD HAVE HAD IT BY NOW ======== -->
 
                         <h2>Why I Say "We Could Have Had It by Now"</h2>
 
-                        <p>Because the building blocks have been available for years. Persistent storage is trivial. Event hooks are basic software. Tool execution is standard. Logging and evaluation are solved problems. Even small models can follow structured workflows when the structure is explicit.</p>
+                        <p>Because the building blocks have been available for months. Persistent storage is trivial. Event hooks are basic software. Tool execution is standard. Logging and evaluation are solved problems. Even small models can follow structured workflows when the structure is explicit.</p>
 
                         <p>If the research effort that went into squeezing marginal gains out of prompt-following had gone into long-horizon architectural experiments, we would already have more systems that keep working for weeks, learn workflows, accumulate real project memory, and behave consistently for a given user.</p>
 
