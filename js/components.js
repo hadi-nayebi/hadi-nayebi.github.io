@@ -1,4 +1,4 @@
-// Version: v0.3.0
+// Version: v0.4.0
 // Shared nav/header and footer components — injected into placeholder elements.
 
 (function () {
@@ -130,10 +130,62 @@
         document.body.appendChild(script);
     }
 
+    /**
+     * Image lightbox — click blog images to view full-size in overlay.
+     */
+    function initLightbox() {
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.innerHTML =
+            '<button class="lightbox-close" aria-label="Close lightbox">&times;</button>' +
+            '<img src="" alt="">' +
+            '<span class="lightbox-caption"></span>';
+        document.body.appendChild(overlay);
+
+        var img = overlay.querySelector('img');
+        var caption = overlay.querySelector('.lightbox-caption');
+
+        function open(src, alt, captionText) {
+            img.src = src;
+            img.alt = alt;
+            caption.textContent = captionText || '';
+            caption.style.display = captionText ? '' : 'none';
+            overlay.classList.add('active');
+            document.body.classList.add('lightbox-open');
+        }
+
+        function close() {
+            overlay.classList.remove('active');
+            document.body.classList.remove('lightbox-open');
+        }
+
+        document.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target.matches('.blog-image img')) {
+                var fig = target.closest('.blog-image');
+                var fc = fig ? fig.querySelector('figcaption') : null;
+                open(target.src, target.alt, fc ? fc.textContent : '');
+            }
+        });
+
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay || e.target.classList.contains('lightbox-close')) {
+                close();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                close();
+            }
+        });
+    }
+
     function init() {
         injectHeader();
         injectFooter();
         injectFeedbackWidget();
+        initLightbox();
     }
 
     if (document.readyState === 'loading') {
