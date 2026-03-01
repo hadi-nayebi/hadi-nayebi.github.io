@@ -553,6 +553,29 @@ footer {
     padding-bottom: 0.5rem;
 }
 
+.article-audio {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.article-audio audio {
+    flex: 1;
+    max-width: 400px;
+    height: 36px;
+}
+
+.article-audio .audio-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
 .article-card-tags {
     display: flex;
     gap: 0.5rem;

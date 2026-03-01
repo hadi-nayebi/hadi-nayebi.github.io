@@ -101,8 +101,9 @@
 
                         <p>This is the difference between a monologue and an organism.</p>
 
-                        <figure class="blog-image-placeholder">
-                            <figcaption>Diagram: Injected Context Ratio — comparing a context window dominated by fresh tokens (closed loop) versus one anchored by durable structure (organism)</figcaption>
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/injected-context-ratio.png" alt="Side-by-side comparison of two context windows: left shows a Monologue with 100% fresh tokens as uniform wavy lines, right shows an Organism with colored blocks for files, rules, memory, and hooks injected among the token stream, demonstrating a high injected context ratio." loading="lazy">
+                            <figcaption>Monologue vs. Organism — a context window dominated by fresh tokens versus one anchored by durable structure</figcaption>
                         </figure>
 
                         <p><strong>A practical metric:</strong> calculate a rough "injected context ratio" — tokens inserted from files, tools, hooks, and memory divided by total context tokens. A higher ratio means the system depends on stable external anchors. Behavior becomes easier to audit and stabilize. Over time, an architecture-centric system should show more injected context from durable playbooks, less repeated re-derivation of the same constraints, and fewer failures from forgotten steps.</p>
@@ -118,6 +119,11 @@
                         <p>But evolution chose composition. DNA became long-term storage. Proteins became functional workhorses. Lipid membranes created boundaries. Regulatory networks added meta-control. Later, nervous systems emerged as a higher-order organizational layer that no longer operates at the molecular level at all.</p>
 
                         <p>The same pattern applies to the cortex. A cortical column is powerful — it can learn patterns and generalize. But intelligence did not emerge from one enormous super-column. It emerged from columns connecting to columns, specialized regions differentiating, and coordinated subsystems handling memory, motor planning, language, and executive control.</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/mrna-vs-organism.png" alt="Side-by-side comparison: left shows a tangled giant mRNA blob trying to handle storage, catalysis, regulation, and replication all by itself; right shows an organized biological cell with specialized components — nucleus for storage, ribosomes for work, membrane for boundaries, regulatory molecules for control." loading="lazy">
+                            <figcaption>Giant mRNA (one component doing everything) vs. a differentiated cell (specialized parts working together)</figcaption>
+                        </figure>
 
                         <blockquote>
                             <p><strong>When we scale only the model, we are building the giant mRNA. When we scale architecture, we are building the organism.</strong></p>
@@ -189,8 +195,9 @@
 
                         <p>This is what makes a seed different from a prompt. A prompt resets every session. A seed compounds. Different users, same seed, different cognitive organisms — because the growth depends on the work, the domain, and the failures encountered along the way.</p>
 
-                        <figure class="blog-image-placeholder">
-                            <figcaption>Diagram: The Seed Agent — minimal structure with four capabilities (persistence, hooks, jobs, consolidation) that grows through experience into a unique organism</figcaption>
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/seed-agent-growth.png" alt="Diagram showing a small seedling with four colored roots representing persistence, hooks, jobs, and consolidation growing through experience into a large tree with many branches representing accumulated skills, guardrails, memory, templates, and checklists." loading="lazy">
+                            <figcaption>The Seed Agent — same identity at the roots, but compounding capability through experience</figcaption>
                         </figure>
 
                         <!-- ======== 10. INTERNALIZATION IS NOT THE ANSWER ======== -->
@@ -214,6 +221,11 @@
                         <p><strong>System 1:</strong> a monolithic model session that regenerates its own state each time. The only way it improves is through retraining — expensive reinforcement learning runs that require massive compute and touch every weight at once. Between those runs, it returns to baseline every session. It can be impressive, but it does not accumulate a personal history.</p>
 
                         <p><strong>System 2:</strong> an architecture that logs traces, maintains job state on disk, and runs consolidation loops. After a year, it has thousands of structured case notes, a playbook of checklists and failure modes, specialized templates, a library of reusable skills, refined guardrails, and a continuously evolving internal organization of knowledge.</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/system1-vs-system2.png" alt="Side-by-side comparison: System 1 shows identical circles resetting every session with no growth; System 2 shows circles growing progressively larger with colorful rings representing compound experience over time." loading="lazy">
+                            <figcaption>System 1 resets every session. System 2 compounds experience over time.</figcaption>
+                        </figure>
 
                         <p>When you talk to System 2, you are not talking to a fresh model instance. You are talking to an organism that has a history.</p>
 
