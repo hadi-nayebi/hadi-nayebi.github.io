@@ -120,7 +120,7 @@
                         </ul>
 
                         <figure class="blog-image">
-                            <img src="../assets/images/blog/llm-engine-agent-directory.png" alt="Diagram comparing LLM as engine (reasoning, probabilistic, no persistent memory) versus Agent as directory brain (memory on disk, hooks and rules, intentions). Swapping the engine gives faster or smarter. Swapping the directory gives a different agent." loading="lazy">
+                            <img src="../assets/images/blog/llm-engine-agent-directory.png" alt="Chalkboard diagram titled 'LLMs are Engines. Agents are Directories.' Left column shows LLM (Engine) with traits: reasoning and language, chooses next actions probabilistically, no persistent memory by itself. Right column shows Agent (Directory Brain) with: memory on disk (CLAUDE.md, knowledge, agenda), hooks and rules (timing control), intentions (workflow layer). Bottom reads: Swap the engine — faster/smarter. Swap the directory — different agent." loading="lazy">
                             <figcaption>The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.</figcaption>
                         </figure>
 
@@ -172,7 +172,7 @@
                         <p>Modern CLI agents support <strong>hook systems</strong> — events that fire at specific points in the agent's lifecycle. These are not optional plugins. They are the mechanism that transforms a raw LLM into a structured agent.</p>
 
                         <figure class="blog-image">
-                            <img src="../assets/images/blog/hooks-and-action-space.png" alt="Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior." loading="lazy">
+                            <img src="../assets/images/blog/hooks-and-action-space.png" alt="Chalkboard flowchart of the Claude Code Agent hook system. User prompt enters through UPS Hook, branches into Response, Thinking (with PreToolUse Hook, Tool, and PostToolUse Hook), Notification Hook leading to User Action, Task to SubagentStop Hook, PreCompact Hook to Compact Operation to SessionStart Hook, and a red Stop Hook at the bottom. Each hook is an interception point where structure overrides probabilistic behavior." loading="lazy">
                             <figcaption>The hook system in Claude Code. Every arrow is an event. Every hook is an interception point where your rules — not the LLM's probabilities — control what happens next.</figcaption>
                         </figure>
 
@@ -190,7 +190,7 @@
                         <p>Beyond hooks, the <strong>instruction files</strong> shape behavior even more fundamentally. A <code>CLAUDE.md</code> file (or <code>AGENT.md</code> in platform-agnostic setups) acts as <strong>dynamic working memory</strong>. It tells the LLM what phase it is in, what it should focus on, what decisions have already been made, and how to approach the current task.</p>
 
                         <figure class="blog-image">
-                            <img src="../assets/images/blog/claude-md-working-memory.png" alt="Circular diagram showing the Living Brain dynamic working memory cycle: OBSERVE (absorb context), PLAN (write detailed steps), EXECUTE (perform tasks and log), VERIFY (check results against criteria), CONDENSE (clean and refine info), all revolving around a central instruction file that serves as dynamic working memory." loading="lazy">
+                            <img src="../assets/images/blog/claude-md-working-memory.png" alt="Chalkboard diagram titled 'The Living Brain: Working Memory Cycle' showing five phases in a circle: 1. OBSERVE (The Sponge Phase — Absorb Context), 2. PLAN (The Thinking Ground — Write Detailed Steps), 3. EXECUTE (Robust Working Memory — Perform Tasks and Log), 4. VERIFY (The Quality Gate — Check Results Against Criteria), 5. CONDENSE (The Breath Out — Clean and Refine Info). Local CLAUDE.md (Dynamic Working Memory) sits at the center." loading="lazy">
                             <figcaption>The working memory cycle. Information flows through five phases: context is absorbed during Observe, transformed into steps during Plan, updated with lessons during Execute, validated during Verify, and properly reabsorbed during Condense. An instruction file sits at the center, updated throughout.</figcaption>
                         </figure>
 
@@ -242,7 +242,7 @@
                         <p>Compartmentalization means: <strong>every piece of knowledge has a home</strong>. Every behavior has a boundary. Every context is scoped to where it is needed.</p>
 
                         <figure class="blog-image">
-                            <img src="../assets/images/blog/CLAUDE-md-hierarchy.jpg" alt="Four-level hierarchy of CLAUDE.md files: Level 1 at ~/.claude/CLAUDE.md for Global User Context, Level 2 at ./CLAUDE.md for Agent Identity, Level 3 at ./.claude/CLAUDE.md for the Brain Manual, and Level 4 at ./**/CLAUDE.md for Local Working Memory in subdirectories. A tree diagram on the right shows how these nest within the filesystem." loading="lazy">
+                            <img src="../assets/images/blog/CLAUDE-md-hierarchy.jpg" alt="Chalkboard diagram showing four levels of CLAUDE.md hierarchy on the left: ~/.claude/CLAUDE.md (Global User Context), ./CLAUDE.md (Agent Identity), ./.claude/CLAUDE.md (Brain Manual), ./**/CLAUDE.md (Local Working Memory). On the right, a nested folder tree visualization with colored zones showing how these levels scope from broad global context down to local working memory in subdirectories." loading="lazy">
                             <figcaption>The four levels of compartmentalized memory. Global context at the top, local working memory at the bottom. Each file scoped to exactly where it is needed.</figcaption>
                         </figure>
 
