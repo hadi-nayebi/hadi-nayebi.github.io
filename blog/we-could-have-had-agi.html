@@ -6,20 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>We Could Have Had AGI By Now | Hadosh Academy</title>
-    <meta name="description" content="The building blocks for durable, self-improving agents have been available for years. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
+    <meta name="description" content="The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/blog/we-could-have-had-agi.html">
     <meta property="og:title" content="We Could Have Had AGI By Now | Hadosh Academy">
-    <meta property="og:description" content="The building blocks for durable, self-improving agents have been available for years. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
+    <meta property="og:description" content="The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/we-could-have-had-agi.html">
     <meta property="og:type" content="article">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="We Could Have Had AGI By Now | Hadosh Academy">
-    <meta name="twitter:description" content="The building blocks for durable, self-improving agents have been available for years. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
+    <meta name="twitter:description" content="The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../css/styles.css">
@@ -163,7 +163,7 @@
 
                         <p>If you prefer different terminology, call them behaviors, intentions, processes, or obligations. The organizational principle is the same: <strong>persistent state plus enforcement hooks</strong>.</p>
 
-                        <p>This pattern already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, and Gemini CLI's AfterAgent hook (shipped January 2026) all provide the interception point needed to prevent premature stopping. Notably, OpenAI's Codex CLI still lacks a hook system — community implementations have been declined. Without interception points, the model's probabilistic behavior cannot be regulated by structure. The engine runs, but the builder has no steering mechanism.</p>
+                        <p>This pattern already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, and Gemini CLI's AfterAgent hook all provide the interception point needed to keep a job alive. The specific syntax varies. The principle is identical: block premature exit until obligations are met. Platforms that lack this interception point — like OpenAI's Codex CLI, which still has no hook system — cannot enforce the heartbeat. The agent can decide to stop whenever the model feels like stopping.</p>
 
                         <!-- ======== 7. HOOKS ARE THE MISSING EVOLUTIONARY LAYER ======== -->
 
