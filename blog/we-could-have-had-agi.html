@@ -73,7 +73,7 @@
 
                         <h2>LLMs Are Electricity. Agents Are Toasters. (Again.)</h2>
 
-                        <p>If you read <a href="llms-are-not-the-agents.html">the first essay</a>, you already know: LLMs are electricity. Agents are toasters. The structure turns raw power into repeatable work.</p>
+                        <p>If you read <a href="llms-are-not-the-agents.html">the first essay</a>, you already know: <a href="https://en.wikipedia.org/wiki/Large_language_model" title="Large Language Model — AI software like ChatGPT or Claude that generates text" target="_blank" rel="noopener">LLMs</a> are electricity. Agents are toasters. The structure turns raw power into repeatable work.</p>
 
                         <p>This essay extends that idea to a harder question: <strong>what would actual AGI look like, and why does scaling the electricity feel like the wrong path?</strong></p>
 
@@ -87,7 +87,7 @@
 
                         <p>A competent professional is a pipeline: intake and clarification, scoping, research, synthesis, drafting, review, iteration with stakeholders, and risk management. Most of these steps are not mysterious. They are repeatable.</p>
 
-                        <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes. And none of that gets easier when your tokens vanish the moment the context window fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.</p>
+                        <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes. And none of that gets easier when your <a href="https://en.wikipedia.org/wiki/Large_language_model#Tokenization" title="Small word-sized chunks that AI models use to process text" target="_blank" rel="noopener">tokens</a> vanish the moment the <a href="https://en.wikipedia.org/wiki/Large_language_model#Prompt" title="The limited amount of text an AI can 'see' at once" target="_blank" rel="noopener">context window</a> fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.</p>
 
                         <p>That is <strong>organization</strong>. Not intelligence.</p>
 
@@ -122,11 +122,11 @@
 
                         <p>Nature does not scale a single component to infinity. Nature differentiates.</p>
 
-                        <p>Imagine discovering mRNA — a molecule that can both hold information and perform chemistry. Now imagine deciding to scale that one molecule into a giant monolith that stores all instructions, catalyzes all reactions, and regulates itself internally. In principle, maybe it could work.</p>
+                        <p>Imagine discovering <a href="https://en.wikipedia.org/wiki/Messenger_RNA" title="Messenger RNA — a molecule that carries genetic instructions inside cells" target="_blank" rel="noopener">mRNA</a> — a molecule that can both hold information and perform chemistry. Now imagine deciding to scale that one molecule into a giant monolith that stores all instructions, catalyzes all reactions, and regulates itself internally. In principle, maybe it could work.</p>
 
                         <p>But evolution chose composition. DNA became long-term storage. Proteins became functional workhorses. Lipid membranes created boundaries. Regulatory networks added meta-control. Later, nervous systems emerged as a higher-order organizational layer that no longer operates at the molecular level at all.</p>
 
-                        <p>The same pattern applies to the cortex. A cortical column is powerful — it can learn patterns and generalize. But intelligence did not emerge from one enormous super-column. It emerged from columns connecting to columns, specialized regions differentiating, and coordinated subsystems handling memory, motor planning, language, and executive control.</p>
+                        <p>The same pattern applies to the cortex. A <a href="https://en.wikipedia.org/wiki/Cortical_column" title="A small group of neurons in the brain that work together as a processing unit" target="_blank" rel="noopener">cortical column</a> is powerful — it can learn patterns and generalize. But intelligence did not emerge from one enormous super-column. It emerged from columns connecting to columns, specialized regions differentiating, and coordinated subsystems handling memory, motor planning, language, and executive control.</p>
 
                         <figure class="blog-image">
                             <img src="../assets/images/blog/mrna-vs-organism.png" alt="Chalkboard diagram: left shows a tangled Giant mRNA with red X marks on information storage, catalysis, regulation, and replication — one component doing everything (not viable). Right shows a Differentiated Cell with labeled organelles: DNA/Chromosomes for storage, Mitochondria for power, ER/Ribosomes for structural support, Golgi for transport. Footer reads 'Nature scaled functional differentiation, not molecule size'." loading="lazy">
@@ -169,7 +169,7 @@
 
                         <h2>Hooks Are the Missing Evolutionary Layer</h2>
 
-                        <p>Modern CLI agents give you something that looks small but is profound: <strong>interception points</strong>.</p>
+                        <p>Modern <a href="https://en.wikipedia.org/wiki/Command-line_interface" title="Command Line Interface — a text-based way to interact with software" target="_blank" rel="noopener">CLI</a> agents give you something that looks small but is profound: <strong>interception points</strong>.</p>
 
                         <p>Pre-tool hooks. Post-tool hooks. Compact hooks. Stop hooks. Notification hooks. Session events.</p>
 
@@ -187,7 +187,7 @@
 
                         <p>A long-running agent should do the same. During work: collect raw traces — tool calls, file edits, outcomes, feedback. During consolidation: analyze traces, detect patterns, propose changes.</p>
 
-                        <p>Crucially, changes are not magic. They are edits: update an instruction file (<code>CLAUDE.md</code>, <code>AGENT.md</code>, or equivalent), refine a checklist, add a guardrail hook, create a specialized skill module, fine-tune a small internal decision model for one narrow choice.</p>
+                        <p>Crucially, changes are not magic. They are edits: update an instruction file (<code>CLAUDE.md</code>, <code>AGENT.md</code>, or equivalent), refine a checklist, add a guardrail hook, create a specialized skill module, <a href="https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)" title="Further training a pre-built AI model on a specific task to make it better at that task" target="_blank" rel="noopener">fine-tune</a> a small internal decision model for one narrow choice.</p>
 
                         <p>This is how you get professional competence without requiring the main model to internalize everything.</p>
 
@@ -226,7 +226,7 @@
 
                         <p>Imagine two systems working and learning the same profession for a year.</p>
 
-                        <p><strong>System 1:</strong> a monolithic model session that regenerates its own state each time. The only way it improves is through retraining — expensive reinforcement learning runs that require massive compute and touch every weight at once. Between those runs, it returns to baseline every session. It can be impressive, but it does not accumulate a personal history.</p>
+                        <p><strong>System 1:</strong> a monolithic model session that regenerates its own state each time. The only way it improves is through retraining — expensive <a href="https://en.wikipedia.org/wiki/Reinforcement_learning" title="A training method where AI learns by trial and error with rewards and penalties" target="_blank" rel="noopener">reinforcement learning</a> runs that require massive compute and touch every weight at once. Between those runs, it returns to baseline every session. It can be impressive, but it does not accumulate a personal history.</p>
 
                         <p><strong>System 2:</strong> an architecture that logs traces, maintains job state on disk, and runs consolidation loops. After a year, it has thousands of structured case notes, a playbook of checklists and failure modes, specialized templates, a library of reusable skills, refined guardrails, and a continuously evolving internal organization of knowledge.</p>
 

@@ -70,7 +70,7 @@
 
                         <p>A toaster is a simple structure. It takes raw electrical energy and channels it into a <strong>specific, repeatable outcome</strong> — toast, every time. Not because electricity "decided" to make toast. Because the wires, the timer, and the slots shaped the energy into a predictable result.</p>
 
-                        <p>This is the relationship between an LLM and an agent.</p>
+                        <p>This is the relationship between an <a href="https://en.wikipedia.org/wiki/Large_language_model" title="Large Language Model — AI software like ChatGPT or Claude that generates text" target="_blank" rel="noopener">LLM</a> and an agent.</p>
 
                         <p>The LLM provides <strong>raw reasoning power</strong>. It can write, analyze, plan, and create. But without structure, that power goes in a different direction every time. The agent provides the structure. It channels the LLM's intelligence into <strong>consistent, reliable behavior</strong>.</p>
 
@@ -105,7 +105,7 @@
 
                         <p>An agent is the engine <strong>plus a local brain</strong>.</p>
 
-                        <p>In CLI-based agents — tools like Claude Code, OpenCode, or Gemini CLI — that brain is not abstract or metaphorical. It is <strong>literal</strong>. It is a collection of files and directories on your local disk.</p>
+                        <p>In <a href="https://en.wikipedia.org/wiki/Command-line_interface" title="Command Line Interface — a text-based way to interact with software" target="_blank" rel="noopener">CLI</a>-based agents — tools like Claude Code, OpenCode, or Gemini CLI — that brain is not abstract or metaphorical. It is <strong>literal</strong>. It is a collection of files and directories on your local disk.</p>
 
                         <p><strong>The agent is the filesystem.</strong></p>
 
@@ -156,7 +156,7 @@
 
                         <figure class="blog-image">
                             <img src="../assets/images/blog/action-space-markov-chain.png" alt="Markov chain diagram showing Claude Code's action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices. Raw input enters from one side — the LLM bounces between states based on probabilities, not structure." loading="lazy">
-                            <figcaption>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a Markov chain where every path is equally likely.</figcaption>
+                            <figcaption>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a <a href="https://en.wikipedia.org/wiki/Markov_chain" title="A system where the next step depends only on the current state, not the full history" target="_blank" rel="noopener">Markov chain</a> where every path is equally likely.</figcaption>
                         </figure>
 
                         <blockquote>
@@ -169,7 +169,7 @@
 
                         <p>Now watch what happens when you add structure.</p>
 
-                        <p>Modern CLI agents support <strong>hook systems</strong> — events that fire at specific points in the agent's lifecycle. These are not optional plugins. They are the mechanism that transforms a raw LLM into a structured agent.</p>
+                        <p>Modern CLI agents support <a href="https://en.wikipedia.org/wiki/Hooking" title="Trigger points where custom rules automatically run when an event happens" target="_blank" rel="noopener"><strong>hook systems</strong></a> — events that fire at specific points in the agent's lifecycle. These are not optional plugins. They are the mechanism that transforms a raw LLM into a structured agent.</p>
 
                         <figure class="blog-image">
                             <img src="../assets/images/blog/hooks-and-action-space.png" alt="Chalkboard flowchart of the Claude Code Agent hook system. User prompt enters through UPS Hook, branches into Response, Thinking (with PreToolUse Hook, Tool, and PostToolUse Hook), Notification Hook leading to User Action, Task to SubagentStop Hook, PreCompact Hook to Compact Operation to SessionStart Hook, and a red Stop Hook at the bottom. Each hook is an interception point where structure overrides probabilistic behavior." loading="lazy">
