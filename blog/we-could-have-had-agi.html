@@ -63,85 +63,95 @@
 
                         <p>That is the story of the last three years of AI. The default bet has been: <strong>scale the token generator until it becomes the whole agent</strong>. Make the model smarter, train it harder, give it more tools, and eventually it will plan its own workflows, remember its own history, and evolve into something we can call AGI.</p>
 
-                        <p><strong>That bet is wrong.</strong> Not because models are bad. They are extraordinary. But because scaling the electricity will never build the kitchen. It will build a brighter arc.</p>
-
-                        <p>Here is the uncomfortable claim: <strong>we could have had something that behaves like AGI years ago, with smaller models, if we had scaled architecture instead of scaling only the model.</strong> Not a god-model. Not a universal mind. But the thing most teams actually want — a system that learns a profession, keeps working, gets better from experience, and does not need babysitting.</p>
-
-                        <p>We chose the wrong axis to scale.</p>
-
-                        <!-- ======== 2. BIOLOGY DID NOT SCALE ONE MOLECULE ======== -->
-
-                        <h2>Biology Did Not Scale One Molecule</h2>
-
-                        <p>Nature figured this out billions of years ago.</p>
-
-                        <p>Imagine discovering mRNA — a molecule that can both hold information and perform chemistry. Now imagine deciding to scale that one molecule into a giant monolith that stores all instructions, catalyzes all reactions, and regulates itself. Pour all your resources into making one molecule do everything.</p>
-
-                        <p>That is what we are doing with LLMs.</p>
-
-                        <p>Evolution went the other direction. DNA became long-term storage. Proteins became functional workhorses. Lipid membranes created boundaries. Regulatory networks added meta-control. Later, nervous systems emerged — a higher-order organizational layer that no longer operates at the molecular level at all.</p>
-
-                        <p>The cortex tells the same story. A cortical column is powerful — it can learn patterns and generalize. But intelligence did not emerge from one enormous super-column. It emerged from columns connecting to columns, specialized regions differentiating, and subsystems handling memory, motor planning, language, and executive control independently.</p>
-
                         <blockquote>
-                            <p><strong>When we scale only the model, we are building the giant mRNA. When we scale architecture, we are building the organism.</strong></p>
+                            <p><strong>We could have had something that behaves like a career-capable, long-horizon, self-improving agent years ago, with smaller models, if we had scaled architecture instead of scaling only the model.</strong></p>
                         </blockquote>
 
-                        <p>This is not a metaphor. It is a design principle. Differentiation gives you local adaptation without global interference. Specialization without entangling everything in one parameter space. Replaceability — swap a module, keep the organism. Multi-timescale learning — fast reflexes, slow remodeling. And robustness — one failure does not erase identity.</p>
+                        <p>Not a perfect god-model. Not a universal mind. But something close to what most people actually mean in practice when they say "AGI": a system that can learn a profession, keep working, get better from experience, and do it with minimal babysitting.</p>
 
-                        <p>A single molecule cannot do this. An organism can.</p>
+                        <!-- ======== 2. ELECTRICITY/TOASTERS AGAIN ======== -->
+
+                        <h2>LLMs Are Electricity. Agents Are Toasters. (Again.)</h2>
+
+                        <p>If you read <a href="llms-are-not-the-agents.html">the first essay</a>, you already know: LLMs are electricity. Agents are toasters. The structure turns raw power into repeatable work.</p>
+
+                        <p>This essay extends that idea to a harder question: <strong>what would actual AGI look like, and why does scaling the electricity feel like the wrong path?</strong></p>
+
+                        <p>Scaling the electricity will not build the toaster. It will build a brighter arc.</p>
 
                         <!-- ======== 3. A LAWYER IS NOT ONE GIANT THOUGHT ======== -->
 
                         <h2>A Lawyer Is Not One Giant Thought</h2>
 
-                        <p>People overestimate how much a profession is raw IQ. They underestimate how much it is disciplined workflow.</p>
+                        <p>People overestimate how much a profession is raw IQ and underestimate how much it is disciplined workflow.</p>
 
-                        <p>A competent lawyer does not sit in a chair and think harder. A competent lawyer runs a pipeline: intake, scoping, research, synthesis, drafting, review, iteration with stakeholders, risk management. Most of these steps are not mysterious. They are repeatable.</p>
+                        <p>A competent professional is a pipeline: intake and clarification, scoping, research, synthesis, drafting, review, iteration with stakeholders, and risk management. Most of these steps are not mysterious. They are repeatable.</p>
 
                         <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes.</p>
 
-                        <p><strong>That is organization. Not intelligence.</strong></p>
+                        <p>That is <strong>organization</strong>. Not intelligence.</p>
 
-                        <p>Build that pipeline — make it persistent, inspectable, self-improving — and you have professional competence. Even with a smaller model as the engine. The engine does not need to be a genius. The pipeline does.</p>
+                        <p>If you can build that organizational pipeline — and make it persistent, inspectable, and self-improving — you have something that behaves like professional competence. Even with a smaller model as the engine.</p>
 
                         <!-- ======== 4. WHERE DOES THE CONTEXT COME FROM? ======== -->
 
                         <h2>Where Does the Context Come From?</h2>
 
-                        <p>Here is a diagnostic you can run on any "agent" system.</p>
+                        <p>Here is a diagnostic you can run on any "agent" system:</p>
 
-                        <p>At a random moment during a long task, snapshot the full context window. Ask: what fraction of this context was produced by the model in this session? And what fraction was injected by structure — files, rules, hooks, logs, memory retrieval?</p>
+                        <p>At a random moment during a long task, snapshot the full context window and ask: what fraction of this context was produced by the model in the current session? And what fraction was injected by structure — files, rules, hooks, logs, schemas, policies, memory retrieval?</p>
 
-                        <p>If almost all of it is fresh tokens, you are still trying to get the kitchen out of electricity.</p>
+                        <p>If almost all of it is fresh tokens, you are still trying to get the toaster out of electricity.</p>
 
-                        <p>If a significant fraction is injected by durable structure, you are building an organism.</p>
+                        <p>If a significant fraction is injected by durable structure, you are moving toward a real agent.</p>
 
-                        <p>A system that regenerates its operational state from its own token stream every session is a closed loop. It can be clever. It is also fragile, unauditable, and unrepeatable. A system that maintains state outside the token stream has independent anchors. It can recover. It can be inspected. It can be upgraded in parts.</p>
+                        <p>A system that regenerates its entire operational state from its own token stream is a closed loop. It can be clever, but it is fragile. A system that maintains state outside the token stream has independent anchors. It can recover. It can be audited. It can be upgraded in parts.</p>
 
-                        <p><strong>This is the difference between a monologue and an organism.</strong></p>
+                        <p>This is the difference between a monologue and an organism.</p>
 
-                        <p>A practical way to measure this: calculate a rough "injected context ratio" — tokens from files, tools, hooks, and memory divided by total context tokens. Higher means more stable anchors. Over time, an architecture-centric system should show more injected context from durable playbooks, less re-derivation of the same constraints, and fewer failures from forgotten steps.</p>
+                        <figure class="blog-image-placeholder">
+                            <figcaption>Diagram: Injected Context Ratio — comparing a context window dominated by fresh tokens (closed loop) versus one anchored by durable structure (organism)</figcaption>
+                        </figure>
 
-                        <!-- ======== 5. THE HEARTBEAT ======== -->
+                        <p><strong>A practical metric:</strong> calculate a rough "injected context ratio" — tokens inserted from files, tools, hooks, and memory divided by total context tokens. A higher ratio means the system depends on stable external anchors. Behavior becomes easier to audit and stabilize. Over time, an architecture-centric system should show more injected context from durable playbooks, less repeated re-derivation of the same constraints, and fewer failures from forgotten steps.</p>
 
-                        <h2>The Heartbeat</h2>
+                        <!-- ======== 5. BIOLOGY DID NOT SCALE ONE MOLECULE ======== -->
 
-                        <p>Here is the smallest architectural feature that changes everything.</p>
+                        <h2>Biology Did Not Scale One Molecule</h2>
 
-                        <p>Define a persistent list of <strong>jobs</strong> on disk. Not in the model. On disk. Mark jobs active or completed. Install a hook that intercepts "Stop" and blocks it while any job is active. Make the agent loop: keep working until the job queue is empty.</p>
+                        <p>Nature does not scale a single component to infinity. Nature differentiates.</p>
 
-                        <p>That is it. That is a heartbeat.</p>
+                        <p>Imagine discovering mRNA — a molecule that can both hold information and perform chemistry. Now imagine deciding to scale that one molecule into a giant monolith that stores all instructions, catalyzes all reactions, and regulates itself internally. In principle, maybe it could work.</p>
 
-                        <p>Now scale it. Jobs spawn other jobs. Jobs schedule recurring jobs. Jobs get retired or archived. Every job has an observation field that must be processed into long-term memory before completion.</p>
+                        <p>But evolution chose composition. DNA became long-term storage. Proteins became functional workhorses. Lipid membranes created boundaries. Regulatory networks added meta-control. Later, nervous systems emerged as a higher-order organizational layer that no longer operates at the molecular level at all.</p>
 
-                        <p>The system cannot "forget" by accident. It must metabolize its experience. It must tidy its state.</p>
+                        <p>The same pattern applies to the cortex. A cortical column is powerful — it can learn patterns and generalize. But intelligence did not emerge from one enormous super-column. It emerged from columns connecting to columns, specialized regions differentiating, and coordinated subsystems handling memory, motor planning, language, and executive control.</p>
 
-                        <p>Call them jobs, behaviors, intentions, obligations — the name does not matter. The principle does: <strong>persistent state plus enforcement hooks</strong>.</p>
+                        <blockquote>
+                            <p><strong>When we scale only the model, we are building the giant mRNA. When we scale architecture, we are building the organism.</strong></p>
+                        </blockquote>
 
-                        <p>This already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, Gemini CLI's AfterAgent hook — they all provide the interception point needed to prevent premature stopping. OpenAI's Codex CLI still has no hook system. Community pull requests for one have been declined. Without interception points, the model's probabilistic behavior cannot be regulated by structure. The engine runs. The builder has no steering mechanism.</p>
+                        <p>Differentiation buys you local adaptation without global interference, specialization without entangling everything in one parameter space, replaceability (swap a module, keep the organism), multi-timescale learning (fast reflexes, slow remodeling), and robustness (one failure does not erase identity).</p>
 
-                        <!-- ======== 6. HOOKS ARE THE MISSING EVOLUTIONARY LAYER ======== -->
+                        <!-- ======== 6. THE HEARTBEAT ======== -->
+
+                        <h2>The Heartbeat: Where Agency Actually Begins</h2>
+
+                        <p>Here is the smallest architectural feature that changes everything:</p>
+
+                        <p>Define a persistent list of <strong>jobs</strong> on disk (not in the model). Mark jobs active or completed. Install a hook that intercepts "Stop" and blocks it while any job is active. Make the agent loop: keep working until the job queue is empty.</p>
+
+                        <p>This is not fancy. It is a heartbeat.</p>
+
+                        <p>Then you scale it. Jobs can spawn other jobs. Jobs can schedule recurring jobs. Jobs can be retired or archived. Every job has an observation field that must be processed into long-term memory before completion.</p>
+
+                        <p>You now have a system that cannot "forget" by accident. It must metabolize its experience. It must tidy its state.</p>
+
+                        <p>If you prefer different terminology, call them behaviors, intentions, processes, or obligations. The organizational principle is the same: <strong>persistent state plus enforcement hooks</strong>.</p>
+
+                        <p>This pattern already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, and Gemini CLI's AfterAgent hook (shipped January 2026) all provide the interception point needed to prevent premature stopping. Notably, OpenAI's Codex CLI still lacks a hook system — community implementations have been declined. Without interception points, the model's probabilistic behavior cannot be regulated by structure. The engine runs, but the builder has no steering mechanism.</p>
+
+                        <!-- ======== 7. HOOKS ARE THE MISSING EVOLUTIONARY LAYER ======== -->
 
                         <h2>Hooks Are the Missing Evolutionary Layer</h2>
 
@@ -151,119 +161,107 @@
 
                         <p>Each one is a place where the architecture — not the model — decides what happens next. The model proposes. The structure disposes.</p>
 
-                        <p>Every hook is also a <strong>learning surface</strong>. The system can observe its own behavior, log what happened, and improve next time. Without hooks, the agent has no way to watch itself. With hooks, it has a nervous system.</p>
+                        <p>When hooks also log transactions, you get an experience stream. And that experience stream enables something crucial: sleep.</p>
 
-                        <p>And when hooks log transactions, you get an experience stream. That experience stream enables something crucial.</p>
+                        <!-- ======== 8. SLEEP ======== -->
 
-                        <p>Sleep.</p>
-
-                        <!-- ======== 7. SLEEP: WHERE THE ORGANISM LEARNS ======== -->
-
-                        <h2>Sleep: Where the Organism Learns</h2>
+                        <h2>Sleep: Where the System Learns</h2>
 
                         <p>Humans do not improve only while acting. They consolidate.</p>
 
                         <p>A long-running agent should do the same. During work: collect raw traces — tool calls, file edits, outcomes, feedback. During sleep: analyze traces, detect patterns, propose changes.</p>
 
-                        <p>The changes are not magic. They are edits. Update an instruction file. Refine a checklist. Add a guardrail hook. Create a specialized skill module. Fine-tune a small decision model for one narrow choice.</p>
+                        <p>Crucially, changes are not magic. They are edits: update an instruction file (<code>CLAUDE.md</code>, <code>AGENT.md</code>, or equivalent), refine a checklist, add a guardrail hook, create a specialized skill module, fine-tune a small internal decision model for one narrow choice.</p>
 
-                        <p><strong>This is how you get professional competence without requiring the model to internalize everything.</strong></p>
+                        <p>This is how you get professional competence without requiring the main model to internalize everything.</p>
 
-                        <p>The organism does not need a bigger brain. It needs a brain that digests its own experience and writes what it learned back into its own structure. Sleep is not downtime. Sleep is the mechanism by which the organism rewires itself.</p>
+                        <!-- ======== 9. THE SEED AGENT ======== -->
 
-                        <!-- ======== 8. THE SEED AGENT ======== -->
+                        <h2>The Seed Agent: An Organization in Miniature</h2>
 
-                        <h2>The Seed Agent</h2>
+                        <p>Instead of asking "how smart must the model be?", ask "what roles must the system perform?" A compact seed set:</p>
 
-                        <p>Instead of asking "how smart must the model be?", ask a different question: <strong>"what roles must the system perform?"</strong></p>
+                        <p><strong>Scheduler</strong> — jobs, priorities, budgets. <strong>Planner</strong> — decompose objectives into jobs. <strong>Executor</strong> — tool calls, file edits. <strong>Verifier</strong> — check outputs against criteria. <strong>Memory manager</strong> — store, retrieve, scope. <strong>Consolidator</strong> — distill experience into durable forms. <strong>Critic</strong> — detect recurring failure patterns. <strong>Skill builder</strong> — create new tools and workflows when missing. <strong>Watchdog</strong> — detect loops and runaway behavior.</p>
 
-                        <p>A compact seed set: scheduler, planner, executor, verifier, memory manager, consolidator, critic, skill builder, watchdog. Nine roles. Each one can be a job type, a module, a specialized sub-model. None of them needs to be a genius. Each one just needs to do its job.</p>
+                        <p>This is already an organization. Each role can be implemented as a job type, an intention, a module, or a specialized internal model. The key is differentiation — not having one undifferentiated engine try to do everything simultaneously.</p>
 
-                        <p>This is already an organization. Not an engine pretending to be an organization — an actual differentiated system where each role has boundaries and responsibilities.</p>
+                        <figure class="blog-image-placeholder">
+                            <figcaption>Diagram: The Seed Agent — nine roles arranged as an organizational chart, each one a module rather than a monolithic capability</figcaption>
+                        </figure>
 
-                        <p>The key is differentiation. One undifferentiated engine trying to plan, execute, verify, remember, and regulate itself simultaneously is a molecule trying to be an organism. It can be impressive. It will also be fragile.</p>
+                        <!-- ======== 10. INTERNALIZATION IS NOT THE ANSWER ======== -->
 
-                        <!-- ======== 9. THE INTERNALIZATION OBJECTION ======== -->
+                        <h2>Internalization Is Not the Answer</h2>
 
-                        <h2>The Internalization Objection</h2>
-
-                        <p>The standard objection: give the model enough capacity and it will learn to do all of this internally.</p>
+                        <p>The standard objection: give the model enough capacity and it will learn to plan, remember, verify, and regulate itself.</p>
 
                         <p>Two problems.</p>
 
-                        <p>First — even if internalization is possible, it is not modular. You cannot inspect the "hook" inside the weights. You cannot swap it. You cannot patch it without touching everything else. Internalized structure is trapped in one coupled parameter space. Good luck debugging it.</p>
+                        <p>First, even if internalization is possible, it is not modular. You cannot inspect the "hook" inside the weights. You cannot swap it. You cannot patch it without touching everything else. Internalized structure is trapped in one coupled parameter space.</p>
 
-                        <p>Second — internalization is economically brutal. You are paying model-scale costs to simulate what software can do for free. A verification checklist costs nothing. A budgeting rule costs nothing. A tool permission gate costs nothing. If these prevent even a small fraction of failures, they dominate marginal gains from scaling.</p>
+                        <p>Second, internalization is economically brutal. You are paying model-scale costs to simulate what software can do cheaply and deterministically. A verification checklist costs almost nothing. A budgeting rule costs almost nothing. A tool permission gate costs almost nothing. If these prevent even a small fraction of failures, they dominate marginal gains from scaling in many real deployments.</p>
 
-                        <p>Why would you train a trillion parameters to learn "do not delete production databases" when a three-line hook already enforces it?</p>
-
-                        <!-- ======== 10. WHAT A YEAR OF EXPERIENCE LOOKS LIKE ======== -->
+                        <!-- ======== 11. WHAT A YEAR OF EXPERIENCE LOOKS LIKE ======== -->
 
                         <h2>What a Year of Experience Looks Like</h2>
 
                         <p>Imagine two systems learning the same profession for a year.</p>
 
-                        <p><strong>System 1:</strong> a monolithic model session. Every time it starts, it regenerates its state from scratch. Without retraining, it returns to baseline every session. It can be impressive in any given conversation. But it has no personal history. It does not accumulate. It does not grow.</p>
+                        <p><strong>System 1:</strong> a monolithic model session that regenerates its own state each time. Without retraining, it returns to baseline every session. It can be impressive, but it does not accumulate a personal history.</p>
 
-                        <p><strong>System 2:</strong> an architecture that logs traces, maintains job state on disk, and runs consolidation loops. After a year, it has thousands of structured case notes. A playbook of checklists and failure modes. Specialized templates. A library of reusable skills. Refined guardrails. A continuously evolving organization of knowledge.</p>
+                        <p><strong>System 2:</strong> an architecture that logs traces, maintains job state on disk, and runs consolidation loops. After a year, it has thousands of structured case notes, a playbook of checklists and failure modes, specialized templates, a library of reusable skills, refined guardrails, and a continuously evolving internal organization of knowledge.</p>
 
-                        <p>When you talk to System 2, you are not talking to a fresh model instance. You are talking to an organism that remembers.</p>
+                        <p>When you talk to System 2, you are not talking to a fresh model instance. You are talking to an organism that has a history.</p>
 
-                        <p>Which one would you hire?</p>
-
-                        <!-- ======== 11. THE PRACTICAL ROADMAP ======== -->
+                        <!-- ======== 12. THE PRACTICAL ROADMAP ======== -->
 
                         <h2>The Practical Roadmap</h2>
 
-                        <p>If you want to build toward this now, do not wait for the next model. Build these four layers:</p>
+                        <p>If you want to build toward AGI-like autonomy now, do not wait for the next model. Build these four layers:</p>
 
                         <ol>
-                            <li><strong>A filesystem brain with compartmentalized memory.</strong> Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and instruction files scoped to where they are needed.</li>
+                            <li><strong>A filesystem brain with compartmentalized memory.</strong> Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and instruction files (<code>CLAUDE.md</code>, <code>AGENT.md</code>) scoped to where they are needed.</li>
 
-                            <li><strong>A hook system that enforces phases and permissions.</strong> Interception points where deterministic rules override probabilistic behavior. The mechanism varies by platform. The principle is identical.</li>
+                            <li><strong>A hook system that enforces phases and permissions.</strong> Interception points where deterministic rules override probabilistic behavior. Claude Code hooks, OpenCode plugin events, Gemini CLI hooks — the mechanism varies, the principle is identical.</li>
 
-                            <li><strong>A job system that keeps the agent alive until obligations are met.</strong> Persistent jobs. Stop-blocking hooks. Observation fields that must be processed before completion.</li>
+                            <li><strong>A job system that keeps the agent alive until obligations are met.</strong> Persistent jobs as structured objects. Stop-blocking hooks that prevent premature exit. Observation fields that must be processed before completion.</li>
 
-                            <li><strong>A consolidation loop that converts experience into durable upgrades.</strong> Sleep phases where traces are analyzed, distilled, and written back as improved instructions, refined checklists, and new skills.</li>
+                            <li><strong>A consolidation loop that converts traces into durable upgrades.</strong> Sleep phases where logged experience is analyzed, distilled, and written back as improved instructions, refined checklists, and new skills.</li>
                         </ol>
 
                         <p>The engine can be Claude, GPT, Gemini, or whatever comes next. If the architecture is sound, the organism survives engine swaps.</p>
 
-                        <!-- ======== 12. WHY WE COULD HAVE HAD IT BY NOW ======== -->
+                        <!-- ======== 13. WHY I SAY WE COULD HAVE HAD IT BY NOW ======== -->
 
-                        <h2>Why We Could Have Had It by Now</h2>
+                        <h2>Why I Say "We Could Have Had It by Now"</h2>
 
-                        <p>Because the building blocks have been available for years.</p>
+                        <p>Because the building blocks have been available for years. Persistent storage is trivial. Event hooks are basic software. Tool execution is standard. Logging and evaluation are solved problems. Even small models can follow structured workflows when the structure is explicit.</p>
 
-                        <p>Persistent storage is trivial. Event hooks are basic software. Tool execution is standard. Logging and evaluation are solved problems. Even small models can follow structured workflows when the structure is explicit.</p>
+                        <p>If the research effort that went into squeezing marginal gains out of prompt-following had gone into long-horizon architectural experiments, we would already have more systems that keep working for weeks, learn workflows, accumulate real project memory, and behave consistently for a given user.</p>
 
-                        <p>If the research effort that went into squeezing marginal gains out of prompt-following had gone into long-horizon architectural experiments, we would already have systems that keep working for weeks, learn workflows, accumulate real project memory, and behave consistently for a given user.</p>
+                        <p>That is the kind of "AGI" most teams actually want: a durable collaborator that gets better.</p>
 
-                        <p><strong>That is the kind of AGI most teams actually want.</strong> Not a god-model. A durable collaborator that gets better.</p>
-
-                        <!-- ======== 13. CLOSING ======== -->
+                        <!-- ======== 14. CLOSING ======== -->
 
                         <h2>Closing</h2>
 
                         <p>The industry keeps asking: "When will the model become AGI?"</p>
 
-                        <p>Wrong question.</p>
+                        <p>A better question is: <strong>"When will we stop confusing the engine for the organism?"</strong></p>
 
-                        <p><strong>"When will we stop confusing the engine for the organism?"</strong></p>
-
-                        <p>Models will keep improving. The real leverage is building architectures that can absorb those improvements without rebuilding the whole organism each time. A smarter engine inside a well-built organism is compounding. A smarter engine running bare is still just a brighter arc.</p>
+                        <p>Models will keep improving. The real leverage is building architectures that can absorb those improvements without rebuilding the whole organism each time. That is how you get to an AGI-like entity faster, cheaper, and with more control than the monolithic scaling path.</p>
 
                         <p>Scaling the model asks: "How smart can one engine be?"</p>
 
-                        <p>Scaling architecture asks: "How capable can an organization become?"</p>
+                        <p>Scaling architecture asks: "How capable can an organization become with engines that already exist?"</p>
 
-                        <p>The organism does not need to wait for a better engine. <strong>The organism needs to be built.</strong></p>
+                        <p>If your goal is practical autonomy, the second question is the one that matters.</p>
 
                         <hr>
 
-                        <p><em>For the analytical companion — including falsifiable predictions, organizational complexity frameworks, and a practical experiment you can run yourself — download the white paper: <a href="../papers/why-scaling-models-is-not-enough.pdf"><strong>"Why Scaling Models Is Not Enough."</strong></a></em></p>
+                        <p><em>For the analytical companion piece — including falsifiable predictions, detailed organizational complexity frameworks, and a practical experiment you can run yourself — download the white paper: <a href="../papers/why-scaling-models-is-not-enough.pdf"><strong>"Why Scaling Models Is Not Enough: The Case for Organizational Depth in Agent Architecture."</strong></a></em></p>
 
-                        <p><em>This is the second essay in the Hadosh Academy series on agent architecture. The first, <a href="llms-are-not-the-agents.html">"LLMs Are Not the Agents,"</a> establishes the foundation: the agent is the filesystem, not the model.</em></p>
+                        <p><em>This is the second essay in the Hadosh Academy series on agent architecture. The first essay, <a href="llms-are-not-the-agents.html">"LLMs Are Not the Agents,"</a> establishes the foundation: the agent is the filesystem, not the model.</em></p>
 
                     </div>
                 </div>
