@@ -117,7 +117,7 @@
 
                         <p><strong>This is not yet an agent.</strong> This is a raw engine running with no car around it.</p>
 
-                        <p>But when you add a <code>.claude/</code> directory (or <code>AGENT.md</code> in platform-agnostic setups) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. Not the LLM. The LLM is just the engine. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
+                        <p>But when you add a <code>.claude/</code> directory (or <code>.opencode/</code> in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. Not the LLM. The LLM is just the engine. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
 
                         <!-- ======== 4. THE DEFAULT STATE ======== -->
 
@@ -141,7 +141,12 @@
 
                         <p>The problem? <strong>Small changes in context lead to completely different paths.</strong> Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.</p>
 
-                        <p>This is why working with a bare LLM can feel like a <strong>random walk</strong>. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow.</p>
+                        <p>This is why working with a bare LLM can feel like a <strong>random walk</strong>. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. A raw LLM agent has extreme ADHD — brilliant, full of potential, but unable to stay on track without external structure holding it accountable.</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/action-space-markov-chain.png" alt="Markov chain diagram showing Claude Code's action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices. Raw input enters from one side — the LLM bounces between states based on probabilities, not structure." loading="lazy">
+                            <figcaption>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a Markov chain where every path is equally likely.</figcaption>
+                        </figure>
 
                         <blockquote>
                             <p>Intelligence alone is not reliability. <strong>Structure is.</strong></p>
@@ -169,16 +174,16 @@
                             <li><strong>Log</strong> what happened for future reference</li>
                         </ul>
 
-                        <p>This is how you turn a probabilistic chain into a <strong>deterministic pipeline</strong>. The LLM still does the thinking. But the hooks define the guardrails, the checkpoints, and the reflexes. The LLM proposes. The structure disposes.</p>
+                        <p>This is how you turn a probabilistic chain into a <strong>deterministic pipeline</strong>. The LLM still does the thinking. But the hooks define the guardrails, the checkpoints, the reflexes — and most importantly, the <strong>learning surface</strong>. Every hook is a place where the agent can observe its own behavior, log what happened, and improve next time. The LLM proposes. The structure disposes.</p>
 
                         <p>Beyond hooks, the <strong>instruction files</strong> shape behavior even more fundamentally. A <code>CLAUDE.md</code> file (or <code>AGENT.md</code> in platform-agnostic setups) acts as <strong>dynamic working memory</strong>. It tells the LLM what phase it is in, what it should focus on, what decisions have already been made, and how to approach the current task.</p>
 
                         <figure class="blog-image">
-                            <img src="../assets/images/blog/claude-md-working-memory.png" alt="Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory." loading="lazy">
-                            <figcaption>The working memory cycle. A CLAUDE.md file sits at the center, updated throughout each phase. This is how the agent maintains context, tracks progress, and learns from its work.</figcaption>
+                            <img src="../assets/images/blog/claude-md-working-memory.png" alt="Circular diagram showing the Living Brain dynamic working memory cycle: OBSERVE (absorb context), PLAN (write detailed steps), EXECUTE (perform tasks and log), VERIFY (check results against criteria), CONDENSE (clean and refine info), all revolving around a central instruction file that serves as dynamic working memory." loading="lazy">
+                            <figcaption>The working memory cycle. Information flows through five phases: context is absorbed during Observe, transformed into steps during Plan, updated with lessons during Execute, validated during Verify, and properly reabsorbed during Condense. An instruction file sits at the center, updated throughout.</figcaption>
                         </figure>
 
-                        <p>This cycle — <strong>Observe, Plan, Execute, Condense</strong> — is not something the LLM invented on its own. It is a structure defined in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space.</p>
+                        <p>This cycle — <strong>Observe, Plan, Execute, Verify, Condense</strong> — is not something the LLM invented on its own. It is a structure defined in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space.</p>
 
                         <p>The structure does not replace intelligence. It <strong>channels</strong> it. The same way a toaster does not generate electricity — it shapes electricity into toast.</p>
 
@@ -213,7 +218,7 @@
                             <figcaption>One brain, many engines. The same agent directory — with its knowledge, rules, and memory — connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.</figcaption>
                         </figure>
 
-                        <p>A robust agent must be able to use <strong>any LLM provider</strong>. If your agent only works with one model on one platform, you have not built an agent. You have built a dependency.</p>
+                        <p>A robust agent must be able to use <strong>any LLM provider</strong>.</p>
 
                         <!-- ======== 7. COMPARTMENTALIZATION ======== -->
 
@@ -236,7 +241,7 @@
                             <li><strong>Global context</strong> lives at the user level — preferences, conventions, stable patterns</li>
                             <li><strong>Agent identity</strong> lives at the project root — who the agent is, its operational phases, its personality</li>
                             <li><strong>Brain documentation</strong> lives in the agent's brain directory — how the brain works, its growth rules, its structure</li>
-                            <li><strong>Local working memory</strong> lives in each subdirectory — task-specific context, scoped to exactly where it is needed</li>
+                            <li><strong>Local working memory</strong> lives in each subdirectory — task-specific context, scoped to exactly where it is needed. Think of it like the body's circulatory system: blood flows where it is needed most — to the digestive system after eating, to the muscles during a workout. Working memory inflates in the directory where the agent is active and contracts when attention moves elsewhere.</li>
                         </ul>
 
                         <p>Without compartmentalization, you get <strong>"prompt soup"</strong> — every piece of context dumped into a single undifferentiated blob. The LLM drowns in noise. Behavior becomes unpredictable. The agent loses coherence.</p>
