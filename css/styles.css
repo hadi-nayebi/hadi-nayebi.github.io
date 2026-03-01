@@ -545,6 +545,14 @@ footer {
     gap: 0.5rem;
 }
 
+.article-authors {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+}
+
 .article-card-tags {
     display: flex;
     gap: 0.5rem;
