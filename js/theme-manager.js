@@ -70,27 +70,27 @@ const heroMessages = [
     {
         line1: "Engineer Agents,",
         line2: "Not Chatbots",
-        description: "Build AI systems that remember, learn, and get better at your work — customized through conversation, no coding required."
+        description: "Seed agents that remember, learn, and improve at your work — customized through conversation, no coding required."
     },
     {
         line1: "Your Brain Wasn't",
         line2: "Built for This",
-        description: "The modern world demands more than one brain can handle. Build digital extensions that manage the complexity for you."
+        description: "Build cognitive organs — AI with memory, reflexes, and specialized skills that handle the complexity your brain never evolved to manage."
     },
     {
         line1: "Scale Yourself,",
         line2: "Not Your Hours",
-        description: "Run projects, manage operations, handle complexity — without adding hours to your day. Your AI workforce, your rules."
+        description: "Build your own agentic workforce through conversation. Seed agents that learn your work and get better over time."
     },
     {
         line1: "A Second Brain",
         line2: "That Actually Works",
-        description: "Not a note app. An AI system that remembers your work, learns your patterns, and acts on your behalf — session after session."
+        description: "Not a note app. Seed agents that remember your work, learn your patterns, and act on your behalf — built through conversation."
     },
     {
-        line1: "AI That Learns",
-        line2: "How You Work",
-        description: "Agents that persist between sessions, learn from experience, and handle real work — so you focus on what matters."
+        line1: "Grow Your Workforce",
+        line2: "Through Conversation",
+        description: "Seed agents you customize by talking, not coding. They learn, adapt, and grow into your personalized agentic workforce."
     }
 ];
 
