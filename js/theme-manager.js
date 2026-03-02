@@ -78,9 +78,9 @@ const heroMessages = [
         description: "CLI agents are digital cognitive organs — memory, reflexes, and skills your organic brain was never built to handle alone."
     },
     {
-        line1: "The Architecture",
-        line2: "Is the Agent",
-        description: "The model is the engine, not the agent. The filesystem — memory, hooks, skills — is what makes it yours."
+        line1: "Build the Brain,",
+        line2: "Not Just the Engine",
+        description: "The model is raw power. The filesystem — memory, hooks, skills — is what turns it into something that works for you."
     },
     {
         line1: "Grow Your",
