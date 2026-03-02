@@ -70,27 +70,27 @@ const heroMessages = [
     {
         line1: "Engineer Agents,",
         line2: "Not Chatbots",
-        description: "Customize reliable seed agents through conversation. Scale your professional skills with a personalized agentic workforce."
+        description: "Build AI systems that remember, learn, and get better at your work — customized through conversation, no coding required."
     },
     {
-        line1: "Your Brain Needs",
-        line2: "A Few More Organs",
-        description: "CLI agents are digital cognitive organs — memory, reflexes, and skills your organic brain was never built to handle alone."
-    },
-    {
-        line1: "Build the Brain,",
-        line2: "Not Just the Engine",
-        description: "The model is raw power. The filesystem — memory, hooks, skills — is what turns it into something that works for you."
-    },
-    {
-        line1: "Grow Your",
-        line2: "Digital Cortex",
-        description: "Build cognitive organs that persist, learn, and compound — session after session, project after project."
+        line1: "Your Brain Wasn't",
+        line2: "Built for This",
+        description: "The modern world demands more than one brain can handle. Build digital extensions that manage the complexity for you."
     },
     {
         line1: "Scale Yourself,",
         line2: "Not Your Hours",
-        description: "From a job to micro-businesses — each one managed by cognitive organs you designed, powered by your judgment and taste."
+        description: "Run projects, manage operations, handle complexity — without adding hours to your day. Your AI workforce, your rules."
+    },
+    {
+        line1: "A Second Brain",
+        line2: "That Actually Works",
+        description: "Not a note app. An AI system that remembers your work, learns your patterns, and acts on your behalf — session after session."
+    },
+    {
+        line1: "AI That Learns",
+        line2: "How You Work",
+        description: "Agents that persist between sessions, learn from experience, and handle real work — so you focus on what matters."
     }
 ];
 
