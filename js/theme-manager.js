@@ -1,7 +1,7 @@
-// Version: v0.1.0
+// Version: v0.2.0
 /**
  * Hadosh Academy Theme Manager
- * Handles random color themes and profile picture selection.
+ * Handles random color themes, profile picture selection, and hero message rotation.
  */
 
 const themes = [
@@ -65,8 +65,48 @@ function applyRandomTheme() {
     }
 }
 
-// Apply immediately to avoid flash
+// 2b. Hero Message Rotation
+const heroMessages = [
+    {
+        line1: "Engineer Agents,",
+        line2: "Not Chatbots",
+        description: "Customize reliable seed agents through conversation. Scale your professional skills with a personalized agentic workforce."
+    },
+    {
+        line1: "Your Brain Needs",
+        line2: "A Few More Organs",
+        description: "CLI agents are digital cognitive organs — memory, reflexes, and skills your organic brain was never built to handle alone."
+    },
+    {
+        line1: "The Architecture",
+        line2: "Is the Agent",
+        description: "The model is the engine, not the agent. The filesystem — memory, hooks, skills — is what makes it yours."
+    },
+    {
+        line1: "Grow Your",
+        line2: "Digital Cortex",
+        description: "Build cognitive organs that persist, learn, and compound — session after session, project after project."
+    },
+    {
+        line1: "Scale Yourself,",
+        line2: "Not Your Hours",
+        description: "From a job to micro-businesses — each one managed by cognitive organs you designed, powered by your judgment and taste."
+    }
+];
+
+function applyRandomHero() {
+    const h1 = document.querySelector('.central-circle-content h1');
+    const desc = document.querySelector('.hero-description');
+    if (!h1 || !desc) return;
+
+    const msg = heroMessages[Math.floor(Math.random() * heroMessages.length)];
+    h1.innerHTML = msg.line1 + ' <br><span>' + msg.line2 + '</span>';
+    desc.textContent = msg.description;
+}
+
+// Apply immediately (script loads after hero HTML, so DOM is ready)
 applyRandomTheme();
+applyRandomHero();
 
 // 3. Landing Page Dynamic CTAs
 // Inject random actionable phrases into the wheel
