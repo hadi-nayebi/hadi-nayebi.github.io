@@ -114,5 +114,6 @@ This framing helps readers see agents as **extensions of their brain**, not sepa
 
 | Slug | Title | Version |
 |------|-------|---------|
+| your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.0 |
 | llms-are-not-the-agents | LLMs Are Not the Agents | v0.3.1 |
 | we-could-have-had-agi | We Could Have Had AGI By Now | v0.2.0 |
