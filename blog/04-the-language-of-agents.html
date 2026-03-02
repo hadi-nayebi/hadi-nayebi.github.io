@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Language of Agents | Hadosh Academy</title>
+    <meta name="description" content="Every industry builds a wall of jargon. AI built one faster than any industry in history. This post hands you the keys — from LLMs to seed agents, one read, every word that matters.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/04-the-language-of-agents.html">
+    <meta property="og:title" content="The Language of Agents | Hadosh Academy">
+    <meta property="og:description" content="Every industry builds a wall of jargon. AI built one faster than any industry in history. This post hands you the keys — from LLMs to seed agents, one read, every word that matters.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/04-the-language-of-agents.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Language of Agents | Hadosh Academy">
+    <meta name="twitter:description" content="Every industry builds a wall of jargon. AI built one faster than any industry in history. This post hands you the keys — from LLMs to seed agents, one read, every word that matters.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header id="site-header"></header>
+
+    <main class="page-content">
+        <section class="container">
+            <div class="blog-layout">
+                <!-- Main Article -->
+                <div class="article-content">
+                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+
+                    <h1>The Language of Agents</h1>
+                    <div class="article-meta">
+                        <span>March 2026</span>
+                        <span>&bull;</span>
+                        <span>17 min read</span>
+                        <div class="article-meta-tags">
+                            <span class="tag tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                            <span class="tag">Agents</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Vocabulary</span>
+                            <span class="tag">Beginner</span>
+                        </div>
+                    </div>
+                    <div class="article-authors">
+                        By Hadi Nayebi &amp; Claude Opus 4.6
+                    </div>
+
+                    <div class="article-audio">
+                        <audio controls preload="none">
+                            <source src="../assets/audio/the-language-of-agents.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <span class="audio-label">Listen to this article (17 min)</span>
+                    </div>
+
+                    <div class="article-body">
+
+                        <blockquote>
+                            <p><strong>Every industry builds a wall of jargon. AI built one faster than any industry in history. This post hands you the keys.</strong></p>
+                        </blockquote>
+
+                        <p>You already use AI. You open ChatGPT, or Claude, or Gemini in your browser. You type something. It types back. You have been doing this for a year, maybe two. You are not new here.</p>
+
+                        <p>But then you read an article &mdash; or overhear a conversation &mdash; and suddenly people are talking about LLMs and context windows, hooks and MCPs, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. They assume you already know.</p>
+
+                        <p>You do not. And that is not your fault.</p>
+
+                        <p>The AI industry moves at a speed that makes even insiders dizzy. New terms appear every month. Old terms shift meaning. The vocabulary is a moving target, and the people using it rarely bother to define it for the rest of us.</p>
+
+                        <p>This post fixes that. One read. Every word that matters. By the end, you will not just understand these terms &mdash; you will see how they connect into a single, coherent picture.</p>
+
+                        <p>No prerequisites. No code. Just the language you need to stop feeling lost.</p>
+
+                        <hr>
+
+                        <h2>The Engine: What an LLM Actually Is</h2>
+
+                        <p>Start with what you already know. When you type a question into ChatGPT or Claude, something generates the response. That something is a <strong><a href="https://en.wikipedia.org/wiki/Large_language_model" title="A type of AI trained on massive text data to generate and understand language" target="_blank" rel="noopener">Large Language Model</a></strong> &mdash; an LLM.</p>
+
+                        <p>An LLM is a program that generates text. That is it. It does not think, not in the way you think. It predicts what text should come next, one piece at a time.</p>
+
+                        <p>Those pieces are called <strong><a href="https://en.wikipedia.org/wiki/Lexical_analysis#Token" title="A small chunk of text — roughly a word or part of a word — that an LLM processes" target="_blank" rel="noopener">tokens</a></strong>. A token is roughly a word &mdash; sometimes a whole word, sometimes part of one. When you see the response appearing word by word on your screen, you are watching the LLM generate tokens.</p>
+
+                        <p>Here is the part most people miss: <strong>the LLM did not arrive in its current form.</strong> It evolved through distinct phases, and each phase changed what AI could do.</p>
+
+                        <h3>Phase One: The Autocomplete Machine</h3>
+
+                        <p>The earliest LLMs were trained on massive amounts of internet text. Their job was simple: given some text, predict what comes next. Think of it as autocomplete on steroids. You type &ldquo;the cat sat on the&rdquo; and the model predicts &ldquo;mat.&rdquo; Impressive at scale. Useless for conversation.</p>
+
+                        <h3>Phase Two: The Conversation Machine</h3>
+
+                        <p>Researchers figured out how to train these autocomplete engines to take turns. One turn for you, one turn for the AI. User and assistant, back and forth. This was the <strong>instruction phase</strong> &mdash; the LLM went from replicating text found on the internet to generating text that looks like a conversation.</p>
+
+                        <p>This is when chatbots became useful. ChatGPT launched. Millions of people started typing questions and getting answers. The AI felt like it was talking to you.</p>
+
+                        <p>It was not. It was generating tokens that pattern-matched conversations from its training data. But the result was close enough to be transformative.</p>
+
+                        <h3>Phase Three: The Tool-Using Machine</h3>
+
+                        <p>Then the vocabulary expanded.</p>
+
+                        <p>Researchers introduced special tokens &mdash; internal markers the LLM learned to generate at the right moments. Tokens like <code>&lt;thinking&gt;</code> that told the system to reason before answering. Tokens like <code>&lt;tool_call&gt;</code> that told the system to use an external tool &mdash; search the web, read a file, run a calculation.</p>
+
+                        <p>The text the LLM generates stopped being just conversation. It became a mix of conversation, reasoning, and instructions to external systems. The LLM was no longer just talking. It was <strong>acting</strong>.</p>
+
+                        <p>This is where we are now. The engine generates tokens. Some tokens are words you see. Some tokens are commands you do not see. All of them are text.</p>
+
+                        <h3>The Context Window</h3>
+
+                        <p>One more engine concept. Every LLM has a limit on how much text it can see at once. That limit is the <strong><a href="https://en.wikipedia.org/wiki/Large_language_model#Context_window" title="The maximum amount of text an LLM can process at one time — like the size of its working desk" target="_blank" rel="noopener">context window</a></strong> &mdash; measured in tokens.</p>
+
+                        <p>Think of the context window as a desk. Everything the AI knows right now is spread across that desk. Your question, the system&rsquo;s instructions, previous conversation, file contents, tool results &mdash; all of it competes for space on the same desk.</p>
+
+                        <p>When the desk fills up, old information falls off. The AI forgets.</p>
+
+                        <p>This is why raw LLMs &mdash; no matter how powerful &mdash; have limits. A bigger desk helps. But a bigger desk is not the same as a filing cabinet. The desk is temporary. The filing cabinet is permanent. That distinction matters enormously, and we will come back to it.</p>
+
+                        <hr>
+
+                        <h2>From Browser to Desktop: CLI Agents</h2>
+
+                        <p>Now the important part.</p>
+
+                        <p>The AI you use in your browser &mdash; ChatGPT, Claude, Gemini &mdash; runs on someone else&rsquo;s servers. You visit a website. You type. It responds. These tools are good. They remember conversations now. They learn your preferences over time.</p>
+
+                        <p>But here is the catch: <strong>you do not control how any of that works.</strong> The company decides what gets remembered, how the AI behaves, what it can and cannot do. You are a guest in their house &mdash; their rules, their design, their boundaries.</p>
+
+                        <p>Every one of those companies also offers the <strong>same AI as a tool that runs on your computer</strong>. Same models. Same intelligence. Same subscription plans. But instead of living in a browser tab, it lives on your machine.</p>
+
+                        <p>That tool is a <strong>CLI agent</strong>.</p>
+
+                        <p><strong><a href="https://en.wikipedia.org/wiki/Command-line_interface" title="A text-based way to interact with software by typing commands" target="_blank" rel="noopener">CLI</a></strong> stands for Command Line Interface. It is the text-based program on your computer &mdash; the <a href="https://en.wikipedia.org/wiki/Terminal_emulator" title="A program that provides a text-based interface to your computer" target="_blank" rel="noopener">terminal</a>. You open it, you type, the AI responds. No buttons. No menus. Just text.</p>
+
+                        <p>It sounds less fancy than a browser interface. Capability-wise, the two are converging &mdash; the browser version and the CLI version are approaching the same intelligence. The difference is not power. The difference is <strong>control.</strong></p>
+
+                        <p>A CLI agent is yours to customize, expand, and personalize in any direction you want. You decide how it remembers. You decide what it can access. You decide its personality, its rules, its boundaries. You can even add a graphical interface on top if you prefer one. The point is not the interface &mdash; the point is who is in charge.</p>
+
+                        <p>And because a CLI agent lives on your machine, it can <strong>see your files</strong>. It can read documents, write new ones, search through folders, edit code, and organize your work. It is sitting inside your computer, looking at what you are working on.</p>
+
+                        <p>And here is the key: <strong>every folder on your computer can become a unique agent.</strong></p>
+
+                        <p>Open a terminal in your legal case folder &mdash; the agent becomes your legal assistant, with access to every document in that case. Open a terminal in your marketing folder &mdash; same AI, completely different context, different personality, different memory.</p>
+
+                        <p>The AI in your browser is a service you use. A CLI agent is a tool you own.</p>
+
+                        <p>That is the shift. From using an assistant the company designed for everyone, to owning one you design for yourself. Same intelligence underneath. Completely different level of control on top.</p>
+
+                        <hr>
+
+                        <h2>The Briefing: System Messages and Persona</h2>
+
+                        <p>When you start a conversation with an AI &mdash; browser or CLI &mdash; something happens before you type your first word.</p>
+
+                        <p>The system sends the AI a set of instructions. This is the <strong><a href="https://en.wikipedia.org/wiki/Prompt_engineering#System_prompting" title="Hidden instructions sent to the AI before your conversation begins, shaping how it behaves" target="_blank" rel="noopener">system message</a></strong> (sometimes called a <strong>system prompt</strong>). You never see it, but it shapes everything the AI says and does. And this is where the control difference between browser AI and a CLI agent becomes very concrete.</p>
+
+                        <p>In a browser, the system message is written by the company. It says things like &ldquo;You are Claude, a helpful assistant made by Anthropic. Be safe, be helpful.&rdquo; You cannot change it.</p>
+
+                        <p>In a CLI agent, <strong>you write the system message.</strong> It lives in a file &mdash; usually called <code>CLAUDE.md</code> or <code>AGENT.md</code> &mdash; right there in your project folder, where you can read and edit it.</p>
+
+                        <p>That file is the agent&rsquo;s <strong>persona</strong>. Not just a name. Its role, its rules, its memory, its priorities. A lawyer&rsquo;s agent might have a persona that says: &ldquo;You are a legal research assistant. Always cite sources. Never give legal advice directly &mdash; present findings and let the human decide.&rdquo; A consultant&rsquo;s agent might say something completely different.</p>
+
+                        <p>And as your agent grows, its identity spreads beyond a single file. Instructions, memory, and personality naturally expand across multiple files and mechanisms &mdash; the way a person&rsquo;s character is not stored in one place but expressed through habits, knowledge, and experience built up over time.</p>
+
+                        <p>Same AI engine underneath. Completely different behavior on top.</p>
+
+                        <p>The system message is where the agent gets its identity. And in a CLI agent, that identity is yours to shape.</p>
+
+                        <hr>
+
+                        <h2>The Craft: From Prompt Engineering to Context Engineering</h2>
+
+                        <p>You have probably heard the term <strong><a href="https://en.wikipedia.org/wiki/Prompt_engineering" title="The practice of carefully crafting inputs to get better results from an AI" target="_blank" rel="noopener">prompt engineering</a></strong>. It means carefully crafting what you type to get better results from the AI.</p>
+
+                        <p>Prompt engineering works. It matters. But it is focused on a single interaction &mdash; one question, one answer.</p>
+
+                        <p>The field is moving toward something broader: <strong>context engineering</strong>. Instead of crafting one prompt, you design the entire information environment the AI works in.</p>
+
+                        <p>Think of it as a metabolism. Everything that flows through the AI &mdash; your prompts, its own reasoning, results from tools it uses &mdash; all of it is information that gets processed. Good context engineering means those inputs are properly absorbed into the agent&rsquo;s long-term memory and properly recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are properly metabolized.</p>
+
+                        <p>What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?</p>
+
+                        <p>Prompt engineering is choosing your words carefully &mdash; and it matters less every day as context engineering matures. When the room is well-designed, a simple request is enough. Context engineering is designing that room &mdash; the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors.</p>
+
+                        <p>For a non-technical professional, context engineering might sound intimidating. It is not. It starts with a single text file &mdash; the system message. You describe who the agent is and how it should behave. Everything else grows from there, naturally, through conversation.</p>
+
+                        <hr>
+
+                        <h2>The Reflexes: Hooks</h2>
+
+                        <p>When you drive a car, you do not think about checking your mirrors. You just do it. It is a reflex &mdash; an automatic action triggered by a specific moment.</p>
+
+                        <p><strong><a href="https://en.wikipedia.org/wiki/Hooking" title="A technique that intercepts events or actions to trigger automatic behavior at specific moments" target="_blank" rel="noopener">Hooks</a></strong> are an agent&rsquo;s reflexes.</p>
+
+                        <p>A hook is a rule that fires automatically at a specific moment in the agent&rsquo;s workflow. Before the agent edits a file &mdash; a hook can check if that file is allowed to be changed. A signed contract from a client? The hook blocks the edit, every time, no exceptions. After the agent finishes a task &mdash; a hook can log what happened. When the agent tries to stop working &mdash; a hook can say &ldquo;not yet, you still have unfinished work.&rdquo;</p>
+
+                        <p>You do not need to code hooks. You describe them. &ldquo;Before any file is deleted, ask me for confirmation.&rdquo; &ldquo;After every task, save a summary to the log.&rdquo; The agent platform translates your rules into automatic behavior.</p>
+
+                        <p>A good practice: after you describe a new hook, test it. Ask the agent to try the action the hook should catch, and verify it fires correctly. Think of it like hiring a new assistant &mdash; you give them an instruction, then you watch them handle it a few times until you trust the process. These systems are very good, but not perfect. A quick test builds confidence.</p>
+
+                        <p>Hooks are what turn a reactive chatbot into a disciplined professional. Without hooks, the AI does whatever seems right in the moment. With hooks, it follows a process. Every time.</p>
+
+                        <hr>
+
+                        <h2>The Skill Set: Skills, Commands, and Sub-agents</h2>
+
+                        <p>Think of it like an office.</p>
+
+                        <p>A <strong>skill</strong> is a set of instructions the agent has learned &mdash; like a recipe card in a chef&rsquo;s kitchen. When the agent recognizes that a skill is relevant, it loads those instructions into its working memory and follows them. You do not have to tell the agent to use a skill. It notices when one applies.</p>
+
+                        <p>A <strong>command</strong> is a button you press. You type a short name &mdash; like <code>/review</code> or <code>/commit</code> &mdash; and the agent runs a specific workflow. Commands are explicit. You trigger them on purpose, and they do exactly one thing.</p>
+
+                        <p>A <strong><a href="https://en.wikipedia.org/wiki/Multi-agent_system" title="A system where multiple AI agents work together, each handling specialized tasks" target="_blank" rel="noopener">sub-agent</a></strong> is a specialist. When the main agent faces a task that needs focused attention &mdash; deep research, complex analysis, parallel work &mdash; it can spin up a sub-agent. The sub-agent works independently, finishes the job, and reports back. Like sending an associate to the library while you stay at your desk.</p>
+
+                        <p>Skills are what the agent knows. Commands are what you tell it to do. Sub-agents are who it delegates to.</p>
+
+                        <hr>
+
+                        <h2>The Connections: MCPs</h2>
+
+                        <p>Your agent sits on your computer. But the world does not live on your computer.</p>
+
+                        <p><strong><a href="https://en.wikipedia.org/wiki/Model_Context_Protocol" title="A standard that lets AI agents connect to external tools and services like email, calendars, and databases" target="_blank" rel="noopener">MCP</a></strong> stands for Model Context Protocol. It is a standard way for your agent to connect to external tools and services &mdash; your email, your Google Drive, your calendar, your Instagram feed, your phone&rsquo;s data, your company&rsquo;s internal systems.</p>
+
+                        <p>Think of an MCP as a power adapter. Your agent speaks one language. The external service speaks another. The MCP translates between them, so your agent can read from a database, post to a project management tool, or pull data from a spreadsheet &mdash; without you manually copying and pasting.</p>
+
+                        <p>MCPs are what turn a local agent into a connected one. The agent stays on your machine, under your control. But it can reach out and interact with the tools you already use.</p>
+
+                        <hr>
+
+                        <h2>The Extensions: Plugins</h2>
+
+                        <p>A <strong><a href="https://en.wikipedia.org/wiki/Plug-in_(computing)" title="A packaged add-on that gives software a new capability without rebuilding it" target="_blank" rel="noopener">plugin</a></strong> is a packaged capability you add to your agent. If the agent is a body, a plugin is a <strong>cognitive organ</strong> transplant &mdash; a self-contained new ability that integrates with everything else.</p>
+
+                        <p>One plugin might add a library of professional skills. Another might add guard rails that prevent mistakes. A third might add cognitive memory tissue &mdash; persistence that lets the agent keep working on a task across multiple sessions without forgetting where it left off.</p>
+
+                        <p>Plugins are how agents grow. You do not rebuild the agent to add a capability. You install a plugin, and the agent absorbs it.</p>
+
+                        <hr>
+
+                        <h2>The Memory: Seed Agents and Agentic Workforces</h2>
+
+                        <p>Two more terms, and these matter more than any of the technical ones.</p>
+
+                        <p>A <strong>seed agent</strong> is a starting template. It comes with a basic structure &mdash; some skills, some rules, a persona outline &mdash; and you customize it through conversation. You do not build an agent from scratch. You start with a seed and grow it into something that fits your work.</p>
+
+                        <p>Think of it like buying a house versus building one from lumber. The seed is the house. You move in and make it yours. Different furniture, different paint, different rules about shoes at the door. Same foundation, uniquely yours.</p>
+
+                        <p>An <strong>agentic workforce</strong> is what happens when you grow multiple seed agents, each one specialized for a different part of your professional life. One handles legal research. One manages client communication. One runs your billing. One organizes your knowledge base.</p>
+
+                        <p>You did not code any of them. You talked to them. You said &ldquo;here is how I want this to work&rdquo; and they adapted.</p>
+
+                        <p>That is the endgame. Not one AI assistant. A workforce of specialized agents, each one customized to your work, running on your computer, under your control.</p>
+
+                        <hr>
+
+                        <h2>The Big Picture</h2>
+
+                        <p>Here is how all the pieces fit together:</p>
+
+                        <p>The <strong>LLM</strong> is the engine &mdash; the raw intelligence that generates text, one token at a time. It evolved from autocomplete to conversation to tool use, and it keeps getting more capable.</p>
+
+                        <p>A <strong>CLI agent</strong> puts that engine on your computer, where it can see your files and work on real projects. Every folder becomes a unique workspace.</p>
+
+                        <p>The <strong>system message</strong> and <strong>persona</strong> give the agent its identity &mdash; who it is, what it does, how it behaves. You write this in a simple text file.</p>
+
+                        <p><strong>Hooks</strong> add automatic reflexes. <strong>Skills</strong>, <strong>commands</strong>, and <strong>sub-agents</strong> give it capabilities and structure. <strong>MCPs</strong> connect it to the outside world. <strong>Plugins</strong> let you bolt on new abilities.</p>
+
+                        <p><strong>Context engineering</strong> is the practice of designing all of this &mdash; the entire environment the agent works in &mdash; so it consistently delivers the results you need.</p>
+
+                        <p>And <strong>seed agents</strong> let you start without building anything from scratch. You begin with a template, customize it through conversation, and grow an <strong>agentic workforce</strong> that scales your professional skills.</p>
+
+                        <hr>
+
+                        <h2>Why This Vocabulary Matters</h2>
+
+                        <p>Every profession has its language. Lawyers have torts and depositions. Doctors have diagnoses and prognoses. Accountants have amortization and accruals.</p>
+
+                        <p>None of those words exist to exclude you. They exist because precision matters. When a lawyer says &ldquo;deposition,&rdquo; every other lawyer knows exactly what that means. No ambiguity. No wasted explanation.</p>
+
+                        <p>The same is true for agent vocabulary. These thirty-odd words are not barriers. They are tools. When you say &ldquo;hook,&rdquo; everyone in the ecosystem knows you mean an automatic reflex that fires at a specific moment. When you say &ldquo;seed agent,&rdquo; they know you mean a customizable starting template.</p>
+
+                        <p>The industry moved fast and forgot to hand out the dictionary. Consider this post your copy.</p>
+
+                        <p>Now you speak the language. Not to become a developer. Not to impress anyone at a conference. To be a better <strong>owner</strong> of the most powerful tool that has ever sat on your desk.</p>
+
+                        <p>The jargon wall just came down. What you build next is up to you.</p>
+
+                        <hr>
+
+                        <h2>Hadosh Academy &mdash; Agents Series</h2>
+
+                        <p>
+                            <strong>Essay 1:</strong> <a href="01-llms-are-not-the-agents.html">LLMs Are Not the Agents</a><br>
+                            <strong>Essay 2:</strong> <a href="02-we-could-have-had-agi.html">We Could Have Had AGI By Now</a><br>
+                            <strong>Essay 3:</strong> <a href="03-your-brain-was-never-built-for-this.html">Your Brain Was Never Built for This</a><br>
+                            <strong>Essay 4:</strong> The Language of Agents (this post)
+                        </p>
+
+                        <p>
+                            <strong>Resources:</strong><br>
+                            <a href="https://hadi-nayebi.github.io" target="_blank" rel="noopener">hadi-nayebi.github.io</a><br>
+                            <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank" rel="noopener">skool.com/claude-agents-engineering</a>
+                        </p>
+
+                    </div>
+
+                    <!-- Comments (Giscus) -->
+                    <div class="article-comments">
+                        <script src="https://giscus.app/client.js"
+                            data-repo="hadi-nayebi/hadi-nayebi.github.io"
+                            data-repo-id="R_kgDOHL_tnQ"
+                            data-category="General"
+                            data-category-id="DIC_kwDOHL_tnc4C3cRQ"
+                            data-mapping="pathname"
+                            data-strict="0"
+                            data-reactions-enabled="1"
+                            data-emit-metadata="0"
+                            data-input-position="bottom"
+                            data-theme="dark"
+                            data-lang="en"
+                            data-loading="lazy"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Latest Articles</div>
+                    <div>
+                        <div class="article-card active">
+                            <div class="article-card-tags">
+                                <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                <span class="tag tag-sm">Agents</span>
+                                <span class="tag tag-sm">AI</span>
+                                <span class="tag tag-sm">Vocabulary</span>
+                                <span class="tag tag-sm">Beginner</span>
+                            </div>
+                            <h3>The Language of Agents</h3>
+                            <div class="date">March 2026 &bull; 17 min read</div>
+                        </div>
+                        <a href="03-your-brain-was-never-built-for-this.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Society</span>
+                                    <span class="tag tag-sm">Evolution</span>
+                                </div>
+                                <h3>Your Brain Was Never Built for This</h3>
+                                <div class="date">March 2026 &bull; 14 min read</div>
+                            </div>
+                        </a>
+                        <a href="02-we-could-have-had-agi.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For professionals ready for deeper technical understanding">Power Users</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Architecture</span>
+                                    <span class="tag tag-sm">AGI</span>
+                                </div>
+                                <h3>We Could Have Had AGI By Now</h3>
+                                <div class="date">February 2026 &bull; 15 min read</div>
+                            </div>
+                        </a>
+                        <a href="01-llms-are-not-the-agents.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Fundamentals</span>
+                                </div>
+                                <h3>LLMs Are Not the Agents</h3>
+                                <div class="date">February 2026 &bull; 12 min read</div>
+                            </div>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="../js/theme-manager.js"></script>
+    <script src="../js/components.js"></script>
+</body>
+
+</html>

@@ -6,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const hooks = [
         ...randomCTAs,
         // Published blog articles (direct links)
-        { text: "LLMs Are Not the Agents", link: "blog/llms-are-not-the-agents.html" },
-        { text: "We Could Have Had AGI By Now", link: "blog/we-could-have-had-agi.html" },
-        { text: "Your Brain Was Never Built for This", link: "blog/your-brain-was-never-built-for-this.html" },
+        { text: "The Language of Agents", link: "blog/04-the-language-of-agents.html" },
+        { text: "LLMs Are Not the Agents", link: "blog/01-llms-are-not-the-agents.html" },
+        { text: "We Could Have Had AGI By Now", link: "blog/02-we-could-have-had-agi.html" },
+        { text: "Your Brain Was Never Built for This", link: "blog/03-your-brain-was-never-built-for-this.html" },
         // Upcoming / teaser topics (link to blog index)
         { text: "The Death of the Chatbot", link: "blog.html" },
         { text: "Why Agents Need Intentions", link: "blog.html" },
