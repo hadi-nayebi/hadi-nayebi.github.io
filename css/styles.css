@@ -1020,19 +1020,42 @@ body.lightbox-open {
 
 .academy-hero {
     text-align: center;
-    padding-top: 4rem;
-    padding-bottom: 2rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    position: relative;
+}
+
+.academy-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    background: url('../assets/images/academy-bg.png') center center / cover no-repeat;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at center, black 30%, transparent 70%);
+}
+
+.academy-hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 .academy-hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin: 1rem 0;
 }
 
 .academy-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     color: var(--text-muted);
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     line-height: 1.6;
 }
@@ -1046,14 +1069,22 @@ body.lightbox-open {
 }
 
 .academy-section h2 {
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
 }
 
 .academy-section p {
     color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-size: 1.15rem;
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 .academy-pillars {
@@ -1088,6 +1119,29 @@ body.lightbox-open {
 .profession-tags .tag {
     font-size: 0.95rem;
     padding: 0.5rem 1rem;
+}
+
+.academy-vision {
+    position: relative;
+}
+
+.academy-vision::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.academy-vision > * {
+    position: relative;
+    z-index: 1;
 }
 
 .academy-vision p strong {
@@ -1127,16 +1181,16 @@ body.lightbox-open {
     gap: 2rem;
 }
 
-.progress-fill-30 {
-    width: 30%;
+.progress-fill-42 {
+    width: 42%;
 }
 
-.progress-fill-15 {
-    width: 15%;
+.progress-fill-13 {
+    width: 13%;
 }
 
-.progress-fill-10 {
-    width: 10%;
+.progress-fill-4 {
+    width: 4%;
 }
 
 .social-links {
@@ -1354,7 +1408,19 @@ body.lightbox-open {
 
     /* --- About Page --- */
     .academy-hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
+    }
+
+    .academy-subtitle {
+        font-size: 1.15rem;
+    }
+
+    .academy-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .lead-text {
+        font-size: 1.2rem;
     }
 
     .academy-pillars {
