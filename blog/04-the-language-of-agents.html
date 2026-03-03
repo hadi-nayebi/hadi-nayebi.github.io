@@ -188,15 +188,17 @@
 
                         <p>You have probably heard the term <strong><a href="https://en.wikipedia.org/wiki/Prompt_engineering" title="The practice of carefully crafting inputs to get better results from an AI" target="_blank" rel="noopener">prompt engineering</a></strong>. It means carefully crafting what you type to get better results from the AI.</p>
 
-                        <p>Prompt engineering works. It matters. But it is focused on a single interaction &mdash; one question, one answer.</p>
+                        <p>Prompt engineering works. It matters. But it put the burden on <strong>you</strong>. Learn the right phrasing. Structure your request just so. Add the right context manually. The better you got at prompting, the better your results. That kept AI useful mostly for developers and tech-savvy people &mdash; the ones willing to learn a new way of talking to a machine.</p>
 
-                        <p>The field is moving toward something broader: <strong>context engineering</strong>. Instead of crafting one prompt, you design the entire information environment the AI works in.</p>
+                        <p>The field is moving toward something broader: <strong>context engineering</strong>. Instead of expecting the user to craft the perfect prompt, you design the entire information environment so the AI performs well <strong>regardless of how the user asks</strong>.</p>
 
-                        <p>Think of it as a metabolism. Everything that flows through the AI &mdash; your prompts, its own reasoning, results from tools it uses &mdash; all of it is information that gets processed. Good context engineering means those inputs are properly absorbed into the agent&rsquo;s long-term memory and properly recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are properly metabolized.</p>
+                        <p>Context engineering does two things prompt engineering alone never did. First, it <strong>internalizes</strong> the prompting layer. The careful phrasing, the structured instructions, the right context &mdash; all of that gets built into the architecture itself. Internal LLM calls inside a complex system still use prompt engineering, but the <em>user</em> does not have to. You just ask. The system handles the rest.</p>
+
+                        <p>Second, it expands the focus beyond just <em>talking to</em> the LLM. Think of it as a metabolism. Everything that flows through the AI &mdash; your prompts, its own reasoning, results from tools it uses &mdash; all of it is information that gets processed. Good context engineering means those tokens are properly absorbed into the agent&rsquo;s long-term memory and properly recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are properly <strong>metabolized</strong>.</p>
 
                         <p>What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?</p>
 
-                        <p>Prompt engineering is choosing your words carefully &mdash; and it matters less every day as context engineering matures. When the room is well-designed, a simple request is enough. Context engineering is designing that room &mdash; the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors.</p>
+                        <p>Prompt engineering is choosing your words carefully. Context engineering is designing the room so that a simple request is enough &mdash; the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors. The prompting still happens. It just happens inside the architecture, not inside your head.</p>
 
                         <p>For a non-technical professional, context engineering might sound intimidating. It is not. It starts with a single text file &mdash; the system message. You describe who the agent is and how it should behave. Everything else grows from there, naturally, through conversation.</p>
 
@@ -210,7 +212,7 @@
 
                         <p>A hook is a rule that fires automatically at a specific moment in the agent&rsquo;s workflow. Before the agent edits a file &mdash; a hook can check if that file is allowed to be changed. A signed contract from a client? The hook blocks the edit, every time, no exceptions. After the agent finishes a task &mdash; a hook can log what happened. When the agent tries to stop working &mdash; a hook can say &ldquo;not yet, you still have unfinished work.&rdquo;</p>
 
-                        <p>You do not need to code hooks. You describe them. &ldquo;Before any file is deleted, ask me for confirmation.&rdquo; &ldquo;After every task, save a summary to the log.&rdquo; The agent platform translates your rules into automatic behavior.</p>
+                        <p>In a well-designed seed agent, you do not code hooks &mdash; you describe them. &ldquo;Before any file is deleted, ask me for confirmation.&rdquo; &ldquo;After every task, save a summary to the log.&rdquo; The agent understands its own architecture well enough to extend itself &mdash; creating the right files, following its own structural rules &mdash; so your words become working reflexes without you touching code.</p>
 
                         <p>A good practice: after you describe a new hook, test it. Ask the agent to try the action the hook should catch, and verify it fires correctly. Think of it like hiring a new assistant &mdash; you give them an instruction, then you watch them handle it a few times until you trust the process. These systems are very good, but not perfect. A quick test builds confidence.</p>
 
