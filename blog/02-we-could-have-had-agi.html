@@ -144,7 +144,7 @@
 
                         <p>So if intelligence is a complex system, what are the primitives? You need compartmentalization. Bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.</p>
 
-                        <p>The smallest useful primitive already exists: prevent the agent from stopping before it is done. <a href="https://github.com/anthropics/claude-code-plugins" target="_blank" rel="noopener">Ralph Loop</a> does exactly this — block the stop signal, repeat a prompt, keep the agent working until the task is finished. That is compartmentalization at its most basic. One unit of work, one boundary, one rule: do not quit early.</p>
+                        <p>The smallest useful primitive already exists: prevent the agent from stopping before it is done. <a href="https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum" target="_blank" rel="noopener">Ralph Loop</a> does exactly this — it hooks into the Stop signal and repeats the prompt until a completion promise is met. The simplest possible form of persistence: one hook, one looped instruction. But it proves that a single interception point can keep an agent alive indefinitely — and that insight opens an entirely new design space for controlling agent lifecycles, from simple prompt repetition to structured job systems with obligations and memory.</p>
 
                         <p>Now extend that idea. Give each unit a name, a state, a place on disk. Let units spawn other units. Let them carry observations that must be processed before they close. You are no longer just blocking a stop signal. You are building a job system.</p>
 
@@ -164,7 +164,7 @@
 
                         <p>If you prefer different terminology, call them behaviors, intentions, processes, or obligations. The organizational principle is the same: <strong>persistent state plus enforcement hooks</strong>.</p>
 
-                        <p>This pattern already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, and Gemini CLI's AfterAgent hook all provide the interception point needed to keep a job alive. The specific syntax varies. The principle is identical: block premature exit until obligations are met. Platforms that lack this interception point — like OpenAI's Codex CLI, which still has no hook system — cannot enforce the heartbeat. The agent can decide to stop whenever the model feels like stopping.</p>
+                        <p>This pattern already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, and Gemini CLI's AfterAgent hook all provide the interception point needed to keep a job alive. The specific syntax varies. The principle is identical: block premature exit until obligations are met. As of early 2026, adoption is converging fast — hooks are becoming a standard primitive across CLI agent platforms, confirming that the industry recognizes architecture-level control as essential to durable agency.</p>
 
                         <!-- ======== 7. HOOKS ARE THE MISSING EVOLUTIONARY LAYER ======== -->
 
