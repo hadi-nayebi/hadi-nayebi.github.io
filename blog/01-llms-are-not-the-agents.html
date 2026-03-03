@@ -39,7 +39,7 @@
                     <div class="article-meta">
                         <span>February 2026</span>
                         <span>&bull;</span>
-                        <span>13 min read</span>
+                        <span>12 min read</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
                             <span class="tag">Agents</span>
@@ -56,7 +56,7 @@
                             <source src="../assets/audio/llms-are-not-the-agents.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <span class="audio-label">Listen to this article (13 min)</span>
+                        <span class="audio-label">Listen to this article (12 min)</span>
                     </div>
 
                     <div class="article-body">
@@ -129,7 +129,7 @@
 
                         <p><strong>This is not yet an agent.</strong> This is a raw engine running with no car around it.</p>
 
-                        <p>But when you add a <code>.claude/</code> directory (or <code>.opencode/</code> in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. Not the LLM. The LLM is just the engine. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
+                        <p>But when you add a <code>.claude/</code> directory (or <code>.opencode/</code> in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
 
                         <!-- ======== 4. THE DEFAULT STATE ======== -->
 
@@ -205,7 +205,7 @@
 
                         <p>Here is where it gets really interesting.</p>
 
-                        <p>If the agent is the filesystem and the LLM is just the engine, then <strong>the platform is just the adapter</strong>.</p>
+                        <p>If the agent is the filesystem, then <strong>the platform is just the adapter</strong>.</p>
 
                         <p>Right now, multiple CLI agent platforms support hook and event systems:</p>
 
@@ -215,7 +215,7 @@
                             <li><strong>OpenCode</strong> — event hooks via plugin system (<code>tool.execute.before</code>, <code>tool.execute.after</code>, <code>session.idle</code>, <code>stop</code>)</li>
                         </ul>
 
-                        <p>As of early 2026, adoption is accelerating — Claude Code, Gemini CLI, and OpenCode all shipped hook systems within months of each other. The convergence confirms the direction: interception points are becoming a standard primitive in agent infrastructure. The platforms that add hooks gain architectural control. The ones that do not are leaving their builders without a steering mechanism.</p>
+                        <p>As of early 2026, all three shipped hook systems within months of each other — confirmation that interception points are becoming a standard primitive in agent infrastructure.</p>
 
                         <p>The syntax differs. The concepts are identical. Each platform provides <strong>interception points</strong> where your rules can override the LLM's default behavior.</p>
 
@@ -230,7 +230,6 @@
                             <figcaption>One brain, many engines. The same agent directory — with its knowledge, rules, and memory — connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.</figcaption>
                         </figure>
 
-                        <p>A robust agent must be able to use <strong>any LLM provider</strong>.</p>
 
                         <!-- ======== 7. COMPARTMENTALIZATION ======== -->
 
@@ -269,7 +268,7 @@
                         <p>If you are building with AI agents — or want to start — here is the shift in thinking:</p>
 
                         <ol>
-                            <li><strong>Stop focusing on the LLM.</strong> The model is the engine. It matters, but it is not where you should spend most of your design effort. Focus on the structure around it. The engine will keep getting better on its own. Your architecture is what makes it useful.</li>
+                            <li><strong>Stop obsessing over which model to use.</strong> The engine improves on its own every quarter. The structure around it is what makes it yours.</li>
 
                             <li><strong>Give your agent a brain.</strong> Create a dedicated directory with structure, knowledge files, operational rules, and memory. This is not configuration — this is the agent itself. Without it, you just have a smart engine with nowhere to go.</li>
 
@@ -277,14 +276,12 @@
 
                             <li><strong>Design for portability.</strong> Your agent's brain should not be locked to one platform or one model. Keep the core identity in plain files — markdown, JSON, scripts. Let the platform-specific hooks be thin adapters, not the whole system.</li>
 
-                            <li><strong>Think in compartments.</strong> Every piece of knowledge should have a home. Every behavior should be bounded. Every context should be scoped. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows.</li>
+                            <li><strong>Think in compartments.</strong> Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows.</li>
                         </ol>
 
-                        <p>The models will keep getting smarter. Next year's LLM will be faster, cheaper, and more capable than today's. But <strong>a smarter engine still needs a well-built car to drive anywhere useful</strong>.</p>
+                        <p>The electricity keeps getting stronger. That has never been the bottleneck.</p>
 
-                        <p>The real leverage is not in the engine.</p>
-
-                        <p><strong>The real leverage is in the architecture.</strong></p>
+                        <p><strong>Build the toaster.</strong></p>
 
                         <hr>
 
@@ -366,7 +363,7 @@
                                 <span class="tag tag-sm">Fundamentals</span>
                             </div>
                             <h3>LLMs Are Not the Agents</h3>
-                            <div class="date">February 2026 &bull; 13 min read</div>
+                            <div class="date">February 2026 &bull; 12 min read</div>
                         </div>
                     </div>
                 </aside>
