@@ -591,6 +591,7 @@ footer {
 
 .article-card-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
 }
@@ -1017,40 +1018,130 @@ body.lightbox-open {
 
 /* ============ About Page ============ */
 
-.bio-grid {
+.academy-hero {
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.academy-hero h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.academy-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.academy-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.academy-section h2 {
+    margin-bottom: 1.5rem;
+}
+
+.academy-section p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.academy-pillars {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 2rem;
 }
 
-/* bio-grid responsive rule moved to consolidated responsive section */
+.academy-pillar {
+    padding: 2rem;
+}
 
-.bio-heading {
+.academy-pillar h3 {
     color: var(--primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
 }
 
-.bio-text {
-    font-size: 0.9rem;
+.academy-pillar p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.profession-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.profession-tags .tag {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+}
+
+.academy-vision p strong {
+    color: var(--primary);
+}
+
+/* Founder section */
+.founder-section {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+}
+
+.founder-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.founder-content h2 {
+    margin-bottom: 0.25rem;
+}
+
+.founder-content .badge {
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.founder-content p {
     color: var(--text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
 }
 
-.about-cta {
-    margin-top: 3rem;
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
-.progress-fill-30 {
-    width: 30%;
+.social-link {
+    color: var(--text-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
 }
 
-.progress-fill-15 {
-    width: 15%;
-}
-
-.progress-fill-10 {
-    width: 10%;
+.social-link:hover {
+    color: var(--primary);
+    transform: scale(1.15);
 }
 
 /* ============ Contact Page ============ */
@@ -1250,19 +1341,26 @@ body.lightbox-open {
     }
 
     /* --- About Page --- */
-    .about-grid {
+    .academy-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .academy-pillars {
         grid-template-columns: 1fr;
-        gap: 2rem;
+    }
+
+    .founder-grid {
+        grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .about-image {
-        max-width: 250px;
+    .founder-image {
+        max-width: 180px;
         margin: 0 auto;
     }
 
-    .bio-grid {
-        grid-template-columns: 1fr;
+    .social-links {
+        justify-content: center;
     }
 
     /* --- Blog Layout --- */
