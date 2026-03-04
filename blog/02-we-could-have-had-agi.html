@@ -39,7 +39,7 @@
                     <div class="article-meta">
                         <span>February 2026</span>
                         <span>&bull;</span>
-                        <span>17 min read</span>
+                        <span>15 min read</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="For professionals ready for deeper technical understanding">Power Users</span>
                             <span class="tag">Agents</span>
@@ -57,7 +57,7 @@
                             <source src="../assets/audio/we-could-have-had-agi.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <span class="audio-label">Listen to this article (17 min)</span>
+                        <span class="audio-label">Listen to this article (15 min)</span>
                     </div>
 
                     <div class="article-body">
@@ -68,7 +68,7 @@
 
                         <p>Not the sci-fi kind. Not a god in a box. The practical kind &mdash; a system that learns a profession, keeps working for weeks, gets better from experience, and does not need someone watching it every thirty minutes. Not an engineered artifact with a fixed design, but a <strong>complex system</strong> &mdash; one where intelligence emerges from primitives interacting, the way a living organism emerges from cells, not from a blueprint.</p>
 
-                        <p>The building blocks have been available for months. Persistent storage. Event hooks. Tool execution. Logging. None of this is exotic. None of this required a breakthrough. What it required was a different bet: <strong>scale the architecture, not just the model.</strong></p>
+                        <p>The building blocks have been available for months. None of them are exotic. None of them required a breakthrough. What they required was a different bet: <strong>scale the architecture, not just the model.</strong></p>
 
                         <!-- ======== 2. ELECTRICITY/TOASTERS AGAIN ======== -->
 
@@ -164,7 +164,7 @@
 
                         <p>If you prefer different terminology, call them behaviors, intentions, processes, or obligations. The organizational principle is the same: <strong>persistent state plus enforcement hooks</strong>.</p>
 
-                        <p>This pattern already works across platforms. Claude Code's Stop hook, OpenCode's <code>session.idle</code> event, and Gemini CLI's AfterAgent hook all provide the interception point needed to keep a job alive. The specific syntax varies. The principle is identical: block premature exit until obligations are met. As of early 2026, adoption is converging fast — hooks are becoming a standard primitive across CLI agent platforms, confirming that the industry recognizes architecture-level control as essential to durable agency.</p>
+                        <p>This pattern is platform-agnostic. Any CLI agent with a Stop-blocking hook can run it.</p>
 
                         <!-- ======== 7. HOOKS ARE THE MISSING EVOLUTIONARY LAYER ======== -->
 
@@ -242,24 +242,22 @@
                         <ol>
                             <li><strong>A filesystem brain with compartmentalized memory.</strong> Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and instruction files (<code>CLAUDE.md</code>, <code>AGENT.md</code>) scoped to where they are needed.</li>
 
-                            <li><strong>A hook system that enforces phases and permissions.</strong> Interception points where deterministic rules override probabilistic behavior. Claude Code hooks, OpenCode plugin events, Gemini CLI hooks — the mechanism varies, the principle is identical.</li>
+                            <li><strong>A hook system that enforces phases and permissions.</strong> Interception points where deterministic rules override probabilistic behavior.</li>
 
                             <li><strong>A job system that keeps the agent alive until obligations are met.</strong> Persistent jobs as structured objects. Stop-blocking hooks that prevent premature exit. Observation fields that must be processed before completion. And not just professional tasks — the agent also spends compute on its own maintenance: managing memory, refining instructions, consolidating experience. Like a cell that does not just process nutrients but also repairs itself, manages waste, and maintains its own membrane.</li>
 
                             <li><strong>A consolidation loop that converts traces into durable upgrades.</strong> Consolidation phases where logged experience is analyzed, distilled, and written back as improved instructions, refined checklists, and new skills.</li>
                         </ol>
 
-                        <p>The engine can be Claude, GPT, Gemini, or whatever token generator comes next. If the architecture is sound, the organism survives engine swaps.</p>
-
                         <!-- ======== 13. WHY I SAY WE COULD HAVE HAD IT BY NOW ======== -->
 
                         <h2>Why I Say "We Could Have Had It by Now"</h2>
 
-                        <p>Because the building blocks have been available for months. Persistent storage is trivial. Event hooks are basic software. Tool execution is standard. Logging and evaluation are solved problems. Even small models can follow structured workflows when the structure is explicit.</p>
+                        <p>Because none of the architecture described in this essay required a research breakthrough. Every primitive &mdash; persistence, hooks, jobs, consolidation &mdash; is standard software. The only thing missing was the bet.</p>
 
                         <p>Previous attempts at agent autonomy &mdash; AutoGPT, BabyAGI, and their descendants &mdash; were still <strong>engineered systems</strong>. They defined the agent directly: rigid pipelines, fixed roles, specific task flows. When the plan did not fit reality, the agent broke. They proved that top-down engineering cannot produce durable autonomy.</p>
 
-                        <p>What we needed was <strong>complex system design</strong> &mdash; not defining the agent directly, but defining primitives (persistent state, hooks, jobs, consolidation) and letting the agent <strong>emerge</strong> from their interaction. Hooks arrived in CLI frameworks recently. They are a qualitatively different design. If the research effort that went into squeezing marginal gains out of prompt-following had gone into these long-horizon complex-system experiments, we would already have more systems that keep working for weeks, learn workflows, accumulate real project memory, and behave consistently for a given user.</p>
+                        <p>What we needed was <strong>complex system design</strong> &mdash; not defining the agent directly, but defining primitives and letting the agent <strong>emerge</strong> from their interaction. Hooks arrived in CLI frameworks recently. They are a qualitatively different design. If the research effort that went into squeezing marginal gains out of prompt-following had gone into these long-horizon complex-system experiments, we would already have more systems that keep working for weeks, learn workflows, accumulate real project memory, and behave consistently for a given user.</p>
 
                         <p>That is the kind of &ldquo;AGI&rdquo; most teams actually want: a durable collaborator that gets better.</p>
 
@@ -267,17 +265,13 @@
 
                         <h2>Closing</h2>
 
-                        <p>The industry keeps asking: "When will the model become AGI?"</p>
+                        <p>The industry keeps asking: &ldquo;When will the model become AGI?&rdquo;</p>
 
-                        <p>A better question is: <strong>"When will we stop confusing the engine for the organism?"</strong></p>
+                        <p>The model was never going to become AGI. The organism was.</p>
 
-                        <p>Models will keep improving. The real leverage is building architectures that can absorb those improvements without rebuilding the whole organism each time. That is how you get to an AGI-like entity faster, cheaper, and with more control than the monolithic scaling path.</p>
+                        <p>We have the primitives. We have had them for months.</p>
 
-                        <p>Scaling the model asks: "How smart can one engine be?"</p>
-
-                        <p>Scaling architecture asks: "How capable can an organization become with engines that already exist?"</p>
-
-                        <p>If your goal is practical autonomy, the second question is the one that matters.</p>
+                        <p><strong>Build the organism.</strong></p>
 
                         <hr>
 
@@ -349,7 +343,7 @@
                                 <span class="tag tag-sm">AGI</span>
                             </div>
                             <h3>We Could Have Had AGI By Now</h3>
-                            <div class="date">February 2026 &bull; 17 min read</div>
+                            <div class="date">February 2026 &bull; 15 min read</div>
                         </div>
                         <a href="01-llms-are-not-the-agents.html" class="article-card-link">
                             <div class="article-card">
