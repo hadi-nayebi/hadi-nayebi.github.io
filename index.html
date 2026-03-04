@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hadosh Academy | Engineer Agents, Not Chatbots</title>
     <meta name="description" content="Hadosh Academy — customize reliable seed agents through conversation. Build your personalized agentic workforce and scale your professional skills.">
+    <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
@@ -23,10 +24,50 @@
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://hadi-nayebi.github.io/#website",
+                "url": "https://hadi-nayebi.github.io/",
+                "name": "Hadosh Academy",
+                "description": "Seed agents that remember, learn, and improve at your work — customized through conversation, no coding required."
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://hadi-nayebi.github.io/#organization",
+                "name": "Hadosh Academy",
+                "url": "https://hadi-nayebi.github.io/",
+                "logo": "https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png",
+                "sameAs": ["https://www.skool.com/claude-agents-engineering-4513"]
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
-    <header id="site-header"></header>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html" class="active" aria-current="page">Home</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="agents.html">Agents</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <main>
         <section class="hero hero-overflow">
@@ -80,7 +121,11 @@
         </section>
     </main>
 
-    <footer id="site-footer"></footer>
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="js/components.js"></script>
 </body>

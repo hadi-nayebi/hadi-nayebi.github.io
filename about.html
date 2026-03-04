@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Academy | Hadosh Academy</title>
     <meta name="description" content="Hadosh Academy builds free, open-source AI agents that learn from you, work for you, and grow with you. For every professional — no coding required.">
+    <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
@@ -25,7 +26,25 @@
 </head>
 
 <body>
-    <header id="site-header"></header>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="agents.html">Agents</a>
+                    <a href="about.html" class="active" aria-current="page">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <main class="page-content">
 
@@ -181,7 +200,11 @@
 
     </main>
 
-    <footer id="site-footer"></footer>
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="js/theme-manager.js"></script>
     <script src="js/components.js"></script>

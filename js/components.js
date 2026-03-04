@@ -1,92 +1,17 @@
-// Version: v0.5.0
-// Shared nav/header and footer components — injected into placeholder elements.
+// Version: v0.6.0
+// Shared components — enhances static nav/footer markup, plus lightbox and blog filters.
 
 (function () {
     'use strict';
 
     /**
-     * Navigation items definition.
-     * Each entry: { label, href }
-     * href values are relative to the site root.
+     * Enhance the static header: wire up hamburger toggle.
+     * Static nav HTML is already in every page — no innerHTML injection.
      */
-    var NAV_ITEMS = [
-        { label: 'Home', href: 'index.html' },
-        { label: 'Blog', href: 'blog.html' },
-        { label: 'Agents', href: 'agents.html' },
-        { label: 'About', href: 'about.html' },
-        { label: 'Contact', href: 'contact.html' }
-    ];
-
-    /**
-     * Detect if the page is inside a subdirectory (e.g. blog/).
-     * Returns the prefix needed to reach the site root (e.g. "../" or "").
-     */
-    function getPathPrefix() {
-        var path = window.location.pathname;
-        // Known subdirectories that contain pages
-        var subdirs = ['/blog/'];
-        for (var i = 0; i < subdirs.length; i++) {
-            if (path.indexOf(subdirs[i]) !== -1) {
-                return '../';
-            }
-        }
-        return '';
-    }
-
-    /**
-     * Determine the current page filename from the URL pathname.
-     * Returns the filename (e.g. "about.html") or "index.html" for root paths.
-     */
-    function getCurrentPage() {
-        var path = window.location.pathname;
-        // Strip trailing slash
-        if (path.endsWith('/')) {
-            path = path.slice(0, -1);
-        }
-        var segments = path.split('/');
-        var last = segments[segments.length - 1];
-        // Root or empty means index
-        if (!last || last === '') {
-            return 'index.html';
-        }
-        return last;
-    }
-
-    /**
-     * Build and inject the site header/nav into #site-header.
-     */
-    function injectHeader() {
+    function enhanceHeader() {
         var header = document.getElementById('site-header');
         if (!header) return;
 
-        var currentPage = getCurrentPage();
-        var prefix = getPathPrefix();
-
-        // Build nav links HTML
-        var linksHtml = NAV_ITEMS.map(function (item) {
-            var isActive = (currentPage === item.href);
-            var attrs = isActive ? ' class="active" aria-current="page"' : '';
-            return '<a href="' + prefix + item.href + '"' + attrs + '>' + item.label + '</a>';
-        }).join('\n                    ');
-
-        header.innerHTML =
-            '<div class="container">\n' +
-            '            <nav>\n' +
-            '                <a href="' + prefix + 'index.html" class="logo">Hadosh Academy</a>\n' +
-            '\n' +
-            '                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">\n' +
-            '                    <span class="nav-toggle-bar"></span>\n' +
-            '                    <span class="nav-toggle-bar"></span>\n' +
-            '                    <span class="nav-toggle-bar"></span>\n' +
-            '                </button>\n' +
-            '\n' +
-            '                <div class="nav-links">\n' +
-            '                    ' + linksHtml + '\n' +
-            '                </div>\n' +
-            '            </nav>\n' +
-            '        </div>';
-
-        // Wire up hamburger toggle
         var toggle = header.querySelector('.nav-toggle');
         var navLinks = header.querySelector('.nav-links');
         if (toggle && navLinks) {
@@ -100,23 +25,30 @@
     }
 
     /**
-     * Build and inject the site footer into #site-footer.
+     * Enhance the static footer: update copyright year dynamically.
      */
-    function injectFooter() {
-        var footer = document.getElementById('site-footer');
-        if (!footer) return;
-
-        var year = new Date().getFullYear();
-
-        footer.innerHTML =
-            '<div class="container">\n' +
-            '            <p>&copy; ' + year + ' Hadosh Academy. All rights reserved.</p>\n' +
-            '        </div>';
+    function enhanceFooter() {
+        var yearSpan = document.getElementById('copyright-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
     }
 
     /**
-     * Initialize components when DOM is ready.
+     * Detect if the page is inside a subdirectory (e.g. blog/).
+     * Returns the prefix needed to reach the site root (e.g. "../" or "").
      */
+    function getPathPrefix() {
+        var path = window.location.pathname;
+        var subdirs = ['/blog/'];
+        for (var i = 0; i < subdirs.length; i++) {
+            if (path.indexOf(subdirs[i]) !== -1) {
+                return '../';
+            }
+        }
+        return '';
+    }
+
     /**
      * Inject dev-only feedback widget on localhost.
      */
@@ -317,8 +249,8 @@
     }
 
     function init() {
-        injectHeader();
-        injectFooter();
+        enhanceHeader();
+        enhanceFooter();
         injectFeedbackWidget();
         initLightbox();
         initBlogFilters();
