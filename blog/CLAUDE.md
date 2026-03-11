@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.3.0
+**Version:** v0.4.0
 
 ## Content Workflow
 
@@ -56,6 +56,16 @@ Blog 1 ("LLMs Are Not the Agents") is the **reference voice**. All posts must ma
 - Better to be bold and specific than safe and generic
 - The reader should feel the author has done the work and is impatient with those who haven't
 
+### Stylistic Lessons (from editorial review)
+- **Don't present novel concepts as established** — "most common architectural mistake" implies known patterns; we're introducing these ideas for the first time
+- **Modulate the punchy tone** — staccato is a tool, not the default; overuse becomes annoying. Mix short punches with flowing prose.
+- **Truthful essay references** — "introduced" not "built"; be accurate about what previous essays accomplished
+- **Positive framing over negative lists** — avoid "Not X. Not Y. Not Z." — sounds sensational. Lead with what it IS.
+- **Two tones OK** — non-technical friendly description as glue + light technical specifics (file names, concepts). Not monotonically smooth.
+- **Educational asides pattern** — follow Blog 5's JSON model: soft intro → definition + link → concrete example → "why this matters" → "get comfortable with this term"
+- **Self-appreciation ceiling** — avoid "most important idea in agent design"; present concepts, let readers draw conclusions
+- **Don't teach as if correcting** — share our approach, don't fix an industry. "Here is what we found" not "here is the most common mistake"
+
 ## HTML Template Pattern
 
 Every blog post follows the same structure:
@@ -110,10 +120,127 @@ This framing helps readers see agents as **extensions of their brain**, not sepa
 - **Volume:** ~5-10 terms per post — enough to help, not so many it clutters
 - **Skip terms already explained** in surrounding text (e.g., if the post defines "agent" in context, no need to link it)
 
+## Blog Series Map (8 Essays)
+
+### Series Arc
+**Part 1 (1-4): Why + What** — conceptual pull, emotional urgency, vocabulary
+**Part 2 (5-8): How** — seed agent architecture, increasingly mechanical
+
+Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces technical specifics — each blog adds one new technical concept (JSON → git → OPEVC → validation scripts).
+
+### Hadi's Intent Per Blog
+
+**Blog 1:** LLM ≠ agent, filesystem = agent. Making agents **accessible** — you don't need billions, just use existing LLMs as engines. Any LLM exposed to your unique filesystem becomes YOUR agent. Electricity → toaster.
+
+**Blog 2:** Toaster = engineered, but AGI = **complex system**. Filesystem must be understood as a complex system. Shift focus from token generation to the rest. Novel token generators (jLLMs, dLLMs) will arrive — the agent metabolizes tokens regardless of source.
+
+**Blog 3:** CLI agents = file manipulators = **the form factor** for building filesystem agents. CLI agent builds the filesystem and is influenced by it. Extends brain as a digital cortex. Personal urgency: your brain needs this.
+
+**Blog 4:** Consolidate terminology. Bridge from conceptual (1-3) to architectural (5-8). Shift to describing the seed agent.
+
+**Blog 5:** The skeleton — job system as structural framework. JSON aside. Job objects, protection tiers, stop-blocking.
+
+**Blog 6:** Background jobs ONLY. Episodic memory + neighborhood awareness. Git aside. DC.md (XML). What they DO — no OPEVC internals, no CLAUDE.md layer details.
+
+**Blog 7:** OPEVC workflow + CLAUDE.md as working memory. How background enforces focused work. The bridge that connects Blog 6 mechanisms to Blog 8 focused work.
+
+**Blog 8:** Focused jobs. Collaboration spectrum. Four jobs. Why 6 patterns cover everything. Seed ships mechanisms, not categories.
+
+### Reader's Cumulative Knowledge
+
+| After | Knows | New Technical |
+|-------|-------|---------------|
+| 1 | Agent = filesystem. Any LLM works. OPEVC + CLAUDE.md planted. | — (conceptual) |
+| 2 | AGI = complex system. Scale architecture. Seed agent planted. | — (conceptual) |
+| 3 | Brain needs help. CLI agents = form factor. Digital cortex. | CLI agent concept |
+| 4 | Full vocabulary: hooks, skills, plugins, sub-agents, MCP, seed. | Vocabulary |
+| 5 | Skeleton: job system, job objects, protection, stop-blocking. | JSON |
+| 6 | Background jobs: episodic memory (commits), neighborhood (DC.md). | Git/commits, DC.md (XML) |
+| 7 | OPEVC workflow. CLAUDE.md working memory. Background enforces focused. | OPEVC mechanical |
+| 8 | 4 focused jobs, spectrum, why 6 patterns cover everything. | Validation scripts, chaining |
+
+### Concept Flow (planted → defined → deepened)
+
+| Concept | Planted | Defined | Deepened |
+|---------|---------|---------|----------|
+| Agent = filesystem | 1 | — | 5-8 (specific files) |
+| Complex system | 2 | — | 6 (autonomic vs directed) |
+| OPEVC | 1 (light) | 7 (full mechanical) | 8 (in focused jobs) |
+| CLAUDE.md | 1 (light) | 7 (working memory role) | 8 (in OPEVC cycle) |
+| Hooks | 1 (conceptual) | 4 (vocabulary) | 5-6 (applied) |
+| JSON | — | 5 (aside) | 5+ (job objects) |
+| Git / commits | — | 6 (aside) | 7 (phase labels) |
+| DC.md | — | 6 (introduced) | 7 (in OPEVC context) |
+| Job system | 2 (heartbeat) | 5 (full) | 6-8 (populated) |
+| Seed agent | 2 (concept) | 4 (vocabulary) | 5-8 (built piece by piece) |
+
+### Inter-Blog Callbacks (each blog must reference)
+
+| Blog | Callbacks to |
+|------|-------------|
+| 5 | 1 (filesystem = agent → now see what files), 2 (seed agent), 4 (vocabulary) |
+| 6 | 1 (OPEVC: "remember the five phases?"), 2 (complex system → autonomic), 3 (cognitive organs), 5 (skeleton) |
+| 7 | 1 (OPEVC + CLAUDE.md: "we planted these in Essay 1, now we see them work"), 5 (job phases), 6 (episodic memory) |
+| 8 | 2 (seed = mechanisms not categories), 5 (activation patterns), 6 (background serving focused), 7 (OPEVC) |
+
+**Rule:** When referencing a concept from an earlier blog, include a brief hint + link. Never assume the reader remembers — remind them in one sentence.
+
+### Blogs 1-4: Improvement Notes (80% retain / 20% improve)
+
+**Blog 1:**
+- Strengthen: "any LLM can power your agent" — building agents is accessible, not expensive
+- Add: Forward-refs where OPEVC and CLAUDE.md appear ("we'll return to these as we build the seed agent")
+- Keep: Toaster metaphor, diagrams, "Build the toaster" ending
+
+**Blog 2:**
+- Add: Brief mention of novel token generators (jLLMs, dLLMs) — agent metabolizes tokens regardless of source
+- Strengthen: Shift-focus message — now that we have engines, think about the rest of the system
+- Add: Better forward-ref to upcoming seed agent essays
+- Keep: Biology metaphor, "Build the organism" ending
+
+**Blog 3:**
+- Strengthen: CLI agent = file manipulator = form factor for filesystem agents. Make this explicit.
+- Add: CLI agents read files, write files, execute commands — they build and maintain the filesystem brain
+- Keep: Snake metaphor, digital cortex, emotional urgency
+
+**Blog 4:**
+- Strengthen: Closing transition to architecture essays
+- Verify: All Blog 5-8 terms either defined here or flagged as new when introduced
+- Keep: Vocabulary scaffolding, tone, structure
+
+### Blogs 5-8: Structure Notes
+
+**Blog 5:** Adjust closing teaser to match Blog 6 scope (background jobs only, not all 6 jobs).
+
+**Blog 6:** Background jobs ONLY.
+- Git aside (educational, following Blog 5's JSON pattern)
+- Episodic memory: what it does (remembers via commits), not internal mechanics (no phase labels, no OPEVC)
+- Neighborhood awareness: DC.md in XML format, what it contains, distributed memory
+- No CLAUDE.md details, no OPEVC — save for Blog 7
+- Describe what the two job types SHARE (objectives, deliverables, hooks) and how they DIFFER
+- Don't imply the design is fragile — it's designed to not break
+
+**Blog 7:** OPEVC + CLAUDE.md deep dive.
+- Formally define all 5 phases (observe, plan, execute, verify, **condense** — not consolidate)
+- CLAUDE.md as working memory: inflation during work, deflation during condense
+- Reveal: episodic memory commit labels ARE phase labels — this is how background enforces focused
+- Bridge: background jobs serving focused work (Hadi's insight)
+
+**Blog 8:** Focused jobs + why 6 is enough.
+- Collaboration spectrum (you-driven ↔ agent-driven)
+- 4 jobs: Design, Brainstorm, Build, Self-Improvement
+- Validation scripts as completion gates
+- Chained activation, recurring activation
+- Why 6 is enough: seed ships mechanisms, not categories
+- Growth loop: custom jobs → experience → self-improvement
+
 ## Current Posts
 
-| Slug | Title | Version |
-|------|-------|---------|
-| your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.0 |
-| llms-are-not-the-agents | LLMs Are Not the Agents | v0.3.1 |
-| we-could-have-had-agi | We Could Have Had AGI By Now | v0.2.0 |
+| # | Slug | Title | Version | Status |
+|---|------|-------|---------|--------|
+| 1 | llms-are-not-the-agents | LLMs Are Not the Agents | v0.3.1 | published |
+| 2 | we-could-have-had-agi | We Could Have Had AGI By Now | v0.2.0 | published |
+| 3 | your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.0 | published |
+| 4 | the-language-of-agents | The Language of Agents | v0.1.0 | published |
+| 5 | every-agent-needs-a-skeleton | Every Agent Needs a Skeleton | v0.4.0 | published |
+| 6 | 06-your-agents-first-organs | TBD (background jobs) | v0.2.0 | draft |
