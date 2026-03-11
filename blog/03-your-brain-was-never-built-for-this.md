@@ -70,7 +70,7 @@ Because it is. Their organic brain is running software designed for the savanna,
 
 For the first time in twelve thousand years, the cost of cognitive delegation is collapsing.
 
-A [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a structured AI system that lives on your computer, not in a corporate cloud — is a new kind of thing in human history. Call it what it actually is: a **digital cognitive organ**.
+A [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a structured AI system that lives on your computer, reads your files, writes new ones, and organizes your work — is a new kind of thing in human history. Call it what it actually is: a **digital cognitive organ**.
 
 That phrase is deliberate. An **organ**.
 
@@ -80,7 +80,7 @@ A CLI agent does the same thing — for the complexities your organic brain was 
 
 A [hook](https://en.wikipedia.org/wiki/Hooking "A technique that intercepts events or actions to monitor or change behavior") that watches your file system for sensitive data exposure? **Cognitive reflex** — a digital immune system catching what your organic attention missed.
 
-A memory file that accumulates what your agent has learned about your project across sessions? **Cognitive memory tissue** — persistent knowledge your biological hippocampus would have discarded after sleep.
+A memory file that accumulates what your agent has learned about your project across sessions? **Cognitive memory tissue** — persistent knowledge your biological [hippocampus](https://en.wikipedia.org/wiki/Hippocampus "A brain region essential for forming and retrieving memories") would have discarded after sleep.
 
 A skill that enforces a consistent workflow every time you start a new task? **Cognitive muscle memory** — reliable behavior your organic brain would improvise differently each time.
 
@@ -90,9 +90,9 @@ These are organs of a new layer you are building for yourself.
 
 ## The Evolution You Get to Choose
 
-Evolution gave us a brainstem — survival, breathing, reflexes. Millions of years of tuning.
+Evolution gave us a [brainstem](https://en.wikipedia.org/wiki/Brainstem "The oldest part of the brain — controls breathing, heartbeat, and basic survival reflexes") — survival, breathing, reflexes. Millions of years of tuning.
 
-Then it gave us a cortex — language, planning, abstract thought. The thing that separates us from every other animal on Earth.
+Then it gave us a [cortex](https://en.wikipedia.org/wiki/Cerebral_cortex "The outer layer of the brain responsible for language, planning, and abstract thought") — language, planning, abstract thought. The thing that separates us from every other animal on Earth.
 
 But evolution stopped there. It does not know about tax codes, or cryptocurrency, or the seventeen different privacy settings on your phone. The cortex that can write poetry and build bridges **cannot keep up** with the world it created.
 
@@ -100,9 +100,9 @@ So we build the next layer ourselves.
 
 The **digital cortex**.
 
-A collection of files on your computer that gives you cognitive capabilities your organic brain does not have. Memory that persists across weeks. Reflexes that fire before mistakes happen. Specialized reasoning that runs while you sleep. The brain that evolved for snakes in the grass — now extended with organs designed for the actual jungle it lives in.
+A [complex system](we-could-have-had-agi.html#biology-did-not-scale-one-molecule) made of files on your computer — not one giant program, but many small parts interacting: memory files, instruction files, hooks, skills. It gives you cognitive capabilities your organic brain does not have. Memory that persists across weeks. Reflexes that fire before mistakes happen. Specialized reasoning that runs while you sleep. The brain that evolved for snakes in the grass — now extended with organs designed for the actual jungle it lives in.
 
-Your [`.claude/`](https://docs.anthropic.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**.
+Your [`.claude/`](https://docs.anthropic.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make a digital cortex function.
 
 ---
 
@@ -114,17 +114,29 @@ That made sense when building and running a business required capital, expertise
 
 Watch what happens when a digital cortex handles eighty to ninety percent of business operations.
 
-A human with the right cognitive organs can run a small canned-drink brand. The human decides on the flavor. The agent — one that grows from experience and improves its own architecture — writes the business plan, connects its human to a flavor chemist, researches [food-grade manufacturers](https://en.wikipedia.org/wiki/Contract_manufacturer "A company that manufactures products for another company's brand"), manages regulatory paperwork, coordinates branding, and keeps the website running. Every contractor, every specialist, every logistics partner is still a human — but the agent is the connective tissue that holds the operation together. The human's job is taste, judgment, and the relationships that matter. The agent's job is **everything in between**.
+You go to the supermarket and pay for someone else's brand. What if you had your own? Pick the flavor. Choose the ingredients. Make it healthier. Someone buying your drink pays your salary. Every person a corporation.
+
+Here is what that looks like. A human with the right cognitive organs can run a small canned-drink brand. The human decides on the flavor. The agent — one that grows from experience and improves its own architecture — writes the business plan, connects its human to a flavor chemist, researches [food-grade manufacturers](https://en.wikipedia.org/wiki/Contract_manufacturer "A company that manufactures products for another company's brand"), manages regulatory paperwork, coordinates branding, and keeps the website running. Every contractor, every specialist, every logistics partner is still a human — but the agent is the connective tissue that holds the operation together. The human's job is taste, judgment, and the relationships that matter. The agent's job is **everything in between**.
 
 The same human can simultaneously run a consulting practice. And a content creation studio. And a local food product line.
 
 Not because they became superhuman. Because they grew the cognitive organs their organic brain was missing.
 
+Now multiply that across every market. The beverage industry generates tens of billions in annual revenue. Today, a handful of corporations capture most of it. But the barrier to running a drink brand was never manufacturing — contract manufacturers already produce white-label products for anyone who asks. The barrier was everything else: planning, regulatory compliance, branding, logistics, supplier coordination. That is **operations**. And operations is exactly what a digital cortex absorbs.
+
+The same logic applies to packaged snacks, media brands, consulting practices, local services. Each sector already has production and distribution infrastructure waiting to be used. What held individuals out was the cognitive overhead of running a business — the part your organic brain was never built to scale.
+
+Remove that overhead and **revenue disperses**. Not because the market grows, but because more people can compete in it. A thirty-billion-dollar industry does not disappear. It distributes across more brand owners — each one bringing their own taste, their own audience, their own human judgment to the table.
+
 If running a simple business costs roughly one hundred dollars a month in compute — which is where the trend line points — then the barrier to starting is not capital, expertise, or connections. It is **whether you built your digital cortex or not**.
 
 The economic default shifts. Not from job to *a* company. From job to **several micro-businesses** — each one managed by cognitive organs you designed, each one requiring only your judgment, taste, and human relationships to thrive.
 
-Work contracts shift too. Part-time collaboration between humans who each bring their own agentic infrastructure to the table. Eight billion people in a connected market, each running their own small operations, trading value locally and globally.
+Imagine that world. It is 2035. You manage a small beverage brand, a consulting practice, and a content studio. In some you collaborate with other humans who bring their own agents to the table. In some you work alone — your agent handling everything between your creative decisions and the customer. Nobody hires another person unless they specifically need their taste, judgment, or physical presence. Every person becomes a brand of their own.
+
+Now ask yourself: can the brain that evolved to track a few relationships in a small tribe manage all of that without help?
+
+That is why this essay exists. The digital cortex is not a luxury for early adopters. It is infrastructure for the world that is arriving.
 
 
 ### What Survives the Shift
@@ -155,7 +167,7 @@ But if you can build cognitive organs, you can build **everything**.
 
 A personal super-app on your phone, built by your agent, collecting your own data. Your own fitness dashboard. Your own project tracker. Your own communication hub. Running on your hardware — a phone and a small cloud server — powered entirely by software your digital cortex designed and maintains.
 
-Look at the stack that makes this possible. Cloud hardware providers sell compute the way power companies sell electricity. LLM providers sell intelligence the way water utilities sell clean water. You do not build the power plant. You plug in. Your agent runs on intelligence piped to your machine, the same way your refrigerator runs on electricity piped to your house.
+Look at the stack that makes this possible. Cloud hardware providers sell compute the way power companies sell electricity. LLM providers sell intelligence the way water utilities sell clean water. You do not build the power plant. You plug in. Your LLM bill arrives monthly, the same way your electric bill does. Your agent runs on intelligence piped to your machine, the same way your refrigerator runs on electricity piped to your house.
 
 This is already happening. [OpenClaw](https://en.wikipedia.org/wiki/OpenClaw "An open-source autonomous AI agent that performs tasks through messaging platforms") — an open-source autonomous agent — went from obscurity to hundreds of thousands of GitHub stars in weeks. [Moltbook](https://en.wikipedia.org/wiki/Moltbook "A social network designed for AI agents to communicate and collaborate autonomously"), a social network where AI agents interact autonomously, crossed a million active agents within its first month. Personalized agents running independently, forming their own ecosystems. Pair this with decentralized trust infrastructure and you have the architecture for agent-driven commerce taking shape in real time.
 
@@ -204,3 +216,10 @@ The foundation is set. [The agent is the filesystem](llms-are-not-the-agents.htm
 The snake in the tall grass has been replaced by a civilization of eight billion minds connected at the speed of light. Your organic brain is the best thing evolution ever made.
 
 It just needs a few more organs.
+
+---
+
+*Essay 3 of 8 in the Hadosh Academy series on agent architecture.*
+
+*Previous: ["We Could Have Had AGI By Now"](we-could-have-had-agi.html) — what happens when you scale architecture instead of the model.*
+*Next: ["The Language of Agents"](the-language-of-agents.html) — every term you need, in one read.*

@@ -577,6 +577,48 @@ footer {
     white-space: nowrap;
 }
 
+/* Audio enhanced controls */
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.audio-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.audio-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
+
+.audio-speed-group {
+    display: flex;
+    gap: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+.audio-speed.active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.article-audio:focus {
+    outline: 1px solid rgba(99, 102, 241, 0.3);
+    outline-offset: 2px;
+    border-radius: 12px;
+}
+
 .article-comments {
     margin-top: 3rem;
     padding-top: 2rem;
@@ -696,6 +738,27 @@ footer {
 .article-body strong {
     color: var(--text-main);
     font-weight: 600;
+}
+
+/* Punchline — standalone thesis statements */
+.article-body .punchline {
+    font-size: 1.15em;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    line-height: 1.6;
+}
+
+/* Epigraph — opening hook blockquote, more prominent */
+.article-body blockquote.epigraph {
+    font-size: 1.2em;
+    padding: 1.5rem 2rem;
+    background: rgba(99, 102, 241, 0.08);
+    border-left-width: 4px;
+    font-style: normal;
+    text-align: center;
 }
 
 .article-body ol {
@@ -1521,6 +1584,15 @@ body.lightbox-open {
 /* ============ Responsive: Small Phone (≤480px) ============ */
 
 @media (max-width: 480px) {
+    .article-audio {
+        flex-wrap: wrap;
+    }
+
+    .audio-controls {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
     .hero h1 {
         font-size: 1.8rem;
     }
@@ -1562,6 +1634,16 @@ body.lightbox-open {
 
     .article-body h3 {
         font-size: 1.15rem;
+    }
+
+    .article-body .punchline {
+        font-size: 1.05em;
+        padding: 0.75rem 1rem;
+    }
+
+    .article-body blockquote.epigraph {
+        font-size: 1.1em;
+        padding: 1rem 1.25rem;
     }
 
     .article-body blockquote {

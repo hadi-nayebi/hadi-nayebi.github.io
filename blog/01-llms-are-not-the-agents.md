@@ -2,7 +2,7 @@
 title: "LLMs Are Not the Agents"
 date: "February 2026"
 slug: "llms-are-not-the-agents"
-read_time: "12 min"
+read_time: "16 min"
 tags: [Agents, AI, Fundamentals]
 og_image: "assets/images/blog/llm-engine-agent-directory.png"
 ---
@@ -29,7 +29,7 @@ When people say "AI agent," they almost always mean the model. Claude, GPT, Gemi
 
 **That is the root misunderstanding.**
 
-The model is not the agent. The model is the **engine** — a [token generator](https://en.wikipedia.org/wiki/Language_model#Generating_text "A system that produces text one piece at a time based on statistical patterns learned during training") that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create. But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model. A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.
+The model is not the agent. The model is the **engine** — a [token generator](https://en.wikipedia.org/wiki/Language_model "A system that produces text one piece at a time based on statistical patterns learned during training") that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create. But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model. A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.
 
 Here is what happens when you treat the LLM as the agent:
 
@@ -54,7 +54,11 @@ In a CLI agent, the brain is not abstract or metaphorical. It is **literal**. It
 
 **The agent is the filesystem.**
 
+And here is the key insight: since a CLI agent's entire capability is generating text and using it to create and modify files — it can build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it. You describe what you need through conversation. The agent builds. The same seed works for any user — its architecture knows how to grow, but what it grows into depends on you. We will deep dive into what makes a seed agent work in the second half of this series.
+
 This is good news. Training an LLM costs hundreds of millions of dollars and requires specialized hardware most people will never touch. Building an agent costs nothing beyond the tools you already have. You are not creating intelligence — that already exists. You are organizing files that shape existing intelligence into reliable behavior.
+
+And because it is just files, everything is transparent. You can open a folder and see exactly what your agent knows, what rules it follows, and what it is about to do. You can audit it. You can move it to another machine. You can hand it to a colleague. Try doing that with a neural network.
 
 That filesystem gives the LLM everything it cannot provide on its own:
 
@@ -81,6 +85,9 @@ To understand why structure matters, look at what happens **without** it.
 
 A CLI agent in an empty folder has an **action space** — the set of things it can do at any given moment:
 
+![Markov chain diagram showing Claude Code's action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices.](../assets/images/blog/action-space-markov-chain.png)
+*The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a [Markov chain](https://en.wikipedia.org/wiki/Markov_chain "A system where the next step depends only on the current state, not the full history") where every path is equally likely.*
+
 - Respond in chat
 - Use deep reasoning mode
 - Use tools (read, write, edit, run, search)
@@ -94,9 +101,6 @@ At each step, the LLM picks one of these actions based on probabilities. Then it
 The problem? **Small changes in context lead to completely different paths.** Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.
 
 This is why working with a bare LLM can feel like a **random walk**. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. Without structure to absorb and organize the tokens it generates, a raw LLM agent shows **ADHD-like symptoms**. Brilliant, full of potential, but scattered and inconsistent — unable to stay on track without external structure holding it accountable.
-
-![Markov chain diagram showing Claude Code's action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices.](../assets/images/blog/action-space-markov-chain.png)
-*The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a [Markov chain](https://en.wikipedia.org/wiki/Markov_chain "A system where the next step depends only on the current state, not the full history") where every path is equally likely.*
 
 > Intelligence alone is not reliability. **Structure is.**
 
@@ -199,6 +203,8 @@ This is also what gives the agent **identity over time**. When the filesystem is
 
 ## What This Means for You
 
+If the vocabulary in this essay felt unfamiliar, that is normal. Learning agent concepts is like learning any professional tool — the way you once learned to think in slides and templates when you picked up PowerPoint, or in cells and formulas when you first opened a spreadsheet. The concepts are not hard. They just need exposure and repetition. This series will build them up, one essay at a time.
+
 If you are building with AI agents — or want to start — here is the shift in thinking:
 
 1. **Stop obsessing over which model to use.** Building an agent does not require a research lab or a training budget. The engine improves on its own every quarter. The structure you build around it is what makes it yours.
@@ -217,4 +223,6 @@ The electricity keeps getting stronger. That has never been the bottleneck.
 
 ---
 
-*This essay establishes a foundation: the agent is the filesystem, not the model. The next essay takes this further — if the building blocks for durable, self-improving agents have been available for months, why are we still scaling only the engine? Read **["We Could Have Had AGI By Now"](we-could-have-had-agi.html)** to explore what happens when you scale architecture instead of scaling the model.*
+*Essay 1 of 8 in the Hadosh Academy series on agent architecture.*
+
+*Next: ["We Could Have Had AGI By Now"](02-we-could-have-had-agi.html) — what happens when you scale architecture instead of the model.*

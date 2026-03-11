@@ -88,7 +88,7 @@
                     <div class="article-meta">
                         <span>February 2026</span>
                         <span>&bull;</span>
-                        <span>12 min read</span>
+                        <span>16 min read</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
                             <span class="tag">Agents</span>
@@ -105,14 +105,14 @@
                             <source src="../assets/audio/llms-are-not-the-agents.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <span class="audio-label">Listen to this article (12 min)</span>
+                        <span class="audio-label">Listen to this article (16 min)</span>
                     </div>
 
                     <div class="article-body">
 
                         <!-- ======== 1. HOOK ======== -->
 
-                        <blockquote>
+                        <blockquote class="epigraph">
                             <p><strong>LLMs are electricity. Agents are toasters.</strong></p>
                         </blockquote>
 
@@ -132,9 +132,9 @@
 
                         <p>When people say "AI agent," they almost always mean the model. Claude, GPT, Gemini — pick your favorite. They point at the LLM and say: <em>"That is my agent."</em></p>
 
-                        <p><strong>That is the root misunderstanding.</strong></p>
+                        <p class="punchline"><strong>That is the root misunderstanding.</strong></p>
 
-                        <p>The model is not the agent. The model is the <strong>engine</strong> — a <a href="https://en.wikipedia.org/wiki/Language_model#Generating_text" title="A system that produces text one piece at a time based on statistical patterns learned during training" target="_blank" rel="noopener">token generator</a> that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create. But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model. A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.</p>
+                        <p>The model is not the agent. The model is the <strong>engine</strong> — a <a href="https://en.wikipedia.org/wiki/Language_model" title="A system that produces text one piece at a time based on statistical patterns learned during training" target="_blank" rel="noopener">token generator</a> that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create. But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model. A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.</p>
 
                         <p>Here is what happens when you treat the LLM as the agent:</p>
 
@@ -159,9 +159,13 @@
 
                         <p>In a CLI agent, the brain is not abstract or metaphorical. It is <strong>literal</strong>. It is a collection of files and directories on your local disk.</p>
 
-                        <p><strong>The agent is the filesystem.</strong></p>
+                        <p class="punchline"><strong>The agent is the filesystem.</strong></p>
+
+                        <p>And here is the key insight: since a CLI agent&rsquo;s entire capability is generating text and using it to create and modify files &mdash; it can build the brain itself. Give it a well-designed seed &mdash; a filesystem with a basic cognitive architecture already defined &mdash; and the agent can read its own structure, understand it, and extend it. You describe what you need through conversation. The agent builds. The same seed works for any user &mdash; its architecture knows how to grow, but what it grows into depends on you. We will deep dive into what makes a seed agent work in the second half of this series.</p>
 
                         <p>This is good news. Training an LLM costs hundreds of millions of dollars and requires specialized hardware most people will never touch. Building an agent costs nothing beyond the tools you already have. You are not creating intelligence — that already exists. You are organizing files that shape existing intelligence into reliable behavior.</p>
+
+                        <p>And because it is just files, everything is transparent. You can open a folder and see exactly what your agent knows, what rules it follows, and what it is about to do. You can audit it. You can move it to another machine. You can hand it to a colleague. Try doing that with a neural network.</p>
 
                         <p>That filesystem gives the LLM everything it cannot provide on its own:</p>
 
@@ -180,7 +184,7 @@
 
                         <p>When you open one of these CLI agents in an <strong>empty directory</strong>, you have an LLM with file access — nothing more. It can read, write, search, and run commands. But every decision is purely probabilistic, shaped only by its training and the current conversation. There is no memory of yesterday. No rules it has learned. No identity it maintains. Out of the box, even the most capable CLI agent is just a token generator that can touch files.</p>
 
-                        <p><strong>This is not yet an agent.</strong> This is a raw engine with no car around it.</p>
+                        <p class="punchline"><strong>This is not yet an agent.</strong> This is a raw engine with no car around it.</p>
 
                         <p>But when you add a <code>.claude/</code> directory (or <code>.opencode/</code> in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
 
@@ -191,6 +195,11 @@
                         <p>To understand why structure matters, look at what happens <strong>without</strong> it.</p>
 
                         <p>A CLI agent in an empty folder has an <strong>action space</strong> — the set of things it can do at any given moment:</p>
+
+                        <figure class="blog-image">
+                            <img src="../assets/images/blog/action-space-markov-chain.png" alt="Markov chain diagram showing Claude Code's action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices. Raw input enters from one side — the LLM bounces between states based on probabilities, not structure." loading="lazy">
+                            <figcaption>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a <a href="https://en.wikipedia.org/wiki/Markov_chain" title="A system where the next step depends only on the current state, not the full history" target="_blank" rel="noopener">Markov chain</a> where every path is equally likely.</figcaption>
+                        </figure>
 
                         <ul>
                             <li>Respond in chat</li>
@@ -207,11 +216,6 @@
                         <p>The problem? <strong>Small changes in context lead to completely different paths.</strong> Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.</p>
 
                         <p>This is why working with a bare LLM can feel like a <strong>random walk</strong>. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. Without structure to absorb and organize the tokens it generates, a raw LLM agent shows <strong>ADHD-like symptoms</strong>. Brilliant, full of potential, but scattered and inconsistent — unable to stay on track without external structure holding it accountable.</p>
-
-                        <figure class="blog-image">
-                            <img src="../assets/images/blog/action-space-markov-chain.png" alt="Markov chain diagram showing Claude Code's action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices. Raw input enters from one side — the LLM bounces between states based on probabilities, not structure." loading="lazy">
-                            <figcaption>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities — a <a href="https://en.wikipedia.org/wiki/Markov_chain" title="A system where the next step depends only on the current state, not the full history" target="_blank" rel="noopener">Markov chain</a> where every path is equally likely.</figcaption>
-                        </figure>
 
                         <blockquote>
                             <p>Intelligence alone is not reliability. <strong>Structure is.</strong></p>
@@ -330,6 +334,8 @@
 
                         <h2>What This Means for You</h2>
 
+                        <p>If the vocabulary in this essay felt unfamiliar, that is normal. Learning agent concepts is like learning any professional tool &mdash; the way you once learned to think in slides and templates when you picked up PowerPoint, or in cells and formulas when you first opened a spreadsheet. The concepts are not hard. They just need exposure and repetition. This series will build them up, one essay at a time.</p>
+
                         <p>If you are building with AI agents — or want to start — here is the shift in thinking:</p>
 
                         <ol>
@@ -346,11 +352,13 @@
 
                         <p>The electricity keeps getting stronger. That has never been the bottleneck.</p>
 
-                        <p><strong>Build the toaster.</strong></p>
+                        <p class="punchline"><strong>Build the toaster.</strong></p>
 
                         <hr>
 
-                        <p><em>This essay establishes a foundation: the agent is the filesystem, not the model. The next essay takes this further — if the building blocks for durable, self-improving agents have been available for months, why are we still scaling only the engine? Read <a href="02-we-could-have-had-agi.html"><strong>"We Could Have Had AGI By Now"</strong></a> to explore what happens when you scale architecture instead of scaling the model.</em></p>
+                        <p><em>Essay 1 of 8 in the Hadosh Academy series on agent architecture.</em></p>
+
+                        <p><em>Next: <a href="02-we-could-have-had-agi.html">&ldquo;We Could Have Had AGI By Now&rdquo;</a> &mdash; what happens when you scale architecture instead of the model.</em></p>
 
                     </div>
 
@@ -430,7 +438,7 @@
                                     <span class="tag tag-sm">AGI</span>
                                 </div>
                                 <h3>We Could Have Had AGI By Now</h3>
-                                <div class="date">February 2026 &bull; 15 min read</div>
+                                <div class="date">February 2026 &bull; 18 min read</div>
                             </div>
                         </a>
                         <div class="article-card active">
@@ -441,7 +449,7 @@
                                 <span class="tag tag-sm">Fundamentals</span>
                             </div>
                             <h3>LLMs Are Not the Agents</h3>
-                            <div class="date">February 2026 &bull; 12 min read</div>
+                            <div class="date">February 2026 &bull; 16 min read</div>
                         </div>
                     </div>
                 </aside>

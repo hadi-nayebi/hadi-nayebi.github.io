@@ -65,6 +65,30 @@ Blog 1 ("LLMs Are Not the Agents") is the **reference voice**. All posts must ma
 - **Educational asides pattern** — follow Blog 5's JSON model: soft intro → definition + link → concrete example → "why this matters" → "get comfortable with this term"
 - **Self-appreciation ceiling** — avoid "most important idea in agent design"; present concepts, let readers draw conclusions
 - **Don't teach as if correcting** — share our approach, don't fix an industry. "Here is what we found" not "here is the most common mistake"
+- **No word salads** — dense comma-separated lists of abstract concepts are hard to parse. Break into separate sentences: "What does X buy you? Benefit one. Benefit two. Benefit three." Each benefit gets its own subject-verb.
+- **Forward/backward references** — every blog should hint at future essays ("we will take this apart in a later essay") and callback to past ones ("in the previous essay, we identified X"). One sentence each, not paragraphs.
+- **Ref-arc gap analysis** — not every gap in a blog needs to be filled in that blog. Some gaps are intentionally filled by a future blog in a reference arc (e.g., Blog 1 plants "free to build" → Blog 2 adds "$100/month" → Blog 3 completes with "utility bill"). When reviewing a blog, check whether an apparent gap is already addressed by a later blog in the series before adding content.
+
+## Blog Footer Format (MANDATORY)
+
+Every blog must end with this consistent footer after the closing line:
+
+```markdown
+---
+
+*Essay N of 8 in the Hadosh Academy series on agent architecture.*
+
+*Previous: ["Title"](link) — one-sentence hook.*
+*Next: ["Title"](link) — one-sentence hook.*
+
+*Companion: ["Title"](link) (type)* ← only if applicable
+```
+
+- **Series position** always first
+- **Previous/Next** on separate lines with em dash + one-sentence description
+- **Blog 1:** no Previous line. **Blog 8:** no Next line.
+- **Companion resources** (white papers, etc.) only when they exist
+- **Audio footer excluded** — narration stops at the closing line ("Build the toaster", "Build the organism", etc.)
 
 ## HTML Template Pattern
 
@@ -205,6 +229,7 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 **Blog 4:**
 - Strengthen: Closing transition to architecture essays
+- Add: Primitives section — files, directories, CLAUDE.md (auto-append on read), hooks, Ralph Loop as novel primitive. Either in-blog or as appendix PDF.
 - Verify: All Blog 5-8 terms either defined here or flagged as new when introduced
 - Keep: Vocabulary scaffolding, tone, structure
 

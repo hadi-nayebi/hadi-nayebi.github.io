@@ -248,12 +248,101 @@
         });
     }
 
+    /**
+     * Enhance audio player — add speed controls, skip buttons, keyboard shortcuts.
+     * Progressively enhances existing <audio controls> inside .article-audio.
+     */
+    function enhanceAudioPlayer() {
+        var containers = document.querySelectorAll('.article-audio');
+        if (!containers.length) return;
+
+        containers.forEach(function (container) {
+            var audio = container.querySelector('audio');
+            if (!audio) return;
+
+            // Make container focusable for keyboard shortcuts
+            container.setAttribute('tabindex', '0');
+
+            // Create controls wrapper
+            var controls = document.createElement('div');
+            controls.className = 'audio-controls';
+
+            // Skip back button
+            var skipBack = document.createElement('button');
+            skipBack.className = 'audio-btn audio-skip';
+            skipBack.innerHTML = '−15s';
+            skipBack.title = 'Skip back 15 seconds (←)';
+            skipBack.setAttribute('aria-label', 'Skip back 15 seconds');
+
+            // Skip forward button
+            var skipFwd = document.createElement('button');
+            skipFwd.className = 'audio-btn audio-skip';
+            skipFwd.innerHTML = '+15s';
+            skipFwd.title = 'Skip forward 15 seconds (→)';
+            skipFwd.setAttribute('aria-label', 'Skip forward 15 seconds');
+
+            // Speed buttons
+            var speeds = [1, 1.5, 2];
+            var speedBtns = [];
+            var speedGroup = document.createElement('div');
+            speedGroup.className = 'audio-speed-group';
+
+            speeds.forEach(function (rate) {
+                var btn = document.createElement('button');
+                btn.className = 'audio-btn audio-speed' + (rate === 1 ? ' active' : '');
+                btn.textContent = rate + 'x';
+                btn.title = 'Play at ' + rate + 'x speed';
+                btn.setAttribute('data-speed', rate);
+                speedBtns.push(btn);
+                speedGroup.appendChild(btn);
+            });
+
+            controls.appendChild(skipBack);
+            controls.appendChild(skipFwd);
+            controls.appendChild(speedGroup);
+            container.appendChild(controls);
+
+            // Skip handlers
+            skipBack.addEventListener('click', function () {
+                audio.currentTime = Math.max(0, audio.currentTime - 15);
+            });
+            skipFwd.addEventListener('click', function () {
+                audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 15);
+            });
+
+            // Speed handlers
+            speedGroup.addEventListener('click', function (e) {
+                var btn = e.target.closest('.audio-speed');
+                if (!btn) return;
+                var rate = parseFloat(btn.getAttribute('data-speed'));
+                audio.playbackRate = rate;
+                speedBtns.forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+            });
+
+            // Keyboard shortcuts (when container or audio focused)
+            container.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    audio.currentTime = Math.max(0, audio.currentTime - 15);
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 15);
+                } else if (e.key === ' ') {
+                    e.preventDefault();
+                    if (audio.paused) { audio.play(); } else { audio.pause(); }
+                }
+            });
+        });
+    }
+
     function init() {
         enhanceHeader();
         enhanceFooter();
         injectFeedbackWidget();
         initLightbox();
         initBlogFilters();
+        enhanceAudioPlayer();
     }
 
     if (document.readyState === 'loading') {

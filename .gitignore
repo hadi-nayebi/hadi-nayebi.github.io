@@ -21,6 +21,9 @@ feedback.json
 # Agent working memory (not part of the website)
 CLAUDE.md
 
+# Audio transcript intermediates (HTML → transcript → audio pipeline)
+*.transcript.md
+
 
 # System files
 .DS_Store
