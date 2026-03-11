@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 09 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Every Agent Needs a Skeleton</title>
+      <link>https://hadi-nayebi.github.io/blog/05-every-agent-needs-a-skeleton.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05-every-agent-needs-a-skeleton.html</guid>
+      <pubDate>Sun, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Your agent does the job. It just does not manage the work. The job system is the skeleton — the structural framework that turns a single-minded task executor into a multi-objective cognitive worker.</description>
+    </item>
 
     <item>
       <title>The Language of Agents</title>
