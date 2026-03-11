@@ -38,7 +38,7 @@ Here is what happens when you treat the LLM as the agent:
 - **No identity.** The model does not know who "it" is in the context of your project. It adapts to whatever you tell it in the moment.
 - **No growth.** The model cannot learn from its own experience. It cannot refine itself over time. It cannot get better at *your* specific tasks.
 
-If your "agent" loses everything when you close the terminal, **you do not have an agent**. You have a very expensive autocomplete.
+If your "agent" loses everything when you close the chat session, **you do not have an agent**. You have a very expensive autocomplete.
 
 The real agent is something else entirely.
 
@@ -65,7 +65,7 @@ That filesystem gives the LLM everything it cannot provide on its own:
 ![Diagram comparing LLM as engine (reasoning, probabilistic, no persistent memory) versus Agent as directory brain (memory on disk, hooks and rules, intentions). Swapping the engine gives faster or smarter. Swapping the directory gives a different agent.](../assets/images/blog/llm-engine-agent-directory.png)
 *The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.*
 
-When you spin up Claude Code in an **empty directory**, you are giving an LLM access to a workspace. The LLM has capabilities — it can think, respond, use tools, delegate, ask permission, compact context, and stop. But all of those decisions are purely probabilistic. The LLM decides everything based on its training and the current conversation.
+When you open one of these CLI agents in an **empty directory**, you are giving an LLM access to a workspace. The LLM has capabilities — it can think, respond, use tools, delegate work to other agents, ask permission, manage its working memory, and stop. But all of those decisions are purely probabilistic. The LLM decides everything based on its training and the current conversation.
 
 **This is not yet an agent.** This is a raw engine running with no car around it.
 
@@ -83,8 +83,8 @@ A CLI agent in an empty folder has an **action space** — the set of things it 
 - Use deep reasoning mode
 - Use tools (read, write, edit, run, search)
 - Ask for permission
-- Delegate to sub-agents
-- Compact context
+- Delegate work to other agents
+- Manage its working memory
 - Stop
 
 At each step, the LLM picks one of these actions based on probabilities. Then it picks again. And again. This creates a **probabilistic action chain** — a sequence of decisions where each step depends on the current state of the conversation.
