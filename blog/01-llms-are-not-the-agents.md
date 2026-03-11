@@ -48,7 +48,7 @@ The real agent is something else entirely.
 
 An agent is the engine **plus a local brain**.
 
-The most direct way to build that brain today is with a [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM. Current tools — Claude Code, OpenCode, Gemini CLI — are marketed toward technical users. The names suggest it: Claude *Code*, *Open*Code. But what these tools actually do is manipulate files and respond to file content. That capability extends far beyond writing code. We will explore what CLI agents make possible in a later essay.
+The most direct way to build that brain today is with a [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM. Current tools — Claude Code, OpenCode, Gemini CLI — are marketed toward technical users. The names suggest it: Claude *Code*, Open*Code*. But what these tools actually do is manipulate files and respond to file content. That capability extends far beyond writing code. We will explore what CLI agents make possible in a later essay.
 
 In a CLI agent, the brain is not abstract or metaphorical. It is **literal**. It is a collection of files and directories on your local disk.
 
@@ -115,11 +115,13 @@ What makes this layer powerful is that it does not just hold static information.
 ![Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory.](../assets/images/blog/claude-md-working-memory.png)
 *The OPEVC cycle. The agent moves through five phases — Observe, Plan, Execute, Verify, Condense — with CLAUDE.md files at the center, updated throughout. Each phase produces different work and different updates to working memory.*
 
-The agent reads the current phase from its working memory, does the work for that phase, updates the file, and moves to the next. Observe gathers context. Plan defines steps. Execute does the work. Verify checks the results. Condense cleans up and absorbs what was learned. Then the cycle begins again.
+An effective agent following the OPEVC flow gathers context during Observe — from local files, the web, the user — and writes what it finds into the `CLAUDE.md` files where the actual work is about to happen. During Plan, it updates those same files with its thinking on what to do next. During Execute, it captures lessons learned from its actions. Verify checks the results. And during Condense, the agent deflates the local working memory — cleaning up temporary notes and moving what it learned into the rest of its brain for future sessions.
+
+Every phase reads from the `CLAUDE.md` layer and writes back to it. The instruction files are not static documents. They are living working memory that inflates as the agent works and contracts as it absorbs what it learned.
 
 This is not something the LLM invented on its own. It is a structure you define in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space. We will return to these phases in detail as we build the seed agent in later essays.
 
-But instruction files alone cannot enforce behavior. They guide. They shape context. To make certain behaviors **mandatory**, you need something stronger: [**hooks**](https://en.wikipedia.org/wiki/Hooking "Trigger points where custom rules automatically run when an event happens").
+But defining a workflow in instruction files does not guarantee the agent will respect it. Instruction files guide. They shape context. They do not enforce. To make certain behaviors **mandatory**, you need something stronger: [**hooks**](https://en.wikipedia.org/wiki/Hooking "Trigger points where custom rules automatically run when an event happens").
 
 Modern CLI agents support **hook systems** — events that fire at specific points in the agent's lifecycle.
 
