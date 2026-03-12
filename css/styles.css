@@ -180,6 +180,19 @@ nav {
     border-color: var(--primary);
 }
 
+.glass-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--primary);
+}
+
 .card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -1138,16 +1151,16 @@ body.lightbox-open {
 
 .academy-section p {
     color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-    font-size: 1.15rem;
+    line-height: 2;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .lead-text {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: var(--text-main);
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 .academy-pillars {
@@ -1209,6 +1222,119 @@ body.lightbox-open {
 
 .academy-vision p strong {
     color: var(--primary);
+}
+
+/* ---- About page: visual (image + text) rows ---- */
+
+.about-visual-section {
+    display: flex !important;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.about-visual-section .about-visual-image {
+    flex: 0 0 520px;
+    width: 520px;
+}
+
+.about-visual-section .about-visual-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-visual-section.reversed {
+    flex-direction: row-reverse;
+}
+
+.about-section-img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.5);
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.about-visual-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.35;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.about-visual-content p {
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+}
+
+.about-visual-content p:last-child,
+.about-visual-content .profession-tags:last-child {
+    margin-bottom: 0;
+}
+
+.about-visual-content .lead-text {
+    margin-top: 0.5rem;
+}
+
+.about-visual-content .profession-tags {
+    margin-top: 1.25rem;
+}
+
+/* ---- About page: essay cards ---- */
+
+.about-essays-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.about-essay-card {
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: block;
+}
+
+.about-essay-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.12);
+}
+
+.about-essay-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    opacity: 0.3;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.about-essay-title {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.about-essay-desc {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
 }
 
 /* Founder section */
@@ -1483,10 +1609,42 @@ body.lightbox-open {
     }
 
     .lead-text {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
 
     .academy-pillars {
+        grid-template-columns: 1fr;
+    }
+
+    .about-visual-section,
+    .about-visual-section.reversed {
+        flex-direction: column !important;
+        gap: 2rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .about-visual-section .about-visual-image {
+        flex: none;
+        width: 220px;
+        margin: 0 auto;
+    }
+
+    .about-visual-section .about-visual-content {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-visual-content .profession-tags {
+        justify-content: center;
+    }
+
+    .about-essays-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-essays-grid {
         grid-template-columns: 1fr;
     }
 
