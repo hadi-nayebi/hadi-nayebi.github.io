@@ -132,11 +132,13 @@ Now picture that world taking shape. It is 2035. You manage a small beverage bra
 
 Sounds busy. It might actually be calmer. The digital cortex handles the noise. The human handles the signal.
 
+But can the brain that evolved to track a few relationships in a small tribe manage even the transition? Not without help. And not just for business.
+
 ### Your Personal Infrastructure
 
 And it does not stop at business. Your digital life already runs on other companies' software. Their email. Their social media. Their fitness tracking. Their storage. Their apps, their terms, their data.
 
-If you can build cognitive organs, you can build **everything**.
+But if you can build cognitive organs, you can build **everything**.
 
 A personal super-app on your phone, built by your agent, collecting your own data. Your own fitness dashboard. Your own project tracker. Your own communication hub. Running on your hardware — a phone and a small cloud server — powered entirely by software your agent designed and maintains.
 
@@ -156,7 +158,7 @@ And a gap will open.
 
 Not the loud, visible kind. Not rich versus poor in the way we usually mean. An **invisible** gap. Between people whose cognitive capacity matches the complexity of their environment, and people whose biology — still wired for a simpler world — is trying to navigate a civilization this complex alone.
 
-The first group will run micro-businesses, manage their own data, and make better decisions because it fills the gaps their biology cannot.
+The first group will run micro-businesses, manage their own data, navigate bureaucracy through cognitive reflexes, and make better decisions because it fills the gaps their biology cannot.
 
 The second group will feel the world getting faster, more confusing, more demanding — without understanding why. The wall between them is not made of money or education. It is made of **adoption**.
 

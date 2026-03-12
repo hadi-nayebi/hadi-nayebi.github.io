@@ -16,12 +16,12 @@
     <meta property="og:description" content="The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/02-we-could-have-had-agi.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/seed-agent-growth.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="We Could Have Had AGI By Now | Hadosh Academy">
     <meta name="twitter:description" content="The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/seed-agent-growth.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../css/styles.css">
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.",
-                "image": "https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/seed-agent-growth.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/02-we-could-have-had-agi.html"
             },
             {
@@ -139,7 +139,7 @@
 
                         <p>A competent professional is a pipeline: intake and clarification, scoping, research, synthesis, drafting, review, iteration with stakeholders, and risk management. Most of these steps are not mysterious. They are repeatable.</p>
 
-                        <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes. And none of that gets easier when your <a href="https://en.wikipedia.org/wiki/Large_language_model#Tokenization" title="Small word-sized chunks that AI models use to process text" target="_blank" rel="noopener">tokens</a> vanish the moment the <a href="https://en.wikipedia.org/wiki/Large_language_model#Prompt" title="The limited amount of text an AI can 'see' at once" target="_blank" rel="noopener">context window</a> fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.</p>
+                        <p>The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes. And none of that gets easier when your <a href="https://en.wikipedia.org/wiki/Large_language_model#Tokenization" title="Small word-sized chunks that AI models use to process text" target="_blank" rel="noopener">tokens</a> vanish the moment the <a href="https://en.wikipedia.org/wiki/Large_language_model#Attention_mechanism_and_context_window" title="The limited amount of text an AI can 'see' at once — like a desk that can only hold so many papers" target="_blank" rel="noopener">context window</a> fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.</p>
 
                         <p class="punchline">That is <strong>organization</strong>. Not intelligence.</p>
 
@@ -147,7 +147,7 @@
 
                         <!-- ======== 4. WHERE DOES THE CONTEXT COME FROM? ======== -->
 
-                        <h2>Where Does the Context Come From?</h2>
+                        <h2 id="where-does-the-context-come-from">Where Does the Context Come From?</h2>
 
                         <p>Here is a diagnostic you can run on any "agent" system:</p>
 
@@ -172,7 +172,7 @@
 
                         <!-- ======== 5. BIOLOGY DID NOT SCALE ONE MOLECULE ======== -->
 
-                        <h2>Biology Did Not Scale One Molecule</h2>
+                        <h2 id="biology-did-not-scale-one-molecule">Biology Did Not Scale One Molecule</h2>
 
                         <p>Nature does not scale a single component to infinity. Nature differentiates.</p>
 
@@ -201,7 +201,7 @@
 
                         <p>So if intelligence is a complex system, what are the primitives? In the <a href="01-llms-are-not-the-agents.html">previous essay</a>, we identified compartmentalization as the core principle &mdash; every piece of knowledge has a home, every behavior has a boundary. That principle becomes the foundation for the primitives we need: bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.</p>
 
-                        <p>Some primitives are obvious &mdash; files, directories, instruction files that load automatically when the agent enters a folder. These have existed since the first CLI agents shipped. But one primitive is not obvious at all, and it changes everything: prevent the agent from stopping before it is done. <a href="https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum" target="_blank" rel="noopener">Ralph Loop</a> does exactly this — it hooks into the Stop signal and repeats the prompt until a completion promise is met. The simplest possible form of persistence: one hook, one looped instruction. But it proves that a single interception point can keep an agent alive indefinitely — and that insight opens an entirely new design space for controlling agent lifecycles, from simple prompt repetition to structured job systems with obligations and memory.</p>
+                        <p>Some primitives are obvious &mdash; files, directories, instruction files that load automatically when the agent enters a folder. These have existed since the first CLI agents shipped. But one primitive is not obvious at all, and it changes everything: prevent the agent from stopping before it is done. <a href="https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum" title="A Claude Code plugin that keeps the agent working by looping the prompt until done" target="_blank" rel="noopener">Ralph Loop</a> does exactly this — it hooks into the Stop signal and repeats the prompt until a completion promise is met. The simplest possible form of persistence: one hook, one looped instruction. But it proves that a single interception point can keep an agent alive indefinitely — and that insight opens an entirely new design space for controlling agent lifecycles, from simple prompt repetition to structured job systems with obligations and memory.</p>
 
                         <p>Now extend that idea. Give each unit a name, a state, a place on disk. Let units spawn other units. Let them carry observations that must be processed before they close. You are no longer just blocking a stop signal. You are building a job system.</p>
 
@@ -251,7 +251,7 @@
 
                         <!-- ======== 9. THE SEED AGENT ======== -->
 
-                        <h2>The Seed Agent: Small Structure That Grows</h2>
+                        <h2 id="the-seed-agent-small-structure-that-grows">The Seed Agent: Small Structure That Grows</h2>
 
                         <p>Instead of asking "how smart must the model be?", ask "what is the smallest organized structure I can plant that will grow into professional competence?"</p>
 
@@ -339,7 +339,7 @@
                         <p><em>Previous: <a href="01-llms-are-not-the-agents.html">&ldquo;LLMs Are Not the Agents&rdquo;</a> &mdash; the agent is the filesystem, not the model.</em><br>
                         <em>Next: <a href="03-your-brain-was-never-built-for-this.html">&ldquo;Your Brain Was Never Built for This&rdquo;</a> &mdash; what happens when you extend your brain with a digital cortex.</em></p>
 
-                        <p><em>Companion: <a href="../papers/why-scaling-models-is-not-enough.pdf">&ldquo;Why Scaling Models Is Not Enough&rdquo;</a> (white paper)</em></p>
+                        <p><em>Companion: <a href="../papers/why-scaling-models-is-not-enough.pdf" target="_blank" rel="noopener">&ldquo;Why Scaling Models Is Not Enough&rdquo;</a> (white paper)</em></p>
 
                     </div>
 
