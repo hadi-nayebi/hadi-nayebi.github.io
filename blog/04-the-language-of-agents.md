@@ -2,7 +2,7 @@
 title: "The Language of Agents"
 date: "March 2026"
 slug: "the-language-of-agents"
-read_time: "18 min"
+read_time: "17 min"
 tags: [Agents, AI, Vocabulary, Beginner]
 audience: professionals
 og_image: ""
