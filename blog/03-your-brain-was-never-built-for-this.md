@@ -6,8 +6,9 @@ read_time: "16 min"
 tags: [Agents, AI, Society, Evolution]
 audience: professionals
 og_image: "assets/images/blog/snake-vs-spreadsheet.png"
-version: v0.4.0
-status: draft
+series: "Hadosh Academy – Agents"
+version: v1.0.0
+status: published
 ---
 
 # Your Brain Was Never Built for This
@@ -74,7 +75,7 @@ So we build the next layer ourselves.
 
 The **digital cortex**.
 
-A [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a structured AI system that lives on your computer, reads your files, writes new ones, and organizes your work — is the first form of that layer. Not one giant program, but a [complex system](we-could-have-had-agi.html#biology-did-not-scale-one-molecule) of many small parts interacting. Call it what it actually is: a **digital cognitive organ**.
+A [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a structured AI system that lives on your computer, reads your files, writes new ones, and organizes your work — is the first form of that layer. Not one giant program, but a [complex system](02-we-could-have-had-agi.html#biology-did-not-scale-one-molecule) of many small parts interacting. Call it what it actually is: a **digital cognitive organ**.
 
 That phrase is deliberate. An **organ**.
 

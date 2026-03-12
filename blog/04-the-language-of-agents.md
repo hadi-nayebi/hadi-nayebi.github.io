@@ -5,9 +5,11 @@ slug: "the-language-of-agents"
 read_time: "17 min"
 tags: [Agents, AI, Vocabulary, Beginner]
 audience: professionals
-og_image: ""
-version: v0.1.0
-status: draft
+og_image: "assets/images/blog/agent-anatomy.png"
+series: "Hadosh Academy – Agents"
+companion_paper: "the-primitives-of-agent-architecture"
+version: v1.0.0
+status: published
 ---
 
 # The Language of Agents
@@ -94,7 +96,7 @@ Open a terminal in your legal case folder — the agent becomes your legal assis
 
 The AI in your browser is a service you use. A CLI agent is a tool you own.
 
-That is the shift. From using an assistant the company designed for everyone, to owning one you design for yourself. Same intelligence underneath. Completely different level of control on top. This is the idea from the [first essay](llms-are-not-the-agents.html): the agent is the filesystem, not the model. Now you have the word for the form factor that makes it real.
+That is the shift. From using an assistant the company designed for everyone, to owning one you design for yourself. Same intelligence underneath. Completely different level of control on top. This is the idea from the [first essay](01-llms-are-not-the-agents.html): the agent is the filesystem, not the model. Now you have the word for the form factor that makes it real.
 
 ## The Briefing: System Messages and Persona
 
@@ -125,7 +127,7 @@ Second, it expands the focus beyond just *talking to* the LLM. Think of it as a 
 
 What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?
 
-Prompt engineering is choosing your words carefully. Context engineering is designing the room so that a simple request is enough — the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors. The prompting still happens. It just happens inside the architecture, not inside your head. In the [second essay](we-could-have-had-agi.html#where-does-the-context-come-from), we called this balanced **context composition** — making sure every compartment that should influence the agent's thinking has a pathway in.
+Prompt engineering is choosing your words carefully. Context engineering is designing the room so that a simple request is enough — the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors. The prompting still happens. It just happens inside the architecture, not inside your head. In the [second essay](02-we-could-have-had-agi.html#where-does-the-context-come-from), we called this balanced **context composition** — making sure every compartment that should influence the agent's thinking has a pathway in.
 
 For a non-technical professional, context engineering might sound intimidating. It is not. It starts with a single text file — the system message. You describe who the agent is and how it should behave. Everything else grows from there, naturally, through conversation.
 
@@ -181,7 +183,7 @@ Plugins are how agents grow without mixing new behaviors into existing ones. You
 
 Two more terms, and these matter more than any of the technical ones.
 
-A **seed agent** is a starting template — a [complex system](we-could-have-had-agi.html#the-seed-agent-small-structure-that-grows) designed to grow. It comes with a basic structure — some skills, some rules, a persona outline — and you customize it through conversation. You do not build an agent from scratch. You start with a seed and grow it into the [digital cortex](your-brain-was-never-built-for-this.html#the-evolution-you-get-to-choose) your organic brain needs.
+A **seed agent** is a starting template — a [complex system](02-we-could-have-had-agi.html#the-seed-agent-small-structure-that-grows) designed to grow. It comes with a basic structure — some skills, some rules, a persona outline — and you customize it through conversation. You do not build an agent from scratch. You start with a seed and grow it into the [digital cortex](03-your-brain-was-never-built-for-this.html#the-digital-cortex) your organic brain needs.
 
 Think of it like buying a house versus building one from lumber. The seed is the house. You move in and make it yours. Different furniture, different paint, different rules about shoes at the door. Same foundation, uniquely yours.
 
@@ -213,7 +215,7 @@ The industry built the jargon wall fast. You just walked through it.
 
 *Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
 
-*Previous: ["Your Brain Was Never Built for This"](your-brain-was-never-built-for-this.html) — why your organic brain needs a digital cortex.*
-*Next: ["Every Agent Needs a Skeleton"](every-agent-needs-a-skeleton.html) — we start building. The skeleton.*
+*Previous: ["Your Brain Was Never Built for This"](03-your-brain-was-never-built-for-this.html) — why your organic brain needs a digital cortex.*
+*Next: ["Every Agent Needs a Skeleton"](05-every-agent-needs-a-skeleton.html) — we start building. The skeleton.*
 
 *Companion: ["The Primitives of Agent Architecture"](../papers/the-primitives-of-agent-architecture.pdf) (reference guide)*

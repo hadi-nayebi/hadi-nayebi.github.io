@@ -4,10 +4,13 @@ date: "February 2026"
 slug: "llms-are-not-the-agents"
 read_time: "16 min"
 tags: [Agents, AI, Fundamentals]
+audience: professionals
 og_image: "assets/images/blog/llm-engine-agent-directory.png"
+series: "Hadosh Academy – Agents"
+version: v1.0.0
+status: published
 ---
 
-<!-- ======== 1. HOOK ======== -->
 
 > **LLMs are electricity. Agents are toasters.**
 
@@ -21,7 +24,7 @@ The LLM provides **raw reasoning power**. It can write, analyze, plan, and creat
 
 Most people building with AI today are staring at the electricity and wondering why it does not make toast on its own.
 
-<!-- ======== 2. THE MISUNDERSTANDING ======== -->
+
 
 ## The Misunderstanding
 
@@ -42,7 +45,7 @@ If your "agent" loses everything when you close the chat session, **you do not h
 
 The real agent is something else entirely.
 
-<!-- ======== 3. WHAT IS AN AGENT, REALLY? ======== -->
+
 
 ## What Is an Agent, Really?
 
@@ -77,7 +80,7 @@ When you open one of these CLI agents in an **empty directory**, you have an LLM
 
 But when you add a `.claude/` directory (or `.opencode/` in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the **brain** of your agent. The brain is the collection of files that tell the LLM **how to behave**.
 
-<!-- ======== 4. THE DEFAULT STATE ======== -->
+
 
 ## The Default State: A Probabilistic Random Walk
 
@@ -104,7 +107,7 @@ This is why working with a bare LLM can feel like a **random walk**. It is intel
 
 > Intelligence alone is not reliability. **Structure is.**
 
-<!-- ======== 5. STRUCTURE CHANGES EVERYTHING ======== -->
+
 
 ## Structure Changes Everything
 
@@ -145,7 +148,7 @@ Two layers of structure. **Instruction files** shape behavior through what the a
 
 The structure does not replace intelligence. It **channels** it. The same way a toaster does not generate electricity — it shapes electricity into toast.
 
-<!-- ======== 6. PLATFORM DOESN'T MATTER ======== -->
+
 
 ## The Platform Does Not Matter
 
@@ -173,7 +176,7 @@ Swap the LLM? The agent still knows who it is. Swap the platform? The agent adap
 *One brain, many engines. The same agent directory — with its knowledge, rules, and memory — connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.*
 
 
-<!-- ======== 7. COMPARTMENTALIZATION ======== -->
+
 
 ## The Core Principle: Compartmentalization
 
@@ -199,7 +202,7 @@ With compartmentalization, you get **bounded contexts**. The agent loads only th
 
 This is also what gives the agent **identity over time**. When the filesystem is well-compartmentalized, the agent's "personality" — its rules, its preferences, its memory — persists across sessions, across context compactions, even across LLM swaps. The compartmentalized information *is* the agent's identity.
 
-<!-- ======== 8. WHAT THIS MEANS FOR YOU ======== -->
+
 
 ## What This Means for You
 

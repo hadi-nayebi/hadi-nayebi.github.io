@@ -4,9 +4,12 @@ date: "February 2026"
 slug: "we-could-have-had-agi"
 read_time: "18 min"
 tags: [Agents, AI, Architecture, AGI]
-og_image: "assets/images/hadosh-logo-dark.png"
+audience: professionals
+og_image: "assets/images/blog/seed-agent-growth.png"
 series: "Hadosh Academy – Agents"
 companion_paper: "why-scaling-models-is-not-enough"
+version: v1.0.0
+status: published
 ---
 
 # We Could Have Had AGI By Now
@@ -77,7 +80,7 @@ And this is why biology keeps showing up. Not as metaphor. If something like AGI
 
 And that category comes with a powerful toolkit. Once you see the agent as a complex system, you inherit design principles that have been studied for decades: think in primitives, expect emergence, design for growth, anticipate cascading effects. Every complex system that already exists — biology, cities, economies, ecosystems — becomes a source of design patterns for your agent. Shane Parrish's [*The Great Mental Models*](https://fs.blog/tgmm/ "The Great Mental Models — a book series on thinking tools that help you understand how the world works") series is a good place to start — mental models like [feedback loops](https://en.wikipedia.org/wiki/Feedback "A process where outputs circle back to influence inputs"), [second-order effects](https://en.wikipedia.org/wiki/Unintended_consequences "Consequences of consequences — the indirect results of a decision"), and [emergence](https://en.wikipedia.org/wiki/Emergence "Complex behavior arising from simple rules interacting") map directly onto the design decisions you will face when building agents.
 
-So if intelligence is a complex system, what are the primitives? In the [previous essay](llms-are-not-the-agents.html), we identified compartmentalization as the core principle — every piece of knowledge has a home, every behavior has a boundary. That principle becomes the foundation for the primitives we need: bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.
+So if intelligence is a complex system, what are the primitives? In the [previous essay](01-llms-are-not-the-agents.html), we identified compartmentalization as the core principle — every piece of knowledge has a home, every behavior has a boundary. That principle becomes the foundation for the primitives we need: bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.
 
 Some primitives are obvious — files, directories, instruction files that load automatically when the agent enters a folder. These have existed since the first CLI agents shipped. But one primitive is not obvious at all, and it changes everything: prevent the agent from stopping before it is done. [Ralph Loop](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum) does exactly this — it hooks into the Stop signal and repeats the prompt until a completion promise is met. The simplest possible form of persistence: one hook, one looped instruction. But it proves that a single interception point can keep an agent alive indefinitely — and that insight opens an entirely new design space for controlling agent lifecycles, from simple prompt repetition to structured job systems with obligations and memory.
 
@@ -131,7 +134,7 @@ The important property is not what the seed contains on day one. It is that the 
 
 This is what makes a seed different from a prompt. A prompt resets every session. A seed compounds. The seed carries enough cognitive architecture to keep extending itself for any user — staying true to its design principles while adapting to whatever profession, domain, or workflow it encounters. Different users, same seed, different cognitive organisms. We will build one of these seeds — piece by piece — in the essays that follow.
 
-Think about your own work. What you do as a professional is also a complex system — a web of primitives you perform every day: research, review, draft, delegate, consult, negotiate. Your professional competence is not one giant skill. It [emerges](we-could-have-had-agi.html#biology-did-not-scale-one-molecule) from these primitives interacting in ways that years of experience have refined. Remember — [a lawyer is not one giant thought](we-could-have-had-agi.html#a-lawyer-is-not-one-giant-thought). Describe a job to your seed agent — what it involves, what it produces, what it must check — and the agent incorporates that job into its cognitive architecture. All through conversation. The more jobs you describe, the more capable the organism becomes.
+Think about your own work. What you do as a professional is also a complex system — a web of primitives you perform every day: research, review, draft, delegate, consult, negotiate. Your professional competence is not one giant skill. It [emerges](02-we-could-have-had-agi.html#biology-did-not-scale-one-molecule) from these primitives interacting in ways that years of experience have refined. Remember — [a lawyer is not one giant thought](02-we-could-have-had-agi.html#a-lawyer-is-not-one-giant-thought). Describe a job to your seed agent — what it involves, what it produces, what it must check — and the agent incorporates that job into its cognitive architecture. All through conversation. The more jobs you describe, the more capable the organism becomes.
 
 ## Internalization is not the answer
 
