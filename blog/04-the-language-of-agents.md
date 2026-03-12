@@ -16,15 +16,9 @@ status: draft
 
 You already use AI. You open ChatGPT, or Claude, or Gemini in your browser. You type something. It types back. You have been doing this for a year, maybe two. You are not new here.
 
-But then you read an article — or overhear a conversation — and suddenly people are talking about LLMs and context windows, hooks and MCPs, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. They assume you already know.
+But then someone starts talking about LLMs and context windows, hooks and MCPs, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. That is not your fault — the industry moves faster than its own vocabulary can settle.
 
-You do not. And that is not your fault.
-
-The AI industry moves at a speed that makes even insiders dizzy. New terms appear every month. Old terms shift meaning. The vocabulary is a moving target, and the people using it rarely bother to define it for the rest of us.
-
-This post fixes that. One read. Every word that matters. By the end, you will not just understand these terms — you will see how they connect into a single, coherent picture.
-
-No prerequisites. No code. Just the language you need to stop feeling lost.
+This post fixes that. One read. Every word that matters. By the end, you will not just understand these terms — you will see how they connect into a single, coherent picture. No prerequisites. No code.
 
 ---
 
@@ -32,9 +26,9 @@ No prerequisites. No code. Just the language you need to stop feeling lost.
 
 Start with what you already know. When you type a question into ChatGPT or Claude, something generates the response. That something is a **Large Language Model** — an LLM.
 
-An LLM is a program that generates text. That is it. It does not think, not in the way you think. It predicts what text should come next, one piece at a time.
+An LLM is a program that produces text. That is it. It does not think. It predicts what should come next, one piece at a time.
 
-Those pieces are called **tokens**. A token is roughly a word — sometimes a whole word, sometimes part of one. When you see the response appearing word by word on your screen, you are watching the LLM generate tokens.
+Those pieces are called **tokens**. A token is roughly a word — sometimes a whole word, sometimes part of one. When you see the response appearing word by word on your screen, you are watching the LLM produce tokens one after another.
 
 Here is the part most people miss: **the LLM did not arrive in its current form.** It evolved through distinct phases, and each phase changed what AI could do.
 
@@ -54,11 +48,11 @@ It was not. It was generating tokens that pattern-matched conversations from its
 
 Then the vocabulary expanded.
 
-Researchers introduced special tokens — internal markers the LLM learned to generate at the right moments. Tokens like `<thinking>` that told the system to reason before answering. Tokens like `<tool_call>` that told the system to use an external tool — search the web, read a file, run a calculation.
+Researchers introduced special tokens — internal markers the LLM learned to produce at the right moments. Tokens like `<thinking>` that told the system to reason before answering. Tokens like `<tool_call>` that told the system to use an external tool — search the web, read a file, run a calculation.
 
-The text the LLM generates stopped being just conversation. It became a mix of conversation, reasoning, and instructions to external systems. The LLM was no longer just talking. It was **acting**.
+The output stopped being just conversation. It became a mix of words, reasoning, and instructions to external systems. The LLM was no longer just talking. It was **acting**.
 
-This is where we are now. The engine generates tokens. Some tokens are words you see. Some tokens are commands you do not see. All of them are text.
+This is where we are now. Some tokens are words you read. Some are commands you never see. All of them are text.
 
 ### The Context Window
 
@@ -86,7 +80,7 @@ That tool is a **CLI agent**.
 
 **CLI** stands for Command Line Interface. It is the text-based program on your computer — the [terminal](https://en.wikipedia.org/wiki/Terminal_emulator "A program that provides a text-based interface to your computer"). You open it, you type, the AI responds. No buttons. No menus. Just text.
 
-It sounds less fancy than a browser interface. Capability-wise, the two are converging — the browser version and the CLI version are approaching the same intelligence. The difference is not power. The difference is **control.**
+It sounds less fancy than a browser interface. The browser version and the CLI version run the same intelligence. The difference is not power. The difference is **control.**
 
 A CLI agent is yours to customize, expand, and personalize in any direction you want. You decide how it remembers. You decide what it can access. You decide its personality, its rules, its boundaries. You can even add a graphical interface on top if you prefer one. The point is not the interface — the point is who is in charge.
 
@@ -100,13 +94,11 @@ The AI in your browser is a service you use. A CLI agent is a tool you own.
 
 That is the shift. From using an assistant the company designed for everyone, to owning one you design for yourself. Same intelligence underneath. Completely different level of control on top. This is the idea from the [first essay](llms-are-not-the-agents.html): the agent is the filesystem, not the model. Now you have the word for the form factor that makes it real.
 
----
-
 ## The Briefing: System Messages and Persona
 
-When you start a conversation with an AI — browser or CLI — something happens before you type your first word.
+So you have a CLI agent on your machine. What makes it *yours*?
 
-The system sends the AI a set of instructions. This is the **system message** (sometimes called a **system prompt**). You never see it, but it shapes everything the AI says and does. And this is where the control difference between browser AI and a CLI agent becomes very concrete.
+Before you type your first word, the AI receives a set of instructions. This is the **system message** (sometimes called a **system prompt**). You never see it, but it shapes everything the AI says and does.
 
 In a browser, the system message is written by the company. It says things like "You are Claude, a helpful assistant made by Anthropic. Be safe, be helpful." You cannot change it.
 
@@ -117,8 +109,6 @@ That file is the agent's **persona**. Not just a name. Its role, its rules, its 
 And as your agent grows, its identity spreads beyond a single file. Instructions, memory, and personality naturally expand across multiple files and mechanisms — the way a person's character is not stored in one place but expressed through habits, knowledge, and experience built up over time.
 
 One engine. A thousand possible agents.
-
----
 
 ## The Craft: From Prompt Engineering to Context Engineering
 
@@ -154,8 +144,6 @@ A good practice: after you describe a new hook, test it. Ask the agent to try th
 
 Hooks are what turn a reactive chatbot into a disciplined professional. Without hooks, the AI does whatever seems right in the moment. With hooks, it follows a process. Every time.
 
----
-
 ## The Skill Set: Skills, Commands, and Sub-agents
 
 Think of it like an office.
@@ -168,8 +156,6 @@ A **sub-agent** is a specialist. When the main agent faces a task that needs foc
 
 Skills are what the agent knows. Commands are what you tell it to do. Sub-agents are who it delegates to.
 
----
-
 ## The Connections: MCPs
 
 Your agent sits on your computer. But the world does not live on your computer.
@@ -179,8 +165,6 @@ Your agent sits on your computer. But the world does not live on your computer.
 Think of an MCP as a power adapter. Your agent speaks one language. The external service speaks another. The MCP translates between them, so your agent can read from a database, post to a project management tool, or pull data from a spreadsheet — without you manually copying and pasting.
 
 MCPs are what turn a local agent into a connected one. The agent stays on your machine, under your control. But it can reach out and interact with the tools you already use.
-
----
 
 ## The Extensions: Plugins
 
@@ -210,11 +194,9 @@ That is the endgame. Not one AI assistant. A workforce of specialized agents, ea
 
 ## The Big Picture
 
-You start with a **seed agent** — a template you customize through conversation. You give it a **persona**, grow its **skills**, add **hooks** for discipline, connect it to your tools through **MCPs**, and extend it with **plugins** when you need new capabilities. **Context engineering** is the practice of designing all of this so the agent performs reliably without you micromanaging every request.
+Picture all of this running at once. You open a terminal in your project folder. The **seed agent** wakes up, reads its **persona** and **context** from the files you have shaped over weeks of conversation. A **hook** fires — checking whether anything changed since your last session. The agent loads the right **skills**, reaches out through an **MCP** to pull your latest calendar, and a **sub-agent** spins up to handle a research task in the background. The **LLM** underneath produces tokens. Your architecture on top decides what those tokens mean.
 
-The **LLM** underneath keeps getting smarter. Your architecture on top keeps getting **yours**.
-
----
+None of this required code. You described what you needed. The system built itself around your words.
 
 ## Why This Vocabulary Matters
 
@@ -222,11 +204,9 @@ Every profession has its language. Lawyers have torts and depositions. Doctors h
 
 None of those words exist to exclude you. They exist because precision matters. When a lawyer says "deposition," every other lawyer knows exactly what that means. No ambiguity. No wasted explanation.
 
-The same is true for agent vocabulary. These thirty-odd words are not barriers. They are tools. When you say "hook," everyone in the ecosystem knows you mean an automatic reflex that fires at a specific moment. When you say "seed agent," they know you mean a customizable starting template.
+The same is true here. When you say "hook," everyone in the ecosystem knows you mean an automatic reflex that fires at a specific moment. When you say "seed agent," they know you mean a customizable starting template. These words are not barriers. They are handles — grip them and the technology moves with you.
 
-The industry moved fast and forgot to hand out the dictionary. Consider this post your copy.
-
-The jargon wall just came down. What you build next is up to you.
+The industry built the jargon wall fast. You just walked through it.
 
 ---
 
