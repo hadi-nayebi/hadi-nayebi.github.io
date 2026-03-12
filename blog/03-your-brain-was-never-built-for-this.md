@@ -50,7 +50,7 @@ The brain scanning for snakes in the grass is now drowning in a jungle of spread
 
 Nobody talks about this part openly.
 
-A small percentage of humans navigate this complexity well. They are not smarter — they are better **delegated**. They have accountants, lawyers, financial advisors, personal assistants, therapists, nutritionists, and executive coaches. They outsource the complexity their brain cannot handle to other human brains that specialize.
+A small percentage of humans navigate this complexity well. They are not smarter — they are **better at delegating**. They have accountants, lawyers, financial advisors, personal assistants, therapists, nutritionists, and executive coaches. They outsource the complexity their brain cannot handle to other human brains that specialize.
 
 That twelve-thousand-year-old invention — delegation through specialization — still works. But it has always been expensive.
 
@@ -88,7 +88,7 @@ A memory file that accumulates what your agent has learned about your project ac
 
 A skill that enforces a consistent workflow every time you start a new task? **Cognitive muscle memory** — reliable behavior your brain would improvise differently each time.
 
-These are the organs of your digital cortex. Memory that persists across weeks. Reflexes that fire before mistakes happen. Specialized reasoning that runs while you sleep. Your biology — now extended with organs designed for the actual jungle you live in.
+These are the organs of your digital cortex. Memory that persists across weeks. Reflexes that catch mistakes before they compound. Specialized reasoning that runs while you sleep. Your biology — now extended with organs designed for the actual jungle you live in.
 
 Your [`.claude/`](https://docs.anthropic.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make it function.
 

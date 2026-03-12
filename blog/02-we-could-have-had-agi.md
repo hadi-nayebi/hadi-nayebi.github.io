@@ -33,7 +33,7 @@ People overestimate how much a profession is raw IQ and underestimate how much i
 
 A competent professional is a pipeline: intake and clarification, scoping, research, synthesis, drafting, review, iteration with stakeholders, and risk management. Most of these steps are not mysterious. They are repeatable.
 
-The hard part is not generating text. The hard part is not missing steps, not drifting off scope, not forgetting constraints, and not repeating the same mistakes. And none of that gets easier when your [tokens](https://en.wikipedia.org/wiki/Large_language_model#Tokenization "Small word-sized chunks that AI models use to process text") vanish the moment the [context window](https://en.wikipedia.org/wiki/Large_language_model#Prompt "The limited amount of text an AI can 'see' at once") fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.
+The hard part is not generating text. The hard part is staying on every step, holding scope, remembering constraints, and avoiding the same mistakes twice. And none of that gets easier when your [tokens](https://en.wikipedia.org/wiki/Large_language_model#Tokenization "Small word-sized chunks that AI models use to process text") vanish the moment the [context window](https://en.wikipedia.org/wiki/Large_language_model#Prompt "The limited amount of text an AI can 'see' at once") fills up. We solved the generation problem. What we never solved is the preservation problem — how to keep those tokens organized, accessible, and alive past the next session. A bigger generator just produces more tokens to lose.
 
 That is organization. Not intelligence.
 
@@ -109,7 +109,7 @@ Each one is a place where the architecture — not the model — decides what ha
 
 Hooks are the agent's sensory layer — how it perceives its own actions, reacts to events, and builds a surface where processed experience can be written back as durable knowledge. Without them, the agent acts blind. Tokens flow, but nothing sticks.
 
-When hooks also log transactions, you get an experience stream. And that experience stream enables something crucial: learning from experience.
+When hooks also log transactions, you get a continuous record of what the agent did and why. That record enables something crucial: learning from what actually happened.
 
 ## Consolidation: where the system learns
 

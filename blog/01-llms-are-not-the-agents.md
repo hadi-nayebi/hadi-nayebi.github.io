@@ -54,7 +54,7 @@ In a CLI agent, the brain is not abstract or metaphorical. It is **literal**. It
 
 **The agent is the filesystem.**
 
-And here is the key insight: since a CLI agent's entire capability is generating text and using it to create and modify files — it can build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it. You describe what you need through conversation. The agent builds. The same seed works for any user — its architecture knows how to grow, but what it grows into depends on you. We will deep dive into what makes a seed agent work in the second half of this series.
+And here is the key insight: since a CLI agent's entire capability is generating text and using it to create and modify files — it can build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it. You describe what you need through conversation. The agent builds. The same seed works for any user — its architecture knows how to grow, but what it grows into depends on you. We will dive deep into what makes a seed agent work in the second half of this series.
 
 This is good news. Training an LLM costs hundreds of millions of dollars and requires specialized hardware most people will never touch. Building an agent costs nothing beyond the tools you already have. You are not creating intelligence — that already exists. You are organizing files that shape existing intelligence into reliable behavior.
 
@@ -100,7 +100,7 @@ At each step, the LLM picks one of these actions based on probabilities. Then it
 
 The problem? **Small changes in context lead to completely different paths.** Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.
 
-This is why working with a bare LLM can feel like a **random walk**. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. Without structure to absorb and organize the tokens it generates, a raw LLM agent shows **ADHD-like symptoms**. Brilliant, full of potential, but scattered and inconsistent — unable to stay on track without external structure holding it accountable.
+This is why working with a bare LLM can feel like a **random walk**. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. Without structure to absorb and organize the tokens it generates, a raw LLM agent behaves like a brilliant mind with no executive function. Full of potential, but scattered and inconsistent — unable to stay on track without external structure holding it accountable.
 
 > Intelligence alone is not reliability. **Structure is.**
 

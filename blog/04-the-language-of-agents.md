@@ -34,7 +34,7 @@ Here is the part most people miss: **the LLM did not arrive in its current form.
 
 ### Phase One: The Autocomplete Machine
 
-The earliest LLMs were trained on massive amounts of internet text. Their job was simple: given some text, predict what comes next. Think of it as autocomplete on steroids. You type "the cat sat on the" and the model predicts "mat." Impressive at scale. Useless for conversation.
+The earliest LLMs were trained on massive amounts of internet text. Their job was simple: given some text, predict what comes next. Think of it as autocomplete scaled to the size of the internet. You type "the cat sat on the" and the model predicts "mat." Impressive at scale. Useless for conversation.
 
 ### Phase Two: The Conversation Machine
 
@@ -82,7 +82,7 @@ That tool is a **CLI agent**.
 
 It sounds less fancy than a browser interface. The browser version and the CLI version run the same intelligence. The difference is not power. The difference is **control.**
 
-A CLI agent is yours to customize, expand, and personalize in any direction you want. You decide how it remembers. You decide what it can access. You decide its personality, its rules, its boundaries. You can even add a graphical interface on top if you prefer one. The point is not the interface — the point is who is in charge.
+A CLI agent is yours to customize in any direction you want. You decide how it remembers. You decide what it can access. You decide its personality, its rules, its boundaries. You can even add a graphical interface on top if you prefer one. The point is not the interface — the point is who is in charge.
 
 And because a CLI agent lives on your machine, it can **see your files**. It can read documents, write new ones, search through folders, edit code, and organize your work. It is sitting inside your computer, looking at what you are working on.
 
@@ -104,8 +104,7 @@ In a browser, the system message is written by the company. It says things like 
 
 In a CLI agent, **you write the system message.** It lives in a file — usually called `CLAUDE.md` or `AGENT.md` — right there in your project folder, where you can read and edit it.
 
-That file is the agent's **persona**. Not just a name. Its role, its rules, its memory, its priorities. A lawyer's agent might have a persona that says: "You are a legal research assistant. Always cite sources. Never give legal advice directly — present findings and let the human decide." A consultant's agent might say something completely different.
-
+That file is the agent's **persona**. Not just a name. Its role, its rules, its memory, its priorities. A lawyer's agent might have a persona that says: "You are a legal research assistant. Always cite sources. Never give legal advice directly — present findings and let the human decide."
 And as your agent grows, its identity spreads beyond a single file. Instructions, memory, and personality naturally expand across multiple files and mechanisms — the way a person's character is not stored in one place but expressed through habits, knowledge, and experience built up over time.
 
 One engine. A thousand possible agents.
@@ -114,13 +113,13 @@ One engine. A thousand possible agents.
 
 You have probably heard the term **prompt engineering**. It means carefully crafting what you type to get better results from the AI.
 
-Prompt engineering works. It matters. But it put the burden on **you**. Learn the right phrasing. Structure your request just so. Add the right context manually. The better you got at prompting, the better your results. That kept AI useful mostly for developers and tech-savvy people — the ones willing to learn a new way of talking to a machine.
+Prompt engineering works. It matters. But it put the burden on **you**. Learn the right phrasing. Structure your request just so. Add the right context manually. The better you get at prompting, the better your results. That kept AI useful mostly for developers and tech-savvy people — the ones willing to learn a new way of talking to a machine.
 
 The field is moving toward something broader: **context engineering**. Instead of expecting the user to craft the perfect prompt, you design the entire information environment so the AI performs well **regardless of how the user asks**.
 
 Context engineering does two things prompt engineering alone never did. First, it **internalizes** the prompting layer. The careful phrasing, the structured instructions, the right context — all of that gets built into the architecture itself. Internal LLM calls inside a complex system still use prompt engineering, but the *user* does not have to. You just ask. The system handles the rest.
 
-Second, it expands the focus beyond just *talking to* the LLM. Think of it as a metabolism. Everything that flows through the AI — your prompts, its own reasoning, results from tools it uses — all of it is information that gets processed. Good context engineering means those tokens are properly absorbed into the agent's long-term memory and properly recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are properly **metabolized**.
+Second, it expands the focus beyond just *talking to* the LLM. Think of it as a metabolism. Everything that flows through the AI — your prompts, its own reasoning, results from tools it uses — all of it is information that gets processed. Good context engineering means those tokens are absorbed into the agent's long-term memory and recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are **metabolized**.
 
 What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?
 
