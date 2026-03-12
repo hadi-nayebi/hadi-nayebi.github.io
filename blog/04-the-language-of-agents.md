@@ -215,4 +215,4 @@ The industry built the jargon wall fast. You just walked through it.
 *Previous: ["Your Brain Was Never Built for This"](your-brain-was-never-built-for-this.html) — why your organic brain needs a digital cortex.*
 *Next: ["Every Agent Needs a Skeleton"](every-agent-needs-a-skeleton.html) — we start building. The skeleton.*
 
-*Companion: ["The Primitives of Agent Architecture"](../papers/the-primitives-of-agent-architecture.pdf) (reference guide)*
+*Companion: ["The Primitives of Agent Architecture"](../papers/the-primitives-of-agent-architecture.html) (reference guide)*
