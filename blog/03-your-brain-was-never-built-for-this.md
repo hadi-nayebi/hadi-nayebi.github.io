@@ -86,11 +86,11 @@ A [hook](https://en.wikipedia.org/wiki/Hooking "A technique that intercepts even
 
 A memory file that accumulates what your agent has learned about your project across sessions? **Cognitive memory tissue** — persistent knowledge your biological [hippocampus](https://en.wikipedia.org/wiki/Hippocampus "A brain region essential for forming and retrieving memories") would have discarded after sleep.
 
-A skill that enforces a consistent workflow every time you start a new task? **Cognitive muscle memory** — reliable behavior your organic brain would improvise differently each time.
+A skill that enforces a consistent workflow every time you start a new task? **Cognitive muscle memory** — reliable behavior your brain would improvise differently each time.
 
 These are the organs of your digital cortex. Memory that persists across weeks. Reflexes that fire before mistakes happen. Specialized reasoning that runs while you sleep. Your biology — now extended with organs designed for the actual jungle you live in.
 
-Your [`.claude/`](https://docs.anthropic.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make a digital cortex function.
+Your [`.claude/`](https://docs.anthropic.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make it function.
 
 ---
 
@@ -100,7 +100,7 @@ For generations, the default economic relationship has been: you have a **job**.
 
 That made sense when delegation was expensive — when running a business required hiring the accountants, lawyers, logistics managers, and marketing teams that only a fraction of people could afford.
 
-Watch what happens when a digital cortex handles eighty to ninety percent of business operations.
+Watch what happens when it handles eighty to ninety percent of business operations.
 
 You go to the supermarket and pay for someone else's brand. What if you had your own? Pick the flavor. Choose the ingredients. Make it healthier. Someone buying your drink pays your salary. Every person a corporation.
 
@@ -134,7 +134,7 @@ Sounds busy. It might actually be calmer. The digital cortex handles the noise. 
 
 ### Your Personal Infrastructure
 
-And the digital cortex does not stop at business. Your digital life already runs on other companies' software. Their email. Their social media. Their fitness tracking. Their storage. Their apps, their terms, their data.
+And it does not stop at business. Your digital life already runs on other companies' software. Their email. Their social media. Their fitness tracking. Their storage. Their apps, their terms, their data.
 
 If you can build cognitive organs, you can build **everything**.
 
@@ -156,11 +156,11 @@ And a gap will open.
 
 Not the loud, visible kind. Not rich versus poor in the way we usually mean. An **invisible** gap. Between people whose cognitive capacity matches the complexity of their environment, and people whose biology — still wired for a simpler world — is trying to navigate a civilization this complex alone.
 
-The first group will run micro-businesses, manage their own data, and make better decisions because their digital cortex fills the gaps their biology cannot.
+The first group will run micro-businesses, manage their own data, and make better decisions because it fills the gaps their biology cannot.
 
 The second group will feel the world getting faster, more confusing, more demanding — without understanding why. The wall between them is not made of money or education. It is made of **adoption**.
 
-But here is what makes this shift different from every one before it. Literacy required years of schooling. Electricity required infrastructure. The internet required learning an entirely new medium. This? You talk to it. You describe what you need, and it builds itself around your words. Adoption has never required less — because the tool itself does the building.
+But here is what makes this shift different from every one before it. Literacy required years of schooling. Electricity required infrastructure. The internet required learning an entirely new medium. This? You talk to it. You describe what you need, and it builds itself around your words. Adoption has never required less — because the tool does the work.
 
 Every major technology shift has produced this bifurcation. Literacy reshaped societies over centuries. Electricity did it in decades. The internet did it in years. Each cycle shorter, each impact sharper, each divide more personal.
 
