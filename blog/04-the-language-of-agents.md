@@ -20,6 +20,8 @@ But then someone starts talking about LLMs and context windows, hooks and MCPs, 
 
 This post fixes that. One read. Every word that matters. By the end, you will not just understand these terms — you will see how they connect into a single, coherent picture. No prerequisites. No code.
 
+The first three essays made the case — why the model is not the agent, why architecture matters more than scale, why your brain needs a digital extension. Now we arm you with the vocabulary. Once you have the words, we start building.
+
 ---
 
 ## The Engine: What an LLM Actually Is

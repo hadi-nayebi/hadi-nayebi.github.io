@@ -182,7 +182,7 @@ But you can grow. Not biologically. **Digitally.**
 
 A CLI agent on your computer is an extension of **you**. Its memory is your memory. Its reflexes are your reflexes. Its skills compound, session after session, project after project.
 
-The foundation is set. [The agent is the filesystem](01-llms-are-not-the-agents.html). [The architecture already exists](02-we-could-have-had-agi.html). Now build yours. The world your brain was never built for is not waiting.
+The foundation is set. [The agent is the filesystem](01-llms-are-not-the-agents.html). [The architecture already exists](02-we-could-have-had-agi.html). But before we build, we need to agree on the words. The next essay gives you every term that matters — so when we start constructing, nothing gets lost in translation.
 
 The snake in the tall grass has been replaced by a civilization of eight billion minds connected at the speed of light. Your organic brain is the best thing evolution ever made.
 
