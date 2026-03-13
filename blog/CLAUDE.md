@@ -88,6 +88,7 @@ Every blog must end with this consistent footer after the closing line:
 - **Previous/Next** on separate lines with em dash + one-sentence description
 - **Blog 1:** no Previous line. **Blog 8:** no Next line.
 - **Companion resources** (white papers, etc.) only when they exist
+- **Blog 2 companion PDF removed** (v1.1.0) — `papers/why-scaling-models-is-not-enough.pdf` still in repo, reference removed from footer. Recoverable from git history if needed.
 - **Audio footer excluded** — narration stops at the closing line ("Build the toaster", "Build the organism", etc.)
 
 ## HTML Template Pattern
@@ -263,8 +264,8 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 | # | Slug | Title | Version | Status |
 |---|------|-------|---------|--------|
-| 1 | llms-are-not-the-agents | LLMs Are Not the Agents | v0.3.1 | published |
-| 2 | we-could-have-had-agi | We Could Have Had AGI By Now | v0.2.0 | published |
+| 1 | llms-are-not-the-agents | LLMs Are Not the Agents | v1.2.0 | published |
+| 2 | we-could-have-had-agi | We Could Have Had AGI By Now | v1.1.0 | published |
 | 3 | your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.0 | published |
 | 4 | the-language-of-agents | The Language of Agents | v0.1.0 | published |
 | 5 | every-agent-needs-a-skeleton | Every Agent Needs a Skeleton | v0.4.0 | published |

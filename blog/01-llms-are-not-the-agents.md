@@ -7,7 +7,7 @@ tags: [Agents, AI, Fundamentals]
 audience: professionals
 og_image: "assets/images/blog/llm-engine-agent-directory.png"
 series: "Hadosh Academy – Agents"
-version: v1.1.0
+version: v1.2.0
 status: published
 ---
 
@@ -75,7 +75,7 @@ You are not creating intelligence — that already exists. You are organizing fi
 
 And because it is just files, everything is transparent. You can open a folder and see exactly what your agent knows, what rules it follows, and what it is about to do. You can audit it. You can move it to another machine. You can hand it to a colleague. Try doing that with a neural network.
 
-That filesystem gives the LLM everything it cannot provide on its own:
+That filesystem gives rise to capabilities the LLM cannot achieve on its own:
 
 - **Memory** — knowledge files, past decisions, learned patterns
 - **Structure** — operational phases, rules, workflows
@@ -91,6 +91,8 @@ When you open one of these CLI agents in an **empty directory**, you have an LLM
 **This is not yet an agent.** This is a raw engine with no car around it.
 
 But when you add a `.claude/` directory (or `.opencode/` in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the **brain** of your agent. The brain is the collection of files that tell the LLM **how to behave**.
+
+Without the LLM, this brain is just files on disk — sleeping. Nothing reads them, nothing acts on them. The moment you add the LLM, the filesystem **comes alive**. The agent reads its own instructions, follows its own rules, and writes back what it learns. Neither piece is the agent on its own. The agent is what emerges when the two meet.
 
 
 
