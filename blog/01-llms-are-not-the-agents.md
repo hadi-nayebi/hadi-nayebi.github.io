@@ -178,7 +178,7 @@ As of early 2026, all three shipped hook systems within months of each other —
 
 The syntax differs. The concepts are identical. Each platform provides **interception points** where your rules can override the LLM's default behavior.
 
-Think of it this way: `hook.sh` in Claude Code and `plugin.ts` in OpenCode are **adapters**. They translate platform-specific events into your agent's decision system. The hook mechanism is an interchangeable sensory layer — like swapping out ears for antennae. The Markov brain behind them stays the same.
+Think of it this way: `hook.sh` in Claude Code and `plugin.ts` in OpenCode are **adapters**. They translate platform-specific events into your agent's decision system. The hook mechanism is an interchangeable sensory layer — like swapping out ears for antennae. The brain behind them stays the same.
 
 This means your agent's core identity — its **knowledge, behaviors, rules, memory structures, and workflows** — is platform-agnostic. Those files do not care which LLM reads them. They do not care which CLI runs them. The filesystem IS the identity.
 
