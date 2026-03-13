@@ -3,12 +3,12 @@ title: "The Language of Agents"
 date: "March 2026"
 slug: "the-language-of-agents"
 read_time: "18 min"
-tags: [Agents, AI, Vocabulary, Beginner]
+tags: [Agents, AI, Vocabulary]
 audience: professionals
 og_image: "assets/images/blog/agent-anatomy.png"
 series: "Hadosh Academy – Agents"
 companion_paper: "the-primitives-of-agent-architecture"
-version: v1.0.0
+version: v1.0.1
 status: published
 ---
 
@@ -22,7 +22,7 @@ But then someone starts talking about LLMs and context windows, hooks and MCPs, 
 
 This post fixes that. One read. Every word that matters. By the end, you will not just understand these terms — you will see how they connect into a single, coherent picture. No prerequisites. No code.
 
-The first three essays made the case — why the model is not the agent, why architecture matters more than scale, why your brain needs a digital extension. Now we arm you with the vocabulary. Once you have the words, we start building.
+The first three essays planted the ideas — the toaster and the electricity, the organism that grows from a seed, the digital cortex your biology never built. Each one introduced terms that matter. This essay collects them, adds the ones still missing, and lays out the full vocabulary. After this, we build.
 
 ---
 
@@ -34,7 +34,7 @@ An LLM is a program that produces text. That is it. It does not think. It predic
 
 Those pieces are called **tokens**. A token is roughly a word — sometimes a whole word, sometimes part of one. When you see the response appearing word by word on your screen, you are watching the LLM produce tokens one after another.
 
-Here is the part most people miss: **the LLM did not arrive in its current form.** It evolved through distinct phases, and each phase changed what AI could do.
+**The LLM did not arrive in its current form.** It evolved through distinct phases, and each phase changed what AI could do.
 
 ### Phase One: The Autocomplete Machine
 
@@ -72,19 +72,19 @@ This is why raw LLMs — no matter how powerful — have limits. A bigger desk h
 
 ## From Browser to Desktop: CLI Agents
 
-Now the important part.
+Everything so far is the engine. Now: where does it live?
 
 The AI you use in your browser — ChatGPT, Claude, Gemini — runs on someone else's servers. You visit a website. You type. It responds. These tools are good. They remember conversations now. They learn your preferences over time.
 
 But here is the catch: **you do not control how any of that works.** The company decides what gets remembered, how the AI behaves, what it can and cannot do. You are a guest in their house — their rules, their design, their boundaries.
 
-Every one of those companies also offers the **same AI as a tool that runs on your computer**. Same models. Same intelligence. Same subscription plans. But instead of living in a browser tab, it lives on your machine.
+Every one of those companies also offers the **same AI as a tool that runs on your computer**. Same models. Same intelligence. Similar subscription costs. But instead of living in a browser tab, it lives on your machine.
 
 That tool is a **CLI agent**.
 
 **CLI** stands for Command Line Interface. It is the text-based program on your computer — the [terminal](https://en.wikipedia.org/wiki/Terminal_emulator "A program that provides a text-based interface to your computer"). You open it, you type, the AI responds. No buttons. No menus. Just text.
 
-It sounds less fancy than a browser interface. The browser version and the CLI version run the same intelligence. The difference is not power. The difference is **control.**
+It sounds less fancy than a browser interface. The difference is not power. The difference is **control.**
 
 A CLI agent is yours to customize in any direction you want. You decide how it remembers. You decide what it can access. You decide its personality, its rules, its boundaries. You can even add a graphical interface on top if you prefer one. The point is not the interface — the point is who is in charge.
 
@@ -109,6 +109,7 @@ In a browser, the system message is written by the company. It says things like 
 In a CLI agent, **you write the system message.** It lives in a file — usually called `CLAUDE.md` or `AGENT.md` — right there in your project folder, where you can read and edit it.
 
 That file is the agent's **persona**. Not just a name. Its role, its rules, its memory, its priorities. A lawyer's agent might have a persona that says: "You are a legal research assistant. Always cite sources. Never give legal advice directly — present findings and let the human decide."
+
 And as your agent grows, its identity spreads beyond a single file. Instructions, memory, and personality naturally expand across multiple files and mechanisms — the way a person's character is not stored in one place but expressed through habits, knowledge, and experience built up over time.
 
 One engine. A thousand possible agents.
@@ -123,7 +124,9 @@ The field is moving toward something broader: **context engineering**. Instead o
 
 Context engineering does two things prompt engineering alone never did. First, it **internalizes** the prompting layer. The careful phrasing, the structured instructions, the right context — all of that gets built into the architecture itself. Internal LLM calls inside a complex system still use prompt engineering, but the *user* does not have to. You just ask. The system handles the rest.
 
-Second, it expands the focus beyond just *talking to* the LLM. Think of it as a metabolism. Everything that flows through the AI — your prompts, its own reasoning, results from tools it uses — all of it is information that gets processed. Good context engineering means those tokens are absorbed into the agent's long-term memory and recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are **metabolized**.
+Second, it expands the focus beyond just *talking to* the LLM.
+
+Think of it as a metabolism. Everything that flows through the AI — your prompts, its own reasoning, results from tools it uses — all of it is information that gets processed. Good context engineering means those tokens are absorbed into the agent's long-term memory and recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are **metabolized**.
 
 What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?
 
@@ -147,11 +150,13 @@ A good practice: after you describe a new hook, test it. Ask the agent to try th
 
 Hooks are what turn a reactive chatbot into a disciplined professional. Without hooks, the AI does whatever seems right in the moment. With hooks, it follows a process. Every time.
 
+We will formalize the workflow those hooks enforce — Observe, Plan, Execute, Verify, Condense — in a [later essay](07-how-an-agent-thinks.html).
+
 ## The Skill Set: Skills, Commands, and Sub-agents
 
-Think of it like an office.
+Here is the hierarchy.
 
-A **skill** is a set of instructions the agent has learned — like a recipe card in a chef's kitchen. When the agent recognizes that a skill is relevant, it loads those instructions into its working memory and follows them. You do not have to tell the agent to use a skill. It notices when one applies.
+A **skill** is a set of instructions stored in the agent's files — like a recipe card in a chef's kitchen. When the agent recognizes that a skill is relevant, it loads those instructions into its working memory and follows them. You do not have to tell the agent to use a skill. It notices when one applies.
 
 A **command** is a button you press. You type a short name — like `/review` or `/commit` — and the agent runs a specific workflow. Commands are explicit. You trigger them on purpose, and they do exactly one thing.
 
@@ -197,7 +202,9 @@ That is the endgame. Not one AI assistant. A workforce of specialized agents, ea
 
 ## The Big Picture
 
-Picture all of this running at once. You open a terminal in your project folder. The **seed agent** wakes up, reads its **persona** and **context** from the files you have shaped over weeks of conversation. A **hook** fires — checking whether anything changed since your last session. The agent loads the right **skills**, reaches out through an **MCP** to pull your latest calendar, and a **sub-agent** spins up to handle a research task in the background. The **LLM** underneath produces tokens. Your architecture on top decides what those tokens mean.
+Picture all of this running at once. You open a terminal in your project folder. The **seed agent** wakes up, reads its **persona** and **context** from the files you have shaped over weeks of conversation. A **hook** fires — checking whether anything changed since your last session.
+
+The agent loads the right **skills**, reaches out through an **MCP** to pull your latest calendar, and a **sub-agent** spins up to handle a research task in the background. The **LLM** underneath produces tokens. Your architecture on top decides what those tokens mean.
 
 None of this required code. You described what you needed. The system built itself around your words.
 
@@ -210,6 +217,8 @@ None of those words exist to exclude you. They exist because precision matters. 
 The same is true here. When you say "hook," everyone in the ecosystem knows you mean an automatic reflex that fires at a specific moment. When you say "seed agent," they know you mean a customizable starting template. These words are not barriers. They are handles — grip them and the technology moves with you.
 
 The industry built the jargon wall fast. You just walked through it.
+
+You have the language. Next, we build the skeleton.
 
 ---
 

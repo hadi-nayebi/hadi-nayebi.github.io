@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v1.0.0 -->
+<!-- Version: v1.0.1 -->
 <html lang="en">
 
 <head>
@@ -94,7 +94,6 @@
                             <span class="tag">Agents</span>
                             <span class="tag">AI</span>
                             <span class="tag">Vocabulary</span>
-                            <span class="tag">Beginner</span>
                         </div>
                     </div>
                     <div class="article-authors">
@@ -106,7 +105,7 @@
                             <source src="../assets/audio/the-language-of-agents.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <span class="audio-label">Listen to this article (17 min)</span>
+                        <span class="audio-label">Listen to this article (18 min)</span>
                     </div>
 
                     <div class="article-body">
@@ -121,7 +120,7 @@
 
                         <p>This post fixes that. One read. Every word that matters. By the end, you will not just understand these terms &mdash; you will see how they connect into a single, coherent picture. No prerequisites. No code.</p>
 
-                        <p>The first three essays made the case &mdash; why the model is not the agent, why architecture matters more than scale, why your brain needs a digital extension. Now we arm you with the vocabulary. Once you have the words, we start building.</p>
+                        <p>The first three essays planted the ideas &mdash; the toaster and the electricity, the organism that grows from a seed, the digital cortex your biology never built. Each one introduced terms that matter. This essay collects them, adds the ones still missing, and lays out the full vocabulary. After this, we build.</p>
 
                         <hr>
 
@@ -133,7 +132,7 @@
 
                         <p>Those pieces are called <strong><a href="https://en.wikipedia.org/wiki/Lexical_analysis#Token" title="A small chunk of text — roughly a word or part of a word — that an LLM processes" target="_blank" rel="noopener">tokens</a></strong>. A token is roughly a word &mdash; sometimes a whole word, sometimes part of one. When you see the response appearing word by word on your screen, you are watching the LLM produce tokens one after another.</p>
 
-                        <p>Here is the part most people miss: <strong>the LLM did not arrive in its current form.</strong> It evolved through distinct phases, and each phase changed what AI could do.</p>
+                        <p><strong>The LLM did not arrive in its current form.</strong> It evolved through distinct phases, and each phase changed what AI could do.</p>
 
                         <h3>Phase One: The Autocomplete Machine</h3>
 
@@ -176,19 +175,19 @@
 
                         <h2>From Browser to Desktop: CLI Agents</h2>
 
-                        <p>Now the important part.</p>
+                        <p>Everything so far is the engine. Now: where does it live?</p>
 
                         <p>The AI you use in your browser &mdash; ChatGPT, Claude, Gemini &mdash; runs on someone else&rsquo;s servers. You visit a website. You type. It responds. These tools are good. They remember conversations now. They learn your preferences over time.</p>
 
                         <p>But here is the catch: <strong>you do not control how any of that works.</strong> The company decides what gets remembered, how the AI behaves, what it can and cannot do. You are a guest in their house &mdash; their rules, their design, their boundaries.</p>
 
-                        <p>Every one of those companies also offers the <strong>same AI as a tool that runs on your computer</strong>. Same models. Same intelligence. Same subscription plans. But instead of living in a browser tab, it lives on your machine.</p>
+                        <p>Every one of those companies also offers the <strong>same AI as a tool that runs on your computer</strong>. Same models. Same intelligence. Similar subscription costs. But instead of living in a browser tab, it lives on your machine.</p>
 
                         <p>That tool is a <strong>CLI agent</strong>.</p>
 
                         <p><strong><a href="https://en.wikipedia.org/wiki/Command-line_interface" title="A text-based way to interact with software by typing commands" target="_blank" rel="noopener">CLI</a></strong> stands for Command Line Interface. It is the text-based program on your computer &mdash; the <a href="https://en.wikipedia.org/wiki/Terminal_emulator" title="A program that provides a text-based interface to your computer" target="_blank" rel="noopener">terminal</a>. You open it, you type, the AI responds. No buttons. No menus. Just text.</p>
 
-                        <p>It sounds less fancy than a browser interface. The browser version and the CLI version run the same intelligence. The difference is not power. The difference is <strong>control.</strong></p>
+                        <p>It sounds less fancy than a browser interface. The difference is not power. The difference is <strong>control.</strong></p>
 
                         <p>A CLI agent is yours to customize in any direction you want. You decide how it remembers. You decide what it can access. You decide its personality, its rules, its boundaries. You can even add a graphical interface on top if you prefer one. The point is not the interface &mdash; the point is who is in charge.</p>
 
@@ -233,7 +232,9 @@
 
                         <p>Context engineering does two things prompt engineering alone never did. First, it <strong>internalizes</strong> the prompting layer. The careful phrasing, the structured instructions, the right context &mdash; all of that gets built into the architecture itself. Internal LLM calls inside a complex system still use prompt engineering, but the <em>user</em> does not have to. You just ask. The system handles the rest.</p>
 
-                        <p>Second, it expands the focus beyond just <em>talking to</em> the LLM. Think of it as a metabolism. Everything that flows through the AI &mdash; your prompts, its own reasoning, results from tools it uses &mdash; all of it is information that gets processed. Good context engineering means those tokens are absorbed into the agent&rsquo;s long-term memory and recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are <strong>metabolized</strong>.</p>
+                        <p>Second, it expands the focus beyond just <em>talking to</em> the LLM.</p>
+
+                        <p>Think of it as a metabolism. Everything that flows through the AI &mdash; your prompts, its own reasoning, results from tools it uses &mdash; all of it is information that gets processed. Good context engineering means those tokens are absorbed into the agent&rsquo;s long-term memory and recalled when they are needed. The token generator has been invented. The real work now is building the rest of the system so those tokens are <strong>metabolized</strong>.</p>
 
                         <p>What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?</p>
 
@@ -257,11 +258,13 @@
 
                         <p>Hooks are what turn a reactive chatbot into a disciplined professional. Without hooks, the AI does whatever seems right in the moment. With hooks, it follows a process. Every time.</p>
 
+                        <p>We will formalize the workflow those hooks enforce &mdash; Observe, Plan, Execute, Verify, Condense &mdash; in a <a href="07-how-an-agent-thinks.html">later essay</a>.</p>
+
                         <h2>The Skill Set: Skills, Commands, and Sub-agents</h2>
 
-                        <p>Think of it like an office.</p>
+                        <p>Here is the hierarchy.</p>
 
-                        <p>A <strong>skill</strong> is a set of instructions the agent has learned &mdash; like a recipe card in a chef&rsquo;s kitchen. When the agent recognizes that a skill is relevant, it loads those instructions into its working memory and follows them. You do not have to tell the agent to use a skill. It notices when one applies.</p>
+                        <p>A <strong>skill</strong> is a set of instructions stored in the agent&rsquo;s files &mdash; like a recipe card in a chef&rsquo;s kitchen. When the agent recognizes that a skill is relevant, it loads those instructions into its working memory and follows them. You do not have to tell the agent to use a skill. It notices when one applies.</p>
 
                         <p>A <strong>command</strong> is a button you press. You type a short name &mdash; like <code>/review</code> or <code>/commit</code> &mdash; and the agent runs a specific workflow. Commands are explicit. You trigger them on purpose, and they do exactly one thing.</p>
 
@@ -312,7 +315,9 @@
                             <figcaption>An agent is a body. Each component is an organ.</figcaption>
                         </figure>
 
-                        <p>Picture all of this running at once. You open a terminal in your project folder. The <strong>seed agent</strong> wakes up, reads its <strong>persona</strong> and <strong>context</strong> from the files you have shaped over weeks of conversation. A <strong>hook</strong> fires &mdash; checking whether anything changed since your last session. The agent loads the right <strong>skills</strong>, reaches out through an <strong>MCP</strong> to pull your latest calendar, and a <strong>sub-agent</strong> spins up to handle a research task in the background. The <strong>LLM</strong> underneath produces tokens. Your architecture on top decides what those tokens mean.</p>
+                        <p>Picture all of this running at once. You open a terminal in your project folder. The <strong>seed agent</strong> wakes up, reads its <strong>persona</strong> and <strong>context</strong> from the files you have shaped over weeks of conversation. A <strong>hook</strong> fires &mdash; checking whether anything changed since your last session.</p>
+
+                        <p>The agent loads the right <strong>skills</strong>, reaches out through an <strong>MCP</strong> to pull your latest calendar, and a <strong>sub-agent</strong> spins up to handle a research task in the background. The <strong>LLM</strong> underneath produces tokens. Your architecture on top decides what those tokens mean.</p>
 
                         <p>None of this required code. You described what you needed. The system built itself around your words.</p>
 
@@ -325,6 +330,8 @@
                         <p>The same is true here. When you say &ldquo;hook,&rdquo; everyone in the ecosystem knows you mean an automatic reflex that fires at a specific moment. When you say &ldquo;seed agent,&rdquo; they know you mean a customizable starting template. These words are not barriers. They are handles &mdash; grip them and the technology moves with you.</p>
 
                         <p class="punchline">The industry built the jargon wall fast. You just walked through it.</p>
+
+                        <p>You have the language. Next, we build the skeleton.</p>
 
                         <hr>
                         <p><em>Essay 4 of 8 in the Hadosh Academy series on agent architecture.</em></p>
@@ -380,7 +387,6 @@
                                 <span class="tag tag-sm">Agents</span>
                                 <span class="tag tag-sm">AI</span>
                                 <span class="tag tag-sm">Vocabulary</span>
-                                <span class="tag tag-sm">Beginner</span>
                             </div>
                             <h3>The Language of Agents</h3>
                             <div class="date">March 2026 &bull; 18 min read</div>
