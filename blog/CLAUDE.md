@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.4.0
+**Version:** v0.4.1
 
 ## Content Workflow
 
@@ -266,7 +266,7 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 |---|------|-------|---------|--------|
 | 1 | llms-are-not-the-agents | LLMs Are Not the Agents | v1.2.0 | published |
 | 2 | we-could-have-had-agi | We Could Have Had AGI By Now | v1.1.0 | published |
-| 3 | your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.0 | published |
-| 4 | the-language-of-agents | The Language of Agents | v0.1.0 | published |
+| 3 | your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.1 | published |
+| 4 | the-language-of-agents | The Language of Agents | v0.1.1 | published |
 | 5 | every-agent-needs-a-skeleton | Every Agent Needs a Skeleton | v0.4.0 | published |
 | 6 | 06-your-agents-first-organs | TBD (background jobs) | v0.2.0 | draft |
