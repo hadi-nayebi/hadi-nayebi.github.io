@@ -201,7 +201,7 @@ Compartmentalization means: **every piece of knowledge has a home**. Every behav
 ![Four-level hierarchy of CLAUDE.md files: Level 1 at ~/.claude/CLAUDE.md for Global User Context, Level 2 at ./CLAUDE.md for Agent Identity, Level 3 at ./.claude/CLAUDE.md for the Brain Manual, and Level 4 at ./**/CLAUDE.md for Local Working Memory in subdirectories. A tree diagram on the right shows how these nest within the filesystem.](../assets/images/blog/CLAUDE-md-hierarchy.jpg)
 *The four levels of compartmentalized memory. Global context at the top, local working memory at the bottom. Each file scoped to exactly where it is needed.*
 
-Look at the hierarchy above. Information is not dumped into one giant prompt. Instead:
+Look at the hierarchy above. Information is not dumped into one giant prompt {comment: not ptot, i guess instruvtion file is a better word, what do you think?}. Instead:
 
 - **Global context** lives at the user level — preferences, conventions, stable patterns
 - **Agent identity** lives at the project root — who the agent is, its operational phases, its personality
@@ -230,7 +230,7 @@ If you are building with AI agents — or want to start — here is the shift in
 
 4. **Design for portability.** Your agent's brain should not be locked to one platform or one model. Keep the core identity in plain files — markdown, JSON, scripts. Let the platform-specific hooks be thin adapters, not the whole system.
 
-5. **Think in compartments.** Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows.
+5. **Think in compartments.** Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows. {comment we need to end this with a explicit message that a well defined agent architecture will build itself and write all these files as it grows, so that the user does not think that they have to write these files, they just need to have a conversation with the agent and the archtectue will force the agent to write these files}
 
 The electricity keeps getting stronger. That has never been the bottleneck.
 
