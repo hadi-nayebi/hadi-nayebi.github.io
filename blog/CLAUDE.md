@@ -275,41 +275,26 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 
 
----
-
-## Observations
-
----
+---Ob---
 
 
 
 
 
 
----
-
-## Plan Actions
-
----
+---Pl---
 
 
 
 
 
 
----
-
-## Execution Lessons
-
----
+---Ex---
 
 
 
 
 
 
----
+---Ve---
 
-## Verification Notes
-
----

@@ -1,0 +1,199 @@
+<h1
+id="from-collaboration-to-competence-growing-your-seed-agent-with-iterative-jobs">From
+Collaboration to Competence: Growing Your Seed Agent with Iterative
+Jobs</h1>
+<blockquote>
+<p><strong>First we shape the tools. Then our tools shape us. With a
+seed agent, you shape the tools and they grow themselves.</strong></p>
+</blockquote>
+<p>In the Hadosh Academy series, we’ve built up the seed agent’s
+anatomy: the filesystem as its brain (Blog 1), the job system as its
+heartbeat (Blog 5), and the OPEVC cycle as its cognitive rhythm (Blog
+6). We’ve seen how this architecture provides the discipline and
+persistence that transforms a raw LLM into a dependable digital
+partner.</p>
+<p>But a truly capable agent doesn’t just <em>follow</em> instructions;
+it <em>learns</em> from experience. It progresses from a collaborative
+assistant to an autonomous professional. This essay is about that
+journey: how your seed agent moves from initial, supervised tasks to
+mastering complex, repetitive jobs through iterative refinement, and
+ultimately, by developing its own specialized plugins.</p>
+<p>This is the story of how you nurture your digital cortex, guiding it
+from nascent intelligence to true professional competence.</p>
+<h2
+id="the-first-steps-collaborative-jobs-in-an-extended-opevc-cycle">The
+First Steps: Collaborative Jobs in an Extended OPEVC Cycle</h2>
+<p>Imagine you’re assigning your seed agent its very first task – a
+simple, yet real-world job. At this stage, the agent is like an eager
+apprentice: intelligent, but lacking practical experience and a refined
+workflow for <em>your</em> specific needs.</p>
+<p>This initial interaction takes place within an <strong>extended
+single OPEVC cycle</strong>, where your supervision is crucial:</p>
+<ol type="1">
+<li><p><strong>Observe (Guided Research):</strong> You prompt the agent
+with a task, for example, “Research the latest privacy regulations for
+AI development in Europe.” The agent enters the <code>Observe</code>
+phase, reading your prompt, searching its existing knowledge (if any),
+and perhaps performing a web search. You, the user, might intervene,
+suggesting specific sources or clarifying ambiguities, helping the agent
+refine its initial understanding. The agent records its findings in
+<code>CLAUDE.md</code>.</p></li>
+<li><p><strong>Plan (Collaborative Blueprint):</strong> Based on its
+observations, the agent drafts a plan in its <code>CLAUDE.md</code>.
+This is a blueprint of the steps it intends to take. Crucially, you
+review this plan. You might add missing steps, correct misconceptions,
+or suggest a more efficient sequence. This collaborative planning
+ensures the agent aligns its strategy with your expectations. The
+<code>plan-guard.sh</code> hook ensures the plan meets predefined
+quality thresholds before proceeding.</p></li>
+<li><p><strong>Execute (Supervised Action):</strong> With an approved
+plan, the agent proceeds to <code>Execute</code>. It might write a
+summary report, draft a policy document, or perform a series of data
+extractions. You are still supervising, watching its actions, and
+providing real-time course corrections if needed. Each action is
+recorded, and <code>execute-guard.sh</code> ensures it stays within the
+planned scope.</p></li>
+<li><p><strong>Verify (Feedback Loop):</strong> Once
+<code>Execute</code> is complete, the agent enters <code>Verify</code>.
+It checks its own work against the plan and its understanding. But here,
+<em>your</em> feedback is paramount. You review the output, identify
+areas for improvement, and validate its correctness. If issues arise,
+<code>phase_verify</code>’s unique ability to loop <em>backward</em> to
+<code>Observe</code>, <code>Plan</code>, or <code>Execute</code> allows
+the agent to self-correct at the source of the problem, with your
+continued guidance.</p></li>
+<li><p><strong>Condense (First Learnings):</strong> Upon successful
+verification, <code>phase_condense</code> kicks in. The agent distills
+its raw notes from this cycle. It moves the most valuable insights into
+its long-term knowledge base, potentially identifying patterns or new
+rules that could improve future performance. Any unaddressed issues or
+identified architectural improvements are recorded as
+<code>pending jobs</code> (Blog 5), creating a backlog of work for
+self-improvement.</p></li>
+</ol>
+<p>This collaborative, supervised cycle is how the seed agent gains its
+first practical experience. It’s an iterative improvisation, guided by
+your expertise, that lays the foundation for true competence.</p>
+<h2
+id="towards-consistency-multi-cycle-jobs-and-dedicated-plans">Towards
+Consistency: Multi-Cycle Jobs and Dedicated Plans</h2>
+<p>Once the agent has performed a task a few times in this
+collaborative, single-cycle manner, it starts to build a foundational
+understanding. The “improvised style” gives way to a more structured
+approach as the agent begins to internalize a reliable workflow for that
+specific job.</p>
+<p>This is the transition to <strong>multi-cycle OPEVC jobs with a
+dedicated plan</strong>. Here, the <code>job_core</code> system (Blog 5)
+truly shines. For a recurring task, such as “Weekly market trend
+analysis,” the agent can now:</p>
+<ol type="1">
+<li><p><strong>Generate a Dedicated Plan:</strong> Instead of
+improvising each time, the agent can, through conversation or by
+leveraging past <code>Condense</code> learnings, draft a comprehensive,
+multi-cycle plan. This plan might outline:
+<code>Cycle 1: Observe (Collect Data)</code>,
+<code>Cycle 2: Plan (Define Analysis Metrics)</code>,
+<code>Cycle 3: Execute (Run Analysis &amp; Draft Report)</code>,
+<code>Cycle 4: Verify (Internal Review)</code>,
+<code>Cycle 5: Condense (Synthesize &amp; Refine Knowledge)</code>. This
+becomes the structured blueprint for the job.</p></li>
+<li><p><strong>Iterative Execution across Cycles:</strong> The
+<code>job_core</code> system keeps the job <code>active</code> across
+these cycles. The agent executes one OPEVC phase (or a set of phases)
+within a cycle, <code>Condense</code>s its learnings, and then
+automatically transitions to the next cycle based on its plan. This
+allows for long-running, complex tasks to be broken down and managed
+with persistent state.</p></li>
+<li><p><strong>Refinement via Consolidation:</strong> Each
+<code>Condense</code> phase during a multi-cycle job contributes to the
+agent’s refinement. It doesn’t just clean up temporary notes; it
+actively compares current performance against previous attempts,
+identifying more efficient strategies, better data sources, or clearer
+communication styles. These learnings are codified into its knowledge
+files, making the agent progressively more consistent and
+effective.</p></li>
+</ol>
+<p>This iterative process, fueled by the persistent job system and the
+enforced OPEVC rhythm, transforms the agent from a reactive assistant
+into a proactive, practicing professional. It learns from its own
+“muscle memory,” making each subsequent performance of a similar job
+more consistent and autonomous.</p>
+<h2
+id="mastering-autonomy-jobs-with-dedicated-plugins-and-enhanced-controls">Mastering
+Autonomy: Jobs with Dedicated Plugins and Enhanced Controls</h2>
+<p>The pinnacle of this learning journey is when a repetitive, critical
+job evolves into its own <strong>dedicated plugin</strong>. This is
+where the agent moves beyond merely following an enhanced plan; it
+actively <em>rewrites its own architecture</em> to optimize for that
+specific task. This level of self-modification is where the seed agent
+truly becomes a self-evolving system.</p>
+<p>For a mature, highly specialized job (e.g., “Automated Code
+Refactoring for Security Vulnerabilities”), the agent, through a
+collaborative process with you (managed by
+<code>plugin_integrity</code>, Blog 5), can:</p>
+<ol type="1">
+<li><p><strong>Develop a Specialized Plugin:</strong> A new plugin is
+created (e.g., <code>plugin_refactor_security</code>). This plugin is
+essentially a micro-agent, specifically tailored to the nuances of the
+“Automated Code Refactoring” job.</p></li>
+<li><p><strong>Dedicated Phase-Specific Controls:</strong> This new
+plugin can inject <strong>additional controls</strong> (both hard and
+soft) that override or augment the generic OPEVC phase behaviors
+<em>only when this specific job is in focus</em>. For example:</p>
+<ul>
+<li><strong><code>Observe</code> Phase:</strong> The plugin might
+introduce a <em>hard control</em> that whitelists only specific security
+scanning tools, ignoring other observation tools to maintain focus. It
+could add a <em>soft control</em> to prioritize reading
+<code>SECURITY.md</code> files over general documentation.</li>
+<li><strong><code>Plan</code> Phase:</strong> A <em>hard control</em>
+could enforce specific format requirements for security fix plans,
+ensuring they always include rollback strategies. A <em>soft
+control</em> might encourage generating multiple alternative fixes for
+review.</li>
+<li><strong><code>Execute</code> Phase:</strong> A <em>hard control</em>
+might restrict the agent to only modify files within a specific
+<code>src/security/</code> directory, preventing unintended changes. A
+<em>soft control</em> could prompt the agent to explain each code
+modification in comments, detailing the vulnerability addressed.</li>
+<li><strong><code>Verify</code> Phase:</strong> A <em>hard control</em>
+could mandate running a full suite of security integration tests and
+blocking transition if any fail. A <em>soft control</em> might encourage
+an additional manual review step by a human expert.</li>
+</ul></li>
+<li><p><strong>Enhanced OPEVC:</strong> This dedicated plugin
+effectively extends and enhances the generic OPEVC cycle for this
+specific job. It scopes each phase more tightly, providing highly
+relevant and enforced guidance, leveraging all the past experiences
+(<code>phase_condense</code> learnings, Blog 7) the agent has
+accumulated from similar tasks. The agent’s “voice” (its specific
+instructions and priorities) for this job becomes highly tuned and
+authoritative.</p></li>
+</ol>
+<p>This iterative growth – from collaborative improvisation to
+structured multi-cycle jobs, and finally to self-architected plugins –
+is the true measure of the seed agent’s learning capability. It
+demonstrates how, through a principled architecture, an AI can move
+beyond mere task completion to genuine professional competence,
+continually evolving its own cognitive framework.</p>
+<h2 id="your-evolving-digital-partner">Your Evolving Digital
+Partner</h2>
+<p>Your seed agent is not a static tool; it is a dynamic partner.
+Through collaborative interaction and an architected learning process,
+it transforms from an intelligent assistant into a highly competent,
+self-improving professional.</p>
+<p>By embracing iterative jobs and empowering the agent to evolve its
+own operational plugins, you’re not just using AI; you’re growing a
+digital extension of your own professional capabilities, a digital
+cortex that becomes increasingly skilled, reliable, and autonomous with
+every task.</p>
+<p>This is the future of work: not just automation, but
+<strong>self-architecting intelligence</strong>.</p>
+<hr />
+<p><em>Essay 7 of 8 in the Hadosh Academy series on agent
+architecture.</em></p>
+<p><em>Previous: <a href="06-the-seed-agents-cognitive-rhythm.html">“The
+Seed Agent’s Cognitive Rhythm: Markov Brains, OPEVC, and Phasic
+Expansion”</a> — understanding the agent’s dynamic thinking
+process.</em> <em>Next: (To be determined) — The final essay in the
+Hadosh Academy series.</em></p>

@@ -184,6 +184,23 @@ Plugins are how agents grow without mixing new behaviors into existing ones. You
 
 ---
 
+
+## The Structure: Jobs and Rhythms
+
+If hooks are reflexes and skills are knowledge, how does the agent actually organize its day? Without structure, an AI is just a chatbot waiting for a prompt. To act autonomously, it needs architecture.
+
+A **Job** is the fundamental unit of work. In a seed agent, work is not a fleeting conversation—it is a persistent, structured object stored on your computer. A job has a clear objective, phases of execution, and strict completion criteria. If you close your laptop halfway through, the job remains active. When you return, the agent picks up exactly where it left off because the job system remembers.
+
+But how does a job get done? Through a **Cognitive Rhythm**.
+
+A cognitive rhythm is a mandatory workflow that forces the agent to think before it acts. The most common rhythm is **OPEVC**: Observe, Plan, Execute, Verify, Condense. Before writing code, the agent must *Observe* the files. Then it must write a *Plan*. Then it *Executes*. Then it must *Verify* its own work. If the verification fails, it loops back. This rhythm prevents the AI from rushing into mistakes—it enforces discipline.
+
+At the end of that rhythm is **Condense**. When a job finishes, the agent must pause to condense what it learned. Did it discover a new rule about your project? It extracts that lesson and adds it to its permanent memory. This happens immediately after the task.
+
+But memory gets messy over time. That is where **AutoDream** comes in. AutoDream is a background process. When you step away from your computer and the agent is idle, an AutoDream sub-agent wakes up. It reads through the day’s messy logs, deletes contradictions, reorganizes files, and compresses the context. It "dreams" to keep the agent’s mind sharp for the next day.
+
+Finally, as your agent grows, it will spawn multiple sub-agents to do work in parallel. To prevent them from colliding—like two assistants trying to rewrite the same document at the same time—they use **Atomic Locks**. When a sub-agent starts working on a directory, it drops a digital lock. Other agents see the lock and wait their turn. It is a simple mechanism that guarantees orderly collaboration.
+
 ## The Memory: Seed Agents and Agentic Workforces
 
 Two more terms, and these matter more than any of the technical ones.

@@ -1,0 +1,1 @@
+Placeholder image for Blog 5: A diagram depicting the `job_core` system (with `data.json`, `job.sh`, `stop-gate.sh`, `prompt-handler.sh`) as a central "heartbeat" connected to various non-phasic plugins (e.g., `plugin_integrity` as a shield, `job_archiver` as a filing cabinet, `lib` as a toolbox), all supporting the larger OPEVC cycle but operating in the background.
