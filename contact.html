@@ -53,12 +53,7 @@
                 <p>Interested in consulting, cohorts, or just want to say hello? Reach out directly.</p>
 
                 <div class="card contact-card">
-                    <form action="https://formsubmit.co/hadinayebi+hadoshacademy@earthone.life" method="POST">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_subject" value="New Submission from Hadosh Academy Website">
-                        <input type="hidden" name="_next" value="https://hadi-nayebi.github.io/thanks.html">
-                        <input type="hidden" name="_captcha" value="false">
-
+                    <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>
@@ -75,7 +70,7 @@
                             <input type="checkbox" id="newcomer" name="newcomer" class="form-check-input">
                             <label for="newcomer" class="form-check-label">I'm new here and would like some getting-started info.</label>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+                        <button type="submit" id="submit-button" class="btn btn-primary btn-submit">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -89,6 +84,8 @@
     </footer>
     <script src="js/theme-manager.js"></script>
     <script src="js/components.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="js/form-handler.js"></script>
 </body>
 
 </html>
