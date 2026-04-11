@@ -285,6 +285,22 @@ nav {
     border-color: var(--primary);
 }
 
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-check-input {
+    width: auto;
+    margin-right: 0.75rem;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    color: var(--text-muted);
+}
+
 /* Footer */
 footer {
     border-top: 1px solid var(--border);
