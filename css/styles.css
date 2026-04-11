@@ -294,6 +294,7 @@ nav {
 .form-check-input {
     width: auto;
     margin-right: 0.75rem;
+    vertical-align: middle;
 }
 
 .form-check-label {
