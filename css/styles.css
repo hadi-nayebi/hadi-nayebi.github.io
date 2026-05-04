@@ -1,5 +1,5 @@
 /* Hadosh Academy Design System */
-/* Version: v0.3.1 */
+/* Version: v0.5.0 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -333,6 +333,21 @@ footer {
 .badge-coming-soon {
     background: rgba(245, 158, 11, 0.1);
     color: #f59e0b;
+}
+
+.badge-open-source {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.badge-license {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+}
+
+.badge-free {
+    background: rgba(139, 92, 246, 0.12);
+    color: var(--accent);
 }
 
 /* Orbit Wheel UI */
@@ -1995,3 +2010,685 @@ body.lightbox-open {
         font-size: 0.9rem;
     }
 }
+
+/* ===========================================================
+   Footer links — injected by components.js (enhanceFooter)
+   =========================================================== */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--text-main);
+}
+
+.footer-link-support {
+    color: var(--accent);
+}
+
+.footer-link-support:hover {
+    color: var(--primary);
+}
+
+/* ===========================================================
+   Agents page — featured card + soft support nudge
+   =========================================================== */
+.agent-card-featured {
+    /* Visually emphasize the headline agent without becoming a buy button. */
+    border-color: rgba(99, 102, 241, 0.25);
+}
+
+.agent-card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.agent-card-badges .badge {
+    margin-bottom: 0;
+}
+
+.agent-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+}
+
+.agents-support-nudge {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.agents-support-nudge-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.agents-support-nudge-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.agents-support-nudge-text a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+/* ===========================================================
+   Support page (support.html) — donation tiers, monthly grid
+   Quiet, sincere, never transactional. The styling avoids the
+   visual language of e-commerce: no big "BUY NOW" buttons, no
+   urgency colors, no scarcity cues. Uses the existing glass
+   aesthetic so the page feels like part of the academy, not a
+   product checkout.
+   =========================================================== */
+.support-hero {
+    text-align: center;
+    padding: 6rem 0 2rem;
+}
+
+.support-hero h1 {
+    font-size: 3rem;
+    margin: 1rem 0 1.5rem;
+    background: linear-gradient(to right, #fff, var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.support-hero-statement {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    max-width: 720px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+}
+
+.support-hero-optional {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+.support-section {
+    padding: 3rem 0;
+}
+
+.support-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.support-section-intro {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+}
+
+/* Why-support 3-card row */
+.support-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.support-why-card {
+    padding: 2rem;
+}
+
+.support-why-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+}
+
+.support-why-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* One-time tiers */
+.support-tier {
+    margin-bottom: 2.5rem;
+}
+
+.support-tier:last-child {
+    margin-bottom: 0;
+}
+
+.support-tier-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.support-tier-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.support-tier-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* Amount grids — variants for 2 / 3 / 4 columns */
+.support-amount-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.support-amount-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 480px;
+}
+
+.support-amount-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.support-amount-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Amount buttons — restrained, glassy, no commerce energy */
+.support-amount-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 1.5rem 1rem;
+    background: var(--bg-card);
+    backdrop-filter: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.support-amount-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(139, 92, 246, 0.4);
+    background: var(--bg-card-hover);
+}
+
+.support-amount-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.support-amount-period {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.support-amount-btn-monthly {
+    border-color: rgba(139, 92, 246, 0.25);
+}
+
+.support-amount-btn-monthly:hover {
+    border-color: rgba(139, 92, 246, 0.55);
+}
+
+/* Transparency note */
+.support-fineprint-section {
+    padding: 2rem 0;
+}
+
+.support-fineprint {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding: 1.5rem 1.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+/* Tablet — collapse 3-up grids to 2-up where useful */
+@media (max-width: 768px) {
+    .support-hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .support-why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .support-amount-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .support-amount-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Phone — single column for amount grids */
+@media (max-width: 480px) {
+    .support-hero {
+        padding-top: 5rem;
+    }
+
+    .support-amount-grid-2,
+    .support-amount-grid-3,
+    .support-amount-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .support-amount-btn {
+        padding: 1.25rem;
+    }
+
+    .support-amount-value {
+        font-size: 1.35rem;
+    }
+}
+
+/* ===========================================================
+   Agents page — card-as-link variant
+   When the whole .card is wrapped in <a>, kill default link
+   styling and add a soft hover lift.
+   =========================================================== */
+.agent-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.agent-card-link:hover {
+    transform: translateY(-3px);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.btn-meta {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-left: 0.35rem;
+    font-weight: 400;
+}
+
+/* ===========================================================
+   Seed Agent page (seed-agent.html)
+   Layered for tier-1 (plain prose) → tier-3 (plugin details).
+   =========================================================== */
+.seed-hero {
+    text-align: center;
+    padding: 6rem 0 3rem;
+}
+
+.seed-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.seed-hero-badges .badge {
+    margin-bottom: 0;
+}
+
+.seed-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(to right, #fff, var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.seed-hero-tagline {
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+}
+
+.seed-hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+}
+
+.seed-hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Generic section spacing for the page */
+.seed-section {
+    padding: 3rem 0;
+}
+
+.seed-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.seed-section-intro {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+.seed-section-aftermath {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 2rem auto 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Plain-words prose block */
+.seed-prose {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.seed-prose p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
+.seed-prose strong {
+    color: var(--text-main);
+}
+
+.seed-prose-callout {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    color: var(--text-main) !important;
+    font-style: italic;
+}
+
+/* OPEVC phase grid — 5 cards */
+.seed-phase-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+}
+
+.seed-phase-card {
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.seed-phase-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.seed-phase-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.seed-phase-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.seed-phase-output {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Job maturation levels — 3 stacked cards */
+.seed-level-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.seed-level-card {
+    padding: 2rem;
+}
+
+.seed-level-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.seed-level-number {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.seed-level-card h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.seed-level-tag {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.seed-level-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.seed-level-card em {
+    color: var(--text-main);
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* Plugin grid — 11 small cards */
+.seed-plugin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.seed-plugin {
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.seed-plugin:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    background: var(--bg-card-hover);
+}
+
+.seed-plugin h4 {
+    color: var(--accent);
+    font-family: 'Inter', monospace;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.seed-plugin p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Install steps — 3 stacked cards with code blocks */
+.seed-install-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.seed-install-step {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.seed-install-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.seed-install-step h4 {
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+}
+
+.seed-install-note {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.seed-install-note em {
+    color: var(--text-main);
+    font-style: italic;
+}
+
+/* Code block — restrained, mono, no editor chrome */
+.seed-code {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-main);
+    font-family: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+    margin: 0;
+}
+
+.seed-code code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    font-family: inherit;
+}
+
+/* CTA section spacing */
+.seed-cta-section {
+    padding-bottom: 1rem;
+}
+
+/* Tablet — collapse phase grid + plugin grid + install grid */
+@media (max-width: 900px) {
+    .seed-phase-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .seed-plugin-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .seed-install-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+    .seed-hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .seed-hero-tagline {
+        font-size: 1.15rem;
+    }
+
+    .seed-phase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .seed-plugin-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

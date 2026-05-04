@@ -1,4 +1,4 @@
-// Version: v0.6.0
+// Version: v0.7.0
 // Shared components — enhances static nav/footer markup, plus lightbox and blog filters.
 
 (function () {
@@ -25,13 +25,33 @@
     }
 
     /**
-     * Enhance the static footer: update copyright year dynamically.
+     * Enhance the static footer: update copyright year dynamically and inject
+     * a "Support" link (so static HTML doesn't need a per-page footer nav).
      */
     function enhanceFooter() {
         var yearSpan = document.getElementById('copyright-year');
         if (yearSpan) {
             yearSpan.textContent = new Date().getFullYear();
         }
+
+        var footer = document.getElementById('site-footer');
+        if (!footer) return;
+        var inner = footer.querySelector('.container');
+        if (!inner) return;
+        if (inner.querySelector('.footer-links')) return; // idempotent
+
+        var prefix = getPathPrefix();
+        var links = document.createElement('div');
+        links.className = 'footer-links';
+
+        var supportLink = document.createElement('a');
+        supportLink.href = prefix + 'support.html';
+        supportLink.className = 'footer-link footer-link-support';
+        supportLink.textContent = 'Support the Project';
+        links.appendChild(supportLink);
+
+        // Insert above the copyright line for visual hierarchy.
+        inner.insertBefore(links, inner.firstChild);
     }
 
     /**
