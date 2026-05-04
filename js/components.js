@@ -1,4 +1,4 @@
-// Version: v0.7.0
+// Version: v0.8.0
 // Shared components — enhances static nav/footer markup, plus lightbox and blog filters.
 
 (function () {
@@ -41,6 +41,14 @@
         if (inner.querySelector('.footer-links')) return; // idempotent
 
         var prefix = getPathPrefix();
+
+        // Site-wide tagline (academy positioning)
+        var tagline = document.createElement('div');
+        tagline.className = 'footer-tagline';
+        tagline.textContent = 'LEARN. EVOLVE. SCALE.';
+        inner.insertBefore(tagline, inner.firstChild);
+
+        // Support link (above copyright, below tagline)
         var links = document.createElement('div');
         links.className = 'footer-links';
 
@@ -50,8 +58,13 @@
         supportLink.textContent = 'Support the Project';
         links.appendChild(supportLink);
 
-        // Insert above the copyright line for visual hierarchy.
-        inner.insertBefore(links, inner.firstChild);
+        // Place links AFTER tagline but BEFORE copyright.
+        var copyright = inner.querySelector('p');
+        if (copyright) {
+            inner.insertBefore(links, copyright);
+        } else {
+            inner.appendChild(links);
+        }
     }
 
     /**

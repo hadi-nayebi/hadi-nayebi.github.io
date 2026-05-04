@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v0.2.0 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seed Agent | Hadosh Academy</title>
-    <meta name="description" content="The Seed Agent is a free, open-source digital cortex for Claude Code. It turns the LLM into a disciplined, self-improving assistant you customize through conversation. MIT licensed.">
+    <meta name="description" content="The Seed Agent is a free, open-source digital cortex powered by Claude Opus. It turns Claude Code into a disciplined, self-improving assistant you customize through conversation. MIT licensed.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/seed-agent.html">
     <meta property="og:title" content="Seed Agent | Hadosh Academy">
-    <meta property="og:description" content="A free, open-source digital cortex for Claude Code. Customize a disciplined, self-improving assistant through conversation. MIT licensed.">
+    <meta property="og:description" content="Your digital cortex, powered by Claude Opus. A free, open-source foundation that turns Claude Code into a disciplined, self-improving assistant.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/seed-agent.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Seed Agent | Hadosh Academy">
-    <meta name="twitter:description" content="A free, open-source digital cortex for Claude Code. Customize a disciplined, self-improving assistant through conversation.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="twitter:description" content="Your digital cortex, powered by Claude Opus. A free, open-source foundation that turns Claude Code into a disciplined, self-improving assistant.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
+    <link rel="stylesheet" href="css/styles.css?v=20260504b">
 </head>
 
 <body>
@@ -48,20 +48,29 @@
 
     <main class="page-content">
 
-        <!-- Hero -->
-        <section class="container seed-hero">
-            <div class="seed-hero-badges">
-                <span class="badge badge-coming-soon">Coming Soon</span>
-                <span class="badge badge-open-source">Open Source</span>
-                <span class="badge badge-license">MIT Licensed</span>
-                <span class="badge badge-free">Free Forever</span>
+        <!-- Hero — two-column with cortex visual -->
+        <section class="container seed-hero seed-hero-split">
+            <div class="seed-hero-text">
+                <div class="seed-hero-badges">
+                    <span class="badge badge-coming-soon">Coming Soon</span>
+                    <span class="badge badge-open-source">Open Source</span>
+                    <span class="badge badge-license">MIT Licensed</span>
+                    <span class="badge badge-free">Free Forever</span>
+                </div>
+                <h1>Seed Agent</h1>
+                <p class="seed-hero-tagline">Your digital cortex, powered by Claude Opus.</p>
+                <p class="seed-hero-eyebrow">DIGITAL CORTEX. EVOLVING. LEARNING. SCALING.</p>
+                <p class="seed-hero-description">A minimal, domain-agnostic foundation that turns Claude Code into a disciplined, self-improving assistant. You customize it through conversation — it adapts its own architecture to fit how you work.</p>
+                <div class="seed-hero-actions">
+                    <a href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub <span class="btn-meta">(public soon)</span></a>
+                    <a href="support.html" class="btn btn-secondary">Back the Project</a>
+                </div>
             </div>
-            <h1>Seed Agent</h1>
-            <p class="seed-hero-tagline">A digital cortex for Claude Code.</p>
-            <p class="seed-hero-description">A minimal, domain-agnostic foundation that turns Claude Code into a disciplined, self-improving assistant. You customize it through conversation — it adapts its own architecture to fit how you work.</p>
-            <div class="seed-hero-actions">
-                <a href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub <span class="btn-meta">(public soon)</span></a>
-                <a href="support.html" class="btn btn-secondary">Back the Project</a>
+            <div class="seed-hero-visual">
+                <picture>
+                    <source media="(max-width: 700px)" srcset="assets/images/digital-cortex-1-mobile.jpg">
+                    <img src="assets/images/digital-cortex-1-hero.jpg" alt="A profile portrait with a glowing brain visible inside the head, surrounded by luminous nodes labeled OBSERVE, PLAN, EXECUTE, VERIFY, CONDENSE, and IDLE — visualizing the OPEVC cognitive cycle." class="seed-hero-img" loading="eager">
+                </picture>
             </div>
         </section>
 
@@ -225,6 +234,30 @@ claude --allow-dangerously-skip-permissions</code></pre>
             </div>
         </section>
 
+        <!-- Roadmap — multi-engine future -->
+        <section class="container seed-section">
+            <h2>Roadmap</h2>
+            <p class="seed-section-intro">The seed agent is engine-agnostic by design. Today it runs on Claude Code. After the public release ships, ports to OpenCode and Gemini follow.</p>
+            <div class="seed-roadmap">
+                <div class="seed-roadmap-stage seed-roadmap-now">
+                    <span class="seed-roadmap-when">Today</span>
+                    <h3>Claude Code</h3>
+                    <p>The first home of the seed agent. Powered by Claude Opus. Final preparations before the public repo lights up.</p>
+                </div>
+                <div class="seed-roadmap-stage">
+                    <span class="seed-roadmap-when">Next</span>
+                    <h3>OpenCode</h3>
+                    <p>Same OPEVC cycle, same job system, ported to OpenCode's tool surface. Begins after the Claude Code release.</p>
+                </div>
+                <div class="seed-roadmap-stage">
+                    <span class="seed-roadmap-when">Then</span>
+                    <h3>Gemini</h3>
+                    <p>The third engine. Same cognitive scaffolding, adapted to Gemini's runtime. Same agent, three brains.</p>
+                </div>
+            </div>
+            <p class="seed-section-aftermath">A full Roadmap page is in the works. Until then, this is the order of what's coming.</p>
+        </section>
+
         <!-- CTA Section -->
         <section class="container seed-section seed-cta-section">
             <h2>Ready When You Are</h2>
@@ -263,8 +296,8 @@ claude --allow-dangerously-skip-permissions</code></pre>
         </div>
     </footer>
 
-    <script src="js/theme-manager.js"></script>
-    <script src="js/components.js"></script>
+    <script src="js/theme-manager.js?v=20260504b"></script>
+    <script src="js/components.js?v=20260504b"></script>
 </body>
 
 </html>
