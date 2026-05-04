@@ -24,6 +24,14 @@ CLAUDE.md
 # Audio transcript intermediates (HTML → transcript → audio pipeline)
 *.transcript.md
 
+# Local-only blog drafts (only blogs 1-4 are live; 5+ stay local until published)
+blog/05-*
+blog/06-*
+blog/07-*
+blog/08-*
+blog/09-*
+blog/draft-*
+
 
 # System files
 .DS_Store
