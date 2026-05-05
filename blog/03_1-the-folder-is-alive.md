@@ -1,15 +1,15 @@
 ---
 title: "The Folder Is Alive"
-date: "Draft"
+date: "May 2026"
 slug: "the-folder-is-alive"
 read_time: "17 min"
-tags: [Vision, Seed Agent, Cognitive Workforce, Future of Work, Autonomy]
+tags: [Vision, Seed Agent, Future of Work, Autonomy]
 audience: professionals
 og_image: "assets/images/blog/folder-of-specialists.png"
 series: "Hadosh Academy – Agents"
 series_position: "3.1 — vision interlude between Essays 3 and 4"
-version: v0.4.0
-status: draft
+version: v1.0.0
+status: published
 ---
 
 # The Folder Is Alive
