@@ -1,4 +1,4 @@
-// Version: v0.2.0
+// Version: v0.3.0
 document.addEventListener('DOMContentLoaded', () => {
     // Inject 3 random CTAs into hooks array
     const randomCTAs = window.getRandomCTAPhrases ? window.getRandomCTAPhrases(3) : [];
@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const hooks = [
         ...randomCTAs,
         // Published blog articles (direct links)
-        { text: "The Language of Agents", link: "blog/04-the-language-of-agents.html" },
         { text: "LLMs Are Not the Agents", link: "blog/01-llms-are-not-the-agents.html" },
         { text: "We Could Have Had AGI By Now", link: "blog/02-we-could-have-had-agi.html" },
         { text: "Your Brain Was Never Built for This", link: "blog/03-your-brain-was-never-built-for-this.html" },
+        { text: "The Folder Is Alive", link: "blog/03_1-the-folder-is-alive.html" },
+        { text: "The Language of Agents", link: "blog/04-the-language-of-agents.html" },
         // Linked to Blog 1 — LLMs Are Not the Agents
         { text: "The Engine Is Not the Agent", link: "blog/01-llms-are-not-the-agents.html" },
         { text: "Your Agent Lives in Files", link: "blog/01-llms-are-not-the-agents.html" },
@@ -25,31 +26,41 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "The Digital Cortex", link: "blog/03-your-brain-was-never-built-for-this.html" },
         { text: "Scaling Cognitive Labor", link: "blog/03-your-brain-was-never-built-for-this.html" },
         { text: "Cognitive Load Is Real", link: "blog/03-your-brain-was-never-built-for-this.html" },
+        // Linked to Blog 3.1 — The Folder Is Alive
+        { text: "A Folder Full of Specialists", link: "blog/03_1-the-folder-is-alive.html" },
+        { text: "Cognitive Metabolism", link: "blog/03_1-the-folder-is-alive.html" },
+        { text: "Your Personal Cognitive Workforce", link: "blog/03_1-the-folder-is-alive.html" },
+        { text: "Your Liver, But for Paperwork", link: "blog/03_1-the-folder-is-alive.html" },
+        { text: "Plant the Seed", link: "blog/03_1-the-folder-is-alive.html" },
         // Linked to Blog 4 — The Language of Agents
         { text: "Hooks, Skills, and Plugins", link: "blog/04-the-language-of-agents.html" },
         { text: "Beyond the Context Window", link: "blog/04-the-language-of-agents.html" },
         { text: "From Prompts to Context Engineering", link: "blog/04-the-language-of-agents.html" },
         { text: "The Rise of the MCP", link: "blog/04-the-language-of-agents.html" },
+        // Linked to the Seed Agent page
+        { text: "Meet the Seed Agent", link: "seed-agent.html" },
+        { text: "Engineer Agents, Not Chatbots", link: "seed-agent.html" },
+        { text: "Open Source. MIT. Free Forever.", link: "seed-agent.html" },
+        { text: "One Mind, Many Domains", link: "seed-agent.html" },
         // Upcoming — blogs 5-8 (link to blog index for now)
         { text: "Every Agent Needs a Skeleton", link: "blog.html" },
         { text: "The OPEVC Loop", link: "blog.html" },
         { text: "Why Agents Need Intentions", link: "blog.html" },
         { text: "Memory Is Not Just Storage", link: "blog.html" },
-        { text: "The Agentic Workforce", link: "blog.html" },
         { text: "The Agent Operating System", link: "blog.html" },
-        { text: "Agents as Dynamic Tissue", link: "blog.html" },
         { text: "The Human-in-the-Loop Pattern", link: "blog.html" },
         { text: "Vertical AI Agents", link: "blog.html" },
         { text: "Democratizing Engineering", link: "blog.html" },
         { text: "Natural Language Programming", link: "blog.html" },
-        // Contact / agents / about / Skool — contextual phrases
+        // Contact / agents / about / community / support — contextual phrases
         { text: "Want to Build Your Own Agent?", link: "contact.html" },
         { text: "Meet the Agents", link: "agents.html" },
         { text: "Who Is Behind Hadosh?", link: "about.html" },
         { text: "Join Agent Engineers on Skool", link: "https://www.skool.com/claude-agents-engineering-4513" },
         { text: "Get in Touch", link: "contact.html" },
         { text: "About the Academy", link: "about.html" },
-        { text: "See the Agent Catalog", link: "agents.html" }
+        { text: "See the Agent Catalog", link: "agents.html" },
+        { text: "Back the Open-Source Project", link: "support.html" }
     ];
 
     const ring = document.getElementById('orbitRing');
