@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 05 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Folder Is Alive</title>
+      <link>https://hadi-nayebi.github.io/blog/03_1-the-folder-is-alive.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/03_1-the-folder-is-alive.html</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
+      <description>Add a .claude/ directory to any folder, and that folder becomes an agent. Twenty such folders, taught one job at a time, become a personal cognitive workforce — your liver, but for paperwork.</description>
+    </item>
 
     <item>
       <title>The Language of Agents</title>
