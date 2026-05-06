@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.4.1
+**Version:** v0.5.0
 
 ## Content Workflow
 
@@ -263,12 +263,35 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 ## Current Posts
 
-| # | Slug | Title | Version | Status |
-|---|------|-------|---------|--------|
-| 1 | llms-are-not-the-agents | LLMs Are Not the Agents | v1.2.0 | published |
-| 2 | we-could-have-had-agi | We Could Have Had AGI By Now | v1.1.0 | published |
-| 3 | your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.1 | published |
-| 3.1 | the-folder-is-alive | The Folder Is Alive (interlude) | v1.0.0 | published |
-| 4 | the-language-of-agents | The Language of Agents | v1.0.1 | published |
-| 5 | every-agent-needs-a-skeleton | Every Agent Needs a Skeleton | v0.4.0 | draft |
-| 6 | 06-your-agents-first-organs | TBD (background jobs) | v0.2.0 | draft |
+Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numbered.
+
+| # | Slug | Title | Status |
+|---|------|-------|--------|
+| 1 | `01-llms-are-not-the-agents` | LLMs Are Not the Agents | **FINAL** |
+| 2 | `02-we-could-have-had-agi` | We Could Have Had AGI By Now | **FINAL** |
+| 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
+| 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
+| 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
+| 5 | `05-the-agents-steadfast-core` | The Agent's Steadfast Core: The Persistent Heartbeat and Unseen Infrastructure Organs | **to rewrite** |
+| 6 | `06-the-seed-agents-cognitive-rhythm` | The Seed Agent's Cognitive Rhythm: Phasic Organs, Structured Thought, and Expanding Awareness | **to rewrite** |
+| 7 | `07-from-apprenticeship-to-mastery` | From Apprenticeship to Mastery: Iterative Learning and the Agent's Self-Sculpted Competence | **to rewrite** |
+| 8 | (TBD) | (TBD — closes Part 2) | **to write** |
+
+### Status Legend
+
+- **FINAL** — copy is locked. Do NOT edit prose without explicit user direction. Reference voice / structural anchor for the series.
+- **to rewrite** — current `.md` is a draft kept for reference only. Posts 5-8 will be redone from scratch as part of the upcoming agenda; treat existing prose as discardable.
+- **to write** — no draft exists yet.
+
+### In-flight Files (5-8 rewrite agenda)
+
+`blog.html` index + sidebar already show the new titles for 5/6/7. HTML build files are NOT current and should not be regenerated until the rewrites land.
+
+| Slug | Stale html (to delete on rewrite) | Current md / mp3 (draft only) |
+|------|-----------------------------------|-------------------------------|
+| 05 | `05-the-agents-unsung-heroes.html` | `05-the-agents-steadfast-core.md` + `.mp3` |
+| 06 | (old html already deleted) | `06-the-seed-agents-cognitive-rhythm.md` + `.mp3` |
+| 07 | `07-from-collaboration-to-competence.html` | `07-from-apprenticeship-to-mastery.md` + `.mp3` |
+| 08 | — | — |
+
+**When 5-8 rewrites land, also sync:** `sitemap.xml`, `feed.xml`, sidebars across all posts, audio inventory in root `CLAUDE.md`.
