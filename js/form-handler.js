@@ -4,6 +4,7 @@
 
     const form = document.getElementById('contact-form');
     const submitButton = document.getElementById('submit-button');
+    if (!form || !submitButton) return;
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
