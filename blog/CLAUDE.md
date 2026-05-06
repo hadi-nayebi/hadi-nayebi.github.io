@@ -90,6 +90,7 @@ Every blog must end with this consistent footer after the closing line:
 - **Companion resources** (white papers, etc.) only when they exist
 - **Blog 2 companion PDF removed** (v1.1.0) — `papers/why-scaling-models-is-not-enough.pdf` still in repo, reference removed from footer. Recoverable from git history if needed.
 - **Audio footer excluded** — narration stops at the closing line ("Build the toaster", "Build the organism", etc.)
+- **Interlude posts** (e.g., 3.1) use `*Series interlude — sits between Essay N and Essay N+1 of the Hadosh Academy series on agent architecture.*` instead of `*Essay N of 8 ...*`
 
 ## HTML Template Pattern
 
@@ -110,7 +111,7 @@ Every blog post follows the same structure:
 4. Update ALL blog post sidebars (sidebar sync rule)
 5. Add to `sitemap.xml`
 6. Add to `feed.xml` (newest first)
-7. Update `.claude/scripts/check-seo.sh` counts + arrays
+7. Update SEO audit counts + arrays (no automated script in this repo — verify manually)
 8. Add Giscus comment script (EXECUTE.setup-giscus)
 9. Generate audio narration (EXECUTE.generate-audio)
 10. Generate images for key sections (EXECUTE.generate-image)
@@ -267,34 +268,7 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 | 1 | llms-are-not-the-agents | LLMs Are Not the Agents | v1.2.0 | published |
 | 2 | we-could-have-had-agi | We Could Have Had AGI By Now | v1.1.0 | published |
 | 3 | your-brain-was-never-built-for-this | Your Brain Was Never Built for This | v0.1.1 | published |
-| 4 | the-language-of-agents | The Language of Agents | v0.1.1 | published |
-| 5 | every-agent-needs-a-skeleton | Every Agent Needs a Skeleton | v0.4.0 | published |
+| 3.1 | the-folder-is-alive | The Folder Is Alive (interlude) | v1.0.0 | published |
+| 4 | the-language-of-agents | The Language of Agents | v1.0.1 | published |
+| 5 | every-agent-needs-a-skeleton | Every Agent Needs a Skeleton | v0.4.0 | draft |
 | 6 | 06-your-agents-first-organs | TBD (background jobs) | v0.2.0 | draft |
-
-
-
-
-
----Ob---
-
-
-
-
-
-
----Pl---
-
-
-
-
-
-
----Ex---
-
-
-
-
-
-
----Ve---
-
