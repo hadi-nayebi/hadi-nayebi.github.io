@@ -211,7 +211,7 @@
         topics.forEach(function (topic) {
             var chip = document.createElement('span');
             chip.className = 'tag tag-sm';
-            chip.textContent = topic.charAt(0).toUpperCase() + topic.slice(1);
+            chip.textContent = topic.split('-').map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
             chip.setAttribute('data-filter-tag', topic);
             bar.appendChild(chip);
         });

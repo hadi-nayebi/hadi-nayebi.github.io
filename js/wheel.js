@@ -123,6 +123,10 @@ function initDesktopOrbit(hooks, ring, container) {
         link.className = 'orbit-text';
         link.textContent = hook.text;
         link.style.textDecoration = 'none';
+        if (hook.link.startsWith('http')) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
 
         item.appendChild(link);
         ring.appendChild(item);
@@ -266,6 +270,10 @@ function initMobileCarousel(hooks, ring, container) {
         link.textContent = hook.text;
         link.style.textDecoration = 'none';
         link.style.transition = 'none';
+        if (hook.link.startsWith('http')) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
 
         item.appendChild(link);
         ring.appendChild(item);
