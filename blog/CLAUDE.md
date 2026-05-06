@@ -295,3 +295,30 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 08 | — | — |
 
 **When 5-8 rewrites land, also sync:** `sitemap.xml`, `feed.xml`, sidebars across all posts, audio inventory in root `CLAUDE.md`.
+
+
+
+
+
+---Ob---
+
+
+
+
+
+
+---Pl---
+
+
+
+
+
+
+---Ex---
+
+
+
+
+
+
+---Ve---
