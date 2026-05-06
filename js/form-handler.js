@@ -10,7 +10,7 @@
         event.preventDefault();
 
         // Change button text to indicate sending
-        submitButton.innerText = 'Sending...';
+        submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
 
         // Collect form data
@@ -43,12 +43,12 @@
             .then(function(responses) {
                 console.log('SUCCESS!', responses);
                 // On success, redirect to the thank you page
-                window.location.href = 'thanks.html';
+                window.location.href = '/thanks.html';
             }, function(error) {
                 console.log('FAILED...', error);
                 // On failure, alert the user and re-enable the button
                 alert('Sorry, there was an error sending your message. Please try again.');
-                submitButton.innerText = 'Send Message';
+                submitButton.textContent = 'Send Message';
                 submitButton.disabled = false;
             });
     });
