@@ -1,10 +1,10 @@
-<!-- Version: v0.2.0 -->
+<!-- Version: v0.3.0 -->
 
 # Hadosh Academy
 
-**Agentic architectures that evolve with you.**
+**Engineer Agents, Not Chatbots.**
 
-Each agent is a seed — a starting architecture for a cognitive species. As you adopt and customize it through conversation, it evolves and diversifies while holding on to its core structural design.
+Seed agents that remember, learn, and improve at your work — customized through conversation, no coding required. Each agent is a starting template for a digital cortex. As you teach it through conversation, it adapts its own architecture to fit your professional life.
 
 No coding required. Just conversation.
 
@@ -18,15 +18,17 @@ Each agent has its own repo, its own architecture, and its own way of organizing
 
 | Agent | Description | Repo |
 |-------|-------------|------|
-| **Basic Agent** | Job-based architecture — organizes work into discrete jobs with memory, verification, and self-improvement. | *Coming soon* |
+| **Seed Agent** | Job-based architecture — organizes work as jobs, runs each through an OPEVC cognitive cycle (observe, plan, execute, verify, condense), and refuses to stop mid-task. Customize through conversation. | [hadi-nayebi/seed_agent](https://github.com/hadi-nayebi/seed_agent) *(public soon)* |
 
-More agents are on the way. Each will have an identifiable compartmentalization design — a signature way of structuring information that defines the species.
+More agents are on the way. Each will have its own identifiable compartmentalization design — a signature way of structuring information.
 
 ---
 
 ## Explore
 
 - **[Blog](https://hadi-nayebi.github.io/blog.html)** — Articles on agent engineering and cognitive architectures
+- **[Agents](https://hadi-nayebi.github.io/agents.html)** — Browse available seed agents
+- **[About](https://hadi-nayebi.github.io/about.html)** — The Academy's mission and the founder
 - **[Community](https://www.skool.com/claude-agents-engineering-4513)** — Agent Engineering on Skool
 - **[Contact](https://hadi-nayebi.github.io/contact.html)** — Consulting, collaboration, or just say hello
 
