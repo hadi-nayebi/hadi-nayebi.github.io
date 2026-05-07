@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.5.0
+**Version:** v0.6.0
 
 ## Content Workflow
 
@@ -162,104 +162,171 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 **Blog 3:** CLI agents = file manipulators = **the form factor** for building filesystem agents. CLI agent builds the filesystem and is influenced by it. Extends brain as a digital cortex. Personal urgency: your brain needs this.
 
-**Blog 4:** Consolidate terminology. Bridge from conceptual (1-3) to architectural (5-8). Shift to describing the seed agent.
+**Blog 3.1 (interlude):** Cognitive metabolism — `.claude/` in any folder turns that folder into an agent; brain in `.claude/`, work in siblings. Vision interlude bridging Part 1 → Part 2.
 
-**Blog 5:** The skeleton — job system as structural framework. JSON aside. Job objects, protection tiers, stop-blocking.
+**Blog 4:** Consolidate terminology. Bridge from conceptual (1-3) to architectural (5-8). Vocabulary scaffold for the rest of the series.
 
-**Blog 6:** Background jobs ONLY. Episodic memory + neighborhood awareness. Git aside. DC.md (XML). What they DO — no OPEVC internals, no CLAUDE.md layer details.
+**Blog 5 — The Single-Concern Digital Cortex:** The seed agent doesn't have memory; it has a **bus**. Five always-on plugins each own one concern. State lives in a layered CLAUDE.md hierarchy — not the chat. **Tier-3 close:** the historian ratchet (must re-read your own work before editing).
 
-**Blog 7:** OPEVC workflow + CLAUDE.md as working memory. How background enforces focused work. The bridge that connects Blog 6 mechanisms to Blog 8 focused work.
+**Blog 6 — The Markov Phasic Brain:** Phases are cognitive isolation chambers. **Forbidding tools is the pedagogy.** The CONDENSE 7-step waterfall is the brain's growth mechanism. **Tier-3 close:** the multiplier is backward (3× = surgical, 0.5× = deep) — honest forecasting at phase entry.
 
-**Blog 8:** Focused jobs. Collaboration spectrum. Four jobs. Why 6 patterns cover everything. Seed ships mechanisms, not categories.
+**Blog 7 — The Plugin Kit:** A plugin is a cell with internal organs. The standard kit (hooks, scripts, hidden state, dual voices, tests, evolution.md, agents/) is what lets the brain grow new organs **safely**. **Tier-3 close:** walkthrough of building a new phase plugin.
 
-### Reader's Cumulative Knowledge
+**Blog 8 — From Apprentice to Architect:** Maturation through job formats. Patterns travel from voice → hook → plugin. **The brain stops growing in size but never stops learning.** **Tier-3 close:** bridge to the public seed agent (open-source, MIT, hand-off).
 
-| After | Knows | New Technical |
-|-------|-------|---------------|
-| 1 | Agent = filesystem. Any LLM works. OPEVC + CLAUDE.md planted. | — (conceptual) |
-| 2 | AGI = complex system. Scale architecture. Seed agent planted. | — (conceptual) |
-| 3 | Brain needs help. CLI agents = form factor. Digital cortex. | CLI agent concept |
-| 4 | Full vocabulary: hooks, skills, plugins, sub-agents, MCP, seed. | Vocabulary |
-| 5 | Skeleton: job system, job objects, protection, stop-blocking. | JSON |
-| 6 | Background jobs: episodic memory (commits), neighborhood (DC.md). | Git/commits, DC.md (XML) |
-| 7 | OPEVC workflow. CLAUDE.md working memory. Background enforces focused. | OPEVC mechanical |
-| 8 | 4 focused jobs, spectrum, why 6 patterns cover everything. | Validation scripts, chaining |
+### Part 2 Architecture-Accuracy Rules (NON-NEGOTIABLE)
 
-### Concept Flow (planted → defined → deepened)
+These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2 drafts (5/6/7/8). Grep for violations before submitting any draft.
 
-| Concept | Planted | Defined | Deepened |
-|---------|---------|---------|----------|
-| Agent = filesystem | 1 | — | 5-8 (specific files) |
-| Complex system | 2 | — | 6 (autonomic vs directed) |
-| OPEVC | 1 (light) | 7 (full mechanical) | 8 (in focused jobs) |
-| CLAUDE.md | 1 (light) | 7 (working memory role) | 8 (in OPEVC cycle) |
-| Hooks | 1 (conceptual) | 4 (vocabulary) | 5-6 (applied) |
-| JSON | — | 5 (aside) | 5+ (job objects) |
-| Git / commits | — | 6 (aside) | 7 (phase labels) |
-| DC.md | — | 6 (introduced) | 7 (in OPEVC context) |
-| Job system | 2 (heartbeat) | 5 (full) | 6-8 (populated) |
-| Seed agent | 2 (concept) | 4 (vocabulary) | 5-8 (built piece by piece) |
+**Rule 1 — Categorical names, never count-based pointers.**
+- WRONG: "the five always-on plugins", "the five things that always run", "this essay is about the five"
+- RIGHT: "the always-on plugins (currently five in the prototype)", "this essay is about the always-on layer"
+- Why: the seed agent is extensible. Users customizing their seed can add new always-on plugins, new phasic plugin flavors (additional observe phases, custom condense variants, etc.). Rigid counts age badly and hide the framework's extensibility. Categories are stable; numbers drift.
+- Mention counts only as parentheticals or footnotes; never as the noun.
 
-### Inter-Blog Callbacks (each blog must reference)
+**Rule 2 — "You" pronoun discipline.**
+- The reader IS the user. "You" in body text MUST refer to the reader/user.
+- When describing seed-agent behavior, name it: "the seed agent", "the agent", or passive voice.
+- WRONG: "every question you ask the user must start with a prefix" (where the asker is the agent)
+- RIGHT: "every question the seed agent asks the user must start with a prefix"
+- WRONG: "regardless of what you're doing" (where the doer is the agent)
+- RIGHT: "regardless of what the agent is currently doing for the user"
+- Exception: in B7's tier-3 close (building a new plugin) and B8 (user-journey arc), "you" addresses the reader-as-architect or reader-as-seed-cultivator. That's correct usage.
 
-| Blog | Callbacks to |
-|------|-------------|
-| 5 | 1 (filesystem = agent → now see what files), 2 (seed agent), 4 (vocabulary) |
-| 6 | 1 (OPEVC: "remember the five phases?"), 2 (complex system → autonomic), 3 (cognitive organs), 5 (skeleton) |
-| 7 | 1 (OPEVC + CLAUDE.md: "we planted these in Essay 1, now we see them work"), 5 (job phases), 6 (episodic memory) |
-| 8 | 2 (seed = mechanisms not categories), 5 (activation patterns), 6 (background serving focused), 7 (OPEVC) |
+**Rule 3 — plugin_integrity dual-role discipline.**
+- plugin_integrity has TWO concerns: (a) always-on edit monitoring + auto-revert on test fail, (b) the lock-and-historian ceremony for safe plugin creation/editing.
+- In Blog 5 (always-on focus), describe ONLY role (a). Mention role (b) ONLY as a one-line forward-ref to Blog 7.
+- Do NOT introduce a "meta-layer" as a separate plugin in Blog 5 — that double-counts plugin_integrity and reads as hallucination.
+- Blog 7 introduces role (b) and the lock ceremony in detail.
 
-**Rule:** When referencing a concept from an earlier blog, include a brief hint + link. Never assume the reader remembers — remind them in one sentence.
+**Rule 4 — Who uses CLAUDE.md as info bus.**
+- The CLAUDE.md hierarchy is the SUBSTRATE / bus.
+- The PHASIC plugins WRITE to it (footer markers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`, body sections, CONDENSE waterfall routes content).
+- The ALWAYS-ON plugins do NOT write to CLAUDE.md as their primary state mechanism. They own their own hidden data files (`data.json` per plugin). They READ from CLAUDE.md (for size limits, identity, registered prefixes) but they don't generate its content.
+- WRONG: "the always-on plugins use the bus constantly to write their state"
+- RIGHT: "the always-on plugins protect the bus's integrity; the phasic plugins write to it (Blog 6)"
+- Blog 5 introduces the bus as substrate. Blog 6 shows phases USING it. Blog 7 deep-dives the markers as protocol.
 
-### Blogs 1-4: Improvement Notes (80% retain / 20% improve)
+**Rule 5 — Context numbers are operating thresholds, not system limits.**
+- The seed agent uses Opus 4.7 with 1M-token context, but `brain_guard` triggers compaction much earlier (soft tier 200k, hard tier 250k, critical 300k).
+- When mentioning these numbers, frame as "current operating threshold" or "compaction trigger" — never as "the chat fits 250k tokens" (which sounds like a model limit).
+- The 1M ceiling is the model; the 200k/250k/300k tiers are the discipline `brain_guard` enforces to keep cognitive coherence.
 
-**Blog 1:**
-- Strengthen: "any LLM can power your agent" — building agents is accessible, not expensive
-- Add: Forward-refs where OPEVC and CLAUDE.md appear ("we'll return to these as we build the seed agent")
-- Keep: Toaster metaphor, diagrams, "Build the toaster" ending
+### Part 2 Tone (NON-NEGOTIABLE)
 
-**Blog 2:**
-- Add: Brief mention of novel token generators (jLLMs, dLLMs) — agent metabolizes tokens regardless of source
-- Strengthen: Shift-focus message — now that we have engines, think about the rest of the system
-- Add: Better forward-ref to upcoming seed agent essays
-- Keep: Biology metaphor, "Build the organism" ending
+Blogs 1-4 lean **conceptual + heavy analogy** (toaster, organism, snake, cognitive metabolism). Blogs 5-8 lean **grounded + low analogy**. Mechanisms are named directly: file paths, marker syntax, plugin names. Analogies from earlier blogs return only as connective glue, never as the load-bearing image of a section.
 
-**Blog 3:**
-- Strengthen: CLI agent = file manipulator = form factor for filesystem agents. Make this explicit.
-- Add: CLI agents read files, write files, execute commands — they build and maintain the filesystem brain
-- Keep: Snake metaphor, digital cortex, emotional urgency
+**Healthy ratio target:**
+- ≤1 extended analogy per ~1500 words of body
+- ≥3 file-path or named-mechanism references per ~1500 words
+- ≥1 callback to an earlier blog per ~1500 words (one-sentence hint + link, not a paragraph)
+- **Tier-2 opening (semi-technical, conceptual) → Tier-3 closing (architect, real mechanisms) within EACH blog**
 
-**Blog 4:**
-- Strengthen: Closing transition to architecture essays
-- Add: Primitives section — files, directories, CLAUDE.md (auto-append on read), hooks, Ralph Loop as novel primitive. Either in-blog or as appendix PDF.
-- Verify: All Blog 5-8 terms either defined here or flagged as new when introduced
-- Keep: Vocabulary scaffolding, tone, structure
+**Voice constants from blogs 1-4 to retain:**
+- Single-line paragraphs as structural weapons (5-6 per post minimum)
+- Direct address ("Watch what happens", "Look at")
+- Crescendo ending — finish on a peak
+- Mix short punches with flowing prose
 
-### Blogs 5-8: Structure Notes
+**Voice shifts for blogs 5-8:**
+- Less snark, more precision
+- Less kitchen-concrete language ("toaster"), more architecture-concrete language ("hook", "marker", "footer", "plugin")
+- Don't open with metaphor; open with the load-bearing claim
+- Replace "recurring metaphor" pattern with **recurring mechanism callback** — pick one architectural concept per blog and return to it 4-5 times
 
-**Blog 5:** Adjust closing teaser to match Blog 6 scope (background jobs only, not all 6 jobs).
+### Cross-Blog Concept Arc (Part 2)
 
-**Blog 6:** Background jobs ONLY.
-- Git aside (educational, following Blog 5's JSON pattern)
-- Episodic memory: what it does (remembers via commits), not internal mechanics (no phase labels, no OPEVC)
-- Neighborhood awareness: DC.md in XML format, what it contains, distributed memory
-- No CLAUDE.md details, no OPEVC — save for Blog 7
-- Describe what the two job types SHARE (objectives, deliverables, hooks) and how they DIFFER
-- Don't imply the design is fragile — it's designed to not break
+The four posts must feel aware of each other. Each concept is introduced once, then recalled with a one-line bridge in subsequent posts.
 
-**Blog 7:** OPEVC + CLAUDE.md deep dive.
-- Formally define all 5 phases (observe, plan, execute, verify, **condense** — not consolidate)
-- CLAUDE.md as working memory: inflation during work, deflation during condense
-- Reveal: episodic memory commit labels ARE phase labels — this is how background enforces focused
-- Bridge: background jobs serving focused work (Hadi's insight)
+| Concept | B5 | B6 | B7 | B8 |
+|---------|----|----|----|----|
+| CLAUDE.md as info bus | **introduce** | use (phases write to it) | refine (markers as protocol) | reference |
+| 3-layer model (always-on / phasic / meta) | **introduce** | extend (phasic deep-dive) | reference | reference |
+| The 5 always-on plugins | **center** | reference | deep-dive (anatomy via plugin_integrity) | reference |
+| Single-concern principle | **center** | recall | **center (anatomy)** | recall |
+| OPEVC + the 5 phases | preview | **center** | reference | recall |
+| Compartmentalization → forward-pressure | preview | **center** | reference | reference |
+| CONDENSE as organ + 7-step waterfall | seed | **center** | mechanism | recall |
+| Multiplier sentinel | — | **center** | reference | recall |
+| Footer markers (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) | seed | use | **center** | recall |
+| Inline markers (`[PENDING-JOB]` etc.) | — | seed | **center** | recall |
+| Dual voice architecture (soft/hard) | — | mention | **center** | maturation arc |
+| Plugin anatomy (the kit) | reference | reference | **center** | reference |
+| Subagent system + 80/20 | mention | mention | **center** | reference |
+| Soft → hard migration | hint | hint | **mechanism** | **maturation arc** |
+| Brain size limits + deflation | mention | mechanism | mention | **growth thesis** |
+| Job formats (single / multi / sibling / dep) | reference | reference | reference | **center** |
+| Knowledge layers (knowledge/, memory/, session/) | mention | mechanism | mechanism | **accumulation arc** |
 
-**Blog 8:** Focused jobs + why 6 is enough.
-- Collaboration spectrum (you-driven ↔ agent-driven)
-- 4 jobs: Design, Brainstorm, Build, Self-Improvement
-- Validation scripts as completion gates
-- Chained activation, recurring activation
-- Why 6 is enough: seed ships mechanisms, not categories
-- Growth loop: custom jobs → experience → self-improvement
+**Cell-value definitions:**
+- **center / introduce** — the concept is the load-bearing pillar of that blog
+- **mechanism / deep-dive** — explained in detail with file paths
+- **use / extend / refine** — referenced in flowing prose, building on prior introduction
+- **seed / preview / hint** — one-sentence forward-reference to a later blog
+- **recall / reference** — one-sentence callback, with hyperlink
+- **mention** — present but not load-bearing
+
+### Inter-Blog Callbacks (Part 2)
+
+Each Part-2 blog must include callbacks to earlier blogs (1, 2, 3, 3.1, 4) AND forward-references to upcoming blogs (5-8). One sentence each, with link. Never assume the reader remembers — remind them.
+
+| Blog | Backward callbacks | Forward references |
+|------|-------------------|--------------------|
+| 5 | 1 (filesystem = agent — now we name the files), 3.1 (.claude/ + sibling work — now we open .claude/), 4 (vocabulary — hooks, plugins) | 6 (phases USE the bus), 7 (plugin anatomy makes the bus possible) |
+| 6 | 5 (the bus the phases write into), 1 (OPEVC was planted — now formal), 3.1 (cognitive metabolism — now phasic) | 7 (the kit lets you build new phases), 8 (multipliers + waterfall as long-horizon discipline) |
+| 7 | 5 (single-concern principle), 6 (the phases are themselves plugins), 4 (vocabulary check: hooks, voices, agents) | 8 (the kit grows your seed over time) |
+| 8 | 5 (always-on cortex), 6 (phasic discipline), 7 (the kit), 1 (your brain needs this — now you have it) | (no forward — series closes) |
+
+**Rule:** When referencing a concept from an earlier blog, include a brief hint + link. One sentence, not a paragraph.
+
+### Cross-Blog Closing Bridges
+
+Each blog (except B8) ends with a one-line forward bridge in the **body** (not just the footer):
+
+- **B5 close:** "But a bus is just substrate. What USES it intelligently — that's the phasic brain. Next."
+- **B6 close:** "The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design? Next."
+- **B7 close:** "The kit is in your hands. What does growth LOOK like when you use it over time? Next."
+- **B8 close:** Series closure — bridge to public seed-agent repo + Hadosh Academy mission.
+
+### Blogs 5-8: Per-Blog Pillars
+
+**Blog 5 — The Single-Concern Digital Cortex** (~3000-4000 words)
+- §1: The 3-layer architecture (always-on / phasic / meta) — sets up the rest of Part 2
+- §2: Why "single concern" matters (counter-example: monolithic agent guards drift, mix concerns, become unfixable)
+- §3: The 5 always-on plugins, one paragraph each — `plugin_integrity`, `brain_guard`, `job_core`, `interaction_summary`, `question_discipline`
+- §4: **The CLAUDE.md hierarchy as information bus** (the load-bearing thesis — state offloaded to addressable, durable layers)
+- §5: Tier-3 deep-dive — the historian ratchet (auto-injects evolution.md, drift counter blocks unlock until re-sync)
+- §6: Bridge to B6
+
+**Blog 6 — The Markov Phasic Brain** (~4000-5000 words; densest)
+- §1: Why 5 phases + 1 organ (CONDENSE is not a peer — it's neural consolidation)
+- §2: Tool restrictions per phase = the discipline (forbidden tools as pedagogy)
+- §3: OBSERVE — read-only, multiplier sentinel, point system
+- §4: PLAN — read-only, plan_file as immutable contract
+- §5: EXECUTE — full write, altered-list scope, multi-commit checkpoints
+- §6: VERIFY — scripts only, auditor subagents, multi-backward
+- §7: CONDENSE — the organ (irreversible forward, 7-step waterfall, deflation gate)
+- §8: **Tier-3 close: the multiplier is backward** (3× surgical, 0.5× deep — honest scope forecasting)
+- §9: Bridge to B7
+
+**Blog 7 — The Plugin Kit** (~3500-4500 words)
+- §1: Plugin = cell with internal organs (carry-over analogy from 3.1, used as glue)
+- §2: The standard files (hooks/, scripts/, hidden `data.json`, tests/, evolution.md, dual `voice.xml`, agents/, CLAUDE.md)
+- §3: PLUGIN-LOCK + TEST-LOCK + safe-lock auto-revert (test-pass-or-revert cycle)
+- §4: **Markers as inter-phase protocol** — code-addressable, grep-dispatched, removed after consumption
+- §5: **Dual voice architecture** — coaching (probabilistic LLM-interpreted) vs blocks (deterministic)
+- §6: Subagent system + 80/20 (per-plugin agents, why not a global pool)
+- §7: **Tier-3 close: building a new phase plugin** — recipe walkthrough
+- §8: Bridge to B8
+
+**Blog 8 — From Apprentice to Architect** (~3000-4000 words)
+- §1: Job formats (single-cycle DEEP, multi-cycle, sibling, dependent) — what each teaches
+- §2: The maturation arc (apprentice → journeyman → architect) — visible markers per stage
+- §3: **Soft → hard migration** — voice → measurement → hook → plugin → out of brain
+- §4: Why the brain shrinks as it learns (size limits force compression, deflation gates, the growth-by-pruning thesis)
+- §5: Knowledge accumulation across cycles (knowledge/, memory/, session/ as durable layers)
+- §6: **Tier-3 close: the meta-thesis** — system that safely modifies itself; the brain stops growing in size but never stops learning
+- §7: Bridge to public seed-agent (open-source, MIT, the hand-off)
 
 ## Current Posts
 
@@ -272,29 +339,26 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-agents-steadfast-core` | The Agent's Steadfast Core: The Persistent Heartbeat and Unseen Infrastructure Organs | **to rewrite** |
-| 6 | `06-the-seed-agents-cognitive-rhythm` | The Seed Agent's Cognitive Rhythm: Phasic Organs, Structured Thought, and Expanding Awareness | **to rewrite** |
-| 7 | `07-from-apprenticeship-to-mastery` | From Apprenticeship to Mastery: Iterative Learning and the Agent's Self-Sculpted Competence | **to rewrite** |
-| 8 | (TBD) | (TBD — closes Part 2) | **to write** |
+| 5 | `05-the-single-concern-digital-cortex` | The Single-Concern Digital Cortex (working) | **drafting v0.1.1** |
+| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **outlined** |
+| 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **outlined** |
+| 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **outlined** |
 
 ### Status Legend
 
 - **FINAL** — copy is locked. Do NOT edit prose without explicit user direction. Reference voice / structural anchor for the series.
-- **to rewrite** — current `.md` is a draft kept for reference only. Posts 5-8 will be redone from scratch as part of the upcoming agenda; treat existing prose as discardable.
-- **to write** — no draft exists yet.
+- **drafting** — first draft in progress (`.md` only). HTML not yet built.
+- **outlined** — pillars + tier-2/tier-3 hooks defined in Per-Blog Pillars above; no draft yet.
+
+Working titles may shift; final titles lock when each `.md` is reviewed and approved.
 
 ### In-flight Files (5-8 rewrite agenda)
 
-`blog.html` index + sidebar already show the new titles for 5/6/7. HTML build files are NOT current and should not be regenerated until the rewrites land.
+The previous Gemini-era drafts (`05-the-agents-steadfast-core.*`, `06-the-seed-agents-cognitive-rhythm.*`, `07-from-apprenticeship-to-mastery.*`) were deleted 2026-05-06 — older than the current architecture, replaced by from-scratch drafting against `../.claude/`. Old published HTML stubs (`05-the-agents-unsung-heroes.html`, `07-from-collaboration-to-competence.html`) are also gone.
 
-| Slug | Stale html (to delete on rewrite) | Current md / mp3 (draft only) |
-|------|-----------------------------------|-------------------------------|
-| 05 | `05-the-agents-unsung-heroes.html` | `05-the-agents-steadfast-core.md` + `.mp3` |
-| 06 | (old html already deleted) | `06-the-seed-agents-cognitive-rhythm.md` + `.mp3` |
-| 07 | `07-from-collaboration-to-competence.html` | `07-from-apprenticeship-to-mastery.md` + `.mp3` |
-| 08 | — | — |
+`blog.html` index + sidebar were updated yesterday to show the OLD interim titles (Steadfast Core / Cognitive Rhythm / Apprenticeship to Mastery). When the new `.md` drafts land, sidebar + index will be re-synced to the working titles above (or whatever final titles emerge).
 
-**When 5-8 rewrites land, also sync:** `sitemap.xml`, `feed.xml`, sidebars across all posts, audio inventory in root `CLAUDE.md`.
+**When each Part-2 blog reaches publishable state, also sync:** `sitemap.xml`, `feed.xml`, sidebars across all posts, audio inventory in root `CLAUDE.md`, blog.html index card, all four blog-1..3.1..4 sidebars.
 
 
 
