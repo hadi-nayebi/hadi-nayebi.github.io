@@ -25,10 +25,7 @@ CLAUDE.md
 *.transcript.md
 
 # Local-only blog drafts (drafts stay local until published)
-blog/05-*
-blog/06-*
-blog/07-*
-blog/08-*
+# blog/05-*, blog/06-*, blog/07-*, blog/08-* — Part-2 drafts in active review, tracked so user can see diffs
 blog/09-*
 blog/draft-*
 
