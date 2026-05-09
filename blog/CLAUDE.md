@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.6.0
+**Version:** v0.7.0
 
 ## Content Workflow
 
@@ -249,6 +249,8 @@ The four posts must feel aware of each other. Each concept is introduced once, t
 | CONDENSE as organ + 7-step waterfall | seed | **center** | mechanism | recall |
 | Multiplier sentinel | — | **center** | reference | recall |
 | Footer markers (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) | seed | use | **center** | recall |
+| Altered list (CLAUDE.md edits scope EXECUTE) | **introduce** | mechanism | reference | recall |
+| Per-phase write rule (cannot edit above own anchor) | **introduce** | reinforce | reference | — |
 | Inline markers (`[PENDING-JOB]` etc.) | — | seed | **center** | recall |
 | Dual voice architecture (soft/hard) | — | mention | **center** | maturation arc |
 | Plugin anatomy (the kit) | reference | reference | **center** | reference |
@@ -294,7 +296,7 @@ Each blog (except B8) ends with a one-line forward bridge in the **body** (not j
 - §1: The 3-layer architecture (always-on / phasic / meta) — sets up the rest of Part 2
 - §2: Why "single concern" matters (counter-example: monolithic agent guards drift, mix concerns, become unfixable)
 - §3: The 5 always-on plugins, one paragraph each — `plugin_integrity`, `brain_guard`, `job_core`, `interaction_summary`, `question_discipline`
-- §4: **The CLAUDE.md hierarchy as information bus** (the load-bearing thesis — state offloaded to addressable, durable layers)
+- §4: **The CLAUDE.md hierarchy as information bus** (the load-bearing thesis — state offloaded to addressable, durable layers; per-phase write rule via above-anchor block; altered list — CLAUDE.md edits in OBSERVE/PLAN scope EXECUTE)
 - §5: Tier-3 deep-dive — the historian ratchet (auto-injects evolution.md, drift counter blocks unlock until re-sync)
 - §6: Bridge to B6
 
@@ -303,7 +305,7 @@ Each blog (except B8) ends with a one-line forward bridge in the **body** (not j
 - §2: Tool restrictions per phase = the discipline (forbidden tools as pedagogy)
 - §3: OBSERVE — read-only, multiplier sentinel, point system
 - §4: PLAN — read-only, plan_file as immutable contract
-- §5: EXECUTE — full write, altered-list scope, multi-commit checkpoints
+- §5: EXECUTE — full write, altered-list scope (introduced in B5 §4) deepened with file-type rules, multi-commit checkpoints
 - §6: VERIFY — scripts only, auditor subagents, multi-backward
 - §7: CONDENSE — the organ (irreversible forward, 7-step waterfall, deflation gate)
 - §8: **Tier-3 close: the multiplier is backward** (3× surgical, 0.5× deep — honest scope forecasting)
