@@ -5,7 +5,7 @@ slug: "the-plugin-kit"
 read_time: "TBD"
 tags: [Architecture, Seed Agent, Plugins, Hooks, Voices, Subagents]
 status: draft
-version: v0.12.0
+version: v0.13.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/plugin-kit.png"
 ---
@@ -85,7 +85,7 @@ Plugin code does not get edited the way ordinary files do. Each plugin's hooks, 
 
 **`PLUGIN-LOCK`** opens the session. The agent issues a structured question prefixed `[PLUGIN-LOCK] <plugin_name>`. A `PostToolUse:AskUserQuestion` hook (`lock-manager.sh`) watches for that prefix and the user's answer. When the user approves, `lock-manager.sh` runs `git rev-parse HEAD`, captures the resulting SHA as a `checkpoint_ref`, and writes both the SHA and the plugin name (`unlocked_plugin`) into `plugin_integrity`'s hidden `data.json`. A separate `PreToolUse:Edit|Write|MultiEdit` guard (`plugin-guard.sh`) consults `data.json` on every tool call: edits inside the unlocked plugin proceed; edits anywhere else under `.claude/plugins/` are rejected. Only one plugin is editable at a time.
 
-The constraint exists because plugin edits cascade. Touching two plugins in the same cognitive breath — fixing a hook in one, adjusting a script in another — almost always means the operator is missing the connection between them. Serialization forces the connection to surface. Edit one plugin completely, commit it, hand back the lock, and only then unlock another. The `[PLUGIN-LOCK]` question is itself one of the prefixes the always-on `question_discipline` plugin enforces; the system will not let the agent ask the question without the right prefix, and will not let the agent edit a plugin without the right answer. Two always-on enforcements compose into one ceremony.
+The constraint exists because plugin edits cascade. Touching two plugins in the same cognitive breath — fixing a hook in one, adjusting a script in another — almost always means the operator is missing the connection between them. Serialization forces the connection to surface. Edit one plugin completely, commit it, hand back the lock, and only then unlock another. The `[PLUGIN-LOCK]` question is itself one of the prefixes the always-on `question_discipline` plugin enforces; the system will not let the agent ask the question without the right prefix, and will not let the agent edit a plugin without the right answer. Three always-on plugins compose into the lock ceremony — `question_discipline` gates the asking side, `job_core` captures the user's answer into the focused job's interaction list, and `plugin_integrity` reads that answer to decide whether to open the lock. Each contributes what it owns; none reaches into another's `data.json`.
 
 **`TEST-LOCK`** is finer-grained, and necessary because tests are part of the plugin too. By default, the unlocked plugin's `tests/` directory is *also* frozen — even while the plugin itself is unlocked. To edit an individual `test-*.sh` file, the agent has to issue a separate `[TEST-LOCK]` question naming the specific test. The reason is the same one that makes test-driven development hard: it is too easy to "fix" a test that is correctly failing. Test edits demand explicit, named permission, distinct from the plugin edit, and `data.json` carries the unlocked test name in its own field (`unlocked_test`) until the test edit closes.
 
