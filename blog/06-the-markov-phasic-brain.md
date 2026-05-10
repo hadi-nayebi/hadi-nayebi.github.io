@@ -5,7 +5,7 @@ slug: "the-markov-phasic-brain"
 read_time: "40 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, CONDENSE]
 status: drafting
-version: v0.20.0
+version: v0.21.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -18,9 +18,9 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 Now we open the cycle.
 
-The bus from [the previous essay](05-the-always-on-digital-cortex.html) is substrate — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer. The always-on plugins protect it. They don't fill it.
+[Essay 5](05-the-always-on-digital-cortex.html) introduced two pieces of the seed agent's foundation, side by side. The **always-on plugins** are the agent's reflexes — each one owns a concern that fires regardless of which phase the agent is in or whether a phase is even active: plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning. They run continuously, each in its own lane, with its own state. The **CLAUDE.md layer** is the substrate the agent's structured cognitive work writes into — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer that survives across phases and sessions.
 
-This essay is about what fills it, and how.
+This essay is about the system that does the structured work — the phasic system — and how it uses the CLAUDE.md layer to think ahead, gather experiential data, and process that data into the agent's longer-term memory forms.
 
 The seed agent's cognitive work happens in **phases**. A phase is a temporary mode of operation, scoped to one job, with a strictly defined purpose, a strictly defined set of allowed tools, and a strictly defined kind of output. One phase is active at a time. Phases progress in a fixed order. The agent cannot skip a phase, cannot blend two phases, cannot stay inside a phase indefinitely.
 
@@ -407,7 +407,7 @@ This is the part of the seed agent's design I find most quietly elegant.
 
 ## What Comes Next
 
-Phases give the agent compartmentalized cognition. The bus from [the previous essay](05-the-always-on-digital-cortex.html) gives the agent durable substrate. Together they form a working brain — one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
+Phases give the agent compartmentalized cognition. The CLAUDE.md layer from [the previous essay](05-the-always-on-digital-cortex.html) gives them somewhere to write that cognition down. Together they form a working brain — one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
 
 This is what [Essay 1](01-llms-are-not-the-agents.html) was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.
 
