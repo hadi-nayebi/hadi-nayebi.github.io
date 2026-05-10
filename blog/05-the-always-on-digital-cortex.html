@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<!-- Version: v0.28.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Always-On Digital Cortex | Hadosh Academy</title>
+    <meta name="description" content="The seed agent's memory lives in a hierarchy of files, not the chat. Always-on plugins each own one concern, and CLAUDE.md edits gate what work the agent is allowed to do.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html">
+    <meta property="og:title" content="The Always-On Digital Cortex | Hadosh Academy">
+    <meta property="og:description" content="The seed agent's memory lives in a hierarchy of files, not the chat. Always-on plugins each own one concern, and CLAUDE.md edits gate what work the agent is allowed to do.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Always-On Digital Cortex | Hadosh Academy">
+    <meta name="twitter:description" content="The seed agent's memory lives in a hierarchy of files, not the chat. Always-on plugins each own one concern, and CLAUDE.md edits gate what work the agent is allowed to do.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../css/styles.css?v=20260508">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "The Always-On Digital Cortex",
+                "datePublished": "2026-05-08",
+                "dateModified": "2026-05-08",
+                "author": {
+                    "@type": "Person",
+                    "name": "Hadi Nayebi",
+                    "url": "https://hadi-nayebi.github.io/about.html"
+                },
+                "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
+                "description": "The seed agent's memory lives in a hierarchy of files, not the chat. Always-on plugins each own one concern, and CLAUDE.md edits gate what work the agent is allowed to do.",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
+                    { "@type": "ListItem", "position": 3, "name": "The Always-On Digital Cortex", "item": "https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../agents.html">Agents</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="container">
+            <div class="blog-layout">
+                <!-- Main Article -->
+                <div class="article-content">
+                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+
+                    <h1>The Always-On Digital Cortex</h1>
+                    <div class="article-meta">
+                        <span>May 2026</span>
+                        <span>&bull;</span>
+                        <span>36 min read</span>
+                        <div class="article-meta-tags">
+                            <span class="tag tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Seed Agent</span>
+                            <span class="tag">Plugins</span>
+                            <span class="tag">Information Bus</span>
+                        </div>
+                    </div>
+                    <div class="article-authors">
+                        By Hadi Nayebi &amp; Claude Opus 4.7
+                    </div>
+
+                    <div class="article-audio">
+                        <audio controls preload="none">
+                            <source src="../assets/audio/the-always-on-digital-cortex.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <span class="audio-label">Listen to this article (36 min)</span>
+                    </div>
+
+                    <div class="article-body">
+
+                        <p><em>Essay 5 of 8 in the Hadosh Academy series on agent architecture. Part 2 &mdash; the technical arc &mdash; opens here.</em></p>
+
+                        <hr>
+
+                        <p>Now we open <code>.claude/</code>.</p>
+
+                        <p>Inside is not one brain. It is a folder of folders, each one owning exactly one concern. The chat owns none of them &mdash; and that is deliberate. The chat is volatile. The model&rsquo;s context window has a hard limit. Memory has to live somewhere the conversation cannot erase.</p>
+
+                        <p>Long before the model runs out of room, the seed agent forces a <em>self-compaction</em> &mdash; the conversation is summarized, most discarded, the rest rebuilt from a smaller context. The plugin that runs this &mdash; <code>brain_guard</code> &mdash; gets its own deep-dive below. The files inside <code>.claude/</code> sit on disk, untouched; they are still there when the new context starts.</p>
+
+                        <p>In <a href="03_1-the-folder-is-alive.html">the interlude</a>, I claimed any folder with a <code>.claude/</code> becomes a seed agent &mdash; brain inside, work in siblings. The brain has many forms of memory and many plugins. This essay opens the always-on layer.</p>
+
+                        <p>Memory of the seed agent lives in several compartments, organized by the form of the memory. The working memory of what the seed agent is currently doing or experiencing lives in a hierarchy of plain Markdown files at known locations on disk. Long-term memory that requires active recall lives in <code>.claude/knowledge/</code>. Long-term memory with automatic recall lives in files called <code>voice.xml</code>. Procedural memory lives as logical code in <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" title="A Unix shell and command language used to write scripts that automate tasks" target="_blank" rel="noopener">bash</a> scripts and other code files. Memory that protects the seed agent against code regression over time lives in test files. There are more forms still &mdash; we will meet them across these essays.</p>
+
+                        <p>The seed agent organizes those forms of memory through <em>plugins</em> &mdash; directories under <code>.claude/plugins/</code> that bundle the logic and state for one concern. The plugins split into two categories. The always-on plugins are active all the time, shaping how the seed agent operates no matter what it is currently doing. The phasic plugins manage what we will call the <em>markov brain</em> &mdash; they actively control the seed agent&rsquo;s behavior while it is operating inside a particular phase. We open the markov brain in <a href="06-the-markov-phasic-brain.html">Essay 6</a>. This essay is about the always-on plugins.</p>
+
+                        <hr>
+
+                        <h2>Two Categories, One Substrate</h2>
+
+                        <p>The <strong>always-on layer</strong> is active all the time and runs on every prompt, every tool call, every session start, regardless of which job the seed agent is currently working on. This layer owns infrastructure: locking plugins for updates, context budgets, job structure, conversation discipline. The current prototype ships five always-on plugins (<code>plugin_integrity</code>, <code>brain_guard</code>, <code>job_core</code>, <code>interaction_summary</code>, <code>question_discipline</code>). The category is the load-bearing thing &mdash; not the count. A custom seed could add a sixth or a seventh and the architecture wouldn&rsquo;t shift.</p>
+
+                        <p>That&rsquo;s one layer. The other rotates.</p>
+
+                        <p>The <strong>phasic layer</strong> activates one plugin at a time, dictated by which phase the active job is in. It currently implements a cognitive cycle called OPEVC &mdash; observe, plan, execute, verify, condense (five phases in the prototype) &mdash; plus an orchestrator (<code>phasic_system</code>) that tracks where each job sits in that cycle. The cycle can be extended as users customize their seed agent and grow its markov brain. Each phase makes a different set of tools available to the seed agent: OBSERVE and PLAN are read-only against project files, EXECUTE writes inside a fenced scope, VERIFY runs scripts only, and CONDENSE writes inside <code>.claude/</code> only, absorbing the recent experiential data from previous phases. We open the phasic layer in <a href="06-the-markov-phasic-brain.html">Essay 6</a>.</p>
+
+                        <p>Two layers. One substrate underneath.</p>
+
+                        <p>Underneath both layers sits the substrate the previous section listed. The two plugin layers play different roles against it. The always-on layer enforces the rules that protect the substrate: locking plugins during edits, watching the context budget, capturing jobs and interactions, gating questions through registered prefixes. The phasic layer fills the working-memory bus during each cycle, then absorbs the durable parts back into longer-term memory at the end.</p>
+
+                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
+                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; Two-Layer Architecture on a Shared Substrate]</p>
+                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> A horizontal cross-section diagram with three labeled layers &mdash; top layer "Always-On Plugins" (always active, glowing steady), middle layer "Phasic Plugins" (one cell lit at a time, others dim, suggesting rotation through phases), and bottom substrate "CLAUDE.md Hierarchy + .claude/ Brain" (a flat foundation plane with subtle file-tree texture). Arrows show the always-on layer "protecting" the substrate (downward shielding glow) and the phasic layer "writing into" and "absorbing from" the substrate (bidirectional vertical arrows). Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic &mdash; clean, minimal, slightly futuristic, subtle glow effects.</p>
+                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> Two plugin layers, one shared substrate &mdash; the always-on layer protects, the phasic layer writes and absorbs.</p>
+                        </aside>
+
+                        <hr>
+
+                        <h2>Why &ldquo;Single Concern&rdquo; Matters</h2>
+
+                        <p>Each always-on plugin owns exactly one thing.</p>
+
+                        <p><code>plugin_integrity</code> owns plugin edit safety. <code>brain_guard</code> owns self-compaction. <code>job_core</code> owns the job lifecycle. <code>interaction_summary</code> keeps a focused job&rsquo;s mega-prompt legible as it grows. <code>question_discipline</code> owns the asking gate. Each plugin lives in its own folder under <code>.claude/plugins/&lt;name&gt;/</code> with its own hooks, scripts, hidden state, tests, and voice files. Naming the concern is easy because each plugin only has one to name.</p>
+
+                        <p>The single-concern principle is a <em>minimize</em> rule, not an <em>eliminate</em> rule. Pure isolation is what a traditional library aims for &mdash; clean modules with no shared state, talking to nothing they don&rsquo;t import. The seed agent is a complex cognitive system, and a small amount of structured coupling between plugins is what lets the parts compose into ceremonies larger than any one plugin. Call this <strong>single-concern + careful coupling</strong>: each part stays narrow; the composition is what makes the ceremony possible.</p>
+
+                        <p>The historian ratchet inside <code>plugin_integrity</code> is a clean example &mdash; it blocks plugin editing when the plugin&rsquo;s evolution narrative has fallen behind, and to do that it depends on <code>question_discipline</code> registering the <code>[PLUGIN-LOCK]</code> prefix, on <code>job_core</code> capturing the user&rsquo;s approval answer, and on the safe-lock cycle protecting the plugin during the edit. Three plugins compose into one ceremony, each contributing what it owns. We come back to this composition at the end of the essay.</p>
+
+                        <p>The discipline is in <em>how</em> the coupling happens. When plugins talk to each other, they talk through public, stable interfaces &mdash; small command-line surfaces each plugin publishes (one read-only command per concern, <code>job.sh focused</code> being the canonical example), a registry of question prefixes, named voice handles, and the footer marker protocol that organizes the bus. A plugin reads what another plugin chooses to publish; it never reaches into another plugin&rsquo;s private state. Each plugin&rsquo;s internal data stays private; only the interface is shared.</p>
+
+                        <p>The shape buys three concrete things. Plugins evolve independently &mdash; a change inside <code>interaction_summary</code> cannot break <code>job_core</code> as long as the read-only <code>job.sh</code> API stays the same. Plugins are testable in isolation &mdash; each <code>tests/</code> directory exercises one plugin&rsquo;s behavior without standing up the entire seed. Plugins are addable &mdash; a sixth always-on plugin slots into the architecture by exposing its own public commands, not by rewiring anyone else&rsquo;s.</p>
+
+                        <hr>
+
+                        <h2>The Always-On Plugins</h2>
+
+                        <p>Below is the current prototype&rsquo;s always-on layer. For each plugin: what it owns, what would break without it, and how it works.</p>
+
+                        <p><strong><code>plugin_integrity</code></strong> &mdash; exists to prevent accidental edits from regressing a plugin&rsquo;s established logic. It does this by leveraging <a href="https://en.wikipedia.org/wiki/Git" title="A version control system that tracks code changes and allows roll-back to earlier states" target="_blank" rel="noopener">git</a> checkpoints and the plugin&rsquo;s own test suite. The lock applies when a plugin&rsquo;s code files need updating &mdash; documentation files inside a plugin (<code>.md</code>, <code>voice.xml</code>) move under their own rules, with a few caveats.</p>
+
+                        <p>To begin a code edit, the seed agent asks the user to unlock the target plugin through a structured question. From that moment the plugin&rsquo;s hidden state carries the edit-session bookkeeping &mdash; which plugin is currently unlocked, and the git checkpoint captured at unlock time. The lock closes the moment one of three things happens: an edit lands outside the unlocked plugin, a different plugin is unlocked, or the agent explicitly calls safe-lock. At that moment the plugin&rsquo;s full test suite runs. Tests pass and the change commits. Tests fail and the working tree rolls back to the captured checkpoint, the plugin&rsquo;s hidden state records a structured revert entry &mdash; what failed, what was restored, when, and why &mdash; and a voice line writes to the terminal so the operator cannot miss what happened.</p>
+
+                        <p>The fuller ceremony &mdash; the prefix-required unlock question, the user-approval branch, the historian-ratchet check that refuses unlock when the plugin&rsquo;s evolution narrative has fallen behind, and the caveats around documentation-file editing &mdash; is deconstructed in <a href="07-the-plugin-kit.html">Essay 7</a>. The role to remember here is the always-on one: every plugin code change passes through a test gate.</p>
+
+                        <p><strong><code>brain_guard</code></strong> &mdash; the always-on plugin that owns the <em>self-compaction</em> we opened the essay with. It works by watching context usage on every tool call and progressively tightening the agent&rsquo;s grip on tools as the window fills. The whole mechanism fires well before Claude Code&rsquo;s default auto-compact at 100%, which lets the seed agent operate even when the user is away from the terminal.</p>
+
+                        <p>A pre-call sensor reads the running token count on every tool call. At the first tier (currently around 20% of the window), the plugin injects a coaching voice prompting the agent to draft a structured <code>/compact</code> instruction. The reasoning behind 20%: Opus 4.7&rsquo;s effective reasoning starts to soften around 30% of a 1M-token window, so acting at 20% leaves headroom. If the agent ignores the prompt, the next tier (around 25%) starts blocking the agent&rsquo;s read tools. The hardest tier (around 30%) adds the write tools to the block list.</p>
+
+                        <p>The tier <em>positions</em> are tunable; the architectural fact is the progressive tightening. Rather than letting the agent drift toward a hard wall, <code>brain_guard</code> removes one tool at a time until the only graceful move left is to compact.</p>
+
+                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
+                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; brain_guard's Progressive Tier System]</p>
+                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> A horizontal axis labeled "Context Window Fill %" running from 0% (left) to 100% (right). Three vertical "gate" bars at ~20%, ~25%, ~30%, each progressively taller and more opaque. Tier 1 (20%): a soft glow with a small voice-bubble icon labeled "coaching voice". Tier 2 (25%): adds a Read tool icon crossed out in violet. Tier 3 (30%): adds Edit and Write tool icons crossed out, glowing more intensely. Far right (100%): a hard wall labeled "default auto-compact" the agent is trying to avoid. A dotted arrow from Tier 1 labeled "graceful path: self-compact early". Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic &mdash; clean, minimal, slightly futuristic, subtle glow effects.</p>
+                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> The progressive squeeze &mdash; each tier removes one more tool until self-compaction is the only graceful move.</p>
+                        </aside>
+
+                        <p>The compaction itself is shape-enforced. The plugin requires the <code>/compact</code> instruction to carry five named sections (User Requests, Decisions, Design Choices, Corrections, Current State) before it is accepted; any instruction missing a section gets blocked until the agent rewrites it.</p>
+
+                        <p>The five sections aren&rsquo;t gospel. The shape is.</p>
+
+                        <p>Call this <strong>shape compels production</strong>: a compartment that demands a structured shape forces the agent to <em>produce</em> content that fits the shape, and the production itself becomes useful context. The agent thinks more carefully about compaction because it has to write under headers.</p>
+
+                        <p>The pattern is portable. Structured git commits, structured plan files, structured subagent dispatches &mdash; every time a shape demands content, the content rewards the next step. We will see the same trick land in <code>interaction_summary</code> below.</p>
+
+                        <p>Mechanically, the <code>/compact</code> self-issue is hacky. A small script types the instruction into the active terminal &mdash; through standard Linux input-injection tools under X11, or through terminal-multiplexer paste primitives under tmux &mdash; because Claude Code does not yet expose an API for an agent to trigger compaction before the 100% auto-compact. The script records the compaction time in the plugin&rsquo;s hidden state, and the next firing of the tier guards reads that timestamp to grant a brief grace window so the compacted transcript can register before the gate would otherwise re-block. If Claude Code ships a native intermittent self-compact API, this plugin&rsquo;s terminal-typing layer retires; the rest of the discipline carries forward unchanged.</p>
+
+                        <p>Without <code>brain_guard</code>, the agent runs the conversation off a cliff. The default 100% auto-compact fires eventually, but without the agent&rsquo;s own plan for what to preserve &mdash; and the next session starts from whatever the model happened to have in the window at that moment.</p>
+
+                        <p><strong><code>job_core</code></strong> &mdash; exists to compartmentalize the seed agent&rsquo;s <em>work</em>. The unit of compartmentalization is the <em>job</em> &mdash; a container for everything the agent does between the moment a piece of work begins and the moment it is complete. Every prompt, every reasoning cycle, every action belongs to one. The plugin works by routing each user prompt into a job (creating a new one if none is focused, attaching as an interaction if one is) and by refusing to let the agent stop while any job remains active. It applies on every prompt the user submits, every Stop event the agent triggers, and every <code>[JOB-COMPLETE]</code> claim the agent makes.</p>
+
+                        <p>A user-prompt hook intercepts every user prompt and either creates a new active job or appends the prompt as an interaction on the currently focused one. The interaction field of a job is what the seed agent treats as its <em>dynamic mega-prompt</em>. In most agent designs, &ldquo;the prompt&rdquo; is a one-off &mdash; text handed to the model at the start of the exchange and rarely revisited. Here, the prompt is cumulative: the first user message in a session seeds a new job, every later prompt and every Q&amp;A appends into the same job&rsquo;s interaction list, and the <em>whole list</em> is what the agent reads as its instruction set going forward. The next plugin in this layer &mdash; <code>interaction_summary</code> &mdash; keeps that mega-prompt legible as it grows.</p>
+
+                        <p>The interaction list is just one form of state attached to a job. When a job is created it is assigned a unique ID &mdash; a timestamp from the moment of creation &mdash; and the <em>base</em> job object (name, status, interaction list, dependencies, completion fields) lives in <code>job_core</code>&rsquo;s own hidden state. Other plugins that need to carry context about that job <em>extend</em> the same job object under the same ID inside their own hidden state. <code>interaction_summary</code> does exactly this &mdash; when a job&rsquo;s interactions cross the summarization threshold, the plugin creates a mirror entry under the job&rsquo;s ID and starts appending summary blocks there. The phase plugins (<a href="06-the-markov-phasic-brain.html">Essay 6</a>) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping &mdash; scope multipliers, point ledgers, plan-file pointers, footer markers &mdash; keyed by the same ID. No plugin reads another&rsquo;s hidden state directly, but the shared key lets each plugin&rsquo;s view of the job line up with every other plugin&rsquo;s view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment.</p>
+
+                        <p>A turn-end hook refuses to let the agent stop whenever any active or pending job remains. The refusal message is phase-aware &mdash; observation phases get reminders to check CLAUDE.md before synthesizing, execution phases get reminders to keep edits inside the altered-list, and so on &mdash; and it functions as a <em>re-orientation</em>, not a flat no: when the seed agent tries to stop prematurely, the message reminds it of what its current phase still expects before stopping is even on the table. The agent cannot stop while any job is active, and pending jobs scheduled ahead extend the loop across whatever queue the operator &mdash; or the seed agent itself, when it queues follow-up work &mdash; has set up. The seed agent runs continuously until every active and pending job has been completed, which is what makes long-running, hands-off operation possible.</p>
+
+                        <p>Completion is staged. The current prototype runs two stages &mdash; a pre-call hook validates that any <code>[JOB-COMPLETE]</code> question contains the focused job&rsquo;s name, runs at least a hundred words of review, and presents <em>exactly</em> the &ldquo;Review&rdquo; and &ldquo;Approve completion&rdquo; options; then a follow-up post-call hook walks the focused job&rsquo;s dependency list, refuses approval if any dependency is still unfinished, and only then records the user&rsquo;s approval. The architectural fact is the staging itself: completion does not collapse into a single moment. Future seed-agent generations can graduate to automated criteria, verifier subagents, or multi-stage approval chains.</p>
+
+                        <p>Without <code>job_core</code>, the agent has no notion of <em>what work am I doing</em>. Every prompt is a one-off, there is no thread of intent to come back to, no place for follow-up work to live, no signal that says the agent is or isn&rsquo;t done. The cognitive horizon collapses to the current turn &mdash; and everything the rest of the always-on layer is built to support has nothing structural to attach to.</p>
+
+                        <p><strong><code>interaction_summary</code></strong> &mdash; exists to keep a job&rsquo;s dynamic mega-prompt legible as it grows. It works by counting tokens after every user interaction and forcing the agent to draft a structured summary the moment the unsummarized portion crosses a threshold. It applies inside any job whose interaction list grows long enough to compress &mdash; short jobs that never cross the threshold never see the plugin engage.</p>
+
+                        <p>Enforcement runs in two phases. A post-call hook fires right after <code>job_core</code> records each interaction, approximates the unsummarized portion in tokens, and trips a flag when the result crosses a threshold. On the next tool call, a pre-call guard blocks every productive tool the agent has &mdash; reads, writes, shell calls, even further questions &mdash; until a structured summary lands. The submit command refuses just any text: the summary must sit inside a tight word-count band and carry five named sections &mdash; User Requests, Questions &amp; Decisions, Design Choices, Corrections &amp; Feedback, Current State &mdash; each long enough to actually mean something. The same <em>shape compels production</em> trick <code>brain_guard</code> uses on <code>/compact</code>, applied to a different concern. The block has one deliberate escape hatch &mdash; infrastructure-prefixed questions like <code>[PLUGIN-LOCK]</code> and <code>[JOB-COMPLETE]</code> are still allowed, so the agent cannot get into a deadlock where it needs to ask for permission to do the very thing the guard is asking for. The summary chain is append-only and lives entirely in the plugin&rsquo;s hidden state; older entries cannot be rewritten.</p>
+
+                        <p>Without this plugin, long jobs lose narrative coherence as the interaction list bloats; the summary chain is what keeps a job legible at a glance and what survives forward when the job spans more than one OPEVC cycle.</p>
+
+                        <p><strong><code>question_discipline</code></strong> &mdash; exists to make every question the seed agent asks the user <em>structured</em>. It works by gating every <code>AskUserQuestion</code> call against a small list of registered prefixes &mdash; only ceremonial questions (locks, approvals, plan-complete claims) get through. It applies on every <code>AskUserQuestion</code>, with one deliberate runtime exception for dispatched subagents.</p>
+
+                        <p>A pre-call hook walks every question in the call and matches its first token against a small registry of approved prefixes hardcoded in the script. The registry currently holds seven entries &mdash; six name very specific ceremonies (unlocking a plugin, approving a job, claiming a plan is complete, and so on), and one (<code>[WAITING]</code>) is the deliberate generic &mdash; a catch-all for the cases where the seed agent legitimately needs input from the user and the situation does not fit one of the structured ceremonies. The prefixes cascade: when the agent batches multiple questions in one call, <em>every</em> question must carry a registered prefix, or the entire batch is rejected and the agent has to rewrite. The plugin owns no hidden state; the registry is its only state. Dispatched subagents are flagged as such and bypass the gate so they can ask their own internal questions without the user-facing prefix overhead.</p>
+
+                        <p>Without <code>question_discipline</code>, every <code>AskUserQuestion</code> is fair game &mdash; the agent&rsquo;s asking surface bloats with low-value confirmations, and the structured ceremonies (locks, approvals, plan-complete claims) lose the prefix scaffolding the rest of the always-on layer uses to dispatch on.</p>
+
+                        <p>The CLAUDE.md hierarchy underneath them all is what we open next.</p>
+
+                        <hr>
+
+                        <h2>The CLAUDE.md Hierarchy as Information Bus (aka Working Memory)</h2>
+
+                        <p>Drop a file named <code>CLAUDE.md</code> into a project, and the standard Claude Code CLI agent reads it. Drop one into <code>.claude/</code>, and it gets read too. Nest more of them inside subdirectories, and Claude Code surfaces each one when the agent works near it. The shared move: a plain Markdown file at a known location, automatically appended to the model&rsquo;s context whenever the agent reads or edits files in that directory.</p>
+
+                        <p>Other agentic CLI agents run the same pattern in their own ecosystems &mdash; Codex and opencode read <code>AGENTS.md</code>, Gemini CLI reads <code>GEMINI.md</code>. The convention is most obviously useful for code, where each <code>CLAUDE.md</code> doubles as meta-information about how to manage future edits &mdash; and most agentic CLI agents were originally built for software work.</p>
+
+                        <p>But as <a href="01-llms-are-not-the-agents.html">the first essay</a> argued, the CLI form factor extends to any work whose product lives in files: research, legal analysis, business operations, consulting work, and beyond.</p>
+
+                        <p>The native loading is layered. The <a href="https://docs.claude.com/en/docs/claude-code/memory" title="Anthropic's official documentation for how Claude Code loads CLAUDE.md files" target="_blank" rel="noopener">Claude Code memory documentation</a> recognizes two locations for project-level instructions &mdash; <code>./CLAUDE.md</code> and <code>./.claude/CLAUDE.md</code> &mdash; and both load at session start. The seed agent uses both: a high-level <code>CLAUDE.md</code> at the workspace root for identity and operating rules, and a brain index inside <code>.claude/</code> cataloging plugins and active jobs. Run <code>/memory</code> inside Claude Code and you will see them both listed alongside any user-level CLAUDE.md files. After a <code>/compact</code>, Claude re-reads the project-root file from disk and re-injects it. Every other <code>CLAUDE.md</code> further down the tree loads on demand: per the docs, <em>&ldquo;they are included when Claude reads files in those subdirectories.&rdquo;</em></p>
+
+                        <p>Every Claude Code user gets this primitive for free. What the seed agent does on top is <em>partition</em> each <code>CLAUDE.md</code> into compartments.</p>
+
+                        <p>The body of the file &mdash; everything above the four anchors below &mdash; keeps the standard Claude Code semantics: identity, rules, structure, the things the agent should remember about this directory at all times. Below the body, every <code>CLAUDE.md</code> inside the seed agent&rsquo;s brain carries four anchored sections:</p>
+
+                        <pre><code>---Ob---
+
+(observation content goes here)
+
+---Pl---
+
+(plan content goes here)
+
+---Ex---
+
+(execution content goes here)
+
+---Ve---
+
+(verification content goes here)</code></pre>
+
+                        <p>Each footer section corresponds to one phase of the OPEVC cycle. The guard hooks inside each phase plugin enforce a single rule: a phase cannot edit <em>above</em> its own anchor. During OBSERVE, the agent can write into <code>---Ob---</code> and into any of the three sections below it. During PLAN, into <code>---Pl---</code> and below. During EXECUTE, into <code>---Ex---</code> and <code>---Ve---</code>. During VERIFY, only into <code>---Ve---</code>. The body &mdash; everything above the first anchor &mdash; is off-limits to all four phases. Only the CONDENSE phase is allowed to absorb content upward into the body, and only when closing the cycle.</p>
+
+                        <p>The asymmetry is intentional. Earlier phases can leave forward-looking notes for later phases &mdash; OBSERVE can sketch an early plan or seed a verify checklist if it spots one; PLAN can pre-stage verification criteria for the work it is about to dispatch &mdash; but no phase can rewrite what an earlier phase has already committed. Information flows <em>downward</em> through the cycle. The full per-phase semantics &mdash; what each phase is encouraged to write where, how subagents feed OBSERVE from the knowledge directory, and how all four phases can drop prefixed markers for CONDENSE to consume &mdash; is the subject of <a href="06-the-markov-phasic-brain.html">Essay 6</a>. For now, the load-bearing fact is that the footer is a structured, append-forward, multi-author region.</p>
+
+                        <p>The footers are why the seed agent does not need to rely on the chat to hold its working memory. As a job moves through OBSERVE &rarr; PLAN &rarr; EXECUTE &rarr; VERIFY, each phase writes its experiential output &mdash; what was gathered, what was decided, what was built, what was checked &mdash; into its own footer slot in whichever <code>CLAUDE.md</code> is closest to where the work is happening. The footers <em>inflate</em> across the cycle. By the time the job reaches the end of VERIFY, the four sections together can hold thousands of words of fresh, cycle-specific memory.</p>
+
+                        <p>CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC cycle &mdash; its waterfall pulls durable findings from the four footer sections up into the body of the same <code>CLAUDE.md</code> (so they survive the next cycle), routes topic-specific knowledge into <code>.claude/knowledge/</code>, and migrates anything that belongs higher up the tree into a parent <code>CLAUDE.md</code> or into the root brain. When CONDENSE finishes, the footers are empty again. The next cycle of OPEVC starts with a clean working memory and a slightly enriched body. The hierarchy as a whole grows smarter with each pass.</p>
+
+                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
+                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; CLAUDE.md Inflation / Deflation Across an OPEVC Cycle]</p>
+                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> Five panels arranged in a horizontal cycle, each showing a stylized single CLAUDE.md file with a dense top "body" section and four labeled footer slots ---Ob---, ---Pl---, ---Ex---, ---Ve---. Panel 1 (OBSERVE): ---Ob--- swelling with text. Panel 2 (PLAN): ---Pl--- swelling, ---Ob--- still full. Panel 3 (EXECUTE): ---Ex--- swelling, prior two still full. Panel 4 (VERIFY): all four footers full, the file visibly heavier. Panel 5 (CONDENSE): an upward absorption arrow lifts durable findings into the body (which grows slightly), all four footers empty again, knowledge files branch off to the side labeled .claude/knowledge/. A circular arrow connects Panel 5 back to Panel 1 labeled "next cycle". Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic &mdash; clean, minimal, slightly futuristic, subtle glow effects.</p>
+                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> Footers inflate across OPEVC, then CONDENSE deflates them &mdash; durable findings ratchet upward into the body, the rest discards.</p>
+                        </aside>
+
+                        <p>There is a second consequence of CLAUDE.md edits during a cycle, and it is what gives the bus teeth. EXECUTE &mdash; the only phase that may touch project files outside <code>.claude/</code> &mdash; is fenced to the <em>altered list</em>: the set of directories whose <code>CLAUDE.md</code> the agent edited during OBSERVE or PLAN. EXECUTE inherits the list and may only modify files inside those directories. If a directory&rsquo;s <code>CLAUDE.md</code> was never touched during the read-only phases, EXECUTE cannot make project changes there in this cycle, however clearly the work seems to call for them.</p>
+
+                        <p>The bus is not only where the agent stores experiential notes &mdash; it is where the agent <em>declares</em> the work it intends to do. Editing a <code>CLAUDE.md</code> during OBSERVE or PLAN is a commitment that scopes what EXECUTE will be allowed to attempt. The deeper mechanics &mdash; how the altered list is checked, what file types EXECUTE may write inside an altered-list directory, how multi-commit checkpoints land &mdash; are the subject of <a href="06-the-markov-phasic-brain.html">Essay 6</a>. For the bus story, the structural fact is enough: <code>CLAUDE.md</code> edits gate execution.</p>
+
+                        <p>The seed agent&rsquo;s bus is not one <code>CLAUDE.md</code>. It is a hierarchy.</p>
+
+                        <pre><code>hadosh_academy/
+├── CLAUDE.md                              ← root brain
+├── .claude/
+│   ├── CLAUDE.md                          ← brain index
+│   ├── plugins/
+│   │   ├── plugin_integrity/CLAUDE.md     ← plugin brain
+│   │   ├── brain_guard/CLAUDE.md          ← plugin brain
+│   │   └── ...                            ← one per plugin
+│   └── knowledge/
+│       ├── plugin_integrity/              ← durable, per-topic
+│       ├── brain_guard/
+│       └── ...
+└── hadi-nayebi.github.io/
+    └── CLAUDE.md                          ← project working memory</code></pre>
+
+                        <p>Each layer plays a different role on the bus.</p>
+
+                        <p>The <strong>root CLAUDE.md</strong> declares the agent&rsquo;s identity and operating rules &mdash; what phases exist, what the size limits are, how the brain is allowed to grow. It is the top of the bus, and one of the two project-level CLAUDE.md files Claude Code loads at session start.</p>
+
+                        <p>The <strong>brain index</strong> at <code>.claude/CLAUDE.md</code> is the other one. It catalogs the plugins, points to the knowledge directory, and tracks active jobs and recently completed ones.</p>
+
+                        <p>The <strong>plugin CLAUDE.md files</strong> declare what each plugin owns. They are how a plugin tells the rest of the system &ldquo;I am responsible for X, here is how I work, here are my tests, here is my current version.&rdquo; When a plugin is being edited, that plugin&rsquo;s CLAUDE.md is the agent&rsquo;s working memory for the edit, and its footer is where the cycle&rsquo;s experiential data accumulates until CONDENSE absorbs it.</p>
+
+                        <p>The <strong>working-directory CLAUDE.md files</strong> are local. The website project has one. So does the blog folder. So does &mdash; when work is happening there &mdash; any directory deep in the tree where the focus currently sits. These are the files whose footers most often inflate during the OPEVC cycle and deflate during CONDENSE.</p>
+
+                        <p>The <strong>knowledge directory</strong> is the durable layer. When something has been learned that is worth keeping past the current cycle, CONDENSE routes it into <code>.claude/knowledge/&lt;topic&gt;/</code> as a real Markdown file with its own structure. The current prototype carries one topic silo per major plugin (<code>brain_guard/</code>, <code>phase_observe/</code>, <code>phase_condense/</code>, and so on) plus a cross-cutting <code>opevc/</code> directory that holds dozens of operational recipes mined from cycles across the system. Each topic dir tends to grow an <code>INDEX.md</code> plus a handful of focused topic files, refined cycle after cycle. OBSERVE phases recall from the directory; CONDENSE phases extend it; subagents are dispatched against it for parallel research. Knowledge files are how the agent remembers things across sessions, across cycles, across months.</p>
+
+                        <p><strong>Memory files</strong> sit a layer beyond that &mdash; cross-session preferences and feedback that should outlive any individual project. This layer is managed by Claude Code itself, not by the seed agent: the CLI maintains them in the user&rsquo;s home directory under <code>~/.claude/projects/&lt;encoded-path&gt;/memory/</code>, with a small <code>MEMORY.md</code> index loaded on every session start. Each entry is a typed file (<code>feedback_*.md</code>, <code>user_*.md</code>, <code>project_*.md</code>, <code>reference_*.md</code>) the agent can grep by category when a session starts cold. The current seed-agent prototype does not extend this layer &mdash; it inherits Claude Code&rsquo;s native memory behavior unmodified. A future plugin could hook into it deliberately, using the entries as a source of context injections at session start, but no such plugin exists yet.</p>
+
+                        <p>Every plugin in the system, in some way, depends on the bus. But not every plugin writes to it.</p>
+
+                        <p>The <strong>always-on plugins</strong> keep their own state in hidden files inside their plugin directories &mdash; files the seed agent itself cannot read or edit directly. Every state mutation goes through a plugin-owned script. Some of that script&rsquo;s commands are public, callable as part of the agent&rsquo;s workflow (<code>job.sh focused</code> is a typical example); others are flagged as internal-only and restricted to other scripts and hooks within the seed, so the agent cannot reach them at all. None of these plugins treat <code>CLAUDE.md</code> as their primary write target. What they <em>read</em> from the bus is the rules: the size limits declared in the root brain, the registered question prefixes, the operating thresholds for compaction, the phase definitions.</p>
+
+                        <p>The <strong>phasic plugins</strong> generate the bus&rsquo;s content. The choreography of how each phase writes its footer and how CONDENSE absorbs them is the subject of <a href="06-the-markov-phasic-brain.html">Essay 6</a>.</p>
+
+                        <p>The relationship reduces cleanly. The always-on layer protects the bus. The phasic layer fills it and absorbs it. Every plugin, eventually, reads it. In the current prototype, well over a hundred <code>CLAUDE.md</code> files across the brain and the project carry the four phase footers. The footer convention is the protocol.</p>
+
+                        <p>This is the bus.</p>
+
+                        <p>In <a href="01-llms-are-not-the-agents.html">Essay 1</a>, I claimed that <em>the agent is the filesystem</em>. This is what that meant, mechanically. The filesystem is not a passive store. It is an active bus, with a hierarchy, with rules about what reads where and what writes where, with phases that inflate and condense it across a cognitive cycle. The always-on layer is what keeps the bus healthy while everything else is happening.</p>
+
+                        <hr>
+
+                        <h2>The Historian Ratchet</h2>
+
+                        <p>For the architects in the audience: the historian ratchet we sketched earlier is worth examining in detail, because it captures the discipline of the whole always-on layer.</p>
+
+                        <p>The setup. Every plugin has a file called <code>evolution.md</code>. It is a word-capped narrative (currently 2000 words) of how the plugin got to its current state &mdash; what was added, what was rejected, what was learned during which cycle. It is auto-injected into the agent&rsquo;s context whenever the plugin is unlocked for editing.</p>
+
+                        <p>The naive version of this would be: &ldquo;documentation that updates itself when the plugin changes.&rdquo;</p>
+
+                        <p>The seed agent&rsquo;s version is sharper.</p>
+
+                        <p>When the agent attempts to unlock a plugin for editing &mdash; by issuing a question with the prefix <code>[PLUGIN-LOCK] &lt;plugin_name&gt;</code> &mdash; the lock manager runs a small drift-check against the target plugin. The check is a single git command that counts how many commits have touched the plugin since the last time its evolution narrative was synced. The result is the <em>drift count</em>: the number of commits the plugin has accumulated since its history was last narrated. If that count meets or exceeds a configurable threshold (default five), the unlock is <em>blocked</em> and the agent is told to dispatch the plugin&rsquo;s historian subagent first.</p>
+
+                        <p>The historians live centrally, not per-plugin. Every plugin in the prototype has a corresponding historian subagent definition inside <code>plugin_integrity</code>&rsquo;s own folder, plus a template that new plugins clone from when they are born. When dispatched, the historian reads the drift log, synthesizes what changed since the last sync, and edits <code>evolution.md</code> under a 2000-word cap enforced by a dedicated hook that blocks any edit which would push the file past the cap. When the cap fires, the block does more than refuse &mdash; it coaches the historian to retry with a tighter narrative and to migrate any overflow into sibling documents (per-cycle deep-dives, a decisions log, technical appendices), with <code>evolution.md</code> becoming an executive summary that references those siblings rather than absorbing them. The historian&rsquo;s last mandatory step is to commit. That commit touches <code>evolution.md</code>, which becomes the new sync point, which means the drift counter resets to zero &mdash; and the next set of edits will eventually push it back up, and the cycle repeats.</p>
+
+                        <p>This is the <strong>ratchet pattern</strong>. A plugin cannot be edited indefinitely without periodically forcing the historian to re-narrate its evolution. The drift counter ensures it. The block ensures it. The fact that the historian&rsquo;s own work resets the counter &mdash; and that without that reset the next <code>[PLUGIN-LOCK]</code> deadlocks &mdash; ensures it.</p>
+
+                        <p>The pattern is portable. Anywhere a system needs to enforce a discipline-that-must-be-done-eventually, the same shape works: a counter that climbs with normal work, a block that fires when the counter crosses a threshold, and a corrective action whose own completion resets the counter. The discipline becomes mechanically inescapable.</p>
+
+                        <p>The lesson is small: <strong>read the work before changing it</strong>.</p>
+
+                        <p>The mechanism makes the lesson non-negotiable. The agent is not <em>suggested</em> to re-read the plugin&rsquo;s history before editing &mdash; a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed.</p>
+
+                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
+                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; The Historian Ratchet &mdash; Drift, Block, Reset]</p>
+                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> A circular flow diagram with four labeled stages connected by arrows. Stage 1: "Plugin commits accumulate" &mdash; a stack of commit blocks growing upward, with a counter at the side reading "drift = 1, 2, 3...". Stage 2: "Drift counter crosses threshold (default 5)" &mdash; the counter glowing red, a barrier appears blocking the next [PLUGIN-LOCK] request. Stage 3: "Historian subagent dispatched" &mdash; a small agent figure reading the commit log and writing into a labeled file evolution.md (with a 2000-word cap shown as a fill bar). Stage 4: "Historian commits &rarr; drift counter resets to 0" &mdash; the counter snaps back to 0, the barrier dissolves, and the cycle returns to Stage 1. The whole diagram suggests an ineluctable wheel &mdash; work cannot proceed without periodic narration. Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic &mdash; clean, minimal, slightly futuristic, subtle glow effects.</p>
+                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution.</p>
+                        </aside>
+
+                        <p>The ratchet looks like one mechanism, but it is actually three plugins working together. Recall the three-plugin sketch from earlier &mdash; here it is in full.</p>
+
+                        <p>The agent must be able to ask a <code>[PLUGIN-LOCK]</code> question. That depends on <code>question_discipline</code> recognizing the prefix and letting the question through; without that registration, the call is blocked before the user even sees it. The user&rsquo;s answer must then be captured and routed to the lock manager. That depends on <code>job_core</code>&rsquo;s split pre-call/post-call pair, which validates the question, captures the approval, and hands the result over. Finally, the edit must close cleanly under test. That depends on <code>plugin_integrity</code>&rsquo;s own safe-lock cycle, which runs the plugin&rsquo;s test suite when the lock closes and reverts the working tree if the tests fail.</p>
+
+                        <p>No single plugin enforces the historian ratchet. Three plugins compose to make it possible &mdash; <code>question_discipline</code> opens the asking surface, <code>job_core</code> carries the answer, <code>plugin_integrity</code> protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together.</p>
+
+                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
+                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; Three-Plugin Composition for the Historian Ceremony]</p>
+                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> Three labeled glass tiles arranged left to right, connected by a flowing ribbon labeled "the historian ratchet ceremony". Tile 1: "question_discipline" &mdash; shows a [PLUGIN-LOCK] prefix passing through a gate icon, captioned "opens the asking surface". Tile 2: "job_core" &mdash; shows a Q&amp;A pair being captured into a job-shaped container, captioned "carries the answer". Tile 3: "plugin_integrity" &mdash; shows a test-suite shield around a plugin folder with a checkpoint marker, captioned "protects the edit". Above all three tiles, a glowing arc labeled "ceremony" connects them, suggesting emergence from composition. Each tile glows in its own subtle hue but all three sit on the same shared substrate plane below them labeled "CLAUDE.md / data.json bus". Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic &mdash; clean, minimal, slightly futuristic, subtle glow effects.</p>
+                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> No single plugin enforces the ratchet &mdash; three single-concern plugins compose the ceremony, each contributing what it owns.</p>
+                        </aside>
+
+                        <p>Call this <strong>composed ceremony</strong>: narrow parts, structured interfaces, emergent rituals &mdash; the same shape as the <code>/compact</code> five-section template, the same shape as the ratchet itself. Narrow constraints composing into behaviors larger than any single constraint.</p>
+
+                        <p>The always-on layer is not a stack of independent guardrails sitting in parallel. It is a small, deliberate ring of single-concern guardrails composing into ceremonies none of them could enforce alone.</p>
+
+                        <p>That&rsquo;s the always-on layer in microcosm. Each plugin a small lesson. Each lesson backed by mechanical enforcement. Hygiene as code.</p>
+
+                        <hr>
+
+                        <h2>The Bus Is Just Substrate</h2>
+
+                        <p>The bus we built up across the CLAUDE.md hierarchy is substrate. The hierarchy itself, the always-on layer, the durable knowledge directory &mdash; together they form the <em>digital cortex</em> the seed agent rests on. They keep state, enforce work structure, and discipline conversation, all without doing any of the actual cognitive work.</p>
+
+                        <p>The actual work happens in the phasic layer. Five phases. One cognitive organ called CONDENSE. Tools forbidden in each phase that force the agent to think before acting.</p>
+
+                        <p>But a bus is just substrate. What USES it intelligently &mdash; that&rsquo;s the phasic brain.</p>
+
+                        <p class="punchline">Next.</p>
+
+                        <hr>
+                        <p><em>Essay 5 of 8 in the Hadosh Academy series on agent architecture.</em></p>
+                        <p><em>Previous: <a href="03_1-the-folder-is-alive.html">&ldquo;The Folder Is Alive&rdquo;</a> &mdash; <code>.claude/</code> turns any folder into an agent; cognitive metabolism brings it to life.</em></p>
+                        <p><em>Next: <a href="06-the-markov-phasic-brain.html">&ldquo;The Markov Phasic Brain&rdquo;</a> &mdash; five phases, one cognitive organ, and why forbidding tools is the pedagogy.</em></p>
+
+                    </div>
+
+                    <!-- Comments (Giscus) -->
+                    <div class="article-comments">
+                        <h2>Comments</h2>
+                        <script src="https://giscus.app/client.js"
+                            data-repo="hadi-nayebi/hadi-nayebi.github.io"
+                            data-repo-id="R_kgDOHL_tnQ"
+                            data-category="General"
+                            data-category-id="DIC_kwDOHL_tnc4C3cRQ"
+                            data-mapping="pathname"
+                            data-strict="0"
+                            data-reactions-enabled="1"
+                            data-emit-metadata="0"
+                            data-input-position="top"
+                            data-theme="dark"
+                            data-lang="en"
+                            data-loading="lazy"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Latest Articles</div>
+                    <div>
+                        <div class="article-card active">
+                            <div class="article-card-tags">
+                                <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
+                                <span class="tag tag-sm">Architecture</span>
+                                <span class="tag tag-sm">Seed Agent</span>
+                                <span class="tag tag-sm">Plugins</span>
+                            </div>
+                            <h3>The Always-On Digital Cortex</h3>
+                            <div class="date">May 2026 &bull; 36 min read</div>
+                        </div>
+                        <a href="03_1-the-folder-is-alive.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Vision</span>
+                                    <span class="tag tag-sm">Seed Agent</span>
+                                    <span class="tag tag-sm">Future of Work</span>
+                                </div>
+                                <h3>The Folder Is Alive</h3>
+                                <div class="date">May 2026 &bull; 17 min read</div>
+                            </div>
+                        </a>
+                        <a href="04-the-language-of-agents.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Vocabulary</span>
+                                </div>
+                                <h3>The Language of Agents</h3>
+                                <div class="date">March 2026 &bull; 18 min read</div>
+                            </div>
+                        </a>
+                        <a href="03-your-brain-was-never-built-for-this.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Society</span>
+                                    <span class="tag tag-sm">Evolution</span>
+                                </div>
+                                <h3>Your Brain Was Never Built for This</h3>
+                                <div class="date">March 2026 &bull; 16 min read</div>
+                            </div>
+                        </a>
+                        <a href="02-we-could-have-had-agi.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Architecture</span>
+                                    <span class="tag tag-sm">AGI</span>
+                                </div>
+                                <h3>We Could Have Had AGI By Now</h3>
+                                <div class="date">February 2026 &bull; 20 min read</div>
+                            </div>
+                        </a>
+                        <a href="01-llms-are-not-the-agents.html" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-card-tags">
+                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
+                                    <span class="tag tag-sm">Agents</span>
+                                    <span class="tag tag-sm">AI</span>
+                                    <span class="tag tag-sm">Fundamentals</span>
+                                </div>
+                                <h3>LLMs Are Not the Agents</h3>
+                                <div class="date">February 2026 &bull; 17 min read</div>
+                            </div>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/theme-manager.js?v=20260508"></script>
+    <script src="../js/components.js?v=20260508"></script>
+</body>
+
+</html>

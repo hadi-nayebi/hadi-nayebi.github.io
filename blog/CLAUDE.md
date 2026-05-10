@@ -123,6 +123,48 @@ Every blog post follows the same structure:
 - **Audio label** and **read time** must show the same number
 - **All instances must match:** article meta, sidebar cards (in ALL posts), blog.html index cards, .md frontmatter
 
+## Audio Transcript Rules (NON-NEGOTIABLE)
+
+OpenAI's `tts-1-hd` model (voice: onyx) does **not support SSML**. It reads input verbatim. Acronyms, snake_case identifiers, footer markers, and bracketed prefixes mispronounce or drop entirely if fed raw.
+
+**Tooling:**
+- `tools/generate_blog_transcript.py` strips markdown AND applies pronunciation guards. Cheap (no API). Run on every prose change: `python3 tools/generate_blog_transcript.py blog/<slug>.md blog/<slug>.transcript.md`. Output is rewritten with `final: false` in the frontmatter every regen.
+- `tools/generate_blog_audio.py` reads the transcript and runs TTS. **Costs ~$0.75 per 35–40 min essay on `tts-1-hd`.** Has a 4-attempt retry guard for transient API errors.
+
+**Cost gate (NON-NEGOTIABLE):** the audio script refuses to run unless the transcript's frontmatter has `final: true`. The transcript is regenerated as `final: false` every time, so the workflow is:
+
+1. Edit `.md` → run the transcript tool (cheap, no API). Re-read the `.transcript.md` to confirm pronunciation guards landed and prose reads cleanly.
+2. When the transcript is the version you want to spend money on, **manually flip** the frontmatter line to `final: true`.
+3. Run the audio tool.
+4. If you edit the `.md` again, the transcript regen resets the flag to `false` — by design, since the content changed.
+
+This prevents accidentally re-rendering during iteration. Total spend per essay should be 1–3 audio generations max, not 6–8.
+
+**Pronunciation guards (extend `PRONUNCIATION_GUARDS` in the transcript tool when adding new identifiers):**
+
+| Source form | Audio form | Why |
+|---|---|---|
+| `OPEVC` | `O P E V C` | Confirmed dropped/garbled by tts-1-hd. Letter-spacing forces initialism. |
+| `brain_guard`, `job_core`, `plugin_integrity`, `interaction_summary`, `question_discipline`, `phasic_system` | `brain-guard`, `job-core`, … | Underscores read as awkward pause; hyphens read as compound noun. |
+| `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` | "the OBSERVE/PLAN/EXECUTE/VERIFY footer" | Triple-dash markers read as "dash dash dash" — meaningless to listener. |
+| `[PLUGIN-LOCK]`, `[JOB-COMPLETE]`, `[WAITING]`, … | `plugin-lock`, `job-complete`, `waiting`, … | Brackets are silent; ALLCAPS-HYPHEN content drops same way as OPEVC. |
+| `<plugin_name>`, `<id>`, `<text>` | "the plugin name" / dropped | Angle-bracket placeholders read as "less than … greater than". |
+
+**Don't guard these — TTS handles them:**
+- `CLAUDE.md`, `voice.xml`, `evolution.md` — read as "Claude dot M D" etc., parseable.
+- `.claude/`, `.claude/knowledge/` — "dot claude" reads naturally.
+- Phase names OBSERVE / PLAN / EXECUTE / VERIFY / CONDENSE — real words.
+- `/compact`, `/memory` — slash-commands read as "slash compact", which is meaningful.
+
+**Authoring rules for blog prose:**
+1. **The transcript is for the ear, the .md is for the eye.** Different artifacts.
+2. **No naked identifier dumps.** Lists of 3+ inline-code identifiers are an audio failure waiting to happen — name the **category** first, anchor with at most ONE example. (Example: not "blocks `Edit`, `Write`, `MultiEdit`, `Read`, `Bash`, and `AskUserQuestion`" but "blocks every productive tool the agent has — reads, writes, shell calls, even further questions".)
+3. **First mention rule for acronyms:** unfold inline at first use ("OPEVC — Observe, Plan, Execute, Verify, Condense") so the listener anchors before any abbreviated reference.
+4. **Punctuation is pacing.** Periods give clean pauses; em-dashes give shorter beats; semicolons give half-beats. Avoid bare hyphens mid-acronym.
+5. **TTS is non-deterministic.** Same input, different runs can flip pronunciation. Listen-test each generation; expect to regen if a critical term lands wrong.
+
+**When adding a new acronym, identifier, or marker to the seed agent:** extend `PRONUNCIATION_GUARDS` in `tools/generate_blog_transcript.py` BEFORE writing the blog that uses it. Otherwise the audio will drop it.
+
 ## Biological Terminology Convention
 
 When borrowing biological terms, **always prefix with "cognitive" or "digital"**:
@@ -166,7 +208,7 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 **Blog 4:** Consolidate terminology. Bridge from conceptual (1-3) to architectural (5-8). Vocabulary scaffold for the rest of the series.
 
-**Blog 5 — The Single-Concern Digital Cortex:** The seed agent doesn't have memory; it has a **bus**. Five always-on plugins each own one concern. State lives in a layered CLAUDE.md hierarchy — not the chat. **Tier-3 close:** the historian ratchet (must re-read your own work before editing).
+**Blog 5 — The Always-On Digital Cortex:** The seed agent doesn't have memory; it has a **bus**. Always-on plugins each own one concern. State lives in a layered CLAUDE.md hierarchy — not the chat. **Tier-3 close:** the historian ratchet (must re-read your own work before editing).
 
 **Blog 6 — The Markov Phasic Brain:** Phases are cognitive isolation chambers. **Forbidding tools is the pedagogy.** The CONDENSE 7-step waterfall is the brain's growth mechanism. **Tier-3 close:** the multiplier is backward (3× = surgical, 0.5× = deep) — honest forecasting at phase entry.
 
@@ -277,7 +319,7 @@ Each Part-2 blog must include callbacks to earlier blogs (1, 2, 3, 3.1, 4) AND f
 | 5 | 1 (filesystem = agent — now we name the files), 3.1 (.claude/ + sibling work — now we open .claude/), 4 (vocabulary — hooks, plugins) | 6 (phases USE the bus), 7 (plugin anatomy makes the bus possible) |
 | 6 | 5 (the bus the phases write into), 1 (OPEVC was planted — now formal), 3.1 (cognitive metabolism — now phasic) | 7 (the kit lets you build new phases), 8 (multipliers + waterfall as long-horizon discipline) |
 | 7 | 5 (single-concern principle), 6 (the phases are themselves plugins), 4 (vocabulary check: hooks, voices, agents) | 8 (the kit grows your seed over time) |
-| 8 | 5 (always-on cortex), 6 (phasic discipline), 7 (the kit), 1 (your brain needs this — now you have it) | (no forward — series closes) |
+| 8 | 5 (always-on digital cortex), 6 (phasic discipline), 7 (the kit), 1 (your brain needs this — now you have it) | (no forward — series closes) |
 
 **Rule:** When referencing a concept from an earlier blog, include a brief hint + link. One sentence, not a paragraph.
 
@@ -292,7 +334,7 @@ Each blog (except B8) ends with a one-line forward bridge in the **body** (not j
 
 ### Blogs 5-8: Per-Blog Pillars
 
-**Blog 5 — The Single-Concern Digital Cortex** (~3000-4000 words)
+**Blog 5 — The Always-On Digital Cortex** (~3000-4000 words)
 - §1: The 3-layer architecture (always-on / phasic / meta) — sets up the rest of Part 2
 - §2: Why "single concern" matters (counter-example: monolithic agent guards drift, mix concerns, become unfixable)
 - §3: The 5 always-on plugins, one paragraph each — `plugin_integrity`, `brain_guard`, `job_core`, `interaction_summary`, `question_discipline`
@@ -341,7 +383,7 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-single-concern-digital-cortex` | The Single-Concern Digital Cortex (working) | **drafting v0.1.1** |
+| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.26.0** |
 | 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **outlined** |
 | 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **outlined** |
 | 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **outlined** |
