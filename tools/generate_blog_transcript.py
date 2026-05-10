@@ -91,6 +91,18 @@ def strip_markdown(src: str) -> str:
     src = re.sub(r"^---\n.*?\n---\n", "", src, count=1, flags=re.DOTALL)
     # HTML comments (image placeholders, etc.)
     src = re.sub(r"<!--.*?-->", "", src, flags=re.DOTALL)
+    # Non-narrated meta-navigation lines (series position, prev/next, companion).
+    # These exist for the eye on the website footer; the ear does not need them.
+    # Match each as a full italicized line (`*...*` on its own line).
+    meta_patterns = [
+        r"^\*Essay \d+(?:\.\d+)? of 8 in the Hadosh Academy series on agent architecture\.[^*\n]*\*\s*$",
+        r"^\*Series interlude[^*\n]*\*\s*$",
+        r"^\*Previous: \[[^\]]+\]\([^)]+\)[^*\n]*\*\s*$",
+        r"^\*Next: \[[^\]]+\]\([^)]+\)[^*\n]*\*\s*$",
+        r"^\*Companion: [^*\n]+\*\s*$",
+    ]
+    for pat in meta_patterns:
+        src = re.sub(pat, "", src, flags=re.MULTILINE)
     # Code blocks (fenced)
     src = re.sub(r"```[^\n]*\n.*?\n```", "", src, flags=re.DOTALL)
     # Horizontal rules (`---` on its own line) — but NOT footer anchors

@@ -5,7 +5,7 @@ slug: "the-always-on-digital-cortex"
 read_time: "36 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.28.0
+version: v0.29.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -40,7 +40,7 @@ The **phasic layer** activates one plugin at a time, dictated by which phase the
 
 Two layers. One substrate underneath.
 
-Underneath both layers sits the substrate the previous section listed. The two plugin layers play different roles against it. The always-on layer enforces the rules that protect the substrate: locking plugins during edits, watching the context budget, capturing jobs and interactions, gating questions through registered prefixes. The phasic layer fills the working-memory bus during each cycle, then absorbs the durable parts back into longer-term memory at the end.
+Underneath both layers sits the substrate the previous section listed. The difference between the two layers is not their relationship to it — that varies plugin by plugin — but their relationship to phase. The always-on layer runs continuously, each plugin owning its own concern (plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning), each with its own state, each touching (or not touching) the hierarchy in its own way. The phasic layer activates one plugin at a time, dictated by the active job's current phase, and it is the layer that uses the hierarchy as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, plugin definitions, and other forms of memory at the end.
 
 <!-- IMAGE PLACEHOLDER
 
@@ -219,17 +219,15 @@ The **knowledge directory** is the durable layer. When something has been learne
 
 **Memory files** sit a layer beyond that — cross-session preferences and feedback that should outlive any individual project. This layer is managed by Claude Code itself, not by the seed agent: the CLI maintains them in the user's home directory under `~/.claude/projects/<encoded-path>/memory/`, with a small `MEMORY.md` index loaded on every session start. Each entry is a typed file (`feedback_*.md`, `user_*.md`, `project_*.md`, `reference_*.md`) the agent can grep by category when a session starts cold. The current seed-agent prototype does not extend this layer — it inherits Claude Code's native memory behavior unmodified. A future plugin could hook into it deliberately, using the entries as a source of context injections at session start, but no such plugin exists yet.
 
-Every plugin in the system, in some way, depends on the bus. But not every plugin writes to it.
-
-The **always-on plugins** keep their own state in hidden files inside their plugin directories — files the seed agent itself cannot read or edit directly. Every state mutation goes through a plugin-owned script. Some of that script's commands are public, callable as part of the agent's workflow (`job.sh focused` is a typical example); others are flagged as internal-only and restricted to other scripts and hooks within the seed, so the agent cannot reach them at all. None of these plugins treat `CLAUDE.md` as their primary write target. What they *read* from the bus is the rules: the size limits declared in the root brain, the registered question prefixes, the operating thresholds for compaction, the phase definitions.
+Every always-on plugin keeps its own state in hidden files inside its plugin directory — files the seed agent itself cannot read or edit directly. Every state mutation goes through a plugin-owned script. Some of that script's commands are public, callable as part of the agent's workflow (`job.sh focused` is a typical example); others are flagged as internal-only and restricted to other scripts and hooks within the seed, so the agent cannot reach them at all. None of these plugins treat `CLAUDE.md` as their primary state surface. The relationship to the hierarchy varies plugin by plugin — `plugin_integrity` polices the four phase markers from removal but otherwise leaves `CLAUDE.md` content free to edit, while the others are mostly orthogonal, owning concerns (context budget, job lifecycle, interaction summarization, question discipline) that live in their own data files.
 
 The **phasic plugins** generate the bus's content. The choreography of how each phase writes its footer and how CONDENSE absorbs them is the subject of [Essay 6](06-the-markov-phasic-brain.html).
 
-The relationship reduces cleanly. The always-on layer protects the bus. The phasic layer fills it and absorbs it. Every plugin, eventually, reads it. In the current prototype, well over a hundred `CLAUDE.md` files across the brain and the project carry the four phase footers. The footer convention is the protocol.
+The relationship is asymmetric. The phasic layer is the system that actively uses the hierarchy — its phases write into footers during the cycle, and CONDENSE absorbs the durable parts upward into bodies, sideways into knowledge files, and into voice files, plugin definitions, even new plugins, at cycle close. The always-on layer mostly does not — each of its plugins runs its own concern through its own state, with at most narrow points of contact (`plugin_integrity` guards the phase markers; the rest are orthogonal). In the current prototype, well over a hundred `CLAUDE.md` files across the brain and the project carry the four phase footers. The footer convention is the protocol — and the phasic layer is what writes through it.
 
 This is the bus.
 
-In [Essay 1](01-llms-are-not-the-agents.html), I claimed that *the agent is the filesystem*. This is what that meant, mechanically. The filesystem is not a passive store. It is an active bus, with a hierarchy, with rules about what reads where and what writes where, with phases that inflate and condense it across a cognitive cycle. The always-on layer is what keeps the bus healthy while everything else is happening.
+In [Essay 1](01-llms-are-not-the-agents.html), I claimed that *the agent is the filesystem*. This is what that meant, mechanically. The filesystem is not a passive store. It is an active hierarchy, with rules about what reads where and what writes where, with phases that inflate and condense it across a cognitive cycle. The always-on layer runs alongside that — phase-independent, each plugin minding its own concern regardless of where the cycle is.
 
 ---
 
