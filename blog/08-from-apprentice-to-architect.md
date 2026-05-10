@@ -18,7 +18,7 @@ og_image: "assets/images/blog/from-apprentice-to-architect.png"
 
 The previous three essays gave you the parts.
 
-[Essay 5](05-the-single-concern-digital-cortex.html) named the always-on layer that protects the bus. [Essay 6](06-the-markov-phasic-brain.html) named the phases that fill it. [Essay 7](07-the-plugin-kit.html) named the kit that lets new plugins be born.
+[Essay 5](05-the-always-on-digital-cortex.html) named the always-on layer and the CLAUDE.md layer it runs alongside. [Essay 6](06-the-markov-phasic-brain.html) named the phases that fill it. [Essay 7](07-the-plugin-kit.html) named the kit that lets new plugins be born.
 
 This essay is about what happens when those parts are in *your* hands.
 
@@ -32,7 +32,7 @@ You start as the seed's apprentice. Over time, the seed becomes yours. By the ti
 
 ## Jobs Are the Unit of Growth
 
-Everything the agent does happens inside a *job*. [Essay 5](05-the-single-concern-digital-cortex.html) introduced jobs as the lifecycle layer the always-on `job_core` plugin owns. This essay opens what jobs actually look like in practice — because the *kind* of job you start determines the kind of cognition the seed will exercise, and therefore the kind of growth that cycle will produce.
+Everything the agent does happens inside a *job*. [Essay 5](05-the-always-on-digital-cortex.html) introduced jobs as the lifecycle layer the always-on `job_core` plugin owns. This essay opens what jobs actually look like in practice — because the *kind* of job you start determines the kind of cognition the seed will exercise, and therefore the kind of growth that cycle will produce.
 
 The current prototype supports four job formats. Each has its own shape, its own gate, its own lesson.
 
@@ -124,7 +124,7 @@ A mature seed is a small brain over a large knowledge layer.
 
 The knowledge directory under `.claude/knowledge/` is where most of what the seed has learned actually lives.
 
-[Essay 5](05-the-single-concern-digital-cortex.html) introduced it as the durable counterpart to working CLAUDE.md files. [Essay 6](06-the-markov-phasic-brain.html) showed CONDENSE's step six routing `[KNOWLEDGE] topic-slug` markers into it. [Essay 7](07-the-plugin-kit.html) showed each plugin owning a slice of it (`.claude/knowledge/<plugin>/`).
+[Essay 5](05-the-always-on-digital-cortex.html) introduced it as the durable counterpart to working CLAUDE.md files. [Essay 6](06-the-markov-phasic-brain.html) showed CONDENSE's step six routing `[KNOWLEDGE] topic-slug` markers into it. [Essay 7](07-the-plugin-kit.html) showed each plugin owning a slice of it (`.claude/knowledge/<plugin>/`).
 
 What I want to name here is what the knowledge directory *is*, structurally, after a few months of accumulation.
 

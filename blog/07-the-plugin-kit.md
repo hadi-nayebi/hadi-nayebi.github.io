@@ -18,13 +18,13 @@ og_image: "assets/images/blog/plugin-kit.png"
 
 A plugin is a cell.
 
-The metaphor isn't decorative. The cell is what the previous two essays have been pointing at. [Essay 5](05-the-single-concern-digital-cortex.html) made the case that the always-on layer is several small organisms, each owning one concern, each communicating through the bus. [Essay 6](06-the-markov-phasic-brain.html) made the case that the phasic layer is more of the same — each phase is its own plugin, and even the orchestrator is one. Everything that runs inside the seed agent runs as a plugin.
+The metaphor isn't decorative. The cell is what the previous two essays have been pointing at. [Essay 5](05-the-always-on-digital-cortex.html) made the case that the always-on layer is several small organisms, each owning one concern, each communicating through the bus. [Essay 6](06-the-markov-phasic-brain.html) made the case that the phasic layer is more of the same — each phase is its own plugin, and even the orchestrator is one. Everything that runs inside the seed agent runs as a plugin.
 
 Which means the plugin is the *unit* of the brain.
 
 This essay opens that unit. It takes a plugin apart, names every cognitive organ inside it, and shows the discipline that lets the brain create new ones safely. It is the densest essay in the series, because the kit is what makes everything else possible.
 
-The vocabulary from [Essay 4](04-the-language-of-agents.html) — hooks, voices, agents — gets its mechanical meaning here. The single-concern principle from [Essay 5](05-the-single-concern-digital-cortex.html) gets its anatomy. The phases from [Essay 6](06-the-markov-phasic-brain.html) reveal themselves as instances of the same template.
+The vocabulary from [Essay 4](04-the-language-of-agents.html) — hooks, voices, agents — gets its mechanical meaning here. The single-concern principle from [Essay 5](05-the-always-on-digital-cortex.html) gets its anatomy. The phases from [Essay 6](06-the-markov-phasic-brain.html) reveal themselves as instances of the same template.
 
 ---
 
