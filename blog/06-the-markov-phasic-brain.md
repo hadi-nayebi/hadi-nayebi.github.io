@@ -2,10 +2,10 @@
 title: "The Markov Phasic Brain"
 date: "May 2026"
 slug: "the-markov-phasic-brain"
-read_time: "30 min"
+read_time: "40 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, CONDENSE]
 status: drafting
-version: v0.11.0
+version: v0.20.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -24,20 +24,31 @@ This essay is about what fills it, and how.
 
 The seed agent's cognitive work happens in **phases**. A phase is a temporary mode of operation, scoped to one job, with a strictly defined purpose, a strictly defined set of allowed tools, and a strictly defined kind of output. One phase is active at a time. Phases progress in a fixed order. The agent cannot skip a phase, cannot blend two phases, cannot stay inside a phase indefinitely.
 
-The current prototype runs five phases plus one cognitive organ: **observe, plan, execute, verify, and condense** — OPEVC for short, "Oh Pee Ee Vee See", the name the brain calls its own cycle. The architecture supports adding more. A custom seed could introduce a `research` phase between observe and plan, or split execute into `execute` and `integrate`. The five-phase shape is the prototype. The discipline of compartmentalized phasing is the architecture.
+The current prototype runs five phases: *observe, plan, execute, verify, and condense*. OPEVC is the acronym, the name the brain calls its own cycle. The fifth phase, CONDENSE, plays a different role from the other four. The first four do work *on the project*; CONDENSE does work *on the brain*. We call CONDENSE the cycle's cognitive organ for that reason. Still, it is one of the five phases, not a sixth thing. The architecture supports adding more. A custom seed could introduce a `research` phase between observe and plan, or split execute into `execute` and `integrate`. The five-phase shape is the prototype. The discipline of compartmentalized phasing is the architecture.
+
+Two states travelled with us across the previous essay without being named: *idle* and *gmode*. We left them out of Essay 5 to keep the substrate description clean. They come back now, because the full Markov brain does not run without them.
+
+What we are about to open is what [Essay 3.1](03_1-the-folder-is-alive.html) called the agent's *cognitive metabolism* — the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.
 
 This essay opens that discipline compartment by compartment.
 
-<!-- IMAGE PLACEHOLDER:
-  Concept: The OPEVC cycle wheel. Five phase wedges (OBSERVE, PLAN, EXECUTE, VERIFY) circling
-  a central CONDENSE organ that sits inside the wheel — not on the rim. Forward arrows around
-  the rim (idle → observe → plan → execute → verify → condense → idle). Faded backward arrows
-  (verify → execute, verify → plan, verify → observe). CONDENSE has only an inbound arrow
-  (verify → condense → idle); no backward edge.
-  Visual style: dark glassy panel, indigo/violet palette, clean geometric forms.
-  Caption: "The phasic cycle. Forward edges advance automatically; backward edges are explicit."
--->
+---
 
+## From Action Space to Markov Brain
+
+In [Essay 1](01-llms-are-not-the-agents.html) we drew the seed agent's starting condition as an **action space** — the set of moves a CLI agent can pick at any given moment. Use deep reasoning. Use tools — read, write, edit, run. Ask for permission. Delegate to another agent. Stop. Each step the LLM samples from those moves probabilistically. The next step samples again. The result, without further structure, is what that essay called a **random walk** — a Markov chain where every path is equally likely, and the same prompt twice can produce two different journeys.
+
+Then we added the first layer of structure: hooks. Hooks fire on every tool call, every stop, every prompt. They can block an action, modify it, or trigger another. In Essay 1's framing, hooks turn the **probabilistic chain into a deterministic pipeline**. The LLM still proposes the next move; the hooks decide whether the move is allowed.
+
+The phasic layer takes that idea one fractal step further.
+
+A phase is a flavor of the action space. Inside OBSERVE, the action space is narrowed — write tools to project files are gone, only the read-and-synthesize moves are available. Inside EXECUTE, the action space widens for the altered list and tightens elsewhere. Each phase is a *customized Markov chain* — its own restricted action space, its own hook-enforced rules, its own bias toward the kind of move that phase wants to encourage.
+
+The cycle on top is itself a Markov chain — but its "actions" are not individual tool calls. Its actions are the phases. The agent moves between phases. Each move from one phase to the next obeys gates and edges declared by the orchestrator plugin. **A Markov brain whose moves are themselves Markov chains.** Fractal, by design.
+
+This is what the title points at. The phasic brain is Markov on two levels. Inside any phase, the agent's tool calls are a constrained action-space chain. Across the cycle, the phases themselves are a state machine with declared edges and no hidden continuation.
+
+![The OPEVC cycle. Forward edges (white) advance automatically. Backward edges (brown) are explicit choices. Idle holds the agent between cycles; condense returns to idle.](../assets/images/blog/opevc-cycle-blackboard.png)
 
 ---
 
@@ -57,6 +68,40 @@ That justification is the load-bearing claim of the phasic layer.
 
 ---
 
+## The Full Transition Map
+
+The rim of the cycle has more edges than Essay 5 needed to show. Here is the complete map the orchestrator enforces.
+
+**Forward edges** fire automatically when the phase-commit script's gate passes:
+
+- `idle → observe` (start a new cycle)
+- `observe → plan`
+- `plan → execute`
+- `execute → verify`
+- `verify → condense`
+- `condense → idle` (close the cycle)
+
+**Backward edges** are explicit — the agent chooses where to roll back to:
+
+- `observe → idle` (bail — the cycle is preserved, no new cycle is consumed on re-entry)
+- `plan → observe`
+- `execute → observe` or `execute → plan`
+- `verify → execute`, `verify → plan`, or `verify → observe` (the three-destination routing — minor fix, design flaw, or context gap)
+
+No backward edge from condense. Once the cycle reaches CONDENSE, the only exit is forward to idle. The brain refuses to un-consolidate. We come back to *why* in the CONDENSE section.
+
+**The gmode side-channel** — every phase, including idle, has one extra edge that loops back to itself through gmode. Gmode is short for *generic mode*. It is the freestyle phase: a deliberately unconstrained mode where none of the OPEVC tool-restriction guards apply, used for work that doesn't fit the OPEVC ceremony.
+
+Entry is the same regardless of which phase you came from. The agent writes a `[GMODE]` prefixed question to the user with a substantive reason — at least a hundred words explaining why the work needs to happen outside the current phase's compartment. The orchestrator stashes the current phase, the agent enters gmode, and the per-phase guards step aside.
+
+Inside gmode the agent can do real work for as long as it needs. Fix a deadlock. Make a small plugin edit that doesn't merit a full OPEVC cycle. Run a plugin-lock ceremony. The mode is intentionally unopinionated. Exit is explicit (the agent calls a small CLI to leave gmode) and requires a clean git working tree — the same discipline that gates every phase boundary. The home phase is restored atomically; the cycle counter does not advance.
+
+How gmode is used is a customization choice. The prototype was built running every job through OPEVC because the work was building the seed agent itself. Once the seed agent ships open-source, users will run their project work through OPEVC and may push routine plugin maintenance through gmode. Or define new phases. Or split phase plugins by job type. Gmode is the general-purpose escape hatch from the prototype's current ceremony, and the seed-cultivator decides what flows through it.
+
+Counting it all together, the prototype's full state set is `idle, observe, plan, execute, verify, condense, gmode` — five OPEVC phases, one meta-state, and one freestyle side-channel. The rest of the essay opens the OPEVC compartments. Idle and gmode are the bookends.
+
+---
+
 ## The Discipline Is the Tool Restrictions
 
 A phase is not just a label. It is a different *write scope*.
@@ -69,7 +114,7 @@ VERIFY has scripts-only access. The agent can run tests, run scripts, run valida
 
 CONDENSE has the most permissive *but most restricted* scope: it can write almost anywhere inside `.claude/`, including across plugins, but it cannot touch project files at all.
 
-Forbidding tools is not a limitation. It is the pedagogy. Call this **tool restriction as pedagogy** — the discipline doesn't come from telling the agent what to do; it comes from making the wrong move impossible.
+Forbidding tools is not a limitation. It is the pedagogy. Call this *tool restriction as pedagogy* — the discipline doesn't come from telling the agent what to do; it comes from making the wrong move impossible.
 
 When OBSERVE is read-only, the agent is forced to gather context before it can act. There is no escape into "let me just patch this real quick" — the patch tool isn't available.
 
@@ -101,6 +146,55 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
 
 ---
 
+## A Quick Map Before We Dive In
+
+Before opening each phase compartment, here is the operational map at a glance. Each line below names the phase, its essence, and what it is on the hook to produce.
+
+**IDLE** — the meta-state between cycles.
+- Hold the agent until the next prompt activates a job
+- Refuse all project-file writes; only the orchestrator's own CLI is unlocked
+- Let the agent read freely, but commit nothing until OBSERVE begins
+
+**OBSERVE** — gather context before any plan can form.
+- Populate the working-memory CLAUDE.md files with relevant context
+- Dispatch parallel research subagents and synthesize their returns
+- Refuse code edits — the only allowed write is into CLAUDE.md
+- Cross the exit threshold only after enough investigation has happened
+
+**PLAN** — turn observations into a binding contract.
+- Decide single-cycle versus multi-cycle and lock the choice for the rest of the job
+- Declare the *altered list* — the directories EXECUTE will be allowed to touch
+- Write acceptance criteria VERIFY will check against
+- Refuse code edits — the contract is what gets written, not the work
+
+**EXECUTE** — build what the plan declared, in checkpoints.
+- Edit project files, but only inside the altered list the plan locked
+- Commit small, focused checkpoints; never one long uncommitted run
+- Capture *execution notes* in the working CLAUDE.md so the cycle stays narratable
+- Delegate parallel file work to execute subagents; keep the main session on the spine
+
+**VERIFY** — judge prior work with independent eyes.
+- Run scripts and validators; refuse all code edits in this phase
+- Dispatch auditor subagents to read the executed work without bias
+- Route the cycle: forward to CONDENSE, backward to EXECUTE/PLAN/OBSERVE
+- Record the rollback choice as part of the job's history
+
+**CONDENSE** — consolidate the cycle's learnings into the brain.
+- Walk a strict seven-step waterfall that routes content to its durable home
+- Consume marker types the prior phases dropped into footers
+- Compress the working CLAUDE.md back to a clean state
+- Lock forward to idle; no escape hatch back to verify
+
+**GMODE** — the freestyle side-channel from any phase.
+- Enter via a `[GMODE]` user question with a substantive reason (≥100 words)
+- Run unconstrained work — no OPEVC tool-restriction guards apply
+- Exit explicitly with a clean git tree; the home phase resumes atomically
+- Host work that doesn't fit the OPEVC ceremony — deadlock fixes, plugin maintenance, custom workflows
+
+That is the operational shape. The rest of this essay opens each phase one at a time and explains what makes its compartment work.
+
+---
+
 ## OBSERVE — Read Wide, Write Once
 
 OBSERVE is the entry phase. Most jobs start here. It's also the phase that gets re-entered after a verification failure, when the agent has discovered the plan was wrong and needs to re-gather context.
@@ -109,13 +203,11 @@ The job of OBSERVE is to populate the working memory — the relevant CLAUDE.md 
 
 The only thing the agent is allowed to write in OBSERVE is CLAUDE.md content. That single restriction, more than anything else, is what forces observation to actually happen. There is no escape into action.
 
-OBSERVE is also where two of the most distinctive seed-agent mechanisms live. We meet them here, and they will return throughout the rest of the essay.
+OBSERVE is also where the most distinctive seed-agent mechanism lives. We meet it here, and it will return through every phase that follows.
 
-The first is the **multiplier sentinel**. Every phase, on entry, has a multiplier that is initially zero. Tools are locked until the agent sets it. The setter is a small CLI call that the agent must make as its very first action — picking a value from a fixed range between 0.5 and 3.0. Once set, the multiplier cannot be changed for that phase entry. The same pattern applies to every other phase. We come back to what the multiplier *means* in the tier-3 close — it is more interesting than it looks.
+The mechanism is what the prototype calls the **multiplier sentinel**: a per-phase scalar that starts at zero and locks every tool until the agent sets a real value. The setter is a small CLI call the agent must make as its very first action — picking a value from a fixed range between 0.5 and 3.0. Once set, the value cannot be changed for that phase entry. The same pattern applies to every other phase. We come back to what the value *means* — and why a smaller number declares a larger phase — at the close of this essay. It is more interesting than it looks.
 
-The second is the **point-budget gate**. Inside the phase, every tool call earns points on a fixed schedule that biases toward synthesis. Writing into CLAUDE.md earns the most; launching a research subagent earns next-most; reading and listing earn modestly; the cheapest tools earn a single point. The schedule is what tells the system "enough observation has happened to justify advancing to plan."
-
-The schedule isn't just an exit threshold. Two intermediate gates fire inside the phase. A *minimum-synthesis* gate blocks any write into CLAUDE.md until the agent has read enough to have something worth writing — you have to read before you can write. A *maximum-accumulation* gate blocks further reading once the agent has accumulated context without writing, forcing it to synthesize before continuing to gather. The phase cannot be exited until a fixed total has been crossed.
+OBSERVE also has two intermediate gates that shape the rhythm of the phase from the inside. The first is a *minimum-synthesis* gate: the agent has to read enough before any write into CLAUDE.md is allowed. The block message the agent sees is plain — "you have to read before you can write." The second is a *maximum-accumulation* gate: once the agent has read for a while without synthesizing, further reading is blocked until it puts something into CLAUDE.md. The block message is similarly plain — "you have read enough; synthesize before continuing." The arithmetic underneath those gates is hidden from the agent; only the block messages surface, and only when a gate fires.
 
 OBSERVE also dispatches its share of subagents. A typical OBSERVE phase will fan out two to four research subagents in parallel, each pursuing a different question, each returning a structured synthesis. The main session orchestrates; the subagents investigate. The roster of specialized observe subagents (read-only researchers, comparison agents, web-fetchers, and so on) is currently around a dozen. The 80/20 split between main-session orchestration and subagent execution — and why the architecture insists on it — is the subject of [Essay 7](07-the-plugin-kit.html).
 
@@ -129,7 +221,7 @@ PLAN is also read-only against project files. The agent can still read whatever 
 
 The first thing the agent does on entering PLAN, after the multiplier, is decide whether the job needs a plan file at all.
 
-The decision is binary. Either this is a single-cycle job — no plan document, the contract lives in the working CLAUDE.md and dissolves with the cycle — or this is a multi-cycle job, in which case the agent declares a plan-file name. EXECUTE will create the named document. VERIFY will edit it. Future PLAN cycles will read it back as a long-term contract that survives across cycles. The decision is made once, in cycle 1, and locks for the remainder of the job.
+The decision is binary. Either this is a single-cycle job — no plan document, the contract lives in the working CLAUDE.md and dissolves with the cycle — or this is a multi-cycle job, in which case the agent declares a plan-file name. EXECUTE will create the named document and write to it. VERIFY will record verification results into CLAUDE.md and stage the plan file as part of its commit, but it does not modify the plan's content directly. Future PLAN cycles will read the plan file back as a long-term contract that survives across cycles. The decision is made once, in cycle 1, and locks for the remainder of the job.
 
 Plan documents live at a known path inside the agent's knowledge directory. Their structure is opinionated. Each one carries a stated goal, an acceptance-criteria list, the *altered list* — the directories EXECUTE will be allowed to touch, [introduced in the previous essay](05-the-always-on-digital-cortex.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe.
 
@@ -157,7 +249,7 @@ The phase is structured around *checkpoints* — short, focused commits that fin
 
 EXECUTE writes two things: the code, and *execution notes* in the working CLAUDE.md. The notes are short — what surprised the agent, what decisions the agent made when the plan left a judgment call open, what the next phase should know. The notes are what turn a sequence of commits into a coherent narrative. They will be one of the things CONDENSE absorbs.
 
-EXECUTE is also where subagent dispatch shows up most heavily, and the point schedule encodes that explicitly. Every execute subagent the main session launches grants the session a small *direct-action budget* — a handful of extra writes the main session is allowed to make on its own. Every project file the main session opens itself spends some of that budget back. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate parallel implementation to its execute subagents and to keep its own context window clean, rather than reading every file itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change.
+EXECUTE is also where subagent dispatch shows up most heavily, and the point schedule encodes that explicitly. Every execute subagent the main session launches grants the session a small *direct-action budget* — a handful of extra writes the main session is allowed to make on its own. Every project file the main session edits itself spends some of that budget back. Reading project files does not consume budget; only edits and writes outside `.claude/` do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate parallel implementation to its execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change.
 
 The cap on parallel execute subagents is two-in-flight, not unbounded. Heavier fan-out risks the same file being touched twice and a merge collision the agent then has to spend a checkpoint cleaning up. Two-in-flight is enough for genuine parallelism on independent files, narrow enough to keep the agent's context coherent. We will come back to the discipline of subagent dispatch in [Essay 7](07-the-plugin-kit.html).
 
@@ -169,9 +261,9 @@ When EXECUTE believes the plan is implemented, it commits the final checkpoint a
 
 VERIFY is scripts-only.
 
-The agent cannot edit code in VERIFY. It can read anything — the broadest read scope of any phase, by design. It can run tests. It can run validators. It can dispatch *auditor* subagents — read-only researchers whose entire job is to read the executed work and report whether each acceptance criterion holds.
+The agent cannot edit code in VERIFY. It can read anything — the broadest read scope of any phase, by design. It can run tests. It can run validators. And it can dispatch a particular class of subagent — *auditors* — whose entire job is to read the executed work and report whether each acceptance criterion holds.
 
-The auditors are deliberately heterogeneous. One re-walks the working memory the OBSERVE phase produced and asks whether the planning was actually grounded in it. One reads the plan against the executed change and asks whether each acceptance criterion was met. One walks the cycle's commit graph and asks whether the checkpoints tell a coherent story. The roster (currently around five auditors, one per cycle slice) is composed so that no single perspective dominates. Every auditor is read-only. None of them are allowed to fix what they find — they only report.
+Auditor subagents are read-only researchers, scoped narrowly to one slice of the cycle. The prototype ships five of them. One re-walks the working memory the OBSERVE phase produced and asks whether the planning was actually grounded in it. One reads the plan against the executed change and asks whether each acceptance criterion was met. One walks the cycle's commit graph and asks whether the checkpoints tell a coherent story. One compares what was built against what the plan specified — flagging over-engineering, missed items, and silent deviations. One assesses the quality of the change itself: scope discipline, edit patterns, structural consistency. Five auditors, five perspectives, deliberately composed so that no single one dominates the verdict. None of them are allowed to fix what they find — they only report.
 
 The reason VERIFY is its own phase is the same reason a compiler is not the same process as the programmer. Self-verification is biased. The hand that built the code wants to see the code as correct. A separate phase, with separate tools, run by a separate cognitive posture — and frequently delegated to subagents for independence — gives the verification an honest chance to catch what execution missed.
 
@@ -221,7 +313,7 @@ That routing is structured as a strict **seven-step waterfall**. The order matte
   Caption: "Each step's output feeds the next. Step 7 is the fallback, not a peer."
 -->
 
-1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the four phase markers from [the previous essay](05-the-always-on-digital-cortex.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step — a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. The footers are scratch; the body is durable. The deflation can be sharp: in one of the prototype's cycles, a single plugin's working CLAUDE.md shrank from over two thousand footer words to roughly five hundred in this step alone — a seventy-eight percent absorption in one move.
+1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the four phase markers from [the previous essay](05-the-always-on-digital-cortex.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step — a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. The footers are scratch; the body is durable. The deflation can be sharp: a single plugin's working CLAUDE.md routinely shrinks from a sprawling footer down to a tight body section in this step alone, the bulk of the cycle's noise gone in one absorption pass.
 
 2. **Cross-file CLAUDE.md migration.** Some content does not belong in the file where it was written. A discovery about how the website's CSS works belongs in the website project's CLAUDE.md, not in the brain's root. A pattern the agent learned about its own behavior belongs in a plugin's CLAUDE.md, not in a working directory. Step two dispatches a small mover subagent to walk the touched files and route content sideways or upward. The subagent's destination logic is content-determined, not priority-ordered: the right CLAUDE.md is the one whose subject matter most naturally holds the finding, even if it sits two directories away.
 
@@ -239,15 +331,15 @@ That routing is structured as a strict **seven-step waterfall**. The order matte
 
 7. **Session archive.** Whatever did not fit into the earlier steps gets dropped into a dated session archive. This step is intentionally last and intentionally last-resort. A long session archive is a sign that earlier steps under-routed. A short session archive is healthy.
 
-After all seven steps, CONDENSE checks a **deflation gate**. At condense entry, a sensor snapshots the total bottom-section word count of every CLAUDE.md in the altered list — everything below the first phase marker — and stores it as the cycle's baseline. At commit time, the gate re-scans the same files from disk, computes how many words were absorbed away from the footers, and compares against a stage-aware threshold.
+After all seven steps, CONDENSE checks a *deflation gate*. At condense entry, a sensor snapshots the total bottom-section word count of every CLAUDE.md in the altered list — everything below the first phase marker — and stores it as the cycle's baseline. At commit time, the gate re-scans the same files from disk, computes how many words were absorbed away from the footers, and compares against a stage-aware threshold.
 
 Single-cycle jobs default to eighty percent absorption. The cycle is final; working memory must compress hard before the agent returns to idle.
 
-Multi-cycle jobs default to fifty percent. Some of the cycle's planning context legitimately needs to survive into the next cycle's PLAN, and forcing eighty-percent compression would erase that handoff. Both thresholds are tunable. Real cycles routinely overshoot — one of the prototype's recent single-cycle jobs ran the deflation from a six-thousand-word baseline down to under three hundred, well past the target.
+Multi-cycle jobs default to fifty percent. Some of the cycle's planning context legitimately needs to survive into the next cycle's PLAN, and forcing eighty-percent compression would erase that handoff. Both thresholds are tunable, and real cycles routinely overshoot — single-cycle jobs in the prototype have driven the deflation well past the eighty-percent target when the cycle had less to keep than the threshold assumed.
 
 If the gate passes, the orchestrator commits the cycle and advances the job to idle.
 
-If it fails, the script exits with a coaching voice, and CONDENSE has to keep working. The only options are to absorb more, route more, or compress more — because CONDENSE is **lock-forward only**. No backward edge from condense to verify. No escape hatch back to execute. The cycle either condenses enough to close, or it stays in condense.
+If it fails, the script exits with a coaching voice, and CONDENSE has to keep working. The only options are to absorb more, route more, or compress more — because CONDENSE is *lock-forward only*. No backward edge from condense to verify. No escape hatch back to execute. The cycle either condenses enough to close, or it stays in condense.
 
 CONDENSE is also the only phase that is allowed to edit the brain itself — the root CLAUDE.md, the plugin-level CLAUDE.md files, the coaching voices, the subagent definitions. Everywhere else, those files are protected. This makes CONDENSE the lever by which the brain can rewrite itself, but only at known moments, only at the end of a cycle, only after the cycle's work has been verified.
 
@@ -255,45 +347,61 @@ The cycle then returns to idle. The next prompt starts a new cycle, and the new 
 
 ---
 
-## Tier-3 Close: The Multiplier Is Backward
+## The Backward Multiplier
 
-For the architects in the audience: there is one detail in the phasic layer that quietly carries more weight than the rest of the design. It is the **multiplier sentinel**.
+For the architects in the audience, this is where the phasic layer earns its keep. The mechanism is small. The discipline it produces is large.
 
-Recall the setup. On entry to a phase, the agent must set a multiplier between 0.5 and 3.0. Tools are locked until it is set. Once set, it cannot be changed.
+Start with the **Ralph loop**. The pattern is familiar to anyone who has tried to keep a CLI agent on task: an agent finishes a few moves, decides it is done, calls `Stop`, and quits — even though the work is not actually finished. The fix that emerged in the broader agent community is to refuse the stop. The agent calls `Stop`; the system intercepts; the agent is returned to the prompt and told to keep working. The loop runs until the work is genuinely done.
 
-The naive expectation is that the multiplier is a *throttle* — higher numbers mean more work, lower numbers mean less. That intuition is exactly backward.
+The seed agent adopts the Ralph loop through the job system. Every job carries an `active` field. The always-on layer's stop-gate hook reads that field on every `Stop` attempt; while any job is `active`, the stop is refused and the agent is returned to the prompt with a message explaining what is still in flight. Stop, refused. Stop, refused. The agent learns to keep working until the job formally completes.
 
-The multiplier multiplies points earned per tool call. The phase's exit gate is a fixed point threshold. Combine those two facts.
+The phasic layer does the same thing one fractal level down — inside a single phase.
+
+Every phase has a fixed point threshold the agent must cross before it is allowed to commit and advance. Cross the threshold and the commit script accepts the move forward. Try to commit before crossing it and the script refuses, returning the agent with a message about what kind of work is still missing. Try to call `Stop` mid-phase and the same refusal fires. The threshold is friction-by-design — a refusal layer that makes the seed agent slow down and do the work the phase exists to do, instead of rushing through phases to get to the next move.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: The multiplier dial. A horizontal slider with five tick marks: 3.0, 2.0, 1.5, 1.0, 0.5.
+  Concept: The multiplier dial. A horizontal slider with six tick marks: 3.0, 2.5, 2.0, 1.5, 1.0, 0.5.
   Below each tick, a small icon and a phrase: 3.0 = "surgical / ~12 actions" (small dot icon),
-  1.5 = "targeted / ~17", 1.0 = "default / ~30", 0.5 = "deep / ~67 actions" (large blob icon).
+  2.0 = "tight / ~17", 1.5 = "targeted / ~22", 1.0 = "standard / ~34", 0.5 = "deep / ~67 actions" (large blob icon).
   An arrow labeled "smaller number, bigger phase" runs from right to left across the dial,
   visualizing the inverted semantics.
   Visual style: dark glassy slider, indigo gradient from right (small) to left (deep), violet ticks.
   Caption: "The multiplier is backward. A smaller number declares a deeper phase."
 -->
 
-A multiplier of 3.0 means each tool call earns three times as many points. The exit gate is reached fast — in practice, around eleven or twelve tool calls. This is *surgical* work. A narrow, targeted edit. A small typo fix, a lookup-and-edit, a minor refactor. Setting the multiplier to 3.0 declares: "this phase is small. I'm in and out."
+How does the phase know what counts as enough work? Through a per-phase point system.
 
-A multiplier of 1.0 is the default pace, around thirty actions. A 1.5 lands closer to seventeen.
+Each phase has its own point schedule. Actions the phase wants to encourage earn the most; actions it wants to discourage earn less or nothing. OBSERVE rewards synthesis writes into CLAUDE.md and parallel research subagent dispatches above any other action. EXECUTE rewards code edits inside the altered list and execute subagent dispatches. VERIFY rewards script runs and auditor subagent dispatches. CONDENSE rewards routing content into the brain's durable layers — knowledge files, voice files, plugin CLAUDE.mds. The schedules differ on purpose: each phase shapes the kind of work it considers progress.
 
-A multiplier of 0.5 means each tool call earns half as many points; the exit gate takes far longer to reach, somewhere around sixty-seven actions. This is *deep* work — broad observation, careful planning, sweeping execution. A complex feature, a research-heavy investigation, a multi-file refactor. Setting the multiplier to 0.5 declares: "this phase is large. I'm settling in."
+The point system is *invisible to the seed agent*. No instruction file mentions points. No coaching voice cites a number. No subagent prompt rewards points. The agent never sees its current score and never sees the threshold. What the agent sees, when a gate fires, is the *kind* of work it needs more of — "you have to read before you can write" or "you have read enough; synthesize before continuing." The arithmetic is the orchestrator's; the experience is just the friction. Hiding the score is deliberate. A scoreboard the agent could see would create point-chasing — the model is good at optimizing what it can measure. The seed agent is not allowed to optimize this one. It can only do the work, and the work earns points the agent never counts.
 
-The lock is structural. Every phase entry initializes the multiplier to zero, and the per-phase guard refuses to let the agent run any tool while the multiplier is zero — the lone exception is the shell call that sets it. Once the multiplier is set and the first real action lands, the points counter goes positive, and the guard refuses to set the multiplier again. The error message is small: *Multiplier can only be set at phase start.* No second chances, no override.
+Now bring in the multiplier.
 
-The multiplier, in other words, is the agent's honest forecast of the phase's scope, expressed as a constraint on its own freedom to leave.
+On entry to every phase, the agent must set a multiplier — chosen from a fixed dial at `0.5, 1, 1.5, 2, 2.5, 3`. Tools are locked until the choice is made. Once made, it cannot be changed for the entry. The multiplier scales how many points each action in the phase's schedule is worth. A high multiplier weights every action up; fewer actions clear the threshold. A low multiplier weights every action down; more actions are needed.
 
-This matters because forecast accuracy has real cost in both directions. Forecasting too small — a high multiplier on what turns out to be deep work — means the gate fires before the work is done, and the agent has to re-enter the phase to finish, wasting the original commit and producing a fragmented record. Forecasting too large — a low multiplier on what turns out to be surgical work — means the agent does more reading and dispatching than the work merited, burning context and tool budget on padding.
+The naive read is that multiplier scales workload up. The intuition is exactly backward. **A smaller multiplier declares a larger phase.**
 
-The architecture deliberately makes both directions of error cost something. There is no safe choice. The discipline is to read the job at phase entry — what does the working memory currently show me about scope — and pick the multiplier that matches *this* phase's actual size. Not the cycle's size. Not the job's size. *This phase's* size.
+A `3.0` multiplier means each action is worth three times the base points. The threshold is reached fast — in practice, around twelve actions. The agent has declared: "this phase is small. I am in and out." A surgical bug fix. A typo. A targeted lookup-and-edit.
 
-The discipline goes further. The agent is explicitly forbidden from pattern-matching from past phases — "verify is usually short, observe is usually deep" — because pattern recall is precisely the bias that has burned the prototype before. One real cycle in the prototype's history saw the agent choose 0.5 for a phase that was actually surgical; the exit gate refused to fire eight times before the agent gave up, rolled the phase back, and restarted at 1.5. There is now a documented catalog of multiplier anti-patterns the system explicitly avoids — leaning words in the entry voice, translation rules like "many means low, few means high", phase metaphors that pre-encode scope. The voice is engineered to leave the forecast unmade until the agent makes it, on this phase's evidence alone.
+A `1.0` multiplier is the standard pace — about thirty-four actions to cross the threshold.
 
-The multiplier is therefore the smallest possible commitment device, and the most honest. The agent is not being asked to estimate hours or files or tokens. It is being asked to declare, in a single number, how heavy this phase will be. And then to live with that declaration — not because someone is grading it, but because the gate timing depends on it.
+A `0.5` multiplier means each action is worth half the base points. The threshold takes around sixty-seven actions to clear. The agent has declared: "this phase is large. I am settling in for deep work." A research-heavy investigation. A multi-file refactor. A complex feature.
 
-This is the part of the seed agent's design I find most quietly elegant. A scalar between 0.5 and 3 carries the weight of forecast discipline that most agent architectures don't even attempt to enforce.
+The intermediate values fill the dial. `1.5` lands around twenty-two actions. `2.0` and `2.5` shape the phase further toward surgical.
+
+Pick the multiplier wrong in either direction and there is a real cost. Forecast too small (high multiplier on what turns out to be deep work) and the threshold fires before the work is done; the agent has to re-enter the phase to finish, fragmenting the cycle's record. Forecast too large (low multiplier on what turns out to be surgical work) and the phase pads out, the agent does more reading than the work merited, the context window inflates for nothing.
+
+The architecture deliberately makes both directions of error cost something. The point of the dial is not to find the safe choice — there is no safe choice. The point is to force a real act of meta-cognition before the phase begins.
+
+This is the deeper move. The multiplier choice forces the agent to *anticipate the phase*. Before the agent picks a value, it has to read the working memory and ask itself: how heavy is this phase actually going to be? What will I be doing? How many subagents will I need? How many CLAUDE.md edits? The answer is encoded in the multiplier value. And once the multiplier is set, the agent's natural next move is to write a todo list that matches it — twelve focused steps for a `3.0`, sixty-seven slower steps for a `0.5`, with the rhythm planned in advance. The dial is a single scalar; what it produces is structured anticipation.
+
+The point counter behaves a level below this in a way the architects should know about. *Backward transitions preserve points; only successful forward advances reset them.* If the agent enters VERIFY, collects fifty points of audit work, then rolls backward to EXECUTE to fix a small thing, the verify entry's fifty points are preserved. When the agent advances forward again — execute → verify — VERIFY resumes from where it was, fifty points already earned, only fifty more to clear the threshold. Only a successful forward advance out of a phase finalizes its entry and resets the counter for the next time the phase is entered fresh. The architecture rewards persistence across rollbacks. The agent does not lose work to the rollback; it loses only the time spent fixing what made the rollback necessary.
+
+Pattern-matching from past phases is also explicitly forbidden. "Verify is usually short" or "observe is usually deep" are exactly the wrong heuristics — they short-circuit the meta-cognition the multiplier exists to force. There is now a catalog of multiplier anti-patterns the system actively avoids in its coaching voices: leading words, translation rules, phase metaphors that pre-encode scope. The voice is engineered to leave the forecast unmade until the agent makes it, on *this* phase's evidence alone.
+
+A scalar between `0.5` and `3` carries the weight of all of this. The Ralph loop refuses the stop. The point threshold creates the friction. The point schedule defines what work counts. The point system stays invisible so the agent does not learn to game it. The multiplier dial forces an act of forecasting, and the forecast in turn forces a structured plan of attack for the phase. Simple jobs find a high multiplier and move fast. Complex jobs find a low multiplier and breathe. Every phase begins with a real moment of meta-cognition — and the rest of the phase is the agent living up to it.
+
+This is the part of the seed agent's design I find most quietly elegant.
 
 ---
 
@@ -302,6 +410,8 @@ This is the part of the seed agent's design I find most quietly elegant. A scala
 Phases give the agent compartmentalized cognition. The bus from [the previous essay](05-the-always-on-digital-cortex.html) gives the agent durable substrate. Together they form a working brain — one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
 
 This is what [Essay 1](01-llms-are-not-the-agents.html) was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.
+
+Stretch one cycle into many, chained, and you get the long-horizon discipline [Essay 8](08-from-apprentice-to-architect.html) is about — multi-cycle jobs where the multiplier sentinel, the plan-file contract, and the seven-step waterfall keep the agent honest across days, not just minutes. The mechanisms in this essay are designed to scale up that way without losing their grip.
 
 But a phase is itself a plugin. So is the orchestrator. So is everything that runs in the always-on layer. The brain's growth — the brain's *capacity* to grow — depends on a standardized way of building, packaging, and evolving plugins.
 
