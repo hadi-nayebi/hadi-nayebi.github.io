@@ -5,7 +5,7 @@ slug: "the-always-on-digital-cortex"
 read_time: "36 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.29.0
+version: v0.29.1
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -45,8 +45,8 @@ Underneath both layers sits the substrate the previous section listed. The diffe
 <!-- IMAGE PLACEHOLDER
 
 Diagram: Two-Layer Architecture on a Shared Substrate
-Prompt: A horizontal cross-section diagram with three labeled layers — top layer "Always-On Plugins" (always active, glowing steady), middle layer "Phasic Plugins" (one cell lit at a time, others dim, suggesting rotation through phases), and bottom substrate "CLAUDE.md Hierarchy + .claude/ Brain" (a flat foundation plane with subtle file-tree texture). Arrows show the always-on layer "protecting" the substrate (downward shielding glow) and the phasic layer "writing into" and "absorbing from" the substrate (bidirectional vertical arrows). Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
-Caption: Two plugin layers, one shared substrate — the always-on layer protects, the phasic layer writes and absorbs.
+Prompt: A horizontal cross-section diagram with three labeled layers — top layer "Always-On Plugins" (always active, glowing steady, each cell in its own lane), middle layer "Phasic Plugins" (one cell lit at a time, others dim, suggesting rotation through phases), and bottom substrate "CLAUDE.md Hierarchy + .claude/ Brain" (a flat foundation plane with subtle file-tree texture). Arrows show the phasic layer "writing into" and "absorbing from" the substrate (bidirectional vertical arrows). The always-on layer sits independently above, each plugin minding its own concern in its own lane regardless of which phasic cell is currently active — no arrows from the always-on layer to the substrate. Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
+Caption: Two plugin layers, one shared substrate — the phasic layer writes and absorbs; the always-on layer runs alongside, phase-independent.
 
 -->
 

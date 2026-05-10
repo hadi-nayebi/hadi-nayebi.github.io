@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.7.0
+**Version:** v0.7.1
 
 ## Content Workflow
 
@@ -241,13 +241,15 @@ These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2
 - Do NOT introduce a "meta-layer" as a separate plugin in Blog 5 — that double-counts plugin_integrity and reads as hallucination.
 - Blog 7 introduces role (b) and the lock ceremony in detail.
 
-**Rule 4 — Who uses CLAUDE.md as info bus.**
-- The CLAUDE.md hierarchy is the SUBSTRATE / bus.
-- The PHASIC plugins WRITE to it (footer markers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`, body sections, CONDENSE waterfall routes content).
-- The ALWAYS-ON plugins do NOT write to CLAUDE.md as their primary state mechanism. They own their own hidden data files (`data.json` per plugin). They READ from CLAUDE.md (for size limits, identity, registered prefixes) but they don't generate its content.
-- WRONG: "the always-on plugins use the bus constantly to write their state"
-- RIGHT: "the always-on plugins protect the bus's integrity; the phasic plugins write to it (Blog 6)"
-- Blog 5 introduces the bus as substrate. Blog 6 shows phases USING it. Blog 7 deep-dives the markers as protocol.
+**Rule 4 — Always-on vs phasic relationship to the CLAUDE.md layer.**
+- The CLAUDE.md hierarchy is the SUBSTRATE the phasic system uses as its working medium.
+- The PHASIC plugins WRITE to it (footer markers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`, body sections; CONDENSE waterfall routes content upward into bodies, sideways into knowledge files, and into voice files, plugin definitions, even new plugins).
+- The ALWAYS-ON plugins each own their own concern and their own data files. Their relationship to the CLAUDE.md layer **varies plugin by plugin**: `plugin_integrity` polices the four phase markers from removal but explicitly EXEMPTS CLAUDE.md content from lock checks (per `plugin-guard.sh:562-575`, "DOCUMENTATION ALWAYS FREE"); the other four (`brain_guard`, `job_core`, `interaction_summary`, `question_discipline`) are orthogonal to CLAUDE.md, owning concerns (context budget, job lifecycle, interaction summarization, question discipline) entirely inside their own data files.
+- The unifying property of the always-on layer is **phase-independence** (each plugin runs continuously regardless of phase), not its relationship to the CLAUDE.md layer.
+- WRONG: "the always-on plugins protect the bus's integrity"
+- WRONG: "always-on plugins read CLAUDE.md for size limits, prefixes, thresholds" — these live in plugin-private data/config files, not CLAUDE.md
+- RIGHT: "the always-on plugins run continuously, each minding its own concern; the phasic system uses the CLAUDE.md layer to think ahead, gather experiential data, and process it into the agent's longer-term memory forms"
+- Blog 5 introduces the always-on plugins and the CLAUDE.md layer side by side as separate strands. Blog 6 shows the phasic system USING the CLAUDE.md layer. Blog 7 deep-dives plugin anatomy.
 
 **Rule 5 — Context numbers are operating thresholds, not system limits.**
 - The seed agent uses Opus 4.7 with 1M-token context, but `brain_guard` triggers compaction much earlier (soft tier 200k, hard tier 250k, critical 300k).
@@ -383,8 +385,8 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.26.0** |
-| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **outlined** |
+| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.29.1** |
+| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.21.0** |
 | 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **outlined** |
 | 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **outlined** |
 
