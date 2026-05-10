@@ -5,8 +5,24 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Markov Phasic Brain</title>
+      <link>https://hadi-nayebi.github.io/blog/06-the-markov-phasic-brain.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/06-the-markov-phasic-brain.html</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
+      <description>The seed agent's cognitive work happens in five phases plus one cognitive organ. Each phase forbids tools the others allow. The CONDENSE 7-step waterfall is how the brain grows. The multiplier sentinel is backward.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex</title>
+      <link>https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html</guid>
+      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
+      <description>The seed agent doesn't have memory — it has a bus. Always-on plugins each own one concern, holding the brain together while the rest of the system thinks. CLAUDE.md hierarchy carries state across phases, and editing it gates what the agent is allowed to do.</description>
+    </item>
 
     <item>
       <title>The Folder Is Alive</title>
