@@ -5,7 +5,7 @@ slug: "the-always-on-digital-cortex"
 read_time: "36 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.29.1
+version: v0.29.3
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -92,7 +92,7 @@ Caption: The progressive squeeze — each tier removes one more tool until self-
 
 -->
 
-The compaction itself is shape-enforced. The plugin requires the `/compact` instruction to carry five named sections (User Requests, Decisions, Design Choices, Corrections, Current State) before it is accepted; any instruction missing a section gets blocked until the agent rewrites it.
+The compaction itself is shape-enforced. The plugin requires the `/compact` instruction to carry five named sections (Scope reminder, Lessons learned, Verbatim user directives, Recognition moments, Continuation hint) before it is accepted; any instruction missing a section gets blocked until the agent rewrites it.
 
 The five sections aren't gospel. The shape is.
 
@@ -241,7 +241,7 @@ The naive version of this would be: "documentation that updates itself when the 
 
 The seed agent's version is sharper.
 
-When the agent attempts to unlock a plugin for editing — by issuing a question with the prefix `[PLUGIN-LOCK] <plugin_name>` — the lock manager runs a small drift-check against the target plugin. The check is a single git command that counts how many commits have touched the plugin since the last time its evolution narrative was synced. The result is the *drift count*: the number of commits the plugin has accumulated since its history was last narrated. If that count meets or exceeds a configurable threshold (default five), the unlock is *blocked* and the agent is told to dispatch the plugin's historian subagent first.
+When the agent attempts to unlock a plugin for editing — by issuing a question with the prefix `[PLUGIN-LOCK] <plugin_name>` — the lock manager runs a small drift-check against the target plugin. The check is a single git command that counts how many commits have touched the plugin since the last time its evolution narrative was synced. The result is the *drift count*: the number of commits the plugin has accumulated since its history was last narrated. If that count meets or exceeds a configurable threshold (default ten), the unlock is *blocked* and the agent is told to dispatch the plugin's historian subagent first.
 
 The historians live centrally, not per-plugin. Every plugin in the prototype has a corresponding historian subagent definition inside `plugin_integrity`'s own folder, plus a template that new plugins clone from when they are born. When dispatched, the historian reads the drift log, synthesizes what changed since the last sync, and edits `evolution.md` under a 2000-word cap enforced by a dedicated hook that blocks any edit which would push the file past the cap. When the cap fires, the block does more than refuse — it coaches the historian to retry with a tighter narrative and to migrate any overflow into sibling documents (per-cycle deep-dives, a decisions log, technical appendices), with `evolution.md` becoming an executive summary that references those siblings rather than absorbing them. The historian's last mandatory step is to commit. That commit touches `evolution.md`, which becomes the new sync point, which means the drift counter resets to zero — and the next set of edits will eventually push it back up, and the cycle repeats.
 
@@ -256,7 +256,7 @@ The mechanism makes the lesson non-negotiable. The agent is not *suggested* to r
 <!-- IMAGE PLACEHOLDER
 
 Diagram: The Historian Ratchet — Drift, Block, Reset
-Prompt: A circular flow diagram with four labeled stages connected by arrows. Stage 1: "Plugin commits accumulate" — a stack of commit blocks growing upward, with a counter at the side reading "drift = 1, 2, 3...". Stage 2: "Drift counter crosses threshold (default 5)" — the counter glowing red, a barrier appears blocking the next [PLUGIN-LOCK] request. Stage 3: "Historian subagent dispatched" — a small agent figure reading the commit log and writing into a labeled file evolution.md (with a 2000-word cap shown as a fill bar). Stage 4: "Historian commits → drift counter resets to 0" — the counter snaps back to 0, the barrier dissolves, and the cycle returns to Stage 1. The whole diagram suggests an ineluctable wheel — work cannot proceed without periodic narration. Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
+Prompt: A circular flow diagram with four labeled stages connected by arrows. Stage 1: "Plugin commits accumulate" — a stack of commit blocks growing upward, with a counter at the side reading "drift = 1, 2, 3...". Stage 2: "Drift counter crosses threshold (default 10)" — the counter glowing red, a barrier appears blocking the next [PLUGIN-LOCK] request. Stage 3: "Historian subagent dispatched" — a small agent figure reading the commit log and writing into a labeled file evolution.md (with a 2000-word cap shown as a fill bar). Stage 4: "Historian commits → drift counter resets to 0" — the counter snaps back to 0, the barrier dissolves, and the cycle returns to Stage 1. The whole diagram suggests an ineluctable wheel — work cannot proceed without periodic narration. Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
 Caption: Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution.
 
 -->

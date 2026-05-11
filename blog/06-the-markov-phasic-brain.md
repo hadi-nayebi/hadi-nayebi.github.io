@@ -5,7 +5,7 @@ slug: "the-markov-phasic-brain"
 read_time: "40 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, CONDENSE]
 status: drafting
-version: v0.21.0
+version: v0.26.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -124,22 +124,27 @@ When VERIFY can only run scripts, self-verification through "the code looks fine
 
 When CONDENSE can only touch `.claude/`, project work is structurally fenced off. The agent can't sneak a feature in under the cover of consolidation.
 
-Enforcement is layered. A global guard, registered by the orchestrator plugin, fires on every tool call and refuses to let the agent mutate anything while the job is in idle — that is the only thing the global gate does. Once a phase is active, the global gate exits silently and the per-phase guard for that phase takes over.
+Enforcement is layered. A global guard, registered by the orchestrator plugin, fires on every tool call. While the focused job is idle, the gate blocks essentially everything — reads, writes, web fetches, general shell — and unlocks only a small allowlist: the job-management CLI, the phase-advancement CLI, the always-on infrastructure scripts that need to keep running, and memory-file edits. Once a phase activates, the global gate exits silently and the per-phase guard for that phase takes over.
 
 Every phase publishes its own guard. Every guard is registered unconditionally and self-exits in milliseconds if the focused job's phase doesn't match its own; only the guard for the active phase does real work. Each guard inspects every write call against an allowlist, then consults a shared section-check library to ensure the edit doesn't cross a phase-section boundary inside any CLAUDE.md.
 
-The footer markers from [the previous essay](05-the-always-on-digital-cortex.html) — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — are physical barriers. The EXECUTE guard refuses to overwrite the OBSERVE block. The OBSERVE guard refuses to write past EXECUTE. The markers are not decoration; they are the structural manifestation of compartmentalization. The agent can lose the argument with the user, or with itself, but it can't lose it with the guard. The guard is code.
+The footer markers from [the previous essay](05-the-always-on-digital-cortex.html) — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — are physical barriers. Each phase's guard enforces one rule: writes must land strictly below that phase's own marker. The constraint is asymmetric. OBSERVE can write anywhere below `---Ob---` — into any of the four footer blocks. PLAN loses access to the `---Ob---` block and can write below `---Pl---`. EXECUTE loses two more blocks and writes below `---Ex---`. VERIFY can only write below `---Ve---`. As the cycle progresses, the editable region shrinks from above; each completed phase becomes part of the locked upstream record. The body above all four markers is reserved for CONDENSE; none of the four work-on-project phases can touch it. In practice each phase's work lands in its own block, but the mechanical rule is the floor — "strictly below my marker" — and that is what produces the forward-pressure. The markers are not decoration; they are the structural manifestation of compartmentalization. The agent can lose the argument with the user, or with itself, but it can't lose it with the guard. The guard is code.
 
 The result: each phase produces its own kind of artifact. OBSERVE produces working memory. PLAN produces a plan document. EXECUTE produces code changes plus execution notes. VERIFY produces pass/fail results. CONDENSE produces a clean working memory and durable knowledge files.
 
 Every phase has its own plugin. The phasic plugins (currently six in the prototype — one per phase, plus a separate orchestrator that tracks which phase is active for which job) are themselves single-concern packages, each one owning the rules for one mode of cognition. As with the always-on layer, the count is the prototype, not the architecture. A custom seed adding a sixth phase would add a seventh plugin alongside the orchestrator. The shape is what generalizes.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Tool-restriction matrix per phase. Vertical: phases (OBSERVE / PLAN / EXECUTE / VERIFY / CONDENSE).
-  Horizontal: action categories (Read / Write project files / Write CLAUDE.md / Write plan file / Run scripts / Write .claude/).
-  Cells: green check (allowed) or red X (blocked) — the visual reveals that each phase has a unique allow-pattern,
-  and the diagonal of "what each phase uniquely produces" emerges naturally.
-  Visual style: dark glassy table, indigo/violet accents on allowed cells.
+  Concept: Chalk-on-blackboard table — write rules per phase.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk colors for row labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for headers and cell marks; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  Layout: 5 rows × 5 columns grid drawn in chalk.
+    Row labels (left, each in its own pastel chalk circle like the cycle image, lowercase):
+      "observe", "plan", "execute", "verify", "condense"
+    Column headers (top, white chalk, lowercase):
+      "read project", "edit project", "edit own footer", "edit plan file", "edit .claude/"
+    Cells: hand-drawn white chalk checkmark (✓) for allowed; white chalk X for blocked.
   Caption: "Each phase is defined by what it cannot do."
 -->
 
@@ -150,15 +155,16 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
 
 Before opening each phase compartment, here is the operational map at a glance. Each line below names the phase, its essence, and what it is on the hook to produce.
 
-**IDLE** — the meta-state between cycles.
-- Hold the agent until the next prompt activates a job
-- Refuse all project-file writes; only the orchestrator's own CLI is unlocked
-- Let the agent read freely, but commit nothing until OBSERVE begins
+**IDLE** — the meta-state between cycles. Job management only.
+- Unlock the job-management CLI: activate, focus, pause, complete, create
+- Unlock the phase-advancement CLI: advance the focused job into OBSERVE
+- Keep the always-on infrastructure running: memory edits, summary, compact, lock
+- Block reads, project edits, CLAUDE.md edits, web access, general shell
 
 **OBSERVE** — gather context before any plan can form.
 - Populate the working-memory CLAUDE.md files with relevant context
 - Dispatch parallel research subagents and synthesize their returns
-- Refuse code edits — the only allowed write is into CLAUDE.md
+- Refuse code edits — the only allowed write target is CLAUDE.md
 - Cross the exit threshold only after enough investigation has happened
 
 **PLAN** — turn observations into a binding contract.
@@ -176,8 +182,8 @@ Before opening each phase compartment, here is the operational map at a glance. 
 **VERIFY** — judge prior work with independent eyes.
 - Run scripts and validators; refuse all code edits in this phase
 - Dispatch auditor subagents to read the executed work without bias
+- Write pass/fail results into CLAUDE.md and the plan file
 - Route the cycle: forward to CONDENSE, backward to EXECUTE/PLAN/OBSERVE
-- Record the rollback choice as part of the job's history
 
 **CONDENSE** — consolidate the cycle's learnings into the brain.
 - Walk a strict seven-step waterfall that routes content to its durable home
@@ -221,7 +227,7 @@ PLAN is also read-only against project files. The agent can still read whatever 
 
 The first thing the agent does on entering PLAN, after the multiplier, is decide whether the job needs a plan file at all.
 
-The decision is binary. Either this is a single-cycle job — no plan document, the contract lives in the working CLAUDE.md and dissolves with the cycle — or this is a multi-cycle job, in which case the agent declares a plan-file name. EXECUTE will create the named document and write to it. VERIFY will record verification results into CLAUDE.md and stage the plan file as part of its commit, but it does not modify the plan's content directly. Future PLAN cycles will read the plan file back as a long-term contract that survives across cycles. The decision is made once, in cycle 1, and locks for the remainder of the job.
+The decision is binary. Either this is a single-cycle job — no plan document, the contract lives in the working CLAUDE.md and dissolves with the cycle — or this is a multi-cycle job, in which case the agent declares a plan-file name. The file's lifecycle is split across phases. EXECUTE creates the named document in cycle 1 and writes the initial plan into it. VERIFY edits it across every cycle — appending cycle status rows, captured lessons, and completion marks as the work progresses. PLAN itself never edits the file directly; from cycle 2 onward it only reads the file back at the start of the phase, treating it as the long-term contract that survives across cycles. The decision is made once, in cycle 1, and locks for the remainder of the job.
 
 Plan documents live at a known path inside the agent's knowledge directory. Their structure is opinionated. Each one carries a stated goal, an acceptance-criteria list, the *altered list* — the directories EXECUTE will be allowed to touch, [introduced in the previous essay](05-the-always-on-digital-cortex.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe.
 
@@ -251,7 +257,7 @@ EXECUTE writes two things: the code, and *execution notes* in the working CLAUDE
 
 EXECUTE is also where subagent dispatch shows up most heavily, and the point schedule encodes that explicitly. Every execute subagent the main session launches grants the session a small *direct-action budget* — a handful of extra writes the main session is allowed to make on its own. Every project file the main session edits itself spends some of that budget back. Reading project files does not consume budget; only edits and writes outside `.claude/` do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate parallel implementation to its execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change.
 
-The cap on parallel execute subagents is two-in-flight, not unbounded. Heavier fan-out risks the same file being touched twice and a merge collision the agent then has to spend a checkpoint cleaning up. Two-in-flight is enough for genuine parallelism on independent files, narrow enough to keep the agent's context coherent. We will come back to the discipline of subagent dispatch in [Essay 7](07-the-plugin-kit.html).
+The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is two-in-flight; the cap was set after a cycle in which three concurrent subagents pushed the context window past a safe tier and triggered cascading compaction. Two-in-flight stays under that ceiling and is enough for genuine parallelism on independent files, narrow enough to keep the agent's context coherent. We will come back to the discipline of subagent dispatch in [Essay 7](07-the-plugin-kit.html).
 
 When EXECUTE believes the plan is implemented, it commits the final checkpoint and the orchestrator advances the job to VERIFY.
 
@@ -263,7 +269,7 @@ VERIFY is scripts-only.
 
 The agent cannot edit code in VERIFY. It can read anything — the broadest read scope of any phase, by design. It can run tests. It can run validators. And it can dispatch a particular class of subagent — *auditors* — whose entire job is to read the executed work and report whether each acceptance criterion holds.
 
-Auditor subagents are read-only researchers, scoped narrowly to one slice of the cycle. The prototype ships five of them. One re-walks the working memory the OBSERVE phase produced and asks whether the planning was actually grounded in it. One reads the plan against the executed change and asks whether each acceptance criterion was met. One walks the cycle's commit graph and asks whether the checkpoints tell a coherent story. One compares what was built against what the plan specified — flagging over-engineering, missed items, and silent deviations. One assesses the quality of the change itself: scope discipline, edit patterns, structural consistency. Five auditors, five perspectives, deliberately composed so that no single one dominates the verdict. None of them are allowed to fix what they find — they only report.
+Auditor subagents are read-only researchers, scoped narrowly to one slice of the cycle. The prototype ships five of them. One re-walks the working memory the OBSERVE phase produced and asks whether it gave PLAN enough to work with. One judges the plan itself — were the items specific enough to implement without guessing, were the acceptance criteria testable, would another agent have reached the same implementation from these instructions, or did the plan leave gaps that forced EXECUTE to improvise. One walks the cycle's commit graph and asks whether the checkpoints tell a coherent story. One compares what was built against what the plan specified — flagging over-engineering, missed items, and silent deviations. One assesses the quality of the change itself: scope discipline, edit patterns, structural consistency. Five auditors, five perspectives, deliberately composed so that no single one dominates the verdict. None of them are allowed to fix what they find — they only report.
 
 The reason VERIFY is its own phase is the same reason a compiler is not the same process as the programmer. Self-verification is biased. The hand that built the code wants to see the code as correct. A separate phase, with separate tools, run by a separate cognitive posture — and frequently delegated to subagents for independence — gives the verification an honest chance to catch what execution missed.
 
@@ -278,14 +284,18 @@ If something major fails — an acceptance criterion that the plan can't meet, a
 This three-destination backward routing is what gives the phasic layer its name. **Forward transitions are automatic** when the gate criteria are met; **backward transitions are explicit** and the agent has to choose where to roll back to. The state of the cycle is fully determined by the current phase, the multiplier set on entry, and the point counter. No hidden continuation. Any phase can be re-entered, but only by rolling back along defined edges. This is the Markov property the title leans on: the cycle's next move is a function of its present state, not of the path that got it there.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: VERIFY's three-destination backward routing. Center node: VERIFY. Three explicit
-  backward arrows fanning out: one short arrow back to EXECUTE (labeled "minor — fix the implementation"),
-  one mid-length arrow back to PLAN (labeled "design flaw — amend the contract"), one long arrow
-  back to OBSERVE (labeled "context was incomplete — re-gather"). One forward arrow to CONDENSE
-  (labeled "pass — advance"). Each backward arrow has a small icon showing what gets reset versus
-  preserved (multiplier preserved, target-phase counters reset).
-  Visual style: dark glassy node graph, indigo for forward, violet for backward, fading intensity
-  by distance.
+  Concept: Chalk-on-blackboard sketch — VERIFY's three backward edges and one forward edge.
+  Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn pastel chalk circles
+  for each node (cyan, green, orange, pink, magenta — same palette as the cycle image); white chalk
+  arrows; lowercase phase names inside the circles; chalk sticks along the bottom edge.
+  Layout: One central chalk circle in the middle of the board labeled "verify". To the left of verify,
+  three chalk arrows fan outward and land on three target circles:
+    - short backward arrow → "execute", small chalk note above it: "minor fix"
+    - mid-length backward arrow → "plan", chalk note: "design flaw"
+    - long backward arrow → "observe", chalk note: "context gap"
+  To the right of verify, one forward arrow → "condense", chalk note: "pass".
+  The three backward arrows are drawn in warmer pastel chalk (orange / pink / magenta); the forward
+  arrow is white chalk. Keep all arrows slightly curved and hand-drawn, never ruler-straight.
   Caption: "Backward transitions are explicit choices, not automatic fallbacks."
 -->
 
@@ -303,13 +313,22 @@ The other phases produce work *on the project*. CONDENSE produces work *on the b
 That routing is structured as a strict **seven-step waterfall**. The order matters; each step's output feeds the next.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: The CONDENSE 7-step waterfall as a vertical cascade. Each step is a labeled tile,
-  with content "falling" downward from one to the next. Steps 1-2 are local routing (footer-to-body,
-  cross-file). Steps 3-6 are marker consumption (PENDING-JOB, VOICE-UPDATE, AGENT-UPDATE, KNOWLEDGE) —
-  show each step has a small subagent icon next to it. Step 7 (session archive) is visually smaller,
-  greyer, labeled "last resort". A side annotation: "deflation gate" sits below all seven steps,
-  blocking the exit arrow if the absorption percentage hasn't been reached.
-  Visual style: dark glassy cascade, indigo flow lines, violet markers.
+  Concept: Chalk-on-blackboard cascade — the CONDENSE seven-step waterfall.
+  Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn chalk tiles and arrow streams;
+  pastel chalk for the tile borders (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for step numbers and labels; chalk sticks resting along the bottom edge.
+  Layout: Seven chalk tiles stacked vertically down the center of the board, each labeled with its number
+  and short name (lowercase, exactly the prose's wording — do NOT invent new terms):
+    1. "footer to body"
+    2. "cross-file move"
+    3. "pending job"
+    4. "voice update"
+    5. "agent update"
+    6. "knowledge"
+    7. "session archive" — drawn smaller, fainter, slightly off-axis to mark it as last-resort
+  Short white-chalk arrows feed each tile into the next.
+  Below all seven tiles, a horizontal chalk bar labeled "deflation gate" sits across the board's width,
+  with one exit arrow attempting to pass through it (blocked unless absorption percentage is reached).
   Caption: "Each step's output feeds the next. Step 7 is the fallback, not a peer."
 -->
 
@@ -353,19 +372,27 @@ For the architects in the audience, this is where the phasic layer earns its kee
 
 Start with the **Ralph loop**. The pattern is familiar to anyone who has tried to keep a CLI agent on task: an agent finishes a few moves, decides it is done, calls `Stop`, and quits — even though the work is not actually finished. The fix that emerged in the broader agent community is to refuse the stop. The agent calls `Stop`; the system intercepts; the agent is returned to the prompt and told to keep working. The loop runs until the work is genuinely done.
 
-The seed agent adopts the Ralph loop through the job system. Every job carries an `active` field. The always-on layer's stop-gate hook reads that field on every `Stop` attempt; while any job is `active`, the stop is refused and the agent is returned to the prompt with a message explaining what is still in flight. Stop, refused. Stop, refused. The agent learns to keep working until the job formally completes.
+The seed agent adopts the Ralph loop through the job system. Every job carries a `status`. The always-on layer's stop-gate hook reads it on every `Stop` attempt; while any job is `active` or still `pending`, the stop is refused and the agent is returned to the prompt with a message explaining what is still in flight. Stop, refused. Stop, refused. The agent learns to keep working until the job formally completes.
 
 The phasic layer does the same thing one fractal level down — inside a single phase.
 
 Every phase has a fixed point threshold the agent must cross before it is allowed to commit and advance. Cross the threshold and the commit script accepts the move forward. Try to commit before crossing it and the script refuses, returning the agent with a message about what kind of work is still missing. Try to call `Stop` mid-phase and the same refusal fires. The threshold is friction-by-design — a refusal layer that makes the seed agent slow down and do the work the phase exists to do, instead of rushing through phases to get to the next move.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: The multiplier dial. A horizontal slider with six tick marks: 3.0, 2.5, 2.0, 1.5, 1.0, 0.5.
-  Below each tick, a small icon and a phrase: 3.0 = "surgical / ~12 actions" (small dot icon),
-  2.0 = "tight / ~17", 1.5 = "targeted / ~22", 1.0 = "standard / ~34", 0.5 = "deep / ~67 actions" (large blob icon).
-  An arrow labeled "smaller number, bigger phase" runs from right to left across the dial,
-  visualizing the inverted semantics.
-  Visual style: dark glassy slider, indigo gradient from right (small) to left (deep), violet ticks.
+  Concept: Chalk-on-blackboard dial — the multiplier choice.
+  Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn horizontal chalk line for the dial
+  with six chalk tick marks; pastel chalk labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for the dial line and the action-count numbers; chalk sticks at the bottom edge.
+  Layout: A horizontal chalk line drawn across the board with six tick marks evenly spaced, left to right:
+    "0.5", "1", "1.5", "2", "2.5", "3"
+  Below four of the ticks, draw a short chalk label and the action-count from the essay's prose:
+    - 0.5 → "deep"     / "~67 actions"
+    - 1   → "standard" / "~34 actions"
+    - 1.5 → "targeted" / "~22 actions"
+    - 3   → "surgical" / "~12 actions"
+  Leave 2 and 2.5 as unlabeled ticks (the prose does not give them named counts).
+  Above the dial, draw a curving chalk arrow that runs RIGHT to LEFT (from "3" toward "0.5") with
+  the chalk caption: "smaller number, bigger phase".
   Caption: "The multiplier is backward. A smaller number declares a deeper phase."
 -->
 
