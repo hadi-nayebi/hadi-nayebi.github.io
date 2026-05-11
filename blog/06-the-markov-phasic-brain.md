@@ -5,7 +5,7 @@ slug: "the-markov-phasic-brain"
 read_time: "40 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, CONDENSE]
 status: drafting
-version: v0.26.0
+version: v0.26.1
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -128,7 +128,7 @@ Enforcement is layered. A global guard, registered by the orchestrator plugin, f
 
 Every phase publishes its own guard. Every guard is registered unconditionally and self-exits in milliseconds if the focused job's phase doesn't match its own; only the guard for the active phase does real work. Each guard inspects every write call against an allowlist, then consults a shared section-check library to ensure the edit doesn't cross a phase-section boundary inside any CLAUDE.md.
 
-The footer markers from [the previous essay](05-the-always-on-digital-cortex.html) — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — are physical barriers. Each phase's guard enforces one rule: writes must land strictly below that phase's own marker. The constraint is asymmetric. OBSERVE can write anywhere below `---Ob---` — into any of the four footer blocks. PLAN loses access to the `---Ob---` block and can write below `---Pl---`. EXECUTE loses two more blocks and writes below `---Ex---`. VERIFY can only write below `---Ve---`. As the cycle progresses, the editable region shrinks from above; each completed phase becomes part of the locked upstream record. The body above all four markers is reserved for CONDENSE; none of the four work-on-project phases can touch it. In practice each phase's work lands in its own block, but the mechanical rule is the floor — "strictly below my marker" — and that is what produces the forward-pressure. The markers are not decoration; they are the structural manifestation of compartmentalization. The agent can lose the argument with the user, or with itself, but it can't lose it with the guard. The guard is code.
+The footer markers from [the previous essay](05-the-always-on-digital-cortex.html) — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — are physical barriers. Each phase's guard enforces one rule: writes must land strictly below that phase's own marker. The constraint is asymmetric. OBSERVE can write anywhere below `---Ob---` — into any of the four footer blocks. PLAN can no longer write into `---Ob---` and writes below `---Pl---`. EXECUTE loses two more blocks and writes below `---Ex---`. VERIFY can only write below `---Ve---`. As the cycle progresses, the editable region shrinks from above; each completed phase becomes part of the locked upstream record. The body above all four markers is reserved for CONDENSE; none of the four work-on-project phases can touch it. In practice each phase's work lands in its own block, but the mechanical rule is the floor — "strictly below my marker" — and that is what produces the forward-pressure. The markers are not decoration; they are the structural manifestation of compartmentalization. The agent can lose the argument with the user, or with itself, but it can't lose it with the guard. The guard is code.
 
 The result: each phase produces its own kind of artifact. OBSERVE produces working memory. PLAN produces a plan document. EXECUTE produces code changes plus execution notes. VERIFY produces pass/fail results. CONDENSE produces a clean working memory and durable knowledge files.
 

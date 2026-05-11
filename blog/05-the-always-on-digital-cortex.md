@@ -5,7 +5,7 @@ slug: "the-always-on-digital-cortex"
 read_time: "36 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.29.3
+version: v0.30.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -42,12 +42,22 @@ Two layers. One substrate underneath.
 
 Underneath both layers sits the substrate the previous section listed. The difference between the two layers is not their relationship to it — that varies plugin by plugin — but their relationship to phase. The always-on layer runs continuously, each plugin owning its own concern (plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning), each with its own state, each touching (or not touching) the hierarchy in its own way. The phasic layer activates one plugin at a time, dictated by the active job's current phase, and it is the layer that uses the hierarchy as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, plugin definitions, and other forms of memory at the end.
 
-<!-- IMAGE PLACEHOLDER
-
-Diagram: Two-Layer Architecture on a Shared Substrate
-Prompt: A horizontal cross-section diagram with three labeled layers — top layer "Always-On Plugins" (always active, glowing steady, each cell in its own lane), middle layer "Phasic Plugins" (one cell lit at a time, others dim, suggesting rotation through phases), and bottom substrate "CLAUDE.md Hierarchy + .claude/ Brain" (a flat foundation plane with subtle file-tree texture). Arrows show the phasic layer "writing into" and "absorbing from" the substrate (bidirectional vertical arrows). The always-on layer sits independently above, each plugin minding its own concern in its own lane regardless of which phasic cell is currently active — no arrows from the always-on layer to the substrate. Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
-Caption: Two plugin layers, one shared substrate — the phasic layer writes and absorbs; the always-on layer runs alongside, phase-independent.
-
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard cross-section — two plugin layers above a shared substrate.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk colors for the layer labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for headers, arrows, and node labels; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  Layout: Three horizontal chalk bands stacked vertically.
+    Top band: a chalk row labeled "always-on plugins" with five small pastel chalk cells side by side,
+      each drawn with a steady chalk halo, each in its own lane, no arrows reaching down.
+    Middle band: a chalk row labeled "phasic plugins" with one cell lit in pastel chalk and four dimmer cells
+      beside it, suggesting rotation through phases.
+    Bottom band: a wider chalk slab labeled "CLAUDE.md hierarchy + .claude/ brain" with a light file-tree
+      texture sketched in white chalk.
+  Two bidirectional white-chalk arrows connect the middle band to the substrate, labeled "writes into" and "absorbs from".
+  No arrows from the top band to the substrate.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  Caption: "Two plugin layers, one shared substrate — the phasic layer writes and absorbs; the always-on layer runs alongside, phase-independent."
 -->
 
 ---
@@ -84,12 +94,20 @@ A pre-call sensor reads the running token count on every tool call. At the first
 
 The tier *positions* are tunable; the architectural fact is the progressive tightening. Rather than letting the agent drift toward a hard wall, `brain_guard` removes one tool at a time until the only graceful move left is to compact.
 
-<!-- IMAGE PLACEHOLDER
-
-Diagram: brain_guard's Progressive Tier System
-Prompt: A horizontal axis labeled "Context Window Fill %" running from 0% (left) to 100% (right). Three vertical "gate" bars at ~20%, ~25%, ~30%, each progressively taller and more opaque. Tier 1 (20%): a soft glow with a small voice-bubble icon labeled "coaching voice". Tier 2 (25%): adds a Read tool icon crossed out in violet. Tier 3 (30%): adds Edit and Write tool icons crossed out, glowing more intensely. Far right (100%): a hard wall labeled "default auto-compact" the agent is trying to avoid. A dotted arrow from Tier 1 labeled "graceful path: self-compact early". Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
-Caption: The progressive squeeze — each tier removes one more tool until self-compaction is the only graceful move.
-
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard horizontal axis — context fill % with three progressive tiers, leading toward the 100% wall.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk axis line;
+  pastel chalk for the tier bars (cyan, green, orange — softer to brighter from left to right);
+  white chalk for axis labels and tier captions; chalk sticks resting along the bottom edge.
+  Layout: A long horizontal chalk axis runs across the board, labeled "context window fill %",
+  with hand-drawn tick marks at 0%, 20%, 25%, 30%, and 100%.
+    At 20%, a short pastel chalk bar with a chalk speech-bubble icon and the caption "coaching voice".
+    At 25%, a taller pastel chalk bar with a chalk "read" tool icon crossed through in pink chalk and the caption "read tools blocked".
+    At 30%, the tallest pastel chalk bar with chalk "edit" and "write" tool icons crossed through in pink chalk and the caption "edit and write blocked".
+    At 100%, a thick white-chalk wall with the caption "default auto-compact".
+  From the 20% tier, sketch a dotted white-chalk arrow curving toward the caption "self-compact early".
+  Keep all arrows slightly curved and hand-drawn, never ruler-straight.
+  Caption: "The progressive squeeze — each tier removes one more tool until self-compaction is the only graceful move."
 -->
 
 The compaction itself is shape-enforced. The plugin requires the `/compact` instruction to carry five named sections (Scope reminder, Lessons learned, Verbatim user directives, Recognition moments, Continuation hint) before it is accepted; any instruction missing a section gets blocked until the agent rewrites it.
@@ -172,12 +190,22 @@ The footers are why the seed agent does not need to rely on the chat to hold its
 
 CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC cycle — its waterfall pulls durable findings from the four footer sections up into the body of the same `CLAUDE.md` (so they survive the next cycle), routes topic-specific knowledge into `.claude/knowledge/`, and migrates anything that belongs higher up the tree into a parent `CLAUDE.md` or into the root brain. When CONDENSE finishes, the footers are empty again. The next cycle of OPEVC starts with a clean working memory and a slightly enriched body. The hierarchy as a whole grows smarter with each pass.
 
-<!-- IMAGE PLACEHOLDER
-
-Diagram: CLAUDE.md Inflation / Deflation Across an OPEVC Cycle
-Prompt: Five panels arranged in a horizontal cycle, each showing a stylized single CLAUDE.md file with a dense top "body" section and four labeled footer slots ---Ob---, ---Pl---, ---Ex---, ---Ve---. Panel 1 (OBSERVE): ---Ob--- swelling with text. Panel 2 (PLAN): ---Pl--- swelling, ---Ob--- still full. Panel 3 (EXECUTE): ---Ex--- swelling, prior two still full. Panel 4 (VERIFY): all four footers full, the file visibly heavier. Panel 5 (CONDENSE): an upward absorption arrow lifts durable findings into the body (which grows slightly), all four footers empty again, knowledge files branch off to the side labeled .claude/knowledge/. A circular arrow connects Panel 5 back to Panel 1 labeled "next cycle". Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
-Caption: Footers inflate across OPEVC, then CONDENSE deflates them — durable findings ratchet upward into the body, the rest discards.
-
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard sequence — five panels of a CLAUDE.md file across the OPEVC cycle, footers inflating then CONDENSE deflating them.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk panels;
+  pastel chalk for each phase label (cyan = observe, green = plan, orange = execute, pink = verify, magenta = condense — same palette as the cycle image);
+  white chalk for the file outlines, footer markers, and arrows; chalk sticks resting along the bottom edge.
+  Layout: Five small chalk panels arranged left to right, each showing the same CLAUDE.md file as a chalk rectangle
+  with a dense "body" zone on top and four labeled footer slots underneath, in order: ---Ob---, ---Pl---, ---Ex---, ---Ve---.
+    Panel 1 (observe): the ---Ob--- slot fills with chalk scribbles.
+    Panel 2 (plan): the ---Pl--- slot fills too; ---Ob--- stays full.
+    Panel 3 (execute): the ---Ex--- slot fills; the prior two stay full.
+    Panel 4 (verify): all four footers full and the file visibly heavier.
+    Panel 5 (condense): a chalk upward arrow lifts findings into the body (which grows slightly),
+      all four footers wiped clean, and a small chalk side-branch labeled ".claude/knowledge/" peels off to the side.
+  A curving white-chalk arrow connects panel 5 back to panel 1, labeled "next cycle".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  Caption: "Footers inflate across OPEVC, then CONDENSE deflates them — durable findings ratchet upward into the body, the rest discards."
 -->
 
 
@@ -253,12 +281,23 @@ The lesson is small: **read the work before changing it**.
 
 The mechanism makes the lesson non-negotiable. The agent is not *suggested* to re-read the plugin's history before editing — a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed.
 
-<!-- IMAGE PLACEHOLDER
-
-Diagram: The Historian Ratchet — Drift, Block, Reset
-Prompt: A circular flow diagram with four labeled stages connected by arrows. Stage 1: "Plugin commits accumulate" — a stack of commit blocks growing upward, with a counter at the side reading "drift = 1, 2, 3...". Stage 2: "Drift counter crosses threshold (default 10)" — the counter glowing red, a barrier appears blocking the next [PLUGIN-LOCK] request. Stage 3: "Historian subagent dispatched" — a small agent figure reading the commit log and writing into a labeled file evolution.md (with a 2000-word cap shown as a fill bar). Stage 4: "Historian commits → drift counter resets to 0" — the counter snaps back to 0, the barrier dissolves, and the cycle returns to Stage 1. The whole diagram suggests an ineluctable wheel — work cannot proceed without periodic narration. Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
-Caption: Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution.
-
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard wheel — drift counter climbing, block firing, historian re-narrating, counter resetting.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk circles and arrows;
+  pastel chalk for the four stage nodes (cyan, green, orange, pink — same palette as the cycle image);
+  white chalk for labels and the drift counter; chalk sticks at the bottom edge.
+  Layout: Four pastel chalk circles arranged in a wheel, connected by short curving white-chalk arrows.
+    Stage 1 (cyan circle): "plugin commits accumulate" — a small stack of chalk commit blocks growing upward,
+      with a chalk counter beside it reading "drift = 1, 2, 3...".
+    Stage 2 (green circle): "drift counter crosses threshold (default 10)" — the counter redrawn in pink chalk,
+      and a small chalk barrier in front of a chalk "[PLUGIN-LOCK]" tag.
+    Stage 3 (orange circle): "historian subagent dispatched" — a small chalk figure reading a chalk commit log
+      and writing into a chalk file labeled "evolution.md" with a chalk fill-bar at the side capped at "2000 words".
+    Stage 4 (pink circle): "historian commits → drift resets to 0" — the counter snaps back to 0 in cyan chalk
+      and the barrier dissolves.
+  A small chalk caption underneath reads: "work cannot proceed without periodic narration".
+  Keep all arrows slightly curved and hand-drawn, never ruler-straight.
+  Caption: "Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution."
 -->
 
 The ratchet looks like one mechanism, but it is actually three plugins working together. Recall the three-plugin sketch from earlier — here it is in full.
@@ -267,12 +306,22 @@ The agent must be able to ask a `[PLUGIN-LOCK]` question. That depends on `quest
 
 No single plugin enforces the historian ratchet. Three plugins compose to make it possible — `question_discipline` opens the asking surface, `job_core` carries the answer, `plugin_integrity` protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together.
 
-<!-- IMAGE PLACEHOLDER
-
-Diagram: Three-Plugin Composition for the Historian Ceremony
-Prompt: Three labeled glass tiles arranged left to right, connected by a flowing ribbon labeled "the historian ratchet ceremony". Tile 1: "question_discipline" — shows a [PLUGIN-LOCK] prefix passing through a gate icon, captioned "opens the asking surface". Tile 2: "job_core" — shows a Q&A pair being captured into a job-shaped container, captioned "carries the answer". Tile 3: "plugin_integrity" — shows a test-suite shield around a plugin folder with a checkpoint marker, captioned "protects the edit". Above all three tiles, a glowing arc labeled "ceremony" connects them, suggesting emergence from composition. Each tile glows in its own subtle hue but all three sit on the same shared substrate plane below them labeled "CLAUDE.md / data.json bus". Style: dark glassy space, indigo (#6366f1) and violet (#8b5cf6) palette, glassmorphism, abstract conceptual diagram (not photorealistic), readable schematic with labeled elements. Match the existing Hadosh Academy blog illustration aesthetic — clean, minimal, slightly futuristic, subtle glow effects.
-Caption: No single plugin enforces the ratchet — three single-concern plugins compose the ceremony, each contributing what it owns.
-
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard composition — three single-concern plugins fitting together into one ceremony.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk tiles and a connecting arc;
+  pastel chalk for each plugin tile (cyan, green, orange — same palette as the cycle image);
+  white chalk for the labels, the arc, and the substrate slab; chalk sticks at the bottom edge.
+  Layout: Three pastel chalk tiles arranged left to right, side by side on the board.
+    Tile 1 (cyan): labeled "question-discipline" with a small chalk "[PLUGIN-LOCK]" tag passing through a chalk gate,
+      captioned "opens the asking surface".
+    Tile 2 (green): labeled "job-core" with a chalk Q-and-A pair being captured into a chalk job container,
+      captioned "carries the answer".
+    Tile 3 (orange): labeled "plugin-integrity" with a chalk shield around a chalk plugin folder and a chalk checkpoint marker,
+      captioned "protects the edit".
+  Above the three tiles, a curving white-chalk arc labeled "ceremony" connects them, suggesting emergence from composition.
+  Below all three tiles, a long horizontal chalk slab labeled "CLAUDE.md / data.json bus" sits as the shared substrate.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  Caption: "No single plugin enforces the ratchet — three single-concern plugins compose the ceremony, each contributing what it owns."
 -->
 
 Call this **composed ceremony**: narrow parts, structured interfaces, emergent rituals — the same shape as the `/compact` five-section template, the same shape as the ratchet itself. Narrow constraints composing into behaviors larger than any single constraint.

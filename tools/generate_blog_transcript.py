@@ -110,6 +110,8 @@ def strip_markdown(src: str) -> str:
     src = re.sub(r"^---\s*$", "", src, flags=re.MULTILINE)
     # Headers — keep text, drop hash marks
     src = re.sub(r"^#+\s*(.*)$", r"\1", src, flags=re.MULTILINE)
+    # Image markdown ![alt](url) -> strip entirely (image alt text is not narration)
+    src = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", src)
     # Markdown links [text](url) -> text
     src = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", src)
     # Inline code `foo` -> foo

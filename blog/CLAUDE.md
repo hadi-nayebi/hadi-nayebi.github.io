@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.7.1
+**Version:** v0.8.0
 
 ## Content Workflow
 
@@ -122,6 +122,36 @@ Every blog post follows the same structure:
 - **Read time = audio time** — use actual ffprobe duration, rounded to nearest minute
 - **Audio label** and **read time** must show the same number
 - **All instances must match:** article meta, sidebar cards (in ALL posts), blog.html index cards, .md frontmatter
+
+## Image Style (NON-NEGOTIABLE)
+
+All blog images use the **dark chalkboard / pastel chalk** aesthetic anchored by `assets/images/blog/opevc-cycle-blackboard.png`. Every image prompt — in `.md` placeholder comments AND in the matching HTML `<aside class="image-placeholder">` — must reference this style explicitly.
+
+**Required descriptors** in every prompt: "Chalk-on-blackboard", "Match `opevc-cycle-blackboard.png` exactly", "dark slate chalkboard", "hand-drawn chalk lines", "pastel chalk (cyan, green, orange, pink, magenta)", "white chalk for labels and arrows", "chalk sticks at the bottom edge", "Keep every line hand-drawn and slightly imperfect, never ruler-straight".
+
+**Forbidden descriptors** (retired with the old style): "dark glassy space", "glassmorphism", "indigo/violet palette", "futuristic", "subtle glow effects".
+
+**Mirror rule:** Every image-prompt change in `.md` MUST be mirrored in `.html`. They describe the same prompt for downstream image generation.
+
+**Verification grep** (must run after any image-prompt edit):
+```bash
+grep -c -i "glassy\|glassmorphism" blog/<slug>.md blog/<slug>.html   # must be 0
+grep -c "Chalk-on-blackboard" blog/<slug>.md blog/<slug>.html        # must equal the number of image placeholders
+```
+
+## Explicit Final Verification (NON-NEGOTIABLE)
+
+After any prose, image-prompt, or transcript change, **explicitly verify each downstream deliverable** before declaring the work done. The Edit tool can silently no-op; regenerated transcripts can carry artifacts; audio can be stale even when the transcript is fresh. **Trust nothing; grep everything.**
+
+**Required verification cascade after any `.md` change:**
+
+1. **Edit landed in `.md`** — grep for the new string AND grep for the old string (old count must be 0).
+2. **HTML mirrored** — same grep against `.html`. Prose, image prompts, and structural edits must appear in both files.
+3. **Transcript regenerated** — run `tools/generate_blog_transcript.py`, then grep for known artifact patterns: chalk/blackboard leakage from image prompts (must be 0); double-`the` from marker expansion (must be 0); stray `!` from image markdown (must be 0).
+4. **Transcript flipped to `final: true`** — `head -5 blog/<slug>.transcript.md` must show `final: true`.
+5. **Audio re-rendered** — confirm `blog/<slug>.mp3` mtime is NEWER than the transcript's `generated_at` timestamp. Stale mp3 + fresh transcript = audio that doesn't match HTML.
+
+**Do not stop iterating until every item in the cascade is verified.** If any step fails — re-edit, re-regen, re-render. The work is done when every deliverable is verified final, not when one of them lands.
 
 ## Audio Transcript Rules (NON-NEGOTIABLE)
 
@@ -385,8 +415,8 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.29.3** |
-| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.0** |
+| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.30.0** |
+| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.1** |
 | 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **outlined** |
 | 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **outlined** |
 
