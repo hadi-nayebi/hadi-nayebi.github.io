@@ -155,11 +155,12 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
 
 Before opening each phase compartment, here is the operational map at a glance. Each line below names the phase, its essence, and what it is on the hook to produce.
 
-**IDLE** — the meta-state between cycles. Job management only.
-- Unlock the job-management CLI — the full lifecycle and relationship surface (show, focused, list, update, activate, focus, pause, complete, create, create-dependent, add-dependency, approve)
+**IDLE** — the meta-state between cycles. Lifecycle management only.
+- Unlock the job-management CLI — the lifecycle surface (`show`, `focused`, `list`, `update`, `activate`, `focus`, `pause`, `complete`, `approve`). Creation and graph mutations live elsewhere.
 - Unlock the phase CLI (`advance`, `current`, `cycle`, `exit-gmode`) — agent-callable `advance` only goes idle → observe
 - Keep the always-on infrastructure running: memory edits, summary, compact, lock
 - Block reads, project edits, CLAUDE.md edits, web access, general shell
+- *Job creation happens automatically: top-level via `prompt-handler.sh` (the user's prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming `[PENDING-JOB]` markers. The agent does not call `job.sh create` itself.*
 
 **OBSERVE** — gather context before any plan can form.
 - On cycle 1, classify the job's form (single-cycle deep / multi-cycle with `.md` plan / multi-cycle with `.yaml` plan); the form decides whether PLAN will name a plan_file
@@ -187,12 +188,14 @@ Before opening each phase compartment, here is the operational map at a glance. 
 - Write pass/fail results into CLAUDE.md and the plan file
 - Edit the active plan file: the `.md` while `plan_state` is `drafting`, the `.yaml` while `plan_state` is `yaml_drafting`
 - Ask the user via AskUserQuestion (`[PLAN-APPROVAL]` or `[YAML-APPROVAL]`); on yes, flip `plan_state` (`approve-md` / `approve-yaml`); `seal-plan` is the separate, optional terminal step
+- Remove a dependency from the focused job's `depends_on` (`job.sh remove-dependency`) when the audit reveals the dep is no longer needed — the lifecycle-symmetry partner of CONDENSE's `add-dependency`
 - Route the cycle forward to CONDENSE, or backward to whichever prior phase the failure points at
 
 **CONDENSE** — consolidate the cycle's learnings into the brain.
 - Walk a strict seven-step waterfall that routes content to its durable home
 - Consume marker types the prior phases dropped into footers
 - Compress the working CLAUDE.md back to a clean state
+- Own all job creation (`create`, `create-dependent`) and dependency additions (`add-dependency`) — the phase with the right cycle-wide context for graph mutations
 - Lock forward to idle; no escape hatch back to verify
 
 **GMODE** — the freestyle side-channel from any phase.

@@ -253,12 +253,13 @@
 
                         <p>Before opening each phase compartment, here is the operational map at a glance. Each line below names the phase, its essence, and what it is on the hook to produce.</p>
 
-                        <p><strong>IDLE</strong> &mdash; the meta-state between cycles. Job management only.</p>
+                        <p><strong>IDLE</strong> &mdash; the meta-state between cycles. Lifecycle management only.</p>
                         <ul>
-                            <li>Unlock the job-management CLI &mdash; the full lifecycle and relationship surface (<code>show</code>, <code>focused</code>, <code>list</code>, <code>update</code>, <code>activate</code>, <code>focus</code>, <code>pause</code>, <code>complete</code>, <code>create</code>, <code>create-dependent</code>, <code>add-dependency</code>, <code>approve</code>)</li>
+                            <li>Unlock the job-management CLI &mdash; the lifecycle surface (<code>show</code>, <code>focused</code>, <code>list</code>, <code>update</code>, <code>activate</code>, <code>focus</code>, <code>pause</code>, <code>complete</code>, <code>approve</code>). Creation and graph mutations live elsewhere.</li>
                             <li>Unlock the phase CLI (<code>advance</code>, <code>current</code>, <code>cycle</code>, <code>exit-gmode</code>) &mdash; agent-callable <code>advance</code> only goes idle &rarr; observe</li>
                             <li>Keep the always-on infrastructure running: memory edits, summary, compact, lock</li>
                             <li>Block reads, project edits, <code>CLAUDE.md</code> edits, web access, general shell</li>
+                            <li><em>Job creation happens automatically: top-level via <code>prompt-handler.sh</code> (the user&rsquo;s prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming <code>[PENDING-JOB]</code> markers. The agent does not call <code>job.sh create</code> itself.</em></li>
                         </ul>
 
                         <p><strong>OBSERVE</strong> &mdash; gather context before any plan can form.</p>
@@ -294,6 +295,7 @@
                             <li>Write pass/fail results into <code>CLAUDE.md</code> and the plan file</li>
                             <li>Edit the active plan file: the <code>.md</code> while <code>plan_state</code> is <code>drafting</code>, the <code>.yaml</code> while <code>plan_state</code> is <code>yaml_drafting</code></li>
                             <li>Ask the user via AskUserQuestion (<code>[PLAN-APPROVAL]</code> or <code>[YAML-APPROVAL]</code>); on yes, flip <code>plan_state</code> (<code>approve-md</code> / <code>approve-yaml</code>); <code>seal-plan</code> is the separate, optional terminal step</li>
+                            <li>Remove a dependency from the focused job&rsquo;s <code>depends_on</code> (<code>job.sh remove-dependency</code>) when the audit reveals the dep is no longer needed &mdash; the lifecycle-symmetry partner of CONDENSE&rsquo;s <code>add-dependency</code></li>
                             <li>Route the cycle forward to CONDENSE, or backward to whichever prior phase the failure points at</li>
                         </ul>
 
@@ -302,6 +304,7 @@
                             <li>Walk a strict seven-step waterfall that routes content to its durable home</li>
                             <li>Consume marker types the prior phases dropped into footers</li>
                             <li>Compress the working <code>CLAUDE.md</code> back to a clean state</li>
+                            <li>Own all job creation (<code>create</code>, <code>create-dependent</code>) and dependency additions (<code>add-dependency</code>) &mdash; the phase with the right cycle-wide context for graph mutations</li>
                             <li>Lock forward to idle; no escape hatch back to verify</li>
                         </ul>
 

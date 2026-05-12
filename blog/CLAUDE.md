@@ -670,9 +670,35 @@ Bring Blog 6 narrative into alignment with the Best Design.
 
 Each operation = one subagent dispatch with raw paragraph context + Best Design intent + Blog 6 voice constraints + ref-tag conventions. Then I apply Edit to .md and mirror in .html.
 
+### Dimension 2: Job-graph ownership (locked 2026-05-12)
+
+**Operating principle (user-locked):** "All job creation (dep or not) is for CONDENSE. Always think what phase has the right context for the job." Lifecycle symmetry: where one phase ADDS state, another phase OWNS the REMOVAL — chosen by which phase has the right context to make that judgment.
+
+**Verified design:**
+
+| Operation | Owner phase | Why |
+|---|---|---|
+| `job.sh create-active` (top-level creation) | `prompt-handler.sh` always-on hook (hook-internal, bypasses phase guards) | User's prompt is the trigger; agent never calls this |
+| `job.sh create` / `create-dependent` (dep creation) | CONDENSE step 3 via `condense-job-creator` subagent (markers); CONDENSE agent-direct with `--out-of-scope` gated | CONDENSE has cycle-wide context for what follow-up work is needed |
+| `job.sh add-dependency` | CONDENSE (`condense-guard.sh:314`) | Same — graph additions during cycle synthesis |
+| `job.sh remove-dependency` | VERIFY (`verify-guard.sh:360`) | VERIFY audits the focused job; can discover a declared dep is unneeded |
+| `job.sh activate / focus / pause` | IDLE (`phase-gate.sh:96`) | Between-cycle lifecycle management; user + agent collaborate |
+| `job.sh complete / approve` | IDLE + CONDENSE; `approve` is hook-only fired by `[JOB-COMPLETE]` answer | Completion is judgment-bearing; happens between productive phases |
+| `job.sh show / focused / list` | All phases (read-only) | Universal context query |
+| `job.sh update --heal` (completed-job repair) | Wherever update is allowed (IDLE + CONDENSE) | Cycle-error healing; flag-based bypass of immutability check |
+
+**GMODE is the documented escape hatch.** Phase guards check `if current_phase != my_phase: exit 0` — when `current_phase == "gmode"`, ALL guards skip. The agent can call any `job.sh` command in GMODE. This is intentional: GMODE is the deliberate user-gated escape (≥100-word `[GMODE]` justification). Job creation in GMODE is debt-laden: the agent has explicitly bypassed CONDENSE's cycle-wide context and accepts the consequence. Not an enforcement gap, an admitted exception.
+
+**Code-blog alignment** (2026-05-12):
+- `job_core/scripts/job.sh` — added `remove-dependency` subcommand (symmetric with `add-dependency`); added `--heal` flag on `update`.
+- `phase-gate.sh:96` (IDLE) — dropped `create / create-dependent / add-dependency`.
+- `verify-guard.sh:360` — added `remove-dependency` to allowlist; added explicit BLOCK for create/create-dependent/add-dependency before the broad `bash .* scripts/` regex (which was a pre-existing OPTION A escape vector).
+- `condense-guard.sh:314` — added `add-dependency` (was missing).
+- 5 test files updated; 311+ assertions green.
+- `phase_verify/CLAUDE.md` OPTION A pattern marked RETIRED; `phase_condense/CLAUDE.md` allowlist table updated; `phasic_system/CLAUDE.md` command table extended.
+
 ### Future dimensions (named, not yet investigated)
 
-- Job creation ownership (claim: CONDENSE only; IDLE activates/refocuses only)
 - Voice.xml update ownership (claim: CONDENSE only)
 - Subagent-definition update ownership (claim: CONDENSE only)
 - Knowledge-file authoring ownership (claim: CONDENSE only)
