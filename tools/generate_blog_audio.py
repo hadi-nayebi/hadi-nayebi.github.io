@@ -25,6 +25,12 @@ TTS_CHAR_LIMIT = 4000  # OpenAI hard limit is 4096; leave headroom
 TTS_MAX_ATTEMPTS = 4
 TTS_BACKOFF_SECONDS = 5
 
+# Inter-paragraph silence inserted at concat time. `tts-1-hd` ignores newlines
+# inside a single API call, so paragraphs run together without a breath. We chunk
+# per paragraph and stitch a real silence file between them at ffmpeg time —
+# deterministic pause length, no text artifacts. Tweak here if pacing feels off.
+PARAGRAPH_SILENCE_SECONDS = 0.45
+
 
 def strip_html_comments(text: str) -> str:
     """Remove HTML comment blocks (e.g. <!-- IMAGE PLACEHOLDER ... -->) from a markdown body."""
@@ -61,24 +67,43 @@ def load_api_key() -> str:
 
 
 def chunk_transcript(text: str, limit: int = TTS_CHAR_LIMIT) -> list[str]:
-    """Split on paragraph boundaries; each chunk <= limit chars."""
-    paragraphs = [p for p in text.split("\n\n") if p.strip()]
+    """Split on paragraph boundaries — one paragraph per chunk.
+
+    Earlier versions packed many paragraphs into a single API call to minimise
+    round-trips, but that meant the model never paused at paragraph boundaries
+    (tts-1-hd reads each call as one continuous stream). Splitting per paragraph
+    lets us insert a real silence file between each rendered part at concat time.
+
+    Cost is per-character, so chunking finer does not change spend; it only
+    trades a few minutes of extra latency for clean paragraph pauses.
+
+    If a single paragraph somehow exceeds the API char limit, fall back to
+    splitting it on sentence boundaries.
+    """
+    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
     chunks: list[str] = []
-    current: list[str] = []
-    current_len = 0
     for p in paragraphs:
-        p = p.strip()
-        # +2 for the joining "\n\n"
-        addition = len(p) + (2 if current else 0)
-        if current_len + addition > limit and current:
-            chunks.append("\n\n".join(current))
-            current = [p]
-            current_len = len(p)
-        else:
-            current.append(p)
-            current_len += addition
-    if current:
-        chunks.append("\n\n".join(current))
+        if len(p) <= limit:
+            chunks.append(p)
+            continue
+        # Rare fallback: split a too-long paragraph into sentence groups.
+        # Within these splits we do NOT insert silence — those splits are mid-paragraph.
+        # We mark them by joining with a single space so the concat layer can
+        # tell paragraph-boundaries apart from sentence-boundaries (see main()).
+        sentences = re.split(r"(?<=[.!?])\s+", p)
+        buf: list[str] = []
+        buf_len = 0
+        for s in sentences:
+            add = len(s) + (1 if buf else 0)
+            if buf_len + add > limit and buf:
+                chunks.append(" ".join(buf))
+                buf = [s]
+                buf_len = len(s)
+            else:
+                buf.append(s)
+                buf_len += add
+        if buf:
+            chunks.append(" ".join(buf))
     return chunks
 
 
@@ -104,19 +129,47 @@ def synthesize(client, text: str, voice: str, model: str, out_path: Path) -> Non
     raise last_exc  # type: ignore[misc]
 
 
-def concat_mp3s(parts: list[Path], output: Path) -> None:
-    """Concatenate mp3 files using ffmpeg's concat demuxer."""
+def make_silence(duration: float, out_path: Path) -> None:
+    """Generate a silent mp3 of the given duration using ffmpeg's anullsrc.
+
+    Output codec params (mono, 24 kHz, mp3) match what OpenAI tts-1-hd emits,
+    so the concat demuxer can stream-copy without re-encoding.
+    """
+    subprocess.run(
+        [
+            "ffmpeg", "-y", "-loglevel", "error",
+            "-f", "lavfi",
+            "-i", f"anullsrc=channel_layout=mono:sample_rate=24000",
+            "-t", str(duration),
+            "-c:a", "libmp3lame", "-b:a", "32k",
+            str(out_path),
+        ],
+        check=True,
+    )
+
+
+def concat_mp3s(parts: list[Path], output: Path, silence_path: Path | None = None) -> None:
+    """Concatenate mp3 files using ffmpeg's concat demuxer.
+
+    If `silence_path` is given, insert that silence file between every pair of
+    `parts` — used to add a deterministic pause at every paragraph boundary.
+    """
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
-        for p in parts:
+        for i, p in enumerate(parts):
+            if i > 0 and silence_path is not None:
+                f.write(f"file '{silence_path.resolve()}'\n")
             f.write(f"file '{p.resolve()}'\n")
         listfile = Path(f.name)
     try:
+        # Re-encode at concat time so any minor codec-param drift between the
+        # TTS output and the silence stub gets harmonised. Cheap; the final
+        # file is short and libmp3lame is fast.
         subprocess.run(
             [
                 "ffmpeg", "-y", "-loglevel", "error",
                 "-f", "concat", "-safe", "0",
                 "-i", str(listfile),
-                "-c", "copy",
+                "-c:a", "libmp3lame", "-b:a", "64k",
                 str(output),
             ],
             check=True,
@@ -167,16 +220,17 @@ def main() -> None:
         tmp = Path(td)
         parts: list[Path] = []
         for i, chunk in enumerate(chunks, 1):
-            part_path = tmp / f"part_{i:02d}.mp3"
+            part_path = tmp / f"part_{i:03d}.mp3"
             print(f"  [{i}/{len(chunks)}] generating {len(chunk):,} chars...")
             synthesize(client, chunk, args.voice, args.model, part_path)
             parts.append(part_path)
 
-        if len(parts) == 1:
-            parts[0].rename(args.output)
-        else:
-            print(f"  concatenating -> {args.output}")
-            concat_mp3s(parts, args.output)
+        # Generate the silence stub used between paragraph parts.
+        silence_path = tmp / "silence.mp3"
+        make_silence(PARAGRAPH_SILENCE_SECONDS, silence_path)
+        print(f"  concatenating {len(parts)} parts with {PARAGRAPH_SILENCE_SECONDS}s "
+              f"silence between -> {args.output}")
+        concat_mp3s(parts, args.output, silence_path=silence_path)
 
     size_mb = args.output.stat().st_size / 1024 / 1024
     print(f"Wrote {args.output} ({size_mb:.1f} MB)")

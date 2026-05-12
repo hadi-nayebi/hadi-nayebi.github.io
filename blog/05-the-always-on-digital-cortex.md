@@ -2,7 +2,7 @@
 title: "The Always-On Digital Cortex"
 date: "May 2026"
 slug: "the-always-on-digital-cortex"
-read_time: "36 min"
+read_time: "37 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
 version: v0.30.0
@@ -271,7 +271,7 @@ hadosh_academy/
     └── CLAUDE.md                          ← project working memory
 ```
 
-Each layer plays a different role on the bus. *[ref: each-layer-different-role-bus | CLAUDE.md:13-36 | Workspace Structure tree + Spaces subsection: each layer declared with a distinct role — root workspace (own git), `.claude/` (Agent brain), `knowledge/` (long-term knowledge), `plugins/` (behavioral controls), `hadi-nayebi.github.io/` (THE PROJECT). Labeled layers, not a uniform store.]*
+Each layer plays a different role on the bus.
 
 The **root CLAUDE.md** declares the agent's identity and operating rules — what phases exist, what the size limits are, how the brain is allowed to grow. It is the top of the bus, and one of the two project-level CLAUDE.md files Claude Code loads at session start. *[ref: root-CLAUDE-md-declares-identity | CLAUDE.md:289-298 | Growth Rules section (8 numbered rules): new operations need definition + transition maps, recurring patterns codify, >50-word ops extract to skills, CONDENSE grows brain, size limits drive reorganization, soft→hard migration, brain never stops growing.]*
 
@@ -291,7 +291,7 @@ The **phasic plugins** generate the bus's content. The choreography of how each 
 
 The relationship is asymmetric. The phasic layer is the system that actively uses the hierarchy — its phases write into footers during the cycle, and CONDENSE absorbs the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and the brain's own operations, at cycle close. The always-on layer mostly does not — each of its plugins runs its own concern through its own state, with at most narrow points of contact (`plugin_integrity` guards the phase markers; the rest are orthogonal). In the current prototype, well over a hundred `CLAUDE.md` files across the brain and the project carry the four phase footers. The footer convention is the protocol — and the phasic layer is what writes through it. *[ref: relationship-is-asymmetric-phasic-uses | CLAUDE.md:129-134 | CONDENSE.consume-markers (steps 3-6) routes footer markers to multiple destinations: `[PENDING-JOB]` → job creation, `[VOICE-UPDATE]` → voice.xml, `[AGENT-UPDATE]` → subagent defs, `[KNOWLEDGE]` → knowledge files. Filesystem: 113 of 119 CLAUDE.md files carry all four phase footers.]*
 
-This is the bus. *[ref: this-is-the-bus | .claude/plugins/phase_plan/docs/principles.md:26-27 | Principle 7 "Shared context bus": "CLAUDE.md is persistent brain for ALL agents across ALL phases." Failure mode: instructions only in conversation = subagents have no context.]*
+This is the bus.
 
 In [Essay 1](01-llms-are-not-the-agents.html), I claimed that *the agent is the filesystem*. This is what that meant, mechanically. The filesystem is not a passive store. It is an active hierarchy, with rules about what reads where and what writes where, with phases that inflate and condense it across a cognitive cycle. The always-on layer runs alongside that — phase-independent, each plugin minding its own concern regardless of where the cycle is. *[ref: agent-is-the-filesystem-mechanics | CLAUDE.md:486 | "Write scope (phase-dependent): observe/plan → CLAUDE.md only | execute → altered-list dirs (NEW files + scripts/tests/agents/voice.xml) | verify → scripts + CLAUDE.md + plan files | condense → any .md + `.claude/knowledge/` + voice.xml + agent definitions." Per-phase rules enforced by phase guards.]*
 
@@ -303,9 +303,9 @@ For the architects in the audience: the historian ratchet we sketched earlier is
 
 The setup. Every plugin has a file called `evolution.md`. It is a word-capped narrative (currently 2000 words) of how the plugin got to its current state — what was added, what was rejected, what was learned during which cycle. It is auto-injected into the agent's context whenever the plugin is unlocked for editing. *[ref: every-plugin-has-evolution-md | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:324-329 | Lock unlock builds `[LIVING HISTORY (evolution.md)]` from `$PLUGINS_ROOT/$target/docs/evolution.md` and injects via `hookSpecificOutput.additionalContext`. Word cap at `config.conf:37 — MAX_EVOLUTION_WORDS=2000`.]*
 
-The naive version of this would be: "documentation that updates itself when the plugin changes." *[ref: naive-version-would-be | .claude/plugins/plugin_integrity/agents/historian-plugin-integrity.md:14 | Historian Mandate: "`[PLUGIN-LOCK] plugin_integrity` runs drift-check. When drift ≥ threshold, lock is BLOCKED until you sync. Your synthesis auto-injects on next unlock." Dispatched subagent, not auto-process.]*
+The naive version of this would be: "documentation that updates itself when the plugin changes."
 
-The seed agent's version is sharper. *[ref: seed-agents-version-is-sharper | .claude/plugins/plugin_integrity/hooks/evolution-cap.sh:106-114 | BLOCK branch: when edit pushes `evolution.md` past `MAX_EVOLUTION_WORDS`, `exit 2` with 3-part teach message (WHY: auto-injected primary memory; WHAT TO DO: consolidate, archive to `docs/decisions.md`/`docs/lessons.md`; EXPECTED STATE for re-edit). Not naive auto-update.]*
+The seed agent's version is sharper.
 
 When the agent attempts to unlock a plugin for editing — by issuing a question with the prefix `[PLUGIN-LOCK] <plugin_name>` — the lock manager runs a small drift-check against the target plugin. The check is a single git command that counts how many commits have touched the plugin since the last time its evolution narrative was synced. The result is the *drift count*: the number of commits the plugin has accumulated since its history was last narrated. If that count meets or exceeds a configurable threshold (default ten), the unlock is *blocked* and the agent is told to dispatch the plugin's historian subagent first. *[ref: plugin-lock-prefix-runs-drift-check | .claude/plugins/plugin_integrity/scripts/drift-check.sh:46 | Single git command: `git rev-list --count "${LAST_SYNC_COMMIT}..HEAD" -- "$PLUGIN_DIR"` counts commits to the plugin since the last `evolution.md` sync. `config.conf:23 DRIFT_THRESHOLD=10` is the block threshold.]*
 
@@ -315,7 +315,7 @@ This is the **ratchet pattern**. A plugin cannot be edited indefinitely without 
 
 The pattern is portable. Anywhere a system needs to enforce a discipline-that-must-be-done-eventually, the same shape works: a counter that climbs with normal work, a block that fires when the counter crosses a threshold, and a corrective action whose own completion resets the counter. The discipline becomes mechanically inescapable. *[ref: pattern-is-portable-mechanically-inescapable | .claude/plugins/plugin_integrity/docs/evolution.md:31 | Lesson 10 articulates the design principle: "When drift count exceeds the threshold, plugin_integrity lock is BLOCKED until historian syncs... This is NOT a penalty; it's load-balancing. High drift = knowledge debt accumulating. The lock forces onboarding before execution."]*
 
-The lesson is small: **read the work before changing it**. *[ref: lesson-read-before-changing | .claude/plugins/plugin_integrity/agents/historian-brain-guard.md:14 | Mandate: "Your update provides the seed agent with the 'Why' and 'How' of this plugin's evolution so it never repeats past mistakes." Auto-injected on every unlock — agent reads history first.]*
+The lesson is small: **read the work before changing it**.
 
 The mechanism makes the lesson non-negotiable. The agent is not *suggested* to re-read the plugin's history before editing — a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed. *[ref: mechanism-makes-lesson-non-negotiable | .claude/plugins/plugin_integrity/tests/test-evolution-word-cap.sh:82-88 | Test 5 "Write over cap -> exit 2": payload of 20 words against a 10-word cap; `assert_contains ... "EXIT=2"`. Test verifies the BLOCK fires mechanically — not a suggestion.]*
 
@@ -373,9 +373,9 @@ The bus we built up across the CLAUDE.md hierarchy is substrate. The hierarchy i
 
 The actual work happens in the phasic layer. Five phases. One cognitive organ called CONDENSE. Tools forbidden in each phase that force the agent to think before acting. *[ref: actual-work-in-phasic-layer | CLAUDE.md:212 | JOB.phase operation: "Phase-locked tool access enforces compartmentalization (observe/plan = read-only, execute = full, verify = scripts only, condense = `.claude/` only)." Five phases + CONDENSE organ, tools restricted per phase to force thought before action.]*
 
-But a bus is just substrate. What USES it intelligently — that's the phasic brain. *[ref: bus-is-just-substrate-phasic-brain | .claude/plugins/phasic_system/CLAUDE.md:57 | Design Principle: "The phasic system is the conductor — phase plugins are the musicians." Tracks WHERE each job is in its cognitive cycle; individual phase plugins enforce WHAT is allowed.]*
+But a bus is just substrate. What USES it intelligently — that's the phasic brain.
 
-Next. *[ref: next | .claude/plugins/phasic_system/scripts/phase.sh:134 | `FORWARD_MAP="idle:observe observe:plan plan:execute execute:verify verify:condense condense:idle"` — the literal "next phase" transition table Blog 6 explores.]*
+Next.
 
 ---
 

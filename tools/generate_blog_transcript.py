@@ -91,6 +91,11 @@ def strip_markdown(src: str) -> str:
     src = re.sub(r"^---\n.*?\n---\n", "", src, count=1, flags=re.DOTALL)
     # HTML comments (image placeholders, etc.)
     src = re.sub(r"<!--.*?-->", "", src, flags=re.DOTALL)
+    # Inline blog reference tags `*[ref: slug | file:line | description]*` —
+    # these anchor on-page claims to seed-agent source files and exist in the .md
+    # only; they must not enter TTS audio. Strip before any markdown processing
+    # so the surrounding italic-asterisk syntax never bleeds through.
+    src = re.sub(r" *\*\[ref: [^|]+ \| .*?\]\*(?=\s|$)", "", src, flags=re.DOTALL)
     # Non-narrated meta-navigation lines (series position, prev/next, companion).
     # These exist for the eye on the website footer; the ear does not need them.
     # Match each as a full italicized line (`*...*` on its own line).

@@ -33,3 +33,8 @@ blog/draft-*
 # System files
 .DS_Store
 Thumbs.db
+
+# Python bytecode (from tools/ scripts)
+__pycache__/
+*.pyc
+*.pyo

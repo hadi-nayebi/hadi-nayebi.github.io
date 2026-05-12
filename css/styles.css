@@ -3018,4 +3018,24 @@ body.lightbox-open {
     opacity: 0.7;
 }
 
+/* Ref-marker — subtle inline marker that surfaces a [ref: ...] tooltip on hover.
+   Used in blog posts to anchor each load-bearing claim to a file:line in the seed agent
+   codebase without bloating the visible prose. The full ref text lives in the
+   browser-native `title` attribute, so no JS or popover infrastructure is needed. */
+.ref-marker {
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 0.72em;
+    color: rgba(139, 92, 246, 0.7);
+    cursor: help;
+    vertical-align: super;
+    line-height: 1;
+    user-select: none;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.ref-marker:hover {
+    color: rgba(139, 92, 246, 1);
+}
+
 
