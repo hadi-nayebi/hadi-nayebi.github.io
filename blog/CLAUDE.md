@@ -404,6 +404,282 @@ Each blog (except B8) ends with a one-line forward bridge in the **body** (not j
 - §6: **Tier-3 close: the meta-thesis** — system that safely modifies itself; the brain stops growing in size but never stops learning
 - §7: Bridge to public seed-agent (open-source, MIT, the hand-off)
 
+## Compartmentalization Manifest (Working — Prototype Design)
+
+Every command/operation in the seed agent is owned by exactly one phase. Each ownership choice is a **dimension of variation** — future seed agents can vary along these axes. This section is the source-of-truth for what the **current prototype** ships and what is **deferred** to post-ship variations. Blog narrative and prototype code must agree with this manifest.
+
+### Workflow (repeating loop)
+
+1. **Concept** — user describes a phase-design intent or invariant
+2. **Investigate** — dispatch subagents to find where the concept lives in code; flag contradictions, gaps, drift (file:line + snippet evidence per item)
+3. **Fix the blog first** — update Blog 6 (.md + .html mirrored, transcript regenerated, no contradictions)
+4. **Fix the code second** — bring prototype into alignment with corrected narrative
+5. **Repeat** — next dimension
+
+**Ground rules:** subagents for investigation (never direct grep); evidence with file:line + snippet for every flagged item; one concept at a time, fully closed before moving on; no "99% done" — full audit, full fix, full verify.
+
+### Dimension 1: Plan-file lifecycle
+
+**Operating principle (user-described — prototype design choice):**
+- **PLAN's deliverable** = analysis + decisions, written into CLAUDE.md (working memory). PLAN **names** the plan file; does not write to it.
+- **EXECUTE's deliverable** = artifacts. Plan file is an artifact (just like code). EXECUTE materializes the .md plan file.
+- **VERIFY's deliverable** = approval + critique. VERIFY is the cycle's final guardrail; refines the plan, requests reanalysis if deficient.
+- **Underlying principle:** no phase authors its own gate's artifact; every phase fully authors its own working-memory analysis.
+
+**Job-type classification model:**
+- **Single-cycle deep OPEVC** — freestyle, collaborative-with-user, **no plan file**. Many backward + loops INSIDE the cycle. Example: chemical engineer teaching technoeconomic analysis to a fresh seed.
+- **Multi-cycle** — plan file exists; refinement accumulates across cycles.
+- **Job type is decided in OBSERVE of cycle 1**, not at job creation.
+- Signal: `plan_file: "false"` literal for single-cycle; path string for multi-cycle. (Q5 resolved per root CLAUDE.md `set-plan-file <id> false`.)
+
+**Plan file two-stage lifecycle:**
+- **Stage A — .md (working plan):** created in EXECUTE (cycle 1), edited by VERIFY, refined across cycles. Many jobs never leave Stage A.
+- **Stage B — .yaml (consolidated plan):** triggered when plan is approved. Future cycles read .yaml at phase entry for context-rich injection. v1 minimal: identity transform of .md content into yaml shell.
+- **Plan approval gate:** user-gated (not auto-promoted). Mechanism TBD via Q1.
+
+**Universal principle (extracted from user's Q2 answer — applies beyond plan files):**
+- OBSERVE + PLAN + VERIFY work in CLAUDE.md (analyze, decide, refine).
+- **EXECUTE is the universal file-creator.** Any file the seed agent produces (.md plan, .yaml plan, code, configs) is written by EXECUTE using CLAUDE.md analysis as the source.
+- VERIFY can edit files EXECUTE created — refinement is part of VERIFY's authority.
+- **Every artifact has the same lifecycle:** analyze in CLAUDE.md → EXECUTE writes → VERIFY refines → loop. Plan files are one specific instance.
+
+**Locked-in for this prototype:**
+1. PLAN names plan file (writes only into CLAUDE.md layer).
+2. EXECUTE creates .md plan file (cycle 1) — instance of the universal "EXECUTE writes files" principle.
+3. VERIFY edits .md plan file (refinement + final-guardrail authority) and is the **only phase that can ask for plan approval**.
+4. PLAN reads plan file on subsequent cycles.
+5. Single-cycle jobs = `plan_file: "false"`; multi-cycle = path string.
+6. **Plan approval mechanism:** VERIFY uses AskUserQuestion to ask the user. On "yes", VERIFY calls a plan-phase script to flip an approval flag on the job. **No chat-marker scanning.**
+7. **.yaml creation is itself a full OPEVC cycle**, not an identity transform: OBSERVE + PLAN analyze the approved plan in CLAUDE.md, EXECUTE writes the .yaml for the first time, VERIFY refines (can send back to PLAN). Multiple cycles may refine the .yaml.
+8. **VERIFY's reanalysis backward path is unconstrained** — VERIFY returns to whichever phase fits the situation; not a hardcoded route.
+9. **.yaml as injection mechanism:** once .yaml exists, future cycles read it for context injection at phase entry — a stream of memories during job work. Parseable structure supports richer injection than .md.
+10. **Same-basename side-by-side:** `plans/foo.md` and `plans/foo.yaml` in the same directory.
+11. **Root CLAUDE.md defines the job-form taxonomy** — seed agent reads it to decide what form a new job takes (single-cycle / multi-cycle / with-plan / with-yaml).
+
+**Audit findings (2026-05-12 — 4 parallel subagents):**
+
+What's BUILT and aligned with design:
+- PLAN names plan file via `plan.sh:335-376 set-plan-file`; plan-guard blocks PLAN from writing the file (`plan-guard.sh:253-289`).
+- EXECUTE creates .md plan file with full guard (scope + cycle-1 + Write-only + non-existent): `execute-guard.sh:746-764`.
+- VERIFY edits .md plan file (`verify-guard.sh:257-265`); plan-edit tracking via `verify-tracker.sh:165-167`.
+- PLAN reads plan file on cycle 2+ via active-recall gate (`plan-commit.sh:148-166`).
+- Full .yaml machinery wired: schema + parser (`phase.sh:408-463 read-yaml`), phase-entry injection (`phase-init.sh:96-138`), 5 plan-side validators (`plan.sh:378-563`), 54 dedicated tests.
+- Real .md+.yaml pairs co-located at `.claude/knowledge/plans/` (same basename — matches Item #10).
+- AskUserQuestion-based approval trigger (`question-capture.sh:133-149`) — not chat-marker scanning (matches Item #6 trigger shape).
+
+Divergences (G1–G3 = flow-level; G4–G9 = smaller):
+- **G1 — .yaml created in cycle 1 alongside .md**, not in a new post-approval cycle. Major flow divergence from Item #7.
+- **G2 — Approval = sealing, not gating.** `mark-plan-complete` archives `plan_file → completed_plan[]` and sets `plan_file=false` (`plan.sh:807-811`). No `approved` flag exists; only `user_approval` (which gates JOB-COMPLETE).
+- **G3 — VERIFY cannot refine .yaml.** .yaml is immutable after cycle-1 creation. Item #7's "VERIFY refines, can send back to PLAN" applies only to .md today.
+- **G4 — Approval handler lives in `job_core/hooks/question-capture*.sh`, not `phase_verify/`.** Fires in any phase, not VERIFY-only per Item #3.
+- **G5 — No unified job-form taxonomy doc.** Forms exist implicitly across `plan_file` + `yaml_required` fields. "Multi-cycle without plan" not representable in current data model.
+- **G6 — Phase-entry injection = one `objective:` scalar per phase.** Item #9's "stream of memories" not yet wired (planned via richer .yaml fields).
+- **G7 — VERIFY plan-edit scope is loose** — allows any `plan_*.md` under `/knowledge/plans/`, not just focused job's declared plan.
+- **G8 — Single-cycle jobs cannot have .yaml** (`yaml_required=true` requires multi-cycle). Possibly intentional; flag to confirm.
+- **G9 — Documentation drift:** `phasic_system/docs/evolution.md:43` says ".yaml infrastructure complete but unwired" — wiring landed since (4 active sites in `phase-init.sh`).
+
+**Overall verdict:** scaffolding is built; three core flow shapes diverge (G1, G2, G3). Reshaping to design is restructuring, not from-scratch.
+
+**Deferred to post-ship variations:**
+- Multi-plan jobs (one job, many plan files).
+- Alternative ownership splits (e.g., PLAN edits plan file directly).
+- Plan templating / inheritance across jobs.
+- Cross-job plan references.
+- Specific .yaml schema design (what fields, what injection points — evolves per job).
+
+**Resolved (was Q1–Q4):**
+- Q1 → VERIFY asks via AskUserQuestion + plan-phase script flips approval flag (not marker scanning).
+- Q2 → A full new OPEVC cycle creates the .yaml (not a one-off step in some other phase).
+- Q3 → VERIFY can backward to any phase per situation (not a hardcoded route).
+- Q4 → Same basename side-by-side.
+
+**Round-2 lockings (FQ1–FQ4 resolved 2026-05-12 after audit):**
+- **FQ1 → New post-approval cycle.** Restructure: .md accumulates across cycles; approval triggers a new dedicated OPEVC cycle that creates the .yaml (OBSERVE+PLAN analyze, EXECUTE writes, VERIFY refines).
+- **FQ2 → Reuse `mark-plan-complete` as approval.** Rewire side effects: it no longer ends the plan or nulls `plan_file`. The cycle FOLLOWING it is the .yaml creation cycle. (Sub-question: exact post-approval data shape — TBD inline with user.)
+- **FQ3 → VERIFY edits .yaml.** Mirror the .md lifecycle: VERIFY refines .yaml, can backward to PLAN. `.yaml` is no longer immutable.
+- **FQ4 → Root CLAUDE.md.** Add job-form taxonomy as a section in root self-knowledge so OBSERVE-cycle-1 can read it.
+
+**Still-open (resolved or deferred):**
+- Mark-plan-complete rewire → **RESOLVED in best design** (rename + no archive on approval).
+- Coexistence post-yaml → **RESOLVED in best design** (.md and .yaml coexist until `seal-plan`).
+- Injection wiring → **DEFERRED post-ship** (Item #9; current single-objective injection good enough for v1).
+- Promotion trigger (agent-initiated vs user-initiated) → **DEFERRED** (both workable; not blocking).
+
+### Best Design — synthesis (2026-05-12, authorized: "do what is best, not what code already has")
+
+#### Job-object plan fields
+
+- `plan_file`: `false` (single-cycle) or `"<name>.md"` (multi-cycle).
+- `plan_state`: one of `"drafting"` | `"md_approved"` | `"yaml_drafting"` | `"yaml_ready"` | `"sealed"`. Meaningful only when `plan_file ≠ false`; defaults to `"drafting"` on plan_file set.
+- `.yaml` companion derives from plan_file basename; on disk when `plan_state ∈ {yaml_drafting, yaml_ready, sealed}`.
+
+#### State machine
+
+```
+none → drafting → drafting (loop) → md_approved → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed
+```
+
+Transitions:
+- `none → drafting` — PLAN sets plan_file (cycle 1), EXECUTE creates .md.
+- `drafting → drafting` — refinement cycles; VERIFY edits .md.
+- `drafting → md_approved` — VERIFY asks user via AskUserQuestion `[PLAN-APPROVAL]`; on "yes" calls `plan.sh approve-md`.
+- `md_approved → yaml_drafting` — next cycle; OBSERVE+PLAN analyze approved .md in CLAUDE.md, EXECUTE creates .yaml.
+- `yaml_drafting → yaml_drafting` — refinement cycles; VERIFY edits .yaml; can backward to PLAN for re-analysis.
+- `yaml_drafting → yaml_ready` — VERIFY asks via `[YAML-APPROVAL]`; on "yes" calls `plan.sh approve-yaml`.
+- `yaml_ready → sealed` (optional) — VERIFY calls `plan.sh seal-plan`; archives plan_file to `completed_plan[]`.
+
+#### Phase ownership (canonical)
+
+| Action | Owner | Constraint |
+|---|---|---|
+| `set-plan-file` | PLAN | cycle 1 only; immutable after |
+| Create .md | EXECUTE | plan_state == drafting; file non-existent |
+| Edit .md | VERIFY | plan_state == drafting; focused-job-scoped |
+| Read .md | OBSERVE, PLAN | cycle 2+ active-recall |
+| `approve-md` | VERIFY | plan_state == drafting; AskUserQuestion answer |
+| Create .yaml | EXECUTE | plan_state == md_approved; file non-existent |
+| Edit .yaml | VERIFY | plan_state == yaml_drafting; focused-job-scoped |
+| Inject .yaml at phase entry | `phase-init.sh` | plan_state ∈ {yaml_drafting, yaml_ready, sealed} |
+| `approve-yaml` | VERIFY | plan_state == yaml_drafting; AskUserQuestion answer |
+| `seal-plan` | VERIFY | plan_state == yaml_ready (optional) |
+
+#### Approval mechanism
+
+- **VERIFY-only** uses AskUserQuestion with `[PLAN-APPROVAL]` or `[YAML-APPROVAL]` prefix.
+- Validator + handler live in `phase_verify` (NOT `job_core`).
+- Phase-of-firing gate: these prefixes rejected outside VERIFY.
+- On user "yes", VERIFY calls `plan.sh approve-{md|yaml}` which flips `plan_state`.
+- No marker scanning. No `mark-plan-complete` legacy.
+- **Approval does NOT archive** — only `seal-plan` archives to `completed_plan[]`.
+
+#### Job-form taxonomy (root CLAUDE.md addition)
+
+Three forms; OBSERVE cycle 1 classifies new jobs:
+
+1. **Single-cycle deep** — `plan_file = false`. Freestyle, collaborative, backward+loops inside one cycle.
+2. **Multi-cycle with .md plan** — `plan_file = <name>.md`, `plan_state = drafting`. Refines across cycles until approved.
+3. **Multi-cycle with .yaml plan** — `plan_state ∈ {yaml_drafting, yaml_ready}`. `.yaml` injects at phase entry.
+
+Form 3 evolves from form 2 via the approval gate.
+
+#### Coexistence
+
+`.md` and `.yaml` coexist until `seal-plan`. .md = human-readable accumulating prose; .yaml = parseable injection target. Both readable; both editable by VERIFY in their respective stages.
+
+#### Storage of `plan_state` (2026-05-12 — locked)
+
+**`plan_state` lives in `data.json` on the job object**, alongside `plan_file`. NOT in file frontmatter.
+
+Reasons:
+- State describes the **whole plan lifecycle** (spans .md + .yaml together) — job-scoped, not file-scoped.
+- Fast gate-checks via `jq` (no YAML parsing in hooks).
+- Consistent with existing pattern — `plan_file` already lives on the job object.
+- One source of truth — avoids .md/.yaml frontmatter drift.
+- Atomic `jq` updates (less race-condition risk).
+
+Plan files (.md and .yaml) carry **identification frontmatter only** — `job:` + `plan_file:` at the top. Purpose: self-identification, not state. The .yaml already follows this pattern; .md should adopt the same.
+
+#### Action items — Best design vs current code
+
+| # | Action | Type | Mapped gap |
+|---|---|---|---|
+| A1 | Add `plan_state` field to job schema (`job_core/scripts/job.sh`) | NEW field | (new) |
+| A2 | Rename `mark-plan-complete` → `approve-md`; add `approve-yaml`, `seal-plan` | rename + new | G2 |
+| A3 | Approval does NOT archive plan_file (no false-set, no completed_plan[] push) | semantic change | G2 |
+| A4 | Gate .yaml creation on `plan_state == md_approved` (not cycle == 1) | gate change | G1 |
+| A5 | Allow VERIFY edits on .yaml when `plan_state == yaml_drafting` | guard widen | G3 |
+| A6 | Move approval validator + handler from `job_core` to `phase_verify` | move + namespace | G4 |
+| A7 | Phase-of-firing gate: reject `[PLAN-APPROVAL]/[YAML-APPROVAL]` outside VERIFY | new gate | G4 |
+| A8 | Add "Job Forms" section to root CLAUDE.md | doc add | G5 |
+| A9 | Tighten verify edit scope to focused-job `plan_file` | guard tighten | G7 |
+| A10 | Update `phasic_system/docs/evolution.md` to remove "complete but unwired" stale note | doc fix | G9 |
+
+### Blog 6 Fix Plan (2026-05-12)
+
+Bring Blog 6 narrative into alignment with the Best Design.
+
+**Phase 1 — Audit (1 subagent, read-only):**
+- Identify all paragraphs in `06-the-markov-phasic-brain.md` touching plan files, plan_file, .yaml, plan lifecycle, plan creation/approval.
+- For each: current claim → needed change type (rewrite / extend / no-op / new).
+- Concept-gap list: what's missing from Blog 6 vs Best Design.
+- Quick Map bullet changes needed (per phase).
+
+**Phase 2 — Per-paragraph fixes (strict workflow per `feedback_blog_ref_tag_workflow.md`):**
+- One subagent per paragraph, raw text input.
+- Mirror every change in .html (`<sup class="ref-marker">` hover-tooltips).
+- Preserve all 70 ref-tags; match Blog 5 density discipline.
+- Expected work areas:
+  - §3 OBSERVE — add job-form classification
+  - §4 PLAN — plan_file naming + cycle-2+ reads
+  - §5 EXECUTE — universal "EXECUTE writes files" principle; .yaml creation in dedicated post-approval cycle
+  - §6 VERIFY — approval authority (.md/.yaml) + refinement on both
+  - §8 Quick Map — 4 phase bullets updated
+- Any factual error gets FIXED, never decorated with a ref.
+
+**Phase 3 — Verification cascade (per `blog/CLAUDE.md` "Explicit Final Verification"):**
+- Grep new strings landed in .md; old strings absent (count == 0).
+- HTML mirror check.
+- Transcript regenerated; artifact greps clean (chalk/blackboard 0, double-`the` 0, stray-`!` 0).
+- Ref count preserved.
+- Transcript left as `final: false` (user flips for paid TTS).
+
+**Phase 4 — Hand-off to code-fix discussion (separate from blog work):**
+- Present 10 action items (A1–A10) for prototype reshape.
+- Get explicit user approval before any seed-agent code edit.
+
+### Phase 1 Audit Results (2026-05-12 — subagent return)
+
+**Counts:**
+- 7 paragraphs to fix (1 NO-OP, 6 actual edits)
+- 8 concept gaps (3 folded into existing fixes, 5 require NEW paragraphs)
+- Quick Map: 4 phases need bullet changes
+
+**Paragraphs to fix:**
+- ¶48 — Quick Map PLAN bullets, REWRITE (move job-form decision OUT of PLAN)
+- ¶64 — REWRITE: "binary single-cycle vs multi-cycle" → three forms + state machine intro
+- ¶65 — EXTEND: add .md/.yaml coexistence + `plan_state` in `data.json` (folds Gaps F + H)
+- ¶67 — NO-OP (altered-list paragraph, unrelated)
+- ¶80 — EXTEND: VERIFY-only approval authority via AskUserQuestion (folds Gap D)
+- ¶83 — EXTEND: approval-flip vs seal-plan-archive distinction (folds Gap E)
+- ¶85 / ¶87 — EXTEND: backward routing is situational, not three-destination
+
+**Concept gaps (folded vs new):**
+- Gap A — three-form classification in OBSERVE cycle 1 → NEW paragraph in §3
+- Gap B — universal "EXECUTE writes ALL files" principle → NEW paragraph in §5
+- Gap C — .yaml as SEPARATE post-approval cycle → NEW paragraph in §5
+- Gap D — VERIFY-only approval authority → fold into ¶80
+- Gap E — approval ≠ sealing → fold into ¶83
+- Gap F — .md/.yaml coexistence → fold into ¶65
+- Gap G — `plan_state` state machine → NEW sub-paragraph in §4 (after ¶64)
+- Gap H — `plan_state` in `data.json` (not frontmatter) → fold into ¶65
+
+**Edit work order (13 operations, document-order):**
+1. §3 OBSERVE — NEW paragraph (Gap A: three-form classification in cycle 1)
+2. §4 PLAN — ¶64 REWRITE (binary → three forms + state-machine intro)
+3. §4 PLAN — ¶65 EXTEND (coexistence + data.json storage)
+4. §4 PLAN — NEW sub-paragraph (Gap G: state machine detail)
+5. §5 EXECUTE — NEW paragraph (Gap B: universal "EXECUTE writes ALL files")
+6. §5 EXECUTE — NEW paragraph (Gap C: .yaml as separate post-approval cycle)
+7. §6 VERIFY — ¶80 EXTEND (approval via AskUserQuestion)
+8. §6 VERIFY — ¶83 EXTEND (approval flip vs seal-plan archive)
+9. §6 VERIFY — ¶85+¶87 EXTEND (backward routing — situational)
+10. Quick Map — ¶47 OBSERVE (add job-form-classification bullet)
+11. Quick Map — ¶48 PLAN (rewrite bullet 1: plan_file naming, not form decision)
+12. Quick Map — ¶49 EXECUTE (add universal-file-creator bullet)
+13. Quick Map — ¶50 VERIFY (add 2 bullets + soften routing bullet)
+
+Each operation = one subagent dispatch with raw paragraph context + Best Design intent + Blog 6 voice constraints + ref-tag conventions. Then I apply Edit to .md and mirror in .html.
+
+### Future dimensions (named, not yet investigated)
+
+- Job creation ownership (claim: CONDENSE only; IDLE activates/refocuses only)
+- Voice.xml update ownership (claim: CONDENSE only)
+- Subagent-definition update ownership (claim: CONDENSE only)
+- Knowledge-file authoring ownership (claim: CONDENSE only)
+- Section-marker footer ownership (claim: each phase owns its footer)
+- CLAUDE.md edit scoping via altered list (claim: every phase writes; execute-guard enforces scope)
+- Cycle counter increment ownership (which phase triggers `phase.sh advance` cycle bump?)
+
 ## Current Posts
 
 Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numbered.
