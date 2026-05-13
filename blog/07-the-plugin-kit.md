@@ -77,6 +77,32 @@ The kit is a *cell wall*. Outside the wall, the plugin's only contact with the w
 
 A plugin is the smallest unit of brain that the architecture lets you reason about as a whole.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard sketch — a plugin "cell" with its nine cognitive organs labeled inside the cell wall.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for organ fills (cyan, green, orange, pink, magenta — same palette as the cycle image, with darker variants used as a second tier);
+  white chalk for ALL labels, arrows, and the cell-wall outline; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal file and folder names listed below. Do not invent or substitute any other names, paths, or organ descriptors.
+  Layout: One large hand-drawn chalk circle takes up most of the board — the "cell wall". Above the circle, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/" (treat the angle brackets as literal text). Inside the circle, nine small chalk shapes arranged around the interior, each labeled IN WHITE CHALK with its exact file or folder name:
+    Shape 1 (cyan fill, top-center): "CLAUDE.md"
+    Shape 2 (green fill): "hooks/"
+    Shape 3 (orange fill): "scripts/"
+    Shape 4 (pink fill): "tests/"
+    Shape 5 (magenta fill): "agents/"
+    Shape 6 (cyan fill, darker): "voice.xml"
+    Shape 7 (green fill, darker): "evolution.md"
+    Shape 8 (orange fill, darker): "data.json"
+    Shape 9 (pink fill, darker, smaller, drawn AT the cell wall edge to suggest a wiring port): "settings.local.json"
+  No arrows between the organs — they are independent compartments inside the same cell wall.
+  Outside the cell wall, three small chalk arrows point INTO the wall from outside, each labeled IN WHITE CHALK with one literal event name (these are the only external touches):
+    arrow 1: "UserPromptSubmit"
+    arrow 2: "PreToolUse"
+    arrow 3: "Stop"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "scripts/", "tests/", "agents/", "voice.xml", "evolution.md", "data.json", "settings.local.json", "UserPromptSubmit", "PreToolUse", "Stop", plus the caption below. No other words, file names, folders, plugin names, or organ descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "A plugin is a cell. The kit is the cell wall."
+-->
+
 ---
 
 ## The Lock Ceremony
@@ -96,6 +122,28 @@ The constraint exists because plugin edits cascade. Touching two plugins in the 
 What about the documentation files inside a plugin? The `[PLUGIN-LOCK]` mechanism applies to *code* — hooks, scripts, tests. Documentation files (`CLAUDE.md`, `voice.xml`, `docs/evolution.md`) move under their own rules. `evolution.md` is hard-capped at 2000 words by `evolution-cap.sh`, which blocks any edit that would push the file past the cap; overflow content has to migrate into a sibling like `docs/decisions.md`. `voice.xml` text bodies are editable freely, but the voice id attribute is treated as immutable — CONDENSE step 4 only edits the text body, never the id, because every hook in the codebase references voices by id. `CLAUDE.md` files have section markers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) that a section-boundary guard enforces with a single rule: a phase cannot edit *above* its own anchor. So a later phase can never rewrite what an earlier phase wrote into the bus, while an earlier phase can leave forward-looking notes in any section below its anchor for later phases to find. None of these doc-edit rules are exemptions from discipline; they are different shapes of it.
 
 The four parts together — lock, test-lock, safe-lock, ratchet — form a closed loop where the only way to evolve a plugin is to have already understood it. The discipline applies recursively: `plugin_integrity` itself follows the same ceremony when its own hooks are edited. The plugin that polices every other plugin polices itself by the same gate. There is no privileged path.
+
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard flowchart — the safe-lock cycle's pass-or-revert branch.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
+  and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other state names, command names, or descriptors.
+  Layout: Five hand-drawn chalk boxes arranged in a vertical flow down the center of the board, each labeled IN WHITE CHALK with its exact text:
+    Box 1 (cyan fill, top): "[PLUGIN-LOCK] <name> approved"
+    Box 2 (green fill): "edits inside unlocked plugin only"
+    Box 3 (orange fill): "lock-cmd.sh OR safe-lock.sh fires"
+    Box 4 (pink fill): "run plugin test suite"
+    Box 5 (no fill, decision diamond drawn as a chalk rhombus): "all tests pass?"
+  Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4 → Box 5.
+  From Box 5, two arrows fan out to two terminal boxes side-by-side at the bottom:
+    Left arrow labeled IN WHITE CHALK exactly "yes" → magenta box labeled "commit + clear unlocked_plugin"
+    Right arrow labeled IN WHITE CHALK exactly "no" → orange box (warmer chalk) labeled "revert to checkpoint_ref + log revert"
+  Below the two terminal boxes, draw a small chalk note IN WHITE CHALK reading exactly: "no override".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "lock-cmd.sh OR safe-lock.sh fires", "run plugin test suite", "all tests pass?", "yes", "no", "commit + clear unlocked_plugin", "revert to checkpoint_ref + log revert", "no override", plus the caption below. No other words, file names, folders, or state descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Test pass-or-revert. Every plugin edit passes through the same gate."
+-->
 
 ---
 
@@ -127,6 +175,31 @@ The phases write markers. CONDENSE consumes markers. Between them, the bus carri
 
 This is what the markers as inter-phase protocol means. The phases don't have to remember each other. The bus does.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard horizontal flow — phase footer carrying inline markers, CONDENSE grep-dispatches each to its handler, consumed markers become strikethrough audit lines.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for marker pills and step badges (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, and section markers; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other marker names, step names, or descriptors. Triple-dash phase-section markers must be written EXACTLY as shown (three dashes, abbreviation, three dashes).
+  Layout: Three horizontal chalk panels arranged left-to-right across the board, joined by white-chalk arrows.
+    Left panel — vertical white-chalk header above reads exactly "phase footer". Inside, four phase-section markers drawn as horizontal white-chalk lines, top to bottom: "---Ob---", "---Pl---", "---Ex---", "---Ve---". Inside three of those sections, draw small pastel chalk pills labeled IN WHITE CHALK with example inline markers, one pill per section:
+      under "---Ob---" (cyan pill): "[KNOWLEDGE] topic-slug"
+      under "---Pl---" (green pill): "[PENDING-JOB]"
+      under "---Ex---" (orange pill): "[VOICE-UPDATE] id | why | direction"
+    A single white-chalk arrow leaves the left panel and points right, labeled IN WHITE CHALK exactly "grep + dispatch".
+    Middle panel — vertical white-chalk header reads exactly "CONDENSE waterfall". Inside, five small chalk step-badges stacked top to bottom, each labeled IN WHITE CHALK with its number and short name:
+      Badge 1 (cyan): "step 3: pending job"
+      Badge 2 (green): "step 4: voice update"
+      Badge 3 (orange): "step 5: agent update"
+      Badge 4 (pink): "step 6: knowledge"
+      Badge 5 (magenta, smaller, fainter): "step 1: durable / ephemeral tags"
+    A single white-chalk arrow leaves the middle panel and points right, labeled IN WHITE CHALK exactly "consumed".
+    Right panel — vertical white-chalk header reads exactly "next cycle reads". Inside, a single strikethrough chalk line (drawn with a horizontal slash through the text) reading EXACTLY: "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4". The text is struck through but legible.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "phase footer", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "[KNOWLEDGE] topic-slug", "[PENDING-JOB]", "[VOICE-UPDATE] id | why | direction", "grep + dispatch", "CONDENSE waterfall", "step 3: pending job", "step 4: voice update", "step 5: agent update", "step 6: knowledge", "step 1: durable / ephemeral tags", "consumed", "next cycle reads", "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4", plus the caption below. No other words, file names, folders, marker names, or step descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Markers are plain text. CONDENSE consumes them, strikethrough audits the consumption."
+-->
+
 ---
 
 ## Dual Voice — Soft and Hard
@@ -151,6 +224,32 @@ This soft-to-hard migration is the *brain maturation pattern*. New behavioral co
 
 [Essay 8](08-from-apprentice-to-architect.html) returns to this maturation arc as the spine of how a seed grows. Here, what matters is that *every plugin* has both layers at its disposal, and the plugin author's job is to choose the right layer for each lesson.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard two-column sketch — coaching (soft, probabilistic) on the left, block (hard, deterministic) on the right, with a curving migration arrow between them.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for the two column panels (cyan = coaching/soft, magenta = block/hard);
+  white chalk for ALL labels, XML tag text, arrows, and the migration caption; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other XML tag names, voice names, or descriptors. Treat angle brackets in XML tags as literal text.
+  Layout: Two vertical chalk panels side by side across the board.
+    Left panel (cyan border, header IN WHITE CHALK reads exactly "coaching — soft layer"). Inside the panel, four short white-chalk lines stacked top to bottom:
+      Line 1 (drawn as a small chalk XML element): "<coaching id=...>"
+      Line 2: "injected into LLM context"
+      Line 3: "probabilistic — can be ignored"
+      Line 4: "LLM-interpreted"
+    Below the four lines, draw a small chalk speech-bubble icon (the soft-nudge symbol).
+    Right panel (magenta border, header IN WHITE CHALK reads exactly "block — hard layer"). Inside the panel, four short white-chalk lines stacked top to bottom:
+      Line 1 (drawn as a small chalk XML element): "<block id=...>"
+      Line 2: "stderr refusal"
+      Line 3: "exit 2 — deterministic"
+      Line 4: "agent's tool call fails"
+    Below the four lines, draw a small chalk X-over-toolbox icon (the refusal symbol).
+    Between the two panels, draw a single curving white-chalk arrow that arcs from the bottom of the left panel UP and OVER to the top of the right panel, with one short caption riding along the arrow's curve: "measurement → harden".
+  Below both panels, a horizontal chalk note IN WHITE CHALK reads exactly: "Lock 13: over-engineering veto — soft must measurably fail before hard lands".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "coaching — soft layer", "<coaching id=...>", "injected into LLM context", "probabilistic — can be ignored", "LLM-interpreted", "block — hard layer", "<block id=...>", "stderr refusal", "exit 2 — deterministic", "agent's tool call fails", "measurement → harden", "Lock 13: over-engineering veto — soft must measurably fail before hard lands", plus the caption below. No other words, file names, voice ids, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Soft layer coaches. Hard layer refuses. Patterns migrate left to right when data warrants."
+-->
+
 ---
 
 ## Subagents — Why 80/20
@@ -170,6 +269,28 @@ Subagents are how the seed agent stays cognitively coherent across long jobs.
 Each plugin owns its own subagents inside `agents/`. The historians, the auditors, the routers, the researchers — they are not a global pool. The current prototype carries roughly fifty subagent definitions across the seed: a dozen `historian-*` agents under `plugin_integrity` (one per other plugin), a dozen `observe-*` researchers, six `plan-*` helpers, three `execute-*` implementers, five `verify-*` auditors, seven `condense-*` waterfall routers, and a handful of specialized agents for archiving and unblocking. Each one is a Markdown file with frontmatter declaring its name, a curated tool list, and a model assignment — and every one of them runs on the smallest available fast model so dispatch stays cheap.
 
 The reason for plugin-scoped subagents is the same reason for plugin-scoped tests: locality of reasoning. A subagent's prompt and tool list should evolve with the plugin that uses it. There's also a hard mechanical reason: the safe-lock cycle requires that only one plugin be unlocked at a time, so a subagent that ranges across multiple plugins would need to coordinate locks across every directory it touches. An early prototype cycle proved this the painful way — a multi-plugin batch broke a test in one plugin, the auto-revert undid work in another, and the operator spent the next session reconstructing what had been lost. Per-plugin scoping is the lesson written into the kit.
+
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard hub-and-spoke — small main-session circle at the center orchestrating; larger plugin-scoped subagent pools fanning out around it.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk circles
+  and arrows; pastel chalk for the subagent pools (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, and the main-session circle; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other subagent names, plugin names, or descriptors. Use only the counts listed.
+  Layout: One small white-chalk circle at the dead center of the board, labeled IN WHITE CHALK exactly "main session (20%)". Around it, six larger pastel chalk circles fanning out in a hexagonal arrangement, each labeled IN WHITE CHALK with its exact text:
+    Circle 1 (cyan, top): "observe-* (12)"
+    Circle 2 (green, upper right): "plan-* (6)"
+    Circle 3 (orange, lower right): "execute-* (3)"
+    Circle 4 (pink, bottom): "verify-* (5)"
+    Circle 5 (magenta, lower left): "condense-* (7)"
+    Circle 6 (cyan, darker, upper left): "historian-* (12)"
+  From the central main-session circle, a single white-chalk arrow goes OUT to each of the six surrounding pools (six arrows total, all radial). Each arrow is labeled with the same single word IN WHITE CHALK exactly: "dispatch".
+  In a chalk box at the bottom-right corner of the board, draw a small "budget panel" with header IN WHITE CHALK reading exactly "direct-action budget", and two short white-chalk lines stacked:
+    Line 1: "+3 grants per execute-* dispatch"
+    Line 2: "-1 per project file edit"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (12)", "plan-* (6)", "execute-* (3)", "verify-* (5)", "condense-* (7)", "historian-* (12)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
+-->
 
 ---
 
