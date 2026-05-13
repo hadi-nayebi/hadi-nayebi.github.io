@@ -5,7 +5,7 @@ slug: "the-plugin-kit"
 read_time: "TBD"
 tags: [Architecture, Seed Agent, Plugins, Hooks, Voices, Subagents]
 status: draft
-version: v0.13.1
+version: v0.14.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/plugin-kit.png"
 ---
@@ -18,211 +18,124 @@ og_image: "assets/images/blog/plugin-kit.png"
 
 A plugin is a cell.
 
-The metaphor isn't decorative. The cell is what the previous two essays have been pointing at. [Essay 5](05-the-always-on-digital-cortex.html) made the case that the always-on layer is several small organisms, each owning one concern, each communicating through the bus. [Essay 6](06-the-markov-phasic-brain.html) made the case that the phasic layer is more of the same — each phase is its own plugin, and even the orchestrator is one. Everything that runs inside the seed agent runs as a plugin.
+[Essay 5](05-the-always-on-digital-cortex.html) named the always-on layer and the CLAUDE.md bus surrounding it. [Essay 6](06-the-markov-phasic-brain.html) named the phases that fill those compartments. This essay opens the cell — the unit the seed agent is built out of.
 
-Which means the plugin is the *unit* of the brain.
+The prototype currently runs eleven plugins. Five always-on, six phasic. The eleven are not a fixed list; they are an instance of a template — a structured cell wall every plugin obeys, plus a smaller set of cognitive organs each plugin chooses or skips based on what its concern demands. The thing worth studying is the template, because the template is what lets a twelfth plugin or a twentieth slot into the architecture without breaking it.
 
-This essay opens that unit. It takes a plugin apart, names every cognitive organ inside it, and shows the discipline that lets the brain create new ones safely. It is the densest essay in the series, because the kit is what makes everything else possible.
-
-The vocabulary from [Essay 4](04-the-language-of-agents.html) — hooks, voices, agents — gets its mechanical meaning here. The single-concern principle from [Essay 5](05-the-always-on-digital-cortex.html) gets its anatomy. The phases from [Essay 6](06-the-markov-phasic-brain.html) reveal themselves as instances of the same template.
+This essay names the cognitive organs every plugin has, the organs most plugins have, and the organs only a few specialists carry. It explains why each one is its own file rather than blended with its neighbors. And it distills the rules every prototype plugin already obeys, into a stable anatomy you can use to think about what to include when you grow a new one.
 
 ---
 
-## Plugin = Cell with Cognitive Organs
+## The Universal Skeleton
 
-A plugin is a directory.
+Across all eleven plugins in the current prototype, six things are universal. Strip away every specialty, and these six are still there. Together they form the minimum-viable plugin — the smallest shape the architecture recognizes as a living cell.
 
-It lives at `.claude/plugins/<plugin_name>/`, and every plugin in the seed has the same set of files in the same places — the standard layout is born from a shared template at `.claude/plugins/plugin_integrity/template/` and enforced by `plugin_integrity` itself. A plugin missing the standard cognitive organs cannot be activated.
+**`CLAUDE.md`** is the plugin's working memory and self-description. It declares what the plugin owns, what its hooks fire on, what its size limits are, what its current version is. The agent reads it both when working inside the plugin and when reasoning about the plugin from outside. Every plugin in the prototype carries one, even the smallest.
 
-Here is the standard kit:
+**`hooks/`** holds the reflexes — short shell scripts fired by Claude Code events: `UserPromptSubmit`, `PreToolUse`, `PostToolUse`, `Stop`, `SessionStart`. Hooks are how the plugin reaches the cognitive process from outside the LLM. They are pure shell, executing in milliseconds, returning exit codes that decide whether the cognitive call proceeds. Every plugin ships at least one.
 
-```
-.claude/plugins/<plugin_name>/
-├── CLAUDE.md                 ← the plugin's brain
-├── hooks/
-│   └── *.sh                  ← reflexes — fired by Claude Code events
-├── scripts/
-│   └── *.sh                  ← internal tools the plugin uses on itself
-├── tests/
-│   └── test-*.sh             ← the plugin's self-test suite
-├── agents/
-│   └── *.md                  ← subagent definitions owned by the plugin
-├── voice.xml                 ← coaching strings (sometimes two of these)
-├── evolution.md              ← 2000-word narrative of the plugin's history
-├── data.json                 ← hidden runtime state (gitignored)
-└── settings.local.json       ← hook registrations
-```
+**`tests/`** holds the plugin's self-tests. Every plugin carries its own suite covering its hooks, its scripts, and the edge cases it has learned to handle. The size varies — single-digit assertions in a young plugin, hundreds in a mature one — but the discipline is universal: a plugin without tests cannot be edited safely, because the safe-lock cycle that gates every edit reads from this directory.
 
-Each file plays a distinct role. None of them is optional in a mature plugin.
+**`docs/`** holds the plugin's narrated knowledge. Two files live here in every prototype plugin without exception. `docs/evolution.md` is the plugin's 2000-word-capped historical narrative — the story of how the plugin got to its current state, narrated by the plugin's historian subagent. A sibling file (named `docs/principles.md` or `docs/decisions.md` depending on the plugin) captures the architectural rationale behind specific design choices. Both are read by the agent when the plugin is unlocked for editing, so whoever is touching the code inherits the plugin's reasoning before changing anything.
 
-**`CLAUDE.md`** is the plugin's working memory and self-description. It declares what the plugin owns, what its hooks do, what its size limits are, what its current version is. This is what the agent reads when it wants to understand the plugin from the inside.
+**`hooks/voice.xml`** holds the plugin's strings — coaching voices that nudge the agent at the right moment, and structured blocks that refuse the agent when a guard fires. Voices delivered via hooks are injected into the LLM's context window; this file is the LLM-facing voice surface.
 
-**`hooks/`** holds the reflexes — small shell scripts that fire on Claude Code events: `UserPromptSubmit`, `PreToolUse`, `PostToolUse`, `Stop`, `SessionStart`. Hooks are how the plugin reaches out and touches the cognitive process from the outside. They are pure shell, with no shared runtime, executing in milliseconds.
+The six together form the cell wall. Outside the wall, the only contact the plugin has with the world is through hook events. Inside, the plugin owns its own cognitive organs, its own state, its own history. If a directory at `.claude/plugins/<name>/` is missing any of these six, `plugin_integrity` refuses to activate it.
 
-**`scripts/`** holds the plugin's internal tooling — the CLI commands the plugin issues against itself. `phase.sh advance`, `observe.sh set-multiplier`, `drift-check.sh`, `safe-lock.sh`. Scripts are how the plugin lets the agent (or another plugin) talk to it through a stable interface.
+This is the skeleton. Most plugins add more.
 
-**`tests/`** holds the self-tests. Every plugin has its own test suite covering its hooks, scripts, and any edge cases it has learned to handle. Tests are why the plugin can be edited safely — every commit runs them, and a failing run reverts the commit.
+---
 
-**`agents/`** holds subagent definitions specific to this plugin: `historian-*` agents for evolution narration, `verify-*` auditors for verification phase, `condense-*` routers for the waterfall, `observe-*` researchers for context gathering. Each is a Markdown file declaring tools, prompt, and dispatch rules.
+## The Conditional Organs
 
-**`voice.xml`** holds coaching voices and structured blocks. Many plugins have two of these — one for hooks-context strings and one for scripts-context strings. We come back to dual voices below.
+Five further cognitive organs appear in most plugins but not all. Their presence or absence is itself a signal about what kind of plugin you are reading.
 
-**`evolution.md`** is the historian-narrated story of how the plugin got to its current state, capped at 2000 words. Auto-injected when the plugin is unlocked for editing.
+**`scripts/`** holds the plugin's internal CLI — the verbs the plugin publishes for the agent (or another plugin) to call. `phase.sh advance`, `observe.sh set-multiplier`, `safe-lock.sh`, `drift-check.sh`. Ten of the eleven prototype plugins carry a `scripts/` directory. The exception is `question_discipline`, which publishes no CLI at all — its job is purely to refuse malformed questions at the gate. A plugin without `scripts/` is announcing: *I don't expose verbs, I only enforce*.
 
-**`data.json`** is the plugin's private runtime state — gitignored (along with its `.tmp` and `.lock` siblings), lives only on the operator's machine. The active focused job, the tier counter, the summary chain, the lock manifest. Concurrent access is guarded by `flock` on a per-plugin lockfile under `/tmp/`, and every write follows the same atomic discipline: read under lock, transform with `jq` into a temp file, validate the temp with `jq empty`, then `mv` over the live file. The reader never sees a partial state. Most plugins commit to a fixed schema once and never revisit it. `brain_guard` is the exception: its `data.json` carries a `schema_version` field, and the plugin's gateway script ships with idempotent `_ensure_*_field` helpers that quietly add new fields when the schema bumps. Corruption is handled fail-safe rather than fail-open or fail-closed — if `data.json` parses as invalid JSON, the gateway rebuilds it from defaults rather than blocking the agent. This is where the always-on plugins keep their state, and one of the structural reasons they don't write to CLAUDE.md as a primary store.
+**`scripts/voice.xml`** holds a second voice file — the operator-facing strings the plugin's CLI prints to the terminal. The dual-voice convention is one of the most consistent patterns in the prototype. Ten plugins carry both `hooks/voice.xml` (LLM-context-injected) and `scripts/voice.xml` (terminal-printed). The wording often differs between the two: the LLM gets a structured paragraph it should internalize; the operator gets a short status line. Same intent, different audience. Auditor scripts that grep voice ids have to look in both files — auditing only one will false-positive every id that lives in the other.
 
-**`settings.local.json`** is the wiring file. It is a small JSON document that pairs Claude Code event names with hook script paths — `{"PreToolUse": [{"hooks": [{"command": ".claude/plugins/<plugin>/hooks/<name>.sh"}]}]}` — and Claude Code reads it on session start to decide which hooks fire on which events. Without registration here, even a perfectly written hook is dead code.
+**`config.conf`** is the operator's tuning surface — environment-style `KEY=value` lines for thresholds the plugin exposes for adjustment. `SOFT_THRESHOLD_TIER=20`, `MAX_EVOLUTION_WORDS=2000`, `DRIFT_THRESHOLD=10`. Ten plugins carry one. Values are deliberately not hard-coded into the hooks: an operator can raise `brain_guard`'s tier thresholds without editing code, and the plugin reads the new value the next time it fires. Configuration lives separately from code because it changes on different timescales.
 
-The kit is a *cell wall*. Outside the wall, the plugin's only contact with the world is through hook events, scripts, and the bus. Inside the wall, the plugin owns its own cognitive organs. This is why the always-on plugins from Essay 5 don't share state — the wall doesn't let them. This is why the phasic plugins from Essay 6 can be added or removed without rippling through the rest of the brain — the wall isolates them.
+**`data.json`** is the plugin's hidden runtime state — the bookkeeping a long-running plugin accumulates across cycles. The active focused job, the tier counter, the summary chain, the lock manifest. Ten plugins carry one. It is gitignored, lives only on the operator's machine, and is `flock`-protected so concurrent calls don't corrupt it. The write protocol is uniform across every plugin that uses it — read under lock, transform with `jq` into a temp file, validate the temp with `jq empty`, then `mv` over the live file. The reader never sees a partial state. If the file is corrupt at parse time, the gateway script rebuilds it from defaults rather than blocking the agent. Fail-safe, not fail-closed.
 
-A plugin is the smallest unit of brain that the architecture lets you reason about as a whole.
+**`agents/`** holds subagent definitions the plugin owns — `historian-*` for evolution narration, `verify-*` for auditing, `condense-*` for waterfall routing, `observe-*` for research, `plan-*` for analysis, `execute-*` for parallel file work. Nine of the eleven plugins carry an `agents/` directory. The two exceptions are `job_core` and `interaction_summary`, neither of which delegates investigative work — their concerns are local state machines, not research surfaces. A plugin without `agents/` is announcing: *my concern doesn't need delegated investigation*.
+
+The pattern across the conditional organs is consistent: missing an organ is an *honest signal*, not a deficiency. Each absence says something true about what the plugin owns.
+
+---
+
+## Specialist Appendages
+
+Three further cognitive organs appear in only some plugins, and what their presence signifies is even more specific.
+
+**`template/`** appears in six plugins — `plugin_integrity` and the five phase plugins. A `template/` directory holds the cell template the plugin uses to *birth* something. `plugin_integrity/template/` is the master plugin template every new plugin is stamped from. The phase plugins each carry their own `template/` holding the entry templates for new phase-cycle artifacts. A plugin carrying `template/` is announcing it has the authority to create new instances of something.
+
+**`e2e/`** appears in exactly one plugin — `phasic_system`. End-to-end tests that exercise the full OPEVC orchestration across multiple phases and cycles. Because no other plugin sees the cycle in its entirety, no other plugin needs `e2e/`.
+
+**`LICENSE` + `README.md`** at the plugin root appear in the four always-on plugins that are migration-ready for open-source distribution. The phasic plugins, still maturing, will pick these up as they cross the migration threshold. The presence of these two files at the plugin root is a maturity tell.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard sketch — a plugin "cell" with its nine cognitive organs labeled inside the cell wall.
+  Concept: Chalk-on-blackboard sketch — a plugin "cell" showing the universal skeleton inside the cell wall, conditional cognitive organs in a secondary tier, and the brain-root wiring file labeled outside the cell.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for organ fills (cyan, green, orange, pink, magenta — same palette as the cycle image, with darker variants used as a second tier);
   white chalk for ALL labels, arrows, and the cell-wall outline; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
   IMPORTANT: Use only the literal file and folder names listed below. Do not invent or substitute any other names, paths, or organ descriptors.
-  Layout: One large hand-drawn chalk circle takes up most of the board — the "cell wall". Above the circle, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/" (treat the angle brackets as literal text). Inside the circle, nine small chalk shapes arranged around the interior, each labeled IN WHITE CHALK with its exact file or folder name:
-    Shape 1 (cyan fill, top-center): "CLAUDE.md"
-    Shape 2 (green fill): "hooks/"
-    Shape 3 (orange fill): "scripts/"
-    Shape 4 (pink fill): "tests/"
-    Shape 5 (magenta fill): "agents/"
-    Shape 6 (cyan fill, darker): "voice.xml"
-    Shape 7 (green fill, darker): "evolution.md"
-    Shape 8 (orange fill, darker): "data.json"
-    Shape 9 (pink fill, darker, smaller, drawn AT the cell wall edge to suggest a wiring port): "settings.local.json"
-  No arrows between the organs — they are independent compartments inside the same cell wall.
+  Layout: One large hand-drawn chalk circle takes up most of the board — the "cell wall". Above the circle, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/" (treat the angle brackets as literal text). Inside the circle, ten small chalk shapes arranged around the interior, each labeled IN WHITE CHALK with its exact file or folder name. Six of them are drawn with a SOLID chalk border (universal skeleton); four are drawn with a DASHED chalk border (conditional organs):
+    Shape 1 (cyan fill, SOLID border, top-center): "CLAUDE.md"
+    Shape 2 (green fill, SOLID border): "hooks/"
+    Shape 3 (pink fill, SOLID border): "tests/"
+    Shape 4 (orange fill, SOLID border): "docs/"
+    Shape 5 (cyan fill darker, SOLID border, drawn small INSIDE the docs/ shape): "docs/evolution.md"
+    Shape 6 (cyan fill darker, SOLID border, drawn small INSIDE the hooks/ shape): "hooks/voice.xml"
+    Shape 7 (green fill darker, DASHED border): "scripts/"
+    Shape 8 (orange fill darker, DASHED border, drawn small INSIDE the scripts/ shape): "scripts/voice.xml"
+    Shape 9 (magenta fill, DASHED border): "config.conf"
+    Shape 10 (pink fill darker, DASHED border): "data.json"
+    Shape 11 (magenta fill darker, DASHED border): "agents/"
+  No arrows between the organs inside the cell — they are independent compartments inside the same cell wall.
   Outside the cell wall, three small chalk arrows point INTO the wall from outside, each labeled IN WHITE CHALK with one literal event name (these are the only external touches):
     arrow 1: "UserPromptSubmit"
     arrow 2: "PreToolUse"
     arrow 3: "Stop"
+  In the upper-right of the board, OUTSIDE the cell wall entirely, draw a single small white-chalk box labeled IN WHITE CHALK exactly ".claude/settings.local.json" with a short white-chalk arrow pointing from the box DOWN to the cell wall, labeled IN WHITE CHALK exactly "registers".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "scripts/", "tests/", "agents/", "voice.xml", "evolution.md", "data.json", "settings.local.json", "UserPromptSubmit", "PreToolUse", "Stop", plus the caption below. No other words, file names, folders, plugin names, or organ descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "A plugin is a cell. The kit is the cell wall."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "tests/", "docs/", "docs/evolution.md", "hooks/voice.xml", "scripts/", "scripts/voice.xml", "config.conf", "data.json", "agents/", "UserPromptSubmit", "PreToolUse", "Stop", ".claude/settings.local.json", "registers", plus the caption below. No other words, file names, folders, plugin names, or organ descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Universal skeleton (solid border) plus conditional organs (dashed). The wiring file lives at brain root, outside the cell."
 -->
 
 ---
 
-## The Lock Ceremony
+## What Lives Outside the Plugin
 
-Plugin code does not get edited the way ordinary files do. Each plugin's hooks, scripts, and tests have earned their current shape — the test suite enshrines that shape — and any change has to pay the cost of opening the plugin, editing inside it, and re-passing the tests before the change commits. The ceremony has four parts: a `PLUGIN-LOCK` question that opens the edit session, a separate `TEST-LOCK` question for editing the test files themselves, the safe-lock close-out that re-runs tests at the lock boundary, and the historian ratchet that can refuse to open the lock at all if the plugin's evolution narrative has fallen behind.
+One file the current architecture deliberately keeps OUTSIDE the plugin is worth naming, because plugin tutorials in many systems get it wrong.
 
-**`PLUGIN-LOCK`** opens the session. The agent issues a structured question prefixed `[PLUGIN-LOCK] <plugin_name>`. A `PostToolUse:AskUserQuestion` hook (`lock-manager.sh`) watches for that prefix and the user's answer. When the user approves, `lock-manager.sh` runs `git rev-parse HEAD`, captures the resulting SHA as a `checkpoint_ref`, and writes both the SHA and the plugin name (`unlocked_plugin`) into `plugin_integrity`'s hidden `data.json`. A separate `PreToolUse:Edit|Write|MultiEdit` guard (`plugin-guard.sh`) consults `data.json` on every tool call: edits inside the unlocked plugin proceed; edits anywhere else under `.claude/plugins/` are rejected. Only one plugin is editable at a time.
+`settings.local.json` does not live inside each plugin. It lives at `.claude/settings.local.json` — the brain root. This is the wiring file: a single JSON document that pairs Claude Code event names with hook script paths across every plugin. Claude Code reads it on session start and decides which hooks fire on which events for the whole brain.
 
-The constraint exists because plugin edits cascade. Touching two plugins in the same cognitive breath — fixing a hook in one, adjusting a script in another — almost always means the operator is missing the connection between them. Serialization forces the connection to surface. Edit one plugin completely, commit it, hand back the lock, and only then unlock another. The `[PLUGIN-LOCK]` question is itself one of the prefixes the always-on `question_discipline` plugin enforces; the system will not let the agent ask the question without the right prefix, and will not let the agent edit a plugin without the right answer. Three always-on plugins compose into the lock ceremony — `question_discipline` gates the asking side, `job_core` captures the user's answer into the focused job's interaction list, and `plugin_integrity` reads that answer to decide whether to open the lock. Each contributes what it owns; none reaches into another's `data.json`.
+The placement is intentional. A plugin cannot self-register. The brain registers the plugin. If a plugin's hook script existed at the right path but the brain's `settings.local.json` didn't list it, the hook would be dead code. The wiring is brain-scoped because the brain is what activates plugins, not the other way around.
 
-**`TEST-LOCK`** is finer-grained, and necessary because tests are part of the plugin too. By default, the unlocked plugin's `tests/` directory is *also* frozen — even while the plugin itself is unlocked. To edit an individual `test-*.sh` file, the agent has to issue a separate `[TEST-LOCK]` question naming the specific test. The reason is the same one that makes test-driven development hard: it is too easy to "fix" a test that is correctly failing. Test edits demand explicit, named permission, distinct from the plugin edit, and `data.json` carries the unlocked test name in its own field (`unlocked_test`) until the test edit closes.
-
-**Safe-lock close-out** runs the test suite at the lock boundary. There are two ways the close-out fires. The clean way is `lock-cmd.sh`: the agent invokes it explicitly when the edits are done; the script runs the full plugin test suite; on pass it commits the change and clears `unlocked_plugin` from `data.json`; on failure it stops and leaves the working tree intact so the agent can fix the test and retry. The defensive way is automatic: if `plugin-guard.sh` notices the agent attempting to edit outside the unlocked plugin (or another `[PLUGIN-LOCK]` is approved before the current one closed), `safe-lock.sh` triggers the test run anyway, and on failure rolls the working tree back to the captured `checkpoint_ref`. Each defensive revert appends a structured entry to a 20-deep FIFO revert log inside `data.json` — timestamp, list of failed tests, list of files restored, pre-revert SHA, trigger reason — and emits an `auto-revert-fired` voice line to stderr so the operator cannot miss what happened. Either path, the agent does not get to ship a plugin change that breaks the plugin's own self-test. There is no override.
-
-**The historian ratchet** can refuse to open the lock at all. Each plugin keeps a 2000-word-capped narrative at `docs/evolution.md`, and a small script called `drift-check.sh` counts how many commits have landed against the plugin since `evolution.md` was last touched. If that drift count exceeds a threshold, `lock-manager.sh` rejects the `[PLUGIN-LOCK]` approval and tells the agent to dispatch the plugin's historian subagent first. The historian re-narrates the cycles since the last sync, commits the refreshed `evolution.md`, and the drift counter resets. Only then does the lock open. A plugin cannot be edited indefinitely without periodically forcing its own history to be re-told.
-
-What about the documentation files inside a plugin? The `[PLUGIN-LOCK]` mechanism applies to *code* — hooks, scripts, tests. Documentation files (`CLAUDE.md`, `voice.xml`, `docs/evolution.md`) move under their own rules. `evolution.md` is hard-capped at 2000 words by `evolution-cap.sh`, which blocks any edit that would push the file past the cap; overflow content has to migrate into a sibling like `docs/decisions.md`. `voice.xml` text bodies are editable freely, but the voice id attribute is treated as immutable — CONDENSE step 4 only edits the text body, never the id, because every hook in the codebase references voices by id. `CLAUDE.md` files have section markers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) that a section-boundary guard enforces with a single rule: a phase cannot edit *above* its own anchor. So a later phase can never rewrite what an earlier phase wrote into the bus, while an earlier phase can leave forward-looking notes in any section below its anchor for later phases to find. None of these doc-edit rules are exemptions from discipline; they are different shapes of it.
-
-The four parts together — lock, test-lock, safe-lock, ratchet — form a closed loop where the only way to evolve a plugin is to have already understood it. The discipline applies recursively: `plugin_integrity` itself follows the same ceremony when its own hooks are edited. The plugin that polices every other plugin polices itself by the same gate. There is no privileged path.
-
-<!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard flowchart — the safe-lock cycle's pass-or-revert branch.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
-  and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other state names, command names, or descriptors.
-  Layout: Five hand-drawn chalk boxes arranged in a vertical flow down the center of the board, each labeled IN WHITE CHALK with its exact text:
-    Box 1 (cyan fill, top): "[PLUGIN-LOCK] <name> approved"
-    Box 2 (green fill): "edits inside unlocked plugin only"
-    Box 3 (orange fill): "lock-cmd.sh OR safe-lock.sh fires"
-    Box 4 (pink fill): "run plugin test suite"
-    Box 5 (no fill, decision diamond drawn as a chalk rhombus): "all tests pass?"
-  Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4 → Box 5.
-  From Box 5, two arrows fan out to two terminal boxes side-by-side at the bottom:
-    Left arrow labeled IN WHITE CHALK exactly "yes" → magenta box labeled "commit + clear unlocked_plugin"
-    Right arrow labeled IN WHITE CHALK exactly "no" → orange box (warmer chalk) labeled "revert to checkpoint_ref + log revert"
-  Below the two terminal boxes, draw a small chalk note IN WHITE CHALK reading exactly: "no override".
-  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "lock-cmd.sh OR safe-lock.sh fires", "run plugin test suite", "all tests pass?", "yes", "no", "commit + clear unlocked_plugin", "revert to checkpoint_ref + log revert", "no override", plus the caption below. No other words, file names, folders, or state descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Test pass-or-revert. Every plugin edit passes through the same gate."
--->
+This makes the brain's `settings.local.json` the one file an operator must edit when installing or removing a plugin. The plugin can be perfectly authored — every organ in place, every test green — and still inactive if the wiring isn't there.
 
 ---
 
-## Markers as Inter-Phase Protocol
+## Compartmentalization Inside the Cell
 
-Phases write into the bus. The previous essay covered the four footer markers — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — that designate which phase wrote which content into a CLAUDE.md.
+The reason every organ is its own file rather than blended with its neighbors is the load-bearing claim of this essay.
 
-There is a second class of markers, finer-grained, that ride inside those footer sections. They are the *protocol* the phases use to talk to each other across cycles.
+Each cognitive organ has a *distinct audience*, a *distinct lifecycle*, and a *distinct failure mode*. Mixing them mixes the failure modes — which is the version of the problem that has historically made plugin architectures decay into pasta.
 
-There are five inline markers in the current prototype:
+**`hooks/` vs `scripts/` — different callers.** Hook scripts are called *from outside* the agent, by Claude Code firing events. Script CLIs are called *from inside*, by the agent itself or by another plugin. The caller difference matters: a hook that takes too long blocks every tool call; a script that takes too long blocks only the one operation it was running. They have different latency budgets, different debugging surfaces, different error semantics. Putting them in the same directory would hide that.
 
-- `[PENDING-JOB]` — flags that follow-up work needs a separate job. Read by CONDENSE step three.
-- `[VOICE-UPDATE] voice_id | why | direction` — flags that a coaching voice should be edited. Read by CONDENSE step four.
-- `[AGENT-UPDATE] agent_name | why | direction` — flags that a subagent definition should be tightened. Read by CONDENSE step five.
-- `[KNOWLEDGE] topic-slug` — flags that a paragraph should be promoted to long-term memory under that topic slug. Read by CONDENSE step six.
-- `[DURABLE]` / `[EPHEMERAL]` — tags that bias step one (footer-to-body absorption) toward keeping or dropping a finding.
+**`voice.xml` vs `CLAUDE.md` — runtime strings vs cognition.** Voice files are consumed at runtime by hooks and scripts — extracted by id, templated with variables, returned as stdout or stderr. The LLM sees the string only at the moment the hook fires. `CLAUDE.md` is read into the LLM's context window at session start and stays there for the duration. Different consumption moments. Different update cadences. Different size budgets. Blending them would mean every voice tweak rewrote the agent's working memory.
 
-Each marker is plain text inside a Markdown file. There are no hidden fields, no databases, no metadata layers. The marker *is* the data structure. The plugins read it with `grep`. They dispatch on it with shell. They remove it after consumption — and "remove" is itself disciplined: a consumed marker is replaced with a strikethrough audit line of the form `` ~~`[VOICE-UPDATE] voice_id | why | direction` CONSUMED 2026-05-04 Step 4~~ ``, so the next cycle's grep doesn't re-fire on it but the operator can still see what was processed when. The pipe-delimited three-field syntax — `id | why | direction` — repeats across `[VOICE-UPDATE]` and `[AGENT-UPDATE]` for a reason: the same `cut -d'|'` pattern parses both, and the same dispatcher shape handles both, which is what lets a sixth marker be added by writing one new grep instead of redesigning the protocol.
+**`data.json` vs `config.conf` — runtime state vs operator-tunable thresholds.** State changes during a cycle and is meaningless to a different operator. Thresholds change rarely and are part of the plugin's operating contract. Putting them in the same file would either gitignore the thresholds (losing them across machines) or commit the state (corrupting it across operators). Two files because two lifecycles.
 
-This design has three properties worth naming.
+**`tests/` per-plugin, not a global pool.** The safe-lock cycle inside `plugin_integrity` requires that only one plugin be unlocked at a time. A test suite ranging across multiple plugins would need to coordinate locks across every directory it touches. Per-plugin scoping makes the test boundary match the lock boundary.
 
-**It's code-addressable.** Any tool that can read text can read the markers. Any tool that can write text can produce them. The protocol is in the open, in the same files the human operator reads.
+**`docs/evolution.md` capped at 2000 words.** The cap forces the narrative to surface what's essential. Plugins that exceed the cap have to migrate older content into a sibling like `docs/decisions.md`. The compression is the discipline — bounded cognitive tissue stays legible across many cycles of accumulation.
 
-**It's grep-dispatched.** No phase has to register handlers, subscribe to events, or import schemas. Each CONDENSE step runs its own grep, picks up its own markers, processes them, and removes them. The dispatch is `O(markers)` per step, and it composes trivially with new markers — adding a sixth marker just adds another grep.
+The high-stakes plugins reveal this compartmentalization-inside discipline in their *comment density*. `brain_guard`'s `self-compact.sh` is over half comments — every block of logic in the file is annotated with the why. `phase_execute`'s `execute.sh` carries roughly a third comments. `question_discipline`'s gate hook carries around forty percent. The pattern: when a plugin's concern is high-stakes (self-compaction, write-scope enforcement, asking discipline), the in-code annotation density rises to match. The comments aren't there for the next human reader; they are there for the historian subagent that will eventually narrate the file's evolution. The plugin documents itself for its own future re-telling.
 
-**It's self-cleaning.** A marker is removed by the step that consumes it. The next cycle starts with clean footers. The system never accumulates stale routing instructions. If a marker is ever found that no step recognizes, it's a bug visible at a glance.
-
-The phases write markers. CONDENSE consumes markers. Between them, the bus carries instructions across what would otherwise be a temporal gap — the OBSERVE phase that wrote `[KNOWLEDGE] some-topic` is long gone by the time CONDENSE step six picks it up, but the marker bridges them. The instruction outlives the instructor.
-
-This is what the markers as inter-phase protocol means. The phases don't have to remember each other. The bus does.
-
-<!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard horizontal flow — phase footer carrying inline markers, CONDENSE grep-dispatches each to its handler, consumed markers become strikethrough audit lines.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
-  pastel chalk for marker pills and step badges (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for ALL labels, arrows, and section markers; faint chalk dust at the edges; chalk sticks along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other marker names, step names, or descriptors. Triple-dash phase-section markers must be written EXACTLY as shown (three dashes, abbreviation, three dashes).
-  Layout: Three horizontal chalk panels arranged left-to-right across the board, joined by white-chalk arrows.
-    Left panel — vertical white-chalk header above reads exactly "phase footer". Inside, four phase-section markers drawn as horizontal white-chalk lines, top to bottom: "---Ob---", "---Pl---", "---Ex---", "---Ve---". Inside three of those sections, draw small pastel chalk pills labeled IN WHITE CHALK with example inline markers, one pill per section:
-      under "---Ob---" (cyan pill): "[KNOWLEDGE] topic-slug"
-      under "---Pl---" (green pill): "[PENDING-JOB]"
-      under "---Ex---" (orange pill): "[VOICE-UPDATE] id | why | direction"
-    A single white-chalk arrow leaves the left panel and points right, labeled IN WHITE CHALK exactly "grep + dispatch".
-    Middle panel — vertical white-chalk header reads exactly "CONDENSE waterfall". Inside, five small chalk step-badges stacked top to bottom, each labeled IN WHITE CHALK with its number and short name:
-      Badge 1 (cyan): "step 3: pending job"
-      Badge 2 (green): "step 4: voice update"
-      Badge 3 (orange): "step 5: agent update"
-      Badge 4 (pink): "step 6: knowledge"
-      Badge 5 (magenta, smaller, fainter): "step 1: durable / ephemeral tags"
-    A single white-chalk arrow leaves the middle panel and points right, labeled IN WHITE CHALK exactly "consumed".
-    Right panel — vertical white-chalk header reads exactly "next cycle reads". Inside, a single strikethrough chalk line (drawn with a horizontal slash through the text) reading EXACTLY: "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4". The text is struck through but legible.
-  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "phase footer", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "[KNOWLEDGE] topic-slug", "[PENDING-JOB]", "[VOICE-UPDATE] id | why | direction", "grep + dispatch", "CONDENSE waterfall", "step 3: pending job", "step 4: voice update", "step 5: agent update", "step 6: knowledge", "step 1: durable / ephemeral tags", "consumed", "next cycle reads", "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4", plus the caption below. No other words, file names, folders, marker names, or step descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Markers are plain text. CONDENSE consumes them, strikethrough audits the consumption."
--->
-
----
-
-## Dual Voice — Soft and Hard
-
-A plugin's `voice.xml` holds *strings*. The strings are how the plugin speaks to the agent, and the strings come in two flavors that look similar but do very different things.
-
-The first flavor is **coaching**. A coaching voice is a short paragraph the plugin injects into the agent's context at a specific moment — entering a phase, crossing a context tier, having just dispatched a subagent. Coaching strings are written to be read by a language model, not by a parser. They are probabilistic. They nudge. They suggest. The agent reads them, internalizes them, and behaves accordingly — most of the time.
-
-The second flavor is **structured blocks**. A block is also a string, but it is delivered as a hard refusal. When a guard fires — a write tool aimed at a path outside the phase's scope, an `AskUserQuestion` without a registered prefix, a `/compact` instruction missing one of `brain_guard`'s required sections — the plugin returns a non-zero exit code with the block string as the explanation. The agent's tool call fails. The block is not a suggestion; it is a denial.
-
-A particular flavor of block is worth naming separately: *shape-enforcement*. When `brain_guard` rejects a malformed `/compact`, when `phase_observe` rejects a CLAUDE.md edit that targets the body, when `question_discipline` rejects a question without a registered prefix — the block is not just refusing a bad action. It is *forcing* the agent to produce a correctly-shaped artifact instead. The act of fitting the artifact to the required shape generates content the conversation needed anyway: a structured compaction summary, a properly-routed observation, a parseable question prefix. The shape is a forcing function for context quality, not just a guard. The pattern recurs across the kit — markers, plan files, voice ids, footer sections all rely on it — and it is one of the reasons `voice.xml` carries blocks in the first place.
-
-Many plugins have *both* kinds of strings, in the same `voice.xml`, organized by id. The two flavors are distinguished structurally — the XML element tag itself encodes the semantic. `<block id="...">` is delivered as a stderr refusal with exit 2; `<coaching id="...">` is injected into the LLM's context as a soft nudge; `<entry>`, `<info>`, `<error>`, and `<warning>` carve out the rest of the surface area. Hooks call a shared `get_voice` helper at `.claude/plugins/lib/voice-helper/voice-helper.sh`, which extracts the text body for a given id and substitutes `{{var}}` template placeholders the caller passes in. The helper is engineered to fail soft: if `voice.xml` is unreachable (e.g., a test sandbox without it), `get_voice` becomes a no-op returning empty string, and the calling hook uses an inline fallback like `echo "${msg:-[plugin_name] BLOCKED: ...}"` so the block still lands in plain English. Many plugins also keep *two* `voice.xml` files — one in `hooks/` for strings that get injected into the LLM's context window from `PreToolUse` blocks, one in `scripts/` for strings that get printed to the operator's terminal as part of CLI output. The wording is often slightly different between the two. Same intent, different audience. The orphan-id audit scripts have to grep *both* files when checking that every `get_voice "id"` call in code corresponds to a real entry — auditing only `hooks/voice.xml` will false-positive every script-only id as missing.
-
-The dual structure matters because the plugin is teaching the agent in two different modes at once.
-
-Coaching is the *soft* layer. It is how the plugin shapes behavior probabilistically — by being present in context at the right moment. Coaching can be ignored. The agent might choose to ignore it. The plugin learns from that. Over many cycles, if the coaching is consistently ignored on a particular pattern, that pattern becomes a candidate for promotion to a hard block.
-
-Blocks are the *hard* layer. They are how the plugin enforces deterministically. Blocks can't be ignored — they're refusals. But blocks are also expensive: every block adds friction to the agent's work, and a brain made entirely of blocks would be unusable. The art is to keep coaching where coaching is enough, and to escalate to blocks only when the data shows coaching has failed.
-
-This soft-to-hard migration is the *brain maturation pattern*. New behavioral controls start as voice. The operator runs cycles. If the voice consistently fires and the behavior consistently still drifts — observed across multiple cycles, not just one bad day — the operator decides the soft control is insufficient and authors a hook. The architecture documents this restraint as Lock 13, the *over-engineering veto*: a new hard gate cannot land before measured cycles demonstrate the soft form is failing. In practice, the measurement is informal: the operator reads the cycle's interaction summaries, sees the same mistake recurring, and concludes. The prototype's clearest example is the multiplier sentinel itself — for the first six cycles of the system it lived as a coaching voice asking the agent to please set a value, the agent kept missing it under load, and v0.12 hardened the soft voice into a `multiplier-zero-block` that locks every tool at phase entry until `set-multiplier` runs. The voice retired into a paired pre-set/post-set entry pair. Once a hook holds for long enough across enough plugins, the *pattern* itself fossilizes — into the plugin template, into the kit, into the standard files every new plugin inherits. The brain doesn't really shrink in absolute words; what happens is more interesting. The plugin CLAUDE.md files compress as their lessons become hooks, the root brain stays stable, and the knowledge directory grows monotonically because every fossilized pattern leaves behind its own narrated record of how it got there.
-
-[Essay 8](08-from-apprentice-to-architect.html) returns to this maturation arc as the spine of how a seed grows. Here, what matters is that *every plugin* has both layers at its disposal, and the plugin author's job is to choose the right layer for each lesson.
+The cell wall isn't just protection from the outside. It is the structural enforcement of internal compartmentalization.
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard two-column sketch — coaching (soft, probabilistic) on the left, block (hard, deterministic) on the right, with a curving migration arrow between them.
@@ -252,23 +165,45 @@ This soft-to-hard migration is the *brain maturation pattern*. New behavioral co
 
 ---
 
-## Subagents — Why 80/20
+## Plugin-Specific Behavioral Anchors
 
-A subagent is, mechanically, just an instance of the same model running with a different system prompt and a curated set of tools. The seed agent uses subagents heavily — a typical OBSERVE phase will fan out two to four research subagents in parallel, EXECUTE phases dispatch implementer subagents for parallel file work, VERIFY phases dispatch auditor subagents for independent checking, CONDENSE phases dispatch routers for waterfall steps.
+Each plugin's name points at the one concern it owns. Naming the concern is easy because each only has one. Below is what each plugin in the current prototype would lose if it were merged with another — the behavioral anchor that justifies its existence as a separate cell.
 
-The architecture insists on a roughly 80/20 split. The main session orchestrates — picks the questions, fans out the work, integrates the results. Roughly 20% of the cognitive work happens in the main session. The remaining 80% happens in subagents.
+**`plugin_integrity`** owns the lock ceremony and the historian system. The lock ceremony has four parts — a `[PLUGIN-LOCK]` question that opens an edit session; a finer-grained `[TEST-LOCK]` question for editing test files within an already-unlocked plugin; a safe-lock close-out that runs the plugin's full test suite at the lock boundary and reverts the working tree to a captured git checkpoint if any test fails; and a drift-counter ratchet that refuses to open the lock when the plugin's evolution narrative has fallen behind. The plugin polices every other plugin's edits, and it polices itself by the same gate. The auto-revert is forensic: every revert appends a structured entry to a 20-deep FIFO revert log carrying the failed tests, the files restored, the trigger reason, and a timestamp. There is no override. The historian system is the other half — each plugin has its own `historian-<plugin>.md` subagent that re-narrates the plugin's evolution when the drift counter trips, refreshing `docs/evolution.md` before the next edit can land.
 
-This is not a performance optimization. It is a *context discipline* — and EXECUTE actually mechanizes it. Inside `phase_execute`, every launch of an execute-* subagent grants the main session three units of *direct-action budget*; every non-`.claude/` file edit the main session performs consumes one. Internal `.claude/` edits are exempt because they are bookkeeping, not building. The arithmetic creates a structural pull: if the main session wants to write project code, it has to first delegate enough subagent work to afford the writes. The 80/20 isn't a guideline. It's a budget.
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard flowchart — the safe-lock cycle's pass-or-revert branch.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
+  and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other state names, command names, or descriptors.
+  Layout: Five hand-drawn chalk boxes arranged in a vertical flow down the center of the board, each labeled IN WHITE CHALK with its exact text:
+    Box 1 (cyan fill, top): "[PLUGIN-LOCK] <name> approved"
+    Box 2 (green fill): "edits inside unlocked plugin only"
+    Box 3 (orange fill): "lock-cmd.sh OR safe-lock.sh fires"
+    Box 4 (pink fill): "run plugin test suite"
+    Box 5 (no fill, decision diamond drawn as a chalk rhombus): "all tests pass?"
+  Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4 → Box 5.
+  From Box 5, two arrows fan out to two terminal boxes side-by-side at the bottom:
+    Left arrow labeled IN WHITE CHALK exactly "yes" → magenta box labeled "commit + clear unlocked_plugin"
+    Right arrow labeled IN WHITE CHALK exactly "no" → orange box (warmer chalk) labeled "revert to checkpoint_ref + log revert"
+  Below the two terminal boxes, draw a small chalk note IN WHITE CHALK reading exactly: "no override".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "lock-cmd.sh OR safe-lock.sh fires", "run plugin test suite", "all tests pass?", "yes", "no", "commit + clear unlocked_plugin", "revert to checkpoint_ref + log revert", "no override", plus the caption below. No other words, file names, folders, or state descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Test pass-or-revert. Every plugin edit passes through the same gate."
+-->
 
-Every tool call the main session makes lands in the main session's context window. A 30-tool-call investigation, run in the main session, fills the window with raw search results, file reads, and intermediate outputs. By the time the investigation is done, the context is too full to plan well.
+**`brain_guard`** owns context-window self-compaction. A pre-call sensor reads the running token count on every tool call. Below a soft threshold around twenty percent of the window, a coaching voice prompts the agent to draft a structured `/compact` instruction. Above the read threshold around twenty-five percent, the read tools are blocked. Above the critical threshold around thirty percent, the write tools are added to the block list. The progressive squeeze fires well before Claude Code's default auto-compact at the full window, which lets the agent operate even when the operator is away. The plugin also shape-enforces the `/compact` instruction itself — five named sections required before it accepts the call. The thresholds are not constants in the hook code; they live in `brain_guard/config.conf`, so an operator running a longer cycle can raise them without touching scripts.
 
-Run that same investigation as a subagent dispatch, and the subagent's tool calls land in the *subagent's* context window. The subagent does its work, synthesizes its findings, and returns a structured paragraph or two. The main session's context absorbs only the synthesis, not the raw work. The window stays clean. The plan that follows is built on a working memory that didn't have to swallow the investigation's exhaust.
+**`job_core`** owns the focused-job lifecycle. A user-prompt hook routes every prompt into a job — creating a new active job if none is focused, appending the prompt as an interaction on the focused one if one is. A stop-gate hook refuses every `Stop` call while any job is active or pending, implementing the Ralph-loop pattern at the always-on level. The job's `user_interactions` array becomes the agent's cumulative mega-prompt — the whole list is what the agent re-reads as its instruction set, not just the latest message. The plugin carries no `agents/` directory, by design: its concern is local state management, not delegated research.
 
-Subagents are how the seed agent stays cognitively coherent across long jobs.
+**`interaction_summary`** owns the threshold-driven summary chain. After each user interaction is captured by `job_core`, this plugin counts the unsummarized tokens. Once the count crosses a threshold around five hundred tokens, the plugin blocks the agent's next move with a structured request to file a summary. The interaction list, which otherwise grows without bound, stays legible because each summary captures the older interactions into a compressed paragraph and the unsummarized portion resets to zero. Like `job_core`, this plugin carries no `agents/` — same reason.
 
-Each plugin owns its own subagents inside `agents/`. The historians, the auditors, the routers, the researchers — they are not a global pool. The current prototype carries roughly fifty subagent definitions across the seed: a dozen `historian-*` agents under `plugin_integrity` (one per other plugin), a dozen `observe-*` researchers, six `plan-*` helpers, three `execute-*` implementers, five `verify-*` auditors, seven `condense-*` waterfall routers, and a handful of specialized agents for archiving and unblocking. Each one is a Markdown file with frontmatter declaring its name, a curated tool list, and a model assignment — and every one of them runs on the smallest available fast model so dispatch stays cheap.
+**`question_discipline`** owns the asking gate. Every `AskUserQuestion` call must begin with a registered prefix — `[PLUGIN-LOCK]`, `[JOB-COMPLETE]`, `[GMODE]`, `[PLAN-APPROVAL]`, and the rest of the catalog. Without the prefix, the gate refuses the call. This is the plugin without `scripts/`, without `scripts/voice.xml`, without `config.conf`, without `data.json` — pure enforcement. The minimum-viable plugin in the current prototype, by structural choice. Every absent organ is a deliberate signal: no CLI to publish, no operator threshold to tune, no runtime state to carry — just the gate.
 
-The reason for plugin-scoped subagents is the same reason for plugin-scoped tests: locality of reasoning. A subagent's prompt and tool list should evolve with the plugin that uses it. There's also a hard mechanical reason: the safe-lock cycle requires that only one plugin be unlocked at a time, so a subagent that ranges across multiple plugins would need to coordinate locks across every directory it touches. An early prototype cycle proved this the painful way — a multi-plugin batch broke a test in one plugin, the auto-revert undid work in another, and the operator spent the next session reconstructing what had been lost. Per-plugin scoping is the lesson written into the kit.
+**`phasic_system`** owns OPEVC orchestration. The cycle counter, the phase pointer, the multiplier sentinel that locks every tool at phase entry until the agent sets a value, the forward and backward edge maps that decide where the cycle goes next. The orchestrator is itself a plugin, not a privileged subsystem — which is why it carries an `e2e/` directory full of end-to-end tests that no individual phase plugin needs, but the orchestrator does.
+
+**Each `phase_*`** — five plugins, one per phase — owns its phase's guard, tracker, sensor, and commit script. Each plugin enforces the write-scope rule for its own phase, tracks the point counter that gates the phase's exit, and emits the per-phase coaching voices that shape what kind of work the phase rewards. The phases are themselves cells; the orchestrator coordinates them. Each phase plugin also carries its own `agents/` directory holding the subagents that phase dispatches — observe-side researchers, plan-side analysts, execute-side implementers, verify-side auditors, condense-side waterfall routers. The architecture's roughly eighty-percent subagent / twenty-percent main-session split lives mostly here, in the per-phase agent pools, not in a global pool. Locality of reasoning plus the safe-lock single-plugin-unlock constraint together make per-plugin scoping the correct choice.
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard hub-and-spoke — small main-session circle at the center orchestrating; larger plugin-scoped subagent pools fanning out around it.
@@ -292,43 +227,66 @@ The reason for plugin-scoped subagents is the same reason for plugin-scoped test
   Caption (bottom of image, white chalk, hand-drawn): "Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
 -->
 
+The seed agent's behavior is the sum of these eleven anchors. Each one is small. Together they compose the brain.
+
 ---
 
-## Tier-3 Close: Building a New Phase Plugin
+## When Does Something Deserve a New Plugin?
 
-For the architects in the audience, here is what creating a new phase plugin actually looks like. Imagine you decide your seed needs a `RESEARCH` phase between `OBSERVE` and `PLAN` — a phase whose job is to do deeper external investigation when a job's working memory has gaps that internal observation cannot fill.
+The kit is generative — adding a twelfth plugin is supposed to be tractable. But not every new pattern deserves one. A cost ladder applies.
 
-The recipe is straightforward, because the kit makes it straightforward.
+**Voice** is the cheapest enforcement. A new coaching string in an existing plugin's `voice.xml` costs one file edit, one test if you add one, and the seed agent's behavior shifts probabilistically the next time the relevant hook fires. Most new patterns start here.
 
-You ask `[PLUGIN-LOCK] phase_research`. The user approves the lock. `lock-manager.sh` notices that no `phase_research/` directory exists yet, copies the template at `.claude/plugins/plugin_integrity/template/` into place, substitutes the plugin name into the placeholders, generates a `historian-phase-research.md` from `template/_historian.md` so the plugin already has its narrator, auto-commits the birth so drift-check has a baseline, and only then writes the unlock state. The plugin is born.
+**Hook in an existing plugin** is the next step up. If a coaching voice has fired across many cycles and the data shows the agent ignoring it, the operator hardens the soft control into a `PreToolUse` guard inside the plugin whose concern the pattern belongs to. New tests cover the new gate. The voice retires into a softer pre-block warning, or out entirely.
 
-You now have the empty kit — a `CLAUDE.md`, `hooks/`, `scripts/`, `tests/`, `agents/`, `voice.xml`, `evolution.md`, `data.json`, `settings.local.json`. The cell wall is in place. Your job is to fill the cognitive organs.
+**A new plugin** is the most expensive step. It is warranted when a pattern crosses an existing plugin's boundary cleanly, when it introduces a new always-on concern, when it introduces a new phase, or when it carries enough state to need its own `data.json`. The minimum-viable plugin starts with the six skeleton organs and adds conditional organs only as the concern demands them — no `scripts/` if you publish no CLI, no `agents/` if you delegate no work, no `config.conf` if there is nothing for an operator to tune, no `data.json` if the plugin is stateless across calls.
 
-You write the `CLAUDE.md` first. This declares what the phase owns: write scope (read-only, plus the working CLAUDE.md), exit gate (point threshold), allowed tools (Read, WebFetch, WebSearch, Bash for grep), forbidden tools (everything that writes outside the working CLAUDE.md). The brain index will eventually pick this up and recognize the plugin as a phase.
+A discipline the prototype names *Lock 13: the over-engineering veto* applies to every step on the ladder: no new hard gate hardens before measured cycles demonstrate the soft form is failing. The architecture documents this restraint because the failure mode it prevents is real — brains overfit to controls that never had to fire become brittle and unreadable, and the cycle that creates them is exactly the kind of cycle that feels productive at the time.
 
-You add hooks under `hooks/`. A `PreToolUse` hook that consults the active phase from the orchestrator and, if the active phase is `research`, validates the tool against the allowlist. A `Stop` hook that tracks point accumulation and fires the exit gate at threshold. These are the reflexes that keep the phase honest.
+The cost ladder is what makes the eleven plugins a *current* prototype, not a final architecture. A future seed cultivator running into a recurring pattern that no existing plugin's concern owns will climb the ladder one rung at a time. Most patterns stop at voice. Some reach hook. A few earn a plugin.
 
-You add scripts under `scripts/`. `research.sh advance` to enter the phase, `research.sh set-multiplier` to declare scope on entry, `research.sh commit` to exit and hand off to the next phase. These are the verbs the orchestrator and the agent use to drive the phase from the outside.
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard horizontal flow — phase footer carrying inline markers, CONDENSE grep-dispatches each to its handler, consumed markers become strikethrough audit lines.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for marker pills and step badges (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, and section markers; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other marker names, step names, or descriptors. Triple-dash phase-section markers must be written EXACTLY as shown (three dashes, abbreviation, three dashes).
+  Layout: Three horizontal chalk panels arranged left-to-right across the board, joined by white-chalk arrows.
+    Left panel — vertical white-chalk header above reads exactly "phase footer". Inside, four phase-section markers drawn as horizontal white-chalk lines, top to bottom: "---Ob---", "---Pl---", "---Ex---", "---Ve---". Inside three of those sections, draw small pastel chalk pills labeled IN WHITE CHALK with example inline markers, one pill per section:
+      under "---Ob---" (cyan pill): "[KNOWLEDGE] topic-slug"
+      under "---Pl---" (green pill): "[PENDING-JOB]"
+      under "---Ex---" (orange pill): "[VOICE-UPDATE] id | why | direction"
+    A single white-chalk arrow leaves the left panel and points right, labeled IN WHITE CHALK exactly "grep + dispatch".
+    Middle panel — vertical white-chalk header reads exactly "CONDENSE waterfall". Inside, five small chalk step-badges stacked top to bottom, each labeled IN WHITE CHALK with its number and short name:
+      Badge 1 (cyan): "step 3: pending job"
+      Badge 2 (green): "step 4: voice update"
+      Badge 3 (orange): "step 5: agent update"
+      Badge 4 (pink): "step 6: knowledge"
+      Badge 5 (magenta, smaller, fainter): "step 1: durable / ephemeral tags"
+    A single white-chalk arrow leaves the middle panel and points right, labeled IN WHITE CHALK exactly "consumed".
+    Right panel — vertical white-chalk header reads exactly "next cycle reads". Inside, a single strikethrough chalk line (drawn with a horizontal slash through the text) reading EXACTLY: "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4". The text is struck through but legible.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "phase footer", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "[KNOWLEDGE] topic-slug", "[PENDING-JOB]", "[VOICE-UPDATE] id | why | direction", "grep + dispatch", "CONDENSE waterfall", "step 3: pending job", "step 4: voice update", "step 5: agent update", "step 6: knowledge", "step 1: durable / ephemeral tags", "consumed", "next cycle reads", "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4", plus the caption below. No other words, file names, folders, marker names, or step descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Markers are plain text. CONDENSE consumes them, strikethrough audits the consumption."
+-->
 
-You add tests under `tests/`. One test per hook, one test per script, plus integration tests for the full enter/work/exit cycle. The safe-lock cycle requires these to pass before any commit lands.
+---
 
-You author the agents under `agents/`. A `research-investigator` for parallel external investigation. A `research-synthesizer` for collapsing findings into a structured paragraph that returns to the main session. Each one is a Markdown file with a tool list and a prompt, scoped to the plugin.
+## Tier-3 Close: Plugin Birth via `template/`
 
-You write the `voice.xml`. Coaching voices for phase entry, multiplier nudges, mid-phase encouragement to dispatch subagents rather than read alone. Hard blocks for forbidden-tool attempts. Two flavors of each, structured by id.
+For the architects in the audience, here is what creating a new plugin actually looks like. Imagine you decide your seed needs a `research` phase between `observe` and `plan` — a phase whose job is deeper external investigation when working memory has gaps internal observation cannot fill.
 
-You initialize `evolution.md` with cycle 1 — the cycle in which the plugin was born. The historian subagent will narrate later cycles automatically, but cycle 1 needs the operator's hand.
+You ask `[PLUGIN-LOCK] phase_research`. The user approves the lock. `lock-manager.sh` notices that no `phase_research/` directory exists yet, so it copies `plugin_integrity/template/` into place — the universal cell template — and substitutes the plugin name into the file placeholders. Phase-specific entry templates inherit further structure from one of the existing phase plugins' `template/` directories, whichever the operator points the birth at. A `historian-phase-research.md` is generated from `template/_historian.md` so the plugin already has its narrator. The birth itself auto-commits so the drift counter has a baseline. Only then does the unlock state get written. The plugin is born.
 
-You register the hooks in `settings.local.json` so they actually fire — both the `PreToolUse` guard and any `PostToolUse` sensor the phase needs.
+You now have the empty kit — the universal-skeleton organs in place, the conditional organs available to fill in. Your job is the substance.
 
-You hand back the lock for `phase_research`. The safe-lock cycle runs the new test suite. If it passes, the plugin commits.
+You write the `CLAUDE.md` first — what the phase owns, allowed tools, forbidden tools, exit gate. You add hooks under `hooks/` for the `PreToolUse` guard and the `Stop` sensor. You add scripts under `scripts/` if you publish CLI verbs the orchestrator needs to call. You add tests under `tests/` covering each hook and script. You author subagents under `agents/` if your phase delegates investigation. You write the voice files — `hooks/voice.xml` always, `scripts/voice.xml` if your CLI prints to the terminal. You add `config.conf` if the phase exposes any operator-tunable threshold. You initialize `docs/evolution.md` with cycle one, the cycle in which the plugin was born.
 
-Then comes the part most plugin tutorials skip: the orchestrator does not yet know about the new phase. Closing the `phase_research` lock makes the cell wall live, but the `FORWARD_MAP` and `BACKWARD_MAP` strings inside `phasic_system/scripts/phase.sh` still read the original sequence. To insert RESEARCH between OBSERVE and PLAN, you open a *second* `[PLUGIN-LOCK]` — this time on `phasic_system` itself — and edit both maps so the orchestrator knows `observe → research → plan` is the new shape and so backward transitions from later phases can land in research as well as in observe and plan. New tests cover the new edges. Safe-lock validates. The lock closes. Only now will the orchestrator route a job through the research phase. Adding a cognitive organ takes two locks: one to build the cell, one to wire it into the body.
+You hand back the lock. The safe-lock cycle runs the new test suite. If it passes, the plugin commits. If it fails, the working tree reverts and the operator looks at the failed tests.
 
-The whole ceremony is not, in honest terms, "a couple of editing sessions." A real new phase plugin is closer to a multi-cycle deep job — several editing sessions for the guard, more for the tracker and sensor, a hundred-plus lines of voice, twenty to thirty test assertions across half a dozen test files, plus the orchestrator update. The kit's gift is not that the work is small. The kit's gift is that the work is *bounded* — every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest.
+The plugin is not yet active. Closing the lock makes the cell wall live, but the orchestrator does not yet know about the new phase. The forward and backward edge maps inside `phasic_system/scripts/phase.sh` still read the original sequence. To insert `research` between `observe` and `plan`, you open a second `[PLUGIN-LOCK]` — this time on `phasic_system` itself — and edit both maps. New tests cover the new edges. Safe-lock validates. The lock closes. The brain's `settings.local.json` at the brain root picks up the new plugin's hook registrations. Only now does a job route through `research`.
 
-What makes that bounded work feel different from a from-scratch build is that you are not inventing the structure; you are filling a structure the kit already specified. The cell template knows what cognitive organs the cell needs. You are the one filling them with the substance for *this* organism.
-
-This is what a maturing seed looks like. Every cycle, you notice a pattern the brain isn't enforcing and decide whether it deserves a new plugin, a new hook in an existing plugin, a new voice line, or no enforcement at all. The kit makes that decision tractable, because the cost of trying — building the plugin, running it for a few cycles, deciding to keep or discard it — is bounded.
+Adding a cognitive organ takes two locks: one to build the cell, one to wire it into the body. The kit's gift is not that the work is small — a real phase plugin is closer to a multi-cycle deep job — but that the work is *bounded*. Every file has a purpose. Every purpose is named. The safe-lock cycle keeps every step honest.
 
 ---
 
@@ -338,9 +296,7 @@ The kit gives the brain the *capacity* to grow. The phases give the brain compar
 
 Three essays in, what we have is a working seed agent: not a finished product, but a living architecture that knows how to evolve itself.
 
-The kit is in your hands. What does growth LOOK like when you use it over time? What does an operator's day look like at week one, week six, month three? How does the seed mature from apprentice to architect — and what does it mean for the brain to *finish* growing in size while continuing to learn?
-
-Next.
+The kit is in your hands. What does growth LOOK like when you use it over time? Next.
 
 ---
 
