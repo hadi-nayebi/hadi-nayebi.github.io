@@ -719,8 +719,8 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
 | 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.30.0** |
 | 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.1** |
-| 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **outlined** |
-| 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **outlined** |
+| 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.13.1** (~5017 words; all 8 pillars covered) |
+| 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **drafting v0.10.0** (~4332 words; all 7 pillars covered) |
 
 ### Status Legend
 

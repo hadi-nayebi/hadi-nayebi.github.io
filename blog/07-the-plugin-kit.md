@@ -205,7 +205,7 @@ Then comes the part most plugin tutorials skip: the orchestrator does not yet kn
 
 The whole ceremony is not, in honest terms, "a couple of editing sessions." A real new phase plugin is closer to a multi-cycle deep job — several editing sessions for the guard, more for the tracker and sensor, a hundred-plus lines of voice, twenty to thirty test assertions across half a dozen test files, plus the orchestrator update. The kit's gift is not that the work is small. The kit's gift is that the work is *bounded* — every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest.
 
-The whole ceremony, end to end, is a couple of editing sessions of disciplined work. The reason it is that fast is that you are not inventing the structure; you are filling a structure the kit already specified. The cell template knows what cognitive organs the cell needs. You are the one filling them with the substance for *this* organism.
+What makes that bounded work feel different from a from-scratch build is that you are not inventing the structure; you are filling a structure the kit already specified. The cell template knows what cognitive organs the cell needs. You are the one filling them with the substance for *this* organism.
 
 This is what a maturing seed looks like. Every cycle, you notice a pattern the brain isn't enforcing and decide whether it deserves a new plugin, a new hook in an existing plugin, a new voice line, or no enforcement at all. The kit makes that decision tractable, because the cost of trying — building the plugin, running it for a few cycles, deciding to keep or discard it — is bounded.
 
@@ -217,7 +217,7 @@ The kit gives the brain the *capacity* to grow. The phases give the brain compar
 
 Three essays in, what we have is a working seed agent: not a finished product, but a living architecture that knows how to evolve itself.
 
-The kit is in your hands. What does growth LOOK like when it is used over time? What does an operator's day look like at week one, week six, month three? How does the seed mature from apprentice to architect — and what does it mean for the brain to *finish* growing in size while continuing to learn?
+The kit is in your hands. What does growth LOOK like when you use it over time? What does an operator's day look like at week one, week six, month three? How does the seed mature from apprentice to architect — and what does it mean for the brain to *finish* growing in size while continuing to learn?
 
 Next.
 
