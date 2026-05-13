@@ -273,11 +273,11 @@ A few smaller organs round out the kit. They carry less load but are still load-
 
 ## `.claude/settings.local.json` — The Brain-Root Wiring
 
-**What it is.** A single JSON file at the brain root (`.claude/settings.local.json`) that pairs Claude Code event names with hook script paths across every plugin. The wiring file is NOT inside any plugin — it lives outside.
+**What it is.** A single JSON file at the brain root (`.claude/settings.local.json`) that pairs Claude Code event names with hook script paths across every plugin. The wiring file is NOT inside any plugin — it lives outside. *[ref: settings-local-json-brain-root-wiring | .claude/settings.local.json:1-30 | The file's top-level structure: `{"permissions": {...}, "hooks": {"UserPromptSubmit": [...], "PreToolUse": [...], ...}}`. Each event entry lists `{matcher, hooks: [{type: "command", command: "bash .claude/plugins/<plugin>/hooks/<script>.sh", timeout}]}` blocks. Example from L5-15: UserPromptSubmit → `bash .claude/plugins/job_core/hooks/prompt-handler.sh`. The matcher field filters which tool calls trigger the hook (e.g., `"Edit|Write|MultiEdit|Read|Bash"` for plugin-guard.sh). One file wires every plugin's hooks; nothing self-registers.]*
 
 **Who reads it.** Claude Code, at session start. Claude Code uses this file to decide which hooks fire on which events for the whole brain.
 
-**Who writes it.** The operator, when installing or removing a plugin. The seed agent itself, when CONDENSE step 3 creates a new plugin via the birth ceremony (which adds the new plugin's hook registrations as part of the stamp).
+**Who writes it.** The operator, when installing or removing a plugin. The seed agent itself, when a `[PLUGIN-LOCK] <new_plugin>` question fires the birth ceremony in `lock-manager.sh` (which stamps the template + adds the new plugin's hook registrations to `settings.local.json`). *[ref: plugin-birth-ceremony-in-lock-manager | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:297,319,325 | L297 comment names the operation: "Plugin birth: create from template, replace placeholders, generate historian, auto-commit." L319: "Auto-commit birth state to establish baseline (prevents drift-check sentinel 999 on first unlock)." L325 commits with message: `git commit -m "birth: $target plugin initialized from template"`. The birth ceremony runs in the PostToolUse handler for [PLUGIN-LOCK] questions whose target plugin does not yet exist — NOT in CONDENSE step 3 (which handles [PENDING-JOB] markers for job creation, a different concern).]*
 
 **What it depends on.** Each plugin's `hooks/*.sh` paths. If a plugin's hook script exists at the right path but `settings.local.json` does not list it, the hook is dead code.
 
