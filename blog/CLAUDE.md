@@ -158,6 +158,7 @@ After any prose, image-prompt, or transcript change, **explicitly verify each do
 OpenAI's `tts-1-hd` model (voice: onyx) does **not support SSML**. It reads input verbatim. Acronyms, snake_case identifiers, footer markers, and bracketed prefixes mispronounce or drop entirely if fed raw.
 
 **Tooling:**
+- `tools/generate_blog_html.py` (added 2026-05-13) converts blog `.md` to `.html` using B6 as the template reference. Pragmatic — tuned for ref-tag italic-bracket → `<sup class="ref-marker">`, image-placeholder HTML comments → `<aside class="image-placeholder">`, sidebar with all 9 posts active-marked. **When adding a new blog post:** extend `SIDEBAR_POSTS` in the converter BEFORE running, or it will fail with `slug not found`. Run: `python3 tools/generate_blog_html.py blog/<slug>.md blog/<slug>.html`.
 - `tools/generate_blog_transcript.py` strips markdown AND applies pronunciation guards. Cheap (no API). Run on every prose change: `python3 tools/generate_blog_transcript.py blog/<slug>.md blog/<slug>.transcript.md`. Output is rewritten with `final: false` in the frontmatter every regen.
 - `tools/generate_blog_audio.py` reads the transcript and runs TTS. **Costs ~$0.75 per 35–40 min essay on `tts-1-hd`.** Has a 4-attempt retry guard for transient API errors.
 
@@ -717,10 +718,10 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.30.0** |
-| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.1** |
-| 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.13.1** (~5017 words; all 8 pillars covered) |
-| 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **drafting v0.10.0** (~4332 words; all 7 pillars covered) |
+| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.30.0** — 80 refs · HTML built · transcript ready (final:false) · audio pending |
+| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.1** — 76 refs · HTML built · transcript ready (final:false) · audio pending |
+| 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.15.0** — 48 refs · HTML built 2026-05-13 via `tools/generate_blog_html.py` · transcript ready (final:false) · audio pending · og:image pending |
+| 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **drafting v0.12.0** — 21 refs · HTML built 2026-05-13 · transcript ready (final:false) · audio pending · og:image pending |
 
 ### Status Legend
 
