@@ -2,7 +2,7 @@
 title: "The Plugin Kit"
 date: "May 2026"
 slug: "the-plugin-kit"
-read_time: "TBD"
+read_time: "32 min"
 tags: [Architecture, Seed Agent, Plugins, Hooks, Voices, Subagents]
 status: draft
 version: v0.15.0
@@ -199,9 +199,7 @@ Same intent — both surfaces carry the plugin's voice. Different audiences — 
 
 - `docs/CLAUDE.md` — the docs/ directory's own descriptor; names the conventions docs/ files follow.
 - `docs/evolution.md` — the plugin's auto-narrated history. Capped at 2000 words by a hard-enforced `PreToolUse` hook. The historian subagent writes this; the operator typically does not.
-- `docs/principles.md` OR `docs/decisions.md` (depending on the plugin) — the overflow surface for design rationale that doesn't fit in evolution.md.
-
-*[ref: evolution-md-universal-across-plugins | .claude/plugins/*/docs/evolution.md | `find .claude/plugins -name evolution.md -path "*/docs/*"` returns 14 hits — one per plugin (brain_guard, interaction_summary, job_archiver, job_blocker, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline) PLUS the template at `plugin_integrity/template/docs/evolution.md` so newly-stamped plugins inherit the file at birth. The discipline is universal: no plugin ships without one.]*
+- `docs/principles.md` OR `docs/decisions.md` (depending on the plugin) — the overflow surface for design rationale that doesn't fit in evolution.md. *[ref: evolution-md-universal-across-plugins | .claude/plugins/*/docs/evolution.md | `find .claude/plugins -name evolution.md -path "*/docs/*"` returns 14 hits — one per plugin (brain_guard, interaction_summary, job_archiver, job_blocker, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline) PLUS the template at `plugin_integrity/template/docs/evolution.md` so newly-stamped plugins inherit the file at birth. The discipline is universal: no plugin ships without one.]*
 
 **Who reads them.** The agent, especially at plugin unlock — the lock-manager auto-injects `docs/evolution.md` into the agent's context every time PLUGIN-LOCK is approved. This is how the editor inherits the plugin's reasoning before touching code. The historian subagent reads evolution.md when re-narrating new commits. New users read these to understand a plugin's lived history before customizing. *[ref: evolution-md-auto-injected-on-unlock | .claude/plugins/plugin_integrity/hooks/evolution-cap.sh:6-9 | The hook's header docstring states the contract explicitly: "Blocks edits to docs/evolution.md that would push word count above MAX_EVOLUTION_WORDS (default 2000, configurable via plugin_integrity/config.conf). WHY: evolution.md is auto-injected to stderr on every plugin unlock. Unbounded [growth would exhaust the per-unlock context budget]." The cap exists BECAUSE the file is auto-dumped into the agent's context on every PLUGIN-LOCK approval — keeping the file lean preserves context budget per-unlock.]*
 
@@ -389,4 +387,5 @@ The kit is in your hands. What does growth LOOK like when you use it over time? 
 *Essay 7 of 8 in the Hadosh Academy series on agent architecture.*
 
 *Previous: [The Markov Phasic Brain](06-the-markov-phasic-brain.html) — five phases, one cognitive organ, and why forbidding tools is the pedagogy.*
+
 *Next: [From Apprentice to Architect](08-from-apprentice-to-architect.html) — job formats, the maturation arc, and the seed's hand-off.*

@@ -2,7 +2,7 @@
 title: "From Apprentice to Architect"
 date: "May 2026"
 slug: "from-apprentice-to-architect"
-read_time: "TBD"
+read_time: "27 min"
 tags: [Architecture, Seed Agent, Maturation, Jobs, Knowledge]
 status: draft
 version: v0.12.0
