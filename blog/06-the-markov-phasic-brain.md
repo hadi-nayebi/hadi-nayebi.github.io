@@ -139,13 +139,20 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk colors for row labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for headers and cell marks; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, paths, or phase descriptors.
   Layout: 5 rows × 5 columns grid drawn in chalk.
-    Row labels (left, each in its own pastel chalk circle like the cycle image, lowercase):
-      "observe", "plan", "execute", "verify", "condense"
-    Column headers (top, white chalk, lowercase):
+    Row labels (left, each in its own pastel chalk circle like the cycle image, lowercase, in this top-to-bottom order):
+      Row 1 (cyan fill): "observe"
+      Row 2 (green fill): "plan"
+      Row 3 (orange fill): "execute"
+      Row 4 (pink fill): "verify"
+      Row 5 (magenta fill): "condense"
+    Column headers (top, white chalk, lowercase, in this left-to-right order):
       "read project", "edit project", "edit own footer", "edit plan file", "edit .claude/"
-    Cells: hand-drawn white chalk checkmark (✓) for allowed; white chalk X for blocked.
-  Caption: "Each phase is defined by what it cannot do."
+    Cells: hand-drawn white chalk checkmark (✓) for allowed; white chalk X for blocked. No words inside cells.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "read project", "edit project", "edit own footer", "edit plan file", "edit .claude/", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only ✓ or X glyphs, no text.
+  Caption (bottom of image, white chalk, hand-drawn): "Each phase is defined by what it cannot do."
 -->
 
 
@@ -308,16 +315,18 @@ The backward edges are situational rather than a fixed menu — VERIFY rolls bac
   Concept: Chalk-on-blackboard sketch — VERIFY's three backward edges and one forward edge.
   Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn pastel chalk circles
   for each node (cyan, green, orange, pink, magenta — same palette as the cycle image); white chalk
-  arrows; lowercase phase names inside the circles; chalk sticks along the bottom edge.
-  Layout: One central chalk circle in the middle of the board labeled "verify". To the left of verify,
+  arrows; lowercase phase names inside the circles; chalk sticks along the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, edge descriptors, or phase descriptors.
+  Layout: One central pink chalk circle in the middle of the board labeled "verify". To the left of verify,
   three chalk arrows fan outward and land on three target circles:
-    - short backward arrow → "execute", small chalk note above it: "minor fix"
-    - mid-length backward arrow → "plan", chalk note: "design flaw"
-    - long backward arrow → "observe", chalk note: "context gap"
-  To the right of verify, one forward arrow → "condense", chalk note: "pass".
+    - short backward arrow → orange circle labeled "execute", small chalk note above the arrow: "minor fix"
+    - mid-length backward arrow → green circle labeled "plan", chalk note above the arrow: "design flaw"
+    - long backward arrow → cyan circle labeled "observe", chalk note above the arrow: "context gap"
+  To the right of verify, one forward arrow → magenta circle labeled "condense", chalk note above the arrow: "pass".
   The three backward arrows are drawn in warmer pastel chalk (orange / pink / magenta); the forward
   arrow is white chalk. Keep all arrows slightly curved and hand-drawn, never ruler-straight.
-  Caption: "Backward transitions are explicit choices, not automatic fallbacks."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "verify", "execute", "plan", "observe", "condense", "minor fix", "design flaw", "context gap", "pass", plus the caption below. No other words, file names, folders, or phase descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Backward transitions are explicit choices, not automatic fallbacks."
 -->
 
 
@@ -337,20 +346,21 @@ That routing is structured as a strict **seven-step waterfall**. The order matte
   Concept: Chalk-on-blackboard cascade — the CONDENSE seven-step waterfall.
   Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn chalk tiles and arrow streams;
   pastel chalk for the tile borders (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for step numbers and labels; chalk sticks resting along the bottom edge.
-  Layout: Seven chalk tiles stacked vertically down the center of the board, each labeled with its number
-  and short name (lowercase, exactly the prose's wording — do NOT invent new terms):
-    1. "footer to body"
-    2. "cross-file move"
-    3. "pending job"
-    4. "voice update"
-    5. "agent update"
-    6. "knowledge"
-    7. "session archive" — drawn smaller, fainter, slightly off-axis to mark it as last-resort
-  Short white-chalk arrows feed each tile into the next.
-  Below all seven tiles, a horizontal chalk bar labeled "deflation gate" sits across the board's width,
-  with one exit arrow attempting to pass through it (blocked unless absorption percentage is reached).
-  Caption: "Each step's output feeds the next. Step 7 is the fallback, not a peer."
+  white chalk for step numbers, labels, and arrows; chalk sticks resting along the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, step titles, or labels.
+  Layout: Seven chalk tiles stacked vertically down the center of the board, each labeled IN WHITE CHALK with its number and short name (lowercase, EXACTLY as written below — do NOT invent new terms):
+    Tile 1 (cyan border): "1. footer to body"
+    Tile 2 (green border): "2. cross-file move"
+    Tile 3 (orange border): "3. pending job"
+    Tile 4 (pink border): "4. voice update"
+    Tile 5 (magenta border): "5. agent update"
+    Tile 6 (cyan border): "6. knowledge"
+    Tile 7 (dim white border): "7. session archive" — drawn smaller, fainter, slightly off-axis to mark it as last-resort
+  Short white-chalk arrows feed each tile into the next (1→2→3→4→5→6→7).
+  Below all seven tiles, a horizontal chalk bar drawn across the board's width, labeled IN WHITE CHALK exactly "deflation gate", with one chalk exit arrow attempting to pass through it.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "1. footer to body", "2. cross-file move", "3. pending job", "4. voice update", "5. agent update", "6. knowledge", "7. session archive", "deflation gate", plus the caption below. No other words, file names, folders, or step descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Each step's output feeds the next. Step 7 is the fallback, not a peer."
 -->
 
 1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the four phase markers from [the previous essay](05-the-always-on-digital-cortex.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step — a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. The footers are scratch; the body is durable. The deflation can be sharp: a single plugin's working CLAUDE.md routinely shrinks from a sprawling footer down to a tight body section in this step alone, the bulk of the cycle's noise gone in one absorption pass. *[ref: condense-step-1-footer-to-body-graduated | phase_condense/docs/decisions.md:213-221 | Decision D20: CONDENSE Step 1 (footer-to-body absorption) enforced via graduated discipline — entry voice teaches "absorb footer-to-body first," a body-vs-footer tracker metric measures success, hard gate added only if data warrants.]*
@@ -403,18 +413,20 @@ Every phase has a fixed point threshold the agent must cross before it is allowe
   Concept: Chalk-on-blackboard dial — the multiplier choice.
   Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn horizontal chalk line for the dial
   with six chalk tick marks; pastel chalk labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for the dial line and the action-count numbers; chalk sticks at the bottom edge.
-  Layout: A horizontal chalk line drawn across the board with six tick marks evenly spaced, left to right:
+  white chalk for the dial line, tick numbers, and action-count strings; chalk sticks at the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal labels listed below. Do not invent other tick values, action counts, or descriptor words.
+  Layout: A horizontal chalk line drawn across the board with six tick marks evenly spaced, left to right, each tick number IN WHITE CHALK:
     "0.5", "1", "1.5", "2", "2.5", "3"
-  Below four of the ticks, draw a short chalk label and the action-count from the essay's prose:
-    - 0.5 → "deep"     / "~67 actions"
-    - 1   → "standard" / "~34 actions"
-    - 1.5 → "targeted" / "~22 actions"
-    - 3   → "surgical" / "~12 actions"
-  Leave 2 and 2.5 as unlabeled ticks (the prose does not give them named counts).
-  Above the dial, draw a curving chalk arrow that runs RIGHT to LEFT (from "3" toward "0.5") with
-  the chalk caption: "smaller number, bigger phase".
-  Caption: "The multiplier is backward. A smaller number declares a deeper phase."
+  Below four of the ticks, draw a short pastel chalk descriptor (one word) and the action-count IN WHITE CHALK:
+    - below "0.5":  cyan descriptor "deep"      / white-chalk "~67 actions"
+    - below "1":    green descriptor "standard" / white-chalk "~34 actions"
+    - below "1.5":  orange descriptor "targeted"/ white-chalk "~22 actions"
+    - below "3":    magenta descriptor "surgical" / white-chalk "~12 actions"
+  Leave the ticks at "2" and "2.5" UNLABELED — no descriptors, no action-counts, no extra words.
+  Above the dial, draw a single curving chalk arrow that runs RIGHT to LEFT (from the "3" tick toward the "0.5" tick) with one short chalk caption riding along the arrow's curve: "smaller number, bigger phase".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "0.5", "1", "1.5", "2", "2.5", "3", "deep", "standard", "targeted", "surgical", "~67 actions", "~34 actions", "~22 actions", "~12 actions", "smaller number, bigger phase", plus the caption below. No other words, file names, tool names, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "The multiplier is backward. A smaller number declares a deeper phase."
 -->
 
 How does the phase know what counts as enough work? Through a per-phase point system.
