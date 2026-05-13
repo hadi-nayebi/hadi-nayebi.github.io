@@ -48,6 +48,34 @@ In your first weeks running a seed, almost every job is single-cycle DEEP. As th
 
 The progression of *which job formats you reach for* is one of the visible markers of the maturation arc.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard taxonomy — four job-format cards arranged side by side, each showing the format's identifying gate and the lesson it teaches.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk cards
+  and lines; pastel chalk fills for each card (cyan, green, orange, magenta — same palette as the cycle image);
+  white chalk for ALL labels, gate text, and lesson text; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other job names, gate names, command names, or lesson descriptors.
+  Layout: Four hand-drawn rectangular chalk cards arranged horizontally across the board, equal size, left to right. Each card has three sections stacked top to bottom: (a) format name as the header IN WHITE CHALK, (b) the identifying gate or command IN WHITE CHALK, (c) the lesson it teaches IN WHITE CHALK.
+    Card 1 (cyan fill, leftmost):
+      Header: "single-cycle DEEP"
+      Gate:   "plan_file = false"
+      Lesson: "what one OPEVC rotation feels like"
+    Card 2 (green fill):
+      Header: "multi-cycle"
+      Gate:   "plan_file = plan_<name>.md"
+      Lesson: "coherence across context boundaries"
+    Card 3 (orange fill):
+      Header: "sibling"
+      Gate:   "job.sh create <name>"
+      Lesson: "flag work without absorbing it"
+    Card 4 (magenta fill, rightmost):
+      Header: "dependent"
+      Gate:   "job.sh create-dependent <name>"
+      Lesson: "work as a directed graph"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "single-cycle DEEP", "plan_file = false", "what one OPEVC rotation feels like", "multi-cycle", "plan_file = plan_<name>.md", "coherence across context boundaries", "sibling", "job.sh create <name>", "flag work without absorbing it", "dependent", "job.sh create-dependent <name>", "work as a directed graph", plus the caption below. No other words, file names, folders, or job-format descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Four job formats. Four lessons. The progression is one of the visible markers of the arc."
+-->
+
 ---
 
 ## The Maturation Arc
@@ -71,6 +99,40 @@ The CLAUDE.md hierarchy starts shrinking. Findings that were durable last month 
 What you have now is not a chatbot that you talk to. It is a cognitive instrument that you compose with. The composition still requires intent — the seed does not decide what to work on; you do — but the cognition itself runs on rails the seed enforces.
 
 This is the architect phase. You are not finished. The seed is not finished. But you have crossed into a relationship where the seed's growth is now driven by your architectural judgment, not by repeated correction of basic mistakes.
+
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard staircase — three ascending stages showing the operator's relationship with the seed, with visible markers per stage.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk steps
+  and labels; pastel chalk fills for each stage (cyan = apprentice, green = journeyman, magenta = architect — drawn from the cycle image palette);
+  white chalk for ALL labels and stage markers; faint chalk dust at the edges; chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other stage names, time-range labels, or marker descriptors.
+  Layout: Three hand-drawn rectangular chalk steps ascending diagonally from lower-left to upper-right across the board, like a chalk staircase. Each step is wider than tall. From low to high:
+    Step 1 (cyan fill, lowest-left). Two lines of label centered on the step IN WHITE CHALK:
+      Top line:    "apprentice"
+      Bottom line: "week 1"
+      Below the step (outside the staircase), three short white-chalk markers stacked vertically:
+        "voices fire constantly"
+        "multipliers land wrong"
+        "bail-backs are corrections, not real"
+    Step 2 (green fill, middle). Two lines of label:
+      Top line:    "journeyman"
+      Bottom line: "weeks 4–12"
+      Below the step, three short white-chalk markers:
+        "patterns migrate"
+        "hooks harden"
+        "CLAUDE.md shrinks"
+    Step 3 (magenta fill, highest-right). Two lines of label:
+      Top line:    "architect"
+      Bottom line: "month 3+"
+      Below the step, three short white-chalk markers:
+        "kit ceremonies routine"
+        "compose with the seed"
+        "direct higher leverage"
+  Above the entire staircase, a single curving chalk arrow runs left-to-right along the climb with one short caption riding its curve IN WHITE CHALK exactly: "from supervising to composing".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "week 1", "voices fire constantly", "multipliers land wrong", "bail-backs are corrections, not real", "journeyman", "weeks 4–12", "patterns migrate", "hooks harden", "CLAUDE.md shrinks", "architect", "month 3+", "kit ceremonies routine", "compose with the seed", "direct higher leverage", "from supervising to composing", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Three rough stages. Soft boundaries. The shape is real."
+-->
 
 ---
 
@@ -96,6 +158,35 @@ You can watch this happen over months. A pattern that, in an early seed, require
 
 This is the deepest mechanism in the seed agent. It is also the slowest. You will not see it in week one. You will start to see it in month three, and by then it will feel inevitable.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard horizontal pipeline — a behavioral pattern moving left to right through five stages of hardening, from coaching voice to fossilized template.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk stages
+  and arrows; pastel chalk fills for the five stages (cyan, green, orange, pink, magenta — same palette as the cycle image, in left-to-right order);
+  white chalk for ALL labels, arrows, and stage text; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other stage names, file names, or descriptors.
+  Layout: Five hand-drawn rectangular chalk stages arranged horizontally across the board, left to right, equal size. White-chalk arrows connect each stage to the next (four arrows total). Each stage is labeled IN WHITE CHALK with TWO lines of text — the stage name on top, a short mechanism note below:
+    Stage 1 (cyan fill, leftmost):
+      Top:    "coaching voice"
+      Bottom: "voice.xml — probabilistic"
+    Stage 2 (green fill):
+      Top:    "measurement"
+      Bottom: "data.json counters"
+    Stage 3 (orange fill):
+      Top:    "hook block"
+      Bottom: "PreToolUse — deterministic"
+    Stage 4 (pink fill):
+      Top:    "plugin tests"
+      Bottom: "tests/ — protects the gate"
+    Stage 5 (magenta fill, rightmost):
+      Top:    "kit template"
+      Bottom: "fossilized — every new plugin inherits"
+  Above the five-stage pipeline, draw a single curving white-chalk arrow that arcs from Stage 1 over to Stage 5, with one short caption riding the arrow's curve IN WHITE CHALK exactly: "soft → hard → out of brain".
+  Below the pipeline, a horizontal white-chalk note reads exactly: "Lock 13: data must show soft failed before hard lands".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "coaching voice", "voice.xml — probabilistic", "measurement", "data.json counters", "hook block", "PreToolUse — deterministic", "plugin tests", "tests/ — protects the gate", "kit template", "fossilized — every new plugin inherits", "soft → hard → out of brain", "Lock 13: data must show soft failed before hard lands", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Patterns travel left to right. The brain shrinks; the kit grows."
+-->
+
 ---
 
 ## The Brain Stops Growing
@@ -117,6 +208,30 @@ The result is a brain that reaches a ceiling and stays there. Not because nothin
 This is what I mean when I say the brain stops growing in size but never stops learning. The compression isn't a limitation. It is the discipline by which the seed remains coherent across long timescales.
 
 A mature seed is a small brain over a large knowledge layer.
+
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard graph — two curves over time. A flat ceiling line for the brain's size; a rising monotonic curve for the knowledge directory.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk axes
+  and curves; pastel chalk for the curves (cyan = knowledge growing, magenta = brain at ceiling, green = plugin evolution stepwise);
+  white chalk for ALL axis labels, ceiling lines, and word-count numbers; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal numbers and labels listed below. Do not invent or substitute any other word-count caps, axis labels, or curve descriptors.
+  Layout: A hand-drawn chalk coordinate axes. Horizontal X-axis labeled IN WHITE CHALK exactly "cycles", with a small "→" arrow at its right end. Vertical Y-axis labeled IN WHITE CHALK exactly "words". Three curves drawn over the axes, each labeled in white chalk at the curve's right end:
+    Curve A (cyan, rising monotonically from lower-left to upper-right, gently curved, growing without bound):
+      Label at right end: "knowledge/"
+    Curve B (green, climbing in small stepwise jumps, leveling off near 2000):
+      Label at right end: "plugin evolution.md"
+    Curve C (magenta, climbs steeply at first, then flattens into a horizontal line that runs along a dashed ceiling):
+      Label at right end: "root brain"
+  Four dashed horizontal white-chalk ceiling lines drawn across the chart at the levels Curve C flattens and Curve B levels off, each labeled at the right with its EXACT word-count cap:
+    "3,500" (highest dashed line — root CLAUDE.md cap)
+    "2,000" (next — plan + evolution.md cap)
+    "800"   (subdir CLAUDE.md cap)
+    "500"   (skill files cap)
+    "400"   (memory entries cap)
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycles", "words", "knowledge/", "plugin evolution.md", "root brain", "3,500", "2,000", "800", "500", "400", plus the caption below. No other words, file names, folders, or curve descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "The brain reaches a ceiling. The knowledge layer never does."
+-->
 
 ---
 
@@ -141,6 +256,37 @@ Together, knowledge and memory are the seed's long-term store. Everything else i
 The deeper claim is that *this* is what makes the seed agent an agent. A chatbot has the chat. A wrapper has its prompt template. The seed agent has a knowledge directory that grows with you, structured by topic, written by past cycles, ready to be recalled by future ones. The agent is not the LLM. The agent is the layered substrate that makes the LLM coherent across time.
 
 You knew this from [Essay 1](01-llms-are-not-the-agents.html). The filesystem is the agent. This essay just put a number on what that means in practice. After three months, the filesystem is many thousands of words of structured knowledge, organized by topic, ratcheted into place by historians, condensed by waterfalls, protected by always-on guards. That is the brain you are building.
+
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard layered stack — transient layers on top, durable layers on the bottom, the seed's working memory pyramid inverted.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk bands
+  stacked vertically; pastel chalk fills (dim cyan = most transient, magenta = most durable, with a graded scale between);
+  white chalk for ALL band labels, lifespan notes, and arrows; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other layer names, directory names, or lifespan descriptors.
+  Layout: Six horizontal chalk bands stacked vertically across the board, top to bottom. The topmost band is the narrowest and dimmest; bands get wider and brighter as they go down. Each band is split into a left half (the layer's name IN WHITE CHALK) and a right half (its lifespan IN WHITE CHALK).
+    Band 1 (top, dim cyan, narrowest):
+      Left:  "chat session"
+      Right: "dies at compaction"
+    Band 2 (dim green):
+      Left:  "working CLAUDE.md"
+      Right: "deflates each cycle"
+    Band 3 (orange):
+      Left:  "plan files"
+      Right: "archived when sealed"
+    Band 4 (pink):
+      Left:  "plugin evolution.md"
+      Right: "capped 2000w, narrated"
+    Band 5 (magenta):
+      Left:  ".claude/knowledge/"
+      Right: "topic silos, grows monotonically"
+    Band 6 (bottom, magenta darker, widest):
+      Left:  "memory/"
+      Right: "cross-project, your home dir"
+  On the left edge of the stack, draw a single vertical white-chalk arrow running BOTTOM-UP along the entire stack, with one short caption riding the arrow IN WHITE CHALK exactly: "durability".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "chat session", "dies at compaction", "working CLAUDE.md", "deflates each cycle", "plan files", "archived when sealed", "plugin evolution.md", "capped 2000w, narrated", ".claude/knowledge/", "topic silos, grows monotonically", "memory/", "cross-project, your home dir", "durability", plus the caption below. No other words, file names, folders, or lifespan descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
+-->
 
 ---
 
