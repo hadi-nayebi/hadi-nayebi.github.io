@@ -334,7 +334,10 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
     tag_meta_html = "\n                            ".join(
         f'<span class="tag">{html.escape(t)}</span>' for t in tags_raw
     )
-    audio_filename = filename_slug + ".mp3"
+    # Audio convention: use the FRONTMATTER slug (no NN- prefix) so B7+B8 match
+    # the B5/B6 pattern (e.g. "the-plugin-kit.mp3" not "07-the-plugin-kit.mp3").
+    # When the operator generates the audio later, the file path matches the ref.
+    audio_filename = meta["slug"] + ".mp3"
     audio_src = f"../assets/audio/{audio_filename}"
 
     return f"""<!DOCTYPE html>
