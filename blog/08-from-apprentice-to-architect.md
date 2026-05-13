@@ -5,7 +5,7 @@ slug: "from-apprentice-to-architect"
 read_time: "TBD"
 tags: [Architecture, Seed Agent, Maturation, Jobs, Knowledge]
 status: draft
-version: v0.11.0
+version: v0.12.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/from-apprentice-to-architect.png"
 ---
@@ -24,63 +24,96 @@ This essay is about what happens when those parts are in *your* hands.
 
 The seed agent is not a product. It is not a thing that gets installed and works. It is a thing that gets installed, and then *grows*, cycle by cycle, under the operator's care. A new seed in week one looks different from the same seed in month three. The architecture is identical. What has changed is the brain — what it has learned, what it has codified, what has fossilized into permanent enforcement, and what is still being shaped by hand.
 
-This essay traces that arc. It is the operator's part of the story. You start as the seed's apprentice. Over time, the seed becomes yours. By the time you are done, you are not its operator anymore. You are its architect.
+This essay traces that arc through one specific lens: how the *jobs* you give your seed mature over time, and how the seed itself matures alongside them. You start as the seed's apprentice. Over many cycles, the seed becomes yours. By the time you are done, you are not its operator anymore. You are its architect.
 
 ---
 
-## The Job System — Three Forms and Two Creation Patterns
+## The Four Stages of Job Maturation
 
-Every move the seed agent makes happens inside a *job*. The current prototype's job system has two axes the operator should know: the **plan-evolution form** a job is classified into at OBSERVE cycle 1, and the **creation pattern** used to spawn the job alongside other jobs. Together they describe how the seed's work is organized.
+Every job your seed agent does passes through up to four stages of maturation. Most jobs never reach the fourth. Some never leave the first. The progression is not automatic — each stage requires a specific kind of evidence before the seed promotes a job into the next shape.
 
-**A single-cycle DEEP job** is one OPEVC pass on a contained problem. PLAN sets `plan_file` to the literal `false` to declare there is no persistent plan document. The cycle observes, plans, executes, verifies, and condenses once and closes. Most early jobs run this format: a feature, a bug fix, a refactor, an investigation. The format teaches the agent — and you — what one full OPEVC rotation feels like under real load. Almost everything in week one runs through this format.
+### Stage 1 — Deep Single-Cycle OPEVC
 
-**A multi-cycle job with a markdown plan** spans several OPEVC passes against a persistent plan document. In cycle 1, PLAN calls `plan.sh set-plan-file plan_<slug>.md`. The plan document lives at `.claude/knowledge/plans/`, is authored by EXECUTE in cycle 1, edited by VERIFY as the work progresses, and serves as the long-term contract across all subsequent cycles. The deflation gate is gentler in multi-cycle (around fifty percent, not eighty) because some of the cycle's working memory legitimately needs to survive into the next cycle. Multi-cycle jobs teach coherence across context boundaries: cycle 2's OBSERVE has to read the plan, not just the project.
+This is where every new job begins. The user gives the seed a prompt; the seed treats the prompt as a single OPEVC cycle. The seed is in *learning mode*: it asks questions, takes its time, builds experiential data from the conversation. Backward edges and loops happen *inside* the cycle — not across cycles — because the cycle is the entire job's runway.
 
-**A multi-cycle job whose `.md` plan has graduated to `.yaml`** is the long-form companion. The plan moves through a `plan_state` machine — `drafting` while the .md still refines; `md_approved` after VERIFY asks the user via AskUserQuestion and the user approves; `yaml_drafting` when the next cycle creates the .yaml from the approved .md; `yaml_ready` after a second approval. From `yaml_ready` onward, the orchestrator injects the .yaml at phase entry on every cycle — a stream of plan-specific context poured into the agent's working memory at the start of each phase. Honest framing: the .yaml form is wired in code today, but the actual phase-entry injection path inside `phase.sh` is debt the prototype has not yet invoked. The form exists; the routing hasn't connected.
+The seed agent does not rush through this stage. Its goal is to understand what the user wants the completed work to *look like*, what files are involved, what edits feel right, what failure modes the user wants to avoid. The seed asks clarifying questions through structured prefixed asks; it captures every Q+A into the focused job's `user_interactions` array; over many turns, the array becomes the agent's cumulative mega-prompt — the whole history of intent the seed re-reads as its instruction set.
 
-Alongside those three forms, two **creation patterns** describe how a job comes into existence beside other jobs.
+Take a blog-writing job as a concrete example. Cycle 1 starts when the user prompts "let's write a new blog post." OBSERVE asks about the topic, the audience, the existing voice constants, the file inventory the post will produce (.md + .html + transcript + audio + images + ref tags). PLAN sketches an outline; the user redirects; the outline is rewritten. EXECUTE drafts paragraphs; backward edges fire when the user pushes back on a section. VERIFY runs the user's own approval cycle (which sections feel right, which need rework). CONDENSE absorbs the cycle into the knowledge layer — what the operator's preferences are for blog work, which files matter, what discipline emerged.
 
-**A sibling job** is created in parallel with the currently focused job, with no link to it. The same `job.sh create <name>` command. The new pending job enters the queue and waits its turn. Sibling creation is how the cycle says: *I noticed something else worth doing, but it doesn't belong inside this cycle*. Siblings teach the agent to recognize scope creep — to flag work without absorbing it.
+Different users have different jobs. A chemist running a technoeconomic-analysis job at this stage will follow a very different conversation than the website manager at this stage running a blog-writing job. The seed adapts to each user's specific work because the stage-1 OPEVC cycle is *collaborative* — the user shapes the work while the seed records the shaping. The result is that the operator's own seed becomes one that knows how *this* operator wants this kind of job done.
 
-**A dependent job** is a sibling with a `depends_on` link. The command is different — `job.sh create-dependent <name>` writes the new job's id into the focused job's `depends_on` array. The dependent stays pending until every entry in its `depends_on` reaches `completed`. A `[JOB-COMPLETE]` approval naming a parent with unfinished dependents is rejected before it lands. Dependent jobs teach the agent to think about work as a directed graph, not a stream. They require the parent to be multi-cycle — creating a dependent on a single-cycle parent deadlocks both, which the cycle-1 brain_guard discipline `no-dep-jobs-in-single-cycle` codifies as a permanent operating rule.
+The cycle ends with a deep CONDENSE. The seed absorbs the cycle's interaction history, the file artifacts produced, the user's preferences, the patterns that worked, into the knowledge directory and into the relevant plugin's `evolution.md` files. The next job of the same shape will start from a much richer base.
 
-In your first weeks running a seed, almost every job is single-cycle DEEP. Multi-cycle jobs appear once a feature crosses a CLAUDE.md size limit and the brain forces the work to be broken across cycles. Sibling and dependent patterns follow when you're confident enough to plan ahead.
+### Stage 2 — Multi-Cycle With a Markdown Plan
 
-The progression of *which forms and patterns you reach for* is itself a visible marker of the maturation arc.
+After one or several stage-1 runs of the same kind of job, the seed has accumulated enough experiential data to *write the plan in advance*. The job graduates from a single deep cycle into a multi-cycle job with a persistent `.md` plan document.
+
+The graduation is concrete: in PLAN of cycle 1, the seed calls `plan.sh set-plan-file plan_<slug>.md` instead of leaving the field `false`. From that moment, the plan document lives at `.claude/knowledge/plans/`, EXECUTE authors the initial draft in cycle 1, VERIFY edits it across every subsequent cycle, and the orchestrator's plan-state machine carries the job forward through `drafting → md_approved → yaml_drafting → yaml_ready → sealed`.
+
+Most of what was *backward edges* inside the stage-1 cycle becomes *cycle transitions* in stage 2. Where the user previously pushed back mid-cycle and the seed iterated within OPEVC, now the seed completes a clean cycle, presents results in VERIFY, and the user approves or sends back. CONDENSE absorbs between cycles, the next cycle's OBSERVE recalls the prior cycle's lessons, and the work compounds. The deflation gate at cycle close is gentler in stage-2 jobs (~50% absorption rather than ~80%) because some of the planning context legitimately needs to survive into the next cycle.
+
+A stage-2 blog-writing job is one where the writing arc is well-understood. The plan document captures the outline-then-drafts-then-polish-then-ref-tags arc. Each cycle of the multi-cycle job advances one piece (cycle 1 outline; cycle 2 first draft; cycle 3 ref tags; cycle 4 transcript + audio; cycle 5 cross-blog consistency). When VERIFY judges the plan mature, it asks the user `[PLAN-APPROVAL]` and the plan_state flips to `md_approved`.
+
+### Stage 3 — Multi-Cycle With a YAML Plan
+
+When a `.md` plan has been refined to perfection across many runs of the same job, the seed graduates the plan into a `.yaml` form. The `.yaml` is not a translation of the `.md` — it is an *injection target*. The orchestrator reads the `.yaml` at every phase entry and injects job-specific context into the agent's working memory alongside the universal phase entry voices.
+
+Today the prototype's `.yaml` plan carries one field per phase: an `objective` string that gets injected as `additionalContext` JSON when the phase opens. This is the proof-of-concept. The architecture's extension is convention-based field-to-voice-id pairing: yaml field names map to voice ids by suffix, so adding a new injection target requires only adding the matching voice id to the relevant plugin's `hooks/voice.xml`. The yaml parser iterates all fields under the current phase, calls `get_voice` for each pair, and emits each as a separate context injection. No code changes per new field — just the yaml entry and the matching voice id.
+
+What this means in practice: a stage-3 blog-writing job's `.yaml` carries not just the per-phase objective but also per-phase reading lists (which knowledge files OBSERVE should pull first), per-phase tools-focus hints (which subagents PLAN should dispatch most), per-phase exit signals (what VERIFY should specifically check). Every field pairs with a voice id from `phase_observe/hooks/voice.xml` or the equivalent. The seed agent doing the job receives the job-specific context as part of its normal phase entry — same delivery mechanism as the universal voices, just more of them, all framed for this job's specific shape.
+
+The graduation gate is the second user approval: VERIFY asks `[YAML-APPROVAL]` after the `.yaml` is mature, the user approves, and the plan_state flips to `yaml_ready`. From that point on, every cycle of the job inherits the job-specific injection stream.
+
+### Stage 4 — Plugin Form of a Job
+
+The final stage is rare. It is reserved for jobs whose phase cognition needs customization *beyond* what context injection can deliver.
+
+Some jobs require specific tools allowed only during certain phases. Some require the OBSERVE phase to read a specific set of sources before any tool fires. Some require the EXECUTE phase to enforce a specific pattern on writes. Voice injection cannot deliver this; the discipline has to be *structural*. The job graduates into a plugin.
+
+A plugin form of a job extends each phase's guard with job-specific rules. The plugin lives at `.claude/plugins/<job_name>/` like any other plugin — with hooks, scripts, tests, voices, agents, knowledge dir — but its hooks attach to the standard OPEVC events with logic that recognizes when the focused job matches this plugin's job-type and applies extra constraints. Outside that job-type, the plugin's hooks are pass-through.
+
+This stage is the bridge between *the seed agent's plugin kit* (Essay 7) and *the operator's own work*. New plugins do not have to come from upstream; they can be born from your own jobs reaching maturity. The operator's seed, by month three or six, may carry plugins that exist nowhere else — plugins shaped by exactly the kind of work this operator does, encoded into the seed's substrate.
+
+### How Jobs Spawn Alongside Each Other — Sibling and Dependent
+
+Across all four stages, jobs do not run in isolation. The job system also tracks *relationships* between jobs through two creation patterns.
+
+A **sibling job** is one the focused job spawns to do parallel work that does not block. `job.sh create <name>` while a parent is focused creates a pending job with no link to the parent. The sibling waits its turn in the queue. Sibling creation is how the focused cycle says: *I noticed something else worth doing, but it does not belong inside this cycle.*
+
+A **dependent job** is a sibling with a `depends_on` link to the parent. `job.sh create-dependent <name>` writes the new job's id into the focused job's `depends_on` array, and the focused job's `[JOB-COMPLETE]` approval will be refused until every entry in `depends_on` reaches `completed`. Dependent jobs let the operator declare ordering: *this fix must finish before this feature can ship.* The completion gate enforces the relationship structurally — the agent and the user can both want to approve the parent, but the gate refuses until the dependencies clear.
+
+These patterns work across all four maturation stages. A stage-1 deep job can spawn siblings. A stage-3 yaml job can spawn dependents. The discipline is consistent: jobs are created during CONDENSE (when the cycle's wider context surfaces follow-up work), not in IDLE or mid-execute.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard taxonomy — five job-system facets shown as side-by-side cards, three forms on the left and two creation patterns on the right with a visible divider.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk cards
-  and lines; pastel chalk fills for each card (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for ALL labels, gate text, and lesson text; faint chalk dust at the edges; chalk sticks along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other job names, gate names, command names, or lesson descriptors.
-  Layout: A single horizontal row of five hand-drawn rectangular chalk cards arranged left to right, equal size. A short vertical chalk divider line runs between Card 3 and Card 4 to separate the two axes. Above the divider, two short white-chalk axis labels:
-    Above Cards 1–3:  "form (plan-evolution)"
-    Above Cards 4–5:  "creation pattern"
-  Each card has three sections stacked top to bottom: (a) name as the header IN WHITE CHALK, (b) the identifying gate or command IN WHITE CHALK, (c) the lesson it teaches IN WHITE CHALK.
-    Card 1 (cyan fill, leftmost):
-      Header: "single-cycle DEEP"
-      Gate:   "plan_file = false"
-      Lesson: "what one OPEVC rotation feels like"
-    Card 2 (green fill):
-      Header: "multi-cycle .md"
-      Gate:   "plan_state = drafting"
-      Lesson: "coherence across context boundaries"
-    Card 3 (orange fill):
-      Header: "multi-cycle .yaml"
-      Gate:   "plan_state = yaml_drafting"
-      Lesson: "plan as injected context at phase entry"
-    Card 4 (pink fill):
-      Header: "sibling"
-      Gate:   "job.sh create <name>"
-      Lesson: "flag work without absorbing it"
-    Card 5 (magenta fill, rightmost):
-      Header: "dependent"
-      Gate:   "job.sh create-dependent <name>"
-      Lesson: "work as a directed graph"
+  Concept: Chalk-on-blackboard ladder — four ascending stages of job maturation, with a small horizontal strip below showing the two creation patterns (sibling / dependent) that apply across all stages.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk steps
+  and labels; pastel chalk fills for each stage (cyan = stage 1, green = stage 2, orange = stage 3, magenta = stage 4 — drawn from the cycle image palette);
+  white chalk for ALL labels, gate text, and lesson text; faint chalk dust at the edges; chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other stage names, gate names, or descriptors.
+  Layout: Four hand-drawn rectangular chalk steps ascending diagonally from lower-left to upper-right across the top two-thirds of the board, like a chalk staircase. Each step is wider than tall. From low to high:
+    Step 1 (cyan fill, lowest-left). Three lines of label centered on the step IN WHITE CHALK:
+      Top line:    "Stage 1: Deep single-cycle"
+      Middle line: "plan_file = false"
+      Bottom line: "seed in learning mode"
+    Step 2 (green fill). Three lines of label:
+      Top line:    "Stage 2: Multi-cycle .md plan"
+      Middle line: "plan_state = drafting"
+      Bottom line: "chunked from stage 1"
+    Step 3 (orange fill). Three lines of label:
+      Top line:    "Stage 3: Multi-cycle .yaml plan"
+      Middle line: "plan_state = yaml_drafting"
+      Bottom line: "voice-paired injections per phase"
+    Step 4 (magenta fill, highest-right). Three lines of label:
+      Top line:    "Stage 4: Plugin form of job"
+      Middle line: "phase-cognition customization"
+      Bottom line: "extends phase guards"
+  Below the staircase, draw a horizontal chalk strip across the board's lower third with header IN WHITE CHALK exactly "Creation patterns (apply across all stages)". Inside the strip, two small chalk pills side by side, each labeled IN WHITE CHALK with TWO lines:
+    Pill 1 (pink fill): top line "sibling" / bottom line "job.sh create <name>"
+    Pill 2 (cyan darker fill): top line "dependent" / bottom line "job.sh create-dependent <name>"
+  Above the staircase, draw a single curving chalk arrow running left-to-right along the climb with one short caption riding its curve IN WHITE CHALK exactly: "graduation requires evidence, never automatic".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "form (plan-evolution)", "creation pattern", "single-cycle DEEP", "plan_file = false", "what one OPEVC rotation feels like", "multi-cycle .md", "plan_state = drafting", "coherence across context boundaries", "multi-cycle .yaml", "plan_state = yaml_drafting", "plan as injected context at phase entry", "sibling", "job.sh create <name>", "flag work without absorbing it", "dependent", "job.sh create-dependent <name>", "work as a directed graph", plus the caption below. No other words, file names, folders, or job-format descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Two axes: how the plan evolves, and how the job is created. Five facets the operator chooses among."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "Stage 1: Deep single-cycle", "plan_file = false", "seed in learning mode", "Stage 2: Multi-cycle .md plan", "plan_state = drafting", "chunked from stage 1", "Stage 3: Multi-cycle .yaml plan", "plan_state = yaml_drafting", "voice-paired injections per phase", "Stage 4: Plugin form of job", "phase-cognition customization", "extends phase guards", "Creation patterns (apply across all stages)", "sibling", "job.sh create <name>", "dependent", "job.sh create-dependent <name>", "graduation requires evidence, never automatic", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Four stages of job maturation. Most jobs never reach stage 4. Some never leave stage 1."
 -->
 
 ---
@@ -89,13 +122,13 @@ The progression of *which forms and patterns you reach for* is itself a visible 
 
 The prototype today is a useful ground-truth case. A precise inventory of what its brain holds reveals the shape every mature seed converges toward.
 
-**The knowledge layer holds roughly four hundred and fifty thousand words across thirteen topic silos.** This is by far the largest component of the seed's persistent memory. The directories are organized by topic, not by chronology — each topic accumulates findings over many cycles and stays legible because the topic name doesn't change as the seed learns. The mature topic silos carry version numbers like `v0.10.0` or `v2.0.0`, use a strict three-layer audience model (newcomer / practitioner / maintainer), and end every topic file with concrete *Decay & Refresh* triggers expressed as executable shell commands. The seedling silos sit at `v0.1.0` with one or two files and no decay section yet. The variance across the directory is itself information about which parts of the seed have matured.
+**The knowledge layer holds roughly four hundred and fifty thousand words across thirteen topic silos.** This is by far the largest component of the seed's persistent memory. The directories are organized by topic, not by chronology — each topic accumulates findings over many cycles and stays legible because the topic name doesn't change as the seed learns. The mature topic silos carry version numbers like `v0.10.0` or `v2.0.0`, use a strict three-layer audience model (newcomer / practitioner / maintainer), and end every topic file with concrete *Decay & Refresh* triggers expressed as executable shell commands.
 
-**The largest single subdirectory in the prototype's knowledge layer is the session archive, at roughly sixty-five thousand words.** This is, in `phase_condense`'s design, the *fallback tier* — the destination of last resort for content that did not route to any earlier waterfall step. A session archive growing this large is an honest signal that earlier routing under-fired; mature seeds will compress this number as their condense subagents learn to route more aggressively into topic-organized files instead. The prototype isn't done growing yet, and the size of the session archive is the visible mark of that.
+**The largest single subdirectory in the prototype's knowledge layer is the session archive, at roughly sixty-five thousand words.** This is, in `phase_condense`'s design, the *fallback tier* — the destination of last resort for content that did not route to any earlier waterfall step. A session archive growing this large is an honest signal that earlier routing under-fired; mature seeds will compress this number as their condense subagents learn to route more aggressively into topic-organized files instead.
 
-**The memory layer holds about twenty entries** in your home directory. Most are feedback rules — operator-given operating directives the brain should carry across sessions ("don't dispatch fresh subagents per iteration block," "use AskUserQuestion not chat for clarifying questions"). A few are project memories — narrative state about the current work. One is the index. The memory layer is not organized by plugin; it is organized by the *kind* of guidance it captures. The brain keeps memory narrow because feedback rules are *meta-instructions*, not data; if there were a hundred of them, the operator would lose track.
+**The memory layer holds about twenty entries** in your home directory. Most are feedback rules — operator-given operating directives the brain should carry across sessions. A few are project memories. One is the index. The memory layer is not organized by plugin; it is organized by the *kind* of guidance it captures. The brain keeps memory narrow because feedback rules are *meta-instructions*, not data; if there were a hundred of them, the operator would lose track.
 
-**Each plugin's `docs/evolution.md` is capped at two thousand words.** Older sections migrate into sibling files (`docs/decisions.md`, `docs/lessons.md`) as the narrative grows. The cap is the only hard-enforced size limit in the prototype today — every other limit is soft, enforced by CONDENSE discipline rather than a code gate.
+**Each plugin's `docs/evolution.md` is capped at two thousand words.** Older sections migrate into sibling files (`docs/decisions.md`, `docs/lessons.md`, `docs/principles.md`) as the narrative grows. The cap is the only hard-enforced size limit in the prototype today — every other limit is soft, enforced by CONDENSE discipline rather than a code gate.
 
 The shape is consistent: a small brain, a large knowledge layer, a narrow memory. The compression is structural — caps plus the CONDENSE waterfall plus soft thresholds — and the result is a seed whose persistent memory grows where it should grow (knowledge) and stays narrow where narrowness matters (memory, root brain). [Essay 1](01-llms-are-not-the-agents.html) said the filesystem is the agent. The numbers say what *filesystem* means in practice after a few months of accumulation: a knowledge directory thick with operational understanding, a brain just big enough to read in one sitting, and a memory file that captures the operator's hard-won rules in one short list.
 
@@ -134,19 +167,19 @@ The shape is consistent: a small brain, a large knowledge layer, a narrow memory
 
 ## Soft → Hard Migration — The Patterns That Travel
 
+The graduation from stage 1 to stage 2 to stage 3 is *only one* of the patterns by which the seed agent grows. The other — equally important — is the migration of behavioral controls from soft form to hard form within the plugins themselves.
+
 The cleanest concrete migration in the prototype's history is the *multiplier sentinel*.
 
 In the early cycles, every phase entry shipped a single coaching voice (`entry-set-multiplier`) asking the agent to please set the phase's multiplier before starting work. The voice fired probabilistically into the LLM's context. The agent read it and, under cognitive load, often ignored it. Several cycles in, the data was clear: the ratio of voice-fires to actual-multiplier-sets had stopped converging. The voice was not holding.
 
-The hardening landed in `phasic_system` v0.12. Every phase's entry now initializes the multiplier to literal zero — a sentinel value. A `PreToolUse` guard reads the multiplier on every tool call; if it is zero, every tool is blocked. The agent's only available move is to call `<phase>.sh set-multiplier <job> <value>` with a value in the range from `0.5` to `3`. The coaching voice retired. In its place, two new voices took the load: `entry-set-multiplier-pre-set` informs the agent before the lock; `multiplier-zero-block` refuses tool calls when the gate fires. What was once probabilistic judgment is now mechanism. The agent's context can be full of distractions, deadlines, multi-step work — the multiplier still gets set, because nothing else can happen until it does.
+The hardening landed in `phasic_system` v0.12. Every phase's entry now initializes the multiplier to literal zero — a sentinel value. A `PreToolUse` guard reads the multiplier on every tool call; if it is zero, every tool is blocked. The agent's only available move is to call `<phase>.sh set-multiplier <job> <value>` with a value in the range from `0.5` to `3`. The coaching voice retired. In its place, two new voices took the load: `entry-set-multiplier-pre-set` informs the agent before the lock; `multiplier-zero-block` refuses tool calls when the gate fires. What was once probabilistic judgment is now mechanism.
 
-A second migration ran in parallel — the *voice-id split*. Originally a single voice carried both the "please set it" intent and the "you have just set it" acknowledgment. As the lock hardened, the conflated voice's behavior under different conditions became its own bug surface. The migration split the single voice into two ids — one fires only before set, one fires only after. The two new voices made the architecture more honest about its own boundary. The pattern recurs: hardening one mechanism often surfaces an adjacent fuzziness that needed its own clarification.
+The pattern beyond this case is the cost ladder named in [Essay 7](07-the-plugin-kit.html). New behavioral concerns start as **voice** — soft, probabilistic, ignorable. If measurement shows the voice failing to hold, the operator climbs to **hook in an existing plugin** — a `PreToolUse` guard inside the plugin whose concern the pattern belongs to. If the pattern needs its own state or crosses an existing plugin's boundary, it earns **a new plugin**. The prototype's universal discipline `Lock 13: the over-engineering veto` codifies the restraint: no new hard gate hardens before measured cycles demonstrate the soft form is failing.
 
-The pattern beyond these two cases is the cost ladder named in [Essay 7](07-the-plugin-kit.html). New behavioral concerns start as **voice** — soft, probabilistic, ignorable. If measurement shows the voice failing to hold, the operator climbs to **hook in an existing plugin** — a `PreToolUse` guard inside the plugin whose concern the pattern belongs to. If the pattern needs its own state or crosses an existing plugin's boundary, it earns **a new plugin**. The prototype's universal discipline `Lock 13: the over-engineering veto` codifies the restraint: no new hard gate hardens before measured cycles demonstrate the soft form is failing.
+The deepest migration is the *meta-pattern fossilizing into the kit itself*. The multiplier sentinel didn't just become a hook in `phasic_system`; it became part of the template every new phase plugin inherits. Brain_guard's cycle-1 universal disciplines (`verify-100-percent-before-bonus`, `subagent-spot-check`, `condense-not-deletion`, `no-dep-jobs-in-single-cycle`) made the same trip — from one cycle's lesson to a rule every cycle now obeys, codified into `.claude/knowledge/opevc/` and inherited by every new job.
 
-The deepest migration is the *meta-pattern fossilizing into the kit itself*. The multiplier sentinel didn't just become a hook in `phasic_system`; it became part of the template every new phase plugin inherits. Brain_guard's cycle-1 universal disciplines (`verify-100-percent-before-bonus`, `subagent-spot-check`, `condense-not-deletion`, `no-dep-jobs-in-single-cycle`) made the same trip — from one cycle's lesson to a rule every cycle now obeys, codified into `.claude/knowledge/opevc/` and inherited by every new job. The architecture stops *remembering* the lesson because the architecture *is* the lesson.
-
-You will not see this in week one. You will start to see it in month three, and by then it will feel inevitable.
+This soft-to-hard migration *mirrors* the job-maturation arc one level up. A stage-1 job's collaborative learning is the same shape as a coaching voice's probabilistic guidance — soft, contextual, frequent. A stage-2 job's `.md` plan is the same shape as a measured hook — structured, repeatable, gated. A stage-3 job's `.yaml` injection is the same shape as a fossilized template-default — automatic, baseline, no longer needing operator attention. A stage-4 plugin form is the same shape as a hardened plugin in the kit — structural, code-level, enforced. The brain grows along both axes simultaneously: jobs mature upward; controls migrate inward.
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard horizontal pipeline — a behavioral pattern moving left to right through five stages of hardening, from coaching voice to fossilized template.
@@ -185,7 +218,7 @@ A documented size limit and an enforced size limit are not the same thing. The p
 
 **Root brain: 3,500 words. Subdirectory CLAUDE.md: 800 words. Plan files: 2,000 words. Memory entries: 400 words each. Skill files: 500 words.** Five caps in the documentation table — all of them soft. None are policed by a code hook today. The brain stays within these caps because the CONDENSE phase compresses each layer cycle after cycle, not because a `PreToolUse` guard refuses an edit.
 
-**`docs/evolution.md`: 2,000 words. Hard.** A `PreToolUse` hook (`evolution-cap.sh` inside `plugin_integrity`) intercepts every edit to a plugin's `docs/evolution.md`, counts the post-edit word count, and refuses the edit if it would push the file past the cap. The voice that fires names the cap, names the current count, and points the agent at the sibling files (`docs/decisions.md`, `docs/lessons.md`) where older content should migrate.
+**`docs/evolution.md`: 2,000 words. Hard.** A `PreToolUse` hook (`evolution-cap.sh` inside `plugin_integrity`) intercepts every edit to a plugin's `docs/evolution.md`, counts the post-edit word count, and refuses the edit if it would push the file past the cap. The voice that fires names the cap, names the current count, and points the agent at the sibling files (`docs/decisions.md`, `docs/lessons.md`, `docs/principles.md`) where older content should migrate. The historian subagent reads that voice and uses the overflow rule to populate the sibling files as the plugin's narrative grows.
 
 One hard limit out of six. The pattern is consistent with the cost ladder. `docs/evolution.md` got the hard gate because the historian subagent re-narrates the file on every drift trip, the result is auto-injected into the agent's context at every plugin unlock, and a bloated evolution.md would inflate the per-unlock context budget across the entire system. The cost of letting it grow was concrete; the gate paid for itself.
 
@@ -199,21 +232,23 @@ The pattern reads cleanly: hard limits cost something to maintain (every gate ad
 
 ## The Maturation Arc — Apprentice / Journeyman / Architect
 
-Three rough stages describe the operator's relationship with the seed. The boundaries are soft; the shape is real.
+The four job-maturation stages above describe the *jobs*. The three operator-relationship stages here describe the *operator*. The two arcs run in parallel — most apprentice operators are mostly running stage-1 jobs; most architects are mostly running stage-3+ jobs.
 
 **Apprentice.** Week one. You are figuring out the shape of OPEVC — when to advance phases, when to bail back, what the multiplier means in practice. Most cycles end in some form of intervention. The agent gets stuck on a phase gate, and you tell it what to do. It misreads scope, and you correct the multiplier. It writes prose into the wrong CLAUDE.md, and you point it at the right one. The voices speak to the agent constantly because the patterns are not yet ingrained.
 
-This is the loud phase of cognitive growth. Hooks fire. Voices coach. Blocks land. The `multiplier-zero-block` fires every time the agent tries to use a tool before setting the phase's multiplier. The `min-synthesis-block` fires whenever the agent tries to write to CLAUDE.md before reading enough to earn five points. The `summary-required-block` fires when interactions overflow before a summary is filed. Most of what you read in chat is the brain talking to the agent about the brain. The signal-to-noise ratio is bad on purpose — every misfire is a teachable moment, and the brain is busy teaching.
+This is the loud phase of cognitive growth. Hooks fire. Voices coach. Blocks land. Most of what you read in chat is the brain talking to the agent about the brain. The signal-to-noise ratio is bad on purpose — every misfire is a teachable moment, and the brain is busy teaching. Almost every job at this stage is stage-1 deep single-cycle. The seed is in learning mode; you are in teaching mode. Together you build the experiential data the seed will compress into its knowledge layer at cycle close.
 
 The lessons are accumulating in three places: the knowledge directory under `.claude/knowledge/<topic>/`, the memory layer in your home directory, and each plugin's `docs/evolution.md`. The brain is bigger at the end of week one than it was at the start. That is correct. Apprenticeship grows by accretion.
 
 **Journeyman.** Weeks four through twelve, roughly. Cycles are smoother. The agent has internalized OPEVC discipline. Multipliers tend to land in the right range. Phase advances happen automatically when the gate criteria are met. Bail-backs still happen, but they are typically real — the plan was wrong, not that the agent forgot to plan.
 
-This is when patterns start *migrating*. A coaching voice that has been firing in every cycle for six weeks, almost always with the same content, becomes a candidate for hardening into a hook. The operator and the seed work together — recognizing the pattern, writing the hook, registering it, watching the voice retire. The CLAUDE.md hierarchy starts shrinking. Findings that were durable last month are now embedded in plugin behavior. The knowledge directory keeps growing. The brain itself stops.
+This is when jobs start *graduating*. A blog-writing job that was stage-1 in week two becomes a stage-2 multi-cycle job in week six because the seed has run it enough times to write the plan in advance. A research workflow that was stage-1 becomes stage-2 the same way. The patterns are also *migrating* — a coaching voice that has been firing in every cycle for six weeks becomes a candidate for hardening into a hook. The operator and the seed work together on these promotions, recognizing the pattern, writing the hook, watching the voice retire.
 
-**Architect.** Month three onward — and to be honest, the current prototype is still climbing toward this stage rather than living in it. What follows is the shape the architecture is reaching for. Most cycles complete without the operator intervening on basics. The voices speak less, because most of what they used to say has been absorbed into hooks or moved to the knowledge layer. New plugin creation feels routine — the kit ceremony from [Essay 7](07-the-plugin-kit.html) is no longer ceremonial; it is the natural rhythm of how you respond to a new pattern. The operator's role has shifted from supervising the agent's cognition to directing it at higher-leverage problems.
+The CLAUDE.md hierarchy starts shrinking. Findings that were durable last month are now embedded in plugin behavior. The knowledge directory keeps growing. The brain itself stops.
 
-You are not finished. The seed is not finished. But you have crossed into a relationship where the seed's growth is driven by your architectural judgment, not by repeated correction of basic mistakes.
+**Architect.** Month three onward. Most cycles complete without you intervening on basics. The voices speak less, because most of what they used to say has been absorbed into hooks or moved to the knowledge layer. New plugin creation feels routine — the kit ceremony from [Essay 7](07-the-plugin-kit.html) is no longer ceremonial; it is the natural rhythm of how you respond to a new pattern. Stage-3 yaml jobs start appearing, and a few stage-4 plugin-form jobs begin to form. The operator's role has shifted from supervising the agent's cognition to directing it at higher-leverage problems.
+
+What you have now is not a chatbot that you talk to. It is a cognitive instrument that you compose with. The composition still requires intent — the seed does not decide what to work on; you do — but the cognition itself runs on rails the seed enforces.
 
 The prototype's plugin-version spread shows this arc directly. `job_core` carries `v0.2.0` with 172 tests — a young plugin, foundational, polished but not yet stress-tested across many cycles. `plugin_integrity` is at `v0.10.1` with 597 tests across 19 suites — the most mature plugin in the brain, because it polices every other plugin's edits and has been re-edited many times under its own gate. The phase plugins have converged at `v2.0.0`–`v2.4.0` with 162 to 376 tests each. Roughly twenty-eight hundred tests across all eleven plugins as of today. The number itself isn't the point; the *spread* is. Mature plugins look different from young plugins, and the difference is visible in the test counts, in the version numbers, and in the depth of their `docs/evolution.md` narratives.
 
@@ -317,13 +352,11 @@ That is the seed agent.
 
 The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain.
 
-A note on honesty: at the moment these essays are being published, the public `seed_agent` repository contains the architecture — the install script, the root brain skeleton, the OPEVC philosophy, the migration plan, the MIT license. The plugin directories themselves are not yet there. The `.claude/plugins/` folder in the public repo is currently a single `CLAUDE.md` placeholder; the actual plugin code is still in the prototype, being prepared for migration. If you clone today, you will see the shape of the system and the path of the work to come. If you clone in a few weeks, more of the cell wall will be live. Either way, the substrate is being moved in, one cleaned-up and version-locked plugin at a time.
-
-When you install a seed on your laptop, it becomes yours. The architecture is the architecture I have described across these eight essays — but the cycles are yours. The patterns it codifies, the voices it speaks, the hooks it hardens — they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence.
+When you install a seed on your laptop, it becomes yours. The architecture is the architecture I have described across these eight essays. But the cycles are yours. The patterns it codifies, the voices it speaks, the hooks it hardens — they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence. Your first jobs will be stage 1 — collaborative, learning-mode, slow on purpose. Some of those jobs will mature into stage 2, then stage 3, and a few — for the work shapes that need real customization — into stage 4 plugins that exist nowhere else but in your seed.
 
 Two operators with two seeds, six months in, will have brains that are visibly different. The architectures are the same. The lived seeds are not. That is the design.
 
-The Academy exists because growing a seed well is a craft, and craft benefits from community. Other operators are growing their own seeds. They are running into patterns you will recognize and patterns you have not seen yet. The knowledge they are accumulating is not interchangeable with yours — but the *recipes* for accumulating it well are shareable, and that is what we are gathered to share.
+The Academy exists because growing a seed well is a craft, and craft benefits from community. Other operators are growing their own seeds. They are running into patterns you will recognize and patterns you have not seen yet. The knowledge they are accumulating is not interchangeable with yours — but the *recipes* for accumulating it well are shareable, and that is what we are gathered to share. When your seed fixes a bug in one of the shipped plugins, the seed asks you `[REPORT-TO-UPSTREAM]` and prepares a structured report for you to push back to the public repo. The shared substrate stays alive because every operator's seed contributes back through that same channel.
 
 Your brain was never built for the pace this work moves at. You knew that from [Essay 3](03-your-brain-was-never-built-for-this.html). What you have now is something built *for* that pace, designed to grow with you, encoded into a folder you control, governed by disciplines that hold across time and across sessions and across the model rolling forward.
 
