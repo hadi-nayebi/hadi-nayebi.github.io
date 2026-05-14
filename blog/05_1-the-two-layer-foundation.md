@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The Two-Layer Foundation
 
-*Essay 5.1 of 8 — The Always-On Digital Cortex. Hadosh Academy series on agent architecture. Essay 5 opens here; Essays 5.1 through 5.8 follow.*
+*Essay 5.1 of 9 — The Always-On Digital Cortex. Hadosh Academy series on agent architecture. Essay 5 opens here; Essays 5.1 through 5.8 follow.*
 
 ---
 
@@ -97,7 +97,7 @@ The shape buys three concrete things. Plugins evolve independently — a change 
 
 ## The journey ahead
 
-The foundation is in place: two layers above one substrate, each plugin owning one narrow concern, public interfaces wiring the ceremony. Essay 5 splits into eight short sub-essays — five plugin tours plus two substrate deep-dives plus this foundation:
+The foundation is in place: two layers above one substrate, each plugin owning one narrow concern, public interfaces wiring the ceremony. Essay 5 splits into nine short sub-essays — five plugin tours plus three deep-dives (substrate, composed ceremony, customization guardrail) plus this foundation:
 
 - **Essay 5.1 — The Two-Layer Foundation** *(you are here)* — two plugin categories above one substrate
 - [Essay 5.2 — Plugin Edit Safety](05_2-plugin-integrity.html) — `plugin_integrity` and the test gate
@@ -107,6 +107,7 @@ The foundation is in place: two layers above one substrate, each plugin owning o
 - [Essay 5.6 — Structured Questions](05_6-question-discipline.html) — `question_discipline` and the prefix registry
 - [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — working memory, four-footer protocol, altered list
 - [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins
+- [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted
 
 Each sub-essay covers what its plugin (or mechanism) owns, how it works, what would break without it, and what you would customize when you cultivate your own seed.
 
@@ -116,7 +117,7 @@ We start with `plugin_integrity`.
 
 ---
 
-*Essay 5.1 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.1 of 9 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 4 — The Language of Agents](04-the-language-of-agents.html) — vocabulary that prepares the architecture.*
 *Next: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — first of five always-on plugin deep-dives.*

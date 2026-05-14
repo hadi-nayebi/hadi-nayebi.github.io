@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Job Lifecycle — `job_core`
 
-*Essay 5.4 of 8 — The Always-On Digital Cortex.*
+*Essay 5.4 of 9 — The Always-On Digital Cortex.*
 
 ---
 
@@ -64,7 +64,7 @@ The next part covers the plugin that keeps the cumulative mega-prompt legible as
 
 ---
 
-*Essay 5.4 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.4 of 9 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 5.3 — Context Window Discipline (`brain_guard`)](05_3-brain-guard.html) — the progressive squeeze that keeps reasoning sharp.*
 *Next: [Essay 5.5 — Cross-Session Memory (`interaction_summary`)](05_5-interaction-summary.html) — shape-compels-production applied to the mega-prompt.*

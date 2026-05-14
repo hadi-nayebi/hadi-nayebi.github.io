@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The Historian Ratchet
 
-*Essay 5.8 of 8 — The Always-On Digital Cortex.*
+*Essay 5.8 of 9 — The Always-On Digital Cortex.*
 
 ---
 
@@ -110,7 +110,7 @@ Next.
 
 ---
 
-*Essay 5.8 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.8 of 9 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — substrate, four-footer protocol, altered-list gate.*
-*Next: [Essay 6 — The Markov Phasic Brain](06-the-markov-phasic-brain.html) — five phases, one cognitive organ, and why forbidding tools is the pedagogy.*
+*Next: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted at all.*

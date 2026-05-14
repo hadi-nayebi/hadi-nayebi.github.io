@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Cross-Session Memory — `interaction_summary`
 
-*Essay 5.5 of 8 — The Always-On Digital Cortex.*
+*Essay 5.5 of 9 — The Always-On Digital Cortex.*
 
 ---
 
@@ -52,7 +52,7 @@ The next part covers the plugin that gates every question the seed agent asks th
 
 ---
 
-*Essay 5.5 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.5 of 9 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 5.4 — Job Lifecycle (`job_core`)](05_4-job-core.html) — the unit of compartmentalization and the dynamic mega-prompt.*
 *Next: [Essay 5.6 — Structured Questions (`question_discipline`)](05_6-question-discipline.html) — the registered-prefix gate that powers every ceremony.*

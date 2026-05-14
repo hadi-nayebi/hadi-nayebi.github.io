@@ -33,6 +33,14 @@
     </item>
 
     <item>
+      <title>The Always-On Digital Cortex — Pt 9: The Customization Guardrail</title>
+      <link>https://hadi-nayebi.github.io/blog/05_9-customization-guardrail.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_9-customization-guardrail.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The gate that decides when substrate edits are admitted at all. PLUGIN-LOCK admits on gmode OR a user-approved job. The propose-and-confirm flow via [JOB-APPROVE-CREATION]. The two-route design and why both routes exist.</description>
+    </item>
+
+    <item>
       <title>The Always-On Digital Cortex — Pt 8: The Historian Ratchet</title>
       <link>https://hadi-nayebi.github.io/blog/05_8-historian-ratchet.html</link>
       <guid>https://hadi-nayebi.github.io/blog/05_8-historian-ratchet.html</guid>

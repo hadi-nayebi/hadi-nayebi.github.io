@@ -727,7 +727,7 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 5.6 | `05_6-question-discipline` | Pt 6: `question_discipline` — Structured Questions | **drafting v0.1.0** — ~950w / 5 min · HTML built · transcript ready (final:false) · audio pending |
 | 5.7 | `05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.1.0** — ~3,300w / 12 min · HTML built · transcript ready (final:false) · audio pending |
 | 5.8 | `05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.1.0** — ~2,500w / 10 min · HTML built · transcript ready (final:false) · audio pending |
-| 5.9 | (deferred — gated on A14 implementation) | Pt 9: The Customization Guardrail | **planned** — describes gmode-OR-plugin_lock_approval gate; awaits A14 EXECUTE |
+| 5.9 | `05_9-customization-guardrail` | Pt 9: The Customization Guardrail | **drafting v0.1.0** — ~2,400w / 10 min · HTML built · transcript ready (final:false) · audio pending. Authored 2026-05-14 after A14 gate implementation landed (commit 0d609b59). |
 | 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.1** — 76 refs · HTML built · transcript ready (final:false) · audio pending |
 | 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.15.0** — 48 refs · HTML built 2026-05-13 via `tools/generate_blog_html.py` · transcript ready (final:false) · audio pending · og:image pending |
 | 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **drafting v0.12.0** — 21 refs · HTML built 2026-05-13 · transcript ready (final:false) · audio pending · og:image pending |
