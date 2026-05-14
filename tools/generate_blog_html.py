@@ -99,6 +99,7 @@ def parse_frontmatter(content: str) -> tuple[dict, str]:
 _REF_SENTINEL_PREFIX = "\x00REF\x00"
 _IMG_SENTINEL_PREFIX = "\x00IMG\x00"
 _CODE_SENTINEL_PREFIX = "\x00CODE\x00"
+_FENCED_SENTINEL_PREFIX = "\x00FENCED\x00"
 
 
 def extract_refs(text: str) -> tuple[str, list[str]]:
@@ -183,8 +184,37 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
     return pattern.sub(repl, text), images
 
 
+def extract_fenced_code_blocks(text: str) -> tuple[str, list[str]]:
+    """Pull triple-backtick fenced code blocks out BEFORE inline-code extraction.
+
+    Multi-line fenced blocks (```...```) interact badly with the inline-code regex
+    `([^`]+?)`, which spans newlines for content and would otherwise match backticks
+    across fence boundaries — eating subsequent inline-code spans as if they were
+    part of one giant code span. The result before this fix: null-byte sentinels
+    left unrestored in B5.7's body (the file reports as `data` not HTML).
+
+    Extracting fenced blocks first protects them: the fence-and-content is replaced
+    with a single sentinel, and inline-code extraction sees only prose text.
+    """
+    blocks: list[str] = []
+
+    def repl(m: re.Match) -> str:
+        # Group 1 is the content between the opening and closing fence lines.
+        # html.escape so < > & in the code render as literal text inside <pre><code>.
+        blocks.append(html.escape(m.group(1)))
+        return f"{_FENCED_SENTINEL_PREFIX}{len(blocks)-1}\x00"
+
+    # Pattern: ``` (optional language hint on same line) \n content \n ```
+    # DOTALL lets `.` match newlines inside the content; non-greedy stops at first
+    # closing fence rather than spanning multiple fenced blocks.
+    pattern = re.compile(r"```[^\n]*\n(.*?)\n```", re.DOTALL)
+    return pattern.sub(repl, text), blocks
+
+
 def extract_inline_code(text: str) -> tuple[str, list[str]]:
-    """Pull `code` spans out before any other inline transformation runs against them."""
+    """Pull `code` spans out before any other inline transformation runs against them.
+
+    Must run AFTER extract_fenced_code_blocks — see that function's docstring."""
     code_spans: list[str] = []
 
     def repl(m: re.Match) -> str:
@@ -212,7 +242,13 @@ def inline_format(text: str) -> str:
     return text
 
 
-def restore_sentinels(text: str, refs: list[str], images: list[str], code_spans: list[str]) -> str:
+def restore_sentinels(
+    text: str,
+    refs: list[str],
+    images: list[str],
+    code_spans: list[str],
+    fenced: list[str],
+) -> str:
     """Replace each sentinel with its rendered HTML, then return."""
     def restore_ref(m: re.Match) -> str:
         return refs[int(m.group(1))]
@@ -220,8 +256,11 @@ def restore_sentinels(text: str, refs: list[str], images: list[str], code_spans:
         return images[int(m.group(1))]
     def restore_code(m: re.Match) -> str:
         return f"<code>{code_spans[int(m.group(1))]}</code>"
+    def restore_fenced(m: re.Match) -> str:
+        return f"<pre><code>{fenced[int(m.group(1))]}</code></pre>"
     text = re.sub(_REF_SENTINEL_PREFIX + r"(\d+)\x00", restore_ref, text)
     text = re.sub(_IMG_SENTINEL_PREFIX + r"(\d+)\x00", restore_img, text)
+    text = re.sub(_FENCED_SENTINEL_PREFIX + r"(\d+)\x00", restore_fenced, text)
     text = re.sub(_CODE_SENTINEL_PREFIX + r"(\d+)\x00", restore_code, text)
     return text
 
@@ -232,7 +271,9 @@ def render_body(body: str) -> str:
     body, images = extract_image_placeholders(body)
     # 2. Pull out refs.
     body, refs = extract_refs(body)
-    # 3. Pull out inline code spans.
+    # 3. Pull out fenced code blocks (```...```) BEFORE inline-code extraction.
+    body, fenced = extract_fenced_code_blocks(body)
+    # 4. Pull out inline code spans.
     body, code_spans = extract_inline_code(body)
 
     # Now process by blocks.
@@ -244,6 +285,11 @@ def render_body(body: str) -> str:
             continue
         # Image-placeholder sentinel block — pass through verbatim.
         if block.strip().startswith(_IMG_SENTINEL_PREFIX):
+            output.append(block.strip())
+            continue
+        # Fenced-code sentinel block — pass through verbatim (restore_sentinels
+        # turns it into <pre><code>...</code></pre>).
+        if block.strip().startswith(_FENCED_SENTINEL_PREFIX):
             output.append(block.strip())
             continue
         # HR
@@ -283,7 +329,7 @@ def render_body(body: str) -> str:
         output.append(f"<p>{inline_format(para_text)}</p>")
 
     rendered = "\n\n                        ".join(output)
-    rendered = restore_sentinels(rendered, refs, images, code_spans)
+    rendered = restore_sentinels(rendered, refs, images, code_spans, fenced)
     return rendered
 
 
