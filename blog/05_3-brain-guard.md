@@ -12,11 +12,11 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Context Window Discipline — `brain_guard`
 
-*Part 3 of Essay 5 (8 parts) — The Always-On Digital Cortex.*
+*Essay 5.3 of 8 — The Always-On Digital Cortex.*
 
 ---
 
-[Part 2](05_2-plugin-integrity.html) covered the floor — the test gate that makes every plugin code change conditional. This part covers the ceiling: the always-on plugin that owns the seed agent's relationship to the model's context window.
+[Essay 5.2](05_2-plugin-integrity.html) covered the floor — the test gate that makes every plugin code change conditional. This part covers the ceiling: the always-on plugin that owns the seed agent's relationship to the model's context window.
 
 ---
 
@@ -92,7 +92,7 @@ The next part covers the plugin that gives the seed agent a notion of *what work
 
 ---
 
-*Part 3 of Essay 5 (8 parts) — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.3 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
-*Previous: [Plugin Edit Safety — `plugin_integrity`](05_2-plugin-integrity.html) — the test gate underneath every plugin edit.*
-*Next: [Job Lifecycle — `job_core`](05_4-job-core.html) — the agent's unit of compartmentalization and the refusal-to-stop discipline.*
+*Previous: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — the test gate underneath every plugin edit.*
+*Next: [Essay 5.4 — Job Lifecycle (`job_core`)](05_4-job-core.html) — the agent's unit of compartmentalization and the refusal-to-stop discipline.*

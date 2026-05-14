@@ -12,11 +12,11 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The CLAUDE.md Hierarchy
 
-*Part 7 of Essay 5 (8 parts) — The Always-On Digital Cortex.*
+*Essay 5.7 of 8 — The Always-On Digital Cortex.*
 
 ---
 
-[Part 6](05_6-question-discipline.html) closed the tour of the five always-on plugins. This part covers the *substrate* underneath them — the hierarchy of plain Markdown files the seed agent uses as its working memory, and the protocol that turns those files into a structured information bus.
+[Essay 5.6](05_6-question-discipline.html) closed the tour of the five always-on plugins. This part covers the *substrate* underneath them — the hierarchy of plain Markdown files the seed agent uses as its working memory, and the protocol that turns those files into a structured information bus.
 
 The plugins do their work in parallel; the substrate is where that work *lands*.
 
@@ -156,7 +156,7 @@ The substrate is built — body + four footers + altered-list gate + the layered
 
 ---
 
-*Part 7 of Essay 5 (8 parts) — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.7 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
-*Previous: [Structured Questions — `question_discipline`](05_6-question-discipline.html) — the registered-prefix gate.*
-*Next: [The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins.*
+*Previous: [Essay 5.6 — Structured Questions (`question_discipline`)](05_6-question-discipline.html) — the registered-prefix gate.*
+*Next: [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins.*

@@ -12,11 +12,11 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Plugin Edit Safety — `plugin_integrity`
 
-*Part 2 of Essay 5 (8 parts) — The Always-On Digital Cortex.*
+*Essay 5.2 of 8 — The Always-On Digital Cortex.*
 
 ---
 
-[Part 1](05_1-the-two-layer-foundation.html) sketched the always-on layer as one of two plugin categories — five plugins, currently, that run on every prompt and every tool call regardless of which phase the seed agent is in. The next five parts of this essay tour those plugins, one paragraph each. Treat each tour as a template: the concern is portable; the specific mechanism is this prototype's answer.
+[Essay 5.1](05_1-the-two-layer-foundation.html) sketched the always-on layer as one of two plugin categories — five plugins, currently, that run on every prompt and every tool call regardless of which phase the seed agent is in. The next five parts of this essay tour those plugins, one paragraph each. Treat each tour as a template: the concern is portable; the specific mechanism is this prototype's answer.
 
 We open with the one every other plugin depends on. `plugin_integrity` is the floor.
 
@@ -54,7 +54,7 @@ The next part covers the second always-on plugin — the one that owns the seed 
 
 ---
 
-*Part 2 of Essay 5 (8 parts) — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.2 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
-*Previous: [The Two-Layer Foundation](05_1-the-two-layer-foundation.html) — two plugin categories above one substrate.*
-*Next: [Context Window Discipline — `brain_guard`](05_3-brain-guard.html) — the self-compaction tiers and the architectural fact behind them.*
+*Previous: [Essay 5.1 — The Two-Layer Foundation](05_1-the-two-layer-foundation.html) — two plugin categories above one substrate.*
+*Next: [Essay 5.3 — Context Window Discipline (`brain_guard`)](05_3-brain-guard.html) — the self-compaction tiers and the architectural fact behind them.*

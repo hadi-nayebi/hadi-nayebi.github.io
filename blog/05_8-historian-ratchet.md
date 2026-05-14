@@ -12,11 +12,11 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The Historian Ratchet
 
-*Part 8 of Essay 5 (8 parts) — The Always-On Digital Cortex.*
+*Essay 5.8 of 8 — The Always-On Digital Cortex.*
 
 ---
 
-[Part 7](05_7-claude-md-hierarchy.html) built the substrate — the CLAUDE.md hierarchy with its four-footer protocol and altered-list gate. This part closes the essay with one example of what the always-on layer can *do* when its single-concern plugins compose. Three plugins, one ceremony, no plugin owning the whole thing.
+[Essay 5.7](05_7-claude-md-hierarchy.html) built the substrate — the CLAUDE.md hierarchy with its four-footer protocol and altered-list gate. This part closes the essay with one example of what the always-on layer can *do* when its single-concern plugins compose. Three plugins, one ceremony, no plugin owning the whole thing.
 
 For the architects in the audience.
 
@@ -110,7 +110,7 @@ Next.
 
 ---
 
-*Part 8 of Essay 5 (8 parts) — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.8 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
-*Previous: [The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — substrate, four-footer protocol, altered-list gate.*
-*Next: [The Markov Phasic Brain](06-the-markov-phasic-brain.html) — five phases, one cognitive organ, and why forbidding tools is the pedagogy.*
+*Previous: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — substrate, four-footer protocol, altered-list gate.*
+*Next: [Essay 6 — The Markov Phasic Brain](06-the-markov-phasic-brain.html) — five phases, one cognitive organ, and why forbidding tools is the pedagogy.*

@@ -12,11 +12,11 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Structured Questions — `question_discipline`
 
-*Part 6 of Essay 5 (8 parts) — The Always-On Digital Cortex.*
+*Essay 5.6 of 8 — The Always-On Digital Cortex.*
 
 ---
 
-[Part 5](05_5-interaction-summary.html) covered the mega-prompt that grows with every question. This part covers the gate that grew the *asking surface* itself into something architectural — every question the seed agent asks the user carries a registered prefix, and the rest of the seed's machinery dispatches on those prefixes.
+[Essay 5.5](05_5-interaction-summary.html) covered the mega-prompt that grows with every question. This part covers the gate that grew the *asking surface* itself into something architectural — every question the seed agent asks the user carries a registered prefix, and the rest of the seed's machinery dispatches on those prefixes.
 
 ---
 
@@ -52,7 +52,7 @@ That closes the tour of the five always-on plugins. The next part covers the *su
 
 ---
 
-*Part 6 of Essay 5 (8 parts) — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.6 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
-*Previous: [Cross-Session Memory — `interaction_summary`](05_5-interaction-summary.html) — block-until-summarized.*
-*Next: [The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — working memory bus, footer protocol, altered list.*
+*Previous: [Essay 5.5 — Cross-Session Memory (`interaction_summary`)](05_5-interaction-summary.html) — block-until-summarized.*
+*Next: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — working memory bus, footer protocol, altered list.*

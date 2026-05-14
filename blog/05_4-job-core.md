@@ -12,11 +12,11 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Job Lifecycle — `job_core`
 
-*Part 4 of Essay 5 (8 parts) — The Always-On Digital Cortex.*
+*Essay 5.4 of 8 — The Always-On Digital Cortex.*
 
 ---
 
-[Part 3](05_3-brain-guard.html) covered the ceiling — keeping the agent under the model's reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of *what work it is doing*.
+[Essay 5.3](05_3-brain-guard.html) covered the ceiling — keeping the agent under the model's reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of *what work it is doing*.
 
 ---
 
@@ -64,7 +64,7 @@ The next part covers the plugin that keeps the cumulative mega-prompt legible as
 
 ---
 
-*Part 4 of Essay 5 (8 parts) — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.4 of 8 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
-*Previous: [Context Window Discipline — `brain_guard`](05_3-brain-guard.html) — the progressive squeeze that keeps reasoning sharp.*
-*Next: [Cross-Session Memory — `interaction_summary`](05_5-interaction-summary.html) — shape-compels-production applied to the mega-prompt.*
+*Previous: [Essay 5.3 — Context Window Discipline (`brain_guard`)](05_3-brain-guard.html) — the progressive squeeze that keeps reasoning sharp.*
+*Next: [Essay 5.5 — Cross-Session Memory (`interaction_summary`)](05_5-interaction-summary.html) — shape-compels-production applied to the mega-prompt.*
