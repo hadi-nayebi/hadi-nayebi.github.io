@@ -16,9 +16,9 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 ---
 
-[Essay 5.6](05_6-question-discipline.html) closed the tour of the five always-on plugins. This part covers the *substrate* underneath them — the hierarchy of plain Markdown files the seed agent uses as its working memory, and the protocol that turns those files into a structured information bus.
+[Essay 5.6](05_6-question-discipline.html) closed the tour of the five always-on plugins. This part covers one of the substrate forms underneath them — the **working-memory form**: a hierarchy of plain Markdown files (`CLAUDE.md` files) at known locations on disk, plus the protocol that turns those files into a structured information bus. The substrate as a whole holds many forms — `knowledge/`, each plugin's hidden state, `voice.xml`, `evolution.md`, `agents/`. The CLAUDE.md hierarchy is the one the phasic layer writes through.
 
-The plugins do their work in parallel; the substrate is where that work *lands*.
+The plugins do their work in parallel; this is where the cycle's experiential data *lands*.
 
 ---
 
@@ -152,7 +152,7 @@ This is the bus.
 
 ---
 
-The substrate is built — body + four footers + altered-list gate + the layered hierarchy. The next part deconstructs one of the architecture's most elegant proofs that this substrate works: three plugins compose into a ceremony that no plugin could enforce alone.
+The working-memory form is built — body + four footers + altered-list gate + the layered hierarchy. The next part deconstructs one of the architecture's most elegant proofs that this substrate works in concert: three plugins compose into a ceremony that no plugin could enforce alone.
 
 ---
 
