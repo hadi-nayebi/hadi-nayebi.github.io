@@ -5,7 +5,7 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
@@ -33,11 +33,67 @@
     </item>
 
     <item>
-      <title>The Always-On Digital Cortex</title>
-      <link>https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/05-the-always-on-digital-cortex.html</guid>
-      <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
-      <description>The seed agent doesn't have memory — it has a bus. Always-on plugins each own one concern, holding the brain together while the rest of the system thinks. CLAUDE.md hierarchy carries state across phases, and editing it gates what the agent is allowed to do.</description>
+      <title>The Always-On Digital Cortex — Pt 8: The Historian Ratchet</title>
+      <link>https://hadi-nayebi.github.io/blog/05_8-historian-ratchet.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_8-historian-ratchet.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Per-plugin living history. Drift counter climbs with commits, blocks unlock at the threshold, historian re-narrates evolution.md, counter resets. Three plugins compose into one ceremony — no single plugin owns the whole thing.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 7: The CLAUDE.md Hierarchy</title>
+      <link>https://hadi-nayebi.github.io/blog/05_7-claude-md-hierarchy.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_7-claude-md-hierarchy.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The substrate underneath the always-on layer. CLAUDE.md as native primitive, partitioned into a body and four phase footers that inflate across OPEVC and deflate at CONDENSE. The altered list scopes execution.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 6: Structured Questions (question_discipline)</title>
+      <link>https://hadi-nayebi.github.io/blog/05_6-question-discipline.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_6-question-discipline.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Every question the seed agent asks the user carries a registered prefix. Nine ceremonies in the prototype registry. Batch-cascade validation; subagent bypass. Extend the registry as your seed grows new ceremonies.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 5: Cross-Session Memory (interaction_summary)</title>
+      <link>https://hadi-nayebi.github.io/blog/05_5-interaction-summary.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_5-interaction-summary.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Block-until-summarized. Five-section template forces shape-compels-production on the job's growing mega-prompt. Threshold + sections are this prototype's choice; the shape is the lesson.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 4: Job Lifecycle (job_core)</title>
+      <link>https://hadi-nayebi.github.io/blog/05_4-job-core.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_4-job-core.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The agent's unit of compartmentalization. Cumulative mega-prompt, shared-key cross-plugin extension, phase-aware refusal to stop, staged completion. Re-shape the noun for your domain.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 3: Context Window Discipline (brain_guard)</title>
+      <link>https://hadi-nayebi.github.io/blog/05_3-brain-guard.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_3-brain-guard.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The progressive squeeze. Three tiers tighten as the window fills until self-compaction is the only graceful move. Shape-compels-production via the five-section /compact template. Tier positions are tunable per model.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 2: Plugin Edit Safety (plugin_integrity)</title>
+      <link>https://hadi-nayebi.github.io/blog/05_2-plugin-integrity.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_2-plugin-integrity.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The test gate underneath every plugin code change. Pass and commit, fail and revert. The universal floor most architects inherit rather than rewrite — but the inside of the gate has knobs.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 1: The Two-Layer Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/05_1-the-two-layer-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/05_1-the-two-layer-foundation.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The seed agent's two plugin categories — always-on and phasic — over one shared CLAUDE.md substrate. Single-concern + careful coupling lets the parts compose into ceremonies. Opens the eight-part Always-On Digital Cortex series.</description>
     </item>
 
     <item>

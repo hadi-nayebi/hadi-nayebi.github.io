@@ -718,7 +718,16 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (working) | **drafting v0.30.0** — 80 refs · HTML built · transcript ready (final:false) · audio pending |
+| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (monolith — superseded by 8-sub-essay split 2026-05-14) | **superseded** — file stays on disk for URL preservation; not in sidebar/sitemap/feed |
+| 5.1 | `05_1-the-two-layer-foundation` | Pt 1: The Two-Layer Foundation | **drafting v0.1.0** — extract from monolith L1-L94 · ~1,500w / 6 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.2 | `05_2-plugin-integrity` | Pt 2: `plugin_integrity` — Plugin Edit Safety | **drafting v0.1.0** — ~1,000w / 4 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.3 | `05_3-brain-guard` | Pt 3: `brain_guard` — Context Window Discipline | **drafting v0.1.0** — ~1,700w / 8 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.4 | `05_4-job-core` | Pt 4: `job_core` — Job Lifecycle | **drafting v0.1.0** — ~1,500w / 7 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.5 | `05_5-interaction-summary` | Pt 5: `interaction_summary` — Cross-Session Memory | **drafting v0.1.0** — ~1,000w / 5 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.6 | `05_6-question-discipline` | Pt 6: `question_discipline` — Structured Questions | **drafting v0.1.0** — ~950w / 5 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.7 | `05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.1.0** — ~3,300w / 12 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.8 | `05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.1.0** — ~2,500w / 10 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.9 | (deferred — gated on A14 implementation) | Pt 9: The Customization Guardrail | **planned** — describes gmode-OR-plugin_lock_approval gate; awaits A14 EXECUTE |
 | 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (working) | **drafting v0.26.1** — 76 refs · HTML built · transcript ready (final:false) · audio pending |
 | 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.15.0** — 48 refs · HTML built 2026-05-13 via `tools/generate_blog_html.py` · transcript ready (final:false) · audio pending · og:image pending |
 | 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **drafting v0.12.0** — 21 refs · HTML built 2026-05-13 · transcript ready (final:false) · audio pending · og:image pending |
