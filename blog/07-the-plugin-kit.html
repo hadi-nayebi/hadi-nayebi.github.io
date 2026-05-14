@@ -163,7 +163,7 @@
 
                         <p><strong>Who writes them.</strong> The <code>[PLUGIN-LOCK]</code> ceremony. Plugin code is not edited the way ordinary files are &mdash; every change passes through a deliberate unlock cycle, runs the plugin&rsquo;s test suite at the lock boundary, and reverts to a captured git checkpoint on test failure. <sup class="ref-marker" title="ref: safe-lock-test-pass-or-revert | plugin_integrity/scripts/safe-lock.sh:3,211-222 | Header comment (L3): &quot;Locks a plugin: run tests → pass: commit + lock / fail: revert + lock&quot;; the body iterates the plugin&#x27;s test files (L211 `all_pass=true`) and sets `all_pass=false` on any failure (L222), then branches: pass → `git commit`, fail → `git reset --hard $checkpoint`. Plugin code cannot land without this gate.">&#9432;</sup></p>
 
-                        <p><strong>What they depend on.</strong> Three other organs. <code>scripts/</code> (when a hook needs to invoke the plugin&rsquo;s own CLI for state mutation). <code>hooks/voice.xml</code> (for every message the hook emits to the agent&rsquo;s context). <code>data.json</code> (for state, but only read-mediated through the plugin&rsquo;s own scripts &mdash; never directly). And a shared helper at <code>.claude/plugins/lib/voice-helper/</code> (the <code>get_voice</code> substitution function). <sup class="ref-marker" title="ref: plugin-structure-convention-organ-tree | .claude/plugins/CLAUDE.md:105-117 | The Plugin Structure Convention tree lists each organ with its role: `hooks/` &quot;(registered in settings.local.json)&quot;, `scripts/` &quot;Internal scripts called by hooks&quot;, `data.json` &quot;Runtime state (protected from direct edits)&quot;. Voice-helper lives at `.claude/plugins/lib/voice-helper/voice-helper.sh` (lib/CLAUDE.md L15: get_voice &lt;id&gt; reads voice from XML, used by &quot;Any hook/script with voice.xml&quot;).">&#9432;</sup></p>
+                        <p><strong>What they depend on.</strong> Three other organs. <code>scripts/</code> (when a hook needs to invoke the plugin&rsquo;s own CLI for state mutation). <code>hooks/voice.xml</code> (for every message the hook emits to the agent&rsquo;s context). <code>data.json</code> (for state, but only read-mediated through the plugin&rsquo;s own scripts &mdash; never directly). And a shared helper at <code>.claude/plugins/lib/voice-helper/</code> (the <code>get_voice</code> substitution function). <sup class="ref-marker" title="ref: plugin-structure-convention-organ-tree | .claude/plugins/CLAUDE.md:105-117 | The Plugin Structure Convention tree lists each organ with its role: `hooks/` &quot;(registered in settings.local.json)&quot;, `scripts/` &quot;Internal scripts called by hooks&quot;, `data.json` &quot;Runtime state (protected from direct edits)&quot;. Voice-helper lives at `.claude/plugins/lib/voice-helper/voice-helper.sh` (lib/CLAUDE.md L15: `get_voice &lt;id&gt;` reads voice from XML, used by &quot;Any hook/script with voice.xml&quot;).">&#9432;</sup></p>
 
                         <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
                           <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; A plugin "cell" showing the universal skeleton inside the cell wall, conditional cognitive organs in a secondary tier, and the brain-root wiring file labeled outside the cell]</p>
@@ -201,7 +201,7 @@
 
                         <p><strong>What it is.</strong> Strings the plugin emits at hook fire-time. Coaching voices that nudge the agent at a specific moment (entering a phase, crossing a context tier, having just dispatched a subagent). Blocks that refuse the agent when a guard fires.</p>
 
-                        <p><strong>Who reads it.</strong> The LLM agent. Voices delivered via hooks land in the agent&rsquo;s context window &mdash; either as soft injections via <code>additionalContext</code> JSON (coaching) or as exit-2 stderr refusals (blocks). The LLM sees the string mid-turn and reacts. </p>
+                        <p><strong>Who reads it.</strong> The LLM agent. Voices delivered via hooks land in the agent&rsquo;s context window &mdash; either as soft injections via <code>additionalContext</code> JSON (coaching) or as exit-2 stderr refusals (blocks). The LLM sees the string mid-turn and reacts.</p>
 
                         <p><strong>Who writes it.</strong> Mostly CONDENSE step 4 (which consumes <code>[VOICE-UPDATE]</code> markers other phases emit). The historian subagent also updates voice files when the plugin&rsquo;s evolution requires new coaching. PLUGIN-LOCK is the underlying gate for any edit. <sup class="ref-marker" title="ref: condense-step-4-voice-update-owner | .claude/plugins/phase_condense/agents/condense-voice-updater.md + .claude/plugins/plugin_integrity/agents/historian-*.md | The condense-voice-updater agent definition exists at the cited path (it is the subagent CONDENSE step 4 dispatches for `[VOICE-UPDATE]` marker consumption). historian-phase-*.md, historian-plugin-integrity.md, historian-brain-guard.md, historian-job-core.md, historian-interaction-summary.md, historian-question-discipline.md, historian-phasic-system.md all exist under plugin_integrity/agents/ — each plugin&#x27;s historian re-narrates its evolution.md AND can update its voice.xml when the plugin&#x27;s evolution requires new coaching.">&#9432;</sup></p>
 
@@ -249,7 +249,7 @@
 
                         <p><strong>The new-plugin lens.</strong> When you guide your seed to add a plugin that needs state, the seed designs the state&rsquo;s <em>interface</em> first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use? Then <code>data.json</code> becomes the cache the scripts operate on. Tell your seed: <em>if you cannot enumerate what reads each field and what writes each field, the design is not done yet.</em></p>
 
-                        <p><strong>The minimum-viable plugin shape.</strong> A plugin without <code>data.json</code> is stateless &mdash; it carries no runtime bookkeeping. <code>question_discipline</code> is again the example: pure gate, no state, no <code>data.json</code>. The absence signals stateless enforcement. </p>
+                        <p><strong>The minimum-viable plugin shape.</strong> A plugin without <code>data.json</code> is stateless &mdash; it carries no runtime bookkeeping. <code>question_discipline</code> is again the example: pure gate, no state, no <code>data.json</code>. The absence signals stateless enforcement.</p>
 
                         <hr>
 
@@ -363,11 +363,11 @@
 
                         <p>That is one path to a new plugin: a job that has matured through all three earlier stages and now needs phase-cognition customization the voice injection cannot deliver.</p>
 
-                        <p>The other path is direct: you notice a gap in the seed&rsquo;s substrate and tell the seed to fix it. The seed treats this as a single-cycle DEEP job at first: OBSERVE asks you questions about the gap, PLAN designs the new plugin&rsquo;s concern and organ list, EXECUTE stamps the template and fills in the substance, VERIFY runs the new plugin&rsquo;s test suite, CONDENSE absorbs the lessons into the knowledge layer. The seed performs the PLUGIN-LOCK ceremony at the moment EXECUTE needs to begin writing code; once approved, the lock-manager stamps the universal template at <code>.claude/plugins/&lt;new_name&gt;/</code>, substitutes the plugin name into the placeholders, generates the plugin&rsquo;s <code>historian-&lt;name&gt;</code> subagent definition, and auto-commits the birth as the drift baseline. <sup class="ref-marker" title="ref: birth-stamps-template-historian-and-baseline | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:297,313-316,319,325 | L297: &quot;Plugin birth: create from template, replace placeholders, generate historian, auto-commit.&quot; L313: `_historian_template=&quot;$PLUGIN_TEMPLATE_DIR/_historian.md&quot;`. L314: `_historian_dest=&quot;$PLUGIN_DIR/agents/historian-${_target_dashed}.md&quot;`. L316 substitutes placeholders and writes the new historian: `sed &quot;s/{{PLUGIN_NAME}}/$target/g; s/{{PLUGIN_DASHED}}/$_target_dashed/g&quot; &quot;$_historian_template&quot; &gt; &quot;$_historian_dest.tmp&quot; &amp;&amp; mv &quot;$_historian_dest.tmp&quot; &quot;$_historian_dest&quot;`. L319 + L325 commit the birth (&quot;Auto-commit birth state to establish baseline&quot; + `git commit -m &quot;birth: $target plugin initialized from template&quot;`) — the commit IS the drift counter&#x27;s baseline.">&#9432;</sup></p>
+                        <p>The other path is direct: you notice a gap in the seed&rsquo;s substrate and tell the seed to fix it &mdash; paying off the promise <a href="05_1-the-two-layer-foundation.html">Essay 5.1</a> planted, that the always-on layer is addable: a sixth plugin slots in by exposing its own public commands, not by rewiring anyone else&rsquo;s. The seed treats this as a single-cycle DEEP job at first: OBSERVE asks you questions about the gap, PLAN designs the new plugin&rsquo;s concern and organ list, EXECUTE stamps the template and fills in the substance, VERIFY runs the new plugin&rsquo;s test suite, CONDENSE absorbs the lessons into the knowledge layer. The seed performs the PLUGIN-LOCK ceremony at the moment EXECUTE needs to begin writing code; once approved, the lock-manager stamps the universal template at <code>.claude/plugins/&lt;new_name&gt;/</code>, substitutes the plugin name into the placeholders, generates the plugin&rsquo;s <code>historian-&lt;name&gt;</code> subagent definition, and auto-commits the birth as the drift baseline. <sup class="ref-marker" title="ref: birth-stamps-template-historian-and-baseline | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:297,313-316,319,325 | L297: &quot;Plugin birth: create from template, replace placeholders, generate historian, auto-commit.&quot; L313: `_historian_template=&quot;$PLUGIN_TEMPLATE_DIR/_historian.md&quot;`. L314: `_historian_dest=&quot;$PLUGIN_DIR/agents/historian-${_target_dashed}.md&quot;`. L316 substitutes placeholders and writes the new historian: `sed &quot;s/{{PLUGIN_NAME}}/$target/g; s/{{PLUGIN_DASHED}}/$_target_dashed/g&quot; &quot;$_historian_template&quot; &gt; &quot;$_historian_dest.tmp&quot; &amp;&amp; mv &quot;$_historian_dest.tmp&quot; &quot;$_historian_dest&quot;`. L319 + L325 commit the birth (&quot;Auto-commit birth state to establish baseline&quot; + `git commit -m &quot;birth: $target plugin initialized from template&quot;`) — the commit IS the drift counter&#x27;s baseline.">&#9432;</sup></p>
 
                         <p><strong>The substance the seed fills in</strong> follows the organ-by-organ shape covered earlier &mdash; CLAUDE.md first as the concern declaration, then hooks as the plugin&rsquo;s reflexes, scripts if the plugin publishes a CLI, tests covering each hook and script, voice files for the messages the plugin emits, and <code>docs/evolution.md</code> for the cycle-1 narration. The seed asks you to confirm at each step because in this stage of maturation, the seed is still learning your design preferences.</p>
 
-                        <p><strong>The two-lock pattern for phase plugins.</strong> If the new plugin extends the phase system (e.g., a new <code>phase_research</code> between OBSERVE and PLAN), one lock builds the cell, and a <em>second</em> lock on <code>phasic_system</code> updates the orchestrator&rsquo;s forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this &mdash; most plugin systems make wiring invisible; this architecture makes wiring explicit.</p>
+                        <p><strong>The two-lock pattern for phase plugins.</strong> If the new plugin extends the phase system (e.g., a new <code>phase_research</code> between OBSERVE and PLAN &mdash; exactly the customization <a href="06-the-markov-phasic-brain.html">Essay 6</a> named when it said the phase count is the prototype, not the architecture), one lock builds the cell, and a <em>second</em> lock on <code>phasic_system</code> updates the orchestrator&rsquo;s forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this &mdash; most plugin systems make wiring invisible; this architecture makes wiring explicit.</p>
 
                         <p><strong>The knowledge dir is the part most plugin tutorials skip.</strong> When the seed authors a new plugin, the seed <em>also</em> authors the plugin&rsquo;s knowledge directory at <code>.claude/knowledge/&lt;plugin_name&gt;/</code>. This is where the plugin&rsquo;s deep self-knowledge lives &mdash; the architectural rationale, the operating patterns, the lessons captured across cycles. The public seed agent ships every active plugin&rsquo;s knowledge directory along with the plugin code, so every operator&rsquo;s seed has the same depth of recall. Future OBSERVE phases will recall these knowledge files when the agent encounters work touching this plugin. <strong>Tell your seed: every new plugin gets a knowledge directory by birth, not as an afterthought.</strong> Without it, the plugin migrates to the public repo as code without context; with it, the public seed agent can teach new operators how to think about that plugin&rsquo;s concern. <sup class="ref-marker" title="ref: every-active-plugin-has-knowledge-dir | .claude/knowledge/*/INDEX.md | `find .claude/knowledge -maxdepth 2 -name INDEX.md` returns one INDEX.md per active plugin: brain_guard, interaction_summary, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline — every active plugin in the prototype has its own knowledge dir. Plus topic dirs (opevc, migration, plans, session, etc.) for cross-plugin patterns. The convention holds: knowledge/&lt;plugin_name&gt;/ accompanies the plugin code rather than living separately.">&#9432;</sup></p>
 
@@ -430,16 +430,17 @@
                 <aside class="sidebar">
                     <div class="sidebar-title">Latest Articles</div>
                     <div>
-                        <a href="08-from-apprentice-to-architect.html" class="article-card-link">
+                        <a href="06-the-markov-phasic-brain.html" class="article-card-link">
                             <div class="article-card">
                                 <div class="article-card-tags">
                                     <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
                                     <span class="tag tag-sm">Architecture</span>
+                                    <span class="tag tag-sm">OPEVC</span>
                                     <span class="tag tag-sm">Seed Agent</span>
-                                    <span class="tag tag-sm">Maturation</span>
                                 </div>
-                                <h3>From Apprentice to Architect</h3>
-                                <div class="date">May 2026 &bull; 27 min read</div>
+                                <div class="sidebar-card-position">&larr; Previous in series</div>
+                                <h3>The Markov Phasic Brain</h3>
+                                <div class="date">May 2026 &bull; 40 min read</div>
                             </div>
                         </a>
                         <div class="article-card active">
@@ -449,93 +450,27 @@
                                 <span class="tag tag-sm">Plugins</span>
                                 <span class="tag tag-sm">Seed Agent</span>
                             </div>
+                            <div class="sidebar-card-position">You are here</div>
                             <h3>The Plugin Kit</h3>
                             <div class="date">May 2026 &bull; 32 min read</div>
                         </div>
-                        <a href="06-the-markov-phasic-brain.html" class="article-card-link">
+                        <a href="08-from-apprentice-to-architect.html" class="article-card-link">
                             <div class="article-card">
                                 <div class="article-card-tags">
                                     <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
                                     <span class="tag tag-sm">Architecture</span>
-                                    <span class="tag tag-sm">OPEVC</span>
                                     <span class="tag tag-sm">Seed Agent</span>
+                                    <span class="tag tag-sm">Maturation</span>
                                 </div>
-                                <h3>The Markov Phasic Brain</h3>
-                                <div class="date">May 2026 &bull; 40 min read</div>
+                                <div class="sidebar-card-position">Next in series &rarr;</div>
+                                <h3>From Apprentice to Architect</h3>
+                                <div class="date">May 2026 &bull; 27 min read</div>
                             </div>
                         </a>
-                        <a href="05-the-always-on-digital-cortex.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
-                                    <span class="tag tag-sm">Architecture</span>
-                                    <span class="tag tag-sm">Plugins</span>
-                                    <span class="tag tag-sm">Seed Agent</span>
-                                </div>
-                                <h3>The Always-On Digital Cortex</h3>
-                                <div class="date">May 2026 &bull; 37 min read</div>
-                            </div>
-                        </a>
-                        <a href="03_1-the-folder-is-alive.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Vision</span>
-                                    <span class="tag tag-sm">Seed Agent</span>
-                                    <span class="tag tag-sm">Future of Work</span>
-                                </div>
-                                <h3>The Folder Is Alive</h3>
-                                <div class="date">May 2026 &bull; 17 min read</div>
-                            </div>
-                        </a>
-                        <a href="04-the-language-of-agents.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Vocabulary</span>
-                                </div>
-                                <h3>The Language of Agents</h3>
-                                <div class="date">March 2026 &bull; 18 min read</div>
-                            </div>
-                        </a>
-                        <a href="03-your-brain-was-never-built-for-this.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Society</span>
-                                    <span class="tag tag-sm">Evolution</span>
-                                </div>
-                                <h3>Your Brain Was Never Built for This</h3>
-                                <div class="date">March 2026 &bull; 16 min read</div>
-                            </div>
-                        </a>
-                        <a href="02-we-could-have-had-agi.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Architecture</span>
-                                    <span class="tag tag-sm">AGI</span>
-                                </div>
-                                <h3>We Could Have Had AGI By Now</h3>
-                                <div class="date">February 2026 &bull; 20 min read</div>
-                            </div>
-                        </a>
-                        <a href="01-llms-are-not-the-agents.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Fundamentals</span>
-                                </div>
-                                <h3>LLMs Are Not the Agents</h3>
-                                <div class="date">February 2026 &bull; 17 min read</div>
+                        <a href="/blog.html" class="article-card-link sidebar-all-essays-link">
+                            <div class="article-card sidebar-all-essays">
+                                <h3>All essays &rarr;</h3>
+                                <div class="date">Browse the full series</div>
                             </div>
                         </a>
                     </div>

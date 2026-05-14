@@ -81,7 +81,7 @@ The substrate is `.claude/` itself — the multi-form memory directory the opene
 
 ## Why "Single Concern" Matters
 
-Each always-on plugin owns exactly one thing. *[ref: each-always-on-plugin-owns | .claude/plugins/CLAUDE.md:8 | Foundational plugin definition: "Each subdirectory is a plugin — a self-contained unit that owns one concern and enforces it through hooks, scripts, and tests." Section-opening restatement; the paragraphs that follow analyze why the principle works.]*
+Each always-on plugin owns exactly one concern. *[ref: each-always-on-plugin-owns | .claude/plugins/CLAUDE.md:8 | Foundational plugin definition: "Each subdirectory is a plugin — a self-contained unit that owns one concern and enforces it through hooks, scripts, and tests." Section-opening restatement; the paragraphs that follow analyze why the principle works.]*
 
 `plugin_integrity` owns plugin edit safety. `brain_guard` owns self-compaction. `job_core` owns the job lifecycle. `interaction_summary` keeps a focused job's mega-prompt legible as it grows. `question_discipline` owns the asking gate. Each plugin lives in its own folder under `.claude/plugins/<name>/` with its own hooks, scripts, hidden state, tests, and voice files. Naming the concern is easy because each plugin only has one to name. *[ref: plugin-integrity-owns-edit-safety | .claude/plugins/CLAUDE.md:12-24,45,103-117 | Active Plugins table (lines 12-24) maps each named plugin to its objective; Plugin Structure Convention tree (lines 103-117) shows folder layout (CLAUDE.md, data.json, hooks/, scripts/, tests/, docs/); voice.xml documented at line 45 as "sibling concept to config.conf" and present in every plugin on disk.]*
 
@@ -109,6 +109,8 @@ The foundation is in place: two layers above one substrate, each plugin owning o
 - [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins
 
 Each sub-essay covers what its plugin (or mechanism) owns, how it works, what would break without it, and what you would customize when you cultivate your own seed.
+
+[Essay 8 — From Apprentice to Architect](08-from-apprentice-to-architect.html) closes the series by showing the four-stage maturation arc — how each form of work this prototype hosts grows from a single-cycle conversation into a customized plugin in your own seed. The promises this essay plants — extendable always-on layer, extendable cognitive cycle, more memory forms you will invent — are paid off there.
 
 We start with `plugin_integrity`.
 

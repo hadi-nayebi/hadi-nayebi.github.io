@@ -332,11 +332,13 @@
 
                         <h2>The Seed Is Yours</h2>
 
-                        <p>The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain. </p>
+                        <p>The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain.</p>
 
                         <p>When you install a seed on your laptop, it becomes yours. The architecture is the architecture I have described across these eight essays. But the cycles are yours. The patterns it codifies, the voices it speaks, the hooks it hardens &mdash; they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence. Your first jobs will be stage 1 &mdash; collaborative, learning-mode, slow on purpose. Some of those jobs will mature into stage 2, then stage 3, and a few &mdash; for the work shapes that need real customization &mdash; into stage 4 plugins that exist nowhere else but in your seed.</p>
 
                         <p>Two operators with two seeds, six months in, will have brains that are visibly different. The architectures are the same. The lived seeds are not. That is the design.</p>
+
+                        <p>This is what changes when the architecture itself is teachable. The agent-developer-user triangle most software defaults to &mdash; where one role builds, another configures, a third uses &mdash; collapses to two: the agent and you. The substrate is portable enough that the user can be the architect. Call it the <strong>PowerPoint of seed agents</strong>: a complex artifact made authorable by enough high-level structural understanding, without anyone having to write the underlying machinery. <a href="05_1-the-two-layer-foundation.html">Essay 5</a> gave you the substrate. <a href="06-the-markov-phasic-brain.html">Essay 6</a> gave you the cognitive cycle that uses it. <a href="07-the-plugin-kit.html">Essay 7</a> gave you the template for growing it. This essay closes the loop: the maturation arc that takes a stage-1 conversation into a stage-4 plugin is what makes your seed <em>yours</em>. The seed is the architecture; you are the architect.</p>
 
                         <p>The Academy exists because growing a seed well is a craft, and craft benefits from community. Other operators are growing their own seeds. They are running into patterns you will recognize and patterns you have not seen yet. The knowledge they are accumulating is not interchangeable with yours &mdash; but the <em>recipes</em> for accumulating it well are shareable, and that is what we are gathered to share. When your seed fixes a bug in one of the shipped plugins, the seed asks you <code>[REPORT-TO-UPSTREAM]</code> and prepares a structured report for you to push back to the public repo. The shared substrate stays alive because every operator&rsquo;s seed contributes back through that same channel. <sup class="ref-marker" title="ref: report-to-upstream-handler | .claude/plugins/plugin_integrity/hooks/upstream-reporter-hook.sh:5,14,20,54-55 | L5 docstring: &quot;Captures the user&#x27;s answer to a [REPORT-TO-UPSTREAM] question and, on [yes], builds a structured report.&quot; L14: &quot;user via [REPORT-TO-UPSTREAM] &lt;plugin&gt; &lt;description&gt;; the user [approves the report].&quot; L20: documented question shape &quot;[REPORT-TO-UPSTREAM] &lt;plugin_name&gt; &lt;one-line-description&gt;&quot;. L54-55: prefix gate `echo &quot;$QUESTION&quot; | grep -q &#x27;^\[REPORT-TO-UPSTREAM\]&#x27; || exit 0`. Built 2026-05-13 in A11.6 as part of the alpha-release migration prep.">&#9432;</sup></p>
 
@@ -383,16 +385,6 @@
                 <aside class="sidebar">
                     <div class="sidebar-title">Latest Articles</div>
                     <div>
-                        <div class="article-card active">
-                            <div class="article-card-tags">
-                                <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
-                                <span class="tag tag-sm">Architecture</span>
-                                <span class="tag tag-sm">Seed Agent</span>
-                                <span class="tag tag-sm">Maturation</span>
-                            </div>
-                            <h3>From Apprentice to Architect</h3>
-                            <div class="date">May 2026 &bull; 27 min read</div>
-                        </div>
                         <a href="07-the-plugin-kit.html" class="article-card-link">
                             <div class="article-card">
                                 <div class="article-card-tags">
@@ -401,94 +393,26 @@
                                     <span class="tag tag-sm">Plugins</span>
                                     <span class="tag tag-sm">Seed Agent</span>
                                 </div>
+                                <div class="sidebar-card-position">&larr; Previous in series</div>
                                 <h3>The Plugin Kit</h3>
                                 <div class="date">May 2026 &bull; 32 min read</div>
                             </div>
                         </a>
-                        <a href="06-the-markov-phasic-brain.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
-                                    <span class="tag tag-sm">Architecture</span>
-                                    <span class="tag tag-sm">OPEVC</span>
-                                    <span class="tag tag-sm">Seed Agent</span>
-                                </div>
-                                <h3>The Markov Phasic Brain</h3>
-                                <div class="date">May 2026 &bull; 40 min read</div>
+                        <div class="article-card active">
+                            <div class="article-card-tags">
+                                <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
+                                <span class="tag tag-sm">Architecture</span>
+                                <span class="tag tag-sm">Seed Agent</span>
+                                <span class="tag tag-sm">Maturation</span>
                             </div>
-                        </a>
-                        <a href="05-the-always-on-digital-cortex.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
-                                    <span class="tag tag-sm">Architecture</span>
-                                    <span class="tag tag-sm">Plugins</span>
-                                    <span class="tag tag-sm">Seed Agent</span>
-                                </div>
-                                <h3>The Always-On Digital Cortex</h3>
-                                <div class="date">May 2026 &bull; 37 min read</div>
-                            </div>
-                        </a>
-                        <a href="03_1-the-folder-is-alive.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Vision</span>
-                                    <span class="tag tag-sm">Seed Agent</span>
-                                    <span class="tag tag-sm">Future of Work</span>
-                                </div>
-                                <h3>The Folder Is Alive</h3>
-                                <div class="date">May 2026 &bull; 17 min read</div>
-                            </div>
-                        </a>
-                        <a href="04-the-language-of-agents.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Vocabulary</span>
-                                </div>
-                                <h3>The Language of Agents</h3>
-                                <div class="date">March 2026 &bull; 18 min read</div>
-                            </div>
-                        </a>
-                        <a href="03-your-brain-was-never-built-for-this.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Society</span>
-                                    <span class="tag tag-sm">Evolution</span>
-                                </div>
-                                <h3>Your Brain Was Never Built for This</h3>
-                                <div class="date">March 2026 &bull; 16 min read</div>
-                            </div>
-                        </a>
-                        <a href="02-we-could-have-had-agi.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Architecture</span>
-                                    <span class="tag tag-sm">AGI</span>
-                                </div>
-                                <h3>We Could Have Had AGI By Now</h3>
-                                <div class="date">February 2026 &bull; 20 min read</div>
-                            </div>
-                        </a>
-                        <a href="01-llms-are-not-the-agents.html" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-card-tags">
-                                    <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
-                                    <span class="tag tag-sm">Agents</span>
-                                    <span class="tag tag-sm">AI</span>
-                                    <span class="tag tag-sm">Fundamentals</span>
-                                </div>
-                                <h3>LLMs Are Not the Agents</h3>
-                                <div class="date">February 2026 &bull; 17 min read</div>
+                            <div class="sidebar-card-position">You are here</div>
+                            <h3>From Apprentice to Architect</h3>
+                            <div class="date">May 2026 &bull; 27 min read</div>
+                        </div>
+                        <a href="/blog.html" class="article-card-link sidebar-all-essays-link">
+                            <div class="article-card sidebar-all-essays">
+                                <h3>All essays &rarr;</h3>
+                                <div class="date">Browse the full series</div>
                             </div>
                         </a>
                     </div>

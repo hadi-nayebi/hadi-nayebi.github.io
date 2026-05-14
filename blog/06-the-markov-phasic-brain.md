@@ -132,7 +132,7 @@ The footer markers from [the previous essay](05-the-always-on-digital-cortex.htm
 
 The result: each phase produces its own kind of artifact. OBSERVE produces working memory. PLAN produces a plan document. EXECUTE produces code changes plus execution notes. VERIFY produces pass/fail results. CONDENSE produces a clean working memory and durable knowledge files.
 
-Every phase has its own plugin. The phasic plugins (currently six in the prototype — one per phase, plus a separate orchestrator that tracks which phase is active for which job) are themselves single-concern packages, each one owning the rules for one mode of cognition. As with the always-on layer, the count is the prototype, not the architecture. A custom seed adding a sixth phase would add a seventh plugin alongside the orchestrator. The shape is what generalizes.
+Every phase has its own plugin. The phasic plugins (currently six in the prototype — one per phase, plus a separate orchestrator that tracks which phase is active for which job) are themselves single-concern packages, each one owning the rules for one mode of cognition. As with the always-on layer, the count is the prototype, not the architecture. A custom seed adding a sixth phase would add a seventh plugin alongside the orchestrator. The shape is what generalizes. [Essay 7](07-the-plugin-kit.html) walks through a worked example — a hypothetical `phase_research` plugin slotted between OBSERVE and PLAN, with the two-lock pattern that wires it in.
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard table — write rules per phase.
