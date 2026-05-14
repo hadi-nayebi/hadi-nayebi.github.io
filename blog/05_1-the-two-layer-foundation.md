@@ -40,7 +40,7 @@ The **phasic layer** activates one plugin at a time, dictated by which phase the
 
 Two layers. One multi-form substrate underneath.
 
-The substrate is `.claude/` itself — every form of memory the prototype carries, organized into compartments. The CLAUDE.md hierarchy is one form: working memory, scattered across the project tree, where the agent's current cognitive state lives. The other forms — long-term recall in `knowledge/`, procedural memory in each `plugins/<name>/` directory, auto-recall coaching in `voice.xml`, narrative history in `evolution.md`, subagent definitions in `agents/` — sit alongside it, each used by different machinery. The difference between the two plugin layers is not which substrate forms they touch — that varies plugin by plugin — but their relationship to phase. The always-on layer runs continuously, each plugin owning one concern and its own private state. The phasic layer activates one plugin at a time, dictated by the active job's current phase, and uses the CLAUDE.md hierarchy specifically as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and other forms of memory at the end. *[ref: underneath-both-layers-sits | CLAUDE.md:111-112 | CONDENSE 7-step waterfall: (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) `[PENDING-JOB]` → dep jobs, (4) `[VOICE-UPDATE]` → voice.xml, (5) `[AGENT-UPDATE]` → subagent defs, (6) `[KNOWLEDGE]` → knowledge files, (7) session archive fallback. Markers carried in phase footers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`.]*
+The substrate is `.claude/` itself — the multi-form memory directory the opener introduced. Each form serves a different concern, and each is used by different machinery. The difference between the two plugin layers is not which substrate forms they touch — that varies plugin by plugin — but their relationship to phase. The always-on layer runs continuously, each plugin owning one concern and its own private state. The phasic layer activates one plugin at a time, dictated by the active job's current phase, and uses the CLAUDE.md hierarchy specifically as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and other forms of memory at the end. *[ref: underneath-both-layers-sits | CLAUDE.md:111-112 | CONDENSE 7-step waterfall: (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) `[PENDING-JOB]` → dep jobs, (4) `[VOICE-UPDATE]` → voice.xml, (5) `[AGENT-UPDATE]` → subagent defs, (6) `[KNOWLEDGE]` → knowledge files, (7) session archive fallback. Markers carried in phase footers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`.]*
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard cross-section — two plugin layers above the shared CLAUDE.md + .claude/ substrate.
@@ -63,7 +63,7 @@ The substrate is `.claude/` itself — every form of memory the prototype carrie
       Cell 4 (orange, BRIGHT and haloed — currently active): "EXECUTE"
       Cell 5 (pink, dim): "VERIFY"
       Cell 6 (magenta, dim): "CONDENSE"
-    Bottom band — wider chalk slab, white-chalk header reads exactly "CLAUDE.md hierarchy + .claude/ brain". Inside the slab, sketch a small chalk file-tree showing ONLY these literal paths (no other folders or files):
+    Bottom band — wider chalk slab, white-chalk header reads exactly "the .claude/ substrate (multi-form)". Inside the slab, sketch a small chalk file-tree showing ONLY these literal paths (no other folders or files):
       CLAUDE.md
       .claude/
       ├── CLAUDE.md
@@ -73,8 +73,8 @@ The substrate is `.claude/` itself — every form of memory the prototype carrie
   Two bidirectional white-chalk arrows connect the middle band to the bottom band, labeled IN WHITE CHALK exactly "writes into" (down-arrow) and "absorbs from" (up-arrow).
   No arrows from the top band to the bottom band.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "always-on plugins", "phasic plugins (OPEVC orchestrator + 5 phase plugins)", "plugin_integrity", "brain_guard", "job_core", "interaction_summary", "question_discipline", "phasic_system", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "CLAUDE.md hierarchy + .claude/ brain", "CLAUDE.md", ".claude/", "plugins/", "knowledge/", "agents/", "writes into", "absorbs from", plus the caption below. No other words, file names, or folders may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Two plugin layers, one shared substrate — the phasic layer writes and absorbs; the always-on layer runs alongside, phase-independent."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "always-on plugins", "phasic plugins (OPEVC orchestrator + 5 phase plugins)", "plugin_integrity", "brain_guard", "job_core", "interaction_summary", "question_discipline", "phasic_system", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "the .claude/ substrate (multi-form)", "CLAUDE.md", ".claude/", "plugins/", "knowledge/", "agents/", "writes into", "absorbs from", plus the caption below. No other words, file names, or folders may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Two plugin layers, one multi-form substrate — the phasic layer writes through the CLAUDE.md hierarchy and absorbs at cycle close; the always-on layer runs alongside, phase-independent."
 -->
 
 ---
