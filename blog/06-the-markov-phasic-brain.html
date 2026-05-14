@@ -221,7 +221,7 @@
 
                         <p>CONDENSE has the most permissive <em>but most restricted</em> scope: it can write almost anywhere inside <code>.claude/</code>, including across plugins, but it cannot touch project files at all.</p>
 
-                        <p>Forbidding tools is not a limitation. It is the pedagogy. Call this <em>tool restriction as pedagogy</em> &mdash; the discipline doesn&rsquo;t come from telling the agent what to do; it comes from making the wrong move impossible.</p>
+                        <p>Tool restriction is the pedagogy. The discipline doesn&rsquo;t come from telling the agent what to do; it comes from making the wrong move impossible inside the current phase &mdash; each phase&rsquo;s compartment forbids the moves that would skip the cognitive work the phase exists to enforce.</p>
 
                         <p>When OBSERVE is read-only, the agent is forced to gather context before it can act. There is no escape into &ldquo;let me just patch this real quick&rdquo; &mdash; the patch tool isn&rsquo;t available.</p>
 
@@ -428,7 +428,7 @@
 
                         <h2>CONDENSE &mdash; The Cognitive Organ</h2>
 
-                        <p>CONDENSE is not a peer of the other phases. It is a different kind of thing.</p>
+                        <p>CONDENSE plays a different role from the four work-on-project phases. Where they act on artifacts, CONDENSE acts on the brain itself &mdash; the cycle&rsquo;s metabolism organ, turning the experiential data from the previous four phases into durable memory.</p>
 
                         <p>The other phases produce work <em>on the project</em>. CONDENSE produces work <em>on the brain</em>. Its write scope is <code>.claude/</code> plus the <code>CLAUDE.md</code> hierarchy. It cannot touch project files. It cannot add features. It cannot fix bugs. What it does is consolidate everything the cycle just produced &mdash; the gathered context, the plan document, the execution notes, the verification results &mdash; and route the durable parts to where they will be useful in the next cycle.<sup class="ref-marker" title="ref: condense-is-consolidation-break | phase_condense/docs/principles.md:4-6 | CONDENSE is defined as a &quot;consolidation break&quot; between successful chunks of work — not sleep, not routing, but active content movement that takes the altered CLAUDE.md list (frozen at entry) and moves bottom-section words to durable destinations.">&#9432;</sup></p>
 
@@ -532,7 +532,7 @@
 
                         <h2>What Comes Next</h2>
 
-                        <p>Phases give the agent compartmentalized cognition. The <code>CLAUDE.md</code> layer from <a href="05-the-always-on-digital-cortex.html">the previous essay</a> gives them somewhere to write that cognition down. Together they form a working brain &mdash; one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.</p>
+                        <p>Phases give the agent compartmentalized cognition. The <code>CLAUDE.md</code> layer from <a href="05-the-always-on-digital-cortex.html">the previous essay</a> is the working-memory form they write that cognition into &mdash; the surface where each cycle&rsquo;s tokens land before CONDENSE absorbs them into longer-term memory. Together they form a working brain &mdash; one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.</p>
 
                         <p>This is what <a href="01-llms-are-not-the-agents.html">Essay 1</a> was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.</p>
 
