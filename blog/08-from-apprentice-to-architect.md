@@ -350,7 +350,7 @@ That is the seed agent.
 
 ## The Seed Is Yours
 
-The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain. *[ref: mit-license-seed-agent | seed_agent/LICENSE + .claude/plugins/plugin_integrity/LICENSE | The public seed-agent repo (`seed_agent/`) ships `LICENSE` headed exactly: "MIT License / Copyright (c) 2026 Seed Agent Contributors." The mature prototype plugins that ship the same license (plugin_integrity, brain_guard, interaction_summary, question_discipline) carry: "MIT License / Copyright (c) 2026 Hadosh Academy." Same terms, different copyright holders by namespace — both fully permissive.]*
+The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain.
 
 When you install a seed on your laptop, it becomes yours. The architecture is the architecture I have described across these eight essays. But the cycles are yours. The patterns it codifies, the voices it speaks, the hooks it hardens — they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence. Your first jobs will be stage 1 — collaborative, learning-mode, slow on purpose. Some of those jobs will mature into stage 2, then stage 3, and a few — for the work shapes that need real customization — into stage 4 plugins that exist nowhere else but in your seed.
 
