@@ -49,6 +49,28 @@ AUDIENCE_TITLE = {
     "Power Users &amp; Architects": "Semi-technical to architect-level — Tier 2 to Tier 3",
 }
 
+# Canonical reading order across the series. Sidebar prev/next derives from this list,
+# NOT from SIDEBAR_POSTS (which is publication-descending and conflates 3.1's late-publish
+# date with reading order). Update this list whenever a new essay slots into the sequence.
+READING_ORDER = [
+    "01-llms-are-not-the-agents",
+    "02-we-could-have-had-agi",
+    "03-your-brain-was-never-built-for-this",
+    "03_1-the-folder-is-alive",
+    "04-the-language-of-agents",
+    "05_1-the-two-layer-foundation",
+    "05_2-plugin-integrity",
+    "05_3-brain-guard",
+    "05_4-job-core",
+    "05_5-interaction-summary",
+    "05_6-question-discipline",
+    "05_7-claude-md-hierarchy",
+    "05_8-historian-ratchet",
+    "06-the-markov-phasic-brain",
+    "07-the-plugin-kit",
+    "08-from-apprentice-to-architect",
+]
+
 
 def parse_frontmatter(content: str) -> tuple[dict, str]:
     """Split YAML frontmatter from body. Returns (meta_dict, body_string)."""
@@ -265,49 +287,97 @@ def render_body(body: str) -> str:
     return rendered
 
 
+def _post_by_slug(slug: str) -> tuple | None:
+    """Look up a SIDEBAR_POSTS row by slug. Returns the full tuple or None."""
+    return next((row for row in SIDEBAR_POSTS if row[0] == slug), None)
+
+
+def _render_card(post: tuple, kind: str) -> str:
+    """Render a single sidebar card. kind ∈ {'previous', 'active', 'next'}."""
+    slug, title, date, read_time, audience, tags = post
+    date_html = html.escape(date) if "&" not in date else date
+    rt_html = html.escape(read_time) if "&" not in read_time else read_time
+    meta_line = f"{date_html} &bull; {rt_html}" if read_time != "TBD" else date_html
+    audience_tip = AUDIENCE_TITLE.get(audience, "")
+    active_indent = " " * 32
+    inactive_indent = " " * 36
+    active_tags = ("\n" + active_indent).join(
+        f'<span class="tag tag-sm">{html.escape(t)}</span>' for t in tags
+    )
+    inactive_tags = ("\n" + inactive_indent).join(
+        f'<span class="tag tag-sm">{html.escape(t)}</span>' for t in tags
+    )
+    if kind == "active":
+        return (
+            '                        <div class="article-card active">\n'
+            '                            <div class="article-card-tags">\n'
+            f'                                <span class="tag tag-sm tag-audience" title="{audience_tip}">{audience}</span>\n'
+            f'                                {active_tags}\n'
+            '                            </div>\n'
+            '                            <div class="sidebar-card-position">You are here</div>\n'
+            f'                            <h3>{html.escape(title)}</h3>\n'
+            f'                            <div class="date">{meta_line}</div>\n'
+            '                        </div>'
+        )
+    # previous / next get an arrow header above the title
+    arrow_label = "&larr; Previous in series" if kind == "previous" else "Next in series &rarr;"
+    return (
+        f'                        <a href="{slug}.html" class="article-card-link">\n'
+        '                            <div class="article-card">\n'
+        '                                <div class="article-card-tags">\n'
+        f'                                    <span class="tag tag-sm tag-audience" title="{audience_tip}">{audience}</span>\n'
+        f'                                    {inactive_tags}\n'
+        '                                </div>\n'
+        f'                                <div class="sidebar-card-position">{arrow_label}</div>\n'
+        f'                                <h3>{html.escape(title)}</h3>\n'
+        f'                                <div class="date">{meta_line}</div>\n'
+        '                            </div>\n'
+        '                        </a>'
+    )
+
+
 def render_sidebar(active_slug: str) -> str:
-    """Render the sidebar — list every existing blog post, marking the active one."""
+    """Render the sidebar as 3-5 cards: previous in series, current, next in series, plus an
+    'All essays' link back to the blog index. Reading order comes from READING_ORDER (not
+    from SIDEBAR_POSTS, which is publication-descending). When the active essay is first or
+    last in READING_ORDER, the corresponding boundary card is omitted."""
     out: list[str] = []
-    for slug, title, date, read_time, audience, tags in SIDEBAR_POSTS:
-        date_html = html.escape(date) if "&" not in date else date
-        rt_html = html.escape(read_time) if "&" not in read_time else read_time
-        meta_line = f"{date_html} &bull; {rt_html}" if read_time != "TBD" else date_html
-        audience_tip = AUDIENCE_TITLE.get(audience, "")
-        # Build tag HTML with per-card-type indent so non-active cards line up
-        # under their `<div class="article-card-tags">` (4 extra spaces of nesting
-        # because they sit inside an `<a class="article-card-link">` wrapper).
-        active_indent = " " * 32
-        inactive_indent = " " * 36
-        active_tags = ("\n" + active_indent).join(
-            f'<span class="tag tag-sm">{html.escape(t)}</span>' for t in tags
-        )
-        inactive_tags = ("\n" + inactive_indent).join(
-            f'<span class="tag tag-sm">{html.escape(t)}</span>' for t in tags
-        )
-        if slug == active_slug:
-            out.append(
-                '                        <div class="article-card active">\n'
-                '                            <div class="article-card-tags">\n'
-                f'                                <span class="tag tag-sm tag-audience" title="{audience_tip}">{audience}</span>\n'
-                f'                                {active_tags}\n'
-                '                            </div>\n'
-                f'                            <h3>{html.escape(title)}</h3>\n'
-                f'                            <div class="date">{meta_line}</div>\n'
-                '                        </div>'
-            )
-        else:
-            out.append(
-                f'                        <a href="{slug}.html" class="article-card-link">\n'
-                '                            <div class="article-card">\n'
-                '                                <div class="article-card-tags">\n'
-                f'                                    <span class="tag tag-sm tag-audience" title="{audience_tip}">{audience}</span>\n'
-                f'                                    {inactive_tags}\n'
-                '                                </div>\n'
-                f'                                <h3>{html.escape(title)}</h3>\n'
-                f'                                <div class="date">{meta_line}</div>\n'
-                '                            </div>\n'
-                '                        </a>'
-            )
+    try:
+        idx = READING_ORDER.index(active_slug)
+    except ValueError:
+        # Slug not in reading order — fall back to active-only (shouldn't happen in practice).
+        active_post = _post_by_slug(active_slug)
+        if active_post is None:
+            return ""
+        return _render_card(active_post, "active")
+
+    prev_slug = READING_ORDER[idx - 1] if idx > 0 else None
+    next_slug = READING_ORDER[idx + 1] if idx < len(READING_ORDER) - 1 else None
+
+    if prev_slug:
+        prev_post = _post_by_slug(prev_slug)
+        if prev_post is not None:
+            out.append(_render_card(prev_post, "previous"))
+
+    active_post = _post_by_slug(active_slug)
+    if active_post is not None:
+        out.append(_render_card(active_post, "active"))
+
+    if next_slug:
+        next_post = _post_by_slug(next_slug)
+        if next_post is not None:
+            out.append(_render_card(next_post, "next"))
+
+    # "All essays" link back to the blog index — always present.
+    out.append(
+        '                        <a href="/blog.html" class="article-card-link sidebar-all-essays-link">\n'
+        '                            <div class="article-card sidebar-all-essays">\n'
+        '                                <h3>All essays &rarr;</h3>\n'
+        '                                <div class="date">Browse the full series</div>\n'
+        '                            </div>\n'
+        '                        </a>'
+    )
+
     return "\n".join(out)
 
 
