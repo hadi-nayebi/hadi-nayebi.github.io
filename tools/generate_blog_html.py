@@ -138,9 +138,11 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
 
     def repl(m: re.Match) -> str:
         block = m.group(1).strip()
-        # Extract Concept (for the header), Caption (for the bottom), Prompt (everything else).
+        # Extract Concept (for the header), Caption (for the bottom), ASSET (if asset
+        # has been generated and should be rendered instead of the dashed placeholder).
         concept_match = re.search(r"^\s*Concept:\s*(.+?)$", block, re.MULTILINE)
         caption_match = re.search(r'Caption\s*\([^)]*\):\s*"([^"]+)"', block)
+        asset_match = re.search(r"^\s*ASSET:\s*(\S+)\s*$", block, re.MULTILINE)
         title = "Image placeholder"
         if concept_match:
             concept = concept_match.group(1).strip().rstrip(".")
@@ -151,6 +153,28 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
                 title = concept
             title = title[0].upper() + title[1:] if title else "Image"
         caption = caption_match.group(1).strip() if caption_match else ""
+
+        # If ASSET is set, render a <figure> with the asset instead of the dashed placeholder.
+        # The asset path is relative to the blog .html file's directory (e.g.
+        # "../assets/images/blog/foo.png"). Caption (if present) becomes <figcaption>.
+        if asset_match:
+            asset_path = asset_match.group(1).strip()
+            title_html = inline_format(title)
+            caption_html = inline_format(caption) if caption else ""
+            figure = (
+                '<figure class="blog-image" style="margin: 2rem 0;">\n'
+                f'                          <img src="{asset_path}" alt="{html.escape(title)}" '
+                'style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">\n'
+            )
+            if caption_html:
+                figure += (
+                    '                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; '
+                    'color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">'
+                    f'{caption_html}</figcaption>\n'
+                )
+            figure += '                        </figure>'
+            images.append(figure)
+            return f"{_IMG_SENTINEL_PREFIX}{len(images)-1}\x00"
 
         # Build the prompt body by stripping Concept + Caption lines and reflowing.
         lines = block.splitlines()

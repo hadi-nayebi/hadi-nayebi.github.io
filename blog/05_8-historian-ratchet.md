@@ -47,6 +47,7 @@ The lesson is small: **read the work before changing it**.
 The mechanism makes the lesson non-negotiable. The agent is not *suggested* to re-read the plugin's history before editing — a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed.
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: ../assets/images/blog/historian-ratchet-b5-4.png
   Concept: Chalk-on-blackboard wheel — plugin_integrity's historian ratchet: drift counter climbs with commits, blocks at threshold, historian subagent re-narrates, counter resets.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk circles and arrows;
   pastel chalk for the four stage nodes (cyan = Stage 1, green = Stage 2, orange = Stage 3, pink = Stage 4);
@@ -72,6 +73,7 @@ The agent must be able to ask a `[PLUGIN-LOCK]` question. That depends on `quest
 No single plugin enforces the historian ratchet. Three plugins compose to make it possible — `question_discipline` opens the asking surface, `job_core` carries the answer, `plugin_integrity` protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. [Essay 7](07-the-plugin-kit.html) takes `plugin_integrity` apart on its own terms — the lock-and-historian ceremony as a single plugin's anatomy. *[ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md:158-159 | Plugin Building Lessons: "Plugins own their own controls — don't extend another plugin's guard for your concerns" + "Soft controls belong inside plugins". Single-concern boundary that lets ceremonies compose from narrow parts.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: ../assets/images/blog/historian-ratchet-b5-5.png
   Concept: Chalk-on-blackboard composition — three single-concern plugins fitting together into the historian-ratchet ceremony.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk tiles and a connecting arc;
   pastel chalk for each plugin tile (cyan = Tile 1, green = Tile 2, orange = Tile 3);

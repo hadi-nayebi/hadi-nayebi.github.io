@@ -67,6 +67,7 @@ The footers are why the seed agent does not need to rely on the chat to hold its
 CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC cycle — its waterfall pulls durable findings from the four footer sections up into the body of the same `CLAUDE.md` (so they survive the next cycle), routes topic-specific knowledge into `.claude/knowledge/`, and migrates anything that belongs higher up the tree into a parent `CLAUDE.md` or into the root brain. When CONDENSE finishes, the footers are empty again. The next cycle of OPEVC starts with a clean working memory and a slightly enriched body. The hierarchy as a whole grows smarter with each pass. *[ref: condense-deflates-footers-organ | .claude/plugins/phase_condense/scripts/condense-commit.sh:110-160 | Stage-aware deflation gate: 80% (Stage 1, no plan_file) or ~50% (Stage 2, plan_file set) of bottom-section words must be absorbed/migrated before commit succeeds. Blocks `condense-commit.sh` advance to idle if `current_total > max_remaining`. Footer emptiness is enforced, not coincidental.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: ../assets/images/blog/claude-md-anchors-b5-3.png
   Concept: Chalk-on-blackboard sequence — five panels of a CLAUDE.md file across the OPEVC cycle, footers inflating then CONDENSE deflating them.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk panels;
   pastel chalk for each phase header (cyan = OBSERVE, green = PLAN, orange = EXECUTE, pink = VERIFY, magenta = CONDENSE);

@@ -31,6 +31,7 @@ A pre-call sensor reads the running token count on every tool call. At the first
 The tier *positions* are tunable; the architectural fact is the progressive tightening. Rather than letting the agent drift toward a hard wall, `brain_guard` removes one tool at a time until the only graceful move left is to compact. *[ref: tier-positions-are-tunable | .claude/plugins/brain_guard/hooks/context-gate.sh:13-39 | Hook's own comment "GRADUATED ENFORCEMENT — escalate consequences as the danger rises, instead of one binary on/off switch." Maps tiers: 250k → Read blocked (Edit/Write still allowed); 300k → Read+Edit+Write+MultiEdit blocked, only Bash + AskUserQuestion remain.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: ../assets/images/blog/self-compact-b5-2.png
   Concept: Chalk-on-blackboard horizontal axis — context window fill with three brain_guard tiers leading to the 100% wall.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk axis line;
   pastel chalk for the tier bars (cyan = soft tier, green = read-block tier, orange = critical-block tier);

@@ -43,6 +43,7 @@ Two layers. One multi-form substrate underneath.
 The substrate is `.claude/` itself — the multi-form memory directory the opener introduced. Each form serves a different concern, and each is used by different machinery. The difference between the two plugin layers is not which substrate forms they touch — that varies plugin by plugin — but their relationship to phase. The always-on layer runs continuously, each plugin owning one concern and its own private state. The phasic layer activates one plugin at a time, dictated by the active job's current phase, and uses the CLAUDE.md hierarchy specifically as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and other forms of memory at the end. *[ref: underneath-both-layers-sits | CLAUDE.md:111-112 | CONDENSE 7-step waterfall: (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) `[PENDING-JOB]` → dep jobs, (4) `[VOICE-UPDATE]` → voice.xml, (5) `[AGENT-UPDATE]` → subagent defs, (6) `[KNOWLEDGE]` → knowledge files, (7) session archive fallback. Markers carried in phase footers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: ../assets/images/blog/always-on-plugins-b5-1.png
   Concept: Chalk-on-blackboard cross-section — two plugin layers above the shared CLAUDE.md + .claude/ substrate.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for cell fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
@@ -81,7 +82,7 @@ The substrate is `.claude/` itself — the multi-form memory directory the opene
 
 ## Why "Single Concern" Matters
 
-Each always-on plugin owns exactly one concern. *[ref: each-always-on-plugin-owns | .claude/plugins/CLAUDE.md:8 | Foundational plugin definition: "Each subdirectory is a plugin — a self-contained unit that owns one concern and enforces it through hooks, scripts, and tests." Section-opening restatement; the paragraphs that follow analyze why the principle works.]*
+Each always-on plugin owns exactly one concern.
 
 `plugin_integrity` owns plugin edit safety. `brain_guard` owns self-compaction. `job_core` owns the job lifecycle. `interaction_summary` keeps a focused job's mega-prompt legible as it grows. `question_discipline` owns the asking gate. Each plugin lives in its own folder under `.claude/plugins/<name>/` with its own hooks, scripts, hidden state, tests, and voice files. Naming the concern is easy because each plugin only has one to name. *[ref: plugin-integrity-owns-edit-safety | .claude/plugins/CLAUDE.md:12-24,45,103-117 | Active Plugins table (lines 12-24) maps each named plugin to its objective; Plugin Structure Convention tree (lines 103-117) shows folder layout (CLAUDE.md, data.json, hooks/, scripts/, tests/, docs/); voice.xml documented at line 45 as "sibling concept to config.conf" and present in every plugin on disk.]*
 
