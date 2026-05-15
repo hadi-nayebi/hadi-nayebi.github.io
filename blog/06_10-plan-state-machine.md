@@ -133,7 +133,7 @@ Next.
 
 ---
 
-*Essay 6.10 of 10 — The Markov Phasic Brain — Hadosh Academy series on agent architecture.*
+*Essay 6.10 of 10 — The Markov Phasic Brain.*
 
 *Previous: [Essay 6.9 — Gmode](06_9-gmode.html) — the off-cycle lane that drops the phase gates for deliberate maintenance work.*
 *Next: [Essay 7 — The Plugin Kit](07-the-plugin-kit.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*

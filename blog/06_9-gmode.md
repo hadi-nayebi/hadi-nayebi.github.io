@@ -94,7 +94,7 @@ Gmode is the side-channel; the plan-state machine is the long-channel. Both exis
 
 ---
 
-*Essay 6.9 of 10 — The Markov Phasic Brain — Hadosh Academy series on agent architecture.*
+*Essay 6.9 of 10 — The Markov Phasic Brain.*
 
 *Previous: [Essay 6.8 — The Backward Multiplier](06_8-backward-multiplier.html) — the meta-cognition dial that calibrates each phase's tool budget before entry.*
 *Next: [Essay 6.10 — The Plan-State Machine](06_10-plan-state-machine.html) — multi-cycle plans, the .md → .yaml lifecycle, and the long-horizon work the phasic brain carries across cycles.*

@@ -112,7 +112,7 @@ Next.
 
 ---
 
-*Essay 5.8 of 9 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
+*Essay 5.8 of 9 — The Always-On Digital Cortex.*
 
 *Previous: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — substrate, four-footer protocol, altered-list gate.*
 *Next: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted at all.*
