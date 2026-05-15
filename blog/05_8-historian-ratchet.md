@@ -61,7 +61,7 @@ The mechanism makes the lesson non-negotiable. The agent is not *suggested* to r
   At the center of the wheel, a small white-chalk caption reads exactly: "work cannot proceed without periodic narration".
   Keep all arrows slightly curved and hand-drawn, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings: "Stage 1: plugin commits accumulate", "Stage 2: drift threshold crossed, unlock blocked", "Stage 3: historian-${plugin_name} subagent dispatched", "Stage 4: historian commits, drift resets", "drift_count = 1, 2, 3, ...", "drift_count ≥ DRIFT_THRESHOLD (default 10)", "drift_count = 0", "[PLUGIN-LOCK]", "docs/evolution.md", "MAX_EVOLUTION_WORDS = 2000", "work cannot proceed without periodic narration", plus the caption below. No other words, plugin names, or file names may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.8.1. Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution."
 -->
 
 ## Three plugins, one ceremony
@@ -87,7 +87,7 @@ No single plugin enforces the historian ratchet. Three plugins compose to make i
   Below all three tiles, a long horizontal chalk slab labeled in white chalk exactly "the .claude/ substrate (multi-form: CLAUDE.md hierarchy + plugin data.json + voice.xml + agents/ + knowledge/)" sits as the shared substrate.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings: "question_discipline", "job_core", "plugin_integrity", "[PLUGIN-LOCK]", "job", "plugins/<name>/", "git checkpoint", "opens the asking surface", "carries the answer", "protects the edit", "historian ratchet ceremony", "the .claude/ substrate (multi-form: CLAUDE.md hierarchy + plugin data.json + voice.xml + agents/ + knowledge/)", plus the caption below. No other plugin names or labels may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "No single plugin enforces the ratchet — three single-concern plugins compose the ceremony, each contributing what it owns."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.8.2. No single plugin enforces the ratchet — three single-concern plugins compose the ceremony, each contributing what it owns."
 -->
 
 Call this **composed ceremony**: narrow parts, structured interfaces, emergent rituals — the same shape as the `/compact` five-section template, the same shape as the ratchet itself. Narrow constraints composing into behaviors larger than any single constraint. *[ref: composed-ceremony-narrow-parts | .claude/plugins/CLAUDE.md:170-176 | Control Types in Plugins: "Hard controls — hooks that block (exit 2)" + "Soft controls — injections that guide via voice" + "Structural controls — design choices that make bypass impossible". Each plugin mixes all three; emergent behavior from narrow control forms.]*

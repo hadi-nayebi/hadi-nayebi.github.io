@@ -52,7 +52,7 @@ The tier *positions* are tunable; the architectural fact is the progressive tigh
   From the 20% bar, a dotted white-chalk arrow curves upward-left and out of the squeeze, ending at a chalk label that reads exactly "self-compact early (brain_guard fires /compact)".
   Keep all arrows slightly curved and hand-drawn, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings: "context window fill (Opus 4.7, 1M tokens)", "0%", "20% (200k)", "25% (250k)", "30% (300k)", "100% (1M)", "soft tier — coaching voice", "Read blocked", "Edit, Write, MultiEdit blocked", "Read", "Edit", "Write", "MultiEdit", "Claude Code default auto-compact", "self-compact early (brain_guard fires /compact)", plus the caption below. No other tool names or labels may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "The progressive squeeze — each tier removes one more tool until self-compaction is the only graceful move."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.3. The progressive squeeze — each tier removes one more tool until self-compaction is the only graceful move."
 -->
 
 ## Shape compels production

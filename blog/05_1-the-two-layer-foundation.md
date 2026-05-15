@@ -75,7 +75,7 @@ The substrate is `.claude/` itself — the multi-form memory directory the opene
   No arrows from the top band to the bottom band.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "always-on plugins", "phasic plugins (OPEVC orchestrator + 5 phase plugins)", "plugin_integrity", "brain_guard", "job_core", "interaction_summary", "question_discipline", "phasic_system", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "the .claude/ substrate (multi-form)", "CLAUDE.md", ".claude/", "plugins/", "knowledge/", "agents/", "writes into", "absorbs from", plus the caption below. No other words, file names, or folders may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Two plugin layers, one multi-form substrate — the phasic layer writes through the CLAUDE.md hierarchy and absorbs at cycle close; the always-on layer runs alongside, phase-independent."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.1. Two plugin layers, one multi-form substrate — the phasic layer writes through the CLAUDE.md hierarchy and absorbs at cycle close; the always-on layer runs alongside, phase-independent."
 -->
 
 ---

@@ -54,7 +54,7 @@ The shape generalizes beyond this prototype. **Friction tracks danger.** Reading
   Right one-third — a small pink-fill chalk circle labeled "auto-revert" containing the literal text "tests → pass / fail" and two outgoing arrows: a pass arrow leading to the literal label "commit", a fail arrow leading to the literal label "revert to checkpoint".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — only these literal text strings as labels: "plugins/<your_plugin>/", "[PLUGIN-LOCK]", "[TEST-LOCK]", "hooks/", "scripts/", "config", "tests/", "CLAUDE.md + docs/ — free", "auto-revert", "tests → pass / fail", "commit", "revert to checkpoint", plus the caption below.
-  Caption (bottom of image, white chalk, hand-drawn): "Two stages of unlock, one auto-revert circuit — friction calibrated by danger. Plugin code passes one gate; test files pass two; documentation flows through with none."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.2. Two stages of unlock, one auto-revert circuit — friction calibrated by danger. Plugin code passes one gate; test files pass two; documentation flows through with none."
 -->
 
 ## What would break without it

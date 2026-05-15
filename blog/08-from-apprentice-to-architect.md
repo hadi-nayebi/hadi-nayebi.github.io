@@ -113,7 +113,7 @@ These patterns work across all four maturation stages. A stage-1 deep job can sp
   Above the staircase, draw a single curving chalk arrow running left-to-right along the climb with one short caption riding its curve IN WHITE CHALK exactly: "graduation requires evidence, never automatic".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "Stage 1: Deep single-cycle", "plan_file = false", "seed in learning mode", "Stage 2: Multi-cycle .md plan", "plan_state = drafting", "chunked from stage 1", "Stage 3: Multi-cycle .yaml plan", "plan_state = yaml_drafting", "voice-paired injections per phase", "Stage 4: Plugin form of job", "phase-cognition customization", "extends phase guards", "Creation patterns (apply across all stages)", "sibling", "job.sh create <name>", "dependent", "job.sh create-dependent <name>", "graduation requires evidence, never automatic", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Four stages of job maturation. Most jobs never reach stage 4. Some never leave stage 1."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.1. Four stages of job maturation. Most jobs never reach stage 4. Some never leave stage 1."
 -->
 
 ---
@@ -160,7 +160,7 @@ The shape is consistent: a small brain, a large knowledge layer, a narrow memory
   On the left edge of the stack, draw a single vertical white-chalk arrow running BOTTOM-UP along the entire stack, with one short caption riding the arrow IN WHITE CHALK exactly: "durability".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "chat session", "dies at compaction", "working CLAUDE.md", "deflates each cycle", "plan files", "archived when sealed", "plugin evolution.md", "capped 2000w, narrated", ".claude/knowledge/", "topic silos, grows monotonically", "memory/", "cross-project, your home dir", "durability", plus the caption below. No other words, file names, folders, or lifespan descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.2. Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
 -->
 
 ---
@@ -207,7 +207,7 @@ This soft-to-hard migration *mirrors* the job-maturation arc one level up. A sta
   Below the pipeline, a horizontal white-chalk note reads exactly: "Lock 13: data must show soft failed before hard lands".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "coaching voice", "voice.xml — probabilistic", "measurement", "data.json counters", "hook block", "PreToolUse — deterministic", "plugin tests", "tests/ — protects the gate", "kit template", "fossilized — every new plugin inherits", "soft → hard → out of brain", "Lock 13: data must show soft failed before hard lands", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Patterns travel left to right. The brain shrinks; the kit grows."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.3. Patterns travel left to right. The brain shrinks; the kit grows."
 -->
 
 ---
@@ -283,7 +283,7 @@ The prototype's plugin-version spread shows this arc directly. `job_core` carrie
   Above the entire staircase, a single curving chalk arrow runs left-to-right along the climb with one short caption riding its curve IN WHITE CHALK exactly: "from supervising to composing".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "week 1", "voices fire constantly", "multipliers land wrong", "bail-backs are corrections, not real", "journeyman", "weeks 4–12", "patterns migrate", "hooks harden", "CLAUDE.md shrinks", "architect", "month 3+", "kit ceremonies routine", "compose with the seed", "direct higher leverage", "from supervising to composing", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Three rough stages. Soft boundaries. The shape is real."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.4. Three rough stages. Soft boundaries. The shape is real."
 -->
 
 ---
@@ -323,7 +323,7 @@ A mature seed is a small brain over a large knowledge layer.
     "400"   (memory entries cap)
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycles", "words", "knowledge/", "plugin evolution.md", "root brain", "3,500", "2,000", "800", "500", "400", plus the caption below. No other words, file names, folders, or curve descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "The brain reaches a ceiling. The knowledge layer never does."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.5. The brain reaches a ceiling. The knowledge layer never does."
 -->
 
 ---

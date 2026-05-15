@@ -95,7 +95,7 @@ CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC c
   A curving white-chalk arrow connects panel 5 back to panel 1, labeled in white chalk exactly "next cycle".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings: "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "body", "---Ob---", "---Pl---", "---Ex---", "---Ve---", ".claude/knowledge/", "next cycle", plus the caption below. No other phase names, file names, or directory names may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Footers inflate across OPEVC, then CONDENSE deflates them — durable findings ratchet upward into the body, the rest discards."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.7. Footers inflate across OPEVC, then CONDENSE deflates them — durable findings ratchet upward into the body, the rest discards."
 -->
 
 ## The altered list — CLAUDE.md edits scope execution

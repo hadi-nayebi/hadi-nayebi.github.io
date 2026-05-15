@@ -152,7 +152,7 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
     Cells: hand-drawn white chalk checkmark (✓) for allowed; white chalk X for blocked. No words inside cells.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "read project", "edit project", "edit own footer", "edit plan file", "edit .claude/", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only ✓ or X glyphs, no text.
-  Caption (bottom of image, white chalk, hand-drawn): "Each phase is defined by what it cannot do."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. Each phase is defined by what it cannot do."
 -->
 
 
@@ -326,7 +326,7 @@ The backward edges are situational rather than a fixed menu — VERIFY rolls bac
   The three backward arrows are drawn in warmer pastel chalk (orange / pink / magenta); the forward
   arrow is white chalk. Keep all arrows slightly curved and hand-drawn, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "verify", "execute", "plan", "observe", "condense", "minor fix", "design flaw", "context gap", "pass", plus the caption below. No other words, file names, folders, or phase descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Backward transitions are explicit choices, not automatic fallbacks."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.2. Backward transitions are explicit choices, not automatic fallbacks."
 -->
 
 
@@ -360,7 +360,7 @@ That routing is structured as a strict **seven-step waterfall**. The order matte
   Below all seven tiles, a horizontal chalk bar drawn across the board's width, labeled IN WHITE CHALK exactly "deflation gate", with one chalk exit arrow attempting to pass through it.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "1. footer to body", "2. cross-file move", "3. pending job", "4. voice update", "5. agent update", "6. knowledge", "7. session archive", "deflation gate", plus the caption below. No other words, file names, folders, or step descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Each step's output feeds the next. Step 7 is the fallback, not a peer."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.3. Each step's output feeds the next. Step 7 is the fallback, not a peer."
 -->
 
 1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the four phase markers from [the previous essay](05-the-always-on-digital-cortex.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step — a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. The footers are scratch; the body is durable. The deflation can be sharp: a single plugin's working CLAUDE.md routinely shrinks from a sprawling footer down to a tight body section in this step alone, the bulk of the cycle's noise gone in one absorption pass. *[ref: condense-step-1-footer-to-body-graduated | phase_condense/docs/decisions.md:213-221 | Decision D20: CONDENSE Step 1 (footer-to-body absorption) enforced via graduated discipline — entry voice teaches "absorb footer-to-body first," a body-vs-footer tracker metric measures success, hard gate added only if data warrants.]*
@@ -426,7 +426,7 @@ Every phase has a fixed point threshold the agent must cross before it is allowe
   Above the dial, draw a single curving chalk arrow that runs RIGHT to LEFT (from the "3" tick toward the "0.5" tick) with one short chalk caption riding along the arrow's curve: "smaller number, bigger phase".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "0.5", "1", "1.5", "2", "2.5", "3", "deep", "standard", "targeted", "surgical", "~67 actions", "~34 actions", "~22 actions", "~12 actions", "smaller number, bigger phase", plus the caption below. No other words, file names, tool names, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "The multiplier is backward. A smaller number declares a deeper phase."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.4. The multiplier is backward. A smaller number declares a deeper phase."
 -->
 
 How does the phase know what counts as enough work? Through a per-phase point system.
