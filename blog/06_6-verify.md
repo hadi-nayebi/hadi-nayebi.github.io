@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # VERIFY — Independent Eyes
 
-*Essay 6.6 of the Hadosh Academy series on agent architecture — sub-essay of [Essay 6: The Markov Phasic Brain](06-the-markov-phasic-brain.html).*
+*Essay 6.6 of 10 — The Markov Phasic Brain.*
 
 ---
 
@@ -92,7 +92,7 @@ When VERIFY passes, the orchestrator advances the job to CONDENSE.
 
 ---
 
-*Essay 6.6 of the Hadosh Academy series on agent architecture — sub-essay of [Essay 6: The Markov Phasic Brain](06-the-markov-phasic-brain.html).*
+*Essay 6.6 of 10 — The Markov Phasic Brain.*
 
 *Previous: [Essay 6.5 — EXECUTE: Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, checkpoints, delegation bias.*
 *Next: [Essay 6.7 — CONDENSE: The Cognitive Organ](06_7-condense.html) — the seven-step waterfall, the cycle's metabolism.*

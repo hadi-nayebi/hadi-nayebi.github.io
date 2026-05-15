@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # The Backward Multiplier
 
-*Essay 6.8 of 9 &mdash; The Markov Phasic Brain.*
+*Essay 6.8 of 10 &mdash; The Markov Phasic Brain.*
 
 ---
 
@@ -114,7 +114,21 @@ Next.
 
 ---
 
-*Essay 6.8 of 9 &mdash; The Markov Phasic Brain &mdash; Hadosh Academy series on agent architecture.*
+*Essay 6.8 of 10 &mdash; The Markov Phasic Brain &mdash; Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 6.7 &mdash; CONDENSE: The Cognitive Organ](06_7-condense.html) &mdash; the seven-step waterfall, the deflation gate, the only phase that edits the brain.*
 *Next: [Essay 6.9 &mdash; GMODE: The Off-Cycle Lane](06_9-gmode.html) &mdash; the operator's deliberate maintenance lane that lives outside the OPEVC cycle.*
+
+---Ob---
+
+
+
+---Pl---
+
+
+
+---Ex---
+
+
+
+---Ve---

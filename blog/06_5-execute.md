@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # EXECUTE — Build, in Scope, in Steps
 
-*Essay 6.5 of the Hadosh Academy series on agent architecture — sub-essay of [Essay 6: The Markov Phasic Brain](06-the-markov-phasic-brain.html).*
+*Essay 6.5 of 10 — The Markov Phasic Brain.*
 
 ---
 
@@ -60,7 +60,7 @@ When EXECUTE believes the plan is implemented, it commits the final checkpoint a
 
 ---
 
-*Essay 6.5 of the Hadosh Academy series on agent architecture — sub-essay of [Essay 6: The Markov Phasic Brain](06-the-markov-phasic-brain.html).*
+*Essay 6.5 of 10 — The Markov Phasic Brain.*
 
 *Previous: [Essay 6.4 — PLAN: Decide, Then Lock](06_4-plan.html) — naming the contract, the plan_state machine.*
 *Next: [Essay 6.6 — VERIFY: Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, approval authority.*

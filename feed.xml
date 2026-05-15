@@ -25,6 +25,14 @@
     </item>
 
     <item>
+      <title>The Markov Phasic Brain — Pt 10: The Plan-State Machine: Long-Horizon Memory</title>
+      <link>https://hadi-nayebi.github.io/blog/06_10-plan-state-machine.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/06_10-plan-state-machine.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The multi-cycle plan-file lifecycle that scales the markov brain to long-horizon work. plan_state + the three job forms + .yaml injection at phase entry.</description>
+    </item>
+
+    <item>
       <title>The Markov Phasic Brain — Pt 9: GMODE: The Off-Cycle Lane</title>
       <link>https://hadi-nayebi.github.io/blog/06_9-gmode.html</link>
       <guid>https://hadi-nayebi.github.io/blog/06_9-gmode.html</guid>
