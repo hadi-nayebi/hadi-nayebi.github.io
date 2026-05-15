@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The Two-Layer Foundation
 
-*Essay 5.1 of 9 — The Always-On Digital Cortex. Hadosh Academy series on agent architecture. Essay 5 opens here; Essays 5.1 through 5.8 follow.*
+*Essay 5.1 of 9 — The Always-On Digital Cortex. Hadosh Academy series on agent architecture. Essay 5 opens here; Essays 5.2 through 5.9 follow.*
 
 ---
 

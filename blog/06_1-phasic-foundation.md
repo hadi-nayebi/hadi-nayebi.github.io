@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # Phasic Foundation
 
-*Essay 6.1 of 10 — The Markov Phasic Brain. Hadosh Academy series on agent architecture. Essay 6 opens here; Essays 6.1 through 6.8 follow.*
+*Essay 6.1 of 10 — The Markov Phasic Brain. Hadosh Academy series on agent architecture. Essay 6 opens here; Essays 6.2 through 6.10 follow.*
 
 ---
 
