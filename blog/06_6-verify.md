@@ -46,7 +46,7 @@ The reason VERIFY is its own phase is the same reason a compiler is not the same
 
 ---
 
-## Four outcomes
+## The outcomes
 
 VERIFY produces a structured pass/fail report against the plan's acceptance criteria. The report goes into the plan document and into the working CLAUDE.md.
 

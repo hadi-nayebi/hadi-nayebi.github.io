@@ -34,7 +34,7 @@ The contract is not static. The plan moves through a `plan_state` machine — `d
 
 ## The state machine
 
-The plan moves through five states.
+The plan moves through a small set of states (currently five in the prototype, extensible as the design matures).
 
 `drafting` keeps the .md circulating — VERIFY refines it cycle after cycle, the contract sharpens. `md_approved` is the flip: VERIFY asks the user via AskUserQuestion, the user answers yes, the state lifts and the next cycle is dedicated to creating the .yaml.
 

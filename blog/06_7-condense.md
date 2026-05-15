@@ -30,7 +30,7 @@ CONDENSE plays a different role from the four work-on-project phases. Where they
 
 The other phases produce work *on the project*. CONDENSE produces work *on the brain*. Its write scope is `.claude/` plus the CLAUDE.md hierarchy. It cannot touch project files. It cannot add features. It cannot fix bugs. What it does is consolidate everything the cycle just produced &mdash; the gathered context, the plan document, the execution notes, the verification results &mdash; and route the durable parts to where they will be useful in the next cycle. *[ref: condense-is-consolidation-break | phase_condense/docs/principles.md:4-6 | CONDENSE is defined as a "consolidation break" between successful chunks of work — not sleep, not routing, but active content movement that takes the altered CLAUDE.md list (frozen at entry) and moves bottom-section words to durable destinations.]*
 
-That routing is structured as a strict **seven-step waterfall**. The order matters; each step's output feeds the next. *[ref: condense-7-step-waterfall-strict-ordered | phase_condense/docs/principles.md:79-83 | CONDENSE Principle 8: a strict ordered sequence of 7 steps — footer-to-body, cross-file migration, pending jobs, voice updates, agent updates, knowledge routing, session archive fallback. Processing order is deterministic.]*
+That routing is structured as a **strict ordered waterfall** (currently seven steps in the prototype; extensible per the Stage-3 Distributed Job Extension pattern). The order matters; each step's output feeds the next. *[ref: condense-7-step-waterfall-strict-ordered | phase_condense/docs/principles.md:79-83 | CONDENSE Principle 8: a strict ordered sequence of 7 steps — footer-to-body, cross-file migration, pending jobs, voice updates, agent updates, knowledge routing, session archive fallback. Processing order is deterministic.]*
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard cascade — the CONDENSE seven-step waterfall.
@@ -53,7 +53,7 @@ That routing is structured as a strict **seven-step waterfall**. The order matte
   Caption (bottom of image, white chalk, hand-drawn): "Image 6.7.1. Each step's output feeds the next. Step 7 is the fallback, not a peer."
 -->
 
-## The seven-step waterfall
+## The waterfall, step by step
 
 1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the four phase markers from [Essay 5.7](05_7-claude-md-hierarchy.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step &mdash; a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. The footers are scratch; the body is durable. The deflation can be sharp: a single plugin's working CLAUDE.md routinely shrinks from a sprawling footer down to a tight body section in this step alone, the bulk of the cycle's noise gone in one absorption pass. *[ref: condense-step-1-footer-to-body-graduated | phase_condense/docs/decisions.md:213-221 | Decision D20: CONDENSE Step 1 (footer-to-body absorption) enforced via graduated discipline — entry voice teaches "absorb footer-to-body first," a body-vs-footer tracker metric measures success, hard gate added only if data warrants.]*
 
