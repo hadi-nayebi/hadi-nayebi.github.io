@@ -97,8 +97,56 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hadi-nayebi.github.io/blog/06-the-markov-phasic-brain.html</loc>
-    <lastmod>2026-05-09</lastmod>
+    <loc>https://hadi-nayebi.github.io/blog/06_1-phasic-foundation.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_2-discipline-and-map.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_3-observe.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_4-plan.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_5-execute.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_6-verify.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_7-condense.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_8-backward-multiplier.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/06_9-gmode.html</loc>
+    <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

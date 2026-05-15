@@ -1,0 +1,120 @@
+---
+title: "The Backward Multiplier"
+date: "May 2026"
+slug: "backward-multiplier"
+read_time: "11 min"
+tags: [Architecture, Seed Agent, OPEVC, Multiplier]
+status: draft
+version: v0.1.0
+audience: "Tier 2 to Tier 3"
+og_image: "assets/images/blog/markov-phasic-brain.png"
+---
+
+# The Backward Multiplier
+
+*Essay 6.8 of 9 &mdash; The Markov Phasic Brain.*
+
+---
+
+[Essay 6.7](06_7-condense.html) closed the cycle. Five phases plus the metabolism organ &mdash; the seed agent now has the compartmentalized cognition the rest of the series has been building toward. What is left is the one mechanism that sits at the entry of every phase and turns a scalar dial into an act of meta-cognition.
+
+For the architects in the audience, this is where the phasic layer earns its keep. The mechanism is small. The discipline it produces is large.
+
+---
+
+## The Ralph loop and the per-phase echo
+
+Start with the **Ralph loop**. The pattern is familiar to anyone who has tried to keep a CLI agent on task: an agent finishes a few moves, decides it is done, calls `Stop`, and quits &mdash; even though the work is not actually finished. The fix that emerged in the broader agent community is to refuse the stop. The agent calls `Stop`; the system intercepts; the agent is returned to the prompt and told to keep working. The loop runs until the work is genuinely done.
+
+The seed agent adopts the Ralph loop through the job system. Every job carries a `status`. The always-on layer's stop-gate hook reads it on every `Stop` attempt; while any job is `active` or still `pending`, the stop is refused and the agent is returned to the prompt with a message explaining what is still in flight. Stop, refused. Stop, refused. The agent learns to keep working until the job formally completes. *[ref: job-status-state-machine-stop-blocking | job_core/CLAUDE.md:14-37 | job_core's state machine: pending↔active↔completed; ANY pending or active job blocks Stop. The seed agent's Ralph loop adoption — Stop is refused until all jobs reach completed.]*
+
+The phasic layer does the same thing one fractal level down &mdash; inside a single phase.
+
+Every phase has a fixed point threshold the agent must cross before it is allowed to commit and advance. Cross the threshold and the commit script accepts the move forward. Try to commit before crossing it and the script refuses, returning the agent with a message about what kind of work is still missing. Try to call `Stop` mid-phase and the same refusal fires. The threshold is friction-by-design &mdash; a refusal layer that makes the seed agent slow down and do the work the phase exists to do, instead of rushing through phases to get to the next move.
+
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard dial — the multiplier choice.
+  Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn horizontal chalk line for the dial
+  with six chalk tick marks; pastel chalk labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for the dial line, tick numbers, and action-count strings; chalk sticks at the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal labels listed below. Do not invent other tick values, action counts, or descriptor words.
+  Layout: A horizontal chalk line drawn across the board with six tick marks evenly spaced, left to right, each tick number IN WHITE CHALK:
+    "0.5", "1", "1.5", "2", "2.5", "3"
+  Below four of the ticks, draw a short pastel chalk descriptor (one word) and the action-count IN WHITE CHALK:
+    - below "0.5":  cyan descriptor "deep"      / white-chalk "~67 actions"
+    - below "1":    green descriptor "standard" / white-chalk "~34 actions"
+    - below "1.5":  orange descriptor "targeted"/ white-chalk "~22 actions"
+    - below "3":    magenta descriptor "surgical" / white-chalk "~12 actions"
+  Leave the ticks at "2" and "2.5" UNLABELED — no descriptors, no action-counts, no extra words.
+  Above the dial, draw a single curving chalk arrow that runs RIGHT to LEFT (from the "3" tick toward the "0.5" tick) with one short chalk caption riding along the arrow's curve: "smaller number, bigger phase".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "0.5", "1", "1.5", "2", "2.5", "3", "deep", "standard", "targeted", "surgical", "~67 actions", "~34 actions", "~22 actions", "~12 actions", "smaller number, bigger phase", plus the caption below. No other words, file names, tool names, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.8.1. The multiplier is backward. A smaller number declares a deeper phase."
+-->
+
+## The point system underneath
+
+How does the phase know what counts as enough work? Through a per-phase point system.
+
+Each phase has its own point schedule. Actions the phase wants to encourage earn the most; actions it wants to discourage earn less or nothing. OBSERVE rewards synthesis writes into CLAUDE.md and parallel research subagent dispatches above any other action. EXECUTE rewards code edits inside the altered list and execute subagent dispatches. VERIFY rewards script runs and auditor subagent dispatches. CONDENSE rewards routing content into the brain's durable layers &mdash; knowledge files, voice files, plugin CLAUDE.mds. The schedules differ on purpose: each phase shapes the kind of work it considers progress. *[ref: verify-point-schedule-shapes-progress | phase_verify/CLAUDE.md:53-66 | VERIFY's point table: Read 2pts (primary activity), Bash test 5pts, Agent dispatch 7pts (per-phase auditors), Edit CLAUDE.md 5pts, Edit plan file 3pts; each phase rewards a different mix of moves.]*
+
+The point system is *invisible to the seed agent*. No instruction file mentions points. No coaching voice cites a number. No subagent prompt rewards points. The agent never sees its current score and never sees the threshold. What the agent sees, when a gate fires, is the *kind* of work it needs more of &mdash; "you have to read before you can write" or "you have read enough; synthesize before continuing." The arithmetic is the orchestrator's; the experience is just the friction. Hiding the score is deliberate. A scoreboard the agent could see would create point-chasing &mdash; the model is good at optimizing what it can measure. The seed agent is not allowed to optimize this one. It can only do the work, and the work earns points the agent never counts. *[ref: points-invisible-prevents-gaming | phase_observe/docs/principles.md:56-62 | Principle 7: agent never sees point count mid-work; points surface only in min/max gate blocks and commit rejection. Rationale: scoreboard visibility converts behavioral shaping into a gamification target.]*
+
+## The dial
+
+Now bring in the multiplier.
+
+On entry to every phase, the agent must set a multiplier &mdash; chosen from a fixed dial at `0.5, 1, 1.5, 2, 2.5, 3`. Tools are locked until the choice is made. Once made, it cannot be changed for the entry. The multiplier scales how many points each action in the phase's schedule is worth. A high multiplier weights every action up; fewer actions clear the threshold. A low multiplier weights every action down; more actions are needed. *[ref: multiplier-scales-points-in-jq | phase_observe/scripts/observe.sh:243-258 | OBSERVE's add-points command multiplies action points by the entry's multiplier value (line 253 — $p * $e.multiplier) before adding to the points counter; the multiplier scales each action's reward in jq directly.]*
+
+The naive read is that multiplier scales workload up. The intuition is exactly backward. **A smaller multiplier declares a larger phase.**
+
+A `3.0` multiplier means each action is worth three times the base points. The threshold is reached fast &mdash; in practice, around twelve actions. The agent has declared: "this phase is small. I am in and out." A surgical bug fix. A typo. A targeted lookup-and-edit.
+
+A `1.0` multiplier is the standard pace &mdash; about thirty-four actions to cross the threshold.
+
+A `0.5` multiplier means each action is worth half the base points. The threshold takes around sixty-seven actions to clear. The agent has declared: "this phase is large. I am settling in for deep work." A research-heavy investigation. A multi-file refactor. A complex feature.
+
+The intermediate values fill the dial. `1.5` lands around twenty-two actions. `2.0` and `2.5` shape the phase further toward surgical.
+
+## Both directions of error cost
+
+Pick the multiplier wrong in either direction and there is a real cost. Forecast too small (high multiplier on what turns out to be deep work) and the threshold fires before the work is done; the agent has to re-enter the phase to finish, fragmenting the cycle's record. Forecast too large (low multiplier on what turns out to be surgical work) and the phase pads out, the agent does more reading than the work merited, the context window inflates for nothing. *[ref: voice-both-error-directions-cost | phase_observe/scripts/voice.xml:39 | The observe.info.multiplier-set voice fires when the agent sets a multiplier and explicitly tells the agent: "Both error directions cost — under-forecast tightens the gate and forces re-entry; over-forecast leaves capacity unused."]*
+
+The architecture deliberately makes both directions of error cost something. The point of the dial is not to find the safe choice &mdash; there is no safe choice. The point is to force a real act of meta-cognition before the phase begins.
+
+This is the deeper move. The multiplier choice forces the agent to *anticipate the phase*. Before the agent picks a value, it has to read the working memory and ask itself: how heavy is this phase actually going to be? What will I be doing? How many subagents will I need? How many CLAUDE.md edits? The answer is encoded in the multiplier value. And once the multiplier is set, the agent's natural next move is to write a todo list that matches it &mdash; twelve focused steps for a `3.0`, sixty-seven slower steps for a `0.5`, with the rhythm planned in advance. The dial is a single scalar; what it produces is structured anticipation. *[ref: entry-voice-forecast-phase-from-context | phase_observe/hooks/voice.xml:22-28 | OBSERVE entry voice fires on phase entry: tools are locked until multiplier is set; forecast this phase from session context (not patterns from earlier cycles); lock with observe.sh set-multiplier when the forecast is computed.]*
+
+## Persistence across rollbacks
+
+The point counter behaves a level below this in a way the architects should know about. *Backward transitions preserve points; only successful forward advances reset them.* If the agent enters VERIFY, collects fifty points of audit work, then rolls backward to EXECUTE to fix a small thing, the verify entry's fifty points are preserved. When the agent advances forward again &mdash; execute back into verify &mdash; VERIFY resumes from where it was, fifty points already earned, only fifty more to clear the threshold. Only a successful forward advance out of a phase finalizes its entry and resets the counter for the next time the phase is entered fresh. The architecture rewards persistence across rollbacks. The agent does not lose work to the rollback; it loses only the time spent fixing what made the rollback necessary. *[ref: forwarded-false-resumes-with-preserved-points | phase_execute/hooks/execute-sensor.sh:137-148 | On phase re-entry, the sensor checks the last entry's forwarded flag: false (not yet finalized by a forward advance) means reuse with preserved points; true or absent means initialize a fresh entry with cleared points.]*
+
+Pattern-matching from past phases is also explicitly forbidden. "Verify is usually short" or "observe is usually deep" are exactly the wrong heuristics &mdash; they short-circuit the meta-cognition the multiplier exists to force. The coaching voices are deliberately engineered to avoid known multiplier anti-patterns: leading words, translation tables (multiplier to action-count), phase metaphors that pre-encode scope. Earlier drafts of those voices were pruned of each pattern as it surfaced, with the removal noted in-line. The voice is engineered to leave the forecast unmade until the agent makes it, on *this* phase's evidence alone. *[ref: anti-pattern-catalog-removed-translation-table | phase_observe/scripts/voice.xml:36-38 | XML comment documents removal of approx_actions translation table per anti-pattern catalog #5/#9; multiplier value is the operative output, the agent already forecasted from session context — voice avoids prescribing the forecast.]*
+
+## What a scalar between 0.5 and 3 carries
+
+A scalar between `0.5` and `3` carries the weight of all of this. The Ralph loop refuses the stop. The point threshold creates the friction. The point schedule defines what work counts. The point system stays invisible so the agent does not learn to game it. The multiplier dial forces an act of forecasting, and the forecast in turn forces a structured plan of attack for the phase. Simple jobs find a high multiplier and move fast. Complex jobs find a low multiplier and breathe. Every phase begins with a real moment of meta-cognition &mdash; and the rest of the phase is the agent living up to it.
+
+This is the part of the seed agent's design I find most quietly elegant.
+
+---
+
+## What comes next
+
+Phases give the agent compartmentalized cognition. The CLAUDE.md layer from the [Essay 5 series](05_1-the-two-layer-foundation.html) is the working-memory form they write that cognition into &mdash; the surface where each cycle's tokens land before CONDENSE absorbs them into longer-term memory. Together they form a working brain &mdash; one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
+
+This is what [Essay 1](01-llms-are-not-the-agents.html) was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.
+
+Stretch one cycle into many, chained, and you get the long-horizon discipline [Essay 8](08-from-apprentice-to-architect.html) is about &mdash; multi-cycle jobs where the multiplier sentinel, the plan-file contract, and the seven-step waterfall keep the agent honest across days, not just minutes. The mechanisms in this essay are designed to scale up that way without losing their grip.
+
+But a phase is itself a plugin. So is the orchestrator. So is everything that runs in the always-on layer. The brain's growth &mdash; the brain's *capacity* to grow &mdash; depends on a standardized way of building, packaging, and evolving plugins.
+
+The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design?
+
+Next.
+
+---
+
+*Essay 6.8 of 9 &mdash; The Markov Phasic Brain &mdash; Hadosh Academy series on agent architecture.*
+
+*Previous: [Essay 6.7 &mdash; CONDENSE: The Cognitive Organ](06_7-condense.html) &mdash; the seven-step waterfall, the deflation gate, the only phase that edits the brain.*
+*Next: [Essay 6.9 &mdash; GMODE: The Off-Cycle Lane](06_9-gmode.html) &mdash; the operator's deliberate maintenance lane that lives outside the OPEVC cycle.*
