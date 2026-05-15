@@ -77,10 +77,6 @@ The foundation is in place: a Markov brain whose moves are themselves Markov cha
 *Previous: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
 *Next: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*
 
----Ob---
 
----Pl---
 
----Ex---
 
----Ve---

@@ -69,10 +69,6 @@ OBSERVE writes once, into the working memory, and hands the result forward. The 
 *Previous: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*
 *Next: [Essay 6.4 — PLAN: Decide, Then Lock](06_4-plan.html) — turning observation into a binding contract.*
 
----Ob---
 
----Pl---
 
----Ex---
 
----Ve---

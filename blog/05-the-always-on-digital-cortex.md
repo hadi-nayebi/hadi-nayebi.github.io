@@ -190,19 +190,15 @@ Every Claude Code user gets this primitive for free. What the seed agent does on
 The body of the file — everything above the four anchors below — keeps the standard Claude Code semantics: identity, rules, structure, the things the agent should remember about this directory at all times. Below the body, every `CLAUDE.md` inside the seed agent's brain carries four anchored sections: *[ref: body-keeps-standard-claude-code-semantics | .claude/plugins/brain_guard/CLAUDE.md:41,45,49,53 | brain_guard/CLAUDE.md as universal example: body lines 1-40 (Objective, Status, Architecture Map, Registration), then the four anchors at lines 41 (`---Ob---`), 45 (`---Pl---`), 49 (`---Ex---`), 53 (`---Ve---`). Same body+footer split across every brain CLAUDE.md.]*
 
 ```
----Ob---
 
 (observation content goes here)
 
----Pl---
 
 (plan content goes here)
 
----Ex---
 
 (execution content goes here)
 
----Ve---
 
 (verification content goes here)
 ```

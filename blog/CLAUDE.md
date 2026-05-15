@@ -139,6 +139,33 @@ grep -c -i "glassy\|glassmorphism" blog/<slug>.md blog/<slug>.html   # must be 0
 grep -c "Chalk-on-blackboard" blog/<slug>.md blog/<slug>.html        # must equal the number of image placeholders
 ```
 
+## OPEVC Markers Forbidden in Blog Source (NON-NEGOTIABLE)
+
+The OPEVC footer anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong **ONLY** in agent CLAUDE.md working-memory files. They MUST NOT appear in blog `.md` source files. The HTML converter happens to strip them from rendered output, but:
+- They pollute the source — readers seeing the .md (e.g., via GitHub source view) see broken-looking artifacts.
+- The transcript tool reads them as "the OBSERVE/PLAN/EXECUTE/VERIFY footer" via PRONUNCIATION_GUARDS — putting them in every audio file.
+
+**Detection grep (must be 0):**
+```bash
+grep -c "^---Ob---$\|^---Pl---$\|^---Ex---$\|^---Ve---$" blog/<slug>.md
+```
+
+**Origin:** 2026-05-15 — 12 blog drafts (10 B6 sub-essays + B5 monolith + B5.7) had inherited the markers from subagent boilerplate copied from CLAUDE.md templates. User caught it; iter-26 stripped them all. Subagents authoring blog drafts must NOT carry CLAUDE.md footer markers into blog source.
+
+## Inline Image Syntax (NON-NEGOTIABLE)
+
+Markdown inline images use the form `![alt-text](path)` on their own line. The converter at `tools/generate_blog_html.py` MUST emit a `<figure>` with `<img>` for these — NOT wrap them in `<p>` (which renders `!` as literal text + a broken `<a>` link).
+
+**Origin:** 2026-05-15 — B6.1's `opevc-cycle-blackboard.png` rendered as broken text (`<p>!<a href="...">caption</a></p>`) in HTML for days. The converter only handled `<!-- IMAGE PLACEHOLDER -->` HTML comments, not inline markdown image syntax. Fix landed in iter-26 — `render_body` now has an `img_match` block-level check that emits `<figure>` + `<img>` + `<figcaption>`.
+
+**Verification cascade for any blog with inline images:**
+```bash
+# Must NOT show `<p>!<a` for any image-only paragraph
+grep -n "<p>!<a\|<p>!\[" blog/<slug>.html
+# Must show <figure class="blog-image"> + <img src="...">
+grep -nE "<figure class=\"blog-image\"|<img src=\".*\\.png\"" blog/<slug>.html
+```
+
 ## Explicit Final Verification (NON-NEGOTIABLE)
 
 After any prose, image-prompt, or transcript change, **explicitly verify each downstream deliverable** before declaring the work done. The Edit tool can silently no-op; regenerated transcripts can carry artifacts; audio can be stale even when the transcript is fresh. **Trust nothing; grep everything.**

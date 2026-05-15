@@ -106,16 +106,12 @@ Next.
 *Previous: [Essay 6.6 &mdash; VERIFY: Independent Eyes](06_6-verify.html) &mdash; the audit chamber, the script-and-auditor rule, the multi-backward fan-out.*
 *Next: [Essay 6.8 &mdash; The Backward Multiplier](06_8-backward-multiplier.html) &mdash; the per-phase dial, the point system, and the smaller-number-bigger-phase punch.*
 
----Ob---
 
 
 
----Pl---
 
 
 
----Ex---
 
 
 
----Ve---

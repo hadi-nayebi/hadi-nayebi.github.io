@@ -138,10 +138,6 @@ Next.
 *Previous: [Essay 6.9 — Gmode](06_9-gmode.html) — the off-cycle lane that drops the phase gates for deliberate maintenance work.*
 *Next: [Essay 7 — The Plugin Kit](07-the-plugin-kit.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*
 
----Ob---
 
----Pl---
 
----Ex---
 
----Ve---

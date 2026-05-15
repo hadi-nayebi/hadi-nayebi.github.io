@@ -178,10 +178,6 @@ The transition map is the *what*; the tool restrictions are the *how*. Together 
 *Previous: [Essay 6.1 — Phasic Foundation](06_1-phasic-foundation.html) — the load-bearing claim and the cycle's outer Markov shape.*
 *Next: [Essay 6.3 — OBSERVE: Read Wide, Write Once](06_3-observe.html) — the entry phase, the multiplier sentinel, and the read-before-write gates.*
 
----Ob---
 
----Pl---
 
----Ex---
 
----Ve---

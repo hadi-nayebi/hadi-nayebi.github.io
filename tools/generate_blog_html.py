@@ -368,6 +368,23 @@ def render_body(body: str) -> str:
             inner = "\n".join(re.sub(r"^>\s?", "", ln) for ln in block.splitlines())
             output.append(f"<blockquote><p>{inline_format(inner.strip())}</p></blockquote>")
             continue
+        # Inline image-only block (single line ![alt](url)) — emit <figure>, not <p><a>.
+        # Without this, render_body's default-paragraph fallback wrapped images in <p>
+        # and inline_format treated `!` as text and `[...](...)` as a link — the bug
+        # that broke B6.1's opevc-cycle-blackboard.png display 2026-05-15.
+        img_match = re.fullmatch(r"!\[([^\]]*?)\]\(([^)]+?)\)", block.strip())
+        if img_match:
+            alt = html.escape(img_match.group(1))
+            src = img_match.group(2)
+            output.append(
+                f'<figure class="blog-image" style="margin: 2rem 0;">\n'
+                f'                          <img src="{src}" alt="{alt}" '
+                f'style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">\n'
+                f'                          <figcaption style="text-align: center; font-style: italic; '
+                f'margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">{alt}</figcaption>\n'
+                f'                        </figure>'
+            )
+            continue
         # Default: paragraph. Collapse internal newlines into single space.
         para_text = " ".join(ln.strip() for ln in block.splitlines())
         output.append(f"<p>{inline_format(para_text)}</p>")
