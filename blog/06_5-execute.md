@@ -1,0 +1,74 @@
+---
+title: "EXECUTE — Build, in Scope, in Steps"
+date: "May 2026"
+slug: "execute"
+read_time: "5 min"
+tags: [Architecture, Seed Agent, OPEVC, Phases, Execute]
+status: drafting
+version: v0.1.0
+audience: "Tier 2"
+og_image: "assets/images/blog/markov-phasic-brain.png"
+---
+
+# EXECUTE — Build, in Scope, in Steps
+
+*Essay 6.5 of the Hadosh Academy series on agent architecture — sub-essay of [Essay 6: The Markov Phasic Brain](06-the-markov-phasic-brain.html).*
+
+---
+
+EXECUTE is where code gets written. The write-tool guard is gentler here, but only inside the altered list. Every other path is blocked.
+
+---
+
+## The universal file-creator
+
+EXECUTE doesn't just write code — it writes everything. The principle is universal: every file the seed agent materializes on disk is brought into existence by EXECUTE. Project source, scripts, configuration, the .md plan, the .yaml plan, anything else with a path — all of it is EXECUTE's deliverable.
+
+OBSERVE and PLAN do their thinking inside CLAUDE.md working memory; VERIFY refines what EXECUTE produced; CONDENSE routes content into durable layers. EXECUTE is the only phase that turns analysis into artifact. *[ref: execute-only-phase-allowed-to-write-plan-file | phase_plan/hooks/plan-guard.sh:253-289 | plan-guard blocks any Write/Edit under .claude/knowledge/ from PLAN, including the plan file PLAN itself just named — the file's creation is reserved for EXECUTE, the same rule that applies to every other artifact the seed agent produces.]*
+
+The `.yaml` is not a transcription of the `.md` — it is its own cycle of work. Cycle 1's EXECUTE materializes the `.md` for the first time, and the plan enters its `drafting` state. The `.yaml` does not arrive then. It arrives only after the user approves the `.md` and the state flips to `md_approved` — and the cycle that follows is a whole new OPEVC pass dedicated to the `.yaml`: OBSERVE re-reads the approved `.md`, PLAN designs the YAML structure inside CLAUDE.md analysis, EXECUTE writes the `.yaml` file for the first time, VERIFY refines it. Same phase, same compartmentalization rule, different trigger: cycle 1 for the `.md`, a post-approval cycle for the `.yaml` — which takes the approved `.md` as input and produces a context-injection target as output.
+
+---
+
+## The frozen fence
+
+The altered list is a frozen snapshot of directories, captured from OBSERVE and PLAN at phase entry. A guard inspects every write call against that snapshot before the call lands. A path inside the snapshot proceeds. A path outside is rejected, and the agent has to either roll back to PLAN to amend the contract or accept the fence. *[ref: set-altered-list-stores-snapshot | phase_execute/scripts/execute.sh:505-516 | set-altered-list builds a normalized JSON array from paths and writes altered_claude_md = ($arr | unique) into data.json — the canonical storage point of the frozen snapshot the guard reads.]*
+
+A second guard inside the same hook protects the phase-section markers — the four footer anchors from the previous essay — so that EXECUTE writes execution notes inside its own footer section but cannot overwrite what the prior phases wrote. The compartmentalization holds even within a single CLAUDE.md. *[ref: execute-guard-section-enforcement-call | phase_execute/hooks/execute-guard.sh:856-879 | Inside execute-guard's CLAUDE.md branch, the section-enforcement sub-block dispatches the shared check_section_edit("---Ex---", ...) library call; cross-section edits are rejected with section-enforcement block detail.]*
+
+---
+
+## Checkpoints over runs
+
+The phase is structured around *checkpoints* — short, focused commits that finish one piece of the plan before starting the next. The pattern is deliberate. A long uncommitted run inside EXECUTE has the same problem as a long run anywhere else: drift accumulates, and a failure halfway through erases everything.
+
+Checkpointing forces small wins. It also gives the agent a clean place to pause and notice when the plan is wrong, before sinking another ten tool calls into the wrong direction. *[ref: execute-checkpoint-vs-forward-commit | phase_execute/scripts/execute-commit.sh:390-397 | Without --force, the commit prefix becomes "execute: [intermediate]" and the script stays in EXECUTE for more work; with --force the prefix is "execute:" and the script proceeds to phase advance.]*
+
+EXECUTE writes two things: the code, and *execution notes* in the working CLAUDE.md. The notes are short — what surprised the agent, what decisions the agent made when the plan left a judgment call open, what the next phase should know. The notes are what turn a sequence of commits into a coherent narrative. They will be one of the things CONDENSE absorbs. *[ref: execute-tools-table-claude-md-as-notes | phase_execute/CLAUDE.md:64-68 | EXECUTE's tool table labels project-file edits (5 pts) and CLAUDE.md edits (10 pts, "Execution notes — resets synthesis counter") as the phase's two write activities, with notes earning the highest reward among edits.]*
+
+---
+
+## The delegation bias
+
+EXECUTE is also where subagent dispatch shows up most heavily, and the point schedule encodes that explicitly. Every execute subagent the main session launches grants the session a small *direct-action budget* — a handful of extra writes the main session is allowed to make on its own. Every project file the main session edits itself spends some of that budget back.
+
+Reading project files does not consume budget; only edits and writes outside `.claude/` do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate the implementation to execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change. *[ref: execute-subagent-grants-direct-action-budget | phase_execute/scripts/execute.sh:765-795 | grant-direct-action-budget adds +3 budget per execute-subagent dispatch; consume-direct-action-budget deducts 1 per project edit and dies on insufficient — structural enforcement of 80/20 delegation bias.]*
+
+The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is two-in-flight; the cap was set after a cycle in which three concurrent subagents pushed the context window past a safe tier and triggered cascading compaction. Two-in-flight stays under that ceiling and is enough for genuine parallelism on independent files, narrow enough to keep the agent's context coherent. We will come back to the discipline of subagent dispatch in [Essay 7](07-the-plugin-kit.html).
+
+When EXECUTE believes the plan is implemented, it commits the final checkpoint and the orchestrator advances the job to VERIFY.
+
+---
+
+*Essay 6.5 of the Hadosh Academy series on agent architecture — sub-essay of [Essay 6: The Markov Phasic Brain](06-the-markov-phasic-brain.html).*
+
+*Previous: [Essay 6.4 — PLAN: Decide, Then Lock](06_4-plan.html) — naming the contract, the plan_state machine.*
+*Next: [Essay 6.6 — VERIFY: Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, approval authority.*
+
+---Ob---
+
+---Pl---
+
+---Ex---
+
+---Ve---
