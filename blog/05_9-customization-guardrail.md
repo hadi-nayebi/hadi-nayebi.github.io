@@ -5,7 +5,7 @@ slug: "customization-guardrail"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Customization, PLUGIN-LOCK]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -72,13 +72,13 @@ Conflating the two routes would either force every planned customization through
 
 The `[JOB-APPROVE-CREATION]` route is where most customization happens, because it's where the agent's noticing meets the operator's judgment. The flow:
 
-1. **The agent notices a need.** During OBSERVE or CONDENSE, the agent identifies that a customization would help. Examples of triggers: a repeated pattern crosses ~3 occurrences and should harden into a plugin (the soft → hard migration pattern from [Essay 8](08-from-apprentice-to-architect.html)); a voice keeps failing to fire because it's not in the COACHING_IDS pool; the user describes a workflow the current always-on layer doesn't support.
+1. **The agent notices a need.** During OBSERVE or CONDENSE, the agent identifies that a customization to the plugin layer would help — a pattern that should harden, a voice that keeps misfiring, a workflow the always-on layer doesn't yet support. *[ref: customization-trigger-patterns | .claude/knowledge/identity/plugin-lock-privilege.md | The proposer waits for noticing rather than scanning. Three canonical triggers in the prototype: a recurring pattern crosses ~3 occurrences (the soft → hard migration pattern named in Essay 8); a voice keeps failing to fire because its id isn't in the plugin's COACHING_IDS pool; the user describes a workflow the current always-on layer doesn't support. Thresholds live in plugin code; the architectural fact (proposals come from agent noticing + user judging) doesn't move.]*
 
 2. **The agent proposes via `[JOB-APPROVE-CREATION] <name>`.** The question body names the proposed objective, the plugins that would be edited, the rationale (which OBSERVE finding or recurring pattern surfaced the need), and the expected scope (single-cycle DEEP, multi-cycle, approximate effort).
 
 3. **The user judges.** Standard AskUserQuestion options: `Approve job creation` confirms; `Redirect` lets the user adjust scope before approval; `Reject` drops the proposal. The user holds the architectural decision; the agent holds the operational details.
 
-4. **On approval, the Post handler creates the job.** `job_core/hooks/question-capture-hook.sh` extracts the proposed name from the question text, calls `job.sh create <name>` (creates a pending job), then `job.sh --hook approve-plugin-lock <new_id>` (flips `plugin_lock_approval=true`). The new job exists in the standard `data.json` structure, distinguishable from typical jobs only by this flag. *[ref: post-handler-create-then-approve | .claude/plugins/job_core/hooks/question-capture-hook.sh | The `[JOB-APPROVE-CREATION]` branch extracts the name via `sed -E 's/^[[:space:]]*\[JOB-APPROVE-CREATION\][[:space:]]*//' | awk '{print $1}'`, calls `bash "$JOB_SH" create "$new_name"` to capture the new job id, then `bash "$JOB_SH" --hook approve-plugin-lock "$new_id"` to flip the flag. The voice `job-approve-creation-result` confirms with `new_id` + `new_name` substituted, and reminds the agent to focus + activate the new job when ready.]*
+4. **On approval, the Post handler creates the new job and flips its `plugin_lock_approval` flag.** *[ref: post-handler-create-then-approve | .claude/plugins/job_core/hooks/question-capture-hook.sh:172-194 | The `[JOB-APPROVE-CREATION]` branch extracts the proposed name from the question text (strips the prefix, reads the first whitespace-delimited token via sed + awk), calls `bash "$JOB_SH" create "$new_name"` to capture the new job id, then `bash "$JOB_SH" --hook approve-plugin-lock "$new_id"` to flip the flag. The new job lives in the standard `data.json` jobs array, distinguishable from typical jobs only by `completion_requirements.plugin_lock_approval == true`. Voice `job-approve-creation-result` confirms with `new_id` + `new_name` substituted and reminds the agent to focus + activate the new job when ready.]*
 
 5. **The agent focuses and activates the new job** when ready to begin substrate work. The pending job sits in the data.json until the agent (or operator) decides to switch contexts. Inside the activated approved job, `[PLUGIN-LOCK]` admits without further questioning — the gate sees `plugin_lock_approval=true` on the focused job and skips the block.
 
