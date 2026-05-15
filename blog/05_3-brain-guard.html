@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v0.2.0 -->
 <html lang="en">
 
 <head>
@@ -148,7 +148,9 @@
 
                         <h2>The dispatch mechanic</h2>
 
-                        <p>Mechanically, the <code>/compact</code> self-issue is hacky. A small script injects the instruction into the active terminal &mdash; through clipboard-and-keystroke input-injection under X11, or through terminal-multiplexer paste primitives under tmux &mdash; because Claude Code does not yet expose an API for an agent to trigger compaction before the 100% auto-compact. The script records the compaction time in the plugin&rsquo;s hidden state, and the next firing of the tier guards reads that timestamp to grant a brief grace window so the compacted transcript can register before the gate would otherwise re-block. If Claude Code ships a native intermittent self-compact API, this plugin&rsquo;s terminal-typing layer retires; the rest of the discipline carries forward unchanged. <sup class="ref-marker" title="ref: mechanically-the-compact-is-hacky | .claude/plugins/brain_guard/CLAUDE.md:8 | Plugin status line: &quot;Feature #1 (context-aware compact enforcement) LIVE in two dispatch modes: X11 (`xdotool` + `xclip`) and tmux (`set-buffer` + `paste-buffer -p` bracketed paste). Config externalized to config.conf... POST_COMPACT_GRACE_SECONDS...&quot; Both paths + grace window in one line.">&#9432;</sup></p>
+                        <p>Mechanically, the <code>/compact</code> self-issue is hacky. A small script injects the instruction into the active terminal &mdash; through clipboard-and-keystroke input-injection under X11, or through terminal-multiplexer paste primitives under tmux &mdash; because Claude Code does not yet expose an API for an agent to trigger compaction before the 100% auto-compact.</p>
+
+                        <p>The script records the compaction time in the plugin&rsquo;s hidden state, and the next firing of the tier guards reads that timestamp to grant a brief grace window so the compacted transcript can register before the gate would otherwise re-block. If Claude Code ships a native intermittent self-compact API, this plugin&rsquo;s terminal-typing layer retires; the rest of the discipline carries forward unchanged. <sup class="ref-marker" title="ref: mechanically-the-compact-is-hacky | .claude/plugins/brain_guard/CLAUDE.md:8 | Plugin status line: &quot;Feature #1 (context-aware compact enforcement) LIVE in two dispatch modes: X11 (`xdotool` + `xclip`) and tmux (`set-buffer` + `paste-buffer -p` bracketed paste). Config externalized to config.conf... POST_COMPACT_GRACE_SECONDS...&quot; Both paths + grace window in one line.">&#9432;</sup></p>
 
                         <h2>What would break without it</h2>
 

@@ -5,7 +5,7 @@ slug: "customization-guardrail"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Customization, PLUGIN-LOCK]
 status: draft
-version: v0.2.0
+version: v0.3.0
 audience: "Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -30,7 +30,7 @@ The customization guardrail owns the gate on **PLUGIN-LOCK admission for existin
 
 The decision rests on one fact: editing existing plugin code alters the substrate form that polices every other plugin's discipline. One quiet regression deep inside a plugin's hooks can poison every dispatched subagent, every phase gate, every voice fire across the session. The gate's role is to ensure plugin edits only happen in contexts where the operator is *deliberately* doing plugin-layer work — not as a side effect of normal cycle activity.
 
-The gate does not apply to plugin BIRTH (creating a new plugin that doesn't yet exist on disk). New plugins enter the system through a separate path that runs inside a normal OPEVC cycle. The gate's scope is edits to existing code. *[ref: gate-scope-existing-not-birth | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:215 | The gate fires only when the condition `[[ -d "$PLUGINS_ROOT/$target" ]]` is true — i.e., the target plugin already exists on disk. New plugin creation (target dir absent) admits in any phase via the same `[PLUGIN-LOCK] <new_name>` ceremony, which lock-manager.sh routes to its birth branch starting around line 297.]*
+The gate does not apply to plugin BIRTH (creating a new plugin that doesn't yet exist on disk). New plugins enter the system through a separate path that runs inside a normal OPEVC cycle. The gate's scope is edits to existing code. *[ref: gate-scope-existing-not-birth | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:215 | The gate fires only when the condition `[[ -d "$PLUGINS_ROOT/$target" ]]` is true — i.e., the target plugin already exists on disk. New plugin creation (target dir absent) admits in any phase via the same `[PLUGIN-LOCK] <new_name>` ceremony, which lock-manager.sh routes to its birth branch starting around line 313.]*
 
 ## How it works — the OR-gate
 

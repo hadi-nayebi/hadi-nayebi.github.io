@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.2.0 -->
+<!-- Version: v0.3.0 -->
 <html lang="en">
 
 <head>
@@ -132,7 +132,7 @@
 
                         <p>The decision rests on one fact: editing existing plugin code alters the substrate form that polices every other plugin&rsquo;s discipline. One quiet regression deep inside a plugin&rsquo;s hooks can poison every dispatched subagent, every phase gate, every voice fire across the session. The gate&rsquo;s role is to ensure plugin edits only happen in contexts where the operator is <em>deliberately</em> doing plugin-layer work &mdash; not as a side effect of normal cycle activity.</p>
 
-                        <p>The gate does not apply to plugin BIRTH (creating a new plugin that doesn&rsquo;t yet exist on disk). New plugins enter the system through a separate path that runs inside a normal OPEVC cycle. The gate&rsquo;s scope is edits to existing code. <sup class="ref-marker" title="ref: gate-scope-existing-not-birth | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:215 | The gate fires only when the condition `[[ -d &quot;$PLUGINS_ROOT/$target&quot; ]]` is true — i.e., the target plugin already exists on disk. New plugin creation (target dir absent) admits in any phase via the same `[PLUGIN-LOCK] &lt;new_name&gt;` ceremony, which lock-manager.sh routes to its birth branch starting around line 297.">&#9432;</sup></p>
+                        <p>The gate does not apply to plugin BIRTH (creating a new plugin that doesn&rsquo;t yet exist on disk). New plugins enter the system through a separate path that runs inside a normal OPEVC cycle. The gate&rsquo;s scope is edits to existing code. <sup class="ref-marker" title="ref: gate-scope-existing-not-birth | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:215 | The gate fires only when the condition `[[ -d &quot;$PLUGINS_ROOT/$target&quot; ]]` is true — i.e., the target plugin already exists on disk. New plugin creation (target dir absent) admits in any phase via the same `[PLUGIN-LOCK] &lt;new_name&gt;` ceremony, which lock-manager.sh routes to its birth branch starting around line 313.">&#9432;</sup></p>
 
                         <h2>How it works &mdash; the OR-gate</h2>
 
@@ -143,7 +143,7 @@
                         <p>Either condition admits. Both failing produces a block with structured teach-text naming both admission routes. The gate&rsquo;s logic is short &mdash; a few lines of bash in <code>lock-manager.sh</code> &mdash; but the architectural decision behind it is deeper than the code length suggests. <sup class="ref-marker" title="ref: or-gate-logic | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:202-235 | The gate computes `gmode_active=&quot;false&quot;; [[ &quot;$current_phase&quot; == &quot;gmode&quot; ]] &amp;&amp; gmode_active=&quot;true&quot;` and `plugin_lock_approval=$(jq -r &#x27;.jobs[] | select(.focused==true) | .completion_requirements.plugin_lock_approval // false&#x27; &quot;$JOB_DATA&quot;)`. Block fires iff both arms fail: `if [[ -n &quot;$current_phase&quot; &amp;&amp; &quot;$gmode_active&quot; != &quot;true&quot; &amp;&amp; &quot;$plugin_lock_approval&quot; != &quot;true&quot; ]]; then exit 2`. Block voice: `plugin-lock-requires-gmode-or-approved-job` — names both admission paths in its teach-text.">&#9432;</sup></p>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="../assets/images/blog/customization-guardrails-b5-9.png" alt="Two admission arms (gmode + plugin_lock_approval) converging through an OR-gate into PLUGIN-LOCK admission for existing plugins, with a separate plugin-birth bypass arrow" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <img src="../assets/images/blog/customization-guardrails-b5-9.png" alt="Two admission arms (gmode + plugin_lock_approval) converging into PLUGIN-LOCK admission for existing plugins, with a separate bypass path for plugin birth" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.9. Two arms admit edits to existing plugins &mdash; gmode for ad-hoc operator work, plugin_lock_approval for agent-proposed customization jobs. Plugin birth bypasses both.</figcaption>
                         </figure>
 
