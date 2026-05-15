@@ -5,7 +5,7 @@ slug: "job-core"
 read_time: "7 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
-version: v0.2.0
+version: v0.3.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -32,7 +32,7 @@ A user-prompt hook intercepts every user prompt and either creates a new active 
 
 The interaction list is just one form of state attached to a job. When a job is created it is assigned a unique ID — a timestamp from the moment of creation — and the *base* job object (name, status, interaction list, dependencies, completion fields) lives in `job_core`'s own hidden state. Other plugins that need to carry context about that job *extend* the same job object under the same ID inside their own hidden state. `interaction_summary` does exactly this — when a job's interactions cross the summarization threshold, the plugin creates a mirror entry under the job's ID and starts appending summary blocks there.
 
-The phase plugins ([Essay 6](06-the-markov-phasic-brain.html)) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping — scope multipliers, point ledgers, plan-file pointers, footer markers — keyed by the same ID. No plugin reads another's hidden state directly, but the shared key lets each plugin's view of the job line up with every other plugin's view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment. *[ref: interaction-list-just-one-form | .claude/plugins/job_core/scripts/job.sh:223-236 | `create-active` handler: `local_id=$(gen_id)` mints a timestamp ID; jq writes base job object `{id, name, objective, status, focused, user_interactions, completion_requirements: {user_approval, depends_on}, created_at, updated_at}` to job_core's own data.json. Other plugins extend by keying entries on the same `id`.]*
+The phase plugins ([Essay 6](06-the-markov-phasic-brain.html)) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping — scope multipliers, point ledgers, plan-file pointers, footer markers — keyed by the same ID. No plugin reads another's hidden state directly, but the shared key lets each plugin's view of the job line up with every other plugin's view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment. *[ref: interaction-list-just-one-form | .claude/plugins/job_core/scripts/job.sh:223-236 | `create-active` handler: `local_id=$(gen_id)` mints a timestamp ID; jq writes base job object `{id, name, objective, status, focused, user_interactions, completion_requirements: {user_approval, plugin_lock_approval, depends_on}, plan_state, created_at, updated_at}` to job_core's own data.json. Other plugins extend by keying entries on the same `id`.]*
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: ../assets/images/blog/job-core-5b-4.png
@@ -69,7 +69,7 @@ Without `job_core`, the agent has no notion of *what work am I doing*. Every pro
 
 You would re-shape the *unit of compartmentalization*. The current prototype calls it "a job" — a generic noun that fits software work. Your seed may want a richer noun for your domain: a research seed might call the unit an "investigation"; a consulting seed might call it a "client engagement"; a legal-research seed might call it a "matter." The schema doesn't care what you call it; the mental model and the voices do. Renaming the unit shifts the operator's framing.
 
-You would extend the *stop-gate refusal voices*. The current prototype ships five — one per OPEVC phase. If your seed adds new phases (a `phase_research` between OBSERVE and PLAN, say), each new phase gets its own stop-gate voice reminding the agent what *that* phase still expects. The voice library grows with your phase library. *[ref: stop-gate-phase-voices | .claude/plugins/job_core/hooks/stop-gate.sh:83-93 | `phase_voice_id="stop-gate-${current_phase}-reminders"` — the phase suffix is dynamic. Adding a new phase means adding a new entry to the voice catalog; the lookup machinery handles the rest.]*
+You would extend the *stop-gate refusal voices*. The current prototype ships one per OPEVC phase. If your seed adds new phases (a `phase_research` between OBSERVE and PLAN, say), each new phase gets its own stop-gate voice reminding the agent what *that* phase still expects. The voice library grows with your phase library. *[ref: stop-gate-phase-voices | .claude/plugins/job_core/hooks/stop-gate.sh:83-93 | `phase_voice_id="stop-gate-${current_phase}-reminders"` — the phase suffix is dynamic. Adding a new phase means adding a new entry to the voice catalog; the lookup machinery handles the rest.]*
 
 You would deepen the *completion staging*. Two stages is the current shape — name-validation + dependency-walk. A larger system may want more: a verifier-subagent stage that runs acceptance checks, a peer-review stage where a second agent audits the work, a delay-gate stage that forces a cool-down before approval lands. The hook architecture supports staging by composition; each new stage is its own pre/post hook.
 

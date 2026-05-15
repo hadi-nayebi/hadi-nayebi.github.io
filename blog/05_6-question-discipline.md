@@ -5,7 +5,7 @@ slug: "question-discipline"
 read_time: "5 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -28,7 +28,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 A pre-call hook walks every question in the call and matches its first token against a small registry of approved prefixes hardcoded in the script. The registry currently holds ten entries — nine name very specific ceremonies (unlocking a plugin, approving a job, approving a plan stage, reporting upstream, authorizing a plugin-editing job at creation, and the others), and one (`[WAITING]`) is the deliberate generic — a catch-all for the cases where the seed agent legitimately needs input from the user and the situation does not fit one of the structured ceremonies. The prefixes cascade: when the agent batches multiple questions in one call, *every* question must carry a registered prefix, or the entire batch is rejected and the agent has to rewrite. The plugin owns no hidden state; the registry is its only state. *[ref: pre-call-hook-walks-questions | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh:101-132 | Batch-cascade: comment "defense against multi-question batches sneaking unprefixed past. Validate ALL, not just [0]." `for ((i = 0; i < QCOUNT; i++))` iterates every question, sets `all_ok=0` on any failure; line 132 `if [[ "$all_ok" -eq 0 ]]` rejects entire batch.]*
 
-Dispatched subagents are flagged as such and bypass the gate so they can ask their own internal questions without the user-facing prefix overhead. The bypass is the one runtime exception the registry admits — every other ask the seed agent makes of the user must clear a prefix.
+Dispatched subagents are flagged as such and bypass the gate so they can ask their own internal questions without the user-facing prefix overhead. The bypass is the one runtime exception the registry admits — every other ask the seed agent makes of the user must clear a prefix, no matter which plugin's hook is firing or which phase the agent is in.
 
 ## How shape compels cognition — per-prefix admission gates
 

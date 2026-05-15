@@ -5,7 +5,7 @@ slug: "the-two-layer-foundation"
 read_time: "6 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -131,4 +131,4 @@ We start with `plugin_integrity`.
 *Essay 5.1 of 9 — The Always-On Digital Cortex — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 4 — The Language of Agents](04-the-language-of-agents.html) — vocabulary that prepares the architecture.*
-*Next: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — first of five always-on plugin deep-dives.*
+*Next: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — first of the always-on plugin deep-dives.*

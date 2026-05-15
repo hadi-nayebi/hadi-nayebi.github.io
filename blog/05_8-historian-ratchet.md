@@ -5,7 +5,7 @@ slug: "historian-ratchet"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Composed Ceremony]
 status: draft
-version: v0.2.0
+version: v0.3.0
 audience: "Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -100,9 +100,9 @@ That's the always-on layer in microcosm. Each plugin a small lesson. Each lesson
 
 ## The bus is just one form of substrate
 
-The bus we built up across the CLAUDE.md hierarchy is one form within `.claude/` — the working-memory form, the one the phasic layer writes through. The hierarchy itself, the always-on layer, the durable knowledge directory, the per-plugin hidden state, the voice files, the subagent definitions — together they form the multi-form *digital cortex* the seed agent rests on. They keep state, enforce work structure, and discipline conversation, all without doing any of the actual cognitive work. *[ref: bus-is-substrate-digital-cortex | CLAUDE.md:381-384 | Spatial-level Compartmentalization section (L381 header "Spatial level:"): L382 "Brain vs Project — agent thinking stays in `.claude/`, published content in the website repo" + L383 "Knowledge vs Working Memory — long-term storage in `knowledge/`, current context in CLAUDE.md" + L384 "Depth placement — information goes in the CLAUDE.md closest to where it's needed." The 3-layer substrate.]*
+The bus we built up across the CLAUDE.md hierarchy is one form within `.claude/` — the working-memory form, the one the phasic layer writes through. The hierarchy itself, the always-on layer, the durable knowledge directory, the per-plugin hidden state, the voice files, the subagent definitions — together they form the multi-form *digital cortex* the seed agent rests on. They keep state, enforce work structure, and discipline conversation, all without doing any of the actual cognitive work. *[ref: bus-is-substrate-digital-cortex | CLAUDE.md "Spatial level:" bullets under "Core Principle: Compartmentalization" | Spatial-level Compartmentalization names three axes: "Brain vs Project — agent thinking stays in `.claude/`, published content in the website repo"; "Knowledge vs Working Memory — long-term storage in `knowledge/`, current context in CLAUDE.md"; "Depth placement — information goes in the CLAUDE.md closest to where it's needed." The 3-layer substrate.]*
 
-The actual work happens in the phasic layer. Five phases. One cognitive organ called CONDENSE. Tools forbidden in each phase that force the agent to think before acting. *[ref: actual-work-in-phasic-layer | CLAUDE.md:212 | JOB.phase operation: "Phase-locked tool access enforces compartmentalization (observe/plan = read-only, execute = full, verify = scripts only, condense = `.claude/` only)." Five phases + CONDENSE organ, tools restricted per phase to force thought before action.]*
+The actual work happens in the phasic layer. Five phases. One cognitive organ called CONDENSE. Tools forbidden in each phase that force the agent to think before acting. *[ref: actual-work-in-phasic-layer | CLAUDE.md "JOB.phase" operation under "Specialized Operations" | JOB.phase operation states: "Phase-locked tool access enforces compartmentalization (observe/plan = read-only, execute = full, verify = scripts only, condense = `.claude/` only)." Five phases + CONDENSE organ, tools restricted per phase to force thought before action.]*
 
 The substrate is what makes the architecture *teachable*. A non-developer with enough high-level architectural understanding can customize a seed agent the way someone with the right training can author a complex artifact — without writing the underlying machinery. The destination this series carries you toward is an agent-developer-user triangle that collapses to agent-user, because the architecture is portable enough that the user can be the architect.
 

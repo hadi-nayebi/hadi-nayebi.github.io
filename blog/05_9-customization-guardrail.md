@@ -5,7 +5,7 @@ slug: "customization-guardrail"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Customization, PLUGIN-LOCK]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -73,7 +73,7 @@ Conflating the two routes would either force every planned customization through
 
 The `[JOB-APPROVE-CREATION]` route is where most customization happens, because it's where the agent's noticing meets the operator's judgment. The flow:
 
-1. **The agent notices a need.** During OBSERVE or CONDENSE, the agent identifies that a customization to the plugin layer would help — a pattern that should harden, a voice that keeps misfiring, a workflow the always-on layer doesn't yet support. *[ref: customization-trigger-patterns | .claude/knowledge/identity/plugin-lock-privilege.md | The proposer waits for noticing rather than scanning. Three canonical triggers in the prototype: a recurring pattern crosses ~3 occurrences (the soft → hard migration pattern named in Essay 8); a voice keeps failing to fire because its id isn't in the plugin's COACHING_IDS pool; the user describes a workflow the current always-on layer doesn't support. Thresholds live in plugin code; the architectural fact (proposals come from agent noticing + user judging) doesn't move.]*
+1. **The agent notices a need.** During OBSERVE or CONDENSE, the agent identifies that a customization to the plugin layer would help — a pattern that should harden, a voice that keeps misfiring, a workflow the always-on layer doesn't yet support. *[ref: customization-trigger-patterns | .claude/knowledge/identity/plugin-lock-privilege.md "Why both, not one" section | The identity deep-dive frames the user-approved-job route as "for planned work the agent initiates" — illustrated with "I notice the always-on layer is missing a `secrets_guard` plugin — should I build one?" The agent proposes, the user confirms, the job carries `plugin_lock_approval=true` for its lifetime. Specific noticing thresholds (how many occurrences, which voice signals) live in plugin code; the architectural fact (proposals come from agent noticing + user judging) doesn't move.]*
 
 2. **The agent proposes via `[JOB-APPROVE-CREATION] <name>`.** The question body names the proposed objective, the plugins that would be edited, the rationale (which OBSERVE finding or recurring pattern surfaced the need), and the expected scope (single-cycle DEEP, multi-cycle, approximate effort).
 

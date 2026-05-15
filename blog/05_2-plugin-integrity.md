@@ -5,7 +5,7 @@ slug: "plugin-integrity"
 read_time: "6 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -16,7 +16,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 ---
 
-[Essay 5.1](05_1-the-two-layer-foundation.html) sketched the always-on layer as one of two plugin categories — five plugins, currently, that run on every prompt and every tool call regardless of which phase the seed agent is in. Essays 5.2 through 5.6 deep-dive each one in turn. Treat each deep-dive as a template: the concern is portable; the specific mechanism is this prototype's answer; the design intent — what gate the plugin opens or closes, and why — is what you carry into your own seed.
+[Essay 5.1](05_1-the-two-layer-foundation.html) sketched the always-on layer as one of two plugin categories — the always-on plugins (currently five in the prototype) run on every prompt and every tool call regardless of which phase the seed agent is in. Essays 5.2 through 5.6 deep-dive each one in turn. Treat each deep-dive as a template: the concern is portable; the specific mechanism is this prototype's answer; the design intent — what gate the plugin opens or closes, and why — is what you carry into your own seed.
 
 We open with the one every other plugin depends on. `plugin_integrity` is the floor.
 
@@ -76,7 +76,7 @@ Sloppy edits inside one plugin corrupt the discipline of every other plugin that
 
 You would tune the *threshold* — what counts as "test pass." The current prototype runs every test in the plugin's `tests/` directory and treats them uniformly. A larger plugin with hundreds of tests may want fast-and-slow tiers (smoke tests block the unlock; full suite runs in CI). A plugin generating non-deterministic output may need flake tolerance encoded in the gate. *[ref: plugin-integrity-test-runner | .claude/plugins/plugin_integrity/scripts/safe-lock.sh:200-225 | Loop iterates every `tests/test-*.sh`, captures PASS/FAIL per file, aggregates `all_pass` (line 222: `all_pass=false` on any fail). Single tier; equal weight. Threshold customization would slot here.]*
 
-You would tune the *prefix registry* used by the unlock ceremony. The current registry holds ten entries; your seed will hold more. Each registered prefix carries its own word floor, its own format, its own Post handler. Adding a ceremony means adding to the registry, writing the handler, wiring the voice. The registry is the surface; the entries are yours. *[ref: prefix-registry-current-entries | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh:66-77 | `readonly PREFIX_REGISTRY` bash array — ten entries as of 2026-05-14: `[PLUGIN-LOCK]`, `[TEST-LOCK]`, `[GMODE]`, `[JOB-COMPLETE]`, `[PLAN-APPROVAL]`, `[YAML-APPROVAL]`, `[POINT-BOOST]`, `[WAITING]`, `[REPORT-TO-UPSTREAM]`, `[JOB-APPROVE-CREATION]`. Adding a prefix = editing this array + adding the Post handler in the owning plugin + wiring the voice (per `question_discipline/CLAUDE.md` Maintenance Rules).]*
+You would tune the *prefix registry* used by the unlock ceremony. The current registry is short; your seed's will hold more. Each registered prefix carries its own word floor, its own format, its own Post handler. Adding a ceremony means adding to the registry, writing the handler, wiring the voice. The registry is the surface; the entries are yours. *[ref: prefix-registry-current-entries | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh:66-77 | `readonly PREFIX_REGISTRY` bash array — ten entries as of 2026-05-14: `[PLUGIN-LOCK]`, `[TEST-LOCK]`, `[GMODE]`, `[JOB-COMPLETE]`, `[PLAN-APPROVAL]`, `[YAML-APPROVAL]`, `[POINT-BOOST]`, `[WAITING]`, `[REPORT-TO-UPSTREAM]`, `[JOB-APPROVE-CREATION]`. Adding a prefix = editing this array + adding the Post handler in the owning plugin + wiring the voice (per `question_discipline/CLAUDE.md` Maintenance Rules).]*
 
 You would extend the *revert log* schema. The current entries record what was reverted, by whom, when, with which checkpoint SHA. Your seed may want to record which test failed (the exact assertion), which file the regression lived in, which prior cycle introduced the dependency that the failing test was checking. Richer revert logs make debugging in CONDENSE — the phase that absorbs experiential data — substantially faster. *[ref: revert-log-schema | .claude/plugins/plugin_integrity/scripts/safe-lock.sh:246-272 | `log_revert()` writes a JSON entry to `data.json.revert_log` (capped at 20 — line 269 trim). Current fields: timestamp, plugin, sha_before, sha_after, reverted_files. Schema is extensible — adding new fields requires only a schema-version bump and a corresponding reader.]*
 
