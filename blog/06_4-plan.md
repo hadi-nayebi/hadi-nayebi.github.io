@@ -2,10 +2,10 @@
 title: "PLAN — Decide, Then Lock"
 date: "May 2026"
 slug: "plan"
-read_time: "5 min"
+read_time: "8 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: drafting
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 2"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -92,11 +92,41 @@ The reason the plan is locked is the reason every project rationalizes mid-execu
 
 PLAN, like OBSERVE, requires the agent to set a multiplier on entry. Same range, same backwardness, same effect on the point gate. *[ref: plan-set-multiplier-validates-range | phase_plan/scripts/plan.sh:309-325 | PLAN's set-multiplier CLI mirrors OBSERVE's: validates the value is 0.5/1/1.5/2/2.5/3, dies if the entry already has points (preventing reset), then writes the immutable value to data.json.]*
 
+## What PLAN cannot do
+
+The discipline of PLAN is in what its guard refuses. PLAN's Read tool is *not* unrestricted — the same hook that lets OBSERVE freely (within budget) walk the codebase blocks PLAN from opening any file outside `.claude/`. The agent can read CLAUDE.md files, memory files, and exactly one project artifact: the focused job's own plan file. Every other path is rejected at the tool boundary. *[ref: plan-read-restriction-claude-md-only | phase_plan/hooks/plan-guard.sh:294-307 | The Read branch allows CLAUDE.md, memory files under `.claude/projects/.../memory/`, and the named plan_file from the focused job; every other path falls through to a tool-restriction block. The structural rule: PLAN cannot self-observe.]*
+
+The rule is intentional. PLAN that can re-read project source mid-plan is no longer planning; it is doing piecemeal observation, drifting back into context-gathering with no commit, no synthesis-into-CLAUDE.md, no accountability for the decision-making the phase exists to do. If PLAN realizes it needs more context, the only honest move is backward to OBSERVE — explicit, committed, recorded in cycle history. The fence is what keeps the phase boundary load-bearing.
+
+Bash falls the same way. Read-only git inspections pass — `git log`, `git diff`, `git show` — but any write-shaped command is blocked, and the only `job_core` operations admitted are read-only `show`, `focused`, `list`. PLAN reads the world it inherited from OBSERVE; it does not extend it.
+
+## A worked example
+
+The multi-cycle plan-job from the previous essay enters its third cycle's PLAN phase. The orchestrator has already injected the .yaml at phase entry, OBSERVE has handed forward a synthesis that flagged the marker-schema contradiction from cycle 2, and the architect's `[WAITING]` answer routed the work toward "revert cycle 2's code and re-author the .yaml entry."
+
+The agent picks the multiplier — 2.0 this time, a tighter phase than OBSERVE because the decisions are narrower. The lock lifts. The agent re-reads the .md plan file (allowed — it is this job's focused plan_file), re-reads the OBSERVE synthesis in the working CLAUDE.md, and walks the cycle-2 entry in the .yaml side-by-side.
+
+PLAN's deliverable is decisions inside CLAUDE.md, written below the `---Pl---` marker: the *altered list* gets one new directory added — the public seed repo's marker schema directory — declaring it editable by EXECUTE. The acceptance criteria gain a clause: "cycle-3 .yaml entry passes the new marker schema round-trip." A judgment-call criterion is named explicitly — "if revert breaks downstream cycle-2 work, EXECUTE pauses and routes a `[PENDING-JOB]` for CONDENSE."
+
+PLAN does not touch the .yaml file. It does not touch the .md plan. It does not write to the public seed repo. It writes the new acceptance criteria into CLAUDE.md, names the altered-list expansion, and commits. EXECUTE inherits a fully scoped contract.
+
+## What you would customize
+
+Two surfaces are where most architects will adjust PLAN.
+
+The first is the *plan-document structure*. The prototype's plan documents are opinionated — goal, acceptance criteria, altered list, judgment-call criteria — encoded in six plan-* subagents. A seed working on long research engagements might want hypotheses-and-evidence as the primary structure. A seed operating in regulatory contexts might want a compliance-checklist section as a first-class block. The subagent roster is the surface; the structure they enforce is yours.
+
+The second is the *altered-list discipline*. The current rule is binary — a directory is in the list or it is not; if it is, EXECUTE can edit any CLAUDE.md-declared directory within it. Your seed might want a finer-grained scope: read-allowed but write-disallowed; write-allowed but only for files matching a pattern; per-subagent overrides. The altered list is the load-bearing contract output of PLAN, and every refinement of it tightens what EXECUTE can do without rolling backward.
+
+What the architect would **not** customize is the prohibition against PLAN reading project source. The principle is the floor: a planning phase that lets the agent re-observe is not a planning phase.
+
+The deepest payoff of PLAN is the cognitive failure mode it prevents: the post-hoc rationalization. Plans written *during* execution are not plans; they are explanations the executor gives itself for whatever it just did. By forcing the contract to be authored before any code is touched — and by refusing the agent the tools to re-observe halfway through — the seed agent forecloses that drift structurally. The plan can be wrong; that is what VERIFY is for, and what backward transitions are for. What it cannot be is silently rewritten.
+
 When PLAN exits, the orchestrator advances the job to EXECUTE.
 
 ---
 
-*Essay 6.4 of 10 — The Markov Phasic Brain — Hadosh Academy series on agent architecture.*
+*Essay 6.4 of 10 — The Markov Phasic Brain.*
 
 *Previous: [Essay 6.3 — OBSERVE: Read Wide, Write Once](06_3-observe.html) — read-only synthesis, multiplier sentinel, paired gates.*
 *Next: [Essay 6.5 — EXECUTE: Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*

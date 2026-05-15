@@ -88,7 +88,7 @@
                     <div class="article-meta">
                         <span>May 2026</span>
                         <span>&bull;</span>
-                        <span>5 min</span>
+                        <span>8 min</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="">Tier 2</span>
                             <span class="tag">Architecture</span>
@@ -107,7 +107,7 @@
                             <source src="../assets/audio/execute.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
-                        <span class="audio-label">Listen to this article (5 min)</span>
+                        <span class="audio-label">Listen to this article (8 min)</span>
                     </div>
 
                     <div class="article-body">
@@ -136,7 +136,7 @@
 
                         <p>The altered list is a frozen snapshot of directories, captured from OBSERVE and PLAN at phase entry. A guard inspects every write call against that snapshot before the call lands. A path inside the snapshot proceeds. A path outside is rejected, and the agent has to either roll back to PLAN to amend the contract or accept the fence. <sup class="ref-marker" title="ref: set-altered-list-stores-snapshot | phase_execute/scripts/execute.sh:505-516 | set-altered-list builds a normalized JSON array from paths and writes altered_claude_md = ($arr | unique) into data.json — the canonical storage point of the frozen snapshot the guard reads.">&#9432;</sup></p>
 
-                        <p>A second guard inside the same hook protects the phase-section markers &mdash; the four footer anchors from the previous essay &mdash; so that EXECUTE writes execution notes inside its own footer section but cannot overwrite what the prior phases wrote. The compartmentalization holds even within a single CLAUDE.md. <sup class="ref-marker" title="ref: execute-guard-section-enforcement-call | phase_execute/hooks/execute-guard.sh:856-879 | Inside execute-guard&#x27;s CLAUDE.md branch, the section-enforcement sub-block dispatches the shared check_section_edit(&quot;---Ex---&quot;, ...) library call; cross-section edits are rejected with section-enforcement block detail.">&#9432;</sup></p>
+                        <p>A second guard inside the same hook protects the phase-section markers &mdash; the footer anchors from the previous essay (currently one per OPEVC phase) &mdash; so that EXECUTE writes execution notes inside its own footer section but cannot overwrite what the prior phases wrote. The compartmentalization holds even within a single CLAUDE.md. <sup class="ref-marker" title="ref: execute-guard-section-enforcement-call | phase_execute/hooks/execute-guard.sh:856-879 | Inside execute-guard&#x27;s CLAUDE.md branch, the section-enforcement sub-block dispatches the shared check_section_edit(&quot;---Ex---&quot;, ...) library call; cross-section edits are rejected with section-enforcement block detail.">&#9432;</sup></p>
 
                         <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
                           <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; EXECUTE&rsquo;s two nested fences. An outer path-scope fence drawn from the altered list, and an inner section-marker fence inside each CLAUDE.md]</p>
@@ -162,13 +162,37 @@
 
                         <p>Reading project files does not consume budget; only edits and writes outside <code>.claude/</code> do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate the implementation to execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change. <sup class="ref-marker" title="ref: execute-subagent-grants-direct-action-budget | phase_execute/scripts/execute.sh:765-795 | grant-direct-action-budget adds +3 budget per execute-subagent dispatch; consume-direct-action-budget deducts 1 per project edit and dies on insufficient — structural enforcement of 80/20 delegation bias.">&#9432;</sup></p>
 
-                        <p>The discipline favors sequential dispatch &mdash; one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is two-in-flight; the cap was set after a cycle in which three concurrent subagents pushed the context window past a safe tier and triggered cascading compaction. Two-in-flight stays under that ceiling and is enough for genuine parallelism on independent files, narrow enough to keep the agent&rsquo;s context coherent. We will come back to the discipline of subagent dispatch in <a href="07-the-plugin-kit.html">Essay 7</a>.</p>
+                        <p>The discipline favors sequential dispatch &mdash; one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is two-in-flight; the cap was set after a cycle in which three concurrent subagents pushed the context window past a safe tier and triggered cascading compaction. We will come back to the discipline of subagent dispatch in <a href="07-the-plugin-kit.html">Essay 7</a>.</p>
+
+                        <h2>The comment-density drift gate</h2>
+
+                        <p>EXECUTE carries one gate that no other phase has &mdash; a <em>comment-density drift gate</em> on code edits, enforced inside the same execute-guard hook that polices the altered list.</p>
+
+                        <p>The rule is drift-only: an edit cannot lose comments relative to the file&rsquo;s prior state. There is no absolute floor; a sparsely-commented file does not trigger the gate, only an edit that strips reasoning from the file. Several distinct block verdicts cover the failure modes &mdash; code-added-without-comments, comments-stripped, comment-loss-disproportionate, docstring-stripped, new-file-no-docstring &mdash; each with its own block voice. A coaching tier (<code>thin-comments</code>) fires below the block threshold and lets the edit through with a stderr nudge. <sup class="ref-marker" title="ref: comment-density-drift-gate | phase_execute/hooks/execute-guard.sh:595-705 + phase_execute/scripts/comment-density.sh | The gate fires on Write/Edit of .sh/.py/.js/.css/.html files (main session only — subagents bulk-edit and are exempt). Block verdicts (currently five in the prototype) have distinct voice IDs; the coaching tier prints to stderr without blocking. The arithmetic is pure-integer delta on (old_string, new_string, ext); no file scans.">&#9432;</sup></p>
+
+                        <p>The gate matters because the most common LLM failure mode on code edits is the silent comment-strip. An LLM optimizing for terseness will happily delete the <code># why this exists</code> line as "cleanup." The reasoning is gone before any human reviews the diff. By forcing comment-loss to be visible at the moment of the edit &mdash; and by blocking the worst categories outright &mdash; the architecture protects the codebase&rsquo;s reasoning trail from the very tool writing it.</p>
+
+                        <p>A worked example lands here. Cycle 3 of the migration job has reached EXECUTE. The altered list is set; the marker-schema revert has been planned. The agent dispatches one execute-* subagent to revert cycle 2's marker code, then turns to write a single hook update itself. The Write tool fires; the comment-density gate inspects the delta. The old <code>script.sh</code> carried a six-line header docstring; the new version has it intact but stripped two inline <code># the reason this branch exists</code> comments from the body. The disproportionate-loss verdict fires. The edit is blocked. The agent reads the block message, restores the comments, re-submits. The check passes. Reasoning preserved; commit landed.</p>
+
+                        <h2>What you would customize</h2>
+
+                        <p>EXECUTE is where most architects will tune the most knobs, because it is where the seed agent&rsquo;s velocity actually shows.</p>
+
+                        <p>The architect would tune the <em>execute subagent roster</em>. The current roster covers code edits, test runs (deferred to VERIFY), and bulk refactors. A seed working in a content-heavy domain &mdash; legal drafting, market research write-ups &mdash; would want subagents specialized for prose generation and citation insertion, with their own scope guards. The roster is the surface; the entries are yours.</p>
+
+                        <p>The architect would tune the <em>direct-action budget arithmetic</em>. The current grant is +3 per execute-subagent dispatch; the consumption is -1 per project edit. Your seed might want a higher delegation bias (+5 grant, -2 consumption) or a lower one. The arithmetic is small; the bias it encodes is large.</p>
+
+                        <p>The architect would tune the <em>comment-density verdicts</em>. The current five block-categories and one coach-category were calibrated against the prototype&rsquo;s own cycles. A seed working in a heavily-commented domain might block on thinner deltas; one working with a generated-code intermediate stage might exempt specific paths from the gate entirely. The verdicts are the mechanism; the thresholds are yours.</p>
+
+                        <p>What the architect would <strong>not</strong> customize is the altered-list fence itself. The fence is the floor: an execute phase that lets the agent write outside the plan&rsquo;s declared scope is not an execute phase.</p>
+
+                        <p>The deepest payoff of EXECUTE is the cognitive failure mode it prevents: the cleanup that erases reasoning. An LLM finishing a job will, given freedom, polish its output by removing things it judges decorative &mdash; comments, docstrings, the careful <code># why</code> lines that future-readers depend on. The comment-density gate is the architecture&rsquo;s structural answer. Combined with the altered-list fence and the checkpoint cadence, EXECUTE is the phase that lets the agent build fast without letting it build fast in ways the next architect (or the next-cycle agent) will silently inherit and curse.</p>
 
                         <p>When EXECUTE believes the plan is implemented, it commits the final checkpoint and the orchestrator advances the job to VERIFY.</p>
 
                         <hr>
 
-                        <p><em>Essay 6.5 of 10 &mdash; The Markov Phasic Brain &mdash; Hadosh Academy series on agent architecture.</em></p>
+                        <p><em>Essay 6.5 of 10 &mdash; The Markov Phasic Brain.</em></p>
 
                         <p><em>Previous: <a href="06_4-plan.html">Essay 6.4 &mdash; PLAN: Decide, Then Lock</a> &mdash; naming the contract, the plan_state machine.</em> <em>Next: <a href="06_6-verify.html">Essay 6.6 &mdash; VERIFY: Independent Eyes</a> &mdash; scripts-only, auditor subagents, approval authority.</em></p>
 
