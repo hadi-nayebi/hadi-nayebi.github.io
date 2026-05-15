@@ -170,6 +170,20 @@
 
                         <p>That justification is the load-bearing claim of the phasic layer.</p>
 
+                        <p>A handful of mechanisms inside the cycle deserve a single sentence here before the next sub-essays open them. Every phase entry locks every tool until the agent sets a <em>multiplier</em> &mdash; a backward-counted scalar that captures the agent&rsquo;s scope forecast for the phase. Every phase carries its own <em>direct-action budget</em>, a small pool that meters how much file work the main session does directly versus how much it delegates to subagents. CONDENSE carries a <em>fix-in-cycle</em> gate that refuses to close the cycle until bugs introduced in this very cycle are repaired first. Job-graph mutations follow a <em>lifecycle-symmetry</em> rule &mdash; the phase that adds graph state is rarely the phase that removes it, because the right context for each operation lives in a different cognitive posture. We name each mechanism here so the sub-essays can use the labels; their machinery opens one by one.</p>
+
+                        <h2>What you would customize</h2>
+
+                        <p>The phasic layer is the most opinionated piece of the prototype, and almost every dimension of it is a customization surface. The architecture is the shape; the specific dials are the prototype&rsquo;s answers.</p>
+
+                        <p>The architect would tune the <em>phase count</em>. The current five (observe, plan, execute, verify, condense) cover the prototype&rsquo;s own work &mdash; designing the seed agent itself. A seed working on long literature reviews might want a <code>research</code> phase between observe and plan, where deep external reading happens with a different budget arithmetic than observe&rsquo;s broad sweep. A seed working in regulated drafting might split execute into <code>execute</code> and <code>integrate</code>. The phase count is a knob; the discipline of compartmentalization is the floor.</p>
+
+                        <p>The architect would tune the <em>acronym itself</em>. OPEVC is the prototype&rsquo;s name for its cycle. A custom seed could call it RUNS, OPERATE, or any other word that catches the kinds of cognitive work it values. The name shapes how the architect talks to their own seed; the talk shapes how the seed sees the work.</p>
+
+                        <p>The architect would tune the <em>tool-restriction granularity</em>. The prototype publishes one guard per phase, each one with its own allow-and-block list of tools. The same architecture supports finer grain &mdash; per-phase block-lists scoped by subagent type, allow-lists conditioned on the focused job&rsquo;s form, time-of-day rules for long-running research seeds. The guards are code; the granularity is what each architect&rsquo;s work demands.</p>
+
+                        <p>What the architect would <strong>not</strong> customize is the principle that each phase publishes its restrictions ahead of time and the guard enforces them. The principle is the floor: a phase that doesn&rsquo;t fence the agent in is not a phase, it is a label.</p>
+
                         <hr>
 
                         <p>The foundation is in place: a Markov brain whose moves are themselves Markov chains, phases as the structural answer to mixed-mode cognition. The next sub-essay maps every edge of the cycle &mdash; the full transition graph, the discipline the per-phase tool restrictions enforce, and a quick map of what each phase produces before we open the compartments one at a time.</p>

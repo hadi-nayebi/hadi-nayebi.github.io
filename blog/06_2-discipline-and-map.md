@@ -89,12 +89,12 @@ The result: each phase produces its own kind of artifact. OBSERVE produces worki
 Every phase has its own plugin. The phasic plugins (currently six in the prototype — one per phase, plus a separate orchestrator that tracks which phase is active for which job) are themselves single-concern packages, each one owning the rules for one mode of cognition. As with the always-on layer, the count is the prototype, not the architecture. A custom seed adding a sixth phase would add a seventh plugin alongside the orchestrator. The shape is what generalizes. [Essay 7](07-the-plugin-kit.html) walks through a worked example — a hypothetical `phase_research` plugin slotted between OBSERVE and PLAN, with the two-lock pattern that wires it in.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard table — write rules per phase.
+  Concept: Chalk-on-blackboard table — the phase write matrix. Each phase's write authority broken down across six axes that distinguish the phases from one another.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk colors for row labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for headers and cell marks; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
   IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, paths, or phase descriptors.
-  Layout: 5 rows × 5 columns grid drawn in chalk.
+  Layout: 5 rows × 6 columns grid drawn in chalk.
     Row labels (left, each in its own pastel chalk circle like the cycle image, lowercase, in this top-to-bottom order):
       Row 1 (cyan fill): "observe"
       Row 2 (green fill): "plan"
@@ -102,11 +102,16 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
       Row 4 (pink fill): "verify"
       Row 5 (magenta fill): "condense"
     Column headers (top, white chalk, lowercase, in this left-to-right order):
-      "read project", "edit project", "edit own footer", "edit plan file", "edit .claude/"
-    Cells: hand-drawn white chalk checkmark for allowed; white chalk X for blocked. No words inside cells.
+      "own footer", "other footers", "plan file", "project source", "scripts", "create jobs"
+    Cells (white chalk; words ONLY where listed, otherwise a checkmark or X glyph):
+      observe row: checkmark, X, X, X, X, X
+      plan row:    checkmark, X, X, X, X, X
+      execute row: checkmark, X, "create c1", "altered list", X, X
+      verify row:  checkmark, X, "refine", X, checkmark, X
+      condense row: "(all)", "(all)", X, X, X, checkmark
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "read project", "edit project", "edit own footer", "edit plan file", "edit .claude/", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only checkmark or X glyphs, no text.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. Each phase is defined by what it cannot do."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "own footer", "other footers", "plan file", "project source", "scripts", "create jobs", "create c1", "altered list", "refine", "(all)", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes strictly below its own footer marker — except CONDENSE, which has free hand across the brain."
 -->
 
 
@@ -166,6 +171,20 @@ Before opening each phase compartment, here is the operational map at a glance. 
 - Host work that doesn't fit the OPEVC ceremony — deadlock fixes, plugin maintenance, custom workflows
 
 That is the operational shape. The rest of this essay series opens each phase one at a time and explains what makes its compartment work.
+
+---
+
+## What you would customize
+
+The discipline is the architecture; the specific edges and the specific allow-lists are this prototype's calibration. Several surfaces are open to the next architect.
+
+The architect would tune the *backward map*. The prototype lets verify roll back to three destinations — execute, plan, or observe — picked by the failure shape. A seed that runs short, surgical cycles might collapse the menu to one (always observe; let the next cycle re-plan from scratch). A seed running long structural sweeps might widen the menu to include condense for re-routing learnings without re-executing.
+
+The architect would tune the *gmode usage policy*. Gmode is the freestyle escape hatch; the prototype reserved it for plugin maintenance because the prototype was building the seed agent itself. A user-facing seed might keep almost all work inside OPEVC and never enter gmode. A research-heavy seed might push routine literature scans through gmode rather than inflating every cycle's observe phase.
+
+The architect would tune the *per-phase tool allow-lists*. The current cuts — read-only in observe and plan, scripts-only in verify, full-write-inside-scope in execute, brain-only in condense — encode this prototype's notion of cognitive separation. A seed wanting a stricter observe could ban the web entirely. A seed wanting a looser verify could allow targeted code edits inside named directories. The guards are code; the cuts are decisions.
+
+What the architect would **not** customize is the rule that each phase publishes its allow-list and the guard enforces it against every tool call. The principle is the floor: a phase whose restrictions are advisory is not a phase.
 
 ---
 

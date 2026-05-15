@@ -134,6 +134,20 @@
 
                         <hr>
 
+                        <h2>VERIFY&rsquo;s scoped edit authority</h2>
+
+                        <p>A common shorthand says "VERIFY cannot edit files." It is half-right. The precise rule is that VERIFY cannot edit <em>project source</em> &mdash; code, scripts, configuration, anything outside the brain. Inside the brain, VERIFY&rsquo;s write authority is scoped, not absent, and the scope is exactly three paths.</p>
+
+                        <p>The first is the <em>plan files</em> in their respective drafting stages, just covered &mdash; the .md while <code>plan_state</code> is <code>drafting</code>, the .yaml while <code>plan_state</code> is <code>yaml_drafting</code>, each scoped to the focused job&rsquo;s declared <code>plan_file</code>. Edits to any other plan, or to a plan in any other state, are rejected at the tool boundary. <sup class="ref-marker" title="ref: verify-plan-edit-scoped-to-focused-job | phase_verify/hooks/verify-guard.sh:265-286 | The plan-file edit branch resolves the focused job&#x27;s plan_file, allows edits only to that basename or the parallel .yaml, and refuses .yaml edits unless plan_state is yaml_drafting — three nested scopes on a single edit path.">&#9432;</sup></p>
+
+                        <p>The second is the <em>altered-list CLAUDE.md files</em> &mdash; the same scope EXECUTE just finished writing into, inherited by VERIFY at phase entry. The agent appends its pass/fail findings to those CLAUDE.md files, but the edit lands strictly below <code>---Ve---</code>. Cross-section edits &mdash; attempts to amend OBSERVE&rsquo;s or PLAN&rsquo;s or EXECUTE&rsquo;s footer record &mdash; are rejected by the same shared section-check library every phase guard uses. VERIFY cannot rewrite history; it can only file its report under its own anchor. <sup class="ref-marker" title="ref: verify-claude-md-edit-section-bounded | phase_verify/hooks/verify-guard.sh:289-334 | The CLAUDE.md edit branch confirms the file is in the altered list, blocks Write on existing files (Edit only), then runs check_section_edit with &quot;---Ve---&quot; — the same library backing every phase&#x27;s section enforcement.">&#9432;</sup></p>
+
+                        <p>The third is the <em>memory files</em> &mdash; the user-side persistence layer under <code>.claude/projects/.../memory/</code>. Memory edits land in any phase, including VERIFY, because the memory layer is the always-on bus the seed agent uses for cross-cycle and cross-session learning; the phase-specific guards explicitly exempt memory paths from their scope checks. <sup class="ref-marker" title="ref: verify-memory-edits-always-allowed | phase_verify/hooks/verify-guard.sh:249-250 | Inside verify-guard&#x27;s Edit|Write|MultiEdit case arm, the very first line short-circuits with exit 0 for any path matching `/.claude/projects/.../memory/` — memory edits are always allowed, irrespective of altered list or section.">&#9432;</sup></p>
+
+                        <p>The right shorthand, then: VERIFY&rsquo;s edit authority is scoped. It can refine the plan, file its findings under its own footer, and update the memory layer. It cannot touch project source, cannot create new CLAUDE.md files, and cannot rewrite the prior phases' footer records. The scope is what makes VERIFY&rsquo;s verdict structurally trustworthy &mdash; VERIFY cannot quietly fix what it found wrong; it can only report and route.</p>
+
+                        <hr>
+
                         <h2>The auditor family</h2>
 
                         <p>Auditor subagents are read-only researchers, scoped narrowly to one slice of the cycle. The prototype ships an initial set &mdash; one per cycle slice &mdash; and the set grows as new perspectives prove worth auditing.</p>
@@ -179,6 +193,38 @@
                         </aside>
 
                         <p>When VERIFY passes, the orchestrator advances the job to CONDENSE.</p>
+
+                        <hr>
+
+                        <h2>A worked example</h2>
+
+                        <p>The multi-cycle plan-job from the prior sub-essays reaches its third cycle&rsquo;s VERIFY phase. The agent has revert-and-reauthored the marker schema in EXECUTE; the checkpoint commits are clean; the orchestrator advances the job to VERIFY.</p>
+
+                        <p>The agent enters VERIFY. The multiplier sentinel is unset; every tool is locked. The agent forecasts a tighter phase than EXECUTE because the work is read-and-judge rather than write &mdash; picks 2.5 on the multiplier. The lock lifts.</p>
+
+                        <p>The agent dispatches the auditor family in parallel. The verify-execute-auditor reads the cycle&rsquo;s commit graph and the altered-list diff. The verify-plan-auditor re-reads the .md plan and compares its acceptance criteria against the actual code change. The verify-observe-auditor walks the OBSERVE synthesis the cycle inherited from cycle 3's observation. The verify-git-historian audits the checkpoint cadence. None of them is allowed to fix what they find.</p>
+
+                        <p>The verify-plan-auditor surfaces a gap. The cycle&rsquo;s acceptance criteria, written by PLAN, list a round-trip check for the new marker schema. The agent ran that check and it passed. But the auditor also notices the .md plan never declared the criterion for <em>backward-compatibility with cycle-2 cycle records</em> &mdash; code already on disk, marker schema is now the new shape, the old records can no longer be parsed. The acceptance criteria the cycle inherited were under-specified. Execution did exactly what was asked; the asking was incomplete.</p>
+
+                        <p>The agent has a decision. The judgment-call criterion PLAN named &mdash; "if revert breaks downstream cycle-2 work, route a <code>[PENDING-JOB]</code> for CONDENSE" &mdash; partially covers this, but the under-specification is upstream of execute: PLAN missed it, not EXECUTE. The agent picks the major-fix path. It writes the auditor&rsquo;s finding into the working CLAUDE.md, below <code>---Ve---</code>; it edits the .md plan to add the backward-compat criterion (allowed &mdash; <code>plan_state</code> is <code>drafting</code>, file is the focused plan_file); it commits the verify checkpoint with <code>--backward plan</code>; the orchestrator routes the cycle back to PLAN.</p>
+
+                        <p>The cycle does not lose its history. The rollback is recorded. PLAN inherits the sharpened criteria; the agent re-plans the backward-compat work alongside the marker schema work; the cycle continues with a tighter contract.</p>
+
+                        <hr>
+
+                        <h2>What you would customize</h2>
+
+                        <p>VERIFY is the cycle&rsquo;s last word, and the architect has two main surfaces to bend.</p>
+
+                        <p>The architect would tune the <em>auditor roster</em>. The prototype ships an initial set &mdash; observe-auditor, plan-auditor, execute-auditor, git-historian, code-evolution-tracker &mdash; calibrated to seed-agent work where the artifacts are code and plans. A legal-research seed would swap in citation-checkers and precedent-comparison auditors. A finance-analysis seed would swap in number-reconciliation and filing-cross-check auditors. The auditor family is the surface; the perspectives it composes are yours.</p>
+
+                        <p>The architect would tune the <em>approval-question wording</em>. <code>[PLAN-APPROVAL]</code> and <code>[YAML-APPROVAL]</code> are the prototype&rsquo;s gates because the prototype&rsquo;s plans go through a two-stage .md-then-.yaml lifecycle. A simpler seed might collapse approval to a single prefix; a richer one might add <code>[DRAFT-APPROVAL]</code>, <code>[REVIEW-APPROVAL]</code>, and <code>[RELEASE-APPROVAL]</code> for staged sign-offs. The question-discipline registry takes the new prefixes; the verify-side handler maps them to the right <code>plan_state</code> transition.</p>
+
+                        <p>The architect would tune the <em>plan-edit scope rules</em>. The current scope is tight &mdash; VERIFY can only edit the focused job&rsquo;s <code>plan_file</code> and only when its state allows. A seed wanting looser refinement could widen the scope to any plan in <code>drafting</code>. A seed wanting tighter discipline could add per-section locks (acceptance criteria are append-only; goal is immutable once cycle 1 commits).</p>
+
+                        <p>What the architect would <strong>not</strong> customize is the inability to edit project source. The principle is the floor: a verification phase that lets the hand that built the code also rewrite it is not verification, it is hand-washing.</p>
+
+                        <p>The deepest payoff of VERIFY is the cognitive failure mode it prevents: the <em>self-validating delivery</em> &mdash; the agent that ships work it just built, declares it correct because it has read the diff, and the read-of-its-own-output is the same cognitive posture as the write-of-the-output. Same LLM, same prior, same blind spots. The structural separation &mdash; a phase with different tools, a different scope, frequently delegated to subagents with no execution history &mdash; gives the verdict an honest chance to be wrong about itself. The friction is the pedagogy. The phase is the compartment.</p>
 
                         <hr>
 
