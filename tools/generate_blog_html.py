@@ -28,7 +28,6 @@ from pathlib import Path
 SIDEBAR_POSTS = [
     ("08-from-apprentice-to-architect",  "From Apprentice to Architect",          "May 2026",      "27 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
     ("07-the-plugin-kit",                "The Plugin Kit",                        "May 2026",      "32 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("06-the-markov-phasic-brain",       "The Markov Phasic Brain",               "May 2026",      "40 min read",  "Power Users &amp; Architects", ["Architecture", "OPEVC", "Seed Agent"]),
     ("06_1-phasic-foundation",           "Essay 6.1 — Phasic Foundation",                   "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_2-discipline-and-map",          "Essay 6.2 — The Discipline and the Map",          "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_3-observe",                     "Essay 6.3 — OBSERVE: Read Wide, Write Once",      "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
@@ -88,7 +87,6 @@ READING_ORDER = [
     "06_8-backward-multiplier",
     "06_9-gmode",
     "06_10-plan-state-machine",
-    "06-the-markov-phasic-brain",
     "07-the-plugin-kit",
     "08-from-apprentice-to-architect",
 ]

@@ -386,6 +386,6 @@ The kit is in your hands. What does growth LOOK like when you use it over time? 
 
 *Essay 7 of 8 in the Hadosh Academy series on agent architecture.*
 
-*Previous: [The Markov Phasic Brain](06-the-markov-phasic-brain.html) — five phases, one cognitive organ, and why forbidding tools is the pedagogy.*
+*Previous: [Essay 6.10 — The Plan-State Machine](06_10-plan-state-machine.html) — closes The Markov Phasic Brain (10-part series): long-horizon memory via the plan-state machine.*
 
 *Next: [From Apprentice to Architect](08-from-apprentice-to-architect.html) — job formats, the maturation arc, and the seed's hand-off.*
