@@ -41,6 +41,23 @@ The gate admits on **either** of two conditions:
 
 Either condition admits. Both failing produces a block with structured teach-text naming both admission routes. The gate's logic is short — a few lines of bash in `lock-manager.sh` — but the architectural decision behind it is deeper than the code length suggests. *[ref: or-gate-logic | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:202-235 | The gate computes `gmode_active="false"; [[ "$current_phase" == "gmode" ]] && gmode_active="true"` and `plugin_lock_approval=$(jq -r '.jobs[] | select(.focused==true) | .completion_requirements.plugin_lock_approval // false' "$JOB_DATA")`. Block fires iff both arms fail: `if [[ -n "$current_phase" && "$gmode_active" != "true" && "$plugin_lock_approval" != "true" ]]; then exit 2`. Block voice: `plugin-lock-requires-gmode-or-approved-job` — names both admission paths in its teach-text.]*
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard OR-gate — two admission arms (gmode + plugin_lock_approval) converging into PLUGIN-LOCK admission for existing plugins, with a separate bypass path for plugin birth.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
+  pastel chalk fills (cyan for the gmode arm, green for the plugin_lock_approval arm, orange for the OR-gate node, pink for the blocked-by-default state, magenta for the plugin-birth bypass arrow);
+  white chalk for ALL labels, arrows, and captions; chalk sticks resting along the bottom edge.
+  IMPORTANT: Use only the literal labels listed below. Do not invent additional file names, prefixes, or paths.
+  Layout: Top-left — a small chalk box (cyan fill) labeled IN WHITE CHALK exactly: "current_phase == gmode". A white-chalk arrow exits its right edge and travels down-right toward a central node.
+  Bottom-left — a small chalk box (green fill) labeled IN WHITE CHALK exactly: "plugin_lock_approval == true". A white-chalk arrow exits its right edge and travels up-right toward the same central node.
+  Center — a chalk-drawn OR-gate node (orange fill, classic D-shape with curved input side and pointed output), labeled exactly: "OR". The two arrows feed into its input side.
+  Right of the OR — a white-chalk arrow exits the OR's point and lands on a chalk box outlined in white chalk labeled exactly: "[PLUGIN-LOCK] admitted".
+  Below the OR node — a small chalk tag (pink fill, crossed out with a white-chalk X) labeled exactly: "blocked by default", with a thin white-chalk line connecting it to the OR to show what happens when both arms fail.
+  Far-right bypass arrow — a single white-chalk arrow (magenta-tinted) flows from a small chalk tag at top-right labeled exactly: "plugin birth" AROUND the OR-gate node and lands directly on "[PLUGIN-LOCK] admitted", showing creation of a new plugin bypasses both arms.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — only these literal text strings as labels: "current_phase == gmode", "plugin_lock_approval == true", "OR", "[PLUGIN-LOCK] admitted", "blocked by default", "plugin birth", plus the caption below.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.9. Two arms admit edits to existing plugins — gmode for ad-hoc operator work, plugin_lock_approval for agent-proposed customization jobs. Plugin birth bypasses both."
+-->
+
 ## Why both routes, not one
 
 Each route covers a case the other can't reach without contortion.
