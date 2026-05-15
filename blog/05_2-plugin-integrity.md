@@ -41,6 +41,7 @@ This is deliberate. The test suite IS the safety net under every plugin edit; un
 The shape generalizes beyond this prototype. **Friction tracks danger.** Reading any file passes freely. Editing a plugin's code passes through one ceremony. Editing a plugin's test passes through two. Bypassing the safety net via gmode requires a hundred-word justification the architect (you) types. The seed agent is not slow at every step; it is slow at the steps where slow is safer than fast. Your customization door is here: as you cultivate your own seed, you choose where the gates sit and how steep each one is.
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: ../assets/images/blog/plugin-integrity-b5-2.png
   Concept: Chalk-on-blackboard cross-section — a single plugin's directory drawn as nested boxes, with two distinct chalk gates stacked outside-in: an outer `[PLUGIN-LOCK]` gate over the plugin's code files (hooks/, scripts/, config), and a second inner `[TEST-LOCK]` gate over the tests/ subdirectory. Outside both gates, a third chalk lane shows documentation surfaces (CLAUDE.md, docs/) flowing through with no gate. A small "auto-revert circuit" sketched at the bottom edge: test run → pass arrow commits, fail arrow reverts to a chalk-marked git checkpoint.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and nested rectangles;
   pastel chalk fills (cyan for the plugin envelope, green for code files, orange for the test files inner box, pink for the auto-revert circuit, magenta for the documentation lane);
