@@ -26,6 +26,21 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 ## How it works — block until summarized
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard cross-section — a token meter inside a job crosses a threshold and flips a flag; on the next tool call a guard blocks every productive tool while bypass-prefixed questions flow through a small escape hatch.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
+  pastel chalk fills (cyan for the token meter, green for the threshold line, orange for the summary_needed flag, pink for the blocked-tool tiles, magenta for the bypass-prefix arrow);
+  white chalk for ALL labels, arrows, and captions; chalk sticks resting along the bottom edge.
+  IMPORTANT: Use only the literal labels listed below. Do not invent additional file names, prefixes, or paths.
+  Layout: Left side — a vertical chalk bar (cyan fill) labeled IN WHITE CHALK exactly: "unsummarized tokens". A green-chalk dashed horizontal line crosses the bar near the top, labeled exactly: "threshold". A small white-chalk arrow exits the bar's top, points right, and lands on a small chalk box (orange fill) labeled exactly: "summary_needed".
+  Right side — a larger chalk box outlined in white chalk labeled at the top exactly: "summary-guard". Inside the guard box, a 2x2 grid of small chalk tiles (pink fill) each crossed out with a white-chalk X, labeled IN WHITE CHALK exactly: "Bash", "Edit", "Write", "AskUserQuestion".
+  Below the guard box, a single white-chalk arrow (magenta-tinted) flows AROUND the guard from left to right through a small gap labeled exactly: "BYPASS_PREFIXES". The arrow's tail starts at a small chalk tag labeled exactly: "[PLUGIN-LOCK]" and its head exits the right edge of the frame.
+  A white-chalk arrow from "summary_needed" enters the top of the "summary-guard" box, showing the flag turning the guard on.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — only these literal text strings as labels: "unsummarized tokens", "threshold", "summary_needed", "summary-guard", "Bash", "Edit", "Write", "AskUserQuestion", "BYPASS_PREFIXES", "[PLUGIN-LOCK]", plus the caption below.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 5.5. Cross the threshold, the flag flips, the guard blocks every productive tool — except infrastructure-prefixed questions, which slip through so the agent never deadlocks."
+-->
+
 Enforcement runs in two phases. A post-call hook fires right after `job_core` records each interaction, approximates the unsummarized portion in tokens, and trips a flag when the result crosses a threshold. On the next tool call, a pre-call guard blocks every productive tool the agent has — reads, writes, shell calls, even further questions — until a structured summary lands. The submit command refuses just any text: the summary must sit inside a tight word-count band and carry five named sections — User Requests, Questions & Decisions, Design Choices, Corrections & Feedback, Current State — each long enough to actually mean something. The same *shape compels production* trick `brain_guard` uses on `/compact`, applied to a different concern. The block has one deliberate escape hatch — infrastructure-prefixed questions like `[PLUGIN-LOCK]` and `[JOB-COMPLETE]` are still allowed, so the agent cannot get into a deadlock where it needs to ask for permission to do the very thing the guard is asking for. The summary chain is append-only and lives entirely in the plugin's hidden state; older entries cannot be rewritten. *[ref: enforcement-runs-in-two-phases | .claude/plugins/interaction_summary/scripts/summary.sh:230-236 | `REQUIRED_SECTIONS` array names exactly five: "User Requests", "Questions & Decisions", "Design Choices", "Corrections & Feedback", "Current State." Append-only chain: `.summary_chain += [...]` at line 276. Pre-call gate at summary-guard.sh:90 with `BYPASS_PREFIXES` including PLUGIN-LOCK + JOB-COMPLETE.]*
 
 ## What would break without it
