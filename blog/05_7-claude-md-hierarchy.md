@@ -5,7 +5,7 @@ slug: "claude-md-hierarchy"
 read_time: "12 min"
 tags: [Architecture, Seed Agent, CLAUDE.md, Working Memory]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -135,7 +135,7 @@ The **brain index** at `.claude/CLAUDE.md` is the other one. It catalogs the plu
 
 The **plugin CLAUDE.md files** declare what each plugin owns. They are how a plugin tells the rest of the system "I am responsible for X, here is how I work, here are my tests, here is my current version." When a plugin is being edited, that plugin's CLAUDE.md is the agent's working memory for the edit, and its footer is where the cycle's experiential data accumulates until CONDENSE absorbs it. *[ref: plugin-CLAUDE-md-files-declare | .claude/plugins/CLAUDE.md:103-119 | Plugin Structure Convention: each plugin's `CLAUDE.md` is "Working memory — objective, state, maintenance rules" (line 107). Layout includes hooks/, scripts/, tests/, docs/ each with their own nested CLAUDE.md. Minimal plugin = just CLAUDE.md.]*
 
-The **working-directory CLAUDE.md files** are local. The website project has one. So does the blog folder. So does — when work is happening there — any directory deep in the tree where the focus currently sits. These are the files whose footers most often inflate during the OPEVC cycle and deflate during CONDENSE. *[ref: working-directory-CLAUDE-md-files-local | CLAUDE.md:329-334 | CLAUDE.md Lifecycle states — Active (updated in every phase), Proactive (created before work in a directory), Retroactive (updated after work), Condensed (distilled at cycle close, knowledge migrated to .claude/knowledge/). Per-directory working memory.]*
+The **working-directory CLAUDE.md files** are local. The website project has one. So does the blog folder. So does — when work is happening there — any directory deep in the tree where the focus currently sits. These are the files whose footers most often inflate during the OPEVC cycle and deflate during CONDENSE. *[ref: working-directory-CLAUDE-md-files-local | CLAUDE.md "CLAUDE.md Lifecycle" section | CLAUDE.md Lifecycle states — Active (updated in every phase), Proactive (created before work in a directory), Retroactive (updated after work), Condensed (distilled at cycle close, knowledge migrated to .claude/knowledge/). Per-directory working memory.]*
 
 The **knowledge directory** is the durable layer. When something has been learned that is worth keeping past the current cycle, CONDENSE routes it into `.claude/knowledge/<topic>/` as a real Markdown file with its own structure. The current prototype carries one topic silo per major plugin (`brain_guard/`, `phase_observe/`, `phase_condense/`, and so on) plus a cross-cutting `opevc/` directory that holds dozens of operational recipes mined from cycles across the system. Each topic dir tends to grow an `INDEX.md` plus a handful of focused topic files, refined cycle after cycle. OBSERVE phases recall from the directory; CONDENSE phases extend it; subagents are dispatched against it for parallel research. Knowledge files are how the agent remembers things across sessions, across cycles, across months. *[ref: knowledge-directory-is-durable-layer | .claude/plugins/phase_condense/docs/principles.md:65-73 | Principle 6 "Subagents as Extractors": `condense-knowledge-extractor → .claude/knowledge/` (line 69). Rejection protocol routes content no subagent accepts to `knowledge/session/`. Knowledge directory is the durable destination CONDENSE routes into.]*
 

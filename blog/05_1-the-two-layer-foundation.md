@@ -5,7 +5,7 @@ slug: "the-two-layer-foundation"
 read_time: "6 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.4.0
+version: v0.5.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -50,7 +50,7 @@ Two layers. One multi-form substrate underneath.
 
 The substrate is `.claude/` itself — the multi-form memory directory the opener introduced. Each form serves a different concern, and each is used by different machinery. The difference between the two plugin layers is not which substrate forms they touch — that varies plugin by plugin — but their relationship to phase. The always-on layer runs continuously, each plugin owning one concern and its own private state.
 
-The phasic layer activates one plugin at a time, dictated by the active job's current phase, and uses the CLAUDE.md hierarchy specifically as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and other forms of memory at the end. *[ref: underneath-both-layers-sits | CLAUDE.md:111-112 | CONDENSE 7-step waterfall: (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) `[PENDING-JOB]` → dep jobs, (4) `[VOICE-UPDATE]` → voice.xml, (5) `[AGENT-UPDATE]` → subagent defs, (6) `[KNOWLEDGE]` → knowledge files, (7) session archive fallback. Markers carried in phase footers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`.]*
+The phasic layer activates one plugin at a time, dictated by the active job's current phase, and uses the CLAUDE.md hierarchy specifically as its working medium — writing into footers during each cycle, then absorbing the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and other forms of memory at the end. *[ref: underneath-both-layers-sits | CLAUDE.md "CONDENSE" core-phase entry + "Sub-Operations of CONDENSE" section | CONDENSE 7-step waterfall: (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) `[PENDING-JOB]` → dep jobs, (4) `[VOICE-UPDATE]` → voice.xml, (5) `[AGENT-UPDATE]` → subagent defs, (6) `[KNOWLEDGE]` → knowledge files, (7) session archive fallback. Markers carried in phase footers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`.]*
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: ../assets/images/blog/always-on-plugins-b5-1.png
