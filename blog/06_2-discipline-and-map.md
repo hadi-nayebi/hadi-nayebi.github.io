@@ -124,7 +124,7 @@ Before opening each phase compartment, here is the operational map at a glance. 
 **IDLE** — the meta-state between cycles. Lifecycle management only.
 - Unlock the job-management CLI — the lifecycle surface (`show`, `focused`, `list`, `update`, `activate`, `focus`, `pause`, `complete`, `approve`). Creation and graph mutations live elsewhere.
 - Unlock the phase CLI (`advance`, `current`, `cycle`, `exit-gmode`) — agent-callable `advance` only goes idle → observe
-- Keep the always-on infrastructure running: memory edits, summary, compact, lock
+- Keep the always-on infrastructure running: memory-file edits, plus three named scripts on the IDLE Bash allowlist — `interaction_summary/scripts/summary.sh` for cross-conversation summaries, `brain_guard/scripts/self-compact.sh` for context-window compaction, and `plugin_integrity/scripts/lock-cmd.sh` for the universal active-lock close-out. Every other shell command exits blocked. *[ref: idle-bash-allowlist-named-scripts | phasic_system/hooks/phase-gate.sh:82-104 | IDLE's Bash whitelist is enumerated explicitly: summary.sh, self-compact.sh, lock-cmd.sh, phase.sh restricted to (advance|current|cycle|exit-gmode), job.sh restricted to (show|focused|list|update|activate|focus|pause|complete|approve). Default-block on everything else.]*
 - Block reads, project edits, CLAUDE.md edits, web access, general shell
 - *Job creation happens automatically: top-level via `prompt-handler.sh` (the user's prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming `[PENDING-JOB]` markers. The agent does not call `job.sh create` itself.*
 
