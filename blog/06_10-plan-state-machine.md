@@ -70,6 +70,23 @@ The `.md` is for humans. The `.yaml` is for the brain.
 
 Once a job's `plan_state` is `yaml_drafting`, `yaml_ready`, or `sealed`, the phasic system's entry hook reads the `.yaml` on every phase transition and writes the phase-specific field-map to a cache file. The shared voice helper reads that cache when it fires any voice during the new phase, and yaml field-map entries auto-append to the relevant voices — turning a job's structured long-horizon context into a stream of injections that show up automatically wherever the agent is reading guidance. *[ref: phase-init-yaml-injection-on-transition | .claude/plugins/phasic_system/hooks/phase-init.sh write_yaml_cache + phase-transition branch | The write_yaml_cache helper resolves `$ROOT_DIR/.claude/.tmp/yaml-injection-cache.json` and writes the field-map for the focused job's current phase by calling `bash "$PHASE_SH" --hook read-yaml`. The phase-transition branch of phase-init.sh calls write_yaml_cache after every advance, back, or commit-transition event so the freshly entered phase's yaml content immediately augments downstream voices. Gmode enter clears the cache (side-quest isolation); gmode exit restores it. New jobs and focus events also refresh. Net result: phase entry is the injection moment; the .yaml plays back the job's long-horizon memory each time the agent crosses a phase boundary.]*
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard sketch — the .md and .yaml side by side, with the .yaml's phase-entry injection feeding into the OPEVC cycle. The dual-document layout makes "what is for the human" vs "what is for the brain" legible at a glance.
+  Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
+  pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the document tiles and the phase ring;
+  white chalk for labels, arrows, and field names; chalk sticks at the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, field names, or descriptors.
+  Layout: Two chalk-drawn document tiles side by side on the left half of the board; a chalk-drawn ring of four phase circles on the right half. A single arrow stream connects the two halves.
+    Left tile (cyan border, drawn as a tall rectangle with horizontal chalk ruling to suggest prose lines): labeled at the top "plan.md", with a smaller white chalk note beneath it "for the human".
+    Right tile (orange border, drawn as a tall rectangle with chalk indentation lines to suggest structured fields): labeled at the top "plan.yaml", with a smaller white chalk note beneath it "for the brain". Inside the .yaml tile, four small white chalk field labels stacked vertically: "observe:", "plan:", "execute:", "verify:".
+    A short white chalk double-headed arrow between the two tiles, labeled "same basename".
+    On the right half of the board, four phase circles arranged in a ring: cyan circle labeled "observe", green circle labeled "plan", orange circle labeled "execute", pink circle labeled "verify". Small white chalk arrows connect them clockwise.
+    From the .yaml tile, a curved white chalk arrow exits the right edge and fans out into four thin chalk lines, each landing on one phase circle. Above the fan, a white chalk note: "injects at phase entry".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plan.md", "plan.yaml", "for the human", "for the brain", "observe:", "plan:", "execute:", "verify:", "same basename", "observe", "plan", "execute", "verify", "injects at phase entry", plus the caption below. No other words, file names, folders, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.10. The .md is for the human; the .yaml is for the brain. Same basename, different surface."
+-->
+
 This is the long-horizon mechanism. Without it, every cycle would start cold — the agent would have to re-read the `.md` and re-derive what each phase should know. With it, the agent's context grows back the long-form structure of the job automatically, each cycle, at every phase boundary. The brain doesn't have to remember to remember.
 
 The `.md` and `.yaml` are not redundant — they are different surfaces. The `.md` is a prose document a human can scan to follow the arc of a long job. The `.yaml` is a parseable structure the brain can inject at exactly the right moment. They coexist; neither replaces the other.

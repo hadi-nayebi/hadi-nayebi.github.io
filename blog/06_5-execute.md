@@ -36,6 +36,24 @@ The altered list is a frozen snapshot of directories, captured from OBSERVE and 
 
 A second guard inside the same hook protects the phase-section markers — the four footer anchors from the previous essay — so that EXECUTE writes execution notes inside its own footer section but cannot overwrite what the prior phases wrote. The compartmentalization holds even within a single CLAUDE.md. *[ref: execute-guard-section-enforcement-call | phase_execute/hooks/execute-guard.sh:856-879 | Inside execute-guard's CLAUDE.md branch, the section-enforcement sub-block dispatches the shared check_section_edit("---Ex---", ...) library call; cross-section edits are rejected with section-enforcement block detail.]*
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard sketch — EXECUTE's two nested fences. An outer path-scope fence drawn from the altered list, and an inner section-marker fence inside each CLAUDE.md.
+  Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
+  pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the fence borders and the CLAUDE.md tile;
+  white chalk for labels and arrows; chalk sticks at the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, or fence descriptors.
+  Layout: Two nested chalk rectangles arranged concentrically on the board.
+    Outer rectangle (cyan border, large): labeled at the top edge "altered list", with three small chalk file icons inside labeled "dir A", "dir B", "dir C" — these are the allowed directories.
+    A short white chalk arrow enters the outer rectangle from the left labeled "write call"; a second white chalk arrow attempts to enter from outside the outer rectangle and is blocked by a chalk X mark, labeled "out of scope".
+    Inner rectangle (orange border, smaller, drawn inside dir B): represents a single CLAUDE.md, labeled at the top edge "CLAUDE.md".
+    Inside the inner rectangle, four horizontal chalk bands stacked vertically, each labeled with a pastel-chalk anchor name: top band cyan labeled "---Ob---", second band green labeled "---Pl---", third band orange labeled "---Ex---" (highlighted with a small white chalk check mark in the margin), fourth band pink labeled "---Ve---".
+    A white chalk arrow enters the inner rectangle from outside and lands cleanly inside the third band (---Ex---).
+    A second white chalk arrow attempts to land in the first band (---Ob---) and is blocked by a chalk X, labeled "wrong section".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "altered list", "dir A", "dir B", "dir C", "write call", "out of scope", "CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "wrong section", plus the caption below. No other words, file names, folders, or fence descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.5. EXECUTE's two fences. Path scope outside, section scope inside."
+-->
+
 ---
 
 ## Checkpoints over runs
@@ -60,7 +78,7 @@ When EXECUTE believes the plan is implemented, it commits the final checkpoint a
 
 ---
 
-*Essay 6.5 of 10 — The Markov Phasic Brain.*
+*Essay 6.5 of 10 — The Markov Phasic Brain — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 6.4 — PLAN: Decide, Then Lock](06_4-plan.html) — naming the contract, the plan_state machine.*
 *Next: [Essay 6.6 — VERIFY: Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, approval authority.*

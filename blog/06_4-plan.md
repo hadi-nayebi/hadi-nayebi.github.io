@@ -42,13 +42,35 @@ The plan moves through a small set of states (currently five in the prototype, e
 
 `sealed` is optional and terminal; `seal-plan` is the only command that archives the pair to `completed_plan[]`. Approval is a state flip, not a retirement — the plan keeps working until it is explicitly sealed.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard diagram — the plan-state machine. Five named states plus the implicit `none` start, connected by labeled transitions.
+  Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
+  pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the state circles;
+  white chalk for labels, transition arrows, and self-loop labels; chalk sticks at the bottom edge; faint chalk dust at the edges.
+  IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other state names, transition labels, or descriptors.
+  Layout: A horizontal chain of state circles across the board, left to right, with two self-loops and one optional terminal branch.
+    Circle 1 (small, dim white border, leftmost): labeled "none".
+    Circle 2 (cyan border): labeled "drafting", with a small curved chalk self-loop above it labeled "verify refines .md".
+    Circle 3 (green border): labeled "md approved".
+    Circle 4 (orange border): labeled "yaml drafting", with a small curved chalk self-loop above it labeled "verify refines .yaml".
+    Circle 5 (pink border): labeled "yaml ready".
+    Circle 6 (magenta border, drawn smaller and slightly off-axis to mark it as optional terminal): labeled "sealed".
+    White chalk arrows connect them in order: none → drafting → md approved → yaml drafting → yaml ready → sealed.
+    Above the arrow from drafting to md approved, a white chalk note: "approve-md".
+    Above the arrow from yaml drafting to yaml ready, a white chalk note: "approve-yaml".
+    Above the arrow from yaml ready to sealed, a white chalk note: "seal-plan (optional)".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "none", "drafting", "md approved", "yaml drafting", "yaml ready", "sealed", "verify refines .md", "verify refines .yaml", "approve-md", "approve-yaml", "seal-plan (optional)", plus the caption below. No other words, file names, folders, or state descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.4. The plan-state machine. Approval is a state flip; only seal-plan retires the pair."
+-->
+
 ---
 
 ## Inside the plan document
 
 Plan documents live at a known path inside the agent's knowledge directory. Their structure is opinionated.
 
-Each one carries a stated goal, an acceptance-criteria list, the *altered list* — a list of CLAUDE.md files whose parent directories EXECUTE will be allowed to touch, [introduced in the previous essay](05-the-always-on-digital-cortex.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe. *[ref: plan-6-subagents-encode-structure | phase_plan/agents/CLAUDE.md:17-30 | PLAN's 6 specialized subagents encode the plan-document's opinionated structure: plan-step-breaker decomposes steps, plan-criteria-writer authors acceptance criteria, plan-scope-analyzer maps altered-list directories, plan-risk-assessor names judgment calls.]*
+Each one carries a stated goal, an acceptance-criteria list, the *altered list* — a list of CLAUDE.md files whose parent directories EXECUTE will be allowed to touch, [introduced in Essay 5.7](05_7-claude-md-hierarchy.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe. *[ref: plan-6-subagents-encode-structure | phase_plan/agents/CLAUDE.md:17-30 | PLAN's 6 specialized subagents encode the plan-document's opinionated structure: plan-step-breaker decomposes steps, plan-criteria-writer authors acceptance criteria, plan-scope-analyzer maps altered-list directories, plan-risk-assessor names judgment calls.]*
 
 The `.md` and the `.yaml` live side-by-side once both exist, and they are not the same artifact wearing different masks. The `.md` is the human-readable accumulating prose; the `.yaml` is the parseable injection target the orchestrator reads at phase entry to pour context-specific content into the working session.
 
@@ -74,7 +96,7 @@ When PLAN exits, the orchestrator advances the job to EXECUTE.
 
 ---
 
-*Essay 6.4 of 10 — The Markov Phasic Brain.*
+*Essay 6.4 of 10 — The Markov Phasic Brain — Hadosh Academy series on agent architecture.*
 
 *Previous: [Essay 6.3 — OBSERVE: Read Wide, Write Once](06_3-observe.html) — read-only synthesis, multiplier sentinel, paired gates.*
 *Next: [Essay 6.5 — EXECUTE: Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*
