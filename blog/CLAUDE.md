@@ -287,6 +287,15 @@ These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2
 - When mentioning these numbers, frame as "current operating threshold" or "compaction trigger" — never as "the chat fits 250k tokens" (which sounds like a model limit).
 - The 1M ceiling is the model; the 200k/250k/300k tiers are the discipline `brain_guard` enforces to keep cognitive coherence.
 
+**Rule 6 — Series-aware references for pre-split essays.**
+- When an essay references another that may later split into a sub-series (B6, B7, B8 are candidates — Essay 5 has already split), the framing depends on what the ref promises.
+- WRONG (when content is being deferred): "deconstructed in [Essay 7]" or "the subject of [Essay 6]" — these promise a single-page lookup that breaks navigability when the target splits.
+- RIGHT (content deferral): "the [Essay 6 series]" or "deconstructed across the [Essay 7 series]" — optionally add "(currently a monolith; we will split it into a sub-essay series the same way we split Essay 5)" when the first reference in the essay establishes the framing.
+- OK as-is (generic category pointer): "The phase plugins ([Essay 6])" — entry-point URL redirects cleanly when the target splits; no caveat needed.
+- OK as-is (parenthetical concept reference): "the soft → hard migration from [Essay 8]" — references a concept, not a location.
+- OK as-is (footer navigation): "Next: [Essay 6 — Title]" — entry-point URL is canonical.
+- Why: B5 split in 2026-05-14 broke this distinction. Catching this rule before B6/B7/B8 split saves a second drift-pass when those splits happen.
+
 ### Part 2 Tone (NON-NEGOTIABLE)
 
 Blogs 1-4 lean **conceptual + heavy analogy** (toaster, organism, snake, cognitive metabolism). Blogs 5-8 lean **grounded + low analogy**. Mechanisms are named directly: file paths, marker syntax, plugin names. Analogies from earlier blogs return only as connective glue, never as the load-bearing image of a section.
