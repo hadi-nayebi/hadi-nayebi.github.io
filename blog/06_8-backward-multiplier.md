@@ -6,19 +6,19 @@ read_time: "11 min"
 tags: [Architecture, Seed Agent, OPEVC, Multiplier]
 status: draft
 version: v0.1.0
-audience: "Tier 2 to Tier 3"
+audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
 
 # The Backward Multiplier
 
-*Essay 6.8 of 10 &mdash; The Markov Phasic Brain.*
+*Essay 6.8 &mdash; The Markov Phasic Brain, Part 8 of 10.*
 
 ---
 
 [Essay 6.7](06_7-condense.html) closed the cycle. Five phases plus the metabolism organ &mdash; the seed agent now has the compartmentalized cognition the rest of the series has been building toward. What is left is the one mechanism that sits at the entry of every phase and turns a scalar dial into an act of meta-cognition.
 
-For the architects in the audience, this is where the phasic layer earns its keep. The mechanism is small. The discipline it produces is large.
+This is where the phasic layer earns its keep — and where you, designing your own seed, will spend the most time tuning. The mechanism is small. The discipline it produces is large.
 
 ---
 
@@ -62,7 +62,7 @@ Each phase has its own point schedule. Actions the phase wants to encourage earn
 
 The actual numbers, in case the architect needs them. **OBSERVE** &mdash; CLAUDE.md edit 10, Agent dispatch 7, AskUser 5, Web fetch 4, Read 3, Job-update 3, Grep 2, whitelisted Bash 2, Glob 1. **PLAN** &mdash; same shape: CLAUDE.md edit 10, Agent 7, AskUser 5, Web 4, Read 3, Grep 2, whitelisted Bash 2, Glob 1. **EXECUTE** &mdash; MultiEdit 10 (or 5 for partial-replace), Agent 7, Edit 5, Write 5, Read 3, Bash 2. **VERIFY** &mdash; CLAUDE.md edit 10, Agent 7, AskUser 5, Edit (project file) 5, MultiEdit 5, test-Bash 5, Web 3, plan-file Edit 3, Read 2-3, Grep 2, whitelisted Bash 2, Glob 1. **CONDENSE** &mdash; Agent 7, root-CLAUDE.md edit 5, AskUser-`[WAITING]` 5, knowledge-file edit 4, voice.xml edit 4, other-md edit 4, memory-file edit 3, job-creating Bash 3, AskUser-other 2, Read 2, other Bash 1. The shape of each table is the phase's pedagogy: OBSERVE/PLAN/VERIFY all peak at the CLAUDE.md edit (synthesis = decision = the phase's deliverable); EXECUTE peaks at MultiEdit (the heaviest file edit); CONDENSE has no single peak because every routing target is a durable layer the brain wants reached. The numbers are tunable via each phase's `config.conf`; the *ranking* is the design intent. *[ref: per-phase-point-schedules-config-conf | phase_observe/config.conf + phase_plan/config.conf + phase_execute/hooks/execute-tracker.sh + phase_verify/config.conf + phase_condense/config.conf | OBSERVE/PLAN/VERIFY/CONDENSE expose POINTS_* values via config.conf (sourced by tracker hooks). EXECUTE hardcodes its values directly in execute-tracker.sh (Read 3, Edit 5, Write 5, MultiEdit 10/5, Bash 2, Agent 7). All five tables share the convention "highest reward = phase's pedagogical core."]*
 
-The point system is *invisible to the seed agent*. No instruction file mentions points. No coaching voice cites a number. No subagent prompt rewards points. The agent never sees its current score and never sees the threshold. What the agent sees, when a gate fires, is the *kind* of work it needs more of &mdash; "you have to read before you can write" or "you have read enough; synthesize before continuing." The arithmetic is the orchestrator's; the experience is just the friction. Hiding the score is deliberate. A scoreboard the agent could see would create point-chasing &mdash; the model is good at optimizing what it can measure. The seed agent is not allowed to optimize this one. It can only do the work, and the work earns points the agent never counts. *[ref: points-invisible-prevents-gaming | phase_observe/docs/principles.md:56-62 | Principle 7: agent never sees point count mid-work; points surface only in min/max gate blocks and commit rejection. Rationale: scoreboard visibility converts behavioral shaping into a gamification target.]*
+The point system is *invisible to the seed agent*. No instruction file mentions points. No coaching voice cites a number. No subagent prompt rewards points. The agent never sees its current score and never sees the threshold. What the agent sees, when a gate fires, is the *kind* of work it needs more of &mdash; the coaching voice tells it to read before writing, or to synthesize before reading more. The arithmetic is the orchestrator's; the experience is just the friction. Hiding the score is deliberate. A scoreboard the agent could see would create point-chasing &mdash; the model is good at optimizing what it can measure. The seed agent is not allowed to optimize this one. It can only do the work, and the work earns points the agent never counts. *[ref: points-invisible-prevents-gaming | phase_observe/docs/principles.md:56-62 | Principle 7: agent never sees point count mid-work; points surface only in min/max gate blocks and commit rejection. Rationale: scoreboard visibility converts behavioral shaping into a gamification target.]*
 
 ## The dial
 
@@ -142,9 +142,9 @@ Next.
 
 ---
 
-*Essay 6.8 of 10 &mdash; The Markov Phasic Brain.*
+*Essay 6.8 &mdash; The Markov Phasic Brain, Part 8 of 10.*
 
-*Previous: [Essay 6.7 &mdash; CONDENSE: The Cognitive Organ](06_7-condense.html) &mdash; the seven-step waterfall, the deflation gate, the only phase that edits the brain.*
+*Previous: [Essay 6.7 &mdash; CONDENSE — The Cognitive Organ](06_7-condense.html) &mdash; the seven-step waterfall, the deflation gate, the only phase that edits the brain.*
 *Next: [Essay 6.9 &mdash; GMODE: The Off-Cycle Lane](06_9-gmode.html) &mdash; the operator's deliberate maintenance lane that lives outside the OPEVC cycle.*
 
 

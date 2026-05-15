@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # Structured Questions — `question_discipline`
 
-*Essay 5.6 of 9 — The Always-On Digital Cortex.*
+*Essay 5.6 — The Always-On Digital Cortex, Part 6 of 9.*
 
 ---
 
@@ -84,7 +84,7 @@ That closes the tour of the five always-on plugins. The next part covers one of 
 
 ---
 
-*Essay 5.6 of 9 — The Always-On Digital Cortex.*
+*Essay 5.6 — The Always-On Digital Cortex, Part 6 of 9.*
 
 *Previous: [Essay 5.5 — Cross-Session Memory (`interaction_summary`)](05_5-interaction-summary.html) — block-until-summarized.*
 *Next: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — working memory bus, footer protocol, altered list.*

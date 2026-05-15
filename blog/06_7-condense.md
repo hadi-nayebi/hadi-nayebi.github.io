@@ -1,18 +1,18 @@
 ---
-title: "CONDENSE: The Cognitive Organ"
+title: "CONDENSE — The Cognitive Organ"
 date: "May 2026"
 slug: "condense"
 read_time: "11 min"
 tags: [Architecture, Seed Agent, OPEVC, CONDENSE]
 status: draft
 version: v0.1.0
-audience: "Tier 2 to Tier 3"
+audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
 
-# CONDENSE: The Cognitive Organ
+# CONDENSE — The Cognitive Organ
 
-*Essay 6.7 of 10 &mdash; The Markov Phasic Brain.*
+*Essay 6.7 &mdash; The Markov Phasic Brain, Part 7 of 10.*
 
 ---
 
@@ -20,7 +20,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 This is CONDENSE. It is not a fifth work-on-the-project phase. It is a different kind of phase entirely.
 
-For the architects in the audience.
+This sub-essay is for you — especially when you find yourself thinking about how the brain ends up shaped after dozens of cycles.
 
 ---
 
@@ -147,7 +147,7 @@ Next.
 
 ---
 
-*Essay 6.7 of 10 &mdash; The Markov Phasic Brain.*
+*Essay 6.7 &mdash; The Markov Phasic Brain, Part 7 of 10.*
 
 *Previous: [Essay 6.6 &mdash; VERIFY: Independent Eyes](06_6-verify.html) &mdash; the audit chamber, the script-and-auditor rule, the multi-backward fan-out.*
 *Next: [Essay 6.8 &mdash; The Backward Multiplier](06_8-backward-multiplier.html) &mdash; the per-phase dial, the point system, and the smaller-number-bigger-phase punch.*

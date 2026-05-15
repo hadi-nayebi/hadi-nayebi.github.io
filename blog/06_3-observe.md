@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # OBSERVE — Read Wide, Write Once
 
-*Essay 6.3 of 10 — The Markov Phasic Brain.*
+*Essay 6.3 — The Markov Phasic Brain, Part 3 of 10.*
 
 ---
 
@@ -104,7 +104,7 @@ OBSERVE writes once, into the working memory, and hands the result forward. The 
 
 ---
 
-*Essay 6.3 of 10 — The Markov Phasic Brain.*
+*Essay 6.3 — The Markov Phasic Brain, Part 3 of 10.*
 
 *Previous: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*
 *Next: [Essay 6.4 — PLAN: Decide, Then Lock](06_4-plan.html) — turning observation into a binding contract.*

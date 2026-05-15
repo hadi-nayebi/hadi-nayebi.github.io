@@ -4,7 +4,7 @@ date: "May 2026"
 slug: "verify"
 read_time: "7 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Verify]
-status: drafting
+status: draft
 version: v0.1.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # VERIFY — Independent Eyes
 
-*Essay 6.6 of 10 — The Markov Phasic Brain.*
+*Essay 6.6 — The Markov Phasic Brain, Part 6 of 10.*
 
 ---
 
@@ -136,12 +136,14 @@ What the architect would **not** customize is the inability to edit project sour
 
 The deepest payoff of VERIFY is the cognitive failure mode it prevents: the *self-validating delivery* — the agent that ships work it just built, declares it correct because it has read the diff, and the read-of-its-own-output is the same cognitive posture as the write-of-the-output. Same LLM, same prior, same blind spots. The structural separation — a phase with different tools, a different scope, frequently delegated to subagents with no execution history — gives the verdict an honest chance to be wrong about itself. The friction is the pedagogy. The phase is the compartment.
 
+VERIFY's verdict closes the work-on-the-project arc. What CONDENSE does next is different in kind — work on the brain itself. Next.
+
 ---
 
-*Essay 6.6 of 10 — The Markov Phasic Brain.*
+*Essay 6.6 — The Markov Phasic Brain, Part 6 of 10.*
 
 *Previous: [Essay 6.5 — EXECUTE: Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, checkpoints, delegation bias.*
-*Next: [Essay 6.7 — CONDENSE: The Cognitive Organ](06_7-condense.html) — the seven-step waterfall, the cycle's metabolism.*
+*Next: [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the seven-step waterfall, the cycle's metabolism.*
 
 
 

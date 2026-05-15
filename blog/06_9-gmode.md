@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # GMODE — The Off-Cycle Lane
 
-*Essay 6.9 of 10 — The Markov Phasic Brain.*
+*Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
 
 ---
 
@@ -20,7 +20,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 Every phase, including idle, carries one extra edge that loops back to itself through gmode — short for *generic mode*. Gmode is the freestyle side-channel: a deliberately unconstrained state used for work the seed agent needs to do *now*, but for which the OPEVC ceremony would be overhead rather than discipline.
 
-For the architects in the audience. Especially the ones who will need to do ad-hoc maintenance on a running seed.
+This sub-essay is for you — especially when you are doing ad-hoc maintenance on your own running seed.
 
 ---
 
@@ -112,7 +112,7 @@ Gmode is the side-channel; the plan-state machine is the long-channel. Both exis
 
 ---
 
-*Essay 6.9 of 10 — The Markov Phasic Brain.*
+*Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
 
 *Previous: [Essay 6.8 — The Backward Multiplier](06_8-backward-multiplier.html) — the meta-cognition dial that calibrates each phase's tool budget before entry.*
 *Next: [Essay 6.10 — The Plan-State Machine](06_10-plan-state-machine.html) — multi-cycle plans, the .md → .yaml lifecycle, and the long-horizon work the phasic brain carries across cycles.*

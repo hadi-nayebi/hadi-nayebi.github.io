@@ -101,19 +101,13 @@
                         By Hadi Nayebi &amp; Claude Opus 4.7
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="../assets/audio/observe.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (8 min)</span>
+                    <div class="article-audio" style="opacity: 0.55;">
+                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (8 min read).</span>
                     </div>
 
                     <div class="article-body">
 
-                        <p> # OBSERVE &mdash; Read Wide, Write Once</p>
-
-                        <p><em>Essay 6.3 of 10 &mdash; The Markov Phasic Brain.</em></p>
+                        <p><em>Essay 6.3 &mdash; The Markov Phasic Brain, Part 3 of 10.</em></p>
 
                         <hr>
 
@@ -133,11 +127,10 @@
 
                         <p>OBSERVE is also where the most distinctive seed-agent mechanism lives &mdash; the <strong>multiplier sentinel</strong>, a per-phase scalar that starts at zero and locks every tool until the agent sets a real value in 0.5–3.0. Once set, the value cannot be changed for that phase entry. The same pattern applies to every other phase. We come back to what that <em>means</em> &mdash; and why a smaller number declares a larger phase &mdash; at the close of this essay series. <sup class="ref-marker" title="ref: multiplier-sentinel-locks-all-tools | phase_observe/hooks/observe-guard.sh:185-202 | Sentinel-lock gate: every tool except the observe.sh set-multiplier Bash invocation is blocked until the agent picks a value in 0.5-3.">&#9432;</sup></p>
 
-                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
-                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; OBSERVE&rsquo;s three internal locks that shape the phase from the inside]</p>
-                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines; pastel chalk (cyan, green, orange, pink, magenta &mdash; same palette as the cycle image) for the gate boxes; white chalk for labels and arrows; chalk sticks at the bottom edge; faint chalk dust at the edges. IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, or gate descriptors. Layout: A horizontal flow across the board, left to right, showing the OBSERVE phase as a chalk-drawn corridor with three sequential gates. Gate 1 (cyan box, leftmost, at the phase entry): labeled "multiplier sentinel" with a small "0" inside a chalk circle above it, and a white chalk note "all tools locked" beneath. Gate 2 (green box, middle-left): labeled "min synthesis" with a white chalk note "read before write" beneath. Gate 3 (orange box, middle-right): labeled "max accumulation" with a white chalk note "synthesize before reading more" beneath. Between Gate 1 and Gate 2, a chalk arrow with a small pink label "set 0.5 to 3" above it. Between Gate 2 and Gate 3, a curved chalk loop arrow looping back on itself, labeled "read / write rhythm" in white chalk. To the right of Gate 3, a final white chalk arrow exits the corridor, labeled "commit" pointing to a small magenta circle labeled "plan". Keep every line hand-drawn and slightly imperfect, never ruler-straight. STRICT NAME WHITELIST &mdash; the image must contain only these literal text strings as labels: "multiplier sentinel", "0", "all tools locked", "min synthesis", "read before write", "max accumulation", "synthesize before reading more", "set 0.5 to 3", "read / write rhythm", "commit", "plan", plus the caption below. No other words, file names, folders, or gate descriptors may appear.</p>
-                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> Image 6.3. OBSERVE&rsquo;s three gates &mdash; the sentinel locks entry, the paired gates shape the rhythm.</p>
-                        </aside>
+                        <figure class="blog-image" style="margin: 2rem 0;">
+                          <div style="width: 100%; max-width: 800px; height: auto; min-height: 240px; display: flex; align-items: center; justify-content: center; margin: 0 auto; border-radius: 8px; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.45); font-size: 0.85em; font-style: italic; padding: 3rem 1rem; text-align: center;">image pending &mdash; OBSERVE&rsquo;s three internal locks that shape the phase from the inside</div>
+                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Image 6.3. OBSERVE&rsquo;s three gates &mdash; the sentinel locks entry, the paired gates shape the rhythm.</figcaption>
+                        </figure>
 
                         <p>Two intermediate gates shape the rhythm of the phase from inside. A <em>minimum-synthesis</em> gate makes the agent read enough before any write into CLAUDE.md is allowed. A <em>maximum-accumulation</em> gate blocks further reading once the agent has read for a while without synthesizing. The arithmetic underneath is hidden from the agent; only the block messages surface, and only when a gate fires. <sup class="ref-marker" title="ref: min-gate-max-gate-paired | phase_observe/hooks/observe-guard.sh:211-259 | Max-accumulation gate blocks Read/Edit/Bash/Web/Agent once points_since hits MAX_ACCUMULATION_POINTS (default 25); the paired min-synthesis gate at line 285 blocks CLAUDE.md edits below MIN_SYNTHESIS_POINTS (default 3).">&#9432;</sup></p>
 
@@ -193,7 +186,7 @@
 
                         <hr>
 
-                        <p><em>Essay 6.3 of 10 &mdash; The Markov Phasic Brain.</em></p>
+                        <p><em>Essay 6.3 &mdash; The Markov Phasic Brain, Part 3 of 10.</em></p>
 
                         <p><em>Previous: <a href="06_2-discipline-and-map.html">Essay 6.2 &mdash; The Discipline and the Map</a> &mdash; the full transition graph and the tool-restriction pedagogy.</em> <em>Next: <a href="06_4-plan.html">Essay 6.4 &mdash; PLAN: Decide, Then Lock</a> &mdash; turning observation into a binding contract.</em></p>
 
@@ -250,7 +243,7 @@
                             </div>
                             <div class="sidebar-card-position">You are here</div>
                             <h3>Essay 6.3 — OBSERVE: Read Wide, Write Once</h3>
-                            <div class="date">May 2026 &bull; 5 min read</div>
+                            <div class="date">May 2026 &bull; 8 min read</div>
                         </div>
                         <a href="06_4-plan.html" class="article-card-link">
                             <div class="article-card">
@@ -263,7 +256,7 @@
                                 </div>
                                 <div class="sidebar-card-position">Next in series &rarr;</div>
                                 <h3>Essay 6.4 — PLAN: Decide, Then Lock</h3>
-                                <div class="date">May 2026 &bull; 5 min read</div>
+                                <div class="date">May 2026 &bull; 8 min read</div>
                             </div>
                         </a>
                         <a href="/blog.html" class="article-card-link sidebar-all-essays-link">

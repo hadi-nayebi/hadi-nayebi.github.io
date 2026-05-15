@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The CLAUDE.md Hierarchy
 
-*Essay 5.7 of 9 — The Always-On Digital Cortex.*
+*Essay 5.7 — The Always-On Digital Cortex, Part 7 of 9.*
 
 ---
 
@@ -153,7 +153,7 @@ The working-memory form is built — body + four footers + altered-list gate + t
 
 ---
 
-*Essay 5.7 of 9 — The Always-On Digital Cortex.*
+*Essay 5.7 — The Always-On Digital Cortex, Part 7 of 9.*
 
 *Previous: [Essay 5.6 — Structured Questions (`question_discipline`)](05_6-question-discipline.html) — the registered-prefix gate.*
 *Next: [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins.*

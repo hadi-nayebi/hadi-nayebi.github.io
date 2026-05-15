@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # The Plan-State Machine — Long-Horizon Memory
 
-*Essay 6.10 of 10 — The Markov Phasic Brain.*
+*Essay 6.10 — The Markov Phasic Brain, Part 10 of 10.*
 
 ---
 
@@ -20,7 +20,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 The mechanism is small. Two fields on the job object, a five-state machine, two approval gates. The discipline it produces is what turns the markov brain from a single-session cognition into something that can hold a plan in its head for weeks.
 
-For the architects in the audience. Especially the ones who plan to run jobs that take longer than one sitting.
+This sub-essay is for you — especially when your work takes longer than one sitting and the plan needs to outlive any single cycle.
 
 ---
 
@@ -137,7 +137,7 @@ Next.
 
 ---
 
-*Essay 6.10 of 10 — The Markov Phasic Brain.*
+*Essay 6.10 — The Markov Phasic Brain, Part 10 of 10.*
 
 *Previous: [Essay 6.9 — Gmode](06_9-gmode.html) — the off-cycle lane that drops the phase gates for deliberate maintenance work.*
 *Next: [Essay 7 — The Plugin Kit](07-the-plugin-kit.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*

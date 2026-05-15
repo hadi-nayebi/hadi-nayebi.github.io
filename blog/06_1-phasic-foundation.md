@@ -12,7 +12,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 # Phasic Foundation
 
-*Essay 6.1 of 10 — The Markov Phasic Brain. Essay 6 opens here; Essays 6.2 through 6.10 follow.*
+*Essay 6.1 — The Markov Phasic Brain, Part 1 of 10. Essay 6 opens here; Parts 2 through 10 follow.*
 
 ---
 
@@ -86,7 +86,7 @@ The foundation is in place: a Markov brain whose moves are themselves Markov cha
 
 ---
 
-*Essay 6.1 of 10 — The Markov Phasic Brain.*
+*Essay 6.1 — The Markov Phasic Brain, Part 1 of 10.*
 
 *Previous: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
 *Next: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*

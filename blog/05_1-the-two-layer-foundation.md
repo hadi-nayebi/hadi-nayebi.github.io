@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The Two-Layer Foundation
 
-*Essay 5.1 of 9 — The Always-On Digital Cortex. Essay 5 opens here; Essays 5.2 through 5.9 follow.*
+*Essay 5.1 — The Always-On Digital Cortex, Part 1 of 9. Essay 5 opens here; Parts 2 through 9 follow.*
 
 ---
 
@@ -128,7 +128,7 @@ We start with `plugin_integrity`.
 
 ---
 
-*Essay 5.1 of 9 — The Always-On Digital Cortex.*
+*Essay 5.1 — The Always-On Digital Cortex, Part 1 of 9.*
 
 *Previous: [Essay 4 — The Language of Agents](04-the-language-of-agents.html) — vocabulary that prepares the architecture.*
 *Next: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — first of the always-on plugin deep-dives.*

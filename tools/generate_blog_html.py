@@ -30,11 +30,11 @@ SIDEBAR_POSTS = [
     ("07-the-plugin-kit",                "The Plugin Kit",                        "May 2026",      "32 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("06_1-phasic-foundation",           "Essay 6.1 — Phasic Foundation",                   "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_2-discipline-and-map",          "Essay 6.2 — The Discipline and the Map",          "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
-    ("06_3-observe",                     "Essay 6.3 — OBSERVE: Read Wide, Write Once",      "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
-    ("06_4-plan",                        "Essay 6.4 — PLAN: Decide, Then Lock",             "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
-    ("06_5-execute",                     "Essay 6.5 — EXECUTE: Build, in Scope, in Steps",  "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
+    ("06_3-observe",                     "Essay 6.3 — OBSERVE: Read Wide, Write Once",      "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
+    ("06_4-plan",                        "Essay 6.4 — PLAN: Decide, Then Lock",             "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
+    ("06_5-execute",                     "Essay 6.5 — EXECUTE: Build, in Scope, in Steps",  "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_6-verify",                      "Essay 6.6 — VERIFY: Independent Eyes",            "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
-    ("06_7-condense",                    "Essay 6.7 — CONDENSE: The Cognitive Organ",       "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "CONDENSE"]),
+    ("06_7-condense",                    "Essay 6.7 — CONDENSE — The Cognitive Organ",      "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "CONDENSE"]),
     ("06_8-backward-multiplier",         "Essay 6.8 — The Backward Multiplier",             "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),
     ("06_9-gmode",                       "Essay 6.9 — GMODE: The Off-Cycle Lane",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "GMODE"]),
     ("06_10-plan-state-machine",         "Essay 6.10 — The Plan-State Machine",             "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Plan File", "Long-Horizon"]),
@@ -211,17 +211,24 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
         title_html = inline_format(title)
         caption_html = inline_format(caption)
 
+        # Use the SAME <figure class="blog-image"> wrapper as a rendered image so
+        # the visual rhythm of the page is identical whether an essay's image has
+        # been generated yet or not. The placeholder fills the figure's frame with
+        # a neutral "image pending" tile + the caption (matching what the rendered
+        # image will display once the file lands). No dashed border, no indigo
+        # accent — the goal is "this slot is reserved for an image" not "look at
+        # this distinct prompt block." Style alignment fix per user 2026-05-15.
         aside = (
-            '<aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); '
-            'padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">\n'
-            '                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); '
-            'font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">'
-            f'[Image placeholder &mdash; {title_html}]</p>\n'
-            '                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);">'
-            f'<em>Prompt:</em> {prompt_html}</p>\n'
-            '                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);">'
-            f'<em>Caption:</em> {caption_html}</p>\n'
-            '                        </aside>'
+            '<figure class="blog-image" style="margin: 2rem 0;">\n'
+            '                          <div style="width: 100%; max-width: 800px; height: auto; min-height: 240px; '
+            'display: flex; align-items: center; justify-content: center; margin: 0 auto; border-radius: 8px; '
+            'background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.45); '
+            'font-size: 0.85em; font-style: italic; padding: 3rem 1rem; text-align: center;">'
+            f'image pending &mdash; {title_html}</div>\n'
+            '                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; '
+            'color: rgba(255,255,255,0.7); font-size: 0.9rem;">'
+            f'{caption_html}</figcaption>\n'
+            '                        </figure>'
         )
         images.append(aside)
         return f"{_IMG_SENTINEL_PREFIX}{len(images)-1}\x00"
@@ -325,24 +332,32 @@ def render_body(body: str) -> str:
     output: list[str] = []
 
     for block in blocks:
-        if not block.strip():
+        # Strip leading/trailing whitespace from the block before any check.
+        # Without this, blocks with a leading newline (e.g., body starts with
+        # "\n# Title") fail the heading startswith check, fall through to
+        # paragraph rendering, and produce duplicate-h1 paragraphs like
+        # "<p> # Title</p>" below the template's own <h1>. Bug present across
+        # all 19 essays (B5.1-B5.9 + B6.1-B6.10) until iter-30, 2026-05-15.
+        block = block.strip()
+        if not block:
             continue
         # Image-placeholder sentinel block — pass through verbatim.
-        if block.strip().startswith(_IMG_SENTINEL_PREFIX):
-            output.append(block.strip())
+        if block.startswith(_IMG_SENTINEL_PREFIX):
+            output.append(block)
             continue
         # Fenced-code sentinel block — pass through verbatim (restore_sentinels
         # turns it into <pre><code>...</code></pre>).
-        if block.strip().startswith(_FENCED_SENTINEL_PREFIX):
-            output.append(block.strip())
+        if block.startswith(_FENCED_SENTINEL_PREFIX):
+            output.append(block)
             continue
         # HR
-        if re.fullmatch(r"-{3,}", block.strip()):
+        if re.fullmatch(r"-{3,}", block):
             output.append("<hr>")
             continue
         # Headings
+        # SUPPRESS body's "# Title" — the template already emits <h1> from frontmatter.
+        # Without suppression: two <h1>s on the same page (one from template, one from body).
         if block.startswith("# "):
-            output.append(f"<h1>{inline_format(block[2:].strip())}</h1>")
             continue
         if block.startswith("## "):
             output.append(f"<h2>{inline_format(block[3:].strip())}</h2>")
@@ -523,6 +538,28 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
     # When the operator generates the audio later, the file path matches the ref.
     audio_filename = meta["slug"] + ".mp3"
     audio_src = f"../assets/audio/{audio_filename}"
+    # Hide the audio block when the mp3 doesn't exist yet (broken audio player UX
+    # otherwise — clicking play surfaces a 404). User gates TTS spend per Rule 12;
+    # until the mp3 lands, render an "audio pending" badge instead of a broken player.
+    import os
+    audio_path_check = os.path.join(os.path.dirname(__file__), "..", "assets", "audio", audio_filename)
+    audio_exists = os.path.exists(audio_path_check)
+    if audio_exists:
+        audio_block = (
+            '<div class="article-audio">\n'
+            '                        <audio controls preload="none">\n'
+            f'                            <source src="{audio_src}" type="audio/mpeg">\n'
+            '                            Your browser does not support the audio element.\n'
+            '                        </audio>\n'
+            f'                        <span class="audio-label">Listen to this article ({html.escape(rt_display)})</span>\n'
+            '                    </div>'
+        )
+    else:
+        audio_block = (
+            '<div class="article-audio" style="opacity: 0.55;">\n'
+            f'                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay ({html.escape(rt_display)} read).</span>\n'
+            '                    </div>'
+        )
 
     return f"""<!DOCTYPE html>
 <!-- Version: v0.1.0 -->
@@ -624,13 +661,7 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
                         By Hadi Nayebi &amp; Claude Opus 4.7
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="{audio_src}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article ({html.escape(rt_display)})</span>
-                    </div>
+                    {audio_block}
 
                     <div class="article-body">
 

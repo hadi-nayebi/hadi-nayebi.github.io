@@ -12,7 +12,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 # The Customization Guardrail
 
-*Essay 5.9 of 9 — The Always-On Digital Cortex.*
+*Essay 5.9 — The Always-On Digital Cortex, Part 9 of 9.*
 
 ---
 
@@ -113,7 +113,7 @@ That is the [agent-developer-user → agent-user collapse](08-from-apprentice-to
 
 ---
 
-*Essay 5.9 of 9 — The Always-On Digital Cortex.*
+*Essay 5.9 — The Always-On Digital Cortex, Part 9 of 9.*
 
 *Previous: [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins.*
 *Next: [Essay 6.1 — Phasic Foundation](06_1-phasic-foundation.html) — opens The Markov Phasic Brain (10-part series): action space → Markov brain, why phases.*

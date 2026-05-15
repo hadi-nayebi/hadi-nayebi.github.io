@@ -102,19 +102,13 @@
                         By Hadi Nayebi &amp; Claude Opus 4.7
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="../assets/audio/plan-state-machine.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (8 min)</span>
+                    <div class="article-audio" style="opacity: 0.55;">
+                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (8 min read).</span>
                     </div>
 
                     <div class="article-body">
 
-                        <p> # The Plan-State Machine &mdash; Long-Horizon Memory</p>
-
-                        <p><em>Essay 6.10 of 10 &mdash; The Markov Phasic Brain.</em></p>
+                        <p><em>Essay 6.10 &mdash; The Markov Phasic Brain, Part 10 of 10.</em></p>
 
                         <hr>
 
@@ -122,7 +116,7 @@
 
                         <p>The mechanism is small. Two fields on the job object, a five-state machine, two approval gates. The discipline it produces is what turns the markov brain from a single-session cognition into something that can hold a plan in its head for weeks.</p>
 
-                        <p>For the architects in the audience. Especially the ones who plan to run jobs that take longer than one sitting.</p>
+                        <p>This sub-essay is for you &mdash; especially when your work takes longer than one sitting and the plan needs to outlive any single cycle.</p>
 
                         <hr>
 
@@ -170,11 +164,10 @@
 
                         <p>Once a job&rsquo;s <code>plan_state</code> is <code>yaml_drafting</code>, <code>yaml_ready</code>, or <code>sealed</code>, the phasic system&rsquo;s entry hook reads the <code>.yaml</code> on every phase transition and writes the phase-specific field-map to a cache file. The shared voice helper reads that cache when it fires any voice during the new phase, and yaml field-map entries auto-append to the relevant voices &mdash; turning a job&rsquo;s structured long-horizon context into a stream of injections that show up automatically wherever the agent is reading guidance. <sup class="ref-marker" title="ref: phase-init-yaml-injection-on-transition | .claude/plugins/phasic_system/hooks/phase-init.sh write_yaml_cache + phase-transition branch | The write_yaml_cache helper resolves `$ROOT_DIR/.claude/.tmp/yaml-injection-cache.json` and writes the field-map for the focused job&#x27;s current phase by calling `bash &quot;$PHASE_SH&quot; --hook read-yaml`. The phase-transition branch of phase-init.sh calls write_yaml_cache after every advance, back, or commit-transition event so the freshly entered phase&#x27;s yaml content immediately augments downstream voices. Gmode enter clears the cache (side-quest isolation); gmode exit restores it. New jobs and focus events also refresh. Net result: phase entry is the injection moment; the .yaml plays back the job&#x27;s long-horizon memory each time the agent crosses a phase boundary.">&#9432;</sup></p>
 
-                        <aside class="image-placeholder" style="border: 2px dashed rgba(99, 102, 241, 0.4); padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px; background: rgba(99, 102, 241, 0.06);">
-                          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: rgba(139, 92, 246, 0.95); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase;">[Image placeholder &mdash; The .md and .yaml side by side, with the .yaml&rsquo;s phase-entry injection feeding into the OPEVC cycle. The dual-document layout makes "what is for the human" vs "what is for the brain" legible at a glance]</p>
-                          <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Prompt:</em> Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines; pastel chalk (cyan, green, orange, pink, magenta &mdash; same palette as the cycle image) for the document tiles and the phase ring; white chalk for labels, arrows, and field names; chalk sticks at the bottom edge; faint chalk dust at the edges. IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, field names, or descriptors. Layout: Two chalk-drawn document tiles side by side on the left half of the board; a chalk-drawn ring of four phase circles on the right half. A single arrow stream connects the two halves. Left tile (cyan border, drawn as a tall rectangle with horizontal chalk ruling to suggest prose lines): labeled at the top "plan.md", with a smaller white chalk note beneath it "for the human". Right tile (orange border, drawn as a tall rectangle with chalk indentation lines to suggest structured fields): labeled at the top "plan.yaml", with a smaller white chalk note beneath it "for the brain". Inside the .yaml tile, four small white chalk field labels stacked vertically: "observe:", "plan:", "execute:", "verify:". A short white chalk double-headed arrow between the two tiles, labeled "same basename". On the right half of the board, four phase circles arranged in a ring: cyan circle labeled "observe", green circle labeled "plan", orange circle labeled "execute", pink circle labeled "verify". Small white chalk arrows connect them clockwise. From the .yaml tile, a curved white chalk arrow exits the right edge and fans out into four thin chalk lines, each landing on one phase circle. Above the fan, a white chalk note: "injects at phase entry". Keep every line hand-drawn and slightly imperfect, never ruler-straight. STRICT NAME WHITELIST &mdash; the image must contain only these literal text strings as labels: "plan.md", "plan.yaml", "for the human", "for the brain", "observe:", "plan:", "execute:", "verify:", "same basename", "observe", "plan", "execute", "verify", "injects at phase entry", plus the caption below. No other words, file names, folders, or descriptors may appear.</p>
-                          <p style="margin: 0; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75);"><em>Caption:</em> Image 6.10. The .md is for the human; the .yaml is for the brain. Same basename, different surface.</p>
-                        </aside>
+                        <figure class="blog-image" style="margin: 2rem 0;">
+                          <div style="width: 100%; max-width: 800px; height: auto; min-height: 240px; display: flex; align-items: center; justify-content: center; margin: 0 auto; border-radius: 8px; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.45); font-size: 0.85em; font-style: italic; padding: 3rem 1rem; text-align: center;">image pending &mdash; The .md and .yaml side by side, with the .yaml&rsquo;s phase-entry injection feeding into the OPEVC cycle. The dual-document layout makes "what is for the human" vs "what is for the brain" legible at a glance</div>
+                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Image 6.10. The .md is for the human; the .yaml is for the brain. Same basename, different surface.</figcaption>
+                        </figure>
 
                         <p>This is the long-horizon mechanism. Without it, every cycle would start cold &mdash; the agent would have to re-read the <code>.md</code> and re-derive what each phase should know. With it, the agent&rsquo;s context grows back the long-form structure of the job automatically, each cycle, at every phase boundary. The brain doesn&rsquo;t have to remember to remember.</p>
 
@@ -226,7 +219,7 @@
 
                         <hr>
 
-                        <p><em>Essay 6.10 of 10 &mdash; The Markov Phasic Brain.</em></p>
+                        <p><em>Essay 6.10 &mdash; The Markov Phasic Brain, Part 10 of 10.</em></p>
 
                         <p><em>Previous: <a href="06_9-gmode.html">Essay 6.9 &mdash; Gmode</a> &mdash; the off-cycle lane that drops the phase gates for deliberate maintenance work.</em> <em>Next: <a href="07-the-plugin-kit.html">Essay 7 &mdash; The Plugin Kit</a> &mdash; the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.</em></p>
 
