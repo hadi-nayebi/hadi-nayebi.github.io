@@ -70,6 +70,24 @@ The second failure mode is **substrate-integrity loss.** The alternative to cere
 
 Gmode is the explicit third option. The bypass is named, gated, and structurally separate from the OPEVC graph. The agent's velocity drops at the entry (a hundred words of articulation), the working tree is forced clean at the exit, and the home phase returns intact. The bypass exists *because* the alternative — fudging guards in place — is the worse failure.
 
+## A worked example
+
+Pick up the multi-cycle migration job one phase before the EXECUTE we walked through in [Essay 6.5](06_5-execute.html). The agent has just entered EXECUTE on cycle 3. The altered list is set. The first tool call is a Read of `phase_condense/hooks/condense-guard.sh` to confirm the fix-in-cycle block message before writing the planned hook update. The Read returns. The agent notices something the plan never anticipated — the block message text the guard is producing has *drifted* from the canonical phrasing every other phase guard uses. Three words off. Cosmetic. The kind of drift that survives because nobody phase-guards the phase-guards.
+
+The agent has a choice. EXECUTE's altered list does not include the phase_condense plugin tree. The plan was about marker schemas, not block-message drift. Trying to edit the file from inside EXECUTE would trip the altered-list fence and the edit would be blocked. Trying to add the directory to the altered list mid-phase is not allowed either — altered lists are PLAN's output, frozen at phase entry. A backward to PLAN would be theatrical for a three-word string fix.
+
+The agent reaches for gmode.
+
+It composes a `[GMODE]` question. The body runs 152 words: *what* is the drift (three words off, exact strings quoted), *what* was tried (EXECUTE altered list, blocked by fence), *why* OPEVC won't fit (a fresh PLAN cycle to authorize a three-word string fix is ceremony overhead), and *what* will happen on entry (one Edit to `condense-guard.sh`, one test run, one commit, exit). The 100-word floor is met; the question reaches the architect. The architect reads, sees the scope is genuinely small, approves.
+
+Entry fires. The orchestrator runs the atomic `jq` update. `pre_gmode_phase` records `execute`; `current_phase` flips to `gmode` in the same write. Every phase guard in the seed agent now sees a `current_phase` value that isn't its own, and every guard short-circuits. The agent's tool palette opens. It edits `condense-guard.sh`, runs the plugin's test suite, all 288 tests pass, commits with the message `gmode: fix condense-guard block-message drift`. The working tree is clean.
+
+The agent calls `phase.sh exit-gmode`. The orchestrator runs `git diff --quiet` and `git diff --cached --quiet`. Both pass. The orchestrator reads `pre_gmode_phase`, restores `current_phase` to `execute`, nulls `pre_gmode_phase`. The phase guards re-engage on EXECUTE's rules. The cycle counter never moved.
+
+The agent picks up the original EXECUTE work from where it left off. Cycle 3's EXECUTE proceeds exactly as [Essay 6.5](06_5-execute.html) describes — the comment-density gate, the dispatch, the commit. The fix-in-cycle gate is not relevant because the gmode-edited file is not in this cycle's altered list. The drift fix landed in its own commit, on its own phase, and the migration cycle continues uncorrupted.
+
+That is the off-cycle lane working as designed. The bypass was named. The cost was paid. The substrate stayed intact.
+
 ## What you would customize
 
 Gmode is one of the more architecturally opinionated surfaces in the prototype. Most of the opinion lives in *defaults*, not invariants — the architect's customization door opens on several distinct knobs.

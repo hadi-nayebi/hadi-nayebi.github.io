@@ -158,6 +158,24 @@
 
                         <p>Gmode is the explicit third option. The bypass is named, gated, and structurally separate from the OPEVC graph. The agent&rsquo;s velocity drops at the entry (a hundred words of articulation), the working tree is forced clean at the exit, and the home phase returns intact. The bypass exists <em>because</em> the alternative &mdash; fudging guards in place &mdash; is the worse failure.</p>
 
+                        <h2>A worked example</h2>
+
+                        <p>Pick up the multi-cycle migration job one phase before the EXECUTE we walked through in <a href="06_5-execute.html">Essay 6.5</a>. The agent has just entered EXECUTE on cycle 3. The altered list is set. The first tool call is a Read of <code>phase_condense/hooks/condense-guard.sh</code> to confirm the fix-in-cycle block message before writing the planned hook update. The Read returns. The agent notices something the plan never anticipated &mdash; the block message text the guard is producing has <em>drifted</em> from the canonical phrasing every other phase guard uses. Three words off. Cosmetic. The kind of drift that survives because nobody phase-guards the phase-guards.</p>
+
+                        <p>The agent has a choice. EXECUTE&rsquo;s altered list does not include the phase_condense plugin tree. The plan was about marker schemas, not block-message drift. Trying to edit the file from inside EXECUTE would trip the altered-list fence and the edit would be blocked. Trying to add the directory to the altered list mid-phase is not allowed either &mdash; altered lists are PLAN&rsquo;s output, frozen at phase entry. A backward to PLAN would be theatrical for a three-word string fix.</p>
+
+                        <p>The agent reaches for gmode.</p>
+
+                        <p>It composes a <code>[GMODE]</code> question. The body runs 152 words: <em>what</em> is the drift (three words off, exact strings quoted), <em>what</em> was tried (EXECUTE altered list, blocked by fence), <em>why</em> OPEVC won&rsquo;t fit (a fresh PLAN cycle to authorize a three-word string fix is ceremony overhead), and <em>what</em> will happen on entry (one Edit to <code>condense-guard.sh</code>, one test run, one commit, exit). The 100-word floor is met; the question reaches the architect. The architect reads, sees the scope is genuinely small, approves.</p>
+
+                        <p>Entry fires. The orchestrator runs the atomic <code>jq</code> update. <code>pre_gmode_phase</code> records <code>execute</code>; <code>current_phase</code> flips to <code>gmode</code> in the same write. Every phase guard in the seed agent now sees a <code>current_phase</code> value that isn&rsquo;t its own, and every guard short-circuits. The agent&rsquo;s tool palette opens. It edits <code>condense-guard.sh</code>, runs the plugin&rsquo;s test suite, all 288 tests pass, commits with the message <code>gmode: fix condense-guard block-message drift</code>. The working tree is clean.</p>
+
+                        <p>The agent calls <code>phase.sh exit-gmode</code>. The orchestrator runs <code>git diff --quiet</code> and <code>git diff --cached --quiet</code>. Both pass. The orchestrator reads <code>pre_gmode_phase</code>, restores <code>current_phase</code> to <code>execute</code>, nulls <code>pre_gmode_phase</code>. The phase guards re-engage on EXECUTE&rsquo;s rules. The cycle counter never moved.</p>
+
+                        <p>The agent picks up the original EXECUTE work from where it left off. Cycle 3's EXECUTE proceeds exactly as <a href="06_5-execute.html">Essay 6.5</a> describes &mdash; the comment-density gate, the dispatch, the commit. The fix-in-cycle gate is not relevant because the gmode-edited file is not in this cycle&rsquo;s altered list. The drift fix landed in its own commit, on its own phase, and the migration cycle continues uncorrupted.</p>
+
+                        <p>That is the off-cycle lane working as designed. The bypass was named. The cost was paid. The substrate stayed intact.</p>
+
                         <h2>What you would customize</h2>
 
                         <p>Gmode is one of the more architecturally opinionated surfaces in the prototype. Most of the opinion lives in <em>defaults</em>, not invariants &mdash; the architect&rsquo;s customization door opens on several distinct knobs.</p>

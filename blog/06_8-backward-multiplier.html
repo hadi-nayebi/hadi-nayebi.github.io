@@ -183,6 +183,30 @@
 
                         <p>This is the part of the seed agent&rsquo;s design I find most quietly elegant.</p>
 
+                        <h2>A worked example</h2>
+
+                        <p>Picture the same multi-cycle plan-job we have been tracking &mdash; the migration of a large body of work from one repo to another &mdash; entering two different phases at two different moments. The job is the same. The dial is the same. The multiplier choices are different, and the difference is the meta-cognition.</p>
+
+                        <p><strong>Cycle 1, OBSERVE.</strong> The agent enters OBSERVE on the first cycle of the migration. Working memory is nearly empty. The injected context is a one-line objective. The agent has never touched the target repo. The forecast is honest: this phase is broad &mdash; map the codebase, find the contradictions, walk the prior cycles' knowledge, dispatch parallel research subagents, interview the architect on routing decisions. The agent picks <code>0.5</code>. The threshold expands to roughly sixty-seven actions. The agent settles in for deep reading, three observe-subagent dispatches in the first hour, two <code>[WAITING]</code> questions for the architect, and seven CLAUDE.md synthesis writes before the gate clears.</p>
+
+                        <p><strong>Cycle 3, EXECUTE.</strong> Three cycles later, the same job enters EXECUTE for a surgical task. The plan named one altered-list directory and a single hook update. The judgment-call criteria are sharp. The agent has every piece of context the plan inherited. The forecast is honest: this phase is small &mdash; revert one block of code, edit one hook, run no scripts. The agent picks <code>2.5</code>. The threshold compresses to roughly fifteen actions. The agent dispatches one execute-subagent for the revert, writes the hook update, commits at the checkpoint, and the gate clears.</p>
+
+                        <p>Same job. Same dial. One forecast says "I am settling in"; the other says "I am in and out." The arithmetic is invisible &mdash; the agent never sees a number. What the agent does see is the felt size of the phase, before it starts the work. The multiplier is the act of declaring that size out loud, in a single scalar, before any tool unlocks.</p>
+
+                        <h2>What you would customize</h2>
+
+                        <p>The multiplier is one of the architectural surfaces with the <em>most</em> room for an architect&rsquo;s opinion. The mechanism is small enough that the customizations are pointed.</p>
+
+                        <p>The architect would tune the <em>dial range and granularity</em>. The prototype&rsquo;s <code>0.5, 1, 1.5, 2, 2.5, 3</code> covers a six-times spread in 0.5 steps. A seed running tighter, more rhythmic work might want a four-step dial (<code>0.5, 1, 2, 3</code>); a seed running highly variable workloads might want a twelve-step dial covering <code>0.25</code> through <code>5</code>. The range encodes the architect&rsquo;s belief about how much variation in phase size the work actually produces. The wider the dial, the more meta-cognition the agent has to do at entry.</p>
+
+                        <p>The architect would tune the <em>per-phase point thresholds</em>. The prototype lands around thirty-four actions at <code>1.0</code> multiplier for most phases &mdash; calibrated against the prototype&rsquo;s own work. A seed doing legal research, where each "action" is a long reading task, might set the OBSERVE threshold higher; a seed doing rapid code patches might set EXECUTE lower. The thresholds are environment-tunable; the schedules that feed them are per-plugin.</p>
+
+                        <p>The architect would adjust the <em>multiplier-rollback interaction</em>. The prototype preserves points across backward transitions &mdash; rollbacks do not destroy progress. A stricter seed might decide that re-entering a phase resets a fraction of the accumulated points to force a re-affirmation of the work. A more permissive seed might preserve points even across cross-cycle backward edges, treating phase identity as the only thing that matters for the counter. The rule lives in one branch of the sensor; the consequences ripple through every long-running job.</p>
+
+                        <p>What the architect would <strong>not</strong> customize is the <em>invisibility of points</em>. The principle is the floor: an agent that can see its score will optimize for the score. The whole point of the dial is to surface the only number the agent needs &mdash; the multiplier &mdash; and force the meta-cognition that produces it. Showing the score would short-circuit the very discipline the architecture exists to create.</p>
+
+                        <p>The deepest payoff of the multiplier is the cognitive failure mode it prevents: the <em>unforced phase</em>. An agent that enters a phase without a felt size for it falls back on whatever the previous phase looked like, or whatever the last cycle&rsquo;s phase looked like, or whatever the prompt seemed to want. None of those is the <em>current phase&rsquo;s</em> honest scope. The dial forces the agent to put a number on the felt size before the tools unlock. The number is wrong sometimes; that is the point. Both directions of error cost something. The friction is the pedagogy. The dial is the compartment.</p>
+
                         <hr>
 
                         <h2>What comes next</h2>

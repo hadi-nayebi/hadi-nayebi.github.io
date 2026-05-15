@@ -127,7 +127,11 @@ That is what makes the markov brain a brain, not a loop. A loop reacts. A brain 
 
 The cycle, the organ, the multiplier, gmode, the plan-state machine — each of these is a mechanism. None of them is the *thing they run inside*. Phases are plugins. CONDENSE is a plugin. Gmode rides on a plugin. The plan-state machine itself is split across two plugins. Everything in this essay series is built on a standardized way of packaging cognitive mechanisms — the plugin kit. That is the subject of the next essay.
 
-The brain is built. The kit is what lets you grow new pieces of it safely.
+This is the architect's pivot point. The first six essays of the series &mdash; from [Essay 5.1's two-layer foundation](05_1-the-two-layer-foundation.html) through the markov phasic brain we have just finished mapping &mdash; were the seed agent's anatomy. You have seen the always-on cortex, the CLAUDE.md hierarchy, the five phases, the metabolism organ, the multiplier dial, gmode's off-cycle lane, the plan-state machine's long-horizon memory. You have seen *how the seed agent thinks*. What you have not yet seen is how a new piece of that cognition gets *built*.
+
+The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design? How do you grow a new always-on plugin without breaking the substrate? How do you author your own marker, your own coaching voice, your own subagent definition, and have the rest of the architecture accept them as natively as the prototype's own?
+
+[Essay 7 &mdash; The Plugin Kit](07-the-plugin-kit.html) is the answer. The brain is built. The kit is what lets you grow new pieces of it safely.
 
 Next.
 
