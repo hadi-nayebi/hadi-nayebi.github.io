@@ -16,7 +16,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 ---
 
-[Essay 5.8](05_8-historian-ratchet.html) showed three single-concern plugins composing into the historian ratchet — the ceremony that forces re-narration before substrate edits. This final sub-essay covers the ceremony that determines **whether substrate edits are admitted at all**.
+[Essay 5.8](05_8-historian-ratchet.html) showed three single-concern plugins composing into the historian ratchet — the ceremony that forces re-narration before plugin edits. This final sub-essay covers the ceremony that determines **whether plugin edits are admitted at all**. Plugin code is one form within the multi-form `.claude/` substrate (per [Essay 5.7](05_7-claude-md-hierarchy.html)), but it is the form whose edits alter how every *other* plugin's discipline runs — which is why this gate exists.
 
 The historian ratchet asks: have you re-read the plugin's life before editing it? The customization guardrail asks something prior: are you in a context where editing this plugin is even allowed?
 
@@ -28,9 +28,9 @@ For the architects in the audience. Especially the ones who plan to customize th
 
 The customization guardrail owns the gate on **PLUGIN-LOCK admission for existing plugins**. Editing any plugin's code surface — hooks, scripts, voice files, tests, configuration — first requires the agent to issue `[PLUGIN-LOCK] <plugin_name>` and have that question pass through the gate. The gate's job is to decide: should this `[PLUGIN-LOCK]` admit, or should it block?
 
-The decision rests on one fact: editing existing plugin code alters the substrate that polices every other plugin's discipline. One quiet regression deep inside a plugin's hooks can poison every dispatched subagent, every phase gate, every voice fire across the session. The gate's role is to ensure plugin edits only happen in contexts where the operator is *deliberately* doing substrate work — not as a side effect of normal cycle activity.
+The decision rests on one fact: editing existing plugin code alters the substrate form that polices every other plugin's discipline. One quiet regression deep inside a plugin's hooks can poison every dispatched subagent, every phase gate, every voice fire across the session. The gate's role is to ensure plugin edits only happen in contexts where the operator is *deliberately* doing plugin-layer work — not as a side effect of normal cycle activity.
 
-The gate does not apply to plugin BIRTH (creating a new plugin that doesn't yet exist on disk). New plugins enter the system through a separate path that runs inside a normal OPEVC cycle. The gate's scope is edits to existing code. *[ref: gate-scope-existing-not-birth | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:209 | The gate fires only when the condition `[[ -d "$PLUGINS_ROOT/$target" ]]` is true — i.e., the target plugin already exists on disk. New plugin creation (target dir absent) admits in any phase via the same `[PLUGIN-LOCK] <new_name>` ceremony, which lock-manager.sh routes to its birth branch starting around line 297.]*
+The gate does not apply to plugin BIRTH (creating a new plugin that doesn't yet exist on disk). New plugins enter the system through a separate path that runs inside a normal OPEVC cycle. The gate's scope is edits to existing code. *[ref: gate-scope-existing-not-birth | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:215 | The gate fires only when the condition `[[ -d "$PLUGINS_ROOT/$target" ]]` is true — i.e., the target plugin already exists on disk. New plugin creation (target dir absent) admits in any phase via the same `[PLUGIN-LOCK] <new_name>` ceremony, which lock-manager.sh routes to its birth branch starting around line 297.]*
 
 ## How it works — the OR-gate
 
