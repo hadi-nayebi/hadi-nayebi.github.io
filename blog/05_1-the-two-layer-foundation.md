@@ -5,7 +5,7 @@ slug: "the-two-layer-foundation"
 read_time: "6 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---

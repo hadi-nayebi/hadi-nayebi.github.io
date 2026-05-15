@@ -719,8 +719,8 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
 | 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (monolith — superseded by 8-sub-essay split 2026-05-14) | **superseded** — file stays on disk for URL preservation; not in sidebar/sitemap/feed |
-| 5.1 | `05_1-the-two-layer-foundation` | Pt 1: The Two-Layer Foundation | **drafting v0.1.0** — extract from monolith L1-L94 · ~1,500w / 6 min · HTML built · transcript ready (final:false) · audio pending |
-| 5.2 | `05_2-plugin-integrity` | Pt 2: `plugin_integrity` — Plugin Edit Safety | **drafting v0.1.0** — ~1,000w / 4 min · HTML built · transcript ready (final:false) · audio pending |
+| 5.1 | `05_1-the-two-layer-foundation` | Pt 1: The Two-Layer Foundation | **drafting v0.2.0** — ~2,441w / 9 min · 9 refs · HTML built · transcript ready (final:false) · audio pending. v0.2.0 added 2 ref-tag backfills (multi-form `.claude/` claim + phase-guard write scope). Image asset wired (always-on-plugins-b5-1.png). |
+| 5.2 | `05_2-plugin-integrity` | Pt 2: `plugin_integrity` — Plugin Edit Safety | **drafting v0.2.0** — ~2,059w / 8 min · 7 refs · HTML built · transcript ready (final:false) · audio pending. v0.2.0 added "Friction calibrated by danger" section (TEST-LOCK + 80% coverage + friction-by-design); 3 inline doc-exemption caveats; series-aware Essay 7 ref; prefix-registry count corrected (9→10); image placeholder added (no asset yet). |
 | 5.3 | `05_3-brain-guard` | Pt 3: `brain_guard` — Context Window Discipline | **drafting v0.1.0** — ~1,700w / 8 min · HTML built · transcript ready (final:false) · audio pending |
 | 5.4 | `05_4-job-core` | Pt 4: `job_core` — Job Lifecycle | **drafting v0.1.0** — ~1,500w / 7 min · HTML built · transcript ready (final:false) · audio pending |
 | 5.5 | `05_5-interaction-summary` | Pt 5: `interaction_summary` — Cross-Session Memory | **drafting v0.1.0** — ~1,000w / 5 min · HTML built · transcript ready (final:false) · audio pending |
