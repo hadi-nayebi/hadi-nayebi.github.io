@@ -322,7 +322,15 @@ def restore_sentinels(
     def restore_code(m: re.Match) -> str:
         return f"<code>{code_spans[int(m.group(1))]}</code>"
     def restore_fenced(m: re.Match) -> str:
-        return f"<pre><code>{fenced[int(m.group(1))]}</code></pre>"
+        # white-space: pre-wrap + overflow-wrap: break-word lets long lines (e.g.,
+        # state-machine arrow flows) wrap inside the article column instead of
+        # overflowing horizontally. Fix per B6.10 width issue 2026-05-16.
+        return (
+            f'<pre style="white-space: pre-wrap; overflow-wrap: break-word; '
+            f'max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); '
+            f'border-radius: 6px; font-size: 0.88em; line-height: 1.5;">'
+            f'<code>{fenced[int(m.group(1))]}</code></pre>'
+        )
     text = re.sub(_REF_SENTINEL_PREFIX + r"(\d+)\x00", restore_ref, text)
     text = re.sub(_IMG_SENTINEL_PREFIX + r"(\d+)\x00", restore_img, text)
     text = re.sub(_FENCED_SENTINEL_PREFIX + r"(\d+)\x00", restore_fenced, text)

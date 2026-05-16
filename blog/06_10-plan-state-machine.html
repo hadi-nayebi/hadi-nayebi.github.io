@@ -142,7 +142,7 @@
 
                         <p>The transitions are deterministic. Each one is owned by exactly one phase, and each one is triggered by one specific event.</p>
 
-                        <pre><code>none → drafting → drafting (loop) → md_approved → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed</code></pre>
+                        <pre style="white-space: pre-wrap; overflow-wrap: break-word; max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 6px; font-size: 0.88em; line-height: 1.5;"><code>none → drafting → drafting (loop) → md_approved → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed</code></pre>
 
                         <p><strong><code>none → drafting</code>.</strong> PLAN, in cycle 1, calls <code>plan.sh set-plan-file &lt;name&gt;.md</code>. The extension drives the state: <code>.md</code> lands in <code>drafting</code>. EXECUTE creates the first draft of the file during the same cycle.</p>
 
