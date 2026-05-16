@@ -172,10 +172,20 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
             title = title[0].upper() + title[1:] if title else "Image"
         caption = caption_match.group(1).strip() if caption_match else ""
 
-        # If ASSET is set, render a <figure> with the asset instead of the dashed placeholder.
+        # If ASSET is set AND the file actually exists on disk, render a <figure>
+        # with the real image. If ASSET is set but the file doesn't exist yet, fall
+        # through to the "image pending" placeholder so the page doesn't show a
+        # broken image icon. Bug observed in B6.9 iter-31, 2026-05-15.
         # The asset path is relative to the blog .html file's directory (e.g.
-        # "../assets/images/blog/foo.png"). Caption (if present) becomes <figcaption>.
+        # "../assets/images/blog/foo.png"); resolve relative to repo root for the check.
+        import os as _os
+        asset_path_check = None
         if asset_match:
+            asset_path_check = _os.path.join(
+                _os.path.dirname(__file__), "..",
+                asset_match.group(1).strip().replace("../", "", 1)
+            )
+        if asset_match and asset_path_check and _os.path.exists(asset_path_check):
             asset_path = asset_match.group(1).strip()
             title_html = inline_format(title)
             caption_html = inline_format(caption) if caption else ""
