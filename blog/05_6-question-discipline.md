@@ -62,7 +62,7 @@ The same discipline generalizes to every prefix; each body shape names what the 
 
 ## What would break without it
 
-Without `question_discipline`, every `AskUserQuestion` is fair game — the agent's asking surface bloats with low-value confirmations, and the structured ceremonies (locks, approvals, plan-complete claims) lose the prefix scaffolding the rest of the always-on layer uses to dispatch on. *[ref: without-question-discipline-asking | .claude/plugins/question_discipline/CLAUDE.md:6 | Objective: "Block any `AskUserQuestion` whose every question's text does not begin with a registered prefix. Forces every interactive question through the established prefix system... instead of casual proceed/pause/continue prompts." Without this gate every ask passes unchecked.]*
+Without `question_discipline`, every `AskUserQuestion` is fair game — the agent's asking surface bloats with low-value confirmations, and the structured ceremonies (locks, approvals, plan-complete claims) lose the prefix scaffolding the rest of the always-on layer uses to dispatch on. *[ref: without-question-discipline-asking | .claude/plugins/question_discipline/CLAUDE.md Objective section | Objective: "Block any `AskUserQuestion` whose every question's text does not begin with a registered prefix. Forces every interactive question through the established prefix system... instead of casual proceed/pause/continue prompts." Without this gate every ask passes unchecked.]*
 
 ## What you would customize
 
