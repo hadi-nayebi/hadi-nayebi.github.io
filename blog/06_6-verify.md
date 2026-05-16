@@ -18,7 +18,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 VERIFY is scripts-only. *[ref: verify-bash-whitelist-scripts-only | phase_verify/hooks/verify-guard.sh:349-365 | VERIFY's Bash case arm allows bash invocations of tests/ scripts/ paths and git read-only commands; blocks git add, file writes (echo > / sed -i / mv / cp / rm), --hook flags, and package managers.]*
 
-The agent cannot edit code in VERIFY. It can read any file in the cycle's scope, by design. It can run tests. It can run validators. And it can dispatch a particular class of subagent — *auditors* — whose entire job is to read the executed work and report whether each acceptance criterion holds. *[ref: verify-dispatches-auditor-subagents | phase_verify/agents/CLAUDE.md:8-16 | The Defined Subagents table lists VERIFY's auditor roster: verify-observe-auditor, verify-plan-auditor, verify-execute-auditor, verify-git-historian, verify-code-evolution-tracker — each scoped to evaluate one slice of the cycle's work.]*
+The agent cannot edit code in VERIFY. It can read any file in the cycle's scope, by design. It can run tests. It can run validators. And it can dispatch a particular class of subagent — *auditors* — whose entire job is to read the executed work and report whether each acceptance criterion holds. *[ref: verify-dispatches-auditor-subagents | phase_verify/agents/CLAUDE.md Defined Subagents section | The Defined Subagents table lists VERIFY's auditor roster: verify-observe-auditor, verify-plan-auditor, verify-execute-auditor, verify-git-historian, verify-code-evolution-tracker — each scoped to evaluate one slice of the cycle's work.]*
 
 ---
 
@@ -82,7 +82,7 @@ The backward edges are situational rather than a fixed menu — VERIFY rolls bac
 
 **Forward transitions are automatic** when the gate criteria are met; **backward transitions are explicit** and the agent has to choose where to roll back to. The state of the cycle is fully captured in the orchestrator's data file — current phase, cycle number, multiplier, point counter, and a few transition flags (pre-gmode stash, suppress-increment, forwarded). No hidden continuation.
 
-Any phase can be re-entered, but only by rolling back along defined edges. This is the Markov property the title leans on: the cycle's next move is a function of its present state, not of the path that got it there. *[ref: phasic-state-minimal-no-hidden-history | phasic_system/docs/README.md:102-123 | phasic_system's data model is intentionally minimal: jobs carry only id, current_phase, cycle, and a suppress flag — phase history is NOT stored; git commits with phase prefixes ARE the audit trail.]*
+Any phase can be re-entered, but only by rolling back along defined edges. This is the Markov property the title leans on: the cycle's next move is a function of its present state, not of the path that got it there. *[ref: phasic-state-minimal-no-hidden-history | phasic_system/docs/README.md Data Model section | phasic_system's data model is intentionally minimal: jobs carry only id, current_phase, cycle, and a suppress flag — phase history is NOT stored; git commits with phase prefixes ARE the audit trail.]*
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard sketch — VERIFY's three backward edges and one forward edge.
