@@ -221,22 +221,26 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
         title_html = inline_format(title)
         caption_html = inline_format(caption)
 
-        # Use the SAME <figure class="blog-image"> wrapper as a rendered image so
-        # the visual rhythm of the page is identical whether an essay's image has
-        # been generated yet or not. The placeholder fills the figure's frame with
-        # a neutral "image pending" tile + the caption (matching what the rendered
-        # image will display once the file lands). No dashed border, no indigo
-        # accent — the goal is "this slot is reserved for an image" not "look at
-        # this distinct prompt block." Style alignment fix per user 2026-05-15.
+        # Placeholder for when the image hasn't been generated yet. The PROMPT
+        # must remain visible so the operator can read it and use it to generate
+        # the image. Wraps in <figure class="blog-image"> for layout consistency
+        # with rendered figures, but content is the full prompt + concept + caption
+        # (NOT a stripped-down "image pending" tile — that destroyed the workflow).
+        # Per user 2026-05-15: "images if missing must have the prompt in place so
+        # i can make them not an empty placeholder".
         aside = (
-            '<figure class="blog-image" style="margin: 2rem 0;">\n'
-            '                          <div style="width: 100%; max-width: 800px; height: auto; min-height: 240px; '
-            'display: flex; align-items: center; justify-content: center; margin: 0 auto; border-radius: 8px; '
-            'background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.45); '
-            'font-size: 0.85em; font-style: italic; padding: 3rem 1rem; text-align: center;">'
-            f'image pending &mdash; {title_html}</div>\n'
-            '                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; '
-            'color: rgba(255,255,255,0.7); font-size: 0.9rem;">'
+            '<figure class="blog-image image-placeholder-pending" '
+            'style="margin: 2rem 0; padding: 1.25rem 1.5rem; border-radius: 8px; '
+            'background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.18);">\n'
+            '                          <div style="margin: 0 0 0.75rem 0; font-weight: 600; '
+            'font-size: 0.8em; letter-spacing: 0.06em; text-transform: uppercase; '
+            'color: rgba(255,255,255,0.6);">'
+            f'Image pending &mdash; {title_html}</div>\n'
+            '                          <div style="margin: 0 0 0.75rem 0; font-size: 0.88em; '
+            'line-height: 1.55; color: rgba(255,255,255,0.78);">'
+            f'<em>Prompt:</em> {prompt_html}</div>\n'
+            '                          <figcaption style="margin-top: 0.75rem; font-size: 0.88em; '
+            'line-height: 1.5; color: rgba(255,255,255,0.7); font-style: italic;">'
             f'{caption_html}</figcaption>\n'
             '                        </figure>'
         )
