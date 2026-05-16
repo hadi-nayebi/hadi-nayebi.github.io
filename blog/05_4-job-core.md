@@ -61,7 +61,7 @@ Completion is staged. The current prototype runs two stages — a pre-call hook 
 
 ## What would break without it
 
-Without `job_core`, the agent has no notion of *what work am I doing*. Every prompt is a one-off, there is no thread of intent to come back to, no place for follow-up work to live, no signal that says the agent is or isn't done. The cognitive horizon collapses to the current turn — and everything the rest of the always-on layer is built to support has nothing structural to attach to. *[ref: without-job-core-the-agent | .claude/plugins/job_core/CLAUDE.md:4-10 | Objective: "Manage job lifecycle... The agent's work loop — if jobs exist, the agent works until they're done." Design Principle: "Jobs are the atom of work. Everything the agent does happens inside a job."]*
+Without `job_core`, the agent has no notion of *what work am I doing*. Every prompt is a one-off, there is no thread of intent to come back to, no place for follow-up work to live, no signal that says the agent is or isn't done. The cognitive horizon collapses to the current turn — and everything the rest of the always-on layer is built to support has nothing structural to attach to. *[ref: without-job-core-the-agent | .claude/plugins/job_core/CLAUDE.md Objective + Design Principle sections | Objective: "Manage job lifecycle... The agent's work loop — if jobs exist, the agent works until they're done." Design Principle: "Jobs are the atom of work. Everything the agent does happens inside a job."]*
 
 ## What you would customize
 

@@ -22,7 +22,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 ## What it owns
 
-`interaction_summary` exists to keep a job's dynamic mega-prompt legible as it grows. It works by counting tokens after every user interaction and forcing the agent to draft a structured summary the moment the unsummarized portion crosses a threshold. It applies inside any job whose interaction list grows long enough to compress — short jobs that never cross the threshold never see the plugin engage. *[ref: interaction-summary-exists-to-keep | .claude/plugins/interaction_summary/CLAUDE.md:38-49 | Trigger Mechanism: "Threshold: ~500 tokens. After each interaction is captured by job_core's question-capture: Count tokens in unsummarized interactions (word_count × 1.3)... If ≥ threshold → inject summarization request." Fires on PostToolUse:AskUserQuestion.]*
+`interaction_summary` exists to keep a job's dynamic mega-prompt legible as it grows. It works by counting tokens after every user interaction and forcing the agent to draft a structured summary the moment the unsummarized portion crosses a threshold. It applies inside any job whose interaction list grows long enough to compress — short jobs that never cross the threshold never see the plugin engage. *[ref: interaction-summary-exists-to-keep | .claude/plugins/interaction_summary/CLAUDE.md Trigger Mechanism section | Trigger Mechanism: "Threshold: ~500 tokens. After each interaction is captured by job_core's question-capture: Count tokens in unsummarized interactions (word_count × 1.3)... If ≥ threshold → inject summarization request." Fires on PostToolUse:AskUserQuestion.]*
 
 ## How it works — block until summarized
 
@@ -48,7 +48,7 @@ The block has one deliberate escape hatch — even with the productive-tool guar
 
 ## What would break without it
 
-Without this plugin, long jobs lose narrative coherence as the interaction list bloats; the summary chain is what keeps a job legible at a glance and what survives forward when the job spans more than one OPEVC cycle. *[ref: without-interaction-summary-long-jobs | .claude/plugins/interaction_summary/CLAUDE.md:15-17 | Objective: "Maintain a continuous summary chain from user interactions. When unsummarized interactions exceed a token threshold, block all work until the agent produces a summary that carries forward essential context." Chain persists keyed by job ID across cycles.]*
+Without this plugin, long jobs lose narrative coherence as the interaction list bloats; the summary chain is what keeps a job legible at a glance and what survives forward when the job spans more than one OPEVC cycle. *[ref: without-interaction-summary-long-jobs | .claude/plugins/interaction_summary/CLAUDE.md Objective section | Objective: "Maintain a continuous summary chain from user interactions. When unsummarized interactions exceed a token threshold, block all work until the agent produces a summary that carries forward essential context." Chain persists keyed by job ID across cycles.]*
 
 ## What you would customize
 
