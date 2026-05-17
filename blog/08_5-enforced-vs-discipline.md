@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Enforcement, Discipline]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # What's Enforced vs What's Discipline
@@ -67,7 +67,7 @@ The other size limits are soft because the *measurement* has not yet shown the s
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hard cap", "soft caps", "docs/evolution.md", "2,000 words", "evolution-cap.sh PreToolUse", "code refuses the edit", "root brain — 3,500 words", "subdir CLAUDE.md — 800 words", "plan files — 2,000 words", "memory entries — 400 words", "skill files — 500 words", "CONDENSE discipline holds the line", "Lock 13: hard gates earn their cost; soft caps wait for evidence", plus the caption below. No other words, file names, folders, or threshold descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.2. One hard cap. Several soft. The asymmetry is honest."
-  ASSET: assets/images/blog/enforced-vs-discipline-b8-5.png
+  ASSET: assets/images/blog/b8/enforced-vs-discipline-b8-5.png
 -->
 
 ## The Deflation Gate — A Different Boundary

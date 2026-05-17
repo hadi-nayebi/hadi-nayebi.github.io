@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, State]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # `data.json` — The Hidden State
@@ -52,7 +52,7 @@ og_image: "assets/images/blog/agent-anatomy.png"
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.4. Concurrent fires queue at the lockfile. One mutation at a time. Atomic mv flips the file; readers never catch a partial state."
 -->
 
-Target asset: assets/images/blog/data-json-atomic-protocol-b7-4.png
+Target asset: assets/images/blog/b7/data-json-atomic-protocol-b7-4.png
 
 **The new-plugin lens.** When you guide your seed to add a plugin that needs state, the seed designs the state's *interface* first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use? Then `data.json` becomes the cache the scripts operate on. Tell your seed: *if you cannot enumerate what reads each field and what writes each field, the design is not done yet.* A real-estate broker's seed could carry an open-listings manifest the same way; only the listings plugin's scripts mutate it, and concurrent showings-update hooks serialize through the same `flock` protocol.
 

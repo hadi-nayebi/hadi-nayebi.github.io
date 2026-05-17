@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: draft
 version: v0.3.0
 audience: "Tier 2"
-og_image: "assets/images/blog/markov-phasic-brain.png"
+og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
 ---
 
 # PLAN — Decide, Then Lock

@@ -5,7 +5,7 @@ slug: "your-brain-was-never-built-for-this"
 read_time: "16 min"
 tags: [Agents, AI, Society, Evolution]
 audience: professionals
-og_image: "assets/images/blog/snake-vs-spreadsheet.png"
+og_image: "assets/images/blog/b3/snake-vs-spreadsheet-b3-1.png"
 series: "Hadosh Academy – Agents"
 version: v0.1.1
 status: published

@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, Subagents, 80-20]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # `agents/` and the 80/20 Dispatch Budget

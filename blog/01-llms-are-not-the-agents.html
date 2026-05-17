@@ -16,12 +16,12 @@
     <meta property="og:description" content="LLMs Are Not the Agents — Hadosh Academy seed agent essay.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/01-llms-are-not-the-agents.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/llm-engine-agent-directory.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b1/llm-engine-agent-directory-b1-1.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LLMs Are Not the Agents | Hadosh Academy">
     <meta name="twitter:description" content="LLMs Are Not the Agents — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/llm-engine-agent-directory.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b1/llm-engine-agent-directory-b1-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../css/styles.css?v=20260513">
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "LLMs Are Not the Agents — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/llm-engine-agent-directory.png",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/b1/llm-engine-agent-directory-b1-1.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/01-llms-are-not-the-agents.html"
             },
             {
@@ -181,7 +181,7 @@
                             <li><strong>Continuity</strong> &mdash; persistent state that survives across sessions</li>
                         </ul>
 
-                        <p>!<a href="../assets/images/blog/llm-engine-agent-directory.png">Diagram comparing LLM as engine (reasoning, probabilistic, no persistent memory) versus Agent as directory brain (memory on disk, hooks and rules, intentions). Swapping the engine gives faster or smarter. Swapping the directory gives a different agent.</a> <em>The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.</em></p>
+                        <p>!<a href="../assets/images/blog/b1/llm-engine-agent-directory-b1-1.png">Diagram comparing LLM as engine (reasoning, probabilistic, no persistent memory) versus Agent as directory brain (memory on disk, hooks and rules, intentions). Swapping the engine gives faster or smarter. Swapping the directory gives a different agent.</a> <em>The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.</em></p>
 
                         <p>When you open one of these CLI agents in an <strong>empty directory</strong>, you have an LLM with file access &mdash; nothing more. It can read, write, search, and run commands. But every decision is purely probabilistic, shaped only by its training and the current conversation. There is no memory of yesterday. No rules it has learned. No identity it maintains. Out of the box, even the most capable CLI agent is just a token generator that can touch files.</p>
 
@@ -197,7 +197,7 @@
 
                         <p>A CLI agent in an empty folder has an <strong>action space</strong> &mdash; the set of things it can do at any given moment:</p>
 
-                        <p>!<a href="../assets/images/blog/action-space-markov-chain.png">Markov chain diagram showing Claude Code&rsquo;s action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices.</a> <em>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities &mdash; a <a href="https://en.wikipedia.org/wiki/Markov_chain "A system where the next step depends only on the current state, not the full history"">Markov chain</a> where every path is equally likely.</em></p>
+                        <p>!<a href="../assets/images/blog/b1/action-space-markov-chain-b1-2.png">Markov chain diagram showing Claude Code&rsquo;s action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices.</a> <em>The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities &mdash; a <a href="https://en.wikipedia.org/wiki/Markov_chain "A system where the next step depends only on the current state, not the full history"">Markov chain</a> where every path is equally likely.</em></p>
 
                         <ul>
                             <li>Respond in chat</li>
@@ -227,7 +227,7 @@
 
                         <p>What makes this layer powerful is that it does not just hold static information. It can define a <strong>workflow</strong> &mdash; a sequence of phases the agent moves through as it works. The workflow we use is called <strong>OPEVC</strong>: <strong>Observe, Plan, Execute, Verify, Condense.</strong></p>
 
-                        <p>!<a href="../assets/images/blog/claude-md-working-memory.png">Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory.</a> <em>The OPEVC cycle. The agent moves through five phases &mdash; Observe, Plan, Execute, Verify, Condense &mdash; with CLAUDE.md files at the center, updated throughout. Each phase produces different work and different updates to working memory.</em></p>
+                        <p>!<a href="../assets/images/blog/b1/claude-md-working-memory-b1-3.png">Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory.</a> <em>The OPEVC cycle. The agent moves through five phases &mdash; Observe, Plan, Execute, Verify, Condense &mdash; with CLAUDE.md files at the center, updated throughout. Each phase produces different work and different updates to working memory.</em></p>
 
                         <p>An effective agent following the OPEVC flow is constantly moving information. During <strong>Observe</strong>, it gathers context&mdash;from local files, the web, the user&mdash;and writes its findings into the local <code>CLAUDE.md</code> file where the work will happen. During <strong>Plan</strong>, it updates that same file with the exact steps it intends to take. During <strong>Execute</strong>, it acts, capturing implementation lessons directly into the file. During <strong>Verify</strong>, it checks the results, recording what passed, what failed, and what to watch out for next time. By now, the working memory layer is inflated with rich context. Finally, during <strong>Condense</strong>, the agent actively deflates that layer&mdash;cleaning up its temporary scratchpad notes, migrating permanent architectural lessons UP into <code>CLAUDE.md</code> files higher in the directory tree, and other location, also creating pending jobs to finish later if outside the scope of current job and finally, returning the system to a clean, optimized state for the next task.</p>
 
@@ -239,7 +239,7 @@
 
                         <p>Modern CLI agents support <strong>hook systems</strong> &mdash; events that fire at specific points in the agent&rsquo;s lifecycle.</p>
 
-                        <p>!<a href="../assets/images/blog/hooks-and-action-space.png">Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior.</a> <em>The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.</em></p>
+                        <p>!<a href="../assets/images/blog/b1/hooks-and-action-space-b1-4.png">Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior.</a> <em>The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.</em></p>
 
                         <p>Every time the agent is about to take an action &mdash; use a tool, respond, manage memory, stop &mdash; a <strong>hook fires</strong>. That hook can:</p>
 
@@ -278,7 +278,7 @@
 
                         <p>Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. <strong>Swap the filesystem?</strong> Now you have a completely different agent.</p>
 
-                        <p>!<a href="../assets/images/blog/one-brain-many-engines.jpg">Hand-drawn sketch titled 'One Brain, Many Engines' showing an Agent Directory (.claude/) containing Knowledge, Rules, and Memory Files at center. Adapter Layers connect it to three interchangeable platforms: Claude Code, OpenCode, and Gemini CLI.</a> <em>One brain, many engines. The same agent directory &mdash; with its knowledge, rules, and memory &mdash; connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.</em></p>
+                        <p>!<a href="../assets/images/blog/b1/one-brain-many-engines-b1-5.jpg">Hand-drawn sketch titled 'One Brain, Many Engines' showing an Agent Directory (.claude/) containing Knowledge, Rules, and Memory Files at center. Adapter Layers connect it to three interchangeable platforms: Claude Code, OpenCode, and Gemini CLI.</a> <em>One brain, many engines. The same agent directory &mdash; with its knowledge, rules, and memory &mdash; connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.</em></p>
 
                         <h2>The Core Principle: Compartmentalization</h2>
 
@@ -288,7 +288,7 @@
 
                         <p>Compartmentalization means: <strong>every piece of knowledge has a home</strong>. Every behavior has a boundary. Every context is scoped to where it is needed.</p>
 
-                        <p>!<a href="../assets/images/blog/CLAUDE-md-hierarchy.jpg">Four-level hierarchy of CLAUDE.md files: Level 1 at ~/.claude/CLAUDE.md for Global User Context, Level 2 at ./CLAUDE.md for Agent Identity, Level 3 at ./.claude/CLAUDE.md for the Brain Manual, and Level 4 at ./**/CLAUDE.md for Local Working Memory in subdirectories. A tree diagram on the right shows how these nest within the filesystem.</a> <em>The four levels of compartmentalized memory. Global context at the top, local working memory at the bottom. Each file scoped to exactly where it is needed.</em></p>
+                        <p>!<a href="../assets/images/blog/b1/claude-md-hierarchy-b1-6.jpg">Four-level hierarchy of CLAUDE.md files: Level 1 at ~/.claude/CLAUDE.md for Global User Context, Level 2 at ./CLAUDE.md for Agent Identity, Level 3 at ./.claude/CLAUDE.md for the Brain Manual, and Level 4 at ./**/CLAUDE.md for Local Working Memory in subdirectories. A tree diagram on the right shows how these nest within the filesystem.</a> <em>The four levels of compartmentalized memory. Global context at the top, local working memory at the bottom. Each file scoped to exactly where it is needed.</em></p>
 
                         <p>Look at the hierarchy above. Information is not dumped into one giant instruction file. Instead:</p>
 

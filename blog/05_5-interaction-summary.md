@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
 version: v0.5.0
 audience: "Tier 2"
-og_image: "assets/images/blog/always-on-digital-cortex.png"
+og_image: "assets/images/blog/b5/always-on-digital-cortex-b5.png"
 ---
 
 # Mega-Prompt Compression — `interaction_summary`
@@ -27,7 +27,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 ## How it works — block until summarized
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/interaction-summary-b5-5.png
+  ASSET: ../assets/images/blog/b5/interaction-summary-b5-5.png
   Concept: Chalk-on-blackboard cross-section — a token meter inside a job crosses a threshold and flips a flag; on the next tool call a guard blocks every productive tool while bypass-prefixed questions flow through a small escape hatch.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
   pastel chalk fills (cyan for the token meter, green for the threshold line, orange for the summary_needed flag, pink for the blocked-tool tiles, magenta for the bypass-prefix arrow);

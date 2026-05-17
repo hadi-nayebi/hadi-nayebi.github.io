@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Tier-3, Self-Modification]
 status: draft
 version: v0.1.0
 audience: "Tier 3"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # A System That Safely Modifies Itself
@@ -56,7 +56,7 @@ The reason this matters is the reason agent reliability has been hard. A reliabl
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin_integrity", "plugin_integrity (under edit)", "[PLUGIN-LOCK]", "tests", "pass", "commit, lock closes", "fail", "revert to checkpoint_ref", "the guard does not exempt itself", plus the caption below. No other words, file names, folders, or descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.3. The lock that closes one cycle opens the next. Recursion all the way down."
-  ASSET: assets/images/blog/recursive-lock-ceremony-b8-8.png
+  ASSET: assets/images/blog/b8/recursive-lock-ceremony-b8-8.png
 -->
 
 ## The Rollback Substrate

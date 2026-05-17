@@ -16,12 +16,12 @@
     <meta property="og:description" content="Job Lifecycle — job_core — Hadosh Academy seed agent essay.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/05_4-job-core.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b5/always-on-digital-cortex-b5.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Job Lifecycle — job_core | Hadosh Academy">
     <meta name="twitter:description" content="Job Lifecycle — job_core — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b5/always-on-digital-cortex-b5.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../css/styles.css?v=20260513">
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "Job Lifecycle — job_core — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/b5/always-on-digital-cortex-b5.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/05_4-job-core.html"
             },
             {
@@ -130,7 +130,7 @@
                         <p>The phase plugins (<a href="06_1-phasic-foundation.html">Essay 6</a>) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping &mdash; scope multipliers, point ledgers, plan-file pointers, footer markers &mdash; keyed by the same ID. No plugin reads another&rsquo;s hidden state directly, but the shared key lets each plugin&rsquo;s view of the job line up with every other plugin&rsquo;s view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment. <sup class="ref-marker" title="ref: interaction-list-just-one-form | .claude/plugins/job_core/scripts/job.sh:223-236 | `create-active` handler: `local_id=$(gen_id)` mints a timestamp ID; jq writes base job object `{id, name, objective, status, focused, user_interactions, completion_requirements: {user_approval, plugin_lock_approval, depends_on}, plan_state, created_at, updated_at}` to job_core&#x27;s own data.json. Other plugins extend by keying entries on the same `id`.">&#9432;</sup></p>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="../assets/images/blog/job-core-5b-4.png" alt="A single focused job drawn as a central chalk box keyed by a timestamp ID, with the cumulative interaction list growing inside it and satellite plugin boxes extending the same ID from outside their own hidden state" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <img src="../assets/images/blog/b5/job-core-b5-4.png" alt="A single focused job drawn as a central chalk box keyed by a timestamp ID, with the cumulative interaction list growing inside it and satellite plugin boxes extending the same ID from outside their own hidden state" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.4. One job, one shared key &mdash; the cumulative mega-prompt lives inside; other plugins extend the same ID from outside their own hidden state.</figcaption>
                         </figure>
 

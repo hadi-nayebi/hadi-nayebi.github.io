@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, CONDENSE]
 status: draft
 version: v0.2.0
 audience: "Tier 2 → Tier 3"
-og_image: "assets/images/blog/markov-phasic-brain.png"
+og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
 ---
 
 # CONDENSE — The Cognitive Organ

@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # Plugin Kit Foundation
@@ -68,7 +68,7 @@ Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay —
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ."
 -->
 
-Target asset: assets/images/blog/plugin-cell-anatomy-b7-1.png
+Target asset: assets/images/blog/b7/plugin-cell-anatomy-b7-1.png
 
 ---
 

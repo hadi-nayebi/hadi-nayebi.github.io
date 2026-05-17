@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, Hooks, Scripts]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # Skeleton: CLAUDE.md, Hooks, and Scripts

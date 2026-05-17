@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, Wiring]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # Smaller Organs and Brain-Root Wiring
@@ -58,7 +58,7 @@ A few smaller organs round out the kit. They carry less load but are still load-
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.7. Smaller organs surround the cell. The wiring file lives at brain root and registers the plugin's reflexes."
 -->
 
-Target asset: assets/images/blog/smaller-organs-and-wiring-b7-7.png
+Target asset: assets/images/blog/b7/smaller-organs-and-wiring-b7-7.png
 
 ---
 

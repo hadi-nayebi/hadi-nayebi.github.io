@@ -5,7 +5,7 @@ slug: "we-could-have-had-agi"
 read_time: "20 min"
 tags: [Agents, AI, Architecture, AGI]
 audience: Professionals
-og_image: "assets/images/blog/seed-agent-growth.png"
+og_image: "assets/images/blog/b2/seed-agent-growth-b2-1.png"
 series: "Hadosh Academy – Agents"
 companion_paper: "why-scaling-models-is-not-enough"
 version: v1.1.0

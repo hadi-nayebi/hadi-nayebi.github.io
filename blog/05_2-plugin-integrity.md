@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
 version: v0.7.0
 audience: "Tier 2"
-og_image: "assets/images/blog/always-on-digital-cortex.png"
+og_image: "assets/images/blog/b5/always-on-digital-cortex-b5.png"
 ---
 
 # Plugin Edit Safety — `plugin_integrity`
@@ -43,7 +43,7 @@ This is deliberate. The test suite IS the safety net under every plugin edit; un
 The shape generalizes beyond this prototype. **Friction tracks danger.** Reading is free. Editing a plugin's code passes through one ceremony; editing a test passes through two — the safety net costs more to lift than the code beneath it. The [gmode](06_9-gmode.html) lane — the deliberate maintenance bypass — opens only behind a long-form justification the seed agent has to compose in full, slowing the agent enough that the operator can intervene before the bypass admits. Friction here is ceremony, not enforcement: every gate depends on the agent reading and obeying the injected voice, and a determined operator can still route through gmode by choice. The design knob this exposes is yours. A lawyer cultivating a brief-template seed could place the heaviest gate over precedent-citation files; a researcher could place it over data-cleaning scripts. You decide which surfaces deserve which gradient. *[ref: friction-tracks-danger-gmode | ../CLAUDE.md Identity section + .claude/plugins/phasic_system/scripts/phase.sh:340-365 | Root CLAUDE.md Identity fact 2 names the gmode privilege: "PLUGIN-LOCK is privileged. Editing your own plugin layer alters the substrate that enforces every other plugin's discipline. That kind of work can only happen inside one of two protected contexts: gmode (the operator's deliberate maintenance lane, entered via [GMODE] with ≥100-word justification) OR a user-approved job." phase.sh L340-365 implements the enter-gmode handler: command "is reserved for system automation" (L343), saves `pre_gmode_phase` and sets `current_phase = "gmode"` (L361), voice "GMODE: Entered from $current. Phase controls suspended" (L364-365). Long-form justification + suspended phase guards confirm the ceremony-not-enforcement design.]*
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/plugin-integrity-b5-2.png
+  ASSET: ../assets/images/blog/b5/plugin-integrity-b5-2.png
   Concept: Chalk-on-blackboard cross-section — a single plugin's directory drawn as nested boxes, with two distinct chalk gates stacked outside-in: an outer `[PLUGIN-LOCK]` gate over the plugin's code files (hooks/, scripts/, config), and a second inner `[TEST-LOCK]` gate over the tests/ subdirectory. Outside both gates, a third chalk lane shows documentation surfaces (CLAUDE.md, docs/) flowing through with no gate. A small "auto-revert circuit" sketched at the bottom edge: test run → pass arrow commits, fail arrow reverts to a chalk-marked git checkpoint.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and nested rectangles;
   pastel chalk fills (cyan for the plugin envelope, green for code files, orange for the test files inner box, pink for the auto-revert circuit, magenta for the documentation lane);

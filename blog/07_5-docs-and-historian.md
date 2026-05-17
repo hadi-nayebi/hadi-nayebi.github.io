@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, Historian, Evolution]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # `docs/` and the Historian
@@ -55,7 +55,7 @@ og_image: "assets/images/blog/agent-anatomy.png"
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.5. The hard cap forces overflow. Siblings absorb depth under the historian's judgment."
 -->
 
-Target asset: assets/images/blog/evolution-cap-overflow-b7-5.png
+Target asset: assets/images/blog/b7/evolution-cap-overflow-b7-5.png
 
 **The new-plugin lens.** When you guide your seed to create a plugin, the seed authors the cycle-1 `docs/evolution.md` by hand — a short narrative of the plugin's birth, what concern it owns, what it doesn't own. The historian subagent takes over from cycle 2 onward, re-narrating each cycle's commits into evolution.md until it hits the cap. From there, overflow goes into `docs/principles.md` (or whichever sibling the plugin's docs/CLAUDE.md establishes). Tell your seed: *every plugin gets a historian by birth.* Without one, the plugin's memory dies with the operator's session. A consulting practice's seed could carry the same shape — every plugin (intake, engagement, deliverable QA) ships a `docs/evolution.md` capped narration of how its standards drifted across client cycles, with the historian dispatching after every N engagement-close commits. The ratchet is friction, not enforcement: the agent must read and obey the drift-injection voice for the historian to fire. Operators who skip the voice get a stale evolution.md until the next unlock surfaces it.
 

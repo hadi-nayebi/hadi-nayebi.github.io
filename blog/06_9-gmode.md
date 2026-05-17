@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, GMODE]
 status: draft
 version: v0.2.0
 audience: "Tier 2 → Tier 3"
-og_image: "assets/images/blog/markov-phasic-brain.png"
+og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
 ---
 
 # GMODE — The Off-Cycle Lane
@@ -43,7 +43,7 @@ Entry happens through a sequence of stages — justification floor, atomic stash
 The cycle counter does not advance through gmode. The home phase is the home phase; gmode is a side-step that returns to it. *[ref: cycle-counter-untouched-by-gmode | .claude/plugins/phasic_system/scripts/phase.sh:341-407 | The full `enter-gmode` and `exit-gmode` branches (lines 341-407) contain no calls to the cycle-increment logic that lives elsewhere in the same script (the `idle → observe` transition at line 249 increments cycle; nothing in gmode handlers does). The home phase resumes on the same cycle number the agent left.]*
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/gmode-b6-9.png
+  ASSET: ../assets/images/blog/b6/gmode-b6-9.png
   Concept: Chalk-on-blackboard sketch of the OPEVC cycle as a five-node ring (OBSERVE / PLAN / EXECUTE / VERIFY / CONDENSE) with an idle node sitting outside the ring. From every node — including idle — a single dashed chalk arrow loops out to a central chalk-box labeled "gmode" and a second dashed arrow loops back. A small chalk caption near each loop-pair reads "stash pre_gmode_phase" on the outgoing edge and "atomic restore" on the returning edge. A separate chalk gate icon labeled "≥100-word [GMODE] question" guards every outgoing arrow; a second chalk gate icon labeled "clean git" guards every returning arrow.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
   pastel chalk fills (cyan for the OPEVC ring nodes, green for the idle node, orange for the central gmode box, pink for the entry-gate icons, magenta for the exit-gate icons);

@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
 version: v0.5.0
 audience: "Tier 2"
-og_image: "assets/images/blog/always-on-plugins-b5-1.png"
+og_image: "assets/images/blog/b5/always-on-plugins-b5-1.png"
 ---
 
 # The Two-Layer Foundation
@@ -65,7 +65,7 @@ Essays 5.2 through 5.6 deep-dive the always-on plugins, one each. Essay 5.7 cove
 
 The phasic plugins get their own series in [Essay 6](06_1-phasic-foundation.html). The cell template that lets new plugins be born safely is [Essay 7](07_1-plugin-kit-foundation.html). The four-stage arc from your first job to your first custom plugin is [Essay 8](08_1-apprentice-to-architect-foundation.html).
 
-![Image 5.1. Two plugin layers, one multi-form substrate — the phasic layer writes through the CLAUDE.md hierarchy and absorbs at cycle close; the always-on layer runs alongside, phase-independent.](../assets/images/blog/always-on-plugins-b5-1.png)
+![Image 5.1. Two plugin layers, one multi-form substrate — the phasic layer writes through the CLAUDE.md hierarchy and absorbs at cycle close; the always-on layer runs alongside, phase-independent.](../assets/images/blog/b5/always-on-plugins-b5-1.png)
 
 ---
 

@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Hooks, Voices]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # Soft → Hard Migration

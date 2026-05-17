@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Open Source, Series Finale]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 ---
 
 # The Seed Is Yours
@@ -56,7 +56,7 @@ This is what changes when the architecture itself is teachable. The agent-develo
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "default triangle", "collapsed line", "agent", "developer", "user", ".claude/", "shared substrate", "you", "the substrate is teachable; the third role dissolves", plus the caption below. No other words, file names, folders, or role descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.4. Three roles collapse to two. The substrate carries what the developer used to."
-  ASSET: assets/images/blog/triangle-to-two-b8-9.png
+  ASSET: assets/images/blog/b8/triangle-to-two-b8-9.png
 -->
 
 ## The Academy Exists Because Craft Benefits From Community

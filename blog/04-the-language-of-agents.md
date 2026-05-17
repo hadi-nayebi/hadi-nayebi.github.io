@@ -5,7 +5,7 @@ slug: "the-language-of-agents"
 read_time: "18 min"
 tags: [Agents, AI, Vocabulary]
 audience: professionals
-og_image: "assets/images/blog/agent-anatomy.png"
+og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 series: "Hadosh Academy – Agents"
 companion_paper: "the-primitives-of-agent-architecture"
 version: v1.0.1

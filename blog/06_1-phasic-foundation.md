@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
 version: v0.2.1
 audience: "Tier 2"
-og_image: "assets/images/blog/markov-phasic-brain.png"
+og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
 ---
 
 # Phasic Foundation

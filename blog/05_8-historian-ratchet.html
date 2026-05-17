@@ -16,12 +16,12 @@
     <meta property="og:description" content="The Historian Ratchet — Hadosh Academy seed agent essay.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/05_8-historian-ratchet.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b5/always-on-digital-cortex-b5.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Historian Ratchet | Hadosh Academy">
     <meta name="twitter:description" content="The Historian Ratchet — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b5/always-on-digital-cortex-b5.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../css/styles.css?v=20260513">
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "The Historian Ratchet — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/always-on-digital-cortex.png",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/b5/always-on-digital-cortex-b5.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/05_8-historian-ratchet.html"
             },
             {
@@ -142,7 +142,7 @@
                         <p>The mechanism makes the lesson non-negotiable. The agent is not <em>suggested</em> to re-read the plugin&rsquo;s history before editing &mdash; a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed. <sup class="ref-marker" title="ref: lock-blocks-historian-runs | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:250-253 + .claude/plugins/plugin_integrity/scripts/drift-check.sh:46 + .claude/plugins/plugin_integrity/hooks/voice.xml:156 `plugin-evolution-stale` | When drift exceeds the threshold (`config.conf:23 DRIFT_THRESHOLD=10`), lock-manager fires the `plugin-evolution-stale` block voice and refuses unlock. The agent must dispatch the plugin&#x27;s historian subagent before the next `[PLUGIN-LOCK]` will admit; only the historian&#x27;s commit to evolution.md resets the drift counter. The block is bash-mechanical (exit 2 from the hook), not LLM-judgment.">&#9432;</sup></p>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="../assets/images/blog/historian-ratchet-b5-4.png" alt="Plugin_integrity&#x27;s historian ratchet: drift counter climbs with commits, blocks at threshold, historian subagent re-narrates, counter resets" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <img src="../assets/images/blog/b5/historian-ratchet-b5-8.png" alt="Plugin_integrity&#x27;s historian ratchet: drift counter climbs with commits, blocks at threshold, historian subagent re-narrates, counter resets" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.8.1. Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin&rsquo;s evolution.</figcaption>
                         </figure>
 
@@ -155,7 +155,7 @@
                         <p>No single plugin enforces the historian ratchet. Three plugins compose to make it possible &mdash; <code>question_discipline</code> opens the asking surface, <code>job_core</code> carries the answer, <code>plugin_integrity</code> protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The <a href="07_1-plugin-kit-foundation.html">Essay 7 series</a> takes <code>plugin_integrity</code> apart on its own terms &mdash; the lock-and-historian ceremony as a single plugin&rsquo;s anatomy. <sup class="ref-marker" title="ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md:158-159 | Plugin Building Lessons: &quot;Plugins own their own controls — don&#x27;t extend another plugin&#x27;s guard for your concerns&quot; + &quot;Soft controls belong inside plugins&quot;. Single-concern boundary that lets ceremonies compose from narrow parts.">&#9432;</sup></p>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="../assets/images/blog/historian-ratchet-b5-5.png" alt="Three single-concern plugins fitting together into the historian-ratchet ceremony" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <img src="../assets/images/blog/b5/historian-ratchet-b5-8b.png" alt="Three single-concern plugins fitting together into the historian-ratchet ceremony" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.8.2. No single plugin enforces the ratchet &mdash; three single-concern plugins compose the ceremony, each contributing what it owns.</figcaption>
                         </figure>
 
