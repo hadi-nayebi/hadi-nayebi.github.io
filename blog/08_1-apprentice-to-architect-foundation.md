@@ -74,4 +74,4 @@ We start with the stages of job maturation — the upward axis along which every
 *Essay 8.1 — From Apprentice to Architect, Part 1 of 9.*
 
 *Previous: [Essay 7.9 — Building a New Plugin](07_9-creating-a-new-plugin.html) — the Tier-3 walkthrough of authoring a plugin under the lock ceremony.*
-*Next: [Essay 8.2 — The Four Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle through Stage 4 plugin form, plus sibling and dependent job patterns.*
+*Next: [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle through Stage 4 plugin form, plus sibling and dependent job patterns.*
