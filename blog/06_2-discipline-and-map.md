@@ -98,7 +98,7 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
       Row 4 (pink fill): "verify"
       Row 5 (magenta fill): "condense"
     Column headers (top, white chalk, lowercase, in this left-to-right order):
-      "footers writable", "plan file", "project source", "scripts", "create job objects"
+      "footers writable", "plan file", "project source", "validators", "create job objects"
     Cells (white chalk; words ONLY where listed, otherwise a checkmark or X glyph):
       observe row:  "all 4", X, X, X, X
       plan row:     "3 below ---Pl---", X, X, X, X
@@ -106,7 +106,7 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
       verify row:   "---Ve--- only", "refine", X, checkmark, X
       condense row: "all + body", X, X, X, checkmark
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "scripts", "create job objects", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "validators", "create job objects", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
   Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE has free hand across the brain."
 -->
 
