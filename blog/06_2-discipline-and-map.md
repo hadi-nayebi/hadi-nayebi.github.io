@@ -60,7 +60,7 @@ A phase is not just a label. It is a different *write scope*.
 
 OBSERVE and PLAN are read-only. The agent can read any file it likes, but the only files it can write are CLAUDE.md files. Code, scripts, configuration, project content — none of it is editable in those phases. *[ref: plan-blocks-non-claude-writes | .claude/plugins/phase_plan/hooks/plan-guard.sh:234-293 | PLAN's Edit|Write case arm mirrors OBSERVE: memory and CLAUDE.md edits allowed with section enforcement and min-synthesis gate; knowledge files and all other project paths blocked with tool-restriction-non-claude.]*
 
-EXECUTE has full write access, scoped to a list of directories the plan declared up front. *[ref: execute-altered-list-scope-check | .claude/plugins/phase_execute/hooks/execute-guard.sh:821-898 | EXECUTE retrieves the altered-list snapshot frozen at phase entry; every Edit/Write must match a CLAUDE.md path in the list, or have an ancestor CLAUDE.md in the list — otherwise blocked.]*
+EXECUTE has full write access, scoped to the set of directories OBSERVE and PLAN together declared by editing each one's CLAUDE.md. *[ref: execute-altered-list-scope-check | .claude/plugins/phase_execute/hooks/execute-guard.sh:826-902 | EXECUTE retrieves the altered-list snapshot frozen at phase entry; every Edit/Write must match an altered CLAUDE.md path exactly (grep -qxF) — no ancestor walking, no nested-dir inclusion. Comment at line 890: "Walking up to `plugins/X/CLAUDE.md` would silently expand scope. Exact-match keeps scope crisp — if you didn't declare it, you can't edit it."]*
 
 VERIFY has scripts-only access. The agent can run tests, run scripts, run validators. It cannot edit code. It can write pass/fail results back into CLAUDE.md and into a designated plan file. *[ref: verify-allows-claude-and-plan-blocks-project | .claude/plugins/phase_verify/hooks/verify-guard.sh:248-317 | VERIFY's Edit|Write|MultiEdit case arm exits 0 for plan files at line 263, allows CLAUDE.md edits within the altered list, and blocks all other project files at line 316.]*
 
@@ -133,7 +133,7 @@ Before opening each phase compartment, here is the operational map at a glance. 
 
 **PLAN** — turn observations into a binding contract.
 - Name the `plan_file` in cycle 1 (multi-cycle jobs only); PLAN itself never writes the file — EXECUTE creates it
-- Declare the *altered list* — the CLAUDE.md files whose parent directories EXECUTE will be allowed to touch
+- Declare the *altered list* — the set of dirs whose CLAUDE.md the agent edited during OBSERVE or PLAN; EXECUTE will be allowed to write project files inside each of those dirs exactly (no ancestor or nested dirs)
 - Write acceptance criteria VERIFY will check against
 - Refuse code edits — the contract is what gets written, not the work
 
