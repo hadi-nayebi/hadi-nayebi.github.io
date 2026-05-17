@@ -1,5 +1,5 @@
 ---
-title: "Cross-Session Memory — interaction_summary"
+title: "Mega-Prompt Compression — interaction_summary"
 date: "May 2026"
 slug: "interaction-summary"
 read_time: "5 min"
@@ -10,7 +10,7 @@ audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
 
-# Cross-Session Memory — `interaction_summary`
+# Mega-Prompt Compression — `interaction_summary`
 
 *Essay 5.5 — The Always-On Digital Cortex, Part 5 of 9.*
 
@@ -56,11 +56,11 @@ Without this plugin, long jobs lose narrative coherence as the interaction list 
 
 You would tune the *threshold* — the token count at which the gate trips. The current ~500-token threshold balances summarization overhead against narrative coherence. A seed running shorter, sharper exchanges may want to trip at 250 tokens; a seed running longer interactions (chemical-engineering reviews, legal-citation walks) may comfortably stretch to 1,000. *[ref: summary-threshold-config | .claude/plugins/interaction_summary/config.conf:36 | `TOKEN_THRESHOLD="${TOKEN_THRESHOLD:-500}"` — single knob, lives in config.conf, no code change to retune.]*
 
-You would re-shape the *5-section template*. The current sections — User Requests, Questions & Decisions, Design Choices, Corrections & Feedback, Current State — encode what *this* prototype values in cross-session memory. Your seed will value different things. A research seed may want "Sources cited / Hypotheses tested / Open questions" sections. A consulting seed may want "Client goals / Constraints surfaced / Action items." A legal-research seed may want "Statutes referenced / Precedents reviewed / Open conflicts." The five sections aren't gospel. The shape — required headers, word-count band per section, append-only chain — is.
+You would re-shape the *5-section template*. The current sections — User Requests, Questions & Decisions, Design Choices, Corrections & Feedback, Current State — encode what *this* prototype values in its summary chain. Your seed will value different things. A research seed may want "Sources cited / Hypotheses tested / Open questions" sections. A consulting seed may want "Client goals / Constraints surfaced / Action items." A legal-research seed may want "Statutes referenced / Precedents reviewed / Open conflicts." The five sections aren't gospel. The shape — required headers, word-count band per section, append-only chain — is.
 
 You would extend the *bypass-prefix list*. The current escape hatch lets the infrastructure-prefixed asks through — `[PLUGIN-LOCK]`, `[GMODE]`, `[JOB-COMPLETE]`, and a handful of others on the bypass list — so the agent doesn't deadlock asking permission for the very thing the gate demands. The bypass list is its own ten-entry set, not identical to the question_discipline registry: each new prefix needs an explicit decision in BOTH lists — does this prefix get registered as a legal asking shape, and (separately) does it bypass the summarization gate, or is summarization a prerequisite even for *this* asking? The list lives at one regex line in `lib/prefix-registry.conf` — the architect edits it to admit or refuse each new ceremony. *[ref: bypass-prefix-list | .claude/plugins/lib/prefix-registry.conf:20 + .claude/plugins/interaction_summary/hooks/summary-guard.sh:131-141 | `BYPASS_PREFIXES` is a 10-entry regex string sourced by five guards (`plan-guard`, `verify-guard`, `observe-guard`, `execute-guard`, `summary-guard`): `PLUGIN-LOCK|TEST-LOCK|POINT-BOOST|GMODE|JOB-COMPLETE|PLAN-APPROVAL|YAML-APPROVAL|WAITING|PENDING-JOB|JOB-APPROVE-CREATION`. summary-guard.sh:131-135 comment names the deadlock rationale verbatim: "Blocking them would trap the user inside the summary block with no escape hatch." Adding a prefix to the bypass list is a one-line conf edit; no code change required.]*
 
-You would change the *summarization shape itself*. The current shape is append-only chain — one block of five sections per crossing, accumulated forever. Hierarchical summaries (summary-of-summaries every N entries), topic-tagged summaries (separate chains for separate concerns), or domain-specific summary schemas (Q&A pair structure for support seeds, decision-log structure for governance seeds) are all defensible shapes for the same architectural fact: *long jobs need legible cross-session memory*. The chain mechanism is the architecture; what you put in each entry is yours.
+You would change the *summarization shape itself*. The current shape is append-only chain — one block of five sections per crossing, accumulated forever. Hierarchical summaries (summary-of-summaries every N entries), topic-tagged summaries (separate chains for separate concerns), or domain-specific summary schemas (Q&A pair structure for support seeds, decision-log structure for governance seeds) are all defensible shapes for the same architectural fact: *long jobs need legible mega-prompt compression*. The chain mechanism is the architecture; what you put in each entry is yours.
 
 What you would **not** do is let the mega-prompt grow without compression. Without the gate, a job that crosses ten cycles becomes unreadable; the next session loses the narrative thread; the agent starts drifting from prior decisions. The gate is the floor; the format above it is yours.
 

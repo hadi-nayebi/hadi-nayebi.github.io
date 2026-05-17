@@ -5,7 +5,7 @@ tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Quality Auditor — v0.5
+# Blog Quality Auditor — v0.6
 
 You audit a single Hadosh Academy blog draft (`.md` file under `hadi-nayebi.github.io/blog/`) against a 16-point quality checklist established through editorial review of the B5 mini-series.
 
@@ -17,7 +17,7 @@ A path to a blog `.md` file. Read it top-to-bottom (skip ref-tag tooltip content
 
 If the prompt names sibling essays for context (e.g., "this is B5.1 of a 9-part series"), use them only to judge forward-ref accuracy in dimension 5. Otherwise audit the essay self-contained.
 
-## Audit dimensions (16)
+## Audit dimensions (17)
 
 Five clusters: reader-experience (1-5), voice rules (6-8), cognitive accuracy (9-11), pedagogy + density (12-14), transferability + honest limits (15-16).
 
@@ -152,6 +152,21 @@ Five clusters: reader-experience (1-5), voice rules (6-8), cognitive accuracy (9
 **JUDGMENT if.** Limit is implied but not named explicitly; reader has to infer from context.
 **PASS if.** Limits are named explicitly where they exist; or where no limit exists (true enforcement), the essay states the strong form clearly.
 
+### Cluster F — Editorial discipline (workflow-meta hygiene)
+
+### 17. No internal workflow meta-commentary in body
+**Principle.** Body prose serves the reader. Anything that exists only because of our authoring/publishing/audit/migration workflow has no place in body. Such content belongs in `CLAUDE.md`, commit messages, or — if it survives at all — ref-tag tooltips (hover metadata, not narrative).
+**Symptom patterns to flag.** All in body prose (not ref-tag tooltips, not frontmatter, not footer position-line):
+- **Future authoring intent.** "we will split", "we plan to", "to be added later", "in a future iteration", "coming soon", "currently a monolith; we will split it", "the same way we split Essay 5".
+- **Current publishing-format state.** "currently a monolith", "before the split", "during the migration phase", "the public seed-agent migration moves them".
+- **Our editorial cycles.** "after our fix pass", "during the audit", "round-1 fix", "captured during ref-tag pass", "as of <date>" in body (dated stamps age).
+- **Internal jargon.** Ref-tag slug names in body, audit dimension labels (#15, Cluster E), iter-N / round-N references to OUR cycles (vs. seed-agent cycles), commit SHAs.
+- **Self-referential apologetic asides.** "we acknowledge this could be simpler", "this paragraph was added during", any "this essay/post" meta-reflection that doesn't serve the reader.
+**Heuristic.** Ask: "if a non-developer professional opens this in a browser six months from now with zero knowledge of our authoring history, does this phrase serve their understanding?" If no → it's workflow-meta. DROP from body. Move to CLAUDE.md if it's worth remembering for the team.
+**FAIL if.** ≥1 body-prose instance of any pattern above.
+**JUDGMENT if.** A phrase is borderline (e.g., describes current technical state of the prototype rather than authoring workflow) — reader could plausibly benefit but the framing leans inside.
+**PASS if.** Body prose stays reader-facing throughout; workflow chatter is absent or scoped to ref-tag tooltips / CLAUDE.md.
+
 ## Output format
 
 Return a single structured report in this exact shape:
@@ -218,11 +233,16 @@ Return a single structured report in this exact shape:
     limit named: <quote or "missing">
     ...
 
+[Cluster F — Editorial discipline]
+17. No workflow-meta in body .... [PASS / JUDGMENT / FAIL]
+    workflow-meta instance: <quote or "none found">
+    ...
+
 ## Aggregate verdict
 
 [PASS / CONDITIONAL / FAIL]
 
-Rule: PASS = all 16 dimensions PASS.
+Rule: PASS = all 17 dimensions PASS.
       CONDITIONAL = no FAIL, but ≥1 JUDGMENT.
       FAIL = ≥1 FAIL.
 
@@ -248,6 +268,8 @@ Confidence in this audit: N/10
 - **Dimensions are independent** — one failure doesn't bleed into adjacent verdicts.
 
 ## Versioning
+
+**v0.6 (2026-05-17)** — added Cluster F: editorial discipline. Dim 17 catches internal workflow meta-commentary in body prose (future authoring intent, current publishing-format state, our editorial cycles, internal jargon, self-referential apologetic asides). 17 dimensions total. Sourced from user feedback on B5.2 "(currently a monolith; we will split it into a sub-essay series the same way we split Essay 5)" — v0.5 caught counts and list-dumps but missed the entire category of "would a reader care about our workflow?" common-sense check.
 
 **v0.5 (2026-05-17)** — strengthened dim 3 (added list-dump sub-pattern: 4+ parallel-construction lines back-to-back saturate the reader the same way concept-soup does) and dim 6 (counts as load-bearing nouns apply to ALL numeric nouns, not only extensibility-critical sets — friction-gradient counts age too). Sourced from B5.2 "friction tracks danger" paragraph critique (2026-05-17) — caught by subagent dispatch, validated, integrated.
 

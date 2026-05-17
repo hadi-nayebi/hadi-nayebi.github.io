@@ -58,7 +58,7 @@ SIDEBAR_POSTS = [
     ("05_2-plugin-integrity",            "Essay 5.2 — Plugin Edit Safety",                  "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_3-brain-guard",                 "Essay 5.3 — Context Window Discipline",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_4-job-core",                    "Essay 5.4 — Job Lifecycle",                       "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_5-interaction-summary",         "Essay 5.5 — Cross-Session Memory",                "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_5-interaction-summary",         "Essay 5.5 — Mega-Prompt Compression",             "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_6-question-discipline",         "Essay 5.6 — Structured Questions",                "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_7-claude-md-hierarchy",         "Essay 5.7 — The CLAUDE.md Hierarchy",             "May 2026", "12 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_8-historian-ratchet",           "Essay 5.8 — The Historian Ratchet",               "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),

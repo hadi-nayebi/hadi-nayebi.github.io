@@ -86,5 +86,5 @@ That closes the tour of the always-on plugins. The next part covers one of the s
 
 *Essay 5.6 — The Always-On Digital Cortex, Part 6 of 9.*
 
-*Previous: [Essay 5.5 — Cross-Session Memory (`interaction_summary`)](05_5-interaction-summary.html) — block-until-summarized.*
+*Previous: [Essay 5.5 — Mega-Prompt Compression (`interaction_summary`)](05_5-interaction-summary.html) — block-until-summarized.*
 *Next: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — working memory bus, footer protocol, altered list.*
