@@ -44,7 +44,7 @@ No backward edge from condense. Once the cycle reaches CONDENSE, the only exit i
 
 **The gmode side-channel** — every phase, including idle, has one extra edge that loops back to itself through gmode. Gmode is short for *generic mode*. It is the freestyle phase: a deliberately unconstrained mode where none of the OPEVC tool-restriction guards apply, used for work that doesn't fit the OPEVC ceremony. *[ref: gmode-self-exits-phase-guards | .claude/plugins/phase_verify/hooks/verify-guard.sh:84-88 | Every phase guard reads the focused job's current_phase and exits 0 when it doesn't match its own phase name; in gmode the equality fails for all five phase guards, so none enforce restrictions.]*
 
-Entry is the same regardless of which phase the agent came from. The agent writes a `[GMODE]` prefixed question to the user with a substantive reason — at least a hundred words explaining why the work needs to happen outside the current phase's compartment. The orchestrator stashes the current phase, the agent enters gmode, and the per-phase guards step aside. *[ref: orchestrator-stashes-pre-gmode-phase | .claude/plugins/phasic_system/scripts/phase.sh:359-362 | Atomic jq update stashes the prior phase as pre_gmode_phase while setting current_phase to gmode; on exit the orchestrator reads back pre_gmode_phase to restore.]*
+Entry is the same regardless of which phase the agent came from. The agent writes a `[GMODE]` prefixed question to the user with a substantive reason — a long-form justification of why the work needs to happen outside the current phase's compartment (currently a roughly 100-word floor in the prototype). The orchestrator stashes the current phase, the agent enters gmode, and the per-phase guards step aside. *[ref: orchestrator-stashes-pre-gmode-phase | .claude/plugins/phasic_system/scripts/phase.sh:359-362 | Atomic jq update stashes the prior phase as pre_gmode_phase while setting current_phase to gmode; on exit the orchestrator reads back pre_gmode_phase to restore.]*
 
 Inside gmode the agent can do real work for as long as it needs. Fix a deadlock. Make a small plugin edit that doesn't merit a full OPEVC cycle. Run a plugin-lock ceremony. The mode is intentionally unopinionated. Exit is explicit (the agent calls a small CLI to leave gmode) and requires a clean git working tree — the same discipline that gates every phase boundary. The home phase is restored atomically; the cycle counter does not advance. *[ref: gmode-exit-clean-git-atomic-restore | .claude/plugins/phasic_system/scripts/phase.sh:388-403 | Gmode exit requires a clean git working tree (dies if dirty); reads pre_gmode_phase and atomically restores current_phase while clearing the stash. No cycle counter mutation.]*
 
@@ -76,7 +76,7 @@ Enforcement is layered. A global guard, registered by the orchestrator plugin, f
 
 Every phase publishes its own guard. Every guard is registered unconditionally and self-exits in milliseconds if the focused job's phase doesn't match its own; only the guard for the active phase does real work. Each guard inspects every write call against an allowlist, then consults a shared section-check library to ensure the edit doesn't cross a phase-section boundary inside any CLAUDE.md. *[ref: shared-section-check-library | .claude/plugins/lib/section_guard/section-check.sh:25-50 | Shared library sourced by every phase guard; check_section_edit takes a phase_marker plus file_path plus old/new strings, validates the CLAUDE.md has all four section anchors, and rejects edits crossing the phase-section boundary.]*
 
-The footer markers from [the previous essay series](05_1-the-two-layer-foundation.html) — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — are physical barriers. Each phase's guard enforces one rule: writes must land strictly below that phase's own marker. The constraint is asymmetric. OBSERVE can write anywhere below `---Ob---` — into any of the four footer blocks. PLAN can no longer write into `---Ob---` and writes below `---Pl---`. EXECUTE loses two more blocks and writes below `---Ex---`. VERIFY can only write below `---Ve---`. As the cycle progresses, the editable region shrinks from above; each completed phase becomes part of the locked upstream record. The body above all four markers is reserved for CONDENSE; none of the four work-on-project phases can touch it.
+The footer markers from [the previous essay series](05_1-the-two-layer-foundation.html) — `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` — are physical barriers. Each phase's guard enforces one rule: writes must land strictly below that phase's own marker. The constraint is asymmetric — each phase can write only into its own footer block and the blocks that follow it in the cycle, never the blocks already closed upstream. As the cycle progresses, the editable region shrinks from above: OBSERVE writes anywhere below its marker into all four blocks, PLAN into three, EXECUTE into two, VERIFY into just the last. Each completed phase becomes part of the locked upstream record. The body above all four markers is reserved for CONDENSE; none of the four work-on-project phases can touch it.
 
 In practice each phase's work lands in its own block, but the mechanical rule is the floor — "strictly below my marker" — and that is what produces the forward-pressure. The markers are not decoration; they are the structural manifestation of compartmentalization. The agent can lose the argument with the user, or with itself, but it can't lose it with the guard. The guard is code.
 
@@ -88,7 +88,7 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
   Concept: Chalk-on-blackboard table — the phase write matrix. Each phase's write authority broken down across five axes that distinguish the phases from one another.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk colors for row labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for headers and cell marks; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  white chalk for ALL labels; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
   IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, paths, or phase descriptors.
   Layout: 5 rows × 5 columns grid drawn in chalk.
     Row labels (left, each in its own pastel chalk circle like the cycle image, lowercase, in this top-to-bottom order):
@@ -98,7 +98,7 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
       Row 4 (pink fill): "verify"
       Row 5 (magenta fill): "condense"
     Column headers (top, white chalk, lowercase, in this left-to-right order):
-      "footers writable", "plan file", "project source", "scripts", "create jobs"
+      "footers writable", "plan file", "project source", "scripts", "create job objects"
     Cells (white chalk; words ONLY where listed, otherwise a checkmark or X glyph):
       observe row:  "all 4", X, X, X, X
       plan row:     "3 below ---Pl---", X, X, X, X
@@ -106,7 +106,7 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
       verify row:   "---Ve--- only", "refine", X, checkmark, X
       condense row: "all + body", X, X, X, checkmark
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "scripts", "create jobs", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "scripts", "create job objects", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
   Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE has free hand across the brain."
 -->
 
@@ -117,34 +117,34 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
 
 Before opening each phase compartment, here is the operational map at a glance. Each line below names the phase, its essence, and what it is on the hook to produce.
 
-**IDLE** — the meta-state between cycles. Lifecycle management only.
+**IDLE** — the meta-state between cycles. Lifecycle management only. *[ref: idle-as-meta-state-between-cycles | .claude/plugins/phasic_system/hooks/phase-gate.sh:74-104 + .claude/plugins/job_core/hooks/prompt-handler.sh:47-65 | IDLE's guard blocks Edit/Write outside memory paths at line 74-80, blocks reads, narrows Bash to a five-script whitelist, and blocks WebSearch/WebFetch. Top-level jobs are auto-created by prompt-handler.sh — when the active-job count is zero, the user's prompt itself invokes job.sh --hook create-active and then phase.sh --hook init to lock the new job into IDLE. The agent never calls job.sh create directly.]*
 - Unlock the job-management CLI — the lifecycle surface (`show`, `focused`, `list`, `update`, `activate`, `focus`, `pause`, `complete`, `approve`). Creation and graph mutations live elsewhere.
 - Unlock the phase CLI (`advance`, `current`, `cycle`, `exit-gmode`) — agent-callable `advance` only goes idle → observe
 - Keep the always-on infrastructure running: memory-file edits, plus three named scripts on the IDLE Bash allowlist — `interaction_summary/scripts/summary.sh` for cross-conversation summaries, `brain_guard/scripts/self-compact.sh` for context-window compaction, and `plugin_integrity/scripts/lock-cmd.sh` for the universal active-lock close-out. Every other shell command exits blocked. *[ref: idle-bash-allowlist-named-scripts | .claude/plugins/phasic_system/hooks/phase-gate.sh:82-104 | IDLE's Bash whitelist is enumerated explicitly: summary.sh, self-compact.sh, lock-cmd.sh, phase.sh restricted to (advance|current|cycle|exit-gmode), job.sh restricted to (show|focused|list|update|activate|focus|pause|complete|approve). Default-block on everything else.]*
 - Block reads, project edits, CLAUDE.md edits, web access, general shell
 - *Job creation happens automatically: top-level via `prompt-handler.sh` (the user's prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming `[PENDING-JOB]` markers. The agent does not call `job.sh create` itself.*
 
-**OBSERVE** — gather context before any plan can form.
+**OBSERVE** — gather context before any plan can form. *[ref: observe-job-form-classification | CLAUDE.md "Job Forms" section + .claude/plugins/phase_observe/hooks/observe-guard.sh "Tool Enforcement" case-arm | Root CLAUDE.md's "Job Forms" section names the three forms (single-cycle deep / multi-cycle .md / multi-cycle .yaml) and says "Every new job is classified into one of three forms during OBSERVE of cycle 1." The observe-guard's Edit case-arm blocks non-CLAUDE.md writes via tool-restriction-non-claude, anchoring the read-only discipline; observe.sh has no classify subcommand — the classification lives in working-memory analysis the agent writes into CLAUDE.md, which PLAN then reads to decide whether to call set-plan-file.]*
 - On cycle 1, classify the job's form (single-cycle deep / multi-cycle with `.md` plan / multi-cycle with `.yaml` plan); the form decides whether PLAN will name a plan_file
 - Populate the working-memory CLAUDE.md files with relevant context
 - Dispatch parallel research subagents and synthesize their returns
 - Refuse code edits — the only allowed write target is CLAUDE.md
 - Cross the exit threshold only after enough investigation has happened
 
-**PLAN** — turn observations into a binding contract.
+**PLAN** — turn observations into a binding contract. *[ref: plan-names-file-claude-md-only | .claude/plugins/phase_plan/scripts/plan.sh:335-385 set-plan-file + .claude/plugins/phase_plan/hooks/plan-guard.sh "Edit|Write" case-arm | The public set-plan-file subcommand accepts false (single-cycle) or plan_<name>.md|.yaml (multi-cycle), records both plan_file and plan_state atomically into data.json, and rejects any second call ("Plan file already set"). The plan-guard's Edit|Write case-arm only allows CLAUDE.md writes (with section enforcement to ---Pl---) and blocks every other project path — PLAN cannot author the plan file it just named; EXECUTE creates the draft.]*
 - Name the `plan_file` in cycle 1 (multi-cycle jobs only); PLAN itself never writes the file — EXECUTE creates it
 - Declare the *altered list* — the set of dirs whose CLAUDE.md the agent edited during OBSERVE or PLAN; EXECUTE will be allowed to write project files inside each of those dirs exactly (no ancestor or nested dirs)
 - Write acceptance criteria VERIFY will check against
 - Refuse code edits — the contract is what gets written, not the work
 
-**EXECUTE** — build what the plan declared, in checkpoints.
+**EXECUTE** — build what the plan declared, in checkpoints. *[ref: execute-creates-plan-file-cycle-1 | .claude/plugins/phase_execute/hooks/execute-guard.sh:740-764 | EXECUTE's "Plan File: Create (Cycle 1 Only) — Then Blocked Forever" block enforces a triple-check before allowing the plan-file Write: scope (target path must equal the focused job's declared plan_file), cycle (current_cycle must equal 1), and existence (Write only, file must not yet exist). After cycle 1 EXECUTE cannot read or touch the file again — PLAN owns reading on cycle 2+; VERIFY owns editing.]*
 - Edit project files, but only inside the altered list — the merged set of CLAUDE.md files OBSERVE and PLAN together declared, frozen at execute entry
 - Materialize every artifact the seed agent produces — code, the `.md` plan in cycle 1, the `.yaml` plan in the post-approval cycle, anything else with a path; EXECUTE is the universal file-creator
 - Favor small, focused checkpoint commits over one long uncommitted run; the point schedule and intermediate-commit mode incentivize the checkpoint pattern
 - Capture *execution notes* in the working CLAUDE.md so the cycle stays narratable
 - Delegate file work to execute subagents (sequential by default, two-in-flight ceiling); keep the main session on the spine
 
-**VERIFY** — judge prior work with independent eyes.
+**VERIFY** — judge prior work with independent eyes. *[ref: verify-refines-plan-can-approve | .claude/plugins/phase_verify/hooks/verify-guard.sh:262-286 plan-edit + :360-374 job-graph allowlist | The verify-guard's Edit|Write case-arm allows /knowledge/plans/plan_*.md and plan_*.yaml writes scoped to the focused job's declared plan_file, gating .yaml edits on plan_state == yaml_drafting; everything else under /knowledge/ blocks with knowledge-edits-condense-only. The Bash case-arm whitelists job.sh remove-dependency (VERIFY's lifecycle-symmetry partner to CONDENSE's add-dependency) and explicitly blocks create/create-dependent/add-dependency, steering those to a [PENDING-JOB] marker for CONDENSE step 3.]*
 - Run scripts and validators; refuse all code edits in this phase
 - Dispatch auditor subagents to read the executed work without bias
 - Write pass/fail results into CLAUDE.md and the plan file
@@ -153,14 +153,14 @@ Before opening each phase compartment, here is the operational map at a glance. 
 - Remove a dependency from the focused job's `depends_on` (`job.sh remove-dependency`) when the audit reveals the dep is no longer needed — the lifecycle-symmetry partner of CONDENSE's `add-dependency`
 - Route the cycle forward to CONDENSE, or backward to whichever prior phase the failure points at
 
-**CONDENSE** — consolidate the cycle's learnings into the brain.
+**CONDENSE** — consolidate the cycle's learnings into the brain. *[ref: condense-7-step-waterfall-owns-job-creation | .claude/plugins/phase_condense/hooks/condense-guard.sh:311-320 + .claude/plugins/phase_condense/agents/condense-job-creator.md | The condense-guard's Bash case-arm whitelists job.sh add-dependency alongside show/focused/list/complete/update (the condense-specific lifecycle operations), and routes job.sh create / create-dependent through a dedicated approval gate gated on the condense-job-creator subagent consuming [PENDING-JOB] markers emitted by prior phases. CONDENSE is the only phase with cycle-wide context for graph mutations — VERIFY can remove dependencies, but additions belong here.]*
 - Walk a strict seven-step waterfall that routes content to its durable home
 - Consume marker types the prior phases dropped into footers
 - Compress the working CLAUDE.md back to a clean state
 - Own all job creation (`create`, `create-dependent`) and dependency additions (`add-dependency`) — the phase with the right cycle-wide context for graph mutations
 - Lock forward to idle; no escape hatch back to verify
 
-**GMODE** — the freestyle side-channel from any phase.
+**GMODE** — the freestyle side-channel from any phase. *[ref: gmode-as-off-cycle-lane | .claude/plugins/phasic_system/hooks/gmode-gate.sh:64-82 + .claude/plugins/phasic_system/hooks/gmode-hook.sh:49-62 + .claude/plugins/phasic_system/config.conf GMODE_WORD_MIN | The gmode-gate validates the [GMODE] question shape: prefix anchor at start of question, non-empty reason, and word count ≥ GMODE_WORD_MIN (default 100, range 50-200, set in config.conf). On the user's "Enter gmode" answer the gmode-hook calls phase.sh --hook enter-gmode, which stashes the prior phase as pre_gmode_phase. Every phase guard self-exits when current_phase != its own phase — in gmode the equality fails for all five, so none enforce.]*
 - Enter via a `[GMODE]` user question with a substantive reason (currently a roughly 100-word floor in the prototype)
 - Run unconstrained work — no OPEVC tool-restriction guards apply
 - Exit explicitly with a clean git tree; the home phase resumes atomically
