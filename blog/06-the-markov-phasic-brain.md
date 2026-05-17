@@ -397,7 +397,7 @@ The cycle then returns to idle. The cycle counter does not advance on this edge 
 
 ---
 
-## The Backward Multiplier
+## The Inverse Multiplier
 
 For the architects in the audience, this is where the phasic layer earns its keep. The mechanism is small. The discipline it produces is large.
 

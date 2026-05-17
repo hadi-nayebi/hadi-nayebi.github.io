@@ -773,7 +773,7 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 6.5 | `06_5-execute` | Pt 5: EXECUTE — Build, in Scope, in Steps | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.6 | `06_6-verify` | Pt 6: VERIFY — Independent Eyes | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.7 | `06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **drafting v0.1.0** — ~1,397w / 11 min · 17 refs · HTML built · transcript regen'd (final:false) · audio pending |
-| 6.8 | `06_8-backward-multiplier` | Pt 8: The Backward Multiplier | **drafting v0.1.0** — ~1,683w / 11 min · 8 refs · HTML built · transcript regen'd (final:false) · audio pending |
+| 6.8 | `06_8-backward-multiplier` | Pt 8: The Inverse Multiplier (slug preserved for URL) | **drafting v0.1.0** — ~1,683w / 11 min · 8 refs · HTML built · transcript regen'd (final:false) · audio pending |
 | 6.9 | `06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **drafting v0.1.0** — ~2,114w / 8 min · 5 refs · HTML built · transcript regen'd (final:false) · audio pending |
 | 6.10 | `06_10-plan-state-machine` | Pt 10: The Plan-State Machine — Long-Horizon Memory (Tier-3 closer) | **drafting v0.1.0** — ~2,688w / 8 min · 5 refs · HTML built · transcript regen'd (final:false) · audio pending |
 | 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.15.0** — 48 refs · HTML built 2026-05-13 via `tools/generate_blog_html.py` · transcript ready (final:false) · audio pending · og:image pending |

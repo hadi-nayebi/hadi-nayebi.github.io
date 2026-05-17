@@ -1,5 +1,5 @@
 ---
-title: "The Backward Multiplier"
+title: "The Inverse Multiplier"
 date: "May 2026"
 slug: "backward-multiplier"
 read_time: "11 min"
@@ -10,7 +10,7 @@ audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
 
-# The Backward Multiplier
+# The Inverse Multiplier
 
 *Essay 6.8 &mdash; The Markov Phasic Brain, Part 8 of 10.*
 
@@ -51,7 +51,7 @@ Every phase has a fixed point threshold the agent must cross before it is allowe
   Above the dial, draw a single curving chalk arrow that runs RIGHT to LEFT (from the "3" tick toward the "0.5" tick) with one short chalk caption riding along the arrow's curve: "smaller number, bigger phase".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "0.5", "1", "1.5", "2", "2.5", "3", "deep", "standard", "targeted", "surgical", "~67 actions", "~34 actions", "~22 actions", "~12 actions", "smaller number, bigger phase", plus the caption below. No other words, file names, tool names, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.8.1. The multiplier is backward. A smaller number declares a deeper phase."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.8.1. The multiplier is inverse. A smaller number declares a deeper phase."
 -->
 
 ## The point system underneath
@@ -120,7 +120,7 @@ The architect would tune the *per-phase point thresholds*. The prototype lands a
 
 The architect would adjust the *multiplier-rollback interaction*. The prototype preserves points across backward transitions &mdash; rollbacks do not destroy progress. A stricter seed might decide that re-entering a phase resets a fraction of the accumulated points to force a re-affirmation of the work. A more permissive seed might preserve points even across cross-cycle backward edges, treating phase identity as the only thing that matters for the counter. The rule lives in one branch of the sensor; the consequences ripple through every long-running job.
 
-The backward-multiplier pattern &mdash; an inverse-direction scalar set at entry, forecast before the work begins, scoring an invisible point system against a hidden threshold &mdash; lifts off the prototype into any work where a misforecast of scope is expensive. A consulting practice cultivating an engagement-delivery seed could install a per-engagement scope dial &mdash; *surgical*, *standard*, *deep* &mdash; that forces the partner to forecast scope before the billable work begins, with the agent's actions silently scored against a hidden threshold the partner never sees. A misforecast in either direction costs: too small and the engagement reopens to finish, fragmenting the client record; too large and the engagement pads, and the agent does more discovery than the brief merited. The honest design-limit is worth naming: the dial is friction, not mathematics &mdash; a voice injection at phase entry plus a counter checked at commit. A determined operator can enter [gmode](06_9-gmode.html), the named off-cycle lane, to step outside the phasic system entirely and pay the deliberate-bypass tax of composing the justification; the discipline lives in the architect's willingness to honor the dial rather than game it.
+The inverse-multiplier pattern &mdash; an inverse-direction scalar set at entry, forecast before the work begins, scoring an invisible point system against a hidden threshold &mdash; lifts off the prototype into any work where a misforecast of scope is expensive. A consulting practice cultivating an engagement-delivery seed could install a per-engagement scope dial &mdash; *surgical*, *standard*, *deep* &mdash; that forces the partner to forecast scope before the billable work begins, with the agent's actions silently scored against a hidden threshold the partner never sees. A misforecast in either direction costs: too small and the engagement reopens to finish, fragmenting the client record; too large and the engagement pads, and the agent does more discovery than the brief merited. The honest design-limit is worth naming: the dial is friction, not mathematics &mdash; a voice injection at phase entry plus a counter checked at commit. A determined operator can enter [gmode](06_9-gmode.html), the named off-cycle lane, to step outside the phasic system entirely and pay the deliberate-bypass tax of composing the justification; the discipline lives in the architect's willingness to honor the dial rather than game it.
 
 What the architect would **not** customize is the *invisibility of points*. The principle is the floor: an agent that can see its score will optimize for the score. The whole point of the dial is to surface the only number the agent needs &mdash; the multiplier &mdash; and force the meta-cognition that produces it. Showing the score would short-circuit the very discipline the architecture exists to create.
 

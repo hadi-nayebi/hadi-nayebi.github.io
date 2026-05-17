@@ -51,7 +51,7 @@ SIDEBAR_POSTS = [
     ("06_5-execute",                     "Essay 6.5 — EXECUTE: Build, in Scope, in Steps",  "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_6-verify",                      "Essay 6.6 — VERIFY: Independent Eyes",            "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_7-condense",                    "Essay 6.7 — CONDENSE — The Cognitive Organ",      "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "CONDENSE"]),
-    ("06_8-backward-multiplier",         "Essay 6.8 — The Backward Multiplier",             "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),
+    ("06_8-backward-multiplier",         "Essay 6.8 — The Inverse Multiplier",              "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),
     ("06_9-gmode",                       "Essay 6.9 — GMODE: The Off-Cycle Lane",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "GMODE"]),
     ("06_10-plan-state-machine",         "Essay 6.10 — The Plan-State Machine",             "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Plan File", "Long-Horizon"]),
     ("05_1-the-two-layer-foundation",    "Essay 5.1 — The Two-Layer Foundation",            "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
