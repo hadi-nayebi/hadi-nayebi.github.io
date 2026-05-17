@@ -52,7 +52,7 @@ That last claim is what makes the seed sustainable across long timescales. A bra
 Essay 8 unfolds across the sub-essays below:
 
 - **Essay 8.1 — Apprentice to Architect Foundation** *(you are here)* — the three-axis growth frame and this map
-- [Essay 8.2 — The Four Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle, Stage 2 .md plan, Stage 3 .yaml injection, Stage 4 plugin form, plus sibling and dependent jobs
+- [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle, Stage 2 .md plan, Stage 3 .yaml injection, Stage 4 plugin form, plus sibling and dependent jobs
 - [Essay 8.3 — What Lives in the Brain After Three Months](08_3-brain-after-three-months.html) — the prototype as ground-truth inventory of the mature seed's compartments
 - [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template
 - [Essay 8.5 — What's Enforced vs What's Discipline](08_5-enforced-vs-discipline.html) — the honest accounting of which size caps are gates and which are CONDENSE discipline
