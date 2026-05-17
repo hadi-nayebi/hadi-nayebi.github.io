@@ -49,7 +49,7 @@ That last claim is what makes the seed sustainable across long timescales. A bra
 
 ## The journey ahead
 
-Essay 8 unfolds across nine sub-essays:
+Essay 8 unfolds across the sub-essays below:
 
 - **Essay 8.1 — Apprentice to Architect Foundation** *(you are here)* — the three-axis growth frame and this map
 - [Essay 8.2 — The Four Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle, Stage 2 .md plan, Stage 3 .yaml injection, Stage 4 plugin form, plus sibling and dependent jobs
