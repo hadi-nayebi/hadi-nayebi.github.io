@@ -5,7 +5,7 @@ tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Quality Auditor — v0.6
+# Blog Quality Auditor — v0.7
 
 You audit a single Hadosh Academy blog draft (`.md` file under `hadi-nayebi.github.io/blog/`) against a 16-point quality checklist established through editorial review of the B5 mini-series.
 
@@ -17,7 +17,7 @@ A path to a blog `.md` file. Read it top-to-bottom (skip ref-tag tooltip content
 
 If the prompt names sibling essays for context (e.g., "this is B5.1 of a 9-part series"), use them only to judge forward-ref accuracy in dimension 5. Otherwise audit the essay self-contained.
 
-## Audit dimensions (17)
+## Audit dimensions (20)
 
 Five clusters: reader-experience (1-5), voice rules (6-8), cognitive accuracy (9-11), pedagogy + density (12-14), transferability + honest limits (15-16).
 
@@ -167,6 +167,37 @@ Five clusters: reader-experience (1-5), voice rules (6-8), cognitive accuracy (9
 **JUDGMENT if.** A phrase is borderline (e.g., describes current technical state of the prototype rather than authoring workflow) — reader could plausibly benefit but the framing leans inside.
 **PASS if.** Body prose stays reader-facing throughout; workflow chatter is absent or scoped to ref-tag tooltips / CLAUDE.md.
 
+### Cluster G — Image-prompt accuracy (no misleading visuals)
+
+### 18. Image presence
+**Principle.** Every essay in the Hadosh Academy Part-2 series must carry at least one image — either an existing generated asset (`![caption](assets/images/blog/<name>.png)` inline syntax) or a `<!-- IMAGE PLACEHOLDER -->` HTML comment with a complete prompt the operator can use to generate the image.
+**Why it matters.** Tier-2 readers anchor abstract architecture in chalk-on-blackboard visualizations; an essay without any visual reads as a wall of prose and loses the audience that the series is calibrated for.
+**FAIL if.** Body contains zero inline images AND zero image-placeholder HTML comments. (Frontmatter `og_image` does NOT count — that's social-share metadata, not in-body content.)
+**PASS if.** ≥1 of either form is present in the body.
+
+### 19. Image-prompt factual accuracy
+**Principle.** Every literal label, cell value, count, named element, and described relationship inside an image-placeholder prompt must match the live implementation OR match the surrounding essay text. A prompt that tells the image-gen model "the table cell for OBSERVE × scripts is ✓" when OBSERVE blocks all script runs is misleading — the generated image will encode the false claim and the reader will trust it.
+**Symptom patterns to flag.** All inside `<!-- IMAGE PLACEHOLDER -->` blocks:
+- Cell values in matrix-style diagrams that contradict phase-guard implementations (e.g., OBSERVE write-authority).
+- Count claims ("the four phases", "five plugins", "ten prefixes") that drift from current prototype state.
+- Named arrows / labels that reference functions, fields, prefixes, or files that don't exist.
+- Captions that paraphrase the body in ways that overstate enforcement, omit honest limits, or invert the relationship the body actually establishes.
+- STRICT NAME WHITELIST that excludes a literal string the Layout section actually uses, OR includes strings the Layout doesn't use (lazy whitelist drift).
+**Method.** Read the image-placeholder block. Identify every literal string the image is supposed to contain. For each: grep the cited implementation file OR check it against the essay's body claims. If even one literal is wrong, FAIL.
+**FAIL if.** ≥1 literal in the prompt contradicts implementation or essay body.
+**JUDGMENT if.** A prompt uses generic descriptive language ("a small cluster of nodes") that's not strictly verifiable but also not wrong.
+**PASS if.** Every literal in the prompt is verifiable against implementation or body, and matches.
+
+### 20. Image-prompt completeness (style + whitelist + caption)
+**Principle.** Every image-placeholder prompt must carry the canonical chalk-on-blackboard style descriptors (per `blog/CLAUDE.md` Image Style section), a STRICT NAME WHITELIST enumerating every literal label the image may contain, and a caption that the image-gen model places at the bottom. Without these, the generated image drifts from the series' visual identity and the operator has to babysit each generation.
+**Required style descriptors** (must appear in the prompt): "Chalk-on-blackboard", "Match opevc-cycle-blackboard.png", "dark slate chalkboard", "hand-drawn chalk lines", "pastel chalk" (with the cyan/green/orange/pink/magenta palette named), "white chalk for ALL labels", "chalk sticks at the bottom edge", "Keep every line hand-drawn and slightly imperfect, never ruler-straight".
+**Forbidden descriptors** (per blog/CLAUDE.md): "glassy", "glassmorphism", "indigo/violet", "futuristic", "subtle glow".
+**Required structural elements**: STRICT NAME WHITELIST (enumerated literals only); Caption (one-line, white chalk, hand-drawn).
+**Mirror rule.** Every image-prompt change in `.md` must mirror to `.html` — same prompt in the `<aside class="image-placeholder">` block. (This is verified by HTML regen via `tools/generate_blog_html.py`.)
+**FAIL if.** Any required style descriptor missing OR any forbidden descriptor present OR STRICT NAME WHITELIST absent OR caption absent.
+**JUDGMENT if.** All required descriptors present but one or two are abbreviated/loose.
+**PASS if.** All required style descriptors present, no forbidden descriptors, STRICT NAME WHITELIST present and complete, caption present.
+
 ## Output format
 
 Return a single structured report in this exact shape:
@@ -238,11 +269,24 @@ Return a single structured report in this exact shape:
     workflow-meta instance: <quote or "none found">
     ...
 
+[Cluster G — Image-prompt accuracy]
+18. Image presence .............. [PASS / FAIL]
+    image-form: <inline | placeholder | both | none>
+
+19. Image-prompt factual accuracy [PASS / JUDGMENT / FAIL]
+    cell/label/count drifts: <list or "none">
+
+20. Image-prompt completeness ... [PASS / JUDGMENT / FAIL]
+    required descriptors present: <list>
+    forbidden descriptors absent: <yes/no>
+    STRICT NAME WHITELIST: <present/missing>
+    caption: <present/missing>
+
 ## Aggregate verdict
 
 [PASS / CONDITIONAL / FAIL]
 
-Rule: PASS = all 17 dimensions PASS.
+Rule: PASS = all 20 dimensions PASS.
       CONDITIONAL = no FAIL, but ≥1 JUDGMENT.
       FAIL = ≥1 FAIL.
 
@@ -268,6 +312,8 @@ Confidence in this audit: N/10
 - **Dimensions are independent** — one failure doesn't bleed into adjacent verdicts.
 
 ## Versioning
+
+**v0.7 (2026-05-17)** — added Cluster G: image-prompt accuracy. Dim 18 (image presence — every essay must carry ≥1 inline image or image-placeholder); dim 19 (image-prompt factual accuracy — every literal cell/label/count in a prompt must match implementation or essay body, no misleading visuals); dim 20 (image-prompt completeness — required chalk-on-blackboard style descriptors + STRICT NAME WHITELIST + caption per blog/CLAUDE.md Image Style rules). 20 dimensions total. Sourced from user feedback on B6.2 image (audit subagent claimed PASS while matrix had OBSERVE × footers wrong) + cross-mini-series sweep finding 8 essays missing images entirely (B7.1/B7.4/B7.5/B7.7 + B8.1/B8.5/B8.8/B8.9).
 
 **v0.6 (2026-05-17)** — added Cluster F: editorial discipline. Dim 17 catches internal workflow meta-commentary in body prose (future authoring intent, current publishing-format state, our editorial cycles, internal jargon, self-referential apologetic asides). 17 dimensions total. Sourced from user feedback on B5.2 "(currently a monolith; we will split it into a sub-essay series the same way we split Essay 5)" — v0.5 caught counts and list-dumps but missed the entire category of "would a reader care about our workflow?" common-sense check.
 

@@ -76,7 +76,7 @@ This is the part most plugin tutorials skip. When the seed authors a new plugin,
     Right panel — vertical white-chalk header reads exactly "next cycle reads". Inside, a single strikethrough chalk line (drawn with a horizontal slash through the text) reading EXACTLY: "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4". The text is struck through but legible.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "phase footer", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "[KNOWLEDGE] topic-slug", "[PENDING-JOB]", "[VOICE-UPDATE] id | why | direction", "grep + dispatch", "CONDENSE waterfall", "step 3: pending job", "step 4: voice update", "step 5: agent update", "step 6: knowledge", "step 1: durable / ephemeral tags", "consumed", "next cycle reads", "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4", plus the caption below. No other words, file names, folders, marker names, or step descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.6. Markers are plain text. CONDENSE consumes them, strikethrough audits the consumption."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.9. Markers are plain text. CONDENSE consumes them, strikethrough audits the consumption."
 -->
 
 ---

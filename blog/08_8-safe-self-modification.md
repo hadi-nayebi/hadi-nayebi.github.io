@@ -38,6 +38,27 @@ Every part of the loop has a guard. Every part has a self-test. Every part has a
 
 The reason this matters is the reason agent reliability has been hard. A reliable agent is one whose behavior you can predict from cycle to cycle, not a clever one whose tricks impress in a single session. Predictability across time requires that the agent's *substrate* — its rules, its hooks, its phase boundaries — outlive any single session and any single LLM context. The seed agent is built so that the substrate does outlive those things. The chat dies. The model rolls forward. The operator forgets. The brain remembers, because the brain is on the filesystem, protected by guards that the filesystem itself enforces.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard recursive lock diagram — a large chalk box labeled "plugin_integrity" containing a smaller replica of itself under a chalk padlock, with the safe-lock cycle drawn as two branching arrows below (pass → commit, fail → revert).
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk
+  nested boxes and arrows; pastel chalk fills for the boxes and the two branch arrows (magenta = outer plugin_integrity box, pink = inner self-replica under edit, green = pass-branch arrow, orange = fail-branch arrow — drawn from the cycle image palette);
+  white chalk for ALL labels, padlock, arrows, and branch text; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other plugin names, script names, or descriptors.
+  Layout: A large hand-drawn rectangular chalk box fills the upper two-thirds of the board (magenta fill). The box's header label IN WHITE CHALK at the top reads exactly: "plugin_integrity". Inside this outer box, a smaller rectangular chalk box (pink fill) is drawn centered, with a small white-chalk padlock icon resting on its top edge. The inner box's header label IN WHITE CHALK reads exactly: "plugin_integrity (under edit)". Above the padlock, a short white-chalk caption reads exactly: "[PLUGIN-LOCK]".
+  From the bottom edge of the outer box, a single white-chalk arrow drops down into the lower third of the board and meets a small white-chalk diamond labeled IN WHITE CHALK exactly: "tests". From the diamond, two arrows branch outward:
+    Left branch (green arrow, pointing down-left). Two-line label IN WHITE CHALK along the arrow:
+      Top line:    "pass"
+      Bottom line: "commit, lock closes"
+    Right branch (orange arrow, pointing down-right). Two-line label IN WHITE CHALK along the arrow:
+      Top line:    "fail"
+      Bottom line: "revert to checkpoint_ref"
+  Below the two branches, a single horizontal white-chalk note runs across the bottom of the board reading exactly: "the guard does not exempt itself"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin_integrity", "plugin_integrity (under edit)", "[PLUGIN-LOCK]", "tests", "pass", "commit, lock closes", "fail", "revert to checkpoint_ref", "the guard does not exempt itself", plus the caption below. No other words, file names, folders, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.3. The lock that closes one cycle opens the next. Recursion all the way down."
+  ASSET: assets/images/blog/recursive-lock-ceremony-b8-8.png
+-->
+
 ## The Rollback Substrate
 
 The deepest of those guards is the test-pass-or-revert cycle. Every plugin edit in the prototype passes through `safe-lock.sh`. If every test passes, the change commits and the lock closes. If any test fails, the working tree is rolled back to a captured `checkpoint_ref` and a structured entry lands in `plugin_integrity`'s revert log — timestamp, list of failed tests, list of files restored, the SHA before the revert. The log is not aspirational; it is forensic. One real entry from May 2026 shows a multi-file edit during tmux-dispatch + window-pin work that failed the brain_guard test suite; the safe-lock cycle reverted all seventeen touched files in one atomic operation, and the operator went looking for the actual bug. The brain did not absorb a broken state. The test suite said no, and the substrate stayed coherent. *[ref: safe-lock-revert-log-forensic | .claude/plugins/plugin_integrity/scripts/safe-lock.sh revert-log block + .claude/plugins/plugin_integrity/scripts/voice.xml auto-revert-fired voice + plugin_integrity/data.json revert_log (local, gitignored) | safe-lock.sh validates the revert_log shape (array-or-null) and initializes the schema with empty arrays. On revert, the log appends an entry naming pre-revert SHA, reverted files, trigger reason. The `auto-revert-fired` voice in scripts/voice.xml instructs the operator: "Recover uncommitted work via: git checkout {{pre_sha}} -- .claude/plugins/{{plugin}}/ ... Check .claude/plugins/plugin_integrity/data.json .revert_log[-1] for reverted_files + pre_revert_sha + trigger_reason." A live revert_log entry on 2026-05-03 09:21 captures 17 files reverted + many failed tests + the pre-revert SHA — the exact incident shape the blog describes.]*

@@ -44,6 +44,32 @@ Essay 7 splits into a short sub-essay series (currently nine parts):
 
 Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay — the parts every plugin carries. Essay 7.8 opens the ceremony that protects edits to those organs once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard cross-section — a single plugin "cell" with its internal cognitive organs visible inside the cell wall, the PLUGIN-LOCK ceremony drawn as a membrane gate on the wall, and the three property labels (reads / writes / depends on) listed beside the cell as the universal anatomy frame.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for the organ shapes (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, the cell-wall outline, and the membrane-gate icon; faint chalk dust at the edges; chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other file names, organ names, or property descriptors. Treat the angle-bracket placeholder as literal text.
+  Layout: One large hand-drawn chalk oval takes up the center-left of the board — the "cell wall". Above the oval, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/". Inside the oval, seven small chalk shapes arranged loosely (no grid), each labeled IN WHITE CHALK with its exact name:
+    Shape 1 (cyan fill): "CLAUDE.md"
+    Shape 2 (green fill): "hooks/"
+    Shape 3 (orange fill): "scripts/"
+    Shape 4 (pink fill): "data.json"
+    Shape 5 (magenta fill): "docs/"
+    Shape 6 (cyan fill darker): "agents/"
+    Shape 7 (green fill darker): "tests/"
+  On the cell wall itself (drawn as part of the oval outline at the top), draw a small white-chalk gate icon labeled IN WHITE CHALK exactly "[PLUGIN-LOCK]".
+  To the right of the cell, draw a vertical white-chalk list with header "every organ has:" and three lines IN WHITE CHALK stacked below it:
+    Line 1: "who reads it"
+    Line 2: "who writes it"
+    Line 3: "what it depends on"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "scripts/", "data.json", "docs/", "agents/", "tests/", "[PLUGIN-LOCK]", "every organ has:", "who reads it", "who writes it", "what it depends on", plus the caption below. No other words, file names, folders, or property descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ."
+-->
+
+Target asset: assets/images/blog/plugin-cell-anatomy-b7-1.png
+
 ---
 
 We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the three organs every plugin must have.

@@ -34,6 +34,32 @@ A few smaller organs round out the kit. They carry less load but are still load-
 
 **`LICENSE` + `README.md`** — open-source migration-readiness signals. Plugins carrying both are ready for the public seed agent; plugins not yet carrying them are still maturing in the prototype. *[ref: license-readme-migration-ready-subset | .claude/plugins/*/LICENSE + .claude/plugins/*/README.md | `find .claude/plugins -maxdepth 2 -name LICENSE` returns 4 hits (brain_guard, interaction_summary, plugin_integrity, question_discipline) — and the corresponding README.md find returns the SAME 4 plugins. The phase plugins + phasic_system + job_core do NOT yet carry LICENSE or README.md because they are still maturing in the prototype; the 4 that do are migration-ready candidates for the public seed agent.]*
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard sketch — a single plugin "cell" at the center with the smaller cognitive organs (config, tests, template, e2e, LICENSE, README) drawn as small tiles around the cell wall; the brain-root wiring file labeled OUTSIDE the cell entirely, with hook-event arrows pointing into the cell wall from outside.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for the organ tiles and the brain-root wiring box (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, the cell-wall outline, and the event names; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other file names, event names, or descriptors.
+  Layout: Center of the board — one large hand-drawn chalk oval (the cell wall). Inside the oval, a single small white-chalk label reads exactly "plugin" (the cell's contents are not detailed in this image — covered in earlier images).
+  Around the cell wall, five small pastel chalk tiles arranged loosely outside the oval but close to it, each labeled IN WHITE CHALK with its exact text:
+    Tile 1 (cyan fill, top-left): "config.conf"
+    Tile 2 (green fill, top-right): "tests/"
+    Tile 3 (orange fill, bottom-left): "template/"
+    Tile 4 (pink fill, bottom): "e2e/"
+    Tile 5 (magenta fill, bottom-right): "LICENSE + README.md"
+  Each tile has a short white-chalk arrow pointing INTO the cell wall, indicating the tile belongs to the cell.
+  In the upper-left corner of the board, OUTSIDE the cell-and-tile region entirely, draw a single larger chalk box (cyan fill darker) labeled IN WHITE CHALK exactly ".claude/settings.local.json". From this box, three white-chalk arrows fan out DOWN toward the cell wall, each labeled IN WHITE CHALK with one event name:
+    Arrow 1: "UserPromptSubmit"
+    Arrow 2: "PreToolUse"
+    Arrow 3: "Stop"
+  Above the brain-root box, a small white-chalk note reads exactly "registers".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin", "config.conf", "tests/", "template/", "e2e/", "LICENSE + README.md", ".claude/settings.local.json", "UserPromptSubmit", "PreToolUse", "Stop", "registers", plus the caption below. No other words, file names, folders, or event names may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.7. Smaller organs surround the cell. The wiring file lives at brain root and registers the plugin's reflexes."
+-->
+
+Target asset: assets/images/blog/smaller-organs-and-wiring-b7-7.png
+
 ---
 
 ## `.claude/settings.local.json` — The Brain-Root Wiring

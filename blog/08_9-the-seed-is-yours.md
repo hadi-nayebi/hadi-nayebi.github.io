@@ -32,6 +32,33 @@ Two operators with two seeds, six months in, will have brains that are visibly d
 
 This is what changes when the architecture itself is teachable. The agent-developer-user triangle most software defaults to — where one role builds, another configures, a third uses — collapses to two: the agent and you. The substrate is portable enough that the user can be the architect. Call it the **PowerPoint of seed agents**: a complex artifact made authorable by enough high-level structural understanding, without anyone having to write the underlying machinery. [Essay 5.1](05_1-the-two-layer-foundation.html) gave you the substrate. [Essay 6.1](06_1-phasic-foundation.html) gave you the cognitive cycle that uses it. [Essay 7.1](07_1-plugin-kit-foundation.html) gave you the template for growing it. This essay closes the loop: the maturation arc that takes a stage-1 conversation into a stage-4 plugin is what makes your seed *yours*. The seed is the architecture; you are the architect.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard side-by-side comparison — left half shows the traditional three-role triangle (agent, developer, user); right half shows the collapsed two-role line (agent, you) with the shared .claude/ substrate sitting between them.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk
+  triangle and line; pastel chalk fills for the three triangle nodes and the two collapsed nodes (cyan = agent node on both sides, green = developer node on left, orange = user node on left, magenta = you node on right, pink = .claude/ substrate box in the middle of the right half — drawn from the cycle image palette);
+  white chalk for ALL node labels, arrows, and headers; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other role names, file names, or descriptors.
+  Layout: A vertical white-chalk divider line down the middle of the board splits it into two halves. Above each half, a one-line header IN WHITE CHALK:
+    Left header:  "default triangle"
+    Right header: "collapsed line"
+  LEFT HALF: A hand-drawn triangle with three nodes (small chalk circles), each labeled inside IN WHITE CHALK. Hand-drawn double-headed chalk arrows connect all three pairs:
+    Top node (cyan fill):    "agent"
+    Lower-left (green fill): "developer"
+    Lower-right (orange fill): "user"
+  RIGHT HALF: Two nodes arranged horizontally, connected by a single hand-drawn double-headed chalk arrow that passes through a pink rectangular box centered between them:
+    Left node (cyan fill, large circle): "agent"
+    Pink center box (the substrate, in the middle of the arrow):
+      Two lines of label IN WHITE CHALK inside the box:
+        Top line:    ".claude/"
+        Bottom line: "shared substrate"
+    Right node (magenta fill, large circle): "you"
+  Below both halves, a single horizontal white-chalk note runs across the bottom of the board reading exactly: "the substrate is teachable; the third role dissolves"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "default triangle", "collapsed line", "agent", "developer", "user", ".claude/", "shared substrate", "you", "the substrate is teachable; the third role dissolves", plus the caption below. No other words, file names, folders, or role descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.4. Three roles collapse to two. The substrate carries what the developer used to."
+  ASSET: assets/images/blog/triangle-to-two-b8-9.png
+-->
+
 ## The Academy Exists Because Craft Benefits From Community
 
 The Academy exists because growing a seed well is a craft, and craft benefits from community. Other operators are growing their own seeds. They are running into patterns you will recognize and patterns you have not seen yet. The knowledge they are accumulating is not interchangeable with yours — but the *recipes* for accumulating it well are shareable, and that is what we are gathered to share. When your seed fixes a bug in one of the shipped plugins, the seed asks you via a structured upstream-reporting prompt and prepares a report for you to push back to the public repo. The shared substrate stays alive because every operator's seed contributes back through that same channel. *[ref: report-to-upstream-handler | .claude/plugins/plugin_integrity/hooks/upstream-reporter-hook.sh | Hook docstring: "Captures the user's answer to a report-to-upstream question and, on [yes], builds a structured report." Documented question shape: report-to-upstream prefix followed by `<plugin_name> <one-line-description>`. The prefix gate filters non-matching questions out early; on a yes answer, the hook builds a structured report for the operator to push back. Built 2026-05-13 in A11.6 as part of the alpha-release migration prep.]*

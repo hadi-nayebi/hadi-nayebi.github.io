@@ -40,6 +40,36 @@ One hard limit out of several. The pattern is consistent with the cost ladder. `
 
 The other size limits are soft because the *measurement* has not yet shown the soft control failing. Root brain stays at its cap because CONDENSE compresses it. Subdirectory CLAUDE.md stays at its cap because CONDENSE migrates content out to knowledge files. Memory entries stay short because operators write feedback rules tersely. Skills stay small because operations exceeding a small word count get extracted to their own skill file. None of this needs a hook today. The honest claim: it might tomorrow. The cost ladder will decide.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard two-column gate diagram — left column "hard cap" with a single chalk padlock; right column "soft caps" with multiple wavy-line caps. A short note beneath each column names what holds each line.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk
+  padlock and wavy caps; pastel chalk fills for the two columns (magenta = hard cap column, cyan = soft caps column — drawn from the cycle image palette);
+  white chalk for ALL labels, file names, and the note text; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other file names, threshold values, or descriptors.
+  Layout: A vertical white-chalk divider line down the middle of the board splits it into two columns. Above each column, a one-line column header IN WHITE CHALK:
+    Left column header: "hard cap"
+    Right column header: "soft caps"
+  In the LEFT column (magenta fill):
+    A single hand-drawn chalk padlock icon, large, centered. Below the padlock, three lines of label IN WHITE CHALK stacked:
+      Top line:    "docs/evolution.md"
+      Middle line: "2,000 words"
+      Bottom line: "evolution-cap.sh PreToolUse"
+    Below those, a short white-chalk note reads exactly: "code refuses the edit"
+  In the RIGHT column (cyan fill):
+    Five small hand-drawn chalk caps stacked vertically (like rough hat shapes with wavy brims), each labeled to its right IN WHITE CHALK:
+      Cap 1: "root brain — 3,500 words"
+      Cap 2: "subdir CLAUDE.md — 800 words"
+      Cap 3: "plan files — 2,000 words"
+      Cap 4: "memory entries — 400 words"
+      Cap 5: "skill files — 500 words"
+    Below the stack, a short white-chalk note reads exactly: "CONDENSE discipline holds the line"
+  Across the bottom of the board, beneath both columns, a single horizontal white-chalk note reads exactly: "Lock 13: hard gates earn their cost; soft caps wait for evidence"
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hard cap", "soft caps", "docs/evolution.md", "2,000 words", "evolution-cap.sh PreToolUse", "code refuses the edit", "root brain — 3,500 words", "subdir CLAUDE.md — 800 words", "plan files — 2,000 words", "memory entries — 400 words", "skill files — 500 words", "CONDENSE discipline holds the line", "Lock 13: hard gates earn their cost; soft caps wait for evidence", plus the caption below. No other words, file names, folders, or threshold descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.2. One hard cap. Several soft. The asymmetry is honest."
+  ASSET: assets/images/blog/enforced-vs-discipline-b8-5.png
+-->
+
 ## The Deflation Gate — A Different Boundary
 
 A second enforcement runs at a different boundary — the *deflation gate* inside `phase_condense`. At condense entry, a sensor snapshots the total bottom-section word count across every CLAUDE.md the cycle touched. At commit time, the script re-measures and refuses to advance unless the absorbed-words ratio crosses a stage-aware threshold (single-cycle jobs default near four-fifths absorption, multi-cycle jobs near half). The gate fires at commit, not at edit — which is the right boundary, because the question isn't *did this individual edit fit* but *did the cycle, taken as a whole, compress enough to graduate*.

@@ -69,7 +69,7 @@ The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by the same
   Below the two terminal boxes, draw a small chalk note IN WHITE CHALK reading exactly: "no override".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "lock-cmd.sh OR safe-lock.sh fires", "run plugin test suite", "all tests pass?", "yes", "no", "commit + clear unlocked_plugin", "revert to checkpoint_ref + log revert", "no override", plus the caption below. No other words, file names, folders, or state descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.5. Test pass-or-revert. Every plugin edit passes through the same gate."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.8. Test pass-or-revert. Every plugin edit passes through the same gate."
 -->
 
 ---

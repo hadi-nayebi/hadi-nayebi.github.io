@@ -86,9 +86,9 @@ Any phase can be re-entered, but only by rolling back along defined edges. This 
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard sketch — VERIFY's three backward edges and one forward edge.
-  Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn pastel chalk circles
-  for each node (cyan, green, orange, pink, magenta — same palette as the cycle image); white chalk
-  arrows; lowercase phase names inside the circles; chalk sticks along the bottom edge; faint chalk dust at the edges.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines;
+  pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the phase-node circles;
+  white chalk for ALL labels and arrows; chalk sticks at the bottom edge; faint chalk dust at the edges.
   IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, edge descriptors, or phase descriptors.
   Layout: One central pink chalk circle in the middle of the board labeled "verify". To the left of verify,
   three chalk arrows fan outward and land on three target circles:
@@ -96,10 +96,10 @@ Any phase can be re-entered, but only by rolling back along defined edges. This 
     - mid-length backward arrow → green circle labeled "plan", chalk note above the arrow: "design flaw"
     - long backward arrow → cyan circle labeled "observe", chalk note above the arrow: "context gap"
   To the right of verify, one forward arrow → magenta circle labeled "condense", chalk note above the arrow: "pass".
-  The three backward arrows are drawn in warmer pastel chalk (orange / pink / magenta); the forward
-  arrow is white chalk. Keep all arrows slightly curved and hand-drawn, never ruler-straight.
+  All four arrows are white chalk, slightly curved.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "verify", "execute", "plan", "observe", "condense", "minor fix", "design flaw", "context gap", "pass", plus the caption below. No other words, file names, folders, or phase descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.2. Backward transitions are explicit choices, not automatic fallbacks."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.6. Backward transitions are explicit choices, not automatic fallbacks."
 -->
 
 When VERIFY passes, the orchestrator advances the job to CONDENSE.

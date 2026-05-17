@@ -50,7 +50,7 @@ That routing is structured as a **strict ordered waterfall** (currently seven st
   Below all seven tiles, a horizontal chalk bar drawn across the board's width, labeled IN WHITE CHALK exactly "deflation gate", with one chalk exit arrow attempting to pass through it.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "1. footer to body", "2. cross-file move", "3. pending job", "4. voice update", "5. agent update", "6. knowledge", "7. session archive", "deflation gate", plus the caption below. No other words, file names, folders, or step descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.7.1. Each step's output feeds the next. Step 7 is the fallback, not a peer."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.7. Each step's output feeds the next. Step 7 is the fallback, not a peer."
 -->
 
 ## The waterfall, step by step

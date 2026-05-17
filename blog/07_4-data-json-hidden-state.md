@@ -32,6 +32,28 @@ og_image: "assets/images/blog/agent-anatomy.png"
 
 **Why the mandatory script-mediation.** Multiple subsystems may fire hooks against the same `data.json` within milliseconds of each other (e.g., two PreToolUse hooks from the same plugin both reading state). If both write directly to the file, one overwrites the other's update. The `flock` discipline serializes all mutations through the script gateway. Reads also go through scripts so corruption is handled fail-safe: when `data.json` is malformed, the script rebuilds rather than crashing the agent. The boundary is structural discipline, not a kernel enforcement; an operator who edits `data.json` directly bypasses the protocol entirely. The discipline holds because the seed agent and historian both refuse to write outside their scripts. *[ref: data-json-fail-safe-rebuild-on-malformed | .claude/plugins/phasic_system/scripts/phase.sh:85,92-94 | L85: `printf '%s\n' '{"jobs":[]}' > "$DATA_TMP_FILE"` — the default state. L92 emits the warning voice: "[phasic_system] WARNING: data.json was missing or corrupt — rebuilding state." L94 escalates to ERROR only if the rebuild itself fails: "[phasic_system] ERROR: failed to rebuild $DATA_FILE." The script chooses fail-safe-rebuild over fail-crash; the agent never gets blocked by a corrupt JSON state.]*
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard flow diagram — concurrent hook fires queue at the lockfile, the script gateway serializes a single mutation through a jq transform into a temp file, validates, then atomically replaces the live data.json. The reader never sees a partial state.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for the step badges (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, file boxes, and the lockfile icon; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other file names, command names, or protocol descriptors.
+  Layout: Left column — three small white-chalk arrows entering from the left edge, each labeled IN WHITE CHALK exactly "hook fire" (three identical labels, one per arrow), all three pointing at a single pastel chalk lock-icon (cyan fill) labeled IN WHITE CHALK exactly "flock /tmp/...lock".
+  From the lockfile, a single white-chalk arrow points right into a horizontal flow of four pastel chalk step-badges arranged left-to-right, each labeled IN WHITE CHALK with its exact text:
+    Badge 1 (green fill): "read data.json"
+    Badge 2 (orange fill): "jq transform → data.json.tmp"
+    Badge 3 (pink fill): "jq empty (validate)"
+    Badge 4 (magenta fill): "atomic mv → data.json"
+  Single white-chalk arrows connect Badge 1 → Badge 2 → Badge 3 → Badge 4.
+  Below Badge 3, a small white-chalk side-arrow points DOWN to a small chalk box labeled IN WHITE CHALK exactly "validation fail → rm tmp + rebuild from default".
+  To the far right, after Badge 4, draw a small chalk file-icon (cyan fill) labeled IN WHITE CHALK exactly "data.json" with a short white-chalk arrow above it labeled IN WHITE CHALK exactly "reader sees whole state".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hook fire", "flock /tmp/...lock", "read data.json", "jq transform → data.json.tmp", "jq empty (validate)", "atomic mv → data.json", "validation fail → rm tmp + rebuild from default", "data.json", "reader sees whole state", plus the caption below. No other words, file names, folders, or step descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.4. Concurrent fires queue at the lockfile. One mutation at a time. Atomic mv flips the file; readers never catch a partial state."
+-->
+
+Target asset: assets/images/blog/data-json-atomic-protocol-b7-4.png
+
 **The new-plugin lens.** When you guide your seed to add a plugin that needs state, the seed designs the state's *interface* first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use? Then `data.json` becomes the cache the scripts operate on. Tell your seed: *if you cannot enumerate what reads each field and what writes each field, the design is not done yet.* A real-estate broker's seed could carry an open-listings manifest the same way; only the listings plugin's scripts mutate it, and concurrent showings-update hooks serialize through the same `flock` protocol.
 
 **The minimum-viable plugin shape.** A plugin without `data.json` is stateless — it carries no runtime bookkeeping. `question_discipline` is again the example: pure gate, no state, no `data.json`. The absence signals stateless enforcement.

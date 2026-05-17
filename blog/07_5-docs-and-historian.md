@@ -36,6 +36,27 @@ og_image: "assets/images/blog/agent-anatomy.png"
 
 **The relationship between evolution.md and its siblings is the architectural heart of the documentation layer.** Evolution.md is the 2000-word summary; when the historian's narrative needs more depth, the cap forces overflow into a sibling file — `docs/principles.md` for architectural rationale, `docs/decisions.md` for specific design choices, `docs/lessons.md` for hard-won cycle lessons. The historian decides at narration time which sibling file each overflow chunk belongs in, and evolution.md becomes an index pointing at the siblings. This is the canonical example of soft-versus-hard discipline at the size-cap level: only `docs/evolution.md` carries a hard cap; the siblings absorb the overflow under the historian's judgment. *[ref: evolution-block-message-names-overflow-siblings | .claude/plugins/plugin_integrity/hooks/evolution-cap.sh:110 | The BLOCK message itself NAMES the overflow surfaces: "consolidate older dated sections (1-line summaries OR archive verbatim into docs/decisions.md / docs/lessons.md / docs/lessons-<topic>.md), THEN add your new entry." When the cap fires, the hook tells the editor exactly which sibling files to overflow into. The cap's behavior is the documentation contract.]*
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard sketch — the word-cap meter on docs/evolution.md (capped) on the left, the historian subagent depicted as an arrow that re-narrates new commits into evolution.md, and the overflow routing to uncapped sibling files on the right when the meter fills up.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk for the file boxes and the meter (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels, arrows, the meter outline, and the cap line; faint chalk dust at the edges; chalk sticks along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other file names or labels.
+  Layout: Left half of the board — one pastel chalk file-box (cyan fill) labeled IN WHITE CHALK exactly "docs/evolution.md". Below the box, draw a horizontal white-chalk meter (a rectangle outline divided into segments, mostly filled with chalk shading). To the right of the meter, a short white-chalk label reads exactly "2000-word cap (configurable)". Above the meter, a small white-chalk arrow enters from the top-left labeled IN WHITE CHALK exactly "historian writes" with a small chalk subagent-icon (a tiny stick figure or chalk node) at the arrow's origin.
+  Center — when the meter fills past the cap line (drawn as a vertical white-chalk dashed line near the right end of the meter), a single white-chalk arrow exits the right end of the meter and points right toward the overflow column, labeled IN WHITE CHALK exactly "overflow".
+  Right half of the board — three pastel chalk file-boxes stacked vertically, each labeled IN WHITE CHALK with its exact name:
+    Box 1 (green fill): "docs/principles.md"
+    Box 2 (orange fill): "docs/decisions.md"
+    Box 3 (pink fill): "docs/lessons.md"
+  The overflow arrow fans out into three smaller white-chalk arrows, one pointing at each sibling box.
+  Below the three sibling boxes, a small white-chalk note reads exactly "uncapped — historian judgment".
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "docs/evolution.md", "2000-word cap (configurable)", "historian writes", "overflow", "docs/principles.md", "docs/decisions.md", "docs/lessons.md", "uncapped — historian judgment", plus the caption below. No other words, file names, folders, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.5. The hard cap forces overflow. Siblings absorb depth under the historian's judgment."
+-->
+
+Target asset: assets/images/blog/evolution-cap-overflow-b7-5.png
+
 **The new-plugin lens.** When you guide your seed to create a plugin, the seed authors the cycle-1 `docs/evolution.md` by hand — a short narrative of the plugin's birth, what concern it owns, what it doesn't own. The historian subagent takes over from cycle 2 onward, re-narrating each cycle's commits into evolution.md until it hits the cap. From there, overflow goes into `docs/principles.md` (or whichever sibling the plugin's docs/CLAUDE.md establishes). Tell your seed: *every plugin gets a historian by birth.* Without one, the plugin's memory dies with the operator's session. A consulting practice's seed could carry the same shape — every plugin (intake, engagement, deliverable QA) ships a `docs/evolution.md` capped narration of how its standards drifted across client cycles, with the historian dispatching after every N engagement-close commits. The ratchet is friction, not enforcement: the agent must read and obey the drift-injection voice for the historian to fire. Operators who skip the voice get a stale evolution.md until the next unlock surfaces it.
 
 ---

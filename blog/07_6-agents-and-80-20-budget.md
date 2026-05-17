@@ -49,7 +49,7 @@ og_image: "assets/images/blog/agent-anatomy.png"
     Line 2: "-1 per project file edit"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (12)", "plan-* (6)", "execute-* (3)", "verify-* (5)", "condense-* (7)", "historian-* (12)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.4. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.6. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
 -->
 
 **Why per-plugin scoping.** The safe-lock cycle inside `plugin_integrity` requires that only one plugin be unlocked at a time. A subagent that ranged across multiple plugins would need to coordinate locks across every directory it touches, defeating the unlock discipline. Per-plugin scoping makes the subagent's surface match the lock boundary exactly.

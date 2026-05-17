@@ -51,7 +51,7 @@ Every phase has a fixed point threshold the agent must cross before it is allowe
   Above the dial, draw a single curving chalk arrow that runs RIGHT to LEFT (from the "3" tick toward the "0.5" tick) with one short chalk caption riding along the arrow's curve: "smaller number, bigger phase".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "0.5", "1", "1.5", "2", "2.5", "3", "deep", "standard", "targeted", "surgical", "~67 actions", "~34 actions", "~22 actions", "~12 actions", "smaller number, bigger phase", plus the caption below. No other words, file names, tool names, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.8.1. The multiplier is inverse. A smaller number declares a deeper phase."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.8. The multiplier is inverse. A smaller number declares a deeper phase."
 -->
 
 ## The point system underneath

@@ -54,9 +54,10 @@ The cycle counter does not advance through gmode. The home phase is the home pha
   Off to the lower-left of the pentagon — a single green-fill chalk box labeled exactly: "idle".
   From each of the six perimeter nodes — a single dashed white-chalk arrow curves into the central gmode box. A second dashed white-chalk arrow curves back from gmode to the same node. Six arrow-pairs total.
   Near the outgoing arrows (between perimeter and gmode) — a small pink-fill chalk gate icon labeled exactly: "≥100-word [GMODE]". Near the returning arrows — a small magenta-fill chalk gate icon labeled exactly: "clean git".
+  Between gmode and each outgoing arrow — a small white-chalk caption labeled exactly: "stash pre_gmode_phase".
   Between gmode and each returning arrow — a small white-chalk caption labeled exactly: "atomic restore".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — only these literal text strings as labels: "gmode", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "idle", "≥100-word [GMODE]", "clean git", "atomic restore", plus the caption below.
+  STRICT NAME WHITELIST — only these literal text strings as labels: "gmode", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "idle", "≥100-word [GMODE]", "clean git", "stash pre_gmode_phase", "atomic restore", plus the caption below.
   Caption (bottom of image, white chalk, hand-drawn): "Image 6.9. Every phase, including idle, carries one self-loop through gmode. Entry costs a justification floor; exit requires a clean working tree; the home phase is restored atomically."
 -->
 

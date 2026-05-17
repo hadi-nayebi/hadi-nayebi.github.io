@@ -24,6 +24,29 @@ The load-bearing claim of this mini-series is this. The seed grows along three a
 
 That last claim is what makes the seed sustainable across long timescales. A brain that grew without bound would drown its own cognition. A brain that stopped learning would stop adapting. The seed does both: caps and compression force the brain into a stable equilibrium, while the knowledge directory and the plugin kit absorb everything the brain compresses away. The seed loses nothing. It just stores most of what it knows somewhere other than the brain.
 
+<!-- IMAGE PLACEHOLDER:
+  Concept: Chalk-on-blackboard three-axis growth diagram — a small seed icon in the lower-left corner with three labeled arrows fanning outward, each axis labeled with what grows along it.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk axes
+  and arrows; pastel chalk fills for the three axis arrows (cyan = jobs-mature axis, green = controls-migrate axis, magenta = operator-shift axis — drawn from the cycle image palette);
+  white chalk for ALL labels, axis-end markers, and the seed icon; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other axis names, labels, or descriptors.
+  Layout: A small white-chalk circular seed icon in the lower-left corner of the board, with a tiny sprout drawn above it. From the seed, three hand-drawn chalk arrows fan outward across the board, each in a different pastel chalk color, each tipped with an arrowhead at the far end:
+    Arrow A (cyan, pointing straight UP along the left side of the board). Two-line label IN WHITE CHALK riding along the arrow:
+      Top line:    "jobs mature upward"
+      Bottom line: "stage 1 → stage 4"
+    Arrow B (green, pointing diagonally up-right across the center of the board). Two-line label IN WHITE CHALK riding along the arrow:
+      Top line:    "controls migrate inward"
+      Bottom line: "voice → hook → template"
+    Arrow C (magenta, pointing straight RIGHT along the bottom of the board). Two-line label IN WHITE CHALK riding along the arrow:
+      Top line:    "operator shifts"
+      Bottom line: "supervising → composing"
+  Above the seed icon, a single short white-chalk caption reads exactly: "week 1". Near the far end of arrow B, a small white-chalk caption reads exactly: "month 3+". These two anchor the time arc of the diagram.
+  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "stage 1 → stage 4", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+", plus the caption below. No other words, file names, folders, or axis descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
+  ASSET: assets/images/blog/three-growth-axes-b8-1.png
+-->
+
 ## The journey ahead
 
 Essay 8 splits into the sub-essay series (currently nine parts):

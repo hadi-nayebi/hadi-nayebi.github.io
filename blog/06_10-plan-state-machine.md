@@ -72,18 +72,18 @@ Once a job's `plan_state` is `yaml_drafting`, `yaml_ready`, or `sealed`, the pha
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard sketch — the .md and .yaml side by side, with the .yaml's phase-entry injection feeding into the OPEVC cycle. The dual-document layout makes "what is for the human" vs "what is for the brain" legible at a glance.
-  Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the document tiles and the phase ring;
-  white chalk for labels, arrows, and field names; chalk sticks at the bottom edge; faint chalk dust at the edges.
+  white chalk for ALL labels, arrows, and field names; chalk sticks at the bottom edge; faint chalk dust at the edges.
   IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, field names, or descriptors.
-  Layout: Two chalk-drawn document tiles side by side on the left half of the board; a chalk-drawn ring of four phase circles on the right half. A single arrow stream connects the two halves.
+  Layout: Two chalk-drawn document tiles side by side on the left half of the board; a chalk-drawn ring of five phase circles on the right half. A single arrow stream connects the two halves.
     Left tile (cyan border, drawn as a tall rectangle with horizontal chalk ruling to suggest prose lines): labeled at the top "plan.md", with a smaller white chalk note beneath it "for the human".
-    Right tile (orange border, drawn as a tall rectangle with chalk indentation lines to suggest structured fields): labeled at the top "plan.yaml", with a smaller white chalk note beneath it "for the brain". Inside the .yaml tile, four small white chalk field labels stacked vertically: "observe:", "plan:", "execute:", "verify:".
+    Right tile (orange border, drawn as a tall rectangle with chalk indentation lines to suggest structured fields): labeled at the top "plan.yaml", with a smaller white chalk note beneath it "for the brain". Inside the .yaml tile, five small white chalk field labels stacked vertically: "observe:", "plan:", "execute:", "verify:", "condense:".
     A short white chalk double-headed arrow between the two tiles, labeled "same basename".
-    On the right half of the board, four phase circles arranged in a ring: cyan circle labeled "observe", green circle labeled "plan", orange circle labeled "execute", pink circle labeled "verify". Small white chalk arrows connect them clockwise.
-    From the .yaml tile, a curved white chalk arrow exits the right edge and fans out into four thin chalk lines, each landing on one phase circle. Above the fan, a white chalk note: "injects at phase entry".
+    On the right half of the board, five phase circles arranged in a ring: cyan circle labeled "observe", green circle labeled "plan", orange circle labeled "execute", pink circle labeled "verify", magenta circle labeled "condense". Small white chalk arrows connect them clockwise.
+    From the .yaml tile, a curved white chalk arrow exits the right edge and fans out into five thin chalk lines, each landing on one phase circle. Above the fan, a white chalk note: "injects at phase entry".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plan.md", "plan.yaml", "for the human", "for the brain", "observe:", "plan:", "execute:", "verify:", "same basename", "observe", "plan", "execute", "verify", "injects at phase entry", plus the caption below. No other words, file names, folders, or descriptors may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plan.md", "plan.yaml", "for the human", "for the brain", "observe:", "plan:", "execute:", "verify:", "condense:", "same basename", "observe", "plan", "execute", "verify", "condense", "injects at phase entry", plus the caption below. No other words, file names, folders, or descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 6.10. The .md is for the human; the .yaml is for the brain. Same basename, different surface."
 -->
 
