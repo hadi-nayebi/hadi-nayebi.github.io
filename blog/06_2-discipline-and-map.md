@@ -85,12 +85,12 @@ The result: each phase produces its own kind of artifact. OBSERVE produces worki
 Every phase has its own plugin. The phasic plugins (currently six in the prototype — one per phase, plus a separate orchestrator that tracks which phase is active for which job) are themselves single-concern packages, each one owning the rules for one mode of cognition. As with the always-on layer, the count is the prototype, not the architecture. A custom seed adding a sixth phase would add a seventh plugin alongside the orchestrator. The shape is what generalizes. [Essay 7](07_1-plugin-kit-foundation.html) walks through a worked example — a hypothetical `phase_research` plugin slotted between OBSERVE and PLAN, with the two-lock pattern that wires it in.
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard table — the phase write matrix. Each phase's write authority broken down across six axes that distinguish the phases from one another.
+  Concept: Chalk-on-blackboard table — the phase write matrix. Each phase's write authority broken down across five axes that distinguish the phases from one another.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk colors for row labels (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for headers and cell marks; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
   IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, paths, or phase descriptors.
-  Layout: 5 rows × 6 columns grid drawn in chalk.
+  Layout: 5 rows × 5 columns grid drawn in chalk.
     Row labels (left, each in its own pastel chalk circle like the cycle image, lowercase, in this top-to-bottom order):
       Row 1 (cyan fill): "observe"
       Row 2 (green fill): "plan"
@@ -98,16 +98,16 @@ Every phase has its own plugin. The phasic plugins (currently six in the prototy
       Row 4 (pink fill): "verify"
       Row 5 (magenta fill): "condense"
     Column headers (top, white chalk, lowercase, in this left-to-right order):
-      "own footer", "other footers", "plan file", "project source", "scripts", "create jobs"
+      "footers writable", "plan file", "project source", "scripts", "create jobs"
     Cells (white chalk; words ONLY where listed, otherwise a checkmark or X glyph):
-      observe row: checkmark, X, X, X, X, X
-      plan row:    checkmark, X, X, X, X, X
-      execute row: checkmark, X, "create c1", "altered list", X, X
-      verify row:  checkmark, X, "refine", X, checkmark, X
-      condense row: "(all)", "(all)", X, X, X, checkmark
+      observe row:  "all 4", X, X, X, X
+      plan row:     "3 below ---Pl---", X, X, X, X
+      execute row:  "2 below ---Ex---", "create c1", "altered list", X, X
+      verify row:   "---Ve--- only", "refine", X, checkmark, X
+      condense row: "all + body", X, X, X, checkmark
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "own footer", "other footers", "plan file", "project source", "scripts", "create jobs", "create c1", "altered list", "refine", "(all)", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes strictly below its own footer marker — except CONDENSE, which has free hand across the brain."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "scripts", "create jobs", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE has free hand across the brain."
 -->
 
 

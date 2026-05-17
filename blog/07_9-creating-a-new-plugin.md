@@ -22,7 +22,7 @@ og_image: "assets/images/blog/agent-anatomy.png"
 
 ## Two Paths to a New Plugin
 
-When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first ([Essay 8](08-from-apprentice-to-architect.html) covers the maturation stages). The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs and the seed has learned its shape, the job graduates to multi-cycle. When the multi-cycle plan stabilizes, the job graduates to a `.yaml` plan that injects job-specific context at every phase entry. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin.
+When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first ([Essay 8](08_1-apprentice-to-architect-foundation.html) covers the maturation stages). The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs and the seed has learned its shape, the job graduates to multi-cycle. When the multi-cycle plan stabilizes, the job graduates to a `.yaml` plan that injects job-specific context at every phase entry. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin.
 
 That is one path to a new plugin: a job that has matured through the earlier maturation stages and now needs phase-cognition customization the voice injection cannot deliver.
 
@@ -108,4 +108,4 @@ The kit is in your hands. What does growth LOOK like when you use it over time? 
 *Essay 7.9 — The Plugin Kit, Part 9 of 9. Closes The Plugin Kit (9-part series).*
 
 *Previous: [Essay 7.8 — The Lock Ceremony](07_8-lock-ceremony.html) — PLUGIN-LOCK + TEST-LOCK + safe-lock + historian ratchet, the four-part closed loop.*
-*Next: [Essay 8 — From Apprentice to Architect](08-from-apprentice-to-architect.html) — job formats, the maturation arc, and the seed's hand-off.*
+*Next: [Essay 8 — From Apprentice to Architect](08_1-apprentice-to-architect-foundation.html) — job formats, the maturation arc, and the seed's hand-off.*

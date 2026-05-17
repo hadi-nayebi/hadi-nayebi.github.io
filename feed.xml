@@ -9,22 +9,6 @@
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
-      <title>From Apprentice to Architect</title>
-      <link>https://hadi-nayebi.github.io/blog/08-from-apprentice-to-architect.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/08-from-apprentice-to-architect.html</guid>
-      <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
-      <description>A seed agent is not a product. It is a thing that gets installed, then grows under the operator's care. Jobs mature through four stages; behavioral controls migrate from voice to hook to plugin. The brain stops growing in size but never stops learning.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit</title>
-      <link>https://hadi-nayebi.github.io/blog/07-the-plugin-kit.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/07-the-plugin-kit.html</guid>
-      <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
-      <description>A plugin is a cell with internal organs. CLAUDE.md, hooks, scripts, two voice surfaces, hidden state, a documentation layer with a historian, per-plugin subagents, tests, and a lock ceremony that refuses to commit when tests fail. The kit gives the brain the capacity to grow.</description>
-    </item>
-
-    <item>
       <title>The Markov Phasic Brain — Pt 10: The Plan-State Machine: Long-Horizon Memory</title>
       <link>https://hadi-nayebi.github.io/blog/06_10-plan-state-machine.html</link>
       <guid>https://hadi-nayebi.github.io/blog/06_10-plan-state-machine.html</guid>
@@ -42,8 +26,8 @@
 
     <item>
       <title>The Markov Phasic Brain — Pt 8: The Backward Multiplier</title>
-      <link>https://hadi-nayebi.github.io/blog/06_8-backward-multiplier.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_8-backward-multiplier.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/06_8-inverse-multiplier.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/06_8-inverse-multiplier.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The per-phase dial that forces meta-cognition at entry. The multiplier is backward — 3× declares a surgical phase, 0.5× declares deep work. Both directions of error cost. The point system stays invisible so the agent does not learn to game it.</description>
     </item>
@@ -102,14 +86,6 @@
       <guid>https://hadi-nayebi.github.io/blog/06_1-phasic-foundation.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>Phases are cognitive isolation chambers. Five phases plus one cognitive organ — observe, plan, execute, verify, condense. Opens the nine-part Markov Phasic Brain series.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain (monolith — superseded by 9-sub-essay split)</title>
-      <link>https://hadi-nayebi.github.io/blog/06-the-markov-phasic-brain.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06-the-markov-phasic-brain.html</guid>
-      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
-      <description>The seed agent's cognitive work happens in five phases plus one cognitive organ. Superseded by the 9-part sub-essay series starting at Essay 6.1; URL retained for preservation.</description>
     </item>
 
     <item>

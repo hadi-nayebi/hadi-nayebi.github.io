@@ -318,7 +318,7 @@ These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2
 **Rule 6 — Series-aware references for pre-split essays.**
 - When an essay references another that may later split into a sub-series (B6, B7, B8 are candidates — Essay 5 has already split), the framing depends on what the ref promises.
 - WRONG (when content is being deferred): "deconstructed in [Essay 7]" or "the subject of [Essay 6]" — these promise a single-page lookup that breaks navigability when the target splits.
-- RIGHT (content deferral): "the [Essay 6 series]" or "deconstructed across the [Essay 7 series]" — optionally add "(currently a monolith; we will split it into a sub-essay series the same way we split Essay 5)" when the first reference in the essay establishes the framing.
+- RIGHT (content deferral): "the [Essay 6 series]" or "deconstructed across the [Essay 7 series]" — entry-point sub-essay URL (e.g., `06_1-…`, `07_1-…`) is the canonical link target.
 - OK as-is (generic category pointer): "The phase plugins ([Essay 6])" — entry-point URL redirects cleanly when the target splits; no caveat needed.
 - OK as-is (parenthetical concept reference): "the soft → hard migration from [Essay 8]" — references a concept, not a location.
 - OK as-is (footer navigation): "Next: [Essay 6 — Title]" — entry-point URL is canonical.
@@ -755,7 +755,6 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5 | `05-the-always-on-digital-cortex` | The Always-On Digital Cortex (monolith — superseded by 8-sub-essay split 2026-05-14) | **superseded** — file stays on disk for URL preservation; not in sidebar/sitemap/feed |
 | 5.1 | `05_1-the-two-layer-foundation` | Pt 1: The Two-Layer Foundation | **drafting v0.4.0** — ~2,441w / 9 min · 9 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.a MED fix: L134 footer-byline "first of five always-on plugin deep-dives" → "first of the always-on plugin deep-dives" (Rule 1 count-as-noun; matches L41 "currently five" parenthetical pattern). |
 | 5.2 | `05_2-plugin-integrity` | Pt 2: `plugin_integrity` — Plugin Edit Safety | **drafting v0.4.0** — ~2,059w / 8 min · 7 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.a HIGH+MED fixes: L19 "five plugins, currently" → "the always-on plugins (currently five in the prototype)" (Rule 1 count-as-noun, HIGH); L79 body "The current registry holds ten entries" → "The current registry is short; your seed's will hold more" (Rule 1 count-as-noun, MED — ten-entry list preserved in ref-tag tooltip). |
 | 5.3 | `05_3-brain-guard` | Pt 3: `brain_guard` — Context Window Discipline | **drafting v0.2.0** — ~1,700w / 8 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.2.0 iter-14.a MED fix: L70 (154w) dispatch-mechanic density wall split (dispatch-mechanism intro + grace-window-and-future-API). |
@@ -765,7 +764,6 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 5.7 | `05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.3.0** — ~3,300w / 12 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c HIGH+MED fixes: L33 fabricated quote replaced with truthful section-name pointer (root CLAUDE.md Identity section + `.claude/CLAUDE.md` Components section — old fake quote "Agent: Hadosh Academy Website Manager..." did not exist in current root CLAUDE.md); L35 brittle four-line citation (530,537,544,551) age-proofed to "footer-anchor block" pointer; L29/L132/L150 line-range refs (`:443`, `:289-298`, `:129-134`) all age-proofed to section-name pointers — mirrors iter-15.c L140 pattern. |
 | 5.8 | `05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.3.0** — ~2,500w / 10 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c MED fixes: L103 ref `CLAUDE.md:381-384` age-proofed to "Spatial level: bullets under Core Principle: Compartmentalization" section pointer; L105 ref `CLAUDE.md:212` age-proofed to "JOB.phase operation under Specialized Operations" section pointer — mirrors iter-15.c L140 pattern. |
 | 5.9 | `05_9-customization-guardrail` | Pt 9: The Customization Guardrail | **drafting v0.4.0** — ~2,400w / 10 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.c HIGH fix: L76 `customization-trigger-patterns` ref-tag rewritten — prior synthesis of triggers (3-occurrence threshold, COACHING_IDS pool, workflow-not-supported) did not appear in `plugin-lock-privilege.md`; new ref cites the file's actual "Why both, not one" section (frames user-approved-job route as "for planned work the agent initiates" with the verbatim `secrets_guard` example), keeps the closing architectural-fact summary. |
-| 6 | `06-the-markov-phasic-brain` | The Markov Phasic Brain (monolith — superseded by 10-sub-essay split 2026-05-15) | **superseded** — file stays on disk for URL preservation; not in sidebar/sitemap/feed primary listing |
 | 6.1 | `06_1-phasic-foundation` | Pt 1: Phasic Foundation | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.2 | `06_2-discipline-and-map` | Pt 2: The Discipline and the Map | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.3 | `06_3-observe` | Pt 3: OBSERVE — Read Wide, Write Once | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
@@ -773,11 +771,9 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 6.5 | `06_5-execute` | Pt 5: EXECUTE — Build, in Scope, in Steps | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.6 | `06_6-verify` | Pt 6: VERIFY — Independent Eyes | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.7 | `06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **drafting v0.1.0** — ~1,397w / 11 min · 17 refs · HTML built · transcript regen'd (final:false) · audio pending |
-| 6.8 | `06_8-backward-multiplier` | Pt 8: The Inverse Multiplier (slug preserved for URL) | **drafting v0.1.0** — ~1,683w / 11 min · 8 refs · HTML built · transcript regen'd (final:false) · audio pending |
+| 6.8 | `06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **drafting v0.1.0** — ~1,683w / 11 min · 8 refs · HTML built · transcript regen'd (final:false) · audio pending |
 | 6.9 | `06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **drafting v0.1.0** — ~2,114w / 8 min · 5 refs · HTML built · transcript regen'd (final:false) · audio pending |
 | 6.10 | `06_10-plan-state-machine` | Pt 10: The Plan-State Machine — Long-Horizon Memory (Tier-3 closer) | **drafting v0.1.0** — ~2,688w / 8 min · 5 refs · HTML built · transcript regen'd (final:false) · audio pending |
-| 7 | `07-the-plugin-kit` | The Plugin Kit (working) | **drafting v0.15.0** — 48 refs · HTML built 2026-05-13 via `tools/generate_blog_html.py` · transcript ready (final:false) · audio pending · og:image pending |
-| 8 | `08-from-apprentice-to-architect` | From Apprentice to Architect (working) | **drafting v0.12.0** — 21 refs · HTML built 2026-05-13 · transcript ready (final:false) · audio pending · og:image pending |
 
 ### Status Legend
 

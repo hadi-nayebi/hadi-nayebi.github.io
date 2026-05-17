@@ -139,7 +139,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hadi-nayebi.github.io/blog/06_8-backward-multiplier.html</loc>
+    <loc>https://hadi-nayebi.github.io/blog/06_8-inverse-multiplier.html</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -157,17 +157,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hadi-nayebi.github.io/blog/07-the-plugin-kit.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
   <url>
-    <loc>https://hadi-nayebi.github.io/blog/08-from-apprentice-to-architect.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
   <url>
     <loc>https://hadi-nayebi.github.io/papers/why-scaling-models-is-not-enough.pdf</loc>
     <lastmod>2026-03-04</lastmod>

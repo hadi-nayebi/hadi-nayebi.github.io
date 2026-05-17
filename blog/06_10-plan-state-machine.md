@@ -123,7 +123,7 @@ Lift the pattern out of the seed agent and into a law practice. A partner drafti
 
 ## What the machine teaches
 
-The plan-state machine is the final mechanism of the markov phasic brain. The cycle from [Essay 6.2](06_2-discipline-and-map.html) gave the brain phases. CONDENSE from [Essay 6.7](06_7-condense.html) gave it metabolism. The multiplier from [Essay 6.8](06_8-backward-multiplier.html) gave it honest scope. Gmode from [Essay 6.9](06_9-gmode.html) gave it an off-cycle lane. The plan-state machine gives it a *horizon* — the capacity to hold the same plan across days, weeks, dozens of cycles, with the plan re-injecting itself at every phase boundary so the brain never forgets where the work has reached.
+The plan-state machine is the final mechanism of the markov phasic brain. The cycle from [Essay 6.2](06_2-discipline-and-map.html) gave the brain phases. CONDENSE from [Essay 6.7](06_7-condense.html) gave it metabolism. The multiplier from [Essay 6.8](06_8-inverse-multiplier.html) gave it honest scope. Gmode from [Essay 6.9](06_9-gmode.html) gave it an off-cycle lane. The plan-state machine gives it a *horizon* — the capacity to hold the same plan across days, weeks, dozens of cycles, with the plan re-injecting itself at every phase boundary so the brain never forgets where the work has reached.
 
 That is what makes the markov brain a brain, not a loop. A loop reacts. A brain remembers. The state machine is the substrate of that remembering, and the `.yaml` injection is the reflex that fires it back into the present every time the agent crosses a phase.
 
