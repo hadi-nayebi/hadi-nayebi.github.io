@@ -16,14 +16,14 @@
     <meta property="og:description" content="Plugin Kit Foundation — Hadosh Academy seed agent essay.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/07_1-plugin-kit-foundation.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b4/agent-anatomy-b4-1.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b7/plugin-cell-anatomy-b7-1.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Plugin Kit Foundation | Hadosh Academy">
     <meta name="twitter:description" content="Plugin Kit Foundation — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b4/agent-anatomy-b4-1.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b7/plugin-cell-anatomy-b7-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../css/styles.css?v=20260513">
+    <link rel="stylesheet" href="../css/styles.css?v=20260517">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -40,7 +40,7 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "Plugin Kit Foundation — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/b4/agent-anatomy-b4-1.png",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/b7/plugin-cell-anatomy-b7-1.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/07_1-plugin-kit-foundation.html"
             },
             {
@@ -113,7 +113,7 @@
 
                         <p>A plugin is a cell.</p>
 
-                        <p><a href="05_1-the-two-layer-foundation.html">Essay 5</a> opened the always-on layer &mdash; the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. <a href="06_1-phasic-foundation.html">Essay 6</a> opened the phasic layer &mdash; the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a <strong>plugin</strong>, sitting in its own directory under <code>.claude/plugins/</code>, carrying its own organs. This essay opens that object.</p>
+                        <p><a href="05_1-the-two-layer-foundation.html">Essay 5</a> opened the always-on layer &mdash; the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. <a href="06_1-phasic-foundation.html">Essay 6</a> opened the phasic layer &mdash; the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a <strong>plugin</strong>, sitting in its own directory under <code>.claude/plugins/</code>, carrying its own organs. This essay opens that object. <sup class="ref-marker" title="ref: plugin-directory-anatomy | .claude/plugins/CLAUDE.md Components section + .claude/plugins/ directory listing | Each plugin lives at `.claude/plugins/&lt;name&gt;/` with the universal organs (`CLAUDE.md`, `hooks/`, `scripts/`, `data.json`, `docs/`, `agents/`, `tests/`, `template/`, `config.conf`, `evolution.md`, dual `voice.xml`) plus optional surfaces. The prototype ships 11 active plugins each carrying this anatomy — the kit IS the architectural unit, not loose files in a folder.">&#9432;</sup></p>
 
                         <p>The cell metaphor is load-bearing. A plugin is not a collection of loose files; it is a <em>system</em> of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Each organ inside the cell carries the same three properties:</p>
 
@@ -123,11 +123,11 @@
                             <li><strong>What it depends on</strong> &mdash; which other organs must already be in place for this organ to function correctly.</li>
                         </ul>
 
-                        <p>These three properties are how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). This mini-series opens the cell organ by organ, naming the three properties at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch.</p>
+                        <p>These three properties are how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). Essay 7 opens the cell organ by organ, naming the three properties at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch. <sup class="ref-marker" title="ref: three-properties-of-cognitive-organs | .claude/plugins/plugin_integrity/CLAUDE.md (single-writer + PLUGIN-LOCK exclusivity) + .claude/plugins/plugin_integrity/scripts/lock-cmd.sh | The single-writer rule is the security model&#x27;s backbone: PLUGIN-LOCK admits one writer at a time per plugin, enforced by `lock-cmd.sh` against the lock-manager state file; declared channels (file paths, hook events, voice.xml block ids) make the read-graph auditable; undeclared edits are blocked by the per-organ guards (lock-guard, drift-check, evolution-cap, etc.).">&#9432;</sup></p>
 
                         <h2>The journey ahead</h2>
 
-                        <p>Essay 7 splits into a short sub-essay series (currently nine parts):</p>
+                        <p>Essay 7 covers the plugin kit across nine sub-essays:</p>
 
                         <ul>
                             <li><strong>Essay 7.1 &mdash; Plugin Kit Foundation</strong> <em>(you are here)</em> &mdash; the cell-as-system frame + this map</li>
@@ -153,9 +153,9 @@
 
                         <hr>
 
-                        <p>We start with the universal skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the three organs every plugin must have.</p>
+                        <p>We start with the universal skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the three organs every plugin must have. <sup class="ref-marker" title="ref: universal-skeleton-trio | .claude/plugins/plugin_integrity/template/ + .claude/plugins/plugin_integrity/CLAUDE.md (Plugin Structure Convention section) | The template directory carries the minimum-viable plugin skeleton every new plugin clones at birth: `CLAUDE.md` (the plugin&#x27;s working memory + role declaration), `hooks/` (event-driven reflexes registered in settings.local.json), `scripts/` (operator-callable + agent-callable shell commands). Every other organ — data.json, voice.xml, docs/, agents/, tests/, config.conf — extends but does not replace this trio.">&#9432;</sup></p>
 
-                        <p>A consulting practice could organize its own seed agent&rsquo;s plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK, test-revert, dual voices) plus operator discipline.</p>
+                        <p>A consulting practice could organize its own seed agent&rsquo;s plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating each edit, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. <sup class="ref-marker" title="ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/scripts/safe-lock.sh + .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | Three friction primitives compose the kit&#x27;s safety: PLUGIN-LOCK serializes edits per plugin via the lock-manager; safe-lock wraps the unlock window in a test-pass-or-revert cycle (`safe-lock.sh` runs the plugin&#x27;s tests on commit and reverts the working tree on failure); dual voice.xml (hooks-side for LLM coaching, scripts-side for operator coaching) propagates the discipline through every gate without hard-coding it.">&#9432;</sup></p>
 
                         <hr>
 
@@ -216,8 +216,8 @@
         </div>
     </footer>
 
-    <script src="../js/theme-manager.js?v=20260513"></script>
-    <script src="../js/components.js?v=20260513"></script>
+    <script src="../js/theme-manager.js?v=20260517"></script>
+    <script src="../js/components.js?v=20260517"></script>
 </body>
 
 </html>

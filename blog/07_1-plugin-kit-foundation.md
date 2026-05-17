@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
+og_image: "assets/images/blog/b7/plugin-cell-anatomy-b7-1.png"
 ---
 
 # Plugin Kit Foundation
@@ -18,7 +18,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 A plugin is a cell.
 
-[Essay 5](05_1-the-two-layer-foundation.html) opened the always-on layer — the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. [Essay 6](06_1-phasic-foundation.html) opened the phasic layer — the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a **plugin**, sitting in its own directory under `.claude/plugins/`, carrying its own organs. This essay opens that object.
+[Essay 5](05_1-the-two-layer-foundation.html) opened the always-on layer — the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. [Essay 6](06_1-phasic-foundation.html) opened the phasic layer — the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a **plugin**, sitting in its own directory under `.claude/plugins/`, carrying its own organs. This essay opens that object. *[ref: plugin-directory-anatomy | .claude/plugins/CLAUDE.md Components section + .claude/plugins/ directory listing | Each plugin lives at `.claude/plugins/<name>/` with the universal organs (`CLAUDE.md`, `hooks/`, `scripts/`, `data.json`, `docs/`, `agents/`, `tests/`, `template/`, `config.conf`, `evolution.md`, dual `voice.xml`) plus optional surfaces. The prototype ships 11 active plugins each carrying this anatomy — the kit IS the architectural unit, not loose files in a folder.]*
 
 The cell metaphor is load-bearing. A plugin is not a collection of loose files; it is a *system* of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Each organ inside the cell carries the same three properties:
 
@@ -26,11 +26,11 @@ The cell metaphor is load-bearing. A plugin is not a collection of loose files; 
 - **Who writes it** — which ceremony or phase is allowed to mutate it. Most organs have exactly one writer; the security model rests on that exclusivity.
 - **What it depends on** — which other organs must already be in place for this organ to function correctly.
 
-These three properties are how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). This mini-series opens the cell organ by organ, naming the three properties at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch.
+These three properties are how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). Essay 7 opens the cell organ by organ, naming the three properties at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch. *[ref: three-properties-of-cognitive-organs | .claude/plugins/plugin_integrity/CLAUDE.md (single-writer + PLUGIN-LOCK exclusivity) + .claude/plugins/plugin_integrity/scripts/lock-cmd.sh | The single-writer rule is the security model's backbone: PLUGIN-LOCK admits one writer at a time per plugin, enforced by `lock-cmd.sh` against the lock-manager state file; declared channels (file paths, hook events, voice.xml block ids) make the read-graph auditable; undeclared edits are blocked by the per-organ guards (lock-guard, drift-check, evolution-cap, etc.).]*
 
 ## The journey ahead
 
-Essay 7 splits into a short sub-essay series (currently nine parts):
+Essay 7 covers the plugin kit across nine sub-essays:
 
 - **Essay 7.1 — Plugin Kit Foundation** *(you are here)* — the cell-as-system frame + this map
 - [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK
@@ -72,9 +72,9 @@ Target asset: assets/images/blog/b7/plugin-cell-anatomy-b7-1.png
 
 ---
 
-We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the three organs every plugin must have.
+We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the three organs every plugin must have. *[ref: universal-skeleton-trio | .claude/plugins/plugin_integrity/template/ + .claude/plugins/plugin_integrity/CLAUDE.md (Plugin Structure Convention section) | The template directory carries the minimum-viable plugin skeleton every new plugin clones at birth: `CLAUDE.md` (the plugin's working memory + role declaration), `hooks/` (event-driven reflexes registered in settings.local.json), `scripts/` (operator-callable + agent-callable shell commands). Every other organ — data.json, voice.xml, docs/, agents/, tests/, config.conf — extends but does not replace this trio.]*
 
-A consulting practice could organize its own seed agent's plugin around a `[CLIENT-INTAKE]` ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK, test-revert, dual voices) plus operator discipline.
+A consulting practice could organize its own seed agent's plugin around a `[CLIENT-INTAKE]` ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating each edit, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. *[ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/scripts/safe-lock.sh + .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | Three friction primitives compose the kit's safety: PLUGIN-LOCK serializes edits per plugin via the lock-manager; safe-lock wraps the unlock window in a test-pass-or-revert cycle (`safe-lock.sh` runs the plugin's tests on commit and reverts the working tree on failure); dual voice.xml (hooks-side for LLM coaching, scripts-side for operator coaching) propagates the discipline through every gate without hard-coding it.]*
 
 ---
 
