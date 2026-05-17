@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Jobs]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
+og_image: "assets/images/blog/b8/three-growth-axes-b8-1.png"
 ---
 
 # Apprentice to Architect Foundation
@@ -20,9 +20,9 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 The seed agent is not a product. It is not a thing that gets installed and works. It is a thing that gets installed, and then *grows*, cycle by cycle, under the operator's care. A new seed in week one looks different from the same seed in month three. The architecture is identical. What has changed is the brain — what it has learned, what it has codified, what has fossilized into permanent enforcement, and what is still being shaped by hand.
 
-The load-bearing claim of this mini-series is this. The seed grows along three axes that run in parallel: jobs mature upward through several formats; behavioral controls migrate inward from soft voice to hard hook to fossilized template; and the operator's relationship with the seed shifts from supervising its cognition to composing with it. Each axis has its own pace, its own evidence, its own gates. None is automatic. And — the part most operators do not expect — *the brain stops growing in size while never stopping learning*. The architecture is bounded by design; the substrate the brain rests on is not.
+The load-bearing claim of this mini-series is this. The seed grows along several parallel axes — the prototype's design names three of them: jobs mature upward through several formats; behavioral controls migrate inward from soft voice to hard hook to fossilized template; and the operator's relationship with the seed shifts from supervising its cognition to composing with it. Each axis has its own pace, its own evidence, its own gates. None is automatic. And — the part most operators do not expect — *the brain stops growing in size while never stopping learning*. The architecture is bounded by design; the substrate the brain rests on is not.
 
-That last claim is what makes the seed sustainable across long timescales. A brain that grew without bound would drown its own cognition. A brain that stopped learning would stop adapting. The seed does both: caps and compression force the brain into a stable equilibrium, while the knowledge directory and the plugin kit absorb everything the brain compresses away. The seed loses nothing. It just stores most of what it knows somewhere other than the brain.
+That last claim is what makes the seed sustainable across long timescales. A brain that grew without bound would drown its own cognition. A brain that stopped learning would stop adapting. The seed does both: caps and compression force the brain into a stable equilibrium, while the knowledge directory and the plugin kit absorb everything the brain compresses away. The seed loses nothing. It just stores most of what it knows somewhere other than the brain. *[ref: brain-bounded-knowledge-unbounded | root CLAUDE.md "Size Limits" section + "Brain Maturation Model" section + .claude/CLAUDE.md "Components" section | Root CLAUDE.md caps each file class (Brain 3,500w / CLAUDE.md 800 / Plans 2,000 / Memory 400 / Skills 500) and frames brain maturation as proven patterns migrating OUT of the brain into hooks and plugins as the brain hits its limits. `.claude/knowledge/` is the durable absorption layer — what CONDENSE compresses out of working memory lands there, sized by topic, not by total. The brain ratchets to equilibrium; the knowledge layer never does.]*
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard three-axis growth diagram — a small seed icon in the lower-left corner with three labeled arrows fanning outward, each axis labeled with what grows along it.
@@ -49,14 +49,14 @@ That last claim is what makes the seed sustainable across long timescales. A bra
 
 ## The journey ahead
 
-Essay 8 splits into the sub-essay series (currently nine parts):
+Essay 8 unfolds across nine sub-essays:
 
 - **Essay 8.1 — Apprentice to Architect Foundation** *(you are here)* — the three-axis growth frame and this map
 - [Essay 8.2 — The Four Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle, Stage 2 .md plan, Stage 3 .yaml injection, Stage 4 plugin form, plus sibling and dependent jobs
 - [Essay 8.3 — What Lives in the Brain After Three Months](08_3-brain-after-three-months.html) — the prototype as ground-truth inventory of the mature seed's compartments
 - [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template
 - [Essay 8.5 — What's Enforced vs What's Discipline](08_5-enforced-vs-discipline.html) — the honest accounting of which size caps are gates and which are CONDENSE discipline
-- [Essay 8.6 — The Maturation Arc: Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's maturation arc (sketched in three rough stages later) and the visible markers of each
+- [Essay 8.6 — The Maturation Arc: Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's maturation arc and the visible markers of each
 - [Essay 8.7 — The Brain Stops Growing in Size](08_7-brain-stops-growing.html) — why the brain reaches a ceiling while the knowledge layer never does
 - [Essay 8.8 — A System That Safely Modifies Itself](08_8-safe-self-modification.html) — the Tier-3 close, the recursive lock ceremony, and the rollback substrate
 - [Essay 8.9 — The Seed Is Yours](08_9-the-seed-is-yours.html) — series finale, the bridge to the public seed agent, and the architecture handed over
@@ -65,7 +65,7 @@ Essays 8.2 through 8.5 deep-dive the maturation mechanisms — job formats, brai
 
 ---
 
-A patent attorney could read the sub-essays that follow for the same reason an ML researcher could: the *pattern* of seed maturation transfers across every operator's domain. The patterns the attorney's seed codifies will not look like the researcher's, but the *shape* of how patterns get codified — voice fires, measurement accumulates, hook hardens, template inherits — is universal. Nothing in this essay is automatic; every stage requires evidence the operator and seed agree on before promotion happens.
+A patent attorney could read the sub-essays that follow for the same reason an ML researcher could: the *pattern* of seed maturation transfers across every operator's domain. The patterns the attorney's seed codifies will not look like the researcher's, but the *shape* of how patterns get codified — voice fires, measurement accumulates, hook hardens, template inherits — is universal. Nothing in this essay is automatic; every stage requires evidence the operator and seed agree on before promotion happens. *[ref: soft-to-hard-migration-pipeline | root CLAUDE.md "Brain Maturation Model" section + "Growth Rules" section | Root CLAUDE.md names the soft→hard flow verbatim: "Experience → notice pattern → add to brain → pattern proves reliable → migrate to hook → remove from brain." The four-step body phrasing (voice fires → measurement accumulates → hook hardens → template inherits) is the same pipeline expressed as four maturation gates a behavioral control crosses; each gate requires evidence (firing counts, measurement intervals, test coverage, template adoption) before promotion. Essay 8.4 deep-dives the mechanism.]*
 
 We start with the stages of job maturation — the upward axis along which every job your seed runs is allowed to climb.
 
