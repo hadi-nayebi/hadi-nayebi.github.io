@@ -72,7 +72,7 @@ EXECUTE is also where subagent dispatch shows up most heavily, and the point sch
 
 Reading project files does not consume budget; only edits and writes outside `.claude/` do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate the implementation to execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change. *[ref: execute-subagent-grants-direct-action-budget | .claude/plugins/phase_execute/scripts/execute.sh:765-795 | grant-direct-action-budget adds +3 budget per execute-subagent dispatch; consume-direct-action-budget deducts 1 per project edit and dies on insufficient — structural enforcement of 80/20 delegation bias.]*
 
-The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is two-in-flight; the cap was set after a cycle in which three concurrent subagents pushed the context window past a safe tier and triggered cascading compaction. We will come back to the discipline of subagent dispatch in [Essay 7](07-the-plugin-kit.html).
+The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is two-in-flight; the cap was set after a cycle in which three concurrent subagents pushed the context window past a safe tier and triggered cascading compaction. We will come back to the discipline of subagent dispatch in [Essay 7](07_1-plugin-kit-foundation.html).
 
 ## The comment-density drift gate
 

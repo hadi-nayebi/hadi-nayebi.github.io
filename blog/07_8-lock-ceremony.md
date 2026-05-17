@@ -20,19 +20,19 @@ og_image: "assets/images/blog/agent-anatomy.png"
 
 ---
 
-## The Ceremony Has Four Parts
+## The Parts of the Ceremony
 
 Plugin code does not get edited the way ordinary files do. Each plugin's hooks, scripts, tests, and code-bearing files have earned their current shape; the test suite enshrines that shape; any change pays the cost of opening the plugin, editing inside it, and re-passing the tests before the change commits.
 
-The four parts of the ceremony form a closed loop: **PLUGIN-LOCK** opens an edit session, **TEST-LOCK** gates test edits inside it, **safe-lock close-out** commits or reverts on the test result, and the **historian ratchet** can refuse to open the lock at all when the plugin's narrative has fallen behind. Each part guards a different risk; together they make plugin edits earn their landing.
+The parts of the ceremony form a closed loop: **PLUGIN-LOCK** opens an edit session, **TEST-LOCK** gates test edits inside it, **safe-lock close-out** commits or reverts on the test result, and the **historian ratchet** can refuse to open the lock at all when the plugin's narrative has fallen behind. Each part guards a different risk; together they make plugin edits earn their landing.
 
 ---
 
 ## `[PLUGIN-LOCK]` — Opens an Edit Session
 
-The agent issues a structured `AskUserQuestion` prefixed `[PLUGIN-LOCK] <plugin_name>` with a 100-word body explaining what flaw is being fixed, what files will be touched, and what the plugin's behavior will look like before vs after the edit. The operator approves; `lock-manager.sh` captures a `git rev-parse HEAD` SHA as `checkpoint_ref` and writes the unlocked plugin name into `plugin_integrity`'s hidden `data.json`. From that moment, edits inside the unlocked plugin proceed; edits anywhere else under `.claude/plugins/` are rejected. *[ref: plugin-lock-100-word-floor-checkpoint-data | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:127,141-142,189-192 | L189-190 enforce the 100-word floor: `q_word_count=$(echo "$QUESTION" | wc -w); if [[ "$q_word_count" -lt "${PLUGIN_LOCK_WORD_MIN:-100}" ]]`. L191-192 emit the block voice: "[PLUGIN-LOCK] question body is $q_word_count words; minimum is ${PLUGIN_LOCK_WORD_MIN:-100}. WHY: a short lock request hides the cognitive work that should precede every plugin unlock." L127 shows the data.json state schema: `'{"unlocked_plugin":"","checkpoint_ref":"","unlocked_test":"","revert_log":[]}'`. L141-142 commits both fields atomically: `.unlocked_plugin = $p | .checkpoint_ref = $c`. The checkpoint enables safe-lock revert; the unlocked_plugin field drives plugin-guard's edit allowlist.]*
+The agent issues a structured `AskUserQuestion` prefixed `[PLUGIN-LOCK] <plugin_name>` with a body long enough to surface the cognitive work (currently a 100-word floor in the prototype, configurable) explaining what flaw is being fixed, what files will be touched, and what the plugin's behavior will look like before vs after the edit. The operator approves; `lock-manager.sh` captures a `git rev-parse HEAD` SHA as `checkpoint_ref` and writes the unlocked plugin name into `plugin_integrity`'s hidden `data.json`. From that moment, edits inside the unlocked plugin proceed; edits anywhere else under `.claude/plugins/` are rejected. *[ref: plugin-lock-100-word-floor-checkpoint-data | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:127,141-142,189-192 | L189-190 enforce the 100-word floor: `q_word_count=$(echo "$QUESTION" | wc -w); if [[ "$q_word_count" -lt "${PLUGIN_LOCK_WORD_MIN:-100}" ]]`. L191-192 emit the block voice: "[PLUGIN-LOCK] question body is $q_word_count words; minimum is ${PLUGIN_LOCK_WORD_MIN:-100}. WHY: a short lock request hides the cognitive work that should precede every plugin unlock." L127 shows the data.json state schema: `'{"unlocked_plugin":"","checkpoint_ref":"","unlocked_test":"","revert_log":[]}'`. L141-142 commits both fields atomically: `.unlocked_plugin = $p | .checkpoint_ref = $c`. The checkpoint enables safe-lock revert; the unlocked_plugin field drives plugin-guard's edit allowlist.]*
 
-**Gmode-only for existing plugins.** Editing an existing plugin requires the operator to enter gmode first (`[GMODE]` with a 100-word justification). New plugin creation is different — that is a full multi-cycle OPEVC job with its own cycle-1 PLUGIN-LOCK. The asymmetry codifies a real distinction: editing existing plugin code alters the agent's own enforcement substrate, which is meta-cognitive work that belongs outside normal OPEVC cycles. Creating a new plugin fits inside an OPEVC cycle because the new plugin's code is being authored, not modified. *[ref: plugin-lock-requires-gmode-for-existing | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:202-213 | L202 comment: "### Gmode-only-lock check (existing plugin edits require gmode — D71, 2026-05-13)." L204: "already on disk, require current_phase == \"gmode\". New plugin creation is part of a [different path]." L213 emits the block: "[PLUGIN-LOCK] $target (existing plugin) requires gmode — currently in $current_phase. WHY: edits to existing plugin code happen in deliberate gmode sessions, NOT inside normal OPEVC cycles where the phase-section discipline applies. WHAT TO DO: ask [GMODE] first with a 100+ word justification." The asymmetry is enforced: existing-plugin edits gated on gmode; new-plugin birth has its own path.]*
+**Gmode-only for existing plugins.** Editing an existing plugin requires the operator to enter gmode first (`[GMODE]` with a body long enough to surface the cognitive work — currently a 100-word floor in the prototype, configurable). New plugin creation is different — that is a full multi-cycle OPEVC job with its own cycle-1 PLUGIN-LOCK. The asymmetry codifies a real distinction: editing existing plugin code alters the agent's own enforcement substrate, which is meta-cognitive work that belongs outside normal OPEVC cycles. Creating a new plugin fits inside an OPEVC cycle because the new plugin's code is being authored, not modified. *[ref: plugin-lock-requires-gmode-for-existing | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:202-213 | L202 comment: "### Gmode-only-lock check (existing plugin edits require gmode — D71, 2026-05-13)." L204: "already on disk, require current_phase == \"gmode\". New plugin creation is part of a [different path]." L213 emits the block: "[PLUGIN-LOCK] $target (existing plugin) requires gmode — currently in $current_phase. WHY: edits to existing plugin code happen in deliberate gmode sessions, NOT inside normal OPEVC cycles where the phase-section discipline applies. WHAT TO DO: ask [GMODE] first with a 100+ word justification." The asymmetry is enforced: existing-plugin edits gated on gmode; new-plugin birth has its own path.]*
 
 ---
 
@@ -48,7 +48,7 @@ Two-tier lock — PLUGIN-LOCK opens the cell; TEST-LOCK opens a specific test fi
 
 The agent invokes `lock-cmd.sh` when edits are done. The plugin's full test suite runs at the lock boundary; on PASS the change commits and the lock clears; on FAIL the working tree rolls back to the captured `checkpoint_ref`, the plugin's hidden state records a structured revert entry, and a voice line writes to the operator's terminal. The agent does not get to ship a plugin change that breaks the plugin's own self-test.
 
-The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by the same mechanism, with the test suite as the gate. There is no override; there is no "commit anyway"; there is no "I will fix it next session." The change either passes the tests it inherited or it disappears from the working tree.
+The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by the same mechanism, with the test suite as the gate. There is no inline override; the deliberate `[GMODE]` route covered above is the only escape, and it leaves an auditable trail. There is no "commit anyway"; there is no "I will fix it next session." The change either passes the tests it inherited or it disappears from the working tree.
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard flowchart — the safe-lock cycle's pass-or-revert branch.
@@ -84,13 +84,15 @@ The lock can be refused before it opens. Each plugin keeps the 2000-word-capped 
 
 PLUGIN-LOCK gates the operator-approved entry. TEST-LOCK forces deliberate test edits. Safe-lock makes every commit conditional on tests passing or reverts the working tree. The historian ratchet refuses unlock when the plugin's narrative has fallen behind.
 
-Four parts, four risks closed:
+Each part, a risk closed:
 - An edit landing without operator approval (closed by PLUGIN-LOCK).
 - A correctly-failing test silently rewritten to mask a broken change (closed by TEST-LOCK).
 - A change committing despite a failing test (closed by safe-lock).
 - A plugin getting edited without anyone re-reading the cycles that produced its current shape (closed by the historian ratchet).
 
 Plugin_integrity itself follows the same ceremony when its own hooks are edited — there is no privileged path. The plugin that enforces the ceremony submits to it. That is what makes the ceremony credible: it is not enforcement that lives outside the system; it is enforcement built into the same cell membrane every other plugin lives behind.
+
+A research lab's seed could install the same ceremony around an `experiment-protocol` plugin — `[PROTOCOL-LOCK]` opens the edit session; `[REVIEWER-LOCK]` gates changes to the validator tests; the safe-lock cycle reverts if the IRB-checklist tests fail; the historian ratchet forces re-narration of the protocol's evolution before another edit lands.
 
 ---
 

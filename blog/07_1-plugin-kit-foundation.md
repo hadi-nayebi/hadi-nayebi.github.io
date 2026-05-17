@@ -30,7 +30,7 @@ These three properties are how the cell wall stays porous (organs talk through d
 
 ## The journey ahead
 
-Essay 7 splits into nine short sub-essays:
+Essay 7 splits into a short sub-essay series (currently nine parts):
 
 - **Essay 7.1 — Plugin Kit Foundation** *(you are here)* — the cell-as-system frame + this map
 - [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK
@@ -47,6 +47,8 @@ Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay —
 ---
 
 We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the three organs every plugin must have.
+
+A consulting practice could organize its own seed agent's plugin around a `[CLIENT-INTAKE]` ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK, test-revert, dual voices) plus operator discipline.
 
 ---
 

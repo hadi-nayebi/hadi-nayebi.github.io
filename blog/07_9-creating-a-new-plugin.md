@@ -22,11 +22,13 @@ og_image: "assets/images/blog/agent-anatomy.png"
 
 ## Two Paths to a New Plugin
 
-When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first ([Essay 8](08-from-apprentice-to-architect.html) covers the four maturation stages). The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs and the seed has learned its shape, the job graduates to multi-cycle. When the multi-cycle plan stabilizes, the job graduates to a `.yaml` plan that injects job-specific context at every phase entry. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin.
+When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first ([Essay 8](08-from-apprentice-to-architect.html) covers the maturation stages). The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs and the seed has learned its shape, the job graduates to multi-cycle. When the multi-cycle plan stabilizes, the job graduates to a `.yaml` plan that injects job-specific context at every phase entry. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin.
 
-That is one path to a new plugin: a job that has matured through all three earlier stages and now needs phase-cognition customization the voice injection cannot deliver.
+That is one path to a new plugin: a job that has matured through the earlier maturation stages and now needs phase-cognition customization the voice injection cannot deliver.
 
-The other path is direct: you notice a gap in the seed's substrate and tell the seed to fix it — paying off the promise [Essay 5.1](05_1-the-two-layer-foundation.html) planted, that the always-on layer is addable: a sixth plugin slots in by exposing its own public commands, not by rewiring anyone else's.
+The other path is direct: you notice a gap in the seed's substrate and tell the seed to fix it — paying off the promise [Essay 5.1](05_1-the-two-layer-foundation.html) planted, that the always-on layer is addable: another always-on plugin slots in by exposing its own public commands, not by rewiring anyone else's.
+
+A consulting practice's seed might gain a `client-engagement-tracker` plugin this way; a research lab's seed might gain an `experiment-protocol` plugin; a writer's seed might gain a `manuscript-stage-gate`. Each plugin's organ list is the same kit; each plugin's substance is the operator's domain.
 
 ---
 
@@ -40,7 +42,7 @@ The seed performs the PLUGIN-LOCK ceremony at the moment EXECUTE needs to begin 
 
 ---
 
-## The Two-Lock Pattern for Phase Plugins
+## Phase Plugins Need a Second Lock
 
 If the new plugin extends the phase system (e.g., a new `phase_research` between OBSERVE and PLAN — exactly the customization [Essay 6.1](06_1-phasic-foundation.html) named when it said the phase count is the prototype, not the architecture), one lock builds the cell, and a *second* lock on `phasic_system` updates the orchestrator's forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this — most plugin systems make wiring invisible; this architecture makes wiring explicit.
 
@@ -87,7 +89,7 @@ Once the lock closes, the plugin exists as files on disk — but no hook fires y
 
 ## The Honest Framing
 
-This is not a couple of editing sessions. A real new phase plugin is closer to a multi-cycle deep job: several editing sessions for the guard logic, more for the tracker and sensor, a hundred-plus lines of voice across `hooks/` and `scripts/`, twenty to thirty test assertions across half a dozen test files, plus the orchestrator update for the two-lock pattern. The kit's gift is that the work is *bounded*, not that the work is small. Every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest.
+This is not a couple of editing sessions. A real new phase plugin is closer to a multi-cycle deep job: several editing sessions for the guard logic, more for the tracker and sensor, substantial voice content across the plugin's hooks and scripts, a meaningful test-assertion footprint across the plugin's test files, plus the orchestrator update for the two-lock pattern. The kit's gift is that the work is *bounded*, not that the work is small. Every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest.
 
 What makes the work feel different from a from-scratch build is that the operator and seed are not inventing the structure. The cell template knows what cognitive organs every plugin needs. The operator's seed is filling each organ with the substance for *this* plugin's concern. New users guide that filling-in through conversation; the seed records the conversation, learns the operator's preferences, and over time, the operator's seed becomes one that knows *how the operator wants plugins shaped*.
 

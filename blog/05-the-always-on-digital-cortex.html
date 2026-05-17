@@ -172,7 +172,7 @@
 
                         <p>The always-on role to keep in mind here is the test gate: every plugin code change passes through it, regardless of who initiated the edit or which phase the agent is in. When an edit lands inside a plugin and the unlocked state closes, the plugin&rsquo;s full test suite runs &mdash; pass and the change commits, fail and the working tree rolls back to the captured checkpoint with a structured revert entry recorded in the plugin&rsquo;s hidden state.<sup class="ref-marker" title="ref: every-plugin-code-change-test-gate | .claude/plugins/plugin_integrity/hooks/plugin-guard.sh:458-472 + .claude/plugins/plugin_integrity/scripts/safe-lock.sh:283-305 | Auto-lock trigger (plugin-guard.sh:458-472): when an edit lands outside the unlocked plugin, plugin-guard fires `bash &quot;$SAFE_LOCK_SH&quot; &quot;$current&quot;` (line 468). Voice message at line 467: &quot;AUTO-LOCK: Editing outside plugins/ — locking $current (running tests).&quot; Test-then-commit-or-revert branch (safe-lock.sh:283-305): `if [[ &quot;$all_pass&quot; == &quot;true&quot; ]]` → `git commit` + clear lock; `else` → revert with `log_revert` entry. The gate is the always-on guarantee.">&#9432;</sup></p>
 
-                        <p>The fuller ceremony &mdash; the <code>[PLUGIN-LOCK]</code> unlock question, the historian ratchet, the documentation-edit caveats, the full lock-cmd flow &mdash; is deconstructed in <a href="07-the-plugin-kit.html">Essay 7</a>.</p>
+                        <p>The fuller ceremony &mdash; the <code>[PLUGIN-LOCK]</code> unlock question, the historian ratchet, the documentation-edit caveats, the full lock-cmd flow &mdash; is deconstructed in <a href="07_1-plugin-kit-foundation.html">Essay 7</a>.</p>
 
                         <p><strong><code>brain_guard</code></strong> &mdash; the always-on plugin that owns the <em>self-compaction</em> we opened the essay with. It works by watching context usage on every tool call and progressively tightening the agent&rsquo;s grip on tools as the window fills. The whole mechanism fires well before Claude Code&rsquo;s default auto-compact at 100%, which lets the seed agent operate even when the user is away from the terminal.<sup class="ref-marker" title="ref: brain-guard-the-always-on-plugin | .claude/plugins/brain_guard/hooks/context-sensor.sh:6-21 | Hook’s own comment: “Every time the agent calls any tool (Read, Edit, Bash, anything), Claude Code fires PreToolUse hooks BEFORE the tool runs... print a friendly reminder... before the HARD gate at 250k blocks the Read tool.”">&#9432;</sup></p>
 
@@ -421,7 +421,7 @@
                                 <div class="date">May 2026 &bull; 27 min read</div>
                             </div>
                         </a>
-                        <a href="07-the-plugin-kit.html" class="article-card-link">
+                        <a href="07_1-plugin-kit-foundation.html" class="article-card-link">
                             <div class="article-card">
                                 <div class="article-card-tags">
                                     <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>

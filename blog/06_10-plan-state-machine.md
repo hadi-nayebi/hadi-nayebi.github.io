@@ -133,7 +133,7 @@ This is the architect's pivot point. Everything from [Essay 5.1's two-layer foun
 
 The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design? How do you grow a new always-on plugin without breaking the substrate? How do you author your own marker, your own coaching voice, your own subagent definition, and have the rest of the architecture accept them as natively as the prototype's own?
 
-[Essay 7 &mdash; The Plugin Kit](07-the-plugin-kit.html) is the answer. The brain is built. The kit is what lets you grow new pieces of it safely.
+[Essay 7 &mdash; The Plugin Kit](07_1-plugin-kit-foundation.html) is the answer. The brain is built. The kit is what lets you grow new pieces of it safely.
 
 Next.
 
@@ -142,7 +142,7 @@ Next.
 *Essay 6.10 — The Markov Phasic Brain, Part 10 of 10.*
 
 *Previous: [Essay 6.9 — Gmode](06_9-gmode.html) — the off-cycle lane that drops the phase gates for deliberate maintenance work.*
-*Next: [Essay 7 — The Plugin Kit](07-the-plugin-kit.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*
+*Next: [Essay 7 — The Plugin Kit](07_1-plugin-kit-foundation.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*
 
 
 

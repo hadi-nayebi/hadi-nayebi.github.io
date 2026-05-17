@@ -32,7 +32,7 @@ When the agent moves off the plugin — a phase transition, a session end, or an
 
 That gate is the most universal pattern in the seed-agent prototype. Every plugin's code is protected by it. Every architect who adopts this architecture inherits it.
 
-The fuller ceremony — the `[PLUGIN-LOCK]` unlock question, the historian ratchet, the full lock-cmd flow — is deconstructed across two threads. [Essay 5.8](05_8-historian-ratchet.html) shows how three single-concern plugins compose into the historian ratchet, and the [Essay 7 series](07-the-plugin-kit.html) on the plugin kit (currently a monolith; we will split it into a sub-essay series the same way we split Essay 5) walks the full anatomy of every plugin. What `plugin_integrity` contributes to that ceremony is what this essay names: the always-on test gate behind every plugin edit and the auto-revert backstop when the tests fail. The rest of the ceremony belongs to other plugins that compose through it.
+The fuller ceremony — the `[PLUGIN-LOCK]` unlock question, the historian ratchet, the full lock-cmd flow — is deconstructed across two threads. [Essay 5.8](05_8-historian-ratchet.html) shows how three single-concern plugins compose into the historian ratchet, and the [Essay 7 series](07_1-plugin-kit-foundation.html) on the plugin kit (currently a monolith; we will split it into a sub-essay series the same way we split Essay 5) walks the full anatomy of every plugin. What `plugin_integrity` contributes to that ceremony is what this essay names: the always-on test gate behind every plugin edit and the auto-revert backstop when the tests fail. The rest of the ceremony belongs to other plugins that compose through it.
 
 ## Friction calibrated by danger
 
