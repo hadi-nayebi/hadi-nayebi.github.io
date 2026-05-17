@@ -27,7 +27,15 @@ from pathlib import Path
 # Update when a new post is added. The active post is auto-detected from the input slug.
 SIDEBAR_POSTS = [
     ("08-from-apprentice-to-architect",  "From Apprentice to Architect",          "May 2026",      "27 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("07-the-plugin-kit",                "The Plugin Kit",                        "May 2026",      "32 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("07_1-plugin-kit-foundation",       "Essay 7.1 — Plugin Kit Foundation",               "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_2-skeleton-claudemd-hooks-scripts", "Essay 7.2 — Skeleton: CLAUDE.md, Hooks, Scripts", "May 2026", "9 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_3-dual-voice-architecture",     "Essay 7.3 — The Dual Voice Architecture",         "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_4-data-json-hidden-state",      "Essay 7.4 — data.json: The Hidden State",         "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_5-docs-and-historian",          "Essay 7.5 — docs/ and the Historian",             "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_6-agents-and-80-20-budget",     "Essay 7.6 — agents/ and the 80/20 Dispatch Budget", "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_7-smaller-organs-and-wiring",   "Essay 7.7 — Smaller Organs and Brain-Root Wiring", "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_8-lock-ceremony",               "Essay 7.8 — The Lock Ceremony",                   "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_9-creating-a-new-plugin",       "Essay 7.9 — Building a New Plugin",               "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
     ("06_1-phasic-foundation",           "Essay 6.1 — Phasic Foundation",                   "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_2-discipline-and-map",          "Essay 6.2 — The Discipline and the Map",          "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_3-observe",                     "Essay 6.3 — OBSERVE: Read Wide, Write Once",      "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),

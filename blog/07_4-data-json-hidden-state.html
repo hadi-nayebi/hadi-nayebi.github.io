@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data.json — The Hidden State | Hadosh Academy</title>
+    <meta name="description" content="data.json — The Hidden State — Hadosh Academy seed agent essay.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/07_4-data-json-hidden-state.html">
+    <meta property="og:title" content="data.json — The Hidden State | Hadosh Academy">
+    <meta property="og:description" content="data.json — The Hidden State — Hadosh Academy seed agent essay.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/07_4-data-json-hidden-state.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="data.json — The Hidden State | Hadosh Academy">
+    <meta name="twitter:description" content="data.json — The Hidden State — Hadosh Academy seed agent essay.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../css/styles.css?v=20260513">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "data.json — The Hidden State",
+                "datePublished": "2026-05-13",
+                "dateModified": "2026-05-13",
+                "author": {
+                    "@type": "Person",
+                    "name": "Hadi Nayebi",
+                    "url": "https://hadi-nayebi.github.io/about.html"
+                },
+                "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
+                "description": "data.json — The Hidden State — Hadosh Academy seed agent essay.",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/07_4-data-json-hidden-state.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
+                    { "@type": "ListItem", "position": 3, "name": "data.json — The Hidden State", "item": "https://hadi-nayebi.github.io/blog/07_4-data-json-hidden-state.html" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../agents.html">Agents</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="container">
+            <div class="blog-layout">
+                <!-- Main Article -->
+                <div class="article-content">
+                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+
+                    <h1>data.json — The Hidden State</h1>
+                    <div class="article-meta">
+                        <span>May 2026</span>
+                        <span>&bull;</span>
+                        <span>4 min</span>
+                        <div class="article-meta-tags">
+                            <span class="tag tag-audience" title="">Tier 2</span>
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Seed Agent</span>
+                            <span class="tag">Plugins</span>
+                            <span class="tag">Plugin Kit</span>
+                            <span class="tag">State</span>
+                        </div>
+                    </div>
+                    <div class="article-authors">
+                        By Hadi Nayebi &amp; Claude Opus 4.7
+                    </div>
+
+                    <div class="article-audio" style="opacity: 0.55;">
+                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (4 min read).</span>
+                    </div>
+
+                    <div class="article-body">
+
+                        <p><em>Essay 7.4 &mdash; The Plugin Kit, Part 4 of 9.</em></p>
+
+                        <hr>
+
+                        <p><a href="07_3-dual-voice-architecture.html">Essay 7.3</a> opened the two voice surfaces &mdash; one for the LLM, one for the operator &mdash; and named Lock 13 as the policy that governs when soft coaching hardens into a deterministic block. This sub-essay opens the organ that carries the plugin&rsquo;s <em>state</em> &mdash; and the discipline that keeps it from being corrupted by concurrent reads, partial writes, or cross-plugin reach-arounds.</p>
+
+                        <hr>
+
+                        <h2><code>data.json</code> &mdash; The Hidden State</h2>
+
+                        <p><strong>What it is.</strong> The plugin&rsquo;s private runtime state. The active focused job, the tier counter, the summary chain, the lock manifest. JSON-encoded, written atomically, lives only on the operator&rsquo;s machine, gitignored. <sup class="ref-marker" title="ref: data-json-gitignored-per-machine | .gitignore:10-12 | The repo&#x27;s top-level `.gitignore` contains three lines: `**/data.json`, `**/data.json.lock`, `**/data.json.tmp` — gitignoring not only the state file itself but also its lockfile and temp file. The state is per-machine and never enters the repo; this is enforced at the repo level with `**/` globs, so every plugin&#x27;s `data.json` inherits the discipline automatically. (Individual plugins like `plugin_integrity` may also carry their own `.gitignore` with `data.json` for extra clarity, but the top-level rule is what actually matters.)">&#9432;</sup></p>
+
+                        <p><strong>Who reads it.</strong> ONLY the plugin&rsquo;s own scripts. No other plugin reaches into this file. The discipline is structural: cross-plugin queries route through the plugin&rsquo;s published read-only commands (<code>job.sh focused</code>, <code>phase.sh current</code>), never through <code>cat data.json</code> from outside.</p>
+
+                        <p><strong>Who writes it.</strong> ONLY the plugin&rsquo;s own scripts. Direct file-system writes are forbidden. Every mutation follows the same protocol: <code>flock</code> on a <code>/tmp/</code>-located lockfile (to handle concurrent access across hook fires) → read current state → transform with <code>jq</code> into a temp file → validate the temp with <code>jq empty</code> → atomic <code>mv</code> over the live file. The reader never sees a partial state. If parsing fails at read time, the gateway script rebuilds the file from defaults rather than blocking the agent. <sup class="ref-marker" title="ref: data-json-flock-tmp-lockfile | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:39-44,81-83 | L39-43 comment: &quot;Lockfile lives in /tmp/ to avoid polluting the repo&#x27;s git status. Path-hashed from $DATA_FILE so each project gets a unique lock; flock is per-machine advisory so this is the correct scope.&quot; L44 defines the path: `LOCKFILE=&quot;/tmp/plugin-integrity${DATA_FILE//\//-}.lock&quot;`. L81-83 declares the `flock_data` helper opening fd 9 on $LOCKFILE with `flock -w 5 9` (5-second timeout). On timeout, emits a `lock-acquisition-timeout` voice and exits 1.">&#9432;</sup></p>
+
+                        <p><strong>What it depends on.</strong> The plugin&rsquo;s scripts (which mediate every read and write). The shared <code>lib/voice-helper/</code> (for error messages when validation or atomicity fails).</p>
+
+                        <p><strong>Why the mandatory script-mediation.</strong> Multiple subsystems may fire hooks against the same <code>data.json</code> within milliseconds of each other (e.g., two PreToolUse hooks from the same plugin both reading state). If both write directly to the file, one overwrites the other&rsquo;s update. The <code>flock</code> discipline serializes all mutations through the script gateway. Reads also go through scripts so corruption is handled fail-safe: when <code>data.json</code> is malformed, the script rebuilds rather than crashing the agent. <sup class="ref-marker" title="ref: data-json-fail-safe-rebuild-on-malformed | .claude/plugins/phasic_system/scripts/phase.sh:85,92-94 | L85: `printf &#x27;%s\n&#x27; &#x27;{&quot;jobs&quot;:[]}&#x27; &gt; &quot;$DATA_TMP_FILE&quot;` — the default state. L92 emits the warning voice: &quot;[phasic_system] WARNING: data.json was missing or corrupt — rebuilding state.&quot; L94 escalates to ERROR only if the rebuild itself fails: &quot;[phasic_system] ERROR: failed to rebuild $DATA_FILE.&quot; The script chooses fail-safe-rebuild over fail-crash; the agent never gets blocked by a corrupt JSON state.">&#9432;</sup></p>
+
+                        <p><strong>The new-plugin lens.</strong> When you guide your seed to add a plugin that needs state, the seed designs the state&rsquo;s <em>interface</em> first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use? Then <code>data.json</code> becomes the cache the scripts operate on. Tell your seed: <em>if you cannot enumerate what reads each field and what writes each field, the design is not done yet.</em></p>
+
+                        <p><strong>The minimum-viable plugin shape.</strong> A plugin without <code>data.json</code> is stateless &mdash; it carries no runtime bookkeeping. <code>question_discipline</code> is again the example: pure gate, no state, no <code>data.json</code>. The absence signals stateless enforcement.</p>
+
+                        <hr>
+
+                        <p>State is private. Mutation is serialized. Cross-plugin queries route through the script CLI, never through the raw file. The next sub-essay opens the organ where the plugin&rsquo;s <em>narrated knowledge</em> lives &mdash; <code>docs/</code>, including the word-capped <code>evolution.md</code> and the historian ratchet that auto-injects it before every edit.</p>
+
+                        <hr>
+
+                        <p><em>Essay 7.4 &mdash; The Plugin Kit, Part 4 of 9.</em></p>
+
+                        <p><em>Previous: <a href="07_3-dual-voice-architecture.html">Essay 7.3 &mdash; The Dual Voice Architecture</a> &mdash; two voice.xml files, one for the LLM and one for the operator.</em> <em>Next: <a href="07_5-docs-and-historian.html">Essay 7.5 &mdash; <code>docs/</code> and the Historian</a> &mdash; <code>evolution.md</code> word-capped + the historian ratchet.</em></p>
+
+                    </div>
+
+                    <!-- Comments (Giscus) -->
+                    <div class="article-comments">
+                        <h2>Comments</h2>
+                        <script src="https://giscus.app/client.js"
+                            data-repo="hadi-nayebi/hadi-nayebi.github.io"
+                            data-repo-id="R_kgDOHL_tnQ"
+                            data-category="General"
+                            data-category-id="DIC_kwDOHL_tnc4C3cRQ"
+                            data-mapping="pathname"
+                            data-strict="0"
+                            data-reactions-enabled="1"
+                            data-emit-metadata="0"
+                            data-input-position="top"
+                            data-theme="dark"
+                            data-lang="en"
+                            data-loading="lazy"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Latest Articles</div>
+                    <div>
+                        <div class="article-card active">
+                            <div class="article-card-tags">
+                                <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
+                                <span class="tag tag-sm">Architecture</span>
+                                <span class="tag tag-sm">Plugins</span>
+                                <span class="tag tag-sm">Seed Agent</span>
+                                <span class="tag tag-sm">Plugin Kit</span>
+                            </div>
+                            <div class="sidebar-card-position">You are here</div>
+                            <h3>Essay 7.4 — data.json: The Hidden State</h3>
+                            <div class="date">May 2026 &bull; 4 min read</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/theme-manager.js?v=20260513"></script>
+    <script src="../js/components.js?v=20260513"></script>
+</body>
+
+</html>

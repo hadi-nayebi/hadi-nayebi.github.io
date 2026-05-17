@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dual Voice Architecture | Hadosh Academy</title>
+    <meta name="description" content="The Dual Voice Architecture — Hadosh Academy seed agent essay.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/07_3-dual-voice-architecture.html">
+    <meta property="og:title" content="The Dual Voice Architecture | Hadosh Academy">
+    <meta property="og:description" content="The Dual Voice Architecture — Hadosh Academy seed agent essay.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/07_3-dual-voice-architecture.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Dual Voice Architecture | Hadosh Academy">
+    <meta name="twitter:description" content="The Dual Voice Architecture — Hadosh Academy seed agent essay.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../css/styles.css?v=20260513">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "The Dual Voice Architecture",
+                "datePublished": "2026-05-13",
+                "dateModified": "2026-05-13",
+                "author": {
+                    "@type": "Person",
+                    "name": "Hadi Nayebi",
+                    "url": "https://hadi-nayebi.github.io/about.html"
+                },
+                "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
+                "description": "The Dual Voice Architecture — Hadosh Academy seed agent essay.",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/07_3-dual-voice-architecture.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
+                    { "@type": "ListItem", "position": 3, "name": "The Dual Voice Architecture", "item": "https://hadi-nayebi.github.io/blog/07_3-dual-voice-architecture.html" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../agents.html">Agents</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="container">
+            <div class="blog-layout">
+                <!-- Main Article -->
+                <div class="article-content">
+                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+
+                    <h1>The Dual Voice Architecture</h1>
+                    <div class="article-meta">
+                        <span>May 2026</span>
+                        <span>&bull;</span>
+                        <span>5 min</span>
+                        <div class="article-meta-tags">
+                            <span class="tag tag-audience" title="">Tier 2</span>
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Seed Agent</span>
+                            <span class="tag">Plugins</span>
+                            <span class="tag">Plugin Kit</span>
+                            <span class="tag">Voice</span>
+                        </div>
+                    </div>
+                    <div class="article-authors">
+                        By Hadi Nayebi &amp; Claude Opus 4.7
+                    </div>
+
+                    <div class="article-audio" style="opacity: 0.55;">
+                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (5 min read).</span>
+                    </div>
+
+                    <div class="article-body">
+
+                        <p><em>Essay 7.3 &mdash; The Plugin Kit, Part 3 of 9.</em></p>
+
+                        <hr>
+
+                        <p><a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2</a> opened the universal skeleton &mdash; CLAUDE.md, hooks, scripts &mdash; and named the PLUGIN-LOCK ceremony that gates every edit to them. This sub-essay opens the organ that almost every plugin doubles: <code>voice.xml</code>. Two files, same XML schema, two audiences. Getting them confused is the most common new-user error in plugin authoring.</p>
+
+                        <hr>
+
+                        <h2><code>voice.xml</code> × Two &mdash; The Dual Surface</h2>
+
+                        <p>This is the organ that confuses new users most, and the one where the relational anatomy matters most.</p>
+
+                        <p><strong>The two voice surfaces are different files with different audiences.</strong> <code>hooks/voice.xml</code> and <code>scripts/voice.xml</code> look nearly identical structurally (both XML, both with <code>&lt;coaching&gt;</code>, <code>&lt;block&gt;</code>, <code>&lt;info&gt;</code>, <code>&lt;entry&gt;</code> elements identified by <code>id</code>), but they serve different consumers. <sup class="ref-marker" title="ref: dual-voice-surfaces-share-schema | .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | `ls .claude/plugins/*/{hooks,scripts}/voice.xml` shows ten plugins shipping BOTH surfaces (brain_guard, interaction_summary, job_core, phasic_system, plugin_integrity, and all five phase plugins); question_discipline ships only `hooks/voice.xml` because it has no `scripts/` CLI (cf. B7 §scripts paragraph). Both files use the same XML schema family — agent-facing `&lt;coaching id=&quot;…&quot;&gt;`, `&lt;block id=&quot;…&quot;&gt;`, `&lt;info id=&quot;…&quot;&gt;`, `&lt;entry id=&quot;…&quot;&gt;`, plus utility `&lt;error id=&quot;…&quot;&gt;` and `&lt;warning id=&quot;…&quot;&gt;` for fallback paths — confirmed by grep counts (plugin_integrity/hooks/voice.xml: 3 coaching + 29 block + 15 info + 2 entry + 3 error = 52 elements total).">&#9432;</sup></p>
+
+                        <h3><code>hooks/voice.xml</code> &mdash; The Agent-Facing Surface</h3>
+
+                        <p><strong>What it is.</strong> Strings the plugin emits at hook fire-time. Coaching voices that nudge the agent at a specific moment (entering a phase, crossing a context tier, having just dispatched a subagent). Blocks that refuse the agent when a guard fires.</p>
+
+                        <p><strong>Who reads it.</strong> The LLM agent. Voices delivered via hooks land in the agent&rsquo;s context window &mdash; either as soft injections via <code>additionalContext</code> JSON (coaching) or as exit-2 stderr refusals (blocks). The LLM sees the string mid-turn and reacts.</p>
+
+                        <p><strong>Who writes it.</strong> Mostly CONDENSE step 4 (which consumes <code>[VOICE-UPDATE]</code> markers other phases emit). The historian subagent also updates voice files when the plugin&rsquo;s evolution requires new coaching. PLUGIN-LOCK is the underlying gate for any edit. <sup class="ref-marker" title="ref: condense-step-4-voice-update-owner | .claude/plugins/phase_condense/agents/condense-voice-updater.md + .claude/plugins/plugin_integrity/agents/historian-*.md | The condense-voice-updater agent definition exists at the cited path (it is the subagent CONDENSE step 4 dispatches for `[VOICE-UPDATE]` marker consumption). historian-phase-*.md, historian-plugin-integrity.md, historian-brain-guard.md, historian-job-core.md, historian-interaction-summary.md, historian-question-discipline.md, historian-phasic-system.md all exist under plugin_integrity/agents/ — each plugin&#x27;s historian re-narrates its evolution.md AND can update its voice.xml when the plugin&#x27;s evolution requires new coaching.">&#9432;</sup></p>
+
+                        <p><strong>What it depends on.</strong> The shared <code>lib/voice-helper/</code> helper (the <code>get_voice</code> function that loads voice.xml entries and substitutes <code>{{var}}</code> placeholders). <sup class="ref-marker" title="ref: voice-helper-get-voice-var-substitution | .claude/plugins/lib/voice-helper/voice-helper.sh:60,113-122 | The `get_voice` function header comment (L60): &quot;var=value — Optional pairs. Replaces {{var}} placeholders in the extracted text.&quot; The substitution block (L113-122): &quot;--- Variable substitution: replace {{var}} placeholders --- Caller passes key=value pairs. Each {{key}} in the text is replaced with value.&quot; Every plugin&#x27;s hook scripts source this single shared helper for voice rendering.">&#9432;</sup></p>
+
+                        <h3><code>scripts/voice.xml</code> &mdash; The Operator-Facing Surface</h3>
+
+                        <p><strong>What it is.</strong> Strings the plugin&rsquo;s CLI prints to the operator&rsquo;s terminal. When <code>safe-lock.sh</code> reverts a test failure, the operator sees a short status line in their terminal. The text is what the operator&rsquo;s eyes read in the shell. <sup class="ref-marker" title="ref: scripts-voice-cli-operator-surface | .claude/plugins/plugin_integrity/scripts/voice.xml | grep counts in plugin_integrity/scripts/voice.xml: 14 total elements (6 info + 7 error + 1 warning; vs 52 in hooks/voice.xml of the same plugin) — the operator-facing surface is intentionally sparser because operator messages are status lines, not coaching paragraphs. Every plugin shipping a `scripts/` dir also ships `scripts/voice.xml` so CLI verbs (`safe-lock.sh`, `drift-check.sh`, etc.) print human-readable status without hard-coding strings into the scripts.">&#9432;</sup></p>
+
+                        <p><strong>Who reads it.</strong> The human operator. Terminal output. Not injected into the LLM&rsquo;s context &mdash; printed to stderr or stdout of the shell, visible only to the person at the keyboard.</p>
+
+                        <p><strong>Who writes it.</strong> Same ceremony as hooks/voice.xml.</p>
+
+                        <p><strong>What it depends on.</strong> Same voice-helper.</p>
+
+                        <h3>Why the split matters</h3>
+
+                        <p>Same intent &mdash; both surfaces carry the plugin&rsquo;s voice. Different audiences &mdash; the LLM consumes structured paragraphs that frame the situation and propose action; the human consumes status lines that flag what happened. Wording often differs between the two for the same conceptual event. Auditor scripts that grep voice ids have to look in both files; auditing only one false-positives every id that lives in the other. <sup class="ref-marker" title="ref: voice-orphan-audit-must-grep-both-surfaces | .claude/plugins/plugin_integrity/tests/test-voice-orphan-audit.sh:14-15,32 | The audit declares both surfaces explicitly: `HOOKS_VOICE=&quot;$PLUGIN_DIR/hooks/voice.xml&quot;` (L14) + `SCRIPTS_VOICE=&quot;$PLUGIN_DIR/scripts/voice.xml&quot;` (L15), then the comment at L32 says &quot;Extract all element IDs from both voice.xml files using broader pattern.&quot; The auditor unions ids from both surfaces; auditing only one yields false-positives for ids that live in the other. The shared root-brain guidance in `.claude/CLAUDE.md` (&quot;Voice Architecture&quot; section) reinforces: &quot;voice audits MUST grep BOTH hooks/voice.xml + scripts/voice.xml&quot; — universal across the 10 plugins with dual surfaces.">&#9432;</sup></p>
+
+                        <figure class="blog-image image-placeholder-pending" style="margin: 2rem 0; padding: 1.25rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.18);">
+                          <div style="margin: 0 0 0.75rem 0; font-weight: 600; font-size: 0.8em; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Image pending &mdash; Coaching (soft, probabilistic) on the left, block (hard, deterministic) on the right, with a curving migration arrow between them</div>
+                          <div style="margin: 0 0 0.75rem 0; font-size: 0.88em; line-height: 1.55; color: rgba(255,255,255,0.78);"><em>Prompt:</em> Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines; pastel chalk for the two column panels (cyan = coaching/soft, magenta = block/hard); white chalk for ALL labels, XML tag text, arrows, and the migration caption; faint chalk dust at the edges; chalk sticks along the bottom. IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other XML tag names, voice names, or descriptors. Treat angle brackets in XML tags as literal text. Layout: Two vertical chalk panels side by side across the board. Left panel (cyan border, header IN WHITE CHALK reads exactly "coaching &mdash; soft layer"). Inside the panel, four short white-chalk lines stacked top to bottom: Line 1 (drawn as a small chalk XML element): "<coaching id=...>" Line 2: "injected into LLM context" Line 3: "probabilistic &mdash; can be ignored" Line 4: "LLM-interpreted" Below the four lines, draw a small chalk speech-bubble icon (the soft-nudge symbol). Right panel (magenta border, header IN WHITE CHALK reads exactly "block &mdash; hard layer"). Inside the panel, four short white-chalk lines stacked top to bottom: Line 1 (drawn as a small chalk XML element): "<block id=...>" Line 2: "stderr refusal" Line 3: "exit 2 &mdash; deterministic" Line 4: "agent&rsquo;s tool call fails" Below the four lines, draw a small chalk X-over-toolbox icon (the refusal symbol). Between the two panels, draw a single curving white-chalk arrow that arcs from the bottom of the left panel UP and OVER to the top of the right panel, with one short caption riding along the arrow&rsquo;s curve: "measurement → harden". Below both panels, a horizontal chalk note IN WHITE CHALK reads exactly: "Lock 13: over-engineering veto &mdash; soft must measurably fail before hard lands". Keep every line hand-drawn and slightly imperfect, never ruler-straight. STRICT NAME WHITELIST &mdash; the image must contain only these literal text strings as labels: "coaching &mdash; soft layer", "<coaching id=...>", "injected into LLM context", "probabilistic &mdash; can be ignored", "LLM-interpreted", "block &mdash; hard layer", "<block id=...>", "stderr refusal", "exit 2 &mdash; deterministic", "agent&rsquo;s tool call fails", "measurement → harden", "Lock 13: over-engineering veto &mdash; soft must measurably fail before hard lands", plus the caption below. No other words, file names, voice ids, or descriptors may appear.</div>
+                          <figcaption style="margin-top: 0.75rem; font-size: 0.88em; line-height: 1.5; color: rgba(255,255,255,0.7); font-style: italic;">Image 7.3. Soft layer coaches. Hard layer refuses. Patterns migrate left to right when data warrants.</figcaption>
+                        </figure>
+
+                        <p><strong>Soft vs hard at the element level.</strong> Inside each voice.xml, the <code>&lt;coaching&gt;</code> element produces a context injection &mdash; probabilistic, the LLM may absorb or ignore it. The <code>&lt;block&gt;</code> element produces a refusal &mdash; exit-2 stderr that fails the agent&rsquo;s tool call. The two element types coexist in the same file. The Lock-13 over-engineering veto says: new behavioral controls start as coaching; only when measurement shows coaching consistently fails does the control harden into a block. <sup class="ref-marker" title="ref: lock-13-over-engineering-veto-coaching-before-block | .claude/plugins/phase_condense/docs/principles.md:112 + .claude/plugins/phase_condense/docs/architecture-pattern.md:108,110 | architecture-pattern.md L108 states the principle: &quot;if body_edits / (body_edits + footer_edits) is consistently low across cycles, future condense rounds may harden a Step 1 gate blocking `--force` when body-absorption is insufficient. Voice-first precedence — Lock 13 prohibits premature hardening.&quot; L110: &quot;Cite: plan_condense_redesign.md Lock 9 + Lock 13.&quot; principles.md L112 anchors the same source. The pattern is plugin-wide brain-maturation policy: coaching first, hard block only after measurement justifies it.">&#9432;</sup></p>
+
+                        <p><strong>The yaml-injection pairing.</strong> When a job reaches stage 3 of maturation (multi-cycle with <code>.yaml</code> plan, covered in <a href="08-from-apprentice-to-architect.html">Essay 8</a>), the <code>.yaml</code> file&rsquo;s per-phase fields pair with voice ids by convention. The yaml field name maps to a voice id directly; voice-helper appends the matched value to the rendered voice text at phase entry. New yaml fields require no parser change &mdash; just add the matching voice id to the plugin&rsquo;s <code>hooks/voice.xml</code> and the seed agent picks up the new pairing on the next phase entry. <sup class="ref-marker" title="ref: yaml-cognition-v2-path-c-auto-couples | .claude/knowledge/phasic_system/yaml-cognition-v2-architecture.md:29,51,83 | L29: &quot;voice-helper.sh auto-couples yaml augmentation at render time. Plugins stay naive; yaml mentions voice ids directly; voice-helper appends yaml content to rendered voice text when the cache has a pairing.&quot; L51: &quot;If a pairing exists, APPEND its value to the rendered text with a blank-line separator.&quot; L83: plan-sensor &quot;calls get_voice(...) — those calls go through voice-helper which auto-appends yaml augmentation transparently. Plan-sensor doesn&#x27;t see or know about yaml. Path C transparency.&quot; Confirms the contract: yaml keys ARE voice ids (no transformation), voice-helper does the coupling, plugin voices stay naive.">&#9432;</sup></p>
+
+                        <p><strong>The new-plugin lens.</strong> When you guide your seed to add coaching for a new behavior, the seed writes the coaching string to <code>hooks/voice.xml</code> first (cheap, soft). If the operator later observes the coaching consistently fails to hold, the seed authors a <code>&lt;block&gt;</code> element in the same file for the hard variant &mdash; same id namespace, harder enforcement. The seed never invents a third voice surface. The two-file split is structural.</p>
+
+                        <hr>
+
+                        <p>Two voice surfaces, one shared schema, two audiences. The LLM consumes one; the operator consumes the other. The next sub-essay opens the organ that almost every plugin needs but that no plugin lets anyone else touch &mdash; the private <code>data.json</code> state.</p>
+
+                        <hr>
+
+                        <p><em>Essay 7.3 &mdash; The Plugin Kit, Part 3 of 9.</em></p>
+
+                        <p><em>Previous: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the universal organs governed by PLUGIN-LOCK.</em> <em>Next: <a href="07_4-data-json-hidden-state.html">Essay 7.4 &mdash; <code>data.json</code> &mdash; The Hidden State</a> &mdash; per-plugin private state, script-mediated.</em></p>
+
+                    </div>
+
+                    <!-- Comments (Giscus) -->
+                    <div class="article-comments">
+                        <h2>Comments</h2>
+                        <script src="https://giscus.app/client.js"
+                            data-repo="hadi-nayebi/hadi-nayebi.github.io"
+                            data-repo-id="R_kgDOHL_tnQ"
+                            data-category="General"
+                            data-category-id="DIC_kwDOHL_tnc4C3cRQ"
+                            data-mapping="pathname"
+                            data-strict="0"
+                            data-reactions-enabled="1"
+                            data-emit-metadata="0"
+                            data-input-position="top"
+                            data-theme="dark"
+                            data-lang="en"
+                            data-loading="lazy"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Latest Articles</div>
+                    <div>
+                        <div class="article-card active">
+                            <div class="article-card-tags">
+                                <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
+                                <span class="tag tag-sm">Architecture</span>
+                                <span class="tag tag-sm">Plugins</span>
+                                <span class="tag tag-sm">Seed Agent</span>
+                                <span class="tag tag-sm">Plugin Kit</span>
+                            </div>
+                            <div class="sidebar-card-position">You are here</div>
+                            <h3>Essay 7.3 — The Dual Voice Architecture</h3>
+                            <div class="date">May 2026 &bull; 7 min read</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/theme-manager.js?v=20260513"></script>
+    <script src="../js/components.js?v=20260513"></script>
+</body>
+
+</html>

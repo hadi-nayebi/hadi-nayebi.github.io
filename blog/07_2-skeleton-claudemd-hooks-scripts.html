@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skeleton: CLAUDE.md, Hooks, and Scripts | Hadosh Academy</title>
+    <meta name="description" content="Skeleton: CLAUDE.md, Hooks, and Scripts — Hadosh Academy seed agent essay.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/07_2-skeleton-claudemd-hooks-scripts.html">
+    <meta property="og:title" content="Skeleton: CLAUDE.md, Hooks, and Scripts | Hadosh Academy">
+    <meta property="og:description" content="Skeleton: CLAUDE.md, Hooks, and Scripts — Hadosh Academy seed agent essay.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/07_2-skeleton-claudemd-hooks-scripts.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Skeleton: CLAUDE.md, Hooks, and Scripts | Hadosh Academy">
+    <meta name="twitter:description" content="Skeleton: CLAUDE.md, Hooks, and Scripts — Hadosh Academy seed agent essay.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../css/styles.css?v=20260513">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "headline": "Skeleton: CLAUDE.md, Hooks, and Scripts",
+                "datePublished": "2026-05-13",
+                "dateModified": "2026-05-13",
+                "author": {
+                    "@type": "Person",
+                    "name": "Hadi Nayebi",
+                    "url": "https://hadi-nayebi.github.io/about.html"
+                },
+                "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
+                "description": "Skeleton: CLAUDE.md, Hooks, and Scripts — Hadosh Academy seed agent essay.",
+                "image": "https://hadi-nayebi.github.io/assets/images/blog/agent-anatomy.png",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/07_2-skeleton-claudemd-hooks-scripts.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
+                    { "@type": "ListItem", "position": 3, "name": "Skeleton: CLAUDE.md, Hooks, and Scripts", "item": "https://hadi-nayebi.github.io/blog/07_2-skeleton-claudemd-hooks-scripts.html" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../agents.html">Agents</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="container">
+            <div class="blog-layout">
+                <!-- Main Article -->
+                <div class="article-content">
+                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+
+                    <h1>Skeleton: CLAUDE.md, Hooks, and Scripts</h1>
+                    <div class="article-meta">
+                        <span>May 2026</span>
+                        <span>&bull;</span>
+                        <span>6 min</span>
+                        <div class="article-meta-tags">
+                            <span class="tag tag-audience" title="">Tier 2</span>
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Seed Agent</span>
+                            <span class="tag">Plugins</span>
+                            <span class="tag">Plugin Kit</span>
+                            <span class="tag">Hooks</span>
+                            <span class="tag">Scripts</span>
+                        </div>
+                    </div>
+                    <div class="article-authors">
+                        By Hadi Nayebi &amp; Claude Opus 4.7
+                    </div>
+
+                    <div class="article-audio" style="opacity: 0.55;">
+                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (6 min read).</span>
+                    </div>
+
+                    <div class="article-body">
+
+                        <p><em>Essay 7.2 &mdash; The Plugin Kit, Part 2 of 9.</em></p>
+
+                        <hr>
+
+                        <p><a href="07_1-plugin-kit-foundation.html">Essay 7.1</a> framed the plugin as a cell &mdash; a system of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Every organ carries the same three properties: <em>who reads it</em>, <em>who writes it</em>, <em>what it depends on</em>. This sub-essay opens the three organs every plugin must have &mdash; the universal skeleton &mdash; and names those properties at each step.</p>
+
+                        <hr>
+
+                        <h2><code>CLAUDE.md</code> &mdash; The Plugin&rsquo;s Brain Surface</h2>
+
+                        <p><strong>What it is.</strong> A markdown file at the root of every plugin directory &mdash; the plugin&rsquo;s primary memory surface, declaring what the plugin owns, what its hooks fire on, what its size limits are, what its current version is. Every plugin carries one &mdash; there is no exception. The file is the agent&rsquo;s primary read at session start and at every moment the plugin becomes relevant to the work. <sup class="ref-marker" title="ref: every-plugin-carries-claude-md | .claude/plugins/CLAUDE.md:107,119 | Plugin Structure Convention tree shows &quot;CLAUDE.md # Working memory — objective, state, maintenance rules&quot; as the FIRST entry under every plugin (line 107); line 119 confirms &quot;Minimal plugin: just CLAUDE.md&quot; — the no-exception baseline. Together these establish CLAUDE.md as the universal plugin surface.">&#9432;</sup></p>
+
+                        <p><strong>Who reads it.</strong> The LLM, mostly. Claude Code reads CLAUDE.md files into the agent&rsquo;s working memory at session start. When a plugin is unlocked for editing, the unlock ceremony auto-injects the plugin&rsquo;s CLAUDE.md (along with <code>docs/evolution.md</code>) so the editor inherits the plugin&rsquo;s reasoning before changing anything. Other plugins reading this plugin&rsquo;s CLAUDE.md happens rarely and almost always for one-line cross-references, not deep parsing. <sup class="ref-marker" title="ref: unlock-ceremony-auto-injects-context | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:340-362 | Unlock handler reads `docs/evolution.md` into `context_msg` (L340-345) + emits a `objective-alignment` guidance voice telling the editor to read `$target/CLAUDE.md` (L354); the combined message ships via `PostToolUse additionalContext` JSON (L362), injecting plugin reasoning before any edit lands.">&#9432;</sup></p>
+
+                        <p><strong>Who writes it.</strong> The CONDENSE phase. By design, CLAUDE.md edits route through CONDENSE because that is the only phase whose guard permits writes to the brain layer. The operator can also touch CLAUDE.md directly via gmode for existing-plugin work &mdash; a deliberate escape hatch for fixes outside the cycle ceremony. <sup class="ref-marker" title="ref: condense-only-md-write-allowlist | phase_condense/hooks/condense-guard.sh:249-250 | Comment on L249 (&quot;Condense can edit .md files AND voice.xml — soft memory layer&quot;) + L250 allowlist `if [[ &quot;$FILE_PATH&quot; == *.md ]] || [[ &quot;$(basename &quot;$FILE_PATH&quot;)&quot; == &quot;voice.xml&quot; ]]; then` — execute-guard.sh L728 blocks the same writes with `block &quot;root-brain-blocked&quot;`. CONDENSE alone permits brain-layer writes.">&#9432;</sup></p>
+
+                        <p><strong>What it depends on.</strong> Almost nothing inside the plugin. CLAUDE.md is the surface; other organs depend on <em>it</em>, not the reverse. The single exception is the four phase-section markers at the bottom (<code>---Ob---</code>, <code>---Pl---</code>, <code>---Ex---</code>, <code>---Ve---</code>) which the section-boundary guard reads to decide where each phase may write. <sup class="ref-marker" title="ref: phase-marker-section-boundary-parse | lib/section_guard/section-check.sh:252-260 | The `case &quot;$phase_marker&quot; in` block maps the four markers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) to their section_line numbers, then downstream logic enforces edits land strictly below the active phase&#x27;s marker line.">&#9432;</sup></p>
+
+                        <p><strong>The new-plugin lens.</strong> When you guide your seed agent to create a new plugin, the first artifact the seed authors is CLAUDE.md. The seed declares the plugin&rsquo;s single concern, names the hooks it will register, lists its size limits, and stamps version <code>v0.1.0</code>. Every other organ inside the plugin will reference choices made here. If CLAUDE.md does not name the concern clearly, the rest of the plugin drifts. New-user guidance: tell your seed to write CLAUDE.md FIRST, then the hooks, then everything else. <sup class="ref-marker" title="ref: new-plugin-template-claude-md-first | plugin_integrity/template/CLAUDE.md:1-3 | New-plugin scaffold begins with `# {{PLUGIN_NAME}}` + `**Version:** v0.1.0` + &quot;Plugin directory. To be defined.&quot; — the template `[PLUGIN-LOCK]` copies on plugin creation (per `.claude/plugins/CLAUDE.md:93,96`: &quot;the template is copied and {{PLUGIN_NAME}} + {{DATE}} are replaced... Template files copied (CLAUDE.md + docs/evolution.md)&quot;). CLAUDE.md ships first; every other organ added afterward.">&#9432;</sup></p>
+
+                        <hr>
+
+                        <h2><code>hooks/</code> &mdash; The Reflexes</h2>
+
+                        <p><strong>What it is.</strong> A directory of small shell scripts that fire on Claude Code events: <code>UserPromptSubmit</code>, <code>PreToolUse</code>, <code>PostToolUse</code>, <code>Stop</code>, <code>SessionStart</code>, <code>SubagentStart</code>. Hooks are how the plugin reaches the agent&rsquo;s cognitive process from outside the LLM. They are pure shell, executing in milliseconds, returning exit codes that decide whether the call proceeds. <sup class="ref-marker" title="ref: hooks-fire-on-claude-code-events | .claude/settings.local.json | The top-level `hooks` object groups bash commands under exactly these event keys — `UserPromptSubmit`, `PreToolUse`, `PostToolUse`, `Stop`, `SessionStart`, `SubagentStart` — each containing one or more `{matcher, hooks:[{type:&quot;command&quot;, command, timeout}]}` entries. Every plugin hook and shared `lib/` utility registers under one of these six events.">&#9432;</sup></p>
+
+                        <p><strong>Who reads them.</strong> Claude Code itself, at event time. The agent never reads its own hooks during reasoning &mdash; the hooks are invisible to the LLM unless one of them emits a voice into the context. <sup class="ref-marker" title="ref: hooks-registered-via-settings-local | .claude/settings.local.json:5-15 | Hook registry shape: `&quot;hooks&quot;: { &quot;UserPromptSubmit&quot;: [{ &quot;hooks&quot;: [{ &quot;type&quot;: &quot;command&quot;, &quot;command&quot;: &quot;bash .claude/plugins/job_core/hooks/prompt-handler.sh&quot;, &quot;timeout&quot;: 10 }] }] ... }` — Claude Code reads this file at session start, executes the matching `command` at each event. The LLM never reads it.">&#9432;</sup></p>
+
+                        <p><strong>Who writes them.</strong> The <code>[PLUGIN-LOCK]</code> ceremony. Plugin code is not edited the way ordinary files are &mdash; every change passes through a deliberate unlock cycle, runs the plugin&rsquo;s test suite at the lock boundary, and reverts to a captured git checkpoint on test failure. <sup class="ref-marker" title="ref: safe-lock-test-pass-or-revert | plugin_integrity/scripts/safe-lock.sh:3,211-222 | Header comment (L3): &quot;Locks a plugin: run tests → pass: commit + lock / fail: revert + lock&quot;; the body iterates the plugin&#x27;s test files (L211 `all_pass=true`) and sets `all_pass=false` on any failure (L222), then branches: pass → `git commit`, fail → `git reset --hard $checkpoint`. Plugin code cannot land without this gate.">&#9432;</sup></p>
+
+                        <p><strong>What they depend on.</strong> Three other organs. <code>scripts/</code> (when a hook needs to invoke the plugin&rsquo;s own CLI for state mutation). <code>hooks/voice.xml</code> (for every message the hook emits to the agent&rsquo;s context). <code>data.json</code> (for state, but only read-mediated through the plugin&rsquo;s own scripts &mdash; never directly). And a shared helper at <code>.claude/plugins/lib/voice-helper/</code> (the <code>get_voice</code> substitution function). <sup class="ref-marker" title="ref: plugin-structure-convention-organ-tree | .claude/plugins/CLAUDE.md:105-117 | The Plugin Structure Convention tree lists each organ with its role: `hooks/` &quot;(registered in settings.local.json)&quot;, `scripts/` &quot;Internal scripts called by hooks&quot;, `data.json` &quot;Runtime state (protected from direct edits)&quot;. Voice-helper lives at `.claude/plugins/lib/voice-helper/voice-helper.sh` (lib/CLAUDE.md L15: `get_voice &lt;id&gt;` reads voice from XML, used by &quot;Any hook/script with voice.xml&quot;).">&#9432;</sup></p>
+
+                        <figure class="blog-image image-placeholder-pending" style="margin: 2rem 0; padding: 1.25rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.18);">
+                          <div style="margin: 0 0 0.75rem 0; font-weight: 600; font-size: 0.8em; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Image pending &mdash; A plugin "cell" showing the universal skeleton inside the cell wall, conditional cognitive organs in a secondary tier, and the brain-root wiring file labeled outside the cell</div>
+                          <div style="margin: 0 0 0.75rem 0; font-size: 0.88em; line-height: 1.55; color: rgba(255,255,255,0.78);"><em>Prompt:</em> Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines; pastel chalk for organ fills (cyan, green, orange, pink, magenta &mdash; same palette as the cycle image, with darker variants used as a second tier); white chalk for ALL labels, arrows, and the cell-wall outline; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom. IMPORTANT: Use only the literal file and folder names listed below. Do not invent or substitute any other names, paths, or organ descriptors. Layout: One large hand-drawn chalk circle takes up most of the board &mdash; the "cell wall". Above the circle, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/" (treat the angle brackets as literal text). Inside the circle, ten small chalk shapes arranged around the interior, each labeled IN WHITE CHALK with its exact file or folder name. Six of them are drawn with a SOLID chalk border (universal skeleton); four are drawn with a DASHED chalk border (conditional organs): Shape 1 (cyan fill, SOLID border, top-center): "CLAUDE.md" Shape 2 (green fill, SOLID border): "hooks/" Shape 3 (pink fill, SOLID border): "tests/" Shape 4 (orange fill, SOLID border): "docs/" Shape 5 (cyan fill darker, SOLID border, drawn small INSIDE the docs/ shape): "docs/evolution.md" Shape 6 (cyan fill darker, SOLID border, drawn small INSIDE the hooks/ shape): "hooks/voice.xml" Shape 7 (green fill darker, DASHED border): "scripts/" Shape 8 (orange fill darker, DASHED border, drawn small INSIDE the scripts/ shape): "scripts/voice.xml" Shape 9 (magenta fill, DASHED border): "config.conf" Shape 10 (pink fill darker, DASHED border): "data.json" Shape 11 (magenta fill darker, DASHED border): "agents/" No arrows between the organs inside the cell &mdash; they are independent compartments inside the same cell wall. Outside the cell wall, three small chalk arrows point INTO the wall from outside, each labeled IN WHITE CHALK with one literal event name (these are the only external touches): arrow 1: "UserPromptSubmit" arrow 2: "PreToolUse" arrow 3: "Stop" In the upper-right of the board, OUTSIDE the cell wall entirely, draw a single small white-chalk box labeled IN WHITE CHALK exactly ".claude/settings.local.json" with a short white-chalk arrow pointing from the box DOWN to the cell wall, labeled IN WHITE CHALK exactly "registers". Keep every line hand-drawn and slightly imperfect, never ruler-straight. STRICT NAME WHITELIST &mdash; the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "tests/", "docs/", "docs/evolution.md", "hooks/voice.xml", "scripts/", "scripts/voice.xml", "config.conf", "data.json", "agents/", "UserPromptSubmit", "PreToolUse", "Stop", ".claude/settings.local.json", "registers", plus the caption below. No other words, file names, folders, plugin names, or organ descriptors may appear.</div>
+                          <figcaption style="margin-top: 0.75rem; font-size: 0.88em; line-height: 1.5; color: rgba(255,255,255,0.7); font-style: italic;">Image 7.2. Universal skeleton (solid border) plus conditional organs (dashed). The wiring file lives at brain root, outside the cell.</figcaption>
+                        </figure>
+
+                        <p><strong>The new-plugin lens.</strong> When you guide your seed to create a plugin, the seed decides which Claude Code events the plugin needs to fire on, and authors one hook per event. A plugin with no hooks is dead &mdash; every active plugin has at least one. The seed also adds the hook registration to the brain-root <code>settings.local.json</code> (covered in <a href="07_7-smaller-organs-and-wiring.html">Essay 7.7</a>); without registration, the file is just a shell script on disk that nothing invokes. <sup class="ref-marker" title="ref: hook-registration-required-for-fire | .claude/plugins/CLAUDE.md:109 | Plugin Structure Convention annotates `hooks/` with &quot;Hook scripts (registered in settings.local.json)&quot; — the registry at `.claude/settings.local.json` is the only path from shell script on disk to event-time invocation. A hook file with no matching registry entry never runs.">&#9432;</sup></p>
+
+                        <hr>
+
+                        <h2><code>scripts/</code> &mdash; The Verbs</h2>
+
+                        <p><strong>What it is.</strong> A directory of internal CLI scripts the plugin publishes for the agent (or another plugin) to call. <code>phase.sh advance</code>. <code>observe.sh set-multiplier</code>. <code>safe-lock.sh</code>. <code>drift-check.sh</code>. Scripts are how the plugin lets the agent or other plugins talk to it through a stable interface. <sup class="ref-marker" title="ref: plugin-cli-scripts-exist | .claude/plugins/CLAUDE.md:131-136 | Plugin State Model table names four call modes (Public read, Public write, Hook read, Hook write) with examples `observe.sh altered-list`, `observe.sh set-multiplier`, `observe.sh --hook points`, `observe.sh --hook add-points` — confirming `&lt;plugin&gt;/scripts/*.sh` is the stable CLI interface. The cited scripts (phase.sh, observe.sh, safe-lock.sh, drift-check.sh) all exist at their plugin&#x27;s `scripts/`.">&#9432;</sup></p>
+
+                        <p><strong>Who reads them.</strong> The agent, when it invokes a command. Other plugins, when they query this plugin&rsquo;s state via its published read-only commands. The hooks of <em>this</em> plugin, when they need to mutate <code>data.json</code> (the only path to mutation is the plugin&rsquo;s own scripts). <sup class="ref-marker" title="ref: data-json-only-via-scripts | .claude/plugins/CLAUDE.md:123,138-140 | &quot;data.json is hidden internal state. The agent cannot read or edit it directly. All access through the plugin&#x27;s own scripts&quot; (L123) — plus enforcement section (L138-140): &quot;Direct edits blocked by plugin_integrity (Edit/Write/MultiEdit on data.json)&quot;, &quot;Direct reads blocked by plugin_integrity (Read tool + Bash cat/jq/head/grep on data.json)&quot;. Mutation only via the plugin&#x27;s own scripts.">&#9432;</sup></p>
+
+                        <p><strong>Who writes them.</strong> Same <code>[PLUGIN-LOCK]</code> ceremony as hooks. Scripts and hooks share the same edit gate because both are code.</p>
+
+                        <p><strong>What they depend on.</strong> <code>data.json</code> (the script either reads it or atomically mutates it via the read-under-flock + jq-transform + temp-validate + atomic-mv protocol). <code>voice.xml</code> (for messages to whoever called the script). <code>config.conf</code> (for operator-tunable thresholds). The <code>lib/voice-helper/</code> shared helper. <sup class="ref-marker" title="ref: data-json-atomic-write-protocol | phasic_system/scripts/phase.sh:70-81,116 | The `safe_write` function (L116) implements the atomic mutation pattern: jq writes to `$DATA_TMP_FILE` (`$DATA_FILE.tmp`) → `jq empty` validates JSON shape (L77) → if valid, `mv &quot;$DATA_TMP_FILE&quot; &quot;$DATA_FILE&quot;` atomically replaces (L81); on validation fail, the temp file is removed (L78). Every plugin&#x27;s data.json mutator uses this same pattern.">&#9432;</sup></p>
+
+                        <p><strong>The Distributed Job Extension pattern.</strong> Other plugins reach into this plugin only through these scripts &mdash; never through the raw <code>data.json</code>. The plugin&rsquo;s public read-only commands (<code>job.sh focused</code>, <code>phase.sh current</code>) are the entire cross-plugin contract. Direct <code>cat data.json</code> from outside the owning plugin is forbidden discipline. New-user guidance: when you guide your seed to write a plugin that wants to know about another plugin&rsquo;s state, tell the seed to call the other plugin&rsquo;s <code>*.sh</code> command, not to peek at its files. The seed&rsquo;s own knowledge layer reinforces this &mdash; every plugin&rsquo;s knowledge dir names its public-API commands explicitly so future cycles can find them. <sup class="ref-marker" title="ref: distributed-job-extension-cross-plugin | .claude/plugins/CLAUDE.md:139,142 | Enforcement (L139): &quot;Direct reads blocked by plugin_integrity (Read tool + Bash cat/jq/head/grep on data.json)&quot;; design principle (L142): &quot;Plugins are organs with hidden state. The agent queries the organ through defined commands. Some fields have no public read command at all — completely hidden from the agent.&quot; Cross-plugin contract is the published `*.sh` commands only.">&#9432;</sup></p>
+
+                        <p><strong>The minimum-viable plugin shape.</strong> Not every plugin needs <code>scripts/</code>. <code>question_discipline</code> ships none &mdash; it is a pure-gate plugin that does not publish CLI verbs. A plugin without <code>scripts/</code> is announcing: <em>I do not expose verbs; I only enforce.</em> The absence is itself information. <sup class="ref-marker" title="ref: question-discipline-no-scripts-dir | .claude/plugins/question_discipline/ | The plugin directory contains `hooks/` (the AskUserQuestion gate) + `tests/` + `CLAUDE.md` + `docs/` — but no `scripts/` subdirectory. Plain `ls` of the plugin proves the absence. `.claude/plugins/CLAUDE.md:119` confirms &quot;Not all directories required. Minimal plugin: just CLAUDE.md.&quot;">&#9432;</sup></p>
+
+                        <hr>
+
+                        <p>Three organs, one shared edit gate. CLAUDE.md is the brain surface; hooks are the reflexes; scripts are the verbs. Every plugin carries all three &mdash; and every edit to any of them passes through the same PLUGIN-LOCK ceremony. The next sub-essay opens the organ that almost every plugin doubles &mdash; <code>voice.xml</code>, once for the LLM and once for the operator.</p>
+
+                        <hr>
+
+                        <p><em>Essay 7.2 &mdash; The Plugin Kit, Part 2 of 9.</em></p>
+
+                        <p><em>Previous: <a href="07_1-plugin-kit-foundation.html">Essay 7.1 &mdash; Plugin Kit Foundation</a> &mdash; cell-as-system frame and the mini-series roadmap.</em> <em>Next: <a href="07_3-dual-voice-architecture.html">Essay 7.3 &mdash; The Dual Voice Architecture</a> &mdash; two voice.xml files, one for the LLM and one for the operator.</em></p>
+
+                    </div>
+
+                    <!-- Comments (Giscus) -->
+                    <div class="article-comments">
+                        <h2>Comments</h2>
+                        <script src="https://giscus.app/client.js"
+                            data-repo="hadi-nayebi/hadi-nayebi.github.io"
+                            data-repo-id="R_kgDOHL_tnQ"
+                            data-category="General"
+                            data-category-id="DIC_kwDOHL_tnc4C3cRQ"
+                            data-mapping="pathname"
+                            data-strict="0"
+                            data-reactions-enabled="1"
+                            data-emit-metadata="0"
+                            data-input-position="top"
+                            data-theme="dark"
+                            data-lang="en"
+                            data-loading="lazy"
+                            crossorigin="anonymous"
+                            async>
+                        </script>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <div class="sidebar-title">Latest Articles</div>
+                    <div>
+                        <div class="article-card active">
+                            <div class="article-card-tags">
+                                <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>
+                                <span class="tag tag-sm">Architecture</span>
+                                <span class="tag tag-sm">Plugins</span>
+                                <span class="tag tag-sm">Seed Agent</span>
+                                <span class="tag tag-sm">Plugin Kit</span>
+                            </div>
+                            <div class="sidebar-card-position">You are here</div>
+                            <h3>Essay 7.2 — Skeleton: CLAUDE.md, Hooks, Scripts</h3>
+                            <div class="date">May 2026 &bull; 9 min read</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/theme-manager.js?v=20260513"></script>
+    <script src="../js/components.js?v=20260513"></script>
+</body>
+
+</html>
