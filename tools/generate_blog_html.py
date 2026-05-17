@@ -26,7 +26,15 @@ from pathlib import Path
 # Each entry is (slug_without_extension, title, date, read_time, audience_tag, tags).
 # Update when a new post is added. The active post is auto-detected from the input slug.
 SIDEBAR_POSTS = [
-    ("08-from-apprentice-to-architect",  "From Apprentice to Architect",          "May 2026",      "27 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_1-apprentice-to-architect-foundation", "Essay 8.1 — Apprentice to Architect Foundation", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_2-job-maturation-stages",       "Essay 8.2 — The Four Stages of Job Maturation",    "May 2026", "12 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Jobs"]),
+    ("08_3-brain-after-three-months",    "Essay 8.3 — What Lives in the Brain After Three Months", "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Knowledge"]),
+    ("08_4-soft-hard-migration",         "Essay 8.4 — Soft to Hard Migration",               "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Patterns"]),
+    ("08_5-enforced-vs-discipline",      "Essay 8.5 — What's Enforced vs What's Discipline", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_6-apprentice-journeyman-architect", "Essay 8.6 — The Maturation Arc",               "May 2026", "7 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_7-brain-stops-growing",         "Essay 8.7 — The Brain Stops Growing in Size",      "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_8-safe-self-modification",      "Essay 8.8 — A System That Safely Modifies Itself", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_9-the-seed-is-yours",           "Essay 8.9 — The Seed Is Yours",                    "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
     ("07_1-plugin-kit-foundation",       "Essay 7.1 — Plugin Kit Foundation",               "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
     ("07_2-skeleton-claudemd-hooks-scripts", "Essay 7.2 — Skeleton: CLAUDE.md, Hooks, Scripts", "May 2026", "9 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
     ("07_3-dual-voice-architecture",     "Essay 7.3 — The Dual Voice Architecture",         "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
