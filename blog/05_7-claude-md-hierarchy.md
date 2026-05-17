@@ -16,7 +16,7 @@ og_image: "assets/images/blog/always-on-digital-cortex.png"
 
 ---
 
-[Essay 5.6](05_6-question-discipline.html) closed the tour of the five always-on plugins. This part covers one of the substrate forms underneath them — the **working-memory form**: a hierarchy of plain Markdown files (`CLAUDE.md` files) at known locations on disk, plus the protocol that turns those files into a structured information bus. The substrate as a whole holds many forms — `knowledge/`, each plugin's hidden state, `voice.xml`, `evolution.md`, `agents/`. The CLAUDE.md hierarchy is the one the phasic layer writes through.
+[Essay 5.6](05_6-question-discipline.html) closed the tour of the always-on plugins. This part covers one of the substrate forms underneath them — the **working-memory form**: a hierarchy of plain Markdown files (`CLAUDE.md` files) at known locations on disk, plus the protocol that turns those files into a structured information bus. The substrate as a whole holds many forms — `knowledge/`, each plugin's hidden state, `voice.xml`, `evolution.md`, `agents/`. The CLAUDE.md hierarchy is the one the phasic layer writes through.
 
 The plugins do their work in parallel; this is where the cycle's experiential data *lands*.
 

@@ -5,7 +5,7 @@ slug: "plugin-integrity"
 read_time: "6 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
-version: v0.4.0
+version: v0.7.0
 audience: "Tier 2"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -24,11 +24,7 @@ We open with the one every other plugin depends on. `plugin_integrity` is the fl
 
 ## What it owns
 
-`plugin_integrity` exists to prevent accidental edits from regressing a plugin's established logic. It does this by leveraging git checkpoints and the plugin's own test suite. The lock applies to a plugin's executable surfaces — hooks, scripts, tests, config — when they need updating. Documentation files inside a plugin (`CLAUDE.md` and everything under `docs/`) commit freely under their own rules, with three caveats that surface elsewhere in the series:
-
-- the four phase-section markers inside CLAUDE.md (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) stay marker-protected even when the rest of the file is free
-- the `evolution.md` file inside `docs/` carries its own word-cap enforced by a separate hook
-- historian subagents get a narrow git-commit exemption for `docs/*.md` so they can clear the drift-gate while another plugin sits locked. *[ref: plugin-integrity-exists-to-prevent | .claude/plugins/plugin_integrity/hooks/plugin-guard.sh:562-575 | Block header: "DOCUMENTATION ALWAYS FREE: CLAUDE.md + all docs/*.md" — code files require lock; doc surfaces commit freely. Caveat 1: section-marker protection runs BEFORE the doc exemption (same file, earlier in plugin-guard). Caveat 2: word-cap enforced in `hooks/evolution-cap.sh`, not here. Caveat 3: historian git-commit exemption at plugin-guard.sh:579-616 — JSON `.agent_type` matching `historian-*` plus path-restricted git add/commit to `docs/*.md` only.]*
+`plugin_integrity` exists to prevent accidental edits from regressing a plugin's established logic. It does this by leveraging git checkpoints and the plugin's own test suite. The lock applies to a plugin's executable surfaces — hooks, scripts, tests, config — when they need updating. Documentation files inside a plugin (`CLAUDE.md` and everything under `docs/`) commit freely under their own rules. *[ref: plugin-integrity-exists-to-prevent | .claude/plugins/plugin_integrity/hooks/plugin-guard.sh:562-575 | Block header: "DOCUMENTATION ALWAYS FREE: CLAUDE.md + all docs/*.md" — code files require lock, doc surfaces commit freely. The plugin-guard hook's free-doc exemption is the always-on rule that lets historian docs sync without needing a fresh PLUGIN-LOCK.]*
 
 The always-on role to keep in mind here is the **test gate**: every plugin code change passes through it, regardless of who initiated the edit or which phase the agent is in.
 
@@ -44,7 +40,7 @@ The lock is a gradient, not a single switch. `[PLUGIN-LOCK]` opens a plugin's co
 
 This is deliberate. The test suite IS the safety net under every plugin edit; unlocking a test file accidentally would silently degrade the very gate the rest of the plugin trusts. The norm the prototype operates under is roughly **80% coverage** on each plugin — every established behavior carries a test. Every test sits behind a `[TEST-LOCK]`-gated edit ceremony. The ceremony forces the seed agent to articulate three things before it edits: *which* behavior is being added or fixed, *which* fixtures move, and what the suite asserts before-and-after. The friction is the point.
 
-The shape generalizes beyond this prototype. **Friction tracks danger.** Reading any file passes freely. Editing a plugin's code passes through one ceremony. Editing a plugin's test passes through two. Bypassing the safety net via gmode requires a hundred-word justification the architect (you) types. The seed agent is not slow at every step; it is slow at the steps where slow is safer than fast. Your customization door is here: as you cultivate your own seed, you choose where the gates sit and how steep each one is.
+The shape generalizes beyond this prototype. **Friction tracks danger.** Reading is free. Editing a plugin's code passes through one ceremony; editing a test passes through two — the safety net costs more to lift than the code beneath it. The [gmode](06_9-gmode.html) lane — the deliberate maintenance bypass — opens only behind a long-form justification the seed agent has to compose in full, slowing the agent enough that the operator can intervene before the bypass admits. Friction here is ceremony, not enforcement: every gate depends on the agent reading and obeying the injected voice, and a determined operator can still route through gmode by choice. The design knob this exposes is yours. A lawyer cultivating a brief-template seed could place the heaviest gate over precedent-citation files; a researcher could place it over data-cleaning scripts. You decide which surfaces deserve which gradient.
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: ../assets/images/blog/plugin-integrity-b5-2.png
@@ -63,6 +59,10 @@ The shape generalizes beyond this prototype. **Friction tracks danger.** Reading
   STRICT NAME WHITELIST — only these literal text strings as labels: "plugins/<your_plugin>/", "[PLUGIN-LOCK]", "[TEST-LOCK]", "hooks/", "scripts/", "config", "tests/", "CLAUDE.md + docs/ — free", "auto-revert", "tests → pass / fail", "commit", "revert to checkpoint", plus the caption below.
   Caption (bottom of image, white chalk, hand-drawn): "Image 5.2. Two stages of unlock, one auto-revert circuit — friction calibrated by danger. Plugin code passes one gate; test files pass two; documentation flows through with none."
 -->
+
+## The unlock briefing
+
+At unlock, the agent receives a structured briefing — a header, the plugin's `evolution.md` under a `[LIVING HISTORY]` label, a separate `[RECENT COMMITS]` block listing what has changed since the historian last ran, and three guidance voices: align edits with the plugin's `CLAUDE.md` Objective, `Read` the sibling docs (`docs/decisions.md`, `docs/lessons.md`, `docs/lessons-<topic>.md`) when the LIVING HISTORY references them and the current edit touches that area, and commit before any outside-plugin work. The briefing is bounded but pointed: `evolution.md` is auto-injected (word-capped at 2000); the sibling docs are uncapped and not in the injection path; the second voice tells the agent to follow the references when they apply. The same shape — labeled briefing of accumulated state, plus guidance voices that align edits and point at deeper references — is what other seeds can use at their own decision-rich moments: a consulting seed briefing the agent at the start of every client engagement, a research seed briefing at the start of every literature-review job. *[ref: unlock-briefing-shape | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:351-380 | Lock-manager assembles a multi-section context_msg at L378 (`printf` with header + LIVING HISTORY + RECENT COMMITS) emitted via `hookSpecificOutput.additionalContext` at L380. Three guidance voices — `objective-alignment` (L369), `evolution-follow-references` (L371), `commit-before-outside` (L373) — are appended to the unlock_msg at L375. Evolution file path at L356; no-evolution fallback at L360.]*
 
 ## What would break without it
 

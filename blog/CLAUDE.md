@@ -202,6 +202,7 @@ This prevents accidentally re-rendering during iteration. Total spend per essay 
 
 | Source form | Audio form | Why |
 |---|---|---|
+| `*Essay N.N — Title, Part N of N. ...*` | (stripped) | Italic meta-line below the H1 (and matching footer position-line). Metadata for the eye, not narration. Stripped via `meta_patterns` in `generate_blog_transcript.py` — extend that list when adding a new subtitle/footer format. |
 | `OPEVC` | `O P E V C` | Confirmed dropped/garbled by tts-1-hd. Letter-spacing forces initialism. |
 | `brain_guard`, `job_core`, `plugin_integrity`, `interaction_summary`, `question_discipline`, `phasic_system` | `brain-guard`, `job-core`, … | Underscores read as awkward pause; hyphens read as compound noun. |
 | `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` | "the OBSERVE/PLAN/EXECUTE/VERIFY footer" | Triple-dash markers read as "dash dash dash" — meaningless to listener. |

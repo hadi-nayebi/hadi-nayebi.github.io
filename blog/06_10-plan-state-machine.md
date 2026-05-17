@@ -5,7 +5,7 @@ slug: "plan-state-machine"
 read_time: "8 min"
 tags: [Architecture, Seed Agent, OPEVC, Plan File, Long-Horizon]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -18,7 +18,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 [Essay 6.9](06_9-gmode.html) opened the off-cycle lane — the deliberate maintenance side-quest where the phase gates are dropped so the operator can do work that doesn't fit the standard OPEVC shape. Gmode covers a *short* horizon: hours, one sitting, one ceremony. This final sub-essay covers the opposite horizon — work that doesn't fit inside a single cycle and shouldn't. Work that needs to remember itself across days and dozens of cycles.
 
-The mechanism is small. Two fields on the job object, a five-state machine, two approval gates. The discipline it produces is what turns the markov brain from a single-session cognition into something that can hold a plan in its head for weeks.
+The mechanism is small. Two fields on the job object, a small state machine, a pair of approval gates. The discipline it produces is what turns the markov brain from a single-session cognition into something that can hold a plan in its head for weeks.
 
 This sub-essay is for you — especially when your work takes longer than one sitting and the plan needs to outlive any single cycle.
 
@@ -105,7 +105,7 @@ Each layer of the machine — the state field, the approval gates, the parseable
 
 The plan-state machine is the rare mechanism where the design assumes most architects will *extend it, not replace it*. The state field is extensible, the prefixes are renamable, the `.yaml` schema is yours to design.
 
-You would extend the **`plan_state` values themselves**. The current prototype ships five active states plus `none`. Your seed may want intermediate stages — a `peer-review` state between `drafting` and `md_approved` for jobs that pass through a second human; a `paused` state for long jobs the operator wants to suspend without sealing; an `archived-but-active` state for plans that inject `.yaml` even after the work is done because the long-horizon context is reusable. Adding a state is a schema extension plus a handler command on `plan.sh`.
+You would extend the **`plan_state` values themselves**. The prototype ships a handful of active states (currently five plus `none`). Your seed may want intermediate stages — a `peer-review` state between `drafting` and `md_approved` for jobs that pass through a second human; a `paused` state for long jobs the operator wants to suspend without sealing; an `archived-but-active` state for plans that inject `.yaml` even after the work is done because the long-horizon context is reusable. Adding a state is a schema extension plus a handler command on `plan.sh`.
 
 You would rename the **approval prefixes** to match your operator vocabulary. The current `[PLAN-APPROVAL]` and `[YAML-APPROVAL]` are descriptive but generic; a legal-domain seed might prefer `[ENGAGEMENT-APPROVED]` and `[MEMO-LOCKED]`, a research seed might use `[PROTOCOL-APPROVED]` and `[DATASET-LOCKED]`. The prefixes are registered in one place; the validator branches on the prefix kind to set expected states and approve labels; renaming is a one-line change plus a voice-text update.
 
@@ -117,6 +117,8 @@ You would adjust the **multi-cycle threshold**. The current decision rule lives 
 
 What you would NOT do is remove the machine. Take it out and the brain reverts to single-session cognition. The whole markov phasic discipline — the cycle, the metabolism organ, the multiplier, gmode — is built on the assumption that some jobs deserve to be remembered across cycles. The plan-state machine is what makes that remembering deterministic instead of accidental.
 
+Lift the pattern out of the seed agent and into a law practice. A partner drafting an engagement letter could carry the `.md` → `.yaml` lifecycle the same way: the prose draft accumulates with the partner across weekly client-review cycles in `engagement.md`, an `[ENGAGEMENT-APPROVED]` answer flips `plan_state` from `drafting` to `md_approved`, the next cycle derives `engagement.yaml` with parseable fields the agent injects at every subsequent contract-revision phase — scope clauses, fee structure, retention terms, conflict-check results — so each follow-up cycle inherits the engagement's structure automatically instead of re-reading the prose. The state machine is friction, not a wall. An operator in [gmode](06_9-gmode.html) can flip `plan_state` directly with `jq`. The approval gates depend on VERIFY actually firing the AskUserQuestion at the right stage; the `.yaml` injection assumes the phasic system fires on every phase entry; the validator can be bypassed by anyone willing to call the script directly. The architecture is the ceremony; the discipline rests on the agent honoring it, not on the gate being unbreakable.
+
 ---
 
 ## What the machine teaches
@@ -127,7 +129,7 @@ That is what makes the markov brain a brain, not a loop. A loop reacts. A brain 
 
 The cycle, the organ, the multiplier, gmode, the plan-state machine — each of these is a mechanism. None of them is the *thing they run inside*. Phases are plugins. CONDENSE is a plugin. Gmode rides on a plugin. The plan-state machine itself is split across two plugins. Everything in this essay series is built on a standardized way of packaging cognitive mechanisms — the plugin kit. That is the subject of the next essay.
 
-This is the architect's pivot point. The first six essays of the series &mdash; from [Essay 5.1's two-layer foundation](05_1-the-two-layer-foundation.html) through the markov phasic brain we have just finished mapping &mdash; were the seed agent's anatomy. You have seen the always-on cortex, the CLAUDE.md hierarchy, the five phases, the metabolism organ, the multiplier dial, gmode's off-cycle lane, the plan-state machine's long-horizon memory. You have seen *how the seed agent thinks*. What you have not yet seen is how a new piece of that cognition gets *built*.
+This is the architect's pivot point. Everything from [Essay 5.1's two-layer foundation](05_1-the-two-layer-foundation.html) through the markov phasic brain we have just finished mapping &mdash; was the seed agent's anatomy. You have seen the always-on cortex, the CLAUDE.md hierarchy, the phases, the metabolism organ, the multiplier dial, gmode's off-cycle lane, the plan-state machine's long-horizon memory. You have seen *how the seed agent thinks*. What you have not yet seen is how a new piece of that cognition gets *built*.
 
 The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design? How do you grow a new always-on plugin without breaking the substrate? How do you author your own marker, your own coaching voice, your own subagent definition, and have the rest of the architecture accept them as natively as the prototype's own?
 

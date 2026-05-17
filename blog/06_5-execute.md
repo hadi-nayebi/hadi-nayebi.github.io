@@ -5,7 +5,7 @@ slug: "execute"
 read_time: "8 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Execute]
 status: draft
-version: v0.2.0
+version: v0.3.0
 audience: "Tier 2"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -90,9 +90,11 @@ EXECUTE is where most architects will tune the most knobs, because it is where t
 
 The architect would tune the *execute subagent roster*. The current roster covers code edits, test runs (deferred to VERIFY), and bulk refactors. A seed working in a content-heavy domain — legal drafting, market research write-ups — would want subagents specialized for prose generation and citation insertion, with their own scope guards. The roster is the surface; the entries are yours.
 
-The architect would tune the *direct-action budget arithmetic*. The current grant is +3 per execute-subagent dispatch; the consumption is -1 per project edit. Your seed might want a higher delegation bias (+5 grant, -2 consumption) or a lower one. The arithmetic is small; the bias it encodes is large.
+The architect would tune the *direct-action budget arithmetic*. The current grant (currently +3 in the prototype) per execute-subagent dispatch and the consumption per project edit (currently -1) are tunable. Your seed might want a higher delegation bias (a larger grant, a heavier consumption) or a lower one. The arithmetic is small; the bias it encodes is large.
 
-The architect would tune the *comment-density verdicts*. The current five block-categories and one coach-category were calibrated against the prototype's own cycles. A seed working in a heavily-commented domain might block on thinner deltas; one working with a generated-code intermediate stage might exempt specific paths from the gate entirely. The verdicts are the mechanism; the thresholds are yours.
+The architect would tune the *comment-density verdicts*. The current block-categories (currently five in the prototype) and the coach-category (currently one) were calibrated against the prototype's own cycles. A seed working in a heavily-commented domain might block on thinner deltas; one working with a generated-code intermediate stage might exempt specific paths from the gate entirely. The verdicts are the mechanism; the thresholds are yours.
+
+The altered-list-fenced-EXECUTE pattern lifts off the prototype into any work where a misaimed edit is expensive. A legal-drafting seed cultivated by a litigation associate could install the altered-list fence around the active-matter folder, so the redline subagent EXECUTE dispatches cannot edit briefs filed under any other matter; the comment-density verdicts retune to fire on stripped statutory citations and footnote anchors rather than stripped code comments, since those are the reasoning trail the next reviewer depends on. The honest design-limit is that the fence and the verdicts are friction, not mathematical enforcement: the path-scope check, the section-marker check, the comment-density delta are voice injections riding on top of pre-tool-call hooks, and the checkpoint commits are agent discipline rather than transactional rollback. A determined operator can route a cross-matter edit through [gmode](06_9-gmode.html), the named off-cycle lane, and pay the deliberate-bypass tax of composing the justification; the agent could in principle work around the spirit of the fence by editing through prose channels the guard does not inspect. The discipline rests on the agent reading and obeying the injected voice, slowed enough by the friction that the operator can intervene before the misaim lands.
 
 What the architect would **not** customize is the altered-list fence itself. The fence is the floor: an execute phase that lets the agent write outside the plan's declared scope is not an execute phase.
 

@@ -5,7 +5,7 @@ slug: "backward-multiplier"
 read_time: "11 min"
 tags: [Architecture, Seed Agent, OPEVC, Multiplier]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -16,7 +16,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 ---
 
-[Essay 6.7](06_7-condense.html) closed the cycle. Five phases plus the metabolism organ &mdash; the seed agent now has the compartmentalized cognition the rest of the series has been building toward. What is left is the one mechanism that sits at the entry of every phase and turns a scalar dial into an act of meta-cognition.
+[Essay 6.7](06_7-condense.html) closed the cycle. The cycle's phases (currently five in the prototype) plus the metabolism organ &mdash; the seed agent now has the compartmentalized cognition the rest of the series has been building toward. What is left is the one mechanism that sits at the entry of every phase and turns a scalar dial into an act of meta-cognition.
 
 This is where the phasic layer earns its keep — and where you, designing your own seed, will spend the most time tuning. The mechanism is small. The discipline it produces is large.
 
@@ -28,7 +28,7 @@ Start with the **Ralph loop**. The pattern is familiar to anyone who has tried t
 
 The seed agent adopts the Ralph loop through the job system. Every job carries a `status`. The always-on layer's stop-gate hook reads it on every `Stop` attempt; while any job is `active` or still `pending`, the stop is refused and the agent is returned to the prompt with a message explaining what is still in flight. Stop, refused. Stop, refused. The agent learns to keep working until the job formally completes. *[ref: job-status-state-machine-stop-blocking | .claude/plugins/job_core/CLAUDE.md ## State Machine | job_core's state machine: pending↔active↔completed; ANY pending or active job blocks Stop. The seed agent's Ralph loop adoption — Stop is refused until all jobs reach completed.]*
 
-The transitions are explicit. Top-level jobs are born `active` and `focused` the moment the user's prompt fires `prompt-handler.sh` &mdash; `job.sh create-active` is the hook-only entry point that bypasses normal creation gates. Dependent jobs are born `pending` via the CONDENSE-only `job.sh create` / `create-dependent`, and move to `active` only when the operator runs `job.sh activate` to switch focus. A job can be `pause`d back to `pending` (loses focus) and re-`activate`d later. The terminal move &mdash; `pending`/`active` to `completed` &mdash; is gated: the focused active job's `completion_requirements` must be satisfied (every `depends_on` ID is itself `completed`, plus any required user or plugin-lock approvals), and the operator runs `job.sh complete`. The state space is small &mdash; three states &mdash; but the transitions are exactly what the Ralph loop needs to refuse `Stop`. *[ref: job-status-transitions-explicit | .claude/plugins/job_core/CLAUDE.md ## State Machine + .claude/plugins/job_core/scripts/job.sh create_active + complete | State diagram in job_core/CLAUDE.md ## State Machine: pending↔active↔completed with focused boolean tracking the one job in flight. job.sh's create-active handler shows top-level creation (status:"active", focused:true) vs CONDENSE's `create`/`create-dependent` (status:"pending", focused:false). The `complete` handler enforces the depends_on completion check and the approval flags before flipping status to "completed".]*
+The transitions are explicit. Top-level jobs are born `active` and `focused` the moment the user's prompt fires `prompt-handler.sh` &mdash; `job.sh create-active` is the hook-only entry point that bypasses normal creation gates. Dependent jobs are born `pending` via the CONDENSE-only `job.sh create` / `create-dependent`, and move to `active` only when the operator runs `job.sh activate` to switch focus. A job can be `pause`d back to `pending` (loses focus) and re-`activate`d later. The terminal move &mdash; `pending`/`active` to `completed` &mdash; is gated: the focused active job's `completion_requirements` must be satisfied (every `depends_on` ID is itself `completed`, plus any required user or plugin-lock approvals), and the operator runs `job.sh complete`. The job's status field cycles through a few states &mdash; `active`, `pending`, `completed` &mdash; and the transitions are exactly what the Ralph loop needs to refuse `Stop`. *[ref: job-status-transitions-explicit | .claude/plugins/job_core/CLAUDE.md ## State Machine + .claude/plugins/job_core/scripts/job.sh create_active + complete | State diagram in job_core/CLAUDE.md ## State Machine: pending↔active↔completed with focused boolean tracking the one job in flight. job.sh's create-active handler shows top-level creation (status:"active", focused:true) vs CONDENSE's `create`/`create-dependent` (status:"pending", focused:false). The `complete` handler enforces the depends_on completion check and the approval flags before flipping status to "completed".]*
 
 The phasic layer does the same thing one fractal level down &mdash; inside a single phase.
 
@@ -72,13 +72,13 @@ On entry to every phase, the agent must set a multiplier &mdash; chosen from a f
 
 The naive read is that multiplier scales workload up. The intuition is exactly backward. **A smaller multiplier declares a larger phase.**
 
-A `3.0` multiplier means each action is worth three times the base points. The threshold is reached fast &mdash; in practice, around twelve actions. The agent has declared: "this phase is small. I am in and out." A surgical bug fix. A typo. A targeted lookup-and-edit.
+A `3.0` multiplier means each action is worth three times the base points. The threshold is reached fast &mdash; in practice, around twelve actions at the prototype's current calibration. The agent has declared: "this phase is small. I am in and out." A surgical bug fix. A typo. A targeted lookup-and-edit.
 
-A `1.0` multiplier is the standard pace &mdash; about thirty-four actions to cross the threshold.
+A `1.0` multiplier is the standard pace &mdash; about thirty-four actions to cross the threshold at the prototype's current calibration.
 
-A `0.5` multiplier means each action is worth half the base points. The threshold takes around sixty-seven actions to clear. The agent has declared: "this phase is large. I am settling in for deep work." A research-heavy investigation. A multi-file refactor. A complex feature.
+A `0.5` multiplier means each action is worth half the base points. The threshold takes around sixty-seven actions to clear at the prototype's current calibration. The agent has declared: "this phase is large. I am settling in for deep work." A research-heavy investigation. A multi-file refactor. A complex feature.
 
-The intermediate values fill the dial. `1.5` lands around twenty-two actions. `2.0` and `2.5` shape the phase further toward surgical.
+The intermediate values fill the dial. `1.5` lands around twenty-two actions at that same calibration. `2.0` and `2.5` shape the phase further toward surgical.
 
 ## Both directions of error cost
 
@@ -114,11 +114,13 @@ Same job. Same dial. One forecast says "I am settling in"; the other says "I am 
 
 The multiplier is one of the architectural surfaces with the *most* room for an architect's opinion. The mechanism is small enough that the customizations are pointed.
 
-The architect would tune the *dial range and granularity*. The prototype's `0.5, 1, 1.5, 2, 2.5, 3` covers a six-times spread in 0.5 steps. A seed running tighter, more rhythmic work might want a four-step dial (`0.5, 1, 2, 3`); a seed running highly variable workloads might want a twelve-step dial covering `0.25` through `5`. The range encodes the architect's belief about how much variation in phase size the work actually produces. The wider the dial, the more meta-cognition the agent has to do at entry.
+The architect would tune the *dial range and granularity*. The prototype's `0.5, 1, 1.5, 2, 2.5, 3` lands in the middle of the design space &mdash; wide enough to express real variation, narrow enough that every tick is meaningful. A seed running tighter, more rhythmic work might want a coarser dial (`0.5, 1, 2, 3`); a seed running highly variable workloads might want a finer dial covering `0.25` through `5`. The range encodes the architect's belief about how much variation in phase size the work actually produces. The wider the dial, the more meta-cognition the agent has to do at entry.
 
-The architect would tune the *per-phase point thresholds*. The prototype lands around thirty-four actions at `1.0` multiplier for most phases &mdash; calibrated against the prototype's own work. A seed doing legal research, where each "action" is a long reading task, might set the OBSERVE threshold higher; a seed doing rapid code patches might set EXECUTE lower. The thresholds are environment-tunable; the schedules that feed them are per-plugin.
+The architect would tune the *per-phase point thresholds*. The prototype lands around thirty-four actions at `1.0` multiplier for most phases &mdash; calibrated against the prototype's own work at the current setting. A seed doing legal research, where each "action" is a long reading task, might set the OBSERVE threshold higher; a seed doing rapid code patches might set EXECUTE lower. The thresholds are environment-tunable; the schedules that feed them are per-plugin.
 
 The architect would adjust the *multiplier-rollback interaction*. The prototype preserves points across backward transitions &mdash; rollbacks do not destroy progress. A stricter seed might decide that re-entering a phase resets a fraction of the accumulated points to force a re-affirmation of the work. A more permissive seed might preserve points even across cross-cycle backward edges, treating phase identity as the only thing that matters for the counter. The rule lives in one branch of the sensor; the consequences ripple through every long-running job.
+
+The backward-multiplier pattern &mdash; a backward-counted scalar set at entry, forecast before the work begins, scoring an invisible point system against a hidden threshold &mdash; lifts off the prototype into any work where a misforecast of scope is expensive. A consulting practice cultivating an engagement-delivery seed could install a per-engagement scope dial &mdash; *surgical*, *standard*, *deep* &mdash; that forces the partner to forecast scope before the billable work begins, with the agent's actions silently scored against a hidden threshold the partner never sees. A misforecast in either direction costs: too small and the engagement reopens to finish, fragmenting the client record; too large and the engagement pads, and the agent does more discovery than the brief merited. The honest design-limit is worth naming: the dial is friction, not mathematics &mdash; a voice injection at phase entry plus a counter checked at commit. A determined operator can enter [gmode](06_9-gmode.html), the named off-cycle lane, to step outside the phasic system entirely and pay the deliberate-bypass tax of composing the justification; the discipline lives in the architect's willingness to honor the dial rather than game it.
 
 What the architect would **not** customize is the *invisibility of points*. The principle is the floor: an agent that can see its score will optimize for the score. The whole point of the dial is to surface the only number the agent needs &mdash; the multiplier &mdash; and force the meta-cognition that produces it. Showing the score would short-circuit the very discipline the architecture exists to create.
 

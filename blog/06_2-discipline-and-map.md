@@ -5,7 +5,7 @@ slug: "discipline-and-map"
 read_time: "11 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -44,13 +44,13 @@ No backward edge from condense. Once the cycle reaches CONDENSE, the only exit i
 
 **The gmode side-channel** — every phase, including idle, has one extra edge that loops back to itself through gmode. Gmode is short for *generic mode*. It is the freestyle phase: a deliberately unconstrained mode where none of the OPEVC tool-restriction guards apply, used for work that doesn't fit the OPEVC ceremony. *[ref: gmode-self-exits-phase-guards | .claude/plugins/phase_verify/hooks/verify-guard.sh:84-88 | Every phase guard reads the focused job's current_phase and exits 0 when it doesn't match its own phase name; in gmode the equality fails for all five phase guards, so none enforce restrictions.]*
 
-Entry is the same regardless of which phase you came from. The agent writes a `[GMODE]` prefixed question to the user with a substantive reason — at least a hundred words explaining why the work needs to happen outside the current phase's compartment. The orchestrator stashes the current phase, the agent enters gmode, and the per-phase guards step aside. *[ref: orchestrator-stashes-pre-gmode-phase | .claude/plugins/phasic_system/scripts/phase.sh:359-362 | Atomic jq update stashes the prior phase as pre_gmode_phase while setting current_phase to gmode; on exit the orchestrator reads back pre_gmode_phase to restore.]*
+Entry is the same regardless of which phase the agent came from. The agent writes a `[GMODE]` prefixed question to the user with a substantive reason — at least a hundred words explaining why the work needs to happen outside the current phase's compartment. The orchestrator stashes the current phase, the agent enters gmode, and the per-phase guards step aside. *[ref: orchestrator-stashes-pre-gmode-phase | .claude/plugins/phasic_system/scripts/phase.sh:359-362 | Atomic jq update stashes the prior phase as pre_gmode_phase while setting current_phase to gmode; on exit the orchestrator reads back pre_gmode_phase to restore.]*
 
 Inside gmode the agent can do real work for as long as it needs. Fix a deadlock. Make a small plugin edit that doesn't merit a full OPEVC cycle. Run a plugin-lock ceremony. The mode is intentionally unopinionated. Exit is explicit (the agent calls a small CLI to leave gmode) and requires a clean git working tree — the same discipline that gates every phase boundary. The home phase is restored atomically; the cycle counter does not advance. *[ref: gmode-exit-clean-git-atomic-restore | .claude/plugins/phasic_system/scripts/phase.sh:388-403 | Gmode exit requires a clean git working tree (dies if dirty); reads pre_gmode_phase and atomically restores current_phase while clearing the stash. No cycle counter mutation.]*
 
 How gmode is used is a customization choice. The prototype was built running every job through OPEVC because the work was building the seed agent itself. Once the seed agent ships open-source, users will run their project work through OPEVC and may push routine plugin maintenance through gmode. Or define new phases. Or split phase plugins by job type. Gmode is the general-purpose escape hatch from the prototype's current ceremony, and the seed-cultivator decides what flows through it.
 
-Counting it all together, the prototype's full state set is `idle, observe, plan, execute, verify, condense, gmode` — five OPEVC phases, one meta-state, and one freestyle side-channel. The rest of this essay series opens the OPEVC compartments. Idle and gmode are the bookends.
+Taken together, the prototype's full state set names the OPEVC phases (`observe`, `plan`, `execute`, `verify`, `condense`) plus `idle` (the meta-state between cycles) and `gmode` (the freestyle side-channel). The rest of this essay series opens the OPEVC compartments. Idle and gmode are the bookends.
 
 ---
 
@@ -68,13 +68,9 @@ CONDENSE has the most permissive *but most restricted* scope: it can write almos
 
 Tool restriction is the pedagogy. The discipline doesn't come from telling the agent what to do; it comes from making the wrong move impossible inside the current phase — each phase's compartment forbids the moves that would skip the cognitive work the phase exists to enforce.
 
-When OBSERVE is read-only, the agent is forced to gather context before it can act. There is no escape into "let me just patch this real quick" — the patch tool isn't available.
+The read-only phases pair up. OBSERVE forces the agent to gather context before it can act — no escape into "let me just patch this real quick," because the patch tool isn't available. PLAN extends the same lock through the design step: the plan must commit fully to a written contract before EXECUTE can begin, because the alternative isn't there.
 
-When PLAN is read-only, the plan must commit fully to a written contract before EXECUTE can begin. The alternative isn't there.
-
-When VERIFY can only run scripts, self-verification through "the code looks fine to me" is impossible. Only what the scripts say counts.
-
-When CONDENSE can only touch `.claude/`, project work is structurally fenced off. The agent can't sneak a feature in under the cover of consolidation.
+The other two cuts close the loop on the back half of the cycle. VERIFY's scripts-only fence makes self-verification through "the code looks fine to me" impossible; only what the scripts say counts. CONDENSE's `.claude/`-only fence keeps project work structurally outside consolidation, so the agent can't sneak a feature in under the cover of brain-tending.
 
 Enforcement is layered. A global guard, registered by the orchestrator plugin, fires on every productive tool call (file edits, reads, shell, web fetches). While the focused job is idle, the gate blocks essentially everything — reads, writes, web fetches, general shell — and unlocks only a small allowlist: the job-management CLI, the phase-advancement CLI, the always-on infrastructure scripts that need to keep running, and memory-file edits. Once a phase activates, the global gate exits silently and the per-phase guard for that phase takes over. *[ref: idle-gate-bash-allowlist-narrow | .claude/plugins/phasic_system/hooks/phase-gate.sh:82-104 | IDLE's Bash whitelist allows only the job, phase, summary, self-compact, and lock CLIs; every other shell command exits 2 with a block message steering the agent to advance into observe.]*
 
@@ -165,7 +161,7 @@ Before opening each phase compartment, here is the operational map at a glance. 
 - Lock forward to idle; no escape hatch back to verify
 
 **GMODE** — the freestyle side-channel from any phase.
-- Enter via a `[GMODE]` user question with a substantive reason (≥100 words)
+- Enter via a `[GMODE]` user question with a substantive reason (currently a roughly 100-word floor in the prototype)
 - Run unconstrained work — no OPEVC tool-restriction guards apply
 - Exit explicitly with a clean git tree; the home phase resumes atomically
 - Host work that doesn't fit the OPEVC ceremony — deadlock fixes, plugin maintenance, custom workflows
@@ -185,6 +181,8 @@ The architect would tune the *gmode usage policy*. Gmode is the freestyle escape
 The architect would tune the *per-phase tool allow-lists*. The current cuts — read-only in observe and plan, scripts-only in verify, full-write-inside-scope in execute, brain-only in condense — encode this prototype's notion of cognitive separation. A seed wanting a stricter observe could ban the web entirely. A seed wanting a looser verify could allow targeted code edits inside named directories. The guards are code; the cuts are decisions.
 
 What the architect would **not** customize is the rule that each phase publishes its allow-list and the guard enforces it against every tool call. The principle is the floor: a phase whose restrictions are advisory is not a phase.
+
+The shape lifts off the prototype into work that has nothing to do with seed agents. A patent attorney shaping a prior-art-review seed could compartment the work into `pull-references`, `extract-claim`, `cross-check`, and `draft-opinion` phases — each with its own tool fence, each with its own write scope — and the transition map would refuse a `draft-opinion → pull-references` slide that smuggles unverified prior art into the brief. The discipline here is friction, not mathematical enforcement: every guard depends on the agent reading and obeying the injected voice, and the slow-downs (counters, point gates, the substantive-reason floor) buy the operator the time to intervene before a bypass admits. [Gmode](06_9-gmode.html) is the documented escape hatch — the seed agent can route around the OPEVC ceremony when the work genuinely needs it, and the cost is the long-form justification that surfaces the bypass to the operator.
 
 ---
 

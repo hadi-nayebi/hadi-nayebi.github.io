@@ -80,7 +80,7 @@ What you would **not** do is leave the gate off. Without it, the asking surface 
 
 ---
 
-That closes the tour of the five always-on plugins. The next part covers one of the substrate forms underneath them — the **working-memory form**, the CLAUDE.md hierarchy that the phasic layer writes through. The substrate as a whole holds many forms; the CLAUDE.md hierarchy is the one with a structured-edit protocol the always-on layer touches directly.
+That closes the tour of the always-on plugins. The next part covers one of the substrate forms underneath them — the **working-memory form**, the CLAUDE.md hierarchy that the phasic layer writes through. The substrate as a whole holds many forms; the CLAUDE.md hierarchy is the one with a structured-edit protocol the always-on layer touches directly.
 
 ---
 

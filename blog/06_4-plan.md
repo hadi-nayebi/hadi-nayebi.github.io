@@ -5,7 +5,7 @@ slug: "plan"
 read_time: "8 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: draft
-version: v0.2.0
+version: v0.3.0
 audience: "Tier 2"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -16,7 +16,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 ---
 
-PLAN is also read-only against project files. The agent can still read whatever it needs, but writes are confined to CLAUDE.md. The plan document, if the job calls for one, is named in PLAN and written by EXECUTE — we come back to that below.
+[Essay 6.3](06_3-observe.html) named OBSERVE as the entry-phase that fills CLAUDE.md with context. PLAN is the next compartment — also read-only against project files, with one new responsibility: naming the *plan_file* the rest of the cycle will execute against. Writes are still confined to CLAUDE.md; the plan document itself, if the job calls for one, is named here and written by EXECUTE — we come back to that below.
 
 The first thing the agent does on entering PLAN, after the multiplier, is decide whether the job needs a plan file at all.
 
@@ -70,7 +70,7 @@ The plan moves through a small set of states (currently five in the prototype, e
 
 Plan documents live at a known path inside the agent's knowledge directory. Their structure is opinionated.
 
-Each one carries a stated goal, an acceptance-criteria list, the *altered list* — a list of CLAUDE.md files whose parent directories EXECUTE will be allowed to touch, [introduced in Essay 5.7](05_7-claude-md-hierarchy.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe. *[ref: plan-6-subagents-encode-structure | .claude/plugins/phase_plan/agents/CLAUDE.md Agent Inventory (6 agents) section | PLAN's 6 specialized subagents encode the plan-document's opinionated structure: plan-step-breaker decomposes steps, plan-criteria-writer authors acceptance criteria, plan-scope-analyzer maps altered-list directories, plan-risk-assessor names judgment calls.]*
+Each one carries a stated goal, an acceptance-criteria list, the *altered list* — a list of CLAUDE.md files whose parent directories EXECUTE will be allowed to touch, [introduced in Essay 5.7](05_7-claude-md-hierarchy.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe. *[ref: plan-subagents-encode-structure | .claude/plugins/phase_plan/agents/CLAUDE.md Agent Inventory section | PLAN's specialized subagents (currently six in the prototype) encode the plan-document's opinionated structure: plan-step-breaker decomposes steps, plan-criteria-writer authors acceptance criteria, plan-scope-analyzer maps altered-list directories, plan-risk-assessor names judgment calls.]*
 
 The `.md` and the `.yaml` live side-by-side once both exist, and they are not the same artifact wearing different masks. The `.md` is the human-readable accumulating prose; the `.yaml` is the parseable injection target the orchestrator reads at phase entry to pour context-specific content into the working session.
 
@@ -83,8 +83,6 @@ Both files carry a small identification frontmatter at the top — a `job:` line
 Once PLAN exits, the contract — whether it lives in the plan file or in the working CLAUDE.md — becomes the contract for EXECUTE. This is what makes the phase boundary load-bearing. EXECUTE is fenced *to* the plan. The altered list dictates which files EXECUTE's write-tool guard will allow. The acceptance criteria dictate what VERIFY will check. *[ref: altered-list-frozen-at-execute-entry | .claude/plugins/phase_execute/hooks/execute-sensor.sh:158-172 | execute-sensor.sh merges OBSERVE and PLAN altered lists at execute entry, then calls execute.sh set-altered-list to snapshot the merged scope into execute's data.json — the freeze that fences EXECUTE to PLAN's contract.]*
 
 If EXECUTE wants to touch a file the plan didn't list, the request is blocked. The agent has to either roll back to PLAN to amend the contract, or accept the constraint and proceed within scope.
-
-The reason the plan is locked is the reason every project rationalizes mid-execution. Plans written *during* execution are not plans; they are post-hoc explanations for whatever the executor felt like doing. By forcing the plan to be authored before any code is touched, the seed agent forecloses that drift. The plan can be wrong — that is what VERIFY is for, and that is what backward transitions are for — but it cannot be silently rewritten.
 
 ---
 
@@ -114,9 +112,11 @@ PLAN does not touch the .yaml file. It does not touch the .md plan. It does not 
 
 Two surfaces are where most architects will adjust PLAN.
 
-The first is the *plan-document structure*. The prototype's plan documents are opinionated — goal, acceptance criteria, altered list, judgment-call criteria — encoded in six plan-* subagents. A seed working on long research engagements might want hypotheses-and-evidence as the primary structure. A seed operating in regulatory contexts might want a compliance-checklist section as a first-class block. The subagent roster is the surface; the structure they enforce is yours.
+The first is the *plan-document structure*. The prototype's plan documents are opinionated — goal, acceptance criteria, altered list, judgment-call criteria — encoded in the plan-* subagent roster (currently six in the prototype). A seed working on long research engagements might want hypotheses-and-evidence as the primary structure. A seed operating in regulatory contexts might want a compliance-checklist section as a first-class block. The subagent roster is the surface; the structure they enforce is yours.
 
 The second is the *altered-list discipline*. The current rule is binary — a directory is in the list or it is not; if it is, EXECUTE can edit any CLAUDE.md-declared directory within it. Your seed might want a finer-grained scope: read-allowed but write-disallowed; write-allowed but only for files matching a pattern; per-subagent overrides. The altered list is the load-bearing contract output of PLAN, and every refinement of it tightens what EXECUTE can do without rolling backward.
+
+The PLAN-as-binding-contract pattern lifts off the prototype into any work where scope creep is the slow killer. A consulting practice cultivating a delivery-engagement seed could use the same discipline for client work: an engagement-scoping associate runs the seed through a cycle-1 PLAN that names the engagement plan file via `set-plan-file`, the plan_state machine carries the contract through `drafting` as the team negotiates with the client, the altered list scopes which deliverables the next cycle is allowed to draft. Mid-engagement scope creep then requires an explicit backward step — PLAN re-opens, the altered list grows, the contract changes on the record — not a silent edit in someone's inbox. The honest limit is that the contract-lock is friction, not mathematical enforcement: voice injections, the cycle-1 immutability ceremony, the counter on plan-file edits. A determined operator can still edit the .md outside VERIFY through [gmode](06_9-gmode.html), the named off-cycle lane, and pay the deliberate-bypass tax of composing the justification. The mechanism slows the agent enough that the operator can intervene; it does not make the edit physically impossible.
 
 What the architect would **not** customize is the prohibition against PLAN reading project source. The principle is the floor: a planning phase that lets the agent re-observe is not a planning phase.
 

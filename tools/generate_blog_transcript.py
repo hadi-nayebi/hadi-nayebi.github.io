@@ -101,6 +101,11 @@ def strip_markdown(src: str) -> str:
     # Match each as a full italicized line (`*...*` on its own line).
     meta_patterns = [
         r"^\*Essay \d+(?:\.\d+)? of 8 in the Hadosh Academy series on agent architecture\.[^*\n]*\*\s*$",
+        # Sub-essay subtitle directly below H1 and the matching short footer position-line:
+        #   *Essay 5.1 — The Always-On Digital Cortex, Part 1 of 9. Essay 5 opens here; ...*
+        #   *Essay 5.1 — The Always-On Digital Cortex, Part 1 of 9.*
+        # Metadata for the eye on the rendered page; never narrated.
+        r"^\*Essay \d+(?:\.\d+)? — [^*\n]+\*\s*$",
         r"^\*Series interlude[^*\n]*\*\s*$",
         r"^\*Previous: \[[^\]]+\]\([^)]+\)[^*\n]*\*\s*$",
         r"^\*Next: \[[^\]]+\]\([^)]+\)[^*\n]*\*\s*$",

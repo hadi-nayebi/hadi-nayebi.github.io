@@ -5,7 +5,7 @@ slug: "gmode"
 read_time: "8 min"
 tags: [Architecture, Seed Agent, OPEVC, GMODE]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -30,11 +30,11 @@ Gmode owns the **off-cycle state** of a focused job. When the focused job's `cur
 
 The architectural reason gmode is one edge on *every* phase — not a separate state machine — is that gmode entry must work from wherever the agent currently is. A deadlock surfaces during PLAN; a plugin needs a one-line fix during VERIFY; a registry entry is missing during idle. The off-cycle lane has to be reachable from every node in the OPEVC graph. Making it a self-loop on each phase keeps the cycle counter and the home phase intact while the side-work happens.
 
-## How it works — the 100-word entry, atomic stash, clean-git exit
+## How it works — the justification entry, atomic stash, clean-git exit
 
-Entry happens through three stages, each enforced by a different mechanism.
+Entry happens through a sequence of stages — justification floor, atomic stash, clean-git exit — each enforced by a different mechanism.
 
-**The 100-word floor.** The seed agent enters gmode by asking the user an `AskUserQuestion` whose body is prefixed `[GMODE]` and whose total word count meets a configurable minimum — 100 words in the prototype. Anything shorter is rejected before the question ever reaches the user. The floor exists to force the agent to articulate, in prose, *what* the issue is, *what* was tried, and *why* the OPEVC compartment won't fit. The justification is the cost of the bypass. *[ref: gmode-100-word-floor | .claude/plugins/phasic_system/hooks/gmode-gate.sh:66-82 | The PreToolUse hook anchors on `^\[GMODE\]` (line 66), extracts the reason via `sed -n 's/^\[GMODE\] \(.\+\)$/\1/p'` (line 69), and counts words with `wc -w` (line 77). If `q_word_count -lt "${GMODE_WORD_MIN:-100}"` the hook prints "BLOCKED: [GMODE] question must be ≥${GMODE_WORD_MIN:-100} words" and exits 2 (lines 78-82). The floor is sourced from `config.conf` — tunable per seed.]*
+**The justification floor.** The seed agent enters gmode by asking the user an `AskUserQuestion` whose body is prefixed `[GMODE]` and whose total word count meets a configurable minimum — currently a 100-word floor in the prototype. Anything shorter is rejected before the question ever reaches the user. The floor exists to force the agent to articulate, in prose, *what* the issue is, *what* was tried, and *why* the OPEVC compartment won't fit. The justification is the cost of the bypass. *[ref: gmode-100-word-floor | .claude/plugins/phasic_system/hooks/gmode-gate.sh:66-82 | The PreToolUse hook anchors on `^\[GMODE\]` (line 66), extracts the reason via `sed -n 's/^\[GMODE\] \(.\+\)$/\1/p'` (line 69), and counts words with `wc -w` (line 77). If `q_word_count -lt "${GMODE_WORD_MIN:-100}"` the hook prints "BLOCKED: [GMODE] question must be ≥${GMODE_WORD_MIN:-100} words" and exits 2 (lines 78-82). The floor is sourced from `config.conf` — tunable per seed.]*
 
 **The atomic stash.** When the user confirms entry, the orchestrator runs a single `jq` update that does two things at once: it copies the current phase into a hidden field called `pre_gmode_phase`, and it overwrites `current_phase` with the literal string `gmode`. The pair is atomic — the home phase is captured in the same write that turns the phase guards off. There's no window where the agent is in gmode but the orchestrator has forgotten where it came from. *[ref: atomic-pre-gmode-stash | .claude/plugins/phasic_system/scripts/phase.sh:360-363 | The `enter-gmode` branch runs `jq --arg id "$local_id" --arg prev "$current" '(.jobs[] | select(.id==$id)) |= (.pre_gmode_phase = $prev | .current_phase = "gmode")' "$DATA_FILE" > "$DATA_TMP_FILE"` (lines 360-362), then `safe_write` commits the file (line 363). One pipe expression sets both fields in the same write — the home phase cannot drift from the gmode state.]*
 
@@ -57,7 +57,7 @@ The cycle counter does not advance through gmode. The home phase is the home pha
   Between gmode and each returning arrow — a small white-chalk caption labeled exactly: "atomic restore".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — only these literal text strings as labels: "gmode", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "idle", "≥100-word [GMODE]", "clean git", "atomic restore", plus the caption below.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.9. Every phase, including idle, carries one self-loop through gmode. Entry costs a 100-word justification; exit requires a clean working tree; the home phase is restored atomically."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.9. Every phase, including idle, carries one self-loop through gmode. Entry costs a justification floor; exit requires a clean working tree; the home phase is restored atomically."
 -->
 
 ## What would break without it
@@ -92,7 +92,7 @@ That is the off-cycle lane working as designed. The bypass was named. The cost w
 
 Gmode is one of the more architecturally opinionated surfaces in the prototype. Most of the opinion lives in *defaults*, not invariants — the architect's customization door opens on several distinct knobs.
 
-You would tune the **100-word floor.** The prototype's 100 is calibrated for an architect operator who occasionally needs ad-hoc work; a more experimental seed may want 50, a more cautious one may want 250. The number lives in `config.conf` and is read by the gate hook on every fire — no code change required. Lowering the floor lowers the cost of entry; raising it raises the bar at which gmode is the right choice rather than a fresh job.
+You would tune the **justification floor.** The prototype's 100-word minimum is calibrated for an architect operator who occasionally needs ad-hoc work; a more experimental seed may want 50, a more cautious one may want 250. The number lives in `config.conf` and is read by the gate hook on every fire — no code change required. *[ref: gmode-word-min-in-config-conf | .claude/plugins/phasic_system/config.conf:35 + .claude/plugins/phasic_system/hooks/gmode-gate.sh:78 | config.conf:35 sets `GMODE_WORD_MIN=100`. gmode-gate.sh:78 reads it via `${GMODE_WORD_MIN:-100}` parameter expansion at every PreToolUse fire — no code change required to tune the floor; just edit the config.conf value.]* Lowering the floor lowers the cost of entry; raising it raises the bar at which gmode is the right choice rather than a fresh job.
 
 You would relax the **clean-git exit requirement.** The prototype requires the working tree to be fully committed before the home phase is restored. A seed that does heavy experimental work — long-running gmode sessions that span multiple work blocks — may want to allow exit with a structured stash, or with a directory-scoped clean check rather than a global one. The trade-off is substrate integrity: a relaxed exit means the home phase resumes on a working tree it didn't produce, which the next phase's altered-list discipline will have to handle.
 
@@ -101,6 +101,10 @@ You would decide **what flows through gmode versus OPEVC versus new phases.** Th
 You would change the **cycle-counter rule.** The prototype treats gmode as a side-step that doesn't consume cycle budget. A seed that wants stronger accounting may decide every gmode entry costs a fraction of a cycle, or that gmode time after the third entry in a cycle counts as a full new cycle. The home phase still restores; only the bookkeeping moves.
 
 What you would **not** do is remove the entry gate. A seed agent that admits unconstrained tool access without justification is a seed agent that will eventually rewrite its own discipline mid-cycle and corrupt the layers below it. The gate's friction is the architecture; the specific word count, the specific cleanliness check, the specific cycle rule are the surface.
+
+The pattern lifts cleanly off the prototype. A lawyer's seed could install the same off-cycle lane for emergency client requests that don't fit the matter's billing-phase ceremony — entry costs a `[BILLING-OVERRIDE]` justification of comparable weight (whatever the firm decides is enough articulation to prevent reflexive bypass), exit requires the time entry to be logged before the matter's normal phase resumes. A researcher's seed running long literature-review cycles could install one for ad-hoc methodology questions that surface mid-cycle and would otherwise corrupt the review's scope. The architecture is the *bypass-as-deliberate-cost-paid* mechanism: a named lane, a friction gate at entry, a cleanliness check at exit, atomic restore to the home phase. The specific prefix, the specific weight, the specific cleanliness check are the prototype's calibration. The lane shape transfers.
+
+The architecture also admits its own honest limits, and naming them is part of the design. The justification floor is friction, not proof — an agent could draft a body that meets the word count without saying anything load-bearing, and the gate would accept it. The user-approval step depends on the user actually reading the body; a habituated rubber-stamp defeats the gate. The clean-git exit can be defeated by an empty `gmode: noop` commit that satisfies the working-tree check without recording real work. None of these are sealed. The architecture accepts them because the alternative — letting the agent quietly fudge phase guards in place — leaves no trace at all. A bypass that is named, gated, and logged is structurally safer than a bypass that is invisible, even when the named bypass is imperfect.
 
 ---
 

@@ -2,10 +2,10 @@
 title: "Phasic Foundation"
 date: "May 2026"
 slug: "phasic-foundation"
-read_time: "7 min"
+read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
-version: v0.1.0
+version: v0.2.1
 audience: "Tier 2"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -24,13 +24,30 @@ This essay opens the system that does the structured work — the phasic system 
 
 The seed agent's cognitive work happens in **phases**. A phase is a temporary mode of operation, scoped to one job, with a strictly defined purpose, a strictly defined set of allowed tools, and a strictly defined kind of output. One phase is active at a time. Phases progress in a fixed order. The agent cannot skip a phase, cannot blend two phases, cannot stay inside a phase indefinitely. *[ref: phase-order-fixed-by-map | .claude/plugins/phasic_system/scripts/phase.sh:133-136 | FORWARD_MAP and BACKWARD_MAP define the only allowed phase transitions; arbitrary jumps and blended states are absent from the schema and rejected downstream by the advance command.]*
 
-The current prototype runs five OPEVC phases: *observe, plan, execute, verify, and condense*. OPEVC is the acronym, the name the brain calls its own cycle. The final phase, CONDENSE, plays a different role from the other four. The first four do work *on the project*; CONDENSE does work *on the brain*. We call CONDENSE the cycle's cognitive organ for that reason. Still, it sits inside the OPEVC ring, not outside it. The architecture supports adding more. A custom seed could introduce a `research` phase between observe and plan, or split execute into `execute` and `integrate`. The current phase count is the prototype's answer; the discipline of compartmentalized phasing is the architecture.
+The current prototype runs five OPEVC phases: *observe, plan, execute, verify, and condense*. OPEVC is the acronym, the name the brain calls its own cycle. The final phase, CONDENSE, plays a different role from the others. The earlier phases do work *on the project*; CONDENSE does work *on the brain*. We call CONDENSE the cycle's cognitive organ for that reason. Still, it sits inside the OPEVC ring, not outside it. The architecture supports adding more. A custom seed could introduce a `research` phase between observe and plan, or split execute into `execute` and `integrate`. The current phase count is the prototype's answer; the discipline of compartmentalized phasing is the architecture.
 
 Two states travelled with us across the previous essay without being named: *idle* and *gmode*. We left them out of Essay 5 to keep the substrate description clean. They come back now, because the full Markov brain does not run without them. *[ref: idle-is-default-current-phase | .claude/plugins/phasic_system/scripts/phase.sh:155-161 | Job initialization writes current_phase: idle into the orchestrator's data.json; idle is the resting state between cycles. Gmode is the other off-cycle state — handlers further down the same file treat it as a peer current_phase value.]*
 
 What we are about to open is what [Essay 3.1](03_1-the-folder-is-alive.html) called the agent's *cognitive metabolism* — the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.
 
 This essay opens that discipline compartment by compartment.
+
+## The journey ahead
+
+Essay 6 splits into ten short sub-essays:
+
+- **Essay 6.1 — Phasic Foundation** *(you are here)* — the cognitive cycle and why phases at all
+- [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the per-phase tool restrictions
+- [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — the read-only sweep that grounds every cycle
+- [Essay 6.4 — PLAN — Decide, Then Lock](06_4-plan.html) — the analysis phase whose deliverable is a named contract
+- [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the only phase with project-write access, fenced by the altered list
+- [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — scripts-only, auditor-driven, backward-routed
+- [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the 7-step waterfall that grows the brain
+- [Essay 6.8 — The Backward Multiplier](06_8-backward-multiplier.html) — honest scope forecasting at phase entry
+- [Essay 6.9 — GMODE — The Off-Cycle Lane](06_9-gmode.html) — the documented escape hatch
+- [Essay 6.10 — The Plan-State Machine — Long-Horizon Memory](06_10-plan-state-machine.html) — how multi-cycle jobs accumulate plan + .yaml memory over time
+
+Essay 6.2 maps the discipline; Essays 6.3 through 6.7 deep-dive each phase, one per essay. Essays 6.8 through 6.10 are for the architects in the audience — the mechanisms that let the cycle stay honest across long horizons.
 
 ---
 
@@ -58,7 +75,7 @@ The naive version of agent cognition is: "read the prompt, do the thing." A user
 
 This breaks for the same reason a one-line safety script breaks. There are several different *kinds* of cognitive work, each with different needs, and mixing them produces sloppy work in all of them.
 
-Observation needs breadth. Planning needs alternatives. Execution needs speed. Verification needs independence from execution. Each one favors a different mental posture, and each one favors a different set of tools. The default agent runs all four kinds of work through the same mode, and the result is what every operator who has tried to drive an agent through a non-trivial task has seen: the agent jumps to implementation before it has read enough; it improvises mid-execute and rationalizes the improvisation as the plan; it self-verifies, sees the work as correct because it was the one who built it, and ships a regression. *[ref: per-phase-tool-allowances-table | .claude/plugins/phasic_system/CLAUDE.md:254-260 | Side-by-side table of each phase's distinct concerns: OBSERVE checks CLAUDE.md-only edits; PLAN forbids bash/web; EXECUTE allows altered-dir writes; VERIFY allows scripts and plan-file edits; CONDENSE writes .md only.]*
+Observation needs breadth. Planning needs alternatives. Execution needs speed. Verification needs independence from execution. Each one favors a different mental posture, and each one favors a different set of tools. The default agent runs all four kinds of work through the same mode, and the result is what every operator who has tried to drive an agent through a non-trivial task has seen: the agent jumps to implementation before it has read enough; it improvises mid-execute and rationalizes the improvisation as the plan; it self-verifies, sees the work as correct because it was the one who built it, and ships a regression. *[ref: idle-blocked-activities-as-pattern-example | .claude/plugins/phasic_system/CLAUDE.md, "Idle — Blocked Activities" section | The "Idle — Blocked Activities" table in phasic_system/CLAUDE.md illustrates the per-phase tool-restriction pattern via the idle case — Read/Glob/Grep, Edit/Write, Bash, Agent, WebSearch rows specify which tools idle blocks. The same per-phase block/allow pattern is implemented in code across the 5 phase-guard scripts (observe-guard.sh, plan-guard.sh, execute-guard.sh, verify-guard.sh, condense-guard.sh) — each guard's tool-restriction block is the per-phase instance of this pattern.]*
 
 Phases force separation. The kind of cognition the agent is doing is announced. The tools it has access to match the kind. The output it produces is tagged with which phase it came from. When the agent transitions, the system commits the prior phase's work as an episodic memory before unlocking the next phase. There is no quietly drifting from one mode into another. *[ref: commit-precedes-phase-advance | .claude/plugins/phase_observe/scripts/observe-commit.sh:279-288 | Records each phase's work as a git commit with phase prefix and footer; on commit failure exits 1, blocking the downstream phase.sh advance that would otherwise unlock the next phase.]*
 
@@ -72,13 +89,15 @@ A handful of mechanisms inside the cycle deserve a single sentence here before t
 
 The phasic layer is the most opinionated piece of the prototype, and almost every dimension of it is a customization surface. The architecture is the shape; the specific dials are the prototype's answers.
 
-The architect would tune the *phase count*. The current five (observe, plan, execute, verify, condense) cover the prototype's own work — designing the seed agent itself. A seed working on long literature reviews might want a `research` phase between observe and plan, where deep external reading happens with a different budget arithmetic than observe's broad sweep. A seed working in regulated drafting might split execute into `execute` and `integrate`. The phase count is a knob; the discipline of compartmentalization is the floor.
+The architect would tune the *phase count*. The prototype's phase set — currently observe, plan, execute, verify, condense — covers the work of designing the seed agent itself. A seed working on long literature reviews might want a `research` phase between observe and plan, where deep external reading happens with a different budget arithmetic than observe's broad sweep. A seed working in regulated drafting might split execute into `execute` and `integrate`. The phase count is a knob; the discipline of compartmentalization is the floor.
 
 The architect would tune the *acronym itself*. OPEVC is the prototype's name for its cycle. A custom seed could call it RUNS, OPERATE, or any other word that catches the kinds of cognitive work it values. The name shapes how the architect talks to their own seed; the talk shapes how the seed sees the work.
 
 The architect would tune the *tool-restriction granularity*. The prototype publishes one guard per phase, each one with its own allow-and-block list of tools. The same architecture supports finer grain — per-phase block-lists scoped by subagent type, allow-lists conditioned on the focused job's form, time-of-day rules for long-running research seeds. The guards are code; the granularity is what each architect's work demands.
 
 What the architect would **not** customize is the principle that each phase publishes its restrictions ahead of time and the guard enforces them. The principle is the floor: a phase that doesn't fence the agent in is not a phase, it is a label.
+
+The shape lifts cleanly off this prototype. A research lab's seed could run literature-review jobs through `read-source`, `extract-claim`, `cross-check`, and `synthesize` phases — each with its own tool fence, writes forbidden during `read-source`, new sources forbidden during `synthesize`. A consulting seed could split client engagements into `intake`, `match`, `scope`, `draft-deliverable`, and `review`, with the drafting phase locked out of the client-source-data tools so it cannot improvise new facts mid-prose. The phasic cycle is the architecture; the phase names and the tool fences are yours. The honest limit is that the guards stop wrong-tool calls; they cannot stop a creative operator from working around the spirit of a phase in their prose. The discipline rests on the architect reading the injected voice and choosing to obey it. [Gmode](06_9-gmode.html) is the documented escape hatch when working around the discipline is the right move.
 
 ---
 

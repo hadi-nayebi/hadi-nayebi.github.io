@@ -5,7 +5,7 @@ slug: "verify"
 read_time: "7 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Verify]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Tier 2 → Tier 3"
 og_image: "assets/images/blog/markov-phasic-brain.png"
 ---
@@ -16,7 +16,7 @@ og_image: "assets/images/blog/markov-phasic-brain.png"
 
 ---
 
-VERIFY is scripts-only. *[ref: verify-bash-whitelist-scripts-only | .claude/plugins/phase_verify/hooks/verify-guard.sh:349-365 | VERIFY's Bash case arm allows bash invocations of tests/ scripts/ paths and git read-only commands; blocks git add, file writes (echo > / sed -i / mv / cp / rm), --hook flags, and package managers.]*
+VERIFY is scripts-only. *[ref: verify-bash-whitelist-scripts-only | .claude/plugins/phase_verify/hooks/verify-guard.sh:351-397 | VERIFY's Bash case arm allows bash invocations of tests/ scripts/ paths and git read-only commands; blocks git add, file writes (echo > / sed -i / mv / cp / rm), --hook flags, and package managers.]*
 
 The agent cannot edit code in VERIFY. It can read any file in the cycle's scope, by design. It can run tests. It can run validators. And it can dispatch a particular class of subagent — *auditors* — whose entire job is to read the executed work and report whether each acceptance criterion holds. *[ref: verify-dispatches-auditor-subagents | .claude/plugins/phase_verify/agents/CLAUDE.md Defined Subagents section | The Defined Subagents table lists VERIFY's auditor roster: verify-observe-auditor, verify-plan-auditor, verify-execute-auditor, verify-git-historian, verify-code-evolution-tracker — each scoped to evaluate one slice of the cycle's work.]*
 
@@ -40,7 +40,7 @@ The first is the *plan files* in their respective drafting stages, just covered 
 
 The second is the *altered-list CLAUDE.md files* — the same scope EXECUTE just finished writing into, inherited by VERIFY at phase entry. The agent appends its pass/fail findings to those CLAUDE.md files, but the edit lands strictly below `---Ve---`. Cross-section edits — attempts to amend OBSERVE's or PLAN's or EXECUTE's footer record — are rejected by the same shared section-check library every phase guard uses. VERIFY cannot rewrite history; it can only file its report under its own anchor. *[ref: verify-claude-md-edit-section-bounded | .claude/plugins/phase_verify/hooks/verify-guard.sh:289-334 | The CLAUDE.md edit branch confirms the file is in the altered list, blocks Write on existing files (Edit only), then runs check_section_edit with "---Ve---" — the same library backing every phase's section enforcement.]*
 
-The third is the *memory files* — the user-side persistence layer under `.claude/projects/.../memory/`. Memory edits land in any phase, including VERIFY, because the memory layer is the always-on bus the seed agent uses for cross-cycle and cross-session learning; the phase-specific guards explicitly exempt memory paths from their scope checks. *[ref: verify-memory-edits-always-allowed | .claude/plugins/phase_verify/hooks/verify-guard.sh:249-250 | Inside verify-guard's Edit|Write|MultiEdit case arm, the very first line short-circuits with exit 0 for any path matching `/.claude/projects/.../memory/` — memory edits are always allowed, irrespective of altered list or section.]*
+The third is the *memory files* — the user-side persistence layer under `.claude/projects/.../memory/`. Memory edits land in any phase, including VERIFY, because the memory layer is the always-on persistence the seed agent uses for cross-cycle and cross-session learning; the phase-specific guards explicitly exempt memory paths from their scope checks. *[ref: verify-memory-edits-always-allowed | .claude/plugins/phase_verify/hooks/verify-guard.sh:249-250 | Inside verify-guard's Edit|Write|MultiEdit case arm, the very first line short-circuits with exit 0 for any path matching `/.claude/projects/.../memory/` — memory edits are always allowed, irrespective of altered list or section.]*
 
 The right shorthand, then: VERIFY's edit authority is scoped. It can refine the plan, file its findings under its own footer, and update the memory layer. It cannot touch project source, cannot create new CLAUDE.md files, and cannot rewrite the prior phases' footer records. The scope is what makes VERIFY's verdict structurally trustworthy — VERIFY cannot quietly fix what it found wrong; it can only report and route.
 
@@ -64,7 +64,7 @@ The reason VERIFY is its own phase is the same reason a compiler is not the same
 
 VERIFY produces a structured pass/fail report against the plan's acceptance criteria. The report goes into the plan document and into the working CLAUDE.md.
 
-Four outcomes are possible. Three of them route the cycle — forward to CONDENSE, backward for a small fix, backward for a deeper reset. The fourth is different in kind: a state flip on the plan itself, requested from the user and recorded on the job. The flip is not the end of the plan; it just promotes its stage. The plan's actual ending is a separate signal — `seal-plan` — fired later, when the plan has nothing left to teach.
+The outcomes split into two kinds: routing outcomes (forward to CONDENSE; backward to a prior phase for a small fix or a deeper reset) and the plan-state-flip outcome — a state change on the plan itself, requested from the user and recorded on the job. The flip is not the end of the plan; it just promotes its stage. The plan's actual ending is a separate signal — `seal-plan` — fired later, when the plan has nothing left to teach.
 
 If everything passes, the orchestrator advances the job to CONDENSE.
 
@@ -133,6 +133,8 @@ The architect would tune the *approval-question wording*. `[PLAN-APPROVAL]` and 
 The architect would tune the *plan-edit scope rules*. The current scope is tight — VERIFY can only edit the focused job's `plan_file` and only when its state allows. A seed wanting looser refinement could widen the scope to any plan in `drafting`. A seed wanting tighter discipline could add per-section locks (acceptance criteria are append-only; goal is immutable once cycle 1 commits).
 
 What the architect would **not** customize is the inability to edit project source. The principle is the floor: a verification phase that lets the hand that built the code also rewrite it is not verification, it is hand-washing.
+
+A consulting practice could install the same separation. The engagement-review agent reads the deliverable, scores it against the proposal's acceptance criteria, asks the partner for sign-off via a structured question — but cannot edit the deliverable itself. Only the build-side agent can act on the review. The honest design-limit is worth naming: the auditor's verdict is LLM-interpreted judgment, not mathematics. Backward-versus-forward routing depends on the agent honestly classifying severity; the user-approval gate depends on the user actually reading. The structural separation is the enforcement substrate, not a certainty guarantee — and [gmode](06_9-gmode.html) is the documented operator escape when the right move is to skip the gate. The phase makes self-validation harder; the human is still on the hook for what gets shipped.
 
 The deepest payoff of VERIFY is the cognitive failure mode it prevents: the *self-validating delivery* — the agent that ships work it just built, declares it correct because it has read the diff, and the read-of-its-own-output is the same cognitive posture as the write-of-the-output. Same LLM, same prior, same blind spots. The structural separation — a phase with different tools, a different scope, frequently delegated to subagents with no execution history — gives the verdict an honest chance to be wrong about itself. The friction is the pedagogy. The phase is the compartment.
 

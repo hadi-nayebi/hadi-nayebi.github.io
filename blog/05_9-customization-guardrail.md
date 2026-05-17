@@ -5,7 +5,7 @@ slug: "customization-guardrail"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Customization, PLUGIN-LOCK]
 status: draft
-version: v0.4.0
+version: v0.5.0
 audience: "Tier 3"
 og_image: "assets/images/blog/always-on-digital-cortex.png"
 ---
@@ -109,7 +109,7 @@ What you would NOT do is remove the gate. The gate is what makes the architectur
 
 The customization guardrail is the architectural conclusion of these eight prior sub-essays. The always-on plugin layer holds the agent's reflexes; the substrate holds its working memory; the historian ratchet forces re-narration before edits; the gate forces deliberate context before any substrate edit happens at all. Each layer adds a discipline; the gate is the one that turns the system into something safely modifiable *by you* — not by the original developer, by you, the operator who installed the seed last week or last month or last year.
 
-That is the [agent-developer-user → agent-user collapse](08-from-apprentice-to-architect.html) made operational. The agent proposes customization. You judge it. The substrate enforces the discipline that keeps your judgment safe. No developer in the loop. The PowerPoint of seed agents lives here.
+That is the [agent-developer-user → agent-user collapse](08-from-apprentice-to-architect.html) made operational. The agent proposes customization. You judge it. The substrate enforces the discipline that keeps your judgment safe. No developer in the loop. And the canonical reference the seed itself consults when reasoning about its own design is this nine-essay series — plus [Essay 6](06_1-phasic-foundation.html), [7](07-the-plugin-kit.html), [8](08-from-apprentice-to-architect.html) and the `.claude/knowledge/` topic files you cultivate as you customize. The PowerPoint of seed agents lives here.
 
 ---
 
