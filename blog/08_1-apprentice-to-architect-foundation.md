@@ -33,7 +33,7 @@ That last claim is what makes the seed sustainable across long timescales. A bra
   Layout: A small white-chalk circular seed icon in the lower-left corner of the board, with a tiny sprout drawn above it. From the seed, three hand-drawn chalk arrows fan outward across the board, each in a different pastel chalk color, each tipped with an arrowhead at the far end:
     Arrow A (cyan, pointing straight UP along the left side of the board). Two-line label IN WHITE CHALK riding along the arrow:
       Top line:    "jobs mature upward"
-      Bottom line: "stage 1 → stage 4"
+      Bottom line: "single → .md plan → .yaml plan"
     Arrow B (green, pointing diagonally up-right across the center of the board). Two-line label IN WHITE CHALK riding along the arrow:
       Top line:    "controls migrate inward"
       Bottom line: "voice → hook → template"
@@ -42,7 +42,7 @@ That last claim is what makes the seed sustainable across long timescales. A bra
       Bottom line: "supervising → composing"
   Above the seed icon, a single short white-chalk caption reads exactly: "week 1". Near the far end of arrow B, a small white-chalk caption reads exactly: "month 3+". These two anchor the time arc of the diagram.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "stage 1 → stage 4", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+", plus the caption below. No other words, file names, folders, or axis descriptors may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+", plus the caption below. No other words, file names, folders, or axis descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
   ASSET: assets/images/blog/b8/three-growth-axes-b8-1.png
 -->
