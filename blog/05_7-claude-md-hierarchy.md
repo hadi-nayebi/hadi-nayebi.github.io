@@ -39,15 +39,21 @@ Every Claude Code user gets this primitive for free. What the seed agent does on
 The body of the file — everything above the four anchors below — keeps the standard Claude Code semantics: identity, rules, structure, the things the agent should remember about this directory at all times. Below the body, every `CLAUDE.md` inside the seed agent's brain carries four anchored sections: *[ref: body-keeps-standard-claude-code-semantics | .claude/plugins/brain_guard/hooks/CLAUDE.md four phase-section anchors | brain_guard/hooks/CLAUDE.md as universal example: the body (Files, Hook Contract, Prefix bypass) sits above the four phase-section anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` at the file's tail, each on its own line separated by blank-line gutters that the four phases write into. Same body+footer split across every brain CLAUDE.md.]*
 
 ```
+(body content — identity, rules, structure)
+
+---Ob---
 
 (observation content goes here)
 
+---Pl---
 
 (plan content goes here)
 
+---Ex---
 
 (execution content goes here)
 
+---Ve---
 
 (verification content goes here)
 ```
