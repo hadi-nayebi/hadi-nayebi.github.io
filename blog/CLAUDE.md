@@ -786,6 +786,7 @@ Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 ess
 | 6.8 | `06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **GOAL ACHIEVED v0.2.0** — ~1,700w / 11 min · 27 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 8-dispatch R1→R1.b→R1.c→R2→R3→R3.b path (commits 22e003d / 270db92 / 33df7c5 / a120f28 / 151ed05). |
 | 6.9 | `06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **GOAL ACHIEVED v0.2.0** — ~2,114w / 8 min · 25 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 7-dispatch R1→R1.b→R1.c→R1.d→R2→R2.b→R3 path (commits 00dea7b / 2db3b61 / 7fab322 / 350b41d / 99b8c5b). |
 | 6.10 | `06_10-plan-state-machine` | Pt 10: The Plan-State Machine — Long-Horizon Memory (Tier-3 closer) | **GOAL ACHIEVED v0.2.0** — ~2,688w / 8 min · 29 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R2→R3 path (commit 3bfccdf pre-sweep with 24 new refs + L120 wall split + 6 friction-gradient rescues). |
+| 7.1 | `07_1-plugin-kit-foundation` | Pt 1: Plugin Kit Foundation (B7 opener) | **GOAL ACHIEVED v0.2.0** — ~625w / 5 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R1.b→R2→R3 path (commits 4c1a0b3 + c7b46b0). |
 
 ### Status Legend
 
