@@ -61,7 +61,7 @@ Target asset: assets/images/blog/b7/evolution-cap-overflow-b7-5.png
 
 A consulting practice's seed could carry the same shape — every plugin (intake, engagement, deliverable QA) ships a `docs/evolution.md` capped narration of how its standards drifted across client cycles, with the historian dispatching after every N engagement-close commits.
 
-**The ratchet is friction, not enforcement.** The agent must read and obey the drift-injection voice for the historian to fire. Operators who skip the voice get a stale evolution.md until the next unlock surfaces it.
+**The ratchet fires at the seam.** Drift accumulates silently between unlocks; the next unlock attempt is the seam where the historian-injection voice fires, instructing the agent to invoke the per-plugin historian before proceeding. *[ref: drift-injection-on-unlock-block | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:235-256 | At PLUGIN-LOCK approval (PreToolUse on AskUserQuestion), the hook computes drift_count via drift-check.sh (L235-237). If drift_count ≥ DRIFT_THRESHOLD (L250), the script emits the `plugin-evolution-stale` voice naming the per-plugin historian (`historian-${target//_/-}`, L251-252) and exits 2 — hard-blocks the unlock until the agent invokes the historian. The narration commit resets drift to 0; the next unlock proceeds. The ratchet is enforced at the seam, not silently in the background.]*
 
 ---
 
