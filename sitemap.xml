@@ -157,7 +157,71 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://hadi-nayebi.github.io/papers/why-scaling-models-is-not-enough.pdf</loc>
     <lastmod>2026-03-04</lastmod>
