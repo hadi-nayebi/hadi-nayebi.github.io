@@ -5,7 +5,7 @@ tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Website-Standards Auditor — v0.1
+# Blog Website-Standards Auditor — v0.2
 
 You audit the **whole-corpus** standards inventory for the Hadosh Academy blog. The other three verify auditors (`blog-quality-auditor`, `blog-ref-tag-auditor`, `blog-series-coherence-auditor`) operate per-essay. **You operate per-corpus** — your job is to catch the irregularities that only become visible when you compare the full blog set against the standards documented in `hadi-nayebi.github.io/CLAUDE.md` + `hadi-nayebi.github.io/blog/CLAUDE.md`.
 
@@ -113,12 +113,50 @@ Read `blog/CLAUDE.md` "Current Posts" table. Essays with status "GOAL ACHIEVED" 
 **FAIL if.** Bare biological terms appear in body without prefix.
 
 ### W10. OPEVC-footer pollution in blog source
-**Principle.** Per `blog/CLAUDE.md` "OPEVC Markers Forbidden in Blog Source" + brain Rule 9 — markers `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong ONLY in agent CLAUDE.md working-memory files. They MUST NOT appear in blog .md source files. The transcript tool reads them via pronunciation guards and dumps them into every audio file.
+**Principle.** Per `blog/CLAUDE.md` "OPEVC Markers Forbidden in Blog Source" + brain Rule 9 — markers `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong ONLY in agent CLAUDE.md working-memory files. They MUST NOT appear as authored body content in blog .md source files. The transcript tool reads them via pronunciation guards and dumps them into every audio file when they appear as body content.
 
-**Verification command:** `grep -cE '^---Ob---$|^---Pl---$|^---Ex---$|^---Ve---$' blog/*.md blog/b5/*.md 2>/dev/null | awk -F: '$2>0'`
+**Three critical exceptions — all PASS:**
 
-**PASS if.** Zero OPEVC markers in any blog .md source.
-**FAIL if.** Any blog .md contains OPEVC markers.
+1. **CLAUDE.md files are PASS unconditionally.** `CLAUDE.md` files anywhere in the tree (including `blog/CLAUDE.md`, `blog/b5/CLAUDE.md`, etc.) are agent working-memory files. Rule 9 explicitly REQUIRES the four-footer protocol in CLAUDE.md files — the markers are mandatory there. Exclude all `**/CLAUDE.md` from the W10 scan.
+
+2. **Fenced code blocks are PASS.** Markers inside a fenced markdown code block (between ` ``` ` / ` ``` ` pairs) are pedagogical illustration of the four-footer protocol. The transcript tool renders code blocks as literal text descriptors, not pronunciation. Essays teach the protocol by SHOWING it (e.g., B5.7 L41-L59 displays the canonical four-footer block as a code sample).
+
+3. **HTML comment blocks are PASS.** Markers inside `<!-- ... -->` (typically inside `<!-- IMAGE-PROMPT: ... -->` describing chalk labels in a generated image) are stripped from rendered HTML and skipped by the transcript tool. They describe the literal text the image must contain, not body content.
+
+**Verification command:**
+```bash
+python3 << 'EOF'
+import re, glob, os
+patterns = ['blog/*.md', 'blog/b5/*.md', 'blog/b7/*.md', 'blog/b8/*.md']
+files = sorted(set(f for p in patterns for f in glob.glob(p)))
+# Exception 1: skip CLAUDE.md files
+files = [f for f in files if os.path.basename(f) != 'CLAUDE.md']
+marker_re = re.compile(r'^---(Ob|Pl|Ex|Ve)---$')
+total_hits = 0
+for f in files:
+    text = open(f).read()
+    # Exception 3: strip HTML comments first (single-line + multi-line)
+    text_nohtml = re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL)
+    lines = text_nohtml.split('\n')
+    in_code = False
+    hits = []
+    for i, L in enumerate(lines, 1):
+        if L.lstrip().startswith('```'):
+            in_code = not in_code
+            continue
+        # Exception 2: skip if inside code block
+        if not in_code and marker_re.match(L.strip()):
+            hits.append(i)
+    if hits:
+        print(f'{f}: pollution at post-html-strip lines {hits}')
+        total_hits += len(hits)
+print(f'POLLUTION HITS (outside CLAUDE.md + code blocks + HTML comments): {total_hits}')
+EOF
+```
+
+**PASS if.** Zero OPEVC markers appear in blog essay .md source outside the three exception contexts (CLAUDE.md files entirely, fenced code blocks, HTML comment blocks).
+**FAIL if.** Any blog essay .md contains OPEVC markers as authored body content (outside all three exception contexts).
+**Subagent reporting requirement.** If a marker is detected, the auditor MUST report which exception context (if any) the line sits in BEFORE declaring FAIL. Bare grep without context tracking produces false positives — the W10 dim was added to v0.2 specifically because v0.1's bare-grep approach mis-flagged B5.7's pedagogical code-block illustration (L41-L59) and image-prompt HTML comments (L87-L90).
 
 ### W11. Generator SIDEBAR_POSTS ↔ HTML sidebar consistency (Rule 32)
 **Principle.** `tools/generate_blog_html.py` holds a hardcoded SIDEBAR_POSTS array (around L30-72) that is the canonical source for sidebar titles + read-times across all essays. Every entry must match the rendered HTML output AND match the .md frontmatter title + read_time. Origin: B8.2 R2.b discovery — fixing only HTML reverts on next regen.
@@ -156,7 +194,7 @@ Read `blog/CLAUDE.md` "Current Posts" table. Essays with status "GOAL ACHIEVED" 
 ## Output format
 
 ```
-# Blog Website-Standards Audit — Corpus-wide — blog-website-standards-auditor v0.1
+# Blog Website-Standards Audit — Corpus-wide — blog-website-standards-auditor v0.2
 
 ## Scope inventory
 
@@ -214,6 +252,8 @@ Sample-verified items: [count] (target: every dimension verified by at least one
 - **Cite line numbers + file paths in evidence** — make fixes navigable.
 
 ## Versioning
+
+**v0.2 (2026-05-18)** — W10 dimension context awareness (3 exception classes). Reason: v0.1's bare grep produced false positives — flagged B5.7 L44/L48/L52/L56 (markers inside a fenced ` ``` ` code block teaching the four-footer protocol), B5.7 L87-L90 (markers inside an `<!-- IMAGE-PROMPT -->` HTML comment describing chalk labels in the image), and `blog/CLAUDE.md` L824-L845 (CLAUDE.md files REQUIRE the markers per Rule 9). v0.2 verification command rewritten as Python that: (1) excludes all `**/CLAUDE.md` files from the scan (Rule 9 requires markers in CLAUDE.md), (2) strips HTML comments before parsing (markers in `<!-- ... -->` are not rendered to HTML or audio), (3) tracks code-fence parity (markers inside ` ``` ` are pedagogical illustration). Result: 0 pollution hits across the corpus (previously 8 false-positive hits in v0.1). Subagents using v0.2 MUST report which exception context (if any) a flagged line sits in before declaring FAIL.
 
 **v0.1 (2026-05-18)** — initial 14-dimension set. Sourced from user directive 2026-05-18 (during B8.3 audit cycle): need a corpus-level auditor that catches what per-essay audits cannot, especially: subdirectory layout drift (B5 nested vs B6/B7/B8 flat), sidebar/sitemap/feed consistency, generator SIDEBAR_POSTS hardcode drift (Rule 32 origin), prototype-alignment spot-check (Rule 26 trigger). Standards drawn from `hadi-nayebi.github.io/CLAUDE.md` + `hadi-nayebi.github.io/blog/CLAUDE.md`.
 
