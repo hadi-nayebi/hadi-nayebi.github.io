@@ -782,8 +782,8 @@ Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 ess
 | 6.4 | `06_4-plan` | Pt 4: PLAN — Decide, Then Lock | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.5 | `06_5-execute` | Pt 5: EXECUTE — Build, in Scope, in Steps | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.6 | `06_6-verify` | Pt 6: VERIFY — Independent Eyes | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.7 | `06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **drafting v0.1.0** — ~1,397w / 11 min · 17 refs · HTML built · transcript regen'd (final:false) · audio pending |
-| 6.8 | `06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **drafting v0.1.0** — ~1,683w / 11 min · 8 refs · HTML built · transcript regen'd (final:false) · audio pending |
+| 6.7 | `06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **GOAL ACHIEVED v0.2.0** — ~1,400w / 11 min · 32 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 6-dispatch R1→R1.b→R2→R3 path (commits 22e003d / 4c7bb81 / b898f93). |
+| 6.8 | `06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **GOAL ACHIEVED v0.2.0** — ~1,700w / 11 min · 27 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 8-dispatch R1→R1.b→R1.c→R2→R3→R3.b path (commits 22e003d / 270db92 / 33df7c5 / a120f28 / 151ed05). |
 | 6.9 | `06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **drafting v0.1.0** — ~2,114w / 8 min · 5 refs · HTML built · transcript regen'd (final:false) · audio pending |
 | 6.10 | `06_10-plan-state-machine` | Pt 10: The Plan-State Machine — Long-Horizon Memory (Tier-3 closer) | **drafting v0.1.0** — ~2,688w / 8 min · 5 refs · HTML built · transcript regen'd (final:false) · audio pending |
 
