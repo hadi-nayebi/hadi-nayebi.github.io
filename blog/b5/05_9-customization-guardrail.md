@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Customization, PLUGIN-LOCK]
 status: draft
 version: v0.5.0
 audience: "Tier 3"
-og_image: "assets/images/blog/b5/always-on-digital-cortex-b5.png"
+og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
 
 # The Customization Guardrail
@@ -42,7 +42,7 @@ The gate admits on **either** of two conditions:
 Either condition admits. Both failing produces a block with structured teach-text naming both admission routes. The gate's logic is short — a few lines of bash in `lock-manager.sh` — but the architectural decision behind it is deeper than the code length suggests. *[ref: or-gate-logic | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:202-235 | The gate computes `gmode_active="false"; [[ "$current_phase" == "gmode" ]] && gmode_active="true"` and `plugin_lock_approval=$(jq -r '.jobs[] | select(.focused==true) | .completion_requirements.plugin_lock_approval // false' "$JOB_DATA")`. Block fires iff both arms fail: `if [[ -n "$current_phase" && "$gmode_active" != "true" && "$plugin_lock_approval" != "true" ]]; then exit 2`. Block voice: `plugin-lock-requires-gmode-or-approved-job` — names both admission paths in its teach-text.]*
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/b5/customization-guardrails-b5-9.png
+  ASSET: images/customization-guardrails-b5-9.png
   Concept: Chalk-on-blackboard OR-gate — two admission arms (gmode + plugin_lock_approval) converging into PLUGIN-LOCK admission for existing plugins, with a separate bypass path for plugin birth.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
   pastel chalk fills (cyan for the gmode arm, green for the plugin_lock_approval arm, orange for the OR-gate node, pink for the blocked-by-default state, magenta for the plugin-birth bypass arrow);
@@ -109,11 +109,11 @@ What you would NOT do is remove the gate. The gate is what makes the architectur
 
 The customization guardrail is the architectural conclusion of these eight prior sub-essays. The always-on plugin layer holds the agent's reflexes; the substrate holds its working memory; the historian ratchet forces re-narration before edits; the gate forces deliberate context before any substrate edit happens at all. Each layer adds a discipline; the gate is the one that turns the system into something safely modifiable *by you* — not by the original developer, by you, the operator who installed the seed last week or last month or last year.
 
-That is the [agent-developer-user → agent-user collapse](08_1-apprentice-to-architect-foundation.html) made operational. The agent proposes customization. You judge it. The substrate enforces the discipline that keeps your judgment safe. No developer in the loop. And the canonical reference the seed itself consults when reasoning about its own design is this nine-essay series — plus [Essay 6](06_1-phasic-foundation.html), [7](07_1-plugin-kit-foundation.html), [8](08_1-apprentice-to-architect-foundation.html) and the `.claude/knowledge/` topic files you cultivate as you customize. The PowerPoint of seed agents lives here.
+That is the [agent-developer-user → agent-user collapse](../08_1-apprentice-to-architect-foundation.html) made operational. The agent proposes customization. You judge it. The substrate enforces the discipline that keeps your judgment safe. No developer in the loop. And the canonical reference the seed itself consults when reasoning about its own design is this nine-essay series — plus [Essay 6](../06_1-phasic-foundation.html), [7](../07_1-plugin-kit-foundation.html), [8](../08_1-apprentice-to-architect-foundation.html) and the `.claude/knowledge/` topic files you cultivate as you customize. The PowerPoint of seed agents lives here.
 
 ---
 
 *Essay 5.9 — The Always-On Digital Cortex, Part 9 of 9.*
 
 *Previous: [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins.*
-*Next: [Essay 6.1 — Phasic Foundation](06_1-phasic-foundation.html) — opens The Markov Phasic Brain (10-part series): action space → Markov brain, why phases.*
+*Next: [Essay 6.1 — Phasic Foundation](../06_1-phasic-foundation.html) — opens The Markov Phasic Brain (10-part series): action space → Markov brain, why phases.*

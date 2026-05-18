@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Composed Ceremony]
 status: draft
 version: v0.3.0
 audience: "Tier 3"
-og_image: "assets/images/blog/b5/always-on-digital-cortex-b5.png"
+og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
 
 # The Historian Ratchet
@@ -51,7 +51,7 @@ The lesson is small: **read the work before changing it**.
 The mechanism makes the lesson non-negotiable. The agent is not *suggested* to re-read the plugin's history before editing — a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed. The operator can still bypass via GMODE — but only by writing a long `[GMODE]` justification (the prototype sets a word floor; your seed can tune it) that names what they're maintaining and why ordinary cycles won't do; the bypass route is named, not silent, and itself friction-bound. *[ref: lock-blocks-historian-runs | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:250-253 + .claude/plugins/plugin_integrity/scripts/drift-check.sh:46 + .claude/plugins/plugin_integrity/hooks/voice.xml block id=plugin-evolution-stale | When drift exceeds the threshold (`config.conf:23 DRIFT_THRESHOLD=10`), lock-manager fires the `plugin-evolution-stale` block voice and refuses unlock. The agent must dispatch the plugin's historian subagent before the next `[PLUGIN-LOCK]` will admit; only the historian's commit to evolution.md resets the drift counter. The block is bash-mechanical (exit 2 from the hook), not LLM-judgment.]*
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/b5/historian-ratchet-b5-8.png
+  ASSET: images/historian-ratchet-b5-8.png
   Concept: Chalk-on-blackboard wheel — plugin_integrity's historian ratchet: drift counter climbs with commits, blocks at threshold, historian subagent re-narrates, counter resets.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk circles and arrows;
   pastel chalk for the four stage nodes (cyan = Stage 1, green = Stage 2, orange = Stage 3, pink = Stage 4);
@@ -74,10 +74,10 @@ The ratchet looks like one mechanism, but it is actually three plugins working t
 
 The agent must be able to ask a `[PLUGIN-LOCK]` question. That depends on `question_discipline` recognizing the prefix and letting the question through; without that registration, the call is blocked before the user even sees it. The user's answer must then be captured and routed to the lock manager. That depends on `job_core`'s split pre-call/post-call pair, which validates the question, captures the approval, and hands the result over. Finally, the edit must close cleanly under test. That depends on `plugin_integrity`'s own safe-lock cycle, which runs the plugin's test suite when the lock closes and reverts the working tree if the tests fail. *[ref: agent-must-ask-plugin-lock-question | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh:67,120 + .claude/plugins/job_core/hooks/question-capture-hook.sh + .claude/plugins/plugin_integrity/scripts/safe-lock.sh:376-382 | Three-plugin composition for one ceremony: `question-discipline-gate` validates the `[PLUGIN-LOCK]` prefix is registered in `PREFIX_REGISTRY` (otherwise the PreToolUse hook blocks the question before the user sees it); `job_core`'s `question-capture-hook` (PostToolUse) routes the user's answer and admits the lock; `safe-lock` runs the plugin's test suite when the lock closes and reverts on failure (`find "$plugin_dir" -mindepth 1 -delete` + `git checkout "$checkpoint" -- "$plugin_dir/"` + `git reset HEAD` — no partial edits survive a failed test run).]*
 
-No single plugin enforces the historian ratchet. Single-concern plugins compose to make it possible — `question_discipline` opens the asking surface, `job_core` carries the answer, `plugin_integrity` protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The [Essay 7 series](07_1-plugin-kit-foundation.html) takes `plugin_integrity` apart on its own terms — the lock-and-historian ceremony as a single plugin's anatomy. *[ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md Plugin Building Lessons section | Plugin Building Lessons: "Plugins own their own controls — don't extend another plugin's guard for your concerns" + "Soft controls belong inside plugins". Single-concern boundary that lets ceremonies compose from narrow parts.]*
+No single plugin enforces the historian ratchet. Single-concern plugins compose to make it possible — `question_discipline` opens the asking surface, `job_core` carries the answer, `plugin_integrity` protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The [Essay 7 series](../07_1-plugin-kit-foundation.html) takes `plugin_integrity` apart on its own terms — the lock-and-historian ceremony as a single plugin's anatomy. *[ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md Plugin Building Lessons section | Plugin Building Lessons: "Plugins own their own controls — don't extend another plugin's guard for your concerns" + "Soft controls belong inside plugins". Single-concern boundary that lets ceremonies compose from narrow parts.]*
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/b5/historian-ratchet-b5-8b.png
+  ASSET: images/historian-ratchet-b5-8b.png
   Concept: Chalk-on-blackboard composition — three single-concern plugins fitting together into the historian-ratchet ceremony.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk tiles and a connecting arc;
   pastel chalk for each plugin tile (cyan = Tile 1, green = Tile 2, orange = Tile 3);

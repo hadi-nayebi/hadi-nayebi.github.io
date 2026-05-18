@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
 version: v0.3.0
 audience: "Tier 2"
-og_image: "assets/images/blog/b5/always-on-digital-cortex-b5.png"
+og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
 
 # Job Lifecycle — `job_core`
@@ -32,10 +32,10 @@ A user-prompt hook intercepts every user prompt and either creates a new active 
 
 The interaction list is just one form of state attached to a job. When a job is created it is assigned a unique ID — a timestamp from the moment of creation — and the *base* job object (name, status, interaction list, dependencies, completion fields) lives in `job_core`'s own hidden state. Other plugins that need to carry context about that job *extend* the same job object under the same ID inside their own hidden state. `interaction_summary` does exactly this — when a job's interactions cross the summarization threshold, the plugin creates a mirror entry under the job's ID and starts appending summary blocks there. *[ref: base-job-object-schema | .claude/plugins/job_core/scripts/job.sh:223-236 | `create-active` handler mints the base job object: `local_id=$(gen_id)` produces the timestamp ID; a single jq line appends `{id, name, objective, status:"active", focused:true, user_interactions:[$prompt], completion_requirements, plan_state:"none", created_at, updated_at}` to job_core's own data.json. This is the shared-key origin every other plugin keys their own per-job entries against.]*
 
-The phase plugins ([Essay 6](06_1-phasic-foundation.html)) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping — scope multipliers, point ledgers, plan-file pointers, footer markers — keyed by the same ID. No plugin reads another's hidden state directly, but the shared key lets each plugin's view of the job line up with every other plugin's view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment. *[ref: interaction-list-just-one-form | .claude/plugins/job_core/scripts/job.sh:223-236 | `create-active` handler: `local_id=$(gen_id)` mints a timestamp ID; jq writes base job object `{id, name, objective, status, focused, user_interactions, completion_requirements: {user_approval, plugin_lock_approval, depends_on}, plan_state, created_at, updated_at}` to job_core's own data.json. Other plugins extend by keying entries on the same `id`.]*
+The phase plugins ([Essay 6](../06_1-phasic-foundation.html)) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping — scope multipliers, point ledgers, plan-file pointers, footer markers — keyed by the same ID. No plugin reads another's hidden state directly, but the shared key lets each plugin's view of the job line up with every other plugin's view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment. *[ref: interaction-list-just-one-form | .claude/plugins/job_core/scripts/job.sh:223-236 | `create-active` handler: `local_id=$(gen_id)` mints a timestamp ID; jq writes base job object `{id, name, objective, status, focused, user_interactions, completion_requirements: {user_approval, plugin_lock_approval, depends_on}, plan_state, created_at, updated_at}` to job_core's own data.json. Other plugins extend by keying entries on the same `id`.]*
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/b5/job-core-b5-4.png
+  ASSET: images/job-core-b5-4.png
   Concept: Chalk-on-blackboard cross-section — a single focused job drawn as a central chalk box keyed by a timestamp ID, with the cumulative interaction list growing inside it and satellite plugin boxes extending the same ID from outside their own hidden state.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
   pastel chalk fills (cyan for the central job object, green for the user_interactions list cells, orange for the extending plugin satellites, pink for the shared-key arrows, magenta for the plugin labels);

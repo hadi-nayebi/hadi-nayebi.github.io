@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
 version: v0.4.0
 audience: "Tier 2"
-og_image: "assets/images/blog/b5/always-on-digital-cortex-b5.png"
+og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
 
 # Structured Questions — `question_discipline`
@@ -43,7 +43,7 @@ Shape lives on both sides — the question body and the option labels — and th
 The same discipline generalizes to every prefix; each body shape names what the question is about, which forces the seed to decide what it's about to do BEFORE handing the choice to the user. The coverage gap closes when every prefix carries a shape rich enough that filling it is the thinking — and the registry stops being a membership filter, becomes a slot-cognition filter that turns each ask into a deliberate, structured move.
 
 <!-- IMAGE PLACEHOLDER:
-  ASSET: ../assets/images/blog/b5/question-shapes-compel-production-b5-6.png
+  ASSET: images/question-shapes-compel-production-b5-6.png
   Concept: Chalk-on-blackboard cross-section showing three prefix templates side by side, each a labeled stencil with named empty slots the seed agent must fill before the question can be asked. The shape compels the structured thinking.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
   limited palette — cyan tile borders, light green for slots being filled, white chalk for labels and arrows — not the full chalk palette (canonical 5 is cyan / green / orange / pink / magenta; this image deliberately uses only the first three for visual focus);
