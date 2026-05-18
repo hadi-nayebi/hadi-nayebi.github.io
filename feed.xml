@@ -5,8 +5,96 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 2: The Stages of Job Maturation</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The four stages a job moves through — single-cycle OPEVC, multi-cycle .md plan, multi-cycle .yaml plan, sealed. plan_state lives on the job, not in the file.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 1: Apprentice to Architect Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The maturation arc the seed agent walks across months of work — three growth axes track the jobs, the plan-state machine, and the brain. Opens the nine-part From Apprentice to Architect series.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 9: Building a New Plugin</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Two paths — sibling-extension via [PLUGIN-LOCK] for an established seed, or plugin-template clone for a from-scratch concern. Tier-3 architect work, end-to-end.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 8: The Lock Ceremony</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>PLUGIN-LOCK + TEST-LOCK + safe-lock + historian compose into the ceremony every plugin code edit passes through. Pass and commit, fail and revert.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 7: Smaller Organs and Brain-Root Wiring</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>lib/, template/, MD/, archive/ — the smaller organs that round out the kit. How the brain root wires plugin hooks into settings.local.json.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 6: agents/ and the 80/20 Dispatch Budget</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Each plugin's owned subagent pool with prefix-scoped naming (historian-*, observe-*, verify-*, condense-*). Main session orchestrates 20 percent; subagents execute 80 percent.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 5: docs/ and the Historian</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The narrated knowledge layer per plugin — principles, evolution, CLAUDE.md.template. The historian subagent ratchets evolution.md as the plugin matures.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 4: data.json — The Hidden State</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The plugin's private runtime state — focused job, tier counter, summary chain, lock manifest. JSON, atomic-written, gitignored — never travels across machines.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 3: The Dual Voice Architecture</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Why every plugin carries two voice.xml files — one in hooks/ that injects mid-conversation coaching, one in scripts/ that speaks at script-execution time. Same XML shape, two firing points.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 2: Skeleton: CLAUDE.md, Hooks, and Scripts</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Three load-bearing organs — the markdown brain at the plugin root, the hook directory that fires on Claude Code events, and the scripts directory the hooks call.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 1: Plugin Kit Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The kit framing — every plugin is a cell with shared organs: CLAUDE.md, hooks, scripts, tests, data.json, docs, agents, voice.xml. Opens the nine-part Plugin Kit series.</description>
+    </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 10: The Plan-State Machine: Long-Horizon Memory</title>
