@@ -22,7 +22,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ## `agents/` — The Subagent Pool
 
-**What it is.** A directory of subagent definitions the plugin owns. Subagent names are namespace-prefixed to their owning plugin's concern — `historian-*` for evolution narration (owned by `plugin_integrity`), `observe-*` for research (owned by `phase_observe`), `verify-*` for auditing, `condense-*` for waterfall routing. The prefix is the lock-boundary marker. Per-plugin scoping — every plugin owns the subagents it dispatches. *[ref: agents-dir-per-plugin-scoping | .claude/plugins/*/agents/ | `find .claude/plugins -name agents -type d` returns 11 dirs (5 phase plugins + phasic_system + plugin_integrity + brain_guard + question_discipline + job_archiver + job_blocker) — NOT every plugin, only those that delegate investigation. Each agents/ dir contains the plugin's owned subagents: phase_observe/agents/ has observe-codebase-explorer, observe-contradiction-finder, observe-dependency-mapper, observe-file-comparer, etc. plugin_integrity/agents/ has 12 historian-* subagents. Subagent names are name-spaced to their plugin (e.g., `observe-*`, `condense-*`, `historian-*`).]*
+**What it is.** A directory of subagent definitions the plugin owns. Subagent names are namespace-prefixed to their owning plugin's concern — `historian-*` for evolution narration (owned by `plugin_integrity`), `observe-*` for research (owned by `phase_observe`), `verify-*` for auditing, `condense-*` for waterfall routing. The prefix is the lock-boundary marker. Per-plugin scoping — every plugin owns the subagents it dispatches. *[ref: agents-dir-per-plugin-scoping | .claude/plugins/*/agents/ | `find .claude/plugins -name agents -type d` returns 11 dirs (5 phase plugins + phasic_system + plugin_integrity + brain_guard + question_discipline + job_archiver + job_blocker) — NOT every plugin, only those that delegate investigation. Each agents/ dir contains the plugin's owned subagents: phase_observe/agents/ has observe-codebase-explorer, observe-contradiction-finder, observe-dependency-mapper, observe-file-comparer, etc. plugin_integrity/agents/ has 12 historian-* subagents; question_discipline/agents/ carries the 13th (historian-question-discipline) — 13 total historian-* across all plugins. Subagent names are name-spaced to their plugin (e.g., `observe-*`, `condense-*`, `historian-*`).]*
 
 **Who reads them.** Claude Code, when the agent invokes a subagent by name. The agent itself reads only the subagent's frontmatter (description + tools) when deciding whether to dispatch.
 
@@ -42,13 +42,13 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
     Circle 3 (orange, lower right): "execute-* (3)"
     Circle 4 (pink, bottom): "verify-* (5)"
     Circle 5 (magenta, lower left): "condense-* (7)"
-    Circle 6 (cyan, darker, upper left): "historian-* (12)"
+    Circle 6 (cyan, darker, upper left): "historian-* (13)"
   From the central main-session circle, a single white-chalk arrow goes OUT to each of the six surrounding pools (six arrows total, all radial). Each arrow is labeled with the same single word IN WHITE CHALK exactly: "dispatch".
   In a chalk box at the bottom-right corner of the board, draw a small "budget panel" with header IN WHITE CHALK reading exactly "direct-action budget", and two short white-chalk lines stacked:
     Line 1: "+3 grants per execute-* dispatch"
     Line 2: "-1 per project file edit"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (12)", "plan-* (6)", "execute-* (3)", "verify-* (5)", "condense-* (7)", "historian-* (12)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (12)", "plan-* (6)", "execute-* (3)", "verify-* (5)", "condense-* (7)", "historian-* (13)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.6. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
 -->
 
