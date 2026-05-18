@@ -157,7 +157,7 @@ Next.
 
 *Essay 6.7 — The Markov Phasic Brain, Part 7 of 10.*
 
-*Previous: [Essay 6.6 — VERIFY: Independent Eyes](06_6-verify.html) — the audit chamber, the script-and-auditor rule, the multi-backward fan-out.*
+*Previous: [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — the audit chamber, the script-and-auditor rule, the multi-backward fan-out.*
 *Next: [Essay 6.8 — The Inverse Multiplier](06_8-inverse-multiplier.html) — the per-phase dial, the point system, and the smaller-number-bigger-phase punch.*
 
 

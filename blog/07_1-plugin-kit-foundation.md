@@ -80,5 +80,5 @@ A consulting practice could organize its own seed agent's plugin around a `[CLIE
 
 *Essay 7.1 — The Plugin Kit, Part 1 of 9.*
 
-*Previous: [Essay 6.10 — The Plan-State Machine](06_10-plan-state-machine.html) — long-horizon memory closes the markov phasic brain series.*
+*Previous: [Essay 6.10 — The Plan-State Machine — Long-Horizon Memory](06_10-plan-state-machine.html) — closes the markov phasic brain series.*
 *Next: [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK.*

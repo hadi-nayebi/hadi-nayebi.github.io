@@ -168,7 +168,7 @@ Next.
 *Essay 6.8 — The Markov Phasic Brain, Part 8 of 10.*
 
 *Previous: [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the seven-step waterfall, the deflation gate, the only phase that edits the brain.*
-*Next: [Essay 6.9 — GMODE: The Off-Cycle Lane](06_9-gmode.html) — the operator's deliberate maintenance lane that lives outside the OPEVC cycle.*
+*Next: [Essay 6.9 — GMODE — The Off-Cycle Lane](06_9-gmode.html) — the operator's deliberate maintenance lane that lives outside the OPEVC cycle.*
 
 
 

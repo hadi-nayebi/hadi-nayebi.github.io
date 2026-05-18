@@ -97,5 +97,5 @@ The next part covers the plugin that gives the seed agent a notion of *what work
 
 *Essay 5.3 — The Always-On Digital Cortex, Part 3 of 9.*
 
-*Previous: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — the test gate underneath every plugin edit.*
-*Next: [Essay 5.4 — Job Lifecycle (`job_core`)](05_4-job-core.html) — the agent's unit of compartmentalization and the refusal-to-stop discipline.*
+*Previous: [Essay 5.2 — Plugin Edit Safety — `plugin_integrity`](05_2-plugin-integrity.html) — the test gate underneath every plugin edit.*
+*Next: [Essay 5.4 — Job Lifecycle — `job_core`](05_4-job-core.html) — the agent's unit of compartmentalization and the refusal-to-stop discipline.*

@@ -144,7 +144,7 @@ VERIFY's verdict closes the work-on-the-project arc. What CONDENSE does next is 
 
 *Essay 6.6 — The Markov Phasic Brain, Part 6 of 10.*
 
-*Previous: [Essay 6.5 — EXECUTE: Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, checkpoints, delegation bias.*
+*Previous: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, checkpoints, delegation bias.*
 *Next: [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the seven-step waterfall, the cycle's metabolism.*
 
 

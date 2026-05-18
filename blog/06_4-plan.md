@@ -134,8 +134,8 @@ When PLAN exits, the orchestrator advances the job to EXECUTE.
 
 *Essay 6.4 — The Markov Phasic Brain, Part 4 of 10.*
 
-*Previous: [Essay 6.3 — OBSERVE: Read Wide, Write Once](06_3-observe.html) — read-only synthesis, multiplier sentinel, paired gates.*
-*Next: [Essay 6.5 — EXECUTE: Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*
+*Previous: [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — read-only synthesis, multiplier sentinel, paired gates.*
+*Next: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*
 
 
 

@@ -87,5 +87,5 @@ The next part covers the plugin that keeps the cumulative mega-prompt legible as
 
 *Essay 5.4 — The Always-On Digital Cortex, Part 4 of 9.*
 
-*Previous: [Essay 5.3 — Context Window Discipline (`brain_guard`)](05_3-brain-guard.html) — the progressive squeeze that keeps reasoning sharp.*
-*Next: [Essay 5.5 — Mega-Prompt Compression (`interaction_summary`)](05_5-interaction-summary.html) — shape-compels-production applied to the mega-prompt.*
+*Previous: [Essay 5.3 — Context Window Discipline — `brain_guard`](05_3-brain-guard.html) — the progressive squeeze that keeps reasoning sharp.*
+*Next: [Essay 5.5 — Mega-Prompt Compression — `interaction_summary`](05_5-interaction-summary.html) — shape-compels-production applied to the mega-prompt.*

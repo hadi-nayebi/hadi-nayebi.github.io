@@ -52,11 +52,11 @@ We tour the always-on layer first because it surrounds everything else.
 Essay 5 splits into nine short sub-essays:
 
 - **Essay 5.1 — The Two-Layer Foundation** *(you are here)* — the substrate + the two layers + this map
-- [Essay 5.2 — Plugin Edit Safety](05_2-plugin-integrity.html) — `plugin_integrity` and the test gate
-- [Essay 5.3 — Context Window Discipline](05_3-brain-guard.html) — `brain_guard` and the progressive squeeze
-- [Essay 5.4 — Job Lifecycle](05_4-job-core.html) — `job_core` and the unit of compartmentalization
-- [Essay 5.5 — Mega-Prompt Compression](05_5-interaction-summary.html) — `interaction_summary` keeps the dynamic mega-prompt legible
-- [Essay 5.6 — Structured Questions](05_6-question-discipline.html) — `question_discipline` and the prefix registry
+- [Essay 5.2 — Plugin Edit Safety — `plugin_integrity`](05_2-plugin-integrity.html) — the test gate
+- [Essay 5.3 — Context Window Discipline — `brain_guard`](05_3-brain-guard.html) — the progressive squeeze
+- [Essay 5.4 — Job Lifecycle — `job_core`](05_4-job-core.html) — the unit of compartmentalization
+- [Essay 5.5 — Mega-Prompt Compression — `interaction_summary`](05_5-interaction-summary.html) — keeps the dynamic mega-prompt legible
+- [Essay 5.6 — Structured Questions — `question_discipline`](05_6-question-discipline.html) — the prefix registry
 - [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — the working-memory substrate form the phasic layer writes through
 - [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — three single-concern plugins composed into one ceremony
 - [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when plugin-layer edits are admitted at all
@@ -96,4 +96,4 @@ We start with `plugin_integrity`.
 *Essay 5.1 — The Always-On Digital Cortex, Part 1 of 9.*
 
 *Previous: [Essay 4 — The Language of Agents](../04-the-language-of-agents.html) — vocabulary that prepares the architecture.*
-*Next: [Essay 5.2 — Plugin Edit Safety (`plugin_integrity`)](05_2-plugin-integrity.html) — first of the always-on plugin deep-dives.*
+*Next: [Essay 5.2 — Plugin Edit Safety — `plugin_integrity`](05_2-plugin-integrity.html) — first of the always-on plugin deep-dives.*

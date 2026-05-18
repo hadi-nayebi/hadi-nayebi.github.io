@@ -114,8 +114,8 @@ When EXECUTE believes the plan is implemented, it commits the final checkpoint a
 
 *Essay 6.5 — The Markov Phasic Brain, Part 5 of 10.*
 
-*Previous: [Essay 6.4 — PLAN: Decide, Then Lock](06_4-plan.html) — naming the contract, the plan_state machine.*
-*Next: [Essay 6.6 — VERIFY: Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, approval authority.*
+*Previous: [Essay 6.4 — PLAN — Decide, Then Lock](06_4-plan.html) — naming the contract, the plan_state machine.*
+*Next: [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, approval authority.*
 
 
 
