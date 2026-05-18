@@ -22,7 +22,7 @@ The prototype today is a useful ground-truth case. A precise inventory of what i
 
 ---
 
-A research lab running experiment-protocol jobs through the same maturation arc will see its knowledge layer fill with protocol-specific topic dirs and its memory layer fill with lab-specific operating rules. The *shape* — small brain, large knowledge layer, narrow memory — transfers. The *substance* differs per operator's domain. The numbers below are the prototype's; the proportions hold across any seed running this architecture long enough.
+A research lab running experiment-protocol jobs through the same maturation arc will see its knowledge layer fill with topic-named directories like `knowledge/protocols/` (IRB-approved procedures), `knowledge/equipment/` (instrument calibration rules), and `knowledge/datasets/` (sample-handling conventions). Its memory layer will hold rules the operator gives once and expects honored across every session — *always quote source DOIs*, *never auto-publish without PI review*. The *shape* — small brain, large knowledge layer, narrow memory — transfers. The *substance* differs per operator's domain. The numbers below are the prototype's; the proportions hold across any seed running this architecture long enough.
 
 ---
 
