@@ -196,7 +196,19 @@ def extract_refs(text: str) -> tuple[str, list[str]]:
     return pattern.sub(repl, text), refs
 
 
-def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
+def extract_image_placeholders(text: str, input_md_dir: str = "") -> tuple[str, list[str]]:
+    """input_md_dir: directory containing the input .md file (e.g., 'blog/b5').
+    Used to resolve ASSET paths relative to .md file location. Empty means
+    fall back to legacy project-root resolution.
+
+    """
+    global _input_md_dir
+    _input_md_dir = input_md_dir
+    return _extract_image_placeholders_impl(text)
+
+_input_md_dir = ""
+
+def _extract_image_placeholders_impl(text: str) -> tuple[str, list[str]]:
     """Pull <!-- IMAGE PLACEHOLDER: ... --> blocks out and render as <aside>."""
     images: list[str] = []
     pattern = re.compile(r"<!--\s*IMAGE PLACEHOLDER:(.*?)-->", re.DOTALL)
@@ -223,15 +235,27 @@ def extract_image_placeholders(text: str) -> tuple[str, list[str]]:
         # with the real image. If ASSET is set but the file doesn't exist yet, fall
         # through to the "image pending" placeholder so the page doesn't show a
         # broken image icon. Bug observed in B6.9 iter-31, 2026-05-15.
-        # The asset path is relative to the blog .html file's directory (e.g.
-        # "../assets/images/blog/foo.png"); resolve relative to repo root for the check.
+        # The asset path in the .md is relative to the .md file's own dir
+        # (e.g., "../assets/images/blog/foo.png" from blog/X.md, or
+        # "images/X.png" from blog/b5/X.md after the 2026-05-18 restructure).
+        # Resolve against input_md_dir (threaded from main → render_body) so
+        # the check works for any .md location.
         import os as _os
         asset_path_check = None
         if asset_match:
-            asset_path_check = _os.path.join(
-                _os.path.dirname(__file__), "..",
-                asset_match.group(1).strip().replace("../", "", 1)
-            )
+            raw_asset = asset_match.group(1).strip()
+            if _input_md_dir:
+                asset_path_check = _os.path.normpath(
+                    _os.path.join(_input_md_dir, raw_asset)
+                )
+            else:
+                # Legacy fallback: assume .md is at blog/X.md (one level under
+                # project root). Used when extract_image_placeholders is called
+                # without input_md_dir context.
+                asset_path_check = _os.path.normpath(
+                    _os.path.join(_os.path.dirname(__file__), "..",
+                                  raw_asset.replace("../", "", 1))
+                )
         if asset_match and asset_path_check and _os.path.exists(asset_path_check):
             asset_path = asset_match.group(1).strip()
             title_html = inline_format(title)
@@ -385,10 +409,10 @@ def restore_sentinels(
     return text
 
 
-def render_body(body: str) -> str:
+def render_body(body: str, input_md_dir: str = "") -> str:
     """Convert blog markdown body to HTML article-body innerHTML."""
     # 1. Pull out image placeholders (HTML comment blocks).
-    body, images = extract_image_placeholders(body)
+    body, images = extract_image_placeholders(body, input_md_dir=input_md_dir)
     # 2. Pull out refs.
     body, refs = extract_refs(body)
     # 3. Pull out fenced code blocks (```...```) BEFORE inline-code extraction.
@@ -835,7 +859,9 @@ def main(argv: list[str] | None = None) -> int:
 
     md_text = args.input_md.read_text()
     meta, body = parse_frontmatter(md_text)
-    body_html = render_body(body)
+    import os as _os
+    input_md_dir = str(args.input_md.parent)
+    body_html = render_body(body, input_md_dir=input_md_dir)
 
     # Determine active slug for sidebar. SIDEBAR_POSTS keys are filename slugs (NN-name).
     # The .md frontmatter slug omits the prefix, so we match by suffix.
