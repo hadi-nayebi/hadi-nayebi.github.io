@@ -22,7 +22,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ## Two Paths to a New Plugin
 
-When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first ([Essay 8](08_1-apprentice-to-architect-foundation.html) covers the maturation stages). The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs and the seed has learned its shape, the job graduates to multi-cycle. When the multi-cycle plan stabilizes, the job graduates to a `.yaml` plan that injects job-specific context at every phase entry. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin.
+When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first ([Essay 8](08_1-apprentice-to-architect-foundation.html) covers the maturation stages). The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs and the seed has learned its shape, the job graduates to multi-cycle. When the multi-cycle plan stabilizes, the job graduates to a `.yaml` plan that injects job-specific context at every phase entry. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin. *[ref: maturation-arc-job-forms-taxonomy | CLAUDE.md "Job Forms (OBSERVE cycle 1 classifies)" section | Root CLAUDE.md names three job forms: (1) Single-cycle deep — `plan_file = false`, freestyle collaborative; (2) Multi-cycle with .md plan — `plan_file = <name>.md`, plan accumulates across cycles; (3) Multi-cycle with .yaml plan — `plan_state ∈ {yaml_drafting, yaml_ready}`, .yaml injects at every phase entry. Forms 1→2 graduate when a job recurs and accumulates structure; forms 2→3 graduate via `[PLAN-APPROVAL]` user-confirmation in VERIFY. Storage on the job object via `plan.sh set-plan-file` / `approve-md` / `approve-yaml` / `seal-plan`. The taxonomy + lifecycle live in root CLAUDE.md so OBSERVE cycle 1 can read it for classification.]*
 
 That is one path to a new plugin: a job that has matured through the earlier maturation stages and now needs phase-cognition customization the voice injection cannot deliver.
 
@@ -34,7 +34,7 @@ A consulting practice's seed might gain a `client-engagement-tracker` plugin thi
 
 ## The First Cycle — Single-Cycle DEEP
 
-The seed treats new-plugin work as a single-cycle DEEP job at first: OBSERVE asks you questions about the gap, PLAN designs the new plugin's concern and organ list, EXECUTE stamps the template and fills in the substance, VERIFY runs the new plugin's test suite, CONDENSE absorbs the lessons into the knowledge layer.
+The seed treats new-plugin work as a single-cycle DEEP job at first: OBSERVE asks you questions about the gap, PLAN designs the new plugin's concern and organ list, EXECUTE stamps the template and fills in the substance, VERIFY runs the new plugin's test suite, CONDENSE absorbs the lessons into the knowledge layer. *[ref: single-cycle-deep-cycle-1-default | CLAUDE.md "Job Forms (OBSERVE cycle 1 classifies)" decision rules + .claude/plugins/job_core/scripts/plan.sh:335-376 | New plugin-creation jobs default to single-cycle DEEP per root CLAUDE.md decision rules: "Generic conversational request, no expected repeat → form 1" and "Single bug fix, single feature add, single doc update → form 1 (no plan_file needed; one OPEVC pass closes it)." Single-cycle DEEP has `plan_file = false` literal — no .md/.yaml plan exists. Backward edges and loops happen INSIDE one OPEVC cycle. Configured via `plan.sh set-plan-file <job-id> false` in PLAN of cycle 1 (plan.sh:335-376 `set-plan-file` handler). New-plugin work fits this shape because operator + seed are still co-discovering design preferences.]*
 
 The seed performs the PLUGIN-LOCK ceremony at the moment EXECUTE needs to begin writing code; once approved, the lock-manager stamps the universal template at `.claude/plugins/<new_name>/`, substitutes the plugin name into the placeholders, generates the plugin's `historian-<name>` subagent definition, and auto-commits the birth as the drift baseline. *[ref: birth-stamps-template-historian-and-baseline | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:297,313-316,319,325 | L297: "Plugin birth: create from template, replace placeholders, generate historian, auto-commit." L313: `_historian_template="$PLUGIN_TEMPLATE_DIR/_historian.md"`. L314: `_historian_dest="$PLUGIN_DIR/agents/historian-${_target_dashed}.md"`. L316 substitutes placeholders and writes the new historian: `sed "s/{{PLUGIN_NAME}}/$target/g; s/{{PLUGIN_DASHED}}/$_target_dashed/g" "$_historian_template" > "$_historian_dest.tmp" && mv "$_historian_dest.tmp" "$_historian_dest"`. L319 + L325 commit the birth ("Auto-commit birth state to establish baseline" + `git commit -m "birth: $target plugin initialized from template"`) — the commit IS the drift counter's baseline.]*
 
@@ -44,7 +44,7 @@ The seed performs the PLUGIN-LOCK ceremony at the moment EXECUTE needs to begin 
 
 ## Phase Plugins Need a Second Lock
 
-If the new plugin extends the phase system (e.g., a new `phase_research` between OBSERVE and PLAN — exactly the customization [Essay 6.1](06_1-phasic-foundation.html) named when it said the phase count is the prototype, not the architecture), one lock builds the cell, and a *second* lock on `phasic_system` updates the orchestrator's forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this — most plugin systems make wiring invisible; this architecture makes wiring explicit.
+If the new plugin extends the phase system (e.g., a new `phase_research` between OBSERVE and PLAN — exactly the customization [Essay 6.1](06_1-phasic-foundation.html) named when it said the phase count is the prototype, not the architecture), one lock builds the cell, and a *second* lock on `phasic_system` updates the orchestrator's forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this — most plugin systems make wiring invisible; this architecture makes wiring explicit. *[ref: phasic-orchestrator-edge-maps-update-needed | .claude/plugins/phasic_system/scripts/phase.sh | `phasic_system/scripts/phase.sh` holds OPEVC's phase set + transition map; `phase advance` chooses the next phase based on current phase + map. Adding a new phase plugin (e.g., `phase_research` between OBSERVE and PLAN) requires `phasic_system` to acknowledge the new phase in its transition map so routing reaches it. The second `[PLUGIN-LOCK] phasic_system` ceremony is operator discipline — the orchestrator does not auto-discover new phase plugins; the transition map is the wiring contract. Most plugin systems make wiring invisible; this architecture makes wiring explicit.]*
 
 ---
 
@@ -55,35 +55,30 @@ This is the part most plugin tutorials skip. When the seed authors a new plugin,
 **Tell your seed: every new plugin gets a knowledge directory by birth, not as an afterthought.** Without it, the plugin migrates to the public repo as code without context; with it, the public seed agent can teach new operators how to think about that plugin's concern. *[ref: every-active-plugin-has-knowledge-dir | .claude/knowledge/*/INDEX.md | `find .claude/knowledge -maxdepth 2 -name INDEX.md` returns one INDEX.md per active plugin: brain_guard, interaction_summary, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline — every active plugin in the prototype has its own knowledge dir. Plus topic dirs (opevc, migration, plans, session, etc.) for cross-plugin patterns. The convention holds: knowledge/<plugin_name>/ accompanies the plugin code rather than living separately.]*
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard horizontal flow — phase footer carrying inline markers, CONDENSE grep-dispatches each to its handler, consumed markers become strikethrough audit lines.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
-  pastel chalk for marker pills and step badges (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for ALL labels, arrows, and section markers; faint chalk dust at the edges; chalk sticks along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other marker names, step names, or descriptors. Triple-dash phase-section markers must be written EXACTLY as shown (three dashes, abbreviation, three dashes).
-  Layout: Three horizontal chalk panels arranged left-to-right across the board, joined by white-chalk arrows.
-    Left panel — vertical white-chalk header above reads exactly "phase footer". Inside, four phase-section markers drawn as horizontal white-chalk lines, top to bottom: "---Ob---", "---Pl---", "---Ex---", "---Ve---". Inside three of those sections, draw small pastel chalk pills labeled IN WHITE CHALK with example inline markers, one pill per section:
-      under "---Ob---" (cyan pill): "[KNOWLEDGE] topic-slug"
-      under "---Pl---" (green pill): "[PENDING-JOB]"
-      under "---Ex---" (orange pill): "[VOICE-UPDATE] id | why | direction"
-    A single white-chalk arrow leaves the left panel and points right, labeled IN WHITE CHALK exactly "grep + dispatch".
-    Middle panel — vertical white-chalk header reads exactly "CONDENSE waterfall". Inside, five small chalk step-badges stacked top to bottom, each labeled IN WHITE CHALK with its number and short name:
-      Badge 1 (cyan): "step 3: pending job"
-      Badge 2 (green): "step 4: voice update"
-      Badge 3 (orange): "step 5: agent update"
-      Badge 4 (pink): "step 6: knowledge"
-      Badge 5 (magenta, smaller, fainter): "step 1: durable / ephemeral tags"
-    A single white-chalk arrow leaves the middle panel and points right, labeled IN WHITE CHALK exactly "consumed".
-    Right panel — vertical white-chalk header reads exactly "next cycle reads". Inside, a single strikethrough chalk line (drawn with a horizontal slash through the text) reading EXACTLY: "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4". The text is struck through but legible.
+  Concept: Chalk-on-blackboard linear flow — the plugin birth sequence inside the EXECUTE phase of a single-cycle DEEP job.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
+  and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other state names, command names, or descriptors.
+  Layout: A small white-chalk title at the top reading exactly: "plugin birth — inside EXECUTE".
+  Below the title, five hand-drawn chalk boxes arranged in a horizontal flow across the center of the board, each labeled IN WHITE CHALK with its exact text:
+    Box 1 (cyan fill): "[PLUGIN-LOCK] new_plugin approved"
+    Box 2 (green fill): "stamp template/ → .claude/plugins/new_plugin/"
+    Box 3 (orange fill): "substitute {{PLUGIN_NAME}}"
+    Box 4 (pink fill): "generate agents/historian-new-plugin.md"
+    Box 5 (magenta fill): "auto-commit: birth baseline"
+  Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4 → Box 5.
+  Below the right end of the flow (under Box 5), draw a small chalk note IN WHITE CHALK reading exactly: "operator step: register in settings.local.json".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "phase footer", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "[KNOWLEDGE] topic-slug", "[PENDING-JOB]", "[VOICE-UPDATE] id | why | direction", "grep + dispatch", "CONDENSE waterfall", "step 3: pending job", "step 4: voice update", "step 5: agent update", "step 6: knowledge", "step 1: durable / ephemeral tags", "consumed", "next cycle reads", "[VOICE-UPDATE] id | why | direction CONSUMED 2026 Step 4", plus the caption below. No other words, file names, folders, marker names, or step descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.9. Markers are plain text. CONDENSE consumes them, strikethrough audits the consumption."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin birth — inside EXECUTE", "[PLUGIN-LOCK] new_plugin approved", "stamp template/ → .claude/plugins/new_plugin/", "substitute {{PLUGIN_NAME}}", "generate agents/historian-new-plugin.md", "auto-commit: birth baseline", "operator step: register in settings.local.json", plus the caption below. No other words, file names, folders, or state descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.9. Plugin birth automates 5 steps. Hook registration stays operator-controlled."
 -->
 
 ---
 
 ## Lock Closes — The Plugin Is Born, but Not Yet Alive
 
-Once the lock closes, the plugin exists as files on disk — but no hook fires yet. The brain has to register the hooks via `settings.local.json` (covered in [Essay 7.7](07_7-smaller-organs-and-wiring.html)). Inside the same EXECUTE phase the seed updates the settings file. Once the brain rereads on the next session start, the new plugin's reflexes fire. CONDENSE then absorbs the cycle's lessons, the historian writes the cycle-1 evolution.md, and the plugin enters its life.
+Once the lock closes, the plugin exists as files on disk — but no hook fires yet. The brain has to register the hooks via `settings.local.json` (covered in [Essay 7.7](07_7-smaller-organs-and-wiring.html)). Inside the same EXECUTE phase the seed updates the settings file. Once the brain rereads on the next session start, the new plugin's reflexes fire. CONDENSE then absorbs the cycle's lessons, the historian writes the cycle-1 evolution.md, and the plugin enters its life. *[ref: settings-local-json-no-auto-registration | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:313-341 + .claude/plugins/plugin_integrity/scripts/health-check.sh:90-96 | Plugin birth at `lock-manager.sh:313-341` stamps the template (L313 "Plugin birth: create from template, replace placeholders, generate historian, auto-commit"), generates the historian (L329-332), and auto-commits the baseline (L335-341 `git commit -m "birth: $target plugin initialized from template"`) — but does NOT modify `.claude/settings.local.json`. Hook registration remains an operator step performed inside the same EXECUTE phase. `plugin_integrity/scripts/health-check.sh:90-96` validates that registered hooks have files (Check 1: "Hook files exist (registered hooks in settings.local.json)"). The architectural rule: birth = file creation; activation = settings.local.json edit.]*
 
 ---
 
