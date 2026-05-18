@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.10.0
+**Version:** v0.11.0
 
 ## Layout
 
