@@ -27,7 +27,7 @@ from pathlib import Path
 # Update when a new post is added. The active post is auto-detected from the input slug.
 SIDEBAR_POSTS = [
     ("08_1-apprentice-to-architect-foundation", "Essay 8.1 — Apprentice to Architect Foundation", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("08_2-job-maturation-stages",       "Essay 8.2 — The Four Stages of Job Maturation",    "May 2026", "12 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Jobs"]),
+    ("08_2-job-maturation-stages",       "Essay 8.2 — The Stages of Job Maturation",         "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Jobs"]),
     ("08_3-brain-after-three-months",    "Essay 8.3 — What Lives in the Brain After Three Months", "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Knowledge"]),
     ("08_4-soft-hard-migration",         "Essay 8.4 — Soft to Hard Migration",               "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Patterns"]),
     ("08_5-enforced-vs-discipline",      "Essay 8.5 — What's Enforced vs What's Discipline", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
