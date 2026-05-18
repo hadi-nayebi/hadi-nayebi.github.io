@@ -75,6 +75,37 @@ AUDIENCE_TITLE = {
     "Power Users &amp; Architects": "Semi-technical to architect-level — Tier 2 to Tier 3",
 }
 
+# Slug-to-subdir mapping. When a mini-series is moved into its own subdir,
+# add an entry here. Empty string means "blog/ root, no subdir".
+# 2026-05-18: B5 moved to blog/b5/. B6/B7/B8 still at root pending their own
+# finalization passes — add their entries when those series move.
+SLUG_SUBDIR_PREFIXES = {
+    "05_": "b5",
+}
+
+def get_slug_subdir(slug: str) -> str:
+    """Return subdir for a slug (e.g., '05_X' → 'b5'), or '' for root blog/."""
+    for prefix, sub in SLUG_SUBDIR_PREFIXES.items():
+        if slug.startswith(prefix):
+            return sub
+    return ""
+
+def slug_to_href(target_slug: str, from_subdir: str) -> str:
+    """Compute relative href from a page in from_subdir to target_slug's .html.
+
+    from_subdir='' means blog/ root; from_subdir='b5' means blog/b5/.
+    Target's location is determined by SLUG_SUBDIR_PREFIXES lookup.
+    """
+    target_sub = get_slug_subdir(target_slug)
+    if target_sub == from_subdir:
+        return f"{target_slug}.html"            # same dir
+    if from_subdir and not target_sub:
+        return f"../{target_slug}.html"         # subdir → root
+    if not from_subdir and target_sub:
+        return f"{target_sub}/{target_slug}.html"  # root → subdir
+    # Both in different subdirs (future case when B6 etc. also move).
+    return f"../{target_sub}/{target_slug}.html"
+
 # Canonical reading order across the series. Sidebar prev/next derives from this list,
 # NOT from SIDEBAR_POSTS (which is publication-descending and conflates 3.1's late-publish
 # date with reading order). Update this list whenever a new essay slots into the sequence.
@@ -452,8 +483,13 @@ def _post_by_slug(slug: str) -> tuple | None:
     return next((row for row in SIDEBAR_POSTS if row[0] == slug), None)
 
 
-def _render_card(post: tuple, kind: str) -> str:
-    """Render a single sidebar card. kind ∈ {'previous', 'active', 'next'}."""
+def _render_card(post: tuple, kind: str, from_subdir: str = "") -> str:
+    """Render a single sidebar card. kind ∈ {'previous', 'active', 'next'}.
+
+    from_subdir is the subdir the rendered HTML lives in (e.g., 'b5' for
+    blog/b5/X.html). Used by slug_to_href to compute correct prev/next link
+    paths that may need to cross from subdir to root (e.g., B5 → B6).
+    """
     slug, title, date, read_time, audience, tags = post
     date_html = html.escape(date) if "&" not in date else date
     rt_html = html.escape(read_time) if "&" not in read_time else read_time
@@ -481,8 +517,9 @@ def _render_card(post: tuple, kind: str) -> str:
         )
     # previous / next get an arrow header above the title
     arrow_label = "&larr; Previous in series" if kind == "previous" else "Next in series &rarr;"
+    href = slug_to_href(slug, from_subdir)
     return (
-        f'                        <a href="{slug}.html" class="article-card-link">\n'
+        f'                        <a href="{href}" class="article-card-link">\n'
         '                            <div class="article-card">\n'
         '                                <div class="article-card-tags">\n'
         f'                                    <span class="tag tag-sm tag-audience" title="{audience_tip}">{audience}</span>\n'
@@ -496,11 +533,15 @@ def _render_card(post: tuple, kind: str) -> str:
     )
 
 
-def render_sidebar(active_slug: str) -> str:
+def render_sidebar(active_slug: str, from_subdir: str = "") -> str:
     """Render the sidebar as 3-5 cards: previous in series, current, next in series, plus an
     'All essays' link back to the blog index. Reading order comes from READING_ORDER (not
     from SIDEBAR_POSTS, which is publication-descending). When the active essay is first or
-    last in READING_ORDER, the corresponding boundary card is omitted."""
+    last in READING_ORDER, the corresponding boundary card is omitted.
+
+    from_subdir: subdir the rendered HTML lives in (e.g., 'b5' for blog/b5/X.html).
+    Propagated to _render_card so cross-subdir prev/next links resolve correctly.
+    """
     out: list[str] = []
     try:
         idx = READING_ORDER.index(active_slug)
@@ -509,7 +550,7 @@ def render_sidebar(active_slug: str) -> str:
         active_post = _post_by_slug(active_slug)
         if active_post is None:
             return ""
-        return _render_card(active_post, "active")
+        return _render_card(active_post, "active", from_subdir)
 
     prev_slug = READING_ORDER[idx - 1] if idx > 0 else None
     next_slug = READING_ORDER[idx + 1] if idx < len(READING_ORDER) - 1 else None
@@ -517,18 +558,19 @@ def render_sidebar(active_slug: str) -> str:
     if prev_slug:
         prev_post = _post_by_slug(prev_slug)
         if prev_post is not None:
-            out.append(_render_card(prev_post, "previous"))
+            out.append(_render_card(prev_post, "previous", from_subdir))
 
     active_post = _post_by_slug(active_slug)
     if active_post is not None:
-        out.append(_render_card(active_post, "active"))
+        out.append(_render_card(active_post, "active", from_subdir))
 
     if next_slug:
         next_post = _post_by_slug(next_slug)
         if next_post is not None:
-            out.append(_render_card(next_post, "next"))
+            out.append(_render_card(next_post, "next", from_subdir))
 
     # "All essays" link back to the blog index — always present.
+    # Uses absolute /blog.html so it works from any depth.
     out.append(
         '                        <a href="/blog.html" class="article-card-link sidebar-all-essays-link">\n'
         '                            <div class="article-card sidebar-all-essays">\n'
@@ -541,7 +583,11 @@ def render_sidebar(active_slug: str) -> str:
     return "\n".join(out)
 
 
-def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str = "20260513") -> str:
+def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str = "20260513", subdir: str = "") -> str:
+    """Build full HTML page. subdir is the subdir under blog/ (e.g., 'b5' for blog/b5/X.html);
+    empty string means output goes directly to blog/X.html. Computes depth_prefix for
+    site-root nav/css/js links, builds canonical URL with subdir segment, and passes
+    subdir to render_sidebar so cross-subdir prev/next links resolve."""
     title = meta["title"]
     slug = meta["slug"]
     full_slug = slug if slug.endswith(".html") else slug
@@ -550,6 +596,9 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
     if not filename_slug_match:
         raise SystemExit(f"ERROR: slug '{slug}' not found in SIDEBAR_POSTS — add it before running.")
     filename_slug = filename_slug_match
+    # Depth-aware prefix for site-root links (css/js/index/blog/etc.).
+    # blog/X.html → '../' ; blog/b5/X.html → '../../'
+    depth_prefix = "../" * (1 + (subdir.count("/") + 1 if subdir else 0))
     date = meta.get("date", "May 2026")
     read_time = meta.get("read_time", "TBD")
     rt_display = read_time if read_time != "TBD" else "TBD min read"
@@ -563,7 +612,9 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
         og_image_url = f"https://hadi-nayebi.github.io/{og_image}"
     else:
         og_image_url = og_image
-    canonical = f"https://hadi-nayebi.github.io/blog/{filename_slug}.html"
+    # Canonical URL includes subdir segment when essay lives there.
+    canonical_path = f"blog/{subdir}/{filename_slug}.html" if subdir else f"blog/{filename_slug}.html"
+    canonical = f"https://hadi-nayebi.github.io/{canonical_path}"
     # Description: try frontmatter `description`, fall back to a one-liner.
     description = meta.get("description", title + " — Hadosh Academy seed agent essay.")
 
@@ -575,12 +626,19 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
     # the B5/B6 pattern (e.g. "the-plugin-kit.mp3" not "07-the-plugin-kit.mp3").
     # When the operator generates the audio later, the file path matches the ref.
     audio_filename = meta["slug"] + ".mp3"
-    audio_src = f"../assets/audio/{audio_filename}"
+    # Audio convention: per-subdir audio/ directory when in a series subdir; root
+    # ../assets/audio/ when at blog/ root. Allows full series compartmentalization.
+    if subdir:
+        audio_src = f"audio/{audio_filename}"
+        audio_check_relpath = ("..", "blog", subdir, "audio", audio_filename)
+    else:
+        audio_src = f"../assets/audio/{audio_filename}"
+        audio_check_relpath = ("..", "assets", "audio", audio_filename)
     # Hide the audio block when the mp3 doesn't exist yet (broken audio player UX
     # otherwise — clicking play surfaces a 404). User gates TTS spend per Rule 12;
     # until the mp3 lands, render an "audio pending" badge instead of a broken player.
     import os
-    audio_path_check = os.path.join(os.path.dirname(__file__), "..", "assets", "audio", audio_filename)
+    audio_path_check = os.path.join(os.path.dirname(__file__), *audio_check_relpath)
     audio_exists = os.path.exists(audio_path_check)
     if audio_exists:
         audio_block = (
@@ -599,7 +657,7 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
             '                    </div>'
         )
 
-    return f"""<!DOCTYPE html>
+    result = f"""<!DOCTYPE html>
 <!-- Version: v0.1.0 -->
 <html lang="en">
 
@@ -753,6 +811,19 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
 
 </html>
 """
+    # When essay lives in a subdir (e.g., blog/b5/X.html), rewrite the default
+    # ../ template paths to the deeper depth_prefix. Use EXPLICIT path matches
+    # to avoid touching sidebar prev/next card hrefs that legitimately use ../
+    # (e.g., sidebar prev card href="../04-the-language-of-agents.html" from
+    # blog/b5/ to blog/ root — that ../ is correct and must not be deepened).
+    if subdir:
+        for path in ("index.html", "blog.html", "agents.html", "about.html", "contact.html"):
+            result = result.replace(f'href="../{path}"', f'href="{depth_prefix}{path}"')
+        result = result.replace('href="../css/', f'href="{depth_prefix}css/')
+        result = result.replace('src="../js/', f'src="{depth_prefix}js/')
+        # Note: audio src is already correctly built into audio_src var above
+        # and does NOT use ../ form when subdir is set (see audio block).
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -773,8 +844,21 @@ def main(argv: list[str] | None = None) -> int:
     if not active:
         raise SystemExit(f"ERROR: frontmatter slug '{fm_slug}' not found in SIDEBAR_POSTS list.")
 
-    sidebar_html = render_sidebar(active)
-    full_html = build_html(meta, body_html, sidebar_html, version_stamp=args.version)
+    # Autodetect subdir from output path. Expected layouts:
+    #   blog/X.html       → subdir = ""    (depth 1: ../)
+    #   blog/b5/X.html    → subdir = "b5"  (depth 2: ../../)
+    # Any deeper layout falls back to empty (operator can pass --subdir
+    # explicitly if a non-standard path is needed).
+    output_parts = args.output_html.parts
+    if len(output_parts) >= 3 and output_parts[-3] == "blog":
+        detected_subdir = output_parts[-2]
+    else:
+        detected_subdir = ""
+    if detected_subdir:
+        print(f"  [subdir-mode] output at blog/{detected_subdir}/ — using depth-aware paths")
+
+    sidebar_html = render_sidebar(active, from_subdir=detected_subdir)
+    full_html = build_html(meta, body_html, sidebar_html, version_stamp=args.version, subdir=detected_subdir)
     args.output_html.write_text(full_html)
     print(f"Wrote {args.output_html}: {len(full_html):,} chars")
     return 0
