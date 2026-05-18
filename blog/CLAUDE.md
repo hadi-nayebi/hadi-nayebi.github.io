@@ -1,11 +1,23 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.9.0
+**Version:** v0.10.0
+
+## Layout
+
+- **Part-1 essays** (`01..04` + `03_1` interlude): `blog/<slug>.{md,html,transcript.md}` at this directory root.
+- **B5 mini-series** (`05_1..05_9`): `blog/b5/<slug>.{md,html,transcript.md}` — moved 2026-05-18. Images at `blog/b5/images/`. Series working memory at `blog/b5/CLAUDE.md` (gitignored, local-only).
+- **B6 mini-series** (`06_1..06_10`): `blog/<slug>.{md,html,transcript.md}` at root. Awaits its own subdir restructure when content stabilizes.
+- **B7 mini-series** (`07_1..07_9`): same as B6.
+- **B8 mini-series** (`08_1..08_9`): same as B6.
+- All image assets for B5 are co-located in `blog/b5/images/`. Part-1 + B6/B7/B8 images live in `assets/images/blog/`.
+
+When working on B5, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.md` for current state.
 
 ## Content Workflow
 
 - **Source of truth:** `.html` files (committed to git)
 - **Editing files:** `.md` files (gitignored, local-only)
 - **Flow:** `.md` ↔ `.html` — changes sync both directions
+- **HTML build:** `python3 tools/generate_blog_html.py <md-path> <html-path> --version <stamp>`. Generator autodetects subdir from output path and switches to depth-aware mode (subdir `../../` site-nav, canonical URL with subdir segment, audio path in subdir's own `audio/`).
 
 ### Frontmatter Format (.md files)
 ```yaml
@@ -746,7 +758,7 @@ Each operation = one subagent dispatch with raw paragraph context + Best Design 
 
 ## Current Posts
 
-Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numbered.
+Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 essays are flat at `blog/`; B5 lives under `blog/b5/` (subdir restructure 2026-05-18).
 
 | # | Slug | Title | Status |
 |---|------|-------|--------|
@@ -755,15 +767,15 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 | 3 | `03-your-brain-was-never-built-for-this` | Your Brain Was Never Built for This | **FINAL** |
 | 3.1 | `03_1-the-folder-is-alive` | The Folder Is Alive (interlude) | **FINAL** |
 | 4 | `04-the-language-of-agents` | The Language of Agents | **FINAL** |
-| 5.1 | `05_1-the-two-layer-foundation` | Pt 1: The Two-Layer Foundation | **drafting v0.4.0** — ~2,441w / 9 min · 9 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.a MED fix: L134 footer-byline "first of five always-on plugin deep-dives" → "first of the always-on plugin deep-dives" (Rule 1 count-as-noun; matches L41 "currently five" parenthetical pattern). |
-| 5.2 | `05_2-plugin-integrity` | Pt 2: `plugin_integrity` — Plugin Edit Safety | **drafting v0.4.0** — ~2,059w / 8 min · 7 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.a HIGH+MED fixes: L19 "five plugins, currently" → "the always-on plugins (currently five in the prototype)" (Rule 1 count-as-noun, HIGH); L79 body "The current registry holds ten entries" → "The current registry is short; your seed's will hold more" (Rule 1 count-as-noun, MED — ten-entry list preserved in ref-tag tooltip). |
-| 5.3 | `05_3-brain-guard` | Pt 3: `brain_guard` — Context Window Discipline | **drafting v0.2.0** — ~1,700w / 8 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.2.0 iter-14.a MED fix: L70 (154w) dispatch-mechanic density wall split (dispatch-mechanism intro + grace-window-and-future-API). |
-| 5.4 | `05_4-job-core` | Pt 4: `job_core` — Job Lifecycle | **drafting v0.3.0** — ~1,500w / 7 min · HTML built · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.b HIGH+LOW fixes: L35 schema ref-tag corrected to 3-field `{user_approval, plugin_lock_approval, depends_on}` + `plan_state` (A14 2026-05-14 schema reality); L72 "ships five — one per OPEVC phase" → "ships one per OPEVC phase" per Rule 1 categorical. v0.2.0 iter-14.b fixes: ref-tag line range L25 corrected (50-74 → 49-74); shared-key paragraph split L33 (219w → 104/115); refusal-to-stop paragraph split L52 (201w → 91/124). |
-| 5.5 | `05_5-interaction-summary` | Pt 5: `interaction_summary` — Mega-Prompt Compression | **drafting v0.4.0** — ~1,050w / 5 min · HTML built · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.b HIGH+MED fixes: L45 bypass-vs-registry conflation cleared — body now distinguishes bypass list from question_discipline registry ("overlaps with but is not identical"), ref-tag enumerates the actual 10 BYPASS_PREFIXES from `prefix-registry.conf:20` and names the 1-element diffs (`PENDING-JOB` bypassed-not-registered; `REPORT-TO-UPSTREAM` registered-not-bypassed); L45 transition smell fixed with "even with the productive-tool guard tripped" half-clause; L61 customize-section "and the other registered ceremonies" → "a handful of others on the bypass list" + new explicit-two-decisions note. |
-| 5.6 | `05_6-question-discipline` | Pt 6: `question_discipline` — Structured Questions | **drafting v0.4.0** — ~1,220w / 5 min · 4 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.b MED+LOW fixes: L31 subagent-bypass post-split stranded ¶ extended with "no matter which plugin's hook is firing or which phase the agent is in" half-sentence to carry its own weight; L39 [POINT-BOOST] format-only claim spot-verified against `phasic_system/hooks/point-boost.sh:66-74` (anchor + sed-extract format; no body word floor) — verdict accurate. |
-| 5.7 | `05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.3.0** — ~3,300w / 12 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c HIGH+MED fixes: L33 fabricated quote replaced with truthful section-name pointer (root CLAUDE.md Identity section + `.claude/CLAUDE.md` Components section — old fake quote "Agent: Hadosh Academy Website Manager..." did not exist in current root CLAUDE.md); L35 brittle four-line citation (530,537,544,551) age-proofed to "footer-anchor block" pointer; L29/L132/L150 line-range refs (`:443`, `:289-298`, `:129-134`) all age-proofed to section-name pointers — mirrors iter-15.c L140 pattern. |
-| 5.8 | `05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.3.0** — ~2,500w / 10 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c MED fixes: L103 ref `CLAUDE.md:381-384` age-proofed to "Spatial level: bullets under Core Principle: Compartmentalization" section pointer; L105 ref `CLAUDE.md:212` age-proofed to "JOB.phase operation under Specialized Operations" section pointer — mirrors iter-15.c L140 pattern. |
-| 5.9 | `05_9-customization-guardrail` | Pt 9: The Customization Guardrail | **drafting v0.4.0** — ~2,400w / 10 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.c HIGH fix: L76 `customization-trigger-patterns` ref-tag rewritten — prior synthesis of triggers (3-occurrence threshold, COACHING_IDS pool, workflow-not-supported) did not appear in `plugin-lock-privilege.md`; new ref cites the file's actual "Why both, not one" section (frames user-approved-job route as "for planned work the agent initiates" with the verbatim `secrets_guard` example), keeps the closing architectural-fact summary. |
+| 5.1 | `b5/05_1-the-two-layer-foundation` | Pt 1: The Two-Layer Foundation | **drafting v0.4.0** — ~2,441w / 9 min · 9 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.a MED fix: L134 footer-byline "first of five always-on plugin deep-dives" → "first of the always-on plugin deep-dives" (Rule 1 count-as-noun; matches L41 "currently five" parenthetical pattern). |
+| 5.2 | `b5/05_2-plugin-integrity` | Pt 2: `plugin_integrity` — Plugin Edit Safety | **drafting v0.4.0** — ~2,059w / 8 min · 7 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.a HIGH+MED fixes: L19 "five plugins, currently" → "the always-on plugins (currently five in the prototype)" (Rule 1 count-as-noun, HIGH); L79 body "The current registry holds ten entries" → "The current registry is short; your seed's will hold more" (Rule 1 count-as-noun, MED — ten-entry list preserved in ref-tag tooltip). |
+| 5.3 | `b5/05_3-brain-guard` | Pt 3: `brain_guard` — Context Window Discipline | **drafting v0.2.0** — ~1,700w / 8 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.2.0 iter-14.a MED fix: L70 (154w) dispatch-mechanic density wall split (dispatch-mechanism intro + grace-window-and-future-API). |
+| 5.4 | `b5/05_4-job-core` | Pt 4: `job_core` — Job Lifecycle | **drafting v0.3.0** — ~1,500w / 7 min · HTML built · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.b HIGH+LOW fixes: L35 schema ref-tag corrected to 3-field `{user_approval, plugin_lock_approval, depends_on}` + `plan_state` (A14 2026-05-14 schema reality); L72 "ships five — one per OPEVC phase" → "ships one per OPEVC phase" per Rule 1 categorical. v0.2.0 iter-14.b fixes: ref-tag line range L25 corrected (50-74 → 49-74); shared-key paragraph split L33 (219w → 104/115); refusal-to-stop paragraph split L52 (201w → 91/124). |
+| 5.5 | `b5/05_5-interaction-summary` | Pt 5: `interaction_summary` — Mega-Prompt Compression | **drafting v0.4.0** — ~1,050w / 5 min · HTML built · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.b HIGH+MED fixes: L45 bypass-vs-registry conflation cleared — body now distinguishes bypass list from question_discipline registry ("overlaps with but is not identical"), ref-tag enumerates the actual 10 BYPASS_PREFIXES from `prefix-registry.conf:20` and names the 1-element diffs (`PENDING-JOB` bypassed-not-registered; `REPORT-TO-UPSTREAM` registered-not-bypassed); L45 transition smell fixed with "even with the productive-tool guard tripped" half-clause; L61 customize-section "and the other registered ceremonies" → "a handful of others on the bypass list" + new explicit-two-decisions note. |
+| 5.6 | `b5/05_6-question-discipline` | Pt 6: `question_discipline` — Structured Questions | **drafting v0.4.0** — ~1,220w / 5 min · 4 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.b MED+LOW fixes: L31 subagent-bypass post-split stranded ¶ extended with "no matter which plugin's hook is firing or which phase the agent is in" half-sentence to carry its own weight; L39 [POINT-BOOST] format-only claim spot-verified against `phasic_system/hooks/point-boost.sh:66-74` (anchor + sed-extract format; no body word floor) — verdict accurate. |
+| 5.7 | `b5/05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.3.0** — ~3,300w / 12 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c HIGH+MED fixes: L33 fabricated quote replaced with truthful section-name pointer (root CLAUDE.md Identity section + `.claude/CLAUDE.md` Components section — old fake quote "Agent: Hadosh Academy Website Manager..." did not exist in current root CLAUDE.md); L35 brittle four-line citation (530,537,544,551) age-proofed to "footer-anchor block" pointer; L29/L132/L150 line-range refs (`:443`, `:289-298`, `:129-134`) all age-proofed to section-name pointers — mirrors iter-15.c L140 pattern. |
+| 5.8 | `b5/05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.3.0** — ~2,500w / 10 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c MED fixes: L103 ref `CLAUDE.md:381-384` age-proofed to "Spatial level: bullets under Core Principle: Compartmentalization" section pointer; L105 ref `CLAUDE.md:212` age-proofed to "JOB.phase operation under Specialized Operations" section pointer — mirrors iter-15.c L140 pattern. |
+| 5.9 | `b5/05_9-customization-guardrail` | Pt 9: The Customization Guardrail | **drafting v0.4.0** — ~2,400w / 10 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.c HIGH fix: L76 `customization-trigger-patterns` ref-tag rewritten — prior synthesis of triggers (3-occurrence threshold, COACHING_IDS pool, workflow-not-supported) did not appear in `plugin-lock-privilege.md`; new ref cites the file's actual "Why both, not one" section (frames user-approved-job route as "for planned work the agent initiates" with the verbatim `secrets_guard` example), keeps the closing architectural-fact summary. |
 | 6.1 | `06_1-phasic-foundation` | Pt 1: Phasic Foundation | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.2 | `06_2-discipline-and-map` | Pt 2: The Discipline and the Map | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.3 | `06_3-observe` | Pt 3: OBSERVE — Read Wide, Write Once | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
@@ -783,13 +795,16 @@ Slug column shows the **prefixed filename** (`NN-slug`). All blog files are numb
 
 Working titles may shift; final titles lock when each `.md` is reviewed and approved.
 
-### In-flight Files (5-8 rewrite agenda)
+### Part-2 publishing sync checklist
 
-The previous Gemini-era drafts (`05-the-agents-steadfast-core.*`, `06-the-seed-agents-cognitive-rhythm.*`, `07-from-apprenticeship-to-mastery.*`) were deleted 2026-05-06 — older than the current architecture, replaced by from-scratch drafting against `../.claude/`. Old published HTML stubs (`05-the-agents-unsung-heroes.html`, `07-from-collaboration-to-competence.html`) are also gone.
+When a Part-2 essay reaches publishable state (3 consecutive CLEAN audit rounds + user-flipped transcript `final: true` + audio generated), update in this order:
 
-`blog.html` index + sidebar were updated yesterday to show the OLD interim titles (Steadfast Core / Cognitive Rhythm / Apprenticeship to Mastery). When the new `.md` drafts land, sidebar + index will be re-synced to the working titles above (or whatever final titles emerge).
-
-**When each Part-2 blog reaches publishable state, also sync:** `sitemap.xml`, `feed.xml`, sidebars across all posts, audio inventory in root `CLAUDE.md`, blog.html index card, all four blog-1..3.1..4 sidebars.
+1. `sitemap.xml` — add the essay's URL (or confirm already present)
+2. `feed.xml` — add a new `<item>` at the top
+3. `blog.html` index — add/update the card linking to the essay
+4. All sibling-essay sidebars — mark the published essay in its series sidebar
+5. Cache-bust stamp — bump `?v=YYYYMMDD` on all `.html` files if CSS/JS changed
+6. Series CLAUDE.md (e.g., `blog/b5/CLAUDE.md`) — update status row for the essay
 
 
 
