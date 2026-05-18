@@ -44,7 +44,7 @@ The CLAUDE.md hierarchy starts shrinking as findings that were durable last mont
 
 ## Architect
 
-Month three onward. Most cycles complete without you intervening on basics. The voices speak less, because most of what they used to say has been absorbed into hooks or moved to the knowledge layer. New plugin creation feels routine — the kit ceremony from [Essay 7.8](07_8-lock-ceremony.html) is no longer ceremonial; it is the natural rhythm of how you respond to a new pattern. Stage-3 yaml jobs start appearing, and a few stage-4 plugin-form jobs begin to form. The operator's role has shifted from supervising the agent's cognition to directing it at higher-leverage problems.
+Month three onward. Most cycles complete without you intervening on basics. The voices speak less, because most of what they used to say has been absorbed into hooks or moved to the knowledge layer. New plugin creation feels routine — the kit ceremony from [Essay 7.8](b7/07_8-lock-ceremony.html) is no longer ceremonial; it is the natural rhythm of how you respond to a new pattern. Stage-3 yaml jobs start appearing, and a few stage-4 plugin-form jobs begin to form. The operator's role has shifted from supervising the agent's cognition to directing it at higher-leverage problems.
 
 What you have now is not a chatbot that you talk to. It is a cognitive instrument that you compose with. The composition still requires intent — the seed does not decide what to work on; you do — but the cognition itself runs on rails the seed enforces.
 

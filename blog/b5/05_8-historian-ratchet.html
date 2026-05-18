@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Historian Ratchet — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b5/images/always-on-digital-cortex-b5.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260513">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -156,7 +156,7 @@
 
                         <p>The agent must be able to ask a <code>[PLUGIN-LOCK]</code> question. That depends on <code>question_discipline</code> recognizing the prefix and letting the question through; without that registration, the call is blocked before the user even sees it. The user&rsquo;s answer must then be captured and routed to the lock manager. That depends on <code>job_core</code>'s split pre-call/post-call pair, which validates the question, captures the approval, and hands the result over. Finally, the edit must close cleanly under test. That depends on <code>plugin_integrity</code>'s own safe-lock cycle, which runs the plugin&rsquo;s test suite when the lock closes and reverts the working tree if the tests fail. <sup class="ref-marker" title="ref: agent-must-ask-plugin-lock-question | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh:67,120 + .claude/plugins/job_core/hooks/question-capture-hook.sh + .claude/plugins/plugin_integrity/scripts/safe-lock.sh:376-382 | Three-plugin composition for one ceremony: `question-discipline-gate` validates the `[PLUGIN-LOCK]` prefix is registered in `PREFIX_REGISTRY` (otherwise the PreToolUse hook blocks the question before the user sees it); `job_core`&#x27;s `question-capture-hook` (PostToolUse) routes the user&#x27;s answer and admits the lock; `safe-lock` runs the plugin&#x27;s test suite when the lock closes and reverts on failure (`find &quot;$plugin_dir&quot; -mindepth 1 -delete` + `git checkout &quot;$checkpoint&quot; -- &quot;$plugin_dir/&quot;` + `git reset HEAD` — no partial edits survive a failed test run).">&#9432;</sup></p>
 
-                        <p>No single plugin enforces the historian ratchet. Single-concern plugins compose to make it possible &mdash; <code>question_discipline</code> opens the asking surface, <code>job_core</code> carries the answer, <code>plugin_integrity</code> protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The <a href="../07_1-plugin-kit-foundation.html">Essay 7 series</a> takes <code>plugin_integrity</code> apart on its own terms &mdash; the lock-and-historian ceremony as a single plugin&rsquo;s anatomy. <sup class="ref-marker" title="ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md Plugin Building Lessons section | Plugin Building Lessons: &quot;Plugins own their own controls — don&#x27;t extend another plugin&#x27;s guard for your concerns&quot; + &quot;Soft controls belong inside plugins&quot;. Single-concern boundary that lets ceremonies compose from narrow parts.">&#9432;</sup></p>
+                        <p>No single plugin enforces the historian ratchet. Single-concern plugins compose to make it possible &mdash; <code>question_discipline</code> opens the asking surface, <code>job_core</code> carries the answer, <code>plugin_integrity</code> protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The <a href="../b7/07_1-plugin-kit-foundation.html">Essay 7 series</a> takes <code>plugin_integrity</code> apart on its own terms &mdash; the lock-and-historian ceremony as a single plugin&rsquo;s anatomy. <sup class="ref-marker" title="ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md Plugin Building Lessons section | Plugin Building Lessons: &quot;Plugins own their own controls — don&#x27;t extend another plugin&#x27;s guard for your concerns&quot; + &quot;Soft controls belong inside plugins&quot;. Single-concern boundary that lets ceremonies compose from narrow parts.">&#9432;</sup></p>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
                           <img src="images/historian-ratchet-b5-8b.png" alt="Three single-concern plugins fitting together into the historian-ratchet ceremony" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
@@ -273,8 +273,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260513"></script>
-    <script src="../../js/components.js?v=20260513"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

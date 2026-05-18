@@ -77,10 +77,11 @@ AUDIENCE_TITLE = {
 
 # Slug-to-subdir mapping. When a mini-series is moved into its own subdir,
 # add an entry here. Empty string means "blog/ root, no subdir".
-# 2026-05-18: B5 moved to blog/b5/. B6/B7/B8 still at root pending their own
-# finalization passes — add their entries when those series move.
+# 2026-05-18: B5 moved to blog/b5/. B7 moved to blog/b7/.
+# B6/B8 still at root pending their own finalization passes.
 SLUG_SUBDIR_PREFIXES = {
     "05_": "b5",
+    "07_": "b7",
 }
 
 def get_slug_subdir(slug: str) -> str:
