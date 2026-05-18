@@ -130,7 +130,7 @@ The deepest payoff of the multiplier is the cognitive failure mode it prevents: 
 
 ## What comes next
 
-Phases give the agent compartmentalized cognition. The CLAUDE.md layer from the [Essay 5 series](05_1-the-two-layer-foundation.html) is the working-memory form they write that cognition into &mdash; the surface where each cycle's tokens land before CONDENSE absorbs them into longer-term memory. Together they form a working brain &mdash; one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
+Phases give the agent compartmentalized cognition. The CLAUDE.md layer from the [Essay 5 series](b5/05_1-the-two-layer-foundation.html) is the working-memory form they write that cognition into &mdash; the surface where each cycle's tokens land before CONDENSE absorbs them into longer-term memory. Together they form a working brain &mdash; one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
 
 This is what [Essay 1](01-llms-are-not-the-agents.html) was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.
 

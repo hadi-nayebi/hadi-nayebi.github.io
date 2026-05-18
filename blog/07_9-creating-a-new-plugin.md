@@ -26,7 +26,7 @@ When you install the public seed agent on your laptop and start running it, ever
 
 That is one path to a new plugin: a job that has matured through the earlier maturation stages and now needs phase-cognition customization the voice injection cannot deliver.
 
-The other path is direct: you notice a gap in the seed's substrate and tell the seed to fix it — paying off the promise [Essay 5.1](05_1-the-two-layer-foundation.html) planted, that the always-on layer is addable: another always-on plugin slots in by exposing its own public commands, not by rewiring anyone else's.
+The other path is direct: you notice a gap in the seed's substrate and tell the seed to fix it — paying off the promise [Essay 5.1](b5/05_1-the-two-layer-foundation.html) planted, that the always-on layer is addable: another always-on plugin slots in by exposing its own public commands, not by rewiring anyone else's.
 
 A consulting practice's seed might gain a `client-engagement-tracker` plugin this way; a research lab's seed might gain an `experiment-protocol` plugin; a writer's seed might gain a `manuscript-stage-gate`. Each plugin's organ list is the same kit; each plugin's substance is the operator's domain.
 

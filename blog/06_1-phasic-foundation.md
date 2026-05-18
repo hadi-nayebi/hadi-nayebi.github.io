@@ -18,7 +18,7 @@ og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
 
 Now we open the cycle.
 
-[Essay 5](05_1-the-two-layer-foundation.html) introduced two pieces of the seed agent's foundation, side by side. The **always-on plugins** are the agent's reflexes — each one owns a concern that fires regardless of which phase the agent is in or whether a phase is even active: plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning. They run continuously, each in its own lane, with its own state. The **CLAUDE.md layer** is the substrate the agent's structured cognitive work writes into — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer that survives across phases and sessions. *[ref: always-on-fires-no-phase-guard | .claude/settings.local.json PreToolUse block registering plugin_integrity, job_core, interaction_summary, phasic_system hooks | The PreToolUse block registers always-on plugin hooks (plugin_integrity, job_core, interaction_summary) on tool matchers with no phase filtering; phasic_system's phase-gate registers alongside them, plumbing phase enforcement separately.]*
+[Essay 5](b5/05_1-the-two-layer-foundation.html) introduced two pieces of the seed agent's foundation, side by side. The **always-on plugins** are the agent's reflexes — each one owns a concern that fires regardless of which phase the agent is in or whether a phase is even active: plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning. They run continuously, each in its own lane, with its own state. The **CLAUDE.md layer** is the substrate the agent's structured cognitive work writes into — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer that survives across phases and sessions. *[ref: always-on-fires-no-phase-guard | .claude/settings.local.json PreToolUse block registering plugin_integrity, job_core, interaction_summary, phasic_system hooks | The PreToolUse block registers always-on plugin hooks (plugin_integrity, job_core, interaction_summary) on tool matchers with no phase filtering; phasic_system's phase-gate registers alongside them, plumbing phase enforcement separately.]*
 
 This essay opens the system that does the structured work — the phasic system — and how it uses the CLAUDE.md layer to think ahead, gather experiential data, and process that data into the agent's longer-term memory forms.
 
@@ -109,7 +109,7 @@ The foundation is in place: a Markov brain whose moves are themselves Markov cha
 
 *Essay 6.1 — The Markov Phasic Brain, Part 1 of 10.*
 
-*Previous: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
+*Previous: [Essay 5.9 — The Customization Guardrail](b5/05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
 *Next: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*
 
 
