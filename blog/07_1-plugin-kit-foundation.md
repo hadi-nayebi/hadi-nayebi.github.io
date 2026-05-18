@@ -30,7 +30,7 @@ The read / write / depend-on triple is how the cell wall stays porous (organs ta
 
 ## The journey ahead
 
-Essay 7 covers the plugin kit across nine sub-essays:
+Essay 7 covers the plugin kit across the sub-essays listed below:
 
 - **Essay 7.1 — Plugin Kit Foundation** *(you are here)* — the cell-as-system frame + this map
 - [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK
@@ -72,7 +72,7 @@ Target asset: assets/images/blog/b7/plugin-cell-anatomy-b7-1.png
 
 ---
 
-We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the load-bearing organs Essay 7.2 deep-dives. *[ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md "Plugin Structure Convention" section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat "Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection." Essay 7.2 takes the three load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those three are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.]*
+We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the load-bearing organs Essay 7.2 deep-dives. *[ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md "Plugin Structure Convention" section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat "Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection." Essay 7.2 takes the load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those organs are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.]*
 
 A consulting practice could organize its own seed agent's plugin around a `[CLIENT-INTAKE]` ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating each edit, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. *[ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/scripts/safe-lock.sh + .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | Three friction primitives compose the kit's safety: PLUGIN-LOCK serializes edits per plugin via the lock-manager; safe-lock wraps the unlock window in a test-pass-or-revert cycle (`safe-lock.sh` runs the plugin's tests on commit and reverts the working tree on failure); dual voice.xml (hooks-side for LLM coaching, scripts-side for operator coaching) propagates the discipline through every gate without hard-coding it.]*
 

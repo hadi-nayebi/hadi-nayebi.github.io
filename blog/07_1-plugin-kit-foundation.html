@@ -127,7 +127,7 @@
 
                         <h2>The journey ahead</h2>
 
-                        <p>Essay 7 covers the plugin kit across nine sub-essays:</p>
+                        <p>Essay 7 covers the plugin kit across the sub-essays listed below:</p>
 
                         <ul>
                             <li><strong>Essay 7.1 &mdash; Plugin Kit Foundation</strong> <em>(you are here)</em> &mdash; the cell-as-system frame + this map</li>
@@ -153,7 +153,7 @@
 
                         <hr>
 
-                        <p>We start with the universal skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the load-bearing organs Essay 7.2 deep-dives. <sup class="ref-marker" title="ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection.&quot; Essay 7.2 takes the three load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those three are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.">&#9432;</sup></p>
+                        <p>We start with the universal skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the load-bearing organs Essay 7.2 deep-dives. <sup class="ref-marker" title="ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection.&quot; Essay 7.2 takes the load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those organs are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.">&#9432;</sup></p>
 
                         <p>A consulting practice could organize its own seed agent&rsquo;s plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating each edit, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. <sup class="ref-marker" title="ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/scripts/safe-lock.sh + .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | Three friction primitives compose the kit&#x27;s safety: PLUGIN-LOCK serializes edits per plugin via the lock-manager; safe-lock wraps the unlock window in a test-pass-or-revert cycle (`safe-lock.sh` runs the plugin&#x27;s tests on commit and reverts the working tree on failure); dual voice.xml (hooks-side for LLM coaching, scripts-side for operator coaching) propagates the discipline through every gate without hard-coding it.">&#9432;</sup></p>
 
