@@ -63,7 +63,7 @@ Essay 5 splits into nine short sub-essays:
 
 Essays 5.2 through 5.6 deep-dive the always-on plugins, one each. Essay 5.7 covers the substrate form the phasic layer USES. Essays 5.8 and 5.9 are for the architects in the audience — how single-concern plugins compose into emergent ceremonies, and how the operator gates substrate edits.
 
-The phasic plugins get their own series in [Essay 6](../06_1-phasic-foundation.html). The cell template that lets new plugins be born safely is [Essay 7](../b7/07_1-plugin-kit-foundation.html). The four-stage arc from your first job to your first custom plugin is [Essay 8](../08_1-apprentice-to-architect-foundation.html).
+The phasic plugins get their own series in [Essay 6](../06_1-phasic-foundation.html). The cell template that lets new plugins be born safely is [Essay 7](../b7/07_1-plugin-kit-foundation.html). The four-stage arc from your first job to your first custom plugin is [Essay 8](../b8/08_1-apprentice-to-architect-foundation.html).
 
 ![Image 5.1. Two plugin layers, one multi-form substrate — the phasic layer writes through the CLAUDE.md hierarchy and absorbs at cycle close; the always-on layer runs alongside, phase-independent.](images/always-on-plugins-b5-1.png)
 
