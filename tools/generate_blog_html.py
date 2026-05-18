@@ -492,20 +492,36 @@ def render_body(body: str, input_md_dir: str = "") -> str:
             inner = "\n".join(re.sub(r"^>\s?", "", ln) for ln in block.splitlines())
             output.append(f"<blockquote><p>{inline_format(inner.strip())}</p></blockquote>")
             continue
-        # Inline image-only block (single line ![alt](url)) — emit <figure>, not <p><a>.
+        # Inline image block — emit <figure>, not <p><a>.
         # Without this, render_body's default-paragraph fallback wrapped images in <p>
         # and inline_format treated `!` as text and `[...](...)` as a link — the bug
         # that broke B6.1's opevc-cycle-blackboard.png display 2026-05-15.
-        img_match = re.fullmatch(r"!\[([^\]]*?)\]\(([^)]+?)\)", block.strip())
-        if img_match:
-            alt = html.escape(img_match.group(1))
-            src = img_match.group(2)
+        # Two shapes supported:
+        #   1. Single line ![alt](url) — figcaption uses alt text.
+        #   2. ![alt](url) + immediately-following *italic caption* line (no blank line
+        #      between). Figcaption uses the italic caption; alt remains the screen-
+        #      reader description. Pattern present across Part-1 essays (01 + 03_1) —
+        #      they author images with a separate italic caption line, which falls
+        #      under the same block as the image until separated by a blank line.
+        img_caption_match = re.fullmatch(
+            r"!\[([^\]]*?)\]\(([^)]+?)\)\n\*(.+?)\*", block.strip(), re.DOTALL
+        )
+        img_only_match = None if img_caption_match else re.fullmatch(
+            r"!\[([^\]]*?)\]\(([^)]+?)\)", block.strip()
+        )
+        if img_caption_match or img_only_match:
+            m = img_caption_match or img_only_match
+            alt = html.escape(m.group(1))
+            src = m.group(2)
+            caption_html = (
+                inline_format(m.group(3).strip()) if img_caption_match else alt
+            )
             output.append(
                 f'<figure class="blog-image" style="margin: 2rem 0;">\n'
                 f'                          <img src="{src}" alt="{alt}" '
                 f'style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">\n'
                 f'                          <figcaption style="text-align: center; font-style: italic; '
-                f'margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">{alt}</figcaption>\n'
+                f'margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">{caption_html}</figcaption>\n'
                 f'                        </figure>'
             )
             continue
