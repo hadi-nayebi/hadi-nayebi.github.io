@@ -16,9 +16,9 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ---
 
-[Essay 8.7](08_7-brain-stops-growing.html) closed the equilibrium claim — the brain reaches a ceiling while the knowledge layer never does. The discipline that holds that equilibrium is the same discipline that lets the brain edit itself safely. This sub-essay opens the recursion directly — the Tier-3 close of the mini-series.
+[Essay 8.7](08_7-brain-stops-growing.html) closed the equilibrium claim — the brain reaches a ceiling while the knowledge layer never does. The discipline that holds that equilibrium is the same discipline that lets the brain edit itself safely. This essay opens the recursion directly — the Tier-3 close of the series.
 
-Three roles produce the work: the plugins enforce, the phases produce, and CONDENSE absorbs the cycle's learning back into the brain. The recursion that protects every edit is itself a small machinery — the lock ceremony around each session, the historian narrating each cycle's drift, the drift counter that ratchets the next lock, the safe-lock cycle that reverts a bad edit before it lands. The knowledge layer accumulates what survives this discipline; the maturation arc fossilizes what survives long enough to harden.
+Coordinated roles produce the work: the plugins enforce, the phases produce, and CONDENSE absorbs the cycle's learning back into the brain. The recursion that protects every edit is itself a small machinery — the lock ceremony around each session, the historian narrating each cycle's drift, the drift counter that ratchets the next lock, the safe-lock cycle that reverts a bad edit before it lands. The knowledge layer accumulates what survives this discipline; the maturation arc fossilizes what survives long enough to harden. *[ref: plugin-integrity-owns-recursion-machinery | .claude/CLAUDE.md "Components" section | The "Components" section's `plugin_integrity` entry names the four mechanisms in a single sentence: "Enforces single-plugin editing via PLUGIN-LOCK + test-verified safe-lock cycle (auto-commit on test pass, auto-revert on test fail). Owns the lock-manager, drift-gate, historian-* subagents, TEST-LOCK granularity, and the plugin-template birth process." PLUGIN-LOCK is the lock ceremony; the safe-lock cycle reverts the bad edit; the drift-gate is the drift counter that ratchets the next lock; the historian-* subagents narrate each cycle's drift into the plugin's evolution.md.]*
 
 ---
 
@@ -28,7 +28,7 @@ A patent attorney whose seed has authored a `prior-art-search` plugin will, even
 
 ## The Recursion Is Real
 
-The recursion is real, not metaphorical. The prototype recently needed to fix a concurrency race in `plugin_integrity`'s own guard hook — the exact code that polices every other plugin's edits. The fix required the agent to issue the plugin-lock for `plugin_integrity`, run `plugin_integrity`'s own test suite, pass it, and let `plugin_integrity` lock itself before the change was committed. The guard did not exempt itself. The lock that closed that cycle is the same lock that opens the next. The historian subagent attached to `plugin_integrity` narrated the cycle's commits into the plugin's own `docs/evolution.md`. And during CONDENSE, the agent edited the root brain itself — `.claude/CLAUDE.md` — but only because it was in CONDENSE, the only phase whose guard permits writes to the brain.
+The recursion is real, not metaphorical. The prototype recently needed to fix a concurrency race in `plugin_integrity`'s own guard hook — the exact code that polices every other plugin's edits. The fix required the agent to issue the plugin-lock for `plugin_integrity`, run `plugin_integrity`'s own test suite, pass it, and let `plugin_integrity` lock itself before the change was committed. The guard did not exempt itself. The lock that closed that cycle is the same lock that opens the next. The historian subagent attached to `plugin_integrity` narrated the cycle's commits into the plugin's own `docs/evolution.md`. And during CONDENSE, the agent edited the root brain itself — `.claude/CLAUDE.md` — but only because it was in CONDENSE, the only phase whose guard permits writes to the brain. *[ref: condense-only-edits-root-brain | root CLAUDE.md "Sub-Operations of CONDENSE" section | The `CONDENSE.grow-brain` sub-operation under "Sub-Operations of CONDENSE" names the rule verbatim: "Root CLAUDE.md edits happen ONLY in this phase — brain-in-condense lifecycle rule." The other phase guards (observe, plan, execute, verify) each forbid root CLAUDE.md edits in their own scopes; CONDENSE is the only phase whose guard permits the write that landed the historian's narration during the cycle described above.]*
 
 Every layer is reachable. Every reach is gated by the same gates the rest of the system runs on.
 
@@ -55,7 +55,7 @@ The reason this matters is the reason agent reliability has been hard. A reliabl
   Below the two branches, a single horizontal white-chalk note runs across the bottom of the board reading exactly: "the guard does not exempt itself"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin_integrity", "plugin_integrity (under edit)", "[PLUGIN-LOCK]", "tests", "pass", "commit, lock closes", "fail", "revert to checkpoint_ref", "the guard does not exempt itself", plus the caption below. No other words, file names, folders, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.3. The lock that closes one cycle opens the next. Recursion all the way down."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.8. The lock that closes one cycle opens the next. Recursion all the way down."
   ASSET: assets/images/blog/b8/recursive-lock-ceremony-b8-8.png
 -->
 
@@ -69,7 +69,7 @@ That is the seed agent. The limit on the guarantee is the test coverage: a plugi
 
 ---
 
-The architecture's deepest guarantee is rollback. The substrate stays coherent because tests guard every edit and revert the unsafe ones. The next sub-essay is the finale — the seed handed over, the architecture handed to you.
+The architecture's deepest guarantee is rollback. The substrate stays coherent because tests guard every edit and revert the unsafe ones. The next essay is the finale — the seed handed over, the architecture handed to you.
 
 ---
 
