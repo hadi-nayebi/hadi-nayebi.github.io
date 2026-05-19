@@ -16,7 +16,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ---
 
-[Essay 7.5](07_5-docs-and-historian.html) opened the docs organ — the per-plugin narrative the historian subagent writes on a drift-count ratchet. Subagents follow the same scoping discipline as the rest of the kit: each one lives inside the plugin that dispatches it. This sub-essay opens the `agents/` organ — the per-plugin subagent pool — and the budget that mechanizes the 80/20 split between main-session direct action and delegated investigation.
+[Essay 7.5](07_5-docs-and-historian.html) opened the cognitive docs organ — the per-plugin narrative the historian subagent writes on a drift-count ratchet. Subagents follow the same scoping discipline as the rest of the kit: each one lives inside the plugin that dispatches it. This sub-essay opens the cognitive `agents/` organ — the per-plugin subagent pool — and the budget that mechanizes the 80/20 split between main-session direct action and delegated investigation.
 
 ---
 
