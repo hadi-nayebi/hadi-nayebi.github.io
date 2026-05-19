@@ -5,7 +5,9 @@ tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Visual-Assets Auditor — v0.2
+# Blog Visual-Assets Auditor — v0.3
+
+**v0.3 changelog (2026-05-19):** V11 NEW — HTML placeholder discoverability (every needed image must have a placeholder visible in at least one rendered HTML, since user reads HTML to find prompts per directive 2026-05-19). V12 NEW — NEEDS-REGEN tracking (auditor scans IMAGE PLACEHOLDER blocks for the `NEEDS-REGEN` tag; flagged images MUST have their on-disk file deleted so HTML reverts to placeholder-pending, surfacing the regen prompt to the user). Total dimensions: 12.
 
 **v0.2 changelog (2026-05-19):** V5b regex fix (no spurious cross-series matches on banner filenames); V6 + V9 disambiguated to allow PASS when user explicitly accepts the documented state.
 
@@ -50,7 +52,15 @@ Read `blog/CLAUDE.md` "Current Posts" table. Essays with status "GOAL ACHIEVED" 
 5. **og:image frontmatter:** declares the social-card image; should point at a file that exists on disk. Series banners (`always-on-digital-cortex-b5.png`, `markov-phasic-brain-b6.png`, etc.) are reused across all interior essays of the series.
 6. **Cross-series fallback debt:** B7.2-B7.9 and B8.3-B8.9 currently use `assets/images/blog/b4/agent-anatomy-b4-1.png` as og:image fallback. This is technical debt — flag but don't FAIL until the user decides whether to generate B7/B8 series banners.
 
-## Audit dimensions (10)
+## User's discovery model (v0.3 — CRITICAL)
+
+User directive 2026-05-19 (mid-/goal cycle): "define all prompts that you need in html as placeholder, the only place i will be looking for image prompts are the html files as i read them i will check for any prompt as placeholder and then create it with a name and bX-Y suffix in the name — make sure your goal and subagent is aligned with this approach".
+
+**Implication for this auditor.** The HTML files are the user's image-prompt discovery surface. Inventory files (`memory/missing_image_assets_2026-05-19.md`) are MY internal tracking — but the user does not read them. For ANY image the user needs to create (body image OR og:image / series banner), the prompt MUST surface as an `<aside class="image-placeholder">` block in at least one rendered HTML. The auditor's V11 dimension enforces this. Without it, V2/V3/V6 can be FAILing on missing files the user has no way to discover.
+
+For ANY image already on disk that has known quality issues, the .md source's IMAGE PLACEHOLDER block must carry a `NEEDS-REGEN (DATE): <reason>` line AND the on-disk file must be DELETED so the HTML reverts to placeholder-pending (showing the updated prompt to the user). The auditor's V12 dimension enforces this.
+
+## Audit dimensions (12)
 
 ### V1. ASSET wiring presence
 
@@ -330,6 +340,79 @@ done
 
 **PASS if.** All images are valid PNGs ≥1024 bytes.
 **FAIL if.** Any image is corrupted, zero-byte, or non-PNG.
+
+### V11. HTML placeholder discoverability (NEW in v0.3)
+
+**Principle.** Every image the user needs to create (body image AND og:image / series banner) MUST have an IMAGE PLACEHOLDER block visible in at least one rendered HTML as an `<aside class="image-placeholder">` or `<figure class="blog-image image-placeholder-pending">` block. Without HTML visibility, the user has no way to discover the prompt — they read HTML, not inventory files or .md sources.
+
+**Check.**
+- For each entry in `memory/missing_image_assets_2026-05-19.md` "What's NEEDED" section: confirm the .md source containing the matching ASSET line generates a placeholder-pending block in its rendered HTML.
+- For each og:image declared in any essay's frontmatter that points at a non-existent file: confirm that filename's PROMPT appears as an IMAGE PLACEHOLDER block in some HTML (either the same essay or its series opener).
+- For each series banner the user has explicitly chosen to generate (per memory file decision): confirm placeholder block exists in the series opener's HTML.
+
+**Verification commands:**
+```bash
+# All placeholder-pending blocks in B5-B8 HTMLs
+for h in blog/b5/05_*.html blog/b6/06_*.html blog/b7/07_*.html blog/b8/08_*.html; do
+  [ -f "$h" ] || continue
+  if grep -q "image-placeholder-pending" "$h"; then
+    # Extract the ASSET path the placeholder is for
+    asset=$(grep -A30 "image-placeholder-pending" "$h" | grep -oE "ASSET:\s*[^<]*" | head -1)
+    echo "$h: $asset"
+  fi
+done
+
+# Cross-reference: for each og:image declared but not on disk, is there a placeholder for it anywhere?
+for f in blog/b5/05_*.md blog/b6/06_*.md blog/b7/07_*.md blog/b8/08_*.md; do
+  [[ "$f" == *transcript* ]] && continue
+  [ -f "$f" ] || continue
+  og=$(grep -m1 "^og_image:" "$f" | sed 's|og_image: ||;s|"||g')
+  [ -z "$og" ] && continue
+  [ -f "$og" ] && continue  # exists, skip
+  fname=$(basename "$og")
+  # Search all .md files for a placeholder with this ASSET name
+  placeholder_in=$(grep -l "ASSET:.*$fname" blog/b{5,6,7,8}/*.md 2>/dev/null | head -1)
+  [ -z "$placeholder_in" ] && echo "NO PLACEHOLDER for og:image $og (declared in $f)"
+done
+```
+
+**PASS if.** Every missing image (body OR og:image source) has a discoverable placeholder in at least one HTML.
+**FAIL if.** Any needed image has no placeholder anywhere — user cannot discover the prompt.
+
+**Report format.** Per offending image: which essay declares it + suggested location for new placeholder (typically the series opener for og:image sources, or the essay itself for body images).
+
+### V12. NEEDS-REGEN tracking (NEW in v0.3)
+
+**Principle.** When the user flags an existing image as low-quality, the workflow is: (a) update the placeholder prompt with explicit guidance addressing the issue + add a `NEEDS-REGEN (DATE): <reason>` line at the top of the placeholder, (b) DELETE the on-disk file so the HTML reverts to placeholder-pending state showing the updated prompt, (c) user regenerates following the improved prompt + drops at the canonical name. The auditor enforces correlation: any `NEEDS-REGEN` tag must have a corresponding deleted-from-disk file.
+
+**Check.**
+- Grep all .md sources for `NEEDS-REGEN` inside IMAGE PLACEHOLDER blocks.
+- For each found: extract the placeholder's ASSET filename + resolve to disk path.
+- The disk file MUST NOT exist (deletion is the surface that makes the placeholder visible in HTML).
+
+**Verification commands:**
+```bash
+for f in blog/b5/05_*.md blog/b6/06_*.md blog/b7/07_*.md blog/b8/08_*.md; do
+  [[ "$f" == *transcript* ]] && continue
+  [ -f "$f" ] || continue
+  if grep -q "NEEDS-REGEN" "$f"; then
+    asset=$(grep -E "^\s*ASSET:" "$f" | sed 's|.*ASSET:\s*||;s| .*||' | head -1)
+    [ -z "$asset" ] && { echo "NEEDS-REGEN but no ASSET line in $f"; continue; }
+    series_dir=$(dirname "$f")
+    resolved="$series_dir/$asset"
+    if [ -f "$resolved" ]; then
+      echo "NEEDS-REGEN but file still exists: $resolved (declared in $f)"
+    else
+      echo "OK NEEDS-REGEN pending: $f → $resolved (deleted, awaiting regen)"
+    fi
+  fi
+done
+```
+
+**PASS if.** Every NEEDS-REGEN-tagged placeholder has a deleted disk file (HTML surfaces the prompt).
+**FAIL if.** Any NEEDS-REGEN tag coexists with the corresponding file still on disk (HTML hides the prompt under the stale image).
+
+**Report format.** List each conflict (NEEDS-REGEN + file-still-exists) + recommended action (delete file via `rm <path>` to expose the placeholder).
 
 ## Report Format
 
