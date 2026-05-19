@@ -1,16 +1,16 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.11.0
+**Version:** v0.12.0
 
 ## Layout
 
 - **Part-1 essays** (`01..04` + `03_1` interlude): `blog/<slug>.{md,html,transcript.md}` at this directory root.
-- **B5 mini-series** (`05_1..05_9`): `blog/b5/<slug>.{md,html,transcript.md}` — moved 2026-05-18. Images at `blog/b5/images/`. Series working memory at `blog/b5/CLAUDE.md` (gitignored, local-only).
-- **B6 mini-series** (`06_1..06_10`): `blog/<slug>.{md,html,transcript.md}` at root. Awaits its own subdir restructure when content stabilizes.
+- **B5 mini-series** (`05_1..05_9`): `blog/b5/<slug>.{md,html,transcript.md}` — moved 2026-05-18. Images at `blog/b5/images/`. Series working memory at `blog/b5/CLAUDE.md`.
+- **B6 mini-series** (`06_1..06_10`): `blog/b6/<slug>.{md,html,transcript.md}` — moved 2026-05-19. Images at `blog/b6/images/`. Series working memory at `blog/b6/CLAUDE.md`.
 - **B7 mini-series** (`07_1..07_9`): `blog/b7/<slug>.{md,html,transcript.md}` — moved 2026-05-18 (Commit F).
 - **B8 mini-series** (`08_1..08_9`): `blog/b8/<slug>.{md,html,transcript.md}` — moved 2026-05-18 (Commit G).
-- B5 images co-located at `blog/b5/images/`. Part-1 + B6/B7/B8 essay-specific images live under `assets/images/blog/b{6,7,8}/`.
+- B5 + B6 images co-located at `blog/b{5,6}/images/`. Part-1 + B7/B8 essay-specific images live under `assets/images/blog/b{7,8}/` (subdir-restructure landed but image co-location pending for B7/B8).
 
-When working on B5, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.md` for current state.
+When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.md` / `blog/b6/CLAUDE.md` for current state.
 
 ## Content Workflow
 
@@ -758,7 +758,7 @@ Each operation = one subagent dispatch with raw paragraph context + Best Design 
 
 ## Current Posts
 
-Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 essays are flat at `blog/`; B5 under `blog/b5/`, B7 under `blog/b7/`, B8 under `blog/b8/` (all subdir restructures landed 2026-05-18 — B5 first, then Commits F + G for B7 + B8). B6 remains flat at `blog/` pending its own restructure.
+Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 essays are flat at `blog/`; B5 under `blog/b5/`, B6 under `blog/b6/`, B7 under `blog/b7/`, B8 under `blog/b8/` (B5/B7/B8 restructures landed 2026-05-18; B6 restructure landed 2026-05-19).
 
 | # | Slug | Title | Status |
 |---|------|-------|--------|
@@ -776,16 +776,16 @@ Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 ess
 | 5.7 | `b5/05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.3.0** — ~3,300w / 12 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c HIGH+MED fixes: L33 fabricated quote replaced with truthful section-name pointer (root CLAUDE.md Identity section + `.claude/CLAUDE.md` Components section — old fake quote "Agent: Hadosh Academy Website Manager..." did not exist in current root CLAUDE.md); L35 brittle four-line citation (530,537,544,551) age-proofed to "footer-anchor block" pointer; L29/L132/L150 line-range refs (`:443`, `:289-298`, `:129-134`) all age-proofed to section-name pointers — mirrors iter-15.c L140 pattern. |
 | 5.8 | `b5/05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.3.0** — ~2,500w / 10 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c MED fixes: L103 ref `CLAUDE.md:381-384` age-proofed to "Spatial level: bullets under Core Principle: Compartmentalization" section pointer; L105 ref `CLAUDE.md:212` age-proofed to "JOB.phase operation under Specialized Operations" section pointer — mirrors iter-15.c L140 pattern. |
 | 5.9 | `b5/05_9-customization-guardrail` | Pt 9: The Customization Guardrail | **drafting v0.4.0** — ~2,400w / 10 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.c HIGH fix: L76 `customization-trigger-patterns` ref-tag rewritten — prior synthesis of triggers (3-occurrence threshold, COACHING_IDS pool, workflow-not-supported) did not appear in `plugin-lock-privilege.md`; new ref cites the file's actual "Why both, not one" section (frames user-approved-job route as "for planned work the agent initiates" with the verbatim `secrets_guard` example), keeps the closing architectural-fact summary. |
-| 6.1 | `06_1-phasic-foundation` | Pt 1: Phasic Foundation | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.2 | `06_2-discipline-and-map` | Pt 2: The Discipline and the Map | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.3 | `06_3-observe` | Pt 3: OBSERVE — Read Wide, Write Once | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.4 | `06_4-plan` | Pt 4: PLAN — Decide, Then Lock | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.5 | `06_5-execute` | Pt 5: EXECUTE — Build, in Scope, in Steps | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.6 | `06_6-verify` | Pt 6: VERIFY — Independent Eyes | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
-| 6.7 | `06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **GOAL ACHIEVED v0.2.0** — ~1,400w / 11 min · 32 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 6-dispatch R1→R1.b→R2→R3 path (commits 22e003d / 4c7bb81 / b898f93). |
-| 6.8 | `06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **GOAL ACHIEVED v0.2.0** — ~1,700w / 11 min · 27 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 8-dispatch R1→R1.b→R1.c→R2→R3→R3.b path (commits 22e003d / 270db92 / 33df7c5 / a120f28 / 151ed05). |
-| 6.9 | `06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **GOAL ACHIEVED v0.2.0** — ~2,114w / 8 min · 25 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 7-dispatch R1→R1.b→R1.c→R1.d→R2→R2.b→R3 path (commits 00dea7b / 2db3b61 / 7fab322 / 350b41d / 99b8c5b). |
-| 6.10 | `06_10-plan-state-machine` | Pt 10: The Plan-State Machine — Long-Horizon Memory (Tier-3 closer) | **GOAL ACHIEVED v0.2.0** — ~2,688w / 8 min · 29 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R2→R3 path (commit 3bfccdf pre-sweep with 24 new refs + L120 wall split + 6 friction-gradient rescues). |
+| 6.1 | `b6/06_1-phasic-foundation` | Pt 1: Phasic Foundation | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
+| 6.2 | `b6/06_2-discipline-and-map` | Pt 2: The Discipline and the Map | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
+| 6.3 | `b6/06_3-observe` | Pt 3: OBSERVE — Read Wide, Write Once | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
+| 6.4 | `b6/06_4-plan` | Pt 4: PLAN — Decide, Then Lock | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
+| 6.5 | `b6/06_5-execute` | Pt 5: EXECUTE — Build, in Scope, in Steps | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
+| 6.6 | `b6/06_6-verify` | Pt 6: VERIFY — Independent Eyes | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
+| 6.7 | `b6/06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **GOAL ACHIEVED v0.2.0** — ~1,400w / 11 min · 32 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 6-dispatch R1→R1.b→R2→R3 path (commits 22e003d / 4c7bb81 / b898f93). |
+| 6.8 | `b6/06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **GOAL ACHIEVED v0.2.0** — ~1,700w / 11 min · 27 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 8-dispatch R1→R1.b→R1.c→R2→R3→R3.b path (commits 22e003d / 270db92 / 33df7c5 / a120f28 / 151ed05). |
+| 6.9 | `b6/06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **GOAL ACHIEVED v0.2.0** — ~2,114w / 8 min · 25 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 7-dispatch R1→R1.b→R1.c→R1.d→R2→R2.b→R3 path (commits 00dea7b / 2db3b61 / 7fab322 / 350b41d / 99b8c5b). |
+| 6.10 | `b6/06_10-plan-state-machine` | Pt 10: The Plan-State Machine — Long-Horizon Memory (Tier-3 closer) | **GOAL ACHIEVED v0.2.0** — ~2,688w / 8 min · 29 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R2→R3 path (commit 3bfccdf pre-sweep with 24 new refs + L120 wall split + 6 friction-gradient rescues). |
 | 7.1 | `b7/07_1-plugin-kit-foundation` | Pt 1: Plugin Kit Foundation (B7 opener) | **GOAL ACHIEVED v0.2.0** — ~625w / 5 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R1.b→R2→R3 path (commits 4c1a0b3 + c7b46b0). |
 | 7.2 | `b7/07_2-skeleton-claudemd-hooks-scripts` | Pt 2: Skeleton — CLAUDE.md, Hooks, and Scripts | **GOAL ACHIEVED v0.2.0** — ~1,500w body / ~2,587w with tooltips · 8 min · 17 refs · density 100% (anchored ¶s) / 94% (incl. opener bridge) · 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R1.b(R-only)→R2→R3 path (commits ea6c26b pre-sweep + 5979253 R-fix ref #2 inner-line drift `:340-362` → `:351-380`, L356-358/L369/L380 confirmed via own grep against `hooks/lock-manager.sh`). |
 | 7.3 | `b7/07_3-dual-voice-architecture` | Pt 3: The Dual Voice Architecture | **GOAL ACHIEVED v0.2.0** — ~1,100w body / ~2,800w with tooltips · 8 min · 12 refs · density 86% (12 anchored / 14 F-paragraphs; 100% if L45+L47 cross-ref bridges exempt) · 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R1.b(R-drift)→R2→R2.b(R-only)→R3 path (commits 966d18c pre-sweep adding 5 ref-anchors + 3 count-rescues + 91bf6f4 R1.b 3 pre-existing ref-drift fixes [L27 element-count drift 52→54 + L35 historian list correction + L85 section-scope softening] + 9200c5a R2.b L41 cross-reference fix 52→54 propagation). |

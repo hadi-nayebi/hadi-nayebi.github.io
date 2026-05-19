@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: draft
 version: v0.3.0
 audience: "Tier 2"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # PLAN — Decide, Then Lock
@@ -72,7 +72,7 @@ The full mechanism — including how the `.yaml` injects into every phase entry 
 
 Plan documents live at a known path inside the agent's knowledge directory. Their structure is opinionated.
 
-Each one carries a stated goal, an acceptance-criteria list, the *altered list* — the dirs whose CLAUDE.md the agent edited during OBSERVE or PLAN, each one scoped exactly (no walking up to parents, no descent into nested dirs), [introduced in Essay 5.7](b5/05_7-claude-md-hierarchy.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe. *[ref: plan-subagents-encode-structure | .claude/plugins/phase_plan/agents/CLAUDE.md Agent Inventory section | PLAN's specialized subagents (currently six in the prototype) encode the plan-document's opinionated structure: plan-step-breaker decomposes steps, plan-criteria-writer authors acceptance criteria, plan-scope-analyzer maps altered-list directories, plan-risk-assessor names judgment calls.]*
+Each one carries a stated goal, an acceptance-criteria list, the *altered list* — the dirs whose CLAUDE.md the agent edited during OBSERVE or PLAN, each one scoped exactly (no walking up to parents, no descent into nested dirs), [introduced in Essay 5.7](../b5/05_7-claude-md-hierarchy.html) as the mechanism that lets PLAN scope EXECUTE's reach — and an explicit set of judgment-call criteria. The judgment-call criteria are the points where EXECUTE is expected to make a real decision rather than mechanically follow a recipe. *[ref: plan-subagents-encode-structure | .claude/plugins/phase_plan/agents/CLAUDE.md Agent Inventory section | PLAN's specialized subagents (currently six in the prototype) encode the plan-document's opinionated structure: plan-step-breaker decomposes steps, plan-criteria-writer authors acceptance criteria, plan-scope-analyzer maps altered-list directories, plan-risk-assessor names judgment calls.]*
 
 The `.md` and the `.yaml` live side-by-side once both exist, and they are not the same artifact wearing different masks. The `.md` is the human-readable accumulating prose; the `.yaml` is the parseable injection target the orchestrator reads at phase entry to pour context-specific content into the working session. *[ref: yaml-injection-cache-populated-at-phase-entry | .claude/plugins/phasic_system/hooks/phase-init.sh write_yaml_cache function | At every phase transition, write_yaml_cache reads the .yaml's current cycle+phase field-map via phase.sh --hook read-yaml and writes it as JSON to YAML_INJECTION_CACHE. voice-helper.sh consumes the cache jq-lookup-per-voice: any voice id matching a yaml key gets its value appended at fire time. The yaml is per-cycle-per-phase context dripped into the agent's working voice stream.]*
 

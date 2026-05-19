@@ -56,7 +56,7 @@ The reason this matters is the reason agent reliability has been hard. A reliabl
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin_integrity", "plugin_integrity (under edit)", "[PLUGIN-LOCK]", "tests", "pass", "commit, lock closes", "fail", "revert to checkpoint_ref", "the guard does not exempt itself", plus the caption below. No other words, file names, folders, or descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.8. The lock that closes one cycle opens the next. Recursion all the way down."
-  ASSET: assets/images/blog/b8/recursive-lock-ceremony-b8-8.png
+  ASSET: images/recursive-lock-ceremony-b8-8.png
 -->
 
 ## The Rollback Substrate

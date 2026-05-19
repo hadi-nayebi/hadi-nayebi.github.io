@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
 version: v0.2.1
 audience: "Tier 2"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # Phasic Foundation
@@ -18,7 +18,7 @@ og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
 
 Now we open the cycle.
 
-[Essay 5](b5/05_1-the-two-layer-foundation.html) introduced two pieces of the seed agent's foundation, side by side. The **always-on plugins** are the agent's reflexes — each one owns a concern that fires regardless of which phase the agent is in or whether a phase is even active: plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning. They run continuously, each in its own lane, with its own state. The **CLAUDE.md layer** is the substrate the agent's structured cognitive work writes into — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer that survives across phases and sessions. *[ref: always-on-fires-no-phase-guard | .claude/settings.local.json PreToolUse block registering plugin_integrity, job_core, interaction_summary, phasic_system hooks | The PreToolUse block registers always-on plugin hooks (plugin_integrity, job_core, interaction_summary) on tool matchers with no phase filtering; phasic_system's phase-gate registers alongside them, plumbing phase enforcement separately.]*
+[Essay 5](../b5/05_1-the-two-layer-foundation.html) introduced two pieces of the seed agent's foundation, side by side. The **always-on plugins** are the agent's reflexes — each one owns a concern that fires regardless of which phase the agent is in or whether a phase is even active: plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning. They run continuously, each in its own lane, with its own state. The **CLAUDE.md layer** is the substrate the agent's structured cognitive work writes into — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer that survives across phases and sessions. *[ref: always-on-fires-no-phase-guard | .claude/settings.local.json PreToolUse block registering plugin_integrity, job_core, interaction_summary, phasic_system hooks | The PreToolUse block registers always-on plugin hooks (plugin_integrity, job_core, interaction_summary) on tool matchers with no phase filtering; phasic_system's phase-gate registers alongside them, plumbing phase enforcement separately.]*
 
 This essay opens the system that does the structured work — the phasic system — and how it uses the CLAUDE.md layer to think ahead, gather experiential data, and process that data into the agent's longer-term memory forms.
 
@@ -28,7 +28,7 @@ The current prototype runs the OPEVC cycle (currently five phases in the prototy
 
 Two states travelled with us across the previous essay without being named: *idle* and *gmode*. We left them out of Essay 5 to keep the substrate description clean. They come back now, because the full Markov brain does not run without them. *[ref: idle-is-default-current-phase | .claude/plugins/phasic_system/scripts/phase.sh job-init handler (current_phase=idle write) | Job initialization writes current_phase: idle into the orchestrator's data.json; idle is the resting state between cycles. Gmode is the other off-cycle state — handlers further down the same file treat it as a peer current_phase value.]*
 
-What we are about to open is what [Essay 3.1](03_1-the-folder-is-alive.html) called the agent's *cognitive metabolism* — the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.
+What we are about to open is what [Essay 3.1](../03_1-the-folder-is-alive.html) called the agent's *cognitive metabolism* — the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.
 
 This essay opens that discipline compartment by compartment.
 
@@ -53,7 +53,7 @@ Essay 6.2 maps the discipline; Essays 6.3 through 6.7 deep-dive each phase, one 
 
 ## From Action Space to Markov Brain
 
-In [Essay 1](01-llms-are-not-the-agents.html) we drew the seed agent's starting condition as an **action space** — the set of moves a CLI agent can pick at any given moment. Use deep reasoning. Use tools — read, write, edit, run. Ask for permission. Delegate to another agent. Stop. Each step the LLM samples from those moves probabilistically. The next step samples again. The result, without further structure, is what that essay called a **random walk** — a Markov chain where every path is equally likely, and the same prompt twice can produce two different journeys. *[ref: action-space-tool-filter | .claude/plugins/phasic_system/hooks/phase-gate.sh:45-48 | The orchestrator's tool filter enumerates the seed agent's intercepted action space: Edit, Write, MultiEdit, Read, Glob, Grep, Bash, WebSearch, WebFetch. Other tools pass through unguarded.]*
+In [Essay 1](../01-llms-are-not-the-agents.html) we drew the seed agent's starting condition as an **action space** — the set of moves a CLI agent can pick at any given moment. Use deep reasoning. Use tools — read, write, edit, run. Ask for permission. Delegate to another agent. Stop. Each step the LLM samples from those moves probabilistically. The next step samples again. The result, without further structure, is what that essay called a **random walk** — a Markov chain where every path is equally likely, and the same prompt twice can produce two different journeys. *[ref: action-space-tool-filter | .claude/plugins/phasic_system/hooks/phase-gate.sh:45-48 | The orchestrator's tool filter enumerates the seed agent's intercepted action space: Edit, Write, MultiEdit, Read, Glob, Grep, Bash, WebSearch, WebFetch. Other tools pass through unguarded.]*
 
 Then we added the first layer of structure: hooks. Hooks fire on every tool call, every stop, every prompt. They can block an action, modify it, or trigger another. In Essay 1's framing, hooks turn the **probabilistic chain into a deterministic pipeline**. The LLM still proposes the next move; the hooks decide whether the move is allowed. *[ref: hooks-block-via-exit-two | .claude/plugins/phasic_system/hooks/phase-gate.sh:68-71 | phase-gate intercepts Read/Glob/Grep tool calls during idle, emits a stderr message, and exits with code 2 — the canonical block pattern that converts a proposed move into a refusal.]*
 
@@ -115,7 +115,7 @@ The foundation is in place: a Markov brain whose moves are themselves Markov cha
 
 *Essay 6.1 — The Markov Phasic Brain, Part 1 of 10.*
 
-*Previous: [Essay 5.9 — The Customization Guardrail](b5/05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
+*Previous: [Essay 5.9 — The Customization Guardrail](../b5/05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
 *Next: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*
 
 

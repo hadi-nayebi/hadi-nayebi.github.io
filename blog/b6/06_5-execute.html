@@ -11,19 +11,19 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/06_5-execute.html">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b6/06_5-execute.html">
     <meta property="og:title" content="EXECUTE — Build, in Scope, in Steps | Hadosh Academy">
     <meta property="og:description" content="EXECUTE — Build, in Scope, in Steps — Hadosh Academy seed agent essay.">
-    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/06_5-execute.html">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b6/06_5-execute.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b6/markov-phasic-brain-b6.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EXECUTE — Build, in Scope, in Steps | Hadosh Academy">
     <meta name="twitter:description" content="EXECUTE — Build, in Scope, in Steps — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b6/markov-phasic-brain-b6.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../css/styles.css?v=20260518">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -40,15 +40,15 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "EXECUTE — Build, in Scope, in Steps — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/b6/markov-phasic-brain-b6.png",
-                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/06_5-execute.html"
+                "image": "https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/b6/06_5-execute.html"
             },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
                     { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
-                    { "@type": "ListItem", "position": 3, "name": "EXECUTE — Build, in Scope, in Steps", "item": "https://hadi-nayebi.github.io/blog/06_5-execute.html" }
+                    { "@type": "ListItem", "position": 3, "name": "EXECUTE — Build, in Scope, in Steps", "item": "https://hadi-nayebi.github.io/blog/b6/06_5-execute.html" }
                 ]
             }
         ]
@@ -60,18 +60,18 @@
     <header id="site-header">
         <div class="container">
             <nav>
-                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <a href="../../index.html" class="logo">Hadosh Academy</a>
                 <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                     <span class="nav-toggle-bar"></span>
                     <span class="nav-toggle-bar"></span>
                     <span class="nav-toggle-bar"></span>
                 </button>
                 <div class="nav-links">
-                    <a href="../index.html">Home</a>
-                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
-                    <a href="../agents.html">Agents</a>
-                    <a href="../about.html">About</a>
-                    <a href="../contact.html">Contact</a>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../../agents.html">Agents</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../contact.html">Contact</a>
                 </div>
             </nav>
         </div>
@@ -82,7 +82,7 @@
             <div class="blog-layout">
                 <!-- Main Article -->
                 <div class="article-content">
-                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+                    <a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
 
                     <h1>EXECUTE — Build, in Scope, in Steps</h1>
                     <div class="article-meta">
@@ -160,7 +160,7 @@
 
                         <p>Reading project files does not consume budget; only edits and writes outside <code>.claude/</code> do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate the implementation to execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change. <sup class="ref-marker" title="ref: execute-subagent-grants-direct-action-budget | .claude/plugins/phase_execute/scripts/execute.sh:765-795 | grant-direct-action-budget adds +3 budget per execute-subagent dispatch; consume-direct-action-budget deducts 1 per project edit and dies on insufficient — structural enforcement of 80/20 delegation bias.">&#9432;</sup></p>
 
-                        <p>The discipline favors sequential dispatch &mdash; one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is kept low (currently held at two-in-flight in the prototype); the cap was set after a cycle in which a parallel dispatch pushed the context window past a safe tier and triggered cascading compaction. <sup class="ref-marker" title="ref: dispatch-cap-as-plan-risk-recommendation | .claude/plugins/phase_plan/agents/plan-risk-assessor.md:20+70 | The two-in-flight ceiling is an R-context-spike standard mitigation surfaced by plan-risk-assessor when context exceeds 180k, not a code-enforced cap; the agent honors it as judgment, with brain_guard&#x27;s tier-2 context-gate as the structural backstop that fires when the ceiling is ignored.">&#9432;</sup> The deeper discipline of subagent dispatch &mdash; and the per-plugin agent rosters that make it tunable &mdash; is the subject of <a href="b7/07_1-plugin-kit-foundation.html">Essay 7</a>.</p>
+                        <p>The discipline favors sequential dispatch &mdash; one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is kept low (currently held at two-in-flight in the prototype); the cap was set after a cycle in which a parallel dispatch pushed the context window past a safe tier and triggered cascading compaction. <sup class="ref-marker" title="ref: dispatch-cap-as-plan-risk-recommendation | .claude/plugins/phase_plan/agents/plan-risk-assessor.md:20+70 | The two-in-flight ceiling is an R-context-spike standard mitigation surfaced by plan-risk-assessor when context exceeds 180k, not a code-enforced cap; the agent honors it as judgment, with brain_guard&#x27;s tier-2 context-gate as the structural backstop that fires when the ceiling is ignored.">&#9432;</sup> The deeper discipline of subagent dispatch &mdash; and the per-plugin agent rosters that make it tunable &mdash; is the subject of <a href="../b7/07_1-plugin-kit-foundation.html">Essay 7</a>.</p>
 
                         <h2>The comment-density drift gate</h2>
 
@@ -287,8 +287,8 @@
         </div>
     </footer>
 
-    <script src="../js/theme-manager.js?v=20260518"></script>
-    <script src="../js/components.js?v=20260518"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

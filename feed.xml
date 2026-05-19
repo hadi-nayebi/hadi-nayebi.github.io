@@ -98,80 +98,80 @@
 
     <item>
       <title>The Markov Phasic Brain — Pt 10: The Plan-State Machine: Long-Horizon Memory</title>
-      <link>https://hadi-nayebi.github.io/blog/06_10-plan-state-machine.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_10-plan-state-machine.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The multi-cycle plan-file lifecycle that scales the markov brain to long-horizon work. plan_state + the three job forms + .yaml injection at phase entry.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 9: GMODE: The Off-Cycle Lane</title>
-      <link>https://hadi-nayebi.github.io/blog/06_9-gmode.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_9-gmode.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_9-gmode.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_9-gmode.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The operator's deliberate maintenance lane that lives outside the OPEVC cycle. Entered via [GMODE] with a ≥100-word justification.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 8: The Backward Multiplier</title>
-      <link>https://hadi-nayebi.github.io/blog/06_8-inverse-multiplier.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_8-inverse-multiplier.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_8-inverse-multiplier.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_8-inverse-multiplier.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The per-phase dial that forces meta-cognition at entry. The multiplier is backward — 3× declares a surgical phase, 0.5× declares deep work. Both directions of error cost. The point system stays invisible so the agent does not learn to game it.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 7: CONDENSE: The Cognitive Organ</title>
-      <link>https://hadi-nayebi.github.io/blog/06_7-condense.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_7-condense.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_7-condense.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_7-condense.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The phase that acts on the brain. Seven-step waterfall routes the cycle's experiential data into durable memory. The deflation gate enforces compression. CONDENSE is the only phase allowed to edit the brain itself.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 6: VERIFY: Independent Eyes</title>
-      <link>https://hadi-nayebi.github.io/blog/06_6-verify.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_6-verify.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_6-verify.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_6-verify.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The audit chamber. Scripts only, auditor subagents, multi-backward routing. The cycle's final guardrail before CONDENSE absorbs the work.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 5: EXECUTE: Build, in Scope, in Steps</title>
-      <link>https://hadi-nayebi.github.io/blog/06_5-execute.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_5-execute.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_5-execute.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_5-execute.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The build phase. Full write access, scoped to the altered list, with multi-commit checkpoints. Where the plan becomes artifacts.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 4: PLAN: Decide, Then Lock</title>
-      <link>https://hadi-nayebi.github.io/blog/06_4-plan.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_4-plan.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_4-plan.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_4-plan.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>Read-only. The phase that names the plan file, decides, and locks the contract that execute will materialize.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 3: OBSERVE: Read Wide, Write Once</title>
-      <link>https://hadi-nayebi.github.io/blog/06_3-observe.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_3-observe.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_3-observe.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_3-observe.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>The intake phase. Read-only on project files; synthesis goes into CLAUDE.md. Multiplier sentinel, parallel research subagents, point system underneath.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 2: The Discipline and the Map</title>
-      <link>https://hadi-nayebi.github.io/blog/06_2-discipline-and-map.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_2-discipline-and-map.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_2-discipline-and-map.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_2-discipline-and-map.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>Forbidding tools is the pedagogy. The per-phase write rule, the altered list scoping, and the quick map of the cycle.</description>
     </item>
 
     <item>
       <title>The Markov Phasic Brain — Pt 1: Phasic Foundation</title>
-      <link>https://hadi-nayebi.github.io/blog/06_1-phasic-foundation.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/06_1-phasic-foundation.html</guid>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
       <description>Phases are cognitive isolation chambers. Five phases plus one cognitive organ — observe, plan, execute, verify, condense. Opens the nine-part Markov Phasic Brain series.</description>
     </item>

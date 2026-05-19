@@ -11,19 +11,19 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/06_3-observe.html">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b6/06_3-observe.html">
     <meta property="og:title" content="OBSERVE — Read Wide, Write Once | Hadosh Academy">
     <meta property="og:description" content="OBSERVE — Read Wide, Write Once — Hadosh Academy seed agent essay.">
-    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/06_3-observe.html">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b6/06_3-observe.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b6/markov-phasic-brain-b6.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="OBSERVE — Read Wide, Write Once | Hadosh Academy">
     <meta name="twitter:description" content="OBSERVE — Read Wide, Write Once — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b6/markov-phasic-brain-b6.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../css/styles.css?v=20260518">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -40,15 +40,15 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "OBSERVE — Read Wide, Write Once — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/b6/markov-phasic-brain-b6.png",
-                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/06_3-observe.html"
+                "image": "https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/b6/06_3-observe.html"
             },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
                     { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
-                    { "@type": "ListItem", "position": 3, "name": "OBSERVE — Read Wide, Write Once", "item": "https://hadi-nayebi.github.io/blog/06_3-observe.html" }
+                    { "@type": "ListItem", "position": 3, "name": "OBSERVE — Read Wide, Write Once", "item": "https://hadi-nayebi.github.io/blog/b6/06_3-observe.html" }
                 ]
             }
         ]
@@ -60,18 +60,18 @@
     <header id="site-header">
         <div class="container">
             <nav>
-                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <a href="../../index.html" class="logo">Hadosh Academy</a>
                 <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                     <span class="nav-toggle-bar"></span>
                     <span class="nav-toggle-bar"></span>
                     <span class="nav-toggle-bar"></span>
                 </button>
                 <div class="nav-links">
-                    <a href="../index.html">Home</a>
-                    <a href="../blog.html" class="active" aria-current="page">Blog</a>
-                    <a href="../agents.html">Agents</a>
-                    <a href="../about.html">About</a>
-                    <a href="../contact.html">Contact</a>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../../agents.html">Agents</a>
+                    <a href="../../about.html">About</a>
+                    <a href="../../contact.html">Contact</a>
                 </div>
             </nav>
         </div>
@@ -82,7 +82,7 @@
             <div class="blog-layout">
                 <!-- Main Article -->
                 <div class="article-content">
-                    <a href="../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+                    <a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
 
                     <h1>OBSERVE — Read Wide, Write Once</h1>
                     <div class="article-meta">
@@ -135,7 +135,7 @@
 
                         <p>A pair of intermediate gates shape the rhythm of the phase from inside. A <em>minimum-synthesis</em> gate makes the agent read enough before any write into CLAUDE.md is allowed. A <em>maximum-accumulation</em> gate blocks further reading once the agent has read for a while without synthesizing. The arithmetic underneath is hidden from the agent; only the block messages surface, and only when a gate fires. <sup class="ref-marker" title="ref: min-gate-max-gate-paired | .claude/plugins/phase_observe/hooks/observe-guard.sh:211-259 | Max-accumulation gate blocks Read/Edit/Bash/Web/Agent once points_since hits MAX_ACCUMULATION_POINTS (default 25); the paired min-synthesis gate at line 285 blocks CLAUDE.md edits below MIN_SYNTHESIS_POINTS (default 3).">&#9432;</sup></p>
 
-                        <p>OBSERVE also dispatches its share of subagents. A typical phase fans out two to four research subagents in parallel &mdash; the main session orchestrates, the subagents investigate. The 80/20 split is the subject of <a href="b7/07_1-plugin-kit-foundation.html">Essay 7</a>. <sup class="ref-marker" title="ref: observe-12-subagents-80-20 | .claude/plugins/phase_observe/agents/CLAUDE.md Agent Inventory section | Observe workforce: 12 specialized agents (codebase-explorer, contradiction-finder, web-researcher, etc.); main session orchestrates 20 percent, subagents do 80 percent; subagents are exempt from point gates.">&#9432;</sup></p>
+                        <p>OBSERVE also dispatches its share of subagents. A typical phase fans out two to four research subagents in parallel &mdash; the main session orchestrates, the subagents investigate. The 80/20 split is the subject of <a href="../b7/07_1-plugin-kit-foundation.html">Essay 7</a>. <sup class="ref-marker" title="ref: observe-12-subagents-80-20 | .claude/plugins/phase_observe/agents/CLAUDE.md Agent Inventory section | Observe workforce: 12 specialized agents (codebase-explorer, contradiction-finder, web-researcher, etc.); main session orchestrates 20 percent, subagents do 80 percent; subagents are exempt from point gates.">&#9432;</sup></p>
 
                         <p>When OBSERVE believes it has enough, it commits. The commit is the phase&rsquo;s exit ritual. After the commit, the orchestrator advances the job to PLAN. There is no skipping back through OBSERVE without rolling the job backward &mdash; and rolling backward is allowed, but it is explicit, not silent. <sup class="ref-marker" title="ref: observe-commit-then-advance-to-plan | .claude/plugins/phase_observe/scripts/observe-commit.sh:371-382 | After the git commit succeeds, the script calls phase.sh --hook advance to move OBSERVE→PLAN; if advance fails, it logs a warning rather than silently dropping the move.">&#9432;</sup></p>
 
@@ -280,8 +280,8 @@
         </div>
     </footer>
 
-    <script src="../js/theme-manager.js?v=20260518"></script>
-    <script src="../js/components.js?v=20260518"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

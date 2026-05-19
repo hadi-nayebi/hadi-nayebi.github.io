@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Jobs]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/b8/three-growth-axes-b8-1.png"
+og_image: "blog/b8/images/three-growth-axes-b8-1.png"
 ---
 
 # Apprentice to Architect Foundation
@@ -44,7 +44,7 @@ That last claim is what makes the seed sustainable across long timescales. A bra
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+", plus the caption below. No other words, file names, folders, or axis descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
-  ASSET: assets/images/blog/b8/three-growth-axes-b8-1.png
+  ASSET: images/three-growth-axes-b8-1.png
 -->
 
 ## The journey ahead

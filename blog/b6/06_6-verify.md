@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Phases, Verify]
 status: draft
 version: v0.2.0
 audience: "Tier 2 → Tier 3"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # VERIFY — Independent Eyes

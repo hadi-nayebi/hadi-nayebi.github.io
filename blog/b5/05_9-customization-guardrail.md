@@ -109,11 +109,11 @@ What you would NOT do is remove the gate. The gate is what makes the architectur
 
 The customization guardrail is the architectural conclusion of these eight prior sub-essays. The always-on plugin layer holds the agent's reflexes; the substrate holds its working memory; the historian ratchet forces re-narration before edits; the gate forces deliberate context before any substrate edit happens at all. Each layer adds a discipline; the gate is the one that turns the system into something safely modifiable *by you* — not by the original developer, by you, the operator who installed the seed last week or last month or last year.
 
-That is the [agent-developer-user → agent-user collapse](../b8/08_1-apprentice-to-architect-foundation.html) made operational. The agent proposes customization. You judge it. The substrate enforces the discipline that keeps your judgment safe. No developer in the loop. And the canonical reference the seed itself consults when reasoning about its own design is this nine-essay series — plus [Essay 6](../06_1-phasic-foundation.html), [7](../b7/07_1-plugin-kit-foundation.html), [8](../b8/08_1-apprentice-to-architect-foundation.html) and the `.claude/knowledge/` topic files you cultivate as you customize. The PowerPoint of seed agents lives here.
+That is the [agent-developer-user → agent-user collapse](../b8/08_1-apprentice-to-architect-foundation.html) made operational. The agent proposes customization. You judge it. The substrate enforces the discipline that keeps your judgment safe. No developer in the loop. And the canonical reference the seed itself consults when reasoning about its own design is this nine-essay series — plus [Essay 6](../b6/06_1-phasic-foundation.html), [7](../b7/07_1-plugin-kit-foundation.html), [8](../b8/08_1-apprentice-to-architect-foundation.html) and the `.claude/knowledge/` topic files you cultivate as you customize. The PowerPoint of seed agents lives here.
 
 ---
 
 *Essay 5.9 — The Always-On Digital Cortex, Part 9 of 9.*
 
 *Previous: [Essay 5.8 — The Historian Ratchet](05_8-historian-ratchet.html) — composed ceremony from three single-concern plugins.*
-*Next: [Essay 6.1 — Phasic Foundation](../06_1-phasic-foundation.html) — opens The Markov Phasic Brain (10-part series): action space → Markov brain, why phases.*
+*Next: [Essay 6.1 — Phasic Foundation](../b6/06_1-phasic-foundation.html) — opens The Markov Phasic Brain (10-part series): action space → Markov brain, why phases.*

@@ -78,9 +78,10 @@ AUDIENCE_TITLE = {
 # Slug-to-subdir mapping. When a mini-series is moved into its own subdir,
 # add an entry here. Empty string means "blog/ root, no subdir".
 # 2026-05-18: B5 → blog/b5/, B7 → blog/b7/, B8 → blog/b8/.
-# B6 still at root pending its own finalization pass.
+# 2026-05-19: B6 → blog/b6/.
 SLUG_SUBDIR_PREFIXES = {
     "05_": "b5",
+    "06_": "b6",
     "07_": "b7",
     "08_": "b8",
 }

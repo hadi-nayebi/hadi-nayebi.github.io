@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Jobs, Plan State]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/b8/four-stages-b8-2.png"
+og_image: "blog/b8/images/four-stages-b8-2.png"
 ---
 
 # The Stages of Job Maturation
@@ -108,7 +108,7 @@ These patterns work across every step of the maturation arc. A stage-1 deep job 
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "Stage 1: Deep single-cycle", "plan_file = false", "seed in learning mode", "Stage 2: Multi-cycle .md plan", "plan_state = drafting", "chunked from stage 1", "Stage 3: Multi-cycle .yaml plan", "plan_state = yaml_drafting", "voice-paired injections per phase", "Stage 4: Plugin form of job", "phase-cognition customization", "extends phase guards", "Creation patterns (apply across all stages)", "sibling", "job.sh create <name>", "dependent", "job.sh create-dependent <name>", "graduation requires evidence, never automatic", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.1. Four stages of job maturation. Most jobs never reach stage 4. Some never leave stage 1."
-  ASSET: assets/images/blog/b8/four-stages-b8-2.png
+  ASSET: images/four-stages-b8-2.png
 -->
 
 ---

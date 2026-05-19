@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Plan File, Long-Horizon]
 status: draft
 version: v0.2.0
 audience: "Tier 3"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # The Plan-State Machine — Long-Horizon Memory
@@ -131,11 +131,11 @@ That is what makes the markov brain a brain, not a loop. A loop reacts. A brain 
 
 The cycle, the organ, the multiplier, gmode, the plan-state machine — each of these is a mechanism. None of them is the *thing they run inside*. Phases are plugins. CONDENSE is a plugin. Gmode rides on a plugin. The plan-state machine itself is split between `phase_plan` and `job_core`. Everything in this essay series is built on a standardized way of packaging cognitive mechanisms — the plugin kit. That is the subject of the next essay. *[ref: phases-are-plugins-state-machine-spans-two | .claude/plugins/ directory layout | The plugin directory shows the packaging: `phase_observe/`, `phase_plan/`, `phase_execute/`, `phase_verify/`, `phase_condense/` are each a plugin; `phasic_system/` is the orchestrator; `job_core/` owns the question-validator pipeline. The plan-state machine code lives across two of these — set-plan-file / approve-md / approve-yaml / seal-plan in `phase_plan/scripts/plan.sh`, and the `[PLAN-APPROVAL]` / `[YAML-APPROVAL]` validators in `job_core/hooks/question-capture.sh`. No single plugin owns the lifecycle; the kit is what lets two plugins coordinate one cognitive mechanism.]*
 
-This is the architect's pivot point. Everything from [Essay 5.1's two-layer foundation](b5/05_1-the-two-layer-foundation.html) through the markov phasic brain we have just finished mapping — was the seed agent's anatomy. You have seen the always-on cortex, the CLAUDE.md hierarchy, the phases, the metabolism organ, the multiplier dial, gmode's off-cycle lane, the plan-state machine's long-horizon memory. You have seen *how the seed agent thinks*. What you have not yet seen is how a new piece of that cognition gets *built*.
+This is the architect's pivot point. Everything from [Essay 5.1's two-layer foundation](../b5/05_1-the-two-layer-foundation.html) through the markov phasic brain we have just finished mapping — was the seed agent's anatomy. You have seen the always-on cortex, the CLAUDE.md hierarchy, the phases, the metabolism organ, the multiplier dial, gmode's off-cycle lane, the plan-state machine's long-horizon memory. You have seen *how the seed agent thinks*. What you have not yet seen is how a new piece of that cognition gets *built*.
 
 The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design? How do you grow a new always-on plugin without breaking the substrate? How do you author your own marker, your own coaching voice, your own subagent definition, and have the rest of the architecture accept them as natively as the prototype's own?
 
-[Essay 7 — The Plugin Kit](b7/07_1-plugin-kit-foundation.html) is the answer. The brain is built. The kit is what lets you grow new pieces of it safely.
+[Essay 7 — The Plugin Kit](../b7/07_1-plugin-kit-foundation.html) is the answer. The brain is built. The kit is what lets you grow new pieces of it safely.
 
 Next.
 
@@ -144,7 +144,7 @@ Next.
 *Essay 6.10 — The Markov Phasic Brain, Part 10 of 10.*
 
 *Previous: [Essay 6.9 — Gmode](06_9-gmode.html) — the off-cycle lane that drops the phase gates for deliberate maintenance work.*
-*Next: [Essay 7 — The Plugin Kit](b7/07_1-plugin-kit-foundation.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*
+*Next: [Essay 7 — The Plugin Kit](../b7/07_1-plugin-kit-foundation.html) — the anatomy of a plugin, and the discipline that lets the brain grow new ones safely.*
 
 
 

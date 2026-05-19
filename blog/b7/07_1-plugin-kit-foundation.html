@@ -16,12 +16,12 @@
     <meta property="og:description" content="Plugin Kit Foundation — Hadosh Academy seed agent essay.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/blog/b7/plugin-cell-anatomy-b7-1.png">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/blog/b7/images/plugin-cell-anatomy-b7-1.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Plugin Kit Foundation | Hadosh Academy">
     <meta name="twitter:description" content="Plugin Kit Foundation — Hadosh Academy seed agent essay.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/blog/b7/plugin-cell-anatomy-b7-1.png">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b7/images/plugin-cell-anatomy-b7-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
@@ -40,7 +40,7 @@
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
                 "description": "Plugin Kit Foundation — Hadosh Academy seed agent essay.",
-                "image": "https://hadi-nayebi.github.io/assets/images/blog/b7/plugin-cell-anatomy-b7-1.png",
+                "image": "https://hadi-nayebi.github.io/blog/b7/images/plugin-cell-anatomy-b7-1.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html"
             },
             {
@@ -113,7 +113,7 @@
 
                         <p>A plugin is a cell.</p>
 
-                        <p><a href="../b5/05_1-the-two-layer-foundation.html">Essay 5</a> opened the always-on layer &mdash; the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. <a href="../06_1-phasic-foundation.html">Essay 6</a> opened the phasic layer &mdash; the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a <strong>plugin</strong>, sitting in its own directory under <code>.claude/plugins/</code>, carrying its own organs. This essay opens that object. <sup class="ref-marker" title="ref: plugin-directory-anatomy | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section + &quot;Active Plugins&quot; section + .claude/plugins/plugin_integrity/ as a worked example | The canonical convention names six directories per plugin (`CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/`) with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md.&quot; Real plugins layer optional organs on top — `plugin_integrity` adds `agents/`, `template/`, `config.conf`, `evolution.md`, and dual `voice.xml` (hooks-side + scripts-side). The kit IS the architectural unit; the convention is a floor, not a ceiling.">&#9432;</sup></p>
+                        <p><a href="../b5/05_1-the-two-layer-foundation.html">Essay 5</a> opened the always-on layer &mdash; the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. <a href="../b6/06_1-phasic-foundation.html">Essay 6</a> opened the phasic layer &mdash; the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a <strong>plugin</strong>, sitting in its own directory under <code>.claude/plugins/</code>, carrying its own organs. This essay opens that object. <sup class="ref-marker" title="ref: plugin-directory-anatomy | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section + &quot;Active Plugins&quot; section + .claude/plugins/plugin_integrity/ as a worked example | The canonical convention names six directories per plugin (`CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/`) with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md.&quot; Real plugins layer optional organs on top — `plugin_integrity` adds `agents/`, `template/`, `config.conf`, `evolution.md`, and dual `voice.xml` (hooks-side + scripts-side). The kit IS the architectural unit; the convention is a floor, not a ceiling.">&#9432;</sup></p>
 
                         <p>The cell metaphor is load-bearing. A plugin is not a collection of loose files; it is a <em>system</em> of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Each organ inside the cell carries the same read / write / depend-on triple: <sup class="ref-marker" title="ref: triple-as-the-kit-design-model | .claude/plugins/plugin_integrity/CLAUDE.md &quot;Structure&quot; section | The Structure section of plugin_integrity catalogs one concrete plugin&#x27;s organs: `hooks/` (event-fired writers — `plugin-guard.sh`, `lock-manager.sh`, `evolution-cap.sh`, `upstream-reporter-hook.sh`), `scripts/` (operator-callable surfaces — `lock-cmd.sh`, `safe-lock.sh`, `drift-check.sh`, `health-check.sh`), `agents/` (per-plugin `historian-*.md` guardians, one for each plugin in the registry), `data.json` (hidden state read by hooks). Each organ slots into one read/write/depend-on role; the triple is the kit&#x27;s design language.">&#9432;</sup></p>
 
@@ -161,7 +161,7 @@
 
                         <p><em>Essay 7.1 &mdash; The Plugin Kit, Part 1 of 9.</em></p>
 
-                        <p><em>Previous: <a href="../06_10-plan-state-machine.html">Essay 6.10 &mdash; The Plan-State Machine &mdash; Long-Horizon Memory</a> &mdash; closes the markov phasic brain series.</em> <em>Next: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the universal organs governed by PLUGIN-LOCK.</em></p>
+                        <p><em>Previous: <a href="../b6/06_10-plan-state-machine.html">Essay 6.10 &mdash; The Plan-State Machine &mdash; Long-Horizon Memory</a> &mdash; closes the markov phasic brain series.</em> <em>Next: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the universal organs governed by PLUGIN-LOCK.</em></p>
 
                     </div>
 
@@ -192,7 +192,7 @@
                 <aside class="sidebar">
                     <div class="sidebar-title">Latest Articles</div>
                     <div>
-                        <a href="../06_10-plan-state-machine.html" class="article-card-link">
+                        <a href="../b6/06_10-plan-state-machine.html" class="article-card-link">
                             <div class="article-card">
                                 <div class="article-card-tags">
                                     <span class="tag tag-sm tag-audience" title="Semi-technical to architect-level — Tier 2 to Tier 3">Power Users &amp; Architects</span>

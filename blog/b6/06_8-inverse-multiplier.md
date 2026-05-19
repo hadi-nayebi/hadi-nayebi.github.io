@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Multiplier]
 status: draft
 version: v0.2.0
 audience: "Tier 2 → Tier 3"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # The Inverse Multiplier
@@ -151,11 +151,11 @@ The deepest payoff of the multiplier is the cognitive failure mode it prevents: 
 
 ## What comes next
 
-Phases give the agent compartmentalized cognition. The CLAUDE.md layer from the [Essay 5 series](b5/05_1-the-two-layer-foundation.html) is the working-memory form they write that cognition into — the surface where each cycle's tokens land before CONDENSE absorbs them into longer-term memory. Together they form a working brain — one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
+Phases give the agent compartmentalized cognition. The CLAUDE.md layer from the [Essay 5 series](../b5/05_1-the-two-layer-foundation.html) is the working-memory form they write that cognition into — the surface where each cycle's tokens land before CONDENSE absorbs them into longer-term memory. Together they form a working brain — one that observes before it plans, plans before it builds, verifies before it consolidates, and consolidates before it forgets.
 
-This is what [Essay 1](01-llms-are-not-the-agents.html) was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.
+This is what [Essay 1](../01-llms-are-not-the-agents.html) was reaching toward when it claimed the agent is the filesystem. The filesystem holds memory. The phases discipline what the agent does with it. The two ideas only fully resolve when you see them together.
 
-Stretch one cycle into many, chained, and you get the long-horizon discipline [Essay 8](b8/08_1-apprentice-to-architect-foundation.html) is about — multi-cycle jobs where the multiplier sentinel, the plan-file contract, and the seven-step waterfall keep the agent honest across days, not just minutes. The mechanisms in this essay are designed to scale up that way without losing their grip.
+Stretch one cycle into many, chained, and you get the long-horizon discipline [Essay 8](../b8/08_1-apprentice-to-architect-foundation.html) is about — multi-cycle jobs where the multiplier sentinel, the plan-file contract, and the seven-step waterfall keep the agent honest across days, not just minutes. The mechanisms in this essay are designed to scale up that way without losing their grip.
 
 But a phase is itself a plugin. So is the orchestrator. So is everything that runs in the always-on layer. The brain's growth — the brain's *capacity* to grow — depends on a standardized way of building, packaging, and evolving plugins.
 

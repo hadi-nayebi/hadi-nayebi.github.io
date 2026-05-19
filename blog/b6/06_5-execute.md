@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, Phases, Execute]
 status: draft
 version: v0.3.0
 audience: "Tier 2"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # EXECUTE — Build, in Scope, in Steps
@@ -76,7 +76,7 @@ EXECUTE is also where subagent dispatch shows up most heavily, and the point sch
 
 Reading project files does not consume budget; only edits and writes outside `.claude/` do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate the implementation to execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change. *[ref: execute-subagent-grants-direct-action-budget | .claude/plugins/phase_execute/scripts/execute.sh:765-795 | grant-direct-action-budget adds +3 budget per execute-subagent dispatch; consume-direct-action-budget deducts 1 per project edit and dies on insufficient — structural enforcement of 80/20 delegation bias.]*
 
-The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is kept low (currently held at two-in-flight in the prototype); the cap was set after a cycle in which a parallel dispatch pushed the context window past a safe tier and triggered cascading compaction. *[ref: dispatch-cap-as-plan-risk-recommendation | .claude/plugins/phase_plan/agents/plan-risk-assessor.md:20+70 | The two-in-flight ceiling is an R-context-spike standard mitigation surfaced by plan-risk-assessor when context exceeds 180k, not a code-enforced cap; the agent honors it as judgment, with brain_guard's tier-2 context-gate as the structural backstop that fires when the ceiling is ignored.]* The deeper discipline of subagent dispatch — and the per-plugin agent rosters that make it tunable — is the subject of [Essay 7](b7/07_1-plugin-kit-foundation.html).
+The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is kept low (currently held at two-in-flight in the prototype); the cap was set after a cycle in which a parallel dispatch pushed the context window past a safe tier and triggered cascading compaction. *[ref: dispatch-cap-as-plan-risk-recommendation | .claude/plugins/phase_plan/agents/plan-risk-assessor.md:20+70 | The two-in-flight ceiling is an R-context-spike standard mitigation surfaced by plan-risk-assessor when context exceeds 180k, not a code-enforced cap; the agent honors it as judgment, with brain_guard's tier-2 context-gate as the structural backstop that fires when the ceiling is ignored.]* The deeper discipline of subagent dispatch — and the per-plugin agent rosters that make it tunable — is the subject of [Essay 7](../b7/07_1-plugin-kit-foundation.html).
 
 ## The comment-density drift gate
 

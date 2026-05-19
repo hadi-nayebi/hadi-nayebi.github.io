@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, OPEVC, CONDENSE]
 status: draft
 version: v0.2.0
 audience: "Tier 2 → Tier 3"
-og_image: "assets/images/blog/b6/markov-phasic-brain-b6.png"
+og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # CONDENSE — The Cognitive Organ
@@ -55,7 +55,7 @@ That routing is structured as a **strict ordered waterfall** (currently seven st
 
 ## The waterfall, step by step
 
-1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the cycle's phase markers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) from [Essay 5.7](b5/05_7-claude-md-hierarchy.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step — a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. *[ref: condense-step-1-durability-tag-bias | .claude/plugins/phase_condense/docs/principles.md Principle 9 "Five Markers as Cross-Phase Signal System" subsection | Principle 9 names the five-marker system — `[PENDING-JOB]`, `[VOICE-UPDATE]`, `[AGENT-UPDATE]`, `[KNOWLEDGE]`, and the routing-bias tags `[DURABLE]` / `[EPHEMERAL]` (default: infer). Step 1's footer-to-body absorption respects the durability tags as routing hints — the upstream phases pre-bias the absorption rather than relying on Step 1's judgment alone.]*
+1. **Same-file footer-to-body absorption.** Every CLAUDE.md the cycle touched has a footer with the cycle's phase markers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) from [Essay 5.7](../b5/05_7-claude-md-hierarchy.html). The phases write into those footers as the work happens. CONDENSE's first step is main-session work, not subagent-delegated: the agent walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can mark their own contributions to bias this step — a paragraph tagged durable is absorbed into the body by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call. *[ref: condense-step-1-durability-tag-bias | .claude/plugins/phase_condense/docs/principles.md Principle 9 "Five Markers as Cross-Phase Signal System" subsection | Principle 9 names the five-marker system — `[PENDING-JOB]`, `[VOICE-UPDATE]`, `[AGENT-UPDATE]`, `[KNOWLEDGE]`, and the routing-bias tags `[DURABLE]` / `[EPHEMERAL]` (default: infer). Step 1's footer-to-body absorption respects the durability tags as routing hints — the upstream phases pre-bias the absorption rather than relying on Step 1's judgment alone.]*
 
    The footers are scratch; the body is durable. The deflation can be sharp: a single plugin's working CLAUDE.md routinely shrinks from a sprawling footer down to a tight body section in this step alone, the bulk of the cycle's noise gone in one absorption pass. *[ref: condense-step-1-footer-to-body-graduated | .claude/plugins/phase_condense/docs/decisions.md "D20: Step 1 Enforcement — Graduated (Voice → Measure → Harden)" section | Decision D20: CONDENSE Step 1 (footer-to-body absorption) enforced via graduated discipline — entry voice teaches "absorb footer-to-body first," a body-vs-footer tracker metric measures success, hard gate added only if data warrants.]*
 
