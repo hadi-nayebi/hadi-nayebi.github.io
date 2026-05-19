@@ -245,7 +245,7 @@ This prevents accidentally re-rendering during iteration. Total spend per essay 
 
 ## Biological Terminology Convention
 
-When borrowing biological terms, **always prefix with "cognitive" or "digital"**:
+When borrowing biological terms, **prefix with "cognitive" or "digital" at first use**:
 - Agent components → **cognitive organs** (not just "organs")
 - Files/instructions → **cognitive tissue** (not just "tissue")
 - Memory files → **cognitive memory tissue**
@@ -254,6 +254,8 @@ When borrowing biological terms, **always prefix with "cognitive" or "digital"**
 - Evolution frame: brainstem → cortex → **digital cortex**
 
 This framing helps readers see agents as **extensions of their brain**, not separate tools.
+
+**First-use rule, sparse-reuse principle.** Prefix the biological term explicitly at its first establishing use in a series (e.g., B7.1 anchors "cognitive organs" once). Subsequent shorthand uses within the same series may drop the prefix when the architectural meaning is unambiguous and the metaphor is already established — same way "agent" reads as "AI agent" after the opening paragraph. Do NOT mass-prefix every occurrence; it turns prose into word salad. Use the prefix sparsely where it genuinely helps the reader anchor the metaphor; let architectural shorthand carry the rest. The website-standards auditor's W9 dimension classifies bare-organ shorthand within an established frame as JUDGMENT (acceptable shorthand), not FAIL — reserve FAIL for novel biological terms introduced without a prefix (e.g., "metabolism organ" used without "cognitive metabolism organ" first).
 
 ## Glossary Linking (every post)
 
