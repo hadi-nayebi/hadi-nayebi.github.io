@@ -46,21 +46,28 @@ Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay —
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/plugin-cell-anatomy-b7-1.png
+  NEEDS-REGEN (2026-05-19): prior version had overlap between arrows/labels and the cell-wall outline making text hard to read. Updated layout guidance below enforces clear spacing + center-of-shape label positioning. Old PNG deleted; awaiting regen.
   Concept: Chalk-on-blackboard cross-section — a single plugin "cell" with its internal cognitive organs visible inside the cell wall, the PLUGIN-LOCK ceremony drawn as a membrane gate on the wall, and the three property labels (reads / writes / depends on) listed beside the cell as the universal anatomy frame.
   Style: Chalk-on-blackboard. Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for the organ shapes (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for ALL labels, arrows, the cell-wall outline, and the membrane-gate icon; faint chalk dust at the edges; chalk sticks resting along the bottom.
   IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other file names, organ names, or property descriptors. Treat the angle-bracket placeholder as literal text.
-  Layout: One large hand-drawn chalk oval takes up the center-left of the board — the "cell wall". Above the oval, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/". Inside the oval, seven small chalk shapes arranged loosely (no grid), each labeled IN WHITE CHALK with its exact name:
-    Shape 1 (cyan fill): "CLAUDE.md"
-    Shape 2 (green fill): "hooks/"
-    Shape 3 (orange fill): "scripts/"
-    Shape 4 (pink fill): "data.json"
-    Shape 5 (magenta fill): "docs/"
-    Shape 6 (cyan fill darker): "agents/"
-    Shape 7 (green fill darker): "tests/"
-  On the cell wall itself (drawn as part of the oval outline at the top), draw a small white-chalk gate icon labeled IN WHITE CHALK exactly "[PLUGIN-LOCK]".
-  To the right of the cell, draw a vertical white-chalk list with header "every organ has:" and three lines IN WHITE CHALK stacked below it:
+  READABILITY REQUIREMENTS (CRITICAL — prior version failed here):
+    - Every label MUST appear AT THE CENTER of its shape, NOT on the boundary line. Labels never overlap arrows, the cell-wall outline, or other labels.
+    - Each interior shape must have at least ONE shape-width of empty space between it and any adjacent shape. If 7 shapes would crowd, make the cell oval larger.
+    - The cell wall (oval outline) is a single clean chalk stroke; no organ shape touches or crosses it.
+    - The PLUGIN-LOCK gate icon sits ON the oval boundary at the top, drawn with a clear gap between its label "[PLUGIN-LOCK]" and any interior shape label. The gate label sits ABOVE the gate icon, outside the oval.
+    - The vertical list to the right of the cell has at least three shape-widths of empty space between the rightmost interior shape and the list's left edge.
+  Layout: One large hand-drawn chalk oval takes up the center-left of the board — the "cell wall". Above the oval, a white-chalk header reads exactly ".claude/plugins/<plugin_name>/" (header positioned with clear vertical gap from the oval). Inside the oval, seven small chalk shapes arranged with even spacing (see READABILITY REQUIREMENTS above for spacing rules), each labeled IN WHITE CHALK AT ITS CENTER with its exact name:
+    Shape 1 (cyan fill, top-left position inside oval): "CLAUDE.md"
+    Shape 2 (green fill, top-center): "hooks/"
+    Shape 3 (orange fill, top-right): "scripts/"
+    Shape 4 (pink fill, middle-left): "data.json"
+    Shape 5 (magenta fill, middle-right): "docs/"
+    Shape 6 (cyan fill darker, bottom-left): "agents/"
+    Shape 7 (green fill darker, bottom-right): "tests/"
+  On the cell wall itself (drawn as part of the oval outline at the top), draw a small white-chalk gate icon labeled IN WHITE CHALK exactly "[PLUGIN-LOCK]" (label above the icon, outside the oval, with clear gap).
+  To the right of the cell (with at least three shape-widths of horizontal gap), draw a vertical white-chalk list with header "every organ has:" and three lines IN WHITE CHALK stacked below it (vertical line spacing equal to one label-height):
     Line 1: "who reads it"
     Line 2: "who writes it"
     Line 3: "what it depends on"
@@ -69,7 +76,18 @@ Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay —
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ."
 -->
 
-Target asset: assets/images/blog/b7/plugin-cell-anatomy-b7-1.png
+<!-- IMAGE PLACEHOLDER:
+  ASSET: images/plugin-kit-b7-banner.png
+  Concept: Chalk-on-blackboard SERIES BANNER — multiple plugin "cells" arranged as a cellular composition, evoking the plugin kit as a community of cells working together. This is the og:image source for the B7 series (Essays 7.2-7.9 use this as their social card; opener 7.1 uses its own anatomy image above). Lives on disk at blog/b7/images/plugin-kit-b7-banner.png.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk fills for the cells (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels and the title; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other plugin names, file names, or descriptors. Cells are intentionally UNLABELED (the kit's compositional nature, not specific plugins).
+  READABILITY REQUIREMENTS: the title and subtitle sit in a clear horizontal band ABOVE the cluster of cells (top third of the board) with a clear vertical gap between the title text and the topmost cell. Caption sits at the bottom edge with clear gap from the lowest cell.
+  Layout: A horizontal cluster of five to seven hand-drawn chalk ovals (the "cells") in the middle band of the board, each a different size and tilted slightly. Inside each oval, two or three small interior chalk dots suggest organs (no labels on the dots). The cells are positioned with some overlap and some gaps — not in a grid — to evoke organic composition. Above the cluster, a centered white-chalk title reads exactly: "The Plugin Kit". Just below the title (still above the cells, with clear gap), a single white-chalk subtitle reads exactly: "always-on layer · phasic layer · self-protecting".
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "The Plugin Kit", "always-on layer · phasic layer · self-protecting", plus the caption below. No other words, file names, plugin names, or descriptors may appear (cells are unlabeled).
+  Caption (bottom of image, white chalk, hand-drawn): "Banner 7. The plugin kit — cells composing the brain. Each owns one concern. Each protects itself."
+-->
 
 ---
 
