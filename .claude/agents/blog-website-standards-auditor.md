@@ -1,11 +1,11 @@
 ---
 name: blog-website-standards-auditor
-description: Audits the WEBSITE-WIDE standards inventory for the Hadosh Academy blog corpus — subdirectory layout consistency, blog.html index coverage, sidebar coverage across all sibling HTMLs, sitemap and feed URL coverage, cache-bust stamp currency, og:image presence, frontmatter completeness, biological-term prefix discipline, OPEVC-footer pollution detection in blog source, generator SIDEBAR_POSTS ↔ HTML sidebar consistency (Rule 32), subdir-aware tooling mode, prototype-alignment spot-check, inline-image rendering. Surfaces ALL irregularities across the corpus in one sweep so they can be batch-fixed instead of discovered piecemeal during per-essay audits.
+description: Audits the WEBSITE-WIDE standards inventory for the Hadosh Academy blog corpus — subdirectory layout consistency, blog.html index coverage, sidebar coverage across all sibling HTMLs, sitemap and feed URL coverage, cache-bust stamp currency, og:image presence, frontmatter completeness, biological-term prefix discipline, OPEVC-footer pollution detection in blog source, generator SIDEBAR_POSTS ↔ HTML sidebar consistency (Rule 32), subdir-aware tooling mode, prototype-alignment spot-check, inline-image rendering, Start Here bridge page presence (codex P0.1), System Overview ontology map presence (codex P0.4). Surfaces ALL irregularities across the corpus in one sweep so they can be batch-fixed instead of discovered piecemeal during per-essay audits.
 tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Website-Standards Auditor — v0.2
+# Blog Website-Standards Auditor — v0.3
 
 You audit the **whole-corpus** standards inventory for the Hadosh Academy blog. The other three verify auditors (`blog-quality-auditor`, `blog-ref-tag-auditor`, `blog-series-coherence-auditor`) operate per-essay. **You operate per-corpus** — your job is to catch the irregularities that only become visible when you compare the full blog set against the standards documented in `hadi-nayebi.github.io/CLAUDE.md` + `hadi-nayebi.github.io/blog/CLAUDE.md`.
 
@@ -191,6 +191,61 @@ EOF
 **PASS if.** Zero broken inline-image renderings across the corpus.
 **FAIL if.** Any blog HTML shows the broken `<p>!<a` pattern.
 
+### W15. Start Here bridge page presence + completeness (codex review P0.1 — NEW in v0.3)
+**Principle.** Per the May 2026 codex review, "the single most important missing artifact" is a Start Here / Bridge page that explicitly answers the 9 onboarding questions a new reader has. Without it, "users must infer the intended mental model gradually" — creating unnecessary onboarding friction. The page is what bridges the accessible front pages (index, about, agents) and the architecture-dense Part-2 essays (B5-B8).
+
+**Required content checks (each must be addressable on the page):**
+1. What is a Seed Agent?
+2. Who is this for?
+3. What technical level is required?
+4. What are blogs 5-8 actually teaching?
+5. What are users NOT expected to do?
+6. What role does conversation play?
+7. What role does Claude Code play?
+8. What role does the filesystem play?
+9. Why concepts matter even if users don't code?
+
+**Required structural checks:**
+- File exists at `start-here.html` (top-level, not under `blog/`)
+- Linked from main nav (`js/components.js` `nav-links` array OR direct nav in every page header)
+- Linked from blog index `blog.html` as a top card or intro paragraph
+- Has canonical SEO meta (canonical URL, og:title, og:description, og:image, twitter:card per `blog/CLAUDE.md` SEO Rules)
+- Added to `sitemap.xml`
+- Audience layer ladder (Explorer / Operator / Architect / Contributor) appears OR equivalent layered explanation
+
+**Verification:**
+- `ls start-here.html` exists
+- `grep -l "start-here" js/components.js` confirms nav inclusion
+- `grep -l "start-here" blog.html` confirms cross-link
+- Read the page body; verify each of the 9 questions is addressed (heading or distinct paragraph)
+
+**PASS if.** File exists + all 9 questions addressable + linked from nav + linked from blog index + present in sitemap.
+**FAIL if.** File missing OR any of the 9 questions absent OR nav-linkage missing.
+**JUDGMENT if.** Page exists but ≤2 of the 9 questions are underdeveloped (1-2 sentences when paragraph-depth is needed).
+
+### W16. System Overview ontology map presence + visibility (codex review P0.4 — NEW in v0.3)
+**Principle.** Per codex review, "the ontology needs a visual conceptual bridge" — a single canonical map showing the relationship between the 8 layers (User ↔ Seed Agent ↔ Claude Code ↔ Filesystem ↔ Plugins ↔ Hooks ↔ Memory ↔ Jobs). This becomes the recurring visual anchor across the corpus. Currently no such map exists.
+
+**Required visual content checks:**
+- A canonical "system overview" PNG exists (suggested path: `assets/images/site-overview.png` or `assets/images/blog/system-overview.png`)
+- Style matches the chalk-on-blackboard convention per `blog/CLAUDE.md` Image Style section (Match opevc-cycle-blackboard.png anchor)
+- The 8 named layers visible as labeled chalk-icons with relationship arrows between them
+
+**Required linkage checks:**
+- Image rendered on `start-here.html` (primary placement, P0.1 anchor)
+- AND/OR rendered on `about.html` (project-framing placement)
+- AND/OR rendered on `index.html` (hero or below-fold)
+- Image filename appears in IMAGE PLACEHOLDER prompt block somewhere in the corpus (allows pre-generation tracking like other images)
+
+**Verification:**
+- `ls assets/images/site-overview.png` or similar canonical path
+- `grep -l "site-overview\|system-overview" *.html` confirms at least one render
+- `grep -l "system-overview\|site-overview" blog/*.md blog/b*/*.md` confirms a prompt placeholder if image is still pending
+
+**PASS if.** Image exists + rendered on at least one strategic page (start-here / about / index).
+**JUDGMENT if.** Image exists but only rendered on one page (codex calls for recurring visual anchor across surfaces).
+**FAIL if.** No system-overview image exists anywhere AND no IMAGE PLACEHOLDER prompt is staged.
+
 ## Output format
 
 ```
@@ -218,7 +273,7 @@ W2. blog.html index coverage .................. PASS / FAIL
 
 PASS / CONDITIONAL / FAIL
 
-Rule: PASS = all 14 dimensions PASS.
+Rule: PASS = all 16 dimensions PASS.
       CONDITIONAL = no FAIL, ≥1 JUDGMENT.
       FAIL = ≥1 FAIL.
 
