@@ -30,7 +30,7 @@ A scientist running a long-form research-protocol seed would feel this immediate
 
 The size caps force the brain to do what your own brain does: forget the right things. Or more precisely, *move* the right things.
 
-Root-brain overflow distills into focused skill files under `.claude/skills/` in the brain root, with a one-line pointer left behind in the brain. Plugin CLAUDE.md overflow routes into that plugin's slice of the knowledge directory, the body kept lean enough to read in one sitting. Working CLAUDE.md overflow gets handled at cycle close by the deflation gate from [Essay 6.7](../06_7-condense.html), walking the file's footer-to-body absorption and refusing to advance until enough has compressed. Memory-file overflow splits into multiple narrowly-scoped entries. Findings that don't belong in any CLAUDE.md belong in plugin behavior — hardened into a hook — or in a session archive as a last resort. *[ref: skills-overflow-prototype-vs-public | root CLAUDE.md "Size Limits" section + ~/.claude/projects/<encoded>/skills/ | The Size Limits section names Skills as a layer with a small word-count cap. In the prototype today, skill files live at the Layer-2 architect's user-side memory path; the public seed-agent migration moves them into the seed's brain at `.claude/skills/`. Same overflow pattern, two homes during the migration phase.]*
+Root-brain overflow distills into focused skill files under `.claude/skills/` in the brain root, with a one-line pointer left behind in the brain. Plugin CLAUDE.md overflow routes into that plugin's slice of the knowledge directory, the body kept lean enough to read in one sitting. Working CLAUDE.md overflow gets handled at cycle close by the deflation gate from [Essay 6.7](../06_7-condense.html), walking the file's footer-to-body absorption and refusing to advance until enough has compressed. Memory-file overflow splits into multiple narrowly-scoped entries. Findings that don't belong in any CLAUDE.md belong in plugin behavior — hardened into a hook — or in a session archive as a last resort. *[ref: skill-files-canonical-overflow-target | root CLAUDE.md "Size Limits" section + `.claude/skills/` | The "Size Limits" section names Skills as a managed layer with a 500-word cap. In the prototype, skill files live at `.claude/skills/<name>/SKILL.md` — the per-skill subdirectory convention Claude Code expects, one `SKILL.md` per skill. The current prototype carries four skills under `.claude/skills/` (blog-update, plugin-evolve, self-compact, spec-code-align); the `description:` field of each skill loads inline so the agent knows when to invoke, and the body loads on demand — so the brain holds only the pointer surface.]*
 
 ## The Equilibrium
 
@@ -45,7 +45,7 @@ The limit on this equilibrium is, again, friction: the operator who edits the br
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard graph — two curves over time. A flat ceiling line for the brain's size; a rising monotonic curve for the knowledge directory.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk axes
-  and curves; pastel chalk for the curves (cyan = knowledge growing, magenta = brain at ceiling, green = plugin evolution stepwise);
+  and curves; pastel chalk (cyan, green, orange, pink, magenta) — cyan for the knowledge-growing curve, magenta for the brain-at-ceiling curve, green for the stepwise plugin-evolution curve; orange and pink reserved for any additional curves the artist may add;
   white chalk for ALL axis labels, ceiling lines, and word-count numbers; faint chalk dust at the edges; chalk sticks along the bottom.
   IMPORTANT: Use only the literal numbers and labels listed below. Do not invent or substitute any other word-count caps, axis labels, or curve descriptors.
   Layout: A hand-drawn chalk coordinate axes. Horizontal X-axis labeled IN WHITE CHALK exactly "cycles", with a small "→" arrow at its right end. Vertical Y-axis labeled IN WHITE CHALK exactly "words". Three curves drawn over the axes, each labeled in white chalk at the curve's right end:
@@ -55,7 +55,7 @@ The limit on this equilibrium is, again, friction: the operator who edits the br
       Label at right end: "plugin evolution.md"
     Curve C (magenta, climbs steeply at first, then flattens into a horizontal line that runs along a dashed ceiling):
       Label at right end: "root brain"
-  Four dashed horizontal white-chalk ceiling lines drawn across the chart at the levels Curve C flattens and Curve B levels off, each labeled at the right with its EXACT word-count cap:
+  Five dashed horizontal white-chalk ceiling lines drawn across the chart at the levels Curve C flattens and Curve B levels off, each labeled at the right with its EXACT word-count cap:
     "3,500" (highest dashed line — root CLAUDE.md cap)
     "2,000" (next — plan + evolution.md cap)
     "800"   (subdir CLAUDE.md cap)
