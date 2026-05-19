@@ -37,7 +37,7 @@ This is what changes when the architecture itself is teachable. The agent-develo
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard side-by-side comparison — left half shows the traditional three-role triangle (agent, developer, user); right half shows the collapsed two-role line (agent, you) with the shared .claude/ substrate sitting between them.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines
-  (triangle and line); pastel chalk fills for the three triangle nodes and the two collapsed nodes (cyan = agent node on both sides, green = developer node on left, orange = user node on left, magenta = you node on right, pink = .claude/ substrate box in the middle of the right half — drawn from the cycle image palette);
+  (triangle and line); pastel chalk (cyan, green, orange, pink, magenta) fills for the three triangle nodes and the two collapsed nodes (cyan = agent node on both sides, green = developer node on left, orange = user node on left, magenta = you node on right, pink = .claude/ substrate box in the middle of the right half — drawn from the cycle image palette);
   white chalk for ALL node labels, arrows, and headers; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
   IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other role names, file names, or descriptors.
   Layout: A vertical white-chalk divider line down the middle of the board splits it into two halves. Above each half, a one-line header IN WHITE CHALK:
