@@ -45,6 +45,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 **What they depend on.** A small set of sibling organs: `scripts/` (when a hook needs to invoke the plugin's own CLI for state mutation), `hooks/voice.xml` (for every message the hook emits to the agent's context), `data.json` (for state, but only read-mediated through the plugin's own scripts — never directly), and a shared helper at `.claude/plugins/lib/voice-helper/` (the `get_voice` substitution function). *[ref: plugin-structure-convention-organ-tree | .claude/plugins/CLAUDE.md | The Plugin Structure Convention section lists each organ with its role: `hooks/` "(registered in settings.local.json)", `scripts/` "Internal scripts called by hooks", `data.json` "Runtime state (protected from direct edits)". Voice-helper lives at `.claude/plugins/lib/voice-helper/voice-helper.sh` (lib/CLAUDE.md L15: `get_voice <id>` reads voice from XML, used by "Any hook/script with voice.xml").]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/skeleton-and-wiring-b7-2.png
   Concept: Chalk-on-blackboard sketch — a plugin "cell" showing the universal skeleton inside the cell wall, conditional cognitive organs in a secondary tier, and the brain-root wiring file labeled outside the cell.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for organ fills (cyan, green, orange, pink, magenta — same palette as the cycle image, with darker variants used as a second tier);

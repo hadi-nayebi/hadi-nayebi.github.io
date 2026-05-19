@@ -57,6 +57,7 @@ Roughly several thousand tests across all currently active plugins (eleven in th
 The limit on this arc, like every limit in this essay series, is friction not enforcement: an operator can stay an apprentice forever by ignoring every promotion signal, or skip to architect by hardening hooks without measurement first. The seed makes the patient path easier than the impatient one; it does not refuse the impatient one.
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/operator-staircase-b8-6.png
   Concept: Chalk-on-blackboard staircase — three ascending stages showing the operator's relationship with the seed, with visible markers per stage.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk steps
   and labels; pastel chalk fills for each stage (cyan = apprentice, green = journeyman, magenta = architect — drawn from the cycle image palette);

@@ -35,6 +35,7 @@ A few smaller organs round out the kit. They carry less load but are still load-
 **`LICENSE` + `README.md`** — open-source migration-readiness signals. Plugins carrying both are ready for the public seed agent; plugins not yet carrying them are still maturing in the prototype. *[ref: license-readme-migration-ready-subset | .claude/plugins/*/LICENSE + .claude/plugins/*/README.md | `find .claude/plugins -maxdepth 2 -name LICENSE` returns 4 hits (brain_guard, interaction_summary, plugin_integrity, question_discipline) — and the corresponding README.md find returns the SAME 4 plugins. The phase plugins + phasic_system + job_core do NOT yet carry LICENSE or README.md because they are still maturing in the prototype; the 4 that do are migration-ready candidates for the public seed agent.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/smaller-organs-b7-7.png
   Concept: Chalk-on-blackboard sketch — a single plugin "cell" at the center with the smaller cognitive organs (config, tests, template, e2e, LICENSE, README) drawn as small tiles around the cell wall; the brain-root wiring file labeled OUTSIDE the cell entirely, with hook-event arrows pointing into the cell wall from outside.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for the organ tiles and the brain-root wiring box (cyan, green, orange, pink, magenta — same palette as the cycle image);

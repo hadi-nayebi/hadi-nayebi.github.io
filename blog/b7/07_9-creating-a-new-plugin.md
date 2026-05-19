@@ -55,6 +55,7 @@ This is the part most plugin tutorials skip. When the seed authors a new plugin,
 **Tell your seed: every new plugin gets a knowledge directory by birth, not as an afterthought.** Without it, the plugin migrates to the public repo as code without context; with it, the public seed agent can teach new operators how to think about that plugin's concern.
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/plugin-birth-b7-9.png
   Concept: Chalk-on-blackboard linear flow — the plugin birth sequence inside the EXECUTE phase of a single-cycle DEEP job.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
   and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);

@@ -85,6 +85,7 @@ The backward edges are situational rather than a fixed menu — VERIFY rolls bac
 Any phase can be re-entered, but only by rolling back along defined edges. This is the Markov property the title leans on: the cycle's next move is a function of its present state, not of the path that got it there. *[ref: phasic-state-minimal-no-hidden-history | .claude/plugins/phasic_system/docs/README.md Data Model section | phasic_system's data model is intentionally minimal: jobs carry only id, current_phase, cycle, and a suppress flag — phase history is NOT stored; git commits with phase prefixes ARE the audit trail.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/verify-backward-edges-b6-6.png
   Concept: Chalk-on-blackboard sketch — VERIFY's three backward edges and one forward edge.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the phase-node circles;

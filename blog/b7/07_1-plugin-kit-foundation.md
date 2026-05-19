@@ -45,6 +45,7 @@ Essay 7 covers the plugin kit across the sub-essays listed below:
 Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay — the parts every plugin carries. Essay 7.8 opens the ceremony that protects edits to those organs once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/plugin-cell-anatomy-b7-1.png
   Concept: Chalk-on-blackboard cross-section — a single plugin "cell" with its internal cognitive organs visible inside the cell wall, the PLUGIN-LOCK ceremony drawn as a membrane gate on the wall, and the three property labels (reads / writes / depends on) listed beside the cell as the universal anatomy frame.
   Style: Chalk-on-blackboard. Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for the organ shapes (cyan, green, orange, pink, magenta — same palette as the cycle image);

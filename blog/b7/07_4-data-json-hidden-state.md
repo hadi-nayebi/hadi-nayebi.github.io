@@ -35,6 +35,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 **The boundary is structural, not OS-level.** An operator who edits `data.json` directly bypasses the protocol entirely. The discipline holds because the seed agent and historian both refuse to write outside their scripts — a publishable-interface contract, not a kernel lock.
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/data-json-flow-b7-4.png
   Concept: Chalk-on-blackboard flow diagram — concurrent hook fires queue at the lockfile, the script gateway serializes a single mutation through a jq transform into a temp file, validates, then atomically replaces the live data.json. The reader never sees a partial state.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for the step badges (cyan, green, orange, pink, magenta — same palette as the cycle image);

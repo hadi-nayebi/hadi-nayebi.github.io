@@ -37,6 +37,7 @@ The phasic layer does the same thing one fractal level down — inside a single 
 Every phase has a fixed point threshold the agent must cross before it is allowed to commit and advance. Cross the threshold and the commit script accepts the move forward. Try to commit before crossing it and the script refuses, returning the agent with a message about what kind of work is still missing. Try to call `Stop` mid-phase and the same refusal fires. The threshold is friction-by-design — a refusal layer that makes the seed agent slow down and do the work the phase exists to do, instead of rushing through phases to get to the next move. *[ref: phase-transition-points-env-tunable-threshold | .claude/plugins/phase_observe/scripts/observe-commit.sh L173-L187 force-mode check | Each phase's commit script enforces `${PHASE_TRANSITION_POINTS:-100}` points + `${MIN_CLAUDE_MD_UPDATES:-1}` CLAUDE.md update before allowing forward advance. The env-var defaults to 100; under-threshold force-commit attempts exit with a coaching voice explaining what kind of work is still missing. The same gate also gives the stop-blocker its refusal signal.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/inverse-multiplier-b6-8.png
   Concept: Chalk-on-blackboard dial — the multiplier choice.
   Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn horizontal chalk line for the dial
   with six chalk tick marks; pastel chalk labels (cyan, green, orange, pink, magenta — same palette as the cycle image);

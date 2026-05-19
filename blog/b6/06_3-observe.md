@@ -33,6 +33,7 @@ The only thing the agent is allowed to write in OBSERVE is CLAUDE.md content, an
 OBSERVE is also where the most distinctive seed-agent mechanism lives — the **multiplier sentinel**, a per-phase scalar that starts at zero and locks every tool until the agent sets a real value in 0.5–3.0. Once set, the value cannot be changed for that phase entry. The same pattern applies to every other phase. We come back to what that *means* — and why a smaller number declares a larger phase — at the close of this essay series. *[ref: multiplier-sentinel-locks-all-tools | .claude/plugins/phase_observe/hooks/observe-guard.sh:185-202 | Sentinel-lock gate: every tool except the observe.sh set-multiplier Bash invocation is blocked until the agent picks a value in 0.5-3.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/observe-three-gates-b6-3.png
   Concept: Chalk-on-blackboard sketch — OBSERVE's three internal locks that shape the phase from the inside.
   Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the gate boxes;

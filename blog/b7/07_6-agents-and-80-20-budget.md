@@ -31,6 +31,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 **What they depend on.** The plugin's own `scripts/` (for tools the subagent calls). The shared `.claude/plugins/lib/` if the subagent uses common helpers (e.g., `voice-helper`). The agents in this directory are NOT cross-plugin — each subagent is scoped to its owning plugin's surface. *[ref: subagent-per-plugin-scoping-evidenced | .claude/plugins/plugin_integrity/agents/historian-brain-guard.md (Objective + M2 sections) + .claude/plugins/lib/ | A representative historian (historian-brain-guard) declares "You are the architectural historian for the `brain_guard` plugin" (Objective section) and scopes its scan to `git log -p -- .claude/plugins/brain_guard/` (M2 section) — strict per-plugin surface. Tools in frontmatter (Read, Grep, Bash, Write, Edit, MultiEdit) call the plugin's own `scripts/`. The shared `.claude/plugins/lib/` (e.g., voice-helper.sh) is the common dependency surface; no per-plugin lib/ exists in the prototype.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/agents-80-20-b7-6.png
   Concept: Chalk-on-blackboard hub-and-spoke — small main-session circle at the center orchestrating; larger plugin-scoped subagent pools fanning out around it.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk circles
   and arrows; pastel chalk for the subagent pools (cyan, green, orange, pink, magenta — same palette as the cycle image);

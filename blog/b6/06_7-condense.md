@@ -33,6 +33,7 @@ The other phases produce work *on the project*. CONDENSE produces work *on the b
 That routing is structured as a **strict ordered waterfall** (currently seven steps in the prototype; extensible per the Stage-3 Distributed Job Extension pattern). The order matters; each step's output feeds the next. *[ref: condense-7-step-waterfall-strict-ordered | .claude/plugins/phase_condense/docs/principles.md Core Principles section → 8. 7-Step Waterfall as Processing Order subsection | CONDENSE Principle 8: a strict ordered sequence of 7 steps — footer-to-body, cross-file migration, pending jobs, voice updates, agent updates, knowledge routing, session archive fallback. Processing order is deterministic.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/condense-waterfall-b6-7.png
   Concept: Chalk-on-blackboard cascade — the CONDENSE seven-step waterfall.
   Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn chalk tiles and arrow streams;
   pastel chalk for the tile borders (cyan, green, orange, pink, magenta — same palette as the cycle image);

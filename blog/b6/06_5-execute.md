@@ -41,6 +41,7 @@ The altered list is a frozen snapshot of directories, captured from OBSERVE and 
 A second guard inside the same hook protects the phase-section markers — the footer anchors from the previous essay (currently one per OPEVC phase) — so that EXECUTE writes execution notes inside its own footer section but cannot overwrite what the prior phases wrote. The compartmentalization holds even within a single CLAUDE.md. *[ref: execute-guard-section-enforcement-call | .claude/plugins/phase_execute/hooks/execute-guard.sh:856-879 | Inside execute-guard's CLAUDE.md branch, the section-enforcement sub-block dispatches the shared check_section_edit("---Ex---", ...) library call; cross-section edits are rejected with section-enforcement block detail.]*
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/execute-two-fences-b6-5.png
   Concept: Chalk-on-blackboard sketch — EXECUTE's two nested fences. An outer path-scope fence drawn from the altered list, and an inner section-marker fence inside each CLAUDE.md.
   Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the fence borders and the CLAUDE.md tile;

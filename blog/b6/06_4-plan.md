@@ -45,6 +45,7 @@ The plan moves through a small set of states (currently five in the prototype, e
 The full mechanism — including how the `.yaml` injects into every phase entry — is the subject of [Essay 6.10](06_10-plan-state-machine.html).
 
 <!-- IMAGE PLACEHOLDER:
+  ASSET: images/plan-state-machine-b6-4.png
   Concept: Chalk-on-blackboard diagram — the plan-state machine. Five named states plus the implicit `none` start, connected by labeled transitions.
   Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the state circles;
