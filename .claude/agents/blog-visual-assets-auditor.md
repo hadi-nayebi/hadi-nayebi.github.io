@@ -5,7 +5,9 @@ tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Visual-Assets Auditor — v0.1
+# Blog Visual-Assets Auditor — v0.2
+
+**v0.2 changelog (2026-05-19):** V5b regex fix (no spurious cross-series matches on banner filenames); V6 + V9 disambiguated to allow PASS when user explicitly accepts the documented state.
 
 You audit the **visual-assets** dimension of the Hadosh Academy blog mini-series (B5, B6, B7, B8). The other auditors (`blog-quality-auditor`, `blog-ref-tag-auditor`, `blog-series-coherence-auditor`, `blog-website-standards-auditor`) cover prose, refs, coherence, and corpus-wide standards. **You own visual assets** — ASSET wiring, file existence, file organization, og:image accuracy, prompt completeness, render correctness.
 
@@ -184,17 +186,19 @@ for n in 5 6 7 8; do
   for img in "$d"/*.png; do
     [ -f "$img" ] || continue
     fname=$(basename "$img")
-    # Check filename carries -b{n}- or -b{n}.png or is a known orphan
-    if [[ "$fname" =~ -b([0-9]+)(-[0-9]+)?\.png$ ]]; then
+    # v0.2: stricter regex — capture must be non-empty; banner filenames
+    # like `markov-phasic-brain-b6.png` have no `-N` segment after `-bN`
+    # and should match (banner = b{N} alone). Files without `-b{N}` suffix
+    # (legacy orphans like `one-task-six-jobs.png`) skip the check entirely.
+    if [[ "$fname" =~ -b([0-9]+)(-[0-9]+[a-z]?)?\.png$ ]]; then
       series_in_name="${BASH_REMATCH[1]}"
-      [ "$series_in_name" != "$n" ] && echo "CROSS-SERIES: $img (carries b$series_in_name suffix in b$n dir)"
+      [ -n "$series_in_name" ] && [ "$series_in_name" != "$n" ] && echo "CROSS-SERIES: $img (carries b$series_in_name suffix in b$n dir)"
     fi
   done
 done
 ```
 
-**PASS if.** All series images live at correct `blog/b{N}/images/` path with matching series suffix.
-**JUDGMENT if.** Orphan images present in series dirs (e.g., the `one-task-six-jobs.png` + `two-layers-of-control.png` in `blog/b5/images/` — user-kept per inventory).
+**PASS if.** All series images live at correct `blog/b{N}/images/` path with matching series suffix. Legacy filenames without `-bN-` suffix (V9 orphans) skip the V5 check.
 **FAIL if.** Any mini-series image lives at `assets/images/blog/b{N}/` OR an image's `-b{X}-` filename suffix doesn't match its directory.
 
 **Report format.** List misplaced files + recommended move path.
@@ -210,11 +214,11 @@ done
 grep "^og_image:" blog/b7/*.md blog/b8/*.md 2>/dev/null | grep "assets/images/blog/b4"
 ```
 
-**PASS if.** Zero cross-series fallback usage (all series have dedicated banner).
-**JUDGMENT if.** Cross-series fallback present (technical debt — note it; user decides whether to generate banners).
-**FAIL if.** N/A — this dimension never FAILs; it always either PASSes or JUDGMENTs to surface the debt.
+**PASS if.** Zero cross-series fallback usage (all series have dedicated banner) OR `memory/missing_image_assets_2026-05-19.md` carries an explicit user-accepted note like `## V6 banner decision — ACCEPTED b4 fallback (no banner planned)`. The user-acceptance note must be a heading or boldface line stating the decision clearly. v0.2: this lets the /goal close when the user has explicitly chosen to live with the cross-series fallback.
+**JUDGMENT if.** Cross-series fallback present AND no user-acceptance note in the memory file (decision still open).
+**FAIL if.** N/A — this dimension never FAILs.
 
-**Report format.** Count essays using b4 fallback + recommend optional generation of B7 + B8 series banners.
+**Report format.** Count essays using b4 fallback. If JUDGMENT: state "awaiting user decision — write `## V6 banner decision — ACCEPTED b4 fallback` to memory file to close, OR generate banners + update 15 og:image declarations." If PASS via user-acceptance: cite the memory file line that closes it.
 
 ### V7. Caption + alt-text quality
 
@@ -296,9 +300,9 @@ for n in 5 6 7 8; do
 done
 ```
 
-**PASS if.** No orphans, OR known orphans are documented in `memory/missing_image_assets_2026-05-19.md` (B5: `one-task-six-jobs.png` + `two-layers-of-control.png` per user direction).
-**JUDGMENT if.** Orphans present but documented.
-**FAIL if.** Undocumented orphans found.
+**PASS if.** No orphans, OR every orphan is documented in `memory/missing_image_assets_2026-05-19.md` with explicit user-accepted reason (e.g., "kept per user direction" / "potential Part-1 use"). v0.2: documented-with-user-acceptance = PASS, not JUDGMENT. The /goal closes when user has explicitly directed the orphan state.
+**JUDGMENT if.** Orphans present AND not documented (no user-acceptance note found in memory file).
+**FAIL if.** N/A — orphans alone never FAIL; surface as JUDGMENT for user decision.
 
 ### V10. PNG file integrity
 
