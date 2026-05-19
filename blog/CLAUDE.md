@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.12.0
+**Version:** v0.13.0
 
 ## Layout
 
@@ -153,16 +153,23 @@ grep -c "Chalk-on-blackboard" blog/<slug>.md blog/<slug>.html        # must equa
 
 ## OPEVC Markers Forbidden in Blog Source (NON-NEGOTIABLE)
 
-The OPEVC footer anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong **ONLY** in agent CLAUDE.md working-memory files. They MUST NOT appear in blog `.md` source files. The HTML converter happens to strip them from rendered output, but:
+The OPEVC footer anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong **ONLY** in agent CLAUDE.md working-memory files **as section anchors**. They MUST NOT appear in blog `.md` source files as bare-line section anchors. The HTML converter happens to strip them from rendered output, but:
 - They pollute the source — readers seeing the .md (e.g., via GitHub source view) see broken-looking artifacts.
 - The transcript tool reads them as "the OBSERVE/PLAN/EXECUTE/VERIFY footer" via PRONUNCIATION_GUARDS — putting them in every audio file.
 
-**Detection grep (must be 0):**
+**EXCEPTION — fenced code blocks (added 2026-05-19):** Markers INSIDE ``` ``` ``` fenced code blocks are pedagogical content. B5.7 "The CLAUDE.md Hierarchy" teaches readers about the four-footer protocol using a code-block example showing the markers visually. In that context:
+- HTML wraps the block in `<pre><code>` — markers render as preformatted code, NOT as `<hr>` section breaks.
+- The transcript tool strips fenced code blocks entirely (zero audio pollution).
+- The bash detection grep matches them, but the match is benign in fenced-code context.
+
+**Detection grep (raw match — may include benign fenced-code instances):**
 ```bash
-grep -c "^---Ob---$\|^---Pl---$\|^---Ex---$\|^---Ve---$" blog/<slug>.md
+grep -nE "^---(Ob|Pl|Ex|Ve)---$" blog/<slug>.md
 ```
 
-**Origin:** 2026-05-15 — 12 blog drafts (10 B6 sub-essays + B5 monolith + B5.7) had inherited the markers from subagent boilerplate copied from CLAUDE.md templates. User caught it; iter-26 stripped them all. Subagents authoring blog drafts must NOT carry CLAUDE.md footer markers into blog source.
+For any hit, manually verify whether the marker is INSIDE a fenced code block (preserve) or a BARE LINE in body prose (strip). Auditors must make this distinction.
+
+**Origin:** 2026-05-15 — 12 blog drafts (10 B6 sub-essays + B5 monolith + B5.7) had inherited the markers from subagent boilerplate copied from CLAUDE.md templates. User caught it; iter-26 stripped them all. Subagents authoring blog drafts must NOT carry CLAUDE.md footer markers into blog source as section anchors. **2026-05-19** — B5.7 audit-cleanup pass surfaced the fenced-code exception: the essay intentionally uses the markers inside a ``` ``` ``` block to teach the four-footer protocol; that usage is correct and preserved.
 
 ## Inline Image Syntax (NON-NEGOTIABLE)
 
