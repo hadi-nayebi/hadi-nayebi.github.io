@@ -41,22 +41,6 @@ The cell metaphor is load-bearing. A plugin is not a collection of loose files; 
 
 The read / write / depend-on triple is how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). Essay 7 opens the cell organ by organ, naming who reads it / writes it / what it depends on at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch. *[ref: plugin-lock-serializes-edits | .claude/plugins/plugin_integrity/scripts/lock-cmd.sh + .claude/plugins/plugin_integrity/CLAUDE.md "Structure" section + "How to Use" section | PLUGIN-LOCK is the exclusivity primitive — `lock-cmd.sh` admits one writer at a time per plugin by toggling state in `data.json` against the lock-manager hook chain. Declared channels (file paths, hook events, voice.xml block ids) make the read-graph auditable. Undeclared edits are blocked by per-organ guards (plugin-guard, evolution-cap, lock-manager) before they touch disk.]*
 
-## The journey ahead
-
-Essay 7 covers the plugin kit across the sub-essays listed below:
-
-- **Essay 7.1 — Plugin Kit Foundation** *(you are here)* — the cell-as-system frame + this map
-- [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK
-- [Essay 7.3 — The Dual Voice Architecture](07_3-dual-voice-architecture.html) — `hooks/voice.xml` for the LLM + `scripts/voice.xml` for the operator
-- [Essay 7.4 — `data.json` — The Hidden State](07_4-data-json-hidden-state.html) — per-plugin private state, script-mediated
-- [Essay 7.5 — `docs/` and the Historian](07_5-docs-and-historian.html) — `evolution.md` word-capped + the historian ratchet
-- [Essay 7.6 — `agents/` and the 80/20 Dispatch Budget](07_6-agents-and-80-20-budget.html) — per-plugin subagent scoping
-- [Essay 7.7 — Smaller Organs and Brain-Root Wiring](07_7-smaller-organs-and-wiring.html) — `config.conf`, `tests/`, `template/`, `settings.local.json`
-- [Essay 7.8 — The Lock Ceremony](07_8-lock-ceremony.html) — PLUGIN-LOCK + TEST-LOCK + safe-lock + historian ratchet
-- [Essay 7.9 — Building a New Plugin](07_9-creating-a-new-plugin.html) — Tier-3 walkthrough
-
-Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay — the parts every plugin carries. Essay 7.8 opens the ceremony that protects edits to those organs once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
-
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/plugin-cell-anatomy-b7-1.png
   NEEDS-REGEN (2026-05-19): prior version had overlap between arrows/labels and the cell-wall outline making text hard to read. Updated layout guidance below enforces clear spacing + center-of-shape label positioning. Old PNG deleted; awaiting regen.
@@ -88,6 +72,22 @@ Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay —
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "scripts/", "data.json", "docs/", "agents/", "tests/", "[PLUGIN-LOCK]", "every organ has:", "who reads it", "who writes it", "what it depends on", plus the caption below. No other words, file names, folders, or property descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ."
 -->
+
+## The journey ahead
+
+Essay 7 covers the plugin kit across the sub-essays listed below:
+
+- **Essay 7.1 — Plugin Kit Foundation** *(you are here)* — the cell-as-system frame + this map
+- [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK
+- [Essay 7.3 — The Dual Voice Architecture](07_3-dual-voice-architecture.html) — `hooks/voice.xml` for the LLM + `scripts/voice.xml` for the operator
+- [Essay 7.4 — `data.json` — The Hidden State](07_4-data-json-hidden-state.html) — per-plugin private state, script-mediated
+- [Essay 7.5 — `docs/` and the Historian](07_5-docs-and-historian.html) — `evolution.md` word-capped + the historian ratchet
+- [Essay 7.6 — `agents/` and the 80/20 Dispatch Budget](07_6-agents-and-80-20-budget.html) — per-plugin subagent scoping
+- [Essay 7.7 — Smaller Organs and Brain-Root Wiring](07_7-smaller-organs-and-wiring.html) — `config.conf`, `tests/`, `template/`, `settings.local.json`
+- [Essay 7.8 — The Lock Ceremony](07_8-lock-ceremony.html) — PLUGIN-LOCK + TEST-LOCK + safe-lock + historian ratchet
+- [Essay 7.9 — Building a New Plugin](07_9-creating-a-new-plugin.html) — Tier-3 walkthrough
+
+Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay — the parts every plugin carries. Essay 7.8 opens the ceremony that protects edits to those organs once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
 
 ---
 
