@@ -642,7 +642,7 @@ def render_sidebar(active_slug: str, from_subdir: str = "") -> str:
     return "\n".join(out)
 
 
-def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str = "20260513", subdir: str = "") -> str:
+def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str = "20260518", subdir: str = "") -> str:
     """Build full HTML page. subdir is the subdir under blog/ (e.g., 'b5' for blog/b5/X.html);
     empty string means output goes directly to blog/X.html. Computes depth_prefix for
     site-root nav/css/js links, builds canonical URL with subdir segment, and passes
