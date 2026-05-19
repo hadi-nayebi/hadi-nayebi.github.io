@@ -16,7 +16,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ---
 
-[Essay 7.3](07_3-dual-voice-architecture.html) opened the two voice surfaces — one for the LLM, one for the operator — and named Lock 13 as the policy that governs when soft coaching hardens into a deterministic block. This sub-essay opens the cognitive organ that carries the plugin's *state* — and the discipline that keeps it from being corrupted by concurrent reads, partial writes, or cross-plugin reach-arounds.
+[Essay 7.3](07_3-dual-voice-architecture.html) opened the two voice surfaces — one for the LLM, one for the operator — and named Lock 13 as the policy that governs when soft coaching hardens into a deterministic block. This sub-essay opens the organ that carries the plugin's *state* — and the discipline that keeps it from being corrupted by concurrent reads, partial writes, or cross-plugin reach-arounds.
 
 ---
 
@@ -63,7 +63,7 @@ Target asset: assets/images/blog/b7/data-json-atomic-protocol-b7-4.png
 
 ---
 
-State is private. Mutation is serialized. Cross-plugin queries route through the script CLI, never through the raw file. The next sub-essay opens the cognitive organ where the plugin's *narrated knowledge* lives — `docs/`, including the word-capped `evolution.md` and the historian ratchet that auto-injects it before every edit.
+State is private. Mutation is serialized. Cross-plugin queries route through the script CLI, never through the raw file. The next sub-essay opens the organ where the plugin's *narrated knowledge* lives — `docs/`, including the word-capped `evolution.md` and the historian ratchet that auto-injects it before every edit.
 
 ---
 
