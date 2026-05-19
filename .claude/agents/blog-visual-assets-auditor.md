@@ -5,7 +5,9 @@ tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
 
-# Blog Visual-Assets Auditor — v0.3
+# Blog Visual-Assets Auditor — v0.4
+
+**v0.4 changelog (2026-05-19):** V13 NEW — Canonical system-overview ontology diagram presence + corpus-wide linkage (per codex strategic review P0.4: "the ontology needs a visual conceptual bridge" showing User ↔ Seed Agent ↔ Claude Code ↔ Filesystem ↔ Plugins ↔ Hooks ↔ Memory ↔ Jobs). Total dimensions: 13.
 
 **v0.3 changelog (2026-05-19):** V11 NEW — HTML placeholder discoverability (every needed image must have a placeholder visible in at least one rendered HTML, since user reads HTML to find prompts per directive 2026-05-19). V12 NEW — NEEDS-REGEN tracking (auditor scans IMAGE PLACEHOLDER blocks for the `NEEDS-REGEN` tag; flagged images MUST have their on-disk file deleted so HTML reverts to placeholder-pending, surfacing the regen prompt to the user). Total dimensions: 12.
 
@@ -413,6 +415,43 @@ done
 **FAIL if.** Any NEEDS-REGEN tag coexists with the corresponding file still on disk (HTML hides the prompt under the stale image).
 
 **Report format.** List each conflict (NEEDS-REGEN + file-still-exists) + recommended action (delete file via `rm <path>` to expose the placeholder).
+
+### V13. Canonical system-overview ontology diagram (NEW in v0.4 — codex P0.4)
+
+**Principle.** Per the May 2026 codex strategic review, the project's strongest weakness is "the bridge problem" — the ontology of the project (Claude Code, Seed Agent, filesystem, hooks, plugins, memory, jobs, user) is conceptually strong but not visually mapped. Codex calls for "ontology maps, conceptual diagrams, lifecycle diagrams, and role diagrams. Not merely decorative images." A single canonical "System Overview" map showing the 8 layers and their relationships becomes the recurring visual anchor across the corpus.
+
+**Required image content:**
+- Chalk-on-blackboard style per `blog/CLAUDE.md` Image Style section
+- 8 named layers visible as labeled chalk-icons: **User · Seed Agent · Claude Code · Filesystem · Plugins · Hooks · Memory · Jobs**
+- Relationship arrows between layers (User ↔ Seed Agent ↔ Claude Code, Seed Agent ↔ Filesystem, Plugins ↔ Hooks ↔ Memory ↔ Jobs etc.)
+- Suggested canonical filename: `assets/images/site-overview.png` OR `assets/images/blog/system-overview.png` (any consistent location works; auditor checks any `*overview*.png` candidate)
+
+**Required linkage (recurring anchor):**
+- Rendered on `start-here.html` (primary placement per codex P0.1)
+- AND/OR rendered on `about.html` (project framing placement)
+- AND/OR rendered on `index.html` (hero or below-fold)
+- IMAGE PLACEHOLDER prompt for the image should exist somewhere in the corpus (allows pre-generation tracking)
+
+**Verification commands:**
+```bash
+# Check for any candidate canonical map image
+ls assets/images/site-overview.png assets/images/blog/system-overview.png 2>/dev/null
+find assets/images/ -name "*overview*.png" -o -name "*system-map*.png" 2>/dev/null
+
+# Check for rendered placement on strategic pages
+grep -l "site-overview\|system-overview\|system-map" start-here.html about.html index.html 2>/dev/null
+
+# Check for staged prompt placeholder
+grep -l "site-overview\|system-overview\|system-map" *.md blog/*.md blog/b*/*.md 2>/dev/null
+```
+
+**PASS if.** Image file exists on disk AND rendered on ≥1 strategic page (start-here / about / index).
+**JUDGMENT if.** Image exists but only rendered on a single page (codex calls for recurring anchor across surfaces — track for expansion).
+**FAIL if.** No canonical system-overview image AND no IMAGE PLACEHOLDER prompt staged anywhere in the corpus. (User cannot even generate the missing image because no prompt exists yet.)
+
+**Report format.** State: (1) whether canonical image exists + path, (2) which strategic pages reference it, (3) whether a prompt placeholder is staged anywhere, (4) recommended next step (generate image vs add second-page render vs stage prompt).
+
+**Why this isn't covered by V1-V12:** V1-V10 handle ASSET-line wiring inside blog body prose (where placeholders live inside blog/.md files). V13 is the only dimension that audits site-level (non-blog) image presence + cross-page recurrence. The system-overview map is intentionally NOT a per-essay image — it's a corpus-wide anchor.
 
 ## Report Format
 
