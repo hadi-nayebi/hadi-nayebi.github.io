@@ -16,7 +16,7 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-[Essay 6.7](06_7-condense.html) closed the cycle. The cycle's phases (currently five in the prototype) plus the metabolism organ — the seed agent now has the compartmentalized cognition the rest of the series has been building toward. What is left is the one mechanism that sits at the entry of every phase and turns a scalar dial into an act of meta-cognition.
+[Essay 6.7](06_7-condense.html) closed the cycle. The cycle's phases (currently five in the prototype) plus the cognitive metabolism organ — the seed agent now has the compartmentalized cognition the rest of the series has been building toward. What is left is the one mechanism that sits at the entry of every phase and turns a scalar dial into an act of meta-cognition.
 
 This is where the phasic layer earns its keep — and where you, designing your own seed, will spend the most time tuning. The mechanism is small. The discipline it produces is large.
 
