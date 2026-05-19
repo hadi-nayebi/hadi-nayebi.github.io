@@ -889,7 +889,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("input_md", type=Path)
     ap.add_argument("output_html", type=Path)
-    ap.add_argument("--version", default="20260513", help="cache-bust query stamp (default 20260513)")
+    ap.add_argument("--version", default="20260518", help="cache-bust query stamp (default 20260518)")
     args = ap.parse_args(argv)
 
     md_text = args.input_md.read_text()
