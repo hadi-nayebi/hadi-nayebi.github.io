@@ -38,7 +38,7 @@ The phase plugins ([Essay 6](../b6/06_1-phasic-foundation.html)) do it on a larg
   ASSET: images/job-core-b5-4.png
   Concept: Chalk-on-blackboard cross-section — a single focused job drawn as a central chalk box keyed by a timestamp ID, with the cumulative interaction list growing inside it and satellite plugin boxes extending the same ID from outside their own hidden state.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk lines and rectangles;
-  pastel chalk fills (cyan for the central job object, green for the user_interactions list cells, orange for the extending plugin satellites, pink for the shared-key arrows, magenta for the plugin labels);
+  pastel chalk (cyan, green, orange, pink, magenta) — cyan fills the central job object, green the user_interactions list cells, orange the extending plugin satellites, pink the shared-key arrows, magenta the plugin labels;
   white chalk for ALL labels, IDs, arrows, and captions; chalk sticks resting along the bottom edge.
   IMPORTANT: Use only the literal labels listed below. Do not invent additional file names, prefixes, or paths.
   Layout: Center — a large chalk box (cyan fill) labeled IN WHITE CHALK exactly: "job". Above its top edge, a small white-chalk tag with the literal text "id: 1778080980191719121" (the shared key). Inside the central box, a vertical stack of small chalk cells (green fill) labeled top-to-bottom exactly: "prompt 1", "prompt 2", "prompt 3", "...". A white-chalk caption beside the stack reads exactly: "user_interactions".
