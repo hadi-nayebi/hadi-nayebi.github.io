@@ -5,8 +5,64 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Articles on agent engineering, AI architecture, and the future of building cognitive systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 9: The Seed Is Yours</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The series closer. The seed agent is open-source under MIT; you clone it, run it, customize it through conversation, and the triangle of agent-developer-user collapses to agent-user.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 8: A System That Safely Modifies Itself</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_8-safe-self-modification.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_8-safe-self-modification.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The Tier-3 close. The recursive lock ceremony — plugin_integrity guards itself the same way it guards every other plugin — and the rollback substrate that makes self-modification safe.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 7: The Brain Stops Growing in Size</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_7-brain-stops-growing.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_7-brain-stops-growing.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The equilibrium claim — the brain reaches a ceiling while the knowledge layer never does. Growth becomes compression; learning continues, size does not.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 6: The Maturation Arc — Apprentice, Journeyman, Architect</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_6-apprentice-journeyman-architect.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_6-apprentice-journeyman-architect.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The operator's parallel three-stage arc — apprentice, journeyman, architect — and the visible markers of each. The seed matures around you while you mature alongside it.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 5: What's Enforced vs What's Discipline</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_5-enforced-vs-discipline.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_5-enforced-vs-discipline.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The honest accounting. Which seed limits are hard caps, and which are discipline pretending to be hard? CONDENSE discipline is the major soft line that holds the brain at its ceiling.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 4: Soft → Hard Migration</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_4-soft-hard-migration.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_4-soft-hard-migration.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>How a behavioral control travels from coaching voice to hardened hook to fossilized template. The mechanism that produces the small-brain / large-knowledge equilibrium.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 3: What Lives in the Brain After Three Months</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_3-brain-after-three-months.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_3-brain-after-three-months.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>A precise inventory — what the prototype's brain holds today after three months of cycles. Small brain over a large knowledge layer with a narrow memory.</description>
+    </item>
 
     <item>
       <title>From Apprentice to Architect — Pt 2: The Stages of Job Maturation</title>
