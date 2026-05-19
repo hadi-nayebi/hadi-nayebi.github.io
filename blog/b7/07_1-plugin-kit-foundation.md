@@ -16,6 +16,19 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
 
 ---
 
+<!-- IMAGE PLACEHOLDER:
+  ASSET: images/plugin-kit-b7-banner.png
+  Concept: Chalk-on-blackboard SERIES BANNER — multiple plugin "cells" arranged as a cellular composition, evoking the plugin kit as a community of cells working together. This is the og:image source for the B7 series (Essays 7.2-7.9 use this as their social card; opener 7.1 uses its own anatomy image below). Lives on disk at blog/b7/images/plugin-kit-b7-banner.png.
+  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
+  pastel chalk fills for the cells (cyan, green, orange, pink, magenta — same palette as the cycle image);
+  white chalk for ALL labels and the title; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
+  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other plugin names, file names, or descriptors. Cells are intentionally UNLABELED (the kit's compositional nature, not specific plugins).
+  READABILITY REQUIREMENTS: the title and subtitle sit in a clear horizontal band ABOVE the cluster of cells (top third of the board) with a clear vertical gap between the title text and the topmost cell. Caption sits at the bottom edge with clear gap from the lowest cell.
+  Layout: A horizontal cluster of five to seven hand-drawn chalk ovals (the "cells") in the middle band of the board, each a different size and tilted slightly. Inside each oval, two or three small interior chalk dots suggest organs (no labels on the dots). The cells are positioned with some overlap and some gaps — not in a grid — to evoke organic composition. Above the cluster, a centered white-chalk title reads exactly: "The Plugin Kit". Just below the title (still above the cells, with clear gap), a single white-chalk subtitle reads exactly: "always-on layer · phasic layer · self-protecting".
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "The Plugin Kit", "always-on layer · phasic layer · self-protecting", plus the caption below. No other words, file names, plugin names, or descriptors may appear (cells are unlabeled).
+  Caption (bottom of image, white chalk, hand-drawn): "Banner 7. The plugin kit — cells composing the brain. Each owns one concern. Each protects itself."
+-->
+
 A plugin is a cell.
 
 [Essay 5](../b5/05_1-the-two-layer-foundation.html) opened the always-on layer — the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. [Essay 6](../b6/06_1-phasic-foundation.html) opened the phasic layer — the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a **plugin**, sitting in its own directory under `.claude/plugins/`, carrying its own organs. This essay opens that object. *[ref: plugin-directory-anatomy | .claude/plugins/CLAUDE.md "Plugin Structure Convention" section + "Active Plugins" section + .claude/plugins/plugin_integrity/ as a worked example | The canonical convention names six directories per plugin (`CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/`) with the explicit caveat "Not all directories required. Minimal plugin: just CLAUDE.md." Real plugins layer optional organs on top — `plugin_integrity` adds `agents/`, `template/`, `config.conf`, `evolution.md`, and dual `voice.xml` (hooks-side + scripts-side). The kit IS the architectural unit; the convention is a floor, not a ceiling.]*
@@ -74,19 +87,6 @@ Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay —
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "scripts/", "data.json", "docs/", "agents/", "tests/", "[PLUGIN-LOCK]", "every organ has:", "who reads it", "who writes it", "what it depends on", plus the caption below. No other words, file names, folders, or property descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ."
--->
-
-<!-- IMAGE PLACEHOLDER:
-  ASSET: images/plugin-kit-b7-banner.png
-  Concept: Chalk-on-blackboard SERIES BANNER — multiple plugin "cells" arranged as a cellular composition, evoking the plugin kit as a community of cells working together. This is the og:image source for the B7 series (Essays 7.2-7.9 use this as their social card; opener 7.1 uses its own anatomy image above). Lives on disk at blog/b7/images/plugin-kit-b7-banner.png.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
-  pastel chalk fills for the cells (cyan, green, orange, pink, magenta — same palette as the cycle image);
-  white chalk for ALL labels and the title; faint chalk dust at the edges; a couple of chalk sticks resting along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other plugin names, file names, or descriptors. Cells are intentionally UNLABELED (the kit's compositional nature, not specific plugins).
-  READABILITY REQUIREMENTS: the title and subtitle sit in a clear horizontal band ABOVE the cluster of cells (top third of the board) with a clear vertical gap between the title text and the topmost cell. Caption sits at the bottom edge with clear gap from the lowest cell.
-  Layout: A horizontal cluster of five to seven hand-drawn chalk ovals (the "cells") in the middle band of the board, each a different size and tilted slightly. Inside each oval, two or three small interior chalk dots suggest organs (no labels on the dots). The cells are positioned with some overlap and some gaps — not in a grid — to evoke organic composition. Above the cluster, a centered white-chalk title reads exactly: "The Plugin Kit". Just below the title (still above the cells, with clear gap), a single white-chalk subtitle reads exactly: "always-on layer · phasic layer · self-protecting".
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "The Plugin Kit", "always-on layer · phasic layer · self-protecting", plus the caption below. No other words, file names, plugin names, or descriptors may appear (cells are unlabeled).
-  Caption (bottom of image, white chalk, hand-drawn): "Banner 7. The plugin kit — cells composing the brain. Each owns one concern. Each protects itself."
 -->
 
 ---
