@@ -16,7 +16,7 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ---
 
-[Essay 7.4](07_4-data-json-hidden-state.html) opened the cognitive data organ — private, script-mediated, mutation-serialized. This sub-essay opens the cognitive *documentation* organ — the surface where the plugin carries its own narrated history, what it learned across cycles, why it was shaped the way it was. The hidden state is what the plugin knows about itself *right now*; `docs/` is what it remembers about *how it got here*.
+[Essay 7.4](07_4-data-json-hidden-state.html) opened the data organ — private, script-mediated, mutation-serialized. This sub-essay opens the *documentation* organ — the surface where the plugin carries its own narrated history, what it learned across cycles, why it was shaped the way it was. The hidden state is what the plugin knows about itself *right now*; `docs/` is what it remembers about *how it got here*.
 
 ---
 
@@ -66,7 +66,7 @@ A consulting practice's seed could carry the same shape — every plugin (intake
 
 ---
 
-Documentation is auto-narrated, word-capped, and overflow-routed. The historian writes; the operator reviews; the cap forces compression that protects the per-unlock context budget. The next sub-essay opens the cognitive organ where the plugin's *delegated investigation* lives — `agents/`, the per-plugin subagent pool, plus the 80/20 dispatch budget that mechanizes how much direct action the main session is allowed before it must delegate again.
+Documentation is auto-narrated, word-capped, and overflow-routed. The historian writes; the operator reviews; the cap forces compression that protects the per-unlock context budget. The next sub-essay opens the organ where the plugin's *delegated investigation* lives — `agents/`, the per-plugin subagent pool, plus the 80/20 dispatch budget that mechanizes how much direct action the main session is allowed before it must delegate again.
 
 ---
 
