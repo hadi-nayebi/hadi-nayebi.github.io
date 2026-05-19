@@ -16,9 +16,9 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ---
 
-[Essay 8.6](08_6-apprentice-journeyman-architect.html) closed the operator's three-stage arc — apprentice, journeyman, architect — with the prototype's plugin-version spread as a concrete artifact. The arc raises the deepest claim of this mini-series: at what point does the brain *stop* growing, and why doesn't that stop the learning? This sub-essay opens that claim.
+[Essay 8.6](08_6-apprentice-journeyman-architect.html) closed the operator's three-stage arc — apprentice, journeyman, architect — with the prototype's plugin-version spread as a concrete artifact. The arc raises the deepest claim of this series: at what point does the brain *stop* growing, and why doesn't that stop the learning? This essay opens that claim.
 
-A brain that grows without bound becomes its own problem. Every CLAUDE.md the agent reads at session start is a tax on the context window. A ten-thousand-word root brain plus several three-thousand-word plugin brains plus several five-thousand-word working CLAUDE.md files is half the agent's working memory before any prompt is processed. The brain would drown the cognition.
+A brain that grows without bound becomes its own problem. Every CLAUDE.md the agent reads at session start is a tax on the context window. A ten-thousand-word root brain plus several three-thousand-word plugin brains plus several five-thousand-word working CLAUDE.md files is half the agent's working memory before any prompt is processed. The brain would drown the cognition. *[ref: size-limits-as-canonical-caps | root CLAUDE.md "Size Limits" section | The "Size Limits" section is a five-row table naming the per-file word caps the prototype currently runs against: root CLAUDE.md 3,500 words; subdir CLAUDE.md 800; plan files 2,000; MEMORY.md 400; skill files 500. The hypothetical word counts in this paragraph (ten-thousand-word root, three-thousand-word plugin brains, five-thousand-word working CLAUDE.md) are deliberately drawn well above those caps to illustrate what unchecked growth would cost — the canonical caps are an order of magnitude smaller.]*
 
 ---
 
@@ -34,13 +34,13 @@ Root-brain overflow distills into focused skill files under `.claude/skills/` in
 
 ## The Equilibrium
 
-The result is a brain that reaches a ceiling and stays there — even though the seed is learning constantly. The new learning is being *placed* in compartments outside the brain: the knowledge directory keeps growing, each plugin's `docs/evolution.md` keeps narrating, the hooks keep hardening. The brain itself — the small set of files the agent reads at session start — finds an equilibrium and stays close to it.
+The result is a brain that reaches a ceiling and stays there — even though the seed is learning constantly. The new learning is being *placed* in compartments outside the brain: the knowledge directory keeps growing, each plugin's `docs/evolution.md` keeps narrating, the hooks keep hardening. The brain itself — the small set of files the agent reads at session start — finds an equilibrium and stays close to it. *[ref: brain-maturation-young-vs-mature | root CLAUDE.md "Brain Maturation Model" section | The "Brain Maturation Model" section describes the shape of this equilibrium directly: "Young agent: Large brain, few hooks. Learns by guidance. Most controls are probabilistic." vs "Mature agent: Lean brain, many hooks. Operates by enforcement. Proven patterns are deterministic." And the flow that moves the system between them: "Experience → notice pattern → add to brain → pattern proves reliable → migrate to hook → remove from brain." The brain shrinks as the hook layer grows; the knowledge layer holds what the brain can no longer carry.]*
 
 This is what I mean when I say the brain stops growing in size but never stops learning. The compression isn't a limitation. It is the discipline by which the seed remains coherent across long timescales.
 
 A mature seed is a small brain over a large knowledge layer.
 
-The limit on this equilibrium is, again, friction: the operator who edits the brain carelessly during gmode without re-routing the overflow can grow the brain past its cap; CONDENSE will not retroactively shrink it. The architecture trusts the operator to do the routing; the discipline is the operator's plus the cycle ceremony's, not a single hard gate.
+The limit on this equilibrium is, again, friction: the operator who edits the brain carelessly during gmode without re-routing the overflow can grow the brain past its cap; CONDENSE will not retroactively shrink it. The architecture trusts the operator to do the routing; the discipline is the operator's plus the cycle ceremony's, not a single hard gate. *[ref: condense-compress-per-cycle-plus-gmode-escape | root CLAUDE.md "Sub-Operations of CONDENSE" section + Identity Fact 2 | `CONDENSE.compress` is defined in the "Sub-Operations of CONDENSE" section as "Enforce size limits across all managed files" with the per-file caps listed inline (Brain 3,500 words, CLAUDE.md 800, Plans 2,000, Memory 400, Skills 500). The sub-op fires inside CONDENSE — per-cycle compression — not as a retroactive shrink across the whole brain history. Identity Fact 2 names gmode as one of the two protected contexts in which the agent can edit its own plugin layer freely ("gmode — the operator's deliberate maintenance lane, entered via `[GMODE]` with ≥100-word justification"). Edits made there bypass the cycle ceremony; the operator carries the routing responsibility.]*
 
 <!-- IMAGE PLACEHOLDER:
   Concept: Chalk-on-blackboard graph — two curves over time. A flat ceiling line for the brain's size; a rising monotonic curve for the knowledge directory.
@@ -63,7 +63,7 @@ The limit on this equilibrium is, again, friction: the operator who edits the br
     "400"   (memory entries cap)
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycles", "words", "knowledge/", "plugin evolution.md", "root brain", "3,500", "2,000", "800", "500", "400", plus the caption below. No other words, file names, folders, or curve descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.5. The brain reaches a ceiling. The knowledge layer never does."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 8.7. The brain reaches a ceiling. The knowledge layer never does."
 -->
 
 ---
