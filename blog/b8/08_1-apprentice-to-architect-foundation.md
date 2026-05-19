@@ -16,7 +16,7 @@ og_image: "blog/b8/images/three-growth-axes-b8-1.png"
 
 ---
 
-[Essay 7.9](../b7/07_9-creating-a-new-plugin.html) closed the plugin kit with a walkthrough — guiding your seed to author a brand-new plugin, organ by organ, under the lock ceremony's friction. That essay handed you the *capacity* to grow the brain. This essay opens what happens once that capacity is yours.
+[Essay 7.9](../b7/07_9-creating-a-new-plugin.html) closed the plugin kit with a walkthrough — guiding your seed to author a brand-new plugin, part by part, under the lock ceremony's friction. That essay handed you the *capacity* to grow the brain. This essay opens what happens once that capacity is yours.
 
 The seed agent is not a product. It is not a thing that gets installed and works. It is a thing that gets installed, and then *grows*, cycle by cycle, under the operator's care. A new seed in week one looks different from the same seed in month three. The architecture is identical. What has changed is the brain — what it has learned, what it has codified, what has fossilized into permanent enforcement, and what is still being shaped by hand. *[ref: seed-grows-cycle-by-cycle | root CLAUDE.md "Markov Brain" section + "Sub-Operations of CONDENSE" section | The OPEVC cycle is the unit of growth; root CLAUDE.md frames CONDENSE as the cognitive organ that does work on the brain itself (CONDENSE.grow-brain adds new operations; CONDENSE.compress enforces size limits; CONDENSE.remember updates memory files). Per-cycle fossilization is real prototype mechanics, not metaphor — proven patterns migrate from brain into hook + plugin packages per the Brain Maturation Model.]*
 
