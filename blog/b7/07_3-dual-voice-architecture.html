@@ -112,13 +112,13 @@
 
                         <hr>
 
-                        <p><a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2</a> opened the universal skeleton &mdash; CLAUDE.md, hooks, scripts &mdash; and named the PLUGIN-LOCK ceremony that gates every edit to them. This sub-essay opens the organ that almost every plugin doubles: <code>voice.xml</code>. The hooks-side and scripts-side surfaces share one XML schema across different audiences. Getting them confused is the most common new-user error in plugin authoring.</p>
+                        <p><a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2</a> opened the universal skeleton &mdash; CLAUDE.md, hooks, scripts &mdash; and named the PLUGIN-LOCK ceremony that gates every edit to them. This sub-essay opens the cognitive organ that almost every plugin doubles: <code>voice.xml</code>. The hooks-side and scripts-side surfaces share one XML schema across different audiences. Getting them confused is the most common new-user error in plugin authoring.</p>
 
                         <hr>
 
                         <h2><code>voice.xml</code> × Two &mdash; The Dual Surface</h2>
 
-                        <p>This is the organ that confuses new users most, and the one where the relational anatomy matters most.</p>
+                        <p>This is the cognitive organ that confuses new users most, and the one where the relational anatomy matters most.</p>
 
                         <p><strong>The two voice surfaces are different files with different audiences.</strong> <code>hooks/voice.xml</code> and <code>scripts/voice.xml</code> look nearly identical structurally (both XML, both with <code>&lt;coaching&gt;</code>, <code>&lt;block&gt;</code>, <code>&lt;info&gt;</code>, <code>&lt;entry&gt;</code> elements identified by <code>id</code>), but they serve different consumers. <sup class="ref-marker" title="ref: dual-voice-surfaces-share-schema | .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | `ls .claude/plugins/*/{hooks,scripts}/voice.xml` shows ten plugins shipping BOTH surfaces (brain_guard, interaction_summary, job_core, phasic_system, plugin_integrity, and all five phase plugins); question_discipline ships only `hooks/voice.xml` because it has no `scripts/` CLI (cf. B7 §scripts paragraph). Both files use the same XML schema family — agent-facing `&lt;coaching id=&quot;…&quot;&gt;`, `&lt;block id=&quot;…&quot;&gt;`, `&lt;info id=&quot;…&quot;&gt;`, `&lt;entry id=&quot;…&quot;&gt;`, plus utility `&lt;error id=&quot;…&quot;&gt;` and `&lt;warning id=&quot;…&quot;&gt;` for fallback paths — confirmed by grep counts (plugin_integrity/hooks/voice.xml: 4 coaching + 30 block + 15 info + 2 entry + 3 error = 54 elements total).">&#9432;</sup></p>
 
@@ -162,7 +162,7 @@
 
                         <hr>
 
-                        <p>The hooks-side and scripts-side surfaces share one schema. The LLM consumes the agent-facing surface; the operator consumes the CLI-facing surface. The next sub-essay opens the organ that almost every plugin needs but that no plugin lets anyone else touch &mdash; the private <code>data.json</code> state.</p>
+                        <p>The hooks-side and scripts-side surfaces share one schema. The LLM consumes the agent-facing surface; the operator consumes the CLI-facing surface. The next sub-essay opens the cognitive organ that almost every plugin needs but that no plugin lets anyone else touch &mdash; the private <code>data.json</code> state.</p>
 
                         <hr>
 

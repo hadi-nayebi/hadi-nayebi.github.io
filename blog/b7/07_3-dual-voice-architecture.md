@@ -16,13 +16,13 @@ og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
 
 ---
 
-[Essay 7.2](07_2-skeleton-claudemd-hooks-scripts.html) opened the universal skeleton — CLAUDE.md, hooks, scripts — and named the PLUGIN-LOCK ceremony that gates every edit to them. This sub-essay opens the organ that almost every plugin doubles: `voice.xml`. The hooks-side and scripts-side surfaces share one XML schema across different audiences. Getting them confused is the most common new-user error in plugin authoring.
+[Essay 7.2](07_2-skeleton-claudemd-hooks-scripts.html) opened the universal skeleton — CLAUDE.md, hooks, scripts — and named the PLUGIN-LOCK ceremony that gates every edit to them. This sub-essay opens the cognitive organ that almost every plugin doubles: `voice.xml`. The hooks-side and scripts-side surfaces share one XML schema across different audiences. Getting them confused is the most common new-user error in plugin authoring.
 
 ---
 
 ## `voice.xml` × Two — The Dual Surface
 
-This is the organ that confuses new users most, and the one where the relational anatomy matters most.
+This is the cognitive organ that confuses new users most, and the one where the relational anatomy matters most.
 
 **The two voice surfaces are different files with different audiences.** `hooks/voice.xml` and `scripts/voice.xml` look nearly identical structurally (both XML, both with `<coaching>`, `<block>`, `<info>`, `<entry>` elements identified by `id`), but they serve different consumers. *[ref: dual-voice-surfaces-share-schema | .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | `ls .claude/plugins/*/{hooks,scripts}/voice.xml` shows ten plugins shipping BOTH surfaces (brain_guard, interaction_summary, job_core, phasic_system, plugin_integrity, and all five phase plugins); question_discipline ships only `hooks/voice.xml` because it has no `scripts/` CLI (cf. B7 §scripts paragraph). Both files use the same XML schema family — agent-facing `<coaching id="…">`, `<block id="…">`, `<info id="…">`, `<entry id="…">`, plus utility `<error id="…">` and `<warning id="…">` for fallback paths — confirmed by grep counts (plugin_integrity/hooks/voice.xml: 4 coaching + 30 block + 15 info + 2 entry + 3 error = 54 elements total).]*
 
@@ -87,7 +87,7 @@ A consulting firm's seed agent could carry the same dual-voice split: `hooks/voi
 
 ---
 
-The hooks-side and scripts-side surfaces share one schema. The LLM consumes the agent-facing surface; the operator consumes the CLI-facing surface. The next sub-essay opens the organ that almost every plugin needs but that no plugin lets anyone else touch — the private `data.json` state.
+The hooks-side and scripts-side surfaces share one schema. The LLM consumes the agent-facing surface; the operator consumes the CLI-facing surface. The next sub-essay opens the cognitive organ that almost every plugin needs but that no plugin lets anyone else touch — the private `data.json` state.
 
 ---
 
