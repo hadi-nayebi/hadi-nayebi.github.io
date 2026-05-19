@@ -74,5 +74,5 @@ A mature seed is a small brain over a large knowledge layer. The recursion that 
 
 *Essay 8.7 — From Apprentice to Architect, Part 7 of 9.*
 
-*Previous: [Essay 8.6 — The Maturation Arc: Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's three rough stages and the visible markers of each.*
+*Previous: [Essay 8.6 — The Maturation Arc — Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's three rough stages and the visible markers of each.*
 *Next: [Essay 8.8 — A System That Safely Modifies Itself](08_8-safe-self-modification.html) — the Tier-3 close, the recursive lock ceremony, and the rollback substrate.*

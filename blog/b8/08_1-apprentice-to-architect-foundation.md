@@ -56,7 +56,7 @@ Essay 8 unfolds across the parts below:
 - [Essay 8.3 — What Lives in the Brain After Three Months](08_3-brain-after-three-months.html) — the prototype as ground-truth inventory of the mature seed's compartments
 - [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template
 - [Essay 8.5 — What's Enforced vs What's Discipline](08_5-enforced-vs-discipline.html) — the honest accounting of which size caps are gates and which are CONDENSE discipline
-- [Essay 8.6 — The Maturation Arc: Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's maturation arc and the visible markers of each
+- [Essay 8.6 — The Maturation Arc — Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's maturation arc and the visible markers of each
 - [Essay 8.7 — The Brain Stops Growing in Size](08_7-brain-stops-growing.html) — why the brain reaches a ceiling while the knowledge layer never does
 - [Essay 8.8 — A System That Safely Modifies Itself](08_8-safe-self-modification.html) — the Tier-3 close, the recursive lock ceremony, and the rollback substrate
 - [Essay 8.9 — The Seed Is Yours](08_9-the-seed-is-yours.html) — series finale, the bridge to the public seed agent, and the architecture handed over

@@ -85,4 +85,4 @@ The brain's enforcement is asymmetric by design — hard where the cost pays for
 *Essay 8.5 — From Apprentice to Architect, Part 5 of 9.*
 
 *Previous: [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template.*
-*Next: [Essay 8.6 — The Maturation Arc: Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's three rough stages and the visible markers of each.*
+*Next: [Essay 8.6 — The Maturation Arc — Apprentice, Journeyman, Architect](08_6-apprentice-journeyman-architect.html) — the operator's three rough stages and the visible markers of each.*
