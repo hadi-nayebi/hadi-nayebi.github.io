@@ -2,7 +2,7 @@
 title: "OBSERVE — Read Wide, Write Once"
 date: "May 2026"
 slug: "observe"
-read_time: "8 min"
+read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
 version: v0.3.0
@@ -16,21 +16,31 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-[Essay 6.2](06_2-discipline-and-map.html) drew the full transition graph and named the tool-restriction discipline that makes each phase distinct. Now we open the first compartment — the entry phase that decides what the rest of the cycle will work on.
+[Essay 6.2](06_2-discipline-and-map.html) drew the full transition graph and named the tool-restriction discipline that makes each phase distinct. Every job the seed agent runs threads through that graph in cycles — OBSERVE → PLAN → EXECUTE → VERIFY → CONDENSE → back to idle, repeating until the work is done. This sub-essay opens the first phase in that loop: OBSERVE.
+
+OBSERVE is the read-and-orient phase. Before the cycle plans, builds, or verifies anything, OBSERVE gathers the context the rest of the cycle will work from. The cognitive failure it prevents is the *assumption-driven plan* — an agent that builds a model of the situation from the user's prompt and the language model's prior, never reads the codebase or the knowledge directory, and ships work calibrated to a world that doesn't exist. OBSERVE is the prototype's structural answer: a dedicated phase whose only job is reading, so PLAN has something real to plan against.
+
+The sources are wide. OBSERVE reads the codebase to learn the current state of the work, walks the seed agent's own `.claude/knowledge/` directory to recall what previous cycles established, re-reads the working CLAUDE.md files to inherit decisions from earlier phases, asks the user through registered question prefixes when a routing decision needs the architect, and fetches external documentation when the codebase does not carry the answer. Most of the reading happens through subagents — the main session orchestrates two to four research subagents in parallel rather than walking the corpus by hand.
+
+The write side is sharp. OBSERVE is allowed exactly one kind of write: it appends to CLAUDE.md files, and only beneath its own footer anchor `---Ob---`. The other phases' footer markers — `---Pl---`, `---Ex---`, `---Ve---` — are read-only to OBSERVE. A single CLAUDE.md is a multi-tenant file, and each tenant phase's anchor is its only legal landing strip. The compartmentalization runs all the way down to the byte.
+
+The phase's pacing comes from two mechanisms threaded through the guards. The **multiplier sentinel** locks every tool at phase entry until the agent picks a value in 0.5 to 3.0 — a self-forecast of this phase's scope (we return to *why a smaller number declares a deeper phase* at the close of this essay series). A pair of point gates then shapes the read/write rhythm: a minimum-synthesis gate that demands some reading before any CLAUDE.md write lands, and a maximum-accumulation gate that blocks further reading once the agent has read for a while without synthesizing. Around both runs a small *direct-action budget* — every observe-subagent dispatch grants +3 read-budget; every direct file read outside `.claude/` consumes 1. The arithmetic is small but the bias is structural: the main session is incentivized to delegate.
+
+The rest of this essay opens those mechanisms one at a time — the three internal gates that shape the phase from inside, a worked example end-to-end, the backward edges OBSERVE re-enters on, and the customization surfaces an architect tunes when adapting OBSERVE to a different kind of work.
 
 ---
 
-## What OBSERVE does
+## Entry, classification, and write authority
 
-OBSERVE is the entry phase. Most jobs start here. It's also the phase that gets re-entered after a verification failure, when the agent has discovered the plan was wrong and needs to re-gather context. *[ref: agent-advance-only-idle-to-observe | .claude/plugins/phasic_system/scripts/phase.sh:215-221 | The agent-callable advance branch dies unless current_phase is idle and hardcodes the next phase as observe; OBSERVE is structurally the only entry phase the agent can initiate.]*
+OBSERVE is the entry phase. Most jobs start here. It is also the phase that gets re-entered after a verification failure, when the agent has discovered the plan was wrong and needs to re-gather context. *[ref: agent-advance-only-idle-to-observe | .claude/plugins/phasic_system/scripts/phase.sh:215-221 | The agent-callable advance branch dies unless current_phase is idle and hardcodes the next phase as observe; OBSERVE is structurally the only entry phase the agent can initiate.]*
 
-The job of OBSERVE is to populate the working memory — the relevant CLAUDE.md files — with enough context that PLAN can produce a real plan. Reading the codebase. Reading the agent's own knowledge directory. Asking the user clarifying questions. Pulling in external documentation. *[ref: observe-gathers-context-into-claude-md | .claude/plugins/phase_observe/CLAUDE.md Objective section | OBSERVE's stated objective: gather needed context into CLAUDE.md files so plan/execute/verify have the information they need. Each CLAUDE.md update declares a directory as editable in execute.]*
+OBSERVE's stated objective is to populate the working memory — the relevant CLAUDE.md files — with enough context that PLAN can produce a real plan. Each CLAUDE.md the agent updates declares that directory as editable later in EXECUTE; the choice of *which* CLAUDE.md to update is the choice of *where* the work will land. *[ref: observe-gathers-context-into-claude-md | .claude/plugins/phase_observe/CLAUDE.md Objective section | OBSERVE's stated objective: gather needed context into CLAUDE.md files so plan/execute/verify have the information they need. Each CLAUDE.md update declares a directory as editable in execute.]*
 
 OBSERVE cycle 1 carries one decision that shapes everything downstream: which form the job takes. The agent classifies into one of three — a single-cycle deep job that runs freestyle and dissolves with its cycle, a multi-cycle job with an `.md` plan that refines across cycles, or a multi-cycle job that has already earned a parseable `.yaml` plan injected at every phase entry. The third form evolves out of the second through an approval gate; it is not chosen up front. PLAN inherits the classification and names the `plan_file` accordingly — `false` for single-cycle, a path for multi-cycle — but the framing happens here, in OBSERVE, before the first acceptance criterion is written. *[ref: plan-file-named-once-in-plan | .claude/plugins/phase_plan/scripts/plan.sh:335-376 | set-plan-file is PLAN's cycle-1-only public command; it accepts false for single-cycle or a plan_*.md path for multi-cycle, dies on any later re-call, and locks the form OBSERVE classified into for the rest of the job.]*
 
-The only thing the agent is allowed to write in OBSERVE is CLAUDE.md content, and only inside its own footer section. The restriction is what forces observation to actually happen — there is no escape into action. *[ref: observe-claude-md-only-staging-principle | .claude/plugins/phase_observe/docs/principles.md Principle 6 — CLAUDE.md-only staging | Principle 6 of OBSERVE's design docs: observe-commit.sh stages only CLAUDE.md files; non-CLAUDE.md staged files trigger anomaly warnings. Rationale: observe is read-only for project files, no silent fix.]*
+The footer-only write rule is enforced at the staging gate. The phase's commit script stages only CLAUDE.md files; anything else surfaces as an anomaly. The restriction is what forces observation to actually happen — there is no escape into action. *[ref: observe-claude-md-only-staging-principle | .claude/plugins/phase_observe/docs/principles.md Principle 6 — CLAUDE.md-only staging | Principle 6 of OBSERVE's design docs: observe-commit.sh stages only CLAUDE.md files; non-CLAUDE.md staged files trigger anomaly warnings. Rationale: observe is read-only for project files, no silent fix.]*
 
-OBSERVE is also where the most distinctive seed-agent mechanism lives — the **multiplier sentinel**, a per-phase scalar that starts at zero and locks every tool until the agent sets a real value in 0.5–3.0. Once set, the value cannot be changed for that phase entry. The same pattern applies to every other phase. We come back to what that *means* — and why a smaller number declares a larger phase — at the close of this essay series. *[ref: multiplier-sentinel-locks-all-tools | .claude/plugins/phase_observe/hooks/observe-guard.sh:185-202 | Sentinel-lock gate: every tool except the observe.sh set-multiplier Bash invocation is blocked until the agent picks a value in 0.5-3.]*
+And the multiplier sentinel — the per-phase tool-lock that opens only when the agent forecasts the cycle's scope — sits at the very front of every phase entry. The same sentinel pattern repeats in PLAN, EXECUTE, VERIFY, and CONDENSE. *[ref: multiplier-sentinel-locks-all-tools | .claude/plugins/phase_observe/hooks/observe-guard.sh:185-202 | Sentinel-lock gate: every tool except the observe.sh set-multiplier Bash invocation is blocked until the agent picks a value in 0.5-3.]*
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/observe-three-gates-b6-3.png
