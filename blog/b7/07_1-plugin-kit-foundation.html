@@ -133,7 +133,7 @@
 
                         <figure class="blog-image" style="margin: 2rem 0;">
                           <img src="images/plugin-cell-anatomy-b7-1.png" alt="A single plugin &quot;cell&quot; with its internal cognitive organs visible inside the cell wall, the PLUGIN-LOCK ceremony drawn as a membrane gate on the wall, and the three property labels (reads / writes / depends on) listed beside the cell as the universal anatomy frame" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ.</figcaption>
+                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates hard-substrate edits; three properties name each organ.</figcaption>
                         </figure>
 
                         <h2>The journey ahead</h2>
@@ -142,7 +142,7 @@
 
                         <ul>
                             <li><strong>Essay 7.1 &mdash; Plugin Kit Foundation</strong> <em>(you are here)</em> &mdash; the cell-as-system frame + this map</li>
-                            <li><a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the universal organs governed by PLUGIN-LOCK</li>
+                            <li><a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the skeleton organs and the hard/soft edit boundary</li>
                             <li><a href="07_3-dual-voice-architecture.html">Essay 7.3 &mdash; The Dual Voice Architecture</a> &mdash; <code>hooks/voice.xml</code> for the LLM + <code>scripts/voice.xml</code> for the operator</li>
                             <li><a href="07_4-data-json-hidden-state.html">Essay 7.4 &mdash; <code>data.json</code> &mdash; The Hidden State</a> &mdash; per-plugin private state, script-mediated</li>
                             <li><a href="07_5-docs-and-historian.html">Essay 7.5 &mdash; <code>docs/</code> and the Historian</a> &mdash; <code>evolution.md</code> word-capped + the historian ratchet</li>
@@ -152,19 +152,19 @@
                             <li><a href="07_9-creating-a-new-plugin.html">Essay 7.9 &mdash; Building a New Plugin</a> &mdash; Tier-3 walkthrough</li>
                         </ul>
 
-                        <p>Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay &mdash; the parts every plugin carries. Essay 7.8 opens the ceremony that protects edits to those organs once the plugin is in flight. Essay 7.9 is for the architects in the audience &mdash; a walkthrough of putting the kit to use, authoring a new plugin end to end.</p>
+                        <p>Essays 7.2 through 7.7 deep-dive the plugin organs, one cluster per essay &mdash; the parts every mature plugin understands, with some organs intentionally absent in minimal or pure-gate plugins. Essay 7.8 opens the ceremony that protects hard-substrate edits once the plugin is in flight. Essay 7.9 is for the architects in the audience &mdash; a walkthrough of putting the kit to use, authoring a new plugin end to end.</p>
 
                         <hr>
 
                         <p>We start with the universal skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the load-bearing organs Essay 7.2 deep-dives. <sup class="ref-marker" title="ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection.&quot; Essay 7.2 takes the load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those organs are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.">&#9432;</sup></p>
 
-                        <p>A consulting practice could organize its own seed agent&rsquo;s plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating each edit, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. <sup class="ref-marker" title="ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/scripts/safe-lock.sh + .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | Three friction primitives compose the kit&#x27;s safety: PLUGIN-LOCK serializes edits per plugin via the lock-manager; safe-lock wraps the unlock window in a test-pass-or-revert cycle (`safe-lock.sh` runs the plugin&#x27;s tests on commit and reverts the working tree on failure); dual voice.xml (hooks-side for LLM coaching, scripts-side for operator coaching) propagates the discipline through every gate without hard-coding it.">&#9432;</sup></p>
+                        <p>A consulting practice could organize its own seed agent&rsquo;s plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating hard-substrate edits, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. Soft memory surfaces like docs, voice files, and agent definitions move through phase discipline instead. <sup class="ref-marker" title="ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/hooks/plugin-guard.sh:567-588 + .claude/plugins/plugin_integrity/scripts/safe-lock.sh | `plugin-guard.sh` explicitly exempts CLAUDE.md, docs/*.md, voice.xml, and agents/*.md as configuration/soft-memory surfaces, while code-bearing plugin substrate remains gated. `safe-lock.sh` wraps the unlock window in a test-pass-or-revert cycle (runs plugin tests on close and reverts the working tree on failure). The architecture is strong friction plus tests, not an OS/kernel capability boundary.">&#9432;</sup></p>
 
                         <hr>
 
                         <p><em>Essay 7.1 &mdash; The Plugin Kit, Part 1 of 9.</em></p>
 
-                        <p><em>Previous: <a href="../b6/06_10-plan-state-machine.html">Essay 6.10 &mdash; The Plan-State Machine &mdash; Long-Horizon Memory</a> &mdash; closes the markov phasic brain series.</em> <em>Next: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the universal organs governed by PLUGIN-LOCK.</em></p>
+                        <p><em>Previous: <a href="../b6/06_10-plan-state-machine.html">Essay 6.10 &mdash; The Plan-State Machine &mdash; Long-Horizon Memory</a> &mdash; closes the markov phasic brain series.</em> <em>Next: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the skeleton organs and the hard/soft edit boundary.</em></p>
 
                     </div>
 

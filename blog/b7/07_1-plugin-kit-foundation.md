@@ -69,7 +69,7 @@ The read / write / depend-on triple is how the cell wall stays porous (organs ta
     Line 3: "what it depends on"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: ".claude/plugins/<plugin_name>/", "CLAUDE.md", "hooks/", "scripts/", "data.json", "docs/", "agents/", "tests/", "[PLUGIN-LOCK]", "every organ has:", "who reads it", "who writes it", "what it depends on", plus the caption below. No other words, file names, folders, or property descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates every edit; three properties name each organ."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 7.1. A plugin is a cell. Cognitive organs live inside the wall; the PLUGIN-LOCK membrane gates hard-substrate edits; three properties name each organ."
 -->
 
 ## The journey ahead
@@ -77,7 +77,7 @@ The read / write / depend-on triple is how the cell wall stays porous (organs ta
 Essay 7 covers the plugin kit across the sub-essays listed below:
 
 - **Essay 7.1 — Plugin Kit Foundation** *(you are here)* — the cell-as-system frame + this map
-- [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK
+- [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the skeleton organs and the hard/soft edit boundary
 - [Essay 7.3 — The Dual Voice Architecture](07_3-dual-voice-architecture.html) — `hooks/voice.xml` for the LLM + `scripts/voice.xml` for the operator
 - [Essay 7.4 — `data.json` — The Hidden State](07_4-data-json-hidden-state.html) — per-plugin private state, script-mediated
 - [Essay 7.5 — `docs/` and the Historian](07_5-docs-and-historian.html) — `evolution.md` word-capped + the historian ratchet
@@ -86,17 +86,17 @@ Essay 7 covers the plugin kit across the sub-essays listed below:
 - [Essay 7.8 — The Lock Ceremony](07_8-lock-ceremony.html) — PLUGIN-LOCK + TEST-LOCK + safe-lock + historian ratchet
 - [Essay 7.9 — Building a New Plugin](07_9-creating-a-new-plugin.html) — Tier-3 walkthrough
 
-Essays 7.2 through 7.7 deep-dive the universal organs, one cluster per essay — the parts every plugin carries. Essay 7.8 opens the ceremony that protects edits to those organs once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
+Essays 7.2 through 7.7 deep-dive the plugin organs, one cluster per essay — the parts every mature plugin understands, with some organs intentionally absent in minimal or pure-gate plugins. Essay 7.8 opens the ceremony that protects hard-substrate edits once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
 
 ---
 
 We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the load-bearing organs Essay 7.2 deep-dives. *[ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md "Plugin Structure Convention" section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat "Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection." Essay 7.2 takes the load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those organs are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.]*
 
-A consulting practice could organize its own seed agent's plugin around a `[CLIENT-INTAKE]` ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating each edit, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. *[ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/scripts/safe-lock.sh + .claude/plugins/plugin_integrity/hooks/voice.xml + .claude/plugins/plugin_integrity/scripts/voice.xml | Three friction primitives compose the kit's safety: PLUGIN-LOCK serializes edits per plugin via the lock-manager; safe-lock wraps the unlock window in a test-pass-or-revert cycle (`safe-lock.sh` runs the plugin's tests on commit and reverts the working tree on failure); dual voice.xml (hooks-side for LLM coaching, scripts-side for operator coaching) propagates the discipline through every gate without hard-coding it.]*
+A consulting practice could organize its own seed agent's plugin around a `[CLIENT-INTAKE]` ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating hard-substrate edits, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. Soft memory surfaces like docs, voice files, and agent definitions move through phase discipline instead. *[ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/hooks/plugin-guard.sh:567-588 + .claude/plugins/plugin_integrity/scripts/safe-lock.sh | `plugin-guard.sh` explicitly exempts CLAUDE.md, docs/*.md, voice.xml, and agents/*.md as configuration/soft-memory surfaces, while code-bearing plugin substrate remains gated. `safe-lock.sh` wraps the unlock window in a test-pass-or-revert cycle (runs plugin tests on close and reverts the working tree on failure). The architecture is strong friction plus tests, not an OS/kernel capability boundary.]*
 
 ---
 
 *Essay 7.1 — The Plugin Kit, Part 1 of 9.*
 
 *Previous: [Essay 6.10 — The Plan-State Machine — Long-Horizon Memory](../b6/06_10-plan-state-machine.html) — closes the markov phasic brain series.*
-*Next: [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the universal organs governed by PLUGIN-LOCK.*
+*Next: [Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts](07_2-skeleton-claudemd-hooks-scripts.html) — the skeleton organs and the hard/soft edit boundary.*
