@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="PLAN — Decide, Then Lock — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260520">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -149,7 +149,7 @@
 
                         <h2>The state machine</h2>
 
-                        <p>The plan moves through a small set of states (currently five in the prototype, extensible as the design matures). <sup class="ref-marker" title="ref: plan-state-enumerated-as-named-values | .claude/plugins/phase_plan/scripts/plan.sh:646-654 plan-state subcommand | The plan-state hook-read returns one of: none | drafting | md_approved | yaml_drafting | yaml_ready | sealed. The value lives on the job object in data.json — same source as plan_file — not in plan-file frontmatter, so a single jq read returns the lifecycle stage.">&#9432;</sup></p>
+                        <p>The plan moves through a small set of active states &mdash; five active plan states, plus the implicit <code>none</code> start &mdash; extensible as the design matures. <sup class="ref-marker" title="ref: plan-state-enumerated-as-named-values | .claude/plugins/phase_plan/scripts/plan.sh:646-654 plan-state subcommand | The plan-state hook-read returns one of: none | drafting | md_approved | yaml_drafting | yaml_ready | sealed. The value lives on the job object in data.json — same source as plan_file — not in plan-file frontmatter, so a single jq read returns the lifecycle stage.">&#9432;</sup></p>
 
                         <p><code>drafting</code> keeps the .md circulating &mdash; VERIFY refines it cycle after cycle, the contract sharpens. <code>md_approved</code> is the flip: VERIFY asks the user via AskUserQuestion, the user answers yes, the state lifts and the next cycle is dedicated to creating the .yaml. <sup class="ref-marker" title="ref: plan-approve-md-flips-state-via-askuserquestion | .claude/plugins/phase_plan/scripts/plan.sh:846-863 approve-md case-arm + .claude/plugins/question_discipline/hooks/question-discipline-gate.sh PREFIX_REGISTRY [PLAN-APPROVAL] | approve-md requires plan_state==drafting, then sets plan_state=md_approved with output &quot;Next cycle creates .yaml.&quot; The flip is triggered by VERIFY firing an AskUserQuestion with the registered [PLAN-APPROVAL] prefix — the registered prefix routes the answer through the verify-side handler, not a chat-marker scan.">&#9432;</sup></p>
 
@@ -233,7 +233,7 @@
 
                         <p><em>Essay 6.4 &mdash; The Markov Phasic Brain, Part 4 of 10.</em></p>
 
-                        <p><em>Previous: <a href="06_3-observe.html">Essay 6.3 &mdash; OBSERVE &mdash; Read Wide, Write Once</a> &mdash; read-only synthesis, multiplier sentinel, paired gates.</em> <em>Next: <a href="06_5-execute.html">Essay 6.5 &mdash; EXECUTE &mdash; Build, in Scope, in Steps</a> &mdash; the universal file-creator, fenced to the altered list.</em></p>
+                        <p><em>Previous: <a href="06_3-observe.html">Essay 6.3 &mdash; OBSERVE &mdash; Read Wide, Write Once</a> &mdash; project-read-only synthesis, multiplier sentinel, paired gates.</em> <em>Next: <a href="06_5-execute.html">Essay 6.5 &mdash; EXECUTE &mdash; Build, in Scope, in Steps</a> &mdash; the universal file-creator, fenced to the altered list.</em></p>
 
                     </div>
 
@@ -322,8 +322,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260520"></script>
-    <script src="../../js/components.js?v=20260520"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

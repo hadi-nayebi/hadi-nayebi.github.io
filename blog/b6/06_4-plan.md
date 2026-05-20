@@ -52,7 +52,7 @@ The contract is not static. The plan moves through a `plan_state` machine — `d
 
 ## The state machine
 
-The plan moves through a small set of states (currently five in the prototype, extensible as the design matures). *[ref: plan-state-enumerated-as-named-values | .claude/plugins/phase_plan/scripts/plan.sh:646-654 plan-state subcommand | The plan-state hook-read returns one of: none | drafting | md_approved | yaml_drafting | yaml_ready | sealed. The value lives on the job object in data.json — same source as plan_file — not in plan-file frontmatter, so a single jq read returns the lifecycle stage.]*
+The plan moves through a small set of active states — five active plan states, plus the implicit `none` start — extensible as the design matures. *[ref: plan-state-enumerated-as-named-values | .claude/plugins/phase_plan/scripts/plan.sh:646-654 plan-state subcommand | The plan-state hook-read returns one of: none | drafting | md_approved | yaml_drafting | yaml_ready | sealed. The value lives on the job object in data.json — same source as plan_file — not in plan-file frontmatter, so a single jq read returns the lifecycle stage.]*
 
 `drafting` keeps the .md circulating — VERIFY refines it cycle after cycle, the contract sharpens. `md_approved` is the flip: VERIFY asks the user via AskUserQuestion, the user answers yes, the state lifts and the next cycle is dedicated to creating the .yaml. *[ref: plan-approve-md-flips-state-via-askuserquestion | .claude/plugins/phase_plan/scripts/plan.sh:846-863 approve-md case-arm + .claude/plugins/question_discipline/hooks/question-discipline-gate.sh PREFIX_REGISTRY [PLAN-APPROVAL] | approve-md requires plan_state==drafting, then sets plan_state=md_approved with output "Next cycle creates .yaml." The flip is triggered by VERIFY firing an AskUserQuestion with the registered [PLAN-APPROVAL] prefix — the registered prefix routes the answer through the verify-side handler, not a chat-marker scan.]*
 
@@ -153,7 +153,7 @@ When PLAN exits, the orchestrator advances the job to EXECUTE.
 
 *Essay 6.4 — The Markov Phasic Brain, Part 4 of 10.*
 
-*Previous: [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — read-only synthesis, multiplier sentinel, paired gates.*
+*Previous: [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — project-read-only synthesis, multiplier sentinel, paired gates.*
 *Next: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*
 
 
