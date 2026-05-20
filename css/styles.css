@@ -3227,12 +3227,18 @@ body.lightbox-open {
     font-weight: 700;
 }
 
-/* ---- Wider academy-section variant — for grids that need room ---- */
-/* Used by the PowerPoint-Level Vocabulary 4-card row. Default
-   .academy-section caps at 900px (single-column prose); this variant
-   widens to match .container's 1200px so 4 cards fit comfortably side
-   by side without text wrapping every 2-3 words. */
-.academy-section.academy-section-wide {
+/* ---- Page-scoped width override for start-here.html ----
+   Default .academy-section caps at 900px for single-column prose.
+   The Start Here page has heavy grid content (4-card vocab row,
+   2-col contrast cards, 3-up pillars, 2-col CTA grid, full ontology
+   map figure). Widening every section to 1200px keeps visual rhythm
+   consistent — no jagged narrow/wide alternation between sections.
+   Scoped via body.page-start-here so other pages (about, agents,
+   seed-agent) keep their narrower prose width.
+   .system-overview-figure keeps its own 900px cap because the map
+   reads best at that size; section-around-it is wide for layout
+   alignment with neighbours, image stays centred. */
+.page-start-here .academy-section {
     max-width: 1200px;
 }
 
