@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Maturation, Operator]
 status: draft
 version: v0.1.0
 audience: "Power Users & Architects"
-og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
+og_image: "blog/b8/images/maturation-arc-b8-banner.png"
 ---
 
 # The Maturation Arc — Apprentice, Journeyman, Architect
