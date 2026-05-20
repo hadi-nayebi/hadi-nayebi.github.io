@@ -5,7 +5,7 @@ slug: "plan"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 2"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
@@ -22,13 +22,21 @@ PLAN is the compartment where observations become a binding contract. Where OBSE
 
 PLAN reads three kinds of sources. It reads back the CLAUDE.md files OBSERVE just populated, because those carry the cycle's current understanding. It reads the existing plan document if the job already has one — multi-cycle work inherits a `.md` plan that earlier cycles drafted, and PLAN's first move on cycle 2 and beyond is to re-read that file as the long-term contract the cycle inherits. And it reads the seed agent's `.claude/knowledge/` directory the same way OBSERVE does, for patterns that survived past cycles. Like every other phase, PLAN can dispatch its own family of subagents — plan-step-breaker, plan-criteria-writer, plan-scope-analyzer, plan-risk-assessor among them — and like every other phase, it carries a direct-action budget that pushes the main session toward delegation.
 
-The write side mirrors OBSERVE's compartmentalization. PLAN is read-only against project files. It writes only to CLAUDE.md, and only beneath its own footer anchor `---Pl---`. The other phases' footers stay read-only to PLAN. The one exception is the *naming* of the plan_file: PLAN runs a single cycle-1-only CLI call (`plan.sh set-plan-file`) that registers the path the rest of the cycle will execute against — but PLAN does not create the file. EXECUTE creates it. PLAN just names it.
+The write side mirrors OBSERVE's compartmentalization. PLAN is read-only against project files.
 
-The phase's pacing follows the cycle's shared shape. The multiplier sentinel locks every tool at phase entry until the agent forecasts the scope. A pair of point gates pace the read/write rhythm against the working CLAUDE.md. A small direct-action budget grants +3 per plan-subagent dispatch and consumes 1 per direct CLAUDE.md edit outside `.claude/`. The arithmetic is the same as OBSERVE; only the subagent roster is different.
+Its CLAUDE.md writes cascade downward from its own footer anchor. `---Pl---` is the primary section the phase guard nudges PLAN toward, but the same enforcement permits writes into `---Ex---` and `---Ve---`. The pattern is deliberate. PLAN is encouraged to pre-stage the EXECUTE altered-list and the VERIFY checklist as it lands its own decisions, so the next two phases inherit context already in the file rather than having to reconstruct it. *[ref: plan-anchor-cascades-downward-not-fenced | .claude/plugins/phase_plan/hooks/plan-guard.sh:269 + .claude/plugins/lib/section_guard/section-check.sh Element 5 | plan-guard calls check_section_edit "---Pl---" against every CLAUDE.md edit. Element 5 of section-check.sh enforces that the edit targets content STRICTLY BELOW the phase marker. Because the four anchors are ordered ---Ob--- < ---Pl--- < ---Ex--- < ---Ve---, PLAN can edit Pl + Ex + Ve sections. The architecture is cascading-downward soft-encouragement, not strict between-section lockout: voice injections and point gates nudge PLAN toward writing under ---Pl---, but pre-staging EXECUTE's altered list under ---Ex--- and the VERIFY checklist under ---Ve--- is explicitly permitted and encouraged.]*
 
-The rest of this essay opens that decision tree, walks the plan-state machine the plan_file moves through across cycles, opens the plan document's opinionated structure, and closes on the customization surfaces.
+The one project-file exception is the *naming* of the plan_file. PLAN runs a single cycle-1-only CLI call (`plan.sh set-plan-file`) that registers the path the rest of the cycle will execute against — but PLAN does not create the file. EXECUTE creates it. PLAN just names it.
 
-The first thing the agent does on entering PLAN, after the multiplier, is decide whether the job needs a plan file at all.
+The phase's pacing follows the cycle's shared shape.
+
+The multiplier sentinel locks every tool at phase entry until the agent commits to a depth. The lock is structural protection against rushing PLAN without forecasting its scope — the prior `multiplier: 1` default let the agent skip the choice entirely. *[ref: plan-multiplier-sentinel-prevents-silent-skipping | .claude/plugins/phase_plan/scripts/plan.sh set-multiplier case-arm + .claude/plugins/phase_observe/hooks/observe-guard.sh:189 canonical WHY comment | PLAN's set-multiplier CLI mirrors OBSERVE's: validates the value is 0.5/1/1.5/2/2.5/3, dies if points have already accrued (preventing reset), writes the immutable value to data.json. The WHY is identical across phases, stated canonically in observe-guard.sh:189: "structural protection against the 2-month recurring multiplier-mistake — without it, the prior multiplier: 1 default let the agent skip the choice entirely." Sentinel is the same shape every phase shares; only the subagent roster differs.]* Smaller numbers declare a deeper phase: a multiplier of 0.5 means each action awards half the base points, so more actions are needed to fill the 100-point phase-transition bucket. Larger numbers (2 to 3) award proportionally more per action, so the bucket fills with fewer actions — a faster, surface-level pass.
+
+A pair of point gates paces the read/write rhythm against the working CLAUDE.md. A small direct-action budget grants +3 per plan-subagent dispatch and consumes 1 per direct CLAUDE.md edit outside `.claude/` — the same mechanism that pushes OBSERVE toward delegation, here pushing PLAN the same way. The mechanics mirror OBSERVE; only the subagent roster differs.
+
+The rest of this essay opens the plan-state machine the plan_file moves through across cycles, opens the plan document's opinionated structure, and closes on the customization surfaces.
+
+The first thing the agent does on entering PLAN — after the multiplier — is name the plan_file. The job-form classification was already made by OBSERVE in cycle 1; PLAN inherits that classification and registers the file path the rest of the cycle will execute against.
 
 ---
 
