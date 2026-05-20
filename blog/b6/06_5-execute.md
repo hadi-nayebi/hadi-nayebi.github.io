@@ -56,7 +56,7 @@ A second guard inside the same hook protects the phase-section markers — the f
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/execute-two-fences-b6-5.png
-  Concept: Chalk-on-blackboard sketch — EXECUTE's two nested fences. An outer path-scope fence drawn from the altered list, and an inner section-marker fence inside each CLAUDE.md.
+  Concept: Chalk-on-blackboard sketch — EXECUTE's two nested fences. An outer path-scope fence drawn from the altered list, and an inner anchor-cascade fence inside each CLAUDE.md showing the cascading-downward write permission (Ex + Ve allowed, Ob + Pl blocked).
   Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the fence borders and the CLAUDE.md tile;
   white chalk for labels and arrows; chalk sticks at the bottom edge; faint chalk dust at the edges.
@@ -65,12 +65,13 @@ A second guard inside the same hook protects the phase-section markers — the f
     Outer rectangle (cyan border, large): labeled at the top edge "altered list", with three small chalk file icons inside labeled "dir A", "dir B", "dir C" — these are the allowed directories.
     A short white chalk arrow enters the outer rectangle from the left labeled "write call"; a second white chalk arrow attempts to enter from outside the outer rectangle and is blocked by a chalk X mark, labeled "out of scope".
     Inner rectangle (orange border, smaller, drawn inside dir B): represents a single CLAUDE.md, labeled at the top edge "CLAUDE.md".
-    Inside the inner rectangle, four horizontal chalk bands stacked vertically, each labeled with a pastel-chalk anchor name: top band cyan labeled "---Ob---", second band green labeled "---Pl---", third band orange labeled "---Ex---" (highlighted with a small white chalk check mark in the margin), fourth band pink labeled "---Ve---".
-    A white chalk arrow enters the inner rectangle from outside and lands cleanly inside the third band (---Ex---).
-    A second white chalk arrow attempts to land in the first band (---Ob---) and is blocked by a chalk X, labeled "wrong section".
+    Inside the inner rectangle, four horizontal chalk bands stacked vertically, each labeled with a pastel-chalk anchor name: top band cyan labeled "---Ob---", second band green labeled "---Pl---", third band orange labeled "---Ex---" (highlighted with a small white chalk check mark in the margin marking the primary anchor), fourth band pink labeled "---Ve---" (also marked with a small white chalk check mark in the margin marking the permitted cascade).
+    A white chalk arrow enters the inner rectangle from outside and lands cleanly inside the third band (---Ex---), labeled "primary write".
+    A second white chalk arrow enters and lands cleanly inside the fourth band (---Ve---), labeled "pre-stage verify" — depicting the cascading-downward permission that lets EXECUTE pre-stage verify-checklist refinements.
+    A third white chalk arrow attempts to land in the first band (---Ob---) and is blocked by a chalk X, labeled "blocked upward".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "altered list", "dir A", "dir B", "dir C", "write call", "out of scope", "CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "wrong section", plus the caption below. No other words, file names, folders, or fence descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.5. EXECUTE's two fences. Path scope outside, section scope inside."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "altered list", "dir A", "dir B", "dir C", "write call", "out of scope", "CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "primary write", "pre-stage verify", "blocked upward", plus the caption below. No other words, file names, folders, or fence descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.5. EXECUTE's two fences. Path scope outside, anchor cascade inside — write to Ex + Ve, block upward to Ob + Pl."
 -->
 
 ---
