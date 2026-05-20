@@ -18,8 +18,6 @@ og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 
 [Essay 5.7](05_7-claude-md-hierarchy.html) built the working-memory form — the CLAUDE.md hierarchy with its four-footer protocol and altered-list gate. This part closes the essay's deep-dive set with one example of what the always-on layer can *do* when its single-concern plugins compose. Single-concern plugins composing into one ceremony, no plugin owning the whole thing.
 
-For the architects in the audience.
-
 ---
 
 ## Per-plugin living history
