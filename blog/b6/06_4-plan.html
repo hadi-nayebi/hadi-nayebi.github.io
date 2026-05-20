@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="PLAN — Decide, Then Lock — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260519">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -89,7 +89,7 @@
                     <div class="article-meta">
                         <span>May 2026</span>
                         <span>&bull;</span>
-                        <span>8 min</span>
+                        <span>10 min</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="">Tier 2</span>
                             <span class="tag">Architecture</span>
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="article-audio" style="opacity: 0.55;">
-                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (8 min read).</span>
+                        <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (10 min read).</span>
                     </div>
 
                     <div class="article-body">
@@ -113,7 +113,17 @@
 
                         <hr>
 
-                        <p><a href="06_3-observe.html">Essay 6.3</a> named OBSERVE as the entry-phase that fills CLAUDE.md with context. PLAN is the next compartment &mdash; also read-only against project files, with one new responsibility: naming the <em>plan_file</em> the rest of the cycle will execute against. Writes are still confined to CLAUDE.md; the plan document itself, if the job calls for one, is named here and written by EXECUTE &mdash; we come back to that below.</p>
+                        <p><a href="06_3-observe.html">Essay 6.3</a> closed with OBSERVE handing forward &mdash; the working CLAUDE.md filled with what the cycle needs to know, the orchestrator advancing the job. PLAN is what receives it.</p>
+
+                        <p>PLAN is the compartment where observations become a binding contract. Where OBSERVE answered "what is the current situation," PLAN answers "what will we do about it" &mdash; and writes the answer down with enough specificity that EXECUTE can build against it without inventing on the fly. The cognitive failure PLAN prevents is the <em>rationalized plan</em> &mdash; the after-the-fact narrative an agent writes once it has already committed code, where every decision looks justified because it has already been made. A separate planning phase, with no write access to project files, forces the decisions to land before the work starts.</p>
+
+                        <p>PLAN reads three kinds of sources. It reads back the CLAUDE.md files OBSERVE just populated, because those carry the cycle&rsquo;s current understanding. It reads the existing plan document if the job already has one &mdash; multi-cycle work inherits a <code>.md</code> plan that earlier cycles drafted, and PLAN&rsquo;s first move on cycle 2 and beyond is to re-read that file as the long-term contract the cycle inherits. And it reads the seed agent&rsquo;s <code>.claude/knowledge/</code> directory the same way OBSERVE does, for patterns that survived past cycles. Like every other phase, PLAN can dispatch its own family of subagents &mdash; plan-step-breaker, plan-criteria-writer, plan-scope-analyzer, plan-risk-assessor among them &mdash; and like every other phase, it carries a direct-action budget that pushes the main session toward delegation.</p>
+
+                        <p>The write side mirrors OBSERVE&rsquo;s compartmentalization. PLAN is read-only against project files. It writes only to CLAUDE.md, and only beneath its own footer anchor <code>---Pl---</code>. The other phases' footers stay read-only to PLAN. The one exception is the <em>naming</em> of the plan_file: PLAN runs a single cycle-1-only CLI call (<code>plan.sh set-plan-file</code>) that registers the path the rest of the cycle will execute against &mdash; but PLAN does not create the file. EXECUTE creates it. PLAN just names it.</p>
+
+                        <p>The phase&rsquo;s pacing follows the cycle&rsquo;s shared shape. The multiplier sentinel locks every tool at phase entry until the agent forecasts the scope. A pair of point gates pace the read/write rhythm against the working CLAUDE.md. A small direct-action budget grants +3 per plan-subagent dispatch and consumes 1 per direct CLAUDE.md edit outside <code>.claude/</code>. The arithmetic is the same as OBSERVE; only the subagent roster is different.</p>
+
+                        <p>The rest of this essay opens that decision tree, walks the plan-state machine the plan_file moves through across cycles, opens the plan document&rsquo;s opinionated structure, and closes on the customization surfaces.</p>
 
                         <p>The first thing the agent does on entering PLAN, after the multiplier, is decide whether the job needs a plan file at all.</p>
 
@@ -257,7 +267,7 @@
                                 </div>
                                 <div class="sidebar-card-position">&larr; Previous in series</div>
                                 <h3>Essay 6.3 — OBSERVE — Read Wide, Write Once</h3>
-                                <div class="date">May 2026 &bull; 8 min read</div>
+                                <div class="date">May 2026 &bull; 10 min read</div>
                             </div>
                         </a>
                         <div class="article-card active">
@@ -270,7 +280,7 @@
                             </div>
                             <div class="sidebar-card-position">You are here</div>
                             <h3>Essay 6.4 — PLAN — Decide, Then Lock</h3>
-                            <div class="date">May 2026 &bull; 8 min read</div>
+                            <div class="date">May 2026 &bull; 10 min read</div>
                         </div>
                         <a href="06_5-execute.html" class="article-card-link">
                             <div class="article-card">
@@ -304,8 +314,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260518"></script>
-    <script src="../../js/components.js?v=20260518"></script>
+    <script src="../../js/theme-manager.js?v=20260519"></script>
+    <script src="../../js/components.js?v=20260519"></script>
 </body>
 
 </html>

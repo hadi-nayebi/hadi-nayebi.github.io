@@ -2,7 +2,7 @@
 title: "PLAN — Decide, Then Lock"
 date: "May 2026"
 slug: "plan"
-read_time: "8 min"
+read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: draft
 version: v0.3.0
@@ -16,7 +16,17 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-[Essay 6.3](06_3-observe.html) named OBSERVE as the entry-phase that fills CLAUDE.md with context. PLAN is the next compartment — also read-only against project files, with one new responsibility: naming the *plan_file* the rest of the cycle will execute against. Writes are still confined to CLAUDE.md; the plan document itself, if the job calls for one, is named here and written by EXECUTE — we come back to that below.
+[Essay 6.3](06_3-observe.html) closed with OBSERVE handing forward — the working CLAUDE.md filled with what the cycle needs to know, the orchestrator advancing the job. PLAN is what receives it.
+
+PLAN is the compartment where observations become a binding contract. Where OBSERVE answered "what is the current situation," PLAN answers "what will we do about it" — and writes the answer down with enough specificity that EXECUTE can build against it without inventing on the fly. The cognitive failure PLAN prevents is the *rationalized plan* — the after-the-fact narrative an agent writes once it has already committed code, where every decision looks justified because it has already been made. A separate planning phase, with no write access to project files, forces the decisions to land before the work starts.
+
+PLAN reads three kinds of sources. It reads back the CLAUDE.md files OBSERVE just populated, because those carry the cycle's current understanding. It reads the existing plan document if the job already has one — multi-cycle work inherits a `.md` plan that earlier cycles drafted, and PLAN's first move on cycle 2 and beyond is to re-read that file as the long-term contract the cycle inherits. And it reads the seed agent's `.claude/knowledge/` directory the same way OBSERVE does, for patterns that survived past cycles. Like every other phase, PLAN can dispatch its own family of subagents — plan-step-breaker, plan-criteria-writer, plan-scope-analyzer, plan-risk-assessor among them — and like every other phase, it carries a direct-action budget that pushes the main session toward delegation.
+
+The write side mirrors OBSERVE's compartmentalization. PLAN is read-only against project files. It writes only to CLAUDE.md, and only beneath its own footer anchor `---Pl---`. The other phases' footers stay read-only to PLAN. The one exception is the *naming* of the plan_file: PLAN runs a single cycle-1-only CLI call (`plan.sh set-plan-file`) that registers the path the rest of the cycle will execute against — but PLAN does not create the file. EXECUTE creates it. PLAN just names it.
+
+The phase's pacing follows the cycle's shared shape. The multiplier sentinel locks every tool at phase entry until the agent forecasts the scope. A pair of point gates pace the read/write rhythm against the working CLAUDE.md. A small direct-action budget grants +3 per plan-subagent dispatch and consumes 1 per direct CLAUDE.md edit outside `.claude/`. The arithmetic is the same as OBSERVE; only the subagent roster is different.
+
+The rest of this essay opens that decision tree, walks the plan-state machine the plan_file moves through across cycles, opens the plan document's opinionated structure, and closes on the customization surfaces.
 
 The first thing the agent does on entering PLAN, after the multiplier, is decide whether the job needs a plan file at all.
 
