@@ -128,7 +128,7 @@
                         <p>That routing is structured as a <strong>strict ordered waterfall</strong> (currently seven steps in the prototype; extensible per the Stage-3 Distributed Job Extension pattern). The order matters; each step&rsquo;s output feeds the next. <sup class="ref-marker" title="ref: condense-7-step-waterfall-strict-ordered | .claude/plugins/phase_condense/docs/principles.md Core Principles section → 8. 7-Step Waterfall as Processing Order subsection | CONDENSE Principle 8: a strict ordered sequence of 7 steps — footer-to-body, cross-file migration, pending jobs, voice updates, agent updates, knowledge routing, session archive fallback. Processing order is deterministic.">&#9432;</sup></p>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="images/condense-waterfall-b6-7.png" alt="The CONDENSE seven-step waterfall" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <img src="images/condense-waterfall-b6-7.png" alt="The CONDENSE seven-step waterfall with each step feeding the next and step 7 as the last-resort fallback" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 6.7. Each step&rsquo;s output feeds the next. Step 7 is the fallback, not a peer.</figcaption>
                         </figure>
 

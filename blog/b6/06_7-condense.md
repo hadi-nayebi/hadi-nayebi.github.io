@@ -34,7 +34,7 @@ That routing is structured as a **strict ordered waterfall** (currently seven st
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/condense-waterfall-b6-7.png
-  Concept: Chalk-on-blackboard cascade — the CONDENSE seven-step waterfall.
+  Concept: Chalk-on-blackboard cascade — the CONDENSE seven-step waterfall with each step feeding the next and step 7 as the last-resort fallback.
   Style: Match opevc-cycle-blackboard.png. Dark slate chalkboard; hand-drawn chalk tiles and arrow streams;
   pastel chalk for the tile borders (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for step numbers, labels, and arrows; chalk sticks resting along the bottom edge; faint chalk dust at the edges.
