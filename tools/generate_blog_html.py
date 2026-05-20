@@ -786,6 +786,7 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
                 </button>
                 <div class="nav-links">
                     <a href="../index.html">Home</a>
+                    <a href="../start-here.html">Start Here</a>
                     <a href="../blog.html" class="active" aria-current="page">Blog</a>
                     <a href="../agents.html">Agents</a>
                     <a href="../about.html">About</a>
@@ -876,7 +877,7 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
     # (e.g., sidebar prev card href="../04-the-language-of-agents.html" from
     # blog/b5/ to blog/ root — that ../ is correct and must not be deepened).
     if subdir:
-        for path in ("index.html", "blog.html", "agents.html", "about.html", "contact.html"):
+        for path in ("index.html", "start-here.html", "blog.html", "agents.html", "about.html", "contact.html"):
             result = result.replace(f'href="../{path}"', f'href="{depth_prefix}{path}"')
         result = result.replace('href="../css/', f'href="{depth_prefix}css/')
         result = result.replace('src="../js/', f'src="{depth_prefix}js/')
