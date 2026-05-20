@@ -3227,6 +3227,15 @@ body.lightbox-open {
     font-weight: 700;
 }
 
+/* ---- Wider academy-section variant — for grids that need room ---- */
+/* Used by the PowerPoint-Level Vocabulary 4-card row. Default
+   .academy-section caps at 900px (single-column prose); this variant
+   widens to match .container's 1200px so 4 cards fit comfortably side
+   by side without text wrapping every 2-3 words. */
+.academy-section.academy-section-wide {
+    max-width: 1200px;
+}
+
 /* ---- Vocabulary grid (PowerPoint-Level Vocabulary section) ---- */
 
 .vocab-grid {
@@ -3237,10 +3246,11 @@ body.lightbox-open {
 }
 
 .vocab-card {
-    padding: 1.5rem;
+    padding: 1.4rem 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    min-width: 0;
 }
 
 .vocab-card h3 {
