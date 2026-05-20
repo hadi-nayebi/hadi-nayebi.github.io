@@ -48,7 +48,7 @@ SIDEBAR_POSTS = [
     ("06_2-discipline-and-map",          "Essay 6.2 — The Discipline and the Map",          "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_3-observe",                     "Essay 6.3 — OBSERVE — Read Wide, Write Once",      "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_4-plan",                        "Essay 6.4 — PLAN — Decide, Then Lock",             "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
-    ("06_5-execute",                     "Essay 6.5 — EXECUTE — Build, in Scope, in Steps",  "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
+    ("06_5-execute",                     "Essay 6.5 — EXECUTE — Build, in Scope, in Steps",  "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_6-verify",                      "Essay 6.6 — VERIFY — Independent Eyes",            "May 2026", "7 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_7-condense",                    "Essay 6.7 — CONDENSE — The Cognitive Organ",      "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "CONDENSE"]),
     ("06_8-inverse-multiplier",         "Essay 6.8 — The Inverse Multiplier",              "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),

@@ -2,7 +2,7 @@
 title: "EXECUTE — Build, in Scope, in Steps"
 date: "May 2026"
 slug: "execute"
-read_time: "8 min"
+read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Execute]
 status: draft
 version: v0.3.0
@@ -16,7 +16,17 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-EXECUTE is where code gets written. The write-tool guard is gentler here, but only inside the altered list. Every other path is blocked. *[ref: execute-write-tool-gated-by-altered-list-snapshot | .claude/plugins/phase_execute/hooks/execute-guard.sh:826-902 | The altered-list scope check at execute-guard's CLAUDE.md and project-file branches reads the frozen snapshot from execute's own data.json and rejects any write outside it via exact-match (`grep -qxF`), with explicit no-parent-traversal comments; the same hook polices project-file writes through the same exact-match logic.]*
+[Essay 6.4](06_4-plan.html) closed with PLAN handing forward — a plan_file named, an altered-list scoped, the cycle's contract written down. EXECUTE is the phase that builds against that contract.
+
+EXECUTE is the cycle's only producing phase. Every other phase reads, analyzes, refines, or routes; EXECUTE is the one that turns analysis into artifact. Project source code, scripts, configuration, the `.md` plan, the `.yaml` plan, every file the seed agent ever materializes on disk — all of it is brought into existence here. The cognitive failure EXECUTE prevents is the *unstructured build* — the long uncommitted run that drifts away from the plan, accumulates change, and either ships a different feature than the one designed or erases everything when a failure hits halfway through. EXECUTE's discipline is checkpointing: short, focused commits that close one piece of the plan before opening the next.
+
+The sources are narrower than OBSERVE's or PLAN's. EXECUTE reads the plan document the cycle is executing against, reads the altered-list CLAUDE.md files for the per-directory context, reads the files it is about to edit, and reads the seed agent's knowledge directory for patterns the plan refers to. External documentation is allowed but rare in practice — the plan is supposed to carry the design decisions; EXECUTE's job is to build, not to keep researching. The phase dispatches its own family of subagents (execute-* workers), and the budget arithmetic explicitly favors delegation: every execute-subagent dispatch grants +3 direct-action budget; every direct edit outside `.claude/` consumes 1.
+
+The write side is where EXECUTE earns its name. The write-tool guard is gentler than the read-only phases', but only inside the *altered list* — the frozen snapshot of directories that OBSERVE and PLAN authorized for editing. A write inside the list lands; a write outside is rejected at the tool boundary, and the agent has to roll back to PLAN to amend the contract before the path opens. The footer-anchor discipline still applies inside CLAUDE.md files: EXECUTE writes execution notes beneath `---Ex---` and nowhere else; the other phases' footers stay read-only. Two nested fences — path scope outside, section scope inside — keep the compartmentalization intact even as the phase is the most active. *[ref: execute-write-tool-gated-by-altered-list-snapshot | .claude/plugins/phase_execute/hooks/execute-guard.sh:826-902 | The altered-list scope check at execute-guard's CLAUDE.md and project-file branches reads the frozen snapshot from execute's own data.json and rejects any write outside it via exact-match (`grep -qxF`), with explicit no-parent-traversal comments; the same hook polices project-file writes through the same exact-match logic.]*
+
+Pacing follows the cycle's shared shape: multiplier sentinel at phase entry, point gates for read/write rhythm, direct-action budget biased toward subagent delegation. What is distinctive in EXECUTE is the checkpointing cadence — the phase-commit script ships two shapes (intermediate and forward), and the intermediate form is the default. Small commits stay in EXECUTE for more work; the forward commit advances the phase. The cadence is the architecture's structural answer to drift: every few completed plan items, the agent commits and notices whether the cycle is still on course.
+
+The rest of this essay opens the universal-file-creator role, walks the two fences, explains the checkpointing pattern, and names the delegation bias the budget encodes.
 
 ---
 
