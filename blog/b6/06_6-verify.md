@@ -2,7 +2,7 @@
 title: "VERIFY — Independent Eyes"
 date: "May 2026"
 slug: "verify"
-read_time: "7 min"
+read_time: "9 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Verify]
 status: draft
 version: v0.2.0
@@ -16,9 +16,17 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-VERIFY is scripts-only. *[ref: verify-bash-whitelist-scripts-only | .claude/plugins/phase_verify/hooks/verify-guard.sh:351-397 | VERIFY's Bash case arm allows bash invocations of tests/ scripts/ paths and git read-only commands; blocks git add, file writes (echo > / sed -i / mv / cp / rm), --hook flags, and package managers.]*
+[Essay 6.5](06_5-execute.html) closed with EXECUTE handing forward — the project files written, the execution notes filed in the working CLAUDE.md, the cycle's deliverable on disk. VERIFY is the phase that decides whether the deliverable is right.
 
-The agent cannot edit code in VERIFY. It can read any file in the cycle's scope, by design. It can run tests. It can run validators. And it can dispatch a particular class of subagent — *auditors* — whose entire job is to read the executed work and report whether each acceptance criterion holds. *[ref: verify-dispatches-auditor-subagents | .claude/plugins/phase_verify/agents/CLAUDE.md Defined Subagents section | The Defined Subagents table lists VERIFY's auditor roster: verify-observe-auditor, verify-plan-auditor, verify-execute-auditor, verify-git-historian, verify-code-evolution-tracker — each scoped to evaluate one slice of the cycle's work.]*
+VERIFY is the cycle's independent-eyes phase. Where EXECUTE built the work, VERIFY judges it against the plan — and *the same agent that built the work is not allowed to fix what VERIFY finds*. The cognitive failure VERIFY prevents is self-verification bias: the hand that built the code wants to see the code as correct, the same way a writer who proofreads their own draft misses errors a stranger would catch instantly. The prototype's answer is a separate phase with a separate tool surface, a separate cognitive posture, and a roster of read-only auditor subagents whose entire job is to evaluate one slice of the cycle's work and report back. If something fails, VERIFY's only legal response is to route the cycle backward — to EXECUTE for a small fix, to PLAN for a design correction, to OBSERVE for a context reset. VERIFY cannot quietly amend the artifact it just judged.
+
+The sources are the cycle itself. VERIFY reads the plan document the cycle was supposed to satisfy, reads the altered-list CLAUDE.md files for the execution notes and per-directory context, walks the commit graph for the cycle's history, and inspects the project files EXECUTE produced. It dispatches its own family of subagents — a verify-observe-auditor that evaluates whether OBSERVE gathered enough context, a verify-plan-auditor that evaluates whether the plan was buildable, a verify-execute-auditor that evaluates implementation fidelity, a verify-git-historian that evaluates checkpoint cadence, a verify-code-evolution-tracker that evaluates the change's structural quality. A family of perspectives, deliberately composed so no single one dominates the verdict. *[ref: verify-dispatches-auditor-subagents | .claude/plugins/phase_verify/agents/CLAUDE.md Defined Subagents section | The Defined Subagents table lists VERIFY's auditor roster: verify-observe-auditor, verify-plan-auditor, verify-execute-auditor, verify-git-historian, verify-code-evolution-tracker — each scoped to evaluate one slice of the cycle's work.]*
+
+The write side is the tightest in the cycle, but it is not absent — and the common shorthand "VERIFY cannot edit files" oversimplifies it. VERIFY cannot edit *project source*: code, scripts, configuration are off-limits at the tool boundary. Inside the brain the authority is scoped. VERIFY can append findings to CLAUDE.md files beneath its own footer anchor `---Ve---` (the other phases' footers stay read-only). It can refine the plan document while the plan is in its drafting state. It can update memory files. And it can ask the user to approve the plan via the registered `[PLAN-APPROVAL]` or `[YAML-APPROVAL]` prefix — a phase-gated authority no other phase carries. The scoping is what makes VERIFY structurally trustworthy: VERIFY can only report and route, never silently fix.
+
+Pacing follows the cycle's shared shape: multiplier sentinel at phase entry, point gates for read/write rhythm, direct-action budget biased toward auditor-subagent dispatch. The Bash whitelist is the tightest of any phase — `tests/` scripts, `scripts/` scripts, git read-only commands, and a handful of plugin-published query scripts. No `git add`, no shell writes, no package managers. *[ref: verify-bash-whitelist-scripts-only | .claude/plugins/phase_verify/hooks/verify-guard.sh:351-397 | VERIFY's Bash case arm allows bash invocations of tests/ scripts/ paths and git read-only commands; blocks git add, file writes (echo > / sed -i / mv / cp / rm), --hook flags, and package managers.]*
+
+The rest of this essay opens VERIFY's coupled authorities, walks the scoped edit surfaces, names the auditor family, and traces the outcomes — clean pass, minor fix, deep reset, plan-state flip.
 
 ---
 
