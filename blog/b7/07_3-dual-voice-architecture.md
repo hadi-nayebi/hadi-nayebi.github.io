@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, Voice]
 status: draft
 version: v0.1.0
 audience: "Tier 2"
-og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
+og_image: "blog/b7/images/plugin-kit-b7-banner.png"
 ---
 
 # The Dual Voice Architecture

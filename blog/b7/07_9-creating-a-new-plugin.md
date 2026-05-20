@@ -7,7 +7,7 @@ tags: [Architecture, Seed Agent, Plugins, Plugin Kit, Customization, Tier-3]
 status: draft
 version: v0.1.0
 audience: "Tier 3"
-og_image: "assets/images/blog/b4/agent-anatomy-b4-1.png"
+og_image: "blog/b7/images/plugin-kit-b7-banner.png"
 ---
 
 # Building a New Plugin
