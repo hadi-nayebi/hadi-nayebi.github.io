@@ -78,7 +78,7 @@ No single plugin enforces the historian ratchet. Single-concern plugins compose 
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/historian-ratchet-b5-8b.png
-  Concept: Chalk-on-blackboard composition — three single-concern plugins fitting together into the historian-ratchet ceremony.
+  Concept: Chalk-on-blackboard composition — three single-concern plugins fitting together into the historian-ratchet ceremony, each contributing its own narrow concern.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk tiles and a connecting arc;
   pastel chalk for each plugin tile (cyan = Tile 1, green = Tile 2, orange = Tile 3);
   white chalk for ALL labels, the arc, and the substrate slab; chalk sticks at the bottom edge.
