@@ -3043,6 +3043,36 @@ body.lightbox-open {
    Start Here page — bridge page for newcomers (start-here.html)
    ============================================================ */
 
+/* Cross-page hint callout: appears on blog/about/agents/seed-agent
+   to point newcomers at start-here.html. Inline-block keeps it a
+   contained pill rather than full-width banner. */
+.start-here-hint {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.1rem;
+    background: rgba(99, 102, 241, 0.08);
+    border-left: 3px solid var(--primary);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 640px;
+}
+
+.start-here-hint a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.start-here-hint a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+
 /* ---- Audience ladder (interactive details/summary cards) ---- */
 
 .audience-ladder {
