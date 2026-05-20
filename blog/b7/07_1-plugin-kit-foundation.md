@@ -43,7 +43,6 @@ The read / write / depend-on triple is how the cell wall stays porous (organs ta
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/plugin-cell-anatomy-b7-1.png
-  NEEDS-REGEN (2026-05-19): prior version had overlap between arrows/labels and the cell-wall outline making text hard to read. Updated layout guidance below enforces clear spacing + center-of-shape label positioning. Old PNG deleted; awaiting regen.
   Concept: Chalk-on-blackboard cross-section — a single plugin "cell" with its internal cognitive organs visible inside the cell wall, the PLUGIN-LOCK ceremony drawn as a membrane gate on the wall, and the three property labels (reads / writes / depends on) listed beside the cell as the universal anatomy frame.
   Style: Chalk-on-blackboard. Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk for the organ shapes (cyan, green, orange, pink, magenta — same palette as the cycle image);
