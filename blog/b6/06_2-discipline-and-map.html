@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Discipline and the Map — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260519">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -164,7 +164,7 @@
 
                         <p>VERIFY has scripts-only access. The agent can run tests, run scripts, run validators. It cannot edit code. It can write pass/fail results back into CLAUDE.md and into a designated plan file. <sup class="ref-marker" title="ref: verify-allows-claude-and-plan-blocks-project | .claude/plugins/phase_verify/hooks/verify-guard.sh Edit|Write|MultiEdit case-arm | VERIFY&#x27;s Edit|Write|MultiEdit case-arm exits 0 for plan files, allows CLAUDE.md edits within the altered list, and blocks all other project files with `tool-restriction-non-claude`. Scripts-only-on-action surface holds.">&#9432;</sup></p>
 
-                        <p>CONDENSE has the most permissive <em>but most restricted</em> scope: it can write almost anywhere inside <code>.claude/</code>, including across plugins, but it cannot touch project files at all. <sup class="ref-marker" title="ref: condense-md-only-no-project-edits | .claude/plugins/phase_condense/hooks/condense-guard.sh Edit|Write|MultiEdit case-arm | CONDENSE&#x27;s Edit|Write|MultiEdit case arm allows any `.md` file plus `voice.xml` (the soft-memory layer); every other path falls through to the project-edit block with message &quot;[phase_condense] BLOCKED: Only .md and voice.xml edits allowed.&quot;">&#9432;</sup></p>
+                        <p>CONDENSE has the most permissive <em>but most restricted</em> soft-brain scope: it can write <code>.md</code> files across <code>.claude/</code> and <code>voice.xml</code> coaching surfaces, but it cannot touch project files or hard plugin code at all. <sup class="ref-marker" title="ref: condense-md-only-no-project-edits | .claude/plugins/phase_condense/hooks/condense-guard.sh Edit|Write|MultiEdit case-arm | CONDENSE&#x27;s Edit|Write|MultiEdit case arm allows any `.md` file plus `voice.xml` (the soft-memory layer); every other path falls through to the project-edit block with message &quot;[phase_condense] BLOCKED: Only .md and voice.xml edits allowed.&quot;">&#9432;</sup></p>
 
                         <p>Tool restriction is the pedagogy. The discipline doesn&rsquo;t come from telling the agent what to do; it comes from making the wrong move impossible inside the current phase &mdash; each phase&rsquo;s compartment forbids the moves that would skip the cognitive work the phase exists to enforce.</p>
 
@@ -186,7 +186,7 @@
 
                         <figure class="blog-image" style="margin: 2rem 0;">
                           <img src="images/quick-phase-map-b6-2.png" alt="The phase write matrix. Each phase&#x27;s write authority broken down across five axes that distinguish the phases from one another" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker &mdash; observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE has free hand across the brain.</figcaption>
+                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker &mdash; observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE owns soft-brain consolidation.</figcaption>
                         </figure>
 
                         <hr>
@@ -303,7 +303,7 @@
                                 </div>
                                 <div class="sidebar-card-position">Next in series &rarr;</div>
                                 <h3>Essay 6.3 — OBSERVE — Read Wide, Write Once</h3>
-                                <div class="date">May 2026 &bull; 10 min read</div>
+                                <div class="date">May 2026 &bull; 11 min read</div>
                             </div>
                         </a>
                         <a href="/blog.html" class="article-card-link sidebar-all-essays-link">
@@ -324,8 +324,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260519"></script>
-    <script src="../../js/components.js?v=20260519"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

@@ -64,7 +64,7 @@ EXECUTE has full write access, scoped to the set of directories OBSERVE and PLAN
 
 VERIFY has scripts-only access. The agent can run tests, run scripts, run validators. It cannot edit code. It can write pass/fail results back into CLAUDE.md and into a designated plan file. *[ref: verify-allows-claude-and-plan-blocks-project | .claude/plugins/phase_verify/hooks/verify-guard.sh Edit|Write|MultiEdit case-arm | VERIFY's Edit|Write|MultiEdit case-arm exits 0 for plan files, allows CLAUDE.md edits within the altered list, and blocks all other project files with `tool-restriction-non-claude`. Scripts-only-on-action surface holds.]*
 
-CONDENSE has the most permissive *but most restricted* scope: it can write almost anywhere inside `.claude/`, including across plugins, but it cannot touch project files at all. *[ref: condense-md-only-no-project-edits | .claude/plugins/phase_condense/hooks/condense-guard.sh Edit|Write|MultiEdit case-arm | CONDENSE's Edit|Write|MultiEdit case arm allows any `.md` file plus `voice.xml` (the soft-memory layer); every other path falls through to the project-edit block with message "[phase_condense] BLOCKED: Only .md and voice.xml edits allowed."]*
+CONDENSE has the most permissive *but most restricted* soft-brain scope: it can write `.md` files across `.claude/` and `voice.xml` coaching surfaces, but it cannot touch project files or hard plugin code at all. *[ref: condense-md-only-no-project-edits | .claude/plugins/phase_condense/hooks/condense-guard.sh Edit|Write|MultiEdit case-arm | CONDENSE's Edit|Write|MultiEdit case arm allows any `.md` file plus `voice.xml` (the soft-memory layer); every other path falls through to the project-edit block with message "[phase_condense] BLOCKED: Only .md and voice.xml edits allowed."]*
 
 Tool restriction is the pedagogy. The discipline doesn't come from telling the agent what to do; it comes from making the wrong move impossible inside the current phase — each phase's compartment forbids the moves that would skip the cognitive work the phase exists to enforce.
 
@@ -107,7 +107,7 @@ Every phase has its own plugin. The phasic plugins — one per phase, plus a sep
       condense row: "all + body", X, X, X, checkmark
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "validators", "create job objects", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE has free hand across the brain."
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer marker — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE owns soft-brain consolidation."
   ASSET: images/quick-phase-map-b6-2.png
 -->
 
