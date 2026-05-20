@@ -881,6 +881,11 @@ def build_html(meta: dict, body_html: str, sidebar_html: str, version_stamp: str
             result = result.replace(f'href="../{path}"', f'href="{depth_prefix}{path}"')
         result = result.replace('href="../css/', f'href="{depth_prefix}css/')
         result = result.replace('src="../js/', f'src="{depth_prefix}js/')
+        # Inline body images that point at ../assets/ from blog/ root must
+        # deepen for subdir essays — without this, an inline ![alt](../assets/X.png)
+        # in blog/b6/06_1.md emits <img src="../assets/X.png"> which resolves to
+        # blog/assets/X.png (404). Discovered 2026-05-19 via B6.1 broken render.
+        result = result.replace('src="../assets/', f'src="{depth_prefix}assets/')
         # Note: audio src is already correctly built into audio_src var above
         # and does NOT use ../ form when subdir is set (see audio block).
     return result
