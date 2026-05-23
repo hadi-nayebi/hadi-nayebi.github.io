@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="OBSERVE — Read Wide, Write Once — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260523">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -176,7 +176,7 @@
 
                         <h2>A worked example</h2>
 
-                        <p>Picture a multi-cycle plan-job on its third cycle. The <code>.md</code> plan has been approved; a <code>.yaml</code> was authored on cycle 2; the orchestrator injects the .yaml&rsquo;s current objective into OBSERVE at phase entry. The agent enters OBSERVE &mdash; the multiplier sentinel is unset, every tool is locked. The agent reads the injected objective, forecasts the scope of this cycle&rsquo;s observation work, picks 1.5 on the multiplier. The lock lifts. <sup class="ref-marker" title="ref: yaml-injection-at-phase-entry-via-phase-init | .claude/plugins/phasic_system/hooks/phase-init.sh write_yaml_cache + phase-transition re-inject | `phase-init.sh` runs on every phase transition; `write_yaml_cache` (L55-75) reads the job&#x27;s yaml-plan fields via `phase.sh --hook read-yaml` and stamps them into the per-phase yaml-injection cache, where `voice-helper.sh` reads them during `get_voice()` and augments downstream voice messages with the yaml values — appending by default, or replacing/prepending when the yaml entry specifies a mode (see B6.10 for the three-mode mechanics). The current objective lands in front of the agent at phase entry without the agent reaching for it.">&#9432;</sup></p>
+                        <p>Picture a dependent yaml-job on its third cycle. (Its parent md-job already ran to <code>md_approved</code> in an earlier sequence; this dep job&rsquo;s cycle 1 created the <code>.yaml</code> from the parent&rsquo;s approved <code>.md</code>; cycle 2 was the first real operational cycle; cycle 3 is the next.) The orchestrator injects the .yaml&rsquo;s current objective into OBSERVE at phase entry. The agent enters OBSERVE &mdash; the multiplier sentinel is unset, every tool is locked. The agent reads the injected objective, forecasts the scope of this cycle&rsquo;s observation work, picks 1.5 on the multiplier. The lock lifts. <sup class="ref-marker" title="ref: yaml-injection-at-phase-entry-via-phase-init | .claude/plugins/phasic_system/hooks/phase-init.sh write_yaml_cache + phase-transition re-inject | `phase-init.sh` runs on every phase transition; `write_yaml_cache` (L55-75) reads the job&#x27;s yaml-plan fields via `phase.sh --hook read-yaml` and stamps them into the per-phase yaml-injection cache, where `voice-helper.sh` reads them during `get_voice()` and augments downstream voice messages with the yaml values — appending by default, or replacing/prepending when the yaml entry specifies a mode (see B6.10 for the three-mode mechanics). The current objective lands in front of the agent at phase entry without the agent reaching for it.">&#9432;</sup></p>
 
                         <p>The agent reads the injected .yaml back, reads the working CLAUDE.md for cycle 2's execution notes, walks <code>.claude/knowledge/</code> for prior lessons. It dispatches two observe-* subagents in parallel &mdash; one to map the target repo&rsquo;s current state, one to look for contradictions between the .yaml objective and what cycle 2 actually shipped. Each dispatch grants +3 to the direct-action budget, so the main session keeps headroom for its own targeted reads. <sup class="ref-marker" title="ref: observe-subagents-bypass-point-gates-for-parallel-fanout | .claude/plugins/phase_observe/agents/CLAUDE.md Point Gate Exemption section | The Agent-Inventory CLAUDE.md states the structural exemption verbatim: &quot;Subagents are exempt from: min synthesis gate (3pts) and max accumulation gate (30pts)... observe-guard checks `agent_type != \&quot;main\&quot;` and skips point logic.&quot; This is what lets the main session fan out parallel observe-* dispatches without the synthesis-write gate firing between each one.">&#9432;</sup></p>
 
@@ -303,8 +303,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260518"></script>
-    <script src="../../js/components.js?v=20260518"></script>
+    <script src="../../js/theme-manager.js?v=20260523"></script>
+    <script src="../../js/components.js?v=20260523"></script>
 </body>
 
 </html>
