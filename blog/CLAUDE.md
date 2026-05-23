@@ -564,25 +564,62 @@ Divergences (G1–G3 = flow-level; G4–G9 = smaller):
 - Injection wiring → **DEFERRED post-ship** (Item #9; current single-objective injection good enough for v1).
 - Promotion trigger (agent-initiated vs user-initiated) → **DEFERRED** (both workable; not blocking).
 
-### Best Design — synthesis (2026-05-12, authorized: "do what is best, not what code already has")
+### Best Design — synthesis (2026-05-12 origin, **CANONICAL CORRECTION 2026-05-23**)
 
-#### Job-object plan fields
+> **CANONICAL CORRECTION 2026-05-23 — two-job model, not same-job arc.** The 2026-05-12 synthesis below shows a unified state-machine arc walking from `none` through `sealed` on a SINGLE job. **This is wrong.** The implementation has never supported it (plan.sh:364-365 `set-plan-file` once-only guard refuses a second call on a job whose `plan_file` is already set), and per user direction 2026-05-23 the corrected model is: **TWO separate jobs**, coupled only by basename convention. The Form-2 md-job's `plan_state` walks `none → drafting → drafting (loop) → md_approved` and ends there. The Form-3 dep yaml-job is **spawned from CONDENSE of the md-job** via a `[PENDING-JOB]` marker, has its own `plan_file` (the `.yaml` with same basename), and walks its own arc `none → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed`. The historical synthesis below is preserved for the rationale trail; the corrected sections below it (Job-object fields, State machine, Phase ownership) are canonical.
+
+#### Job-object plan fields (CORRECTED 2026-05-23)
+
+Each job carries:
+- `plan_file`: `false` (Form 1 / single-cycle), `"plan_<name>.md"` (Form 2 / md-job), or `"plan_<name>.yaml"` (Form 3 / dep yaml-job). **One value per job; the once-only guard prevents flipping extensions on the same job.**
+- `plan_state`: walks one of two arcs depending on the job form:
+  - Form 2 md-job: `none → drafting → drafting (loop) → md_approved`. **Terminal at `md_approved`** — the md-job's planning lifecycle ends here.
+  - Form 3 dep yaml-job: `none → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed`. The .yaml extension parser at set-plan-file lands plan_state directly in `yaml_drafting` on this job (skipping `drafting` and `md_approved` — those are the parent's states).
+- `yaml_required`: vestigial field (init=null, no longer consumed by any gate; the dep-yaml-job model uses `plan_file=*.yaml` + `plan_state=yaml_drafting` as the canonical signal).
+
+#### Two state machines (CORRECTED 2026-05-23)
+
+```
+Form-2 md-job:   none → drafting → drafting (loop) → md_approved  [terminal]
+
+[handoff: md-job's CONDENSE emits [PENDING-JOB] marker for dep yaml-job, same basename]
+
+Form-3 dep yaml-job:  none → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed
+```
+
+Md-job transitions:
+- `none → drafting` (md-job, cycle 1) — PLAN sets plan_file via `set-plan-file plan_<name>.md`; EXECUTE creates the `.md` (or updates an existing one on re-activation).
+- `drafting → drafting` (md-job, cycle 2+) — VERIFY refines; loop runs as long as needed.
+- `drafting → md_approved` (md-job, VERIFY) — VERIFY asks user via AskUserQuestion `[PLAN-APPROVAL]`; on "yes" calls `plan.sh approve-md`. The md-job's planning work ends here.
+
+Handoff (md-job CONDENSE → dep yaml-job creation):
+- After md_approved, the md-job's CONDENSE emits a `[PENDING-JOB]` marker proposing a dep yaml-job with the same basename. The pending job sits in data.json until the operator activates it.
+
+Dep yaml-job transitions:
+- `none → yaml_drafting` (dep yaml-job, cycle 1) — PLAN sets plan_file via `set-plan-file plan_<basename>.yaml`; extension parser lands state directly at `yaml_drafting`. EXECUTE creates the `.yaml` (or updates existing on re-activation); VERIFY refines.
+- `yaml_drafting → yaml_drafting` (dep yaml-job, cycle 2+) — Real operational work cycles. VERIFY can edit the .yaml when refinement is needed. Per-phase voice augmentation injects from `yaml_drafting` onward.
+- `yaml_drafting → yaml_ready` (dep yaml-job, VERIFY) — VERIFY asks user via `[YAML-APPROVAL]`; on "yes" calls `plan.sh approve-yaml`. The .yaml's injection carries the operator's trust stamp.
+- `yaml_ready → sealed` (dep yaml-job, optional terminal) — VERIFY calls `plan.sh seal-plan`; archives this dep job's `plan_file` (the .yaml) to its `completed_plan[]`.
+
+**Historical record below (preserved for rationale; superseded by CANONICAL CORRECTION above):**
+
+#### Job-object plan fields (HISTORICAL 2026-05-12)
 
 - `plan_file`: `false` (single-cycle) or `"<name>.md"` (multi-cycle).
 - `plan_state`: one of `"drafting"` | `"md_approved"` | `"yaml_drafting"` | `"yaml_ready"` | `"sealed"`. Meaningful only when `plan_file ≠ false`; defaults to `"drafting"` on plan_file set.
 - `.yaml` companion derives from plan_file basename; on disk when `plan_state ∈ {yaml_drafting, yaml_ready, sealed}`.
 
-#### State machine
+#### State machine (HISTORICAL 2026-05-12 — superseded; one job walked all states which the code never permitted)
 
 ```
 none → drafting → drafting (loop) → md_approved → yaml_drafting → yaml_drafting (loop) → yaml_ready → (optional) sealed
 ```
 
-Transitions:
+Transitions (historical, same-job framing — see canonical correction above):
 - `none → drafting` — PLAN sets plan_file (cycle 1), EXECUTE creates .md.
 - `drafting → drafting` — refinement cycles; VERIFY edits .md.
 - `drafting → md_approved` — VERIFY asks user via AskUserQuestion `[PLAN-APPROVAL]`; on "yes" calls `plan.sh approve-md`.
-- `md_approved → yaml_drafting` — next cycle; OBSERVE+PLAN analyze approved .md in CLAUDE.md, EXECUTE creates .yaml.
+- `md_approved → yaml_drafting` — next cycle; OBSERVE+PLAN analyze approved .md in CLAUDE.md, EXECUTE creates .yaml. **CORRECTED: this transition no longer happens in-place; the dep yaml-job is a separate job whose own cycle 1 set-plan-file lands plan_state at yaml_drafting from none.**
 - `yaml_drafting → yaml_drafting` — refinement cycles; VERIFY edits .yaml; can backward to PLAN for re-analysis.
 - `yaml_drafting → yaml_ready` — VERIFY asks via `[YAML-APPROVAL]`; on "yes" calls `plan.sh approve-yaml`.
 - `yaml_ready → sealed` (optional) — VERIFY calls `plan.sh seal-plan`; archives plan_file to `completed_plan[]`.
