@@ -115,9 +115,9 @@ The architecture accepts them because the alternative — letting the agent quie
 
 ## Two ways to leave OPEVC
 
-The off-cycle lane covers one kind of work that doesn't fit the phasic ceremony: **ad-hoc**, **fast**, **bypass-justified**. The next sub-essay covers the other: **planned**, **long-horizon**, **carried across cycles** — the plan-state machine that the seed agent reaches for when the work is too large for a single OPEVC pass.
+The off-cycle lane covers one kind of work that doesn't fit the phasic ceremony: **ad-hoc**, **fast**, **bypass-justified**. The next sub-essay covers the other: **planned**, **long-horizon**, **carried across cycles** — the plan file the seed agent reaches for when the work is too large for a single OPEVC pass.
 
-Gmode is the side-channel; the plan-state machine is the long-channel. Both exist outside the per-cycle compartmentalization OPEVC enforces. Both are deliberate exits — one for the work that's too small for ceremony, one for the work that's too large.
+Gmode is the side-channel; the plan file is the long-channel. Both exist outside the per-cycle compartmentalization OPEVC enforces. Both are deliberate exits — one for the work that's too small for ceremony, one for the work that's too large.
 
 ---
 
