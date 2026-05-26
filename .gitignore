@@ -21,6 +21,7 @@ feedback.json
 # Agent working memory (not part of the website)
 CLAUDE.md
 .claude/skills/
+memory/
 
 # Audio transcript intermediates (HTML → transcript → audio pipeline)
 *.transcript.md
