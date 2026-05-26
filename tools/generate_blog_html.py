@@ -53,7 +53,7 @@ SIDEBAR_POSTS = [
     ("06_7-condense",                    "Essay 6.7 — CONDENSE — The Cognitive Organ",      "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "CONDENSE"]),
     ("06_8-inverse-multiplier",         "Essay 6.8 — The Inverse Multiplier",              "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),
     ("06_9-gmode",                       "Essay 6.9 — GMODE — The Off-Cycle Lane",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "GMODE"]),
-    ("06_10-plan-state-machine",         "Essay 6.10 — The Plan-State Machine — Long-Horizon Memory",             "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Plan File", "Long-Horizon"]),
+    ("06_10-plan-state-machine",         "Essay 6.10 — The Plan File — Long-Horizon Memory",             "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Plan File", "Long-Horizon"]),
     ("05_1-the-two-layer-foundation",    "Essay 5.1 — The Two-Layer Foundation",            "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_2-plugin-integrity",            "Essay 5.2 — Plugin Edit Safety — plugin_integrity",                  "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("05_3-brain-guard",                 "Essay 5.3 — Context Window Discipline — brain_guard",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),

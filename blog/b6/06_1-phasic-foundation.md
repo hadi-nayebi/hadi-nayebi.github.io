@@ -45,7 +45,7 @@ Essay 6 unfolds across short sub-essays:
 - [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the 7-step waterfall that grows the brain
 - [Essay 6.8 — The Inverse Multiplier](06_8-inverse-multiplier.html) — honest scope forecasting at phase entry
 - [Essay 6.9 — GMODE — The Off-Cycle Lane](06_9-gmode.html) — the documented escape hatch
-- [Essay 6.10 — The Plan-State Machine — Long-Horizon Memory](06_10-plan-state-machine.html) — how multi-cycle jobs accumulate plan + .yaml memory over time
+- [Essay 6.10 — The Plan File — Long-Horizon Memory](06_10-plan-state-machine.html) — how multi-cycle jobs accumulate plan + .yaml memory over time
 
 Essay 6.2 maps the discipline; Essays 6.3 through 6.7 deep-dive each phase, one per essay. Essays 6.8 through 6.10 are for the architects in the audience — the mechanisms that let the cycle stay honest across long horizons.
 

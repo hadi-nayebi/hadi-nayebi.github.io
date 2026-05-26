@@ -124,7 +124,7 @@ Gmode is the side-channel; the plan-state machine is the long-channel. Both exis
 *Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
 
 *Previous: [Essay 6.8 — The Inverse Multiplier](06_8-inverse-multiplier.html) — the meta-cognition dial that calibrates each phase's tool budget before entry.*
-*Next: [Essay 6.10 — The Plan-State Machine — Long-Horizon Memory](06_10-plan-state-machine.html) — multi-cycle plans, the .md → .yaml lifecycle, and the long-horizon work the phasic brain carries across cycles.*
+*Next: [Essay 6.10 — The Plan File — Long-Horizon Memory](06_10-plan-state-machine.html) — multi-cycle plans, the .md → .yaml lifecycle, and the long-horizon work the phasic brain carries across cycles.*
 
 
 
