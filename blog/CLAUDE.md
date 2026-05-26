@@ -12,6 +12,54 @@
 
 When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.md` / `blog/b6/CLAUDE.md` for current state.
 
+## Canonical Vocabulary (CONTEXT.md)
+
+**Ground truth:** the canonical glossary is `hadosh_academy/CONTEXT.md`. Per Rule 40, when an essay body (or this file) conflicts with a `[consolidated]` definition there, the prose is the drift — fix the prose, not the glossary. These compact glosses load for **every** blog edit so the canonical names + their banned aliases stay in working memory; full definitions + implementation pointers live in CONTEXT.md. Series-exclusive terms live deeper (see the foot of this section).
+
+**Jobs & relationships**
+- **Job** — a compartment of work the seed agent owns; a JSON object in `job_core/data.json` with a timestamp ID, extended across other plugins' data.json by that same ID. While any job is `active`/`pending`, the stop gate blocks. _Avoid:_ task, ticket, request.
+- **Standalone job** — a job in no other job's `depends_on[]`; completes independently. _Avoid:_ **sibling job (BANNED)**, independent/unrelated job.
+- **Dep job** — a job that appears in some parent's `depends_on[]`; must complete before that parent. _Avoid:_ child job, subtask, blocker.
+- **Parent job** — a job whose `depends_on[]` holds ≥1 dep. _Avoid:_ blocking/owner/umbrella job.
+- **Job creation paths** — four pathways: `job.sh create` (standalone), `create-dependent` (dep), `--hook create-active` (prompt hook), `[JOB-APPROVE-CREATION]` (privileged plugin-touch, CONDENSE-only). Every pending job is born `plan_file=false`, objective 100-150w; Stage is decided later in cycle-1 PLAN. _Avoid:_ "plan decided at job creation."
+- **Focused job** — the one job with `focused:true`; all phasic gates/voices/scopes key on it. _Avoid:_ "current job," "active job" (many can be active; one focused).
+
+**Phases & cycles**
+- **Phase** — the cognition compartments: idle + OPEVC (OBSERVE/PLAN/EXECUTE/VERIFY/CONDENSE) + gmode. Forward sequence `idle→O→P→E→V→C→idle`; backward recovery transitions exist. _Avoid:_ "stage" for a phase.
+- **Cycle counter behavior** — `cycle` is monotonic-increment-only. Preserves on focus-switch/pause-resume; resets to 0 on completion→reactivation; a Stage-1 extension keeps cycle at 1 via `suppress_next_cycle_increment`. _Avoid:_ decrementing or resetting cycle mid-run.
+- **Per-phase points** — each phase has its own 100-point forward-advance gate, scoped to that phase only; no phase sees another's points. _Avoid:_ **"≥50 points for Stage-2 condense" (BANNED)**, **"100 cumulative across phases" (BANNED)**.
+- **Default multiplier** — phase-entry work forecast, range 0.5 (DEEP) to 3 (RAPID); sentinel `0` locks tools until set. Planned jobs (Stage 2 `.md` AND Stage 3 `.yaml`) default to 3; Stage-1 stays at sentinel 0. _Avoid:_ **"yaml-only auto-mult-3" (BANNED)**.
+
+**Plan & stages**
+- **Job Stage** — 3-tier classification by plan-file shape, decided in cycle-1 PLAN: Stage 1 (no plan_file, single-cycle collaborative), Stage 2 (`.md` plan), Stage 3 (`.yaml` plan — identical completion semantics to Stage 2, only the format differs). A future Stage 4 (per-job plugin) is aspirational. _Avoid:_ **"Form 1/2/3" (BANNED)**, "plan decided at creation."
+- **Plan file lifecycle** — the `.md`/`.yaml` cross-cycle handoff vessel; born in cycle-1 EXECUTE (not at creation), persists across activations, absorbs experience run-over-run (the learning loop). _Avoid:_ **"sealing"/"seal-plan"/"plan_state=sealed"/`completed_plan[]` (BANNED)**, "plan_file flips false at last cycle," "plan_file_last."
+- **Extension cycle** — `condense-commit.sh --force --add-cycle "<text>"` (+1 only) adds capacity when outstanding work remains; appends to `extension_contexts[]`, increments `extension_cycles_added`; Stage-1 keeps cycle at 1. _Avoid:_ **batch add-cycle, `--add-cycle-from-file` (both BANNED)**.
+- **`extension_cycles_added`** — per-run counter (resets on reactivation); feeds `effective_last_cycle = (plan_file ? total_cycles : 1) + extension_cycles_added`.
+- **`extension_contexts`** — append-only **history-mode** array (NOT reset on reactivation); the cross-run learning trail cycle-1 OBSERVE reads to absorb prior extensions into the plan. _Avoid:_ "extension log/array."
+- **Objective expansion** — cycle-1 OBSERVE custom gate expanding `objective` 100-150w → 300-500w. _Avoid:_ objective rewrite/draft.
+- **Extended shape** — N job-specific flexible-titled `## ` sections declared in cycle-1 OBSERVE, inherited by `[JOB-COMPLETE]`. _Avoid:_ extended catalog, custom shape.
+
+**Completion & gates**
+- **The three completion events** — distinct: job completion (`status→completed`), condense-phase completion (advance→idle), cycle closure (`cycle++`). _Avoid:_ conflating "complete the cycle" with "complete the job."
+- **`[JOB-COMPLETE]` completion hooks** — the pre-completion hook (CONDENSE-only phase gate + cycle-formula eligibility + shape gate incl. empty `## Outstanding Items` + label gate) and the post-completion hook (dep-walk → `job.sh approve`). _Avoid:_ **"Stage 1 hook"/"Stage 2 hook"/"completion stages" (BANNED — "Stage" is reserved for Job Stage)**; use pre-/post-completion hook.
+- **User Approval** — `user_approval` bool, set true only by the `[JOB-COMPLETE]` post-handler; reset on reactivation; a `job.sh complete` gate. _Avoid:_ "approval flag," "completion flag."
+- **Plugin Lock Approval** — `plugin_lock_approval` bool, set true only via `[JOB-APPROVE-CREATION]`; the "user-approved to touch plugins" signal read by the lock-manager. Job-identity-level — NEVER reset on reactivation. _Avoid:_ "plugin permission," "lock approval."
+- **Stop gate** — the hook refusing to release while any job is `active`/`pending`; completing jobs is the only way to an idle stop. _Avoid:_ "stop hook."
+- **Deflation gate** — a single 80% bottom-section-absorption rule on every CONDENSE advance, regardless of Stage. _Avoid:_ **"stage-aware deflation"/"80/50 split"/`CONDENSE_DEF_THRESHOLD_STAGE2` (BANNED)**.
+- **Question shape** — the required `## ` section structure every prefixed AskUserQuestion carries, validated by the pre-question hook. _Avoid:_ question template/format.
+- **Phase commit shape** — the required `## ` section structure every `--force` advance commit carries, plus per-phase custom gates; the double-verify system. _Avoid:_ commit template/format.
+- **Intermediate vs force-advance commits** — intermediate (plain git, ungated) vs `--force` (shape + 100 points + custom gates; advances the phase). _Avoid:_ "save vs advance commits."
+
+**Repeating jobs** (new design — no corpus presence yet)
+- **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm. _Avoid:_ recurring/scheduled/periodic job.
+- **`repeating_interval`** — integer-HOURS field, default 0 (one-shot). _Avoid:_ schedule/freq/cron field, "interval seconds."
+- **`last_completed_at`** — Unix-epoch field, written once at `job.sh complete`; anchors the re-fire computation. _Avoid:_ completed_at, last_run_at.
+- **`[REPEAT-JOB]` prefixed question** — CONDENSE-only promotion ceremony (multiple-choice Hourly/Daily/Weekly × value) flipping the focused job's `repeating_interval`. _Avoid:_ `[JOB-REPEATABLE]`/`[REPEATABLE]` (adjective form), `[SCHEDULE-JOB]`.
+
+**Series-exclusive terms (defined deeper):** Historian-ratchet steps + Self-compact reactivation rhythm → `blog/b5/CLAUDE.md`; Plan-verify backward loop + plan→verify forward transition → `blog/b6/CLAUDE.md`.
+
+**Banned-alias sweep — Phase-C actionable (replace on sight in essay bodies):** `Form 1/2/3` → Job Stage 1/2/3 · `sibling job` → standalone/dep job · `seal`/`sealed`/`seal-plan`/`completed_plan`/`plan_state`/`md_approved`/`yaml_drafting`/`yaml_ready`/`plan_file_last`/`previous_status` → retired (use the cycle-formula + plan_file-persistence model) · `[PLAN-APPROVAL]`/`[YAML-APPROVAL]` → retired · "Stage 1/2 hook" → pre-/post-completion hook · "stage-aware deflation"/"50% Stage-2" → single 80% deflation gate · "plan decided at job creation" → Stage decided in cycle-1 PLAN. Full list: CONTEXT.md Deletion ledger.
+
 ## Content Workflow
 
 - **Source of truth:** `.html` files (committed to git)
