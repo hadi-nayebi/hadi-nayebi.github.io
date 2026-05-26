@@ -70,7 +70,7 @@ For each term selected, for each `[sync:X]` claim present on its Sync line, re-c
 
 For each term:
 - **All 4 claims hold up** → propose adding `[verified]` to the term's Sync line. ONE atomic edit per term: append ` [verified]` to the end of the existing `**Sync:**` line.
-- **Any claim fails** → do NOT add `[verified]`. Surface the specific failure in the report with quoted evidence + file path + recommended fix. The architect addresses the failure before the next verifier round.
+- **Any claim fails** → do NOT add `[verified]`. Surface the specific failure in the report with quoted evidence + file path + recommended fix. **AND explicitly direct the architect to REMOVE the offending `[sync:X]` tag from that term's Sync line** — a `[sync:X]` tag must NEVER falsely claim a sync that is not actually present + correct. The tag comes OFF until the surface is fixed AND a later round re-verifies it (then the architect re-adds it). You are read-only on sync tags, so you list these under a dedicated `## Tags to REMOVE (false sync claims)` report section; the architect executes the removal before the next round. Tag-presence must always be a TRUE signal.
 
 ### Step 4 — Apply approved edits.
 
@@ -94,6 +94,10 @@ Self-score: X/10
   - Fix: replace with "pre-completion hook".
 - ...
 
+## Tags to REMOVE (false sync claims)
+- **<term>** — REMOVE `[sync:blog-body]` from its Sync line (claim does not hold; see issue above). Architect re-adds only after the fix lands + a later round re-verifies.
+- ...
+
 ## Terms skipped (already [verified])
 - <count> terms.
 
@@ -106,7 +110,7 @@ Self-score: X/10
 ## Discipline
 
 - **Do NOT add `[verified]` based on the architect's claim alone.** Re-check every surface yourself; the `[sync:X]` claims are hypotheses you test, not facts you accept.
-- **Do NOT modify the four `[sync:X]` tags.** Those are architect-owned. You only ADD `[verified]`.
+- **Do NOT modify the four `[sync:X]` tags yourself.** Those are architect-owned; you stay read-only on them. You only ADD `[verified]` — and, on drift, RECOMMEND removal of the false `[sync:X]` tag in your `## Tags to REMOVE` section. The architect executes the removal. A drifted tag must come off until re-verified, so tag-presence is always a true signal.
 - **Do NOT touch any term body, `_Avoid_:` line, or non-Sync content.** Single-purpose tool.
 - **Surface honest drift over inflated cleanliness.** A round that finds N issues is more valuable than a round that papers over them — the 3-CLEAN-rounds gate exists to catch fatigue-driven false positives.
 - **Read-first; act-after.** Step 5 report goes out BEFORE any Edit. The architect (or operator) can intervene if your judgment seems wrong before tags get added.
