@@ -52,7 +52,7 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 
 **Repeating jobs** (new design — no corpus presence yet)
 - **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm. _Avoid:_ recurring/scheduled/periodic job.
-- **`repeating_interval`** — integer-HOURS field, default 0 (one-shot). _Avoid:_ schedule/freq/cron field, "interval seconds."
+- **`repeating_interval`** — integer-HOURS field, default 0 (one-shot). _Avoid:_ schedule/freq/cron field, "interval seconds," "repeating_interval_hours" (unit is implicit).
 - **`last_completed_at`** — Unix-epoch field, written once at `job.sh complete`; anchors the re-fire computation. _Avoid:_ completed_at, last_run_at.
 - **`[REPEAT-JOB]` prefixed question** — CONDENSE-only promotion ceremony (multiple-choice Hourly/Daily/Weekly × value) flipping the focused job's `repeating_interval`. _Avoid:_ `[JOB-REPEATABLE]`/`[REPEATABLE]` (adjective form), `[SCHEDULE-JOB]`.
 
