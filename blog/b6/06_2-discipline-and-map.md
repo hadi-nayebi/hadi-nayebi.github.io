@@ -40,7 +40,7 @@ The rim of the cycle has more edges than [Essay 5](../b5/05_1-the-two-layer-foun
 - `execute → observe` or `execute → plan`
 - `verify → execute`, `verify → plan`, or `verify → observe` (the multi-destination routing — minor fix, design flaw, or context gap, each pointing at a different prior phase)
 
-No backward edge from condense. Once the cycle reaches CONDENSE, the only exit is forward to idle. The brain refuses to un-consolidate. We come back to *why* in the [CONDENSE sub-essay](06_7-condense.html). *[ref: condense-has-no-backward-edge | .claude/plugins/phasic_system/scripts/phase.sh BACKWARD_MAP | BACKWARD_MAP declares back-edges for plan/execute/verify but no `condense:*` entry; phase.sh's `back` command dies on any attempted backward from condense because the map lookup returns empty. The omission is the enforcement — CONDENSE's irreversibility is encoded as missing data, not as a special case.]*
+No backward edge from condense. Once the cycle reaches CONDENSE, the only exit is forward to idle. The brain refuses to un-consolidate. We come back to *why* in the [CONDENSE essay](06_7-condense.html). *[ref: condense-has-no-backward-edge | .claude/plugins/phasic_system/scripts/phase.sh BACKWARD_MAP | BACKWARD_MAP declares back-edges for plan/execute/verify but no `condense:*` entry; phase.sh's `back` command dies on any attempted backward from condense because the map lookup returns empty. The omission is the enforcement — CONDENSE's irreversibility is encoded as missing data, not as a special case.]*
 
 **The gmode side-channel** — every phase, including idle, has one extra edge that loops back to itself through gmode. Gmode is short for *generic mode*. It is the freestyle phase: a deliberately unconstrained mode where none of the OPEVC tool-restriction guards apply, used for work that doesn't fit the OPEVC ceremony. Why does a system built on constraint ship a way around its own constraints? Because a constraint with no sanctioned exit becomes a cage — and a caged agent invents unsanctioned workarounds; gmode is the one deliberate, friction-gated lane out, so the rare off-pattern job has somewhere to go that isn't a hack. *[ref: gmode-self-exits-phase-guards | .claude/plugins/phase_verify/hooks/verify-guard.sh:84-88 | Every phase guard reads the focused job's current_phase and exits 0 when it doesn't match its own phase name; in gmode the equality fails for all five phase guards, so none enforce restrictions.]*
 
@@ -189,7 +189,7 @@ The discipline here is friction, not mathematical enforcement: every guard depen
 
 ---
 
-The transition map is the *what*; the tool restrictions are the *how*. Together they form the discipline. The next sub-essay opens the first compartment — OBSERVE, the read-wide-write-once entry phase that decides what the rest of the cycle will work on.
+The transition map is the *what*; the tool restrictions are the *how*. Together they form the discipline. The next essay opens the first compartment — OBSERVE, the read-wide-write-once entry phase that decides what the rest of the cycle will work on.
 
 ---
 
