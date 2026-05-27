@@ -117,8 +117,8 @@ the growth stages or maturity levels along that dimension.
 "seed install". Three axes radiate out at roughly 120° from each other:
 - Upper axis (green chalk) labeled "jobs" — three tick marks along it
   labeled "single-cycle", ".md plan", ".yaml plan".
-- Lower-right axis (orange chalk) labeled "plan_state" — three tick
-  marks labeled "drafting", "md_approved", "yaml_ready".
+- Lower-right axis (orange chalk) labeled "operator" — three tick
+  marks labeled "apprentice", "journeyman", "architect".
 - Lower-left axis (cyan chalk) labeled "brain" — three tick marks
   labeled "voice", "hook", "plugin".
 At the far end of each axis, a small chalk star marks "architect work".
@@ -127,7 +127,7 @@ work".
 
 **Strict name whitelist** — only these literal text strings as labels:
 "seed install", "jobs", "single-cycle", ".md plan", ".yaml plan",
-"plan_state", "drafting", "md_approved", "yaml_ready", "brain", "voice",
+"operator", "apprentice", "journeyman", "architect", "brain", "voice",
 "hook", "plugin", "architect work", "Three growth axes over months of
 work".
 
@@ -149,14 +149,14 @@ exactly with the stage name + a short descriptor underneath:
 - Step 1 (cyan fill) — title "Stage 1", descriptor "single-cycle OPEVC".
 - Step 2 (green fill) — title "Stage 2", descriptor "multi-cycle .md plan".
 - Step 3 (orange fill) — title "Stage 3", descriptor "multi-cycle .yaml plan".
-- Step 4 (pink fill) — title "Stage 4", descriptor "sealed".
+- Step 4 (pink fill) — title "Stage 4", descriptor "plugin form of job".
 A white-chalk arrow runs along the top of all four steps, pointing
 right, labeled "maturation". A small chalk note in the corner reads
-exactly: "plan_state lives on the job, not in the file". A chalk
+exactly: "Stage is decided in cycle-1 PLAN, not at creation". A chalk
 caption below reads exactly: "Four stages of job maturation".
 
 **Strict name whitelist** — only these literal text strings as labels:
 "Stage 1", "single-cycle OPEVC", "Stage 2", "multi-cycle .md plan",
-"Stage 3", "multi-cycle .yaml plan", "Stage 4", "sealed", "maturation",
-"plan_state lives on the job, not in the file", "Four stages of job
+"Stage 3", "multi-cycle .yaml plan", "Stage 4", "plugin form of job", "maturation",
+"Stage is decided in cycle-1 PLAN, not at creation", "Four stages of job
 maturation".
