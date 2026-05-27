@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Stages of Job Maturation — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b8/images/four-stages-b8-2.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260523">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -145,7 +145,7 @@
 
                         <h2>Stage 3 &mdash; Multi-Cycle With a YAML Plan</h2>
 
-                        <p>Stage 3 is what a Stage-2 job becomes once its plan has stopped changing and the operator wants it to carry richer, structured, per-phase context. The completion semantics are <em>identical</em> to Stage 2 &mdash; same cycle-count formula, same <code>[JOB-COMPLETE]</code> gate, same persistent plan file that accumulates across runs. The single difference is the plan file&rsquo;s <em>format</em>: a <code>.yaml</code> document instead of a <code>.md</code> one. It is not a state-flip on the Stage-2 job, and it is not a dependent of it &mdash; a Stage-3 job is its own repeatable job whose cycle-1 PLAN names a <code>.yaml</code> plan file, typically authored once the matching <code>.md</code> pattern has been run enough times to be worth hardening into parseable structure.</p>
+                        <p>Stage 3 is what a Stage-2 job becomes once its plan has stopped changing and the operator wants it to carry richer, structured, per-phase context. The completion semantics are <em>identical</em> to Stage 2 &mdash; same cycle-count formula, same <code>[JOB-COMPLETE]</code> gate, same persistent plan file that accumulates across runs. The single difference is the plan file&rsquo;s <em>format</em>: a <code>.yaml</code> document instead of a <code>.md</code> one. It is not a state-flip on the Stage-2 job, and it is not a dependent of it &mdash; a Stage-3 job is its own repeatable job whose cycle-1 PLAN names a <code>.yaml</code> plan file, typically authored once the matching <code>.md</code> pattern has been run enough times to be worth hardening into parseable structure. <sup class="ref-marker" title="ref: stage-3-graduation-not-dependent | root CLAUDE.md &quot;Job Stages&quot; section | The &quot;Job Stages&quot; section&#x27;s Stage 3 entry states Stage 3 is &quot;IDENTICAL to Stage 2 in completion semantics; the ONLY difference is plan-file format&quot; and is &quot;typically the graduation of a mature Stage-2 job repeated many times — NOT a state-flip on the Stage-2 job, NOT a dependent of it.&quot; A Stage-3 job is its own repeatable job whose cycle-1 PLAN names a `.yaml` plan file.">&#9432;</sup></p>
 
                         <p>Concretely: a Stage-3 job&rsquo;s cycle-1 PLAN calls <code>set-plan-file plan_&lt;slug&gt;.yaml</code>; cycle-1 EXECUTE creates the <code>.yaml</code>, whose <code>cycles:</code> list declares the per-cycle entries; cycle-1 VERIFY refines until it is good. From cycle 2 onward the job does its real operational work, and the orchestrator reads the <code>.yaml</code> at every phase entry to inject job-specific context into the agent&rsquo;s voice stream. The plan file persists and the job is reactivatable, exactly like a Stage-2 <code>.md</code> job &mdash; only the format, and the per-phase injection it unlocks, set it apart. <sup class="ref-marker" title="ref: stage-3-yaml-identical-except-format | CONTEXT.md &quot;Job Stage&quot; section | Stage 3 is repeatable with a `.yaml` plan file — IDENTICAL to Stage 2 in completion semantics; the ONLY difference is plan-file format. Cycle-1 EXECUTE creates a `.yaml` whose `cycles:` list declares per-cycle entries, and the `.yaml` additionally injects per-phase context at each phase entry. It is typically the graduation of a mature Stage-2 job repeated many times — NOT a state-flip on the Stage-2 job, and NOT a dependent of it.">&#9432;</sup></p>
 
@@ -165,7 +165,7 @@
 
                         <h2>Stage 4 &mdash; Plugin Form of a Job</h2>
 
-                        <p>The final stage is aspirational &mdash; named in the architecture, not yet built in the prototype. It is the shape reserved for jobs whose phase cognition needs customization <em>beyond</em> what context injection can deliver.</p>
+                        <p>The final stage is aspirational &mdash; named in the architecture, not yet built in the prototype. It is the shape reserved for jobs whose phase cognition needs customization <em>beyond</em> what context injection can deliver. <sup class="ref-marker" title="ref: stage-4-aspirational-no-code-referent | CONTEXT.md &quot;Job Stage&quot; section | The &quot;Job Stage&quot; section names a future Stage 4 as &quot;the plugin form of a job — a job that ships its own per-job plugin adding new hard gates and new voices,&quot; with &quot;No code referent yet (aspirational per Rule 38&#x27;s customization-gradient Layer 5).&quot; Named in the architecture, not built in the prototype.">&#9432;</sup></p>
 
                         <p>Some jobs require specific tools allowed only during certain phases. Some require the OBSERVE phase to read a specific set of sources before any tool fires. Some require the EXECUTE phase to enforce a specific pattern on writes. Voice injection cannot deliver this; the discipline has to be <em>structural</em>. The job graduates into a plugin.</p>
 
@@ -284,8 +284,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260523"></script>
-    <script src="../../js/components.js?v=20260523"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>
