@@ -16,7 +16,7 @@ og_image: "blog/b8/images/maturation-arc-b8-banner.png"
 
 ---
 
-[Essay 8.2](08_2-job-maturation-stages.html) closed the job-maturation arc — Stage 1 deep single-cycle through Stage 4 plugin form, plus sibling and dependent job patterns. The arc describes *how* a job grows. This sub-essay opens the *outcome*: a precise inventory of what the prototype's brain holds today, after three months of cycles running through that arc.
+[Essay 8.2](08_2-job-maturation-stages.html) closed the job-maturation arc — Stage 1 deep single-cycle through Stage 4 plugin form, plus standalone and dependent job patterns. The arc describes *how* a job grows. This sub-essay opens the *outcome*: a precise inventory of what the prototype's brain holds today, after three months of cycles running through that arc.
 
 The prototype today is a useful ground-truth case. A precise inventory of what its brain holds reveals the shape every mature seed converges toward.
 
@@ -36,7 +36,7 @@ A research lab running experiment-protocol jobs through the same maturation arc 
 
 The shape is consistent: a small brain, a large knowledge layer, a narrow memory. The compression is structural — caps plus the CONDENSE waterfall plus soft thresholds — and the result is a seed whose persistent memory grows where it should grow (knowledge) and stays narrow where narrowness matters (memory, root brain). [Essay 1](../01-llms-are-not-the-agents.html) said the filesystem is the agent. The numbers say what *filesystem* means in practice after a few months of accumulation: a knowledge directory thick with operational understanding, a brain just big enough to read in one sitting, and a memory file that captures the operator's hard-won rules in one short list. Together with the essay series you are reading, that `.claude/knowledge/` directory is what the seed treats as its canonical context source — the essays for the *why*, the knowledge directory for the *how*. The limit on every number above is honest: caps and discipline are friction, not impossibility — a careless operator could bloat any layer; the architecture's design choice is to make the bloat visibly costly rather than to prevent it. *[ref: caps-plus-condense-discipline-not-code | CLAUDE.md "Size Limits" section + "Brain Maturation Model" section | Root CLAUDE.md's "Size Limits" section enumerates every documented cap: Root CLAUDE.md 3,500w, Subdir CLAUDE.md 800w, Plans 2,000w, MEMORY.md 400w, Skills 500w. The "Brain Maturation Model" section frames size limits as the forcing function for migration — when the brain hits its word limit, the oldest proven patterns are the best candidates for hook extraction. Only `docs/evolution.md` is code-gated (see Ref 4); every other cap is enforced by CONDENSE discipline, not by a hook.]*
 
-The image below maps the same architecture along a different axis — by *durability*. The transient layers sit at top (the chat session that dies at compaction, the working CLAUDE.md files that deflate each cycle, the plan files that archive when sealed). The durable layers sit at bottom (the knowledge silos that grow monotonically, the memory directory that crosses every project). The one hard cap (evolution.md at 2000 words) sits in the middle, the only band the architecture polices with a code gate rather than discipline. *[ref: durability-stack-three-bands | CLAUDE.md "Size Limits" section + .claude/plugins/plugin_integrity/hooks/evolution-cap.sh | Top band (transient): root + subdir CLAUDE.md cap 3,500w/800w, plans 2,000w — all deflate each CONDENSE cycle per the working-memory contract. Middle band (one hard cap): `docs/evolution.md` enforced at MAX_EVOLUTION_WORDS default 2000 via the PreToolUse evolution-cap.sh hook — the only PreToolUse word-count gate in the entire plugin tree. Bottom band (durable): knowledge silos grow monotonically (no cap in the Size Limits table — only soft CONDENSE pressure); memory directory at MEMORY.md 400w soft cap with operator-feedback dominant content. The three bands match the image's top-to-bottom durability axis.]*
+The image below maps the same architecture along a different axis — by *durability*. The transient layers sit at top (the chat session that dies at compaction, the working CLAUDE.md files that deflate each cycle, the plan files that persist across a job's cycles). The durable layers sit at bottom (the knowledge silos that grow monotonically, the memory directory that crosses every project). The one hard cap (evolution.md at 2000 words) sits in the middle, the only band the architecture polices with a code gate rather than discipline. *[ref: durability-stack-three-bands | CLAUDE.md "Size Limits" section + .claude/plugins/plugin_integrity/hooks/evolution-cap.sh | Top band (transient): root + subdir CLAUDE.md cap 3,500w/800w, plans 2,000w — all deflate each CONDENSE cycle per the working-memory contract. Middle band (one hard cap): `docs/evolution.md` enforced at MAX_EVOLUTION_WORDS default 2000 via the PreToolUse evolution-cap.sh hook — the only PreToolUse word-count gate in the entire plugin tree. Bottom band (durable): knowledge silos grow monotonically (no cap in the Size Limits table — only soft CONDENSE pressure); memory directory at MEMORY.md 400w soft cap with operator-feedback dominant content. The three bands match the image's top-to-bottom durability axis.]*
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/brain-layers-b8-3.png
@@ -54,7 +54,7 @@ The image below maps the same architecture along a different axis — by *durabi
       Right: "deflates each cycle"
     Band 3 (orange):
       Left:  "plan files"
-      Right: "archived when sealed"
+      Right: "persists across cycles"
     Band 4 (pink):
       Left:  "plugin evolution.md"
       Right: "capped 2000w, narrated"
@@ -66,7 +66,7 @@ The image below maps the same architecture along a different axis — by *durabi
       Right: "cross-project, your home dir"
   On the left edge of the stack, draw a single vertical white-chalk arrow running BOTTOM-UP along the entire stack, with one short caption riding the arrow IN WHITE CHALK exactly: "durability".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "chat session", "dies at compaction", "working CLAUDE.md", "deflates each cycle", "plan files", "archived when sealed", "plugin evolution.md", "capped 2000w, narrated", ".claude/knowledge/", "topic silos, grows monotonically", "memory/", "cross-project, your home dir", "durability", plus the caption below. No other words, file names, folders, or lifespan descriptors may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "chat session", "dies at compaction", "working CLAUDE.md", "deflates each cycle", "plan files", "persists across cycles", "plugin evolution.md", "capped 2000w, narrated", ".claude/knowledge/", "topic silos, grows monotonically", "memory/", "cross-project, your home dir", "durability", plus the caption below. No other words, file names, folders, or lifespan descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.3. Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
 -->
 
@@ -78,5 +78,5 @@ A small brain, a large knowledge layer, a narrow memory — these are the *outco
 
 *Essay 8.3 — From Apprentice to Architect, Part 3 of 9.*
 
-*Previous: [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle through Stage 4 plugin form, plus sibling and dependent jobs.*
+*Previous: [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle through Stage 4 plugin form, plus standalone and dependent jobs.*
 *Next: [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template.*
