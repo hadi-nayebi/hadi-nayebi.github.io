@@ -34,7 +34,7 @@ This essay opens that discipline compartment by compartment.
 
 ## The journey ahead
 
-Essay 6 unfolds across short sub-essays:
+Essay 6 unfolds across short parts:
 
 - **Essay 6.1 — Phasic Foundation** *(you are here)* — the cognitive cycle and why phases at all
 - [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the per-phase tool restrictions
@@ -83,7 +83,7 @@ The mechanism is mechanical. The justification is cognitive: separated kinds of 
 
 That justification is the load-bearing claim of the phasic layer.
 
-A handful of mechanisms inside the cycle deserve a brief mention here before the next sub-essays open them. Every phase entry locks every tool until the agent sets a *multiplier* — an inverse-direction scalar capturing the agent's forecast of how scope-heavy this phase will be for this job. A small multiplier declares "this is going to be heavy"; a large one declares "this should be quick." The choice is permanent for the cycle. *[ref: multiplier-set-at-phase-entry | .claude/plugins/phase_observe/scripts/observe.sh `set-multiplier` case-arm + `.claude/knowledge/opevc/multiplier-semantics-canonical.md` | `set-multiplier` validates the value against a small bounded set (`0.5, 1, 1.5, 2, 2.5, 3`), writes it to `observe_entries[-1].multiplier`, then emits `observe.info.multiplier-set` — the only public command surface on `observe.sh`. The canonical knowledge file documents the sentinel design: fresh phase entry initializes `multiplier: 0`, tools locked until the agent forecasts and sets, no default to fall through.]*
+A handful of mechanisms inside the cycle deserve a brief mention here before the next essays open them. Every phase entry locks every tool until the agent sets a *multiplier* — an inverse-direction scalar capturing the agent's forecast of how scope-heavy this phase will be for this job. A small multiplier declares "this is going to be heavy"; a large one declares "this should be quick." The choice is permanent for the cycle. *[ref: multiplier-set-at-phase-entry | .claude/plugins/phase_observe/scripts/observe.sh `set-multiplier` case-arm + `.claude/knowledge/opevc/multiplier-semantics-canonical.md` | `set-multiplier` validates the value against a small bounded set (`0.5, 1, 1.5, 2, 2.5, 3`), writes it to `observe_entries[-1].multiplier`, then emits `observe.info.multiplier-set` — the only public command surface on `observe.sh`. The canonical knowledge file documents the sentinel design: fresh phase entry initializes `multiplier: 0`, tools locked until the agent forecasts and sets, no default to fall through.]*
 
 Behind the scenes the multiplier scales action-points against a point floor that must clear before advance becomes permissible — but the agent never sees points in any voice or injection; coaching stays qualitative to keep the gate from inviting point-chasing behavior. *[ref: multiplier-scales-against-point-floor | .claude/plugins/phase_observe/scripts/observe.sh:253 `add-points` jq expression | The jq line `($p * ($e.multiplier // 1)) as $adj` applies the multiplier as a direct scalar against each tool-call's raw point value. The defaulted `// 1` makes the gate behave identically for a job that never set a multiplier and one that set it explicitly to 1 — the gate is the same arithmetic for everyone.]*
 
@@ -91,7 +91,7 @@ Separately, every phase carries its own *direct-action budget*, an independent m
 
 CONDENSE carries a *fix-in-cycle* gate that refuses to close the cycle until bugs introduced in this very cycle are repaired first. *[ref: condense-fix-in-cycle-gate | .claude/plugins/phase_condense/hooks/condense-guard.sh:319-331 `job.sh create` allow-block + `voice.xml` `fix-in-cycle-discipline` coaching | The guard checks whether a proposed new job's scope sits inside the altered-list (this cycle's edited dirs); if yes, it blocks creation with `fix-in-cycle-blocked` and tells the agent to backward to execute instead. The companion coaching voice teaches the distinction between in-scope fixes and genuinely out-of-scope pending jobs.]*
 
-Job-graph mutations follow a *lifecycle-symmetry* rule — the phase that adds graph state is rarely the phase that removes it, because the right context for each operation lives in a different cognitive posture. *[ref: lifecycle-symmetry-add-vs-remove | .claude/plugins/phase_condense/hooks/condense-guard.sh:311-314 allows `add-dependency` + .claude/plugins/phase_verify/hooks/verify-guard.sh:360-374 allows `remove-dependency` only | CONDENSE owns `add-dependency` (cycle-wide synthesis context for what follow-ups matter); VERIFY owns `remove-dependency` (audit context for whether a declared dep turned out unnecessary). The verify-guard explicitly blocks `create / create-dependent / add-dependency` to seal the asymmetry.]* We name each mechanism here so the sub-essays can use the labels; their machinery opens one by one.
+Job-graph mutations follow a *lifecycle-symmetry* rule — the phase that adds graph state is rarely the phase that removes it, because the right context for each operation lives in a different cognitive posture. *[ref: lifecycle-symmetry-add-vs-remove | .claude/plugins/phase_condense/hooks/condense-guard.sh:311-314 allows `add-dependency` + .claude/plugins/phase_verify/hooks/verify-guard.sh:360-374 allows `remove-dependency` only | CONDENSE owns `add-dependency` (cycle-wide synthesis context for what follow-ups matter); VERIFY owns `remove-dependency` (audit context for whether a declared dep turned out unnecessary). The verify-guard explicitly blocks `create / create-dependent / add-dependency` to seal the asymmetry.]* We name each mechanism here so the later essays can use the labels; their machinery opens one by one.
 
 ## What you would customize
 
@@ -109,7 +109,7 @@ The shape lifts cleanly off this prototype. A research lab's seed could run lite
 
 ---
 
-The foundation is in place: a Markov brain whose moves are themselves Markov chains, phases as the structural answer to mixed-mode cognition. The next sub-essay maps every edge of the cycle — the full transition graph, the discipline the per-phase tool restrictions enforce, and a quick map of what each phase produces before we open the compartments one at a time.
+The foundation is in place: a Markov brain whose moves are themselves Markov chains, phases as the structural answer to mixed-mode cognition. The next essay maps every edge of the cycle — the full transition graph, the discipline the per-phase tool restrictions enforce, and a quick map of what each phase produces before we open the compartments one at a time.
 
 ---
 

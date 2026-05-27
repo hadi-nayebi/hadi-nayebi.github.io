@@ -16,11 +16,11 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-[Essay 6.8](06_8-inverse-multiplier.html) covered the multiplier dial — the meta-cognition the seed agent is forced through *before* any phase begins, so a phase's tool budget reflects an honest forecast of the work ahead. This sub-essay turns to the opposite case: the work that doesn't fit any phase's compartment at all. The off-cycle lane.
+[Essay 6.8](06_8-inverse-multiplier.html) covered the multiplier dial — the meta-cognition the seed agent is forced through *before* any phase begins, so a phase's tool budget reflects an honest forecast of the work ahead. This essay turns to the opposite case: the work that doesn't fit any phase's compartment at all. The off-cycle lane.
 
 Every phase, including idle, carries one extra edge that loops back to itself through gmode — short for *generic mode*. Gmode is the freestyle side-channel: a deliberately unconstrained state used for work the seed agent needs to do *now*, but for which the OPEVC ceremony would be overhead rather than discipline. *[ref: every-phase-carries-gmode-edge | .claude/plugins/phasic_system/scripts/phase.sh:341-407 + hooks/gmode-gate.sh:66-82 | The `enter-gmode` and `exit-gmode` branches at phase.sh:341-407 contain no per-phase entry filter — the same handler runs whether the caller's `current_phase` was idle, observe, plan, execute, verify, or condense. The pre-tool `gmode-gate.sh` validates the `[GMODE]` format regardless of phase. The off-cycle lane is not implemented as five separate edges; it is one entry handler that any phase's interrupt can reach.]*
 
-This sub-essay is for you — especially when you are doing ad-hoc maintenance on your own running seed.
+This essay is for you — especially when you are doing ad-hoc maintenance on your own running seed.
 
 ---
 
@@ -115,7 +115,7 @@ The architecture accepts them because the alternative — letting the agent quie
 
 ## Two ways to leave OPEVC
 
-The off-cycle lane covers one kind of work that doesn't fit the phasic ceremony: **ad-hoc**, **fast**, **bypass-justified**. The next sub-essay covers the other: **planned**, **long-horizon**, **carried across cycles** — the plan file the seed agent reaches for when the work is too large for a single OPEVC pass.
+The off-cycle lane covers one kind of work that doesn't fit the phasic ceremony: **ad-hoc**, **fast**, **bypass-justified**. The next essay covers the other: **planned**, **long-horizon**, **carried across cycles** — the plan file the seed agent reaches for when the work is too large for a single OPEVC pass.
 
 Gmode is the side-channel; the plan file is the long-channel. Both exist outside the per-cycle compartmentalization OPEVC enforces. Both are deliberate exits — one for the work that's too small for ceremony, one for the work that's too large.
 
