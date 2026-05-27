@@ -119,7 +119,7 @@ When VERIFY passes, the orchestrator advances the job to CONDENSE.
 
 ## A worked example
 
-The multi-cycle plan-job from the prior sub-essays reaches its third cycle's VERIFY phase. The agent has revert-and-reauthored the marker schema in EXECUTE; the checkpoint commits are clean; the orchestrator advances the job to VERIFY.
+The multi-cycle plan-job from the earlier essays reaches its third cycle's VERIFY phase. The agent has revert-and-reauthored the marker schema in EXECUTE; the checkpoint commits are clean; the orchestrator advances the job to VERIFY.
 
 The agent enters VERIFY. The multiplier sentinel is unset; every tool is locked. The agent forecasts a tighter phase than EXECUTE because the work is read-and-judge rather than write — picks 2.5 on the multiplier. The lock lifts. *[ref: verify-multiplier-sentinel-locks-tools-until-set | .claude/plugins/phase_verify/hooks/verify-guard.sh:169-186 | Verify-guard's Sentinel-Lock Gate fires when `current_mult == 0` (the fresh phase-entry state the tracker initializes): every productive tool blocks via the `multiplier-zero-block` voice, with one allowance — the Bash command running `verify.sh set-multiplier`. The lock lifts the moment the agent sets a value in 0.5-3, forcing an explicit scope forecast at entry.]*
 
