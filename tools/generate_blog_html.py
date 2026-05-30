@@ -8,7 +8,7 @@ Pragmatic markdown converter tuned for this blog's specific patterns:
 - Standard markdown: ## h2, ### h3, **bold**, *italic*, `code`, [link](url), --- hr
 - Lists: - item lines clustered into <ul>/<li>
 - Em-dash discipline: -- → &mdash;, single ASCII curly-apostrophe substitution for typography
-- Sidebar: list every existing blog post (newest first), mark the current one active
+- Sidebar: prev/active/next context cards derived from READING_ORDER (reading order, 01 first), mark the current one active
 
 Usage:
     python3 tools/generate_blog_html.py <input.md> <output.html>
@@ -22,28 +22,27 @@ import re
 import sys
 from pathlib import Path
 
-# All published + drafting blog posts in newest-first order.
+# All published + drafting blog posts in READING ORDER (essay 01 first … 8.9 last).
 # Each entry is (slug_without_extension, title, date, read_time, audience_tag, tags).
-# Update when a new post is added. The active post is auto-detected from the input slug.
+# This list is the source of truth for post ordering across blog.html, feed.xml, and
+# sitemap.xml (all hand-maintained to mirror this order). Per-essay sidebar prev/next is
+# computed separately from READING_ORDER below. Update when a new post is added —
+# insert at the correct reading-order position here AND in READING_ORDER.
 SIDEBAR_POSTS = [
-    ("08_1-apprentice-to-architect-foundation", "Essay 8.1 — Apprentice to Architect Foundation", "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("08_2-job-maturation-stages",       "Essay 8.2 — The Stages of Job Maturation",         "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Jobs"]),
-    ("08_3-brain-after-three-months",    "Essay 8.3 — What Lives in the Brain After Three Months", "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Knowledge"]),
-    ("08_4-soft-hard-migration",         "Essay 8.4 — Soft → Hard Migration",               "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Patterns"]),
-    ("08_5-enforced-vs-discipline",      "Essay 8.5 — What's Enforced vs What's Discipline", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("08_6-apprentice-journeyman-architect", "Essay 8.6 — The Maturation Arc — Apprentice, Journeyman, Architect",               "May 2026", "8 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("08_7-brain-stops-growing",         "Essay 8.7 — The Brain Stops Growing in Size",      "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("08_8-safe-self-modification",      "Essay 8.8 — A System That Safely Modifies Itself", "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("08_9-the-seed-is-yours",           "Essay 8.9 — The Seed Is Yours",                    "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
-    ("07_1-plugin-kit-foundation",       "Essay 7.1 — Plugin Kit Foundation",               "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_2-skeleton-claudemd-hooks-scripts", "Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts", "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_3-dual-voice-architecture",     "Essay 7.3 — The Dual Voice Architecture",         "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_4-data-json-hidden-state",      "Essay 7.4 — data.json — The Hidden State",         "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_5-docs-and-historian",          "Essay 7.5 — docs/ and the Historian",             "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_6-agents-and-80-20-budget",     "Essay 7.6 — agents/ and the 80/20 Dispatch Budget", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_7-smaller-organs-and-wiring",   "Essay 7.7 — Smaller Organs and Brain-Root Wiring", "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_8-lock-ceremony",               "Essay 7.8 — The Lock Ceremony",                   "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
-    ("07_9-creating-a-new-plugin",       "Essay 7.9 — Building a New Plugin",               "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("01-llms-are-not-the-agents",       "LLMs Are Not the Agents",               "February 2026", "17 min read",  "Professionals", ["Agents", "AI", "Fundamentals"]),
+    ("02-we-could-have-had-agi",         "We Could Have Had AGI By Now",          "February 2026", "20 min read",  "Professionals", ["Agents", "AI", "Architecture", "AGI"]),
+    ("03-your-brain-was-never-built-for-this", "Your Brain Was Never Built for This", "March 2026", "16 min read", "Professionals", ["Agents", "AI", "Society", "Evolution"]),
+    ("03_1-the-folder-is-alive",         "The Folder Is Alive",                   "May 2026",      "17 min read",  "Professionals", ["Vision", "Seed Agent", "Future of Work"]),
+    ("04-the-language-of-agents",        "The Language of Agents",                "March 2026",    "18 min read",  "Professionals", ["Agents", "AI", "Vocabulary"]),
+    ("05_1-the-two-layer-foundation",    "Essay 5.1 — The Two-Layer Foundation",            "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_2-plugin-integrity",            "Essay 5.2 — Plugin Edit Safety — plugin_integrity",                  "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_3-brain-guard",                 "Essay 5.3 — Context Window Discipline — brain_guard",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_4-job-core",                    "Essay 5.4 — Job Lifecycle — job_core",                       "May 2026", "10 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_5-interaction-summary",         "Essay 5.5 — Mega-Prompt Compression — interaction_summary",             "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_6-question-discipline",         "Essay 5.6 — Structured Questions — question_discipline",                "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_7-claude-md-hierarchy",         "Essay 5.7 — The CLAUDE.md Hierarchy",             "May 2026", "12 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_8-historian-ratchet",           "Essay 5.8 — The Historian Ratchet",               "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
+    ("05_9-customization-guardrail",     "Essay 5.9 — The Customization Guardrail",         "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
     ("06_1-phasic-foundation",           "Essay 6.1 — Phasic Foundation",                   "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_2-discipline-and-map",          "Essay 6.2 — The Discipline and the Map",          "May 2026", "15 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_3-observe",                     "Essay 6.3 — OBSERVE — Read Wide, Write Once",      "May 2026", "13 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
@@ -54,20 +53,24 @@ SIDEBAR_POSTS = [
     ("06_8-inverse-multiplier",         "Essay 6.8 — The Inverse Multiplier",              "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),
     ("06_9-gmode",                       "Essay 6.9 — GMODE — The Off-Cycle Lane",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "GMODE"]),
     ("06_10-plan-state-machine",         "Essay 6.10 — The Plan File — Long-Horizon Memory",             "May 2026", "16 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Plan File", "Long-Horizon"]),
-    ("05_1-the-two-layer-foundation",    "Essay 5.1 — The Two-Layer Foundation",            "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_2-plugin-integrity",            "Essay 5.2 — Plugin Edit Safety — plugin_integrity",                  "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_3-brain-guard",                 "Essay 5.3 — Context Window Discipline — brain_guard",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_4-job-core",                    "Essay 5.4 — Job Lifecycle — job_core",                       "May 2026", "10 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_5-interaction-summary",         "Essay 5.5 — Mega-Prompt Compression — interaction_summary",             "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_6-question-discipline",         "Essay 5.6 — Structured Questions — question_discipline",                "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_7-claude-md-hierarchy",         "Essay 5.7 — The CLAUDE.md Hierarchy",             "May 2026", "12 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_8-historian-ratchet",           "Essay 5.8 — The Historian Ratchet",               "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("05_9-customization-guardrail",     "Essay 5.9 — The Customization Guardrail",         "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent"]),
-    ("03_1-the-folder-is-alive",         "The Folder Is Alive",                   "May 2026",      "17 min read",  "Professionals", ["Vision", "Seed Agent", "Future of Work"]),
-    ("04-the-language-of-agents",        "The Language of Agents",                "March 2026",    "18 min read",  "Professionals", ["Agents", "AI", "Vocabulary"]),
-    ("03-your-brain-was-never-built-for-this", "Your Brain Was Never Built for This", "March 2026", "16 min read", "Professionals", ["Agents", "AI", "Society", "Evolution"]),
-    ("02-we-could-have-had-agi",         "We Could Have Had AGI By Now",          "February 2026", "20 min read",  "Professionals", ["Agents", "AI", "Architecture", "AGI"]),
-    ("01-llms-are-not-the-agents",       "LLMs Are Not the Agents",               "February 2026", "17 min read",  "Professionals", ["Agents", "AI", "Fundamentals"]),
+    ("07_1-plugin-kit-foundation",       "Essay 7.1 — Plugin Kit Foundation",               "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_2-skeleton-claudemd-hooks-scripts", "Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts", "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_3-dual-voice-architecture",     "Essay 7.3 — The Dual Voice Architecture",         "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_4-data-json-hidden-state",      "Essay 7.4 — data.json — The Hidden State",         "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_5-docs-and-historian",          "Essay 7.5 — docs/ and the Historian",             "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_6-agents-and-80-20-budget",     "Essay 7.6 — agents/ and the 80/20 Dispatch Budget", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_7-smaller-organs-and-wiring",   "Essay 7.7 — Smaller Organs and Brain-Root Wiring", "May 2026", "4 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_8-lock-ceremony",               "Essay 7.8 — The Lock Ceremony",                   "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("07_9-creating-a-new-plugin",       "Essay 7.9 — Building a New Plugin",               "May 2026", "6 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
+    ("08_1-apprentice-to-architect-foundation", "Essay 8.1 — Apprentice to Architect Foundation", "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_2-job-maturation-stages",       "Essay 8.2 — The Stages of Job Maturation",         "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Jobs"]),
+    ("08_3-brain-after-three-months",    "Essay 8.3 — What Lives in the Brain After Three Months", "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Knowledge"]),
+    ("08_4-soft-hard-migration",         "Essay 8.4 — Soft → Hard Migration",               "May 2026", "6 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation", "Patterns"]),
+    ("08_5-enforced-vs-discipline",      "Essay 8.5 — What's Enforced vs What's Discipline", "May 2026", "4 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_6-apprentice-journeyman-architect", "Essay 8.6 — The Maturation Arc — Apprentice, Journeyman, Architect",               "May 2026", "8 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_7-brain-stops-growing",         "Essay 8.7 — The Brain Stops Growing in Size",      "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_8-safe-self-modification",      "Essay 8.8 — A System That Safely Modifies Itself", "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
+    ("08_9-the-seed-is-yours",           "Essay 8.9 — The Seed Is Yours",                    "May 2026", "5 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "Maturation"]),
 ]
 
 AUDIENCE_TITLE = {
@@ -109,9 +112,10 @@ def slug_to_href(target_slug: str, from_subdir: str) -> str:
     # Both in different subdirs (future case when B6 etc. also move).
     return f"../{target_sub}/{target_slug}.html"
 
-# Canonical reading order across the series. Sidebar prev/next derives from this list,
-# NOT from SIDEBAR_POSTS (which is publication-descending and conflates 3.1's late-publish
-# date with reading order). Update this list whenever a new essay slots into the sequence.
+# Canonical reading order across the series. Sidebar prev/next derives from this list.
+# SIDEBAR_POSTS above is kept in the same reading order; this list additionally drives the
+# per-essay prev/active/next context cards via READING_ORDER.index(active_slug).
+# Update this list whenever a new essay slots into the sequence.
 READING_ORDER = [
     "01-llms-are-not-the-agents",
     "02-we-could-have-had-agi",
@@ -594,8 +598,8 @@ def _render_card(post: tuple, kind: str, from_subdir: str = "") -> str:
 
 def render_sidebar(active_slug: str, from_subdir: str = "") -> str:
     """Render the sidebar as 3-5 cards: previous in series, current, next in series, plus an
-    'All essays' link back to the blog index. Reading order comes from READING_ORDER (not
-    from SIDEBAR_POSTS, which is publication-descending). When the active essay is first or
+    'All essays' link back to the blog index. Reading order comes from READING_ORDER.
+    When the active essay is first or
     last in READING_ORDER, the corresponding boundary card is omitted.
 
     from_subdir: subdir the rendered HTML lives in (e.g., 'b5' for blog/b5/X.html).

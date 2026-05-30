@@ -9,299 +9,27 @@
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
-      <title>From Apprentice to Architect — Pt 9: The Seed Is Yours</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>The series closer. The seed agent is open-source under MIT; you clone it, run it, customize it through conversation, and the triangle of agent-developer-user collapses to agent-user.</description>
+      <title>LLMs Are Not the Agents</title>
+      <link>https://hadi-nayebi.github.io/blog/01-llms-are-not-the-agents.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/01-llms-are-not-the-agents.html</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description>Most people point at the model and call it the agent. That is the root misunderstanding. The agent is the filesystem — the local files that give an LLM memory, structure, and identity. The LLM is just the engine.</description>
     </item>
 
     <item>
-      <title>From Apprentice to Architect — Pt 8: A System That Safely Modifies Itself</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_8-safe-self-modification.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_8-safe-self-modification.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>The Tier-3 close. The recursive lock ceremony — plugin_integrity guards itself the same way it guards every other plugin — and the rollback substrate that makes self-modification safe.</description>
+      <title>We Could Have Had AGI By Now</title>
+      <link>https://hadi-nayebi.github.io/blog/02-we-could-have-had-agi.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/02-we-could-have-had-agi.html</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description>The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.</description>
     </item>
 
     <item>
-      <title>From Apprentice to Architect — Pt 7: The Brain Stops Growing in Size</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_7-brain-stops-growing.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_7-brain-stops-growing.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>The equilibrium claim — the brain reaches a ceiling while the knowledge layer never does. Growth becomes compression; learning continues, size does not.</description>
-    </item>
-
-    <item>
-      <title>From Apprentice to Architect — Pt 6: The Maturation Arc — Apprentice, Journeyman, Architect</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_6-apprentice-journeyman-architect.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_6-apprentice-journeyman-architect.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>The operator's parallel three-stage arc — apprentice, journeyman, architect — and the visible markers of each. The seed matures around you while you mature alongside it.</description>
-    </item>
-
-    <item>
-      <title>From Apprentice to Architect — Pt 5: What's Enforced vs What's Discipline</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_5-enforced-vs-discipline.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_5-enforced-vs-discipline.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>The honest accounting. Which seed limits are hard caps, and which are discipline pretending to be hard? CONDENSE discipline is the major soft line that holds the brain at its ceiling.</description>
-    </item>
-
-    <item>
-      <title>From Apprentice to Architect — Pt 4: Soft → Hard Migration</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_4-soft-hard-migration.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_4-soft-hard-migration.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>How a behavioral control travels from coaching voice to hardened hook to fossilized template. The mechanism that produces the small-brain / large-knowledge equilibrium.</description>
-    </item>
-
-    <item>
-      <title>From Apprentice to Architect — Pt 3: What Lives in the Brain After Three Months</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_3-brain-after-three-months.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_3-brain-after-three-months.html</guid>
-      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>A precise inventory — what the prototype's brain holds today after three months of cycles. Small brain over a large knowledge layer with a narrow memory.</description>
-    </item>
-
-    <item>
-      <title>From Apprentice to Architect — Pt 2: The Stages of Job Maturation</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>The four stages a job moves through — single-cycle OPEVC, multi-cycle .md plan, multi-cycle .yaml plan, sealed. plan_state lives on the job, not in the file.</description>
-    </item>
-
-    <item>
-      <title>From Apprentice to Architect — Pt 1: Apprentice to Architect Foundation</title>
-      <link>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>The maturation arc the seed agent walks across months of work — three growth axes track the jobs, the plan-state machine, and the brain. Opens the nine-part From Apprentice to Architect series.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 9: Building a New Plugin</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>Two paths — sibling-extension via [PLUGIN-LOCK] for an established seed, or plugin-template clone for a from-scratch concern. Tier-3 architect work, end-to-end.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 8: The Lock Ceremony</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>PLUGIN-LOCK + TEST-LOCK + safe-lock + historian compose into the ceremony every plugin code edit passes through. Pass and commit, fail and revert.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 7: Smaller Organs and Brain-Root Wiring</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>lib/, template/, MD/, archive/ — the smaller organs that round out the kit. How the brain root wires plugin hooks into settings.local.json.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 6: agents/ and the 80/20 Dispatch Budget</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>Each plugin's owned subagent pool with prefix-scoped naming (historian-*, observe-*, verify-*, condense-*). Main session orchestrates 20 percent; subagents execute 80 percent.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 5: docs/ and the Historian</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>The narrated knowledge layer per plugin — principles, evolution, CLAUDE.md.template. The historian subagent ratchets evolution.md as the plugin matures.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 4: data.json — The Hidden State</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>The plugin's private runtime state — focused job, tier counter, summary chain, lock manifest. JSON, atomic-written, gitignored — never travels across machines.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 3: The Dual Voice Architecture</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>Why every plugin carries two voice.xml files — one in hooks/ that injects mid-conversation coaching, one in scripts/ that speaks at script-execution time. Same XML shape, two firing points.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 2: Skeleton: CLAUDE.md, Hooks, and Scripts</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>Three load-bearing organs — the markdown brain at the plugin root, the hook directory that fires on Claude Code events, and the scripts directory the hooks call.</description>
-    </item>
-
-    <item>
-      <title>The Plugin Kit — Pt 1: Plugin Kit Foundation</title>
-      <link>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
-      <description>The kit framing — every plugin is a cell with shared organs: CLAUDE.md, hooks, scripts, tests, data.json, docs, agents, voice.xml. Opens the nine-part Plugin Kit series.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 10: The Plan File: Long-Horizon Memory</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The multi-cycle plan-file lifecycle that scales the markov brain to long-horizon work. plan_state + the three job forms + .yaml injection at phase entry.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 9: GMODE: The Off-Cycle Lane</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_9-gmode.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_9-gmode.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The operator's deliberate maintenance lane that lives outside the OPEVC cycle. Entered via [GMODE] with a ≥100-word justification.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 8: The Backward Multiplier</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_8-inverse-multiplier.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_8-inverse-multiplier.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The per-phase dial that forces meta-cognition at entry. The multiplier is backward — 3× declares a surgical phase, 0.5× declares deep work. Both directions of error cost. The point system stays invisible so the agent does not learn to game it.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 7: CONDENSE: The Cognitive Organ</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_7-condense.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_7-condense.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The phase that acts on the brain. Seven-step waterfall routes the cycle's experiential data into durable memory. The deflation gate enforces compression. CONDENSE is the only phase allowed to edit the brain itself.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 6: VERIFY: Independent Eyes</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_6-verify.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_6-verify.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The audit chamber. Scripts only, auditor subagents, multi-backward routing. The cycle's final guardrail before CONDENSE absorbs the work.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 5: EXECUTE: Build, in Scope, in Steps</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_5-execute.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_5-execute.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The build phase. Full write access, scoped to the altered list, with multi-commit checkpoints. Where the plan becomes artifacts.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 4: PLAN: Decide, Then Lock</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_4-plan.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_4-plan.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>Read-only. The phase that names the plan file, decides, and locks the contract that execute will materialize.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 3: OBSERVE: Read Wide, Write Once</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_3-observe.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_3-observe.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The intake phase. Read-only on project files; synthesis goes into CLAUDE.md. Multiplier sentinel, parallel research subagents, point system underneath.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 2: The Discipline and the Map</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_2-discipline-and-map.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_2-discipline-and-map.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>Forbidding tools is the pedagogy. The per-phase write rule, the altered list scoping, and the quick map of the cycle.</description>
-    </item>
-
-    <item>
-      <title>The Markov Phasic Brain — Pt 1: Phasic Foundation</title>
-      <link>https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html</guid>
-      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>Phases are cognitive isolation chambers. Five phases plus one cognitive organ — observe, plan, execute, verify, condense. Opens the nine-part Markov Phasic Brain series.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 9: The Customization Guardrail</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_9-customization-guardrail.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_9-customization-guardrail.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The gate that decides when substrate edits are admitted at all. PLUGIN-LOCK admits on gmode OR a user-approved job. The propose-and-confirm flow via [JOB-APPROVE-CREATION]. The two-route design and why both routes exist.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 8: The Historian Ratchet</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_8-historian-ratchet.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_8-historian-ratchet.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>Per-plugin living history. Drift counter climbs with commits, blocks unlock at the threshold, historian re-narrates evolution.md, counter resets. Three plugins compose into one ceremony — no single plugin owns the whole thing.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 7: The CLAUDE.md Hierarchy</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The substrate underneath the always-on layer. CLAUDE.md as native primitive, partitioned into a body and four phase footers that inflate across OPEVC and deflate at CONDENSE. The altered list scopes execution.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 6: Structured Questions (question_discipline)</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_6-question-discipline.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_6-question-discipline.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>Every question the seed agent asks the user carries a registered prefix. Nine ceremonies in the prototype registry. Batch-cascade validation; subagent bypass. Extend the registry as your seed grows new ceremonies.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 5: Cross-Session Memory (interaction_summary)</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_5-interaction-summary.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_5-interaction-summary.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>Block-until-summarized. Five-section template forces shape-compels-production on the job's growing mega-prompt. Threshold + sections are this prototype's choice; the shape is the lesson.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 4: Job Lifecycle (job_core)</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The agent's unit of compartmentalization. Cumulative mega-prompt, shared-key cross-plugin extension, phase-aware refusal to stop, staged completion. Re-shape the noun for your domain.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 3: Context Window Discipline (brain_guard)</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_3-brain-guard.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_3-brain-guard.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The progressive squeeze. Three tiers tighten as the window fills until self-compaction is the only graceful move. Shape-compels-production via the five-section /compact template. Tier positions are tunable per model.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 2: Plugin Edit Safety (plugin_integrity)</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The test gate underneath every plugin code change. Pass and commit, fail and revert. The universal floor most architects inherit rather than rewrite — but the inside of the gate has knobs.</description>
-    </item>
-
-    <item>
-      <title>The Always-On Digital Cortex — Pt 1: The Two-Layer Foundation</title>
-      <link>https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The seed agent's two plugin categories — always-on and phasic — over one shared CLAUDE.md substrate. Single-concern + careful coupling lets the parts compose into ceremonies. Opens the eight-part Always-On Digital Cortex series.</description>
+      <title>Your Brain Was Never Built for This</title>
+      <link>https://hadi-nayebi.github.io/blog/03-your-brain-was-never-built-for-this.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/03-your-brain-was-never-built-for-this.html</guid>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Your skull holds a brain optimized for spotting snakes in tall grass. You are asking it to run a business in a civilization of eight billion people. CLI agents are the digital cognitive organs your biology never built.</description>
     </item>
 
     <item>
@@ -321,27 +49,299 @@
     </item>
 
     <item>
-      <title>Your Brain Was Never Built for This</title>
-      <link>https://hadi-nayebi.github.io/blog/03-your-brain-was-never-built-for-this.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/03-your-brain-was-never-built-for-this.html</guid>
-      <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <description>Your skull holds a brain optimized for spotting snakes in tall grass. You are asking it to run a business in a civilization of eight billion people. CLI agents are the digital cognitive organs your biology never built.</description>
+      <title>The Always-On Digital Cortex — Pt 1: The Two-Layer Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The seed agent's two plugin categories — always-on and phasic — over one shared CLAUDE.md substrate. Single-concern + careful coupling lets the parts compose into ceremonies. Opens the eight-part Always-On Digital Cortex series.</description>
     </item>
 
     <item>
-      <title>We Could Have Had AGI By Now</title>
-      <link>https://hadi-nayebi.github.io/blog/02-we-could-have-had-agi.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/02-we-could-have-had-agi.html</guid>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
-      <description>The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.</description>
+      <title>The Always-On Digital Cortex — Pt 2: Plugin Edit Safety (plugin_integrity)</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The test gate underneath every plugin code change. Pass and commit, fail and revert. The universal floor most architects inherit rather than rewrite — but the inside of the gate has knobs.</description>
     </item>
 
     <item>
-      <title>LLMs Are Not the Agents</title>
-      <link>https://hadi-nayebi.github.io/blog/01-llms-are-not-the-agents.html</link>
-      <guid>https://hadi-nayebi.github.io/blog/01-llms-are-not-the-agents.html</guid>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
-      <description>Most people point at the model and call it the agent. That is the root misunderstanding. The agent is the filesystem — the local files that give an LLM memory, structure, and identity. The LLM is just the engine.</description>
+      <title>The Always-On Digital Cortex — Pt 3: Context Window Discipline (brain_guard)</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_3-brain-guard.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_3-brain-guard.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The progressive squeeze. Three tiers tighten as the window fills until self-compaction is the only graceful move. Shape-compels-production via the five-section /compact template. Tier positions are tunable per model.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 4: Job Lifecycle (job_core)</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The agent's unit of compartmentalization. Cumulative mega-prompt, shared-key cross-plugin extension, phase-aware refusal to stop, staged completion. Re-shape the noun for your domain.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 5: Cross-Session Memory (interaction_summary)</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_5-interaction-summary.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_5-interaction-summary.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Block-until-summarized. Five-section template forces shape-compels-production on the job's growing mega-prompt. Threshold + sections are this prototype's choice; the shape is the lesson.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 6: Structured Questions (question_discipline)</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_6-question-discipline.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_6-question-discipline.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Every question the seed agent asks the user carries a registered prefix. Nine ceremonies in the prototype registry. Batch-cascade validation; subagent bypass. Extend the registry as your seed grows new ceremonies.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 7: The CLAUDE.md Hierarchy</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The substrate underneath the always-on layer. CLAUDE.md as native primitive, partitioned into a body and four phase footers that inflate across OPEVC and deflate at CONDENSE. The altered list scopes execution.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 8: The Historian Ratchet</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_8-historian-ratchet.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_8-historian-ratchet.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Per-plugin living history. Drift counter climbs with commits, blocks unlock at the threshold, historian re-narrates evolution.md, counter resets. Three plugins compose into one ceremony — no single plugin owns the whole thing.</description>
+    </item>
+
+    <item>
+      <title>The Always-On Digital Cortex — Pt 9: The Customization Guardrail</title>
+      <link>https://hadi-nayebi.github.io/blog/b5/05_9-customization-guardrail.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b5/05_9-customization-guardrail.html</guid>
+      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>The gate that decides when substrate edits are admitted at all. PLUGIN-LOCK admits on gmode OR a user-approved job. The propose-and-confirm flow via [JOB-APPROVE-CREATION]. The two-route design and why both routes exist.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 1: Phasic Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>Phases are cognitive isolation chambers. Five phases plus one cognitive organ — observe, plan, execute, verify, condense. Opens the nine-part Markov Phasic Brain series.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 2: The Discipline and the Map</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_2-discipline-and-map.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_2-discipline-and-map.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>Forbidding tools is the pedagogy. The per-phase write rule, the altered list scoping, and the quick map of the cycle.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 3: OBSERVE: Read Wide, Write Once</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_3-observe.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_3-observe.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The intake phase. Read-only on project files; synthesis goes into CLAUDE.md. Multiplier sentinel, parallel research subagents, point system underneath.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 4: PLAN: Decide, Then Lock</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_4-plan.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_4-plan.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>Read-only. The phase that names the plan file, decides, and locks the contract that execute will materialize.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 5: EXECUTE: Build, in Scope, in Steps</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_5-execute.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_5-execute.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The build phase. Full write access, scoped to the altered list, with multi-commit checkpoints. Where the plan becomes artifacts.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 6: VERIFY: Independent Eyes</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_6-verify.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_6-verify.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The audit chamber. Scripts only, auditor subagents, multi-backward routing. The cycle's final guardrail before CONDENSE absorbs the work.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 7: CONDENSE: The Cognitive Organ</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_7-condense.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_7-condense.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The phase that acts on the brain. Seven-step waterfall routes the cycle's experiential data into durable memory. The deflation gate enforces compression. CONDENSE is the only phase allowed to edit the brain itself.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 8: The Backward Multiplier</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_8-inverse-multiplier.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_8-inverse-multiplier.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The per-phase dial that forces meta-cognition at entry. The multiplier is backward — 3× declares a surgical phase, 0.5× declares deep work. Both directions of error cost. The point system stays invisible so the agent does not learn to game it.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 9: GMODE: The Off-Cycle Lane</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_9-gmode.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_9-gmode.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The operator's deliberate maintenance lane that lives outside the OPEVC cycle. Entered via [GMODE] with a ≥100-word justification.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 10: The Plan File: Long-Horizon Memory</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The multi-cycle plan-file lifecycle that scales the markov brain to long-horizon work. plan_state + the three job forms + .yaml injection at phase entry.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 1: Plugin Kit Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The kit framing — every plugin is a cell with shared organs: CLAUDE.md, hooks, scripts, tests, data.json, docs, agents, voice.xml. Opens the nine-part Plugin Kit series.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 2: Skeleton: CLAUDE.md, Hooks, and Scripts</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Three load-bearing organs — the markdown brain at the plugin root, the hook directory that fires on Claude Code events, and the scripts directory the hooks call.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 3: The Dual Voice Architecture</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_3-dual-voice-architecture.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Why every plugin carries two voice.xml files — one in hooks/ that injects mid-conversation coaching, one in scripts/ that speaks at script-execution time. Same XML shape, two firing points.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 4: data.json — The Hidden State</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_4-data-json-hidden-state.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The plugin's private runtime state — focused job, tier counter, summary chain, lock manifest. JSON, atomic-written, gitignored — never travels across machines.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 5: docs/ and the Historian</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_5-docs-and-historian.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The narrated knowledge layer per plugin — principles, evolution, CLAUDE.md.template. The historian subagent ratchets evolution.md as the plugin matures.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 6: agents/ and the 80/20 Dispatch Budget</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_6-agents-and-80-20-budget.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Each plugin's owned subagent pool with prefix-scoped naming (historian-*, observe-*, verify-*, condense-*). Main session orchestrates 20 percent; subagents execute 80 percent.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 7: Smaller Organs and Brain-Root Wiring</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_7-smaller-organs-and-wiring.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>lib/, template/, MD/, archive/ — the smaller organs that round out the kit. How the brain root wires plugin hooks into settings.local.json.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 8: The Lock Ceremony</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_8-lock-ceremony.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>PLUGIN-LOCK + TEST-LOCK + safe-lock + historian compose into the ceremony every plugin code edit passes through. Pass and commit, fail and revert.</description>
+    </item>
+
+    <item>
+      <title>The Plugin Kit — Pt 9: Building a New Plugin</title>
+      <link>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b7/07_9-creating-a-new-plugin.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>Two paths — sibling-extension via [PLUGIN-LOCK] for an established seed, or plugin-template clone for a from-scratch concern. Tier-3 architect work, end-to-end.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 1: Apprentice to Architect Foundation</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The maturation arc the seed agent walks across months of work — three growth axes track the jobs, the plan-state machine, and the brain. Opens the nine-part From Apprentice to Architect series.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 2: The Stages of Job Maturation</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_2-job-maturation-stages.html</guid>
+      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <description>The four stages a job moves through — single-cycle OPEVC, multi-cycle .md plan, multi-cycle .yaml plan, sealed. plan_state lives on the job, not in the file.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 3: What Lives in the Brain After Three Months</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_3-brain-after-three-months.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_3-brain-after-three-months.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>A precise inventory — what the prototype's brain holds today after three months of cycles. Small brain over a large knowledge layer with a narrow memory.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 4: Soft → Hard Migration</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_4-soft-hard-migration.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_4-soft-hard-migration.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>How a behavioral control travels from coaching voice to hardened hook to fossilized template. The mechanism that produces the small-brain / large-knowledge equilibrium.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 5: What's Enforced vs What's Discipline</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_5-enforced-vs-discipline.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_5-enforced-vs-discipline.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The honest accounting. Which seed limits are hard caps, and which are discipline pretending to be hard? CONDENSE discipline is the major soft line that holds the brain at its ceiling.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 6: The Maturation Arc — Apprentice, Journeyman, Architect</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_6-apprentice-journeyman-architect.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_6-apprentice-journeyman-architect.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The operator's parallel three-stage arc — apprentice, journeyman, architect — and the visible markers of each. The seed matures around you while you mature alongside it.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 7: The Brain Stops Growing in Size</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_7-brain-stops-growing.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_7-brain-stops-growing.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The equilibrium claim — the brain reaches a ceiling while the knowledge layer never does. Growth becomes compression; learning continues, size does not.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 8: A System That Safely Modifies Itself</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_8-safe-self-modification.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_8-safe-self-modification.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The Tier-3 close. The recursive lock ceremony — plugin_integrity guards itself the same way it guards every other plugin — and the rollback substrate that makes self-modification safe.</description>
+    </item>
+
+    <item>
+      <title>From Apprentice to Architect — Pt 9: The Seed Is Yours</title>
+      <link>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
+      <description>The series closer. The seed agent is open-source under MIT; you clone it, run it, customize it through conversation, and the triangle of agent-developer-user collapses to agent-user.</description>
     </item>
   </channel>
 </rss>

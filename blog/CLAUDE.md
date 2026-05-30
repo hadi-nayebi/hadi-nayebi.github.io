@@ -167,10 +167,10 @@ Every blog post follows the same structure:
 
 1. Create `blog/<slug>.md` with frontmatter
 2. Create `blog/<slug>.html` from template
-3. Add to `blog.html` index (newest first)
+3. Add to `blog.html` index (reading order — essay 1 first … 8.9 last)
 4. Update ALL blog post sidebars (sidebar sync rule). **Series context-card exception (2026-05-19):** Interior sub-essays in a mini-series (B5/B6/B7/B8 essays at index 2+) use a context-card sidebar — prev essay + active essay + next essay only — generated automatically by `tools/generate_blog_html.py` via the SIDEBAR_POSTS array. The full series roster lives in the opener body roadmap section (B5.1, B6.1, B7.1, B8.1). Per-essay auditors check this via the "Part 1 of N" subtitle test. The "ALL sidebars must list every post" rule applies to Part-1 essays and the `blog.html` index, not interior mini-series sub-essays.
 5. Add to `sitemap.xml`
-6. Add to `feed.xml` (newest first)
+6. Add to `feed.xml` (reading order — essay 1 first … 8.9 last)
 7. Update SEO audit counts + arrays (no automated script in this repo — verify manually)
 8. Add Giscus comment script (EXECUTE.setup-giscus)
 9. Generate audio narration (EXECUTE.generate-audio)
