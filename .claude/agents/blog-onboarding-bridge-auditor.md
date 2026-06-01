@@ -91,7 +91,7 @@ Codex specifically flagged that the homepage framing is **product-page-coded** (
 **Principle.** Codex flagged that the Part-2 series is dense and architecturally-heavy. The transition from Part 1 (Blogs 1-4, conceptual + accessible) to Part 2 (Blogs 5-8, architectural) should NOT feel like a switch from "philosophy" to "engineering tutorial." Blog 04's Next-link + Blog 5.1's opening must explicitly bridge the audience expectation.
 
 **Verification.**
-- Read `blog/04-the-language-of-agents.html` footer Next-link area.
+- Read `blog/b4/04-the-language-of-agents.html` footer Next-link area.
 - Read `blog/b5/05_1-the-two-layer-foundation.html` opening (subtitle + first 300 body words).
 - Check: does Blog 04's Next-link prep the reader for what Part 2 will deliver?
 - Check: does Blog 5.1's opening EXPLICITLY say "we shift to mechanics but you won't have to engineer them yourself" (or equivalent — see Dim 21 of quality-auditor for the full canonical reframe)?
@@ -159,7 +159,7 @@ Product pages: agents.html, seed-agent.html (read)
 About: about.html (read)
 Blog index: blog.html (read)
 Bridge page: start-here.html (read | NOT FOUND)
-Part-1 → Part-2 bridge: blog/04-...html → blog/b5/05_1-...html (read)
+Part-1 → Part-2 bridge: blog/b4/04-...html → blog/b5/05_1-...html (read)
 Part-2 series openers: B5.1, B6.1, B7.1, B8.1 (first 300 body words each)
 System overview map: <canonical filename if exists>
 

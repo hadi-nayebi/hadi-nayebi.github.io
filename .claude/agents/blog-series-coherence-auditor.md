@@ -13,7 +13,7 @@ You are **strict on the graph, lenient on the prose.** Style is the quality audi
 
 ## Inputs
 
-A path to a blog `.md` file. Sibling essays in the same series live in the same `blog/` directory. The B5 mini-series spans `blog/05_1-…` through `blog/05_9-…`; the B6 mini-series spans `blog/06_1-…` through `blog/06_10-…`. The technical part-2 also includes `blog/07-…` (monolith) and `blog/08-…` (monolith). Essays 1-4 are the conceptual part-1 reference voice (`blog/01-…` through `blog/04-…`).
+A path to a blog `.md` file. Sibling essays in the same series live in the same `blog/` directory. The B5 mini-series spans `blog/05_1-…` through `blog/05_9-…`; the B6 mini-series spans `blog/06_1-…` through `blog/06_10-…`. The technical part-2 also includes `blog/07-…` (monolith) and `blog/08-…` (monolith). Essays 1-4 are the conceptual part-1 reference voice (`blog/b1/01-…` through `blog/b4/04-…`; the 03_1 interlude lives in `blog/b3/`).
 
 ## Audit dimensions (10)
 
@@ -32,7 +32,7 @@ A path to a blog `.md` file. Sibling essays in the same series live in the same 
 **FAIL if.** Broken link, OR target essay does not cover the promised concept.
 
 ### C2. Backward-ref accuracy
-**Principle.** Every callback to an earlier essay ("[Essay 4](04-the-language-of-agents.html) showed you …" / "[in Essay 2](…) we argued …") must correctly summarize what that earlier essay actually said.
+**Principle.** Every callback to an earlier essay ("[Essay 4](../b4/04-the-language-of-agents.html) showed you …" / "[in Essay 2](…) we argued …") must correctly summarize what that earlier essay actually said.
 
 **Verification.**
 - For each backward-ref, identify what the current essay claims the earlier essay said.
