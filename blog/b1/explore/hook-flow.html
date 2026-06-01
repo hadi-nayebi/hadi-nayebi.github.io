@@ -333,19 +333,25 @@
         /* ---- Edges ---- */
         .hm-edge {
             fill: none;
-            stroke: rgba(160,160,200,0.40);
-            stroke-width: 1.6;
+            stroke: rgba(190,194,228,0.72);
+            stroke-width: 2.2;
+            stroke-linejoin: round;
+            stroke-linecap: round;
         }
-        .hm-edge--loop   { stroke: rgba(99,102,241,0.55); }
-        .hm-edge--report { stroke: rgba(52,211,153,0.45); stroke-dasharray: 6 5; }
-        .hm-edge--branch { stroke: rgba(160,160,200,0.30); stroke-dasharray: 3 5; }
-        .hm-edge--error  { stroke: rgba(248,113,113,0.50); }
+        .hm-edge--loop   { stroke: rgba(146,138,250,0.92); stroke-width: 2.7; }
+        .hm-edge--report { stroke: rgba(72,217,160,0.78); stroke-width: 2; stroke-dasharray: 7 5; }
+        .hm-edge--branch { stroke: rgba(150,156,216,0.55); stroke-width: 1.9; stroke-dasharray: 4 6; }
+        .hm-edge--error  { stroke: rgba(248,120,120,0.82); stroke-width: 2.3; }
+        .hm-edge-label-bg {
+            fill: rgba(9,9,15,0.94);
+            stroke: rgba(139,92,246,0.30);
+            stroke-width: 1;
+        }
         .hm-edge-label {
-            fill: #c8c8d8;
-            font-size: 10px;
-            paint-order: stroke;
-            stroke: rgba(5,5,7,0.85);
-            stroke-width: 3px;
+            fill: #dcdcec;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
         /* ---- Portal chips (cross-view exits) ---- */
@@ -694,9 +700,9 @@
                 edge("e-stop-loop", "stop", "your-text", "loop", "loops back"),
 
                 /* ---- dispatcher <-> drill pills, each round-tripping back ---- */
-                edge("e-disp-tool", "dispatcher", "tool-loop-pill", "normal", "tool call"),
+                edge("e-disp-tool", "dispatcher", "tool-loop-pill", "normal", ""),
                 edge("e-tool-disp", "tool-loop-pill", "dispatcher", "loop"),
-                edge("e-disp-deleg", "dispatcher", "delegation-pill", "normal", "delegate"),
+                edge("e-disp-deleg", "dispatcher", "delegation-pill", "normal", ""),
                 edge("e-deleg-disp", "delegation-pill", "dispatcher", "loop"),
 
                 /* ---- prompt-gate satellite feeds the submit hook ---- */
@@ -1475,16 +1481,16 @@
 
         function buildDefs() {
             var defs = svg('defs');
-            [['hm-arrow', 'rgba(160,160,200,0.6)'],
-             ['hm-arrow-loop', 'rgba(99,102,241,0.7)'],
-             ['hm-arrow-report', 'rgba(52,211,153,0.6)'],
-             ['hm-arrow-error', 'rgba(248,113,113,0.7)']
+            [['hm-arrow', 'rgba(200,204,236,0.92)'],
+             ['hm-arrow-loop', 'rgba(146,138,250,0.98)'],
+             ['hm-arrow-report', 'rgba(72,217,160,0.9)'],
+             ['hm-arrow-error', 'rgba(248,120,120,0.95)']
             ].forEach(function (m) {
                 var mk = svg('marker', {
-                    id: m[0], markerWidth: 9, markerHeight: 9, refX: 7, refY: 3.2,
+                    id: m[0], markerWidth: 12, markerHeight: 12, refX: 8.4, refY: 4,
                     orient: 'auto', markerUnits: 'userSpaceOnUse'
                 });
-                mk.appendChild(svg('path', { d: 'M0,0 L8,3.2 L0,6.4 Z', fill: m[1] }));
+                mk.appendChild(svg('path', { d: 'M0,0 L10,4 L0,8 Z', fill: m[1] }));
                 defs.appendChild(mk);
             });
             return defs;
@@ -1580,7 +1586,12 @@
                     lx = bp.x; ly = bp.y - 5;
                 }
                 if (lx != null) {
-                    var t = svg('text', { 'class': 'hm-edge-label', x: lx, y: ly, 'text-anchor': 'middle' });
+                    // dark rounded chip behind the label so text never merges with arrows/nodes
+                    var tw = label.length * 6.1 + 12;
+                    var bg = svg('rect', { 'class': 'hm-edge-label-bg',
+                        x: lx - tw / 2, y: ly - 11, width: tw, height: 16, rx: 6 });
+                    layer.appendChild(bg);
+                    var t = svg('text', { 'class': 'hm-edge-label', x: lx, y: ly + 1, 'text-anchor': 'middle' });
                     t.textContent = label;
                     layer.appendChild(t);
                 }
