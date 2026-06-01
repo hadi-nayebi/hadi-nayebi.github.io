@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.0.0 -->
+<!-- Version: v3.1.0 -->
 <html lang="en">
 
 <head>
@@ -69,7 +69,7 @@
         }
 
         /* ====================================================================
-           HOOK MAP — ELK render engine styles (v3.0.0)
+           HOOK MAP — ELK render engine styles (v3.1.0)
            Full-screen fixed dark-glass interactive map.
            Nodes are HTML glass boxes drawn inside SVG <foreignObject>
            so backdrop-filter works. Edges are SVG <path>.
@@ -170,6 +170,11 @@
         .hm-stage.is-fading { opacity: 0; }
 
         /* ---- Glass node (rendered inside foreignObject) ---- */
+        /* Glass note (v3.1.0): backdrop-filter does NOT blur inside an SVG
+           <foreignObject> in Chrome, and the dark field behind has little to
+           blur anyway. So nodes read as glass via a polished SEMI-OPAQUE
+           GRADIENT fill + 1px indigo border + soft shadow + a top inner
+           highlight — no dependency on backdrop-filter. */
         .hm-node {
             box-sizing: border-box;
             width: 100%;
@@ -180,11 +185,13 @@
             gap: 3px;
             padding: 8px 12px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.10);
-            background: rgba(22,22,34,0.55);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+            border: 1px solid rgba(99,102,241,0.30);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(38,38,58,0.92), rgba(20,20,32,0.92));
+            box-shadow:
+                0 6px 24px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.07);
             cursor: pointer;
             overflow: hidden;
             transition: border-color .16s, box-shadow .16s, transform .12s, background .16s;
@@ -224,24 +231,53 @@
             color: #d9cdff;
         }
 
-        /* ---- Node type variants (matched by class hm-node--<type>) ---- */
-        .hm-node--boot   { border-color: rgba(96,165,250,0.35); background: rgba(30,41,59,0.55); }
-        .hm-node--in     { border-color: rgba(52,211,153,0.30); background: rgba(16,34,30,0.55); }
-        .hm-node--hook   { border-color: rgba(99,102,241,0.40); background: rgba(24,24,44,0.60); }
-        .hm-node--stage  { border-color: rgba(255,255,255,0.16); background: rgba(28,28,40,0.62); }
+        /* ---- Node type variants (matched by class hm-node--<type>) ----
+           Core-loop nodes ride a slightly BRIGHTER gradient; secondary/group
+           nodes are dimmer (handled in .hm-node--secondary below). ---- */
+        .hm-node--in {
+            border-color: rgba(52,211,153,0.40);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(18,42,36,0.94), rgba(12,28,24,0.94));
+        }
+        .hm-node--hook {
+            border-color: rgba(99,102,241,0.50);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(34,34,62,0.94), rgba(20,20,38,0.94));
+        }
+        .hm-node--stage {
+            border-color: rgba(255,255,255,0.20);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(40,40,56,0.94), rgba(24,24,38,0.94));
+        }
         .hm-node--hub {
-            border-color: rgba(139,92,246,0.65);
-            background: rgba(40,28,64,0.66);
-            box-shadow: 0 8px 30px rgba(139,92,246,0.30);
+            border-color: rgba(139,92,246,0.75);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(58,40,92,0.95), rgba(34,24,58,0.95));
+            box-shadow:
+                0 8px 30px rgba(139,92,246,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.10);
         }
         .hm-node--hub .hm-node__title { font-size: 14px; letter-spacing: 0.02em; }
-        .hm-node--exit   { border-color: rgba(248,113,113,0.40); background: rgba(40,22,22,0.55); }
+        .hm-node--exit {
+            border-color: rgba(248,113,113,0.45);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(48,26,26,0.94), rgba(30,18,18,0.94));
+        }
 
         /* Collapsed compound "pills" — clearly clickable, badged */
         .hm-node--pill {
-            border-color: rgba(139,92,246,0.55);
-            background: linear-gradient(135deg, rgba(46,32,72,0.66), rgba(30,24,52,0.66));
-            box-shadow: 0 8px 28px rgba(99,102,241,0.22);
+            border-color: rgba(139,92,246,0.65);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.09), rgba(255,255,255,0) 42%),
+                linear-gradient(135deg, rgba(52,36,82,0.95), rgba(32,26,56,0.95));
+            box-shadow:
+                0 8px 28px rgba(99,102,241,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.09);
         }
         .hm-node--pill::after {
             content: '\2935 drill in';
@@ -253,15 +289,18 @@
         }
         .hm-node--pill:hover { border-color: rgba(167,139,250,0.85); }
 
-        /* Secondary / out-of-band — lighter, recedes from the spine */
+        /* Secondary / out-of-band — dimmer, recedes from the spine (no backdrop-filter) */
         .hm-node--secondary {
-            border-color: rgba(255,255,255,0.07);
-            background: rgba(18,18,26,0.40);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 3px 14px rgba(0,0,0,0.25);
-            opacity: 0.78;
+            border-color: rgba(120,120,160,0.22);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.04), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(24,24,34,0.82), rgba(15,15,22,0.82));
+            box-shadow:
+                0 3px 14px rgba(0,0,0,0.30),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+            opacity: 0.82;
         }
-        .hm-node--secondary:hover { opacity: 1; border-color: rgba(139,92,246,0.4); }
+        .hm-node--secondary:hover { opacity: 1; border-color: rgba(139,92,246,0.55); }
         .hm-node--secondary .hm-node__title { font-size: 11.5px; font-weight: 500; color: #cfcfdd; }
         .hm-node--secondary .hm-node__sub { font-size: 9.5px; }
 
@@ -276,17 +315,18 @@
             font-size: 9px; color: #e6cf8f;
         }
 
-        /* Group container labels (compound parent in secondary cluster) */
+        /* Group container — a faint glass bordered box, uppercase label top-left */
         .hm-grouplabel {
             font-size: 10px;
-            fill: #8d8da0;
-            letter-spacing: 0.08em;
+            fill: #9a9ab0;
+            font-weight: 600;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
         }
         .hm-group-rect {
-            fill: rgba(255,255,255,0.015);
-            stroke: rgba(255,255,255,0.07);
-            stroke-dasharray: 4 5;
+            fill: rgba(120,120,180,0.035);
+            stroke: rgba(139,92,246,0.28);
+            stroke-width: 1;
             rx: 14;
         }
 
@@ -569,6 +609,7 @@
         var W_PILL = 232, H_PILL = 86;     // collapsed compound drill pill
         var W_PORTAL = 204, H_PORTAL = 54; // cross-room portal chip
         var W_TOOL = 204, H_TOOL = 66;     // action-space node (opens modal)
+        var W_SHOOK = 176, H_SHOOK = 50;   // secondary hook (packed inside a group box)
 
         function node(id, w, h, meta) {
             return { id: id, width: w, height: h, meta: meta };
@@ -582,9 +623,26 @@
         /* ============================================================
          *  SPINE — the landing view (turn loop + 2 pills + secondary)
          * ============================================================ */
+        // ELK group layout: pack children tight, DOWN, label gap at top.
+        var GROUP_OPTS = {
+            'elk.algorithm': 'layered',
+            'elk.direction': 'DOWN',
+            'elk.padding': '[top=28,left=12,bottom=12,right=12]',
+            'elk.spacing.nodeNode': '10',
+            'elk.layered.spacing.nodeNodeBetweenLayers': '10'
+        };
+        // A compound parent: NO fixed width/height — ELK sizes it to its children.
+        function group(id, title, kids) {
+            return { id: id, meta: { type: "group", title: title }, layoutOptions: GROUP_OPTS, children: kids };
+        }
+        // A secondary child hook (lives INSIDE a group box).
+        function shook(id, title, sub) {
+            return node(id, W_SHOOK, H_SHOOK, { type: "secondary", title: title, sub: sub });
+        }
+
         function buildSpine() {
             var children = [
-                /* --- the turn loop, left to right --- */
+                /* ============ CORE TURN LOOP — flat, prominent, on the main line ============ */
                 node("sessionstart", W_HOOK, H_HOOK, { type: "hook", title: "SessionStart", sub: "observe-only" }),
                 node("your-text", W_STAGE, H_STAGE, { type: "in", title: "User Prompt", sub: "what you typed" }),
                 node("userpromptsubmit", W_HOOK, H_HOOK, { type: "hook", title: "UserPromptSubmit", sub: "block / inject / rewrite" }),
@@ -593,76 +651,73 @@
                 node("respond", W_STAGE, H_STAGE, { type: "stage", title: "RESPOND", sub: "output" }),
                 node("stop", W_HOOK, H_HOOK, { type: "hook", title: "Stop", sub: "CAN BLOCK — the hero" }),
 
-                /* --- the two collapsed compound drill pills --- */
+                /* --- the two collapsed compound drill pills (hang off DISPATCHER) --- */
                 node("tool-loop-pill", W_PILL, H_PILL, { type: "pill", title: "Tool Loop", sub: "the agent acts", badge: "8 hooks", drill: "toolloop" }),
                 node("delegation-pill", W_PILL, H_PILL, { type: "pill", title: "Delegation", sub: "hands off work", badge: "5 hooks", drill: "delegation" }),
 
-                /* --- SECONDARY / out-of-band cluster --- */
-                // cognition side-hooks
-                node("instructionsloaded", W_HOOK, H_HOOK, { type: "secondary", title: "InstructionsLoaded", sub: "observe-only" }),
-                node("messagedisplay", W_HOOK, H_HOOK, { type: "secondary", title: "MessageDisplay", sub: "display-only rewrite" }),
-                node("notification", W_HOOK, H_HOOK, { type: "secondary", title: "Notification", sub: "observe-only" }),
-                node("precompact", W_HOOK, H_HOOK, { type: "secondary", title: "PreCompact", sub: "can block" }),
-                node("postcompact", W_HOOK, H_HOOK, { type: "secondary", title: "PostCompact", sub: "observe-only" }),
-                node("stopfailure", W_HOOK, H_HOOK, { type: "secondary", title: "StopFailure", sub: "observe-only" }),
+                /* --- prompt-gate satellite, kept adjacent to the prompt --- */
+                shook("userpromptexpansion", "UserPromptExpansion", "shorthand expands"),
 
-                // session lifecycle
-                node("setup", W_HOOK, H_HOOK, { type: "secondary", title: "Setup", sub: "off-path · --init only" }),
-                node("sessionend", W_HOOK, H_HOOK, { type: "secondary", title: "SessionEnd", sub: "observe-only" }),
-                node("configchange", W_HOOK, H_HOOK, { type: "secondary", title: "ConfigChange", sub: "can block" }),
-
-                // prompt gate
-                node("userpromptexpansion", W_HOOK, H_HOOK, { type: "secondary", title: "UserPromptExpansion", sub: "can block" }),
-
-                // workspace group "the agent's ground", fed by Tool Loop
-                node("cwdchanged", W_HOOK, H_HOOK, { type: "secondary", title: "CwdChanged", sub: "observe-only" }),
-                node("filechanged", W_HOOK, H_HOOK, { type: "secondary", title: "FileChanged", sub: "observe-only" }),
-                node("worktreecreate", W_HOOK, H_HOOK, { type: "secondary", title: "WorktreeCreate", sub: "can block" }),
-                node("worktreeremove", W_HOOK, H_HOOK, { type: "secondary", title: "WorktreeRemove", sub: "observe-only" })
+                /* ============ SECONDARY HOOKS — packed into tight compound GROUP boxes ============ */
+                group("grp-lifecycle", "Session lifecycle", [
+                    shook("setup", "Setup", "off-path · --init only"),
+                    shook("sessionend", "SessionEnd", "observe-only"),
+                    shook("configchange", "ConfigChange", "can block")
+                ]),
+                group("grp-memory", "Memory & context", [
+                    shook("precompact", "PreCompact", "can block"),
+                    shook("postcompact", "PostCompact", "observe-only"),
+                    shook("instructionsloaded", "InstructionsLoaded", "observe-only")
+                ]),
+                group("grp-output", "Output & signals", [
+                    shook("messagedisplay", "MessageDisplay", "display-only rewrite"),
+                    shook("notification", "Notification", "observe-only"),
+                    shook("stopfailure", "StopFailure", "observe-only")
+                ]),
+                group("grp-workspace", "Workspace · the agent's ground", [
+                    shook("cwdchanged", "CwdChanged", "observe-only"),
+                    shook("filechanged", "FileChanged", "observe-only"),
+                    shook("worktreecreate", "WorktreeCreate", "can block"),
+                    shook("worktreeremove", "WorktreeRemove", "observe-only")
+                ])
             ];
 
             var edges = [
-                /* turn loop */
-                edge("e-boot", "sessionstart", "your-text", "normal", "boots the session"),
-                edge("e-in", "your-text", "userpromptsubmit", "normal", "submit"),
-                edge("e-submit-think", "userpromptsubmit", "think", "normal", "request in"),
-                edge("e-think-disp", "think", "dispatcher", "normal", "route"),
-                edge("e-disp-respond", "dispatcher", "respond", "normal", "answer"),
-                edge("e-respond-stop", "respond", "stop", "normal", "done?"),
+                /* ---- core turn loop ---- */
+                edge("e-boot", "sessionstart", "your-text", "normal", "boot"),
+                edge("e-in", "your-text", "userpromptsubmit", "normal", "prompt in"),
+                edge("e-submit-think", "userpromptsubmit", "think", "normal"),
+                edge("e-think-disp", "think", "dispatcher", "normal"),
+                edge("e-disp-respond", "dispatcher", "respond", "normal"),
+                edge("e-respond-stop", "respond", "stop", "normal"),
                 // Stop's hero loop back to the next prompt
-                edge("e-stop-loop", "stop", "your-text", "loop", "block → keep going / allow → next turn"),
+                edge("e-stop-loop", "stop", "your-text", "loop", "loops back"),
 
-                /* dispatcher <-> drill pills, each round-tripping back */
-                edge("e-disp-tool", "dispatcher", "tool-loop-pill", "normal", "use a tool"),
-                edge("e-tool-disp", "tool-loop-pill", "dispatcher", "loop", "result back"),
+                /* ---- dispatcher <-> drill pills, each round-tripping back ---- */
+                edge("e-disp-tool", "dispatcher", "tool-loop-pill", "normal", "tool call"),
+                edge("e-tool-disp", "tool-loop-pill", "dispatcher", "loop"),
                 edge("e-disp-deleg", "dispatcher", "delegation-pill", "normal", "delegate"),
-                edge("e-deleg-disp", "delegation-pill", "dispatcher", "loop", "result back"),
+                edge("e-deleg-disp", "delegation-pill", "dispatcher", "loop"),
 
-                /* secondary — cognition side-hooks */
-                edge("e-think-instr", "instructionsloaded", "think", "branch", "loads rules"),
-                edge("e-respond-msg", "respond", "messagedisplay", "branch", "shown"),
-                edge("e-respond-notif", "respond", "notification", "branch", "alert"),
-                edge("e-disp-precompact", "dispatcher", "precompact", "branch", "squeeze memory"),
-                edge("e-precompact-postcompact", "precompact", "postcompact", "branch", "after"),
-                edge("e-postcompact-disp", "postcompact", "dispatcher", "branch", "resume"),
-                edge("e-stop-fail", "respond", "stopfailure", "error", "error exit"),
+                /* ---- prompt-gate satellite feeds the submit hook ---- */
+                edge("e-expansion", "userpromptexpansion", "userpromptsubmit", "branch"),
 
-                /* secondary — session lifecycle */
-                edge("e-setup", "sessionstart", "setup", "branch", "only on --init / maintenance"),
-                edge("e-sessionend", "stop", "sessionend", "branch", "conversation closes"),
-                edge("e-configchange", "dispatcher", "configchange", "branch", "settings edited mid-turn"),
-
-                /* secondary — prompt gate (feeds the submit hook) */
-                edge("e-expansion", "userpromptexpansion", "userpromptsubmit", "branch", "shorthand expands"),
-
-                /* secondary — workspace group fed by the Tool Loop */
-                edge("e-ws-cwd", "tool-loop-pill", "cwdchanged", "branch", "moved folder"),
-                edge("e-ws-file", "tool-loop-pill", "filechanged", "branch", "file changed"),
-                edge("e-ws-wtc", "tool-loop-pill", "worktreecreate", "branch", "new worktree"),
-                edge("e-ws-wtr", "tool-loop-pill", "worktreeremove", "branch", "worktree removed")
+                /* ---- group satellites: ONE edge each, into the group box ---- */
+                edge("e-grp-life", "sessionstart", "grp-lifecycle", "branch"),
+                edge("e-grp-mem", "dispatcher", "grp-memory", "branch"),
+                edge("e-grp-out", "respond", "grp-output", "branch"),
+                edge("e-grp-ws", "tool-loop-pill", "grp-workspace", "branch")
             ];
 
-            return { id: "root", layoutOptions: {}, children: children, edges: edges };
+            return {
+                id: "root",
+                layoutOptions: {
+                    'elk.layered.spacing.nodeNodeBetweenLayers': '48',
+                    'elk.spacing.nodeNode': '40'
+                },
+                children: children,
+                edges: edges
+            };
         }
 
         /* ============================================================
@@ -1282,7 +1337,7 @@
     </script>
 
     <!-- ============================================================
-         ENGINE — ELK render engine (v3.0.0). Reads HM.buildGraph /
+         ENGINE — ELK render engine (v3.1.0). Reads HM.buildGraph /
          HM.NODE_INFO / HM.openToolOverlay at call time. Mounts into
          .hm-root and renders the spine first.
          ============================================================ -->
