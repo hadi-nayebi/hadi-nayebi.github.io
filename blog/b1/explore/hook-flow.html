@@ -2017,6 +2017,11 @@
             });
             if (viewId === 'spine') root.classList.remove('is-drill');
             else root.classList.add('is-drill');
+            // #chrome-up ("Back to Essay 1") is a fixed sibling OUTSIDE .hm-root, so a CSS
+            // descendant rule can't reach it. In a drill view the in-topbar "back to the turn"
+            // pill owns the top-right corner, so hide the essay-exit here to stop them overlapping.
+            var chromeUp = document.getElementById('chrome-up');
+            if (chromeUp) chromeUp.style.display = (viewId === 'spine') ? '' : 'none';
 
             // teaching caption for this view
             if (caption) {
