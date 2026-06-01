@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v1.1.0 -->
+<!-- Version: v1.2.0 -->
 <html lang="en">
 
 <head>
@@ -235,6 +235,12 @@
             padding: 0.9rem 1.4rem 1.3rem;
             display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.5rem;
         }
+        .tool-cat-label {
+            grid-column: 1 / -1; margin: 0.55rem 0 0.05rem;
+            font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase;
+            color: var(--text-muted); font-weight: 700; opacity: 0.78;
+        }
+        .tool-cat-label:first-child { margin-top: 0; }
         .tool-chip {
             appearance: none; -webkit-appearance: none; cursor: pointer; font-family: inherit;
             text-align: left; color: var(--text-main); background: var(--glass);
@@ -270,6 +276,12 @@
         }
         .perm-line.needs { color: var(--accent); }
         .perm-line.read { color: rgba(120, 200, 150, 0.95); }
+        .tool-detail .tool-cat-tag {
+            display: inline-block; margin-bottom: 0.85rem;
+            font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+            color: var(--text-muted); background: var(--glass); border: 1px solid var(--border);
+            border-radius: 999px; padding: 0.18rem 0.6rem;
+        }
         .tool-detail .detail-body { font-size: 0.92rem; line-height: 1.6; color: var(--text-main); }
         .tool-modal-foot {
             padding: 0.7rem 1.4rem; border-top: 1px solid var(--border);
@@ -299,7 +311,10 @@
 
         @media (max-width: 820px) {
             .chrome-title { max-width: 64vw; }
-            .legend { display: none; }
+            .legend {
+                font-size: 0.62rem; gap: 0.5rem; top: auto; bottom: 3rem;
+                max-width: 92vw;
+            }
             .info-panel {
                 left: 0; right: 0; bottom: 0; width: 100%; max-width: 100%;
                 border-radius: 18px 18px 0 0; max-height: 55vh;
@@ -318,11 +333,11 @@
 
     <a href="../01-llms-are-not-the-agents.html" class="chrome-back" aria-label="Back to Essay 1">&larr; Back to Essay 1</a>
 
-    <div class="legend" aria-hidden="true">
-        <span><span class="swatch hook"></span> Hook (deterministic)</span>
-        <span><span class="swatch stage"></span> Model stage</span>
-        <span><span class="swatch tool"></span> Tools</span>
-        <span><span class="swatch loop"></span> Loop / exit</span>
+    <div class="legend" role="group" aria-label="Map color key">
+        <span><span class="swatch hook" aria-hidden="true"></span> Hook (deterministic)</span>
+        <span><span class="swatch stage" aria-hidden="true"></span> Model stage</span>
+        <span><span class="swatch tool" aria-hidden="true"></span> Tools</span>
+        <span><span class="swatch loop" aria-hidden="true"></span> Loop / exit</span>
     </div>
 
     <div class="map-viewport">
@@ -412,7 +427,7 @@
         </div>
     </div>
 
-    <div class="chrome-hint" id="chrome-hint">Click any node to explore &middot; Esc to close</div>
+    <div class="chrome-hint" id="chrome-hint">Click any node to explore &middot; click empty space or Esc to close</div>
 
     <!-- info panel -->
     <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Node detail">
@@ -462,10 +477,10 @@
         var NODE_INFO = {
             "user-prompt-in": { label: "User Prompt", kind: "Input", what: "You, typing. This is the only thing that starts a turn — the agent does nothing until you give it a prompt. It sits at the head of the loop because it is the one input the structure does not generate for itself.", when: "The moment you press enter on a message.", canDo: "Hand a fresh instruction to the agent. Everything that follows — every hook, every tool call — unspools from this one line of text." },
             "ups-hook": { label: "UserPromptSubmit Hook (UPS)", kind: "Hook", what: "The first interception point. A deterministic rule that runs the instant your prompt arrives, BEFORE the model reads it. The blog calls this the 'UPS Hook'. It can quietly add context, rewrite, or refuse a prompt — your typed text is a proposal the structure gets to inspect first.", when: "Right after you submit a prompt, before the model processes it. Always fires (no matcher). Has a tighter 30-second timeout than other hooks.", canDo: "Inject extra context for the model, validate or BLOCK the prompt outright, set the session title, or suppress your original wording. Blocking here stops the turn before the model ever sees it.", doc: HOOKS_DOC + "#userpromptsubmit" },
-            "pre-tool-use": { label: "PreToolUse Hook", kind: "Hook", what: "The sharpest example of 'the structure disposes.' When the model decides to use a tool, this rule fires FIRST and can deny it, change its inputs, or wave it through. Crucially it runs before any permission check — so a hook's 'deny' holds even when permissions are set to skip prompts.", when: "Before any proposed tool call runs. You can target it at specific tools by name (e.g. Bash, Edit, Write, or MCP tools).", canDo: "Block or allow a tool, rewrite the tool's input before it runs, or set the permission decision (allow / deny / ask). Hooks can only tighten, never loosen — an 'allow' can't override a hard deny rule.", doc: HOOKS_DOC + "#pretooluse" },
+            "pre-tool-use": { label: "PreToolUse Hook", kind: "Hook", what: "The sharpest example of 'the structure disposes.' When the model decides to use a tool, this rule fires FIRST and can deny it, change its inputs, or wave it through. Crucially it runs before any permission check — so a hook's 'deny' holds even when permissions are set to skip prompts.", when: "Before any proposed tool call runs. You can target it at specific tools by name (e.g. Bash, Edit, Write, or MCP tools).", canDo: "Block or allow a tool, rewrite the tool's input before it runs (updatedInput), or set the permission decision — allow, deny, ask, or defer. An 'allow' here bypasses the normal permission prompt entirely, while a 'deny' stops the call before it runs; this gate is where deterministic policy overrides the model's proposal.", doc: HOOKS_DOC + "#pretooluse" },
             "tool-cluster": { label: "Tools (the action space)", kind: "Tool cluster", what: "Everything the agent can actually DO in the world — read and write files, run shell commands, search the web, spawn subagents, manage tasks. The model proposes ONE of these each step; nothing happens until a tool runs. Click to open the full set. By default the agent is read-only: only file-writing, command-running, and network tools prompt for permission.", when: "After the model proposes a tool and PreToolUse lets it through. Tools run one at a time (or in a parallel batch), then return their output to the model.", canDo: "Open this node as a dropdown of every current Claude Code tool. Each tool is clickable for what it does and whether it needs permission. This is the 'action space' the whole diagram is drawing.", doc: "https://code.claude.com/docs/en/settings" },
-            "post-tool-use": { label: "PostToolUse Hook", kind: "Hook", what: "The after-the-fact checkpoint. The tool has already run — this hook can't undo it — but it sees the result and can react: validate the output, log it, auto-format an edited file, or block the NEXT model step if something looks wrong.", when: "After a tool call succeeds. (A sibling, PostToolUseFailure, fires instead when a tool errors.)", canDo: "Validate or log the result, add context for the model, auto-format files — and crucially, block the model's next move if the result fails a check.", doc: HOOKS_DOC + "#posttooluse" },
-            "notification-hook": { label: "Notification Hook", kind: "Hook · out-of-band", what: "The agent's way of tapping you on the shoulder. When Claude Code needs your attention — a permission prompt, going idle waiting on you — this hook can fire a desktop notification, ring a bell, or set the window title. It fires off to the side of the main turn, not in sequence with the other hooks.", when: "Whenever Claude Code raises a notification event, such as a permission request (often at the PreToolUse gate) or an idle prompt while it waits for you.", canDo: "Emit a desktop alert, terminal bell, or window-title change so a long-running agent can reach you. Observability only — it can't block anything.", doc: HOOKS_DOC + "#notification" },
+            "post-tool-use": { label: "PostToolUse Hook", kind: "Hook", what: "The after-the-fact checkpoint. The tool has already run — this hook can't undo it — but it sees the result and can react: validate the output, log it, auto-format an edited file, or block the NEXT model step if something looks wrong.", when: "After a tool call succeeds. (A sibling, PostToolUseFailure, fires instead when a tool errors.)", canDo: "Validate or log the result, add context for the model, auto-format files — and crucially, block the model's next move if the result fails a check. (A sibling, PostToolBatch, fires after a parallel batch of tool calls resolves and is the one that can block the next model step.)", doc: HOOKS_DOC + "#posttooluse" },
+            "notification-hook": { label: "Notification Hook", kind: "Hook · out-of-band", what: "The agent's way of tapping you on the shoulder. When Claude Code needs your attention — a permission prompt, going idle waiting on you — this hook can fire a desktop notification, ring a bell, or set the window title. It fires off to the side of the main turn, not in sequence with the other hooks.", when: "Whenever Claude Code raises a notification event, such as a permission request (often at the PreToolUse gate) or an idle prompt while it waits for you.", canDo: "Emit a desktop alert, terminal bell, or window-title change so a long-running agent can reach you. Observability only — it can't block anything. (The adjacent PermissionRequest / PermissionDenied hooks are the ones that actually decide allow or deny.)", doc: HOOKS_DOC + "#notification" },
             "subagent-stop": { label: "SubagentStop Hook", kind: "Hook · out-of-band", what: "The same 'keep working' control, but for a helper. When the agent spawns a subagent (its own fresh context window for a side task, via the Agent tool) and that subagent tries to finish, this hook can force it to keep going. A sibling, SubagentStart, fires when the subagent is spawned.", when: "When a subagent finishes its task. You can target it at specific subagent types.", canDo: "Prevent the subagent from stopping (push it to do more) or log its completion. This is how 'don't stop until the work is done' is enforced one level down.", doc: HOOKS_DOC + "#subagentstop" },
             "pre-compact": { label: "PreCompact Hook", kind: "Hook · out-of-band", what: "The guard on memory housekeeping. When the conversation grows too long, Claude Code compacts it — summarizing older context to free room. This hook fires just before that happens and can check readiness or stop it. A sibling, PostCompact, fires once compaction completes.", when: "Just before context compaction, whether you triggered it manually or it kicked in automatically. It can happen at almost any point in a long session.", canDo: "Validate that compaction is safe, or block it. (After compaction, SessionStart with the 'compact' trigger is the documented place to re-inject any context that should survive.)", doc: HOOKS_DOC + "#precompact" },
             "stop-hook": { label: "Stop Hook", kind: "Hook", what: "THE exit gate, and the single most important hook for the agent thesis. When the model decides it's finished, this hook can refuse — forcing the agent to keep working until the real job is done. It is the only way out of the agent loop back to you.", when: "When Claude finishes responding (not on a manual interrupt — an API error fires StopFailure instead).", canDo: "Block the stop and feed back a reason so the agent keeps going. A safety valve overrides it after repeated blocks, so it can't loop forever. This is the literal mechanism behind 'a blocking stop hook keeps the agent working.'", doc: HOOKS_DOC + "#stop" },
@@ -480,42 +495,44 @@
         };
 
         // perm: "needs" = needs permission; "read" = read-only / no permission prompt.
+        // Each tool: { name, perm, summary, detail, category, doc }. summary = the
+        // one-line chip aria-label; detail = the rich blog-reader-friendly body.
         var TOOL_LIST = [
-            { name: "Bash", perm: "needs", oneLine: "Runs shell commands in your environment (sandboxable; working directory persists, env vars do not)." },
-            { name: "Read", perm: "read", oneLine: "Reads a file with line numbers — handles text, images, PDFs, and Jupyter notebooks." },
-            { name: "Edit", perm: "needs", oneLine: "Makes exact-string-replacement edits to a file (must read it first)." },
-            { name: "Write", perm: "needs", oneLine: "Creates a new file or overwrites an existing one with full content." },
-            { name: "Glob", perm: "read", oneLine: "Finds files by name pattern (e.g. **/*.js), newest first." },
-            { name: "Grep", perm: "read", oneLine: "Searches file contents with ripgrep regex." },
-            { name: "Agent", perm: "read", oneLine: "Spawns a subagent with its own context window and returns one result (the tool formerly called Task)." },
-            { name: "WebFetch", perm: "needs", oneLine: "Fetches a URL, converts it to Markdown, and extracts the relevant parts in an isolated context." },
-            { name: "WebSearch", perm: "needs", oneLine: "Runs a web search and returns result titles and URLs (you then WebFetch a page)." },
-            { name: "TaskCreate", perm: "read", oneLine: "Adds a task to the task list — the current task-management system that replaced TodoWrite." },
-            { name: "TaskGet", perm: "read", oneLine: "Retrieves full details for one task." },
-            { name: "TaskList", perm: "read", oneLine: "Lists all tasks and their status." },
-            { name: "TaskUpdate", perm: "read", oneLine: "Updates a task's status, dependencies, or details (or deletes it)." },
-            { name: "TaskStop", perm: "read", oneLine: "Kills a running background task by ID (replaced the old KillShell)." },
-            { name: "AskUserQuestion", perm: "read", oneLine: "Asks you multiple-choice questions to clarify requirements." },
-            { name: "NotebookEdit", perm: "needs", oneLine: "Modifies Jupyter notebook cells one at a time." },
-            { name: "Skill", perm: "needs", oneLine: "Runs a skill — a reusable prompt-based workflow — inside the main conversation." },
-            { name: "EnterPlanMode", perm: "read", oneLine: "Switches to plan mode to design an approach before acting." },
-            { name: "ExitPlanMode", perm: "read", oneLine: "Presents a plan for approval and leaves plan mode." },
-            { name: "EnterWorktree", perm: "read", oneLine: "Creates an isolated git worktree and switches into it." },
-            { name: "ExitWorktree", perm: "read", oneLine: "Leaves a worktree session and returns to the original directory." },
-            { name: "LSP", perm: "read", oneLine: "Code intelligence via language servers: definitions, references, type errors, call hierarchies." },
-            { name: "Monitor", perm: "needs", oneLine: "Runs a command in the background and feeds each output line back to Claude to react mid-task (uses Bash rules)." },
-            { name: "ToolSearch", perm: "read", oneLine: "Searches for and loads deferred tools when tool search (for large tool sets) is enabled." },
-            { name: "WaitForMcpServers", perm: "read", oneLine: "Waits for still-connecting MCP servers so their tools become usable without restarting." },
-            { name: "ListMcpResourcesTool", perm: "read", oneLine: "Lists resources exposed by connected MCP servers." },
-            { name: "ReadMcpResourceTool", perm: "read", oneLine: "Reads a specific MCP resource by URI." },
-            { name: "CronCreate", perm: "read", oneLine: "Schedules a recurring or one-shot prompt within the session." },
-            { name: "CronList", perm: "read", oneLine: "Lists scheduled tasks in the session." },
-            { name: "CronDelete", perm: "read", oneLine: "Cancels a scheduled task by ID." },
-            { name: "PushNotification", perm: "read", oneLine: "Sends a desktop (and optional phone) notification so long tasks can reach you." },
-            { name: "PowerShell", perm: "needs", oneLine: "Runs PowerShell commands (opt-in on Linux/macOS/WSL)." },
-            { name: "Workflow", perm: "needs", oneLine: "Runs a dynamic workflow — a script orchestrating many background subagents into one result." },
-            { name: "TodoWrite", perm: "read", oneLine: "The legacy session checklist — disabled by default now in favor of the Task tools." },
-            { name: "MCP tools (mcp__server__tool)", perm: "needs", oneLine: "Tools added by connected MCP servers (custom search, browser, Gmail, etc.) — the standard way to extend the action space." }
+            { name: "Bash", perm: "needs", category: "Shell", doc: "https://code.claude.com/docs/en/settings", summary: "Runs shell commands in your environment, the agent's hands for anything beyond reading and editing files.", detail: "Bash executes terminal commands — installing packages, running tests, building, moving files, calling git, anything a command line can do. The agent reaches for it constantly because most real work happens through commands, not just file edits. Two constraints matter: the working directory persists between calls, but shell state like environment variables and functions does NOT carry over, and it can run sandboxed or in the background. Because a command can change or delete anything, Bash always needs permission." },
+            { name: "Read", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Reads a file and shows it with line numbers — text, images, PDFs, and notebooks alike.", detail: "Read is how the agent looks at a file before doing anything with it. It returns the contents with line numbers, and it can also display images, read PDFs page by page, and open Jupyter notebooks. The agent must Read a file before it is allowed to Edit it, so this is almost always the first move on any file. Reading is non-destructive, so by default it runs without a permission prompt (though rules can be set to block sensitive files like secrets)." },
+            { name: "Edit", perm: "needs", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Makes a precise find-and-replace change inside an existing file.", detail: "Edit swaps one exact piece of text for another inside a file, leaving everything else untouched — the surgical alternative to rewriting a whole file. The agent reaches for it to fix a line, rename something, or adjust a block without disturbing the rest. A firm rule: the agent must Read the file in the same session first, and the target text must match exactly (and be unique, unless replacing every occurrence). Because it changes your files, it needs permission." },
+            { name: "Write", perm: "needs", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Creates a brand-new file, or completely overwrites an existing one.", detail: "Write lays down a whole file's contents at once. The agent uses it to create new files, and for full rewrites where a targeted Edit would be clumsier than just replacing everything. The catch: overwriting a file you have not Read first will fail, which guards against blowing away work the agent hasn't seen. Because it can replace a file wholesale, it needs permission." },
+            { name: "Glob", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Finds files by name pattern, like asking 'show me every JavaScript file.'", detail: "Glob locates files by matching a wildcard pattern against their paths (for example, every file ending in .js anywhere in the project), returning matches newest-first. The agent reaches for it to discover where things live before opening them. It only lists file paths — it never looks inside the files or changes anything — so it runs read-only with no permission prompt. Pair it with Grep when you need to search file contents rather than file names." },
+            { name: "Grep", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Searches inside files for matching text using fast regular-expression search.", detail: "Grep scans the contents of many files at once for a word or pattern, powered by ripgrep, and reports where the matches are. It is the agent's main way to answer 'where is this defined?' or 'everywhere this is used' across a whole project. It reads but never modifies, so it runs without a permission prompt. Glob finds files by name; Grep finds text inside them." },
+            { name: "Agent", perm: "read", category: "Subagents", doc: "https://code.claude.com/docs/en/sub-agents", summary: "Spawns a helper agent with its own fresh context to handle a self-contained side task.", detail: "Agent hands a defined job to a subagent that works in its own separate context window and returns a single summarized result, keeping noisy investigation out of the main conversation. The agent reaches for it for big searches, parallel investigations, or specialized roles defined as custom subagents. Dispatching is read-only — launching costs no permission — but whatever the subagent itself does (running commands, editing files) is still gated by the normal rules. This tool was formerly called Task." },
+            { name: "WebFetch", perm: "needs", category: "Web", doc: "https://code.claude.com/docs/en/settings", summary: "Fetches a web page, converts it to clean text, and pulls out the parts that answer a question.", detail: "WebFetch retrieves a specific URL, turns the page into readable Markdown, and uses a small fast model to extract just the relevant content. The agent reaches for it to read documentation, articles, or any known web address. Constraints: it can't reach private or logged-in pages, it upgrades plain HTTP to HTTPS, and a cross-site redirect is handed back rather than followed (so it has to be called again with the new URL). Because it reaches out to the network, it needs permission, often scoped to specific domains." },
+            { name: "WebSearch", perm: "needs", category: "Web", doc: "https://code.claude.com/docs/en/settings", summary: "Runs a web search and returns result titles and links to follow up on.", detail: "WebSearch answers 'what's out there' by returning a list of search-result titles and URLs, which the agent then opens with WebFetch to read in full. It is the starting point when the right source isn't known in advance — current docs, recent news, library references. The two-step rhythm (search to find, fetch to read) keeps the agent grounded in real pages rather than guessing. Like other network tools, it is gated by permission settings." },
+            { name: "TaskCreate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Adds an item to the agent's structured task list for tracking multi-step work.", detail: "TaskCreate puts a new entry on the agent's task list, the current task-management system that replaced the older TodoWrite checklist. The agent reaches for it at the start of anything with several distinct steps, so progress is visible and nothing is forgotten. Tasks can carry dependencies and status, making the list a small project plan rather than a flat to-do. It only manages the agent's own bookkeeping, so it needs no permission." },
+            { name: "TaskGet", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Looks up the full details of a single task by its ID.", detail: "TaskGet retrieves everything recorded about one task — its description, status, and any dependencies. The agent reaches for it to re-check the specifics of a step before working on it, especially in a long session where the details have scrolled out of view. It only reads the task list, so it needs no permission." },
+            { name: "TaskList", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Shows all current tasks and their status at a glance.", detail: "TaskList returns the whole task list with each item's state (pending, in progress, done). The agent reaches for it to take stock — to decide what to do next or to confirm everything is finished before wrapping up. It is purely informational and changes nothing, so no permission is required." },
+            { name: "TaskUpdate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Changes a task's status, details, or dependencies — or removes it.", detail: "TaskUpdate edits an existing task: marking it in-progress or complete, adjusting its description, wiring up dependencies, or deleting it. The agent reaches for it constantly as work moves forward, keeping the list an honest mirror of reality. It only touches the agent's own task records, never your files, so it needs no permission." },
+            { name: "TaskStop", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Stops a running background task by its ID.", detail: "TaskStop halts a task that is running in the background, identified by its ID — the modern replacement for the old KillShell tool. The agent reaches for it to cancel a long-running or stuck background job it started earlier. It manages the agent's own running work rather than your system at large, so it needs no permission prompt." },
+            { name: "AskUserQuestion", perm: "read", category: "Planning", doc: "https://code.claude.com/docs/en/settings", summary: "Pauses to ask you a focused multiple-choice question when a decision is genuinely yours to make.", detail: "AskUserQuestion surfaces a short question with a few clear options so you can steer direction, resolve ambiguity, or approve a choice. The agent reaches for it when guessing would be risky and the answer truly depends on your preference or knowledge. It puts a human in the loop on purpose; it doesn't touch files or systems, so it needs no permission." },
+            { name: "NotebookEdit", perm: "needs", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Edits a Jupyter notebook one cell at a time.", detail: "NotebookEdit changes the contents of a specific cell in a .ipynb notebook, and can insert or delete cells, respecting the notebook's structure rather than treating it as plain text. The agent reaches for it when working in data-science notebooks, where ordinary file edits would corrupt the JSON format. Because it modifies your files, it needs permission." },
+            { name: "Skill", perm: "needs", category: "Tasks", doc: "https://code.claude.com/docs/en/skills", summary: "Runs a packaged, reusable workflow inside the current conversation.", detail: "Skill invokes a named skill — a saved set of instructions and steps for a recurring kind of task — so the agent follows a proven recipe instead of improvising. The agent reaches for it when a user request matches an available skill, often something the user triggers with a slash command. The skill runs in the main conversation and may itself use other tools, each still subject to its own permission rules." },
+            { name: "EnterPlanMode", perm: "read", category: "Planning", doc: "https://code.claude.com/docs/en/settings", summary: "Switches into plan mode to design an approach before changing anything.", detail: "EnterPlanMode puts the agent into a research-and-design stance where it explores and drafts an approach but holds off on making changes. The agent reaches for it on bigger or riskier tasks where thinking first prevents wasted or wrong work. It alters the agent's own mode rather than your system, so it needs no permission." },
+            { name: "ExitPlanMode", perm: "read", category: "Planning", doc: "https://code.claude.com/docs/en/settings", summary: "Presents the finished plan for your approval and leaves plan mode.", detail: "ExitPlanMode shows you the plan the agent worked out and asks for the go-ahead before it starts making real changes. The agent reaches for it once a plan is ready, turning planning into an explicit approval gate. It only changes mode and prompts you, so it needs no permission of its own." },
+            { name: "EnterWorktree", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Creates an isolated git worktree and moves work into it.", detail: "EnterWorktree spins up a separate git worktree — a parallel checkout of the repository — and switches the session into it, so changes happen off to the side rather than on your main branch. The agent reaches for it when work should stay isolated, like trying an approach without disturbing the current state. Setting up the worktree itself is read-only; any edits made inside it still follow the normal permission rules." },
+            { name: "ExitWorktree", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Leaves the worktree and returns to the original working directory.", detail: "ExitWorktree ends an isolated worktree session and brings the agent back to where it started. The agent reaches for it once the isolated work is done or merged. It only changes which directory the session is in, so it needs no permission." },
+            { name: "LSP", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Taps language-server smarts: jump to definitions, find references, and surface type errors.", detail: "LSP gives the agent the same code intelligence an editor has — locating where something is defined, finding everywhere it is used, reading type errors, and tracing call hierarchies. The agent reaches for it to understand code precisely rather than guessing from text search alone. It only inspects code and reports findings, so it runs read-only with no permission prompt." },
+            { name: "Monitor", perm: "needs", category: "Shell", doc: "https://code.claude.com/docs/en/settings", summary: "Runs a command in the background and feeds each new line of output back to the agent live.", detail: "Monitor starts a long-running command and streams its output back so the agent can react mid-task — watching a test run, a build, or a log and responding the moment something happens. The agent reaches for it to wait on a condition without blocking, instead of polling repeatedly. Because it runs shell commands, it follows the same permission rules as Bash and needs permission." },
+            { name: "ToolSearch", perm: "read", category: "System", doc: "https://code.claude.com/docs/en/settings", summary: "Finds and loads additional tools on demand when there are too many to keep loaded at once.", detail: "ToolSearch looks up tools that are deferred — known by name but not yet fully loaded — and pulls in their full definitions so they become callable. The agent reaches for it when working with large tool sets (often many MCP tools), keeping the active toolbox lean until a specific tool is actually needed. It only loads tool definitions, so it needs no permission." },
+            { name: "WaitForMcpServers", perm: "read", category: "MCP", doc: "https://code.claude.com/docs/en/mcp", summary: "Waits for still-connecting MCP servers so their tools come online without a restart.", detail: "WaitForMcpServers pauses briefly for external MCP servers that are still starting up, so the tools they provide become usable in the current session. The agent reaches for it early on when it needs a connected service (a browser, a database, an email account) whose server hasn't finished connecting yet. It only waits and checks status, so it needs no permission." },
+            { name: "ListMcpResourcesTool", perm: "read", category: "MCP", doc: "https://code.claude.com/docs/en/mcp", summary: "Lists the resources that connected MCP servers make available.", detail: "This tool enumerates the resources — documents, datasets, records — exposed by any connected MCP servers, so the agent can discover what external content is on offer. The agent reaches for it to find out what a connected service holds before pulling a specific item. It only lists what is available and reads nothing further, so it needs no permission." },
+            { name: "ReadMcpResourceTool", perm: "read", category: "MCP", doc: "https://code.claude.com/docs/en/mcp", summary: "Reads one specific resource from a connected MCP server by its address.", detail: "ReadMcpResourceTool fetches the contents of a single MCP resource identified by its URI. The agent reaches for it after discovering a resource it wants, to pull that external document or record into the conversation. It reads from a connected service rather than your local files; the underlying server controls what it can return." },
+            { name: "CronCreate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Schedules a prompt to run later, once or on a repeating interval.", detail: "CronCreate sets up a scheduled task within the session — a prompt that fires on a timer, either one time or on a recurring schedule. The agent reaches for it to automate a repeating check or a future action, such as polling a deploy every few minutes. It registers the schedule rather than acting on your system directly, so it needs no permission." },
+            { name: "CronList", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Lists the scheduled tasks currently set up.", detail: "CronList shows every scheduled prompt registered in the session, with its timing and status. The agent reaches for it to review what's already on the schedule before adding or removing anything. It is purely informational, so it needs no permission." },
+            { name: "CronDelete", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Cancels a scheduled task by its ID.", detail: "CronDelete removes a previously scheduled prompt so it no longer fires. The agent reaches for it to stop a recurring task that is no longer wanted. It only manages the agent's own schedule entries, so it needs no permission." },
+            { name: "PushNotification", perm: "read", category: "System", doc: "https://code.claude.com/docs/en/settings", summary: "Sends you a desktop (and optionally phone) alert so a long task can reach you.", detail: "PushNotification fires a notification to your desktop, and optionally your phone, so you don't have to babysit a long-running session. The agent reaches for it when it finishes a lengthy job or needs your attention while you're away. It only sends an alert and changes nothing else, so it needs no permission." },
+            { name: "PowerShell", perm: "needs", category: "Shell", doc: "https://code.claude.com/docs/en/settings", summary: "Runs PowerShell commands, the Windows-flavored counterpart to Bash.", detail: "PowerShell executes commands through the PowerShell shell, primarily for Windows environments, and can be opted into on Linux, macOS, or WSL. The agent reaches for it when the task calls for PowerShell scripting rather than a Unix-style shell. Like Bash, it can change your system, so it needs permission." },
+            { name: "Workflow", perm: "needs", category: "Subagents", doc: "https://code.claude.com/docs/en/settings", summary: "Runs a scripted workflow that orchestrates many background subagents into one result.", detail: "Workflow executes a dynamic, multi-step process — typically a script that fans work out across several background subagents and gathers their results back together. The agent reaches for it for larger orchestrated jobs that are bigger than a single subagent dispatch. Because the workflow drives real work across the system, it is treated as needing permission." },
+            { name: "TodoWrite", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "The legacy in-session checklist, now disabled by default in favor of the Task tools.", detail: "TodoWrite maintained a simple running to-do list for the current session. It has largely been superseded by the structured Task tools (TaskCreate, TaskUpdate, and friends) and is off by default in current Claude Code. It only tracked the agent's own checklist, so it never needed permission. Mentioned here mainly to show how the task system evolved." },
+            { name: "MCP tools (mcp__server__tool)", perm: "needs", category: "MCP", doc: "https://code.claude.com/docs/en/mcp", summary: "Tools added by connected outside services — the main way to extend what the agent can do.", detail: "MCP tools come from connected MCP servers — custom integrations like a browser, a database, email, or a company's internal systems — and appear with names in the form mcp__server__tool. The agent reaches for them whenever a task needs a capability beyond the built-in set, which is exactly the point of the Model Context Protocol: a standard way to plug new abilities in. Because they act on outside systems, they generally need permission, configurable per server and per tool." }
         ];
 
         // --- small DOM helpers ----------------------------------------------------
@@ -647,6 +664,7 @@
         var infoPanel = el("info-panel"), infoContent = el("info-content"), infoClose = el("info-close");
         var allNodes = Array.prototype.slice.call(document.querySelectorAll(".node"));
         var activeNode = null;
+        var lastTrigger = null; // node that opened the current panel (for focus return)
 
         function renderInfo(info) {
             var html = "";
@@ -664,12 +682,17 @@
             html += "</div>";
             infoContent.innerHTML = html;
             infoPanel.classList.add("open");
+            // Move focus to the heading so keyboard / screen-reader users know
+            // new content appeared (preventScroll avoids any layout shift).
+            var h = infoContent.querySelector("h2");
+            if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
         }
 
         function closeInfo() {
             infoPanel.classList.remove("open");
             clearHighlights();
             activeNode = null;
+            if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
         }
 
         // highlight a node + its connected arrows; dim the rest
@@ -678,6 +701,8 @@
                 var k = n.getAttribute("data-node");
                 n.classList.toggle("is-dim", k !== key);
                 n.classList.toggle("is-active", k === key);
+                // Mirror the visual 'selected' state for assistive tech.
+                n.setAttribute("aria-pressed", k === key ? "true" : "false");
             });
             pathEls.forEach(function (p) {
                 var touches = p.nodes.indexOf(key) !== -1;
@@ -686,7 +711,10 @@
             });
         }
         function clearHighlights() {
-            allNodes.forEach(function (n) { n.classList.remove("is-dim", "is-active"); });
+            allNodes.forEach(function (n) {
+                n.classList.remove("is-dim", "is-active");
+                n.setAttribute("aria-pressed", "false");
+            });
             pathEls.forEach(function (p) { p.el.classList.remove("hot", "dim"); });
         }
 
@@ -694,6 +722,7 @@
             var key = node.getAttribute("data-node");
             highlightNode(key);
             activeNode = node;
+            lastTrigger = node;
             if (key === "tool-cluster") {
                 // Tools open the modal only — its description lives INSIDE the modal,
                 // never behind the overlay. No bottom-left panel for this node.
@@ -709,6 +738,13 @@
         function closeInfo2() { infoPanel.classList.remove("open"); }
 
         allNodes.forEach(function (node) {
+            // Native hover tooltip for quick scanning without opening every panel.
+            var ni = NODE_INFO[node.getAttribute("data-node")];
+            if (ni) {
+                var firstSentence = ni.what.split(". ")[0];
+                node.setAttribute("title", ni.kind + " — " + firstSentence + ".");
+            }
+            node.setAttribute("aria-pressed", "false");
             node.addEventListener("click", function (e) {
                 e.stopPropagation();
                 activateNode(node);
@@ -723,6 +759,18 @@
 
         infoClose.addEventListener("click", closeInfo);
 
+        // Click-away dismissal: when the panel is open, a click on empty map space
+        // closes it. Node clicks call stopPropagation (above) so they never reach
+        // here — that guards against same-click-close and against closing when
+        // switching from one node to another.
+        document.addEventListener("click", function (e) {
+            if (!infoPanel.classList.contains("open")) { return; }
+            if (infoPanel.contains(e.target)) { return; }       // clicks inside the panel
+            if (e.target.closest(".node")) { return; }          // safety net for node clicks
+            if (toolOverlay.classList.contains("open")) { return; } // don't fight the modal
+            closeInfo();
+        });
+
         // ====================================================================
         // 4. TOOLS OVERLAY — grid of every tool, each opens an in-modal detail.
         // ====================================================================
@@ -731,26 +779,46 @@
             toolGridView = el("tool-grid-view"), toolDetail = el("tool-detail"),
             toolFootHint = el("tool-foot-hint");
 
-        TOOL_LIST.forEach(function (tool, i) {
-            var chip = document.createElement("button");
-            chip.className = "tool-chip";
-            chip.type = "button";
-            chip.innerHTML = '<span class="perm-dot ' + (tool.perm === "needs" ? "needs" : "read") + '"></span>' + escapeHtml(tool.name);
-            chip.setAttribute("data-tool-index", String(i));
-            chip.setAttribute("aria-label", tool.name + " — " + tool.oneLine);
-            chip.addEventListener("click", function () { showToolDetail(tool); });
-            toolGrid.appendChild(chip);
+        // Build the grid grouped by category. Category order follows first
+        // appearance in TOOL_LIST so the tool order itself is never reshuffled.
+        var catOrder = [], catSeen = {};
+        TOOL_LIST.forEach(function (tool) {
+            var cat = tool.category || "Other";
+            if (!catSeen[cat]) { catSeen[cat] = true; catOrder.push(cat); }
+        });
+        catOrder.forEach(function (cat) {
+            var label = document.createElement("div");
+            label.className = "tool-cat-label";
+            label.textContent = cat;
+            toolGrid.appendChild(label);
+            TOOL_LIST.forEach(function (tool) {
+                if ((tool.category || "Other") !== cat) { return; }
+                var chip = document.createElement("button");
+                chip.className = "tool-chip";
+                chip.type = "button";
+                chip.innerHTML = '<span class="perm-dot ' + (tool.perm === "needs" ? "needs" : "read") + '"></span>' + escapeHtml(tool.name);
+                chip.setAttribute("aria-label", tool.name + " — " + tool.summary);
+                chip.addEventListener("click", function () { showToolDetail(tool); });
+                toolGrid.appendChild(chip);
+            });
         });
         toolCount.textContent = TOOL_LIST.length + " tools";
 
         function showToolDetail(tool) {
             var permLabel = tool.perm === "needs" ? "Needs permission" : "Read-only · no permission prompt";
             var permClass = tool.perm === "needs" ? "needs" : "read";
-            toolDetail.innerHTML =
+            var html =
                 '<button class="tool-back" id="tool-back" type="button">&larr; All tools</button>'
               + '<h3>' + escapeHtml(tool.name) + '</h3>'
-              + '<div class="perm-line ' + permClass + '">' + escapeHtml(permLabel) + '</div>'
-              + '<div class="detail-body">' + escapeHtml(tool.oneLine) + '</div>';
+              + '<div class="perm-line ' + permClass + '">' + escapeHtml(permLabel) + '</div>';
+            if (tool.category) {
+                html += '<div class="tool-cat-tag">' + escapeHtml(tool.category) + '</div>';
+            }
+            html += '<div class="detail-body">' + escapeHtml(tool.detail || tool.summary || "") + '</div>';
+            if (tool.doc) {
+                html += '<a class="info-doc" href="' + escapeHtml(tool.doc) + '" target="_blank" rel="noopener">Read the docs &#8599;</a>';
+            }
+            toolDetail.innerHTML = html;
             toolGridView.style.display = "none";
             toolDetail.classList.add("open");
             toolFootHint.textContent = tool.name;
@@ -763,20 +831,43 @@
         }
 
         var toolClusterBtn = document.querySelector('[data-node="tool-cluster"]');
+        var toolTrigger = null; // element to restore focus to when the modal closes
         function openToolOverlay() {
             showToolGrid();
+            toolTrigger = toolClusterBtn;
             toolOverlay.classList.add("open");
             toolClusterBtn.setAttribute("aria-expanded", "true");
+            // Initial focus: the close button, so Tab stays inside the modal.
+            if (toolModalClose) { toolModalClose.focus({ preventScroll: true }); }
         }
         function closeToolOverlay() {
             toolOverlay.classList.remove("open");
             toolClusterBtn.setAttribute("aria-expanded", "false");
             clearHighlights();
             activeNode = null;
+            if (toolTrigger) { toolTrigger.focus(); toolTrigger = null; }
         }
         toolModalClose.addEventListener("click", closeToolOverlay);
         toolOverlay.addEventListener("click", function (e) {
             if (e.target === toolOverlay) { closeToolOverlay(); }
+        });
+
+        // Focus trap: while the modal is open, Tab cycles only through its own
+        // focusable elements. Re-query each press because the grid vs detail view
+        // swaps which elements are visible.
+        toolOverlay.addEventListener("keydown", function (e) {
+            if (e.key !== "Tab") { return; }
+            if (!toolOverlay.classList.contains("open")) { return; }
+            var focusables = Array.prototype.slice.call(
+                toolOverlay.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')
+            ).filter(function (n) { return n.offsetParent !== null; });
+            if (!focusables.length) { return; }
+            var first = focusables[0], last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                last.focus(); e.preventDefault();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                first.focus(); e.preventDefault();
+            }
         });
 
         // ====================================================================
