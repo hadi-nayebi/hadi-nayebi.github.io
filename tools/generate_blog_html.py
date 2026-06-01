@@ -196,6 +196,7 @@ _REF_SENTINEL_PREFIX = "\x00REF\x00"
 _IMG_SENTINEL_PREFIX = "\x00IMG\x00"
 _CODE_SENTINEL_PREFIX = "\x00CODE\x00"
 _FENCED_SENTINEL_PREFIX = "\x00FENCED\x00"
+_RAWHTML_SENTINEL_PREFIX = "\x00RAWHTML\x00"
 
 
 def extract_refs(text: str) -> tuple[str, list[str]]:
@@ -349,6 +350,38 @@ def _extract_image_placeholders_impl(text: str) -> tuple[str, list[str]]:
     return pattern.sub(repl, text), images
 
 
+def extract_raw_html_blocks(text: str) -> tuple[str, list[str]]:
+    """Pull `<!-- RAW_HTML ... -->` comment blocks out and pass their contents through
+    VERBATIM — no markdown transforms, no entity escaping, no <p> wrapping.
+
+    The generator normally has no raw-HTML passthrough: a literal HTML snippet typed
+    into the .md body falls into the default paragraph branch, gets wrapped in <p>, and
+    inline_format() mangles it (asterisks become emphasis, [text](url) becomes a link,
+    etc.). This block lets the .md author drop hand-written HTML — e.g. a glassy call-to-
+    action button under a figure — and have it survive regeneration unchanged.
+
+    Shape (the inner HTML is whatever sits between the markers):
+
+        <!-- RAW_HTML -->
+        <div class="explore-cta"><a href="explore/x.html" class="btn ...">Explore</a></div>
+        <!-- /RAW_HTML -->
+
+    Mirrors the IMAGE PLACEHOLDER comment convention so the raw block is invisible to
+    GitHub's .md source view (it's an HTML comment) yet renders as real HTML in output.
+    """
+    blocks: list[str] = []
+    pattern = re.compile(
+        r"<!--\s*RAW_HTML\s*-->\s*(.*?)\s*<!--\s*/RAW_HTML\s*-->",
+        re.DOTALL,
+    )
+
+    def repl(m: re.Match) -> str:
+        blocks.append(m.group(1).strip())
+        return f"{_RAWHTML_SENTINEL_PREFIX}{len(blocks)-1}\x00"
+
+    return pattern.sub(repl, text), blocks
+
+
 def extract_fenced_code_blocks(text: str) -> tuple[str, list[str]]:
     """Pull triple-backtick fenced code blocks out BEFORE inline-code extraction.
 
@@ -413,12 +446,17 @@ def restore_sentinels(
     images: list[str],
     code_spans: list[str],
     fenced: list[str],
+    raw_html: list[str] | None = None,
 ) -> str:
     """Replace each sentinel with its rendered HTML, then return."""
+    raw_html = raw_html or []
     def restore_ref(m: re.Match) -> str:
         return refs[int(m.group(1))]
     def restore_img(m: re.Match) -> str:
         return images[int(m.group(1))]
+    def restore_raw_html(m: re.Match) -> str:
+        # Verbatim passthrough — the author's HTML, untouched.
+        return raw_html[int(m.group(1))]
     def restore_code(m: re.Match) -> str:
         return f"<code>{code_spans[int(m.group(1))]}</code>"
     def restore_fenced(m: re.Match) -> str:
@@ -433,6 +471,7 @@ def restore_sentinels(
         )
     text = re.sub(_REF_SENTINEL_PREFIX + r"(\d+)\x00", restore_ref, text)
     text = re.sub(_IMG_SENTINEL_PREFIX + r"(\d+)\x00", restore_img, text)
+    text = re.sub(_RAWHTML_SENTINEL_PREFIX + r"(\d+)\x00", restore_raw_html, text)
     text = re.sub(_FENCED_SENTINEL_PREFIX + r"(\d+)\x00", restore_fenced, text)
     text = re.sub(_CODE_SENTINEL_PREFIX + r"(\d+)\x00", restore_code, text)
     return text
@@ -442,6 +481,9 @@ def render_body(body: str, input_md_dir: str = "") -> str:
     """Convert blog markdown body to HTML article-body innerHTML."""
     # 1. Pull out image placeholders (HTML comment blocks).
     body, images = extract_image_placeholders(body, input_md_dir=input_md_dir)
+    # 1b. Pull out raw-HTML passthrough blocks (<!-- RAW_HTML --> ... <!-- /RAW_HTML -->)
+    #     BEFORE refs/code/inline so the author's HTML is never transformed or escaped.
+    body, raw_html = extract_raw_html_blocks(body)
     # 2. Pull out refs.
     body, refs = extract_refs(body)
     # 3. Pull out fenced code blocks (```...```) BEFORE inline-code extraction.
@@ -465,6 +507,11 @@ def render_body(body: str, input_md_dir: str = "") -> str:
             continue
         # Image-placeholder sentinel block — pass through verbatim.
         if block.startswith(_IMG_SENTINEL_PREFIX):
+            output.append(block)
+            continue
+        # Raw-HTML sentinel block — pass through verbatim (restore_sentinels swaps
+        # in the author's untouched HTML, no <p> wrapping, no inline_format).
+        if block.startswith(_RAWHTML_SENTINEL_PREFIX):
             output.append(block)
             continue
         # Fenced-code sentinel block — pass through verbatim (restore_sentinels
@@ -543,7 +590,7 @@ def render_body(body: str, input_md_dir: str = "") -> str:
         output.append(f"<p>{inline_format(para_text)}</p>")
 
     rendered = "\n\n                        ".join(output)
-    rendered = restore_sentinels(rendered, refs, images, code_spans, fenced)
+    rendered = restore_sentinels(rendered, refs, images, code_spans, fenced, raw_html)
     return rendered
 
 

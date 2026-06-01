@@ -149,6 +149,12 @@ Modern CLI agents support **hook systems** — events that fire at specific poin
 ![Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior.](images/hooks-and-action-space-b1-4.png)
 *The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.*
 
+<!-- RAW_HTML -->
+<div style="margin: 1.5rem 0 2rem; text-align: center;">
+  <a href="explore/hook-flow.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">&#8599; Explore the interactive version</a>
+</div>
+<!-- /RAW_HTML -->
+
 Every time the agent is about to take an action — use a tool, respond, manage memory, stop — a **hook fires**. That hook can:
 
 - **Block** the action entirely
