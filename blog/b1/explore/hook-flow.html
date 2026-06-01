@@ -791,8 +791,8 @@
          ==================================================================== -->
 
     <!-- Color / type legend (collapsible) — mirrors the map's visual language -->
-    <aside class="hm-legend" id="hm-legend" aria-label="Map legend">
-        <button class="hm-legend__head" id="hm-legend-head" type="button" aria-expanded="true" aria-controls="hm-legend-body">
+    <aside class="hm-legend is-collapsed" id="hm-legend" aria-label="Map legend">
+        <button class="hm-legend__head" id="hm-legend-head" type="button" aria-expanded="false" aria-controls="hm-legend-body">
             <span>What the shapes mean</span>
             <span class="hm-legend__chev" aria-hidden="true">&#9660;</span>
         </button>
@@ -1056,34 +1056,34 @@
             ];
 
             var edges = [
-                edge("t-in", "tool-call-in", "pretooluse", "normal", "proposed action"),
-                edge("t-allow", "pretooluse", "tool-runs", "normal", "allow / deny / ask / defer (+ rewrite)"),
+                edge("t-in", "tool-call-in", "pretooluse", "normal", ""),
+                edge("t-allow", "pretooluse", "tool-runs", "normal", "allowed"),
 
                 // permission side-branch (ask/defer)
-                edge("t-ask", "pretooluse", "permissionrequest", "branch", "ask / defer"),
-                edge("t-perm-deny", "permissionrequest", "permissiondenied", "error", "auto-mode denies"),
-                edge("t-deny-back", "permissiondenied", "tool-call-in", "branch", "set retry / alternative"),
+                edge("t-ask", "pretooluse", "permissionrequest", "branch", "ask"),
+                edge("t-perm-deny", "permissionrequest", "permissiondenied", "error", "denied"),
+                edge("t-deny-back", "permissiondenied", "tool-call-in", "branch", "retry"),
 
                 // run -> success / failure
                 edge("t-success", "tool-runs", "posttooluse", "normal", "success"),
                 edge("t-failure", "tool-runs", "posttoolusefailure", "error", "error"),
 
                 // parallel batch branch
-                edge("t-batch", "tool-runs", "posttoolbatch", "normal", "parallel batch"),
-                edge("t-batch-result", "posttoolbatch", "tool-result", "normal", "batch reviewed"),
+                edge("t-batch", "tool-runs", "posttoolbatch", "normal", "batch"),
+                edge("t-batch-result", "posttoolbatch", "tool-result", "normal", ""),
 
                 // MCP pause off the running tool
-                edge("t-elicit", "tool-runs", "elicitation", "branch", "MCP asks for input"),
-                edge("t-elicit-res", "elicitation", "elicitationresult", "branch", "answered"),
-                edge("t-elicit-back", "elicitationresult", "tool-runs", "branch", "accept / decline / cancel"),
+                edge("t-elicit", "tool-runs", "elicitation", "branch", "MCP"),
+                edge("t-elicit-res", "elicitation", "elicitationresult", "branch", ""),
+                edge("t-elicit-back", "elicitationresult", "tool-runs", "branch", ""),
 
                 // results exit up
-                edge("t-ok-result", "posttooluse", "tool-result", "normal", "observe-only on result"),
-                edge("t-fail-result", "posttoolusefailure", "tool-result", "normal", "handle failure"),
-                edge("t-exit", "tool-result", "back-to-turn", "loop", "↑ result exits up"),
+                edge("t-ok-result", "posttooluse", "tool-result", "normal", ""),
+                edge("t-fail-result", "posttoolusefailure", "tool-result", "normal", ""),
+                edge("t-exit", "tool-result", "back-to-turn", "loop", ""),
 
                 // catalog opens the modal
-                edge("t-catalog", "tool-runs", "action-space", "branch", "open catalog")
+                edge("t-catalog", "tool-runs", "action-space", "branch", "catalog")
             ];
 
             return { id: "root", layoutOptions: {}, children: children, edges: edges };
@@ -1114,21 +1114,21 @@
 
             var edges = [
                 // Lane A
-                edge("d-start", "dispatch-in", "subagentstart", "normal", "spin up helper"),
-                edge("d-sub-run", "subagentstart", "subagentstop", "normal", "helper's own loop"),
-                edge("d-sub-result", "subagentstop", "deleg-result", "normal", "piece returns"),
+                edge("d-start", "dispatch-in", "subagentstart", "normal", "spawn"),
+                edge("d-sub-run", "subagentstart", "subagentstop", "normal", ""),
+                edge("d-sub-result", "subagentstop", "deleg-result", "normal", ""),
 
                 // Lane B
-                edge("d-task-new", "dispatch-in", "taskcreated", "normal", "open task"),
-                edge("d-task-run", "taskcreated", "taskcompleted", "normal", "task runs"),
-                edge("d-task-result", "taskcompleted", "deleg-result", "normal", "task closes"),
+                edge("d-task-new", "dispatch-in", "taskcreated", "normal", "task"),
+                edge("d-task-run", "taskcreated", "taskcompleted", "normal", ""),
+                edge("d-task-result", "taskcompleted", "deleg-result", "normal", ""),
 
                 // side-branch
-                edge("d-idle", "subagentstart", "teammateidle", "branch", "about to go idle"),
-                edge("d-idle-back", "teammateidle", "dispatch-in", "branch", "hand more work"),
+                edge("d-idle", "subagentstart", "teammateidle", "branch", "idle"),
+                edge("d-idle-back", "teammateidle", "dispatch-in", "branch", ""),
 
                 // report back up
-                edge("d-exit", "deleg-result", "back-to-turn", "report", "↑ back to the turn")
+                edge("d-exit", "deleg-result", "back-to-turn", "report", "")
             ];
 
             return { id: "root", layoutOptions: {}, children: children, edges: edges };
