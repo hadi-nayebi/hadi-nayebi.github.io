@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Phasic Foundation — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260519">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -124,7 +124,7 @@
 
                         <p>Two states travelled with us across the previous essay without being named: <em>idle</em> and <em>gmode</em>. We left them out of Essay 5 to keep the substrate description clean. They come back now, because the full Markov brain does not run without them. <sup class="ref-marker" title="ref: idle-is-default-current-phase | .claude/plugins/phasic_system/scripts/phase.sh job-init handler (current_phase=idle write) | Job initialization writes current_phase: idle into the orchestrator&#x27;s data.json; idle is the resting state between cycles. Gmode is the other off-cycle state — handlers further down the same file treat it as a peer current_phase value.">&#9432;</sup></p>
 
-                        <p>What we are about to open is what <a href="../03_1-the-folder-is-alive.html">Essay 3.1</a> called the agent&rsquo;s <em>cognitive metabolism</em> &mdash; the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.</p>
+                        <p>What we are about to open is what <a href="../b3/03_1-the-folder-is-alive.html">Essay 3.1</a> called the agent&rsquo;s <em>cognitive metabolism</em> &mdash; the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.</p>
 
                         <p>This essay opens that discipline compartment by compartment.</p>
 
@@ -151,7 +151,7 @@
 
                         <h2>From Action Space to Markov Brain</h2>
 
-                        <p>In <a href="../01-llms-are-not-the-agents.html">Essay 1</a> we drew the seed agent&rsquo;s starting condition as an <strong>action space</strong> &mdash; the set of moves a CLI agent can pick at any given moment. Use deep reasoning. Use tools &mdash; read, write, edit, run. Ask for permission. Delegate to another agent. Stop. Each step the LLM samples from those moves probabilistically. The next step samples again. The result, without further structure, is what that essay called a <strong>random walk</strong> &mdash; a Markov chain where every path is equally likely, and the same prompt twice can produce two different journeys. <sup class="ref-marker" title="ref: action-space-tool-filter | .claude/plugins/phasic_system/hooks/phase-gate.sh:45-48 | The orchestrator&#x27;s tool filter enumerates the seed agent&#x27;s intercepted action space: Edit, Write, MultiEdit, Read, Glob, Grep, Bash, WebSearch, WebFetch. Other tools pass through unguarded.">&#9432;</sup></p>
+                        <p>In <a href="../b1/01-llms-are-not-the-agents.html">Essay 1</a> we drew the seed agent&rsquo;s starting condition as an <strong>action space</strong> &mdash; the set of moves a CLI agent can pick at any given moment. Use deep reasoning. Use tools &mdash; read, write, edit, run. Ask for permission. Delegate to another agent. Stop. Each step the LLM samples from those moves probabilistically. The next step samples again. The result, without further structure, is what that essay called a <strong>random walk</strong> &mdash; a Markov chain where every path is equally likely, and the same prompt twice can produce two different journeys. <sup class="ref-marker" title="ref: action-space-tool-filter | .claude/plugins/phasic_system/hooks/phase-gate.sh:45-48 | The orchestrator&#x27;s tool filter enumerates the seed agent&#x27;s intercepted action space: Edit, Write, MultiEdit, Read, Glob, Grep, Bash, WebSearch, WebFetch. Other tools pass through unguarded.">&#9432;</sup></p>
 
                         <p>Then we added the first layer of structure: hooks. Hooks fire on every tool call, every stop, every prompt. They can block an action, modify it, or trigger another. In Essay 1's framing, hooks turn the <strong>probabilistic chain into a deterministic pipeline</strong>. The LLM still proposes the next move; the hooks decide whether the move is allowed. <sup class="ref-marker" title="ref: hooks-block-via-exit-two | .claude/plugins/phasic_system/hooks/phase-gate.sh:68-71 | phase-gate intercepts Read/Glob/Grep tool calls during idle, emits a stderr message, and exits with code 2 — the canonical block pattern that converts a proposed move into a refusal.">&#9432;</sup></p>
 
@@ -304,8 +304,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260519"></script>
-    <script src="../../js/components.js?v=20260519"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>
