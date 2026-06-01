@@ -5,7 +5,7 @@ slug: "the-folder-is-alive"
 read_time: "17 min"
 tags: [Vision, Seed Agent, Future of Work, Autonomy]
 audience: professionals
-og_image: "assets/images/blog/b3_1/folder-of-specialists-b3_1-1.png"
+og_image: "blog/b3/images/folder-of-specialists-b3_1-1.png"
 series: "Hadosh Academy – Agents"
 series_position: "3.1 — vision interlude between Essays 3 and 4"
 version: v1.0.0
@@ -24,9 +24,9 @@ None of them came pre-built. The person taught each one, one job at a time. Most
 
 This is not science fiction. It is not a roadmap either. It is the foreseeable consequence of one quiet idea: **a generic substrate for cognition that any professional can shape.**
 
-We have a name for it. We call it the [seed agent](01-llms-are-not-the-agents.html). The folder full of seed agents is your **personal cognitive workforce.**
+We have a name for it. We call it the [seed agent](../b1/01-llms-are-not-the-agents.html). The folder full of seed agents is your **personal cognitive workforce.**
 
-![A central "YOU" folder surrounded by twelve specialist folders — Taxes, Client Reports, Research, Family Trip, Bank Recon., Insurance, Reading List, Onboarding, Inbox, Health, Invoices, Calendar — all radiating from the center.](../assets/images/blog/b3_1/folder-of-specialists-b3_1-1.png)
+![A central "YOU" folder surrounded by twelve specialist folders — Taxes, Client Reports, Research, Family Trip, Bank Recon., Insurance, Reading List, Onboarding, Inbox, Health, Invoices, Calendar — all radiating from the center.](images/folder-of-specialists-b3_1-1.png)
 *One person. One folder. A whole working life.*
 
 
@@ -45,7 +45,7 @@ The substrate stays generic. The taught agent becomes specific.
 
 This is what an academy is for. Not to ship a hundred specialty agents we sell on a shelf. To teach the substrate, then get out of the way.
 
-![PowerPoint Moment comparison: PowerPoint as a tool for rectangles produced pitch decks, eulogies, defense briefings; the seed agent as a substrate for cognition produces accounting, law, writing, real estate, healthcare. Once you learn the substrate, every domain becomes yours.](../assets/images/blog/b3_1/powerpoint-moment-b3_1-2.png)
+![PowerPoint Moment comparison: PowerPoint as a tool for rectangles produced pitch decks, eulogies, defense briefings; the seed agent as a substrate for cognition produces accounting, law, writing, real estate, healthcare. Once you learn the substrate, every domain becomes yours.](images/powerpoint-moment-b3_1-2.png)
 *PowerPoint was rectangles. The seed agent is cognition.*
 
 
@@ -76,13 +76,13 @@ There is no good word for this in plain English yet. So let us coin one.
 
 Call it **cognitive metabolism.**
 
-The LLM is the metabolism's energy — the same way electricity is energy in a toaster, the same way [ATP is energy](https://en.wikipedia.org/wiki/Adenosine_triphosphate "Adenosine triphosphate — the molecule that carries energy in living cells") in your cells. The files are the tissue. The metabolism is the continuous motion that keeps the tissue alive. ([Essay 2](02-we-could-have-had-agi.html) put the verb in your hands — *the agent metabolizes tokens.* This essay names the noun.)
+The LLM is the metabolism's energy — the same way electricity is energy in a toaster, the same way [ATP is energy](https://en.wikipedia.org/wiki/Adenosine_triphosphate "Adenosine triphosphate — the molecule that carries energy in living cells") in your cells. The files are the tissue. The metabolism is the continuous motion that keeps the tissue alive. ([Essay 2](../b2/02-we-could-have-had-agi.html) put the verb in your hands — *the agent metabolizes tokens.* This essay names the noun.)
 
 This is what makes a seed agent *yours.* Not the files. The metabolism running on top of them. Your taught lessons get consolidated. Your corrections get absorbed. Your patterns get learned. All of it happens in the background, by an agent following the rules you helped it write.
 
 Static files would be a brain in a jar. Cognitive metabolism makes them a brain at work.
 
-![One folder, one brain, many jobs: a directory tree showing your-job/ containing .claude/ (the brain) and sibling work directories (data/, drafts/, references/). The brain reads, operates, writes back, and gets better — files inflate and contract as the agent works.](../assets/images/blog/b3_1/cognitive-metabolism-b3_1-3.png)
+![One folder, one brain, many jobs: a directory tree showing your-job/ containing .claude/ (the brain) and sibling work directories (data/, drafts/, references/). The brain reads, operates, writes back, and gets better — files inflate and contract as the agent works.](images/cognitive-metabolism-b3_1-3.png)
 *Files are the tissue. The LLM is the energy. Cognitive metabolism is what brings it to life.*
 
 
@@ -153,7 +153,7 @@ The same multiplier applies wherever professional life has structure. A research
 
 The agent runs the procedure. The professional spends their hours on what only they can do. This is what scaling looks like when the bottleneck was never the work — it was the cognitive overhead around the work.
 
-![The 80/20 Scale Effect: 20% up front you teach the agent your way; 80% ongoing the agent handles the work in the background, gets better, makes fewer mistakes, saves time. Taught once. Used thousands of times.](../assets/images/blog/b3_1/eighty-twenty-scale-b3_1-4.png)
+![The 80/20 Scale Effect: 20% up front you teach the agent your way; 80% ongoing the agent handles the work in the background, gets better, makes fewer mistakes, saves time. Taught once. Used thousands of times.](images/eighty-twenty-scale-b3_1-4.png)
 *Taught once. Used thousands of times. Gets better every time.*
 
 
@@ -269,4 +269,4 @@ It is coming because you will build it. We will teach you how.
 *Series interlude — sits between Essay 3 and Essay 4 of the Hadosh Academy series on agent architecture.*
 
 *Previous: ["Your Brain Was Never Built for This"](03-your-brain-was-never-built-for-this.html) — why your biology can't keep up with the world your civilization built.*
-*Next: ["The Language of Agents"](04-the-language-of-agents.html) — every term you need, in one read.*
+*Next: ["The Language of Agents"](../b4/04-the-language-of-agents.html) — every term you need, in one read.*

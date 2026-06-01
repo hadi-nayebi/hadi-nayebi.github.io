@@ -5,7 +5,7 @@ slug: "we-could-have-had-agi"
 read_time: "20 min"
 tags: [Agents, AI, Architecture, AGI]
 audience: Professionals
-og_image: "assets/images/blog/b2/seed-agent-growth-b2-1.png"
+og_image: "blog/b2/images/seed-agent-growth-b2-1.png"
 series: "Hadosh Academy – Agents"
 companion_paper: "why-scaling-models-is-not-enough"
 version: v1.1.0
@@ -52,7 +52,7 @@ At a random moment during a long task, snapshot the full context window and ask:
 
 Some of it is fresh — tokens the model just generated. Some came through tools — the model read a file, searched the web, ran a command.
 
-But in a well-structured agent, there is a third layer: context that arrived without the model asking. Instruction files loaded automatically when it entered a directory (the instruction files from the [first essay](01-llms-are-not-the-agents.html)). Hooks that injected rules before a tool ran. Memory retrieved because a policy required it.
+But in a well-structured agent, there is a third layer: context that arrived without the model asking. Instruction files loaded automatically when it entered a directory (the instruction files from the [first essay](../b1/01-llms-are-not-the-agents.html)). Hooks that injected rules before a tool ran. Memory retrieved because a policy required it.
 
 This is how compartmentalized knowledge finds its way into the conversation — not through the model's choices, but through pathways the architecture guarantees.
 
@@ -86,7 +86,7 @@ And this is why biology keeps showing up. Not as metaphor. If something like AGI
 
 And that category comes with a powerful toolkit. Once you see the agent as a complex system, you inherit design principles that have been studied for decades. Every complex system that already exists — biology, cities, economies, ecosystems — becomes a source of patterns for your agent. What do [feedback loops](https://en.wikipedia.org/wiki/Feedback "A process where outputs circle back to influence inputs") look like in an agent? What about [second-order effects](https://en.wikipedia.org/wiki/Unintended_consequences "Consequences of consequences — the indirect results of a decision")? What about [emergence](https://en.wikipedia.org/wiki/Emergence "Complex behavior arising from simple rules interacting")? These are not academic abstractions — they are thinking tools that map directly onto the decisions you will face when building agents. Shane Parrish's [*The Great Mental Models*](https://fs.blog/tgmm/ "The Great Mental Models — a book series on thinking tools that help you understand how the world works") series is a good place to start building that toolkit.
 
-So if intelligence is a complex system, what are the primitives? In the [previous essay](01-llms-are-not-the-agents.html), we identified compartmentalization as the core principle — every piece of knowledge has a home, every behavior has a boundary. That principle becomes the foundation for the primitives we need: bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.
+So if intelligence is a complex system, what are the primitives? In the [previous essay](../b1/01-llms-are-not-the-agents.html), we identified compartmentalization as the core principle — every piece of knowledge has a home, every behavior has a boundary. That principle becomes the foundation for the primitives we need: bounded units of work that do not bleed into each other, that can be tracked, that can be managed independently.
 
 Some primitives are obvious — files, directories, instruction files that load automatically when the agent enters a folder. These have existed since the first CLI agents shipped.
 
@@ -128,7 +128,7 @@ When hooks also log transactions, you get a continuous record of what the agent 
 
 ## Consolidation: where the system learns
 
-Humans do not improve only while acting. They consolidate. In the [first essay](01-llms-are-not-the-agents.html), we introduced a five-phase workflow — Observe, Plan, Execute, Verify, Condense. That last phase, Condense, is where consolidation lives. Now we see why it matters at scale.
+Humans do not improve only while acting. They consolidate. In the [first essay](../b1/01-llms-are-not-the-agents.html), we introduced a five-phase workflow — Observe, Plan, Execute, Verify, Condense. That last phase, Condense, is where consolidation lives. Now we see why it matters at scale.
 
 A long-running agent should do the same. During work: collect raw traces — tool calls, file edits, outcomes, feedback. During consolidation: analyze traces, detect patterns, propose changes.
 
@@ -214,5 +214,5 @@ We have the primitives. We have had them for months.
 
 *Essay 2 of 8 in the Hadosh Academy series on agent architecture.*
 
-*Previous: ["LLMs Are Not the Agents"](01-llms-are-not-the-agents.html) — the agent is the filesystem, not the model.*
-*Next: ["Your Brain Was Never Built for This"](03-your-brain-was-never-built-for-this.html) — what happens when you extend your brain with a digital cortex.*
+*Previous: ["LLMs Are Not the Agents"](../b1/01-llms-are-not-the-agents.html) — the agent is the filesystem, not the model.*
+*Next: ["Your Brain Was Never Built for This"](../b3/03-your-brain-was-never-built-for-this.html) — what happens when you extend your brain with a digital cortex.*

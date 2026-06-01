@@ -18,7 +18,7 @@ og_image: "blog/b5/images/always-on-plugins-b5-1.png"
 
 For four essays we have circled the claim that the agent is its filesystem. Now we open the filesystem.
 
-[Essay 4](../04-the-language-of-agents.html) showed you the persona file — `CLAUDE.md` at the project root — that defines who the agent is. Claude Code reads a sibling `.claude/` directory automatically at startup; the seed agent fills that directory like this: *[ref: claude-code-reads-claude-dot-claude | .claude/CLAUDE.md Purpose section + Components section | Brain-index file opens with the heading "# .claude/ — Agent Brain" and Purpose line "The agent's brain directory. Contains long-term knowledge and hardened behavioral controls (plugins)." The Components section catalogues `knowledge/`, `plugins/`, `plugins_archived/`. Root CLAUDE.md's tail confirms the wiring: "**Brain:** `.claude/` (this directory's sibling). Read its index at `.claude/CLAUDE.md`." Claude Code loads this file automatically at session start alongside the project-root CLAUDE.md.]*
+[Essay 4](../b4/04-the-language-of-agents.html) showed you the persona file — `CLAUDE.md` at the project root — that defines who the agent is. Claude Code reads a sibling `.claude/` directory automatically at startup; the seed agent fills that directory like this: *[ref: claude-code-reads-claude-dot-claude | .claude/CLAUDE.md Purpose section + Components section | Brain-index file opens with the heading "# .claude/ — Agent Brain" and Purpose line "The agent's brain directory. Contains long-term knowledge and hardened behavioral controls (plugins)." The Components section catalogues `knowledge/`, `plugins/`, `plugins_archived/`. Root CLAUDE.md's tail confirms the wiring: "**Brain:** `.claude/` (this directory's sibling). Read its index at `.claude/CLAUDE.md`." Claude Code loads this file automatically at session start alongside the project-root CLAUDE.md.]*
 
 ```
 your-project/
@@ -95,5 +95,5 @@ We start with `plugin_integrity`.
 
 *Essay 5.1 — The Always-On Digital Cortex, Part 1 of 9.*
 
-*Previous: [Essay 4 — The Language of Agents](../04-the-language-of-agents.html) — vocabulary that prepares the architecture.*
+*Previous: [Essay 4 — The Language of Agents](../b4/04-the-language-of-agents.html) — vocabulary that prepares the architecture.*
 *Next: [Essay 5.2 — Plugin Edit Safety — `plugin_integrity`](05_2-plugin-integrity.html) — first of the always-on plugin deep-dives.*

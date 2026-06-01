@@ -69,7 +69,7 @@ A consulting practice's seed, six months in, may have hardened a `[CLIENT-CONFLI
 
 ## The Close
 
-Your brain was never built for the pace this work moves at. You knew that from [Essay 3](../03-your-brain-was-never-built-for-this.html). What you have now is something built *for* that pace, designed to grow with you, encoded into a folder you control, governed by disciplines that hold across time and across sessions and across the model rolling forward.
+Your brain was never built for the pace this work moves at. You knew that from [Essay 3](../b3/03-your-brain-was-never-built-for-this.html). What you have now is something built *for* that pace, designed to grow with you, encoded into a folder you control, governed by disciplines that hold across time and across sessions and across the model rolling forward.
 
 The seed is yours. The Academy is here.
 

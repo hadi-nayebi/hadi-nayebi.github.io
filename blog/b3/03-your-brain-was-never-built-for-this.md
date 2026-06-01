@@ -5,7 +5,7 @@ slug: "your-brain-was-never-built-for-this"
 read_time: "16 min"
 tags: [Agents, AI, Society, Evolution]
 audience: professionals
-og_image: "assets/images/blog/b3/snake-vs-spreadsheet-b3-1.png"
+og_image: "blog/b3/images/snake-vs-spreadsheet-b3-1.png"
 series: "Hadosh Academy – Agents"
 version: v0.1.1
 status: published
@@ -79,7 +79,7 @@ So we build the next layer ourselves.
 
 The **digital cortex**.
 
-A [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a structured AI system that lives on your computer, reads your files, writes new ones, and organizes your work — is the first form of that layer. Not one giant program, but a [complex system](02-we-could-have-had-agi.html#biology-did-not-scale-one-molecule) of many small parts interacting. Call it what it actually is: a **digital cognitive organ**.
+A [CLI agent](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") — a structured AI system that lives on your computer, reads your files, writes new ones, and organizes your work — is the first form of that layer. Not one giant program, but a [complex system](../b2/02-we-could-have-had-agi.html#biology-did-not-scale-one-molecule) of many small parts interacting. Call it what it actually is: a **digital cognitive organ**.
 
 That phrase is deliberate. An **organ**.
 
@@ -123,7 +123,7 @@ The same logic applies across industries — from packaged snacks to consulting 
 
 Remove that overhead and **revenue disperses**. Not because the market grows, but because more people can compete in it. A thirty-billion-dollar industry does not disappear. It distributes across more brand owners — each one bringing their own audience, their own human connection to the table.
 
-And if running a business costs [roughly one hundred dollars a month](02-we-could-have-had-agi.html) in compute — which is where the trend line points — then the economic default shifts. Not from job to *a* company. From job to **several micro-businesses** — each one managed by organs you designed, each one requiring only your judgment and creativity to thrive.
+And if running a business costs [roughly one hundred dollars a month](../b2/02-we-could-have-had-agi.html) in compute — which is where the trend line points — then the economic default shifts. Not from job to *a* company. From job to **several micro-businesses** — each one managed by organs you designed, each one requiring only your judgment and creativity to thrive.
 
 ### What Survives
 
@@ -189,7 +189,7 @@ But you can grow. Not biologically. **Digitally.**
 
 A CLI agent on your computer is an extension of **you**. Its memory is your memory. Its reflexes are your reflexes. Its skills compound, session after session, project after project.
 
-The foundation is set. [The agent is the filesystem](01-llms-are-not-the-agents.html). [The architecture already exists](02-we-could-have-had-agi.html). But before we build, we need to agree on the words. The next essay gives you every term that matters — so when we start constructing, nothing gets lost in translation.
+The foundation is set. [The agent is the filesystem](../b1/01-llms-are-not-the-agents.html). [The architecture already exists](../b2/02-we-could-have-had-agi.html). But before we build, we need to agree on the words. The next essay gives you every term that matters — so when we start constructing, nothing gets lost in translation.
 
 The snake in the tall grass has been replaced by a civilization of eight billion minds connected at the speed of light. Your organic brain is the best thing evolution ever made.
 
@@ -199,5 +199,5 @@ It just needs a few more organs.
 
 *Essay 3 of 8 in the Hadosh Academy series on agent architecture.*
 
-*Previous: ["We Could Have Had AGI By Now"](02-we-could-have-had-agi.html) — what happens when you scale architecture instead of the model.*
-*Next: ["The Language of Agents"](04-the-language-of-agents.html) — every term you need, in one read.*
+*Previous: ["We Could Have Had AGI By Now"](../b2/02-we-could-have-had-agi.html) — what happens when you scale architecture instead of the model.*
+*Next: ["The Language of Agents"](../b4/04-the-language-of-agents.html) — every term you need, in one read.*

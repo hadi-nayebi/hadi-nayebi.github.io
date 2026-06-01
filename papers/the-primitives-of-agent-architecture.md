@@ -158,4 +158,4 @@ The beauty of this architecture is that you do not need to understand every leve
 
 ---
 
-*Companion to ["The Language of Agents"](/blog/04-the-language-of-agents.html) — Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
+*Companion to ["The Language of Agents"](/blog/b4/04-the-language-of-agents.html) — Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
