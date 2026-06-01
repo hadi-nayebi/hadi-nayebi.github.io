@@ -150,7 +150,7 @@ A good practice: after you describe a new hook, test it. Ask the agent to try th
 
 Hooks are what turn a reactive chatbot into a disciplined professional. Without hooks, the AI does whatever seems right in the moment. With hooks, it follows a process. Every time.
 
-We will formalize the workflow those hooks enforce — Observe, Plan, Execute, Verify, Condense — in a [later essay](b6/06_1-phasic-foundation.html).
+We will formalize the workflow those hooks enforce — Observe, Plan, Execute, Verify, Condense — in a [later essay](../b6/06_1-phasic-foundation.html).
 
 ## The Skill Set: Skills, Commands, and Sub-agents
 
@@ -242,6 +242,6 @@ You have the language. Next, we build the skeleton.
 *Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
 
 *Previous: ["Your Brain Was Never Built for This"](../b3/03-your-brain-was-never-built-for-this.html) — why your organic brain needs a digital cortex.*
-*Next: ["The Two-Layer Foundation"](b5/05_1-the-two-layer-foundation.html) — the always-on plugins that run regardless of phase, and the CLAUDE.md hierarchy they coordinate through.*
+*Next: ["The Two-Layer Foundation"](../b5/05_1-the-two-layer-foundation.html) — the always-on plugins that run regardless of phase, and the CLAUDE.md hierarchy they coordinate through.*
 
 *Companion: ["The Primitives of Agent Architecture"](../papers/the-primitives-of-agent-architecture.pdf) (reference guide)*
