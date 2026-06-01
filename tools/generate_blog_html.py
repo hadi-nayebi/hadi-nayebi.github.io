@@ -82,7 +82,13 @@ AUDIENCE_TITLE = {
 # add an entry here. Empty string means "blog/ root, no subdir".
 # 2026-05-18: B5 → blog/b5/, B7 → blog/b7/, B8 → blog/b8/.
 # 2026-05-19: B6 → blog/b6/.
+# 2026-06-01: Part-1 essays 01-04 → blog/b1/../b4/ (03_1 interlude merges into b3).
+#             "03" (no separator) matches BOTH 03-your-brain... and 03_1-the-folder... → both b3.
 SLUG_SUBDIR_PREFIXES = {
+    "01-": "b1",
+    "02-": "b2",
+    "03": "b3",
+    "04-": "b4",
     "05_": "b5",
     "06_": "b6",
     "07_": "b7",
