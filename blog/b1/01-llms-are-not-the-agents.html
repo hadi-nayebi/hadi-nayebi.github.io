@@ -245,14 +245,13 @@
 
                         <p>Modern CLI agents support <strong>hook systems</strong> &mdash; events that fire at specific points in the agent&rsquo;s lifecycle.</p>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="images/hooks-and-action-space-b1-4.png" alt="Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.</figcaption>
-                        </figure>
-
-                        <div style="margin: 1.5rem 0 2rem; text-align: center;">
-  <a href="explore/hook-flow.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">&#8599; Explore the interactive version</a>
-</div>
+                        <figure class="blog-image" style="margin: 2rem 0; text-align: center;">
+  <span style="position: relative; display: inline-block; max-width: 800px; width: 100%;">
+    <img src="images/hooks-and-action-space-b1-4.png" alt="Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior." style="width: 100%; height: auto; display: block; border-radius: 8px;">
+    <a href="explore/hook-flow.html" aria-label="Explore the interactive version of this diagram" title="Explore the interactive version" style="position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.3rem 0.58rem; font-size: 0.76rem; font-weight: 600; line-height: 1; color: #ffffff; text-decoration: none; background: rgba(5, 5, 7, 0.72); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 7px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); transition: background 0.2s ease, border-color 0.2s ease;" onmouseover="this.style.background='rgba(99,102,241,0.9)';this.style.borderColor='rgba(255,255,255,0.6)';" onmouseout="this.style.background='rgba(5,5,7,0.72)';this.style.borderColor='rgba(255,255,255,0.28)';">&#8599; Explore</a>
+  </span>
+  <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.</figcaption>
+</figure>
 
                         <p>Every time the agent is about to take an action &mdash; use a tool, respond, manage memory, stop &mdash; a <strong>hook fires</strong>. That hook can:</p>
 

@@ -1,306 +1,410 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v1.0.0 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Agent's Action Space — An Interactive Hook Flow | Hadosh Academy</title>
-    <meta name="description" content="An interactive, explorable version of the Claude Code hook-flow diagram from Essay 1. Click any hook, stage, or the Tools node to see what it is, when it fires, and what it can do. The model proposes; the structure disposes.">
+    <title>The Agent's Action Space — An Interactive Hook Map | Hadosh Academy</title>
+    <meta name="description" content="A full-screen, explorable map of the Claude Code agent hook flow. Click any hook, model stage, or the Tools node to see what it is, when it fires, and what it can do. The model proposes; the structure disposes.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b1/explore/hook-flow.html">
-    <meta property="og:title" content="The Agent's Action Space — An Interactive Hook Flow | Hadosh Academy">
-    <meta property="og:description" content="An interactive, explorable version of the Claude Code hook-flow diagram from Essay 1. Click any hook, stage, or the Tools node to read what it is, when it fires, and what it can do.">
+    <meta property="og:title" content="The Agent's Action Space — An Interactive Hook Map | Hadosh Academy">
+    <meta property="og:description" content="A full-screen, explorable map of the Claude Code agent hook flow. Click any hook, stage, or the Tools node to read what it is, when it fires, and what it can do.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b1/explore/hook-flow.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Agent's Action Space — An Interactive Hook Flow | Hadosh Academy">
-    <meta name="twitter:description" content="An interactive, explorable version of the Claude Code hook-flow diagram from Essay 1. The model proposes; the structure disposes.">
+    <meta name="twitter:title" content="The Agent's Action Space — An Interactive Hook Map | Hadosh Academy">
+    <meta name="twitter:description" content="A full-screen, explorable map of the Claude Code agent hook flow. The model proposes; the structure disposes.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
-    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../../css/styles.css?v=20260518">
-    <!-- Scoped styling for the explorable diagram only. The site chrome (nav, footer,
-         theme rotation, typography) comes from css/styles.css + theme-manager.js. This
-         block styles the unique interactive diagram, which has no equivalent in the
-         shared stylesheet and is specific to this one page. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .explore-main { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
-        .explore-back-link {
-            display: inline-block; color: var(--text-muted); text-decoration: none;
-            font-size: 0.95rem; margin-bottom: 1.5rem; transition: color 0.25s ease;
+        :root {
+            --bg: #050507;
+            --primary: #6366f1;
+            --accent: #8b5cf6;
+            --text-main: #e9e9f2;
+            --text-muted: #9a9ab0;
+            --border: rgba(255, 255, 255, 0.10);
+            --glass: rgba(255, 255, 255, 0.045);
+            --glass-hover: rgba(255, 255, 255, 0.085);
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --accent-glow: rgba(139, 92, 246, 0.35);
         }
-        .explore-back-link:hover { color: var(--primary); }
-        .explore-header h1 {
-            font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin-bottom: 1rem;
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: var(--bg);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Radial indigo/violet glow over the dark field. */
+        .glow {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(900px 600px at 32% 34%, rgba(99, 102, 241, 0.14), transparent 60%),
+                radial-gradient(800px 600px at 72% 70%, rgba(139, 92, 246, 0.12), transparent 60%);
+        }
+
+        /* ----- minimal chrome ----- */
+        .chrome-title {
+            position: fixed; top: 1.4rem; left: 1.6rem; z-index: 30; max-width: 60vw;
+        }
+        .chrome-title h1 {
+            margin: 0; font-size: 1.12rem; font-weight: 700; letter-spacing: -0.01em;
             background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text; background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .explore-intro { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; max-width: 760px; }
-        .explore-teaching {
-            margin: 1.25rem 0 0; padding: 1rem 1.25rem; border-left: 3px solid var(--primary);
-            background: var(--bg-card); border-radius: 0 12px 12px 0; backdrop-filter: blur(10px);
-            font-style: italic; color: var(--text-main); max-width: 760px; line-height: 1.6;
+        .chrome-title p {
+            margin: 0.35rem 0 0; font-size: 0.82rem; color: var(--text-muted);
+            font-style: italic; line-height: 1.4;
         }
-
-        /* The explorable diagram surface */
-        .flow-wrap {
-            margin-top: 2.5rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
-            gap: 1.75rem; align-items: start;
+        .chrome-back {
+            position: fixed; top: 1.5rem; right: 1.6rem; z-index: 30;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 0.9rem; border-radius: 999px;
+            background: rgba(5, 5, 7, 0.6); border: 1px solid var(--border);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: var(--text-muted); text-decoration: none; font-size: 0.82rem;
+            transition: color 0.2s ease, border-color 0.2s ease;
         }
-        .flow-stage {
-            position: relative; background: rgba(255,255,255,0.015);
-            border: 1px solid var(--border); border-radius: 20px; padding: 1.75rem 1.5rem 1.5rem;
-            backdrop-filter: blur(6px); overflow: hidden;
+        .chrome-back:hover, .chrome-back:focus-visible {
+            color: var(--text-main); border-color: var(--primary); outline: none;
         }
-        .flow-stage::before {
-            content: "The agent"; position: absolute; top: 0.85rem; left: 1.25rem;
-            font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-            color: var(--text-muted); opacity: 0.7;
-        }
-        .flow-lane {
-            display: flex; flex-wrap: wrap; gap: 0.65rem 0.55rem; align-items: stretch;
-            margin-top: 1.4rem;
-        }
-        .flow-lane + .flow-lane { margin-top: 1.1rem; }
-        .lane-label {
-            width: 100%; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--text-muted); opacity: 0.65; margin: 0.3rem 0 0.1rem;
+        .chrome-hint {
+            position: fixed; bottom: 1.1rem; left: 50%; transform: translateX(-50%);
+            z-index: 20; font-size: 0.74rem; color: var(--text-muted); opacity: 0.7;
+            text-align: center; pointer-events: none; letter-spacing: 0.01em;
         }
 
-        /* Nodes */
+        /* ----- the scaling viewport ----- */
+        .map-viewport {
+            position: fixed; inset: 0; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .map-canvas {
+            position: relative;
+            width: 1320px; height: 820px;
+            transform-origin: center center;
+            flex: 0 0 auto;
+        }
+
+        /* SVG connector layer */
+        .map-canvas svg.connectors {
+            position: absolute; inset: 0; width: 1320px; height: 820px;
+            z-index: 1; pointer-events: none; overflow: visible;
+        }
+        .arrow { stroke: rgba(154, 154, 176, 0.5); stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+        .arrow.loop { stroke: var(--accent); stroke-width: 2.4; stroke-dasharray: 7 5; marker-end: url(#arrowhead-accent); }
+        .arrow.thinking { stroke: rgba(154, 154, 176, 0.42); stroke-width: 1.8; stroke-dasharray: 6 4; }
+        .arrow.dim { opacity: 0.18; transition: opacity 0.2s ease; }
+        .arrow.hot { stroke: var(--primary); stroke-width: 2.8; opacity: 1; filter: drop-shadow(0 0 5px var(--primary-glow)); }
+
+        /* Boot / teardown bracket */
+        .lifecycle-frame {
+            position: absolute; z-index: 1;
+            border: 1px dashed rgba(154, 154, 176, 0.22); border-radius: 22px;
+        }
+        .frame-label {
+            position: absolute; top: -0.7rem; left: 1.4rem; z-index: 2;
+            font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--text-muted); opacity: 0.6; padding: 0 0.5rem; background: var(--bg);
+        }
+
+        /* ----- glass nodes ----- */
         .node {
-            appearance: none; -webkit-appearance: none; text-align: left; cursor: pointer;
-            font-family: inherit; color: var(--text-main);
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-            padding: 0.7rem 0.9rem; font-size: 0.86rem; line-height: 1.3; font-weight: 500;
-            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-            display: inline-flex; align-items: center; gap: 0.45rem; flex: 0 1 auto;
+            position: absolute; z-index: 5;
+            appearance: none; -webkit-appearance: none; cursor: pointer; text-align: left;
+            font-family: inherit; color: var(--text-main); line-height: 1.25;
+            background: var(--glass); border: 1px solid var(--border); border-radius: 14px;
+            backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
+            padding: 0.62rem 0.8rem; font-size: 0.84rem; font-weight: 500;
+            display: flex; flex-direction: column; gap: 0.28rem;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+            transition: transform 0.18s ease, border-color 0.18s ease,
+                        box-shadow 0.18s ease, background 0.18s ease, opacity 0.2s ease;
         }
         .node:hover, .node:focus-visible {
-            transform: translateY(-2px); border-color: var(--primary);
-            box-shadow: 0 6px 22px var(--primary-glow); background: var(--bg-card-hover);
-            outline: none;
+            transform: translateY(-2px); background: var(--glass-hover);
+            border-color: var(--primary); box-shadow: 0 8px 28px var(--primary-glow); outline: none;
         }
         .node:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-        .node.is-active {
-            border-color: var(--accent); background: var(--bg-card-hover);
-            box-shadow: 0 6px 26px var(--primary-glow);
-        }
-        .node .node-tag {
-            font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
-            padding: 0.12rem 0.42rem; border-radius: 999px; font-weight: 600;
-        }
-        .node-type-hook .node-tag { background: var(--primary-glow); color: #fff; }
-        .node-type-stage { opacity: 0.82; font-weight: 400; border-style: dashed; }
-        .node-type-stage .node-tag { background: rgba(255,255,255,0.08); color: var(--text-muted); }
-        .node-type-terminal { border-color: var(--accent); }
-        .node-type-terminal .node-tag,
-        .node-type-tool-cluster .node-tag {
-            background: linear-gradient(to right, var(--primary), var(--accent)); color: #fff;
-        }
-        .node-type-tool-cluster {
-            background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.12));
-            border-color: var(--primary); font-weight: 600;
-        }
-        .node-arrow { color: var(--text-muted); align-self: center; opacity: 0.5; font-size: 1.1rem; padding: 0 0.1rem; }
+        .node.is-active { border-color: var(--accent); background: var(--glass-hover); box-shadow: 0 8px 30px var(--accent-glow); }
+        .node.is-dim { opacity: 0.32; }
 
-        /* Tool dropdown panel inside the lane */
-        .tool-cluster-wrap { width: 100%; }
-        .tool-dropdown {
-            margin-top: 0.7rem; border: 1px solid var(--border); border-radius: 14px;
-            background: rgba(255,255,255,0.02); padding: 0.75rem; backdrop-filter: blur(6px);
+        .node .label { font-weight: 600; font-size: 0.86rem; }
+        .node .tag {
+            align-self: flex-start; font-size: 0.58rem; letter-spacing: 0.09em;
+            text-transform: uppercase; padding: 0.12rem 0.46rem; border-radius: 999px; font-weight: 700;
         }
-        .tool-dropdown[hidden] { display: none; }
+
+        /* type color-coding */
+        .node-type-hook { border-color: rgba(99, 102, 241, 0.5); }
+        .node-type-hook .tag { background: var(--primary); color: #fff; }
+        .node-type-stage { border-style: dashed; opacity: 0.86; font-weight: 400; }
+        .node-type-stage .tag { background: rgba(255, 255, 255, 0.09); color: var(--text-muted); }
+        .node-type-input { border-color: rgba(255, 255, 255, 0.22); }
+        .node-type-input .tag { background: rgba(255, 255, 255, 0.14); color: var(--text-main); }
+        .node-type-loop { border-color: var(--accent); }
+        .node-type-loop .tag { background: linear-gradient(to right, var(--primary), var(--accent)); color: #fff; }
+        .node-type-tool { border-color: var(--accent); background: linear-gradient(135deg, rgba(99,102,241,0.16), rgba(139,92,246,0.18)); font-weight: 700; }
+        .node-type-tool .tag { background: linear-gradient(to right, var(--primary), var(--accent)); color: #fff; }
+        .node-type-tool .caret { margin-left: 0.3rem; opacity: 0.8; }
+
+        /* ----- info panel (docked bottom-left, fixed; never scrolls layout) ----- */
+        .info-panel {
+            position: fixed; left: 1.6rem; bottom: 1.4rem; z-index: 40;
+            width: 360px; max-width: calc(100vw - 3.2rem); max-height: 60vh; overflow-y: auto;
+            background: rgba(10, 10, 16, 0.78); border: 1px solid var(--border); border-radius: 18px;
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+            padding: 1.3rem 1.4rem 1.4rem;
+            transform: translateY(8px); opacity: 0; pointer-events: none;
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+        .info-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .info-kind {
+            display: inline-block; font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase;
+            color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .info-panel h2 { margin: 0 0 0.9rem; font-size: 1.18rem; line-height: 1.2; }
+        .info-field { margin-bottom: 0.85rem; }
+        .info-field:last-child { margin-bottom: 0; }
+        .info-field-label {
+            font-size: 0.64rem; letter-spacing: 0.09em; text-transform: uppercase;
+            color: var(--text-muted); font-weight: 700; margin-bottom: 0.22rem;
+        }
+        .info-field-body { font-size: 0.88rem; line-height: 1.55; color: var(--text-main); }
+        .info-close {
+            position: absolute; top: 0.85rem; right: 0.85rem; width: 28px; height: 28px;
+            border-radius: 50%; border: 1px solid var(--border); background: var(--glass);
+            color: var(--text-main); cursor: pointer; font-size: 1.05rem; line-height: 1;
+            display: flex; align-items: center; justify-content: center; transition: all 0.18s ease;
+        }
+        .info-close:hover, .info-close:focus-visible { border-color: var(--accent); background: var(--glass-hover); outline: none; }
+
+        /* ----- tools dropdown overlay (grid of every tool) ----- */
+        .tool-overlay {
+            position: fixed; inset: 0; z-index: 50;
+            display: none; align-items: center; justify-content: center;
+            background: rgba(3, 3, 6, 0.62); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+        }
+        .tool-overlay.open { display: flex; }
+        .tool-modal {
+            width: min(760px, 92vw); max-height: 82vh; display: flex; flex-direction: column;
+            background: rgba(10, 10, 16, 0.92); border: 1px solid var(--border); border-radius: 20px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        }
+        .tool-modal-head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border);
+        }
+        .tool-modal-head h2 { margin: 0; font-size: 1.08rem; }
+        .tool-modal-head .count { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
         .tool-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 0.4rem;
+            padding: 1rem 1.4rem 1.4rem; overflow-y: auto;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.5rem;
         }
         .tool-chip {
             appearance: none; -webkit-appearance: none; cursor: pointer; font-family: inherit;
-            text-align: left; color: var(--text-main); background: var(--bg-card);
-            border: 1px solid var(--border); border-radius: 9px; padding: 0.45rem 0.6rem;
-            font-size: 0.78rem; transition: all 0.16s ease;
+            text-align: left; color: var(--text-main); background: var(--glass);
+            border: 1px solid var(--border); border-radius: 11px; padding: 0.55rem 0.7rem;
+            font-size: 0.8rem; font-weight: 500; transition: all 0.16s ease;
         }
         .tool-chip:hover, .tool-chip:focus-visible {
-            border-color: var(--primary); background: var(--bg-card-hover);
+            border-color: var(--primary); background: var(--glass-hover);
             transform: translateY(-1px); outline: none;
         }
         .tool-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-        .tool-chip.is-active { border-color: var(--accent); background: var(--bg-card-hover); }
+        .tool-chip.is-active { border-color: var(--accent); background: var(--glass-hover); }
+        .tool-modal-foot {
+            padding: 0.75rem 1.4rem; border-top: 1px solid var(--border);
+            font-size: 0.76rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;
+        }
+        .tool-modal-close {
+            appearance: none; cursor: pointer; font-family: inherit;
+            background: var(--glass); border: 1px solid var(--border); border-radius: 999px;
+            color: var(--text-main); padding: 0.35rem 0.9rem; font-size: 0.78rem; transition: all 0.18s ease;
+        }
+        .tool-modal-close:hover, .tool-modal-close:focus-visible { border-color: var(--accent); background: var(--glass-hover); outline: none; }
 
-        /* Info panel (right column on desktop, slides up on mobile) */
-        .info-panel {
-            position: sticky; top: 1.5rem; background: var(--bg-card);
-            border: 1px solid var(--border); border-radius: 18px; padding: 1.5rem 1.5rem 1.75rem;
-            backdrop-filter: blur(14px); min-height: 220px;
+        /* legend */
+        .legend {
+            position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 20;
+            display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+            font-size: 0.7rem; color: var(--text-muted); pointer-events: none;
         }
-        .info-panel-empty { color: var(--text-muted); font-style: italic; line-height: 1.6; }
-        .info-panel h2 { font-size: 1.25rem; margin: 0 0 0.3rem; line-height: 1.25; }
-        .info-kind {
-            display: inline-block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--accent); margin-bottom: 1rem; font-weight: 600;
-        }
-        .info-field { margin-bottom: 1.05rem; }
-        .info-field:last-child { margin-bottom: 0; }
-        .info-field-label {
-            font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase;
-            color: var(--text-muted); margin-bottom: 0.3rem; font-weight: 600;
-        }
-        .info-field-body { line-height: 1.6; color: var(--text-main); font-size: 0.93rem; }
-        .info-close {
-            position: absolute; top: 1rem; right: 1rem; width: 30px; height: 30px;
-            border-radius: 50%; border: 1px solid var(--border); background: var(--bg-card);
-            color: var(--text-main); cursor: pointer; font-size: 1.1rem; line-height: 1;
-            display: flex; align-items: center; justify-content: center; transition: all 0.18s ease;
-        }
-        .info-close:hover, .info-close:focus-visible {
-            border-color: var(--accent); background: var(--bg-card-hover); outline: none;
-        }
-        .info-close[hidden] { display: none; }
+        .legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+        .swatch { width: 12px; height: 12px; border-radius: 4px; border: 1px solid var(--border); }
+        .swatch.hook { background: var(--primary); }
+        .swatch.stage { background: rgba(255,255,255,0.08); border-style: dashed; }
+        .swatch.tool { background: linear-gradient(135deg, rgba(99,102,241,0.6), rgba(139,92,246,0.7)); }
+        .swatch.loop { background: transparent; border-color: var(--accent); }
 
-        .flow-legend {
-            display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.4rem;
-            font-size: 0.78rem; color: var(--text-muted);
-        }
-        .flow-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
-        .legend-swatch { width: 14px; height: 14px; border-radius: 4px; border: 1px solid var(--border); }
-        .legend-hook { background: var(--primary-glow); }
-        .legend-stage { background: rgba(255,255,255,0.06); border-style: dashed; }
-        .legend-tool { background: linear-gradient(135deg, rgba(99,102,241,0.5), rgba(139,92,246,0.5)); }
-        .legend-terminal { background: transparent; border-color: var(--accent); }
-
-        @media (max-width: 900px) {
-            .flow-wrap { grid-template-columns: 1fr; }
-            .info-panel { position: static; }
+        @media (max-width: 720px) {
+            .chrome-title { max-width: 70vw; }
+            .legend { display: none; }
+            .info-panel {
+                left: 0; right: 0; bottom: 0; width: 100%; max-width: 100%;
+                border-radius: 18px 18px 0 0; max-height: 55vh;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header id="site-header">
-        <div class="container">
-            <nav>
-                <a href="../../../index.html" class="logo">Hadosh Academy</a>
-                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                </button>
-                <div class="nav-links">
-                    <a href="../../../index.html">Home</a>
-                    <a href="../../../start-here.html">Start Here</a>
-                    <a href="../../../blog.html" class="active" aria-current="page">Blog</a>
-                    <a href="../../../agents.html">Agents</a>
-                    <a href="../../../about.html">About</a>
-                    <a href="../../../contact.html">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <div class="glow" aria-hidden="true"></div>
 
-    <main class="page-content">
-        <div class="explore-main">
-            <a href="../01-llms-are-not-the-agents.html" class="explore-back-link">&larr; Back to Essay 1</a>
+    <div class="chrome-title">
+        <h1>The Agent's Action Space</h1>
+        <p>The model proposes; the structure disposes.</p>
+    </div>
 
-            <div class="explore-header">
-                <h1>The Agent's Action Space — An Interactive Hook Flow</h1>
-                <p class="explore-intro">This is the same diagram from the essay, but alive. The big box is the agent's mind; your prompt enters on the left, fans out into everything the agent can do, and only leaves when the Stop hook lets it. Click any hook, stage, or the Tools node to read what it is, when it fires, and what it can do.</p>
-                <p class="explore-teaching">The model proposes; the structure disposes. Every hook is a point where deterministic rules can override the probabilistic model — the agent is the structure built around the model, not the model itself.</p>
+    <a href="../01-llms-are-not-the-agents.html" class="chrome-back" aria-label="Back to Essay 1">&larr; Back to Essay 1</a>
+
+    <div class="legend" aria-hidden="true">
+        <span><span class="swatch hook"></span> Hook (deterministic)</span>
+        <span><span class="swatch stage"></span> Model stage</span>
+        <span><span class="swatch tool"></span> Tools</span>
+        <span><span class="swatch loop"></span> Loop / exit</span>
+    </div>
+
+    <div class="map-viewport">
+        <div class="map-canvas" id="map-canvas">
+            <svg class="connectors" viewBox="0 0 1320 820" aria-hidden="true">
+                <defs>
+                    <marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5.5" refY="2" orient="auto">
+                        <polygon points="0 0, 7 2, 0 4" fill="rgba(154,154,176,0.7)"></polygon>
+                    </marker>
+                    <marker id="arrowhead-accent" markerWidth="7" markerHeight="7" refX="5.5" refY="2" orient="auto">
+                        <polygon points="0 0, 7 2, 0 4" fill="#8b5cf6"></polygon>
+                    </marker>
+                </defs>
+                <!-- paths injected by JS so they stay glued to node geometry -->
+            </svg>
+
+            <!-- lifecycle bracket: boot + teardown -->
+            <div class="lifecycle-frame" style="left: 18px; top: 14px; width: 1284px; height: 792px;">
+                <span class="frame-label">session lifecycle</span>
             </div>
 
-            <div class="flow-wrap">
-                <section class="flow-stage" aria-label="The agent's action space">
-                    <div class="flow-lane">
-                        <span class="lane-label">The turn begins</span>
-                        <button class="node node-type-hook" data-node="user-prompt-in"><span class="node-tag">in</span>User Prompt</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-hook" data-node="ups-hook"><span class="node-tag">hook</span>UserPromptSubmit (UPS)</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-stage" data-node="stage-thinking"><span class="node-tag">model</span>Thinking</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-stage" data-node="stage-response"><span class="node-tag">model</span>Response</button>
-                    </div>
+            <!-- Nodes. x/y are the top-left of each box on the 1320x820 canvas. -->
+            <!-- BOOT -->
+            <button class="node node-type-hook" data-node="session-start" style="left: 46px; top: 50px; width: 170px;">
+                <span class="tag">hook</span><span class="label">SessionStart</span>
+            </button>
 
-                    <div class="flow-lane">
-                        <span class="lane-label">Response fans out — the tool lane</span>
-                        <button class="node node-type-hook" data-node="pre-tool-use"><span class="node-tag">hook</span>PreToolUse</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <div class="tool-cluster-wrap">
-                            <button class="node node-type-tool-cluster" data-node="tool-cluster" aria-expanded="false" aria-controls="tool-dropdown"><span class="node-tag">tools</span>Tools (the action space) &#9662;</button>
-                            <div class="tool-dropdown" id="tool-dropdown" hidden>
-                                <div class="tool-grid" id="tool-grid"><!-- tool chips injected by JS --></div>
-                            </div>
-                        </div>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-hook" data-node="post-tool-use"><span class="node-tag">hook</span>PostToolUse</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-stage" data-node="stage-tool-output"><span class="node-tag">loops back</span>Tool Output</button>
-                    </div>
+            <!-- ENTRY ROW -->
+            <button class="node node-type-input" data-node="user-prompt-in" style="left: 46px; top: 150px; width: 150px;">
+                <span class="tag">in</span><span class="label">User Prompt</span>
+            </button>
+            <button class="node node-type-hook" data-node="ups-hook" style="left: 256px; top: 150px; width: 196px;">
+                <span class="tag">hook</span><span class="label">UserPromptSubmit (UPS)</span>
+            </button>
+            <button class="node node-type-stage" data-node="stage-thinking" style="left: 512px; top: 150px; width: 150px;">
+                <span class="tag">model</span><span class="label">Thinking</span>
+            </button>
+            <button class="node node-type-stage" data-node="stage-response" style="left: 722px; top: 150px; width: 150px;">
+                <span class="tag">model</span><span class="label">Response</span>
+            </button>
 
-                    <div class="flow-lane">
-                        <span class="lane-label">Response fans out — talk to the human</span>
-                        <button class="node node-type-hook" data-node="notification-hook"><span class="node-tag">hook</span>Notification</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-stage" data-node="stage-user-action"><span class="node-tag">you</span>User Action</button>
-                    </div>
+            <!-- TOOL LANE -->
+            <button class="node node-type-hook" data-node="pre-tool-use" style="left: 256px; top: 282px; width: 150px;">
+                <span class="tag">hook</span><span class="label">PreToolUse</span>
+            </button>
+            <button class="node node-type-tool" data-node="tool-cluster" aria-haspopup="dialog" aria-expanded="false" style="left: 466px; top: 274px; width: 210px;">
+                <span class="tag">tools</span><span class="label">Tools (the action space) <span class="caret">&#9662;</span></span>
+            </button>
+            <button class="node node-type-hook" data-node="post-tool-use" style="left: 736px; top: 282px; width: 150px;">
+                <span class="tag">hook</span><span class="label">PostToolUse</span>
+            </button>
+            <button class="node node-type-stage" data-node="stage-tool-output" style="left: 946px; top: 282px; width: 160px;">
+                <span class="tag">loops back</span><span class="label">Tool Output</span>
+            </button>
 
-                    <div class="flow-lane">
-                        <span class="lane-label">Response fans out — the helper lane &amp; the exit</span>
-                        <button class="node node-type-hook" data-node="subagent-stop"><span class="node-tag">hook</span>SubagentStop</button>
-                        <button class="node node-type-hook" data-node="stop-hook"><span class="node-tag">hook</span>Stop &mdash; the exit gate</button>
-                    </div>
+            <!-- HUMAN LANE -->
+            <button class="node node-type-hook" data-node="notification-hook" style="left: 256px; top: 398px; width: 150px;">
+                <span class="tag">hook</span><span class="label">Notification</span>
+            </button>
+            <button class="node node-type-stage" data-node="stage-user-action" style="left: 466px; top: 398px; width: 150px;">
+                <span class="tag">you</span><span class="label">User Action</span>
+            </button>
 
-                    <div class="flow-lane">
-                        <span class="lane-label">Memory housekeeping &amp; session lifecycle</span>
-                        <button class="node node-type-hook" data-node="pre-compact"><span class="node-tag">hook</span>PreCompact</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-stage" data-node="stage-compact"><span class="node-tag">op</span>Compact Operation</button>
-                        <span class="node-arrow" aria-hidden="true">&rarr;</span>
-                        <button class="node node-type-hook" data-node="session-start"><span class="node-tag">hook</span>SessionStart</button>
-                        <button class="node node-type-hook" data-node="session-end"><span class="node-tag">hook</span>SessionEnd</button>
-                    </div>
+            <!-- HELPER LANE -->
+            <button class="node node-type-hook" data-node="subagent-stop" style="left: 256px; top: 498px; width: 168px;">
+                <span class="tag">hook</span><span class="label">SubagentStop</span>
+            </button>
 
-                    <div class="flow-lane">
-                        <span class="lane-label">The loop closes</span>
-                        <button class="node node-type-terminal" data-node="user-prompt-next"><span class="node-tag">loop</span>User Prompt (next) &#8635;</button>
-                    </div>
+            <!-- MEMORY LANE -->
+            <button class="node node-type-hook" data-node="pre-compact" style="left: 256px; top: 598px; width: 150px;">
+                <span class="tag">hook</span><span class="label">PreCompact</span>
+            </button>
+            <button class="node node-type-stage" data-node="stage-compact" style="left: 466px; top: 598px; width: 178px;">
+                <span class="tag">op</span><span class="label">Compact Operation</span>
+            </button>
 
-                    <div class="flow-legend" aria-hidden="true">
-                        <span><span class="legend-swatch legend-hook"></span> Hook (deterministic)</span>
-                        <span><span class="legend-swatch legend-stage"></span> Model stage (probabilistic)</span>
-                        <span><span class="legend-swatch legend-tool"></span> Tools</span>
-                        <span><span class="legend-swatch legend-terminal"></span> Loop point</span>
-                    </div>
-                </section>
+            <!-- EXIT + LOOP -->
+            <button class="node node-type-hook" data-node="stop-hook" style="left: 946px; top: 150px; width: 178px;">
+                <span class="tag">hook</span><span class="label">Stop &mdash; the exit gate</span>
+            </button>
+            <button class="node node-type-loop" data-node="user-prompt-next" style="left: 1130px; top: 150px; width: 150px;">
+                <span class="tag">loop</span><span class="label">User Prompt (next) &#8635;</span>
+            </button>
 
-                <aside class="info-panel" id="info-panel" aria-live="polite">
-                    <button class="info-close" id="info-close" aria-label="Close info panel" hidden>&times;</button>
-                    <div id="info-content">
-                        <p class="info-panel-empty">Click any hook, model stage, or the <strong>Tools</strong> node in the diagram to see what it is, when it fires, and what it can do. The Tools node opens as a dropdown of every Claude Code tool — each one is clickable too.</p>
-                    </div>
-                </aside>
+            <!-- TEARDOWN -->
+            <button class="node node-type-hook" data-node="session-end" style="left: 1110px; top: 700px; width: 170px;">
+                <span class="tag">hook</span><span class="label">SessionEnd</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="chrome-hint" id="chrome-hint">Click any node to explore &middot; scroll to zoom &middot; drag to pan &middot; Esc to reset</div>
+
+    <!-- info panel -->
+    <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Node detail">
+        <button class="info-close" id="info-close" aria-label="Close detail panel">&times;</button>
+        <div id="info-content"></div>
+    </aside>
+
+    <!-- tools overlay -->
+    <div class="tool-overlay" id="tool-overlay" role="dialog" aria-modal="true" aria-label="Every Claude Code tool">
+        <div class="tool-modal">
+            <div class="tool-modal-head">
+                <h2>Tools — the action space</h2>
+                <span class="count" id="tool-count"></span>
+            </div>
+            <div class="tool-grid" id="tool-grid"></div>
+            <div class="tool-modal-foot">
+                <span>Click any tool to read what it does.</span>
+                <button class="tool-modal-close" id="tool-modal-close">Close</button>
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer id="site-footer">
-        <div class="container">
-            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="../../../js/theme-manager.js?v=20260518"></script>
-    <script src="../../../js/components.js?v=20260518"></script>
     <script>
     // ---------------------------------------------------------------------------
-    // Interactive hook-flow explorable. Pure vanilla JS, no dependencies.
-    // The content model is the authoritative data the build was handed; rendering
-    // is driven entirely from NODE_INFO + TOOL_LIST below.
+    // Full-screen interactive hook map. Pure vanilla JS, no dependencies.
+    // The content model (NODE_INFO + TOOL_LIST) is the fact-checked data this build
+    // was handed — verbatim from the prior verified version. Rendering, scale-to-fit,
+    // arrows, and interactivity are rebuilt around it.
     // ---------------------------------------------------------------------------
     (function () {
         "use strict";
@@ -371,16 +475,175 @@
             });
         }
 
-        var infoContent = el("info-content");
-        var infoClose = el("info-close");
+        // ====================================================================
+        // 1. ARROW GEOMETRY — drawn from node centers/edges so the flow + loop
+        //    stay glued to the boxes. Coordinates are the canvas 1320x820 space.
+        // ====================================================================
+        var CANVAS_W = 1320, CANVAS_H = 820;
+        var svg = document.querySelector("svg.connectors");
+
+        // Each connector: a pair of node keys (from→to) + an optional class + an
+        // optional manual path 'd'. We resolve node rects at build time.
+        function nodeRect(key) {
+            var n = document.querySelector('[data-node="' + key + '"]');
+            if (!n) { return null; }
+            var left = parseFloat(n.style.left), top = parseFloat(n.style.top);
+            var w = n.offsetWidth, h = n.offsetHeight;
+            return { x: left, y: top, w: w, h: h, cx: left + w / 2, cy: top + h / 2,
+                     right: left + w, bottom: top + h };
+        }
+
+        // Build an SVG path string for a connector between two node keys, exiting
+        // the source on `srcSide` and entering the target on `dstSide`.
+        function connect(fromKey, toKey, opts) {
+            opts = opts || {};
+            var a = nodeRect(fromKey), b = nodeRect(toKey);
+            if (!a || !b) { return null; }
+            var p1, p2;
+            switch (opts.from) {
+                case "right": p1 = { x: a.right, y: a.cy }; break;
+                case "bottom": p1 = { x: a.cx, y: a.bottom }; break;
+                case "top": p1 = { x: a.cx, y: a.y }; break;
+                case "left": p1 = { x: a.x, y: a.cy }; break;
+                default: p1 = { x: a.right, y: a.cy };
+            }
+            switch (opts.to) {
+                case "left": p2 = { x: b.x, y: b.cy }; break;
+                case "top": p2 = { x: b.cx, y: b.y }; break;
+                case "bottom": p2 = { x: b.cx, y: b.bottom }; break;
+                case "right": p2 = { x: b.right, y: b.cy }; break;
+                default: p2 = { x: b.x, y: b.cy };
+            }
+            var d;
+            if (opts.elbow === "h") {
+                // horizontal-first elbow
+                var midx = (p1.x + p2.x) / 2;
+                d = "M " + p1.x + " " + p1.y + " L " + midx + " " + p1.y +
+                    " L " + midx + " " + p2.y + " L " + p2.x + " " + p2.y;
+            } else if (opts.elbow === "v") {
+                var midy = (p1.y + p2.y) / 2;
+                d = "M " + p1.x + " " + p1.y + " L " + p1.x + " " + midy +
+                    " L " + p2.x + " " + midy + " L " + p2.x + " " + p2.y;
+            } else if (opts.via) {
+                d = "M " + p1.x + " " + p1.y;
+                opts.via.forEach(function (pt) { d += " L " + pt[0] + " " + pt[1]; });
+                d += " L " + p2.x + " " + p2.y;
+            } else {
+                d = "M " + p1.x + " " + p1.y + " L " + p2.x + " " + p2.y;
+            }
+            return d;
+        }
+
+        // Connector list: [from, to, options]. `nodes` = which node keys this arrow
+        // touches (for highlight-on-hover).
+        var CONNECTORS = [
+            // boot → first prompt
+            { from: "session-start", to: "user-prompt-in", o: { from: "bottom", to: "top" }, nodes: ["session-start", "user-prompt-in"] },
+            // entry row
+            { from: "user-prompt-in", to: "ups-hook", o: { from: "right", to: "left" }, nodes: ["user-prompt-in", "ups-hook"] },
+            { from: "ups-hook", to: "stage-thinking", o: { from: "right", to: "left" }, nodes: ["ups-hook", "stage-thinking"], cls: "thinking" },
+            { from: "stage-thinking", to: "stage-response", o: { from: "right", to: "left" }, nodes: ["stage-thinking", "stage-response"], cls: "thinking" },
+            // response fans out — down into the tool lane
+            { from: "stage-response", to: "pre-tool-use", o: { from: "bottom", to: "top", elbow: "v" }, nodes: ["stage-response", "pre-tool-use"] },
+            // tool lane
+            { from: "pre-tool-use", to: "tool-cluster", o: { from: "right", to: "left" }, nodes: ["pre-tool-use", "tool-cluster"] },
+            { from: "tool-cluster", to: "post-tool-use", o: { from: "right", to: "left" }, nodes: ["tool-cluster", "post-tool-use"] },
+            { from: "post-tool-use", to: "stage-tool-output", o: { from: "right", to: "left" }, nodes: ["post-tool-use", "stage-tool-output"] },
+            // tool output loops back up into Response (the agent keeps thinking)
+            { from: "stage-tool-output", to: "stage-response", o: { from: "top", to: "bottom", via: [[1026, 232], [797, 232]] }, nodes: ["stage-tool-output", "stage-response"], cls: "thinking" },
+            // response → human lane
+            { from: "pre-tool-use", to: "notification-hook", o: { from: "bottom", to: "top" }, nodes: ["pre-tool-use", "notification-hook"], cls: "thinking" },
+            { from: "notification-hook", to: "stage-user-action", o: { from: "right", to: "left" }, nodes: ["notification-hook", "stage-user-action"] },
+            // response → helper lane
+            { from: "notification-hook", to: "subagent-stop", o: { from: "bottom", to: "top" }, nodes: ["notification-hook", "subagent-stop"], cls: "thinking" },
+            // response → memory lane
+            { from: "subagent-stop", to: "pre-compact", o: { from: "bottom", to: "top" }, nodes: ["subagent-stop", "pre-compact"], cls: "thinking" },
+            { from: "pre-compact", to: "stage-compact", o: { from: "right", to: "left" }, nodes: ["pre-compact", "stage-compact"] },
+            // response → exit gate
+            { from: "stage-response", to: "stop-hook", o: { from: "right", to: "left" }, nodes: ["stage-response", "stop-hook"] },
+            // exit → next prompt (loop)
+            { from: "stop-hook", to: "user-prompt-next", o: { from: "right", to: "left" }, nodes: ["stop-hook", "user-prompt-next"], cls: "loop" },
+            // next prompt loops back to UPS (the cycle closes)
+            { from: "user-prompt-next", to: "ups-hook", o: { from: "top", to: "top", via: [[1205, 60], [354, 60]] }, nodes: ["user-prompt-next", "ups-hook"], cls: "loop" },
+            // teardown
+            { from: "stage-compact", to: "session-end", o: { from: "right", to: "left", via: [[1195, 624], [1195, 690]] }, nodes: ["stage-compact", "session-end"] }
+        ];
+
+        var pathEls = []; // {el, nodes}
+        function buildArrows() {
+            // remove old paths (keep <defs>)
+            Array.prototype.slice.call(svg.querySelectorAll("path.arrow")).forEach(function (p) { p.remove(); });
+            pathEls = [];
+            CONNECTORS.forEach(function (c) {
+                var d = connect(c.from, c.to, c.o);
+                if (!d) { return; }
+                var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("class", "arrow" + (c.cls ? " " + c.cls : ""));
+                path.setAttribute("d", d);
+                svg.appendChild(path);
+                pathEls.push({ el: path, nodes: c.nodes });
+            });
+        }
+
+        // ====================================================================
+        // 2. SCALE-TO-FIT — the whole 1320x820 map always fits the viewport.
+        //    User zoom (scroll) + pan (drag) ride on top of the fit scale.
+        // ====================================================================
+        var canvas = el("map-canvas");
+        var fitScale = 1, userZoom = 1, panX = 0, panY = 0;
+        var PAD = 96; // breathing room around the map at fit
+
+        function computeFit() {
+            var vw = window.innerWidth, vh = window.innerHeight;
+            var sx = (vw - PAD) / CANVAS_W;
+            var sy = (vh - PAD) / CANVAS_H;
+            fitScale = Math.min(sx, sy);
+            if (fitScale > 1.25) { fitScale = 1.25; } // don't over-magnify on huge screens
+        }
+        function applyTransform() {
+            var s = fitScale * userZoom;
+            canvas.style.transform = "translate(" + panX + "px," + panY + "px) scale(" + s + ")";
+        }
+        function resetView() {
+            userZoom = 1; panX = 0; panY = 0; applyTransform();
+        }
+        function onResize() { computeFit(); applyTransform(); }
+
+        // scroll-to-zoom (enhancement; fit-to-screen is the default)
+        var viewport = document.querySelector(".map-viewport");
+        viewport.addEventListener("wheel", function (e) {
+            e.preventDefault();
+            var delta = -e.deltaY * 0.0012;
+            var next = userZoom * (1 + delta);
+            userZoom = Math.max(0.6, Math.min(3, next));
+            applyTransform();
+        }, { passive: false });
+
+        // drag-to-pan (enhancement)
+        var dragging = false, lastX = 0, lastY = 0, moved = false;
+        viewport.addEventListener("pointerdown", function (e) {
+            if (e.target.closest(".node")) { return; } // let node clicks through
+            dragging = true; moved = false; lastX = e.clientX; lastY = e.clientY;
+            viewport.setPointerCapture(e.pointerId);
+        });
+        viewport.addEventListener("pointermove", function (e) {
+            if (!dragging) { return; }
+            var dx = e.clientX - lastX, dy = e.clientY - lastY;
+            if (Math.abs(dx) + Math.abs(dy) > 3) { moved = true; }
+            panX += dx; panY += dy; lastX = e.clientX; lastY = e.clientY;
+            applyTransform();
+        });
+        viewport.addEventListener("pointerup", function (e) {
+            dragging = false;
+            try { viewport.releasePointerCapture(e.pointerId); } catch (err) {}
+        });
+
+        // ====================================================================
+        // 3. INFO PANEL + NODE ACTIVATION
+        // ====================================================================
+        var infoPanel = el("info-panel"), infoContent = el("info-content"), infoClose = el("info-close");
         var allNodes = Array.prototype.slice.call(document.querySelectorAll(".node"));
         var activeNode = null;
-
-        function clearActiveNodes() {
-            allNodes.forEach(function (n) { n.classList.remove("is-active"); });
-            Array.prototype.slice.call(document.querySelectorAll(".tool-chip"))
-                .forEach(function (c) { c.classList.remove("is-active"); });
-        }
 
         function renderInfo(info) {
             var html = "";
@@ -393,7 +656,7 @@
             html += '<div class="info-field"><div class="info-field-label">What it can do</div>'
                   + '<div class="info-field-body">' + escapeHtml(info.canDo) + "</div></div>";
             infoContent.innerHTML = html;
-            infoClose.hidden = false;
+            infoPanel.classList.add("open");
         }
 
         function renderToolInfo(tool) {
@@ -403,22 +666,71 @@
             html += '<div class="info-field"><div class="info-field-label">What it does</div>'
                   + '<div class="info-field-body">' + escapeHtml(tool.oneLine) + "</div></div>";
             infoContent.innerHTML = html;
-            infoClose.hidden = false;
+            infoPanel.classList.add("open");
         }
 
-        function resetInfo() {
-            infoContent.innerHTML = '<p class="info-panel-empty">Click any hook, model stage, or the '
-                + "<strong>Tools</strong> node in the diagram to see what it is, when it fires, and what it can do. "
-                + "The Tools node opens as a dropdown of every Claude Code tool — each one is clickable too.</p>";
-            infoClose.hidden = true;
-            clearActiveNodes();
+        function closeInfo() {
+            infoPanel.classList.remove("open");
+            clearHighlights();
             activeNode = null;
         }
 
-        // --- tool dropdown --------------------------------------------------------
-        var toolGrid = el("tool-grid");
-        var toolDropdown = el("tool-dropdown");
-        var toolClusterBtn = document.querySelector('[data-node="tool-cluster"]');
+        // highlight a node + its connected arrows; dim the rest
+        function highlightNode(key) {
+            allNodes.forEach(function (n) {
+                var k = n.getAttribute("data-node");
+                n.classList.toggle("is-dim", k !== key);
+                n.classList.toggle("is-active", k === key);
+            });
+            pathEls.forEach(function (p) {
+                var touches = p.nodes.indexOf(key) !== -1;
+                p.el.classList.toggle("hot", touches);
+                p.el.classList.toggle("dim", !touches);
+            });
+        }
+        function clearHighlights() {
+            allNodes.forEach(function (n) { n.classList.remove("is-dim", "is-active"); });
+            pathEls.forEach(function (p) { p.el.classList.remove("hot", "dim"); });
+        }
+
+        function activateNode(node) {
+            var key = node.getAttribute("data-node");
+            if (key === "tool-cluster") {
+                renderInfo(NODE_INFO[key]);
+                highlightNode(key);
+                activeNode = node;
+                openToolOverlay();
+                return;
+            }
+            var info = NODE_INFO[key];
+            if (!info) { return; }
+            renderInfo(info);
+            highlightNode(key);
+            activeNode = node;
+        }
+
+        allNodes.forEach(function (node) {
+            node.addEventListener("click", function (e) {
+                if (moved) { return; } // ignore click that ended a drag
+                e.stopPropagation();
+                activateNode(node);
+            });
+            // hover preview highlight (does not open the panel)
+            node.addEventListener("mouseenter", function () {
+                if (!activeNode) { highlightNode(node.getAttribute("data-node")); }
+            });
+            node.addEventListener("mouseleave", function () {
+                if (!activeNode) { clearHighlights(); }
+            });
+        });
+
+        infoClose.addEventListener("click", closeInfo);
+
+        // ====================================================================
+        // 4. TOOLS OVERLAY — grid of every tool, each clickable.
+        // ====================================================================
+        var toolOverlay = el("tool-overlay"), toolGrid = el("tool-grid"),
+            toolCount = el("tool-count"), toolModalClose = el("tool-modal-close");
 
         TOOL_LIST.forEach(function (tool, i) {
             var chip = document.createElement("button");
@@ -426,63 +738,56 @@
             chip.type = "button";
             chip.textContent = tool.name;
             chip.setAttribute("data-tool-index", String(i));
+            chip.setAttribute("aria-label", tool.name + " — " + tool.oneLine);
             chip.addEventListener("click", function () {
-                clearActiveNodes();
-                toolClusterBtn.classList.add("is-active");
+                Array.prototype.slice.call(toolGrid.children).forEach(function (c) { c.classList.remove("is-active"); });
                 chip.classList.add("is-active");
                 renderToolInfo(tool);
             });
             toolGrid.appendChild(chip);
         });
+        toolCount.textContent = TOOL_LIST.length + " tools";
 
-        function setDropdown(open) {
-            toolDropdown.hidden = !open;
-            toolClusterBtn.setAttribute("aria-expanded", open ? "true" : "false");
-            toolClusterBtn.innerHTML = '<span class="node-tag">tools</span>Tools (the action space) '
-                + (open ? "&#9652;" : "&#9662;");
+        var toolClusterBtn = document.querySelector('[data-node="tool-cluster"]');
+        function openToolOverlay() {
+            toolOverlay.classList.add("open");
+            toolClusterBtn.setAttribute("aria-expanded", "true");
         }
-
-        // --- node activation ------------------------------------------------------
-        function activateNode(node) {
-            var key = node.getAttribute("data-node");
-            if (key === "tool-cluster") {
-                var willOpen = toolDropdown.hidden;
-                setDropdown(willOpen);
-                clearActiveNodes();
-                node.classList.add("is-active");
-                if (NODE_INFO[key]) { renderInfo(NODE_INFO[key]); }
-                activeNode = node;
-                return;
-            }
-            var info = NODE_INFO[key];
-            if (!info) { return; }
-            clearActiveNodes();
-            node.classList.add("is-active");
-            renderInfo(info);
-            activeNode = node;
+        function closeToolOverlay() {
+            toolOverlay.classList.remove("open");
+            toolClusterBtn.setAttribute("aria-expanded", "false");
         }
-
-        allNodes.forEach(function (node) {
-            node.setAttribute("type", "button");
-            node.addEventListener("click", function () { activateNode(node); });
-            // Buttons already fire click on Enter/Space; keydown kept for the
-            // tool-cluster aria-expanded affordance and explicit Space handling.
-            node.addEventListener("keydown", function (e) {
-                if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
-                    e.preventDefault();
-                    activateNode(node);
-                }
-            });
+        toolModalClose.addEventListener("click", closeToolOverlay);
+        toolOverlay.addEventListener("click", function (e) {
+            if (e.target === toolOverlay) { closeToolOverlay(); }
         });
 
-        infoClose.addEventListener("click", resetInfo);
-
+        // ====================================================================
+        // 5. KEYBOARD — Esc closes overlay/panel/resets the view.
+        // ====================================================================
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape" || e.key === "Esc") {
-                if (!toolDropdown.hidden) { setDropdown(false); }
-                resetInfo();
+                if (toolOverlay.classList.contains("open")) { closeToolOverlay(); return; }
+                if (infoPanel.classList.contains("open")) { closeInfo(); return; }
+                resetView();
             }
         });
+
+        // ====================================================================
+        // 6. BOOT
+        // ====================================================================
+        function init() {
+            buildArrows();
+            computeFit();
+            applyTransform();
+        }
+        window.addEventListener("resize", onResize);
+        // buttons get geometry only after layout; build on next frame to be safe.
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            requestAnimationFrame(init);
+        } else {
+            window.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(init); });
+        }
     })();
     </script>
 </body>
