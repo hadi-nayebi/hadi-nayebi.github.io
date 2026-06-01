@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.1.0 -->
+<!-- Version: v3.2.0 -->
 <html lang="en">
 
 <head>
@@ -56,7 +56,7 @@
 
         /* ----- minimal chrome: back-to-essay pill ----- */
         .chrome-back {
-            position: fixed; top: 1.5rem; right: 1.6rem; z-index: 30;
+            position: fixed; top: 1.5rem; right: 1.6rem; z-index: 1500;
             display: inline-flex; align-items: center; gap: 0.4rem;
             padding: 0.5rem 0.9rem; border-radius: 999px;
             background: rgba(5, 5, 7, 0.6); border: 1px solid var(--border);
@@ -269,25 +269,58 @@
                 linear-gradient(160deg, rgba(48,26,26,0.94), rgba(30,18,18,0.94));
         }
 
-        /* Collapsed compound "pills" — clearly clickable, badged */
+        /* Collapsed compound "pills" — obvious BUTTON affordance, badged.
+           Layout: badge top-right · title + sub stacked · a full-width
+           "drill in" footer bar pinned to the bottom so nothing clips. */
         .hm-node--pill {
-            border-color: rgba(139,92,246,0.65);
+            border-color: rgba(139,92,246,0.70);
+            justify-content: flex-start;
+            gap: 2px;
+            padding: 10px 14px 26px;     /* bottom room for the drill bar */
             background:
-                linear-gradient(155deg, rgba(255,255,255,0.09), rgba(255,255,255,0) 42%),
-                linear-gradient(135deg, rgba(52,36,82,0.95), rgba(32,26,56,0.95));
+                linear-gradient(155deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 42%),
+                linear-gradient(135deg, rgba(56,38,90,0.96), rgba(34,27,60,0.96));
             box-shadow:
-                0 8px 28px rgba(99,102,241,0.28),
-                inset 0 1px 0 rgba(255,255,255,0.09);
+                0 8px 28px rgba(99,102,241,0.30),
+                inset 0 1px 0 rgba(255,255,255,0.10);
         }
+        .hm-node--pill .hm-node__title { font-size: 14px; }
+        .hm-node--pill .hm-node__sub { white-space: normal; }
         .hm-node--pill::after {
-            content: '\2935 drill in';
+            content: '\2935  drill in';
             position: absolute;
-            bottom: 6px; right: 10px;
-            font-size: 9px;
-            color: #b9a9ee;
-            opacity: .9;
+            left: 0; right: 0; bottom: 0;
+            padding: 4px 0 5px;
+            text-align: center;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #d9cdff;
+            background: rgba(139,92,246,0.20);
+            border-top: 1px solid rgba(139,92,246,0.30);
         }
-        .hm-node--pill:hover { border-color: rgba(167,139,250,0.85); }
+        .hm-node--pill:hover {
+            border-color: rgba(167,139,250,0.90);
+            transform: translateY(-2px);
+        }
+        .hm-node--pill:hover::after { background: rgba(139,92,246,0.34); }
+        /* the pill badge sits inline with its dedicated bottom-room layout */
+        .hm-node--pill .hm-node__badge { top: 8px; right: 10px; }
+
+        /* ---- Step badges on the core-loop nodes (reading order 1→4) ---- */
+        .hm-step {
+            position: absolute;
+            top: -10px; left: -10px;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700;
+            color: #fff;
+            background: linear-gradient(150deg, #6366f1, #8b5cf6);
+            border: 1.5px solid rgba(255,255,255,0.55);
+            box-shadow: 0 3px 10px rgba(99,102,241,0.55);
+            z-index: 3;
+        }
 
         /* Secondary / out-of-band — dimmer, recedes from the spine (no backdrop-filter) */
         .hm-node--secondary {
@@ -506,6 +539,184 @@
         }
         .tool-modal-close:hover, .tool-modal-close:focus-visible { border-color: var(--accent); background: var(--glass-hover); outline: none; }
 
+        /* ====================================================================
+           LEARNING LAYER (v3.2.0) — legend · orientation · tooltip ·
+           teaching caption · zoom controls · help button. All glass,
+           all built INTO the fixed full-screen map (no scrolling article).
+           ==================================================================== */
+
+        /* ---- Teaching caption: pinned, bottom-center, teaches the CONCEPT ---- */
+        .hm-caption {
+            position: fixed;
+            left: 50%; bottom: 1.3rem;
+            transform: translateX(-50%);
+            z-index: 1500;
+            max-width: min(640px, calc(100vw - 2rem));
+            text-align: center;
+            padding: 0.55rem 1.1rem;
+            border-radius: 14px;
+            background: rgba(10,10,16,0.66);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            font-size: 0.84rem; line-height: 1.45; color: #cfcfe0;
+            box-shadow: 0 12px 34px rgba(0,0,0,0.45);
+            pointer-events: none;
+            transition: opacity .25s ease;
+        }
+        .hm-caption b { color: #efeaff; font-weight: 700; }
+        .hm-caption em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+        /* ---- Color/type legend: glass, top-left, collapsible ---- */
+        .hm-legend {
+            position: fixed;
+            top: 4.4rem; left: 1.6rem;
+            z-index: 1500;
+            width: 252px; max-width: calc(100vw - 3.2rem);
+            background: rgba(10,10,16,0.72);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+            overflow: hidden;
+        }
+        .hm-legend__head {
+            appearance: none; width: 100%; cursor: pointer; font-family: inherit;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 0.5rem; padding: 0.7rem 0.95rem; text-align: left;
+            background: transparent; border: none; color: var(--text-main);
+            font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .hm-legend__head:hover, .hm-legend__head:focus-visible { color: #fff; outline: none; }
+        .hm-legend__chev { font-size: 0.7rem; color: var(--text-muted); transition: transform .22s ease; }
+        .hm-legend.is-collapsed .hm-legend__chev { transform: rotate(-90deg); }
+        .hm-legend__body {
+            padding: 0.2rem 0.95rem 0.85rem;
+            display: flex; flex-direction: column; gap: 0.5rem;
+            max-height: 60vh; overflow-y: auto;
+        }
+        .hm-legend.is-collapsed .hm-legend__body { display: none; }
+        .hm-legend__row { display: flex; align-items: flex-start; gap: 0.55rem; }
+        .hm-legend__sw {
+            flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px;
+            border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .hm-legend__sw--round { border-radius: 50%; }
+        .hm-legend__sw--pill { border-radius: 7px; }
+        .hm-legend__txt { font-size: 0.74rem; line-height: 1.35; color: var(--text-muted); }
+        .hm-legend__txt b { color: var(--text-main); font-weight: 600; display: block; font-size: 0.76rem; }
+        /* swatch fills mirror the actual map node gradients/borders */
+        .sw-hook   { background: linear-gradient(160deg,#22223e,#14142a); border-color: rgba(99,102,241,0.7); }
+        .sw-stage  { background: linear-gradient(160deg,#28283a,#181826); border-color: rgba(255,255,255,0.30); }
+        .sw-hub    { background: linear-gradient(160deg,#3a285c,#22183a); border-color: rgba(139,92,246,0.85); }
+        .sw-pill   { background: linear-gradient(135deg,#38265a,#221b3c); border-color: rgba(167,139,250,0.85); }
+        .sw-group  { background: rgba(120,120,180,0.10); border-color: rgba(139,92,246,0.45); }
+        .sw-portal { background: rgba(99,102,241,0.20); border-color: rgba(139,92,246,0.65); }
+        .sw-in     { background: linear-gradient(160deg,#122a24,#0c1c18); border-color: rgba(52,211,153,0.6); }
+
+        /* ---- Hover tooltip: quick scan of any node ---- */
+        .hm-tooltip {
+            position: fixed; z-index: 2600;
+            max-width: 260px;
+            padding: 0.55rem 0.75rem;
+            border-radius: 12px;
+            background: rgba(8,8,13,0.94);
+            border: 1px solid rgba(139,92,246,0.40);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            opacity: 0; pointer-events: none;
+            transform: translateY(4px);
+            transition: opacity .14s ease, transform .14s ease;
+        }
+        .hm-tooltip.is-on { opacity: 1; transform: translateY(0); }
+        .hm-tooltip__t { font-size: 0.8rem; font-weight: 700; color: #f1eeff; margin-bottom: 0.2rem; }
+        .hm-tooltip__w { font-size: 0.74rem; line-height: 1.4; color: #b6b6c8; }
+        .hm-tooltip__hint { margin-top: 0.35rem; font-size: 0.64rem; letter-spacing: 0.04em; color: var(--accent); font-weight: 600; }
+
+        /* ---- Zoom controls: small +/- + reset, bottom-right ---- */
+        .hm-zoom {
+            position: fixed; right: 1.6rem; bottom: 1.4rem; z-index: 1500;
+            display: flex; flex-direction: column; gap: 0.4rem;
+        }
+        .hm-zoom button {
+            appearance: none; cursor: pointer; font-family: inherit;
+            width: 38px; height: 38px; border-radius: 11px;
+            background: rgba(10,10,16,0.72); border: 1px solid var(--border);
+            color: var(--text-main); font-size: 1.1rem; line-height: 1;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color .16s ease, background .16s ease, transform .1s ease;
+        }
+        .hm-zoom button:hover, .hm-zoom button:focus-visible {
+            border-color: var(--primary); background: var(--glass-hover); outline: none;
+        }
+        .hm-zoom button:active { transform: scale(0.94); }
+        .hm-zoom button.hm-zoom__reset { font-size: 0.78rem; font-weight: 600; }
+
+        /* the SVG stage gets a grab cursor + a transform we drive for pan/zoom */
+        .hm-stage { cursor: grab; transform-origin: 0 0; }
+        .hm-stage.is-panning { cursor: grabbing; }
+
+        /* ---- Persistent help "?" button (re-opens orientation) ---- */
+        .hm-help {
+            position: fixed; top: 1.5rem; right: 12.5rem; z-index: 1500;
+            width: 34px; height: 34px; border-radius: 50%;
+            appearance: none; cursor: pointer; font-family: inherit;
+            background: rgba(5,5,7,0.6); border: 1px solid var(--border);
+            color: var(--text-muted); font-size: 0.95rem; font-weight: 700;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            transition: color .18s ease, border-color .18s ease;
+        }
+        .hm-help:hover, .hm-help:focus-visible { color: var(--text-main); border-color: var(--primary); outline: none; }
+
+        /* ---- Orientation overlay: "how to read this", shown once ---- */
+        .hm-orient {
+            position: fixed; inset: 0; z-index: 4000;
+            display: none; align-items: center; justify-content: center;
+            padding: 1.5rem;
+            background: rgba(3,3,6,0.66);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        }
+        .hm-orient.is-open { display: flex; }
+        .hm-orient__card {
+            width: min(540px, 94vw); max-height: 88vh; overflow-y: auto;
+            background: rgba(12,12,20,0.94);
+            border: 1px solid var(--border); border-radius: 22px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+            padding: 1.8rem 1.9rem 1.6rem;
+        }
+        .hm-orient__kicker {
+            font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .hm-orient__card h2 { margin: 0 0 1rem; font-size: 1.5rem; line-height: 1.15; }
+        .hm-orient__lead { font-size: 0.96rem; line-height: 1.55; color: var(--text-main); margin: 0 0 1.1rem; }
+        .hm-orient__lead b { color: #efeaff; }
+        .hm-orient__steps { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+        .hm-orient__steps li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.88rem; line-height: 1.45; color: var(--text-muted); }
+        .hm-orient__steps li b { color: var(--text-main); }
+        .hm-orient__num {
+            flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem; font-weight: 700; color: #fff;
+            background: linear-gradient(150deg, #6366f1, #8b5cf6);
+            box-shadow: 0 3px 10px rgba(99,102,241,0.45);
+        }
+        .hm-orient__thesis {
+            font-style: italic; color: var(--accent); font-weight: 600;
+            font-size: 0.92rem; text-align: center; margin: 0 0 1.3rem;
+        }
+        .hm-orient__go {
+            appearance: none; cursor: pointer; font-family: inherit; width: 100%;
+            padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.92rem; font-weight: 700;
+            color: #fff; border: 1px solid rgba(139,92,246,0.55);
+            background: linear-gradient(150deg, rgba(99,102,241,0.9), rgba(139,92,246,0.9));
+            transition: transform .1s ease, box-shadow .18s ease;
+        }
+        .hm-orient__go:hover, .hm-orient__go:focus-visible {
+            box-shadow: 0 10px 26px rgba(99,102,241,0.4); outline: none; transform: translateY(-1px);
+        }
+
         /* ---- Loading skeleton ---- */
         .hm-skeleton {
             position: absolute; inset: 0;
@@ -552,6 +763,15 @@
                 transform: translateY(100%);
             }
             .info-panel.open { transform: translateY(0); }
+
+            /* Learning layer on small screens: legend collapses by default
+               (handled in JS), caption + zoom shrink, help button repositions,
+               hover tooltips are suppressed (tap opens the full panel instead). */
+            .hm-legend { top: auto; bottom: 5.2rem; left: 0.8rem; width: 210px; }
+            .hm-caption { display: none; }
+            .hm-zoom { right: 0.8rem; bottom: 0.9rem; }
+            .hm-help { right: 0.9rem; top: 1.1rem; }
+            .hm-tooltip { display: none; }
         }
     </style>
 </head>
@@ -559,8 +779,84 @@
 <body>
     <a href="../01-llms-are-not-the-agents.html" class="chrome-back" id="chrome-up" aria-label="Back to Essay 1">&larr; Back to Essay 1</a>
 
+    <!-- persistent help button — re-opens the orientation card -->
+    <button class="hm-help" id="hm-help" type="button" aria-label="How to read this map" title="How to read this map">?</button>
+
     <!-- engine mounts the topbar, viewport, info panel + skeleton into here -->
     <div class="hm-root"></div>
+
+    <!-- ====================================================================
+         LEARNING LAYER (v3.2.0) — legend · caption · tooltip · zoom · orient.
+         These live in the page body and are wired by the engine at init.
+         ==================================================================== -->
+
+    <!-- Color / type legend (collapsible) — mirrors the map's visual language -->
+    <aside class="hm-legend" id="hm-legend" aria-label="Map legend">
+        <button class="hm-legend__head" id="hm-legend-head" type="button" aria-expanded="true" aria-controls="hm-legend-body">
+            <span>What the shapes mean</span>
+            <span class="hm-legend__chev" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="hm-legend__body" id="hm-legend-body">
+            <div class="hm-legend__row">
+                <span class="hm-legend__sw sw-hub hm-legend__sw--round" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Hub</b>the router — every step leaves from here and comes back</span>
+            </div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__sw sw-stage" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Model stage</b>the agent thinking or replying</span>
+            </div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__sw sw-hook" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Hook</b>a deterministic checkpoint — can allow, block, or rewrite</span>
+            </div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__sw sw-pill hm-legend__sw--pill" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Drill room</b>click to step inside a sub-flow</span>
+            </div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__sw sw-group" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Lifecycle group</b>related off-path hooks, boxed together</span>
+            </div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__sw sw-portal hm-legend__sw--round" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Portal</b>jumps you back up to the turn</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Teaching caption — pinned, teaches the CONCEPT of the current view -->
+    <div class="hm-caption" id="hm-caption" aria-live="polite"></div>
+
+    <!-- Hover tooltip — quick scan of any node -->
+    <div class="hm-tooltip" id="hm-tooltip" role="status" aria-hidden="true">
+        <div class="hm-tooltip__t" id="hm-tooltip-t"></div>
+        <div class="hm-tooltip__w" id="hm-tooltip-w"></div>
+        <div class="hm-tooltip__hint">click for the full story</div>
+    </div>
+
+    <!-- Zoom controls — opt-in detail on top of the auto-fit default -->
+    <div class="hm-zoom" id="hm-zoom" aria-label="Zoom controls">
+        <button type="button" id="hm-zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+        <button type="button" id="hm-zoom-out" aria-label="Zoom out" title="Zoom out">&minus;</button>
+        <button type="button" class="hm-zoom__reset" id="hm-zoom-reset" aria-label="Reset view" title="Reset view (Esc)">fit</button>
+    </div>
+
+    <!-- Orientation overlay — "how to read this", shown once (localStorage) -->
+    <div class="hm-orient" id="hm-orient" role="dialog" aria-modal="true" aria-labelledby="hm-orient-title">
+        <div class="hm-orient__card">
+            <div class="hm-orient__kicker">How to read this map</div>
+            <h2 id="hm-orient-title">This is one turn of the agent.</h2>
+            <p class="hm-orient__lead">Your prompt enters on the <b>left</b>. The agent loops in the <b>middle</b> — thinking, acting, delegating — until it decides to <b>Stop</b> on the right. Then it loops back for your next message.</p>
+            <ol class="hm-orient__steps">
+                <li><span class="hm-orient__num">1</span><span><b>Follow the numbered steps</b> along the bright main line — that is the reading order.</span></li>
+                <li><span class="hm-orient__num">2</span><span><b>Hover any box</b> for a one-line summary; <b>click</b> it for the full story.</span></li>
+                <li><span class="hm-orient__num">3</span><span><b>Click a glowing room</b> (Tool Loop, Delegation) to step inside its sub-flow.</span></li>
+                <li><span class="hm-orient__num">4</span><span><b>Lost?</b> Press <b>Esc</b> or hit <b>fit</b> to snap back to the whole map.</span></li>
+            </ol>
+            <p class="hm-orient__thesis">The model proposes; the structure disposes.</p>
+            <button class="hm-orient__go" id="hm-orient-go" type="button">Explore the map &rarr;</button>
+        </div>
+    </div>
 
     <!-- info panel (engine populates #info-content; styles kept from v2.0.0) -->
     <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Node detail">
@@ -610,12 +906,13 @@
         /* ============================================================
          *  SIZING
          * ============================================================ */
-        var W_HOOK = 184, H_HOOK = 62;     // standard hook
-        var W_STAGE = 172, H_STAGE = 58;   // stage / hub node
-        var W_PILL = 232, H_PILL = 86;     // collapsed compound drill pill
-        var W_PORTAL = 204, H_PORTAL = 54; // cross-room portal chip
-        var W_TOOL = 204, H_TOOL = 66;     // action-space node (opens modal)
-        var W_SHOOK = 176, H_SHOOK = 50;   // secondary hook (packed inside a group box)
+        // v3.2.0 — bumped up so the auto-fit map renders LARGER / more legible.
+        var W_HOOK = 208, H_HOOK = 70;     // standard hook
+        var W_STAGE = 192, H_STAGE = 66;   // stage / hub node
+        var W_PILL = 244, H_PILL = 104;    // collapsed compound drill pill (room for badge+title+sub+drill bar)
+        var W_PORTAL = 222, H_PORTAL = 58; // cross-room portal chip
+        var W_TOOL = 222, H_TOOL = 74;     // action-space node (opens modal)
+        var W_SHOOK = 188, H_SHOOK = 54;   // secondary hook (packed inside a group box)
 
         function node(id, w, h, meta) {
             return { id: id, width: w, height: h, meta: meta };
@@ -650,12 +947,12 @@
             var children = [
                 /* ============ CORE TURN LOOP — flat, prominent, on the main line ============ */
                 node("sessionstart", W_HOOK, H_HOOK, { type: "hook", title: "SessionStart", sub: "observe-only" }),
-                node("your-text", W_STAGE, H_STAGE, { type: "in", title: "User Prompt", sub: "what you typed" }),
+                node("your-text", W_STAGE, H_STAGE, { type: "in", title: "User Prompt", sub: "what you typed", step: 1 }),
                 node("userpromptsubmit", W_HOOK, H_HOOK, { type: "hook", title: "UserPromptSubmit", sub: "block / inject / rewrite" }),
-                node("think", W_STAGE, H_STAGE, { type: "stage", title: "THINK", sub: "reasoning" }),
-                node("dispatcher", W_STAGE, H_STAGE, { type: "hub", title: "DISPATCHER", sub: "the hub" }),
+                node("think", W_STAGE, H_STAGE, { type: "stage", title: "THINK", sub: "reasoning", step: 2 }),
+                node("dispatcher", W_STAGE, H_STAGE, { type: "hub", title: "DISPATCHER", sub: "the hub", step: 3 }),
                 node("respond", W_STAGE, H_STAGE, { type: "stage", title: "RESPOND", sub: "output" }),
-                node("stop", W_HOOK, H_HOOK, { type: "hook", title: "Stop", sub: "CAN BLOCK — the hero" }),
+                node("stop", W_HOOK, H_HOOK, { type: "hook", title: "Stop", sub: "CAN BLOCK — the hero", step: 4 }),
 
                 /* --- the two collapsed compound drill pills (hang off DISPATCHER) --- */
                 node("tool-loop-pill", W_PILL, H_PILL, { type: "pill", title: "Tool Loop", sub: "the agent acts", badge: "8 hooks", drill: "toolloop" }),
@@ -849,6 +1146,17 @@
         // expose both forms: a GRAPHS object AND buildGraph(view)
         HM.GRAPHS = { spine: buildSpine(), toolloop: buildToolLoop(), delegation: buildDelegation() };
         HM.buildGraph = buildGraph;
+
+        /* ============================================================
+         *  CAPTIONS — per-view teaching line. Each teaches the CONCEPT
+         *  (a sentence a lawyer / PM / researcher remembers), not labels.
+         *  HTML allowed: <b> for terms, <em> for the thesis accent.
+         * ============================================================ */
+        HM.CAPTIONS = {
+            spine: 'One <b>turn</b> of the agent: your prompt enters, it loops through <b>think &rarr; act &rarr; respond</b>, and only the <b>Stop</b> gate lets it leave. <em>The model proposes; the structure disposes.</em>',
+            toolloop: 'The <b>permission gauntlet</b>: every action the agent wants to take is checked <b>before</b> it runs and reviewed <b>after</b> &mdash; allow, deny, ask, or rewrite.',
+            delegation: '<b>Deputies that run their own loops</b>: the agent hands work to helper agents and tracked tasks, and refuses to call them done until the work passes review.'
+        };
 
         /* ============================================================
          *  NODE_INFO — 4 prose fields + docGroup + docs for every clickable
@@ -1391,6 +1699,7 @@
 
         /* ---- DOM refs (built once on init) ---- */
         var root, viewport, topbarCrumbs, backPill, info, infoContent, skeleton;
+        var caption, tip, tipT, tipW, legend, legendHead, isMobile;
         var currentView = 'spine';
         var laying = false;
 
@@ -1477,6 +1786,10 @@
             viewport.insertBefore(stage, viewport.firstChild);
             void stage.getBoundingClientRect();
             stage.classList.remove('is-fading');
+            // a freshly drawn view starts at the auto-fit default (no zoom/pan)
+            zoom = 1; panX = 0; panY = 0;
+            stage.style.transform = '';
+            hideTip();
         }
 
         function buildDefs() {
@@ -1537,6 +1850,7 @@
             var box = ce('div', 'hm-node hm-node--' + (m.type || 'stage'));
             box.style.position = 'relative';
             var html = '';
+            if (m.step) html += '<span class="hm-step" aria-hidden="true">' + escapeHtml(m.step) + '</span>';
             if (m.badge) html += '<span class="hm-node__badge">' + escapeHtml(m.badge) + '</span>';
             html += '<span class="hm-node__title">' + escapeHtml(m.title || node.id) + '</span>';
             if (m.sub) html += '<span class="hm-node__sub">' + escapeHtml(m.sub) + '</span>';
@@ -1548,6 +1862,11 @@
                 if (m.drill) { navigate(m.drill); return; }
                 openInfo(node.id);
             });
+
+            // ---- hover tooltip (desktop): quick scan from NODE_INFO.what ----
+            box.addEventListener('mouseenter', function (ev) { showTip(node.id, m, ev); });
+            box.addEventListener('mousemove', function (ev) { moveTip(ev); });
+            box.addEventListener('mouseleave', hideTip);
 
             fo.appendChild(box);
             layer.appendChild(fo);
@@ -1628,6 +1947,13 @@
             });
             if (viewId === 'spine') root.classList.remove('is-drill');
             else root.classList.add('is-drill');
+
+            // teaching caption for this view
+            if (caption) {
+                var cap = (HM.CAPTIONS || {})[viewId];
+                caption.innerHTML = cap || '';
+                caption.style.opacity = cap ? '1' : '0';
+            }
         }
 
         /* ============================================================
@@ -1667,7 +1993,9 @@
            ============================================================ */
         function onKeydown(e) {
             if (e.key !== 'Escape' && e.key !== 'Esc') return;
+            if (orient && orient.classList.contains('is-open')) { closeOrient(); e.stopPropagation(); return; }
             if (infoIsOpen()) { closeInfo(); e.stopPropagation(); return; }
+            if (zoom !== 1 || panX !== 0 || panY !== 0) { resetZoom(); e.stopPropagation(); return; }
             if (currentView !== 'spine') { navigate('spine'); e.stopPropagation(); return; }
         }
 
@@ -1677,6 +2005,7 @@
         var wasMobile = null;
         function onResize() {
             var m = window.matchMedia('(max-width: 820px)').matches;
+            isMobile = m;
             if (wasMobile === null) { wasMobile = m; return; }
             if (m !== wasMobile) {
                 wasMobile = m;
@@ -1696,6 +2025,162 @@
         }
 
         function cloneGraph(g) { return JSON.parse(JSON.stringify(g)); }
+
+        /* ============================================================
+           8. HOVER TOOLTIP — quick scan of any node (desktop only).
+           ============================================================ */
+        function showTip(nodeId, m, ev) {
+            if (isMobile || !tip) return;
+            var d = (HM.NODE_INFO || {})[nodeId];
+            var title = (d && d.title) || m.title || nodeId;
+            var what = d ? d.what : (m.sub || '');
+            tipT.textContent = title;
+            tipW.textContent = what || '';
+            tip.classList.add('is-on');
+            tip.setAttribute('aria-hidden', 'false');
+            moveTip(ev);
+        }
+        function moveTip(ev) {
+            if (isMobile || !tip || !tip.classList.contains('is-on')) return;
+            var pad = 16, tw = tip.offsetWidth, th = tip.offsetHeight;
+            var x = ev.clientX + pad, y = ev.clientY + pad;
+            if (x + tw > window.innerWidth - 8) x = ev.clientX - tw - pad;
+            if (y + th > window.innerHeight - 8) y = ev.clientY - th - pad;
+            tip.style.left = Math.max(8, x) + 'px';
+            tip.style.top = Math.max(8, y) + 'px';
+        }
+        function hideTip() {
+            if (!tip) return;
+            tip.classList.remove('is-on');
+            tip.setAttribute('aria-hidden', 'true');
+        }
+
+        /* ============================================================
+           9. ZOOM / PAN — opt-in detail on top of the auto-fit default.
+           The SVG fits-to-screen via viewBox; we layer a CSS transform
+           (scale + translate) for scroll-zoom and drag-pan. "fit"/Esc
+           resets to the default auto-fit (scale 1, no offset).
+           ============================================================ */
+        var zoom = 1, panX = 0, panY = 0;
+        var ZMIN = 1, ZMAX = 4;
+
+        function currentStage() { return viewport.querySelector('.hm-stage'); }
+        function applyTransform() {
+            var s = currentStage();
+            if (!s) return;
+            s.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + zoom + ')';
+        }
+        function resetZoom() { zoom = 1; panX = 0; panY = 0; applyTransform(); }
+        function zoomBy(factor, cx, cy) {
+            var s = currentStage();
+            if (!s) return;
+            var nz = Math.min(ZMAX, Math.max(ZMIN, zoom * factor));
+            if (nz === zoom) return;
+            // keep the point under the cursor stable while zooming
+            var rect = s.getBoundingClientRect();
+            if (cx == null) { cx = rect.left + rect.width / 2; cy = rect.top + rect.height / 2; }
+            var ox = (cx - rect.left) / zoom;   // point in pre-transform stage coords
+            var oy = (cy - rect.top) / zoom;
+            panX -= ox * (nz - zoom);
+            panY -= oy * (nz - zoom);
+            zoom = nz;
+            if (zoom <= ZMIN + 0.001) { panX = 0; panY = 0; zoom = 1; }
+            applyTransform();
+        }
+        function bindZoom() {
+            // wheel-to-zoom on the viewport
+            viewport.addEventListener('wheel', function (e) {
+                if (!currentStage()) return;
+                e.preventDefault();
+                zoomBy(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY);
+            }, { passive: false });
+
+            // drag-to-pan (only meaningful while zoomed in)
+            var dragging = false, sx = 0, sy = 0, opx = 0, opy = 0;
+            viewport.addEventListener('mousedown', function (e) {
+                var s = currentStage();
+                if (!s || e.button !== 0) return;
+                dragging = true; sx = e.clientX; sy = e.clientY; opx = panX; opy = panY;
+                s.classList.add('is-panning');
+                hideTip();
+            });
+            window.addEventListener('mousemove', function (e) {
+                if (!dragging) return;
+                panX = opx + (e.clientX - sx);
+                panY = opy + (e.clientY - sy);
+                applyTransform();
+            });
+            window.addEventListener('mouseup', function () {
+                if (!dragging) return;
+                dragging = false;
+                var s = currentStage();
+                if (s) s.classList.remove('is-panning');
+            });
+
+            // touch pinch + one-finger pan
+            var pStart = 0, pZoom = 1, tpx = 0, tpy = 0, tox = 0, toy = 0, panning = false;
+            viewport.addEventListener('touchstart', function (e) {
+                if (e.touches.length === 2) {
+                    pStart = touchDist(e.touches); pZoom = zoom;
+                } else if (e.touches.length === 1 && zoom > 1) {
+                    panning = true; tpx = e.touches[0].clientX; tpy = e.touches[0].clientY; tox = panX; toy = panY;
+                }
+            }, { passive: true });
+            viewport.addEventListener('touchmove', function (e) {
+                if (e.touches.length === 2 && pStart) {
+                    e.preventDefault();
+                    var d = touchDist(e.touches);
+                    var c = touchMid(e.touches);
+                    var target = pZoom * (d / pStart);
+                    zoomBy(target / zoom, c.x, c.y);
+                } else if (panning && e.touches.length === 1) {
+                    panX = tox + (e.touches[0].clientX - tpx);
+                    panY = toy + (e.touches[0].clientY - tpy);
+                    applyTransform();
+                }
+            }, { passive: false });
+            viewport.addEventListener('touchend', function (e) {
+                if (e.touches.length < 2) pStart = 0;
+                if (e.touches.length === 0) panning = false;
+            });
+        }
+        function touchDist(t) { var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY; return Math.hypot(dx, dy); }
+        function touchMid(t) { return { x: (t[0].clientX + t[1].clientX) / 2, y: (t[0].clientY + t[1].clientY) / 2 }; }
+
+        /* ============================================================
+           10. LEGEND collapse + ORIENTATION overlay (shown once).
+           ============================================================ */
+        function bindLegend() {
+            if (!legend || !legendHead) return;
+            legendHead.addEventListener('click', function () {
+                var collapsed = legend.classList.toggle('is-collapsed');
+                legendHead.setAttribute('aria-expanded', String(!collapsed));
+            });
+            // start collapsed on small screens to save room
+            if (isMobile) {
+                legend.classList.add('is-collapsed');
+                legendHead.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        var orient, orientGo, helpBtn;
+        function openOrient() { if (orient) orient.classList.add('is-open'); }
+        function closeOrient() {
+            if (!orient) return;
+            orient.classList.remove('is-open');
+            try { localStorage.setItem('hookmap-seen', '1'); } catch (e) {}
+        }
+        function bindOrient() {
+            orient = document.getElementById('hm-orient');
+            orientGo = document.getElementById('hm-orient-go');
+            helpBtn = document.getElementById('hm-help');
+            if (orientGo) orientGo.addEventListener('click', closeOrient);
+            if (orient) orient.addEventListener('click', function (e) { if (e.target === orient) closeOrient(); });
+            if (helpBtn) helpBtn.addEventListener('click', openOrient);
+            var seen = false;
+            try { seen = localStorage.getItem('hookmap-seen') === '1'; } catch (e) {}
+            if (!seen) openOrient();
+        }
 
         /* ============================================================
            INIT
@@ -1726,6 +2211,26 @@
             infoContent = document.getElementById('info-content');
             var infoCloseBtn = document.getElementById('info-close');
             if (infoCloseBtn) infoCloseBtn.addEventListener('click', closeInfo);
+
+            // ---- learning layer refs ----
+            isMobile = window.matchMedia('(max-width: 820px)').matches;
+            caption = document.getElementById('hm-caption');
+            tip = document.getElementById('hm-tooltip');
+            tipT = document.getElementById('hm-tooltip-t');
+            tipW = document.getElementById('hm-tooltip-w');
+            legend = document.getElementById('hm-legend');
+            legendHead = document.getElementById('hm-legend-head');
+            bindLegend();
+            bindOrient();
+            bindZoom();
+
+            // zoom buttons
+            var zin = document.getElementById('hm-zoom-in');
+            var zout = document.getElementById('hm-zoom-out');
+            var zreset = document.getElementById('hm-zoom-reset');
+            if (zin) zin.addEventListener('click', function () { zoomBy(1.25); });
+            if (zout) zout.addEventListener('click', function () { zoomBy(1 / 1.25); });
+            if (zreset) zreset.addEventListener('click', resetZoom);
 
             // click-away dismiss for info panel
             viewport.addEventListener('click', function (ev) {
