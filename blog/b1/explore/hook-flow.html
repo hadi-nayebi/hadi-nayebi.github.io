@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.2.0 -->
+<!-- Version: v3.3.0 -->
 <html lang="en">
 
 <head>
@@ -441,6 +441,33 @@
             color: var(--text-muted); background: var(--glass); border: 1px solid var(--border);
             border-radius: 999px; padding: 0.18rem 0.6rem;
         }
+        /* ---- FOR BUILDERS: the second, technical tier (v3.3.0) ----
+           A deliberately distinct block: thin top divider, faint indigo
+           wash, accent label, and a monospace body so the precise JSON
+           keys / matcher syntax read as reference, not more prose. */
+        .info-builder {
+            margin-top: 1rem; padding-top: 0.9rem;
+            border-top: 1px dashed rgba(139,92,246,0.40);
+        }
+        .info-builder-label {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+            font-weight: 800; color: var(--primary);
+            margin-bottom: 0.45rem;
+        }
+        .info-builder-label::before {
+            content: '\232C'; font-size: 0.78rem; opacity: 0.85;
+        }
+        .info-builder-body {
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+            font-size: 0.745rem; line-height: 1.62; letter-spacing: -0.01em;
+            color: #c9c6e6;
+            background: linear-gradient(160deg, rgba(99,102,241,0.10), rgba(139,92,246,0.05));
+            border: 1px solid rgba(99,102,241,0.22);
+            border-radius: 11px;
+            padding: 0.7rem 0.8rem;
+        }
+
         .info-close {
             position: absolute; top: 0.85rem; right: 0.85rem; width: 28px; height: 28px;
             border-radius: 50%; border: 1px solid var(--border); background: var(--glass);
@@ -874,7 +901,7 @@
             <div class="tool-modal-body">
                 <!-- grid view -->
                 <div id="tool-grid-view">
-                    <p class="tool-intro">Everything the agent can actually <em>do</em> in the world. The model proposes one of these each step; nothing happens until a tool runs. <span style="color:var(--accent)">&#9679;</span> needs permission &middot; <span style="color:rgba(120,200,150,0.95)">&#9679;</span> read-only. Click any tool for detail.</p>
+                    <p class="tool-intro">Everything the agent can actually <em>do</em> in the world. The model proposes one of these each step; nothing happens until a tool runs. <span style="color:var(--accent)">&#9679;</span> needs permission &middot; <span style="color:rgba(120,200,150,0.95)">&#9679;</span> read-only. Click any tool for detail.<br><br><strong style="color:var(--text-main)">The delegation ladder</strong> (worth learning): <em>TodoWrite / Task&#42;</em> track the agent&#39;s OWN work &middot; <em>Agent</em> delegates ONE side-task to a separate mind &middot; <em>Workflow</em> conducts MANY subagents at once. <strong style="color:var(--text-main)">Naming trap:</strong> the old &ldquo;Task&rdquo; tool was renamed <em>Agent</em>; today&#39;s <em>Task&#42;</em> tools are the to-do system &mdash; so &ldquo;Task&rdquo; means different things across versions.</p>
                     <div class="tool-grid" id="tool-grid"></div>
                 </div>
                 <!-- detail view -->
@@ -1168,56 +1195,63 @@
             /* ---- turn-loop stages / input (spine) ---- */
             'your-text': {
                 title: 'User Prompt', docGroup: '', docs: '',
-                what: 'The raw words you typed into the box — the request that starts a turn.',
-                when: 'The opening beat of every turn: you hit enter and this enters the loop.',
-                canDo: 'Enters the loop as the original request, ready for the prompt gate to touch it.',
-                why: 'The rough note a client emails in before anyone has cleaned it up.'
+                what: 'The raw words you typed into the box — the request that starts a turn. This is the only part of the whole loop that comes from a human; everything after it is the agent and its guardrails reacting.',
+                when: 'The opening beat of every turn: you hit enter and this enters the loop. It also fires after the agent finishes a turn and loops back to wait for your next message.',
+                canDo: 'Enters the loop as the original request, ready for the prompt gate (UserPromptExpansion, then UserPromptSubmit) to inspect, enrich, or reject it before the agent ever reads it.',
+                why: 'The rough note a client emails in before anyone has cleaned it up — a teacher\'s "draft a field-trip permission slip," a nurse\'s "summarize this intake form." Raw intent, not yet checked against any policy.',
+                builder: 'Not a hook itself — it is the payload the prompt-gate hooks act on. The text becomes the "prompt" field carried by the UserPromptSubmit hook input. Nothing here can yet allow or block; the gating happens one step later.'
             },
             'think': {
                 title: 'THINK', docGroup: '', docs: '',
-                what: 'The agent’s private reasoning — where it weighs the request and decides what to do next.',
-                when: 'Right after the submitted prompt enters, with its standing instructions loaded in.',
-                canDo: 'No checkpoint of its own; it is the deciding mind that routes work to the dispatcher.',
-                why: 'The quiet moment a consultant stares at the problem and maps the approach before moving.'
+                what: 'The agent’s private reasoning — where it weighs the request, recalls its loaded instructions, and decides the single next action. It is model inference, not code: probabilistic, not a guaranteed branch.',
+                when: 'Right after the submitted prompt clears the gate, with its standing instructions (CLAUDE.md, rule files) loaded in via InstructionsLoaded. It also re-runs every time a tool result or delegated answer returns to the dispatcher.',
+                canDo: 'No checkpoint of its own; it is the deciding mind that proposes ONE move and hands it to the dispatcher to route. It can be steered by injected context but never hard-blocked here.',
+                why: 'The quiet moment a consultant stares at the problem and maps the approach before moving — or a paralegal deciding whether to pull a case file, ask a question, or just draft the memo.',
+                builder: 'This is the "model proposes" half of the thesis. Hooks cannot fire mid-thought — they wrap the ACTIONS thinking produces (tool calls, the reply, the stop). To influence THINK you inject text earlier: UserPromptSubmit / SessionStart additionalContext, or a PostToolUse additionalContext field that lands before the next THINK.'
             },
             'dispatcher': {
                 title: 'DISPATCHER', docGroup: '', docs: '',
-                what: 'The traffic hub that routes each decision: answer, use a tool, delegate, or compact memory.',
-                when: 'The center of the turn; every branch leaves from here and returns here.',
-                canDo: 'No checkpoint itself — it is the junction the turn keeps cycling back through until done.',
-                why: 'An air-traffic controller sending each plane to the right runway and waiting for it to come back around.'
+                what: 'The traffic hub that routes each decision into one of four lanes: answer the user, use a tool, delegate to a helper, or compact memory. It is the structural junction where the deterministic machinery takes over from the model.',
+                when: 'The center of the turn; every branch leaves from here and returns here. A single turn can pass through it dozens of times — read a file, think, run a search, think, delegate, think — before it ever reaches Stop.',
+                canDo: 'No checkpoint itself — it is the junction the turn keeps cycling back through until the agent proposes a final answer and heads for the Stop gate.',
+                why: 'An air-traffic controller sending each plane to the right runway and waiting for it to come back around — a clinic coordinator routing each patient to lab, pharmacy, or checkout, one step at a time.',
+                builder: 'Conceptual, not a literal hook event. Its lanes map to where the real hooks live: the tool lane → PreToolUse / PostToolUse; the delegate lane → SubagentStart / SubagentStop; the compact lane → PreCompact / PostCompact; the answer lane → MessageDisplay then Stop. The loop is the unit hooks attach to.'
             },
             'respond': {
                 title: 'RESPOND', docGroup: '', docs: '',
-                what: 'The branch where the agent writes its reply to you.',
-                when: 'Fires from the dispatcher when the agent has something to say rather than something to do.',
-                canDo: 'Produces the reply text shown on screen, then heads toward the Stop gate.',
-                why: 'The analyst finally typing up the answer paragraph for the client.'
+                what: 'The branch where the agent stops acting and writes its reply to you — prose, code, an answer. This is the lane that leads out of the loop rather than back into it.',
+                when: 'Fires from the dispatcher when the agent has something to SAY rather than something to DO. Often the last lane of a turn, but a turn can also respond mid-way (a status update) and keep working.',
+                canDo: 'Produces the reply text, which MessageDisplay can rewrite on screen and Notification can forward elsewhere, then heads toward the Stop gate that decides whether the turn is really over.',
+                why: 'The analyst finally typing up the answer paragraph for the client — or a consultant emailing the one-page recommendation after the research is done.',
+                builder: 'The reply text is what the MessageDisplay hook receives in its "message" input; MessageDisplay\'s displayContent output changes only what is shown on screen (transcript + model history keep the original). The turn does not truly end here — the Stop hook downstream is the real exit gate.'
             },
 
             /* ---- drill pills (still get a panel if not auto-navigating) ---- */
             'tool-loop-pill': {
                 title: 'Tool Loop', docGroup: '', docs: '',
-                what: 'The collapsed room where the agent reaches out and DOES something — reads a file, runs a search, edits a document.',
-                when: 'Any time mid-turn the agent decides it needs to act on the outside world rather than just talk.',
-                canDo: 'Opens the Tool Loop drill-down: its eight checkpoints can allow, deny, ask, or rewrite an action before it runs.',
-                why: 'An expense system that checks every purchase request against policy before the card is charged.'
+                what: 'The collapsed room where the agent reaches out and DOES something — reads a file, runs a search, edits a document, fires a command. Click it to step inside its eight-checkpoint sub-flow.',
+                when: 'Any time mid-turn the agent decides it needs to act on the outside world rather than just talk. The single busiest room: most turns pass through it many times.',
+                canDo: 'Opens the Tool Loop drill-down. Its checkpoints — PreToolUse, PermissionRequest, PermissionDenied, PostToolUse, and the rest — can allow, deny, ask, defer, or rewrite an action before it runs, and inspect the result after.',
+                why: 'An expense system that checks every purchase request against policy before the card is charged — and files the receipt after. Each tool call is one purchase; the gate decides if it clears.',
+                builder: 'This room is where the only hooks that can change a tool call live: PreToolUse runs BEFORE execution (it can deny/rewrite); the Post* hooks run AFTER (they can only halt the loop, not undo the act). The split — pre = prevent, post = react — is the single most important thing a hook author learns here.'
             },
             'delegation-pill': {
                 title: 'Delegation', docGroup: '', docs: '',
-                what: 'The collapsed room where the agent hands part of the job to helper agents and tracks the tasks it assigns.',
-                when: 'Mid-turn, when the work is big enough that the agent spins up assistants instead of doing it all itself.',
-                canDo: 'Opens the Delegation drill-down: its five checkpoints can block a helper from finishing or a task from being marked done.',
-                why: 'A project manager assigning research to two analysts and refusing to close a task until the work passes review.'
+                what: 'The collapsed room where the agent hands part of the job to helper agents AND tracks the tasks it assigns. Two different mechanisms share this room: delegating to another mind, and bookkeeping its own to-do list.',
+                when: 'Mid-turn, when the work is big enough that the agent spins up assistants (subagents) or breaks the job into tracked tasks instead of doing it all in one stream.',
+                canDo: 'Opens the Delegation drill-down: its five checkpoints can block a helper from finishing half-done, refuse to open a malformed task, or refuse to close a task whose criteria are unmet.',
+                why: 'A project manager assigning research to two analysts and refusing to close a task until the work passes review — while also keeping the master checklist honest.',
+                builder: 'Teaches the subagent-vs-task distinction in code: Subagent* hooks (matched by agent_type) govern a SEPARATE mind with its own context window; Task* hooks (matched by task_id) govern the agent\'s OWN tracked checklist. SubagentStop and TaskCompleted are the two "refuse to finish" gates; both block with decision:"block".'
             },
 
             /* ---- portal chip ---- */
             'back-to-turn': {
                 title: '↑ back to the turn', docGroup: '', docs: '',
-                what: 'The exit chip that carries this room’s result back up to the dispatcher on the main turn.',
-                when: 'The last beat of a drill-down, once its checkpoints have done their work.',
-                canDo: 'Returns you to the turn-loop view — the result rejoins the dispatcher for the next round of thinking.',
-                why: 'The cleared paperwork handed back to the desk that requested it.'
+                what: 'The exit chip that carries this room’s result back up to the dispatcher on the main turn. It is a navigation device for reading the map, not a step the agent runs.',
+                when: 'The last beat of a drill-down, once its checkpoints have done their work and produced a result to return.',
+                canDo: 'Returns you to the turn-loop view — the result rejoins the dispatcher, which feeds it into the next round of THINK.',
+                why: 'The cleared paperwork handed back to the desk that requested it, so the next decision can be made with the answer in hand.',
+                builder: 'A diagram portal, not a hook. In real execution the "return" is just the tool/subagent result flowing back into the model\'s context as the input to the next inference — there is no ReturnToTurn event to subscribe to.'
             },
 
             /* ============================================================
@@ -1227,267 +1261,303 @@
             /* ---- Session lifecycle ---- */
             'sessionstart': {
                 title: 'SessionStart', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#sessionstart',
-                what: 'The opening bell: it fires the instant a new conversation begins or a paused one resumes.',
-                when: 'First thing in the session, before any prompt is typed or any turn happens.',
-                canDo: 'Observe-only — it cannot block, but it can quietly load starting context the agent should know.',
-                why: 'A doctor pulling up the patient’s chart and history the moment the appointment starts, before a word is spoken.'
+                what: 'The opening bell: it fires the instant a new conversation begins or a paused one resumes. The one reliable place to seed the agent with knowledge before it has read a single word from you.',
+                when: 'First thing in the session, before any prompt is typed or any turn happens. It also fires on a resume, a /clear, and right after an auto-compact — so it can re-seed context that compaction dropped.',
+                canDo: 'Cannot block the session, but it can INJECT starting context the agent will treat as known — environment status, project state, house rules — plus set the session title and tell the agent to re-scan its skills.',
+                why: 'A doctor pulling up the patient’s chart and history the moment the appointment starts, before a word is spoken — or an onboarding packet handed to a temp before their first task.',
+                builder: 'Matcher targets the source field ("startup" | "resume" | "clear" | "compact"), so you can seed differently on a fresh start vs a post-compact resume. Output: plain stdout OR hookSpecificOutput.additionalContext is injected into the first prompt; sessionTitle names the session; reloadSkills:true rescans skills; watchPaths arms file watchers. Exit 2 here is NON-blocking (stderr just goes to the debug log).'
             },
             'setup': {
                 title: 'Setup', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#setup',
-                what: 'A one-time provisioning step that runs ONLY when the agent is started in --init, --init-only, or --maintenance mode — not a normal chat boot.',
-                when: 'On the dedicated setup path, distinct from SessionStart: it does NOT fire on every boot, so it is drawn as a dashed off-path branch.',
-                canDo: 'Observe-only — it provisions the environment but does not block the conversation.',
-                why: 'The building super doing a one-time walkthrough to switch the lights and HVAC on before tenants ever arrive — not something that happens each morning.'
+                what: 'A one-time provisioning step that runs ONLY when the agent is started in an init or maintenance mode — not a normal chat boot. It is for preparing the workspace, not for any single turn.',
+                when: 'On the dedicated setup path, distinct from SessionStart: it does NOT fire on every boot, so it is drawn as a dashed off-path branch. Think "first-run install," not "every morning."',
+                canDo: 'Provisions the environment (installs dependencies, writes config) and can report what it did back to the agent. It does not gate the conversation.',
+                why: 'The building super doing a one-time walkthrough to switch the lights and HVAC on before tenants ever arrive — not something that happens each morning.',
+                builder: 'Matcher targets the trigger field ("init" | "maintenance"). Output is additionalContext only — no blocking semantics. Use CLAUDE_ENV_FILE to append export VAR=value lines so the environment persists into later Bash calls. Exit 2 is non-blocking.'
             },
             'sessionend': {
                 title: 'SessionEnd', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#sessionend',
-                what: 'The closing bell: it fires once when the whole conversation terminates.',
-                when: 'The final beat of the session, after the last turn is finished.',
-                canDo: 'Observe-only — it cannot block, but it can save a summary or clean things up.',
-                why: 'A project lead writing the closeout note and filing the paperwork the moment a case is officially closed.'
+                what: 'The closing bell: it fires once when the whole conversation terminates — by /clear, logout, or the user quitting. Your last chance to run cleanup or persist a summary.',
+                when: 'The final beat of the session, after the last turn is finished. It is terminal: nothing the agent does afterward can be gated, because there is no afterward.',
+                canDo: 'Observe-only — it cannot block the shutdown, but it can save a transcript summary, flush logs, or tidy temp files on the way out.',
+                why: 'A project lead writing the closeout note and filing the paperwork the moment a case is officially closed — the work is already done; this just records and cleans.',
+                builder: 'Matcher targets the exit reason ("clear" | "resume" | "logout" | "prompt_input_exit"). No decision control of any kind — its return value cannot keep the session alive. Exit 2 is non-blocking. Pair it with SessionStart to carry a hand-written summary across a /clear.'
             },
             'configchange': {
                 title: 'ConfigChange', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#configchange',
-                what: 'A watcher that notices when a settings file changes in the middle of a live session.',
-                when: 'A side-branch off the dispatcher, firing only when configuration is edited mid-conversation.',
-                canDo: 'Can BLOCK — it can reject a settings change it considers unsafe.',
-                why: 'A compliance officer who can veto a rule change someone tries to push through while a deal is still in progress.'
+                what: 'A watcher that notices when a settings file changes in the middle of a live session — and unlike most watchers, this one has teeth: it can veto the change.',
+                when: 'A side-branch off the dispatcher, firing only when configuration is edited mid-conversation (your settings, the project\'s settings, or org policy).',
+                canDo: 'Can BLOCK — it can reject a settings change it considers unsafe, so a mid-session edit cannot quietly loosen the guardrails the agent is running under.',
+                why: 'A compliance officer who can veto a rule change someone tries to push through while a deal is still in progress.',
+                builder: 'Matcher targets the config source ("user_settings" | "project_settings" | "policy_settings"). Blocks via top-level decision:"block" + reason, OR exit code 2 (which blocks the change and continues the session). This is one of the few "observe-ish" lifecycle events that is actually enforcing.'
             },
 
             /* ---- Prompt gate ---- */
             'userpromptexpansion': {
                 title: 'UserPromptExpansion', docGroup: 'Prompt', docs: 'https://code.claude.com/docs/en/hooks#userpromptexpansion',
-                what: 'The checkpoint that fires when a shorthand command you typed unfolds into a full request.',
-                when: 'In the prompt gate, before the submitted-prompt checkpoint — the moment a typed shortcut expands.',
-                canDo: 'Can BLOCK — it can stop a shortcut from expanding into something unwanted.',
-                why: 'An assistant who refuses to auto-expand the cryptic abbreviation in your note into the wrong full instruction.'
+                what: 'The checkpoint that fires when a shorthand command you typed (a slash-command or skill trigger) unfolds into its full underlying request. It sees the expansion before the agent does.',
+                when: 'In the prompt gate, BEFORE the submitted-prompt checkpoint — the moment a typed shortcut is being turned into the longer instruction it stands for.',
+                canDo: 'Can BLOCK — it can stop a shortcut from expanding into something unwanted, and can attach extra context to the expansion.',
+                why: 'An assistant who refuses to auto-expand the cryptic abbreviation in your note into the wrong full instruction — catching "EOD" meaning end-of-day, not end-of-deal, before it reaches anyone.',
+                builder: 'Matcher targets the command name. Input carries expansion_type, command_name, command_args, command_source, prompt. Blocks via top-level decision:"block" + reason, or exit 2 (blocks, shows stderr to user). Add context via hookSpecificOutput.additionalContext. Fires only for commands that expand — a plain typed prompt skips straight to UserPromptSubmit.'
             },
             'userpromptsubmit': {
                 title: 'UserPromptSubmit', docGroup: 'Prompt', docs: 'https://code.claude.com/docs/en/hooks#userpromptsubmit',
-                what: 'The checkpoint that fires right as your finished prompt is submitted, just before the agent reads it.',
-                when: 'After any expansion, the last gate before the request enters the agent’s thinking.',
-                canDo: 'Can BLOCK, INJECT, or REWRITE — it can add context, scrub the request, or stop it cold.',
-                why: 'An editor who appends the house style guide to every assignment before it reaches the writer — or kills an off-policy one.'
+                what: 'The checkpoint that fires right as your finished prompt is submitted, just before the agent reads it. The most powerful injection point in the whole map: it can edit reality before the model perceives it.',
+                when: 'After any expansion, the LAST gate before the request enters the agent’s thinking. Fires once per user message, every turn.',
+                canDo: 'Can BLOCK the prompt, INJECT extra context the agent treats as part of the request, or scrub it — appending standing rules, current state, or a policy reminder to every message automatically.',
+                why: 'An editor who staples the house style guide to every assignment before it reaches the writer — or kills an off-policy one. This is how a team makes the agent "always remember" something without retyping it.',
+                builder: 'No matcher — always fires. Input carries the raw prompt string. Inject via plain stdout OR hookSpecificOutput.additionalContext; block via decision:"block" + reason (or exit 2, which shows stderr to the user). suppressOriginalPrompt drops your text in favor of the hook\'s. Short timeout — 30s, not the usual 600s — so keep this hook fast.'
             },
 
             /* ---- Cognition side-hooks ---- */
             'instructionsloaded': {
                 title: 'InstructionsLoaded', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#instructionsloaded',
-                what: 'A checkpoint that fires when the agent’s standing rule-books (its CLAUDE.md and rule files) are read in.',
-                when: 'Feeds into the THINK stage, supplying the agent its persistent instructions before it decides.',
-                canDo: 'Observe-only — it cannot block, but it signals exactly which guidance was loaded.',
-                why: 'A new hire being handed the firm’s policy binder before taking on their first matter.'
+                what: 'A checkpoint that fires when the agent’s standing rule-books — its CLAUDE.md files and rule files — are read into memory. It tells you exactly which guidance is in force, and from where.',
+                when: 'Feeds into the THINK stage, supplying the agent its persistent instructions before it decides. Fires at session start and again whenever a nested rule file is pulled in (e.g. you enter a subfolder with its own CLAUDE.md).',
+                canDo: 'Observe-only — it cannot block, but it signals precisely which file loaded and why, so you can audit or log the agent\'s effective rule-set.',
+                why: 'A new hire being handed the firm’s policy binder before taking on their first matter — and a records clerk noting which edition of the binder it was.',
+                builder: 'Matcher targets the load reason ("session_start" | "path_glob_match" | "nested_traversal"). Input carries file_path, memory_type, load_reason, and the trigger/parent file paths. No decision control — purely a signal. Useful for verifying which CLAUDE.md actually won when several could apply.'
             },
             'messagedisplay': {
                 title: 'MessageDisplay', docGroup: 'User Interaction', docs: 'https://code.claude.com/docs/en/hooks#messagedisplay',
-                what: 'A checkpoint that fires while the agent’s reply is being shown on screen, able to change what you SEE.',
-                when: 'On the RESPOND branch, as the message is rendered to you.',
-                canDo: 'Can rewrite what you SEE on screen (display only, via displayContent) — the transcript and what the model sees are unchanged.',
-                why: 'A live-captioning service that cleans up the on-screen subtitles for the audience without altering the official recording.'
+                what: 'A checkpoint that fires while the agent’s reply is being shown on screen, able to change what you SEE — without touching what was actually said.',
+                when: 'On the RESPOND branch, as the message is rendered to you. It is asynchronous and display-layer only, so it never alters the turn\'s logic.',
+                canDo: 'Can rewrite the on-screen text via displayContent — but the transcript and the history the model sees keep the ORIGINAL. A presentation filter, not a censor of record.',
+                why: 'A live-captioning service that cleans up the on-screen subtitles for the audience without altering the official recording — redacting a token, prettifying a path, localizing a phrase.',
+                builder: 'No matcher; always fires on display. Input carries the assistant message. Output: hookSpecificOutput.displayContent replaces ONLY the rendered text — a deliberate split from the transcript so what the model later reads is untouched. Very short timeout (10s). Cannot block the turn.'
             },
             'notification': {
                 title: 'Notification', docGroup: 'User Interaction', docs: 'https://code.claude.com/docs/en/hooks#notification',
-                what: 'A checkpoint that fires when the agent sends you an alert — for example, that it needs your attention.',
-                when: 'On the RESPOND branch, whenever the agent raises a notification.',
-                canDo: 'Observe-only — it cannot block, but it can reroute the alert (to a phone, a chat channel, etc.).',
-                why: 'A paging system that forwards "the analysis is ready" straight to a manager’s text messages.'
+                what: 'A checkpoint that fires when the agent raises an alert — that it needs your attention, that a permission prompt is waiting, that a long job is done.',
+                when: 'On the RESPOND branch, whenever the agent emits a notification. Asynchronous — it rides alongside the turn rather than gating it.',
+                canDo: 'Observe-only on the turn, but it can REROUTE the alert anywhere: a phone push, a Slack channel, a desktop toast — so you can step away and still be reached.',
+                why: 'A paging system that forwards "the analysis is ready" straight to a manager’s text messages — or routes a permission request to whoever is on call.',
+                builder: 'Matcher targets notification_type (e.g. "permission_prompt", "auth_success"). Input carries message + notification_type. No decision control — it cannot suppress the underlying event, only react to it (typically by shelling out to a paging service).'
             },
             'precompact': {
                 title: 'PreCompact', docGroup: 'Context/Compaction', docs: 'https://code.claude.com/docs/en/hooks#precompact',
-                what: 'The checkpoint that fires just before the agent compresses its memory.',
-                when: 'At the top of the memory-squeeze branch, before any context is trimmed.',
-                canDo: 'Can BLOCK — it can stop or steer the compression, protecting notes that must not be lost.',
-                why: 'An archivist who reviews which case files are about to be summarized and pulls the ones that must stay verbatim.'
+                what: 'The checkpoint that fires just before the agent compresses its own memory to make room. The one chance to influence WHAT survives the squeeze.',
+                when: 'At the top of the memory-squeeze branch, before any context is trimmed — triggered either manually (you ask) or automatically (the window fills).',
+                canDo: 'Can BLOCK — it can stop or steer the compression, protecting notes that must not be lost, or inject instructions about what the summary should preserve.',
+                why: 'An archivist who reviews which case files are about to be summarized and pulls the ones that must stay verbatim — a contract clause, a patient allergy, a key decision.',
+                builder: 'Matcher targets the trigger ("manual" | "auto"), so you can guard auto-compaction harder than a deliberate one. Blocks via top-level decision:"block" + reason, or exit 2 (blocks, session continues). This is the structural answer to "the agent forgot what we agreed" — codify the must-keeps here.'
             },
             'postcompact': {
                 title: 'PostCompact', docGroup: 'Context/Compaction', docs: 'https://code.claude.com/docs/en/hooks#postcompact',
-                what: 'The checkpoint that fires right after the memory squeeze finishes.',
-                when: 'At the bottom of the squeeze branch, as control returns to the dispatcher.',
-                canDo: 'Observe-only — it cannot block, but it can re-inject a fresh summary of what now matters.',
-                why: 'An assistant handing the consultant a clean one-pager right after the old files were boxed up.'
+                what: 'The checkpoint that fires right after the memory squeeze finishes — when the agent is working from a freshly condensed view and may have lost detail.',
+                when: 'At the bottom of the squeeze branch, as control returns to the dispatcher with a slimmer context.',
+                canDo: 'Observe-only on the compaction itself — but it can re-inject a fresh summary of what now matters, refilling anything the squeeze flattened too far.',
+                why: 'An assistant handing the consultant a clean one-pager right after the old files were boxed up, so nothing critical is missing from the desk.',
+                builder: 'Matcher targets the trigger ("manual" | "auto"). No blocking — the compaction already happened. Re-seed via stdout / additionalContext, the natural pair to PreCompact: Pre decides what to protect, Post restores what should still be top-of-mind. Note: SessionStart also fires with source:"compact" on auto-compaction.'
             },
             'stop': {
                 title: 'Stop', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#stop',
-                what: 'The hero checkpoint that fires when the agent thinks it is finished responding.',
-                when: 'At the exit of the turn — the gate between "I’m done" and actually leaving.',
-                canDo: 'Can BLOCK — it can refuse the stop and send the agent back to keep going until the work is truly done.',
-                why: 'A senior partner reading a "final" draft and sending it back: "this isn’t finished — keep working."'
+                what: 'The hero checkpoint that fires when the agent thinks it is finished responding. The single most important enforcement point: it decides whether "done" is really done.',
+                when: 'At the exit of the turn — the gate between "I’m done" and actually leaving. Fires once the agent has produced what it considers a final answer.',
+                canDo: 'Can BLOCK — it can refuse the stop and send the agent back into the loop to keep going until the work meets a standard the agent itself cannot waive.',
+                why: 'A senior partner reading a "final" draft and sending it back: "this isn’t finished — keep working." This is how "don\'t stop until all tests pass" becomes a guarantee, not a hope.',
+                builder: 'No matcher — always fires at turn end. Block via top-level decision:"block" + reason (the reason is fed back as the instruction to continue), or exit 2 (blocks, session continues). Guard against loops: the input includes stop_hook_active so your hook can tell it is being re-invoked and avoid blocking forever.'
             },
             'stopfailure': {
                 title: 'StopFailure', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#stopfailure',
-                what: 'The sibling of Stop that fires when the turn ends badly — because of a system or service error, not a clean finish.',
-                when: 'At the turn exit, on the failure path instead of the clean-stop path.',
-                canDo: 'Observe-only — it records the dirty exit but cannot send the agent back.',
-                why: 'An incident log that notes a meeting was cut off by a power outage rather than a proper wrap-up.'
+                what: 'The sibling of Stop that fires when the turn ends BADLY — cut off by a system or service error, a rate limit, an auth failure — rather than a clean finish.',
+                when: 'At the turn exit, on the failure path instead of the clean-stop path. The turn is already broken; this just observes the wreckage.',
+                canDo: 'Observe-only — it records the dirty exit (and which kind) but cannot send the agent back, because there is no healthy state to return to.',
+                why: 'An incident log that notes a meeting was cut off by a power outage rather than a proper wrap-up — useful for alerting and retries, not for rescuing the turn.',
+                builder: 'Matcher targets the error type ("rate_limit" | "authentication_failed" | …). Input adds error_type + error_message. Uniquely, its output AND exit code are IGNORED — you genuinely cannot block here. Wire it to alerting / backoff logic, not control flow.'
             },
 
             /* ---- Tool loop (drill 1) ---- */
             'tool-call-in': {
                 title: 'TOOL CALL IN', docGroup: '', docs: '',
-                what: 'The arrival point where a requested action enters the Tool Loop to be checked and run.',
-                when: 'The first beat of the Tool Loop, handed in from the dispatcher.',
-                canDo: 'Passes the proposed action to the gatekeeper.',
-                why: 'The purchase request landing in the approvals inbox.'
+                what: 'The arrival point where a requested action — read this file, run this command, edit this doc — enters the Tool Loop to be checked and run. It carries the tool name and the exact arguments the model chose.',
+                when: 'The first beat of the Tool Loop, handed in from the dispatcher the instant THINK proposes a concrete action.',
+                canDo: 'Passes the proposed action, with its arguments, to the gatekeeper (PreToolUse) — the first place anything can be allowed, denied, or rewritten.',
+                why: 'The purchase request landing in the approvals inbox — itemized and ready for review, but not yet charged to anything.',
+                builder: 'Not a hook — it is the shape of the data the tool hooks receive: tool_name (a string the matcher tests) plus tool_input (a dict of the arguments). Everything PreToolUse can do, it does by reading and rewriting this payload.'
             },
             'pretooluse': {
                 title: 'PreToolUse', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#pretooluse',
-                what: 'The gatekeeper checkpoint that fires before any action actually runs.',
-                when: 'Right at the top of the Tool Loop, before the tool runs and before permission branches.',
-                canDo: 'Can ALLOW, DENY, ASK, DEFER, or REWRITE the action before it executes — an allow can bypass the permission prompt entirely.',
-                why: 'A manager who approves, rejects, or rewrites a wire-transfer request before the bank ever sees it.'
+                what: 'The gatekeeper checkpoint that fires BEFORE any action runs — the single most capable hook in the system. It is the only place a tool call can be stopped or changed before it touches anything.',
+                when: 'Right at the top of the Tool Loop, before the tool executes and before any permission branch. Fires on every single tool call the agent makes.',
+                canDo: 'Can ALLOW (skipping the permission prompt), DENY, ASK, DEFER, or REWRITE the arguments before execution — e.g. silently scoping a command, redacting a path, or vetoing a dangerous edit.',
+                why: 'A manager who approves, rejects, or rewrites a wire-transfer request before the bank ever sees it — and can pre-clear routine ones so no one is bothered.',
+                builder: 'Matcher targets tool_name (exact, "Edit|Write", or regex like "mcp__.*"); narrow further per-handler with if:"Bash(rm *)". Output: hookSpecificOutput.permissionDecision = "allow"|"deny"|"ask"|"defer" + permissionDecisionReason; rewrite args via hookSpecificOutput.updatedInput. Exit 2 = hard deny, stderr shown to user. This is where "prevent" lives — Post* hooks can only "react."'
             },
             'permissionrequest': {
                 title: 'PermissionRequest', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#permissionrequest',
-                what: 'A checkpoint that fires when an action needs explicit sign-off and a permission prompt appears.',
-                when: 'On the ask/defer side-branch off the gatekeeper, after PreToolUse decides it needs approval.',
-                canDo: 'Can BLOCK — it can auto-decide the permission dialog instead of waiting on a human.',
-                why: 'A spending limit that automatically pops an approval request to a director when a cost crosses a threshold.'
+                what: 'A checkpoint that fires when an action needs explicit sign-off and a permission prompt would appear. It can answer the prompt programmatically instead of waiting on a person.',
+                when: 'On the ask/defer side-branch off the gatekeeper, after PreToolUse (or a permission rule) decides this call needs approval.',
+                canDo: 'Can ALLOW or DENY the request automatically — and on allow, REWRITE the input or even install a standing rule so the same kind of call is auto-cleared next time.',
+                why: 'A spending limit that auto-approves anything under $50 and only pages a director above it — turning a constant stream of prompts into a policy that runs itself.',
+                builder: 'Matcher targets tool_name. Output: hookSpecificOutput.decision = { behavior:"allow"|"deny", updatedInput:{…}, applyRule:"Edit(*.ts)" } — applyRule is the powerful bit, it writes a permission rule to suppress FUTURE prompts of that shape. Exit 2 blocks and shows stderr. Distinct from PreToolUse: this fires only on the permission path.'
             },
             'permissiondenied': {
                 title: 'PermissionDenied', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#permissiondenied',
-                what: 'A checkpoint that fires when an action is turned down specifically by the AUTO-MODE permission classifier (not every denial path).',
-                when: 'On the same side-branch, right after the auto-mode classifier refuses a permission.',
-                canDo: 'Can SET RETRY — it can tell the agent to try a different, allowed approach instead of giving up.',
-                why: 'An auto-approval policy that, when it rejects a booking, suggests an approved alternative vendor instead of a flat no.'
+                what: 'A checkpoint that fires when an action is turned down by the permission system. Its job is recovery, not refusal: it decides whether the agent gets a second chance.',
+                when: 'On the same side-branch, right after a permission is refused — before the agent gives up and reports failure.',
+                canDo: 'Can SET RETRY — telling the agent it may try a different, allowed approach instead of treating the denial as a dead end.',
+                why: 'An auto-approval policy that, when it rejects a booking, suggests an approved alternative vendor instead of a flat no — keeping the work moving down a permitted path.',
+                builder: 'Matcher targets tool_name. Output: hookSpecificOutput.retry = true lets the model re-attempt with a different call; omit it and the denial stands. A small but pointed hook — it converts a hard wall into a redirect, which is often the difference between a stuck agent and a productive one.'
             },
             'tool-runs': {
                 title: 'TOOL RUNS', docGroup: '', docs: '',
-                what: 'The moment the approved action actually executes — the file is read, the search runs, the edit happens.',
-                when: 'The middle of the Tool Loop, after the gatekeeper allows it.',
-                canDo: 'Runs the tool and produces a result. Once this runs, the result already exists — the post-run hooks cannot undo it.',
-                why: 'The wire transfer actually clearing after approval.'
+                what: 'The moment the approved action actually executes — the file is read, the search runs, the edit lands, the command fires. The point of no return: after this, the effect on the world is real.',
+                when: 'The middle of the Tool Loop, after the gatekeeper allows it and any permission is cleared.',
+                canDo: 'Runs the tool and produces a result (or an error). Once this happens the effect EXISTS — every downstream hook can react to it but none can undo it.',
+                why: 'The wire transfer actually clearing after approval — the money has moved; from here on you are reviewing, not preventing.',
+                builder: 'Not a hook — the execution boundary itself, and the reason the pre/post split matters. The tool_response that the Post* hooks receive is generated here. The architectural lesson: if you need to PREVENT something, it must be a PreToolUse decision; a PostToolUse "block" only stops what comes next.'
             },
             'posttooluse': {
                 title: 'PostToolUse', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#posttooluse',
-                what: 'The checkpoint that fires after an action finishes SUCCESSFULLY — the tool has already run.',
-                when: 'On the success branch after the tool runs, before the result heads back to the dispatcher.',
-                canDo: 'Observe-only on the result; the decision can halt the agent’s next step (not undo the tool). The tool already ran — its output stands; a "block" only stops the agentic loop from continuing.',
-                why: 'A QA reviewer who reads a finished report and can halt the project before the next step — but cannot un-print the report that already came off the press.'
+                what: 'The checkpoint that fires after an action finishes SUCCESSFULLY — the tool has already run and its output exists. The place to inspect, validate, or react to a real result.',
+                when: 'On the success branch after the tool runs, before the result heads back to the dispatcher to feed the next THINK.',
+                canDo: 'Reads the result and can INJECT context for the next step (e.g. "that file is now formatted") or HALT the agentic loop — but it cannot undo the tool. A "block" stops what comes next; the output still stands.',
+                why: 'A QA reviewer who reads a finished report and can halt the project before the next step — but cannot un-print the report that already came off the press. (Auto-running a linter after every Edit lives here.)',
+                builder: 'Matcher targets tool_name. Input now includes tool_response. Output: top-level decision:"block" + reason halts the loop; hookSpecificOutput.additionalContext feeds text into the next inference. Exit 2 is blocking here but the tool effect is permanent. Classic use: run formatters/tests on the file that was just edited and block if they fail.'
             },
             'posttoolusefailure': {
                 title: 'PostToolUseFailure', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#posttoolusefailure',
-                what: 'The checkpoint that fires after an action FAILS with an error — the tool has already failed.',
-                when: 'On the error branch after the tool runs, instead of the success branch.',
-                canDo: 'Observe-only on the error; the decision can halt the agent’s next step (not undo the failure). The failure already happened — a "block" only stops the agentic loop from continuing.',
-                why: 'An incident desk that sees a payment already bounced: it can pause the workflow and decide what happens next, but it cannot un-bounce the payment.'
+                what: 'The checkpoint that fires after an action FAILS with an error — the tool already tried and threw. The dedicated error lane, separate from the success lane.',
+                when: 'On the error branch after the tool runs, instead of the success branch. Only one of PostToolUse / PostToolUseFailure fires per call.',
+                canDo: 'Reads the error and can inject guidance for recovery or HALT the loop — but the failure already happened; a "block" only stops the agent\'s next move.',
+                why: 'An incident desk that sees a payment already bounced: it can pause the workflow, log the cause, and shape the retry — but it cannot un-bounce the payment.',
+                builder: 'Matcher targets tool_name; input carries the failing tool_response. Same output surface as PostToolUse (decision:"block" + reason, additionalContext). Handling failures on their own event lets you give the model a tailored "here is how to recover" note rather than letting a raw error confuse the next THINK.'
             },
             'posttoolbatch': {
                 title: 'PostToolBatch', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#posttoolbatch',
-                what: 'The checkpoint that fires after a whole group of parallel actions all finish.',
-                when: 'On the parallel-batch branch, once every action in the bundle has resolved.',
-                canDo: 'Reviews the batch as a set; can halt the agent’s next round of thinking until the group is checked together (the actions themselves already ran).',
-                why: 'An auditor who waits for all ten invoices to clear, then reviews them as a set before letting the next stage begin.'
+                what: 'The checkpoint that fires after a whole GROUP of parallel actions all finish — the set-level review that single-call hooks cannot give you.',
+                when: 'On the parallel-batch branch, once every action in a bundle the agent fired together has resolved.',
+                canDo: 'Reviews the batch as a set and can HALT the next round of thinking until the group is checked together (the individual actions already ran).',
+                why: 'An auditor who waits for all ten invoices to clear, then reviews them as a SET — catching a pattern (three to the same vendor) that no single invoice would reveal.',
+                builder: 'No matcher — always fires after a parallel batch. Output: top-level decision:"block" + reason. Exit 2 blocks and continues the session. Fires IN ADDITION to the per-call Post* hooks, so use it for cross-call invariants ("no two of these may write the same file") rather than per-tool checks.'
             },
             'elicitation': {
                 title: 'Elicitation', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#elicitation',
-                what: 'A checkpoint that fires when an outside connected (MCP) tool pauses to ask the user for input mid-action.',
-                when: 'In the MCP-pause sub-cluster off the running tool, when an external service needs a human answer.',
-                canDo: 'Can ACCEPT, DECLINE, or CANCEL the request (and supply content) — not a simple binary block.',
-                why: 'A booking site pausing to ask "aisle or window?" — and an assistant who can answer it, decline it, or cancel the whole prompt for you.'
+                what: 'A checkpoint that fires when an outside connected (MCP) tool pauses mid-action to ask the user for input — a form, a confirmation, a choice the external service needs.',
+                when: 'In the MCP-pause sub-cluster off the running tool, when a third-party server hits a step it cannot complete without a human answer.',
+                canDo: 'Can ACCEPT (and SUPPLY the answer), DECLINE, or CANCEL the whole request — richer than a binary block, because it can fill the form on the user\'s behalf.',
+                why: 'A booking site pausing to ask "aisle or window?" — and an assistant who can answer it, decline it, or cancel the prompt entirely so you are never interrupted.',
+                builder: 'Matcher targets the MCP server name. Output: hookSpecificOutput.action = "accept"|"decline"|"cancel", with content:{ field:value } supplying form answers on accept. Exit 2 blocks. This is how you keep MCP-driven flows non-interactive — answer routine elicitations from policy instead of pestering the user.'
             },
             'elicitationresult': {
                 title: 'ElicitationResult', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#elicitationresult',
-                what: 'A checkpoint that fires after the elicitation question is answered (by the user or a stand-in).',
-                when: 'In the same MCP-pause cluster, right after the elicitation is answered.',
-                canDo: 'Can ACCEPT, DECLINE, or CANCEL — it can inspect or override the answer (with content) before the tool continues.',
-                why: 'A supervisor double-checking the "window seat" reply — confirming it, overriding it, or scrapping the request — before it locks into the reservation.'
+                what: 'A checkpoint that fires after the elicitation question has been answered — by the user or by a stand-in hook. The verification step on the answer before it locks in.',
+                when: 'In the same MCP-pause cluster, right after the elicitation is answered, before the external tool resumes with that answer.',
+                canDo: 'Can ACCEPT, DECLINE, or CANCEL — inspecting or OVERRIDING the answer (with replacement content) before the tool continues.',
+                why: 'A supervisor double-checking the "window seat" reply — confirming it, correcting it, or scrapping the request — before it is committed to the reservation.',
+                builder: 'Matcher targets the MCP server name. Same output shape as Elicitation: hookSpecificOutput.action + content, where content here OVERRIDES the submitted values. The pair Elicitation→ElicitationResult lets you both pre-fill and post-validate a third-party form, end to end.'
             },
 
             /* ---- Delegation (drill 2) ---- */
             'dispatch-in': {
                 title: 'DISPATCH IN', docGroup: '', docs: '',
-                what: 'The arrival point where a delegated piece of work enters the Delegation room.',
-                when: 'The first beat of the Delegation room, handed in from the dispatcher.',
-                canDo: 'Routes the handed-off work into the delegation lanes.',
-                why: 'The sub-assignment landing on the team coordinator’s desk.'
+                what: 'The arrival point where delegated work enters the Delegation room. Two different kinds split here: spinning up a SUBAGENT (another mind) versus opening a TASK (an item on the agent\'s own tracked list).',
+                when: 'The first beat of the Delegation room, handed in from the dispatcher when the agent decides to delegate or to track structured work.',
+                canDo: 'Routes the handed-off work into the right lane — the subagent lane (Subagent* hooks) or the task lane (Task* hooks).',
+                why: 'The sub-assignment landing on the team coordinator’s desk — who must decide: give it to a person, or just add it to the project tracker?',
+                builder: 'Not a hook — but it marks the fork that confuses everyone. Subagent lane = a separate context window, governed by Subagent* hooks matched on agent_type. Task lane = this agent\'s own checklist, governed by Task* hooks matched on task_id. Different minds vs. own bookkeeping.'
             },
             'subagentstart': {
                 title: 'SubagentStart', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#subagentstart',
-                what: 'A checkpoint that fires when a helper agent is spun up to handle part of the job.',
-                when: 'At the top of the subagent lane, as the assistant is launched.',
-                canDo: 'Observe-only — it cannot block, but it can hand the helper its starting brief.',
-                why: 'A manager briefing a freshly assigned analyst on the scope before they begin.'
+                what: 'A checkpoint that fires when a SUBAGENT — a separate helper with its OWN fresh context window and its own tools — is spun up to handle a self-contained piece of the job.',
+                when: 'At the top of the subagent lane, as the helper is launched (via the Agent tool, formerly named "Task"). One fire per subagent.',
+                canDo: 'Observe-only — it cannot block, but it can hand the helper its starting brief: scope, constraints, what "done" looks like, what NOT to touch.',
+                why: 'A manager briefing a freshly assigned analyst on the scope before they begin — the analyst goes off and works independently, then comes back with one answer.',
+                builder: 'Matcher targets agent_type (e.g. "Explore", or a custom subagent name) — so different helper roles can get different briefings. Input carries agent_id + agent_type. No decision control; inject the brief via additionalContext. Contrast TaskCreated, which governs your OWN list, not another mind.'
             },
             'subagentstop': {
                 title: 'SubagentStop', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#subagentstop',
-                what: 'A checkpoint that fires when a helper agent thinks it has finished its piece.',
-                when: 'At the end of the subagent lane, before the helper’s result returns to the turn.',
-                canDo: 'Can BLOCK — it can reject a half-done piece and send the helper back to keep working.',
-                why: 'A reviewer refusing an analyst’s draft section until the sources are actually cited.'
+                what: 'A checkpoint that fires when a subagent thinks it has finished its piece — the quality gate on a delegated mind\'s work before its single result returns to the main turn.',
+                when: 'At the end of the subagent lane, before the helper’s answer is folded back into the parent agent\'s context.',
+                canDo: 'Can BLOCK — it can reject a half-done piece and send the subagent back to keep working, exactly like Stop does for the main agent.',
+                why: 'A reviewer refusing an analyst’s draft section until the sources are actually cited — the helper does not get to call it done just because it thinks so.',
+                builder: 'Matcher targets agent_type. Block via top-level decision:"block" + reason (fed back as the continue instruction), or exit 2 (blocks, continues). It is the subagent twin of Stop — the same "refuse to finish" mechanism, scoped to a delegated mind rather than the main turn.'
             },
             'taskcreated': {
                 title: 'TaskCreated', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#taskcreated',
-                what: 'A checkpoint that fires when a new tracked task is being opened.',
-                when: 'At the start of the task lane in the Delegation room, as a task is created.',
-                canDo: 'Can BLOCK — it can reject a task that shouldn’t be opened or isn’t well-formed.',
-                why: 'An intake desk that refuses to open a new case file until the required details are filled in.'
+                what: 'A checkpoint that fires when a new TRACKED TASK is opened on the agent\'s own structured to-do list (via TaskCreate) — NOT another agent, just an item the agent will work and check off itself.',
+                when: 'At the start of the task lane in the Delegation room, as a task is created. The modern task system replaced the old TodoWrite checklist.',
+                canDo: 'Can BLOCK — it can reject a task that shouldn\'t be opened or isn\'t well-formed (no acceptance criteria, no owner, out of scope).',
+                why: 'An intake desk that refuses to open a new case file until the required details are filled in — keeping the tracker honest from the first entry.',
+                builder: 'Matcher: none (always fires). Input carries task_id, task_name, task_description. Block via decision:"block" + reason, or exit 2. Key distinction: this is the agent tracking ITS OWN work — a task can run in the background and carry dependencies, but it is still one mind\'s checklist, not a delegated context like a subagent.'
             },
             'taskcompleted': {
                 title: 'TaskCompleted', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#taskcompleted',
-                what: 'A checkpoint that fires when a tracked task is about to be marked done.',
-                when: 'At the end of the task lane, as the task is being closed out.',
-                canDo: 'Can BLOCK — it can refuse to close a task whose acceptance criteria aren’t met.',
-                why: 'A checklist that won’t let a closing be marked "complete" until every signature is collected.'
+                what: 'A checkpoint that fires when a tracked task on the agent\'s own list is about to be marked done — the acceptance gate on the agent\'s self-bookkeeping.',
+                when: 'At the end of the task lane, as the task is being closed out via TaskUpdate.',
+                canDo: 'Can BLOCK — it can refuse to close a task whose acceptance criteria aren\'t actually met, forcing the agent to finish the real work before the checkmark.',
+                why: 'A checklist that won\'t let a closing be marked "complete" until every signature is collected — the box cannot be ticked on good intentions.',
+                builder: 'Matcher: none. Input carries task_id + task_name. Block via decision:"block" + reason, or exit 2. This is the Task-lane analogue of SubagentStop/Stop: three different "refuse to finish" gates for three different finishers — the main agent (Stop), a delegated mind (SubagentStop), an own-list item (TaskCompleted).'
             },
             'teammateidle': {
                 title: 'TeammateIdle', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#teammateidle',
-                what: 'A checkpoint that fires when a teammate agent is about to go idle with nothing to do.',
-                when: 'A side-branch off the delegation lanes, just before an assistant powers down.',
-                canDo: 'Can BLOCK — it can keep the teammate active and hand it more work instead of letting it stop.',
-                why: 'A supervisor who, seeing a team member about to clock out, assigns one more open item first.'
+                what: 'A checkpoint that fires when a teammate agent is about to go idle with nothing left to do — the chance to keep a capable helper busy instead of letting it power down.',
+                when: 'A side-branch off the delegation lanes, just before an assistant would sit idle.',
+                canDo: 'Can BLOCK to keep the teammate active and hand it more work — or use {"continue": false} to deliberately stop it entirely.',
+                why: 'A supervisor who, seeing a team member about to clock out, assigns one more open item first — no paid hand stands around with the queue still full.',
+                builder: 'Matcher: none (always fires). Block (assign more) via decision:"block" + reason; stop the teammate for good via top-level continue:false + stopReason. Exit 2 blocks the idle. This is how multi-agent setups keep a pool of helpers saturated rather than spinning down between assignments.'
             },
 
             /* ---- Workspace group (spine secondary) ---- */
             'cwdchanged': {
                 title: 'CwdChanged', docGroup: 'Workspace', docs: 'https://code.claude.com/docs/en/hooks#cwdchanged',
-                what: 'A checkpoint that fires when the agent moves to a different working folder.',
-                when: 'In the Workspace cluster fed by the Tool Loop, the moment the current directory changes.',
-                canDo: 'Observe-only — it notes the move but cannot block it.',
-                why: 'A sign-in log that records each time a staffer walks into a different department’s office.'
+                what: 'A checkpoint that fires when the agent moves to a different working folder — its sense of "where am I" just shifted, which changes what counts as a relative path.',
+                when: 'In the Workspace cluster fed by the Tool Loop, the moment the current directory changes. Asynchronous — it rides alongside the loop, not in line with it.',
+                canDo: 'Observe-only — it notes the move but cannot block it. It can, however, re-export environment variables so the new location is set up correctly.',
+                why: 'A sign-in log that records each time a staffer walks into a different department’s office — and quietly hands them that department\'s badge and supplies.',
+                builder: 'No decision control. Input carries new_cwd. Exit 2 is non-blocking. Its practical power is CLAUDE_ENV_FILE: append export VAR=value there to reconfigure the environment (paths, virtualenvs, credentials) automatically whenever the agent changes directories.'
             },
             'filechanged': {
                 title: 'FileChanged', docGroup: 'Workspace', docs: 'https://code.claude.com/docs/en/hooks#filechanged',
-                what: 'A checkpoint that fires when a watched file on disk is changed.',
-                when: 'In the Workspace cluster, whenever a tracked file is edited or replaced.',
-                canDo: 'Observe-only — it records the change but cannot stop it.',
-                why: 'A document system that timestamps every edit to a contract so there’s always an audit trail.'
+                what: 'A checkpoint that fires when a WATCHED file on disk changes — not every file, only ones you put on a watch list (often sensitive ones like .env).',
+                when: 'In the Workspace cluster, whenever a tracked file is edited or replaced — by the agent OR by something outside it. Asynchronous.',
+                canDo: 'Observe-only — it records the change but cannot stop it. Useful for audit trails, re-loading config, or alerting when a protected file moves.',
+                why: 'A document system that timestamps every edit to a contract so there\'s always an audit trail — and pings legal the moment a locked clause is touched.',
+                builder: 'Matcher targets literal watched filenames (e.g. ".env|.envrc"); arm the watch list via SessionStart\'s watchPaths. Input carries file_path + change_type. No blocking — it reacts after the fact. Pair with CLAUDE_ENV_FILE to reload environment when a config file changes mid-session.'
             },
             'worktreecreate': {
                 title: 'WorktreeCreate', docGroup: 'Workspace', docs: 'https://code.claude.com/docs/en/hooks#worktreecreate',
-                what: 'A checkpoint that fires when a new isolated copy of the workspace is being set up.',
-                when: 'In the Workspace cluster, as a separate parallel working area is created.',
-                canDo: 'Can BLOCK — it can refuse the creation of a new isolated workspace.',
-                why: 'An office manager who must approve before a team spins up a separate "war room" for a project.'
+                what: 'A checkpoint that fires when a new ISOLATED copy of the workspace (a git worktree — a parallel checkout) is being set up, so work can happen off to the side without disturbing the main branch.',
+                when: 'In the Workspace cluster, as a separate parallel working area is created (via the EnterWorktree tool).',
+                canDo: 'Can BLOCK — and uniquely, it can DICTATE where the worktree goes by returning the path, so isolation happens on the team\'s terms.',
+                why: 'An office manager who must approve before a team spins up a separate "war room" for a project — and assigns which room they get.',
+                builder: 'No matcher. Output is special: a command hook echoes the worktree PATH to stdout (HTTP hooks return hookSpecificOutput.worktreePath). The strictest exit-code rule in the system — ANY non-zero exit fails worktree creation, so a flaky hook here will block all isolated work.'
             },
             'worktreeremove': {
                 title: 'WorktreeRemove', docGroup: 'Workspace', docs: 'https://code.claude.com/docs/en/hooks#worktreeremove',
-                what: 'A checkpoint that fires when one of those isolated workspace copies is being torn down.',
-                when: 'In the Workspace cluster, as a separate working area is removed.',
-                canDo: 'Observe-only — it notes the teardown but cannot block it.',
-                why: 'A facilities log that records when a temporary project room is dismantled and cleared out.'
+                what: 'A checkpoint that fires when one of those isolated workspace copies is being torn down — the cleanup counterpart to WorktreeCreate.',
+                when: 'In the Workspace cluster, as a separate working area is removed (via ExitWorktree or cleanup).',
+                canDo: 'Observe-only — it notes the teardown but cannot block it. The natural spot to archive results or run final checks before the isolated area disappears.',
+                why: 'A facilities log that records when a temporary project room is dismantled and cleared out — last call to salvage anything left on the whiteboard.',
+                builder: 'No decision control (unlike its create sibling). Exit 2 is non-blocking. Use it to flush a worktree\'s artifacts somewhere durable before removal, since after this event that parallel checkout is gone.'
             },
 
             /* ---- drill stages + action space ---- */
             'tool-result': {
                 title: 'RESULT', docGroup: '', docs: '',
-                what: 'The outcome the tool hands back — a file’s contents, a command’s output, a search result — ready to return to the agent.',
-                when: 'The exit of the Tool Loop, after the post-run checkpoints have inspected the outcome.',
-                canDo: 'Carries the result up to the dispatcher for the next round of thinking.',
-                why: 'The cleared transaction record handed back to the desk that requested it.'
+                what: 'The outcome the tool hands back — a file\'s contents, a command\'s output, a search\'s matches — now inspected by the post-run hooks and ready to re-enter the agent\'s context.',
+                when: 'The exit of the Tool Loop, after PostToolUse (or PostToolUseFailure) has had its look at the outcome.',
+                canDo: 'Carries the result up to the dispatcher, where it becomes the input to the next round of THINK — the agent decides its next move with this answer in hand.',
+                why: 'The cleared transaction record handed back to the desk that requested it, so the next decision is made on fact, not guesswork.',
+                builder: 'Not a hook — it is the tool_response payload, the same object the Post* hooks received, flowing back into model context. There is no "result" hook to subscribe to; to shape what the model sees here, use PostToolUse.additionalContext.'
             },
             'deleg-result': {
                 title: 'RESULT', docGroup: '', docs: '',
-                what: 'The finished piece a helper agent or task hands back, ready to climb back up to the main turn.',
-                when: 'The exit of the Delegation room, after the stop/complete checkpoints have allowed the work to finish.',
-                canDo: 'Carries the helper’s or task’s result up to the dispatcher.',
-                why: 'The completed research section landing back on the lead’s desk.'
+                what: 'The finished piece a subagent or task hands back — a single distilled answer from a separate mind, or a closed-out item from the tracked list — climbing back up to the main turn.',
+                when: 'The exit of the Delegation room, after SubagentStop / TaskCompleted have allowed the work to be called done.',
+                canDo: 'Carries the helper\'s or task\'s result up to the dispatcher, folding it back into the parent agent\'s context for the next THINK.',
+                why: 'The completed research section landing back on the lead\'s desk — condensed to what matters, with the helper\'s scratch work left behind.',
+                builder: 'Not a hook. A subagent returns ONE summarized result (its noisy internal context stays in its own window — the whole point of delegation); a task returns its closed state. The gating already happened upstream at SubagentStop / TaskCompleted; this is just the return path.'
             },
             'action-space': {
                 title: 'Action Space', docGroup: '', docs: '',
-                what: 'The full menu of concrete actions the agent can take — reading, searching, editing, running commands, and more.',
-                when: 'Available throughout the Tool Loop; the gatekeeper governs which of these actually run.',
-                canDo: 'Opens the detailed 35-tool catalog — the modal listing everything the agent is able to do.',
-                why: 'The full set of authorities granted to a deputy: what they’re actually empowered to do on your behalf.'
+                what: 'The full menu of concrete actions the agent can take — reading, searching, editing, running commands, delegating, scheduling, and reaching connected services. Everything it can DO, as opposed to merely say.',
+                when: 'Available throughout the Tool Loop; the gatekeeper (PreToolUse + permission rules) governs which of these actually run on any given call.',
+                canDo: 'Opens the detailed 35-tool catalog — the modal listing every tool, which need permission, and how the task-tracking ladder (TodoWrite → Task* → Agent → Workflow) fits together.',
+                why: 'The full set of authorities granted to a deputy: what they\'re actually empowered to do on your behalf — and which acts still require your signature.',
+                builder: 'Each tool here is a tool_name your matchers can target. The permission dot mirrors the default: "needs" tools hit PermissionRequest unless a rule or a PreToolUse "allow" pre-clears them; "read" tools skip the prompt. Hook authors live in this catalog — every gate you write names one of these strings.'
             }
         };
 
@@ -1501,14 +1571,14 @@
             { name: "Write", perm: "needs", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Creates a brand-new file, or completely overwrites an existing one.", detail: "Write lays down a whole file's contents at once. The agent uses it to create new files, and for full rewrites where a targeted Edit would be clumsier than just replacing everything. The catch: overwriting a file you have not Read first will fail, which guards against blowing away work the agent hasn't seen. Because it can replace a file wholesale, it needs permission." },
             { name: "Glob", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Finds files by name pattern, like asking 'show me every JavaScript file.'", detail: "Glob locates files by matching a wildcard pattern against their paths (for example, every file ending in .js anywhere in the project), returning matches newest-first. The agent reaches for it to discover where things live before opening them. It only lists file paths — it never looks inside the files or changes anything — so it runs read-only with no permission prompt. Pair it with Grep when you need to search file contents rather than file names." },
             { name: "Grep", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Searches inside files for matching text using fast regular-expression search.", detail: "Grep scans the contents of many files at once for a word or pattern, powered by ripgrep, and reports where the matches are. It is the agent's main way to answer 'where is this defined?' or 'everywhere this is used' across a whole project. It reads but never modifies, so it runs without a permission prompt. Glob finds files by name; Grep finds text inside them." },
-            { name: "Agent", perm: "read", category: "Subagents", doc: "https://code.claude.com/docs/en/sub-agents", summary: "Spawns a helper agent with its own fresh context to handle a self-contained side task.", detail: "Agent hands a defined job to a subagent that works in its own separate context window and returns a single summarized result, keeping noisy investigation out of the main conversation. The agent reaches for it for big searches, parallel investigations, or specialized roles defined as custom subagents. Dispatching is read-only — launching costs no permission — but whatever the subagent itself does (running commands, editing files) is still gated by the normal rules. This tool was formerly called Task." },
+            { name: "Agent", perm: "read", category: "Subagents", doc: "https://code.claude.com/docs/en/sub-agents", summary: "Delegates to a SUBAGENT — a separate mind with its own fresh context window — to handle one self-contained side task and return one result.", detail: "Agent hands a defined job to a subagent that works in its own separate context window and returns a single summarized result, keeping noisy investigation out of the main conversation. This is delegation to ANOTHER mind: one subagent does one side-task and reports back. The agent reaches for it for big searches, parallel investigations, or specialized roles defined as custom subagents. Dispatching is read-only — launching costs no permission — but whatever the subagent itself does (running commands, editing files) is still gated by the normal rules, and its lifecycle is governed by the SubagentStart / SubagentStop hooks. NAMING TRAP: this tool was formerly called \"Task\" — so old docs that say \"Task\" mean THIS (spawn-a-subagent), while today's \"Task*\" tools (TaskCreate and friends) are the unrelated to-do system. One word, two meanings across versions." },
             { name: "WebFetch", perm: "needs", category: "Web", doc: "https://code.claude.com/docs/en/settings", summary: "Fetches a web page, converts it to clean text, and pulls out the parts that answer a question.", detail: "WebFetch retrieves a specific URL, turns the page into readable Markdown, and uses a small fast model to extract just the relevant content. The agent reaches for it to read documentation, articles, or any known web address. Constraints: it can't reach private or logged-in pages, it upgrades plain HTTP to HTTPS, and a cross-site redirect is handed back rather than followed (so it has to be called again with the new URL). Because it reaches out to the network, it needs permission, often scoped to specific domains." },
             { name: "WebSearch", perm: "needs", category: "Web", doc: "https://code.claude.com/docs/en/settings", summary: "Runs a web search and returns result titles and links to follow up on.", detail: "WebSearch answers 'what's out there' by returning a list of search-result titles and URLs, which the agent then opens with WebFetch to read in full. It is the starting point when the right source isn't known in advance — current docs, recent news, library references. The two-step rhythm (search to find, fetch to read) keeps the agent grounded in real pages rather than guessing. Like other network tools, it is gated by permission settings." },
-            { name: "TaskCreate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Adds an item to the agent's structured task list for tracking multi-step work.", detail: "TaskCreate puts a new entry on the agent's task list, the current task-management system that replaced the older TodoWrite checklist. The agent reaches for it at the start of anything with several distinct steps, so progress is visible and nothing is forgotten. Tasks can carry dependencies and status, making the list a small project plan rather than a flat to-do. It only manages the agent's own bookkeeping, so it needs no permission." },
+            { name: "TaskCreate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Opens an item on the agent's OWN tracked task list — a checklist that also executes and is monitored.", detail: "TaskCreate puts a new entry on the agent's task list, the current task-management system that replaced the older TodoWrite checklist. Unlike TodoWrite (a passive note-to-self), a task here can actually EXECUTE and run in the BACKGROUND, carries status, and can depend on other tasks — a small live project plan, not a flat to-do. This is still the agent tracking ITS OWN work (contrast Agent, which delegates to a separate mind). The agent reaches for it at the start of anything with several distinct steps. Opening a task fires the TaskCreated hook (which can refuse a malformed task); it only manages the agent's own bookkeeping, so it needs no permission." },
             { name: "TaskGet", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Looks up the full details of a single task by its ID.", detail: "TaskGet retrieves everything recorded about one task — its description, status, and any dependencies. The agent reaches for it to re-check the specifics of a step before working on it, especially in a long session where the details have scrolled out of view. It only reads the task list, so it needs no permission." },
             { name: "TaskList", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Shows all current tasks and their status at a glance.", detail: "TaskList returns the whole task list with each item's state (pending, in progress, done). The agent reaches for it to take stock — to decide what to do next or to confirm everything is finished before wrapping up. It is purely informational and changes nothing, so no permission is required." },
-            { name: "TaskUpdate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Changes a task's status, details, or dependencies — or removes it.", detail: "TaskUpdate edits an existing task: marking it in-progress or complete, adjusting its description, wiring up dependencies, or deleting it. The agent reaches for it constantly as work moves forward, keeping the list an honest mirror of reality. It only touches the agent's own task records, never your files, so it needs no permission." },
-            { name: "TaskStop", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Stops a running background task by its ID.", detail: "TaskStop halts a task that is running in the background, identified by its ID — the modern replacement for the old KillShell tool. The agent reaches for it to cancel a long-running or stuck background job it started earlier. It manages the agent's own running work rather than your system at large, so it needs no permission prompt." },
+            { name: "TaskUpdate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Changes a task's status, details, or dependencies — or marks it complete (which fires the TaskCompleted gate).", detail: "TaskUpdate edits an existing task: marking it in-progress or complete, adjusting its description, wiring up dependencies, or deleting it. The agent reaches for it constantly as work moves forward, keeping the list an honest mirror of reality. Marking a task done is what fires the TaskCompleted hook, which can REFUSE the closure if acceptance criteria aren't met — so the checkmark is enforceable, not just decorative. It only touches the agent's own task records, never your files, so it needs no permission." },
+            { name: "TaskStop", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Kills a task that is running in the BACKGROUND, by its ID — tasks can run detached, and this stops one.", detail: "TaskStop halts a task that is running in the background, identified by its ID — the modern replacement for the old KillShell tool. Because the Task system can execute and monitor work (not just list it), a task may be running detached while the agent does other things; TaskStop cancels a long-running or stuck one. It manages the agent's own running work rather than your system at large, so it needs no permission prompt." },
             { name: "AskUserQuestion", perm: "read", category: "Planning", doc: "https://code.claude.com/docs/en/settings", summary: "Pauses to ask you a focused multiple-choice question when a decision is genuinely yours to make.", detail: "AskUserQuestion surfaces a short question with a few clear options so you can steer direction, resolve ambiguity, or approve a choice. The agent reaches for it when guessing would be risky and the answer truly depends on your preference or knowledge. It puts a human in the loop on purpose; it doesn't touch files or systems, so it needs no permission." },
             { name: "NotebookEdit", perm: "needs", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Edits a Jupyter notebook one cell at a time.", detail: "NotebookEdit changes the contents of a specific cell in a .ipynb notebook, and can insert or delete cells, respecting the notebook's structure rather than treating it as plain text. The agent reaches for it when working in data-science notebooks, where ordinary file edits would corrupt the JSON format. Because it modifies your files, it needs permission." },
             { name: "Skill", perm: "needs", category: "Tasks", doc: "https://code.claude.com/docs/en/skills", summary: "Runs a packaged, reusable workflow inside the current conversation.", detail: "Skill invokes a named skill — a saved set of instructions and steps for a recurring kind of task — so the agent follows a proven recipe instead of improvising. The agent reaches for it when a user request matches an available skill, often something the user triggers with a slash command. The skill runs in the main conversation and may itself use other tools, each still subject to its own permission rules." },
@@ -1527,8 +1597,8 @@
             { name: "CronDelete", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Cancels a scheduled task by its ID.", detail: "CronDelete removes a previously scheduled prompt so it no longer fires. The agent reaches for it to stop a recurring task that is no longer wanted. It only manages the agent's own schedule entries, so it needs no permission." },
             { name: "PushNotification", perm: "read", category: "System", doc: "https://code.claude.com/docs/en/settings", summary: "Sends you a desktop (and optionally phone) alert so a long task can reach you.", detail: "PushNotification fires a notification to your desktop, and optionally your phone, so you don't have to babysit a long-running session. The agent reaches for it when it finishes a lengthy job or needs your attention while you're away. It only sends an alert and changes nothing else, so it needs no permission." },
             { name: "PowerShell", perm: "needs", category: "Shell", doc: "https://code.claude.com/docs/en/settings", summary: "Runs PowerShell commands, the Windows-flavored counterpart to Bash.", detail: "PowerShell executes commands through the PowerShell shell, primarily for Windows environments, and can be opted into on Linux, macOS, or WSL. The agent reaches for it when the task calls for PowerShell scripting rather than a Unix-style shell. Like Bash, it can change your system, so it needs permission." },
-            { name: "Workflow", perm: "needs", category: "Subagents", doc: "https://code.claude.com/docs/en/settings", summary: "Runs a scripted workflow that orchestrates many background subagents into one result.", detail: "Workflow executes a dynamic, multi-step process — typically a script that fans work out across several background subagents and gathers their results back together. The agent reaches for it for larger orchestrated jobs that are bigger than a single subagent dispatch. Because the workflow drives real work across the system, it is treated as needing permission." },
-            { name: "TodoWrite", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "The legacy in-session checklist, now disabled by default in favor of the Task tools.", detail: "TodoWrite maintained a simple running to-do list for the current session. It has largely been superseded by the structured Task tools (TaskCreate, TaskUpdate, and friends) and is off by default in current Claude Code. It only tracked the agent's own checklist, so it never needed permission. Mentioned here mainly to show how the task system evolved." },
+            { name: "Workflow", perm: "needs", category: "Subagents", doc: "https://code.claude.com/docs/en/settings", summary: "Conducts MANY subagents at once — a script that fans out, pipelines, and judges dozens of helpers into one structured result.", detail: "Workflow executes a dynamic, multi-step process — a script that orchestrates MANY background subagents deterministically: fan-out, parallel stages, pipelines, loops, even judge-panels. Where the Agent tool dispatches ONE subagent for ONE side-task, a Workflow conducts a whole orchestra of them and returns a structured result. The agent reaches for it for larger jobs too big for a single dispatch. Picture the ladder: track your OWN work (TodoWrite / Task*) → delegate to ONE other mind (Agent) → conduct MANY other minds (Workflow). Because the workflow drives real work across the system, it needs permission." },
+            { name: "TodoWrite", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "The legacy in-session checklist — a passive note-to-self with no execution, now OFF by default and superseded by the Task tools.", detail: "TodoWrite maintained a simple running to-do list for the current session — purely a note-to-self: no execution, no parallelism, no background, no monitoring. It has been superseded by the structured Task tools (TaskCreate, TaskUpdate, and friends), which add exactly those abilities, and it is disabled by default in current Claude Code. It only tracked the agent's own checklist, so it never needed permission. It sits at the BOTTOM of the delegation ladder (track-own-work → delegate-to-one → conduct-many) and is kept here mainly to show how the task system evolved." },
             { name: "MCP tools (mcp__server__tool)", perm: "needs", category: "MCP", doc: "https://code.claude.com/docs/en/mcp", summary: "Tools added by connected outside services — the main way to extend what the agent can do.", detail: "MCP tools come from connected MCP servers — custom integrations like a browser, a database, email, or a company's internal systems — and appear with names in the form mcp__server__tool. The agent reaches for them whenever a task needs a capability beyond the built-in set, which is exactly the point of the Model Context Protocol: a standard way to plug new abilities in. Because they act on outside systems, they generally need permission, configurable per server and per tool." }
         ];
 
@@ -1957,7 +2027,10 @@
         }
 
         /* ============================================================
-           5. INFO PANEL — reuse the kept .info-panel markup (4 fields).
+           5. INFO PANEL — 4 plain-language fields PLUS a distinct
+           "FOR BUILDERS" technical tier (v3.3.0 — the builder field).
+           The first four fields stay non-technical; the builder block
+           reads as a deliberate second tier (mono accent + divider).
            ============================================================ */
         function openInfo(nodeId) {
             var d = (HM.NODE_INFO || {})[nodeId];
@@ -1969,6 +2042,12 @@
             html += field('When it fires', d.when);
             html += field('What it can do', d.canDo);
             html += field('Why it matters', d.why);
+            // Second tier: the technical "under the hood" layer for builders.
+            if (d.builder) {
+                html += '<div class="info-builder">' +
+                    '<div class="info-builder-label">For builders &mdash; under the hood</div>' +
+                    '<div class="info-builder-body">' + escapeHtml(d.builder) + '</div></div>';
+            }
             if (d.docs) {
                 html += '<a class="info-doc" href="' + escapeHtml(d.docs) +
                     '" target="_blank" rel="noopener">Read the official docs &#8599;</a>';
