@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- Version: v1.2.0 -->
+<!-- Version: v2.0.0 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Agent's Action Space — An Interactive Hook Map | Hadosh Academy</title>
-    <meta name="description" content="A full-screen, fixed map of the Claude Code agent hook flow. Click any hook, model stage, or the Tools node to see what it is, when it fires, and what it can do. The model proposes; the structure disposes.">
+    <meta name="description" content="A full-screen, fixed, drill-down map of every Claude Code agent hook. Open a room — Session, Prompt, Agent Cognition, Tool Loop, Delegation, Workspace — and click any hook to see what it is, when it fires, what it can do, and why it matters. The model proposes; the structure disposes.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b1/explore/hook-flow.html">
@@ -320,6 +320,182 @@
                 border-radius: 18px 18px 0 0; max-height: 55vh;
             }
         }
+
+        /* ====================================================================
+           v2.0 LAYERED HOOK MAP — CSS ADDITIONS
+           Appends to the v1.2.0 <style>. ADDS the room system, breadcrumb,
+           drill transitions, portals/pills, the 4-field panel docGroup tag,
+           and the mobile stack. The existing .map-canvas keeps owning the OUTER
+           scale-to-fit transform; room transitions run on an INNER wrapper.
+           ==================================================================== */
+
+        /* ----- INNER transform wrapper: rooms live here, fade here ----------- */
+        .map-rooms {
+            position: absolute; inset: 0; width: 1320px; height: 700px;
+            transform-origin: center center;
+        }
+
+        /* ----- a ROOM: one self-contained view (its own svg + nodes) --------- */
+        .room {
+            position: absolute; inset: 0; width: 1320px; height: 700px;
+            display: none; opacity: 0;
+        }
+        .room.is-active { display: block; opacity: 1; }
+
+        .room svg.connectors {
+            position: absolute; inset: 0; width: 1320px; height: 700px;
+            z-index: 1; pointer-events: none; overflow: visible;
+        }
+
+        .room-h {
+            position: absolute; left: -9999px; top: 0;
+            width: 1px; height: 1px; overflow: hidden;
+        }
+        .room-h:focus { outline: none; }
+
+        .room-caption {
+            position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
+            z-index: 2; font-size: 0.72rem; color: var(--text-muted); opacity: 0.62;
+            font-style: italic; text-align: center; max-width: 80%; pointer-events: none;
+        }
+
+        .room-frame {
+            position: absolute; z-index: 1;
+            border: 1px dashed rgba(154, 154, 176, 0.18); border-radius: 18px;
+        }
+        .room-frame .room-frame-label {
+            position: absolute; top: -0.62rem; left: 1.2rem;
+            font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--text-muted); opacity: 0.62; padding: 0 0.5rem; background: var(--bg);
+        }
+
+        /* ----- ATLAS mega-pills (type=pill) + cross-nav PORTALS (type=portal) - */
+        .node-type-pill {
+            border-color: rgba(99, 102, 241, 0.5);
+            background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(139,92,246,0.16));
+            padding: 0.85rem 1rem; min-height: 78px; font-weight: 700;
+            box-shadow: 0 6px 26px rgba(0, 0, 0, 0.34);
+        }
+        .node-type-pill .label { font-size: 0.98rem; }
+        .node-type-pill .tag { background: linear-gradient(to right, var(--primary), var(--accent)); color: #fff; }
+        .node-type-pill .node-badge {
+            align-self: flex-start; margin-top: 0.1rem;
+            font-size: 0.62rem; font-weight: 600; color: var(--text-muted);
+        }
+        .node-type-pill .caret { float: right; opacity: 0.7; font-size: 0.8rem; }
+        .node-type-pill:hover, .node-type-pill:focus-visible {
+            border-color: var(--accent); box-shadow: 0 10px 34px var(--accent-glow);
+        }
+
+        .node-type-portal {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(139,92,246,0.14), rgba(99,102,241,0.12));
+            font-weight: 700;
+        }
+        .node-type-portal .tag { background: linear-gradient(to right, var(--accent), var(--primary)); color: #fff; }
+        .node-type-portal .caret { margin-left: 0.3rem; opacity: 0.85; }
+        .node-type-portal:hover, .node-type-portal:focus-visible {
+            border-color: var(--accent); box-shadow: 0 8px 30px var(--accent-glow);
+        }
+
+        .node.is-drilling {
+            transform: scale(1.06);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px var(--accent-glow), 0 0 0 2px rgba(139,92,246,0.4);
+            z-index: 9;
+        }
+
+        /* ----- DRILL / VIEW-SWAP transitions (on the INNER wrapper + per room) - */
+        .room.is-leaving {
+            display: block; opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+        .room.is-entering {
+            display: block; opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.26s ease 0.04s, transform 0.26s ease 0.04s;
+        }
+        .room.is-entering .node {
+            animation: nodeRise 0.34s ease both;
+            animation-delay: calc(0.05s + var(--i, 0) * 0.025s);
+        }
+        @keyframes nodeRise {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .room svg.connectors path.arrow { opacity: 1; transition: opacity 0.3s ease; }
+        .room.arrows-hidden svg.connectors path.arrow { opacity: 0; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .room.is-leaving, .room.is-entering {
+                transition: opacity 0.12s linear; transform: none;
+            }
+            .room.is-entering .node { animation: none; }
+            .node.is-drilling { transition: none; transform: none; box-shadow: none; }
+            .room svg.connectors path.arrow { transition: opacity 0.12s linear; }
+        }
+
+        /* ----- BREADCRUMB (top-left, replaces the static title inside a room) - */
+        .breadcrumb {
+            position: fixed; top: 1.4rem; left: 1.6rem; z-index: 31;
+            display: none; align-items: center; gap: 0.35rem; flex-wrap: wrap;
+            max-width: 62vw; font-size: 0.82rem;
+        }
+        body.is-room .breadcrumb { display: flex; }
+        body.is-room .chrome-title { display: none; }
+        .breadcrumb-crumb {
+            appearance: none; -webkit-appearance: none; cursor: pointer; font-family: inherit;
+            background: transparent; border: none; padding: 0.2rem 0.1rem;
+            color: var(--text-muted); font-size: 0.82rem; font-weight: 600;
+            transition: color 0.18s ease;
+        }
+        .breadcrumb-crumb:hover, .breadcrumb-crumb:focus-visible { color: var(--text-main); outline: none; }
+        .breadcrumb-crumb:focus-visible { text-decoration: underline; }
+        .breadcrumb-crumb.is-current {
+            color: var(--text-main); cursor: default;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .breadcrumb-sep { color: var(--text-muted); opacity: 0.5; font-size: 0.74rem; }
+
+        .chrome-back.as-up { cursor: pointer; }
+
+        /* ----- INFO PANEL: docGroup tag for the 4-field panel --------------- */
+        .info-docgroup {
+            display: inline-block; margin-bottom: 0.7rem;
+            font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+            color: var(--text-muted); background: var(--glass); border: 1px solid var(--border);
+            border-radius: 999px; padding: 0.18rem 0.6rem;
+        }
+
+        /* ----- MOBILE (<=820px): atlas becomes a vertical stack; room scrolls - */
+        @media (max-width: 820px) {
+            .breadcrumb { max-width: 70vw; top: 1.1rem; left: 1rem; }
+
+            .map-rooms.is-mobile { transform: none !important; }
+
+            .room.atlas--stack {
+                position: relative; width: 100%; height: auto;
+                display: flex; flex-direction: column; gap: 0.8rem;
+                padding: 4.5rem 1rem 6rem;
+            }
+            .room.atlas--stack.is-active { opacity: 1; }
+            .room.atlas--stack svg.connectors { display: none; }
+            .room.atlas--stack .node,
+            .room.atlas--stack .node-type-pill {
+                position: relative !important; left: auto !important; top: auto !important;
+                width: 100% !important; min-height: 56px;
+            }
+            .room.atlas--stack .room-caption { position: relative; bottom: auto; margin: 0.4rem auto 0; }
+
+            .map-viewport.room-scroll { align-items: flex-start; overflow: auto; -webkit-overflow-scrolling: touch; }
+            .room.is-active:not(.atlas--stack) { overflow: visible; }
+
+            .node, .node-type-pill, .node-type-portal,
+            .breadcrumb-crumb, .chrome-back { min-height: 44px; }
+            .breadcrumb-crumb { padding: 0.5rem 0.3rem; }
+        }
     </style>
 </head>
 
@@ -331,7 +507,9 @@
         <p>The model proposes; the structure disposes.</p>
     </div>
 
-    <a href="../01-llms-are-not-the-agents.html" class="chrome-back" aria-label="Back to Essay 1">&larr; Back to Essay 1</a>
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Map location"></nav>
+
+    <a href="../01-llms-are-not-the-agents.html" class="chrome-back" id="chrome-up" aria-label="Back to Essay 1">&larr; Back to Essay 1</a>
 
     <div class="legend" role="group" aria-label="Map color key">
         <span><span class="swatch hook" aria-hidden="true"></span> Hook (deterministic)</span>
@@ -340,90 +518,22 @@
         <span><span class="swatch loop" aria-hidden="true"></span> Loop / exit</span>
     </div>
 
+    <!-- shared arrowhead markers: per-room <svg.connectors> reference these by id -->
+    <svg width="0" height="0" aria-hidden="true" style="position:absolute; pointer-events:none;">
+        <defs>
+            <marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5.5" refY="2" orient="auto">
+                <polygon points="0 0, 7 2, 0 4" fill="rgba(154,154,176,0.7)"></polygon>
+            </marker>
+            <marker id="arrowhead-accent" markerWidth="7" markerHeight="7" refX="5.5" refY="2" orient="auto">
+                <polygon points="0 0, 7 2, 0 4" fill="#8b5cf6"></polygon>
+            </marker>
+        </defs>
+    </svg>
+
     <div class="map-viewport">
         <div class="map-canvas" id="map-canvas">
-            <svg class="connectors" viewBox="0 0 1320 700" aria-hidden="true">
-                <defs>
-                    <marker id="arrowhead" markerWidth="7" markerHeight="7" refX="5.5" refY="2" orient="auto">
-                        <polygon points="0 0, 7 2, 0 4" fill="rgba(154,154,176,0.7)"></polygon>
-                    </marker>
-                    <marker id="arrowhead-accent" markerWidth="7" markerHeight="7" refX="5.5" refY="2" orient="auto">
-                        <polygon points="0 0, 7 2, 0 4" fill="#8b5cf6"></polygon>
-                    </marker>
-                </defs>
-                <!-- paths injected by JS so they stay glued to node geometry -->
-            </svg>
-
-            <!-- lifecycle bracket -->
-            <div class="zone" style="left: 16px; top: 18px; width: 1288px; height: 662px;">
-                <span class="zone-label">session lifecycle</span>
-            </div>
-            <!-- out-of-band sub-frame (these hooks fire OUTSIDE the linear turn) -->
-            <div class="zone oob" style="left: 228px; top: 420px; width: 690px; height: 232px;">
-                <span class="zone-label">out-of-band &middot; fire outside the linear turn</span>
-            </div>
-
-            <!-- Nodes. x/y are the top-left of each box on the 1320x700 canvas. -->
-            <!-- BOOT -->
-            <button class="node node-type-hook" data-node="session-start" style="left: 44px; top: 54px; width: 156px;">
-                <span class="tag">hook</span><span class="label">SessionStart</span>
-            </button>
-
-            <!-- SPINE: the turn loop -->
-            <button class="node node-type-input" data-node="user-prompt-in" style="left: 44px; top: 156px; width: 156px;">
-                <span class="tag">in</span><span class="label">User Prompt</span>
-            </button>
-            <button class="node node-type-hook" data-node="ups-hook" style="left: 250px; top: 156px; width: 196px;">
-                <span class="tag">hook</span><span class="label">UserPromptSubmit (UPS)</span>
-            </button>
-            <button class="node node-type-stage" data-node="stage-thinking" style="left: 506px; top: 156px; width: 140px;">
-                <span class="tag">model</span><span class="label">Thinking</span>
-            </button>
-            <button class="node node-type-stage" data-node="stage-response" style="left: 706px; top: 156px; width: 150px;">
-                <span class="tag">model</span><span class="label">Response</span>
-            </button>
-            <button class="node node-type-hook" data-node="stop-hook" style="left: 916px; top: 156px; width: 170px;">
-                <span class="tag">hook</span><span class="label">Stop &mdash; the exit gate</span>
-            </button>
-            <button class="node node-type-loop" data-node="user-prompt-next" style="left: 1146px; top: 156px; width: 150px;">
-                <span class="tag">loop</span><span class="label">User Prompt (next) &#8635;</span>
-            </button>
-
-            <!-- TOOL SUB-LOOP: the action space -->
-            <button class="node node-type-hook" data-node="pre-tool-use" style="left: 250px; top: 300px; width: 150px;">
-                <span class="tag">hook</span><span class="label">PreToolUse</span>
-            </button>
-            <button class="node node-type-tool" data-node="tool-cluster" aria-haspopup="dialog" aria-expanded="false" style="left: 460px; top: 292px; width: 200px;">
-                <span class="tag">tools</span><span class="label">Tools (the action space) <span class="caret">&#9662;</span></span>
-            </button>
-            <button class="node node-type-hook" data-node="post-tool-use" style="left: 720px; top: 300px; width: 150px;">
-                <span class="tag">hook</span><span class="label">PostToolUse</span>
-            </button>
-            <button class="node node-type-stage" data-node="stage-tool-output" style="left: 930px; top: 300px; width: 160px;">
-                <span class="tag">loops back</span><span class="label">Tool Output</span>
-            </button>
-
-            <!-- OUT-OF-BAND hooks (each anchored to its real trigger, not chained) -->
-            <button class="node node-type-hook" data-node="notification-hook" style="left: 250px; top: 452px; width: 160px;">
-                <span class="tag">hook</span><span class="label">Notification</span>
-            </button>
-            <button class="node node-type-stage" data-node="stage-user-action" style="left: 250px; top: 568px; width: 160px;">
-                <span class="tag">you</span><span class="label">User Action</span>
-            </button>
-            <button class="node node-type-hook" data-node="subagent-stop" style="left: 472px; top: 452px; width: 168px;">
-                <span class="tag">hook</span><span class="label">SubagentStop</span>
-            </button>
-            <button class="node node-type-hook" data-node="pre-compact" style="left: 730px; top: 452px; width: 150px;">
-                <span class="tag">hook</span><span class="label">PreCompact</span>
-            </button>
-            <button class="node node-type-stage" data-node="stage-compact" style="left: 730px; top: 568px; width: 178px;">
-                <span class="tag">op</span><span class="label">Compact Operation</span>
-            </button>
-
-            <!-- TEARDOWN -->
-            <button class="node node-type-hook" data-node="session-end" style="left: 1146px; top: 568px; width: 150px;">
-                <span class="tag">hook</span><span class="label">SessionEnd</span>
-            </button>
+            <!-- INNER transform layer: all rooms are injected here by ensureRoom() -->
+            <div class="map-rooms" id="map-rooms"></div>
         </div>
     </div>
 
@@ -475,23 +585,756 @@
         var HOOKS_DOC = "https://code.claude.com/docs/en/hooks";
 
         var NODE_INFO = {
-            "user-prompt-in": { label: "User Prompt", kind: "Input", what: "You, typing. This is the only thing that starts a turn — the agent does nothing until you give it a prompt. It sits at the head of the loop because it is the one input the structure does not generate for itself.", when: "The moment you press enter on a message.", canDo: "Hand a fresh instruction to the agent. Everything that follows — every hook, every tool call — unspools from this one line of text." },
-            "ups-hook": { label: "UserPromptSubmit Hook (UPS)", kind: "Hook", what: "The first interception point. A deterministic rule that runs the instant your prompt arrives, BEFORE the model reads it. The blog calls this the 'UPS Hook'. It can quietly add context, rewrite, or refuse a prompt — your typed text is a proposal the structure gets to inspect first.", when: "Right after you submit a prompt, before the model processes it. Always fires (no matcher). Has a tighter 30-second timeout than other hooks.", canDo: "Inject extra context for the model, validate or BLOCK the prompt outright, set the session title, or suppress your original wording. Blocking here stops the turn before the model ever sees it.", doc: HOOKS_DOC + "#userpromptsubmit" },
-            "pre-tool-use": { label: "PreToolUse Hook", kind: "Hook", what: "The sharpest example of 'the structure disposes.' When the model decides to use a tool, this rule fires FIRST and can deny it, change its inputs, or wave it through. Crucially it runs before any permission check — so a hook's 'deny' holds even when permissions are set to skip prompts.", when: "Before any proposed tool call runs. You can target it at specific tools by name (e.g. Bash, Edit, Write, or MCP tools).", canDo: "Block or allow a tool, rewrite the tool's input before it runs (updatedInput), or set the permission decision — allow, deny, ask, or defer. An 'allow' here bypasses the normal permission prompt entirely, while a 'deny' stops the call before it runs; this gate is where deterministic policy overrides the model's proposal.", doc: HOOKS_DOC + "#pretooluse" },
-            "tool-cluster": { label: "Tools (the action space)", kind: "Tool cluster", what: "Everything the agent can actually DO in the world — read and write files, run shell commands, search the web, spawn subagents, manage tasks. The model proposes ONE of these each step; nothing happens until a tool runs. Click to open the full set. By default the agent is read-only: only file-writing, command-running, and network tools prompt for permission.", when: "After the model proposes a tool and PreToolUse lets it through. Tools run one at a time (or in a parallel batch), then return their output to the model.", canDo: "Open this node as a dropdown of every current Claude Code tool. Each tool is clickable for what it does and whether it needs permission. This is the 'action space' the whole diagram is drawing.", doc: "https://code.claude.com/docs/en/settings" },
-            "post-tool-use": { label: "PostToolUse Hook", kind: "Hook", what: "The after-the-fact checkpoint. The tool has already run — this hook can't undo it — but it sees the result and can react: validate the output, log it, auto-format an edited file, or block the NEXT model step if something looks wrong.", when: "After a tool call succeeds. (A sibling, PostToolUseFailure, fires instead when a tool errors.)", canDo: "Validate or log the result, add context for the model, auto-format files — and crucially, block the model's next move if the result fails a check. (A sibling, PostToolBatch, fires after a parallel batch of tool calls resolves and is the one that can block the next model step.)", doc: HOOKS_DOC + "#posttooluse" },
-            "notification-hook": { label: "Notification Hook", kind: "Hook · out-of-band", what: "The agent's way of tapping you on the shoulder. When Claude Code needs your attention — a permission prompt, going idle waiting on you — this hook can fire a desktop notification, ring a bell, or set the window title. It fires off to the side of the main turn, not in sequence with the other hooks.", when: "Whenever Claude Code raises a notification event, such as a permission request (often at the PreToolUse gate) or an idle prompt while it waits for you.", canDo: "Emit a desktop alert, terminal bell, or window-title change so a long-running agent can reach you. Observability only — it can't block anything. (The adjacent PermissionRequest / PermissionDenied hooks are the ones that actually decide allow or deny.)", doc: HOOKS_DOC + "#notification" },
-            "subagent-stop": { label: "SubagentStop Hook", kind: "Hook · out-of-band", what: "The same 'keep working' control, but for a helper. When the agent spawns a subagent (its own fresh context window for a side task, via the Agent tool) and that subagent tries to finish, this hook can force it to keep going. A sibling, SubagentStart, fires when the subagent is spawned.", when: "When a subagent finishes its task. You can target it at specific subagent types.", canDo: "Prevent the subagent from stopping (push it to do more) or log its completion. This is how 'don't stop until the work is done' is enforced one level down.", doc: HOOKS_DOC + "#subagentstop" },
-            "pre-compact": { label: "PreCompact Hook", kind: "Hook · out-of-band", what: "The guard on memory housekeeping. When the conversation grows too long, Claude Code compacts it — summarizing older context to free room. This hook fires just before that happens and can check readiness or stop it. A sibling, PostCompact, fires once compaction completes.", when: "Just before context compaction, whether you triggered it manually or it kicked in automatically. It can happen at almost any point in a long session.", canDo: "Validate that compaction is safe, or block it. (After compaction, SessionStart with the 'compact' trigger is the documented place to re-inject any context that should survive.)", doc: HOOKS_DOC + "#precompact" },
-            "stop-hook": { label: "Stop Hook", kind: "Hook", what: "THE exit gate, and the single most important hook for the agent thesis. When the model decides it's finished, this hook can refuse — forcing the agent to keep working until the real job is done. It is the only way out of the agent loop back to you.", when: "When Claude finishes responding (not on a manual interrupt — an API error fires StopFailure instead).", canDo: "Block the stop and feed back a reason so the agent keeps going. A safety valve overrides it after repeated blocks, so it can't loop forever. This is the literal mechanism behind 'a blocking stop hook keeps the agent working.'", doc: HOOKS_DOC + "#stop" },
-            "session-start": { label: "SessionStart Hook", kind: "Hook · boot", what: "The boot ritual. Before you ever type anything, this hook can load context into the agent's mind — project facts, environment variables, instructions — so the agent wakes up already knowing things. It also re-fires after a compaction, which is where surviving context gets re-injected.", when: "When a session begins or resumes — at startup, on resume, after a /clear, or right after a compaction.", canDo: "Inject startup context, set environment variables, name the session, refresh skill discovery. It cannot block — its job is to prepare, not to stop.", doc: HOOKS_DOC + "#sessionstart" },
-            "session-end": { label: "SessionEnd Hook", kind: "Hook · teardown", what: "The teardown ritual — the bookend to SessionStart. When a session ends, this hook gets a last moment to clean up, archive, or log before everything closes.", when: "When a session terminates (you cleared it, logged out, exited, or the session otherwise wound down).", canDo: "Run cleanup, write logs, archive state. The session is already ending, so it can't block — observability and housekeeping only.", doc: HOOKS_DOC + "#sessionend" },
-            "stage-thinking": { label: "Thinking", kind: "Model stage", what: "The model reasoning about your prompt before it acts. This is the probabilistic part — the 'model proposes' half of the thesis. It's drawn lightly because it happens inside the model, not as a hook the structure controls.", when: "After your prompt clears the UPS hook, before the model commits to a response or a tool call. Tool output also loops back here for the next round of reasoning.", canDo: "Produce the model's plan for this step — which is then subject to every deterministic hook downstream. Thinking proposes; the structure disposes." },
-            "stage-response": { label: "Response", kind: "Model stage", what: "The model's output for this step — either plain text back to you, or a decision to call a tool. One of the branches the agent fans out into after thinking.", when: "Each time the model finishes reasoning and emits its next move.", canDo: "Either head for the exit gate (text out → Stop) or trigger the tool lane (PreToolUse → tool → PostToolUse). Each loop of the turn produces one response." },
-            "stage-tool-output": { label: "Tool Output", kind: "Model stage", what: "The result a tool hands back — a file's contents, a command's output, search results. It flows back into the model so the next step is grounded in what actually happened, not a guess.", when: "Right after a tool runs and PostToolUse has inspected it.", canDo: "Feed real-world results back into the model's next Thinking step, which then loops: propose the next response or tool, and keep going until Stop." },
-            "stage-user-action": { label: "User Action", kind: "You", what: "A point where the agent pauses for YOU — approving a permission prompt, answering a question, or reacting to a notification. The human stays in the loop here.", when: "When a notification or permission request needs your input before the agent can continue.", canDo: "Let you allow, deny, or answer — then hand control back to the agent so the loop resumes." },
-            "stage-compact": { label: "Compact Operation", kind: "Operation", what: "The memory-housekeeping itself: Claude Code summarizes older context to free room so a long session can keep going without forgetting the thread.", when: "Between PreCompact (which can block it) and the SessionStart 'compact' re-injection — when context fills up.", canDo: "Shrink the conversation history into a summary, preserving the essentials so the agent can continue working past its context limit." },
-            "user-prompt-next": { label: "User Prompt (next)", kind: "Loop point", what: "The loop closing. Once the Stop hook lets the agent finish, control returns to you — and your next prompt starts the whole cycle again. The action space is a loop, not a line.", when: "After the Stop hook allows the turn to end.", canDo: "Begin the next turn. Everything re-enters at the UserPromptSubmit hook — the same shape, a fresh instruction." }
+
+          /* ============================================================
+           *  ATLAS MEGA-PILLS  (top-level rooms — each opens a sub-view)
+           * ============================================================ */
+          'prompt': {
+            label: 'Prompt',
+            kind: 'Portal · room',
+            docGroup: '',
+            doc: '',
+            what: 'The room where your typed request is received and prepared before the agent ever starts thinking.',
+            when: 'The very first beat of a turn: you hit enter, and this room runs before the agent reads a single word.',
+            canDo: 'Two checkpoints here can BLOCK or REWRITE your words before they reach the agent.',
+            why: 'Like a paralegal who reformats a partner\'s rough note into a clean brief before it lands on the associate\'s desk.'
+          },
+          'cognition': {
+            label: 'Agent Cognition',
+            kind: 'Portal · room (the turn)',
+            docGroup: '',
+            doc: '',
+            what: 'The centerpiece: the agent\'s actual thinking loop, where it decides to answer, use a tool, delegate, or compact its memory.',
+            when: 'After the prompt is assembled and handed in; everything loops here until the turn cleanly ends.',
+            canDo: 'This is where the agent cannot quit until the work is done — the Stop checkpoint can send it back to keep going.',
+            why: 'Think of a consultant working a problem: they don\'t stop at the first half-answer, they loop until the deliverable is actually finished.'
+          },
+          'tools': {
+            label: 'Tool Loop',
+            kind: 'Portal · room',
+            docGroup: '',
+            doc: '',
+            what: 'The room where the agent reaches out and DOES something — reads a file, runs a search, edits a document.',
+            when: 'Any time mid-turn the agent decides it needs to act on the outside world rather than just talk.',
+            canDo: 'Checkpoints here can ALLOW, DENY, ASK, or REWRITE an action before it runs.',
+            why: 'Like an expense system that checks every purchase request against policy before the card is actually charged.'
+          },
+          'delegation': {
+            label: 'Delegation',
+            kind: 'Portal · room',
+            docGroup: '',
+            doc: '',
+            what: 'The room where the agent hands part of the job to helper agents and tracks the tasks it has assigned.',
+            when: 'Mid-turn, when the work is big enough that the agent spins up assistants instead of doing it all itself.',
+            canDo: 'Checkpoints here can BLOCK a helper from finishing or a task from being marked done.',
+            why: 'Like a project manager assigning research to two analysts and refusing to close a task until the work passes review.'
+          },
+          'workspace': {
+            label: 'Workspace',
+            kind: 'Portal · room',
+            docGroup: '',
+            doc: '',
+            what: 'The agent\'s ground: the actual folders, files, and working directory it stands on.',
+            when: 'Whenever the agent\'s actions change the files or the place it is working from.',
+            canDo: 'A couple of checkpoints here can BLOCK structural changes like creating a new isolated workspace.',
+            why: 'Like an office-management system that logs and approves every time a team sets up a new project room or moves files.'
+          },
+          'session': {
+            label: 'Session',
+            kind: 'Portal · the outer frame',
+            docGroup: '',
+            doc: '',
+            what: 'The whole conversation from the moment it opens to the moment it closes — the container every turn lives inside.',
+            when: 'Spans the entire engagement: it starts once, holds all the back-and-forth turns, and ends once.',
+            canDo: 'Mostly observe-only setup and teardown; it watches the start and end rather than blocking work.',
+            why: 'Like the open-to-close of a single client meeting: one greeting at the top, many exchanges in the middle, one wrap-up at the end.'
+          },
+
+          /* ============================================================
+           *  SESSION ROOM  (4 hooks + 2 stages)
+           * ============================================================ */
+          'sessionstart': {
+            label: 'SessionStart',
+            kind: 'Hook · observe-only',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#sessionstart',
+            what: 'The opening bell: it fires the instant a new conversation begins or a paused one resumes.',
+            when: 'First thing in the Session room, before any prompt is typed or any turn happens.',
+            canDo: 'Observe-only — it cannot block, but it can quietly load starting context the agent should know.',
+            why: 'Like a doctor pulling up the patient\'s chart and history the moment the appointment starts, before a word is spoken.'
+          },
+          'setup': {
+            label: 'Setup',
+            kind: 'Hook · observe-only',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#setup',
+            what: 'A special preparation step that runs when the agent is started in an initialize or maintenance mode rather than a normal chat.',
+            when: 'Right after the session opens, on the one-time setup path — not on every ordinary turn.',
+            canDo: 'Observe-only — it prepares the environment but does not block the conversation.',
+            why: 'Like the building super doing a one-time walkthrough to switch the lights and HVAC on before tenants arrive for the day.'
+          },
+          'live-session': {
+            label: 'Live Session',
+            kind: 'Stage · the middle',
+            docGroup: '',
+            doc: '',
+            what: 'The active stretch of the conversation where the real back-and-forth turns actually happen.',
+            when: 'After setup completes and before the session ends — the long middle of the engagement.',
+            canDo: 'Holds the turns; each one is a full Agent Cognition pass.',
+            why: 'The body of the meeting, after hellos and before goodbyes.'
+          },
+          'sess-turns': {
+            label: 'Turns Happen Here',
+            kind: 'Portal · to Agent Cognition',
+            docGroup: '',
+            doc: '',
+            what: 'The doorway from the session into the turn itself: each turn the user takes is a full Agent Cognition pass running inside the live session.',
+            when: 'The middle of the live session, repeated once per back-and-forth exchange.',
+            canDo: 'Opens the Agent Cognition room — the loop that runs a single turn.',
+            why: 'Like each individual exchange inside a long meeting, where the real work of a single question gets done.'
+          },
+          'configchange': {
+            label: 'ConfigChange',
+            kind: 'Hook · can block',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#configchange',
+            what: 'A watcher that notices when a settings file changes in the middle of a live session.',
+            when: 'A side-branch inside the live session, firing only when configuration is edited mid-conversation.',
+            canDo: 'Can BLOCK — it can reject a settings change it considers unsafe.',
+            why: 'Like a compliance officer who can veto a rule change someone tries to push through while a deal is still in progress.'
+          },
+          'sessionend': {
+            label: 'SessionEnd',
+            kind: 'Hook · observe-only',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#sessionend',
+            what: 'The closing bell: it fires once when the whole conversation terminates.',
+            when: 'The final beat of the Session room, after the last turn is finished.',
+            canDo: 'Observe-only — it cannot block, but it can save a summary or clean things up.',
+            why: 'Like a project lead writing the closeout note and filing the paperwork the moment a case is officially closed.'
+          },
+
+          /* ============================================================
+           *  PROMPT ROOM  (2 hooks + 2 stages)
+           * ============================================================ */
+          'your-text': {
+            label: 'Your Text',
+            kind: 'Input · what you typed',
+            docGroup: '',
+            doc: '',
+            what: 'The raw words you typed into the box, exactly as you wrote them.',
+            when: 'The starting point of the Prompt room, before any checkpoint touches it.',
+            canDo: 'Enters the assembly line as the original request.',
+            why: 'The rough request a client emails in before anyone has cleaned it up.'
+          },
+          'userpromptexpansion': {
+            label: 'UserPromptExpansion',
+            kind: 'Hook · can block',
+            docGroup: 'Prompt',
+            doc: 'https://code.claude.com/docs/en/hooks#userpromptexpansion',
+            what: 'The checkpoint that fires FIRST, when a shorthand command you typed unfolds into a full request.',
+            when: 'Earliest in the Prompt room — before the submitted-prompt checkpoint, the moment a typed shortcut expands.',
+            canDo: 'Can BLOCK — it can stop a shortcut from expanding into something unwanted.',
+            why: 'Like a template that turns a realtor\'s "/listing" shortcut into a full property write-up — and can refuse if the inputs are missing.'
+          },
+          'userpromptsubmit': {
+            label: 'UserPromptSubmit',
+            kind: 'Hook · can block / rewrite',
+            docGroup: 'Prompt',
+            doc: 'https://code.claude.com/docs/en/hooks#userpromptsubmit',
+            what: 'The checkpoint that fires SECOND, right as your finished prompt is submitted, just before the agent reads it.',
+            when: 'After expansion, the last gate in the Prompt room before the request enters cognition.',
+            canDo: 'Can BLOCK, INJECT, or REWRITE — it can add context, scrub the request, or stop it cold.',
+            why: 'Like an editor who appends the house style guide to every assignment before it reaches the writer — or kills an off-policy one.'
+          },
+          'assembled-prompt': {
+            label: 'Assembled Prompt',
+            kind: 'Stage · ready to think',
+            docGroup: '',
+            doc: '',
+            what: 'The final, cleaned-up request after both prompt checkpoints have done their work.',
+            when: 'The exit of the Prompt room, handed straight into agent cognition.',
+            canDo: 'Exits to cognition as the request the model actually reads.',
+            why: 'The polished brief that finally lands on the expert\'s desk, ready to act on.'
+          },
+
+          /* ============================================================
+           *  COGNITION ROOM  (7 hooks + stages/portals)
+           * ============================================================ */
+          'prompt-enters': {
+            label: 'Prompt Enters',
+            kind: 'Stage · entry',
+            docGroup: '',
+            doc: '',
+            what: 'The handoff point where the assembled request arrives in the thinking room.',
+            when: 'The first beat of cognition, before the agent forms any plan.',
+            canDo: 'Hands the request to the THINK stage.',
+            why: 'The moment the brief is opened and read.'
+          },
+          'think': {
+            label: 'THINK',
+            kind: 'Stage · reasoning',
+            docGroup: '',
+            doc: '',
+            what: 'The agent\'s private reasoning — where it weighs the request and decides what to do next.',
+            when: 'Right after the prompt enters and after its standing instructions are loaded in.',
+            canDo: 'No checkpoint of its own; it is the deciding mind that routes work to the dispatcher.',
+            why: 'The quiet moment a consultant stares at the problem and maps out the approach before moving.'
+          },
+          'instructionsloaded': {
+            label: 'InstructionsLoaded',
+            kind: 'Hook · observe-only',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#instructionsloaded',
+            what: 'A checkpoint that fires when the agent\'s standing rule-books (its CLAUDE.md and rule files) are read in.',
+            when: 'Feeds into the THINK stage, supplying the agent its persistent instructions before it decides.',
+            canDo: 'Observe-only — it cannot block, but it signals exactly which guidance was loaded.',
+            why: 'Like a new hire being handed the firm\'s policy binder before taking on their first matter.'
+          },
+          'dispatcher': {
+            label: 'DISPATCHER',
+            kind: 'Stage · the hub',
+            docGroup: '',
+            doc: '',
+            what: 'The traffic hub that routes each decision: answer, use a tool, delegate, or compact memory.',
+            when: 'The center of the cognition room; every branch leaves from here and returns here.',
+            canDo: 'No checkpoint itself — it is the junction the turn keeps cycling back through until done.',
+            why: 'Like an air-traffic controller sending each plane to the right runway and waiting for it to come back around.'
+          },
+          'respond': {
+            label: 'RESPOND',
+            kind: 'Stage · output',
+            docGroup: '',
+            doc: '',
+            what: 'The branch where the agent writes its reply to you.',
+            when: 'Fires from the dispatcher when the agent has something to say rather than something to do.',
+            canDo: 'Produces the reply text shown on screen.',
+            why: 'The analyst finally typing up the answer paragraph for the client.'
+          },
+          'messagedisplay': {
+            label: 'MessageDisplay',
+            kind: 'Hook · observe-only',
+            docGroup: 'Prompt',
+            doc: 'https://code.claude.com/docs/en/hooks#messagedisplay',
+            what: 'A checkpoint that fires while the agent\'s reply text is being shown on screen.',
+            when: 'On the RESPOND branch, as the message is displayed to you.',
+            canDo: 'Observe-only — it watches the message go out but cannot stop it.',
+            why: 'Like a transcript service that quietly logs every sentence a presenter says as they say it.'
+          },
+          'notification': {
+            label: 'Notification',
+            kind: 'Hook · observe-only',
+            docGroup: 'User Interaction',
+            doc: 'https://code.claude.com/docs/en/hooks#notification',
+            what: 'A checkpoint that fires when the agent sends you an alert — for example, that it needs your attention.',
+            when: 'On the RESPOND branch, whenever the agent raises a notification.',
+            canDo: 'Observe-only — it cannot block, but it can reroute the alert (to a phone, a chat channel, etc.).',
+            why: 'Like a paging system that forwards "the analysis is ready" straight to a manager\'s text messages.'
+          },
+          'compact': {
+            label: 'COMPACT',
+            kind: 'Stage · memory squeeze',
+            docGroup: '',
+            doc: '',
+            what: 'The branch where the agent compresses its own memory to make room when the conversation grows long.',
+            when: 'A downward interrupt from THINK that rejoins the dispatcher once memory is trimmed.',
+            canDo: 'Holds two checkpoints — one before the squeeze (can block) and one after.',
+            why: 'Like a researcher condensing fifty pages of notes into a two-page summary so they can keep working.'
+          },
+          'precompact': {
+            label: 'PreCompact',
+            kind: 'Hook · can block',
+            docGroup: 'Context/Compaction',
+            doc: 'https://code.claude.com/docs/en/hooks#precompact',
+            what: 'The checkpoint that fires just before the agent compresses its memory.',
+            when: 'At the top of the COMPACT branch, before any context is trimmed.',
+            canDo: 'Can BLOCK — it can stop or steer the compression, protecting notes that must not be lost.',
+            why: 'Like an archivist who reviews which case files are about to be summarized and pulls the ones that must stay verbatim.'
+          },
+          'postcompact': {
+            label: 'PostCompact',
+            kind: 'Hook · observe-only',
+            docGroup: 'Context/Compaction',
+            doc: 'https://code.claude.com/docs/en/hooks#postcompact',
+            what: 'The checkpoint that fires right after the memory squeeze finishes.',
+            when: 'At the bottom of the COMPACT branch, as control returns to the dispatcher.',
+            canDo: 'Observe-only — it cannot block, but it can re-inject a fresh summary of what now matters.',
+            why: 'Like an assistant handing the consultant a clean one-pager right after the old files were boxed up.'
+          },
+          'tool-call': {
+            label: 'TOOL CALL',
+            kind: 'Portal · to Tool Loop',
+            docGroup: '',
+            doc: '',
+            what: 'The doorway from the thinking room into the Tool Loop, taken when the agent decides to act.',
+            when: 'Fires from the dispatcher; the work happens in the Tool Loop and the result returns here.',
+            canDo: 'A round trip — the action runs elsewhere and comes back to the dispatcher with a result.',
+            why: 'Like an associate stepping out to pull a record, then returning to the table with the document.'
+          },
+          'delegate': {
+            label: 'DELEGATE',
+            kind: 'Portal · to Delegation',
+            docGroup: '',
+            doc: '',
+            what: 'The doorway from the thinking room into the Delegation room, taken when the agent hands off work.',
+            when: 'Fires from the dispatcher; helper agents do the work and their results return here.',
+            canDo: 'A round trip — the assigned work runs elsewhere and comes back to the dispatcher.',
+            why: 'Like a lead handing a sub-task to a junior and waiting for the finished piece to come back.'
+          },
+          'stop': {
+            label: 'Stop',
+            kind: 'Hook · can block',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#stop',
+            what: 'The hero checkpoint that fires when the agent thinks it is finished responding.',
+            when: 'At the exit of the cognition room — the gate between "I\'m done" and actually leaving.',
+            canDo: 'Can BLOCK — it can refuse the stop and send the agent back to keep going until the work is truly done.',
+            why: 'Like a senior partner reading a "final" draft and sending it back: "this isn\'t finished — keep working."'
+          },
+          'stopfailure': {
+            label: 'StopFailure',
+            kind: 'Hook · observe-only',
+            docGroup: 'Session',
+            doc: 'https://code.claude.com/docs/en/hooks#stopfailure',
+            what: 'The sibling of Stop that fires when the turn ends badly — because of a system or service error, not a clean finish.',
+            when: 'At the cognition exit, on the failure path instead of the clean-stop path.',
+            canDo: 'Observe-only — it records the dirty exit but cannot send the agent back.',
+            why: 'Like an incident log that notes a meeting was cut off by a power outage rather than a proper wrap-up.'
+          },
+
+          /* ============================================================
+           *  TOOL LOOP ROOM  (8 hooks + stages)
+           * ============================================================ */
+          'tool-call-in': {
+            label: 'Tool Call In',
+            kind: 'Stage · entry',
+            docGroup: '',
+            doc: '',
+            what: 'The arrival point where a requested action enters the Tool Loop to be checked and run.',
+            when: 'The first beat of the Tool Loop, handed in from cognition.',
+            canDo: 'Passes the proposed action to the gatekeeper.',
+            why: 'The purchase request landing in the approvals inbox.'
+          },
+          'pretooluse': {
+            label: 'PreToolUse',
+            kind: 'Hook · can block / rewrite',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#pretooluse',
+            what: 'The gatekeeper checkpoint that fires before any action actually runs.',
+            when: 'Right at the top of the Tool Loop, before the tool runs and before permission branches.',
+            canDo: 'Can ALLOW, DENY, ASK, DEFER, or REWRITE the action before it executes.',
+            why: 'Like a manager who approves, rejects, or rewrites a wire-transfer request before the bank ever sees it.'
+          },
+          'permissionrequest': {
+            label: 'PermissionRequest',
+            kind: 'Hook · can block',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#permissionrequest',
+            what: 'A checkpoint that fires when an action needs explicit sign-off and a permission prompt appears.',
+            when: 'On the ask/defer side-branch off the gatekeeper, after PreToolUse decides it needs approval.',
+            canDo: 'Can BLOCK — it can auto-decide the permission dialog instead of waiting on a human.',
+            why: 'Like a spending limit that automatically pops an approval request to a director when a cost crosses a threshold.'
+          },
+          'permissiondenied': {
+            label: 'PermissionDenied',
+            kind: 'Hook · can set retry',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#permissiondenied',
+            what: 'A checkpoint that fires when an action gets turned down by the permission system.',
+            when: 'On the same side-branch, right after a permission is refused.',
+            canDo: 'Can SET RETRY — it can tell the agent to try a different, allowed approach instead of giving up.',
+            why: 'Like a policy that, when a booking is rejected, suggests an approved alternative vendor instead of a flat no.'
+          },
+          'tool-runs': {
+            label: 'TOOL RUNS',
+            kind: 'Stage · execution',
+            docGroup: '',
+            doc: '',
+            what: 'The moment the approved action actually executes — the file is read, the search runs, the edit happens.',
+            when: 'The middle of the Tool Loop, after the gatekeeper allows it.',
+            canDo: 'Runs the tool and produces a result.',
+            why: 'The wire transfer actually clearing after approval.'
+          },
+          'posttooluse': {
+            label: 'PostToolUse',
+            kind: 'Hook · can block',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#posttooluse',
+            what: 'The checkpoint that fires after an action finishes SUCCESSFULLY.',
+            when: 'On the success branch after the tool runs, before the result heads back to cognition.',
+            canDo: 'Can BLOCK — it can inspect the result and reject it, feeding back a correction.',
+            why: 'Like a QA reviewer who checks a finished report and can send it back if a number looks wrong.'
+          },
+          'posttoolusefailure': {
+            label: 'PostToolUseFailure',
+            kind: 'Hook · can block',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#posttoolusefailure',
+            what: 'The checkpoint that fires after an action FAILS with an error.',
+            when: 'On the error branch after the tool runs, instead of the success branch.',
+            canDo: 'Can BLOCK — it can intercept the error and decide how the agent should handle the failure.',
+            why: 'Like an ops desk that catches a failed payment and routes a clear "try this fix" note instead of a raw error.'
+          },
+          'posttoolbatch': {
+            label: 'PostToolBatch',
+            kind: 'Hook · can block',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#posttoolbatch',
+            what: 'The checkpoint that fires after a whole group of parallel actions all finish.',
+            when: 'On the parallel-batch branch, once every action in the bundle has resolved.',
+            canDo: 'Can BLOCK — it can hold up the next round of thinking until the batch is reviewed together.',
+            why: 'Like an auditor who waits for all ten invoices to clear, then reviews them as a set before signing off.'
+          },
+          'elicitation': {
+            label: 'Elicitation',
+            kind: 'Hook · can block',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#elicitation',
+            what: 'A checkpoint that fires when an outside connected tool pauses to ask the user for input mid-action.',
+            when: 'In the MCP-pause sub-cluster off the running tool, when an external service needs a human answer.',
+            canDo: 'Can BLOCK — it can intercept or auto-answer the request for input.',
+            why: 'Like a booking site pausing to ask "aisle or window?" — and an assistant who can answer it for you automatically.'
+          },
+          'elicitationresult': {
+            label: 'ElicitationResult',
+            kind: 'Hook · can block',
+            docGroup: 'Tool loop',
+            doc: 'https://code.claude.com/docs/en/hooks#elicitationresult',
+            what: 'A checkpoint that fires after the user (or a stand-in) answers that outside tool\'s question.',
+            when: 'In the same MCP-pause cluster, right after the elicitation is answered.',
+            canDo: 'Can BLOCK — it can inspect or override the answer before the tool continues.',
+            why: 'Like a supervisor double-checking the "window seat" reply before it gets locked into the reservation.'
+          },
+          'tool-result': {
+            label: 'Result',
+            kind: 'Stage · exit',
+            docGroup: '',
+            doc: '',
+            what: 'The outcome the tool hands back — a file\'s contents, a command\'s output, a search result — ready to return to the agent.',
+            when: 'The exit of the Tool Loop, after the post-run checkpoints have inspected the outcome.',
+            canDo: 'Carries the result up to the cognition dispatcher for the next round of thinking.',
+            why: 'The cleared transaction record handed back to the desk that requested it.'
+          },
+          'action-space': {
+            label: 'Action Space',
+            kind: 'Tool · 35 tools',
+            docGroup: '',
+            doc: '',
+            what: 'The full menu of concrete actions the agent can take — reading, searching, editing, running commands, and more.',
+            when: 'Available throughout the Tool Loop; the gatekeeper governs which of these actually run.',
+            canDo: 'Opens the detailed tool list — the catalog of everything the agent is able to do.',
+            why: 'Like the full set of authorities granted to a deputy: what they\'re actually empowered to do on your behalf.'
+          },
+
+          /* ============================================================
+           *  DELEGATION ROOM  (5 hooks + stages)
+           * ============================================================ */
+          'dispatch-in': {
+            label: 'Dispatch In',
+            kind: 'Stage · entry',
+            docGroup: '',
+            doc: '',
+            what: 'The arrival point where a delegated piece of work enters the Delegation room.',
+            when: 'The first beat of the Delegation room, handed in from cognition.',
+            canDo: 'Routes the handed-off work into the delegation lanes.',
+            why: 'The sub-assignment landing on the team coordinator\'s desk.'
+          },
+          'subagentstart': {
+            label: 'SubagentStart',
+            kind: 'Hook · observe-only',
+            docGroup: 'Subagent/Delegation',
+            doc: 'https://code.claude.com/docs/en/hooks#subagentstart',
+            what: 'A checkpoint that fires when a helper agent is spun up to handle part of the job.',
+            when: 'At the top of Lane A in the Delegation room, as the assistant is launched.',
+            canDo: 'Observe-only — it cannot block, but it can hand the helper its starting brief.',
+            why: 'Like a manager briefing a freshly assigned analyst on the scope before they begin.'
+          },
+          'sub-loop': {
+            label: 'Own Loop',
+            kind: 'Stage · sub-agent run',
+            docGroup: '',
+            doc: '',
+            what: 'The helper agent\'s own internal turn loop, running in its own fresh context window until its piece is done.',
+            when: 'The middle of Lane A, between the helper being launched and the helper trying to finish.',
+            canDo: 'Runs the sub-agent\'s own cognition loop, separate from the main turn.',
+            why: 'The assigned analyst working their portion at their own desk before reporting back.'
+          },
+          'subagentstop': {
+            label: 'SubagentStop',
+            kind: 'Hook · can block',
+            docGroup: 'Subagent/Delegation',
+            doc: 'https://code.claude.com/docs/en/hooks#subagentstop',
+            what: 'A checkpoint that fires when a helper agent thinks it has finished its piece.',
+            when: 'At the end of Lane A, before the helper\'s result returns to cognition.',
+            canDo: 'Can BLOCK — it can reject a half-done piece and send the helper back to keep working.',
+            why: 'Like a reviewer refusing an analyst\'s draft section until the sources are actually cited.'
+          },
+          'deleg-result': {
+            label: 'Result',
+            kind: 'Stage · exit',
+            docGroup: '',
+            doc: '',
+            what: 'The finished piece a helper agent hands back, ready to climb back up to the main turn.',
+            when: 'The exit of Lane A, after SubagentStop has allowed the helper to finish.',
+            canDo: 'Carries the helper\'s result up to the cognition dispatcher.',
+            why: 'The completed research section landing back on the lead\'s desk.'
+          },
+          'taskcreated': {
+            label: 'TaskCreated',
+            kind: 'Hook · can block',
+            docGroup: 'Subagent/Delegation',
+            doc: 'https://code.claude.com/docs/en/hooks#taskcreated',
+            what: 'A checkpoint that fires when a new tracked task is being opened.',
+            when: 'At the start of Lane B in the Delegation room, as a task is created.',
+            canDo: 'Can BLOCK — it can reject a task that shouldn\'t be opened or isn\'t well-formed.',
+            why: 'Like an intake desk that refuses to open a new case file until the required details are filled in.'
+          },
+          'taskcompleted': {
+            label: 'TaskCompleted',
+            kind: 'Hook · can block',
+            docGroup: 'Subagent/Delegation',
+            doc: 'https://code.claude.com/docs/en/hooks#taskcompleted',
+            what: 'A checkpoint that fires when a tracked task is about to be marked done.',
+            when: 'At the end of Lane B, as the task is being closed out.',
+            canDo: 'Can BLOCK — it can refuse to close a task whose acceptance criteria aren\'t met.',
+            why: 'Like a checklist that won\'t let a closing be marked "complete" until every signature is collected.'
+          },
+          'teammateidle': {
+            label: 'TeammateIdle',
+            kind: 'Hook · can block',
+            docGroup: 'Subagent/Delegation',
+            doc: 'https://code.claude.com/docs/en/hooks#teammateidle',
+            what: 'A checkpoint that fires when a teammate agent is about to go idle with nothing to do.',
+            when: 'A side-branch off the delegation lanes, just before an assistant powers down.',
+            canDo: 'Can BLOCK — it can keep the teammate active and hand it more work instead of letting it stop.',
+            why: 'Like a supervisor who, seeing a team member about to clock out, assigns one more open item first.'
+          },
+
+          /* ============================================================
+           *  WORKSPACE ROOM  (4 hooks)
+           * ============================================================ */
+          'cwdchanged': {
+            label: 'CwdChanged',
+            kind: 'Hook · observe-only',
+            docGroup: 'Workspace',
+            doc: 'https://code.claude.com/docs/en/hooks#cwdchanged',
+            what: 'A checkpoint that fires when the agent moves to a different working folder.',
+            when: 'In the Workspace cluster, the moment the agent\'s current directory changes.',
+            canDo: 'Observe-only — it notes the move but cannot block it.',
+            why: 'Like a sign-in log that records each time a staffer walks into a different department\'s office.'
+          },
+          'filechanged': {
+            label: 'FileChanged',
+            kind: 'Hook · observe-only',
+            docGroup: 'Workspace',
+            doc: 'https://code.claude.com/docs/en/hooks#filechanged',
+            what: 'A checkpoint that fires when a watched file on disk is changed.',
+            when: 'In the Workspace cluster, whenever a tracked file is edited or replaced.',
+            canDo: 'Observe-only — it records the change but cannot stop it.',
+            why: 'Like a document system that timestamps every edit to a contract so there\'s always an audit trail.'
+          },
+          'worktreecreate': {
+            label: 'WorktreeCreate',
+            kind: 'Hook · can block',
+            docGroup: 'Workspace',
+            doc: 'https://code.claude.com/docs/en/hooks#worktreecreate',
+            what: 'A checkpoint that fires when a new isolated copy of the workspace is being set up.',
+            when: 'In the Workspace cluster, as a separate parallel working area is created.',
+            canDo: 'Can BLOCK — it can refuse the creation of a new isolated workspace.',
+            why: 'Like an office manager who must approve before a team spins up a separate "war room" for a project.'
+          },
+          'worktreeremove': {
+            label: 'WorktreeRemove',
+            kind: 'Hook · observe-only',
+            docGroup: 'Workspace',
+            doc: 'https://code.claude.com/docs/en/hooks#worktreeremove',
+            what: 'A checkpoint that fires when one of those isolated workspace copies is being torn down.',
+            when: 'In the Workspace cluster, as a separate working area is removed.',
+            canDo: 'Observe-only — it notes the teardown but cannot block it.',
+            why: 'Like a facilities log that records when a temporary project room is dismantled and cleared out.'
+          }
+
+        };
+
+        // ====================================================================
+        //  LAYERS — per-view geometry (nodes + connectors) on the 1320x700
+        //  canvas. Node ids here MUST be NODE_INFO keys. Pills + portals carry
+        //  a `target` (the view they drill to). Repaired from the geometry
+        //  hand-off: every camelCase/PascalCase id was renamed to its
+        //  lowercase-hyphen NODE_INFO key; connector from/to repointed to match.
+        // ====================================================================
+        var LAYERS = {
+          atlas: {
+            isAtlas: true,
+            caption: "The whole agent, one turn at a time. A prompt enters the session, Agent Cognition runs the turn (it loops on itself until the work is done), reaching out to the Tool Loop and to Delegation and round-tripping each result; the Tool Loop is what actually reads and changes the Workspace. When Cognition reaches a clean Stop the turn ends and the session waits for the next prompt. Click any room to open it.",
+            frame: { x: 60, y: 70, w: 1200, h: 560, label: "SESSION  ·  start → live turns → end" },
+            nodes: [
+              { id: "prompt",     type: "pill", label: "PROMPT",          x: 120,  y: 150, w: 240, badge: "2 hooks", target: "prompt" },
+              { id: "cognition",  type: "pill", label: "AGENT COGNITION", x: 510,  y: 240, w: 320, badge: "7 hooks", target: "cognition" },
+              { id: "tools",      type: "pill", label: "TOOL LOOP",       x: 120,  y: 430, w: 240, badge: "8 hooks", target: "tools" },
+              { id: "delegation", type: "pill", label: "DELEGATION",      x: 980,  y: 430, w: 240, badge: "5 hooks", target: "delegation" },
+              { id: "workspace",  type: "pill", label: "WORKSPACE",       x: 555,  y: 520, w: 230, badge: "4 hooks", target: "workspace" },
+              { id: "session",    type: "pill", label: "SESSION",         x: 980,  y: 150, w: 240, badge: "4 hooks", target: "session" }
+            ],
+            connectors: [
+              { from: "prompt", to: "cognition", fromSide: "right", toSide: "left", elbow: "h", cls: "hot", label: "takes the prompt" },
+              { from: "cognition", to: "cognition", fromSide: "top", toSide: "right", via: [[900, 200], [950, 270], [870, 300]], cls: "loop", label: "the turn loops" },
+              { from: "tools", to: "cognition", fromSide: "top", toSide: "bottom", via: [[240, 360], [560, 360]], elbow: "v", cls: "hot", label: "tool call" },
+              { from: "cognition", to: "tools", fromSide: "bottom", toSide: "right", via: [[640, 400], [400, 400], [360, 459]], cls: "hot", label: "result" },
+              { from: "delegation", to: "cognition", fromSide: "top", toSide: "bottom", via: [[1100, 360], [780, 360]], elbow: "v", cls: "hot", label: "dispatch" },
+              { from: "cognition", to: "delegation", fromSide: "bottom", toSide: "top", via: [[760, 410], [1100, 410]], cls: "hot", label: "result" },
+              { from: "tools", to: "workspace", fromSide: "right", toSide: "left", via: [[470, 459], [470, 549]], elbow: "h", cls: "oob", label: "reads / changes disk" },
+              { from: "cognition", to: "session", fromSide: "right", toSide: "bottom", via: [[930, 269], [1100, 220]], cls: "thinking", label: "turn ends at Stop → waits for next prompt" }
+            ]
+          },
+
+          session: {
+            caption: "The session is the outer bracket of the agent's life. SessionStart fires once to set things up, then live turns happen inside the bracket (each turn is a full Agent Cognition pass), and SessionEnd fires once when the session closes. ConfigChange can fire at any point during the live session and can block a bad config from taking effect. This is a straight arc, not a loop — the looping all lives inside the turns.",
+            frame: { x: 80, y: 240, w: 1160, h: 260, label: "live session" },
+            nodes: [
+              { id: "sessionstart", type: "hook",   label: "SessionStart",   x: 120, y: 330, w: 180 },
+              { id: "setup",        type: "stage",  label: "SETUP",          x: 360, y: 336, w: 150 },
+              { id: "sess-turns",   type: "portal", label: "TURNS HAPPEN HERE", x: 575, y: 330, w: 200, target: "cognition" },
+              { id: "configchange", type: "hook",   label: "ConfigChange",   x: 600, y: 540, w: 180, badge: "can block" },
+              { id: "sessionend",   type: "hook",   label: "SessionEnd",     x: 1020, y: 330, w: 180 }
+            ],
+            connectors: [
+              { from: "sessionstart", to: "setup", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "setup", to: "sess-turns", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "sess-turns", to: "sessionend", fromSide: "right", toSide: "left", elbow: "h", label: "session closes" },
+              { from: "sess-turns", to: "cognition", fromSide: "top", toSide: "top", via: [[675, 290]], cls: "thinking", label: "open the turn →" },
+              { from: "sess-turns", to: "configchange", fromSide: "bottom", toSide: "top", elbow: "v", cls: "oob", label: "config may change mid-session" }
+            ]
+          },
+
+          prompt: {
+            caption: "Before the model ever sees your words, two hooks run in order. UserPromptExpansion fires FIRST — it can expand shorthand, pull in files, or block. UserPromptSubmit fires SECOND — it can block, inject extra context, or rewrite the prompt outright. What leaves this room is the ASSEMBLED PROMPT that Agent Cognition actually reads.",
+            frame: { x: 90, y: 250, w: 1140, h: 200, label: "prompt assembly (in order)" },
+            nodes: [
+              { id: "your-text",            type: "input", label: "YOUR TEXT",            x: 120, y: 320, w: 170 },
+              { id: "userpromptexpansion",  type: "hook",  label: "UserPromptExpansion",  x: 360, y: 320, w: 220, badge: "can block" },
+              { id: "userpromptsubmit",     type: "hook",  label: "UserPromptSubmit",     x: 650, y: 320, w: 220, badge: "can block" },
+              { id: "assembled-prompt",     type: "stage", label: "ASSEMBLED PROMPT",     x: 940, y: 320, w: 190 }
+            ],
+            connectors: [
+              { from: "your-text", to: "userpromptexpansion", fromSide: "right", toSide: "left", elbow: "h", label: "fires first" },
+              { from: "userpromptexpansion", to: "userpromptsubmit", fromSide: "right", toSide: "left", elbow: "h", label: "fires second" },
+              { from: "userpromptsubmit", to: "assembled-prompt", fromSide: "right", toSide: "left", elbow: "h", label: "inject / rewrite" },
+              { from: "assembled-prompt", to: "cognition", fromSide: "right", toSide: "top", via: [[1180, 240]], cls: "thinking", label: "exits to cognition" }
+            ]
+          },
+
+          cognition: {
+            caption: "This is the turn. The assembled prompt enters, the model THINKS (instructions loaded in alongside it), and a DISPATCHER hub decides what happens next — respond, call a tool, delegate, or compact. The hero is STOP: when the work isn't done, Stop can BLOCK and send the turn back to the dispatcher with a glowing 'keep going' — structure disposes, the agent cannot quit until the work is done. Only a clean Stop exits up to the session.",
+            frame: { x: 70, y: 60, w: 1180, h: 600, label: "agent cognition · the Markov turn" },
+            nodes: [
+              { id: "prompt-enters",      type: "stage",  label: "PROMPT ENTERS",       x: 90,  y: 320, w: 160 },
+              { id: "think",              type: "stage",  label: "THINK",               x: 320, y: 320, w: 150 },
+              { id: "instructionsloaded", type: "hook",   label: "InstructionsLoaded",  x: 300, y: 130, w: 200 },
+              { id: "dispatcher",         type: "loop",   label: "DISPATCHER",          x: 560, y: 318, w: 175 },
+              { id: "messagedisplay",     type: "hook",   label: "MessageDisplay",      x: 825, y: 175, w: 185 },
+              { id: "notification",       type: "hook",   label: "Notification",        x: 825, y: 250, w: 185 },
+              { id: "tool-call",          type: "portal", label: "TOOL CALL →",         x: 580, y: 470, w: 160, target: "tools" },
+              { id: "delegate",           type: "portal", label: "DELEGATE →",          x: 360, y: 470, w: 160, target: "delegation" },
+              { id: "precompact",         type: "hook",   label: "PreCompact",          x: 100, y: 470, w: 170, badge: "can block" },
+              { id: "postcompact",        type: "hook",   label: "PostCompact",         x: 100, y: 545, w: 170 },
+              { id: "stop",               type: "hook",   label: "Stop",                x: 1085, y: 300, w: 175, badge: "can block" },
+              { id: "stopfailure",        type: "hook",   label: "StopFailure",         x: 1085, y: 470, w: 175 }
+            ],
+            connectors: [
+              { from: "prompt-enters", to: "think", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "instructionsloaded", to: "think", fromSide: "bottom", toSide: "top", elbow: "v", cls: "thinking", label: "feeds in" },
+              { from: "think", to: "dispatcher", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "dispatcher", to: "messagedisplay", fromSide: "top", toSide: "left", via: [[800, 205]], cls: "thinking", label: "respond" },
+              { from: "messagedisplay", to: "notification", fromSide: "bottom", toSide: "top", elbow: "v" },
+              { from: "notification", to: "stop", fromSide: "right", toSide: "top", via: [[1170, 280]], elbow: "v", label: "→ stop" },
+              { from: "dispatcher", to: "tool-call", fromSide: "bottom", toSide: "top", elbow: "v", cls: "hot", label: "tool call" },
+              { from: "tool-call", to: "dispatcher", fromSide: "right", toSide: "bottom", via: [[770, 500], [770, 376]], cls: "hot", label: "result returns" },
+              { from: "dispatcher", to: "delegate", fromSide: "bottom", toSide: "right", via: [[600, 410], [540, 499]], cls: "hot", label: "dispatch" },
+              { from: "delegate", to: "dispatcher", fromSide: "top", toSide: "bottom", via: [[440, 410], [600, 376]], cls: "hot", label: "result returns" },
+              { from: "think", to: "precompact", fromSide: "bottom", toSide: "top", via: [[185, 455]], elbow: "v", cls: "oob", label: "compact (interrupt)" },
+              { from: "precompact", to: "postcompact", fromSide: "bottom", toSide: "top", elbow: "v" },
+              { from: "postcompact", to: "dispatcher", fromSide: "right", toSide: "bottom", via: [[620, 574]], cls: "oob", label: "rejoin" },
+              { from: "stop", to: "dispatcher", fromSide: "bottom", toSide: "right", via: [[1172, 430], [735, 405]], cls: "loop", label: "keep going" },
+              { from: "stop", to: "stopfailure", fromSide: "bottom", toSide: "top", elbow: "v", cls: "oob", label: "API error" },
+              { from: "stop", to: "session", fromSide: "top", toSide: "top", via: [[1172, 120]], cls: "thinking", label: "clean stop → exits up to session" }
+            ]
+          },
+
+          tools: {
+            caption: "A tool call enters and PreToolUse decides allow / deny / ask / defer and can rewrite the arguments. If it runs, PostToolUse fires on success and PostToolUseFailure on error; the result exits up to the cognition dispatcher. PostToolBatch guards the parallel-batch branch and can block the next model call. The ask/defer path opens a permission side-branch, and a running MCP tool can pause for elicitation. The Action Space node opens the full tool catalog.",
+            frame: { x: 70, y: 50, w: 1180, h: 610, label: "tool loop" },
+            nodes: [
+              { id: "tool-call-in",       type: "stage", label: "TOOL CALL IN",        x: 90,  y: 320, w: 165 },
+              { id: "pretooluse",         type: "hook",  label: "PreToolUse",          x: 310, y: 320, w: 185, badge: "allow/deny/ask" },
+              { id: "tool-runs",          type: "stage", label: "TOOL RUNS",           x: 580, y: 320, w: 160 },
+              { id: "posttooluse",        type: "hook",  label: "PostToolUse",         x: 820, y: 250, w: 185 },
+              { id: "posttoolusefailure", type: "hook",  label: "PostToolUseFailure",  x: 820, y: 395, w: 200, badge: "on error" },
+              { id: "tool-result",        type: "stage", label: "RESULT",              x: 1085, y: 320, w: 150 },
+              { id: "posttoolbatch",      type: "hook",  label: "PostToolBatch",       x: 580, y: 175, w: 185, badge: "can block" },
+              { id: "permissionrequest",  type: "hook",  label: "PermissionRequest",   x: 290, y: 480, w: 195 },
+              { id: "permissiondenied",   type: "hook",  label: "PermissionDenied",    x: 290, y: 570, w: 195, badge: "set retry" },
+              { id: "elicitation",        type: "hook",  label: "Elicitation",         x: 600, y: 490, w: 170, badge: "can block" },
+              { id: "elicitationresult",  type: "hook",  label: "ElicitationResult",   x: 600, y: 575, w: 185, badge: "can block" },
+              { id: "action-space",       type: "tool",  label: "Action Space (35 tools)", x: 1060, y: 510, w: 200 }
+            ],
+            connectors: [
+              { from: "tool-call-in", to: "pretooluse", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "pretooluse", to: "tool-runs", fromSide: "right", toSide: "left", elbow: "h", label: "allow → fork" },
+              { from: "pretooluse", to: "posttoolbatch", fromSide: "top", toSide: "left", via: [[530, 205]], cls: "oob", label: "parallel batch" },
+              { from: "posttoolbatch", to: "tool-runs", fromSide: "bottom", toSide: "top", elbow: "v" },
+              { from: "tool-runs", to: "posttooluse", fromSide: "right", toSide: "left", via: [[785, 285]], label: "success" },
+              { from: "tool-runs", to: "posttoolusefailure", fromSide: "right", toSide: "left", via: [[785, 430]], cls: "oob", label: "error" },
+              { from: "posttooluse", to: "tool-result", fromSide: "right", toSide: "top", via: [[1160, 300]], elbow: "v" },
+              { from: "posttoolusefailure", to: "tool-result", fromSide: "right", toSide: "bottom", via: [[1160, 360]], elbow: "v" },
+              { from: "tool-result", to: "cognition", fromSide: "top", toSide: "top", via: [[1160, 110]], cls: "hot", label: "exits up to dispatcher" },
+              { from: "pretooluse", to: "permissionrequest", fromSide: "bottom", toSide: "top", via: [[390, 480]], elbow: "v", cls: "oob", label: "fires when ask/defer" },
+              { from: "permissionrequest", to: "permissiondenied", fromSide: "bottom", toSide: "top", elbow: "v", cls: "oob" },
+              { from: "tool-runs", to: "elicitation", fromSide: "bottom", toSide: "top", via: [[660, 490]], elbow: "v", cls: "oob", label: "MCP pause" },
+              { from: "elicitation", to: "elicitationresult", fromSide: "bottom", toSide: "top", elbow: "v", cls: "oob" },
+              { from: "tool-runs", to: "action-space", fromSide: "bottom", toSide: "left", via: [[660, 540]], cls: "oob", label: "open catalog" }
+            ]
+          },
+
+          delegation: {
+            caption: "When the agent hands work off, two lanes run. Lane A spins up a sub-agent: SubagentStart, its own internal loop, then SubagentStop (can block) — and the result climbs back up to cognition. Lane B tracks the task itself: TaskCreated and TaskCompleted, both able to block. TeammateIdle sits to the side of the lane group and can block when a teammate goes quiet.",
+            frame: { x: 80, y: 60, w: 1160, h: 580, label: "delegation" },
+            nodes: [
+              { id: "dispatch-in",   type: "stage", label: "DISPATCH IN",    x: 110, y: 330, w: 165 },
+              { id: "subagentstart", type: "hook",  label: "SubagentStart",  x: 340, y: 220, w: 185 },
+              { id: "sub-loop",      type: "loop",  label: "OWN LOOP",       x: 595, y: 226, w: 150 },
+              { id: "subagentstop",  type: "hook",  label: "SubagentStop",   x: 820, y: 220, w: 185, badge: "can block" },
+              { id: "deleg-result",  type: "stage", label: "RESULT",         x: 1060, y: 226, w: 150 },
+              { id: "taskcreated",   type: "hook",  label: "TaskCreated",    x: 410, y: 420, w: 185, badge: "can block" },
+              { id: "taskcompleted", type: "hook",  label: "TaskCompleted",  x: 720, y: 420, w: 190, badge: "can block" },
+              { id: "teammateidle",  type: "hook",  label: "TeammateIdle",   x: 540, y: 555, w: 185, badge: "can block" }
+            ],
+            connectors: [
+              { from: "dispatch-in", to: "subagentstart", fromSide: "right", toSide: "left", via: [[300, 250]], cls: "hot", label: "lane A" },
+              { from: "subagentstart", to: "sub-loop", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "sub-loop", to: "sub-loop", fromSide: "top", toSide: "right", via: [[700, 200], [760, 250], [745, 270]], cls: "loop", label: "runs" },
+              { from: "sub-loop", to: "subagentstop", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "subagentstop", to: "deleg-result", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "deleg-result", to: "cognition", fromSide: "top", toSide: "top", via: [[1135, 110]], cls: "hot", label: "result up to cognition" },
+              { from: "dispatch-in", to: "taskcreated", fromSide: "right", toSide: "left", via: [[300, 450]], cls: "oob", label: "lane B" },
+              { from: "taskcreated", to: "taskcompleted", fromSide: "right", toSide: "left", elbow: "h" },
+              { from: "taskcreated", to: "teammateidle", fromSide: "bottom", toSide: "left", via: [[450, 585]], cls: "oob", label: "side-branch" }
+            ]
+          },
+
+          workspace: {
+            caption: "The agent's ground — the disk it stands on. Four hooks fire as the workspace shifts: CwdChanged when it moves directories, FileChanged when files change, WorktreeCreate (can block) and WorktreeRemove for git worktrees. This isn't a loop; it's a set of signals, and they're usually caused by the Tool Loop touching disk.",
+            frame: { x: 360, y: 140, w: 600, h: 420, label: "the agent's ground" },
+            nodes: [
+              { id: "cwdchanged",     type: "hook", label: "CwdChanged",     x: 410, y: 230, w: 200 },
+              { id: "filechanged",    type: "hook", label: "FileChanged",    x: 710, y: 230, w: 200 },
+              { id: "worktreecreate", type: "hook", label: "WorktreeCreate", x: 410, y: 400, w: 200, badge: "can block" },
+              { id: "worktreeremove", type: "hook", label: "WorktreeRemove", x: 710, y: 400, w: 200 }
+            ],
+            connectors: [
+              { from: "tools", to: "cwdchanged", fromSide: "top", toSide: "left", via: [[200, 180], [360, 290]], cls: "oob", label: "tools usually cause these" }
+            ]
+          }
         };
 
         // perm: "needs" = needs permission; "read" = read-only / no permission prompt.
@@ -548,10 +1391,12 @@
         //    the boxes. Coordinates are the canvas 1320x700 space.
         // ====================================================================
         var CANVAS_W = 1320, CANVAS_H = 700;
-        var svg = document.querySelector("svg.connectors");
 
-        function nodeRect(key) {
-            var n = document.querySelector('[data-node="' + key + '"]');
+        // nodeRect: scoped to a room element so duplicate node-ids across rooms
+        // never collide. `scope` defaults to document (back-compat).
+        function nodeRect(key, scope) {
+            var root = scope || document;
+            var n = root.querySelector('[data-node="' + key + '"]');
             if (!n) { return null; }
             var left = parseFloat(n.style.left), top = parseFloat(n.style.top);
             var w = n.offsetWidth, h = n.offsetHeight;
@@ -571,10 +1416,24 @@
 
         function connect(fromKey, toKey, opts) {
             opts = opts || {};
-            var a = nodeRect(fromKey), b = nodeRect(toKey);
-            if (!a || !b) { return null; }
-            var p1 = sidePoint(a, opts.from || "right");
-            var p2 = sidePoint(b, opts.to || "left");
+            var scope = opts.scope || null;
+            var a = nodeRect(fromKey, scope), b = nodeRect(toKey, scope);
+            // Cross-room edges reference a node that lives in another view (e.g.
+            // a room arrow pointing at "cognition"). That endpoint won't exist
+            // in the active room; fall back to the first/last via point as the
+            // visual origin/terminus so the edge still draws into the frame.
+            var p1, p2;
+            if (a) {
+                p1 = sidePoint(a, opts.from || "right");
+            } else if (opts.via && opts.via.length) {
+                p1 = { x: opts.via[0][0], y: opts.via[0][1] };
+            } else { return null; }
+            if (b) {
+                p2 = sidePoint(b, opts.to || "left");
+            } else if (opts.via && opts.via.length) {
+                var last = opts.via[opts.via.length - 1];
+                p2 = { x: last[0], y: last[1] };
+            } else { return null; }
             var d;
             if (opts.elbow === "h") {
                 var midx = (p1.x + p2.x) / 2;
@@ -594,47 +1453,25 @@
             return d;
         }
 
-        // Connector list. `nodes` = which node keys this arrow touches (for highlight).
-        var CONNECTORS = [
-            // boot → first prompt
-            { from: "session-start", to: "user-prompt-in", o: { from: "bottom", to: "top" }, nodes: ["session-start", "user-prompt-in"] },
-            // the turn loop (spine)
-            { from: "user-prompt-in", to: "ups-hook", o: { from: "right", to: "left" }, nodes: ["user-prompt-in", "ups-hook"] },
-            { from: "ups-hook", to: "stage-thinking", o: { from: "right", to: "left" }, nodes: ["ups-hook", "stage-thinking"], cls: "thinking" },
-            { from: "stage-thinking", to: "stage-response", o: { from: "right", to: "left" }, nodes: ["stage-thinking", "stage-response"], cls: "thinking" },
-            { from: "stage-response", to: "stop-hook", o: { from: "right", to: "left" }, nodes: ["stage-response", "stop-hook"] },
-            { from: "stop-hook", to: "user-prompt-next", o: { from: "right", to: "left" }, nodes: ["stop-hook", "user-prompt-next"], cls: "loop" },
-            // next prompt loops back to UPS (the cycle closes) — over the top lane
-            { from: "user-prompt-next", to: "ups-hook", o: { from: "top", to: "top", via: [[1221, 44], [348, 44]] }, nodes: ["user-prompt-next", "ups-hook"], cls: "loop" },
-            // response fans DOWN into the tool lane (propose a tool)
-            { from: "stage-response", to: "pre-tool-use", o: { from: "bottom", to: "top", via: [[781, 266], [325, 266]] }, nodes: ["stage-response", "pre-tool-use"] },
-            // tool sub-loop
-            { from: "pre-tool-use", to: "tool-cluster", o: { from: "right", to: "left" }, nodes: ["pre-tool-use", "tool-cluster"] },
-            { from: "tool-cluster", to: "post-tool-use", o: { from: "right", to: "left" }, nodes: ["tool-cluster", "post-tool-use"] },
-            { from: "post-tool-use", to: "stage-tool-output", o: { from: "right", to: "left" }, nodes: ["post-tool-use", "stage-tool-output"] },
-            // tool output loops back UP into Thinking (the agent reasons again)
-            { from: "stage-tool-output", to: "stage-thinking", o: { from: "top", to: "bottom", via: [[1010, 244], [576, 244]] }, nodes: ["stage-tool-output", "stage-thinking"], cls: "thinking" },
-            // OUT-OF-BAND: each hook anchored to its real trigger (not chained)
-            { from: "pre-tool-use", to: "notification-hook", o: { from: "bottom", to: "top" }, nodes: ["pre-tool-use", "notification-hook"], cls: "oob" },
-            { from: "notification-hook", to: "stage-user-action", o: { from: "bottom", to: "top" }, nodes: ["notification-hook", "stage-user-action"], cls: "oob" },
-            { from: "tool-cluster", to: "subagent-stop", o: { from: "bottom", to: "top" }, nodes: ["tool-cluster", "subagent-stop"], cls: "oob" },
-            { from: "pre-compact", to: "stage-compact", o: { from: "bottom", to: "top" }, nodes: ["pre-compact", "stage-compact"], cls: "oob" },
-            // teardown — the loop can continue OR the session ends
-            { from: "user-prompt-next", to: "session-end", o: { from: "bottom", to: "top" }, nodes: ["user-prompt-next", "session-end"], cls: "oob" }
-        ];
-
-        var pathEls = []; // {el, nodes}
-        function buildArrows() {
-            Array.prototype.slice.call(svg.querySelectorAll("path.arrow")).forEach(function (p) { p.remove(); });
-            pathEls = [];
-            CONNECTORS.forEach(function (c) {
-                var d = connect(c.from, c.to, c.o);
+        // GENERALIZED buildArrows(connectors, targetSvg, room): render a room's
+        // LAYERS connectors into that room's own <svg.connectors>. Draws in array
+        // order so highlightInRoom() can re-query paths by index against
+        // LAYERS[view].connectors. nodeRect is scoped to `room` so duplicate
+        // node-ids across rooms never collide.
+        function buildArrows(connectors, targetSvg, room) {
+            if (!targetSvg) { return; }
+            Array.prototype.slice.call(targetSvg.querySelectorAll("path.arrow"))
+                .forEach(function (p) { p.remove(); });
+            (connectors || []).forEach(function (c) {
+                var d = connect(c.from, c.to, {
+                    from: c.fromSide, to: c.toSide, via: c.via, elbow: c.elbow,
+                    scope: room || null
+                });
                 if (!d) { return; }
                 var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                 path.setAttribute("class", "arrow" + (c.cls ? " " + c.cls : ""));
                 path.setAttribute("d", d);
-                svg.appendChild(path);
-                pathEls.push({ el: path, nodes: c.nodes });
+                targetSvg.appendChild(path);
             });
         }
 
@@ -656,30 +1493,34 @@
         function applyTransform() {
             canvas.style.transform = "scale(" + fitScale + ")";
         }
-        function onResize() { computeFit(); applyTransform(); }
 
         // ====================================================================
-        // 3. INFO PANEL + NODE ACTIVATION
+        // 3. INFO PANEL — renderInfo EXTENDED to 4 fields (What/When/Can do/Why)
+        //    + a docGroup tag after the <h2>. Node activation, highlighting, and
+        //    click-away are owned by the v2 ENGINE (section 7) which calls this.
         // ====================================================================
         var infoPanel = el("info-panel"), infoContent = el("info-content"), infoClose = el("info-close");
-        var allNodes = Array.prototype.slice.call(document.querySelectorAll(".node"));
-        var activeNode = null;
-        var lastTrigger = null; // node that opened the current panel (for focus return)
 
         function renderInfo(info) {
             var html = "";
             html += '<span class="info-kind">' + escapeHtml(info.kind) + "</span>";
             html += "<h2>" + escapeHtml(info.label) + "</h2>";
+            if (info.docGroup) {
+                html += '<div class="info-docgroup">' + escapeHtml(info.docGroup) + " docs</div>";
+            }
             html += '<div class="info-field"><div class="info-field-label">What it is</div>'
                   + '<div class="info-field-body">' + escapeHtml(info.what) + "</div></div>";
             html += '<div class="info-field"><div class="info-field-label">When it fires</div>'
                   + '<div class="info-field-body">' + escapeHtml(info.when) + "</div></div>";
             html += '<div class="info-field"><div class="info-field-label">What it can do</div>'
-                  + '<div class="info-field-body">' + escapeHtml(info.canDo) + "</div>";
+                  + '<div class="info-field-body">' + escapeHtml(info.canDo) + "</div></div>";
+            if (info.why) {
+                html += '<div class="info-field"><div class="info-field-label">Why it matters</div>'
+                      + '<div class="info-field-body">' + escapeHtml(info.why) + "</div></div>";
+            }
             if (info.doc) {
                 html += '<a class="info-doc" href="' + escapeHtml(info.doc) + '" target="_blank" rel="noopener">Read the official docs &#8599;</a>';
             }
-            html += "</div>";
             infoContent.innerHTML = html;
             infoPanel.classList.add("open");
             // Move focus to the heading so keyboard / screen-reader users know
@@ -687,89 +1528,6 @@
             var h = infoContent.querySelector("h2");
             if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
         }
-
-        function closeInfo() {
-            infoPanel.classList.remove("open");
-            clearHighlights();
-            activeNode = null;
-            if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
-        }
-
-        // highlight a node + its connected arrows; dim the rest
-        function highlightNode(key) {
-            allNodes.forEach(function (n) {
-                var k = n.getAttribute("data-node");
-                n.classList.toggle("is-dim", k !== key);
-                n.classList.toggle("is-active", k === key);
-                // Mirror the visual 'selected' state for assistive tech.
-                n.setAttribute("aria-pressed", k === key ? "true" : "false");
-            });
-            pathEls.forEach(function (p) {
-                var touches = p.nodes.indexOf(key) !== -1;
-                p.el.classList.toggle("hot", touches);
-                p.el.classList.toggle("dim", !touches);
-            });
-        }
-        function clearHighlights() {
-            allNodes.forEach(function (n) {
-                n.classList.remove("is-dim", "is-active");
-                n.setAttribute("aria-pressed", "false");
-            });
-            pathEls.forEach(function (p) { p.el.classList.remove("hot", "dim"); });
-        }
-
-        function activateNode(node) {
-            var key = node.getAttribute("data-node");
-            highlightNode(key);
-            activeNode = node;
-            lastTrigger = node;
-            if (key === "tool-cluster") {
-                // Tools open the modal only — its description lives INSIDE the modal,
-                // never behind the overlay. No bottom-left panel for this node.
-                closeInfo2();
-                openToolOverlay();
-                return;
-            }
-            var info = NODE_INFO[key];
-            if (!info) { return; }
-            renderInfo(info);
-        }
-        // close the info panel without wiping the active highlight (used by tools)
-        function closeInfo2() { infoPanel.classList.remove("open"); }
-
-        allNodes.forEach(function (node) {
-            // Native hover tooltip for quick scanning without opening every panel.
-            var ni = NODE_INFO[node.getAttribute("data-node")];
-            if (ni) {
-                var firstSentence = ni.what.split(". ")[0];
-                node.setAttribute("title", ni.kind + " — " + firstSentence + ".");
-            }
-            node.setAttribute("aria-pressed", "false");
-            node.addEventListener("click", function (e) {
-                e.stopPropagation();
-                activateNode(node);
-            });
-            node.addEventListener("mouseenter", function () {
-                if (!activeNode) { highlightNode(node.getAttribute("data-node")); }
-            });
-            node.addEventListener("mouseleave", function () {
-                if (!activeNode) { clearHighlights(); }
-            });
-        });
-
-        infoClose.addEventListener("click", closeInfo);
-
-        // Click-away dismissal: when the panel is open, a click on empty map space
-        // closes it. Node clicks call stopPropagation (above) so they never reach
-        // here — that guards against same-click-close and against closing when
-        // switching from one node to another.
-        document.addEventListener("click", function (e) {
-            if (!infoPanel.classList.contains("open")) { return; }
-            if (infoPanel.contains(e.target)) { return; }       // clicks inside the panel
-            if (e.target.closest(".node")) { return; }          // safety net for node clicks
-            if (toolOverlay.classList.contains("open")) { return; } // don't fight the modal
-            closeInfo();
-        });
 
         // ====================================================================
         // 4. TOOLS OVERLAY — grid of every tool, each opens an in-modal detail.
@@ -830,21 +1588,27 @@
             toolFootHint.textContent = "Click any tool to read what it does.";
         }
 
-        var toolClusterBtn = document.querySelector('[data-node="tool-cluster"]');
+        // The Action Space node ("action-space") is built dynamically inside the
+        // tools room, so look it up lazily rather than at module load.
+        function actionSpaceBtn() {
+            return document.querySelector('.room.is-active [data-node="action-space"]')
+                || document.querySelector('[data-node="action-space"]');
+        }
         var toolTrigger = null; // element to restore focus to when the modal closes
         function openToolOverlay() {
             showToolGrid();
-            toolTrigger = toolClusterBtn;
+            var trig = actionSpaceBtn();
+            toolTrigger = trig;
             toolOverlay.classList.add("open");
-            toolClusterBtn.setAttribute("aria-expanded", "true");
+            if (trig) { trig.setAttribute("aria-expanded", "true"); }
             // Initial focus: the close button, so Tab stays inside the modal.
             if (toolModalClose) { toolModalClose.focus({ preventScroll: true }); }
         }
         function closeToolOverlay() {
             toolOverlay.classList.remove("open");
-            toolClusterBtn.setAttribute("aria-expanded", "false");
-            clearHighlights();
-            activeNode = null;
+            var trig = actionSpaceBtn();
+            if (trig) { trig.setAttribute("aria-expanded", "false"); }
+            if (typeof clearRoomHighlights === "function") { clearRoomHighlights(); }
             if (toolTrigger) { toolTrigger.focus(); toolTrigger = null; }
         }
         toolModalClose.addEventListener("click", closeToolOverlay);
@@ -871,28 +1635,460 @@
         });
 
         // ====================================================================
-        // 5. KEYBOARD — Esc closes overlay/panel.
+        // 5. KEYBOARD — the tool modal owns Esc while open. The layered Esc in
+        //    the v2 engine (section 7) defers to this when the overlay is open.
         // ====================================================================
         document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" || e.key === "Esc") {
-                if (toolOverlay.classList.contains("open")) { closeToolOverlay(); return; }
-                if (infoPanel.classList.contains("open")) { closeInfo(); return; }
-            }
+            if (e.key !== "Escape" && e.key !== "Esc") { return; }
+            if (toolOverlay.classList.contains("open")) { closeToolOverlay(); }
         });
 
         // ====================================================================
-        // 6. BOOT
+        // 7. v2.0 LAYERED HOOK MAP — RENDER ENGINE
+        //    State machine + ONE render(view). Each view = a <section.room> with
+        //    its own <svg.connectors> + node <button>s. Atlas pills + portals
+        //    drill into rooms (pulse → cross-fade). History (#view + popstate).
         // ====================================================================
-        function init() {
-            buildArrows();
-            computeFit();
-            applyTransform();
+        var state = { view: "atlas", node: null, tool: null, history: ["atlas"] };
+        var isTransitioning = false;
+
+        var roomsLayer = el("map-rooms");            // INNER wrapper (transition target)
+        var mapViewport = document.querySelector(".map-viewport");
+        var breadcrumbEl = el("breadcrumb");
+        var upPill = el("chrome-up");                // two-state top-right glass pill
+        var hintEl = el("chrome-hint");
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var isMobile = function () { return window.matchMedia("(max-width: 820px)").matches; };
+
+        var VIEW_TITLE = {
+            atlas: "Hook Map",
+            session: "Session Lifecycle",
+            prompt: "Prompt Lane",
+            cognition: "Agent Cognition",
+            tools: "Tool Loop",
+            delegation: "Delegation",
+            workspace: "Workspace"
+        };
+        var VIEW_PARENTS = {
+            session: ["atlas"], prompt: ["atlas"], cognition: ["atlas"],
+            tools: ["atlas", "cognition"],          // tools is reached via cognition's portal
+            delegation: ["atlas", "cognition"],     // delegation likewise
+            workspace: ["atlas"]
+        };
+        var VIEW_HINT = {
+            atlas: "Click a region to drill in · Esc closes",
+            session: "Click any node · ‹ Hook Map to go up · Esc closes",
+            prompt: "Click any node · ‹ Hook Map to go up · Esc closes",
+            cognition: "Click a hook, stage, or a portal (Tool Loop / Delegation) · Esc closes",
+            tools: "Click any hook or stage · breadcrumb to navigate · Esc closes",
+            delegation: "Click any node · breadcrumb to navigate · Esc closes",
+            workspace: "Click any node · ‹ Hook Map to go up · Esc closes"
+        };
+
+        var builtRooms = {};   // lazy-mount cache
+
+        // ---- ROOM CONSTRUCTION -------------------------------------------------
+        function ensureRoom(view) {
+            if (builtRooms[view]) { return builtRooms[view]; }
+            var cfg = LAYERS[view];
+            var room = document.createElement("section");
+            room.className = "room" + (cfg.isAtlas ? " atlas" : "");
+            room.setAttribute("data-room", view);
+            room.setAttribute("role", "group");
+            room.setAttribute("aria-label", VIEW_TITLE[view] || view);
+
+            var h = document.createElement("h2");
+            h.className = "room-h";
+            h.setAttribute("tabindex", "-1");
+            h.textContent = VIEW_TITLE[view] || view;
+            room.appendChild(h);
+
+            // own connector svg (buildArrows renders into THIS). Reuses the shared
+            // global #arrowhead / #arrowhead-accent markers via url() references.
+            var svgNS = "http://www.w3.org/2000/svg";
+            var rsvg = document.createElementNS(svgNS, "svg");
+            rsvg.setAttribute("class", "connectors");
+            rsvg.setAttribute("viewBox", "0 0 1320 700");
+            rsvg.setAttribute("aria-hidden", "true");
+            room.appendChild(rsvg);
+
+            if (cfg.frame) {
+                var f = cfg.frame;
+                var frame = document.createElement("div");
+                frame.className = "room-frame";
+                frame.style.cssText = "left:" + f.x + "px;top:" + f.y + "px;width:" + f.w + "px;height:" + f.h + "px;";
+                if (f.label) {
+                    var fl = document.createElement("span");
+                    fl.className = "room-frame-label";
+                    fl.textContent = f.label;
+                    frame.appendChild(fl);
+                }
+                room.appendChild(frame);
+            }
+
+            cfg.nodes.forEach(function (n, idx) {
+                room.appendChild(buildNodeButton(n, idx));
+            });
+
+            if (cfg.caption) {
+                var cap = document.createElement("div");
+                cap.className = "room-caption";
+                cap.textContent = cfg.caption;
+                room.appendChild(cap);
+            }
+
+            roomsLayer.appendChild(room);
+            builtRooms[view] = room;
+            return room;
         }
-        window.addEventListener("resize", onResize);
+
+        function buildNodeButton(n, idx) {
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "node node-type-" + n.type;
+            btn.setAttribute("data-node", n.id);
+            btn.setAttribute("aria-pressed", "false");
+            btn.style.cssText = "left:" + n.x + "px;top:" + n.y + "px;width:" + n.w + "px;";
+            btn.style.setProperty("--i", idx);
+
+            var tagText = (n.type === "pill" || n.type === "portal") ? "open"
+                        : (n.type === "hook") ? "hook"
+                        : (n.type === "tool") ? "tools"
+                        : (n.type === "loop") ? "loop"
+                        : (n.type === "input") ? "in" : "stage";
+
+            var caret = (n.type === "pill" || n.type === "portal" || n.type === "tool")
+                ? ' <span class="caret">▾</span>' : "";
+            var badge = (n.type === "pill" && n.badge)
+                ? '<span class="node-badge">' + escapeHtml(n.badge) + "</span>" : "";
+
+            btn.innerHTML =
+                '<span class="tag">' + tagText + "</span>" +
+                '<span class="label">' + escapeHtml(n.label) + caret + "</span>" +
+                badge;
+
+            // native hover tooltip for quick scanning
+            var ni = NODE_INFO[n.id];
+            if (ni && ni.what) {
+                btn.setAttribute("title", ni.kind + " — " + ni.what.split(". ")[0] + ".");
+            }
+
+            if (n.type === "pill" || n.type === "portal") {
+                btn.setAttribute("aria-haspopup", "true");
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    drillTo(n.target, btn);
+                });
+            } else if (n.id === "action-space" || n.id === "tool-cluster") {
+                btn.setAttribute("aria-haspopup", "dialog");
+                btn.setAttribute("aria-expanded", "false");
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    highlightInRoom(n.id);
+                    openToolOverlay();
+                });
+            } else {
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    openNodeInfo(n.id, btn);
+                });
+            }
+            btn.addEventListener("mouseenter", function () {
+                if (!state.node) { highlightInRoom(n.id); }
+            });
+            btn.addEventListener("mouseleave", function () {
+                if (!state.node) { clearRoomHighlights(); }
+            });
+            return btn;
+        }
+
+        // ---- RENDER ------------------------------------------------------------
+        function render(view) {
+            state.view = view;
+            var cfg = LAYERS[view];
+            var room = ensureRoom(view);
+
+            if (cfg.isAtlas && isMobile()) {
+                room.classList.add("atlas--stack");
+                roomsLayer.classList.add("is-mobile");
+            } else {
+                room.classList.remove("atlas--stack");
+                roomsLayer.classList.remove("is-mobile");
+            }
+
+            Object.keys(builtRooms).forEach(function (v) {
+                var r = builtRooms[v];
+                var on = (v === view);
+                r.classList.toggle("is-active", on);
+                if (on) { r.classList.remove("is-leaving", "is-entering"); }
+            });
+
+            var roomSvg = room.querySelector("svg.connectors");
+            buildArrows(cfg.connectors || [], roomSvg, room);
+
+            document.body.classList.toggle("is-room", view !== "atlas");
+            renderBreadcrumb(view);
+            renderUpPill(view);
+            if (hintEl) { hintEl.textContent = VIEW_HINT[view] || hintEl.textContent; }
+
+            if (mapViewport) {
+                mapViewport.classList.toggle("room-scroll", isMobile() && view !== "atlas");
+            }
+
+            if (!(cfg.isAtlas && isMobile())) { computeFit(); applyTransform(); }
+        }
+
+        // ---- DRILL TRANSITION --------------------------------------------------
+        function drillTo(target, triggerBtn, opts) {
+            opts = opts || {};
+            if (isTransitioning || !LAYERS[target]) { return; }
+            if (target === state.view) { return; }
+            isTransitioning = true;
+
+            var fromView = state.view;
+            var fromRoom = builtRooms[fromView];
+            closeNodeInfo(true);
+
+            var dur = reduceMotion ? 120 : 220;
+
+            function doSwap() {
+                var toRoom = ensureRoom(target);
+                toRoom.classList.add("arrows-hidden");
+
+                if (fromRoom && !reduceMotion) {
+                    fromRoom.classList.add("is-leaving");
+                }
+
+                if (!opts.fromPop) {
+                    state.history.push(target);
+                    try { history.pushState({ view: target }, "", "#" + target); } catch (e) {}
+                }
+
+                render(target);
+                if (!reduceMotion) {
+                    toRoom.classList.add("is-entering");
+                }
+
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { toRoom.classList.remove("arrows-hidden"); });
+                });
+
+                var settle = function () {
+                    if (fromRoom) { fromRoom.classList.remove("is-leaving", "is-active"); }
+                    toRoom.classList.remove("is-entering");
+                    isTransitioning = false;
+                    var h = toRoom.querySelector(".room-h");
+                    if (h) { h.focus({ preventScroll: true }); }
+                };
+                var ended = false;
+                var onEnd = function () { if (!ended) { ended = true; settle(); } };
+                toRoom.addEventListener("transitionend", onEnd, { once: true });
+                setTimeout(onEnd, (reduceMotion ? 140 : 360));
+            }
+
+            if (triggerBtn && !reduceMotion) {
+                triggerBtn.classList.add("is-drilling");
+                setTimeout(function () {
+                    triggerBtn.classList.remove("is-drilling");
+                    doSwap();
+                }, dur);
+            } else {
+                doSwap();
+            }
+        }
+
+        function drillUp() {
+            if (state.view === "atlas") { return; }
+            var parents = VIEW_PARENTS[state.view] || ["atlas"];
+            var parent = parents[parents.length - 1];
+            drillTo(parent, null);
+        }
+
+        // ---- BREADCRUMB --------------------------------------------------------
+        function renderBreadcrumb(view) {
+            if (!breadcrumbEl) { return; }
+            breadcrumbEl.innerHTML = "";
+            if (view === "atlas") { return; }
+            var chain = (VIEW_PARENTS[view] || ["atlas"]).concat([view]);
+            chain.forEach(function (v, i) {
+                if (i > 0) {
+                    var sep = document.createElement("span");
+                    sep.className = "breadcrumb-sep";
+                    sep.textContent = "/";
+                    breadcrumbEl.appendChild(sep);
+                }
+                var crumb = document.createElement("button");
+                crumb.type = "button";
+                crumb.className = "breadcrumb-crumb" + (v === view ? " is-current" : "");
+                crumb.textContent = VIEW_TITLE[v] || v;
+                if (v !== view) {
+                    crumb.addEventListener("click", function () { drillTo(v, null); });
+                } else {
+                    crumb.setAttribute("aria-current", "page");
+                }
+                breadcrumbEl.appendChild(crumb);
+            });
+        }
+
+        // ---- TWO-STATE UP PILL -------------------------------------------------
+        function renderUpPill(view) {
+            if (!upPill) { return; }
+            if (view === "atlas") {
+                upPill.innerHTML = "&larr; Back to Essay 1";
+                upPill.setAttribute("href", "../01-llms-are-not-the-agents.html");
+                upPill.setAttribute("aria-label", "Back to Essay 1");
+                upPill.classList.remove("as-up");
+                upPill.onclick = null;
+            } else {
+                upPill.textContent = "‹ Hook Map";
+                upPill.removeAttribute("href");
+                upPill.setAttribute("role", "button");
+                upPill.setAttribute("aria-label", "Back to the Hook Map");
+                upPill.classList.add("as-up");
+                upPill.onclick = function (e) { e.preventDefault(); drillTo("atlas", null); };
+            }
+        }
+
+        // ---- INFO PANEL (4 fields) ---------------------------------------------
+        function openNodeInfo(id, triggerBtn) {
+            var info = NODE_INFO[id];
+            if (!info) { return; }
+            state.node = id;
+            highlightInRoom(id);
+            renderInfo(info);
+            if (triggerBtn) { lastTriggerSet(triggerBtn); }
+        }
+        function closeNodeInfo(silent) {
+            state.node = null;
+            var panel = el("info-panel");
+            if (panel) { panel.classList.remove("open"); }
+            clearRoomHighlights();
+            if (!silent) { var lt = lastTriggerGet(); if (lt) { lt.focus(); } }
+            lastTriggerSet(null);
+        }
+        var _lastTrigger = null;
+        function lastTriggerSet(n) { _lastTrigger = n; }
+        function lastTriggerGet() { return _lastTrigger; }
+
+        // ---- PER-ROOM HIGHLIGHT ------------------------------------------------
+        function activeRoomEl() { return builtRooms[state.view]; }
+        function highlightInRoom(key) {
+            var room = activeRoomEl(); if (!room) { return; }
+            room.querySelectorAll(".node").forEach(function (n) {
+                var k = n.getAttribute("data-node");
+                n.classList.toggle("is-dim", k !== key);
+                n.classList.toggle("is-active", k === key);
+                n.setAttribute("aria-pressed", k === key ? "true" : "false");
+            });
+            var cfg = LAYERS[state.view];
+            var paths = room.querySelectorAll("svg.connectors path.arrow");
+            var conns = cfg.connectors || [];
+            paths.forEach(function (p, i) {
+                var c = conns[i]; if (!c) { return; }
+                var touches = (c.from === key || c.to === key);
+                p.classList.toggle("hot", touches);
+                p.classList.toggle("dim", !touches);
+            });
+        }
+        function clearRoomHighlights() {
+            var room = activeRoomEl(); if (!room) { return; }
+            room.querySelectorAll(".node").forEach(function (n) {
+                n.classList.remove("is-dim", "is-active");
+                n.setAttribute("aria-pressed", "false");
+            });
+            room.querySelectorAll("svg.connectors path.arrow").forEach(function (p) {
+                p.classList.remove("hot", "dim");
+            });
+        }
+
+        // ---- ROVING-TABINDEX ARROW-KEY NAV -------------------------------------
+        function roomNodes() {
+            var room = activeRoomEl(); if (!room) { return []; }
+            return Array.prototype.slice.call(room.querySelectorAll(".node"));
+        }
+        document.addEventListener("keydown", function (e) {
+            var act = document.activeElement;
+            if (!act || !act.classList || !act.classList.contains("node")) { return; }
+            if (["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp"].indexOf(e.key) === -1) { return; }
+            var nodes = roomNodes();
+            var idx = nodes.indexOf(act);
+            if (idx === -1) { return; }
+            e.preventDefault();
+            var next = (e.key === "ArrowRight" || e.key === "ArrowDown")
+                ? (idx + 1) % nodes.length
+                : (idx - 1 + nodes.length) % nodes.length;
+            nodes[next].focus();
+        });
+
+        // ---- LAYERED ESC (modal → info-panel → up one view → atlas noop) -------
+        document.addEventListener("keydown", function (e) {
+            if (e.key !== "Escape" && e.key !== "Esc") { return; }
+            var overlay = el("tool-overlay");
+            if (overlay && overlay.classList.contains("open")) { return; } // modal owns Esc
+            var panel = el("info-panel");
+            if (panel && panel.classList.contains("open")) { closeNodeInfo(); return; }
+            if (state.view !== "atlas") { drillUp(); return; }
+        });
+
+        // ---- HISTORY (hardware Back + deep-link #view) -------------------------
+        window.addEventListener("popstate", function (e) {
+            var target = (e.state && e.state.view) ? e.state.view : "atlas";
+            if (!LAYERS[target]) { target = "atlas"; }
+            if (target === state.view) { return; }
+            drillTo(target, null, { fromPop: true });
+        });
+
+        // ---- CLICK-AWAY (room-aware highlight clear + panel close) -------------
+        document.addEventListener("click", function (e) {
+            // when a panel is open, an empty-space click closes it
+            var panel = el("info-panel");
+            if (state.node) {
+                if (panel && panel.contains(e.target)) { return; }
+                if (e.target.closest && e.target.closest(".node")) { return; }
+                if (e.target.closest && e.target.closest(".tool-overlay, .breadcrumb, .chrome-back")) { return; }
+                closeNodeInfo();
+                return;
+            }
+            if (e.target.closest && e.target.closest(".node")) { return; }
+            if (e.target.closest && e.target.closest(".info-panel, .tool-overlay, .breadcrumb, .chrome-back")) { return; }
+            clearRoomHighlights();
+        });
+
+        infoClose.addEventListener("click", function () { closeNodeInfo(); });
+
+        // ---- RESIZE (re-fit + mobile atlas/stack swap) -------------------------
+        function onResizeV2() {
+            var cfg = LAYERS[state.view];
+            if (cfg && cfg.isAtlas && isMobile()) {
+                var room = builtRooms[state.view];
+                if (room) { room.classList.add("atlas--stack"); }
+                roomsLayer.classList.add("is-mobile");
+            } else {
+                Object.keys(builtRooms).forEach(function (v) {
+                    builtRooms[v].classList.remove("atlas--stack");
+                });
+                roomsLayer.classList.remove("is-mobile");
+                computeFit(); applyTransform();
+            }
+            if (mapViewport) {
+                mapViewport.classList.toggle("room-scroll", isMobile() && state.view !== "atlas");
+            }
+        }
+        window.addEventListener("resize", onResizeV2);
+
+        // ---- BOOT --------------------------------------------------------------
+        function initV2() {
+            var hash = (location.hash || "").replace("#", "");
+            var start = (hash && LAYERS[hash]) ? hash : "atlas";
+            state.history = (start === "atlas") ? ["atlas"]
+                : (VIEW_PARENTS[start] || ["atlas"]).concat([start]);
+            try { history.replaceState({ view: start }, "", start === "atlas" ? location.pathname + location.search : "#" + start); } catch (e) {}
+            render(start);
+        }
         if (document.readyState === "complete" || document.readyState === "interactive") {
-            requestAnimationFrame(init);
+            requestAnimationFrame(initV2);
         } else {
-            window.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(init); });
+            window.addEventListener("DOMContentLoaded", function () { requestAnimationFrame(initV2); });
         }
     })();
     </script>
