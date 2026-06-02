@@ -529,17 +529,23 @@
         .tool-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
         /* ---- Keyboard focus ring for interactive graph nodes (WCAG 2.1.1) ----
-           Theme-colored (indigo/violet). The box-shadow ring renders INSIDE the
-           node so it shows through the glass even if a foreignObject clips the
-           outer outline. */
+           Theme-colored (indigo/violet). An OUTER outline/box-shadow gets clipped
+           by the foreignObject bounds (= node bounds), so the ring is drawn with
+           an INSET box-shadow — it renders inside the node box and is never clipped.
+           A double inset (crisp 3px accent + softer 7px halo) gives a clear,
+           high-contrast indicator for keyboard nav. */
         .hm-node:focus-visible {
-            outline: 2px solid var(--accent, #8b5cf6);
-            outline-offset: 2px;
-            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.25);
+            outline: none;
+            box-shadow: inset 0 0 0 3px var(--accent, #8b5cf6),
+                        inset 0 0 0 7px rgba(139, 92, 246, 0.32);
         }
-        .hm-portal:focus-visible {
-            outline: 2px solid var(--accent, #8b5cf6);
-            outline-offset: 2px;
+        /* SVG portal: outline:focus-visible is unreliable in Chrome — brighten the
+           pill's own background + stroke instead so the focus state is obvious. */
+        .hm-portal:focus-visible { outline: none; }
+        .hm-portal:focus-visible .hm-portal__bg {
+            fill: rgba(99, 102, 241, 0.34);
+            stroke: var(--accent, #8b5cf6);
+            stroke-width: 2.5;
         }
         .tool-chip .perm-dot {
             display: inline-block; width: 7px; height: 7px; border-radius: 50%;
