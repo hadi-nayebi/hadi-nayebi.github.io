@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.6.0 -->
+<!-- Version: v3.6.1 -->
 <html lang="en">
 
 <head>
@@ -601,7 +601,8 @@
         /* ---- Color/type legend: glass, top-left, collapsible ---- */
         .hm-legend {
             position: fixed;
-            top: 4.4rem; left: 1.6rem;
+            bottom: 1.6rem; left: 1.6rem;   /* moved to bottom-left: the top-left is the bg-note's
+                                               zone — expands upward into the empty lower-left */
             z-index: 1500;
             width: 252px; max-width: calc(100vw - 3.2rem);
             background: rgba(10,10,16,0.72);
@@ -652,8 +653,8 @@
            the two never stack. No box/border — just muted text on the dark field. */
         .hm-bgnote {
             position: absolute;
-            top: 6.8rem;            /* sits just below the collapsed legend (top 4.4rem), in the
-                                       clear top-left zone ABOVE the re-laid SessionStart node */
+            top: 4.4rem;            /* top-left zone (legend moved to bottom-left); clears the
+                                       re-laid SessionStart node below */
             left: 1.7rem;
             z-index: 1;             /* visible: above the root's opaque background. The map
                                        viewport sits at z-index 2 so the diagram still paints IN
