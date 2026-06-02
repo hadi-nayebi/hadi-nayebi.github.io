@@ -50,7 +50,7 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 - **Phase commit shape** — the required `## ` section structure every `--force` advance commit carries, plus per-phase custom gates; the double-verify system. _Avoid:_ commit template/format.
 - **Intermediate vs force-advance commits** — intermediate (`<phase>-commit.sh` without `--force`, ungated except a ≥20-word message floor; direct git is BLOCKED) vs `--force` (shape + 100 points + custom gates; advances the phase). Clean git gates every transition (forward AND backward). _Avoid:_ "save vs advance commits," "plain git commit."
 
-**Repeating jobs** (new design — no corpus presence yet)
+**Repeating jobs** (design-only — not yet built; covered in 06_10-plan-state-machine.md)
 - **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm. _Avoid:_ recurring/scheduled/periodic job.
 - **`repeating_interval`** — integer-HOURS field, default 0 (one-shot). _Avoid:_ schedule/freq/cron field, "interval seconds," "repeating_interval_hours" (unit is implicit).
 - **`last_completed_at`** — Unix-epoch field, written once at `job.sh complete`; anchors the re-fire computation. _Avoid:_ completed_at, last_run_at.
