@@ -527,6 +527,20 @@
             transform: translateY(-1px); outline: none;
         }
         .tool-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+        /* ---- Keyboard focus ring for interactive graph nodes (WCAG 2.1.1) ----
+           Theme-colored (indigo/violet). The box-shadow ring renders INSIDE the
+           node so it shows through the glass even if a foreignObject clips the
+           outer outline. */
+        .hm-node:focus-visible {
+            outline: 2px solid var(--accent, #8b5cf6);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.25);
+        }
+        .hm-portal:focus-visible {
+            outline: 2px solid var(--accent, #8b5cf6);
+            outline-offset: 2px;
+        }
         .tool-chip .perm-dot {
             display: inline-block; width: 7px; height: 7px; border-radius: 50%;
             margin-right: 0.45rem; vertical-align: middle;
@@ -1988,6 +2002,13 @@
                     ev.stopPropagation();
                     navigate(m.portalTo || 'spine');
                 });
+                // ---- keyboard a11y: portals are always interactive ----
+                p.setAttribute('tabindex', '0');
+                p.setAttribute('role', 'button');
+                p.setAttribute('aria-label', (m.portalLabel || 'Back to the turn').replace(/[↑↓←→⤵]/g, '').trim() + ' — go back');
+                p.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') { ev.preventDefault(); navigate(m.portalTo || 'spine'); }
+                });
                 layer.appendChild(p);
                 return;
             }
@@ -2009,6 +2030,28 @@
                 if (m.drill) { navigate(m.drill); return; }
                 openInfo(node.id);
             });
+
+            // ---- keyboard a11y: only INTERACTIVE nodes become focusable ----
+            // A node does something on activation iff it has an action, a drill
+            // target, or a NODE_INFO detail entry. Decorative group/frame boxes
+            // (no action/drill, no NODE_INFO) stay non-focusable.
+            var interactive = !!(m.action || m.drill || (HM.NODE_INFO || {})[node.id]);
+            if (interactive) {
+                box.setAttribute('tabindex', '0');
+                box.setAttribute('role', 'button');
+                var aria;
+                if (m.action === 'tools') {
+                    aria = (m.title || node.id) + ', ' + (m.sub || '') + ' — open the tool reference';
+                } else if (m.drill) {
+                    aria = (m.title || node.id) + ' — open the ' + (m.title || node.id) + ' room';
+                } else {
+                    aria = (m.title || node.id) + (m.sub ? ', ' + m.sub : '') + ' — show details';
+                }
+                box.setAttribute('aria-label', aria);
+                box.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') { ev.preventDefault(); box.click(); }
+                });
+            }
 
             // ---- hover tooltip (desktop): quick scan from NODE_INFO.what ----
             box.addEventListener('mouseenter', function (ev) { showTip(node.id, m, ev); });
