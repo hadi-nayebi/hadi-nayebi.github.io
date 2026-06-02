@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.4.1 -->
+<!-- Version: v3.4.2 -->
 <html lang="en">
 
 <head>
@@ -155,6 +155,7 @@
             padding: 24px;
             overflow: hidden;
             position: relative;
+            z-index: 2;             /* paints IN FRONT of the .hm-bgnote (z-index 1) */
         }
 
         /* The SVG: viewBox handles scale-to-fit. width:100% + height:auto. */
@@ -649,7 +650,9 @@
             position: absolute;
             top: 8.2rem;            /* sits BELOW the collapsed legend (legend top 4.4rem) */
             left: 1.7rem;
-            z-index: -1;            /* behind the diagram, above the .hm-root background */
+            z-index: 1;             /* visible: above the root's opaque background. The map
+                                       viewport sits at z-index 2 so the diagram still paints IN
+                                       FRONT of this note (and a zoomed node covers it, not vice-versa). */
             width: 205px;           /* narrow: stays in the clear far-left column, clear of the
                                        Session-lifecycle group (~x250) and SessionStart below */
             margin: 0;
