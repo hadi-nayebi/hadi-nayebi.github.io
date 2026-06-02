@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Customization Guardrail — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b5/images/always-on-digital-cortex-b5.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260601">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -175,7 +175,7 @@
 
                         <p>4. <strong>On approval, the Post handler creates the new job and flips its <code>plugin_lock_approval</code> flag.</strong> <sup class="ref-marker" title="ref: post-handler-create-then-approve | .claude/plugins/job_core/hooks/question-capture-hook.sh &quot;JOB-APPROVE-CREATION Handler&quot; section | The handler extracts the proposed name from the question text, calls `bash &quot;$JOB_SH&quot; create &quot;$new_name&quot;` to capture the new job id, then `bash &quot;$JOB_SH&quot; --hook approve-plugin-lock &quot;$new_id&quot;` to flip the flag. The new job lives in the standard data.json structure, distinguishable from typical jobs only by the top-level `plugin_lock_approval == true`. Voice `job-approve-creation-result` confirms with `new_id` + `new_name` substituted and reminds the agent to focus + activate the new job when ready.">&#9432;</sup></p>
 
-                        <p>5. <strong>The agent focuses and activates the new job</strong> when ready to begin substrate work. The pending job sits in the data.json until the agent (or operator) decides to switch contexts. Inside the activated approved job, <code>[PLUGIN-LOCK]</code> admits without further questioning &mdash; the gate sees <code>plugin_lock_approval=true</code> on the focused job and admits the lock for both editing existing plugins AND creating new ones. <sup class="ref-marker" title="ref: pending-job-then-focus-activate | .claude/plugins/job_core/scripts/job.sh focus + activate subcommands + .claude/plugins/plugin_integrity/hooks/lock-manager.sh OR-gate | The newly approved job is created `status:&quot;pending&quot;, focused:false` with top-level `plugin_lock_approval=true` already set (via the `--hook approve-plugin-lock` call inside the Post handler). The agent later runs `job.sh activate &lt;new_id&gt;` (flips status to active; clears `plugin_lock_approval=false` if reactivating a completed job — stale approvals don&#x27;t leak through reactivation) then `job.sh focus &lt;new_id&gt;` (clears focus on all other jobs; sets focused=true on the new one). Once focused, lock-manager.sh reads the top-level `plugin_lock_approval` field — the second arm of the OR-gate — and admits PLUGIN-LOCK inside the job for both editing existing plugins and creating new ones.">&#9432;</sup></p>
+                        <p>5. <strong>The agent focuses and activates the new job</strong> when ready to begin substrate work. The pending job sits in the data.json until the agent (or operator) decides to switch contexts. Inside the activated approved job, <code>[PLUGIN-LOCK]</code> admits without further questioning &mdash; the gate sees <code>plugin_lock_approval=true</code> on the focused job and admits the lock for both editing existing plugins AND creating new ones. <sup class="ref-marker" title="ref: pending-job-then-focus-activate | .claude/plugins/job_core/scripts/job.sh focus + activate subcommands + .claude/plugins/plugin_integrity/hooks/lock-manager.sh OR-gate | The newly approved job is created `status:&quot;pending&quot;, focused:false` with top-level `plugin_lock_approval=true` already set (via the `--hook approve-plugin-lock` call inside the Post handler). The agent later runs `job.sh activate &lt;new_id&gt;` (flips status to active; `plugin_lock_approval` is job-identity-level and is NEVER reset — it persists across reactivations, since a job approved to touch plugins stays approved) then `job.sh focus &lt;new_id&gt;` (clears focus on all other jobs; sets focused=true on the new one). Once focused, lock-manager.sh reads the top-level `plugin_lock_approval` field — the second arm of the OR-gate — and admits PLUGIN-LOCK inside the job for both editing existing plugins and creating new ones.">&#9432;</sup></p>
 
                         <h2>What would break without it</h2>
 
@@ -296,8 +296,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260601"></script>
-    <script src="../../js/components.js?v=20260601"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>
