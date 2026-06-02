@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.4.2 -->
+<!-- Version: v3.4.3 -->
 <html lang="en">
 
 <head>
@@ -1025,7 +1025,7 @@
                     shook("postcompact", "PostCompact", "observe-only"),
                     shook("instructionsloaded", "InstructionsLoaded", "observe-only")
                 ]),
-                group("grp-output", "Output & signals · thematic, not one trigger", [
+                group("grp-output", "Output & signals · thematic", [
                     shook("messagedisplay", "MessageDisplay", "display-only rewrite"),
                     shook("notification", "Notification", "observe-only"),
                     shook("stopfailure", "StopFailure", "observe-only")
@@ -1047,9 +1047,9 @@
                 edge("e-disp-respond", "dispatcher", "respond", "normal"),
                 edge("e-respond-stop", "respond", "stop", "normal"),
                 // Stop's CLEAN exit: turn ends, wait for the next user message
-                edge("e-stop-loop", "stop", "your-text", "loop", "clean stop · next turn"),
+                edge("e-stop-loop", "stop", "your-text", "loop", "next turn"),
                 // Stop's BLOCK self-loop: refuse to finish, re-enter the SAME turn at the dispatcher
-                edge("e-stop-block", "stop", "dispatcher", "error", "block · keep going"),
+                edge("e-stop-block", "stop", "dispatcher", "error", "keep going"),
 
                 /* ---- dispatcher <-> drill pills, each round-tripping back ---- */
                 edge("e-disp-tool", "dispatcher", "tool-loop-pill", "normal", ""),
