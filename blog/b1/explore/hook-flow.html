@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.4.3 -->
+<!-- Version: v3.5.1 -->
 <html lang="en">
 
 <head>
@@ -364,18 +364,22 @@
             rx: 14;
         }
 
-        /* ---- Edges ---- */
+        /* ---- Edges (v3.5.0 — curved SPLINES, per-type reads distinctly) ----
+           normal = main flow (bright indigo, solid) · loop = the turn / return
+           (violet, thicker, different hue) · error = refuse-to-finish + failure
+           (warm red) · branch = secondary side-feeds (faint, dashed, thin —
+           must recede) · report = delegation result (green, dashed). */
         .hm-edge {
             fill: none;
-            stroke: rgba(190,194,228,0.72);
+            stroke: rgba(190,194,228,0.80);   /* main flow — brightest */
             stroke-width: 2.2;
             stroke-linejoin: round;
             stroke-linecap: round;
         }
-        .hm-edge--loop   { stroke: rgba(146,138,250,0.92); stroke-width: 2.7; }
-        .hm-edge--report { stroke: rgba(72,217,160,0.78); stroke-width: 2; stroke-dasharray: 7 5; }
-        .hm-edge--branch { stroke: rgba(150,156,216,0.55); stroke-width: 1.9; stroke-dasharray: 4 6; }
-        .hm-edge--error  { stroke: rgba(248,120,120,0.82); stroke-width: 2.3; }
+        .hm-edge--loop   { stroke: rgba(176,150,252,0.94); stroke-width: 2.4; }   /* violet, distinct hue — the turn loop / return */
+        .hm-edge--report { stroke: rgba(72,217,160,0.80); stroke-width: 2.1; stroke-dasharray: 7 5; }
+        .hm-edge--branch { stroke: rgba(150,156,216,0.50); stroke-width: 1.5; stroke-dasharray: 4 6; }  /* faint + dashed + thin — recedes */
+        .hm-edge--error  { stroke: rgba(248,130,120,0.88); stroke-width: 2.3; }   /* warm red — refuse-to-finish / failure paths */
         .hm-edge-label-bg {
             fill: rgba(9,9,15,0.94);
             stroke: rgba(139,92,246,0.30);
@@ -648,7 +652,8 @@
            the two never stack. No box/border — just muted text on the dark field. */
         .hm-bgnote {
             position: absolute;
-            top: 8.2rem;            /* sits BELOW the collapsed legend (legend top 4.4rem) */
+            top: 6.8rem;            /* sits just below the collapsed legend (top 4.4rem), in the
+                                       clear top-left zone ABOVE the re-laid SessionStart node */
             left: 1.7rem;
             z-index: 1;             /* visible: above the root's opaque background. The map
                                        viewport sits at z-index 2 so the diagram still paints IN
@@ -1070,8 +1075,10 @@
             return {
                 id: "root",
                 layoutOptions: {
-                    'elk.layered.spacing.nodeNodeBetweenLayers': '48',
-                    'elk.spacing.nodeNode': '40'
+                    // v3.5.0 — give SPLINES room so the dispatcher↔pill round-trips
+                    // and the long Stop self-loop curve apart instead of stacking.
+                    'elk.layered.spacing.nodeNodeBetweenLayers': '70',
+                    'elk.spacing.nodeNode': '50'
                 },
                 children: children,
                 edges: edges
@@ -1800,18 +1807,27 @@
         var currentView = 'spine';
 
         // Verbatim background explainer text — shown only on the spine view.
-        var BG_NOTE_TEXT = 'This map shows ONE agent turn as a Markov chain. Your prompt enters, the agent THINKS, then a DISPATCHER routes its next move down one of four lanes — answer you, call a tool, delegate to another mind, or compact memory — and the result re-enters THINK. The agent loops here, move after move, until Stop lets it leave (a blocked Stop sends it back into the SAME loop to keep working; a clean Stop ends the turn). DISPATCHER, THINK and RESPOND are conceptual, not real hooks. Tool Loop and Delegation are busy enough to be their own drill-in rooms. The faint side groups are out-of-band hooks that fire on their own triggers, not every turn.';
+        var BG_NOTE_TEXT = 'One agent turn, as a Markov chain. Your prompt enters; the agent THINKS; a DISPATCHER routes its next move — answer, call a tool, delegate, or compact memory — then loops back to THINK. It repeats until Stop: a blocked Stop loops back to keep working, a clean Stop ends the turn. THINK, DISPATCHER and RESPOND are conceptual, not hooks. Tool Loop and Delegation open as their own rooms; the faint side-groups fire out-of-band.';
         var laying = false;
 
         var BASE_OPTS = {
             'elk.algorithm': 'layered',
-            'elk.edgeRouting': 'ORTHOGONAL',
-            'elk.spacing.nodeNode': '44',
+            // v3.5.0 — SPLINES: ELK returns each edge's bend points as control
+            // points for a piecewise cubic spline (see drawEdge). Curved routes
+            // read flow far better than the old long parallel right-angle runs.
+            'elk.edgeRouting': 'SPLINES',
+            // Generous node spacing gives the curves room so they separate
+            // instead of stacking into one indistinguishable band.
+            'elk.spacing.nodeNode': '50',
             'elk.layered.spacing.nodeNodeBetweenLayers': '70',
+            // Edge↔edge / edge↔node spacing bumped so parallel routes fan apart.
             'elk.spacing.edgeNode': '24',
-            'elk.spacing.edgeEdge': '16',
-            'elk.layered.spacing.edgeNodeBetweenLayers': '28',
-            'elk.layered.mergeEdges': 'true',
+            'elk.spacing.edgeEdge': '24',
+            'elk.layered.spacing.edgeNodeBetweenLayers': '24',
+            'elk.layered.spacing.edgeEdgeBetweenLayers': '24',
+            // mergeEdges OFF so round-trip pairs (down + up) stay distinct curves
+            // that can be offset apart rather than collapsed onto one another.
+            'elk.layered.mergeEdges': 'false',
             'elk.layered.nodePlacement.strategy': 'NETWORK_SIMPLEX',
             'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
             'elk.padding': '[top=30,left=30,bottom=30,right=30]'
@@ -1895,9 +1911,10 @@
         function buildDefs() {
             var defs = svg('defs');
             [['hm-arrow', 'rgba(200,204,236,0.92)'],
-             ['hm-arrow-loop', 'rgba(146,138,250,0.98)'],
+             ['hm-arrow-loop', 'rgba(176,150,252,0.98)'],
              ['hm-arrow-report', 'rgba(72,217,160,0.9)'],
-             ['hm-arrow-error', 'rgba(248,120,120,0.95)']
+             ['hm-arrow-branch', 'rgba(150,156,216,0.55)'],
+             ['hm-arrow-error', 'rgba(248,130,120,0.95)']
             ].forEach(function (m) {
                 var mk = svg('marker', {
                     id: m[0], markerWidth: 12, markerHeight: 12, refX: 8.4, refY: 4,
@@ -1972,7 +1989,81 @@
             layer.appendChild(fo);
         }
 
-        /* ---- edge: SVG path from sections ---- */
+        /* ---- edge: SMOOTH CURVED SVG path from a SPLINES section (v3.5.0) ----
+           With elk.edgeRouting=SPLINES, ELK returns each section's bend points
+           as CONTROL POINTS for a piecewise cubic spline:
+             [startPoint, ...bendPoints, endPoint]
+           consumed as  M start  then groups of 3 → C c1 c2 p.
+           Remainders are handled so a section NEVER renders a stray straight
+           cut: a remainder of 2 → quadratic Q; a remainder of 1 → a smooth
+           Catmull-Rom-derived cubic through the points. If ELK falls back to
+           polyline-style output (bend count not spline-shaped), we still smooth
+           the whole point list with Catmull-Rom so every edge curves. */
+        function n3(v) { return Math.round(v * 100) / 100; }
+
+        // Catmull-Rom → cubic-bezier path through an arbitrary point list.
+        // Guarantees a smooth curve (never a straight polyline) for fallbacks.
+        function smoothPath(pts) {
+            if (pts.length < 2) return '';
+            if (pts.length === 2) {
+                return 'M' + n3(pts[0].x) + ',' + n3(pts[0].y) +
+                       ' L' + n3(pts[1].x) + ',' + n3(pts[1].y);
+            }
+            var d = 'M' + n3(pts[0].x) + ',' + n3(pts[0].y);
+            for (var i = 0; i < pts.length - 1; i++) {
+                var p0 = pts[i === 0 ? 0 : i - 1];
+                var p1 = pts[i];
+                var p2 = pts[i + 1];
+                var p3 = pts[i + 2 < pts.length ? i + 2 : pts.length - 1];
+                var c1x = p1.x + (p2.x - p0.x) / 6;
+                var c1y = p1.y + (p2.y - p0.y) / 6;
+                var c2x = p2.x - (p3.x - p1.x) / 6;
+                var c2y = p2.y - (p3.y - p1.y) / 6;
+                d += ' C' + n3(c1x) + ',' + n3(c1y) + ' ' + n3(c2x) + ',' + n3(c2y) +
+                     ' ' + n3(p2.x) + ',' + n3(p2.y);
+            }
+            return d;
+        }
+
+        // Interpret an ELK SPLINES section: control points in groups of 3.
+        function splinePath(s) {
+            var start = s.startPoint;
+            var bends = s.bendPoints || [];
+            var end = s.endPoint;
+            // No bend points at all → smooth (here, a straight) link start→end.
+            if (!bends.length) {
+                return 'M' + n3(start.x) + ',' + n3(start.y) +
+                       ' L' + n3(end.x) + ',' + n3(end.y);
+            }
+            var d = 'M' + n3(start.x) + ',' + n3(start.y);
+            var i = 0;
+            // Full cubic groups of 3: C c1 c2 p
+            while (i + 3 <= bends.length) {
+                d += ' C' + n3(bends[i].x) + ',' + n3(bends[i].y) +
+                     ' ' + n3(bends[i + 1].x) + ',' + n3(bends[i + 1].y) +
+                     ' ' + n3(bends[i + 2].x) + ',' + n3(bends[i + 2].y);
+                i += 3;
+            }
+            var rem = bends.length - i;
+            if (rem === 2) {
+                // Two leftover controls → finish with a cubic into endPoint.
+                d += ' C' + n3(bends[i].x) + ',' + n3(bends[i].y) +
+                     ' ' + n3(bends[i + 1].x) + ',' + n3(bends[i + 1].y) +
+                     ' ' + n3(end.x) + ',' + n3(end.y);
+            } else if (rem === 1) {
+                // One leftover control → quadratic into endPoint (still curved).
+                d += ' Q' + n3(bends[i].x) + ',' + n3(bends[i].y) +
+                     ' ' + n3(end.x) + ',' + n3(end.y);
+            } else {
+                // rem === 0 → groups consumed exactly; curve to endPoint smoothly
+                // by reusing the last control as the tangent (quadratic).
+                var last = bends[bends.length - 1];
+                d += ' Q' + n3(last.x) + ',' + n3(last.y) +
+                     ' ' + n3(end.x) + ',' + n3(end.y);
+            }
+            return d;
+        }
+
         function drawEdge(layer, edge) {
             var secs = edge.sections || [];
             var m = edge.meta || {};
@@ -1981,13 +2072,22 @@
             var marker = 'hm-arrow';
             if (kind === 'loop') marker = 'hm-arrow-loop';
             else if (kind === 'report') marker = 'hm-arrow-report';
+            else if (kind === 'branch') marker = 'hm-arrow-branch';
             else if (kind === 'error') marker = 'hm-arrow-error';
 
             secs.forEach(function (s) {
-                var pts = [s.startPoint].concat(s.bendPoints || [], [s.endPoint]);
-                var d = pts.map(function (pt, i) {
-                    return (i === 0 ? 'M' : 'L') + pt.x + ',' + pt.y;
-                }).join(' ');
+                var d;
+                var bends = s.bendPoints || [];
+                // SPLINES control-point interpretation when the bend count is
+                // spline-shaped (≥1 and the leftover after groups-of-3 is 0/1/2,
+                // which is always true) — otherwise smooth the raw polyline.
+                if (bends.length) {
+                    d = splinePath(s);
+                } else {
+                    // 0 bends: a clean start→end. Keep it a (very short) curve-safe
+                    // line; with round caps it reads fine and never looks like a cut.
+                    d = smoothPath([s.startPoint, s.endPoint]);
+                }
                 var path = svg('path', { 'class': cls, d: d, 'marker-end': 'url(#' + marker + ')' });
                 layer.appendChild(path);
             });
