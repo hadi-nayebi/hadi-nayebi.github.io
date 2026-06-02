@@ -32,7 +32,7 @@
             --primary: #6366f1;
             --accent: #8b5cf6;
             --text-main: #e9e9f2;
-            --text-muted: #9a9ab0;
+            --text-muted: #b2b2c6;   /* raised from #9a9ab0 for WCAG AA on dark glass */
             --border: rgba(255, 255, 255, 0.10);
             --glass: rgba(255, 255, 255, 0.045);
             --glass-hover: rgba(255, 255, 255, 0.085);
@@ -214,7 +214,7 @@
         .hm-node__sub {
             font-size: 10.5px;
             line-height: 1.25;
-            color: #a7a7ba;
+            color: #bdbdd0;   /* raised from #a7a7ba for legibility on glass nodes */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -332,11 +332,11 @@
             box-shadow:
                 0 3px 14px rgba(0,0,0,0.30),
                 inset 0 1px 0 rgba(255,255,255,0.04);
-            opacity: 0.82;
+            opacity: 0.88;   /* was 0.82 — recedes but stays AA-legible */
         }
         .hm-node--secondary:hover { opacity: 1; border-color: rgba(139,92,246,0.55); }
-        .hm-node--secondary .hm-node__title { font-size: 11.5px; font-weight: 500; color: #cfcfdd; }
-        .hm-node--secondary .hm-node__sub { font-size: 9.5px; }
+        .hm-node--secondary .hm-node__title { font-size: 11.5px; font-weight: 500; color: #d6d6e2; }
+        .hm-node--secondary .hm-node__sub { font-size: 10px; }
 
         /* Action-space node opens the tool modal */
         .hm-node--action {
@@ -685,7 +685,8 @@
             font-size: 0.74rem;
             line-height: 1.45;
             color: var(--text-muted);
-            opacity: 0.5;
+            opacity: 0.8;           /* was 0.5 — at 0.5 the note dropped to ~2.5:1 (fails AA);
+                                       0.8 keeps the subdued "background" feel but stays legible */
             pointer-events: none;   /* never intercepts clicks meant for the map */
             user-select: text;
         }
