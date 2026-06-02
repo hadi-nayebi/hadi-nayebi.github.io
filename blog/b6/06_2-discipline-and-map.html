@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Discipline and the Map — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260601">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -188,7 +188,7 @@
 
                         <p>The tool fence governs what the agent can <em>touch</em> inside a phase. A second discipline governs how a phase <em>ends</em>.</p>
 
-                        <p>The agent commits as often as it wants inside a phase. Most of those are ordinary saves &mdash; a plain <code>git commit</code> to checkpoint a working draft, split a messy change into reviewable chunks, or bank a recovery point before a risky edit. These are <strong>intermediate commits</strong>, and they pass through untouched: no gate fires, no count is checked, nothing blocks. They are bookkeeping, and bookkeeping should be cheap. <sup class="ref-marker" title="ref: intermediate-commits-are-ungated | CONTEXT.md &quot;Intermediate vs force-advance commits&quot; section | The canonical glossary defines two commit kinds: &quot;Intermediate commits — plain `git commit -m \&quot;...\&quot;` invocations during phase work. NO gate enforcement. Useful for checkpointing partway-through work, splitting changes into reviewable chunks, or recovering from a botched edit. Don&#x27;t fire shape, points, or custom gates.&quot; The EXECUTE essay&#x27;s checkpoint pattern is exactly this kind of commit.">&#9432;</sup></p>
+                        <p>The agent commits as often as it wants inside a phase. Most of those are ordinary saves &mdash; a <code>&lt;phase&gt;-commit.sh</code> call without <code>--force</code> to checkpoint a working draft, split a messy change into reviewable chunks, or bank a recovery point before a risky edit. These are <strong>intermediate commits</strong>, and they pass through untouched: no gate fires, no count is checked, nothing blocks. They are bookkeeping, and bookkeeping should be cheap. <sup class="ref-marker" title="ref: intermediate-commits-are-ungated | CONTEXT.md &quot;Intermediate vs force-advance commits&quot; section | The canonical glossary defines two commit kinds: &quot;Intermediate commits — `&lt;phase&gt;-commit.sh` (without `--force`) during phase work; auto-stages the phase file-group, adds the `[intermediate]` prefix, gated only by a ≥20-word message floor. Direct `git commit` is BLOCKED.&quot; The EXECUTE essay&#x27;s checkpoint pattern is exactly this kind of commit.">&#9432;</sup></p>
 
                         <p>Exactly one commit per phase is different: the one that <em>advances</em> the phase. To cross a boundary &mdash; OBSERVE handing off to PLAN, EXECUTE handing off to VERIFY &mdash; the agent runs the phase&rsquo;s force-advance commit (<code>&lt;phase&gt;-commit.sh --force</code>). That commit is the only one the orchestrator gates. It checks the phase&rsquo;s point count (the hundred-point threshold from <a href="06_8-inverse-multiplier.html">Essay 6.8</a>), it checks the phase&rsquo;s custom requirements, and only if all of them clear does the cycle move forward. The design intent is plain: spend the agent&rsquo;s care where the decision actually matters &mdash; at the boundary where one mode of thinking hands its work to the next &mdash; not on every routine save in between. <sup class="ref-marker" title="ref: force-advance-is-the-gated-boundary-commit | CONTEXT.md &quot;Intermediate vs force-advance commits&quot; + &quot;Per-phase points&quot; sections | The glossary: &quot;`--force` advance commits — `&lt;phase&gt;-commit.sh --force`. THE phase-boundary commit. Gated by Phase commit shape + 100 Per-phase points + any per-phase custom gates … Successful `--force` advances the phase.&quot; And the design intent verbatim: &quot;concentrate the cognitive load on phase-boundary decisions. The agent can commit freely during phase work without tripping gates; the gate fires ONCE per phase, at the boundary.&quot; The 100-point threshold is the per-phase forward-advance gate.">&#9432;</sup></p>
 
@@ -344,8 +344,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260601"></script>
-    <script src="../../js/components.js?v=20260601"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

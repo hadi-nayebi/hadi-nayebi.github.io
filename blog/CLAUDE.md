@@ -371,7 +371,7 @@ These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2
 
 **Rule 4 — Always-on vs phasic relationship to the CLAUDE.md layer.**
 - The CLAUDE.md hierarchy is the SUBSTRATE the phasic system uses as its working medium.
-- The PHASIC plugins WRITE to it (footer markers `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`, body sections; CONDENSE waterfall routes content upward into bodies, sideways into knowledge files, and into voice files, plugin definitions, even new plugins).
+- The PHASIC plugins WRITE to it (footer anchors `---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`, body sections; CONDENSE waterfall routes content upward into bodies, sideways into knowledge files, and into voice files, plugin definitions, even new plugins).
 - The ALWAYS-ON plugins each own their own concern and their own data files. Their relationship to the CLAUDE.md layer **varies plugin by plugin**: `plugin_integrity` polices the four phase markers from removal but explicitly EXEMPTS CLAUDE.md content from lock checks (per `plugin-guard.sh:562-575`, "DOCUMENTATION ALWAYS FREE"); the other four (`brain_guard`, `job_core`, `interaction_summary`, `question_discipline`) are orthogonal to CLAUDE.md, owning concerns (context budget, job lifecycle, interaction summarization, question discipline) entirely inside their own data files.
 - The unifying property of the always-on layer is **phase-independence** (each plugin runs continuously regardless of phase), not its relationship to the CLAUDE.md layer.
 - WRONG: "the always-on plugins protect the bus's integrity"
@@ -429,7 +429,7 @@ The four posts must feel aware of each other. Each concept is introduced once, t
 | Compartmentalization → forward-pressure | preview | **center** | reference | reference |
 | CONDENSE as organ + 7-step waterfall | seed | **center** | mechanism | recall |
 | Multiplier sentinel | — | **center** | reference | recall |
-| Footer markers (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) | seed | use | **center** | recall |
+| Footer anchors (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) | seed | use | **center** | recall |
 | Altered list (CLAUDE.md edits scope EXECUTE) | **introduce** | mechanism | reference | recall |
 | Per-phase write rule (cannot edit above own anchor) | **introduce** | reinforce | reference | — |
 | Inline markers (`[PENDING-JOB]` etc.) | — | seed | **center** | recall |
