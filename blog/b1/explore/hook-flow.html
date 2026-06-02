@@ -2478,22 +2478,31 @@
                 zoomBy(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY);
             }, { passive: false });
 
-            // drag-to-pan (only meaningful while zoomed in)
-            var dragging = false, sx = 0, sy = 0, opx = 0, opy = 0;
+            // drag-to-pan (only meaningful while zoomed in). A movement THRESHOLD
+            // keeps a small click/tap from being treated as a pan — so clicking a
+            // node activates it instead of nudging the whole map (the tap-vs-pan fix).
+            var PAN_THRESHOLD = 8;          // px the pointer must travel before it pans
+            var armed = false, dragging = false, sx = 0, sy = 0, opx = 0, opy = 0;
             viewport.addEventListener('mousedown', function (e) {
                 var s = currentStage();
-                if (!s || e.button !== 0) return;
-                dragging = true; sx = e.clientX; sy = e.clientY; opx = panX; opy = panY;
-                s.classList.add('is-panning');
-                hideTip();
+                if (!s || e.button !== 0 || zoom <= 1) return;   // pan only when zoomed in
+                armed = true; dragging = false;
+                sx = e.clientX; sy = e.clientY; opx = panX; opy = panY;
             });
             window.addEventListener('mousemove', function (e) {
-                if (!dragging) return;
+                if (!armed) return;
+                if (!dragging) {
+                    if (Math.hypot(e.clientX - sx, e.clientY - sy) < PAN_THRESHOLD) return;
+                    dragging = true;                 // crossed the threshold → it's a pan
+                    var st = currentStage(); if (st) st.classList.add('is-panning');
+                    hideTip();
+                }
                 panX = opx + (e.clientX - sx);
                 panY = opy + (e.clientY - sy);
                 applyTransform();
             });
             window.addEventListener('mouseup', function () {
+                armed = false;
                 if (!dragging) return;
                 dragging = false;
                 var s = currentStage();
@@ -2501,12 +2510,13 @@
             });
 
             // touch pinch + one-finger pan
-            var pStart = 0, pZoom = 1, tpx = 0, tpy = 0, tox = 0, toy = 0, panning = false;
+            var pStart = 0, pZoom = 1, tpx = 0, tpy = 0, tox = 0, toy = 0, panning = false, tMoved = false;
             viewport.addEventListener('touchstart', function (e) {
                 if (e.touches.length === 2) {
                     pStart = touchDist(e.touches); pZoom = zoom;
                 } else if (e.touches.length === 1 && zoom > 1) {
-                    panning = true; tpx = e.touches[0].clientX; tpy = e.touches[0].clientY; tox = panX; toy = panY;
+                    panning = true; tMoved = false;
+                    tpx = e.touches[0].clientX; tpy = e.touches[0].clientY; tox = panX; toy = panY;
                 }
             }, { passive: true });
             viewport.addEventListener('touchmove', function (e) {
@@ -2517,6 +2527,10 @@
                     var target = pZoom * (d / pStart);
                     zoomBy(target / zoom, c.x, c.y);
                 } else if (panning && e.touches.length === 1) {
+                    // same 8px threshold: a tap that drifts slightly still activates the
+                    // node under it instead of panning the map.
+                    if (!tMoved && Math.hypot(e.touches[0].clientX - tpx, e.touches[0].clientY - tpy) < 8) return;
+                    tMoved = true;
                     panX = tox + (e.touches[0].clientX - tpx);
                     panY = toy + (e.touches[0].clientY - tpy);
                     applyTransform();
