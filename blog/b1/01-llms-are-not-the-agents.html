@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="LLMs Are Not the Agents — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b1/images/llm-engine-agent-directory-b1-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260601">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -245,10 +245,10 @@
 
                         <p>Modern CLI agents support <strong>hook systems</strong> &mdash; events that fire at specific points in the agent&rsquo;s lifecycle.</p>
 
-                        <figure class="blog-image" style="margin: 2rem 0; text-align: center;">
+                        <figure class="blog-image" data-explore="explore/hook-flow.html" style="margin: 2rem 0; text-align: center;">
   <span style="position: relative; display: inline-block; max-width: 800px; width: 100%;">
     <img src="images/hooks-and-action-space-b1-4.png" alt="Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior." style="width: 100%; height: auto; display: block; border-radius: 8px;">
-    <a href="explore/hook-flow.html" aria-label="Explore the interactive version of this diagram" title="Explore the interactive version" style="position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.3rem 0.58rem; font-size: 0.76rem; font-weight: 600; line-height: 1; color: #ffffff; text-decoration: none; background: rgba(5, 5, 7, 0.72); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 7px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); transition: background 0.2s ease, border-color 0.2s ease;" onmouseover="this.style.background='rgba(99,102,241,0.9)';this.style.borderColor='rgba(255,255,255,0.6)';" onmouseout="this.style.background='rgba(5,5,7,0.72)';this.style.borderColor='rgba(255,255,255,0.28)';">&#8599; Explore</a>
+    <a href="explore/hook-flow.html" aria-label="Explore the interactive version of this diagram" title="Open the interactive hook map" style="position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.4rem 0.78rem; font-size: 0.82rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5); transition: transform 0.18s ease, box-shadow 0.18s ease;" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 7px 22px rgba(139,92,246,0.65)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(99,102,241,0.5)';">&#8599; Explore the map</a>
   </span>
   <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.</figcaption>
 </figure>
@@ -421,8 +421,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260518"></script>
-    <script src="../../js/components.js?v=20260518"></script>
+    <script src="../../js/theme-manager.js?v=20260601"></script>
+    <script src="../../js/components.js?v=20260601"></script>
 </body>
 
 </html>

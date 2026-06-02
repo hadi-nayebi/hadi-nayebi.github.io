@@ -104,17 +104,28 @@
         overlay.innerHTML =
             '<button class="lightbox-close" aria-label="Close lightbox">&times;</button>' +
             '<img src="" alt="">' +
-            '<span class="lightbox-caption"></span>';
+            '<span class="lightbox-caption"></span>' +
+            '<a class="lightbox-explore" href="#" style="display:none">' +
+            '<span aria-hidden="true">&#8599;</span> Explore the interactive version</a>';
         document.body.appendChild(overlay);
 
         var img = overlay.querySelector('img');
         var caption = overlay.querySelector('.lightbox-caption');
+        var explore = overlay.querySelector('.lightbox-explore');
 
-        function open(src, alt, captionText) {
+        function open(src, alt, captionText, exploreHref) {
             img.src = src;
             img.alt = alt;
             caption.textContent = captionText || '';
             caption.style.display = captionText ? '' : 'none';
+            // Carry the figure's interactive-version link into the expanded view, so the
+            // Explore affordance survives the lightbox (it lives in the figure, not the img).
+            if (exploreHref) {
+                explore.setAttribute('href', exploreHref);
+                explore.style.display = '';
+            } else {
+                explore.style.display = 'none';
+            }
             overlay.classList.add('active');
             document.body.classList.add('lightbox-open');
         }
@@ -129,7 +140,8 @@
             if (target.matches('.blog-image img')) {
                 var fig = target.closest('.blog-image');
                 var fc = fig ? fig.querySelector('figcaption') : null;
-                open(target.src, target.alt, fc ? fc.textContent : '');
+                var exploreHref = fig ? fig.getAttribute('data-explore') : null;
+                open(target.src, target.alt, fc ? fc.textContent : '', exploreHref);
             }
         });
 
