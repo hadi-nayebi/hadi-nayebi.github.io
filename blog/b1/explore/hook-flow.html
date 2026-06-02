@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v3.3.0 -->
+<!-- Version: v3.4.1 -->
 <html lang="en">
 
 <head>
@@ -640,6 +640,29 @@
         .sw-portal { background: rgba(99,102,241,0.20); border-color: rgba(139,92,246,0.65); }
         .sw-in     { background: linear-gradient(160deg,#122a24,#0c1c18); border-color: rgba(52,211,153,0.6); }
 
+        /* ---- Background explainer note (spine view only) ----
+           A faint paragraph that sits BEHIND the diagram (negative z-index inside
+           the .hm-root stacking context, so it paints above the dark field but
+           below the nodes/edges). Top-left, offset below the collapsed legend so
+           the two never stack. No box/border — just muted text on the dark field. */
+        .hm-bgnote {
+            position: absolute;
+            top: 8.2rem;            /* sits BELOW the collapsed legend (legend top 4.4rem) */
+            left: 1.7rem;
+            z-index: -1;            /* behind the diagram, above the .hm-root background */
+            width: 205px;           /* narrow: stays in the clear far-left column, clear of the
+                                       Session-lifecycle group (~x250) and SessionStart below */
+            margin: 0;
+            font-size: 0.74rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+            opacity: 0.5;
+            pointer-events: none;   /* never intercepts clicks meant for the map */
+            user-select: text;
+        }
+        .hm-bgnote.is-hidden { display: none; }
+        @media (max-width: 820px) { .hm-bgnote { display: none; } }
+
         /* ---- Hover tooltip: quick scan of any node ---- */
         .hm-tooltip {
             position: fixed; z-index: 2600;
@@ -873,7 +896,7 @@
         <div class="hm-orient__card">
             <div class="hm-orient__kicker">How to read this map</div>
             <h2 id="hm-orient-title">This is one turn of the agent.</h2>
-            <p class="hm-orient__lead">Your prompt enters on the <b>left</b>. The agent loops in the <b>middle</b> — thinking, acting, delegating — until it decides to <b>Stop</b> on the right. Then it loops back for your next message.</p>
+            <p class="hm-orient__lead">Your prompt enters on the <b>left</b>. The agent loops in the <b>middle</b> — thinking, acting, delegating — until the <b>Stop</b> gate on the right lets it leave. A <b>clean Stop</b> ends the turn and waits for your next message; a <b>blocked Stop</b> refuses to finish and sends the agent straight back into the SAME loop to keep working.</p>
             <ol class="hm-orient__steps">
                 <li><span class="hm-orient__num">1</span><span><b>Follow the numbered steps</b> along the bright main line — that is the reading order.</span></li>
                 <li><span class="hm-orient__num">2</span><span><b>Hover any box</b> for a one-line summary; <b>click</b> it for the full story.</span></li>
@@ -901,7 +924,7 @@
             <div class="tool-modal-body">
                 <!-- grid view -->
                 <div id="tool-grid-view">
-                    <p class="tool-intro">Everything the agent can actually <em>do</em> in the world. The model proposes one of these each step; nothing happens until a tool runs. <span style="color:var(--accent)">&#9679;</span> needs permission &middot; <span style="color:rgba(120,200,150,0.95)">&#9679;</span> read-only. Click any tool for detail.<br><br><strong style="color:var(--text-main)">The delegation ladder</strong> (worth learning): <em>TodoWrite / Task&#42;</em> track the agent&#39;s OWN work &middot; <em>Agent</em> delegates ONE side-task to a separate mind &middot; <em>Workflow</em> conducts MANY subagents at once. <strong style="color:var(--text-main)">Naming trap:</strong> the old &ldquo;Task&rdquo; tool was renamed <em>Agent</em>; today&#39;s <em>Task&#42;</em> tools are the to-do system &mdash; so &ldquo;Task&rdquo; means different things across versions.</p>
+                    <p class="tool-intro">Everything the agent can actually <em>do</em> in the world. The model proposes one of these each step; nothing happens until a tool runs. <span style="color:var(--accent)">&#9679;</span> needs permission &middot; <span style="color:rgba(120,200,150,0.95)">&#9679;</span> read-only. Click any tool for detail.<br><br><strong style="color:var(--text-main)">The delegation ladder</strong> (worth learning): <em>TodoWrite / Task&#42;</em> track the agent&#39;s OWN work &middot; <em>Agent</em> delegates ONE side-task to a separate mind &middot; <em>Workflow</em> conducts MANY subagents at once. <strong style="color:var(--text-main)">Naming trap:</strong> in some Claude Code versions the <em>Agent</em> tool is surfaced as &ldquo;Task&rdquo;; the <em>Task&#42;</em> tools are the to-do system &mdash; so &ldquo;Task&rdquo; can mean different things across versions.</p>
                     <div class="tool-grid" id="tool-grid"></div>
                 </div>
                 <!-- detail view -->
@@ -975,7 +998,7 @@
                 /* ============ CORE TURN LOOP — flat, prominent, on the main line ============ */
                 node("sessionstart", W_HOOK, H_HOOK, { type: "hook", title: "SessionStart", sub: "observe-only" }),
                 node("your-text", W_STAGE, H_STAGE, { type: "in", title: "User Prompt", sub: "what you typed", step: 1 }),
-                node("userpromptsubmit", W_HOOK, H_HOOK, { type: "hook", title: "UserPromptSubmit", sub: "block / inject / rewrite" }),
+                node("userpromptsubmit", W_HOOK, H_HOOK, { type: "hook", title: "UserPromptSubmit", sub: "block / inject / suppress" }),
                 node("think", W_STAGE, H_STAGE, { type: "stage", title: "THINK", sub: "reasoning", step: 2 }),
                 node("dispatcher", W_STAGE, H_STAGE, { type: "hub", title: "DISPATCHER", sub: "the hub", step: 3 }),
                 node("respond", W_STAGE, H_STAGE, { type: "stage", title: "RESPOND", sub: "output" }),
@@ -983,7 +1006,7 @@
 
                 /* --- the two collapsed compound drill pills (hang off DISPATCHER) --- */
                 node("tool-loop-pill", W_PILL, H_PILL, { type: "pill", title: "Tool Loop", sub: "the agent acts", badge: "8 hooks", drill: "toolloop" }),
-                node("delegation-pill", W_PILL, H_PILL, { type: "pill", title: "Delegation", sub: "hands off work", badge: "5 hooks", drill: "delegation" }),
+                node("delegation-pill", W_PILL, H_PILL, { type: "pill", title: "Delegation", sub: "delegate · track", badge: "5 hooks", drill: "delegation" }),
 
                 /* --- prompt-gate satellite, kept adjacent to the prompt --- */
                 shook("userpromptexpansion", "UserPromptExpansion", "shorthand expands"),
@@ -999,7 +1022,7 @@
                     shook("postcompact", "PostCompact", "observe-only"),
                     shook("instructionsloaded", "InstructionsLoaded", "observe-only")
                 ]),
-                group("grp-output", "Output & signals", [
+                group("grp-output", "Output & signals · thematic, not one trigger", [
                     shook("messagedisplay", "MessageDisplay", "display-only rewrite"),
                     shook("notification", "Notification", "observe-only"),
                     shook("stopfailure", "StopFailure", "observe-only")
@@ -1020,8 +1043,10 @@
                 edge("e-think-disp", "think", "dispatcher", "normal"),
                 edge("e-disp-respond", "dispatcher", "respond", "normal"),
                 edge("e-respond-stop", "respond", "stop", "normal"),
-                // Stop's hero loop back to the next prompt
-                edge("e-stop-loop", "stop", "your-text", "loop", "loops back"),
+                // Stop's CLEAN exit: turn ends, wait for the next user message
+                edge("e-stop-loop", "stop", "your-text", "loop", "clean stop · next turn"),
+                // Stop's BLOCK self-loop: refuse to finish, re-enter the SAME turn at the dispatcher
+                edge("e-stop-block", "stop", "dispatcher", "error", "block · keep going"),
 
                 /* ---- dispatcher <-> drill pills, each round-tripping back ---- */
                 edge("e-disp-tool", "dispatcher", "tool-loop-pill", "normal", ""),
@@ -1087,30 +1112,29 @@
                 edge("t-allow", "pretooluse", "tool-runs", "normal", "allowed"),
 
                 // permission side-branch (ask/defer)
-                edge("t-ask", "pretooluse", "permissionrequest", "branch", "ask"),
-                edge("t-perm-deny", "permissionrequest", "permissiondenied", "error", "denied"),
+                edge("t-ask", "pretooluse", "permissionrequest", "branch", "ask / defer"),
+                // auto-mode classifier deny is its OWN side-branch off PreToolUse (not downstream of the prompt)
+                edge("t-auto-deny", "pretooluse", "permissiondenied", "error", "auto-mode"),
                 edge("t-deny-back", "permissiondenied", "tool-call-in", "branch", "retry"),
 
-                // run -> success / failure
+                // run -> success / failure (per call)
                 edge("t-success", "tool-runs", "posttooluse", "normal", "success"),
                 edge("t-failure", "tool-runs", "posttoolusefailure", "error", "error"),
-
-                // parallel batch branch
-                edge("t-batch", "tool-runs", "posttoolbatch", "normal", "batch"),
-                edge("t-batch-result", "posttoolbatch", "tool-result", "normal", ""),
 
                 // MCP pause off the running tool
                 edge("t-elicit", "tool-runs", "elicitation", "branch", "MCP"),
                 edge("t-elicit-res", "elicitation", "elicitationresult", "branch", ""),
                 edge("t-elicit-back", "elicitationresult", "tool-runs", "branch", ""),
 
-                // results exit up
-                edge("t-ok-result", "posttooluse", "tool-result", "normal", ""),
-                edge("t-fail-result", "posttoolusefailure", "tool-result", "normal", ""),
+                // per-call Post* hooks feed the once-per-batch PostToolBatch, which then exits
+                edge("t-ok-batch", "posttooluse", "posttoolbatch", "normal", ""),
+                edge("t-fail-batch", "posttoolusefailure", "posttoolbatch", "normal", ""),
+                edge("t-batch-result", "posttoolbatch", "tool-result", "normal", "once per batch"),
                 edge("t-exit", "tool-result", "back-to-turn", "loop", ""),
 
-                // catalog opens the modal
-                edge("t-catalog", "tool-runs", "action-space", "branch", "catalog")
+                // action space is a REFERENCE SET, not a runtime successor — attach as a
+                // decorative affordance off the entry point (dashed branch), not a flow edge off tool-runs
+                edge("t-catalog", "tool-call-in", "action-space", "branch", "reference")
             ];
 
             return { id: "root", layoutOptions: {}, children: children, edges: edges };
@@ -1150,8 +1174,8 @@
                 edge("d-task-run", "taskcreated", "taskcompleted", "normal", ""),
                 edge("d-task-result", "taskcompleted", "deleg-result", "normal", ""),
 
-                // side-branch
-                edge("d-idle", "subagentstart", "teammateidle", "branch", "idle"),
+                // agent-teams side-branch — a DISTINCT system from Agent-tool subagents
+                edge("d-idle", "dispatch-in", "teammateidle", "branch", "agent teams"),
                 edge("d-idle-back", "teammateidle", "dispatch-in", "branch", ""),
 
                 // report back up
@@ -1204,14 +1228,14 @@
             'think': {
                 title: 'THINK', docGroup: '', docs: '',
                 what: 'The agent’s private reasoning — where it weighs the request, recalls its loaded instructions, and decides the single next action. It is model inference, not code: probabilistic, not a guaranteed branch.',
-                when: 'Right after the submitted prompt clears the gate, with its standing instructions (CLAUDE.md, rule files) loaded in via InstructionsLoaded. It also re-runs every time a tool result or delegated answer returns to the dispatcher.',
+                when: 'Right after the submitted prompt clears the gate. Its standing instructions (CLAUDE.md, rule files) are already in memory — InstructionsLoaded fired earlier, only at load time (session start, or on entering a scoped folder), not on every THINK. THINK itself re-runs every time a tool result or delegated answer returns to the dispatcher.',
                 canDo: 'No checkpoint of its own; it is the deciding mind that proposes ONE move and hands it to the dispatcher to route. It can be steered by injected context but never hard-blocked here.',
                 why: 'The quiet moment a consultant stares at the problem and maps the approach before moving — or a paralegal deciding whether to pull a case file, ask a question, or just draft the memo.',
                 builder: 'This is the "model proposes" half of the thesis. Hooks cannot fire mid-thought — they wrap the ACTIONS thinking produces (tool calls, the reply, the stop). To influence THINK you inject text earlier: UserPromptSubmit / SessionStart additionalContext, or a PostToolUse additionalContext field that lands before the next THINK.'
             },
             'dispatcher': {
                 title: 'DISPATCHER', docGroup: '', docs: '',
-                what: 'The traffic hub that routes each decision into one of four lanes: answer the user, use a tool, delegate to a helper, or compact memory. It is the structural junction where the deterministic machinery takes over from the model.',
+                what: 'The traffic hub that routes each decision: use a tool, delegate to a helper, or compact memory — or, when the model emits reply text instead of calling a tool, simply answer you (the absence of a tool call, not a fourth gated lane). It is the structural junction where the deterministic machinery takes over from the model.',
                 when: 'The center of the turn; every branch leaves from here and returns here. A single turn can pass through it dozens of times — read a file, think, run a search, think, delegate, think — before it ever reaches Stop.',
                 canDo: 'No checkpoint itself — it is the junction the turn keeps cycling back through until the agent proposes a final answer and heads for the Stop gate.',
                 why: 'An air-traffic controller sending each plane to the right runway and waiting for it to come back around — a clinic coordinator routing each patient to lab, pharmacy, or checkout, one step at a time.',
@@ -1223,7 +1247,7 @@
                 when: 'Fires from the dispatcher when the agent has something to SAY rather than something to DO. Often the last lane of a turn, but a turn can also respond mid-way (a status update) and keep working.',
                 canDo: 'Produces the reply text, which MessageDisplay can rewrite on screen and Notification can forward elsewhere, then heads toward the Stop gate that decides whether the turn is really over.',
                 why: 'The analyst finally typing up the answer paragraph for the client — or a consultant emailing the one-page recommendation after the research is done.',
-                builder: 'The reply text is what the MessageDisplay hook receives in its "message" input; MessageDisplay\'s displayContent output changes only what is shown on screen (transcript + model history keep the original). The turn does not truly end here — the Stop hook downstream is the real exit gate.'
+                builder: 'The reply text is what the MessageDisplay hook receives in its "message_text" input; MessageDisplay\'s displayContent output changes only what is shown on screen (transcript + model history keep the original). The turn does not truly end here — the Stop hook downstream is the real exit gate.'
             },
 
             /* ---- drill pills (still get a panel if not auto-navigating) ---- */
@@ -1236,12 +1260,12 @@
                 builder: 'This room is where the only hooks that can change a tool call live: PreToolUse runs BEFORE execution (it can deny/rewrite); the Post* hooks run AFTER (they can only halt the loop, not undo the act). The split — pre = prevent, post = react — is the single most important thing a hook author learns here.'
             },
             'delegation-pill': {
-                title: 'Delegation', docGroup: '', docs: '',
+                title: 'Delegation & Tracked Work', docGroup: '', docs: '',
                 what: 'The collapsed room where the agent hands part of the job to helper agents AND tracks the tasks it assigns. Two different mechanisms share this room: delegating to another mind, and bookkeeping its own to-do list.',
                 when: 'Mid-turn, when the work is big enough that the agent spins up assistants (subagents) or breaks the job into tracked tasks instead of doing it all in one stream.',
                 canDo: 'Opens the Delegation drill-down: its five checkpoints can block a helper from finishing half-done, refuse to open a malformed task, or refuse to close a task whose criteria are unmet.',
                 why: 'A project manager assigning research to two analysts and refusing to close a task until the work passes review — while also keeping the master checklist honest.',
-                builder: 'Teaches the subagent-vs-task distinction in code: Subagent* hooks (matched by agent_type) govern a SEPARATE mind with its own context window; Task* hooks (matched by task_id) govern the agent\'s OWN tracked checklist. SubagentStop and TaskCompleted are the two "refuse to finish" gates; both block with decision:"block".'
+                builder: 'Teaches the subagent-vs-task distinction in code: Subagent* hooks (matched on agent_type) govern a SEPARATE mind with its own context window. Task* hooks take no matcher — they always fire; task_id / task_name arrive in the input. (Only Subagent* hooks are matched, on agent_type.) Task* hooks govern the agent\'s OWN tracked checklist. SubagentStop and TaskCompleted are the two "refuse to finish" gates; both block with decision:"block".'
             },
 
             /* ---- portal chip ---- */
@@ -1281,7 +1305,7 @@
                 when: 'The final beat of the session, after the last turn is finished. It is terminal: nothing the agent does afterward can be gated, because there is no afterward.',
                 canDo: 'Observe-only — it cannot block the shutdown, but it can save a transcript summary, flush logs, or tidy temp files on the way out.',
                 why: 'A project lead writing the closeout note and filing the paperwork the moment a case is officially closed — the work is already done; this just records and cleans.',
-                builder: 'Matcher targets the exit reason ("clear" | "resume" | "logout" | "prompt_input_exit"). No decision control of any kind — its return value cannot keep the session alive. Exit 2 is non-blocking. Pair it with SessionStart to carry a hand-written summary across a /clear.'
+                builder: 'Matcher targets the exit reason ("clear" | "resume" | "logout" | "prompt_input_exit" | "bypass_permissions_disabled" | …). No decision control of any kind — its return value cannot keep the session alive. Exit 2 is non-blocking. Pair it with SessionStart to carry a hand-written summary across a /clear.'
             },
             'configchange': {
                 title: 'ConfigChange', docGroup: 'Session', docs: 'https://code.claude.com/docs/en/hooks#configchange',
@@ -1289,7 +1313,7 @@
                 when: 'A side-branch off the dispatcher, firing only when configuration is edited mid-conversation (your settings, the project\'s settings, or org policy).',
                 canDo: 'Can BLOCK — it can reject a settings change it considers unsafe, so a mid-session edit cannot quietly loosen the guardrails the agent is running under.',
                 why: 'A compliance officer who can veto a rule change someone tries to push through while a deal is still in progress.',
-                builder: 'Matcher targets the config source ("user_settings" | "project_settings" | "policy_settings"). Blocks via top-level decision:"block" + reason, OR exit code 2 (which blocks the change and continues the session). This is one of the few "observe-ish" lifecycle events that is actually enforcing.'
+                builder: 'Matcher targets the config source ("user_settings" | "project_settings" | "local_settings" | "policy_settings" | "skills"). Blocks via top-level decision:"block" + reason, OR exit code 2 (which blocks the change and continues the session). Caveat: blocking EXCLUDES policy_settings — org policy changes cannot be vetoed. This is one of the few "observe-ish" lifecycle events that is actually enforcing.'
             },
 
             /* ---- Prompt gate ---- */
@@ -1325,7 +1349,7 @@
                 when: 'On the RESPOND branch, as the message is rendered to you. It is asynchronous and display-layer only, so it never alters the turn\'s logic.',
                 canDo: 'Can rewrite the on-screen text via displayContent — but the transcript and the history the model sees keep the ORIGINAL. A presentation filter, not a censor of record.',
                 why: 'A live-captioning service that cleans up the on-screen subtitles for the audience without altering the official recording — redacting a token, prettifying a path, localizing a phrase.',
-                builder: 'No matcher; always fires on display. Input carries the assistant message. Output: hookSpecificOutput.displayContent replaces ONLY the rendered text — a deliberate split from the transcript so what the model later reads is untouched. Very short timeout (10s). Cannot block the turn.'
+                builder: 'No matcher; always fires on display. Input carries the assistant reply as message_text. Output: hookSpecificOutput.displayContent replaces ONLY the rendered text — a deliberate split from the transcript so what the model later reads is untouched. Very short timeout (10s). Cannot block the turn.'
             },
             'notification': {
                 title: 'Notification', docGroup: 'User Interaction', docs: 'https://code.claude.com/docs/en/hooks#notification',
@@ -1333,7 +1357,7 @@
                 when: 'On the RESPOND branch, whenever the agent emits a notification. Asynchronous — it rides alongside the turn rather than gating it.',
                 canDo: 'Observe-only on the turn, but it can REROUTE the alert anywhere: a phone push, a Slack channel, a desktop toast — so you can step away and still be reached.',
                 why: 'A paging system that forwards "the analysis is ready" straight to a manager’s text messages — or routes a permission request to whoever is on call.',
-                builder: 'Matcher targets notification_type (e.g. "permission_prompt", "auth_success"). Input carries message + notification_type. No decision control — it cannot suppress the underlying event, only react to it (typically by shelling out to a paging service).'
+                builder: 'Matcher targets type (e.g. "permission_prompt", "auth_success"). Input carries message + type. No decision control — it cannot suppress the underlying event, only react to it (typically by shelling out to a paging service).'
             },
             'precompact': {
                 title: 'PreCompact', docGroup: 'Context/Compaction', docs: 'https://code.claude.com/docs/en/hooks#precompact',
@@ -1383,7 +1407,7 @@
                 when: 'Right at the top of the Tool Loop, before the tool executes and before any permission branch. Fires on every single tool call the agent makes.',
                 canDo: 'Can ALLOW (skipping the permission prompt), DENY, ASK, DEFER, or REWRITE the arguments before execution — e.g. silently scoping a command, redacting a path, or vetoing a dangerous edit.',
                 why: 'A manager who approves, rejects, or rewrites a wire-transfer request before the bank ever sees it — and can pre-clear routine ones so no one is bothered.',
-                builder: 'Matcher targets tool_name (exact, "Edit|Write", or regex like "mcp__.*"); narrow further per-handler with if:"Bash(rm *)". Output: hookSpecificOutput.permissionDecision = "allow"|"deny"|"ask"|"defer" + permissionDecisionReason; rewrite args via hookSpecificOutput.updatedInput. Exit 2 = hard deny, stderr shown to user. This is where "prevent" lives — Post* hooks can only "react."'
+                builder: 'Matcher targets tool_name (exact, "Edit|Write", or regex like "mcp__.*"); narrow further per-handler with if:"Bash(rm *)". Output: hookSpecificOutput.permissionDecision = "allow"|"deny"|"ask"|"defer" + permissionDecisionReason; rewrite args via hookSpecificOutput.updatedInput. Exit 2 = hard deny, stderr fed back to Claude (so the model can adjust), not shown to the user. This is where "prevent" lives — Post* hooks can only "react."'
             },
             'permissionrequest': {
                 title: 'PermissionRequest', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#permissionrequest',
@@ -1395,8 +1419,8 @@
             },
             'permissiondenied': {
                 title: 'PermissionDenied', docGroup: 'Tool loop', docs: 'https://code.claude.com/docs/en/hooks#permissiondenied',
-                what: 'A checkpoint that fires when an action is turned down by the permission system. Its job is recovery, not refusal: it decides whether the agent gets a second chance.',
-                when: 'On the same side-branch, right after a permission is refused — before the agent gives up and reports failure.',
+                what: 'A checkpoint that fires when the auto-mode permission classifier turns an action down. Its job is recovery, not refusal: it decides whether the agent gets a second chance.',
+                when: 'On its OWN side-branch off PreToolUse — firing only when the auto-mode classifier denies a call (distinct from the PermissionRequest dialog, which resolves allow/deny on its own). It runs before the agent gives up and reports failure.',
                 canDo: 'Can SET RETRY — telling the agent it may try a different, allowed approach instead of treating the denial as a dead end.',
                 why: 'An auto-approval policy that, when it rejects a booking, suggests an approved alternative vendor instead of a flat no — keeping the work moving down a permitted path.',
                 builder: 'Matcher targets tool_name. Output: hookSpecificOutput.retry = true lets the model re-attempt with a different call; omit it and the denial stands. A small but pointed hook — it converts a hard wall into a redirect, which is often the difference between a stuck agent and a productive one.'
@@ -1457,12 +1481,12 @@
                 when: 'The first beat of the Delegation room, handed in from the dispatcher when the agent decides to delegate or to track structured work.',
                 canDo: 'Routes the handed-off work into the right lane — the subagent lane (Subagent* hooks) or the task lane (Task* hooks).',
                 why: 'The sub-assignment landing on the team coordinator’s desk — who must decide: give it to a person, or just add it to the project tracker?',
-                builder: 'Not a hook — but it marks the fork that confuses everyone. Subagent lane = a separate context window, governed by Subagent* hooks matched on agent_type. Task lane = this agent\'s own checklist, governed by Task* hooks matched on task_id. Different minds vs. own bookkeeping.'
+                builder: 'Not a hook — but it marks the fork that confuses everyone. Subagent lane = a separate context window, governed by Subagent* hooks matched on agent_type. Task lane = this agent\'s own checklist: Task* hooks take no matcher — they always fire; task_id / task_name arrive in the input. (Only Subagent* hooks are matched, on agent_type.) Different minds vs. own bookkeeping.'
             },
             'subagentstart': {
                 title: 'SubagentStart', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#subagentstart',
                 what: 'A checkpoint that fires when a SUBAGENT — a separate helper with its OWN fresh context window and its own tools — is spun up to handle a self-contained piece of the job.',
-                when: 'At the top of the subagent lane, as the helper is launched (via the Agent tool, formerly named "Task"). One fire per subagent.',
+                when: 'At the top of the subagent lane, as the helper is launched (via the Agent tool, in some Claude Code versions surfaced as "Task"). One fire per subagent.',
                 canDo: 'Observe-only — it cannot block, but it can hand the helper its starting brief: scope, constraints, what "done" looks like, what NOT to touch.',
                 why: 'A manager briefing a freshly assigned analyst on the scope before they begin — the analyst goes off and works independently, then comes back with one answer.',
                 builder: 'Matcher targets agent_type (e.g. "Explore", or a custom subagent name) — so different helper roles can get different briefings. Input carries agent_id + agent_type. No decision control; inject the brief via additionalContext. Contrast TaskCreated, which governs your OWN list, not another mind.'
@@ -1494,7 +1518,7 @@
             'teammateidle': {
                 title: 'TeammateIdle', docGroup: 'Subagent/Delegation', docs: 'https://code.claude.com/docs/en/hooks#teammateidle',
                 what: 'A checkpoint that fires when a teammate agent is about to go idle with nothing left to do — the chance to keep a capable helper busy instead of letting it power down.',
-                when: 'A side-branch off the delegation lanes, just before an assistant would sit idle.',
+                when: 'Its own agent-teams side-branch (a DISTINCT system from Agent-tool subagents), firing just before a teammate agent would sit idle.',
                 canDo: 'Can BLOCK to keep the teammate active and hand it more work — or use {"continue": false} to deliberately stop it entirely.',
                 why: 'A supervisor who, seeing a team member about to clock out, assigns one more open item first — no paid hand stands around with the queue still full.',
                 builder: 'Matcher: none (always fires). Block (assign more) via decision:"block" + reason; stop the teammate for good via top-level continue:false + stopReason. Exit 2 blocks the idle. This is how multi-agent setups keep a pool of helpers saturated rather than spinning down between assignments.'
@@ -1507,7 +1531,7 @@
                 when: 'In the Workspace cluster fed by the Tool Loop, the moment the current directory changes. Asynchronous — it rides alongside the loop, not in line with it.',
                 canDo: 'Observe-only — it notes the move but cannot block it. It can, however, re-export environment variables so the new location is set up correctly.',
                 why: 'A sign-in log that records each time a staffer walks into a different department’s office — and quietly hands them that department\'s badge and supplies.',
-                builder: 'No decision control. Input carries new_cwd. Exit 2 is non-blocking. Its practical power is CLAUDE_ENV_FILE: append export VAR=value there to reconfigure the environment (paths, virtualenvs, credentials) automatically whenever the agent changes directories.'
+                builder: 'No decision control. Input carries cwd + previous_cwd. Exit 2 is non-blocking. Its practical power is CLAUDE_ENV_FILE: append export VAR=value there to reconfigure the environment (paths, virtualenvs, credentials) automatically whenever the agent changes directories.'
             },
             'filechanged': {
                 title: 'FileChanged', docGroup: 'Workspace', docs: 'https://code.claude.com/docs/en/hooks#filechanged',
@@ -1571,7 +1595,7 @@
             { name: "Write", perm: "needs", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Creates a brand-new file, or completely overwrites an existing one.", detail: "Write lays down a whole file's contents at once. The agent uses it to create new files, and for full rewrites where a targeted Edit would be clumsier than just replacing everything. The catch: overwriting a file you have not Read first will fail, which guards against blowing away work the agent hasn't seen. Because it can replace a file wholesale, it needs permission." },
             { name: "Glob", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Finds files by name pattern, like asking 'show me every JavaScript file.'", detail: "Glob locates files by matching a wildcard pattern against their paths (for example, every file ending in .js anywhere in the project), returning matches newest-first. The agent reaches for it to discover where things live before opening them. It only lists file paths — it never looks inside the files or changes anything — so it runs read-only with no permission prompt. Pair it with Grep when you need to search file contents rather than file names." },
             { name: "Grep", perm: "read", category: "Files", doc: "https://code.claude.com/docs/en/settings", summary: "Searches inside files for matching text using fast regular-expression search.", detail: "Grep scans the contents of many files at once for a word or pattern, powered by ripgrep, and reports where the matches are. It is the agent's main way to answer 'where is this defined?' or 'everywhere this is used' across a whole project. It reads but never modifies, so it runs without a permission prompt. Glob finds files by name; Grep finds text inside them." },
-            { name: "Agent", perm: "read", category: "Subagents", doc: "https://code.claude.com/docs/en/sub-agents", summary: "Delegates to a SUBAGENT — a separate mind with its own fresh context window — to handle one self-contained side task and return one result.", detail: "Agent hands a defined job to a subagent that works in its own separate context window and returns a single summarized result, keeping noisy investigation out of the main conversation. This is delegation to ANOTHER mind: one subagent does one side-task and reports back. The agent reaches for it for big searches, parallel investigations, or specialized roles defined as custom subagents. Dispatching is read-only — launching costs no permission — but whatever the subagent itself does (running commands, editing files) is still gated by the normal rules, and its lifecycle is governed by the SubagentStart / SubagentStop hooks. NAMING TRAP: this tool was formerly called \"Task\" — so old docs that say \"Task\" mean THIS (spawn-a-subagent), while today's \"Task*\" tools (TaskCreate and friends) are the unrelated to-do system. One word, two meanings across versions." },
+            { name: "Agent", perm: "read", category: "Subagents", doc: "https://code.claude.com/docs/en/sub-agents", summary: "Delegates to a SUBAGENT — a separate mind with its own fresh context window — to handle one self-contained side task and return one result.", detail: "Agent hands a defined job to a subagent that works in its own separate context window and returns a single summarized result, keeping noisy investigation out of the main conversation. This is delegation to ANOTHER mind: one subagent does one side-task and reports back. The agent reaches for it for big searches, parallel investigations, or specialized roles defined as custom subagents. Dispatching is read-only — launching costs no permission — but whatever the subagent itself does (running commands, editing files) is still gated by the normal rules, and its lifecycle is governed by the SubagentStart / SubagentStop hooks. NAMING TRAP: in some Claude Code versions this tool is surfaced as \"Task\" — so docs that say \"Task\" may mean THIS (spawn-a-subagent), while the \"Task*\" tools (TaskCreate and friends) are the unrelated to-do system. One word, two meanings across versions." },
             { name: "WebFetch", perm: "needs", category: "Web", doc: "https://code.claude.com/docs/en/settings", summary: "Fetches a web page, converts it to clean text, and pulls out the parts that answer a question.", detail: "WebFetch retrieves a specific URL, turns the page into readable Markdown, and uses a small fast model to extract just the relevant content. The agent reaches for it to read documentation, articles, or any known web address. Constraints: it can't reach private or logged-in pages, it upgrades plain HTTP to HTTPS, and a cross-site redirect is handed back rather than followed (so it has to be called again with the new URL). Because it reaches out to the network, it needs permission, often scoped to specific domains." },
             { name: "WebSearch", perm: "needs", category: "Web", doc: "https://code.claude.com/docs/en/settings", summary: "Runs a web search and returns result titles and links to follow up on.", detail: "WebSearch answers 'what's out there' by returning a list of search-result titles and URLs, which the agent then opens with WebFetch to read in full. It is the starting point when the right source isn't known in advance — current docs, recent news, library references. The two-step rhythm (search to find, fetch to read) keeps the agent grounded in real pages rather than guessing. Like other network tools, it is gated by permission settings." },
             { name: "TaskCreate", perm: "read", category: "Tasks", doc: "https://code.claude.com/docs/en/settings", summary: "Opens an item on the agent's OWN tracked task list — a checklist that also executes and is monitored.", detail: "TaskCreate puts a new entry on the agent's task list, the current task-management system that replaced the older TodoWrite checklist. Unlike TodoWrite (a passive note-to-self), a task here can actually EXECUTE and run in the BACKGROUND, carries status, and can depend on other tasks — a small live project plan, not a flat to-do. This is still the agent tracking ITS OWN work (contrast Agent, which delegates to a separate mind). The agent reaches for it at the start of anything with several distinct steps. Opening a task fires the TaskCreated hook (which can refuse a malformed task); it only manages the agent's own bookkeeping, so it needs no permission." },
@@ -1769,8 +1793,11 @@
 
         /* ---- DOM refs (built once on init) ---- */
         var root, viewport, topbarCrumbs, backPill, info, infoContent, skeleton;
-        var caption, tip, tipT, tipW, legend, legendHead, isMobile;
+        var caption, tip, tipT, tipW, legend, legendHead, isMobile, bgNote;
         var currentView = 'spine';
+
+        // Verbatim background explainer text — shown only on the spine view.
+        var BG_NOTE_TEXT = 'This map shows ONE agent turn as a Markov chain. Your prompt enters, the agent THINKS, then a DISPATCHER routes its next move down one of four lanes — answer you, call a tool, delegate to another mind, or compact memory — and the result re-enters THINK. The agent loops here, move after move, until Stop lets it leave (a blocked Stop sends it back into the SAME loop to keep working; a clean Stop ends the turn). DISPATCHER, THINK and RESPOND are conceptual, not real hooks. Tool Loop and Delegation are busy enough to be their own drill-in rooms. The faint side groups are out-of-band hooks that fire on their own triggers, not every turn.';
         var laying = false;
 
         var BASE_OPTS = {
@@ -1990,7 +2017,7 @@
         /* ============================================================
            3. DRILL-DOWN / breadcrumb / hash / popstate
            ============================================================ */
-        var VIEW_TITLES = { spine: 'Hook Map', toolloop: 'Tool Loop', delegation: 'Delegation' };
+        var VIEW_TITLES = { spine: 'Hook Map', toolloop: 'Tool Loop', delegation: 'Delegation & Tracked Work' };
 
         function navigate(viewId, opts) {
             opts = opts || {};
@@ -2028,6 +2055,11 @@
                 var cap = (HM.CAPTIONS || {})[viewId];
                 caption.innerHTML = cap || '';
                 caption.style.opacity = cap ? '1' : '0';
+            }
+
+            // background explainer note: spine view only (hidden on drills + mobile)
+            if (bgNote) {
+                bgNote.classList.toggle('is-hidden', viewId !== 'spine' || isMobile);
             }
         }
 
@@ -2289,6 +2321,14 @@
 
             root.appendChild(topbar);
             root.appendChild(viewport);
+
+            // background explainer note — child of .hm-root so its negative z-index
+            // paints it BEHIND the diagram (above the dark field, below nodes/edges).
+            // Shown only on the spine view; toggled in updateChrome().
+            bgNote = ce('p', 'hm-bgnote', '');
+            bgNote.textContent = BG_NOTE_TEXT;
+            bgNote.setAttribute('aria-hidden', 'true');
+            root.appendChild(bgNote);
 
             // reuse the kept info-panel markup that lives in the page body
             info = document.getElementById('info-panel');
