@@ -553,7 +553,7 @@ The compact gloss is at **"Plan file lifecycle"** near the top of this file; ban
 | `job.sh add-dependency` | CONDENSE (`condense-guard.sh:314`) | Same — graph additions during cycle synthesis |
 | `job.sh remove-dependency` | VERIFY (`verify-guard.sh:360`) | VERIFY audits the focused job; can discover a declared dep is unneeded |
 | `job.sh activate / focus / pause` | IDLE (`phase-gate.sh:96`) | Between-cycle lifecycle management; user + agent collaborate |
-| `job.sh complete / approve` | IDLE + CONDENSE; `approve` is hook-only fired by `[JOB-COMPLETE]` answer | Completion is judgment-bearing; happens between productive phases |
+| `job.sh complete / approve` | CONDENSE (last cycle); `approve` is hook-only fired by `[JOB-COMPLETE]` answer | Completion is judgment-bearing; it is the last cycle's CONDENSE accomplishment (`complete`'s phase gate already requires `current_phase == condense`) |
 | `job.sh show / focused / list` | All phases (read-only) | Universal context query |
 | `job.sh update --heal` (completed-job repair) | Wherever update is allowed (IDLE + CONDENSE) | Cycle-error healing; flag-based bypass of immutability check |
 
