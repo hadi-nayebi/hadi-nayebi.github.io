@@ -950,7 +950,9 @@
 
     /* navigation order: which cells exist + their sequence step */
     var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1 };
-    var SEQ_TITLE = { '0,0':'A job is born', '1,0':'OBSERVE — find out who you are' };
+    /* total numbered steps in the main ←→ sequence (kind:'seq'); drives the
+       step indicator + dots. Computed so adding sequence cards auto-scales. */
+    var SEQ_TOTAL = Object.keys(CARDS).filter(function (k) { return CARDS[k].kind === 'seq'; }).length;
 
     /* ========================================================================
      * RENDER
@@ -1156,12 +1158,13 @@
         var card = CARDS[keyOf(curCol, curRow)];
         if (card.kind === 'seq') {
             step.classList.remove('is-detail');
+            var dots = '';
+            for (var i = 1; i <= SEQ_TOTAL; i++) {
+                dots += '<span class="step-ind__dot' + (card.step === i ? ' on' : '') + '"></span>';
+            }
             step.innerHTML =
-                '<span>Step <b>' + card.step + '</b> of <b>2</b> — the job\'s life</span>' +
-                '<span class="step-ind__dots">' +
-                  '<span class="step-ind__dot' + (card.step === 1 ? ' on' : '') + '"></span>' +
-                  '<span class="step-ind__dot' + (card.step === 2 ? ' on' : '') + '"></span>' +
-                '</span>';
+                '<span>Step <b>' + card.step + '</b> of <b>' + SEQ_TOTAL + '</b> — the job\'s life</span>' +
+                '<span class="step-ind__dots">' + dots + '</span>';
         } else {
             step.classList.add('is-detail');
             step.innerHTML = '<span>Related detail &mdash; press <b>&uarr;</b> to return to the main sequence</span>';
