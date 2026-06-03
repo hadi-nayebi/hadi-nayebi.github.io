@@ -36,13 +36,13 @@ A pair of point gates paces the read/write rhythm against the working CLAUDE.md.
 
 The rest of this essay covers the Stage decision the plan_file records, the plan document's opinionated structure, and the customization surfaces.
 
-The first thing the agent does on entering PLAN — after the multiplier — is decide the job's Stage. That decision is PLAN's to make, in cycle 1: whether this job runs as a single collaborative cycle, or graduates to multi-cycle work carried by a plan document on disk. PLAN records the choice by calling — or pointedly not calling — `set-plan-file`.
+The first thing the agent does on entering PLAN — after the multiplier — is decide the job's Stage. That decision is PLAN's to make, in cycle 1: whether this job runs as a single collaborative cycle, or graduates to multi-cycle work carried by a plan document on disk. PLAN records the choice by calling `set-plan-file` — with `false` for a single cycle, an `.md` name for prose multi-cycle, a `.yaml` name for structured multi-cycle. The call itself is mandatory; only the value varies.
 
 ---
 
 ## Naming the contract
 
-A job's Stage is its classification by plan-file shape, and PLAN decides it in cycle 1 — not at job creation, where every job is born `plan_file = false`. Stage 1 is a single collaborative cycle: PLAN never calls `set-plan-file`, and `plan_file` stays `false`. Stage 2 is repeatable work carried by a prose `.md` plan. Stage 3 is the same work carried by a structured `.yaml`. For Stage 2 or Stage 3, PLAN's first concrete act after the multiplier is to name the plan_file via `plan.sh set-plan-file` — a cycle-1-only call that locks the path for the rest of the job. *[ref: stage-decided-in-cycle-1-plan | CONTEXT.md "Job Stage" section | Stage is decided in cycle 1 PLAN of the new job, NOT at creation. Every pending job is born `plan_file = false` per the Universal starter shape; the cycle 1 PLAN phase's `set-plan-file` call (or non-call) picks the Stage. Stage 1: no call, plan_file stays false. Stage 2: `set-plan-file <name>.md`. Stage 3: `set-plan-file <name>.yaml`.]*
+A job's Stage is its classification by plan-file shape, and PLAN decides it in cycle 1 — not at job creation, where `plan_file` is born `null`, the undecided set-once sentinel awaiting this very decision. The creation objective only *implies* a likely Stage; PLAN makes the real call with all of OBSERVE's context in hand. Stage 1 is a single collaborative cycle: PLAN calls `set-plan-file false`, and `plan_file` resolves to `false`. Stage 2 is repeatable work carried by a prose `.md` plan. Stage 3 is the same work carried by a structured `.yaml`. In every case PLAN's first concrete act after the multiplier is the same `plan.sh set-plan-file` call — a cycle-1-only call that locks the choice for the rest of the job. The advance out of cycle-1 PLAN is blocked while `plan_file` is still `null`, so the Stage decision cannot be skipped; even Stage 1 requires the explicit `false`, and nothing auto-defaults it. *[ref: stage-decided-in-cycle-1-plan | CONTEXT.md "Job Stage" section | Stage is decided in cycle 1 PLAN of the activated job, NOT at creation. `plan_file` is born `null` — the undecided set-once sentinel — on the phase_plan extension; the job record itself carries no plan_file key, and the creation objective only implies a Stage. cycle-1 PLAN's `set-plan-file` call commits the Stage. Stage 1: `set-plan-file false` (resolves to false). Stage 2: `set-plan-file <name>.md`. Stage 3: `set-plan-file <name>.yaml`. The cycle-1 PLAN→EXECUTE advance is blocked while plan_file is still `null`, so even Stage 1 requires the explicit `false` call — nothing auto-defaults false.]*
 
 The file's lifecycle splits across phases from there. EXECUTE creates the named document in cycle 1 and writes the initial plan into it. VERIFY refines it across cycles — sharpening acceptance criteria or dropping ones that prove untestable as the work matures. PLAN itself never edits the file directly; from cycle 2 onward it reads the file back at phase entry, treating it as the long-term contract the cycle inherits. *[ref: set-plan-file-cycle-1-immutable | .claude/plugins/phase_plan/scripts/plan.sh set-plan-file case-arm | PLAN's set-plan-file CLI accepts false for single-cycle or a plan_*.md / plan_*.yaml name for multi-cycle; cycle 1 only, dies on re-call, locks the Stage for the rest of the job.]*
 
@@ -50,7 +50,7 @@ There is no state machine walking the plan through named approval stages. The `p
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/plan-stage-decision-b6-4.png
-  Concept: Chalk-on-blackboard diagram — the cycle-1 PLAN Stage decision. A single decision point forks into three Stages depending on whether PLAN calls set-plan-file and with what filename.
+  Concept: Chalk-on-blackboard diagram — the cycle-1 PLAN Stage decision. A single set-plan-file call forks into three Stages depending on the value PLAN passes.
   Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the three Stage boxes;
   white chalk for ALL labels, arrows, and branch notes; chalk sticks at the bottom edge; faint chalk dust at the edges.
@@ -59,13 +59,13 @@ There is no state machine walking the plan through named approval stages. The `p
     Top box (dim white border): labeled "cycle 1 PLAN".
     Directly below it, a white-chalk decision label: "set-plan-file?".
     Three white chalk arrows fan downward from the decision label to three boxes in a row:
-    Left box (cyan border): labeled "Stage 1", with a smaller line beneath inside the box: "plan_file = false". Its incoming arrow carries the white-chalk note "(no call)".
+    Left box (cyan border): labeled "Stage 1", with a smaller line beneath inside the box: "plan_file = false". Its incoming arrow carries the white-chalk note "false".
     Middle box (green border): labeled "Stage 2", with a smaller line beneath inside the box: "plan_file = .md". Its incoming arrow carries the white-chalk note "repeatable".
     Right box (orange border): labeled "Stage 3", with a smaller line beneath inside the box: "plan_file = .yaml". Its incoming arrow carries the white-chalk note "repeatable".
     Below the Stage 1 box, a small white-chalk note: "single cycle".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycle 1 PLAN", "set-plan-file?", "Stage 1", "Stage 2", "Stage 3", "plan_file = false", "plan_file = .md", "plan_file = .yaml", "(no call)", "repeatable", "single cycle", plus the caption below. No other words, file names, folders, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.4. PLAN decides the Stage in cycle 1: call set-plan-file, or not."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycle 1 PLAN", "set-plan-file?", "Stage 1", "Stage 2", "Stage 3", "plan_file = false", "plan_file = .md", "plan_file = .yaml", "false", "repeatable", "single cycle", plus the caption below. No other words, file names, folders, or descriptors may appear.
+  Caption (bottom of image, white chalk, hand-drawn): "Image 6.4. PLAN always calls set-plan-file in cycle 1; the value picks the Stage."
 -->
 
 ---
