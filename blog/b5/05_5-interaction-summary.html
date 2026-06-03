@@ -122,8 +122,11 @@
 
                         <h2>How it works &mdash; block until summarized</h2>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
-                          <img src="images/interaction-summary-b5-5.png" alt="A token meter inside a job crosses a threshold and flips a flag; on the next tool call a guard blocks every productive tool; the only path out is the dedicated `summary.sh submit` command, which the guard&#x27;s Bash whitelist explicitly admits" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                        <figure class="blog-image" data-explore="../b6/explore/job-flow.html?stage=accumulate" style="margin: 2rem 0;">
+                          <span style="position: relative; display: inline-block; max-width: 800px; width: 100%;">
+                            <img src="images/interaction-summary-b5-5.png" alt="A token meter inside a job crosses a threshold and flips a flag; on the next tool call a guard blocks every productive tool; the only path out is the dedicated `summary.sh submit` command, which the guard&#x27;s Bash whitelist explicitly admits" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                            <a href="../b6/explore/job-flow.html?stage=accumulate" aria-label="Explore the interactive job-lifecycle map — how a job accumulates interactions" title="Open the interactive job map" style="position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.4rem 0.78rem; font-size: 0.82rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5); transition: transform 0.18s ease, box-shadow 0.18s ease;" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 7px 22px rgba(139,92,246,0.65)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(99,102,241,0.5)';">&#8599; Explore the job map</a>
+                          </span>
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.5. Cross the threshold, the flag flips, the guard blocks every productive tool &mdash; the only path through is `summary.sh submit`, which the guard&rsquo;s Bash whitelist explicitly admits.</figcaption>
                         </figure>
 
