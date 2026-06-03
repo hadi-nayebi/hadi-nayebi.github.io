@@ -460,6 +460,15 @@
         .tooltip__hint { margin-top: 0.32rem; font-size: 0.62rem; letter-spacing: 0.03em; color: var(--accent); font-weight: 600; }
         .tooltip__warn { margin-top: 0.3rem; font-size: 0.62rem; color: var(--warn); font-weight: 700; }
 
+        /* ---- ref-symbol chip (ⓘ): a sticky/box footnote that links to a blog section ---- */
+        .refchip { pointer-events: auto; cursor: pointer; display: inline-block; margin-left: 3px; padding: 0; border: none; background: none; color: var(--accent); font-size: 0.95em; font-weight: 700; vertical-align: super; line-height: 0; }
+        .refchip:hover, .refchip:focus-visible { filter: brightness(1.35); outline: none; }
+        .reftip { position: fixed; z-index: 3600; max-width: 272px; padding: 0.55rem 0.7rem; border-radius: 12px; background: rgba(8,8,13,0.97); border: 1px solid rgba(139,92,246,0.45); box-shadow: 0 12px 30px rgba(0,0,0,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transform: translateY(4px); transition: opacity .14s, transform .14s; }
+        .reftip.is-on { opacity: 1; transform: translateY(0); }
+        .reftip__sec { font-size: 0.74rem; font-weight: 700; color: #c9c2ff; margin-bottom: 0.2rem; }
+        .reftip__blurb { font-size: 0.72rem; line-height: 1.42; color: #b6b6c8; }
+        .reftip__go { margin-top: 0.34rem; font-size: 0.63rem; letter-spacing: 0.03em; color: var(--accent); font-weight: 700; }
+
         /* ============================ LEGEND ============================ */
         .legend {
             position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1500;
@@ -1171,7 +1180,8 @@
                 { from:'v-clean', to:'v-outst', kind:'soft', label:'blog adds a gate' }
             ],
             stickies: [
-                { x:300, y:30,  aha:true, text:'Most phases can step <b>back</b> by choice. Only <b>VERIFY</b> is <b>forced</b> back — a plan edit or an open item blocks it from advancing.' },
+                { x:300, y:30,  aha:true, text:'Most phases can step <b>back</b> by choice. Only <b>VERIFY</b> is <b>forced</b> back — a plan edit or an open item blocks it from advancing.',
+                  ref: { url:'../06_6-verify.html', section:'Blog 6.6 · Situational edges & the Markov property', blurb:'Forward transitions fire automatically; backward ones are explicit — the agent chooses where to roll back. A VERIFY plan-edit forces the one mandatory step back to PLAN.' } },
                 { x:36,  y:372, text:'If VERIFY had to fix the plan, the work isn\'t trusted — it\'s sent <b>back to PLAN</b> to re-plan.' }
             ],
             backnote: { x:46, y:498, text:'← from EXECUTE: the work is built' },
@@ -1293,6 +1303,18 @@
             s.className = 'sticky' + (st.r ? ' r' : '') + (st.aha ? ' sticky--aha' : '');
             s.style.left = pctX(st.x); s.style.top = pctY(st.y);
             s.innerHTML = st.text;
+            if (st.ref) {
+                /* a footnote ref-chip linking this note to its blog source (matches the blog's ⓘ ref-markers) */
+                var chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'refchip';
+                chip.innerHTML = '&#9432;';
+                chip.setAttribute('aria-label', 'Reference — ' + (st.ref.section || 'blog') + ' (opens the essay in a new tab)');
+                chip.setAttribute('data-ref-url', st.ref.url);
+                chip.setAttribute('data-ref-section', st.ref.section || '');
+                chip.setAttribute('data-ref-blurb', st.ref.blurb || '');
+                s.appendChild(chip);
+            }
             stage.appendChild(s);
         });
         if (card.nextnote) {
@@ -1666,6 +1688,33 @@
         var box = e.target.closest('[data-node]');
         if (box) hideTooltip();
     });
+
+    /* ========================================================================
+     * REF-SYMBOL chips — hover shows a preview of the blog section; click opens it
+     * ====================================================================== */
+    var reftip = document.createElement('div');
+    reftip.className = 'reftip'; reftip.setAttribute('role', 'tooltip');
+    reftip.innerHTML = '<div class="reftip__sec"></div><div class="reftip__blurb"></div><div class="reftip__go">↗ click to open the essay</div>';
+    document.body.appendChild(reftip);
+    var reftipSec = reftip.querySelector('.reftip__sec'), reftipBlurb = reftip.querySelector('.reftip__blurb');
+    function showReftip(chip, ev) {
+        reftipSec.textContent = chip.getAttribute('data-ref-section') || 'Reference';
+        reftipBlurb.textContent = chip.getAttribute('data-ref-blurb') || '';
+        reftip.classList.add('is-on');
+        var pad = 14, w = reftip.offsetWidth, h = reftip.offsetHeight;
+        var x = ev.clientX + 14, y = ev.clientY + 14;
+        if (x + w + pad > window.innerWidth)  x = ev.clientX - w - 14;
+        if (y + h + pad > window.innerHeight) y = ev.clientY - h - 14;
+        reftip.style.left = Math.max(pad, x) + 'px'; reftip.style.top = Math.max(pad, y) + 'px';
+    }
+    function hideReftip() { reftip.classList.remove('is-on'); }
+    function chipOf(e) { return e.target.closest ? e.target.closest('.refchip') : null; }
+    document.addEventListener('mouseover', function (e) { var c = chipOf(e); if (c) showReftip(c, e); });
+    document.addEventListener('mousemove', function (e) { if (reftip.classList.contains('is-on')) { var c = chipOf(e); if (c) showReftip(c, e); } });
+    document.addEventListener('mouseout', function (e) { if (chipOf(e)) hideReftip(); });
+    document.addEventListener('click', function (e) { var c = chipOf(e); if (c) { e.preventDefault(); e.stopPropagation(); var u = c.getAttribute('data-ref-url'); if (u) window.open(u, '_blank', 'noopener'); } });
+    document.addEventListener('focusin', function (e) { var c = chipOf(e); if (c) { var r = c.getBoundingClientRect(); showReftip(c, { clientX: r.left + r.width / 2, clientY: r.bottom }); } });
+    document.addEventListener('focusout', function (e) { if (chipOf(e)) hideReftip(); });
 
     /* ========================================================================
      * NAV ARROW buttons
