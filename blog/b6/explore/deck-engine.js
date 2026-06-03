@@ -10,19 +10,12 @@
  * Guide: .claude/knowledge/diagrams/consolidated-mechanisms-diagram-guide.md
  * ============================================================================ */
 /* ============================================================================
- * THE LIFE OF A JOB — a 2x2 spatial concept-deck.
- *   LEFT/RIGHT  = the job's life in sequence (the "main sequence")
- *   UP/DOWN     = a parallel / deeper concept under the current step
- *
- * Grid addressing: cell key = "col,row".
- *   (0,0) A  — "A job is born"            (sequence step 1)
- *   (1,0) B  — "OBSERVE — find out who you are" (sequence step 2)
- *   (0,1) A2 — "Active + focused, in one write"  (detail under A)
- *   (1,1) B2 — "The gate to PLAN"                (detail under B)
- *
- * Every fact below was verified against the live prototype:
- *   job_core/hooks/prompt-handler.sh, job_core/scripts/job.sh,
- *   phasic_system/scripts/phase.sh, phase_observe/scripts/observe-commit.sh.
+ * Grid addressing: each card cell key is "col,row".
+ *   LEFT/RIGHT (col±1) = the main sequence (kind:'seq', carries step:N).
+ *   UP/DOWN    (row±1) = a parallel / deeper detail card (kind:'detail').
+ * The engine is content-agnostic: a deck supplies its own cards + info in
+ * <deck>.cards.js. Per-deck code-accuracy (the source files each hood fact was
+ * verified against) is documented in that content file's header, not here.
  * ========================================================================== */
 (function () {
     "use strict";
