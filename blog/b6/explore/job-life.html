@@ -187,21 +187,25 @@
         .tag--context { color: #f0c36a; background: rgba(240,190,90,0.14); }
         .tag--object  { color: #9398f8; background: rgba(120,124,240,0.16); }
         .tag--phase   { color: #bda4f9; background: rgba(150,110,245,0.16); }
-        .tag--action  { color: #4fd6a0; background: rgba(60,210,150,0.14); }
+        .tag--action  { color: #67c8f0; background: rgba(56,189,248,0.14); }
+        .tag--gate    { color: #4fd6a0; background: rgba(60,210,150,0.14); }
         .dbox--tag-state   { border-left-color: #6b7fb8 !important; }
         .dbox--tag-context { border-left-color: #d9a948 !important; }
         .dbox--tag-object  { border-left-color: #6366f1 !important; }
         .dbox--tag-phase   { border-left-color: #8b5cf6 !important; }
-        .dbox--tag-action  { border-left-color: #34d399 !important; }
+        .dbox--tag-action  { border-left-color: #38bdf8 !important; }
+        .dbox--tag-gate    { border-left-color: #34d399 !important; }
 
-        /* ---- TAG CAPTION: always-visible key so tags are never a mystery ---- */
+        /* ---- TAG CAPTION: always-visible key, docked top-LEFT (clears the
+               centred up/down nav arrows + the deck title + the top-right minimap) ---- */
         .tagcaption {
-            position: fixed; left: 50%; transform: translateX(-50%); top: 6.7rem; z-index: 1600;
-            display: flex; align-items: center; gap: 6px;
-            padding: 6px 10px; border-radius: 999px;
+            position: fixed; left: 0.85rem; top: 0.85rem; z-index: 1600;
+            display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
+            max-width: 282px; box-sizing: border-box;
+            padding: 7px 9px; border-radius: 12px;
             background: rgba(10,10,16,0.85); border: 1px solid var(--border); backdrop-filter: blur(9px);
         }
-        .tagcaption__lab { font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-right: 2px; }
+        .tagcaption__lab { width: 100%; font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 1px; }
         .tagcap { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; font-size: 8.5px; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; }
         .tagcap .sym { font-size: 11px; }
         @media (max-width: 760px) { .tagcaption { display: none; } }
@@ -608,13 +612,14 @@
         <div class="legend__body" id="legend-body">
             <div class="legend__sect">What the tags mean</div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:#6b7fb8"></span><span class="legend__txt"><b>&#9676; State</b>a condition the seed is in</span></div>
-            <div class="legend__row"><span class="legend__sw" style="border-left-color:#d9a948"></span><span class="legend__txt"><b>&#10006; Context</b>input the seed reads (a prompt)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#d9a948"></span><span class="legend__txt"><b>&#9998; Context</b>input the seed reads (a prompt)</span></div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:#6366f1"></span><span class="legend__txt"><b>&#9635; Object</b>a thing that now exists (the job)</span></div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:#8b5cf6"></span><span class="legend__txt"><b>&#9670; Phase</b>an OPEVC phase (OBSERVE…)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#38bdf8"></span><span class="legend__txt"><b>&#9889; Action</b>something the system does</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#34d399"></span><span class="legend__txt"><b>&#10003; Gate</b>a checked condition that must pass to advance</span></div>
             <div class="legend__sect">Who owns the data (lane)</div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-job_core)"></span><span class="legend__txt"><b>job_core</b>the base job record</span></div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-phasic)"></span><span class="legend__txt"><b>phasic_system</b>the phase mirror (idle, cycle)</span></div>
-            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-gate)"></span><span class="legend__txt"><b>a code gate</b>a checked condition to advance</span></div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-footer)"></span><span class="legend__txt"><b>working memory</b>CLAUDE.md the job writes into</span></div>
             <div class="legend__sect">Arrows</div>
             <div class="legend__row"><span class="legend__edge" aria-hidden="true"></span><span class="legend__txt"><b>Solid = hard</b>a code-enforced step</span></div>
@@ -628,9 +633,11 @@
     <div class="tagcaption" aria-hidden="true">
         <span class="tagcaption__lab">Tags</span>
         <span class="tagcap tag--state"><span class="sym">&#9676;</span>State</span>
-        <span class="tagcap tag--context"><span class="sym">&#10006;</span>Context</span>
+        <span class="tagcap tag--context"><span class="sym">&#9998;</span>Context</span>
         <span class="tagcap tag--object"><span class="sym">&#9635;</span>Object</span>
         <span class="tagcap tag--phase"><span class="sym">&#9670;</span>Phase</span>
+        <span class="tagcap tag--action"><span class="sym">&#9889;</span>Action</span>
+        <span class="tagcap tag--gate"><span class="sym">&#10003;</span>Gate</span>
     </div>
 
     <!-- ============================ HELP BUTTON ============================ -->
@@ -710,12 +717,6 @@
             why: 'An idle seed has no job to feed. So your prompt does double duty: a reflex catches it and, finding nothing running, turns it INTO a job. Speaking to a sleeping seed IS starting a job — the "first-prompt effect". You never have to ask it to start.',
             hood: 'Caught by <code>job_core/hooks/prompt-handler.sh</code> on the <code>UserPromptSubmit</code> event. It counts active jobs (<code>active_count = jobs where status=="active"</code>); when that is <code>0</code> it bootstraps a brand-new job — see the "creates it" arrow.'
         },
-        'a-create': {
-            title: 'Create ONE job', lane: 'job_core',
-            what: 'With no job running, the prompt creates exactly one — and makes it the live, focused job immediately.',
-            why: 'This is the "first-prompt effect": you never have to ask the seed to start a job. Speaking to an idle seed IS starting one. It cannot create a throwaway, unfocused job here — the first prompt always produces a real, live job.',
-            hood: 'The handler calls <code>job.sh --hook create-active "&lt;your prompt&gt;"</code>. This is the ONLY automatic create path, and it is HOOK_MODE-gated — calling <code>create-active</code> by hand is refused ("reserved for system automation"). It writes <code>status:active</code> and <code>focused:true</code> in a single jq write.'
-        },
         'a-record': {
             title: 'A new job — born empty', tag: 'object',
             what: 'The job now exists as one JSON object — created, live, and focused — but almost completely blank.',
@@ -731,25 +732,25 @@
 
         /* ---------------- CARD B : OBSERVE ---------------- */
         'b-read': {
-            title: 'Reads prompt + context', lane: 'footer',
+            title: 'Reads prompt + context', tag: 'action',
             what: 'In OBSERVE the job gathers: it re-reads your prompt, can ask you follow-up questions, and pulls in surrounding context.',
             why: 'A newborn job knows almost nothing about itself. OBSERVE is read-wide time — it learns enough to describe its own purpose in its own words.',
             hood: 'OBSERVE is a read-only phase: its guard blocks writes to project files and only lets the agent write into CLAUDE.md working memory. Findings accumulate there before any decision is made.'
         },
         'b-name': {
-            title: 'Writes a NAME', lane: 'job_core',
+            title: 'name — the job names itself', tag: 'object',
             what: 'The job gives itself a name — a short handle describing what this unit of work is.',
             why: 'A nameless job is just "the thing the seed is doing." A named job is a thing you can point at, track, and reason about. Naming is the first act of self-definition.',
             hood: 'Set via <code>job.sh update &lt;id&gt; name "&lt;name&gt;"</code>, filling the <code>name</code> field that was born as <code>""</code>.'
         },
         'b-objective': {
-            title: 'Writes an OBJECTIVE', lane: 'job_core',
+            title: 'objective — the job sets its goal', tag: 'object',
             what: 'The job writes down its goal — what "done" will mean for this work.',
             why: 'The objective is the job\'s compass. Every later phase checks its work against this one sentence of intent. Without it, the job has no way to know when it is finished.',
             hood: 'Set via <code>job.sh update &lt;id&gt; objective "&lt;text&gt;"</code>, filling the <code>objective</code> field that was born as <code>""</code>.'
         },
         'b-gate': {
-            title: 'Gate to PLAN', lane: 'gate',
+            title: 'Gate to PLAN', tag: 'gate',
             what: 'A checkpoint. The job cannot move on to PLAN until it has actually named and defined itself.',
             why: 'This is what stops empty jobs from slipping forward. The job must prove it has done its homework in OBSERVE before it is allowed to start planning.',
             hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance. For cycle 1 it checks <code>name</code> is non-empty AND <code>objective</code> is non-empty — plus ≥100 points and ≥1 CLAUDE.md update. Any empty field → <code>REJECTED</code>, stay in OBSERVE.',
@@ -758,25 +759,25 @@
 
         /* ---------------- CARD A2 : Active + focused ---------------- */
         'a2-active': {
-            title: 'active', lane: 'job_core',
+            title: 'active', tag: 'state',
             what: '"Active" means this job is live — it is real work the seed has on its plate right now.',
             why: 'A job has a status. Active is the working state; later it can become completed. While any job is active, the seed will not go quietly to sleep — there is work to finish.',
             hood: 'The <code>status</code> field is set to <code>"active"</code> at birth by <code>create-active</code>. The stop gate refuses to release while any job is <code>active</code>.'
         },
         'a2-focused': {
-            title: 'focused', lane: 'job_core',
+            title: 'focused', tag: 'state',
             what: '"Focused" means this is THE one job the seed is concentrating on right now.',
             why: 'You can have several active jobs, but only one is focused. Every phase gate, every coaching voice, every write-scope keys off the single focused job. Focus is the spotlight.',
             hood: '<code>focused:true</code>. Only one record carries it at a time — focusing a different job first clears the flag everywhere else. Birth sets both <code>active</code> AND <code>focused</code> in the same jq write.'
         },
         'a2-onewrite': {
-            title: 'one jq write', lane: 'job_core',
+            title: 'one jq write', tag: 'action',
             what: 'Both flags — active and focused — are stamped onto the record in a single atomic write.',
             why: 'There is no in-between moment where a job is half-born. It appears already live and already in focus. Clean and atomic.',
             hood: 'A single <code>jq \'.jobs += [{... status:"active", focused:true ...}]\'</code> append. No second step sets focus — it is part of the same object literal.'
         },
         'a2-mirror': {
-            title: 'phasic mirror', lane: 'phasic',
+            title: 'phase mirror', tag: 'object',
             what: 'A second small record is created to track which phase the job is in.',
             why: 'The job\'s "what am I" lives in one place (job_core); its "where am I in the cycle" lives in another (the phasic system). Same job, split across plugins by the same ID.',
             hood: '<code>phase.sh --hook init &lt;id&gt;</code> appends <code>{id, current_phase:"idle", cycle:0}</code> to the phasic plugin\'s own data file. Then <code>phase.sh advance &lt;id&gt;</code> makes the <code>idle→observe</code> move.'
@@ -784,32 +785,32 @@
 
         /* ---------------- CARD B2 : The gate to PLAN ---------------- */
         'b2-name': {
-            title: 'name filled?', lane: 'gate',
+            title: 'name filled?', tag: 'gate',
             what: 'First check: has the job written a non-empty name?',
             why: 'No name means the job never defined what it is. The gate refuses — back to OBSERVE.',
             hood: '<code>observe-commit.sh</code>: if <code>name</code> is empty → <code>REJECTED: Job has no name</code>.'
         },
         'b2-objective': {
-            title: 'objective filled?', lane: 'gate',
+            title: 'objective filled?', tag: 'gate',
             what: 'Second check: has the job written a non-empty objective?',
             why: 'No objective means the job has no goal to verify against later. The gate refuses.',
             hood: '<code>observe-commit.sh</code>: if <code>objective</code> is empty → <code>REJECTED: Job has no objective</code>.',
             warn: 'The essays frame this as a 300–500 word objective expansion. The code checks NON-EMPTY only; the word count is coaching, not an enforced gate.'
         },
         'b2-points': {
-            title: '≥ 100 points?', lane: 'gate',
+            title: '≥ 100 points?', tag: 'gate',
             what: 'Third check: has the job done enough observing? Each phase has its own little point budget.',
             why: 'This stops the job from glancing at the prompt and rushing onward. It has to actually do the gathering work.',
             hood: '<code>observe-commit.sh</code> blocks the forced advance unless <code>total_points ≥ 100</code> (the per-phase transition threshold). Below it → <code>BLOCKED: Observation incomplete</code>.'
         },
         'b2-claude': {
-            title: '≥ 1 CLAUDE.md update?', lane: 'footer',
+            title: '≥ 1 CLAUDE.md update?', tag: 'gate',
             what: 'Fourth check: has the job written its findings into working memory at least once?',
             why: 'OBSERVE\'s whole job is to gather and synthesise. If nothing was written down, nothing was learned.',
             hood: '<code>observe-commit.sh</code>: needs <code>updates ≥ 1</code> CLAUDE.md update, else <code>BLOCKED: Need at least one CLAUDE.md update</code>.'
         },
         'b2-unlock': {
-            title: 'PLAN unlocks', lane: 'phasic',
+            title: 'PLAN unlocks', tag: 'phase',
             what: 'All four checks pass → the job is allowed into PLAN.',
             why: 'Only a job that knows its name, its goal, and has done real observation gets to start planning. No empty jobs get through.',
             hood: 'With name + objective non-empty AND points ≥ 100 AND ≥ 1 CLAUDE.md update, <code>observe-commit.sh</code> permits the <code>observe→plan</code> forward transition.'
@@ -828,9 +829,10 @@
     var TAG_DEF = {
         state:   { sym:'◌', label:'State' },    /* the seed's condition (idle, focused…) */
         context: { sym:'✎', label:'Context' },  /* input the seed reads (a prompt) */
-        object:  { sym:'▣', label:'Object' },   /* a data thing that now exists (the job) */
+        object:  { sym:'▣', label:'Object' },   /* a data thing that now exists (the job/a field) */
         phase:   { sym:'◆', label:'Phase' },    /* an OPEVC phase (OBSERVE…) */
-        action:  { sym:'⚡', label:'Action' }    /* something the system does */
+        action:  { sym:'⚡', label:'Action' },   /* something the system does */
+        gate:    { sym:'✓', label:'Gate' }      /* a checked condition that must pass to advance */
     };
 
     var CARDS = {
@@ -865,10 +867,10 @@
             title: 'OBSERVE — find out who you are',
             sub: 'What you\'re looking at: the empty job reads, then names itself and writes its goal. It cannot reach PLAN until both are filled.',
             boxes: [
-                { id:'b-read',      x:54,  y:222, w:212, h:104, lane:'footer',   t:'Reads prompt + context', s:'gather · ask · read wide' },
-                { id:'b-name',      x:404, y:120, w:196, h:92,  lane:'job_core', t:'Writes a NAME',      s:'fills name: ""' },
-                { id:'b-objective', x:404, y:336, w:196, h:92,  lane:'job_core', t:'Writes an OBJECTIVE', s:'fills objective: ""' },
-                { id:'b-gate',      x:734, y:218, w:210, h:112, lane:'gate',     t:'Gate to PLAN',       s:'name + objective non-empty', warn:true }
+                { id:'b-read',      x:54,  y:222, w:212, h:104, tag:'action', t:'Reads prompt + context', s:'gather · ask · read wide' },
+                { id:'b-name',      x:404, y:120, w:196, h:92,  tag:'object', t:'name',      s:'filled in — was empty' },
+                { id:'b-objective', x:404, y:336, w:196, h:92,  tag:'object', t:'objective', s:'filled in — was empty' },
+                { id:'b-gate',      x:734, y:218, w:210, h:112, tag:'gate',   t:'Gate to PLAN',       s:'name + objective non-empty', warn:true }
             ],
             edges: [
                 { from:'b-read',      to:'b-name',      kind:'hard', label:'self-define' },
@@ -890,10 +892,10 @@
             title: 'Active + focused, in one write',
             sub: 'What you\'re looking at: the two flags that make a newborn job both real and the centre of attention — set atomically, then mirrored into the phase machine.',
             boxes: [
-                { id:'a2-onewrite', x:380, y:60,  w:240, h:96,  lane:'job_core', t:'one jq write',   s:'atomic — no half-born state' },
-                { id:'a2-active',   x:150, y:236, w:212, h:104, lane:'job_core', t:'active',         s:'the job is live work' },
-                { id:'a2-focused',  x:640, y:236, w:212, h:104, lane:'job_core', t:'focused',        s:'THE one job, right now' },
-                { id:'a2-mirror',   x:380, y:418, w:240, h:96,  lane:'phasic',   t:'phasic mirror init', s:'current_phase: idle · cycle: 0' }
+                { id:'a2-onewrite', x:380, y:60,  w:240, h:96,  tag:'action', t:'one jq write',   s:'atomic — no half-born state' },
+                { id:'a2-active',   x:150, y:236, w:212, h:104, tag:'state',  t:'active',         s:'the job is live work' },
+                { id:'a2-focused',  x:640, y:236, w:212, h:104, tag:'state',  t:'focused',        s:'THE one job, right now' },
+                { id:'a2-mirror',   x:380, y:418, w:240, h:96,  tag:'object', t:'phase mirror',   s:'current_phase: idle · cycle: 0' }
             ],
             edges: [
                 { from:'a2-onewrite', to:'a2-active',  kind:'hard', label:'sets status' },
@@ -914,11 +916,11 @@
             title: 'The gate to PLAN',
             sub: 'What you\'re looking at: the OBSERVE → PLAN checkpoint, opened up. Four boxes must all answer "yes" before PLAN unlocks.',
             boxes: [
-                { id:'b2-name',      x:60,  y:60,  w:210, h:92, lane:'gate',   t:'name filled?',          s:'non-empty string' },
-                { id:'b2-objective', x:60,  y:188, w:210, h:92, lane:'gate',   t:'objective filled?',     s:'non-empty string', warn:true },
-                { id:'b2-points',    x:60,  y:316, w:210, h:92, lane:'gate',   t:'≥ 100 points?',         s:'enough observing' },
-                { id:'b2-claude',    x:60,  y:444, w:210, h:92, lane:'footer', t:'≥ 1 CLAUDE.md update?', s:'findings written down' },
-                { id:'b2-unlock',    x:660, y:230, w:268, h:120, lane:'phasic', t:'PLAN unlocks',         s:'all four say YES' }
+                { id:'b2-name',      x:60,  y:60,  w:210, h:92, tag:'gate',  t:'name filled?',          s:'non-empty string' },
+                { id:'b2-objective', x:60,  y:188, w:210, h:92, tag:'gate',  t:'objective filled?',     s:'non-empty string', warn:true },
+                { id:'b2-points',    x:60,  y:316, w:210, h:92, tag:'gate',  t:'≥ 100 points?',         s:'enough observing' },
+                { id:'b2-claude',    x:60,  y:444, w:210, h:92, tag:'gate',  t:'≥ 1 CLAUDE.md update?', s:'findings written down' },
+                { id:'b2-unlock',    x:660, y:230, w:268, h:120, tag:'phase', t:'PLAN unlocks',         s:'all four say YES' }
             ],
             edges: [
                 { from:'b2-name',      to:'b2-unlock', kind:'hard' },
@@ -1231,7 +1233,7 @@
         var d = INFO[nodeId];
         if (!d) return;
         lastFocused = document.activeElement;
-        var TAG_COLOR = { state:'#6b7fb8', context:'#d9a948', object:'#6366f1', phase:'#8b5cf6', action:'#34d399' };
+        var TAG_COLOR = { state:'#6b7fb8', context:'#d9a948', object:'#6366f1', phase:'#8b5cf6', action:'#38bdf8', gate:'#34d399' };
         var isTag = d.tag && TAG_DEF[d.tag];
         var dotColor = isTag ? TAG_COLOR[d.tag] : (LANE_COLOR[d.lane] || 'var(--lane-job_core)');
         var dotLabel = isTag ? (TAG_DEF[d.tag].sym + ' ' + TAG_DEF[d.tag].label) : (LANE_LABEL[d.lane] || d.lane);
