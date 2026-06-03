@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<!-- Version: v1.0.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Life of a Job — an interactive walk through a seed agent's cognition | Hadosh Academy</title>
+    <meta name="description" content="A full-screen, spatial concept-deck that walks you through the birth of a seed-agent job. Move left/right to follow the job's life in sequence; up/down for related detail. Hand-laid diagrams, sticky notes, hover tooltips, and click-to-open under-the-hood facts — code-accurate.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b6/explore/job-life.html">
+    <meta property="og:title" content="The Life of a Job — an interactive walk through a seed agent's cognition | Hadosh Academy">
+    <meta property="og:description" content="A spatial concept-deck on how a seed-agent job is born and finds out what it is. Left/right = the job's life; up/down = related detail.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b6/explore/job-life.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Life of a Job — an interactive walk through a seed agent's cognition | Hadosh Academy">
+    <meta name="twitter:description" content="How a seed-agent job is born and finds out what it is. Left/right = the job's life; up/down = related detail.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+
+    <!-- site stylesheet — fonts + theme vars only; ALL deck styles are inline below -->
+    <link rel="stylesheet" href="../../../css/styles.css?v=20260518">
+
+    <style>
+        /* ====================================================================
+           DESIGN TOKENS — Hadosh dark-glass, indigo/violet (matches job-flow).
+           ==================================================================== */
+        :root {
+            --bg: #050507;
+            --primary: #6366f1;
+            --accent: #8b5cf6;
+            --text-main: #e9e9f2;
+            --text-muted: #b2b2c6;
+            --border: rgba(255, 255, 255, 0.10);
+            --glass: rgba(255, 255, 255, 0.045);
+            --glass-hover: rgba(255, 255, 255, 0.085);
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --accent-glow: rgba(139, 92, 246, 0.35);
+            --warn: #f5b656;
+            --warn-glow: rgba(245, 182, 86, 0.35);
+
+            /* lane (data-owner) hues — mirrored by the legend */
+            --lane-job_core: #6366f1;   /* base record           */
+            --lane-phasic:   #8b5cf6;   /* phasic_system mirror   */
+            --lane-footer:   #94a3b8;   /* CLAUDE.md working mem  */
+            --lane-summary:  #f472b6;   /* interaction summary    */
+            --lane-gate:     #34d399;   /* a code-enforced gate   */
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0; padding: 0;
+            height: 100vh; width: 100vw;
+            overflow: hidden;
+            background: var(--bg);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================ STAGE / DECK ============================ */
+        .deck-root {
+            position: fixed; inset: 0; z-index: 1000;
+            background:
+                radial-gradient(1200px 800px at 72% -12%, rgba(99,102,241,0.12), transparent 60%),
+                radial-gradient(1000px 720px at 8% 112%, rgba(139,92,246,0.12), transparent 60%),
+                #050507;
+            overflow: hidden;
+        }
+
+        /* The deck is a 2x2 grid laid out in absolute viewport-sized cells.
+           We translate the whole deck to bring the active cell on-screen. */
+        .deck-grid {
+            position: absolute; top: 0; left: 0;
+            width: 200vw; height: 200vh;
+            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: transform;
+        }
+        .deck-cell {
+            position: absolute;
+            width: 100vw; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 4.4rem 2rem 2rem;
+        }
+        /* grid positions (col,row) */
+        .deck-cell[data-col="0"] { left: 0; }
+        .deck-cell[data-col="1"] { left: 100vw; }
+        .deck-cell[data-row="0"] { top: 0; }
+        .deck-cell[data-row="1"] { top: 100vh; }
+
+        .card {
+            position: relative;
+            width: min(1180px, 100%);
+            height: min(860px, 100%);
+            display: flex; flex-direction: column;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(160deg, rgba(255,255,255,0.035), rgba(255,255,255,0) 46%),
+                rgba(10,10,16,0.42);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        .card__head { flex: 0 0 auto; padding: 1.3rem 1.7rem 0.7rem; }
+        .card__eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase;
+            font-weight: 700; margin-bottom: 0.55rem;
+        }
+        .card__eyebrow.seq   { color: var(--accent); }
+        .card__eyebrow.detail{ color: #8aa0c8; }
+        .card__eyebrow-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: currentColor; box-shadow: 0 0 10px currentColor;
+        }
+        .card__title { margin: 0; font-size: 1.62rem; line-height: 1.12; letter-spacing: -0.01em; color: #f4f2fb; }
+        .card__sub { margin: 0.4rem 0 0; font-size: 0.92rem; line-height: 1.4; color: var(--text-muted); max-width: 64ch; }
+
+        .card__stage { flex: 1 1 auto; position: relative; min-height: 0; }
+
+        /* SVG diagram fills the stage area */
+        .diagram { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+        /* ---- glass diagram boxes (HTML, positioned via foreignObject) ---- */
+        .dbox {
+            box-sizing: border-box;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; gap: 3px;
+            padding: 9px 13px;
+            border-radius: 13px;
+            border: 1px solid rgba(99,102,241,0.30);
+            border-left: 4px solid var(--lane-job_core);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 44%),
+                linear-gradient(160deg, rgba(34,34,52,0.93), rgba(20,20,32,0.93));
+            box-shadow: 0 6px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07);
+            cursor: pointer; position: relative; overflow: hidden;
+            transition: border-color .16s, box-shadow .16s, transform .12s;
+        }
+        .dbox:hover { border-color: rgba(139,92,246,0.6); box-shadow: 0 10px 30px rgba(99,102,241,0.28); transform: translateY(-1px); }
+        .dbox:focus-visible {
+            outline: none;
+            box-shadow: inset 0 0 0 3px var(--accent), inset 0 0 0 7px rgba(139,92,246,0.32);
+        }
+        .dbox__t { font-size: 13px; font-weight: 650; line-height: 1.18; color: #f2f2f8; }
+        .dbox__s { font-size: 10.5px; line-height: 1.28; color: #bdbdd0; }
+        .dbox--lane-job_core { border-left-color: var(--lane-job_core); background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 44%), linear-gradient(160deg, rgba(30,32,66,0.94), rgba(18,19,42,0.94)); }
+        .dbox--lane-phasic   { border-left-color: var(--lane-phasic);   background: linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 44%), linear-gradient(160deg, rgba(46,32,72,0.95), rgba(28,20,48,0.95)); }
+        .dbox--lane-footer   { border-left-color: var(--lane-footer);   background: linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0) 44%), linear-gradient(160deg, rgba(30,34,42,0.93), rgba(18,21,28,0.93)); }
+        .dbox--lane-summary  { border-left-color: var(--lane-summary);  background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 44%), linear-gradient(160deg, rgba(54,24,42,0.94), rgba(36,16,28,0.94)); }
+        .dbox--lane-gate     { border-left-color: var(--lane-gate);     background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 44%), linear-gradient(160deg, rgba(16,46,38,0.94), rgba(10,30,26,0.94)); }
+        .dbox--record .dbox__t { font-size: 12.5px; }
+
+        /* the small ⚠ blog-vs-code badge on a box */
+        .dbox__warn {
+            position: absolute; top: -9px; right: -9px;
+            width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; line-height: 1; color: #1a1206;
+            background: linear-gradient(150deg, #f5c66a, #f5a623);
+            border: 1.5px solid rgba(255,255,255,0.6);
+            box-shadow: 0 3px 10px var(--warn-glow); z-index: 4;
+        }
+        .dbox:has(.dbox__warn) { border-color: rgba(245,182,86,0.5); }
+
+        /* field-list inside the "job record" box */
+        .dfields { display: flex; flex-direction: column; gap: 1px; margin-top: 1px; }
+        .dfield { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 9.6px; line-height: 1.4; color: #c7c4e4; white-space: nowrap; }
+        .dfield b { color: #efeaff; font-weight: 600; }
+        .dfield .nul { color: #8a8aa2; }
+
+        /* ---- SVG edges ---- */
+        .edge { fill: none; stroke: rgba(200,204,236,0.85); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+        .edge--soft { stroke: rgba(160,166,224,0.6); stroke-width: 1.9; stroke-dasharray: 6 6; }
+        .edge-lbl-bg { fill: rgba(9,9,15,0.94); stroke: rgba(139,92,246,0.30); stroke-width: 1; }
+        .edge-lbl { fill: #dcdcec; font-size: 10.5px; font-weight: 600; letter-spacing: 0.01em; }
+
+        /* ---- sticky notes (post-its) ---- */
+        .sticky {
+            position: absolute; z-index: 6;
+            width: 158px;
+            padding: 8px 10px 9px;
+            font-size: 11px; line-height: 1.38; color: #3a2f12;
+            background: linear-gradient(165deg, #fdf3c0, #f7e79a);
+            border: 1px solid rgba(180,150,40,0.35);
+            border-radius: 3px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+            transform: rotate(-2.4deg);
+            pointer-events: none;
+        }
+        .sticky::before {
+            content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 14px; border-radius: 3px;
+            background: rgba(120,120,180,0.32);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+        }
+        .sticky.r  { transform: rotate(2.2deg); }
+        .sticky b  { color: #6b4e0a; }
+        .sticky--aha {
+            background: linear-gradient(165deg, #ffe1c2, #ffcf9c);
+            border-color: rgba(190,110,40,0.4);
+        }
+        .sticky--aha::before { background: rgba(180,90,40,0.32); }
+
+        /* the guiding NEXT-NOTE: animated arrow + note pointing right */
+        .nextnote {
+            position: absolute; z-index: 7;
+            display: flex; align-items: center; gap: 0.5rem;
+            pointer-events: none;
+        }
+        .nextnote__chip {
+            font-size: 0.78rem; font-weight: 650; color: #efeaff;
+            padding: 0.45rem 0.8rem; border-radius: 999px;
+            background: linear-gradient(150deg, rgba(99,102,241,0.34), rgba(139,92,246,0.34));
+            border: 1px solid rgba(139,92,246,0.55);
+            box-shadow: 0 8px 22px rgba(99,102,241,0.3);
+            white-space: nowrap;
+        }
+        .nextnote__arrow {
+            font-size: 1.5rem; color: var(--accent); line-height: 1;
+            animation: nudge 1.4s ease-in-out infinite;
+        }
+        @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+        .downhint {
+            position: absolute; z-index: 7;
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.72rem; color: #9fb3d8; font-weight: 600;
+            pointer-events: none;
+        }
+        .downhint__arrow { animation: nudgeY 1.5s ease-in-out infinite; }
+        @keyframes nudgeY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+        /* ============================ CHROME ============================ */
+        .chrome-back {
+            position: fixed; top: 1.3rem; left: 1.5rem; z-index: 2200;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 0.9rem; border-radius: 999px;
+            background: rgba(5,5,7,0.62); border: 1px solid var(--border);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: var(--text-muted); text-decoration: none; font-size: 0.8rem;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .chrome-back:hover, .chrome-back:focus-visible { color: var(--text-main); border-color: var(--primary); outline: none; }
+
+        .deck-title {
+            position: fixed; top: 1.3rem; left: 50%; transform: translateX(-50%); z-index: 2100;
+            font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; color: #efeaff;
+            text-align: center; pointer-events: none;
+        }
+        .deck-title span { display: block; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 1px; }
+
+        /* step indicator (main sequence) */
+        .step-ind {
+            position: fixed; top: 4.1rem; left: 50%; transform: translateX(-50%); z-index: 2100;
+            display: flex; align-items: center; gap: 0.55rem;
+            padding: 0.4rem 0.9rem; border-radius: 999px;
+            background: rgba(10,10,16,0.66); border: 1px solid var(--border);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            font-size: 0.74rem; color: var(--text-muted);
+            transition: opacity .25s;
+        }
+        .step-ind b { color: #efeaff; font-weight: 700; }
+        .step-ind__dots { display: flex; gap: 5px; }
+        .step-ind__dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.18); transition: background .2s, box-shadow .2s; }
+        .step-ind__dot.on { background: linear-gradient(150deg, #6366f1, #8b5cf6); box-shadow: 0 0 9px rgba(139,92,246,0.7); }
+        .step-ind.is-detail { border-color: rgba(138,160,200,0.4); }
+
+        /* ============================ NAV ARROWS ============================ */
+        .nav-arrow {
+            position: fixed; z-index: 2150;
+            width: 46px; height: 46px; border-radius: 50%;
+            appearance: none; cursor: pointer; font-family: inherit;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; line-height: 1; color: #efeaff;
+            background: rgba(12,12,20,0.7);
+            border: 1px solid rgba(139,92,246,0.5);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(99,102,241,0.32);
+            transition: opacity .22s, transform .14s, background .16s, border-color .16s;
+        }
+        .nav-arrow:hover { background: rgba(99,102,241,0.34); transform: scale(1.07); }
+        .nav-arrow:active { transform: scale(0.94); }
+        .nav-arrow:focus-visible { outline: none; border-color: #fff; box-shadow: 0 0 0 3px rgba(139,92,246,0.6); }
+        .nav-arrow.is-disabled { opacity: 0; pointer-events: none; }
+        .nav-arrow__hint {
+            position: absolute; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em;
+            color: var(--accent); white-space: nowrap; opacity: 0;
+            transition: opacity .2s; pointer-events: none;
+        }
+        .nav-arrow:hover .nav-arrow__hint { opacity: 1; }
+
+        #nav-left   { left: 1.5rem;  top: 50%; transform: translateY(-50%); }
+        #nav-left .nav-arrow__hint  { left: 56px; top: 50%; transform: translateY(-50%); }
+        #nav-right  { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+        #nav-right .nav-arrow__hint { right: 56px; top: 50%; transform: translateY(-50%); text-align: right; }
+        #nav-up     { top: 5.6rem;  left: 50%; transform: translateX(-50%); }
+        #nav-up .nav-arrow__hint    { top: 50px; left: 50%; transform: translateX(-50%); }
+        #nav-down   { bottom: 1.5rem; left: 50%; transform: translateX(-50%); }
+        #nav-down .nav-arrow__hint  { bottom: 50px; left: 50%; transform: translateX(-50%); }
+        #nav-left:hover, #nav-right:hover { transform: translateY(-50%) scale(1.07); }
+        #nav-up:hover, #nav-down:hover { transform: translateX(-50%) scale(1.07); }
+
+        /* ============================ MINIMAP ============================ */
+        .minimap {
+            position: fixed; top: 1.3rem; right: 1.5rem; z-index: 2200;
+            padding: 0.7rem; border-radius: 16px;
+            background: rgba(10,10,16,0.72); border: 1px solid var(--border);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 14px 38px rgba(0,0,0,0.45);
+        }
+        .minimap__label { font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; text-align: center; margin-bottom: 0.45rem; }
+        .minimap__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+        .mm-cell {
+            position: relative;
+            width: 58px; height: 38px; border-radius: 8px;
+            appearance: none; cursor: pointer; font-family: inherit;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.04);
+            display: flex; align-items: center; justify-content: center;
+            padding: 3px; text-align: center;
+            font-size: 0.52rem; line-height: 1.1; font-weight: 600; color: var(--text-muted);
+            transition: border-color .18s, background .18s, color .18s, box-shadow .18s;
+        }
+        .mm-cell:hover { border-color: rgba(139,92,246,0.6); color: var(--text-main); }
+        .mm-cell:focus-visible { outline: none; border-color: #fff; box-shadow: 0 0 0 2px rgba(139,92,246,0.6); }
+        .mm-cell.is-seq    { background: rgba(99,102,241,0.10); }
+        .mm-cell.is-detail { background: rgba(148,163,184,0.07); border-style: dashed; }
+        .mm-cell.is-current {
+            border-color: var(--accent); color: #f4f2fb;
+            background: linear-gradient(150deg, rgba(99,102,241,0.4), rgba(139,92,246,0.4));
+            box-shadow: 0 0 16px rgba(139,92,246,0.55);
+        }
+        .minimap__legend { margin-top: 0.55rem; display: flex; flex-direction: column; gap: 0.2rem; }
+        .minimap__lg { display: flex; align-items: center; gap: 0.35rem; font-size: 0.56rem; color: var(--text-muted); }
+        .minimap__lgdot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+
+        /* ============================ INFO PANEL ============================ */
+        .info-panel {
+            position: fixed; left: 1.6rem; bottom: 1.4rem; z-index: 3000;
+            width: 376px; max-width: calc(100vw - 3.2rem); max-height: 70vh; overflow-y: auto;
+            background: rgba(10,10,16,0.86); border: 1px solid var(--border); border-radius: 18px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 24px 56px rgba(0,0,0,0.6);
+            padding: 1.3rem 1.4rem 1.4rem;
+            transform: translateY(10px); opacity: 0; pointer-events: none;
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+        .info-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .info-kind { display: inline-block; font-size: 0.6rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; }
+        .info-panel h2 { margin: 0 0 0.5rem; font-size: 1.16rem; line-height: 1.2; }
+        .info-lane-tag {
+            display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.85rem;
+            font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+            color: var(--text-muted); background: var(--glass); border: 1px solid var(--border);
+            border-radius: 999px; padding: 0.2rem 0.6rem;
+        }
+        .info-lane-dot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+        .info-field { margin-bottom: 0.85rem; }
+        .info-field:last-child { margin-bottom: 0; }
+        .info-field-label { font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 0.22rem; }
+        .info-field-body { font-size: 0.86rem; line-height: 1.55; color: var(--text-main); }
+
+        .info-hood { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px dashed rgba(139,92,246,0.4); }
+        .info-hood-label {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase;
+            font-weight: 800; color: var(--primary); margin-bottom: 0.45rem;
+        }
+        .info-hood-label::before { content: '\232C'; font-size: 0.78rem; opacity: 0.85; }
+        .info-hood-body {
+            font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.735rem; line-height: 1.62; letter-spacing: -0.01em; color: #c9c6e6;
+            background: linear-gradient(160deg, rgba(99,102,241,0.1), rgba(139,92,246,0.05));
+            border: 1px solid rgba(99,102,241,0.22); border-radius: 11px; padding: 0.7rem 0.8rem;
+        }
+        .info-hood-body code { color: #efeaff; }
+
+        .info-warn { margin-top: 1rem; padding-top: 0.9rem; border-top: 1px dashed rgba(245,182,86,0.5); }
+        .info-warn-label {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase;
+            font-weight: 800; color: var(--warn); margin-bottom: 0.45rem;
+        }
+        .info-warn-label::before { content: '\26A0'; font-size: 0.82rem; }
+        .info-warn-body {
+            font-size: 0.8rem; line-height: 1.58; color: #f0e2c9;
+            background: linear-gradient(160deg, rgba(245,182,86,0.12), rgba(245,166,35,0.05));
+            border: 1px solid rgba(245,182,86,0.3); border-radius: 11px; padding: 0.7rem 0.8rem;
+        }
+        .info-close {
+            position: absolute; top: 0.85rem; right: 0.85rem; width: 28px; height: 28px;
+            border-radius: 50%; border: 1px solid var(--border); background: var(--glass);
+            color: var(--text-main); cursor: pointer; font-size: 1.05rem; line-height: 1;
+            display: flex; align-items: center; justify-content: center; transition: all 0.18s;
+        }
+        .info-close:hover, .info-close:focus-visible { border-color: var(--accent); background: var(--glass-hover); outline: none; }
+
+        /* ============================ TOOLTIP ============================ */
+        .tooltip {
+            position: fixed; z-index: 3400; max-width: 260px;
+            padding: 0.5rem 0.72rem; border-radius: 12px;
+            background: rgba(8,8,13,0.95); border: 1px solid rgba(139,92,246,0.4);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            opacity: 0; pointer-events: none; transform: translateY(4px);
+            transition: opacity .14s, transform .14s;
+        }
+        .tooltip.is-on { opacity: 1; transform: translateY(0); }
+        .tooltip__t { font-size: 0.78rem; font-weight: 700; color: #f1eeff; margin-bottom: 0.18rem; }
+        .tooltip__w { font-size: 0.72rem; line-height: 1.4; color: #b6b6c8; }
+        .tooltip__hint { margin-top: 0.32rem; font-size: 0.62rem; letter-spacing: 0.03em; color: var(--accent); font-weight: 600; }
+        .tooltip__warn { margin-top: 0.3rem; font-size: 0.62rem; color: var(--warn); font-weight: 700; }
+
+        /* ============================ LEGEND ============================ */
+        .legend {
+            position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1500;
+            width: 248px; max-width: calc(100vw - 3.2rem);
+            background: rgba(10,10,16,0.74); border: 1px solid var(--border); border-radius: 16px;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.45); overflow: hidden;
+        }
+        .legend__head {
+            appearance: none; width: 100%; cursor: pointer; font-family: inherit;
+            display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+            padding: 0.65rem 0.9rem; text-align: left;
+            background: transparent; border: none; color: var(--text-main);
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .legend__head:hover, .legend__head:focus-visible { color: #fff; outline: none; }
+        .legend__chev { font-size: 0.65rem; color: var(--text-muted); transition: transform .22s; }
+        .legend.is-collapsed .legend__chev { transform: rotate(-90deg); }
+        .legend__body { padding: 0.1rem 0.9rem 0.8rem; display: flex; flex-direction: column; gap: 0.42rem; max-height: 50vh; overflow-y: auto; }
+        .legend.is-collapsed .legend__body { display: none; }
+        .legend__sect { font-size: 0.56rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin: 0.32rem 0 0.04rem; opacity: 0.82; }
+        .legend__row { display: flex; align-items: flex-start; gap: 0.55rem; }
+        .legend__sw { flex: 0 0 auto; width: 17px; height: 17px; margin-top: 1px; border-radius: 5px; border: 1.5px solid rgba(255,255,255,0.18); border-left-width: 4px; border-left-style: solid; }
+        .legend__txt { font-size: 0.72rem; line-height: 1.32; color: var(--text-muted); }
+        .legend__txt b { color: var(--text-main); font-weight: 600; display: block; font-size: 0.74rem; }
+        .legend__edge { flex: 0 0 auto; width: 26px; height: 17px; margin-top: 1px; position: relative; }
+        .legend__edge::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 0; border-top: 2.4px solid rgba(200,204,236,0.88); }
+        .legend__edge--soft::before { border-top: 2px dashed rgba(160,166,224,0.7); }
+        .legend__warn { flex: 0 0 auto; width: 17px; height: 17px; margin-top: 1px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #1a1206; background: linear-gradient(150deg, #f5c66a, #f5a623); border: 1.5px solid rgba(255,255,255,0.55); }
+
+        /* ============================ HELP BUTTON ============================ */
+        .help-btn {
+            position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1500;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.45rem 0.9rem; border-radius: 999px;
+            appearance: none; cursor: pointer; font-family: inherit;
+            background: rgba(10,10,16,0.7); border: 1px solid var(--border);
+            color: var(--text-muted); font-size: 0.72rem; font-weight: 600;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            transition: color .18s, border-color .18s;
+        }
+        .help-btn:hover, .help-btn:focus-visible { color: var(--text-main); border-color: var(--primary); outline: none; }
+        .help-btn b { color: var(--accent); font-weight: 800; }
+
+        /* ============================ ORIENTATION OVERLAY ============================ */
+        .orient {
+            position: fixed; inset: 0; z-index: 4000;
+            display: none; align-items: center; justify-content: center; padding: 1.5rem;
+            background: rgba(3,3,6,0.7); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
+        }
+        .orient.is-open { display: flex; }
+        .orient__card {
+            width: min(580px, 94vw); max-height: 90vh; overflow-y: auto;
+            background: rgba(12,12,20,0.95); border: 1px solid var(--border); border-radius: 22px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6); padding: 1.9rem 2rem 1.6rem;
+        }
+        .orient__kicker { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; }
+        .orient__card h2 { margin: 0 0 0.9rem; font-size: 1.5rem; line-height: 1.15; }
+        .orient__lead { font-size: 0.95rem; line-height: 1.55; color: var(--text-main); margin: 0 0 1.2rem; }
+        .orient__lead b { color: #efeaff; }
+        .orient__keys { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.9rem; margin: 0 0 1.3rem; align-items: center; }
+        .orient__key {
+            display: inline-flex; align-items: center; gap: 0.25rem; justify-self: start;
+            font-size: 0.78rem; font-weight: 700; color: #efeaff;
+        }
+        .kbd {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 26px; height: 26px; padding: 0 0.35rem; border-radius: 7px;
+            font-size: 0.82rem; font-weight: 700; color: #f4f2fb;
+            background: linear-gradient(160deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3));
+            border: 1px solid rgba(139,92,246,0.5); box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+        .orient__keydesc { font-size: 0.86rem; line-height: 1.4; color: var(--text-muted); }
+        .orient__keydesc b { color: var(--text-main); }
+        .orient__thesis { font-style: italic; color: var(--accent); font-weight: 600; font-size: 0.92rem; text-align: center; margin: 0 0 1.3rem; }
+        .orient__go {
+            appearance: none; cursor: pointer; font-family: inherit; width: 100%;
+            padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.92rem; font-weight: 700;
+            color: #fff; border: 1px solid rgba(139,92,246,0.55);
+            background: linear-gradient(150deg, rgba(99,102,241,0.9), rgba(139,92,246,0.9));
+            transition: transform .1s, box-shadow .18s;
+        }
+        .orient__go:hover, .orient__go:focus-visible { box-shadow: 0 10px 26px rgba(99,102,241,0.4); outline: none; transform: translateY(-1px); }
+
+        /* ============================ REDUCED MOTION ============================ */
+        @media (prefers-reduced-motion: reduce) {
+            .deck-grid { transition: none; }
+            .nextnote__arrow, .downhint__arrow { animation: none; }
+        }
+
+        /* ============================ MOBILE ============================ */
+        @media (max-width: 860px) {
+            .card { height: 100%; }
+            .card__title { font-size: 1.3rem; }
+            .info-panel { left: 0; right: 0; bottom: 0; width: 100%; max-width: 100%; border-radius: 18px 18px 0 0; transform: translateY(100%); }
+            .info-panel.open { transform: translateY(0); }
+            .legend { bottom: 5rem; right: 0.8rem; width: 200px; }
+            .help-btn { bottom: 0.9rem; }
+            .tooltip { display: none; }
+            .minimap { top: 0.9rem; right: 0.8rem; padding: 0.5rem; }
+            .mm-cell { width: 44px; height: 30px; }
+            .deck-title { display: none; }
+            .nav-arrow { width: 40px; height: 40px; font-size: 1.1rem; }
+            .sticky { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../06_1-phasic-foundation.html" class="chrome-back" aria-label="Back to Essay 6.1">&larr; Back to Essay 6.1</a>
+
+    <div class="deck-title" aria-hidden="true">The Life of a Job<span>a seed agent's cognition, one card at a time</span></div>
+
+    <!-- step indicator -->
+    <div class="step-ind" id="step-ind" aria-live="polite"></div>
+
+    <!-- ============================ MINIMAP ============================ -->
+    <nav class="minimap" aria-label="Card map — jump to any card">
+        <div class="minimap__label">You are here</div>
+        <div class="minimap__grid" id="minimap-grid"></div>
+        <div class="minimap__legend">
+            <div class="minimap__lg"><span class="minimap__lgdot" style="background:rgba(99,102,241,0.6)"></span>main sequence (← →)</div>
+            <div class="minimap__lg"><span class="minimap__lgdot" style="background:rgba(148,163,184,0.5)"></span>related detail (↑ ↓)</div>
+        </div>
+    </nav>
+
+    <!-- ============================ NAV ARROWS ============================ -->
+    <button class="nav-arrow is-disabled" id="nav-left" type="button" aria-label="Previous card">&larr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-right" type="button" aria-label="Next card">&rarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-up" type="button" aria-label="Card above">&uarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-down" type="button" aria-label="Card below">&darr;<span class="nav-arrow__hint"></span></button>
+
+    <!-- ============================ DECK ============================ -->
+    <div class="deck-root">
+        <div class="deck-grid" id="deck-grid"><!-- cells injected by JS --></div>
+    </div>
+
+    <!-- ============================ TOOLTIP ============================ -->
+    <div class="tooltip" id="tooltip" role="status" aria-hidden="true">
+        <div class="tooltip__t" id="tooltip-t"></div>
+        <div class="tooltip__w" id="tooltip-w"></div>
+        <div class="tooltip__warn" id="tooltip-warn" style="display:none">&#9888; blog vs code &mdash; click to read</div>
+        <div class="tooltip__hint">click for the full story</div>
+    </div>
+
+    <!-- ============================ INFO PANEL ============================ -->
+    <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Concept detail">
+        <button class="info-close" id="info-close" aria-label="Close detail panel">&times;</button>
+        <div id="info-content"></div>
+    </aside>
+
+    <!-- ============================ LEGEND ============================ -->
+    <aside class="legend is-collapsed" id="legend" aria-label="Diagram legend">
+        <button class="legend__head" id="legend-head" type="button" aria-expanded="false" aria-controls="legend-body">
+            <span>What the colors mean</span>
+            <span class="legend__chev" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="legend__body" id="legend-body">
+            <div class="legend__sect">Who owns the data (lane)</div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-job_core)"></span><span class="legend__txt"><b>job_core</b>the base job record</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-phasic)"></span><span class="legend__txt"><b>phasic_system</b>the phase mirror (idle, cycle)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-gate)"></span><span class="legend__txt"><b>a code gate</b>a checked condition to advance</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-footer)"></span><span class="legend__txt"><b>working memory</b>CLAUDE.md the job writes into</span></div>
+            <div class="legend__sect">Arrows</div>
+            <div class="legend__row"><span class="legend__edge" aria-hidden="true"></span><span class="legend__txt"><b>Solid = hard</b>a code-enforced step</span></div>
+            <div class="legend__row"><span class="legend__edge legend__edge--soft" aria-hidden="true"></span><span class="legend__txt"><b>Dashed = soft</b>coaching or a condition</span></div>
+            <div class="legend__sect">Honesty marker</div>
+            <div class="legend__row"><span class="legend__warn" aria-hidden="true">&#9888;</span><span class="legend__txt"><b>Blog vs code</b>where essays and the live prototype differ &mdash; click the box</span></div>
+        </div>
+    </aside>
+
+    <!-- ============================ HELP BUTTON ============================ -->
+    <button class="help-btn" id="help-btn" type="button"><b>?</b> how to read this</button>
+
+    <!-- ============================ ORIENTATION OVERLAY ============================ -->
+    <div class="orient" id="orient" role="dialog" aria-modal="true" aria-labelledby="orient-title">
+        <div class="orient__card">
+            <div class="orient__kicker">How to read this deck</div>
+            <h2 id="orient-title">Walk a job through its first moments of life.</h2>
+            <p class="orient__lead">A single prompt <b>births</b> a seed-agent job. It starts out completely <b>empty</b> &mdash; no name, no goal &mdash; and the very first thing it does is figure out <b>what it is</b>. Each card here is one focused idea, with a clean diagram you can hover and click.</p>
+            <div class="orient__keys">
+                <span class="orient__key"><span class="kbd">&larr;</span><span class="kbd">&rarr;</span></span>
+                <span class="orient__keydesc"><b>Follow the job's life</b> in sequence &mdash; this is the main story.</span>
+                <span class="orient__key"><span class="kbd">&uarr;</span><span class="kbd">&darr;</span></span>
+                <span class="orient__keydesc"><b>Related detail</b> &mdash; a deeper look at the card you're on.</span>
+                <span class="orient__key"><span class="kbd">click</span></span>
+                <span class="orient__keydesc">any box for <b>what it is</b>, <b>why it matters</b>, and <b>under the hood</b>.</span>
+            </div>
+            <p class="orient__thesis">A job is born empty. OBSERVE is where it learns its own name.</p>
+            <button class="orient__go" id="orient-go" type="button">Start at the birth &rarr;</button>
+        </div>
+    </div>
+
+    <script>
+/* ============================================================================
+ * THE LIFE OF A JOB — a 2x2 spatial concept-deck.
+ *   LEFT/RIGHT  = the job's life in sequence (the "main sequence")
+ *   UP/DOWN     = a parallel / deeper concept under the current step
+ *
+ * Grid addressing: cell key = "col,row".
+ *   (0,0) A  — "A job is born"            (sequence step 1)
+ *   (1,0) B  — "OBSERVE — find out who you are" (sequence step 2)
+ *   (0,1) A2 — "Active + focused, in one write"  (detail under A)
+ *   (1,1) B2 — "The gate to PLAN"                (detail under B)
+ *
+ * Every fact below was verified against the live prototype:
+ *   job_core/hooks/prompt-handler.sh, job_core/scripts/job.sh,
+ *   phasic_system/scripts/phase.sh, phase_observe/scripts/observe-commit.sh.
+ * ========================================================================== */
+(function () {
+    "use strict";
+
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- lane → css color (mirrors the legend) ---------- */
+    var LANE_COLOR = {
+        job_core: 'var(--lane-job_core)',
+        phasic:   'var(--lane-phasic)',
+        footer:   'var(--lane-footer)',
+        summary:  'var(--lane-summary)',
+        gate:     'var(--lane-gate)'
+    };
+    var LANE_LABEL = {
+        job_core: 'job_core · base record',
+        phasic:   'phasic_system · phase mirror',
+        footer:   'working memory · CLAUDE.md',
+        summary:  'interaction summary',
+        gate:     'a code-enforced gate'
+    };
+
+    /* ========================================================================
+     * NODE INFO — the click-to-open detail for every box, keyed by node id.
+     * Shape: { title, lane, what, why, hood (HTML ok), warn? }
+     * ====================================================================== */
+    var INFO = {
+        /* ---------------- CARD A : A job is born ---------------- */
+        'a-idle': {
+            title: 'Seed idle', lane: 'phasic',
+            what: 'The seed agent is asleep. There is no job it is working on — no "focused" job at all.',
+            why: 'This is the resting state: the very first run, or the moment every earlier job has been completed. Nothing is in motion until someone speaks to it.',
+            hood: 'A job is "focused" when its record has <code>focused:true</code>. At rest, no record carries that flag, so every phase gate and voice has nothing to key on.'
+        },
+        'a-prompt': {
+            title: 'UserPromptSubmit', lane: 'job_core',
+            what: 'The hook that fires on every single prompt you send the seed agent.',
+            why: 'It is the seed\'s sense of hearing. Before the agent "thinks", this reflex runs and decides whether your words start a new job or feed an existing one.',
+            hood: 'Registered on the <code>UserPromptSubmit</code> event as <code>job_core/hooks/prompt-handler.sh</code>. It counts active jobs first: <code>active_count = jobs where status=="active"</code>. If that count is <code>0</code>, it bootstraps a brand-new job.'
+        },
+        'a-create': {
+            title: 'Create ONE job', lane: 'job_core',
+            what: 'With no job running, the prompt creates exactly one — and makes it the live, focused job immediately.',
+            why: 'This is the "first-prompt effect": you never have to ask the seed to start a job. Speaking to an idle seed IS starting one. It cannot create a throwaway, unfocused job here — the first prompt always produces a real, live job.',
+            hood: 'The handler calls <code>job.sh --hook create-active "&lt;your prompt&gt;"</code>. This is the ONLY automatic create path, and it is HOOK_MODE-gated — calling <code>create-active</code> by hand is refused ("reserved for system automation"). It writes <code>status:active</code> and <code>focused:true</code> in a single jq write.'
+        },
+        'a-record': {
+            title: 'The new job record', lane: 'job_core',
+            what: 'The job now exists as one JSON object — but it is almost completely blank.',
+            why: 'Here is the key surprise: the job does NOT yet know its own name or what it is for. The only real content it holds is your prompt, sitting in its interaction trail. Everything else is empty, waiting to be discovered.',
+            hood: 'The written record: <code>name:""</code>, <code>objective:""</code>, <code>status:"active"</code>, <code>focused:true</code>, <code>user_interactions:["&lt;your prompt&gt;"]</code>, plus <code>depends_on:[]</code>, <code>user_approval:false</code>, timestamps. Name and objective are literally empty strings at birth.'
+        },
+        'a-enter-observe': {
+            title: 'Enters OBSERVE', lane: 'phasic',
+            what: 'The job is initialised into the phase machine and takes its first step: into OBSERVE.',
+            why: 'OBSERVE is where the empty job starts to fill itself in — reading your prompt and its context to work out who it is. That is the next card.',
+            hood: 'Birth also calls <code>phase.sh --hook init &lt;id&gt;</code>, which writes the phase mirror <code>{current_phase:"idle", cycle:0}</code>. The job is locked in IDLE; the agent runs <code>phase.sh advance</code> to make the first transition <code>idle→observe</code>.'
+        },
+
+        /* ---------------- CARD B : OBSERVE ---------------- */
+        'b-read': {
+            title: 'Reads prompt + context', lane: 'footer',
+            what: 'In OBSERVE the job gathers: it re-reads your prompt, can ask you follow-up questions, and pulls in surrounding context.',
+            why: 'A newborn job knows almost nothing about itself. OBSERVE is read-wide time — it learns enough to describe its own purpose in its own words.',
+            hood: 'OBSERVE is a read-only phase: its guard blocks writes to project files and only lets the agent write into CLAUDE.md working memory. Findings accumulate there before any decision is made.'
+        },
+        'b-name': {
+            title: 'Writes a NAME', lane: 'job_core',
+            what: 'The job gives itself a name — a short handle describing what this unit of work is.',
+            why: 'A nameless job is just "the thing the seed is doing." A named job is a thing you can point at, track, and reason about. Naming is the first act of self-definition.',
+            hood: 'Set via <code>job.sh update &lt;id&gt; name "&lt;name&gt;"</code>, filling the <code>name</code> field that was born as <code>""</code>.'
+        },
+        'b-objective': {
+            title: 'Writes an OBJECTIVE', lane: 'job_core',
+            what: 'The job writes down its goal — what "done" will mean for this work.',
+            why: 'The objective is the job\'s compass. Every later phase checks its work against this one sentence of intent. Without it, the job has no way to know when it is finished.',
+            hood: 'Set via <code>job.sh update &lt;id&gt; objective "&lt;text&gt;"</code>, filling the <code>objective</code> field that was born as <code>""</code>.'
+        },
+        'b-gate': {
+            title: 'Gate to PLAN', lane: 'gate',
+            what: 'A checkpoint. The job cannot move on to PLAN until it has actually named and defined itself.',
+            why: 'This is what stops empty jobs from slipping forward. The job must prove it has done its homework in OBSERVE before it is allowed to start planning.',
+            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance. For cycle 1 it checks <code>name</code> is non-empty AND <code>objective</code> is non-empty — plus ≥100 points and ≥1 CLAUDE.md update. Any empty field → <code>REJECTED</code>, stay in OBSERVE.',
+            warn: 'The B6 essays describe OBSERVE expanding the objective into a 300–500 word write-up as a hard gate. The live code only checks that <code>name</code> and <code>objective</code> are NON-EMPTY — the rich length is coaching the agent toward, not a number the gate enforces.'
+        },
+
+        /* ---------------- CARD A2 : Active + focused ---------------- */
+        'a2-active': {
+            title: 'active', lane: 'job_core',
+            what: '"Active" means this job is live — it is real work the seed has on its plate right now.',
+            why: 'A job has a status. Active is the working state; later it can become completed. While any job is active, the seed will not go quietly to sleep — there is work to finish.',
+            hood: 'The <code>status</code> field is set to <code>"active"</code> at birth by <code>create-active</code>. The stop gate refuses to release while any job is <code>active</code>.'
+        },
+        'a2-focused': {
+            title: 'focused', lane: 'job_core',
+            what: '"Focused" means this is THE one job the seed is concentrating on right now.',
+            why: 'You can have several active jobs, but only one is focused. Every phase gate, every coaching voice, every write-scope keys off the single focused job. Focus is the spotlight.',
+            hood: '<code>focused:true</code>. Only one record carries it at a time — focusing a different job first clears the flag everywhere else. Birth sets both <code>active</code> AND <code>focused</code> in the same jq write.'
+        },
+        'a2-onewrite': {
+            title: 'one jq write', lane: 'job_core',
+            what: 'Both flags — active and focused — are stamped onto the record in a single atomic write.',
+            why: 'There is no in-between moment where a job is half-born. It appears already live and already in focus. Clean and atomic.',
+            hood: 'A single <code>jq \'.jobs += [{... status:"active", focused:true ...}]\'</code> append. No second step sets focus — it is part of the same object literal.'
+        },
+        'a2-mirror': {
+            title: 'phasic mirror', lane: 'phasic',
+            what: 'A second small record is created to track which phase the job is in.',
+            why: 'The job\'s "what am I" lives in one place (job_core); its "where am I in the cycle" lives in another (the phasic system). Same job, split across plugins by the same ID.',
+            hood: '<code>phase.sh --hook init &lt;id&gt;</code> appends <code>{id, current_phase:"idle", cycle:0}</code> to the phasic plugin\'s own data file. Then <code>phase.sh advance &lt;id&gt;</code> makes the <code>idle→observe</code> move.'
+        },
+
+        /* ---------------- CARD B2 : The gate to PLAN ---------------- */
+        'b2-name': {
+            title: 'name filled?', lane: 'gate',
+            what: 'First check: has the job written a non-empty name?',
+            why: 'No name means the job never defined what it is. The gate refuses — back to OBSERVE.',
+            hood: '<code>observe-commit.sh</code>: if <code>name</code> is empty → <code>REJECTED: Job has no name</code>.'
+        },
+        'b2-objective': {
+            title: 'objective filled?', lane: 'gate',
+            what: 'Second check: has the job written a non-empty objective?',
+            why: 'No objective means the job has no goal to verify against later. The gate refuses.',
+            hood: '<code>observe-commit.sh</code>: if <code>objective</code> is empty → <code>REJECTED: Job has no objective</code>.',
+            warn: 'The essays frame this as a 300–500 word objective expansion. The code checks NON-EMPTY only; the word count is coaching, not an enforced gate.'
+        },
+        'b2-points': {
+            title: '≥ 100 points?', lane: 'gate',
+            what: 'Third check: has the job done enough observing? Each phase has its own little point budget.',
+            why: 'This stops the job from glancing at the prompt and rushing onward. It has to actually do the gathering work.',
+            hood: '<code>observe-commit.sh</code> blocks the forced advance unless <code>total_points ≥ 100</code> (the per-phase transition threshold). Below it → <code>BLOCKED: Observation incomplete</code>.'
+        },
+        'b2-claude': {
+            title: '≥ 1 CLAUDE.md update?', lane: 'footer',
+            what: 'Fourth check: has the job written its findings into working memory at least once?',
+            why: 'OBSERVE\'s whole job is to gather and synthesise. If nothing was written down, nothing was learned.',
+            hood: '<code>observe-commit.sh</code>: needs <code>updates ≥ 1</code> CLAUDE.md update, else <code>BLOCKED: Need at least one CLAUDE.md update</code>.'
+        },
+        'b2-unlock': {
+            title: 'PLAN unlocks', lane: 'phasic',
+            what: 'All four checks pass → the job is allowed into PLAN.',
+            why: 'Only a job that knows its name, its goal, and has done real observation gets to start planning. No empty jobs get through.',
+            hood: 'With name + objective non-empty AND points ≥ 100 AND ≥ 1 CLAUDE.md update, <code>observe-commit.sh</code> permits the <code>observe→plan</code> forward transition.'
+        }
+    };
+
+    /* ========================================================================
+     * CARDS — the 2x2 grid. Each card declares its diagram (boxes + edges +
+     * stickies + guiding notes) in a small hand-laid coordinate space.
+     * Coords are in a 1000 x 560 viewBox; the SVG scales to fit the stage.
+     * ====================================================================== */
+    var VB_W = 1000, VB_H = 560;
+
+    var CARDS = {
+        '0,0': {
+            kind: 'seq', step: 1,
+            eyebrow: 'The job\'s life · step 1 of 2',
+            title: 'A job is born',
+            sub: 'What you\'re looking at: a single prompt hits an idle seed — and one live job appears, almost completely empty.',
+            boxes: [
+                { id:'a-idle',          x:30,  y:230, w:150, h:96,  lane:'phasic',   t:'Seed idle',        s:'no focused job' },
+                { id:'a-prompt',        x:228, y:230, w:158, h:96,  lane:'job_core', t:'UserPromptSubmit', s:'a prompt arrives' },
+                { id:'a-create',        x:434, y:230, w:160, h:96,  lane:'job_core', t:'Create ONE job',   s:'active + focused' },
+                { id:'a-record',        x:642, y:150, w:196, h:262, lane:'job_core', t:'The new job record', record:true },
+                { id:'a-enter-observe', x:872, y:236, w:104, h:84,  lane:'phasic',   t:'enters OBSERVE →', s:'first step' }
+            ],
+            edges: [
+                { from:'a-idle',   to:'a-prompt',        kind:'soft', label:'a prompt' },
+                { from:'a-prompt', to:'a-create',        kind:'hard', label:'count == 0' },
+                { from:'a-create', to:'a-record',        kind:'hard', label:'one write' },
+                { from:'a-record', to:'a-enter-observe', kind:'hard', label:'init' }
+            ],
+            stickies: [
+                { x:24,  y:96,  text:'First run, or every earlier job is done — the seed is asleep with <b>no focused job</b>.' },
+                { x:412, y:96,  r:true, text:'<b>active + focused</b> in a SINGLE write — the first-prompt effect.' },
+                { x:628, y:420, aha:true, text:'It\'s born EMPTY — the job does <b>not yet know</b> its own name or objective.' }
+            ],
+            nextnote: { x:548, y:500, text:'Follow the job into OBSERVE' },
+            downhint: { x:60, y:500, label:'related: Active + focused, in one write' }
+        },
+
+        '1,0': {
+            kind: 'seq', step: 2,
+            eyebrow: 'The job\'s life · step 2 of 2',
+            title: 'OBSERVE — find out who you are',
+            sub: 'What you\'re looking at: the empty job reads, then names itself and writes its goal. It cannot reach PLAN until both are filled.',
+            boxes: [
+                { id:'b-read',      x:54,  y:222, w:212, h:104, lane:'footer',   t:'Reads prompt + context', s:'gather · ask · read wide' },
+                { id:'b-name',      x:404, y:120, w:196, h:92,  lane:'job_core', t:'Writes a NAME',      s:'fills name: ""' },
+                { id:'b-objective', x:404, y:336, w:196, h:92,  lane:'job_core', t:'Writes an OBJECTIVE', s:'fills objective: ""' },
+                { id:'b-gate',      x:734, y:218, w:210, h:112, lane:'gate',     t:'Gate to PLAN',       s:'name + objective non-empty', warn:true }
+            ],
+            edges: [
+                { from:'b-read',      to:'b-name',      kind:'hard', label:'self-define' },
+                { from:'b-read',      to:'b-objective', kind:'hard', label:'self-define' },
+                { from:'b-name',      to:'b-gate',      kind:'hard' },
+                { from:'b-objective', to:'b-gate',      kind:'hard' }
+            ],
+            stickies: [
+                { x:40,  y:96,  text:'A newborn job knows almost nothing. OBSERVE is where it <b>learns who it is</b>.' },
+                { x:720, y:96,  r:true, text:'<b>No empty jobs</b> get to PLAN — the gate checks name + objective are filled.' }
+            ],
+            backnote: { x:46, y:470, text:'← where it came from: a brand-new empty job (Card A)' },
+            downhint: { x:740, y:454, label:'related: The gate to PLAN, up close' }
+        },
+
+        '0,1': {
+            kind: 'detail',
+            eyebrow: 'Related detail · under "A job is born"',
+            title: 'Active + focused, in one write',
+            sub: 'What you\'re looking at: the two flags that make a newborn job both real and the centre of attention — set atomically, then mirrored into the phase machine.',
+            boxes: [
+                { id:'a2-onewrite', x:380, y:60,  w:240, h:96,  lane:'job_core', t:'one jq write',   s:'atomic — no half-born state' },
+                { id:'a2-active',   x:150, y:236, w:212, h:104, lane:'job_core', t:'active',         s:'the job is live work' },
+                { id:'a2-focused',  x:640, y:236, w:212, h:104, lane:'job_core', t:'focused',        s:'THE one job, right now' },
+                { id:'a2-mirror',   x:380, y:418, w:240, h:96,  lane:'phasic',   t:'phasic mirror init', s:'current_phase: idle · cycle: 0' }
+            ],
+            edges: [
+                { from:'a2-onewrite', to:'a2-active',  kind:'hard', label:'sets status' },
+                { from:'a2-onewrite', to:'a2-focused', kind:'hard', label:'sets focus' },
+                { from:'a2-active',   to:'a2-mirror',  kind:'soft' },
+                { from:'a2-focused',  to:'a2-mirror',  kind:'soft', label:'then phase.sh init' }
+            ],
+            stickies: [
+                { x:36,  y:386, text:'Only <b>ONE</b> job is focused at a time — focusing another clears this one.' },
+                { x:760, y:386, r:true, text:'Many jobs can be <b>active</b>; exactly one is <b>focused</b>.' }
+            ],
+            upnote: { x:380, y:524, label:'back up to: A job is born' }
+        },
+
+        '1,1': {
+            kind: 'detail',
+            eyebrow: 'Related detail · under "OBSERVE"',
+            title: 'The gate to PLAN',
+            sub: 'What you\'re looking at: the OBSERVE → PLAN checkpoint, opened up. Four boxes must all answer "yes" before PLAN unlocks.',
+            boxes: [
+                { id:'b2-name',      x:60,  y:60,  w:210, h:92, lane:'gate',   t:'name filled?',          s:'non-empty string' },
+                { id:'b2-objective', x:60,  y:188, w:210, h:92, lane:'gate',   t:'objective filled?',     s:'non-empty string', warn:true },
+                { id:'b2-points',    x:60,  y:316, w:210, h:92, lane:'gate',   t:'≥ 100 points?',         s:'enough observing' },
+                { id:'b2-claude',    x:60,  y:444, w:210, h:92, lane:'footer', t:'≥ 1 CLAUDE.md update?', s:'findings written down' },
+                { id:'b2-unlock',    x:660, y:230, w:268, h:120, lane:'phasic', t:'PLAN unlocks',         s:'all four say YES' }
+            ],
+            edges: [
+                { from:'b2-name',      to:'b2-unlock', kind:'hard' },
+                { from:'b2-objective', to:'b2-unlock', kind:'hard' },
+                { from:'b2-points',    to:'b2-unlock', kind:'hard' },
+                { from:'b2-claude',    to:'b2-unlock', kind:'hard' }
+            ],
+            stickies: [
+                { x:360, y:64,  text:'<b>No empty jobs get to PLAN.</b> All four checks live in observe-commit.sh.' },
+                { x:660, y:372, r:true, aha:true, text:'Any single NO → <b>REJECTED</b>, stay in OBSERVE and keep working.' }
+            ],
+            upnote: { x:660, y:64, label:'back up to: OBSERVE' }
+        }
+    };
+
+    /* record-box field rows (the "born empty" reveal) */
+    var RECORD_FIELDS =
+        '<div class="dfields">' +
+        '<div class="dfield"><b>name:</b> <span class="nul">"" (empty!)</span></div>' +
+        '<div class="dfield"><b>objective:</b> <span class="nul">"" (empty!)</span></div>' +
+        '<div class="dfield"><b>status:</b> active</div>' +
+        '<div class="dfield"><b>focused:</b> true</div>' +
+        '<div class="dfield"><b>user_interactions:</b></div>' +
+        '<div class="dfield">&nbsp;&nbsp;[ your prompt ]</div>' +
+        '<div class="dfield"><b>depends_on:</b> []</div>' +
+        '</div>';
+
+    /* navigation order: which cells exist + their sequence step */
+    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1 };
+    var SEQ_TITLE = { '0,0':'A job is born', '1,0':'OBSERVE — find out who you are' };
+
+    /* ========================================================================
+     * RENDER
+     * ====================================================================== */
+    var grid = document.getElementById('deck-grid');
+
+    function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function buildCard(key, card) {
+        var col = +key.split(',')[0], row = +key.split(',')[1];
+        var cell = document.createElement('div');
+        cell.className = 'deck-cell';
+        cell.setAttribute('data-col', col);
+        cell.setAttribute('data-row', row);
+        cell.setAttribute('data-key', key);
+        cell.setAttribute('role', 'group');
+        cell.setAttribute('aria-label', card.title);
+
+        var article = document.createElement('div');
+        article.className = 'card';
+
+        /* head */
+        var head = document.createElement('div');
+        head.className = 'card__head';
+        head.innerHTML =
+            '<div class="card__eyebrow ' + card.kind + '"><span class="card__eyebrow-dot"></span>' + esc(card.eyebrow) + '</div>' +
+            '<h1 class="card__title">' + esc(card.title) + '</h1>' +
+            '<p class="card__sub">' + esc(card.sub) + '</p>';
+        article.appendChild(head);
+
+        /* stage (svg diagram) */
+        var stage = document.createElement('div');
+        stage.className = 'card__stage';
+        stage.innerHTML = buildDiagram(card);
+        article.appendChild(stage);
+
+        /* sticky notes + guiding notes layered over the stage, positioned in viewBox % */
+        (card.stickies || []).forEach(function (st) {
+            var s = document.createElement('div');
+            s.className = 'sticky' + (st.r ? ' r' : '') + (st.aha ? ' sticky--aha' : '');
+            s.style.left = pctX(st.x); s.style.top = pctY(st.y);
+            s.innerHTML = st.text;
+            stage.appendChild(s);
+        });
+        if (card.nextnote) {
+            var nn = document.createElement('div');
+            nn.className = 'nextnote';
+            nn.style.left = pctX(card.nextnote.x); nn.style.top = pctY(card.nextnote.y);
+            nn.innerHTML = '<span class="nextnote__chip">' + esc(card.nextnote.text) + '</span><span class="nextnote__arrow" aria-hidden="true">&rarr;</span>';
+            stage.appendChild(nn);
+        }
+        if (card.backnote) {
+            var bn = document.createElement('div');
+            bn.className = 'downhint';
+            bn.style.left = pctX(card.backnote.x); bn.style.top = pctY(card.backnote.y);
+            bn.innerHTML = esc(card.backnote.text);
+            stage.appendChild(bn);
+        }
+        if (card.downhint) {
+            var dh = document.createElement('div');
+            dh.className = 'downhint';
+            dh.style.left = pctX(card.downhint.x); dh.style.top = pctY(card.downhint.y);
+            dh.innerHTML = '<span class="downhint__arrow" aria-hidden="true">&darr;</span> ' + esc(card.downhint.label);
+            stage.appendChild(dh);
+        }
+        if (card.upnote) {
+            var un = document.createElement('div');
+            un.className = 'downhint';
+            un.style.left = pctX(card.upnote.x); un.style.top = pctY(card.upnote.y);
+            un.innerHTML = '<span class="downhint__arrow" aria-hidden="true">&uarr;</span> ' + esc(card.upnote.label);
+            stage.appendChild(un);
+        }
+
+        cell.appendChild(article);
+        grid.appendChild(cell);
+    }
+
+    /* viewBox coordinate → CSS % of the stage (stage uses preserveAspectRatio none-ish via 100% svg) */
+    function pctX(x){ return (x / VB_W * 100) + '%'; }
+    function pctY(y){ return (y / VB_H * 100) + '%'; }
+
+    /* ---- build one card's SVG (edges first, then boxes via foreignObject) ---- */
+    function buildDiagram(card) {
+        var defs = '<defs>' +
+            '<marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.2" orient="auto">' +
+            '<path d="M0,0 L8.4,4.2 L0,8.4 Z" fill="rgba(200,204,236,0.9)"/></marker>' +
+            '<marker id="ahs" markerWidth="9" markerHeight="9" refX="7" refY="4.2" orient="auto">' +
+            '<path d="M0,0 L8.4,4.2 L0,8.4 Z" fill="rgba(160,166,224,0.7)"/></marker>' +
+            '</defs>';
+
+        var boxIndex = {};
+        card.boxes.forEach(function (b) { boxIndex[b.id] = b; });
+
+        /* edges: paths drawn UNDER the boxes; labels collected into a separate
+           string drawn in a TOP layer (after the boxes) so a label is never
+           hidden behind a box. Labels sit just above the connector line. */
+        var edgeSvg = '', labelSvg = '';
+        (card.edges || []).forEach(function (e) {
+            var a = boxIndex[e.from], b = boxIndex[e.to];
+            if (!a || !b) return;
+            var p = anchorPair(a, b);
+            var soft = e.kind === 'soft';
+            edgeSvg += '<path class="edge ' + (soft ? 'edge--soft' : 'edge--hard') + '" d="' + orthPath(p) +
+                       '" marker-end="url(#' + (soft ? 'ahs' : 'ah') + ')"/>';
+            if (e.label) {
+                var mid = midOf(p);
+                var lw = e.label.length * 5.6 + 14;
+                var ly = (e.labelY != null) ? e.labelY : (mid.y - 13);
+                labelSvg += '<g transform="translate(' + mid.x + ',' + ly + ')">' +
+                    '<rect class="edge-lbl-bg" x="' + (-lw/2) + '" y="-10" width="' + lw + '" height="18" rx="6"/>' +
+                    '<text class="edge-lbl" x="0" y="3" text-anchor="middle">' + esc(e.label) + '</text></g>';
+            }
+        });
+
+        /* boxes as foreignObject glass cards */
+        var boxSvg = '';
+        card.boxes.forEach(function (b) {
+            var laneClass = 'dbox--lane-' + b.lane;
+            var inner =
+                '<div class="dbox ' + laneClass + (b.record ? ' dbox--record' : '') + '" ' +
+                     'tabindex="0" role="button" data-node="' + b.id + '" ' +
+                     'aria-label="' + esc((INFO[b.id] && INFO[b.id].title) || b.t) + ' — open detail">' +
+                    (b.warn ? '<span class="dbox__warn" aria-hidden="true">&#9888;</span>' : '') +
+                    '<div class="dbox__t">' + esc(b.t) + '</div>' +
+                    (b.s ? '<div class="dbox__s">' + esc(b.s) + '</div>' : '') +
+                    (b.record ? RECORD_FIELDS : '') +
+                '</div>';
+            boxSvg += '<foreignObject x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '">' +
+                      '<div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%">' + inner + '</div></foreignObject>';
+        });
+
+        return '<svg class="diagram" viewBox="0 0 ' + VB_W + ' ' + VB_H + '" preserveAspectRatio="xMidYMid meet" aria-hidden="false">' +
+               defs + edgeSvg + boxSvg + labelSvg + '</svg>';
+    }
+
+    /* choose connection points on the box edges based on relative position */
+    function anchorPair(a, b) {
+        var ac = { x: a.x + a.w/2, y: a.y + a.h/2 };
+        var bc = { x: b.x + b.w/2, y: b.y + b.h/2 };
+        var dx = bc.x - ac.x, dy = bc.y - ac.y;
+        var from, to;
+        if (Math.abs(dx) >= Math.abs(dy)) {
+            // horizontal dominant
+            if (dx >= 0) { from = { x: a.x + a.w, y: ac.y }; to = { x: b.x, y: bc.y }; }
+            else         { from = { x: a.x, y: ac.y };       to = { x: b.x + b.w, y: bc.y }; }
+        } else {
+            if (dy >= 0) { from = { x: ac.x, y: a.y + a.h }; to = { x: bc.x, y: b.y }; }
+            else         { from = { x: ac.x, y: a.y };       to = { x: bc.x, y: b.y + b.h }; }
+        }
+        return { from: from, to: to, horiz: Math.abs(dx) >= Math.abs(dy) };
+    }
+
+    /* orthogonal-ish path with a gentle elbow so labels sit clean and lines never cross boxes */
+    function orthPath(p) {
+        var f = p.from, t = p.to;
+        if (p.horiz) {
+            var mx = (f.x + t.x) / 2;
+            return 'M' + f.x + ',' + f.y + ' L' + mx + ',' + f.y + ' L' + mx + ',' + t.y + ' L' + t.x + ',' + t.y;
+        } else {
+            var my = (f.y + t.y) / 2;
+            return 'M' + f.x + ',' + f.y + ' L' + f.x + ',' + my + ' L' + t.x + ',' + my + ' L' + t.x + ',' + t.y;
+        }
+    }
+    function midOf(p) {
+        if (p.horiz) return { x: (p.from.x + p.to.x) / 2, y: p.from.y };
+        return { x: p.to.x, y: (p.from.y + p.to.y) / 2 };
+    }
+
+    /* build all cards */
+    Object.keys(CARDS).forEach(function (k) { buildCard(k, CARDS[k]); });
+
+    /* ========================================================================
+     * NAVIGATION STATE
+     * ====================================================================== */
+    var curCol = 0, curRow = 0;
+
+    function keyOf(c, r){ return c + ',' + r; }
+    function cellExists(c, r){ return !!EXISTS[keyOf(c, r)]; }
+
+    function applyTransform() {
+        var grid = document.getElementById('deck-grid');
+        grid.style.transform = 'translate(' + (-curCol * 100) + 'vw, ' + (-curRow * 100) + 'vh)';
+    }
+
+    function updateChrome() {
+        /* nav arrows */
+        setArrow('nav-left',  cellExists(curCol-1, curRow), neighborHint(curCol-1, curRow, 'left'));
+        setArrow('nav-right', cellExists(curCol+1, curRow), neighborHint(curCol+1, curRow, 'right'));
+        setArrow('nav-up',    cellExists(curCol, curRow-1), neighborHint(curCol, curRow-1, 'up'));
+        setArrow('nav-down',  cellExists(curCol, curRow+1), neighborHint(curCol, curRow+1, 'down'));
+
+        /* minimap */
+        Array.prototype.forEach.call(document.querySelectorAll('.mm-cell'), function (el) {
+            el.classList.toggle('is-current', el.getAttribute('data-key') === keyOf(curCol, curRow));
+        });
+
+        /* step indicator */
+        var step = document.getElementById('step-ind');
+        var card = CARDS[keyOf(curCol, curRow)];
+        if (card.kind === 'seq') {
+            step.classList.remove('is-detail');
+            step.innerHTML =
+                '<span>Step <b>' + card.step + '</b> of <b>2</b> — the job\'s life</span>' +
+                '<span class="step-ind__dots">' +
+                  '<span class="step-ind__dot' + (card.step === 1 ? ' on' : '') + '"></span>' +
+                  '<span class="step-ind__dot' + (card.step === 2 ? ' on' : '') + '"></span>' +
+                '</span>';
+        } else {
+            step.classList.add('is-detail');
+            step.innerHTML = '<span>Related detail &mdash; press <b>&uarr;</b> to return to the main sequence</span>';
+        }
+
+        /* focus the active card region for screen readers */
+    }
+
+    function neighborHint(c, r, dir) {
+        var k = keyOf(c, r);
+        if (!EXISTS[k]) return '';
+        var card = CARDS[k];
+        var prefix = '';
+        if (dir === 'right' && card.kind === 'seq') prefix = 'next: ';
+        else if (dir === 'left' && card.kind === 'seq') prefix = 'back: ';
+        else if (dir === 'down') prefix = 'detail: ';
+        else if (dir === 'up') prefix = 'up: ';
+        return prefix + card.title;
+    }
+
+    function setArrow(id, enabled, hint) {
+        var el = document.getElementById(id);
+        el.classList.toggle('is-disabled', !enabled);
+        el.querySelector('.nav-arrow__hint').textContent = hint || '';
+        var labelDir = { 'nav-left':'left', 'nav-right':'right', 'nav-up':'up', 'nav-down':'down' }[id];
+        el.setAttribute('aria-label', enabled ? ('Go ' + labelDir + ' to ' + (hint||'').replace(/^.*?: /,'')) : ('No card to the ' + labelDir));
+    }
+
+    function go(c, r) {
+        if (!cellExists(c, r)) return;
+        curCol = c; curRow = r;
+        applyTransform();
+        updateChrome();
+        closeInfo();
+    }
+    function move(dc, dr) { go(curCol + dc, curRow + dr); }
+
+    /* ========================================================================
+     * MINIMAP build
+     * ====================================================================== */
+    (function buildMinimap() {
+        var mg = document.getElementById('minimap-grid');
+        var order = ['0,0','1,0','0,1','1,1'];
+        order.forEach(function (k) {
+            var card = CARDS[k];
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'mm-cell ' + (card.kind === 'seq' ? 'is-seq' : 'is-detail');
+            b.setAttribute('data-key', k);
+            var short = card.kind === 'seq' ? ('Step ' + card.step) : 'Detail';
+            b.innerHTML = short;
+            b.setAttribute('aria-label', 'Jump to: ' + card.title);
+            b.title = card.title;
+            b.addEventListener('click', function () {
+                var p = k.split(','); go(+p[0], +p[1]);
+            });
+            mg.appendChild(b);
+        });
+    })();
+
+    /* ========================================================================
+     * INFO PANEL
+     * ====================================================================== */
+    var panel = document.getElementById('info-panel');
+    var panelContent = document.getElementById('info-content');
+    var lastFocused = null;
+
+    function openInfo(nodeId) {
+        var d = INFO[nodeId];
+        if (!d) return;
+        lastFocused = document.activeElement;
+        var laneColor = LANE_COLOR[d.lane] || 'var(--lane-job_core)';
+        var laneLabel = LANE_LABEL[d.lane] || d.lane;
+        var html =
+            '<div class="info-kind">Concept</div>' +
+            '<h2>' + esc(d.title) + '</h2>' +
+            '<div class="info-lane-tag"><span class="info-lane-dot" style="background:' + laneColor + '"></span>' + esc(laneLabel) + '</div>' +
+            '<div class="info-field"><div class="info-field-label">What it is</div><div class="info-field-body">' + d.what + '</div></div>' +
+            '<div class="info-field"><div class="info-field-label">Why it matters</div><div class="info-field-body">' + d.why + '</div></div>' +
+            '<div class="info-hood"><div class="info-hood-label">Under the hood</div><div class="info-hood-body">' + d.hood + '</div></div>' +
+            (d.warn ? '<div class="info-warn"><div class="info-warn-label">Blog vs code</div><div class="info-warn-body">' + d.warn + '</div></div>' : '');
+        panelContent.innerHTML = html;
+        panel.classList.add('open');
+        hideTooltip();
+        var close = document.getElementById('info-close');
+        close.focus();
+    }
+    function closeInfo() {
+        if (!panel.classList.contains('open')) return;
+        panel.classList.remove('open');
+        if (lastFocused && document.contains(lastFocused)) { try { lastFocused.focus(); } catch(e){} }
+        lastFocused = null;
+    }
+    document.getElementById('info-close').addEventListener('click', closeInfo);
+
+    /* focus trap inside the info panel */
+    panel.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { e.stopPropagation(); closeInfo(); return; }
+        if (e.key !== 'Tab') return;
+        var focusables = panel.querySelectorAll('button, [href], a');
+        if (!focusables.length) return;
+        var first = focusables[0], last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    /* ========================================================================
+     * TOOLTIP (hover)
+     * ====================================================================== */
+    var tt = document.getElementById('tooltip');
+    var ttT = document.getElementById('tooltip-t'), ttW = document.getElementById('tooltip-w'), ttWarn = document.getElementById('tooltip-warn');
+
+    function showTooltip(nodeId, ev) {
+        var d = INFO[nodeId];
+        if (!d) return;
+        ttT.textContent = d.title;
+        /* short one-line plain summary = first sentence of "what" */
+        var oneLine = d.what.split('. ')[0];
+        if (oneLine && oneLine.slice(-1) !== '.') oneLine += '.';
+        ttW.textContent = oneLine;
+        ttWarn.style.display = d.warn ? 'block' : 'none';
+        tt.classList.add('is-on'); tt.setAttribute('aria-hidden', 'false');
+        positionTooltip(ev);
+    }
+    function positionTooltip(ev) {
+        var pad = 14, w = tt.offsetWidth, h = tt.offsetHeight;
+        var x = ev.clientX + 16, y = ev.clientY + 16;
+        if (x + w + pad > window.innerWidth)  x = ev.clientX - w - 16;
+        if (y + h + pad > window.innerHeight) y = ev.clientY - h - 16;
+        tt.style.left = Math.max(pad, x) + 'px';
+        tt.style.top  = Math.max(pad, y) + 'px';
+    }
+    function hideTooltip() { tt.classList.remove('is-on'); tt.setAttribute('aria-hidden', 'true'); }
+
+    /* ========================================================================
+     * EVENT DELEGATION on boxes
+     * ====================================================================== */
+    grid.addEventListener('click', function (e) {
+        var box = e.target.closest('[data-node]');
+        if (!box) return;
+        openInfo(box.getAttribute('data-node'));
+    });
+    grid.addEventListener('keydown', function (e) {
+        var box = e.target.closest('[data-node]');
+        if (!box) return;
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInfo(box.getAttribute('data-node')); }
+    });
+    grid.addEventListener('mouseover', function (e) {
+        var box = e.target.closest('[data-node]');
+        if (!box) return;
+        showTooltip(box.getAttribute('data-node'), e);
+    });
+    grid.addEventListener('mousemove', function (e) {
+        if (tt.classList.contains('is-on') && e.target.closest('[data-node]')) positionTooltip(e);
+    });
+    grid.addEventListener('mouseout', function (e) {
+        var box = e.target.closest('[data-node]');
+        if (box && !box.contains(e.relatedTarget)) hideTooltip();
+    });
+    grid.addEventListener('focusin', function (e) {
+        var box = e.target.closest('[data-node]');
+        if (!box) return;
+        var rect = box.getBoundingClientRect();
+        showTooltip(box.getAttribute('data-node'), { clientX: rect.left + rect.width/2, clientY: rect.bottom });
+    });
+    grid.addEventListener('focusout', function (e) {
+        var box = e.target.closest('[data-node]');
+        if (box) hideTooltip();
+    });
+
+    /* ========================================================================
+     * NAV ARROW buttons
+     * ====================================================================== */
+    document.getElementById('nav-left').addEventListener('click', function () { move(-1, 0); });
+    document.getElementById('nav-right').addEventListener('click', function () { move(1, 0); });
+    document.getElementById('nav-up').addEventListener('click', function () { move(0, -1); });
+    document.getElementById('nav-down').addEventListener('click', function () { move(0, 1); });
+
+    /* ========================================================================
+     * KEYBOARD
+     * ====================================================================== */
+    document.addEventListener('keydown', function (e) {
+        var orientOpen = document.getElementById('orient').classList.contains('is-open');
+        if (orientOpen) {
+            if (e.key === 'Escape') closeOrient();
+            return;
+        }
+        if (panel.classList.contains('open')) {
+            /* panel traps its own keys; let Escape there handle close */
+            return;
+        }
+        switch (e.key) {
+            case 'ArrowLeft':  e.preventDefault(); move(-1, 0); break;
+            case 'ArrowRight': e.preventDefault(); move(1, 0); break;
+            case 'ArrowUp':    e.preventDefault(); move(0, -1); break;
+            case 'ArrowDown':  e.preventDefault(); move(0, 1); break;
+            case 'Escape':     closeInfo(); break;
+            case '?':          openOrient(); break;
+        }
+    });
+
+    /* ========================================================================
+     * LEGEND collapse
+     * ====================================================================== */
+    var legend = document.getElementById('legend');
+    document.getElementById('legend-head').addEventListener('click', function () {
+        var collapsed = legend.classList.toggle('is-collapsed');
+        this.setAttribute('aria-expanded', String(!collapsed));
+    });
+
+    /* ========================================================================
+     * ORIENTATION overlay
+     * ====================================================================== */
+    var orient = document.getElementById('orient');
+    var orientLastFocus = null;
+    function openOrient() {
+        orientLastFocus = document.activeElement;
+        orient.classList.add('is-open');
+        document.getElementById('orient-go').focus();
+    }
+    function closeOrient() {
+        orient.classList.remove('is-open');
+        if (orientLastFocus && document.contains(orientLastFocus)) { try { orientLastFocus.focus(); } catch(e){} }
+    }
+    document.getElementById('orient-go').addEventListener('click', closeOrient);
+    document.getElementById('help-btn').addEventListener('click', openOrient);
+    orient.addEventListener('click', function (e) { if (e.target === orient) closeOrient(); });
+    orient.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+        var f = orient.querySelectorAll('button');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    /* ========================================================================
+     * INIT
+     * ====================================================================== */
+    applyTransform();
+    updateChrome();
+
+    /* show orientation on first load (once per browser via localStorage; safe-guarded) */
+    var seen = false;
+    try { seen = localStorage.getItem('jobLifeOrientSeen') === '1'; } catch (e) {}
+    if (!seen) {
+        openOrient();
+        try { localStorage.setItem('jobLifeOrientSeen', '1'); } catch (e) {}
+    }
+})();
+    </script>
+</body>
+</html>
