@@ -175,6 +175,37 @@
         .dfield b { color: #efeaff; font-weight: 600; }
         .dfield .nul { color: #8a8aa2; }
 
+        /* ---- TYPE TAG: the immediate "what KIND of thing is this pill" ---- */
+        .dbox__tag {
+            display: inline-flex; align-items: center; gap: 4px; align-self: flex-start;
+            margin-bottom: 4px; padding: 1.5px 8px 1.5px 6px;
+            border-radius: 999px; border: 1px solid currentColor;
+            font-size: 8.5px; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase;
+        }
+        .dbox__tag .sym { font-size: 11px; line-height: 1; }
+        .tag--state   { color: #a3b4dc; background: rgba(120,140,200,0.14); }
+        .tag--context { color: #f0c36a; background: rgba(240,190,90,0.14); }
+        .tag--object  { color: #9398f8; background: rgba(120,124,240,0.16); }
+        .tag--phase   { color: #bda4f9; background: rgba(150,110,245,0.16); }
+        .tag--action  { color: #4fd6a0; background: rgba(60,210,150,0.14); }
+        .dbox--tag-state   { border-left-color: #6b7fb8 !important; }
+        .dbox--tag-context { border-left-color: #d9a948 !important; }
+        .dbox--tag-object  { border-left-color: #6366f1 !important; }
+        .dbox--tag-phase   { border-left-color: #8b5cf6 !important; }
+        .dbox--tag-action  { border-left-color: #34d399 !important; }
+
+        /* ---- TAG CAPTION: always-visible key so tags are never a mystery ---- */
+        .tagcaption {
+            position: fixed; left: 50%; transform: translateX(-50%); top: 6.7rem; z-index: 1600;
+            display: flex; align-items: center; gap: 6px;
+            padding: 6px 10px; border-radius: 999px;
+            background: rgba(10,10,16,0.85); border: 1px solid var(--border); backdrop-filter: blur(9px);
+        }
+        .tagcaption__lab { font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-right: 2px; }
+        .tagcap { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; font-size: 8.5px; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; }
+        .tagcap .sym { font-size: 11px; }
+        @media (max-width: 760px) { .tagcaption { display: none; } }
+
         /* ---- SVG edges ---- */
         .edge { fill: none; stroke: rgba(200,204,236,0.85); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
         .edge--soft { stroke: rgba(160,166,224,0.6); stroke-width: 1.9; stroke-dasharray: 6 6; }
@@ -571,10 +602,15 @@
     <!-- ============================ LEGEND ============================ -->
     <aside class="legend is-collapsed" id="legend" aria-label="Diagram legend">
         <button class="legend__head" id="legend-head" type="button" aria-expanded="false" aria-controls="legend-body">
-            <span>What the colors mean</span>
+            <span>Legend — tags &amp; arrows</span>
             <span class="legend__chev" aria-hidden="true">&#9660;</span>
         </button>
         <div class="legend__body" id="legend-body">
+            <div class="legend__sect">What the tags mean</div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6b7fb8"></span><span class="legend__txt"><b>&#9676; State</b>a condition the seed is in</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#d9a948"></span><span class="legend__txt"><b>&#10006; Context</b>input the seed reads (a prompt)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6366f1"></span><span class="legend__txt"><b>&#9635; Object</b>a thing that now exists (the job)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#8b5cf6"></span><span class="legend__txt"><b>&#9670; Phase</b>an OPEVC phase (OBSERVE…)</span></div>
             <div class="legend__sect">Who owns the data (lane)</div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-job_core)"></span><span class="legend__txt"><b>job_core</b>the base job record</span></div>
             <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-phasic)"></span><span class="legend__txt"><b>phasic_system</b>the phase mirror (idle, cycle)</span></div>
@@ -587,6 +623,15 @@
             <div class="legend__row"><span class="legend__warn" aria-hidden="true">&#9888;</span><span class="legend__txt"><b>Blog vs code</b>where essays and the live prototype differ &mdash; click the box</span></div>
         </div>
     </aside>
+
+    <!-- ============================ TAG CAPTION (always-visible key) ============================ -->
+    <div class="tagcaption" aria-hidden="true">
+        <span class="tagcaption__lab">Tags</span>
+        <span class="tagcap tag--state"><span class="sym">&#9676;</span>State</span>
+        <span class="tagcap tag--context"><span class="sym">&#10006;</span>Context</span>
+        <span class="tagcap tag--object"><span class="sym">&#9635;</span>Object</span>
+        <span class="tagcap tag--phase"><span class="sym">&#9670;</span>Phase</span>
+    </div>
 
     <!-- ============================ HELP BUTTON ============================ -->
     <button class="help-btn" id="help-btn" type="button"><b>?</b> how to read this</button>
@@ -654,16 +699,16 @@
     var INFO = {
         /* ---------------- CARD A : A job is born ---------------- */
         'a-idle': {
-            title: 'Seed idle', lane: 'phasic',
+            title: 'Seed idle', tag: 'state',
             what: 'The seed agent is asleep. There is no job it is working on — no "focused" job at all.',
             why: 'This is the resting state: the very first run, or the moment every earlier job has been completed. Nothing is in motion until someone speaks to it.',
             hood: 'A job is "focused" when its record has <code>focused:true</code>. At rest, no record carries that flag, so every phase gate and voice has nothing to key on.'
         },
         'a-prompt': {
-            title: 'UserPromptSubmit', lane: 'job_core',
-            what: 'The hook that fires on every single prompt you send the seed agent.',
-            why: 'It is the seed\'s sense of hearing. Before the agent "thinks", this reflex runs and decides whether your words start a new job or feed an existing one.',
-            hood: 'Registered on the <code>UserPromptSubmit</code> event as <code>job_core/hooks/prompt-handler.sh</code>. It counts active jobs first: <code>active_count = jobs where status=="active"</code>. If that count is <code>0</code>, it bootstraps a brand-new job.'
+            title: 'Your first prompt', tag: 'context',
+            what: 'The prompt you send is the ONLY context the new job starts with — its entire world is your words.',
+            why: 'An idle seed has no job to feed. So your prompt does double duty: a reflex catches it and, finding nothing running, turns it INTO a job. Speaking to a sleeping seed IS starting a job — the "first-prompt effect". You never have to ask it to start.',
+            hood: 'Caught by <code>job_core/hooks/prompt-handler.sh</code> on the <code>UserPromptSubmit</code> event. It counts active jobs (<code>active_count = jobs where status=="active"</code>); when that is <code>0</code> it bootstraps a brand-new job — see the "creates it" arrow.'
         },
         'a-create': {
             title: 'Create ONE job', lane: 'job_core',
@@ -672,13 +717,13 @@
             hood: 'The handler calls <code>job.sh --hook create-active "&lt;your prompt&gt;"</code>. This is the ONLY automatic create path, and it is HOOK_MODE-gated — calling <code>create-active</code> by hand is refused ("reserved for system automation"). It writes <code>status:active</code> and <code>focused:true</code> in a single jq write.'
         },
         'a-record': {
-            title: 'The new job record', lane: 'job_core',
-            what: 'The job now exists as one JSON object — but it is almost completely blank.',
-            why: 'Here is the key surprise: the job does NOT yet know its own name or what it is for. The only real content it holds is your prompt, sitting in its interaction trail. Everything else is empty, waiting to be discovered.',
-            hood: 'The written record: <code>name:""</code>, <code>objective:""</code>, <code>status:"active"</code>, <code>focused:true</code>, <code>user_interactions:["&lt;your prompt&gt;"]</code>, plus <code>depends_on:[]</code>, <code>user_approval:false</code>, timestamps. Name and objective are literally empty strings at birth.'
+            title: 'A new job — born empty', tag: 'object',
+            what: 'The job now exists as one JSON object — created, live, and focused — but almost completely blank.',
+            why: 'Here is the key surprise: the job does NOT yet know its own name or what it is for. The only real content it holds is your prompt, sitting in its interaction trail. Everything else is empty, waiting to be discovered — which is exactly why OBSERVE comes next.',
+            hood: 'Born in a SINGLE jq write by <code>job.sh --hook create-active</code> (the only auto-create path, HOOK_MODE-gated). The record: <code>name:""</code>, <code>objective:""</code>, <code>status:"active"</code>, <code>focused:true</code>, <code>user_interactions:["&lt;your prompt&gt;"]</code>, <code>depends_on:[]</code>, <code>user_approval:false</code>, timestamps. Name and objective are literally empty strings at birth.'
         },
         'a-enter-observe': {
-            title: 'Enters OBSERVE', lane: 'phasic',
+            title: 'OBSERVE — cycle 1', tag: 'phase',
             what: 'The job is initialised into the phase machine and takes its first step: into OBSERVE.',
             why: 'OBSERVE is where the empty job starts to fill itself in — reading your prompt and its context to work out who it is. That is the next card.',
             hood: 'Birth also calls <code>phase.sh --hook init &lt;id&gt;</code>, which writes the phase mirror <code>{current_phase:"idle", cycle:0}</code>. The job is locked in IDLE; the agent runs <code>phase.sh advance</code> to make the first transition <code>idle→observe</code>.'
@@ -778,32 +823,40 @@
      * ====================================================================== */
     var VB_W = 1000, VB_H = 560;
 
+    /* The TYPE TAG taxonomy — each pill carries one so its KIND reads instantly.
+       Grow this deliberately; never reuse a tag for a different idea. */
+    var TAG_DEF = {
+        state:   { sym:'◌', label:'State' },    /* the seed's condition (idle, focused…) */
+        context: { sym:'✎', label:'Context' },  /* input the seed reads (a prompt) */
+        object:  { sym:'▣', label:'Object' },   /* a data thing that now exists (the job) */
+        phase:   { sym:'◆', label:'Phase' },    /* an OPEVC phase (OBSERVE…) */
+        action:  { sym:'⚡', label:'Action' }    /* something the system does */
+    };
+
     var CARDS = {
         '0,0': {
             kind: 'seq', step: 1,
             eyebrow: 'The job\'s life · step 1 of 2',
             title: 'A job is born',
-            sub: 'What you\'re looking at: a single prompt hits an idle seed — and one live job appears, almost completely empty.',
+            sub: 'A single prompt hits a sleeping seed — and one live job appears, knowing almost nothing about itself.',
             boxes: [
-                { id:'a-idle',          x:30,  y:230, w:150, h:96,  lane:'phasic',   t:'Seed idle',        s:'no focused job' },
-                { id:'a-prompt',        x:228, y:230, w:158, h:96,  lane:'job_core', t:'UserPromptSubmit', s:'a prompt arrives' },
-                { id:'a-create',        x:434, y:230, w:160, h:96,  lane:'job_core', t:'Create ONE job',   s:'active + focused' },
-                { id:'a-record',        x:642, y:150, w:196, h:262, lane:'job_core', t:'The new job record', record:true },
-                { id:'a-enter-observe', x:872, y:236, w:104, h:84,  lane:'phasic',   t:'enters OBSERVE →', s:'first step' }
+                { id:'a-idle',          x:40,  y:238, w:182, h:106, tag:'state',   t:'Seed idle',         s:'no job — asleep' },
+                { id:'a-prompt',        x:300, y:238, w:182, h:106, tag:'context', t:'Your first prompt', s:'the only context it gets' },
+                { id:'a-record',        x:560, y:166, w:216, h:230, tag:'object',  t:'A new job — born empty', record:true },
+                { id:'a-enter-observe', x:852, y:238, w:128, h:106, tag:'phase',   t:'OBSERVE',           s:'cycle 1 · figure out what it is' }
             ],
             edges: [
                 { from:'a-idle',   to:'a-prompt',        kind:'soft', label:'a prompt' },
-                { from:'a-prompt', to:'a-create',        kind:'hard', label:'count == 0' },
-                { from:'a-create', to:'a-record',        kind:'hard', label:'one write' },
-                { from:'a-record', to:'a-enter-observe', kind:'hard', label:'init' }
+                { from:'a-prompt', to:'a-record',        kind:'hard', label:'creates it' },
+                { from:'a-record', to:'a-enter-observe', kind:'hard', label:'now observe' }
             ],
             stickies: [
-                { x:24,  y:96,  text:'First run, or every earlier job is done — the seed is asleep with <b>no focused job</b>.' },
-                { x:412, y:96,  r:true, text:'<b>active + focused</b> in a SINGLE write — the first-prompt effect.' },
-                { x:628, y:420, aha:true, text:'It\'s born EMPTY — the job does <b>not yet know</b> its own name or objective.' }
+                { x:22,  y:104, text:'First run, or every earlier job is done — the seed is asleep with <b>no focused job</b>.' },
+                { x:360, y:64,  text:'<b>active + focused</b> in a SINGLE write — the first-prompt effect.' },
+                { x:548, y:408, aha:true, text:'Born EMPTY — the job does <b>not yet know</b> its own name or goal. That is what OBSERVE is for.' }
             ],
-            nextnote: { x:548, y:500, text:'Follow the job into OBSERVE' },
-            downhint: { x:60, y:500, label:'related: Active + focused, in one write' }
+            nextnote: { x:600, y:476, text:'Follow it into OBSERVE' },
+            downhint: { x:60, y:506, label:'related: Active + focused, in one write' }
         },
 
         '1,0': {
@@ -1013,12 +1066,16 @@
         /* boxes as foreignObject glass cards */
         var boxSvg = '';
         card.boxes.forEach(function (b) {
-            var laneClass = 'dbox--lane-' + b.lane;
+            var laneClass = b.tag ? ('dbox--tag-' + b.tag) : ('dbox--lane-' + b.lane);
+            var td = b.tag && TAG_DEF[b.tag];
+            var tagChip = td ? ('<span class="dbox__tag tag--' + b.tag + '"><span class="sym">' +
+                td.sym + '</span>' + td.label + '</span>') : '';
             var inner =
                 '<div class="dbox ' + laneClass + (b.record ? ' dbox--record' : '') + '" ' +
                      'tabindex="0" role="button" data-node="' + b.id + '" ' +
                      'aria-label="' + esc((INFO[b.id] && INFO[b.id].title) || b.t) + ' — open detail">' +
                     (b.warn ? '<span class="dbox__warn" aria-hidden="true">&#9888;</span>' : '') +
+                    tagChip +
                     '<div class="dbox__t">' + esc(b.t) + '</div>' +
                     (b.s ? '<div class="dbox__s">' + esc(b.s) + '</div>' : '') +
                     (b.record ? RECORD_FIELDS : '') +
@@ -1174,12 +1231,14 @@
         var d = INFO[nodeId];
         if (!d) return;
         lastFocused = document.activeElement;
-        var laneColor = LANE_COLOR[d.lane] || 'var(--lane-job_core)';
-        var laneLabel = LANE_LABEL[d.lane] || d.lane;
+        var TAG_COLOR = { state:'#6b7fb8', context:'#d9a948', object:'#6366f1', phase:'#8b5cf6', action:'#34d399' };
+        var isTag = d.tag && TAG_DEF[d.tag];
+        var dotColor = isTag ? TAG_COLOR[d.tag] : (LANE_COLOR[d.lane] || 'var(--lane-job_core)');
+        var dotLabel = isTag ? (TAG_DEF[d.tag].sym + ' ' + TAG_DEF[d.tag].label) : (LANE_LABEL[d.lane] || d.lane);
         var html =
             '<div class="info-kind">Concept</div>' +
             '<h2>' + esc(d.title) + '</h2>' +
-            '<div class="info-lane-tag"><span class="info-lane-dot" style="background:' + laneColor + '"></span>' + esc(laneLabel) + '</div>' +
+            '<div class="info-lane-tag"><span class="info-lane-dot" style="background:' + dotColor + '"></span>' + esc(dotLabel) + '</div>' +
             '<div class="info-field"><div class="info-field-label">What it is</div><div class="info-field-body">' + d.what + '</div></div>' +
             '<div class="info-field"><div class="info-field-label">Why it matters</div><div class="info-field-body">' + d.why + '</div></div>' +
             '<div class="info-hood"><div class="info-hood-label">Under the hood</div><div class="info-hood-body">' + d.hood + '</div></div>' +
