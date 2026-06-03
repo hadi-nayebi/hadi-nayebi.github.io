@@ -518,27 +518,41 @@
      * ====================================================================== */
     var reftip = document.createElement('div');
     reftip.className = 'reftip'; reftip.setAttribute('role', 'tooltip');
-    reftip.innerHTML = '<div class="reftip__sec"></div><div class="reftip__blurb"></div><div class="reftip__go">↗ click to open the essay</div>';
+    reftip.innerHTML = '<div class="reftip__sec"></div><div class="reftip__blurb"></div>' +
+        '<a class="reftip__go" target="_blank" rel="noopener">↗ Open the essay</a>';
     document.body.appendChild(reftip);
-    var reftipSec = reftip.querySelector('.reftip__sec'), reftipBlurb = reftip.querySelector('.reftip__blurb');
-    function showReftip(chip, ev) {
-        reftipSec.textContent = chip.getAttribute('data-ref-section') || 'Reference';
+    var reftipSec  = reftip.querySelector('.reftip__sec'),
+        reftipBlurb = reftip.querySelector('.reftip__blurb'),
+        reftipLink  = reftip.querySelector('.reftip__go');
+    var reftipHideT = null;
+    function refCancelHide() { if (reftipHideT) { clearTimeout(reftipHideT); reftipHideT = null; } }
+    function refScheduleHide() { refCancelHide(); reftipHideT = setTimeout(function () { reftip.classList.remove('is-on'); }, 340); }
+    function showReftip(chip) {
+        refCancelHide();
+        var url = chip.getAttribute('data-ref-url') || '#';
+        reftipSec.textContent  = chip.getAttribute('data-ref-section') || 'Reference';
         reftipBlurb.textContent = chip.getAttribute('data-ref-blurb') || '';
+        reftipLink.setAttribute('href', url);
         reftip.classList.add('is-on');
-        var pad = 14, w = reftip.offsetWidth, h = reftip.offsetHeight;
-        var x = ev.clientX + 14, y = ev.clientY + 14;
-        if (x + w + pad > window.innerWidth)  x = ev.clientX - w - 14;
-        if (y + h + pad > window.innerHeight) y = ev.clientY - h - 14;
-        reftip.style.left = Math.max(pad, x) + 'px'; reftip.style.top = Math.max(pad, y) + 'px';
+        /* anchor the popover to the CHIP (not the cursor) so the pointer can travel INTO it */
+        var pad = 12, r = chip.getBoundingClientRect(), w = reftip.offsetWidth, h = reftip.offsetHeight;
+        var x = r.left - 6, y = r.bottom + 8;
+        if (x + w + pad > window.innerWidth)  x = window.innerWidth - w - pad;
+        if (y + h + pad > window.innerHeight) y = r.top - h - 8;   /* flip above if no room below */
+        reftip.style.left = Math.max(pad, x) + 'px';
+        reftip.style.top  = Math.max(pad, y) + 'px';
     }
-    function hideReftip() { reftip.classList.remove('is-on'); }
     function chipOf(e) { return e.target.closest ? e.target.closest('.refchip') : null; }
-    document.addEventListener('mouseover', function (e) { var c = chipOf(e); if (c) showReftip(c, e); });
-    document.addEventListener('mousemove', function (e) { if (reftip.classList.contains('is-on')) { var c = chipOf(e); if (c) showReftip(c, e); } });
-    document.addEventListener('mouseout', function (e) { if (chipOf(e)) hideReftip(); });
-    document.addEventListener('click', function (e) { var c = chipOf(e); if (c) { e.preventDefault(); e.stopPropagation(); var u = c.getAttribute('data-ref-url'); if (u) window.open(u, '_blank', 'noopener'); } });
-    document.addEventListener('focusin', function (e) { var c = chipOf(e); if (c) { var r = c.getBoundingClientRect(); showReftip(c, { clientX: r.left + r.width / 2, clientY: r.bottom }); } });
-    document.addEventListener('focusout', function (e) { if (chipOf(e)) hideReftip(); });
+    document.addEventListener('mouseover', function (e) { var c = chipOf(e); if (c) showReftip(c); });
+    document.addEventListener('mouseout',  function (e) { if (chipOf(e)) refScheduleHide(); });
+    document.addEventListener('click',     function (e) { var c = chipOf(e); if (c) { e.preventDefault(); e.stopPropagation(); var u = c.getAttribute('data-ref-url'); if (u) window.open(u, '_blank', 'noopener'); } });
+    document.addEventListener('focusin',   function (e) { var c = chipOf(e); if (c) showReftip(c); });
+    document.addEventListener('focusout',  function (e) { if (chipOf(e)) refScheduleHide(); });
+    /* the popover itself is reachable + clickable — keep it open while hovered/focused */
+    reftip.addEventListener('mouseenter', refCancelHide);
+    reftip.addEventListener('mouseleave', refScheduleHide);
+    reftip.addEventListener('focusin',  refCancelHide);
+    reftip.addEventListener('focusout', refScheduleHide);
 
     /* ========================================================================
      * NAV ARROW buttons
