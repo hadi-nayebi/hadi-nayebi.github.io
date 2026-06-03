@@ -342,7 +342,7 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 **Blog 7 — The Plugin Kit:** A plugin is a cell with internal organs. The standard kit (hooks, scripts, hidden state, dual voices, tests, evolution.md, agents/) is what lets the brain grow new organs **safely**. **Tier-3 close:** walkthrough of building a new phase plugin.
 
-**Blog 8 — From Apprentice to Architect:** Maturation through job formats. Patterns travel from voice → hook → plugin. **The brain stops growing in size but never stops learning.** **Tier-3 close:** bridge to the public seed agent (open-source, MIT, hand-off).
+**Blog 8 — From Apprentice to Architect:** Maturation through Job Stages. Patterns travel from voice → hook → plugin. **The brain stops growing in size but never stops learning.** **Tier-3 close:** bridge to the public seed agent (open-source, MIT, hand-off).
 
 ### Part 2 Architecture-Accuracy Rules (NON-NEGOTIABLE)
 
