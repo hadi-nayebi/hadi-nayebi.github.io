@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="What&#x27;s Enforced vs What&#x27;s Discipline — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b8/images/maturation-arc-b8-banner.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260601">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -144,7 +144,7 @@
 
                         <h2>The Deflation Gate &mdash; A Different Boundary</h2>
 
-                        <p>A second enforcement runs at a different boundary &mdash; the <em>deflation gate</em> inside <code>phase_condense</code>. At condense entry, a sensor snapshots the total bottom-section word count across every CLAUDE.md the cycle touched. At commit time, the script re-measures and refuses to advance unless eighty percent of those bottom-section words have been absorbed &mdash; a single threshold, the same for every job whether it runs once or across many cycles. The gate fires at commit, not at edit &mdash; which is the right boundary, because the question isn&rsquo;t <em>did this individual edit fit</em> but <em>did the cycle, taken as a whole, compress enough to graduate</em>. <sup class="ref-marker" title="ref: deflation-gate-single-80-at-commit | phase_condense/hooks/condense-sensor.sh + phase_condense/scripts/condense-commit.sh + CONTEXT.md &quot;Deflation gate&quot; section | At condense entry, `condense-sensor.sh` snapshots per-file bottom-section word counts — measured from the first OPEVC anchor marker (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) to end-of-file in every altered CLAUDE.md — and stores the baseline on the condense entry in `data.json`. At condense-commit time, `condense-commit.sh --force` re-measures the same bottom sections and refuses to advance until the single 80% threshold is met — the same for every Stage — blocking with the `condense.commit.block-deflation` voice otherwise. (The prototype&#x27;s split `CONDENSE_DEF_THRESHOLD_STAGE2=50` is retired drift slated for removal per the Deletion ledger.)">&#9432;</sup></p>
+                        <p>A second enforcement runs at a different boundary &mdash; the <em>deflation gate</em> inside <code>phase_condense</code>. At condense entry, a sensor snapshots the total bottom-section word count across every CLAUDE.md the cycle touched. At commit time, the script re-measures and refuses to advance unless eighty percent of those bottom-section words have been absorbed &mdash; a single threshold, the same for every job whether it runs once or across many cycles. The gate fires at commit, not at edit &mdash; which is the right boundary, because the question isn&rsquo;t <em>did this individual edit fit</em> but <em>did the cycle, taken as a whole, compress enough to graduate</em>. <sup class="ref-marker" title="ref: deflation-gate-single-80-at-commit | phase_condense/hooks/condense-sensor.sh + phase_condense/scripts/condense-commit.sh + CONTEXT.md &quot;Deflation gate&quot; section | At condense entry, `condense-sensor.sh` snapshots per-file bottom-section word counts — measured from the first OPEVC anchor marker (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) to end-of-file in every altered CLAUDE.md — and stores the baseline on the condense entry in `data.json`. At condense-commit time, `condense-commit.sh --force` re-measures the same bottom sections and refuses to advance until the single 80% threshold is met — the same for every Stage — blocking with the `condense.commit.block-deflation` voice otherwise. (The prototype&#x27;s former split `CONDENSE_DEF_THRESHOLD_STAGE2=50` was removed per the Deletion ledger — the gate is a single 80% threshold.)">&#9432;</sup></p>
 
                         <p>The pattern reads cleanly: hard limits cost something to maintain (every gate adds friction, every gate adds tests), and the architecture won&rsquo;t pay that cost until the soft form has demonstrably failed. The discipline isn&rsquo;t <em>more</em> enforcement; it is enforcement <em>where it pays for itself</em>. The limit on this honesty is the operator&rsquo;s: a seed that quietly bloats a soft cap will keep bloating it until the operator notices, because no code stops the drift.</p>
 
@@ -243,8 +243,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260601"></script>
-    <script src="../../js/components.js?v=20260601"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>
