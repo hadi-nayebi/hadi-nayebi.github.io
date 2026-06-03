@@ -816,6 +816,38 @@
             what: 'All four checks pass → the job is allowed into PLAN.',
             why: 'Only a job that knows its name, its goal, and has done real observation gets to start planning. No empty jobs get through.',
             hood: 'With name + objective non-empty AND points ≥ 100 AND ≥ 1 CLAUDE.md update, <code>observe-commit.sh</code> permits the <code>observe→plan</code> forward transition.'
+        },
+
+        /* ---------------- CARD PLAN : choose the Stage ---------------- */
+        'p-null': {
+            title: 'plan_file: null', tag: 'object',
+            what: 'When the job is born, one field — <code>plan_file</code> — starts as <code>null</code>. Null means "the Stage has not been chosen yet."',
+            why: 'A job\'s Stage is not decided when it is created. It is decided here, in PLAN, once the job actually understands its own work. Until then, the field honestly says "undecided".',
+            hood: 'Set at job birth in the jq template: <code>plan_file: null</code> (<code>job_core/scripts/job.sh</code>, create path). <code>null</code> is the set-once sentinel — distinct from <code>false</code> (a real, chosen Stage).'
+        },
+        'p-decide': {
+            title: 'set-plan-file — choose once', tag: 'action',
+            what: 'In cycle-1 PLAN the job calls <code>set-plan-file</code> exactly once, committing its Stage by the value it writes.',
+            why: 'This is the single most defining choice a job makes: what shape its work takes. It is deliberately irreversible — the job picks a Stage and lives with it, rather than drifting between shapes.',
+            hood: 'Three accepted values: <code>false</code> (Stage 1), <code>plan_x.md</code> (Stage 2), <code>plan_x.yaml</code> (Stage 3). A SECOND call is refused — <code>plan.sh</code> checks the current value and dies "Plan file already set… Cannot change." The PLAN→EXECUTE advance is BLOCKED while the value is still <code>null</code> (<code>plan-commit.sh</code>), so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
+        },
+        'p-s1': {
+            title: 'false → Stage 1', tag: 'object',
+            what: 'Choosing <code>false</code> makes this a Stage-1 job: a single collaborative cycle, with no separate plan file.',
+            why: 'Stage 1 is for one-off work — a single fix, a teaching session, a quick exploration. There is nothing to carry across runs, so it never writes a plan file.',
+            hood: '<code>plan_file: false</code>. Its multiplier stays at the <code>0</code> sentinel (the job sets a real multiplier itself at each phase). Completion is eligible at every CONDENSE while <code>plan_file == false</code>.'
+        },
+        'p-s2': {
+            title: 'plan_x.md → Stage 2', tag: 'object',
+            what: 'Choosing a <code>.md</code> filename makes this a Stage-2 job: repeatable, multi-cycle work with a prose plan file.',
+            why: 'Stage 2 is for structured work that benefits from an accumulating, human-readable plan — one that gets smarter every run. The plan file is the memory that survives across activations.',
+            hood: '<code>plan_file: plan_&lt;name&gt;.md</code>. The plan file itself is created later, in cycle-1 EXECUTE (next card). A planned job auto-resolves its default multiplier to <code>3</code>.'
+        },
+        'p-s3': {
+            title: 'plan_x.yaml → Stage 3', tag: 'object',
+            what: 'Choosing a <code>.yaml</code> filename makes this a Stage-3 job: same as Stage 2, but the plan file is structured YAML.',
+            why: 'Stage 3 is for work that wants per-cycle context injected automatically at each phase. Completion behaves identically to Stage 2 — only the plan file\'s FORMAT differs.',
+            hood: '<code>plan_file: plan_&lt;name&gt;.yaml</code>. Like Stage 2, the default multiplier auto-resolves to <code>3</code> for planned jobs (<code>.md</code> and <code>.yaml</code> behave the same here). The YAML\'s <code>cycles:</code> list declares the per-cycle entries.'
         }
     };
 
@@ -840,7 +872,7 @@
     var CARDS = {
         '0,0': {
             kind: 'seq', step: 1,
-            eyebrow: 'The job\'s life · step 1 of 2',
+            eyebrow: 'The job\'s life · step 1',
             title: 'A job is born',
             sub: 'A single prompt hits a sleeping seed — and one live job appears, knowing almost nothing about itself.',
             boxes: [
@@ -865,7 +897,7 @@
 
         '1,0': {
             kind: 'seq', step: 2,
-            eyebrow: 'The job\'s life · step 2 of 2',
+            eyebrow: 'The job\'s life · step 2',
             title: 'OBSERVE — find out who you are',
             sub: 'What you\'re looking at: the empty job reads, then names itself and writes its goal. It cannot reach PLAN until both are filled.',
             boxes: [
@@ -935,6 +967,33 @@
                 { x:660, y:372, r:true, aha:true, text:'Any single NO → <b>REJECTED</b>, stay in OBSERVE and keep working.' }
             ],
             upnote: { x:660, y:64, label:'back up to: OBSERVE' }
+        },
+
+        '2,0': {
+            kind: 'seq', step: 3,
+            eyebrow: 'The job\'s life · step 3',
+            title: 'PLAN — choose the Stage',
+            sub: 'What you\'re looking at: the job makes one lasting choice — what SHAPE of work it is. That choice is a single field, set exactly once.',
+            boxes: [
+                { id:'p-null',   x:44,  y:230, w:198, h:100, tag:'object', t:'plan_file: null', s:'undecided — the set-once sentinel' },
+                { id:'p-decide', x:330, y:230, w:188, h:100, tag:'action', t:'set-plan-file',   s:'cycle-1 PLAN · choose ONCE' },
+                { id:'p-s1',     x:606, y:84,  w:248, h:80,  tag:'object', t:'false → Stage 1',        s:'single cycle · no plan file' },
+                { id:'p-s2',     x:606, y:230, w:248, h:80,  tag:'object', t:'plan_x.md → Stage 2',    s:'a prose plan file' },
+                { id:'p-s3',     x:606, y:376, w:248, h:80,  tag:'object', t:'plan_x.yaml → Stage 3',  s:'a YAML plan file' }
+            ],
+            edges: [
+                { from:'p-null',   to:'p-decide', kind:'hard', label:'choose, once' },
+                { from:'p-decide', to:'p-s1',     kind:'hard' },
+                { from:'p-decide', to:'p-s2',     kind:'hard' },
+                { from:'p-decide', to:'p-s3',     kind:'hard' }
+            ],
+            stickies: [
+                { x:36,  y:96,  text:'Born <b>undecided</b>. PLAN\'s one move: commit the Stage — once, for keeps.' },
+                { x:592, y:54,  aha:true, text:'Same job, <b>three shapes</b>. The plan file\'s FORMAT <i>is</i> the Stage.' },
+                { x:36,  y:358, text:'Until a Stage is set, a gate <b>blocks EXECUTE</b> — even Stage 1 must choose <code>false</code>.' }
+            ],
+            backnote: { x:46, y:498, text:'← from OBSERVE: it now knows its name + goal' },
+            nextnote: { x:626, y:500, text:'A Stage chosen → into EXECUTE' }
         }
     };
 
@@ -951,7 +1010,7 @@
         '</div>';
 
     /* navigation order: which cells exist + their sequence step */
-    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1 };
+    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1, '2,0':1 };
     /* total numbered steps in the main ←→ sequence (kind:'seq'); drives the
        step indicator + dots. Computed so adding sequence cards auto-scales. */
     var SEQ_TOTAL = Object.keys(CARDS).filter(function (k) { return CARDS[k].kind === 'seq'; }).length;
