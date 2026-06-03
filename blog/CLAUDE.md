@@ -50,11 +50,12 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 - **Phase commit shape** — the required `## ` section structure every `--force` advance commit carries, plus per-phase custom gates; the double-verify system. _Avoid:_ commit template/format.
 - **Intermediate vs force-advance commits** — intermediate (`<phase>-commit.sh` without `--force`, ungated except a ≥20-word message floor; direct git is BLOCKED) vs `--force` (shape + 100 points + custom gates; advances the phase). Clean git gates every transition (forward AND backward). _Avoid:_ "save vs advance commits," "plain git commit."
 
-**Repeating jobs** (BUILT 2026-06-02 — WU-004a/b/005/008; taught as built in 06_10-plan-state-machine.md v0.4.0. The two-heartbeat reactivation [Heartbeat-1 self-compact STEP 4.8 / Heartbeat-2 quiescent-heartbeat.sh daemon with the `[WAKE]` UPS-bypass] is live.)
-- **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm. _Avoid:_ recurring/scheduled/periodic job.
+**Repeating jobs** (BUILT 2026-06-02 — WU-004a/b/005/008; `reactivate_target` added 2026-06-03 per align card 4. Taught as built in 06_10-plan-state-machine.md v0.4.0. The two-heartbeat reactivation [Heartbeat-1 self-compact STEP 4.8 / Heartbeat-2 quiescent-heartbeat.sh daemon with the `[WAKE]` UPS-bypass] is live.)
+- **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm, landing at the status named by their `reactivate_target`. _Avoid:_ recurring/scheduled/periodic job.
 - **`repeating_interval`** — integer-HOURS field, default 0 (one-shot). _Avoid:_ schedule/freq/cron field, "interval seconds," "repeating_interval_hours" (unit is implicit).
+- **`reactivate_target`** — `"pending"`/`"active"` field (born `"pending"`); WHERE the reactivation lands. Set by the user at `[REPEAT-JOB]` time; `"active"` makes the quiescent single-due wake activate+focus the job directly. _Avoid:_ urgency (that is a separate post-v1 field), priority.
 - **`last_completed_at`** — Unix-epoch field, written once at `job.sh complete`; anchors the re-fire computation. _Avoid:_ completed_at, last_run_at.
-- **`[REPEAT-JOB]` prefixed question** — CONDENSE-only promotion ceremony (multiple-choice Hourly/Daily/Weekly × value) flipping the focused job's `repeating_interval`. _Avoid:_ `[JOB-REPEATABLE]`/`[REPEATABLE]` (adjective form), `[SCHEDULE-JOB]`.
+- **`[REPEAT-JOB]` prefixed question** — CONDENSE-only promotion ceremony (multiple-choice: cadence Hourly/Daily/Weekly × value AND reactivate-target Pending-default/Active-urgent) flipping the focused job's `repeating_interval` + `reactivate_target`. _Avoid:_ `[JOB-REPEATABLE]`/`[REPEATABLE]` (adjective form), `[SCHEDULE-JOB]`.
 
 **Series-exclusive terms (defined deeper):** Historian-ratchet steps + Self-compact reactivation rhythm → `blog/b5/CLAUDE.md`; Plan-verify backward loop + plan→verify forward transition → `blog/b6/CLAUDE.md`.
 
