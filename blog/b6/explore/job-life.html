@@ -492,7 +492,9 @@
 
         /* ============================ HELP BUTTON ============================ */
         .help-btn {
-            position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 1500;
+            /* bottom-LEFT, not center: the centered nav-down arrow (same anchor)
+               stacked on top of it on cards that have a down-neighbor. */
+            position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 1500;
             display: inline-flex; align-items: center; gap: 0.4rem;
             padding: 0.45rem 0.9rem; border-radius: 999px;
             appearance: none; cursor: pointer; font-family: inherit;
