@@ -50,7 +50,7 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 - **Phase commit shape** — the required `## ` section structure every `--force` advance commit carries, plus per-phase custom gates; the double-verify system. _Avoid:_ commit template/format.
 - **Intermediate vs force-advance commits** — intermediate (`<phase>-commit.sh` without `--force`, ungated except a ≥20-word message floor; direct git is BLOCKED) vs `--force` (shape + 100 points + custom gates; advances the phase). Clean git gates every transition (forward AND backward). _Avoid:_ "save vs advance commits," "plain git commit."
 
-**Repeating jobs** (design-only — not yet built; covered in 06_10-plan-state-machine.md)
+**Repeating jobs** (BUILT 2026-06-02 — WU-004a/b/005/008; taught as built in 06_10-plan-state-machine.md v0.4.0. The two-heartbeat reactivation [Heartbeat-1 self-compact STEP 4.8 / Heartbeat-2 quiescent-heartbeat.sh daemon with the `[WAKE]` UPS-bypass] is live.)
 - **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm. _Avoid:_ recurring/scheduled/periodic job.
 - **`repeating_interval`** — integer-HOURS field, default 0 (one-shot). _Avoid:_ schedule/freq/cron field, "interval seconds," "repeating_interval_hours" (unit is implicit).
 - **`last_completed_at`** — Unix-epoch field, written once at `job.sh complete`; anchors the re-fire computation. _Avoid:_ completed_at, last_run_at.
@@ -438,7 +438,7 @@ The four posts must feel aware of each other. Each concept is introduced once, t
 | Subagent system + 80/20 | mention | mention | **center** | reference |
 | Soft → hard migration | hint | hint | **mechanism** | **maturation arc** |
 | Brain size limits + deflation | mention | mechanism | mention | **growth thesis** |
-| Job formats (single / multi / sibling / dep) | reference | reference | reference | **center** |
+| Job Stages (1 single-cycle / 2 `.md` / 3 `.yaml`) + job-graph (standalone / dep) | reference | reference | reference | **center** |
 | Knowledge layers (knowledge/, memory/, session/) | mention | mechanism | mechanism | **accumulation arc** |
 
 **Cell-value definitions:**
@@ -503,7 +503,7 @@ Each blog (except B8) ends with a one-line forward bridge in the **body** (not j
 - §8: Bridge to B8
 
 **Blog 8 — From Apprentice to Architect** (~3000-4000 words)
-- §1: Job formats (single-cycle DEEP, multi-cycle, sibling, dependent) — what each teaches
+- §1: Job Stages (Stage 1 single-cycle collaborative, Stage 2 `.md`, Stage 3 `.yaml`) + job-graph relationships (standalone, dependent) — what each teaches
 - §2: The maturation arc (apprentice → journeyman → architect) — visible markers per stage
 - §3: **Soft → hard migration** — voice → measurement → hook → plugin → out of brain
 - §4: Why the brain shrinks as it learns (size limits force compression, deflation gates, the growth-by-pruning thesis)
