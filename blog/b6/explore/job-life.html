@@ -848,6 +848,32 @@
             what: 'Choosing a <code>.yaml</code> filename makes this a Stage-3 job: same as Stage 2, but the plan file is structured YAML.',
             why: 'Stage 3 is for work that wants per-cycle context injected automatically at each phase. Completion behaves identically to Stage 2 — only the plan file\'s FORMAT differs.',
             hood: '<code>plan_file: plan_&lt;name&gt;.yaml</code>. Like Stage 2, the default multiplier auto-resolves to <code>3</code> for planned jobs (<code>.md</code> and <code>.yaml</code> behave the same here). The YAML\'s <code>cycles:</code> list declares the per-cycle entries.'
+        },
+
+        /* ---------------- CARD EXECUTE : build, in scope ---------------- */
+        'e-build': {
+            title: 'Build in scope', tag: 'action',
+            what: 'EXECUTE is the phase where the job actually makes things — writes files, edits code, produces the deliverable.',
+            why: 'It is the ONLY phase with full write access. Every other phase is read-only or scripts-only on purpose, so building happens in one focused place, against a plan that is already decided.',
+            hood: 'The execute-guard allows Write/Edit/MultiEdit, but only inside the job\'s declared scope — the "altered list" of directories the job named in OBSERVE/PLAN. Writes outside that scope, to the root brain, or to <code>knowledge/</code> (except the plan file) are blocked. Glob/Grep/Web are blocked too; gathering was OBSERVE\'s job.'
+        },
+        'e-perm': {
+            title: 'write-permission check', tag: 'gate',
+            what: 'Writing the plan file passes a small three-part permission check first: right scope, cycle 1, and the file does not already exist.',
+            why: 'The plan file is precious — it is the job\'s cross-cycle memory. The check makes sure it is created exactly once, by the right job, at the right moment, and never silently overwritten.',
+            hood: 'In <code>execute-guard.sh</code>: the write to <code>.claude/knowledge/plans/plan_*.{md,yaml}</code> is granted only when scope == the declared <code>plan_file</code> AND <code>cycle == 1</code> AND the file is non-existent → exit 0 (permission granted). This is a TOOL-access check, not a phase-advance gate.'
+        },
+        'e-planfile': {
+            title: 'the plan file is born', tag: 'object',
+            what: 'On a Stage-2 or Stage-3 job, the plan file itself is created here — in cycle-1 EXECUTE — not when the job was created, and not in PLAN.',
+            why: 'PLAN only chose the Stage (the filename). EXECUTE is where building happens, so the plan file is built like any other artifact — then it persists across every future cycle and activation, getting smarter each run.',
+            hood: 'The file is written with YAML frontmatter (<code>total_cycles:</code> for <code>.md</code>, a <code>cycles:</code> list for <code>.yaml</code>). After cycle 1, EXECUTE can no longer touch it — ownership sits with PLAN, which reads it at the start of every later cycle.'
+        },
+        'e-advance': {
+            title: '≥ 100 points → advance', tag: 'gate',
+            what: 'Moving on from EXECUTE is gated by points — the job must do ≥ 100 points of building work — completely separately from the plan file.',
+            why: 'This is the card\'s key surprise: write-permission and phase-advance are TWO different gates. Whether you CAN write the plan file (a tool check) has nothing to do with WHEN you may leave EXECUTE (a points check). Don\'t conflate them.',
+            hood: '<code>execute-commit.sh</code> blocks the <code>--force</code> advance unless the phase has accumulated ≥ 100 points. The plan file\'s existence is not part of this check — a job can advance whether or not it wrote one.'
         }
     };
 
@@ -994,6 +1020,31 @@
             ],
             backnote: { x:46, y:498, text:'← from OBSERVE: it now knows its name + goal' },
             nextnote: { x:626, y:500, text:'A Stage chosen → into EXECUTE' }
+        },
+
+        '3,0': {
+            kind: 'seq', step: 4,
+            eyebrow: 'The job\'s life · step 4',
+            title: 'EXECUTE — build, in scope',
+            sub: 'What you\'re looking at: the one phase that can actually write things. It builds the work — and, on a planned job, this is where the plan file is born.',
+            boxes: [
+                { id:'e-build',    x:44,  y:230, w:208, h:102, tag:'action', t:'Build in scope',   s:'the only phase with full write' },
+                { id:'e-perm',     x:320, y:92,  w:228, h:96,  tag:'gate',   t:'write-permission?', s:'scope + cycle 1 + not-yet-there' },
+                { id:'e-planfile', x:320, y:372, w:228, h:96,  tag:'object', t:'the plan file is born', s:'Stage 2/3 · written in cycle 1' },
+                { id:'e-advance',  x:624, y:230, w:236, h:102, tag:'gate',   t:'≥ 100 points → advance', s:'points move the phase, not the file' }
+            ],
+            edges: [
+                { from:'e-build', to:'e-perm',     kind:'soft', label:'write it?' },
+                { from:'e-perm',  to:'e-planfile', kind:'hard', label:'cycle 1 only' },
+                { from:'e-build', to:'e-advance',  kind:'hard', label:'to move on' }
+            ],
+            stickies: [
+                { x:300, y:34,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.' },
+                { x:36,  y:392, text:'EXECUTE is the <b>only</b> phase with full write — but only inside the job\'s declared <b>scope</b>.' },
+                { x:566, y:388, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. PLAN owns it.' }
+            ],
+            backnote: { x:46, y:500, text:'← from PLAN: the Stage is locked in' },
+            nextnote: { x:646, y:500, text:'Built → into VERIFY' }
         }
     };
 
@@ -1010,7 +1061,7 @@
         '</div>';
 
     /* navigation order: which cells exist + their sequence step */
-    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1, '2,0':1 };
+    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1, '2,0':1, '3,0':1 };
     /* total numbered steps in the main ←→ sequence (kind:'seq'); drives the
        step indicator + dots. Computed so adding sequence cards auto-scales. */
     var SEQ_TOTAL = Object.keys(CARDS).filter(function (k) { return CARDS[k].kind === 'seq'; }).length;
