@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<!-- Version: v1.0.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Job's Life — an interactive map of a seed-agent job | Hadosh Academy</title>
+    <meta name="description" content="A full-screen, fixed, ELK-laid-out map of how a seed-agent job is born, grows, and completes. Follow one job through the OPEVC ring; drill into birth, accumulation, spawning, dependencies, the Stage decision, the plan file, the VERIFY back-edge, and completion. One job. One ID. Many lanes.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b6/explore/job-flow.html">
+    <meta property="og:title" content="The Job's Life — an interactive map of a seed-agent job | Hadosh Academy">
+    <meta property="og:description" content="A full-screen, fixed, ELK-laid-out map of how a seed-agent job is born, grows, and completes. One job. One ID. Many lanes.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b6/explore/job-flow.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Job's Life — an interactive map of a seed-agent job | Hadosh Academy">
+    <meta name="twitter:description" content="How a seed-agent job is born, grows, and completes. One job. One ID. Many lanes.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ====================================================================
+           DESIGN TOKENS — Hadosh dark-glass, indigo/violet (kept from hook-flow).
+           ==================================================================== */
+        :root {
+            --bg: #050507;
+            --primary: #6366f1;
+            --accent: #8b5cf6;
+            --text-main: #e9e9f2;
+            --text-muted: #b2b2c6;
+            --border: rgba(255, 255, 255, 0.10);
+            --glass: rgba(255, 255, 255, 0.045);
+            --glass-hover: rgba(255, 255, 255, 0.085);
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --accent-glow: rgba(139, 92, 246, 0.35);
+            --warn: #f5b656;
+            --warn-glow: rgba(245, 182, 86, 0.35);
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: var(--bg);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ----- minimal chrome: back-to-essay pill ----- */
+        .chrome-back {
+            position: fixed; top: 1.5rem; right: 1.6rem; z-index: 1500;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 0.9rem; border-radius: 999px;
+            background: rgba(5, 5, 7, 0.6); border: 1px solid var(--border);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: var(--text-muted); text-decoration: none; font-size: 0.82rem;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .chrome-back:hover, .chrome-back:focus-visible {
+            color: var(--text-main); border-color: var(--primary); outline: none;
+        }
+
+        /* ====================================================================
+           JOB MAP — ELK render engine styles (forked from hook-flow v3.6.1)
+           Nodes are HTML glass boxes inside SVG <foreignObject>; edges are SVG
+           <path>. Node FILL is driven by data-owner LANE (meta.lane).
+           ==================================================================== */
+
+        .hm-root {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            background:
+                radial-gradient(1200px 800px at 70% -10%, rgba(99,102,241,0.10), transparent 60%),
+                radial-gradient(1000px 700px at 10% 110%, rgba(139,92,246,0.10), transparent 60%),
+                #050507;
+            color: #e7e7ee;
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow: hidden;
+        }
+
+        .hm-topbar {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            background: rgba(10,10,16,0.45);
+            z-index: 5;
+        }
+        .hm-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            color: #b9b9c8;
+        }
+        .hm-crumb {
+            padding: 4px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background .18s, color .18s;
+        }
+        .hm-crumb:hover { background: rgba(255,255,255,0.06); color: #fff; }
+        .hm-crumb.is-current { color: #fff; cursor: default; }
+        .hm-crumb.is-current:hover { background: transparent; }
+        .hm-crumb-sep { opacity: .4; font-size: 12px; }
+
+        .hm-back {
+            margin-left: auto;
+            display: none;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            font-size: 13px;
+            color: #d7d7e2;
+            border: 1px solid rgba(139,92,246,0.35);
+            border-radius: 999px;
+            background: rgba(99,102,241,0.10);
+            cursor: pointer;
+            transition: background .18s, border-color .18s, transform .12s;
+        }
+        .hm-back:hover { background: rgba(99,102,241,0.22); border-color: rgba(139,92,246,0.6); }
+        .hm-back:active { transform: scale(0.97); }
+        .hm-root.is-drill .hm-back { display: inline-flex; }
+
+        .hm-tagline {
+            font-size: 12px; font-style: italic; color: #8d8da0;
+            margin-left: 6px;
+        }
+
+        .hm-viewport {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hm-stage {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            opacity: 1;
+            transition: opacity .22s ease;
+        }
+        .hm-stage.is-fading { opacity: 0; }
+
+        /* ---- Glass node base (lane fill applied via .hm-node--lane-<lane>) ---- */
+        .hm-node {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 3px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(99,102,241,0.30);
+            background:
+                linear-gradient(155deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 42%),
+                linear-gradient(160deg, rgba(38,38,58,0.92), rgba(20,20,32,0.92));
+            box-shadow:
+                0 6px 24px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.07);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            transition: border-color .16s, box-shadow .16s, transform .12s, background .16s;
+        }
+        .hm-node:hover {
+            border-color: rgba(139,92,246,0.55);
+            box-shadow: 0 10px 30px rgba(99,102,241,0.25);
+            transform: translateY(-1px);
+        }
+        .hm-node__title {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #f2f2f8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .hm-node__sub {
+            font-size: 10.5px;
+            line-height: 1.25;
+            color: #bdbdd0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .hm-node__badge {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            font-size: 9.5px;
+            font-weight: 600;
+            padding: 1px 7px;
+            border-radius: 999px;
+            background: rgba(139,92,246,0.25);
+            border: 1px solid rgba(139,92,246,0.45);
+            color: #d9cdff;
+        }
+
+        /* ---- LANE FILLS (data-owner colors) — left border accent + tinted glass.
+               Each lane is a distinct hue; the legend mirrors these exactly. ---- */
+        .hm-node--lane-core      { border-left: 4px solid #c9ccf2; background: linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(44,44,60,0.94), rgba(26,26,40,0.94)); }
+        .hm-node--lane-job_core  { border-left: 4px solid #6366f1; background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(30,32,66,0.94), rgba(18,19,42,0.94)); }
+        .hm-node--lane-phasic    { border-left: 4px solid #8b5cf6; background: linear-gradient(155deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(46,32,72,0.95), rgba(28,20,48,0.95)); }
+        .hm-node--lane-plan      { border-left: 4px solid #38bdf8; background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(16,40,56,0.94), rgba(10,26,38,0.94)); }
+        .hm-node--lane-tracker   { border-left: 4px solid #fbbf24; background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(50,40,16,0.94), rgba(32,26,10,0.94)); }
+        .hm-node--lane-condense  { border-left: 4px solid #34d399; background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(16,46,38,0.94), rgba(10,30,26,0.94)); }
+        .hm-node--lane-summary   { border-left: 4px solid #f472b6; background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(54,24,42,0.94), rgba(36,16,28,0.94)); }
+        .hm-node--lane-footer    { border-left: 4px solid #94a3b8; background: linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0) 42%), linear-gradient(160deg, rgba(30,34,42,0.92), rgba(18,21,28,0.92)); }
+
+        /* ---- Node shape variants layered ON TOP of the lane fill ---- */
+        .hm-node--hub {
+            box-shadow:
+                0 8px 30px rgba(139,92,246,0.30),
+                inset 0 1px 0 rgba(255,255,255,0.10);
+        }
+        .hm-node--hub .hm-node__title { font-size: 14px; letter-spacing: 0.02em; }
+        .hm-node--in .hm-node__title { letter-spacing: 0.01em; }
+        .hm-node--exit { box-shadow: 0 6px 22px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06); }
+
+        /* Collapsed compound "pills" — obvious BUTTON affordance, badged. */
+        .hm-node--pill {
+            justify-content: flex-start;
+            gap: 2px;
+            padding: 10px 14px 26px;
+            box-shadow:
+                0 8px 28px rgba(99,102,241,0.30),
+                inset 0 1px 0 rgba(255,255,255,0.10);
+        }
+        .hm-node--pill .hm-node__title { font-size: 14px; }
+        .hm-node--pill .hm-node__sub { white-space: normal; }
+        .hm-node--pill::after {
+            content: '\2935  drill in';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: 4px 0 5px;
+            text-align: center;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #d9cdff;
+            background: rgba(139,92,246,0.20);
+            border-top: 1px solid rgba(139,92,246,0.30);
+        }
+        .hm-node--pill:hover {
+            border-color: rgba(167,139,250,0.90);
+            transform: translateY(-2px);
+        }
+        .hm-node--pill:hover::after { background: rgba(139,92,246,0.34); }
+        .hm-node--pill .hm-node__badge { top: 8px; right: 10px; }
+
+        /* ---- Step badges on the ring nodes (reading order) ---- */
+        .hm-step {
+            position: absolute;
+            top: -10px; left: -10px;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700;
+            color: #fff;
+            background: linear-gradient(150deg, #6366f1, #8b5cf6);
+            border: 1.5px solid rgba(255,255,255,0.55);
+            box-shadow: 0 3px 10px rgba(99,102,241,0.55);
+            z-index: 3;
+        }
+
+        /* Secondary / out-of-band — dimmer, recedes from the spine */
+        .hm-node--secondary {
+            opacity: 0.9;
+        }
+        .hm-node--secondary:hover { opacity: 1; border-color: rgba(139,92,246,0.55); }
+        .hm-node--secondary .hm-node__title { font-size: 11.5px; font-weight: 500; color: #d6d6e2; }
+        .hm-node--secondary .hm-node__sub { font-size: 10px; }
+
+        /* ---- CONTRADICTION (⚠ "Blog vs code") badge on a node ---- */
+        .hm-warn {
+            position: absolute;
+            top: -9px; right: -9px;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; line-height: 1;
+            color: #1a1206;
+            background: linear-gradient(150deg, #f5c66a, #f5a623);
+            border: 1.5px solid rgba(255,255,255,0.6);
+            box-shadow: 0 3px 10px var(--warn-glow);
+            z-index: 4;
+        }
+        .hm-node:has(.hm-warn) { border-color: rgba(245,182,86,0.55); }
+
+        /* Group container */
+        .hm-grouplabel {
+            font-size: 10px;
+            fill: #9a9ab0;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+        .hm-group-rect {
+            fill: rgba(120,120,180,0.035);
+            stroke: rgba(139,92,246,0.28);
+            stroke-width: 1;
+            rx: 14;
+        }
+
+        /* ---- Edges: HARD = solid · SOFT = dashed. Both share the indigo hue;
+               the SOLID/DASHED distinction is the legend's key signal. ---- */
+        .hm-edge {
+            fill: none;
+            stroke: rgba(200,204,236,0.85);
+            stroke-width: 2.3;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+        }
+        .hm-edge--hard { stroke: rgba(200,204,236,0.88); stroke-width: 2.4; }
+        .hm-edge--soft { stroke: rgba(160,166,224,0.62); stroke-width: 1.9; stroke-dasharray: 6 6; }
+        .hm-edge-label-bg {
+            fill: rgba(9,9,15,0.94);
+            stroke: rgba(139,92,246,0.30);
+            stroke-width: 1;
+        }
+        .hm-edge-label {
+            fill: #dcdcec;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        /* ---- Portal chips (cross-view exits) ---- */
+        .hm-portal { cursor: pointer; }
+        .hm-portal__bg {
+            fill: rgba(99,102,241,0.16);
+            stroke: rgba(139,92,246,0.55);
+            stroke-width: 1.2;
+            rx: 999;
+        }
+        .hm-portal:hover .hm-portal__bg { fill: rgba(99,102,241,0.30); }
+        .hm-portal__txt {
+            fill: #d4caff;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* ====================================================================
+           INFO PANEL — bottom-left, 5 plain fields + builder tier + warn tier.
+           ==================================================================== */
+        .info-panel {
+            position: fixed; left: 1.6rem; bottom: 1.4rem; z-index: 2000;
+            width: 360px; max-width: calc(100vw - 3.2rem); max-height: 66vh; overflow-y: auto;
+            background: rgba(10, 10, 16, 0.82); border: 1px solid var(--border); border-radius: 18px;
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+            padding: 1.3rem 1.4rem 1.4rem;
+            transform: translateY(8px); opacity: 0; pointer-events: none;
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+        .info-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .info-kind {
+            display: inline-block; font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase;
+            color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .info-panel h2 { margin: 0 0 0.5rem; font-size: 1.18rem; line-height: 1.2; }
+        .info-lane-tag {
+            display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.85rem;
+            font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+            color: var(--text-muted); background: var(--glass); border: 1px solid var(--border);
+            border-radius: 999px; padding: 0.2rem 0.6rem;
+        }
+        .info-lane-dot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+        .info-field { margin-bottom: 0.85rem; }
+        .info-field:last-child { margin-bottom: 0; }
+        .info-field-label {
+            font-size: 0.64rem; letter-spacing: 0.09em; text-transform: uppercase;
+            color: var(--text-muted); font-weight: 700; margin-bottom: 0.22rem;
+        }
+        .info-field-body { font-size: 0.88rem; line-height: 1.55; color: var(--text-main); }
+
+        /* ---- FOR BUILDERS tier ---- */
+        .info-builder {
+            margin-top: 1rem; padding-top: 0.9rem;
+            border-top: 1px dashed rgba(139,92,246,0.40);
+        }
+        .info-builder-label {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+            font-weight: 800; color: var(--primary);
+            margin-bottom: 0.45rem;
+        }
+        .info-builder-label::before { content: '\232C'; font-size: 0.78rem; opacity: 0.85; }
+        .info-builder-body {
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+            font-size: 0.745rem; line-height: 1.62; letter-spacing: -0.01em;
+            color: #c9c6e6;
+            background: linear-gradient(160deg, rgba(99,102,241,0.10), rgba(139,92,246,0.05));
+            border: 1px solid rgba(99,102,241,0.22);
+            border-radius: 11px;
+            padding: 0.7rem 0.8rem;
+        }
+
+        /* ---- BLOG vs CODE (contradiction) tier — warning accent ---- */
+        .info-warn {
+            margin-top: 1rem; padding-top: 0.9rem;
+            border-top: 1px dashed rgba(245,182,86,0.50);
+        }
+        .info-warn-label {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+            font-weight: 800; color: var(--warn);
+            margin-bottom: 0.45rem;
+        }
+        .info-warn-label::before { content: '\26A0'; font-size: 0.82rem; }
+        .info-warn-body {
+            font-size: 0.81rem; line-height: 1.58;
+            color: #f0e2c9;
+            background: linear-gradient(160deg, rgba(245,182,86,0.12), rgba(245,166,35,0.05));
+            border: 1px solid rgba(245,182,86,0.30);
+            border-radius: 11px;
+            padding: 0.7rem 0.8rem;
+        }
+
+        .info-close {
+            position: absolute; top: 0.85rem; right: 0.85rem; width: 28px; height: 28px;
+            border-radius: 50%; border: 1px solid var(--border); background: var(--glass);
+            color: var(--text-main); cursor: pointer; font-size: 1.05rem; line-height: 1;
+            display: flex; align-items: center; justify-content: center; transition: all 0.18s ease;
+        }
+        .info-close:hover, .info-close:focus-visible { border-color: var(--accent); background: var(--glass-hover); outline: none; }
+
+        /* ---- Keyboard focus ring for interactive graph nodes (WCAG 2.1.1) ---- */
+        .hm-node:focus-visible {
+            outline: none;
+            box-shadow: inset 0 0 0 3px var(--accent, #8b5cf6),
+                        inset 0 0 0 7px rgba(139, 92, 246, 0.32);
+        }
+        .hm-portal:focus-visible { outline: none; }
+        .hm-portal:focus-visible .hm-portal__bg {
+            fill: rgba(99, 102, 241, 0.34);
+            stroke: var(--accent, #8b5cf6);
+            stroke-width: 2.5;
+        }
+
+        /* ====================================================================
+           LEARNING LAYER — legend · orientation · tooltip · caption · zoom.
+           ==================================================================== */
+
+        .hm-caption {
+            position: fixed;
+            left: 50%; bottom: 1.3rem;
+            transform: translateX(-50%);
+            z-index: 1500;
+            max-width: min(660px, calc(100vw - 2rem));
+            text-align: center;
+            padding: 0.55rem 1.1rem;
+            border-radius: 14px;
+            background: rgba(10,10,16,0.66);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            font-size: 0.84rem; line-height: 1.45; color: #cfcfe0;
+            box-shadow: 0 12px 34px rgba(0,0,0,0.45);
+            pointer-events: none;
+            transition: opacity .25s ease;
+        }
+        .hm-caption b { color: #efeaff; font-weight: 700; }
+        .hm-caption em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+        /* ---- Lane / edge legend: glass, bottom-left, collapsible ---- */
+        .hm-legend {
+            position: fixed;
+            bottom: 1.6rem; left: 1.6rem;
+            z-index: 1500;
+            width: 274px; max-width: calc(100vw - 3.2rem);
+            background: rgba(10,10,16,0.72);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+            overflow: hidden;
+        }
+        .hm-legend__head {
+            appearance: none; width: 100%; cursor: pointer; font-family: inherit;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 0.5rem; padding: 0.7rem 0.95rem; text-align: left;
+            background: transparent; border: none; color: var(--text-main);
+            font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .hm-legend__head:hover, .hm-legend__head:focus-visible { color: #fff; outline: none; }
+        .hm-legend__chev { font-size: 0.7rem; color: var(--text-muted); transition: transform .22s ease; }
+        .hm-legend.is-collapsed .hm-legend__chev { transform: rotate(-90deg); }
+        .hm-legend__body {
+            padding: 0.2rem 0.95rem 0.85rem;
+            display: flex; flex-direction: column; gap: 0.5rem;
+            max-height: 64vh; overflow-y: auto;
+        }
+        .hm-legend.is-collapsed .hm-legend__body { display: none; }
+        .hm-legend__sectlabel {
+            font-size: 0.6rem; letter-spacing: 0.11em; text-transform: uppercase;
+            color: var(--text-muted); font-weight: 700; margin: 0.35rem 0 0.05rem; opacity: 0.82;
+        }
+        .hm-legend__row { display: flex; align-items: flex-start; gap: 0.55rem; }
+        .hm-legend__sw {
+            flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px;
+            border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.18);
+        }
+        .hm-legend__sw--lane { width: 18px; height: 18px; border-left-width: 4px; border-left-style: solid; }
+        .hm-legend__txt { font-size: 0.74rem; line-height: 1.35; color: var(--text-muted); }
+        .hm-legend__txt b { color: var(--text-main); font-weight: 600; display: block; font-size: 0.76rem; }
+        /* edge swatches: a small line sample */
+        .hm-legend__edge {
+            flex: 0 0 auto; width: 26px; height: 18px; margin-top: 1px; position: relative;
+        }
+        .hm-legend__edge::before {
+            content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 0;
+            border-top: 2.4px solid rgba(200,204,236,0.88);
+        }
+        .hm-legend__edge--soft::before {
+            border-top: 2px dashed rgba(160,166,224,0.7);
+        }
+        .hm-legend__warn {
+            flex: 0 0 auto; width: 18px; height: 18px; margin-top: 1px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 11px; color: #1a1206;
+            background: linear-gradient(150deg, #f5c66a, #f5a623);
+            border: 1.5px solid rgba(255,255,255,0.55);
+        }
+
+        /* ---- Background explainer note (journey view only) ---- */
+        .hm-bgnote {
+            position: absolute;
+            top: 4.4rem;
+            left: 1.7rem;
+            z-index: 1;
+            width: 210px;
+            margin: 0;
+            font-size: 0.74rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+            opacity: 0.8;
+            pointer-events: none;
+            user-select: text;
+        }
+        .hm-bgnote.is-hidden { display: none; }
+        @media (max-width: 820px) { .hm-bgnote { display: none; } }
+
+        /* ---- Hover tooltip ---- */
+        .hm-tooltip {
+            position: fixed; z-index: 2600;
+            max-width: 270px;
+            padding: 0.55rem 0.75rem;
+            border-radius: 12px;
+            background: rgba(8,8,13,0.94);
+            border: 1px solid rgba(139,92,246,0.40);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            opacity: 0; pointer-events: none;
+            transform: translateY(4px);
+            transition: opacity .14s ease, transform .14s ease;
+        }
+        .hm-tooltip.is-on { opacity: 1; transform: translateY(0); }
+        .hm-tooltip__t { font-size: 0.8rem; font-weight: 700; color: #f1eeff; margin-bottom: 0.2rem; }
+        .hm-tooltip__w { font-size: 0.74rem; line-height: 1.4; color: #b6b6c8; }
+        .hm-tooltip__warn { margin-top: 0.35rem; font-size: 0.66rem; letter-spacing: 0.02em; color: var(--warn); font-weight: 700; }
+        .hm-tooltip__hint { margin-top: 0.35rem; font-size: 0.64rem; letter-spacing: 0.04em; color: var(--accent); font-weight: 600; }
+
+        /* ---- Zoom controls ---- */
+        .hm-zoom {
+            position: fixed; right: 1.6rem; bottom: 1.4rem; z-index: 1500;
+            display: flex; flex-direction: column; gap: 0.4rem;
+        }
+        .hm-zoom button {
+            appearance: none; cursor: pointer; font-family: inherit;
+            width: 38px; height: 38px; border-radius: 11px;
+            background: rgba(10,10,16,0.72); border: 1px solid var(--border);
+            color: var(--text-main); font-size: 1.1rem; line-height: 1;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color .16s ease, background .16s ease, transform .1s ease;
+        }
+        .hm-zoom button:hover, .hm-zoom button:focus-visible {
+            border-color: var(--primary); background: var(--glass-hover); outline: none;
+        }
+        .hm-zoom button:active { transform: scale(0.94); }
+        .hm-zoom button.hm-zoom__reset { font-size: 0.78rem; font-weight: 600; }
+
+        .hm-stage { cursor: grab; transform-origin: 0 0; }
+        .hm-stage.is-panning { cursor: grabbing; }
+
+        /* ---- Persistent help "?" button ---- */
+        .hm-help {
+            position: fixed; top: 1.5rem; right: 12.5rem; z-index: 1500;
+            width: 34px; height: 34px; border-radius: 50%;
+            appearance: none; cursor: pointer; font-family: inherit;
+            background: rgba(5,5,7,0.6); border: 1px solid var(--border);
+            color: var(--text-muted); font-size: 0.95rem; font-weight: 700;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            transition: color .18s ease, border-color .18s ease;
+        }
+        .hm-help:hover, .hm-help:focus-visible { color: var(--text-main); border-color: var(--primary); outline: none; }
+
+        /* ---- Orientation overlay ---- */
+        .hm-orient {
+            position: fixed; inset: 0; z-index: 4000;
+            display: none; align-items: center; justify-content: center;
+            padding: 1.5rem;
+            background: rgba(3,3,6,0.66);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        }
+        .hm-orient.is-open { display: flex; }
+        .hm-orient__card {
+            width: min(560px, 94vw); max-height: 88vh; overflow-y: auto;
+            background: rgba(12,12,20,0.94);
+            border: 1px solid var(--border); border-radius: 22px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+            padding: 1.8rem 1.9rem 1.6rem;
+        }
+        .hm-orient__kicker {
+            font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .hm-orient__card h2 { margin: 0 0 1rem; font-size: 1.5rem; line-height: 1.15; }
+        .hm-orient__lead { font-size: 0.96rem; line-height: 1.55; color: var(--text-main); margin: 0 0 1.1rem; }
+        .hm-orient__lead b { color: #efeaff; }
+        .hm-orient__steps { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+        .hm-orient__steps li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.88rem; line-height: 1.45; color: var(--text-muted); }
+        .hm-orient__steps li b { color: var(--text-main); }
+        .hm-orient__num {
+            flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.78rem; font-weight: 700; color: #fff;
+            background: linear-gradient(150deg, #6366f1, #8b5cf6);
+            box-shadow: 0 3px 10px rgba(99,102,241,0.45);
+        }
+        .hm-orient__thesis {
+            font-style: italic; color: var(--accent); font-weight: 600;
+            font-size: 0.92rem; text-align: center; margin: 0 0 1.3rem;
+        }
+        .hm-orient__go {
+            appearance: none; cursor: pointer; font-family: inherit; width: 100%;
+            padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.92rem; font-weight: 700;
+            color: #fff; border: 1px solid rgba(139,92,246,0.55);
+            background: linear-gradient(150deg, rgba(99,102,241,0.9), rgba(139,92,246,0.9));
+            transition: transform .1s ease, box-shadow .18s ease;
+        }
+        .hm-orient__go:hover, .hm-orient__go:focus-visible {
+            box-shadow: 0 10px 26px rgba(99,102,241,0.4); outline: none; transform: translateY(-1px);
+        }
+
+        /* ---- Loading skeleton ---- */
+        .hm-skeleton {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 18px;
+            color: #9a9ab0;
+        }
+        .hm-skeleton__spinner {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            border: 3px solid rgba(139,92,246,0.18);
+            border-top-color: rgba(167,139,250,0.85);
+            animation: hm-spin 0.9s linear infinite;
+        }
+        .hm-skeleton__txt { font-size: 13px; letter-spacing: 0.04em; }
+        @keyframes hm-spin { to { transform: rotate(360deg); } }
+        .hm-skeleton.is-hidden { display: none; }
+
+        .hm-error {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 40px;
+            color: #f4a8a8; font-size: 14px; line-height: 1.5;
+        }
+
+        /* ============================================================
+           MOBILE (<= 820px)
+           ============================================================ */
+        @media (max-width: 820px) {
+            .hm-viewport { padding: 12px; }
+            .hm-stage { max-height: 100%; }
+
+            .hm-topbar { padding: 10px 14px; }
+            .hm-breadcrumb { font-size: 12px; }
+            .hm-tagline { display: none; }
+
+            .info-panel {
+                left: 0; right: 0; bottom: 0;
+                width: 100%; max-width: 100%;
+                border-radius: 18px 18px 0 0;
+                border-bottom: none;
+                transform: translateY(100%);
+            }
+            .info-panel.open { transform: translateY(0); }
+
+            .hm-legend { top: auto; bottom: 5.2rem; left: 0.8rem; width: 220px; }
+            .hm-caption { display: none; }
+            .hm-zoom { right: 0.8rem; bottom: 0.9rem; }
+            .hm-help { right: 0.9rem; top: 1.1rem; }
+            .hm-tooltip { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../06_1-phasic-foundation.html" class="chrome-back" id="chrome-up" aria-label="Back to Essay 6.1">&larr; Back to Essay 6.1</a>
+
+    <!-- persistent help button — re-opens the orientation card -->
+    <button class="hm-help" id="hm-help" type="button" aria-label="How to read this map" title="How to read this map">?</button>
+
+    <!-- engine mounts the topbar, viewport, info panel + skeleton into here -->
+    <div class="hm-root"></div>
+
+    <!-- ====================================================================
+         LEARNING LAYER — lane/edge legend · caption · tooltip · zoom · orient.
+         ==================================================================== -->
+
+    <!-- Lane + edge legend (collapsible). Lane rows are populated by the engine
+         from HM.JOB.LANES so the colors never drift from the model. -->
+    <aside class="hm-legend is-collapsed" id="hm-legend" aria-label="Map legend">
+        <button class="hm-legend__head" id="hm-legend-head" type="button" aria-expanded="false" aria-controls="hm-legend-body">
+            <span>What the colors mean</span>
+            <span class="hm-legend__chev" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="hm-legend__body" id="hm-legend-body">
+            <div class="hm-legend__sectlabel">Who owns the data (lane)</div>
+            <div id="hm-legend-lanes"></div>
+            <div class="hm-legend__sectlabel">Edges</div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__edge" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Hard edge</b>a code-enforced gate — solid line</span>
+            </div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__edge hm-legend__edge--soft" aria-hidden="true"></span>
+                <span class="hm-legend__txt"><b>Soft edge</b>coaching, permission, or lazy side-feed — dashed</span>
+            </div>
+            <div class="hm-legend__sectlabel">Honesty marker</div>
+            <div class="hm-legend__row">
+                <span class="hm-legend__warn" aria-hidden="true">&#9888;</span>
+                <span class="hm-legend__txt"><b>Blog vs code</b>where the essays and the prototype disagree — click the node</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Teaching caption -->
+    <div class="hm-caption" id="hm-caption" aria-live="polite"></div>
+
+    <!-- Hover tooltip -->
+    <div class="hm-tooltip" id="hm-tooltip" role="status" aria-hidden="true">
+        <div class="hm-tooltip__t" id="hm-tooltip-t"></div>
+        <div class="hm-tooltip__w" id="hm-tooltip-w"></div>
+        <div class="hm-tooltip__warn" id="hm-tooltip-warn" style="display:none">&#9888; blog vs code &mdash; click to read</div>
+        <div class="hm-tooltip__hint">click for the full story</div>
+    </div>
+
+    <!-- Zoom controls -->
+    <div class="hm-zoom" id="hm-zoom" aria-label="Zoom controls">
+        <button type="button" id="hm-zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+        <button type="button" id="hm-zoom-out" aria-label="Zoom out" title="Zoom out">&minus;</button>
+        <button type="button" class="hm-zoom__reset" id="hm-zoom-reset" aria-label="Reset view" title="Reset view (Esc)">fit</button>
+    </div>
+
+    <!-- Orientation overlay -->
+    <div class="hm-orient" id="hm-orient" role="dialog" aria-modal="true" aria-labelledby="hm-orient-title">
+        <div class="hm-orient__card">
+            <div class="hm-orient__kicker">How to read this map</div>
+            <h2 id="hm-orient-title">This is the life of one job.</h2>
+            <p class="hm-orient__lead">A single prompt <b>births</b> a job. It laps the <b>OPEVC ring</b> &mdash; observe, plan, execute, verify, condense &mdash; can <b>spawn</b> follow-up work and <b>wait on dependencies</b>, and only a <b>[JOB-COMPLETE]</b> answer lets it leave. The job you picture as one thing is really <b>one ID scattered across many plugin files</b>; each colored lane is a different owner.</p>
+            <ol class="hm-orient__steps">
+                <li><span class="hm-orient__num">1</span><span><b>Follow the numbered ring</b> &mdash; that is the reading order through the OPEVC cycle.</span></li>
+                <li><span class="hm-orient__num">2</span><span><b>Color = data owner.</b> <b>Solid</b> arrows are code-enforced gates; <b>dashed</b> arrows are coaching or permission.</span></li>
+                <li><span class="hm-orient__num">3</span><span><b>Click a glowing room</b> (Birth, Spawn, the Stage decision&hellip;) to step inside its sub-flow.</span></li>
+                <li><span class="hm-orient__num">4</span><span><b>A &#9888; badge</b> marks where the essays and the live prototype disagree &mdash; click it for both sides.</span></li>
+            </ol>
+            <p class="hm-orient__thesis">One job. One ID. Many lanes.</p>
+            <button class="hm-orient__go" id="hm-orient-go" type="button">Explore the journey &rarr;</button>
+        </div>
+    </div>
+
+    <!-- info panel (engine populates #info-content) -->
+    <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Node detail">
+        <button class="info-close" id="info-close" aria-label="Close detail panel">&times;</button>
+        <div id="info-content"></div>
+    </aside>
+
+    <!-- ELK (local, no CDN, no build) MUST load before the model + engine -->
+    <script src="../../../js/vendor/elk.bundled.js"></script>
+
+    <!-- ============================================================
+         MODEL — HM.JOB: the Job-Object Lifecycle data model. Conforms
+         to the ENGINE contract via a bridge at the foot of this script
+         (HM.buildGraph / HM.CAPTIONS / HM.NODE_INFO / HM.LANES / hashView
+         alias map). Forked from the hook-flow model conventions.
+         ============================================================ -->
+    <script>
+/* ============================================================================
+ * HM.JOB — Job-Object Lifecycle explorable data model.
+ * FORKS the hook-flow.html engine: identical node()/edge()/group()/shook()
+ * builder conventions; VIEWS map viewId -> {children, edges}; STAGE_ALIAS maps
+ * the 11 ?stage= anchors to view ids; NODE_INFO has the 5-tier prose shape;
+ * CAPTIONS one teaching line per view.
+ *
+ * LANE OWNERS (node.meta.lane — drives color):
+ *   core         · the OPEVC ring spine (idle/OBSERVE/PLAN/EXECUTE/VERIFY/CONDENSE)
+ *   job_core     · base record (id,name,objective,status,focused,user_interactions,depends_on,user_approval…)
+ *   phasic       · phasic_system mirror ({id,current_phase,cycle})
+ *   plan         · phase_plan ext (plan_file,plan_entries,multiplier,extension_*)
+ *   tracker      · phase_observe/execute/verify trackers (points,multiplier,marker_counts,plan_edits)
+ *   condense     · phase_condense (pending_jobs_created, the 7-step waterfall)
+ *   summary      · interaction_summary mirror (last_summarized_index,summary_needed,summary_chain)
+ *   footer       · CLAUDE.md four-footer working-memory layer (marker TEXT)
+ *
+ * EDGE KIND: "hard" = solid (code-enforced gate) · "soft" = dashed (coaching/voice/perm).
+ * ============================================================================ */
+(function () {
+    "use strict";
+    var HM = (window.HookMap = window.HookMap || {});
+
+    /* ---- sizing (mirrors hook-flow) ---- */
+    var W_HOOK = 208, H_HOOK = 70;
+    var W_STAGE = 192, H_STAGE = 66;
+    var W_PILL = 244, H_PILL = 104;
+    var W_PORTAL = 222, H_PORTAL = 58;
+    var W_SHOOK = 188, H_SHOOK = 56;
+
+    function node(id, w, h, meta) { return { id: id, width: w, height: h, meta: meta }; }
+    function edge(id, from, to, kind, label) {
+        var e = { id: id, sources: [from], targets: [to], meta: { kind: kind || "hard" } };
+        if (label) e.meta.label = label;
+        return e;
+    }
+    var GROUP_OPTS = {
+        'elk.algorithm': 'layered', 'elk.direction': 'DOWN',
+        'elk.padding': '[top=28,left=12,bottom=12,right=12]',
+        'elk.spacing.nodeNode': '10',
+        'elk.layered.spacing.nodeNodeBetweenLayers': '10'
+    };
+    function group(id, title, kids) { return { id: id, meta: { type: "group", title: title }, layoutOptions: GROUP_OPTS, children: kids }; }
+    function shook(id, title, sub, lane) { return node(id, W_SHOOK, H_SHOOK, { type: "secondary", title: title, sub: sub, lane: lane || "footer" }); }
+    function portal(id, to, label) { return node(id, W_PORTAL, H_PORTAL, { type: "portal", portalTo: to, portalLabel: label, lane: "core" }); }
+
+    var SPREAD = {
+        'elk.layered.spacing.nodeNodeBetweenLayers': '70',
+        'elk.spacing.nodeNode': '50'
+    };
+
+    /* ========================================================================
+     * VIEW: journey — the whole OPEVC ring, birth in-ramp, spawn out-ramp,
+     * dependency route, completion out-ramp. Each ring node + ramp is drillable.
+     * ====================================================================== */
+    function buildJourney() {
+        var children = [
+            // birth in-ramp
+            node("prompt-in", W_STAGE, H_STAGE, { type: "in", title: "First Prompt", sub: "idle seed, no active job", lane: "job_core", step: 1, stage: "birth", drill: "birth" }),
+            node("birth-pill", W_PILL, H_PILL, { type: "pill", title: "Job Birth", sub: "created + activated + focused in one shot", badge: "1 hook", lane: "job_core", stage: "birth", drill: "birth" }),
+
+            // the OPEVC ring
+            node("idle", W_STAGE, H_STAGE, { type: "hub", title: "IDLE", sub: "locked here at birth", lane: "phasic", step: 2 }),
+            node("observe", W_STAGE, H_STAGE, { type: "stage", title: "OBSERVE", sub: "gather · expand objective", lane: "core", step: 3, stage: "cycle1-observe", drill: "stage-decision" }),
+            node("plan", W_STAGE, H_STAGE, { type: "stage", title: "PLAN", sub: "decide the Stage", lane: "core", step: 4, stage: "stage-decision", drill: "stage-decision" }),
+            node("execute", W_STAGE, H_STAGE, { type: "stage", title: "EXECUTE", sub: "build · write plan file", lane: "core", step: 5, stage: "execute-planfile", drill: "execute-planfile" }),
+            node("verify", W_STAGE, H_STAGE, { type: "stage", title: "VERIFY", sub: "test · plan-edit back-edge", lane: "core", step: 6, stage: "verify-backedge", drill: "verify-backedge" }),
+            node("condense", W_STAGE, H_STAGE, { type: "hub", title: "CONDENSE", sub: "the growth organ", lane: "condense", step: 7, stage: "condense-spawn", drill: "spawn" }),
+
+            // drillable ramps off the ring
+            node("accumulate-pill", W_PILL, H_PILL, { type: "pill", title: "Accumulate", sub: "every prompt + answer appends", badge: "record", lane: "job_core", stage: "accumulate", drill: "accumulate" }),
+            node("spawn-pill", W_PILL, H_PILL, { type: "pill", title: "Spawn a Job", sub: "[PENDING-JOB] note → CONDENSE creates", badge: "step 3", lane: "condense", stage: "pending-note", drill: "spawn" }),
+            node("dependency-pill", W_PILL, H_PILL, { type: "pill", title: "Dependency Route", sub: "standalone or dep on a parent", badge: "depends_on[]", lane: "job_core", stage: "dependency", drill: "dependency" }),
+            node("completion-pill", W_PILL, H_PILL, { type: "pill", title: "Completion", sub: "[JOB-COMPLETE] → completed", badge: "last cycle", lane: "job_core", stage: "completion", drill: "completion" }),
+            node("growth-pill", W_PILL, H_PILL, { type: "pill", title: "The Aha: One ID, N Lanes", sub: "the object is fragmented across data.json files", badge: "growth", lane: "phasic", stage: "growth-overview", drill: "growth-overview" })
+        ];
+        var edges = [
+            // birth in-ramp (HARD: only auto-create path)
+            edge("j-prompt-birth", "prompt-in", "birth-pill", "hard", "active_count==0"),
+            edge("j-birth-idle", "birth-pill", "idle", "hard", "phase init"),
+            // the ring (forward advances are HARD: ≥100pts + ≥1 update)
+            edge("j-idle-obs", "idle", "observe", "hard", "advance"),
+            edge("j-obs-plan", "observe", "plan", "hard", "≥100pts"),
+            edge("j-plan-exec", "plan", "execute", "hard", "plan_file set"),
+            edge("j-exec-ver", "execute", "verify", "hard", "≥100pts"),
+            edge("j-ver-cond", "verify", "condense", "hard", "plan untouched"),
+            edge("j-cond-idle", "condense", "idle", "hard", "80% deflation"),
+            // VERIFY plan-edit back-edge (HARD)
+            edge("j-ver-plan", "verify", "plan", "hard", "plan edited → back"),
+            // accumulate runs continuously (soft side-feed off idle)
+            edge("j-acc", "prompt-in", "accumulate-pill", "soft", "appends"),
+            // spawn out-ramp: footer note rests, CONDENSE grants
+            edge("j-spawn", "condense", "spawn-pill", "soft", "step 3 vets"),
+            edge("j-spawn-dep", "spawn-pill", "dependency-pill", "soft", "create / create-dependent"),
+            // dependency-completion gate feeds completion (HARD)
+            edge("j-dep-comp", "dependency-pill", "completion-pill", "hard", "deps must complete"),
+            // completion out-ramp off CONDENSE
+            edge("j-cond-comp", "condense", "completion-pill", "hard", "[JOB-COMPLETE]"),
+            edge("j-comp-idle", "completion-pill", "idle", "hard", "unfocus at idle"),
+            // growth aha hangs off the ring
+            edge("j-growth", "idle", "growth-pill", "soft", "")
+        ];
+        return { id: "root", layoutOptions: SPREAD, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: birth — the first-prompt-effect.
+     * ====================================================================== */
+    function buildBirth() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("b-noprompt", W_STAGE, H_STAGE, { type: "in", title: "Idle Seed", sub: "active_count == 0", lane: "job_core" }),
+            node("b-prompt", W_STAGE, H_STAGE, { type: "in", title: "Real Prompt", sub: "not <task-notification>, not subagent", lane: "footer", stage: "birth" }),
+            node("b-handler", W_HOOK, H_HOOK, { type: "hook", title: "prompt-handler.sh", sub: "UserPromptSubmit · HOOK_MODE", lane: "job_core", stage: "birth" }),
+            node("b-createactive", W_HOOK, H_HOOK, { type: "hook", title: "job.sh create-active", sub: "the only auto-create path", lane: "job_core", stage: "birth" }),
+            node("b-record", W_STAGE, H_STAGE, { type: "stage", title: "Job Record", sub: "name:\"\" · objective:\"\" · status:active", lane: "job_core", stage: "birth" }),
+            node("b-focused", W_STAGE, H_STAGE, { type: "stage", title: "focused:true", sub: "the one focused job", lane: "job_core" }),
+            node("b-seed", W_STAGE, H_STAGE, { type: "stage", title: "user_interactions:[prompt]", sub: "prompt seeded as first entry", lane: "footer" }),
+            node("b-mirror", W_HOOK, H_HOOK, { type: "hook", title: "phase.sh init", sub: "phasic mirror · current_phase:idle", lane: "phasic", stage: "birth" }),
+            node("b-idle", W_STAGE, H_STAGE, { type: "hub", title: "Locked at IDLE", sub: "cycle:0 · awaits advance", lane: "phasic" })
+        ];
+        var edges = [
+            edge("b-1", "b-noprompt", "b-prompt", "hard", "first prompt"),
+            edge("b-2", "b-prompt", "b-handler", "hard", "fires"),
+            edge("b-3", "b-handler", "b-createactive", "hard", "active_count==0"),
+            edge("b-4", "b-createactive", "b-record", "hard", "one jq write"),
+            edge("b-5", "b-record", "b-focused", "hard", ""),
+            edge("b-6", "b-record", "b-seed", "hard", ""),
+            edge("b-7", "b-createactive", "b-mirror", "hard", "then init"),
+            edge("b-8", "b-mirror", "b-idle", "hard", "phase-locked"),
+            edge("b-exit", "b-idle", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: accumulate — append-only record + lazy summary mirror.
+     * ====================================================================== */
+    function buildAccumulate() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("a-prompt", W_STAGE, H_STAGE, { type: "in", title: "Later Prompt", sub: "active_count > 0", lane: "footer", stage: "accumulate" }),
+            node("a-question", W_STAGE, H_STAGE, { type: "in", title: "Answered Question", sub: "AskUserQuestion Q/A pair", lane: "footer", stage: "accumulate" }),
+            node("a-capture", W_HOOK, H_HOOK, { type: "hook", title: "question-capture-hook.sh", sub: "appends to record", lane: "job_core", stage: "accumulate" }),
+            node("a-record", W_STAGE, H_STAGE, { type: "stage", title: "user_interactions[]", sub: "append-only RECORD", lane: "job_core", stage: "accumulate" }),
+            node("a-token", W_HOOK, H_HOOK, { type: "hook", title: "token-counter.sh", sub: "word_count · 13/10", lane: "summary", stage: "accumulate" }),
+            node("a-mirror", W_STAGE, H_STAGE, { type: "stage", title: "summary VIEW", sub: "created LAZILY at threshold", lane: "summary", stage: "accumulate" }),
+            node("a-needed", W_HOOK, H_HOOK, { type: "hook", title: "summary_needed = true", sub: "VIEW stale flag", lane: "summary", stage: "accumulate" }),
+            node("a-guard", W_HOOK, H_HOOK, { type: "hook", title: "summary-guard", sub: "HARD-blocks next tool", lane: "summary", stage: "accumulate" }),
+            node("a-submit", W_STAGE, H_STAGE, { type: "stage", title: "5-section summary", sub: "submitted · VIEW refreshed", lane: "summary" })
+        ];
+        var edges = [
+            edge("a-1", "a-prompt", "a-capture", "hard", "appends"),
+            edge("a-2", "a-question", "a-capture", "hard", "appends"),
+            edge("a-3", "a-capture", "a-record", "hard", ""),
+            edge("a-4", "a-record", "a-token", "soft", "tokens counted"),
+            edge("a-5", "a-token", "a-mirror", "soft", "≥ TOKEN_THRESHOLD"),
+            edge("a-6", "a-mirror", "a-needed", "hard", "flips"),
+            edge("a-7", "a-needed", "a-guard", "hard", "blocks"),
+            edge("a-8", "a-guard", "a-submit", "hard", "until submitted"),
+            edge("a-9", "a-submit", "a-record", "soft", "covers 0..N"),
+            edge("a-exit", "a-record", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: spawn — covers pending-note + condense-spawn anchors.
+     * ====================================================================== */
+    function buildSpawn() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("s-workphase", W_STAGE, H_STAGE, { type: "stage", title: "In a Work Phase", sub: "OBSERVE/PLAN/EXECUTE/VERIFY", lane: "core", stage: "pending-note" }),
+            node("s-trycreate", W_HOOK, H_HOOK, { type: "hook", title: "job.sh create (attempt)", sub: "WU-010 guards BLOCK", lane: "tracker", stage: "pending-note", contradiction: "07_9 says EXECUTE can self-admit a PLUGIN-LOCK / create work itself. Code: WU-010 guards block job.sh create in every work phase. Job creation is CONDENSE-only; the work phases can only drop a footer note." }),
+            node("s-note", W_STAGE, H_STAGE, { type: "stage", title: "[PENDING-JOB] note", sub: "dropped in CLAUDE.md footer", lane: "footer", stage: "pending-note" }),
+            node("s-count", W_HOOK, H_HOOK, { type: "hook", title: "marker_counts.pending_job", sub: "COUNT only · TEXT never stored", lane: "tracker", stage: "pending-note" }),
+            node("s-rest", W_STAGE, H_STAGE, { type: "stage", title: "Rests in the footer", sub: "until CONDENSE", lane: "footer", stage: "pending-note" }),
+            node("s-step3", W_HOOK, H_HOOK, { type: "hook", title: "CONDENSE step 3", sub: "condense-job-creator greps footers", lane: "condense", stage: "condense-spawn" }),
+            node("s-vet", W_STAGE, H_STAGE, { type: "stage", title: "Vet each note", sub: "SOFT · coaching + subagent logic", lane: "condense", stage: "condense-spawn" }),
+            node("s-create", W_HOOK, H_HOOK, { type: "hook", title: "job.sh create", sub: "standalone pending job", lane: "job_core", stage: "condense-spawn", drill: "dependency" }),
+            node("s-createdep", W_HOOK, H_HOOK, { type: "hook", title: "job.sh create-dependent", sub: "appends id to parent.depends_on[]", lane: "job_core", stage: "condense-spawn", drill: "dependency" }),
+            node("s-reject", W_STAGE, H_STAGE, { type: "exit", title: "Rejected / Carried", sub: "in-scope · overlap · durable", lane: "footer", stage: "condense-spawn" })
+        ];
+        var edges = [
+            edge("s-1", "s-workphase", "s-trycreate", "soft", "wants a new job"),
+            edge("s-2", "s-trycreate", "s-note", "hard", "create BLOCKED → note"),
+            edge("s-3", "s-note", "s-count", "hard", "tracker increments"),
+            edge("s-4", "s-note", "s-rest", "soft", ""),
+            edge("s-5", "s-rest", "s-step3", "soft", "next CONDENSE"),
+            edge("s-6", "s-step3", "s-vet", "soft", ""),
+            edge("s-7", "s-vet", "s-create", "soft", "accept · standalone"),
+            edge("s-8", "s-vet", "s-createdep", "soft", "accept · dependent"),
+            edge("s-9", "s-vet", "s-reject", "soft", "reject / carry over"),
+            edge("s-exit", "s-create", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: dependency — standalone vs dep; the dependency-completion gate.
+     * ====================================================================== */
+    function buildDependency() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("d-created", W_STAGE, H_STAGE, { type: "stage", title: "New Job Created", sub: "status:pending · focused:false", lane: "job_core", stage: "dependency" }),
+            node("d-standalone", W_STAGE, H_STAGE, { type: "stage", title: "Standalone Job", sub: "depends_on stays []", lane: "job_core", stage: "dependency" }),
+            node("d-dependent", W_STAGE, H_STAGE, { type: "stage", title: "Dependent Job", sub: "id on PARENT.depends_on[]", lane: "job_core", stage: "dependency" }),
+            node("d-parent", W_STAGE, H_STAGE, { type: "hub", title: "Parent Job", sub: "depends_on[] non-empty", lane: "job_core", stage: "dependency" }),
+            node("d-gate", W_HOOK, H_HOOK, { type: "hook", title: "dependency-completion gate", sub: "two enforce points", lane: "job_core", stage: "dependency" }),
+            node("d-derived", W_STAGE, H_STAGE, { type: "stage", title: "No 'blocked' status", sub: "waiting is DERIVED at completion", lane: "job_core", stage: "dependency" }),
+            node("d-complete", W_STAGE, H_STAGE, { type: "exit", title: "Parent may complete", sub: "only when all deps completed", lane: "job_core", stage: "dependency", drill: "completion" }),
+            node("d-stubs", W_SHOOK, H_SHOOK, { type: "secondary", title: "job_blocker / job_archiver", sub: "unimplemented design stubs", lane: "tracker", stage: "dependency" })
+        ];
+        var edges = [
+            edge("d-1", "d-created", "d-standalone", "soft", "independent"),
+            edge("d-2", "d-created", "d-dependent", "soft", "links to parent"),
+            edge("d-3", "d-dependent", "d-parent", "hard", "on depends_on[]"),
+            edge("d-4", "d-parent", "d-gate", "hard", "at completion"),
+            edge("d-5", "d-gate", "d-derived", "soft", "no stored flag"),
+            edge("d-6", "d-gate", "d-complete", "hard", "all deps completed"),
+            edge("d-7", "d-parent", "d-stubs", "soft", "design-only"),
+            edge("d-exit", "d-complete", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: stage-decision — covers cycle1-observe + stage-decision anchors.
+     * ====================================================================== */
+    function buildStageDecision() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("sd-obs", W_STAGE, H_STAGE, { type: "stage", title: "Cycle-1 OBSERVE", sub: "gather context", lane: "core", stage: "cycle1-observe" }),
+            node("sd-mult", W_HOOK, H_HOOK, { type: "hook", title: "set-multiplier", sub: "sentinel 0 locks tools", lane: "tracker", stage: "cycle1-observe" }),
+            node("sd-expand", W_STAGE, H_STAGE, { type: "stage", title: "Expand objective + name", sub: "SOFT · only NON-EMPTY checked", lane: "job_core", stage: "cycle1-observe", contradiction: "06_3 / 05_4 read the 300-500w (or 100-150w starter) objective-shape as a HARD gate checked by observe-commit --force. Code: observe-commit checks only that name + objective are NON-EMPTY — no word floor. The objective is even born as an EMPTY string. The shape is coaching, not a gate." }),
+            node("sd-advance", W_HOOK, H_HOOK, { type: "hook", title: "Advance to PLAN", sub: "≥100pts + ≥1 update + ≥100-word msg", lane: "tracker", stage: "cycle1-observe" }),
+            node("sd-null", W_STAGE, H_STAGE, { type: "stage", title: "plan_file = null", sub: "born undecided · set-once sentinel", lane: "plan", stage: "stage-decision" }),
+            node("sd-setplan", W_HOOK, H_HOOK, { type: "hook", title: "set-plan-file", sub: "sole writer · refuses 2nd call", lane: "plan", stage: "stage-decision" }),
+            node("sd-stage1", W_STAGE, H_STAGE, { type: "stage", title: "Stage 1 · false", sub: "single deep cycle · explicit set", lane: "plan", stage: "stage-decision" }),
+            node("sd-stage2", W_STAGE, H_STAGE, { type: "stage", title: "Stage 2 · .md", sub: "repeatable · total_cycles", lane: "plan", stage: "stage-decision", drill: "execute-planfile" }),
+            node("sd-stage3", W_STAGE, H_STAGE, { type: "stage", title: "Stage 3 · .yaml", sub: "per-phase injection", lane: "plan", stage: "stage-decision", drill: "execute-planfile" }),
+            node("sd-block", W_HOOK, H_HOOK, { type: "hook", title: "plan-commit BLOCK", sub: "advance refused while null", lane: "plan", stage: "stage-decision", contradiction: "08_1 / 08_2 / 07_9 describe the seed PROMOTING a job into the next shape / next set of gates. Code: there is NO inter-Stage promotion. set-plan-file is set-once in cycle-1 PLAN and refuses any second call; moving a job between Stages is a user-discussed decision, never auto." })
+        ];
+        var edges = [
+            edge("sd-1", "sd-obs", "sd-mult", "hard", "set first"),
+            edge("sd-2", "sd-mult", "sd-expand", "soft", "tools unlock"),
+            edge("sd-3", "sd-expand", "sd-advance", "hard", "≥100pts"),
+            edge("sd-4", "sd-advance", "sd-null", "hard", "PLAN · plan_file born null"),
+            edge("sd-5", "sd-null", "sd-block", "hard", "advance blocked"),
+            edge("sd-6", "sd-null", "sd-setplan", "hard", "must set once"),
+            edge("sd-7", "sd-setplan", "sd-stage1", "hard", "false"),
+            edge("sd-8", "sd-setplan", "sd-stage2", "hard", ".md"),
+            edge("sd-9", "sd-setplan", "sd-stage3", "hard", ".yaml"),
+            edge("sd-exit", "sd-stage2", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: execute-planfile — Stage 2/3 EXECUTE writes the plan file.
+     * ====================================================================== */
+    function buildExecutePlanfile() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("e-enter", W_STAGE, H_STAGE, { type: "stage", title: "Cycle-1 EXECUTE", sub: "Stage 2/3", lane: "core", stage: "execute-planfile" }),
+            node("e-guard", W_HOOK, H_HOOK, { type: "hook", title: "execute-guard scope", sub: "Write must equal declared plan_file", lane: "tracker", stage: "execute-planfile" }),
+            node("e-write", W_HOOK, H_HOOK, { type: "hook", title: "Write plan file", sub: ".claude/knowledge/plans/plan_<name>", lane: "plan", stage: "execute-planfile" }),
+            node("e-md", W_STAGE, H_STAGE, { type: "stage", title: ".md frontmatter", sub: "total_cycles: N", lane: "plan", stage: "execute-planfile" }),
+            node("e-yaml", W_STAGE, H_STAGE, { type: "stage", title: ".yaml cycles list", sub: "per-cycle entries", lane: "plan", stage: "execute-planfile" }),
+            node("e-soft", W_STAGE, H_STAGE, { type: "stage", title: "Not an advance gate", sub: "execute→verify works even if unwritten", lane: "core", stage: "execute-planfile", contradiction: "Reading the plan file as a hard EXECUTE deliverable overstates it. Code: writing the plan file is a Write-PERMISSION scope check only — execute can still advance to verify even if the file was never created. It is softer than a gate." }),
+            node("e-stage1", W_SHOOK, H_SHOOK, { type: "secondary", title: "Stage 1 · false", sub: "no plan file to write", lane: "plan", stage: "execute-planfile" })
+        ];
+        var edges = [
+            edge("e-1", "e-enter", "e-guard", "soft", "Write attempt"),
+            edge("e-2", "e-guard", "e-write", "soft", "scope ok"),
+            edge("e-3", "e-write", "e-md", "soft", "Stage 2"),
+            edge("e-4", "e-write", "e-yaml", "soft", "Stage 3"),
+            edge("e-5", "e-enter", "e-soft", "soft", "perm not advance"),
+            edge("e-6", "e-enter", "e-stage1", "soft", "Stage 1 skips"),
+            edge("e-exit", "e-write", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: verify-backedge — the plan-edit forced back-edge to PLAN.
+     * ====================================================================== */
+    function buildVerifyBackedge() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("v-enter", W_STAGE, H_STAGE, { type: "stage", title: "VERIFY", sub: "run verification scripts", lane: "core", stage: "verify-backedge" }),
+            node("v-edit", W_HOOK, H_HOOK, { type: "hook", title: "Edit the plan file?", sub: "verify-tracker · plan_edits", lane: "tracker", stage: "verify-backedge" }),
+            node("v-clean", W_STAGE, H_STAGE, { type: "stage", title: "plan_edits == 0", sub: "plan untouched", lane: "tracker", stage: "verify-backedge" }),
+            node("v-dirty", W_STAGE, H_STAGE, { type: "stage", title: "plan_edits ≥ 1", sub: "plan changed this cycle", lane: "tracker", stage: "verify-backedge" }),
+            node("v-block", W_HOOK, H_HOOK, { type: "hook", title: "forward BLOCKED", sub: "verify-commit refuses → CONDENSE", lane: "core", stage: "verify-backedge" }),
+            node("v-back", W_STAGE, H_STAGE, { type: "stage", title: "Backward → PLAN", sub: "re-cognize · update CLAUDE.md", lane: "core", stage: "verify-backedge" }),
+            node("v-cond", W_STAGE, H_STAGE, { type: "hub", title: "CONDENSE", sub: "only clean VERIFY advances", lane: "condense", stage: "verify-backedge", drill: "spawn" }),
+            node("v-retest", W_SHOOK, H_SHOOK, { type: "secondary", title: "plan → VERIFY re-test", sub: "DESIGN-ONLY · unbuilt", lane: "core", stage: "verify-backedge", contradiction: "06_6 / 06_10 read 'Outstanding Items not empty blocks VERIFY advance.' That check is real but lives in the CONDENSE [JOB-COMPLETE] pre-check, not VERIFY. The plan→VERIFY re-test fork is also design-only — there is no plan:verify entry in the phase map." })
+        ];
+        var edges = [
+            edge("v-1", "v-enter", "v-edit", "hard", "any plan Edit?"),
+            edge("v-2", "v-edit", "v-clean", "hard", "no"),
+            edge("v-3", "v-edit", "v-dirty", "hard", "yes"),
+            edge("v-4", "v-dirty", "v-block", "hard", "forward refused"),
+            edge("v-5", "v-block", "v-back", "hard", "must back-advance"),
+            edge("v-6", "v-back", "v-enter", "soft", "PLAN re-routes"),
+            edge("v-7", "v-clean", "v-cond", "hard", "advance"),
+            edge("v-8", "v-back", "v-retest", "soft", "unbuilt fork"),
+            edge("v-exit", "v-cond", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: completion — last-cycle CONDENSE asks [JOB-COMPLETE].
+     * ====================================================================== */
+    function buildCompletion() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("c-cond", W_STAGE, H_STAGE, { type: "stage", title: "Last-cycle CONDENSE", sub: "asks [JOB-COMPLETE]", lane: "condense", stage: "completion" }),
+            node("c-elig", W_HOOK, H_HOOK, { type: "hook", title: "Eligibility", sub: "cycle-formula OR plan_file==false", lane: "job_core", stage: "completion" }),
+            node("c-gate", W_HOOK, H_HOOK, { type: "hook", title: "Approval gate", sub: "all deps done · name set · phase==condense", lane: "job_core", stage: "completion" }),
+            node("c-approve", W_HOOK, H_HOOK, { type: "hook", title: "job.sh approve → complete", sub: "user_approval=true", lane: "job_core", stage: "completion" }),
+            node("c-status", W_STAGE, H_STAGE, { type: "stage", title: "status: completed", sub: "focus KEPT for cleanup", lane: "job_core", stage: "completion" }),
+            node("c-unfocus", W_STAGE, H_STAGE, { type: "exit", title: "Unfocus at idle", sub: "condense→idle clears focus", lane: "phasic", stage: "completion" }),
+            node("c-notbuilt", W_SHOOK, H_SHOOK, { type: "secondary", title: "extension / repeat / reactivation", sub: "fields NOT-YET-BUILT", lane: "tracker", stage: "completion", contradiction: "Most extension / repeat / reactivation machinery is named in the blogs but NOT built: extension_cycles_added, --add-cycle, effective_last_cycle, repeating_interval, [REPEAT-JOB], and the two heartbeats are design-only. The completion path that IS built is the [JOB-COMPLETE] → approve → complete → relocated-unfocus sequence." })
+        ];
+        var edges = [
+            edge("c-1", "c-cond", "c-elig", "hard", "asks"),
+            edge("c-2", "c-elig", "c-gate", "hard", "eligible"),
+            edge("c-3", "c-gate", "c-approve", "hard", "all checks pass"),
+            edge("c-4", "c-approve", "c-status", "hard", "flip"),
+            edge("c-5", "c-status", "c-unfocus", "hard", "condense→idle"),
+            edge("c-6", "c-cond", "c-notbuilt", "soft", "design-only"),
+            edge("c-exit", "c-unfocus", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ========================================================================
+     * DRILL: growth-overview — THE AHA. One ID fragmented across N data.json
+     * lanes, each lighting up lazily, coordinated only by shared ID.
+     * ====================================================================== */
+    function buildGrowthOverview() {
+        var children = [
+            portal("back-to-journey", "journey", "↑ back to the journey"),
+            node("g-id", W_STAGE, H_STAGE, { type: "hub", title: "ONE timestamp ID", sub: "the only shared key", lane: "phasic", stage: "growth-overview" }),
+            node("g-jobcore", W_HOOK, H_HOOK, { type: "hook", title: "job_core/data.json", sub: "id · name · status · user_interactions · depends_on", lane: "job_core", stage: "growth-overview" }),
+            node("g-phasic", W_HOOK, H_HOOK, { type: "hook", title: "phasic_system/data.json", sub: "current_phase · cycle", lane: "phasic", stage: "growth-overview" }),
+            node("g-plan", W_HOOK, H_HOOK, { type: "hook", title: "phase_plan/data.json", sub: "plan_file · plan_entries · multiplier", lane: "plan", stage: "growth-overview" }),
+            node("g-trackers", W_HOOK, H_HOOK, { type: "hook", title: "observe/execute/verify trackers", sub: "points · marker_counts · plan_edits", lane: "tracker", stage: "growth-overview" }),
+            node("g-condense", W_HOOK, H_HOOK, { type: "hook", title: "phase_condense/data.json", sub: "pending_jobs_created", lane: "condense", stage: "growth-overview" }),
+            node("g-summary", W_HOOK, H_HOOK, { type: "hook", title: "interaction_summary/data.json", sub: "summary_needed · summary_chain", lane: "summary", stage: "growth-overview" }),
+            node("g-lazy", W_STAGE, H_STAGE, { type: "stage", title: "Each lane LIGHTS UP LAZILY", sub: "on first entry into that domain", lane: "core", stage: "growth-overview" }),
+            node("g-mirror", W_STAGE, H_STAGE, { type: "exit", title: "mirror-by-shared-ID", sub: "no plugin reads another's data.json", lane: "core", stage: "growth-overview" })
+        ];
+        var edges = [
+            edge("g-1", "g-id", "g-jobcore", "hard", "base"),
+            edge("g-2", "g-id", "g-phasic", "hard", "lap 1"),
+            edge("g-3", "g-id", "g-plan", "hard", "PLAN"),
+            edge("g-4", "g-id", "g-trackers", "hard", "work phases"),
+            edge("g-5", "g-id", "g-condense", "hard", "CONDENSE"),
+            edge("g-6", "g-id", "g-summary", "soft", "at threshold"),
+            edge("g-7", "g-jobcore", "g-lazy", "soft", ""),
+            edge("g-8", "g-lazy", "g-mirror", "hard", "shared ID + --hook only"),
+            edge("g-exit", "g-mirror", "back-to-journey", "soft", "")
+        ];
+        return { id: "root", layoutOptions: {}, children: children, edges: edges };
+    }
+
+    /* ---- VIEWS map ---- */
+    HM.JOB = HM.JOB || {};
+    HM.JOB.VIEWS = {
+        journey: buildJourney(),
+        birth: buildBirth(),
+        accumulate: buildAccumulate(),
+        spawn: buildSpawn(),
+        dependency: buildDependency(),
+        "stage-decision": buildStageDecision(),
+        "execute-planfile": buildExecutePlanfile(),
+        "verify-backedge": buildVerifyBackedge(),
+        completion: buildCompletion(),
+        "growth-overview": buildGrowthOverview()
+    };
+
+    /* ---- STAGE_ALIAS: all 11 ?stage= anchors → view ids ---- */
+    HM.JOB.STAGE_ALIAS = {
+        birth: "birth",
+        accumulate: "accumulate",
+        "pending-note": "spawn",
+        "condense-spawn": "spawn",
+        dependency: "dependency",
+        "cycle1-observe": "stage-decision",
+        "stage-decision": "stage-decision",
+        "execute-planfile": "execute-planfile",
+        "verify-backedge": "verify-backedge",
+        completion: "completion",
+        "growth-overview": "growth-overview"
+    };
+
+    /* ---- LANES: color legend (lane id → label + short blurb) ---- */
+    HM.JOB.LANES = {
+        core: { label: "OPEVC ring", blurb: "The phase spine — idle + the five work phases the focused job laps through." },
+        job_core: { label: "job_core (base)", blurb: "The base record: id, name, objective, status, focused, user_interactions, depends_on, approvals." },
+        phasic: { label: "phasic_system", blurb: "The phase mirror: {id, current_phase, cycle}. A separate data.json keyed by the same ID." },
+        plan: { label: "phase_plan", blurb: "The plan extension: plan_file, plan_entries, multiplier, extension fields." },
+        tracker: { label: "phase trackers", blurb: "observe/execute/verify trackers: points, multiplier, marker_counts, plan_edits." },
+        condense: { label: "phase_condense", blurb: "The growth organ: 7-step waterfall, deflation gate, pending_jobs_created." },
+        summary: { label: "interaction_summary", blurb: "The compressed VIEW: last_summarized_index, summary_needed, summary_chain — created lazily." },
+        footer: { label: "CLAUDE.md footer", blurb: "Working-memory layer: the four-footer anchors hold marker TEXT; only COUNTS reach data.json." }
+    };
+
+    /* ---- CAPTIONS: one teaching line per view ---- */
+    HM.JOB.CAPTIONS = {
+        journey: 'The life of one <b>job</b>: a prompt <b>births</b> it, it laps the <b>OPEVC ring</b>, it can <b>spawn</b> more work and <b>wait on dependencies</b>, and only <b>[JOB-COMPLETE]</b> lets it leave. <em>One record, many lanes.</em>',
+        birth: 'The <b>first-prompt-effect</b>: one prompt to an idle seed <b>creates, activates, and focuses</b> a job in a single write — then locks it at <b>IDLE</b>. <em>Name and objective are born empty.</em>',
+        accumulate: 'The job is a <b>cumulative record</b>: every prompt and every answered question <b>appends</b> to it. When it grows too long, a compressed <b>summary view</b> is made and a hard gate forces it.',
+        spawn: 'A work phase <b>cannot create a job</b> — it can only drop a <b>[PENDING-JOB]</b> note. <b>CONDENSE</b> later vets each note and creates the real job. <em>Creation is CONDENSE-only.</em>',
+        dependency: 'A new job is either <b>standalone</b> or a <b>dependent</b> sitting on a parent\'s list. <em>A parent cannot complete until every dependency does</em> — and there is no "blocked" status; waiting is derived.',
+        "stage-decision": 'In <b>OBSERVE</b> the job expands its objective (coaching), then in <b>PLAN</b> it picks its <b>Stage</b> exactly once — <b>false</b>, a <b>.md</b>, or a <b>.yaml</b>. <em>The choice can never be changed.</em>',
+        "execute-planfile": 'A Stage 2/3 job <b>writes its plan file</b> in EXECUTE. <em>This is a write-permission check, not an advance gate</em> — the phase can move on even if the file was never written.',
+        "verify-backedge": 'VERIFY has a <b>built-in back-edge</b>: if the agent <b>edits the plan file</b>, forward-advance is blocked and it must <b>return to PLAN</b>. Only a plan-untouched VERIFY reaches CONDENSE.',
+        completion: 'The last cycle\'s CONDENSE asks <b>[JOB-COMPLETE]</b>. Approval is hard-gated on <b>all dependencies done</b>; then status flips to <b>completed</b> and focus is cleared at idle.',
+        "growth-overview": 'The aha: a job is <b>never one record</b>. It is <b>one timestamp ID</b> scattered across <b>N plugin data.json files</b>, each lighting up lazily — <em>coordinated only by the shared ID.</em>'
+    };
+
+    /* ====================================================================
+     * NODE_INFO — {title, what, when, canDo, why, builder} per node.
+     * what/when/canDo/why = plain language (80% non-technical).
+     * builder = the code-accurate under-the-hood tier with file:line.
+     * ==================================================================== */
+    HM.JOB.NODE_INFO = {
+        /* ---------- JOURNEY ring + ramps ---------- */
+        "prompt-in": {
+            title: "First Prompt",
+            what: "The very first thing you type when the seed agent has no job running. Until this lands, the agent is empty-handed — there is nothing for it to work on.",
+            when: "At the start of a fresh session, or any moment the agent is sitting idle with no active job and you send it a real request.",
+            canDo: "Triggers the birth of a brand-new job, which becomes the one and only thing the agent is focused on.",
+            why: "Like walking up to an assistant who is doing nothing and handing them their first assignment — that single sentence becomes the file everything else gets filed under.",
+            builder: "UserPromptSubmit → prompt-handler.sh:48 reads active_count; if 0 AND the prompt is real (non-empty, not a <task-notification>, CLAUDE_SUBAGENT!=true) it bootstraps a job. prompt-handler.sh:52 calls job.sh --hook create-active."
+        },
+        "birth-pill": {
+            title: "Job Birth",
+            what: "The single instant a job comes into existence. The prompt doesn't just create a job — it also makes it active and makes it the focused one, all at once.",
+            when: "The first real prompt to an idle seed. This is the only moment a job is auto-created without the agent asking.",
+            canDo: "Mints the job record, seeds your prompt as its first remembered interaction, and locks the agent into the IDLE phase ready to start work. Drill in for the step-by-step.",
+            why: "Hiring someone and assigning them a desk, a badge, and their first task in one motion — there is no 'unassigned' limbo.",
+            builder: "create-active requires HOOK_MODE==true (job.sh:226) — agents cannot call it manually. One jq write (job.sh:232-234) sets name:\"\", objective:\"\", status:active, focused:true, user_interactions:[$prompt]. Then prompt-handler.sh:65 runs phase.sh --hook init."
+        },
+        idle: {
+            title: "IDLE",
+            what: "The resting phase between bursts of work. The job exists and is focused, but no actual work phase is running yet.",
+            when: "Right after birth (the job is parked here), and again between every full lap of the work cycle.",
+            canDo: "From here the agent advances into OBSERVE to begin a cycle. Idle is also the only place focus may be switched to a different job.",
+            why: "The pause at the top of a workday before you pick up the first file — and the breath you take between finishing one pass and starting the next.",
+            builder: "phasic_system mirror {id, current_phase:\"idle\", cycle:0} (phase.sh:159). Forward map idle→observe via phase.sh advance. Idle is the only phase where focus may switch."
+        },
+        observe: {
+            title: "OBSERVE",
+            what: "The first work phase: the agent reads, gathers context, and figures out what the job really is. Crucially it sharpens the job's name and objective here.",
+            when: "First phase of every cycle, entered from idle.",
+            canDo: "Read-only on the project; it loads context into working memory and expands the objective. Tools stay locked until it forecasts the phase with a multiplier.",
+            why: "A consultant reading the whole brief and the back-files before writing a single recommendation.",
+            builder: "Tools locked until observe.sh set-multiplier sets a non-zero value (sentinel-0 lock). Advance is HARD: ≥100 pts + ≥1 CLAUDE.md update + ≥100-word msg (observe-commit.sh). Objective-shape is SOFT — only NON-EMPTY is checked (observe-commit.sh:194-212)."
+        },
+        plan: {
+            title: "PLAN",
+            what: "The phase where the agent decides HOW to do the job — and decides the job's Stage: a quick single pass, or a repeatable multi-cycle plan.",
+            when: "Second phase of cycle 1 (and the re-cognize target whenever VERIFY sends work back).",
+            canDo: "Commits the Stage exactly once via set-plan-file. The advance into EXECUTE is blocked until that choice is made.",
+            why: "Choosing whether a task is a one-afternoon job or a months-long project with a written plan — and you only get to choose once.",
+            builder: "plan_file born null on the phase_plan extension (plan.sh:126). set-plan-file is set-once (plan.sh:349-401): null → false | plan_<name>.md | plan_<name>.yaml. plan-commit HARD-blocks the PLAN→EXECUTE advance while plan_file==null."
+        },
+        execute: {
+            title: "EXECUTE",
+            what: "The build phase: the agent finally writes code, edits files, creates artifacts — following the plan it just committed to.",
+            when: "After PLAN, with full write access scoped to what was declared.",
+            canDo: "For a multi-cycle job, this is where the plan file is written to disk. But writing it is a permission check, not a finish-line requirement.",
+            why: "The contractor doing the actual building after the blueprint is signed off.",
+            builder: "execute-guard scopes Writes to the declared plan_file path (Stage 2/3 cycle-1). This is a Write-PERMISSION check, NOT an advance requirement — execute→verify can advance even if the plan file was never written."
+        },
+        verify: {
+            title: "VERIFY",
+            what: "The independent-checking phase: the agent runs tests and checks the work against the plan. It deliberately does not build anything new here.",
+            when: "After EXECUTE.",
+            canDo: "If the agent ends up editing the plan file here, that signals the plan itself changed — and it is forced back to PLAN instead of moving forward.",
+            why: "A separate inspector signing off on the build — and if the inspector finds the blueprint was wrong, the job goes back to the drawing board, not forward.",
+            builder: "verify-tracker increments plan_edits on any /plans/plan_* edit. verify-commit.sh:167-179: if plan_file is active AND plan_edits>=1, forward-advance is BLOCKED and the agent must backward-advance to PLAN. Only plan_edits==0 reaches CONDENSE."
+        },
+        condense: {
+            title: "CONDENSE",
+            what: "The growth organ. Not a peer phase — it is where the cycle's findings get absorbed into durable memory, and where new jobs are actually born from notes left earlier.",
+            when: "The last phase of every cycle, reachable only from a clean VERIFY.",
+            canDo: "Runs a 7-step waterfall: absorbs footers, routes knowledge, and (step 3) vets [PENDING-JOB] notes into real jobs. The only hard exit is the 80% deflation gate.",
+            why: "Sleep, for the brain: the day's loose notes get filed, consolidated, and turned into lasting memory before the next day starts.",
+            builder: "condense-guard allows job.sh create unconditionally (CONDENSE-only). Deflation gate: bottom-section words must absorb ≥80% before advancing to idle. condense-commit.sh:268-276 clears focus if the job completed this cycle (relocated unfocus)."
+        },
+        "accumulate-pill": {
+            title: "Accumulate",
+            what: "The job is a running record of everything said to it. Every later prompt and every answered question gets appended — it never overwrites, only grows.",
+            when: "Continuously, in whatever phase the focused job is in.",
+            canDo: "Builds the cumulative 'mega-prompt' the agent always carries. When it grows too long a compressed summary is forced. Drill in for the mechanics.",
+            why: "A case file that only ever gets thicker — every call, every email, every decision stapled in, in order.",
+            builder: "question-capture-hook.sh:61-86 appends prompts + Q/A pairs to user_interactions[] (job.sh:538). interaction_summary mirror is created LAZILY only when unsummarized tokens cross TOKEN_THRESHOLD."
+        },
+        "spawn-pill": {
+            title: "Spawn a Job",
+            what: "How new jobs get created mid-work. A work phase can't create one directly; it leaves a note that CONDENSE later turns into a real job.",
+            when: "The note can be dropped any time during work; the actual creation happens in CONDENSE.",
+            canDo: "Lets the agent capture follow-up work without derailing the current job. Drill in to see the note → vet → create path.",
+            why: "Jotting 'follow up on the Henderson contract' on a sticky note during a meeting — you deal with it later, during cleanup, not mid-sentence.",
+            builder: "Covers the pending-note + condense-spawn anchors. WU-010 guards block job.sh create in work phases; the agent drops [PENDING-JOB]. CONDENSE step 3 condense-job-creator vets (SOFT) then runs job.sh create / create-dependent."
+        },
+        "dependency-pill": {
+            title: "Dependency Route",
+            what: "When a new job is born it is either independent, or it is hooked onto a parent job as something that must finish first.",
+            when: "At creation time, in CONDENSE.",
+            canDo: "A dependent job becomes a blocker: the parent literally cannot be marked done until every dependency is done. Drill in for the gate.",
+            why: "You can't sign off on the building until the wiring inspection passes — the wiring is a dependency of the sign-off.",
+            builder: "Standalone: depends_on stays []. Dependent: the new id is appended to the PARENT's depends_on[]. There is no 'blocked' status — dependency-waiting is DERIVED at completion time (job.sh:396-412, two enforce points)."
+        },
+        "completion-pill": {
+            title: "Completion",
+            what: "The end of the line for a job. The last cycle asks whether the job is truly done, and only then does its status flip to completed.",
+            when: "The final cycle's CONDENSE phase.",
+            canDo: "Approval is hard-gated: every dependency must be complete, the job must be named, and the phase must be CONDENSE. Drill in for the full gate.",
+            why: "The final sign-off that can't happen until every sub-task and every signature is in place.",
+            builder: "[JOB-COMPLETE] eligibility = cycle-formula (Stage 2/3) OR plan_file==false (Stage 1). Approval requires all deps completed + name set + objective<=cap + current_phase==condense (job.sh:376-428). status→completed; focus kept until condense→idle."
+        },
+        "growth-pill": {
+            title: "The Aha: One ID, N Lanes",
+            what: "The big realization. The job you think of as one thing is physically scattered across many separate files — one per plugin — tied together only by a shared ID.",
+            when: "True for the job's whole life; each file appears the moment the job first touches that plugin.",
+            canDo: "Reveals how the seed agent stays modular: no plugin reads another's data. Drill in to see all the lanes.",
+            why: "Your medical history isn't one document — it's scattered across the GP, the pharmacy, the lab, the specialist, all keyed to one patient number.",
+            builder: "Distributed Job Extension / mirror-by-shared-ID. job_core base + phasic_system + phase_plan + phase_observe/execute/verify trackers + phase_condense + interaction_summary, each its own data.json keyed by the same timestamp ID. Coordinated only by shared ID + published --hook commands."
+        },
+
+        /* ---------- BIRTH drill ---------- */
+        "b-noprompt": {
+            title: "Idle Seed",
+            what: "The agent at rest with nothing active — no job to append to, ready to be assigned.",
+            when: "Fresh session, or after every prior job has been completed or paused.",
+            canDo: "Waits. The next real prompt will bootstrap a job rather than be filed into an existing one.",
+            why: "An empty inbox and a clear desk — the next thing that arrives starts a new file.",
+            builder: "active_count = count of jobs with status==active (prompt-handler.sh:48). active_count==0 is the bootstrap condition."
+        },
+        "b-prompt": {
+            title: "Real Prompt",
+            what: "A genuine human request — not an automated system message and not something coming from a helper agent.",
+            when: "When you type and send while the seed is idle.",
+            canDo: "Qualifies as a job-creating prompt; system notifications and subagent traffic are filtered out so they never spawn a job.",
+            why: "Telling the difference between a client actually calling with work versus an auto-reply bouncing in.",
+            builder: "Guard: PROMPT non-empty AND not ^<task-notification> AND CLAUDE_SUBAGENT!=true (prompt-handler.sh:48-52)."
+        },
+        "b-handler": {
+            title: "prompt-handler.sh",
+            what: "The piece of plumbing that watches every prompt and decides: start a new job, or add to the current one.",
+            when: "On every UserPromptSubmit event.",
+            canDo: "Branches on whether a job is already active. If none is, it kicks off job creation; if one is, it appends instead.",
+            why: "The receptionist who either opens a new file or adds your note to the file already on their desk.",
+            builder: "Registered on UserPromptSubmit. Runs with HOOK_MODE, which is what unlocks the reserved create-active command (job.sh:226)."
+        },
+        "b-createactive": {
+            title: "job.sh create-active",
+            what: "The one command that creates a job automatically. It is reserved for the system — the agent itself is not allowed to call it.",
+            when: "Fired by the prompt handler the instant an idle seed gets a real prompt.",
+            canDo: "Writes a complete new job record in a single step, already active and already focused.",
+            why: "The automatic case-opening stamp that only the front-desk system can press, never the staff.",
+            builder: "job.sh:225 — dies unless HOOK_MODE==true. Single jq write at job.sh:232-234. Returns the new JOB_ID on stdout."
+        },
+        "b-record": {
+            title: "Job Record",
+            what: "The freshly minted job. Notably its name and objective start completely empty — they get filled in later, during OBSERVE.",
+            when: "The moment create-active runs.",
+            canDo: "Holds the seed of everything: status, focus, the first interaction, and empty slots for approvals and dependencies.",
+            why: "A blank case folder with a number on the tab — the label and the summary come after someone reads the contents.",
+            builder: "job.sh:233 jq template: name:\"\", objective:\"\", status:active, focused:true, user_interactions:[$prompt], user_approval:false, plugin_lock_approval:false, depends_on:[], repeating_interval:0, last_completed_at:0."
+        },
+        "b-focused": {
+            title: "focused:true",
+            what: "The flag marking this as THE job the agent is paying attention to. Only ever one job is focused at a time.",
+            when: "Set at birth; cleared on completion or when focus switches at idle.",
+            canDo: "Every phase gate, voice, and scope keys off the focused job — so this flag decides which job the whole machine is steering.",
+            why: "The single file actually open on your desk, versus the stack of others waiting their turn.",
+            builder: "create-active first runs clear_all_focus, then sets focused:true on the new record. Phasic gates and scopes all resolve via job.sh focused."
+        },
+        "b-seed": {
+            title: "user_interactions:[prompt]",
+            what: "Your opening prompt, stored as the job's very first remembered interaction.",
+            when: "Written at birth as the first array element.",
+            canDo: "Becomes the foundation of the cumulative record that grows with every later turn.",
+            why: "The original intake note that the whole case file gets built on top of.",
+            builder: "The $prompt arg to create-active lands as user_interactions:[$prompt] (job.sh:233). All later turns append to this same array."
+        },
+        "b-mirror": {
+            title: "phase.sh init",
+            what: "A second little record, made in the phase-tracking plugin, that says the new job is parked at IDLE and on cycle zero.",
+            when: "Immediately after the job record is created, in the same hook run.",
+            canDo: "Locks the job into IDLE so it can't skip ahead — it must explicitly advance to begin OBSERVE.",
+            why: "Stamping the new file 'received — not yet started' so nobody assumes work has begun.",
+            builder: "prompt-handler.sh:65 calls phase.sh --hook init because PostToolUse:Bash hooks don't fire for hook-spawned subprocesses. Writes {id, current_phase:\"idle\", cycle:0} (phase.sh:159)."
+        },
+        "b-idle": {
+            title: "Locked at IDLE",
+            what: "The end state of birth: the job exists, is focused, and is sitting in IDLE waiting for the agent to start its first cycle.",
+            when: "The final beat of the birth sequence.",
+            canDo: "From here a single advance moves it into OBSERVE and real work begins.",
+            why: "The new hire at their desk on day one, badge on, waiting for the go-ahead to open the first task.",
+            builder: "current_phase:\"idle\", cycle:0. The agent runs phase.sh advance <id> to enter cycle-1 OBSERVE (forward map idle→observe)."
+        },
+
+        /* ---------- ACCUMULATE drill ---------- */
+        "a-prompt": {
+            title: "Later Prompt",
+            what: "Any prompt you send once a job is already running. It does not start a new job — it gets added to the current one.",
+            when: "Whenever you type while a job is active.",
+            canDo: "Appends to the focused job's record. New job ideas are deferred to CONDENSE via notes instead.",
+            why: "Adding another page to the open case file rather than starting a fresh folder.",
+            builder: "active_count>0 branch (prompt-handler.sh:66-83). If no job is focused it auto-focuses the first active one, then appends."
+        },
+        "a-question": {
+            title: "Answered Question",
+            what: "When the agent asks you a structured question and you answer, that whole exchange gets remembered too.",
+            when: "Every time an AskUserQuestion is answered.",
+            canDo: "Stores the question and your answer as a pair, so the reasoning behind a decision is never lost.",
+            why: "Keeping both the question the lawyer asked and the client's answer in the file — the answer alone is meaningless without it.",
+            builder: "question-capture-hook.sh:61-86 fires on PostToolUse:AskUserQuestion when a tool_response is present, appending the Q/A pair to user_interactions[]."
+        },
+        "a-capture": {
+            title: "question-capture-hook.sh",
+            what: "The recorder that catches prompts and answered questions and files them into the job.",
+            when: "On the relevant prompt and question events.",
+            canDo: "Guarantees the running record stays complete and append-only.",
+            why: "The court stenographer who writes down everything said, in order, without editing.",
+            builder: "Appends via job.sh append-interaction → user_interactions[] (job.sh:538). Append-only; nothing is overwritten."
+        },
+        "a-record": {
+            title: "user_interactions[]",
+            what: "The job's complete, ordered history of everything said to it — the 'record' half of the agent's working memory.",
+            when: "Exists from birth, grows for the job's whole life.",
+            canDo: "Feeds the agent its full context. When it gets long, a compressed summary is generated alongside it.",
+            why: "The full transcript — kept in case you ever need the exact words, even after a summary exists.",
+            builder: "Append-only array on the job_core record. Its length and word-count drive the summary trigger downstream."
+        },
+        "a-token": {
+            title: "token-counter.sh",
+            what: "A watcher that estimates how long the unsummarized record has gotten.",
+            when: "Checked at capture points.",
+            canDo: "When the record crosses a size threshold, it triggers the creation of a compressed summary view.",
+            why: "The assistant noticing the file has gotten too thick to hand someone cold — time to write a cover summary.",
+            builder: "token estimate = word_count * 13/10 (token-counter.sh:124-155). Compared against TOKEN_THRESHOLD."
+        },
+        "a-mirror": {
+            title: "summary VIEW",
+            what: "A compressed standalone summary of the long record, made only when the record gets big — not before.",
+            when: "Created lazily the first time the size threshold is crossed.",
+            canDo: "Gives the agent a short version to work from instead of re-reading the entire history every turn.",
+            why: "The one-page executive summary clipped to the front of a thick file.",
+            builder: "interaction_summary mirror created lazily (token-counter.sh:150 / summary.sh create-job): {last_summarized_index, summary_needed, summary_chain[]}. Absent until the first threshold crossing."
+        },
+        "a-needed": {
+            title: "summary_needed = true",
+            what: "A flag that flips on to say 'the record changed and the summary is now out of date.'",
+            when: "When tokens cross the threshold and after further growth.",
+            canDo: "Signals that a fresh summary must be submitted before the agent keeps going.",
+            why: "The red 'needs re-summarizing' sticker on a file that has grown since its last cover sheet.",
+            builder: "summary_needed flips true in interaction_summary/data.json. The RECORD is unchanged; only the VIEW is marked stale."
+        },
+        "a-guard": {
+            title: "summary-guard",
+            what: "A hard stop. Once a fresh summary is needed, the agent is blocked from doing its next action until it writes one.",
+            when: "Immediately after summary_needed flips.",
+            canDo: "Forces summarization — the one place accumulation produces a hard block rather than a gentle nudge.",
+            why: "The system that won't let you file the next document until you've updated the cover sheet.",
+            builder: "summary-guard HARD-blocks the next non-summary tool call until a 5-section summary is submitted via summary.sh."
+        },
+        "a-submit": {
+            title: "5-section summary",
+            what: "The structured summary the agent writes to satisfy the block, refreshing the compressed view.",
+            when: "As soon as the guard blocks.",
+            canDo: "Clears the block and brings the summary back in sync with the full record.",
+            why: "Writing the new cover sheet so the file can move again.",
+            builder: "summary.sh:267-282 submits a summary covering user_interactions 0..N; the guard releases and summary_needed clears."
+        },
+
+        /* ---------- SPAWN drill ---------- */
+        "s-workphase": {
+            title: "In a Work Phase",
+            what: "Any of the four working phases. Mid-work, the agent often realizes new follow-up work is needed.",
+            when: "During OBSERVE, PLAN, EXECUTE, or VERIFY.",
+            canDo: "It can recognize new work — but it is not allowed to create a job right then.",
+            why: "Spotting a second problem while you're elbow-deep in the first one.",
+            builder: "WU-010 per-phase guards block job.sh create in all four work phases (plan-guard.sh:341, execute-guard.sh:960, verify-guard:367, observe job-create-blocked)."
+        },
+        "s-trycreate": {
+            title: "job.sh create (attempt)",
+            what: "What happens if the agent tries to create a job mid-work: it gets refused, and steered toward leaving a note instead.",
+            when: "Any time create is attempted outside CONDENSE.",
+            canDo: "Nothing — the attempt is blocked. The guard tells the agent to drop a [PENDING-JOB] note.",
+            why: "The rule that says 'don't open a new case mid-meeting — write it on the follow-up list.'",
+            builder: "The WU-010 guards refuse and the block voice names the CONDENSE-only rule + the footer-marker route. Job creation is structurally CONDENSE-only."
+        },
+        "s-note": {
+            title: "[PENDING-JOB] note",
+            what: "A short note the agent leaves in its working memory describing the follow-up job it wants — a placeholder, not a real job yet.",
+            when: "Dropped during any work phase when new work is spotted.",
+            canDo: "Captures the idea safely so it survives until CONDENSE can act on it.",
+            why: "The sticky note on the monitor — it isn't a calendar entry yet, but you won't forget it.",
+            builder: "Written into the CLAUDE.md phase footer (---Ob---/---Pl---/---Ex---/---Ve---). The note TEXT lives only in the footer, never in data.json."
+        },
+        "s-count": {
+            title: "marker_counts.pending_job",
+            what: "A simple tally of how many pending-job notes have been dropped — just a count, not the notes themselves.",
+            when: "Incremented when a note is written.",
+            canDo: "Gives a soft signal that follow-up work is waiting. It does not gate or block anything.",
+            why: "A little counter on the sticky-note pad — you can see there are three, without reading them.",
+            builder: "PostToolUse trackers match ^[PENDING-JOB] and call <phase>.sh --hook inc-marker pending_job (observe-tracker.sh:161-172). COUNT only; note TEXT never stored."
+        },
+        "s-rest": {
+            title: "Rests in the footer",
+            what: "The note simply sits in working memory until the cycle reaches its consolidation phase.",
+            when: "From when it's written until the next CONDENSE.",
+            canDo: "Waits. A note that isn't routed even then can carry over to a later CONDENSE.",
+            why: "The follow-up list you don't touch until your end-of-day cleanup.",
+            builder: "Handling is SOFT; the deflation gate (≥80%) is the only hard CONDENSE gate, so an un-routed note can ride the ~20% headroom into a later cycle."
+        },
+        "s-step3": {
+            title: "CONDENSE step 3",
+            what: "The point in the consolidation phase where a helper agent reads through the footers and finds every pending-job note.",
+            when: "Step 3 of the CONDENSE 7-step waterfall.",
+            canDo: "Collects the notes and judges each one for whether it should become a real job.",
+            why: "The manager going through the week's sticky notes on Friday and deciding which ones become real projects.",
+            builder: "condense-job-creator subagent greps the four footers for [PENDING-JOB] markers (CONDENSE step 3 of the waterfall)."
+        },
+        "s-vet": {
+            title: "Vet each note",
+            what: "The judgment call on each note: is this genuinely separate follow-up work, or already covered by the current job?",
+            when: "During step 3, before any job is created.",
+            canDo: "Decides accept or reject. This is coaching-driven reasoning, not a rigid rule.",
+            why: "Triaging the sticky notes — some become projects, some are already handled, some get tossed.",
+            builder: "SOFT — coaching voices + condense-job-creator M1/M5 logic. condense-guard allows create unconditionally; there is NO hard scope gate on the vetting itself."
+        },
+        "s-create": {
+            title: "job.sh create",
+            what: "Creating a standalone job — a new independent piece of work that doesn't block anything else.",
+            when: "When a note is accepted as genuinely separate work.",
+            canDo: "Mints a new pending, unfocused job that completes on its own schedule.",
+            why: "Opening a brand-new, unrelated case that stands entirely on its own.",
+            builder: "job.sh create <name> (job.sh:170-194). Requires a focused active job anchor; CONDENSE-only via the phase guards. depends_on stays []."
+        },
+        "s-createdep": {
+            title: "job.sh create-dependent",
+            what: "Creating a job that is wired to the current one as a prerequisite — the parent will have to wait for it.",
+            when: "When the accepted note is work the current job depends on.",
+            canDo: "Creates the job and registers it as a blocker on the parent.",
+            why: "Opening a sub-task that the main project literally can't close without.",
+            builder: "job.sh create-dependent <name> (job.sh:197-222). The first positional IS the name; the new id is appended to the focused parent's depends_on[] (job.sh:208-210)."
+        },
+        "s-reject": {
+            title: "Rejected / Carried",
+            what: "What happens to notes that don't become jobs: they're judged in-scope, overlapping, or better handled elsewhere — or carried to a later cycle.",
+            when: "During vetting, for any note that doesn't warrant a new job.",
+            canDo: "Routes the work elsewhere (e.g., extend the current plan) or simply lets the note ride to a future CONDENSE.",
+            why: "Sticky notes that turn out to be 'already doing that' or 'note to self, not a project.'",
+            builder: "condense-job-creator returns {accepted:false, reason}: in-scope / plan-file cycle / overlap / perpetual-owned / durable. No data.json job is created."
+        },
+
+        /* ---------- DEPENDENCY drill ---------- */
+        "d-created": {
+            title: "New Job Created",
+            what: "A just-born follow-up job, sitting pending and unfocused, waiting for its turn.",
+            when: "The moment CONDENSE creates it.",
+            canDo: "Will either run independently or block a parent, depending on how it was created.",
+            why: "A new case folder placed in the queue — its relationship to other cases decides what has to wait on what.",
+            builder: "status:pending, focused:false. Standalone vs dependent is determined by whether its id was appended to a parent's depends_on[]."
+        },
+        "d-standalone": {
+            title: "Standalone Job",
+            what: "An independent job that nothing is waiting on. It completes whenever it completes.",
+            when: "Created via plain create.",
+            canDo: "Runs on its own timeline; its completion gates nothing.",
+            why: "A side errand that doesn't hold up the main project.",
+            builder: "depends_on stays []; its id is absent from every other job's depends_on[]. Independence is a graph relation, not a stored flag."
+        },
+        "d-dependent": {
+            title: "Dependent Job",
+            what: "A job that some parent is waiting on. Its id is recorded on the parent's list of dependencies.",
+            when: "Created via create-dependent, or attached later via add-dependency.",
+            canDo: "Must reach completed before the parent is allowed to complete.",
+            why: "The inspection that must pass before the sign-off can happen.",
+            builder: "The relation lives on the PARENT: the dep's id sits in PARENT.depends_on[]. The dep itself just looks like a normal pending job."
+        },
+        "d-parent": {
+            title: "Parent Job",
+            what: "A job that has at least one dependency. It carries the list of things that must finish before it can.",
+            when: "Whenever its depends_on[] is non-empty.",
+            canDo: "Holds the dependency relationships and is the one whose completion gets blocked.",
+            why: "The master project whose final sign-off depends on every sub-task clearing.",
+            builder: "focused:true, status:active, depends_on[] non-empty. The dependency edges are stored here, on the parent, not on the children."
+        },
+        "d-gate": {
+            title: "dependency-completion gate",
+            what: "The hard rule that a parent cannot be marked done while any of its dependencies are still open.",
+            when: "Checked at the moment completion is attempted.",
+            canDo: "Refuses completion — at two separate places in the code — if any dependency isn't completed.",
+            why: "The clause that says the contract can't close until every annex is signed.",
+            builder: "job.sh:396-412 walks depends_on[]; any dep with status!=completed becomes a failure and exit 1. Enforced at two points (the [JOB-COMPLETE] post-handler and direct complete)."
+        },
+        "d-derived": {
+            title: "No 'blocked' status",
+            what: "There is no stored 'blocked' state. Whether a job is waiting is figured out fresh each time, by looking at its dependencies.",
+            when: "Computed at completion time.",
+            canDo: "Keeps the data simple — there is no flag that could go stale and lie.",
+            why: "Not stamping a file 'on hold' — instead just checking, when it matters, whether the things it waits on are done.",
+            builder: "Dependency-waiting is DERIVED at completion time, never persisted. job_blocker/job_archiver remain unimplemented design stubs."
+        },
+        "d-complete": {
+            title: "Parent may complete",
+            what: "The green light: once every dependency is done, the parent is finally allowed to complete.",
+            when: "When the dependency gate passes.",
+            canDo: "Lets the parent proceed through the rest of its completion checks.",
+            why: "All annexes signed — now the master contract can be closed.",
+            builder: "With all deps status==completed, the gate at job.sh:396-412 passes and completion can proceed (subject to the other approval checks)."
+        },
+        "d-stubs": {
+            title: "job_blocker / job_archiver",
+            what: "Two plugins that were designed on paper but never built. They are not part of the live system.",
+            when: "N/A — design stubs only.",
+            canDo: "Nothing today; named here so the map is honest about what exists versus what was sketched.",
+            why: "Blueprints for rooms that were drawn but never constructed.",
+            builder: "job_blocker / job_archiver are unimplemented design stubs — no registered hooks, no live behavior."
+        },
+
+        /* ---------- STAGE-DECISION drill ---------- */
+        "sd-obs": {
+            title: "Cycle-1 OBSERVE",
+            what: "The first observe pass of a brand-new job, where it gathers context and sharpens what it's really about.",
+            when: "Right after the job advances out of IDLE.",
+            canDo: "Expands the objective and name, and sets the stage (literally) for the Stage decision coming in PLAN.",
+            why: "Reading the whole brief before deciding whether this is a quick job or a big project.",
+            builder: "job_core (name, objective) + phasic (phase=observe, cycle=1) + phase_observe tracker (points, multiplier sentinel 0). plan_file does not exist yet."
+        },
+        "sd-mult": {
+            title: "set-multiplier",
+            what: "The agent's honest forecast of how big this phase is. Until it sets one, its tools are locked.",
+            when: "First action on entering OBSERVE.",
+            canDo: "Unlocks the phase's tools and sets the effort budget.",
+            why: "Estimating the job size before you start — and not being handed the keys until you do.",
+            builder: "observe.sh set-multiplier; sentinel value 0 locks all tools until a non-zero value is set. Range 0.5 (deep) to 3 (rapid)."
+        },
+        "sd-expand": {
+            title: "Expand objective + name",
+            what: "The agent rewrites the empty/short objective into a fuller statement of the job. The richer 'shape' is encouraged but not strictly enforced.",
+            when: "During cycle-1 OBSERVE.",
+            canDo: "Fills in name and objective. Only their presence is actually required — the length is coaching.",
+            why: "Turning 'fix the thing' into a proper one-paragraph statement of work — good practice, but the system only checks that you wrote something.",
+            builder: "observe-commit.sh:194-212 checks only that name + objective are NON-EMPTY — no word floor. The 300-500w shape is SOFT coaching."
+        },
+        "sd-advance": {
+            title: "Advance to PLAN",
+            what: "The hard requirements to leave OBSERVE: enough work points, at least one memory update, and a substantial commit message.",
+            when: "When OBSERVE is genuinely done.",
+            canDo: "Moves the job into PLAN, where plan_file is born and the Stage gets decided.",
+            why: "The checklist you must complete before the project moves from research into planning.",
+            builder: "Forward advance is HARD: ≥100 pts + ≥1 CLAUDE.md update + ≥100-word msg (observe-commit.sh). Then plan.sh init births the first plan entry."
+        },
+        "sd-null": {
+            title: "plan_file = null",
+            what: "The undecided starting state of the Stage. The job is born not having committed to single-pass vs multi-cycle.",
+            when: "The moment PLAN begins.",
+            canDo: "Marks the Stage as 'not yet decided.' The agent must make the call before it can advance.",
+            why: "A project intake form with the 'project type' box deliberately left blank — you have to choose before proceeding.",
+            builder: "plan_file born null on the phase_plan extension (plan.sh:126). null is the undecided set-once sentinel — distinct from the value false."
+        },
+        "sd-setplan": {
+            title: "set-plan-file",
+            what: "The single command that commits the job's Stage. It can only be called once — the choice is permanent.",
+            when: "During cycle-1 PLAN.",
+            canDo: "Sets the Stage to false, a .md plan, or a .yaml plan — and refuses any second attempt.",
+            why: "Signing the box on the intake form in permanent ink: once chosen, the project type is locked.",
+            builder: "plan.sh:349-401, sole writer, SET-ONCE: dies if current plan_file != \"null\". Value must be false OR match ^plan_[a-z0-9_]+\\.(md|yaml)$."
+        },
+        "sd-stage1": {
+            title: "Stage 1 · false",
+            what: "A single deep work cycle with no separate plan file. Good for one-off teaching, exploration, or a single fix.",
+            when: "Chosen when the work is a single collaborative pass.",
+            canDo: "Loops internally via backward transitions, then closes with one big CONDENSE. Even this requires explicitly setting the value false.",
+            why: "A one-afternoon job — real and focused, but it doesn't need a written multi-week plan.",
+            builder: "plan_file = false. Single-cycle; many backward transitions; one CONDENSE that asks [JOB-COMPLETE]. Nothing auto-defaults to false — set-plan-file false is explicit."
+        },
+        "sd-stage2": {
+            title: "Stage 2 · .md",
+            what: "A repeatable, multi-cycle job driven by a written Markdown plan that accumulates wisdom run over run.",
+            when: "Chosen for big project work spanning multiple phases and review cycles.",
+            canDo: "Cycle 1 writes the plan; later cycles work against it; the plan file persists and gets smarter over time. Drill into EXECUTE to see it written.",
+            why: "A months-long project with a living plan document everyone works from.",
+            builder: "plan_file = plan_<name>.md, written in cycle-1 EXECUTE with total_cycles frontmatter. Completion uses the cycle-count formula."
+        },
+        "sd-stage3": {
+            title: "Stage 3 · .yaml",
+            what: "Like Stage 2, but the plan is a YAML file that also injects fresh context into each phase as the job runs.",
+            when: "Chosen for repeatable work that wants per-cycle, per-phase context from the start.",
+            canDo: "Same completion behavior as Stage 2; the only difference is the file format and the per-phase injection. Drill into EXECUTE to see it written.",
+            why: "The same long project, but the plan actively hands each stage its marching orders.",
+            builder: "plan_file = plan_<name>.yaml; cycles: list declares per-cycle entries and injects per-phase context. Identical completion semantics to Stage 2."
+        },
+        "sd-block": {
+            title: "plan-commit BLOCK",
+            what: "The safety catch: while the Stage is still undecided, the agent simply cannot advance out of PLAN.",
+            when: "Any advance attempt while plan_file is null.",
+            canDo: "Forces the Stage decision to happen — it cannot be skipped, and there is no auto-promotion between Stages later.",
+            why: "The form that won't let you move to the next page until the required box is filled — and you can't change your answer afterward.",
+            builder: "plan-commit HARD-blocks the PLAN→EXECUTE advance while plan_file==null. There is NO inter-Stage promotion; set-plan-file refuses a second call."
+        },
+
+        /* ---------- EXECUTE-PLANFILE drill ---------- */
+        "e-enter": {
+            title: "Cycle-1 EXECUTE",
+            what: "The first build phase of a multi-cycle job — the moment the written plan file actually gets created on disk.",
+            when: "After the Stage is set to a .md or .yaml plan.",
+            canDo: "Writes the plan file. But note: writing it is permission-checked, not required to move forward.",
+            why: "Typing up the formal project plan document at the start of the project.",
+            builder: "Stage 2/3 only. The plan file is written to .claude/knowledge/plans/plan_<name>.{md,yaml}."
+        },
+        "e-guard": {
+            title: "execute-guard scope",
+            what: "The check that, in this first cycle, the only new file the agent is allowed to write is the declared plan file.",
+            when: "On any Write during cycle-1 EXECUTE.",
+            canDo: "Permits writing the plan file; would refuse off-scope writes.",
+            why: "The rule that says the first thing you produce on this project is the plan — nothing else yet.",
+            builder: "execute-guard scopes the Write to equal the focused job's declared plan_file (creation-only, cycle==1)."
+        },
+        "e-write": {
+            title: "Write plan file",
+            what: "The act of creating the plan document in the agent's knowledge directory.",
+            when: "During cycle-1 EXECUTE.",
+            canDo: "Produces the persistent plan that later cycles read and refine.",
+            why: "Saving the project plan to the shared drive where the whole team will work from it.",
+            builder: "Write to .claude/knowledge/plans/plan_<name>.md (total_cycles frontmatter) or .yaml (cycles list)."
+        },
+        "e-md": {
+            title: ".md frontmatter",
+            what: "A Stage 2 plan file: prose, with a header that declares how many cycles the job will run.",
+            when: "When the chosen Stage is .md.",
+            canDo: "Carries total_cycles, which drives the completion formula.",
+            why: "A project plan whose cover page says 'this is a four-phase project.'",
+            builder: "YAML frontmatter declares total_cycles: N. Cycles 2..N do operational work against the plan."
+        },
+        "e-yaml": {
+            title: ".yaml cycles list",
+            what: "A Stage 3 plan file: a structured list of per-cycle entries that also feed context into each phase.",
+            when: "When the chosen Stage is .yaml.",
+            canDo: "Declares per-cycle work and injects per-phase objectives as the job runs.",
+            why: "A project plan that hands each phase its own briefing automatically.",
+            builder: "cycles: list; total = max(c.cycle for c in cycles). Injects per-phase context at each phase entry."
+        },
+        "e-soft": {
+            title: "Not an advance gate",
+            what: "The important subtlety: writing the plan file is a permission rule, not a finish-line requirement. EXECUTE can move on even if the file was never written.",
+            when: "Always — it's a property of how the gate works.",
+            canDo: "Lets execute→verify advance regardless of whether the plan file got written.",
+            why: "The difference between 'you're only allowed to write this one file' and 'you must write this file to proceed' — it's the former.",
+            builder: "The plan-file Write is a Write-PERMISSION scope check (execute-guard), NOT an advance requirement. execute→verify can advance even if the file was never written."
+        },
+        "e-stage1": {
+            title: "Stage 1 · false",
+            what: "A reminder that single-cycle jobs have no plan file at all, so they skip this whole step.",
+            when: "When plan_file == false.",
+            canDo: "Nothing here — Stage 1 has nothing to write.",
+            why: "A one-afternoon task with no formal plan document to produce.",
+            builder: "Stage 1 (plan_file==false) has no plan file; this drill applies only to Stage 2/3."
+        },
+
+        /* ---------- VERIFY-BACKEDGE drill ---------- */
+        "v-enter": {
+            title: "VERIFY",
+            what: "The checking phase, where the agent runs tests and validates the work without building anything new.",
+            when: "After EXECUTE.",
+            canDo: "Either confirms the work and moves to CONDENSE, or — if it ends up editing the plan — gets sent back to PLAN.",
+            why: "The inspection pass: sign off, or send it back.",
+            builder: "phasic current_phase=verify; phase_verify verify_entries[-1] tracks plan_edits and forwarded."
+        },
+        "v-edit": {
+            title: "Edit the plan file?",
+            what: "The decisive question of this drill: during checking, did the agent end up changing the plan file?",
+            when: "Tracked on every plan-file edit during VERIFY.",
+            canDo: "Each such edit bumps a counter that decides whether the job can move forward or must go back.",
+            why: "Noticing the inspector reached for the blueprint and started correcting it — that changes everything.",
+            builder: "verify-tracker increments plan_edits on any */plans/plan_* edit (verify-tracker.sh:165-168). The count drives the back-edge."
+        },
+        "v-clean": {
+            title: "plan_edits == 0",
+            what: "The clean case: the plan was never touched during checking, so the job is free to advance.",
+            when: "When no plan-file edit occurred.",
+            canDo: "Allows the only forward path into CONDENSE.",
+            why: "The inspector signed off without touching the blueprint — proceed.",
+            builder: "plan_edits==0 is the ONLY path that may advance forward to CONDENSE."
+        },
+        "v-dirty": {
+            title: "plan_edits ≥ 1",
+            what: "The case where the plan file got edited during checking — meaning the plan itself changed.",
+            when: "On the first plan-file edit in VERIFY.",
+            canDo: "Triggers the forced back-edge: forward is blocked, the job must return to PLAN.",
+            why: "The blueprint was altered mid-inspection — you can't just sign off; you have to re-plan.",
+            builder: "plan_edits>=1 with an active plan_file blocks forward advance (verify-commit.sh:167-179)."
+        },
+        "v-block": {
+            title: "forward BLOCKED",
+            what: "The hard refusal: with the plan edited, the agent's attempt to advance to CONDENSE is rejected.",
+            when: "On a forward-advance attempt after a plan edit.",
+            canDo: "Stops the forward move and directs the agent to back-advance to PLAN.",
+            why: "The gate that won't open toward the finish because the plan no longer matches what was built.",
+            builder: "verify-commit.sh:167-179: active plan_file AND plan_edits>=1 → BLOCK forward, direct to --backward plan, exit 1."
+        },
+        "v-back": {
+            title: "Backward → PLAN",
+            what: "The job returns to PLAN to re-think, updating its working memory before routing onward.",
+            when: "Right after the forward block.",
+            canDo: "PLAN re-cognizes and then routes back to OBSERVE for more context or forward to EXECUTE for a redraft.",
+            why: "Back to the drawing board to reconcile the changed plan with the work.",
+            builder: "verify-commit.sh --backward plan (backward map verify:plan). PLAN then routes to OBSERVE (backward) or EXECUTE (forward)."
+        },
+        "v-cond": {
+            title: "CONDENSE",
+            what: "The consolidation phase — reachable only from a clean VERIFY where the plan was left untouched.",
+            when: "After a plan_edits==0 verify.",
+            canDo: "Begins the 7-step waterfall and the cycle's wrap-up. Drill into Spawn to see how it creates jobs.",
+            why: "The end-of-cycle cleanup that only happens once the inspection passes cleanly.",
+            builder: "Forward map verify→condense, gated on plan_edits==0 (when plan_file active) plus points/update/msg requirements."
+        },
+        "v-retest": {
+            title: "plan → VERIFY re-test",
+            what: "A path that was designed but never built: PLAN deciding the edits were minor and jumping straight back to VERIFY.",
+            when: "N/A — it does not exist in the running system.",
+            canDo: "Nothing today; shown so the map is honest about the design-vs-code gap.",
+            why: "A shortcut sketched on the blueprint that was never actually wired up.",
+            builder: "There is no plan:verify entry in the phase map — the re-test fork is DESIGN-ONLY / UNBUILT."
+        },
+
+        /* ---------- COMPLETION drill ---------- */
+        "c-cond": {
+            title: "Last-cycle CONDENSE",
+            what: "The final consolidation phase, where the agent formally asks whether the job is complete.",
+            when: "The CONDENSE of the job's last cycle.",
+            canDo: "Raises the [JOB-COMPLETE] question that begins the completion sequence.",
+            why: "The end-of-project review meeting where someone asks 'are we actually done?'",
+            builder: "[JOB-COMPLETE] is CONDENSE-only. It becomes eligible per the cycle-formula (Stage 2/3) or plan_file==false (Stage 1)."
+        },
+        "c-elig": {
+            title: "Eligibility",
+            what: "Whether the job is even allowed to be asked 'are you done' — based on its Stage and cycle count.",
+            when: "Checked when CONDENSE considers completion.",
+            canDo: "Gates the question itself: a multi-cycle job must have reached its last cycle.",
+            why: "You don't ask 'are we done' in week one of a six-month project.",
+            builder: "Eligibility = current_cycle >= effective_last_cycle (Stage 2/3) OR plan_file==false (Stage 1)."
+        },
+        "c-gate": {
+            title: "Approval gate",
+            what: "The hard requirements before a job can be approved as complete: dependencies done, the job named, and the phase correct.",
+            when: "On the [JOB-COMPLETE] approval.",
+            canDo: "Refuses approval unless every condition holds — most importantly, all dependencies completed.",
+            why: "The sign-off checklist that won't accept a signature until every line is ticked.",
+            builder: "Requires name set + objective<=cap + all deps completed + current_phase==condense (job.sh:376-428). Dep-walk enforced at two points."
+        },
+        "c-approve": {
+            title: "job.sh approve → complete",
+            what: "The two-step that actually closes the job: approval is recorded, then the status is flipped.",
+            when: "Once the approval gate passes.",
+            canDo: "Sets the user-approval flag and runs the gated completion.",
+            why: "Recording the sign-off, then stamping the file 'closed.'",
+            builder: "Post-handler runs job.sh --hook approve (sets user_approval=true; hook-gated) then job.sh complete (the gated executor performs the active→completed flip)."
+        },
+        "c-status": {
+            title: "status: completed",
+            what: "The job is now done — but it deliberately stays focused for a short cleanup window.",
+            when: "The instant completion succeeds.",
+            canDo: "Marks the job finished while keeping it focused so the cycle can finish tidying up.",
+            why: "Stamping a case closed but leaving it on your desk for the afternoon to file the last paperwork.",
+            builder: "status→completed; focus is KEPT (job.sh:419, WU-001 decoupling). last_completed_at is set."
+        },
+        "c-unfocus": {
+            title: "Unfocus at idle",
+            what: "The true end: when CONDENSE advances to idle, the completed job is finally unfocused, freeing the agent to pick the next job.",
+            when: "At the condense→idle boundary.",
+            canDo: "Clears focus from the completed job — the phase-transition where leaving the job belongs.",
+            why: "Finally filing the closed case away and turning to the next one on the stack.",
+            builder: "condense-commit.sh:268-276 detects status==completed at the advance boundary and calls job.sh --hook clear-focus (the relocated unfocus, completion Event 2)."
+        },
+        "c-notbuilt": {
+            title: "extension / repeat / reactivation",
+            what: "A whole family of features named in the blogs — extending a job, making it repeat, reactivating it — that are not yet built.",
+            when: "N/A — design-only.",
+            canDo: "Nothing today; listed so the completion picture is honest about what's real.",
+            why: "Features promised in the brochure that the current model hasn't shipped.",
+            builder: "extension_cycles_added, --add-cycle, effective_last_cycle, repeating_interval, [REPEAT-JOB], and the two heartbeats are NOT-YET-BUILT design-only."
+        },
+
+        /* ---------- GROWTH-OVERVIEW drill ---------- */
+        "g-id": {
+            title: "ONE timestamp ID",
+            what: "The single thread that ties everything together: a timestamp-based ID. Every plugin's record for this job uses that same ID.",
+            when: "Assigned at birth, used for the job's whole life.",
+            canDo: "Acts as the only shared key linking the scattered pieces into one job.",
+            why: "Your patient number — the one string that lets the GP, pharmacy, and lab all know they're talking about you.",
+            builder: "The timestamp ID minted at create-active. Every plugin's data.json keys its extension record on this same id."
+        },
+        "g-jobcore": {
+            title: "job_core/data.json",
+            what: "The base file: the job's identity and core facts — name, objective, status, focus, full interaction history, and dependencies.",
+            when: "Exists from birth.",
+            canDo: "Holds the source-of-truth record every other lane keys against.",
+            why: "The main patient chart everything else references.",
+            builder: "Owns id, name, objective, status, focused, user_interactions, depends_on, user_approval, plugin_lock_approval, repeating_interval, last_completed_at, created_at, updated_at."
+        },
+        "g-phasic": {
+            title: "phasic_system/data.json",
+            what: "A separate small file tracking which phase the job is in and which cycle it's on.",
+            when: "Created at birth (parked at idle, cycle 0).",
+            canDo: "Drives the whole OPEVC ring for this job.",
+            why: "The 'where in the process is this' tracker clipped to the chart.",
+            builder: "Mirror record {id, current_phase, cycle} (phase.sh:159). Its own data.json, keyed by the shared id."
+        },
+        "g-plan": {
+            title: "phase_plan/data.json",
+            what: "The file that appears in PLAN, holding the job's Stage decision, its plan entries, and its effort multiplier.",
+            when: "Lights up when the job first enters PLAN.",
+            canDo: "Records plan_file (the Stage), plan_entries, multiplier, and the extension fields.",
+            why: "The project-type and planning section added to the chart once planning begins.",
+            builder: "phase_plan extension: plan_file (born null), plan_entries[], multiplier, altered_claude_md, extension_cycles_added, extension_contexts."
+        },
+        "g-trackers": {
+            title: "observe/execute/verify trackers",
+            what: "Per-phase scratchpads that count work done, track memory updates, tally markers, and record plan edits.",
+            when: "Each lights up the first time its phase tracks an event.",
+            canDo: "Power the point gates, the marker counts, and the VERIFY plan-edit back-edge.",
+            why: "The running tallies each department keeps on the case as it passes through.",
+            builder: "phase_observe/execute/verify trackers: points, multiplier sentinel, claude_md_updates, marker_counts (incl. pending_job), verify_entries[].plan_edits + forwarded."
+        },
+        "g-condense": {
+            title: "phase_condense/data.json",
+            what: "The file used during consolidation, including the count of jobs spawned from pending-job notes this cycle.",
+            when: "Lights up when the job enters CONDENSE.",
+            canDo: "Tracks the 7-step waterfall's bookkeeping, like pending_jobs_created.",
+            why: "The end-of-cycle summary sheet noting what new work was opened.",
+            builder: "condense_entries[-1].pending_jobs_created increments per granted [PENDING-JOB]."
+        },
+        "g-summary": {
+            title: "interaction_summary/data.json",
+            what: "The optional file holding the compressed summary state — but only if the job's history grew long enough to need one.",
+            when: "Created lazily on the first time the record crosses the size threshold.",
+            canDo: "Tracks how much of the history is summarized and whether the summary is stale.",
+            why: "The cover-summary sheet that's only added once a file gets thick.",
+            builder: "interaction_summary mirror: last_summarized_index, summary_needed, summary_chain[]. Absent until the first TOKEN_THRESHOLD crossing."
+        },
+        "g-lazy": {
+            title: "Each lane LIGHTS UP LAZILY",
+            what: "The pattern across all of these files: none of them exist up front. Each appears only when the job first reaches that plugin's domain.",
+            when: "Throughout the job's life, as it moves through phases.",
+            canDo: "Lets the system stay lean — a job only carries the records it has actually needed.",
+            why: "Your file at the specialist's office doesn't exist until your first visit there.",
+            builder: "Each plugin lazily appends its own extension record the first time the job enters that plugin's domain. 'The object grows' = new lanes lighting up."
+        },
+        "g-mirror": {
+            title: "mirror-by-shared-ID",
+            what: "The architectural punchline: no plugin ever reads another's file. They coordinate only through the shared ID and a published set of commands.",
+            when: "Always — it's the design rule.",
+            canDo: "Keeps every plugin independent and replaceable, while still acting on one coherent job.",
+            why: "The pharmacy never opens the lab's records — they just both quote your patient number and pass standard forms.",
+            builder: "Distributed Job Extension / mirror-by-shared-ID. No plugin reads another's data.json; coordination is via shared id + published --hook commands only."
+        }
+    };
+
+})();
+    </script>
+
+    <!-- ============================================================
+         BRIDGE — wires HM.JOB into the engine contract that the
+         forked hook-flow ENGINE expects (HM.buildGraph / HM.CAPTIONS /
+         HM.NODE_INFO / HM.LANES + helpers + the ?stage= resolver).
+         ============================================================ -->
+    <script>
+    (function () {
+        "use strict";
+        var HM = (window.HookMap = window.HookMap || {});
+        var JOB = HM.JOB || {};
+
+        /* shared helpers (the engine falls back to its own if absent, but we
+           define the model-side ones the original kept on HM) */
+        HM.el = function (id) { return document.getElementById(id); };
+        HM.escapeHtml = function (s) {
+            return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+        };
+
+        /* engine reads these by name */
+        HM.CAPTIONS = JOB.CAPTIONS || {};
+        HM.NODE_INFO = JOB.NODE_INFO || {};
+        HM.LANES = JOB.LANES || {};
+        HM.STAGE_ALIAS = JOB.STAGE_ALIAS || {};
+
+        var VIEWS = JOB.VIEWS || {};
+        HM.GRAPHS = VIEWS;
+        HM.buildGraph = function (view) { return VIEWS[view]; };
+
+        /* default + view-id validity */
+        HM.DEFAULT_VIEW = "journey";
+        HM.isView = function (v) { return !!VIEWS[v]; };
+
+        /* lane → accent hex (mirrors the CSS lane fills; used by the legend +
+           the info-panel lane tag so colors never drift from the stylesheet) */
+        HM.LANE_COLORS = {
+            core: "#c9ccf2",
+            job_core: "#6366f1",
+            phasic: "#8b5cf6",
+            plan: "#38bdf8",
+            tracker: "#fbbf24",
+            condense: "#34d399",
+            summary: "#f472b6",
+            footer: "#94a3b8"
+        };
+
+        /* resolve a raw ?stage= / #hash token to a real view id, or null.
+           Order: exact view id → STAGE_ALIAS mapping → null (caller defaults). */
+        HM.resolveStage = function (token) {
+            if (!token) return null;
+            token = String(token);
+            if (VIEWS[token]) return token;
+            if (HM.STAGE_ALIAS[token]) return HM.STAGE_ALIAS[token];
+            return null;
+        };
+
+        /* human-readable per-view titles for the breadcrumb */
+        HM.VIEW_TITLES = {
+            journey: "The Job's Life",
+            birth: "Job Birth",
+            accumulate: "Accumulate",
+            spawn: "Spawn a Job",
+            dependency: "Dependency Route",
+            "stage-decision": "The Stage Decision",
+            "execute-planfile": "Writing the Plan File",
+            "verify-backedge": "The VERIFY Back-Edge",
+            completion: "Completion",
+            "growth-overview": "One ID, N Lanes"
+        };
+    })();
+    </script>
+
+    <!-- ============================================================
+         ENGINE — ELK render engine (forked from hook-flow v3.6.1).
+         Adapted for the JOB model: lane coloring · hard/soft edges ·
+         ⚠ contradiction badges + "Blog vs code" info field · ?stage=
+         deep-link · journey default · lane legend.
+         ============================================================ -->
+    <script>
+    (function () {
+        'use strict';
+
+        var HM = (window.HookMap = window.HookMap || {});
+
+        function ce(tag, cls, html) {
+            var n = document.createElement(tag);
+            if (cls) n.className = cls;
+            if (html != null) n.innerHTML = html;
+            return n;
+        }
+        var escapeHtml = HM.escapeHtml || function (s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        };
+        var SVGNS = 'http://www.w3.org/2000/svg';
+
+        var DEFAULT_VIEW = HM.DEFAULT_VIEW || 'journey';
+
+        /* ---- FLOW DOT: rides the OPEVC ring on the journey view ---- */
+        var FLOW_DOT = true;
+        var FLOW_DOT_EDGES = [
+            'j-idle-obs', 'j-obs-plan', 'j-plan-exec',
+            'j-exec-ver', 'j-ver-cond', 'j-cond-idle'
+        ];
+        var FLOW_DOT_SEG_DUR = 3.4;
+
+        function svg(tag, attrs) {
+            var n = document.createElementNS(SVGNS, tag);
+            if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+            return n;
+        }
+
+        /* ---- ELK instance ---- */
+        var elk = null;
+        function getElk() {
+            if (elk) return elk;
+            if (typeof ELK === 'undefined') return null;
+            elk = new ELK();
+            return elk;
+        }
+
+        /* ---- DOM refs ---- */
+        var root, viewport, topbarCrumbs, backPill, info, infoContent, skeleton;
+        var caption, tip, tipT, tipW, tipWarn, legend, legendHead, isMobile, bgNote;
+        var currentView = DEFAULT_VIEW;
+
+        var BG_NOTE_TEXT = 'The life of one job, as a Markov ring. A first prompt BIRTHS the job; it laps OBSERVE → PLAN → EXECUTE → VERIFY → CONDENSE and back to idle. Along the way it can SPAWN follow-up work (only in CONDENSE) and WAIT on dependencies; only a [JOB-COMPLETE] answer lets it leave. The catch: the job is not one record — it is ONE timestamp ID scattered across many plugin data.json files, each lane lighting up lazily. Color = data owner. Solid = hard gate; dashed = coaching or permission.';
+        var laying = false;
+
+        var BASE_OPTS = {
+            'elk.algorithm': 'layered',
+            'elk.edgeRouting': 'SPLINES',
+            'elk.spacing.nodeNode': '50',
+            'elk.layered.spacing.nodeNodeBetweenLayers': '70',
+            'elk.spacing.edgeNode': '24',
+            'elk.spacing.edgeEdge': '24',
+            'elk.layered.spacing.edgeNodeBetweenLayers': '24',
+            'elk.layered.spacing.edgeEdgeBetweenLayers': '24',
+            'elk.layered.mergeEdges': 'false',
+            'elk.layered.nodePlacement.strategy': 'NETWORK_SIMPLEX',
+            'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
+            'elk.padding': '[top=30,left=30,bottom=30,right=30]'
+        };
+
+        function direction() {
+            return window.matchMedia('(max-width: 820px)').matches ? 'DOWN' : 'RIGHT';
+        }
+
+        function applyOptions(graph) {
+            var opts = {};
+            for (var k in BASE_OPTS) opts[k] = BASE_OPTS[k];
+            for (var j in (graph.layoutOptions || {})) opts[j] = graph.layoutOptions[j];
+            opts['elk.direction'] = direction();
+            if (!opts['elk.hierarchyHandling']) opts['elk.hierarchyHandling'] = 'INCLUDE_CHILDREN';
+            graph.layoutOptions = opts;
+            return graph;
+        }
+
+        function renderView(viewId, opts) {
+            opts = opts || {};
+            var engine = getElk();
+            if (!engine) { showError('ELK failed to load — the interactive map needs js/vendor/elk.bundled.js.'); return Promise.resolve(); }
+            if (laying) return Promise.resolve();
+            laying = true;
+
+            var build = HM.buildGraph || function (id) { return (HM.GRAPHS || {})[id]; };
+            var descriptor = build(viewId);
+            if (!descriptor) { laying = false; showError('Unknown view: ' + viewId); return Promise.resolve(); }
+            var graph = applyOptions(cloneGraph(descriptor));
+
+            var stage = viewport.querySelector('.hm-stage');
+            if (stage && !opts.silent) stage.classList.add('is-fading');
+
+            return engine.layout(graph).then(function (laidOut) {
+                var delay = (stage && !opts.silent) ? 180 : 0;
+                return new Promise(function (res) { setTimeout(res, delay); }).then(function () {
+                    drawGraph(laidOut, viewId);
+                    currentView = viewId;
+                    updateChrome(viewId);
+                    hideSkeleton();
+                    laying = false;
+                });
+            }).catch(function (err) {
+                laying = false;
+                showError('Layout failed: ' + (err && err.message ? err.message : err));
+            });
+        }
+
+        function drawGraph(g, viewId) {
+            var W = Math.max(1, g.width || 1), H = Math.max(1, g.height || 1);
+            var stage = svg('svg', {
+                'class': 'hm-stage',
+                viewBox: '0 0 ' + W + ' ' + H,
+                preserveAspectRatio: 'xMidYMid meet'
+            });
+            stage.appendChild(buildDefs());
+
+            var eLayer = svg('g', { 'class': 'hm-edges' });
+            (g.edges || []).forEach(function (e) { drawEdge(eLayer, e); });
+            stage.appendChild(eLayer);
+
+            var flow = buildFlowDot(g, viewId);
+            if (flow) stage.appendChild(flow);
+
+            var nLayer = svg('g', { 'class': 'hm-nodes' });
+            (g.children || []).forEach(function (c) { drawNode(nLayer, c, 0, 0); });
+            stage.appendChild(nLayer);
+
+            var old = viewport.querySelector('.hm-stage');
+            if (old) old.remove();
+            viewport.insertBefore(stage, viewport.firstChild);
+            void stage.getBoundingClientRect();
+            stage.classList.remove('is-fading');
+            zoom = 1; panX = 0; panY = 0;
+            stage.style.transform = '';
+            hideTip();
+        }
+
+        function buildDefs() {
+            var defs = svg('defs');
+            [['hm-arrow', 'rgba(200,204,236,0.92)'],
+             ['hm-arrow-soft', 'rgba(160,166,224,0.7)']
+            ].forEach(function (m) {
+                var mk = svg('marker', {
+                    id: m[0], markerWidth: 12, markerHeight: 12, refX: 8.4, refY: 4,
+                    orient: 'auto', markerUnits: 'userSpaceOnUse'
+                });
+                mk.appendChild(svg('path', { d: 'M0,0 L10,4 L0,8 Z', fill: m[1] }));
+                defs.appendChild(mk);
+            });
+            return defs;
+        }
+
+        /* ---- node: glass HTML inside <foreignObject>, lane-colored ---- */
+        function drawNode(layer, node, ox, oy) {
+            var m = node.meta || {};
+            var x = ox + (node.x || 0), y = oy + (node.y || 0);
+            var w = node.width || 160, h = node.height || 56;
+
+            if (m.type === 'group') {
+                var grp = svg('g');
+                grp.appendChild(svg('rect', { 'class': 'hm-group-rect', x: x, y: y, width: w, height: h, rx: 14 }));
+                if (m.title) {
+                    var lbl = svg('text', { 'class': 'hm-grouplabel', x: x + 12, y: y + 18 });
+                    lbl.textContent = m.title;
+                    grp.appendChild(lbl);
+                }
+                layer.appendChild(grp);
+                (node.children || []).forEach(function (c) { drawNode(layer, c, x, y); });
+                return;
+            }
+
+            if (m.type === 'portal') {
+                var p = svg('g', { 'class': 'hm-portal' });
+                p.appendChild(svg('rect', { 'class': 'hm-portal__bg', x: x, y: y, width: w, height: h, rx: h / 2 }));
+                var pt = svg('text', { 'class': 'hm-portal__txt', x: x + w / 2, y: y + h / 2 + 4, 'text-anchor': 'middle' });
+                pt.textContent = m.portalLabel || 'enter';
+                p.appendChild(pt);
+                p.style.cursor = 'pointer';
+                p.addEventListener('click', function (ev) {
+                    ev.stopPropagation();
+                    navigate(m.portalTo || DEFAULT_VIEW);
+                });
+                p.setAttribute('tabindex', '0');
+                p.setAttribute('role', 'button');
+                p.setAttribute('aria-label', (m.portalLabel || 'Back to the journey').replace(/[↑↓←→⤵]/g, '').trim() + ' — go back');
+                p.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') { ev.preventDefault(); navigate(m.portalTo || DEFAULT_VIEW); }
+                });
+                layer.appendChild(p);
+                return;
+            }
+
+            var fo = svg('foreignObject', { x: x, y: y, width: w, height: h });
+            var laneCls = m.lane ? ' hm-node--lane-' + m.lane : '';
+            var box = ce('div', 'hm-node hm-node--' + (m.type || 'stage') + laneCls);
+            box.style.position = 'relative';
+            var html = '';
+            if (m.step) html += '<span class="hm-step" aria-hidden="true">' + escapeHtml(m.step) + '</span>';
+            if (m.badge) html += '<span class="hm-node__badge">' + escapeHtml(m.badge) + '</span>';
+            if (m.contradiction) html += '<span class="hm-warn" aria-hidden="true" title="Blog vs code — click to read">&#9888;</span>';
+            html += '<span class="hm-node__title">' + escapeHtml(m.title || node.id) + '</span>';
+            if (m.sub) html += '<span class="hm-node__sub">' + escapeHtml(m.sub) + '</span>';
+            box.innerHTML = html;
+
+            box.addEventListener('click', function (ev) {
+                ev.stopPropagation();
+                if (m.drill) { navigate(m.drill); return; }
+                openInfo(node.id);
+            });
+
+            // interactive iff it drills, has NODE_INFO, or carries a contradiction.
+            var interactive = !!(m.drill || (HM.NODE_INFO || {})[node.id] || m.contradiction);
+            if (interactive) {
+                box.setAttribute('tabindex', '0');
+                box.setAttribute('role', 'button');
+                var aria;
+                if (m.drill) {
+                    aria = (m.title || node.id) + ' — open the ' + (m.title || node.id) + ' room';
+                } else {
+                    aria = (m.title || node.id) + (m.sub ? ', ' + m.sub : '') + (m.contradiction ? ' — blog vs code note' : '') + ' — show details';
+                }
+                box.setAttribute('aria-label', aria);
+                box.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'Spacebar') { ev.preventDefault(); box.click(); }
+                });
+            }
+
+            box.addEventListener('mouseenter', function (ev) { showTip(node.id, m, ev); });
+            box.addEventListener('mousemove', function (ev) { moveTip(ev); });
+            box.addEventListener('mouseleave', hideTip);
+
+            fo.appendChild(box);
+            layer.appendChild(fo);
+        }
+
+        /* ---- edge: SMOOTH CURVED SVG path; hard=solid, soft=dashed ---- */
+        function n3(v) { return Math.round(v * 100) / 100; }
+
+        function smoothPath(pts) {
+            if (pts.length < 2) return '';
+            if (pts.length === 2) {
+                return 'M' + n3(pts[0].x) + ',' + n3(pts[0].y) +
+                       ' L' + n3(pts[1].x) + ',' + n3(pts[1].y);
+            }
+            var d = 'M' + n3(pts[0].x) + ',' + n3(pts[0].y);
+            for (var i = 0; i < pts.length - 1; i++) {
+                var p0 = pts[i === 0 ? 0 : i - 1];
+                var p1 = pts[i];
+                var p2 = pts[i + 1];
+                var p3 = pts[i + 2 < pts.length ? i + 2 : pts.length - 1];
+                var c1x = p1.x + (p2.x - p0.x) / 6;
+                var c1y = p1.y + (p2.y - p0.y) / 6;
+                var c2x = p2.x - (p3.x - p1.x) / 6;
+                var c2y = p2.y - (p3.y - p1.y) / 6;
+                d += ' C' + n3(c1x) + ',' + n3(c1y) + ' ' + n3(c2x) + ',' + n3(c2y) +
+                     ' ' + n3(p2.x) + ',' + n3(p2.y);
+            }
+            return d;
+        }
+
+        function splinePath(s) {
+            var start = s.startPoint;
+            var bends = s.bendPoints || [];
+            var end = s.endPoint;
+            if (!bends.length) {
+                return 'M' + n3(start.x) + ',' + n3(start.y) +
+                       ' L' + n3(end.x) + ',' + n3(end.y);
+            }
+            var d = 'M' + n3(start.x) + ',' + n3(start.y);
+            var i = 0;
+            while (i + 3 <= bends.length) {
+                d += ' C' + n3(bends[i].x) + ',' + n3(bends[i].y) +
+                     ' ' + n3(bends[i + 1].x) + ',' + n3(bends[i + 1].y) +
+                     ' ' + n3(bends[i + 2].x) + ',' + n3(bends[i + 2].y);
+                i += 3;
+            }
+            var rem = bends.length - i;
+            if (rem === 2) {
+                d += ' C' + n3(bends[i].x) + ',' + n3(bends[i].y) +
+                     ' ' + n3(bends[i + 1].x) + ',' + n3(bends[i + 1].y) +
+                     ' ' + n3(end.x) + ',' + n3(end.y);
+            } else if (rem === 1) {
+                d += ' Q' + n3(bends[i].x) + ',' + n3(bends[i].y) +
+                     ' ' + n3(end.x) + ',' + n3(end.y);
+            } else {
+                var last = bends[bends.length - 1];
+                d += ' Q' + n3(last.x) + ',' + n3(last.y) +
+                     ' ' + n3(end.x) + ',' + n3(end.y);
+            }
+            return d;
+        }
+
+        function drawEdge(layer, edge) {
+            var secs = edge.sections || [];
+            var m = edge.meta || {};
+            var kind = m.kind || 'hard';
+            var cls = 'hm-edge hm-edge--' + (kind === 'soft' ? 'soft' : 'hard');
+            var marker = (kind === 'soft') ? 'hm-arrow-soft' : 'hm-arrow';
+
+            secs.forEach(function (s) {
+                var d;
+                var bends = s.bendPoints || [];
+                if (bends.length) {
+                    d = splinePath(s);
+                } else {
+                    d = smoothPath([s.startPoint, s.endPoint]);
+                }
+                var path = svg('path', { 'class': cls, d: d, 'marker-end': 'url(#' + marker + ')' });
+                layer.appendChild(path);
+            });
+
+            var label = m.label;
+            if (label) {
+                var lx, ly;
+                if (edge.labels && edge.labels[0] && edge.labels[0].x != null) {
+                    lx = edge.labels[0].x; ly = edge.labels[0].y;
+                } else if (secs[0]) {
+                    var bp = secs[0].bendPoints && secs[0].bendPoints.length
+                        ? secs[0].bendPoints[Math.floor(secs[0].bendPoints.length / 2)]
+                        : { x: (secs[0].startPoint.x + secs[0].endPoint.x) / 2,
+                            y: (secs[0].startPoint.y + secs[0].endPoint.y) / 2 };
+                    lx = bp.x; ly = bp.y - 5;
+                }
+                if (lx != null) {
+                    var tw = label.length * 6.1 + 12;
+                    var bg = svg('rect', { 'class': 'hm-edge-label-bg',
+                        x: lx - tw / 2, y: ly - 11, width: tw, height: 16, rx: 6 });
+                    layer.appendChild(bg);
+                    var t = svg('text', { 'class': 'hm-edge-label', x: lx, y: ly + 1, 'text-anchor': 'middle' });
+                    t.textContent = label;
+                    layer.appendChild(t);
+                }
+            }
+        }
+
+        function edgePathD(edge) {
+            var secs = (edge && edge.sections) || [];
+            var s = secs[0];
+            if (!s || !s.startPoint || !s.endPoint) return '';
+            var bends = s.bendPoints || [];
+            return bends.length ? splinePath(s) : smoothPath([s.startPoint, s.endPoint]);
+        }
+
+        function buildFlowDot(g, viewId) {
+            if (!FLOW_DOT || viewId !== DEFAULT_VIEW) return null;
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
+            var byId = {};
+            (g.edges || []).forEach(function (e) { byId[e.id] = e; });
+
+            var paths = [];
+            FLOW_DOT_EDGES.forEach(function (id) {
+                var d = edgePathD(byId[id]);
+                if (d) paths.push(d);
+            });
+            if (!paths.length) return null;
+
+            var totalDur = paths.length * FLOW_DOT_SEG_DUR;
+
+            var layer = svg('g', { 'class': 'hm-flowdot', 'aria-hidden': 'true' });
+            var dot = svg('circle', {
+                r: 3,
+                fill: 'rgba(167,139,250,0.9)',
+                stroke: 'rgba(99,102,241,0.55)',
+                'stroke-width': 2.5,
+                opacity: 0.55,
+                filter: 'drop-shadow(0 0 5px rgba(129,140,248,0.85))'
+            });
+
+            var anims = [];
+            paths.forEach(function (d, i) {
+                var a = svg('animateMotion', {
+                    dur: FLOW_DOT_SEG_DUR + 's',
+                    fill: 'freeze',
+                    path: d,
+                    rotate: '0',
+                    calcMode: 'linear'
+                });
+                a.setAttribute('id', 'hm-flowseg-' + i);
+                if (i === 0) {
+                    a.setAttribute('begin', '0s; hm-flowseg-' + (paths.length - 1) + '.end');
+                } else {
+                    a.setAttribute('begin', 'hm-flowseg-' + (i - 1) + '.end');
+                }
+                anims.push(a);
+                dot.appendChild(a);
+            });
+
+            var pulse = svg('animate', {
+                attributeName: 'opacity',
+                values: '0.30; 0.62; 0.30',
+                dur: totalDur + 's',
+                repeatCount: 'indefinite',
+                calcMode: 'linear'
+            });
+            dot.appendChild(pulse);
+
+            layer.appendChild(dot);
+            return layer;
+        }
+
+        /* ============================================================
+           DRILL / breadcrumb / hash / popstate
+           ============================================================ */
+        var VIEW_TITLES = HM.VIEW_TITLES || { journey: "The Job's Life" };
+
+        function navigate(viewId, opts) {
+            opts = opts || {};
+            if (viewId === currentView) return;
+            if (!opts.noHash) {
+                if (viewId === DEFAULT_VIEW) {
+                    if (location.hash || /[?&]stage=/.test(location.search)) {
+                        history.pushState({ v: viewId }, '', location.pathname);
+                    }
+                } else {
+                    history.pushState({ v: viewId }, '', '#' + viewId);
+                }
+            }
+            closeInfo();
+            renderView(viewId);
+        }
+
+        function updateChrome(viewId) {
+            topbarCrumbs.innerHTML = '';
+            var crumbs = viewId === DEFAULT_VIEW ? [DEFAULT_VIEW] : [DEFAULT_VIEW, viewId];
+            crumbs.forEach(function (v, i) {
+                if (i > 0) topbarCrumbs.appendChild(ce('span', 'hm-crumb-sep', '/'));
+                var c = ce('span', 'hm-crumb' + (i === crumbs.length - 1 ? ' is-current' : ''), escapeHtml(VIEW_TITLES[v] || v));
+                if (i < crumbs.length - 1) c.addEventListener('click', function () { navigate(v); });
+                topbarCrumbs.appendChild(c);
+            });
+            if (viewId === DEFAULT_VIEW) root.classList.remove('is-drill');
+            else root.classList.add('is-drill');
+            var chromeUp = document.getElementById('chrome-up');
+            if (chromeUp) chromeUp.style.display = (viewId === DEFAULT_VIEW) ? '' : 'none';
+
+            if (caption) {
+                var cap = (HM.CAPTIONS || {})[viewId];
+                caption.innerHTML = cap || '';
+                caption.style.opacity = cap ? '1' : '0';
+            }
+            if (bgNote) {
+                bgNote.classList.toggle('is-hidden', viewId !== DEFAULT_VIEW || isMobile);
+            }
+        }
+
+        /* ============================================================
+           INFO PANEL — 5 plain fields + lane tag + builder tier +
+           "Blog vs code" contradiction tier.
+           ============================================================ */
+        function openInfo(nodeId) {
+            var d = (HM.NODE_INFO || {})[nodeId];
+            // pull the node's lane + contradiction from whatever view holds it
+            var meta = findNodeMeta(nodeId);
+            if (!d && !(meta && meta.contradiction)) { closeInfo(); return; }
+            var html = '';
+            html += '<h2>' + escapeHtml((d && d.title) || (meta && meta.title) || nodeId) + '</h2>';
+            if (meta && meta.lane && (HM.LANES || {})[meta.lane]) {
+                var laneColor = (HM.LANE_COLORS || {})[meta.lane] || '#8b5cf6';
+                html += '<div class="info-lane-tag">' +
+                    '<span class="info-lane-dot" style="background:' + laneColor + '"></span>' +
+                    escapeHtml((HM.LANES[meta.lane].label) || meta.lane) + ' lane</div>';
+            }
+            if (d) {
+                html += field('What it is', d.what);
+                html += field('When it happens', d.when);
+                html += field('What it can do', d.canDo);
+                html += field('Why it matters', d.why);
+                if (d.builder) {
+                    html += '<div class="info-builder">' +
+                        '<div class="info-builder-label">For builders &mdash; under the hood</div>' +
+                        '<div class="info-builder-body">' + escapeHtml(d.builder) + '</div></div>';
+                }
+            }
+            if (meta && meta.contradiction) {
+                html += '<div class="info-warn">' +
+                    '<div class="info-warn-label">Blog vs code</div>' +
+                    '<div class="info-warn-body">' + escapeHtml(meta.contradiction) + '</div></div>';
+            }
+            infoContent.innerHTML = html;
+            info.classList.add('open');
+            var h = infoContent.querySelector('h2');
+            if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+        }
+        function field(label, val) {
+            if (!val) return '';
+            return '<div class="info-field"><div class="info-field-label">' + escapeHtml(label) +
+                '</div><div class="info-field-body">' + escapeHtml(val) + '</div></div>';
+        }
+        function closeInfo() { if (info) info.classList.remove('open'); }
+        function infoIsOpen() { return info && info.classList.contains('open'); }
+
+        /* Find a node's meta (lane/contradiction/title) by scanning the current
+           view's descriptor first, then all views. */
+        function findNodeMeta(nodeId) {
+            var views = HM.GRAPHS || {};
+            var order = [currentView];
+            for (var v in views) { if (order.indexOf(v) < 0) order.push(v); }
+            for (var i = 0; i < order.length; i++) {
+                var g = views[order[i]];
+                if (!g) continue;
+                var found = scanChildren(g.children || [], nodeId);
+                if (found) return found;
+            }
+            return null;
+        }
+        function scanChildren(children, nodeId) {
+            for (var i = 0; i < children.length; i++) {
+                var c = children[i];
+                if (c.id === nodeId) return c.meta || {};
+                if (c.children) {
+                    var r = scanChildren(c.children, nodeId);
+                    if (r) return r;
+                }
+            }
+            return null;
+        }
+
+        function onKeydown(e) {
+            if (e.key !== 'Escape' && e.key !== 'Esc') return;
+            if (orient && orient.classList.contains('is-open')) { closeOrient(); e.stopPropagation(); return; }
+            if (infoIsOpen()) { closeInfo(); e.stopPropagation(); return; }
+            if (zoom !== 1 || panX !== 0 || panY !== 0) { resetZoom(); e.stopPropagation(); return; }
+            if (currentView !== DEFAULT_VIEW) { navigate(DEFAULT_VIEW); e.stopPropagation(); return; }
+        }
+
+        var wasMobile = null;
+        function onResize() {
+            var m = window.matchMedia('(max-width: 820px)').matches;
+            isMobile = m;
+            if (wasMobile === null) { wasMobile = m; return; }
+            if (m !== wasMobile) {
+                wasMobile = m;
+                renderView(currentView, { silent: true });
+            }
+        }
+
+        function hideSkeleton() { if (skeleton) skeleton.classList.add('is-hidden'); }
+        function showError(msg) {
+            hideSkeleton();
+            var existing = viewport.querySelector('.hm-error');
+            if (existing) existing.remove();
+            viewport.appendChild(ce('div', 'hm-error', escapeHtml(msg)));
+        }
+
+        function cloneGraph(g) { return JSON.parse(JSON.stringify(g)); }
+
+        function showTip(nodeId, m, ev) {
+            if (isMobile || !tip) return;
+            var d = (HM.NODE_INFO || {})[nodeId];
+            var title = (d && d.title) || m.title || nodeId;
+            var what = d ? d.what : (m.sub || '');
+            tipT.textContent = title;
+            tipW.textContent = what || '';
+            if (tipWarn) tipWarn.style.display = m.contradiction ? 'block' : 'none';
+            tip.classList.add('is-on');
+            tip.setAttribute('aria-hidden', 'false');
+            moveTip(ev);
+        }
+        function moveTip(ev) {
+            if (isMobile || !tip || !tip.classList.contains('is-on')) return;
+            var pad = 16, tw = tip.offsetWidth, th = tip.offsetHeight;
+            var x = ev.clientX + pad, y = ev.clientY + pad;
+            if (x + tw > window.innerWidth - 8) x = ev.clientX - tw - pad;
+            if (y + th > window.innerHeight - 8) y = ev.clientY - th - pad;
+            tip.style.left = Math.max(8, x) + 'px';
+            tip.style.top = Math.max(8, y) + 'px';
+        }
+        function hideTip() {
+            if (!tip) return;
+            tip.classList.remove('is-on');
+            tip.setAttribute('aria-hidden', 'true');
+        }
+
+        /* ============================================================
+           ZOOM / PAN — opt-in detail on top of the auto-fit default.
+           ============================================================ */
+        var zoom = 1, panX = 0, panY = 0;
+        var ZMIN = 1, ZMAX = 4;
+
+        function currentStage() { return viewport.querySelector('.hm-stage'); }
+        function applyTransform() {
+            var s = currentStage();
+            if (!s) return;
+            s.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + zoom + ')';
+        }
+        function resetZoom() { zoom = 1; panX = 0; panY = 0; applyTransform(); }
+        function zoomBy(factor, cx, cy) {
+            var s = currentStage();
+            if (!s) return;
+            var nz = Math.min(ZMAX, Math.max(ZMIN, zoom * factor));
+            if (nz === zoom) return;
+            var rect = s.getBoundingClientRect();
+            if (cx == null) { cx = rect.left + rect.width / 2; cy = rect.top + rect.height / 2; }
+            var ox = (cx - rect.left) / zoom;
+            var oy = (cy - rect.top) / zoom;
+            panX -= ox * (nz - zoom);
+            panY -= oy * (nz - zoom);
+            zoom = nz;
+            if (zoom <= ZMIN + 0.001) { panX = 0; panY = 0; zoom = 1; }
+            applyTransform();
+        }
+        function bindZoom() {
+            viewport.addEventListener('wheel', function (e) {
+                if (!currentStage()) return;
+                e.preventDefault();
+                zoomBy(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY);
+            }, { passive: false });
+
+            var PAN_THRESHOLD = 8;
+            var armed = false, dragging = false, sx = 0, sy = 0, opx = 0, opy = 0;
+            viewport.addEventListener('mousedown', function (e) {
+                var s = currentStage();
+                if (!s || e.button !== 0 || zoom <= 1) return;
+                armed = true; dragging = false;
+                sx = e.clientX; sy = e.clientY; opx = panX; opy = panY;
+            });
+            window.addEventListener('mousemove', function (e) {
+                if (!armed) return;
+                if (!dragging) {
+                    if (Math.hypot(e.clientX - sx, e.clientY - sy) < PAN_THRESHOLD) return;
+                    dragging = true;
+                    var st = currentStage(); if (st) st.classList.add('is-panning');
+                    hideTip();
+                }
+                panX = opx + (e.clientX - sx);
+                panY = opy + (e.clientY - sy);
+                applyTransform();
+            });
+            window.addEventListener('mouseup', function () {
+                armed = false;
+                if (!dragging) return;
+                dragging = false;
+                var s = currentStage();
+                if (s) s.classList.remove('is-panning');
+            });
+
+            var pStart = 0, pZoom = 1, tpx = 0, tpy = 0, tox = 0, toy = 0, panning = false, tMoved = false;
+            viewport.addEventListener('touchstart', function (e) {
+                if (e.touches.length === 2) {
+                    pStart = touchDist(e.touches); pZoom = zoom;
+                } else if (e.touches.length === 1 && zoom > 1) {
+                    panning = true; tMoved = false;
+                    tpx = e.touches[0].clientX; tpy = e.touches[0].clientY; tox = panX; toy = panY;
+                }
+            }, { passive: true });
+            viewport.addEventListener('touchmove', function (e) {
+                if (e.touches.length === 2 && pStart) {
+                    e.preventDefault();
+                    var d = touchDist(e.touches);
+                    var c = touchMid(e.touches);
+                    var target = pZoom * (d / pStart);
+                    zoomBy(target / zoom, c.x, c.y);
+                } else if (panning && e.touches.length === 1) {
+                    if (!tMoved && Math.hypot(e.touches[0].clientX - tpx, e.touches[0].clientY - tpy) < 8) return;
+                    tMoved = true;
+                    panX = tox + (e.touches[0].clientX - tpx);
+                    panY = toy + (e.touches[0].clientY - tpy);
+                    applyTransform();
+                }
+            }, { passive: false });
+            viewport.addEventListener('touchend', function (e) {
+                if (e.touches.length < 2) pStart = 0;
+                if (e.touches.length === 0) panning = false;
+            });
+        }
+        function touchDist(t) { var dx = t[0].clientX - t[1].clientX, dy = t[0].clientY - t[1].clientY; return Math.hypot(dx, dy); }
+        function touchMid(t) { return { x: (t[0].clientX + t[1].clientX) / 2, y: (t[0].clientY + t[1].clientY) / 2 }; }
+
+        /* ============================================================
+           LEGEND — populate lane rows from HM.LANES + collapse toggle.
+           ============================================================ */
+        function populateLaneLegend() {
+            var host = document.getElementById('hm-legend-lanes');
+            if (!host) return;
+            var lanes = HM.LANES || {};
+            var colors = HM.LANE_COLORS || {};
+            var order = ['core', 'job_core', 'phasic', 'plan', 'tracker', 'condense', 'summary', 'footer'];
+            order.forEach(function (id) {
+                var l = lanes[id];
+                if (!l) return;
+                var row = ce('div', 'hm-legend__row');
+                var sw = ce('span', 'hm-legend__sw hm-legend__sw--lane');
+                sw.style.borderLeftColor = colors[id] || '#8b5cf6';
+                sw.setAttribute('aria-hidden', 'true');
+                var txt = ce('span', 'hm-legend__txt');
+                txt.innerHTML = '<b>' + escapeHtml(l.label) + '</b>' + escapeHtml(l.blurb);
+                row.appendChild(sw);
+                row.appendChild(txt);
+                host.appendChild(row);
+            });
+        }
+
+        function bindLegend() {
+            if (!legend || !legendHead) return;
+            legendHead.addEventListener('click', function () {
+                var collapsed = legend.classList.toggle('is-collapsed');
+                legendHead.setAttribute('aria-expanded', String(!collapsed));
+            });
+            if (isMobile) {
+                legend.classList.add('is-collapsed');
+                legendHead.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        var orient, orientGo, helpBtn;
+        function openOrient() { if (orient) orient.classList.add('is-open'); }
+        function closeOrient() {
+            if (!orient) return;
+            orient.classList.remove('is-open');
+            try { localStorage.setItem('jobmap-seen', '1'); } catch (e) {}
+        }
+        function bindOrient() {
+            orient = document.getElementById('hm-orient');
+            orientGo = document.getElementById('hm-orient-go');
+            helpBtn = document.getElementById('hm-help');
+            if (orientGo) orientGo.addEventListener('click', closeOrient);
+            if (orient) orient.addEventListener('click', function (e) { if (e.target === orient) closeOrient(); });
+            if (helpBtn) helpBtn.addEventListener('click', openOrient);
+            var seen = false;
+            try { seen = localStorage.getItem('jobmap-seen') === '1'; } catch (e) {}
+            if (!seen) openOrient();
+        }
+
+        /* ============================================================
+           INIT
+           ============================================================ */
+        function init(mountSelector) {
+            root = document.querySelector(mountSelector || '.hm-root');
+            if (!root) return;
+
+            var topbar = ce('div', 'hm-topbar');
+            var bc = ce('div', 'hm-breadcrumb');
+            topbarCrumbs = bc;
+            topbar.appendChild(bc);
+            topbar.appendChild(ce('span', 'hm-tagline', 'One job. One ID. Many lanes.'));
+            backPill = ce('button', 'hm-back', '← back to the journey');
+            backPill.addEventListener('click', function () { navigate(DEFAULT_VIEW); });
+            topbar.appendChild(backPill);
+
+            viewport = ce('div', 'hm-viewport');
+            skeleton = ce('div', 'hm-skeleton',
+                '<div class="hm-skeleton__spinner"></div><div class="hm-skeleton__txt">laying out…</div>');
+            viewport.appendChild(skeleton);
+
+            root.appendChild(topbar);
+            root.appendChild(viewport);
+
+            bgNote = ce('p', 'hm-bgnote', '');
+            bgNote.textContent = BG_NOTE_TEXT;
+            bgNote.setAttribute('aria-hidden', 'true');
+            root.appendChild(bgNote);
+
+            info = document.getElementById('info-panel');
+            infoContent = document.getElementById('info-content');
+            var infoCloseBtn = document.getElementById('info-close');
+            if (infoCloseBtn) infoCloseBtn.addEventListener('click', closeInfo);
+
+            isMobile = window.matchMedia('(max-width: 820px)').matches;
+            caption = document.getElementById('hm-caption');
+            tip = document.getElementById('hm-tooltip');
+            tipT = document.getElementById('hm-tooltip-t');
+            tipW = document.getElementById('hm-tooltip-w');
+            tipWarn = document.getElementById('hm-tooltip-warn');
+            legend = document.getElementById('hm-legend');
+            legendHead = document.getElementById('hm-legend-head');
+            populateLaneLegend();
+            bindLegend();
+            bindOrient();
+            bindZoom();
+
+            var zin = document.getElementById('hm-zoom-in');
+            var zout = document.getElementById('hm-zoom-out');
+            var zreset = document.getElementById('hm-zoom-reset');
+            if (zin) zin.addEventListener('click', function () { zoomBy(1.25); });
+            if (zout) zout.addEventListener('click', function () { zoomBy(1 / 1.25); });
+            if (zreset) zreset.addEventListener('click', resetZoom);
+
+            viewport.addEventListener('click', function (ev) {
+                if (ev.target === viewport || (ev.target.classList && ev.target.classList.contains('hm-stage'))) closeInfo();
+            });
+
+            document.addEventListener('keydown', onKeydown);
+            window.addEventListener('resize', onResize);
+            window.addEventListener('popstate', function (ev) {
+                var v = (ev.state && ev.state.v) || hashView();
+                closeInfo();
+                renderView(v || DEFAULT_VIEW);
+            });
+
+            var initial = hashView() || DEFAULT_VIEW;
+            wasMobile = window.matchMedia('(max-width: 820px)').matches;
+            renderView(initial, { silent: true });
+        }
+
+        /* Read the requested view from BOTH ?stage= (the spec deep-link) AND
+           the #hash. ?stage= takes precedence; both pass through resolveStage
+           (STAGE_ALIAS map) so every documented anchor lands on a real view.
+           Unknown tokens fall back to the journey overview. */
+        function hashView() {
+            var resolve = HM.resolveStage || function (t) { return (HM.GRAPHS || {})[t] ? t : null; };
+            try {
+                var params = new URLSearchParams(location.search || '');
+                var stage = params.get('stage');
+                if (stage) {
+                    var rv = resolve(stage);
+                    if (rv) return rv;
+                }
+            } catch (e) { /* URLSearchParams unsupported — fall through to hash */ }
+            var h = (location.hash || '').replace('#', '');
+            if (!h) return DEFAULT_VIEW;
+            var hv = resolve(h);
+            return hv || DEFAULT_VIEW;
+        }
+
+        HM.init = init;
+        HM.renderView = renderView;
+        HM.navigate = navigate;
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () { init(); });
+        } else {
+            init();
+        }
+    })();
+    </script>
+</body>
+
+</html>
