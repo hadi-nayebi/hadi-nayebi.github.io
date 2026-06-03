@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- Version: v1.0.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completion ≠ Unfocus — the three events behind "done" | Hadosh Academy</title>
+    <meta name="description" content="An interactive concept-deck on a seed agent's completion lifecycle: completing a job, leaving it, and closing the cycle are three separate events at three boundaries. Left/right walks the five steps; click any box for the code-accurate detail.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b6/explore/completion-events.html">
+    <meta property="og:title" content="Completion ≠ Unfocus — the three events behind &quot;done&quot; | Hadosh Academy">
+    <meta property="og:description" content="Completing a job, leaving it, and closing the cycle are three separate events. A spatial concept-deck that pulls them apart — and shows why decoupling them dissolves the completion deadlock.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b6/explore/completion-events.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Completion ≠ Unfocus — the three events behind &quot;done&quot; | Hadosh Academy">
+    <meta name="twitter:description" content="Completing a job, leaving it, and closing the cycle are three separate events. Pull them apart — and see why decoupling them dissolves the deadlock.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+
+    <!-- site stylesheet — fonts + theme vars only -->
+    <link rel="stylesheet" href="../../../css/styles.css?v=20260518">
+    <!-- shared deck engine styles (generic across all concept-decks) -->
+    <link rel="stylesheet" href="deck-engine.css?v=20260603">
+</head>
+
+<body>
+    <a href="../06_7-condense.html" class="chrome-back" aria-label="Back to Essay 6.7">&larr; Back to Essay 6.7</a>
+
+    <div class="deck-title" aria-hidden="true">Completion &ne; Unfocus<span>three events behind one word</span></div>
+
+    <!-- step indicator -->
+    <div class="step-ind" id="step-ind" aria-live="polite"></div>
+
+    <!-- ============================ MINIMAP ============================ -->
+    <nav class="minimap" aria-label="Card map — jump to any card">
+        <div class="minimap__label">You are here</div>
+        <div class="minimap__grid" id="minimap-grid"></div>
+        <div class="minimap__legend">
+            <div class="minimap__lg"><span class="minimap__lgdot" style="background:rgba(99,102,241,0.6)"></span>main sequence (← →)</div>
+            <div class="minimap__lg"><span class="minimap__lgdot" style="background:rgba(148,163,184,0.5)"></span>related detail (↑ ↓)</div>
+        </div>
+    </nav>
+
+    <!-- ============================ NAV ARROWS ============================ -->
+    <button class="nav-arrow is-disabled" id="nav-left" type="button" aria-label="Previous card">&larr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-right" type="button" aria-label="Next card">&rarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-up" type="button" aria-label="Card above">&uarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-down" type="button" aria-label="Card below">&darr;<span class="nav-arrow__hint"></span></button>
+
+    <!-- ============================ DECK ============================ -->
+    <div class="deck-root">
+        <div class="deck-grid" id="deck-grid"><!-- cells injected by JS --></div>
+    </div>
+
+    <!-- ============================ TOOLTIP ============================ -->
+    <div class="tooltip" id="tooltip" role="status" aria-hidden="true">
+        <div class="tooltip__t" id="tooltip-t"></div>
+        <div class="tooltip__w" id="tooltip-w"></div>
+        <div class="tooltip__warn" id="tooltip-warn" style="display:none">&#9888; blog vs code &mdash; click to read</div>
+        <div class="tooltip__hint">click for the full story</div>
+    </div>
+
+    <!-- ============================ INFO PANEL ============================ -->
+    <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Concept detail">
+        <button class="info-close" id="info-close" aria-label="Close detail panel">&times;</button>
+        <div id="info-content"></div>
+    </aside>
+
+    <!-- ============================ LEGEND ============================ -->
+    <aside class="legend is-collapsed" id="legend" aria-label="Diagram legend">
+        <button class="legend__head" id="legend-head" type="button" aria-expanded="false" aria-controls="legend-body">
+            <span>Legend — tags &amp; arrows</span>
+            <span class="legend__chev" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="legend__body" id="legend-body">
+            <div class="legend__sect">What the tags mean</div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6b7fb8"></span><span class="legend__txt"><b>&#9676; State</b>a condition the seed is in</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#d9a948"></span><span class="legend__txt"><b>&#9998; Context</b>input the seed reads (a prompt)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6366f1"></span><span class="legend__txt"><b>&#9635; Object</b>a thing that now exists (the job)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#8b5cf6"></span><span class="legend__txt"><b>&#9670; Phase</b>an OPEVC phase (OBSERVE…)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#38bdf8"></span><span class="legend__txt"><b>&#9889; Action</b>something the system does</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#34d399"></span><span class="legend__txt"><b>&#10003; Gate</b>a checked condition that must pass to advance</span></div>
+            <div class="legend__sect">Who owns the data (lane)</div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-job_core)"></span><span class="legend__txt"><b>job_core</b>the base job record</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-phasic)"></span><span class="legend__txt"><b>phasic_system</b>the phase mirror (idle, cycle)</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:var(--lane-footer)"></span><span class="legend__txt"><b>working memory</b>CLAUDE.md the job writes into</span></div>
+            <div class="legend__sect">Arrows</div>
+            <div class="legend__row"><span class="legend__edge" aria-hidden="true"></span><span class="legend__txt"><b>Solid = hard</b>a code-enforced step</span></div>
+            <div class="legend__row"><span class="legend__edge legend__edge--soft" aria-hidden="true"></span><span class="legend__txt"><b>Dashed = soft</b>coaching or a condition</span></div>
+            <div class="legend__sect">Honesty marker</div>
+            <div class="legend__row"><span class="legend__warn" aria-hidden="true">&#9888;</span><span class="legend__txt"><b>Blog vs code</b>where essays and the live prototype differ &mdash; click the box</span></div>
+        </div>
+    </aside>
+
+    <!-- ============================ TAG CAPTION (always-visible key) ============================ -->
+    <div class="tagcaption" aria-hidden="true">
+        <span class="tagcaption__lab">Tags</span>
+        <span class="tagcap tag--state"><span class="sym">&#9676;</span>State</span>
+        <span class="tagcap tag--context"><span class="sym">&#9998;</span>Context</span>
+        <span class="tagcap tag--object"><span class="sym">&#9635;</span>Object</span>
+        <span class="tagcap tag--phase"><span class="sym">&#9670;</span>Phase</span>
+        <span class="tagcap tag--action"><span class="sym">&#9889;</span>Action</span>
+        <span class="tagcap tag--gate"><span class="sym">&#10003;</span>Gate</span>
+    </div>
+
+    <!-- ============================ HELP BUTTON ============================ -->
+    <button class="help-btn" id="help-btn" type="button"><b>?</b> how to read this</button>
+
+    <!-- ============================ ORIENTATION OVERLAY ============================ -->
+    <div class="orient" id="orient" role="dialog" aria-modal="true" aria-labelledby="orient-title">
+        <div class="orient__card">
+            <div class="orient__kicker">How to read this deck</div>
+            <h2 id="orient-title">Three events hide behind one word.</h2>
+            <p class="orient__lead">When a job is &ldquo;done&rdquo;, three different things happen at three different moments &mdash; its <b>record</b> completes, it <b>loses focus</b>, and the <b>cycle counter</b> ticks. Pulling them apart is what keeps the seed from deadlocking. Each card here is one focused idea, with a clean diagram you can hover and click.</p>
+            <div class="orient__keys">
+                <span class="orient__key"><span class="kbd">&larr;</span><span class="kbd">&rarr;</span></span>
+                <span class="orient__keydesc"><b>Walk the five steps</b> in sequence &mdash; this is the main story.</span>
+                <span class="orient__key"><span class="kbd">&uarr;</span><span class="kbd">&darr;</span></span>
+                <span class="orient__keydesc"><b>Related detail</b> &mdash; a deeper look at the card you're on.</span>
+                <span class="orient__key"><span class="kbd">click</span></span>
+                <span class="orient__keydesc">any box for <b>what it is</b>, <b>why it matters</b>, and <b>under the hood</b>.</span>
+            </div>
+            <p class="orient__thesis">Completing a job does NOT unfocus it &mdash; that's a separate event, one phase later.</p>
+            <button class="orient__go" id="orient-go" type="button">Start with the three events &rarr;</button>
+        </div>
+    </div>
+
+    <!-- per-deck content (data) + the shared deck engine -->
+    <script src="completion-events.cards.js?v=20260603"></script>
+    <script src="deck-engine.js?v=20260603"></script>
+</body>
+</html>

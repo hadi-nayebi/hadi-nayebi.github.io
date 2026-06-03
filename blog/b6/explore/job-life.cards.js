@@ -5,6 +5,8 @@
  * Every hood fact was verified against the live prototype (see deck-engine.js
  * header + .claude/knowledge/diagrams/consolidated-mechanisms-diagram-guide.md).
  * ============================================================================ */
+window.DECK_META = { seqLabel: 'the job\'s life', capstoneLabel: 'The big picture — how the whole job fits together' };
+
 window.DECK_INFO = {
         /* ---------------- CARD A : A job is born ---------------- */
         'a-idle': {

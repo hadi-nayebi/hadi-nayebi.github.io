@@ -318,12 +318,14 @@
             for (var i = 1; i <= SEQ_TOTAL; i++) {
                 dots += '<span class="step-ind__dot' + (card.step === i ? ' on' : '') + '"></span>';
             }
+            var _seqLabel = (window.DECK_META && window.DECK_META.seqLabel) ? ' — ' + window.DECK_META.seqLabel : '';
             step.innerHTML =
-                '<span>Step <b>' + card.step + '</b> of <b>' + SEQ_TOTAL + '</b> — the job\'s life</span>' +
+                '<span>Step <b>' + card.step + '</b> of <b>' + SEQ_TOTAL + '</b>' + _seqLabel + '</span>' +
                 '<span class="step-ind__dots">' + dots + '</span>';
         } else if (card.kind === 'capstone') {
             step.classList.add('is-detail');
-            step.innerHTML = '<span>&#9733; The big picture &mdash; how the whole job fits together</span>';
+            var _capLabel = (window.DECK_META && window.DECK_META.capstoneLabel) || 'The big picture';
+            step.innerHTML = '<span>&#9733; ' + _capLabel + '</span>';
         } else {
             step.classList.add('is-detail');
             step.innerHTML = '<span>Related detail &mdash; press <b>&uarr;</b> to return to the main sequence</span>';
