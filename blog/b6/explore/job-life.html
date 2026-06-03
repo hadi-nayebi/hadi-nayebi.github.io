@@ -1133,10 +1133,10 @@
             title: 'EXECUTE — build, in scope',
             sub: 'What you\'re looking at: the one phase that can actually write things. It builds the work — and, on a planned job, this is where the plan file is born.',
             boxes: [
-                { id:'e-build',    x:44,  y:230, w:208, h:102, tag:'action', t:'Build in scope',   s:'the only phase with full write' },
-                { id:'e-perm',     x:320, y:92,  w:228, h:96,  tag:'gate',   t:'write-permission?', s:'scope + cycle 1 + not-yet-there' },
-                { id:'e-planfile', x:320, y:372, w:228, h:96,  tag:'object', t:'the plan file is born', s:'Stage 2/3 · written in cycle 1' },
-                { id:'e-advance',  x:624, y:230, w:236, h:102, tag:'gate',   t:'≥ 100 points → advance', s:'points move the phase, not the file' }
+                { id:'e-build',    x:44,  y:214, w:208, h:116, tag:'action', t:'Build in scope',   s:'the only phase with full write' },
+                { id:'e-perm',     x:336, y:100, w:228, h:100, tag:'gate',   t:'write-permission?', s:'scope + cycle 1 + not-yet-there' },
+                { id:'e-planfile', x:648, y:100, w:248, h:100, tag:'object', t:'the plan file is born', s:'Stage 2/3 · written in cycle 1' },
+                { id:'e-advance',  x:556, y:362, w:300, h:104, tag:'gate',   t:'≥ 100 points → advance', s:'points move the phase, not the file' }
             ],
             edges: [
                 { from:'e-build', to:'e-perm',     kind:'soft', label:'write it?' },
@@ -1144,9 +1144,9 @@
                 { from:'e-build', to:'e-advance',  kind:'hard', label:'to move on' }
             ],
             stickies: [
-                { x:300, y:34,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.' },
-                { x:36,  y:392, text:'EXECUTE is the <b>only</b> phase with full write — but only inside the job\'s declared <b>scope</b>.' },
-                { x:566, y:388, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. PLAN owns it.' }
+                { x:44,  y:32,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.' },
+                { x:44,  y:372, text:'EXECUTE is the <b>only</b> phase with full write — but only inside the job\'s declared <b>scope</b>.' },
+                { x:632, y:226, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. PLAN owns it.' }
             ],
             backnote: { x:46, y:500, text:'← from PLAN: the Stage is locked in' },
             nextnote: { x:646, y:500, text:'Built → into VERIFY' }
@@ -1184,10 +1184,10 @@
             title: 'CONDENSE — the growth organ',
             sub: 'What you\'re looking at: where the brain actually grows. The cycle\'s findings get routed to lasting homes, working memory is shrunk, and the job either ends or loops.',
             boxes: [
-                { id:'c-water',  x:44,  y:220, w:248, h:124, tag:'action', t:'The 7-step waterfall', s:'route findings → lasting homes' },
-                { id:'c-deflate',x:360, y:220, w:224, h:124, tag:'gate',   t:'≥ 80% deflation', s:'shrink working memory to advance' },
-                { id:'c-pending',x:660, y:88,  w:300, h:104, tag:'action', t:'[PENDING-JOB] → spawn a job', s:'step 3 can create new work' },
-                { id:'c-complete',x:660,y:336, w:300, h:104, tag:'gate',   t:'[JOB-COMPLETE]?', s:'this is where a job can END' }
+                { id:'c-pending',x:44,  y:40,  w:264, h:104, tag:'action', t:'[PENDING-JOB] → spawn a job', s:'step 3 can create new work' },
+                { id:'c-water',  x:44,  y:228, w:248, h:124, tag:'action', t:'The 7-step waterfall', s:'route findings → lasting homes' },
+                { id:'c-deflate',x:360, y:228, w:224, h:124, tag:'gate',   t:'≥ 80% deflation', s:'shrink working memory to advance' },
+                { id:'c-complete',x:660,y:230, w:300, h:124, tag:'gate',   t:'[JOB-COMPLETE]?', s:'this is where a job can END' }
             ],
             edges: [
                 { from:'c-water',   to:'c-deflate',  kind:'hard', label:'then shrink' },
@@ -1195,8 +1195,8 @@
                 { from:'c-water',   to:'c-pending',  kind:'soft', label:'a note → work' }
             ],
             stickies: [
-                { x:300, y:30,  aha:true, text:'CONDENSE is the <b>only</b> phase that grows the brain — and the only place a job ends or spawns another.' },
-                { x:36,  y:388, text:'Working memory must shrink <b>≥80%</b> — making room for the next cycle to think fresh.' }
+                { x:392, y:36,  aha:true, text:'CONDENSE is the <b>only</b> phase that grows the brain — and the only place a job ends or spawns another.' },
+                { x:360, y:402, text:'Working memory must shrink <b>≥80%</b> — making room for the next cycle to think fresh.' }
             ],
             backnote: { x:46, y:500, text:'← from VERIFY: the work checks out' },
             nextnote: { x:606, y:500, text:'Done → back to idle, or next cycle →' }
