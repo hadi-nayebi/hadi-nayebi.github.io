@@ -874,6 +874,103 @@
             what: 'Moving on from EXECUTE is gated by points — the job must do ≥ 100 points of building work — completely separately from the plan file.',
             why: 'This is the card\'s key surprise: write-permission and phase-advance are TWO different gates. Whether you CAN write the plan file (a tool check) has nothing to do with WHEN you may leave EXECUTE (a points check). Don\'t conflate them.',
             hood: '<code>execute-commit.sh</code> blocks the <code>--force</code> advance unless the phase has accumulated ≥ 100 points. The plan file\'s existence is not part of this check — a job can advance whether or not it wrote one.'
+        },
+
+        /* ---------------- CARD VERIFY : check, and maybe retreat ---------------- */
+        'v-check': {
+            title: 'Run the checks', tag: 'action',
+            what: 'VERIFY runs verification — scripts and read-only inspection — to confirm the work actually meets the job\'s goal. It builds nothing new.',
+            why: 'A separate honesty phase exists because the builder is biased: whoever just wrote the work tends to see it as correct. VERIFY checks it with fresh, independent eyes and tools.',
+            hood: 'The verify-guard is scripts-only / read-only: it permits Bash (running test + check scripts) and reading, but blocks Write/Edit to project files. New implementation is not allowed here (<code>verify-guard.sh</code>).'
+        },
+        'v-fork': {
+            title: 'Did VERIFY touch the plan?', tag: 'gate',
+            what: 'Before VERIFY can move forward, one thing is checked: did this phase end up editing the plan file?',
+            why: 'If VERIFY had to change the plan, then the plan that EXECUTE built against was wrong — so the work can\'t be trusted as-is. The fork decides: retreat and re-plan, or proceed.',
+            hood: '<code>verify-commit.sh</code> counts <code>plan_edits</code>. If <code>plan_edits ≥ 1</code>, the forward advance to CONDENSE is BLOCKED and the job is required to take a <code>--backward</code> transition to PLAN instead.'
+        },
+        'v-back': {
+            title: 'Forced back to PLAN', tag: 'phase',
+            what: 'When VERIFY edited the plan, the job is sent BACKWARD — returned to PLAN to re-plan against what it just learned.',
+            why: 'This is the cycle\'s self-correction. VERIFY is the only phase that can move the job backward instead of forward. Discovering the plan was wrong is not a failure — it routes the job to fix the plan properly.',
+            hood: 'The backward move is the explicit <code>--backward</code> transition to PLAN (<code>verify-commit.sh</code>, around lines 167–179). Forward to CONDENSE stays blocked until a verify happens with no plan edits.'
+        },
+        'v-clean': {
+            title: 'Clean → CONDENSE', tag: 'gate',
+            what: 'If VERIFY did NOT touch the plan — and the usual phase requirements are met — the job advances to CONDENSE. And that move is one-way.',
+            why: 'A clean verify means the work stands as planned. Moving into CONDENSE is deliberately irreversible: once you start consolidating, you don\'t un-verify and go back. The cycle commits to closing out.',
+            hood: 'With no plan edits, ≥ 100 points, and ≥ 1 CLAUDE.md update, <code>verify-commit.sh</code> (around lines 300–307) permits the <code>verify→condense</code> forward transition — and there is no backward path out of CONDENSE.'
+        },
+        'v-outst': {
+            title: '"Outstanding Items" gate', tag: 'gate',
+            what: 'A gate that checks whether a job has unfinished "Outstanding Items" before it can be called done. The B6 essays place this inside VERIFY.',
+            why: 'It belongs in the lifecycle — it is real — but at a different moment than the essays suggest. It is part of deciding completion, which happens one phase later.',
+            hood: 'In the live code this check lives in the <code>[JOB-COMPLETE]</code> completion question, which is CONDENSE-only (<code>question-capture.sh</code>, lines 218 + 242). VERIFY itself does not gate on Outstanding Items.',
+            warn: 'Blog-vs-code: the essays (06_10:61) describe VERIFY blocking on a non-empty <code>## Outstanding Items</code> list. The live code has no such VERIFY gate — the Outstanding-Items check is part of <code>[JOB-COMPLETE]</code> in CONDENSE. The plan-edit backward half of VERIFY IS built and real; this Outstanding-Items-blocks-VERIFY half is not.'
+        },
+
+        /* ---------------- CARD CONDENSE : the growth organ ---------------- */
+        'c-water': {
+            title: 'The 7-step waterfall', tag: 'action',
+            what: 'CONDENSE runs a fixed seven-step routine that takes the cycle\'s scattered findings and routes each to a lasting home.',
+            why: 'Without this, everything learned in a cycle would live only in throwaway working memory and vanish. The waterfall is how the brain actually GROWS — turning one cycle\'s notes into durable knowledge.',
+            hood: 'The seven steps, in order (<code>principles.md</code>:79–86): (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) <code>[PENDING-JOB]</code> → new jobs, (4) <code>[VOICE-UPDATE]</code>, (5) <code>[AGENT-UPDATE]</code>, (6) <code>[KNOWLEDGE]</code> routing, (7) session-archive (last resort). Markers are removed as each is consumed — the next cycle starts clean.'
+        },
+        'c-deflate': {
+            title: '≥ 80% deflation', tag: 'gate',
+            what: 'To leave CONDENSE, the job must shrink its working memory by at least 80% — squeezing the cycle\'s bottom-section notes down to essentials.',
+            why: 'Working memory has to return to a near-empty resting state so the next cycle can think fresh, not drown in last cycle\'s clutter. The deflation gate forces that compression to actually happen.',
+            hood: 'One uniform threshold across all Job Stages: <code>CONDENSE_DEF_THRESHOLD = 80</code> (<code>config.conf</code>:34–40), enforced by <code>condense-commit.sh</code> (lines 121–125). Below 80% deflation → the advance to idle is blocked.'
+        },
+        'c-pending': {
+            title: '[PENDING-JOB] → spawn a job', tag: 'action',
+            what: 'If the cycle left a <code>[PENDING-JOB]</code> note in a phase footer, step 3 of the waterfall turns it into a brand-new job.',
+            why: 'Work discovered mid-cycle shouldn\'t be lost or jammed into the current job. CONDENSE is the one place allowed to spawn follow-up jobs — so new work becomes its own properly-tracked unit.',
+            hood: 'Step 3 hands the marker to <code>condense-job-creator</code>, which calls <code>job.sh create-dependent</code> (auto-linking the new job to the focused parent). Job creation is CONDENSE-owned — EXECUTE and VERIFY block it and coach the agent to defer to here.'
+        },
+        'c-complete': {
+            title: '[JOB-COMPLETE]?', tag: 'gate',
+            what: 'CONDENSE is where a job can actually END. It asks the completion question — and only here is that question eligible to fire.',
+            why: 'Ending a job is a deliberate, single-place decision, not something any phase can do whenever. Tying it to CONDENSE means a job only closes after its findings are safely routed and memory is deflated.',
+            hood: 'The <code>[JOB-COMPLETE]</code> eligibility (<code>question-capture.sh</code>:181–194) fires CONDENSE-only: Stage 1 (<code>plan_file == false</code>) at every CONDENSE; Stage 2/3 when <code>current_cycle ≥ effective_last_cycle</code>. If outstanding work remains, the job self-corrects by adding a cycle instead of completing.'
+        },
+
+        /* ---------------- CAPSTONE : one job, many lanes ---------------- */
+        'cap-id': {
+            title: 'One job = one ID', tag: 'object',
+            what: 'A job is, at heart, a single timestamp identifier. Everything else about it is stored in pieces, elsewhere.',
+            why: 'This is the structural surprise of the whole system. You picture "a job" as one file — but there is no such file. There is just an ID, and a set of plugins that each remember their own slice of it.',
+            hood: 'The id is a creation-time timestamp string. Each plugin keys its own <code>data.json</code> records by this same id — that shared key is the only thing tying the lanes together into "one job".'
+        },
+        'cap-core': {
+            title: 'job_core lane', tag: 'object',
+            what: 'The job_core plugin owns the job\'s identity slice: its name, objective, status, focus flag, and interaction trail.',
+            why: 'This is the lane you met at birth — the "what am I and what am I for" record. It is the base record every other lane hangs off.',
+            hood: '<code>job_core/data.json</code> holds the record with <code>name</code>, <code>objective</code>, <code>status</code>, <code>focused</code>, <code>user_interactions</code>, <code>depends_on</code>, timestamps — created in the single jq write at birth.'
+        },
+        'cap-phasic': {
+            title: 'phasic lane', tag: 'object',
+            what: 'The phasic system owns a separate small record: which phase the job is in, and which cycle.',
+            why: 'The job\'s "where am I in the OPEVC walk" is tracked apart from its identity — a different plugin, a different file, same id. Same job, split by concern.',
+            hood: 'The phasic plugin appends <code>{id, current_phase, cycle}</code> to its own data file via <code>phase.sh --hook init</code>, then moves it with <code>phase.sh advance</code>.'
+        },
+        'cap-track': {
+            title: 'plan · verify · condense lanes', tag: 'object',
+            what: 'Each phase plugin keeps its own tally for the job — points accumulated, edits made, gate state — in its own file.',
+            why: 'Every phase you walked through (PLAN, EXECUTE, VERIFY, CONDENSE) was enforced by a different plugin, and each remembers only what it needs about this job. The job\'s full state is the sum of all these lanes.',
+            hood: 'phase_plan, phase_verify, phase_execute, and phase_condense each maintain per-job tracker entries (points, plan_edits, deflation, etc.) keyed by the job id — lit up only once the job first reaches that phase.'
+        },
+        'cap-sum': {
+            title: 'interaction_summary lane', tag: 'object',
+            what: 'The interaction_summary plugin keeps a durable, rolling summary of the job\'s conversation so it survives across sessions.',
+            why: 'When context resets, the job shouldn\'t forget itself. This lane is the cross-session memory — the slice that lets a job be picked up later and still know what it was doing.',
+            hood: '<code>interaction_summary</code> maintains a <code>summary_chain</code> in its own data file, submitted on a token-gate trigger. Another lane, same id.'
+        },
+        'cap-repeat': {
+            title: 'Repeat: complete → wait → wake again', tag: 'action',
+            what: 'A repeating job doesn\'t end for good when it completes. It completes, waits a set interval, and then wakes itself back up to run again.',
+            why: 'This is what makes the seed a standing worker rather than a one-shot tool. A maintenance job — "review the ref-tags weekly" — completes, sleeps, and re-activates on its own, no prompt required.',
+            hood: 'On completion, <code>last_completed_at</code> is stamped (epoch). A job is "due" when <code>status==completed</code>, <code>repeating_interval > 0</code>, and <code>last_completed_at + interval*3600 < now</code>. Two heartbeats catch it: one while the seed is working (<code>self-compact.sh</code> scan), one while it is stopped (the <code>quiescent-heartbeat</code> daemon). Reactivation resets the cycle counters and flips <code>completed → pending</code>, preserving the plan file. All of this is BUILT.'
         }
     };
 
@@ -1045,6 +1142,83 @@
             ],
             backnote: { x:46, y:500, text:'← from PLAN: the Stage is locked in' },
             nextnote: { x:646, y:500, text:'Built → into VERIFY' }
+        },
+
+        '4,0': {
+            kind: 'seq', step: 5,
+            eyebrow: 'The job\'s life · step 5',
+            title: 'VERIFY — check, and maybe retreat',
+            sub: 'What you\'re looking at: the honesty phase. It runs checks only — and it is the one phase that can send the job BACKWARD instead of forward.',
+            boxes: [
+                { id:'v-check',  x:44,  y:226, w:196, h:104, tag:'action', t:'Run the checks', s:'scripts + read only · no new building' },
+                { id:'v-fork',   x:322, y:226, w:188, h:104, tag:'gate',   t:'Plan file touched?', s:'did VERIFY edit the plan?' },
+                { id:'v-back',   x:600, y:96,  w:268, h:92,  tag:'phase',  t:'Forced back to PLAN', s:'edited the plan → must retreat' },
+                { id:'v-clean',  x:600, y:286, w:268, h:92,  tag:'gate',   t:'Clean → CONDENSE', s:'a one-way door · no going back' },
+                { id:'v-outst',  x:322, y:412, w:316, h:92,  tag:'gate',   t:'"Outstanding Items" gate', s:'lives in CONDENSE — NOT here', warn:true }
+            ],
+            edges: [
+                { from:'v-check', to:'v-fork',  kind:'hard', label:'then verify' },
+                { from:'v-fork',  to:'v-back',  kind:'hard', label:'plan edited' },
+                { from:'v-fork',  to:'v-clean', kind:'hard', label:'untouched' },
+                { from:'v-clean', to:'v-outst', kind:'soft', label:'blog adds a gate' }
+            ],
+            stickies: [
+                { x:300, y:30,  aha:true, text:'VERIFY is the only phase that can force the job <b>backward</b>.' },
+                { x:36,  y:372, text:'If VERIFY had to fix the plan, the work isn\'t trusted — it\'s sent <b>back to PLAN</b> to re-plan.' }
+            ],
+            backnote: { x:46, y:498, text:'← from EXECUTE: the work is built' },
+            nextnote: { x:660, y:430, text:'Clean → into CONDENSE' }
+        },
+
+        '5,0': {
+            kind: 'seq', step: 6,
+            eyebrow: 'The job\'s life · step 6',
+            title: 'CONDENSE — the growth organ',
+            sub: 'What you\'re looking at: where the brain actually grows. The cycle\'s findings get routed to lasting homes, working memory is shrunk, and the job either ends or loops.',
+            boxes: [
+                { id:'c-water',  x:44,  y:220, w:248, h:124, tag:'action', t:'The 7-step waterfall', s:'route findings → lasting homes' },
+                { id:'c-deflate',x:360, y:220, w:224, h:124, tag:'gate',   t:'≥ 80% deflation', s:'shrink working memory to advance' },
+                { id:'c-pending',x:660, y:88,  w:300, h:104, tag:'action', t:'[PENDING-JOB] → spawn a job', s:'step 3 can create new work' },
+                { id:'c-complete',x:660,y:336, w:300, h:104, tag:'gate',   t:'[JOB-COMPLETE]?', s:'this is where a job can END' }
+            ],
+            edges: [
+                { from:'c-water',   to:'c-deflate',  kind:'hard', label:'then shrink' },
+                { from:'c-deflate', to:'c-complete', kind:'hard', label:'cleared' },
+                { from:'c-water',   to:'c-pending',  kind:'soft', label:'a note → work' }
+            ],
+            stickies: [
+                { x:300, y:30,  aha:true, text:'CONDENSE is the <b>only</b> phase that grows the brain — and the only place a job ends or spawns another.' },
+                { x:36,  y:388, text:'Working memory must shrink <b>≥80%</b> — making room for the next cycle to think fresh.' }
+            ],
+            backnote: { x:46, y:500, text:'← from VERIFY: the work checks out' },
+            nextnote: { x:606, y:500, text:'Done → back to idle, or next cycle →' }
+        },
+
+        '6,0': {
+            kind: 'capstone',
+            eyebrow: 'The big picture',
+            title: 'One job, many lanes',
+            sub: 'Step back: there is no single "job" file. A job is ONE id, scattered across every plugin that touches it — each lane filling in lazily as the work moves.',
+            boxes: [
+                { id:'cap-id',     x:44,  y:198, w:250, h:122, tag:'object', t:'One job = one ID', s:'a single timestamp identifier' },
+                { id:'cap-core',   x:560, y:48,  w:400, h:64, tag:'object', t:'job_core lane', s:'name · objective · status · focused' },
+                { id:'cap-phasic', x:560, y:140, w:400, h:64, tag:'object', t:'phasic lane', s:'current_phase · cycle' },
+                { id:'cap-track',  x:560, y:232, w:400, h:64, tag:'object', t:'plan · verify · condense lanes', s:'each phase keeps its own tally' },
+                { id:'cap-sum',    x:560, y:324, w:400, h:64, tag:'object', t:'interaction_summary lane', s:'the durable cross-session summary' },
+                { id:'cap-repeat', x:44,  y:432, w:486, h:96, tag:'action', t:'Repeat: complete → wait → wake again', s:'a repeating job never truly dies' }
+            ],
+            edges: [
+                { from:'cap-id', to:'cap-core',   kind:'soft', label:'same ID' },
+                { from:'cap-id', to:'cap-phasic', kind:'soft' },
+                { from:'cap-id', to:'cap-track',  kind:'soft' },
+                { from:'cap-id', to:'cap-sum',    kind:'soft' },
+                { from:'cap-id', to:'cap-repeat', kind:'hard', label:'and when done…' }
+            ],
+            stickies: [
+                { x:300, y:24,  aha:true, text:'Each lane lights up <b>lazily</b> — a plugin only writes its slice when the job first reaches it.' },
+                { x:556, y:436, text:'A repeating job <b>completes</b>, waits its interval, then <b>wakes itself</b> — no prompt needed.' }
+            ],
+            backnote: { x:46, y:498, text:'← the whole journey, in one place' }
         }
     };
 
@@ -1061,7 +1235,7 @@
         '</div>';
 
     /* navigation order: which cells exist + their sequence step */
-    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1, '2,0':1, '3,0':1 };
+    var EXISTS = { '0,0':1, '1,0':1, '0,1':1, '1,1':1, '2,0':1, '3,0':1, '4,0':1, '5,0':1, '6,0':1 };
     /* total numbered steps in the main ←→ sequence (kind:'seq'); drives the
        step indicator + dots. Computed so adding sequence cards auto-scales. */
     var SEQ_TOTAL = Object.keys(CARDS).filter(function (k) { return CARDS[k].kind === 'seq'; }).length;
@@ -1077,6 +1251,10 @@
         var col = +key.split(',')[0], row = +key.split(',')[1];
         var cell = document.createElement('div');
         cell.className = 'deck-cell';
+        /* position each cell by its grid coords — inline so the deck supports
+           any number of columns/rows (the CSS only hardcoded cols 0-1). */
+        cell.style.left = (col * 100) + 'vw';
+        cell.style.top  = (row * 100) + 'vh';
         cell.setAttribute('data-col', col);
         cell.setAttribute('data-row', row);
         cell.setAttribute('data-key', key);
@@ -1239,6 +1417,18 @@
 
     /* build all cards */
     Object.keys(CARDS).forEach(function (k) { buildCard(k, CARDS[k]); });
+
+    /* size the deck-grid to span every column/row that exists (the CSS default
+       of 200vw×200vh only fit a 2x2 deck). */
+    (function sizeDeck(){
+        var maxC = 0, maxR = 0;
+        Object.keys(EXISTS).forEach(function (k) {
+            var c = +k.split(',')[0], r = +k.split(',')[1];
+            if (c > maxC) maxC = c; if (r > maxR) maxR = r;
+        });
+        grid.style.width  = ((maxC + 1) * 100) + 'vw';
+        grid.style.height = ((maxR + 1) * 100) + 'vh';
+    })();
 
     /* ========================================================================
      * NAVIGATION STATE
