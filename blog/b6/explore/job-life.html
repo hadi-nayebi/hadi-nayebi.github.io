@@ -199,7 +199,9 @@
         /* ---- TAG CAPTION: always-visible key, docked top-LEFT (clears the
                centred up/down nav arrows + the deck title + the top-right minimap) ---- */
         .tagcaption {
-            position: fixed; left: 0.85rem; top: 0.85rem; z-index: 1600;
+            /* sits BELOW the top-left "Back to Essay" pill (which is taller and
+               higher z-index) so the back link never occludes the tag chips. */
+            position: fixed; left: 0.85rem; top: 4.1rem; z-index: 1600;
             display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
             max-width: 282px; box-sizing: border-box;
             padding: 7px 9px; border-radius: 12px;
