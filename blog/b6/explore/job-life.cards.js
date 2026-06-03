@@ -293,7 +293,8 @@ window.DECK_CARDS = {
             stickies: [
                 { x:22,  y:104, text:'First run, or every earlier job is done — the seed is asleep with <b>no focused job</b>.' },
                 { x:360, y:64,  text:'<b>active + focused</b> in a SINGLE write — the first-prompt effect.' },
-                { x:548, y:408, aha:true, text:'Born EMPTY — the job does <b>not yet know</b> its own name or goal. That is what OBSERVE is for.' }
+                { x:548, y:408, aha:true, text:'Born EMPTY — the job does <b>not yet know</b> its own name or goal. That is what OBSERVE is for.',
+                  ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · job_core — the job record', blurb:'A job is born as a small JSON record — created, made active, and focused in one write — with its name and goal still empty.' } }
             ],
             nextnote: { x:600, y:476, text:'Follow it into OBSERVE' },
             downhint: { x:60, y:506, label:'related: Active + focused, in one write' }
@@ -317,7 +318,8 @@ window.DECK_CARDS = {
                 { from:'b-objective', to:'b-gate',      kind:'hard' }
             ],
             stickies: [
-                { x:40,  y:96,  text:'A newborn job knows almost nothing. OBSERVE is where it <b>learns who it is</b>.' },
+                { x:40,  y:96,  text:'A newborn job knows almost nothing. OBSERVE is where it <b>learns who it is</b>.',
+                  ref: { url:'../06_3-observe.html', section:'Blog 6.3 · OBSERVE', blurb:'OBSERVE reads the prompt and context, then names the job and writes its goal. It cannot reach PLAN until both are filled in.' } },
                 { x:720, y:96,  r:true, text:'<b>No empty jobs</b> get to PLAN — the gate checks name + objective are filled.' }
             ],
             backnote: { x:46, y:470, text:'← where it came from: a brand-new empty job' },
@@ -393,7 +395,8 @@ window.DECK_CARDS = {
             ],
             stickies: [
                 { x:36,  y:96,  text:'Born <b>undecided</b>. PLAN\'s one move: commit the Stage — once, for keeps.' },
-                { x:592, y:54,  aha:true, text:'Same job, <b>three shapes</b>. The plan file\'s FORMAT <i>is</i> the Stage.' },
+                { x:592, y:54,  aha:true, text:'Same job, <b>three shapes</b>. The plan file\'s FORMAT <i>is</i> the Stage.',
+                  ref: { url:'../06_10-plan-state-machine.html', section:'Blog 6.10 · the plan-file state machine', blurb:'PLAN commits the job\'s Stage exactly once via set-plan-file — false (Stage 1), a .md (Stage 2), or a .yaml (Stage 3). plan_file is born null.' } },
                 { x:36,  y:358, text:'Until a Stage is set, a gate <b>blocks EXECUTE</b> — even Stage 1 must choose <code>false</code>.' }
             ],
             backnote: { x:46, y:498, text:'← from OBSERVE: it now knows its name + goal' },
@@ -417,7 +420,8 @@ window.DECK_CARDS = {
                 { from:'e-build', to:'e-advance',  kind:'hard', label:'to move on' }
             ],
             stickies: [
-                { x:44,  y:32,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.' },
+                { x:44,  y:32,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.',
+                  ref: { url:'../06_5-execute.html', section:'Blog 6.5 · EXECUTE', blurb:'EXECUTE is the one phase with full write access. On a planned job, this is where the plan file is actually written to disk.' } },
                 { x:44,  y:372, text:'EXECUTE is the <b>only</b> phase with full write — but only inside the job\'s declared <b>scope</b>.' },
                 { x:632, y:226, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. PLAN owns it.' }
             ],
@@ -470,7 +474,8 @@ window.DECK_CARDS = {
                 { from:'c-water',   to:'c-pending',  kind:'soft', label:'a note → work' }
             ],
             stickies: [
-                { x:392, y:36,  aha:true, text:'CONDENSE is the <b>only</b> phase that grows the brain — and the only place a job ends or spawns another.' },
+                { x:392, y:36,  aha:true, text:'CONDENSE is the <b>only</b> phase that grows the brain — and the only place a job ends or spawns another.',
+                  ref: { url:'../06_7-condense.html', section:'Blog 6.7 · CONDENSE', blurb:'CONDENSE deflates the cycle\'s footers through a 7-step waterfall, routing findings to lasting homes; an 80% deflation gate must pass to finish.' } },
                 { x:360, y:402, text:'Working memory must shrink <b>≥80%</b> — making room for the next cycle to think fresh.' }
             ],
             backnote: { x:46, y:500, text:'← from VERIFY: the work checks out' },
@@ -498,7 +503,8 @@ window.DECK_CARDS = {
                 { from:'cap-id', to:'cap-repeat', kind:'hard', label:'and when done…' }
             ],
             stickies: [
-                { x:300, y:24,  aha:true, text:'Each lane lights up <b>lazily</b> — a plugin only writes its slice when the job first reaches it.' },
+                { x:300, y:24,  aha:true, text:'Each lane lights up <b>lazily</b> — a plugin only writes its slice when the job first reaches it.',
+                  ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · job_core — one id, many lanes', blurb:'There is no single "job" file — a job is one timestamp id, and each plugin that touches it writes its own slice into its own data.json under that id.' } },
                 { x:556, y:436, text:'A repeating job <b>completes</b>, waits its interval, then <b>wakes itself</b> — no prompt needed.' }
             ],
             backnote: { x:46, y:498, text:'← the whole journey, in one place' }
