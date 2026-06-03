@@ -40,3 +40,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 *.pyo
+
+# Local diagram-review comments (dev tool, not deployed)
+diagram-comments.json
