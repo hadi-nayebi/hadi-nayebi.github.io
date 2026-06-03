@@ -907,23 +907,22 @@
             hood: '<code>verify-commit.sh</code> counts <code>plan_edits</code>. If <code>plan_edits ≥ 1</code>, the forward advance to CONDENSE is BLOCKED and the job is required to take a <code>--backward</code> transition to PLAN instead.'
         },
         'v-back': {
-            title: 'Forced back to PLAN', tag: 'phase',
-            what: 'When VERIFY edited the plan, the job is sent BACKWARD — returned to PLAN to re-plan against what it just learned.',
-            why: 'This is the cycle\'s self-correction. VERIFY is the only phase that can move the job backward instead of forward. Discovering the plan was wrong is not a failure — it routes the job to fix the plan properly.',
-            hood: 'The backward move is the explicit <code>--backward</code> transition to PLAN (<code>verify-commit.sh</code>, around lines 167–179). Forward to CONDENSE stays blocked until a verify happens with no plan edits.'
+            title: 'Forced back', tag: 'phase',
+            what: 'When either VERIFY gate trips — a plan edit, or leftover Outstanding Items — the job is sent BACKWARD instead of forward, to re-plan or finish the work.',
+            why: 'This is the cycle\'s self-correction. VERIFY is the only phase that can be FORCED backward — other phases CAN step back, but only by the agent\'s choice; VERIFY is compelled. Discovering the plan was wrong, or that work remains, is not a failure — it routes the job to fix things properly.',
+            hood: 'Two explicit <code>--backward</code> transitions: a plan edit (<code>verify-commit.sh:167–179</code>) forces back to PLAN; a non-empty <code>## Outstanding Items</code> section (<code>verify-commit.sh</code> shape gate, built 2026-06-03) forces back to PLAN or EXECUTE. Forward to CONDENSE stays blocked until a verify passes both.'
         },
         'v-clean': {
-            title: 'Clean → CONDENSE', tag: 'gate',
-            what: 'If VERIFY did NOT touch the plan — and the usual phase requirements are met — the job advances to CONDENSE. And that move is one-way.',
-            why: 'A clean verify means the work stands as planned. Moving into CONDENSE is deliberately irreversible: once you start consolidating, you don\'t un-verify and go back. The cycle commits to closing out.',
-            hood: 'With no plan edits, ≥ 100 points, and ≥ 1 CLAUDE.md update, <code>verify-commit.sh</code> (around lines 300–307) permits the <code>verify→condense</code> forward transition — and there is no backward path out of CONDENSE.'
+            title: 'All clear → CONDENSE', tag: 'gate',
+            what: 'If neither gate trips — the plan was untouched AND no Outstanding Items remain — and the usual phase requirements are met, the job advances to CONDENSE. That move is one-way.',
+            why: 'A clean verify means the work stands as planned with nothing left open. Moving into CONDENSE is deliberately irreversible: once you start consolidating, you don\'t un-verify and go back. The cycle commits to closing out.',
+            hood: 'With no plan edits, an EMPTY Outstanding Items section, ≥ 100 points, and ≥ 1 CLAUDE.md update, <code>verify-commit.sh</code> permits the <code>verify→condense</code> forward transition — and there is no backward path out of CONDENSE.'
         },
         'v-outst': {
-            title: '"Outstanding Items" gate', tag: 'gate',
-            what: 'A gate that checks whether a job has unfinished "Outstanding Items" before it can be called done. The B6 essays place this inside VERIFY.',
-            why: 'It belongs in the lifecycle — it is real — but at a different moment than the essays suggest. It is part of deciding completion, which happens one phase later.',
-            hood: 'In the live code this check lives in the <code>[JOB-COMPLETE]</code> completion question, which is CONDENSE-only (<code>question-capture.sh</code>, lines 218 + 242). VERIFY itself does not gate on Outstanding Items.',
-            warn: 'Blog-vs-code: the essays (06_10:61) describe VERIFY blocking on a non-empty <code>## Outstanding Items</code> list. The live code has no such VERIFY gate — the Outstanding-Items check is part of <code>[JOB-COMPLETE]</code> in CONDENSE. The plan-edit backward half of VERIFY IS built and real; this Outstanding-Items-blocks-VERIFY half is not.'
+            title: 'Outstanding items left?', tag: 'gate',
+            what: 'The second thing VERIFY checks before it can advance: is the "Outstanding Items" list empty? Any leftover per-cycle work blocks the forward move.',
+            why: 'A cycle is not done while work remains open. Like the plan-edit check, a non-empty list forces the job BACKWARD — to PLAN or EXECUTE — to finish it, rather than carrying unfinished work into CONDENSE.',
+            hood: 'A real VERIFY gate (<code>CONTEXT.opevc.md:173</code>, built 2026-06-03): <code>verify-commit.sh</code> requires the <code>## Outstanding Items</code> section be EMPTY; any non-whitespace content BLOCKS forward-advance and directs a <code>--backward</code> move to PLAN or EXECUTE. A second, whole-job Outstanding-Items check ALSO runs later at CONDENSE\'s <code>[JOB-COMPLETE]</code> question — the two granularities (per-cycle here, whole-job there) work together.'
         },
 
         /* ---------------- CARD CONDENSE : the growth organ ---------------- */
@@ -1167,17 +1166,18 @@
             title: 'VERIFY — check, and maybe retreat',
             sub: 'What you\'re looking at: the honesty phase. It runs checks only — and it is the one phase that can send the job BACKWARD instead of forward.',
             boxes: [
-                { id:'v-check',  x:44,  y:226, w:196, h:104, tag:'action', t:'Run the checks', s:'scripts + read only · no new building' },
-                { id:'v-fork',   x:322, y:226, w:188, h:104, tag:'gate',   t:'Plan file touched?', s:'did VERIFY edit the plan?' },
-                { id:'v-back',   x:600, y:96,  w:268, h:92,  tag:'phase',  t:'Forced back to PLAN', s:'edited the plan → must retreat' },
-                { id:'v-clean',  x:600, y:286, w:268, h:92,  tag:'gate',   t:'Clean → CONDENSE', s:'a one-way door · no going back' },
-                { id:'v-outst',  x:322, y:412, w:316, h:92,  tag:'gate',   t:'"Outstanding Items" gate', s:'lives in CONDENSE — NOT here', warn:true }
+                { id:'v-check',  x:44,  y:230, w:188, h:100, tag:'action', t:'Run the checks', s:'scripts + read only · no new building' },
+                { id:'v-fork',   x:286, y:120, w:196, h:96,  tag:'gate',   t:'Plan file touched?', s:'did VERIFY edit the plan?' },
+                { id:'v-back',   x:600, y:96,  w:276, h:96,  tag:'phase',  t:'Forced back', s:'plan edit → PLAN · open item → PLAN/EXECUTE' },
+                { id:'v-outst',  x:286, y:340, w:196, h:96,  tag:'gate',   t:'Outstanding items left?', s:'must be empty to advance' },
+                { id:'v-clean',  x:600, y:340, w:276, h:96,  tag:'gate',   t:'All clear → CONDENSE', s:'a one-way door · no going back' }
             ],
             edges: [
                 { from:'v-check', to:'v-fork',  kind:'hard', label:'then verify' },
                 { from:'v-fork',  to:'v-back',  kind:'hard', label:'plan edited' },
-                { from:'v-fork',  to:'v-clean', kind:'hard', label:'untouched' },
-                { from:'v-clean', to:'v-outst', kind:'soft', label:'blog adds a gate' }
+                { from:'v-fork',  to:'v-outst', kind:'hard', label:'untouched' },
+                { from:'v-outst', to:'v-back',  kind:'hard', label:'items remain', labelY:250 },
+                { from:'v-outst', to:'v-clean', kind:'hard', label:'empty' }
             ],
             stickies: [
                 { x:300, y:30,  aha:true, text:'Most phases can step <b>back</b> by choice. Only <b>VERIFY</b> is <b>forced</b> back — a plan edit or an open item blocks it from advancing.',
@@ -1185,7 +1185,7 @@
                 { x:36,  y:372, text:'If VERIFY had to fix the plan, the work isn\'t trusted — it\'s sent <b>back to PLAN</b> to re-plan.' }
             ],
             backnote: { x:46, y:498, text:'← from EXECUTE: the work is built' },
-            nextnote: { x:660, y:430, text:'Clean → into CONDENSE' }
+            nextnote: { x:604, y:494, text:'All clear → into CONDENSE' }
         },
 
         '5,0': {
