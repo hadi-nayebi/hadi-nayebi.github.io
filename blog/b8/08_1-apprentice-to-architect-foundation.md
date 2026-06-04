@@ -78,7 +78,7 @@ Essay 8 unfolds across the parts below:
 - [Essay 8.8 — A System That Safely Modifies Itself](08_8-safe-self-modification.html) — the Tier-3 close, the recursive lock ceremony, and the rollback substrate
 - [Essay 8.9 — The Seed Is Yours](08_9-the-seed-is-yours.html) — series finale, the bridge to the public seed agent, and the architecture handed over
 
-Essays 8.2 through 8.5 deep-dive the maturation mechanisms — job formats, brain inventory, soft-to-hard pattern migration, and the enforced-vs-discipline distinction. Essays 8.6 and 8.7 widen the lens to the operator's arc and the brain's growth shape. Essays 8.8 and 8.9 are the close — first the architecture-self-recursion that proves the substrate holds, then the handoff that lets the seed become yours.
+Essays 8.2 through 8.5 deep-dive the maturation mechanisms — Job Stages, brain inventory, soft-to-hard pattern migration, and the enforced-vs-discipline distinction. Essays 8.6 and 8.7 widen the lens to the operator's arc and the brain's growth shape. Essays 8.8 and 8.9 are the close — first the architecture-self-recursion that proves the substrate holds, then the handoff that lets the seed become yours.
 
 ---
 
