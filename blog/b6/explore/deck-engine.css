@@ -63,7 +63,9 @@
             position: absolute;
             width: 100vw; height: 100vh;
             display: flex; align-items: center; justify-content: center;
-            padding: 4.4rem 2rem 2rem;
+            /* top inset clears the centred deck-title + step-indicator band so the
+               card header never sits under the top chrome (reviewer 5eab6e77) */
+            padding: 6.3rem 2rem 2rem;
         }
         /* grid positions (col,row) */
         .deck-cell[data-col="0"] { left: 0; }
@@ -227,6 +229,15 @@
         .tagcaption__lab { width: 100%; font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 1px; }
         .tagcap { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; font-size: 8.5px; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; }
         .tagcap .sym { font-size: 11px; }
+        /* self-collapse: only the "Tags ▾" handle shows; chips reveal on hover/focus
+           so the top-left corner stays clear of the card (reviewer 5eab6e77) */
+        .tagcaption { cursor: default; }
+        .tagcaption__lab { margin: 0; }
+        .tagcaption__lab::after { content: ' \25BE'; }
+        .tagcaption .tagcap { display: none; }
+        .tagcaption:hover .tagcap, .tagcaption:focus-within .tagcap { display: inline-flex; }
+        .tagcaption:hover .tagcaption__lab, .tagcaption:focus-within .tagcaption__lab { margin-bottom: 1px; }
+        .tagcaption:hover .tagcaption__lab::after, .tagcaption:focus-within .tagcaption__lab::after { content: ' \25B4'; }
         @media (max-width: 760px) { .tagcaption { display: none; } }
 
         /* ---- SVG edges ---- */
@@ -418,6 +429,16 @@
         .minimap__legend { margin-top: 0.55rem; display: flex; flex-direction: column; gap: 0.2rem; }
         .minimap__lg { display: flex; align-items: center; gap: 0.35rem; font-size: 0.56rem; color: var(--text-muted); }
         .minimap__lgdot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+        /* self-collapse: a "You are here ▾" pill by default; the grid + legend reveal
+           on hover/focus so the top-right corner clears the card (reviewer 5eab6e77) */
+        .minimap { cursor: default; }
+        .minimap__label { margin-bottom: 0; }
+        .minimap__label::after { content: ' \25BE'; opacity: 0.8; }
+        .minimap__grid, .minimap__legend { display: none; }
+        .minimap:hover .minimap__label, .minimap:focus-within .minimap__label { margin-bottom: 0.45rem; }
+        .minimap:hover .minimap__grid, .minimap:focus-within .minimap__grid { display: grid; }
+        .minimap:hover .minimap__legend, .minimap:focus-within .minimap__legend { display: flex; }
+        .minimap:hover .minimap__label::after, .minimap:focus-within .minimap__label::after { content: ' \25B4'; }
 
         /* ============================ INFO PANEL ============================ */
         .info-panel {
