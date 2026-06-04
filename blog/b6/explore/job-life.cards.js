@@ -325,6 +325,62 @@ window.DECK_INFO = {
             hood: '<code>plugin_lock_approval:true</code> (job-identity-level — never reset on reactivation). It grants the RIGHT; an actual edit still needs a separate <code>[PLUGIN-LOCK]</code> unlock.'
         },
 
+        /* ---------------- CARD STAGES-LOOP : the three job formats ---------------- */
+        'st1-cycle': {
+            title: 'Stage 1 — one OPEVC cycle', tag: 'phase',
+            what: 'Stage 1 runs the OPEVC cycle a single time: OBSERVE, PLAN, EXECUTE, VERIFY, CONDENSE — once.',
+            why: 'It is for one-off work that does not need to repeat: a single fix, a quick exploration, a teaching session. Nothing has to carry across runs.',
+            hood: '<code>plan_file == false</code>. There is no separate plan file, and the multiplier stays at its sentinel until each phase sets it.'
+        },
+        'st1-cond': {
+            title: 'CONDENSE — the single one', tag: 'action',
+            what: 'A Stage-1 job has exactly one CONDENSE, at the end of its single cycle.',
+            why: 'That one CONDENSE both consolidates the cycle\'s findings and is where the job can complete.',
+            hood: '<code>[JOB-COMPLETE]</code> is eligible at every CONDENSE while <code>plan_file == false</code> — for Stage 1 that is its only CONDENSE.'
+        },
+        'st1-end': {
+            title: 'complete', tag: 'state',
+            what: 'After the single CONDENSE, the Stage-1 job ends.',
+            why: 'No plan file persists, so nothing carries to a next run unless you start a new job.',
+            hood: 'A Stage-1 CONDENSE can still emit a <code>[PENDING-JOB]</code> note to propose a repeatable Stage-2 version of the same work.'
+        },
+        'st2-cycle': {
+            title: 'Stage 2 — OPEVC, cycles 1..N', tag: 'phase',
+            what: 'Stage 2 runs the OPEVC cycle many times — cycle 1, cycle 2, … up to N.',
+            why: 'It is for repeatable, structured work that benefits from an accumulating plan that gets smarter each run.',
+            hood: '<code>plan_file == plan_&lt;name&gt;.md</code>, with <code>total_cycles: N</code> in its frontmatter. Cycle 1 creates the plan; cycles 2..N work against it.'
+        },
+        'st2-cond': {
+            title: 'CONDENSE — one per cycle', tag: 'action',
+            what: 'Every cycle ends in its own CONDENSE, so a Stage-2 job has MANY CONDENSEs — one per cycle.',
+            why: 'Each CONDENSE routes that cycle\'s findings into the plan and knowledge, then either starts the next cycle or, at the last cycle, completes the job.',
+            hood: 'Completion becomes eligible when <code>current_cycle &gt;= effective_last_cycle</code>; earlier CONDENSEs loop into the next cycle.'
+        },
+        'st2-end': {
+            title: 'complete (last cycle)', tag: 'state',
+            what: 'A Stage-2 job completes only at its last cycle\'s CONDENSE.',
+            why: 'Earlier CONDENSEs loop back into the next cycle; the plan file persists across all of them.',
+            hood: 'The <code>.md</code> plan file is reactivatable — a later run reads the refined plan and converges over time.'
+        },
+        'st3-cycle': {
+            title: 'Stage 3 — OPEVC, cycles 1..N', tag: 'phase',
+            what: 'Stage 3 loops exactly like Stage 2 — cycles 1..N, each ending in CONDENSE.',
+            why: 'Same repeatable shape and identical completion semantics; the difference is the plan-file FORMAT and what it can do.',
+            hood: '<code>plan_file == plan_&lt;name&gt;.yaml</code>. Completion behaves identically to Stage 2 — only the format differs.'
+        },
+        'st3-cond': {
+            title: 'CONDENSE — one per cycle', tag: 'action',
+            what: 'One CONDENSE per cycle, exactly as Stage 2.',
+            why: 'The loop and completion behave identically; only the plan format (and its injection power) differs.',
+            hood: '<code>current_cycle &gt;= effective_last_cycle</code> completes it.'
+        },
+        'st3-yaml': {
+            title: '.yaml injects context', tag: 'object',
+            what: 'The Stage-3 .yaml plan file does something the .md cannot: it injects per-cycle, per-phase context at each phase entry.',
+            why: 'It can tailor the phase voices for each cycle — e.g. point OBSERVE at specific sources for cycle 3. A .md plan is read by the agent but does NOT inject. That injection is the ONLY difference between Stage 2 and Stage 3.',
+            hood: 'The <code>.yaml</code> <code>cycles:</code> list declares per-cycle entries; at phase entry it modifies EXISTING voices by voice-id (append / replace / prepend).'
+        },
+
         /* ---------------- CAPSTONE : one job, many lanes ---------------- */
         'cap-id': {
             title: 'One job = one ID', tag: 'object',
@@ -627,8 +683,41 @@ window.DECK_CARDS = {
                   ref: { url:'../06_10-plan-state-machine.html', section:'Blog 6.10 · the plan-file state machine', blurb:'PLAN commits the job\'s Stage exactly once via set-plan-file — false (Stage 1), a .md (Stage 2), or a .yaml (Stage 3). plan_file is born null.' } },
                 { x:36,  y:358, text:'Until a Stage is set, a gate <b>blocks EXECUTE</b> — even Stage 1 must choose <code>false</code>.' }
             ],
-            backnote: { x:46, y:498, text:'← from OBSERVE: it now knows its name + goal' },
-            nextnote: { x:626, y:500, text:'A Stage chosen → into EXECUTE' }
+            navHints: { down: 'see the three job formats & how they loop' }
+        },
+
+        '2,1': {
+            kind: 'detail',
+            eyebrow: 'Related detail · under "PLAN — choose the Stage"',
+            title: 'The three job formats — and how each loops',
+            sub: 'What you\'re looking at: the same OPEVC cycle, run three ways. Stage 1 runs it once. Stage 2 and Stage 3 loop it many times — the difference between those two is whether the plan file injects context.',
+            boxes: [
+                /* Stage 1 — one cycle, one condense */
+                { id:'st1-cycle', x:80,  y:56,  w:222, h:92, tag:'phase',  t:'Stage 1 · OPEVC ×1', s:'run the cycle once' },
+                { id:'st1-cond',  x:402, y:56,  w:170, h:92, tag:'action', t:'CONDENSE', s:'the one and only' },
+                { id:'st1-end',   x:672, y:56,  w:204, h:92, tag:'state',  t:'complete', s:'ends after one condense' },
+                /* Stage 2 — many cycles, many condenses, .md */
+                { id:'st2-cycle', x:80,  y:206, w:222, h:92, tag:'phase',  t:'Stage 2 · OPEVC ↻×N', s:'.md plan · loops each cycle' },
+                { id:'st2-cond',  x:402, y:206, w:170, h:92, tag:'action', t:'CONDENSE ×N', s:'one per cycle' },
+                { id:'st2-end',   x:672, y:206, w:204, h:92, tag:'state',  t:'complete', s:'only at the last cycle' },
+                /* Stage 3 — many cycles + .yaml injects */
+                { id:'st3-cycle', x:80,  y:356, w:222, h:92, tag:'phase',  t:'Stage 3 · OPEVC ↻×N', s:'.yaml plan · loops each cycle' },
+                { id:'st3-cond',  x:402, y:356, w:170, h:92, tag:'action', t:'CONDENSE ×N', s:'one per cycle' },
+                { id:'st3-yaml',  x:672, y:346, w:204, h:112, tag:'object', t:'.yaml injects', s:'tailored context into each phase' }
+            ],
+            edges: [
+                { from:'st1-cycle', to:'st1-cond', kind:'hard' },
+                { from:'st1-cond',  to:'st1-end',  kind:'hard', label:'ends here', keepLabel:true },
+                { from:'st2-cycle', to:'st2-cond', kind:'hard' },
+                { from:'st2-cond',  to:'st2-end',  kind:'hard', label:'↻ loops · completes at last cycle', keepLabel:true },
+                { from:'st3-cycle', to:'st3-cond', kind:'hard' },
+                { from:'st3-yaml',  to:'st3-cycle',kind:'soft', label:'injects each phase', keepLabel:true, labelY:332 }
+            ],
+            stickies: [
+                { x:96, y:476, aha:true, text:'Three formats of the <b>same</b> OPEVC cycle: <b>Stage 1</b> runs it once; <b>Stage 2</b> (.md) and <b>Stage 3</b> (.yaml) loop it. Only the <b>.yaml injects</b> per-phase context — the .md does not.',
+                  ref: { url:'../06_10-plan-state-machine.html', section:'Blog 6.10 · the plan-file state machine', blurb:'Stage 1 is single-cycle (plan_file false); Stage 2 (.md) and Stage 3 (.yaml) repeat across cycles. The .yaml additionally injects per-cycle, per-phase context at phase entry; the .md does not.' } }
+            ],
+            navHints: { up: 'up: PLAN — choose the Stage' }
         },
 
         '3,0': {
