@@ -719,6 +719,84 @@
     }
 
     /* ========================================================================
+     * PUBLIC COMMENTS — a Giscus thread per deck page (same repo + category as
+     * the blog essays). Shown to EVERYONE (not localhost-gated). A docked
+     * "Discuss" button opens an overlay; the Giscus iframe lazy-loads on first
+     * open and maps by pathname, so each deck gets its own discussion.
+     * ====================================================================== */
+    (function publicComments() {
+        var gcss = `
+        .discuss-btn { position: fixed; left: 1.5rem; bottom: 3.5rem; z-index: 2200;
+            display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.9rem;
+            border-radius: 999px; background: rgba(5,5,7,0.62); border: 1px solid var(--border);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: var(--text-muted); font-size: 0.8rem; cursor: pointer; transition: color .2s, border-color .2s; }
+        .discuss-btn:hover, .discuss-btn:focus-visible { color: var(--text-main); border-color: var(--primary); outline: none; }
+        .discuss-ov { position: fixed; inset: 0; z-index: 5000; display: none;
+            align-items: center; justify-content: center; background: rgba(3,3,6,0.72);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 2.2rem 1rem; }
+        .discuss-ov.is-open { display: flex; }
+        .discuss-card { width: 760px; max-width: 96vw; max-height: 86vh; display: flex; flex-direction: column;
+            background: rgba(12,12,20,0.985); border: 1px solid rgba(139,92,246,0.35);
+            border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.6); overflow: hidden; }
+        .discuss-card__head { display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .discuss-card__title { font-size: 1rem; font-weight: 700; color: #f1eeff; }
+        .discuss-card__sub { font-size: 0.7rem; color: #8a8a9c; margin-top: 0.15rem; }
+        .discuss-card__close { background: none; border: none; color: #b6b6c8; font-size: 1.5rem; line-height: 1; cursor: pointer; }
+        .discuss-card__body { padding: 0.6rem 1.1rem 1.1rem; overflow-y: auto; }
+        .discuss-card__body .gc-loading { color: #8a8a9c; font-size: 0.85rem; text-align: center; padding: 1.4rem; }`;
+        var gst = document.createElement('style'); gst.textContent = gcss; document.head.appendChild(gst);
+
+        var dbtn = document.createElement('button');
+        dbtn.className = 'discuss-btn'; dbtn.type = 'button';
+        dbtn.setAttribute('aria-label', 'Open public discussion for this diagram');
+        dbtn.innerHTML = '💬 Discuss';
+        document.body.appendChild(dbtn);
+
+        var ov = document.createElement('div');
+        ov.className = 'discuss-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true');
+        ov.setAttribute('aria-label', 'Public discussion');
+        ov.innerHTML =
+            '<div class="discuss-card">' +
+              '<div class="discuss-card__head"><div>' +
+                '<div class="discuss-card__title">Discuss this diagram</div>' +
+                '<div class="discuss-card__sub">Public comments via GitHub — one thread per page</div>' +
+              '</div><button class="discuss-card__close" type="button" aria-label="Close discussion">&times;</button></div>' +
+              '<div class="discuss-card__body"><div class="gc-loading">Loading comments…</div><div id="giscus-container"></div></div>' +
+            '</div>';
+        document.body.appendChild(ov);
+
+        var loaded = false;
+        function loadGiscus() {
+            if (loaded) return; loaded = true;
+            var s = document.createElement('script');
+            s.src = 'https://giscus.app/client.js';
+            s.setAttribute('data-repo', 'hadi-nayebi/hadi-nayebi.github.io');
+            s.setAttribute('data-repo-id', 'R_kgDOHL_tnQ');
+            s.setAttribute('data-category', 'General');
+            s.setAttribute('data-category-id', 'DIC_kwDOHL_tnc4C3cRQ');
+            s.setAttribute('data-mapping', 'pathname');
+            s.setAttribute('data-strict', '0');
+            s.setAttribute('data-reactions-enabled', '1');
+            s.setAttribute('data-emit-metadata', '0');
+            s.setAttribute('data-input-position', 'top');
+            s.setAttribute('data-theme', 'dark');
+            s.setAttribute('data-lang', 'en');
+            s.setAttribute('data-loading', 'lazy');
+            s.crossOrigin = 'anonymous'; s.async = true;
+            s.addEventListener('load', function () { var l = ov.querySelector('.gc-loading'); if (l) l.style.display = 'none'; });
+            ov.querySelector('#giscus-container').appendChild(s);
+        }
+        function openOv() { ov.classList.add('is-open'); loadGiscus(); }
+        function closeOv() { ov.classList.remove('is-open'); }
+        dbtn.addEventListener('click', openOv);
+        ov.querySelector('.discuss-card__close').addEventListener('click', closeOv);
+        ov.addEventListener('click', function (e) { if (e.target === ov) closeOv(); });
+        ov.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.stopPropagation(); closeOv(); } });
+    })();
+
+    /* ========================================================================
      * DIAGRAM COMMENTS — local review tool (localhost ONLY, never on the public site)
      * Drops a comment tagged to the CURRENT card. Saves to the dev server
      * (POST /api/diagram-comments -> diagram-comments.json on disk) with a
