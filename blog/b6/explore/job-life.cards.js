@@ -298,7 +298,7 @@ window.DECK_CARDS = {
                 { x:548, y:408, aha:true, text:'Born EMPTY — the job does <b>not yet know</b> its own name or goal. That is what OBSERVE is for.',
                   ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · job_core — the job record', blurb:'A job is born as a small JSON record — created, made active, and focused in one write — with its name and goal still empty.' } }
             ],
-            nextnote: { x:600, y:476, text:'Follow it into OBSERVE' },
+            nextnote: { x:798, y:368, text:'Follow it into OBSERVE' },
             downhint: { x:60, y:506, label:'related: Active + focused, in one write' }
         },
 
