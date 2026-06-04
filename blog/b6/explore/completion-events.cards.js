@@ -10,7 +10,7 @@
  * phase_condense/scripts/condense-commit.sh, + CONTEXT.job-system.md (design ground truth).
  * ⚠ = where the published essays differ from the built code (the honesty badge).
  * ============================================================================ */
-window.DECK_META = { seqLabel: 'completion ≠ unfocus' };
+window.DECK_META = { page: 'completion-events', seqLabel: 'completion ≠ unfocus' };
 
 window.DECK_INFO = {
     /* ---- Card 1: three events ---- */

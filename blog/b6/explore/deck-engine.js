@@ -122,10 +122,17 @@
         article.appendChild(stage);
 
         /* sticky notes + guiding notes layered over the stage, positioned in viewBox % */
-        (card.stickies || []).forEach(function (st) {
+        (card.stickies || []).forEach(function (st, idx) {
             var s = document.createElement('div');
             s.className = 'sticky' + (st.r ? ' r' : '') + (st.aha ? ' sticky--aha' : '');
-            s.style.left = pctX(st.x); s.style.top = pctY(st.y);
+            /* draggable: restore a saved position if the reader moved this note before */
+            var skey = stickyKey(key, idx), saved = stickyStore()[skey];
+            var sx = saved ? saved.x : st.x, sy = saved ? saved.y : st.y;
+            s.style.left = pctX(sx); s.style.top = pctY(sy);
+            s.setAttribute('data-sticky-key', skey);
+            s.setAttribute('data-default-x', st.x);
+            s.setAttribute('data-default-y', st.y);
+            s.title = 'Drag to move · double-click to reset';
             s.innerHTML = st.text;
             if (st.ref) {
                 /* a footnote ref-chip linking this note to its blog source (matches the blog's ⓘ ref-markers) */
@@ -177,6 +184,16 @@
     /* viewBox coordinate → CSS % of the stage (stage uses preserveAspectRatio none-ish via 100% svg) */
     function pctX(x){ return (x / VB_W * 100) + '%'; }
     function pctY(y){ return (y / VB_H * 100) + '%'; }
+
+    /* ---- per-deck identity + draggable-sticky persistence (localStorage) ---- */
+    function pageId(){
+        return (window.DECK_META && window.DECK_META.page) ||
+               (location.pathname.split('/').pop() || '').replace(/\.html$/, '') || 'deck';
+    }
+    var STICKY_LS = 'deckStickyPos';
+    function stickyStore(){ try { return JSON.parse(localStorage.getItem(STICKY_LS) || '{}'); } catch (e) { return {}; } }
+    function stickyStoreSave(o){ try { localStorage.setItem(STICKY_LS, JSON.stringify(o)); } catch (e) {} }
+    function stickyKey(cardKey, idx){ return pageId() + '|' + cardKey + '|' + idx; }
 
     /* ---- build one card's SVG (edges first, then boxes via foreignObject) ---- */
     function buildDiagram(card) {
@@ -557,6 +574,71 @@
     reftip.addEventListener('focusout', refScheduleHide);
 
     /* ========================================================================
+     * DRAGGABLE STICKY NOTES — the reader can reposition any note; the new
+     * spot persists per deck+card+index in localStorage. Double-click resets.
+     * ====================================================================== */
+    (function stickyDrag() {
+        var drag = null;
+        function clamp(v, lo, hi){ return v < lo ? lo : (v > hi ? hi : v); }
+        grid.addEventListener('pointerdown', function (e) {
+            var s = e.target.closest && e.target.closest('.sticky');
+            if (!s) return;
+            if (e.target.closest('.refchip')) return;        /* let ref-chip clicks through */
+            e.preventDefault();
+            var stage = s.parentNode, rect = stage.getBoundingClientRect();
+            drag = { s: s, rect: rect, startX: e.clientX, startY: e.clientY,
+                     origL: parseFloat(s.style.left), origT: parseFloat(s.style.top), moved: false };
+            s.classList.add('is-dragging');
+            try { s.setPointerCapture(e.pointerId); } catch (err) {}
+        });
+        grid.addEventListener('pointermove', function (e) {
+            if (!drag) return;
+            if (Math.abs(e.clientX - drag.startX) + Math.abs(e.clientY - drag.startY) > 3) drag.moved = true;
+            var dxp = (e.clientX - drag.startX) / drag.rect.width  * 100;
+            var dyp = (e.clientY - drag.startY) / drag.rect.height * 100;
+            drag.s.style.left = clamp(drag.origL + dxp, -3, 95) + '%';
+            drag.s.style.top  = clamp(drag.origT + dyp, -3, 95) + '%';
+        });
+        function endDrag() {
+            if (!drag) return;
+            drag.s.classList.remove('is-dragging');
+            if (drag.moved) {
+                var store = stickyStore();
+                store[drag.s.getAttribute('data-sticky-key')] = {
+                    x: parseFloat(drag.s.style.left) / 100 * VB_W,
+                    y: parseFloat(drag.s.style.top)  / 100 * VB_H
+                };
+                stickyStoreSave(store);
+            }
+            drag = null;
+        }
+        grid.addEventListener('pointerup', endDrag);
+        grid.addEventListener('pointercancel', endDrag);
+        grid.addEventListener('dblclick', function (e) {
+            var s = e.target.closest && e.target.closest('.sticky');
+            if (!s || e.target.closest('.refchip')) return;
+            s.style.left = pctX(+s.getAttribute('data-default-x'));
+            s.style.top  = pctY(+s.getAttribute('data-default-y'));
+            var store = stickyStore(); delete store[s.getAttribute('data-sticky-key')]; stickyStoreSave(store);
+        });
+        /* one-time discoverability hint */
+        try {
+            if (localStorage.getItem('deckStickyHintSeen') !== '1') {
+                var hint = document.createElement('div');
+                hint.textContent = '✎ Tip: drag the sticky notes to rearrange them — double-click to reset.';
+                hint.style.cssText = 'position:fixed;left:50%;bottom:1.3rem;transform:translateX(-50%);z-index:2300;' +
+                    'background:rgba(20,20,30,0.96);color:#efeaff;padding:0.5rem 0.9rem;border-radius:9px;' +
+                    'border:1px solid rgba(139,92,246,0.45);font-size:0.8rem;box-shadow:0 8px 22px rgba(0,0,0,0.5);' +
+                    'transition:opacity .4s;';
+                document.body.appendChild(hint);
+                setTimeout(function(){ hint.style.opacity = '0'; }, 5200);
+                setTimeout(function(){ hint.remove(); }, 5800);
+                localStorage.setItem('deckStickyHintSeen', '1');
+            }
+        } catch (e) {}
+    })();
+
+    /* ========================================================================
      * NAV ARROW buttons
      * ====================================================================== */
     document.getElementById('nav-left').addEventListener('click', function () { move(-1, 0); });
@@ -737,11 +819,11 @@
         function add() {
             var text = (textEl.value || '').trim(); if (!text) { textEl.focus(); return; }
             var c = curCard();
-            fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: 'job-life', card: c.key, cardTitle: c.title, text: text }) })
+            fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: pageId(), card: c.key, cardTitle: c.title, text: text }) })
                 .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
                 .then(function (entry) { comments.push(entry); lsSet(comments); textEl.value = ''; render(); cmtFlash('Saved → diagram-comments.json'); })
                 .catch(function () {
-                    var entry = { id: 'ls-' + Date.now(), page: 'job-life', card: c.key, cardTitle: c.title, text: text, timestamp: new Date().toISOString(), status: 'open', address: null, addressedAt: null, _local: true };
+                    var entry = { id: 'ls-' + Date.now(), page: pageId(), card: c.key, cardTitle: c.title, text: text, timestamp: new Date().toISOString(), status: 'open', address: null, addressedAt: null, _local: true };
                     comments.push(entry); lsSet(comments); textEl.value = ''; render();
                     cmtFlash('Saved locally — restart dev-server to write the file');
                 });

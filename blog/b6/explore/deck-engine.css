@@ -208,8 +208,18 @@
             border-radius: 3px;
             box-shadow: 0 8px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
             transform: rotate(-2.4deg);
-            pointer-events: none;
+            pointer-events: auto;            /* draggable: user can reposition notes */
+            cursor: grab; touch-action: none; user-select: none;
+            transition: box-shadow .15s, filter .15s;
         }
+        .sticky:hover { box-shadow: 0 12px 26px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5); filter: brightness(1.03); }
+        .sticky.is-dragging { cursor: grabbing; z-index: 40; box-shadow: 0 18px 38px rgba(0,0,0,0.6); }
+        /* a faint grip cue, top-left, appears on hover so the note reads as movable */
+        .sticky::after {
+            content: '\2630'; position: absolute; top: 3px; left: 5px;
+            font-size: 9px; color: rgba(90,70,20,0.45); opacity: 0; transition: opacity .15s;
+        }
+        .sticky:hover::after { opacity: 1; }
         .sticky::before {
             content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
             width: 40px; height: 14px; border-radius: 3px;
