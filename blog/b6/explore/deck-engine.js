@@ -203,11 +203,11 @@
                        '" marker-end="url(#' + (soft ? 'ahs' : 'ah') + ')"/>';
             if (e.label) {
                 var mid = midOf(p);
-                var lw = e.label.length * 5.6 + 14;
-                var ly = (e.labelY != null) ? e.labelY : (mid.y - 13);
+                var lw = e.label.length * 7.0 + 18;
+                var ly = (e.labelY != null) ? e.labelY : (mid.y - 14);
                 labelSvg += '<g transform="translate(' + mid.x + ',' + ly + ')">' +
-                    '<rect class="edge-lbl-bg" x="' + (-lw/2) + '" y="-10" width="' + lw + '" height="18" rx="6"/>' +
-                    '<text class="edge-lbl" x="0" y="3" text-anchor="middle">' + esc(e.label) + '</text></g>';
+                    '<rect class="edge-lbl-bg" x="' + (-lw/2) + '" y="-12" width="' + lw + '" height="23" rx="8"/>' +
+                    '<text class="edge-lbl" x="0" y="4.5" text-anchor="middle">' + esc(e.label) + '</text></g>';
             }
         });
 

@@ -194,8 +194,8 @@
         /* ---- SVG edges ---- */
         .edge { fill: none; stroke: rgba(200,204,236,0.85); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
         .edge--soft { stroke: rgba(160,166,224,0.6); stroke-width: 1.9; stroke-dasharray: 6 6; }
-        .edge-lbl-bg { fill: rgba(9,9,15,0.94); stroke: rgba(139,92,246,0.30); stroke-width: 1; }
-        .edge-lbl { fill: #dcdcec; font-size: 10.5px; font-weight: 600; letter-spacing: 0.01em; }
+        .edge-lbl-bg { fill: rgba(10,10,17,0.97); stroke: rgba(139,92,246,0.55); stroke-width: 1.2; }
+        .edge-lbl { fill: #f1f1fb; font-size: 13px; font-weight: 700; letter-spacing: 0.015em; }
 
         /* ---- sticky notes (post-its) ---- */
         .sticky {
