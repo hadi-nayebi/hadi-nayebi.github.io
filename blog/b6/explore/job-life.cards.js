@@ -296,8 +296,8 @@ window.DECK_INFO = {
         'rC-parent': {
             title: 'Focused job waits', tag: 'object',
             what: 'The current focused job now lists the new job as a dependency and cannot complete until it is done.',
-            why: 'Adding a dependency is a CONDENSE act; REMOVING one is a VERIFY act — the phase that audits whether a declared dependency was really needed.',
-            hood: 'The stop gate refuses to complete a job while any id in its <code>depends_on[]</code> is unfinished.'
+            why: 'Adding a dependency is a CONDENSE act; REMOVING one is a VERIFY act. This is the <b>lifecycle-symmetry principle</b>: the phase with the right context owns each operation. CONDENSE holds the cycle-wide synthesis context where new or blocking follow-up work is recognised — so graph ADDITIONS (and all job creation) belong there. VERIFY audits the focused job\'s actual work — so it is the natural place to discover that a declared dependency turned out to be unneeded, and REMOVE it.',
+            hood: 'Verified in the live seed (not a hallucinated feature): <code>condense-guard.sh</code> allows <code>add-dependency</code> + <code>create-dependent</code>; <code>verify-guard.sh</code> allows ONLY <code>remove-dependency</code> and explicitly blocks adds (routing them to a <code>[PENDING-JOB]</code> marker for CONDENSE). The stop gate then refuses to complete a job while any id in its <code>depends_on[]</code> is still unfinished.'
         },
         /* Route D — plugin-touch (user-approved) */
         'rD-need': {
