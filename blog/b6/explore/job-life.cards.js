@@ -57,8 +57,7 @@ window.DECK_INFO = {
             title: 'Gate to PLAN', tag: 'gate',
             what: 'A checkpoint. The job cannot move on to PLAN until it has actually named and defined itself.',
             why: 'This is what stops empty jobs from slipping forward. The job must prove it has done its homework in OBSERVE before it is allowed to start planning.',
-            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance. For cycle 1 it checks <code>name</code> is non-empty AND <code>objective</code> is non-empty — plus ≥100 points and ≥1 CLAUDE.md update. Any empty field → <code>REJECTED</code>, stay in OBSERVE.',
-            warn: 'The B6 essays describe OBSERVE expanding the objective into a 300–500 word write-up as a hard gate. The live code only checks that <code>name</code> and <code>objective</code> are NON-EMPTY — the rich length is coaching the agent toward, not a number the gate enforces.'
+            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance. For cycle 1 it checks <code>name</code> is non-empty AND the <code>objective</code> has been expanded to its full <b>300–500 words</b> — plus ≥100 points and ≥1 CLAUDE.md update. Miss any → <code>REJECTED</code>, stay in OBSERVE. (The 300-word floor is a real gate: <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code>; under it blocks, over 500 only coaches.)'
         },
 
         /* ---------------- CARD A2 : Active + focused ---------------- */
@@ -95,11 +94,10 @@ window.DECK_INFO = {
             hood: '<code>observe-commit.sh</code>: if <code>name</code> is empty → <code>REJECTED: Job has no name</code>.'
         },
         'b2-objective': {
-            title: 'objective filled?', tag: 'gate',
-            what: 'Second check: has the job written a non-empty objective?',
-            why: 'No objective means the job has no goal to verify against later. The gate refuses.',
-            hood: '<code>observe-commit.sh</code>: if <code>objective</code> is empty → <code>REJECTED: Job has no objective</code>.',
-            warn: 'The essays frame this as a 300–500 word objective expansion. The code checks NON-EMPTY only; the word count is coaching, not an enforced gate.'
+            title: 'objective expanded?', tag: 'gate',
+            what: 'Second check: in cycle 1, has the one-line goal grown into a full 300–500 word objective?',
+            why: 'A single sentence is not enough to plan or verify against. Cycle-1 OBSERVE must expand the objective into a real brief the rest of the cycles (and any future re-run) will read.',
+            hood: '<code>observe-commit.sh</code> cycle-1 gate: the objective must reach the expansion floor — under 300 words <code>BLOCKS</code> (<code>OBJECTIVE_EXPANSION_WORD_MIN=300</code>); over 500 only coaches. (Cycles 2+ skip this — expansion is once per activation.)'
         },
         'b2-points': {
             title: '≥ 100 points?', tag: 'gate',
@@ -143,13 +141,13 @@ window.DECK_INFO = {
             title: 'plan_x.md → Stage 2', tag: 'object',
             what: 'Choosing a <code>.md</code> filename makes this a Stage-2 job: repeatable, multi-cycle work with a prose plan file.',
             why: 'Stage 2 is for structured work that benefits from an accumulating, human-readable plan — one that gets smarter every run. The plan file is the memory that survives across activations.',
-            hood: '<code>plan_file: plan_&lt;name&gt;.md</code>. The plan file itself is created later, in cycle-1 EXECUTE (next card). A planned job auto-resolves its default multiplier to <code>3</code>.'
+            hood: '<code>plan_file: plan_&lt;name&gt;.md</code>. The plan file itself is created later, in cycle-1 EXECUTE (next card). A planned job runs RAPID by default — its multiplier auto-resolves to <code>3</code> at each phase entry (not set here at Stage choice).'
         },
         'p-s3': {
             title: 'plan_x.yaml → Stage 3', tag: 'object',
             what: 'Choosing a <code>.yaml</code> filename makes this a Stage-3 job: same as Stage 2, but the plan file is structured YAML.',
             why: 'Stage 3 is for work that wants per-cycle context injected automatically at each phase. Completion behaves identically to Stage 2 — only the plan file\'s FORMAT differs.',
-            hood: '<code>plan_file: plan_&lt;name&gt;.yaml</code>. Like Stage 2, the default multiplier auto-resolves to <code>3</code> for planned jobs (<code>.md</code> and <code>.yaml</code> behave the same here). The YAML\'s <code>cycles:</code> list declares the per-cycle entries.'
+            hood: '<code>plan_file: plan_&lt;name&gt;.yaml</code>. Like Stage 2, a planned job runs RAPID by default — the multiplier auto-resolves to <code>3</code> at each phase entry (<code>.md</code> and <code>.yaml</code> behave the same here). The YAML\'s <code>cycles:</code> list declares the per-cycle entries.'
         },
 
         /* ---------------- CARD EXECUTE : build, in scope ---------------- */
@@ -311,7 +309,7 @@ window.DECK_CARDS = {
                 { id:'b-read',      x:54,  y:222, w:212, h:104, tag:'action', t:'Reads prompt + context', s:'gather · ask · read wide' },
                 { id:'b-name',      x:404, y:120, w:196, h:92,  tag:'object', t:'name',      s:'filled in — was empty' },
                 { id:'b-objective', x:404, y:336, w:196, h:92,  tag:'object', t:'objective', s:'filled in — was empty' },
-                { id:'b-gate',      x:734, y:218, w:210, h:112, tag:'gate',   t:'Gate to PLAN',       s:'name + objective non-empty', warn:true }
+                { id:'b-gate',      x:734, y:218, w:210, h:112, tag:'gate',   t:'Gate to PLAN',       s:'name set · objective expanded' }
             ],
             edges: [
                 { from:'b-read',      to:'b-name',      kind:'hard', label:'self-define' },
@@ -359,7 +357,7 @@ window.DECK_CARDS = {
             sub: 'What you\'re looking at: the OBSERVE → PLAN checkpoint, opened up. Four boxes must all answer "yes" before PLAN unlocks.',
             boxes: [
                 { id:'b2-name',      x:60,  y:60,  w:210, h:92, tag:'gate',  t:'name filled?',          s:'non-empty string' },
-                { id:'b2-objective', x:60,  y:188, w:210, h:92, tag:'gate',  t:'objective filled?',     s:'non-empty string', warn:true },
+                { id:'b2-objective', x:60,  y:188, w:210, h:92, tag:'gate',  t:'objective expanded?',   s:'cycle 1: 300–500 words' },
                 { id:'b2-points',    x:60,  y:316, w:210, h:92, tag:'gate',  t:'≥ 100 points?',         s:'enough observing' },
                 { id:'b2-claude',    x:60,  y:444, w:210, h:92, tag:'gate',  t:'≥ 1 CLAUDE.md update?', s:'findings written down' },
                 { id:'b2-unlock',    x:660, y:230, w:268, h:120, tag:'phase', t:'PLAN unlocks',         s:'all four say YES' }
