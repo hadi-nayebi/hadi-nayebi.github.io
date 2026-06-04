@@ -66,31 +66,8 @@ window.DECK_INFO = {
             hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance, all four required: <code>name</code> non-empty AND (cycle 1) <code>objective ≥ 300 words</code> AND <code>≥ 100 points</code> AND <code>≥ 1 CLAUDE.md update</code>. Miss any one → <code>REJECTED / BLOCKED</code>, stay in OBSERVE and keep growing. The up-close, per-check view is the detail card directly below.'
         },
 
-        /* ---------------- CARD A2 : Active + focused ---------------- */
-        'a2-active': {
-            title: 'active', tag: 'state',
-            what: '"Active" means this job is live — it is real work the seed has on its plate right now.',
-            why: 'A job has a status. Active is the working state; later it can become completed. While any job is active, the seed will not go quietly to sleep — there is work to finish.',
-            hood: 'The <code>status</code> field is set to <code>"active"</code> at birth by <code>create-active</code>. The stop gate refuses to release while any job is <code>active</code>.'
-        },
-        'a2-focused': {
-            title: 'focused', tag: 'state',
-            what: '"Focused" means this is THE one job the seed is concentrating on right now.',
-            why: 'You can have several active jobs, but only one is focused. Every phase gate, every coaching voice, every write-scope keys off the single focused job. Focus is the spotlight.',
-            hood: '<code>focused:true</code>. Only one record carries it at a time — focusing a different job first clears the flag everywhere else. Birth sets both <code>active</code> AND <code>focused</code> in the same jq write.'
-        },
-        'a2-onewrite': {
-            title: 'one jq write', tag: 'action',
-            what: 'Both flags — active and focused — are stamped onto the record in a single atomic write.',
-            why: 'There is no in-between moment where a job is half-born. It appears already live and already in focus. Clean and atomic.',
-            hood: 'A single <code>jq \'.jobs += [{... status:"active", focused:true ...}]\'</code> append. No second step sets focus — it is part of the same object literal.'
-        },
-        'a2-mirror': {
-            title: 'phase mirror', tag: 'object',
-            what: 'A second small record is created to track which phase the job is in.',
-            why: 'The job\'s "what am I" lives in one place (job_core); its "where am I in the cycle" lives in another (the phasic system). Same job, split across plugins by the same ID.',
-            hood: '<code>phase.sh --hook init &lt;id&gt;</code> appends <code>{id, current_phase:"idle", cycle:0}</code> to the phasic plugin\'s own data file. Then <code>phase.sh advance &lt;id&gt;</code> makes the <code>idle→observe</code> move.'
-        },
+        /* (CARD A2 "Active + focused" detail removed — its content already lives on
+           card 0,0's record box; the down-slot under 0,0 is now the routes card.) */
 
         /* ---------------- CARD B2 : The gate to PLAN ---------------- */
         'b2-name': {
@@ -284,7 +261,7 @@ window.DECK_CARDS = {
             kind: 'seq', step: 1,
             eyebrow: 'The job\'s life · step 1',
             title: 'A job is born',
-            sub: 'A single prompt hits a sleeping seed — and one live job appears, knowing almost nothing about itself.',
+            sub: 'A prompt hits a sleeping seed — its very first run, or the moment after every earlier job is done — and one live, focused job appears, knowing almost nothing about itself. This is just ONE of four ways a job starts (press ↓).',
             boxes: [
                 { id:'a-idle',          x:40,  y:238, w:182, h:106, tag:'state',   t:'Seed idle',         s:'no job — asleep' },
                 { id:'a-prompt',        x:300, y:238, w:182, h:106, tag:'context', t:'Your first prompt', s:'the only context it gets' },
@@ -302,8 +279,7 @@ window.DECK_CARDS = {
                 { x:548, y:408, aha:true, text:'Born EMPTY — the job does <b>not yet know</b> its own name or goal. That is what OBSERVE is for.',
                   ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · job_core — the job record', blurb:'A job is born as a small JSON record — created, made active, and focused in one write — with its name and goal still empty.' } }
             ],
-            nextnote: { x:798, y:368, text:'Follow it into OBSERVE' },
-            downhint: { x:60, y:506, label:'related: Active + focused, in one write' }
+            navHints: { down: 'see other places jobs are created' }
         },
 
         '1,0': {
@@ -354,27 +330,92 @@ window.DECK_CARDS = {
         },
 
         '0,1': {
-            kind: 'detail',
-            eyebrow: 'Related detail · under "A job is born"',
-            title: 'Active + focused, in one write',
-            sub: 'What you\'re looking at: the two flags that make a newborn job both real and the centre of attention — set atomically, then mirrored into the phase machine.',
-            boxes: [
-                { id:'a2-onewrite', x:380, y:60,  w:240, h:96,  tag:'action', t:'one jq write',   s:'atomic — no half-born state' },
-                { id:'a2-active',   x:150, y:236, w:212, h:104, tag:'state',  t:'active',         s:'the job is live work' },
-                { id:'a2-focused',  x:640, y:236, w:212, h:104, tag:'state',  t:'focused',        s:'THE one job, right now' },
-                { id:'a2-mirror',   x:380, y:418, w:240, h:96,  tag:'object', t:'phase mirror',   s:'current_phase: idle · cycle: 0' }
+            kind: 'routes',
+            eyebrow: 'Related · under "A job is born"',
+            title: 'Where jobs come from — the four creation routes',
+            sub: '"A job is born" walked through ONE way a job starts: your prompt to an idle seed. There are four routes in all. Compare them at a glance, or open each one.',
+            routes: [
+                {
+                    key: 'A', name: 'Prompt bootstrap', cmd: 'job.sh --hook create-active',
+                    headline: 'You speak to an idle seed — and your prompt itself becomes a job. This is the route the previous card walked through.',
+                    body:
+                        '<p>The trigger is simply <b>a prompt arriving while no job is active</b> — the seed\'s very first run, or the moment after it has finished everything else. A reflex catches the prompt, counts active jobs, finds zero, and turns the prompt into one.</p>' +
+                        '<p>It fires <b>outside the phase machine</b> — there is no OBSERVE or PLAN around it; the always-on prompt hook does it before any phase begins. The new job is born <b>active and focused</b>, holding only your prompt; it works out its name and objective afterwards, in its first OBSERVE.</p>',
+                    warn: {
+                        title: 'CONTEXT vs code:',
+                        text: 'CONTEXT\'s "universal starter shape" says every new job is born with a 100–150 word objective. A prompt-born job is born with <code>name:""</code> and <code>objective:""</code> EMPTY — the 100–150-word start belongs to the CONDENSE-created routes (B/C/D). Flagged so the surfaces can be reconciled.'
+                    }
+                },
+                {
+                    key: 'B', name: 'CONDENSE standalone', cmd: 'job.sh create',
+                    headline: 'Mid-cycle the seed notices follow-up work and leaves a note. At CONDENSE that note becomes a fresh, independent job.',
+                    body:
+                        '<p>During any phase, the agent can drop a <code>[PENDING-JOB]</code> marker in a CLAUDE.md footer — "this deserves its own job later." It is NOT created on the spot; creation waits for <b>CONDENSE</b>, the one phase with the cycle-wide context to judge what follow-up work is really needed.</p>' +
+                        '<p>At CONDENSE step 3 a subagent reads the marker and calls <code>job.sh create</code>. The new job is born <b>pending</b> (not focused), with a name and a short (≤100-word) statement of intent. Its real detail is deferred to <b>its own</b> first OBSERVE when it later activates — no user involved.</p>',
+                    warn: {
+                        title: 'blog vs code:',
+                        text: 'Essay 06_7 teaches that CONDENSE <b>hard-blocks</b> job creation overlapping the current scope and routes the agent backward to EXECUTE (citing an <code>_is_in_scope_job</code> helper and an <code>--out-of-scope</code> flag). Neither exists in the live code — overlap is handled by soft coaching plus subagent judgment, not a hard gate. Flagged for consolidation.'
+                    }
+                },
+                {
+                    key: 'C', name: 'CONDENSE dependent', cmd: 'job.sh create-dependent',
+                    headline: 'The same as route B — but the new job must finish before the current one. It is created as a dependency.',
+                    body:
+                        '<p>Identical trigger and timing to route B (a <code>[PENDING-JOB]</code> note, created at CONDENSE), with one difference: the new job is linked as a <b>dependency of the focused job</b>. Its id is appended to the focused job\'s <code>depends_on[]</code>.</p>' +
+                        '<p>That link is what makes the parent wait: the stop gate won\'t let the parent complete while a job in its <code>depends_on[]</code> is unfinished. Adding a dependency is a CONDENSE act; <b>removing</b> one is a VERIFY act — the phase that audits whether a declared dependency was really needed.</p>'
+                },
+                {
+                    key: 'D', name: 'Plugin-touch (user-approved)', cmd: '[JOB-APPROVE-CREATION] → create',
+                    headline: 'The only route a user explicitly confirms. It exists for work that will touch the seed\'s own plugin layer.',
+                    body:
+                        '<p>Editing the plugin layer is privileged — it can only happen inside a user-approved job. When CONDENSE finds that follow-up work will touch plugins, the seed raises a <code>[JOB-APPROVE-CREATION]</code> question; <b>you confirm it</b>.</p>' +
+                        '<p>On confirmation the post-handler creates the job AND raises <code>plugin_lock_approval:true</code> — the "allowed to touch plugins" signal the lock-manager reads. The agent can never set that flag itself, which is why this is the only creation route that needs an explicit user yes.</p>'
+                }
             ],
-            edges: [
-                { from:'a2-onewrite', to:'a2-active',  kind:'hard', label:'sets status' },
-                { from:'a2-onewrite', to:'a2-focused', kind:'hard', label:'sets focus' },
-                { from:'a2-active',   to:'a2-mirror',  kind:'soft' },
-                { from:'a2-focused',  to:'a2-mirror',  kind:'soft', label:'then phase.sh init' }
-            ],
-            stickies: [
-                { x:36,  y:386, text:'Only <b>ONE</b> job is focused at a time — focusing another clears this one.' },
-                { x:760, y:386, r:true, text:'Many jobs can be <b>active</b>; exactly one is <b>focused</b>.' }
-            ],
-            upnote: { x:380, y:524, label:'back up to: A job is born' }
+            compare: {
+                cols: ['', 'A · Prompt bootstrap', 'B · CONDENSE standalone', 'C · CONDENSE dependent', 'D · Plugin-touch'],
+                rows: [
+                    { label: 'what triggers it', cells: [
+                        'a prompt arrives while no job is active (first run, or idle after all done)',
+                        'a [PENDING-JOB] note left in a footer this cycle',
+                        'same — a [PENDING-JOB] note, for blocking follow-up work',
+                        'CONDENSE finds follow-up work that will touch the plugin layer'
+                    ] },
+                    { label: 'which phase creates it', cells: [
+                        'none — outside the phase machine (the always-on prompt hook)',
+                        'CONDENSE (step 3)', 'CONDENSE (step 3)', 'CONDENSE (question handler)'
+                    ] },
+                    { label: 'command', cells: [
+                        { v: 'job.sh --hook create-active', code: true },
+                        { v: 'job.sh create', code: true },
+                        { v: 'job.sh create-dependent', code: true },
+                        { v: '[JOB-APPROVE-CREATION] → create', code: true }
+                    ] },
+                    { label: 'status · focus at birth', cells: [
+                        'active · focused', 'pending · not focused', 'pending · not focused', 'pending · not focused'
+                    ] },
+                    { label: 'name · objective at birth', cells: [
+                        { v: 'both "" EMPTY', warn: true },
+                        'name = slug · objective ≤100w intent',
+                        'name = slug · objective ≤100w intent',
+                        'name = slug · objective ≤100w intent'
+                    ] },
+                    { label: 'user involved?', cells: [
+                        'their prompt triggers it (no question)', 'no', 'no', 'YES — confirms the question'
+                    ] },
+                    { label: 'depends_on', cells: [
+                        '[]', '[] (standalone)', "added to the FOCUSED job's depends_on[]", '[]'
+                    ] },
+                    { label: 'plugin_lock_approval', cells: [
+                        'false', 'false', 'false', { v: 'TRUE — the distinguishing mark' }
+                    ] },
+                    { label: 'when full detail fills', cells: [
+                        'cycle-1 OBSERVE (name + objective)', 'its own cycle-1 OBSERVE', 'its own cycle-1 OBSERVE', 'its own cycle-1 OBSERVE'
+                    ] }
+                ],
+                note: '<span class="rt-warn-dot">&#9888;</span> <b>One divergence to consolidate:</b> Essay 06_7 teaches that CONDENSE hard-blocks scope-overlapping job creation (an <code>_is_in_scope_job</code> helper + an <code>--out-of-scope</code> flag); the live code has neither — overlap is soft coaching only. Open route B for detail.'
+            },
+            navHints: { up: 'up: A job is born' }
         },
 
         '1,1': {

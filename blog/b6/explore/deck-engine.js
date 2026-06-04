@@ -118,7 +118,7 @@
         /* stage (svg diagram) */
         var stage = document.createElement('div');
         stage.className = 'card__stage';
-        stage.innerHTML = buildDiagram(card);
+        stage.innerHTML = (card.kind === 'routes') ? buildRoutes(card) : buildDiagram(card);
         article.appendChild(stage);
 
         /* sticky notes + guiding notes layered over the stage, positioned in viewBox % */
@@ -286,6 +286,60 @@
         if (p.horiz) return { x: (p.from.x + p.to.x) / 2, y: p.from.y };
         return { x: p.to.x, y: (p.from.y + p.to.y) / 2 };
     }
+
+    /* ---- build a 'routes' card: a tabbed comparison rendered as HTML, not SVG.
+       Used for the "where jobs come from" card — N route panels + a comparison
+       table, switched by a tab bar. Content lives in card.routes[] + card.compare. */
+    function buildRoutes(card) {
+        var tabs = '<button class="routes-tab is-active" role="tab" data-rt="compare">&#9638; Compare all</button>';
+        var panels = '<div class="routes-panel is-active" data-rp="compare">' + compareTable(card.compare) + '</div>';
+        (card.routes || []).forEach(function (rt) {
+            tabs += '<button class="routes-tab" role="tab" data-rt="' + esc(rt.key) + '">' +
+                    esc(rt.key) + ' &middot; ' + esc(rt.name) + '</button>';
+            panels += '<div class="routes-panel" data-rp="' + esc(rt.key) + '">' + routePanel(rt) + '</div>';
+        });
+        return '<div class="routecard">' +
+               '<div class="routes-tabs" role="tablist">' + tabs + '</div>' +
+               '<div class="routes-panels">' + panels + '</div></div>';
+    }
+    function compareTable(cmp) {
+        if (!cmp) return '';
+        var head = '<tr>' + cmp.cols.map(function (c, i) {
+            return '<th' + (i === 0 ? ' class="rt-rowhead"' : '') + ' scope="col">' + esc(c) + '</th>';
+        }).join('') + '</tr>';
+        var body = (cmp.rows || []).map(function (r) {
+            return '<tr><th class="rt-rowhead" scope="row">' + esc(r.label) + '</th>' +
+                   r.cells.map(function (cell) {
+                       var c = (typeof cell === 'object') ? cell : { v: cell };
+                       return '<td' + (c.warn ? ' class="rt-warn"' : '') + '>' +
+                              (c.warn ? '<span class="rt-warn-dot" title="code-vs-blog-vs-CONTEXT divergence">&#9888;</span> ' : '') +
+                              (c.code ? '<code>' + esc(c.v) + '</code>' : esc(c.v)) + '</td>';
+                   }).join('') + '</tr>';
+        }).join('');
+        return '<div class="routes-tablewrap"><table class="routes-table">' +
+               '<thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>' +
+               (cmp.note ? '<p class="routes-note">' + cmp.note + '</p>' : '');
+    }
+    function routePanel(rt) {
+        var warn = rt.warn ? '<div class="route-warn"><span class="rt-warn-dot">&#9888;</span> <b>' +
+                   esc(rt.warn.title) + '</b> ' + rt.warn.text + '</div>' : '';
+        return '<div class="route-detail">' +
+               '<div class="route-detail__head"><span class="route-badge">' + esc(rt.key) + '</span>' +
+               '<div><h3>' + esc(rt.name) + '</h3><p class="route-cmd"><code>' + esc(rt.cmd) + '</code></p></div></div>' +
+               '<p class="route-headline">' + esc(rt.headline) + '</p>' +
+               '<div class="route-body">' + rt.body + '</div>' + warn + '</div>';
+    }
+    /* routes tab switching (delegated — panels swap within their own card) */
+    document.addEventListener('click', function (e) {
+        var tab = e.target.closest && e.target.closest('.routes-tab');
+        if (!tab) return;
+        var wrap = tab.closest('.routecard'); if (!wrap) return;
+        var key = tab.getAttribute('data-rt');
+        wrap.querySelectorAll('.routes-tab').forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+        wrap.querySelectorAll('.routes-panel').forEach(function (p) {
+            p.classList.toggle('is-active', p.getAttribute('data-rp') === key);
+        });
+    });
 
     /* build all cards */
     Object.keys(CARDS).forEach(function (k) { buildCard(k, CARDS[k]); });

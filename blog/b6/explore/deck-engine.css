@@ -158,6 +158,52 @@
         .dfield--grow { color: #c3b3f2; }      /* something accumulating this phase */
         .dfield--sep { height: 0; line-height: 0; margin: 3px 0 2px; border-top: 1px dashed rgba(255,255,255,0.16); }
 
+        /* ---- 'routes' card: tabbed comparison (HTML body, not SVG) ---- */
+        .routecard { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 0.3rem 1.5rem 1.3rem; }
+        .routes-tabs { display: flex; gap: 6px; flex-wrap: wrap; flex: 0 0 auto; margin-bottom: 0.7rem; }
+        .routes-tab {
+            font: inherit; font-size: 0.8rem; font-weight: 600; color: #cfcbe8;
+            padding: 0.42rem 0.82rem; border-radius: 10px; cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);
+            transition: border-color .14s, background .14s, color .14s;
+        }
+        .routes-tab:hover { border-color: rgba(139,92,246,0.5); color: #fff; }
+        .routes-tab.is-active { background: linear-gradient(150deg, rgba(99,102,241,0.34), rgba(139,92,246,0.22)); border-color: rgba(139,92,246,0.72); color: #fff; }
+        .routes-panels { flex: 1 1 auto; min-height: 0; overflow: auto; }
+        .routes-panel { display: none; }
+        .routes-panel.is-active { display: block; }
+
+        .routes-tablewrap { overflow-x: auto; }
+        .routes-table { border-collapse: collapse; width: 100%; font-size: 0.78rem; }
+        .routes-table th, .routes-table td {
+            border: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.62rem;
+            text-align: left; vertical-align: top; color: #d6d3ec; line-height: 1.34;
+        }
+        .routes-table thead th { position: sticky; top: 0; background: rgba(26,24,42,0.98); color: #f2f0fb; font-size: 0.74rem; z-index: 1; }
+        .routes-table .rt-rowhead { background: rgba(255,255,255,0.045); color: #efeaff; font-weight: 650; white-space: nowrap; }
+        .routes-table code { font-size: 0.86em; color: #bcd6ff; }
+        .routes-table .rt-warn { background: rgba(245,182,86,0.10); }
+        .rt-warn-dot { color: #f5b656; }
+
+        .route-detail { max-width: 70ch; }
+        .route-detail__head { display: flex; gap: 0.7rem; align-items: center; margin-bottom: 0.55rem; }
+        .route-badge {
+            width: 34px; height: 34px; flex: 0 0 auto; border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1rem; color: #fff;
+            background: linear-gradient(150deg, rgba(99,102,241,0.55), rgba(139,92,246,0.4));
+            border: 1px solid rgba(255,255,255,0.22);
+        }
+        .route-detail h3 { margin: 0; font-size: 1.06rem; color: #f4f2fb; }
+        .route-cmd { margin: 0.12rem 0 0; }
+        .route-cmd code, .route-body code { color: #bcd6ff; font-size: 0.86em; }
+        .route-headline { font-size: 0.92rem; color: #e8e5f6; margin: 0.2rem 0 0.6rem; }
+        .route-body { font-size: 0.85rem; line-height: 1.5; color: #c7c4e0; }
+        .route-body p { margin: 0 0 0.5rem; }
+        .route-body b { color: #efeaff; }
+        .route-warn { margin-top: 0.7rem; padding: 0.55rem 0.72rem; border-radius: 10px; background: rgba(245,182,86,0.1); border: 1px solid rgba(245,182,86,0.32); font-size: 0.8rem; line-height: 1.45; color: #f0e0c4; }
+        .route-warn b { color: #f7d9a0; }
+
         /* ---- TYPE TAG: the immediate "what KIND of thing is this pill" ---- */
         .dbox__tag {
             display: inline-flex; align-items: center; gap: 4px; align-self: flex-start;
