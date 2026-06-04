@@ -138,6 +138,22 @@
         .dbox--lane-gate     { border-left-color: var(--lane-gate);     background: linear-gradient(155deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 44%), linear-gradient(160deg, rgba(16,46,38,0.94), rgba(10,30,26,0.94)); }
         .dbox--record .dbox__t { font-size: 12.5px; }
 
+        /* MINI node — a small chip (e.g. a phase letter O/P/E/V/C) */
+        .dnode {
+            width: 100%; height: 100%; box-sizing: border-box;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            border-radius: 12px; padding: 2px 5px; cursor: default;
+            font-weight: 800; font-size: 0.98rem; letter-spacing: 0.02em; color: #f3f2fa;
+            border: 1.6px solid rgba(255,255,255,0.22);
+            background: linear-gradient(160deg, rgba(40,38,62,0.95), rgba(22,21,36,0.95));
+            box-shadow: 0 4px 14px rgba(0,0,0,0.42);
+        }
+        .dnode--phase  { border-color: rgba(139,92,246,0.78); }
+        .dnode--state  { border-color: rgba(107,127,184,0.72); }
+        .dnode--object { border-color: rgba(99,102,241,0.7);  font-size: 0.7rem; font-weight: 700; }
+        .dnode--action { border-color: rgba(56,189,248,0.72); font-size: 0.7rem; font-weight: 700; color: #e7f6ff; }
+        .edge--loop { stroke: rgba(160,166,224,0.78); stroke-width: 2; fill: none; }
+
         /* the small ⚠ blog-vs-code badge on a box */
         .dbox__warn {
             position: absolute; top: -9px; right: -9px;

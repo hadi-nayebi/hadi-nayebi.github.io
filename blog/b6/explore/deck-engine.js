@@ -206,6 +206,22 @@
         (card.edges || []).forEach(function (e) {
             var a = boxIndex[e.from], b = boxIndex[e.to];
             if (!a || !b) return;
+            /* a LOOP edge: a small U routed BELOW both boxes (down from the source's
+               bottom, across, up into the target's bottom) so it never overlaps the
+               forward chain. Used to draw "↻ next cycle" cleanly. */
+            if (e.loop) {
+                var lfx = a.x + a.w / 2, lfy = a.y + a.h, ltx = b.x + b.w / 2, lty = b.y + b.h;
+                var dip = Math.max(lfy, lty) + (e.dip || 38);
+                var ld = 'M' + lfx + ',' + lfy + ' L' + lfx + ',' + dip + ' L' + ltx + ',' + dip + ' L' + ltx + ',' + lty;
+                edgeSvg += '<path class="edge edge--loop" d="' + ld + '" marker-end="url(#ah)"/>';
+                if (e.label) {
+                    var llx = (lfx + ltx) / 2, lw2 = e.label.length * 6.4 + 16;
+                    labelSvg += '<g transform="translate(' + llx + ',' + dip + ')">' +
+                        '<rect class="edge-lbl-bg" x="' + (-lw2 / 2) + '" y="-11" width="' + lw2 + '" height="21" rx="8"/>' +
+                        '<text class="edge-lbl" x="0" y="4.5" text-anchor="middle">' + esc(e.label) + '</text></g>';
+                }
+                return;
+            }
             var p = anchorPair(a, b);
             var soft = e.kind === 'soft';
             var d = orthPath(p);
@@ -232,6 +248,15 @@
         /* boxes as foreignObject glass cards */
         var boxSvg = '';
         card.boxes.forEach(function (b) {
+            /* a MINI node: a small tag-coloured chip showing just b.t (e.g. a phase
+               letter O/P/E/V/C), no tag-chip/subtitle. Optional native title tooltip. */
+            if (b.mini) {
+                var miniInner = '<div class="dnode' + (b.tag ? ' dnode--' + b.tag : '') + '"' +
+                    (b.title ? ' title="' + esc(b.title) + '"' : '') + '>' + esc(b.t) + '</div>';
+                boxSvg += '<foreignObject x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '">' +
+                          '<div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%">' + miniInner + '</div></foreignObject>';
+                return;
+            }
             var laneClass = b.tag ? ('dbox--tag-' + b.tag) : ('dbox--lane-' + b.lane);
             var td = b.tag && TAG_DEF[b.tag];
             var tagChip = td ? ('<span class="dbox__tag tag--' + b.tag + '"><span class="sym">' +
