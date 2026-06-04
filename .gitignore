@@ -23,6 +23,11 @@ CLAUDE.md
 .claude/skills/
 memory/
 
+# Architect Layer-2 session tooling (local-only, never published)
+.claude/architect-tools/
+.claude/hooks/
+.claude/scheduled_tasks.lock
+
 # Audio transcript intermediates (HTML → transcript → audio pipeline)
 *.transcript.md
 
