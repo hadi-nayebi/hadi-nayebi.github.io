@@ -73,8 +73,8 @@
 
         .card {
             position: relative;
-            width: min(1180px, 100%);
-            height: min(860px, 100%);
+            width: min(1480px, 100%);
+            height: min(980px, 100%);
             display: flex; flex-direction: column;
             border-radius: 22px;
             border: 1px solid var(--border);
