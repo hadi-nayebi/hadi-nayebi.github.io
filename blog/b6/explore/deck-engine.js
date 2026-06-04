@@ -148,34 +148,9 @@
             }
             stage.appendChild(s);
         });
-        if (card.nextnote) {
-            var nn = document.createElement('div');
-            nn.className = 'nextnote';
-            nn.style.left = pctX(card.nextnote.x); nn.style.top = pctY(card.nextnote.y);
-            nn.innerHTML = '<span class="nextnote__chip">' + esc(card.nextnote.text) + '</span><span class="nextnote__arrow" aria-hidden="true">&rarr;</span>';
-            stage.appendChild(nn);
-        }
-        if (card.backnote) {
-            var bn = document.createElement('div');
-            bn.className = 'downhint';
-            bn.style.left = pctX(card.backnote.x); bn.style.top = pctY(card.backnote.y);
-            bn.innerHTML = esc(card.backnote.text);
-            stage.appendChild(bn);
-        }
-        if (card.downhint) {
-            var dh = document.createElement('div');
-            dh.className = 'downhint';
-            dh.style.left = pctX(card.downhint.x); dh.style.top = pctY(card.downhint.y);
-            dh.innerHTML = '<span class="downhint__arrow" aria-hidden="true">&darr;</span> ' + esc(card.downhint.label);
-            stage.appendChild(dh);
-        }
-        if (card.upnote) {
-            var un = document.createElement('div');
-            un.className = 'downhint';
-            un.style.left = pctX(card.upnote.x); un.style.top = pctY(card.upnote.y);
-            un.innerHTML = '<span class="downhint__arrow" aria-hidden="true">&uarr;</span> ' + esc(card.upnote.label);
-            stage.appendChild(un);
-        }
+        /* Direction pills removed (they crowded + misplaced). Navigation is the
+           four edge arrows + their hover message; a card may still describe a
+           specific direction via card.navHints (read by the nav-arrow hover). */
 
         cell.appendChild(article);
         grid.appendChild(cell);
@@ -216,9 +191,18 @@
             if (!a || !b) return;
             var p = anchorPair(a, b);
             var soft = e.kind === 'soft';
-            edgeSvg += '<path class="edge ' + (soft ? 'edge--soft' : 'edge--hard') + '" d="' + orthPath(p) +
+            var d = orthPath(p);
+            edgeSvg += '<path class="edge ' + (soft ? 'edge--soft' : 'edge--hard') + '" d="' + d +
                        '" marker-end="url(#' + (soft ? 'ahs' : 'ah') + ')"/>';
+            /* a transparent wide hit-area: hovering the arrow shows its meaning,
+               so the annotation lives in the hover, not as static clutter. */
             if (e.label) {
+                edgeSvg += '<path class="edge-hit" d="' + d + '" data-elabel="' + esc(e.label) + '"' +
+                           (e.meaning ? ' data-emean="' + esc(e.meaning) + '"' : '') + '/>';
+            }
+            /* edge labels are OFF by default (they crowd + misplace); render a static
+               one only where a fork genuinely needs disambiguating — keepLabel:true */
+            if (e.label && e.keepLabel) {
                 var mid = midOf(p);
                 var lw = e.label.length * 7.0 + 18;
                 var ly = (e.labelY != null) ? e.labelY : (mid.y - 14);
@@ -572,6 +556,30 @@
     reftip.addEventListener('mouseleave', refScheduleHide);
     reftip.addEventListener('focusin',  refCancelHide);
     reftip.addEventListener('focusout', refScheduleHide);
+
+    /* ========================================================================
+     * EDGE HOVER — each arrow describes itself on hover (annotation lives in the
+     * hover, not as static text). Driven by the transparent .edge-hit paths.
+     * ====================================================================== */
+    var edgetip = document.createElement('div');
+    edgetip.className = 'edgetip'; edgetip.setAttribute('role', 'tooltip');
+    document.body.appendChild(edgetip);
+    function posEdgetip(ev) {
+        var pad = 12, w = edgetip.offsetWidth, h = edgetip.offsetHeight;
+        var x = ev.clientX + 14, y = ev.clientY + 14;
+        if (x + w + pad > window.innerWidth)  x = ev.clientX - w - 14;
+        if (y + h + pad > window.innerHeight) y = ev.clientY - h - 14;
+        edgetip.style.left = Math.max(pad, x) + 'px';
+        edgetip.style.top  = Math.max(pad, y) + 'px';
+    }
+    function showEdgetip(hit, ev) {
+        var lab = hit.getAttribute('data-elabel') || '', mean = hit.getAttribute('data-emean') || '';
+        edgetip.innerHTML = '<b>' + esc(lab) + '</b>' + (mean ? '<br>' + esc(mean) : '');
+        edgetip.classList.add('is-on'); posEdgetip(ev);
+    }
+    grid.addEventListener('mouseover', function (e) { var h = e.target.closest && e.target.closest('.edge-hit'); if (h) showEdgetip(h, e); });
+    grid.addEventListener('mousemove', function (e) { if (edgetip.classList.contains('is-on') && e.target.closest('.edge-hit')) posEdgetip(e); });
+    grid.addEventListener('mouseout',  function (e) { if (e.target.closest && e.target.closest('.edge-hit')) edgetip.classList.remove('is-on'); });
 
     /* ========================================================================
      * DRAGGABLE STICKY NOTES — the reader can reposition any note; the new

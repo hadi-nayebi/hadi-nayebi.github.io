@@ -196,6 +196,15 @@
         .edge--soft { stroke: rgba(160,166,224,0.6); stroke-width: 1.9; stroke-dasharray: 6 6; }
         .edge-lbl-bg { fill: rgba(10,10,17,0.97); stroke: rgba(139,92,246,0.55); stroke-width: 1.2; }
         .edge-lbl { fill: #f1f1fb; font-size: 13px; font-weight: 700; letter-spacing: 0.015em; }
+        /* invisible wide hover target over each arrow — reveals the annotation on hover */
+        .edge-hit { fill: none; stroke: transparent; stroke-width: 18; pointer-events: stroke; cursor: help; }
+        .edge:hover, .edge-hit:hover + .edge { stroke: #c7c9f5; }
+        .edgetip { position: fixed; z-index: 3650; max-width: 240px; padding: 0.4rem 0.6rem; border-radius: 9px;
+            background: rgba(8,8,13,0.97); border: 1px solid rgba(139,92,246,0.5); box-shadow: 0 10px 26px rgba(0,0,0,0.55);
+            font-size: 0.74rem; line-height: 1.4; color: #eceaff; opacity: 0; pointer-events: none;
+            transform: translateY(3px); transition: opacity .12s, transform .12s; }
+        .edgetip.is-on { opacity: 1; transform: translateY(0); }
+        .edgetip b { color: #c9c2ff; }
 
         /* ---- sticky notes (post-its) ---- */
         .sticky {
