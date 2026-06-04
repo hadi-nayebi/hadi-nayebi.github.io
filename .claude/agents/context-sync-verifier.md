@@ -102,7 +102,18 @@ For each focus term:
 - **Sync-tag coverage** — does the term carry all four `[sync:X]` tags on its Sync line? Missing tags = incomplete distribution. (Report under completeness; do NOT block the term's consistency verdict on this — a term can be internally-consistent yet not-yet-distributed.)
 - **Ledger coverage** — if the term flags a not-built mechanism, is that mechanism named in the Addition ledger? If it flags a retired mechanism, is it in the Deletion ledger? An unbacked flag is a completeness gap.
 
-**Discipline for 2.6 + 2.7:** like cross-ref, these findings go to the ARCHITECT, who takes them to the USER. You NEVER self-resolve a contradiction, NEVER edit a term body, NEVER pick which side is right. You quote both sides + cite lines + name the class. A term is `[verified]`-eligible ONLY if it passes 2.5 (no unadjudicated cross-ref mismatch), 2.6 (no internal contradiction), AND 2.7 (no stub/dangling gap) — in addition to its four `[sync:X]` claims holding up.
+### Step 2.8 — PATCHWORK / architectural-justification check.
+
+A mechanism can be BUILT-MATCH (2.5) and internally consistent (2.6) and STILL be **patchwork** — a feature that should not exist because the problem it solves belongs elsewhere or is already solved. The fix-in-cycle gate proved this gap: its code matched its term, and it only *contradicted an invariant in a NEIGHBORING term* (a backward edge vs "CONDENSE is lock-forward only") — a contradiction the focus-only 2.6 sweep can miss. For each focus term that describes a **gate / transition / mechanism / field**, flag **PATCHWORK** if ANY hold (quote the term + the cite):
+
+1. **Invariant-contradicting transition** *(highest value)* — the mechanism adds a transition (especially BACKWARD) that contradicts an invariant ANOTHER term states (e.g. a CONDENSE→EXECUTE backward edge vs "CONDENSE is lock-forward only"; an idle mutation vs "idle is a minimal phase"). Scan EVERY phase-transition / lock-forward / write-scope invariant in the glossary, not just the focus term.
+2. **Wrong-phase cognition** — the mechanism does, at phase X, work that belongs to another phase's *optimization* (e.g. CONDENSE filtering misplaced `[PENDING-JOB]` notes that earlier-phase VOICE tuning should have prevented). Ask: "is this cognition even needed at THIS phase?"
+3. **Architecture-already-covers-it** — the problem is already handled by an existing primitive (e.g. the **20% deflation carry-over** + the **extension cycle** already absorb an unresolved/misplaced note — no new gate needed).
+4. **Unjustified complexity** — a funky/complex mechanism added for a SYMPTOM whose real fix is elsewhere.
+
+Surface as a **PATCHWORK candidate** for the architect to take to the USER, who decides keep / re-home / **REMOVE**. NEVER self-decide. Example caught (2026-05-30): the fix-in-cycle gate (1+2+3 all true) → removed from glossary + prototype.
+
+**Discipline for 2.6 + 2.7 + 2.8:** like cross-ref, these findings go to the ARCHITECT, who takes them to the USER. You NEVER self-resolve a contradiction, NEVER edit a term body, NEVER pick which side is right. You quote both sides + cite lines + name the class. A term is `[verified]`-eligible ONLY if it passes 2.5 (no unadjudicated cross-ref mismatch), 2.6 (no internal contradiction), 2.7 (no stub/dangling gap), AND 2.8 (no unadjudicated patchwork flag) — in addition to its four `[sync:X]` claims holding up.
 
 ### Step 3 — Decide per-term verdict.
 
@@ -152,6 +163,11 @@ Self-score: X/10
 - **<term> — stub**: entry at `CONTEXT.md:L<n>` is "<verbatim>" — does not define <missing aspect>. Needs expansion.
 - **<dangling concept> — undefined**: referenced at <terms/lines> but has no entry. Needs its own term or inline definition.
 - **<term> — missing sync tags**: carries only <tags present>; missing <tags absent>.
+- ...
+
+## Patchwork candidates — architect must adjudicate WITH THE USER
+*(Step 2.8 findings. A mechanism that is built + consistent but may not deserve to exist. Quote the term + cite + the invariant/owner/duplicate it collides with.)*
+- **<term> — PATCHWORK (<class: invariant-contradicting-transition / wrong-phase-cognition / architecture-already-covers / unjustified-complexity>)**: `CONTEXT.md:L<n>` describes <mechanism>. It collides with <the invariant in term B at L<b> / the optimization owned by phase X / the existing primitive Y>. Adjudication: keep / re-home / REMOVE?
 - ...
 
 ## Terms skipped (already [verified])
