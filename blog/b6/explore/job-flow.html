@@ -869,6 +869,18 @@
         'elk.spacing.nodeNode': '50'
     };
 
+    /* Journey overview: respect declaration order so the OPEVC spine reads as a
+       clean ordered chain (idle→observe→plan→execute→verify→condense), with the
+       side-rooms dropping below their ring anchor instead of interleaving. */
+    var JOURNEY_OPTS = {
+        'elk.layered.spacing.nodeNodeBetweenLayers': '96',
+        'elk.spacing.nodeNode': '40',
+        'elk.layered.considerModelOrder.strategy': 'NODES_AND_EDGES',
+        'elk.layered.crossingMinimization.forceNodeModelOrder': 'true',
+        'elk.layered.nodePlacement.strategy': 'NETWORK_SIMPLEX',
+        'elk.layered.spacing.edgeNodeBetweenLayers': '24'
+    };
+
     /* ========================================================================
      * VIEW: journey — the whole OPEVC ring, birth in-ramp, spawn out-ramp,
      * dependency route, completion out-ramp. Each ring node + ramp is drillable.
@@ -917,10 +929,11 @@
             // completion out-ramp off CONDENSE
             edge("j-cond-comp", "condense", "completion-pill", "hard", "[JOB-COMPLETE]"),
             edge("j-comp-idle", "completion-pill", "idle", "hard", "unfocus at idle"),
-            // growth aha hangs off the ring
-            edge("j-growth", "idle", "growth-pill", "soft", "")
+            // growth aha hangs off CONDENSE (the data-owner organ), not idle —
+            // keeps it out of the spine's reading path
+            edge("j-growth", "condense", "growth-pill", "soft", "")
         ];
-        return { id: "root", layoutOptions: SPREAD, children: children, edges: edges };
+        return { id: "root", layoutOptions: JOURNEY_OPTS, children: children, edges: edges };
     }
 
     /* ========================================================================
@@ -2825,10 +2838,8 @@
             root.appendChild(topbar);
             root.appendChild(viewport);
 
-            bgNote = ce('p', 'hm-bgnote', '');
-            bgNote.textContent = BG_NOTE_TEXT;
-            bgNote.setAttribute('aria-hidden', 'true');
-            root.appendChild(bgNote);
+            // bg-note intentionally NOT rendered: the orientation overlay ("?") and
+            // the per-view caption already carry this; dropping it frees the canvas.
 
             info = document.getElementById('info-panel');
             infoContent = document.getElementById('info-content');
