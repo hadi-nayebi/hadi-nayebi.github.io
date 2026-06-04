@@ -448,6 +448,7 @@
      * ====================================================================== */
     (function buildMinimap() {
         var mg = document.getElementById('minimap-grid');
+        if (!mg) return;   /* minimap removed from the shell — navigation is the arrows */
         mg.innerHTML = '';
         /* compute the real grid extent so the map mirrors the deck spatially */
         var maxCol = 0, maxRow = 0;

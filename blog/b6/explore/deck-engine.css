@@ -215,30 +215,8 @@
         .dbox--tag-action  { border-left-color: #38bdf8 !important; }
         .dbox--tag-gate    { border-left-color: #34d399 !important; }
 
-        /* ---- TAG CAPTION: always-visible key, docked top-LEFT (clears the
-               centred up/down nav arrows + the deck title + the top-right minimap) ---- */
-        .tagcaption {
-            /* sits BELOW the top-left "Back to Essay" pill (which is taller and
-               higher z-index) so the back link never occludes the tag chips. */
-            position: fixed; left: 0.85rem; top: 4.1rem; z-index: 1600;
-            display: flex; flex-wrap: wrap; align-items: center; gap: 5px;
-            max-width: 282px; box-sizing: border-box;
-            padding: 7px 9px; border-radius: 12px;
-            background: rgba(10,10,16,0.85); border: 1px solid var(--border); backdrop-filter: blur(9px);
-        }
-        .tagcaption__lab { width: 100%; font-size: 8px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 1px; }
-        .tagcap { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; font-size: 8.5px; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; }
-        .tagcap .sym { font-size: 11px; }
-        /* self-collapse: only the "Tags ▾" handle shows; chips reveal on hover/focus
-           so the top-left corner stays clear of the card (reviewer 5eab6e77) */
-        .tagcaption { cursor: default; }
-        .tagcaption__lab { margin: 0; }
-        .tagcaption__lab::after { content: ' \25BE'; }
-        .tagcaption .tagcap { display: none; }
-        .tagcaption:hover .tagcap, .tagcaption:focus-within .tagcap { display: inline-flex; }
-        .tagcaption:hover .tagcaption__lab, .tagcaption:focus-within .tagcaption__lab { margin-bottom: 1px; }
-        .tagcaption:hover .tagcaption__lab::after, .tagcaption:focus-within .tagcaption__lab::after { content: ' \25B4'; }
-        @media (max-width: 760px) { .tagcaption { display: none; } }
+        /* (Tag caption removed — the bottom-right Legend already explains the tags;
+           reviewer 41c9addb: "we already have legends, remove the TAGS menu".) */
 
         /* ---- SVG edges ---- */
         .edge { fill: none; stroke: rgba(200,204,236,0.85); stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
@@ -390,55 +368,9 @@
         #nav-left:hover, #nav-right:hover { transform: translateY(-50%) scale(1.07); }
         #nav-up:hover, #nav-down:hover { transform: translateX(-50%) scale(1.07); }
 
-        /* ============================ MINIMAP ============================ */
-        .minimap {
-            position: fixed; top: 1.3rem; right: 1.5rem; z-index: 2200;
-            /* stack label / grid / legend vertically so the panel stays as
-               narrow as the cell grid — a wide (row) layout overlaps the
-               centered deck title + step indicator once the deck has many cols. */
-            display: flex; flex-direction: column; align-items: stretch;
-            padding: 0.7rem; border-radius: 16px;
-            background: rgba(10,10,16,0.72); border: 1px solid var(--border);
-            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 14px 38px rgba(0,0,0,0.45);
-        }
-        .minimap__label { font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; text-align: center; margin-bottom: 0.45rem; }
-        .minimap__grid { display: grid; gap: 5px; } /* grid-template-columns set in JS (spatial, scales to the deck) */
-        .mm-cell {
-            position: relative;
-            width: 100%; min-width: 30px; height: 30px; border-radius: 7px;
-            appearance: none; cursor: pointer; font-family: inherit;
-            border: 1px solid rgba(255,255,255,0.14);
-            background: rgba(255,255,255,0.04);
-            display: flex; align-items: center; justify-content: center;
-            padding: 2px; text-align: center;
-            font-size: 0.66rem; line-height: 1; font-weight: 700; color: var(--text-muted);
-            transition: border-color .18s, background .18s, color .18s, box-shadow .18s;
-        }
-        .mm-cell--empty { visibility: hidden; pointer-events: none; }
-        .mm-cell:hover { border-color: rgba(139,92,246,0.6); color: var(--text-main); }
-        .mm-cell:focus-visible { outline: none; border-color: #fff; box-shadow: 0 0 0 2px rgba(139,92,246,0.6); }
-        .mm-cell.is-seq    { background: rgba(99,102,241,0.10); }
-        .mm-cell.is-capstone { background: rgba(52,211,153,0.12); border-color: rgba(52,211,153,0.4); color: #8fe9c4; }
-        .mm-cell.is-detail { background: rgba(148,163,184,0.07); border-style: dashed; }
-        .mm-cell.is-current {
-            border-color: var(--accent); color: #f4f2fb;
-            background: linear-gradient(150deg, rgba(99,102,241,0.4), rgba(139,92,246,0.4));
-            box-shadow: 0 0 16px rgba(139,92,246,0.55);
-        }
-        .minimap__legend { margin-top: 0.55rem; display: flex; flex-direction: column; gap: 0.2rem; }
-        .minimap__lg { display: flex; align-items: center; gap: 0.35rem; font-size: 0.56rem; color: var(--text-muted); }
-        .minimap__lgdot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
-        /* self-collapse: a "You are here ▾" pill by default; the grid + legend reveal
-           on hover/focus so the top-right corner clears the card (reviewer 5eab6e77) */
-        .minimap { cursor: default; }
-        .minimap__label { margin-bottom: 0; }
-        .minimap__label::after { content: ' \25BE'; opacity: 0.8; }
-        .minimap__grid, .minimap__legend { display: none; }
-        .minimap:hover .minimap__label, .minimap:focus-within .minimap__label { margin-bottom: 0.45rem; }
-        .minimap:hover .minimap__grid, .minimap:focus-within .minimap__grid { display: grid; }
-        .minimap:hover .minimap__legend, .minimap:focus-within .minimap__legend { display: flex; }
-        .minimap:hover .minimap__label::after, .minimap:focus-within .minimap__label::after { content: ' \25B4'; }
+        /* (Minimap removed — the nav arrows + step indicator carry navigation;
+           reviewer 41c9addb: "remove the You are here map; just arrows will take
+           the user where it needs to go".) */
 
         /* ============================ INFO PANEL ============================ */
         .info-panel {
@@ -628,8 +560,6 @@
             .legend { bottom: 5rem; right: 0.8rem; width: 200px; }
             .help-btn { bottom: 0.9rem; }
             .tooltip { display: none; }
-            .minimap { top: 0.9rem; right: 0.8rem; padding: 0.5rem; }
-            .mm-cell { min-width: 22px; height: 26px; font-size: 0.58rem; }
             .deck-title { display: none; }
             .nav-arrow { width: 40px; height: 40px; font-size: 1.1rem; }
             .sticky { display: none; }

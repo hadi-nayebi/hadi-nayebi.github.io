@@ -35,16 +35,6 @@
     <!-- step indicator -->
     <div class="step-ind" id="step-ind" aria-live="polite"></div>
 
-    <!-- ============================ MINIMAP ============================ -->
-    <nav class="minimap" aria-label="Card map — jump to any card">
-        <div class="minimap__label">You are here</div>
-        <div class="minimap__grid" id="minimap-grid"></div>
-        <div class="minimap__legend">
-            <div class="minimap__lg"><span class="minimap__lgdot" style="background:rgba(99,102,241,0.6)"></span>main sequence (← →)</div>
-            <div class="minimap__lg"><span class="minimap__lgdot" style="background:rgba(148,163,184,0.5)"></span>related detail (↑ ↓)</div>
-        </div>
-    </nav>
-
     <!-- ============================ NAV ARROWS ============================ -->
     <button class="nav-arrow is-disabled" id="nav-left" type="button" aria-label="Previous card">&larr;<span class="nav-arrow__hint"></span></button>
     <button class="nav-arrow is-disabled" id="nav-right" type="button" aria-label="Next card">&rarr;<span class="nav-arrow__hint"></span></button>
@@ -95,17 +85,6 @@
             <div class="legend__row"><span class="legend__warn" aria-hidden="true">&#9888;</span><span class="legend__txt"><b>Blog vs code</b>where essays and the live prototype differ &mdash; click the box</span></div>
         </div>
     </aside>
-
-    <!-- ============================ TAG CAPTION (always-visible key) ============================ -->
-    <div class="tagcaption" aria-hidden="true">
-        <span class="tagcaption__lab">Tags</span>
-        <span class="tagcap tag--state"><span class="sym">&#9676;</span>State</span>
-        <span class="tagcap tag--context"><span class="sym">&#9998;</span>Context</span>
-        <span class="tagcap tag--object"><span class="sym">&#9635;</span>Object</span>
-        <span class="tagcap tag--phase"><span class="sym">&#9670;</span>Phase</span>
-        <span class="tagcap tag--action"><span class="sym">&#9889;</span>Action</span>
-        <span class="tagcap tag--gate"><span class="sym">&#10003;</span>Gate</span>
-    </div>
 
     <!-- ============================ HELP BUTTON ============================ -->
     <button class="help-btn" id="help-btn" type="button"><b>?</b> how to read this</button>
