@@ -291,16 +291,29 @@
        Used for the "where jobs come from" card — N route panels + a comparison
        table, switched by a tab bar. Content lives in card.routes[] + card.compare. */
     function buildRoutes(card) {
-        var tabs = '<button class="routes-tab is-active" role="tab" data-rt="compare">&#9638; Compare all</button>';
-        var panels = '<div class="routes-panel is-active" data-rp="compare">' + compareTable(card.compare) + '</div>';
-        (card.routes || []).forEach(function (rt) {
-            tabs += '<button class="routes-tab" role="tab" data-rt="' + esc(rt.key) + '">' +
+        var tabs = '', panels = '';
+        /* each creation path is its OWN mini-diagram (boxes + edges), shown by a
+           tab; the prose for each box lives in its click tooltip, like every other
+           card. The FINAL tab is the at-a-glance comparison table. */
+        (card.routes || []).forEach(function (rt, i) {
+            var on = i === 0 ? ' is-active' : '';
+            tabs += '<button class="routes-tab' + on + '" role="tab" data-rt="' + esc(rt.key) + '">' +
                     esc(rt.key) + ' &middot; ' + esc(rt.name) + '</button>';
-            panels += '<div class="routes-panel" data-rp="' + esc(rt.key) + '">' + routePanel(rt) + '</div>';
+            panels += '<div class="routes-panel routes-panel--diagram' + on + '" data-rp="' + esc(rt.key) + '">' +
+                      buildDiagram(rt) + routeStickies(rt) + '</div>';
         });
+        tabs += '<button class="routes-tab" role="tab" data-rt="compare">&#9638; Compare all</button>';
+        panels += '<div class="routes-panel routes-panel--table" data-rp="compare">' + compareTable(card.compare) + '</div>';
         return '<div class="routecard">' +
                '<div class="routes-tabs" role="tablist">' + tabs + '</div>' +
                '<div class="routes-panels">' + panels + '</div></div>';
+    }
+    /* static (non-draggable) notes layered over a route's mini-diagram, in viewBox % */
+    function routeStickies(rt) {
+        return (rt.stickies || []).map(function (st) {
+            return '<div class="sticky sticky--static' + (st.r ? ' r' : '') + (st.aha ? ' sticky--aha' : '') +
+                   '" style="left:' + pctX(st.x) + ';top:' + pctY(st.y) + '">' + st.text + '</div>';
+        }).join('');
     }
     function compareTable(cmp) {
         if (!cmp) return '';
@@ -319,15 +332,6 @@
         return '<div class="routes-tablewrap"><table class="routes-table">' +
                '<thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>' +
                (cmp.note ? '<p class="routes-note">' + cmp.note + '</p>' : '');
-    }
-    function routePanel(rt) {
-        var warn = rt.warn ? '<div class="route-warn"><span class="rt-warn-dot">&#9888;</span> <b>' +
-                   esc(rt.warn.title) + '</b> ' + rt.warn.text + '</div>' : '';
-        return '<div class="route-detail">' +
-               '<div class="route-detail__head"><span class="route-badge">' + esc(rt.key) + '</span>' +
-               '<div><h3>' + esc(rt.name) + '</h3><p class="route-cmd"><code>' + esc(rt.cmd) + '</code></p></div></div>' +
-               '<p class="route-headline">' + esc(rt.headline) + '</p>' +
-               '<div class="route-body">' + rt.body + '</div>' + warn + '</div>';
     }
     /* routes tab switching (delegated — panels swap within their own card) */
     document.addEventListener('click', function (e) {

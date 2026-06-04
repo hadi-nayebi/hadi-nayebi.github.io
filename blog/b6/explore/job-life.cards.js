@@ -217,6 +217,114 @@ window.DECK_INFO = {
             hood: 'The <code>[JOB-COMPLETE]</code> eligibility (<code>question-capture.sh</code>:181–194) fires CONDENSE-only: Stage 1 (<code>plan_file == false</code>) at every CONDENSE; Stage 2/3 when <code>current_cycle ≥ effective_last_cycle</code>. If outstanding work remains, the job self-corrects by adding a cycle instead of completing.'
         },
 
+        /* ---------------- CARD ROUTES : the four creation paths (mini-diagrams) ---------------- */
+        /* Route A — prompt bootstrap */
+        'rA-idle': {
+            title: 'Seed idle', tag: 'state',
+            what: 'No job is active — the seed is at rest.',
+            why: 'A prompt only BOOTSTRAPS a job when nothing is already running: the first run, or the moment after every earlier job has finished.',
+            hood: 'The prompt hook counts <code>active_count = jobs where status=="active"</code>; this route fires only when that count is <code>0</code>.'
+        },
+        'rA-prompt': {
+            title: 'Your prompt', tag: 'context',
+            what: 'You send a prompt to the idle seed.',
+            why: 'Speaking to a sleeping seed IS starting a job — you never have to ask it to begin.',
+            hood: 'Arrives on the <code>UserPromptSubmit</code> event, caught by <code>job_core/hooks/prompt-handler.sh</code>.'
+        },
+        'rA-hook': {
+            title: 'Prompt hook bootstraps', tag: 'action',
+            what: 'A reflex catches the prompt, sees no active job, and turns the prompt INTO a job.',
+            why: 'This is the only creation route that happens OUTSIDE the phase machine — no OBSERVE or PLAN around it. It runs before any phase begins.',
+            hood: '<code>job.sh --hook create-active</code> (HOOK_MODE-gated; the agent cannot call it itself). One single jq write.'
+        },
+        'rA-job': {
+            title: 'New job — active + focused', tag: 'object',
+            what: 'One live job appears, focused, holding only your prompt — its name and objective still empty.',
+            why: 'It does not yet know what it is for. Working that out is its first OBSERVE\'s job (the route the main sequence walks).',
+            hood: 'Born <code>status:"active"</code>, <code>focused:true</code>, <code>name:""</code>, <code>objective:""</code>, <code>user_interactions:["&lt;prompt&gt;"]</code>. <b>⚠ CONTEXT vs code:</b> CONTEXT\'s "universal starter shape" claims a 100–150 word objective for ALL paths; a prompt-born job is born EMPTY. The 100–150w start is the CONDENSE-created pathway. Flagged for consolidation.'
+        },
+        /* Route B — CONDENSE standalone */
+        'rB-marker': {
+            title: '[PENDING-JOB] note', tag: 'action',
+            what: 'Mid-cycle, the agent drops a note in a CLAUDE.md footer: "this deserves its own job later."',
+            why: 'Follow-up work found mid-cycle should not be lost or jammed into the current job. The note defers it cleanly.',
+            hood: 'A <code>[PENDING-JOB]</code> marker in a phase footer; it is NOT acted on until CONDENSE.'
+        },
+        'rB-condense': {
+            title: 'CONDENSE · step 3', tag: 'phase',
+            what: 'Job creation happens at CONDENSE — the one phase with cycle-wide context to judge what follow-up work is really needed.',
+            why: 'EXECUTE and VERIFY block job creation and coach the agent to defer it here, so new work becomes its own properly-tracked unit.',
+            hood: 'CONDENSE step 3 of the waterfall hands the marker to <code>condense-job-creator</code>. <b>⚠ blog vs code:</b> Essay 06_7 teaches CONDENSE <b>hard-blocks</b> scope-overlapping creation and routes backward to EXECUTE (an <code>_is_in_scope_job</code> helper + <code>--out-of-scope</code> flag). Neither exists in the live code — it is soft coaching plus subagent judgment only. Flagged for consolidation.'
+        },
+        'rB-creator': {
+            title: 'condense-job-creator', tag: 'action',
+            what: 'A subagent reads the marker and creates a fresh, independent job.',
+            why: 'Standalone means it is in no other job\'s dependency list — it can complete on its own.',
+            hood: '<code>job.sh create</code>. Born <code>status:"pending"</code>, <code>focused:false</code>, name = a slug, objective = a short (≤100-word) intent.'
+        },
+        'rB-job': {
+            title: 'New job — pending', tag: 'object',
+            what: 'A new standalone job, waiting its turn. No user was involved.',
+            why: 'Its real detail is deferred to ITS OWN first OBSERVE when it later activates — just like the bootstrap job, only born pending instead of active.',
+            hood: '<code>status:"pending"</code>, <code>focused:false</code>, <code>depends_on:[]</code>.'
+        },
+        /* Route C — CONDENSE dependent */
+        'rC-marker': {
+            title: '[PENDING-JOB] · blocking', tag: 'action',
+            what: 'Same as route B — a note left mid-cycle — but for work that must finish BEFORE the current job.',
+            why: 'Some follow-up work blocks the parent; it must be modelled as a dependency, not a standalone.',
+            hood: 'The same <code>[PENDING-JOB]</code> marker; the dependency intent is realised at CONDENSE.'
+        },
+        'rC-condense': {
+            title: 'CONDENSE · step 3', tag: 'phase',
+            what: 'Again CONDENSE — the phase that owns graph additions.',
+            why: 'Adding a dependency needs cycle-wide context; CONDENSE has it.',
+            hood: 'Dependency creation is CONDENSE-gated (<code>condense-guard.sh</code>).'
+        },
+        'rC-creator': {
+            title: 'create-dependent', tag: 'action',
+            what: 'Creates the new job AND links it as a dependency of the focused job in one step.',
+            why: 'The link is what makes the parent wait.',
+            hood: '<code>job.sh create-dependent</code>: creates the job (pending) and appends its id to the focused job\'s <code>depends_on[]</code>.'
+        },
+        'rC-dep': {
+            title: 'New dep job — pending', tag: 'object',
+            what: 'The new job, born pending, that must finish first.',
+            why: 'Same birth shape as a standalone job; only its membership in a parent\'s depends_on[] differs.',
+            hood: '<code>status:"pending"</code>; its id now sits in the parent\'s <code>depends_on[]</code>.'
+        },
+        'rC-parent': {
+            title: 'Focused job waits', tag: 'object',
+            what: 'The current focused job now lists the new job as a dependency and cannot complete until it is done.',
+            why: 'Adding a dependency is a CONDENSE act; REMOVING one is a VERIFY act — the phase that audits whether a declared dependency was really needed.',
+            hood: 'The stop gate refuses to complete a job while any id in its <code>depends_on[]</code> is unfinished.'
+        },
+        /* Route D — plugin-touch (user-approved) */
+        'rD-need': {
+            title: 'Work touches plugins', tag: 'action',
+            what: 'CONDENSE finds that the follow-up work will edit the seed\'s own plugin layer.',
+            why: 'Editing plugins is privileged — it can only happen inside a user-approved job, so an ordinary create is not allowed.',
+            hood: 'The plugin layer is guarded by PLUGIN-LOCK; touching it requires the <code>plugin_lock_approval</code> signal on the job.'
+        },
+        'rD-q': {
+            title: '[JOB-APPROVE-CREATION]', tag: 'gate',
+            what: 'The seed asks and YOU confirm — minting a NEW job that is born cleared for plugin work.',
+            why: 'The agent can never grant itself the right to touch plugins; a human says yes. This is the CREATION route. A job ALREADY in flight can get the same right raised mid-life by its sibling question <code>[JOB-APPROVE-PLUGIN]</code> (any active phase, on the focused job, also user-confirmed) — so this is the creation-time route, not the only user-confirmed one.',
+            hood: 'A registered CONDENSE-only prefixed question. On confirm the post-handler runs <code>job.sh create</code> then <code>approve-plugin-lock</code>. Its mid-life sibling <code>[JOB-APPROVE-PLUGIN]</code> reuses the same <code>approve-plugin-lock</code> writer on the focused job.'
+        },
+        'rD-create': {
+            title: 'create + approve-plugin-lock', tag: 'action',
+            what: 'On your yes, the job is created and immediately marked as allowed to touch plugins.',
+            why: 'Two effects in one confirmed step: a new job, and the plugin-permission flag raised on it.',
+            hood: '<code>job.sh create</code> then <code>job.sh --hook approve-plugin-lock</code> → <code>plugin_lock_approval:true</code>.'
+        },
+        'rD-job': {
+            title: 'New job — plugin-approved', tag: 'object',
+            what: 'A new job carrying the rare plugin_lock_approval flag.',
+            why: 'That flag is the "allowed to touch plugins" signal the lock-manager reads; it is what sets this route apart from the others.',
+            hood: '<code>plugin_lock_approval:true</code> (job-identity-level — never reset on reactivation). It grants the RIGHT; an actual edit still needs a separate <code>[PLUGIN-LOCK]</code> unlock.'
+        },
+
         /* ---------------- CAPSTONE : one job, many lanes ---------------- */
         'cap-id': {
             title: 'One job = one ID', tag: 'object',
@@ -336,40 +444,92 @@ window.DECK_CARDS = {
             sub: '"A job is born" walked through ONE way a job starts: your prompt to an idle seed. There are four routes in all. Compare them at a glance, or open each one.',
             routes: [
                 {
-                    key: 'A', name: 'Prompt bootstrap', cmd: 'job.sh --hook create-active',
-                    headline: 'You speak to an idle seed — and your prompt itself becomes a job. This is the route the previous card walked through.',
-                    body:
-                        '<p>The trigger is simply <b>a prompt arriving while no job is active</b> — the seed\'s very first run, or the moment after it has finished everything else. A reflex catches the prompt, counts active jobs, finds zero, and turns the prompt into one.</p>' +
-                        '<p>It fires <b>outside the phase machine</b> — there is no OBSERVE or PLAN around it; the always-on prompt hook does it before any phase begins. The new job is born <b>active and focused</b>, holding only your prompt; it works out its name and objective afterwards, in its first OBSERVE.</p>',
-                    warn: {
-                        title: 'CONTEXT vs code:',
-                        text: 'CONTEXT\'s "universal starter shape" says every new job is born with a 100–150 word objective. A prompt-born job is born with <code>name:""</code> and <code>objective:""</code> EMPTY — the 100–150-word start belongs to the CONDENSE-created routes (B/C/D). Flagged so the surfaces can be reconciled.'
-                    }
+                    key: 'A', name: 'Prompt bootstrap',
+                    boxes: [
+                        { id:'rA-idle',   x:40,  y:228, w:172, h:104, tag:'state',   t:'Seed idle',   s:'no active job' },
+                        { id:'rA-prompt', x:268, y:228, w:180, h:104, tag:'context', t:'your prompt', s:'arrives at the seed' },
+                        { id:'rA-hook',   x:504, y:218, w:202, h:124, tag:'action',  t:'prompt hook', s:'active == 0 → bootstrap' },
+                        { id:'rA-job',    x:762, y:150, w:208, h:262, tag:'object',  t:'new job', warn:true, fields:[
+                            { k:'status:', v:'active', state:'ok' },
+                            { k:'focused:', v:'true', state:'ok' },
+                            { k:'name:', v:'""', state:'nul' },
+                            { k:'objective:', v:'""', state:'nul' },
+                            '—',
+                            { k:'user_interactions:', v:'' },
+                            { v:'[ your prompt ]' }
+                        ] }
+                    ],
+                    edges: [
+                        { from:'rA-idle',   to:'rA-prompt', kind:'soft', label:'a prompt' },
+                        { from:'rA-prompt', to:'rA-hook',   kind:'hard', label:'caught' },
+                        { from:'rA-hook',   to:'rA-job',    kind:'hard', label:'creates' }
+                    ],
+                    stickies: [
+                        { x:498, y:54, aha:true, text:'Fires <b>outside the phase machine</b> — born <b>active + focused</b>, holding only your prompt.' }
+                    ]
                 },
                 {
-                    key: 'B', name: 'CONDENSE standalone', cmd: 'job.sh create',
-                    headline: 'Mid-cycle the seed notices follow-up work and leaves a note. At CONDENSE that note becomes a fresh, independent job.',
-                    body:
-                        '<p>During any phase, the agent can drop a <code>[PENDING-JOB]</code> marker in a CLAUDE.md footer — "this deserves its own job later." It is NOT created on the spot; creation waits for <b>CONDENSE</b>, the one phase with the cycle-wide context to judge what follow-up work is really needed.</p>' +
-                        '<p>At CONDENSE step 3 a subagent reads the marker and calls <code>job.sh create</code>. The new job is born <b>pending</b> (not focused), with a name and a short (≤100-word) statement of intent. Its real detail is deferred to <b>its own</b> first OBSERVE when it later activates — no user involved.</p>',
-                    warn: {
-                        title: 'blog vs code:',
-                        text: 'Essay 06_7 teaches that CONDENSE <b>hard-blocks</b> job creation overlapping the current scope and routes the agent backward to EXECUTE (citing an <code>_is_in_scope_job</code> helper and an <code>--out-of-scope</code> flag). Neither exists in the live code — overlap is handled by soft coaching plus subagent judgment, not a hard gate. Flagged for consolidation.'
-                    }
+                    key: 'B', name: 'CONDENSE standalone',
+                    boxes: [
+                        { id:'rB-marker',   x:40,  y:228, w:200, h:104, tag:'action', t:'[PENDING-JOB]', s:'a note in a footer' },
+                        { id:'rB-condense', x:298, y:218, w:168, h:124, tag:'phase',  t:'CONDENSE', s:'step 3', warn:true },
+                        { id:'rB-creator',  x:524, y:228, w:196, h:104, tag:'action', t:'job-creator', s:'job.sh create' },
+                        { id:'rB-job',      x:776, y:190, w:194, h:180, tag:'object', t:'new job', fields:[
+                            { k:'status:', v:'pending', state:'nul' },
+                            { k:'focused:', v:'false' },
+                            { k:'name:', v:'a slug', state:'ok' },
+                            { k:'depends_on:', v:'[]' }
+                        ] }
+                    ],
+                    edges: [
+                        { from:'rB-marker',   to:'rB-condense', kind:'soft', label:'noticed this cycle' },
+                        { from:'rB-condense', to:'rB-creator',  kind:'hard', label:'step 3' },
+                        { from:'rB-creator',  to:'rB-job',      kind:'hard', label:'creates' }
+                    ],
+                    stickies: [
+                        { x:286, y:54, aha:true, text:'Creation waits for <b>CONDENSE</b> — the phase with the cycle-wide context to judge follow-up work.' }
+                    ]
                 },
                 {
-                    key: 'C', name: 'CONDENSE dependent', cmd: 'job.sh create-dependent',
-                    headline: 'The same as route B — but the new job must finish before the current one. It is created as a dependency.',
-                    body:
-                        '<p>Identical trigger and timing to route B (a <code>[PENDING-JOB]</code> note, created at CONDENSE), with one difference: the new job is linked as a <b>dependency of the focused job</b>. Its id is appended to the focused job\'s <code>depends_on[]</code>.</p>' +
-                        '<p>That link is what makes the parent wait: the stop gate won\'t let the parent complete while a job in its <code>depends_on[]</code> is unfinished. Adding a dependency is a CONDENSE act; <b>removing</b> one is a VERIFY act — the phase that audits whether a declared dependency was really needed.</p>'
+                    key: 'C', name: 'CONDENSE dependent',
+                    boxes: [
+                        { id:'rC-marker',   x:24,  y:236, w:172, h:104, tag:'action', t:'[PENDING-JOB]', s:'blocking work' },
+                        { id:'rC-condense', x:244, y:228, w:150, h:120, tag:'phase',  t:'CONDENSE', s:'step 3' },
+                        { id:'rC-creator',  x:436, y:236, w:190, h:104, tag:'action', t:'create-dependent', s:'links the two' },
+                        { id:'rC-dep',      x:680, y:104, w:188, h:124, tag:'object', t:'new dep job', s:'pending · finishes first' },
+                        { id:'rC-parent',   x:680, y:332, w:188, h:124, tag:'object', t:'focused job', s:'depends_on += new' }
+                    ],
+                    edges: [
+                        { from:'rC-marker',   to:'rC-condense', kind:'soft' },
+                        { from:'rC-condense', to:'rC-creator',  kind:'hard', label:'step 3' },
+                        { from:'rC-creator',  to:'rC-dep',      kind:'hard', label:'creates' },
+                        { from:'rC-dep',      to:'rC-parent',   kind:'soft', label:'must finish first' }
+                    ],
+                    stickies: [
+                        { x:24, y:60, text:'Adding a dependency is a <b>CONDENSE</b> act; <b>removing</b> one is a <b>VERIFY</b> act.' }
+                    ]
                 },
                 {
-                    key: 'D', name: 'Plugin-touch (user-approved)', cmd: '[JOB-APPROVE-CREATION] → create',
-                    headline: 'The only route a user explicitly confirms. It exists for work that will touch the seed\'s own plugin layer.',
-                    body:
-                        '<p>Editing the plugin layer is privileged — it can only happen inside a user-approved job. When CONDENSE finds that follow-up work will touch plugins, the seed raises a <code>[JOB-APPROVE-CREATION]</code> question; <b>you confirm it</b>.</p>' +
-                        '<p>On confirmation the post-handler creates the job AND raises <code>plugin_lock_approval:true</code> — the "allowed to touch plugins" signal the lock-manager reads. The agent can never set that flag itself, which is why this is the only creation route that needs an explicit user yes.</p>'
+                    key: 'D', name: 'Plugin-touch (user-approved)',
+                    boxes: [
+                        { id:'rD-need',   x:40,  y:230, w:190, h:112, tag:'action', t:'work touches plugins', s:'privileged' },
+                        { id:'rD-q',      x:286, y:218, w:204, h:136, tag:'gate',   t:'[JOB-APPROVE-CREATION]', s:'you confirm' },
+                        { id:'rD-create', x:548, y:230, w:180, h:112, tag:'action', t:'create + approve', s:'job.sh create' },
+                        { id:'rD-job',    x:768, y:198, w:204, h:166, tag:'object', t:'new job', fields:[
+                            { k:'plugin_lock_', v:'' },
+                            { k:'  approval:', v:'true', state:'ok' },
+                            '—',
+                            { k:'status:', v:'pending', state:'nul' }
+                        ] }
+                    ],
+                    edges: [
+                        { from:'rD-need',   to:'rD-q',      kind:'hard', label:'needs approval' },
+                        { from:'rD-q',      to:'rD-create', kind:'hard', label:'user says yes' },
+                        { from:'rD-create', to:'rD-job',    kind:'hard', label:'creates' }
+                    ],
+                    stickies: [
+                        { x:282, y:52, aha:true, text:'The creation route a user confirms. Its mid-life sibling <b>[JOB-APPROVE-PLUGIN]</b> raises the same right on a job already running — so a job can be cleared at birth OR later.' }
+                    ]
                 }
             ],
             compare: {
