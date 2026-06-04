@@ -152,7 +152,11 @@
         .dfields { display: flex; flex-direction: column; gap: 1px; margin-top: 1px; }
         .dfield { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 9.6px; line-height: 1.4; color: #c7c4e4; white-space: nowrap; }
         .dfield b { color: #efeaff; font-weight: 600; }
-        .dfield .nul { color: #8a8aa2; }
+        .dfield .nul, .dfield--nul { color: #8a8aa2; }
+        .dfield--ok { color: #8fe3b0; }       /* a satisfied check / filled value */
+        .dfield--ok b { color: #b6f0cf; }
+        .dfield--grow { color: #c3b3f2; }      /* something accumulating this phase */
+        .dfield--sep { height: 0; line-height: 0; margin: 3px 0 2px; border-top: 1px dashed rgba(255,255,255,0.16); }
 
         /* ---- TYPE TAG: the immediate "what KIND of thing is this pill" ---- */
         .dbox__tag {

@@ -36,28 +36,34 @@ window.DECK_INFO = {
 
         /* ---------------- CARD B : OBSERVE ---------------- */
         'b-read': {
-            title: 'Reads prompt + context', tag: 'action',
-            what: 'In OBSERVE the job gathers: it re-reads your prompt, can ask you follow-up questions, and pulls in surrounding context.',
-            why: 'A newborn job knows almost nothing about itself. OBSERVE is read-wide time — it learns enough to describe its own purpose in its own words.',
-            hood: 'OBSERVE is a read-only phase: its guard blocks writes to project files and only lets the agent write into CLAUDE.md working memory. Findings accumulate there before any decision is made.'
+            title: 'Read · ask · gather', tag: 'action',
+            what: 'In OBSERVE the job gathers: it re-reads your prompt, asks you follow-up questions, and pulls in surrounding context.',
+            why: 'A newborn job knows almost nothing about itself. OBSERVE is read-wide time — the gathering that has to happen before the job can describe its own purpose in its own words.',
+            hood: 'OBSERVE is a read-only phase: its guard blocks writes to project files and only lets the agent write into CLAUDE.md working memory. Gathering happens here; building is forbidden until EXECUTE.'
+        },
+        'b-grow': {
+            title: 'The job keeps growing', tag: 'context',
+            what: 'During OBSERVE the job is NOT static — it accumulates. Your prompt, your answers to its follow-up questions, and any later prompts all append to its interaction trail. Everything it reads and works out piles into working memory.',
+            why: 'A newborn job is almost empty (you saw it born blank on the previous card). It cannot define itself out of thin air — it has to GROW first. The bigger its interaction trail and working memory get, the more it actually knows about what it is for. This growth IS the work of OBSERVE.',
+            hood: 'New prompts and Q&amp;A append to <code>user_interactions[]</code> on the job_core record — the same array that started life holding only your first prompt. Findings are written into the CLAUDE.md working-memory files OBSERVE is permitted to touch. Both keep growing across the phase, before <code>name</code> and <code>objective</code> are committed.'
         },
         'b-name': {
             title: 'name — the job names itself', tag: 'object',
-            what: 'The job gives itself a name — a short handle describing what this unit of work is.',
-            why: 'A nameless job is just "the thing the seed is doing." A named job is a thing you can point at, track, and reason about. Naming is the first act of self-definition.',
-            hood: 'Set via <code>job.sh update &lt;id&gt; name "&lt;name&gt;"</code>, filling the <code>name</code> field that was born as <code>""</code>.'
+            what: 'Out of everything it has gathered, the job settles on a name — a short handle for this unit of work.',
+            why: 'A nameless job is just "the thing the seed is doing." Naming is the first commitment: it turns the growing pile of context into a thing you can point at, track, and reason about.',
+            hood: 'Set via <code>job.sh update &lt;id&gt; name "&lt;name&gt;"</code>, filling the <code>name</code> field that was born as <code>""</code>. The gate refuses to advance while name is still empty.'
         },
         'b-objective': {
-            title: 'objective — the job sets its goal', tag: 'object',
-            what: 'The job writes down its goal — what "done" will mean for this work.',
-            why: 'The objective is the job\'s compass. Every later phase checks its work against this one sentence of intent. Without it, the job has no way to know when it is finished.',
-            hood: 'Set via <code>job.sh update &lt;id&gt; objective "&lt;text&gt;"</code>, filling the <code>objective</code> field that was born as <code>""</code>.'
+            title: 'objective — a written brief, not a sentence', tag: 'object',
+            what: 'The job writes down what "done" will mean — and not in one line. In cycle 1 it must grow the goal into a full 300–500 word brief.',
+            why: 'A single sentence cannot be planned or verified against. The expanded brief is the compass every later phase — and every future re-run of a repeating job — reads. It is the single heaviest piece of OBSERVE.',
+            hood: 'Set via <code>job.sh update &lt;id&gt; objective</code>; the cycle-1 custom gate enforces the expansion floor <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code> (under 300 words BLOCKS the advance; over 500 only coaches). <b>⚠ Surface check (code vs CONTEXT):</b> CONTEXT\'s "universal starter shape" says a job is born holding a 100–150 word objective for ALL creation paths — but a prompt-born job (the one on this card) is born with <code>objective:""</code> EMPTY. The 100–150 word starting brief is the CONDENSE-created pathway, not this one. Here OBSERVE expands from empty → ≥300 words. Flagged so the surfaces can be reconciled.'
         },
         'b-gate': {
             title: 'Gate to PLAN', tag: 'gate',
-            what: 'A checkpoint. The job cannot move on to PLAN until it has actually named and defined itself.',
-            why: 'This is what stops empty jobs from slipping forward. The job must prove it has done its homework in OBSERVE before it is allowed to start planning.',
-            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance. For cycle 1 it checks <code>name</code> is non-empty AND the <code>objective</code> has been expanded to its full <b>300–500 words</b> — plus ≥100 points and ≥1 CLAUDE.md update. Miss any → <code>REJECTED</code>, stay in OBSERVE. (The 300-word floor is a real gate: <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code>; under it blocks, over 500 only coaches.)'
+            what: 'A checkpoint with a concrete SHAPE: four checks, every one of which must say YES before the job is allowed into PLAN.',
+            why: 'This is what stops a barely-grown job from slipping forward. The job has to PROVE it named itself, wrote a real objective, did enough observing, and recorded what it learned — not just glance at the prompt and rush on.',
+            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance, all four required: <code>name</code> non-empty AND (cycle 1) <code>objective ≥ 300 words</code> AND <code>≥ 100 points</code> AND <code>≥ 1 CLAUDE.md update</code>. Miss any one → <code>REJECTED / BLOCKED</code>, stay in OBSERVE and keep growing. The up-close, per-check view is the detail card directly below.'
         },
 
         /* ---------------- CARD A2 : Active + focused ---------------- */
@@ -303,27 +309,48 @@ window.DECK_CARDS = {
         '1,0': {
             kind: 'seq', step: 2,
             eyebrow: 'The job\'s life · step 2',
-            title: 'OBSERVE — find out who you are',
-            sub: 'What you\'re looking at: the empty job reads, then names itself and writes its goal. It cannot reach PLAN until both are filled.',
+            title: 'OBSERVE — the job grows into itself',
+            sub: 'What you\'re looking at: the newborn job is almost empty. In OBSERVE it GROWS — its interaction trail and working memory fill up — until it can name itself and write a real objective. Only a job that has actually done this clears the four-check gate.',
             boxes: [
-                { id:'b-read',      x:54,  y:222, w:212, h:104, tag:'action', t:'Reads prompt + context', s:'gather · ask · read wide' },
-                { id:'b-name',      x:404, y:120, w:196, h:92,  tag:'object', t:'name',      s:'filled in — was empty' },
-                { id:'b-objective', x:404, y:336, w:196, h:92,  tag:'object', t:'objective', s:'filled in — was empty' },
-                { id:'b-gate',      x:734, y:218, w:210, h:112, tag:'gate',   t:'Gate to PLAN',       s:'name set · objective expanded' }
+                { id:'b-read',      x:30,  y:250, w:152, h:92,  tag:'action',  t:'Read · ask · gather', s:'OBSERVE is read-wide time' },
+                { id:'b-grow',      x:212, y:120, w:240, h:300, tag:'context', t:'the job keeps growing', fields:[
+                    { k:'user_interactions:', v:'' },
+                    { v:'[ your first prompt ]' },
+                    { v:'+ your answers to its Qs', state:'grow' },
+                    { v:'+ any later prompts', state:'grow' },
+                    '—',
+                    { k:'working memory:', v:'' },
+                    { v:'+ findings, into CLAUDE.md', state:'grow' }
+                ] },
+                { id:'b-name',      x:494, y:150, w:206, h:74,  tag:'object',  t:'name', s:'a short handle — was "" empty' },
+                { id:'b-objective', x:494, y:266, w:206, h:154, tag:'object',  t:'objective', warn:true, fields:[
+                    { k:'was:', v:'"" empty', state:'nul' },
+                    { k:'now:', v:'a 300–500 word brief', state:'ok' },
+                    { v:'what "done" means, in full', state:'grow' }
+                ] },
+                { id:'b-gate',      x:742, y:150, w:234, h:270, tag:'gate',    t:'Gate to PLAN', fields:[
+                    { v:'✓ name — non-empty', state:'ok' },
+                    { v:'✓ objective — ≥ 300 words', state:'ok' },
+                    { v:'✓ observed — ≥ 100 points', state:'ok' },
+                    { v:'✓ CLAUDE.md — ≥ 1 update', state:'ok' },
+                    '—',
+                    { v:'all four YES → PLAN unlocks', state:'grow' },
+                    { v:'any NO → stay in OBSERVE', state:'nul' }
+                ] }
             ],
             edges: [
-                { from:'b-read',      to:'b-name',      kind:'hard', label:'self-define' },
-                { from:'b-read',      to:'b-objective', kind:'hard', label:'self-define' },
+                { from:'b-read',      to:'b-grow',      kind:'soft', label:'gather · accumulate' },
+                { from:'b-grow',      to:'b-name',      kind:'hard', label:'name it' },
+                { from:'b-grow',      to:'b-objective', kind:'hard', label:'define the goal' },
                 { from:'b-name',      to:'b-gate',      kind:'hard' },
                 { from:'b-objective', to:'b-gate',      kind:'hard' }
             ],
             stickies: [
-                { x:40,  y:96,  text:'A newborn job knows almost nothing. OBSERVE is where it <b>learns who it is</b>.',
-                  ref: { url:'../06_3-observe.html', section:'Blog 6.3 · OBSERVE', blurb:'OBSERVE reads the prompt and context, then names the job and writes its goal. It cannot reach PLAN until both are filled in.' } },
-                { x:720, y:96,  r:true, text:'<b>No empty jobs</b> get to PLAN — the gate checks name + objective are filled.' }
+                { x:206, y:54,  text:'OBSERVE is <b>growth</b> time. Every new prompt and every Q&amp;A appends to the interaction trail; findings pile into working memory. The job literally gets <b>bigger</b> before it can define itself.',
+                  ref: { url:'../06_3-observe.html', section:'Blog 6.3 · OBSERVE', blurb:'OBSERVE reads the prompt and context, accumulating into the job\'s interaction trail and working memory, then names the job and expands its objective. It cannot reach PLAN until the gate\'s checks pass.' } },
+                { x:730, y:436, r:true, aha:true, text:'The gate has a <b>shape</b> — four concrete checks, not a vibe. Miss one and the job stays in OBSERVE and keeps growing.' }
             ],
-            backnote: { x:46, y:470, text:'← where it came from: a brand-new empty job' },
-            downhint: { x:740, y:454, label:'related: The gate to PLAN, up close' }
+            navHints: { down: 'detail: the four-check gate, up close' }
         },
 
         '0,1': {

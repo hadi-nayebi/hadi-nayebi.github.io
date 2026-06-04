@@ -170,6 +170,23 @@
     function stickyStoreSave(o){ try { localStorage.setItem(STICKY_LS, JSON.stringify(o)); } catch (e) {} }
     function stickyKey(cardKey, idx){ return pageId() + '|' + cardKey + '|' + idx; }
 
+    /* generic field-row list for a box — lets a box show a concrete SHAPE
+       (a growing list, an objective brief, a gate checklist) instead of generic
+       words. Each item is a raw string ('—' = a separator) or {k,v,state} where
+       state ∈ nul|ok|grow tints the value. */
+    function fieldsSvg(fields){
+        var rows = (fields || []).map(function (f) {
+            if (typeof f === 'string') {
+                if (f === '—' || f === '--') return '<div class="dfield dfield--sep"></div>';
+                return '<div class="dfield">' + f + '</div>';
+            }
+            var cls = f.state ? (' dfield--' + f.state) : '';
+            var k = f.k ? '<b>' + esc(f.k) + '</b> ' : '';
+            return '<div class="dfield' + cls + '">' + k + esc(f.v != null ? f.v : '') + '</div>';
+        }).join('');
+        return '<div class="dfields">' + rows + '</div>';
+    }
+
     /* ---- build one card's SVG (edges first, then boxes via foreignObject) ---- */
     function buildDiagram(card) {
         var defs = '<defs>' +
@@ -227,7 +244,7 @@
                     tagChip +
                     '<div class="dbox__t">' + esc(b.t) + '</div>' +
                     (b.s ? '<div class="dbox__s">' + esc(b.s) + '</div>' : '') +
-                    (b.record ? RECORD_FIELDS : '') +
+                    (b.fields ? fieldsSvg(b.fields) : (b.record ? RECORD_FIELDS : '')) +
                 '</div>';
             boxSvg += '<foreignObject x="' + b.x + '" y="' + b.y + '" width="' + b.w + '" height="' + b.h + '">' +
                       '<div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%">' + inner + '</div></foreignObject>';
@@ -338,6 +355,10 @@
     function neighborHint(c, r, dir) {
         var k = keyOf(c, r);
         if (!EXISTS[k]) return '';
+        /* a card can describe its own directions (e.g. down = "see other places
+           jobs are created") via navHints — those win over the generic title. */
+        var cur = CARDS[keyOf(curCol, curRow)];
+        if (cur && cur.navHints && cur.navHints[dir]) return cur.navHints[dir];
         var card = CARDS[k];
         var prefix = '';
         if (dir === 'right' && card.kind === 'seq') prefix = 'next: ';
