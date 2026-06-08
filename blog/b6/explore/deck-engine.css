@@ -49,7 +49,23 @@
                 radial-gradient(1000px 720px at 8% 112%, rgba(139,92,246,0.12), transparent 60%),
                 #050507;
             overflow: hidden;
+            /* 3D scene: the deck is the front face of a translucent cube that
+               rotates / zooms back between cards (the cube rig, injected by JS). */
+            perspective: 2100px;
+            perspective-origin: 50% 46%;
         }
+
+        /* ===== 3D CUBE NAVIGATION RIG =====
+           cube-stage holds the rotating cube; deck-viewport clips the grid to one
+           card (the front face). The grid swap is instant while the cube turns —
+           the rotation IS the transition, so the grid's own slide is switched off. */
+        .cube-stage {
+            position: absolute; inset: 0;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .deck-viewport { position: absolute; inset: 0; overflow: hidden; }
+        .deck-root.cube-on .deck-grid { transition: none; }
 
         /* The deck is a 2x2 grid laid out in absolute viewport-sized cells.
            We translate the whole deck to bring the active cell on-screen. */

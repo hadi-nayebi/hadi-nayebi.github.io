@@ -386,12 +386,61 @@
     })();
 
     /* ========================================================================
+     * CUBE RIG — wrap the deck-grid in a 3D scene so card-to-card navigation
+     * reads as a translucent cube rotating / zooming back. The grid + its cards
+     * are untouched (they ride inside the viewport face); only the wrapper turns.
+     * ====================================================================== */
+    var REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    (function buildCubeRig() {
+        var root = document.querySelector('.deck-root');
+        if (!root || !grid || REDUCE) return;   /* reduced-motion → plain translate, no rig */
+        var stage = document.createElement('div');
+        stage.className = 'cube-stage'; stage.id = 'cube-stage';
+        var vp = document.createElement('div');
+        vp.className = 'deck-viewport'; vp.id = 'deck-viewport';
+        root.insertBefore(stage, grid);   /* stage takes the grid's slot */
+        stage.appendChild(vp);
+        vp.appendChild(grid);             /* grid now rides inside the front face */
+        root.classList.add('cube-on');    /* grid slide off — the cube turn is the motion */
+    })();
+
+    /* ========================================================================
      * NAVIGATION STATE
      * ====================================================================== */
     var curCol = 0, curRow = 0;
+    var animating = false;
 
     function keyOf(c, r){ return c + ',' + r; }
     function cellExists(c, r){ return !!EXISTS[keyOf(c, r)]; }
+
+    /* Animate the cube between cards: rotate away + pull back, swap the grid while
+       it's turned out of view, then swing the new face in from the opposite side
+       and settle it forward. Direction picks the axis (L/R = Y, U/D = X). */
+    function cubeNav(dc, dr, done) {
+        var stage = document.getElementById('cube-stage');
+        if (!stage || REDUCE) { applyTransform(); done(); return; }
+        var axis = (dc !== 0) ? 'Y' : 'X';
+        var outSign;
+        if (dc > 0)      outSign = -1;   /* go right  → cube turns left  */
+        else if (dc < 0) outSign =  1;   /* go left   → cube turns right */
+        else if (dr > 0) outSign = -1;   /* go down   → cube rolls up    */
+        else             outSign =  1;   /* go up     → cube rolls down  */
+        var ANG = 42, Z = 340, OUT = 240, IN = 330;
+        stage.style.transition = 'transform ' + (OUT / 1000) + 's cubic-bezier(.45,.05,.55,.95)';
+        stage.style.transform  = 'translateZ(-' + Z + 'px) rotate' + axis + '(' + (outSign * ANG) + 'deg)';
+        setTimeout(function () {
+            applyTransform();                       /* swap card while turned away */
+            stage.style.transition = 'none';
+            stage.style.transform  = 'translateZ(-' + Z + 'px) rotate' + axis + '(' + (-outSign * ANG) + 'deg)';
+            void stage.offsetWidth;                 /* force reflow before settling */
+            stage.style.transition = 'transform ' + (IN / 1000) + 's cubic-bezier(.2,.7,.25,1)';
+            stage.style.transform  = 'translateZ(0) rotate' + axis + '(0deg)';
+            setTimeout(function () {
+                stage.style.transition = ''; stage.style.transform = '';
+                done();
+            }, IN + 20);
+        }, OUT + 10);
+    }
 
     function applyTransform() {
         var grid = document.getElementById('deck-grid');
@@ -460,11 +509,14 @@
     }
 
     function go(c, r) {
-        if (!cellExists(c, r)) return;
+        if (!cellExists(c, r) || animating) return;
+        var dc = c - curCol, dr = r - curRow;
         curCol = c; curRow = r;
-        applyTransform();
         updateChrome();
         closeInfo();
+        if (dc === 0 && dr === 0) { applyTransform(); return; }
+        animating = true;
+        cubeNav(dc, dr, function () { animating = false; });
     }
     function move(dc, dr) { go(curCol + dc, curRow + dr); }
 
