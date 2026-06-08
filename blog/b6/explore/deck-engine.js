@@ -419,6 +419,20 @@
         frame.className = 'cube-frame';
         stage.appendChild(frame);
 
+        /* hover-lit clickable cube sides ("click on the sides") — screen-fixed so
+           a click lands regardless of the cube's turn; enabled state mirrors arrows */
+        [['left', -1, 0], ['right', 1, 0], ['up', 0, -1], ['down', 0, 1]].forEach(function (s) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'cube-edge cube-edge--' + s[0];
+            b.id = 'cube-edge-' + s[0];
+            b.setAttribute('aria-hidden', 'true');
+            b.tabIndex = -1;
+            b.setAttribute('data-dc', s[1]);
+            b.setAttribute('data-dr', s[2]);
+            root.appendChild(b);
+        });
+
         root.classList.add('cube-on');    /* grid slide off — the cube turn is the motion */
     })();
 
@@ -472,6 +486,12 @@
         setArrow('nav-up',    cellExists(curCol, curRow-1), neighborHint(curCol, curRow-1, 'up'));
         setArrow('nav-down',  cellExists(curCol, curRow+1), neighborHint(curCol, curRow+1, 'down'));
 
+        /* hover-lit cube sides mirror the arrows' reachability */
+        setEdge('left',  cellExists(curCol-1, curRow));
+        setEdge('right', cellExists(curCol+1, curRow));
+        setEdge('up',    cellExists(curCol, curRow-1));
+        setEdge('down',  cellExists(curCol, curRow+1));
+
         /* minimap */
         Array.prototype.forEach.call(document.querySelectorAll('.mm-cell'), function (el) {
             el.classList.toggle('is-current', el.getAttribute('data-key') === keyOf(curCol, curRow));
@@ -524,6 +544,11 @@
         el.querySelector('.nav-arrow__hint').textContent = hint || '';
         var labelDir = { 'nav-left':'left', 'nav-right':'right', 'nav-up':'up', 'nav-down':'down' }[id];
         el.setAttribute('aria-label', enabled ? ('Go ' + labelDir + ' to ' + (hint||'').replace(/^.*?: /,'')) : ('No card to the ' + labelDir));
+    }
+
+    function setEdge(dir, enabled) {
+        var el = document.getElementById('cube-edge-' + dir);
+        if (el) el.classList.toggle('is-disabled', !enabled);
     }
 
     function go(c, r) {
@@ -828,6 +853,13 @@
     document.getElementById('nav-right').addEventListener('click', function () { move(1, 0); });
     document.getElementById('nav-up').addEventListener('click', function () { move(0, -1); });
     document.getElementById('nav-down').addEventListener('click', function () { move(0, 1); });
+
+    /* hover-lit cube-side buttons (created by the cube rig; absent in reduced-motion) */
+    Array.prototype.forEach.call(document.querySelectorAll('.cube-edge'), function (b) {
+        b.addEventListener('click', function () {
+            move(parseInt(b.getAttribute('data-dc'), 10), parseInt(b.getAttribute('data-dr'), 10));
+        });
+    });
 
     /* ========================================================================
      * KEYBOARD
