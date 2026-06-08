@@ -399,8 +399,26 @@
         var vp = document.createElement('div');
         vp.className = 'deck-viewport'; vp.id = 'deck-viewport';
         root.insertBefore(stage, grid);   /* stage takes the grid's slot */
+
+        /* glass cube body — sits BEHIND the front face so its sides are revealed
+           only as the cube turns */
+        var shell = document.createElement('div');
+        shell.className = 'cube-shell';
+        ['back', 'right', 'left', 'top', 'bottom'].forEach(function (side) {
+            var f = document.createElement('div');
+            f.className = 'cube-face cube-face--' + side;
+            shell.appendChild(f);
+        });
+        stage.appendChild(shell);
+
         stage.appendChild(vp);
         vp.appendChild(grid);             /* grid now rides inside the front face */
+
+        /* lit glass frame on the front face — the cube's leading glow edge */
+        var frame = document.createElement('div');
+        frame.className = 'cube-frame';
+        stage.appendChild(frame);
+
         root.classList.add('cube-on');    /* grid slide off — the cube turn is the motion */
     })();
 

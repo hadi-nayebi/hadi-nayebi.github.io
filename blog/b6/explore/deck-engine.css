@@ -67,6 +67,51 @@
         .deck-viewport { position: absolute; inset: 0; overflow: hidden; }
         .deck-root.cube-on .deck-grid { transition: none; }
 
+        /* The translucent glass body of the cube. Four side panels hinge at the
+           front-face (card) edges and recede backward by --cube-d, so the cube's
+           glass sides are edge-on (invisible) at rest and catch the light as the
+           cube turns. Sized + centred to track the card box. The ONE contrast in
+           the deck: this futuristic glass shell vs the opaque old-school stickies. */
+        .deck-root {
+            --cube-w: min(1480px, calc(100vw - 4rem));
+            --cube-h: min(980px, calc(100vh - 8.3rem));
+            --cube-d: 300px;
+        }
+        .cube-shell {
+            position: absolute; left: 50vw;
+            top: calc(6.3rem + (100vh - 8.3rem) / 2);
+            width: var(--cube-w); height: var(--cube-h);
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            pointer-events: none;
+        }
+        .cube-face {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(125,135,255,0.11), rgba(99,102,241,0.025) 60%, rgba(139,92,246,0.05));
+            border: 1px solid rgba(155,165,255,0.30);
+            box-shadow:
+                inset 0 0 38px rgba(125,135,255,0.12),
+                0 0 26px rgba(99,102,241,0.16);
+            backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+        }
+        .cube-face--right  { width: var(--cube-d); height: 100%; right: 0;  top: 0; transform-origin: right center;  transform: rotateY(-90deg); }
+        .cube-face--left   { width: var(--cube-d); height: 100%; left: 0;   top: 0; transform-origin: left center;   transform: rotateY(90deg); }
+        .cube-face--top    { width: 100%; height: var(--cube-d); top: 0;    left: 0; transform-origin: center top;    transform: rotateX(90deg); }
+        .cube-face--bottom { width: 100%; height: var(--cube-d); bottom: 0; left: 0; transform-origin: center bottom; transform: rotateX(-90deg); }
+        /* A faint back panel closes the cube so the depth reads when fully turned. */
+        .cube-face--back   { width: 100%; height: 100%; left: 0; top: 0; transform: translateZ(calc(-1 * var(--cube-d))); opacity: 0.5; }
+        /* Lit glass frame around the front face — the leading glow edge of the cube. */
+        .cube-frame {
+            position: absolute; left: 50vw;
+            top: calc(6.3rem + (100vh - 8.3rem) / 2);
+            width: var(--cube-w); height: var(--cube-h);
+            transform: translate(-50%, -50%);
+            border-radius: 22px;
+            border: 1px solid rgba(150,160,255,0.22);
+            box-shadow: 0 0 30px rgba(99,102,241,0.10), inset 0 0 60px rgba(125,135,255,0.04);
+            pointer-events: none;
+        }
+
         /* The deck is a 2x2 grid laid out in absolute viewport-sized cells.
            We translate the whole deck to bring the active cell on-screen. */
         .deck-grid {
