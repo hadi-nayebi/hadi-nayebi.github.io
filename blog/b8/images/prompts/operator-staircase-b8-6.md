@@ -20,7 +20,7 @@ ASSET: images/operator-staircase-b8-6.png
       Bottom line: "week 1"
       Below the step (outside the staircase), three short white-chalk markers stacked vertically:
         "voices fire constantly"
-        "multipliers land wrong"
+        "the rhythm gates still fire"
         "bail-backs are corrections, not real"
     Step 2 (green fill, middle). Two lines of label:
       Top line:    "journeyman"
@@ -38,7 +38,7 @@ ASSET: images/operator-staircase-b8-6.png
         "direct higher leverage"
   Above the entire staircase, a single curving chalk arrow runs left-to-right along the climb with one short caption riding its curve IN WHITE CHALK exactly: "from supervising to composing".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "week 1", "voices fire constantly", "multipliers land wrong", "bail-backs are corrections, not real", "journeyman", "weeks 4–12", "patterns migrate", "hooks harden", "CLAUDE.md shrinks", "architect", "month 3+", "kit ceremonies routine", "compose with the seed", "direct higher leverage", "from supervising to composing", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "week 1", "voices fire constantly", "the rhythm gates still fire", "bail-backs are corrections, not real", "journeyman", "weeks 4–12", "patterns migrate", "hooks harden", "CLAUDE.md shrinks", "architect", "month 3+", "kit ceremonies routine", "compose with the seed", "direct higher leverage", "from supervising to composing", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 8.6. Three rough stages. Soft boundaries. The shape is real."
 
 Global constraints:

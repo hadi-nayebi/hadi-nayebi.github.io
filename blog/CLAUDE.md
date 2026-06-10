@@ -1,5 +1,5 @@
 # blog/ — Blog Posts Working Memory
-**Version:** v0.14.0
+**Version:** v0.15.0
 
 ## Layout
 
@@ -27,8 +27,8 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 **Phases & cycles**
 - **Phase** — the cognition compartments: idle + OPEVC (OBSERVE/PLAN/EXECUTE/VERIFY/CONDENSE) + gmode. Forward sequence `idle→O→P→E→V→C→idle`; backward recovery transitions exist. _Avoid:_ "stage" for a phase.
 - **Cycle counter behavior** — `cycle` is monotonic-increment-only. Preserves on focus-switch/pause-resume; resets to 0 on completion→reactivation; a Stage-1 extension keeps cycle at 1 via `suppress_next_cycle_increment`. _Avoid:_ decrementing or resetting cycle mid-run.
-- **Per-phase points** — each phase has its own 100-point forward-advance gate, scoped to that phase only; no phase sees another's points. _Avoid:_ **"≥50 points for Stage-2 condense" (BANNED)**, **"100 cumulative across phases" (BANNED)**.
-- **Default multiplier** — phase-entry work forecast, range 0.5 (DEEP) to 3 (RAPID); sentinel `0` locks tools until set. Planned jobs (Stage 2 `.md` AND Stage 3 `.yaml`) default to 3; Stage-1 stays at sentinel 0. _Avoid:_ **"yaml-only auto-mult-3" (BANNED)**.
+- **Min-max gate** — the intra-phase pacing rhythm, counted per ACTIVITY CLASS as tool-call counts (e.g. every 5 reads → a CLAUDE.md update; every subagent run → its own update): the min side asks for enough investigative actions behind a synthesis write; the max side blocks investigative tools once ANY class hits its ceiling unsynthesized. Composition rule: per-class counters, ONE reset event — a CLAUDE.md update resets ALL class counters; content is never parsed. Class thresholds tune per phase. _Avoid:_ **points/point system/multiplier/sentinel-lock/[POINT-BOOST] (ALL RETIRED)**, "synthesis-accumulation rhythm."
+- **Entry coached, exit gated** — phase entry has NO required act (the entry voice coaches scope-thinking; depth forecasting is coaching, never a checked step); the friction sits at the EXIT (the three-family gate + shape + custom gates). _Avoid:_ "set multiplier first," "tools locked until a forecast is set."
 
 **Plan & stages**
 - **Job Stage** — 3-tier classification by plan-file shape, decided in cycle-1 PLAN via an explicit `set-plan-file` call (the PLAN→EXECUTE advance is blocked while `plan_file` is still null, so the decision cannot be skipped — even Stage 1 requires an explicit `set-plan-file false`): Stage 1 (`plan_file false`, single-cycle collaborative), Stage 2 (`.md` plan), Stage 3 (`.yaml` plan — identical completion semantics to Stage 2, only the format differs). A future Stage 4 (per-job plugin) is aspirational. _Avoid:_ **"Form 1/2/3" (BANNED)**, "plan decided at creation," "Stage 1 never calls set-plan-file."
@@ -48,7 +48,7 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 - **Deflation gate** — a single 80% bottom-section-absorption rule on every CONDENSE advance, regardless of Stage. _Avoid:_ **"stage-aware deflation"/"80/50 split"/`CONDENSE_DEF_THRESHOLD_STAGE2` (BANNED)**.
 - **Question shape** — the required `## ` section structure every prefixed AskUserQuestion carries, validated by the pre-question hook. _Avoid:_ question template/format.
 - **Phase commit shape** — the required `## ` section structure every `--force` advance commit carries, plus per-phase custom gates; the double-verify system. _Avoid:_ commit template/format.
-- **Intermediate vs force-advance commits** — intermediate (`<phase>-commit.sh` without `--force`, ungated except a ≥20-word message floor; direct git is BLOCKED) vs `--force` (shape + 100 points + custom gates; advances the phase). Clean git gates every transition (forward AND backward). _Avoid:_ "save vs advance commits," "plain git commit."
+- **Intermediate vs force-advance commits** — intermediate (`<phase>-commit.sh` without `--force`, ungated except a ≥20-word message floor; direct git is BLOCKED) vs `--force` (shape + three-family exit gate + custom gates; advances the phase). Clean git gates every transition (forward AND backward). _Avoid:_ "save vs advance commits," "plain git commit."
 
 **Repeating jobs** (BUILT 2026-06-02 — WU-004a/b/005/008; `reactivate_target` added 2026-06-03 per align card 4. Taught as built in 06_10-plan-state-machine.md v0.4.0. The two-heartbeat reactivation [Heartbeat-1 self-compact STEP 4.8 / Heartbeat-2 quiescent-heartbeat.sh daemon with the `[WAKE]` UPS-bypass] is live.)
 - **Repeating job** — a job set to recur (the read view of `repeating_interval > 0`); completed instances auto-reactivate via the self-compact rhythm, landing at the status named by their `reactivate_target`. _Avoid:_ recurring/scheduled/periodic job.
@@ -59,9 +59,9 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 
 **Phasic-compaction** (design — Stage-4 build; taught in b5/b6)
 - **Compaction file** — the per-job, per-session file carrying the *cognition about a job* (open threads, assumptions, loops, blind-spots, ~20% top facts) across a `/clear`; built across phase exits, sealed by the finalization pass, carried by clear+inject. The one managed file CONDENSE never condenses. _Avoid:_ "the compact"/"summary file"/"a new memory layer" (it replaces native `/compact`, not adds a kind).
-- **Three-family exit gate** — the per-phase advance filter that replaces the 100-point total: (a) reflection commands ran [hard], (b) new marked notes of any type added [soft], (c) ≥1 of the phase's available reflector subagents ran [hard]. Families (a)/(b) check a variable minimum drawn per phase-entry from a set (the 2 CORE ops are a constitutive baseline, not counted toward it); family (c) reads the per-entry `agent_launches` record (user-extensible reflectors, never one pinned name). CONDENSE additionally keeps its 80% deflation gate. BUILT but ships DORMANT behind `METACOG_GATE_ENABLED=false` (flag-off == legacy ≥100-pt advance). _Avoid:_ "a point threshold," "exempts CONDENSE."
+- **Three-family exit gate** — THE per-phase advance condition: (a) reflection commands ran [hard], (b) new marked notes of any type added [soft], (c) ≥1 of the phase's available reflector subagents ran [hard]. Families (a)/(b) check a variable minimum drawn per phase-entry from a set (the 2 CORE ops are a constitutive baseline, not counted toward it); family (c) reads the per-entry `agent_launches` record (user-extensible reflectors, never one pinned name). CONDENSE additionally keeps its 80% deflation gate, and its marker-side check runs in the CONSUMPTION direction (per-class subagent runs ≥ marked notes), not creation. Armed via `METACOG_GATE_ENABLED` — true for OBSERVE today, dormant for the other phases. _Avoid:_ "a point threshold," "replaces the 100-point total" (no point system exists to replace), "exempts CONDENSE."
 - **Per-phase accrue design** — every OPEVC phase becomes an operational→metacognitive flow: the ENTRY voice introduces operational subagents (do the work), the EXIT voice introduces the mandatory metacog subagent (reflect, then write the compaction file). _Avoid:_ "one giant metacog phase at the end," "metacog is optional."
-- **Metacognition commands** — in-session named ops a phase must run before advancing; they replace the 100-pt advance condition (engine + rhythm stay). Two tiers: CORE (mandatory every phase) + NUANCED (mental-model lenses, tunable). Commands, not subagents — they need the live session trace. _Avoid:_ "a subagent," "they replace the point system."
+- **Metacognition commands** — in-session named ops a phase must run before advancing (family-a of the three-family exit gate). Two tiers: CORE (mandatory every phase) + NUANCED (mental-model lenses, tunable). Commands, not subagents — they need the live session trace. _Avoid:_ "a subagent," "they replace the point system."
 
 **Series-exclusive terms (defined deeper):** Historian-ratchet steps + Self-compact reactivation rhythm → `blog/b5/CLAUDE.md`; Plan-verify backward loop + plan→verify forward transition → `blog/b6/CLAUDE.md`.
 
@@ -345,7 +345,7 @@ Part 1 is smooth, non-technical, lures audience in. Part 2 gradually introduces 
 
 **Blog 5 — The Always-On Digital Cortex:** The seed agent doesn't have memory; it has a **bus**. Always-on plugins each own one concern. State lives in a layered CLAUDE.md hierarchy — not the chat. **Tier-3 close:** the historian ratchet (must re-read your own work before editing).
 
-**Blog 6 — The Markov Phasic Brain:** Phases are cognitive isolation chambers. **Forbidding tools is the pedagogy.** The CONDENSE 7-step waterfall is the brain's growth mechanism. **Tier-3 close:** the multiplier is backward (3× = surgical, 0.5× = deep) — honest forecasting at phase entry.
+**Blog 6 — The Markov Phasic Brain:** Phases are cognitive isolation chambers. **Forbidding tools is the pedagogy.** The CONDENSE 7-step waterfall is the brain's growth mechanism. **Tier-3 close:** the rhythm of work — the count-based min-max gate paces the work; the three-family exit gate is the advance condition.
 
 **Blog 7 — The Plugin Kit:** A plugin is a cell with internal organs. The standard kit (hooks, scripts, hidden state, dual voices, tests, evolution.md, agents/) is what lets the brain grow new organs **safely**. **Tier-3 close:** walkthrough of building a new phase plugin.
 
@@ -435,7 +435,7 @@ The four posts must feel aware of each other. Each concept is introduced once, t
 | OPEVC + the 5 phases | preview | **center** | reference | recall |
 | Compartmentalization → forward-pressure | preview | **center** | reference | reference |
 | CONDENSE as organ + 7-step waterfall | seed | **center** | mechanism | recall |
-| Multiplier sentinel | — | **center** | reference | recall |
+| Min-max rhythm gate | — | **center** | reference | recall |
 | Footer anchors (`---Ob---`/`---Pl---`/`---Ex---`/`---Ve---`) | seed | use | **center** | recall |
 | Altered list (CLAUDE.md edits scope EXECUTE) | **introduce** | mechanism | reference | recall |
 | Per-phase write rule (cannot edit above own anchor) | **introduce** | reinforce | reference | — |
@@ -463,7 +463,7 @@ Each Part-2 blog must include callbacks to earlier blogs (1, 2, 3, 3.1, 4) AND f
 | Blog | Backward callbacks | Forward references |
 |------|-------------------|--------------------|
 | 5 | 1 (filesystem = agent — now we name the files), 3.1 (.claude/ + sibling work — now we open .claude/), 4 (vocabulary — hooks, plugins) | 6 (phases USE the bus), 7 (plugin anatomy makes the bus possible) |
-| 6 | 5 (the bus the phases write into), 1 (OPEVC was planted — now formal), 3.1 (cognitive metabolism — now phasic) | 7 (the kit lets you build new phases), 8 (multipliers + waterfall as long-horizon discipline) |
+| 6 | 5 (the bus the phases write into), 1 (OPEVC was planted — now formal), 3.1 (cognitive metabolism — now phasic) | 7 (the kit lets you build new phases), 8 (rhythm gates + waterfall as long-horizon discipline) |
 | 7 | 5 (single-concern principle), 6 (the phases are themselves plugins), 4 (vocabulary check: hooks, voices, agents) | 8 (the kit grows your seed over time) |
 | 8 | 5 (always-on digital cortex), 6 (phasic discipline), 7 (the kit), 1 (your brain needs this — now you have it) | (no forward — series closes) |
 
@@ -491,12 +491,12 @@ Each blog (except B8) ends with a one-line forward bridge in the **body** (not j
 **Blog 6 — The Markov Phasic Brain** (~4000-5000 words; densest)
 - §1: Why 5 phases + 1 organ (CONDENSE is not a peer — it's neural consolidation)
 - §2: Tool restrictions per phase = the discipline (forbidden tools as pedagogy)
-- §3: OBSERVE — read-only, multiplier sentinel, point system
+- §3: OBSERVE — read-only, paced by the min-max rhythm
 - §4: PLAN — read-only, plan_file as immutable contract
 - §5: EXECUTE — full write, altered-list scope (introduced in B5 §4) deepened with file-type rules, multi-commit checkpoints
 - §6: VERIFY — scripts only, auditor subagents, multi-backward
 - §7: CONDENSE — the organ (irreversible forward, 7-step waterfall, deflation gate)
-- §8: **Tier-3 close: the multiplier is backward** (3× surgical, 0.5× deep — honest scope forecasting)
+- §8: **Tier-3 close: the rhythm of work** (count-based min-max pacing + the three-family exit gate)
 - §9: Bridge to B7
 
 **Blog 7 — The Plugin Kit** (~3500-4500 words)
@@ -599,7 +599,7 @@ Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 ess
 | 5.3 | `b5/05_3-brain-guard` | Pt 3: `brain_guard` — Context Window Discipline | **drafting v0.2.0** — ~1,700w / 8 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.2.0 iter-14.a MED fix: L70 (154w) dispatch-mechanic density wall split (dispatch-mechanism intro + grace-window-and-future-API). |
 | 5.4 | `b5/05_4-job-core` | Pt 4: `job_core` — Job Lifecycle | **drafting v0.3.0** — ~1,500w / 7 min · HTML built · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.b HIGH+LOW fixes: L35 schema ref-tag corrected to 3-field `{user_approval, plugin_lock_approval, depends_on}` + `plan_state` (A14 2026-05-14 schema reality — `plan_state` SINCE RETIRED/deleted; the lifecycle is carried by `plan_file` alone); L72 "ships five — one per OPEVC phase" → "ships one per OPEVC phase" per Rule 1 categorical. v0.2.0 iter-14.b fixes: ref-tag line range L25 corrected (50-74 → 49-74); shared-key paragraph split L33 (219w → 104/115); refusal-to-stop paragraph split L52 (201w → 91/124). |
 | 5.5 | `b5/05_5-interaction-summary` | Pt 5: `interaction_summary` — Mega-Prompt Compression | **drafting v0.4.0** — ~1,050w / 5 min · HTML built · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.b HIGH+MED fixes: L45 bypass-vs-registry conflation cleared — body now distinguishes bypass list from question_discipline registry ("overlaps with but is not identical"), ref-tag enumerates the actual 10 BYPASS_PREFIXES from `prefix-registry.conf:20` and names the 1-element diffs (`PENDING-JOB` bypassed-not-registered; `REPORT-TO-UPSTREAM` registered-not-bypassed); L45 transition smell fixed with "even with the productive-tool guard tripped" half-clause; L61 customize-section "and the other registered ceremonies" → "a handful of others on the bypass list" + new explicit-two-decisions note. |
-| 5.6 | `b5/05_6-question-discipline` | Pt 6: `question_discipline` — Structured Questions | **drafting v0.4.0** — ~1,220w / 5 min · 4 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.b MED+LOW fixes: L31 subagent-bypass post-split stranded ¶ extended with "no matter which plugin's hook is firing or which phase the agent is in" half-sentence to carry its own weight; L39 [POINT-BOOST] format-only claim spot-verified against `phasic_system/hooks/point-boost.sh:66-74` (anchor + sed-extract format; no body word floor) — verdict accurate. |
+| 5.6 | `b5/05_6-question-discipline` | Pt 6: `question_discipline` — Structured Questions | **drafting v0.5.0** — ~1,220w / 5 min · HTML rebuilt · audio pending. 2026-06-10 points-retirement sweep (commit f522501): `[POINT-BOOST]` removed from registry teaching; its evidential ref-tag emptied (`coverage-uneven-by-design`, refill when registry teaching re-grounds). Prior v0.4.0 iter-16.b fixes underneath. |
 | 5.7 | `b5/05_7-claude-md-hierarchy` | Pt 7: The CLAUDE.md Hierarchy | **drafting v0.3.0** — ~3,300w / 12 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c HIGH+MED fixes: L33 fabricated quote replaced with truthful section-name pointer (root CLAUDE.md Identity section + `.claude/CLAUDE.md` Components section — old fake quote "Agent: Hadosh Academy Website Manager..." did not exist in current root CLAUDE.md); L35 brittle four-line citation (530,537,544,551) age-proofed to "footer-anchor block" pointer; L29/L132/L150 line-range refs (`:443`, `:289-298`, `:129-134`) all age-proofed to section-name pointers — mirrors iter-15.c L140 pattern. |
 | 5.8 | `b5/05_8-historian-ratchet` | Pt 8: The Historian Ratchet | **drafting v0.3.0** — ~2,500w / 10 min · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.3.0 iter-16.c MED fixes: L103 ref `CLAUDE.md:381-384` age-proofed to "Spatial level: bullets under Core Principle: Compartmentalization" section pointer; L105 ref `CLAUDE.md:212` age-proofed to "JOB.phase operation under Specialized Operations" section pointer — mirrors iter-15.c L140 pattern. |
 | 5.9 | `b5/05_9-customization-guardrail` | Pt 9: The Customization Guardrail | **drafting v0.4.0** — ~2,400w / 10 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. v0.4.0 iter-16.c HIGH fix: L76 `customization-trigger-patterns` ref-tag rewritten — prior synthesis of triggers (3-occurrence threshold, COACHING_IDS pool, workflow-not-supported) did not appear in `plugin-lock-privilege.md`; new ref cites the file's actual "Why both, not one" section (frames user-approved-job route as "for planned work the agent initiates" with the verbatim `secrets_guard` example), keeps the closing architectural-fact summary. |
@@ -610,7 +610,7 @@ Slug column shows the **path-prefixed filename** relative to `blog/`. Part-1 ess
 | 6.5 | `b6/06_5-execute` | Pt 5: EXECUTE — Build, in Scope, in Steps | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.6 | `b6/06_6-verify` | Pt 6: VERIFY — Independent Eyes | **drafting v0.1.0** — HTML built · transcript regen'd (final:false) · audio pending |
 | 6.7 | `b6/06_7-condense` | Pt 7: CONDENSE — The Cognitive Organ | **GOAL ACHIEVED v0.2.0** — ~1,400w / 11 min · 32 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 6-dispatch R1→R1.b→R2→R3 path (commits 22e003d / 4c7bb81 / b898f93). |
-| 6.8 | `b6/06_8-inverse-multiplier` | Pt 8: The Inverse Multiplier | **GOAL ACHIEVED v0.2.0** — ~1,700w / 11 min · 27 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 8-dispatch R1→R1.b→R1.c→R2→R3→R3.b path (commits 22e003d / 270db92 / 33df7c5 / a120f28 / 151ed05). |
+| 6.8 | `b6/06_8-inverse-multiplier` | Pt 8: The Rhythm of Work | **GOAL ACHIEVED v0.3.0** — retitled + FULL REWRITE 2026-06-10 (points retirement, commit 71de2ad): teaching core is now the min-max gate (per-class counts, one-reset composition, per-phase tuning) + coached entry + three-family exit gate as THE advance condition. Slug/URL unchanged. Surfaces synced: generator SIDEBAR_POSTS, blog.html, feed.xml, sibling sidebars + tag pills (commit 69e8625). Prior v0.2.0 3-CLEAN gate 2026-05-18. Transcript regen pending re-audit. |
 | 6.9 | `b6/06_9-gmode` | Pt 9: GMODE — The Off-Cycle Lane | **GOAL ACHIEVED v0.2.0** — ~2,114w / 8 min · 25 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via 7-dispatch R1→R1.b→R1.c→R1.d→R2→R2.b→R3 path (commits 00dea7b / 2db3b61 / 7fab322 / 350b41d / 99b8c5b). |
 | 6.10 | `b6/06_10-plan-state-machine` | Pt 10: The Plan File — Long-Horizon Memory (Tier-3 closer) | **GOAL ACHIEVED v0.2.0** — ~2,688w / 8 min · 29 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R2→R3 path (commit 3bfccdf pre-sweep with 24 new refs + L120 wall split + 6 friction-gradient rescues). |
 | 7.1 | `b7/07_1-plugin-kit-foundation` | Pt 1: Plugin Kit Foundation (B7 opener) | **GOAL ACHIEVED v0.2.0** — ~625w / 5 min · 5 refs · HTML rebuilt · transcript regen'd (final:false) · audio pending. 3-consecutive-CLEAN audit gate passed 2026-05-18 via pre-sweep→R1→R1.b→R2→R3 path (commits 4c1a0b3 + c7b46b0). |

@@ -1,7 +1,7 @@
 ---
 final: false
 source_md: 05_9-customization-guardrail.md
-generated_at: 2026-06-04T19:07:02+00:00
+generated_at: 2026-06-10T08:04:19+00:00
 ---
 
 The Customization Guardrail
