@@ -200,6 +200,8 @@ All blog images use the **dark chalkboard / pastel chalk** aesthetic anchored by
 
 **Mirror rule:** Every image-prompt change in `.md` MUST be mirrored in `.html`. They describe the same prompt for downstream image generation.
 
+**Image-generation workflow (user convention, 2026-06-10):** the user's cue for creating/regenerating an image is seeing the **prompt rendered as a placeholder in the blog HTML** (`image-placeholder-pending` figure). The generator flips automatically on asset existence: PNG on disk → real `<figure><img>`; PNG absent → pending placeholder showing the prompt. So: to QUEUE an image for (re)generation, `git rm` the PNG and regenerate the HTML (the placeholder state then survives regens); when the user shares the generated image, drop it at the ASSET path and regenerate. Never leave a factually-wrong image live — a wrong baked label outranks a pending placeholder.
+
 **Verification grep** (must run after any image-prompt edit):
 ```bash
 grep -c -i "glassy\|glassmorphism" blog/<slug>.md blog/<slug>.html   # must be 0
