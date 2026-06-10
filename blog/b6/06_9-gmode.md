@@ -16,7 +16,7 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 ---
 
-[Essay 6.8](06_8-inverse-multiplier.html) covered the multiplier dial — the meta-cognition the seed agent is forced through *before* any phase begins, so a phase's tool budget reflects an honest forecast of the work ahead. This essay turns to the opposite case: the work that doesn't fit any phase's compartment at all. The off-cycle lane.
+[Essay 6.8](06_8-inverse-multiplier.html) covered the rhythm of work inside a phase — the paired gates that pace it from within, and the reflection-keyed exit gate that opens each boundary. This essay turns to the opposite case: the work that doesn't fit any phase's compartment at all. The off-cycle lane.
 
 Every phase, including idle, carries one extra edge that loops back to itself through gmode — short for *generic mode*. Gmode is the freestyle side-channel: a deliberately unconstrained state used for work the seed agent needs to do *now*, but for which the OPEVC ceremony would be overhead rather than discipline. *[ref: every-phase-carries-gmode-edge | .claude/plugins/phasic_system/scripts/phase.sh:341-407 + hooks/gmode-gate.sh:66-82 | The `enter-gmode` and `exit-gmode` branches at phase.sh:341-407 contain no per-phase entry filter — the same handler runs whether the caller's `current_phase` was idle, observe, plan, execute, verify, or condense. The pre-tool `gmode-gate.sh` validates the `[GMODE]` format regardless of phase. The off-cycle lane is not implemented as five separate edges; it is one entry handler that any phase's interrupt can reach.]*
 
@@ -123,7 +123,7 @@ Gmode is the side-channel; the plan file is the long-channel. Both exist outside
 
 *Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
 
-*Previous: [Essay 6.8 — The Inverse Multiplier](06_8-inverse-multiplier.html) — the meta-cognition dial that calibrates each phase's tool budget before entry.*
+*Previous: [Essay 6.8 — The Rhythm of Work](06_8-inverse-multiplier.html) — the min-max rhythm inside every phase and the exit gate that opens each boundary.*
 *Next: [Essay 6.10 — The Plan File — Long-Horizon Memory](06_10-plan-state-machine.html) — multi-cycle plans, the .md → .yaml lifecycle, and the long-horizon work the phasic brain carries across cycles.*
 
 
