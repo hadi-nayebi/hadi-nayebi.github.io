@@ -67,6 +67,7 @@ PRONUNCIATION_GUARDS: list[tuple[str, str]] = [
     (r"\[PENDING-JOB\]",     "pending-job"),
     (r"\[REPEAT-JOB\]",      "repeat-job"),
     (r"\[WAKE\]",            "wake"),
+    (r"\[DRAFT-TERM\]",      "draft-term"),
     (r"\[DURABLE\]",         "durable"),
     (r"\[EPHEMERAL\]",       "ephemeral"),
 
