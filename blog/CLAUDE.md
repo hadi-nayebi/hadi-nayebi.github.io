@@ -12,9 +12,9 @@
 
 When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.md` / `blog/b6/CLAUDE.md` for current state.
 
-## Canonical Vocabulary (CONTEXT.md)
+## Canonical Vocabulary (.claude/context/ glossary)
 
-**Ground truth:** the canonical glossary is `hadosh_academy/CONTEXT.md`. Per Rule 40, when an essay body (or this file) conflicts with a `[consolidated]` definition there, the prose is the drift — fix the prose, not the glossary. These compact glosses load for **every** blog edit so the canonical names + their banned aliases stay in working memory; full definitions + implementation pointers live in CONTEXT.md. Series-exclusive terms live deeper (see the foot of this section).
+**Ground truth:** the canonical glossary is `hadosh_academy/.claude/context/INDEX.md`. Per Rule 40, when an essay body (or this file) conflicts with a `[consolidated]` definition there, the prose is the drift — fix the prose, not the glossary. These compact glosses load for **every** blog edit so the canonical names + their banned aliases stay in working memory; full definitions + implementation pointers live in CONTEXT.md. Series-exclusive terms live deeper (see the foot of this section).
 
 **Jobs & relationships**
 - **Job** — a compartment of work the seed agent owns; a JSON object in `job_core/data.json` with a timestamp ID, extended across other plugins' data.json by that same ID. While any job is `active`/`pending`, the stop gate blocks. _Avoid:_ task, ticket, request.
@@ -65,7 +65,7 @@ When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.m
 
 **Series-exclusive terms (defined deeper):** Historian-ratchet steps + Self-compact reactivation rhythm → `blog/b5/CLAUDE.md`; Plan-verify backward loop + plan→verify forward transition → `blog/b6/CLAUDE.md`.
 
-**Banned-alias sweep — Phase-C actionable (replace on sight in essay bodies):** `Form 1/2/3` → Job Stage 1/2/3 · `sibling job` → standalone/dep job · `seal`/`sealed`/`seal-plan`/`completed_plan`/`plan_state`/`md_approved`/`yaml_drafting`/`yaml_ready`/`plan_file_last`/`previous_status` → retired (use the cycle-formula + plan_file-persistence model) · `[PLAN-APPROVAL]`/`[YAML-APPROVAL]` → retired · "Stage 1/2 hook" → pre-/post-completion hook · "stage-aware deflation"/"50% Stage-2" → single 80% deflation gate · "plan decided at job creation" → Stage decided in cycle-1 PLAN. Full list: CONTEXT.md Deletion ledger.
+**Banned-alias sweep — Phase-C actionable (replace on sight in essay bodies):** `Form 1/2/3` → Job Stage 1/2/3 · `sibling job` → standalone/dep job · `seal`/`sealed`/`seal-plan`/`completed_plan`/`plan_state`/`md_approved`/`yaml_drafting`/`yaml_ready`/`plan_file_last`/`previous_status` → retired (use the cycle-formula + plan_file-persistence model) · `[PLAN-APPROVAL]`/`[YAML-APPROVAL]` → retired · "Stage 1/2 hook" → pre-/post-completion hook · "stage-aware deflation"/"50% Stage-2" → single 80% deflation gate · "plan decided at job creation" → Stage decided in cycle-1 PLAN. Full list: ../.claude/context/ledger.md banned-vocabulary sweep.
 
 ## Content Workflow
 
@@ -536,14 +536,14 @@ Every command/operation in the seed agent is owned by exactly one phase. Each ow
 
 The 2026-05-12 plan-file-lifecycle brainstorming that lived here is **RETIRED**. It modelled an approval-as-**sealing** design — a two-stage `.md` → `.yaml` **`plan_state`** state machine, `seal-plan` / `mark-plan-complete` archival into `completed_plan[]`, `.yaml`-as-a-separate-post-approval-cycle, plus the G1–G9 / FQ1–FQ4 audit and the attached Blog-6 fix plan. The architect later replaced that whole model.
 
-**Canonical model (ground truth):** CONTEXT.md — "Plan file lifecycle" + "Job Stage" + "Extension cycle". In short:
+**Canonical model (ground truth):** `.claude/context/job-system.md` — "Plan file lifecycle" + "Job Stage" + "Extension cycle". In short:
 
 - A job's **Stage** (1 single-cycle / 2 `.md` / 3 `.yaml`) is decided in **cycle-1 PLAN** of the activated job — not at creation.
 - The plan file is **born in cycle-1 EXECUTE**, **persists** across activations, and absorbs experience run-over-run.
 - Completion uses the `current_cycle >= effective_last_cycle` formula — **no `plan_file` flip, no sealing, no archival**.
 - `.md` and `.yaml` are **parallel Stage choices**, NOT a promote-by-sealing pipeline.
 
-The compact gloss is at **"Plan file lifecycle"** near the top of this file; banned aliases (`plan_state` / `seal` / `seal-plan` / `completed_plan` / `md_approved` / `yaml_drafting` / `yaml_ready` / `plan_file_last`) are in the **Banned-alias sweep** line + CONTEXT.md Deletion ledger.
+The compact gloss is at **"Plan file lifecycle"** near the top of this file; banned aliases (`plan_state` / `seal` / `seal-plan` / `completed_plan` / `md_approved` / `yaml_drafting` / `yaml_ready` / `plan_file_last`) are in the **Banned-alias sweep** line + ../.claude/context/ledger.md.
 
 **Why a stub:** this brainstorming was the recurrence source that kept pulling work back to the retired `plan_state` model. Removed so it can't re-seed.
 
