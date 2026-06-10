@@ -25,8 +25,12 @@ memory/
 
 # Architect Layer-2 session tooling (local-only, never published)
 .claude/architect-tools/
+.claude/architect-sweep/
 .claude/hooks/
 .claude/scheduled_tasks.lock
+.claude/.tmp/
+# Seed-reset snapshots relocated out of the prototype root (reset-seed-for-test.sh)
+.claude/seed-reset-snapshots/
 
 # Audio transcript intermediates (HTML → transcript → audio pipeline)
 *.transcript.md
