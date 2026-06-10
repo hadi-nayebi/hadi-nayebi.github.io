@@ -50,7 +50,7 @@ SIDEBAR_POSTS = [
     ("06_5-execute",                     "Essay 6.5 — EXECUTE — Build, in Scope, in Steps",  "May 2026", "10 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_6-verify",                      "Essay 6.6 — VERIFY — Independent Eyes",            "May 2026", "9 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Phases"]),
     ("06_7-condense",                    "Essay 6.7 — CONDENSE — The Cognitive Organ",      "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "CONDENSE"]),
-    ("06_8-inverse-multiplier",         "Essay 6.8 — The Inverse Multiplier",              "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Multiplier"]),
+    ("06_8-inverse-multiplier",         "Essay 6.8 — The Rhythm of Work",                  "May 2026", "11 min read", "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Rhythm"]),
     ("06_9-gmode",                       "Essay 6.9 — GMODE — The Off-Cycle Lane",           "May 2026", "8 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "GMODE"]),
     ("06_10-plan-state-machine",         "Essay 6.10 — The Plan File — Long-Horizon Memory",             "May 2026", "16 min read",  "Power Users &amp; Architects", ["Architecture", "Seed Agent", "OPEVC", "Plan File", "Long-Horizon"]),
     ("07_1-plugin-kit-foundation",       "Essay 7.1 — Plugin Kit Foundation",               "May 2026", "5 min read",  "Power Users &amp; Architects", ["Architecture", "Plugins", "Seed Agent", "Plugin Kit"]),
