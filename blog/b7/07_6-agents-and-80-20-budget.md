@@ -38,18 +38,18 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
   white chalk for ALL labels, arrows, and the main-session circle; faint chalk dust at the edges; chalk sticks along the bottom.
   IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other subagent names, plugin names, or descriptors. Use only the counts listed.
   Layout: One small white-chalk circle at the dead center of the board, labeled IN WHITE CHALK exactly "main session (20%)". Around it, six larger pastel chalk circles fanning out in a hexagonal arrangement, each labeled IN WHITE CHALK with its exact text:
-    Circle 1 (cyan, top): "observe-* (12)"
-    Circle 2 (green, upper right): "plan-* (6)"
-    Circle 3 (orange, lower right): "execute-* (3)"
-    Circle 4 (pink, bottom): "verify-* (5)"
-    Circle 5 (magenta, lower left): "condense-* (7)"
+    Circle 1 (cyan, top): "observe-* (13)"
+    Circle 2 (green, upper right): "plan-* (9)"
+    Circle 3 (orange, lower right): "execute-* (4)"
+    Circle 4 (pink, bottom): "verify-* (6)"
+    Circle 5 (magenta, lower left): "condense-* (8)"
     Circle 6 (cyan, darker, upper left): "historian-* (13)"
   From the central main-session circle, a single white-chalk arrow goes OUT to each of the six surrounding pools (six arrows total, all radial). Each arrow is labeled with the same single word IN WHITE CHALK exactly: "dispatch".
   In a chalk box at the bottom-right corner of the board, draw a small "budget panel" with header IN WHITE CHALK reading exactly "direct-action budget", and two short white-chalk lines stacked:
     Line 1: "+3 grants per execute-* dispatch"
     Line 2: "-1 per project file edit"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (12)", "plan-* (6)", "execute-* (3)", "verify-* (5)", "condense-* (7)", "historian-* (13)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (13)", "plan-* (9)", "execute-* (4)", "verify-* (6)", "condense-* (8)", "historian-* (13)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
   Caption (bottom of image, white chalk, hand-drawn): "Image 7.6. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
 -->
 
