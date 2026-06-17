@@ -1294,7 +1294,7 @@
             when: "First phase of every cycle, entered from idle.",
             canDo: "Read-only on the project; it loads context into working memory and expands the objective. Entry is coached — the phase begins with a direct-action budget already seeded.",
             why: "A consultant reading the whole brief and the back-files before writing a single recommendation.",
-            builder: "Entry is coached only — no required first act (observe.sh render_observe_entry seeds BUDGET_STARTING=5). Advance is HARD: three-family exit gate (observe-commit.sh). Objective-shape: cycle 1 is HARD — a 300-word floor (observe-commit.sh exits 1 below OBJECTIVE_EXPANSION_WORD_MIN=300) plus NON-EMPTY; cycles 2+ check NON-EMPTY only."
+            builder: "Entry is coached only — no required first act (observe.sh render_observe_entry seeds BUDGET_STARTING=5). Advance is HARD: three-family exit gate (observe-commit.sh). Objective-shape: cycle 1 is HARD — a 300-word floor (observe-commit.sh exits 1 below OBJECTIVE_EXPANSION_WORD_MIN=300) plus NON-EMPTY; cycles 2+ skip it (objective expansion is once per activation)."
         },
         plan: {
             title: "PLAN",
@@ -1752,7 +1752,7 @@
             title: "Cycle-1 EXECUTE",
             what: "The first build phase of a multi-cycle job — the moment the written plan file actually gets created on disk.",
             when: "After the Stage is set to a .md or .yaml plan.",
-            canDo: "Writes the plan file. But note: writing it is permission-checked, not required to move forward.",
+            canDo: "Writes the plan file — and must write it: a separate advance gate in execute-commit blocks EXECUTE→VERIFY until the file exists on disk (Stage 2/3 cycle 1).",
             why: "Typing up the formal project plan document at the start of the project.",
             builder: "Stage 2/3 only. The plan file is written to .claude/jobs/&lt;job_id&gt;/plan.{md,yaml} (the run-aware job directory)."
         },
