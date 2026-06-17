@@ -500,7 +500,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x: 660, y: 70, text: 'An anchorless file is unreachable — the failure that once hard-locked the seed out of its own planned fix.', aha: true,
-              ref: { url: '../05_7-claude-md-hierarchy.html', section: 'The CLAUDE.md Hierarchy', blurb: 'Essay 5.7 — the anchors and why the seed defends them in depth.' } }
+              ref: { url: '../05_7-claude-md-hierarchy.html', section: 'The CLAUDE.md Hierarchy', blurb: 'Essay 5.7 — the anchors and why the seed defends them in depth.' } },
+            { x: 55, y: 320, text: 'Each phase writes its own footer in the cycle.',
+              ref: { kind: 'deck', url: '../../b6/explore/phasic-cycle.html', section: 'The Full OPEVC Cycle', blurb: 'The five phases that each write their own footer section.' } }
         ],
         navHints: { left: 'the lifecycle', right: 'three durable surfaces', down: 'birth-block vs self-heal' }
     },
@@ -545,7 +547,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x: 360, y: 320, text: 'The durability stack: brain (deflates each cycle) → knowledge (grows monotonically) → memory (narrow by design).', aha: true,
-              ref: { url: '../../b8/08_3-brain-after-three-months.html', section: 'What Lives in the Brain After Three Months', blurb: 'Essay 8.3 — what accumulates across the three durable layers over many cycles.' } }
+              ref: { url: '../../b8/08_3-brain-after-three-months.html', section: 'What Lives in the Brain After Three Months', blurb: 'Essay 8.3 — what accumulates across the three durable layers over many cycles.' } },
+            { x: 180, y: 390, text: 'CONDENSE later metabolizes what the footers collect.',
+              ref: { kind: 'deck', url: '../../b6/explore/condense-waterfall.html', section: 'The CONDENSE Waterfall', blurb: 'How CONDENSE metabolizes the footer notes into durable memory.' } }
         ],
         navHints: { left: 'the anchors', right: 'size limits + forgetting', down: 'the multi-form substrate' }
     },

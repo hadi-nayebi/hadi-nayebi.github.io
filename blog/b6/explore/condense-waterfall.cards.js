@@ -252,7 +252,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:300, y:24, aha:true, text:'The seven operations are a <b>catalog</b>; the three gated phases set the order. <b>Preservation precedes removal.</b>',
-              ref: { url:'../06_7-condense.html', section:'Blog 6.7 · the three gated phases', blurb:'06_7 teaches ADDRESS→ARCHIVE→DEFLATE as the execution order over the 7-op catalog. This deck draws the macro-order and its gates.' } }
+              ref: { url:'../06_7-condense.html', section:'Blog 6.7 · the three gated phases', blurb:'06_7 teaches ADDRESS→ARCHIVE→DEFLATE as the execution order over the 7-op catalog. This deck draws the macro-order and its gates.' } },
+            { x:680, y:24, text:'CONDENSE is one phase of the full cycle.',
+              ref: { kind: 'deck', url: 'phasic-cycle.html', section: 'The Full OPEVC Cycle', blurb: 'See where CONDENSE sits in the five-phase cycle the seed laps.' } }
         ],
         navHints: { right: 'ADDRESS — the notes' }
     },
@@ -273,7 +275,9 @@ window.DECK_CARDS = {
             { from:'cw-consume', to:'cw-terminal', kind:'hard', label:'until terminal' }
         ],
         stickies: [
-            { x:300, y:24, aha:true, text:'CONDENSE\'s gate runs in the <b>consumption</b> direction — the work phases gate on notes <b>created</b>; CONDENSE gates on notes <b>fed</b>.' }
+            { x:300, y:24, aha:true, text:'CONDENSE\'s gate runs in the <b>consumption</b> direction — the work phases gate on notes <b>created</b>; CONDENSE gates on notes <b>fed</b>.' },
+            { x:700, y:24, text:'It consumes notes from the CLAUDE.md footers.',
+              ref: { kind: 'deck', url: '../../b5/explore/claude-md-hierarchy.html', section: 'The CLAUDE.md Hierarchy', blurb: 'The anchored footers and body that CONDENSE reads and writes.' } }
         ],
         navHints: { down: 'the five markers', right: 'the note\'s lifecycle' }
     },

@@ -726,7 +726,9 @@ window.DECK_CARDS = {
                 { x:44,  y:32,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.',
                   ref: { url:'../06_5-execute.html', section:'Blog 6.5 · EXECUTE', blurb:'EXECUTE is the one phase with full write access. On a planned job, this is where the plan file is actually written to disk.' } },
                 { x:44,  y:372, text:'EXECUTE is the <b>only</b> phase with full write — but only inside the job\'s declared <b>scope</b>.' },
-                { x:632, y:226, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. VERIFY is its only editor.' }
+                { x:632, y:226, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. VERIFY is its only editor.' },
+                { x:632, y:36, text:'The job\'s cognition rides a compaction file across sessions.',
+                  ref: { kind: 'deck', url: '../../b5/explore/compaction-chain.html', section: 'The Compaction Chain', blurb: 'How a job\'s cognition is carried across a /clear into the next session.' } }
             ],
             backnote: { x:46, y:500, text:'← from PLAN: the Stage is locked in' },
             nextnote: { x:646, y:500, text:'Built → into VERIFY' }
@@ -779,7 +781,9 @@ window.DECK_CARDS = {
             stickies: [
                 { x:392, y:36,  aha:true, text:'CONDENSE is the <b>only</b> phase that grows the brain — and the only place a job ends or spawns another.',
                   ref: { url:'../06_7-condense.html', section:'Blog 6.7 · CONDENSE', blurb:'CONDENSE deflates the cycle\'s footers through a 7-step waterfall, routing findings to lasting homes; an 80% deflation gate must pass to finish.' } },
-                { x:360, y:402, text:'Working memory must shrink <b>≥80%</b> — making room for the next cycle to think fresh.' }
+                { x:360, y:402, text:'Working memory must shrink <b>≥80%</b> — making room for the next cycle to think fresh.' },
+                { x:760, y:402, text:'Completion is three distinct events — see them.',
+                  ref: { kind: 'deck', url: 'completion-events.html', section: 'The Completion Events', blurb: 'The three distinct completion events and the gates around them.' } }
             ],
             backnote: { x:46, y:500, text:'← from VERIFY: the work checks out' },
             nextnote: { x:606, y:500, text:'Done → back to idle, or next cycle →' }

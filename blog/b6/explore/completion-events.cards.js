@@ -179,7 +179,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:300, y:30, aha:true, text:'Completing the cycle is <b>not</b> completing the job — three events, three actors, three boundaries.',
-              ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · the three completion events', blurb:'The job_core essay names the same three events; this deck draws their actors and boundaries.' } }
+              ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · the three completion events', blurb:'The job_core essay names the same three events; this deck draws their actors and boundaries.' } },
+            { x:64, y:30, text:'These events close out a job\'s whole lifecycle.',
+              ref: { kind: 'deck', url: 'job-life.html', section: 'The Life of a Job', blurb: 'The full job lifecycle from birth to completion.' } }
         ],
         nextnote: { x:606, y:496, text:'Follow Event 1 →' },
         downhint: null
@@ -252,7 +254,9 @@ window.DECK_CARDS = {
         stickies: [
             { x:300, y:30, aha:true, text:'Unfocus is a <b>phase-transition</b> event — it lives at the condense→idle boundary, NOT inside complete.',
               ref: { url:'../06_7-condense.html', section:'Blog 6.7 · the advance out of CONDENSE', blurb:'06_7 teaches the condense→idle advance (the deflation gate). This deck adds the relocated unfocus that rides on that same advance.' } },
-            { x:548, y:436, text:'Still <b>active</b> (multi-cycle)? It stays focused across the lap — only a <b>completed</b> job is unfocused here.' }
+            { x:548, y:436, text:'Still <b>active</b> (multi-cycle)? It stays focused across the lap — only a <b>completed</b> job is unfocused here.' },
+            { x:44, y:36, text:'The final CONDENSE clears the three-family gate first.',
+              ref: { kind: 'deck', url: 'phase-advance.html', section: 'How a Phase Earns its Advance', blurb: 'The three-family exit gate, including CONDENSE\'s consumption-direction form.' } }
         ],
         backnote: { x:46, y:486, text:'← the cleanup window closes' },
         nextnote: { x:560, y:486, text:'Then the cycle + the rest →' }

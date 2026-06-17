@@ -238,7 +238,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:330, y:36, aha:true, text:'Entry has <b>no required act</b> — no value to set, no gate to pass. The friction is all at the <b>exit</b>.',
-              ref: { url:'../06_2-discipline-and-map.html', section:'Blog 6.2 · entry coached, exit gated', blurb:'Phase entry coaches scope-thinking with no checked step; the friction sits at the exit (the three-family gate + shape + custom gates).' } }
+              ref: { url:'../06_2-discipline-and-map.html', section:'Blog 6.2 · entry coached, exit gated', blurb:'Phase entry coaches scope-thinking with no checked step; the friction sits at the exit (the three-family gate + shape + custom gates).' } },
+            { x:700, y:36, text:'This gate guards every forward hop in the cycle.',
+              ref: { kind: 'deck', url: 'phasic-cycle.html', section: 'The Full OPEVC Cycle', blurb: 'See the five-phase cycle this exit gate governs.' } }
         ],
         navHints: { down: 'detail: where the thresholds come from' }
     },
@@ -395,7 +397,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:300, y:36, aha:true, text:'Every phase uses this gate. CONDENSE is the <b>most-gated</b>: reflection + 80% deflation, and it <b>consumes</b> marks rather than producing them.',
-              ref: { url:'../06_7-condense.html', section:'Blog 6.7 · CONDENSE, the cognitive organ', blurb:'CONDENSE advances on the three-family gate (a+c) plus its own 80% deflation gate; its marker-side runs in the consumption direction (per-class subagent runs ≥ marked notes, every note terminal).' } }
+              ref: { url:'../06_7-condense.html', section:'Blog 6.7 · CONDENSE, the cognitive organ', blurb:'CONDENSE advances on the three-family gate (a+c) plus its own 80% deflation gate; its marker-side runs in the consumption direction (per-class subagent runs ≥ marked notes, every note terminal).' } },
+            { x:700, y:36, text:'CONDENSE runs the same gate in the consume direction.',
+              ref: { kind: 'deck', url: 'condense-waterfall.html', section: 'The CONDENSE Waterfall', blurb: 'CONDENSE\'s consumption-direction gate metabolizes the cycle\'s notes.' } }
         ],
         navHints: { down: null }
     }
