@@ -3,12 +3,14 @@
  * Teaches: completion ≠ unfocus — the three independent events conflated into one word.
  * Paired with the shared deck-engine.js + deck-engine.css. Loaded BEFORE the engine.
  *
- * Every hood fact verified against the LIVE prototype 2026-06-03 (research agent
- * aa80ce1b); full spec at .claude/knowledge/diagrams/deck-2-completion-events-spec.md.
+ * Every hood fact re-verified against the LIVE prototype 2026-06-17. Source pointers use
+ * STABLE anchors (file · arm/section), never line numbers, per the glossary term-anatomy
+ * rule. The retired "points" advance model was corrected to the three-family exit gate.
  * Sources: job_core/scripts/job.sh, job_core/hooks/question-capture.sh +
- * question-capture-hook.sh, job_core/scripts/stop-gate.sh, job_core/guards/job-guard.sh,
- * phase_condense/scripts/condense-commit.sh, + CONTEXT.job-system.md (design ground truth).
- * ⚠ = where the published essays differ from the built code (the honesty badge).
+ * question-capture-hook.sh, job_core/hooks/stop-gate.sh, job_core/hooks/job-guard.sh,
+ * phase_condense/scripts/condense-commit.sh, + .claude/context/ (job-system.md +
+ * opevc-metacog.md three-family exit gate + opevc-condense.md — design ground truth).
+ * ⚠ = where a published essay differs from the built code (the honesty badge).
  * ============================================================================ */
 window.DECK_META = { page: 'completion-events', seqLabel: 'completion ≠ unfocus' };
 
@@ -24,63 +26,63 @@ window.DECK_INFO = {
         title: 'Event 1 — job completion', tag: 'object',
         what: 'The job\'s status flips from active to completed. That is all this event does to the record.',
         why: 'It marks the work approved and done — but it is purely a record change. It does NOT end the phase cycle and does NOT release focus.',
-        hood: 'The <code>complete)</code> arm (<code>job.sh:376</code>, hook-only :377) sets <code>.status="completed" | .last_completed_at</code> (<code>job.sh:419</code>) and nothing else — <code>focused</code> is untouched.'
+        hood: 'The <code>complete)</code> arm in <code>job.sh</code> (hook-only — guarded at arm entry) sets <code>.status="completed" | .last_completed_at</code> via its <code>update_job</code> call and nothing else — <code>focused</code> is untouched.'
     },
     'ce-e2': {
         title: 'Event 2 — condense→idle advance', tag: 'phase',
         what: 'The phase machine advances the job out of CONDENSE back to idle. THIS is where the job actually loses focus.',
         why: 'Leaving the job is a phase-transition concern, not a record concern. Putting the unfocus here (not inside completion) is what dissolves the deadlock.',
-        hood: '<code>condense-commit.sh:315</code> advances to idle; then <code>:323</code> checks <code>status=="completed"</code> and <code>:325</code> calls <code>job.sh --hook clear-focus</code> (<code>job.sh:435</code>).'
+        hood: '<code>condense-commit.sh</code>\'s advance-to-idle block runs <code>phase.sh --hook advance</code>; then its <code>Relocated unfocus (completion Event 2)</code> section checks <code>status=="completed"</code> and calls <code>job.sh --hook clear-focus</code> (the <code>clear-focus)</code> arm).'
     },
     'ce-e3': {
         title: 'Event 3 — cycle closure', tag: 'state',
         what: 'The cycle counter increments by one — but not yet. It bumps on the job\'s NEXT idle→observe move, not on this condense→idle edge.',
         why: 'The cycle integer measures laps actually started, so it advances when the next lap begins — keeping "cycle N" honest.',
-        hood: '<code>phase.sh advance</code> increments <code>cycle += 1</code> on the <code>idle→observe</code> branch only. The condense→idle edge announces "cycle N complete" but does not bump the counter (b6/06_7:147).'
+        hood: '<code>phase.sh</code>\'s <code>advance</code> arm increments <code>cycle += 1</code> on the <code>idle→observe</code> branch only. The condense→idle edge announces "cycle N complete" but does not bump the counter.'
     },
     /* ---- Card 2: Event 1 keeps focus ---- */
     'ce-jc': {
         title: '[JOB-COMPLETE] — "Approve completion"', tag: 'action',
         what: 'At the final CONDENSE the agent asks the user a [JOB-COMPLETE] question; the user picking "Approve completion" is what starts Event 1.',
         why: 'Completion is a user decision, not a self-call. The structured question is the ratchet that forces an honest "is this really done?" self-assessment first.',
-        hood: 'The pre-hook (<code>question-capture.sh:165–245</code>) only allows the question in CONDENSE (<code>:173</code>) and enforces the job name + "Review"/"Approve completion" labels + ≥100 words. On "Approve completion" the post-hook (<code>question-capture-hook.sh</code>) runs.'
+        hood: 'The pre-hook (<code>question-capture.sh</code>, the <code>[JOB-COMPLETE]</code> section) only allows the question in CONDENSE (its phase-of-firing gate) and enforces the job name + "Review"/"Approve completion" labels + ≥100 words. On "Approve completion" the post-hook (<code>question-capture-hook.sh</code>) runs.'
     },
     'ce-approve': {
         title: 'user_approval = true', tag: 'gate',
         what: 'Before the status can flip, a separate approval flag must be set — and only the user\'s answer can set it.',
         why: 'It is a consent gate. The seed can never mark its own work approved; the flag records that a human signed off.',
-        hood: 'Set ONLY by <code>job.sh --hook approve</code> (<code>:574</code>), which is hook-gated (<code>:570</code>) and reached only from the [JOB-COMPLETE] post-handler (<code>question-capture-hook.sh:106</code>). Reset to false only by <code>reactivate</code>.'
+        hood: 'Set ONLY by <code>job.sh --hook approve</code> (the <code>approve)</code> arm), which is hook-gated and reached only from the [JOB-COMPLETE] post-handler (<code>question-capture-hook.sh</code>\'s "Approve completion" branch). Reset to false only by <code>reactivate</code>.'
     },
     'ce-complete': {
         title: '--hook complete (CONDENSE-only)', tag: 'gate',
         what: 'The gated executor that performs the flip — only callable by a hook, only when the job is in CONDENSE, and only once every other gate passes.',
         why: 'Locking completion to CONDENSE + hooks means a job can only be declared done from inside its own closing phase, never improvised mid-work.',
-        hood: '<code>job.sh complete)</code> (<code>:376</code>) dies unless <code>HOOK_MODE</code> (:377) and <code>current_phase=="condense"</code> (:416); it also checks name, objective ≤500w, <code>user_approval==true</code>, and all <code>depends_on</code> completed.'
+        hood: '<code>job.sh</code>\'s <code>complete)</code> arm dies unless <code>HOOK_MODE</code> and <code>current_phase=="condense"</code>; it also checks name, objective ≤500w, <code>user_approval==true</code>, and all <code>depends_on</code> completed.'
     },
     'ce-flip': {
         title: 'status → completed', tag: 'object',
         what: 'The actual record change: status becomes completed and a completion timestamp is stamped. This is the entire footprint of Event 1.',
         why: 'A small, surgical write. Everything else people associate with "completion" (leaving the job, closing the cycle) happens elsewhere, later.',
-        hood: '<code>job.sh:419</code> — <code>update_job ... \'.status="completed" | .last_completed_at=$_lca\'</code> (epoch seconds). No other field changes.'
+        hood: 'The <code>complete)</code> arm\'s <code>update_job</code> call — <code>.status="completed" | .last_completed_at=$_lca</code> (epoch seconds). No other field changes.'
     },
     'ce-focus': {
         title: 'focused STAYS true', tag: 'state',
         what: 'Crucially, completion does NOT unfocus the job. A just-completed job is still the focused job.',
         why: 'This is the deliberate decoupling. Keeping focus gives the seed a window to finish condensing the now-completed job before it lets go.',
-        hood: 'The <code>complete)</code> arm never writes <code>focused</code>. A job can be <code>status=completed</code> AND <code>focused=true</code> at once — by design (built WU-001, 2026-06-02).'
+        hood: 'The <code>complete)</code> arm never writes <code>focused</code>. A job can be <code>status=completed</code> AND <code>focused=true</code> at once — by design.'
     },
     /* ---- Card 3: cleanup window ---- */
     'ce-cwf': {
         title: 'completed + focused — the cleanup window', tag: 'state',
         what: 'The deliberate in-between state: the job is done (completed) but still the centre of attention (focused). It lasts through the rest of the final CONDENSE.',
         why: 'Without it, a job that completed AND unfocused at the same instant would have no tools left to finish condensing — and would strand the seed (the old deadlock).',
-        hood: 'Made possible because <code>complete)</code> leaves <code>focused</code> alone (<code>job.sh:419</code>). The window closes only at the condense→idle advance (Event 2).'
+        hood: 'Made possible because the <code>complete)</code> arm leaves <code>focused</code> alone. The window closes only at the condense→idle advance (Event 2).'
     },
     'ce-guard': {
         title: 'the phase guard keys on FOCUS, not status', tag: 'gate',
         what: 'The phase guard lets the focused job keep its tools based on focus being present — regardless of whether the job is active or completed.',
         why: 'Because the allow rule reads focus (not status), a completed-but-focused job keeps full access — which is exactly what lets it finish the cycle.',
-        hood: '<code>job-guard.sh:72–80</code> grants the focus-required allow on focus PRESENCE (any status). A completed+focused job in CONDENSE therefore keeps tools + altered-list scope.'
+        hood: '<code>job-guard.sh</code>\'s Focus-Required Enforcement section grants the allow on focus PRESENCE (any status). A completed+focused job in CONDENSE therefore keeps tools + altered-list scope.'
     },
     'ce-tools': {
         title: 'tools + scope still keyed to the job', tag: 'context',
@@ -90,40 +92,40 @@ window.DECK_INFO = {
     },
     'ce-points': {
         title: 'finish CONDENSE → earn the advance', tag: 'action',
-        what: 'Inside the window the seed completes the CONDENSE work and earns the points needed to advance out of the phase.',
-        why: 'The advance (≥100 points + 80% deflation) is what triggers Event 2 — so the cleanup window is the bridge from "record done" to "actually leave".',
-        hood: 'The <code>condense-commit.sh --force</code> advance needs ≥100 points + the 80% deflation gate; meeting them fires the phase hop that hosts the relocated unfocus.'
+        what: 'Inside the window the seed completes the CONDENSE work and earns the advance out of the phase.',
+        why: 'The advance (the three-family exit gate + 80% deflation) is what triggers Event 2 — so the cleanup window is the bridge from "record done" to "actually leave".',
+        hood: 'The <code>condense-commit.sh --force</code> advance requires the three-family exit gate (CORE reflection commands ran + a reflector subagent ran) plus the 80% deflation gate; meeting them fires the phase hop that hosts the relocated unfocus. There is no point total.'
     },
     /* ---- Card 4: Event 2 relocated unfocus ---- */
     'ce-cc': {
         title: 'condense-commit --force', tag: 'action',
         what: 'The cycle\'s closing commit. Once its gates pass, it advances the phase — and that advance is where the unfocus has been relocated to.',
         why: 'Leaving the job rides along with the phase transition, not the record change. One place, one moment, clearly a phase event.',
-        hood: '<code>condense-commit.sh --force</code> runs the advance at <code>:315</code> (<code>phase.sh --hook advance</code>) after its gates pass.'
+        hood: '<code>condense-commit.sh --force</code> runs the advance (the advance-to-idle block calling <code>phase.sh --hook advance</code>) after its gates pass.'
     },
     'ce-gates': {
-        title: '≥ 100 points · 80% deflation', tag: 'gate',
+        title: 'three-family gate · 80% deflation', tag: 'gate',
         what: 'The universal CONDENSE gates that must pass before the advance fires.',
-        why: 'They make sure the consolidation work actually happened — the footers shrank and enough work was done — before the job is allowed to leave.',
-        hood: 'Per-phase ≥100 points + <code>CONDENSE_DEF_THRESHOLD=80</code> (deflation of altered CLAUDE.md footers), checked in <code>condense-commit.sh</code> before the advance.'
+        why: 'They make sure the consolidation work actually happened — reflection ran and the footers shrank — before the job is allowed to leave.',
+        hood: 'The three-family exit gate (CORE reflection commands ran + nuanced minimum met + ≥1 reflector subagent ran) + <code>CONDENSE_DEF_THRESHOLD=80</code> (deflation of altered CLAUDE.md footers), checked in <code>condense-commit.sh</code> before the advance. No point total exists — the condition is evidence of reflection plus absorption.'
     },
     'ce-adv': {
         title: 'advance → idle', tag: 'phase',
         what: 'The job moves out of CONDENSE back to idle. The lap is structurally over.',
         why: 'idle only flows forward to OBSERVE, so the returning job can\'t silently resume mid-cycle — it must start a fresh lap.',
-        hood: '<code>condense-commit.sh:315</code> calls <code>phase.sh --hook advance</code>; CONDENSE is lock-forward, so the only exit is forward to idle.'
+        hood: '<code>condense-commit.sh</code>\'s advance-to-idle block calls <code>phase.sh --hook advance</code>; CONDENSE is lock-forward, so the only exit is forward to idle.'
     },
     'ce-chk': {
         title: 'status == completed?', tag: 'gate',
         what: 'Right after the advance, the engine checks whether the job that just hit idle is a completed one.',
         why: 'Only a completed job should be released; a still-active multi-cycle job must stay focused so it keeps running its remaining cycles.',
-        hood: '<code>condense-commit.sh:323</code> reads the focused job\'s status; the unfocus only fires when it is <code>"completed"</code>.'
+        hood: '<code>condense-commit.sh</code>\'s Relocated unfocus section reads the focused job\'s status; the unfocus only fires when it is <code>"completed"</code>.'
     },
     'ce-cf': {
         title: 'clear-focus → unfocused', tag: 'action',
         what: 'For a completed job, focus is finally cleared. The job lands in idle, unfocused, and the seed moves to next-job-selection.',
         why: 'This is the real "leaving" — and it is unmistakably a phase-boundary action, not part of marking the record done.',
-        hood: '<code>condense-commit.sh:325</code> → <code>job.sh --hook clear-focus</code> (arm at <code>job.sh:435</code>, hook-gated :436) sets <code>focused=false</code>. A still-active job skips this and stays focused across the lap.'
+        hood: '<code>condense-commit.sh</code>\'s Relocated unfocus section → <code>job.sh --hook clear-focus</code> (the <code>clear-focus)</code> arm, hook-gated) sets <code>focused=false</code>. A still-active job skips this and stays focused across the lap.'
     },
     /* ---- Card 5: Event 3 + stop gate ---- */
     'ce-idle2': {
@@ -136,19 +138,19 @@ window.DECK_INFO = {
         title: 'next idle→observe: cycle += 1', tag: 'phase',
         what: 'When a job next starts a lap (idle→observe), the cycle counter increments. This — not the condense→idle edge — is Event 3.',
         why: 'The counter measures laps begun, so it bumps as the new lap starts. It is why "cycle N complete" at CONDENSE doesn\'t change the number yet.',
-        hood: '<code>phase.sh advance</code> bumps <code>cycle += 1</code> on the <code>idle→observe</code> branch only (b6/06_7:147).'
+        hood: '<code>phase.sh</code>\'s <code>advance</code> arm bumps <code>cycle += 1</code> on the <code>idle→observe</code> branch only.'
     },
     'ce-stop': {
         title: 'active + pending == 0?', tag: 'gate',
         what: 'The Stop gate asks: is there any active or pending job left? Only if the answer is zero may the seed actually stop.',
         why: 'It is the seed\'s "all work done" check. As long as any job is active or pending, the seed refuses to go quiet.',
-        hood: '<code>stop-gate.sh</code> sums active+pending (<code>:61</code>); the success guard is <code>total -eq 0</code> (<code>:77</code>). Event 1\'s status→completed is what can make that total reach 0 — the release is a consequence, not part of completion.'
+        hood: '<code>stop-gate.sh</code> sums active+pending; its SUCCESS branch guards on <code>total -eq 0</code>. Event 1\'s status→completed is what can make that total reach 0 — the release is a consequence, not part of completion.'
     },
     'ce-rest': {
         title: 'quiescent stop', tag: 'state',
         what: 'With no jobs left, the seed is allowed to stop — and on the way out it launches the quiescent heartbeat daemon that can wake it later.',
         why: 'Stopping isn\'t death: a detached timer (heartbeat-2) keeps watch so a repeating job can re-fire while the seed is at rest.',
-        hood: '<code>stop-gate.sh:80–86</code> launches <code>quiescent-heartbeat.sh</code> (setsid/nohup, PID-singleton) then exits 0 (<code>:87</code>).'
+        hood: '<code>stop-gate.sh</code>\'s SUCCESS branch launches <code>quiescent-heartbeat.sh</code> (setsid/nohup, PID-singleton) then exits 0.'
     },
     'ce-more': {
         title: 'jobs remain → Stop BLOCKS', tag: 'state',
@@ -236,10 +238,10 @@ window.DECK_CARDS = {
         sub: 'What you\'re looking at: where leaving the job actually happens — at the phase boundary, not inside completion.',
         boxes: [
             { id:'ce-cc', x:44,  y:130, w:200, h:96, tag:'action', t:'condense-commit --force', s:'the cycle\'s last commit' },
-            { id:'ce-gates', x:292, y:130, w:208, h:96, tag:'gate', t:'≥100 pts · 80% deflation', s:'the universal gates' },
+            { id:'ce-gates', x:292, y:130, w:208, h:96, tag:'gate', t:'three-family · 80% deflation', s:'the universal gates' },
             { id:'ce-adv', x:548, y:130, w:248, h:96, tag:'phase', t:'advance → idle', s:'lock-forward exit' },
             { id:'ce-chk', x:292, y:322, w:208, h:96, tag:'gate', t:'status == completed?', s:'checked at the advance' },
-            { id:'ce-cf', x:548, y:322, w:248, h:96, tag:'action', t:'clear-focus → unfocused', s:'job.sh:435' }
+            { id:'ce-cf', x:548, y:322, w:248, h:96, tag:'action', t:'clear-focus → unfocused', s:'clear-focus) arm' }
         ],
         edges: [
             { from:'ce-cc', to:'ce-gates', kind:'hard', label:'pass' },
