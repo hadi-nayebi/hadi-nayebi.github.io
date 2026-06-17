@@ -1,7 +1,7 @@
 ---
 final: false
 source_md: 06_7-condense.md
-generated_at: 2026-06-17T04:34:45+00:00
+generated_at: 2026-06-17T07:52:14+00:00
 ---
 
 CONDENSE — The Cognitive Organ
