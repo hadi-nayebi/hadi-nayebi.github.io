@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- Version: v1.0.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The CLAUDE.md hierarchy | Hadosh Academy</title>
+    <meta name="description" content="An interactive concept-deck on the seed agent's brain and memory substrate: the Markov self-model it reads at session start, the CLAUDE.md working-memory bus, the layered hierarchy (root injected-always vs local append-on-read), the four-state lifecycle, the four footer anchors with birth-block and self-heal, the three durable surfaces (transient brain, unbounded knowledge/, narrow memory/), and the soft size caps plus the forgetting discipline. Walk the seven steps; click any box for the code-accurate detail.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b5/explore/claude-md-hierarchy.html">
+    <meta property="og:title" content="The CLAUDE.md hierarchy | Hadosh Academy">
+    <meta property="og:description" content="The seed's working-memory substrate as a spatial concept-deck: the Markov self-model, the CLAUDE.md bus, the layered hierarchy, the four-state lifecycle, the anchors, the three durable surfaces, and the size caps. Hover and click.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b5/explore/claude-md-hierarchy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The CLAUDE.md hierarchy | Hadosh Academy">
+    <meta name="twitter:description" content="How the seed agent remembers: the CLAUDE.md bus, the layered hierarchy, the four-state lifecycle, the footer anchors, and the three durable surfaces it condenses into.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+
+    <!-- site stylesheet — fonts + theme vars only -->
+    <link rel="stylesheet" href="../../../css/styles.css?v=20260518">
+    <!-- shared deck engine styles (generic across all concept-decks; lives in b6/explore) -->
+    <link rel="stylesheet" href="../../b6/explore/deck-engine.css?v=20260603">
+</head>
+
+<body>
+    <a href="../05_7-claude-md-hierarchy.html" class="chrome-back" aria-label="Back to Essay 5.7">&larr; Back to Essay 5.7</a>
+
+    <div class="deck-title" aria-hidden="true">THE CLAUDE.md HIERARCHY<span>one bus, three durable surfaces</span></div>
+
+    <!-- step indicator -->
+    <div class="step-ind" id="step-ind" aria-live="polite"></div>
+
+    <!-- ============================ NAV ARROWS ============================ -->
+    <button class="nav-arrow is-disabled" id="nav-left" type="button" aria-label="Previous card">&larr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-right" type="button" aria-label="Next card">&rarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-up" type="button" aria-label="Card above">&uarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-down" type="button" aria-label="Card below">&darr;<span class="nav-arrow__hint"></span></button>
+
+    <!-- ============================ DECK ============================ -->
+    <div class="deck-root">
+        <div class="deck-grid" id="deck-grid"><!-- cells injected by JS --></div>
+    </div>
+
+    <!-- ============================ TOOLTIP ============================ -->
+    <div class="tooltip" id="tooltip" role="status" aria-hidden="true">
+        <div class="tooltip__t" id="tooltip-t"></div>
+        <div class="tooltip__w" id="tooltip-w"></div>
+        <div class="tooltip__warn" id="tooltip-warn" style="display:none">&#9888; blog vs code &mdash; click to read</div>
+        <div class="tooltip__hint">click for the full story</div>
+    </div>
+
+    <!-- ============================ INFO PANEL ============================ -->
+    <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Concept detail">
+        <button class="info-close" id="info-close" aria-label="Close detail panel">&times;</button>
+        <div id="info-content"></div>
+    </aside>
+
+    <!-- ============================ LEGEND ============================ -->
+    <aside class="legend is-collapsed" id="legend" aria-label="Diagram legend">
+        <button class="legend__head" id="legend-head" type="button" aria-expanded="false" aria-controls="legend-body">
+            <span>Legend — tags &amp; arrows</span>
+            <span class="legend__chev" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="legend__body" id="legend-body">
+            <div class="legend__sect">What the tags mean</div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6b7fb8"></span><span class="legend__txt"><b>&#9676; State</b>a field or condition the seed holds</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#d9a948"></span><span class="legend__txt"><b>&#9998; Context</b>a surrounding fact or category</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6366f1"></span><span class="legend__txt"><b>&#9635; Object</b>a plugin, file, or artifact that exists</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#38bdf8"></span><span class="legend__txt"><b>&#9889; Action</b>an operation the seed or operator runs</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#34d399"></span><span class="legend__txt"><b>&#10003; Gate</b>a checked condition that must pass</span></div>
+            <div class="legend__sect">Arrows</div>
+            <div class="legend__row"><span class="legend__edge" aria-hidden="true"></span><span class="legend__txt"><b>Solid = hard</b>a code-enforced step</span></div>
+            <div class="legend__row"><span class="legend__edge legend__edge--soft" aria-hidden="true"></span><span class="legend__txt"><b>Dashed = soft</b>coaching or a soft relation</span></div>
+        </div>
+    </aside>
+
+    <!-- ============================ HELP BUTTON ============================ -->
+    <button class="help-btn" id="help-btn" type="button"><b>?</b> how to read this</button>
+
+    <!-- ============================ ORIENTATION OVERLAY ============================ -->
+    <div class="orient" id="orient" role="dialog" aria-modal="true" aria-labelledby="orient-title">
+        <div class="orient__card">
+            <div class="orient__kicker">How to read this deck</div>
+            <h2 id="orient-title">How the seed remembers.</h2>
+            <p class="orient__lead">A seed agent does not keep its memory in the chat window — chat is capped and lost at compaction. Instead it remembers on a <b>bus</b>: files literally named <code>CLAUDE.md</code> that <b>are</b> its working memory. This deck walks that substrate from the top down — the <b>Markov self-model</b> the seed reads at session start, the <b>working-memory bus</b> and the teeth that updating it grows, the layered <b>hierarchy</b> (root injected always, local surfaced on demand), the four-state <b>lifecycle</b> that inflates then deflates, the four footer <b>anchors</b> that make a file reachable, the <b>three durable surfaces</b> the bus condenses into, and the soft <b>size caps</b> plus the forgetting discipline that moves overflow rather than dropping it. Each card is one focused idea, with a clean diagram you can hover and click.</p>
+            <div class="orient__keys">
+                <span class="orient__key"><span class="kbd">&larr;</span><span class="kbd">&rarr;</span></span>
+                <span class="orient__keydesc"><b>Walk the seven steps</b> in sequence &mdash; this is the main story.</span>
+                <span class="orient__key"><span class="kbd">&uarr;</span><span class="kbd">&darr;</span></span>
+                <span class="orient__keydesc"><b>Related detail</b> &mdash; a deeper look at the card you're on.</span>
+                <span class="orient__key"><span class="kbd">click</span></span>
+                <span class="orient__keydesc">any box for <b>what it is</b>, <b>why it matters</b>, and <b>under the hood</b>.</span>
+            </div>
+            <p class="orient__thesis">Chat is the one place the seed's memory does not live — everything that must survive is written to the bus.</p>
+            <button class="orient__go" id="orient-go" type="button">Start at the self-model &rarr;</button>
+        </div>
+    </div>
+
+    <!-- per-deck content (data) + the shared deck engine (cross-dir in b6/explore) -->
+    <script src="claude-md-hierarchy.cards.js?v=20260603"></script>
+    <script src="../../b6/explore/deck-engine.js?v=20260603"></script>
+</body>
+</html>
