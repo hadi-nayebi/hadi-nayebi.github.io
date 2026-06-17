@@ -1076,7 +1076,7 @@
         ];
         var edges = [
             edge("sd-1", "sd-obs", "sd-mult", "soft", "entry voice"),
-            edge("sd-2", "sd-mult", "sd-expand", "soft", "tools unlock"),
+            edge("sd-2", "sd-mult", "sd-expand", "soft", "budget live"),
             edge("sd-3", "sd-expand", "sd-advance", "hard", "exit gate"),
             edge("sd-4", "sd-advance", "sd-null", "hard", "PLAN · plan_file born null"),
             edge("sd-5", "sd-null", "sd-block", "hard", "advance blocked"),
@@ -1097,7 +1097,7 @@
             portal("back-to-journey", "journey", "↑ back to the journey"),
             node("e-enter", W_STAGE, H_STAGE, { type: "stage", title: "Cycle-1 EXECUTE", sub: "Stage 2/3", lane: "core", stage: "execute-planfile" }),
             node("e-guard", W_HOOK, H_HOOK, { type: "hook", title: "execute-guard scope", sub: "Write must equal declared plan_file", lane: "tracker", stage: "execute-planfile" }),
-            node("e-write", W_HOOK, H_HOOK, { type: "hook", title: "Write plan file", sub: ".claude/knowledge/plans/plan_<name>", lane: "plan", stage: "execute-planfile" }),
+            node("e-write", W_HOOK, H_HOOK, { type: "hook", title: "Write plan file", sub: ".claude/jobs/<job_id>/plan.{md,yaml}", lane: "plan", stage: "execute-planfile" }),
             node("e-md", W_STAGE, H_STAGE, { type: "stage", title: ".md frontmatter", sub: "total_cycles: N", lane: "plan", stage: "execute-planfile" }),
             node("e-yaml", W_STAGE, H_STAGE, { type: "stage", title: ".yaml cycles list", sub: "per-cycle entries", lane: "plan", stage: "execute-planfile" }),
             node("e-soft", W_STAGE, H_STAGE, { type: "stage", title: "Not an advance gate", sub: "execute→verify works even if unwritten", lane: "core", stage: "execute-planfile", contradiction: "Reading the plan file as a hard EXECUTE deliverable overstates it. Code: writing the plan file is a Write-PERMISSION scope check only — execute can still advance to verify even if the file was never created. It is softer than a gate." }),
@@ -1754,7 +1754,7 @@
             when: "After the Stage is set to a .md or .yaml plan.",
             canDo: "Writes the plan file. But note: writing it is permission-checked, not required to move forward.",
             why: "Typing up the formal project plan document at the start of the project.",
-            builder: "Stage 2/3 only. The plan file is written to .claude/knowledge/plans/plan_<name>.{md,yaml}."
+            builder: "Stage 2/3 only. The plan file is written to .claude/jobs/&lt;job_id&gt;/plan.{md,yaml} (the run-aware job directory)."
         },
         "e-guard": {
             title: "execute-guard scope",
@@ -1770,7 +1770,7 @@
             when: "During cycle-1 EXECUTE.",
             canDo: "Produces the persistent plan that later cycles read and refine.",
             why: "Saving the project plan to the shared drive where the whole team will work from it.",
-            builder: "Write to .claude/knowledge/plans/plan_<name>.md (total_cycles frontmatter) or .yaml (cycles list)."
+            builder: "Write to .claude/jobs/&lt;job_id&gt;/plan.md (total_cycles frontmatter) or plan.yaml (cycles list)."
         },
         "e-md": {
             title: ".md frontmatter",
