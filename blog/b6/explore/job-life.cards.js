@@ -112,7 +112,7 @@ window.DECK_INFO = {
             title: 'set-plan-file — choose once', tag: 'action',
             what: 'In cycle-1 PLAN the job calls <code>set-plan-file</code> exactly once, committing its Stage by the value it writes.',
             why: 'This is the single most defining choice a job makes: what shape its work takes. It is deliberately irreversible — the job picks a Stage and lives with it, rather than drifting between shapes.',
-            hood: 'Three accepted values: <code>false</code> (Stage 1), <code>plan_x.md</code> (Stage 2), <code>plan_x.yaml</code> (Stage 3). A SECOND call is refused — <code>plan.sh</code> checks the current value and dies "Plan file already set… Cannot change." The PLAN→EXECUTE advance is BLOCKED while the value is still <code>null</code> (<code>plan-commit.sh</code>), so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
+            hood: 'Three accepted values: <code>false</code> (Stage 1), <code>plan_x.md</code> (Stage 2), <code>plan_x.yaml</code> (Stage 3). Set-once with a cycle-1 relaxation: a change is refused only when <code>plan_file</code> is non-null AND <code>cycle &gt; 1</code> — <code>plan.sh</code> dies "Plan file already set… Set-once is relaxed only at cycle 1." At cycle 1 (fresh run or reactivation) a re-call is allowed by design. The PLAN→EXECUTE advance is BLOCKED while the value is still <code>null</code> (<code>plan-commit.sh</code>), so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
         },
         'p-s1': {
             title: 'false → Stage 1', tag: 'object',

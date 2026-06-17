@@ -1108,7 +1108,7 @@
             edge("e-2", "e-guard", "e-write", "soft", "scope ok"),
             edge("e-3", "e-write", "e-md", "soft", "Stage 2"),
             edge("e-4", "e-write", "e-yaml", "soft", "Stage 3"),
-            edge("e-5", "e-enter", "e-soft", "soft", "must exist · S2/3 c1"),
+            edge("e-5", "e-enter", "e-soft", "hard", "must exist · S2/3 c1"),
             edge("e-6", "e-enter", "e-stage1", "soft", "Stage 1 skips"),
             edge("e-exit", "e-write", "back-to-journey", "soft", "")
         ];
@@ -1308,7 +1308,7 @@
             title: "EXECUTE",
             what: "The build phase: the agent finally writes code, edits files, creates artifacts — following the plan it just committed to.",
             when: "After PLAN, with full write access scoped to what was declared.",
-            canDo: "For a multi-cycle job, this is where the plan file is written to disk. But writing it is a permission check, not a finish-line requirement.",
+            canDo: "For a multi-cycle job, this is where the plan file is written to disk — and it must be written: a separate advance gate in execute-commit blocks the move to VERIFY until the file exists (Stage 2/3 cycle 1).",
             why: "The contractor doing the actual building after the blueprint is signed off.",
             builder: "execute-guard scopes Writes to the declared plan_file path (Stage 2/3 cycle-1) — a Write-PERMISSION check. SEPARATE from it, execute-commit.sh's Plan-File-Exists Gate (--force, Stage 2/3 cycle 1) BLOCKS execute→verify until the declared plan file exists on disk."
         },
