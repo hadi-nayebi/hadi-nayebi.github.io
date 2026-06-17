@@ -301,7 +301,7 @@ window.DECK_INFO = {
     /* ---- Card 6: section-anchor write authority ---- */
     'four-anchors': {
         title: 'the four footer anchors', tag: 'object',
-        what: 'The markers OBSERVE / PLAN / EXECUTE / VERIFY that partition every CLAUDE.md into a durable body above and four phase footers below. A shared guard keeps them present, unique, and in order.',
+        what: 'The four phase-section anchors — OBSERVE / PLAN / EXECUTE / VERIFY — that partition every CLAUDE.md into a durable body above and four phase footers below. A shared guard keeps them present, unique, and in order.',
         why: 'The anchors are the addressable structure that makes per-phase write authority enforceable — and an edit can never corrupt them.',
         hood: '<code>lib/section_guard/section-check.sh</code> <code>check_section_edit()</code> validates all four present/unique/in-order; partial anchors are blocked. Source: <code>opevc-phases.md</code> · "Section-anchor write authority".'
     },
