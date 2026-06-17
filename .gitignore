@@ -52,3 +52,7 @@ __pycache__/
 
 # Local diagram-review comments (dev tool, not deployed)
 diagram-comments.json
+
+# Free-TTS DRAFT audio — local review only, regeneratable via tools/generate_free_audio.py; paid finals get committed
+*.draft.mp3
+*.draft.mp3.meta.json

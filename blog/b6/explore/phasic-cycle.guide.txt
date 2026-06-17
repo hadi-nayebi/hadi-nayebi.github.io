@@ -1,0 +1,15 @@
+Welcome. This is an interactive map of the seed agent's phasic brain, called One Cycle, Five Compartments. Let me walk you through what it shows and how to explore it.
+
+First, how to move around. Use the left and right arrow keys to walk the seven main steps in order. That is the story, told start to finish. The up and down arrow keys open a deeper detail card about the step you are on. And you can click any box on the screen to read three things about it: what it is, why it matters, and what happens under the hood in the real code. Hover an arrow between boxes to see what that connection means. There is a help button if you ever want these instructions again.
+
+Now, the big idea. When the seed agent does serious work, it does not just charge ahead. It moves through a fixed cycle of cognition compartments, and each one holds only one kind of thinking.
+
+The cycle begins at idle, the resting state between jobs. From there it enters OBSERVE, where it gathers information by reading and searching, but writes no code yet. Next comes PLAN, where it turns what it gathered into an approach. Planning always sits between gathering and building. You cannot skip it.
+
+Then EXECUTE, the only phase allowed to write project files, where the plan finally gets built. After that, VERIFY checks the work against the plan, with fresh eyes, unable to quietly fix what it finds. And finally CONDENSE, where the agent distills what it learned into lasting memory before returning to idle. This is where the brain actually grows.
+
+Here is the heart of it. Each phase is only allowed to make its own kind of move. The tools for the other modes are simply withheld. OBSERVE cannot write code. EXECUTE cannot keep re-planning. Forbidding the other moves is the discipline. It holds the agent in the right state at the right time, so the work never blurs together.
+
+The deck's later steps reveal the machinery underneath: the two maps that define every legal transition, the conductor and its five self-guarding helpers, the rule that thinking grants the right to write, and the fractal pattern that repeats at every scale.
+
+Take it one card at a time. Each one is a single, focused idea. Press the right arrow to begin at the cycle.
