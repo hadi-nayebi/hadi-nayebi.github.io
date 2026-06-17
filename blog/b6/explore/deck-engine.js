@@ -135,13 +135,18 @@
             s.title = 'Drag to move · double-click to reset';
             s.innerHTML = st.text;
             if (st.ref) {
-                /* a footnote ref-chip linking this note to its blog source (matches the blog's ⓘ ref-markers) */
+                /* a footnote ref-chip: links this note to its blog source (matches the blog's ⓘ ref-markers),
+                   OR — when kind:'deck' — to a SIBLING explorable (distinct ⧉ glyph + colour + label). */
+                var isDeckRef = (st.ref.kind === 'deck');
                 var chip = document.createElement('button');
                 chip.type = 'button';
-                chip.className = 'refchip';
-                chip.innerHTML = '&#9432;';
-                chip.setAttribute('aria-label', 'Reference — ' + (st.ref.section || 'blog') + ' (opens the essay in a new tab)');
+                chip.className = 'refchip' + (isDeckRef ? ' refchip--deck' : '');
+                chip.innerHTML = isDeckRef ? '&#10697;' : '&#9432;';
+                chip.setAttribute('aria-label', isDeckRef
+                    ? ('Related explorable — ' + (st.ref.section || 'diagram') + ' (opens the explorable in a new tab)')
+                    : ('Reference — ' + (st.ref.section || 'blog') + ' (opens the essay in a new tab)'));
                 chip.setAttribute('data-ref-url', st.ref.url);
+                chip.setAttribute('data-ref-kind', isDeckRef ? 'deck' : 'essay');
                 chip.setAttribute('data-ref-section', st.ref.section || '');
                 chip.setAttribute('data-ref-blurb', st.ref.blurb || '');
                 s.appendChild(chip);
@@ -734,8 +739,10 @@
     function showReftip(chip) {
         refCancelHide();
         var url = chip.getAttribute('data-ref-url') || '#';
+        var isDeckRef = (chip.getAttribute('data-ref-kind') === 'deck');
         reftipSec.textContent  = chip.getAttribute('data-ref-section') || 'Reference';
         reftipBlurb.textContent = chip.getAttribute('data-ref-blurb') || '';
+        reftipLink.textContent = isDeckRef ? '↗ Open the explorable' : '↗ Open the essay';
         reftipLink.setAttribute('href', url);
         reftip.classList.add('is-on');
         /* anchor the popover to the CHIP (not the cursor) so the pointer can travel INTO it */

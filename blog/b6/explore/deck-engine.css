@@ -570,6 +570,8 @@
         /* ---- ref-symbol chip (ⓘ): a sticky/box footnote that links to a blog section ---- */
         .refchip { pointer-events: auto; cursor: pointer; display: inline-block; margin-left: 3px; padding: 0; border: none; background: none; color: var(--accent); font-size: 0.95em; font-weight: 700; vertical-align: super; line-height: 0; }
         .refchip:hover, .refchip:focus-visible { filter: brightness(1.35); outline: none; }
+        /* ---- deck-ref chip (⧉): jumps to a SIBLING explorable, not an essay — distinct teal so the reader knows it crosses to another diagram ---- */
+        .refchip--deck { color: #5eead4; font-size: 0.9em; }
         .reftip { position: fixed; z-index: 3600; max-width: 272px; padding: 0.55rem 0.7rem; border-radius: 12px; background: rgba(8,8,13,0.97); border: 1px solid rgba(139,92,246,0.45); box-shadow: 0 12px 30px rgba(0,0,0,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transform: translateY(4px); transition: opacity .14s, transform .14s; }
         .reftip.is-on { opacity: 1; transform: translateY(0); pointer-events: auto; }
         .reftip__sec { font-size: 0.74rem; font-weight: 700; color: #c9c2ff; margin-bottom: 0.2rem; }
