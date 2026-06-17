@@ -226,7 +226,7 @@ grep -nE "^---(Ob|Pl|Ex|Ve)---$" blog/<slug>.md
 
 For any hit, manually verify whether the marker is INSIDE a fenced code block (preserve) or a BARE LINE in body prose (strip). Auditors must make this distinction.
 
-**Origin:** 2026-05-15 — 12 blog drafts (10 B6 sub-essays + B5 monolith + B5.7) had inherited the markers from subagent boilerplate copied from CLAUDE.md templates. User caught it; iter-26 stripped them all. Subagents authoring blog drafts must NOT carry CLAUDE.md footer markers into blog source as section anchors. **2026-05-19** — B5.7 audit-cleanup pass surfaced the fenced-code exception: the essay intentionally uses the markers inside a ``` ``` ``` block to teach the four-footer protocol; that usage is correct and preserved.
+**Origin:** 2026-05-15 — 12 blog drafts (10 B6 sub-essays + B5 monolith + B5.7) had inherited the anchors from subagent boilerplate copied from CLAUDE.md templates. User caught it; iter-26 stripped them all. Subagents authoring blog drafts must NOT carry CLAUDE.md footer anchors into blog source. **2026-05-19** — B5.7 audit-cleanup pass surfaced the fenced-code exception: the essay intentionally uses the anchors inside a ``` ``` ``` block to teach the four-footer protocol; that usage is correct and preserved.
 
 ## Inline Image Syntax (NON-NEGOTIABLE)
 
