@@ -1692,11 +1692,11 @@
         },
         "sd-advance": {
             title: "Advance to PLAN",
-            what: "The hard requirements to leave OBSERVE: the three-family exit gate (reflections ran, marked notes added, ≥1 reflector subagent ran), at least one CLAUDE.md update, and a clean git state.",
+            what: "The requirements to leave OBSERVE: the three-family exit gate (reflection commands ran [hard], new marked notes added [soft by default], ≥1 reflector subagent ran [hard]), at least one CLAUDE.md update, and a clean git state.",
             when: "When OBSERVE is genuinely done.",
             canDo: "Moves the job into PLAN, where plan_file is born and the Stage gets decided.",
-            why: "The checklist you must complete before the project moves from research into planning.",
-            builder: "Forward advance is HARD: three-family exit gate (family-a metacog floor + family-b marked notes + family-c ≥1 reflector ran) — observe-commit.sh advance gate. Then plan.sh init births the first plan entry."
+            why: "The checklist OBSERVE completes before the project moves from research into planning.",
+            builder: "Forward advance is HARD on family-a (metacog floor) + family-c (≥1 reflector ran); family-b (marked notes) is SOFT while METACOG_MARKS_HARD=false (coaches, does not block) — observe-commit.sh advance gate. Then plan.sh init births the first plan entry."
         },
         "sd-null": {
             title: "plan_file = null",

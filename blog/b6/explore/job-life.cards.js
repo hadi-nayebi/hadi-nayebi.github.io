@@ -368,7 +368,7 @@ window.DECK_INFO = {
             title: 'plan · verify · condense lanes', tag: 'object',
             what: 'Each phase plugin keeps its own tally for the job — action counts per activity class, edits made, gate state — in its own file.',
             why: 'Every phase you walked through (PLAN, EXECUTE, VERIFY, CONDENSE) was enforced by a different plugin, and each remembers only what it needs about this job. The job\'s full state is the sum of all these lanes.',
-            hood: 'phase_plan, phase_verify, phase_execute, and phase_condense each maintain per-job tracker entries (per-class action counts, plan_edits, deflation, three-family gate state, etc.) keyed by the job id — lit up only once the job first reaches that phase.'
+            hood: 'Each OPEVC phase plugin (phase_observe, phase_plan, phase_execute, phase_verify, phase_condense) maintains per-job tracker entries (per-class action counts, plan_edits, deflation, three-family gate state, etc.) keyed by the job id — lit up only once the job first reaches that phase.'
         },
         'cap-sum': {
             title: 'interaction_summary lane', tag: 'object',
