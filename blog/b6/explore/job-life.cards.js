@@ -51,13 +51,13 @@ window.DECK_INFO = {
             title: 'name — the job names itself', tag: 'object',
             what: 'Out of everything it has gathered, the job settles on a name — a short handle for this unit of work.',
             why: 'A nameless job is just "the thing the seed is doing." Naming is the first commitment: it turns the growing pile of context into a thing you can point at, track, and reason about.',
-            hood: 'Set via <code>job.sh update &lt;id&gt; name "&lt;name&gt;"</code>, filling the <code>name</code> field that was born as <code>""</code>. The gate refuses to advance while name is still empty.'
+            hood: 'Set via <code>job.sh update name "&lt;name&gt;"</code> (focused-only — no id arg; the first positional is the FIELD), filling the <code>name</code> field that was born as <code>""</code>. The gate refuses to advance while name is still empty.'
         },
         'b-objective': {
             title: 'objective — a written brief, not a sentence', tag: 'object',
             what: 'The job writes down what "done" will mean — and not in one line. In cycle 1 it must grow the goal into a full 300–500 word brief.',
             why: 'A single sentence cannot be planned or verified against. The expanded brief is the compass every later phase — and every future re-run of a repeating job — reads. It is the single heaviest piece of OBSERVE.',
-            hood: 'Set via <code>job.sh update &lt;id&gt; objective</code>; the cycle-1 custom gate enforces the expansion floor <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code> (under 300 words BLOCKS the advance; over 500 only coaches). Per the creation naming contract: deliberate CONDENSE-created jobs are born with a 100–150 word starter objective; the prompt-born bootstrap job (the one on this card) is the lone exception — born <code>objective:""</code> EMPTY, then named + expanded in its own cycle-1 OBSERVE (empty → ≥300 words).'
+            hood: 'Set via <code>job.sh update objective</code> (focused-only — no id arg); the cycle-1 custom gate enforces the expansion floor <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code> (under 300 words BLOCKS the advance; over 500 only coaches). Per the creation naming contract: deliberate CONDENSE-created jobs are born with a 100–150 word starter objective; the prompt-born bootstrap job (the one on this card) is the lone exception — born <code>objective:""</code> EMPTY, then named + expanded in its own cycle-1 OBSERVE (empty → ≥300 words).'
         },
         'b-gate': {
             title: 'Gate to PLAN', tag: 'gate',
@@ -104,7 +104,7 @@ window.DECK_INFO = {
         /* ---------------- CARD PLAN : choose the Stage ---------------- */
         'p-null': {
             title: 'plan_file: null', tag: 'object',
-            what: 'When the job is born, one field — <code>plan_file</code> — starts as <code>null</code>. Null means "the Stage has not been chosen yet."',
+            what: 'When the job first enters PLAN, one field — <code>plan_file</code> — is initialized as <code>null</code> (it is not a creation field). Null means "the Stage has not been chosen yet."',
             why: 'A job\'s Stage is not decided when it is created. It is decided here, in PLAN, once the job actually understands its own work. Until then, the field honestly says "undecided".',
             hood: 'Born <code>null</code> at first PLAN-entry — <code>plan.sh init</code> creates the phase_plan extension entry (via <code>create_plan_job_with_entry</code>) with <code>plan_file: null</code> — not the <code>job_core</code> create path. <code>null</code> is the set-once sentinel — distinct from <code>false</code> (a real, chosen Stage): the cycle-1 PLAN→EXECUTE advance is BLOCKED while it stays null, so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
         },
@@ -260,7 +260,7 @@ window.DECK_INFO = {
             title: 'condense-job-creator', tag: 'action',
             what: 'A subagent reads the marker and creates a fresh, independent job.',
             why: 'Standalone means it is in no other job\'s dependency list — it can complete on its own.',
-            hood: '<code>job.sh create</code>. Born <code>status:"pending"</code>, <code>focused:false</code>, name = a slug, objective = a short (≤100-word) intent.'
+            hood: '<code>job.sh create</code>. Born <code>status:"pending"</code>, <code>focused:false</code>, name = a slug, objective = a 100–150 word starter intent.'
         },
         'rB-job': {
             title: 'New job — pending', tag: 'object',
@@ -576,9 +576,9 @@ window.DECK_CARDS = {
                     ] },
                     { label: 'name · objective at birth', cells: [
                         { v: 'both "" — bootstrap only' },
-                        'name = slug · objective ≤100w intent',
-                        'name = slug · objective ≤100w intent',
-                        'name = slug · objective ≤100w intent'
+                        'name = slug · objective 100-150w intent',
+                        'name = slug · objective 100-150w intent',
+                        'name = slug · objective 100-150w intent'
                     ] },
                     { label: 'user involved?', cells: [
                         'their prompt triggers it (no question)', 'no', 'no', 'YES — confirms the question'
@@ -726,7 +726,7 @@ window.DECK_CARDS = {
                 { x:44,  y:32,  aha:true, text:'Two different gates: <b>writing the plan file</b> ≠ <b>advancing the phase</b>.',
                   ref: { url:'../06_5-execute.html', section:'Blog 6.5 · EXECUTE', blurb:'EXECUTE is the one phase with full write access. On a planned job, this is where the plan file is actually written to disk.' } },
                 { x:44,  y:372, text:'EXECUTE is the <b>only</b> phase with full write — but only inside the job\'s declared <b>scope</b>.' },
-                { x:632, y:226, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. PLAN owns it.' }
+                { x:632, y:226, r:true, text:'Cycle 1 only — once the plan file exists, EXECUTE <b>can\'t touch it</b>. VERIFY is its only editor.' }
             ],
             backnote: { x:46, y:500, text:'← from PLAN: the Stage is locked in' },
             nextnote: { x:646, y:500, text:'Built → into VERIFY' }

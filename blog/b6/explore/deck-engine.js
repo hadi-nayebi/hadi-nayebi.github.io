@@ -663,7 +663,7 @@
         if (!d) return;
         ttT.textContent = d.title;
         /* short one-line plain summary = first sentence of "what" */
-        var oneLine = d.what.split('. ')[0];
+        var oneLine = (d.what || '').split('. ')[0];
         if (oneLine && oneLine.slice(-1) !== '.') oneLine += '.';
         ttW.textContent = oneLine;
         ttWarn.style.display = d.warn ? 'block' : 'none';

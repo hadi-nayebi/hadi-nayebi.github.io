@@ -32,7 +32,7 @@ window.DECK_INFO = {
         title: 'Event 2 — condense→idle advance', tag: 'phase',
         what: 'The phase machine advances the job out of CONDENSE back to idle. THIS is where the job actually loses focus.',
         why: 'Leaving the job is a phase-transition concern, not a record concern. Putting the unfocus here (not inside completion) is what dissolves the deadlock.',
-        hood: '<code>condense-commit.sh</code>\'s Post-Commit Actions section runs <code>phase.sh --hook advance</code>; then its <code>Relocated unfocus (completion Event 2)</code> section checks <code>status=="completed"</code> and calls <code>job.sh --hook clear-focus</code> (the <code>clear-focus)</code> arm).'
+        hood: '<code>condense-commit.sh</code>\'s Advance-to-idle step (after the seal-evidence gate) runs <code>phase.sh --hook advance</code>; then its <code>Relocated unfocus (completion Event 2)</code> section checks <code>status=="completed"</code> and calls <code>job.sh --hook clear-focus</code> (the <code>clear-focus)</code> arm).'
     },
     'ce-e3': {
         title: 'Event 3 — cycle closure', tag: 'state',
@@ -94,26 +94,26 @@ window.DECK_INFO = {
         title: 'finish CONDENSE → earn the advance', tag: 'action',
         what: 'Inside the window the seed completes the CONDENSE work and earns the advance out of the phase.',
         why: 'The advance (the three-family exit gate + 80% deflation) is what triggers Event 2 — so the cleanup window is the bridge from "record done" to "actually leave".',
-        hood: 'The <code>condense-commit.sh --force</code> advance requires the three-family exit gate — (a) reflection commands ran, (b) the marked-note family (CONDENSE consumes marks), (c) ≥1 reflector subagent ran — plus the 80% deflation gate; meeting them fires the phase hop that hosts the relocated unfocus. There is no point total.'
+        hood: 'The <code>condense-commit.sh --force</code> advance requires the three-family exit gate — for CONDENSE: (a) reflection commands ran + (c) ≥1 reflector subagent ran (family-b is NOT required — CONDENSE consumes marks, so its marker-side gate runs in the consumption direction instead) — plus the 80% deflation gate; meeting them fires the phase hop that hosts the relocated unfocus. There is no point total.'
     },
     /* ---- Card 4: Event 2 relocated unfocus ---- */
     'ce-cc': {
         title: 'condense-commit --force', tag: 'action',
         what: 'The cycle\'s closing commit. Once its gates pass, it advances the phase — and that advance is where the unfocus has been relocated to.',
         why: 'Leaving the job rides along with the phase transition, not the record change. One place, one moment, clearly a phase event.',
-        hood: '<code>condense-commit.sh --force</code> runs the advance (the Post-Commit Actions section calling <code>phase.sh --hook advance</code>) after its gates pass.'
+        hood: '<code>condense-commit.sh --force</code> runs the advance (the Advance-to-idle step (after the seal-evidence gate) calling <code>phase.sh --hook advance</code>) after its gates pass.'
     },
     'ce-gates': {
         title: 'three-family gate · 80% deflation', tag: 'gate',
         what: 'The universal CONDENSE gates that must pass before the advance fires.',
         why: 'They make sure the consolidation work actually happened — reflection ran and the footers shrank — before the job is allowed to leave.',
-        hood: 'The three-family exit gate — (a) reflection commands ran, (b) new marked notes added [CONDENSE checks family-b in the CONSUMPTION direction — it metabolizes marks rather than producing them], (c) ≥1 available reflector subagent ran — plus <code>CONDENSE_DEF_THRESHOLD=80</code> (deflation of altered CLAUDE.md footers), checked in <code>condense-commit.sh</code> before the advance. No point total exists — the condition is evidence of reflection plus absorption.'
+        hood: 'The three-family exit gate — for CONDENSE: (a) reflection commands ran + (c) ≥1 available reflector subagent ran. Family-b (new marked notes) is NOT required here — CONDENSE consumes marks rather than producing them, so its marker-side gate runs in the CONSUMPTION direction instead (the consumption gate: per class, a dedicated-subagent run per marked note). Plus <code>CONDENSE_DEF_THRESHOLD=80</code> (deflation of altered CLAUDE.md footers), checked in <code>condense-commit.sh</code> before the advance. No point total exists — the condition is evidence of reflection plus absorption.'
     },
     'ce-adv': {
         title: 'advance → idle', tag: 'phase',
         what: 'The job moves out of CONDENSE back to idle. The lap is structurally over.',
         why: 'idle only flows forward to OBSERVE, so the returning job can\'t silently resume mid-cycle — it must start a fresh lap.',
-        hood: '<code>condense-commit.sh</code>\'s Post-Commit Actions section calls <code>phase.sh --hook advance</code>; CONDENSE is lock-forward, so the only exit is forward to idle.'
+        hood: '<code>condense-commit.sh</code>\'s Advance-to-idle step (after the seal-evidence gate) calls <code>phase.sh --hook advance</code>; CONDENSE is lock-forward, so the only exit is forward to idle.'
     },
     'ce-chk': {
         title: 'status == completed?', tag: 'gate',

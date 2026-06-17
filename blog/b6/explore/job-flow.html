@@ -1251,7 +1251,7 @@
         spawn: 'A work phase <b>cannot create a job</b> — it can only drop a <b>[PENDING-JOB]</b> note. <b>CONDENSE</b> later vets each note and creates the real job. <em>Creation is CONDENSE-only.</em>',
         dependency: 'A new job is either <b>standalone</b> or a <b>dependent</b> sitting on a parent\'s list. <em>A parent cannot complete until every dependency does</em> — and there is no "blocked" status; waiting is derived.',
         "stage-decision": 'In <b>OBSERVE</b> the job expands its objective (coaching), then in <b>PLAN</b> it picks its <b>Stage</b> exactly once — <b>false</b>, a <b>.md</b>, or a <b>.yaml</b>. <em>The choice can never be changed.</em>',
-        "execute-planfile": 'A Stage 2/3 job <b>writes its plan file</b> in EXECUTE. <em>This is a write-permission check, not an advance gate</em> — the phase can move on even if the file was never written.',
+        "execute-planfile": 'A Stage 2/3 job <b>writes its plan file</b> in EXECUTE. Two mechanisms: an execute-guard <em>write-permission check</em> (scopes where EXECUTE may write) and a hard <em>advance gate</em> in execute-commit — for Stage 2/3 cycle 1 the phase is BLOCKED from moving to VERIFY until the declared file exists on disk.',
         "verify-backedge": 'VERIFY has a <b>built-in back-edge</b>: if the agent <b>edits the plan file</b>, forward-advance is blocked and it must <b>return to PLAN</b>. Only a plan-untouched VERIFY reaches CONDENSE.',
         completion: 'The last cycle\'s CONDENSE asks <b>[JOB-COMPLETE]</b>. Approval is hard-gated on <b>all dependencies done</b>; then status flips to <b>completed</b> and focus is cleared at idle.',
         "growth-overview": 'The aha: a job is <b>never one record</b>. It is <b>one timestamp ID</b> scattered across <b>N plugin data.json files</b>, each lighting up lazily — <em>coordinated only by the shared ID.</em>'
@@ -1294,7 +1294,7 @@
             when: "First phase of every cycle, entered from idle.",
             canDo: "Read-only on the project; it loads context into working memory and expands the objective. Entry is coached — the phase begins with a direct-action budget already seeded.",
             why: "A consultant reading the whole brief and the back-files before writing a single recommendation.",
-            builder: "Entry is coached only — no required first act (observe-commit.sh render_observe_entry seeds BUDGET_STARTING=5). Advance is HARD: three-family exit gate (observe-commit.sh advance gate). Objective-shape is SOFT — only NON-EMPTY is checked (observe-commit.sh name+objective guard)."
+            builder: "Entry is coached only — no required first act (observe.sh render_observe_entry seeds BUDGET_STARTING=5). Advance is HARD: three-family exit gate (observe-commit.sh). Objective-shape: cycle 1 is HARD — a 300-word floor (observe-commit.sh exits 1 below OBJECTIVE_EXPANSION_WORD_MIN=300) plus NON-EMPTY; cycles 2+ check NON-EMPTY only."
         },
         plan: {
             title: "PLAN",
@@ -1310,7 +1310,7 @@
             when: "After PLAN, with full write access scoped to what was declared.",
             canDo: "For a multi-cycle job, this is where the plan file is written to disk. But writing it is a permission check, not a finish-line requirement.",
             why: "The contractor doing the actual building after the blueprint is signed off.",
-            builder: "execute-guard scopes Writes to the declared plan_file path (Stage 2/3 cycle-1). This is a Write-PERMISSION check, NOT an advance requirement — execute→verify can advance even if the plan file was never written."
+            builder: "execute-guard scopes Writes to the declared plan_file path (Stage 2/3 cycle-1) — a Write-PERMISSION check. SEPARATE from it, execute-commit.sh's Plan-File-Exists Gate (--force, Stage 2/3 cycle 1) BLOCKS execute→verify until the declared plan file exists on disk."
         },
         verify: {
             title: "VERIFY",
