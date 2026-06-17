@@ -57,7 +57,7 @@ window.DECK_INFO = {
             title: 'objective — a written brief, not a sentence', tag: 'object',
             what: 'The job writes down what "done" will mean — and not in one line. In cycle 1 it must grow the goal into a full 300–500 word brief.',
             why: 'A single sentence cannot be planned or verified against. The expanded brief is the compass every later phase — and every future re-run of a repeating job — reads. It is the single heaviest piece of OBSERVE.',
-            hood: 'Set via <code>job.sh update &lt;id&gt; objective</code>; the cycle-1 custom gate enforces the expansion floor <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code> (under 300 words BLOCKS the advance; over 500 only coaches). <b>⚠ Surface check (code vs CONTEXT):</b> CONTEXT\'s "universal starter shape" says a job is born holding a 100–150 word objective for ALL creation paths — but a prompt-born job (the one on this card) is born with <code>objective:""</code> EMPTY. The 100–150 word starting brief is the CONDENSE-created pathway, not this one. Here OBSERVE expands from empty → ≥300 words. Flagged so the surfaces can be reconciled.'
+            hood: 'Set via <code>job.sh update &lt;id&gt; objective</code>; the cycle-1 custom gate enforces the expansion floor <code>OBJECTIVE_EXPANSION_WORD_MIN=300</code> (under 300 words BLOCKS the advance; over 500 only coaches). Per the creation naming contract: deliberate CONDENSE-created jobs are born with a 100–150 word starter objective; the prompt-born bootstrap job (the one on this card) is the lone exception — born <code>objective:""</code> EMPTY, then named + expanded in its own cycle-1 OBSERVE (empty → ≥300 words).'
         },
         'b-gate': {
             title: 'Gate to PLAN', tag: 'gate',
@@ -106,7 +106,7 @@ window.DECK_INFO = {
             title: 'plan_file: null', tag: 'object',
             what: 'When the job is born, one field — <code>plan_file</code> — starts as <code>null</code>. Null means "the Stage has not been chosen yet."',
             why: 'A job\'s Stage is not decided when it is created. It is decided here, in PLAN, once the job actually understands its own work. Until then, the field honestly says "undecided".',
-            hood: 'Initialized to <code>null</code> in <code>phase_plan/scripts/plan.sh</code> — the <code>create_plan_job_with_entry</code> function — not the <code>job_core</code> create path. <code>null</code> is the set-once sentinel — distinct from <code>false</code> (a real, chosen Stage): the cycle-1 PLAN→EXECUTE advance is BLOCKED while it stays null, so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
+            hood: 'Born <code>null</code> at first PLAN-entry — <code>plan.sh init</code> creates the phase_plan extension entry (via <code>create_plan_job_with_entry</code>) with <code>plan_file: null</code> — not the <code>job_core</code> create path. <code>null</code> is the set-once sentinel — distinct from <code>false</code> (a real, chosen Stage): the cycle-1 PLAN→EXECUTE advance is BLOCKED while it stays null, so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
         },
         'p-decide': {
             title: 'set-plan-file — choose once', tag: 'action',
@@ -144,13 +144,13 @@ window.DECK_INFO = {
             title: 'write-permission check', tag: 'gate',
             what: 'Writing the plan file passes a small three-part permission check first: right scope, cycle 1, and the file does not already exist.',
             why: 'The plan file is precious — it is the job\'s cross-cycle memory. The check makes sure it is created exactly once, by the right job, at the right moment, and never silently overwritten.',
-            hood: 'In <code>execute-guard.sh</code>: the write to <code>.claude/knowledge/plans/plan_*.{md,yaml}</code> is granted only when scope == the declared <code>plan_file</code> AND <code>cycle == 1</code> AND the file is non-existent → exit 0 (permission granted). This is a TOOL-access check, not a phase-advance gate.'
+            hood: 'In <code>execute-guard.sh</code>: the write to the declared plan file is granted only when the path matches the canonical <code>.claude/jobs/&lt;id&gt;/plan_*.{md,yaml}</code> (legacy <code>.claude/knowledge/plans/</code> is a read-fallback) AND <code>cycle == 1</code> AND the file is non-existent → exit 0 (permission granted). This is a TOOL-access check, not a phase-advance gate.'
         },
         'e-planfile': {
             title: 'the plan file is born', tag: 'object',
             what: 'On a Stage-2 or Stage-3 job, the plan file itself is created here — in cycle-1 EXECUTE — not when the job was created, and not in PLAN.',
             why: 'PLAN only chose the Stage (the filename). EXECUTE is where building happens, so the plan file is built like any other artifact — then it persists across every future cycle and activation, getting smarter each run.',
-            hood: 'The file is written with YAML frontmatter (<code>total_cycles:</code> for <code>.md</code>, a <code>cycles:</code> list for <code>.yaml</code>). After cycle 1, EXECUTE can no longer touch it — ownership sits with PLAN, which reads it at the start of every later cycle.'
+            hood: 'The file is written with YAML frontmatter (<code>total_cycles:</code> for <code>.md</code>, a <code>cycles:</code> list for <code>.yaml</code>). After cycle 1, EXECUTE can no longer touch it. VERIFY is the plan file\'s ONLY post-creation editor — within cycle-1\'s editing window (any run); from cycle 2 the file is FROZEN. PLAN reads it but never writes it (PLAN\'s write surface is CLAUDE.md only).'
         },
         'e-advance': {
             title: 'Three-family gate + plan-file → advance', tag: 'gate',
@@ -208,7 +208,7 @@ window.DECK_INFO = {
             title: '[PENDING-JOB] → spawn a job', tag: 'action',
             what: 'If the cycle left a <code>[PENDING-JOB]</code> note in a phase footer, step 3 of the waterfall turns it into a brand-new job.',
             why: 'Work discovered mid-cycle shouldn\'t be lost or jammed into the current job. CONDENSE is the one place allowed to spawn follow-up jobs — so new work becomes its own properly-tracked unit.',
-            hood: 'Step 3 hands the marker to <code>condense-job-creator</code>, which calls <code>job.sh create-dependent</code> (auto-linking the new job to the focused parent). Job creation is CONDENSE-owned — EXECUTE and VERIFY block it and coach the agent to defer to here.'
+            hood: 'Step 3 hands the marker to <code>condense-job-creator</code>, which calls <code>job.sh create</code> (standalone follow-up) or <code>job.sh create-dependent</code> (when the work blocks the focused parent — the link is automatic), chosen by the note\'s scope classification. Job creation is CONDENSE-owned — EXECUTE and VERIFY block it and coach the agent to defer to here.'
         },
         'c-complete': {
             title: '[JOB-COMPLETE]?', tag: 'gate',
@@ -241,7 +241,7 @@ window.DECK_INFO = {
             title: 'New job — active + focused', tag: 'object',
             what: 'One live job appears, focused, holding only your prompt — its name and objective still empty.',
             why: 'It does not yet know what it is for. Working that out is its first OBSERVE\'s job (the route the main sequence walks).',
-            hood: 'Born <code>status:"active"</code>, <code>focused:true</code>, <code>name:""</code>, <code>objective:""</code>, <code>user_interactions:["&lt;prompt&gt;"]</code>. <b>⚠ CONTEXT vs code:</b> CONTEXT\'s "universal starter shape" claims a 100–150 word objective for ALL paths; a prompt-born job is born EMPTY. The 100–150w start is the CONDENSE-created pathway. Flagged for consolidation.'
+            hood: 'Born <code>status:"active"</code>, <code>focused:true</code>, <code>name:""</code>, <code>objective:""</code>, <code>user_interactions:["&lt;prompt&gt;"]</code>. The prompt-born bootstrap is the lone nameless birth — per the creation naming contract, deliberate (CONDENSE-created) jobs arrive with a name + 100–150w objective; only this bootstrap path is born empty, then named + expanded in its own cycle-1 OBSERVE.'
         },
         /* Route B — CONDENSE standalone */
         'rB-marker': {
@@ -254,7 +254,7 @@ window.DECK_INFO = {
             title: 'CONDENSE · step 3', tag: 'phase',
             what: 'Job creation happens at CONDENSE — the one phase with cycle-wide context to judge what follow-up work is really needed.',
             why: 'EXECUTE and VERIFY block job creation and coach the agent to defer it here, so new work becomes its own properly-tracked unit.',
-            hood: 'CONDENSE step 3 of the waterfall hands the marker to <code>condense-job-creator</code>. <b>⚠ blog vs code:</b> Essay 06_7 teaches CONDENSE <b>hard-blocks</b> scope-overlapping creation and routes backward to EXECUTE (an <code>_is_in_scope_job</code> helper + <code>--out-of-scope</code> flag). Neither exists in the live code — it is soft coaching plus subagent judgment only. Flagged for consolidation.'
+            hood: 'CONDENSE step 3 of the waterfall hands the marker to <code>condense-job-creator</code>, which checks for an overlapping pending job (via <code>job.sh list</code>) and rejects duplicates — soft coaching plus subagent judgment, not a hard gate. There is no <code>_is_in_scope_job</code> helper or <code>--out-of-scope</code> flag; overlap handling is the subagent\'s explore-first check.'
         },
         'rB-creator': {
             title: 'condense-job-creator', tag: 'action',
@@ -427,7 +427,7 @@ window.DECK_CARDS = {
                     { v:'+ findings, into CLAUDE.md', state:'grow' }
                 ] },
                 { id:'b-name',      x:494, y:150, w:206, h:74,  tag:'object',  t:'name', s:'a short handle — was "" empty' },
-                { id:'b-objective', x:494, y:266, w:206, h:154, tag:'object',  t:'objective', warn:true, fields:[
+                { id:'b-objective', x:494, y:266, w:206, h:154, tag:'object',  t:'objective', fields:[
                     { k:'was:', v:'"" empty', state:'nul' },
                     { k:'now:', v:'a 300–500 word brief', state:'ok' },
                     { v:'what "done" means, in full', state:'grow' }
@@ -469,7 +469,7 @@ window.DECK_CARDS = {
                         { id:'rA-idle',   x:40,  y:228, w:172, h:104, tag:'state',   t:'Seed idle',   s:'no active job' },
                         { id:'rA-prompt', x:268, y:228, w:180, h:104, tag:'context', t:'your prompt', s:'arrives at the seed' },
                         { id:'rA-hook',   x:504, y:218, w:202, h:124, tag:'action',  t:'prompt hook', s:'active == 0 → bootstrap' },
-                        { id:'rA-job',    x:762, y:150, w:208, h:262, tag:'object',  t:'new job', warn:true, fields:[
+                        { id:'rA-job',    x:762, y:150, w:208, h:262, tag:'object',  t:'new job', fields:[
                             { k:'status:', v:'active', state:'ok' },
                             { k:'focused:', v:'true', state:'ok' },
                             { k:'name:', v:'""', state:'nul' },
@@ -492,7 +492,7 @@ window.DECK_CARDS = {
                     key: 'B', name: 'CONDENSE standalone',
                     boxes: [
                         { id:'rB-marker',   x:40,  y:228, w:200, h:104, tag:'action', t:'[PENDING-JOB]', s:'a note in a footer' },
-                        { id:'rB-condense', x:298, y:218, w:168, h:124, tag:'phase',  t:'CONDENSE', s:'step 3', warn:true },
+                        { id:'rB-condense', x:298, y:218, w:168, h:124, tag:'phase',  t:'CONDENSE', s:'step 3' },
                         { id:'rB-creator',  x:524, y:228, w:196, h:104, tag:'action', t:'job-creator', s:'job.sh create' },
                         { id:'rB-job',      x:776, y:190, w:194, h:180, tag:'object', t:'new job', fields:[
                             { k:'status:', v:'pending', state:'nul' },
@@ -575,7 +575,7 @@ window.DECK_CARDS = {
                         'active · focused', 'pending · not focused', 'pending · not focused', 'pending · not focused'
                     ] },
                     { label: 'name · objective at birth', cells: [
-                        { v: 'both "" EMPTY', warn: true },
+                        { v: 'both "" — bootstrap only' },
                         'name = slug · objective ≤100w intent',
                         'name = slug · objective ≤100w intent',
                         'name = slug · objective ≤100w intent'

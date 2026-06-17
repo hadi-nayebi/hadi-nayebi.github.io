@@ -1004,7 +1004,7 @@
         var children = [
             portal("back-to-journey", "journey", "↑ back to the journey"),
             node("s-workphase", W_STAGE, H_STAGE, { type: "stage", title: "In a Work Phase", sub: "OBSERVE/PLAN/EXECUTE/VERIFY", lane: "core", stage: "pending-note" }),
-            node("s-trycreate", W_HOOK, H_HOOK, { type: "hook", title: "job.sh create (attempt)", sub: "WU-010 guards BLOCK", lane: "tracker", stage: "pending-note", contradiction: "07_9 says EXECUTE can self-admit a PLUGIN-LOCK / create work itself. Code: WU-010 guards block job.sh create in every work phase. Job creation is CONDENSE-only; the work phases can only drop a footer note." }),
+            node("s-trycreate", W_HOOK, H_HOOK, { type: "hook", title: "job.sh create (attempt)", sub: "blocked in work phases", lane: "tracker", stage: "pending-note" }),
             node("s-note", W_STAGE, H_STAGE, { type: "stage", title: "[PENDING-JOB] note", sub: "dropped in CLAUDE.md footer", lane: "footer", stage: "pending-note" }),
             node("s-count", W_HOOK, H_HOOK, { type: "hook", title: "marker_counts.pending_job", sub: "COUNT only · TEXT never stored", lane: "tracker", stage: "pending-note" }),
             node("s-rest", W_STAGE, H_STAGE, { type: "stage", title: "Rests in the footer", sub: "until CONDENSE", lane: "footer", stage: "pending-note" }),
@@ -1065,14 +1065,14 @@
             portal("back-to-journey", "journey", "↑ back to the journey"),
             node("sd-obs", W_STAGE, H_STAGE, { type: "stage", title: "Cycle-1 OBSERVE", sub: "gather context", lane: "core", stage: "cycle1-observe" }),
             node("sd-mult", W_HOOK, H_HOOK, { type: "hook", title: "Entry voice + budget", sub: "direct-action budget starts at 5", lane: "tracker", stage: "cycle1-observe" }),
-            node("sd-expand", W_STAGE, H_STAGE, { type: "stage", title: "Expand objective + name", sub: "SOFT · only NON-EMPTY checked", lane: "job_core", stage: "cycle1-observe", contradiction: "06_3 / 05_4 read the 300-500w (or 100-150w starter) objective-shape as a HARD gate checked by observe-commit --force. Code: observe-commit checks only that name + objective are NON-EMPTY — no word floor. The objective is even born as an EMPTY string. The shape is coaching, not a gate." }),
+            node("sd-expand", W_STAGE, H_STAGE, { type: "stage", title: "Expand objective + name", sub: "HARD · ≥300-word floor (cycle 1)", lane: "job_core", stage: "cycle1-observe" }),
             node("sd-advance", W_HOOK, H_HOOK, { type: "hook", title: "Advance to PLAN", sub: "three-family exit gate", lane: "tracker", stage: "cycle1-observe" }),
             node("sd-null", W_STAGE, H_STAGE, { type: "stage", title: "plan_file = null", sub: "born undecided · set-once sentinel", lane: "plan", stage: "stage-decision" }),
             node("sd-setplan", W_HOOK, H_HOOK, { type: "hook", title: "set-plan-file", sub: "sole writer · refuses 2nd call", lane: "plan", stage: "stage-decision" }),
             node("sd-stage1", W_STAGE, H_STAGE, { type: "stage", title: "Stage 1 · false", sub: "single deep cycle · explicit set", lane: "plan", stage: "stage-decision" }),
             node("sd-stage2", W_STAGE, H_STAGE, { type: "stage", title: "Stage 2 · .md", sub: "repeatable · total_cycles", lane: "plan", stage: "stage-decision", drill: "execute-planfile" }),
             node("sd-stage3", W_STAGE, H_STAGE, { type: "stage", title: "Stage 3 · .yaml", sub: "per-phase injection", lane: "plan", stage: "stage-decision", drill: "execute-planfile" }),
-            node("sd-block", W_HOOK, H_HOOK, { type: "hook", title: "plan-commit BLOCK", sub: "advance refused while null", lane: "plan", stage: "stage-decision", contradiction: "08_1 / 08_2 / 07_9 describe the seed PROMOTING a job into the next shape / next set of gates. Code: there is NO inter-Stage promotion. set-plan-file is set-once in cycle-1 PLAN and refuses any second call; moving a job between Stages is a user-discussed decision, never auto." })
+            node("sd-block", W_HOOK, H_HOOK, { type: "hook", title: "plan-commit BLOCK", sub: "advance refused while null", lane: "plan", stage: "stage-decision" })
         ];
         var edges = [
             edge("sd-1", "sd-obs", "sd-mult", "soft", "entry voice"),
@@ -1100,7 +1100,7 @@
             node("e-write", W_HOOK, H_HOOK, { type: "hook", title: "Write plan file", sub: ".claude/jobs/<job_id>/plan.{md,yaml}", lane: "plan", stage: "execute-planfile" }),
             node("e-md", W_STAGE, H_STAGE, { type: "stage", title: ".md frontmatter", sub: "total_cycles: N", lane: "plan", stage: "execute-planfile" }),
             node("e-yaml", W_STAGE, H_STAGE, { type: "stage", title: ".yaml cycles list", sub: "per-cycle entries", lane: "plan", stage: "execute-planfile" }),
-            node("e-soft", W_STAGE, H_STAGE, { type: "stage", title: "Not an advance gate", sub: "execute→verify works even if unwritten", lane: "core", stage: "execute-planfile", contradiction: "Reading the plan file as a hard EXECUTE deliverable overstates it. Code: writing the plan file is a Write-PERMISSION scope check only — execute can still advance to verify even if the file was never created. It is softer than a gate." }),
+            node("e-soft", W_STAGE, H_STAGE, { type: "stage", title: "Plan-File-Exists Gate", sub: "Stage 2/3 cycle 1: file must exist to advance", lane: "core", stage: "execute-planfile" }),
             node("e-stage1", W_SHOOK, H_SHOOK, { type: "secondary", title: "Stage 1 · false", sub: "no plan file to write", lane: "plan", stage: "execute-planfile" })
         ];
         var edges = [
@@ -1108,7 +1108,7 @@
             edge("e-2", "e-guard", "e-write", "soft", "scope ok"),
             edge("e-3", "e-write", "e-md", "soft", "Stage 2"),
             edge("e-4", "e-write", "e-yaml", "soft", "Stage 3"),
-            edge("e-5", "e-enter", "e-soft", "soft", "perm not advance"),
+            edge("e-5", "e-enter", "e-soft", "soft", "must exist · S2/3 c1"),
             edge("e-6", "e-enter", "e-stage1", "soft", "Stage 1 skips"),
             edge("e-exit", "e-write", "back-to-journey", "soft", "")
         ];
@@ -1342,7 +1342,7 @@
             when: "The note can be dropped any time during work; the actual creation happens in CONDENSE.",
             canDo: "Lets the agent capture follow-up work without derailing the current job. Drill in to see the note → vet → create path.",
             why: "Jotting 'follow up on the Henderson contract' on a sticky note during a meeting — you deal with it later, during cleanup, not mid-sentence.",
-            builder: "Covers the pending-note + condense-spawn anchors. WU-010 guards block job.sh create in work phases; the agent drops [PENDING-JOB]. CONDENSE step 3 condense-job-creator vets (SOFT) then runs job.sh create / create-dependent."
+            builder: "Covers the pending-note + condense-spawn anchors. Per-phase guards block job.sh create in work phases; the agent drops [PENDING-JOB]. CONDENSE step 3 condense-job-creator vets (SOFT) then runs job.sh create / create-dependent."
         },
         "dependency-pill": {
             title: "Dependency Route",
@@ -1524,7 +1524,7 @@
             when: "During OBSERVE, PLAN, EXECUTE, or VERIFY.",
             canDo: "It can recognize new work — but it is not allowed to create a job right then.",
             why: "Spotting a second problem while you're elbow-deep in the first one.",
-            builder: "WU-010 per-phase guards block job.sh create in all four work phases (plan-guard.sh create-block, execute-guard.sh create-block, verify-guard create-block, observe-guard create-block)."
+            builder: "Per-phase guards block job.sh create in all four work phases (plan-guard.sh create-block, execute-guard.sh create-block, verify-guard create-block, observe-guard create-block); only condense-guard allows it."
         },
         "s-trycreate": {
             title: "job.sh create (attempt)",
@@ -1532,7 +1532,7 @@
             when: "Any time create is attempted outside CONDENSE.",
             canDo: "Nothing — the attempt is blocked. The guard tells the agent to drop a [PENDING-JOB] note.",
             why: "The rule that says 'don't open a new case mid-meeting — write it on the follow-up list.'",
-            builder: "The WU-010 guards refuse and the block voice names the CONDENSE-only rule + the footer-marker route. Job creation is structurally CONDENSE-only."
+            builder: "The work-phase guards refuse and the block voice names the CONDENSE-only rule + the footer-marker route. Job creation is structurally CONDENSE-only — observe/plan/execute/verify guards block create; only condense-guard allows it."
         },
         "s-note": {
             title: "[PENDING-JOB] note",
@@ -1680,15 +1680,15 @@
             when: "At OBSERVE entry — the phase starts with the budget already live.",
             canDo: "The budget decrements with each main-session direct action. Spending it down and writing a CLAUDE.md update resets the per-class counters.",
             why: "A workday that starts with five focused slots already scheduled — use them wisely, then restock by writing up what you learned.",
-            builder: "Entry is coached only (no required gate). render_observe_entry in observe-commit.sh seeds BUDGET_STARTING=5. Per-class action counters track the rhythm; one CLAUDE.md update resets all class counters."
+            builder: "Entry is coached only (no required gate). render_observe_entry in observe.sh seeds BUDGET_STARTING=5. Per-class action counters track the rhythm; one CLAUDE.md update resets all class counters."
         },
         "sd-expand": {
             title: "Expand objective + name",
-            what: "The agent rewrites the empty/short objective into a fuller statement of the job. The richer 'shape' is encouraged but not strictly enforced.",
+            what: "The agent expands the short/empty objective into a fuller statement of work (300-500 words) and sets the job name. In cycle 1 this is a HARD gate, not just coaching.",
             when: "During cycle-1 OBSERVE.",
-            canDo: "Fills in name and objective. Only their presence is actually required — the length is coaching.",
-            why: "Turning 'fix the thing' into a proper one-paragraph statement of work — good practice, but the system only checks that you wrote something.",
-            builder: "observe-commit.sh (name+objective guard) checks only that name + objective are NON-EMPTY — no word floor. The 300-500w shape is SOFT coaching."
+            canDo: "Fills in name and objective. The cycle-1 force-advance to PLAN is BLOCKED unless name is non-empty AND the objective reaches the word floor.",
+            why: "Turning 'fix the thing' into a proper one-paragraph statement of work — required before the job can leave its first OBSERVE.",
+            builder: "observe-commit.sh --force enforces a cycle-1 objective word floor (OBJECTIVE_EXPANSION_WORD_MIN=300): under 300 words exits 1 (BLOCKED), over 500 only coaches. Name + objective NON-EMPTY are also required. The bootstrap job is born with an empty objective and expands it here."
         },
         "sd-advance": {
             title: "Advance to PLAN",
@@ -1789,12 +1789,12 @@
             builder: "cycles: list; total = max(c.cycle for c in cycles). Injects per-phase context at each phase entry."
         },
         "e-soft": {
-            title: "Not an advance gate",
-            what: "The important subtlety: writing the plan file is a permission rule, not a finish-line requirement. EXECUTE can move on even if the file was never written.",
-            when: "Always — it's a property of how the gate works.",
-            canDo: "Lets execute→verify advance regardless of whether the plan file got written.",
-            why: "The difference between 'you're only allowed to write this one file' and 'you must write this file to proceed' — it's the former.",
-            builder: "The plan-file Write is a Write-PERMISSION scope check (execute-guard), NOT an advance requirement. execute→verify can advance even if the file was never written."
+            title: "Plan-File-Exists Gate",
+            what: "On a Stage-2 or Stage-3 cycle-1 job, the plan file must actually exist on disk before EXECUTE can advance to VERIFY. Two distinct gates live here: a write-permission check and this advance gate.",
+            when: "At the cycle-1 EXECUTE force-advance, for Stage 2/3 jobs. Stage 1 has no plan file, so it does not apply.",
+            canDo: "Blocks execute→verify if the declared plan file was never written. The write-permission check (execute-guard) decides whether the agent CAN write it; this gate (execute-commit) decides whether the phase CAN advance.",
+            why: "The plan file is the job's cross-cycle memory — a Stage-2/3 job cannot leave its first build without producing it.",
+            builder: "execute-commit.sh's Plan-File-Exists Gate (--force, Stage 2/3 cycle 1): if plan_file is a real filename and cycle <= 1, it checks the file exists at .claude/jobs/<id>/<plan_file> (legacy .claude/knowledge/plans/ also checked) — absent → BLOCKED. Separate from the execute-guard Write-PERMISSION scope check."
         },
         "e-stage1": {
             title: "Stage 1 · false",
@@ -1910,7 +1910,7 @@
             when: "The instant completion succeeds.",
             canDo: "Marks the job finished while keeping it focused so the cycle can finish tidying up.",
             why: "Stamping a case closed but leaving it on your desk for the afternoon to file the last paperwork.",
-            builder: "status→completed; focus is KEPT (job.sh complete arm, WU-001 decoupling). last_completed_at is set."
+            builder: "status→completed; focus is KEPT (job.sh complete arm — completion and unfocus are decoupled). last_completed_at is set."
         },
         "c-unfocus": {
             title: "Unfocus at idle",
