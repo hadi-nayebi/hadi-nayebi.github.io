@@ -344,7 +344,7 @@ window.DECK_CARDS = {
         stickies: [
             { x: 36, y: 320, text: 'Membership is a code fact — "active" means hooks registered in settings.local.json, not a label.' },
             { x: 700, y: 330, text: 'Open up one plugin to see its internal organs.',
-              ref: { kind: 'deck', url: '../../b7/explore/plugin-substrate.html', section: 'Inside a Plugin', blurb: 'The six-organ anatomy every one of these plugins is built from.' } }
+              ref: { kind: 'deck', url: '../../b7/explore/plugin-substrate.html', section: 'Inside a Plugin', blurb: 'The six-directory core skeleton plus optional organs every plugin is built from.' } }
         ],
         navHints: { left: '0,0', right: '2,0' }
     },

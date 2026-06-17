@@ -407,7 +407,7 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x: 360, y: 330, text: 'Working memory holds the WORK; this file holds how-the-work-is-going + what-must-survive-a-clear.', aha: true },
-            { x: 60, y: 390, text: 'The file accrues at each phase exit in the cycle.',
+            { x: 60, y: 470, text: 'The file accrues at each phase exit in the cycle.',
               ref: { kind: 'deck', url: '../../b6/explore/phasic-cycle.html', section: 'The Full OPEVC Cycle', blurb: 'The phase exits where the compaction file accrues its cognition.' } },
             { x: 680, y: 390, text: 'The compaction file belongs to one job\'s life.',
               ref: { kind: 'deck', url: '../../b6/explore/job-life.html', section: 'The Life of a Job', blurb: 'The job whose cognition this compaction file carries.' } }

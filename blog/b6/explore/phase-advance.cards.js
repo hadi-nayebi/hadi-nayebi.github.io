@@ -191,7 +191,7 @@ window.DECK_INFO = {
         title: 'backward recovery is free', tag: 'action',
         what: 'Moving BACKWARD to an earlier phase has no cognitive gates at all — only a clean git tree. Recovery is always available.',
         why: 'The friction is one-directional: forward demands reflection; backward is a no-questions escape so the seed can always re-gather or re-plan.',
-        hood: 'Backward = <code>&lt;phase&gt;-commit.sh --backward &lt;dest&gt;</code> — no three-family check, no shape gate, just a clean tree. Forward is gated; backward is free.'
+        hood: 'Backward = <code>&lt;phase&gt;-commit.sh --backward &lt;dest&gt;</code> — no three-family check, no shape gate, just a clean tree. Forward is gated; backward is a free recovery transition.'
     },
     /* ---------------- Card 6 : CONDENSE is special ---------------- */
     'pa-cond-tf': {
@@ -375,7 +375,7 @@ window.DECK_CARDS = {
             { from:'pa-blocked', to:'pa-backward',kind:'soft', label:'or recover' }
         ],
         stickies: [
-            { x:300, y:36, aha:true, text:'The three-family gate <b>ADDS</b> to the other --force checks; it never replaces them. Forward is gated; <b>backward is free</b>.',
+            { x:300, y:36, aha:true, text:'The three-family gate <b>ADDS</b> to the other --force checks; it never replaces them. Forward is gated; <b>backward is free recovery</b>.',
               ref: { url:'../06_2-discipline-and-map.html', section:'Blog 6.2 · forward gated, backward free', blurb:'Forward = a gated --force commit (shape + three-family gate + custom gates); backward recovery has no cognitive gates, only a clean git tree.' } }
         ],
         navHints: { down: null }

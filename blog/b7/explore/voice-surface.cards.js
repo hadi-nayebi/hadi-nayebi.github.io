@@ -321,7 +321,7 @@ window.DECK_CARDS = {
         stickies: [
             { x:70, y:24, aha:true, text:'voice.xml is the <b>soft-memory organ</b> of the plugin layer — the cheapest place to customize the seed. <b>Soft and hard voices coexist in one file</b>; the element type, not the file, decides whether a fired voice nudges or refuses.',
               ref: { url:'../07_3-dual-voice-architecture.html', section:'Blog 7.3 · the dual voice architecture', blurb:'07_3 introduces the voice surface and the two files it splits across. This deck draws the whole surface — elements, the get_voice primitive, coaching rotation, the orphan audit, and Stage-3 yaml injection.' } },
-            { x:660, y:310, text:'voice.xml is one organ inside the plugin.',
+            { x:660, y:360, text:'voice.xml is one organ inside the plugin.',
               ref: { kind: 'deck', url: 'plugin-substrate.html', section: 'Inside a Plugin', blurb: 'Where voice.xml sits among the plugin\'s organs.' } }
         ],
         navHints: { right: 'the two files', down: 'the six element types' }
