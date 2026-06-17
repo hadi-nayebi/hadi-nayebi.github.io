@@ -342,12 +342,12 @@
     }
     function compareTable(cmp) {
         if (!cmp) return '';
-        var head = '<tr>' + cmp.cols.map(function (c, i) {
+        var head = '<tr>' + (cmp.cols || []).map(function (c, i) {
             return '<th' + (i === 0 ? ' class="rt-rowhead"' : '') + ' scope="col">' + esc(c) + '</th>';
         }).join('') + '</tr>';
         var body = (cmp.rows || []).map(function (r) {
             return '<tr><th class="rt-rowhead" scope="row">' + esc(r.label) + '</th>' +
-                   r.cells.map(function (cell) {
+                   (r.cells || []).map(function (cell) {
                        var c = (typeof cell === 'object') ? cell : { v: cell };
                        return '<td' + (c.warn ? ' class="rt-warn"' : '') + '>' +
                               (c.warn ? '<span class="rt-warn-dot" title="code-vs-blog-vs-CONTEXT divergence">&#9888;</span> ' : '') +
@@ -500,6 +500,7 @@
         /* step indicator */
         var step = document.getElementById('step-ind');
         var card = CARDS[keyOf(curCol, curRow)];
+        if (!card) return;   /* defensive: a deck whose cells omit the current coord can't drive the indicator */
         if (card.kind === 'seq') {
             step.classList.remove('is-detail');
             var dots = '';
