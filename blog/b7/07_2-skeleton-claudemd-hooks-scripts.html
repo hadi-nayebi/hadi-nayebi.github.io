@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Skeleton: CLAUDE.md, Hooks, and Scripts — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b7/images/plugin-kit-b7-banner.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260601">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -126,7 +126,7 @@
 
                         <p><strong>Who writes it.</strong> The CONDENSE phase. By design, CLAUDE.md edits route through CONDENSE because that is the only phase whose guard permits writes to the brain layer. The operator can also touch CLAUDE.md directly via gmode for existing-plugin work &mdash; a deliberate escape hatch for fixes outside the cycle ceremony. <sup class="ref-marker" title="ref: condense-only-md-write-allowlist | phase_condense/hooks/condense-guard.sh:249-250 | Comment on L249 (&quot;Condense can edit .md files AND voice.xml — soft memory layer&quot;) + L250 allowlist `if [[ &quot;$FILE_PATH&quot; == *.md ]] || [[ &quot;$(basename &quot;$FILE_PATH&quot;)&quot; == &quot;voice.xml&quot; ]]; then` — execute-guard.sh L728 blocks the same writes with `block &quot;root-brain-blocked&quot;`. CONDENSE alone permits brain-layer writes.">&#9432;</sup></p>
 
-                        <p><strong>What it depends on.</strong> Almost nothing inside the plugin. CLAUDE.md is the surface; other organs depend on <em>it</em>, not the reverse. The single exception is the four phase-section markers at the bottom (<code>---Ob---</code>, <code>---Pl---</code>, <code>---Ex---</code>, <code>---Ve---</code>) which the section-boundary guard reads to decide where each phase may write. <sup class="ref-marker" title="ref: phase-marker-section-boundary-parse | lib/section_guard/section-check.sh:252-260 | The `case &quot;$phase_marker&quot; in` block maps the four markers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) to their section_line numbers, then downstream logic enforces edits land strictly below the active phase&#x27;s marker line.">&#9432;</sup></p>
+                        <p><strong>What it depends on.</strong> Almost nothing inside the plugin. CLAUDE.md is the surface; other organs depend on <em>it</em>, not the reverse. The single exception is the four phase-section anchors at the bottom (<code>---Ob---</code>, <code>---Pl---</code>, <code>---Ex---</code>, <code>---Ve---</code>) which the section-boundary guard reads to decide where each phase may write. <sup class="ref-marker" title="ref: phase-anchor-section-boundary-parse | lib/section_guard/section-check.sh:252-260 | The `case &quot;$phase_anchor&quot; in` block maps the four anchors (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`) to their section_line numbers, then downstream logic enforces edits land strictly below the active phase&#x27;s anchor line.">&#9432;</sup></p>
 
                         <p><strong>The new-plugin lens.</strong> When you guide your seed agent to create a new plugin, the first artifact the seed authors is CLAUDE.md. The seed declares the plugin&rsquo;s single concern, names the hooks it will register, lists its size limits, and stamps version <code>v0.1.0</code>. Every other organ inside the plugin will reference choices made here. If CLAUDE.md does not name the concern clearly, the rest of the plugin drifts. New-user guidance: tell your seed to write CLAUDE.md FIRST, then the hooks, then everything else. <sup class="ref-marker" title="ref: new-plugin-template-claude-md-first | plugin_integrity/template/CLAUDE.md:1-3 | New-plugin scaffold begins with `# {{PLUGIN_NAME}}` + `**Version:** v0.1.0` + &quot;Plugin directory. To be defined.&quot; — the template `[PLUGIN-LOCK]` copies on plugin creation (per the Plugin Template section + its Plugin birth process subsection in `.claude/plugins/CLAUDE.md`: &quot;the template is copied and {{PLUGIN_NAME}} + {{DATE}} are replaced... Template files copied (CLAUDE.md + docs/evolution.md)&quot;). CLAUDE.md ships first; every other organ added afterward.">&#9432;</sup></p>
 
@@ -262,8 +262,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260601"></script>
-    <script src="../../js/components.js?v=20260601"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

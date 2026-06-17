@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Two-Layer Foundation — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b5/images/always-on-plugins-b5-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260609">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -182,7 +182,7 @@
 
                         <p>The shape is not unique to software. A real-estate transaction closes the same way &mdash; the buyer&rsquo;s agent, the listing agent, the escrow officer, the title underwriter, the lender, and the inspector each own one narrow concern, never reach into each other&rsquo;s files, and coordinate strictly through published documents (purchase agreement, title commitment, loan estimate) on a shared timeline; the closing is a ceremony none of them could perform alone, made possible by exactly the same single-concern + careful coupling pattern.</p>
 
-                        <p>The discipline is in <em>how</em> the coupling happens. When plugins talk to each other, they talk through public, stable interfaces &mdash; small command-line surfaces each plugin publishes (one read-only command per concern, <code>job.sh focused</code> being the canonical example), a registry of question prefixes, named voice handles, and the footer marker protocol that organizes the bus. A plugin reads what another plugin chooses to publish; it never reaches into another plugin&rsquo;s private state. Each plugin&rsquo;s internal data stays private; only the interface is shared &mdash; an honest design limit worth naming: the prototype enforces one-plugin-editable-at-a-time during edits (the safe-lock ceremony), but it does not mathematically prevent a plugin&rsquo;s author from reading another plugin&rsquo;s <code>data.json</code> if they choose to, so the discipline depends on plugin authors respecting the public-interface contract rather than on the architecture forbidding the reach. <sup class="ref-marker" title="ref: the-discipline-is-in-how | .claude/plugins/job_core/scripts/job.sh (focused command handler) | `job.sh focused` handler — inline comment reads &quot;Returns just the focused job ID (or empty). Clean API for extension plugins.&quot; Read-only: reads `data.json`, never writes. Canonical public-interface example called by other plugins (e.g., execute-guard.sh).">&#9432;</sup></p>
+                        <p>The discipline is in <em>how</em> the coupling happens. When plugins talk to each other, they talk through public, stable interfaces &mdash; small command-line surfaces each plugin publishes (one read-only command per concern, <code>job.sh focused</code> being the canonical example), a registry of question prefixes, named voice handles, and the footer anchor protocol that organizes the bus. A plugin reads what another plugin chooses to publish; it never reaches into another plugin&rsquo;s private state. Each plugin&rsquo;s internal data stays private; only the interface is shared &mdash; an honest design limit worth naming: the prototype enforces one-plugin-editable-at-a-time during edits (the safe-lock ceremony), but it does not mathematically prevent a plugin&rsquo;s author from reading another plugin&rsquo;s <code>data.json</code> if they choose to, so the discipline depends on plugin authors respecting the public-interface contract rather than on the architecture forbidding the reach. <sup class="ref-marker" title="ref: the-discipline-is-in-how | .claude/plugins/job_core/scripts/job.sh (focused command handler) | `job.sh focused` handler — inline comment reads &quot;Returns just the focused job ID (or empty). Clean API for extension plugins.&quot; Read-only: reads `data.json`, never writes. Canonical public-interface example called by other plugins (e.g., execute-guard.sh).">&#9432;</sup></p>
 
                         <p>The shape buys three concrete things. Plugins evolve independently &mdash; a change inside <code>interaction_summary</code> cannot break <code>job_core</code> as long as the read-only <code>job.sh</code> API stays the same. Plugins are testable in isolation &mdash; each <code>tests/</code> directory exercises one plugin&rsquo;s behavior without standing up the entire seed. Plugins are addable &mdash; a sixth always-on plugin slots into the architecture by exposing its own public commands, not by rewiring anyone else&rsquo;s. <sup class="ref-marker" title="ref: the-shape-buys-three-concrete | .claude/plugins/job_core/tests/test-job-sh.sh (Setup section — temp-dir + phase.sh mock) | Test isolation in practice: setup creates a temp directory + mocks dependent scripts (e.g., `plan.sh`) so `job.sh` runs without the full seed. Pattern is repeated in every plugin&#x27;s `tests/` directory — interaction_summary tests mock job_core&#x27;s `job.sh` the same way.">&#9432;</sup></p>
 
@@ -280,8 +280,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260609"></script>
-    <script src="../../js/components.js?v=20260609"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>
