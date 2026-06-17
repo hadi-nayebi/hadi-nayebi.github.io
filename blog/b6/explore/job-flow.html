@@ -1068,7 +1068,7 @@
             node("sd-expand", W_STAGE, H_STAGE, { type: "stage", title: "Expand objective + name", sub: "HARD · ≥300-word floor (cycle 1)", lane: "job_core", stage: "cycle1-observe" }),
             node("sd-advance", W_HOOK, H_HOOK, { type: "hook", title: "Advance to PLAN", sub: "three-family exit gate", lane: "tracker", stage: "cycle1-observe" }),
             node("sd-null", W_STAGE, H_STAGE, { type: "stage", title: "plan_file = null", sub: "born undecided · set-once sentinel", lane: "plan", stage: "stage-decision" }),
-            node("sd-setplan", W_HOOK, H_HOOK, { type: "hook", title: "set-plan-file", sub: "sole writer · refuses 2nd call", lane: "plan", stage: "stage-decision" }),
+            node("sd-setplan", W_HOOK, H_HOOK, { type: "hook", title: "set-plan-file", sub: "sole writer · set-once", lane: "plan", stage: "stage-decision" }),
             node("sd-stage1", W_STAGE, H_STAGE, { type: "stage", title: "Stage 1 · false", sub: "single deep cycle · explicit set", lane: "plan", stage: "stage-decision" }),
             node("sd-stage2", W_STAGE, H_STAGE, { type: "stage", title: "Stage 2 · .md", sub: "repeatable · total_cycles", lane: "plan", stage: "stage-decision", drill: "execute-planfile" }),
             node("sd-stage3", W_STAGE, H_STAGE, { type: "stage", title: "Stage 3 · .yaml", sub: "per-phase injection", lane: "plan", stage: "stage-decision", drill: "execute-planfile" }),
@@ -1250,7 +1250,7 @@
         accumulate: 'The job is a <b>cumulative record</b>: every prompt and every answered question <b>appends</b> to it. When it grows too long, a compressed <b>summary view</b> is made and a hard gate forces it.',
         spawn: 'A work phase <b>cannot create a job</b> — it can only drop a <b>[PENDING-JOB]</b> note. <b>CONDENSE</b> later vets each note and creates the real job. <em>Creation is CONDENSE-only.</em>',
         dependency: 'A new job is either <b>standalone</b> or a <b>dependent</b> sitting on a parent\'s list. <em>A parent cannot complete until every dependency does</em> — and there is no "blocked" status; waiting is derived.',
-        "stage-decision": 'In <b>OBSERVE</b> the job expands its objective (coaching), then in <b>PLAN</b> it picks its <b>Stage</b> exactly once — <b>false</b>, a <b>.md</b>, or a <b>.yaml</b>. <em>The choice can never be changed.</em>',
+        "stage-decision": 'In <b>OBSERVE</b> the job expands its objective (a hard cycle-1 gate), then in <b>PLAN</b> it picks its <b>Stage</b> exactly once — <b>false</b>, a <b>.md</b>, or a <b>.yaml</b>. <em>Set-once (relaxed only at cycle 1).</em>',
         "execute-planfile": 'A Stage 2/3 job <b>writes its plan file</b> in EXECUTE. Two mechanisms: an execute-guard <em>write-permission check</em> (scopes where EXECUTE may write) and a hard <em>advance gate</em> in execute-commit — for Stage 2/3 cycle 1 the phase is BLOCKED from moving to VERIFY until the declared file exists on disk.',
         "verify-backedge": 'VERIFY has a <b>built-in back-edge</b>: if the agent <b>edits the plan file</b>, forward-advance is blocked and it must <b>return to PLAN</b>. Only a plan-untouched VERIFY reaches CONDENSE.',
         completion: 'The last cycle\'s CONDENSE asks <b>[JOB-COMPLETE]</b>. Approval is hard-gated on <b>all dependencies done</b>; then status flips to <b>completed</b> and focus is cleared at idle.',
@@ -1708,11 +1708,11 @@
         },
         "sd-setplan": {
             title: "set-plan-file",
-            what: "The single command that commits the job's Stage. It can only be called once — the choice is permanent.",
+            what: "The single command that commits the job's Stage. Set-once: a second call is refused once the job is past cycle 1 (the set-once is relaxed at cycle 1 — fresh run or reactivation).",
             when: "During cycle-1 PLAN.",
-            canDo: "Sets the Stage to false, a .md plan, or a .yaml plan — and refuses any second attempt.",
-            why: "Signing the box on the intake form in permanent ink: once chosen, the project type is locked.",
-            builder: "plan.sh set-plan-file arm, sole writer, SET-ONCE: dies if current plan_file != \"null\". Value must be false OR match ^plan_[a-z0-9_]+\\.(md|yaml)$."
+            canDo: "Sets the Stage to false, a .md plan, or a .yaml plan — and refuses a later change once the job is past cycle 1.",
+            why: "Signing the box on the intake form: once chosen and the job is underway, the project type is locked (it can still be re-chosen at the start of a fresh run).",
+            builder: "plan.sh set-plan-file arm, sole writer, SET-ONCE with cycle-1 relaxation: dies only if current plan_file != \"null\" AND current_cycle != 1. Value must be false OR match ^plan_[a-z0-9_]+\\.(md|yaml)$."
         },
         "sd-stage1": {
             title: "Stage 1 · false",
@@ -1744,7 +1744,7 @@
             when: "Any advance attempt while plan_file is null.",
             canDo: "Forces the Stage decision to happen — it cannot be skipped, and there is no auto-promotion between Stages later.",
             why: "The form that won't let you move to the next page until the required box is filled — and you can't change your answer afterward.",
-            builder: "plan-commit HARD-blocks the PLAN→EXECUTE advance while plan_file==null. There is NO inter-Stage promotion; set-plan-file refuses a second call."
+            builder: "plan-commit HARD-blocks the PLAN→EXECUTE advance while plan_file==null. There is NO inter-Stage promotion; set-plan-file is set-once (a change is refused once the job is past cycle 1; relaxed at cycle 1)."
         },
 
         /* ---------- EXECUTE-PLANFILE drill ---------- */

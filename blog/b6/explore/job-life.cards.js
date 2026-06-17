@@ -194,9 +194,9 @@ window.DECK_INFO = {
         /* ---------------- CARD CONDENSE : the growth organ ---------------- */
         'c-water': {
             title: 'The 7-step waterfall', tag: 'action',
-            what: 'CONDENSE runs a fixed seven-step routine that takes the cycle\'s scattered findings and routes each to a lasting home.',
+            what: 'CONDENSE runs a set of seven operations that take the cycle\'s scattered findings and route each to a lasting home.',
             why: 'Without this, everything learned in a cycle would live only in throwaway working memory and vanish. The waterfall is how the brain actually GROWS — turning one cycle\'s notes into durable knowledge.',
-            hood: 'The seven steps, in order (<code>phase_condense/docs/principles.md</code> · the 7-step waterfall): (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) <code>[PENDING-JOB]</code> → new jobs, (4) <code>[VOICE-UPDATE]</code>, (5) <code>[AGENT-UPDATE]</code>, (6) <code>[KNOWLEDGE]</code> routing, (7) session-archive (last resort). Markers are removed as each is consumed — the next cycle starts clean.'
+            hood: 'The seven CONDENSE operations (<code>phase_condense/docs/principles.md</code>) — a catalog, NOT an execution order: (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) <code>[PENDING-JOB]</code> → new jobs, (4) <code>[VOICE-UPDATE]</code>, (5) <code>[AGENT-UPDATE]</code>, (6) <code>[KNOWLEDGE]</code> routing, (7) session-archive (a full per-cycle footer snapshot). They run in three gated phases: ADDRESS (consume markers, steps 3–6) → ARCHIVE (snapshot the footer, step 7) → DEFLATE (absorb + migrate, steps 1–2, then delete). Markers are removed as each is consumed — the next cycle starts clean.'
         },
         'c-deflate': {
             title: '≥ 80% deflation', tag: 'gate',
