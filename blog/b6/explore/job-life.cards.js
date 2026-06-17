@@ -380,7 +380,7 @@ window.DECK_INFO = {
             title: 'Repeat: complete → wait → wake again', tag: 'action',
             what: 'A repeating job doesn\'t end for good when it completes. It completes, waits a set interval, and then wakes itself back up to run again.',
             why: 'This is what makes the seed a standing worker rather than a one-shot tool. A maintenance job — "check the shared folder for new contracts every morning" — completes, sleeps, and re-activates on its own, no prompt required.',
-            hood: 'On completion, <code>last_completed_at</code> is stamped (epoch). A job is "due" when <code>status==completed</code>, <code>repeating_interval > 0</code>, and <code>last_completed_at + interval*3600 < now</code>. Two heartbeats catch it: one while the seed is working (<code>self-compact.sh</code> scan), one while it is stopped (the <code>quiescent-heartbeat</code> daemon). Reactivation resets the cycle counters and flips <code>completed → pending</code>, preserving the plan file. All of this is BUILT.'
+            hood: 'On completion, <code>last_completed_at</code> is stamped (epoch). A job is "due" when <code>status==completed</code>, <code>repeating_interval > 0</code>, and <code>last_completed_at + interval*3600 < now</code>. Two heartbeats catch it: one while the seed is working (<code>self-compact.sh</code> scan), one while it is stopped (the <code>quiescent-heartbeat</code> daemon). Reactivation resets the cycle counters and flips the job back to active life — landing at <code>pending</code> by default, or directly at <code>active</code> when its <code>reactivate_target</code> says so — preserving the plan file. All of this is BUILT.'
         }
     };
 

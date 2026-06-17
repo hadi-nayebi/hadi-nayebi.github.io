@@ -1324,7 +1324,7 @@
             title: "CONDENSE",
             what: "The growth organ. Not a peer phase — it is where the cycle's findings get absorbed into durable memory, and where new jobs are actually born from notes left earlier.",
             when: "The last phase of every cycle, reachable only from a clean VERIFY.",
-            canDo: "Runs the seven CONDENSE operations: absorbs footers, routes knowledge, and (step 3) vets [PENDING-JOB] notes into real jobs. The exit is hard-gated several times over — the three-family exit gate, the marked-note terminal-state gate, the archive-verified gate, the consumption gate, and the 80% deflation gate.",
+            canDo: "Runs the seven CONDENSE operations: absorbs footers, routes knowledge, and (step 3) vets [PENDING-JOB] notes into real jobs. The exit is guarded by SEVERAL independent hard gates — not just deflation: reflection (the three-family exit gate), every marked note driven terminal, the footer archived, markers consumed, the 80% footer deflation, and — for a completing job — a sealed compaction file.",
             why: "Sleep, for the brain: the day's loose notes get filed, consolidated, and turned into lasting memory before the next day starts.",
             builder: "condense-guard allows job.sh create unconditionally (CONDENSE-only). Deflation gate: bottom-section words must absorb ≥80% before advancing to idle. condense-commit.sh (clear-focus detection) clears focus if the job completed this cycle (relocated unfocus)."
         },
