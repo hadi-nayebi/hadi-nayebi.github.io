@@ -31,15 +31,14 @@ import tempfile
 from pathlib import Path
 
 # --- Free local voice ---------------------------------------------------------
-# Piper binary + a neural voice model. We default to lessac-medium (a fuller,
-# more natural narration voice than amy-low) and fall back to whatever .onnx the
-# environment provides. Both are the same FREE voices the site's telegram
-# tooling already ships.
+# Piper binary + a neural voice model. We default to amy-low (the same lighter
+# voice the site's telegram tooling ships, chosen by the user 2026-06-17) and
+# fall back to whatever .onnx the environment provides. Pass --voice to override.
 PIPER_BIN = Path(os.path.expanduser("~/.local/bin/piper"))
 PIPER_VOICE_DIR = Path(os.path.expanduser("~/.local/share/piper/voices"))
 PREFERRED_VOICES = [
-    "en_US-lessac-medium/en_US-lessac-medium.onnx",
     "en_US-amy-low/en_US-amy-low.onnx",
+    "en_US-lessac-medium/en_US-lessac-medium.onnx",
 ]
 
 MP3_BITRATE = "96k"
@@ -57,7 +56,21 @@ def resolve_piper() -> Path:
     return PIPER_BIN
 
 
-def resolve_voice() -> Path:
+def resolve_voice(name: str | None = None) -> Path:
+    # Explicit override: --voice amy / lessac / a full relative path / a bare name.
+    if name:
+        cands = [
+            PIPER_VOICE_DIR / name,
+            PIPER_VOICE_DIR / f"en_US-{name}-low" / f"en_US-{name}-low.onnx",
+            PIPER_VOICE_DIR / f"en_US-{name}-medium" / f"en_US-{name}-medium.onnx",
+        ]
+        for c in cands:
+            if c.exists():
+                return c
+        matches = [p for p in PIPER_VOICE_DIR.rglob("*.onnx") if name in p.name]
+        if matches:
+            return sorted(matches)[0]
+        sys.exit(f"ERROR: requested voice '{name}' not found under {PIPER_VOICE_DIR}.")
     for rel in PREFERRED_VOICES:
         cand = PIPER_VOICE_DIR / rel
         if cand.exists():
@@ -199,6 +212,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Free local piper TTS for blog drafts.")
     ap.add_argument("source", help="transcript .md or text file")
     ap.add_argument("output", help="output .mp3 path")
+    ap.add_argument("--voice", default=None,
+                    help="voice override (e.g. 'amy' or 'lessac'); default amy-low")
     args = ap.parse_args()
 
     src = Path(args.source)
@@ -207,7 +222,7 @@ def main() -> None:
         sys.exit(f"ERROR: source not found: {src}")
 
     piper = resolve_piper()
-    voice = resolve_voice()
+    voice = resolve_voice(args.voice)
     print(f"piper:  {piper}")
     print(f"voice:  {voice}")
 
