@@ -248,9 +248,9 @@ window.DECK_INFO = {
     },
     'surf-condense': {
         title: 'condense upward', tag: 'action',
-        what: 'At cycle close, durable findings are routed off the transient brain and DOWN into the permanent surfaces — knowledge by topic, memory by guidance-kind.',
+        what: 'At cycle close, durable findings are routed off the transient brain and UP into the permanent surfaces — knowledge by topic, memory by guidance-kind.',
         why: 'Condensation is the bridge between the forgetting brain and the remembering floors. Without it, knowledge would live only in chat and die at the session’s end.',
-        hood: 'CONDENSE step 6 emits the <code>[KNOWLEDGE] topic-slug</code> marker that routes a finding into a silo; OBSERVE later reads it back. Source: <code>brain-memory.md</code> · "knowledge/ durable layer" (written by CONDENSE, read by OBSERVE).'
+        hood: 'CONDENSE step 6 consumes the <code>[KNOWLEDGE] topic-slug</code> marker (emitted by earlier phases into the CLAUDE.md footer) and routes the finding into a silo; OBSERVE later reads it back. Source: <code>brain-memory.md</code> · "knowledge/ durable layer" (written by CONDENSE, read by OBSERVE).'
     },
     'surf-knowledge': {
         title: 'knowledge/ — durable, unbounded', tag: 'object',
@@ -531,7 +531,7 @@ window.DECK_CARDS = {
     '5,0': {
         kind: 'seq', step: 6, eyebrow: 'the working-memory bus',
         title: 'Three durable surfaces',
-        sub: 'The transient brain deflates each cycle and routes what is worth keeping down into two permanent stores: knowledge/, the unbounded topic-siloed cognition, and memory/, the narrow cross-project store of operator rules.',
+        sub: 'The transient brain deflates each cycle and routes what is worth keeping up into two permanent stores: knowledge/, the unbounded topic-siloed cognition, and memory/, the narrow cross-project store of operator rules.',
         boxes: [
             { id: 'surf-brain', x: 55, y: 190, w: 230, h: 96, tag: 'state', t: 'the brain — transient', s: 'deflates each cycle · bounded' },
             { id: 'surf-condense', x: 360, y: 190, w: 220, h: 96, tag: 'action', t: 'condense upward', s: 'route findings to durable homes' },
