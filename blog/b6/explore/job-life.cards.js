@@ -63,7 +63,7 @@ window.DECK_INFO = {
             title: 'Gate to PLAN', tag: 'gate',
             what: 'A checkpoint with a concrete SHAPE: four checks, every one of which must say YES before the job is allowed into PLAN.',
             why: 'This is what stops a barely-grown job from slipping forward. The job has to PROVE it named itself, wrote a real objective, did enough observing, and recorded what it learned — not just glance at the prompt and rush on.',
-            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance, all four required: <code>name</code> non-empty AND (cycle 1) <code>objective ≥ 300 words</code> AND <code>≥ 100 points</code> AND <code>≥ 1 CLAUDE.md update</code>. Miss any one → <code>REJECTED / BLOCKED</code>, stay in OBSERVE and keep growing. The up-close, per-check view is the detail card directly below.'
+            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance, all four required: <code>name</code> non-empty AND (cycle 1) <code>objective ≥ 300 words</code> AND the <strong>three-family exit gate</strong> (metacognition commands ran + marked notes added + ≥1 reflector subagent ran) AND <code>≥ 1 CLAUDE.md update</code>. Miss any one → <code>REJECTED / BLOCKED</code>, stay in OBSERVE and keep growing. The up-close, per-check view is the detail card directly below.'
         },
 
         /* (CARD A2 "Active + focused" detail removed — its content already lives on
@@ -83,10 +83,10 @@ window.DECK_INFO = {
             hood: '<code>observe-commit.sh</code> cycle-1 gate: the objective must reach the expansion floor — under 300 words <code>BLOCKS</code> (<code>OBJECTIVE_EXPANSION_WORD_MIN=300</code>); over 500 only coaches. (Cycles 2+ skip this — expansion is once per activation.)'
         },
         'b2-points': {
-            title: '≥ 100 points?', tag: 'gate',
-            what: 'Third check: has the job done enough observing? Each phase has its own little point budget.',
-            why: 'This stops the job from glancing at the prompt and rushing onward. It has to actually do the gathering work.',
-            hood: '<code>observe-commit.sh</code> blocks the forced advance unless <code>total_points ≥ 100</code> (the per-phase transition threshold). Below it → <code>BLOCKED: Observation incomplete</code>.'
+            title: 'Three-family exit gate?', tag: 'gate',
+            what: 'Third check: did the job actually reflect on its own work this phase? The three-family gate requires that the CORE metacognition commands ran, new marked notes were added, and at least one reflector subagent ran.',
+            why: 'This stops the job from glancing at the prompt and rushing onward — but via evidence of reflection, not a numeric score. Three distinct kinds of evidence must exist before PLAN unlocks.',
+            hood: '<code>observe-commit.sh</code> enforces the three-family exit gate: (a) the CORE metacog ops ran [hard]; (b) marked-note adds meet the per-entry target drawn from <code>METACOG_FAMILYB_SET</code> [soft by default]; (c) ≥1 of the phase\'s available reflector subagents (<code>METACOG_FAMILYC_REFLECTORS</code>) ran [hard]. No point currency or numeric score exists.'
         },
         'b2-claude': {
             title: '≥ 1 CLAUDE.md update?', tag: 'gate',
@@ -98,7 +98,7 @@ window.DECK_INFO = {
             title: 'PLAN unlocks', tag: 'phase',
             what: 'All four checks pass → the job is allowed into PLAN.',
             why: 'Only a job that knows its name, its goal, and has done real observation gets to start planning. No empty jobs get through.',
-            hood: 'With name + objective non-empty AND points ≥ 100 AND ≥ 1 CLAUDE.md update, <code>observe-commit.sh</code> permits the <code>observe→plan</code> forward transition.'
+            hood: 'With name + objective non-empty AND the three-family exit gate satisfied AND ≥ 1 CLAUDE.md update, <code>observe-commit.sh</code> permits the <code>observe→plan</code> forward transition. The intra-phase min-max gate paces the work independently; the three-family gate is the advance condition.'
         },
 
         /* ---------------- CARD PLAN : choose the Stage ---------------- */
@@ -106,7 +106,7 @@ window.DECK_INFO = {
             title: 'plan_file: null', tag: 'object',
             what: 'When the job is born, one field — <code>plan_file</code> — starts as <code>null</code>. Null means "the Stage has not been chosen yet."',
             why: 'A job\'s Stage is not decided when it is created. It is decided here, in PLAN, once the job actually understands its own work. Until then, the field honestly says "undecided".',
-            hood: 'Set at job birth in the jq template: <code>plan_file: null</code> (<code>job_core/scripts/job.sh</code>, create path). <code>null</code> is the set-once sentinel — distinct from <code>false</code> (a real, chosen Stage).'
+            hood: 'Initialized to <code>null</code> in <code>phase_plan/scripts/plan.sh</code> — the <code>create_plan_job_with_entry</code> function — not the <code>job_core</code> create path. <code>null</code> is the set-once sentinel — distinct from <code>false</code> (a real, chosen Stage): the cycle-1 PLAN→EXECUTE advance is BLOCKED while it stays null, so even a Stage-1 job must call <code>set-plan-file false</code> on purpose. Nothing auto-defaults.'
         },
         'p-decide': {
             title: 'set-plan-file — choose once', tag: 'action',
@@ -118,19 +118,19 @@ window.DECK_INFO = {
             title: 'false → Stage 1', tag: 'object',
             what: 'Choosing <code>false</code> makes this a Stage-1 job: a single collaborative cycle, with no separate plan file.',
             why: 'Stage 1 is for one-off work — a single fix, a teaching session, a quick exploration. There is nothing to carry across runs, so it never writes a plan file.',
-            hood: '<code>plan_file: false</code>. Its multiplier stays at the <code>0</code> sentinel (the job sets a real multiplier itself at each phase). Completion is eligible at every CONDENSE while <code>plan_file == false</code>.'
+            hood: '<code>plan_file: false</code>. No multiplier exists. Each phase is paced by the count-based min-max gate (per-activity-class counters, one reset event — a CLAUDE.md update resets all class counters); entry is coached, not gated. Completion is eligible at every CONDENSE while <code>plan_file == false</code>.'
         },
         'p-s2': {
             title: 'plan_x.md → Stage 2', tag: 'object',
             what: 'Choosing a <code>.md</code> filename makes this a Stage-2 job: repeatable, multi-cycle work with a prose plan file.',
             why: 'Stage 2 is for structured work that benefits from an accumulating, human-readable plan — one that gets smarter every run. The plan file is the memory that survives across activations.',
-            hood: '<code>plan_file: plan_&lt;name&gt;.md</code>. The plan file itself is created later, in cycle-1 EXECUTE (next card). A planned job runs RAPID by default — its multiplier auto-resolves to <code>3</code> at each phase entry (not set here at Stage choice).'
+            hood: '<code>plan_file: plan_&lt;name&gt;.md</code>. The plan file itself is created in cycle-1 EXECUTE (next card) — not at Stage choice. No multiplier exists; there is no RAPID mode. Each phase is paced identically: count-based min-max gate, coached entry, three-family exit gate as the advance condition. PLAN reads the <code>.md</code> at the start of every later cycle.'
         },
         'p-s3': {
             title: 'plan_x.yaml → Stage 3', tag: 'object',
             what: 'Choosing a <code>.yaml</code> filename makes this a Stage-3 job: same as Stage 2, but the plan file is structured YAML.',
             why: 'Stage 3 is for work that wants per-cycle context injected automatically at each phase. Completion behaves identically to Stage 2 — only the plan file\'s FORMAT differs.',
-            hood: '<code>plan_file: plan_&lt;name&gt;.yaml</code>. Like Stage 2, a planned job runs RAPID by default — the multiplier auto-resolves to <code>3</code> at each phase entry (<code>.md</code> and <code>.yaml</code> behave the same here). The YAML\'s <code>cycles:</code> list declares the per-cycle entries.'
+            hood: '<code>plan_file: plan_&lt;name&gt;.yaml</code>. Like Stage 2, no multiplier and no RAPID mode — the same count-based pacing applies. The YAML\'s <code>cycles:</code> list declares per-cycle entries; at phase entry it modifies EXISTING voices by voice-id (append / replace / prepend), injecting tailored context. Completion semantics are identical to Stage 2.'
         },
 
         /* ---------------- CARD EXECUTE : build, in scope ---------------- */
@@ -153,10 +153,10 @@ window.DECK_INFO = {
             hood: 'The file is written with YAML frontmatter (<code>total_cycles:</code> for <code>.md</code>, a <code>cycles:</code> list for <code>.yaml</code>). After cycle 1, EXECUTE can no longer touch it — ownership sits with PLAN, which reads it at the start of every later cycle.'
         },
         'e-advance': {
-            title: '≥ 100 points → advance', tag: 'gate',
-            what: 'Moving on from EXECUTE is gated by points — the job must do ≥ 100 points of building work — completely separately from the plan file.',
-            why: 'This is the card\'s key surprise: write-permission and phase-advance are TWO different gates. Whether you CAN write the plan file (a tool check) has nothing to do with WHEN you may leave EXECUTE (a points check). Don\'t conflate them.',
-            hood: '<code>execute-commit.sh</code> blocks the <code>--force</code> advance unless the phase has accumulated ≥ 100 points. The plan file\'s existence is not part of this check — a job can advance whether or not it wrote one.'
+            title: 'Three-family gate + plan-file → advance', tag: 'gate',
+            what: 'Moving on from EXECUTE is gated by the three-family exit gate (reflection evidence), the commit shape, and — on a Stage-2 or Stage-3 cycle-1 job — a Plan-File-Exists Gate: the plan file must actually be on disk before the phase advances.',
+            why: 'There ARE two distinct gates here, but neither is a point check. The write-permission gate (in <code>execute-guard.sh</code>) decides whether the agent CAN write the plan file — scope + cycle + non-existence. The Plan-File-Exists Gate (in <code>execute-commit.sh</code>) decides whether the phase CAN ADVANCE — the file must actually exist. Stage 1 has no plan file, so that gate does not apply; for Stage 2/3 cycle 1 it does.',
+            hood: '<code>execute-commit.sh --force</code> enforces the three-family exit gate (the advance condition, armed unconditionally) + commit shape + word floor. <strong>Custom gate (Stage 2/3, cycle 1 only):</strong> if <code>plan_file</code> is a real filename (not null/false/empty) AND cycle ≤ 1, it checks the file exists at <code>.claude/jobs/&lt;id&gt;/&lt;plan_file&gt;</code> (legacy <code>.claude/knowledge/plans/</code> also checked) — absent → <code>BLOCKED: cycle-1 EXECUTE declared plan file … but it does not exist on disk</code>. There is no 100-point check anywhere in this file.'
         },
 
         /* ---------------- CARD VERIFY : check, and maybe retreat ---------------- */
@@ -176,19 +176,19 @@ window.DECK_INFO = {
             title: 'Forced back', tag: 'phase',
             what: 'When either VERIFY gate trips — a plan edit, or leftover Outstanding Items — the job is sent BACKWARD instead of forward, to re-plan or finish the work.',
             why: 'This is the cycle\'s self-correction. VERIFY is the only phase that can be FORCED backward — other phases CAN step back, but only by the agent\'s choice; VERIFY is compelled. Discovering the plan was wrong, or that work remains, is not a failure — it routes the job to fix things properly.',
-            hood: 'Two explicit <code>--backward</code> transitions: a plan edit (<code>verify-commit.sh:167–179</code>) forces back to PLAN; a non-empty <code>## Outstanding Items</code> section (<code>verify-commit.sh</code> shape gate, built 2026-06-03) forces back to PLAN or EXECUTE. Forward to CONDENSE stays blocked until a verify passes both.'
+            hood: 'Two explicit <code>--backward</code> transitions: a plan edit (the plan-file-edit must-backward gate in <code>verify-commit.sh</code>) forces back to PLAN; a non-empty <code>## Outstanding Items</code> section (the <code>verify-commit.sh</code> shape gate) forces back to PLAN or EXECUTE. Forward to CONDENSE stays blocked until a verify passes both.'
         },
         'v-clean': {
             title: 'All clear → CONDENSE', tag: 'gate',
             what: 'If neither gate trips — the plan was untouched AND no Outstanding Items remain — and the usual phase requirements are met, the job advances to CONDENSE. That move is one-way.',
             why: 'A clean verify means the work stands as planned with nothing left open. Moving into CONDENSE is deliberately irreversible: once you start consolidating, you don\'t un-verify and go back. The cycle commits to closing out.',
-            hood: 'With no plan edits, an EMPTY Outstanding Items section, ≥ 100 points, and ≥ 1 CLAUDE.md update, <code>verify-commit.sh</code> permits the <code>verify→condense</code> forward transition — and there is no backward path out of CONDENSE.'
+            hood: 'With no plan edits, an EMPTY Outstanding Items section, the three-family exit gate satisfied, and ≥ 1 CLAUDE.md update, <code>verify-commit.sh</code> permits the <code>verify→condense</code> forward transition — and there is no backward path out of CONDENSE.'
         },
         'v-outst': {
             title: 'Outstanding items left?', tag: 'gate',
             what: 'The second thing VERIFY checks before it can advance: is the "Outstanding Items" list empty? Any leftover per-cycle work blocks the forward move.',
             why: 'A cycle is not done while work remains open. Like the plan-edit check, a non-empty list forces the job BACKWARD — to PLAN or EXECUTE — to finish it, rather than carrying unfinished work into CONDENSE.',
-            hood: 'A real VERIFY gate (<code>CONTEXT.opevc.md:173</code>, built 2026-06-03): <code>verify-commit.sh</code> requires the <code>## Outstanding Items</code> section be EMPTY; any non-whitespace content BLOCKS forward-advance and directs a <code>--backward</code> move to PLAN or EXECUTE. A second, whole-job Outstanding-Items check ALSO runs later at CONDENSE\'s <code>[JOB-COMPLETE]</code> question — the two granularities (per-cycle here, whole-job there) work together.'
+            hood: 'A real VERIFY gate (the Outstanding-Items gate; <code>.claude/context/opevc-phases.md</code>): <code>verify-commit.sh</code> requires the <code>## Outstanding Items</code> section be EMPTY; any non-whitespace content BLOCKS forward-advance and directs a <code>--backward</code> move to PLAN or EXECUTE. A second, whole-job Outstanding-Items check ALSO runs later at CONDENSE\'s <code>[JOB-COMPLETE]</code> question — the two granularities (per-cycle here, whole-job there) work together.'
         },
 
         /* ---------------- CARD CONDENSE : the growth organ ---------------- */
@@ -196,13 +196,13 @@ window.DECK_INFO = {
             title: 'The 7-step waterfall', tag: 'action',
             what: 'CONDENSE runs a fixed seven-step routine that takes the cycle\'s scattered findings and routes each to a lasting home.',
             why: 'Without this, everything learned in a cycle would live only in throwaway working memory and vanish. The waterfall is how the brain actually GROWS — turning one cycle\'s notes into durable knowledge.',
-            hood: 'The seven steps, in order (<code>principles.md</code>:79–86): (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) <code>[PENDING-JOB]</code> → new jobs, (4) <code>[VOICE-UPDATE]</code>, (5) <code>[AGENT-UPDATE]</code>, (6) <code>[KNOWLEDGE]</code> routing, (7) session-archive (last resort). Markers are removed as each is consumed — the next cycle starts clean.'
+            hood: 'The seven steps, in order (<code>phase_condense/docs/principles.md</code> · the 7-step waterfall): (1) footer→body absorption, (2) cross-file CLAUDE.md migration, (3) <code>[PENDING-JOB]</code> → new jobs, (4) <code>[VOICE-UPDATE]</code>, (5) <code>[AGENT-UPDATE]</code>, (6) <code>[KNOWLEDGE]</code> routing, (7) session-archive (last resort). Markers are removed as each is consumed — the next cycle starts clean.'
         },
         'c-deflate': {
             title: '≥ 80% deflation', tag: 'gate',
             what: 'To leave CONDENSE, the job must shrink its working memory by at least 80% — squeezing the cycle\'s bottom-section notes down to essentials.',
             why: 'Working memory has to return to a near-empty resting state so the next cycle can think fresh, not drown in last cycle\'s clutter. The deflation gate forces that compression to actually happen.',
-            hood: 'One uniform threshold across all Job Stages: <code>CONDENSE_DEF_THRESHOLD = 80</code> (<code>config.conf</code>:34–40), enforced by <code>condense-commit.sh</code> (lines 121–125). Below 80% deflation → the advance to idle is blocked.'
+            hood: 'One uniform threshold across all Job Stages: <code>CONDENSE_DEF_THRESHOLD = 80</code> (in <code>phase_condense/config.conf</code>), enforced by <code>condense-commit.sh</code>\'s deflation block. Below 80% deflation → the advance to idle is blocked.'
         },
         'c-pending': {
             title: '[PENDING-JOB] → spawn a job', tag: 'action',
@@ -214,7 +214,7 @@ window.DECK_INFO = {
             title: '[JOB-COMPLETE]?', tag: 'gate',
             what: 'CONDENSE is where a job can actually END. It asks the completion question — and only here is that question eligible to fire.',
             why: 'Ending a job is a deliberate, single-place decision, not something any phase can do whenever. Tying it to CONDENSE means a job only closes after its findings are safely routed and memory is deflated.',
-            hood: 'The <code>[JOB-COMPLETE]</code> eligibility (<code>question-capture.sh</code>:181–194) fires CONDENSE-only: Stage 1 (<code>plan_file == false</code>) at every CONDENSE; Stage 2/3 when <code>current_cycle ≥ effective_last_cycle</code>. If outstanding work remains, the job self-corrects by adding a cycle instead of completing.'
+            hood: 'The <code>[JOB-COMPLETE]</code> eligibility check (in <code>question-capture.sh</code>) fires CONDENSE-only: Stage 1 (<code>plan_file == false</code>) at every CONDENSE; Stage 2/3 when <code>current_cycle ≥ effective_last_cycle</code>. If outstanding work remains, the job self-corrects by adding a cycle instead of completing.'
         },
 
         /* ---------------- CARD ROUTES : the four creation paths (mini-diagrams) ---------------- */
@@ -366,9 +366,9 @@ window.DECK_INFO = {
         },
         'cap-track': {
             title: 'plan · verify · condense lanes', tag: 'object',
-            what: 'Each phase plugin keeps its own tally for the job — points accumulated, edits made, gate state — in its own file.',
+            what: 'Each phase plugin keeps its own tally for the job — action counts per activity class, edits made, gate state — in its own file.',
             why: 'Every phase you walked through (PLAN, EXECUTE, VERIFY, CONDENSE) was enforced by a different plugin, and each remembers only what it needs about this job. The job\'s full state is the sum of all these lanes.',
-            hood: 'phase_plan, phase_verify, phase_execute, and phase_condense each maintain per-job tracker entries (points, plan_edits, deflation, etc.) keyed by the job id — lit up only once the job first reaches that phase.'
+            hood: 'phase_plan, phase_verify, phase_execute, and phase_condense each maintain per-job tracker entries (per-class action counts, plan_edits, deflation, three-family gate state, etc.) keyed by the job id — lit up only once the job first reaches that phase.'
         },
         'cap-sum': {
             title: 'interaction_summary lane', tag: 'object',
@@ -435,7 +435,7 @@ window.DECK_CARDS = {
                 { id:'b-gate',      x:742, y:150, w:234, h:270, tag:'gate',    t:'Gate to PLAN', fields:[
                     { v:'✓ name — non-empty', state:'ok' },
                     { v:'✓ objective — ≥ 300 words', state:'ok' },
-                    { v:'✓ observed — ≥ 100 points', state:'ok' },
+                    { v:'✓ three-family gate — reflect + mark + reflector', state:'ok' },
                     { v:'✓ CLAUDE.md — ≥ 1 update', state:'ok' },
                     '—',
                     { v:'all four YES → PLAN unlocks', state:'grow' },
@@ -606,7 +606,7 @@ window.DECK_CARDS = {
             boxes: [
                 { id:'b2-name',      x:60,  y:60,  w:210, h:92, tag:'gate',  t:'name filled?',          s:'non-empty string' },
                 { id:'b2-objective', x:60,  y:188, w:210, h:92, tag:'gate',  t:'objective expanded?',   s:'cycle 1: 300–500 words' },
-                { id:'b2-points',    x:60,  y:316, w:210, h:92, tag:'gate',  t:'≥ 100 points?',         s:'enough observing' },
+                { id:'b2-points',    x:60,  y:316, w:210, h:92, tag:'gate',  t:'Three-family gate?',     s:'reflect + mark + reflector' },
                 { id:'b2-claude',    x:60,  y:444, w:210, h:92, tag:'gate',  t:'≥ 1 CLAUDE.md update?', s:'findings written down' },
                 { id:'b2-unlock',    x:660, y:230, w:268, h:120, tag:'phase', t:'PLAN unlocks',         s:'all four say YES' }
             ],
@@ -715,7 +715,7 @@ window.DECK_CARDS = {
                 { id:'e-build',    x:44,  y:214, w:208, h:116, tag:'action', t:'Build in scope',   s:'the only phase with full write' },
                 { id:'e-perm',     x:336, y:100, w:228, h:100, tag:'gate',   t:'write-permission?', s:'scope + cycle 1 + not-yet-there' },
                 { id:'e-planfile', x:648, y:100, w:248, h:100, tag:'object', t:'the plan file is born', s:'Stage 2/3 · written in cycle 1' },
-                { id:'e-advance',  x:556, y:362, w:300, h:104, tag:'gate',   t:'≥ 100 points → advance', s:'points move the phase, not the file' }
+                { id:'e-advance',  x:556, y:362, w:300, h:104, tag:'gate',   t:'three-family gate → advance', s:'+ plan-file exists (Stage 2/3 c1)' }
             ],
             edges: [
                 { from:'e-build', to:'e-perm',     kind:'soft', label:'write it?' },
