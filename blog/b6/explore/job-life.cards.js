@@ -63,7 +63,7 @@ window.DECK_INFO = {
             title: 'Gate to PLAN', tag: 'gate',
             what: 'A checkpoint with a concrete SHAPE: four checks, every one of which must say YES before the job is allowed into PLAN.',
             why: 'This is what stops a barely-grown job from slipping forward. The job has to PROVE it named itself, wrote a real objective, did enough observing, and recorded what it learned — not just glance at the prompt and rush on.',
-            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance, all four required: <code>name</code> non-empty AND (cycle 1) <code>objective ≥ 300 words</code> AND the <strong>three-family exit gate</strong> (metacognition commands ran + marked notes added + ≥1 reflector subagent ran) AND <code>≥ 1 CLAUDE.md update</code>. Miss any one → <code>REJECTED / BLOCKED</code>, stay in OBSERVE and keep growing. The up-close, per-check view is the detail card directly below.'
+            hood: 'Enforced by <code>observe-commit.sh</code> on a forced advance, all four required: <code>name</code> non-empty AND (cycle 1) <code>objective ≥ 300 words</code> AND the <strong>three-family exit gate</strong> (metacognition commands ran + marked notes added [soft] + ≥1 reflector subagent ran) AND <code>≥ 1 CLAUDE.md update</code>. Miss any one → <code>REJECTED / BLOCKED</code>, stay in OBSERVE and keep growing. The up-close, per-check view is the detail card directly below.'
         },
 
         /* (CARD A2 "Active + focused" detail removed — its content already lives on
@@ -84,7 +84,7 @@ window.DECK_INFO = {
         },
         'b2-points': {
             title: 'Three-family exit gate?', tag: 'gate',
-            what: 'Third check: did the job actually reflect on its own work this phase? The three-family gate requires that the CORE metacognition commands ran, new marked notes were added, and at least one reflector subagent ran.',
+            what: 'Third check: did the job actually reflect on its own work this phase? The three-family gate requires that the CORE metacognition commands ran and at least one reflector subagent ran; new marked notes are also expected, but stay soft by default.',
             why: 'This stops the job from glancing at the prompt and rushing onward — but via evidence of reflection, not a numeric score. Three distinct kinds of evidence must exist before PLAN unlocks.',
             hood: '<code>observe-commit.sh</code> enforces the three-family exit gate: (a) reflection commands ran — the 2 CORE ops [hard constitutive floor] PLUS a per-entry drawn minimum of nuanced lenses (from <code>METACOG_FAMILYA_SET</code> {1,2,3}) [hard]; (b) marked-note adds meet the per-entry target drawn from <code>METACOG_FAMILYB_SET</code> [soft by default]; (c) ≥1 of the phase\'s available reflector subagents (<code>METACOG_FAMILYC_REFLECTORS</code>) ran [hard]. No point currency or numeric score exists.'
         },
