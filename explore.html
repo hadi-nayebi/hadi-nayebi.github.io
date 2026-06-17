@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Explorables | Hadosh Academy</title>
+    <meta name="description" content="Interactive diagrams that walk through the seed agent's architecture — the OPEVC cycle, plugins, the CLAUDE.md hierarchy, and more.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/explore.html">
+    <meta property="og:title" content="Interactive Explorables | Hadosh Academy">
+    <meta property="og:description" content="Interactive diagrams that walk through the seed agent's architecture — the OPEVC cycle, plugins, the CLAUDE.md hierarchy, and more.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/explore.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interactive Explorables | Hadosh Academy">
+    <meta name="twitter:description" content="Interactive diagrams that walk through the seed agent's architecture — the OPEVC cycle, plugins, the CLAUDE.md hierarchy, and more.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="css/styles.css?v=20260519">
+    <style>
+        /* Explorables index — explorable-card specifics (teal accent + grid). */
+        .explore-header {
+            margin-bottom: 2.5rem;
+        }
+        .explore-header h1 {
+            margin-bottom: 0.75rem;
+        }
+        .explore-lede {
+            max-width: 52ch;
+            color: var(--text-secondary, #b4b4c6);
+        }
+        .explore-series {
+            margin: 2.75rem 0 1rem;
+        }
+        .explore-series-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--text-primary, #f2f2f7);
+        }
+        .explore-series-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary, #b4b4c6);
+            margin-bottom: 1.25rem;
+        }
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .explore-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.4rem 1.4rem 1.2rem;
+            border-radius: 16px;
+            background: rgba(20, 20, 32, 0.55);
+            border: 1px solid rgba(99, 102, 241, 0.18);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .explore-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #2dd4bf, #6366f1);
+            opacity: 0.85;
+            z-index: 1;
+        }
+        /* Primary link: real <a> wrapping the title, stretched to cover the whole
+           card via ::after — keeps the card keyboard-accessible without nesting
+           anchors (the essay link stays a separate, focusable <a>). */
+        .explore-card-primary {
+            text-decoration: none;
+            color: inherit;
+        }
+        .explore-card-primary::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .explore-card:hover,
+        .explore-card:focus-within {
+            transform: translateY(-4px);
+            border-color: rgba(45, 212, 191, 0.55);
+            box-shadow: 0 12px 32px rgba(45, 212, 191, 0.16);
+        }
+        .explore-card-primary:focus-visible {
+            outline: none;
+        }
+        .explore-card:focus-within {
+            box-shadow: 0 0 0 2px #2dd4bf, 0 12px 32px rgba(45, 212, 191, 0.16);
+        }
+        .explore-card-badge {
+            display: inline-block;
+            align-self: flex-start;
+            position: relative;
+            z-index: 1;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #2dd4bf;
+            border: 1px solid rgba(45, 212, 191, 0.4);
+            border-radius: 999px;
+            padding: 0.18rem 0.6rem;
+            margin-bottom: 0.85rem;
+        }
+        .explore-card h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 1.18rem;
+            margin: 0 0 0.5rem;
+            color: var(--text-primary, #f2f2f7);
+        }
+        .explore-card-desc {
+            position: relative;
+            z-index: 1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-secondary, #b4b4c6);
+            margin: 0 0 1.1rem;
+            flex-grow: 1;
+        }
+        .explore-card-open {
+            position: relative;
+            z-index: 1;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2dd4bf;
+            margin-top: auto;
+        }
+        .explore-card-essay {
+            display: block;
+            position: relative;
+            z-index: 2;
+            margin-top: 0.7rem;
+            font-size: 0.82rem;
+        }
+        .explore-card-essay a {
+            color: #8b5cf6;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+        }
+        .explore-card-essay a:hover,
+        .explore-card-essay a:focus-visible {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="start-here.html">Start Here</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="agents.html">Agents</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="container">
+            <div class="explore-header">
+                <h1>Interactive Explorables</h1>
+                <p class="explore-lede">These are hands-on diagrams that let you step through how a seed agent thinks. Each one accompanies a blog essay, and many now link to related explorables so you can follow a single mechanism across diagrams.</p>
+            </div>
+
+            <!-- Part 1 — Foundations -->
+            <div class="explore-series">
+                <div class="explore-series-title">Part 1 &mdash; Foundations</div>
+                <div class="explore-series-subtitle">Where the seed agent begins: the keystroke, the reflex, the folder that comes alive.</div>
+                <div class="explore-grid">
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b1/explore/hook-flow.html">Hook Flow</a></h3>
+                        <p class="explore-card-desc">How a single keystroke fans out through the seed&rsquo;s reflexes.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b1/01-llms-are-not-the-agents.html">Essay 1 &mdash; LLMs Are Not the Agents</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 5 — The Always-On Digital Cortex -->
+            <div class="explore-series">
+                <div class="explore-series-title">Part 5 &mdash; The Always-On Digital Cortex</div>
+                <div class="explore-series-subtitle">The always-on plugin layer: the population of guards, the compaction chain, and the working-memory hierarchy.</div>
+                <div class="explore-grid">
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b5/explore/plugin-population.html">The Plugin Population</a></h3>
+                        <p class="explore-card-desc">The always-on plugins, each minding one concern.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b5/05_1-the-two-layer-foundation.html">Essay 5.1 &mdash; The Two-Layer Foundation</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b5/explore/compaction-chain.html">The Compaction Chain</a></h3>
+                        <p class="explore-card-desc">How the seed compacts itself across a <code>/clear</code> without losing its thread.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b5/05_3-brain-guard.html">Essay 5.3 &mdash; brain_guard</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b5/explore/claude-md-hierarchy.html">The CLAUDE.md Hierarchy</a></h3>
+                        <p class="explore-card-desc">The anchored footers and durable body that hold the seed&rsquo;s working memory.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b5/05_7-claude-md-hierarchy.html">Essay 5.7 &mdash; The CLAUDE.md Hierarchy</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 6 — The Markov Phasic Brain -->
+            <div class="explore-series">
+                <div class="explore-series-title">Part 6 &mdash; The Markov Phasic Brain</div>
+                <div class="explore-series-subtitle">The five phases plus one cognitive organ &mdash; the OPEVC cycle the seed laps for every job.</div>
+                <div class="explore-grid">
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b6/explore/phasic-cycle.html">One Cycle, Five Compartments</a></h3>
+                        <p class="explore-card-desc">The full OPEVC cycle the seed laps for every job.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b6/06_1-phasic-foundation.html">Essay 6.1 &mdash; Phasic Foundation</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b6/explore/job-flow.html">The Discipline and the Map</a></h3>
+                        <p class="explore-card-desc">How work flows through the phases and their guards.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b6/06_2-discipline-and-map.html">Essay 6.2 &mdash; The Discipline and the Map</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b6/explore/condense-waterfall.html">CONDENSE &mdash; The Waterfall</a></h3>
+                        <p class="explore-card-desc">The three-phase ADDRESS / ARCHIVE / DEFLATE catalog that grows the brain.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b6/06_7-condense.html">Essay 6.7 &mdash; CONDENSE</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b6/explore/completion-events.html">Completion is Not Unfocus</a></h3>
+                        <p class="explore-card-desc">The three distinct events behind a job being &ldquo;done&rdquo;.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b6/06_7-condense.html">Essay 6.7 &mdash; CONDENSE</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b6/explore/phase-advance.html">How a Phase Earns its Advance</a></h3>
+                        <p class="explore-card-desc">The three-family exit gate every forward hop must clear.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b6/06_8-inverse-multiplier.html">Essay 6.8 &mdash; The Rhythm of Work</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b6/explore/job-life.html">The Life of a Job</a></h3>
+                        <p class="explore-card-desc">A job from birth through cycles to completion, and the plan file that outlives it.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b6/06_10-plan-state-machine.html">Essay 6.10 &mdash; The Plan File</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 7 — The Plugin Kit -->
+            <div class="explore-series">
+                <div class="explore-series-title">Part 7 &mdash; The Plugin Kit</div>
+                <div class="explore-series-subtitle">A plugin is a cell with internal organs &mdash; voices, subagents, a budget, and a lock ceremony.</div>
+                <div class="explore-grid">
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b7/explore/voice-surface.html">The Dual Voice Surface</a></h3>
+                        <p class="explore-card-desc"><code>voice.xml</code> &mdash; the softest, cheapest place to customize the seed.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b7/07_3-dual-voice-architecture.html">Essay 7.3 &mdash; The Dual Voice Architecture</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b7/explore/delegation-economy.html">The 80/20 Delegation Economy</a></h3>
+                        <p class="explore-card-desc">Subagents and the dispatch budget that keep the main session light.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b7/07_6-agents-and-80-20-budget.html">Essay 7.6 &mdash; agents/ and the 80/20 Budget</a></span>
+                    </div>
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b7/explore/plugin-substrate.html">The Plugin Cell &amp; Lock Ceremony</a></h3>
+                        <p class="explore-card-desc">A plugin&rsquo;s six-directory anatomy and the lock that keeps edits safe.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b7/07_8-lock-ceremony.html">Essay 7.8 &mdash; The Lock Ceremony</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 8 — From Apprentice to Architect -->
+            <div class="explore-series">
+                <div class="explore-series-title">Part 8 &mdash; From Apprentice to Architect</div>
+                <div class="explore-series-subtitle">How a seed &mdash; and its operator &mdash; matures over months of care.</div>
+                <div class="explore-grid">
+                    <div class="explore-card">
+                        <span class="explore-card-badge">Explorable</span>
+                        <h3><a class="explore-card-primary" href="blog/b8/explore/apprentice-architect.html">From Apprentice to Architect</a></h3>
+                        <p class="explore-card-desc">How a seed (and its operator) matures: voice to hook to plugin.</p>
+                        <span class="explore-card-open">Open explorable &rarr;</span>
+                        <span class="explore-card-essay">Accompanies <a href="blog/b8/08_1-apprentice-to-architect-foundation.html">Essay 8.1 &mdash; Apprentice to Architect Foundation</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/theme-manager.js?v=20260519"></script>
+    <script src="js/components.js?v=20260519"></script>
+</body>
+
+</html>
