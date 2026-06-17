@@ -375,7 +375,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x: 360, y: 360, text: 'One KIND of work per phase. Forbidding the other tools IS the pedagogy.', aha: true,
-              ref: { url: '../06_2-discipline-and-map.html', section: 'The Discipline and the Map', blurb: 'Why the cycle is five compartments, not one free-for-all.' } }
+              ref: { url: '../06_2-discipline-and-map.html', section: 'The Discipline and the Map', blurb: 'Why the cycle is five compartments, not one free-for-all.' } },
+            { x: 815, y: 330, text: 'CONDENSE runs a 7-step waterfall of its own.',
+              ref: { kind: 'deck', url: 'condense-waterfall.html', section: 'The CONDENSE Waterfall', blurb: 'Step through how CONDENSE metabolizes a cycle’s notes into durable memory.' } }
         ],
         navHints: { right: 'the two maps', down: 'idle’s two sub-states' }
     },
@@ -394,7 +396,9 @@ window.DECK_CARDS = {
             { from: 'forward-map', to: 'pv-jump', kind: 'soft', label: 'contains' }
         ],
         stickies: [
-            { x: 690, y: 200, text: 'Permission is STRUCTURAL — in the list or not. The map never decides WHEN; the seed does, judged at commit.', aha: true }
+            { x: 690, y: 200, text: 'Permission is STRUCTURAL — in the list or not. The map never decides WHEN; the seed does, judged at commit.', aha: true },
+            { x: 690, y: 330, text: 'The map says WHICH hops are legal; a separate exit gate decides WHEN a phase may advance.',
+              ref: { kind: 'deck', url: 'phase-advance.html', section: 'How a Phase Earns its Advance', blurb: 'The three-family exit gate every forward hop must clear before it commits.' } }
         ],
         navHints: { left: 'the cycle', right: 'conductor + musicians', down: 'recovery + the urgent bail' }
     },
