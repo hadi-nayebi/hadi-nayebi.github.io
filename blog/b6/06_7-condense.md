@@ -50,6 +50,13 @@ That routing draws on a catalog of seven operations (extensible per the Stage-3 
   Caption (bottom of image, white chalk, hand-drawn): "Image 6.7. CONDENSE runs in three gated phases. Preserve before you delete."
 -->
 
+<!-- RAW_HTML -->
+<aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
+  <span style="font-size: 0.92rem; line-height: 1.5; color: rgba(255,255,255,0.82);"><strong>Interactive diagram.</strong> Walk the CONDENSE waterfall yourself &mdash; the seven operations as a catalog, run in three gated phases (ADDRESS &rarr; ARCHIVE &rarr; DEFLATE), every step clickable with the live code behind it.</span>
+  <a href="explore/condense-waterfall.html" title="Open the interactive CONDENSE waterfall" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the waterfall</a>
+</aside>
+<!-- /RAW_HTML -->
+
 ## The seven operations
 
 The catalog the three phases draw from:
@@ -113,6 +120,13 @@ CONDENSE is also the one phase allowed to *grow the job graph*. The other phases
 The "graph" here is concrete. A *dependency* is a directed edge `job-A → job-B` stored as a list of dependent-job IDs in the parent job's top-level `depends_on` array on the job object. `add-dependency <focused> <dep>` appends an ID; `remove-dependency` filters it out; the completion gate refuses to mark a job `completed` while any ID in its `depends_on` is still in `pending` or `active`. The graph is required to be acyclic — a job cannot depend, transitively, on a job that depends on it — because cycles would deadlock the completion gate forever. CONDENSE adds edges with cycle-wide context; VERIFY removes them with audit-time context. *[ref: depends-on-list-on-job-object | .claude/plugins/job_core/scripts/job.sh — the create arm (depends_on born `[]`), the create-dependent + add-dependency arms (dep append), the completion gate (depends_on enumeration), and the remove-dependency arm | New jobs are seeded with a top-level `depends_on:[]` array; `create-dependent` and `add-dependency` append the dep ID; the completion gate enumerates the top-level `depends_on` and refuses to mark the job completed if any dep is not in status `completed`. `remove-dependency` filters the same top-level array.]*
 
 VERIFY owns the symmetric move on the other end — `remove-dependency`. Where CONDENSE has cycle-wide context to decide what new work needs creating, VERIFY has audit-time context to discover that a declared dependency turned out unnecessary. Adding and removing are split across phases by which one has the right perspective to make the call. The pattern repeats across the architecture: where one phase ADDS, a different phase OWNS the REMOVAL, and the split tracks which phase has the context to judge. *[ref: verify-owns-remove-dependency | .claude/plugins/phase_verify/hooks/verify-guard.sh `remove-dependency` allowlist + explicit BLOCK on create/create-dependent/add-dependency | VERIFY's guard admits `remove-dependency` and explicitly blocks the three additive operations before its broad scripts/* regex. Lifecycle-symmetry locked: ADD/REMOVE different owners by design.]*
+
+<!-- RAW_HTML -->
+<aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
+  <span style="font-size: 0.92rem; line-height: 1.5; color: rgba(255,255,255,0.82);"><strong>Interactive diagram.</strong> See how a job ends &mdash; the completion events CONDENSE runs, and why marking a job complete stays separate from unfocusing the phase. Each box is clickable, with the live code behind it.</span>
+  <a href="explore/completion-events.html" title="Open the interactive completion-events walkthrough" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Explore the events</a>
+</aside>
+<!-- /RAW_HTML -->
 
 ## A worked example
 
