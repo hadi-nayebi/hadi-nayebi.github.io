@@ -179,7 +179,7 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:300, y:30, aha:true, text:'Completing the cycle is <b>not</b> completing the job — three events, three actors, three boundaries.',
-              ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · the three completion events', blurb:'The job_core essay names the three events. Note: it predates the keep-focus/relocated-unfocus build — this deck is the corrected teaching.' } }
+              ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · the three completion events', blurb:'The job_core essay names the same three events; this deck draws their actors and boundaries.' } }
         ],
         nextnote: { x:606, y:496, text:'Follow Event 1 →' },
         downhint: null
