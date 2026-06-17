@@ -17,9 +17,9 @@
  *     claude-md-mover}.md, .../hooks/voice.xml (entry + waterfall-step-1..7 voices),
  *   + .claude/context/opevc-condense.md (design ground truth).
  * The marked-note lifecycle (3-phase gated condense, terminal states, session-log,
- * shape-guard + run-exit, removal-lock) is BUILT in live code ("WAVE-4"), so it is
- * taught here as live — no honesty badge. (Spec still labels it Ship:design — a stale
- * flag flagged to the glossary owner; the code is built.)
+ * shape-guard + run-exit, removal-lock) is BUILT in live code, so it is taught here
+ * as live — no honesty badge. Spec agrees: opevc-condense.md carries Ship: built for
+ * the lifecycle term (the code is built in phase_condense).
  * ============================================================================ */
 window.DECK_META = { page: 'condense-waterfall', seqLabel: 'preservation precedes removal' };
 
