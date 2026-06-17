@@ -1136,7 +1136,7 @@
             edge("v-3", "v-edit", "v-dirty", "hard", "yes"),
             edge("v-4", "v-dirty", "v-block", "hard", "forward refused"),
             edge("v-5", "v-block", "v-back", "hard", "must back-advance"),
-            edge("v-6", "v-back", "v-enter", "soft", "PLAN re-routes"),
+            edge("v-6", "v-back", "v-enter", "hard", "PLAN re-routes"),
             edge("v-7", "v-clean", "v-cond", "hard", "advance"),
             edge("v-8", "v-back", "v-retest", "soft", "plan:verify re-test"),
             edge("v-exit", "v-cond", "back-to-journey", "soft", "")
@@ -1413,7 +1413,7 @@
         "b-focused": {
             title: "focused:true",
             what: "The flag marking this as THE job the agent is paying attention to. Only ever one job is focused at a time.",
-            when: "Set at birth; cleared on completion or when focus switches at idle.",
+            when: "Set at birth; KEPT through completion (a completed job holds focus for the cleanup window) — cleared at the condense→idle advance, or when focus switches at idle.",
             canDo: "Every phase gate, voice, and scope keys off the focused job — so this flag decides which job the whole machine is steering.",
             why: "The single file actually open on your desk, versus the stack of others waiting their turn.",
             builder: "create-active first runs clear_all_focus, then sets focused:true on the new record. Phasic gates and scopes all resolve via job.sh focused."
