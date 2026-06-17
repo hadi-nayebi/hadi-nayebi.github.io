@@ -67,7 +67,7 @@ window.DECK_INFO = {
     },
     'verify': {
         title: 'VERIFY (V)', tag: 'object',
-        what: 'Check the executed work against the plan’s acceptance criteria. Project-file reads only (it may write CLAUDE.md and the plan file). It reports and ROUTES — backward to PLAN or EXECUTE, forward to CONDENSE — rather than patching its own work.',
+        what: 'Check the executed work against the plan’s acceptance criteria. Project-file reads only (it may write CLAUDE.md and the plan file). It reports and ROUTES — backward to OBSERVE, PLAN, or EXECUTE, forward to CONDENSE — rather than patching its own work.',
         why: 'It prevents self-verification bias. With no project-file writes, the phase that judges the work is structurally unable to quietly fix what it just found wrong.',
         hood: 'Richest backward fan-out (three destinations: <code>verify:execute</code> / <code>verify:plan</code> / <code>verify:observe</code>). May reach the web only to CHECK findings, never to gather. Source: <code>opevc-phases.md</code> · "BACKWARD_MAP".'
     },
