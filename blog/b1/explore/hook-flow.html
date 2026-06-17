@@ -862,6 +862,18 @@
     <!-- persistent help button — re-opens the orientation card -->
     <button class="hm-help" id="hm-help" type="button" aria-label="How to read this map" title="How to read this map">?</button>
 
+    <!-- audio guide — free voice draft -->
+    <figure class="audio-guide" aria-label="Draft narration of this diagram" style="position:fixed;top:4rem;left:1.6rem;z-index:1400;width:300px;max-width:calc(100vw - 3.2rem);margin:0;padding:0.75rem 1rem;border:1px solid rgba(139,92,246,0.35);border-radius:14px;background:rgba(99,102,241,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
+      <figcaption style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.78rem;font-weight:600;letter-spacing:0.01em;color:#a5b4fc;">
+        <span aria-hidden="true">&#128264;</span>
+        <span>Draft narration &mdash; free voice.</span>
+      </figcaption>
+      <audio controls preload="none" src="audio/hook-flow-guide.draft.mp3" style="width:100%;height:32px;">
+        Your browser does not support the audio element.
+        <a href="audio/hook-flow-guide.draft.mp3" style="color:#a5b4fc;">Download the draft narration (MP3)</a>.
+      </audio>
+    </figure>
+
     <!-- engine mounts the topbar, viewport, info panel + skeleton into here -->
     <div class="hm-root"></div>
 

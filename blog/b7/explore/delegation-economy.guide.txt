@@ -1,0 +1,25 @@
+Welcome. This is an interactive deck called The Eighty-Twenty Delegation Economy. It walks how the seed agent splits its cognitive labour — and why that split is enforced as a hard budget, not left as advice.
+
+First, how to move. Press the right arrow to walk the seven steps in order. That is the main story. Press the up or down arrow for a deeper detail card about the step you are on. Click any box on screen to read what it is, why it matters, and what happens in the real code. Hover an arrow between boxes to see what that connection means.
+
+Now, the big idea.
+
+A single context window can only hold so much. When the seed agent takes on a large job — researching a codebase, planning a migration, auditing a system — it cannot do all of that thinking in one place at once. So it splits the labour: the main session holds the cross-cutting judgment, about twenty percent of the direct doing, and dispatched subagents carry the parallel investigation and execution, the other eighty.
+
+But a slogan drifts. So the design makes the split a counted resource.
+
+The deck opens there, at the labour split. You see the main session on one side, the subagents on the other, the constraint that forces the split, and the meter that enforces it.
+
+Step two is the meter itself. Every phase entry starts with a balance of five direct actions. Each time the main session acts on files directly, it spends one. Each time it dispatches a subagent, it earns three back. When the balance hits zero, the phase guard blocks the next direct move. The only way forward is to delegate. The arithmetic makes the eighty-twenty split self-correcting.
+
+Step three shows why subagents can fan out without deadlocking. A single flag — the agent type — tells the system whether it is talking to the main orchestrator or a dispatched subagent. Subagents skip the pacing gates that slow the main session into synthesis. If those gates applied to each subagent, launching three at once would deadlock them all. What the exemption keeps is structural scope: each subagent is tool-bounded by its own definition, tighter than the main session, never a blank cheque.
+
+Step four is where the labour lives. Each plugin owns a directory of subagent definitions — its pool. Every name is prefixed to its concern. The prefix is the lock-boundary marker: it ties the subagent to exactly one plugin at a time, matching the single-unlock invariant that makes parallel edits safe.
+
+Step five is the roster. Each phase ships two classes of agent: operational workers sized to that phase's labour, and one metacognitive reflector that judges how the work went and writes the phase's compaction notes. That reflector is the mandatory exit member, and running it satisfies one of the three conditions the phase must meet before it can advance.
+
+Step six shows how new agents enter the live system. Two shared hooks wire everything together. The first symlinks a newly-authored agent definition into the flat directory the platform scans. The second tracks each launch and routes it to the phase gateway — feeding the budget grant, the reflector check, and the audit trail from a single tracked event.
+
+Step seven reaches the richest form: the Workflow. It is design-stage, post-open-source. What is built today is the instruction-borne fractal cycle every phase already follows internally — observe what is needed, decide what to engage, do the reading or building, check what came back, write the result into working memory. The outer hard guard caps whatever the inner soft cycle tries.
+
+Press the right arrow to begin at the labour split.

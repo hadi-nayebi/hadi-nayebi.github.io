@@ -1,0 +1,19 @@
+Welcome. This is an interactive map of the seed agent's plugin layer, called Two Layers, One Roster. Let me walk you through what it shows and how to explore it.
+
+How to move around: the left and right arrow keys walk the seven main steps in sequence. That is the story. The up and down arrows open a deeper detail card for the step you are on. Click any box to read what it is, why it matters, and what happens under the hood. Hover an arrow to see what that connection means.
+
+Now, the big idea. The seed agent's behavioral controls live in a population of single-concern plugins. That population splits into two layers based on one thing: when each plugin fires.
+
+The first layer is always-on. Five plugins attach to every prompt, every tool call, every session start, no matter what job is running or which phase it is in. They never sleep. They are the infrastructure underneath everything else.
+
+The second layer is phasic. An orchestrator conducts the phase machine, and five phase plugins each enforce one phase's rules. Only one phase is active at a time, but the always-on five keep running underneath. The phasic layer never replaces the always-on layer.
+
+Step four counts the roster honestly. Fourteen directories, eleven active plugins, two design placeholders not yet built, and one shared helper tier that belongs to no layer.
+
+Steps five and six go deep into two always-on plugins. First, interaction summary. It watches the token count after each turn and, once the unsummarized tail gets too long, blocks every productive tool until the agent writes a structured five-section summary. That summary appends to a chain, and the chain is the living prompt the job thinks against.
+
+Second, question discipline. The smallest plugin, the most catalytic. One hook, one hardcoded list of nine allowed prefixes, no stored state at all. Every question the seed sends to a user must start with a registered prefix. One unprefixed question in a batch rejects the whole batch. Those nine prefixes are the complete map of every ceremony the seed can perform.
+
+The final step pulls back to the point. No individual plugin is impressive alone. The value is what these single-concern organs compose into together. Ceremonies like the historian ratchet emerge because multiple plugins cooperate. No single one could perform them.
+
+Take it one card at a time. Press the right arrow to begin.

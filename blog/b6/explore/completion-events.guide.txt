@@ -1,0 +1,19 @@
+Welcome. This is an audio guide to Completion is not Unfocus, a concept deck about the three separate events that happen when a job is done.
+
+Let me start with how to explore the deck. Use the left and right arrow keys to walk the five steps in order. That is the main story, and it is the best way to follow along. The up and down arrow keys open a deeper detail card about the step you are on. Click any box to read three things: what it is, why it matters, and what happens in the real code underneath. A help button in the corner brings back these instructions any time.
+
+Now, the idea the deck is built around.
+
+When someone says a job is complete, they usually mean all of it at once: the work is done, the agent leaves the job, and the cycle closes. But those are actually three separate events, firing at three separate moments, owned by three separate parts of the system. Conflating them is what caused the old completion deadlock. Pulling them apart is what fixed it.
+
+Step one introduces all three. Event one is job completion: the job record flips from active to completed. That is all it does. Event two is the condense to idle advance: this is where the agent actually leaves the job and loses focus on it. And event three is cycle closure: the cycle counter increments, but not yet, not on this boundary. It bumps on the very next idle to observe move, when the next lap actually starts.
+
+Step two follows event one closely. When the user approves a job complete question, a hook sets a user approval flag, then a gated executor performs the status flip. That is the entire footprint of event one. Notice what it does not touch: focus. A just-completed job is still the focused job. That is deliberate.
+
+Step three explains why. Keeping focus after completion gives the agent a cleanup window: a short stretch where the job is marked done but the agent still has full access to its tools and write scope. Without that window, a job that completed and unfocused at the same instant would strand the agent mid-condensing. The cleanup window is what lets the final condensing work finish cleanly.
+
+Step four is event two: the relocated unfocus. Once the agent finishes condensing and earns the advance out of the phase, the system advances to idle. Right at that boundary it checks whether the just-advanced job is a completed one. If it is, focus is cleared. This is the real leaving, and it is unmistakably a phase transition event, not part of the record change.
+
+Step five covers event three and the stop gate. Now at idle with no focus, the agent may start a new lap, which is when the cycle counter finally increments, on idle to observe. Or, if no other job is active or pending, the stop gate releases and the agent can rest. The stop gate is the seed's all-work-done check: it only opens when every job is finished.
+
+The key takeaway: the same word, completion, carries three meanings. Separating them into three actors, three boundaries, and three code paths is what keeps the system from deadlocking on itself. Start with the right arrow to walk through all five steps.

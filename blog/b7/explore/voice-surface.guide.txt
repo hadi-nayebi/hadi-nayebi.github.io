@@ -1,0 +1,23 @@
+Welcome. This is an audio guide to the Voice Surface — an interactive map of voice.xml, the plugin layer's soft-memory organ, and the cheapest place to customize how your seed agent thinks.
+
+Let me start with how to move around. Use the left and right arrow keys to walk the seven steps of the story in order. The up and down arrows open a deeper detail card about whichever step you are on. Click any box to read three things about it: what it is, why it matters, and what is happening in the real code. Hover an arrow between boxes to see what that connection means. There is a question-mark button in the corner if you want these instructions again.
+
+Now the big idea. Every plugin in the seed agent carries a file called voice.xml. It is the plugin's soft memory — the place where every message the plugin can inject into the agent's thinking is defined. Nudges that coach behavior, warnings that signal risk, hard refusals that block a forbidden action. All of it in one file, growing as the seed learns, tunable without touching code.
+
+Step one shows the organ itself. What makes voice.xml unusual is that soft nudges and hard refusals sit side by side in the same file. The element type decides which is which. A coaching element may be absorbed or ignored — it is guidance. A block element fails the agent's tool call with a hard exit — it is enforcement. The file is one organ; the element is the teeth.
+
+Step two shows why that one organ splits into two files. Every plugin carries a hooks voice.xml and a scripts voice.xml — not because the topics differ, but because the audience does. Hooks reach the agent's context, shaping what it reasons about. Scripts reach the operator's terminal, telling the human what a command just did. The split is by fire-site, not subject. When you audit for orphaned voices, you must sweep both files — auditing only one would call half the corpus dead.
+
+Step three introduces get_voice, the single shared primitive that every hook and script sources to turn a voice id into rendered text. It extracts by id using a fast sed path or a fallback for multi-line voices, substitutes live numbers into double-brace placeholders so a refusal can say exactly how many actions are missing, and always returns cleanly even when the id does not exist — so a guard can fall back to a hardcoded literal rather than crashing.
+
+Step four shows how the system picks which coaching voice fires. Each phase holds a registered array of coaching voice ids. When the agent asks a question, the tracker reads how much budget remains in the phase, picks a tier — work mode, quality mode, or finishing mode — and then picks one voice at random from that tier. The randomness matters: coaching should never feel scripted. A phase that is just beginning nudges investigation. A phase that is nearly done nudges wrapping up.
+
+Step five is the danger to understand. An orphan is a voice id defined in the file but wired to nothing. It looks alive but can never fire. A yaml plan can target an orphan and watch nothing happen, with no error to explain why. The invariant is strict: every defined id must have a callsite, or the voice must be removed.
+
+Step six shows the tool that enforces that invariant. The catalog script scans every voice.xml and every plugin source, computing fresh on each run the set of callable ids — defined and referenced — and the two failure classes: orphan and missing. Callable is the contract: a Stage-3 yaml plan is only allowed to target callable voices, and the validator will reject any plan key that does not match one.
+
+Step seven closes the story at the softest end of the customization ladder. A Stage-3 yaml plan can re-word an existing voice, phase by phase, for one specific job. A yaml key is a voice id directly — no transform, no naming convention. The augmentation can append to the base voice, replace it wholesale, or prepend a banner. But it can only modify voices that already fire. It cannot mint a new fireable voice. That boundary is what makes per-job tuning safe.
+
+This surface is worth understanding because it is where your seed actually learns to coach itself. Adjust a coaching voice in CONDENSE and the next cycle the phase sounds different. No code change. No lock ceremony. Just a re-worded message in an xml file — and behavior shifts.
+
+Press the right arrow to start at the organ.

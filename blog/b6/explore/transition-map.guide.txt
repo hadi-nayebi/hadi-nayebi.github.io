@@ -1,0 +1,17 @@
+Welcome. This is an interactive map called Every Legal Move, and Why. It shows the complete set of transitions the seed agent can make between its cognition phases. Let me walk you through what is here and how to explore it.
+
+First, how to move around. Use the left and right arrow keys to walk the four steps in order. Each step zooms in on a different angle of the same map. You can click any box to learn what that phase or concept is, why it matters, and what drives it under the hood. Hover any arrow between boxes to see what that specific transition is called and why it exists. There is a help button whenever you want these instructions again.
+
+Now, the big idea. The seed agent moves through a fixed ring of phases: idle, then OBSERVE, PLAN, EXECUTE, VERIFY, CONDENSE, and back to idle. You may have seen that forward spine before. But real work is not a straight march. A plan turns out to be wrong. A build hits something the gathering phase missed. A check reveals the whole approach was off. So the seed also backs up. Every work phase can recover to an earlier one.
+
+This deck shows the whole Markov transition map. Not just the forward spine, but every legal move the seed can make.
+
+The first card lays the complete picture: every forward advance as a solid arrow, and every backward recovery hop as a dashed arrow. Hover any arrow and you will read exactly what that move is for. Solid arrows are gated, meaning the seed must earn the right to advance by passing the three-family exit gate. Dashed arrows are free: the only cost of backing up is a clean git working tree. That asymmetry is the whole design. Moving forward is earned. Backing up is cheap.
+
+The second card isolates the forward spine. Seven advances. Notice that PLAN is the hub: there is no direct path from OBSERVE to EXECUTE or VERIFY. Every build must first pass through a planning phase. The one exception is the non-adjacent jump from PLAN straight to VERIFY, used when a plan needs re-testing without re-executing.
+
+The third card isolates the recovery hops. Seven backward paths. Notice that VERIFY has the richest fan-out: three recovery destinations. A failed check routes to EXECUTE for a build fix, to PLAN for a wrong approach, or all the way back to OBSERVE for missing context. CONDENSE has none. Once the seed is consolidating what it learned, there is no stepping back.
+
+The fourth card shows the two moves that break the plain ring, plus the gmode lane. gmode is an off-cycle maintenance state: any phase can enter it, and it returns the seed to the exact phase it interrupted. The OBSERVE to idle bail is the one way to abandon a cycle cleanly without spending the cycle counter.
+
+Take the four steps in order. Each one is a single focused picture. Press the right arrow to begin at the complete map.

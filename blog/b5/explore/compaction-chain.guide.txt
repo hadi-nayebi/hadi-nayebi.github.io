@@ -1,0 +1,25 @@
+Welcome. This is an audio guide to "How the Seed Compacts Itself" — a seven-step interactive deck about the way the seed agent keeps its mind healthy across an unlimited number of work sessions.
+
+Let me start with how to move around. Use the left and right arrow keys to walk the seven main steps in order. That is the full story, told start to finish. The up and down arrow keys open a deeper detail card about the step you are on right now. Click any box on screen to read three things about it: what it is, why it matters, and what happens under the hood in the real code. Hover an arrow between boxes to see what that connection means. There is a help button if you ever want these instructions back.
+
+Now, the big idea. The seed agent runs unattended, and the model's context window is finite. brain-guard — the always-on plugin — keeps it healthy. But its real trick is that the seed compacts itself, carrying its thinking across the boundary instead of losing it.
+
+The deck walks a chain. It has seven links.
+
+Step one shows two ramps sharing one ceiling. The seed watches two things at once: how full the context window is, and how large the cognition file for the current job has grown. Either one, hitting its ceiling, fires the same compact. Two independent danger signals, one graceful exit.
+
+Step two goes deeper into the context ramp. As tokens climb, the ramp removes one tool per tier. At two hundred thousand tokens, a coaching voice nudges the seed to prepare. At two hundred and fifty thousand, the Read tool is blocked — stopping the main thing that pours new tokens in — while edits and shell calls stay free so the seed can finish its thought. At three hundred thousand, writes are blocked too. Only shell calls and questions remain. The ramp squeezes, it does not slam.
+
+Step three is the compaction file itself. This is not a summary of the work. It is the cognition about the work — open threads, assumptions, loops the seed got stuck in, blind spots. It lives in the job's own directory, born the moment the job is focused, grown at every phase exit, shaped into six named sections. Working memory holds what was built; this file holds how the building is going.
+
+Step four is the finalization seal. Before any session boundary, an ordered quality pass runs: it deduplicates, fills any empty section from the live session, folds the file below a target size, then stamps it sealed. It is a quality gate, not a summarizer. It invents nothing new. Crucially, the seal aims below the size band that would block the next session's first read — so the fresh session that injects the file can always open it.
+
+Step five is clear plus inject. This is the session boundary itself. The seed ends the saturated session and starts a fresh one carrying exactly the sealed cognition. The command is escape, then slash-clear, then the new-session instruction and the compaction file. This replaces native compact entirely. The seed's mind lives on disk, so the clear sheds only the conversation trace, never the cognition.
+
+Step six is the wake reflex. The moment a clear plus inject births the fresh session, a hook fires. It resets the context tier counter, injects the focused job and current phase, re-plays the phase's entry voice so the seed wakes into the right cognitive state, and loads the sealed compaction file off disk. Orientation is deterministic even if the follow-up paste misfires.
+
+Step seven closes the chain: the two-tier Prior Summary. A job can run across an unlimited number of sessions. The first session opens with just a template. The second carries the last sealed file in full. From the third session on, each session injects the last sealed file plus a rolling summary of all prior sessions. That single rolling summary absorbs the entire history behind it. Session thirty still knows what session two learned, at a fixed cost.
+
+That is the chain. Two ramps, one file, one seal, one boundary, one reflex, one rolling summary. The seed's mind lives on disk — so a clear sheds only the conversation trace, never the cognition.
+
+Press the right arrow to begin at step one.

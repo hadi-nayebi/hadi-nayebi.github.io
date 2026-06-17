@@ -1,0 +1,23 @@
+Welcome. This is an audio guide to the interactive diagram called The CLAUDE.md Hierarchy. Let me walk you through what it shows and how to explore it.
+
+First, how to move around. Use the left and right arrow keys to walk the seven main steps in order. That is the story, told start to finish. The up and down arrow keys open a deeper detail card about the step you are on. You can also click any box on screen to read three things about it: what it is, why it matters, and what happens under the hood in the actual code. There is a help button in the corner if you ever want these controls again.
+
+Now for the big idea. The seed agent does not keep its memory in the chat window. Chat is capped and gets wiped clean at every compaction. Instead, the agent remembers on a bus: a file literally named CLAUDE.md placed at known locations on disk. Not a notes file. Not a scratch pad. The working memory itself.
+
+The deck walks this substrate from the top down, in seven steps.
+
+Step one introduces the Markov self-model. Before any work begins, the agent reads its own shape: a catalog of every named cognitive move it can make, and a set of maps saying which move may follow which. This is how the agent knows its own cognition.
+
+Step two is the working-memory bus itself. CLAUDE.md bridges three gaps at once: between phases of one job, between sessions, and between the main agent and the subagents it dispatches. Those subagents carry no session context of their own. What gets written to CLAUDE.md is, in a real sense, written for them.
+
+Step three shows the hierarchy: a two-way split. The root files inject in every phase, so the agent always works knowing the whole house. Everything else is local memory, surfaced on demand when the agent enters that directory. And information only flows upward through the layers, never down by inheritance.
+
+Step four is the lifecycle. A working-memory file moves through four states. It starts proactive, created before work begins. It stays active across every phase of the cycle. After work completes, it becomes retroactive, holding the real outcomes, not just the plan. And at the end of the cycle, CONDENSE deflates it back to a clean body, ready for the next cycle.
+
+Step five covers the four footer anchors. Every CLAUDE.md anywhere carries four ordered markers: the OBSERVE, PLAN, EXECUTE, and VERIFY sections. They are load-bearing. Phase guards route their writes by them. Three separate mechanisms depend on them. The seed blocks the creation of any file missing those anchors, and when it meets an existing file that lacks them, it heals the file before doing anything else.
+
+Step six is about the three durable surfaces. The working-memory brain deflates each cycle. The findings worth keeping get routed upward into two permanent stores: knowledge, an unbounded topic-organized collection that grows monotonically, and memory, a narrow cross-project store of operator rules. The brain forgets by routing content somewhere permanent, not by discarding it.
+
+Step seven closes with size limits and the forgetting discipline. Five soft word caps make file size a forcing function for reorganization. When a cap is approached, content is moved to a durable home. Nothing is dropped. The brain shrinks to stay legible while the knowledge it sheds lands somewhere permanent. One exception: a single file, evolution dot md, has a hard code-enforced limit. That is the only word-count gate in the whole design.
+
+Each step is a single focused idea. Take them one at a time. When you are ready, press the right arrow to begin at the Markov self-model.

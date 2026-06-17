@@ -1,0 +1,15 @@
+Welcome. This is The Job's Life, an interactive map showing how a single piece of work moves through the seed agent from the moment you send your first prompt to the moment the job is marked done. Let me walk you through what you are looking at and how to explore it.
+
+First, how to move around. Click any glowing box to open a detail panel on the left side of the screen. That panel gives you plain-language descriptions of what the thing is, when it fires, and what it does. Hover an arrow to see the label that describes the connection. Some boxes say drill in at the bottom — click those to zoom into a close-up view of that part of the map. Press the back button at the top right to return to the full journey view.
+
+Now, the big picture. When you send your very first prompt to an idle seed agent, something specific happens. The agent does not just answer. A job is born. That job gets a unique ID, your prompt is stored as its first remembered interaction, and the agent is locked into the IDLE phase. Everything that follows is part of this one job's life.
+
+From IDLE the agent begins its first lap. It enters OBSERVE, where it reads and gathers context. It cannot write project files here. Then it moves to PLAN, where it decides the shape of the work. One of the most important things that happens in PLAN is the Stage decision. The agent picks whether this is a quick single pass, or whether it needs a written plan file that carries work across many cycles. This choice is made exactly once.
+
+Next comes EXECUTE, the only phase with full write access. Then VERIFY, which checks the work with independent eyes. If the plan was edited during VERIFY, the agent is sent back to PLAN to reconsider. Only an untouched plan makes it through. Finally CONDENSE, the growth organ. This is where loose notes are absorbed into durable memory, and where new follow-up jobs are actually created from notes the agent dropped during work.
+
+Each colored border tells you which part of the system owns that piece. Blue is the OPEVC ring itself. Indigo is the base job record. Purple is the phase-tracking layer. Sky blue is the plan file. Amber is the tracking counters. Green is CONDENSE. Pink is the interaction summary.
+
+The most striking thing this map reveals is the aha view. Click the glowing room labeled The Aha near CONDENSE, and you will see that a job is never stored as one record. It is one shared ID scattered across half a dozen separate plugin files, each of which lights up lazily the moment the job first touches that plugin. No plugin reads another's data directly. The whole thing is coordinated only by that shared timestamp ID.
+
+Take it one room at a time. Click the drillable rooms to step inside the birth sequence, the dependency route, or the completion ceremony. Each one is a focused look at a single moment in the job's life.

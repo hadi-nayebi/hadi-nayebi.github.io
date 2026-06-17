@@ -1,0 +1,21 @@
+Welcome. This is an audio guide to the interactive diagram called The Plugin Cell and the Lock Ceremony. I will walk you through what it shows and how to explore it before you start clicking.
+
+First, the controls. Use the left and right arrow keys to move through the seven main steps in order. That is the full story, told from start to finish. The up and down arrow keys open a deeper detail card for the step you are on. You can click any box on screen to read three things about it: what it is, why it matters, and what happens under the hood in the real code. There is a help button in the corner if you ever need these instructions again.
+
+Now the big idea. A plugin is the seed agent's unit of hard behavior. Each one owns exactly one concern, manages its own hidden state, and exposes only a small, controlled surface to the rest of the system. Think of it as a cognitive cell. It holds its own internals behind a boundary, evolves, gets tested, and can be cleanly reverted without touching anything else.
+
+The first card shows you what a cell looks like and why editing one costs more than a normal project edit. A bad plugin change is substrate-wide: it can poison every tool call and voice injection for the rest of the session. The friction is intentional.
+
+Step two opens the anatomy. Every functional plugin carries six core directories: a brain surface, its event-fired reflexes, its published verbs, a test suite, living documentation including its history file, and hidden runtime state. Optional pieces like per-plugin agents, an operator tuning file, and a dual voice layer sit on top. What a plugin omits is just as meaningful as what it carries.
+
+Step three shows the invariant that keeps self-modification safe: at most one plugin is unlocked for editing at any moment. A single field holds either one plugin name or the empty string. Every write is checked against it. You cannot switch to a second plugin until you have closed the first one.
+
+Step four is the unlock ceremony itself. To open a plugin, the seed agent asks a prefixed question called PLUGIN-LOCK. It passes through four gates: the agent must be in a protected context, the question body must reach a minimum word count, the plugin's history file must not have gone stale, and the living history is then read into context so the edit continues from where things left off. A rollback point is captured at the moment of unlock, so every self-modification is reversible from the start.
+
+Step five is where the two close paths diverge. Lock-command is the deliberate close the agent runs when it is done and confident. On a passing test suite the plugin is committed and the lock clears. On a failing suite the working tree is preserved and the agent fixes and retries. Safe-lock is the automatic backstop that fires when the agent moves away without closing properly. On failure it quarantines the uncommitted work into a recoverable commit and then reverts the plugin to the captured rollback point. Same trigger, opposite behavior on failure. Reach for lock-command when you are ready; safe-lock catches what you forgot.
+
+Step six shows that the test files are guarded harder than the code beneath them. Even inside an open plugin, test shell scripts are frozen by default. Weakening the safety net is a separate, deliberate act: a nested test-lock question opens exactly one named test file at a time.
+
+Step seven is birth. When a PLUGIN-LOCK question names a plugin that does not yet exist, the birth ceremony fires. A template is stamped and three files are created: the brain surface, the history file, and the historian template. A historian subagent is generated centrally. Then a baseline commit is made so the drift counter starts clean. The new plugin grows from there during execution. Registration in the settings file is the operator's own separate step.
+
+That is the map. Seven steps, one coherent ceremony. Press the right arrow to begin at the cell.

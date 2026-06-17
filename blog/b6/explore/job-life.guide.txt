@@ -1,0 +1,21 @@
+Welcome. This is an interactive walk through the life of a seed-agent job, called The Life of a Job. Let me tell you what it shows and how to move around.
+
+First, how to navigate. The left and right arrow keys follow the job's life in sequence, from birth all the way to completion. That is the main story. The up and down arrow keys open a deeper look at whichever step you are on. And you can click any box on the screen to read three things: what it is, why it matters, and what happens under the hood in the real code. Hover an arrow between boxes to see what that connection means.
+
+Now, the big idea. A job does not start with a name, a goal, or any plan. It starts with almost nothing at all.
+
+When you send a prompt to a sleeping seed, a reflex catches it and turns your words into a job. One live, focused job appears, holding only your first prompt. Its name is empty. Its goal is empty. It does not yet know what it is for. That is not a bug. That is the design. OBSERVE is where the job grows into itself.
+
+In OBSERVE the job gathers. It re-reads your prompt, asks follow-up questions, and piles findings into working memory. Everything you say back appends to its interaction trail. By the end of OBSERVE it has named itself and written a real goal, three hundred to five hundred words, not just a sentence. Four concrete checks must all pass before it is allowed into PLAN. Miss one and it stays in OBSERVE and keeps growing.
+
+In PLAN the job makes its most defining choice: what shape will its work take? It calls set-plan-file once, and that choice commits. A false means a single collaborative cycle. A dot-md filename means a looping multi-cycle job with a prose plan. A dot-yaml means the same loop but with context injected at each phase automatically. That choice is irreversible once the cycle moves on.
+
+EXECUTE is the only phase with full write access. It builds the actual deliverable, inside a declared scope. On a multi-cycle job, the plan file itself is born here, in cycle one, and persists across every future run, getting smarter each time.
+
+VERIFY checks the work with fresh eyes. It cannot fix what it finds. If it has to change the plan, the job is sent backward to re-plan. If work remains open, same thing. Only a clean verify, with the plan untouched and nothing outstanding, opens the door to CONDENSE.
+
+CONDENSE is where the brain actually grows. A seven-step waterfall routes the cycle's findings to lasting homes, deflates working memory by at least eighty percent, and then asks: is this job complete? If yes, a repeating job waits its interval and wakes again on its own. If not, a new cycle begins.
+
+The capstone card shows the final surprise: a job is not one file. It is one ID, and each plugin keeps its own slice, keyed to that same number.
+
+Take it one card at a time. Press the right arrow to begin at the birth.

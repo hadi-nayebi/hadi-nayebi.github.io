@@ -1,0 +1,13 @@
+Welcome. This is an interactive diagram called CONDENSE: the three-phase waterfall. Let me walk you through what it shows and how to navigate it.
+
+First, how to move around. Use the left and right arrow keys to walk the six steps in sequence. That is the main story, told start to finish. The up and down arrow keys open a deeper detail card for the step you are on. Click any box on the screen to read three things about it: what it is, why it matters, and what happens under the hood in the real code. Hover an arrow between boxes to see what that connection means. There is a question-mark button in the corner if you ever want these instructions back.
+
+Now, the big idea. CONDENSE is the last phase of the seed agent's work cycle, and it has seven named operations. But here is the thing that trips everyone up: those seven operations are a catalog, not a sequence. The numbers tell you what CONDENSE can do, not the order it does them.
+
+The real order comes from three gated phases that always run the same way. First, ADDRESS: every marked note left behind by the cycle is handed to its own subagent and driven to a resolved or carried state. Nothing is deleted yet. Second, ARCHIVE: once all the notes are addressed, the full footer is captured as a snapshot, a raw backup you can always come back to. And third, DEFLATE: only after that snapshot is safe does the actual shrinking happen. Durable findings get pulled up into the body. Content that belongs elsewhere gets routed sideways. Then the footer is deleted, down to at least eighty percent of its original size.
+
+The hard guarantee underneath all of this is simple: preservation precedes removal. You cannot shrink what you have not first preserved. The archive step sitting in the middle, between addressing and deflating, is what makes that guarantee hold.
+
+Step one of the deck shows you all three phases together and how the catalog feeds into them. Step two zooms into ADDRESS: where the notes come from, which subagent handles each class, and the two-sided gate that brackets every dispatch. Step three follows a single note through its full lifecycle: quoted going in, modified coming out, never silently skipped. Step four is ARCHIVE: the session-log command that captures the footer and the ordering rule that keeps it honest. Step five is DEFLATE: absorb, migrate, delete, and the breadcrumb that survives for a future OBSERVE to follow. And step six shows the exit: CONDENSE never rolls back. The only way out is forward into idle, or, if real work remains, into a new cycle via the add-cycle command.
+
+Take it one card at a time. Each one is a single focused idea. Press the right arrow to begin at the catalog.

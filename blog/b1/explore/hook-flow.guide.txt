@@ -1,0 +1,15 @@
+Welcome. This is The Agent's Hook Map — an interactive diagram that shows exactly what happens when one keystroke fans out through a seed agent's reflexes. Let me walk you through what you are looking at and how to move around inside it.
+
+First, navigation. Hover over any box to get a one-line summary of what it is. Click a box to open the full story panel in the lower-left corner, which gives you four things: what the hook is, when it fires, what it can do, and why it matters for a real professional who uses this agent. The boxes with a glowing purple border and a label that says "drill in" are rooms you can enter — click one to step inside its own sub-flow. When you are inside a drill room, there is a portal chip at the top to carry you back out to the main map. The zoom controls sit in the bottom-right corner, and there is a help button near the top-right if you want these instructions again.
+
+Now, the big idea this map is teaching. Every time you hit enter and send a message, the seed agent does not just read it and reply. Your text passes through a series of checkpoints called hooks — each one is a deterministic gate that can allow, block, or reshape what happens next. These hooks run whether or not the agent wants them to. The model proposes; the structure disposes.
+
+Here is the main flow, called the spine. It starts at SessionStart, a hook that fires the moment a conversation opens. It seeds the agent with any standing knowledge before your first word arrives. Then your prompt enters, passing through the UserPromptSubmit hook — the most powerful injection point in the whole map, because it can attach instructions the agent treats as part of your request. After that, the agent thinks and reaches the Dispatcher, the traffic hub at the center of everything.
+
+From the Dispatcher, the agent can take three paths. It can use a tool — reaching out to read a file, run a command, or make an edit. That is the Tool Loop, which has eight checkpoints of its own, including a permission gauntlet that checks every action before and after it runs. Or the agent can delegate — handing work to a helper agent or opening a tracked task. That is the Delegation room, with five more checkpoints that can refuse to call a job done until the work passes review. Or the agent can simply respond to you with its answer.
+
+After responding, the agent reaches the Stop hook. This is the hero of the whole map. It fires when the agent thinks it is finished. If Stop is satisfied, the turn ends cleanly. But Stop can block. When it does, the agent is sent straight back into the loop to keep working. This is how a rule like "do not stop until all tests pass" becomes a guarantee, not a hope.
+
+The boxes at the outer edges are the secondary hooks — things like ConfigChange, which can veto a settings edit mid-conversation, and PreCompact, which guards what survives when the context window fills up.
+
+Take it one click at a time. Start by clicking the Stop hook and reading what it says. Then drill into the Tool Loop. Each click opens one focused idea.
