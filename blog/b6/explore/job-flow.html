@@ -1850,9 +1850,9 @@
             title: "Backward → PLAN",
             what: "The job returns to PLAN to re-think, updating its working memory before routing onward.",
             when: "Right after the forward block.",
-            canDo: "PLAN re-cognizes and then routes back to OBSERVE for more context or forward to EXECUTE for a redraft.",
-            why: "Back to the drawing board to reconcile the changed plan with the work.",
-            builder: "verify-commit.sh --backward plan (backward map verify:plan). PLAN then routes to OBSERVE (backward) or EXECUTE (forward)."
+            canDo: "PLAN re-cognizes and then routes back to OBSERVE for more context or forward to VERIFY directly — the loop's normal return (no EXECUTE redraft; post-creation plan-file edits belong to VERIFY).",
+            why: "Back to the drawing board to reconcile the changed plan, then straight back to the inspector.",
+            builder: "verify-commit.sh --backward plan (backward map verify:plan). PLAN then routes to OBSERVE (backward) or VERIFY directly (plan-commit.sh --force --to verify, the loop's normal return; no EXECUTE pass — plan-file edits belong to VERIFY)."
         },
         "v-cond": {
             title: "CONDENSE",
