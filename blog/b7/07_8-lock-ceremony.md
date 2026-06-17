@@ -26,6 +26,13 @@ Plugin code does not get edited the way ordinary files do. Each plugin's hooks, 
 
 The parts of the ceremony form a closed loop: **PLUGIN-LOCK** opens an edit session, **TEST-LOCK** gates test edits inside it, **safe-lock close-out** commits or reverts on the test result, and the **historian ratchet** can refuse to open the lock at all when the plugin's narrative has fallen behind. Each part guards a different risk; together they make plugin edits earn their landing.
 
+<!-- RAW_HTML -->
+<aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
+  <span style="font-size: 0.92rem; line-height: 1.5; color: rgba(255,255,255,0.82);"><strong>Interactive diagram.</strong> Walk the whole ceremony as a deck &mdash; the plugin as a single-concern cell, the one-unlocked invariant, [PLUGIN-LOCK], lock-cmd <em>preserve</em> vs safe-lock <em>auto-revert</em>, the nested [TEST-LOCK], and how a brand-new plugin is born from a 3-file floor. Click any box for the live code behind it.</span>
+  <a href="explore/plugin-substrate.html" title="Open the interactive plugin lock-ceremony walkthrough" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the ceremony</a>
+</aside>
+<!-- /RAW_HTML -->
+
 ---
 
 ## `[PLUGIN-LOCK]` — Opens an Edit Session

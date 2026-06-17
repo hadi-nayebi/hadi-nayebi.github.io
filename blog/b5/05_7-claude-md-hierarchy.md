@@ -102,6 +102,13 @@ CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC c
   Caption (bottom of image, white chalk, hand-drawn): "Image 5.7. Footers inflate across OPEVC, then CONDENSE deflates them — durable findings ratchet upward into the body, the rest discards."
 -->
 
+<!-- RAW_HTML -->
+<aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
+  <span style="font-size: 0.92rem; color: rgba(255,255,255,0.82);">The whole substrate, walkable. The Markov self-model the seed reads at session start, the CLAUDE.md bus and the teeth that updating it grows, the layered hierarchy, the four-state lifecycle, the footer anchors with their birth-block and self-heal, the three durable surfaces the bus condenses into, and the soft size caps with the forgetting discipline &mdash; laid out as an interactive concept-deck you can hover and click.</span>
+  <a href="explore/claude-md-hierarchy.html" style="flex-shrink: 0; display: inline-block; padding: 0.6rem 1.1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; color: #fff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the CLAUDE.md hierarchy</a>
+</aside>
+<!-- /RAW_HTML -->
+
 ## The altered list — CLAUDE.md edits scope execution
 
 There is a second consequence of CLAUDE.md edits during a cycle, and it is what gives the bus teeth. EXECUTE — the only phase that may touch project files outside `.claude/` — is fenced to the *altered list*: the set of directories whose `CLAUDE.md` the agent edited during OBSERVE or PLAN. EXECUTE inherits the list and may only modify files inside those directories. If a directory's `CLAUDE.md` was never touched during the read-only phases, EXECUTE cannot make project changes there in this cycle, however clearly the work seems to call for them. *[ref: second-consequence-altered-list | .claude/plugins/phase_execute/hooks/execute-guard.sh (altered-list membership gate) | Comment line 822: "Observe + plan altered_claude_md lists are merged into execute's data.json at sensor init." Subsequent block enforces: `if ! echo "$altered_list" | grep -qxF "$claude_rel"; then block ...`. Verify-guard.sh separately blocks any project-file edit in VERIFY.]*
