@@ -399,7 +399,9 @@ window.DECK_CARDS = {
             { from: 'prefix-marker', to: 'lock-boundary', kind: 'hard', label: 'matches' }
         ],
         stickies: [
-            { x: 40, y: 60, text: 'Scoping is a consequence of the lock contract, not an arbitrary taxonomy — the surface matches the boundary.' }
+            { x: 40, y: 60, text: 'Scoping is a consequence of the lock contract, not an arbitrary taxonomy — the surface matches the boundary.' },
+            { x: 600, y: 395, text: 'Each subagent is owned by one plugin.',
+              ref: { kind: 'deck', url: 'plugin-substrate.html', section: 'Inside a Plugin', blurb: 'The plugin that owns each subagent via its lock boundary.' } }
         ],
         navHints: { left: 'the exemption', right: 'the rosters' }
     },
@@ -419,7 +421,9 @@ window.DECK_CARDS = {
             { from: 'the-roster', to: 'drop-an-md', kind: 'soft', label: 'tuned by' }
         ],
         stickies: [
-            { x: 300, y: 60, text: 'Tuning the roster tunes both flat dispatch and any future workflow — a workflow calls these same agents by name.' }
+            { x: 300, y: 60, text: 'Tuning the roster tunes both flat dispatch and any future workflow — a workflow calls these same agents by name.' },
+            { x: 764, y: 390, text: 'Each phase dispatches its own subagents.',
+              ref: { kind: 'deck', url: '../../b6/explore/phasic-cycle.html', section: 'The Full OPEVC Cycle', blurb: 'The phases that dispatch these per-phase subagents.' } }
         ],
         navHints: { left: 'the pools', right: 'discovery + accounting', down: 'the shared agent shape' }
     },

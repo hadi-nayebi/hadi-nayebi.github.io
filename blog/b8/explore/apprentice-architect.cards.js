@@ -486,7 +486,11 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x: 300, y: 360, text: 'Each climb is gated by the over-engineering veto: measurement first, then friction. The order is a default, not a mandate.', aha: true,
-              ref: { url: '../08_4-soft-hard-migration.html', section: 'The Cost Ladder', blurb: 'Voice → Hook → Plugin → Template, and the two-axes framing.' } }
+              ref: { url: '../08_4-soft-hard-migration.html', section: 'The Cost Ladder', blurb: 'Voice → Hook → Plugin → Template, and the two-axes framing.' } },
+            { x: 30, y: 360, text: 'The climb begins at the soft voice surface.',
+              ref: { kind: 'deck', url: '../../b7/explore/voice-surface.html', section: 'The Voice Surface', blurb: 'voice.xml — where the soft→hard climb begins.' } },
+            { x: 705, y: 360, text: 'A proven pattern hardens into a plugin organ.',
+              ref: { kind: 'deck', url: '../../b7/explore/plugin-substrate.html', section: 'Inside a Plugin', blurb: 'The plugin form a hardened pattern fossilizes into.' } }
         ],
         navHints: { left: 'brain maturation', right: 'the operator arc', down: 'control types & the veto' }
     },

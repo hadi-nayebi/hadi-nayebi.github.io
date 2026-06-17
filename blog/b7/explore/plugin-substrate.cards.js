@@ -332,7 +332,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:80, y:28, aha:true, text:'A plugin is a <b>single-concern cognitive cell</b> — evolved, tested, and reverted on its own. Its gate is heavier than a project edit because a code regression is <b>substrate-wide</b>.',
-              ref: { url:'../07_1-plugin-kit-foundation.html', section:'Blog 7.1 · the plugin as the unit', blurb:'07_1 introduces the plugin as the architectural unit of the hard layer. This deck draws the cell, its anatomy, and the lock ceremony that keeps self-modification safe.' } }
+              ref: { url:'../07_1-plugin-kit-foundation.html', section:'Blog 7.1 · the plugin as the unit', blurb:'07_1 introduces the plugin as the architectural unit of the hard layer. This deck draws the cell, its anatomy, and the lock ceremony that keeps self-modification safe.' } },
+            { x:660, y:310, text:'These organs make up the always-on plugins.',
+              ref: { kind: 'deck', url: '../../b5/explore/plugin-population.html', section: 'The Always-On Plugins', blurb: 'The always-on layer these plugin organs live inside.' } }
         ],
         navHints: { right: 'the anatomy', down: 'who reads / writes / depends' }
     },
@@ -374,7 +376,11 @@ window.DECK_CARDS = {
         edges: [],
         stickies: [
             { x:80, y:28, aha:true, text:'The <b>skeleton trio</b> — CLAUDE.md, hooks/, scripts/ — plus tests/ docs/ data.json. Optional organs are layered atop: <b>their absence is intentional signal</b>.',
-              ref: { url:'../07_2-skeleton-claudemd-hooks-scripts.html', section:'Blog 7.2 · the skeleton', blurb:'07_2 walks the CLAUDE.md / hooks / scripts skeleton and the read/write/depend triple per organ.' } }
+              ref: { url:'../07_2-skeleton-claudemd-hooks-scripts.html', section:'Blog 7.2 · the skeleton', blurb:'07_2 walks the CLAUDE.md / hooks / scripts skeleton and the read/write/depend triple per organ.' } },
+            { x:500, y:340, text:'The dual voice.xml is the softest customization layer.',
+              ref: { kind: 'deck', url: 'voice-surface.html', section: 'The Voice Surface', blurb: 'voice.xml — the softest, cheapest customization layer.' } },
+            { x:715, y:340, text:'The agents/ organ runs the 80/20 dispatch economy.',
+              ref: { kind: 'deck', url: 'delegation-economy.html', section: 'The Delegation Economy', blurb: 'The agents/ organ and the 80/20 dispatch budget.' } }
         ],
         navHints: { left: 'the cell', right: 'one at a time' }
     },

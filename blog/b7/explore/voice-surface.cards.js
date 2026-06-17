@@ -320,7 +320,9 @@ window.DECK_CARDS = {
         ],
         stickies: [
             { x:70, y:24, aha:true, text:'voice.xml is the <b>soft-memory organ</b> of the plugin layer — the cheapest place to customize the seed. <b>Soft and hard voices coexist in one file</b>; the element type, not the file, decides whether a fired voice nudges or refuses.',
-              ref: { url:'../07_3-dual-voice-architecture.html', section:'Blog 7.3 · the dual voice architecture', blurb:'07_3 introduces the voice surface and the two files it splits across. This deck draws the whole surface — elements, the get_voice primitive, coaching rotation, the orphan audit, and Stage-3 yaml injection.' } }
+              ref: { url:'../07_3-dual-voice-architecture.html', section:'Blog 7.3 · the dual voice architecture', blurb:'07_3 introduces the voice surface and the two files it splits across. This deck draws the whole surface — elements, the get_voice primitive, coaching rotation, the orphan audit, and Stage-3 yaml injection.' } },
+            { x:660, y:310, text:'voice.xml is one organ inside the plugin.',
+              ref: { kind: 'deck', url: 'plugin-substrate.html', section: 'Inside a Plugin', blurb: 'Where voice.xml sits among the plugin\'s organs.' } }
         ],
         navHints: { right: 'the two files', down: 'the six element types' }
     },
@@ -341,7 +343,9 @@ window.DECK_CARDS = {
             { from:'vx-block', to:'vx-rubric', kind:'hard', label:'must teach' }
         ],
         stickies: [
-            { x:70, y:28, aha:true, text:'The <b>soft/hard split is at the element level</b> — coaching/info/warning/entry nudge, block/error refuse. Every hard voice must teach <b>WHY it fired, WHAT to do, and the EXPECTED STATE</b> on retry, pinned by a test.' }
+            { x:70, y:28, aha:true, text:'The <b>soft/hard split is at the element level</b> — coaching/info/warning/entry nudge, block/error refuse. Every hard voice must teach <b>WHY it fired, WHAT to do, and the EXPECTED STATE</b> on retry, pinned by a test.' },
+            { x:500, y:450, text:'Soft voices harden into hooks up the cost ladder.',
+              ref: { kind: 'deck', url: '../../b8/explore/apprentice-architect.html', section: 'Apprentice to Architect', blurb: 'The maturation arc and the soft→hard cost ladder.' } }
         ],
         navHints: { up: 'back to the organ' }
     },
