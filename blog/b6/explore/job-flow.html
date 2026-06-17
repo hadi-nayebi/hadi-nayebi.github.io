@@ -1324,7 +1324,7 @@
             title: "CONDENSE",
             what: "The growth organ. Not a peer phase — it is where the cycle's findings get absorbed into durable memory, and where new jobs are actually born from notes left earlier.",
             when: "The last phase of every cycle, reachable only from a clean VERIFY.",
-            canDo: "Runs a 7-step waterfall: absorbs footers, routes knowledge, and (step 3) vets [PENDING-JOB] notes into real jobs. The only hard exit is the 80% deflation gate.",
+            canDo: "Runs the seven CONDENSE operations: absorbs footers, routes knowledge, and (step 3) vets [PENDING-JOB] notes into real jobs. The exit is hard-gated several times over — the three-family exit gate, the marked-note terminal-state gate, the archive-verified gate, the consumption gate, and the 80% deflation gate.",
             why: "Sleep, for the brain: the day's loose notes get filed, consolidated, and turned into lasting memory before the next day starts.",
             builder: "condense-guard allows job.sh create unconditionally (CONDENSE-only). Deflation gate: bottom-section words must absorb ≥80% before advancing to idle. condense-commit.sh (clear-focus detection) clears focus if the job completed this cycle (relocated unfocus)."
         },
@@ -1556,7 +1556,7 @@
             when: "From when it's written until the next CONDENSE.",
             canDo: "Waits. A note that isn't routed even then can carry over to a later CONDENSE.",
             why: "The follow-up list you don't touch until your end-of-day cleanup.",
-            builder: "Handling is SOFT; the deflation gate (≥80%) is the only hard CONDENSE gate, so an un-routed note can ride the ~20% headroom into a later cycle."
+            builder: "The routing decision is SOFT (coaching), but CONDENSE's exit is hard-gated: the terminal-state gate requires EVERY marked note to land terminal — [RESOLVED:] or explicitly [CARRIED:n] (counted) — so an un-routed note can't silently ride the headroom; carry-over is explicit. The archive-verified, consumption, and 80% deflation gates also gate the exit."
         },
         "s-step3": {
             title: "CONDENSE step 3",
