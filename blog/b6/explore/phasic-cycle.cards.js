@@ -398,7 +398,9 @@ window.DECK_CARDS = {
         stickies: [
             { x: 690, y: 200, text: 'Permission is STRUCTURAL — in the list or not. The map never decides WHEN; the seed does, judged at commit.', aha: true },
             { x: 690, y: 330, text: 'The map says WHICH hops are legal; a separate exit gate decides WHEN a phase may advance.',
-              ref: { kind: 'deck', url: 'phase-advance.html', section: 'How a Phase Earns its Advance', blurb: 'The three-family exit gate every forward hop must clear before it commits.' } }
+              ref: { kind: 'deck', url: 'phase-advance.html', section: 'How a Phase Earns its Advance', blurb: 'The three-family exit gate every forward hop must clear before it commits.' } },
+            { x: 690, y: 450, text: 'See every legal transition drawn out — forward AND recovery, each arrow explained.',
+              ref: { kind: 'deck', url: 'transition-map.html', section: 'The Full Transition Map', blurb: 'Every forward and backward (recovery) hop on one map — hover any arrow for what that transition is for.' } }
         ],
         navHints: { left: 'the cycle', right: 'conductor + musicians', down: 'recovery + the urgent bail' }
     },
