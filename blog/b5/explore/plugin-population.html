@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- Version: v1.0.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The plugin population | Hadosh Academy</title>
+    <meta name="description" content="An interactive concept-deck on the seed agent's plugin population: the two layers (always-on fires on every event; phasic mode-switches per phase), the live roster (11 active + 2 unimplemented designs + a shared lib tier), and the two always-on plugins drawn deep — interaction_summary (mega-prompt compression) and question_discipline (the AskUserQuestion prefix gate). Walk the seven steps; click any box for the code-accurate detail.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b5/explore/plugin-population.html">
+    <meta property="og:title" content="The plugin population | Hadosh Academy">
+    <meta property="og:description" content="The seed's plugin layer as a population: two layers (always-on vs phasic), the live roster, and the two always-on plugins in depth — interaction_summary and question_discipline. A spatial concept-deck you can hover and click.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b5/explore/plugin-population.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The plugin population | Hadosh Academy">
+    <meta name="twitter:description" content="Two layers, one roster: always-on fires on every event, phasic mode-switches per phase. Plus interaction_summary and question_discipline drawn deep. Walk the seven steps and click any box for the code-accurate detail.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
+
+    <!-- site stylesheet — fonts + theme vars only -->
+    <link rel="stylesheet" href="../../../css/styles.css?v=20260518">
+    <!-- shared deck engine styles (generic across all concept-decks) -->
+    <link rel="stylesheet" href="../../b6/explore/deck-engine.css?v=20260603">
+</head>
+
+<body>
+    <a href="../05_1-the-two-layer-foundation.html" class="chrome-back" aria-label="Back to Essay 5.1">&larr; Back to Essay 5.1</a>
+
+    <div class="deck-title" aria-hidden="true">PLUGIN POPULATION<span>two layers, one roster</span></div>
+
+    <!-- step indicator -->
+    <div class="step-ind" id="step-ind" aria-live="polite"></div>
+
+    <!-- ============================ NAV ARROWS ============================ -->
+    <button class="nav-arrow is-disabled" id="nav-left" type="button" aria-label="Previous card">&larr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-right" type="button" aria-label="Next card">&rarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-up" type="button" aria-label="Card above">&uarr;<span class="nav-arrow__hint"></span></button>
+    <button class="nav-arrow is-disabled" id="nav-down" type="button" aria-label="Card below">&darr;<span class="nav-arrow__hint"></span></button>
+
+    <!-- ============================ DECK ============================ -->
+    <div class="deck-root">
+        <div class="deck-grid" id="deck-grid"><!-- cells injected by JS --></div>
+    </div>
+
+    <!-- ============================ TOOLTIP ============================ -->
+    <div class="tooltip" id="tooltip" role="status" aria-hidden="true">
+        <div class="tooltip__t" id="tooltip-t"></div>
+        <div class="tooltip__w" id="tooltip-w"></div>
+        <div class="tooltip__warn" id="tooltip-warn" style="display:none">&#9888; blog vs code &mdash; click to read</div>
+        <div class="tooltip__hint">click for the full story</div>
+    </div>
+
+    <!-- ============================ INFO PANEL ============================ -->
+    <aside class="info-panel" id="info-panel" aria-live="polite" role="region" aria-label="Concept detail">
+        <button class="info-close" id="info-close" aria-label="Close detail panel">&times;</button>
+        <div id="info-content"></div>
+    </aside>
+
+    <!-- ============================ LEGEND ============================ -->
+    <aside class="legend is-collapsed" id="legend" aria-label="Diagram legend">
+        <button class="legend__head" id="legend-head" type="button" aria-expanded="false" aria-controls="legend-body">
+            <span>Legend — tags &amp; arrows</span>
+            <span class="legend__chev" aria-hidden="true">&#9660;</span>
+        </button>
+        <div class="legend__body" id="legend-body">
+            <div class="legend__sect">What the tags mean</div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6b7fb8"></span><span class="legend__txt"><b>&#9676; State</b>a field or condition the seed holds</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#d9a948"></span><span class="legend__txt"><b>&#9998; Context</b>a surrounding fact or category</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#6366f1"></span><span class="legend__txt"><b>&#9635; Object</b>a plugin, file, or artifact that exists</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#38bdf8"></span><span class="legend__txt"><b>&#9889; Action</b>an operation the seed or operator runs</span></div>
+            <div class="legend__row"><span class="legend__sw" style="border-left-color:#34d399"></span><span class="legend__txt"><b>&#10003; Gate</b>a checked condition that must pass</span></div>
+            <div class="legend__sect">Arrows</div>
+            <div class="legend__row"><span class="legend__edge" aria-hidden="true"></span><span class="legend__txt"><b>Solid = hard</b>a code-enforced step</span></div>
+            <div class="legend__row"><span class="legend__edge legend__edge--soft" aria-hidden="true"></span><span class="legend__txt"><b>Dashed = soft</b>coaching or a soft relation</span></div>
+        </div>
+    </aside>
+
+    <!-- ============================ HELP BUTTON ============================ -->
+    <button class="help-btn" id="help-btn" type="button"><b>?</b> how to read this</button>
+
+    <!-- ============================ ORIENTATION OVERLAY ============================ -->
+    <div class="orient" id="orient" role="dialog" aria-modal="true" aria-labelledby="orient-title">
+        <div class="orient__card">
+            <div class="orient__kicker">How to read this deck</div>
+            <h2 id="orient-title">Two layers, one roster.</h2>
+            <p class="orient__lead">The seed's behavioral controls are a <b>population of single-concern plugins</b>, split into two layers by <b>when they fire</b>. The <b>always-on layer</b> (five plugins) fires on every prompt, tool call, and session start; the <b>phasic layer</b> (an orchestrator + five phase plugins) swaps one mode in per phase while the always-on five keep running underneath. This deck names the two layers, counts the live roster honestly, and draws the two always-on plugins in depth — <b>interaction_summary</b> (mega-prompt compression) and <b>question_discipline</b> (the prefix gate). Each card is one focused idea, with a clean diagram you can hover and click.</p>
+            <div class="orient__keys">
+                <span class="orient__key"><span class="kbd">&larr;</span><span class="kbd">&rarr;</span></span>
+                <span class="orient__keydesc"><b>Walk the seven steps</b> in sequence &mdash; this is the main story.</span>
+                <span class="orient__key"><span class="kbd">&uarr;</span><span class="kbd">&darr;</span></span>
+                <span class="orient__keydesc"><b>Related detail</b> &mdash; a deeper look at the card you're on.</span>
+                <span class="orient__key"><span class="kbd">click</span></span>
+                <span class="orient__keydesc">any box for <b>what it is</b>, <b>why it matters</b>, and <b>under the hood</b>.</span>
+            </div>
+            <p class="orient__thesis">A plugin's layer is decided by WHEN it fires, not by what it does — and the architecture's value is what these single-concern organs compose into.</p>
+            <button class="orient__go" id="orient-go" type="button">Start at the two layers &rarr;</button>
+        </div>
+    </div>
+
+    <!-- per-deck content (data) + the shared deck engine -->
+    <script src="plugin-population.cards.js?v=20260603"></script>
+    <script src="../../b6/explore/deck-engine.js?v=20260603"></script>
+</body>
+</html>
