@@ -208,7 +208,7 @@ grep -c -i "glassy\|glassmorphism" blog/<slug>.md blog/<slug>.html   # must be 0
 grep -c "Chalk-on-blackboard" blog/<slug>.md blog/<slug>.html        # must equal the number of image placeholders
 ```
 
-## OPEVC Markers Forbidden in Blog Source (NON-NEGOTIABLE)
+## OPEVC Anchors Forbidden in Blog Source (NON-NEGOTIABLE)
 
 The OPEVC footer anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong **ONLY** in agent CLAUDE.md working-memory files **as section anchors**. They MUST NOT appear in blog `.md` source files as bare-line section anchors. The HTML converter happens to strip them from rendered output, but:
 - They pollute the source — readers seeing the .md (e.g., via GitHub source view) see broken-looking artifacts.
