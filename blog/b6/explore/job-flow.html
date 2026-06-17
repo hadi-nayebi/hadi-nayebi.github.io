@@ -829,8 +829,8 @@
  *   core         · the OPEVC ring spine (idle/OBSERVE/PLAN/EXECUTE/VERIFY/CONDENSE)
  *   job_core     · base record (id,name,objective,status,focused,user_interactions,depends_on,user_approval…)
  *   phasic       · phasic_system mirror ({id,current_phase,cycle})
- *   plan         · phase_plan ext (plan_file,plan_entries,multiplier,extension_*)
- *   tracker      · phase_observe/execute/verify trackers (points,multiplier,marker_counts,plan_edits)
+ *   plan         · phase_plan ext (plan_file,plan_entries,extension_*)
+ *   tracker      · phase_observe/execute/verify trackers (action_counts,marker_counts,plan_edits)
  *   condense     · phase_condense (pending_jobs_created, the 7-step waterfall)
  *   summary      · interaction_summary mirror (last_summarized_index,summary_needed,summary_chain)
  *   footer       · CLAUDE.md four-footer working-memory layer (marker TEXT)
@@ -910,11 +910,11 @@
             // birth in-ramp (HARD: only auto-create path)
             edge("j-prompt-birth", "prompt-in", "birth-pill", "hard", "active_count==0"),
             edge("j-birth-idle", "birth-pill", "idle", "hard", "phase init"),
-            // the ring (forward advances are HARD: ≥100pts + ≥1 update)
+            // the ring (forward advances are HARD: three-family exit gate)
             edge("j-idle-obs", "idle", "observe", "hard", "advance"),
-            edge("j-obs-plan", "observe", "plan", "hard", "≥100pts"),
+            edge("j-obs-plan", "observe", "plan", "hard", "exit gate"),
             edge("j-plan-exec", "plan", "execute", "hard", "plan_file set"),
-            edge("j-exec-ver", "execute", "verify", "hard", "≥100pts"),
+            edge("j-exec-ver", "execute", "verify", "hard", "exit gate"),
             edge("j-ver-cond", "verify", "condense", "hard", "plan untouched"),
             edge("j-cond-idle", "condense", "idle", "hard", "80% deflation"),
             // VERIFY plan-edit back-edge (HARD)
@@ -1064,9 +1064,9 @@
         var children = [
             portal("back-to-journey", "journey", "↑ back to the journey"),
             node("sd-obs", W_STAGE, H_STAGE, { type: "stage", title: "Cycle-1 OBSERVE", sub: "gather context", lane: "core", stage: "cycle1-observe" }),
-            node("sd-mult", W_HOOK, H_HOOK, { type: "hook", title: "set-multiplier", sub: "sentinel 0 locks tools", lane: "tracker", stage: "cycle1-observe" }),
+            node("sd-mult", W_HOOK, H_HOOK, { type: "hook", title: "Entry voice + budget", sub: "direct-action budget starts at 5", lane: "tracker", stage: "cycle1-observe" }),
             node("sd-expand", W_STAGE, H_STAGE, { type: "stage", title: "Expand objective + name", sub: "SOFT · only NON-EMPTY checked", lane: "job_core", stage: "cycle1-observe", contradiction: "06_3 / 05_4 read the 300-500w (or 100-150w starter) objective-shape as a HARD gate checked by observe-commit --force. Code: observe-commit checks only that name + objective are NON-EMPTY — no word floor. The objective is even born as an EMPTY string. The shape is coaching, not a gate." }),
-            node("sd-advance", W_HOOK, H_HOOK, { type: "hook", title: "Advance to PLAN", sub: "≥100pts + ≥1 update + ≥100-word msg", lane: "tracker", stage: "cycle1-observe" }),
+            node("sd-advance", W_HOOK, H_HOOK, { type: "hook", title: "Advance to PLAN", sub: "three-family exit gate", lane: "tracker", stage: "cycle1-observe" }),
             node("sd-null", W_STAGE, H_STAGE, { type: "stage", title: "plan_file = null", sub: "born undecided · set-once sentinel", lane: "plan", stage: "stage-decision" }),
             node("sd-setplan", W_HOOK, H_HOOK, { type: "hook", title: "set-plan-file", sub: "sole writer · refuses 2nd call", lane: "plan", stage: "stage-decision" }),
             node("sd-stage1", W_STAGE, H_STAGE, { type: "stage", title: "Stage 1 · false", sub: "single deep cycle · explicit set", lane: "plan", stage: "stage-decision" }),
@@ -1075,9 +1075,9 @@
             node("sd-block", W_HOOK, H_HOOK, { type: "hook", title: "plan-commit BLOCK", sub: "advance refused while null", lane: "plan", stage: "stage-decision", contradiction: "08_1 / 08_2 / 07_9 describe the seed PROMOTING a job into the next shape / next set of gates. Code: there is NO inter-Stage promotion. set-plan-file is set-once in cycle-1 PLAN and refuses any second call; moving a job between Stages is a user-discussed decision, never auto." })
         ];
         var edges = [
-            edge("sd-1", "sd-obs", "sd-mult", "hard", "set first"),
+            edge("sd-1", "sd-obs", "sd-mult", "soft", "entry voice"),
             edge("sd-2", "sd-mult", "sd-expand", "soft", "tools unlock"),
-            edge("sd-3", "sd-expand", "sd-advance", "hard", "≥100pts"),
+            edge("sd-3", "sd-expand", "sd-advance", "hard", "exit gate"),
             edge("sd-4", "sd-advance", "sd-null", "hard", "PLAN · plan_file born null"),
             edge("sd-5", "sd-null", "sd-block", "hard", "advance blocked"),
             edge("sd-6", "sd-null", "sd-setplan", "hard", "must set once"),
@@ -1128,7 +1128,7 @@
             node("v-block", W_HOOK, H_HOOK, { type: "hook", title: "forward BLOCKED", sub: "verify-commit refuses → CONDENSE", lane: "core", stage: "verify-backedge" }),
             node("v-back", W_STAGE, H_STAGE, { type: "stage", title: "Backward → PLAN", sub: "re-cognize · update CLAUDE.md", lane: "core", stage: "verify-backedge" }),
             node("v-cond", W_STAGE, H_STAGE, { type: "hub", title: "CONDENSE", sub: "only clean VERIFY advances", lane: "condense", stage: "verify-backedge", drill: "spawn" }),
-            node("v-retest", W_SHOOK, H_SHOOK, { type: "secondary", title: "plan → VERIFY re-test", sub: "DESIGN-ONLY · unbuilt", lane: "core", stage: "verify-backedge", contradiction: "06_6 / 06_10 read 'Outstanding Items not empty blocks VERIFY advance.' That check is real but lives in the CONDENSE [JOB-COMPLETE] pre-check, not VERIFY. The plan→VERIFY re-test fork is also design-only — there is no plan:verify entry in the phase map." })
+            node("v-retest", W_SHOOK, H_SHOOK, { type: "secondary", title: "plan → VERIFY re-test", sub: "BUILT · plan→VERIFY re-test", lane: "core", stage: "verify-backedge" })
         ];
         var edges = [
             edge("v-1", "v-enter", "v-edit", "hard", "any plan Edit?"),
@@ -1138,7 +1138,7 @@
             edge("v-5", "v-block", "v-back", "hard", "must back-advance"),
             edge("v-6", "v-back", "v-enter", "soft", "PLAN re-routes"),
             edge("v-7", "v-clean", "v-cond", "hard", "advance"),
-            edge("v-8", "v-back", "v-retest", "soft", "unbuilt fork"),
+            edge("v-8", "v-back", "v-retest", "soft", "plan:verify re-test"),
             edge("v-exit", "v-cond", "back-to-journey", "soft", "")
         ];
         return { id: "root", layoutOptions: {}, children: children, edges: edges };
@@ -1156,7 +1156,7 @@
             node("c-approve", W_HOOK, H_HOOK, { type: "hook", title: "job.sh approve → complete", sub: "user_approval=true", lane: "job_core", stage: "completion" }),
             node("c-status", W_STAGE, H_STAGE, { type: "stage", title: "status: completed", sub: "focus KEPT for cleanup", lane: "job_core", stage: "completion" }),
             node("c-unfocus", W_STAGE, H_STAGE, { type: "exit", title: "Unfocus at idle", sub: "condense→idle clears focus", lane: "phasic", stage: "completion" }),
-            node("c-notbuilt", W_SHOOK, H_SHOOK, { type: "secondary", title: "extension / repeat / reactivation", sub: "fields NOT-YET-BUILT", lane: "tracker", stage: "completion", contradiction: "Most extension / repeat / reactivation machinery is named in the blogs but NOT built: extension_cycles_added, --add-cycle, effective_last_cycle, repeating_interval, [REPEAT-JOB], and the two heartbeats are design-only. The completion path that IS built is the [JOB-COMPLETE] → approve → complete → relocated-unfocus sequence." })
+            node("c-notbuilt", W_SHOOK, H_SHOOK, { type: "secondary", title: "extension / repeat / reactivation", sub: "fields BUILT", lane: "tracker", stage: "completion" })
         ];
         var edges = [
             edge("c-1", "c-cond", "c-elig", "hard", "asks"),
@@ -1164,7 +1164,7 @@
             edge("c-3", "c-gate", "c-approve", "hard", "all checks pass"),
             edge("c-4", "c-approve", "c-status", "hard", "flip"),
             edge("c-5", "c-status", "c-unfocus", "hard", "condense→idle"),
-            edge("c-6", "c-cond", "c-notbuilt", "soft", "design-only"),
+            edge("c-6", "c-cond", "c-notbuilt", "soft", "built extensions"),
             edge("c-exit", "c-unfocus", "back-to-journey", "soft", "")
         ];
         return { id: "root", layoutOptions: {}, children: children, edges: edges };
@@ -1180,8 +1180,8 @@
             node("g-id", W_STAGE, H_STAGE, { type: "hub", title: "ONE timestamp ID", sub: "the only shared key", lane: "phasic", stage: "growth-overview" }),
             node("g-jobcore", W_HOOK, H_HOOK, { type: "hook", title: "job_core/data.json", sub: "id · name · status · user_interactions · depends_on", lane: "job_core", stage: "growth-overview" }),
             node("g-phasic", W_HOOK, H_HOOK, { type: "hook", title: "phasic_system/data.json", sub: "current_phase · cycle", lane: "phasic", stage: "growth-overview" }),
-            node("g-plan", W_HOOK, H_HOOK, { type: "hook", title: "phase_plan/data.json", sub: "plan_file · plan_entries · multiplier", lane: "plan", stage: "growth-overview" }),
-            node("g-trackers", W_HOOK, H_HOOK, { type: "hook", title: "observe/execute/verify trackers", sub: "points · marker_counts · plan_edits", lane: "tracker", stage: "growth-overview" }),
+            node("g-plan", W_HOOK, H_HOOK, { type: "hook", title: "phase_plan/data.json", sub: "plan_file · plan_entries · extension fields", lane: "plan", stage: "growth-overview" }),
+            node("g-trackers", W_HOOK, H_HOOK, { type: "hook", title: "observe/execute/verify trackers", sub: "action_counts · marker_counts · plan_edits", lane: "tracker", stage: "growth-overview" }),
             node("g-condense", W_HOOK, H_HOOK, { type: "hook", title: "phase_condense/data.json", sub: "pending_jobs_created", lane: "condense", stage: "growth-overview" }),
             node("g-summary", W_HOOK, H_HOOK, { type: "hook", title: "interaction_summary/data.json", sub: "summary_needed · summary_chain", lane: "summary", stage: "growth-overview" }),
             node("g-lazy", W_STAGE, H_STAGE, { type: "stage", title: "Each lane LIGHTS UP LAZILY", sub: "on first entry into that domain", lane: "core", stage: "growth-overview" }),
@@ -1236,8 +1236,8 @@
         core: { label: "OPEVC ring", blurb: "The phase spine — idle + the five work phases the focused job laps through." },
         job_core: { label: "job_core (base)", blurb: "The base record: id, name, objective, status, focused, user_interactions, depends_on, approvals." },
         phasic: { label: "phasic_system", blurb: "The phase mirror: {id, current_phase, cycle}. A separate data.json keyed by the same ID." },
-        plan: { label: "phase_plan", blurb: "The plan extension: plan_file, plan_entries, multiplier, extension fields." },
-        tracker: { label: "phase trackers", blurb: "observe/execute/verify trackers: points, multiplier, marker_counts, plan_edits." },
+        plan: { label: "phase_plan", blurb: "The plan extension: plan_file, plan_entries, extension fields." },
+        tracker: { label: "phase trackers", blurb: "observe/execute/verify trackers: per-class action counts, marker_counts, plan_edits." },
         condense: { label: "phase_condense", blurb: "The growth organ: 7-step waterfall, deflation gate, pending_jobs_created." },
         summary: { label: "interaction_summary", blurb: "The compressed VIEW: last_summarized_index, summary_needed, summary_chain — created lazily." },
         footer: { label: "CLAUDE.md footer", blurb: "Working-memory layer: the four-footer anchors hold marker TEXT; only COUNTS reach data.json." }
@@ -1270,7 +1270,7 @@
             when: "At the start of a fresh session, or any moment the agent is sitting idle with no active job and you send it a real request.",
             canDo: "Triggers the birth of a brand-new job, which becomes the one and only thing the agent is focused on.",
             why: "Like walking up to an assistant who is doing nothing and handing them their first assignment — that single sentence becomes the file everything else gets filed under.",
-            builder: "UserPromptSubmit → prompt-handler.sh:48 reads active_count; if 0 AND the prompt is real (non-empty, not a <task-notification>, CLAUDE_SUBAGENT!=true) it bootstraps a job. prompt-handler.sh:52 calls job.sh --hook create-active."
+            builder: "UserPromptSubmit → prompt-handler.sh (active_count check) reads active_count; if 0 AND the prompt is real (non-empty, not a <task-notification>, CLAUDE_SUBAGENT!=true) it bootstraps a job. prompt-handler.sh (create-active call) calls job.sh --hook create-active."
         },
         "birth-pill": {
             title: "Job Birth",
@@ -1278,7 +1278,7 @@
             when: "The first real prompt to an idle seed. This is the only moment a job is auto-created without the agent asking.",
             canDo: "Mints the job record, seeds your prompt as its first remembered interaction, and locks the agent into the IDLE phase ready to start work. Drill in for the step-by-step.",
             why: "Hiring someone and assigning them a desk, a badge, and their first task in one motion — there is no 'unassigned' limbo.",
-            builder: "create-active requires HOOK_MODE==true (job.sh:226) — agents cannot call it manually. One jq write (job.sh:232-234) sets name:\"\", objective:\"\", status:active, focused:true, user_interactions:[$prompt]. Then prompt-handler.sh:65 runs phase.sh --hook init."
+            builder: "create-active requires HOOK_MODE==true (job.sh create-active arm) — agents cannot call it manually. One jq write (job.sh create-active arm) sets name:\"\", objective:\"\", status:active, focused:true, user_interactions:[$prompt]. Then prompt-handler.sh (phase init call) runs phase.sh --hook init."
         },
         idle: {
             title: "IDLE",
@@ -1286,15 +1286,15 @@
             when: "Right after birth (the job is parked here), and again between every full lap of the work cycle.",
             canDo: "From here the agent advances into OBSERVE to begin a cycle. Idle is also the only place focus may be switched to a different job.",
             why: "The pause at the top of a workday before you pick up the first file — and the breath you take between finishing one pass and starting the next.",
-            builder: "phasic_system mirror {id, current_phase:\"idle\", cycle:0} (phase.sh:159). Forward map idle→observe via phase.sh advance. Idle is the only phase where focus may switch."
+            builder: "phasic_system mirror {id, current_phase:\"idle\", cycle:0} (phase.sh FORWARD_MAP + init arm). Forward map idle→observe via phase.sh advance. Idle is the only phase where focus may switch."
         },
         observe: {
             title: "OBSERVE",
             what: "The first work phase: the agent reads, gathers context, and figures out what the job really is. Crucially it sharpens the job's name and objective here.",
             when: "First phase of every cycle, entered from idle.",
-            canDo: "Read-only on the project; it loads context into working memory and expands the objective. Tools stay locked until it forecasts the phase with a multiplier.",
+            canDo: "Read-only on the project; it loads context into working memory and expands the objective. Entry is coached — the phase begins with a direct-action budget already seeded.",
             why: "A consultant reading the whole brief and the back-files before writing a single recommendation.",
-            builder: "Tools locked until observe.sh set-multiplier sets a non-zero value (sentinel-0 lock). Advance is HARD: ≥100 pts + ≥1 CLAUDE.md update + ≥100-word msg (observe-commit.sh). Objective-shape is SOFT — only NON-EMPTY is checked (observe-commit.sh:194-212)."
+            builder: "Entry is coached only — no required first act (observe-commit.sh render_observe_entry seeds BUDGET_STARTING=5). Advance is HARD: three-family exit gate (observe-commit.sh advance gate). Objective-shape is SOFT — only NON-EMPTY is checked (observe-commit.sh name+objective guard)."
         },
         plan: {
             title: "PLAN",
@@ -1302,7 +1302,7 @@
             when: "Second phase of cycle 1 (and the re-cognize target whenever VERIFY sends work back).",
             canDo: "Commits the Stage exactly once via set-plan-file. The advance into EXECUTE is blocked until that choice is made.",
             why: "Choosing whether a task is a one-afternoon job or a months-long project with a written plan — and you only get to choose once.",
-            builder: "plan_file born null on the phase_plan extension (plan.sh:126). set-plan-file is set-once (plan.sh:349-401): null → false | plan_<name>.md | plan_<name>.yaml. plan-commit HARD-blocks the PLAN→EXECUTE advance while plan_file==null."
+            builder: "plan_file born null on the phase_plan extension (plan.sh init arm). set-plan-file is set-once (plan.sh set-plan-file arm): null → false | plan_<name>.md | plan_<name>.yaml. plan-commit HARD-blocks the PLAN→EXECUTE advance while plan_file==null."
         },
         execute: {
             title: "EXECUTE",
@@ -1318,7 +1318,7 @@
             when: "After EXECUTE.",
             canDo: "If the agent ends up editing the plan file here, that signals the plan itself changed — and it is forced back to PLAN instead of moving forward.",
             why: "A separate inspector signing off on the build — and if the inspector finds the blueprint was wrong, the job goes back to the drawing board, not forward.",
-            builder: "verify-tracker increments plan_edits on any /plans/plan_* edit. verify-commit.sh:167-179: if plan_file is active AND plan_edits>=1, forward-advance is BLOCKED and the agent must backward-advance to PLAN. Only plan_edits==0 reaches CONDENSE."
+            builder: "verify-tracker increments plan_edits on any /plans/plan_* edit. verify-commit.sh (plan-edit block): if plan_file is active AND plan_edits>=1, forward-advance is BLOCKED and the agent must backward-advance to PLAN. Only plan_edits==0 reaches CONDENSE."
         },
         condense: {
             title: "CONDENSE",
@@ -1326,7 +1326,7 @@
             when: "The last phase of every cycle, reachable only from a clean VERIFY.",
             canDo: "Runs a 7-step waterfall: absorbs footers, routes knowledge, and (step 3) vets [PENDING-JOB] notes into real jobs. The only hard exit is the 80% deflation gate.",
             why: "Sleep, for the brain: the day's loose notes get filed, consolidated, and turned into lasting memory before the next day starts.",
-            builder: "condense-guard allows job.sh create unconditionally (CONDENSE-only). Deflation gate: bottom-section words must absorb ≥80% before advancing to idle. condense-commit.sh:268-276 clears focus if the job completed this cycle (relocated unfocus)."
+            builder: "condense-guard allows job.sh create unconditionally (CONDENSE-only). Deflation gate: bottom-section words must absorb ≥80% before advancing to idle. condense-commit.sh (clear-focus detection) clears focus if the job completed this cycle (relocated unfocus)."
         },
         "accumulate-pill": {
             title: "Accumulate",
@@ -1334,7 +1334,7 @@
             when: "Continuously, in whatever phase the focused job is in.",
             canDo: "Builds the cumulative 'mega-prompt' the agent always carries. When it grows too long a compressed summary is forced. Drill in for the mechanics.",
             why: "A case file that only ever gets thicker — every call, every email, every decision stapled in, in order.",
-            builder: "question-capture-hook.sh:61-86 appends prompts + Q/A pairs to user_interactions[] (job.sh:538). interaction_summary mirror is created LAZILY only when unsummarized tokens cross TOKEN_THRESHOLD."
+            builder: "question-capture-hook.sh (capture loop) appends prompts + Q/A pairs to user_interactions[] (job.sh append-interaction arm). interaction_summary mirror is created LAZILY only when unsummarized tokens cross TOKEN_THRESHOLD."
         },
         "spawn-pill": {
             title: "Spawn a Job",
@@ -1350,7 +1350,7 @@
             when: "At creation time, in CONDENSE.",
             canDo: "A dependent job becomes a blocker: the parent literally cannot be marked done until every dependency is done. Drill in for the gate.",
             why: "You can't sign off on the building until the wiring inspection passes — the wiring is a dependency of the sign-off.",
-            builder: "Standalone: depends_on stays []. Dependent: the new id is appended to the PARENT's depends_on[]. There is no 'blocked' status — dependency-waiting is DERIVED at completion time (job.sh:396-412, two enforce points)."
+            builder: "Standalone: depends_on stays []. Dependent: the new id is appended to the PARENT's depends_on[]. There is no 'blocked' status — dependency-waiting is DERIVED at completion time (job.sh complete arm dep-walk, two enforce points)."
         },
         "completion-pill": {
             title: "Completion",
@@ -1358,7 +1358,7 @@
             when: "The final cycle's CONDENSE phase.",
             canDo: "Approval is hard-gated: every dependency must be complete, the job must be named, and the phase must be CONDENSE. Drill in for the full gate.",
             why: "The final sign-off that can't happen until every sub-task and every signature is in place.",
-            builder: "[JOB-COMPLETE] eligibility = cycle-formula (Stage 2/3) OR plan_file==false (Stage 1). Approval requires all deps completed + name set + objective<=cap + current_phase==condense (job.sh:376-428). status→completed; focus kept until condense→idle."
+            builder: "[JOB-COMPLETE] eligibility = cycle-formula (Stage 2/3) OR plan_file==false (Stage 1). Approval requires all deps completed + name set + objective<=cap + current_phase==condense (job.sh complete arm). status→completed; focus kept until condense→idle."
         },
         "growth-pill": {
             title: "The Aha: One ID, N Lanes",
@@ -1376,7 +1376,7 @@
             when: "Fresh session, or after every prior job has been completed or paused.",
             canDo: "Waits. The next real prompt will bootstrap a job rather than be filed into an existing one.",
             why: "An empty inbox and a clear desk — the next thing that arrives starts a new file.",
-            builder: "active_count = count of jobs with status==active (prompt-handler.sh:48). active_count==0 is the bootstrap condition."
+            builder: "active_count = count of jobs with status==active (prompt-handler.sh active_count check). active_count==0 is the bootstrap condition."
         },
         "b-prompt": {
             title: "Real Prompt",
@@ -1384,7 +1384,7 @@
             when: "When you type and send while the seed is idle.",
             canDo: "Qualifies as a job-creating prompt; system notifications and subagent traffic are filtered out so they never spawn a job.",
             why: "Telling the difference between a client actually calling with work versus an auto-reply bouncing in.",
-            builder: "Guard: PROMPT non-empty AND not ^<task-notification> AND CLAUDE_SUBAGENT!=true (prompt-handler.sh:48-52)."
+            builder: "Guard: PROMPT non-empty AND not ^<task-notification> AND CLAUDE_SUBAGENT!=true (prompt-handler.sh real-prompt guard)."
         },
         "b-handler": {
             title: "prompt-handler.sh",
@@ -1392,7 +1392,7 @@
             when: "On every UserPromptSubmit event.",
             canDo: "Branches on whether a job is already active. If none is, it kicks off job creation; if one is, it appends instead.",
             why: "The receptionist who either opens a new file or adds your note to the file already on their desk.",
-            builder: "Registered on UserPromptSubmit. Runs with HOOK_MODE, which is what unlocks the reserved create-active command (job.sh:226)."
+            builder: "Registered on UserPromptSubmit. Runs with HOOK_MODE, which is what unlocks the reserved create-active command (job.sh create-active arm HOOK_MODE guard)."
         },
         "b-createactive": {
             title: "job.sh create-active",
@@ -1400,7 +1400,7 @@
             when: "Fired by the prompt handler the instant an idle seed gets a real prompt.",
             canDo: "Writes a complete new job record in a single step, already active and already focused.",
             why: "The automatic case-opening stamp that only the front-desk system can press, never the staff.",
-            builder: "job.sh:225 — dies unless HOOK_MODE==true. Single jq write at job.sh:232-234. Returns the new JOB_ID on stdout."
+            builder: "job.sh create-active arm — dies unless HOOK_MODE==true. Single jq write (job.sh create-active arm). Returns the new JOB_ID on stdout."
         },
         "b-record": {
             title: "Job Record",
@@ -1408,7 +1408,7 @@
             when: "The moment create-active runs.",
             canDo: "Holds the seed of everything: status, focus, the first interaction, and empty slots for approvals and dependencies.",
             why: "A blank case folder with a number on the tab — the label and the summary come after someone reads the contents.",
-            builder: "job.sh:233 jq template: name:\"\", objective:\"\", status:active, focused:true, user_interactions:[$prompt], user_approval:false, plugin_lock_approval:false, depends_on:[], repeating_interval:0, last_completed_at:0."
+            builder: "job.sh create-active arm jq template: name:\"\", objective:\"\", status:active, focused:true, user_interactions:[$prompt], user_approval:false, plugin_lock_approval:false, depends_on:[], repeating_interval:0, last_completed_at:0."
         },
         "b-focused": {
             title: "focused:true",
@@ -1424,7 +1424,7 @@
             when: "Written at birth as the first array element.",
             canDo: "Becomes the foundation of the cumulative record that grows with every later turn.",
             why: "The original intake note that the whole case file gets built on top of.",
-            builder: "The $prompt arg to create-active lands as user_interactions:[$prompt] (job.sh:233). All later turns append to this same array."
+            builder: "The $prompt arg to create-active lands as user_interactions:[$prompt] (job.sh create-active arm). All later turns append to this same array."
         },
         "b-mirror": {
             title: "phase.sh init",
@@ -1432,7 +1432,7 @@
             when: "Immediately after the job record is created, in the same hook run.",
             canDo: "Locks the job into IDLE so it can't skip ahead — it must explicitly advance to begin OBSERVE.",
             why: "Stamping the new file 'received — not yet started' so nobody assumes work has begun.",
-            builder: "prompt-handler.sh:65 calls phase.sh --hook init because PostToolUse:Bash hooks don't fire for hook-spawned subprocesses. Writes {id, current_phase:\"idle\", cycle:0} (phase.sh:159)."
+            builder: "prompt-handler.sh (phase init call) calls phase.sh --hook init because PostToolUse:Bash hooks don't fire for hook-spawned subprocesses. Writes {id, current_phase:\"idle\", cycle:0} (phase.sh init arm)."
         },
         "b-idle": {
             title: "Locked at IDLE",
@@ -1450,7 +1450,7 @@
             when: "Whenever you type while a job is active.",
             canDo: "Appends to the focused job's record. New job ideas are deferred to CONDENSE via notes instead.",
             why: "Adding another page to the open case file rather than starting a fresh folder.",
-            builder: "active_count>0 branch (prompt-handler.sh:66-83). If no job is focused it auto-focuses the first active one, then appends."
+            builder: "active_count>0 branch (prompt-handler.sh append-branch). If no job is focused it auto-focuses the first active one, then appends."
         },
         "a-question": {
             title: "Answered Question",
@@ -1458,7 +1458,7 @@
             when: "Every time an AskUserQuestion is answered.",
             canDo: "Stores the question and your answer as a pair, so the reasoning behind a decision is never lost.",
             why: "Keeping both the question the lawyer asked and the client's answer in the file — the answer alone is meaningless without it.",
-            builder: "question-capture-hook.sh:61-86 fires on PostToolUse:AskUserQuestion when a tool_response is present, appending the Q/A pair to user_interactions[]."
+            builder: "question-capture-hook.sh (capture loop) fires on PostToolUse:AskUserQuestion when a tool_response is present, appending the Q/A pair to user_interactions[]."
         },
         "a-capture": {
             title: "question-capture-hook.sh",
@@ -1466,7 +1466,7 @@
             when: "On the relevant prompt and question events.",
             canDo: "Guarantees the running record stays complete and append-only.",
             why: "The court stenographer who writes down everything said, in order, without editing.",
-            builder: "Appends via job.sh append-interaction → user_interactions[] (job.sh:538). Append-only; nothing is overwritten."
+            builder: "Appends via job.sh append-interaction → user_interactions[] (job.sh append-interaction arm). Append-only; nothing is overwritten."
         },
         "a-record": {
             title: "user_interactions[]",
@@ -1482,7 +1482,7 @@
             when: "Checked at capture points.",
             canDo: "When the record crosses a size threshold, it triggers the creation of a compressed summary view.",
             why: "The assistant noticing the file has gotten too thick to hand someone cold — time to write a cover summary.",
-            builder: "token estimate = word_count * 13/10 (token-counter.sh:124-155). Compared against TOKEN_THRESHOLD."
+            builder: "token estimate = word_count * 13/10 (token-counter.sh estimate function). Compared against TOKEN_THRESHOLD."
         },
         "a-mirror": {
             title: "summary VIEW",
@@ -1490,7 +1490,7 @@
             when: "Created lazily the first time the size threshold is crossed.",
             canDo: "Gives the agent a short version to work from instead of re-reading the entire history every turn.",
             why: "The one-page executive summary clipped to the front of a thick file.",
-            builder: "interaction_summary mirror created lazily (token-counter.sh:150 / summary.sh create-job): {last_summarized_index, summary_needed, summary_chain[]}. Absent until the first threshold crossing."
+            builder: "interaction_summary mirror created lazily (token-counter.sh threshold check / summary.sh create-job arm): {last_summarized_index, summary_needed, summary_chain[]}. Absent until the first threshold crossing."
         },
         "a-needed": {
             title: "summary_needed = true",
@@ -1514,7 +1514,7 @@
             when: "As soon as the guard blocks.",
             canDo: "Clears the block and brings the summary back in sync with the full record.",
             why: "Writing the new cover sheet so the file can move again.",
-            builder: "summary.sh:267-282 submits a summary covering user_interactions 0..N; the guard releases and summary_needed clears."
+            builder: "summary.sh (submit arm) submits a summary covering user_interactions 0..N; the guard releases and summary_needed clears."
         },
 
         /* ---------- SPAWN drill ---------- */
@@ -1524,7 +1524,7 @@
             when: "During OBSERVE, PLAN, EXECUTE, or VERIFY.",
             canDo: "It can recognize new work — but it is not allowed to create a job right then.",
             why: "Spotting a second problem while you're elbow-deep in the first one.",
-            builder: "WU-010 per-phase guards block job.sh create in all four work phases (plan-guard.sh:341, execute-guard.sh:960, verify-guard:367, observe job-create-blocked)."
+            builder: "WU-010 per-phase guards block job.sh create in all four work phases (plan-guard.sh create-block, execute-guard.sh create-block, verify-guard create-block, observe-guard create-block)."
         },
         "s-trycreate": {
             title: "job.sh create (attempt)",
@@ -1548,7 +1548,7 @@
             when: "Incremented when a note is written.",
             canDo: "Gives a soft signal that follow-up work is waiting. It does not gate or block anything.",
             why: "A little counter on the sticky-note pad — you can see there are three, without reading them.",
-            builder: "PostToolUse trackers match ^[PENDING-JOB] and call <phase>.sh --hook inc-marker pending_job (observe-tracker.sh:161-172). COUNT only; note TEXT never stored."
+            builder: "PostToolUse trackers match ^[PENDING-JOB] and call <phase>.sh --hook inc-marker pending_job (observe-tracker.sh inc-marker arm). COUNT only; note TEXT never stored."
         },
         "s-rest": {
             title: "Rests in the footer",
@@ -1580,7 +1580,7 @@
             when: "When a note is accepted as genuinely separate work.",
             canDo: "Mints a new pending, unfocused job that completes on its own schedule.",
             why: "Opening a brand-new, unrelated case that stands entirely on its own.",
-            builder: "job.sh create <name> (job.sh:170-194). Requires a focused active job anchor; CONDENSE-only via the phase guards. depends_on stays []."
+            builder: "job.sh create <name> (job.sh create arm). Requires a focused active job anchor; CONDENSE-only via the phase guards. depends_on stays []."
         },
         "s-createdep": {
             title: "job.sh create-dependent",
@@ -1588,7 +1588,7 @@
             when: "When the accepted note is work the current job depends on.",
             canDo: "Creates the job and registers it as a blocker on the parent.",
             why: "Opening a sub-task that the main project literally can't close without.",
-            builder: "job.sh create-dependent <name> (job.sh:197-222). The first positional IS the name; the new id is appended to the focused parent's depends_on[] (job.sh:208-210)."
+            builder: "job.sh create-dependent <name> (job.sh create-dependent arm). The first positional IS the name; the new id is appended to the focused parent's depends_on[] (job.sh create-dependent arm, dep append)."
         },
         "s-reject": {
             title: "Rejected / Carried",
@@ -1638,7 +1638,7 @@
             when: "Checked at the moment completion is attempted.",
             canDo: "Refuses completion — at two separate places in the code — if any dependency isn't completed.",
             why: "The clause that says the contract can't close until every annex is signed.",
-            builder: "job.sh:396-412 walks depends_on[]; any dep with status!=completed becomes a failure and exit 1. Enforced at two points (the [JOB-COMPLETE] post-handler and direct complete)."
+            builder: "job.sh complete arm dep-walk walks depends_on[]; any dep with status!=completed becomes a failure and exit 1. Enforced at two points (the [JOB-COMPLETE] post-handler and direct complete)."
         },
         "d-derived": {
             title: "No 'blocked' status",
@@ -1654,7 +1654,7 @@
             when: "When the dependency gate passes.",
             canDo: "Lets the parent proceed through the rest of its completion checks.",
             why: "All annexes signed — now the master contract can be closed.",
-            builder: "With all deps status==completed, the gate at job.sh:396-412 passes and completion can proceed (subject to the other approval checks)."
+            builder: "With all deps status==completed, the gate at job.sh complete arm dep-walk passes and completion can proceed (subject to the other approval checks)."
         },
         "d-stubs": {
             title: "job_blocker / job_archiver",
@@ -1672,15 +1672,15 @@
             when: "Right after the job advances out of IDLE.",
             canDo: "Expands the objective and name, and sets the stage (literally) for the Stage decision coming in PLAN.",
             why: "Reading the whole brief before deciding whether this is a quick job or a big project.",
-            builder: "job_core (name, objective) + phasic (phase=observe, cycle=1) + phase_observe tracker (points, multiplier sentinel 0). plan_file does not exist yet."
+            builder: "job_core (name, objective) + phasic (phase=observe, cycle=1) + phase_observe tracker (action_counts, marker_counts). plan_file does not exist yet."
         },
         "sd-mult": {
-            title: "set-multiplier",
-            what: "The agent's honest forecast of how big this phase is. Until it sets one, its tools are locked.",
-            when: "First action on entering OBSERVE.",
-            canDo: "Unlocks the phase's tools and sets the effort budget.",
-            why: "Estimating the job size before you start — and not being handed the keys until you do.",
-            builder: "observe.sh set-multiplier; sentinel value 0 locks all tools until a non-zero value is set. Range 0.5 (deep) to 3 (rapid)."
+            title: "Entry voice + direct-action budget",
+            what: "When OBSERVE begins, the entry voice orients the agent and seeds a direct-action budget of 5. No required first act, no dial to set, no tool lock.",
+            when: "At OBSERVE entry — the phase starts with the budget already live.",
+            canDo: "The budget decrements with each main-session direct action. Spending it down and writing a CLAUDE.md update resets the per-class counters.",
+            why: "A workday that starts with five focused slots already scheduled — use them wisely, then restock by writing up what you learned.",
+            builder: "Entry is coached only (no required gate). render_observe_entry in observe-commit.sh seeds BUDGET_STARTING=5. Per-class action counters track the rhythm; one CLAUDE.md update resets all class counters."
         },
         "sd-expand": {
             title: "Expand objective + name",
@@ -1688,15 +1688,15 @@
             when: "During cycle-1 OBSERVE.",
             canDo: "Fills in name and objective. Only their presence is actually required — the length is coaching.",
             why: "Turning 'fix the thing' into a proper one-paragraph statement of work — good practice, but the system only checks that you wrote something.",
-            builder: "observe-commit.sh:194-212 checks only that name + objective are NON-EMPTY — no word floor. The 300-500w shape is SOFT coaching."
+            builder: "observe-commit.sh (name+objective guard) checks only that name + objective are NON-EMPTY — no word floor. The 300-500w shape is SOFT coaching."
         },
         "sd-advance": {
             title: "Advance to PLAN",
-            what: "The hard requirements to leave OBSERVE: enough work points, at least one memory update, and a substantial commit message.",
+            what: "The hard requirements to leave OBSERVE: the three-family exit gate (reflections ran, marked notes added, ≥1 reflector subagent ran), at least one CLAUDE.md update, and a clean git state.",
             when: "When OBSERVE is genuinely done.",
             canDo: "Moves the job into PLAN, where plan_file is born and the Stage gets decided.",
             why: "The checklist you must complete before the project moves from research into planning.",
-            builder: "Forward advance is HARD: ≥100 pts + ≥1 CLAUDE.md update + ≥100-word msg (observe-commit.sh). Then plan.sh init births the first plan entry."
+            builder: "Forward advance is HARD: three-family exit gate (family-a metacog floor + family-b marked notes + family-c ≥1 reflector ran) — observe-commit.sh advance gate. Then plan.sh init births the first plan entry."
         },
         "sd-null": {
             title: "plan_file = null",
@@ -1704,7 +1704,7 @@
             when: "The moment PLAN begins.",
             canDo: "Marks the Stage as 'not yet decided.' The agent must make the call before it can advance.",
             why: "A project intake form with the 'project type' box deliberately left blank — you have to choose before proceeding.",
-            builder: "plan_file born null on the phase_plan extension (plan.sh:126). null is the undecided set-once sentinel — distinct from the value false."
+            builder: "plan_file born null on the phase_plan extension (plan.sh init arm). null is the undecided set-once sentinel — distinct from the value false."
         },
         "sd-setplan": {
             title: "set-plan-file",
@@ -1712,7 +1712,7 @@
             when: "During cycle-1 PLAN.",
             canDo: "Sets the Stage to false, a .md plan, or a .yaml plan — and refuses any second attempt.",
             why: "Signing the box on the intake form in permanent ink: once chosen, the project type is locked.",
-            builder: "plan.sh:349-401, sole writer, SET-ONCE: dies if current plan_file != \"null\". Value must be false OR match ^plan_[a-z0-9_]+\\.(md|yaml)$."
+            builder: "plan.sh set-plan-file arm, sole writer, SET-ONCE: dies if current plan_file != \"null\". Value must be false OR match ^plan_[a-z0-9_]+\\.(md|yaml)$."
         },
         "sd-stage1": {
             title: "Stage 1 · false",
@@ -1820,7 +1820,7 @@
             when: "Tracked on every plan-file edit during VERIFY.",
             canDo: "Each such edit bumps a counter that decides whether the job can move forward or must go back.",
             why: "Noticing the inspector reached for the blueprint and started correcting it — that changes everything.",
-            builder: "verify-tracker increments plan_edits on any */plans/plan_* edit (verify-tracker.sh:165-168). The count drives the back-edge."
+            builder: "verify-tracker increments plan_edits on any */plans/plan_* edit (verify-tracker.sh plan-edit inc). The count drives the back-edge."
         },
         "v-clean": {
             title: "plan_edits == 0",
@@ -1836,7 +1836,7 @@
             when: "On the first plan-file edit in VERIFY.",
             canDo: "Triggers the forced back-edge: forward is blocked, the job must return to PLAN.",
             why: "The blueprint was altered mid-inspection — you can't just sign off; you have to re-plan.",
-            builder: "plan_edits>=1 with an active plan_file blocks forward advance (verify-commit.sh:167-179)."
+            builder: "plan_edits>=1 with an active plan_file blocks forward advance (verify-commit.sh plan-edit block)."
         },
         "v-block": {
             title: "forward BLOCKED",
@@ -1844,7 +1844,7 @@
             when: "On a forward-advance attempt after a plan edit.",
             canDo: "Stops the forward move and directs the agent to back-advance to PLAN.",
             why: "The gate that won't open toward the finish because the plan no longer matches what was built.",
-            builder: "verify-commit.sh:167-179: active plan_file AND plan_edits>=1 → BLOCK forward, direct to --backward plan, exit 1."
+            builder: "verify-commit.sh plan-edit block: active plan_file AND plan_edits>=1 → BLOCK forward, direct to --backward plan, exit 1."
         },
         "v-back": {
             title: "Backward → PLAN",
@@ -1860,15 +1860,15 @@
             when: "After a plan_edits==0 verify.",
             canDo: "Begins the 7-step waterfall and the cycle's wrap-up. Drill into Spawn to see how it creates jobs.",
             why: "The end-of-cycle cleanup that only happens once the inspection passes cleanly.",
-            builder: "Forward map verify→condense, gated on plan_edits==0 (when plan_file active) plus points/update/msg requirements."
+            builder: "Forward map verify→condense, gated on plan_edits==0 (when plan_file active) plus the three-family exit gate (verify-commit.sh advance gate)."
         },
         "v-retest": {
             title: "plan → VERIFY re-test",
-            what: "A path that was designed but never built: PLAN deciding the edits were minor and jumping straight back to VERIFY.",
-            when: "N/A — it does not exist in the running system.",
-            canDo: "Nothing today; shown so the map is honest about the design-vs-code gap.",
-            why: "A shortcut sketched on the blueprint that was never actually wired up.",
-            builder: "There is no plan:verify entry in the phase map — the re-test fork is DESIGN-ONLY / UNBUILT."
+            what: "When PLAN decides the plan-file edits were minor — no re-execution needed — it can jump directly to VERIFY for a re-test, skipping EXECUTE entirely.",
+            when: "After a plan-file edit is caught in VERIFY and the job returns to PLAN, if re-execution is not needed.",
+            canDo: "Routes PLAN straight to VERIFY via the plan:verify forward transition (plan-commit.sh --to verify).",
+            why: "A shortcut that says 'the blueprint correction was small — skip the rebuild and go straight back to the inspector.'",
+            builder: "plan:verify is BUILT — the FORWARD_MAP in phase.sh includes 'plan:verify' alongside 'plan:execute'. Accessible via plan-commit.sh --force --to verify (the --to arm). Canonical: phase.sh FORWARD_MAP constant; plan-commit.sh advance-to-verify arm."
         },
 
         /* ---------- COMPLETION drill ---------- */
@@ -1894,7 +1894,7 @@
             when: "On the [JOB-COMPLETE] approval.",
             canDo: "Refuses approval unless every condition holds — most importantly, all dependencies completed.",
             why: "The sign-off checklist that won't accept a signature until every line is ticked.",
-            builder: "Requires name set + objective<=cap + all deps completed + current_phase==condense (job.sh:376-428). Dep-walk enforced at two points."
+            builder: "Requires name set + objective<=cap + all deps completed + current_phase==condense (job.sh complete arm). Dep-walk enforced at two points."
         },
         "c-approve": {
             title: "job.sh approve → complete",
@@ -1910,7 +1910,7 @@
             when: "The instant completion succeeds.",
             canDo: "Marks the job finished while keeping it focused so the cycle can finish tidying up.",
             why: "Stamping a case closed but leaving it on your desk for the afternoon to file the last paperwork.",
-            builder: "status→completed; focus is KEPT (job.sh:419, WU-001 decoupling). last_completed_at is set."
+            builder: "status→completed; focus is KEPT (job.sh complete arm, WU-001 decoupling). last_completed_at is set."
         },
         "c-unfocus": {
             title: "Unfocus at idle",
@@ -1918,15 +1918,15 @@
             when: "At the condense→idle boundary.",
             canDo: "Clears focus from the completed job — the phase-transition where leaving the job belongs.",
             why: "Finally filing the closed case away and turning to the next one on the stack.",
-            builder: "condense-commit.sh:268-276 detects status==completed at the advance boundary and calls job.sh --hook clear-focus (the relocated unfocus, completion Event 2)."
+            builder: "condense-commit.sh (clear-focus detection) detects status==completed at the advance boundary and calls job.sh --hook clear-focus (the relocated unfocus, completion Event 2)."
         },
         "c-notbuilt": {
             title: "extension / repeat / reactivation",
-            what: "A whole family of features named in the blogs — extending a job, making it repeat, reactivating it — that are not yet built.",
-            when: "N/A — design-only.",
-            canDo: "Nothing today; listed so the completion picture is honest about what's real.",
-            why: "Features promised in the brochure that the current model hasn't shipped.",
-            builder: "extension_cycles_added, --add-cycle, effective_last_cycle, repeating_interval, [REPEAT-JOB], and the two heartbeats are NOT-YET-BUILT design-only."
+            what: "A family of built features that let a job run longer than planned, repeat on a schedule, or be reactivated after completion.",
+            when: "Extension: CONDENSE asks [JOB-COMPLETE] and the agent adds a cycle instead. Repeat: scan-repeating-due.sh fires when repeating_interval is set. Reactivation: job.sh reactivate restarts a completed job.",
+            canDo: "Add cycles via condense-commit.sh --add-cycle; set a repeat schedule via job.sh set-repeating-interval; reactivate a completed job via job.sh reactivate.",
+            why: "Letting a project run over budget, scheduling a recurring report, or reopening a closed file to run it again.",
+            builder: "All BUILT: --add-cycle arm in condense-commit.sh; repeating_interval field in job.sh create-active; set-repeating-interval arm in job.sh; reactivate arm in job.sh; scan-repeating-due.sh and quiescent-heartbeat.sh scripts exist. Canonical: job.sh create-active, set-repeating-interval, and reactivate arms; condense-commit.sh --add-cycle arm."
         },
 
         /* ---------- GROWTH-OVERVIEW drill ---------- */
@@ -1952,23 +1952,23 @@
             when: "Created at birth (parked at idle, cycle 0).",
             canDo: "Drives the whole OPEVC ring for this job.",
             why: "The 'where in the process is this' tracker clipped to the chart.",
-            builder: "Mirror record {id, current_phase, cycle} (phase.sh:159). Its own data.json, keyed by the shared id."
+            builder: "Mirror record {id, current_phase, cycle} (phase.sh FORWARD_MAP + init arm). Its own data.json, keyed by the shared id."
         },
         "g-plan": {
             title: "phase_plan/data.json",
-            what: "The file that appears in PLAN, holding the job's Stage decision, its plan entries, and its effort multiplier.",
+            what: "The file that appears in PLAN, holding the job's Stage decision, its plan entries, and its extension fields.",
             when: "Lights up when the job first enters PLAN.",
-            canDo: "Records plan_file (the Stage), plan_entries, multiplier, and the extension fields.",
+            canDo: "Records plan_file (the Stage), plan_entries, and the extension fields.",
             why: "The project-type and planning section added to the chart once planning begins.",
-            builder: "phase_plan extension: plan_file (born null), plan_entries[], multiplier, altered_claude_md, extension_cycles_added, extension_contexts."
+            builder: "phase_plan extension: plan_file (born null), plan_entries[], altered_claude_md, extension_cycles_added, extension_contexts."
         },
         "g-trackers": {
             title: "observe/execute/verify trackers",
-            what: "Per-phase scratchpads that count work done, track memory updates, tally markers, and record plan edits.",
+            what: "Per-phase scratchpads that count actions per class, track memory updates, tally markers, and record plan edits.",
             when: "Each lights up the first time its phase tracks an event.",
-            canDo: "Power the point gates, the marker counts, and the VERIFY plan-edit back-edge.",
+            canDo: "Power the min-max gate, the marker counts, and the VERIFY plan-edit back-edge.",
             why: "The running tallies each department keeps on the case as it passes through.",
-            builder: "phase_observe/execute/verify trackers: points, multiplier sentinel, claude_md_updates, marker_counts (incl. pending_job), verify_entries[].plan_edits + forwarded."
+            builder: "phase_observe/execute/verify trackers: per-class action counts, direct_action_budget, claude_md_updates, marker_counts (incl. pending_job), verify_entries[].plan_edits + forwarded."
         },
         "g-condense": {
             title: "phase_condense/data.json",
