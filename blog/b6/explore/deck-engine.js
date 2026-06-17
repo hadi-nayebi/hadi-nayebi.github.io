@@ -197,7 +197,7 @@
             '</defs>';
 
         var boxIndex = {};
-        card.boxes.forEach(function (b) { boxIndex[b.id] = b; });
+        (card.boxes || []).forEach(function (b) { boxIndex[b.id] = b; });
 
         /* edges: paths drawn UNDER the boxes; labels collected into a separate
            string drawn in a TOP layer (after the boxes) so a label is never
@@ -247,7 +247,7 @@
 
         /* boxes as foreignObject glass cards */
         var boxSvg = '';
-        card.boxes.forEach(function (b) {
+        (card.boxes || []).forEach(function (b) {
             /* a MINI node: a small tag-coloured chip showing just b.t (e.g. a phase
                letter O/P/E/V/C), no tag-chip/subtitle. Optional native title tooltip. */
             if (b.mini) {
@@ -925,12 +925,13 @@
     applyTransform();
     updateChrome();
 
-    /* show orientation on first load (once per browser via localStorage; safe-guarded) */
+    /* show orientation on first load (once per browser PER DECK via localStorage; safe-guarded) */
+    var orientKey = pageId() + ':orientSeen';
     var seen = false;
-    try { seen = localStorage.getItem('jobLifeOrientSeen') === '1'; } catch (e) {}
+    try { seen = localStorage.getItem(orientKey) === '1'; } catch (e) {}
     if (!seen) {
         openOrient();
-        try { localStorage.setItem('jobLifeOrientSeen', '1'); } catch (e) {}
+        try { localStorage.setItem(orientKey, '1'); } catch (e) {}
     }
 
     /* ========================================================================
