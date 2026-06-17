@@ -558,7 +558,7 @@ The compact gloss is at **"Plan file lifecycle"** near the top of this file; ban
 | Operation | Owner phase | Why |
 |---|---|---|
 | `job.sh create-active` (top-level creation) | `prompt-handler.sh` always-on hook (hook-internal, bypasses phase guards) | User's prompt is the trigger; agent never calls this |
-| `job.sh create` / `create-dependent` (dep creation) | CONDENSE step 3 via `condense-job-creator` subagent (markers); CONDENSE agent-direct with `--out-of-scope` gated | CONDENSE has cycle-wide context for what follow-up work is needed |
+| `job.sh create` / `create-dependent` (dep creation) | CONDENSE step 3 via `condense-job-creator` subagent (markers); CONDENSE agent-direct (unconditional allow — lock-forward, no scope/overlap check) | CONDENSE has cycle-wide context for what follow-up work is needed |
 | `job.sh add-dependency` | CONDENSE (`condense-guard.sh:314`) | Same — graph additions during cycle synthesis |
 | `job.sh remove-dependency` | VERIFY (`verify-guard.sh:360`) | VERIFY audits the focused job; can discover a declared dep is unneeded |
 | `job.sh activate / focus / pause` | IDLE (`phase-gate.sh:96`) | Between-cycle lifecycle management; user + agent collaborate |
