@@ -113,7 +113,7 @@ Read `blog/CLAUDE.md` "Current Posts" table. Essays with status "GOAL ACHIEVED" 
 **FAIL if.** Bare biological terms appear in body without prefix.
 
 ### W10. OPEVC-footer pollution in blog source
-**Principle.** Per `blog/CLAUDE.md` "OPEVC Markers Forbidden in Blog Source" + brain Rule 9 — markers `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong ONLY in agent CLAUDE.md working-memory files. They MUST NOT appear as authored body content in blog .md source files. The transcript tool reads them via pronunciation guards and dumps them into every audio file when they appear as body content.
+**Principle.** Per `blog/CLAUDE.md` "OPEVC Anchors Forbidden in Blog Source" + brain Rule 9 — the four footer anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` belong ONLY in agent CLAUDE.md working-memory files. They MUST NOT appear as authored body content in blog .md source files. The transcript tool reads them via pronunciation guards and dumps them into every audio file when they appear as body content.
 
 **Three critical exceptions — all PASS:**
 
@@ -154,9 +154,9 @@ print(f'POLLUTION HITS (outside CLAUDE.md + code blocks + HTML comments): {total
 EOF
 ```
 
-**PASS if.** Zero OPEVC markers appear in blog essay .md source outside the three exception contexts (CLAUDE.md files entirely, fenced code blocks, HTML comment blocks).
-**FAIL if.** Any blog essay .md contains OPEVC markers as authored body content (outside all three exception contexts).
-**Subagent reporting requirement.** If a marker is detected, the auditor MUST report which exception context (if any) the line sits in BEFORE declaring FAIL. Bare grep without context tracking produces false positives — the W10 dim was added to v0.2 specifically because v0.1's bare-grep approach mis-flagged B5.7's pedagogical code-block illustration (L41-L59) and image-prompt HTML comments (L87-L90).
+**PASS if.** Zero OPEVC footer anchors appear in blog essay .md source outside the three exception contexts (CLAUDE.md files entirely, fenced code blocks, HTML comment blocks).
+**FAIL if.** Any blog essay .md contains OPEVC footer anchors as authored body content (outside all three exception contexts).
+**Subagent reporting requirement.** If a footer anchor is detected, the auditor MUST report which exception context (if any) the line sits in BEFORE declaring FAIL. Bare grep without context tracking produces false positives — the W10 dim was added to v0.2 specifically because v0.1's bare-grep approach mis-flagged B5.7's pedagogical code-block illustration (L41-L59) and image-prompt HTML comments (L87-L90).
 
 ### W11. Generator SIDEBAR_POSTS ↔ HTML sidebar consistency (Rule 32)
 **Principle.** `tools/generate_blog_html.py` holds a hardcoded SIDEBAR_POSTS array (around L30-72) that is the canonical source for sidebar titles + read-times across all essays. Every entry must match the rendered HTML output AND match the .md frontmatter title + read_time. Origin: B8.2 R2.b discovery — fixing only HTML reverts on next regen.
