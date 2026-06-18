@@ -95,7 +95,7 @@ CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC c
     Panel 2 (PLAN): ---Ob--- and ---Pl--- both filled; ---Ex--- and ---Ve--- empty.
     Panel 3 (EXECUTE): ---Ob---, ---Pl---, ---Ex--- filled; ---Ve--- empty.
     Panel 4 (VERIFY): all four footers (---Ob---, ---Pl---, ---Ex---, ---Ve---) filled; the file visibly heavier.
-    Panel 5 (CONDENSE): a chalk upward arrow inside the file lifts findings from the four footers into the body (the body grows slightly); all four footer slots are wiped clean; off to the right side of panel 5, a small chalk side-branch peels off labeled in white chalk exactly ".claude/knowledge/".
+    Panel 5 (CONDENSE): a chalk upward arrow inside the file lifts findings from the four footers into the body (the body grows slightly); the four footer slots are deflated nearly empty, with one small chalk note-fragment left behind in a footer to show deferred work that survives into the next cycle; off to the right side of panel 5, a small chalk side-branch peels off labeled in white chalk exactly ".claude/knowledge/".
   A curving white-chalk arrow connects panel 5 back to panel 1, labeled in white chalk exactly "next cycle".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings: "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "body", "---Ob---", "---Pl---", "---Ex---", "---Ve---", ".claude/knowledge/", "next cycle", plus the caption below. No other phase names, file names, or directory names may appear.

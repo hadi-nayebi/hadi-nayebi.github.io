@@ -106,17 +106,6 @@
                         <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (6 min read).</span>
                     </div>
 
-                    <figure class="audio-guide" aria-label="Draft narration of this essay" style="margin:1.5rem 0;padding:1rem 1.25rem;border:1px solid rgba(139,92,246,0.35);border-radius:14px;background:rgba(99,102,241,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
-                        <figcaption style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:600;letter-spacing:0.01em;color:#a5b4fc;">
-                            <span aria-hidden="true">&#128264;</span>
-                            <span>Draft narration &mdash; free voice. Final studio version coming.</span>
-                        </figcaption>
-                        <audio controls preload="none" src="audio/05_2-plugin-integrity.draft.mp3" style="width:100%;">
-                            Your browser does not support the audio element.
-                            <a href="audio/05_2-plugin-integrity.draft.mp3" style="color:#a5b4fc;">Download the draft narration (MP3)</a>.
-                        </audio>
-                    </figure>
-
                     <div class="article-body">
 
                         <p><em>Essay 5.2 &mdash; The Always-On Digital Cortex, Part 2 of 9.</em></p>
@@ -170,7 +159,7 @@
 
                         <p>You would tune the <em>threshold</em> &mdash; what counts as "test pass." The current prototype runs every test in the plugin&rsquo;s <code>tests/</code> directory and treats them uniformly. A larger plugin with hundreds of tests may want fast-and-slow tiers (smoke tests block the unlock; full suite runs in CI). A plugin generating non-deterministic output may need flake tolerance encoded in the gate. <sup class="ref-marker" title="ref: plugin-integrity-test-runner | .claude/plugins/plugin_integrity/scripts/safe-lock.sh (Test Execution loop over tests/*.sh) | Loop iterates every `tests/*.sh`, captures PASS/FAIL per file, aggregates `all_pass` (line 222: `all_pass=false` on any fail). Single tier; equal weight. Threshold customization would slot here.">&#9432;</sup></p>
 
-                        <p>You would tune the <em>prefix registry</em> used by the unlock ceremony. The current registry is short; your seed&rsquo;s will hold more. Each registered prefix carries its own word floor, its own format, its own Post handler. Adding a ceremony means adding to the registry, writing the handler, wiring the voice. The registry is the surface; the entries are yours. <sup class="ref-marker" title="ref: prefix-registry-current-entries | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh PREFIX_REGISTRY | `readonly PREFIX_REGISTRY` bash array of registered prefixes — the shaped ceremonies `[PLUGIN-LOCK]`, `[TEST-LOCK]`, `[GMODE]`, `[JOB-COMPLETE]`, `[JOB-APPROVE-CREATION]`, `[REPORT-TO-UPSTREAM]`, and the generic `[WAITING]` escape valve. Adding a prefix = editing this array + adding the Post handler in the owning plugin + wiring the voice (per `question_discipline/CLAUDE.md` Maintenance Rules).">&#9432;</sup></p>
+                        <p>You would tune the <em>prefix registry</em> used by the unlock ceremony. The current registry is short; your seed&rsquo;s will hold more. Each registered prefix carries its own word floor, its own format, its own Post handler. Adding a ceremony means adding to the registry, writing the handler, wiring the voice. The registry is the surface; the entries are yours. <sup class="ref-marker" title="ref: prefix-registry-current-entries | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh PREFIX_REGISTRY | `readonly PREFIX_REGISTRY` bash array of 9 active prefixes — the shaped ceremonies `[PLUGIN-LOCK]`, `[TEST-LOCK]`, `[GMODE]`, `[JOB-COMPLETE]`, `[JOB-APPROVE-CREATION]`, `[JOB-APPROVE-PLUGIN]`, `[REPEAT-JOB]`, `[REPORT-TO-UPSTREAM]`, and the generic `[WAITING]` escape valve. Adding a prefix = editing this array + adding the Post handler in the owning plugin + wiring the voice (per `question_discipline/CLAUDE.md` Maintenance Rules).">&#9432;</sup></p>
 
                         <p>You would extend the <em>revert log</em> schema. The current entries record what was reverted, by whom, when, with which checkpoint SHA. Your seed may want to record which test failed (the exact assertion), which file the regression lived in, which prior cycle introduced the dependency that the failing test was checking. Richer revert logs make debugging in CONDENSE &mdash; the phase that absorbs experiential data &mdash; substantially faster. <sup class="ref-marker" title="ref: revert-log-schema | .claude/plugins/plugin_integrity/scripts/safe-lock.sh (log_revert function) | `log_revert()` writes a JSON entry to `data.json.revert_log` (capped at 20 — line 269 trim). Current fields: timestamp, plugin, failed_tests, files_reverted, reverted_files, pre_revert_sha, trigger_reason. Schema is extensible — adding new fields requires only a schema-version bump and a corresponding reader.">&#9432;</sup></p>
 
