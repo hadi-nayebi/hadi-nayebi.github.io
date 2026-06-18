@@ -108,17 +108,6 @@
                         <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (6 min read).</span>
                     </div>
 
-                    <figure class="audio-guide" aria-label="Draft narration of this essay" style="margin:1.5rem 0;padding:1rem 1.25rem;border:1px solid rgba(139,92,246,0.35);border-radius:14px;background:rgba(99,102,241,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
-                        <figcaption style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:600;letter-spacing:0.01em;color:#a5b4fc;">
-                            <span aria-hidden="true">&#128264;</span>
-                            <span>Draft narration &mdash; free voice. Final studio version coming.</span>
-                        </figcaption>
-                        <audio controls preload="none" src="audio/07_2-skeleton-claudemd-hooks-scripts.draft.mp3" style="width:100%;">
-                            Your browser does not support the audio element.
-                            <a href="audio/07_2-skeleton-claudemd-hooks-scripts.draft.mp3" style="color:#a5b4fc;">Download the draft narration (MP3)</a>.
-                        </audio>
-                    </figure>
-
                     <div class="article-body">
 
                         <p><em>Essay 7.2 &mdash; The Plugin Kit, Part 2 of 9.</em></p>
@@ -146,6 +135,10 @@
                         <h2><code>hooks/</code> &mdash; The Reflexes</h2>
 
                         <p><strong>What it is.</strong> A directory of small shell scripts that fire on Claude Code events: <code>UserPromptSubmit</code>, <code>PreToolUse</code>, <code>PostToolUse</code>, <code>Stop</code>, <code>SessionStart</code>, <code>SubagentStart</code>. Hooks are how the plugin reaches the agent&rsquo;s cognitive process from outside the LLM. They are pure shell, executing in milliseconds, returning exit codes that decide whether the call proceeds. <sup class="ref-marker" title="ref: hooks-fire-on-claude-code-events | .claude/settings.local.json | The top-level `hooks` object groups bash commands under exactly these event keys — `UserPromptSubmit`, `PreToolUse`, `PostToolUse`, `Stop`, `SessionStart`, `SubagentStart` — each containing one or more `{matcher, hooks:[{type:&quot;command&quot;, command, timeout}]}` entries. Every plugin hook and shared `lib/` utility registers under one of these six events.">&#9432;</sup></p>
+
+                        <p><strong>The one rule every hook obeys: fail toward the safe outcome.</strong> A hook is a guard standing in front of the agent&rsquo;s own tools, so a bug in the guard is a bug that could freeze the whole seed agent. The kit answers this with a four-part behavioral contract. Every hook must reach a deliberate exit code &mdash; never an accidental crash. Block messages go out on standard error, the channel the agent reads. Exit zero means allow; exit two means block. And any internal failure &mdash; a missing file, a parse error, an absent config &mdash; falls toward the safe outcome, which is almost always <em>allow</em>. A guard&rsquo;s own breakage can never be the thing that stalls the work. The phase guards take this so seriously that they deliberately skip strict shell mode, each carrying the header note that the hook "must always reach exit." <sup class="ref-marker" title="ref: fail-safe-allow-hook-contract | phase_observe/hooks/observe-guard.sh, phase_plan/hooks/plan-guard.sh, phase_verify/hooks/verify-guard.sh, phase_execute/hooks/execute-guard.sh, phase_condense/hooks/condense-guard.sh + brain_guard/hooks/context-gate.sh | Each phase guard&#x27;s header reads &quot;NO set -euo pipefail — hook must always reach exit&quot; (execute-guard&#x27;s is &quot;NO set -euo pipefail (Critical Design)&quot;). context-gate.sh comments the default: on a measurement failure it exits 0 because &quot;Better to over-permit than to block work we cannot justify blocking.&quot; Stderr carries block messages; exit 0 = allow, exit 2 = block.">&#9432;</sup></p>
+
+                        <p><strong>The deliberate exception.</strong> One guard flips the default on purpose: the stop gate that decides whether the agent may finish. If its state file is corrupted, it blocks rather than allows &mdash; because letting the agent stop on top of unverifiable job state is itself the unsafe outcome, the one that quietly loses work. The rule is not "always allow." The rule is "fail toward the safe outcome," and for the stop gate, blocking is safe. <sup class="ref-marker" title="ref: stop-gate-fail-safe-block | job_core/hooks/stop-gate.sh | Header: &quot;FAIL-SAFE: corrupted JSON → BLOCK.&quot; On a JSON validation failure the gate emits the corrupted-data block message to stderr and `exit 2`s — the deliberate inversion of the usual fail-toward-allow default, because stopping with unverifiable job state would lose work.">&#9432;</sup></p>
 
                         <p><strong>Who reads them.</strong> Claude Code itself, at event time. The agent never reads its own hooks during reasoning &mdash; the hooks are invisible to the LLM unless one of them emits a voice into the context. <sup class="ref-marker" title="ref: hooks-registered-via-settings-local | .claude/settings.local.json:5-15 | Hook registry shape: `&quot;hooks&quot;: { &quot;UserPromptSubmit&quot;: [{ &quot;hooks&quot;: [{ &quot;type&quot;: &quot;command&quot;, &quot;command&quot;: &quot;bash .claude/plugins/job_core/hooks/prompt-handler.sh&quot;, &quot;timeout&quot;: 10 }] }] ... }` — Claude Code reads this file at session start, executes the matching `command` at each event. The LLM never reads it.">&#9432;</sup></p>
 

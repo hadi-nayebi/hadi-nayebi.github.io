@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="docs/ and the Historian — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b7/images/plugin-kit-b7-banner.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260601">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -108,17 +108,6 @@
                         <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (4 min read).</span>
                     </div>
 
-                    <figure class="audio-guide" aria-label="Draft narration of this essay" style="margin:1.5rem 0;padding:1rem 1.25rem;border:1px solid rgba(139,92,246,0.35);border-radius:14px;background:rgba(99,102,241,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
-                        <figcaption style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:600;letter-spacing:0.01em;color:#a5b4fc;">
-                            <span aria-hidden="true">&#128264;</span>
-                            <span>Draft narration &mdash; free voice. Final studio version coming.</span>
-                        </figcaption>
-                        <audio controls preload="none" src="audio/07_5-docs-and-historian.draft.mp3" style="width:100%;">
-                            Your browser does not support the audio element.
-                            <a href="audio/07_5-docs-and-historian.draft.mp3" style="color:#a5b4fc;">Download the draft narration (MP3)</a>.
-                        </audio>
-                    </figure>
-
                     <div class="article-body">
 
                         <p><em>Essay 7.5 &mdash; The Plugin Kit, Part 5 of 9.</em></p>
@@ -139,7 +128,7 @@
                             <li><code>docs/principles.md</code> OR <code>docs/decisions.md</code> (depending on the plugin) &mdash; the overflow surface for design rationale that doesn&rsquo;t fit in evolution.md. <sup class="ref-marker" title="ref: evolution-md-universal-across-plugins | .claude/plugins/*/docs/evolution.md | `find .claude/plugins -name evolution.md -path &quot;*/docs/*&quot;` returns 14 hits — one per plugin (brain_guard, interaction_summary, job_archiver, job_blocker, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline) PLUS the template at `plugin_integrity/template/docs/evolution.md` so newly-stamped plugins inherit the file at birth. The discipline is universal: no plugin ships without one.">&#9432;</sup></li>
                         </ul>
 
-                        <p><strong>Who reads them.</strong> The agent, especially at plugin unlock &mdash; the lock-manager auto-injects <code>docs/evolution.md</code> into the agent&rsquo;s context every time PLUGIN-LOCK is approved. This is how the editor inherits the plugin&rsquo;s reasoning before touching code. The historian subagent reads evolution.md when re-narrating new commits. New users read these to understand a plugin&rsquo;s lived history before customizing. <sup class="ref-marker" title="ref: evolution-md-auto-injected-on-unlock | .claude/plugins/plugin_integrity/hooks/evolution-cap.sh:6-9 | The hook&#x27;s header docstring states the contract explicitly: &quot;Blocks edits to docs/evolution.md that would push word count above MAX_EVOLUTION_WORDS (default 2000, configurable via plugin_integrity/config.conf). WHY: evolution.md is auto-injected to stderr on every plugin unlock. Unbounded [growth would exhaust the per-unlock context budget].&quot; The cap exists BECAUSE the file is auto-dumped into the agent&#x27;s context on every PLUGIN-LOCK approval — keeping the file lean preserves context budget per-unlock.">&#9432;</sup></p>
+                        <p><strong>Who reads them.</strong> The agent, especially at plugin unlock &mdash; the lock-manager auto-injects <code>docs/evolution.md</code> into the agent&rsquo;s context every time PLUGIN-LOCK is approved. This is how the editor inherits the plugin&rsquo;s reasoning before touching code. The historian subagent reads evolution.md when re-narrating new commits. New users read these to understand a plugin&rsquo;s lived history before customizing. <sup class="ref-marker" title="ref: evolution-md-auto-injected-on-unlock | .claude/plugins/plugin_integrity/hooks/lock-manager.sh (PostToolUse unlock branch — the D44-fix `evo_section` emit) | On a PLUGIN-LOCK unlock the hook reads the plugin&#x27;s `docs/evolution.md` into an `evo_section`, folds it into a `context_msg` block, and delivers it to the agent via `hookSpecificOutput.additionalContext` JSON on stdout. (PostToolUse stderr from an exit-0 hook is silently dropped by Claude Code, so `additionalContext` is the only channel that reaches the agent&#x27;s context.) That emit IS the auto-injection. A sibling cap in `evolution-cap.sh` bounds the file&#x27;s word count precisely because it is dumped into context on every unlock — keeping it lean preserves the per-unlock context budget.">&#9432;</sup></p>
 
                         <p><strong>Who writes them.</strong> The historian subagent writes <code>docs/evolution.md</code> when dispatched by the drift-counter ratchet. The operator writes the sibling files (<code>docs/principles.md</code>, <code>docs/decisions.md</code>) through gmode &mdash; these surfaces are not under the same auto-narration discipline. <sup class="ref-marker" title="ref: historian-drift-counter-ratchet | .claude/plugins/plugin_integrity/scripts/drift-check.sh:9-11 | The drift-check script&#x27;s header contract: &quot;every N git commits to the plugin, the historian must update [evolution.md] — no insertion thresholds — the historian is mandated to update on schedule.&quot; The historian-* subagents (13 total — one per plugin): twelve live centralized in `plugin_integrity/agents/` (historian-brain-guard, historian-interaction-summary, historian-job-archiver, historian-job-blocker, historian-job-core, historian-phase-condense, historian-phase-execute, historian-phase-observe, historian-phase-plan, historian-phase-verify, historian-phasic-system, historian-plugin-integrity); `question_discipline` owns its own at `question_discipline/agents/historian-question-discipline.md`. Each is dispatched when its plugin&#x27;s drift count crosses DRIFT_THRESHOLD (default 10, configurable via config.conf).">&#9432;</sup></p>
 
@@ -258,8 +247,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260601"></script>
-    <script src="../../js/components.js?v=20260601"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>
