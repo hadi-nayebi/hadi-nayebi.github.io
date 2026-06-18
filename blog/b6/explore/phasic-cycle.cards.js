@@ -135,7 +135,7 @@ window.DECK_INFO = {
         title: 'the very-urgent bail', tag: 'action',
         what: 'The single mid-cycle escape. A focused phase backs one hop to OBSERVE, and OBSERVE then bails to idle — so a job can yield focus urgently without a clean CONDENSE close.',
         why: 'A job’s only NORMAL exit is forward through CONDENSE; the cycle is closed, never abandoned mid-stream. The bail is the one deliberate exception, and it is routed, not direct.',
-        hood: 'Uses existing edges: <code>plan:observe</code> / <code>execute:observe</code> / <code>verify:observe</code>, then <code>observe:idle</code>. Driven by the job’s <code>urgency</code> field. Source: <code>opevc-phases.md</code> · "BACKWARD_MAP".'
+        hood: 'Uses existing edges: <code>plan:observe</code> / <code>execute:observe</code> / <code>verify:observe</code>, then <code>observe:idle</code>. The bail is a backward transition (<code>observe:idle</code> entry in <code>BACKWARD_MAP</code>); <code>suppress_next_cycle_increment</code> preserves the cycle counter so the bail does NOT lose a cycle. Source: <code>opevc-phases.md</code> · "BACKWARD_MAP".'
     },
     'bail-through-observe': {
         title: 'routed through OBSERVE (no direct →idle)', tag: 'gate',

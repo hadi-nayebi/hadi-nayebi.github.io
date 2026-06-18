@@ -182,7 +182,7 @@ window.DECK_INFO = {
         title: 'question-discipline-gate.sh', tag: 'gate',
         what: 'A PreToolUse hook on AskUserQuestion: it blocks any question whose first token is not a registered prefix, forcing every interactive ask through the named-ceremony system.',
         why: 'Casual proceed/pause prompts are banned — every user-facing question is forced into a named category, so the user always knows what KIND of decision is being asked.',
-        hood: 'Subagents bypass first (<code>CLAUDE_SUBAGENT==true → exit 0</code>); non-AskUserQuestion calls exit 0; then a first-token starts-with check <code>[[ "$qtext" == "$prefix"* ]]</code> against the registry. Source: <code>question_discipline/hooks/question-discipline-gate.sh</code>.'
+        hood: 'Subagents bypass first (<code>agent_type != "main" → exit 0</code>, reading <code>.agent_type // "main"</code> from the stdin JSON); non-AskUserQuestion calls exit 0; then a first-token starts-with check <code>[[ "$qtext" == "$prefix"* ]]</code> against the registry. Source: <code>question_discipline/hooks/question-discipline-gate.sh</code>.'
     },
     'qd-registry': {
         title: 'PREFIX_REGISTRY', tag: 'state',
@@ -268,7 +268,7 @@ window.DECK_INFO = {
         title: '1 · subagent bypass', tag: 'action',
         what: 'The first check: if the caller is a subagent, the gate exits clean. A subagent investigates; it never becomes a second user-facing question surface.',
         why: 'Blocking a subagent’s tool calls would cascade failures without disciplining anyone — the gate is for the main session’s asks, not background work.',
-        hood: '<code>CLAUDE_SUBAGENT==true → exit 0</code> — the same behavioral bypass interaction_summary’s guard uses. Source: <code>question_discipline/hooks/question-discipline-gate.sh</code> · subagent bypass.'
+        hood: 'The A2 discriminator: <code>AGENT_TYPE=$(echo "$INPUT" | jq -r \'.agent_type // "main"\')</code>; <code>AGENT_TYPE != "main" → exit 0</code>. The gate reads <code>agent_type</code> from the hook’s stdin JSON, not an env var. Source: <code>question_discipline/hooks/question-discipline-gate.sh</code> · subagent bypass.'
     },
     'qdl-tool': {
         title: '2 · tool filter', tag: 'gate',
@@ -508,7 +508,7 @@ window.DECK_CARDS = {
         title: 'Four checks before a question reaches the user',
         sub: 'bypass subagents · ignore non-questions · require a prefix on every question in the batch · optionally check the body shape.',
         boxes: [
-            { id: 'qdl-bypass', x: 36, y: 120, w: 210, h: 84, tag: 'action', t: '1 · subagent bypass', s: 'CLAUDE_SUBAGENT → exit 0' },
+            { id: 'qdl-bypass', x: 36, y: 120, w: 210, h: 84, tag: 'action', t: '1 · subagent bypass', s: 'agent_type ≠ main → exit 0' },
             { id: 'qdl-tool', x: 270, y: 120, w: 210, h: 84, tag: 'gate', t: '2 · tool filter', s: 'AskUserQuestion only' },
             { id: 'qdl-cascade', x: 504, y: 120, w: 210, h: 84, tag: 'gate', t: '3 · batch cascade', s: 'all must be prefixed' },
             { id: 'qdl-shape', x: 738, y: 120, w: 210, h: 84, tag: 'gate', t: '4 · optional shape', s: 'opt-in sections' },

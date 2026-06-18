@@ -1,7 +1,7 @@
 /* ============================================================================
  * phase-advance.cards.js — CONTENT for the "Inside a Phase" concept-deck.
  * Teaches: how ONE OPEVC phase runs (operational entry → metacognitive exit) and
- * the THREE-FAMILY EXIT GATE that is every phase's advance condition.
+ * the THREE-FAMILY EXIT GATE that is every phase’s advance condition.
  * Paired with the shared deck-engine.js + deck-engine.css. Loaded BEFORE the engine,
  * which reads window.DECK_INFO + window.DECK_CARDS.
  *
@@ -48,7 +48,7 @@ window.DECK_INFO = {
         title: 'min side — earn each synthesis', tag: 'gate',
         what: 'The min side asks for enough investigative actions (reads, subagent runs, greps) behind every synthesis write — you have to look before you write down a conclusion.',
         why: 'It stops the seed from "synthesising" out of thin air. A conclusion has to be paid for with investigation first.',
-        hood: 'Counted per ACTIVITY CLASS as tool-call counts in the phase tracker (<code>observe-tracker.sh</code>); thresholds tune per phase via <code>config.conf</code>. The canonical rule is the min-max gate (<code>.claude/context/opevc-rhythm.md</code>).'
+        hood: 'Counted per ACTIVITY CLASS as tool-call counts in the phase’s own tracker (<code>&lt;phase&gt;-tracker.sh</code> — each phase has its own: <code>observe-tracker.sh</code>, <code>plan-tracker.sh</code>, <code>execute-tracker.sh</code>, <code>verify-tracker.sh</code>, <code>condense-tracker.sh</code>); thresholds tune per phase via <code>config.conf</code>. The canonical rule is the min-max gate (<code>.claude/context/opevc-rhythm.md</code>).'
     },
     'pa-max': {
         title: 'max side — synthesise before more', tag: 'gate',

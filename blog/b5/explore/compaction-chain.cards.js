@@ -39,7 +39,7 @@ window.DECK_INFO = {
         title: 'the context window', tag: 'state',
         what: 'The model’s finite conversation buffer. It fills every turn, and past a few hundred thousand tokens the seed’s reasoning quality starts to drop.',
         why: 'Chat is the one place the seed’s memory does NOT live by design — it is capped and lossy at compaction. Watching how full it is, and acting early, is the whole reason brain_guard exists.',
-        hood: 'Measured by the shared <code>plugins/lib/context-helper.sh</code> (<code>compute_context_size</code> reads the transcript’s last <code>.message.usage</code>). The 1M ceiling is <code>MAX_CONTEXT_TOKENS</code> in <code>config.conf</code> — display only; the gates compare tiers. Source: <code>brain-memory.md</code> · "context-helper.sh".'
+        hood: 'Measured by the shared <code>plugins/lib/context-helper/context-helper.sh</code> (<code>compute_context_size</code> reads the transcript’s last <code>.message.usage</code>). The 1M ceiling is <code>MAX_CONTEXT_TOKENS</code> in <code>config.conf</code> — display only; the gates compare tiers. Source: <code>brain-memory.md</code> · "context-helper.sh".'
     },
     'compaction-file': {
         title: 'the compaction file', tag: 'object',
@@ -71,7 +71,7 @@ window.DECK_INFO = {
         title: 'the context tier', tag: 'state',
         what: 'The unit brain_guard reasons in: the token total floored into 10k buckets, so a milestone fires once per crossing instead of continuously.',
         why: 'Collapsing a large noisy token count into a small integer makes the threshold comparisons clean — and makes the whole system retunable by editing a handful of numbers.',
-        hood: '<code>tier = floor(total_tokens / TOKENS_PER_TIER)</code>, <code>TOKENS_PER_TIER=10000</code> (<code>config.conf</code>); computed by <code>context_tier()</code> in <code>plugins/lib/context-helper.sh</code>. 200k → tier 20. Source: <code>brain-memory.md</code> · "Context tier".'
+        hood: '<code>tier = floor(total_tokens / TOKENS_PER_TIER)</code>, <code>TOKENS_PER_TIER=10000</code> (<code>config.conf</code>); computed by <code>context_tier()</code> in <code>plugins/lib/context-helper/context-helper.sh</code>. 200k → tier 20. Source: <code>brain-memory.md</code> · "Context tier".'
     },
     'soft-gate': {
         title: 'soft gate — coach (tier 20)', tag: 'action',
@@ -264,6 +264,18 @@ window.DECK_INFO = {
         what: 'The entry voice of the phase the seed was IN is re-injected — so the wake is a genuine re-entry into the phase with the same coaching it got at phase entry, not just a location stamp.',
         why: 'Resuming the phase means resuming its duties, its allowed surface, its depth forecast. Re-playing the entry voice puts the seed back into the phase mindset, not merely back at a coordinate.',
         hood: 'Re-injects the paused phase’s ENTRY voice (the phasic entry-advance voice). Idle → orientation only, no phase voice. Source: <code>brain-memory.md</code> · "Compact-wake reflex" step 3.'
+    },
+    'wake-rhythm-reset': {
+        title: 'phase rhythm-counter reset', tag: 'state',
+        what: 'The phase’s intra-phase action counter — <code>actions_since_synthesis</code> — is zeroed so a mid-phase wake is not born with an already-tripped max-gate.',
+        why: 'A compact can fire mid-phase, leaving the counter at whatever value the interrupted phase had accumulated. Without a reset, the fresh session would immediately hit the max-gate and be unable to proceed — a phantom block on work that has not yet happened.',
+        hood: '<code>reset-synthesis</code> arm of the phase gateway; approved fix 2026-06-12. Source: <code>brain-memory.md</code> · "Compact-wake reflex" step 1b.'
+    },
+    'wake-pin-derive': {
+        title: 'pin_pane re-derive', tag: 'state',
+        what: 'The tmux pane address used by self-compact is re-derived from the live environment so it targets the correct terminal after the clear.',
+        why: 'A /clear creates a fresh session in the same pane, but the stored <code>pin_pane</code> value could be stale. Re-deriving it ensures the next self-compact dispatch fires into the right pane without needing any human re-pin.',
+        hood: '<code>session-init.sh</code> <code>derive pin_pane</code> via <code>tmux display-message -p</code> at each SessionStart; the compact-wake reflex triggers this step. Source: <code>brain-memory.md</code> · "Compact-wake reflex" step 4.'
     },
     'wake-chain': {
         title: 'chain-load', tag: 'object',
@@ -537,22 +549,26 @@ window.DECK_CARDS = {
         title: 'The wake reflex — re-ground on arrival',
         sub: 'A hook cannot start a turn, but it can inject context the instant the fresh session is born. So orientation is deterministic even if the follow-up paste mis-fires.',
         boxes: [
-            { id: 'wake-reflex', x: 60, y: 185, w: 220, h: 100, tag: 'action', t: 'compact-wake reflex', s: 'SessionStart(source=clear)' },
-            { id: 'wake-tier', x: 350, y: 45, w: 240, h: 72, tag: 'state', t: 'tier reset', s: 'set-last-tier 0' },
-            { id: 'wake-digest', x: 350, y: 145, w: 240, h: 72, tag: 'context', t: 'orientation digest', s: 'focused job · phase · cycle' },
-            { id: 'wake-phase-voice', x: 350, y: 245, w: 240, h: 72, tag: 'action', t: 'phase re-entry voice', s: 're-enter, not a stamp' },
-            { id: 'wake-chain', x: 350, y: 345, w: 240, h: 72, tag: 'object', t: 'chain-load', s: 'read the sealed file off disk' },
-            { id: 'prior-summary', x: 700, y: 185, w: 230, h: 100, tag: 'object', t: 'the Prior Summary', s: 'cognition, not just facts' }
+            { id: 'wake-reflex', x: 60, y: 240, w: 220, h: 100, tag: 'action', t: 'compact-wake reflex', s: 'SessionStart(source=clear)' },
+            { id: 'wake-tier', x: 350, y: 30, w: 240, h: 65, tag: 'state', t: 'tier reset', s: 'set-last-tier 0' },
+            { id: 'wake-rhythm-reset', x: 350, y: 110, w: 240, h: 65, tag: 'state', t: 'rhythm-counter reset', s: 'actions_since_synthesis → 0' },
+            { id: 'wake-digest', x: 350, y: 190, w: 240, h: 65, tag: 'context', t: 'orientation digest', s: 'focused job · phase · cycle' },
+            { id: 'wake-phase-voice', x: 350, y: 270, w: 240, h: 65, tag: 'action', t: 'phase re-entry voice', s: 're-enter, not a stamp' },
+            { id: 'wake-pin-derive', x: 350, y: 350, w: 240, h: 65, tag: 'state', t: 'pin_pane re-derive', s: 'target the correct terminal' },
+            { id: 'wake-chain', x: 350, y: 430, w: 240, h: 65, tag: 'object', t: 'chain-load', s: 'read the sealed file off disk' },
+            { id: 'prior-summary', x: 700, y: 220, w: 230, h: 100, tag: 'object', t: 'the Prior Summary', s: 'cognition, not just facts' }
         ],
         edges: [
             { from: 'wake-reflex', to: 'wake-tier', kind: 'hard', label: '1' },
+            { from: 'wake-reflex', to: 'wake-rhythm-reset', kind: 'hard', label: '1b' },
             { from: 'wake-reflex', to: 'wake-digest', kind: 'hard', label: '2' },
             { from: 'wake-reflex', to: 'wake-phase-voice', kind: 'hard', label: '3' },
+            { from: 'wake-reflex', to: 'wake-pin-derive', kind: 'hard', label: '4' },
             { from: 'wake-reflex', to: 'wake-chain', kind: 'hard', label: '5' },
             { from: 'wake-chain', to: 'prior-summary', kind: 'hard', label: 'loads' }
         ],
         stickies: [
-            { x: 640, y: 320, text: 'The seed’s mind lives ON DISK — the clear sheds only the conversation trace, never the cognition.', aha: true }
+            { x: 640, y: 360, text: 'The seed’s mind lives ON DISK — the clear sheds only the conversation trace, never the cognition.', aha: true }
         ],
         navHints: { left: 'clear + inject', right: 'the two-tier chain', down: 'optional deepening' }
     },

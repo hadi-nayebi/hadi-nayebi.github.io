@@ -92,7 +92,7 @@ window.DECK_INFO = {
         title: 'The discriminator', tag: 'state',
         what: 'One flag decides whether the pacing gates apply: the agent type. The main session reads as "main"; every dispatched subagent reads as something else. That single difference is what the exemption keys on.',
         why: 'The pacing gates are designed to slow one orchestrator down so it synthesises. A subagent is not the orchestrator, so the same gates would only deadlock it. The flag is how the seed tells them apart.',
-        hood: '<code>AGENT_TYPE</code> comes from the hook input <code>.agent_type // "main"</code> (read in <code>observe-guard.sh</code>); sensors/trackers early-exit on <code>!= "main"</code>; a secondary <code>CLAUDE_SUBAGENT</code> env var is defence-in-depth. Source: <code>opevc-delegation.md</code> · "Subagent gate exemption".'
+        hood: '<code>AGENT_TYPE</code> comes from the hook stdin <code>.agent_type // "main"</code> (read in <code>observe-guard.sh</code>); sensors/trackers early-exit on <code>!= "main"</code>. <code>CLAUDE_SUBAGENT</code> is a vestigial env var — retired as the phase-guard/subagent-gate discriminator (unset for Task + Workflow agents at the hook layer); one narrow historic use remains inside <code>plugin_integrity/hooks/plugin-guard.sh</code> only. Source: <code>opevc-delegation.md</code> · "Subagent gate exemption".'
     },
     'bypass-pacing': {
         title: 'Bypass the pacing', tag: 'gate',
@@ -118,7 +118,7 @@ window.DECK_INFO = {
         title: 'agents/ — the pool', tag: 'object',
         what: 'A directory of subagent definitions a plugin owns: the organ through which that plugin delegates investigation. The definitions are markdown files; the running subagent is a dispatched instance, not stored here.',
         why: 'Pools are per-plugin, never one global pool. A plugin that delegates research grows its pool over time; the directory is where a concern’s delegation depth is customised, one definition at a time.',
-        hood: 'Eleven plugins ship <code>agents/</code> — the five phase plugins plus <code>phasic_system</code>, <code>plugin_integrity</code>, <code>brain_guard</code>, <code>question_discipline</code>, and the two unbuilt job plugins. Discovery is wired by <code>agent-symlink.sh</code>. Source: <code>opevc-delegation.md</code> · "agents/ (per-plugin subagent pool)".'
+        hood: 'Nine active plugins ship <code>agents/</code> — the five phase plugins plus <code>phasic_system</code>, <code>plugin_integrity</code>, <code>brain_guard</code>, and <code>question_discipline</code>. The two job plugins (<code>job_archiver</code>, <code>job_blocker</code>) are unimplemented designs — no registered hooks or functional agents/. Discovery is wired by <code>agent-symlink.sh</code>. Source: <code>opevc-delegation.md</code> · "agents/ (per-plugin subagent pool)".'
     },
     'prefix-marker': {
         title: 'The prefix is the boundary', tag: 'state',
@@ -148,7 +148,7 @@ window.DECK_INFO = {
     },
     'reflector-member': {
         title: 'Plus one reflector', tag: 'object',
-        what: 'Every roster also holds one metacognitive reflector — the exit-voice agent that reflects on the phase’s work and feeds the compaction file. It is the phase’s additional, mandatory-at-exit roster member.',
+        what: 'Every roster also holds one metacognitive reflector — dispatched DURING the phase to reflect on the work and feed the compaction file. The exit voice fires separately at the advance boundary and does NOT launch the reflector; it is the phase’s additional, mandatory-at-exit roster member.',
         why: 'Operational subagents do the work; the reflector judges how the work went. Pairing both in one roster is what makes reflection a first-class, tunable part of each phase rather than an afterthought.',
         hood: 'The five reflectors, one per phase: OBSERVE <code>blindspot-finder</code>, PLAN <code>premortem</code>, EXECUTE <code>drift-auditor</code>, VERIFY <code>meta-audit</code>, CONDENSE <code>promotion-scan</code> (all ls-verified live). Running one satisfies family-c of the three-family exit gate. Source: <code>opevc-delegation.md</code> · "Per-phase subagent rosters".'
     },
@@ -248,7 +248,7 @@ window.DECK_INFO = {
         title: 'What is bypassed', tag: 'gate',
         what: 'The behavioural gates a subagent skips: the min-max pacing rhythm, the comment-density gate, budget consumption, and the question-discipline gate. All four pace a single orchestrator and would only deadlock parallel fan-out.',
         why: 'These gates matter — the bypass is about WHO they pace, not whether they count. They exist to slow the main session into synthesis; a subagent is not the thing that needs slowing.',
-        hood: 'Gating subagents on the synthesis rhythm "would deadlock parallel dispatch — the min-max gate applies to the MAIN-session orchestrator only". The question gate: <code>[[ "${CLAUDE_SUBAGENT:-}" == "true" ]] && exit 0</code>. Source: <code>opevc-delegation.md</code> · "Subagent gate exemption".'
+        hood: 'Gating subagents on the synthesis rhythm "would deadlock parallel dispatch — the min-max gate applies to the MAIN-session orchestrator only". The question gate (live form): <code>agent_type=$(jq -r \'.agent_type // "main"\'); [[ "$agent_type" != "main" ]] && exit 0</code>. Source: <code>opevc-delegation.md</code> · "Subagent gate exemption".'
     },
     'kept-relocated': {
         title: 'What is kept, relocated', tag: 'object',
@@ -411,7 +411,7 @@ window.DECK_CARDS = {
         sub: 'A roster holds two classes of agent: the operational tier that does the phase’s labour, and one metacognitive reflector that judges how it went. The roster is the primary surface an architect tunes for delegation depth.',
         boxes: [
             { id: 'operational-tier', x: 35, y: 185, w: 205, h: 140, tag: 'object', t: 'operational tier', s: 'the workers' },
-            { id: 'reflector-member', x: 278, y: 185, w: 205, h: 140, tag: 'object', t: 'one reflector', s: 'the exit-voice agent' },
+            { id: 'reflector-member', x: 278, y: 185, w: 205, h: 140, tag: 'object', t: 'one reflector', s: 'the phase-exit metacog reflector (dispatched during the phase)' },
             { id: 'the-roster', x: 521, y: 185, w: 205, h: 140, tag: 'object', t: 'the roster', s: 'home for both' },
             { id: 'drop-an-md', x: 764, y: 185, w: 185, h: 140, tag: 'action', t: 'drop an .md', s: 'how you customize' }
         ],

@@ -802,7 +802,7 @@
         <div class="hm-orient__card">
             <div class="hm-orient__kicker">How to read this map</div>
             <h2 id="hm-orient-title">This is the life of one job.</h2>
-            <p class="hm-orient__lead">A single prompt <b>births</b> a job. It laps the <b>OPEVC ring</b> &mdash; observe, plan, execute, verify, condense &mdash; can <b>spawn</b> follow-up work and <b>wait on dependencies</b>, and only a <b>[JOB-COMPLETE]</b> answer lets it leave. The job you picture as one thing is really <b>one ID scattered across many plugin files</b>; each colored lane is a different owner.</p>
+            <p class="hm-orient__lead">A first prompt to an idle seed <b>births</b> a job (the bootstrap path shown here). It laps the <b>OPEVC ring</b> &mdash; observe, plan, execute, verify, condense &mdash; can <b>spawn</b> follow-up work and <b>wait on dependencies</b>, and only a <b>[JOB-COMPLETE]</b> answer lets it leave. The job you picture as one thing is really <b>one ID scattered across many plugin files</b>; each colored lane is a different owner.</p>
             <ol class="hm-orient__steps">
                 <li><span class="hm-orient__num">1</span><span><b>Follow the numbered ring</b> &mdash; that is the reading order through the OPEVC cycle.</span></li>
                 <li><span class="hm-orient__num">2</span><span><b>Color = data owner.</b> <b>Solid</b> arrows are code-enforced gates; <b>dashed</b> arrows are coaching or permission.</span></li>
@@ -928,7 +928,7 @@
             edge("j-plan-exec", "plan", "execute", "hard", "plan_file set"),
             edge("j-exec-ver", "execute", "verify", "hard", "exit gate"),
             edge("j-ver-cond", "verify", "condense", "hard", "plan untouched"),
-            edge("j-cond-idle", "condense", "idle", "hard", "80% deflation"),
+            edge("j-cond-idle", "condense", "idle", "hard", "condense→idle · 80% deflation + 3-family + notes terminal + archived"),
             // VERIFY plan-edit back-edge (HARD)
             edge("j-ver-plan", "verify", "plan", "hard", "plan edited → back"),
             // accumulate runs continuously (soft side-feed off idle)

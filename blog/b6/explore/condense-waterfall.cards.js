@@ -404,7 +404,7 @@ window.DECK_CARDS = {
             { from:'cw-force', to:'cw-noback', kind:'soft', label:'rejects' },
             { from:'cw-force', to:'cw-idle', kind:'hard', label:'advances' },
             { from:'cw-force', to:'cw-jc2', kind:'soft', label:'if eligible' },
-            { from:'cw-idle', to:'cw-addcycle', kind:'soft', label:'work left?' }
+            { from:'cw-force', to:'cw-addcycle', kind:'soft', label:'work left? (variant)' }
         ],
         stickies: [
             { x:300, y:24, aha:true, text:'A metabolism organ that could roll back would just be an <b>editing pass</b>. CONDENSE forces the cycles to churn forward.',
