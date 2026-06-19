@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="The Rhythm of Work — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b6/images/markov-phasic-brain-b6.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260609">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260518">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -106,17 +106,6 @@
                         <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (11 min read).</span>
                     </div>
 
-                    <figure class="audio-guide" aria-label="Draft narration of this essay" style="margin:1.5rem 0;padding:1rem 1.25rem;border:1px solid rgba(139,92,246,0.35);border-radius:14px;background:rgba(99,102,241,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
-                        <figcaption style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:600;letter-spacing:0.01em;color:#a5b4fc;">
-                            <span aria-hidden="true">&#128264;</span>
-                            <span>Draft narration &mdash; free voice. Final studio version coming.</span>
-                        </figcaption>
-                        <audio controls preload="none" src="audio/06_8-inverse-multiplier.draft.mp3" style="width:100%;">
-                            Your browser does not support the audio element.
-                            <a href="audio/06_8-inverse-multiplier.draft.mp3" style="color:#a5b4fc;">Download the draft narration (MP3)</a>.
-                        </audio>
-                    </figure>
-
                     <div class="article-body">
 
                         <p><em>Essay 6.8 &mdash; The Markov Phasic Brain, Part 8 of 10.</em></p>
@@ -137,7 +126,7 @@
 
                         <p>The transitions are explicit. Top-level jobs are born <code>active</code> and <code>focused</code> the moment the user&rsquo;s prompt fires <code>prompt-handler.sh</code> &mdash; <code>job.sh create-active</code> is the hook-only entry point that bypasses normal creation gates. Dependent jobs are born <code>pending</code> via the CONDENSE-only <code>job.sh create</code> / <code>create-dependent</code>, and move to <code>active</code> only when the operator runs <code>job.sh activate</code> to switch focus. A job can be <code>pause</code>d back to <code>pending</code> (loses focus) and re-<code>activate</code>d later. <sup class="ref-marker" title="ref: top-level-vs-dependent-birth-paths | .claude/plugins/job_core/scripts/job.sh `create-active` subcommand + `create` / `create-dependent` subcommands | Birth-path split is enforced by command-level gates: `create-active` is hook-only (fires from prompt-handler.sh, born status:&quot;active&quot; + focused:true); `create` and `create-dependent` are CONDENSE-only (born status:&quot;pending&quot;, focused:false). `activate` / `pause` flip the focused-and-active pair; the always-on layer never bypasses these gates.">&#9432;</sup></p>
 
-                        <p>The terminal move &mdash; <code>pending</code>/<code>active</code> to <code>completed</code> &mdash; is gated: the focused active job&rsquo;s <code>completion_requirements</code> must be satisfied (every <code>depends_on</code> ID is itself <code>completed</code>, plus any required user or plugin-lock approvals), and the operator runs <code>job.sh complete</code>. The job&rsquo;s status field cycles through a few states &mdash; <code>active</code>, <code>pending</code>, <code>completed</code> &mdash; and the transitions are exactly what the Ralph loop needs to refuse <code>Stop</code>. <sup class="ref-marker" title="ref: job-status-transitions-explicit | .claude/plugins/job_core/CLAUDE.md ## State Machine + .claude/plugins/job_core/scripts/job.sh create_active + complete | State diagram in job_core/CLAUDE.md ## State Machine: pending↔active↔completed with focused boolean tracking the one job in flight. job.sh&#x27;s create-active handler shows top-level creation (status:&quot;active&quot;, focused:true) vs CONDENSE&#x27;s `create`/`create-dependent` (status:&quot;pending&quot;, focused:false). The `complete` handler enforces the depends_on completion check and the approval flags before flipping status to &quot;completed&quot;.">&#9432;</sup></p>
+                        <p>The terminal move &mdash; <code>pending</code>/<code>active</code> to <code>completed</code> &mdash; is gated: the focused active job&rsquo;s <code>completion_requirements</code> must be satisfied (every <code>depends_on</code> ID is itself <code>completed</code>, plus any required user or plugin-lock approvals), and the operator runs <code>job.sh complete</code>. The job&rsquo;s status field cycles through the three working states &mdash; <code>active</code>, <code>pending</code>, <code>completed</code> &mdash; and the transitions are exactly what the Ralph loop needs to refuse <code>Stop</code>. There is one more status off to the side: <code>voided</code>, the terminal off-ramp for work that gets <em>abandoned</em> without ever being completed. It is not part of the working cycle &mdash; a voided job is kept on disk for its history but is finished with, so the Stop gate stops counting it. <sup class="ref-marker" title="ref: job-status-four-states-incl-voided | .claude/plugins/job_core/scripts/job.sh `complete` arm (status→completed) + `void-dependency` arm (status→voided) + .claude/plugins/job_core/hooks/stop-gate.sh | The job status has four values: the three working states `pending`/`active`/`completed` plus `voided`, a terminal-abandon state set by the `void-dependency` arm (a dependency VERIFY concludes is dead work). The Stop gate counts only `active`+`pending`, so a voided job is exempt — uncounted, with no gate change. `voided` is distinct from completion: the objective was never met, so `completed` would be false; the job is parked on disk rather than deleted.">&#9432;</sup></p>
 
                         <p>The phasic layer does the same thing one fractal level down &mdash; inside a single phase.</p>
 
@@ -337,8 +326,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260609"></script>
-    <script src="../../js/components.js?v=20260609"></script>
+    <script src="../../js/theme-manager.js?v=20260518"></script>
+    <script src="../../js/components.js?v=20260518"></script>
 </body>
 
 </html>

@@ -106,17 +106,6 @@
                         <span class="audio-label" style="font-style: italic;">Audio narration pending — written-only essay (10 min read).</span>
                     </div>
 
-                    <figure class="audio-guide" aria-label="Draft narration of this essay" style="margin:1.5rem 0;padding:1rem 1.25rem;border:1px solid rgba(139,92,246,0.35);border-radius:14px;background:rgba(99,102,241,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
-                        <figcaption style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;font-size:0.85rem;font-weight:600;letter-spacing:0.01em;color:#a5b4fc;">
-                            <span aria-hidden="true">&#128264;</span>
-                            <span>Draft narration &mdash; free voice. Final studio version coming.</span>
-                        </figcaption>
-                        <audio controls preload="none" src="audio/06_1-phasic-foundation.draft.mp3" style="width:100%;">
-                            Your browser does not support the audio element.
-                            <a href="audio/06_1-phasic-foundation.draft.mp3" style="color:#a5b4fc;">Download the draft narration (MP3)</a>.
-                        </audio>
-                    </figure>
-
                     <div class="article-body">
 
                         <p><em>Essay 6.1 &mdash; The Markov Phasic Brain, Part 1 of 10. Essay 6 opens here; Parts 2 through 10 follow.</em></p>
@@ -201,12 +190,11 @@
 
                         <p>Separately, every phase carries its own <em>direct-action budget</em>, an independent meter that tracks the ratio of direct file work versus subagent delegation and uses that ratio to inject voices or block actions. <sup class="ref-marker" title="ref: direct-action-budget-meter | .claude/plugins/phase_observe/hooks/observe-guard.sh `direct_action_budget_remaining` + `has_direct_action_budget` helpers + observe-tracker.sh grant-on-subagent-dispatch arm | The guard&#x27;s `has_direct_action_budget` helper short-circuits direct Reads when the per-job remaining budget hits zero (`block &quot;direct-action-budget-blocked&quot;`). The tracker grants +N budget per observe-* subagent launch — mechanizing the 80/20 delegation rule as a meter rather than a coaching nudge.">&#9432;</sup></p>
 
-                        <p>Job-graph mutations follow a <em>lifecycle-symmetry</em> rule &mdash; the phase that adds graph state is rarely the phase that removes it, because the right context for each operation lives in a different cognitive posture. <sup class="ref-marker" title="ref: lifecycle-symmetry-add-vs-remove | .claude/plugins/phase_condense/hooks/condense-guard.sh &quot;Tool Enforcement&quot; section allows `add-dependency` + .claude/plugins/phase_verify/hooks/verify-guard.sh &quot;Tool Enforcement&quot; section allows `remove-dependency` only | CONDENSE owns `add-dependency` (cycle-wide synthesis context for what follow-ups matter); VERIFY owns `remove-dependency` (audit context for whether a declared dep turned out unnecessary). The verify-guard explicitly blocks `create / create-dependent / add-dependency` to seal the asymmetry.">&#9432;</sup> We name each mechanism here so the later essays can use the labels; their machinery opens one by one.</p>
+                        <p>Job-graph mutations follow a <em>lifecycle-symmetry</em> rule &mdash; the phase that adds graph state is rarely the phase that removes it, because the right context for each operation lives in a different cognitive posture. <sup class="ref-marker" title="ref: lifecycle-symmetry-add-vs-remove | .claude/plugins/phase_condense/hooks/condense-guard.sh &quot;Tool Enforcement&quot; section allows `add-dependency` + .claude/plugins/phase_verify/hooks/verify-guard.sh &quot;Tool Enforcement&quot; section allows the removal commands (`remove-dependency` + `void-dependency`) | CONDENSE owns `add-dependency` (cycle-wide synthesis context for what follow-ups matter); VERIFY owns the removal end — `remove-dependency` (unlink only, child survives as standalone) and `void-dependency` (unlink + flip the child to the `voided` terminal-abandon status) — using audit context for whether a declared dep turned out unnecessary. The verify-guard explicitly blocks `create / create-dependent / add-dependency` to seal the asymmetry.">&#9432;</sup> We name each mechanism here so the later essays can use the labels; their machinery opens one by one.</p>
 
                         <aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
   <span style="font-size: 0.92rem; line-height: 1.5; color: rgba(255,255,255,0.82);"><strong>The whole skeleton, walkable.</strong> The cycle, the two transition maps, the conductor and its five self-guarding musicians, the rule that lets thinking grant the right to write, and the fractal Markov framing &mdash; laid out as an interactive concept-deck. Walk one idea per card; click any box for the live code behind it.</span>
   <a href="explore/phasic-cycle.html" title="Walk the phasic brain as an interactive concept-deck" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the phasic brain</a>
-  <a href="explore/transition-map.html" title="The complete transition map — hover any arrow for what that transition is for" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #042f2a; text-decoration: none; background: linear-gradient(135deg, #5eead4, #2dd4bf); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(45,212,191,0.4);">&#8599; See every transition</a>
 </aside>
 
                         <h2>What you would customize</h2>
