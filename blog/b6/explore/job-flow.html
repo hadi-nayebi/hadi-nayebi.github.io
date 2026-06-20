@@ -1051,6 +1051,9 @@
             node("d-standalone", W_STAGE, H_STAGE, { type: "stage", title: "Standalone Job", sub: "depends_on stays []", lane: "job_core", stage: "dependency" }),
             node("d-dependent", W_STAGE, H_STAGE, { type: "stage", title: "Dependent Job", sub: "id on PARENT.depends_on[]", lane: "job_core", stage: "dependency" }),
             node("d-parent", W_STAGE, H_STAGE, { type: "hub", title: "Parent Job", sub: "depends_on[] non-empty", lane: "job_core", stage: "dependency" }),
+            node("d-review", W_HOOK, H_HOOK, { type: "hook", title: "VERIFY open-dep review", sub: "KEEP · PROMOTE · VOID", lane: "job_core", stage: "dependency" }),
+            node("d-promote", W_STAGE, H_STAGE, { type: "stage", title: "Promoted → standalone", sub: "remove-dependency · unlink only", lane: "job_core", stage: "dependency" }),
+            node("d-voided", W_STAGE, H_STAGE, { type: "exit", title: "status: voided", sub: "void-dependency · abandoned, kept on disk", lane: "job_core", stage: "dependency" }),
             node("d-gate", W_HOOK, H_HOOK, { type: "hook", title: "dependency-completion gate", sub: "two enforce points", lane: "job_core", stage: "dependency" }),
             node("d-derived", W_STAGE, H_STAGE, { type: "stage", title: "No 'blocked' status", sub: "waiting is DERIVED at completion", lane: "job_core", stage: "dependency" }),
             node("d-complete", W_STAGE, H_STAGE, { type: "exit", title: "Parent may complete", sub: "only when all deps completed", lane: "job_core", stage: "dependency", drill: "completion" }),
@@ -1061,6 +1064,9 @@
             edge("d-2", "d-created", "d-dependent", "soft", "links to parent"),
             edge("d-3", "d-dependent", "d-parent", "hard", "on depends_on[]"),
             edge("d-4", "d-parent", "d-gate", "hard", "at completion"),
+            edge("d-r1", "d-parent", "d-review", "soft", "VERIFY reviews open deps"),
+            edge("d-r2", "d-review", "d-promote", "hard", "PROMOTE"),
+            edge("d-r3", "d-review", "d-voided", "hard", "VOID"),
             edge("d-5", "d-gate", "d-derived", "soft", "no stored flag"),
             edge("d-6", "d-gate", "d-complete", "hard", "all deps completed"),
             edge("d-7", "d-parent", "d-stubs", "soft", "design-only"),
@@ -1667,6 +1673,30 @@
             canDo: "Lets the parent proceed through the rest of its completion checks.",
             why: "All annexes signed — now the master contract can be closed.",
             builder: "With all deps status==completed, the gate at job.sh complete arm dep-walk passes and completion can proceed (subject to the other approval checks)."
+        },
+        "d-review": {
+            title: "VERIFY open-dependency review",
+            what: "Each cycle, VERIFY looks at the focused job's still-open dependencies and decides, per dependency, one of three things: KEEP it, PROMOTE it, or VOID it.",
+            when: "In VERIFY, reviewing only the open (pending/active) dependencies — completed ones are skipped.",
+            canDo: "KEEP (still needed — do nothing) · PROMOTE (unlink but keep the work) · VOID (unlink and abandon).",
+            why: "Adding a dependency is a CONDENSE act; removing one is a VERIFY act — the lifecycle is symmetric, each move made in the phase with the right context.",
+            builder: "verify-guard allowlists exactly two removal commands — job.sh remove-dependency (PROMOTE) and job.sh void-dependency (VOID); create/create-dependent/add-dependency are blocked here and steered to a [PENDING-JOB] marker for CONDENSE."
+        },
+        "d-promote": {
+            title: "Promoted → standalone",
+            what: "The dependency is unlinked from its parent but the job itself survives — it becomes ordinary standalone work.",
+            when: "When VERIFY decides the link was wrong but the work still matters.",
+            canDo: "Removes the id from the parent's depends_on[] only; the child keeps its own status and life.",
+            why: "A sub-task that turned out not to block the parent, but is still worth doing on its own.",
+            builder: "job.sh remove-dependency <dep_id> — unlink only (the child is NOT touched). VERIFY-owned (verify-guard allowlist)."
+        },
+        "d-voided": {
+            title: "status: voided — the abandon off-ramp",
+            what: "The dependency is unlinked AND the job is flipped to voided: a terminal-abandon status meaning the work was abandoned without ever being completed.",
+            when: "When VERIFY concludes an open dependency is dead work. It is voided's first trigger, but the status generalizes to any job the seed decides to abandon.",
+            canDo: "Ends the job without claiming success — the objective was never met, so 'completed' would be a lie — yet keeps it on disk (not deleted) so its diagnostic history survives.",
+            why: "voided is the fourth job status, alongside pending/active/completed. It is stop-gate-exempt: the gate counts only active+pending, so a voided job no longer holds the agent's drive to finish.",
+            builder: "job.sh void-dependency <dep_id> — one atomic pass: removes the dep id from the parent's depends_on[] AND sets the child's status=\"voided\". VERIFY-owned. Canonical: .claude/context/job-system.md \"job.status\" + \"Dependency lifecycle\"."
         },
         "d-stubs": {
             title: "job_blocker / job_archiver",

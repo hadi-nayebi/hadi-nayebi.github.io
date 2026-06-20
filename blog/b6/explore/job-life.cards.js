@@ -759,7 +759,37 @@ window.DECK_CARDS = {
                 { x:36,  y:372, text:'If VERIFY had to fix the plan, the work isn\'t trusted — it\'s sent <b>back to PLAN</b> to re-plan.' }
             ],
             backnote: { x:46, y:498, text:'← from EXECUTE: the work is built' },
-            nextnote: { x:604, y:494, text:'All clear → into CONDENSE' }
+            nextnote: { x:604, y:494, text:'All clear → into CONDENSE' },
+            navHints: { down: 'detail: when a dependency turns out dead' }
+        },
+
+        '4,1': {
+            kind: 'detail',
+            eyebrow: 'Related detail · under "VERIFY"',
+            title: 'When a dependency dies — the voided off-ramp',
+            sub: 'What you\'re looking at: the other thing VERIFY does. Each cycle it reviews the focused job\'s OPEN dependencies and, for each, picks one of three outcomes. One of them is a brand-new terminal state.',
+            boxes: [
+                { id:'v1-review',     x:56,  y:226, w:236, h:108, tag:'gate',   t:'VERIFY reviews open deps', s:'pending/active deps only' },
+                { id:'v1-keep',       x:392, y:54,  w:208, h:84,  tag:'state',  t:'KEEP',  s:'still needed → do nothing' },
+                { id:'v1-promote',    x:392, y:228, w:208, h:84,  tag:'action', t:'PROMOTE', s:'remove-dependency' },
+                { id:'v1-void',       x:392, y:402, w:208, h:84,  tag:'action', t:'VOID',  s:'void-dependency' },
+                { id:'v1-standalone', x:700, y:228, w:228, h:84,  tag:'object', t:'child → standalone', s:'unlinked · survives as its own job' },
+                { id:'v1-voided',     x:700, y:398, w:228, h:96,  tag:'state',  t:'status → voided', s:'abandoned · kept on disk' }
+            ],
+            edges: [
+                { from:'v1-review', to:'v1-keep',       kind:'soft', label:'still needed' },
+                { from:'v1-review', to:'v1-promote',    kind:'hard', label:'unlink only' },
+                { from:'v1-review', to:'v1-void',       kind:'hard', label:'unlink + abandon' },
+                { from:'v1-promote', to:'v1-standalone', kind:'hard', label:'PROMOTE' },
+                { from:'v1-void',    to:'v1-voided',     kind:'hard', label:'VOID' }
+            ],
+            stickies: [
+                { x:56, y:54, aha:true, text:'Adding a dependency is a <b>CONDENSE</b> act; <b>removing</b> one is a <b>VERIFY</b> act — the lifecycle is symmetric.' },
+                { x:632, y:36, r:true, text:'<b>voided</b> is terminal-abandon: the objective was never met (so "completed" would be a lie), but the job is <b>kept on disk</b>, not deleted. The <b>Stop gate ignores it</b> — it counts only active + pending.',
+                  ref: { url:'../06_7-condense.html', section:'Blog 6.7 · the voided off-ramp', blurb:'A dead dependency is unlinked and flipped to voided — a terminal-abandon status kept on disk, stop-gate-exempt. void-dependency is its first trigger but it generalizes to any abandoned job.' } },
+                { x:392, y:506, text:'<b>voided</b> started here, but it <b>generalizes</b> — any job the seed decides to abandon can be voided.' }
+            ],
+            upnote: { x:700, y:60, label:'back up to: VERIFY' }
         },
 
         '5,0': {
