@@ -582,7 +582,7 @@ Every command/operation in the seed agent is owned by exactly one phase. Each ow
 
 The 2026-05-12 plan-file-lifecycle brainstorming that lived here is **RETIRED**. It modelled an approval-as-**sealing** design — a two-stage `.md` → `.yaml` **`plan_state`** state machine, `seal-plan` / `mark-plan-complete` archival into `completed_plan[]`, `.yaml`-as-a-separate-post-approval-cycle, plus the G1–G9 / FQ1–FQ4 audit and the attached Blog-6 fix plan. The architect later replaced that whole model.
 
-**Canonical model (ground truth):** `.claude/context/job-system.md` — "Plan file lifecycle" + "Job Stage" + "Extension cycle". In short:
+**Canonical model (ground truth):** `.claude/context/job-stages-plans.md` — "Plan file lifecycle" + "Job Stage" + `.claude/context/job-completion-reactivation.md` "Extension cycle". In short:
 
 - A job's **Stage** (1 single-cycle / 2 `.md` / 3 `.yaml`) is decided in **cycle-1 PLAN** of the activated job — not at creation.
 - The plan file is **born in cycle-1 EXECUTE**, **persists** across activations, and absorbs experience run-over-run.
