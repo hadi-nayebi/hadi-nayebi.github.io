@@ -38,6 +38,7 @@ Essay 6 unfolds across short parts:
 
 - **Essay 6.1 — Phasic Foundation** *(you are here)* — the cognitive cycle and why phases at all
 - [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the per-phase tool restrictions
+- [Essay 6.2b — The Phase Map](06_2b-the-phase-map.html) — a quick tour of all the phases before the per-phase deep-dives
 - [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — the read-only sweep that grounds every cycle
 - [Essay 6.4 — PLAN — Decide, Then Lock](06_4-plan.html) — the analysis phase whose deliverable is a named contract
 - [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the only phase with project-write access, fenced by the altered list
