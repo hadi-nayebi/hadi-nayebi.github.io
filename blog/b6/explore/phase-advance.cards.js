@@ -401,6 +401,78 @@ window.DECK_CARDS = {
             { x:700, y:36, text:'CONDENSE runs the same gate in the consume direction.',
               ref: { kind: 'deck', url: 'condense-waterfall.html', section: 'The CONDENSE Waterfall', blurb: 'CONDENSE\'s consumption-direction gate metabolizes the cycle\'s notes.' } }
         ],
-        navHints: { down: null }
+        navHints: { down: 'CONDENSE-only extra gates' }
+    },
+
+    '0,1': {
+        kind: 'detail',
+        eyebrow: 'Inside a phase · step 1 detail',
+        title: 'Entry coaches, exit gates',
+        sub: 'What you\'re looking at: how the phase begins (coaching only) and where the friction lives (entirely at the exit). Phase entry has no required act — the gates are all at the advance boundary.',
+        boxes: [
+            { id:'en-voice',   x:64,  y:118, w:380, h:88, tag:'context', t:'entry voice',   s:'introduces the operational subagents' },
+            { id:'en-noact',   x:64,  y:230, w:380, h:88, tag:'state',   t:'no required act', s:'depth forecasting is coaching, never checked' },
+            { id:'en-friction',x:504, y:118, w:360, h:88, tag:'gate',    t:'friction sits at EXIT', s:'three-family + shape + custom gates' },
+            { id:'en-floor',   x:504, y:230, w:360, h:88, tag:'context', t:'every gate is a FLOOR', s:'keep working past it whenever the work needs more' }
+        ],
+        edges: [
+            { from:'en-voice',    to:'en-noact',    kind:'hard', label:'so' },
+            { from:'en-noact',    to:'en-friction', kind:'soft', label:'instead' },
+            { from:'en-friction', to:'en-floor',    kind:'hard', label:'and it is' }
+        ],
+        stickies: [
+            { x:300, y:30, aha:true, text:'Phase entry has no required act — the friction is all at the exit, and the exit gate is a <b>floor</b>, not a target.',
+              ref: { url:'../06_2-discipline-and-map.html', section:'Blog 6.2 · entry coached, exit gated', blurb:'The ENTRY voice coaches how to work; the EXIT voice fires when the advance is blocked and delivers a mindset shift. Entry has no required act; the gates live entirely at the advance boundary.' } }
+        ],
+        navHints: { up: 'back to step 1' }
+    },
+
+    '1,1': {
+        kind: 'detail',
+        eyebrow: 'Inside a phase · step 2 detail',
+        title: 'The min-max gate, up close',
+        sub: 'What you\'re looking at: the per-activity-class rhythm that paces intra-phase work. One reset event clears every class counter at once — the CLAUDE.md write IS the synthesis moment.',
+        boxes: [
+            { id:'mm-class',   x:380, y:118, w:200, h:88, tag:'object', t:'per activity class', s:'reads / agent / grep / glob / web / bash' },
+            { id:'mm-min',     x:64,  y:230, w:270, h:88, tag:'gate',   t:'min side', s:'enough investigation behind each synthesis write' },
+            { id:'mm-max',     x:600, y:230, w:270, h:88, tag:'gate',   t:'max side', s:'blocks investigative tools once ANY class hits its ceiling' },
+            { id:'mm-reset',   x:380, y:340, w:200, h:88, tag:'action', t:'ONE reset event', s:'a CLAUDE.md update resets ALL class counters' },
+            { id:'mm-content', x:64,  y:340, w:270, h:88, tag:'state',  t:'content never parsed', s:'counts only, not what you wrote' }
+        ],
+        edges: [
+            { from:'mm-class',  to:'mm-min',     kind:'hard', label:'feeds' },
+            { from:'mm-class',  to:'mm-max',     kind:'hard', label:'feeds' },
+            { from:'mm-min',    to:'mm-reset',   kind:'soft', label:'satisfied by' },
+            { from:'mm-max',    to:'mm-reset',   kind:'soft', label:'cleared by' },
+            { from:'mm-reset',  to:'mm-content', kind:'hard', label:'by count' }
+        ],
+        stickies: [
+            { x:300, y:30, aha:true, text:'Per-class counters, ONE reset event — a single CLAUDE.md update resets every class at once; <b>content is never read</b>.',
+              ref: { url:'../06_2-discipline-and-map.html', section:'Blog 6.2 · min-max gate', blurb:'Per-class counters, ONE reset event: a CLAUDE.md update resets ALL class counters at once (the write IS the synthesis moment; what it documents is coached, never content-parsed).' } }
+        ],
+        navHints: { up: 'back to step 2' }
+    },
+
+    '5,1': {
+        kind: 'detail',
+        eyebrow: 'Inside a phase · step 6 detail',
+        title: 'CONDENSE\'s extra gates',
+        sub: 'What you\'re looking at: the three gates unique to CONDENSE on top of the universal three-family gate. The marker gate runs in the consumption direction — CONDENSE metabolizes notes instead of creating them.',
+        boxes: [
+            { id:'cd-80',      x:64,  y:118, w:280, h:88, tag:'gate',  t:'80% deflation gate', s:'footers absorb up' },
+            { id:'cd-consume', x:600, y:118, w:300, h:88, tag:'gate',  t:'consumption-direction marker gate', s:'per class, a subagent run per marked note' },
+            { id:'cd-nofamb',  x:600, y:230, w:300, h:88, tag:'state', t:'family-b NOT required', s:'CONDENSE consumes marks, doesn\'t produce' },
+            { id:'cd-seal',    x:64,  y:230, w:280, h:88, tag:'gate',  t:'seal-evidence gate', s:'compaction file last_finalized >= last_completed_at' }
+        ],
+        edges: [
+            { from:'cd-consume', to:'cd-nofamb', kind:'soft', label:'so' },
+            { from:'cd-80',      to:'cd-seal',   kind:'hard', label:'and' },
+            { from:'cd-consume', to:'cd-seal',   kind:'hard', label:'and' }
+        ],
+        stickies: [
+            { x:300, y:30, aha:true, text:'CONDENSE\'s marker gate runs in the <b>consumption direction</b> — it metabolizes notes instead of creating them.',
+              ref: { url:'../06_7-condense.html', section:'Blog 6.7 · three-family exit gate', blurb:'CONDENSE is not gated on family-b (it consumes marks, not gated on creating them). Its marker-side gate runs in the CONSUMPTION direction: per marker class, a dedicated-subagent run per marked note. Additionally: 80% deflation gate + seal-evidence gate (last_finalized >= last_completed_at).' } }
+        ],
+        navHints: { up: 'back to step 6' }
     }
 };

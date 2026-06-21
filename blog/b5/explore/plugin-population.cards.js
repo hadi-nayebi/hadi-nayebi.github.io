@@ -346,7 +346,7 @@ window.DECK_CARDS = {
             { x: 700, y: 330, text: 'Open up one plugin to see its internal organs.',
               ref: { kind: 'deck', url: '../../b7/explore/plugin-substrate.html', section: 'Inside a Plugin', blurb: 'The six-directory core skeleton plus optional organs every plugin is built from.' } }
         ],
-        navHints: { left: '0,0', right: '2,0' }
+        navHints: { left: '0,0', right: '2,0', down: 'one concern each — see them laid out' }
     },
 
     '2,0': {
@@ -368,7 +368,7 @@ window.DECK_CARDS = {
         stickies: [
             { x: 360, y: 360, aha: true, text: 'The always-on five keep running UNDERNEATH the active phasic mode — the phasic layer never replaces them.' }
         ],
-        navHints: { left: '1,0', right: '3,0' }
+        navHints: { left: '1,0', right: '3,0', down: 'conductor vs musicians — the count discipline' }
     },
 
     '3,0': {
@@ -523,5 +523,61 @@ window.DECK_CARDS = {
             { x: 300, y: 396, text: 'One unprefixed question in a batched call rejects the WHOLE batch — discipline never half-applies.' }
         ],
         navHints: { up: '5,0' }
+    },
+
+    /* ---- Detail 1,1: the always-on organs (currently five) ---- */
+    '1,1': {
+        kind: 'detail', step: 2,
+        eyebrow: 'Detail \xb7 the always-on organs',
+        title: 'The five always-on organs',
+        sub: 'What you\'re looking at: the always-on plugins (currently five in the prototype), each named by its single concern — the unifying property is phase-independence, not topic.',
+        boxes: [
+            { id: 'ao1-pi',   x: 44,  y: 118, w: 166, h: 88, tag: 'object',  t: 'plugin_integrity',    s: 'plugin edit-safety: lock + test-or-revert + drift-gate' },
+            { id: 'ao1-jc',   x: 230, y: 118, w: 166, h: 88, tag: 'object',  t: 'job_core',            s: 'job lifecycle + stop gate' },
+            { id: 'ao1-is',   x: 416, y: 118, w: 166, h: 88, tag: 'object',  t: 'interaction_summary', s: 'mega-prompt compression' },
+            { id: 'ao1-bg',   x: 602, y: 118, w: 166, h: 88, tag: 'object',  t: 'brain_guard',         s: 'context-window hygiene' },
+            { id: 'ao1-qd',   x: 788, y: 118, w: 152, h: 88, tag: 'object',  t: 'question_discipline', s: 'AskUserQuestion prefix gate' },
+            { id: 'ao1-prop', x: 270, y: 284, w: 440, h: 88, tag: 'context', t: 'unifying property: phase-INDEPENDENCE', s: 'fires on every event — not the relationship to the CLAUDE.md layer' }
+        ],
+        edges: [
+            { from: 'ao1-pi', to: 'ao1-prop', kind: 'soft', label: '' },
+            { from: 'ao1-jc', to: 'ao1-prop', kind: 'soft', label: '' },
+            { from: 'ao1-is', to: 'ao1-prop', kind: 'soft', label: '' },
+            { from: 'ao1-bg', to: 'ao1-prop', kind: 'soft', label: '' },
+            { from: 'ao1-qd', to: 'ao1-prop', kind: 'soft', label: '' }
+        ],
+        stickies: [
+            { x: 44, y: 24, aha: true, text: 'Each fires regardless of phase, minding its own concern — the always-on layer is a set of concerns, not a count.' }
+        ],
+        navHints: { up: '1,0' }
+    },
+
+    /* ---- Detail 2,1: conductor and five musicians ---- */
+    '2,1': {
+        kind: 'detail', step: 3,
+        eyebrow: 'Detail \xb7 the phasic layer roster',
+        title: 'A conductor and five musicians',
+        sub: 'What you\'re looking at: the phasic layer is an orchestrator plus five phase plugins — one conductor, five musicians. Not six phase plugins.',
+        boxes: [
+            { id: 'ph1-orch',  x: 340, y: 44,  w: 300, h: 88, tag: 'object',  t: 'phasic_system',  s: 'the orchestrator — conducts the phase-transition state machine' },
+            { id: 'ph1-ob',    x: 44,  y: 200,  w: 148, h: 88, tag: 'phase',   t: 'phase_observe',  s: 'OBSERVE tool law' },
+            { id: 'ph1-pl',    x: 204, y: 200,  w: 148, h: 88, tag: 'phase',   t: 'phase_plan',     s: 'PLAN tool law' },
+            { id: 'ph1-ex',    x: 364, y: 200,  w: 148, h: 88, tag: 'phase',   t: 'phase_execute',  s: 'EXECUTE tool law' },
+            { id: 'ph1-ve',    x: 524, y: 200,  w: 148, h: 88, tag: 'phase',   t: 'phase_verify',   s: 'VERIFY tool law' },
+            { id: 'ph1-co',    x: 684, y: 200,  w: 148, h: 88, tag: 'phase',   t: 'phase_condense', s: 'CONDENSE tool law' },
+            { id: 'ph1-under', x: 220, y: 354,  w: 540, h: 72, tag: 'state',   t: 'always-on runs UNDERNEATH', s: 'concurrently — never replaced by the active phasic mode' }
+        ],
+        edges: [
+            { from: 'ph1-orch', to: 'ph1-ob', kind: 'hard', label: '' },
+            { from: 'ph1-orch', to: 'ph1-pl', kind: 'hard', label: '' },
+            { from: 'ph1-orch', to: 'ph1-ex', kind: 'hard', label: '' },
+            { from: 'ph1-orch', to: 'ph1-ve', kind: 'hard', label: '' },
+            { from: 'ph1-orch', to: 'ph1-co', kind: 'hard', label: 'routes between' },
+            { from: 'ph1-ex',   to: 'ph1-under', kind: 'soft', label: 'while' }
+        ],
+        stickies: [
+            { x: 680, y: 320, aha: true, text: 'phasic_system is the conductor, not a sixth phase plugin — five musicians, one conductor.' }
+        ],
+        navHints: { up: '2,0' }
     }
 };

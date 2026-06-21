@@ -498,7 +498,32 @@ window.DECK_CARDS = {
         stickies: [
             { x:80, y:28, aha:true, text:'The split people forget: <b>lock-cmd preserves</b> your work on a red test (fix &amp; re-run); <b>safe-lock auto-reverts</b> to the checkpoint. Reach for lock-cmd when done &amp; confident.' }
         ],
-        navHints: { left: 'the unlock', right: 'test-file protection' }
+        navHints: { left: 'the unlock', right: 'test-file protection', down: 'lock-cmd vs safe-lock' }
+    },
+    /* ---- Detail 4,1: lock-cmd vs safe-lock ---- */
+    '4,1': {
+        kind: 'detail', step: 5,
+        eyebrow: 'plugin substrate · detail',
+        title: 'lock-cmd vs safe-lock',
+        sub: 'What you\'re looking at: two close paths, same trigger (tests run at the boundary), opposite failure behaviour — lock-cmd preserves your work; safe-lock auto-reverts to the checkpoint.',
+        boxes: [
+            { id:'cl-cmd', x:100, y:130, w:230, h:95, tag:'action', t:'lock-cmd.sh', s:'agent-run, preferred close' },
+            { id:'cl-safe', x:100, y:265, w:230, h:95, tag:'action', t:'safe-lock.sh', s:'defensive backstop' },
+            { id:'cl-pass', x:430, y:90, w:210, h:85, tag:'state', t:'tests PASS', s:'both commit + clear lock' },
+            { id:'cl-fail', x:430, y:235, w:210, h:85, tag:'state', t:'tests FAIL', s:'lock-cmd keeps · safe-lock reverts' },
+            { id:'cl-chk', x:710, y:235, w:185, h:90, tag:'state', t:'checkpoint_ref', s:'the revert target' }
+        ],
+        edges: [
+            { from:'cl-cmd', to:'cl-pass', kind:'hard', label:'on pass' },
+            { from:'cl-safe', to:'cl-pass', kind:'hard', label:'on pass' },
+            { from:'cl-cmd', to:'cl-fail', kind:'soft', label:'PRESERVES' },
+            { from:'cl-safe', to:'cl-fail', kind:'soft', label:'REVERTS' },
+            { from:'cl-safe', to:'cl-chk', kind:'hard', label:'reverts to' }
+        ],
+        stickies: [
+            { x:100, y:30, aha:true, text:'<b>lock-cmd preserves</b> your work on a red test — fix and re-run. <b>safe-lock auto-reverts</b> to the checkpoint — quarantine commit first so nothing is lost from git log. Reach for lock-cmd when done and confident.' }
+        ],
+        navHints: { up: 'the two closes' }
     },
     /* ====================== Card 6: test-file protection ====================== */
     '5,0': {
@@ -519,7 +544,30 @@ window.DECK_CARDS = {
         stickies: [
             { x:100, y:30, aha:true, text:'Weakening the tests is <b>always a separate, deliberate act</b> — a nested [TEST-LOCK] inside the already-open plugin lock. The tests verify everything else, so they are guarded hardest.' }
         ],
-        navHints: { left: 'the two closes', right: 'birth' }
+        navHints: { left: 'the two closes', right: 'birth', down: 'TEST-LOCK — net inside the net' }
+    },
+    /* ---- Detail 5,1: TEST-LOCK — net inside the net ---- */
+    '5,1': {
+        kind: 'detail', step: 6,
+        eyebrow: 'plugin substrate · detail',
+        title: 'TEST-LOCK — the net inside the net',
+        sub: 'What you\'re looking at: why test .sh files stay frozen even inside an unlocked plugin, and the nested ceremony that thaws exactly one.',
+        boxes: [
+            { id:'tn-default', x:100, y:140, w:230, h:95, tag:'gate', t:'tests frozen by default', s:'CHECK 2 — even inside unlock' },
+            { id:'tn-handler', x:420, y:95, w:225, h:95, tag:'action', t:'TEST-LOCK handler', s:'plugin must already be unlocked' },
+            { id:'tn-field', x:420, y:235, w:225, h:95, tag:'state', t:'unlocked_test', s:'one named .sh file' },
+            { id:'tn-why', x:710, y:165, w:195, h:105, tag:'context', t:'why the extra gate', s:'a weakened test can\'t catch broken code' }
+        ],
+        edges: [
+            { from:'tn-default', to:'tn-handler', kind:'hard', label:'released only via' },
+            { from:'tn-handler', to:'tn-field', kind:'hard', label:'sets' },
+            { from:'tn-field', to:'tn-default', kind:'soft', label:'thaws one .sh' },
+            { from:'tn-handler', to:'tn-why', kind:'soft', label:'because' }
+        ],
+        stickies: [
+            { x:100, y:30, aha:true, text:'The tests are the verifier of everything else — so they are guarded <b>harder than the code beneath them</b>. A `[TEST-LOCK]` is nested inside an already-open `[PLUGIN-LOCK]`, unlocking one named .sh file at a time.' }
+        ],
+        navHints: { up: 'safety net locked harder' }
     },
     /* ====================== Card 7: birth ====================== */
     '6,0': {
@@ -545,6 +593,30 @@ window.DECK_CARDS = {
             { x:60, y:28, aha:true, text:'Birth stamps a <b>3-file floor</b>, not a full plugin — code is authored afterward. The birth commit gives drift-check a clean baseline; it does <b>NOT</b> touch <code>settings.local.json</code> — registration is the operator’s separate step.',
               ref: { url:'../07_9-creating-a-new-plugin.html', section:'Blog 7.9 · creating a new plugin', blurb:'07_9 walks the birth-to-maturity arc: floor → hooks → scripts+data.json → tests → agents.' } }
         ],
-        navHints: { left: 'test protection' }
+        navHints: { left: 'test protection', down: 'birth ceremony + anchor-bootstrap' }
+    },
+    /* ---- Detail 6,1: birth ceremony + anchor-bootstrap ---- */
+    '6,1': {
+        kind: 'detail', step: 7,
+        eyebrow: 'plugin substrate · detail',
+        title: 'The birth ceremony + anchor-bootstrap',
+        sub: 'What you\'re looking at: what birth does and does NOT do — template stamp, historian generation, baseline commit — and the anchor-bootstrap net that heals any CLAUDE.md missing its footer anchors.',
+        boxes: [
+            { id:'bc-stamp', x:80, y:135, w:205, h:90, tag:'action', t:'stamp the template', s:'copy + sed placeholders' },
+            { id:'bc-hist', x:80, y:270, w:205, h:90, tag:'action', t:'generate historian', s:'centrally into plugin_integrity/agents/' },
+            { id:'bc-noreg', x:350, y:135, w:230, h:90, tag:'state', t:'does NOT touch settings.local.json', s:'registration is an operator step' },
+            { id:'bc-commit', x:350, y:270, w:230, h:90, tag:'state', t:'birth commit', s:'= drift baseline' },
+            { id:'bc-anchor', x:655, y:190, w:240, h:105, tag:'gate', t:'anchor-bootstrap net', s:'inserts missing anchors at canonical position' }
+        ],
+        edges: [
+            { from:'bc-stamp', to:'bc-noreg', kind:'soft', label:'but' },
+            { from:'bc-stamp', to:'bc-hist', kind:'hard', label:'then' },
+            { from:'bc-hist', to:'bc-commit', kind:'hard', label:'auto-commit' },
+            { from:'bc-stamp', to:'bc-anchor', kind:'soft', label:'guarded by' }
+        ],
+        stickies: [
+            { x:80, y:30, aha:true, text:'Birth stamps a <b>3-file floor</b> + commits the baseline — but <b>does NOT register hooks</b> in <code>settings.local.json</code> (an operator step, by design). The anchor-bootstrap net catches any CLAUDE.md that comes out of birth without its four footer anchors and heals it in order.' }
+        ],
+        navHints: { up: 'birth from 3-file floor' }
     }
 };
