@@ -5,14 +5,14 @@ slug: "verify"
 read_time: "9 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Verify]
 status: draft
-version: v0.4.0
+version: v0.4.1
 audience: "Tier 2 → Tier 3"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # VERIFY — Independent Eyes
 
-*Essay 6.6 — The Markov Phasic Brain, Part 6 of 10.*
+*Essay 6.6 — The Markov Phasic Brain, Part 7 of 13.*
 
 ---
 
@@ -161,7 +161,7 @@ VERIFY's verdict closes the work-on-the-project arc. What CONDENSE does next is 
 
 ---
 
-*Essay 6.6 — The Markov Phasic Brain, Part 6 of 10.*
+*Essay 6.6 — The Markov Phasic Brain, Part 7 of 13.*
 
 *Previous: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, checkpoints, delegation bias.*
 *Next: [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the seven-step waterfall, the cycle's metabolism.*

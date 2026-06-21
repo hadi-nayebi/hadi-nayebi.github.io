@@ -5,14 +5,14 @@ slug: "gmode"
 read_time: "8 min"
 tags: [Architecture, Seed Agent, OPEVC, GMODE]
 status: draft
-version: v0.2.0
+version: v0.2.1
 audience: "Tier 2 → Tier 3"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # GMODE — The Off-Cycle Lane
 
-*Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
+*Essay 6.9 — The Markov Phasic Brain, Part 11 of 13.*
 
 ---
 
@@ -123,7 +123,7 @@ Gmode is the side-channel; the plan file is the long-channel. Both exist outside
 
 ---
 
-*Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
+*Essay 6.9 — The Markov Phasic Brain, Part 11 of 13.*
 
 *Previous: [Essay 6.8 — The Rhythm of Work](06_8-inverse-multiplier.html) — the min-max rhythm inside every phase and the exit gate that opens each boundary.*
 *Next: [Essay 6.10 — The Plan File — Stages and Completion](06_10-plan-state-machine.html) — what the plan file owns, the three Stages, the counting rule that closes a multi-cycle job, and where the plan lives on disk.*

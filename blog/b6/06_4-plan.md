@@ -5,14 +5,14 @@ slug: "plan"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Plan]
 status: draft
-version: v0.5.0
+version: v0.5.1
 audience: "Tier 2"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # PLAN — Decide, Then Lock
 
-*Essay 6.4 — The Markov Phasic Brain, Part 4 of 10.*
+*Essay 6.4 — The Markov Phasic Brain, Part 5 of 13.*
 
 ---
 
@@ -142,7 +142,7 @@ When PLAN exits, the orchestrator advances the job to EXECUTE.
 
 ---
 
-*Essay 6.4 — The Markov Phasic Brain, Part 4 of 10.*
+*Essay 6.4 — The Markov Phasic Brain, Part 5 of 13.*
 
 *Previous: [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — project-read-only synthesis, wide sources, the paired rhythm gates.*
 *Next: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*

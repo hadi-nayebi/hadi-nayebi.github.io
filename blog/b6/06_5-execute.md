@@ -5,14 +5,14 @@ slug: "execute"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases, Execute]
 status: draft
-version: v0.5.0
+version: v0.5.1
 audience: "Tier 2"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
 
 # EXECUTE — Build, in Scope, in Steps
 
-*Essay 6.5 — The Markov Phasic Brain, Part 5 of 10.*
+*Essay 6.5 — The Markov Phasic Brain, Part 6 of 13.*
 
 ---
 
@@ -137,7 +137,7 @@ When EXECUTE believes the plan is implemented, it commits the final checkpoint a
 
 ---
 
-*Essay 6.5 — The Markov Phasic Brain, Part 5 of 10.*
+*Essay 6.5 — The Markov Phasic Brain, Part 6 of 13.*
 
 *Previous: [Essay 6.4 — PLAN — Decide, Then Lock](06_4-plan.html) — deciding the Stage, locking the contract.*
 *Next: [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, the cycle's final guardrail.*
