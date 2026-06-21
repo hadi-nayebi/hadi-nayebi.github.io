@@ -126,7 +126,7 @@ Gmode is the side-channel; the plan file is the long-channel. Both exist outside
 *Essay 6.9 — The Markov Phasic Brain, Part 9 of 10.*
 
 *Previous: [Essay 6.8 — The Rhythm of Work](06_8-inverse-multiplier.html) — the min-max rhythm inside every phase and the exit gate that opens each boundary.*
-*Next: [Essay 6.10 — The Plan File — Long-Horizon Memory](06_10-plan-state-machine.html) — multi-cycle plans, the .md → .yaml lifecycle, and the long-horizon work the phasic brain carries across cycles.*
+*Next: [Essay 6.10 — The Plan File — Stages and Completion](06_10-plan-state-machine.html) — what the plan file owns, the three Stages, the counting rule that closes a multi-cycle job, and where the plan lives on disk.*
 
 
 

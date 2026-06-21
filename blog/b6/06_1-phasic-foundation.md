@@ -47,7 +47,8 @@ Essay 6 unfolds across short parts:
 - [Essay 6.7b — CONDENSE — What It Uniquely Owns](06_7b-condense-uniquely-owns.html) — the job graph CONDENSE mutates and the reflection that closes it
 - [Essay 6.8 — The Rhythm of Work](06_8-inverse-multiplier.html) — the count-based rhythm inside every phase, and the exit gate that opens each boundary
 - [Essay 6.9 — GMODE — The Off-Cycle Lane](06_9-gmode.html) — the documented escape hatch
-- [Essay 6.10 — The Plan File — Long-Horizon Memory](06_10-plan-state-machine.html) — how multi-cycle jobs accumulate plan + .yaml memory over time
+- [Essay 6.10 — The Plan File — Stages and Completion](06_10-plan-state-machine.html) — what the plan file owns, the three Stages, the completion counting rule, and where the plan lives
+- [Essay 6.10b — The Plan File — Long-Horizon Memory](06_10b-long-horizon-memory.html) — `.yaml` injection, the learning loop, and the long-horizon memory that closes the series
 
 Essay 6.2 maps the discipline; Essays 6.3 through 6.7 deep-dive each phase, one per essay. Essays 6.8 through 6.10 are for the architects in the audience — the mechanisms that let the cycle stay honest across long horizons.
 

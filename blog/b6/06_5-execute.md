@@ -45,7 +45,7 @@ The plan file is one of those artifacts, and EXECUTE is where it is born. A Stag
 
 The `.yaml` is not a second file the `.md` job spawns after a sign-off step. Stage 3 is what a mature Stage-2 plan *inspires* once a job has been run often enough to deserve per-phase context injection — a fresh job carrying the same work in a richer, parseable format. The cycle-1-EXECUTE-creates-the-plan rule holds identically for both; only the format the architect picked for that job differs. *[ref: stage-3-yaml-is-graduation-not-spawn | .claude/context/job-stages-plans.md "Job Stage" | Stage 3 (`.yaml` plan) is IDENTICAL to Stage 2 in completion semantics — cycle-1 plan-file creation, cycle-2..N operational work, the same completion gate. The ONLY difference between the two is plan-file format. A Stage-3 job is typically inspired by a mature Stage-2 job repeated many times — NOT a state-flip on the Stage-2 job, NOT a dependent spawned off its `.md`.]*
 
-How the plan file persists across cycles and across whole runs — carrying the job's accumulated experience as long-horizon memory, and (for a `.yaml`) injecting context at each phase entry — is the subject of [Essay 6.10](06_10-plan-state-machine.html).
+How the plan file persists across cycles and across whole runs — carrying the job's accumulated experience as long-horizon memory, and (for a `.yaml`) injecting context at each phase entry — is the subject of [Essay 6.10b](06_10b-long-horizon-memory.html).
 
 ---
 

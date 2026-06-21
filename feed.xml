@@ -209,11 +209,19 @@
     </item>
 
     <item>
-      <title>The Markov Phasic Brain — Pt 10: The Plan File: Long-Horizon Memory</title>
+      <title>The Markov Phasic Brain — Pt 12: The Plan File: Stages and Completion</title>
       <link>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b6/06_10-plan-state-machine.html</guid>
       <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
-      <description>The multi-cycle plan-file lifecycle that scales the markov brain to long-horizon work. plan_state + the three job forms + .yaml injection at phase entry.</description>
+      <description>What the plan file owns, the three Stages decided in cycle-1 PLAN, the counting rule that closes a multi-cycle job, and the run-aware directory where the plan lives.</description>
+    </item>
+
+    <item>
+      <title>The Markov Phasic Brain — Pt 13: The Plan File: Long-Horizon Memory</title>
+      <link>https://hadi-nayebi.github.io/blog/b6/06_10b-long-horizon-memory.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/b6/06_10b-long-horizon-memory.html</guid>
+      <pubDate>Thu, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>The .yaml that injects itself at every phase entry, the learning loop that lets a repeating job get smarter run-over-run, and the bridge to the plugin kit.</description>
     </item>
 
     <item>
