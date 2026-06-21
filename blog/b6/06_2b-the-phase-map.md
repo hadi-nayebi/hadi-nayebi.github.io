@@ -5,7 +5,7 @@ slug: "the-phase-map"
 read_time: "5 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
-version: v0.1.0
+version: v0.1.1
 audience: "Tier 2/3"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
@@ -25,7 +25,7 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 **IDLE** — the meta-state between cycles. Lifecycle management only — a narrow allowlist opens, and everything else stays shut. *[ref: idle-as-meta-state-between-cycles | .claude/plugins/phasic_system/hooks/phase-gate.sh IDLE case-arm + .claude/plugins/job_core/hooks/prompt-handler.sh active-job-zero branch | IDLE's guard blocks Edit/Write outside memory paths, blocks Reads, narrows Bash to a small named-script allowlist, and blocks WebSearch/WebFetch. Top-level jobs are auto-created by prompt-handler.sh — when the active-job count is zero, the user's prompt itself invokes job.sh --hook create-active and then phase.sh --hook init to lock the new job into IDLE. The agent never calls job.sh create directly.]*
 - Unlock the job-management CLI — the lifecycle surface (`show`, `focused`, `list`, `update`, `activate`, `focus`, `pause`, `complete`, `approve`). Creation and graph mutations live elsewhere.
 - Unlock the phase CLI (`advance`, `current`, `cycle`, `exit-gmode`) — agent-callable `advance` only goes idle → observe
-- Keep the always-on infrastructure running: memory-file edits, plus a small named-script allowlist on the IDLE Bash gate — `interaction_summary/scripts/summary.sh` for cross-conversation summaries, `brain_guard/scripts/self-compact.sh` for context-window compaction, and `plugin_integrity/scripts/lock-cmd.sh` for the universal active-lock close-out. Every other shell command exits blocked. *[ref: idle-bash-allowlist-named-scripts | .claude/plugins/phasic_system/hooks/phase-gate.sh:82-104 | IDLE's Bash whitelist is enumerated explicitly: summary.sh, self-compact.sh, lock-cmd.sh, phase.sh restricted to (advance|current|cycle|exit-gmode), job.sh restricted to (show|focused|list|update|activate|focus|pause|complete|approve). Default-block on everything else.]*
+- Keep the always-on infrastructure running: memory-file edits, plus a small named-script allowlist on the IDLE Bash gate — `interaction_summary/scripts/summary.sh` for cross-conversation summaries, `brain_guard/scripts/self-compact.sh` for context-window compaction, and `plugin_integrity/scripts/lock-cmd.sh` for the universal active-lock close-out. Every other shell command exits blocked. *[ref: idle-bash-allowlist-named-scripts | .claude/plugins/phasic_system/hooks/phase-gate.sh IDLE Enforcement section | IDLE's Bash whitelist is enumerated explicitly: summary.sh, self-compact.sh, lock-cmd.sh, phase.sh restricted to (advance|current|cycle|exit-gmode), job.sh restricted to (show|focused|list|update|activate|focus|pause|complete|approve). Default-block on everything else.]*
 - Block reads, project edits, CLAUDE.md edits, web access, general shell
 - *Job creation happens automatically: top-level via `prompt-handler.sh` (the user's prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming `[PENDING-JOB]` markers. The agent does not call `job.sh create` itself.*
 
@@ -36,13 +36,13 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 - Refuse code edits — the only allowed write target is CLAUDE.md
 - Cross the exit threshold only after enough investigation has happened
 
-**PLAN** — turn observations into a binding contract. *[ref: plan-names-file-claude-md-only | .claude/plugins/phase_plan/scripts/plan.sh:335-385 set-plan-file + .claude/plugins/phase_plan/hooks/plan-guard.sh "Edit|Write" case-arm | The public set-plan-file subcommand accepts false (single-cycle) or plan_<name>.md|.yaml (multi-cycle), records the plan_file value atomically into data.json, and rejects any second call ("Plan file already set"). The plan-guard's Edit|Write case-arm only allows CLAUDE.md writes (with section enforcement to ---Pl---) and blocks every other project path — PLAN cannot author the plan file it just named; EXECUTE creates the draft.]*
+**PLAN** — turn observations into a binding contract. *[ref: plan-names-file-claude-md-only | .claude/plugins/phase_plan/scripts/plan.sh set-plan-file subcommand + .claude/plugins/phase_plan/hooks/plan-guard.sh "Edit|Write" case-arm | The public set-plan-file subcommand accepts false (single-cycle) or plan_<name>.md|.yaml (multi-cycle), records the plan_file value atomically into data.json, and rejects any second call ("Plan file already set"). The plan-guard's Edit|Write case-arm only allows CLAUDE.md writes (with section enforcement to ---Pl---) and blocks every other project path — PLAN cannot author the plan file it just named; EXECUTE creates the draft.]*
 - Record the Stage decision in cycle 1 via an explicit `set-plan-file` call — `false` for a single-cycle job, a `.md`/`.yaml` name for a multi-cycle one; PLAN itself never writes the plan file — EXECUTE creates it
 - Declare the *altered list* — the set of dirs whose CLAUDE.md the agent edited during OBSERVE or PLAN; EXECUTE will be allowed to write project files inside each of those dirs exactly (no ancestor or nested dirs)
 - Write acceptance criteria VERIFY will check against
 - Refuse code edits — the contract is what gets written, not the work
 
-**EXECUTE** — build what the plan declared, in checkpoints. *[ref: execute-creates-plan-file-cycle-1 | .claude/plugins/phase_execute/hooks/execute-guard.sh:740-764 | EXECUTE's "Plan File: Create (Cycle 1 Only) — Then Blocked Forever" block enforces a triple-check before allowing the plan-file Write: scope (target path must equal the focused job's declared plan_file), cycle (current_cycle must equal 1), and existence (Write only, file must not yet exist). After cycle 1 EXECUTE cannot read or touch the file again — PLAN owns reading on cycle 2+; VERIFY owns editing.]*
+**EXECUTE** — build what the plan declared, in checkpoints. *[ref: execute-creates-plan-file-cycle-1 | .claude/plugins/phase_execute/hooks/execute-guard.sh "Plan File: Create (Cycle 1 Only)" block | EXECUTE's "Plan File: Create (Cycle 1 Only) — Then Blocked Forever" block enforces a triple-check before allowing the plan-file Write: scope (target path must equal the focused job's declared plan_file), cycle (current_cycle must equal 1), and existence (Write only, file must not yet exist). After cycle 1 EXECUTE cannot read or touch the file again — PLAN owns reading on cycle 2+; VERIFY owns editing.]*
 - Edit project files, but only inside the altered list — the merged set of CLAUDE.md files OBSERVE and PLAN together declared, frozen at execute entry
 - Materialize every artifact the seed agent produces — code, the `.md` plan in cycle 1 of a Stage-2 job, the `.yaml` plan in cycle 1 of a Stage-3 job, anything else with a path; EXECUTE is the universal file-creator
 - Favor small, focused checkpoint commits over one long uncommitted run; the intermediate-commit mode keeps checkpoints cheap, so the pattern costs nothing
@@ -95,7 +95,7 @@ The discipline here is friction, not mathematical enforcement: every guard depen
 
 ---
 
-You now have the whole map in your head: seven states, each with its essence and its output, and the customization knobs that let a different architect re-cut them. The rest of the series opens each compartment one at a time. The next essay opens the first one — OBSERVE, the read-wide-write-once entry phase that decides what the rest of the cycle will work on.
+You now have the whole map in your head: each state with its essence and its output, and the customization knobs that let a different architect re-cut them. The rest of the series opens each compartment one at a time. The next essay opens the first one — OBSERVE, the read-wide-write-once entry phase that decides what the rest of the cycle will work on.
 
 ---
 
