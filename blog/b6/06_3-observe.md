@@ -5,7 +5,7 @@ slug: "observe"
 read_time: "13 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
-version: v0.5.0
+version: v0.5.1
 audience: "Tier 2"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
@@ -87,7 +87,7 @@ Read passes for project files, but only when the direct-action budget allows it.
 
 The same direct-action budget machinery is wired into every other phase too. PLAN, EXECUTE, VERIFY, and CONDENSE each carry their own +3-grant / -1-consume arithmetic, calibrated to that phase's own subagent roster (PLAN dispatches plan-* analyzers, EXECUTE dispatches execute-* workers, VERIFY dispatches verify-* auditors, CONDENSE dispatches condense-* extractors). The 80/20 enforcement is universal across the cycle; OBSERVE is shown here because it is where the main session usually first hits the gate, but the same shape repeats four more times. *[ref: direct-action-budget-universal-across-phases | .claude/plugins/phase_observe/hooks/observe-guard.sh direct-action-budget block | The canonical implementation lives in observe-guard.sh; the pattern repeats in phase_plan/phase_execute/phase_verify/phase_condense, each phase's <phase>-guard.sh carrying the equivalent grant-on-subagent-dispatch block. All five phase plugins implement direct_action_budget identically: a per-phase balance opened at a starting balance of 5 on phase entry, granted +3 per phase-specific subagent dispatch (matched on AGENT_NAME prefix), consumed -1 per direct Read/Write outside the .claude/ + memory whitelist. The 80/20 thesis is enforced structurally five times over, not just here.]*
 
-Write is more interesting than a strict between-section lockout. The only file the agent edits in OBSERVE is a CLAUDE.md — project files stay read-only to the phase — and within that file the section enforcement is anchored to the OBSERVE anchor `---Ob---`: edits must land strictly below it. Because the four anchors are ordered Ob → Pl → Ex → Ve in every CLAUDE.md, this rule cascades downward. OBSERVE can write into its own section, into PLAN's, into EXECUTE's, and into VERIFY's. Above `---Ob---` is the structural floor — the brain-section content protected from observe-time edits.
+Write is the third surface, and it runs on the cascading-downward authority this essay's opening already applied to OBSERVE — laid out as the series' canonical statement in [Essay 6.2](06_2-discipline-and-map.html). The shape: OBSERVE edits only a CLAUDE.md, never a project file, and every edit lands strictly below the `---Ob---` anchor. Because OBSERVE sits highest in the cycle, its reach is the widest — all four footer sections are open to it, while the brain content above `---Ob---` stays sealed off from observe-time edits.
 
 Below the floor, the discipline is soft. Voice coaching prioritizes OBSERVE's own section as the primary landing strip; the wider authority lets the agent forward-stage downstream work — writing the verify checklist beneath `---Ve---` while observations are still fresh, writing the plan context beneath `---Pl---` so PLAN inherits the agent's thinking, not just its raw observations.
 
