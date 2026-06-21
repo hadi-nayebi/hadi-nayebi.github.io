@@ -142,7 +142,7 @@ window.DECK_CARDS = {
               ref: { url: '../06_1-phasic-foundation.html', section: 'Phasic Foundation', blurb: 'The Markov-brain framing the whole map is built on.' } },
             { x: 360, y: 430, text: 'The same two phases can connect both ways: forward (advance) and backward (recover). The map names every legal move.' }
         ],
-        navHints: { right: 'forward only', down: 'gmode + the specials' }
+        navHints: { right: 'forward only' }
     },
     '1,0': {
         kind: 'seq', step: 2, eyebrow: 'the gated spine',
@@ -169,7 +169,7 @@ window.DECK_CARDS = {
         stickies: [
             { x: 690, y: 410, text: 'PLAN is the hub: there is no observe→execute and no observe→verify edge. Building is reached only THROUGH plan.', aha: true }
         ],
-        navHints: { left: 'every legal move', right: 'recovery only' }
+        navHints: { left: 'every legal move', right: 'recovery only', down: 'the three families up close' }
     },
     '2,0': {
         kind: 'seq', step: 3, eyebrow: 'the recovery topology',
@@ -195,7 +195,7 @@ window.DECK_CARDS = {
         stickies: [
             { x: 690, y: 410, text: 'VERIFY has the richest fan-out — three backward destinations. CONDENSE has none: it never steps back.', aha: true }
         ],
-        navHints: { left: 'forward only', right: 'gmode + the specials' }
+        navHints: { left: 'forward only', right: 'gmode + the specials', down: 'free, but never dirty' }
     },
     '3,0': {
         kind: 'seq', step: 4, eyebrow: 'the off-cycle lane + the two specials',
@@ -220,6 +220,75 @@ window.DECK_CARDS = {
         stickies: [
             { x: 360, y: 470, text: '"any phase → gmode → that same phase" is shown here with PLAN as the example; the same enter/exit holds for every phase.' }
         ],
-        navHints: { left: 'recovery only' }
+        navHints: { left: 'recovery only', down: 'the gmode arc in detail' }
+    },
+
+    /* ============================ DETAIL ROW ============================ */
+    '1,1': {
+        kind: 'detail',
+        eyebrow: 'Transition map \xb7 forward detail',
+        title: 'What a forward hop must earn',
+        sub: 'What you\'re looking at: the three families every forward hop clears before <phase>-commit.sh --force may advance. Fresh boxes, geared toward every hop rather than any single phase.',
+        boxes: [
+            { id: 'fg-a',     x: 64,  y: 118, w: 380, h: 88, tag: 'gate',   t: 'family-a', s: 'reflection commands ran [hard]' },
+            { id: 'fg-b',     x: 64,  y: 230, w: 380, h: 88, tag: 'gate',   t: 'family-b', s: 'new marked notes added [soft]' },
+            { id: 'fg-c',     x: 64,  y: 342, w: 380, h: 88, tag: 'gate',   t: 'family-c', s: '≥1 reflector subagent ran [hard]' },
+            { id: 'fg-shape', x: 516, y: 118, w: 380, h: 88, tag: 'gate',   t: '+ commit shape', s: 'named ## sections + empty ## Outstanding Items' },
+            { id: 'fg-adv',   x: 516, y: 270, w: 380, h: 100, tag: 'action', t: 'advance commits', s: '<phase>-commit.sh --force' }
+        ],
+        edges: [
+            { from: 'fg-a',     to: 'fg-adv', kind: 'hard', label: 'must pass' },
+            { from: 'fg-b',     to: 'fg-adv', kind: 'hard', label: 'must pass' },
+            { from: 'fg-c',     to: 'fg-adv', kind: 'hard', label: 'must pass' },
+            { from: 'fg-shape', to: 'fg-adv', kind: 'hard', label: 'and' }
+        ],
+        stickies: [
+            { x: 300, y: 30, aha: true, text: '<b>Forward movement is EARNED — recovery is free.</b> Cheap backtracking beats barrelling forward through a mistake.' }
+        ],
+        navHints: { up: 'back to the map' }
+    },
+    '2,1': {
+        kind: 'detail',
+        eyebrow: 'Transition map \xb7 recovery detail',
+        title: 'Free, but never dirty',
+        sub: 'What you\'re looking at: what every recovery hop skips, what every hop still shares, and the one exception that has no backward edge at all.',
+        boxes: [
+            { id: 'rc-free',  x: 64,  y: 118, w: 360, h: 100, tag: 'context', t: 'no cognitive gate', s: 'no shape, no metacog, no custom gate' },
+            { id: 'rc-git',   x: 64,  y: 254, w: 360, h: 100, tag: 'gate',    t: 'clean git required', s: 'forward AND backward' },
+            { id: 'rc-back',  x: 516, y: 118, w: 360, h: 100, tag: 'action',  t: 'phase.sh back', s: 'hook-only, reads BACKWARD_MAP' },
+            { id: 'rc-cond',  x: 516, y: 254, w: 360, h: 100, tag: 'object',  t: 'CONDENSE: no backward', s: 'learning is never undone' }
+        ],
+        edges: [
+            { from: 'rc-free', to: 'rc-back', kind: 'hard', label: 'drives' },
+            { from: 'rc-git',  to: 'rc-back', kind: 'hard', label: 'gates' },
+            { from: 'rc-back', to: 'rc-cond', kind: 'soft', label: 'except' }
+        ],
+        stickies: [
+            { x: 300, y: 30, aha: true, text: '<b>Backward hops skip every cognitive gate — but clean git gates EVERY transition, forward or back.</b>' }
+        ],
+        navHints: { up: 'back to recovery' }
+    },
+    '3,1': {
+        kind: 'detail',
+        eyebrow: 'Transition map \xb7 gmode detail',
+        title: 'The gmode arc — stash, fix, restore',
+        sub: 'What you\'re looking at: how gmode enters, what it guards while inside, and the two gates that release it back to the exact phase it interrupted.',
+        boxes: [
+            { id: 'gm-just',  x: 64,  y: 118, w: 340, h: 100, tag: 'gate',    t: '≥100-word [GMODE]', s: 'user-gated justification' },
+            { id: 'gm-enter', x: 64,  y: 254, w: 340, h: 100, tag: 'action',  t: 'enter-gmode', s: 'stashes pre_gmode_phase + a snapshot' },
+            { id: 'gm-work',  x: 484, y: 118, w: 380, h: 100, tag: 'context', t: 'substrate work', s: 'OPEVC guards rest; always-on keeps enforcing' },
+            { id: 'gm-rc',    x: 484, y: 254, w: 380, h: 100, tag: 'gate',    t: 'root-cause exit gate', s: 'a NEW [PENDING-JOB] note this gmode' },
+            { id: 'gm-exit',  x: 280, y: 380, w: 340, h: 100, tag: 'action',  t: 'exit-gmode', s: 'restores the exact interrupted phase' }
+        ],
+        edges: [
+            { from: 'gm-just',  to: 'gm-enter', kind: 'hard', label: 'admits' },
+            { from: 'gm-enter', to: 'gm-work',  kind: 'hard', label: 'then' },
+            { from: 'gm-work',  to: 'gm-rc',    kind: 'hard', label: 'before leaving' },
+            { from: 'gm-rc',    to: 'gm-exit',  kind: 'hard', label: 'pass →' }
+        ],
+        stickies: [
+            { x: 300, y: 30, aha: true, text: '<b>Anything that forced a gmode deserves an investigation wider than the visible fix</b> — so exit demands a root-cause note.' }
+        ],
+        navHints: { up: 'back to gmode' }
     }
 };

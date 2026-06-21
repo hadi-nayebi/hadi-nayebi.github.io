@@ -184,7 +184,8 @@ window.DECK_CARDS = {
               ref: { kind: 'deck', url: 'job-life.html', section: 'The Life of a Job', blurb: 'The full job lifecycle from birth to completion.' } }
         ],
         nextnote: { x:606, y:496, text:'Follow Event 1 →' },
-        downhint: null
+        downhint: null,
+        navHints: { down: 'why split into three? — the deadlock story' }
     },
     '1,0': {
         kind: 'seq', step: 2,
@@ -209,7 +210,8 @@ window.DECK_CARDS = {
               ref: { url:'../../b5/05_4-job-core.html', section:'Blog 5.4 · the two-hook completion split', blurb:'job_core splits completion across a pre-hook (the gate) and a post-hook (approve then complete); user_approval is hook-gated.' } }
         ],
         backnote: { x:46, y:486, text:'← three events, one word' },
-        nextnote: { x:560, y:486, text:'But it stays focused — why? →' }
+        nextnote: { x:560, y:486, text:'But it stays focused — why? →' },
+        navHints: { down: 'the five gate checks before the flip' }
     },
     '2,0': {
         kind: 'seq', step: 3,
@@ -231,7 +233,8 @@ window.DECK_CARDS = {
             { x:300, y:30, aha:true, text:'Keeping focus through completion gives the seed a <b>window to finish condensing</b> — and dissolves the deadlock.' }
         ],
         backnote: { x:46, y:486, text:'← completion kept focus' },
-        nextnote: { x:560, y:486, text:'So when does it leave? →' }
+        nextnote: { x:560, y:486, text:'So when does it leave? →' },
+        navHints: { down: 'why focus gates, not status' }
     },
     '3,0': {
         kind: 'seq', step: 4,
@@ -259,7 +262,8 @@ window.DECK_CARDS = {
               ref: { kind: 'deck', url: 'phase-advance.html', section: 'How a Phase Earns its Advance', blurb: 'The three-family exit gate, including CONDENSE\'s consumption-direction form.' } }
         ],
         backnote: { x:46, y:486, text:'← the cleanup window closes' },
-        nextnote: { x:560, y:486, text:'Then the cycle + the rest →' }
+        nextnote: { x:560, y:486, text:'Then the cycle + the rest →' },
+        navHints: { down: 'the status check: completed leaves, active stays' }
     },
     '4,0': {
         kind: 'seq', step: 5,
@@ -283,6 +287,122 @@ window.DECK_CARDS = {
             { x:300, y:30, aha:true, text:'The cycle bump waits for the <b>next OBSERVE</b>. The Stop gate releases only when <b>no job remains</b>.',
               ref: { url:'../06_7-condense.html', section:'Blog 6.7 · the cycle bumps on idle→observe', blurb:'The cycle counter increments when the next lap begins (idle→observe), not on the condense→idle edge that closes the previous one.' } }
         ],
-        backnote: { x:46, y:486, text:'← the job left at the advance' }
+        backnote: { x:46, y:486, text:'← the job left at the advance' },
+        navHints: { down: 'the Stop gate and the two heartbeats' }
+    },
+    /* ===== DETAIL CARDS (row 1) ===== */
+    '0,1': {
+        kind: 'detail',
+        eyebrow: 'Completion events · step 1 detail',
+        title: 'The deadlock this split dissolves',
+        sub: 'What you\'re looking at: the old coupled design that caused a deadlock, and the fix — separate the record event from the phase event.',
+        boxes: [
+            { id:'dl-old',      x:64,  y:118, w:380, h:88, tag:'object', t:'the old complete)', s:'flipped status AND unfocused in one call' },
+            { id:'dl-strand',   x:64,  y:242, w:380, h:88, tag:'state',  t:'stranded mid-CONDENSE', s:'no tools left to finish condensing' },
+            { id:'dl-relocate', x:64,  y:366, w:380, h:88, tag:'action', t:'relocate the unfocus', s:'to the condense→idle advance' },
+            { id:'dl-record',   x:516, y:242, w:404, h:80, tag:'object', t:'record event', s:'status→completed (job.sh)' },
+            { id:'dl-phase',    x:516, y:340, w:404, h:80, tag:'phase',  t:'phase event', s:'unfocus (condense-commit)' }
+        ],
+        edges: [
+            { from:'dl-old',      to:'dl-strand',   kind:'hard', label:'coupled→' },
+            { from:'dl-strand',   to:'dl-relocate', kind:'soft', label:'fix' },
+            { from:'dl-relocate', to:'dl-record',   kind:'hard', label:'splits into' },
+            { from:'dl-relocate', to:'dl-phase',    kind:'hard', label:'and' }
+        ],
+        stickies: [
+            { x:300, y:24, aha:true, text:'A deadlock means an operation is in the <b>wrong place</b> — relocate it, don\'t loosen the gate.' }
+        ],
+        navHints: { up: 'back to the three events' }
+    },
+    '1,1': {
+        kind: 'detail',
+        eyebrow: 'Completion events · Event 1 detail',
+        title: 'The --hook complete gate stack',
+        sub: 'What you\'re looking at: every check the complete) arm runs before it flips the status — five gates in sequence.',
+        boxes: [
+            { id:'gc-hook',  x:64,  y:108, w:380, h:84, tag:'gate',   t:'HOOK_MODE', s:'only a hook may call it' },
+            { id:'gc-phase', x:64,  y:206, w:380, h:84, tag:'gate',   t:'current_phase==condense', s:'CONDENSE-only' },
+            { id:'gc-name',  x:64,  y:304, w:380, h:84, tag:'gate',   t:'name + objective ≤500w', s:'shape checks' },
+            { id:'gc-appr',  x:516, y:108, w:404, h:84, tag:'gate',   t:'user_approval==true', s:'consent gate' },
+            { id:'gc-deps',  x:516, y:206, w:404, h:84, tag:'gate',   t:'all depends_on completed', s:'dep-walk' },
+            { id:'gc-flip',  x:516, y:304, w:404, h:84, tag:'object', t:'status → completed', s:'the surgical write' }
+        ],
+        edges: [
+            { from:'gc-hook',  to:'gc-phase', kind:'hard', label:'and' },
+            { from:'gc-phase', to:'gc-name',  kind:'hard', label:'and' },
+            { from:'gc-name',  to:'gc-appr',  kind:'hard', label:'and' },
+            { from:'gc-appr',  to:'gc-deps',  kind:'hard', label:'and' },
+            { from:'gc-deps',  to:'gc-flip',  kind:'hard', label:'all pass →' }
+        ],
+        stickies: [
+            { x:300, y:24, aha:true, text:'Completion is locked to <b>CONDENSE + hooks + user consent</b> — it can never be improvised mid-work.' }
+        ],
+        navHints: { up: 'back to Event 1' }
+    },
+    '2,1': {
+        kind: 'detail',
+        eyebrow: 'Completion events · cleanup window detail',
+        title: 'The guard keys on FOCUS, not status',
+        sub: 'What you\'re looking at: why a completed job keeps full tool access — the allow rule reads focus presence, not the status field.',
+        boxes: [
+            { id:'cw-guard2', x:64,  y:118, w:380, h:96, tag:'gate',    t:'Focus-Required Enforcement', s:'job-guard.sh allows on focus PRESENCE' },
+            { id:'cw-any',    x:64,  y:250, w:380, h:88, tag:'state',   t:'any status', s:'active OR completed' },
+            { id:'cw-tools2', x:516, y:118, w:404, h:96, tag:'context', t:'tools + altered-list scope', s:'stay keyed to the job' },
+            { id:'cw-finish2',x:516, y:250, w:404, h:88, tag:'action',  t:'finish CONDENSE', s:'route findings, deflate footers' }
+        ],
+        edges: [
+            { from:'cw-guard2', to:'cw-any',     kind:'hard', label:'reads' },
+            { from:'cw-any',    to:'cw-tools2',  kind:'hard', label:'so it keeps' },
+            { from:'cw-tools2', to:'cw-finish2', kind:'hard', label:'to' }
+        ],
+        stickies: [
+            { x:300, y:24, aha:true, text:'Because the allow rule reads <b>focus</b> (not status), a completed-but-focused job keeps full access.' }
+        ],
+        navHints: { up: 'back to the cleanup window' }
+    },
+    '3,1': {
+        kind: 'detail',
+        eyebrow: 'Completion events · Event 2 detail',
+        title: 'Completed leaves, active stays',
+        sub: 'What you\'re looking at: the two-way branch at the condense→idle advance — only a completed job is unfocused here.',
+        boxes: [
+            { id:'ru-adv',       x:64,  y:182, w:260, h:96, tag:'phase',  t:'advance → idle', s:'lock-forward exit' },
+            { id:'ru-chk',       x:388, y:182, w:264, h:96, tag:'gate',   t:'status == completed?', s:'checked right after' },
+            { id:'ru-completed', x:708, y:100, w:192, h:96, tag:'action', t:'completed → clear-focus', s:'the job leaves' },
+            { id:'ru-active',    x:708, y:282, w:192, h:96, tag:'state',  t:'active → stays focused', s:'runs its remaining cycles' }
+        ],
+        edges: [
+            { from:'ru-adv',  to:'ru-chk',       kind:'hard', label:'at idle' },
+            { from:'ru-chk',  to:'ru-completed',  kind:'hard', label:'yes' },
+            { from:'ru-chk',  to:'ru-active',     kind:'soft', label:'no' }
+        ],
+        stickies: [
+            { x:300, y:24, aha:true, text:'A multi-cycle job that isn\'t done yet <b>keeps focus across the lap</b> — only a completed job is unfocused here.' }
+        ],
+        navHints: { up: 'back to Event 2' }
+    },
+    '4,1': {
+        kind: 'detail',
+        eyebrow: 'Completion events · Event 3 detail',
+        title: 'The Stop gate and the two heartbeats',
+        sub: 'What you\'re looking at: what happens after the seed rests — the gate, the daemon, and the repeating-job wake.',
+        boxes: [
+            { id:'sg-sum',   x:64,  y:162, w:368, h:96, tag:'gate',   t:'active + pending == 0?', s:'stop-gate.sh sums them' },
+            { id:'sg-block', x:64,  y:314, w:368, h:88, tag:'state',  t:'> 0 → Stop BLOCKS', s:'the seed keeps working' },
+            { id:'sg-rest',  x:512, y:100, w:388, h:88, tag:'state',  t:'== 0 → quiescent stop', s:'allowed to rest' },
+            { id:'sg-h2',    x:512, y:222, w:388, h:88, tag:'action', t:'heartbeat-2 daemon', s:'quiescent-heartbeat.sh (setsid)' },
+            { id:'sg-wake',  x:512, y:344, w:388, h:88, tag:'phase',  t:'[WAKE] re-fire', s:'a repeating job reactivates' }
+        ],
+        edges: [
+            { from:'sg-sum',  to:'sg-block', kind:'soft', label:'>0' },
+            { from:'sg-sum',  to:'sg-rest',  kind:'hard', label:'==0' },
+            { from:'sg-rest', to:'sg-h2',    kind:'hard', label:'launches' },
+            { from:'sg-h2',   to:'sg-wake',  kind:'soft', label:'later' }
+        ],
+        stickies: [
+            { x:300, y:24, aha:true, text:'Stopping isn\'t death — a <b>detached timer</b> keeps watch so a repeating job can re-fire while the seed is at rest.',
+              ref: { url:'../06_10-plan-state-machine.html', section:'Blog 6.10 · the two-heartbeat reactivation model', blurb:'06_10 teaches Heartbeat-1 (self-compact rhythm while working) and Heartbeat-2 (quiescent-heartbeat.sh daemon while resting).' } }
+        ],
+        navHints: { up: 'back to Event 3 + Stop gate' }
     }
 };
