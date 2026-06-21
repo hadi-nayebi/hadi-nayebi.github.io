@@ -302,28 +302,29 @@ After any prose, image-prompt, or transcript change, **explicitly verify each do
 
 ## Audio Transcript Rules (NON-NEGOTIABLE)
 
-OpenAI's `tts-1-hd` model (voice: onyx) does **not support SSML**. It reads input verbatim. Acronyms, snake_case identifiers, footer markers, and bracketed prefixes mispronounce or drop entirely if fed raw.
+**Audio model (2026-06-21):** No paid TTS. Blog audio will be generated in the user's cloned voice (F5-TTS) once voice-clone training completes; no interim audio is generated in the meantime. (`tools/generate_free_audio.py` is a free local piper draft narrator available if a quick draft is ever needed; `tools/generate_blog_audio.py`'s paid OpenAI backend is retired.)
+
+The TTS engine reads input verbatim and does not support SSML. Acronyms, snake_case identifiers, footer markers, and bracketed prefixes mispronounce or drop if fed raw.
 
 **Tooling:**
 - `tools/generate_blog_html.py` (added 2026-05-13) converts blog `.md` to `.html` using B6 as the template reference. Pragmatic — tuned for ref-tag italic-bracket → `<sup class="ref-marker">`, image-placeholder HTML comments → `<aside class="image-placeholder">`, sidebar with all 9 posts active-marked. **When adding a new blog post:** extend `SIDEBAR_POSTS` in the converter BEFORE running, or it will fail with `slug not found`. Run: `python3 tools/generate_blog_html.py blog/<slug>.md blog/<slug>.html`.
 - `tools/generate_blog_transcript.py` strips markdown AND applies pronunciation guards. Cheap (no API). Run on every prose change: `python3 tools/generate_blog_transcript.py blog/<slug>.md blog/<slug>.transcript.md`. Output is rewritten with `final: false` in the frontmatter every regen.
-- `tools/generate_blog_audio.py` reads the transcript and runs TTS. **Costs ~$0.75 per 35–40 min essay on `tts-1-hd`.** Has a 4-attempt retry guard for transient API errors.
+- `tools/generate_blog_audio.py` — **retired** (paid OpenAI backend removed; no paid audio). Kept only for its engine-agnostic transcript/chunk/ffmpeg-concat helpers, which the future cloned-voice generator will reuse.
+- `tools/generate_free_audio.py` — free local **piper** draft narrator (no API, no network). Writes `<slug>.draft.mp3` so free drafts never collide with a future cloned-voice studio `<slug>.mp3`.
 
-**Cost gate (NON-NEGOTIABLE):** the audio script refuses to run unless the transcript's frontmatter has `final: true`. The transcript is regenerated as `final: false` every time, so the workflow is:
+**Readiness gate (NON-NEGOTIABLE):** the audio script refuses to run unless the transcript's frontmatter has `final: true`. `final: true` marks a transcript ready for narration. The transcript regenerates as `final: false` on every prose change — so a content change always requires an explicit re-confirm before audio. Workflow:
 
-1. Edit `.md` → run the transcript tool (cheap, no API). Re-read the `.transcript.md` to confirm pronunciation guards landed and prose reads cleanly.
-2. When the transcript is the version you want to spend money on, **manually flip** the frontmatter line to `final: true`.
+1. Edit `.md` → run the transcript tool (no API). Re-read the `.transcript.md` to confirm pronunciation guards landed and prose reads cleanly.
+2. When the transcript is the version you want narrated, **manually flip** the frontmatter line to `final: true`.
 3. Run the audio tool.
 4. If you edit the `.md` again, the transcript regen resets the flag to `false` — by design, since the content changed.
-
-This prevents accidentally re-rendering during iteration. Total spend per essay should be 1–3 audio generations max, not 6–8.
 
 **Pronunciation guards (extend `PRONUNCIATION_GUARDS` in the transcript tool when adding new identifiers):**
 
 | Source form | Audio form | Why |
 |---|---|---|
 | `*Essay N.N — Title, Part N of N. ...*` | (stripped) | Italic meta-line below the H1 (and matching footer position-line). Metadata for the eye, not narration. Stripped via `meta_patterns` in `generate_blog_transcript.py` — extend that list when adding a new subtitle/footer format. |
-| `OPEVC` | `O P E V C` | Confirmed dropped/garbled by tts-1-hd. Letter-spacing forces initialism. |
+| `OPEVC` | `O P E V C` | Confirmed dropped/garbled by TTS — letter-spacing forces the initialism. |
 | `brain_guard`, `job_core`, `plugin_integrity`, `interaction_summary`, `question_discipline`, `phasic_system` | `brain-guard`, `job-core`, … | Underscores read as awkward pause; hyphens read as compound noun. |
 | `---Ob---`, `---Pl---`, `---Ex---`, `---Ve---` | "the OBSERVE/PLAN/EXECUTE/VERIFY footer" | Triple-dash markers read as "dash dash dash" — meaningless to listener. |
 | `[PLUGIN-LOCK]`, `[JOB-COMPLETE]`, `[WAITING]`, … | `plugin-lock`, `job-complete`, `waiting`, … | Brackets are silent; ALLCAPS-HYPHEN content drops same way as OPEVC. |

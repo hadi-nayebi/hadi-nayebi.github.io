@@ -15,9 +15,10 @@ never has to swallow one giant input.
 Writes a sidecar <output>.meta.json:
     {"voice":"piper-free","draft":true,"generated_at_note":"free draft narration"}
 
-This is the FREE counterpart to tools/generate_blog_audio.py (paid OpenAI). The
-.draft.mp3 naming convention keeps these drafts from colliding with a future
-paid <slug>.mp3 studio version.
+tools/generate_blog_audio.py (the former paid OpenAI backend) is retired — no
+paid audio. The .draft.mp3 naming convention keeps these free drafts from
+colliding with the future <slug>.mp3 studio version generated in Hadi's cloned
+voice (F5-TTS) once voice-clone training is complete.
 """
 
 import argparse

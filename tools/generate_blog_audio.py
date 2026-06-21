@@ -1,34 +1,36 @@
 #!/usr/bin/env python3
 """
-Generate blog narration audio from a transcript using OpenAI TTS.
+Blog narration audio generator.
 
-Usage:
-    python3 tools/generate_blog_audio.py <transcript_path> <output_mp3_path> [--voice VOICE] [--model MODEL]
+RETIRED BACKEND (2026-06-21): the paid OpenAI TTS backend is retired. We no
+longer spend on paid audio generation. Blog audio will be produced in Hadi's
+own cloned voice (F5-TTS) once voice-clone training is complete; that engine
+will plug into the same transcript-parsing / chunking / ffmpeg-concat machinery
+preserved below.
 
-Reads OPENAI_API_KEY from /home/hadinayebi/.secrets/api-keys.env.
+Until the cloned-voice backend is wired in, this tool intentionally REFUSES to
+generate audio — running it prints the retirement notice and exits non-zero so
+no pipeline mistakes a no-op for success. The reusable, engine-agnostic helpers
+(`parse_transcript`, `strip_html_comments`, `chunk_transcript`, `make_silence`,
+`concat_mp3s`) stay intact for the cloned-voice generator to import.
 
-Splits the transcript into chunks under the TTS character limit, generates each
-chunk, then concatenates them into a single mp3 with ffmpeg.
+Usage (once the cloned-voice backend lands):
+    python3 tools/generate_blog_audio.py <transcript_path> <output_mp3_path>
 """
 
 import argparse
-import os
 import re
 import subprocess
 import sys
 import tempfile
-import time
 from pathlib import Path
 
-SECRETS_FILE = Path("/home/hadinayebi/.secrets/api-keys.env")
-TTS_CHAR_LIMIT = 4000  # OpenAI hard limit is 4096; leave headroom
-TTS_MAX_ATTEMPTS = 4
-TTS_BACKOFF_SECONDS = 5
+TTS_CHAR_LIMIT = 4000  # leave headroom under typical engine per-call limits
 
-# Inter-paragraph silence inserted at concat time. `tts-1-hd` ignores newlines
-# inside a single API call, so paragraphs run together without a breath. We chunk
-# per paragraph and stitch a real silence file between them at ffmpeg time —
-# deterministic pause length, no text artifacts. Tweak here if pacing feels off.
+# Inter-paragraph silence inserted at concat time. Many TTS engines ignore
+# newlines inside a single call, so paragraphs run together without a breath.
+# We chunk per paragraph and stitch a real silence file between them at ffmpeg
+# time — deterministic pause length, no text artifacts. Tweak if pacing feels off.
 PARAGRAPH_SILENCE_SECONDS = 0.45
 
 
@@ -56,29 +58,15 @@ def parse_transcript(text: str) -> tuple[dict[str, str], str]:
     return fm, body
 
 
-def load_api_key() -> str:
-    if not SECRETS_FILE.exists():
-        sys.exit(f"Secrets file not found: {SECRETS_FILE}")
-    for line in SECRETS_FILE.read_text().splitlines():
-        m = re.match(r'^\s*export\s+OPENAI_API_KEY\s*=\s*"([^"]+)"\s*$', line)
-        if m:
-            return m.group(1)
-    sys.exit("OPENAI_API_KEY not found in secrets file")
-
-
 def chunk_transcript(text: str, limit: int = TTS_CHAR_LIMIT) -> list[str]:
     """Split on paragraph boundaries — one paragraph per chunk.
 
-    Earlier versions packed many paragraphs into a single API call to minimise
-    round-trips, but that meant the model never paused at paragraph boundaries
-    (tts-1-hd reads each call as one continuous stream). Splitting per paragraph
-    lets us insert a real silence file between each rendered part at concat time.
+    Splitting per paragraph lets us insert a real silence file between each
+    rendered part at concat time, so the narration pauses at paragraph breaks
+    instead of reading the whole essay as one continuous stream.
 
-    Cost is per-character, so chunking finer does not change spend; it only
-    trades a few minutes of extra latency for clean paragraph pauses.
-
-    If a single paragraph somehow exceeds the API char limit, fall back to
-    splitting it on sentence boundaries.
+    If a single paragraph exceeds the char limit, fall back to splitting it on
+    sentence boundaries.
     """
     paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
     chunks: list[str] = []
@@ -86,10 +74,6 @@ def chunk_transcript(text: str, limit: int = TTS_CHAR_LIMIT) -> list[str]:
         if len(p) <= limit:
             chunks.append(p)
             continue
-        # Rare fallback: split a too-long paragraph into sentence groups.
-        # Within these splits we do NOT insert silence — those splits are mid-paragraph.
-        # We mark them by joining with a single space so the concat layer can
-        # tell paragraph-boundaries apart from sentence-boundaries (see main()).
         sentences = re.split(r"(?<=[.!?])\s+", p)
         buf: list[str] = []
         buf_len = 0
@@ -107,39 +91,13 @@ def chunk_transcript(text: str, limit: int = TTS_CHAR_LIMIT) -> list[str]:
     return chunks
 
 
-def synthesize(client, text: str, voice: str, model: str, out_path: Path) -> None:
-    last_exc: Exception | None = None
-    for attempt in range(1, TTS_MAX_ATTEMPTS + 1):
-        try:
-            with client.audio.speech.with_streaming_response.create(
-                model=model,
-                voice=voice,
-                input=text,
-                response_format="mp3",
-            ) as resp:
-                resp.stream_to_file(str(out_path))
-            return
-        except Exception as exc:
-            last_exc = exc
-            if attempt == TTS_MAX_ATTEMPTS:
-                break
-            wait = TTS_BACKOFF_SECONDS * (2 ** (attempt - 1))
-            print(f"    attempt {attempt}/{TTS_MAX_ATTEMPTS} failed ({type(exc).__name__}): {exc}; retrying in {wait}s")
-            time.sleep(wait)
-    raise last_exc  # type: ignore[misc]
-
-
 def make_silence(duration: float, out_path: Path) -> None:
-    """Generate a silent mp3 of the given duration using ffmpeg's anullsrc.
-
-    Output codec params (mono, 24 kHz, mp3) match what OpenAI tts-1-hd emits,
-    so the concat demuxer can stream-copy without re-encoding.
-    """
+    """Generate a silent mp3 of the given duration using ffmpeg's anullsrc."""
     subprocess.run(
         [
             "ffmpeg", "-y", "-loglevel", "error",
             "-f", "lavfi",
-            "-i", f"anullsrc=channel_layout=mono:sample_rate=24000",
+            "-i", "anullsrc=channel_layout=mono:sample_rate=24000",
             "-t", str(duration),
             "-c:a", "libmp3lame", "-b:a", "32k",
             str(out_path),
@@ -161,9 +119,6 @@ def concat_mp3s(parts: list[Path], output: Path, silence_path: Path | None = Non
             f.write(f"file '{p.resolve()}'\n")
         listfile = Path(f.name)
     try:
-        # Re-encode at concat time so any minor codec-param drift between the
-        # TTS output and the silence stub gets harmonised. Cheap; the final
-        # file is short and libmp3lame is fast.
         subprocess.run(
             [
                 "ffmpeg", "-y", "-loglevel", "error",
@@ -182,58 +137,15 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("transcript", type=Path)
     ap.add_argument("output", type=Path)
-    ap.add_argument("--voice", default="onyx",
-                    help="alloy|ash|ballad|coral|echo|fable|nova|onyx|sage|shimmer")
-    ap.add_argument("--model", default="tts-1-hd",
-                    help="tts-1 | tts-1-hd | gpt-4o-mini-tts")
-    args = ap.parse_args()
+    ap.parse_args()
 
-    if not args.transcript.exists():
-        sys.exit(f"Transcript not found: {args.transcript}")
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-
-    raw = args.transcript.read_text()
-    frontmatter, body = parse_transcript(raw)
-
-    # Cost gate: TTS is not cheap (~$0.75-$1 per 35-min essay on tts-1-hd).
-    # The transcript must be explicitly marked `final: true` before we spend.
-    final_flag = frontmatter.get("final", "").lower()
-    if final_flag != "true":
-        sys.exit(
-            f"\nTranscript is not marked final.\n"
-            f"  File:  {args.transcript}\n"
-            f"  Flag:  final = {final_flag or '(missing)'}\n\n"
-            f"Audio generation costs real money. To proceed, edit the transcript\n"
-            f"frontmatter and set `final: true`, then rerun this command.\n"
-        )
-
-    api_key = load_api_key()
-    text = strip_html_comments(body)
-    chunks = chunk_transcript(text)
-    print(f"Transcript: {len(text):,} chars -> {len(chunks)} chunks "
-          f"(voice={args.voice}, model={args.model})")
-
-    from openai import OpenAI
-    client = OpenAI(api_key=api_key)
-
-    with tempfile.TemporaryDirectory() as td:
-        tmp = Path(td)
-        parts: list[Path] = []
-        for i, chunk in enumerate(chunks, 1):
-            part_path = tmp / f"part_{i:03d}.mp3"
-            print(f"  [{i}/{len(chunks)}] generating {len(chunk):,} chars...")
-            synthesize(client, chunk, args.voice, args.model, part_path)
-            parts.append(part_path)
-
-        # Generate the silence stub used between paragraph parts.
-        silence_path = tmp / "silence.mp3"
-        make_silence(PARAGRAPH_SILENCE_SECONDS, silence_path)
-        print(f"  concatenating {len(parts)} parts with {PARAGRAPH_SILENCE_SECONDS}s "
-              f"silence between -> {args.output}")
-        concat_mp3s(parts, args.output, silence_path=silence_path)
-
-    size_mb = args.output.stat().st_size / 1024 / 1024
-    print(f"Wrote {args.output} ({size_mb:.1f} MB)")
+    sys.exit(
+        "\nBlog audio generation is RETIRED (no paid TTS).\n\n"
+        "The paid OpenAI backend has been removed. Blog narration will be\n"
+        "generated in Hadi's cloned voice (F5-TTS) once voice-clone training\n"
+        "is complete. No audio is produced until that backend is wired into\n"
+        "the engine-agnostic helpers in this module.\n"
+    )
 
 
 if __name__ == "__main__":
