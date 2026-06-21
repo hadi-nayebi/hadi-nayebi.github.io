@@ -43,6 +43,7 @@ Essay 6 unfolds across short parts:
 - [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the only phase with project-write access, fenced by the altered list
 - [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — scripts-only, auditor-driven, backward-routed
 - [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the 7-step waterfall that grows the brain
+- [Essay 6.7b — CONDENSE — What It Uniquely Owns](06_7b-condense-uniquely-owns.html) — the job graph CONDENSE mutates and the reflection that closes it
 - [Essay 6.8 — The Rhythm of Work](06_8-inverse-multiplier.html) — the count-based rhythm inside every phase, and the exit gate that opens each boundary
 - [Essay 6.9 — GMODE — The Off-Cycle Lane](06_9-gmode.html) — the documented escape hatch
 - [Essay 6.10 — The Plan File — Long-Horizon Memory](06_10-plan-state-machine.html) — how multi-cycle jobs accumulate plan + .yaml memory over time
