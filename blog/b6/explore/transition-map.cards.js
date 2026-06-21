@@ -230,7 +230,7 @@ window.DECK_CARDS = {
         title: 'What a forward hop must earn',
         sub: 'What you\'re looking at: the three families every forward hop clears before <phase>-commit.sh --force may advance. Fresh boxes, geared toward every hop rather than any single phase.',
         boxes: [
-            { id: 'fg-a',     x: 64,  y: 118, w: 380, h: 88, tag: 'gate',   t: 'family-a', s: 'reflection commands ran [hard]' },
+            { id: 'fg-a',     x: 64,  y: 118, w: 380, h: 88, tag: 'gate',   t: 'family-a', s: 'CORE ops + a drawn min of nuanced lenses [hard]' },
             { id: 'fg-b',     x: 64,  y: 230, w: 380, h: 88, tag: 'gate',   t: 'family-b', s: 'new marked notes added [soft]' },
             { id: 'fg-c',     x: 64,  y: 342, w: 380, h: 88, tag: 'gate',   t: 'family-c', s: '≥1 reflector subagent ran [hard]' },
             { id: 'fg-shape', x: 516, y: 118, w: 380, h: 88, tag: 'gate',   t: '+ commit shape', s: 'named ## sections + empty ## Outstanding Items' },
@@ -256,7 +256,7 @@ window.DECK_CARDS = {
             { id: 'rc-free',  x: 64,  y: 118, w: 360, h: 100, tag: 'context', t: 'no cognitive gate', s: 'no shape, no metacog, no custom gate' },
             { id: 'rc-git',   x: 64,  y: 254, w: 360, h: 100, tag: 'gate',    t: 'clean git required', s: 'forward AND backward' },
             { id: 'rc-back',  x: 516, y: 118, w: 360, h: 100, tag: 'action',  t: 'phase.sh back', s: 'hook-only, reads BACKWARD_MAP' },
-            { id: 'rc-cond',  x: 516, y: 254, w: 360, h: 100, tag: 'object',  t: 'CONDENSE: no backward', s: 'learning is never undone' }
+            { id: 'rc-cond',  x: 516, y: 254, w: 360, h: 100, tag: 'object',  t: 'CONDENSE: no backward', s: 'rollback would make it a mere editing pass' }
         ],
         edges: [
             { from: 'rc-free', to: 'rc-back', kind: 'hard', label: 'drives' },

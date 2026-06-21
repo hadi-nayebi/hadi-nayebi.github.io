@@ -492,7 +492,7 @@ window.DECK_CARDS = {
     '3,1': {
         kind: 'detail', eyebrow: 'inside the prefix rule',
         title: 'The prefix is the routing key AND the lock marker',
-        sub: 'Every subagent\'s name is prefixed by its concern. That prefix does two things at once: it tells the agent-tracker whether to count this launch toward the current phase\'s gates, and it marks the single plugin the lock is open for.',
+        sub: 'Every subagent\'s name is prefixed by its concern. That prefix does two things at once: it tells the agent-tracker whether to count this launch toward the current phase\'s gates, and it is the lock-boundary marker — naming the concern whose one owning plugin the lock is open for.',
         boxes: [
             { id: 'prefix-marker-d', x: 35, y: 185, w: 220, h: 110, tag: 'state', t: 'six concerns', s: 'observe / plan / execute / verify / condense / historian' },
             { id: 'lock-boundary-d', x: 315, y: 185, w: 220, h: 110, tag: 'gate', t: 'one unlock = one concern', s: 'surface matches boundary' },
