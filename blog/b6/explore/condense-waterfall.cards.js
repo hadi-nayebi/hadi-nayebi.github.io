@@ -321,7 +321,28 @@ window.DECK_CARDS = {
         stickies: [
             { x:300, y:24, aha:true, text:'<b>Quote the live note to START, modify that same note to END</b> — a dispatched subagent can never silently no-op on its note.' }
         ],
-        navHints: { left: 'back to ADDRESS', right: 'ARCHIVE — snapshot first' }
+        navHints: { left: 'back to ADDRESS', down: 'two terminal states', right: 'ARCHIVE — snapshot first' }
+    },
+    '2,1': {
+        kind: 'detail',
+        eyebrow: 'CONDENSE waterfall · note lifecycle detail',
+        title: 'Two terminal states',
+        sub: 'What you\'re looking at: the two named outcomes every marked note must reach — a verifiable work-reference or an explicit deferral with a rising carry-count.',
+        boxes: [
+            { id:'tl-quote', x:44, y:180, w:200, h:96, tag:'action', t:'ONE note per dispatch', s:'subagent quotes the live note' },
+            { id:'tl-resolved', x:308, y:108, w:300, h:96, tag:'state', t:'[RESOLVED:TYPE]{breadcrumb}', s:'done — a verifiable work-reference' },
+            { id:'tl-carried', x:308, y:280, w:300, h:96, tag:'state', t:'[CARRIED:TYPE:n]{…}', s:'deferred; n rises each surviving cycle' },
+            { id:'tl-run', x:660, y:180, w:240, h:96, tag:'gate', t:'a run is necessary, not sufficient', s:'the note must REACH a terminal state' }
+        ],
+        edges: [
+            { from:'tl-quote', to:'tl-resolved', kind:'hard', label:'resolve' },
+            { from:'tl-quote', to:'tl-carried', kind:'soft', label:'or hand back →' },
+            { from:'tl-run', to:'tl-resolved', kind:'hard', label:'gate' }
+        ],
+        stickies: [
+            { x:300, y:30, aha:true, text:'<b>Engagement ≠ resolution</b> — dispatching a subagent is required but the note still has to reach a terminal state. A breadcrumb is hard-gated in <code>[RESOLVED:]</code>; <code>[CARRIED:]</code> lets carry-count rise visibly each cycle it survives.' }
+        ],
+        navHints: { up: 'back to the note lifecycle' }
     },
     '3,0': {
         kind: 'seq', step: 4,
@@ -343,7 +364,30 @@ window.DECK_CARDS = {
             { x:300, y:24, aha:true, text:'The archive is the per-cycle <b>raw backup</b> — NOT where durable knowledge is found. It is the preservation that lets the seed safely deflate.',
               ref: { url:'../06_7-condense.html', section:'Blog 6.7 · the session archive', blurb:'06_7 names the session archive as the per-cycle snapshot; durable knowledge goes UP to the body + knowledge dir, not here.' } }
         ],
-        navHints: { left: 'the note lifecycle', right: 'DEFLATE — absorb + delete' }
+        navHints: { left: 'the note lifecycle', down: 'the session archive — raw backup', right: 'DEFLATE — absorb + delete' }
+    },
+    '3,1': {
+        kind: 'detail',
+        eyebrow: 'CONDENSE waterfall · ARCHIVE detail',
+        title: 'The session archive — raw backup, not knowledge home',
+        sub: 'What you\'re looking at: why the archive is large by design, what it is NOT, and the deletion lock it enables.',
+        boxes: [
+            { id:'ar-snap', x:44, y:196, w:160, h:88, tag:'action', t:'session-log command', s:'full-footer snapshot' },
+            { id:'ar-path', x:252, y:108, w:220, h:88, tag:'object', t:'run-<r>/session-log-<c>.md', s:'the run-aware job dir' },
+            { id:'ar-large', x:252, y:300, w:220, h:88, tag:'state', t:'large by design', s:'the per-cycle raw backup' },
+            { id:'ar-nothome', x:540, y:108, w:260, h:88, tag:'context', t:'NOT durable knowledge', s:'that goes UP to body + knowledge/' },
+            { id:'ar-lock', x:540, y:300, w:260, h:88, tag:'gate', t:'deletion locked until verified', s:'footer survives until archive non-empty' }
+        ],
+        edges: [
+            { from:'ar-snap', to:'ar-path', kind:'hard', label:'writes' },
+            { from:'ar-path', to:'ar-large', kind:'soft', label:'' },
+            { from:'ar-large', to:'ar-nothome', kind:'soft', label:'but' },
+            { from:'ar-snap', to:'ar-lock', kind:'hard', label:'enables' }
+        ],
+        stickies: [
+            { x:300, y:30, aha:true, text:'The archive is the raw backup that lets the seed safely deflate — <b>durable knowledge lives elsewhere</b> (body + knowledge/). Large by design; reached only by breadcrumb.' }
+        ],
+        navHints: { up: 'back to ARCHIVE' }
     },
     '4,0': {
         kind: 'seq', step: 5,

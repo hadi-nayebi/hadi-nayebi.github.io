@@ -462,7 +462,28 @@ window.DECK_CARDS = {
         stickies: [
             { x: 600, y: 350, text: 'Scope is EXACT — declaring a/ does not authorize a/b/. Every cycle re-declares from scratch.' }
         ],
-        navHints: { left: 'the phase guard', right: 'anchor write authority' }
+        navHints: { left: 'the phase guard', right: 'anchor write authority', down: 'how the altered list is built and frozen' }
+    },
+    '4,1': {
+        kind: 'detail', eyebrow: 'inside the altered list', title: 'Build, freeze, then enforce',
+        sub: 'What you\'re looking at: how OBSERVE and PLAN together BUILD the editable surface, EXECUTE entry FREEZES a snapshot of it, and every write is ENFORCED against that frozen record.',
+        boxes: [
+            { id: 'al-observe-edit', x: 44, y: 60, w: 220, h: 90, tag: 'action', t: 'OBSERVE edits CLAUDE.md', s: 'appends dir to observe list' },
+            { id: 'al-plan-edit',   x: 44, y: 200, w: 220, h: 90, tag: 'action', t: 'PLAN edits CLAUDE.md',   s: 'appends dir to plan list' },
+            { id: 'al-merge',       x: 320, y: 130, w: 220, h: 90, tag: 'gate',   t: 'EXECUTE entry: merge + freeze', s: 'one snapshot in altered_claude_md' },
+            { id: 'al-reset',       x: 320, y: 280, w: 220, h: 90, tag: 'state',  t: 'per-cycle reset',              s: 'idle→observe clears the list' },
+            { id: 'al-enforce',     x: 600, y: 130, w: 240, h: 90, tag: 'gate',   t: 'execute-guard enforces',      s: 'exact-dir match; no wildcard' }
+        ],
+        edges: [
+            { from: 'al-observe-edit', to: 'al-merge', kind: 'hard', label: 'observe list' },
+            { from: 'al-plan-edit',    to: 'al-merge', kind: 'hard', label: 'plan list' },
+            { from: 'al-merge',        to: 'al-enforce', kind: 'hard', label: 'frozen snapshot' },
+            { from: 'al-reset',        to: 'al-merge',   kind: 'soft', label: 'next cycle wipes slate' }
+        ],
+        stickies: [
+            { x: 590, y: 260, aha: true, text: 'The list is BUILT by editing, not configured. Thinking about a directory — on the page — is what grants the right to change it.' }
+        ],
+        navHints: { up: 'the altered list' }
     },
     '5,0': {
         kind: 'seq', step: 6, eyebrow: 'where in the file you may write',
@@ -482,7 +503,26 @@ window.DECK_CARDS = {
         stickies: [
             { x: 600, y: 350, text: 'OBSERVE can pre-stage VERIFY’s checklist. The write rule IS the cross-phase hand-off engine.', aha: true }
         ],
-        navHints: { left: 'the altered list', right: 'a fractal Markov brain' }
+        navHints: { left: 'the altered list', right: 'a fractal Markov brain', down: 'WHERE and WHO writes a CLAUDE.md footer' }
+    },
+    '5,1': {
+        kind: 'detail', eyebrow: 'inside section-anchor authority', title: 'Write below your anchor, never above',
+        sub: 'What you\'re looking at: WHERE in a CLAUDE.md each phase may write (cascading-downward) and WHO may touch the CLAUDE.md layer at all (main session only, in OPEVC phases).',
+        boxes: [
+            { id: 'sa-where',  x: 44,  y: 80,  w: 250, h: 100, tag: 'gate',    t: 'WHERE: at or below own footer', s: 'cascading-downward' },
+            { id: 'sa-ob',     x: 44,  y: 240, w: 250, h: 100, tag: 'state',   t: 'e.g. OBSERVE writes all four', s: 'VERIFY writes ---Ve--- only' },
+            { id: 'sa-body',   x: 360, y: 80,  w: 250, h: 100, tag: 'context', t: 'body above ---Ob---',           s: 'CONDENSE-only; work phases blocked' },
+            { id: 'sa-who',    x: 360, y: 240, w: 250, h: 100, tag: 'gate',    t: 'WHO: main session only',        s: 'subagents blocked (O/P/E/V phases)' }
+        ],
+        edges: [
+            { from: 'sa-where', to: 'sa-ob',   kind: 'hard', label: 'e.g.' },
+            { from: 'sa-where', to: 'sa-body',  kind: 'soft', label: 'and' },
+            { from: 'sa-who',   to: 'sa-ob',    kind: 'soft', label: 'by' }
+        ],
+        stickies: [
+            { x: 670, y: 160, aha: true, text: 'Notes flow <b>downward and forward</b>, never reaching back up — the forward-write asymmetry. OBSERVE can pre-stage VERIFY\'s checklist; VERIFY cannot rewrite OBSERVE\'s notes.' }
+        ],
+        navHints: { up: 'section-anchor write authority' }
     },
     '6,0': {
         kind: 'seq', step: 7, eyebrow: 'why it is shaped this way',

@@ -479,7 +479,29 @@ window.DECK_CARDS = {
             { x: 300, y: 320, text: 'Condensed is NOT archived — the file stays live with an enriched body. The footers inflate, then deflate back.', aha: true,
               ref: { url: '../../b6/06_7-condense.html', section: 'CONDENSE — The Cognitive Organ', blurb: 'Essay 6.7 — the phase that deflates the bus and routes its findings to durable homes.' } }
         ],
-        navHints: { left: 'the hierarchy', right: 'the anchors' }
+        navHints: { left: 'the hierarchy', right: 'the anchors', down: 'the four-state lifecycle' }
+    },
+
+    /* ---- detail 3,1 — the four-state lifecycle ---- */
+    '3,1': {
+        kind: 'detail', eyebrow: 'detail · the four-state lifecycle',
+        title: 'The CLAUDE.md lifecycle',
+        sub: 'What you\'re looking at: a single working-memory file moving through four named states — created before work, kept live through it, enriched after it, then distilled at CONDENSE so the next cycle starts fresh.',
+        boxes: [
+            { id: 'ls-pro',   x: 55,  y: 180, w: 175, h: 92, tag: 'state', t: 'Proactive',   s: 'created BEFORE work · born with four anchors' },
+            { id: 'ls-act',   x: 285, y: 180, w: 175, h: 92, tag: 'state', t: 'Active',       s: 'updated every phase · footers INFLATE' },
+            { id: 'ls-retro', x: 515, y: 180, w: 175, h: 92, tag: 'state', t: 'Retroactive',  s: 'results + lessons after work' },
+            { id: 'ls-cond',  x: 720, y: 180, w: 190, h: 92, tag: 'state', t: 'Condensed',    s: 'distilled to minimal · knowledge migrates to knowledge/' }
+        ],
+        edges: [
+            { from: 'ls-pro',   to: 'ls-act',   kind: 'hard', label: '→' },
+            { from: 'ls-act',   to: 'ls-retro', kind: 'hard', label: '→' },
+            { from: 'ls-retro', to: 'ls-cond',  kind: 'hard', label: '→ DEFLATE' }
+        ],
+        stickies: [
+            { x: 55, y: 330, text: 'Working memory is temporary; knowledge is permanent — the Condensed state returns the file to minimal.', aha: true }
+        ],
+        navHints: { up: 'the lifecycle' }
     },
 
     /* ============================ SEQ 4 — the anchors ============================ */

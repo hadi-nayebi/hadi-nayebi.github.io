@@ -370,7 +370,29 @@ window.DECK_CARDS = {
             { x:70, y:28, aha:true, text:'The split is <b>by fire-site</b>: <b>hooks/</b> reaches the agent’s context, <b>scripts/</b> reaches the operator’s terminal. 11 plugins carry hooks/, 10 carry scripts/ (question_discipline is hooks-only) — so any voice audit must sweep BOTH files.',
               ref: { url:'../07_3-dual-voice-architecture.html', section:'Blog 7.3 · why the split matters', blurb:'07_3 walks the hooks/ vs scripts/ split and why the audience boundary, not the topic, defines the two files.' } }
         ],
-        navHints: { left: 'the organ', right: 'how a voice renders' }
+        navHints: { left: 'the organ', right: 'how a voice renders', down: 'fire-site split + exception' }
+    },
+    /* ---- Detail 1,1: dual voice.xml fire-site split ---- */
+    '1,1': {
+        kind: 'detail',
+        eyebrow: 'voice surface · dual-file detail',
+        title: 'Dual voice.xml — fire-site, not topic',
+        sub: 'What you\'re looking at: why every plugin carries two voice.xml files, which one is the exception, and why any voice audit must grep both.',
+        boxes: [
+            { id:'dv-hooks', x:70, y:100, w:250, h:100, tag:'object', t:'hooks/voice.xml', s:'agent-facing — injected into LLM context' },
+            { id:'dv-scripts', x:70, y:260, w:250, h:100, tag:'object', t:'scripts/voice.xml', s:'operator-facing — printed to terminal, never injected' },
+            { id:'dv-grep', x:440, y:160, w:300, h:100, tag:'gate', t:'orphan audit greps BOTH', s:'10 of 11 plugins carry both' },
+            { id:'dv-exc', x:740, y:285, w:175, h:90, tag:'state', t:'question_discipline', s:'hooks-only exception' }
+        ],
+        edges: [
+            { from:'dv-hooks', to:'dv-grep', kind:'soft', label:'audited' },
+            { from:'dv-scripts', to:'dv-grep', kind:'soft', label:'audited' },
+            { from:'dv-scripts', to:'dv-exc', kind:'soft', label:'except' }
+        ],
+        stickies: [
+            { x:70, y:28, aha:true, text:'Split by <b>FIRE-SITE</b> (where it fires), not by topic — <b>hooks/</b> injects into the agent\'s context; <b>scripts/</b> prints to the operator\'s terminal. The orphan audit must grep <b>both</b> files. <b>question_discipline</b> is the one hooks-only exception: pure agent-side enforcement, no operator CLI.' }
+        ],
+        navHints: { up: 'back to the two files' }
     },
     /* ====================== Card 3: get_voice ====================== */
     '2,0': {
@@ -393,7 +415,29 @@ window.DECK_CARDS = {
             { x:70, y:28, aha:true, text:'<b>get_voice</b> extracts one message by id (sed fast-path / awk fallback — <b>never xmllint</b>), substitutes <b>{{var}}</b> live numbers, and <b>always returns exit 0</b>. A missing id yields "" so a guard falls back to a hardcoded literal — the fail-safe-allow contract.',
               ref: { url:'../07_3-dual-voice-architecture.html', section:'Blog 7.3 · rendering a voice', blurb:'07_3 covers how a voice id becomes injected text. This card draws the shared get_voice primitive every hook and script sources.' } }
         ],
-        navHints: { left: 'the two files', right: 'choosing a coaching voice' }
+        navHints: { left: 'the two files', right: 'choosing a coaching voice', down: 'extract → substitute → fail-safe' }
+    },
+    /* ---- Detail 2,1: get_voice render pipeline ---- */
+    '2,1': {
+        kind: 'detail',
+        eyebrow: 'voice surface · get_voice detail',
+        title: 'extract → substitute → fail-safe',
+        sub: 'What you\'re looking at: the three steps get_voice runs on every call — and how Stage-3 yaml augmentation couples in after substitution.',
+        boxes: [
+            { id:'gv-extract', x:70, y:155, w:200, h:100, tag:'action', t:'extract by id', s:'find the message in voice.xml' },
+            { id:'gv-sub', x:330, y:155, w:210, h:100, tag:'action', t:'substitute placeholders', s:'fill {{plugin_name}} etc.' },
+            { id:'gv-yaml', x:590, y:155, w:220, h:100, tag:'context', t:'Stage-3 yaml augmentation', s:'voice-helper appends from the cache' },
+            { id:'gv-fail', x:730, y:315, w:180, h:90, tag:'gate', t:'fail-safe', s:'missing id → no crash, degrade gracefully' }
+        ],
+        edges: [
+            { from:'gv-extract', to:'gv-sub', kind:'hard', label:'→' },
+            { from:'gv-sub', to:'gv-yaml', kind:'soft', label:'+' },
+            { from:'gv-extract', to:'gv-fail', kind:'soft', label:'or' }
+        ],
+        stickies: [
+            { x:70, y:28, aha:true, text:'<b>get_voice</b> is the one primitive every voice call routes through — and it <b>fails safe, never crashes the hook</b>. After extraction + substitution, Stage-3 yaml augmentation appends (or replaces/prepends) from the injection cache — the plugin never needs to know a plan exists.' }
+        ],
+        navHints: { up: 'back to the render primitive' }
     },
     /* ====================== Card 4: coaching rotation ====================== */
     '3,0': {

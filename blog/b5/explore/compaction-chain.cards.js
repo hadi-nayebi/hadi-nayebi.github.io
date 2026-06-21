@@ -396,7 +396,30 @@ window.DECK_CARDS = {
         stickies: [
             { x: 640, y: 330, text: 'Each tier removes ONE more tool — the values are tunable, the graduated shape is the invariant.', aha: true }
         ],
-        navHints: { left: 'two ramps, one ceiling', right: 'the compaction file' }
+        navHints: { left: 'two ramps, one ceiling', right: 'the compaction file', down: 'three tiers, graduated' }
+    },
+
+    /* ---- detail 1,1 — graduated enforcement ---- */
+    '1,1': {
+        kind: 'detail',
+        eyebrow: 'detail · the graduated shape',
+        title: 'Three tiers, graduated',
+        sub: 'What you\'re looking at: the three operating tiers of the context ramp — the seed\'s own self-compact trigger bands — showing how consequences escalate progressively instead of flipping one switch.',
+        boxes: [
+            { id: 'cr-soft', x: 340, y: 60, w: 230, h: 96, tag: 'gate', t: 'soft tier', s: 'first nudge to compact' },
+            { id: 'cr-hard', x: 340, y: 200, w: 230, h: 96, tag: 'gate', t: 'hard tier', s: 'stronger pressure — Read blocked' },
+            { id: 'cr-crit', x: 340, y: 340, w: 230, h: 96, tag: 'gate', t: 'critical tier', s: 'compact now — writes blocked too' },
+            { id: 'cr-grad', x: 680, y: 200, w: 240, h: 96, tag: 'context', t: 'graduated enforcement', s: 'escalate progressively, not one binary switch' }
+        ],
+        edges: [
+            { from: 'cr-soft', to: 'cr-hard', kind: 'hard', label: '→' },
+            { from: 'cr-hard', to: 'cr-crit', kind: 'hard', label: '→' },
+            { from: 'cr-grad', to: 'cr-soft', kind: 'soft', label: 'the principle' }
+        ],
+        stickies: [
+            { x: 50, y: 200, text: 'Consequences escalate as danger rises — not one on/off switch. Tier positions are tunable; the graduated SHAPE is the invariant.', aha: true }
+        ],
+        navHints: { up: 'the context ramp' }
     },
 
     /* ============================ SEQ 2 — the compaction file ============================ */
@@ -615,6 +638,29 @@ window.DECK_CARDS = {
             { x: 440, y: 330, text: 'The main sections always describe the CURRENT session; the single rolling summary absorbs the whole archive.', aha: true,
               ref: { url: '../05_3-brain-guard.html', section: 'brain_guard — Context Window Discipline', blurb: 'Essay 5.3 — context-window discipline, end to end.' } }
         ],
-        navHints: { left: 'the wake reflex' }
+        navHints: { left: 'the wake reflex', down: 'the Prior Summary carries cognition' }
+    },
+
+    /* ---- detail 6,1 — two-tier chain / Prior Summary ---- */
+    '6,1': {
+        kind: 'detail',
+        eyebrow: 'detail · fixed cost, forever',
+        title: 'The Prior Summary carries cognition',
+        sub: 'What you\'re looking at: how the two-tier chain carries a job\'s entire cognitive history across unbounded sessions at a fixed, bounded cost.',
+        boxes: [
+            { id: 'pc-seal', x: 50, y: 185, w: 230, h: 96, tag: 'object', t: 'sealed compaction file', s: 'this session\'s cognition' },
+            { id: 'pc-prior', x: 370, y: 185, w: 230, h: 96, tag: 'object', t: 'Prior Summary', s: 'a fold of all earlier sessions' },
+            { id: 'pc-inject', x: 680, y: 60, w: 230, h: 96, tag: 'action', t: 'clear + inject', s: 'carried across `/clear`' },
+            { id: 'pc-fixed', x: 680, y: 320, w: 230, h: 96, tag: 'state', t: 'fixed cost', s: 'the chain never grows unbounded' }
+        ],
+        edges: [
+            { from: 'pc-seal', to: 'pc-prior', kind: 'hard', label: 'folds into' },
+            { from: 'pc-prior', to: 'pc-inject', kind: 'hard', label: 'carried by' },
+            { from: 'pc-inject', to: 'pc-fixed', kind: 'soft', label: 'at' }
+        ],
+        stickies: [
+            { x: 300, y: 350, text: 'The two-tier chain carries cognition across unbounded sessions at a fixed, bounded cost.', aha: true }
+        ],
+        navHints: { up: 'the two-tier chain' }
     }
 };

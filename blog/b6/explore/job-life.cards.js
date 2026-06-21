@@ -650,6 +650,28 @@ window.DECK_CARDS = {
             navHints: { down: 'see the three job formats & how they loop' }
         },
 
+        '3,1': {
+            kind: 'detail',
+            eyebrow: 'Related detail · under "EXECUTE — build, in scope"',
+            title: 'The altered list — build → freeze → enforce',
+            sub: 'What you\'re looking at: how EXECUTE\'s write scope is declared upstream, frozen at entry, and enforced per-write. Scope is set before any building starts.',
+            boxes: [
+                { id:'al-decl',    x:44,  y:190, w:210, h:100, tag:'object', t:'OBSERVE/PLAN CLAUDE.md edits', s:'each touched dir is declared editable' },
+                { id:'al-freeze',  x:328, y:190, w:222, h:100, tag:'gate',   t:'FROZEN at EXECUTE entry', s:'copied into altered_claude_md' },
+                { id:'al-enforce', x:628, y:100, w:280, h:100, tag:'gate',   t:'execute-guard enforces', s:'exact-directory match, NOT recursive' },
+                { id:'al-write',   x:628, y:300, w:280, h:100, tag:'action', t:'full project write', s:'only inside the list' }
+            ],
+            edges: [
+                { from:'al-decl',    to:'al-freeze',  kind:'hard', label:'at entry' },
+                { from:'al-freeze',  to:'al-enforce', kind:'hard', label:'then' },
+                { from:'al-enforce', to:'al-write',   kind:'hard', label:'permits' }
+            ],
+            stickies: [
+                { x:44, y:48, aha:true, text:'Scope is <b>DECLARED</b> upstream (OBSERVE/PLAN) and <b>ENFORCED</b> downstream (EXECUTE) — exact dirs, never recursive.' }
+            ],
+            navHints: { up: 'back to EXECUTE' }
+        },
+
         '2,1': {
             kind: 'detail',
             eyebrow: 'Related detail · under "PLAN — choose the Stage"',
@@ -731,7 +753,8 @@ window.DECK_CARDS = {
                   ref: { kind: 'deck', url: '../../b5/explore/compaction-chain.html', section: 'The Compaction Chain', blurb: 'How a job\'s cognition is carried across a /clear into the next session.' } }
             ],
             backnote: { x:46, y:500, text:'← from PLAN: the Stage is locked in' },
-            nextnote: { x:646, y:500, text:'Built → into VERIFY' }
+            nextnote: { x:646, y:500, text:'Built → into VERIFY' },
+            navHints: { down: 'detail: how the altered list scopes the build' }
         },
 
         '4,0': {
@@ -816,7 +839,30 @@ window.DECK_CARDS = {
                   ref: { kind: 'deck', url: 'completion-events.html', section: 'The Completion Events', blurb: 'The three distinct completion events and the gates around them.' } }
             ],
             backnote: { x:46, y:500, text:'← from VERIFY: the work checks out' },
-            nextnote: { x:606, y:500, text:'Done → back to idle, or next cycle →' }
+            nextnote: { x:606, y:500, text:'Done → back to idle, or next cycle →' },
+            navHints: { down: 'detail: the [JOB-COMPLETE] eligibility formula' }
+        },
+
+        '5,1': {
+            kind: 'detail',
+            eyebrow: 'Related detail · under "CONDENSE — the growth organ"',
+            title: 'Is the job done? The cycle formula',
+            sub: 'What you\'re looking at: when [JOB-COMPLETE] becomes eligible. Two per-Stage formulas feed into one hard gate — an empty Outstanding Items section.',
+            boxes: [
+                { id:'jc-s1',  x:44,  y:100, w:338, h:100, tag:'gate',   t:'Stage 1: plan_file == false', s:'eligible every CONDENSE' },
+                { id:'jc-s23', x:44,  y:310, w:338, h:100, tag:'gate',   t:'Stage 2/3: current_cycle ≥ effective_last_cycle', s:'the cycle-count formula' },
+                { id:'jc-out', x:480, y:200, w:260, h:100, tag:'gate',   t:'## Outstanding Items empty?', s:'or self-correct via --add-cycle' },
+                { id:'jc-ask', x:820, y:200, w:104, h:100, tag:'action', t:'[JOB-COMPLETE]', s:'CONDENSE-only' }
+            ],
+            edges: [
+                { from:'jc-s1',  to:'jc-ask', kind:'soft', label:'Stage 1 →' },
+                { from:'jc-s23', to:'jc-ask', kind:'soft', label:'Stage 2/3 →' },
+                { from:'jc-out', to:'jc-ask', kind:'hard', label:'and empty →' }
+            ],
+            stickies: [
+                { x:44, y:432, aha:true, text:'Completion eligibility is a <b>formula</b>, not a vibe — and an empty Outstanding Items section is a <b>hard gate</b>.' }
+            ],
+            navHints: { up: 'back to CONDENSE' }
         },
 
         '6,0': {
