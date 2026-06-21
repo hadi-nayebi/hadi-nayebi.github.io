@@ -424,7 +424,7 @@ window.DECK_CARDS = {
         stickies: [
             { x: 330, y: 360, text: 'The seed proposes; the user confirms. Fact 3: no self-authorised plugin work — the flag is raised by a hook, never by the agent.', aha: true }
         ],
-        navHints: { left: 'the guardrail', right: 'the five layers' }
+        navHints: { left: 'the guardrail', right: 'the five layers', down: 'noticing vs proposing — the split and the second route' }
     },
     '3,0': {
         kind: 'seq', step: 4, eyebrow: 'where a change belongs',
@@ -467,7 +467,7 @@ window.DECK_CARDS = {
         stickies: [
             { x: 690, y: 320, text: 'The brain gets LEANER, not bigger — proven patterns migrate out to hooks. It does not pile up.' }
         ],
-        navHints: { left: 'the five layers', right: 'the cost ladder' }
+        navHints: { left: 'the five layers', right: 'the cost ladder', down: 'what migrates and what stays soft forever' }
     },
     '5,0': {
         kind: 'seq', step: 6, eyebrow: 'how one control matures',
@@ -550,6 +550,27 @@ window.DECK_CARDS = {
         ],
         navHints: { up: 'the guardrail' }
     },
+    '2,1': {
+        kind: 'detail', eyebrow: 'the split and the second route',
+        title: 'Noticing is distributed; proposing a new job is not',
+        sub: 'What you\'re looking at: Any phase may notice a plugin-layer need and drop a footer note. Only CONDENSE may raise the [JOB-APPROVE-CREATION] question — a phase-of-firing gate hard-blocks it everywhere else. A second route, the mid-life raise, handles the case where the already-focused job discovers the need without spawning a new job.',
+        boxes: [
+            { id: 'notice-need', x: 44, y: 110, w: 220, h: 110, tag: 'action', t: 'any phase NOTICES', s: 'drops a footer note' },
+            { id: 'condense-only', x: 310, y: 110, w: 230, h: 110, tag: 'gate', t: 'phase-of-firing gate', s: '[JOB-APPROVE-CREATION] — CONDENSE only; exit 2 elsewhere' },
+            { id: 'mid-life-raise', x: 590, y: 110, w: 230, h: 110, tag: 'action', t: 'mid-life raise', s: '[JOB-APPROVE-PLUGIN] — any active phase, on the focused job' },
+            { id: 'flip-flag', x: 310, y: 270, w: 510, h: 100, tag: 'action', t: 'un-spoofable flag writer', s: 'question-capture-hook.sh → job.sh --hook approve-plugin-lock sets plugin_lock_approval=true; never self-set by the agent' }
+        ],
+        edges: [
+            { from: 'notice-need', to: 'condense-only', kind: 'hard', label: 'routed to' },
+            { from: 'condense-only', to: 'mid-life-raise', kind: 'soft', label: 'except: mid-life raise' },
+            { from: 'mid-life-raise', to: 'flip-flag', kind: 'hard', label: 'on approve' },
+            { from: 'condense-only', to: 'flip-flag', kind: 'hard', label: 'on approve' }
+        ],
+        stickies: [
+            { x: 44, y: 285, text: 'CONDENSE noticing vs proposing is NOT symmetric: any footer note is a notice; [JOB-APPROVE-CREATION] is the one question that can birth a job — and only when the agent has cycle-wide context.', aha: true }
+        ],
+        navHints: { up: 'propose & confirm' }
+    },
     '3,1': {
         kind: 'detail', eyebrow: 'the layers, under the hood',
         title: 'Where the order lives — and what it is not',
@@ -566,6 +587,26 @@ window.DECK_CARDS = {
             { x: 360, y: 330, text: 'The layers say WHERE a change belongs; the learnable surfaces are the dials those layers expose. The ladder stays five.' }
         ],
         navHints: { up: 'the five layers' }
+    },
+    '4,1': {
+        kind: 'detail', eyebrow: 'what migrates and what stays',
+        title: 'Not everything earns its way into a hook',
+        sub: 'What you\'re looking at: The canonical one-way flow moves only mechanical, deterministic patterns to hooks. Judgment-based controls stay probabilistic in the brain forever. And the brain itself grows in three accumulation sites before anything migrates at all.',
+        boxes: [
+            { id: 'young-pole', x: 44, y: 110, w: 240, h: 130, tag: 'state', t: 'young agent — three growth sites', s: 'knowledge/ · the memory layer · per-plugin docs/evolution.md' },
+            { id: 'the-flow', x: 340, y: 110, w: 240, h: 130, tag: 'action', t: 'the canonical one-way flow', s: 'experience → notice → add to brain → proves reliable → migrate to hook → remove from brain' },
+            { id: 'mature-pole', x: 636, y: 110, w: 260, h: 130, tag: 'state', t: 'mature agent — split outcome', s: 'judgment stays soft forever · mechanical patterns migrate to hooks' },
+            { id: 'two-ceilings', x: 340, y: 290, w: 240, h: 100, tag: 'context', t: 'size limits force extraction', s: 'brain word-cap + overflow → knowledge/ layer' }
+        ],
+        edges: [
+            { from: 'young-pole', to: 'the-flow', kind: 'soft', label: 'proven pattern' },
+            { from: 'the-flow', to: 'mature-pole', kind: 'soft', label: 'migrate to hook' },
+            { from: 'two-ceilings', to: 'the-flow', kind: 'soft', label: 'forces extraction' }
+        ],
+        stickies: [
+            { x: 636, y: 290, text: 'Maturity is not being smarter — it is being leaner and more deterministic. The judgment stays probabilistic in the brain; only mechanical reflexes harden into code.', aha: true }
+        ],
+        navHints: { up: 'young brain, mature brain' }
     },
     '5,1': {
         kind: 'detail', eyebrow: 'the cost ladder, under the hood',

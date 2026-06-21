@@ -342,7 +342,7 @@ window.DECK_CARDS = {
             { x: 300, y: 70, text: 'The eighty-twenty is not advice. It is a counted resource the main session must keep earning through dispatch.', aha: true,
               ref: { url: '../07_6-agents-and-80-20-budget.html', section: 'agents/ and the 80/20 Dispatch Budget', blurb: 'The essay this deck walks: the pool plus the budget that mechanizes the split.' } }
         ],
-        navHints: { right: 'the budget arithmetic' }
+        navHints: { right: 'the budget arithmetic', down: 'why the constraint forces the economy' }
     },
     '1,0': {
         kind: 'seq', step: 2, eyebrow: 'the meter',
@@ -403,7 +403,7 @@ window.DECK_CARDS = {
             { x: 600, y: 395, text: 'Each subagent is owned by one plugin.',
               ref: { kind: 'deck', url: 'plugin-substrate.html', section: 'Inside a Plugin', blurb: 'The plugin that owns each subagent via its lock boundary.' } }
         ],
-        navHints: { left: 'the exemption', right: 'the rosters' }
+        navHints: { left: 'the exemption', right: 'the rosters', down: 'the prefix as routing key and lock marker' }
     },
     '4,0': {
         kind: 'seq', step: 5, eyebrow: 'the customization surface',
@@ -468,6 +468,46 @@ window.DECK_CARDS = {
     },
 
     /* ============================ DETAIL ROW ============================ */
+    '0,1': {
+        kind: 'detail', eyebrow: 'why the split is not a style choice',
+        title: 'The constraint that forces the economy',
+        sub: 'One context window cannot hold a large job. The seed\'s answer is to keep cross-cutting judgment in one place and fan everything else into fresh contexts. Three things make that answer work.',
+        boxes: [
+            { id: 'one-context-d', x: 35, y: 195, w: 200, h: 95, tag: 'context', t: 'one context window', s: 'the hard ceiling' },
+            { id: 'main-orchestrates-d', x: 275, y: 100, w: 200, h: 95, tag: 'state', t: 'judgment — irreducible', s: 'the 20% that must stay' },
+            { id: 'subagents-bulk-d', x: 275, y: 295, w: 200, h: 95, tag: 'object', t: 'parallel contexts', s: 'why the bulk fans out' },
+            { id: 'the-budget-d', x: 530, y: 195, w: 200, h: 95, tag: 'gate', t: 'the counted resource', s: 'what enforces the ratio' },
+            { id: 'starting-balance-d', x: 785, y: 195, w: 164, h: 95, tag: 'state', t: 'start with 5', s: 'the teaching-device seed' }
+        ],
+        edges: [
+            { from: 'one-context-d', to: 'the-budget-d', kind: 'hard', label: 'forces' },
+            { from: 'main-orchestrates-d', to: 'subagents-bulk-d', kind: 'soft', label: 'delegates' },
+            { from: 'the-budget-d', to: 'starting-balance-d', kind: 'soft', label: 'seeded at entry' }
+        ],
+        stickies: [
+            { x: 275, y: 52, text: 'The 20% is 100% of judgment — the split is not about doing less, but about keeping what cannot be delegated in one coherent place.', aha: true }
+        ],
+        navHints: { up: 'the labour split' }
+    },
+    '3,1': {
+        kind: 'detail', eyebrow: 'inside the prefix rule',
+        title: 'The prefix is the routing key AND the lock marker',
+        sub: 'Every subagent\'s name is prefixed by its concern. That prefix does two things at once: it tells the agent-tracker whether to count this launch toward the current phase\'s gates, and it marks the single plugin the lock is open for.',
+        boxes: [
+            { id: 'prefix-marker-d', x: 35, y: 185, w: 220, h: 110, tag: 'state', t: 'six concerns', s: 'observe / plan / execute / verify / condense / historian' },
+            { id: 'lock-boundary-d', x: 315, y: 185, w: 220, h: 110, tag: 'gate', t: 'one unlock = one concern', s: 'surface matches boundary' },
+            { id: 'agent-tracker-d', x: 595, y: 185, w: 220, h: 110, tag: 'action', t: 'tracker prefix-match gate', s: 'counts only same-phase launches' },
+            { id: 'stateful-skip-d', x: 835, y: 185, w: 114, h: 110, tag: 'context', t: 'no research', s: 'no prefix, no pool' }
+        ],
+        edges: [
+            { from: 'prefix-marker-d', to: 'lock-boundary-d', kind: 'hard', label: 'enforces' },
+            { from: 'prefix-marker-d', to: 'agent-tracker-d', kind: 'soft', label: 'routes' }
+        ],
+        stickies: [
+            { x: 35, y: 52, text: 'The rule is organic, not rigid: historian-* can run in OBSERVE even though the prefix doesn\'t match — cross-phase admissions are explicit case-by-case design decisions, not auto-granted.' }
+        ],
+        navHints: { up: 'the pools' }
+    },
     '1,1': {
         kind: 'detail', eyebrow: 'inside the meter',
         title: 'The same +3 / −1 in every phase',
