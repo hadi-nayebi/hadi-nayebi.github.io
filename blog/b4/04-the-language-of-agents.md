@@ -197,10 +197,6 @@ A cognitive rhythm is a mandatory workflow that forces the agent to think before
 
 At the end of that rhythm is **Condense**. When a job finishes, the agent must pause to condense what it learned. Did it discover a new rule about your project? It extracts that lesson and adds it to its permanent memory. This happens immediately after the task.
 
-But memory gets messy over time. That is where **AutoDream** comes in. AutoDream is a background process. When you step away from your computer and the agent is idle, an AutoDream sub-agent wakes up. It reads through the day’s messy logs, deletes contradictions, reorganizes files, and compresses the context. It "dreams" to keep the agent’s mind sharp for the next day.
-
-Finally, as your agent grows, it will spawn multiple sub-agents to do work in parallel. To prevent them from colliding—like two assistants trying to rewrite the same document at the same time—they use **Atomic Locks**. When a sub-agent starts working on a directory, it drops a digital lock. Other agents see the lock and wait their turn. It is a simple mechanism that guarantees orderly collaboration.
-
 ## The Memory: Seed Agents and Agentic Workforces
 
 Two more terms, and these matter more than any of the technical ones.
