@@ -476,6 +476,13 @@ footer {
 
 /* ============ Blog ============ */
 
+/* Blog posts: widen the content area (nav + article + footer together) so the
+   empty left/right gutters shrink on large screens. Scoped to blog-post pages
+   via :has(.blog-layout); non-blog pages keep the 1200px container. */
+body:has(.blog-layout) .container {
+    max-width: 1500px;
+}
+
 .blog-layout {
     display: grid;
     grid-template-columns: 1fr 350px;
