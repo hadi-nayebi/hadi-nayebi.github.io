@@ -27,6 +27,7 @@ memory/
 .claude/architect-tools/
 .claude/architect-sweep/
 .claude/hooks/
+.claude/agents/
 .claude/scheduled_tasks.lock
 .claude/.tmp/
 # Seed-reset snapshots relocated out of the prototype root (reset-seed-for-test.sh)
@@ -56,3 +57,11 @@ diagram-comments.json
 # Free-TTS DRAFT audio — local review only, regeneratable via tools/generate_free_audio.py; paid finals get committed
 *.draft.mp3
 *.draft.mp3.meta.json
+
+# YouTube video-content voice recordings (personal, local-only — archived by architect-tools/youtube-capture.sh)
+.claude/youtube-video-content/
+
+# Cloned-voice per-paragraph CHUNKS — internal working files (chunk-NNN.mp3/.txt,
+# manifest.tsv, _pause.mp3) for per-paragraph re-record/replace. NEVER pushed.
+# Only the COMBINED <slug>.mp3 (a file directly in audio/, one level up) is committed.
+blog/b*/audio/*/
