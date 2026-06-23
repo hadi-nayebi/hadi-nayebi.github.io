@@ -117,11 +117,11 @@ Every contractor, every specialist, every logistics partner is still a human —
 
 That same human can simultaneously run a consulting practice, a content creation studio, and a local food product line. Not because they became superhuman. Because they grew the organs their biology was missing.
 
-Now zoom out. The beverage industry generates tens of billions in annual revenue. Today, a handful of corporations capture most of it. But the barrier to running a drink brand was never manufacturing — contract manufacturers already produce white-label products for anyone who asks. The barrier was everything else: planning, regulatory compliance, branding, logistics, supplier coordination. That is **operations**. And operations is exactly what your digital cortex absorbs.
+Now zoom out. Canned soft drinks — soda, sparkling flavored water, energy drinks — are a roughly **$70-billion-a-year market in the United States alone**, and over **$200 billion** worldwide. Today, a handful of corporations capture most of it. But the barrier to running a drink brand was never manufacturing — contract manufacturers already fill white-label cans for anyone who asks. The barrier was everything else: planning, regulatory compliance, branding, logistics, supplier coordination. That is **operations**. And operations is exactly what your digital cortex absorbs.
 
 The same logic applies across industries — from packaged snacks to consulting practices, from media brands to local services. Each sector already has production and distribution infrastructure waiting to be used. What held individuals out was the cognitive overhead of running a business — the part your biology was never built to scale.
 
-Remove that overhead and **revenue disperses**. Not because the market grows, but because more people can compete in it. A thirty-billion-dollar industry does not disappear. It distributes across more brand owners — each one bringing their own audience, their own human connection to the table.
+Remove that overhead and **revenue disperses**. Not because the market grows, but because more people can compete in it. A seventy-billion-dollar industry does not disappear. It distributes across more brand owners — each one bringing their own audience, their own human connection to the table.
 
 And if running a business costs [roughly one hundred dollars a month](../b2/02-we-could-have-had-agi.html) in compute — which is where the trend line points — then the economic default shifts. Not from job to *a* company. From job to **several micro-businesses** — each one managed by organs you designed, each one requiring only your judgment and creativity to thrive.
 
