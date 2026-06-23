@@ -434,7 +434,7 @@ These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2
 - Blog 5 introduces the always-on plugins and the CLAUDE.md layer side by side as separate strands. Blog 6 shows the phasic system USING the CLAUDE.md layer. Blog 7 deep-dives plugin anatomy.
 
 **Rule 5 — Context numbers are operating thresholds, not system limits.**
-- The seed agent uses Opus 4.7 with 1M-token context, but `brain_guard` triggers compaction much earlier (soft tier 200k, hard tier 250k, critical 300k).
+- The seed agent uses Opus 4.8 with 1M-token context, but `brain_guard` triggers compaction much earlier (soft tier 200k, hard tier 250k, critical 300k).
 - When mentioning these numbers, frame as "current operating threshold" or "compaction trigger" — never as "the chat fits 250k tokens" (which sounds like a model limit).
 - The 1M ceiling is the model; the 200k/250k/300k tiers are the discipline `brain_guard` enforces to keep cognitive coherence.
 
