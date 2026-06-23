@@ -57,22 +57,17 @@ A second guard inside the same hook protects the phase-section anchors — the f
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/execute-two-fences-b6-5.png
-  Concept: Chalk-on-blackboard sketch — EXECUTE's two nested fences. An outer path-scope fence drawn from the altered list, and an inner anchor-cascade fence inside each CLAUDE.md showing the cascading-downward write permission (Ex + Ve allowed, Ob + Pl blocked).
+  Concept: Chalk-on-blackboard sketch — EXECUTE is fenced two SEPARATE ways, drawn as two clearly-separated panels side by side (NOT nested). Left panel: WHICH directories it may write (the altered list). Right panel: WHERE inside a CLAUDE.md it may write (the anchor cascade — write at ---Ex--- and ---Ve---, block ---Ob--- and ---Pl--- above).
   Style: Match `opevc-cycle-blackboard.png` exactly. Dark slate chalkboard; hand-drawn chalk lines;
   pastel chalk (cyan, green, orange, pink, magenta — same palette as the cycle image) for the fence borders and the CLAUDE.md tile;
   white chalk for ALL labels and arrows; chalk sticks at the bottom edge; faint chalk dust at the edges.
   IMPORTANT: Use only the literal names listed below. Do not invent or substitute any other names, labels, or fence descriptors.
-  Layout: Two nested chalk rectangles arranged concentrically on the board.
-    Outer rectangle (cyan border, large): labeled at the top edge "altered list", with three small chalk file icons inside labeled "dir A", "dir B", "dir C" — these are the allowed directories.
-    A short white chalk arrow enters the outer rectangle from the left labeled "write call"; a second white chalk arrow attempts to enter from outside the outer rectangle and is blocked by a chalk X mark, labeled "out of scope".
-    Inner rectangle (orange border, smaller, drawn inside dir B): represents a single CLAUDE.md, labeled at the top edge "CLAUDE.md".
-    Inside the inner rectangle, four horizontal chalk bands stacked vertically, each labeled with a pastel-chalk anchor name: top band cyan labeled "---Ob---", second band green labeled "---Pl---", third band orange labeled "---Ex---" (highlighted with a small white chalk check mark in the margin marking the primary anchor), fourth band pink labeled "---Ve---" (also marked with a small white chalk check mark in the margin marking the permitted cascade).
-    A white chalk arrow enters the inner rectangle from outside and lands cleanly inside the third band (---Ex---), labeled "primary write".
-    A second white chalk arrow enters and lands cleanly inside the fourth band (---Ve---), labeled "pre-stage verify" — depicting the cascading-downward permission that lets EXECUTE pre-stage verify-checklist refinements.
-    A third white chalk arrow attempts to land in the first band (---Ob---) and is blocked by a chalk X, labeled "blocked upward".
+  Layout: A short title across the very top IN WHITE CHALK exactly "two fences on EXECUTE". Below it, TWO clearly separated chalk panels side by side with a clear gap between them — NOT nested.
+    LEFT panel (cyan border), header along its top edge IN WHITE CHALK exactly "1. which directories": inside, three chalk folder icons in a row labeled "dir A", "dir B", "dir C", each with a small white chalk check mark beside it; below the row, one more folder set slightly apart and struck through with a chalk X, labeled "out of scope"; a white chalk arrow labeled "write call" points into the row of allowed folders.
+    RIGHT panel (orange border), header along its top edge IN WHITE CHALK exactly "2. where in CLAUDE.md": inside, four horizontal chalk bands stacked vertically, top to bottom — "---Ob---" (dim, a chalk X to its left), "---Pl---" (dim, a chalk X to its left), "---Ex---" (bright orange, a white chalk check to its left), "---Ve---" (bright pink, a white chalk check to its left); a small white chalk note beneath the bands IN WHITE CHALK exactly "write here and below, never above".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "altered list", "dir A", "dir B", "dir C", "write call", "out of scope", "CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "primary write", "pre-stage verify", "blocked upward". No other words, file names, folders, or fence descriptors may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.5. EXECUTE's two fences. Path scope outside, anchor cascade inside — write to Ex + Ve, block upward to Ob + Pl."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "two fences on EXECUTE", "1. which directories", "dir A", "dir B", "dir C", "write call", "out of scope", "2. where in CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "write here and below, never above". No other words, file names, folders, or fence descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.5. EXECUTE is fenced twice — which directories it may touch (the altered list), and where inside a CLAUDE.md it may write (at ---Ex--- and below, never above)."
 -->
 
 ---
