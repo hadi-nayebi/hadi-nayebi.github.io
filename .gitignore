@@ -20,6 +20,7 @@ feedback.json
 
 # Agent working memory (not part of the website)
 CLAUDE.md
+.claude/
 .claude/skills/
 memory/
 
@@ -65,3 +66,7 @@ diagram-comments.json
 # manifest.tsv, _pause.mp3) for per-paragraph re-record/replace. NEVER pushed.
 # Only the COMBINED <slug>.mp3 (a file directly in audio/, one level up) is committed.
 blog/b*/audio/*/
+
+# Video production pipeline (Remotion + node_modules + per-project git) — LOCAL ONLY,
+# never deployed. Final rendered videos are exported to assets/video/ (committed).
+/video-projects/
