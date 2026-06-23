@@ -136,8 +136,8 @@ The point of all this is cumulative. Each boundary deposits a small, machine-rea
       verify row:   "---Ve--- only", "refine", X, checkmark, X
       condense row: "all + body", X, X, X, checkmark
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "validators", "create job objects", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine", plus the caption below. No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer anchor — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE owns soft-brain consolidation."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "observe", "plan", "execute", "verify", "condense", "footers writable", "plan file", "project source", "validators", "create job objects", "all 4", "3 below ---Pl---", "2 below ---Ex---", "---Ve--- only", "all + body", "create c1", "altered list", "refine". No other words, file names, folders, or phase descriptors may appear. Cells contain only the listed words, checkmark glyphs, or X glyphs.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.1. The phase write matrix. Each phase writes only at or below its own footer anchor — observe can leave forward notes in all four, plan in three, execute in two, verify in just the last; CONDENSE owns soft-brain consolidation."
   ASSET: images/quick-phase-map-b6-2.png
 -->
 

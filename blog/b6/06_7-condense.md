@@ -46,8 +46,8 @@ That routing draws on a catalog of seven operations (extensible per the Stage-3 
   A bold white-chalk gate-bar drawn BETWEEN each pair of boxes (ADDRESS→ARCHIVE, ARCHIVE→DEFLATE) to mark the hard gates; a white-chalk arrow passes through each gate-bar.
   Below the three boxes, a small faint inset rectangle labeled IN WHITE CHALK "the 7 operations (a catalog, not an order)" — drawn dimmer and smaller to show the phases draw from it.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "ADDRESS", "notes to terminal state", "ARCHIVE", "snapshot the footer", "DEFLATE", "absorb + delete", "the 7 operations (a catalog, not an order)", plus the caption below. No other words, file names, folders, or step numbers may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.7. CONDENSE runs in three gated phases. Preserve before you delete."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "ADDRESS", "notes to terminal state", "ARCHIVE", "snapshot the footer", "DEFLATE", "absorb + delete", "the 7 operations (a catalog, not an order)". No other words, file names, folders, or step numbers may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.7. CONDENSE runs in three gated phases. Preserve before you delete."
 -->
 
 <!-- RAW_HTML -->

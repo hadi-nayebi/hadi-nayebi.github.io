@@ -64,8 +64,8 @@ Either condition admits. Both failing produces a block with structured teach-tex
     Tag 2: "create new plugin"
   Below the OR node — a small chalk tag (pink fill, crossed out with a white-chalk X) labeled exactly: "blocked by default", with a thin white-chalk line connecting it to the OR to show what happens when both arms fail.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — only these literal text strings as labels: "current_phase == gmode", "plugin_lock_approval == true", "OR", "[PLUGIN-LOCK] admitted", "edit existing plugin", "create new plugin", "blocked by default", plus the caption below.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 5.9. Two arms admit [PLUGIN-LOCK] — gmode for ad-hoc operator work, plugin_lock_approval for agent-proposed customization jobs. The same admission covers both editing existing plugins and creating new ones."
+  STRICT NAME WHITELIST — only these literal text strings as labels: "current_phase == gmode", "plugin_lock_approval == true", "OR", "[PLUGIN-LOCK] admitted", "edit existing plugin", "create new plugin", "blocked by default".
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 5.9. Two arms admit [PLUGIN-LOCK] — gmode for ad-hoc operator work, plugin_lock_approval for agent-proposed customization jobs. The same admission covers both editing existing plugins and creating new ones."
 -->
 
 ## Why both routes, not one

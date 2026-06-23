@@ -25,8 +25,8 @@ Concept: Chalk-on-blackboard three-axis growth diagram — a small seed icon in 
       Bottom line: "supervising → composing"
   Above the seed icon, a single short white-chalk caption reads exactly: "week 1". Near the far end of arrow B, a small white-chalk caption reads exactly: "month 3+". These two anchor the time arc of the diagram.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+", plus the caption below. No other words, file names, folders, or axis descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+". No other words, file names, folders, or axis descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
   ASSET: images/three-growth-axes-b8-1.png
 
 Global constraints:

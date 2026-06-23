@@ -54,8 +54,8 @@ That `3` is a prototype calibration, not a law — a seed that wants its planned
     On the right half of the board, one circle per phase arranged in a ring: cyan circle labeled "observe", green circle labeled "plan", orange circle labeled "execute", pink circle labeled "verify", magenta circle labeled "condense". Small white chalk arrows connect them clockwise.
     From the .yaml tile, a curved white chalk arrow exits the right edge and fans out into thin chalk lines, each landing on one phase circle. Above the fan, a white chalk note: "injects at phase entry".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plan.md", "plan.yaml", "loaded by recall", "injected per phase", "observe:", "plan:", "execute:", "verify:", "condense:", "same basename", "observe", "plan", "execute", "verify", "condense", "injects at phase entry", plus the caption below. No other words, file names, folders, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.10. Both are the agent's plan; the .md is loaded by recall, the .yaml is injected per phase. Same basename, different surface."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plan.md", "plan.yaml", "loaded by recall", "injected per phase", "observe:", "plan:", "execute:", "verify:", "condense:", "same basename", "observe", "plan", "execute", "verify", "condense", "injects at phase entry". No other words, file names, folders, or descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.10. Both are the agent's plan; the .md is loaded by recall, the .yaml is injected per phase. Same basename, different surface."
 -->
 
 <!-- RAW_HTML -->

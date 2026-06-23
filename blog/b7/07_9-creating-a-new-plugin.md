@@ -71,8 +71,8 @@ This is the part most plugin tutorials skip. When the seed authors a new plugin,
   Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4 → Box 5.
   Below the right end of the flow (under Box 5), draw a small chalk note IN WHITE CHALK reading exactly: "operator step: register in settings.local.json".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin birth — inside EXECUTE", "[PLUGIN-LOCK] new_plugin approved", "stamp template/ → .claude/plugins/new_plugin/", "substitute {{PLUGIN_NAME}}", "generate agents/historian-new-plugin.md", "auto-commit: birth baseline", "operator step: register in settings.local.json", plus the caption below. No other words, file names, folders, or state descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.9. Plugin birth automates 5 steps. Hook registration stays operator-controlled."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin birth — inside EXECUTE", "[PLUGIN-LOCK] new_plugin approved", "stamp template/ → .claude/plugins/new_plugin/", "substitute {{PLUGIN_NAME}}", "generate agents/historian-new-plugin.md", "auto-commit: birth baseline", "operator step: register in settings.local.json". No other words, file names, folders, or state descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.9. Plugin birth automates 5 steps. Hook registration stays operator-controlled."
 -->
 
 ---

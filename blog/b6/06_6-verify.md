@@ -109,8 +109,8 @@ Any phase can be re-entered, but only by rolling back along defined edges. This 
   To the right of verify, one forward arrow → magenta circle labeled "condense", chalk note above the arrow: "pass".
   All four arrows are white chalk, slightly curved.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "verify", "execute", "plan", "observe", "condense", "minor fix", "design flaw", "context gap", "pass", plus the caption below. No other words, file names, folders, or phase descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.6. Backward transitions are explicit choices, not automatic fallbacks."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "verify", "execute", "plan", "observe", "condense", "minor fix", "design flaw", "context gap", "pass". No other words, file names, folders, or phase descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.6. Backward transitions are explicit choices, not automatic fallbacks."
 -->
 
 When VERIFY passes, the orchestrator advances the job to CONDENSE.

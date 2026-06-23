@@ -29,8 +29,8 @@ og_image: "blog/b8/images/three-growth-axes-b8-1.png"
     Step 2 (green, middle, taller): "journeyman"
     Step 3 (magenta, rightmost, tallest): "architect"
   Between consecutive steps, a single white-chalk arrow points upward-rightward (positioned in the gap between steps, not overlapping any figure or label). Above the entire arrangement (top of board with clear gap from the highest label), a centered white-chalk title reads exactly: "From Apprentice to Architect". Just below the arrangement (bottom band with clear gap from the lowest step base), a single white-chalk subtitle reads exactly: "the seed grows · so does the operator".
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "journeyman", "architect", "From Apprentice to Architect", "the seed grows · so does the operator", plus the caption below. No other words, file names, stage descriptors, or markers may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Banner 8. Three stages, one arc. The seed grows; the operator grows; the relationship between them shifts."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "journeyman", "architect", "From Apprentice to Architect", "the seed grows · so does the operator". No other words, file names, stage descriptors, or markers may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Banner 8. Three stages, one arc. The seed grows; the operator grows; the relationship between them shifts."
 -->
 
 [Essay 7.9](../b7/07_9-creating-a-new-plugin.html) closed the plugin kit with a walkthrough — guiding your seed to author a brand-new plugin, part by part, under the lock ceremony's friction. That essay handed you the *capacity* to grow the brain. This essay opens what happens once that capacity is yours.
@@ -59,8 +59,8 @@ That last claim is what makes the seed sustainable across long timescales. A bra
       Bottom line: "supervising → composing"
   Above the seed icon, a single short white-chalk caption reads exactly: "week 1". Near the far end of arrow B, a small white-chalk caption reads exactly: "month 3+". These two anchor the time arc of the diagram.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+", plus the caption below. No other words, file names, folders, or axis descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+". No other words, file names, folders, or axis descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
   ASSET: images/three-growth-axes-b8-1.png
 -->
 

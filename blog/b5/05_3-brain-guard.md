@@ -67,8 +67,8 @@ Whichever ramp reaches its ceiling first triggers the same move — but the ceil
   At the 100% tick: a thick white-chalk vertical wall; caption next to it reads exactly "Claude Code default auto-compact".
   From the 20% bar, a dotted white-chalk arrow curves upward-left and out of the squeeze, ending at a chalk label that reads exactly "self-compact early (brain_guard seals + clears)".
   Keep all arrows slightly curved and hand-drawn, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings: "context window fill (Opus 4.8, 1M tokens)", "0%", "20% (200k)", "25% (250k)", "30% (300k)", "100% (1M)", "soft tier — coaching voice", "Read blocked", "Edit, Write, MultiEdit blocked", "Read", "Edit", "Write", "MultiEdit", "Claude Code default auto-compact", "self-compact early (brain_guard seals + clears)", plus the caption below. No other tool names or labels may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 5.3. The progressive squeeze — each tier removes one more tool until self-compaction is the only graceful move."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings: "context window fill (Opus 4.8, 1M tokens)", "0%", "20% (200k)", "25% (250k)", "30% (300k)", "100% (1M)", "soft tier — coaching voice", "Read blocked", "Edit, Write, MultiEdit blocked", "Read", "Edit", "Write", "MultiEdit", "Claude Code default auto-compact", "self-compact early (brain_guard seals + clears)". No other tool names or labels may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 5.3. The progressive squeeze — each tier removes one more tool until self-compaction is the only graceful move."
 -->
 
 ## Shape compels production

@@ -56,8 +56,8 @@ This is what changes when the architecture itself is teachable. The agent-develo
     Right node (magenta fill, large circle): "you"
   Below both halves, a single horizontal white-chalk note runs across the bottom of the board reading exactly: "the substrate is teachable; the third role dissolves"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "default triangle", "collapsed line", "agent", "developer", "user", ".claude/", "shared substrate", "you", "the substrate is teachable; the third role dissolves", plus the caption below. No other words, file names, folders, or role descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.9. Three roles collapse to two. The substrate carries what the developer used to."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "default triangle", "collapsed line", "agent", "developer", "user", ".claude/", "shared substrate", "you", "the substrate is teachable; the third role dissolves". No other words, file names, folders, or role descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.9. Three roles collapse to two. The substrate carries what the developer used to."
   ASSET: images/triangle-to-two-b8-9.png
 -->
 

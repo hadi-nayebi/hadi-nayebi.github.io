@@ -49,8 +49,8 @@ Every phase's advance is gated. Try to cross a boundary before the phase has don
     A second white chalk arrow runs backward from Station 2 toward Station 1 with a small chalk X on it, labeled IN WHITE CHALK exactly "min gate: read before you write".
     A third white chalk arrow runs from Station 2 to Station 3, and a fourth from Station 3 back up to Station 1, closing the loop.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "investigate", "write to CLAUDE.md", "all counters reset", "max gate: synthesize before reading more", "min gate: read before you write", plus the caption below. No other words, file names, tool names, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.8. The min-max rhythm — accrue, write, reset."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "investigate", "write to CLAUDE.md", "all counters reset", "max gate: synthesize before reading more", "min gate: read before you write". No other words, file names, tool names, or descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.8. The min-max rhythm — accrue, write, reset."
 -->
 
 ## The min-max rhythm

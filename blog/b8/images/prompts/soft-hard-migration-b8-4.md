@@ -33,8 +33,8 @@ ASSET: images/soft-hard-migration-b8-4.png
   Above the five-stage pipeline, draw a single curving white-chalk arrow that arcs from Stage 1 over to Stage 5, with one short caption riding the arrow's curve IN WHITE CHALK exactly: "soft → hard → out of brain".
   Below the pipeline, a horizontal white-chalk note reads exactly: "Lock 13: data must show soft failed before hard lands".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "coaching voice", "voice.xml — probabilistic", "measurement", "tracker counters", "hook block", "PreToolUse — deterministic", "plugin tests", "tests/ — protects the gate", "kit template", "fossilized — every new plugin inherits", "soft → hard → out of brain", "Lock 13: data must show soft failed before hard lands", plus the caption below. No other words, file names, folders, or stage descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.4. Patterns travel left to right. The brain shrinks; the kit grows."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "coaching voice", "voice.xml — probabilistic", "measurement", "tracker counters", "hook block", "PreToolUse — deterministic", "plugin tests", "tests/ — protects the gate", "kit template", "fossilized — every new plugin inherits", "soft → hard → out of brain", "Lock 13: data must show soft failed before hard lands". No other words, file names, folders, or stage descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.4. Patterns travel left to right. The brain shrinks; the kit grows."
 
 Global constraints:
 - 16:9 landscape composition.

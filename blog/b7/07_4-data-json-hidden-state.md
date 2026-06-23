@@ -55,8 +55,8 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
   Below Badge 3, a small white-chalk side-arrow points DOWN to a small chalk box labeled IN WHITE CHALK exactly "validation fail → rm tmp + rebuild from default".
   To the far right, after Badge 4, draw a small chalk file-icon (cyan fill) labeled IN WHITE CHALK exactly "data.json" with a short white-chalk arrow above it labeled IN WHITE CHALK exactly "reader sees whole state".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hook fire", "flock /tmp/plugin-integrity-…lock", "read data.json", "jq transform → data.json.tmp", "jq empty (validate)", "atomic mv → data.json", "validation fail → rm tmp + rebuild from default", "data.json", "reader sees whole state", plus the caption below. No other words, file names, folders, or step descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.4. Concurrent fires queue at the lockfile. One mutation at a time. Atomic mv flips the file; readers never catch a partial state."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hook fire", "flock /tmp/plugin-integrity-…lock", "read data.json", "jq transform → data.json.tmp", "jq empty (validate)", "atomic mv → data.json", "validation fail → rm tmp + rebuild from default", "data.json", "reader sees whole state". No other words, file names, folders, or step descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.4. Concurrent fires queue at the lockfile. One mutation at a time. Atomic mv flips the file; readers never catch a partial state."
 -->
 
 Target asset: assets/images/blog/b7/data-json-atomic-protocol-b7-4.png

@@ -60,8 +60,8 @@ The shape of the idea is clean, and the prototype ships it: the job field holds 
   Above the three tiles, a single white-chalk arrow points downward into each tile labeled in white chalk: "agent fills before asking".
   Light-green chalk partially fills 1-2 slots per tile (suggesting the agent has begun filling — partial completion), with the remaining slots blank.
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — only these literal text strings as labels: "[PLUGIN-LOCK]", "[GMODE]", "[JOB-APPROVE-CREATION]", "PLUGIN", "SPECIFIC CHANGES", "WHY", "TESTS WILL RUN", "BLOCKER", "FIX", "WHY NOT IN-PHASE", "EXIT CRITERION", "RETURN NOTE", "PROPOSED OBJECTIVE", "PLUGINS TO TOUCH", "WHY NOW", "RISK SURFACE", "agent fills before asking", plus the caption below.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 5.6. Each ceremony is a stencil of named slots — filling them IS the structured thinking the gate compels before the question can land."
+  STRICT NAME WHITELIST — only these literal text strings as labels: "[PLUGIN-LOCK]", "[GMODE]", "[JOB-APPROVE-CREATION]", "PLUGIN", "SPECIFIC CHANGES", "WHY", "TESTS WILL RUN", "BLOCKER", "FIX", "WHY NOT IN-PHASE", "EXIT CRITERION", "RETURN NOTE", "PROPOSED OBJECTIVE", "PLUGINS TO TOUCH", "WHY NOW", "RISK SURFACE", "agent fills before asking".
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 5.6. Each ceremony is a stencil of named slots — filling them IS the structured thinking the gate compels before the question can land."
 -->
 
 ## What would break without it

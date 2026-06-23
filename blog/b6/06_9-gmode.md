@@ -59,8 +59,8 @@ The cycle counter does not advance through gmode. The home phase is the home pha
   Between gmode and each outgoing arrow — a small white-chalk caption labeled exactly: "stash pre_gmode_phase".
   Between gmode and each returning arrow — a small white-chalk caption labeled exactly: "atomic restore".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — only these literal text strings as labels: "gmode", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "idle", "≥100-word [GMODE]", "clean git", "stash pre_gmode_phase", "atomic restore", plus the caption below.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.9. Every phase, including idle, carries one self-loop through gmode. Entry costs a justification floor; exit requires clean git plus a new root-cause note; the home phase is restored atomically."
+  STRICT NAME WHITELIST — only these literal text strings as labels: "gmode", "OBSERVE", "PLAN", "EXECUTE", "VERIFY", "CONDENSE", "idle", "≥100-word [GMODE]", "clean git", "stash pre_gmode_phase", "atomic restore".
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.9. Every phase, including idle, carries one self-loop through gmode. Entry costs a justification floor; exit requires clean git plus a new root-cause note; the home phase is restored atomically."
 -->
 
 ## What would break without it

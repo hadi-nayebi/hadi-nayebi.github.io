@@ -20,8 +20,8 @@ ASSET: images/maturation-arc-b8-banner.png
     Step 2 (green, middle, taller): "journeyman"
     Step 3 (magenta, rightmost, tallest): "architect"
   Between consecutive steps, a single white-chalk arrow points upward-rightward (positioned in the gap between steps, not overlapping any figure or label). Above the entire arrangement (top of board with clear gap from the highest label), a centered white-chalk title reads exactly: "From Apprentice to Architect". Just below the arrangement (bottom band with clear gap from the lowest step base), a single white-chalk subtitle reads exactly: "the seed grows · so does the operator".
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "journeyman", "architect", "From Apprentice to Architect", "the seed grows · so does the operator", plus the caption below. No other words, file names, stage descriptors, or markers may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Banner 8. Three stages, one arc. The seed grows; the operator grows; the relationship between them shifts."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "apprentice", "journeyman", "architect", "From Apprentice to Architect", "the seed grows · so does the operator". No other words, file names, stage descriptors, or markers may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Banner 8. Three stages, one arc. The seed grows; the operator grows; the relationship between them shifts."
 
 Global constraints:
 - 16:9 landscape composition.

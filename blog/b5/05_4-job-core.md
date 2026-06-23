@@ -55,8 +55,8 @@ The phase plugins ([Essay 6](../b6/06_1-phasic-foundation.html)) do it on a larg
   Around the central job, three satellite chalk boxes (orange fill) drawn at upper-left, upper-right, and lower-right, each labeled IN WHITE CHALK exactly: "interaction_summary", "phase_observe", "phase_plan". A pink-chalk arrow runs from each satellite back to the central job's id tag, showing each satellite keying its own entry by the same ID.
   Below the central job, a small dashed white-chalk box labeled exactly: "data.json (hidden)" — drawn so the central job sits visually inside it; the three satellites sit OUTSIDE this dashed box (each satellite has its own hidden state, unshown).
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — only these literal text strings as labels: "job", "id: 1778080980191719121", "user_interactions", "prompt 1", "prompt 2", "prompt 3", "...", "interaction_summary", "phase_observe", "phase_plan", "data.json (hidden)", plus the caption below.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 5.4. One job, one shared key — the cumulative mega-prompt lives inside; other plugins extend the same ID from outside their own hidden state."
+  STRICT NAME WHITELIST — only these literal text strings as labels: "job", "id: 1778080980191719121", "user_interactions", "prompt 1", "prompt 2", "prompt 3", "...", "interaction_summary", "phase_observe", "phase_plan", "data.json (hidden)".
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 5.4. One job, one shared key — the cumulative mega-prompt lives inside; other plugins extend the same ID from outside their own hidden state."
 -->
 
 ## The refusal to stop

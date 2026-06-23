@@ -55,8 +55,8 @@ A few smaller organs round out the kit. They carry less load but are still load-
     Arrow 3: "Stop"
   Above the brain-root box, a small white-chalk note reads exactly "registers".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin", "config.conf", "tests/", "template/", "e2e/", "LICENSE + README.md", ".claude/settings.local.json", "UserPromptSubmit", "PreToolUse", "Stop", "registers", plus the caption below. No other words, file names, folders, or event names may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.7. Smaller organs surround the cell. The wiring file lives at brain root and registers the plugin's reflexes."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin", "config.conf", "tests/", "template/", "e2e/", "LICENSE + README.md", ".claude/settings.local.json", "UserPromptSubmit", "PreToolUse", "Stop", "registers". No other words, file names, folders, or event names may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.7. Smaller organs surround the cell. The wiring file lives at brain root and registers the plugin's reflexes."
 -->
 
 Target asset: assets/images/blog/b7/smaller-organs-and-wiring-b7-7.png

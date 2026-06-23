@@ -23,8 +23,8 @@ Concept: Chalk-on-blackboard recursive lock diagram — a large chalk box labele
       Bottom line: "revert to checkpoint_ref"
   Below the two branches, a single horizontal white-chalk note runs across the bottom of the board reading exactly: "the guard does not exempt itself"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin_integrity", "plugin_integrity (under edit)", "[PLUGIN-LOCK]", "tests", "pass", "commit, lock closes", "fail", "revert to checkpoint_ref", "the guard does not exempt itself", plus the caption below. No other words, file names, folders, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.8. The lock that closes one cycle opens the next. Recursion all the way down."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "plugin_integrity", "plugin_integrity (under edit)", "[PLUGIN-LOCK]", "tests", "pass", "commit, lock closes", "fail", "revert to checkpoint_ref", "the guard does not exempt itself". No other words, file names, folders, or descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.8. The lock that closes one cycle opens the next. Recursion all the way down."
   ASSET: images/recursive-lock-ceremony-b8-8.png
 
 Global constraints:

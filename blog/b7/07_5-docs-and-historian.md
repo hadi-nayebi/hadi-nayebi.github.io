@@ -52,8 +52,8 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
   The overflow arrow fans out into three smaller white-chalk arrows, one pointing at each sibling box.
   Below the three sibling boxes, a small white-chalk note reads exactly "uncapped — historian judgment".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "docs/evolution.md", "2000-word cap (configurable)", "historian writes", "overflow", "docs/principles.md", "docs/decisions.md", "docs/lessons.md", "uncapped — historian judgment", plus the caption below. No other words, file names, folders, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.5. The hard cap forces overflow. Siblings absorb depth under the historian's judgment."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "docs/evolution.md", "2000-word cap (configurable)", "historian writes", "overflow", "docs/principles.md", "docs/decisions.md", "docs/lessons.md", "uncapped — historian judgment". No other words, file names, folders, or descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.5. The hard cap forces overflow. Siblings absorb depth under the historian's judgment."
 -->
 
 Target asset: assets/images/blog/b7/evolution-cap-overflow-b7-5.png

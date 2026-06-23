@@ -65,8 +65,8 @@ The other size limits are soft because the *measurement* has not yet shown the s
     Below the stack, a short white-chalk note reads exactly: "CONDENSE discipline holds the line"
   Across the bottom of the board, beneath both columns, a single horizontal white-chalk note reads exactly: "Lock 13: hard gates earn their cost; soft caps wait for evidence"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hard cap", "soft caps", "docs/evolution.md", "2,000 words", "evolution-cap.sh PreToolUse", "code refuses the edit", "root brain — 3,500 words", "subdir CLAUDE.md — 800 words", "plan files — 2,000 words", "memory entries — 400 words", "skill files — 500 words", "CONDENSE discipline holds the line", "Lock 13: hard gates earn their cost; soft caps wait for evidence", plus the caption below. No other words, file names, folders, or threshold descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.5. One hard cap. Several soft. The asymmetry is honest."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "hard cap", "soft caps", "docs/evolution.md", "2,000 words", "evolution-cap.sh PreToolUse", "code refuses the edit", "root brain — 3,500 words", "subdir CLAUDE.md — 800 words", "plan files — 2,000 words", "memory entries — 400 words", "skill files — 500 words", "CONDENSE discipline holds the line", "Lock 13: hard gates earn their cost; soft caps wait for evidence". No other words, file names, folders, or threshold descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.5. One hard cap. Several soft. The asymmetry is honest."
   ASSET: images/enforced-vs-discipline-b8-5.png
 -->
 

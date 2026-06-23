@@ -71,8 +71,8 @@ A second guard inside the same hook protects the phase-section anchors — the f
     A second white chalk arrow enters and lands cleanly inside the fourth band (---Ve---), labeled "pre-stage verify" — depicting the cascading-downward permission that lets EXECUTE pre-stage verify-checklist refinements.
     A third white chalk arrow attempts to land in the first band (---Ob---) and is blocked by a chalk X, labeled "blocked upward".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "altered list", "dir A", "dir B", "dir C", "write call", "out of scope", "CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "primary write", "pre-stage verify", "blocked upward", plus the caption below. No other words, file names, folders, or fence descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.5. EXECUTE's two fences. Path scope outside, anchor cascade inside — write to Ex + Ve, block upward to Ob + Pl."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "altered list", "dir A", "dir B", "dir C", "write call", "out of scope", "CLAUDE.md", "---Ob---", "---Pl---", "---Ex---", "---Ve---", "primary write", "pre-stage verify", "blocked upward". No other words, file names, folders, or fence descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.5. EXECUTE's two fences. Path scope outside, anchor cascade inside — write to Ex + Ve, block upward to Ob + Pl."
 -->
 
 ---

@@ -35,8 +35,8 @@ ASSET: images/brain-layers-b8-3.png
       Right: "cross-project, your home dir"
   On the left edge of the stack, draw a single vertical white-chalk arrow running BOTTOM-UP along the entire stack, with one short caption riding the arrow IN WHITE CHALK exactly: "durability".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "chat session", "dies at compaction", "working CLAUDE.md", "deflates each cycle", "plan files", "persists across cycles", "plugin evolution.md", "capped 2000w, narrated", ".claude/knowledge/", "topic silos, grows monotonically", "memory/", "cross-project, your home dir", "durability", plus the caption below. No other words, file names, folders, or lifespan descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.3. Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "chat session", "dies at compaction", "working CLAUDE.md", "deflates each cycle", "plan files", "persists across cycles", "plugin evolution.md", "capped 2000w, narrated", ".claude/knowledge/", "topic silos, grows monotonically", "memory/", "cross-project, your home dir", "durability". No other words, file names, folders, or lifespan descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.3. Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
 
 Global constraints:
 - 16:9 landscape composition.

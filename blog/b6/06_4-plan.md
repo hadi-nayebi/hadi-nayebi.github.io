@@ -64,8 +64,8 @@ There is no state machine walking the plan through named approval stages. The `p
     Right box (orange border): labeled "Stage 3", with a smaller line beneath inside the box: "plan_file = .yaml". Its incoming arrow carries the white-chalk note "repeatable".
     Below the Stage 1 box, a small white-chalk note: "single cycle".
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycle 1 PLAN", "set-plan-file?", "Stage 1", "Stage 2", "Stage 3", "plan_file = false", "plan_file = .md", "plan_file = .yaml", "false", "repeatable", "single cycle", plus the caption below. No other words, file names, folders, or descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 6.4. PLAN always calls set-plan-file in cycle 1; the value picks the Stage."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycle 1 PLAN", "set-plan-file?", "Stage 1", "Stage 2", "Stage 3", "plan_file = false", "plan_file = .md", "plan_file = .yaml", "false", "repeatable", "single cycle". No other words, file names, folders, or descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 6.4. PLAN always calls set-plan-file in cycle 1; the value picks the Stage."
 -->
 
 ---

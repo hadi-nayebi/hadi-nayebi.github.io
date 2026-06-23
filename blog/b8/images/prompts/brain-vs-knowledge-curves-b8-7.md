@@ -28,8 +28,8 @@ ASSET: images/brain-vs-knowledge-curves-b8-7.png
     "500"   (skill files cap)
     "400"   (memory entries cap)
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycles", "words", "knowledge/", "plugin evolution.md", "root brain", "3,500", "2,000", "800", "500", "400", plus the caption below. No other words, file names, folders, or curve descriptors may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 8.7. The brain reaches a ceiling. The knowledge layer never does."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "cycles", "words", "knowledge/", "plugin evolution.md", "root brain", "3,500", "2,000", "800", "500", "400". No other words, file names, folders, or curve descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.7. The brain reaches a ceiling. The knowledge layer never does."
 
 Global constraints:
 - 16:9 landscape composition.

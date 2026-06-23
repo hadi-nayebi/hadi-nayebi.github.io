@@ -49,8 +49,8 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
     Line 1: "+3 grants per execute-* dispatch"
     Line 2: "-1 per project file edit"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (13)", "plan-* (9)", "execute-* (4)", "verify-* (6)", "condense-* (8)", "historian-* (13)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit", plus the caption below. No other words, file names, plugin names, or subagent names may appear.
-  Caption (bottom of image, white chalk, hand-drawn): "Image 7.6. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (13)", "plan-* (9)", "execute-* (4)", "verify-* (6)", "condense-* (8)", "historian-* (13)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit". No other words, file names, plugin names, or subagent names may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.6. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
 -->
 
 <!-- RAW_HTML -->
