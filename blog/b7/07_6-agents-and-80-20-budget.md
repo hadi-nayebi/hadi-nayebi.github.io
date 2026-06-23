@@ -32,25 +32,26 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/agents-80-20-b7-6.png
-  Concept: Chalk-on-blackboard hub-and-spoke — small main-session circle at the center orchestrating; larger plugin-scoped subagent pools fanning out around it.
+  Concept: Chalk-on-blackboard hub-and-spoke teaching the 80/20 dispatch discipline. A SMALL main-session circle at the center (orchestration) and NOTICEABLY LARGER per-phase subagent pools around it (the bulk of the work). The size contrast — small hub, big pools — IS the message, plus a budget that makes delegation structural. NO numbers or counts anywhere (the agent count drifts over time).
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk circles
   and arrows; pastel chalk for the subagent pools (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for ALL labels, arrows, and the main-session circle; faint chalk dust at the edges; chalk sticks along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other subagent names, plugin names, or descriptors. Use only the counts listed.
-  Layout: One small white-chalk circle at the dead center of the board, labeled IN WHITE CHALK exactly "main session (20%)". Around it, six larger pastel chalk circles fanning out in a hexagonal arrangement, each labeled IN WHITE CHALK with its exact text:
-    Circle 1 (cyan, top): "observe-* (13)"
-    Circle 2 (green, upper right): "plan-* (9)"
-    Circle 3 (orange, lower right): "execute-* (4)"
-    Circle 4 (pink, bottom): "verify-* (6)"
-    Circle 5 (magenta, lower left): "condense-* (8)"
-    Circle 6 (cyan, darker, upper left): "historian-* (13)"
-  From the central main-session circle, a single white-chalk arrow goes OUT to each of the six surrounding pools (six arrows total, all radial). Each arrow is labeled with the same single word IN WHITE CHALK exactly: "dispatch".
-  In a chalk box at the bottom-right corner of the board, draw a small "budget panel" with header IN WHITE CHALK reading exactly "direct-action budget", and two short white-chalk lines stacked:
-    Line 1: "+3 grants per execute-* dispatch"
-    Line 2: "-1 per project file edit"
+  IMPORTANT: Use only the literal text strings listed below. Do NOT add any numbers, counts, or quantities anywhere in the image.
+  Layout: One SMALL white-chalk circle at the dead center of the board — clearly the smallest circle on the board — labeled IN WHITE CHALK on two lines exactly "main session" / "orchestrate (20%)". Around it, six NOTICEABLY LARGER pastel chalk circles fanning out in a hexagonal arrangement (their larger size versus the tiny hub is the whole point), each labeled IN WHITE CHALK with its exact text and nothing else:
+    Circle 1 (cyan, top): "observe-*"
+    Circle 2 (green, upper right): "plan-*"
+    Circle 3 (orange, lower right): "execute-*"
+    Circle 4 (pink, bottom): "verify-*"
+    Circle 5 (magenta, lower left): "condense-*"
+    Circle 6 (cyan, darker, upper left): "historian-*"
+  From the central main-session circle, a single white-chalk arrow goes OUT to each of the six surrounding pools (six arrows total, all radial), each labeled with the same single word IN WHITE CHALK exactly: "dispatch".
+  In a chalk box at the bottom-right corner of the board, draw a small "budget panel" with header IN WHITE CHALK reading exactly "direct-action budget", and three short white-chalk lines stacked exactly:
+    Line 1: "dispatch earns budget"
+    Line 2: "direct edit spends it"
+    Line 3: "at zero, you must delegate"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session (20%)", "observe-* (13)", "plan-* (9)", "execute-* (4)", "verify-* (6)", "condense-* (8)", "historian-* (13)", "dispatch", "direct-action budget", "+3 grants per execute-* dispatch", "-1 per project file edit". No other words, file names, plugin names, or subagent names may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.6. Main session orchestrates. Subagents fan out. The 80/20 split is a context-discipline budget, not a guideline."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "main session", "orchestrate (20%)", "observe-*", "plan-*", "execute-*", "verify-*", "condense-*", "historian-*", "dispatch", "direct-action budget", "dispatch earns budget", "direct edit spends it", "at zero, you must delegate". No other words, numbers, counts, file names, plugin names, or subagent names may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.6. The 80/20 split — the main session stays small and orchestrates while the per-phase subagent pools do the bulk of the work. A direct-action budget makes delegation structural: dispatching earns budget for direct edits, so running dry forces delegation."
 -->
 
 <!-- RAW_HTML -->
