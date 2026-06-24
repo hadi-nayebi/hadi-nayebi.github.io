@@ -237,7 +237,7 @@ You have the language. Next, we build the skeleton.
 
 *Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
 
-*Previous: ["Your Brain Was Never Built for This"](../b3/03-your-brain-was-never-built-for-this.html) — why your organic brain needs a digital cortex.*
+*Previous: ["The Folder Is Alive"](../b3/03_1-the-folder-is-alive.html) — what happens when a folder gets a brain of its own.*
 *Next: ["The Two-Layer Foundation"](../b5/05_1-the-two-layer-foundation.html) — the always-on plugins that run regardless of phase, and the CLAUDE.md hierarchy they coordinate through.*
 
 *Companion: ["The Primitives of Agent Architecture"](../papers/the-primitives-of-agent-architecture.pdf) (reference guide)*

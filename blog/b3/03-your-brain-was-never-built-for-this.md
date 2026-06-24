@@ -200,4 +200,4 @@ It just needs a few more organs.
 *Essay 3 of 8 in the Hadosh Academy series on agent architecture.*
 
 *Previous: ["We Could Have Had AGI By Now"](../b2/02-we-could-have-had-agi.html) — what happens when you scale architecture instead of the model.*
-*Next: ["The Language of Agents"](../b4/04-the-language-of-agents.html) — every term you need, in one read.*
+*Next: ["The Folder Is Alive"](03_1-the-folder-is-alive.html) — what happens when a folder gets a brain of its own.*
