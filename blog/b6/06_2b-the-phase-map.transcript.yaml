@@ -1,0 +1,217 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: the-phase-map
+source_md: 06_2b-the-phase-map.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ad9b0a963512"   # curated source block; drift -> review
+    text_hash: "ad9b0a963512"     # narration; change -> re-render
+    text: |-
+      The Phase Map — A Tour Before the Deep-Dives
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e2c3cf7064c2"   # curated source block; drift -> review
+    text_hash: "e2c3cf7064c2"     # narration; change -> re-render
+    text: |-
+      Essay 6.2b — The Markov Phasic Brain, Part 3 of 13.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0b0687184b53"   # curated source block; drift -> review
+    text_hash: "0b0687184b53"     # narration; change -> re-render
+    text: |-
+      Essay 6.2 drew the full transition map and named the tool-restriction discipline that makes each phase distinct — the rules of the cycle. Before we open each compartment one at a time, here is the whole set at a glance. Each line below names the phase, its essence, and what it is on the hook to produce — a quick tour to hold in your head before the per-phase deep-dives begin, starting with OBSERVE in the next essay.
+  - id: s04
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "dc95392d0219"   # curated source block; drift -> review
+    text_hash: "dc95392d0219"     # narration; change -> re-render
+    text: |-
+      The Phases at a Glance
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "352dae03b202"   # curated source block; drift -> review
+    text_hash: "352dae03b202"     # narration; change -> re-render
+    text: |-
+      IDLE — the meta-state between cycles. Lifecycle management only — a narrow allowlist opens, and everything else stays shut. Unlock the job-management C L I — the lifecycle surface (show, focused, list, update, activate, focus, pause, complete, approve). Creation and graph mutations live elsewhere. Unlock the phase C L I (advance, current, cycle, exit-gmode) — agent-callable advance only goes idle → observe Keep the always-on infrastructure running: memory-file edits, plus a small named-script allowlist on the IDLE Bash gate — interaction-summary/scripts/summary.sh for cross-conversation summaries, brain-guard/scripts/self-compact.sh for context-window compaction, and plugin-integrity/scripts/lock-cmd.sh for the universal active-lock close-out. Every other shell command exits blocked. Block reads, project edits, CLAUDE.md edits, web access, general shell Job creation happens automatically: top-level via prompt-handler.sh (the user's prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming pending-job markers. The agent does not call job.sh create itself.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b2c8c9ab587b"   # curated source block; drift -> review
+    text_hash: "b2c8c9ab587b"     # narration; change -> re-render
+    text: |-
+      OBSERVE — gather context before any plan can form. On cycle 1, expand the job's objective from its short creation stub into a full statement of intent — OBSERVE's distinctive cycle-1 work; the Stage decision (the set-plan-file call PLAN must make) comes next, in PLAN Populate the working-memory CLAUDE.md files with relevant context Dispatch parallel research subagents and synthesize their returns Refuse code edits — the only allowed write target is CLAUDE.md Cross the exit threshold only after enough investigation has happened
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "29c9ac2f7238"   # curated source block; drift -> review
+    text_hash: "29c9ac2f7238"     # narration; change -> re-render
+    text: |-
+      PLAN — turn observations into a binding contract. Record the Stage decision in cycle 1 via an explicit set-plan-file call — false for a single-cycle job, a .md/.yaml name for a multi-cycle one; PLAN itself never writes the plan file — EXECUTE creates it Declare the altered list — the set of dirs whose CLAUDE.md the agent edited during OBSERVE or PLAN; EXECUTE will be allowed to write project files inside each of those dirs exactly (no ancestor or nested dirs) Write acceptance criteria VERIFY will check against Refuse code edits — the contract is what gets written, not the work
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b6d0ff3912b7"   # curated source block; drift -> review
+    text_hash: "b6d0ff3912b7"     # narration; change -> re-render
+    text: |-
+      EXECUTE — build what the plan declared, in checkpoints. Edit project files, but only inside the altered list — the merged set of CLAUDE.md files OBSERVE and PLAN together declared, frozen at execute entry Materialize every artifact the seed agent produces — code, the .md plan in cycle 1 of a Stage-2 job, the .yaml plan in cycle 1 of a Stage-3 job, anything else with a path; EXECUTE is the universal file-creator Favor small, focused checkpoint commits over one long uncommitted run; the intermediate-commit mode keeps checkpoints cheap, so the pattern costs nothing Capture execution notes in the working CLAUDE.md so the cycle stays narratable Delegate file work to execute subagents (sequential by default, a small in-flight ceiling); keep the main session on the spine
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "046a51f9d1b9"   # curated source block; drift -> review
+    text_hash: "046a51f9d1b9"     # narration; change -> re-render
+    text: |-
+      VERIFY — judge prior work with independent eyes. Run scripts and validators; refuse all code edits in this phase Dispatch auditor subagents to read the executed work without bias Write pass/fail results into CLAUDE.md and the plan file Refine the focused job's plan file (.md or .yaml) — but editing it blocks forward-advance and forces a backward step to PLAN; the plan is refined in place and persists, nothing is approved or sealed Hand completion to CONDENSE — VERIFY has no job-completion authority; job-complete is a CONDENSE-only ceremony, a phase away Review the focused job's open dependencies and, when the audit reveals one is no longer needed, either unlink it but keep the work (job.sh remove-dependency — the child survives as standalone work) or unlink and abandon it (job.sh void-dependency — the child is marked voided, a terminal-abandon state) — the lifecycle-symmetry partner of CONDENSE's add-dependency Route the cycle forward to CONDENSE, or backward to whichever prior phase the failure points at
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8f42f1bb4086"   # curated source block; drift -> review
+    text_hash: "8f42f1bb4086"     # narration; change -> re-render
+    text: |-
+      CONDENSE — consolidate the cycle's learnings into the brain. Walk a strict staged waterfall that routes content to its durable home Consume marker types the prior phases dropped into footers Compress the working CLAUDE.md back to a clean state Own all job creation (create, create-dependent) and dependency additions (add-dependency) — the phase with the right cycle-wide context for graph mutations Lock forward to idle; no escape hatch back to verify
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "82700ff119ef"   # curated source block; drift -> review
+    text_hash: "82700ff119ef"     # narration; change -> re-render
+    text: |-
+      GMODE — the freestyle side-channel from any phase. Enter via a G mode user question with a substantive reason (currently a roughly 100-word floor in the prototype) Run unconstrained work — no O P E V C tool-restriction guards apply Exit explicitly with a clean git tree; the home phase resumes atomically Host work that doesn't fit the O P E V C ceremony — deadlock fixes, plugin maintenance, custom workflows
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "23f78756beff"   # curated source block; drift -> review
+    text_hash: "23f78756beff"     # narration; change -> re-render
+    text: |-
+      That is the operational shape — and every edge, every locked tool, every gated boundary exists for one payoff: the agent can no longer skip the thinking a phase was built to force. The rest of this essay series opens each compartment one at a time to show exactly how that discipline does its work.
+  - id: s13
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4617f9ed9b2e"   # curated source block; drift -> review
+    text_hash: "4617f9ed9b2e"     # narration; change -> re-render
+    text: |-
+      The discipline is the architecture; the specific edges and the specific allow-lists are this prototype's calibration. Several surfaces are open to the next architect.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "108a781646c3"   # curated source block; drift -> review
+    text_hash: "108a781646c3"     # narration; change -> re-render
+    text: |-
+      The architect would tune the backward map. The prototype lets verify roll back to several destinations — execute, plan, or observe — picked by the failure shape. A seed that runs short, surgical cycles might collapse the menu to one (always observe; let the next cycle re-plan from scratch). A seed running long structural sweeps might widen the menu to include condense for re-routing learnings without re-executing.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "131d3b7e3673"   # curated source block; drift -> review
+    text_hash: "131d3b7e3673"     # narration; change -> re-render
+    text: |-
+      The architect would tune the gmode usage policy. Gmode is the freestyle escape hatch; the prototype reserved it for plugin maintenance because the prototype was building the seed agent itself. A user-facing seed might keep almost all work inside O P E V C and never enter gmode. A research-heavy seed might push routine literature scans through gmode rather than inflating every cycle's observe phase.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7266dd59d8c9"   # curated source block; drift -> review
+    text_hash: "7266dd59d8c9"     # narration; change -> re-render
+    text: |-
+      The architect would tune the per-phase tool allow-lists. The current cuts — read-only in observe and plan, scripts-only in verify, full-write-inside-scope in execute, brain-only in condense — encode this prototype's notion of cognitive separation. A seed wanting a stricter observe could ban the web entirely. A seed wanting a looser verify could allow targeted code edits inside named directories. The guards are code; the cuts are decisions.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7e89e5d748cc"   # curated source block; drift -> review
+    text_hash: "7e89e5d748cc"     # narration; change -> re-render
+    text: |-
+      The architect would tune the metacog menu — how much reflection each phase owes before it may advance. The exit gate asks for a minimum number of reflection ops per phase, and that minimum is a dial, not a constant. A seed running fast, low-stakes work might require a single reflection op at each boundary. A seed doing careful, high-consequence work might demand several — a first-principles pass in OBSERVE, a second-order-effects pass in PLAN, an inversion check before building. A consulting practice could require a premortem lens before any client deliverable enters its build phase — the gate ensures the plan was stress-tested before a single hour is billed. The reflection lenses themselves come in two tiers: a small core that every phase must run, plus richer mental-model lenses the architect can switch on phase by phase. The knob decides how much of the agent's compute goes to examining the work versus doing it.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2e85a833565f"   # curated source block; drift -> review
+    text_hash: "2e85a833565f"     # narration; change -> re-render
+    text: |-
+      What the architect would not customize is the rule that each phase publishes its allow-list and the guard enforces it against every tool call. The principle is the floor: a phase whose restrictions are advisory is not a phase.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "92c6359b81ea"   # curated source block; drift -> review
+    text_hash: "92c6359b81ea"     # narration; change -> re-render
+    text: |-
+      The shape lifts off the prototype into work that has nothing to do with seed agents. A patent attorney shaping a prior-art-review seed could compartment the work into pull-references, extract-claim, cross-check, and draft-opinion phases — each with its own tool fence, each with its own write scope — and the transition map would refuse a draft-opinion → pull-references slide that smuggles unverified prior art into the brief.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2e08d88e683a"   # curated source block; drift -> review
+    text_hash: "2e08d88e683a"     # narration; change -> re-render
+    text: |-
+      The discipline here is friction, not mathematical enforcement: every guard depends on the agent reading and obeying the injected voice, and the slow-downs (the rhythm gates, the commit shapes, the substantive-reason floor) buy the operator the time to intervene before a bypass admits. Gmode is the documented escape hatch — the seed agent can route around the O P E V C ceremony when the work genuinely needs it, and the cost is the long-form justification that surfaces the bypass to the operator.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f828de3c84e3"   # curated source block; drift -> review
+    text_hash: "f828de3c84e3"     # narration; change -> re-render
+    text: |-
+      You now have the whole map in your head: each state with its essence and its output, and the customization knobs that let a different architect re-cut them. The rest of the series opens each compartment one at a time. The next essay opens the first one — OBSERVE, the read-wide-write-once entry phase that decides what the rest of the cycle will work on.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e2c3cf7064c2"   # curated source block; drift -> review
+    text_hash: "e2c3cf7064c2"     # narration; change -> re-render
+    text: |-
+      Essay 6.2b — The Markov Phasic Brain, Part 3 of 13.

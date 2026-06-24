@@ -1,0 +1,136 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: docs-and-historian
+source_md: 07_5-docs-and-historian.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "6520aa53b661"   # curated source block; drift -> review
+    text_hash: "6520aa53b661"     # narration; change -> re-render
+    text: |-
+      docs/ and the Historian
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f49015dda9f0"   # curated source block; drift -> review
+    text_hash: "f49015dda9f0"     # narration; change -> re-render
+    text: |-
+      Essay 7.4 opened the data organ — private, script-mediated, mutation-serialized. This sub-essay opens the documentation organ — the surface where the plugin carries its own narrated history, what it learned across cycles, why it was shaped the way it was. The hidden state is what the plugin knows about itself right now; docs/ is what it remembers about how it got here.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7960e61f80f1"   # curated source block; drift -> review
+    text_hash: "7960e61f80f1"     # narration; change -> re-render
+    text: |-
+      docs/ — The Documentation Layer + The Historian
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "50521fde390e"   # curated source block; drift -> review
+    text_hash: "50521fde390e"     # narration; change -> re-render
+    text: |-
+      What it is. A directory carrying the plugin's narrated knowledge. These files are common across nearly every plugin:
+  - id: s05
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "2d4748fec2fb"   # curated source block; drift -> review
+    text_hash: "2d4748fec2fb"     # narration; change -> re-render
+    text: |-
+      docs/CLAUDE.md — the docs/ directory's own descriptor; names the conventions docs/ files follow. docs/evolution.md — the plugin's auto-narrated history. Capped (currently 2000 words in the prototype, configurable via config.conf) by a hard-enforced PreToolUse hook. The historian subagent writes this; the operator typically does not. docs/principles.md OR docs/decisions.md (depending on the plugin) — the overflow surface for design rationale that doesn't fit in evolution.md.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "90bdd047e10a"   # curated source block; drift -> review
+    text_hash: "90bdd047e10a"     # narration; change -> re-render
+    text: |-
+      Who reads them. The agent, especially at plugin unlock — the lock-manager auto-injects docs/evolution.md into the agent's context every time PLUGIN-LOCK is approved. This is how the editor inherits the plugin's reasoning before touching code. The historian subagent reads evolution.md when re-narrating new commits. New users read these to understand a plugin's lived history before customizing.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bc373b06ae90"   # curated source block; drift -> review
+    text_hash: "bc373b06ae90"     # narration; change -> re-render
+    text: |-
+      Who writes them. The historian subagent writes docs/evolution.md when dispatched by the drift-counter ratchet. The operator writes the sibling files (docs/principles.md, docs/decisions.md) through gmode — these surfaces are not under the same auto-narration discipline.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9346771d1c6c"   # curated source block; drift -> review
+    text_hash: "9346771d1c6c"     # narration; change -> re-render
+    text: |-
+      What they depend on. docs/CLAUDE.md (the descriptor that names the documentation conventions). The plugin's drift counter inside data Jason (which fires the historian when drift exceeds threshold). The hard-cap hook (evolution-cap.sh inside plugin-integrity, which blocks any edit pushing evolution.md past the configured cap).
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cd3b1fccf3a1"   # curated source block; drift -> review
+    text_hash: "cd3b1fccf3a1"     # narration; change -> re-render
+    text: |-
+      The relationship between evolution.md and its siblings is the architectural heart of the documentation layer. Evolution.md is the 2000-word summary; when the historian's narrative needs more depth, the cap forces overflow into a sibling file — docs/principles.md for architectural rationale, docs/decisions.md for specific design choices, docs/lessons.md for hard-won cycle lessons. The historian decides at narration time which sibling file each overflow chunk belongs in, and evolution.md becomes an index pointing at the siblings. This is the canonical example of soft-versus-hard discipline at the size-cap level: only docs/evolution.md carries a hard cap; the siblings absorb the overflow under the historian's judgment.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7af22790f46b"   # curated source block; drift -> review
+    text_hash: "7af22790f46b"     # narration; change -> re-render
+    text: |-
+      Target asset: assets/images/blog/b7/evolution-cap-overflow-b7-5.png
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e88308a14d97"   # curated source block; drift -> review
+    text_hash: "e88308a14d97"     # narration; change -> re-render
+    text: |-
+      The new-plugin lens. When you guide your seed to create a plugin, the seed authors the cycle-1 docs/evolution.md by hand — a short narrative of the plugin's birth, what concern it owns, what it doesn't own. The historian subagent takes over from cycle 2 onward, re-narrating each cycle's commits into evolution.md until it hits the cap. From there, overflow goes into docs/principles.md (or whichever sibling the plugin's docs/CLAUDE.md establishes). Tell your seed: every plugin gets a historian by birth. Without one, the plugin's memory dies with the operator's session.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5d7681bd5025"   # curated source block; drift -> review
+    text_hash: "5d7681bd5025"     # narration; change -> re-render
+    text: |-
+      A consulting practice's seed could carry the same shape — every plugin (intake, engagement, deliverable QA) ships a docs/evolution.md capped narration of how its standards drifted across client cycles, with the historian dispatching after every N engagement-close commits.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e9a6eeed5e2a"   # curated source block; drift -> review
+    text_hash: "e9a6eeed5e2a"     # narration; change -> re-render
+    text: |-
+      The ratchet fires at the seam. Drift accumulates silently between unlocks; the next unlock attempt is the seam where the historian-injection voice fires, instructing the agent to invoke the per-plugin historian before proceeding.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2852d1e742b0"   # curated source block; drift -> review
+    text_hash: "2852d1e742b0"     # narration; change -> re-render
+    text: |-
+      Documentation is auto-narrated, word-capped, and overflow-routed. The historian writes; the operator reviews; the cap forces compression that protects the per-unlock context budget. The next sub-essay opens the organ where the plugin's delegated investigation lives — agents/, the per-plugin subagent pool, plus the 80/20 dispatch budget that mechanizes how much direct action the main session is allowed before it must delegate again.

@@ -1,0 +1,217 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: lock-ceremony
+source_md: 07_8-lock-ceremony.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "03d10e123e66"   # curated source block; drift -> review
+    text_hash: "03d10e123e66"     # narration; change -> re-render
+    text: |-
+      The Lock Ceremony
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fff10519ad45"   # curated source block; drift -> review
+    text_hash: "fff10519ad45"     # narration; change -> re-render
+    text: |-
+      Essay 7.7 closed the kit's anatomy — the smaller organs that round out specialized plugins, and the brain-root wiring file that decides which hooks ever fire. With every organ named, one question is left: how does the hard substrate get edited safely once the plugins are alive? Hooks, scripts, tests, hidden state, and plugin birth can corrupt the plugin or the agent's whole enforcement layer when mishandled; soft narrative and voice surfaces have their own phase discipline. This sub-essay opens the ceremony that protects hard-substrate edits.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f93b5dd2215"   # curated source block; drift -> review
+    text_hash: "9f93b5dd2215"     # narration; change -> re-render
+    text: |-
+      The Parts of the Ceremony
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "932ca3878728"   # curated source block; drift -> review
+    text_hash: "932ca3878728"     # narration; change -> re-render
+    text: |-
+      Plugin code does not get edited the way ordinary files do. Each plugin's hooks, scripts, tests, and code-bearing files have earned their current shape; the test suite enshrines that shape; any change pays the cost of opening the plugin, editing inside it, and re-passing the tests before the change commits.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2312ac87b4d6"   # curated source block; drift -> review
+    text_hash: "2312ac87b4d6"     # narration; change -> re-render
+    text: |-
+      The parts of the ceremony form a closed loop: PLUGIN-LOCK opens an edit session, TEST-LOCK gates test edits inside it, safe-lock close-out commits or reverts on the test result, and the historian ratchet can refuse to open the lock at all when the plugin's narrative has fallen behind. Each part guards a different risk; together they make plugin edits earn their landing.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e123ce94874d"   # curated source block; drift -> review
+    text_hash: "e123ce94874d"     # narration; change -> re-render
+    text: |-
+      Interactive diagram. Walk the whole ceremony as a deck &mdash; the plugin as a single-concern cell, the one-unlocked invariant, plugin-lock, lock-cmd preserve vs safe-lock auto-revert, the nested test-lock, and how a brand-new plugin is born from a 3-file floor. Click any box for the live code behind it. &#8599; Walk the ceremony
+  - id: s07
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "faf2b44112df"   # curated source block; drift -> review
+    text_hash: "faf2b44112df"     # narration; change -> re-render
+    text: |-
+      plugin-lock — Opens an Edit Session
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f3ba988db90d"   # curated source block; drift -> review
+    text_hash: "f3ba988db90d"     # narration; change -> re-render
+    text: |-
+      The agent issues a structured AskUserQuestion prefixed plugin-lock with a body long enough to surface the cognitive work (currently a 100-word floor in the prototype, configurable) naming which plugin it will open, the specific changes it intends to make, why this plugin specifically, and the tests it will run. The operator approves; lock-manager.sh captures a git rev-parse HEAD S H A as checkpoint_ref and writes the unlocked plugin name into plugin-integrity's hidden data Jason. From that moment, edits inside the unlocked plugin proceed; edits anywhere else under .claude/plugins/ are rejected.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "369dafe11a70"   # curated source block; drift -> review
+    text_hash: "369dafe11a70"     # narration; change -> re-render
+    text: |-
+      Two protected contexts for plugin-substrate edits. Editing an existing plugin or birthing a new one requires one of two protected contexts: (A) G mode with a body long enough to surface the cognitive work (currently a 100-word floor in the prototype, configurable) — the operator's deliberate maintenance lane; or (B) a focused job whose top-level plugin_lock_approval flag is set — established by the user confirming one of two agent-proposed approval questions: [JOB-APPROVE-CREATION], which mints a new job already cleared for plugin work, or [JOB-APPROVE-PLUGIN], which raises the same flag on the focused job already in flight when its work turns out to need a plugin edit. Either way the flag is set; a job is never locked into creation-time-only approval. New-plugin birth does not bypass the gate. Creating a plugin writes the agent's enforcement substrate too, so the same approval rule applies whether the target directory already exists or not.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "884d3128539d"   # curated source block; drift -> review
+    text_hash: "884d3128539d"     # narration; change -> re-render
+    text: |-
+      test-lock — A Finer-Grained Sub-Session
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0263868931a6"   # curated source block; drift -> review
+    text_hash: "0263868931a6"     # narration; change -> re-render
+    text: |-
+      By default, the unlocked plugin's shell test files are still frozen even inside the unlocked plugin. To edit a specific test-*.sh file, the agent issues test-lock . The reason: it is too easy to silently rewrite a correctly-failing test to make a broken change look passing. Test edits demand explicit, named permission.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "037e07c97561"   # curated source block; drift -> review
+    text_hash: "037e07c97561"     # narration; change -> re-render
+    text: |-
+      Two-tier lock — PLUGIN-LOCK opens the cell; TEST-LOCK opens a specific shell test file inside the cell. The agent never gets a blanket "all shell tests editable while the plugin is unlocked" pass. Each shell test file the change touches earns its own ceremony.
+  - id: s13
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "1ca329912d72"   # curated source block; drift -> review
+    text_hash: "1ca329912d72"     # narration; change -> re-render
+    text: |-
+      Safe-Lock Close-Out — Pass or Revert
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d777f8b1f414"   # curated source block; drift -> review
+    text_hash: "d777f8b1f414"     # narration; change -> re-render
+    text: |-
+      Two scripts share the close-out duty. The agent invokes lock-cmd.sh when edits are done — the active path: the plugin's full test suite runs at the lock boundary; on PASS the change commits and the lock clears; on FAIL the failures surface to stderr and the working tree is preserved (no revert) so the agent can fix and re-run. The defensive partner is safe-lock.sh, which fires automatically when the agent attempts a non-whitelisted operation while a plugin is unlocked — editing outside the plugin's directory, transitioning phases, finalizing a job: on FAIL the working tree rolls back to the captured checkpoint_ref, the plugin's hidden state records a structured revert entry, and a voice line writes to the operator's terminal. The agent does not get to ship a plugin change that breaks the plugin's own self-test.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a7def7228f68"   # curated source block; drift -> review
+    text_hash: "a7def7228f68"     # narration; change -> re-render
+    text: |-
+      The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by one of the two mechanisms above, with the test suite as the gate. There is no inline override; the deliberate G mode route covered above (plus the user-approved-job route) are the only ways to admit an existing-plugin edit, and both leave an auditable trail. There is no "commit anyway"; there is no "I will fix it next session." Either the active-lock cycle leaves the agent looking at preserved failures it now has to fix, or the auto-revert cycle removes the broken edit from the working tree entirely.
+  - id: s16
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "b86572f44271"   # curated source block; drift -> review
+    text_hash: "b86572f44271"     # narration; change -> re-render
+    text: |-
+      The Historian Ratchet — Refuses the Lock
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "57a8eff513b1"   # curated source block; drift -> review
+    text_hash: "57a8eff513b1"     # narration; change -> re-render
+    text: |-
+      The lock can be refused before it opens. Each plugin keeps the 2000-word-capped docs/evolution.md narrative covered in Essay 7.5; drift-check.sh counts commits landed against the plugin since evolution.md was last touched. If drift exceeds threshold, lock-manager.sh rejects the plugin-lock approval and tells the agent to dispatch the plugin's historian subagent first. The historian re-narrates the cycles since last sync, commits the refreshed evolution.md, and the drift counter resets. Only then does the lock open. A plugin cannot be edited indefinitely without periodically forcing its own history to be re-told.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "34e3929d885e"   # curated source block; drift -> review
+    text_hash: "34e3929d885e"     # narration; change -> re-render
+    text: |-
+      A Closed Loop — The Only Way to Evolve a Plugin Is to Have Already Understood It
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cb181fb6398c"   # curated source block; drift -> review
+    text_hash: "cb181fb6398c"     # narration; change -> re-render
+    text: |-
+      PLUGIN-LOCK gates the operator-approved entry. TEST-LOCK forces deliberate shell-test edits. Safe-lock makes hard-substrate close-out conditional on tests passing or reverts the working tree. The historian ratchet refuses unlock when the plugin's narrative has fallen behind.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "46470402e956"   # curated source block; drift -> review
+    text_hash: "46470402e956"     # narration; change -> re-render
+    text: |-
+      Each part, a risk closed: An edit landing without operator approval (closed by PLUGIN-LOCK). A correctly-failing test silently rewritten to mask a broken change (closed by TEST-LOCK). A change committing despite a failing test (closed by safe-lock). A plugin getting edited without anyone re-reading the cycles that produced its current shape (closed by the historian ratchet).
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6b3d68e6e08d"   # curated source block; drift -> review
+    text_hash: "6b3d68e6e08d"     # narration; change -> re-render
+    text: |-
+      Plugin_integrity itself follows the same ceremony when its own hooks are edited — there is no privileged path. The plugin that enforces the ceremony submits to it. That is what makes the ceremony credible: it is not enforcement that lives outside the system; it is enforcement built into the same cell membrane every other plugin lives behind.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b174082578c2"   # curated source block; drift -> review
+    text_hash: "b174082578c2"     # narration; change -> re-render
+    text: |-
+      A research lab's seed could install the same ceremony around an experiment-protocol plugin — [PROTOCOL-LOCK] opens the edit session; [REVIEWER-LOCK] gates changes to the validator tests; the safe-lock cycle reverts if the IRB-checklist tests fail; the historian ratchet forces re-narration of the protocol's evolution before another edit lands.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b9174cc41e32"   # curated source block; drift -> review
+    text_hash: "b9174cc41e32"     # narration; change -> re-render
+    text: |-
+      The ceremony is the safety rail. The next sub-essay puts it on the track — a walkthrough of what guiding your seed to create a brand-new plugin actually looks like in motion, with every lock fired in the order the plugin needs it.

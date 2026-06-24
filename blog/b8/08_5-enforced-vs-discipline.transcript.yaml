@@ -1,0 +1,145 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: enforced-vs-discipline
+source_md: 08_5-enforced-vs-discipline.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:39Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f0a316c9d464"   # curated source block; drift -> review
+    text_hash: "f0a316c9d464"     # narration; change -> re-render
+    text: |-
+      What's Enforced vs What's Discipline
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "39681b6aa76c"   # curated source block; drift -> review
+    text_hash: "39681b6aa76c"     # narration; change -> re-render
+    text: |-
+      Essay 8.4 opened the soft-to-hard migration arc — how a behavioral pattern travels from coaching voice to hardened hook to fossilized template. The arc raises an inverse question: which of the seed's current limits are hard, and which are discipline pretending to be hard? This essay is the honest accounting.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "75f85d852300"   # curated source block; drift -> review
+    text_hash: "75f85d852300"     # narration; change -> re-render
+    text: |-
+      A documented size limit and an enforced size limit are not the same thing. The prototype today is honest about the difference.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c6960ff43933"   # curated source block; drift -> review
+    text_hash: "c6960ff43933"     # narration; change -> re-render
+    text: |-
+      A writer's seed running manuscript-stage-gate jobs could pretend its "max 80,000 words per first draft" limit is enforced when in fact it's CONDENSE discipline. The seed (and the writer) only catch the drift when a 95,000-word draft sails through. The same gap shape applies in every operator's domain: the only way to know which limit is real is to test the gate empirically. The honest framing — "this is discipline; this is enforcement" — saves the operator from misplaced trust.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "050f57d2e6c1"   # curated source block; drift -> review
+    text_hash: "050f57d2e6c1"     # narration; change -> re-render
+    text: |-
+      The Soft Caps
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "831ad05ab987"   # curated source block; drift -> review
+    text_hash: "831ad05ab987"     # narration; change -> re-render
+    text: |-
+      Root brain. Subdirectory CLAUDE.md. Plan files. Memory entries. Skill files. Several caps in the documentation table (currently five in the prototype) — all of them soft. None are policed by a code hook today. The brain stays within these caps because the CONDENSE phase compresses each layer cycle after cycle, not because a PreToolUse guard refuses an edit.
+  - id: s07
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "b086e22a583a"   # curated source block; drift -> review
+    text_hash: "b086e22a583a"     # narration; change -> re-render
+    text: |-
+      The One Hard Cap
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5b18624e4716"   # curated source block; drift -> review
+    text_hash: "5b18624e4716"     # narration; change -> re-render
+    text: |-
+      docs/evolution.md. Hard. A PreToolUse hook (evolution-cap.sh inside plugin-integrity) intercepts every edit to a plugin's docs/evolution.md, counts the post-edit word count, and refuses the edit if it would push the file past the cap. The voice that fires names the cap, names the current count, and points the agent at the sibling files (docs/decisions.md, docs/lessons.md, docs/lessons-.md) where older content should migrate. The historian subagent has free edit access to all docs/*.md files, so it can absorb older sections into the siblings as the plugin's narrative grows.
+  - id: s09
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "31efb6844e5c"   # curated source block; drift -> review
+    text_hash: "31efb6844e5c"     # narration; change -> re-render
+    text: |-
+      Why the Asymmetry
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9c1c8ba18bef"   # curated source block; drift -> review
+    text_hash: "9c1c8ba18bef"     # narration; change -> re-render
+    text: |-
+      One hard limit out of several. The pattern is consistent with the cost ladder. docs/evolution.md got the hard gate because the historian subagent re-narrates the file on every drift trip, the result is auto-injected into the agent's context at every plugin unlock, and a bloated evolution.md would inflate the per-unlock context budget across the entire system. The cost of letting it grow was concrete; the gate paid for itself.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3c58c90bb257"   # curated source block; drift -> review
+    text_hash: "3c58c90bb257"     # narration; change -> re-render
+    text: |-
+      The other size limits are soft because the measurement has not yet shown the soft control failing. Root brain stays at its cap because CONDENSE compresses it. Subdirectory CLAUDE.md stays at its cap because CONDENSE migrates content out to knowledge files. Memory entries stay short because operators write feedback rules tersely. Skills stay small because operations exceeding a small word count get extracted to their own skill file. None of this needs a hook today. The honest claim: it might tomorrow. The cost ladder will decide.
+  - id: s12
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c6eacf13f5e8"   # curated source block; drift -> review
+    text_hash: "c6eacf13f5e8"     # narration; change -> re-render
+    text: |-
+      The Deflation Gate — A Different Boundary
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4c95872fa785"   # curated source block; drift -> review
+    text_hash: "4c95872fa785"     # narration; change -> re-render
+    text: |-
+      A second enforcement runs at a different boundary — the deflation gate inside phase_condense. At condense entry, a sensor snapshots the total bottom-section word count across every CLAUDE.md the cycle touched. At commit time, the script re-measures and refuses to advance unless eighty percent of those bottom-section words have been absorbed — a single threshold, the same for every job whether it runs once or across many cycles. The gate fires at commit, not at edit — which is the right boundary, because the question isn't did this individual edit fit but did the cycle, taken as a whole, compress enough to graduate.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a7c11dda5562"   # curated source block; drift -> review
+    text_hash: "a7c11dda5562"     # narration; change -> re-render
+    text: |-
+      The pattern reads cleanly: hard limits cost something to maintain (every gate adds friction, every gate adds tests), and the architecture won't pay that cost until the soft form has demonstrably failed. The discipline isn't more enforcement; it is enforcement where it pays for itself. The limit on this honesty is the operator's: a seed that quietly bloats a soft cap will keep bloating it until the operator notices, because no code stops the drift.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b73c607c0e46"   # curated source block; drift -> review
+    text_hash: "b73c607c0e46"     # narration; change -> re-render
+    text: |-
+      The brain's enforcement is asymmetric by design — hard where the cost pays for itself, soft where CONDENSE discipline still holds. The next essay widens the lens from the brain's maturation to the operator's — the three rough stages of growing from apprentice to journeyman to architect.

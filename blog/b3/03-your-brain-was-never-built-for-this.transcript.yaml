@@ -1,0 +1,811 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: your-brain-was-never-built-for-this
+source_md: 03-your-brain-was-never-built-for-this.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:23:59Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "36943aa28fa6"   # curated source block; drift -> review
+    text_hash: "36943aa28fa6"     # narration; change -> re-render
+    text: |-
+      Your Brain Was Never Built for This
+  - id: s02
+    kind: quote
+    engine: alt
+    sync: in-sync
+    gap_after: 0.75
+    source_hash: "3486b2b7de63"   # curated source block; drift -> review
+    text_hash: "3486b2b7de63"     # narration; change -> re-render
+    text: |-
+      Your skull holds a brain optimized for spotting snakes in tall grass. You are asking it to run a business in a civilization of eight billion people connected by fiber optic cables.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "07e4c96ce337"   # curated source block; drift -> review
+    text_hash: "07e4c96ce337"     # narration; change -> re-render
+    text: |-
+      That mismatch is the central design flaw of modern human life.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "98e1d0ba573b"   # curated source block; drift -> review
+    text_hash: "98e1d0ba573b"     # narration; change -> re-render
+    text: |-
+      For roughly two hundred thousand years, the human brain was an extraordinary piece of engineering — tuned to the natural world. Small groups. Physical threats. Immediate feedback.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b276c0861f08"   # curated source block; drift -> review
+    text_hash: "b276c0861f08"     # narration; change -> re-render
+    text: |-
+      The most complex decision you faced was which path to take through the forest, and the most information you processed in a day fit inside a single conversation around a fire.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "82ccc4cbfceb"   # curated source block; drift -> review
+    text_hash: "82ccc4cbfceb"     # narration; change -> re-render
+    text: |-
+      That brain still lives inside your head. Unchanged.
+  - id: s07
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "253fc482a331"   # curated source block; drift -> review
+    text_hash: "253fc482a331"     # narration; change -> re-render
+    text: |-
+      Twelve Thousand Years of Drift
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4ac816e92ca5"   # curated source block; drift -> review
+    text_hash: "4ac816e92ca5"     # narration; change -> re-render
+    text: |-
+      About twelve thousand years ago, humans started settling. Agriculture. Villages. Then cities, governments, writing systems, legal codes, trade routes. The environment changed — fast by evolutionary standards, slow by human experience.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d07b66ee3dbe"   # curated source block; drift -> review
+    text_hash: "d07b66ee3dbe"     # narration; change -> re-render
+    text: |-
+      The organic brain adapted. Not biologically — there was no time for that — but culturally. We invented tools for the mind. Writing extended memory. Mathematics extended reasoning. Institutions extended trust beyond the tribe.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9294c0ee38cb"   # curated source block; drift -> review
+    text_hash: "9294c0ee38cb"     # narration; change -> re-render
+    text: |-
+      And then the most powerful adaptation of all: specialization. One person heals, another builds, a third keeps the books. Professions were the first delegation — offloading what your brain could not master onto someone else's brain that could.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "724b9def77a0"   # curated source block; drift -> review
+    text_hash: "724b9def77a0"     # narration; change -> re-render
+    text: |-
+      We offloaded complexity onto systems outside the skull, and onto other skulls.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7604471d1a0f"   # curated source block; drift -> review
+    text_hash: "7604471d1a0f"     # narration; change -> re-render
+    text: |-
+      For most of those twelve thousand years, this worked. The complexity of human society grew, and the human brain — augmented by its cultural tools — kept pace. Barely. But it kept pace.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fa164fdcdc83"   # curated source block; drift -> review
+    text_hash: "fa164fdcdc83"     # narration; change -> re-render
+    text: |-
+      Then something happened.
+  - id: s14
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f2e57868ddcb"   # curated source block; drift -> review
+    text_hash: "f2e57868ddcb"     # narration; change -> re-render
+    text: |-
+      The Last Thirty Years Broke the Balance
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1c12360c47ce"   # curated source block; drift -> review
+    text_hash: "1c12360c47ce"     # narration; change -> re-render
+    text: |-
+      The internet did not just add complexity. It multiplied it.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d721a2b81467"   # curated source block; drift -> review
+    text_hash: "d721a2b81467"     # narration; change -> re-render
+    text: |-
+      Before 1995, the amount of information an average person encountered in a day was bounded by physical reality. A newspaper. A few conversations. Maybe a television broadcast. The world was complex, but it was filterable.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e142d8144860"   # curated source block; drift -> review
+    text_hash: "e142d8144860"     # narration; change -> re-render
+    text: |-
+      After 1995 — and especially after smartphones — the information environment exploded. The number of decisions, signals, obligations, and stimuli hitting a single human brain on a typical Tuesday in 2026 would have overwhelmed an entire village council in 1800.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5ee3edb6d1df"   # curated source block; drift -> review
+    text_hash: "5ee3edb6d1df"     # narration; change -> re-render
+    text: |-
+      And the slope is still steepening.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2c8b8d6a18a1"   # curated source block; drift -> review
+    text_hash: "2c8b8d6a18a1"     # narration; change -> re-render
+    text: |-
+      Look at what a "simple" modern life demands: taxes filed across multiple jurisdictions. Health insurance with hundreds of options. Retirement planning that requires predicting markets decades out. Digital privacy across dozens of platforms. Professional certifications that expire and renew. Children navigating social systems that change every semester.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3256c4bdba45"   # curated source block; drift -> review
+    text_hash: "3256c4bdba45"     # narration; change -> re-render
+    text: |-
+      The brain scanning for snakes in the grass is now drowning in a jungle of spreadsheets, compliance forms, and notification badges. It was never designed for this.
+  - id: s21
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "139cfa3179fe"   # curated source block; drift -> review
+    text_hash: "139cfa3179fe"     # narration; change -> re-render
+    text: |-
+      The Quiet Divide
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4028e201e1a4"   # curated source block; drift -> review
+    text_hash: "4028e201e1a4"     # narration; change -> re-render
+    text: |-
+      Nobody talks about this part openly.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d789daaebfce"   # curated source block; drift -> review
+    text_hash: "d789daaebfce"     # narration; change -> re-render
+    text: |-
+      A small percentage of humans navigate this complexity well. They are not smarter — they are better at delegating. They have accountants, lawyers, financial advisors, personal assistants, therapists, nutritionists, and executive coaches. They outsource the complexity their brain cannot handle to other human brains that specialize.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7e0c4cdf85c8"   # curated source block; drift -> review
+    text_hash: "7e0c4cdf85c8"     # narration; change -> re-render
+    text: |-
+      That twelve-thousand-year-old invention — delegation through specialization — still works. But it has always been expensive.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bc4d9bb7193d"   # curated source block; drift -> review
+    text_hash: "bc4d9bb7193d"     # narration; change -> re-render
+    text: |-
+      A good accountant costs money. A good lawyer costs more. A personal assistant costs a salary. The difference between owning a brand and working for one has never been intelligence. It is infrastructure — the ability to delegate at scale.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a23de140187d"   # curated source block; drift -> review
+    text_hash: "a23de140187d"     # narration; change -> re-render
+    text: |-
+      Everyone else is doing their own taxes at midnight, missing deadlines, making suboptimal health decisions, and wondering why life feels like it is moving faster than they can think.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b7faf9caab53"   # curated source block; drift -> review
+    text_hash: "b7faf9caab53"     # narration; change -> re-render
+    text: |-
+      Because it is. Their organic brain is running software designed for the savanna, in an environment that requires a corporation.
+  - id: s28
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "5140e3c7de85"   # curated source block; drift -> review
+    text_hash: "5140e3c7de85"     # narration; change -> re-render
+    text: |-
+      The Digital Cortex
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "114a7d187986"   # curated source block; drift -> review
+    text_hash: "114a7d187986"     # narration; change -> re-render
+    text: |-
+      For twelve thousand years, delegation required hiring another human. A specialist. Someone whose brain filled the gaps yours could not. For the first time, that cost is collapsing.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "88705a59e8fd"   # curated source block; drift -> review
+    text_hash: "88705a59e8fd"     # narration; change -> re-render
+    text: |-
+      Evolution gave us a brainstem — survival, breathing, reflexes. Millions of years of tuning. Then it gave us a cortex — language, planning, abstract thought. The thing that separates us from every other animal on Earth.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "889c54c247f4"   # curated source block; drift -> review
+    text_hash: "889c54c247f4"     # narration; change -> re-render
+    text: |-
+      But evolution stopped there. It does not know about tax codes, or cryptocurrency, or the seventeen different privacy settings on your phone. The cortex that can write poetry and build bridges cannot keep up with the world it created.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aa874ad15d9c"   # curated source block; drift -> review
+    text_hash: "aa874ad15d9c"     # narration; change -> re-render
+    text: |-
+      So we build the next layer ourselves.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8d552323072d"   # curated source block; drift -> review
+    text_hash: "8d552323072d"     # narration; change -> re-render
+    text: |-
+      The digital cortex.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "90a2faaa0ec9"   # curated source block; drift -> review
+    text_hash: "90a2faaa0ec9"     # narration; change -> re-render
+    text: |-
+      A C L I agent — a structured A I system that lives on your computer, reads your files, writes new ones, and organizes your work — is the first form of that layer. Not one giant program, but a complex system of many small parts interacting. Call it what it actually is: a digital cognitive organ.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "acf82494982e"   # curated source block; drift -> review
+    text_hash: "acf82494982e"     # narration; change -> re-render
+    text: |-
+      That phrase is deliberate. An organ.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0dc1a635ea45"   # curated source block; drift -> review
+    text_hash: "0dc1a635ea45"     # narration; change -> re-render
+    text: |-
+      Your liver does not wait for instructions. It processes toxins continuously, silently, as part of your body's background operations. Your immune system does not require a prompt. It monitors, detects, and responds — because that is what it was built to do.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "35f71f1e7b5c"   # curated source block; drift -> review
+    text_hash: "35f71f1e7b5c"     # narration; change -> re-render
+    text: |-
+      A C L I agent does the same thing — for the complexities your organic brain was never shaped to handle. The snake detector trying to process tax law finally gets help.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f718105772f1"   # curated source block; drift -> review
+    text_hash: "f718105772f1"     # narration; change -> re-render
+    text: |-
+      A hook that watches your file system for sensitive data exposure? Cognitive reflex — a digital immune system catching what your organic attention missed.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d93556560173"   # curated source block; drift -> review
+    text_hash: "d93556560173"     # narration; change -> re-render
+    text: |-
+      A memory file that accumulates what your agent has learned about your project across sessions? Cognitive memory tissue — persistent knowledge your biological hippocampus would have discarded after sleep.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "03f45e60dba9"   # curated source block; drift -> review
+    text_hash: "03f45e60dba9"     # narration; change -> re-render
+    text: |-
+      A skill that enforces a consistent workflow every time you start a new task? Cognitive muscle memory — reliable behavior your brain would improvise differently each time.
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "edf2a0d8279d"   # curated source block; drift -> review
+    text_hash: "edf2a0d8279d"     # narration; change -> re-render
+    text: |-
+      These are the organs of your digital cortex. Memory that persists across weeks. Reflexes that catch mistakes before they compound. Specialized reasoning that runs while you sleep. Your biology — now extended with organs designed for the actual jungle you live in.
+  - id: s42
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ade6dce07953"   # curated source block; drift -> review
+    text_hash: "ade6dce07953"     # narration; change -> re-render
+    text: |-
+      Your .claude/ directory — or whatever your C L I agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is yours. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make it function.
+  - id: s43
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "2db2cb311b21"   # curated source block; drift -> review
+    text_hash: "2db2cb311b21"     # narration; change -> re-render
+    text: |-
+      The World It Creates
+  - id: s44
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "095e06842183"   # curated source block; drift -> review
+    text_hash: "095e06842183"     # narration; change -> re-render
+    text: |-
+      For generations, the default economic relationship has been: you have a job. You trade your time and cognitive labor within someone else's system. You are a component in their machine.
+  - id: s45
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b1a216a156f0"   # curated source block; drift -> review
+    text_hash: "b1a216a156f0"     # narration; change -> re-render
+    text: |-
+      That made sense when delegation was expensive — when running a business required hiring the accountants, lawyers, logistics managers, and marketing teams that only a fraction of people could afford.
+  - id: s46
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2d460d42c788"   # curated source block; drift -> review
+    text_hash: "2d460d42c788"     # narration; change -> re-render
+    text: |-
+      Watch what happens when your digital cortex handles eighty to ninety percent of business operations.
+  - id: s47
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "db9a9168fec2"   # curated source block; drift -> review
+    text_hash: "db9a9168fec2"     # narration; change -> re-render
+    text: |-
+      You go to the supermarket and pay for someone else's brand. What if you had your own? Pick the flavor. Choose the ingredients. Make it healthier. Someone buying your drink pays your salary. Every person a corporation.
+  - id: s48
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c6bb188abb10"   # curated source block; drift -> review
+    text_hash: "c6bb188abb10"     # narration; change -> re-render
+    text: |-
+      The scariest part of running a business was never the product. It was the operations — the planning, the compliance, the logistics. That is the part whose cost is collapsing. Starting a business is getting easier. Finding a job where most of the work is done by A I is getting harder. The direction is clear.
+  - id: s49
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f3ddbab22f0d"   # curated source block; drift -> review
+    text_hash: "f3ddbab22f0d"     # narration; change -> re-render
+    text: |-
+      Here is what that looks like. A human with the right cognitive organs can run a small canned-drink brand. The human decides on the flavor. The agent — one that grows from experience and improves its own architecture — writes the business plan, connects its human to a flavor chemist, researches food-grade manufacturers, manages regulatory paperwork, coordinates branding, and keeps the website running.
+  - id: s50
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d8b8f914763b"   # curated source block; drift -> review
+    text_hash: "d8b8f914763b"     # narration; change -> re-render
+    text: |-
+      Every contractor, every specialist, every logistics partner is still a human — but the agent is the connective tissue that holds the operation together. The human's job is taste, judgment, and the relationships that matter. The agent's job is everything in between.
+  - id: s51
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "396c1546c87d"   # curated source block; drift -> review
+    text_hash: "396c1546c87d"     # narration; change -> re-render
+    text: |-
+      That same human can simultaneously run a consulting practice, a content creation studio, and a local food product line. Not because they became superhuman. Because they grew the organs their biology was missing.
+  - id: s52
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ccd91832a83f"   # curated source block; drift -> review
+    text_hash: "ccd91832a83f"     # narration; change -> re-render
+    text: |-
+      Now zoom out. The beverage industry generates tens of billions in annual revenue. Today, a handful of corporations capture most of it. But the barrier to running a drink brand was never manufacturing — contract manufacturers already produce white-label products for anyone who asks. The barrier was everything else: planning, regulatory compliance, branding, logistics, supplier coordination. That is operations. And operations is exactly what your digital cortex absorbs.
+  - id: s53
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a759f510b687"   # curated source block; drift -> review
+    text_hash: "a759f510b687"     # narration; change -> re-render
+    text: |-
+      The same logic applies across industries — from packaged snacks to consulting practices, from media brands to local services. Each sector already has production and distribution infrastructure waiting to be used. What held individuals out was the cognitive overhead of running a business — the part your biology was never built to scale.
+  - id: s54
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0a6919ae68e8"   # curated source block; drift -> review
+    text_hash: "0a6919ae68e8"     # narration; change -> re-render
+    text: |-
+      Remove that overhead and revenue disperses. Not because the market grows, but because more people can compete in it. A thirty-billion-dollar industry does not disappear. It distributes across more brand owners — each one bringing their own audience, their own human connection to the table.
+  - id: s55
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0f73310c17b9"   # curated source block; drift -> review
+    text_hash: "0f73310c17b9"     # narration; change -> re-render
+    text: |-
+      And if running a business costs roughly one hundred dollars a month in compute — which is where the trend line points — then the economic default shifts. Not from job to a company. From job to several micro-businesses — each one managed by organs you designed, each one requiring only your judgment and creativity to thrive.
+  - id: s56
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "a745427a5156"   # curated source block; drift -> review
+    text_hash: "a745427a5156"     # narration; change -> re-render
+    text: |-
+      What Survives
+  - id: s57
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4530f44bb11c"   # curated source block; drift -> review
+    text_hash: "4530f44bb11c"     # narration; change -> re-render
+    text: |-
+      Not all work looks the same on the other side.
+  - id: s58
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bb59c2a656da"   # curated source block; drift -> review
+    text_hash: "bb59c2a656da"     # narration; change -> re-render
+    text: |-
+      Think about what a digital cortex absorbs well: routine transactions, document processing, scheduling, bookkeeping, regulatory compliance, data analysis, boilerplate communication. Work that follows rules. Work a human does not because they love it, but because the system demands it.
+  - id: s59
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7e957de39d46"   # curated source block; drift -> review
+    text_hash: "7e957de39d46"     # narration; change -> re-render
+    text: |-
+      Now think about what it cannot absorb: the trial lawyer reading a jury's body language. The therapist sensing what a client is not saying. The chef tasting a sauce and knowing it needs acid, not salt. The architect walking a site and feeling how light will move through a space in November. The teacher noticing that a quiet student is struggling before any test score confirms it.
+  - id: s60
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "41a912fd6f85"   # curated source block; drift -> review
+    text_hash: "41a912fd6f85"     # narration; change -> re-render
+    text: |-
+      Passion-based work survives. Work rooted in physical presence, emotional intelligence, sensory experience, and creative taste. The things evolution spent millions of years perfecting — finally freed from the overhead that buried them.
+  - id: s61
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5a0e4aa8f843"   # curated source block; drift -> review
+    text_hash: "5a0e4aa8f843"     # narration; change -> re-render
+    text: |-
+      The work that requires a body, a heart, a sense of taste — stays human. And with the overhead removed, more humans get to do the work they were meant to do.
+  - id: s62
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fde779bd6a61"   # curated source block; drift -> review
+    text_hash: "fde779bd6a61"     # narration; change -> re-render
+    text: |-
+      Now picture that world taking shape. It is 2035. You manage a small beverage brand, a consulting practice, and a content studio. In some you collaborate with other humans who bring their own agents to the table. In some you work alone — your agent handling everything between your creative decisions and the customer. Every person a brand of their own.
+  - id: s63
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "37d4733edf88"   # curated source block; drift -> review
+    text_hash: "37d4733edf88"     # narration; change -> re-render
+    text: |-
+      Sounds busy. It might actually be calmer. The digital cortex handles the noise. The human handles the signal.
+  - id: s64
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c434b26e9f2f"   # curated source block; drift -> review
+    text_hash: "c434b26e9f2f"     # narration; change -> re-render
+    text: |-
+      But can the brain that evolved to track a few relationships in a small tribe manage even the transition? Not without help. And not just for business.
+  - id: s65
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c912e28259ed"   # curated source block; drift -> review
+    text_hash: "c912e28259ed"     # narration; change -> re-render
+    text: |-
+      Your Personal Infrastructure
+  - id: s66
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e120779769f6"   # curated source block; drift -> review
+    text_hash: "e120779769f6"     # narration; change -> re-render
+    text: |-
+      And it does not stop at business. Your digital life already runs on other companies' software. Their email. Their social media. Their fitness tracking. Their storage. Their apps, their terms, their data.
+  - id: s67
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "320dcc2f84c0"   # curated source block; drift -> review
+    text_hash: "320dcc2f84c0"     # narration; change -> re-render
+    text: |-
+      But if you can build cognitive organs, you can build everything.
+  - id: s68
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6644bcfd4c42"   # curated source block; drift -> review
+    text_hash: "6644bcfd4c42"     # narration; change -> re-render
+    text: |-
+      A personal super-app on your phone, built by your agent, collecting your own data. Your own fitness dashboard. Your own project tracker. Your own communication hub. Running on your hardware — a phone and a small cloud server — powered entirely by software your agent designed and maintains.
+  - id: s69
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e0c484e641c6"   # curated source block; drift -> review
+    text_hash: "e0c484e641c6"     # narration; change -> re-render
+    text: |-
+      Look at the stack that makes this possible. Cloud hardware providers sell compute the way power companies sell electricity. L L M providers sell intelligence the way water utilities sell clean water. You do not build the power plant. You plug in. Your L L M bill arrives monthly, the same way your electric bill does. Your agent runs on intelligence piped to your machine, the same way your refrigerator runs on electricity piped to your house.
+  - id: s70
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5c2a8fb11e3c"   # curated source block; drift -> review
+    text_hash: "5c2a8fb11e3c"     # narration; change -> re-render
+    text: |-
+      This is already happening — messily, the way all early infrastructure does. OpenClaw — an open-source autonomous agent — went from obscurity to hundreds of thousands of GitHub stars in weeks. Moltbook, a social network for A I agents, attracted massive attention before anyone could verify whether the numbers were real. Messy? Absolutely. But the signal underneath is clear: personalized agents running independently, forming their own ecosystems. Pair this with decentralized trust infrastructure and you have the early architecture for agent-driven commerce taking shape in real time.
+  - id: s71
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "de6e73c3d0a0"   # curated source block; drift -> review
+    text_hash: "de6e73c3d0a0"     # narration; change -> re-render
+    text: |-
+      Still relying on hardware companies for the silicon. Still paying for intelligence by the token. But the software layer — the part that decides what your data does, how your businesses run, what your agent builds next — entirely yours.
+  - id: s72
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9fac73a4744b"   # curated source block; drift -> review
+    text_hash: "9fac73a4744b"     # narration; change -> re-render
+    text: |-
+      The Invisible Wall
+  - id: s73
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "96b47f1e635a"   # curated source block; drift -> review
+    text_hash: "96b47f1e635a"     # narration; change -> re-render
+    text: |-
+      There is a less comfortable part of this story.
+  - id: s74
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ee1d1aa405b7"   # curated source block; drift -> review
+    text_hash: "ee1d1aa405b7"     # narration; change -> re-render
+    text: |-
+      Not everyone will build their digital cortex. Some will not see the need. Some will wait for someone else to do it for them. Some will dismiss it as hype, the way people dismissed the internet in 1995 or smartphones in 2007.
+  - id: s75
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0e21d5a8f230"   # curated source block; drift -> review
+    text_hash: "0e21d5a8f230"     # narration; change -> re-render
+    text: |-
+      And a gap will open.
+  - id: s76
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0cfc9eb70370"   # curated source block; drift -> review
+    text_hash: "0cfc9eb70370"     # narration; change -> re-render
+    text: |-
+      Not the loud, visible kind. Not rich versus poor in the way we usually mean. An invisible gap. Between people whose cognitive capacity matches the complexity of their environment, and people whose biology — still wired for a simpler world — is trying to navigate a civilization this complex alone.
+  - id: s77
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e6aaf3d0e401"   # curated source block; drift -> review
+    text_hash: "e6aaf3d0e401"     # narration; change -> re-render
+    text: |-
+      The first group will run micro-businesses, manage their own data, navigate bureaucracy through cognitive reflexes, and make better decisions because their digital cortex fills the gaps their biology cannot.
+  - id: s78
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "30ce17afd92a"   # curated source block; drift -> review
+    text_hash: "30ce17afd92a"     # narration; change -> re-render
+    text: |-
+      The second group will feel the world getting faster, more confusing, more demanding — without understanding why. The wall between them is not made of money or education. It is made of adoption.
+  - id: s79
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2b2770115cc0"   # curated source block; drift -> review
+    text_hash: "2b2770115cc0"     # narration; change -> re-render
+    text: |-
+      But here is what makes this shift different from every one before it. Literacy required years of schooling. Electricity required infrastructure. The internet required learning an entirely new medium. This? You talk to it. You describe what you need, and it builds itself around your words. Adoption has never required less — because the tool does the work. And this cycle is shorter than any before it.
+  - id: s80
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9f65786685e4"   # curated source block; drift -> review
+    text_hash: "9f65786685e4"     # narration; change -> re-render
+    text: |-
+      This one moves faster still. Not generations — years. The person who builds their digital cortex today gains compounding cognitive capability every week. The person who waits does not fall behind gradually. They fall behind at the speed the technology improves — and that speed is accelerating.
+  - id: s81
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7691a8912bee"   # curated source block; drift -> review
+    text_hash: "7691a8912bee"     # narration; change -> re-render
+    text: |-
+      What This Means for You
+  - id: s82
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aa3686abc938"   # curated source block; drift -> review
+    text_hash: "aa3686abc938"     # narration; change -> re-render
+    text: |-
+      You do not need to be a programmer. You do not need to understand neural networks or hold a computer science degree.
+  - id: s83
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "09866a5a7d95"   # curated source block; drift -> review
+    text_hash: "09866a5a7d95"     # narration; change -> re-render
+    text: |-
+      You need to recognize what is happening.
+  - id: s84
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8b5952823b7f"   # curated source block; drift -> review
+    text_hash: "8b5952823b7f"     # narration; change -> re-render
+    text: |-
+      Your organic brain — that magnificent, two-hundred-thousand-year-old organ — was never designed for the world you live in. And the complexity is accelerating.
+  - id: s85
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b058a5bff029"   # curated source block; drift -> review
+    text_hash: "b058a5bff029"     # narration; change -> re-render
+    text: |-
+      But you can grow. Not biologically. Digitally.
+  - id: s86
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c360d6e42d52"   # curated source block; drift -> review
+    text_hash: "c360d6e42d52"     # narration; change -> re-render
+    text: |-
+      A C L I agent on your computer is an extension of you. Its memory is your memory. Its reflexes are your reflexes. Its skills compound, session after session, project after project.
+  - id: s87
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e2ed6e298df7"   # curated source block; drift -> review
+    text_hash: "e2ed6e298df7"     # narration; change -> re-render
+    text: |-
+      The foundation is set. The agent is the filesystem. The architecture already exists. But before we build, we need to agree on the words. The next essay gives you every term that matters — so when we start constructing, nothing gets lost in translation.
+  - id: s88
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4778a9b330d4"   # curated source block; drift -> review
+    text_hash: "4778a9b330d4"     # narration; change -> re-render
+    text: |-
+      The snake in the tall grass has been replaced by a civilization of eight billion minds connected at the speed of light. Your organic brain is the best thing evolution ever made.
+  - id: s89
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "31ae0a08f96d"   # curated source block; drift -> review
+    text_hash: "31ae0a08f96d"     # narration; change -> re-render
+    text: |-
+      It just needs a few more organs.

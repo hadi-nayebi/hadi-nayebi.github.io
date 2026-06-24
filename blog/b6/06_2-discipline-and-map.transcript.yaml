@@ -1,0 +1,433 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: discipline-and-map
+source_md: 06_2-discipline-and-map.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7fc933b1236c"   # curated source block; drift -> review
+    text_hash: "7fc933b1236c"     # narration; change -> re-render
+    text: |-
+      The Discipline and the Map
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b54123b96a06"   # curated source block; drift -> review
+    text_hash: "b54123b96a06"     # narration; change -> re-render
+    text: |-
+      Essay 6.1 established the load-bearing claim — phases force separation; separated kinds of thinking produce better thinking. This part draws the full picture: every transition the orchestrator allows, the tool-restriction discipline that makes each phase distinct, and a quick operational map of what each compartment produces before we open them one at a time.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7104dc2eae48"   # curated source block; drift -> review
+    text_hash: "7104dc2eae48"     # narration; change -> re-render
+    text: |-
+      The Full Transition Map
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "75dfce40c8ff"   # curated source block; drift -> review
+    text_hash: "75dfce40c8ff"     # narration; change -> re-render
+    text: |-
+      The rim of the cycle has more edges than Essay 5 needed to show. Here is the complete map the orchestrator enforces.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eac2d2e40c97"   # curated source block; drift -> review
+    text_hash: "eac2d2e40c97"     # narration; change -> re-render
+    text: |-
+      Forward edges fire automatically when the phase-commit script's gate passes:
+  - id: s06
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "a4c18e71ff0e"   # curated source block; drift -> review
+    text_hash: "a4c18e71ff0e"     # narration; change -> re-render
+    text: |-
+      idle → observe (start a new cycle) observe → plan plan → execute execute → verify verify → condense condense → idle (close the cycle)
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "46b9e3a47f03"   # curated source block; drift -> review
+    text_hash: "46b9e3a47f03"     # narration; change -> re-render
+    text: |-
+      Backward edges are explicit — the agent chooses where to roll back to:
+  - id: s08
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "c658ee028226"   # curated source block; drift -> review
+    text_hash: "c658ee028226"     # narration; change -> re-render
+    text: |-
+      observe → idle (bail — the cycle is preserved, no new cycle is consumed on re-entry) plan → observe execute → observe or execute → plan verify → execute, verify → plan, or verify → observe (the multi-destination routing — minor fix, design flaw, or context gap, each pointing at a different prior phase)
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4f54d1f46103"   # curated source block; drift -> review
+    text_hash: "4f54d1f46103"     # narration; change -> re-render
+    text: |-
+      No backward edge from condense. Once the cycle reaches CONDENSE, the only exit is forward to idle. The brain refuses to un-consolidate. We come back to why in the CONDENSE essay.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8339e84806da"   # curated source block; drift -> review
+    text_hash: "8339e84806da"     # narration; change -> re-render
+    text: |-
+      The gmode side-channel — every phase, including idle, has one extra edge that loops back to itself through gmode. Gmode is short for generic mode. It is the freestyle phase: a deliberately unconstrained mode where none of the O P E V C tool-restriction guards apply, used for work that doesn't fit the O P E V C ceremony. Why does a system built on constraint ship a way around its own constraints? Because a constraint with no sanctioned exit becomes a cage — and a caged agent invents unsanctioned workarounds; gmode is the one deliberate, friction-gated lane out, so the rare off-pattern job has somewhere to go that isn't a hack.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7bc984410743"   # curated source block; drift -> review
+    text_hash: "7bc984410743"     # narration; change -> re-render
+    text: |-
+      Entry is the same regardless of which phase the agent came from. The agent writes a G mode prefixed question to the user with a substantive reason — a long-form justification of why the work needs to happen outside the current phase's compartment (currently a roughly 100-word floor in the prototype). The orchestrator stashes the current phase, the agent enters gmode, and the per-phase guards step aside.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4701bb9fc843"   # curated source block; drift -> review
+    text_hash: "4701bb9fc843"     # narration; change -> re-render
+    text: |-
+      Inside gmode the agent can do real work for as long as it needs. Fix a deadlock. Make a small plugin edit that doesn't merit a full O P E V C cycle. Run a plugin-lock ceremony. The mode is intentionally unopinionated. Exit is explicit (the agent calls a small C L I to leave gmode) and requires a clean git working tree — the same discipline that gates every phase boundary. The home phase is restored atomically; the cycle counter does not advance.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6a713718038f"   # curated source block; drift -> review
+    text_hash: "6a713718038f"     # narration; change -> re-render
+    text: |-
+      How gmode is used is a customization choice. The prototype was built running every job through O P E V C because the work was building the seed agent itself. Once the seed agent ships open-source, users will run their project work through O P E V C and may push routine plugin maintenance through gmode. Or define new phases. Or split phase plugins by job type. Gmode is the general-purpose escape hatch from the prototype's current ceremony, and the seed-cultivator decides what flows through it.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cc366177976f"   # curated source block; drift -> review
+    text_hash: "cc366177976f"     # narration; change -> re-render
+    text: |-
+      Taken together, the prototype's full state set names the O P E V C phases (observe, plan, execute, verify, condense) plus idle (the meta-state between cycles) and gmode (the freestyle side-channel). The rest of this essay series opens the O P E V C compartments. Idle and gmode are the bookends.
+  - id: s15
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "64b770548425"   # curated source block; drift -> review
+    text_hash: "64b770548425"     # narration; change -> re-render
+    text: |-
+      The Discipline Is the Tool Restrictions
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2b8a8c264481"   # curated source block; drift -> review
+    text_hash: "2b8a8c264481"     # narration; change -> re-render
+    text: |-
+      A phase is not just a label. It is a different write scope.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "526855be2fdf"   # curated source block; drift -> review
+    text_hash: "526855be2fdf"     # narration; change -> re-render
+    text: |-
+      OBSERVE and PLAN are read-only. The agent can read any file it likes, but the only files it can write are CLAUDE.md files. Code, scripts, configuration, project content — none of it is editable in those phases.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6bbe4ad8dcef"   # curated source block; drift -> review
+    text_hash: "6bbe4ad8dcef"     # narration; change -> re-render
+    text: |-
+      EXECUTE has full write access, scoped to the set of directories OBSERVE and PLAN together declared by editing each one's CLAUDE.md.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "434641a11bb1"   # curated source block; drift -> review
+    text_hash: "434641a11bb1"     # narration; change -> re-render
+    text: |-
+      VERIFY has scripts-only access. The agent can run tests, run scripts, run validators. It cannot edit code. It can write pass/fail results back into CLAUDE.md and into a designated plan file.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "366fe982e4d5"   # curated source block; drift -> review
+    text_hash: "366fe982e4d5"     # narration; change -> re-render
+    text: |-
+      CONDENSE has the most permissive but most restricted soft-brain scope: it can write .md files across the memory layer — any CLAUDE.md or knowledge file, not only inside .claude/ — plus voice.xml coaching surfaces, but it cannot touch project deliverable files or hard plugin code at all.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4f6fa76165f0"   # curated source block; drift -> review
+    text_hash: "4f6fa76165f0"     # narration; change -> re-render
+    text: |-
+      Tool restriction is the pedagogy. The discipline doesn't come from telling the agent what to do; it comes from making the wrong move impossible inside the current phase — each phase's compartment forbids the moves that would skip the cognitive work the phase exists to enforce.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0bcf13985d85"   # curated source block; drift -> review
+    text_hash: "0bcf13985d85"     # narration; change -> re-render
+    text: |-
+      The read-only phases pair up. OBSERVE forces the agent to gather context before it can act — no escape into "let me just patch this real quick," because the patch tool isn't available. PLAN extends the same lock through the design step: the plan must commit fully to a written contract before EXECUTE can begin, because the alternative isn't there.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7bc91f28edcd"   # curated source block; drift -> review
+    text_hash: "7bc91f28edcd"     # narration; change -> re-render
+    text: |-
+      The other two cuts close the loop on the back half of the cycle. VERIFY's scripts-only fence makes self-verification through "the code looks fine to me" impossible; only what the scripts say counts. CONDENSE's memory-layer fence keeps project deliverable work structurally outside consolidation, so the agent can't sneak a feature in under the cover of brain-tending.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "743af1c9dcca"   # curated source block; drift -> review
+    text_hash: "743af1c9dcca"     # narration; change -> re-render
+    text: |-
+      Enforcement is layered. A global guard, registered by the orchestrator plugin, fires on every productive tool call (file edits, reads, shell, web fetches). While the focused job is idle, the gate blocks essentially everything — reads, writes, web fetches, general shell — and unlocks only a small allowlist: the job-management C L I, the phase-advancement C L I, the always-on infrastructure scripts that need to keep running, and memory-file edits. Once a phase activates, the global gate exits silently and the per-phase guard for that phase takes over.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d70077a83cda"   # curated source block; drift -> review
+    text_hash: "d70077a83cda"     # narration; change -> re-render
+    text: |-
+      Every phase publishes its own guard. Every guard is registered unconditionally and self-exits in milliseconds if the focused job's phase doesn't match its own; only the guard for the active phase does real work. Each guard inspects every write call against an allowlist, then consults a shared section-check library to ensure the edit doesn't cross a phase-section boundary inside any CLAUDE.md.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c8896816c77c"   # curated source block; drift -> review
+    text_hash: "c8896816c77c"     # narration; change -> re-render
+    text: |-
+      The footer anchors from the previous essay series — the OBSERVE footer, the PLAN footer, the EXECUTE footer, the VERIFY footer — are physical barriers. Each phase's guard enforces one rule: writes must land strictly below that phase's own anchor. The constraint is asymmetric — each phase can write only into its own footer block and the blocks that follow it in the cycle, never the blocks already closed upstream. As the cycle progresses, the editable region shrinks from above: OBSERVE writes anywhere below its anchor into all four blocks, PLAN into three, EXECUTE into two, VERIFY into just the last. Each completed phase becomes part of the locked upstream record. The body above all four anchors is reserved for CONDENSE; none of the four work-on-project phases can touch it.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f9c118511b4c"   # curated source block; drift -> review
+    text_hash: "f9c118511b4c"     # narration; change -> re-render
+    text: |-
+      In practice each phase's work lands in its own block, but the mechanical rule is the floor — "strictly below my anchor" — and that is what produces the forward-pressure. The anchors are not decoration; they are the structural manifestation of compartmentalization. The agent can lose the argument with the user, or with itself, but it can't lose it with the guard. The guard is code.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5e765dc12185"   # curated source block; drift -> review
+    text_hash: "5e765dc12185"     # narration; change -> re-render
+    text: |-
+      The result: each phase produces its own kind of artifact. OBSERVE produces working memory. PLAN produces a plan document. EXECUTE produces code changes plus execution notes. VERIFY produces pass/fail results. CONDENSE produces a clean working memory and durable knowledge files.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "048102ae48ab"   # curated source block; drift -> review
+    text_hash: "048102ae48ab"     # narration; change -> re-render
+    text: |-
+      Every phase has its own plugin. The phasic plugins — one per phase, plus a separate orchestrator that tracks which phase is active for which job — are themselves single-concern packages, each one owning the rules for one mode of cognition. As with the always-on layer, the count is the prototype, not the architecture. A custom seed adding a new phase would add a new plugin alongside the orchestrator. The shape is what generalizes. Essay 7 deconstructs the plugin kit; Essay 7.9 walks through a worked example — a hypothetical phase_research plugin slotted between OBSERVE and PLAN, with the two-lock pattern that wires it in.
+  - id: s30
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "94c6bb6e8416"   # curated source block; drift -> review
+    text_hash: "94c6bb6e8416"     # narration; change -> re-render
+    text: |-
+      The discipline runs forward through each phase, too
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "658dada05baf"   # curated source block; drift -> review
+    text_hash: "658dada05baf"     # narration; change -> re-render
+    text: |-
+      The tool fence is a wall around each phase. There is a second discipline that runs through the phase, start to finish — and it is just as load-bearing. Each phase moves through an operational-then-metacognitive flow, and the two halves are carried by the phase's two voices.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f6edb91f933f"   # curated source block; drift -> review
+    text_hash: "f6edb91f933f"     # narration; change -> re-render
+    text: |-
+      Each phase splits into two jobs: doing the work, then examining how the work went. The entry voice (the two-voice design is deep-dived in Essay 7.3) opens the operational work — it points the agent at the subagents that do the phase's actual job: gather context, draft the plan, build the change. That is the half everyone expects. The exit voice does the part that is easy to skip and expensive to lose: before the phase may advance, it requires a round of reflection, and that reflection is what writes the phase's slice of the cycle's compaction file. Look at the asymmetry — the entry voice spends the agent on the task; the exit voice spends it on the post-mortem.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fa38fefeb792"   # curated source block; drift -> review
+    text_hash: "fa38fefeb792"     # narration; change -> re-render
+    text: |-
+      Each phase carries its own reflection lens, matched to the kind of thinking the phase just did. OBSERVE ends with a blindspot-finder — what context did the gathering miss? PLAN ends with a premortem lens — assume the plan already failed; why? EXECUTE ends with a drift-auditor — what got built that the plan didn't call for, and what did the plan call for that never got built? The back half of the cycle turns the lens inward: VERIFY runs a meta-audit asking what the checks themselves missed, and CONDENSE runs a promotion-scan for which of the cycle's learnings deserve to become durable knowledge. Each lens turns the phase's own work back on itself one last time before the boundary opens.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6336fa90adf4"   # curated source block; drift -> review
+    text_hash: "6336fa90adf4"     # narration; change -> re-render
+    text: |-
+      A phase does not advance on volume. The condition that opens the boundary is an exit gate with three families: enough reflection ran, enough new notes were left in the working memory for CONDENSE to harvest later (a soft nudge, not a hard block), and at least one of the phase's reflection subagents actually ran and left a receipt. The rhythm from Essay 6.8 keeps pacing the work inside the phase, action by action — read before you write, synthesize before you read more. The door itself opens on reflection: the agent crosses the boundary by showing it examined its own work, never by accumulating volume.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b305e8ab09f2"   # curated source block; drift -> review
+    text_hash: "b305e8ab09f2"     # narration; change -> re-render
+    text: |-
+      CONDENSE is the most-gated phase of all — and the most fitting, because it is the brain's learning phase. It clears the exit gate and keeps its own deflation target from the CONDENSE essay: it has to compress the working memory back down AND prove it reflected on how well it did the compressing.
+  - id: s36
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "87c81e1e109e"   # curated source block; drift -> review
+    text_hash: "87c81e1e109e"     # narration; change -> re-render
+    text: |-
+      Two kinds of commit
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "89290dfe7be0"   # curated source block; drift -> review
+    text_hash: "89290dfe7be0"     # narration; change -> re-render
+    text: |-
+      The tool fence governs what the agent can touch inside a phase. A second discipline governs how a phase ends.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "db68c8f0f476"   # curated source block; drift -> review
+    text_hash: "db68c8f0f476"     # narration; change -> re-render
+    text: |-
+      The agent commits as often as it wants inside a phase. Most of those are ordinary saves — a -commit.sh call without --force to checkpoint a working draft, split a messy change into reviewable chunks, or bank a recovery point before a risky edit. These are intermediate commits, and they pass through untouched: no gate fires, no count is checked, nothing blocks. They are bookkeeping, and bookkeeping should be cheap.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ae3b78b1aeb7"   # curated source block; drift -> review
+    text_hash: "ae3b78b1aeb7"     # narration; change -> re-render
+    text: |-
+      Exactly one commit per phase is different: the one that advances the phase. To cross a boundary — OBSERVE handing off to PLAN, EXECUTE handing off to VERIFY — the agent runs the phase's force-advance commit (-commit.sh --force). That commit is the only one the orchestrator gates. It checks the phase's commit shape, it checks the three-family exit gate from Essay 6.8, it checks the phase's custom requirements, and only if all of them clear does the cycle move forward. The design intent is plain: spend the agent's care where the decision actually matters — at the boundary where one mode of thinking hands its work to the next — not on every routine save in between.
+  - id: s40
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "328875219776"   # curated source block; drift -> review
+    text_hash: "328875219776"     # narration; change -> re-render
+    text: |-
+      The shape each boundary will demand
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b0fb74c70f96"   # curated source block; drift -> review
+    text_hash: "b0fb74c70f96"     # narration; change -> re-render
+    text: |-
+      There is a third discipline layered onto that boundary commit. It is the sibling of the question shape from the always-on series: a commit shape, enforced by each phase's commit script.
+  - id: s42
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d9e3591efeb1"   # curated source block; drift -> review
+    text_hash: "d9e3591efeb1"     # narration; change -> re-render
+    text: |-
+      Each phase's force-advance commit must carry a required structure of named ## sections in its body, checked before the boundary opens — so the commit is not free prose but a small filled-in form. The form differs by phase, because each phase produces a different kind of evidence. OBSERVE records what it observed, the sources it consulted, and what it resolved. PLAN records the plan for this cycle, the acceptance criteria, the risks, and how VERIFY will test it. EXECUTE records what it implemented, the evidence, and which plan item each change addressed. VERIFY records the criteria it checked, the pass-or-fail verdict on each, and the evidence. CONDENSE records the waterfall steps it completed, the knowledge it routed, and the markers it consumed. And every form ends the same way: a required ## Outstanding Items heading that must be present — and empty. Anything written under it blocks the advance; an understanding gap gets resolved or routed before the phase exits, never carried silently across the boundary.
+  - id: s43
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d9ccec0e4572"   # curated source block; drift -> review
+    text_hash: "d9ccec0e4572"     # narration; change -> re-render
+    text: |-
+      On top of that shape, each phase's boundary also enforces its own one-off check — the custom gate named per phase in the operational map just below. OBSERVE's first cycle must expand the job's objective before it can advance; PLAN's first cycle must record its plan-file decision; EXECUTE's first cycle of a multi-cycle job must confirm the plan file actually exists; VERIFY must show an empty outstanding-items list and a plan file it did not quietly edit; CONDENSE must hit its deflation target and clear its markers.
+  - id: s44
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "69c3d1aa49f4"   # curated source block; drift -> review
+    text_hash: "69c3d1aa49f4"     # narration; change -> re-render
+    text: |-
+      The point of all this is cumulative. Each boundary deposits a small, machine-readable record of what the phase actually did. By the time a long job reaches its final cycle, that trail already says, commit by commit, that the work was observed, planned, built, and verified — so the closing job-complete question is a thin reference to evidence that already exists, not the one place the whole job's quality is decided. The shape is canonical and the catalog is fixed; each phase's commit script enforces it.
+  - id: s45
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b7a5f39f85f9"   # curated source block; drift -> review
+    text_hash: "b7a5f39f85f9"     # narration; change -> re-render
+    text: |-
+      Interactive diagram. Walk the phase-and-job-flow map yourself &mdash; every phase, transition, and gate is clickable, with the live code behind each one. &#8599; Explore the map
+  - id: s46
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "490b42dd6dbe"   # curated source block; drift -> review
+    text_hash: "490b42dd6dbe"     # narration; change -> re-render
+    text: |-
+      The transition map is the what; the tool restrictions are the how. Together they are the rules — every edge the orchestrator allows, every tool a phase locks, every gate that guards a boundary, all in service of one payoff: the agent can no longer skip the thinking a phase was built to force.
+  - id: s47
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "27923012414a"   # curated source block; drift -> review
+    text_hash: "27923012414a"     # narration; change -> re-render
+    text: |-
+      The rules are drawn. Before we open each compartment one at a time, it helps to walk the whole set at a glance — what each phase is, and what it is on the hook to produce. The next essay is that quick tour: a phase-by-phase map you can hold in your head before the per-phase deep-dives begin.

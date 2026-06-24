@@ -1,0 +1,163 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: interaction-summary
+source_md: 05_5-interaction-summary.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "8b55f5f6c502"   # curated source block; drift -> review
+    text_hash: "8b55f5f6c502"     # narration; change -> re-render
+    text: |-
+      Mega-Prompt Compression — interaction-summary
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b26435366314"   # curated source block; drift -> review
+    text_hash: "b26435366314"     # narration; change -> re-render
+    text: |-
+      Essay 5.4 named the cumulative mega-prompt — every prompt, every Q&A, appended into the same job's interaction list. That list grows. Past a few hundred turns, it stops fitting cleanly in context. This part covers the plugin that keeps it legible.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c4430cda5c5e"   # curated source block; drift -> review
+    text_hash: "c4430cda5c5e"     # narration; change -> re-render
+    text: |-
+      What it owns
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6f04f726d023"   # curated source block; drift -> review
+    text_hash: "6f04f726d023"     # narration; change -> re-render
+    text: |-
+      interaction-summary exists to keep a job's dynamic mega-prompt legible as it grows. It works by counting tokens after every user interaction and forcing the agent to draft a structured summary the moment the unsummarized portion crosses a threshold. It applies inside any job whose interaction list grows long enough to compress — short jobs that never cross the threshold never see the plugin engage.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "3eb53b05d4fc"   # curated source block; drift -> review
+    text_hash: "3eb53b05d4fc"     # narration; change -> re-render
+    text: |-
+      How it works — block until summarized
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0346c64ef221"   # curated source block; drift -> review
+    text_hash: "0346c64ef221"     # narration; change -> re-render
+    text: |-
+      Enforcement runs in two phases. A post-call hook fires right after job-core records each interaction, approximates the unsummarized portion in tokens, and trips a flag when the result crosses a threshold. On the next tool call, a pre-call guard blocks every productive tool the agent has — reads, writes, shell calls, even further questions — until a structured summary lands. The submit command refuses just any text: the summary must sit inside a tight word-count band and carry five named sections — User Requests, Questions & Decisions, Design Choices, Corrections & Feedback, Current State — each long enough to actually mean something. The same shape compels production trick brain-guard uses on its compaction file, applied to a different concern.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1465134d5d57"   # curated source block; drift -> review
+    text_hash: "1465134d5d57"     # narration; change -> re-render
+    text: |-
+      The block is total — every productive tool, every question. The single escape path is summary.sh submit, the dedicated summary-submission command the guard's Bash whitelist explicitly admits; submitting a valid summary clears the flag, the gate releases, and any pending work resumes on the next turn. No parallel question-bypass list, no special-case prefixes — the discipline is one shape: submit the summary, then continue. The summary chain itself is append-only and lives entirely in the plugin's hidden state; older entries cannot be rewritten.
+  - id: s08
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a719d2e5a47"   # curated source block; drift -> review
+    text_hash: "7a719d2e5a47"     # narration; change -> re-render
+    text: |-
+      What would break without it
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9e906fe735f3"   # curated source block; drift -> review
+    text_hash: "9e906fe735f3"     # narration; change -> re-render
+    text: |-
+      Without this plugin, long jobs lose narrative coherence as the interaction list bloats; the summary chain is what keeps a job legible at a glance and what survives forward when the job spans more than one O P E V C cycle.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "842d13ffcbae"   # curated source block; drift -> review
+    text_hash: "842d13ffcbae"     # narration; change -> re-render
+    text: |-
+      interaction-summary is the second always-on plugin where the shape is the lesson and the names are your prototype's answer. Almost every parameter has a defensible reason to move.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4f75c3a652d6"   # curated source block; drift -> review
+    text_hash: "4f75c3a652d6"     # narration; change -> re-render
+    text: |-
+      You would tune the threshold — the token count at which the gate trips. The current ~500-token threshold balances summarization overhead against narrative coherence. A seed running shorter, sharper exchanges may want to trip at 250 tokens; a seed running longer interactions (chemical-engineering reviews, legal-citation walks) may comfortably stretch to 1,000.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "33a5ab10cdb6"   # curated source block; drift -> review
+    text_hash: "33a5ab10cdb6"     # narration; change -> re-render
+    text: |-
+      You would re-shape the 5-section template. The current sections — User Requests, Questions & Decisions, Design Choices, Corrections & Feedback, Current State — encode what this prototype values in its summary chain. Your seed will value different things. A research seed may want "Sources cited / Hypotheses tested / Open questions" sections. A consulting seed may want "Client goals / Constraints surfaced / Action items." A legal-research seed may want "Statutes referenced / Precedents reviewed / Open conflicts." The five sections aren't gospel. The shape — required headers, word-count band per section, append-only chain — is.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ea1f2836d2e7"   # curated source block; drift -> review
+    text_hash: "ea1f2836d2e7"     # narration; change -> re-render
+    text: |-
+      You would tune the summary length band and the per-section depth floor. The current shape requires every accepted summary to land inside a token range (the prototype defaults to a roughly 200-1000 token band) and every named section to carry at least a minimum depth of real content (the prototype floors each section at a substantive minimum). A seed running shallow exchanges may want a tighter band and lower per-section floors so summaries stay brisk. A seed running deep technical reviews — chemical-engineering walkthroughs, legal-citation traces — may want a wider band and higher per-section floors that prevent stub sections from sliding through. All three knobs live in config.conf as plain shell variables; the architect tunes per seed without touching any hook or script.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "51cbb0d1b3ac"   # curated source block; drift -> review
+    text_hash: "51cbb0d1b3ac"     # narration; change -> re-render
+    text: |-
+      You would change the summarization shape itself. The current shape is append-only chain — one block of five sections per crossing, accumulated forever. Hierarchical summaries (summary-of-summaries every N entries), topic-tagged summaries (separate chains for separate concerns), or domain-specific summary schemas (Q&A pair structure for support seeds, decision-log structure for governance seeds) are all defensible shapes for the same architectural fact: long jobs need legible mega-prompt compression. The chain mechanism is the architecture; what you put in each entry is yours.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4dcd714d3e7c"   # curated source block; drift -> review
+    text_hash: "4dcd714d3e7c"     # narration; change -> re-render
+    text: |-
+      What you would not do is let the mega-prompt grow without compression. Without the gate, a job that crosses ten cycles becomes unreadable; the next session loses the narrative thread; the agent starts drifting from prior decisions. The gate is the floor; the format above it is yours.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "803fa8cfb4f1"   # curated source block; drift -> review
+    text_hash: "803fa8cfb4f1"     # narration; change -> re-render
+    text: |-
+      The next part covers the plugin that gates every question the seed agent asks the user — the asking surface for every ceremony in the rest of the architecture.

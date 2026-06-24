@@ -1,0 +1,379 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: brain-guard
+source_md: 05_3-brain-guard.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "553d9e7f9ae4"   # curated source block; drift -> review
+    text_hash: "553d9e7f9ae4"     # narration; change -> re-render
+    text: |-
+      Context Window Discipline — brain-guard
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2bd71fa82a97"   # curated source block; drift -> review
+    text_hash: "2bd71fa82a97"     # narration; change -> re-render
+    text: |-
+      Essay 5.2 covered the floor — the test gate that makes every plugin code change conditional. This part covers the ceiling: the always-on plugin that owns the seed agent's relationship to the model's context window.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c4430cda5c5e"   # curated source block; drift -> review
+    text_hash: "c4430cda5c5e"     # narration; change -> re-render
+    text: |-
+      What it owns
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fabc655f5aef"   # curated source block; drift -> review
+    text_hash: "fabc655f5aef"     # narration; change -> re-render
+    text: |-
+      brain-guard is the always-on plugin that owns the compaction discipline — the compaction file plus the clear-and-inject operation that replaces native /compact. It works by watching context usage on every tool call and progressively tightening the agent's grip on tools as the window fills. The whole mechanism fires well before Claude Code's default auto-compact at 100%, which lets the seed agent operate even when the user is away from the terminal.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f070e186e82e"   # curated source block; drift -> review
+    text_hash: "f070e186e82e"     # narration; change -> re-render
+    text: |-
+      The compaction file — the thing that survives the clear
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "136bbd7bb6f4"   # curated source block; drift -> review
+    text_hash: "136bbd7bb6f4"     # narration; change -> re-render
+    text: |-
+      Compacting a conversation is destructive. The chat shrinks, and whatever was only in the chat is gone. So the first question brain-guard answers is not when to compact but what must survive the compaction — and the answer is a file.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4ba334212f1e"   # curated source block; drift -> review
+    text_hash: "4ba334212f1e"     # narration; change -> re-render
+    text: |-
+      For each job, brain-guard maintains a compaction file: a per-job, per-session document that carries the cognition about a job, separate from the work itself. The work lives where it always lived — in the CLAUDE.md hierarchy and on disk. The compaction file holds the other thing: how the work is going. Open threads. Assumptions the agent is leaning on. Loops it got stuck in. Fallacies and blind spots it should not repeat. Plus, in a rolling summary section, the top-level facts and principles the next session needs to resume thinking, not just to re-read state.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6774f0538b75"   # curated source block; drift -> review
+    text_hash: "6774f0538b75"     # narration; change -> re-render
+    text: |-
+      The deeper purpose is sharper than survival. The file forces the seed agent to spend compute not only doing the job but optimizing how it does the job. At each phase's exit, the agent reviews how its own instructing layer — the coaching voices, the per-job injections — actually steered the work. If a voice injection sent the work down a wrong path, that finding lands in the compaction file, where a later run can read it and re-tune the injection. The file is a node in the seed agent's self-improvement loop for its own instructions. How each phase actually compels that reflection before it can advance is the phase layer's job — the Essay 6 series covers the per-phase reflection gate.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "dba55ba652ea"   # curated source block; drift -> review
+    text_hash: "dba55ba652ea"     # narration; change -> re-render
+    text: |-
+      It is built gradually, never condensed. The file is born from a template at session start and grows as each phase exits, appending to its sections. It is the one managed file CONDENSE never metabolizes — its size is held in check by a sealing pass, not by deflation.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b1638726319a"   # curated source block; drift -> review
+    text_hash: "b1638726319a"     # narration; change -> re-render
+    text: |-
+      Two distinct events touch the file, and they should not be confused. A phase-exit append is the frequent one: every phase, on its way out, writes its slice into the file. A full compaction event is the rare one, threshold-triggered — when a context ramp or a file-size ramp hits its ceiling, the tools progressively block, the finalization pass seals the file, and the session clears and re-injects. The append happens at every phase boundary; the compaction event can fire mid-phase, the moment a ramp tops out, not only at a phase exit.
+  - id: s11
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "8c390d699155"   # curated source block; drift -> review
+    text_hash: "8c390d699155"     # narration; change -> re-render
+    text: |-
+      How it works — the progressive squeeze
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a48176f96000"   # curated source block; drift -> review
+    text_hash: "a48176f96000"     # narration; change -> re-render
+    text: |-
+      A pre-call sensor reads the running token count on every tool call. At the first tier (currently around 20% of the window), the plugin injects a coaching voice prompting the agent to bring its compaction file up to date before the squeeze tightens. The reasoning behind 20% is empirical and prototype-specific: in this 1M-token Opus setup, long-run reasoning starts to soften well before the nominal window is full, so acting at 20% leaves headroom before the prototype's 30% hard tier. If the agent ignores the prompt, the next tier (around 25%) starts blocking the agent's read tools. The hardest tier (around 30%) adds the write tools to the block list.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9ecb3afdbb34"   # curated source block; drift -> review
+    text_hash: "9ecb3afdbb34"     # narration; change -> re-render
+    text: |-
+      The tier positions are tunable; the architectural fact is the progressive tightening. Rather than letting the agent drift toward a hard wall, brain-guard removes one tool at a time until the only graceful move left is to seal-and-clear. The tightening is friction, not a hard lock — it works because the agent reads and follows the injected coaching, and a deliberate operator override always remains.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "18dffe30f65d"   # curated source block; drift -> review
+    text_hash: "18dffe30f65d"     # narration; change -> re-render
+    text: |-
+      There is a second ramp running alongside the first, and it watches a different gauge. The context ramp watches the model's window. The file-size ramp watches the compaction file itself — because the cognition can outgrow its own home long before the window fills. It uses the same graduated shape, keyed on a target word ceiling (θ_lc, roughly 2,000 words by default): around 70% of the ceiling fires a coaching voice, around 85% blocks the first band of tools, and 100% is the wall. The two ramps are deliberately symmetric, so neither trigger surprises the other.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ef9a2013e265"   # curated source block; drift -> review
+    text_hash: "ef9a2013e265"     # narration; change -> re-render
+    text: |-
+      Whichever ramp reaches its ceiling first triggers the same move — but the ceiling does not fire the compaction on its own. It narrows the toolset down to three actions and lets the agent pull the trigger: a polish edit of the compaction file, a summary append, and the clear-and-inject command itself. New agent dispatch is blocked, because a returning subagent would just re-inflate context and defeat the seal. The session holds in that narrow band until the agent seals the file and clears the conversation.
+  - id: s16
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c67abc826880"   # curated source block; drift -> review
+    text_hash: "c67abc826880"     # narration; change -> re-render
+    text: |-
+      Shape compels production
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fc150f42e161"   # curated source block; drift -> review
+    text_hash: "fc150f42e161"     # narration; change -> re-render
+    text: |-
+      The compaction file is shape-enforced. It carries a fixed set of sections — Forward State, Open Threads, Assumptions & Risks, Process Insight, and a rolling Prior Summary — and each phase-exit note is routed into the section it belongs in. Scope boundaries and binding user directives go to Forward State. Uncovered sources, deviations, and gotchas go to Open Threads. What verification might have missed goes to Assumptions & Risks. Why-this-over-that and cycle lessons go to Process Insight. Beside those five authored sections sits one more — Git Commit Messages — that the agent never writes by hand: every phase commit's message is appended into it automatically, giving the next session a ground-truth trail of what changed without re-reading the full diff.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f0f4f67efd92"   # curated source block; drift -> review
+    text_hash: "f0f4f67efd92"     # narration; change -> re-render
+    text: |-
+      The sections aren't gospel. The shape is.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2ef00aa3d857"   # curated source block; drift -> review
+    text_hash: "2ef00aa3d857"     # narration; change -> re-render
+    text: |-
+      Call this shape compels production: a compartment that demands a structured shape forces the agent to produce content that fits the shape, and the production itself becomes useful context. The agent thinks more carefully about its own cognition because it has to write under headers — it cannot stack words in the easy section and skip the hard one.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ebc26d3e2c5f"   # curated source block; drift -> review
+    text_hash: "ebc26d3e2c5f"     # narration; change -> re-render
+    text: |-
+      The pattern is portable. Structured git commits, structured plan files, structured subagent dispatches — every time a shape demands content, the content rewards the next step. A consultant could use the same trick on weekly client briefs — a fixed five-section template (scope, open questions, decisions taken, evidence, next checkpoint) forces the substantive thinking the prose would otherwise skip. The same trick lands in interaction-summary (Essay 5.5).
+  - id: s21
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "b7fad3aaa993"   # curated source block; drift -> review
+    text_hash: "b7fad3aaa993"     # narration; change -> re-render
+    text: |-
+      Clear and inject
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "31a681d3abc8"   # curated source block; drift -> review
+    text_hash: "31a681d3abc8"     # narration; change -> re-render
+    text: |-
+      When a ramp hits its ceiling, brain-guard runs a finalization pass — an ordered, inspectable sequence that seals the compaction file — and then clears the session and injects the sealed file into the fresh one. The whole design is built for transparency: the finalization pass, the sealed file, and the Prior Summary are all on disk, so the agent can read and check exactly what will carry across the boundary before the session ever clears. Nothing is summarized in the dark; the cognition that survives is the cognition the agent deliberately sealed.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c205d050b6b4"   # curated source block; drift -> review
+    text_hash: "c205d050b6b4"     # narration; change -> re-render
+    text: |-
+      The finalization pass is a quality gate, not a summarizer — it invents no new prose. It is phase-indifferent: it seals whatever cognition the file already holds and never waits on the phase's reflection gate — compaction is a context-management event, the phase's reflection is a separate phase-transition event. It dedups and folds redundant entries, organizes the sections, then polish-shrinks the body — aiming to fold it below the seal target, with the hard rule that the seal fails only if the file is still at or above the block band. That floor guarantees the sealed file is never born too large to use: the fresh session that inherits it can always read it, even when it resumes a read-only phase. Finally it bumps the file's version, stamps it, writes the rolling Prior Summary, and seals. Only then does the clear fire.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0d3e364ce530"   # curated source block; drift -> review
+    text_hash: "0d3e364ce530"     # narration; change -> re-render
+    text: |-
+      The injection rides a hacky-but-honest carrier: clipboard-and-keystroke input under X11, or terminal-multiplexer paste primitives under tmux, picked by one selector. The payload it delivers is /clear followed by the sealed compaction file — the keystrokes end the saturated session and hand the fresh one exactly the cognition the finalization pass sealed. If Claude Code ever ships a native A P I for an agent to manage its own session boundary, this terminal-typing layer retires; the rest of the discipline carries forward unchanged.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3ad1315cccb1"   # curated source block; drift -> review
+    text_hash: "3ad1315cccb1"     # narration; change -> re-render
+    text: |-
+      There is one more move, and it leans on the whole point of the seed agent: the mind lives on disk. After the clear, the conversation has shrunk to nothing, but the focused job, the current phase, and the working memory all survived — they were never in the chat to begin with, and now the sealed compaction file rides in alongside them. So the moment the fresh session is born, the digital cortex re-grounds itself: it resets its context-fill tracking, reads the focused job and the live phase straight off disk, and re-presents the same phase-entry coaching the agent heard when it first entered that phase. Because the re-grounding hangs on the /clear session boundary, the reset is direct and deterministic — a fresh session is unambiguously fresh, so the context-fill tracking resets cleanly with no waiting and no guesswork. A clean boundary is self-announcing: the digital cortex knows the exact instant it is born and re-grounds on the spot, with no grace window to wait out and no detector watching for a boundary it has to infer. The keystroke follow-up still kicks off the first turn; a reflex that fires on session birth can hand the agent its bearings, but it cannot make the agent start talking. That division is deliberate: the re-grounding is automatic and certain, so even if the follow-up keystroke mis-fires, the fresh session already carries its own orientation.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f375022ef68d"   # curated source block; drift -> review
+    text_hash: "f375022ef68d"     # narration; change -> re-render
+    text: |-
+      The ceiling is not the only thing that triggers a clear-and-inject. Two other moments fire the same boundary. The first is job completion: when the seed agent finishes a job, a required seal runs before the job can close — the same finalization pass wraps the finished job's cognition into its directory, then the boundary clears and injects only a transition note, the sealed Prior Summary, never the full old file and never a fresh template. The next job is not focused yet, so there is nothing to start fresh; the job that defines a compaction file is the one that creates it, at its own focus. A job never ends with an unsealed compaction file — the advance that closes it checks for the seal stamp before it fires.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "026543497bf3"   # curated source block; drift -> review
+    text_hash: "026543497bf3"     # narration; change -> re-render
+    text: |-
+      The second is focus itself. Picking up a job from idle is a clear-and-inject too: focusing a job whose compaction file already exists — a return after a pause, a reactivated run — clears the session and injects that file, the reload path; focusing a job with no file yet creates it from the template and injects that, a clean cognitive start that sheds the prior job's residue. Two edges are deliberately carved out. A prompt that bootstraps a job — a user prompt that creates a fresh focused job — does not clear, because the user's live prompt thread is already the job's opening cognition and there is no stale residue to shed. And pausing a job does not seal: the live file stays with the job, and the metacognition written since the last phase exit is the bounded loss of a mid-phase pause — the work itself is safe on disk in the CLAUDE.md layer.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b6a39e3bac11"   # curated source block; drift -> review
+    text_hash: "b6a39e3bac11"     # narration; change -> re-render
+    text: |-
+      And because each session opens carrying the last sealed file plus a single rolling Prior Summary, the chain can run for an unbounded number of sessions at a fixed cost. The recent file describes the current session; the Prior Summary — held at a fixed slice of the file's budget — folds in everything before it. Session thirty still knows what session two learned, without ever injecting all thirty.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f27cff4fddea"   # curated source block; drift -> review
+    text_hash: "f27cff4fddea"     # narration; change -> re-render
+    text: |-
+      The whole chain &mdash; two ramps, one ceiling, the compaction file, the seal, clear+inject, the wake reflex, and the two-tier Prior Summary &mdash; laid out as an interactive concept-deck. Walk the seven steps; click any box for the code-accurate detail. &#8599; Walk the compaction chain
+  - id: s30
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a719d2e5a47"   # curated source block; drift -> review
+    text_hash: "7a719d2e5a47"     # narration; change -> re-render
+    text: |-
+      What would break without it
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7e20d05109c8"   # curated source block; drift -> review
+    text_hash: "7e20d05109c8"     # narration; change -> re-render
+    text: |-
+      Without brain-guard, the agent runs the conversation off a cliff — and the cliff is steeper than it looks. The default 100% auto-compact fires eventually, but the thing it loses is not just the window. It loses the cognition: the open threads, the assumptions, the loops the agent had learned to avoid, the read on how the instructing layer was steering the work. The default compaction keeps whatever scraps the model happened to have in the window at that moment and discards the rest. The next session does not resume thinking; it starts over from facts.
+  - id: s32
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8bf6899b66cc"   # curated source block; drift -> review
+    text_hash: "8bf6899b66cc"     # narration; change -> re-render
+    text: |-
+      brain-guard is the plugin most architects tune the moment they adopt the seed. Almost every knob has a defensible reason to move.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ba121be5a7db"   # curated source block; drift -> review
+    text_hash: "ba121be5a7db"     # narration; change -> re-render
+    text: |-
+      You would tune the tier positions for your model and your context budget. The 20% / 25% / 30% values map to Opus 4.7's 1M token window — they encode this prototype's empirical operating curve rather than a universal model law. Your seed may run on a different model with a different effective-reasoning curve; the tier thresholds should track wherever that curve actually bends for the model you use. Sonnet's window is smaller; Haiku's smaller still; a future model with cleaner long-context behavior may not need the 25% tier at all.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2a93c537383b"   # curated source block; drift -> review
+    text_hash: "2a93c537383b"     # narration; change -> re-render
+    text: |-
+      You would customize the compaction file's sections. The five sections name what this prototype values — Forward State, Open Threads, Assumptions & Risks, Process Insight, Prior Summary. Your seed may need different sections for your kind of work: a legal-research seed may want a "citation-state" section; a project-management seed may want a "decision-log" section. The five names aren't gospel. The shape is.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a24f3b4d2347"   # curated source block; drift -> review
+    text_hash: "a24f3b4d2347"     # narration; change -> re-render
+    text: |-
+      You would tune θ_lc, the compaction file's target size, and the ramp positions that key off it. Two thousand words is this prototype's ceiling; a seed running denser, longer jobs may want more headroom, and a seed running short, hot cycles may want less. The coaching-band and block-band positions on that ramp move the same way the context tiers do — wherever your kind of work needs the seal to start being forced.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ec6b201f132b"   # curated source block; drift -> review
+    text_hash: "ec6b201f132b"     # narration; change -> re-render
+    text: |-
+      You would tune the metacognition requirement — how many reflection steps each phase must run before it can move on. More steps means more compute spent optimizing how the work is done; fewer means more compute spent on the work itself. That dial is how an operator decides how hard their seed thinks about its own thinking.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "72210f8df5cd"   # curated source block; drift -> review
+    text_hash: "72210f8df5cd"     # narration; change -> re-render
+    text: |-
+      You would choose your dispatch mechanism. The current prototype ships two paths — X11 keyboard injection and tmux paste-buffer — and the same carrier delivers the clear-and-inject payload. Your environment may need a third (an SSH-bridge variant, a Windows Terminal handler). If Claude Code ships a native A P I for an agent to manage its own session boundary, you drop the keyboard-injection layer entirely without touching the rest of the plugin.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c97a128c56f7"   # curated source block; drift -> review
+    text_hash: "c97a128c56f7"     # narration; change -> re-render
+    text: |-
+      You would add or split tiers. Three tiers is the current shape; nothing in the architecture forbids four or five. A high-stakes seed may want an extra tier between 25% and 30% that blocks Bash before write tools. A seed working in shorter, hotter cycles may collapse the soft tier and start blocking immediately at 22%.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "23ce7ee03b62"   # curated source block; drift -> review
+    text_hash: "23ce7ee03b62"     # narration; change -> re-render
+    text: |-
+      What you would not do is remove the progressive-tightening principle. Letting the agent drift toward the 100% wall, then surprise-compacting at the worst moment, is exactly the failure mode brain-guard was built to prevent.
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "73729aa9bd7c"   # curated source block; drift -> review
+    text_hash: "73729aa9bd7c"     # narration; change -> re-render
+    text: |-
+      The next part covers the plugin that gives the seed agent a notion of what work it is doing — the unit of compartmentalization, the dynamic mega-prompt, the refusal to stop while jobs remain.

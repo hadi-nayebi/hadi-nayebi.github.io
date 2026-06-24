@@ -1,0 +1,118 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: apprentice-to-architect-foundation
+source_md: 08_1-apprentice-to-architect-foundation.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:39Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "6ac28ca7aa4e"   # curated source block; drift -> review
+    text_hash: "6ac28ca7aa4e"     # narration; change -> re-render
+    text: |-
+      Apprentice to Architect Foundation
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "34930ee1dad8"   # curated source block; drift -> review
+    text_hash: "34930ee1dad8"     # narration; change -> re-render
+    text: |-
+      Essay 7.9 closed the plugin kit with a walkthrough — guiding your seed to author a brand-new plugin, part by part, under the lock ceremony's friction. That essay handed you the capacity to grow the brain. This essay opens what happens once that capacity is yours.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "432398553a72"   # curated source block; drift -> review
+    text_hash: "432398553a72"     # narration; change -> re-render
+    text: |-
+      The seed agent is not a product. It is not a thing that gets installed and works. It is a thing that gets installed, and then grows, cycle by cycle, under the operator's care. A new seed in week one looks different from the same seed in month three. The architecture is identical. What has changed is the brain — what it has learned, what it has codified, what has fossilized into permanent enforcement, and what is still being shaped by hand.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6ad33ff297d9"   # curated source block; drift -> review
+    text_hash: "6ad33ff297d9"     # narration; change -> re-render
+    text: |-
+      The load-bearing claim of this series is this. The seed grows along several parallel axes — the prototype's design names three of them: jobs mature upward through several stages; behavioral controls migrate inward from soft voice to hard hook to fossilized template; and the operator's relationship with the seed shifts from supervising its cognition to composing with it. Each axis has its own pace, its own evidence, its own gates. None is automatic. And — the part most operators do not expect — the brain stops growing in size while never stopping learning. The architecture is bounded by design; the substrate the brain rests on is not.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b6b677e39602"   # curated source block; drift -> review
+    text_hash: "b6b677e39602"     # narration; change -> re-render
+    text: |-
+      That last claim is what makes the seed sustainable across long timescales. A brain that grew without bound would drown its own cognition. A brain that stopped learning would stop adapting. The seed does both: caps and compression force the brain into a stable equilibrium, while the knowledge directory and the plugin kit absorb the durable patterns the brain compresses away. The seed does not try to preserve every transient detail in the working brain. It preserves what keeps mattering, and stores most of that somewhere other than the brain.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "95c3dbf7196f"   # curated source block; drift -> review
+    text_hash: "95c3dbf7196f"     # narration; change -> re-render
+    text: |-
+      The three axes, walkable. The five identity facts, the guardrail that gates every plugin edit, the five customization layers, the young-to-mature brain, the cost ladder a single control climbs, and the operator's own arc &mdash; laid out as an interactive concept-deck you can hover and click. &#8599; Walk from apprentice to architect
+  - id: s07
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a5141063477"   # curated source block; drift -> review
+    text_hash: "7a5141063477"     # narration; change -> re-render
+    text: |-
+      The journey ahead
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b5bbcdac9d1b"   # curated source block; drift -> review
+    text_hash: "b5bbcdac9d1b"     # narration; change -> re-render
+    text: |-
+      Essay 8 unfolds across the parts below:
+  - id: s09
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "44741df87e47"   # curated source block; drift -> review
+    text_hash: "44741df87e47"     # narration; change -> re-render
+    text: |-
+      Essay 8.1 — Apprentice to Architect Foundation (you are here) — the three-axis growth frame and this map Essay 8.2 — The Stages of Job Maturation — the Job Stages (Stage 1 deep single-cycle through Stage 4 plugin form) plus the standalone and dependent job-creation patterns Essay 8.3 — What Lives in the Brain After Three Months — the prototype as ground-truth inventory of the mature seed's compartments Essay 8.4 — Soft → Hard Migration — how a behavioral control travels from coaching voice to hook to template Essay 8.5 — What's Enforced vs What's Discipline — the honest accounting of which size caps are gates and which are CONDENSE discipline Essay 8.6 — The Maturation Arc — Apprentice, Journeyman, Architect — the operator's maturation arc and the visible markers of each Essay 8.7 — The Brain Stops Growing in Size — why the brain reaches a ceiling while the knowledge layer never does Essay 8.8 — A System That Safely Modifies Itself — the Tier-3 close, the recursive lock ceremony, and the rollback substrate Essay 8.9 — The Seed Is Yours — series finale, the bridge to the public seed agent, and the architecture handed over
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f879d1f71443"   # curated source block; drift -> review
+    text_hash: "f879d1f71443"     # narration; change -> re-render
+    text: |-
+      Essays 8.2 through 8.5 deep-dive the maturation mechanisms — Job Stages, brain inventory, soft-to-hard pattern migration, and the enforced-vs-discipline distinction. Essays 8.6 and 8.7 widen the lens to the operator's arc and the brain's growth shape. Essays 8.8 and 8.9 are the close — first the architecture-self-recursion that proves the substrate holds, then the handoff that lets the seed become yours.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "05ae1155339e"   # curated source block; drift -> review
+    text_hash: "05ae1155339e"     # narration; change -> re-render
+    text: |-
+      A patent attorney could read the parts that follow for the same reason an ML researcher could: the pattern of seed maturation transfers across every operator's domain. The patterns the attorney's seed codifies will not look like the researcher's, but the shape of how patterns get codified — voice fires, measurement accumulates, hook hardens, template inherits — is universal. Nothing in this essay is automatic; every stage requires evidence the operator and seed agree on before promotion happens.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d7757fc3ced4"   # curated source block; drift -> review
+    text_hash: "d7757fc3ced4"     # narration; change -> re-render
+    text: |-
+      We start with the stages of job maturation — the upward axis along which every job your seed runs is allowed to climb.

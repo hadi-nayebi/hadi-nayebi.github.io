@@ -1,0 +1,424 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: execute
+source_md: 06_5-execute.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f9330ced3aa6"   # curated source block; drift -> review
+    text_hash: "f9330ced3aa6"     # narration; change -> re-render
+    text: |-
+      EXECUTE — Build, in Scope, in Steps
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8833ea131306"   # curated source block; drift -> review
+    text_hash: "8833ea131306"     # narration; change -> re-render
+    text: |-
+      Essay 6.4 closed with PLAN handing forward — a plan_file named, an altered-list scoped, the cycle's contract written down. EXECUTE is the phase that builds against that contract.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2211b14763ed"   # curated source block; drift -> review
+    text_hash: "2211b14763ed"     # narration; change -> re-render
+    text: |-
+      EXECUTE is the cycle's only producing phase. Every other phase reads, analyzes, refines, or routes; EXECUTE is the one that turns analysis into artifact. Project source code, scripts, configuration, the .md plan, the .yaml plan, every file the seed agent ever materializes on disk — all of it is brought into existence here.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "67e3e8468bb8"   # curated source block; drift -> review
+    text_hash: "67e3e8468bb8"     # narration; change -> re-render
+    text: |-
+      The cognitive failure EXECUTE prevents is the unstructured build — the long uncommitted run that drifts away from the plan, accumulates change, and either ships a different feature than the one designed or erases everything when a failure hits halfway through. EXECUTE's discipline is checkpointing: short, focused commits that close one piece of the plan before opening the next.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "65fe77f068c2"   # curated source block; drift -> review
+    text_hash: "65fe77f068c2"     # narration; change -> re-render
+    text: |-
+      The sources are narrower than OBSERVE's or PLAN's. EXECUTE reads the plan document the cycle is executing against, reads the altered-list CLAUDE.md files for the per-directory context, reads the files it is about to edit, and reads the seed agent's knowledge directory for patterns the plan refers to. External documentation is allowed but rare in practice — the plan is supposed to carry the design decisions; EXECUTE's job is to build, not to keep researching. The phase dispatches its own family of subagents (execute-* workers), and the budget arithmetic explicitly favors delegation: every execute-subagent dispatch grants +3 direct-action budget; every direct edit outside .claude/ consumes 1.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c6f8dab56fe5"   # curated source block; drift -> review
+    text_hash: "c6f8dab56fe5"     # narration; change -> re-render
+    text: |-
+      The write side is where EXECUTE earns its name. The write-tool guard is gentler than the read-only phases', but only inside the altered list — the frozen snapshot of directories that OBSERVE and PLAN authorized for editing. A write inside the list lands; a write outside is rejected at the tool boundary, and the agent has to roll back to PLAN to amend the contract before the path opens.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "479b4c6a0744"   # curated source block; drift -> review
+    text_hash: "479b4c6a0744"     # narration; change -> re-render
+    text: |-
+      Inside CLAUDE.md files, the anchor discipline cascades downward from the EXECUTE footer. That is the primary section the phase guard nudges EXECUTE toward, and the same enforcement also permits writes into the VERIFY footer — so EXECUTE can pre-stage refinements to the VERIFY checklist when execution surfaces something new to check. What the discipline blocks is upward writes: EXECUTE cannot edit what OBSERVE or PLAN wrote above the EXECUTE footer. Two nested fences — path scope outside, anchor cascade inside — keep the compartmentalization intact even as the phase is the most active.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6870620f43ab"   # curated source block; drift -> review
+    text_hash: "6870620f43ab"     # narration; change -> re-render
+    text: |-
+      Pacing follows the cycle's shared shape. There is no entry ceremony — the entry voice orients the phase toward its kind of work, the plan it is fulfilling, and the subagents that carry the file work; thinking about the build's depth is coached cognition, not a checked act.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cbdd51965464"   # curated source block; drift -> review
+    text_hash: "cbdd51965464"     # narration; change -> re-render
+    text: |-
+      The min-max gate paces the work/notes cadence against the working CLAUDE.md, and the direct-action budget biases the main session toward subagent dispatch. The rest of this essay opens the universal-file-creator role, walks the two fences (path scope and anchor cascade), explains the checkpointing pattern, and names the delegation bias the budget encodes.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "20b95ce25ff8"   # curated source block; drift -> review
+    text_hash: "20b95ce25ff8"     # narration; change -> re-render
+    text: |-
+      The universal file-creator
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "52d8f7005da3"   # curated source block; drift -> review
+    text_hash: "52d8f7005da3"     # narration; change -> re-render
+    text: |-
+      EXECUTE doesn't just write code — it writes everything. The principle is universal: every file the seed agent materializes on disk is brought into existence by EXECUTE. Project source, scripts, configuration, the .md plan, the .yaml plan, anything else with a path — all of it is EXECUTE's deliverable.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e716a2917952"   # curated source block; drift -> review
+    text_hash: "e716a2917952"     # narration; change -> re-render
+    text: |-
+      OBSERVE and PLAN do their thinking inside CLAUDE.md working memory; VERIFY refines what EXECUTE produced; CONDENSE routes content into durable layers. EXECUTE is the only phase that turns analysis into artifact.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "11ec37050937"   # curated source block; drift -> review
+    text_hash: "11ec37050937"     # narration; change -> re-render
+    text: |-
+      The plan file is one of those artifacts, and EXECUTE is where it is born. A Stage-2 job's cycle-1 EXECUTE materializes its .md plan; a Stage-3 job's cycle-1 EXECUTE materializes its .yaml plan. The producing phase creates the plan — not the read-only phases that named it, and not at job creation. Later cycles read and refine the file; EXECUTE is the only phase that brings it into existence.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a1c8c02a8867"   # curated source block; drift -> review
+    text_hash: "a1c8c02a8867"     # narration; change -> re-render
+    text: |-
+      The .yaml is not a second file the .md job spawns after a sign-off step. Stage 3 is what a mature Stage-2 plan inspires once a job has been run often enough to deserve per-phase context injection — a fresh job carrying the same work in a richer, parseable format. The cycle-1-EXECUTE-creates-the-plan rule holds identically for both; only the format the architect picked for that job differs.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a716f721103e"   # curated source block; drift -> review
+    text_hash: "a716f721103e"     # narration; change -> re-render
+    text: |-
+      How the plan file persists across cycles and across whole runs — carrying the job's accumulated experience as long-horizon memory, and (for a .yaml) injecting context at each phase entry — is the subject of Essay 6.10b.
+  - id: s16
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0e4e2e35250f"   # curated source block; drift -> review
+    text_hash: "0e4e2e35250f"     # narration; change -> re-render
+    text: |-
+      The frozen fence
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3160c220ff39"   # curated source block; drift -> review
+    text_hash: "3160c220ff39"     # narration; change -> re-render
+    text: |-
+      The altered list is a frozen snapshot of directories, captured from OBSERVE and PLAN at phase entry. A guard inspects every write call against that snapshot before the call lands. A path inside the snapshot proceeds. A path outside is rejected, and the agent has to either roll back to PLAN to amend the contract or accept the fence.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a2673239e05a"   # curated source block; drift -> review
+    text_hash: "a2673239e05a"     # narration; change -> re-render
+    text: |-
+      A second guard inside the same hook protects the phase-section anchors — the footer anchors from the previous essay — so that EXECUTE's writes cascade downward from the EXECUTE footer. It can land execution notes there and pre-stage refinements to the VERIFY checklist beneath the VERIFY footer, but it cannot edit what OBSERVE or PLAN wrote above the EXECUTE footer. The compartmentalization holds even within a single CLAUDE.md.
+  - id: s19
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "5e3ef4ddcb16"   # curated source block; drift -> review
+    text_hash: "5e3ef4ddcb16"     # narration; change -> re-render
+    text: |-
+      Checkpoints over runs
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6c78d721608a"   # curated source block; drift -> review
+    text_hash: "6c78d721608a"     # narration; change -> re-render
+    text: |-
+      The phase is structured around checkpoints — short, focused commits that finish one piece of the plan before starting the next. The pattern is deliberate. A long uncommitted run inside EXECUTE has the same problem as a long run anywhere else: drift accumulates, and a failure halfway through erases everything.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "18d9aff7b682"   # curated source block; drift -> review
+    text_hash: "18d9aff7b682"     # narration; change -> re-render
+    text: |-
+      Checkpointing forces small wins. It also gives the agent a clean place to pause and notice when the plan is wrong, before sinking another ten tool calls into the wrong direction.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9330e3eb621b"   # curated source block; drift -> review
+    text_hash: "9330e3eb621b"     # narration; change -> re-render
+    text: |-
+      EXECUTE writes two things: the code, and execution notes in the working CLAUDE.md. The notes are short — what surprised the agent, what decisions the agent made when the plan left a judgment call open, what the next phase should know. The notes are what turn a sequence of commits into a coherent narrative. They will be one of the things CONDENSE absorbs.
+  - id: s23
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9dd1f704d6e9"   # curated source block; drift -> review
+    text_hash: "9dd1f704d6e9"     # narration; change -> re-render
+    text: |-
+      The delegation bias
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "83002b1d6ba7"   # curated source block; drift -> review
+    text_hash: "83002b1d6ba7"     # narration; change -> re-render
+    text: |-
+      EXECUTE is also where subagent dispatch shows up most heavily, and the budget arithmetic encodes that explicitly. Every execute subagent the main session launches grants the session a small direct-action budget — a handful of extra writes the main session is allowed to make on its own. Every project file the main session edits itself spends some of that budget back.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1334bf9577fa"   # curated source block; drift -> review
+    text_hash: "1334bf9577fa"     # narration; change -> re-render
+    text: |-
+      Reading project files does not consume budget; only edits and writes outside .claude/ do. The arithmetic is small but the bias is intentional: the main session is incentivized to delegate the implementation to execute subagents rather than do the file work itself. A typical execute phase will spawn one or two execute subagents on file edits while the main session works on the spine of the change.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2cfac1a00173"   # curated source block; drift -> review
+    text_hash: "2cfac1a00173"     # narration; change -> re-render
+    text: |-
+      The discipline favors sequential dispatch — one execute subagent at a time, with the main session orchestrating between checkpoints. When fan-out is genuinely useful, the operational ceiling is kept low — currently held at two-in-flight in the prototype. That cap was set after a cycle in which a parallel dispatch pushed the context window past a safe tier and triggered cascading compaction. The deeper discipline of subagent dispatch — and the per-plugin agent rosters that make it tunable — is the subject of the Essay 7 series.
+  - id: s27
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0d0cae14ebda"   # curated source block; drift -> review
+    text_hash: "0d0cae14ebda"     # narration; change -> re-render
+    text: |-
+      The comment-density drift gate
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "263464151a07"   # curated source block; drift -> review
+    text_hash: "263464151a07"     # narration; change -> re-render
+    text: |-
+      EXECUTE carries one gate that no other phase has — a comment-density drift gate on code edits, enforced inside the same execute-guard hook that polices the altered list.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0374402fbb9a"   # curated source block; drift -> review
+    text_hash: "0374402fbb9a"     # narration; change -> re-render
+    text: |-
+      The rule is drift-only: an edit cannot lose comments relative to the file's prior state. There is no absolute floor; a sparsely-commented file does not trigger the gate, only an edit that strips reasoning from the file. Several distinct block verdicts cover the failure modes — code-added-without-comments, comments-stripped, comment-loss-disproportionate, docstring-stripped, new-file-no-docstring — each with its own block voice. A coaching tier (thin-comments) fires below the block threshold and lets the edit through with a stderr nudge.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1a7e4a715139"   # curated source block; drift -> review
+    text_hash: "1a7e4a715139"     # narration; change -> re-render
+    text: |-
+      The gate matters because the most common L L M failure mode on code edits is the silent comment-strip. An L L M optimizing for terseness will happily delete the # why this exists line as "cleanup." The reasoning is gone before any human reviews the diff. By forcing comment-loss to be visible at the moment of the edit — and by blocking the worst categories outright — the architecture protects the codebase's reasoning trail from the very tool writing it.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b66957ce3a0e"   # curated source block; drift -> review
+    text_hash: "b66957ce3a0e"     # narration; change -> re-render
+    text: |-
+      A worked example lands here. Cycle 3 of the migration job has reached EXECUTE. The altered list is set; the marker-schema revert has been planned. The agent dispatches one execute-* subagent to revert cycle 2's marker code, then turns to write a single hook update itself. The Write tool fires; the comment-density gate inspects the delta. The old script.sh carried a six-line header docstring; the new version has it intact but stripped two inline # the reason this branch exists comments from the body. The disproportionate-loss verdict fires. The edit is blocked. The agent reads the block message, restores the comments, re-submits. The check passes. Reasoning preserved; commit landed.
+  - id: s32
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0d75cadb21e0"   # curated source block; drift -> review
+    text_hash: "0d75cadb21e0"     # narration; change -> re-render
+    text: |-
+      The reflection that closes the phase
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f9c2507e85c0"   # curated source block; drift -> review
+    text_hash: "f9c2507e85c0"     # narration; change -> re-render
+    text: |-
+      Everything above is EXECUTE's operational half — the building, the checkpoints, the files materialized on disk. The phase has a second half, and it opens only at the exit. Before EXECUTE may advance, a reflection pass runs: a drift-auditor reads what the phase actually changed against what the plan said it would, and names the three ways a build drifts from its contract — what the plan asked for but is missing, what got built that the plan never asked for, and what got built differently than planned.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4a0e7a7f938c"   # curated source block; drift -> review
+    text_hash: "4a0e7a7f938c"     # narration; change -> re-render
+    text: |-
+      Its answer is written into EXECUTE's slice of the cycle's compaction file — the cross-session memory that carries the reflection forward across a context reset, introduced in the always-on cortex. The checkpoint commits already leave a trail of reviewable diffs; the drift-auditor reads across the whole trail at once, catching the slow widening that no single checkpoint shows.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ed70b6ed6646"   # curated source block; drift -> review
+    text_hash: "ed70b6ed6646"     # narration; change -> re-render
+    text: |-
+      The boundary does not open on volume. The rhythm described above paces the build from inside — the min-max gate, the direct-action budget, the comment-density drift gate all run exactly as laid out. What unlocks the door to VERIFY is the phase's exit gate, and it asks three things: enough reflection ran, the drift-auditor left its receipt, and enough execution notes were staged for CONDENSE to harvest later. Essay 6.2 draws this gate in full across all five phases; EXECUTE simply turns the lens on the distance between what it planned and what it shipped.
+  - id: s36
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "04fedb657f5d"   # curated source block; drift -> review
+    text_hash: "04fedb657f5d"     # narration; change -> re-render
+    text: |-
+      EXECUTE is where most architects will tune the most knobs, because it is where the seed agent's velocity actually shows.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "dd623c15cc64"   # curated source block; drift -> review
+    text_hash: "dd623c15cc64"     # narration; change -> re-render
+    text: |-
+      The architect would tune the execute subagent roster. The current roster covers code edits, test runs (deferred to VERIFY), and bulk refactors. A seed working in a content-heavy domain — legal drafting, market research write-ups — would want subagents specialized for prose generation and citation insertion, with their own scope guards. The roster is the surface; the entries are yours.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7967ba6f9d02"   # curated source block; drift -> review
+    text_hash: "7967ba6f9d02"     # narration; change -> re-render
+    text: |-
+      The architect would tune the direct-action budget arithmetic. The current grant (currently +3 in the prototype) per execute-subagent dispatch and the consumption per project edit (currently -1) are tunable. Your seed might want a higher delegation bias (a larger grant, a heavier consumption) or a lower one. The arithmetic is small; the bias it encodes is large.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0b5c3b6ccf99"   # curated source block; drift -> review
+    text_hash: "0b5c3b6ccf99"     # narration; change -> re-render
+    text: |-
+      The architect would tune the comment-density verdicts. The current block-categories (currently five in the prototype) and the coaching category were calibrated against the prototype's own cycles. A seed working in a heavily-commented domain might block on thinner deltas; one working with a generated-code intermediate stage might exempt specific paths from the gate entirely. The verdicts are the mechanism; the thresholds are yours.
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aa5414d120a0"   # curated source block; drift -> review
+    text_hash: "aa5414d120a0"     # narration; change -> re-render
+    text: |-
+      The altered-list-fenced-EXECUTE pattern lifts off the prototype into any work where a misaimed edit is expensive. A legal-drafting seed cultivated by a litigation associate could install the altered-list fence around the active-matter folder, so the redline subagent EXECUTE dispatches cannot edit briefs filed under any other matter; the comment-density verdicts retune to fire on stripped statutory citations and footnote anchors rather than stripped code comments, since those are the reasoning trail the next reviewer depends on.
+  - id: s42
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e6d1da62c71d"   # curated source block; drift -> review
+    text_hash: "e6d1da62c71d"     # narration; change -> re-render
+    text: |-
+      The honest design-limit is that the fence and the verdicts are friction, not mathematical enforcement: the path-scope check, the section-anchor check, the comment-density delta are voice injections riding on top of pre-tool-call hooks, and the checkpoint commits are agent discipline rather than transactional rollback.
+  - id: s43
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0531c3b580b3"   # curated source block; drift -> review
+    text_hash: "0531c3b580b3"     # narration; change -> re-render
+    text: |-
+      A determined operator can route a cross-matter edit through gmode, the named off-cycle lane, and pay the deliberate-bypass tax of composing the justification; the agent could in principle work around the spirit of the fence by editing through prose channels the guard does not inspect. The discipline rests on the agent reading and obeying the injected voice, slowed enough by the friction that the operator can intervene before the misaim lands.
+  - id: s44
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8f2e6a8245d1"   # curated source block; drift -> review
+    text_hash: "8f2e6a8245d1"     # narration; change -> re-render
+    text: |-
+      What the architect would not customize is the altered-list fence itself. The fence is the floor: an execute phase that lets the agent write outside the plan's declared scope is not an execute phase.
+  - id: s45
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c31a025f9be2"   # curated source block; drift -> review
+    text_hash: "c31a025f9be2"     # narration; change -> re-render
+    text: |-
+      The deepest payoff of EXECUTE is the cognitive failure mode it prevents: the cleanup that erases reasoning. An L L M finishing a job will, given freedom, polish its output by removing things it judges decorative — comments, docstrings, the careful # why lines that future-readers depend on. The comment-density gate is the architecture's structural answer. Combined with the altered-list fence and the checkpoint cadence, EXECUTE is the phase that lets the agent build fast without letting it build fast in ways the next architect (or the next-cycle agent) will silently inherit and curse.
+  - id: s46
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b3ffc5405292"   # curated source block; drift -> review
+    text_hash: "b3ffc5405292"     # narration; change -> re-render
+    text: |-
+      When EXECUTE believes the plan is implemented, it commits the final checkpoint and the orchestrator advances the job to VERIFY.

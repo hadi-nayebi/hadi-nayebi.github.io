@@ -1,0 +1,226 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: skeleton-claudemd-hooks-scripts
+source_md: 07_2-skeleton-claudemd-hooks-scripts.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "850a29b37e83"   # curated source block; drift -> review
+    text_hash: "850a29b37e83"     # narration; change -> re-render
+    text: |-
+      Skeleton: CLAUDE.md, Hooks, and Scripts
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9f3105149069"   # curated source block; drift -> review
+    text_hash: "9f3105149069"     # narration; change -> re-render
+    text: |-
+      Essay 7.1 framed the plugin as a cell — a system of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Every organ carries the same three properties: who reads it, who writes it, what it depends on. This sub-essay opens the universal-skeleton organs every plugin in the prototype must have and names those properties at each step.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "b721735b3d37"   # curated source block; drift -> review
+    text_hash: "b721735b3d37"     # narration; change -> re-render
+    text: |-
+      CLAUDE.md — The Plugin's Brain Surface
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a4c599e4ff69"   # curated source block; drift -> review
+    text_hash: "a4c599e4ff69"     # narration; change -> re-render
+    text: |-
+      What it is. A markdown file at the root of every plugin directory — the plugin's primary memory surface, declaring what the plugin owns, what its hooks fire on, what its size limits are, what its current version is. Every plugin carries one — there is no exception. The file is the agent's primary read at session start and at every moment the plugin becomes relevant to the work.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "295115cfaac9"   # curated source block; drift -> review
+    text_hash: "295115cfaac9"     # narration; change -> re-render
+    text: |-
+      Who reads it. The L L M, mostly. Claude Code reads CLAUDE.md files into the agent's working memory at session start. When a plugin is unlocked for editing, the unlock ceremony auto-injects the plugin's CLAUDE.md (along with docs/evolution.md) so the editor inherits the plugin's reasoning before changing anything. Other plugins reading this plugin's CLAUDE.md happens rarely and almost always for one-line cross-references, not deep parsing.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "782b97419ad5"   # curated source block; drift -> review
+    text_hash: "782b97419ad5"     # narration; change -> re-render
+    text: |-
+      Who writes it. The CONDENSE phase. By design, CLAUDE.md edits route through CONDENSE because that is the only phase whose guard permits writes to the brain layer. The operator can also touch CLAUDE.md directly via gmode for existing-plugin work — a deliberate escape hatch for fixes outside the cycle ceremony.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c288f350bfb7"   # curated source block; drift -> review
+    text_hash: "c288f350bfb7"     # narration; change -> re-render
+    text: |-
+      What it depends on. Almost nothing inside the plugin. CLAUDE.md is the surface; other organs depend on it, not the reverse. The single exception is the four phase-section anchors at the bottom (the OBSERVE footer, the PLAN footer, the EXECUTE footer, the VERIFY footer) which the section-boundary guard reads to decide where each phase may write.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a28175aac747"   # curated source block; drift -> review
+    text_hash: "a28175aac747"     # narration; change -> re-render
+    text: |-
+      The new-plugin lens. When you guide your seed agent to create a new plugin, the first artifact the seed authors is CLAUDE.md. The seed declares the plugin's single concern, names the hooks it will register, lists its size limits, and stamps version v0.1.0. Every other organ inside the plugin will reference choices made here. If CLAUDE.md does not name the concern clearly, the rest of the plugin drifts. New-user guidance: tell your seed to write CLAUDE.md FIRST, then the hooks, then everything else.
+  - id: s09
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "bcd64556c2fc"   # curated source block; drift -> review
+    text_hash: "bcd64556c2fc"     # narration; change -> re-render
+    text: |-
+      hooks/ — The Reflexes
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "130ca0f4aa6c"   # curated source block; drift -> review
+    text_hash: "130ca0f4aa6c"     # narration; change -> re-render
+    text: |-
+      What it is. A directory of small shell scripts that fire on Claude Code events: UserPromptSubmit, PreToolUse, PostToolUse, Stop, SessionStart, SubagentStart, SubagentStop. Hooks are how the plugin reaches the agent's cognitive process from outside the L L M. They are pure shell, executing in milliseconds, returning exit codes that decide whether the call proceeds.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c9b8b3e4f454"   # curated source block; drift -> review
+    text_hash: "c9b8b3e4f454"     # narration; change -> re-render
+    text: |-
+      The one rule every hook obeys: fail toward the safe outcome. A hook is a guard standing in front of the agent's own tools, so a bug in the guard is a bug that could freeze the whole seed agent. The kit answers this with a four-part behavioral contract. Every hook must reach a deliberate exit code — never an accidental crash. Block messages go out on standard error, the channel the agent reads. Exit zero means allow; exit two means block. And any internal failure — a missing file, a parse error, an absent config — falls toward the safe outcome, which is almost always allow. A guard's own breakage can never be the thing that stalls the work. The phase guards take this so seriously that they deliberately skip strict shell mode, each carrying the header note that the hook "must always reach exit."
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9f959d80d309"   # curated source block; drift -> review
+    text_hash: "9f959d80d309"     # narration; change -> re-render
+    text: |-
+      The deliberate exception. One guard flips the default on purpose: the stop gate that decides whether the agent may finish. If its state file is corrupted, it blocks rather than allows — because letting the agent stop on top of unverifiable job state is itself the unsafe outcome, the one that quietly loses work. The rule is not "always allow." The rule is "fail toward the safe outcome," and for the stop gate, blocking is safe.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "855ddea68ff0"   # curated source block; drift -> review
+    text_hash: "855ddea68ff0"     # narration; change -> re-render
+    text: |-
+      Who reads them. Claude Code itself, at event time. The agent never reads its own hooks during reasoning — the hooks are invisible to the L L M unless one of them emits a voice into the context.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "646a6f046d01"   # curated source block; drift -> review
+    text_hash: "646a6f046d01"     # narration; change -> re-render
+    text: |-
+      Who writes them. The plugin-lock ceremony. Plugin code is not edited the way ordinary files are — every change passes through a deliberate unlock cycle, runs the plugin's test suite at the lock boundary, and reverts to a captured git checkpoint on test failure.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "76f94e8a9d67"   # curated source block; drift -> review
+    text_hash: "76f94e8a9d67"     # narration; change -> re-render
+    text: |-
+      What they depend on. A small set of sibling organs: scripts/ (when a hook needs to invoke the plugin's own C L I for state mutation), hooks/voice.xml (for every message the hook emits to the agent's context), data Jason (for state, but only read-mediated through the plugin's own scripts — never directly), and a shared helper at .claude/plugins/lib/voice-helper/ (the get_voice substitution function).
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f1f92b51905f"   # curated source block; drift -> review
+    text_hash: "f1f92b51905f"     # narration; change -> re-render
+    text: |-
+      The new-plugin lens. When you guide your seed to create a plugin, the seed decides which Claude Code events the plugin needs to fire on, and authors one hook per event. A plugin with no hooks is dead — every active plugin has at least one. The final activation step is operator-controlled registration in the brain-root settings.local.json (covered in Essay 7.7); the seed can assist, but the plugin does not self-register. Without registration, the file is just a shell script on disk that nothing invokes. A research lab could install a [PROTOCOL-CHECK] plugin whose hooks/ fires on every [IRB-RELEVANT] question; scripts/ exposes protocol.sh validate for downstream auditors. Same skeleton, same edit-gate; different concern.
+  - id: s17
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9ffcf6264623"   # curated source block; drift -> review
+    text_hash: "9ffcf6264623"     # narration; change -> re-render
+    text: |-
+      scripts/ — The Verbs
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c284f70cee0a"   # curated source block; drift -> review
+    text_hash: "c284f70cee0a"     # narration; change -> re-render
+    text: |-
+      What it is. A directory of internal C L I scripts the plugin publishes for the agent (or another plugin) to call. phase.sh advance. plan.sh set-plan-file. safe-lock.sh. drift-check.sh. Scripts are how the plugin lets the agent or other plugins talk to it through a stable interface.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "df3a22c2dbe8"   # curated source block; drift -> review
+    text_hash: "df3a22c2dbe8"     # narration; change -> re-render
+    text: |-
+      Who reads them. The agent, when it invokes a command. Other plugins, when they query this plugin's state via its published read-only commands. The hooks of this plugin, when they need to mutate data Jason (the only path to mutation is the plugin's own scripts).
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "12854266d7ed"   # curated source block; drift -> review
+    text_hash: "12854266d7ed"     # narration; change -> re-render
+    text: |-
+      Who writes them. Same plugin-lock ceremony as hooks. Scripts and hooks share the same edit gate because both are code.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3c010f7ced56"   # curated source block; drift -> review
+    text_hash: "3c010f7ced56"     # narration; change -> re-render
+    text: |-
+      What they depend on. data Jason (the script either reads it or atomically mutates it via the read-under-flock + jq-transform + temp-validate + atomic-mv protocol). voice.xml (for messages to whoever called the script). config.conf (for operator-tunable thresholds). The lib/voice-helper/ shared helper.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3b8e2cec3d9b"   # curated source block; drift -> review
+    text_hash: "3b8e2cec3d9b"     # narration; change -> re-render
+    text: |-
+      The Distributed Job Extension pattern. Other plugins reach into this plugin only through these scripts — never through the raw data Jason. The plugin's public read-only commands (job.sh focused, phase.sh current) are the entire cross-plugin contract. Direct cat data Jason from outside the owning plugin is forbidden discipline. New-user guidance: when you guide your seed to write a plugin that wants to know about another plugin's state, tell the seed to call the other plugin's *.sh command, not to peek at its files. The seed's own knowledge layer reinforces this — every plugin's knowledge dir names its public-A P I commands explicitly so future cycles can find them.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "78df0fb0213d"   # curated source block; drift -> review
+    text_hash: "78df0fb0213d"     # narration; change -> re-render
+    text: |-
+      The minimum-viable plugin shape. Not every plugin needs scripts/. question-discipline ships none — it is a pure-gate plugin that does not publish C L I verbs. A plugin without scripts/ is announcing: I do not expose verbs; I only enforce. The absence is itself information.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f7cea0d44bd9"   # curated source block; drift -> review
+    text_hash: "f7cea0d44bd9"     # narration; change -> re-render
+    text: |-
+      The skeleton organs share one edit gate. CLAUDE.md is the brain surface; hooks are the reflexes; scripts are the verbs when a plugin exposes verbs. The core skeleton ships together, while organs like scripts/ can be intentionally absent for pure-gate plugins. Edits to the plugin substrate still pass through the same PLUGIN-LOCK ceremony. The gate is friction — gmode bypasses it deliberately, and coverage gaps in the plugin's own tests let bad edits through. The next sub-essay opens the organ that almost every plugin doubles — voice.xml, once for the L L M and once for the operator.

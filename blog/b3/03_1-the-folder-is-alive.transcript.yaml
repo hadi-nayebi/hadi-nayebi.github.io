@@ -1,0 +1,1018 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: the-folder-is-alive
+source_md: 03_1-the-folder-is-alive.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:23:59Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "da2a9de3404b"   # curated source block; drift -> review
+    text_hash: "da2a9de3404b"     # narration; change -> re-render
+    text: |-
+      The Folder Is Alive
+  - id: s02
+    kind: quote
+    engine: alt
+    sync: in-sync
+    gap_after: 0.75
+    source_hash: "df0fd35343b8"   # curated source block; drift -> review
+    text_hash: "df0fd35343b8"     # narration; change -> re-render
+    text: |-
+      Your liver runs in the background. So will the work you taught your cortex.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ca67b7550332"   # curated source block; drift -> review
+    text_hash: "ca67b7550332"     # narration; change -> re-render
+    text: |-
+      Open the laptop of a person five years from now.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d4a0eebedd26"   # curated source block; drift -> review
+    text_hash: "d4a0eebedd26"     # narration; change -> re-render
+    text: |-
+      Inside one folder, twenty smaller folders. One handles the year-end taxes. One drafts the monthly client report. One scouts new academic papers in their field. One plans the family vacation. One reconciles bank statements. One files insurance claims. One curates the kid's reading list. One knows how their consulting firm onboards every new account.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6ace6795adc2"   # curated source block; drift -> review
+    text_hash: "6ace6795adc2"     # narration; change -> re-render
+    text: |-
+      None of them came pre-built. The person taught each one, one job at a time. Most started clumsy. All of them got better.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5b6ccf7cc053"   # curated source block; drift -> review
+    text_hash: "5b6ccf7cc053"     # narration; change -> re-render
+    text: |-
+      This is not science fiction. It is not a roadmap either. It is the foreseeable consequence of one quiet idea: a generic substrate for cognition that any professional can shape.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ea33bbb48d5e"   # curated source block; drift -> review
+    text_hash: "ea33bbb48d5e"     # narration; change -> re-render
+    text: |-
+      We have a name for it. We call it the seed agent. The folder full of seed agents is your personal cognitive workforce.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1c060c51c50b"   # curated source block; drift -> review
+    text_hash: "1c060c51c50b"     # narration; change -> re-render
+    text: |-
+      One person. One folder. A whole working life.
+  - id: s09
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "6ed83ac7a6f5"   # curated source block; drift -> review
+    text_hash: "6ed83ac7a6f5"     # narration; change -> re-render
+    text: |-
+      The PowerPoint Moment
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6895f1e8cf9a"   # curated source block; drift -> review
+    text_hash: "6895f1e8cf9a"     # narration; change -> re-render
+    text: |-
+      Think about PowerPoint for a second.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "71f227aa1396"   # curated source block; drift -> review
+    text_hash: "71f227aa1396"     # narration; change -> re-render
+    text: |-
+      When PowerPoint first showed up, it was not a tool for "making slides about quarterly earnings" or "making slides about wedding toasts." It was a tool for putting things on rectangles. People learned the substrate. Then they made everything with it — pitch decks, eulogies, birthday slideshows, defense briefings, lecture notes, wedding photo montages. The substrate did not care which one. The substrate just knew rectangles.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "daba9f0d39e5"   # curated source block; drift -> review
+    text_hash: "daba9f0d39e5"     # narration; change -> re-render
+    text: |-
+      Once you learned the substrate, every use case became yours.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c9b15f9a8e37"   # curated source block; drift -> review
+    text_hash: "c9b15f9a8e37"     # narration; change -> re-render
+    text: |-
+      The seed agent is the same kind of moment, except the substrate is not rectangles. It is cognition — observation, planning, execution, verification, and the slow absorbing of what was learned. Every professional who learns how it thinks can teach it anything. A tax accountant teaches their seed agent how they file. A litigator teaches one how they prep a case file. A novelist teaches one how they outline a chapter. A real estate agent teaches one how they qualify a lead.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7b6708907b58"   # curated source block; drift -> review
+    text_hash: "7b6708907b58"     # narration; change -> re-render
+    text: |-
+      The substrate stays generic. The taught agent becomes specific.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a342f660b4d3"   # curated source block; drift -> review
+    text_hash: "a342f660b4d3"     # narration; change -> re-render
+    text: |-
+      This is what an academy is for. Not to ship a hundred specialty agents we sell on a shelf. To teach the substrate, then get out of the way.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3fcdfaf2c5d2"   # curated source block; drift -> review
+    text_hash: "3fcdfaf2c5d2"     # narration; change -> re-render
+    text: |-
+      PowerPoint was rectangles. The seed agent is cognition.
+  - id: s17
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "71cd6052083e"   # curated source block; drift -> review
+    text_hash: "71cd6052083e"     # narration; change -> re-render
+    text: |-
+      Cognitive Metabolism
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "09d290306bcc"   # curated source block; drift -> review
+    text_hash: "09d290306bcc"     # narration; change -> re-render
+    text: |-
+      The architectural fact under all of this is small enough to fit in one sentence:
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "916bca793e8d"   # curated source block; drift -> review
+    text_hash: "916bca793e8d"     # narration; change -> re-render
+    text: |-
+      Add a .claude/ directory to any folder on your computer, and that folder becomes an agent.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5099ecc87daa"   # curated source block; drift -> review
+    text_hash: "5099ecc87daa"     # narration; change -> re-render
+    text: |-
+      The brain lives in .claude/. The work lives in sibling directories under the same folder — the data, the reports, the references, whatever the job actually operates on. The L L M reads the brain, operates on the siblings, writes back the lessons it learned along the way. The same pattern works for .opencode/ and any equivalent brain directory in any other C L I agent.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e5281965aba4"   # curated source block; drift -> review
+    text_hash: "e5281965aba4"     # narration; change -> re-render
+    text: |-
+      That is it. That is the whole architectural primitive that gives you the folder full of specialists. Each "specialist" in the folder is exactly this: a folder with a brain dir and a few sibling work dirs.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ed68cc807e2b"   # curated source block; drift -> review
+    text_hash: "ed68cc807e2b"     # narration; change -> re-render
+    text: |-
+      Without the L L M, that folder is just files. They sit on disk. They do nothing.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2847367a14f3"   # curated source block; drift -> review
+    text_hash: "2847367a14f3"     # narration; change -> re-render
+    text: |-
+      But add the L L M, and the folder starts to move. The agent reads its own knowledge files, updates its plans, migrates lessons from one corner of the folder to another, refines what it has learned about you, and tightens its own rules. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "df66d944b9fe"   # curated source block; drift -> review
+    text_hash: "df66d944b9fe"     # narration; change -> re-render
+    text: |-
+      There is no good word for this in plain English yet. So let us coin one.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a920afce07b8"   # curated source block; drift -> review
+    text_hash: "a920afce07b8"     # narration; change -> re-render
+    text: |-
+      Call it cognitive metabolism.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b43edabbf2a1"   # curated source block; drift -> review
+    text_hash: "b43edabbf2a1"     # narration; change -> re-render
+    text: |-
+      The L L M is the metabolism's energy — the same way electricity is energy in a toaster, the same way ATP is energy in your cells. The files are the tissue. The metabolism is the continuous motion that keeps the tissue alive. (Essay 2 put the verb in your hands — the agent metabolizes tokens. This essay names the noun.)
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e7052de7741e"   # curated source block; drift -> review
+    text_hash: "e7052de7741e"     # narration; change -> re-render
+    text: |-
+      This is what makes a seed agent yours. Not the files. The metabolism running on top of them. Your taught lessons get consolidated. Your corrections get absorbed. Your patterns get learned. All of it happens in the background, by an agent following the rules you helped it write.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "769d05227f79"   # curated source block; drift -> review
+    text_hash: "769d05227f79"     # narration; change -> re-render
+    text: |-
+      Static files would be a brain in a jar. Cognitive metabolism makes them a brain at work.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fd502dc5ca4e"   # curated source block; drift -> review
+    text_hash: "fd502dc5ca4e"     # narration; change -> re-render
+    text: |-
+      Files are the tissue. The L L M is the energy. Cognitive metabolism is what brings it to life.
+  - id: s30
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "20048ceeee45"   # curated source block; drift -> review
+    text_hash: "20048ceeee45"     # narration; change -> re-render
+    text: |-
+      The Shape of Teaching
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "95321039ffc4"   # curated source block; drift -> review
+    text_hash: "95321039ffc4"     # narration; change -> re-render
+    text: |-
+      Teaching one of these agents is concrete. There is no mystique to it.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "da76670b3ebe"   # curated source block; drift -> review
+    text_hash: "da76670b3ebe"     # narration; change -> re-render
+    text: |-
+      The first time you do a job with the seed agent, you sit next to it. You explain what you care about. You correct it when it misses something. You tell it which fields matter, which ones don't, which mistakes are unforgivable, which corners it can cut. The agent watches and listens, and writes everything down.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "89c5049a34e7"   # curated source block; drift -> review
+    text_hash: "89c5049a34e7"     # narration; change -> re-render
+    text: |-
+      Not as transcript. As structured memory. What you taught it ends up in files inside the brain dir. You can open them and read them. There is no black box. There is a folder, there are notes, and the notes describe the job you just did together.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e556865c6843"   # curated source block; drift -> review
+    text_hash: "e556865c6843"     # narration; change -> re-render
+    text: |-
+      The second time, the agent is faster. It remembers the last conversation. It still asks questions, but the right ones. You correct less.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1af14206e93d"   # curated source block; drift -> review
+    text_hash: "1af14206e93d"     # narration; change -> re-render
+    text: |-
+      By the third or fourth time, the agent has a plan file — a document the agent wrote that describes how the job goes, your way, in your words, refined through practice. The plan file is the agent's promotion. It used to make it up each time. Now it works from a script you co-authored.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "16ef683ad8fb"   # curated source block; drift -> review
+    text_hash: "16ef683ad8fb"     # narration; change -> re-render
+    text: |-
+      For jobs you do enough, the agent eventually grows the plan into something stronger. A piece of itself that knows the job by heart. Inside the agent, this is called a plugin. To you, it is the moment a particular job moved out of your head and into the cortex, where it can be done without drawing on your attention for the small stuff anymore.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d9f2befc2825"   # curated source block; drift -> review
+    text_hash: "d9f2befc2825"     # narration; change -> re-render
+    text: |-
+      Three steps. Apprentice. Trained colleague. Resident specialist.
+  - id: s38
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "da6d9593506a"   # curated source block; drift -> review
+    text_hash: "da6d9593506a"     # narration; change -> re-render
+    text: |-
+      Forty Years of Forced Delegation
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0574d4ce40f6"   # curated source block; drift -> review
+    text_hash: "0574d4ce40f6"     # narration; change -> re-render
+    text: |-
+      Here is what the digital age did to ordinary people.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a574870d2436"   # curated source block; drift -> review
+    text_hash: "a574870d2436"     # narration; change -> re-render
+    text: |-
+      For roughly the last forty years, every part of life that touched a computer required someone technical. Filing taxes online. Setting up a small business website. Building a spreadsheet that did not break. Reading the legal terms of a service before clicking agree. Backing up the family photos. Managing the password chaos. Configuring the home network. Recovering when something stopped working.
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c600ddb021a5"   # curated source block; drift -> review
+    text_hash: "c600ddb021a5"     # narration; change -> re-render
+    text: |-
+      If you were not technical, you outsourced. To your accountant. To your IT guy. To your kid. To your tech-savvy friend. To the company tech support that put you on hold for ninety minutes.
+  - id: s42
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "34ae9353c5fc"   # curated source block; drift -> review
+    text_hash: "34ae9353c5fc"     # narration; change -> re-render
+    text: |-
+      Not because the work was hard. Because the interface was hard.
+  - id: s43
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "995221f2a560"   # curated source block; drift -> review
+    text_hash: "995221f2a560"     # narration; change -> re-render
+    text: |-
+      Forty years of normal people paying — in money or in favors — to bridge a gap that should never have been there.
+  - id: s44
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "98e68ac14217"   # curated source block; drift -> review
+    text_hash: "98e68ac14217"     # narration; change -> re-render
+    text: |-
+      Then the cost of delegation began to collapse.
+  - id: s45
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "55f2ae71faa6"   # curated source block; drift -> review
+    text_hash: "55f2ae71faa6"     # narration; change -> re-render
+    text: |-
+      Electricity is a utility for energy. The plug in the wall does not care if you are a physicist. It just delivers. The L L M is now a utility for intelligence. It does not care if you can code. It just delivers reasoning. Plain English in. Useful work out.
+  - id: s46
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "57dd013fbeb5"   # curated source block; drift -> review
+    text_hash: "57dd013fbeb5"     # narration; change -> re-render
+    text: |-
+      When intelligence becomes a utility, delegation becomes a feature, not a privilege. You no longer need to be the technical person. You no longer need to hire the technical person. You teach the agent in plain words. The agent runs the technical part on your behalf.
+  - id: s47
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cabdfd813fc9"   # curated source block; drift -> review
+    text_hash: "cabdfd813fc9"     # narration; change -> re-render
+    text: |-
+      Forty years of forced dependence on external entities — finally optional.
+  - id: s48
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "1304dc4a754d"   # curated source block; drift -> review
+    text_hash: "1304dc4a754d"     # narration; change -> re-render
+    text: |-
+      What "Off-Loading" Really Means
+  - id: s49
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fac0c2a4098c"   # curated source block; drift -> review
+    text_hash: "fac0c2a4098c"     # narration; change -> re-render
+    text: |-
+      It is tempting to say "the agent does the work while you sleep." It sounds great in marketing. It oversells, and it sells the wrong thing.
+  - id: s50
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0f0a381bc400"   # curated source block; drift -> review
+    text_hash: "0f0a381bc400"     # narration; change -> re-render
+    text: |-
+      The honest framing is quieter and truer: the agent holds the procedure so your mind doesn't have to.
+  - id: s51
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eb4d9246b492"   # curated source block; drift -> review
+    text_hash: "eb4d9246b492"     # narration; change -> re-render
+    text: |-
+      You still decide that the taxes need filing. You still set the year's strategy. You still answer the questions that require your judgment, your taste, your relationships. What the agent holds is the how — every checklist item, every form, every gotcha you discovered three years ago, every corner you decided was OK to cut. That part used to live in your head, and every time you needed it, you had to dig it back out.
+  - id: s52
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2b73c52d3a26"   # curated source block; drift -> review
+    text_hash: "2b73c52d3a26"     # narration; change -> re-render
+    text: |-
+      Now it lives in the cognitive metabolism. The cortex remembers. You don't have to.
+  - id: s53
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b6498c1d8b67"   # curated source block; drift -> review
+    text_hash: "b6498c1d8b67"     # narration; change -> re-render
+    text: |-
+      Different jobs split the labor differently. For some, the agent only needs you for the strategic moments. For others, it does the prep work and hands you a clean situation to decide in. For the easiest, it just does the thing and shows you what it did.
+  - id: s54
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a013cd3c1140"   # curated source block; drift -> review
+    text_hash: "a013cd3c1140"     # narration; change -> re-render
+    text: |-
+      The point is not autonomy. The point is liberation.
+  - id: s55
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "34639b079404"   # curated source block; drift -> review
+    text_hash: "34639b079404"     # narration; change -> re-render
+    text: |-
+      The Scaling Multiplier
+  - id: s56
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "61afc66e5e48"   # curated source block; drift -> review
+    text_hash: "61afc66e5e48"     # narration; change -> re-render
+    text: |-
+      There is a second consequence. Bigger than liberation. Harder to see at first.
+  - id: s57
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0768a2351ca1"   # curated source block; drift -> review
+    text_hash: "0768a2351ca1"     # narration; change -> re-render
+    text: |-
+      If your seed agent runs roughly 80% of the procedural load of your professional work, your bandwidth changes shape. The 20% where your judgment matters — that is now where your full attention goes, instead of being squeezed in between the parts that drained it.
+  - id: s58
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "52594895eeb5"   # curated source block; drift -> review
+    text_hash: "52594895eeb5"     # narration; change -> re-render
+    text: |-
+      Take a small consulting practice. The consultant who used to handle two or three clients can think about handling many more, because the seed agent runs the discovery worksheets, drafts the first-pass proposals, structures the recommendation memo, builds the handoff packet, and follows up at the right intervals — all in the consultant's exact style, because the consultant taught it. The consultant brings the strategy, the relationship, the moment of insight that closes the deal. Same person. Same expertise. Several folds the output.
+  - id: s59
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "32e7488b773e"   # curated source block; drift -> review
+    text_hash: "32e7488b773e"     # narration; change -> re-render
+    text: |-
+      This is not a story about working harder. The 80% the agent handles was never the part you loved. The 20% the agent leaves you is.
+  - id: s60
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "481dc16612f8"   # curated source block; drift -> review
+    text_hash: "481dc16612f8"     # narration; change -> re-render
+    text: |-
+      The same multiplier applies wherever professional life has structure. A researcher reads more papers. A litigator preps more cases. A financial planner serves more families. A novelist holds more story threads at once.
+  - id: s61
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0b4793132c24"   # curated source block; drift -> review
+    text_hash: "0b4793132c24"     # narration; change -> re-render
+    text: |-
+      The agent runs the procedure. The professional spends their hours on what only they can do. This is what scaling looks like when the bottleneck was never the work — it was the cognitive overhead around the work.
+  - id: s62
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e63fd0d65a0f"   # curated source block; drift -> review
+    text_hash: "e63fd0d65a0f"     # narration; change -> re-render
+    text: |-
+      Taught once. Used thousands of times. Gets better every time.
+  - id: s63
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "797b1a73b260"   # curated source block; drift -> review
+    text_hash: "797b1a73b260"     # narration; change -> re-render
+    text: |-
+      Rhythms
+  - id: s64
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "08ad98374022"   # curated source block; drift -> review
+    text_hash: "08ad98374022"     # narration; change -> re-render
+    text: |-
+      Not every job has the same shape.
+  - id: s65
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "153afd29485f"   # curated source block; drift -> review
+    text_hash: "153afd29485f"     # narration; change -> re-render
+    text: |-
+      Some are one-off. Write this email, summarize this contract, draft this proposal, then close. The agent helps once, and the work is done.
+  - id: s66
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "986ccd7211d0"   # curated source block; drift -> review
+    text_hash: "986ccd7211d0"     # narration; change -> re-render
+    text: |-
+      Others are repeating — every Friday, every quarter, every April. The agent learns the rhythm. When the time comes, the work surfaces, ready to start. You no longer have to remember to start.
+  - id: s67
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c494e3a2347f"   # curated source block; drift -> review
+    text_hash: "c494e3a2347f"     # narration; change -> re-render
+    text: |-
+      Some are on-call, waiting for a signal. When X happens — a new client signs, a regulation changes, a paper drops in your field — the agent activates and does its part, then quiets again.
+  - id: s68
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4746794c0c7d"   # curated source block; drift -> review
+    text_hash: "4746794c0c7d"     # narration; change -> re-render
+    text: |-
+      And some are seasonal. The annual review. The year-end close. The tax filing. They wait between firings, holding what they learned the year before, picking up the moment the season returns.
+  - id: s69
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "428a5e51c3e7"   # curated source block; drift -> review
+    text_hash: "428a5e51c3e7"     # narration; change -> re-render
+    text: |-
+      Each agent in the folder is shaped by the rhythm of its own job. Many of them, in one folder, give a person something most working lives have never had: a week organized at the level of cognition, not just at the level of calendar.
+  - id: s70
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c6e9fdff37a6"   # curated source block; drift -> review
+    text_hash: "c6e9fdff37a6"     # narration; change -> re-render
+    text: |-
+      The Other Direction
+  - id: s71
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "806b8d545bbd"   # curated source block; drift -> review
+    text_hash: "806b8d545bbd"     # narration; change -> re-render
+    text: |-
+      So far we have talked about what the cortex produces. Work going out.
+  - id: s72
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f9e8ebebe629"   # curated source block; drift -> review
+    text_hash: "f9e8ebebe629"     # narration; change -> re-render
+    text: |-
+      There is another direction. What comes in.
+  - id: s73
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0918be6cfb2a"   # curated source block; drift -> review
+    text_hash: "0918be6cfb2a"     # narration; change -> re-render
+    text: |-
+      For decades, you handled the inbound flood with one ancient technology: the newsletter.
+  - id: s74
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6ca726c202d2"   # curated source block; drift -> review
+    text_hash: "6ca726c202d2"     # narration; change -> re-render
+    text: |-
+      A newsletter is delegation. You trusted someone — a journalist, an analyst, a fan of a niche topic — to read everything, filter it, and send you the part that mattered. You paid them, in money or attention. They made one curation. Thousands of people received it. One curation, many readers.
+  - id: s75
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "153ba162b932"   # curated source block; drift -> review
+    text_hash: "153ba162b932"     # narration; change -> re-render
+    text: |-
+      Now flip that around.
+  - id: s76
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4de4efd32118"   # curated source block; drift -> review
+    text_hash: "4de4efd32118"     # narration; change -> re-render
+    text: |-
+      Your seed agent reads the same sources newsletter authors read — the academic journals, the trade publications, the early-access feeds, the arXiv preprints. It reads the newsletters too, because newsletters are also signal. It reads everything you trust, and filters it through your interests, not someone else's. One curation, one reader.
+  - id: s77
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9d76ee666189"   # curated source block; drift -> review
+    text_hash: "9d76ee666189"     # narration; change -> re-render
+    text: |-
+      The result arrives in your inbox every morning, written by an agent that has been learning your taste for months. No one else gets it. No one else needs it.
+  - id: s78
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a85b973d543a"   # curated source block; drift -> review
+    text_hash: "a85b973d543a"     # narration; change -> re-render
+    text: |-
+      Now go further.
+  - id: s79
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f5de32b86c66"   # curated source block; drift -> review
+    text_hash: "f5de32b86c66"     # narration; change -> re-render
+    text: |-
+      Your Algorithm, Not Theirs
+  - id: s80
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "43ddef6b82b2"   # curated source block; drift -> review
+    text_hash: "43ddef6b82b2"     # narration; change -> re-render
+    text: |-
+      Your social media feed today is curated by a corporation whose interests are not yours. Their algorithm optimizes for engagement, which means outrage, which means staying on the platform. You are not the customer. The advertiser is. You are the inventory.
+  - id: s81
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "85e0df28af84"   # curated source block; drift -> review
+    text_hash: "85e0df28af84"     # narration; change -> re-render
+    text: |-
+      Replace the algorithm.
+  - id: s82
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cd3d57123269"   # curated source block; drift -> review
+    text_hash: "cd3d57123269"     # narration; change -> re-render
+    text: |-
+      Tell your seed agent what you actually want from a feed. The handful of people whose work you genuinely care about. The topics you want to go deeper on this season. The kind of content that makes you a better professional, versus the kind that makes you angrier and dumber. The agent assembles your feed. You defined the algorithm.
+  - id: s83
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d4629ea6dbcd"   # curated source block; drift -> review
+    text_hash: "d4629ea6dbcd"     # narration; change -> re-render
+    text: |-
+      The same logic extends everywhere — your news, your reading recommendations, your podcast queue, your alerts, your inbox. The cortex does not just produce work. It filters reality, on terms you set.
+  - id: s84
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "079611115c81"   # curated source block; drift -> review
+    text_hash: "079611115c81"     # narration; change -> re-render
+    text: |-
+      Your Apps, Your Data
+  - id: s85
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1866afd5a47b"   # curated source block; drift -> review
+    text_hash: "1866afd5a47b"     # narration; change -> re-render
+    text: |-
+      The deepest version of this is not a feed. It is a personal super-app. Your fitness dashboard. Your project tracker. Your finance overview. Your communication hub. Built by your agent, running on your hardware, holding your data — yours.
+  - id: s86
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1ace4c83b11b"   # curated source block; drift -> review
+    text_hash: "1ace4c83b11b"     # narration; change -> re-render
+    text: |-
+      Blog 3 already saw the architecture for this. The seed agent makes it concrete. Every feed, every dashboard, every utility you depend on can be replaced by something you shaped.
+  - id: s87
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c7083f756fb4"   # curated source block; drift -> review
+    text_hash: "c7083f756fb4"     # narration; change -> re-render
+    text: |-
+      The Punch Line
+  - id: s88
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0219f8a6b9b6"   # curated source block; drift -> review
+    text_hash: "0219f8a6b9b6"     # narration; change -> re-render
+    text: |-
+      Privacy is part of this. You stop being someone else's product. Your data stops being mined and resold.
+  - id: s89
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d4ba50d85d46"   # curated source block; drift -> review
+    text_hash: "d4ba50d85d46"     # narration; change -> re-render
+    text: |-
+      But privacy is the supporting argument. The headline is bigger.
+  - id: s90
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "994bd2f68d21"   # curated source block; drift -> review
+    text_hash: "994bd2f68d21"     # narration; change -> re-render
+    text: |-
+      You define the algorithm now. Of what comes in. Of what gets filtered out. Of what you spend your attention on. Of how your data is used. Of how you are nudged.
+  - id: s91
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "599cee11e041"   # curated source block; drift -> review
+    text_hash: "599cee11e041"     # narration; change -> re-render
+    text: |-
+      The terms of your digital life stop being chosen by a corporation whose incentives are not yours.
+  - id: s92
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f6cde7ed1447"   # curated source block; drift -> review
+    text_hash: "f6cde7ed1447"     # narration; change -> re-render
+    text: |-
+      That is autonomy. Real autonomy. Not the marketing version.
+  - id: s93
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "20dccc1c1aad"   # curated source block; drift -> review
+    text_hash: "20dccc1c1aad"     # narration; change -> re-render
+    text: |-
+      The cortex isn't only there to handle the work you don't want to do. It is also there to handle the manipulation you don't want to live under.
+  - id: s94
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "85bd766b0e5f"   # curated source block; drift -> review
+    text_hash: "85bd766b0e5f"     # narration; change -> re-render
+    text: |-
+      Why Education Is the Product
+  - id: s95
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fa6d40ea453c"   # curated source block; drift -> review
+    text_hash: "fa6d40ea453c"     # narration; change -> re-render
+    text: |-
+      You will notice we have not promised that the seed agent does your taxes for you.
+  - id: s96
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0dc6ad3afe11"   # curated source block; drift -> review
+    text_hash: "0dc6ad3afe11"     # narration; change -> re-render
+    text: |-
+      We will not. What we will promise is that we will teach you, in plain language, how the agent thinks. Once you understand that, you can teach it taxes. Or quarterly reports. Or research scouting. Or your news feed. Or whatever job you have that takes time you would rather spend elsewhere.
+  - id: s97
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d86345ea980c"   # curated source block; drift -> review
+    text_hash: "d86345ea980c"     # narration; change -> re-render
+    text: |-
+      This is the bargain. Hadosh Academy is an academy. The seed agent is what we hand you on the way in. The teaching is the rest of it — essays, walkthroughs, a community of professionals doing the same teaching in their own corner of the world.
+  - id: s98
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6f9b1f1491a2"   # curated source block; drift -> review
+    text_hash: "6f9b1f1491a2"     # narration; change -> re-render
+    text: |-
+      If we shipped a tax-filing agent, we would have one customer profile. Tax accountants. Maybe a few hobbyists. If we ship the substrate plus the teaching, we have every professional whose work has structure — which is nearly every professional.
+  - id: s99
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f5af470351df"   # curated source block; drift -> review
+    text_hash: "f5af470351df"     # narration; change -> re-render
+    text: |-
+      That is the whole bet. Mechanisms, not categories. Substrate, not products. Teach the cognition; the jobs follow.
+  - id: s100
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c54e052bf136"   # curated source block; drift -> review
+    text_hash: "c54e052bf136"     # narration; change -> re-render
+    text: |-
+      What This Looks Like, Five Years Out
+  - id: s101
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a57cd826c51a"   # curated source block; drift -> review
+    text_hash: "a57cd826c51a"     # narration; change -> re-render
+    text: |-
+      Walk back to the laptop from the opening.
+  - id: s102
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "77fc4dd8225e"   # curated source block; drift -> review
+    text_hash: "77fc4dd8225e"     # narration; change -> re-render
+    text: |-
+      The folder of specialists is not a single product anyone shipped on a Tuesday. It is a result. It is what happens when one person, over time, teaches a generic substrate enough jobs to feel a difference in how their week, their month, and their year run.
+  - id: s103
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4fcd2f2a4756"   # curated source block; drift -> review
+    text_hash: "4fcd2f2a4756"     # narration; change -> re-render
+    text: |-
+      Here is what is not in the folder: a chatbot pretending to be a tax accountant. An A I that hallucinates references and calls it creativity. A SaaS subscription with someone else's idea of how your work should go. A black box you have to trust because someone told you to.
+  - id: s104
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "db3b4e4c8d0e"   # curated source block; drift -> review
+    text_hash: "db3b4e4c8d0e"     # narration; change -> re-render
+    text: |-
+      Here is what is in the folder: agents that you taught, that you can read, that you can correct, that you can pass on, that you can scrap and rebuild from the same seed when the work changes. Files on your machine. Memory you can open in a text editor. Cognitive metabolism running in the background — your liver, but for paperwork. A workforce that exists because you grew it.
+  - id: s105
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "826a760232d1"   # curated source block; drift -> review
+    text_hash: "826a760232d1"     # narration; change -> re-render
+    text: |-
+      This is what we mean when we say digital cortex. Not a metaphor for a chat assistant. A structural extension of your own cognition, made of folders and files and the slow accumulation of jobs you taught well.
+  - id: s106
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7691a8912bee"   # curated source block; drift -> review
+    text_hash: "7691a8912bee"     # narration; change -> re-render
+    text: |-
+      What This Means for You
+  - id: s107
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aa3686abc938"   # curated source block; drift -> review
+    text_hash: "aa3686abc938"     # narration; change -> re-render
+    text: |-
+      You do not need to be a programmer. You do not need to understand neural networks or hold a computer science degree.
+  - id: s108
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "09866a5a7d95"   # curated source block; drift -> review
+    text_hash: "09866a5a7d95"     # narration; change -> re-render
+    text: |-
+      You need to recognize what is happening.
+  - id: s109
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2b22aeac2de4"   # curated source block; drift -> review
+    text_hash: "2b22aeac2de4"     # narration; change -> re-render
+    text: |-
+      Intelligence has become a utility. The plug is in the wall. The folder is on your computer. The metabolism starts the moment you start teaching.
+  - id: s110
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ee0c9ce2f203"   # curated source block; drift -> review
+    text_hash: "ee0c9ce2f203"     # narration; change -> re-render
+    text: |-
+      The personal cognitive workforce is not coming because someone will build it for you.
+  - id: s111
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1adbdfa4e4c5"   # curated source block; drift -> review
+    text_hash: "1adbdfa4e4c5"     # narration; change -> re-render
+    text: |-
+      It is coming because you will build it. We will teach you how.
+  - id: s112
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4c8b8e5a81bc"   # curated source block; drift -> review
+    text_hash: "4c8b8e5a81bc"     # narration; change -> re-render
+    text: |-
+      Plant the seed.

@@ -1,0 +1,370 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: phasic-foundation
+source_md: 06_1-phasic-foundation.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f08ed1cb04b0"   # curated source block; drift -> review
+    text_hash: "f08ed1cb04b0"     # narration; change -> re-render
+    text: |-
+      Phasic Foundation
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "843438d4f30c"   # curated source block; drift -> review
+    text_hash: "843438d4f30c"     # narration; change -> re-render
+    text: |-
+      Now we open the cycle.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0156ec62ca4a"   # curated source block; drift -> review
+    text_hash: "0156ec62ca4a"     # narration; change -> re-render
+    text: |-
+      Essay 5 introduced two pieces of the seed agent's foundation, side by side. The always-on plugins are the agent's reflexes — each one owns a concern that fires regardless of which phase the agent is in or whether a phase is even active: plugin edit safety, context window discipline, job lifecycle, interaction legibility, structured questioning. They run continuously, each in its own lane, with its own state. The CLAUDE.md layer is the substrate the agent's structured cognitive work writes into — a hierarchy of CLAUDE.md files, a knowledge directory, a memory layer that survives across phases and sessions.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e2ec185a5ca6"   # curated source block; drift -> review
+    text_hash: "e2ec185a5ca6"     # narration; change -> re-render
+    text: |-
+      This essay opens the system that does the structured work — the phasic system — and how it uses the CLAUDE.md layer to think ahead, gather experiential data, and process that data into the agent's longer-term memory forms.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fb91a8d95b73"   # curated source block; drift -> review
+    text_hash: "fb91a8d95b73"     # narration; change -> re-render
+    text: |-
+      The seed agent's cognitive work happens in phases. A phase is a temporary mode of operation, scoped to one job, with a strictly defined purpose, a strictly defined set of allowed tools, and a strictly defined kind of output. One phase is active at a time. Phases progress in a fixed order. The agent cannot skip a phase, cannot blend two phases, cannot stay inside a phase indefinitely.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eb376bde1a9e"   # curated source block; drift -> review
+    text_hash: "eb376bde1a9e"     # narration; change -> re-render
+    text: |-
+      The current prototype runs the O P E V C cycle (currently five phases in the prototype: observe, plan, execute, verify, and condense). O P E V C is the acronym, the name the brain calls its own cycle. The final phase, CONDENSE, plays a different role from the others. The earlier phases do work on the project; CONDENSE does work on the brain. We call CONDENSE the cycle's cognitive organ for that reason. Still, it sits inside the O P E V C ring, not outside it. The architecture supports adding more. A custom seed could introduce a research phase between observe and plan, or split execute into execute and integrate. The current phase count is the prototype's answer; the discipline of compartmentalized phasing is the architecture.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fec1d35c597f"   # curated source block; drift -> review
+    text_hash: "fec1d35c597f"     # narration; change -> re-render
+    text: |-
+      Two states travelled with us across the previous essay without being named: idle and gmode. We left them out of Essay 5 to keep the substrate description clean. They come back now, because the full Markov brain does not run without them.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3c15a53c4f8f"   # curated source block; drift -> review
+    text_hash: "3c15a53c4f8f"     # narration; change -> re-render
+    text: |-
+      What we are about to open is what Essay 3.1 called the agent's cognitive metabolism — the rhythm of breathing in context, working on it, breathing out memory. The phasic layer is that metabolism made mechanical.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fdbb618abfc8"   # curated source block; drift -> review
+    text_hash: "fdbb618abfc8"     # narration; change -> re-render
+    text: |-
+      This essay opens that discipline compartment by compartment.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a5141063477"   # curated source block; drift -> review
+    text_hash: "7a5141063477"     # narration; change -> re-render
+    text: |-
+      The journey ahead
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c06c3875096f"   # curated source block; drift -> review
+    text_hash: "c06c3875096f"     # narration; change -> re-render
+    text: |-
+      Essay 6 unfolds across short parts:
+  - id: s12
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "0b780f67e90d"   # curated source block; drift -> review
+    text_hash: "0b780f67e90d"     # narration; change -> re-render
+    text: |-
+      Essay 6.1 — Phasic Foundation (you are here) — the cognitive cycle and why phases at all Essay 6.2 — The Discipline and the Map — the full transition graph and the per-phase tool restrictions Essay 6.2b — The Phase Map — a quick tour of all the phases before the per-phase deep-dives Essay 6.3 — OBSERVE — Read Wide, Write Once — the read-only sweep that grounds every cycle Essay 6.4 — PLAN — Decide, Then Lock — the analysis phase whose deliverable is a named contract Essay 6.5 — EXECUTE — Build, in Scope, in Steps — the only phase with project-write access, fenced by the altered list Essay 6.6 — VERIFY — Independent Eyes — scripts-only, auditor-driven, backward-routed Essay 6.7 — CONDENSE — The Cognitive Organ — the 7-step waterfall that grows the brain Essay 6.7b — CONDENSE — What It Uniquely Owns — the job graph CONDENSE mutates and the reflection that closes it Essay 6.8 — The Rhythm of Work — the count-based rhythm inside every phase, and the exit gate that opens each boundary Essay 6.9 — GMODE — The Off-Cycle Lane — the documented escape hatch Essay 6.10 — The Plan File — Stages and Completion — what the plan file owns, the three Stages, the completion counting rule, and where the plan lives Essay 6.10b — The Plan File — Long-Horizon Memory — .yaml injection, the learning loop, and the long-horizon memory that closes the series
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5fd51ef2f856"   # curated source block; drift -> review
+    text_hash: "5fd51ef2f856"     # narration; change -> re-render
+    text: |-
+      Essay 6.2 maps the discipline; Essays 6.3 through 6.7 deep-dive each phase, one per essay. Essays 6.8 through 6.10 are for the architects in the audience — the mechanisms that let the cycle stay honest across long horizons.
+  - id: s14
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9e8930d51fea"   # curated source block; drift -> review
+    text_hash: "9e8930d51fea"     # narration; change -> re-render
+    text: |-
+      From Action Space to Markov Brain
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f0849f9fdb87"   # curated source block; drift -> review
+    text_hash: "f0849f9fdb87"     # narration; change -> re-render
+    text: |-
+      In Essay 1 we drew the seed agent's starting condition as an action space — the set of moves a C L I agent can pick at any given moment. Use deep reasoning. Use tools — read, write, edit, run. Ask for permission. Delegate to another agent. Stop. Each step the L L M samples from those moves probabilistically. The next step samples again. The result, without further structure, is what that essay called a random walk — a Markov chain where every path is equally likely, and the same prompt twice can produce two different journeys.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ef333e30ac50"   # curated source block; drift -> review
+    text_hash: "ef333e30ac50"     # narration; change -> re-render
+    text: |-
+      Then we added the first layer of structure: hooks. Hooks fire on every tool call, every stop, every prompt. They can block an action, modify it, or trigger another. In Essay 1's framing, hooks turn the probabilistic chain into a deterministic pipeline. The L L M still proposes the next move; the hooks decide whether the move is allowed.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "95c71a6d9f4c"   # curated source block; drift -> review
+    text_hash: "95c71a6d9f4c"     # narration; change -> re-render
+    text: |-
+      The phasic layer takes that idea one fractal step further.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4867b961eba8"   # curated source block; drift -> review
+    text_hash: "4867b961eba8"     # narration; change -> re-render
+    text: |-
+      A phase is a flavor of the action space. Inside OBSERVE, the action space is narrowed — write tools to project files are gone, only the read-and-synthesize moves are available. Inside EXECUTE, the action space widens for the altered list and tightens elsewhere. Each phase is a customized Markov chain — its own restricted action space, its own hook-enforced rules, its own bias toward the kind of move that phase wants to encourage.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f046abd2ef5e"   # curated source block; drift -> review
+    text_hash: "f046abd2ef5e"     # narration; change -> re-render
+    text: |-
+      The cycle on top is itself a Markov chain — but its "actions" are not individual tool calls. Its actions are the phases. The agent moves between phases. Each move from one phase to the next obeys gates and edges declared by the orchestrator plugin. A Markov brain whose moves are themselves Markov chains. Fractal, by design.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bef39f4e5128"   # curated source block; drift -> review
+    text_hash: "bef39f4e5128"     # narration; change -> re-render
+    text: |-
+      This is what the title points at. The phasic brain is Markov on two levels. Inside any phase, the agent's tool calls are a constrained action-space chain. Across the cycle, the phases themselves are a state machine with declared edges and no hidden continuation.
+  - id: s21
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ce54550b60d0"   # curated source block; drift -> review
+    text_hash: "ce54550b60d0"     # narration; change -> re-render
+    text: |-
+      Why Phases
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "82e9f91c0ddf"   # curated source block; drift -> review
+    text_hash: "82e9f91c0ddf"     # narration; change -> re-render
+    text: |-
+      The naive version of agent cognition is: "read the prompt, do the thing." A user asks for a feature; the agent goes off and implements it. Whatever observation, planning, building, and checking happens, happens in one undifferentiated stream of tool calls.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c98ae0f6f1b8"   # curated source block; drift -> review
+    text_hash: "c98ae0f6f1b8"     # narration; change -> re-render
+    text: |-
+      This breaks for the same reason a one-line safety script breaks. There are several different kinds of cognitive work, each with different needs, and mixing them produces sloppy work in all of them.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "186b29293e79"   # curated source block; drift -> review
+    text_hash: "186b29293e79"     # narration; change -> re-render
+    text: |-
+      Observation needs breadth. Planning needs alternatives. Execution needs speed. Verification needs independence from execution. Each one favors a different mental posture, and each one favors a different set of tools. The default agent runs all four kinds of work through the same mode, and the result is what every operator who has tried to drive an agent through a non-trivial task has seen: the agent jumps to implementation before it has read enough; it improvises mid-execute and rationalizes the improvisation as the plan; it self-verifies, sees the work as correct because it was the one who built it, and ships a regression.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5a7b1ac36a00"   # curated source block; drift -> review
+    text_hash: "5a7b1ac36a00"     # narration; change -> re-render
+    text: |-
+      Phases force separation. The kind of cognition the agent is doing is announced. The tools it has access to match the kind. The output it produces is tagged with which phase it came from. When the agent transitions, the system commits the prior phase's work as an episodic memory before unlocking the next phase. There is no quietly drifting from one mode into another.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c8240830556c"   # curated source block; drift -> review
+    text_hash: "c8240830556c"     # narration; change -> re-render
+    text: |-
+      The mechanism is mechanical. The justification is cognitive: separated kinds of thinking produce better thinking.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "15bd3ebcf388"   # curated source block; drift -> review
+    text_hash: "15bd3ebcf388"     # narration; change -> re-render
+    text: |-
+      That justification is the load-bearing claim of the phasic layer.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3877eb2ceb1b"   # curated source block; drift -> review
+    text_hash: "3877eb2ceb1b"     # narration; change -> re-render
+    text: |-
+      A handful of mechanisms inside the cycle deserve a brief mention here before the next essays open them. Inside every phase runs a paced rhythm: a paired min-max gate forces the agent to read before it writes, and to synthesize before it reads more — counted per activity class against the working CLAUDE.md, where a CLAUDE.md update resets the count and the rhythm begins again. There is no score and no number for the agent to chase; the pacing is tool-call counts and structural gates.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d76ead1337b9"   # curated source block; drift -> review
+    text_hash: "d76ead1337b9"     # narration; change -> re-render
+    text: |-
+      And the boundary out of a phase opens on reflection, not volume: the three-family exit gate asks for evidence the phase examined its own work — reflection commands ran, new marked notes were left for CONDENSE, a reflector subagent left its receipt — before the cycle moves on. The agent never hears about counters in any voice or injection; coaching stays qualitative, speaking the language of the work. Essay 6.8 opens both mechanisms in full.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "11e209f558c1"   # curated source block; drift -> review
+    text_hash: "11e209f558c1"     # narration; change -> re-render
+    text: |-
+      Separately, every phase carries its own direct-action budget, an independent meter that tracks the ratio of direct file work versus subagent delegation and uses that ratio to inject voices or block actions.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a10880abef59"   # curated source block; drift -> review
+    text_hash: "a10880abef59"     # narration; change -> re-render
+    text: |-
+      Job-graph mutations follow a lifecycle-symmetry rule — the phase that adds graph state is rarely the phase that removes it, because the right context for each operation lives in a different cognitive posture. We name each mechanism here so the later essays can use the labels; their machinery opens one by one.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aeaa6e632307"   # curated source block; drift -> review
+    text_hash: "aeaa6e632307"     # narration; change -> re-render
+    text: |-
+      The whole skeleton, walkable. The cycle, the two transition maps, the conductor and its five self-guarding musicians, the rule that lets thinking grant the right to write, and the fractal Markov framing &mdash; laid out as an interactive concept-deck. Walk one idea per card; click any box for the live code behind it. &#8599; Walk the phasic brain
+  - id: s33
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "588b976e88b4"   # curated source block; drift -> review
+    text_hash: "588b976e88b4"     # narration; change -> re-render
+    text: |-
+      The phasic layer is the most opinionated piece of the prototype, and almost every dimension of it is a customization surface. The architecture is the shape; the specific dials are the prototype's answers.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4747f6b9d60f"   # curated source block; drift -> review
+    text_hash: "4747f6b9d60f"     # narration; change -> re-render
+    text: |-
+      The architect would tune the phase count. The prototype's phase set — currently observe, plan, execute, verify, condense — covers the work of designing the seed agent itself. A seed working on long literature reviews might want a research phase between observe and plan, where deep external reading happens with a different budget arithmetic than observe's broad sweep. A seed working in regulated drafting might split execute into execute and integrate. The phase count is a knob; the discipline of compartmentalization is the floor.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a02f2e3b89cc"   # curated source block; drift -> review
+    text_hash: "a02f2e3b89cc"     # narration; change -> re-render
+    text: |-
+      The architect would tune the acronym itself. O P E V C is the prototype's name for its cycle. A custom seed could call it RUNS, OPERATE, or any other word that catches the kinds of cognitive work it values. The name shapes how the architect talks to their own seed; the talk shapes how the seed sees the work.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "778307b09344"   # curated source block; drift -> review
+    text_hash: "778307b09344"     # narration; change -> re-render
+    text: |-
+      The architect would tune the tool-restriction granularity. The prototype publishes one guard per phase, each one with its own allow-and-block list of tools. The same architecture supports finer grain — per-phase block-lists scoped by subagent type, allow-lists conditioned on the focused job's form, time-of-day rules for long-running research seeds. The guards are code; the granularity is what each architect's work demands.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aa71f64bc794"   # curated source block; drift -> review
+    text_hash: "aa71f64bc794"     # narration; change -> re-render
+    text: |-
+      What the architect would not customize is the principle that each phase publishes its restrictions ahead of time and the guard enforces them. The principle is the floor: a phase that doesn't fence the agent in is not a phase, it is a label.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "48f0be882438"   # curated source block; drift -> review
+    text_hash: "48f0be882438"     # narration; change -> re-render
+    text: |-
+      The shape lifts cleanly off this prototype. A research lab's seed could run literature-review jobs through read-source, extract-claim, cross-check, and synthesize phases — each with its own tool fence, writes forbidden during read-source, new sources forbidden during synthesize. A consulting seed could split client engagements into intake, match, scope, draft-deliverable, and review, with the drafting phase locked out of the client-source-data tools so it cannot improvise new facts mid-prose. The phasic cycle is the architecture; the phase names and the tool fences are yours. The honest limit is that the guards stop wrong-tool calls; they cannot stop a creative operator from working around the spirit of a phase in their prose. The discipline rests on the architect reading the injected voice and choosing to obey it. Gmode is the documented escape hatch when working around the discipline is the right move.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b1f3bfe2127b"   # curated source block; drift -> review
+    text_hash: "b1f3bfe2127b"     # narration; change -> re-render
+    text: |-
+      The foundation is in place: a Markov brain whose moves are themselves Markov chains, phases as the structural answer to mixed-mode cognition. The next essay maps every edge of the cycle — the full transition graph, the discipline the per-phase tool restrictions enforce, and a quick map of what each phase produces before we open the compartments one at a time.

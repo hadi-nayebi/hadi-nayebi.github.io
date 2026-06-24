@@ -1,0 +1,235 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: creating-a-new-plugin
+source_md: 07_9-creating-a-new-plugin.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "b697969d6521"   # curated source block; drift -> review
+    text_hash: "b697969d6521"     # narration; change -> re-render
+    text: |-
+      Building a New Plugin
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "59304b3d9d13"   # curated source block; drift -> review
+    text_hash: "59304b3d9d13"     # narration; change -> re-render
+    text: |-
+      Essay 7.8 closed the four-part lock ceremony — PLUGIN-LOCK, TEST-LOCK, safe-lock, historian ratchet — the gates hard-substrate plugin edits pass through. The ceremony was named in the abstract. This essay puts it on the rails: a walkthrough of what guiding your seed to build a brand-new plugin actually looks like in motion. This is the section new users come back to.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "cd821fe5580c"   # curated source block; drift -> review
+    text_hash: "cd821fe5580c"     # narration; change -> re-render
+    text: |-
+      Two Paths to a New Plugin
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "598e1ac22c58"   # curated source block; drift -> review
+    text_hash: "598e1ac22c58"     # narration; change -> re-render
+    text: |-
+      When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle O P E V C job at first (Essay 8 covers the maturation stages). The seed is in learning mode — it asks questions, takes its time, builds experiential data from your work. When a job recurs, the seed's soft voices nudge you toward running it as a repeatable .md-plan job (Stage 2) — often, not always. When a stable pattern wants per-cycle context injection, you and the seed may decide to run it as a .yaml-plan job (Stage 3) — a user-discussed choice for that job, never an automatic flip. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job itself becomes a plugin.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fa74e3a36dfa"   # curated source block; drift -> review
+    text_hash: "fa74e3a36dfa"     # narration; change -> re-render
+    text: |-
+      That is one path to a new plugin: work that has settled through the earlier Stages (a stable .yaml-plan job) and now needs phase-cognition customization the voice injection cannot deliver.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c7487078ff5f"   # curated source block; drift -> review
+    text_hash: "c7487078ff5f"     # narration; change -> re-render
+    text: |-
+      The other path is direct: you notice a gap in the seed's substrate and tell the seed to fix it — paying off the promise Essay 5.1 planted, that the always-on layer is addable: another always-on plugin slots in by exposing its own public commands, not by rewiring anyone else's.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6f1bd1ba3f43"   # curated source block; drift -> review
+    text_hash: "6f1bd1ba3f43"     # narration; change -> re-render
+    text: |-
+      A consulting practice's seed might gain a client-engagement-tracker plugin this way; a research lab's seed might gain an experiment-protocol plugin; a writer's seed might gain a manuscript-stage-gate. Each plugin's organ list is the same kit; each plugin's substance is the operator's domain.
+  - id: s08
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9769251ee8ff"   # curated source block; drift -> review
+    text_hash: "9769251ee8ff"     # narration; change -> re-render
+    text: |-
+      The First Cycle — Single-Cycle DEEP
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "aa6486588c85"   # curated source block; drift -> review
+    text_hash: "aa6486588c85"     # narration; change -> re-render
+    text: |-
+      The seed treats new-plugin work as a single-cycle DEEP job at first: OBSERVE asks you questions about the gap, PLAN designs the new plugin's concern and organ list, EXECUTE stamps the template and fills in the substance, VERIFY runs the new plugin's test suite, CONDENSE absorbs the lessons into the knowledge layer.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0311f3a1c35b"   # curated source block; drift -> review
+    text_hash: "0311f3a1c35b"     # narration; change -> re-render
+    text: |-
+      The seed performs the PLUGIN-LOCK ceremony at the moment EXECUTE needs to begin writing code; once approved, the lock-manager stamps the universal template at .claude/plugins/, substitutes the plugin name into the placeholders, generates the plugin's centralized historian- subagent definition under plugin-integrity/agents/, and auto-commits the birth as the drift baseline.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "302c21d61eb2"   # curated source block; drift -> review
+    text_hash: "302c21d61eb2"     # narration; change -> re-render
+    text: |-
+      The substance the seed fills in follows the organ-by-organ shape covered earlier in this series — CLAUDE.md first as the concern declaration (Essay 7.2), then hooks as the plugin's reflexes, scripts if the plugin publishes a C L I, tests covering each hook and script, voice files for the messages the plugin emits (Essay 7.3), and docs/evolution.md for the cycle-1 narration (Essay 7.5). The seed asks you to confirm at each step because in this stage of maturation, the seed is still learning your design preferences.
+  - id: s12
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c7d9a2f08ec4"   # curated source block; drift -> review
+    text_hash: "c7d9a2f08ec4"     # narration; change -> re-render
+    text: |-
+      Phase Plugins Need a Second Lock
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e1056d9ff1d9"   # curated source block; drift -> review
+    text_hash: "e1056d9ff1d9"     # narration; change -> re-render
+    text: |-
+      If the new plugin extends the phase system (e.g., a new phase_research between OBSERVE and PLAN — exactly the customization Essay 6.1 named when it said the phase count is the prototype, not the architecture), one lock builds the cell, and a second lock on phasic-system updates the orchestrator's forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this — most plugin systems make wiring invisible; this architecture makes wiring explicit.
+  - id: s14
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "58f4ada1af3d"   # curated source block; drift -> review
+    text_hash: "58f4ada1af3d"     # narration; change -> re-render
+    text: |-
+      The Knowledge Directory — By Birth, Not as Afterthought
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5592b8cc4ffc"   # curated source block; drift -> review
+    text_hash: "5592b8cc4ffc"     # narration; change -> re-render
+    text: |-
+      This is the part most plugin tutorials skip. When the seed authors a new plugin, the seed also authors the plugin's knowledge directory at .claude/knowledge/. This is where the plugin's deep self-knowledge lives — the architectural rationale, the operating patterns, the lessons captured across cycles. The public seed agent ships every active plugin's knowledge directory along with the plugin code, so every operator's seed has the same depth of recall. Future OBSERVE phases will recall these knowledge files when the agent encounters work touching this plugin.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "05912c725a07"   # curated source block; drift -> review
+    text_hash: "05912c725a07"     # narration; change -> re-render
+    text: |-
+      Tell your seed: every new plugin gets a knowledge directory by birth, not as an afterthought. Without it, the plugin migrates to the public repo as code without context; with it, the public seed agent can teach new operators how to think about that plugin's concern.
+  - id: s17
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9b17d7c56907"   # curated source block; drift -> review
+    text_hash: "9b17d7c56907"     # narration; change -> re-render
+    text: |-
+      Lock Closes — The Plugin Is Born, but Not Yet Alive
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ea90a8a77e1c"   # curated source block; drift -> review
+    text_hash: "ea90a8a77e1c"     # narration; change -> re-render
+    text: |-
+      Once the lock closes, the plugin exists as files on disk — but no hook fires yet. The brain has to register the hooks via settings.local.json (covered in Essay 7.7). That activation remains a separate operator-controlled wiring step, often performed with seed assistance during the same EXECUTE phase. Once the brain rereads on the next session start, the new plugin's reflexes fire. CONDENSE then absorbs the cycle's lessons, the historian writes the cycle-1 evolution.md, and the plugin enters its life.
+  - id: s19
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ef2e4602b7cb"   # curated source block; drift -> review
+    text_hash: "ef2e4602b7cb"     # narration; change -> re-render
+    text: |-
+      The Honest Framing
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6f906297a8bb"   # curated source block; drift -> review
+    text_hash: "6f906297a8bb"     # narration; change -> re-render
+    text: |-
+      This is not a couple of editing sessions. A real new phase plugin is closer to a multi-cycle deep job: several editing sessions for the guard logic, more for the tracker and sensor, substantial voice content across the plugin's hooks and scripts, a meaningful test-assertion footprint across the plugin's test files, plus the orchestrator update for the two-lock pattern. The kit's gift is that the work is bounded, not that the work is small. Every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "27490d5a3ba8"   # curated source block; drift -> review
+    text_hash: "27490d5a3ba8"     # narration; change -> re-render
+    text: |-
+      What makes the work feel different from a from-scratch build is that the operator and seed are not inventing the structure. The cell template knows what cognitive organs every plugin needs. The operator's seed is filling each organ with the substance for this plugin's concern. New users guide that filling-in through conversation; the seed records the conversation, learns the operator's preferences, and over time, the operator's seed becomes one that knows how the operator wants plugins shaped.
+  - id: s22
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c0bd7c856698"   # curated source block; drift -> review
+    text_hash: "c0bd7c856698"     # narration; change -> re-render
+    text: |-
+      What Comes Next
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5349494785c1"   # curated source block; drift -> review
+    text_hash: "5349494785c1"     # narration; change -> re-render
+    text: |-
+      The kit gives the brain the capacity to grow. The phases give the brain compartmentalized cognition. The bus gives the brain durable substrate.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cf09fd777c12"   # curated source block; drift -> review
+    text_hash: "cf09fd777c12"     # narration; change -> re-render
+    text: |-
+      By this point in the series, what we have is a working seed agent: not a finished product, but a living architecture that knows how to evolve itself.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "50d3267c1689"   # curated source block; drift -> review
+    text_hash: "50d3267c1689"     # narration; change -> re-render
+    text: |-
+      The kit is in your hands. What does growth LOOK like when you use it over time? Next.

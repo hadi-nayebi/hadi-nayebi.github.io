@@ -1,0 +1,118 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: plugin-kit-foundation
+source_md: 07_1-plugin-kit-foundation.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "bbfe6f2a1522"   # curated source block; drift -> review
+    text_hash: "bbfe6f2a1522"     # narration; change -> re-render
+    text: |-
+      Plugin Kit Foundation
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "406870fb33f8"   # curated source block; drift -> review
+    text_hash: "406870fb33f8"     # narration; change -> re-render
+    text: |-
+      A plugin is a cell.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eb69e6861de0"   # curated source block; drift -> review
+    text_hash: "eb69e6861de0"     # narration; change -> re-render
+    text: |-
+      Essay 5 opened the always-on layer — the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. Essay 6 opened the phasic layer — the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a plugin, sitting in its own directory under .claude/plugins/, carrying its own organs. This essay opens that object.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "594e87f02a43"   # curated source block; drift -> review
+    text_hash: "594e87f02a43"     # narration; change -> re-render
+    text: |-
+      The cell metaphor is load-bearing. A plugin is not a collection of loose files; it is a system of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Each organ inside the cell carries the same read / write / depend-on triple:
+  - id: s05
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "654d629ebf07"   # curated source block; drift -> review
+    text_hash: "654d629ebf07"     # narration; change -> re-render
+    text: |-
+      Who reads it — which subsystem (the L L M, Claude Code itself, another plugin, the human operator) consumes the contents at runtime. Who writes it — which ceremony or phase is allowed to mutate it. Most organs have exactly one writer; the security model rests on that exclusivity. What it depends on — which other organs must already be in place for this organ to function correctly.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5d99fc19bbdb"   # curated source block; drift -> review
+    text_hash: "5d99fc19bbdb"     # narration; change -> re-render
+    text: |-
+      The read / write / depend-on triple is how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). Essay 7 opens the cell organ by organ, naming who reads it / writes it / what it depends on at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch.
+  - id: s07
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a5141063477"   # curated source block; drift -> review
+    text_hash: "7a5141063477"     # narration; change -> re-render
+    text: |-
+      The journey ahead
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f58a4a148abe"   # curated source block; drift -> review
+    text_hash: "f58a4a148abe"     # narration; change -> re-render
+    text: |-
+      Essay 7 covers the plugin kit across the sub-essays listed below:
+  - id: s09
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "250dafd2033e"   # curated source block; drift -> review
+    text_hash: "250dafd2033e"     # narration; change -> re-render
+    text: |-
+      Essay 7.1 — Plugin Kit Foundation (you are here) — the cell-as-system frame + this map Essay 7.2 — Skeleton: CLAUDE.md, Hooks, and Scripts — the skeleton organs and the hard/soft edit boundary Essay 7.3 — The Dual Voice Architecture — hooks/voice.xml for the L L M + scripts/voice.xml for the operator Essay 7.4 — data Jason — The Hidden State — per-plugin private state, script-mediated Essay 7.5 — docs/ and the Historian — evolution.md word-capped + the historian ratchet Essay 7.6 — agents/ and the 80/20 Dispatch Budget — per-plugin subagent scoping Essay 7.7 — Smaller Organs and Brain-Root Wiring — config.conf, tests/, template/, settings.local.json Essay 7.8 — The Lock Ceremony — PLUGIN-LOCK + TEST-LOCK + safe-lock + historian ratchet Essay 7.9 — Building a New Plugin — Tier-3 walkthrough
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eb10b12c7220"   # curated source block; drift -> review
+    text_hash: "eb10b12c7220"     # narration; change -> re-render
+    text: |-
+      Essays 7.2 through 7.7 deep-dive the plugin organs, one cluster per essay — the parts every mature plugin understands, with some organs intentionally absent in minimal or pure-gate plugins. Essay 7.8 opens the ceremony that protects hard-substrate edits once the plugin is in flight. Essay 7.9 is for the architects in the audience — a walkthrough of putting the kit to use, authoring a new plugin end to end.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9b5f5c0adcc0"   # curated source block; drift -> review
+    text_hash: "9b5f5c0adcc0"     # narration; change -> re-render
+    text: |-
+      We start with the universal skeleton — CLAUDE.md, hooks, and scripts — the load-bearing organs Essay 7.2 deep-dives.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "64275678cad3"   # curated source block; drift -> review
+    text_hash: "64275678cad3"     # narration; change -> re-render
+    text: |-
+      A consulting practice could organize its own seed agent's plugin around a [CLIENT-INTAKE] ceremony built from the same cell skeleton; the organ list (hooks, scripts, hidden state) transfers wholesale. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating hard-substrate edits, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the L L M separately) plus operator discipline. Soft memory surfaces like docs, voice files, and agent definitions move through phase discipline instead.

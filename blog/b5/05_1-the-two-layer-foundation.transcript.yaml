@@ -1,0 +1,253 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: the-two-layer-foundation
+source_md: 05_1-the-two-layer-foundation.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "cf6ee97068cf"   # curated source block; drift -> review
+    text_hash: "cf6ee97068cf"     # narration; change -> re-render
+    text: |-
+      The Two-Layer Foundation
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "078fdde57937"   # curated source block; drift -> review
+    text_hash: "078fdde57937"     # narration; change -> re-render
+    text: |-
+      For four essays we have circled the claim that the agent is its filesystem. Now we open the filesystem.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fd2f19c24413"   # curated source block; drift -> review
+    text_hash: "fd2f19c24413"     # narration; change -> re-render
+    text: |-
+      Essay 4 showed you the persona file — CLAUDE.md at the project root — that defines who the agent is. Claude Code reads a sibling .claude/ directory automatically at startup; the seed agent fills that directory like this:
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "88edcf3efebd"   # curated source block; drift -> review
+    text_hash: "88edcf3efebd"     # narration; change -> re-render
+    text: |-
+      That tree is the substrate. Plural forms — folders, files, scripts, narratives — because no single form serves every kind of memory. Topical recall needs different machinery than procedural reflex. Each plugin folder inside plugins/ carries more forms inside it: a voice.xml of coaching the agent hears at the right moments, an evolution.md narrative of how the plugin grew, hidden data Jason state the plugin owns alone.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d23c26b7fdb9"   # curated source block; drift -> review
+    text_hash: "d23c26b7fdb9"     # narration; change -> re-render
+    text: |-
+      The deeper move is representing different forms of cognition as different forms of memory, so the seed agent always carries the optimum context for what it is currently doing. As you customize your own seed agent, you will invent compartments that fit your work, your roles, your professional context.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "01459e639f4e"   # curated source block; drift -> review
+    text_hash: "01459e639f4e"     # narration; change -> re-render
+    text: |-
+      The one place memory does not live by design is the chat session. Chat context is capped by the model's window and survives compaction only as a lossy summary. The rest of .claude/ is what makes the agent durable across sessions.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "89a4780a20ee"   # curated source block; drift -> review
+    text_hash: "89a4780a20ee"     # narration; change -> re-render
+    text: |-
+      Two plugin layers run above this substrate.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9105d7439384"   # curated source block; drift -> review
+    text_hash: "9105d7439384"     # narration; change -> re-render
+    text: |-
+      The always-on layer owns infrastructure that fires on every prompt, every tool call, every session start, regardless of which job the seed agent is currently working on. Locking the substrate for safe edits. Managing the context window. Structuring jobs. Summarizing long conversations. Gating how the agent asks questions.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6e845ce2697b"   # curated source block; drift -> review
+    text_hash: "6e845ce2697b"     # narration; change -> re-render
+    text: |-
+      The phasic layer activates one phasic mode at a time, dictated by which phase the focused job is in, while the always-on plugins continue running underneath. The prototype's cycle is called O P E V C — observe, plan, execute, verify, condense — and the phasic plugins make sure the seed agent operates differently in each compartment. OBSERVE and PLAN are read-only against project files; EXECUTE writes inside a fenced scope; VERIFY runs scripts only; CONDENSE writes inside .claude/ only, absorbing the cycle's experiential data into durable memory. We open the phasic layer in Essay 6.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3619c75db0d4"   # curated source block; drift -> review
+    text_hash: "3619c75db0d4"     # narration; change -> re-render
+    text: |-
+      Both layers are built from smaller plugins, each owning one narrow concern. The architecture's value is what those single-concern plugins compose into — ceremonies no plugin could perform alone.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c30b5a5c86f4"   # curated source block; drift -> review
+    text_hash: "c30b5a5c86f4"     # narration; change -> re-render
+    text: |-
+      We tour the always-on layer first because it surrounds everything else.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4801aff2e4ea"   # curated source block; drift -> review
+    text_hash: "4801aff2e4ea"     # narration; change -> re-render
+    text: |-
+      Interactive diagram. Walk the plugin population as a deck &mdash; the two layers split by when they fire, the live roster (active plugins, unimplemented designs, the shared lib/ tier), and the two always-on plugins drawn deep: interaction-summary (mega-prompt compression) and question-discipline (the prefix gate). Click any box for the live code behind it. &#8599; Walk the plugin population
+  - id: s13
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a5141063477"   # curated source block; drift -> review
+    text_hash: "7a5141063477"     # narration; change -> re-render
+    text: |-
+      The journey ahead
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bc69ab888f66"   # curated source block; drift -> review
+    text_hash: "bc69ab888f66"     # narration; change -> re-render
+    text: |-
+      Essay 5 splits into nine short sub-essays:
+  - id: s15
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "cbcb25f4fd45"   # curated source block; drift -> review
+    text_hash: "cbcb25f4fd45"     # narration; change -> re-render
+    text: |-
+      Essay 5.1 — The Two-Layer Foundation (you are here) — the substrate + the two layers + this map Essay 5.2 — Plugin Edit Safety — plugin-integrity — the test gate Essay 5.3 — Context Window Discipline — brain-guard — the progressive squeeze Essay 5.4 — Job Lifecycle — job-core — the unit of compartmentalization Essay 5.5 — Mega-Prompt Compression — interaction-summary — keeps the dynamic mega-prompt legible Essay 5.6 — Structured Questions — question-discipline — the prefix registry Essay 5.7 — The CLAUDE.md Hierarchy — the working-memory substrate form the phasic layer writes through Essay 5.8 — The Historian Ratchet — three single-concern plugins composed into one ceremony Essay 5.9 — The Customization Guardrail — the gate that decides when plugin-code edits and new-plugin births are admitted at all
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c4e260e89ec1"   # curated source block; drift -> review
+    text_hash: "c4e260e89ec1"     # narration; change -> re-render
+    text: |-
+      Essays 5.2 through 5.6 deep-dive the always-on plugins, one each. Essay 5.7 covers the substrate form the phasic layer USES. Essays 5.8 and 5.9 are for the architects in the audience — how single-concern plugins compose into emergent ceremonies, and how the operator gates substrate edits.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eca028c0931a"   # curated source block; drift -> review
+    text_hash: "eca028c0931a"     # narration; change -> re-render
+    text: |-
+      The phasic plugins get their own series in Essay 6. The cell template that lets new plugins be born safely is Essay 7. The four-stage arc from your first job to your first custom plugin is Essay 8.
+  - id: s18
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "d45ebb13e499"   # curated source block; drift -> review
+    text_hash: "d45ebb13e499"     # narration; change -> re-render
+    text: |-
+      Why "Single Concern" Matters
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f16564f30f90"   # curated source block; drift -> review
+    text_hash: "f16564f30f90"     # narration; change -> re-render
+    text: |-
+      Each always-on plugin owns exactly one concern.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1b27613954ad"   # curated source block; drift -> review
+    text_hash: "1b27613954ad"     # narration; change -> re-render
+    text: |-
+      plugin-integrity owns plugin edit safety — a test gate that commits on pass and auto-reverts to the last clean checkpoint on fail. (It has a second role gating whether plugin-code edits and new-plugin births are admitted at all, opened in Essay 5.9.) brain-guard owns self-compaction — long before the model's context window runs out, it forces a structured compaction so the next conversation starts rebuilt from the right parts, not the lossy tail. job-core owns the job lifecycle — what the agent is working on, which phase that work is in, the refusal to stop while obligations remain. interaction-summary keeps a focused job's cumulative mega-prompt legible as it grows across hundreds of turns. question-discipline owns the asking gate — every question the seed agent asks you carries a registered prefix and a per-prefix slot-set. Different concerns, one shared discipline: each plugin stays inside its scope, and none reaches into the others' hidden state.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0f998f8fc282"   # curated source block; drift -> review
+    text_hash: "0f998f8fc282"     # narration; change -> re-render
+    text: |-
+      Each plugin lives in its own folder under .claude/plugins/ with its own hooks, scripts, hidden state, tests, and voice files. Naming the concern is easy because each plugin only has one to name.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6af2e2708e36"   # curated source block; drift -> review
+    text_hash: "6af2e2708e36"     # narration; change -> re-render
+    text: |-
+      The single-concern principle is a minimize rule, not an eliminate rule. Pure isolation is what a traditional library aims for — clean modules with no shared state, talking to nothing they don't import. The seed agent is a complex cognitive system, and a small amount of structured coupling between plugins is what lets the parts compose into ceremonies larger than any one plugin. Call this single-concern + careful coupling: each part stays narrow; the composition is what makes the ceremony possible.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4b74bd003230"   # curated source block; drift -> review
+    text_hash: "4b74bd003230"     # narration; change -> re-render
+    text: |-
+      The historian ratchet inside plugin-integrity is a clean example — it blocks plugin editing when the plugin's evolution narrative has fallen behind, and to do that it depends on question-discipline registering the plugin-lock prefix, on job-core capturing the user's approval answer, and on the safe-lock cycle protecting the plugin during the edit. Single-concern plugins compose into one ceremony, each contributing what it owns. We deconstruct this composition in Essay 5.8; the cell-anatomy view that lets new plugins compose this way is in Essay 7.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bd1c488c45c5"   # curated source block; drift -> review
+    text_hash: "bd1c488c45c5"     # narration; change -> re-render
+    text: |-
+      The shape is not unique to software. A real-estate transaction closes the same way — the buyer's agent, the listing agent, the escrow officer, the title underwriter, the lender, and the inspector each own one narrow concern, never reach into each other's files, and coordinate strictly through published documents (purchase agreement, title commitment, loan estimate) on a shared timeline; the closing is a ceremony none of them could perform alone, made possible by exactly the same single-concern + careful coupling pattern.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "77919078cf52"   # curated source block; drift -> review
+    text_hash: "77919078cf52"     # narration; change -> re-render
+    text: |-
+      The discipline is in how the coupling happens. When plugins talk to each other, they talk through public, stable interfaces — small command-line surfaces each plugin publishes (one read-only command per concern, job.sh focused being the canonical example), a registry of question prefixes, named voice handles, and the four-footer protocol that organizes the bus. A plugin reads what another plugin chooses to publish; it never reaches into another plugin's private state. Each plugin's internal data stays private; only the interface is shared — an honest design limit worth naming: the prototype enforces one-plugin-editable-at-a-time during edits (the safe-lock ceremony), but it does not mathematically prevent a plugin's author from reading another plugin's data Jason if they choose to, so the discipline depends on plugin authors respecting the public-interface contract rather than on the architecture forbidding the reach.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "21d7946fd80d"   # curated source block; drift -> review
+    text_hash: "21d7946fd80d"     # narration; change -> re-render
+    text: |-
+      The shape buys three concrete things. Plugins evolve independently — a change inside interaction-summary cannot break job-core as long as the read-only job.sh A P I stays the same. Plugins are testable in isolation — each tests/ directory exercises one plugin's behavior without standing up the entire seed. Plugins are addable — a sixth always-on plugin slots into the architecture by exposing its own public commands, not by rewiring anyone else's.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1923805c2e8d"   # curated source block; drift -> review
+    text_hash: "1923805c2e8d"     # narration; change -> re-render
+    text: |-
+      We start with plugin-integrity.

@@ -1,0 +1,460 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: long-horizon-memory
+source_md: 06_10b-long-horizon-memory.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "652a8bf2e5b5"   # curated source block; drift -> review
+    text_hash: "652a8bf2e5b5"     # narration; change -> re-render
+    text: |-
+      The Plan File — Long-Horizon Memory
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "06530a87ac6a"   # curated source block; drift -> review
+    text_hash: "06530a87ac6a"     # narration; change -> re-render
+    text: |-
+      Essay 6.10b — The Markov Phasic Brain, Part 13 of 13.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3ededbbb19b2"   # curated source block; drift -> review
+    text_hash: "3ededbbb19b2"     # narration; change -> re-render
+    text: |-
+      Essay 6.10 mapped the plan file's skeleton — what it owns, the three Stages, how a multi-cycle job knows it is done, and where the file lives on disk. That gave us the structure. This essay turns to what makes the structure long-horizon memory: the .yaml that injects itself at every phase entry, the loop that lets a repeating job get smarter over time, and the customization the whole pattern opens up.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "890411f1de48"   # curated source block; drift -> review
+    text_hash: "890411f1de48"     # narration; change -> re-render
+    text: |-
+      The plan file is what turns the markov brain from single-session cognition into something that can hold a plan in its head for weeks.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ed6c88ee2177"   # curated source block; drift -> review
+    text_hash: "ed6c88ee2177"     # narration; change -> re-render
+    text: |-
+      This essay is for you — especially when your work takes longer than one sitting and the plan needs to outlive any single cycle.
+  - id: s06
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "1d0375c19ff4"   # curated source block; drift -> review
+    text_hash: "1d0375c19ff4"     # narration; change -> re-render
+    text: |-
+      How .yaml injection turns the brain long-horizon
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e03d5c6f48cf"   # curated source block; drift -> review
+    text_hash: "e03d5c6f48cf"     # narration; change -> re-render
+    text: |-
+      Both plan files belong to the agent. What changes between them is injection control: the .md is loaded by recall or read whole; the .yaml is dripped in per phase, granular and consistent.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8d7600f18603"   # curated source block; drift -> review
+    text_hash: "8d7600f18603"     # narration; change -> re-render
+    text: |-
+      Once a Stage-3 job is running — its plan_file ends in .yaml — the phasic system's entry hook reads the .yaml on every phase transition and writes the phase-specific field-map to a cache file. The shared voice helper reads that cache when it fires any voice during the new phase, and yaml field-map entries augment the relevant voices — turning a job's structured long-horizon context into a stream of injections that show up automatically wherever the agent is reading guidance.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8de438293bb8"   # curated source block; drift -> review
+    text_hash: "8de438293bb8"     # narration; change -> re-render
+    text: |-
+      The augmentation supports append, replace, and prepend modes. A bare-string yaml entry appends its text to the rendered voice after a blank line — the back-compat default. A structured entry of the form {mode: replace, text: "..."} replaces the rendered voice text entirely with the yaml content (useful when the job's context-specific voice should override the universal one). A {mode: prepend, text: "..."} entry prepends the yaml content before the rendered voice (useful for stamping a job-specific banner above the standard guidance). All three modes apply the same variable substitution as the underlying voice — {{job_id}}, {{focused_name}}, and the rest substitute identically into the yaml text.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6195f913721e"   # curated source block; drift -> review
+    text_hash: "6195f913721e"     # narration; change -> re-render
+    text: |-
+      The yaml key IS the voice id directly — no transform, no naming convention. That makes the callable voice catalog the contract surface for layer-4 customization: a yaml plan can only target voices that some hook or script actually fires. A new helper builds the catalog by scanning every plugin's voice.xml for id="..." definitions and every non-test .sh / .py for quoted references. A defined voice with no callsite is an orphan — useless, because it never injects into context, and an invisible trap for yaml authors who target it and watch nothing happen. A recurring orphan-cleanup job is planned — once the yaml-job substrate is stable, it will consume the orphan list and either link or remove each one over time.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bc02cd276e7c"   # curated source block; drift -> review
+    text_hash: "bc02cd276e7c"     # narration; change -> re-render
+    text: |-
+      The yaml plan loader enforces the contract at validation time. When the agent writes a new or edited .yaml in EXECUTE — where cycle-1 creates the Stage-3 plan file — the execute guard invokes the plan-owned validators on that write event, and the schema check is followed by a key-vs-catalog check: every key under the phases map must match a callable voice id, otherwise the plan is rejected with a did you mean suggestion drawn from the closest matches. This catches the most common yaml authoring error — typing a voice id that no longer exists, or never did — before the job ever runs the cycle.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6ebaf8217c33"   # curated source block; drift -> review
+    text_hash: "6ebaf8217c33"     # narration; change -> re-render
+    text: |-
+      A planned job carries its scope-thinking in the plan itself. Phase entry is coached, never gated — there is no ceremony to repeat — and for a Stage-2 or Stage-3 job the coaching arrives pre-loaded: the plan file declares the cycle's work, and the .yaml form injects per-phase context straight into the entry voice, so the agent enters each phase already oriented by the document instead of re-deriving the scope from scratch.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f83b8fbfe4bb"   # curated source block; drift -> review
+    text_hash: "f83b8fbfe4bb"     # narration; change -> re-render
+    text: |-
+      That 3 is a prototype calibration, not a law — a seed that wants its planned jobs to still run deep could lower the default or derive it from the plan's declared scope; what the architecture fixes is that the forecast already lives in the plan, not which number stands in for it.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "44882580478a"   # curated source block; drift -> review
+    text_hash: "44882580478a"     # narration; change -> re-render
+    text: |-
+      Interactive diagram. Trace a single job from birth through its phases and Stages to the events that finally close it &mdash; every field, flag, and gate is clickable, with the live code behind each one. &#8599; Explore a job&rsquo;s life
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "452c31c1f177"   # curated source block; drift -> review
+    text_hash: "452c31c1f177"     # narration; change -> re-render
+    text: |-
+      This is the long-horizon mechanism. Without it, every cycle would start cold — the agent would have to re-read the plan and re-derive what each phase should know. With it, the agent's context grows back the long-form structure of the job automatically, each cycle, at every phase boundary. The brain doesn't have to remember to remember.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "33babc097ed7"   # curated source block; drift -> review
+    text_hash: "33babc097ed7"     # narration; change -> re-render
+    text: |-
+      The .md and .yaml are not redundant — they are different surfaces of the same agent-facing plan. The .md is a flexible prose plan the agent works from by recall, suited to a job still maturing. The .yaml is the more controlled form: a structured plan the agent injects into context per phase, consistently, at every boundary. They share a basename so the agent knows they belong together, but they differ in injection granularity.
+  - id: s17
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "5b5c2f015b81"   # curated source block; drift -> review
+    text_hash: "5b5c2f015b81"     # narration; change -> re-render
+    text: |-
+      The learning loop
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "42064de37e38"   # curated source block; drift -> review
+    text_hash: "42064de37e38"     # narration; change -> re-render
+    text: |-
+      A plan file that persists across completions is a plan file that can learn.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "37d268641701"   # curated source block; drift -> review
+    text_hash: "37d268641701"     # narration; change -> re-render
+    text: |-
+      When a repeatable job finishes, it does not vanish. Its plan file stays on disk, and the job can be re-activated later — manually, or automatically on a repeating interval when the seed agent compacts and scans for due jobs. On re-activation the cycle counter resets to zero and the run starts fresh, but the plan file survives, and so does one quieter record: the job's extension_contexts — the running log of every time a past run had to add a cycle because the declared plan came up short.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "745d04825b7c"   # curated source block; drift -> review
+    text_hash: "745d04825b7c"     # narration; change -> re-render
+    text: |-
+      That automatic re-activation is built, and it is worth being precise about how it works — because the answer is deliberately small. While the seed agent is working, there is no separate scheduler. It already compacts its own context on a rhythm; the design couples a scan to that same moment. Every time the agent self-compacts, it walks its completed jobs and, for each one whose repeating interval has elapsed since it last finished, flips exactly that job back to life — one atomic re-activation per due job, no batch command. The flip resets what a fresh run needs reset (the cycle counter, the approval flag, the per-run extension counter) and preserves what carries the job's identity forward (the plan file, the extension history, any plugin-edit approval the job earned). While the seed agent is working, its own rhythm is the schedule.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "631749e7cc69"   # curated source block; drift -> review
+    text_hash: "631749e7cc69"     # narration; change -> re-render
+    text: |-
+      There is one deliberate exception, and it lives at the other edge of the seed agent's life. When no active or pending work remains and the seed goes fully idle, the working rhythm is gone — there is nothing left to ride a scan on. So the stop boundary launches a separate mechanism to carry reactivation while the seed is stopped: a small, single-instance timer-daemon that watches the same completed jobs and wakes the seed when one comes due. It is the one place the architecture admits a timer, by design — a stopped seed has no rhythm of its own, so the quiescent phase gets one.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f26a7d49c8b3"   # curated source block; drift -> review
+    text_hash: "f26a7d49c8b3"     # narration; change -> re-render
+    text: |-
+      When the daemon finds due jobs, it reactivates every one of them to pending, equally — no priority, no urgency ranking. Then it does exactly as much as the situation requires, and no more. If a single job came due, there is no decision to make about what to work on next, so the daemon activates and focuses that job itself and wakes the seed straight into it. If several came due, the choice of what to work first belongs to the seed, not the daemon — so the daemon leaves them all pending and just wakes the seed to survey and choose.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e9421cea63dd"   # curated source block; drift -> review
+    text_hash: "e9421cea63dd"     # narration; change -> re-render
+    text: |-
+      Either way the wake is a prompt carrying a reserved wake marker, and that marker is load-bearing: a wake arrives at an idle seed with no active job, which is exactly the condition that would otherwise make the agent bootstrap a brand-new job out of the prompt. The marker tells that bootstrap to stand down — this is a wake into existing work, not a new request.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d944ec5cfaa1"   # curated source block; drift -> review
+    text_hash: "d944ec5cfaa1"     # narration; change -> re-render
+    text: |-
+      Cycle 1 of the new run reads that record. The OBSERVE entry voice surfaces it directly: prior runs added these late extensions; consider whether your refined plan should absorb them upfront. PLAN and EXECUTE then update the plan file — adjust total_cycles, rewrite a cycle's entry — so the next run plans for what the last run only discovered halfway through.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a573b8247baa"   # curated source block; drift -> review
+    text_hash: "a573b8247baa"     # narration; change -> re-render
+    text: |-
+      Over many runs the job converges toward needing no extensions at all. The plan stops being a guess and becomes an accurate forecast of the work, because each run wrote its surprises back into it. The learning is structural, not memorized — a future run reads the better plan directly, the same way it would read any other plan. This is what makes a repeating job get smarter, not just repeat.
+  - id: s26
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a719d2e5a47"   # curated source block; drift -> review
+    text_hash: "7a719d2e5a47"     # narration; change -> re-render
+    text: |-
+      What would break without it
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ad477b50a9e4"   # curated source block; drift -> review
+    text_hash: "ad477b50a9e4"     # narration; change -> re-render
+    text: |-
+      Take the plan file out. Now every multi-cycle job has to hold its own plan in working memory or re-derive it each session. The agent can still attempt long-horizon work, but each cycle starts cold — re-reading whatever notes survive in knowledge/, rebuilding intuition the previous cycle already had. Long jobs drift. A late cycle of a migration contradicts an early one because it never read the earlier plan.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eb6c479d77d7"   # curated source block; drift -> review
+    text_hash: "eb6c479d77d7"     # narration; change -> re-render
+    text: |-
+      Take the .yaml injection out. Now the long-horizon context is a document the agent has to remember to re-read every cycle. Sometimes it does. Sometimes it doesn't. Injection at phase entry is the discipline that turns "should re-read the plan" into "the plan re-reads itself into the context, every phase, every cycle."
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "beeef8a69fef"   # curated source block; drift -> review
+    text_hash: "beeef8a69fef"     # narration; change -> re-render
+    text: |-
+      Take the persistence out — null the plan file when the job completes. Now the learning loop dies. Every re-activation starts from a blank plan; the run repeats the same mistakes the last run already paid for. The plan can never become a forecast because nothing carries forward to forecast from.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d352490e855b"   # curated source block; drift -> review
+    text_hash: "d352490e855b"     # narration; change -> re-render
+    text: |-
+      Each layer closes one failure mode of long-horizon work that ordinary chat-history-based agents fail at.
+  - id: s31
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b4039c45f014"   # curated source block; drift -> review
+    text_hash: "b4039c45f014"     # narration; change -> re-render
+    text: |-
+      The seed gives you an ordered ladder of places to make a change, deepest and hardest first: the phasic substrate (the cycle shape itself — how many phases, what they are, how they connect), the hard controls (the code-level gates that block a tool call outright), the soft voices (the coaching and warning messages injected at each phase), the per-job .yaml plan (a single job tailoring those soft voices at entry, no code touched), and — still on the horizon — a per-job plugin (a job that ships its own gates and voices). Friction and blast radius rise as you go down the ladder, so you reach for the shallowest layer that solves the problem. The plan file is the clearest example of the fourth rung — the place where a single job tailors the agent's behavior without touching a line of code.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b3002bccf924"   # curated source block; drift -> review
+    text_hash: "b3002bccf924"     # narration; change -> re-render
+    text: |-
+      You would design the .yaml schema. What does each phase need at entry? OBSERVE may want a recall_targets: list; PLAN a decisions_locked: map; EXECUTE a forbidden_files: array; VERIFY an acceptance_criteria: list with pass/fail rows. The prototype ships a minimal injection — roughly one objective per phase. Your seed will discover what richer fields produce richer cognition for your work, and the .yaml is where that discovery lives.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a7bc742d1486"   # curated source block; drift -> review
+    text_hash: "a7bc742d1486"     # narration; change -> re-render
+    text: |-
+      You would tune the Stage decision. The current rule lives in cycle-1 PLAN's judgment: a big project likely to span days and revisions gets a plan file; a one-off does not. If your domain has a clear threshold — every matter past a certain size goes multi-cycle — you can codify that as a hint voice that steers the classification.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8fdd02184cd6"   # curated source block; drift -> review
+    text_hash: "8fdd02184cd6"     # narration; change -> re-render
+    text: |-
+      You would set the repeating interval. A job that should re-run on a rhythm — a weekly review, a daily digest — carries an interval; when it elapses, the seed agent's self-compact scan re-activates the job automatically — or, once the seed has gone idle, the quiescent-phase daemon does — and the learning loop above kicks in run-over-run.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9d51762e4505"   # curated source block; drift -> review
+    text_hash: "9d51762e4505"     # narration; change -> re-render
+    text: |-
+      The interval is a single field — repeating_interval, measured in whole hours, defaulting to zero for the ordinary one-shot job. Hours is the unit on purpose: not seconds, not a cron expression, just a plain integer count of hours. You would not type the raw number, though. The promotion question offers a base unit — Hourly, Daily, or Weekly — and a value, and resolves the two into hours behind the scenes (a multiplier of one, twenty-four, or a hundred sixty-eight against your typed value). "Daily" with a value of two is forty-eight hours; "Weekly" alone is a hundred sixty-eight. The scan then reads that interval against one companion field — last_completed_at, the moment the job last finished — and fires when enough hours have passed.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bb86bf3729e5"   # curated source block; drift -> review
+    text_hash: "bb86bf3729e5"     # narration; change -> re-render
+    text: |-
+      last_completed_at earns its own dedicated field rather than reusing the job's general "last updated" timestamp, and the reason is precise: the next fire is anchored to the completion event, not to any incidental edit afterward. A dedicated field, written exactly once at the moment a job flips to completed, means a later metadata touch — healing a stale value, correcting a label — cannot quietly shift the next fire forward. A job that has never completed carries zero there, and the scan skips it: no prior fire, nothing to measure an interval from.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c9a7bffef6c1"   # curated source block; drift -> review
+    text_hash: "c9a7bffef6c1"     # narration; change -> re-render
+    text: |-
+      You would decide how a job becomes repeating in the first place — through the repeat-job promotion. It is a prefixed question the agent raises at the end of a cycle, mirroring the same ceremony that already gates the creation of a plugin-touching job: a phase-restricted, shape-checked question on one side and a handler that writes the interval on the other. It fires only during CONDENSE, the phase where the agent already reflects on what comes next, and a coaching voice at that phase entry nudges the agent to consider it — if this job's work would recur on a cadence, promote it; otherwise leave it one-shot. The promotion captures two things: the interval (base unit and value) and whether the re-fire should land the job straight into active work or queue it behind whatever is already running — an urgent hourly health-check wants the former, a quiet weekly review the latter. One-shot stays the default; the promotion is the deliberate exception.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "dc4db765d646"   # curated source block; drift -> review
+    text_hash: "dc4db765d646"     # narration; change -> re-render
+    text: |-
+      What you would NOT do is remove the plan file. Take it out and the brain reverts to single-session cognition. The whole markov phasic discipline — the cycle, the cognitive metabolism organ, the rhythm, gmode — is built on the assumption that some jobs deserve to be remembered across cycles. The plan file is what makes that remembering deterministic instead of accidental.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ecfc11fd1790"   # curated source block; drift -> review
+    text_hash: "ecfc11fd1790"     # narration; change -> re-render
+    text: |-
+      Lift the pattern out of the seed agent and into a law practice. A partner running a long matter carries the plan file the same way: the prose plan accumulates across weekly client-review cycles in matter.md; once the matter is large enough to span many sessions, it graduates to a matter.yaml whose structured fields — scope, fee structure, retention terms, conflict-check results — inject at every revision phase, so each follow-up cycle inherits the matter's structure automatically instead of re-reading the prose. Run the same kind of matter again next quarter, and last quarter's surprises are already written into the plan.
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5b3883e92bf3"   # curated source block; drift -> review
+    text_hash: "5b3883e92bf3"     # narration; change -> re-render
+    text: |-
+      The plan file is friction, not a wall. An operator in gmode can edit it directly with any editor. The injection assumes the phasic system fires on every phase entry; the counting rule assumes the agent honors the job-complete ceremony at the right cycle. The architecture is the ceremony; the discipline rests on the agent honoring it, not on the gate being unbreakable.
+  - id: s42
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "2c01f1701adc"   # curated source block; drift -> review
+    text_hash: "2c01f1701adc"     # narration; change -> re-render
+    text: |-
+      What the plan file teaches
+  - id: s43
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "21c388ace734"   # curated source block; drift -> review
+    text_hash: "21c388ace734"     # narration; change -> re-render
+    text: |-
+      Long-horizon memory is the final mechanism of the markov phasic brain. The discipline and map from Essay 6.2 gave the brain its phase cycle. CONDENSE from Essay 6.7 gave it metabolism. The rhythm from Essay 6.8 gave it honest pacing. Gmode from Essay 6.9 gave it an off-cycle lane. The plan file gives it a horizon — the capacity to hold the same plan across days, weeks, dozens of cycles, with the plan re-injecting itself at every phase boundary so the brain never forgets where the work has reached.
+  - id: s44
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "308226842ee5"   # curated source block; drift -> review
+    text_hash: "308226842ee5"     # narration; change -> re-render
+    text: |-
+      That is what makes the markov brain a brain, not a loop. A loop reacts. A brain remembers. The plan file is the substrate of that remembering, and the .yaml injection is the reflex that fires it back into the present every time the agent crosses a phase.
+  - id: s45
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ee8d0b93b687"   # curated source block; drift -> review
+    text_hash: "ee8d0b93b687"     # narration; change -> re-render
+    text: |-
+      The cycle, the organ, the rhythm, gmode, the plan file — each of these is a mechanism. None of them is the thing they run inside. Phases are plugins. CONDENSE is a plugin. Gmode rides on a plugin. The plan-file lifecycle is split between phase_plan and job-core. Everything in this essay series is built on a standardized way of packaging cognitive mechanisms — the plugin kit. That is the subject of the next essay.
+  - id: s46
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b70c30590ebf"   # curated source block; drift -> review
+    text_hash: "b70c30590ebf"     # narration; change -> re-render
+    text: |-
+      This is the architect's pivot point. Everything from Essay 5.1's two-layer foundation through the markov phasic brain we have just finished mapping — was the seed agent's anatomy. You have seen the always-on cortex, the CLAUDE.md hierarchy, the phases, the cognitive metabolism organ, the rhythm of work, gmode's off-cycle lane, the plan file's long-horizon memory. You have seen how the seed agent thinks. What you have not yet seen is how a new piece of that cognition gets built.
+  - id: s47
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9d5920e97e1d"   # curated source block; drift -> review
+    text_hash: "9d5920e97e1d"     # narration; change -> re-render
+    text: |-
+      The phases and the waterfall are mechanisms. How do you BUILD a new phase that fits this design? How do you grow a new always-on plugin without breaking the substrate? How do you author your own marker, your own coaching voice, your own subagent definition, and have the rest of the architecture accept them as natively as the prototype's own?
+  - id: s48
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3d318feb59a5"   # curated source block; drift -> review
+    text_hash: "3d318feb59a5"     # narration; change -> re-render
+    text: |-
+      Essay 7 — The Plugin Kit is the answer. The brain is built. The kit is what lets you grow new pieces of it safely.
+  - id: s49
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "59f6bfcc9348"   # curated source block; drift -> review
+    text_hash: "59f6bfcc9348"     # narration; change -> re-render
+    text: |-
+      Next.
+  - id: s50
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "06530a87ac6a"   # curated source block; drift -> review
+    text_hash: "06530a87ac6a"     # narration; change -> re-render
+    text: |-
+      Essay 6.10b — The Markov Phasic Brain, Part 13 of 13.

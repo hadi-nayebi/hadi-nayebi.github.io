@@ -1,0 +1,145 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: safe-self-modification
+source_md: 08_8-safe-self-modification.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:39Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "a431c7e63352"   # curated source block; drift -> review
+    text_hash: "a431c7e63352"     # narration; change -> re-render
+    text: |-
+      A System That Safely Modifies Itself
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5abb966d1a38"   # curated source block; drift -> review
+    text_hash: "5abb966d1a38"     # narration; change -> re-render
+    text: |-
+      Essay 8.7 closed the equilibrium claim — the brain reaches a ceiling while the knowledge layer never does. The discipline that holds that equilibrium is the same discipline that lets the brain edit itself safely. This essay opens the recursion directly — the Tier-3 close of the series.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b93533c73088"   # curated source block; drift -> review
+    text_hash: "b93533c73088"     # narration; change -> re-render
+    text: |-
+      Coordinated roles produce the work: the plugins enforce, the phases produce, and CONDENSE absorbs the cycle's learning back into the brain. The recursion that protects every edit is itself a small machinery — the lock ceremony around each session, the historian narrating each cycle's drift, the drift counter that ratchets the next lock, the safe-lock cycle that reverts a bad edit before it lands. The knowledge layer accumulates what survives this discipline; the maturation arc fossilizes what survives long enough to harden.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6b56eac71dbf"   # curated source block; drift -> review
+    text_hash: "6b56eac71dbf"     # narration; change -> re-render
+    text: |-
+      A patent attorney whose seed has authored a prior-art-search plugin will, eventually, need to fix a bug in that plugin's own search-result-deduplication logic — and the fix will require the attorney's seed to issue the lock for the plugin, run that plugin's own tests, pass them, and let the plugin lock itself before the change is committed. The same recursive ceremony described below for the prototype's plugin-integrity applies to every plugin the operator's seed has authored, in every operator's domain. The recursion is not a special case of the prototype; it is the architecture.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "64ead423a1a6"   # curated source block; drift -> review
+    text_hash: "64ead423a1a6"     # narration; change -> re-render
+    text: |-
+      The Recursion Is Real
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4a44b9ef782a"   # curated source block; drift -> review
+    text_hash: "4a44b9ef782a"     # narration; change -> re-render
+    text: |-
+      The recursion is real, not metaphorical. The prototype recently needed to fix a concurrency race in plugin-integrity's own guard hook — the exact code that polices every other plugin's edits. The fix required the agent to issue the plugin-lock for plugin-integrity, run plugin-integrity's own test suite, pass it, and let plugin-integrity lock itself before the change was committed. The guard did not exempt itself. The lock that closed that cycle is the same lock that opens the next. The historian subagent attached to plugin-integrity narrated the cycle's commits into the plugin's own docs/evolution.md. And during CONDENSE, the agent edited the root brain itself — .claude/CLAUDE.md — but only because it was in CONDENSE, the only phase whose guard permits writes to the brain.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9d9054a49f4e"   # curated source block; drift -> review
+    text_hash: "9d9054a49f4e"     # narration; change -> re-render
+    text: |-
+      Every layer is reachable. Every reach is gated by the same gates the rest of the system runs on.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d0a4f57b5b80"   # curated source block; drift -> review
+    text_hash: "d0a4f57b5b80"     # narration; change -> re-render
+    text: |-
+      Every part of the loop has a guard. Every part has a self-test. Every part has a coaching voice and a structured block. The architecture does not trust the operator to remember the rules. It does not trust the agent to remember the rules. It encodes the rules into the parts that touch the work, and lets the parts enforce themselves on each other.
+  - id: s09
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f253677982bb"   # curated source block; drift -> review
+    text_hash: "f253677982bb"     # narration; change -> re-render
+    text: |-
+      Why This Matters for Reliability
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d6e27f64a9b7"   # curated source block; drift -> review
+    text_hash: "d6e27f64a9b7"     # narration; change -> re-render
+    text: |-
+      The reason this matters is the reason agent reliability has been hard. A reliable agent is one whose behavior you can predict from cycle to cycle, not a clever one whose tricks impress in a single session. Predictability across time requires that the agent's substrate — its rules, its hooks, its phase boundaries — outlive any single session and any single L L M context. The seed agent is built so that the substrate does outlive those things. The chat dies. The model rolls forward. The operator forgets. The brain remembers, because the brain is on the filesystem, protected by guards that the filesystem itself enforces.
+  - id: s11
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "02ec64ff3d91"   # curated source block; drift -> review
+    text_hash: "02ec64ff3d91"     # narration; change -> re-render
+    text: |-
+      The Rollback Substrate
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "afeca549dca0"   # curated source block; drift -> review
+    text_hash: "afeca549dca0"     # narration; change -> re-render
+    text: |-
+      The deepest of those guards is the test-pass-or-revert cycle. Every plugin edit in the prototype passes through safe-lock.sh. If every test passes, the change commits and the lock closes. If any test fails, the working tree is rolled back to a captured checkpoint_ref and a structured entry lands in plugin-integrity's revert log — timestamp, list of failed tests, list of files restored, the S H A before the revert. The log is not aspirational; it is forensic. One real entry from May 2026 shows a multi-file edit during tmux-dispatch + window-pin work that failed the brain-guard test suite; the safe-lock cycle reverted all seventeen touched files in one atomic operation, and the operator went looking for the actual bug. The brain did not absorb a broken state. The test suite said no, and the substrate stayed coherent.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "58cbcb592a0e"   # curated source block; drift -> review
+    text_hash: "58cbcb592a0e"     # narration; change -> re-render
+    text: |-
+      That is the durability guarantee that travels — not careful authorship, not clever prompts, not the discipline of any individual cycle. Code does not land if it breaks. The default is rollback. A system that safely modifies itself, under your direction, in your filesystem.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5b81a12f8a4a"   # curated source block; drift -> review
+    text_hash: "5b81a12f8a4a"     # narration; change -> re-render
+    text: |-
+      That is the seed agent. The limit on the guarantee is the test coverage: a plugin whose own tests miss the breaking case will let a broken edit land. The architecture trusts the operator's seed to author and maintain tests; the rollback substrate works only as far as the tests reach.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9be2b10ad186"   # curated source block; drift -> review
+    text_hash: "9be2b10ad186"     # narration; change -> re-render
+    text: |-
+      The architecture's deepest guarantee is rollback. The substrate stays coherent because tests guard every edit and revert the unsafe ones. The next essay is the finale — the seed handed over, the architecture handed to you.

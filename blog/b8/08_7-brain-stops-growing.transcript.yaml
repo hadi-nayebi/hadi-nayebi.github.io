@@ -1,0 +1,127 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: brain-stops-growing
+source_md: 08_7-brain-stops-growing.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:39Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "909264a6d570"   # curated source block; drift -> review
+    text_hash: "909264a6d570"     # narration; change -> re-render
+    text: |-
+      The Brain Stops Growing in Size
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2162a89aa56e"   # curated source block; drift -> review
+    text_hash: "2162a89aa56e"     # narration; change -> re-render
+    text: |-
+      Essay 8.6 closed the operator's three-stage arc — apprentice, journeyman, architect — with the prototype's plugin-version spread as a concrete artifact. The arc raises the deepest claim of this series: at what point does the brain stop growing, and why doesn't that stop the learning? This essay opens that claim.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b94749b7a5df"   # curated source block; drift -> review
+    text_hash: "b94749b7a5df"     # narration; change -> re-render
+    text: |-
+      A brain that grows without bound becomes its own problem. Every CLAUDE.md the agent reads at session start is a tax on the context window. A ten-thousand-word root brain plus several three-thousand-word plugin brains plus several five-thousand-word working CLAUDE.md files is half the agent's working memory before any prompt is processed. The brain would drown the cognition.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "15ddf0704e67"   # curated source block; drift -> review
+    text_hash: "15ddf0704e67"     # narration; change -> re-render
+    text: |-
+      A scientist running a long-form research-protocol seed would feel this immediately if the brain were allowed to grow: every session opens with the cognitive overhead of last month's protocol notes, last week's pipeline tweaks, yesterday's literature scan. Without the discipline that moves those compartments out of the brain and into knowledge silos, the scientist's seed would spend most of its context budget remembering itself instead of doing the science. The discipline below is what keeps the brain readable for this session's work.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "d2fa75c6aee9"   # curated source block; drift -> review
+    text_hash: "d2fa75c6aee9"     # narration; change -> re-render
+    text: |-
+      The Forgetting Discipline
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f65b9ff2e5e6"   # curated source block; drift -> review
+    text_hash: "f65b9ff2e5e6"     # narration; change -> re-render
+    text: |-
+      The size caps force the brain to do what your own brain does: forget the right things. Or more precisely, move the right things. The destinations below are the routing the prototype's brain currently carries; your seed can re-route to fit its own work.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "753fc944380c"   # curated source block; drift -> review
+    text_hash: "753fc944380c"     # narration; change -> re-render
+    text: |-
+      Root-brain overflow distills into focused skill files under .claude/skills/ in the brain root, with a one-line pointer left behind in the brain. Plugin CLAUDE.md overflow routes into that plugin's slice of the knowledge directory, the body kept lean enough to read in one sitting. Working CLAUDE.md overflow gets handled at cycle close by the deflation gate from Essay 6.7, walking the file's footer-to-body absorption and refusing to advance until enough has compressed. Memory-file overflow splits into multiple narrowly-scoped entries. Findings that don't belong in any CLAUDE.md belong in plugin behavior — hardened into a hook — or in the topic-organized knowledge layer.
+  - id: s08
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "97d7e1b9115a"   # curated source block; drift -> review
+    text_hash: "97d7e1b9115a"     # narration; change -> re-render
+    text: |-
+      The Equilibrium
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "671739cb7f3d"   # curated source block; drift -> review
+    text_hash: "671739cb7f3d"     # narration; change -> re-render
+    text: |-
+      The result is a brain that reaches a ceiling and stays there — even though the seed is learning constantly. The new learning is being placed in compartments outside the brain: the knowledge directory keeps growing, each plugin's docs/evolution.md keeps narrating, the hooks keep hardening. The brain itself — the small set of files the agent reads at session start — finds an equilibrium and stays close to it.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "92c1f241ab0f"   # curated source block; drift -> review
+    text_hash: "92c1f241ab0f"     # narration; change -> re-render
+    text: |-
+      This is what I mean when I say the brain stops growing in size but never stops learning. The compression isn't a limitation. It is the discipline by which the seed remains coherent across long timescales.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "27f82bf5156e"   # curated source block; drift -> review
+    text_hash: "27f82bf5156e"     # narration; change -> re-render
+    text: |-
+      A mature seed is a small brain over a large knowledge layer.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "78e34f7e933b"   # curated source block; drift -> review
+    text_hash: "78e34f7e933b"     # narration; change -> re-render
+    text: |-
+      The limit on this equilibrium is, again, friction: the operator who edits the brain carelessly during gmode without re-routing the overflow can grow the brain past its cap; CONDENSE will not retroactively shrink it. The architecture trusts the operator to do the routing; the discipline is the operator's plus the cycle ceremony's, not a single hard gate.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b2a861818010"   # curated source block; drift -> review
+    text_hash: "b2a861818010"     # narration; change -> re-render
+    text: |-
+      A mature seed is a small brain over a large knowledge layer. The recursion that makes the equilibrium safe is next.

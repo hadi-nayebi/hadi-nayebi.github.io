@@ -1,0 +1,244 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: plugin-integrity
+source_md: 05_2-plugin-integrity.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "459392b3b749"   # curated source block; drift -> review
+    text_hash: "459392b3b749"     # narration; change -> re-render
+    text: |-
+      Plugin Edit Safety — plugin-integrity
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "22141e62f6a8"   # curated source block; drift -> review
+    text_hash: "22141e62f6a8"     # narration; change -> re-render
+    text: |-
+      Essay 5.1 sketched the always-on layer as one of two plugin categories — the always-on plugins (currently five in the prototype) run on every prompt and every tool call regardless of which phase the seed agent is in. Essays 5.2 through 5.6 deep-dive each one in turn. Treat each deep-dive as a template: the concern is portable; the specific mechanism is this prototype's answer; the design intent — what gate the plugin opens or closes, and why — is what you carry into your own seed.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "235e2cb45f7d"   # curated source block; drift -> review
+    text_hash: "235e2cb45f7d"     # narration; change -> re-render
+    text: |-
+      We open with the one every other plugin depends on. plugin-integrity is the floor.
+  - id: s04
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c4430cda5c5e"   # curated source block; drift -> review
+    text_hash: "c4430cda5c5e"     # narration; change -> re-render
+    text: |-
+      What it owns
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6abc1907d29f"   # curated source block; drift -> review
+    text_hash: "6abc1907d29f"     # narration; change -> re-render
+    text: |-
+      plugin-integrity exists to prevent accidental edits from regressing a plugin's established logic. It does this by leveraging git checkpoints and the plugin's own test suite. The lock applies to a plugin's executable surfaces — hooks, scripts, config, and the plugin-level context around tests — when they need updating. The documentation and configuration surfaces commit freely: a plugin's CLAUDE.md, everything under docs/, its voice.xml, and its agents/ definitions all edit without a lock. That last pair is deliberate — voice.xml is the seed agent's learning channel, where the CONDENSE phase tunes the coaching as the plugin accrues experience.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "252e4818708c"   # curated source block; drift -> review
+    text_hash: "252e4818708c"     # narration; change -> re-render
+    text: |-
+      The always-on role to keep in mind here is the test gate: every plugin code change — meaning the logical, testable surfaces rather than the soft .md / voice.xml guidance layer — passes through it, regardless of who initiated the edit or which phase the agent is in.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2c1d3f66ba76"   # curated source block; drift -> review
+    text_hash: "2c1d3f66ba76"     # narration; change -> re-render
+    text: |-
+      When the agent moves off the plugin — a phase transition, a session end, or an attempt to edit a different plugin — the lock closes, and the close triggers the plugin's full test suite — pass and the change commits, fail and the working tree rolls back to the captured checkpoint with a structured revert entry recorded in the plugin's hidden state.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "21f79836fda2"   # curated source block; drift -> review
+    text_hash: "21f79836fda2"     # narration; change -> re-render
+    text: |-
+      That gate is the most universal pattern in the seed-agent prototype. Every plugin's code is protected by it. Every architect who adopts this architecture inherits it.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "29a9ddac5b04"   # curated source block; drift -> review
+    text_hash: "29a9ddac5b04"     # narration; change -> re-render
+    text: |-
+      The fuller ceremony — the plugin-lock unlock question, the historian ratchet, the full lock-cmd flow — is deconstructed across two threads. Essay 5.8 shows how three single-concern plugins compose into the historian ratchet, and the Essay 7 series on the plugin kit walks the full anatomy of every plugin. What plugin-integrity contributes to that ceremony is what this essay names: the always-on test gate behind every plugin edit and the auto-revert backstop when the tests fail. The rest of the ceremony belongs to other plugins that compose through it.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "90a51c4aae0a"   # curated source block; drift -> review
+    text_hash: "90a51c4aae0a"     # narration; change -> re-render
+    text: |-
+      Friction calibrated by danger
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e2a2a1b1cb31"   # curated source block; drift -> review
+    text_hash: "e2a2a1b1cb31"     # narration; change -> re-render
+    text: |-
+      The lock is a gradient, not a single switch. plugin-lock opens a plugin's code surfaces for editing. Inside that already-unlocked plugin, the test files sit behind a second lock — test-lock — that has to be opened by name, one test file at a time. Editing a test takes more ceremony than editing a script; writing into CLAUDE.md flows free.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "db9ea0ecdfe8"   # curated source block; drift -> review
+    text_hash: "db9ea0ecdfe8"     # narration; change -> re-render
+    text: |-
+      This is deliberate. The test suite IS the safety net under every plugin edit; unlocking a test file accidentally would silently degrade the very gate the rest of the plugin trusts. The norm the prototype operates under is roughly 80% coverage on each plugin — every established behavior carries a test. Every test sits behind a test-lock-gated edit ceremony. The ceremony forces the seed agent to articulate three things before it edits: which behavior is being added or fixed, which fixtures move, and what the suite asserts before-and-after. The friction is the point.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5053451de97b"   # curated source block; drift -> review
+    text_hash: "5053451de97b"     # narration; change -> re-render
+    text: |-
+      The shape generalizes beyond this prototype. Friction tracks danger. Reading is free. Editing a plugin's code passes through ceremony; editing the tests passes through more — the safety net costs more to lift than the code beneath it. The gmode lane — the deliberate maintenance bypass — opens only behind a long-form justification the seed agent has to compose in full, slowing the agent enough that the operator can intervene before the bypass admits. Friction here is ceremony, not enforcement: every gate depends on the agent reading and obeying the injected voice, and a determined operator can still route through gmode by choice. The design knob this exposes is yours. A lawyer cultivating a brief-template seed could place the heaviest gate over precedent-citation files; a researcher could place it over data-cleaning scripts. You decide which surfaces deserve which gradient.
+  - id: s14
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "135aeea4c710"   # curated source block; drift -> review
+    text_hash: "135aeea4c710"     # narration; change -> re-render
+    text: |-
+      The unlock briefing
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0de9841d3c55"   # curated source block; drift -> review
+    text_hash: "0de9841d3c55"     # narration; change -> re-render
+    text: |-
+      At unlock, the agent receives a structured briefing — a header, the plugin's evolution.md under a [LIVING HISTORY] label, a separate [RECENT COMMITS] block listing what has changed since the historian last ran, and three guidance voices: align edits with the plugin's CLAUDE.md Objective, Read the sibling docs (docs/decisions.md, docs/lessons.md, docs/lessons-.md) when the LIVING HISTORY references them and the current edit touches that area, and commit before any outside-plugin work. The briefing is bounded but pointed: evolution.md is auto-injected (word-capped at 2000); the sibling docs are uncapped and not in the injection path; the second voice tells the agent to follow the references when they apply. The same shape — labeled briefing of accumulated state, plus guidance voices that align edits and point at deeper references — is what other seeds can use at their own decision-rich moments: a consulting seed briefing the agent at the start of every client engagement, a research seed briefing at the start of every literature-review job.
+  - id: s16
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a719d2e5a47"   # curated source block; drift -> review
+    text_hash: "7a719d2e5a47"     # narration; change -> re-render
+    text: |-
+      What would break without it
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "71810de4f288"   # curated source block; drift -> review
+    text_hash: "71810de4f288"     # narration; change -> re-render
+    text: |-
+      Without plugin-integrity, every plugin edit is a hope. Run a change, hope the change works, hope you remembered to run the tests, hope you didn't forget to commit, hope the next session inherits a working codebase.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ebde13fa69a0"   # curated source block; drift -> review
+    text_hash: "ebde13fa69a0"     # narration; change -> re-render
+    text: |-
+      Sloppy edits inside one plugin corrupt the discipline of every other plugin that depends on it, because plugins compose — they call each other's public surfaces, share the four-footer protocol, lift each other's prefixes. One quiet regression deep inside a plugin's hooks can poison every dispatched subagent, every phase gate, every voice fire across the session. The always-on test gate is what makes a complex composing-plugin architecture safely modifiable in the first place.
+  - id: s19
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "efe6a2837277"   # curated source block; drift -> review
+    text_hash: "efe6a2837277"     # narration; change -> re-render
+    text: |-
+      plugin-integrity is the rare always-on plugin most architects inherit, not rewrite. The test gate is the universal floor — every logical plugin-code change should pass through it, no matter what the plugin does. Replacing it makes the architecture less safe, not more. But the inside of the gate has knobs.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "71ec03d7da15"   # curated source block; drift -> review
+    text_hash: "71ec03d7da15"     # narration; change -> re-render
+    text: |-
+      You would tune the threshold — what counts as "test pass." The current prototype runs every test in the plugin's tests/ directory and treats them uniformly. A larger plugin with hundreds of tests may want fast-and-slow tiers (smoke tests block the unlock; full suite runs in C I). A plugin generating non-deterministic output may need flake tolerance encoded in the gate.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "27c6e14d4f1f"   # curated source block; drift -> review
+    text_hash: "27c6e14d4f1f"     # narration; change -> re-render
+    text: |-
+      You would tune the prefix registry used by the unlock ceremony. The current registry is short; your seed's will hold more. Each registered prefix carries its own word floor, its own format, its own Post handler. Adding a ceremony means adding to the registry, writing the handler, wiring the voice. The registry is the surface; the entries are yours.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "dac24dc7920d"   # curated source block; drift -> review
+    text_hash: "dac24dc7920d"     # narration; change -> re-render
+    text: |-
+      You would extend the revert log schema. The current entries record what was reverted, by whom, when, with which checkpoint S H A. Your seed may want to record which test failed (the exact assertion), which file the regression lived in, which prior cycle introduced the dependency that the failing test was checking. Richer revert logs make debugging in CONDENSE — the phase that absorbs experiential data — substantially faster.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ba914fdec3c3"   # curated source block; drift -> review
+    text_hash: "ba914fdec3c3"     # narration; change -> re-render
+    text: |-
+      You would extend the friction gradient itself. The prototype has two unlock stages (plugin code, then test files); your seed may add more — a third stage for hidden state files (data Jason), a fourth for hooks that hold global side effects, a separate ceremony for cross-plugin contract changes. Each stage you add is a place where the seed agent's velocity drops on purpose, because the work at that stage is more dangerous than the work one stage above it. The principle stays: routine reads pass freely, dangerous edits pass slowly, and how slowly is calibrated by you.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e17910cdc08b"   # curated source block; drift -> review
+    text_hash: "e17910cdc08b"     # narration; change -> re-render
+    text: |-
+      What you would not do is remove the safety net itself. The test gate is the floor; the floor stays.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ccc0af3c2f35"   # curated source block; drift -> review
+    text_hash: "ccc0af3c2f35"     # narration; change -> re-render
+    text: |-
+      The next part covers the second always-on plugin — the one that owns the seed agent's relationship to the model's context window.

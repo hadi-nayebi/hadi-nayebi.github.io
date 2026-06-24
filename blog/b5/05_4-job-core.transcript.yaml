@@ -1,0 +1,316 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: job-core
+source_md: 05_4-job-core.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "303439f04e3b"   # curated source block; drift -> review
+    text_hash: "303439f04e3b"     # narration; change -> re-render
+    text: |-
+      Job Lifecycle — job-core
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2e0e1ac5ff0e"   # curated source block; drift -> review
+    text_hash: "2e0e1ac5ff0e"     # narration; change -> re-render
+    text: |-
+      Essay 5.3 covered the ceiling — keeping the agent under the model's reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of what work it is doing.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c4430cda5c5e"   # curated source block; drift -> review
+    text_hash: "c4430cda5c5e"     # narration; change -> re-render
+    text: |-
+      What it owns
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "74b4fbab3931"   # curated source block; drift -> review
+    text_hash: "74b4fbab3931"     # narration; change -> re-render
+    text: |-
+      job-core exists to compartmentalize the seed agent's work. The unit of compartmentalization is the job — a container for everything the agent does between the moment a piece of work begins and the moment it is complete. Every prompt, every reasoning cycle, every action belongs to one. The plugin works by routing each user prompt into a job (creating a new one if none is focused, attaching as an interaction if one is) and by refusing to let the agent stop while any job remains active. It applies on every prompt the user submits, every Stop event the agent triggers, and every job-complete claim the agent makes.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "d2e99f3a8477"   # curated source block; drift -> review
+    text_hash: "d2e99f3a8477"     # narration; change -> re-render
+    text: |-
+      How a job is born
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0cd955bf21ba"   # curated source block; drift -> review
+    text_hash: "0cd955bf21ba"     # narration; change -> re-render
+    text: |-
+      A job can come into being four ways, and the distinction matters because three of them are for ordinary work and one is privileged. The three ordinary pathways all produce a job that is not cleared to touch the plugin layer — its plugin_lock_approval flag is false, so the customization guardrail (Essay 5.9) blocks any plugin-edit ceremony raised from inside it. The first is a direct standalone job the agent creates as a side-project. The second is a direct dependent job — the same thing, except its I D is appended to the focused job's dependency list, so the focused job cannot close until this one does. The third is the prompt hook itself: the same hook that routes every user message also creates the very first job of a session when none is active yet.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "39cbecf8571d"   # curated source block; drift -> review
+    text_hash: "39cbecf8571d"     # narration; change -> re-render
+    text: |-
+      That third pathway has two branches, and one of them is the quiet load-bearing rule of the whole design. When no job is active, the hook bootstraps — it creates a fresh active job seeded with the prompt. But when a job is already active, the hook does not create anything; it appends the prompt to the focused job's interaction list. This is the canonical behavior for every mid-session message: a new prompt is more context for the work already underway, not a new unit of work. If a prompt genuinely surfaces a separate job, the agent does not spawn it on the spot — it drops a marked note in the current phase's working memory, and the next CONDENSE phase reads that note and creates the job with the right context behind it.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f53ca96b56ac"   # curated source block; drift -> review
+    text_hash: "f53ca96b56ac"     # narration; change -> re-render
+    text: |-
+      The fourth pathway is the privileged one. A job that will edit the plugin substrate has to be approved by the user before it is even created, through a structured question the agent can only raise during CONDENSE — and on approval, that one job has its plugin_lock_approval flipped to true. The full mechanics of that ceremony live in Essay 5.9; what matters here is that it is one of the four ways a job enters the world, and the only one that comes pre-cleared for plugin work at creation. The pre-cleared flag is not the job's only route to plugin access, though: a job born for ordinary work can still earn the right mid-flight. When work already in progress discovers that its fix actually lands in the plugin layer, the agent can raise that same plugin_lock_approval right on the focused job — in any active phase, not just CONDENSE — through a second structured question the user confirms. Same right, same writer; the difference is only when it is granted. Essay 5.9 walks both routes.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1dcefab238f8"   # curated source block; drift -> review
+    text_hash: "1dcefab238f8"     # narration; change -> re-render
+    text: |-
+      However a job is born, it starts the same minimal way — a universal starter shape. It carries a short name, a starter objective written to give the future agent a solid base to pick up from, an empty dependency list, both approval flags set to false, and a status of pending with its cycle counter at zero. One thing it deliberately leaves undecided is its plan: the plan_file field is born null — an undecided, set-once sentinel — not yet false, not yet a name. Whether the job needs a long-horizon plan at all, and what shape that plan takes, is decided later, by the job's own first PLAN phase once it has actually looked at the work. That decision is an explicit one: even a single-cycle job must record it, by calling set-plan-file with false. The phase that spawns a job owns the spawn decision; the new job's first cycle owns the plan-shape decision.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "058bd1526f17"   # curated source block; drift -> review
+    text_hash: "058bd1526f17"     # narration; change -> re-render
+    text: |-
+      The cumulative mega-prompt
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9e3a3210ab17"   # curated source block; drift -> review
+    text_hash: "9e3a3210ab17"     # narration; change -> re-render
+    text: |-
+      A user-prompt hook intercepts every user prompt and either creates a new active job or appends the prompt as an interaction on the currently focused one. The interaction field of a job is what the seed agent treats as its dynamic mega-prompt. In most agent designs, "the prompt" is a one-off — text handed to the model at the start of the exchange and rarely revisited. Here, the prompt is cumulative: the first user message in a session seeds a new job, every later prompt and every Q&A appends into the same job's interaction list, and the whole list is what the agent reads as its instruction set going forward. The next plugin in this layer — interaction-summary — keeps that mega-prompt legible as it grows.
+  - id: s12
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "6e236427e940"   # curated source block; drift -> review
+    text_hash: "6e236427e940"     # narration; change -> re-render
+    text: |-
+      The shared key
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c3b7b0d41dcd"   # curated source block; drift -> review
+    text_hash: "c3b7b0d41dcd"     # narration; change -> re-render
+    text: |-
+      The interaction list is just one form of state attached to a job. When a job is created it is assigned a unique I D — a timestamp from the moment of creation — and the base job object (name, status, interaction list, dependencies, completion fields, and authorization flags such as user_approval and plugin_lock_approval) lives in job-core's own hidden state. Other plugins that need to carry context about that job extend the same job object under the same I D inside their own hidden state. interaction-summary does exactly this — when a job's interactions cross the summarization threshold, the plugin creates a mirror entry under the job's I D and starts appending summary blocks there.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fab7c14c54d3"   # curated source block; drift -> review
+    text_hash: "fab7c14c54d3"     # narration; change -> re-render
+    text: |-
+      The phase plugins (Essay 6) do it on a larger scale: each phase plugin keeps its own per-job bookkeeping — rhythm counters, phase entries, plan-file pointers, footer anchors — keyed by the same I D. No plugin reads another's hidden state directly, but the shared key lets each plugin's view of the job line up with every other plugin's view without runtime coordination. That consistency is what makes the job a true cross-plugin compartment.
+  - id: s15
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "5798d67f8d13"   # curated source block; drift -> review
+    text_hash: "5798d67f8d13"     # narration; change -> re-render
+    text: |-
+      The refusal to stop
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2baf8a774b29"   # curated source block; drift -> review
+    text_hash: "2baf8a774b29"     # narration; change -> re-render
+    text: |-
+      The job structure is also what keeps the agent working: the same shared key that lets every plugin reach the focused job is what lets job-core enforce a single continuous work loop. A turn-end hook refuses to let the agent stop whenever any active or pending job remains. The refusal message is phase-aware — every O P E V C phase gets its own reminder set (observation phases get prompts to check CLAUDE.md before synthesizing, execution phases get prompts to keep edits inside the altered-list, and the others carry phase-specific reminders of the same kind).
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cf686f19307b"   # curated source block; drift -> review
+    text_hash: "cf686f19307b"     # narration; change -> re-render
+    text: |-
+      The refusal functions as a re-orientation, not a flat no: when the seed agent tries to stop prematurely, the message reminds it of what its current phase still expects before stopping is even on the table. The agent cannot stop while any job is active, and pending jobs scheduled ahead extend the loop across whatever queue the operator — or the seed agent itself, when it queues follow-up work — has set up. The seed agent runs continuously until every active and pending job has been completed, which is what makes long-running, hands-off operation possible. The refusal is friction, not mathematical enforcement: the stop-gate is a voice the agent reads and re-orients on. A determined operator can disable the hook outright; an agent ignoring the voice can still mis-handle the signal. The friction is enough to make hands-off operation work in practice — not enough to guarantee correctness against an actively misbehaving agent.
+  - id: s18
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "eb97fe99bde8"   # curated source block; drift -> review
+    text_hash: "eb97fe99bde8"     # narration; change -> re-render
+    text: |-
+      Completion hooks
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "906230d109a3"   # curated source block; drift -> review
+    text_hash: "906230d109a3"     # narration; change -> re-render
+    text: |-
+      Completion runs through two hooks. The current prototype splits the job-complete gate into a pre-completion hook and a post-completion hook. The pre-completion hook gates when the question can even be asked, then enforces its required shape. First the phase gate: a job-complete question is allowed only in the CONDENSE phase — CONDENSE owns completion, because it is the cycle-wide synthesis phase that decides extend-versus-complete with full context. Next the eligibility gate: a single-cycle job is eligible at any CONDENSE, but a multi-cycle job is blocked until it reaches its final declared cycle — there is no early-completion path. Only once both gates pass does the shape requirement apply: the question reaches the user only if its body carries the mandated slots — the focused job's name, a substantial review block (the prototype sets a word floor; your seed can tune it), and exactly the "Review" and "Approve completion" option labels. Filling that shape is the cognition the gate compels — the agent cannot ask to close a job without first composing the review the shape demands. Then the post-completion hook walks the focused job's dependency list, refuses approval if any dependency is still unfinished, and only then records the user's approval. That recording is a single boolean on the job — user_approval — and it is the load-bearing gate of the whole sequence: nothing but this post-handler sets it to true, and the command that flips a job's status from active to completed refuses to run unless it is true. No approval boolean, no completion. (When a repeatable job re-activates for a fresh run, the reactivate command resets that boolean to false so the next run must earn its own approval.) The architectural fact is the two-hook split: completion does not collapse into a single moment. Future seed-agent generations can graduate to automated criteria, verifier subagents, or layered approval chains.
+  - id: s20
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "17823c5a4bd3"   # curated source block; drift -> review
+    text_hash: "17823c5a4bd3"     # narration; change -> re-render
+    text: |-
+      Three things people call "done"
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0aea0a60cef8"   # curated source block; drift -> review
+    text_hash: "0aea0a60cef8"     # narration; change -> re-render
+    text: |-
+      The word done hides three different events, and conflating them is the most common confusion this plugin's readers hit. They are independent — each has its own actor, its own gate, its own side effect — even though they often fire in the same breath.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "87ba0fb69bdd"   # curated source block; drift -> review
+    text_hash: "87ba0fb69bdd"     # narration; change -> re-render
+    text: |-
+      The first is job completion: the focused job's status flips from active to completed, by the post-completion hook's call once approval lands. The flip touches only the status and the completion timestamp — it does not drop focus. The completed job stays focused through a cleanup window so its final CONDENSE can finish. Its side effect: the stop-gate counts active and pending jobs, so once this job is no longer active and no other job is active or pending, the refusal to stop releases. But the agent only truly rests after the next event. The second is condense-phase completion: the CONDENSE phase advances to idle when its own gates pass. This advance is what finally drops focus — the relocated unfocus fires here, not at job completion. Its side effect is that the current reasoning cycle closes and the next one is free to begin. The third is cycle closure: the integer cycle counter on the job ticks up by one. A multi-cycle job loops back here for another pass; a single-cycle job ends here.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9a4df5199406"   # curated source block; drift -> review
+    text_hash: "9a4df5199406"     # narration; change -> re-render
+    text: |-
+      They can land together. A single-cycle job reaches its one and only CONDENSE, asks the completion question, the user approves — and in that one moment the job flips to completed, the condense gate releases, and the cycle closes, all at once. But they are still three events, not one, and the language has to keep them apart: completing the cycle is not completing the job. A long job closes dozens of cycles before it ever completes the job.
+  - id: s24
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a719d2e5a47"   # curated source block; drift -> review
+    text_hash: "7a719d2e5a47"     # narration; change -> re-render
+    text: |-
+      What would break without it
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "fadfdd6182f8"   # curated source block; drift -> review
+    text_hash: "fadfdd6182f8"     # narration; change -> re-render
+    text: |-
+      Without job-core, the agent has no notion of what work am I doing. Every prompt is a one-off, there is no thread of intent to come back to, no place for follow-up work to live, no signal that says the agent is or isn't done. The cognitive horizon collapses to the current turn — and everything the rest of the always-on layer is built to support has nothing structural to attach to.
+  - id: s26
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "678ac1de7740"   # curated source block; drift -> review
+    text_hash: "678ac1de7740"     # narration; change -> re-render
+    text: |-
+      job-core's architecture is portable; its specifics are tunable.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "92485ffeadf5"   # curated source block; drift -> review
+    text_hash: "92485ffeadf5"     # narration; change -> re-render
+    text: |-
+      You would re-shape the unit of compartmentalization. The current prototype calls it "a job" — a generic noun that fits software work. Your seed may want a richer noun for your domain: a research seed might call the unit an "investigation"; a consulting seed might call it a "client engagement"; a legal-research seed might call it a "matter." The schema doesn't care what you call it; the mental model and the voices do. Renaming the unit shifts the operator's framing.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3733e1a07a95"   # curated source block; drift -> review
+    text_hash: "3733e1a07a95"     # narration; change -> re-render
+    text: |-
+      You would extend the stop-gate refusal voices. The current prototype ships one per O P E V C phase. If your seed adds new phases (a phase_research between OBSERVE and PLAN, say), each new phase gets its own stop-gate voice reminding the agent what that phase still expects. The voice library grows with your phase library.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a50b48914b90"   # curated source block; drift -> review
+    text_hash: "a50b48914b90"     # narration; change -> re-render
+    text: |-
+      You would deepen the completion checks. The current shape is name-validation followed by dependency-walk. A larger system may want more: a verifier-subagent check that runs acceptance tests, a peer-review check where a second agent audits the work, a delay-gate check that forces a cool-down before approval lands. The hook architecture supports layering by composition; each new check is its own pre/post hook pair.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3dff31b6154b"   # curated source block; drift -> review
+    text_hash: "3dff31b6154b"     # narration; change -> re-render
+    text: |-
+      A consulting practice could install the same dependency-walk pattern for client deliverable QA. The agent cannot mark a deliverable "done" until every checklist item the operator declared — sign-off received, references verified, deliverable filed — is satisfied; the stages become the firm's review protocol expressed as hooks.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "821f07ba7d6e"   # curated source block; drift -> review
+    text_hash: "821f07ba7d6e"     # narration; change -> re-render
+    text: |-
+      You would tune the mega-prompt strategy. The current cumulative-list approach treats every interaction as load-bearing. Your seed may want a sliding window (last N interactions), topic-filtered slices (interactions matching a domain tag), or domain-specific summarization (research seeds compress citations differently from consulting seeds compress decisions). The user_interactions array is one shape — the mega-prompt could read from any structured field that survives across the session.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ce128236d30d"   # curated source block; drift -> review
+    text_hash: "ce128236d30d"     # narration; change -> re-render
+    text: |-
+      What you would not do is collapse the job into the current turn. The whole always-on layer attaches to the job structurally; without the compartment, the rest of the layer has nothing to hang on.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "261221ada67d"   # curated source block; drift -> review
+    text_hash: "261221ada67d"     # narration; change -> re-render
+    text: |-
+      The next part covers the plugin that keeps the cumulative mega-prompt legible as it grows past hundreds of interactions.

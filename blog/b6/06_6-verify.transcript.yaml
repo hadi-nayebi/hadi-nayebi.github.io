@@ -1,0 +1,514 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: verify
+source_md: 06_6-verify.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f3ad94a2ce22"   # curated source block; drift -> review
+    text_hash: "f3ad94a2ce22"     # narration; change -> re-render
+    text: |-
+      VERIFY — Independent Eyes
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3a91116e807d"   # curated source block; drift -> review
+    text_hash: "3a91116e807d"     # narration; change -> re-render
+    text: |-
+      Essay 6.5 closed with EXECUTE handing forward — the project files written, the execution notes filed in the working CLAUDE.md, the cycle's deliverable on disk. VERIFY is the phase that decides whether the deliverable is right.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "14c0848e5610"   # curated source block; drift -> review
+    text_hash: "14c0848e5610"     # narration; change -> re-render
+    text: |-
+      VERIFY is the cycle's independent-eyes phase. Where EXECUTE built the work, VERIFY judges it against the plan — and VERIFY records what it finds and routes the cycle; it never patches the work itself. The cognitive failure VERIFY prevents is self-verification bias: the hand that built the code wants to see the code as correct, the same way a writer who proofreads their own draft misses errors a stranger would catch instantly. The prototype's answer is a separate phase with a separate tool surface, a separate cognitive posture, and a roster of read-only auditor subagents whose entire job is to evaluate one slice of the cycle's work and report back. If something fails, VERIFY's only legal response is to route the cycle backward — to EXECUTE for a small fix, to PLAN for a design correction, to OBSERVE for a context reset. VERIFY cannot quietly amend the artifact it just judged.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "30c34e327a13"   # curated source block; drift -> review
+    text_hash: "30c34e327a13"     # narration; change -> re-render
+    text: |-
+      The sources are the cycle itself. VERIFY reads the plan document the cycle was supposed to satisfy, reads the altered-list CLAUDE.md files for the execution notes and per-directory context, walks the commit graph for the cycle's history, and inspects the project files EXECUTE produced. It dispatches its own family of subagents — a verify-observe-auditor that evaluates whether OBSERVE gathered enough context, a verify-plan-auditor that evaluates whether the plan was buildable, a verify-execute-auditor that evaluates implementation fidelity, a verify-git-historian that evaluates checkpoint cadence, a verify-code-evolution-tracker that evaluates the change's structural quality. A family of perspectives, deliberately composed so no single one dominates the verdict.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f315d915b6fd"   # curated source block; drift -> review
+    text_hash: "f315d915b6fd"     # narration; change -> re-render
+    text: |-
+      The write side is the tightest in the cycle, but it is not absent — and the common shorthand "VERIFY cannot edit files" oversimplifies it. VERIFY cannot edit project source: code, scripts, configuration are off-limits at the tool boundary. Inside the brain the authority is scoped. VERIFY can append findings to CLAUDE.md files beneath its own footer anchor the VERIFY footer. Because the VERIFY footer is the lowest anchor in the cascading-downward enforcement that all phase guards share, VERIFY's CLAUDE.md authority bottoms out at its own section — there is no lower section it could cascade into. The other phases' footers stay above the VERIFY footer and therefore stay read-only to VERIFY. VERIFY can refine the plan document — and refining it is coupled to a mandatory backward step to PLAN, so a sharpened criterion is re-cognized rather than slipped forward. It can update memory files. What it cannot do is close anything: there is no approve, no seal, no completion flip in this phase — that decision belongs to CONDENSE, a phase away. The scoping is what makes VERIFY structurally trustworthy: VERIFY can only report and route, never silently fix.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "477004902787"   # curated source block; drift -> review
+    text_hash: "477004902787"     # narration; change -> re-render
+    text: |-
+      Pacing follows the cycle's shared shape. There is no entry ceremony — the entry voice orients the phase toward read-and-judge work and the auditor roster that carries it; the depth-thinking it prompts is coached cognition, not a checked act. The min-max gate paces the read/write rhythm — read before you write, synthesize before you read more, counted per activity class with a CLAUDE.md update resetting the count — and a direct-action budget biases the main session toward auditor-subagent dispatch.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d916d463c4bf"   # curated source block; drift -> review
+    text_hash: "d916d463c4bf"     # narration; change -> re-render
+    text: |-
+      The Bash whitelist is the tightest of any phase — tests/ scripts, scripts/ scripts, git read-only commands, and a handful of plugin-published query scripts. No git add, no shell writes, no package managers.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6198cea18b18"   # curated source block; drift -> review
+    text_hash: "6198cea18b18"     # narration; change -> re-render
+    text: |-
+      The rest of this essay opens VERIFY's plan-refinement authority, walks the scoped edit surfaces, names the auditor family, and traces the outcomes — clean pass, minor fix, deep reset, plan-refinement loop.
+  - id: s09
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ed647398afc3"   # curated source block; drift -> review
+    text_hash: "ed647398afc3"     # narration; change -> re-render
+    text: |-
+      The plan-refinement authority
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "eed3c3f99180"   # curated source block; drift -> review
+    text_hash: "eed3c3f99180"     # narration; change -> re-render
+    text: |-
+      VERIFY carries one authority the other working phases don't: it is the only phase besides plan-creation that can edit a multi-cycle plan file — to sharpen a vague acceptance criterion, drop an untestable one, or tighten scope the cycle revealed. The edit is scoped to the focused job's own plan file; an edit to any other plan is rejected at the tool boundary.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a9da79cfe1fe"   # curated source block; drift -> review
+    text_hash: "a9da79cfe1fe"     # narration; change -> re-render
+    text: |-
+      But the authority is coupled to a constraint: refining the plan forces a backward step. If VERIFY edits the plan file, it cannot forward-advance to CONDENSE — it must commit --backward plan, handing the sharpened plan back to PLAN to re-cognize. PLAN can then send the cycle to OBSERVE for more context, forward to EXECUTE to rebuild against the new criterion, or — when the plan only needed tightening, not re-execution — forward to VERIFY directly. The architecture reserves a direct PLAN→VERIFY return for exactly this case — its own entry in the forward map, taken when the plan only needed tightening.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2d8a989c7c10"   # curated source block; drift -> review
+    text_hash: "2d8a989c7c10"     # narration; change -> re-render
+    text: |-
+      VERIFY refines, but it never closes. It cannot approve a plan, seal it, or flip a job to complete — there is no approval ceremony in this phase. The cycle-closing judgment is CONDENSE's, a phase away. VERIFY is the cycle's final guardrail on the work; CONDENSE is where the job's completion is asked.
+  - id: s13
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "a2a88e19abd1"   # curated source block; drift -> review
+    text_hash: "a2a88e19abd1"     # narration; change -> re-render
+    text: |-
+      VERIFY's scoped edit authority
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d5b7100807ec"   # curated source block; drift -> review
+    text_hash: "d5b7100807ec"     # narration; change -> re-render
+    text: |-
+      A common shorthand says "VERIFY cannot edit files." It is half-right. The precise rule is that VERIFY cannot edit project source — code, scripts, configuration, anything outside the brain. Inside the brain, VERIFY's write authority is scoped, not absent, and the scope is bounded.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "60205df01a25"   # curated source block; drift -> review
+    text_hash: "60205df01a25"     # narration; change -> re-render
+    text: |-
+      The first is the plan file — the focused job's own .md or .yaml, just covered. Edits are scoped to that one declared plan_file; an edit to any other plan is rejected at the tool boundary, and editing it at all forces the backward step to PLAN.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c7b762ab5023"   # curated source block; drift -> review
+    text_hash: "c7b762ab5023"     # narration; change -> re-render
+    text: |-
+      The second is the altered-list CLAUDE.md files — the same scope EXECUTE just finished writing into, inherited by VERIFY at phase entry. The agent appends its pass/fail findings to those CLAUDE.md files, but the edit lands strictly below the VERIFY footer. Cross-section edits — attempts to amend OBSERVE's or PLAN's or EXECUTE's footer record — are rejected by the same shared section-check library every phase guard uses. VERIFY cannot rewrite history; it can only file its report under its own anchor.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "600a12fb9bb3"   # curated source block; drift -> review
+    text_hash: "600a12fb9bb3"     # narration; change -> re-render
+    text: |-
+      The third is the memory files — the user-side persistence layer under .claude/projects/.../memory/. Memory edits land in any phase, including VERIFY, because the memory layer is the always-on persistence the seed agent uses for cross-cycle and cross-session learning; the phase-specific guards explicitly exempt memory paths from their scope checks.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b56c73317f3f"   # curated source block; drift -> review
+    text_hash: "b56c73317f3f"     # narration; change -> re-render
+    text: |-
+      The right shorthand, then: VERIFY's edit authority is scoped. It can refine the plan, file its findings under its own footer, and update the memory layer. It cannot touch project source, cannot create new CLAUDE.md files, and cannot rewrite the prior phases' footer records. The scope is what makes VERIFY's verdict structurally trustworthy — VERIFY cannot quietly fix what it found wrong; it can only report and route.
+  - id: s19
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "396d08c60050"   # curated source block; drift -> review
+    text_hash: "396d08c60050"     # narration; change -> re-render
+    text: |-
+      The auditor family
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c625e14d4144"   # curated source block; drift -> review
+    text_hash: "c625e14d4144"     # narration; change -> re-render
+    text: |-
+      Auditor subagents are read-only researchers, scoped narrowly to one slice of the cycle. The prototype ships an initial set — one per cycle slice — and the set grows as new perspectives prove worth auditing.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f8b2096a520c"   # curated source block; drift -> review
+    text_hash: "f8b2096a520c"     # narration; change -> re-render
+    text: |-
+      One re-walks the working memory the OBSERVE phase produced and asks whether it gave PLAN enough to work with. One judges the plan itself — were the items specific enough to implement without guessing, were the acceptance criteria testable, would another agent have reached the same implementation from these instructions, or did the plan leave gaps that forced EXECUTE to improvise.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "850c7595816f"   # curated source block; drift -> review
+    text_hash: "850c7595816f"     # narration; change -> re-render
+    text: |-
+      One walks the cycle's commit graph and asks whether the checkpoints tell a coherent story. One compares what was built against what the plan specified — flagging over-engineering, missed items, and silent deviations. One assesses the quality of the change itself: scope discipline, edit patterns, structural consistency.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "000fcd45a910"   # curated source block; drift -> review
+    text_hash: "000fcd45a910"     # narration; change -> re-render
+    text: |-
+      A family of perspectives, deliberately composed so that no single one dominates the verdict. None of them are allowed to fix what they find — they only report.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "51fb673a42fa"   # curated source block; drift -> review
+    text_hash: "51fb673a42fa"     # narration; change -> re-render
+    text: |-
+      Self-verification is biased — that is the whole reason VERIFY is its own phase. A separate phase, with separate tools, run by a separate cognitive posture — and frequently delegated to subagents for independence — gives the verification an honest chance to catch what execution missed.
+  - id: s25
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "da6aece8b940"   # curated source block; drift -> review
+    text_hash: "da6aece8b940"     # narration; change -> re-render
+    text: |-
+      The outcomes
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6ddd7a679fce"   # curated source block; drift -> review
+    text_hash: "6ddd7a679fce"     # narration; change -> re-render
+    text: |-
+      VERIFY produces a structured pass/fail report against the plan's acceptance criteria. The report goes into the plan document and into the working CLAUDE.md.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3624e65f64cb"   # curated source block; drift -> review
+    text_hash: "3624e65f64cb"     # narration; change -> re-render
+    text: |-
+      The outcomes are all routing. A clean pass advances forward to CONDENSE. A failure routes backward — to EXECUTE for a small fix, or to PLAN or OBSERVE for a deeper reset. And the plan-refinement case is its own edge: if VERIFY sharpened the plan, it routes backward to PLAN even when nothing else failed, so the tightened contract is re-cognized before the cycle moves on. There is no approve-and-promote outcome here; VERIFY does not seal, flip, or retire the plan file — it persists, and the job's completion is asked later, at CONDENSE.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3789bf1b290c"   # curated source block; drift -> review
+    text_hash: "3789bf1b290c"     # narration; change -> re-render
+    text: |-
+      If everything passes, the orchestrator advances the job to CONDENSE.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "de839213a832"   # curated source block; drift -> review
+    text_hash: "de839213a832"     # narration; change -> re-render
+    text: |-
+      If something minor fails — a typo, a missed import, a comment that wasn't updated — VERIFY transitions backward to EXECUTE, which gets a chance to fix the small thing and re-checkpoint. The plan is not amended; only the implementation is corrected.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "377fa7b28ae2"   # curated source block; drift -> review
+    text_hash: "377fa7b28ae2"     # narration; change -> re-render
+    text: |-
+      If something major fails — an acceptance criterion that the plan can't meet, a discovery that the observation was incomplete — VERIFY transitions backward all the way to OBSERVE or PLAN. The orchestrator records the rollback as part of the job's history. The cycle restarts with the lesson learned.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "78386dff6686"   # curated source block; drift -> review
+    text_hash: "78386dff6686"     # narration; change -> re-render
+    text: |-
+      If VERIFY refines the plan itself — sharpens a criterion, drops one that can't be tested — it cannot forward-advance even when the implementation passed. It commits --backward plan, and PLAN re-cognizes the tightened contract: back to OBSERVE for context, forward to EXECUTE to rebuild, or — via the plan→verify forward transition — forward to VERIFY directly when the plan only needed tightening. The plan file is refined in place and persists across the cycle; nothing is approved, sealed, or promoted.
+  - id: s32
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "cdf192ddc5ff"   # curated source block; drift -> review
+    text_hash: "cdf192ddc5ff"     # narration; change -> re-render
+    text: |-
+      Situational edges and the Markov property
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9e0766002234"   # curated source block; drift -> review
+    text_hash: "9e0766002234"     # narration; change -> re-render
+    text: |-
+      The backward edges are situational rather than a fixed menu — VERIFY rolls back to whichever prior phase the failure actually points at, and the plan-refinement case adds its own mandatory backward edge to PLAN — and it is this discipline of choosing where to go, edge by edge, that gives the phasic layer its name.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bcec3f091120"   # curated source block; drift -> review
+    text_hash: "bcec3f091120"     # narration; change -> re-render
+    text: |-
+      Forward transitions are automatic when the gate criteria are met; backward transitions are explicit and the agent has to choose where to roll back to. The state of the cycle is fully captured in the orchestrator's data file — current phase, cycle number, the rhythm counters, and a few transition flags (pre-gmode stash, suppress-increment, forwarded). No hidden continuation.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c3c831a3ca00"   # curated source block; drift -> review
+    text_hash: "c3c831a3ca00"     # narration; change -> re-render
+    text: |-
+      Any phase can be re-entered, but only by rolling back along defined edges. This is the Markov property the title leans on: the cycle's next move is a function of its present state, not of the path that got it there.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "29bceba62474"   # curated source block; drift -> review
+    text_hash: "29bceba62474"     # narration; change -> re-render
+    text: |-
+      When VERIFY passes, the orchestrator advances the job to CONDENSE.
+  - id: s37
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f9fb37f20a42"   # curated source block; drift -> review
+    text_hash: "f9fb37f20a42"     # narration; change -> re-render
+    text: |-
+      A worked example
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "61fec00adb55"   # curated source block; drift -> review
+    text_hash: "61fec00adb55"     # narration; change -> re-render
+    text: |-
+      The multi-cycle plan-job from the earlier essays reaches its third cycle's VERIFY phase. The agent has revert-and-reauthored the marker schema in EXECUTE; the checkpoint commits are clean; the orchestrator advances the job to VERIFY.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a5695b97af65"   # curated source block; drift -> review
+    text_hash: "a5695b97af65"     # narration; change -> re-render
+    text: |-
+      The agent enters VERIFY. The entry voice fires and orients the phase — a tighter shape than EXECUTE, because the work is read-and-judge rather than write — and points the agent at the auditor roster.
+  - id: s40
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b59f9ac9eb0e"   # curated source block; drift -> review
+    text_hash: "b59f9ac9eb0e"     # narration; change -> re-render
+    text: |-
+      The agent dispatches the auditor family in parallel. The verify-execute-auditor reads the cycle's commit graph and the altered-list diff. The verify-plan-auditor re-reads the .md plan and compares its acceptance criteria against the actual code change. The verify-observe-auditor walks the OBSERVE synthesis the cycle inherited from cycle 3's observation. The verify-git-historian audits the checkpoint cadence. None of them is allowed to fix what they find.
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0eb9d1a03308"   # curated source block; drift -> review
+    text_hash: "0eb9d1a03308"     # narration; change -> re-render
+    text: |-
+      The verify-plan-auditor surfaces a gap. The cycle's acceptance criteria, written by PLAN, list a round-trip check for the new marker schema. The agent ran that check and it passed. But the auditor also notices the .md plan never declared the criterion for backward-compatibility with cycle-2 cycle records — code already on disk, marker schema is now the new shape, the old records can no longer be parsed. The acceptance criteria the cycle inherited were under-specified. Execution did exactly what was asked; the asking was incomplete.
+  - id: s42
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "222d9aa69724"   # curated source block; drift -> review
+    text_hash: "222d9aa69724"     # narration; change -> re-render
+    text: |-
+      The agent has a decision. The judgment-call criterion PLAN named — "if revert breaks downstream cycle-2 work, route a pending-job for CONDENSE" — partially covers this, but the under-specification is upstream of execute: PLAN missed it, not EXECUTE. The agent picks the major-fix path. It writes the auditor's finding into the working CLAUDE.md, below the VERIFY footer; it edits the .md plan to add the backward-compat criterion (allowed — it is the focused job's plan_file, and editing it forces the backward step); it commits the verify checkpoint with --backward plan; the orchestrator routes the cycle back to PLAN.
+  - id: s43
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f9a6ac2cc0b3"   # curated source block; drift -> review
+    text_hash: "f9a6ac2cc0b3"     # narration; change -> re-render
+    text: |-
+      The cycle does not lose its history. The rollback is recorded. PLAN inherits the sharpened criteria; the agent re-plans the backward-compat work alongside the marker schema work; the cycle continues with a tighter contract.
+  - id: s44
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0d75cadb21e0"   # curated source block; drift -> review
+    text_hash: "0d75cadb21e0"     # narration; change -> re-render
+    text: |-
+      The reflection that closes the phase
+  - id: s45
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "39bfbc9099d5"   # curated source block; drift -> review
+    text_hash: "39bfbc9099d5"     # narration; change -> re-render
+    text: |-
+      Everything above is VERIFY's operational half — the auditor family dispatched, the work judged against the plan, the pass/fail report filed. The phase has a second half, and it opens only at the exit. Before VERIFY may advance, a reflection pass runs: a meta-audit turns the suspicion VERIFY aims at EXECUTE back onto the verification itself, and asks the adversarial question the auditors cannot ask about their own work — what did verification miss? A criterion never tested, an auditor whose scope had a hole, a pass declared on thin evidence. Its answer is written into VERIFY's slice of the cycle's compaction file — the cross-session memory that carries the reflection forward across a context reset, introduced in the always-on cortex.
+  - id: s46
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c949cc5b3295"   # curated source block; drift -> review
+    text_hash: "c949cc5b3295"     # narration; change -> re-render
+    text: |-
+      The whole reason VERIFY is a separate phase is that the hand that builds is biased toward seeing its work as correct; the meta-audit extends that same distrust one level up, because a verification can be just as self-satisfied as the execution it judged.
+  - id: s47
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c9a59ce7ddb9"   # curated source block; drift -> review
+    text_hash: "c9a59ce7ddb9"     # narration; change -> re-render
+    text: |-
+      The boundary does not open on volume. The rhythm described above paces the read-and-judge from inside — the paired gates and the auditor-dispatch budget run exactly as laid out. What unlocks the door to CONDENSE is the phase's exit gate, and it asks three things: enough reflection ran, the meta-audit left its receipt, and enough findings were staged for CONDENSE to harvest later. Essay 6.2 draws this gate in full across all five phases; VERIFY is where the cycle turns its scrutiny on its own scrutiny.
+  - id: s48
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s49
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c19a6e9fbef6"   # curated source block; drift -> review
+    text_hash: "c19a6e9fbef6"     # narration; change -> re-render
+    text: |-
+      VERIFY is the cycle's last word, and the architect has surfaces to bend.
+  - id: s50
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e28101bde7fc"   # curated source block; drift -> review
+    text_hash: "e28101bde7fc"     # narration; change -> re-render
+    text: |-
+      The architect would tune the auditor roster. The prototype ships an initial set — observe-auditor, plan-auditor, execute-auditor, git-historian, code-evolution-tracker — calibrated to seed-agent work where the artifacts are code and plans. A legal-research seed would swap in citation-checkers and precedent-comparison auditors. A finance-analysis seed would swap in number-reconciliation and filing-cross-check auditors. The auditor family is the surface; the perspectives it composes are yours.
+  - id: s51
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2cd26ea35334"   # curated source block; drift -> review
+    text_hash: "2cd26ea35334"     # narration; change -> re-render
+    text: |-
+      The architect would tune the verify-commit gate shape — the sections every forward-advance commit must carry before VERIFY can hand the cycle to CONDENSE: the acceptance criteria checked, pass or fail per criterion, the evidence, and an outstanding-items list. A regulated domain might add a ## Compliance Sign-off section; a lighter one might collapse the shape to a single pass/fail line. The gate is the surface; the sections it demands are yours.
+  - id: s52
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d1cdbaf40559"   # curated source block; drift -> review
+    text_hash: "d1cdbaf40559"     # narration; change -> re-render
+    text: |-
+      The architect would tune the plan-edit scope rules. The current scope is tight — VERIFY can only edit the focused job's plan_file. A seed wanting looser refinement could widen the scope to any plan under .claude/knowledge/plans/. A seed wanting tighter discipline could add per-section locks: acceptance criteria are append-only; the goal is immutable once cycle 1 commits.
+  - id: s53
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2f1a16c0bb27"   # curated source block; drift -> review
+    text_hash: "2f1a16c0bb27"     # narration; change -> re-render
+    text: |-
+      What the architect would not customize is the inability to edit project source. The principle is the floor: a verification phase that lets the hand that built the code also rewrite it is not verification, it is hand-washing.
+  - id: s54
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "37031d5f1a2d"   # curated source block; drift -> review
+    text_hash: "37031d5f1a2d"     # narration; change -> re-render
+    text: |-
+      A consulting practice could install the same separation. The engagement-review agent reads the deliverable, scores it against the proposal's acceptance criteria, asks the partner for sign-off via a structured question — but cannot edit the deliverable itself. Only the build-side agent can act on the review. The honest design-limit is worth naming: the auditor's verdict is L L M-interpreted judgment, not mathematics. Backward-versus-forward routing depends on the agent honestly classifying severity; the user-approval gate depends on the user actually reading. The structural separation is the enforcement substrate, not a certainty guarantee — and gmode is the documented operator escape when the right move is to skip the gate. The phase makes self-validation harder; the human is still on the hook for what gets shipped.
+  - id: s55
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8dfaed3cecdc"   # curated source block; drift -> review
+    text_hash: "8dfaed3cecdc"     # narration; change -> re-render
+    text: |-
+      The deepest payoff of VERIFY is the cognitive failure mode it prevents: the self-validating delivery — the agent that ships work it just built, declares it correct because it has read the diff, and the read-of-its-own-output is the same cognitive posture as the write-of-the-output. Same L L M, same prior, same blind spots. The structural separation — a phase with different tools, a different scope, frequently delegated to subagents with no execution history — gives the verdict an honest chance to be wrong about itself. The friction is the pedagogy. The phase is the compartment.
+  - id: s56
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1736cbede9e9"   # curated source block; drift -> review
+    text_hash: "1736cbede9e9"     # narration; change -> re-render
+    text: |-
+      VERIFY's verdict closes the work-on-the-project arc. What CONDENSE does next is different in kind — work on the brain itself. Next.

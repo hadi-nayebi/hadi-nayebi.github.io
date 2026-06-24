@@ -1,0 +1,289 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: plan-state-machine
+source_md: 06_10-plan-state-machine.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "d3b2f35eda06"   # curated source block; drift -> review
+    text_hash: "d3b2f35eda06"     # narration; change -> re-render
+    text: |-
+      The Plan File — Stages and Completion
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5b483746c651"   # curated source block; drift -> review
+    text_hash: "5b483746c651"     # narration; change -> re-render
+    text: |-
+      Essay 6.9 opened the off-cycle lane — the deliberate maintenance side-quest where the phase gates are dropped so the operator can do work that doesn't fit the standard O P E V C shape. Gmode covers a short horizon: hours, one sitting, one ceremony. The opposite horizon — work that doesn't fit inside a single cycle and shouldn't — needs a different mechanism: a document on disk that remembers the job across days and dozens of cycles.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a15d18efa333"   # curated source block; drift -> review
+    text_hash: "a15d18efa333"     # narration; change -> re-render
+    text: |-
+      This essay maps the skeleton of that mechanism: what the plan file owns, how a job's Stage is decided, how a multi-cycle job knows it is done, and where the file lives. The next essay turns that skeleton into long-horizon memory.
+  - id: s04
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c5d40c15613d"   # curated source block; drift -> review
+    text_hash: "c5d40c15613d"     # narration; change -> re-render
+    text: |-
+      What the plan file owns
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "801db8867950"   # curated source block; drift -> review
+    text_hash: "801db8867950"     # narration; change -> re-render
+    text: |-
+      The plan file owns the long-horizon memory of a job. One field carries it — plan_file, living on the job's phase_plan extension (keyed to the job by its I D, stored in phase_plan's own data Jason): the literal false when the job has no plan, or the name of a working document on disk (.md or .yaml) when it does. The document is the memory; the field is the pointer.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0c5b14bf4424"   # curated source block; drift -> review
+    text_hash: "0c5b14bf4424"     # narration; change -> re-render
+    text: |-
+      The plan file is born in cycle 1 EXECUTE — not at job creation. Every job is created the same minimal way: a name and a short objective. The plan_file pointer starts out undecided — a set-once sentinel that has not yet been resolved to a value. Nothing on disk yet. The decision of whether this job needs a long-horizon document — and what shape it takes — is made later, once the agent has actually looked at the work.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4f9eaa30ab95"   # curated source block; drift -> review
+    text_hash: "4f9eaa30ab95"     # narration; change -> re-render
+    text: |-
+      What lives where matters. Job-scoped facts live on the job object; file-scoped facts live in the file. Plan files carry a small identification frontmatter — a job: line and a plan_file: line declaring which job they belong to — plus a total_cycles: count (for .md) or a cycles: list (for .yaml) declaring how many cycles the work is planned to take. There is no lifecycle-state field; the job's progress is read directly from its cycle counter against that declared total.
+  - id: s08
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "bf6d6c8f43c7"   # curated source block; drift -> review
+    text_hash: "bf6d6c8f43c7"     # narration; change -> re-render
+    text: |-
+      The Stages
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a8bc2a1c14f8"   # curated source block; drift -> review
+    text_hash: "a8bc2a1c14f8"     # narration; change -> re-render
+    text: |-
+      A job's Stage is its classification by plan-file shape, and it is decided in cycle 1 PLAN — not at creation. The cleanest mental model: cycle 1 of any multi-cycle job is for creating or updating its plan; cycle 2 onward is for the actual work. Fresh job? Cycle 1 creates the plan. Re-activated job whose plan already exists? Cycle 1 updates it. Real work always starts cycle 2.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0e4a25db9476"   # curated source block; drift -> review
+    text_hash: "0e4a25db9476"     # narration; change -> re-render
+    text: |-
+      Stage 1 — single-cycle, collaborative. Cycle 1 PLAN makes the explicit Stage-1 call — set-plan-file false — resolving the sentinel to false. There is no document on disk. The entire O P E V C pass holds the work in working memory and commits the artifacts directly. Single fixes, single updates, a freestyle teaching conversation — anything that closes in one cycle. Backward edges happen inside the cycle, between phases, not across cycles. A Stage-1 job can also be the seed from which a repeatable Stage-2 version grows: at CONDENSE, the agent can emit a pending-job marker proposing the multi-cycle version of the same work.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f75c3ad229d1"   # curated source block; drift -> review
+    text_hash: "f75c3ad229d1"     # narration; change -> re-render
+    text: |-
+      Stage 2 — repeatable, with an .md plan. Cycle 1 PLAN calls set-plan-file .md; cycle 1 EXECUTE creates the plan file at the job's own run-aware directory, .claude/jobs/plan.md, with total_cycles: in its frontmatter. The document becomes the long-horizon memory of this job: cycles 2..N do operational work against it, VERIFY refines it when a cycle surfaces a better criterion, and every cycle's PLAN re-reads it at phase entry. This is what carries a long job's understanding across days, after chat history has long since rolled off.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0e225133f584"   # curated source block; drift -> review
+    text_hash: "0e225133f584"     # narration; change -> re-render
+    text: |-
+      Stage 3 — repeatable, with a .yaml plan. Cycle 1 PLAN calls set-plan-file .yaml; cycle 1 EXECUTE writes a structured document whose cycles: list declares each cycle's expected work. In completion semantics it is identical to Stage 2 — cycle-1 plan creation, cycle-2..N work, the same counting rule deciding when the job is done. The only difference is the file format, and what that format unlocks: the .yaml can inject itself into the agent's context at every phase entry. Like any Stage, Stage 3 is a valid starting format — a job can be born Stage 3, decided in cycle-1 PLAN. In practice the .yaml is usually authored once a mature Stage-2 .md pattern has run enough times to be worth hardening into structure — a fresh job inspired by that pattern, never an automatic flip of the Stage-2 job itself.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7d3b0cf4fa90"   # curated source block; drift -> review
+    text_hash: "7d3b0cf4fa90"     # narration; change -> re-render
+    text: |-
+      A future Stage 4 — a job that ships its own plugin, adding new gates and new voices — is named in the architecture as a future direction, not part of the current prototype.
+  - id: s14
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "4fc4d9bef288"   # curated source block; drift -> review
+    text_hash: "4fc4d9bef288"     # narration; change -> re-render
+    text: |-
+      How a multi-cycle job knows it is done
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9a89150b5fb2"   # curated source block; drift -> review
+    text_hash: "9a89150b5fb2"     # narration; change -> re-render
+    text: |-
+      There is no state machine walking a plan through named stages. There is a counting rule.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "13b629161ec5"   # curated source block; drift -> review
+    text_hash: "13b629161ec5"     # narration; change -> re-render
+    text: |-
+      Each multi-cycle plan declares its total — total_cycles for an .md, the length of the cycles: list for a .yaml. The job carries a cycle counter. The job becomes eligible to complete when its current cycle reaches the effective last cycle: the declared total, plus any extension cycles the run had to add when the original plan came up short.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "87d74e793dd9"   # curated source block; drift -> review
+    text_hash: "87d74e793dd9"     # narration; change -> re-render
+    text: |-
+      That second term is a small per-run counter on the job — extension_cycles_added, starting at zero and climbing by one each time a cycle has to be added. The extension is a safety valve, not a normal route: it catches whole-job work that slipped past the cycle's own checks and only surfaced at the end. It is what lets the planned total be an estimate the run can honestly exceed rather than a hard ceiling: a .md plan that declared four cycles but needed a fifth carries extension_cycles_added = 1, and the eligibility check moves with it. It is a per-run counter — it resets to zero whenever the job re-activates for a fresh run, so each run forecasts against its own plan rather than inheriting the last run's overruns.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c60d0f159d1e"   # curated source block; drift -> review
+    text_hash: "c60d0f159d1e"     # narration; change -> re-render
+    text: |-
+      For a Stage-1 job there is no plan file, so plan_file == false makes it eligible to complete at every CONDENSE — every cycle is potentially the last. For Stage 2 and Stage 3, eligibility waits until the counter reaches the planned end. The value of plan_file is doing double duty: it names the document, and its presence-or-absence is what tells the completion gate which rule to apply.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e8084286ac45"   # curated source block; drift -> review
+    text_hash: "e8084286ac45"     # narration; change -> re-render
+    text: |-
+      When the final cycle's CONDENSE arrives and the job is eligible, the agent asks the operator one structured question — job-complete — presenting the evidence that the objective is met. (That ceremony lands inside CONDENSE, the cognitive organ from Essay 6.7.) Approval flips the job to completed. The plan_file is not nulled or archived; it stays exactly where it is.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2bb5c192af14"   # curated source block; drift -> review
+    text_hash: "2bb5c192af14"     # narration; change -> re-render
+    text: |-
+      That persistence is the whole point of the learning loop the next essay turns to.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7662662818e9"   # curated source block; drift -> review
+    text_hash: "7662662818e9"     # narration; change -> re-render
+    text: |-
+      VERIFY guards each cycle along the way. If a cycle's ## Outstanding Items are not empty, VERIFY blocks the forward-advance and the agent loops back to PLAN or EXECUTE to resolve them. And in cycle 1 — the plan's one editing window — if VERIFY edits the plan file (refines a vague criterion, drops one that can't be tested) it cannot forward-advance either; it backward-advances to PLAN. From cycle 2 onward the plan is frozen for the run: an operational cycle routes a plan problem through its outstanding items or an extension cycle, never by editing the plan. PLAN re-cognizes and routes one of two ways: backward to OBSERVE when the refined criteria need more context, or straight forward to VERIFY to re-test the updated plan without re-executing. Post-creation plan-file edits belong to VERIFY alone, inside that cycle-1 window — when PLAN wants the plan changed, its change-requests ride the working CLAUDE.md, and VERIFY applies them. The loop ends when a VERIFY pass makes no edit and the cycle advances.
+  - id: s22
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "174fe0b67f86"   # curated source block; drift -> review
+    text_hash: "174fe0b67f86"     # narration; change -> re-render
+    text: |-
+      Where the plan file lives
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "682e51675147"   # curated source block; drift -> review
+    text_hash: "682e51675147"     # narration; change -> re-render
+    text: |-
+      The plan file's home is the job's own run-aware directory, .claude/jobs/ — run-aware because each activation of the job, reactivations included, gets its own numbered run-N/ space — where everything a job accumulates across its runs lives together, each run a recorded practice the future seed can mine. Plans written before this relocation still sit under the legacy .claude/knowledge/plans/ path, which every consumer reads as a fallback; new plans land in the job directory.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b941d8e9b07f"   # curated source block; drift -> review
+    text_hash: "b941d8e9b07f"     # narration; change -> re-render
+    text: |-
+      The layout puts the plan at the job level and everything per-run beneath it:
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a9fbcdcaf5a8"   # curated source block; drift -> review
+    text_hash: "a9fbcdcaf5a8"     # narration; change -> re-render
+    text: |-
+      The plan file sits at the job level, not inside any run — so a reactivation reads the same refined plan the last run left behind, which is the learning loop the next essay maps. What lives inside each run-/ is that run's record: the compaction files the agent seals at each session boundary, and the session logs CONDENSE writes at the end of a cycle. Over many runs the seed can read across run-*/ to learn how it does this kind of job — which is the point of recording each run as practice.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d363f3428112"   # curated source block; drift -> review
+    text_hash: "d363f3428112"     # narration; change -> re-render
+    text: |-
+      The plan file shares this directory with a sibling document that points the opposite way. The plan file is forward and operational — it carries cross-cycle work state: what each cycle does, its acceptance criteria, the structure the next cycle inherits.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2e59fce0fe32"   # curated source block; drift -> review
+    text_hash: "2e59fce0fe32"     # narration; change -> re-render
+    text: |-
+      The compaction file from the always-on cortex is backward and reflective — it carries cross-session cognitive state: how the work went, the loops the agent got stuck in, the blind spots it hit, and the handful of top-level facts that must survive the next context clear.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "417fc8dce8d4"   # curated source block; drift -> review
+    text_hash: "417fc8dce8d4"     # narration; change -> re-render
+    text: |-
+      The two never blur. Ask of any note: is this what the next cycle needs to do, or what the next session needs to remember? Work state goes in the plan; cognition about the work goes in the compaction file. They are siblings in the same job directory precisely because keeping them apart — one forward, one backward — is what lets a long job both run coherently across cycles and think about itself across sessions.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e0077df9b65a"   # curated source block; drift -> review
+    text_hash: "e0077df9b65a"     # narration; change -> re-render
+    text: |-
+      This run-aware home is where the plan file, the compaction files, and the session logs all live — the job's own directory holds everything a run accumulates, with pre-relocation archives still readable at the legacy knowledge/ paths.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "99c4323b1f01"   # curated source block; drift -> review
+    text_hash: "99c4323b1f01"     # narration; change -> re-render
+    text: |-
+      The plan file's structure, its Stages, the counting rule that closes it, and its on-disk home are the skeleton of long-horizon memory. What turns that skeleton into a living memory — the .yaml that injects itself at every phase entry, the loop that lets a repeating job get smarter run-over-run, and the bridge to building new cognition — is the final essay of the series.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "59f6bfcc9348"   # curated source block; drift -> review
+    text_hash: "59f6bfcc9348"     # narration; change -> re-render
+    text: |-
+      Next.

@@ -1,0 +1,172 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: smaller-organs-and-wiring
+source_md: 07_7-smaller-organs-and-wiring.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ac479ac0c153"   # curated source block; drift -> review
+    text_hash: "ac479ac0c153"     # narration; change -> re-render
+    text: |-
+      Smaller Organs and Brain-Root Wiring
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f65559305531"   # curated source block; drift -> review
+    text_hash: "f65559305531"     # narration; change -> re-render
+    text: |-
+      Essay 7.6 opened the per-plugin subagent pool and the 80/20 budget that mechanizes how much direct action the main session is allowed before it must delegate again. This sub-essay closes out the cell's inventory — the smaller, conditional cognitive organs that round out the kit — and then steps outside the cell wall to name the one file at the brain root that makes any of it fire.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "bbbcee69a100"   # curated source block; drift -> review
+    text_hash: "bbbcee69a100"     # narration; change -> re-render
+    text: |-
+      The Smaller Organs
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "458e97093ad4"   # curated source block; drift -> review
+    text_hash: "458e97093ad4"     # narration; change -> re-render
+    text: |-
+      A few smaller organs round out the kit. They carry less load but are still load-bearing for specific plugins.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d1ed087f0603"   # curated source block; drift -> review
+    text_hash: "d1ed087f0603"     # narration; change -> re-render
+    text: |-
+      config.conf — the operator's tuning surface. Environment-style KEY=value lines for thresholds the plugin exposes for adjustment. SOFT_THRESHOLD_TIER=20, MAX_EVOLUTION_WORDS=2000, DRIFT_THRESHOLD=10. Read by scripts and hooks at fire time. Written by the operator (sometimes through gmode, sometimes directly). Most plugins carry one; question-discipline does not because it has no tunable thresholds.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "461c643ed64a"   # curated source block; drift -> review
+    text_hash: "461c643ed64a"     # narration; change -> re-render
+    text: |-
+      tests/ — the plugin's self-test suite. Read by the safe-lock cycle at the lock boundary; written through the test-lock ceremony, a finer-grained gate distinct from plugin-lock. Every plugin ships tests; a plugin without them cannot survive the safe-lock cycle's commit-or-revert discipline.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4663c9aabae2"   # curated source block; drift -> review
+    text_hash: "4663c9aabae2"     # narration; change -> re-render
+    text: |-
+      template/ — the plugin's birthing surface. Only the creator plugins carry one — plugin-integrity and the phase plugins (currently five in the prototype) — because those are the plugins that create new instances of something. These creator plugins share a category: each one stamps new instances of its own kind. Read by lock-manager.sh at plugin-birth time when stamping a new plugin from the template.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d4ddea125fd6"   # curated source block; drift -> review
+    text_hash: "d4ddea125fd6"     # narration; change -> re-render
+    text: |-
+      e2e/ — Only phasic-system, the orchestrator plugin, carries this; no other plugin currently needs e2e/. End-to-end tests that exercise the full O P E V C cycle across multiple phases. Because no other plugin sees the cycle in its entirety, no other plugin needs e2e/.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "653c0a99540d"   # curated source block; drift -> review
+    text_hash: "653c0a99540d"     # narration; change -> re-render
+    text: |-
+      LICENSE + README.md — open-source migration-readiness signals. Plugins carrying both are ready for the public seed agent; plugins not yet carrying them are still maturing in the prototype.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c1aedaf3ee73"   # curated source block; drift -> review
+    text_hash: "c1aedaf3ee73"     # narration; change -> re-render
+    text: |-
+      Target asset: assets/images/blog/b7/smaller-organs-and-wiring-b7-7.png
+  - id: s11
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "5d7591883af3"   # curated source block; drift -> review
+    text_hash: "5d7591883af3"     # narration; change -> re-render
+    text: |-
+      .claude/settings.local.json — The Brain-Root Wiring
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "987c82fffdfa"   # curated source block; drift -> review
+    text_hash: "987c82fffdfa"     # narration; change -> re-render
+    text: |-
+      What it is. A single Jason file at the brain root (.claude/settings.local.json) that pairs Claude Code event names with hook script paths across every plugin. The wiring file is NOT inside any plugin — it lives outside.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7af921180ab3"   # curated source block; drift -> review
+    text_hash: "7af921180ab3"     # narration; change -> re-render
+    text: |-
+      Who reads it. Claude Code, at session start. Claude Code uses this file to decide which hooks fire on which events for the whole brain.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "00f3e2834a46"   # curated source block; drift -> review
+    text_hash: "00f3e2834a46"     # narration; change -> re-render
+    text: |-
+      Who writes it. The operator, when installing or removing a plugin. The seed agent partially participates: when a plugin-lock question fires the birth ceremony in lock-manager.sh, the ceremony stamps the template, generates the historian, and auto-commits the baseline — but does NOT modify settings.local.json. Registering the new plugin's hook entries remains an operator step, consistent with the architectural rule below.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a45225b4588c"   # curated source block; drift -> review
+    text_hash: "a45225b4588c"     # narration; change -> re-render
+    text: |-
+      What it depends on. Each plugin's hooks/*.sh paths. If a plugin's hook script exists at the right path but settings.local.json does not list it, the hook is dead code.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f19d9b05aaab"   # curated source block; drift -> review
+    text_hash: "f19d9b05aaab"     # narration; change -> re-render
+    text: |-
+      The architectural rule. The brain registers plugins; plugins do not self-register. This is what makes the cell wall meaningful: the brain decides what's active, the plugins fill in what they own. New-plugin lens: when you guide your seed to add a new plugin, the last step before the plugin is alive is updating settings.local.json to register the new hooks. The plugin can be perfectly authored — every organ in place, every test green — and still inactive if the brain has not wired it in.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d070755ed390"   # curated source block; drift -> review
+    text_hash: "d070755ed390"     # narration; change -> re-render
+    text: |-
+      A consulting practice's seed could install a client-deliverables plugin whose config.conf exposes a MIN_QA_PASSES=3 knob; whose template/ stamps a new client-deliverable each engagement; whose e2e/ exercises the full review cycle. The kit's organ list is the same; the substance is the operator's domain.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7157c4c3b0f4"   # curated source block; drift -> review
+    text_hash: "7157c4c3b0f4"     # narration; change -> re-render
+    text: |-
+      The smaller organs fill in the kit's specialized surfaces — operator tuning, test coverage, plugin birthing, end-to-end orchestration, migration-readiness. The brain-root wiring file is what makes any of it fire: the brain registers; the plugins don't self-register. Cell wall and central nervous system, named together. The next sub-essay opens the ceremony that protects hard-substrate plugin edits — plugin-lock, test-lock, the safe-lock cycle that commits-or-reverts code changes, and the historian ratchet.

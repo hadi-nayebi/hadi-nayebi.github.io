@@ -1,0 +1,271 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: historian-ratchet
+source_md: 05_8-historian-ratchet.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0d3aae77e52b"   # curated source block; drift -> review
+    text_hash: "0d3aae77e52b"     # narration; change -> re-render
+    text: |-
+      The Historian Ratchet
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e59f80a8d1fa"   # curated source block; drift -> review
+    text_hash: "e59f80a8d1fa"     # narration; change -> re-render
+    text: |-
+      Essay 5.7 built the working-memory form — the CLAUDE.md hierarchy with its four-footer protocol and altered-list gate. This part closes the essay's deep-dive set with one example of what the always-on layer can do when its single-concern plugins compose. Single-concern plugins composing into one ceremony, no plugin owning the whole thing.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ad42502570b1"   # curated source block; drift -> review
+    text_hash: "ad42502570b1"     # narration; change -> re-render
+    text: |-
+      Per-plugin living history
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a0591824f9a5"   # curated source block; drift -> review
+    text_hash: "a0591824f9a5"     # narration; change -> re-render
+    text: |-
+      For the architects in the audience: the historian ratchet we sketched earlier is worth examining in detail, because it captures the discipline of the whole always-on layer.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e1119fc00245"   # curated source block; drift -> review
+    text_hash: "e1119fc00245"     # narration; change -> re-render
+    text: |-
+      Every plugin has a file called evolution.md. It is a word-capped narrative (the prototype caps it at a few thousand words; your seed can tune the cap) of how the plugin got to its current state — what was added, what was rejected, what was learned during which cycle. It is auto-injected into the agent's context whenever the plugin is unlocked for editing. Think of it as the per-plugin counterpart to interaction-summary's durable conversation memory. interaction-summary carries the summary of the user-agent conversation across compactions; evolution.md carries the summary of the plugin's own life across cycles. Where git log keeps the mechanical record, evolution.md keeps the narrative one.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "32f8059e6bab"   # curated source block; drift -> review
+    text_hash: "32f8059e6bab"     # narration; change -> re-render
+    text: |-
+      The naive version of this would be: "documentation that updates itself when the plugin changes."
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9b3cb8511ee9"   # curated source block; drift -> review
+    text_hash: "9b3cb8511ee9"     # narration; change -> re-render
+    text: |-
+      The seed agent's version is sharper.
+  - id: s08
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "901c4328728c"   # curated source block; drift -> review
+    text_hash: "901c4328728c"     # narration; change -> re-render
+    text: |-
+      The drift counter and the block
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "89e311be1778"   # curated source block; drift -> review
+    text_hash: "89e311be1778"     # narration; change -> re-render
+    text: |-
+      When the agent attempts to unlock a plugin for editing — by issuing a question with the prefix plugin-lock — the lock manager runs a small drift-check against the target plugin. The check is a single git command that counts how many commits have touched the plugin since the last time its evolution narrative was synced. The result is the drift count: the number of commits the plugin has accumulated since its history was last narrated. If that count meets or exceeds a configurable threshold (currently ten in the prototype), the unlock is blocked and the agent is told to dispatch the plugin's historian subagent first.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ef18995d9bfb"   # curated source block; drift -> review
+    text_hash: "ef18995d9bfb"     # narration; change -> re-render
+    text: |-
+      Each plugin has its own dedicated historian — historian-brain-guard, historian-phasic-system, historian-job-core, and so on — so the narrative voice for each plugin stays consistent across its lifetime. The narrators live centrally inside plugin-integrity's own folder, with one architectural exception — historian-question-discipline ships inside question-discipline/agents/ instead.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5a7b8d54cc9a"   # curated source block; drift -> review
+    text_hash: "5a7b8d54cc9a"     # narration; change -> re-render
+    text: |-
+      The template that new plugins clone from when they are born lives in plugin-integrity/template/_historian.md. When dispatched, the plugin's historian reads the drift log, synthesizes what changed since the last sync, and edits evolution.md under the word cap enforced by a dedicated hook that blocks any edit which would push the file past it. When the cap fires, the block does more than refuse — it coaches the historian to retry with a tighter narrative and to migrate any overflow into sibling documents (per-cycle deep-dives, a decisions log, technical appendices), with evolution.md becoming an executive summary that references those siblings rather than absorbing them.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9a25468d8a3c"   # curated source block; drift -> review
+    text_hash: "9a25468d8a3c"     # narration; change -> re-render
+    text: |-
+      The historian's last mandatory step is to commit. That commit touches evolution.md, which becomes the new sync point, which means the drift counter resets to zero — and the next set of edits will eventually push it back up, and the cycle repeats.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8528b3e5ba4b"   # curated source block; drift -> review
+    text_hash: "8528b3e5ba4b"     # narration; change -> re-render
+    text: |-
+      This is the ratchet pattern. A plugin cannot be edited indefinitely without periodically forcing the historian to re-narrate its evolution. Several mechanisms enforce it together: the drift counter that measures elapsed commits, the block that refuses unlock at the threshold, and the historian's own commit that resets the counter — without that reset, the next plugin-lock deadlocks.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "36269a82cf5f"   # curated source block; drift -> review
+    text_hash: "36269a82cf5f"     # narration; change -> re-render
+    text: |-
+      The pattern is portable. Anywhere a system needs to enforce a discipline-that-must-be-done-eventually, the same shape works: a counter that climbs with normal work, a block that fires when the counter crosses a threshold, and a corrective action whose own completion resets the counter. A consulting practice could install the same ratchet on client-deliverable templates: a counter climbs with every template edit, blocks the next checkout at a threshold, and only the practice lead's narrative re-sync (what changed, why, what's still open) resets it. The discipline becomes mechanically inescapable.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1ec0b359b156"   # curated source block; drift -> review
+    text_hash: "1ec0b359b156"     # narration; change -> re-render
+    text: |-
+      The lesson is small: read the work before changing it.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "11774145d817"   # curated source block; drift -> review
+    text_hash: "11774145d817"     # narration; change -> re-render
+    text: |-
+      The mechanism makes the lesson non-negotiable. The agent is not suggested to re-read the plugin's history before editing — a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed. The operator can still bypass via GMODE — but only by writing a long G mode justification (the prototype sets a word floor; your seed can tune it) that names what they're maintaining and why ordinary cycles won't do; the bypass route is named, not silent, and itself friction-bound.
+  - id: s17
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "e497a3cd642f"   # curated source block; drift -> review
+    text_hash: "e497a3cd642f"     # narration; change -> re-render
+    text: |-
+      Composed ceremony from single-concern plugins
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5db6fe53e394"   # curated source block; drift -> review
+    text_hash: "5db6fe53e394"     # narration; change -> re-render
+    text: |-
+      The ratchet looks like one mechanism, but it is actually a small ring of single-concern plugins working together. Recall the plugin sketch from earlier — here it is in full.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "96fdff8688ef"   # curated source block; drift -> review
+    text_hash: "96fdff8688ef"     # narration; change -> re-render
+    text: |-
+      The agent must be able to ask a plugin-lock question. That depends on question-discipline recognizing the prefix and letting the question through; without that registration, the call is blocked before the user even sees it. The user's answer must then be captured and routed to the lock manager. That depends on job-core's split pre-call/post-call pair, which validates the question, captures the approval, and hands the result over. Finally, the edit must close cleanly under test. That depends on plugin-integrity's own safe-lock cycle, which runs the plugin's test suite when the lock closes and reverts the working tree if the tests fail.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cf0a99435412"   # curated source block; drift -> review
+    text_hash: "cf0a99435412"     # narration; change -> re-render
+    text: |-
+      No single plugin enforces the historian ratchet. Single-concern plugins compose to make it possible — question-discipline opens the asking surface, job-core carries the answer, plugin-integrity protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The Essay 7 series takes plugin-integrity apart on its own terms — the lock-and-historian ceremony as a single plugin's anatomy.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3ac09c2ca815"   # curated source block; drift -> review
+    text_hash: "3ac09c2ca815"     # narration; change -> re-render
+    text: |-
+      Call this composed ceremony: narrow parts, structured interfaces, emergent rituals — the same shape as the compaction file's five sections, the same shape as the ratchet itself. Narrow constraints composing into behaviors larger than any single constraint.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "249e06faac39"   # curated source block; drift -> review
+    text_hash: "249e06faac39"     # narration; change -> re-render
+    text: |-
+      The always-on layer is not a stack of independent guardrails sitting in parallel. It is a small, deliberate ring of single-concern guardrails composing into ceremonies none of them could enforce alone. Your next always-on plugin will join the ring — and the ring's shape, not its current membership, is what carries forward into your own seed.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bb968612cc9a"   # curated source block; drift -> review
+    text_hash: "bb968612cc9a"     # narration; change -> re-render
+    text: |-
+      That's the always-on layer in microcosm. Each plugin a small lesson. Each lesson backed by mechanical enforcement. Discipline the filesystem itself preserves.
+  - id: s24
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "de23b7205f9f"   # curated source block; drift -> review
+    text_hash: "de23b7205f9f"     # narration; change -> re-render
+    text: |-
+      The bus is just one form of substrate
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1ac52345776c"   # curated source block; drift -> review
+    text_hash: "1ac52345776c"     # narration; change -> re-render
+    text: |-
+      The bus we built up across the CLAUDE.md hierarchy is one form within .claude/ — the working-memory form, the one the phasic layer writes through. The hierarchy itself, the always-on layer, the durable knowledge directory, the per-plugin hidden state, the voice files, the subagent definitions — together they form the multi-form digital cortex the seed agent rests on. They keep state, enforce work structure, and discipline conversation, all without doing any of the actual cognitive work.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bb3d270cc49b"   # curated source block; drift -> review
+    text_hash: "bb3d270cc49b"     # narration; change -> re-render
+    text: |-
+      The actual work happens in the phasic layer. Compartmentalized phases (currently five in the prototype). One cognitive organ called CONDENSE. Tools forbidden in each phase that force the agent to think before acting.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0c238564e826"   # curated source block; drift -> review
+    text_hash: "0c238564e826"     # narration; change -> re-render
+    text: |-
+      The substrate is what makes the architecture teachable. A non-developer with enough high-level architectural understanding can customize a seed agent the way someone with the right training can author a complex artifact — without writing the underlying machinery. The destination this series carries you toward is an agent-developer-user triangle that collapses to agent-user, because the architecture is portable enough that the user can be the architect.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "20c98b1e518a"   # curated source block; drift -> review
+    text_hash: "20c98b1e518a"     # narration; change -> re-render
+    text: |-
+      But a bus is just substrate. What USES it intelligently — that's the phasic brain.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "59f6bfcc9348"   # curated source block; drift -> review
+    text_hash: "59f6bfcc9348"     # narration; change -> re-render
+    text: |-
+      Next.

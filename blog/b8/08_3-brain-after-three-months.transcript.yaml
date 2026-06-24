@@ -1,0 +1,109 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: brain-after-three-months
+source_md: 08_3-brain-after-three-months.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:39Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "470134f5bf63"   # curated source block; drift -> review
+    text_hash: "470134f5bf63"     # narration; change -> re-render
+    text: |-
+      What Lives in the Brain After Three Months
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "299751337cbc"   # curated source block; drift -> review
+    text_hash: "299751337cbc"     # narration; change -> re-render
+    text: |-
+      Essay 8.2 closed the job-maturation arc — Stage 1 deep single-cycle through Stage 4 plugin form, plus standalone and dependent job patterns. The arc describes how a job grows. This sub-essay opens the outcome: a precise inventory of what the prototype's brain holds today, after three months of cycles running through that arc.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a98da24bc4c5"   # curated source block; drift -> review
+    text_hash: "a98da24bc4c5"     # narration; change -> re-render
+    text: |-
+      The prototype today is a useful ground-truth case. A precise inventory of what its brain holds reveals the shape every mature seed converges toward.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2ab782fbfc85"   # curated source block; drift -> review
+    text_hash: "2ab782fbfc85"     # narration; change -> re-render
+    text: |-
+      A research lab running experiment-protocol jobs through the same maturation arc will see its knowledge layer fill with topic-named directories like knowledge/protocols/ (IRB-approved procedures), knowledge/equipment/ (instrument calibration rules), and knowledge/datasets/ (sample-handling conventions). Its memory layer will hold rules the operator gives once and expects honored across every session — always quote source DOIs, never auto-publish without PI review. The shape — small brain, large knowledge layer, narrow memory — transfers. The substance differs per operator's domain. The numbers below are the prototype's; the proportions hold across any seed running this architecture long enough.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e1132af77139"   # curated source block; drift -> review
+    text_hash: "e1132af77139"     # narration; change -> re-render
+    text: |-
+      The active knowledge layer is the largest persistent store (currently roughly 258k words across active topic silos — count grows as the seed adds plugins or cross-cutting topics; plus an archive of similar size that the seed treats as historical reference rather than live recall). This is by far the largest component of the seed's persistent memory. The directories are organized by topic, not by chronology — each topic accumulates findings over many cycles and stays legible because the topic name doesn't change as the seed learns. The mature topic silos carry version numbers, use a strict three-layer audience model (newcomer / practitioner / maintainer), and end every topic file with concrete Decay & Refresh triggers expressed as executable shell commands.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bf095b7db6d0"   # curated source block; drift -> review
+    text_hash: "bf095b7db6d0"     # narration; change -> re-render
+    text: |-
+      The session archive is the cycle's full-footer snapshot. Each cycle, phase_condense captures the entire footer — a complete raw record of the cycle's working memory — into a per-cycle session file before it deflates. That makes the archive large by design: a big session archive is a full snapshot, not a routing failure. What stays disciplined is where durable findings land — up in the body and the topic-organized knowledge silos, the discoverable layers — with the archive as the raw backup behind them, the least discoverable layer, reached only by a trace-link.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "09375ceb45a4"   # curated source block; drift -> review
+    text_hash: "09375ceb45a4"     # narration; change -> re-render
+    text: |-
+      The memory layer typically stays narrow (a small handful of entries in this operator's current state, in the home directory where they cross project boundaries — count varies per operator; the prototype's live snapshot lives in the ref-tag below). In this prototype, most are feedback rules — operator-given operating directives the brain carries across sessions; the rest are project memories, session handoffs, operational templates, and the index. Your seed's memory layer will hold whatever guidance most often crosses your project boundaries — composition varies; narrowness does not. The memory layer is not organized by plugin; it is organized by the kind of guidance it captures. The brain keeps memory narrow because feedback rules are meta-instructions, not data; if there were a hundred of them, the operator would lose track.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "844d8c8b74fc"   # curated source block; drift -> review
+    text_hash: "844d8c8b74fc"     # narration; change -> re-render
+    text: |-
+      Each plugin's docs/evolution.md is capped at the prototype's current limit (2000 words in the prototype — configurable via plugin-integrity's config.conf; tune for your seed's appetite). Older sections migrate into sibling files (docs/decisions.md, docs/lessons.md, docs/principles.md) as the narrative grows. The cap is the only hard-enforced size limit in the prototype — every other limit is soft, enforced by CONDENSE discipline rather than a code gate.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "933008f2bba5"   # curated source block; drift -> review
+    text_hash: "933008f2bba5"     # narration; change -> re-render
+    text: |-
+      The shape is consistent: a small brain, a large knowledge layer, a narrow memory. The compression is structural — caps plus the CONDENSE waterfall plus soft thresholds — and the result is a seed whose persistent memory grows where it should grow (knowledge) and stays narrow where narrowness matters (memory, root brain). Essay 1 said the filesystem is the agent. The numbers say what filesystem means in practice after a few months of accumulation: a knowledge directory thick with operational understanding, a brain just big enough to read in one sitting, and a memory file that captures the operator's hard-won rules in one short list. Together with the essay series you are reading, that .claude/knowledge/ directory is what the seed treats as its canonical context source — the essays for the why, the knowledge directory for the how. The limit on every number above is honest: caps and discipline are friction, not impossibility — a careless operator could bloat any layer; the architecture's design choice is to make the bloat visibly costly rather than to prevent it.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "dff32a60b877"   # curated source block; drift -> review
+    text_hash: "dff32a60b877"     # narration; change -> re-render
+    text: |-
+      The image below maps the same architecture along a different axis — by durability. The transient layers sit at top (the chat session that dies at compaction, the working CLAUDE.md files that deflate each cycle, the plan files that persist across a job's cycles). The durable layers sit at bottom (the knowledge silos that grow monotonically, the memory directory that crosses every project). The one hard cap (evolution.md at 2000 words) sits in the middle, the only band the architecture polices with a code gate rather than discipline.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5a24d1fbc06b"   # curated source block; drift -> review
+    text_hash: "5a24d1fbc06b"     # narration; change -> re-render
+    text: |-
+      A small brain, a large knowledge layer, a narrow memory — these are the outcomes of three months of cycles. The mechanism that produces those outcomes is the soft-to-hard control migration, where behavioral patterns travel from coaching voice to hardened code. That migration is the next sub-essay.

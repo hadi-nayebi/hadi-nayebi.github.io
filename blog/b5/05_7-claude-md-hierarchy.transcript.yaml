@@ -1,0 +1,352 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: claude-md-hierarchy
+source_md: 05_7-claude-md-hierarchy.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "eab920f1505d"   # curated source block; drift -> review
+    text_hash: "eab920f1505d"     # narration; change -> re-render
+    text: |-
+      The CLAUDE.md Hierarchy
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9501953dc91c"   # curated source block; drift -> review
+    text_hash: "9501953dc91c"     # narration; change -> re-render
+    text: |-
+      Essay 5.6 closed the tour of the always-on plugins. This part covers one of the substrate forms underneath them — the working-memory form: a hierarchy of plain Markdown files (CLAUDE.md files) at known locations on disk, plus the protocol that turns those files into a structured information bus. The substrate as a whole holds many forms — knowledge/, each plugin's hidden state, voice.xml, evolution.md, agents/. The CLAUDE.md hierarchy is the one the phasic layer writes through.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9bdc51356a9b"   # curated source block; drift -> review
+    text_hash: "9bdc51356a9b"     # narration; change -> re-render
+    text: |-
+      The plugins do their work in parallel; this is where the cycle's experiential data lands.
+  - id: s04
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "349d83e21e8a"   # curated source block; drift -> review
+    text_hash: "349d83e21e8a"     # narration; change -> re-render
+    text: |-
+      The native primitive
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "debd9bf612e2"   # curated source block; drift -> review
+    text_hash: "debd9bf612e2"     # narration; change -> re-render
+    text: |-
+      Drop a file named CLAUDE.md into a project, and the standard Claude Code C L I agent reads it. Drop one into .claude/, and it gets read too. Nest more of them inside subdirectories, and Claude Code surfaces each one when the agent works near it. The shared move: a plain Markdown file at a known location, automatically appended to the model's context whenever the agent reads or edits files in that directory.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e003c26089a0"   # curated source block; drift -> review
+    text_hash: "e003c26089a0"     # narration; change -> re-render
+    text: |-
+      Other agentic C L I agents run the same pattern in their own ecosystems — Codex and opencode read AGENTS.md, Gemini C L I reads GEMINI.md. The convention is most obviously useful for code, where each CLAUDE.md doubles as meta-information about how to manage future edits — and most agentic C L I agents were originally built for software work.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b0760162eab0"   # curated source block; drift -> review
+    text_hash: "b0760162eab0"     # narration; change -> re-render
+    text: |-
+      But as the first essay argued, the C L I form factor extends far beyond writing code — to any work whose product lives in files: research, legal analysis, business operations, consulting work, and beyond.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6dc9dc293311"   # curated source block; drift -> review
+    text_hash: "6dc9dc293311"     # narration; change -> re-render
+    text: |-
+      The native loading is layered. The Claude Code memory documentation recognizes two locations for project-level instructions — ./CLAUDE.md and ./.claude/CLAUDE.md — and both load at session start. The seed agent uses both: a high-level CLAUDE.md at the workspace root for identity and operating rules, and a brain index inside .claude/ cataloging plugins and active jobs. Run /memory inside Claude Code and you will see them both listed alongside any user-level CLAUDE.md files. After a /compact, Claude re-reads the project-root file from disk and re-injects it. Every other CLAUDE.md further down the tree loads on demand: per the docs, "they are included when Claude reads files in those subdirectories."
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9d1a64975f65"   # curated source block; drift -> review
+    text_hash: "9d1a64975f65"     # narration; change -> re-render
+    text: |-
+      Every Claude Code user gets this primitive for free. What the seed agent does on top is partition each CLAUDE.md into compartments.
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0cbdde6b17b3"   # curated source block; drift -> review
+    text_hash: "0cbdde6b17b3"     # narration; change -> re-render
+    text: |-
+      The four-footer protocol
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a17489a13ba3"   # curated source block; drift -> review
+    text_hash: "a17489a13ba3"     # narration; change -> re-render
+    text: |-
+      The body of the file — everything above the four anchors below — keeps the standard Claude Code semantics: identity, rules, structure, the things the agent should remember about this directory at all times. Below the body, every CLAUDE.md inside the seed agent's brain carries four anchored sections:
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "2246750ca596"   # curated source block; drift -> review
+    text_hash: "2246750ca596"     # narration; change -> re-render
+    text: |-
+      Each footer section corresponds to one phase of the O P E V C cycle. The guard hooks inside each phase plugin enforce a single rule: a phase cannot edit above its own anchor. During OBSERVE, the agent can write into the OBSERVE footer and into any of the three sections below it. During PLAN, into the PLAN footer and below. During EXECUTE, into the EXECUTE footer and the VERIFY footer. During VERIFY, only into the VERIFY footer. The body — everything above the first anchor — is off-limits to all four phases. Only the CONDENSE phase is allowed to absorb content upward into the body, and only when closing the cycle.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "cda600fe0979"   # curated source block; drift -> review
+    text_hash: "cda600fe0979"     # narration; change -> re-render
+    text: |-
+      The asymmetry is intentional. Earlier phases can leave forward-looking notes for later phases — OBSERVE can sketch an early plan or seed a verify checklist if it spots one; PLAN can pre-stage verification criteria for the work it is about to dispatch — but no phase can rewrite what an earlier phase has already committed. Information flows downward through the cycle. The full per-phase semantics — what each phase is encouraged to write where, how subagents feed OBSERVE from the knowledge directory, and how all four phases can drop prefixed marked notes for CONDENSE to consume — is the subject of the Essay 6 series. For now, the load-bearing fact is that the footer is a structured, append-forward, multi-author region.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6b67a1b54ae6"   # curated source block; drift -> review
+    text_hash: "6b67a1b54ae6"     # narration; change -> re-render
+    text: |-
+      What about a hand-authored or project-tree CLAUDE.md that arrives missing some of its anchors? When a phase engages such a file — editing it or even just reading it — the guard restores the absent anchors in place, at their canonical position, keeping a snapshot, and work proceeds. The four anchors are a derivable structural fact, so the system can simply re-derive them — the same self-healing principle that runs throughout the prototype.
+  - id: s15
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "0577fa5eba95"   # curated source block; drift -> review
+    text_hash: "0577fa5eba95"     # narration; change -> re-render
+    text: |-
+      Inflate and deflate
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5a0efe7f660d"   # curated source block; drift -> review
+    text_hash: "5a0efe7f660d"     # narration; change -> re-render
+    text: |-
+      The footers are why the seed agent does not need to rely on the chat to hold its working memory. As a job moves through OBSERVE → PLAN → EXECUTE → VERIFY, each phase writes its experiential output — what was gathered, what was decided, what was built, what was checked — into its own footer slot in whichever CLAUDE.md is closest to where the work is happening. The footers inflate across the cycle. By the time the job reaches the end of VERIFY, the four sections together can hold thousands of words of fresh, cycle-specific memory.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5a0d4f3a1214"   # curated source block; drift -> review
+    text_hash: "5a0d4f3a1214"     # narration; change -> re-render
+    text: |-
+      CONDENSE deflates them. CONDENSE is the cognitive organ that closes each O P E V C cycle — its waterfall pulls durable findings from the four footer sections up into the body of the same CLAUDE.md (so they survive the next cycle), routes topic-specific knowledge into .claude/knowledge/, and migrates anything that belongs higher up the tree into a parent CLAUDE.md or into the root brain. When CONDENSE finishes, the footers are empty again. The next cycle of O P E V C starts with a clean working memory and a slightly enriched body. The hierarchy as a whole grows smarter with each pass.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "316227f61d5d"   # curated source block; drift -> review
+    text_hash: "316227f61d5d"     # narration; change -> re-render
+    text: |-
+      The whole substrate, walkable. The Markov self-model the seed reads at session start, the CLAUDE.md bus and the teeth that updating it grows, the layered hierarchy, the four-state lifecycle, the footer anchors with their birth-block and self-heal, the three durable surfaces the bus condenses into, and the soft size caps with the forgetting discipline &mdash; laid out as an interactive concept-deck you can hover and click. &#8599; Walk the CLAUDE.md hierarchy
+  - id: s19
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9cc934916ef0"   # curated source block; drift -> review
+    text_hash: "9cc934916ef0"     # narration; change -> re-render
+    text: |-
+      The altered list — CLAUDE.md edits scope execution
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a1891f1dbc78"   # curated source block; drift -> review
+    text_hash: "a1891f1dbc78"     # narration; change -> re-render
+    text: |-
+      There is a second consequence of CLAUDE.md edits during a cycle, and it is what gives the bus teeth. EXECUTE — the only phase that may touch project files outside .claude/ — is fenced to the altered list: the set of directories whose CLAUDE.md the agent edited during OBSERVE or PLAN. EXECUTE inherits the list and may only modify files inside those directories. If a directory's CLAUDE.md was never touched during the read-only phases, EXECUTE cannot make project changes there in this cycle, however clearly the work seems to call for them.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8e6ff56dc5ff"   # curated source block; drift -> review
+    text_hash: "8e6ff56dc5ff"     # narration; change -> re-render
+    text: |-
+      The bus is not only where the agent stores experiential notes — it is where the agent declares the work it intends to do. Editing a CLAUDE.md during OBSERVE or PLAN is a commitment that scopes what EXECUTE will be allowed to attempt. GMODE — the deliberate user-gated escape — bypasses these phase guards entirely; outside GMODE, the altered-list gate is friction the agent reads and obeys, not a mathematical proof of containment. The deeper mechanics — how the altered list is checked, what file types EXECUTE may write inside an altered-list directory, how multi-commit checkpoints land — are the subject of the Essay 6 series. For the bus story, the structural fact is enough: CLAUDE.md edits gate execution.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "41371cd7d023"   # curated source block; drift -> review
+    text_hash: "41371cd7d023"     # narration; change -> re-render
+    text: |-
+      A directory with no CLAUDE.md yet is not a dead end — OBSERVE or PLAN simply creates the first one (body plus the four anchors) to declare it editable. Creation is blocked only if the new file lacks the four-footer protocol, so every working-memory file is born well-formed.
+  - id: s23
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ba5f8d84a496"   # curated source block; drift -> review
+    text_hash: "ba5f8d84a496"     # narration; change -> re-render
+    text: |-
+      The hierarchy itself
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "4295dd2ddd6f"   # curated source block; drift -> review
+    text_hash: "4295dd2ddd6f"     # narration; change -> re-render
+    text: |-
+      The seed agent's bus is not one CLAUDE.md. It is a hierarchy.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f5af65e3624e"   # curated source block; drift -> review
+    text_hash: "f5af65e3624e"     # narration; change -> re-render
+    text: |-
+      Your hierarchy will mirror your work, not this website. Same shape — root brain, plugin brains, knowledge silos, per-directory working memory — different folders, different layouts. The architecture is portable; the specific folder tree is one seed's answer to one user's work.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1365e09b1e3c"   # curated source block; drift -> review
+    text_hash: "1365e09b1e3c"     # narration; change -> re-render
+    text: |-
+      A lawyer building a case-analysis seed could mirror the same shape — a root CLAUDE.md for firm-wide research protocols, per-matter CLAUDE.md files inside each case folder, knowledge silos for jurisdiction-specific precedent libraries. The four-footer protocol scopes which case files the agent may edit in any given cycle, the same way it scopes the seed agent's plugin work here.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "37a488527eac"   # curated source block; drift -> review
+    text_hash: "37a488527eac"     # narration; change -> re-render
+    text: |-
+      Each layer plays a different role on the bus.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f7175b1a7dcf"   # curated source block; drift -> review
+    text_hash: "f7175b1a7dcf"     # narration; change -> re-render
+    text: |-
+      The root CLAUDE.md declares the agent's identity and operating rules — what phases exist, what the size limits are, how the brain is allowed to grow. It is the top of the bus, and one of the two project-level CLAUDE.md files Claude Code loads at session start.
+  - id: s29
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c3689291e5c7"   # curated source block; drift -> review
+    text_hash: "c3689291e5c7"     # narration; change -> re-render
+    text: |-
+      The brain index at .claude/CLAUDE.md is the other one. It catalogs the plugins, points to the knowledge directory, and records the brain-maturation lessons accumulated across cycles.
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "51ec452bfd03"   # curated source block; drift -> review
+    text_hash: "51ec452bfd03"     # narration; change -> re-render
+    text: |-
+      The plugin CLAUDE.md files declare what each plugin owns. They are how a plugin tells the rest of the system "I am responsible for X, here is how I work, here are my tests, here is my current version." When a plugin is being edited, that plugin's CLAUDE.md is the agent's working memory for the edit, and its footer is where the cycle's experiential data accumulates until CONDENSE absorbs it.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "58b00382543a"   # curated source block; drift -> review
+    text_hash: "58b00382543a"     # narration; change -> re-render
+    text: |-
+      The working-directory CLAUDE.md files are local. The website project has one. So does the blog folder. So does — when work is happening there — any directory deep in the tree where the focus currently sits. These are the files whose footers most often inflate during the O P E V C cycle and deflate during CONDENSE.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8f8749d241dc"   # curated source block; drift -> review
+    text_hash: "8f8749d241dc"     # narration; change -> re-render
+    text: |-
+      The knowledge directory is the durable layer. When something has been learned that is worth keeping past the current cycle, CONDENSE routes it into .claude/knowledge/ as a real Markdown file with its own structure. The current prototype carries one topic silo per major plugin (brain-guard/, phase_observe/, phase_condense/, and so on) plus a cross-cutting opevc/ directory that holds dozens of operational recipes mined from cycles across the system. Each topic dir tends to grow an INDEX.md plus a handful of focused topic files, refined cycle after cycle. OBSERVE phases recall from the directory; CONDENSE phases extend it; subagents are dispatched against it for parallel research. Knowledge files are how the agent remembers things across sessions, across cycles, across months.
+  - id: s33
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "23e4fc5f7bdf"   # curated source block; drift -> review
+    text_hash: "23e4fc5f7bdf"     # narration; change -> re-render
+    text: |-
+      The plugin–hierarchy asymmetry
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c263c5906587"   # curated source block; drift -> review
+    text_hash: "c263c5906587"     # narration; change -> re-render
+    text: |-
+      Every always-on plugin keeps its own state in hidden files inside its plugin directory — files the seed agent itself cannot read or edit directly. Every state mutation goes through a plugin-owned script. Some of that script's commands are public, callable as part of the agent's workflow (job.sh focused is a typical example); others are flagged as internal-only and restricted to other scripts and hooks within the seed, so the agent cannot reach them at all. None of these plugins treat CLAUDE.md as their primary state surface. The relationship to the hierarchy varies plugin by plugin — plugin-integrity polices the four phase anchors from removal but otherwise leaves CLAUDE.md content free to edit, while the others are mostly orthogonal, owning concerns (context budget, job lifecycle, interaction summarization, question discipline) that live in their own data files.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "02f119e7a016"   # curated source block; drift -> review
+    text_hash: "02f119e7a016"     # narration; change -> re-render
+    text: |-
+      The phasic plugins generate the bus's content. The choreography of how each phase writes its footer and how CONDENSE absorbs them is the subject of the Essay 6 series.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f4d595cfd87f"   # curated source block; drift -> review
+    text_hash: "f4d595cfd87f"     # narration; change -> re-render
+    text: |-
+      The relationship is asymmetric. The phasic layer is the system that actively uses the hierarchy — its phases write into footers during the cycle, and CONDENSE absorbs the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and the brain's own operations, at cycle close. The always-on layer mostly does not — each of its plugins runs its own concern through its own state, with at most narrow points of contact (plugin-integrity guards the phase anchors; the rest are orthogonal). In the current prototype, well over a hundred CLAUDE.md files across the brain carry the four phase footers — 111 of 116 inside .claude/ alone. The footer convention is the protocol — and the phasic layer is what writes through it.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "dd77112c740a"   # curated source block; drift -> review
+    text_hash: "dd77112c740a"     # narration; change -> re-render
+    text: |-
+      This is the bus.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b6b0d48b2ec5"   # curated source block; drift -> review
+    text_hash: "b6b0d48b2ec5"     # narration; change -> re-render
+    text: |-
+      The working-memory form is built — body + four footers + altered-list gate + the layered hierarchy. The next part deconstructs one of the architecture's most elegant proofs that this substrate works in concert: three plugins compose into a ceremony that no plugin could enforce alone.

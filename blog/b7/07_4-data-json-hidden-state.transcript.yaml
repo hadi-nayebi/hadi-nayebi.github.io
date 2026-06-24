@@ -1,0 +1,145 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: data-json-hidden-state
+source_md: 07_4-data-json-hidden-state.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "3e7677257bee"   # curated source block; drift -> review
+    text_hash: "3e7677257bee"     # narration; change -> re-render
+    text: |-
+      data Jason — The Hidden State
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "53a3503d6ccc"   # curated source block; drift -> review
+    text_hash: "53a3503d6ccc"     # narration; change -> re-render
+    text: |-
+      Essay 7.3 opened the two voice surfaces — one for the L L M, one for the operator — and named Lock 13 as the policy that governs when soft coaching hardens into a deterministic block. This sub-essay opens the organ that carries the plugin's state — and the discipline that keeps it from being corrupted by concurrent reads, partial writes, or cross-plugin reach-arounds.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "3e7677257bee"   # curated source block; drift -> review
+    text_hash: "3e7677257bee"     # narration; change -> re-render
+    text: |-
+      data Jason — The Hidden State
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "07a1462d22c8"   # curated source block; drift -> review
+    text_hash: "07a1462d22c8"     # narration; change -> re-render
+    text: |-
+      What it is. The plugin's private runtime state. The active focused job, the tier counter, the summary chain, the lock manifest. Jason-encoded, written atomically, lives only on the operator's machine, gitignored.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0c57375828ca"   # curated source block; drift -> review
+    text_hash: "0c57375828ca"     # narration; change -> re-render
+    text: |-
+      Who reads it. ONLY the plugin's own scripts. No other plugin reaches into this file. The discipline is structural: cross-plugin queries route through the plugin's published read-only commands (job.sh focused, phase.sh current), never through cat data Jason from outside.
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "67f0cb9d7c2a"   # curated source block; drift -> review
+    text_hash: "67f0cb9d7c2a"     # narration; change -> re-render
+    text: |-
+      Who writes it. ONLY the plugin's own scripts. Direct file-system writes are forbidden. Every mutation follows the same protocol: flock on a /tmp/-located lockfile serializes concurrent hook fires. Inside the lock, the script reads current state, transforms it through jq into a temp file, validates with jq empty, then atomically mvs over the live file. The reader never sees a partial state. If parsing fails at read time, the gateway script rebuilds the file from defaults rather than blocking the agent.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0d4d15267872"   # curated source block; drift -> review
+    text_hash: "0d4d15267872"     # narration; change -> re-render
+    text: |-
+      What it depends on. The plugin's scripts (which mediate every read and write). The shared lib/voice-helper/ (for error messages when validation or atomicity fails).
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8d5b0ab99530"   # curated source block; drift -> review
+    text_hash: "8d5b0ab99530"     # narration; change -> re-render
+    text: |-
+      Why the mandatory script-mediation. Multiple subsystems may fire hooks against the same data Jason within milliseconds of each other (e.g., two PreToolUse hooks from the same plugin both reading state). If both write directly to the file, one overwrites the other's update. The flock discipline serializes all mutations through the script gateway. Reads also go through scripts so corruption is handled fail-safe: when data Jason is malformed, the script rebuilds rather than crashing the agent.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "00b0f76c292e"   # curated source block; drift -> review
+    text_hash: "00b0f76c292e"     # narration; change -> re-render
+    text: |-
+      But "fail-safe" is not the same answer everywhere. Rebuilding is the right move when the lost state is cheap — a tier counter or a phase marker reconstructs from defaults with no harm done. Where the state is not cheap, the same corruption demands the opposite reflex. The job lifecycle plugin's stop-gate refuses to release the agent while it cannot read the job records: a malformed data Jason there means the gate fails toward blocking, not allowing. Silently resetting job state to a clean slate would erase work the agent has not finished — so the safe outcome is to halt and force a repair, not to wave the agent through on an empty rebuild. Forgiving where loss is cheap; refusing where loss is not.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "202cb3e85563"   # curated source block; drift -> review
+    text_hash: "202cb3e85563"     # narration; change -> re-render
+    text: |-
+      The boundary is structural, not OS-level. An operator who edits data Jason directly bypasses the protocol entirely. The discipline holds because the seed agent and historian both refuse to write outside their scripts — a publishable-interface contract, not a kernel lock.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9da18633e489"   # curated source block; drift -> review
+    text_hash: "9da18633e489"     # narration; change -> re-render
+    text: |-
+      The state schema upgrades itself. A plugin's state grows new fields over time. The kit handles this without a migration step the operator has to run. Every data Jason carries a schema_version number, and the plugin's scripts hold a short stack of idempotent helpers — one per field that was ever added. Each helper does the same small thing: check whether its field is present, add a default if it is missing, and no-op if it is already there. The plugin's command router runs the whole stack before it touches any subcommand, so an old data Jason upgrades itself the first time any command fires against it. There is no version-mismatch rejection and no "run the migration" ceremony — the file just reaches the current shape on first touch.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "17f7fce1a084"   # curated source block; drift -> review
+    text_hash: "17f7fce1a084"     # narration; change -> re-render
+    text: |-
+      Target asset: assets/images/blog/b7/data-json-atomic-protocol-b7-4.png
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b9a8283b2fee"   # curated source block; drift -> review
+    text_hash: "b9a8283b2fee"     # narration; change -> re-render
+    text: |-
+      The new-plugin lens. When you guide your seed to add a plugin that needs state, the seed designs the state's interface first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use? Then data Jason becomes the cache the scripts operate on. Tell your seed: if you cannot enumerate what reads each field and what writes each field, the design is not done yet. A real-estate broker's seed could carry an open-listings manifest the same way; only the listings plugin's scripts mutate it, and concurrent showings-update hooks serialize through the same flock protocol.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "44aca1661159"   # curated source block; drift -> review
+    text_hash: "44aca1661159"     # narration; change -> re-render
+    text: |-
+      The minimum-viable plugin shape. A plugin without data Jason is stateless — it carries no runtime bookkeeping. question-discipline is again the example: pure gate, no state, no data Jason. The absence signals stateless enforcement.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "41ab65dcbe72"   # curated source block; drift -> review
+    text_hash: "41ab65dcbe72"     # narration; change -> re-render
+    text: |-
+      State is private. Mutation is serialized. Cross-plugin queries route through the script C L I, never through the raw file. The next sub-essay opens the organ where the plugin's narrated knowledge lives — docs/, including the word-capped evolution.md and the historian ratchet that auto-injects it before every edit.

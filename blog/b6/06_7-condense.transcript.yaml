@@ -1,0 +1,334 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: condense
+source_md: 06_7-condense.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "fb2645526f76"   # curated source block; drift -> review
+    text_hash: "fb2645526f76"     # narration; change -> re-render
+    text: |-
+      CONDENSE — The Cognitive Organ
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c4737d32c3b5"   # curated source block; drift -> review
+    text_hash: "c4737d32c3b5"     # narration; change -> re-render
+    text: |-
+      Essay 6.6 closed the audit chamber. VERIFY ran the scripts, flagged what was wrong, sent the agent back if it had to, and committed the cycle's verdict. The cycle's work-on-the-project phases are now behind us. What is left is the cycle's metabolism — the step where the cycle's experiential data gets turned into durable memory.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "42ded8e07648"   # curated source block; drift -> review
+    text_hash: "42ded8e07648"     # narration; change -> re-render
+    text: |-
+      This is CONDENSE. It is not a fifth work-on-the-project phase. It is a different kind of phase entirely.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c790a227433a"   # curated source block; drift -> review
+    text_hash: "c790a227433a"     # narration; change -> re-render
+    text: |-
+      This essay is for you — especially when you find yourself thinking about how the brain ends up shaped after dozens of cycles.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "5b7671a05c80"   # curated source block; drift -> review
+    text_hash: "5b7671a05c80"     # narration; change -> re-render
+    text: |-
+      The phase that acts on the brain
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "af74e3c0ddd5"   # curated source block; drift -> review
+    text_hash: "af74e3c0ddd5"     # narration; change -> re-render
+    text: |-
+      CONDENSE plays a different role from the work-on-project phases. Where they act on artifacts, CONDENSE acts on the brain itself — the cycle's cognitive metabolism organ, turning the experiential data from the prior phases into durable memory.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5cc36006d52a"   # curated source block; drift -> review
+    text_hash: "5cc36006d52a"     # narration; change -> re-render
+    text: |-
+      The other phases produce work on the project. CONDENSE produces work on the brain. Its write scope is the seed's memory layer — the CLAUDE.md footers it drains and the durable memory forms it feeds: knowledge files, coaching voices, subagent definitions. Those forms are not confined to .claude/ — a project subdirectory's CLAUDE.md is memory too, and CONDENSE may write it. The boundary is memory-forms-anywhere versus the project's deliverable files: CONDENSE may write the former, never the latter. It cannot add features. It cannot fix bugs. What it does is consolidate everything the cycle just produced — the gathered context, the plan document, the execution notes, the verification results — and route the durable parts to where they will be useful in the next cycle.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a5ee3ba7eac8"   # curated source block; drift -> review
+    text_hash: "a5ee3ba7eac8"     # narration; change -> re-render
+    text: |-
+      That routing draws on a catalog of seven operations (extensible per the Stage-3 Distributed Job Extension pattern). But the seven numbers are a catalog, not a running order — they name the operations, they do not sequence them. The actual execution order is three gated phases: ADDRESS the marked notes, then ARCHIVE the footer, then DEFLATE it. The three-phase order is what is fixed and hard-gated; the step numbering is just an index into the operations.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "31904c766cd0"   # curated source block; drift -> review
+    text_hash: "31904c766cd0"     # narration; change -> re-render
+    text: |-
+      Interactive diagram. Walk the CONDENSE waterfall yourself &mdash; the seven operations as a catalog, run in three gated phases (ADDRESS &rarr; ARCHIVE &rarr; DEFLATE), every step clickable with the live code behind it. &#8599; Walk the waterfall
+  - id: s10
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "25c7bc59d6f5"   # curated source block; drift -> review
+    text_hash: "25c7bc59d6f5"     # narration; change -> re-render
+    text: |-
+      The operation catalog
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e90efe0f0074"   # curated source block; drift -> review
+    text_hash: "e90efe0f0074"     # narration; change -> re-render
+    text: |-
+      The catalog the three phases draw from:
+  - id: s12
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "d46ab11db726"   # curated source block; drift -> review
+    text_hash: "d46ab11db726"     # narration; change -> re-render
+    text: |-
+      Same-file footer-to-body absorption. Every CLAUDE.md the cycle touched has a footer with the cycle's phase notes, opened by the anchors (the OBSERVE footer, the PLAN footer, the EXECUTE footer, the VERIFY footer) from Essay 5.7. The phases write into those footers as the work happens. This operation walks the frozen altered-list snapshot and pulls durable findings from the footers up into each file's body. The phases can bias it with bare routing tags — a paragraph tagged durable is absorbed up by default, a paragraph tagged ephemeral is dropped, and untagged content gets a judgment call.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1ade3e5f1410"   # curated source block; drift -> review
+    text_hash: "1ade3e5f1410"     # narration; change -> re-render
+    text: |-
+      The footers are scratch; the body is durable. The deflation can be sharp: a single plugin's working CLAUDE.md routinely shrinks from a sprawling footer down to a tight body section in this operation alone.
+  - id: s14
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "b1862315d2aa"   # curated source block; drift -> review
+    text_hash: "b1862315d2aa"     # narration; change -> re-render
+    text: |-
+      Cross-file CLAUDE.md migration. Some content does not belong in the file where it was written. A discovery about how the website's CSS works belongs in the website project's CLAUDE.md, not in the brain's root. A pattern the agent learned about its own behavior belongs in a plugin's CLAUDE.md, not in a working directory. A mover subagent walks the touched files and routes content sideways or upward. Its destination logic is content-determined, not priority-ordered: the right CLAUDE.md is the one whose subject matter most naturally holds the finding, even if it sits two directories away. Pending-job notes. During the cycle, a phase may have flagged in its footer that follow-up work needs a separate job. A job-creator subagent reads those notes and creates the jobs — but only after exploring each one. Voice-update notes. A phase may have noticed that a coaching voice — the soft, L L M-interpreted guidance one of the plugins issues — is worded poorly or missing. A voice-updater subagent edits the relevant voice.xml. It only touches existing voice IDs; a brand-new voice is born in a plugin-touching job, not here. Agent-update notes. Same pattern, but for subagent definitions. A phase may have noticed an instruction for a research subagent should be tightened. An agent-updater subagent edits the named definition. Knowledge notes. A phase may have written a knowledge note into a footer — backticks and brackets deliberate, so the note has a unique grep signature — to flag a finding that should be promoted to long-term memory. An extractor subagent reads the surrounding paragraph, writes a new file at the right path inside the knowledge directory, and re-reads the file to verify the write actually landed before reporting success.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "bbbad8432081"   # curated source block; drift -> review
+    text_hash: "bbbad8432081"     # narration; change -> re-render
+    text: |-
+      The "verify by re-reading" requirement is hardening from a real failure mode. In earlier cycles, multiple consumption subagents reported success but had silently been blocked by an upstream guard, and stale notes accumulated in footers across cycles before anyone noticed. The fix was to require explicit confirmation that the write landed — the subagent has to see its own work on disk before it can report a note handled.
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3b9b98a3c0db"   # curated source block; drift -> review
+    text_hash: "3b9b98a3c0db"     # narration; change -> re-render
+    text: |-
+      CONDENSE carries its own write permission for .md files anywhere across the memory layer, including knowledge directories the earlier phases never touched — it is the only phase allowed to create durable knowledge files outside the altered list, precisely because routing into a fresh knowledge subtree is its job. This is how the brain grows — cycle after cycle, knowledge accumulates in topic-organized layers, and future OBSERVE phases can recall it.
+  - id: s17
+    kind: list
+    engine: alt
+    sync: in-sync
+    gap_after: 0.5
+    source_hash: "6eb47a933a86"   # curated source block; drift -> review
+    text_hash: "6eb47a933a86"     # narration; change -> re-render
+    text: |-
+      Session archive. The full footer of every altered CLAUDE.md is captured as a snapshot — a complete raw record of the cycle's working memory — written into a per-job session file by a dedicated command. This is the preservation step that lets the seed safely deflate. It is not a last-resort dustbin and a long archive is not a failure: it is a full-footer snapshot by design, large is normal. What stays disciplined is that durable knowledge lands in the discoverable layers — the body and knowledge/ — with the archive as the raw backup behind them, the least discoverable layer, reached only by a trace-link.
+  - id: s18
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "ea4f06e242f2"   # curated source block; drift -> review
+    text_hash: "ea4f06e242f2"     # narration; change -> re-render
+    text: |-
+      The three phases: address, archive, deflate
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "950191828c8a"   # curated source block; drift -> review
+    text_hash: "950191828c8a"     # narration; change -> re-render
+    text: |-
+      The catalog above is what CONDENSE can do. The order it does them in is three phases, each gating the next, built around one rule: the footer is never shrunk before it is preserved.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8e0f3839fa4c"   # curated source block; drift -> review
+    text_hash: "8e0f3839fa4c"     # narration; change -> re-render
+    text: |-
+      Phase A — ADDRESS. Footer content-deletion is locked. The agent may add its own cognition freely, but it may not remove anything yet. This is where the marked notes get consumed — operations three through six from the catalog. For each marked note, the agent dispatches the note's consuming subagent, and that subagent does one of two things: it resolves the note itself, or it hands the note back. A note is not "done" because a subagent ran on it — it is done only when it reaches a terminal state.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "be5d361540b9"   # curated source block; drift -> review
+    text_hash: "be5d361540b9"     # narration; change -> re-render
+    text: |-
+      A marked note is written in a parsable form — [NOTETYPE]{content}, the braces a delimiter so a single pattern reads every note. There are exactly two terminal states. [RESOLVED:NOTETYPE]{breadcrumb} means the note is done, and the breadcrumb is a verifiable work-reference: the git commit of a voice edit, a created job's id, the path of a new knowledge file. The breadcrumb is not decoration — it is the trace a later cycle follows to confirm the work actually landed somewhere; a resolution with an empty breadcrumb is indistinguishable from a note that was silently dropped.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8b272f08a066"   # curated source block; drift -> review
+    text_hash: "8b272f08a066"     # narration; change -> re-render
+    text: |-
+      The second terminal state, [CARRIED:NOTETYPE:n]{content}{why}, means a note the agent genuinely could not resolve this cycle — deferred, visible, and counted, where n is the carry-count.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8fd63180292c"   # curated source block; drift -> review
+    text_hash: "8fd63180292c"     # narration; change -> re-render
+    text: |-
+      Writing a note stays free-form — there is no gate at creation that refuses a malformed one. Instead, the moment an edit touches a note-shaped line, a soft reminder appears: here is the canonical shape, here are the two terminal forms, and here is why it matters — a note that does not parse is invisible to CONDENSE, so the work behind it silently rots. It is a nudge, never a block; the syntax is a matter of quality, shaped by pressure rather than enforced by a wall. The same reminder reaches CONDENSE's own terminal rewrites.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "37518d2b5878"   # curated source block; drift -> review
+    text_hash: "37518d2b5878"     # narration; change -> re-render
+    text: |-
+      The carry-count is the pressure. Each cycle a note survives unresolved, the next CONDENSE detects the existing [CARRIED:…:n] and re-hands it as n+1. There is no hard cap — an immortal note simply becomes impossible to ignore as its n climbs, and the extension cycle can force it to a head. The counter is the cap.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b9ae9daebf31"   # curated source block; drift -> review
+    text_hash: "b9ae9daebf31"     # narration; change -> re-render
+    text: |-
+      Two small guards keep this honest, and they bracket every note-consuming subagent. To start, the subagent's dispatch prompt must quote the live note verbatim — one note per dispatch, so every resolution traces to a specific, real note rather than a vague instruction. To end, the subagent's run cannot complete until that same quoted note has changed — to a resolved form, or to a hand-back (the note left with its original tag but an extra brace of context appended, which is how the agent later finds the notes handed back to it). Quote the note to begin; modify the note to finish. A dispatched subagent can never silently no-op.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "c265237f576f"   # curated source block; drift -> review
+    text_hash: "c265237f576f"     # narration; change -> re-render
+    text: |-
+      One pair of tags sits outside all of this. durable and ephemeral are bare tags — no braces, no consuming subagent. They are routing bias for the absorb step, consumed by their effect, never needing a terminal rewrite.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f44b611b878f"   # curated source block; drift -> review
+    text_hash: "f44b611b878f"     # narration; change -> re-render
+    text: |-
+      Phase B — ARCHIVE. Once every marked note is terminal and no condense work is left on the footer, a session-log command captures the footers of all the altered CLAUDE.md files into a single per-cycle session file. Its precondition is that Phase A is clear — archiving only after addressing is what makes the snapshot a faithful record of finished thinking rather than a photograph of half-worked notes. Deletion stays locked until the archive is verified to have happened — a preservation check, that the footer was non-emptily captured, not a precise word count.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "b29ce16a8211"   # curated source block; drift -> review
+    text_hash: "b29ce16a8211"     # narration; change -> re-render
+    text: |-
+      Phase C — DEFLATE. Only now is deletion permitted. The agent finishes the reduction: durable findings absorb up into the body (the lasting trace, roughly one breadcrumb per worked section), the cross-file moves complete, the archived remainder is deleted from the footer, and a single pointer to the session file is left behind. The [CARRIED:] notes are not swept — they survive live in the footer into the next cycle, their counters climbing. The deflation gate is the size control here: it opens only when the footer is under twenty percent of its size at phase entry. Resolve, then archive, then deflate — that sequence is what makes the shrink legitimate rather than mere deletion.
+  - id: s29
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "1eb750f056d2"   # curated source block; drift -> review
+    text_hash: "1eb750f056d2"     # narration; change -> re-render
+    text: |-
+      The deflation gate
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "af2eff683cab"   # curated source block; drift -> review
+    text_hash: "af2eff683cab"     # narration; change -> re-render
+    text: |-
+      The deflation gate sits at the close of Phase C. At condense entry, a sensor snapshots the total bottom-section word count of every CLAUDE.md in the altered list — everything below the first phase anchor — and stores it as the cycle's baseline. At commit time, the gate re-scans the same files from disk, computes how many words were absorbed away from the footers, and compares against the threshold.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a7db31d0d91f"   # curated source block; drift -> review
+    text_hash: "a7db31d0d91f"     # narration; change -> re-render
+    text: |-
+      The threshold is the same for every job: eighty percent of the footer words must be absorbed before the cycle can close, whether the job runs once or across many cycles. The cycle is a discrete event; working memory compresses hard before the agent returns to idle, and real cycles routinely overshoot the target when there is little worth keeping.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "97c698f6b016"   # curated source block; drift -> review
+    text_hash: "97c698f6b016"     # narration; change -> re-render
+    text: |-
+      A multi-cycle job gets no lighter target, and the reason is worth stating plainly. The instinct is that some planning context needs to survive into the next cycle's PLAN, so the footers should be spared — but that handoff does not live in the footers. It lives in the plan file, the durable cross-cycle vessel. CONDENSE does not write that vessel: the plan file's only post-creation editor is VERIFY — and only in cycle 1, the plan's editing window — which sharpens it there, so by the time CONDENSE runs the handoff is already in place. Leaving a second copy below a footer anchor would double-budget the same handoff — once in the plan file, once in the footer — so the eighty-percent gate holds for every Stage.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ab6eb667fdb2"   # curated source block; drift -> review
+    text_hash: "ab6eb667fdb2"     # narration; change -> re-render
+    text: |-
+      If the gate passes, the orchestrator commits the cycle and advances the job to idle.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0720569414f3"   # curated source block; drift -> review
+    text_hash: "0720569414f3"     # narration; change -> re-render
+    text: |-
+      If it fails, the script exits with a coaching voice, and CONDENSE has to keep working. The only options are to absorb more, route more, or compress more — because CONDENSE is lock-forward only. No backward edge from condense to verify. No escape hatch back to execute. The cycle either condenses enough to close, or it stays in condense. Outstanding work opens a new cycle through the extension valve, never a backward step.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "153b928e74d7"   # curated source block; drift -> review
+    text_hash: "153b928e74d7"     # narration; change -> re-render
+    text: |-
+      The waterfall is what CONDENSE does — the catalog of operations, the three gated phases, the deflation gate that forces the footers to compress. What CONDENSE uniquely owns — the job graph it alone may grow, and the reflection that closes the phase and seals the cycle's learning — is the subject of the next essay.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "59f6bfcc9348"   # curated source block; drift -> review
+    text_hash: "59f6bfcc9348"     # narration; change -> re-render
+    text: |-
+      Next.

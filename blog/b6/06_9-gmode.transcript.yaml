@@ -1,0 +1,388 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: gmode
+source_md: 06_9-gmode.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "458be8128a68"   # curated source block; drift -> review
+    text_hash: "458be8128a68"     # narration; change -> re-render
+    text: |-
+      GMODE — The Off-Cycle Lane
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a5443d160588"   # curated source block; drift -> review
+    text_hash: "a5443d160588"     # narration; change -> re-render
+    text: |-
+      Essay 6.8 covered the rhythm of work inside a phase — the paired gates that pace it from within, and the reflection-keyed exit gate that opens each boundary. This essay turns to the opposite case: the work that doesn't fit any phase's compartment at all. The off-cycle lane.
+  - id: s03
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5b4e4b9449e5"   # curated source block; drift -> review
+    text_hash: "5b4e4b9449e5"     # narration; change -> re-render
+    text: |-
+      Every phase, including idle, carries one extra edge that loops back to itself through gmode — short for generic mode. Gmode is the freestyle side-channel: a deliberately unconstrained state used for work the seed agent needs to do now, but for which the O P E V C ceremony would be overhead rather than discipline.
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3792c6816360"   # curated source block; drift -> review
+    text_hash: "3792c6816360"     # narration; change -> re-render
+    text: |-
+      This essay is for you — especially when you are doing ad-hoc maintenance on your own running seed.
+  - id: s05
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "c4430cda5c5e"   # curated source block; drift -> review
+    text_hash: "c4430cda5c5e"     # narration; change -> re-render
+    text: |-
+      What it owns
+  - id: s06
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "1e6cd0c2c6c6"   # curated source block; drift -> review
+    text_hash: "1e6cd0c2c6c6"     # narration; change -> re-render
+    text: |-
+      Gmode owns the off-cycle state of a focused job. When the focused job's current_phase == "gmode", every phase guard sees a phase name that isn't its own and steps aside. The phase plugins' tool restrictions silently switch off; the seed agent regains full write access without entering any specific phase.
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f8758b4191a8"   # curated source block; drift -> review
+    text_hash: "f8758b4191a8"     # narration; change -> re-render
+    text: |-
+      The architectural reason gmode is one edge on every phase — not a separate state machine — is that gmode entry must work from wherever the agent currently is. A deadlock surfaces during PLAN; a plugin needs a one-line fix during VERIFY; a registry entry is missing during idle. The off-cycle lane has to be reachable from every node in the O P E V C graph. Making it a self-loop on each phase keeps the cycle counter and the home phase intact while the side-work happens.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "275557df1567"   # curated source block; drift -> review
+    text_hash: "275557df1567"     # narration; change -> re-render
+    text: |-
+      How it works — the justification entry, atomic stash, clean-git exit
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f584590ff36c"   # curated source block; drift -> review
+    text_hash: "f584590ff36c"     # narration; change -> re-render
+    text: |-
+      Entry happens through a sequence of stages — justification floor, atomic stash, clean-git exit — each enforced by a different mechanism.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "25917079ea4f"   # curated source block; drift -> review
+    text_hash: "25917079ea4f"     # narration; change -> re-render
+    text: |-
+      The justification floor. The seed agent enters gmode by asking the user an AskUserQuestion whose body is prefixed G mode and whose total word count meets a configurable minimum — currently a word-count floor in the prototype (set to 100 in config.conf, tunable per seed). Anything shorter is rejected before the question ever reaches the user. The floor exists to force the agent to articulate, in prose, what the issue is, what was tried, and why the O P E V C compartment won't fit. The justification is the cost of the bypass.
+  - id: s11
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e2e0ac22b8a0"   # curated source block; drift -> review
+    text_hash: "e2e0ac22b8a0"     # narration; change -> re-render
+    text: |-
+      The atomic stash. When the user confirms entry, the orchestrator runs a single jq update that does several things at once: it copies the current phase into a hidden field called pre_gmode_phase, it stashes the entry's return note and a snapshot of the open root-cause-note count, and it overwrites current_phase with the literal string gmode. The write is atomic — the home phase is captured in the same write that turns the phase guards off. There's no window where the agent is in gmode but the orchestrator has forgotten where it came from.
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7b463af09b60"   # curated source block; drift -> review
+    text_hash: "7b463af09b60"     # narration; change -> re-render
+    text: |-
+      The two-part exit gate. When the agent calls phase.sh exit-gmode, the orchestrator checks two things. First, the working tree: if git diff or git diff --cached reports anything uncommitted, exit dies with a structured error and the agent stays in gmode until it commits or stashes. Second, the root-cause commitment: the agent must have emitted a new pending-job note during this gmode — a note whose objective is the independent root-cause investigation of whatever forced the gmode. Only when the tree is clean and a new root-cause note exists does the orchestrator read pre_gmode_phase and atomically restore the home phase.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "65b72e6cf495"   # curated source block; drift -> review
+    text_hash: "65b72e6cf495"     # narration; change -> re-render
+    text: |-
+      Why force a root-cause note even when the gmode fix was complete? Because the thing that forced a gmode deserves an investigation independent of the patch — the root cause may be wider than what the gmode touched. A gmode that believes it closed the issue still emits the note; the independent investigation, run later, judges whether the class is actually closed. The note rides the existing marker pipeline into a real job at the next CONDENSE, where job creation belongs.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3f592cff835c"   # curated source block; drift -> review
+    text_hash: "3f592cff835c"     # narration; change -> re-render
+    text: |-
+      The cycle counter does not advance through gmode. The home phase is the home phase; gmode is a side-step that returns to it.
+  - id: s15
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "7a719d2e5a47"   # curated source block; drift -> review
+    text_hash: "7a719d2e5a47"     # narration; change -> re-render
+    text: |-
+      What would break without it
+  - id: s16
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6cd300afc99a"   # curated source block; drift -> review
+    text_hash: "6cd300afc99a"     # narration; change -> re-render
+    text: |-
+      Without the off-cycle lane, two failure modes would alternate.
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f37541857803"   # curated source block; drift -> review
+    text_hash: "f37541857803"     # narration; change -> re-render
+    text: |-
+      The first failure mode is ceremony overhead. Every ad-hoc fix — a deadlock, a missing registry entry, a one-line documentation correction surfaced mid-cycle — would force a full O P E V C pass to land. OBSERVE the situation, PLAN the fix, EXECUTE one line, VERIFY a script, CONDENSE the result. A full O P E V C ceremony for sub-minute editing. Most seed agents in that situation would learn to avoid noticing problems mid-cycle, which is the opposite of the discipline O P E V C exists to build.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f2faf278169c"   # curated source block; drift -> review
+    text_hash: "f2faf278169c"     # narration; change -> re-render
+    text: |-
+      The second failure mode is substrate-integrity loss. The alternative to ceremony is the agent quietly fudging a phase guard — patching the tool restriction so the small edit lands without changing phase. That route corrupts the substrate: the next subagent dispatched in the same phase inherits the loosened guard, the next test run inherits the loosened guard, and the always-on layer's promise that "every phase has a known write scope" is no longer true. One quiet bypass and the architecture is one step less trustworthy.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "df960f31d912"   # curated source block; drift -> review
+    text_hash: "df960f31d912"     # narration; change -> re-render
+    text: |-
+      Gmode is the explicit third option. The bypass is named, gated, and structurally separate from the O P E V C graph. The agent's velocity drops at the entry (the articulation cost), the working tree is forced clean at the exit, and the home phase returns intact. The bypass exists because the alternative — fudging guards in place — is the worse failure.
+  - id: s20
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "f9fb37f20a42"   # curated source block; drift -> review
+    text_hash: "f9fb37f20a42"     # narration; change -> re-render
+    text: |-
+      A worked example
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "adfeec9496ab"   # curated source block; drift -> review
+    text_hash: "adfeec9496ab"     # narration; change -> re-render
+    text: |-
+      Pick up the multi-cycle migration job one phase before the EXECUTE we walked through in Essay 6.5. The agent has just entered EXECUTE on cycle 3. The altered list is set. The first tool call is a Read of phase_condense/hooks/condense-guard.sh — the plan calls for adding a marker case to the guard's Bash allowlist, and the agent reads the existing case-arm before writing. The Read returns. The agent notices something the plan never anticipated — one of the guard's BLOCKED: messages has drifted from the canonical [phase_] BLOCKED: phrasing every other phase guard uses. Cosmetic drift. The kind of drift that survives because nobody phase-guards the phase-guards.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a1595eecefe0"   # curated source block; drift -> review
+    text_hash: "a1595eecefe0"     # narration; change -> re-render
+    text: |-
+      The agent has a choice. EXECUTE's altered list does not include the phase_condense plugin tree. The plan was about marker schemas, not block-message drift. Trying to edit the file from inside EXECUTE would trip the altered-list fence and the edit would be blocked. Trying to add the directory to the altered list mid-phase is not allowed either — altered lists are PLAN's output, frozen at phase entry. A backward to PLAN would be theatrical for a string fix of this scope.
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "ad0f871567b4"   # curated source block; drift -> review
+    text_hash: "ad0f871567b4"     # narration; change -> re-render
+    text: |-
+      The agent reaches for gmode.
+  - id: s24
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "171d824d4c4c"   # curated source block; drift -> review
+    text_hash: "171d824d4c4c"     # narration; change -> re-render
+    text: |-
+      It composes a G mode question. The body articulates the bypass — what is the drift (the exact drifted strings quoted), what was tried (EXECUTE altered list, blocked by fence), why O P E V C won't fit (a fresh PLAN cycle to authorize a cosmetic string fix is ceremony overhead), and what will happen on entry (edit condense-guard.sh, run the plugin's test suite, commit, exit). The floor is met; the question reaches the architect. The architect reads, sees the scope is genuinely small, approves.
+  - id: s25
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "3939cc4e9c74"   # curated source block; drift -> review
+    text_hash: "3939cc4e9c74"     # narration; change -> re-render
+    text: |-
+      Entry fires. The orchestrator runs the atomic jq update. pre_gmode_phase records execute; the return note and the open-note-count snapshot are stashed; current_phase flips to gmode in the same write. Every phase guard in the seed agent now sees a current_phase value that isn't its own, and every guard short-circuits. The agent's tool palette opens. It edits condense-guard.sh, runs the plugin's test suite, the full suite passes, commits with the message gmode: fix condense-guard block-message drift. It also records a new pending-job note — investigate why the condense-guard block message drifted from the canonical wording — capturing the root-cause question from live context. The working tree is clean.
+  - id: s26
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "76660dfb1d78"   # curated source block; drift -> review
+    text_hash: "76660dfb1d78"     # narration; change -> re-render
+    text: |-
+      The agent calls phase.sh exit-gmode. The orchestrator runs git diff --quiet and git diff --cached --quiet. Both pass. It recounts the open pending-job notes; the count now exceeds the entry snapshot, so the root-cause gate passes too. The orchestrator reads pre_gmode_phase, restores current_phase to execute, and nulls the three stashed fields. The phase guards re-engage on EXECUTE's rules. The cycle counter never moved.
+  - id: s27
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f1c401042772"   # curated source block; drift -> review
+    text_hash: "f1c401042772"     # narration; change -> re-render
+    text: |-
+      The agent picks up the original EXECUTE work from where it left off. Cycle 3's EXECUTE proceeds exactly as Essay 6.5 describes — the comment-density gate, the dispatch, the commit. The drift fix never touches the migration cycle's bookkeeping: it landed in its own gmode commit, on a file outside this cycle's altered list, and the cycle counter never moved. When the cycle reaches CONDENSE there is nothing to reconcile — the fix is already committed history, not a loose end the synthesis has to account for. The drift fix landed on its own phase, and the migration cycle continues uncorrupted.
+  - id: s28
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "6bf330b6275f"   # curated source block; drift -> review
+    text_hash: "6bf330b6275f"     # narration; change -> re-render
+    text: |-
+      That is the off-cycle lane working as designed. The bypass was named. The cost was paid. The substrate stayed intact.
+  - id: s29
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "9f600f99a445"   # curated source block; drift -> review
+    text_hash: "9f600f99a445"     # narration; change -> re-render
+    text: |-
+      What you would customize
+  - id: s30
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "367b42636fe4"   # curated source block; drift -> review
+    text_hash: "367b42636fe4"     # narration; change -> re-render
+    text: |-
+      Gmode is one of the more architecturally opinionated surfaces in the prototype. Most of the opinion lives in defaults, not invariants — the architect's customization door opens on several distinct knobs.
+  - id: s31
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "39fd1306035b"   # curated source block; drift -> review
+    text_hash: "39fd1306035b"     # narration; change -> re-render
+    text: |-
+      You would tune the justification floor. The prototype's word-count minimum is calibrated for an architect operator who occasionally needs ad-hoc work; a more experimental seed may lower it; a more cautious one may raise it. The number lives in config.conf and is read by the gate hook on every fire — no code change required. Lowering the floor lowers the cost of entry; raising it raises the bar at which gmode is the right choice rather than a fresh job.
+  - id: s32
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0e9109fa480a"   # curated source block; drift -> review
+    text_hash: "0e9109fa480a"     # narration; change -> re-render
+    text: |-
+      You would relax the clean-git exit requirement. The prototype requires the working tree to be fully committed before the home phase is restored. A seed that does heavy experimental work — long-running gmode sessions that span multiple work blocks — may want to allow exit with a structured stash, or with a directory-scoped clean check rather than a global one. The trade-off is substrate integrity: a relaxed exit means the home phase resumes on a working tree it didn't produce, which the next phase's altered-list discipline will have to handle.
+  - id: s33
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "31e06dfe433f"   # curated source block; drift -> review
+    text_hash: "31e06dfe433f"     # narration; change -> re-render
+    text: |-
+      You would decide what flows through gmode versus O P E V C versus new phases. The prototype defaults to routing every job through O P E V C because foundational architectural work demands the discipline; routine plugin maintenance has gone through gmode by exception. Once a seed ships and starts being used for project work, the proportion shifts. Some seeds will route nearly all maintenance through gmode; others will split phase plugins by job type and keep gmode for genuine emergencies. The off-cycle lane is the architect's pressure valve — how often it opens is your call.
+  - id: s34
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9ac769a67094"   # curated source block; drift -> review
+    text_hash: "9ac769a67094"     # narration; change -> re-render
+    text: |-
+      You would change the cycle-counter rule. The prototype treats gmode as a side-step that doesn't consume cycle budget. A seed that wants stronger accounting may decide every gmode entry costs a fraction of a cycle, or that gmode time after the third entry in a cycle counts as a full new cycle. The home phase still restores; only the bookkeeping moves.
+  - id: s35
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7dda6c47f27d"   # curated source block; drift -> review
+    text_hash: "7dda6c47f27d"     # narration; change -> re-render
+    text: |-
+      What you would not do is remove the entry gate. A seed agent that admits unconstrained tool access without justification is a seed agent that will eventually rewrite its own discipline mid-cycle and corrupt the layers below it. The gate's friction is the architecture; the specific word count, the specific cleanliness check, the specific cycle rule are the surface.
+  - id: s36
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "072f383f00cf"   # curated source block; drift -> review
+    text_hash: "072f383f00cf"     # narration; change -> re-render
+    text: |-
+      The pattern lifts cleanly off the prototype. A lawyer's seed could install the same off-cycle lane for emergency client requests that don't fit the matter's billing-phase ceremony — entry costs a [BILLING-OVERRIDE] justification of comparable weight (whatever the firm decides is enough articulation to prevent reflexive bypass), exit requires the time entry to be logged before the matter's normal phase resumes. A researcher's seed running long literature-review cycles could install one for ad-hoc methodology questions that surface mid-cycle and would otherwise corrupt the review's scope.
+  - id: s37
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "7483ed2cb349"   # curated source block; drift -> review
+    text_hash: "7483ed2cb349"     # narration; change -> re-render
+    text: |-
+      The architecture is the bypass-as-deliberate-cost-paid mechanism: a named lane, a friction gate at entry, a cleanliness check at exit, atomic restore to the home phase. The specific prefix, the specific weight, the specific cleanliness check are the prototype's calibration. The lane shape transfers.
+  - id: s38
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9b5d94ffc08c"   # curated source block; drift -> review
+    text_hash: "9b5d94ffc08c"     # narration; change -> re-render
+    text: |-
+      The architecture also admits its own honest limits, and naming them is part of the design. The justification floor is friction, not proof — an agent could draft a body that meets the word count without saying anything load-bearing, and the gate would accept it. The user-approval step depends on the user actually reading the body; a habituated rubber-stamp defeats the gate. The clean-git exit can be defeated by an empty gmode: noop commit that satisfies the working-tree check without recording real work. None of these are sealed.
+  - id: s39
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0230e310e209"   # curated source block; drift -> review
+    text_hash: "0230e310e209"     # narration; change -> re-render
+    text: |-
+      The architecture accepts them because the alternative — letting the agent quietly fudge phase guards in place — leaves no trace at all. A bypass that is named, gated, and logged is structurally safer than a bypass that is invisible, even when the named bypass is imperfect.
+  - id: s40
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "e6de1a475d01"   # curated source block; drift -> review
+    text_hash: "e6de1a475d01"     # narration; change -> re-render
+    text: |-
+      Two ways to leave O P E V C
+  - id: s41
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d9d0f52f92ed"   # curated source block; drift -> review
+    text_hash: "d9d0f52f92ed"     # narration; change -> re-render
+    text: |-
+      The off-cycle lane covers one kind of work that doesn't fit the phasic ceremony: ad-hoc, fast, bypass-justified. The next essay covers the other: planned, long-horizon, carried across cycles — the plan file the seed agent reaches for when the work is too large for a single O P E V C pass.
+  - id: s42
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "8088e190947b"   # curated source block; drift -> review
+    text_hash: "8088e190947b"     # narration; change -> re-render
+    text: |-
+      Gmode is the side-channel; the plan file is the long-channel. Both exist outside the per-cycle compartmentalization O P E V C enforces. Both are deliberate exits — one for the work that's too small for ceremony, one for the work that's too large.

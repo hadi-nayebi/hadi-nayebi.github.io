@@ -1,0 +1,217 @@
+# Structured transcript — one block per spoken section.
+# Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
+slug: dual-voice-architecture
+source_md: 07_3-dual-voice-architecture.md
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+target_wpm: 200          # global default; a section may override with its own wpm:
+default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
+default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
+generated_at: "2026-06-22T21:25:38Z"
+sections:
+  - id: s01
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "781d06bb22d1"   # curated source block; drift -> review
+    text_hash: "781d06bb22d1"     # narration; change -> re-render
+    text: |-
+      The Dual Voice Architecture
+  - id: s02
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0d443be31671"   # curated source block; drift -> review
+    text_hash: "0d443be31671"     # narration; change -> re-render
+    text: |-
+      Essay 7.2 opened the universal skeleton — CLAUDE.md, hooks, scripts — and named the PLUGIN-LOCK ceremony that gates hard-substrate edits. This sub-essay opens the soft-memory organ that almost every plugin doubles: voice.xml. The hooks-side and scripts-side surfaces share one X M L schema across different audiences. Getting them confused is the most common new-user error in plugin authoring.
+  - id: s03
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "860677e78b43"   # curated source block; drift -> review
+    text_hash: "860677e78b43"     # narration; change -> re-render
+    text: |-
+      voice.xml × Two — The Dual Surface
+  - id: s04
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a53ede09c5d7"   # curated source block; drift -> review
+    text_hash: "a53ede09c5d7"     # narration; change -> re-render
+    text: |-
+      This is the organ that confuses new users most, and the one where the relational anatomy matters most.
+  - id: s05
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "daa780cbca47"   # curated source block; drift -> review
+    text_hash: "daa780cbca47"     # narration; change -> re-render
+    text: |-
+      The two voice surfaces are different files with different audiences. hooks/voice.xml and scripts/voice.xml look nearly identical structurally (both X M L, both with , , , elements identified by id), but they serve different consumers.
+  - id: s06
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "32eec80be113"   # curated source block; drift -> review
+    text_hash: "32eec80be113"     # narration; change -> re-render
+    text: |-
+      hooks/voice.xml — The Agent-Facing Surface
+  - id: s07
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "663c5492b93c"   # curated source block; drift -> review
+    text_hash: "663c5492b93c"     # narration; change -> re-render
+    text: |-
+      What it is. Strings the plugin emits at hook fire-time. Coaching voices that nudge the agent at a specific moment (entering a phase, crossing a context tier, having just dispatched a subagent). Blocks that refuse the agent when a guard fires.
+  - id: s08
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "f9597528cca2"   # curated source block; drift -> review
+    text_hash: "f9597528cca2"     # narration; change -> re-render
+    text: |-
+      Who reads it. The L L M agent. Voices delivered via hooks land in the agent's context window — either as soft injections via additionalContext Jason (coaching) or as exit-2 stderr refusals (blocks). The L L M sees the string mid-turn and reacts.
+  - id: s09
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "af630d4f17a1"   # curated source block; drift -> review
+    text_hash: "af630d4f17a1"     # narration; change -> re-render
+    text: |-
+      Who writes it. Mostly CONDENSE step 4 (which consumes voice-update markers other phases emit). The historian subagent also updates voice files when the plugin's evolution requires new coaching. In the current prototype, voice.xml is treated as a soft-memory surface, not a PLUGIN-LOCK-only code surface.
+  - id: s10
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "9e87f19e373c"   # curated source block; drift -> review
+    text_hash: "9e87f19e373c"     # narration; change -> re-render
+    text: |-
+      What it depends on. The shared lib/voice-helper/ helper (the get_voice function that loads voice.xml entries and substitutes {{var}} placeholders).
+  - id: s11
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "677b3b3ca1d0"   # curated source block; drift -> review
+    text_hash: "677b3b3ca1d0"     # narration; change -> re-render
+    text: |-
+      scripts/voice.xml — The Operator-Facing Surface
+  - id: s12
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "d109250fd0e4"   # curated source block; drift -> review
+    text_hash: "d109250fd0e4"     # narration; change -> re-render
+    text: |-
+      What it is. Strings the plugin's C L I prints to the operator's terminal. When safe-lock.sh reverts a test failure, the operator sees a short status line in their terminal. The text is what the operator's eyes read in the shell.
+  - id: s13
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "a80bf443a85a"   # curated source block; drift -> review
+    text_hash: "a80bf443a85a"     # narration; change -> re-render
+    text: |-
+      Who reads it. The human operator. Terminal output. Not injected into the L L M's context — printed to stderr or stdout of the shell, visible only to the person at the keyboard.
+  - id: s14
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0b024be53856"   # curated source block; drift -> review
+    text_hash: "0b024be53856"     # narration; change -> re-render
+    text: |-
+      Who writes it. Same ownership pattern as hooks/voice.xml: CONDENSE and the historian repair wording as soft memory, while the scripts that consume those strings remain hard-substrate code.
+  - id: s15
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "20603422fb04"   # curated source block; drift -> review
+    text_hash: "20603422fb04"     # narration; change -> re-render
+    text: |-
+      What it depends on. Same voice-helper.
+  - id: s16
+    kind: heading
+    engine: alt
+    sync: in-sync
+    gap_after: 0.55
+    source_hash: "31c18321c72a"   # curated source block; drift -> review
+    text_hash: "31c18321c72a"     # narration; change -> re-render
+    text: |-
+      Why the split matters
+  - id: s17
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "53d7692e495f"   # curated source block; drift -> review
+    text_hash: "53d7692e495f"     # narration; change -> re-render
+    text: |-
+      Same intent — both surfaces carry the plugin's voice. Different audiences — the L L M consumes structured paragraphs that frame the situation and propose action; the human consumes status lines that flag what happened. Wording often differs between the two for the same conceptual event. Auditor scripts that grep voice ids have to look in both files; auditing only one false-positives every id that lives in the other.
+  - id: s18
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0f93389a0c18"   # curated source block; drift -> review
+    text_hash: "0f93389a0c18"     # narration; change -> re-render
+    text: |-
+      Soft vs hard at the element level. Inside each voice.xml, the element produces a context injection — probabilistic, the L L M may absorb or ignore it. The element produces a refusal — exit-2 stderr that fails the agent's tool call. The two element types coexist in the same file. The Lock-13 over-engineering veto says: new behavioral controls start as coaching; only when measurement shows coaching consistently fails does the control harden into a block.
+  - id: s19
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "e6c7d87d21ab"   # curated source block; drift -> review
+    text_hash: "e6c7d87d21ab"     # narration; change -> re-render
+    text: |-
+      The yaml-injection pairing. Stage 3 of the maturation arc (covered in Essay 8) is a job whose plan_file is a .yaml — a Stage-3 job, chosen at cycle-1 PLAN like any other Stage, whose .yaml plan injects job-specific context at each phase entry. Stage 3 is identical to Stage 2 in completion semantics; only the plan-file format differs. A Stage-3 job's .yaml per-phase fields pair with voice ids by convention. The yaml field name maps to a voice id directly; voice-helper augments the rendered voice text at phase entry — appending the yaml value by default, or replacing/prepending it when the yaml entry specifies a mode (the three modes are detailed in Essay 6.10b and Essay 8.2). The pairing has a contract surface: a yaml key must match a voice id that some hook or script actually calls, otherwise the plan loader rejects the yaml at validate-format time with a did you mean suggestion. New yaml fields require no parser change — add the voice id to the plugin's voice.xml AND wire a get_voice callsite in a hook or script (making it callable — orphan ids are rejected by the yaml validator), and the seed agent picks up the new pairing on the next phase entry.
+  - id: s20
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "285e27b027b1"   # curated source block; drift -> review
+    text_hash: "285e27b027b1"     # narration; change -> re-render
+    text: |-
+      The new-plugin lens. When you guide your seed to add coaching for a new behavior, the seed writes the coaching string to hooks/voice.xml first (cheap, soft). If the operator later observes the coaching consistently fails to hold, the seed authors a element in the same file for the hard variant — same id namespace, harder enforcement. The seed never invents a third voice surface. The split between L L M-facing and operator-facing voice surfaces is structural.
+  - id: s21
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "0d615d647c11"   # curated source block; drift -> review
+    text_hash: "0d615d647c11"     # narration; change -> re-render
+    text: |-
+      A consulting firm's seed agent could carry the same dual-voice split: hooks/voice.xml coaches the agent on deliverable-checklist enforcement; scripts/voice.xml prints terminal status to the consultant when deliverable.sh validate runs. Same schema, the agent-facing and operator-facing surfaces, one ceremony.
+  - id: s22
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "52963e54ee60"   # curated source block; drift -> review
+    text_hash: "52963e54ee60"     # narration; change -> re-render
+    text: |-
+      Interactive diagram. Walk the whole voice surface as a deck &mdash; soft nudges and hard refusals in one file, the hooks/ vs scripts/ split by fire-site, the get_voice render primitive, the budget-tiered coaching rotation, the no-orphan invariant and its catalog, and how a Stage-3 .yaml tunes existing voices per job. Click any box for the live code behind it. &#8599; Walk the voice surface
+  - id: s23
+    kind: body
+    engine: alt
+    sync: in-sync
+    gap_after: 0.45
+    source_hash: "5dfedf9593b1"   # curated source block; drift -> review
+    text_hash: "5dfedf9593b1"     # narration; change -> re-render
+    text: |-
+      The hooks-side and scripts-side surfaces share one schema. The L L M consumes the agent-facing surface; the operator consumes the C L I-facing surface. The next sub-essay opens the organ that almost every plugin needs but that no plugin lets anyone else touch — the private data Jason state.
