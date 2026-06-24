@@ -124,7 +124,7 @@
 
                         <hr>
 
-                        <h2>The phase that acts on the brain</h2>
+                        <h2 id="the-phase-that-acts-on-the-brain">The phase that acts on the brain</h2>
 
                         <p>CONDENSE plays a different role from the work-on-project phases. Where they act on artifacts, CONDENSE acts on the brain itself &mdash; the cycle&rsquo;s cognitive metabolism organ, turning the experiential data from the prior phases into durable memory. <sup class="ref-marker" title="ref: condense-write-scope-md-files-only | .claude/plugins/phase_condense/hooks/condense-guard.sh header comment + the Edit/Write/MultiEdit case arm | Condense-guard&#x27;s header declares &quot;Enforces condense: .md files only (any CLAUDE.md, knowledge, memory, brain). Most permissive write phase — any .md file allowed, no section restriction.&quot; The Edit/Write/MultiEdit case arm enforces .md-only; project source files remain off-limits.">&#9432;</sup></p>
 
@@ -142,7 +142,7 @@
   <a href="explore/condense-waterfall.html" title="Open the interactive CONDENSE waterfall" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the waterfall</a>
 </aside>
 
-                        <h2>The operation catalog</h2>
+                        <h2 id="the-operation-catalog">The operation catalog</h2>
 
                         <p>The catalog the three phases draw from:</p>
 
@@ -166,7 +166,7 @@
 
                         <p>7. <strong>Session archive.</strong> The full footer of every altered CLAUDE.md is captured as a snapshot &mdash; a complete raw record of the cycle&rsquo;s working memory &mdash; written into a per-job session file by a dedicated command. This is the preservation step that lets the seed safely deflate. It is <em>not</em> a last-resort dustbin and a long archive is <em>not</em> a failure: it is a full-footer snapshot by design, large is normal. What stays disciplined is that durable knowledge lands in the discoverable layers &mdash; the body and <code>knowledge/</code> &mdash; with the archive as the raw backup behind them, the least discoverable layer, reached only by a trace-link. <sup class="ref-marker" title="ref: condense-session-archive-full-snapshot | .claude/plugins/phase_condense/scripts/session-log.sh &quot;capture / verify subcommands&quot; | The session-log command. `capture &lt;job_id&gt;` walks the altered-snapshot list and writes the full footer (everything after the first `---Ob/Pl/Ex/Ve---` anchor) of every altered CLAUDE.md into one `session-log-&lt;c&gt;.md` in the run-aware job dir `&lt;jobs_base&gt;/&lt;job_id&gt;/run-&lt;r&gt;/`. A full snapshot, large by design — the per-cycle raw backup that lets the seed safely deflate. `verify &lt;job_id&gt;` is the non-empty preservation check (file exists + is non-empty; exit 0 preserved). NOT where durable knowledge is found — that goes to body + knowledge/.">&#9432;</sup></p>
 
-                        <h2>The three phases: address, archive, deflate</h2>
+                        <h2 id="the-three-phases-address-archive-deflate">The three phases: address, archive, deflate</h2>
 
                         <p>The catalog above is <em>what</em> CONDENSE can do. The order it does them in is three phases, each gating the next, built around one rule: <strong>the footer is never shrunk before it is preserved.</strong></p>
 
@@ -188,7 +188,7 @@
 
                         <p><strong>Phase C &mdash; DEFLATE.</strong> Only now is deletion permitted. The agent finishes the reduction: durable findings absorb up into the body (the lasting trace, roughly one breadcrumb per worked section), the cross-file moves complete, the archived remainder is deleted from the footer, and a single pointer to the session file is left behind. The <code>[CARRIED:]</code> notes are <em>not</em> swept &mdash; they survive live in the footer into the next cycle, their counters climbing. The deflation gate is the size control here: it opens only when the footer is under twenty percent of its size at phase entry. Resolve, then archive, then deflate &mdash; that sequence is what makes the shrink legitimate rather than mere deletion. <sup class="ref-marker" title="ref: condense-3-phase-deflate | .claude/plugins/phase_condense/hooks/condense-guard.sh &quot;Footer removal-lock (unlocks once archived)&quot; + scripts/condense-commit.sh &quot;AUTOMATED DEFLATION CALCULATION&quot; | Once `session-log.sh verify` passes (the cycle is archived), the removal-lock falls through to allow — footer deletion is now permitted (DEFLATE). The `--force` deflation gate is the size control: it re-scans the altered footers from disk, computes `words_absorbed = total_baseline − current_total`, and blocks (exit 1) when `current_total &gt; max_remaining` (the ≥80% threshold). `[CARRIED:]` notes survive live in the footer into the next cycle — the gate never sweeps them.">&#9432;</sup></p>
 
-                        <h2>The deflation gate</h2>
+                        <h2 id="the-deflation-gate">The deflation gate</h2>
 
                         <p>The deflation gate sits at the close of Phase C. At condense entry, a sensor snapshots the total bottom-section word count of every CLAUDE.md in the altered list &mdash; everything below the first phase anchor &mdash; and stores it as the cycle&rsquo;s baseline. At commit time, the gate re-scans the same files from disk, computes how many words were absorbed away from the footers, and compares against the threshold. <sup class="ref-marker" title="ref: condense-deflation-gate-at-commit | .claude/plugins/phase_condense/scripts/condense-commit.sh `--force` deflation-gate enforcement block | At commit time CONDENSE re-measures footer word counts, computes words_absorbed = total_baseline − current_total, and blocks with exit 1 if current_total exceeds max_remaining (the 80% deflation threshold).">&#9432;</sup></p>
 

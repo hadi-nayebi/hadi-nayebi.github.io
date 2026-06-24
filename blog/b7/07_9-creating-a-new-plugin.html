@@ -122,7 +122,7 @@
 
                         <hr>
 
-                        <h2>Two Paths to a New Plugin</h2>
+                        <h2 id="two-paths-to-a-new-plugin">Two Paths to a New Plugin</h2>
 
                         <p>When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle OPEVC job at first (<a href="../b8/08_1-apprentice-to-architect-foundation.html">Essay 8</a> covers the maturation stages). The seed is in <em>learning mode</em> &mdash; it asks questions, takes its time, builds experiential data from your work. When a job recurs, the seed&rsquo;s soft voices nudge you toward running it as a repeatable <code>.md</code>-plan job (Stage 2) &mdash; often, not always. When a stable pattern wants per-cycle context injection, you and the seed may decide to run it as a <code>.yaml</code>-plan job (Stage 3) &mdash; a user-discussed choice for that job, never an automatic flip. And eventually &mdash; for jobs whose phase cognition needs customization beyond context injection &mdash; the job <em>itself</em> becomes a plugin. <sup class="ref-marker" title="ref: maturation-arc-job-stages-taxonomy | CLAUDE.md &quot;Job Stages (cycle-1 PLAN decides)&quot; section | Root CLAUDE.md names the Job Stages, each decided in cycle-1 PLAN (not at job creation). `plan_file` is born null — the undecided set-once sentinel — and cycle-1 PLAN commits the Stage with an explicit `set-plan-file` call: Stage 1 — single-cycle collaborative, `set-plan-file &lt;id&gt; false`; Stage 2 — repeatable with a `.md` plan (`set-plan-file &lt;name&gt;.md`), accumulating across cycles; Stage 3 — repeatable with a `.yaml` plan, identical to Stage 2 in completion semantics, only the plan-file format differs; and an aspirational Stage 4, the per-job plugin form. The cycle-1 PLAN→EXECUTE advance is blocked while `plan_file` is null, so even Stage 1 requires its explicit `set-plan-file false` call — nothing auto-defaults. A job graduates Stage 1 → 2 → 3 as it recurs and its plan stabilizes — never automatically. Storage on the job object via `plan.sh set-plan-file`; cycle-1 PLAN reads the taxonomy for classification.">&#9432;</sup></p>
 
@@ -134,7 +134,7 @@
 
                         <hr>
 
-                        <h2>The First Cycle &mdash; Single-Cycle DEEP</h2>
+                        <h2 id="the-first-cycle-single-cycle-deep">The First Cycle &mdash; Single-Cycle DEEP</h2>
 
                         <p>The seed treats new-plugin work as a single-cycle DEEP job at first: OBSERVE asks you questions about the gap, PLAN designs the new plugin&rsquo;s concern and organ list, EXECUTE stamps the template and fills in the substance, VERIFY runs the new plugin&rsquo;s test suite, CONDENSE absorbs the lessons into the knowledge layer. <sup class="ref-marker" title="ref: single-cycle-stage-1-default | CLAUDE.md &quot;Job Stages (cycle-1 PLAN decides)&quot; decision rules + .claude/plugins/phase_plan/scripts/plan.sh `set-plan-file` subcommand | New plugin-creation jobs classify to Stage 1 (single-cycle deep) per root CLAUDE.md decision rules: a generic conversational request with no expected repeat, or a single bug fix / feature add / doc update, classifies Stage 1 — no plan file needed, one OPEVC pass closes it. `plan_file` is born null (the undecided set-once sentinel on the phase_plan extension); the Stage is decided in cycle-1 PLAN, after OBSERVE has gathered context, by an explicit `set-plan-file` call — `set-plan-file &lt;id&gt; false` for Stage 1, `&lt;name&gt;.md` for Stage 2, `&lt;name&gt;.yaml` for Stage 3. The cycle-1 PLAN→EXECUTE advance is BLOCKED while `plan_file` is still null, so even Stage 1 must call `set-plan-file false` — nothing auto-defaults. Once decided, `plan_file == false` IS the Stage-1 signal; backward edges and loops happen INSIDE one OPEVC cycle. New-plugin work fits Stage 1 because operator + seed are still co-discovering design preferences.">&#9432;</sup></p>
 
@@ -144,13 +144,13 @@
 
                         <hr>
 
-                        <h2>Phase Plugins Need a Second Lock</h2>
+                        <h2 id="phase-plugins-need-a-second-lock">Phase Plugins Need a Second Lock</h2>
 
                         <p>If the new plugin extends the phase system (e.g., a new <code>phase_research</code> between OBSERVE and PLAN &mdash; exactly the customization <a href="../b6/06_1-phasic-foundation.html">Essay 6.1</a> named when it said the phase count is the prototype, not the architecture), one lock builds the cell, and a <em>second</em> lock on <code>phasic_system</code> updates the orchestrator&rsquo;s forward and backward edge maps so the new phase routes correctly. Adding a cognitive organ takes two ceremonies: one to author the organ, one to wire it into the body. New users should not be surprised by this &mdash; most plugin systems make wiring invisible; this architecture makes wiring explicit. <sup class="ref-marker" title="ref: phasic-orchestrator-edge-maps-update-needed | .claude/plugins/phasic_system/scripts/phase.sh | `phasic_system/scripts/phase.sh` holds OPEVC&#x27;s phase set + transition map; `phase advance` chooses the next phase based on current phase + map. Adding a new phase plugin (e.g., `phase_research` between OBSERVE and PLAN) requires `phasic_system` to acknowledge the new phase in its transition map so routing reaches it. The second `[PLUGIN-LOCK] phasic_system` ceremony is operator discipline — the orchestrator does not auto-discover new phase plugins; the transition map is the wiring contract. Most plugin systems make wiring invisible; this architecture makes wiring explicit.">&#9432;</sup></p>
 
                         <hr>
 
-                        <h2>The Knowledge Directory &mdash; By Birth, Not as Afterthought</h2>
+                        <h2 id="the-knowledge-directory-by-birth-not-as-afterthought">The Knowledge Directory &mdash; By Birth, Not as Afterthought</h2>
 
                         <p>This is the part most plugin tutorials skip. When the seed authors a new plugin, the seed <em>also</em> authors the plugin&rsquo;s knowledge directory at <code>.claude/knowledge/&lt;plugin_name&gt;/</code>. This is where the plugin&rsquo;s deep self-knowledge lives &mdash; the architectural rationale, the operating patterns, the lessons captured across cycles. The public seed agent ships every active plugin&rsquo;s knowledge directory along with the plugin code, so every operator&rsquo;s seed has the same depth of recall. Future OBSERVE phases will recall these knowledge files when the agent encounters work touching this plugin. <sup class="ref-marker" title="ref: every-active-plugin-has-knowledge-dir | .claude/knowledge/*/INDEX.md | `find .claude/knowledge -maxdepth 2 -name INDEX.md` returns one INDEX.md per active plugin: brain_guard, interaction_summary, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline — every active plugin in the prototype has its own knowledge dir. Plus topic dirs (opevc, migration, plans, session, etc.) for cross-plugin patterns. The convention holds: knowledge/&lt;plugin_name&gt;/ accompanies the plugin code rather than living separately.">&#9432;</sup></p>
 
@@ -163,13 +163,13 @@
 
                         <hr>
 
-                        <h2>Lock Closes &mdash; The Plugin Is Born, but Not Yet Alive</h2>
+                        <h2 id="lock-closes-the-plugin-is-born-but-not-yet-alive">Lock Closes &mdash; The Plugin Is Born, but Not Yet Alive</h2>
 
                         <p>Once the lock closes, the plugin exists as files on disk &mdash; but no hook fires yet. The brain has to register the hooks via <code>settings.local.json</code> (covered in <a href="07_7-smaller-organs-and-wiring.html">Essay 7.7</a>). That activation remains a separate operator-controlled wiring step, often performed with seed assistance during the same EXECUTE phase. Once the brain rereads on the next session start, the new plugin&rsquo;s reflexes fire. CONDENSE then absorbs the cycle&rsquo;s lessons, the historian writes the cycle-1 evolution.md, and the plugin enters its life. <sup class="ref-marker" title="ref: settings-local-json-no-auto-registration | .claude/plugins/plugin_integrity/hooks/lock-manager.sh:322-350 + .claude/plugins/plugin_integrity/scripts/health-check.sh:90-96 | Plugin birth at `lock-manager.sh:322-350` stamps the template (L322 &quot;Plugin birth: create from template, replace placeholders, generate historian, auto-commit&quot;), generates the historian under `plugin_integrity/agents/` (L336-341), and auto-commits the baseline (L344-350 `git commit -m &quot;birth: $target plugin initialized from template&quot;`) — but does NOT modify `.claude/settings.local.json`. Hook registration remains an operator-controlled activation step performed after birth. `plugin_integrity/scripts/health-check.sh:90-96` validates that registered hooks have files (Check 1: &quot;Hook files exist (registered hooks in settings.local.json)&quot;). The architectural rule: birth = file creation; activation = settings.local.json edit.">&#9432;</sup></p>
 
                         <hr>
 
-                        <h2>The Honest Framing</h2>
+                        <h2 id="the-honest-framing">The Honest Framing</h2>
 
                         <p>This is not a couple of editing sessions. A real new phase plugin is closer to a multi-cycle deep job: several editing sessions for the guard logic, more for the tracker and sensor, substantial voice content across the plugin&rsquo;s hooks and scripts, a meaningful test-assertion footprint across the plugin&rsquo;s test files, plus the orchestrator update for the two-lock pattern. The kit&rsquo;s gift is that the work is <em>bounded</em>, not that the work is small. Every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest. <sup class="ref-marker" title="ref: phase-plugin-organ-multiplicity | .claude/plugins/phase_plan/{hooks,scripts,tests,template,agents,docs}/ | `ls .claude/plugins/phase_plan/hooks/` returns plan-guard.sh + plan-sensor.sh + plan-tracker.sh + voice.xml — the guard/sensor/tracker triad named in the body, each its own organ. `ls .claude/plugins/phase_plan/scripts/` returns plan.sh + plan-commit.sh + voice.xml — second voice.xml confirms dual-voice architecture (hooks-side + scripts-side). `ls .claude/plugins/phase_plan/tests/` returns a per-organ test file set (test-plan-guard, test-plan-sensor, test-plan-tracker, test-plan-commit, test-plan-markers, test-plan-sh, test-plan-yaml-cognition, and peers) — the meaningful test-assertion footprint. Plus agents/, template/, docs/ — bounded organ kit, not an open-ended file list.">&#9432;</sup></p>
 
@@ -177,7 +177,7 @@
 
                         <hr>
 
-                        <h2>What Comes Next</h2>
+                        <h2 id="what-comes-next">What Comes Next</h2>
 
                         <p>The kit gives the brain the <em>capacity</em> to grow. The phases give the brain compartmentalized cognition. The bus gives the brain durable substrate.</p>
 

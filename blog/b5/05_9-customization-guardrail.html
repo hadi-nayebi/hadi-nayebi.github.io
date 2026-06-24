@@ -125,7 +125,7 @@
 
                         <hr>
 
-                        <h2>What it owns</h2>
+                        <h2 id="what-it-owns">What it owns</h2>
 
                         <p>The customization guardrail owns the gate on <strong><code>[PLUGIN-LOCK]</code> admission</strong>. Two operations route through it:</p>
 
@@ -140,7 +140,7 @@
 
                         <p>The decision rests on one fact: editing existing plugin code (or creating a new plugin that will start running code immediately) alters the substrate form that polices every other plugin&rsquo;s discipline. One quiet regression deep inside a plugin&rsquo;s hook can poison every dispatched subagent, every phase gate, every voice fire across the session. The gate&rsquo;s role is to ensure plugin-code work only happens in contexts where the operator is <em>deliberately</em> doing code-level substrate work &mdash; not as a side effect of normal cycle activity. <sup class="ref-marker" title="ref: editing-plugin-code-alters-substrate | .claude/knowledge/identity/plugin-lock-privilege.md &quot;What does NOT need PLUGIN-LOCK&quot; section + &quot;The OR-gate&quot; section | The identity deep-dive frames the qualitative difference: project edits affect the user&#x27;s work; plugin code edits affect the substrate that polices every future edit, every dispatched subagent, every phase guard, every voice fire. The free surface (CLAUDE.md, docs/*.md, voice.xml, agents/*.md) doesn&#x27;t share this property — those are configuration and historical-context layers that CONDENSE refines routinely. Only the code surface gets the gate.">&#9432;</sup></p>
 
-                        <h2>How it works &mdash; the OR-gate</h2>
+                        <h2 id="how-it-works-the-or-gate">How it works &mdash; the OR-gate</h2>
 
                         <p>The gate admits <code>[PLUGIN-LOCK]</code> on <strong>either</strong> of two conditions:</p>
 
@@ -155,7 +155,7 @@
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.9. Two arms admit [PLUGIN-LOCK] &mdash; gmode for ad-hoc operator work, plugin_lock_approval for agent-proposed customization jobs. The same admission covers both editing existing plugins and creating new ones.</figcaption>
                         </figure>
 
-                        <h2>Why both routes, not one</h2>
+                        <h2 id="why-both-routes-not-one">Why both routes, not one</h2>
 
                         <p>Each route covers a case the other can&rsquo;t reach without contortion.</p>
 
@@ -167,7 +167,7 @@
 
                         <p>The two routes match the two natural triggers (operator-noticed vs agent-noticed) without forcing every soft/meta-cognitive tuning step through the same code-lock ceremony.</p>
 
-                        <h2>The propose-and-confirm flow</h2>
+                        <h2 id="the-propose-and-confirm-flow">The propose-and-confirm flow</h2>
 
                         <p>The <code>[JOB-APPROVE-CREATION]</code> route is where most customization happens, because it&rsquo;s where the agent&rsquo;s noticing meets the operator&rsquo;s judgment. The flow:</p>
 
@@ -181,7 +181,7 @@
 
                         <p>5. <strong>The agent focuses and activates the new job</strong> when ready to begin substrate work. The pending job sits in the data.json until the agent (or operator) decides to switch contexts. Inside the activated approved job, <code>[PLUGIN-LOCK]</code> admits without further questioning &mdash; the gate sees <code>plugin_lock_approval=true</code> on the focused job and admits the lock for both editing existing plugins AND creating new ones. <sup class="ref-marker" title="ref: pending-job-then-focus-activate | .claude/plugins/job_core/scripts/job.sh focus + activate subcommands + .claude/plugins/plugin_integrity/hooks/lock-manager.sh OR-gate | The newly approved job is created `status:&quot;pending&quot;, focused:false` with top-level `plugin_lock_approval=true` already set (via the `--hook approve-plugin-lock` call inside the Post handler). The agent later runs `job.sh activate &lt;new_id&gt;` (flips status to active; `plugin_lock_approval` is job-identity-level and is NEVER reset — it persists across reactivations, since a job approved to touch plugins stays approved) then `job.sh focus &lt;new_id&gt;` (clears focus on all other jobs; sets focused=true on the new one). Once focused, lock-manager.sh reads the top-level `plugin_lock_approval` field — the second arm of the OR-gate — and admits PLUGIN-LOCK inside the job for both editing existing plugins and creating new ones.">&#9432;</sup></p>
 
-                        <h2>The second proposal route &mdash; raising the right mid-flight</h2>
+                        <h2 id="the-second-proposal-route-raising-the-right-mid-flight">The second proposal route &mdash; raising the right mid-flight</h2>
 
                         <p>The flow above mints a <em>new</em> job that starts life already cleared. But customization needs don&rsquo;t always announce themselves before the work begins. More often the seed agent is already deep inside an ordinary job &mdash; drafting a glossary term, rewriting a paragraph, tracing a bug &mdash; when it discovers the real fix lands in the plugin layer. That job was born for ordinary work; its <code>plugin_lock_approval</code> is <code>false</code>. Minting a fresh pre-cleared job and migrating the context across would be the same overhead gmode exists to avoid.</p>
 
@@ -191,13 +191,13 @@
 
                         <p>So plugin access has two agent-initiated shapes: propose a new job pre-cleared for the work, or raise the right on the job you are already running. Same right, same writer, same final <code>[PLUGIN-LOCK]</code> ask to actually unlock a plugin &mdash; the user confirms either way. Which one fits depends only on whether the plugin work is foreseen before the job starts or discovered once it is underway.</p>
 
-                        <h2>What would break without it</h2>
+                        <h2 id="what-would-break-without-it">What would break without it</h2>
 
                         <p>Without the customization guardrail, plugin code edits and births would be admitted in any cycle, in any phase, by any job. That isn&rsquo;t paranoia &mdash; it&rsquo;s the failure mode of every agent design where the agent can rewrite the rules that constrain it without ceremony. A buggy hook can poison every subsequent tool call. A regressed test guard can let broken plugins through. A misnamed voice id can silently fail to coach the agent through a critical moment. A spurious new plugin can hijack hook events the operator didn&rsquo;t authorize. The substrate&rsquo;s integrity is what makes the rest of the always-on layer trustworthy; without the gate, that integrity dissolves whenever the agent is mid-cycle with broad write access. <sup class="ref-marker" title="ref: substrate-corruption-failure-modes | .claude/knowledge/identity/plugin-lock-privilege.md &quot;What does NOT need PLUGIN-LOCK&quot; section | The identity file names the corruption surface directly in this section&#x27;s closing paragraph: &quot;Plugin code edits affect the substrate that polices every future edit, every dispatched subagent, every phase guard, every voice fire.&quot; That makes plugin-layer changes qualitatively different from project file changes — a regression deep in a plugin&#x27;s hook can corrupt every downstream decision the agent makes for the rest of the session. The gate exists because the cost of admitting a bad edit isn&#x27;t local; it&#x27;s substrate-wide.">&#9432;</sup></p>
 
                         <p>Worse: without a structured gate on code-level customization, substrate-code decisions get made ad-hoc, in the middle of work, under deadline pressure &mdash; exactly the situation where careful architectural judgment is hardest. The gate forces the customization decision into one of two deliberate moments: the operator entering gmode with a justification, or the user judging a <code>[JOB-APPROVE-CREATION]</code> proposal CONDENSE surfaced. Both moments slow the agent down, on purpose. Slowness is the point. <sup class="ref-marker" title="ref: two-deliberate-moments-friction-by-design | .claude/knowledge/identity/plugin-lock-privilege.md &quot;Why both, not one&quot; section | The identity file frames the two contexts as covering the two natural triggers — &quot;gmode is for ad-hoc work the operator initiates&quot; (the operator IS the trigger) and &quot;user-approved-job is for planned work the agent initiates from CONDENSE.&quot; The section&#x27;s closing line: &quot;The two routes match the two natural triggers (operator-noticed vs agent-noticed) without forcing every code-level customization through the same ceremony.&quot; The &quot;deliberate moments&quot; + &quot;slowness is the point&quot; framing in this paragraph is the essay&#x27;s own gloss on the architectural pattern the section names structurally.">&#9432;</sup></p>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p>The customization guardrail is the rare plugin-layer surface where the design assumes most architects will <em>inherit, not rewrite</em>. The two-route architecture is the architectural decision; the specific prefix names and voice wording are the surface knobs.</p>
 
@@ -213,7 +213,7 @@
 
                         <hr>
 
-                        <h2>What the gate teaches</h2>
+                        <h2 id="what-the-gate-teaches">What the gate teaches</h2>
 
                         <p>The customization guardrail is the architectural conclusion of the prior essays in this series. The always-on plugin layer holds the agent&rsquo;s reflexes; the substrate holds its working memory; the historian ratchet forces re-narration before edits; the gate forces deliberate context before any plugin-code edit (or new-plugin birth) happens at all. Each layer adds a discipline; the gate is the one that turns the system into something safely modifiable <em>by you</em> &mdash; not by the original developer, by you, the operator who installed the seed last week or last month or last year. <sup class="ref-marker" title="ref: layered-discipline-safely-modifiable-by-operator | root CLAUDE.md Identity section Fact 2 + .claude/knowledge/identity/plugin-lock-privilege.md &quot;Why both, not one&quot; section | Root CLAUDE.md Identity Fact 2 names PLUGIN-LOCK as the privileged gateway: &quot;Editing your own plugin-code layer alters the substrate that enforces every other plugin&#x27;s discipline. That kind of work can only happen inside one of two protected contexts: gmode... OR a user-approved job.&quot; The &quot;Why both, not one&quot; section closes: &quot;The two routes match the two natural triggers (operator-noticed vs agent-noticed) without forcing every code-level customization through the same ceremony.&quot; Together these establish the architectural property the paragraph names: a seed whose substrate edits route through one of two operator-authorized contexts becomes &quot;safely modifiable by the operator who installed it,&quot; because every substrate change carries a human sign-off the agent cannot bypass.">&#9432;</sup></p>
 

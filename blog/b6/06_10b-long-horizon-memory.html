@@ -125,7 +125,7 @@
 
                         <hr>
 
-                        <h2>How <code>.yaml</code> injection turns the brain long-horizon</h2>
+                        <h2 id="how-code1-injection-turns-the-brain-long-horizon">How <code>.yaml</code> injection turns the brain long-horizon</h2>
 
                         <p>Both plan files belong to the agent. What changes between them is injection control: the <code>.md</code> is loaded by recall or read whole; the <code>.yaml</code> is dripped in per phase, granular and consistent.</p>
 
@@ -155,7 +155,7 @@
 
                         <p>The <code>.md</code> and <code>.yaml</code> are not redundant &mdash; they are different surfaces of the same agent-facing plan. The <code>.md</code> is a flexible prose plan the agent works from by recall, suited to a job still maturing. The <code>.yaml</code> is the more controlled form: a structured plan the agent injects into context per phase, consistently, at every boundary. They share a basename so the agent knows they belong together, but they differ in injection granularity. <sup class="ref-marker" title="ref: md-yaml-coexist-different-surfaces | .claude/plugins/phase_plan/scripts/plan.sh validate-yaml-format | The validate-yaml-format command checks the `.yaml` against the phase.sh read-yaml schema — phases as keys, each carrying structured fields the per-phase injection consumes. The `.yaml`&#x27;s structure is what makes granular per-phase injection possible; the `.md` carries the same plan in a looser form the agent loads by recall. Both are the agent&#x27;s plan and both can be studied by the operator.">&#9432;</sup></p>
 
-                        <h2>The learning loop</h2>
+                        <h2 id="the-learning-loop">The learning loop</h2>
 
                         <p>A plan file that persists across completions is a plan file that can learn.</p>
 
@@ -173,7 +173,7 @@
 
                         <p>Over many runs the job converges toward needing no extensions at all. The plan stops being a guess and becomes an accurate forecast of the work, because each run wrote its surprises back into it. The learning is structural, not memorized &mdash; a future run reads the better plan directly, the same way it would read any other plan. This is what makes a repeating job get <em>smarter</em>, not just <em>repeat</em>. <sup class="ref-marker" title="ref: learning-over-time-structural | .claude/context/job-stages-plans.md &quot;Plan file lifecycle&quot; section | &quot;The cycle-level VERIFY gate + job-level CONDENSE gate + cross-run `extension_contexts[]` history form a closed feedback loop. The plan file (`.md` or `.yaml`) absorbs experience run-over-run; the job converges toward &#x27;no extensions needed&#x27; as the plan increasingly captures real scope. … The learning is structural, not memorized — future runs read the refined plan file directly.&quot;">&#9432;</sup></p>
 
-                        <h2>What would break without it</h2>
+                        <h2 id="what-would-break-without-it">What would break without it</h2>
 
                         <p>Take the plan file out. Now every multi-cycle job has to hold its own plan in working memory or re-derive it each session. The agent can still attempt long-horizon work, but each cycle starts cold &mdash; re-reading whatever notes survive in <code>knowledge/</code>, rebuilding intuition the previous cycle already had. Long jobs drift. A late cycle of a migration contradicts an early one because it never read the earlier plan. <sup class="ref-marker" title="ref: plan-file-is-cross-cycle-memory | .claude/context/job-stages-plans.md &quot;Plan file lifecycle&quot; section | The plan file exists precisely as &quot;the cross-cycle durable handoff vessel&quot; so phases can coordinate across cycles without rebuilding the contract every time. Remove it and each cycle reconstructs the plan from heuristics — the failure mode of chat-history-based agents on multi-session work.">&#9432;</sup></p>
 
@@ -183,7 +183,7 @@
 
                         <p>Each layer closes one failure mode of long-horizon work that ordinary chat-history-based agents fail at.</p>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p>The seed gives you an ordered ladder of places to make a change, deepest and hardest first: the <strong>phasic substrate</strong> (the cycle shape itself &mdash; how many phases, what they are, how they connect), the <strong>hard controls</strong> (the code-level gates that block a tool call outright), the <strong>soft voices</strong> (the coaching and warning messages injected at each phase), the <strong>per-job <code>.yaml</code> plan</strong> (a single job tailoring those soft voices at entry, no code touched), and &mdash; still on the horizon &mdash; a <strong>per-job plugin</strong> (a job that ships its own gates and voices). Friction and blast radius rise as you go down the ladder, so you reach for the shallowest layer that solves the problem. The plan file is the clearest example of the fourth rung &mdash; the place where a single job tailors the agent&rsquo;s behavior without touching a line of code. <sup class="ref-marker" title="ref: plan-file-is-layer-4 | .claude/plugins/phasic_system/hooks/phase-init.sh write_yaml_cache | The `.yaml` plan customizes soft controls per job without touching code: write_yaml_cache reads its per-cycle, per-phase keys at every phase entry and voice-helper.sh augments the matching voices at fire time. This per-job tailoring of soft controls is the customization gradient&#x27;s fourth layer — distinct from editing hard gates (code) or the voice catalog (xml). The plan file is data the job carries, not machinery it changes. The full ordered ladder is: 1 phasic substrate, 2 hard controls, 3 soft voices, 4 per-job yaml, 5 per-job plugin (aspirational).">&#9432;</sup></p>
 
@@ -207,7 +207,7 @@
 
                         <hr>
 
-                        <h2>What the plan file teaches</h2>
+                        <h2 id="what-the-plan-file-teaches">What the plan file teaches</h2>
 
                         <p>Long-horizon memory is the final mechanism of the markov phasic brain. The discipline and map from <a href="06_2-discipline-and-map.html">Essay 6.2</a> gave the brain its phase cycle. CONDENSE from <a href="06_7-condense.html">Essay 6.7</a> gave it metabolism. The rhythm from <a href="06_8-inverse-multiplier.html">Essay 6.8</a> gave it honest pacing. Gmode from <a href="06_9-gmode.html">Essay 6.9</a> gave it an off-cycle lane. The plan file gives it a <em>horizon</em> &mdash; the capacity to hold the same plan across days, weeks, dozens of cycles, with the plan re-injecting itself at every phase boundary so the brain never forgets where the work has reached.</p>
 

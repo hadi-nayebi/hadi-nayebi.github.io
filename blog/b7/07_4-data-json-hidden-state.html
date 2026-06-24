@@ -121,7 +121,7 @@
 
                         <hr>
 
-                        <h2><code>data.json</code> &mdash; The Hidden State</h2>
+                        <h2 id="code1-the-hidden-state"><code>data.json</code> &mdash; The Hidden State</h2>
 
                         <p><strong>What it is.</strong> The plugin&rsquo;s private runtime state. The active focused job, the tier counter, the summary chain, the lock manifest. JSON-encoded, written atomically, lives only on the operator&rsquo;s machine, gitignored. <sup class="ref-marker" title="ref: data-json-gitignored-per-machine | .gitignore:10-12 | The repo&#x27;s top-level `.gitignore` contains three lines: `**/data.json`, `**/data.json.lock`, `**/data.json.tmp` — gitignoring not only the state file itself but also its lockfile and temp file. The state is per-machine and never enters the repo; this is enforced at the repo level with `**/` globs, so every plugin&#x27;s `data.json` inherits the discipline automatically. (Individual plugins like `plugin_integrity` may also carry their own `.gitignore` with `data.json` for extra clarity, but the top-level rule is what actually matters.)">&#9432;</sup></p>
 

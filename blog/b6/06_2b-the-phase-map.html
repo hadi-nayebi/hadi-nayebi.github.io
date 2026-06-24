@@ -120,7 +120,7 @@
 
                         <hr>
 
-                        <h2>The Phases at a Glance</h2>
+                        <h2 id="the-phases-at-a-glance">The Phases at a Glance</h2>
 
                         <p><strong>IDLE</strong> &mdash; the meta-state between cycles. Lifecycle management only &mdash; a narrow allowlist opens, and everything else stays shut. <sup class="ref-marker" title="ref: idle-as-meta-state-between-cycles | .claude/plugins/phasic_system/hooks/phase-gate.sh IDLE case-arm + .claude/plugins/job_core/hooks/prompt-handler.sh active-job-zero branch | IDLE&#x27;s guard blocks Edit/Write outside memory paths, blocks Reads, narrows Bash to a small named-script allowlist, and blocks WebSearch/WebFetch. Top-level jobs are auto-created by prompt-handler.sh — when the active-job count is zero, the user&#x27;s prompt itself invokes job.sh --hook create-active and then phase.sh --hook init to lock the new job into IDLE. The agent never calls job.sh create directly.">&#9432;</sup> - Unlock the job-management CLI &mdash; the lifecycle surface (<code>show</code>, <code>focused</code>, <code>list</code>, <code>update</code>, <code>activate</code>, <code>focus</code>, <code>pause</code>, <code>complete</code>, <code>approve</code>). Creation and graph mutations live elsewhere. - Unlock the phase CLI (<code>advance</code>, <code>current</code>, <code>cycle</code>, <code>exit-gmode</code>) &mdash; agent-callable <code>advance</code> only goes idle → observe - Keep the always-on infrastructure running: memory-file edits, plus a small named-script allowlist on the IDLE Bash gate &mdash; <code>interaction_summary/scripts/summary.sh</code> for cross-conversation summaries, <code>brain_guard/scripts/self-compact.sh</code> for context-window compaction, and <code>plugin_integrity/scripts/lock-cmd.sh</code> for the universal active-lock close-out. Every other shell command exits blocked. <sup class="ref-marker" title="ref: idle-bash-allowlist-named-scripts | .claude/plugins/phasic_system/hooks/phase-gate.sh IDLE Enforcement section | IDLE&#x27;s Bash whitelist is enumerated explicitly: summary.sh, self-compact.sh, lock-cmd.sh, phase.sh restricted to (advance|current|cycle|exit-gmode), job.sh restricted to (show|focused|list|update|activate|focus|pause|complete|approve). Default-block on everything else.">&#9432;</sup> - Block reads, project edits, CLAUDE.md edits, web access, general shell - <em>Job creation happens automatically: top-level via <code>prompt-handler.sh</code> (the user&rsquo;s prompt itself creates the job when none is focused); dependent jobs via CONDENSE step 3 consuming <code>[PENDING-JOB]</code> markers. The agent does not call <code>job.sh create</code> itself.</em></p>
 
@@ -140,7 +140,7 @@
 
                         <hr>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p>The discipline is the architecture; the specific edges and the specific allow-lists are this prototype&rsquo;s calibration. Several surfaces are open to the next architect.</p>
 

@@ -122,7 +122,7 @@
 
                         <hr>
 
-                        <h2><code>agents/</code> &mdash; The Subagent Pool</h2>
+                        <h2 id="code2-the-subagent-pool"><code>agents/</code> &mdash; The Subagent Pool</h2>
 
                         <p><strong>What it is.</strong> A directory of subagent definitions the plugin owns. Subagent names are namespace-prefixed to their owning plugin&rsquo;s concern &mdash; <code>historian-*</code> for evolution narration (owned by <code>plugin_integrity</code>), <code>observe-*</code> for research (owned by <code>phase_observe</code>), <code>verify-*</code> for auditing, <code>condense-*</code> for waterfall routing. The prefix is the lock-boundary marker. Per-plugin scoping &mdash; every plugin owns the subagents it dispatches. <sup class="ref-marker" title="ref: agents-dir-per-plugin-scoping | .claude/plugins/*/agents/ | `find .claude/plugins -name agents -type d` returns 11 dirs (5 phase plugins + phasic_system + plugin_integrity + brain_guard + question_discipline + job_archiver + job_blocker) — NOT every plugin, only those that delegate investigation. Each agents/ dir contains the plugin&#x27;s owned subagents: phase_observe/agents/ has observe-codebase-explorer, observe-contradiction-finder, observe-dependency-mapper, observe-file-comparer, etc. plugin_integrity/agents/ has 12 historian-* subagents; question_discipline/agents/ carries the 13th (historian-question-discipline) — 13 total historian-* across all plugins. Subagent names are name-spaced to their plugin (e.g., `observe-*`, `condense-*`, `historian-*`).">&#9432;</sup></p>
 

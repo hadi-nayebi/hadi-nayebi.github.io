@@ -120,7 +120,7 @@
 
                         <hr>
 
-                        <h2>The job graph CONDENSE owns</h2>
+                        <h2 id="the-job-graph-condense-owns">The job graph CONDENSE owns</h2>
 
                         <p>CONDENSE is also the one phase allowed to <em>grow the job graph</em>. The other phases never call the job-creation script themselves; when they need a follow-up job, they declare intent in a <code>[PENDING-JOB]</code> note and move on. The notes sit unconsumed until CONDENSE arrives, walks them in operation three, and &mdash; after the explore-first check that decides whether each proposed job is even valid &mdash; creates the ones that survive. The additive moves (<code>create</code>, <code>create-dependent</code>, <code>add-dependency</code>) all live behind a CONDENSE-only guard, because CONDENSE is the phase with the cycle-wide context to judge what new work is actually needed. <sup class="ref-marker" title="ref: condense-owns-additive-job-mutations | .claude/plugins/phase_condense/hooks/condense-guard.sh CONDENSE job-creation allowlist block | The CONDENSE guard&#x27;s allowlist admits `create`, `create-dependent`, and `add-dependency` for condense-job-creator + main-session-in-condense; the same operations are explicitly blocked from every other phase&#x27;s guard. Lifecycle-symmetry: the additive operations are CONDENSE&#x27;s; the symmetric removal operation is elsewhere.">&#9432;</sup></p>
 
@@ -143,7 +143,7 @@
   <a href="explore/completion-events.html" title="Open the interactive completion-events walkthrough" style="flex: none; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.5rem 0.9rem; font-size: 0.85rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Explore the events</a>
 </aside>
 
-                        <h2>A worked example</h2>
+                        <h2 id="a-worked-example">A worked example</h2>
 
                         <p>Pick up the multi-cycle plan-job from the earlier essays. VERIFY rolled the cycle backward to PLAN; PLAN re-authored the sharpened acceptance criteria; EXECUTE landed the backward-compat work alongside the marker-schema work; VERIFY ran the audit family again and this time the criteria all passed. The orchestrator advances the job to CONDENSE.</p>
 
@@ -159,7 +159,7 @@
 
                         <p>The cycle&rsquo;s experiential data is now durable memory. The brain just learned.</p>
 
-                        <h2>The reflection that closes the phase</h2>
+                        <h2 id="the-reflection-that-closes-the-phase">The reflection that closes the phase</h2>
 
                         <p>Everything above is CONDENSE&rsquo;s operational half &mdash; the three phases, the note consumption, the deflation gate that forces the footers to compress. The phase has a second half, and it opens only at the exit. Before CONDENSE may advance, a reflection pass runs: a <strong>promotion-scan</strong> sweeps the whole cycle for knowledge candidates the explicit <code>[KNOWLEDGE]</code> notes missed, and returns findings for the seed to route into the rolling cycle-lessons and the Prior Summary &mdash; the running capsule of the job&rsquo;s cognition that seeds the next session &mdash; so the reflection carries forward across a context reset. Its answer is written into CONDENSE&rsquo;s slice of the cycle&rsquo;s compaction file &mdash; the cross-session memory introduced in <a href="../b5/05_3-brain-guard.html">the always-on cortex</a>.</p>
 
@@ -171,7 +171,7 @@
 
                         <p>The note classes are open, not fixed. The five generics fire in <em>every</em> job, but a particular <em>kind</em> of job can teach its own note class &mdash; declared by the job&rsquo;s prompt, not baked into the universal phase voices. The first such job-custom note is <code>[DRAFT-TERM]</code>: when a vocabulary-touching job meets a term the project&rsquo;s shared-language files do not yet define, any phase can drop a <code>[DRAFT-TERM]{...}</code> note naming the gap, and CONDENSE processes it directly &mdash; the seed deposits a flagged-draft vocabulary stub via main-session edit (no consuming subagent), for a human to confirm or correct, then resolves the note to <code>[RESOLVED:DRAFT-TERM]</code>. The five generics are the floor; a job class adds the notes its own work needs. <sup class="ref-marker" title="ref: draft-term-job-custom-marker | .claude/context/opevc-condense.md &quot;[DRAFT-TERM] marker (job-custom marker class)&quot; | The first job-custom marker — separate from the five generics. When a vocabulary-touching job meets an undefined term, any phase drops `[DRAFT-TERM]{term | where met + meaning | suggested home}` into its footer; CONDENSE processes `[DRAFT-TERM]` via main-session edit — the seed deposits a `[draft]` stub directly in the suggested context file (no consuming subagent; condense.sh excludes draft_term from the consumption-direction gate, and the stub target is outside condense-knowledge-extractor&#x27;s scope per agents/CLAUDE.md), never `[consolidated]` since the flip is the human&#x27;s act — then rewrites the note to `[RESOLVED:DRAFT-TERM]{breadcrumb → the stub}`.">&#9432;</sup></p>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p>CONDENSE is the phase with the most opinionated default behaviors and, perhaps because of that, the richest customization surface for any architect who wants to bend the brain&rsquo;s metabolism to their own work.</p>
 
@@ -189,7 +189,7 @@
 
                         <p>The deepest payoff of CONDENSE is the cognitive failure mode it prevents: the <em>forgetting cycle</em> &mdash; the seed agent that completes the work, declares victory, and starts the next cycle as cold as the previous one, having absorbed nothing from the experience. The three phases are the structural answer. ADDRESS routes each finding to a durable destination and forces every note to a terminal state. ARCHIVE preserves the whole footer before anything is lost. DEFLATE forces the compression to actually happen. The lock-forward rule means it happens <em>now</em> or the cycle does not close. The friction is the pedagogy. The phase is the metabolism.</p>
 
-                        <h2>Where the brain grows most</h2>
+                        <h2 id="where-the-brain-grows-most">Where the brain grows most</h2>
 
                         <p>CONDENSE is the phase where the soft brain grows most &mdash; the root CLAUDE.md, the plugin-level CLAUDE.md files, the coaching voices in <code>voice.xml</code>, the markdown subagent definitions, the durable knowledge files. It is not the <em>only</em> path into the memory layer: a plugin-unlocking job (PLUGIN-LOCK on an approved job) and the operator&rsquo;s off-cycle gmode lane both edit the substrate too. What CONDENSE owns is the <em>normal-cycle</em> path &mdash; and during the work-on-project phases, the brain is held closed: EXECUTE hard-blocks edits to the root brain so consolidation can&rsquo;t be smuggled into the build. CONDENSE owns consolidation, not arbitrary substrate surgery; hard plugin code stays behind the PLUGIN-LOCK/gmode/approved-job boundary from Essay 5. When an earlier phase notices a voice should change, an agent definition should tighten, or a finding should be promoted to long-term memory, it does not edit; it writes a note in its footer. The note stays unconsumed until CONDENSE arrives and routes it. This makes CONDENSE the lever by which the brain rewrites itself in the ordinary cycle &mdash; at known moments, at the end of a cycle, only after the cycle&rsquo;s work has been verified. <sup class="ref-marker" title="ref: execute-blocks-root-brain-condense-only | .claude/plugins/phase_execute/hooks/execute-guard.sh `block &quot;root-brain-blocked&quot; &quot;brain_protected&quot;` call (claude_rel == CLAUDE.md branch) + the `brain-protection\|root-brain-blocked` case in the block-message switch | EXECUTE blocks edits to root CLAUDE.md and .claude/CLAUDE.md: the guard&#x27;s claude_rel branch fires `block &quot;root-brain-blocked&quot; &quot;brain_protected&quot;` and the matching message reads `[phase_execute] BLOCKED: Brain updates belong in condense.` The pair repeats across every phase guard, so within the ordinary cycle CONDENSE is the phase that edits the brain.">&#9432;</sup></p>
 

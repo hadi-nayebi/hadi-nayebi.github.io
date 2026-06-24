@@ -120,11 +120,11 @@
 
                         <hr>
 
-                        <h2>What it owns</h2>
+                        <h2 id="what-it-owns">What it owns</h2>
 
                         <p><code>interaction_summary</code> exists to keep a job&rsquo;s dynamic mega-prompt legible as it grows. It works by counting tokens after every user interaction and forcing the agent to draft a structured summary the moment the unsummarized portion crosses a threshold. It applies inside any job whose interaction list grows long enough to compress &mdash; short jobs that never cross the threshold never see the plugin engage. <sup class="ref-marker" title="ref: interaction-summary-exists-to-keep | .claude/plugins/interaction_summary/CLAUDE.md Trigger Mechanism section | Trigger Mechanism: &quot;Threshold: ~500 tokens. After each interaction is captured by job_core&#x27;s question-capture: Count tokens in unsummarized interactions (word_count × 1.3)... If ≥ threshold → inject summarization request.&quot; Fires on PostToolUse:AskUserQuestion.">&#9432;</sup></p>
 
-                        <h2>How it works &mdash; block until summarized</h2>
+                        <h2 id="how-it-works-block-until-summarized">How it works &mdash; block until summarized</h2>
 
                         <figure class="blog-image" style="margin: 2rem 0;">
                           <img src="images/interaction-summary-b5-5.png" alt="A token meter inside a job crosses a threshold and flips a flag; on the next tool call a guard blocks every productive tool; the only path out is the dedicated `summary.sh submit` command, which the guard&#x27;s Bash whitelist explicitly admits" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
@@ -135,11 +135,11 @@
 
                         <p>The block is total &mdash; every productive tool, every question. The single escape path is <code>summary.sh submit</code>, the dedicated summary-submission command the guard&rsquo;s Bash whitelist explicitly admits; submitting a valid summary clears the flag, the gate releases, and any pending work resumes on the next turn. No parallel question-bypass list, no special-case prefixes &mdash; the discipline is one shape: submit the summary, then continue. The summary chain itself is append-only and lives entirely in the plugin&rsquo;s hidden state; older entries cannot be rewritten. <sup class="ref-marker" title="ref: enforcement-runs-in-two-phases | .claude/plugins/interaction_summary/scripts/summary.sh:230-236,277 + .claude/plugins/interaction_summary/hooks/summary-guard.sh:119-128 | `REQUIRED_SECTIONS` array names exactly five: &quot;User Requests&quot;, &quot;Questions &amp; Decisions&quot;, &quot;Design Choices&quot;, &quot;Corrections &amp; Feedback&quot;, &quot;Current State.&quot; Append-only chain: `.summary_chain += [...]` at line 277. summary-guard.sh:119-128 explicitly whitelists `summary.sh submit` (Bash call) and the read-only `job_core/scripts/job.sh focused|show|list` commands as the only paths through the block — no parallel AskUserQuestion bypass exists. Submitting clears `summary_needed`, the gate releases.">&#9432;</sup></p>
 
-                        <h2>What would break without it</h2>
+                        <h2 id="what-would-break-without-it">What would break without it</h2>
 
                         <p>Without this plugin, long jobs lose narrative coherence as the interaction list bloats; the summary chain is what keeps a job legible at a glance and what survives forward when the job spans more than one OPEVC cycle. <sup class="ref-marker" title="ref: without-interaction-summary-long-jobs | .claude/plugins/interaction_summary/CLAUDE.md Objective section | Objective: &quot;Maintain a continuous summary chain from user interactions. When unsummarized interactions exceed a token threshold, block all work until the agent produces a summary that carries forward essential context.&quot; Chain persists keyed by job ID across cycles.">&#9432;</sup></p>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p><code>interaction_summary</code> is the second always-on plugin where the <em>shape</em> is the lesson and the names are your prototype&rsquo;s answer. Almost every parameter has a defensible reason to move.</p>
 

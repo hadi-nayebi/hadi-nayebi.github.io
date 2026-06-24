@@ -124,13 +124,13 @@
 
                         <hr>
 
-                        <h2>What it owns</h2>
+                        <h2 id="what-it-owns">What it owns</h2>
 
                         <p>Gmode owns the <strong>off-cycle state</strong> of a focused job. When the focused job&rsquo;s <code>current_phase == &quot;gmode&quot;</code>, every phase guard sees a phase name that isn&rsquo;t its own and steps aside. The phase plugins' tool restrictions silently switch off; the seed agent regains full write access without entering any specific phase. <sup class="ref-marker" title="ref: phase-guards-step-aside-in-gmode | .claude/plugins/phase_verify/hooks/verify-guard.sh:87-88 | The VERIFY guard reads `current_phase=$(bash &quot;$PHASE_SH&quot; current &quot;$focused_id&quot; 2&gt;/dev/null)` and exits 0 immediately on the next line: `[[ &quot;$current_phase&quot; != &quot;verify&quot; ]] &amp;&amp; exit 0`. The same pattern lives in `phase_observe/hooks/observe-guard.sh:96-97` (`!= &quot;observe&quot;`) and `phase_execute/hooks/execute-guard.sh:240-241` (`!= &quot;execute&quot;`). When `current_phase == &quot;gmode&quot;` none of these equality checks succeed, so every per-phase guard short-circuits and the agent operates without phase-scoped tool restrictions.">&#9432;</sup></p>
 
                         <p>The architectural reason gmode is one edge on <em>every</em> phase &mdash; not a separate state machine &mdash; is that gmode entry must work from wherever the agent currently is. A deadlock surfaces during PLAN; a plugin needs a one-line fix during VERIFY; a registry entry is missing during idle. The off-cycle lane has to be reachable from every node in the OPEVC graph. Making it a self-loop on each phase keeps the cycle counter and the home phase intact while the side-work happens. <sup class="ref-marker" title="ref: gmode-self-loop-via-guard-check | .claude/plugins/phasic_system/scripts/phase.sh:341-407 + each phase plugin&#x27;s `*-guard.sh` | The `enter-gmode` handler at phase.sh:341-363 accepts entry from any caller phase via the same atomic stash. Each phase guard runs the same `[[ &quot;$current_phase&quot; != &quot;&lt;phase&gt;&quot; ]] &amp;&amp; exit 0` short-circuit (verify-guard.sh:87-88, observe-guard.sh:96-97, execute-guard.sh:240-241) — so when `current_phase == &quot;gmode&quot;`, every per-phase guard short-circuits in parallel and the self-loop opens on whichever phase the agent was in.">&#9432;</sup></p>
 
-                        <h2>How it works &mdash; the justification entry, atomic stash, clean-git exit</h2>
+                        <h2 id="how-it-works-the-justification-entry-atomic-stash-clean-git-exit">How it works &mdash; the justification entry, atomic stash, clean-git exit</h2>
 
                         <p>Entry happens through a sequence of stages &mdash; justification floor, atomic stash, clean-git exit &mdash; each enforced by a different mechanism.</p>
 
@@ -149,7 +149,7 @@
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 6.9. Every phase, including idle, carries one self-loop through gmode. Entry costs a justification floor; exit requires clean git plus a new root-cause note; the home phase is restored atomically.</figcaption>
                         </figure>
 
-                        <h2>What would break without it</h2>
+                        <h2 id="what-would-break-without-it">What would break without it</h2>
 
                         <p>Without the off-cycle lane, two failure modes would alternate.</p>
 
@@ -159,7 +159,7 @@
 
                         <p>Gmode is the explicit third option. The bypass is named, gated, and structurally separate from the OPEVC graph. The agent&rsquo;s velocity drops at the entry (the articulation cost), the working tree is forced clean at the exit, and the home phase returns intact. The bypass exists <em>because</em> the alternative &mdash; fudging guards in place &mdash; is the worse failure. <sup class="ref-marker" title="ref: gmode-as-architectural-third-option | .claude/plugins/phasic_system/CLAUDE.md &quot;gmode-gate.sh / gmode-hook.sh&quot; sections + scripts/phase.sh:341-407 | phasic_system documents gmode as the explicit escape hatch — gmode-gate.sh owns PreToolUse format validation, gmode-hook.sh owns PostToolUse entry on user confirm, phase.sh:341-407 owns the atomic stash + restore. The `block-gmode-dirty-git` voice (listed under phasic_system/CLAUDE.md&#x27;s &quot;1 block&quot; voice tally) names the exit-cleanliness check as a hard gate. The bypass is named (its own `current_phase` value), gated (the floor + clean-git checks), and architecturally separate from the per-phase guards — not a per-phase opt-out flag.">&#9432;</sup></p>
 
-                        <h2>A worked example</h2>
+                        <h2 id="a-worked-example">A worked example</h2>
 
                         <p>Pick up the multi-cycle migration job one phase before the EXECUTE we walked through in <a href="06_5-execute.html">Essay 6.5</a>. The agent has just entered EXECUTE on cycle 3. The altered list is set. The first tool call is a Read of <code>phase_condense/hooks/condense-guard.sh</code> &mdash; the plan calls for adding a marker case to the guard&rsquo;s Bash allowlist, and the agent reads the existing case-arm before writing. The Read returns. The agent notices something the plan never anticipated &mdash; one of the guard&rsquo;s <code>BLOCKED:</code> messages has <em>drifted</em> from the canonical <code>[phase_&lt;name&gt;] BLOCKED: &lt;reason&gt;</code> phrasing every other phase guard uses. Cosmetic drift. The kind of drift that survives because nobody phase-guards the phase-guards. <sup class="ref-marker" title="ref: condense-guard-block-message-pattern | .claude/plugins/phase_condense/hooks/condense-guard.sh `block` helper + its block-call sites | The condense-guard&#x27;s `block` helper takes a category plus a canonical fallback message; every block call emits the format `&quot;[phase_condense] BLOCKED: &lt;reason&gt;&quot;`. The same `[phase_&lt;name&gt;] BLOCKED:` pattern lives in every phase guard. Mid-cycle drift in this string surfaces only when an agent reads the file with fresh eyes — exactly the situation the worked example describes.">&#9432;</sup></p>
 
@@ -177,7 +177,7 @@
 
                         <p>That is the off-cycle lane working as designed. The bypass was named. The cost was paid. The substrate stayed intact.</p>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p>Gmode is one of the more architecturally opinionated surfaces in the prototype. Most of the opinion lives in <em>defaults</em>, not invariants &mdash; the architect&rsquo;s customization door opens on several distinct knobs.</p>
 
@@ -201,7 +201,7 @@
 
                         <hr>
 
-                        <h2>Two ways to leave OPEVC</h2>
+                        <h2 id="two-ways-to-leave-opevc">Two ways to leave OPEVC</h2>
 
                         <p>The off-cycle lane covers one kind of work that doesn&rsquo;t fit the phasic ceremony: <strong>ad-hoc</strong>, <strong>fast</strong>, <strong>bypass-justified</strong>. The next essay covers the other: <strong>planned</strong>, <strong>long-horizon</strong>, <strong>carried across cycles</strong> &mdash; the plan file the seed agent reaches for when the work is too large for a single OPEVC pass.</p>
 

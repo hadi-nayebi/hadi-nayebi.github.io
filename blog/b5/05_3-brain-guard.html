@@ -120,11 +120,11 @@
 
                         <hr>
 
-                        <h2>What it owns</h2>
+                        <h2 id="what-it-owns">What it owns</h2>
 
                         <p><code>brain_guard</code> is the always-on plugin that owns the <em>compaction discipline</em> &mdash; the compaction file plus the clear-and-inject operation that replaces native <code>/compact</code>. It works by watching context usage on every tool call and progressively tightening the agent&rsquo;s grip on tools as the window fills. The whole mechanism fires well before Claude Code&rsquo;s default auto-compact at 100%, which lets the seed agent operate even when the user is away from the terminal. <sup class="ref-marker" title="ref: brain-guard-the-always-on-plugin | .claude/plugins/brain_guard/hooks/context-sensor.sh &quot;WHAT THIS HOOK DOES&quot; comment block | Hook&#x27;s own comment: &quot;Every time the agent calls any tool (Read, Edit, Bash, anything), Claude Code fires PreToolUse hooks BEFORE the tool runs... print a friendly reminder... before the HARD gate at 250k blocks the Read tool.&quot;">&#9432;</sup></p>
 
-                        <h2>The compaction file &mdash; the thing that survives the clear</h2>
+                        <h2 id="the-compaction-file-the-thing-that-survives-the-clear">The compaction file &mdash; the thing that survives the clear</h2>
 
                         <p>Compacting a conversation is destructive. The chat shrinks, and whatever was only in the chat is gone. So the first question <code>brain_guard</code> answers is not <em>when to compact</em> but <em>what must survive the compaction</em> &mdash; and the answer is a file.</p>
 
@@ -136,7 +136,7 @@
 
                         <p>Two distinct events touch the file, and they should not be confused. A phase-exit <strong>append</strong> is the frequent one: every phase, on its way out, writes its slice into the file. A full <strong>compaction event</strong> is the rare one, threshold-triggered &mdash; when a context ramp or a file-size ramp hits its ceiling, the tools progressively block, the finalization pass seals the file, and the session clears and re-injects. The append happens at every phase boundary; the compaction event can fire <em>mid-phase</em>, the moment a ramp tops out, not only at a phase exit.</p>
 
-                        <h2>How it works &mdash; the progressive squeeze</h2>
+                        <h2 id="how-it-works-the-progressive-squeeze">How it works &mdash; the progressive squeeze</h2>
 
                         <p>A pre-call sensor reads the running token count on every tool call. At the first tier (currently around 20% of the window), the plugin injects a coaching voice prompting the agent to bring its compaction file up to date before the squeeze tightens. The reasoning behind 20% is empirical and prototype-specific: in this 1M-token Opus setup, long-run reasoning starts to soften well before the nominal window is full, so acting at 20% leaves headroom before the prototype&rsquo;s 30% hard tier. If the agent ignores the prompt, the next tier (around 25%) starts blocking the agent&rsquo;s read tools. The hardest tier (around 30%) adds the write tools to the block list. <sup class="ref-marker" title="ref: a-pre-call-sensor-reads | .claude/plugins/brain_guard/config.conf (`SOFT_THRESHOLD_TIER` / `READ_THRESHOLD_TIER` / `CRITICAL_THRESHOLD_TIER`) | Three tier thresholds: `SOFT_THRESHOLD_TIER=20` (200k = coaching voice), `READ_THRESHOLD_TIER=25` (250k = Read blocked), `CRITICAL_THRESHOLD_TIER=30` (300k = Edit/Write/MultiEdit blocked). Each tier = 10k tokens; maps directly to 20/25/30% of Opus 4.8&#x27;s 1M window.">&#9432;</sup></p>
 
@@ -151,7 +151,7 @@
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.3. The progressive squeeze &mdash; each tier removes one more tool until self-compaction is the only graceful move.</figcaption>
                         </figure>
 
-                        <h2>Shape compels production</h2>
+                        <h2 id="shape-compels-production">Shape compels production</h2>
 
                         <p>The compaction file is shape-enforced. It carries a fixed set of sections &mdash; Forward State, Open Threads, Assumptions & Risks, Process Insight, and a rolling Prior Summary &mdash; and each phase-exit note is routed into the section it belongs in. Scope boundaries and binding user directives go to Forward State. Uncovered sources, deviations, and gotchas go to Open Threads. What verification might have missed goes to Assumptions & Risks. Why-this-over-that and cycle lessons go to Process Insight. Beside those five authored sections sits one more &mdash; Git Commit Messages &mdash; that the agent never writes by hand: every phase commit&rsquo;s message is appended into it automatically, giving the next session a ground-truth trail of what changed without re-reading the full diff. <sup class="ref-marker" title="ref: compaction-file-sections | .claude/context/brain-memory.md &quot;Compaction-file sections&quot; | Five authored sections — Forward State · Open Threads · Assumptions &amp; Risks · Process Insight · Prior Summary — act as routing destinations so each metacog write lands where the next session looks for it: scope → Forward State; uncovered sources/deviations/gotchas → Open Threads; what verification missed → Assumptions &amp; Risks; why-over-alternatives + cycle lessons → Process Insight; binding user directives → Forward State. A sixth section, Git Commit Messages, is auto-fed by the commit script (every phase commit appended verbatim) and is EXEMPT from the no-empty-sections seal gate; it sits before Prior Summary, which stays last.">&#9432;</sup></p>
 
@@ -161,7 +161,7 @@
 
                         <p>The pattern is portable. Structured git commits, structured plan files, structured subagent dispatches &mdash; every time a shape demands content, the content rewards the next step. A consultant could use the same trick on weekly client briefs &mdash; a fixed five-section template (scope, open questions, decisions taken, evidence, next checkpoint) forces the substantive thinking the prose would otherwise skip. The same trick lands in <a href="05_5-interaction-summary.html"><code>interaction_summary</code> (Essay 5.5)</a>. <sup class="ref-marker" title="ref: shape-pattern-portable-interaction-summary | .claude/plugins/interaction_summary/CLAUDE.md Objective section | interaction_summary&#x27;s Objective: &quot;Maintain a continuous summary chain from user interactions. When unsummarized interactions exceed a token threshold, block all work until the agent produces a summary that carries forward essential context.&quot; The summary is structurally five-sectioned — same shape-compels-production trick brain_guard uses on its compaction file. interaction_summary is the second always-on plugin in the prototype where a required structural shape forces useful per-section production, confirming the portability claim.">&#9432;</sup></p>
 
-                        <h2>Clear and inject</h2>
+                        <h2 id="clear-and-inject">Clear and inject</h2>
 
                         <p>When a ramp hits its ceiling, <code>brain_guard</code> runs a <strong>finalization pass</strong> &mdash; an ordered, inspectable sequence that seals the compaction file &mdash; and then clears the session and injects the sealed file into the fresh one. The whole design is built for transparency: the finalization pass, the sealed file, and the Prior Summary are all on disk, so the agent can read and check exactly what will carry across the boundary before the session ever clears. Nothing is summarized in the dark; the cognition that survives is the cognition the agent deliberately sealed. <sup class="ref-marker" title="ref: clear-inject | .claude/context/brain-memory.md &quot;Clear + inject&quot; | The session-boundary operation that replaces native /compact once the finalization pass has sealed the file. The command changes from esc + /compact &lt;instruction&gt; + Enter + follow-up to esc + /clear + &lt;generic new-session instruction&gt; + &lt;compaction file&gt; + Enter — ending the saturated session and starting a fresh one carrying exactly the sealed cognition.">&#9432;</sup></p>
 
@@ -182,11 +182,11 @@
   <a href="explore/compaction-chain.html" style="flex: none; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; color: #fff; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the compaction chain</a>
 </aside>
 
-                        <h2>What would break without it</h2>
+                        <h2 id="what-would-break-without-it">What would break without it</h2>
 
                         <p>Without <code>brain_guard</code>, the agent runs the conversation off a cliff &mdash; and the cliff is steeper than it looks. The default 100% auto-compact fires eventually, but the thing it loses is not just the window. It loses the <em>cognition</em>: the open threads, the assumptions, the loops the agent had learned to avoid, the read on how the instructing layer was steering the work. The default compaction keeps whatever scraps the model happened to have in the window at that moment and discards the rest. The next session does not resume thinking; it starts over from facts. <sup class="ref-marker" title="ref: without-brain-guard-the-agent | .claude/plugins/brain_guard/scripts/self-compact.sh &quot;WHAT THIS SCRIPT DOES&quot; comment block | Top comment: &quot;past 250k tokens, reasoning quality falls off a cliff, and a fresh compact restores capacity... the agent itself can&#x27;t TYPE the slash command — only the human at the keyboard can. This script automates that human role.&quot; Without it, only the 100% auto-compact fires.">&#9432;</sup></p>
 
-                        <h2>What you would customize</h2>
+                        <h2 id="what-you-would-customize">What you would customize</h2>
 
                         <p><code>brain_guard</code> is the plugin most architects tune the moment they adopt the seed. Almost every knob has a defensible reason to move.</p>
 

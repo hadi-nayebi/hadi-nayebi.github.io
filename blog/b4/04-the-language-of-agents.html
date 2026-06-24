@@ -123,7 +123,7 @@
 
                         <hr>
 
-                        <h2>The Engine: What an LLM Actually Is</h2>
+                        <h2 id="the-engine-what-an-llm-actually-is">The Engine: What an LLM Actually Is</h2>
 
                         <p>Start with what you already know. When you type a question into ChatGPT or Claude, something generates the response. That something is a <strong>Large Language Model</strong> &mdash; an LLM.</p>
 
@@ -133,11 +133,11 @@
 
                         <p><strong>The LLM did not arrive in its current form.</strong> It evolved through distinct phases, and each phase changed what AI could do.</p>
 
-                        <h3>Phase One: The Autocomplete Machine</h3>
+                        <h3 id="phase-one-the-autocomplete-machine">Phase One: The Autocomplete Machine</h3>
 
                         <p>The earliest LLMs were trained on massive amounts of internet text. Their job was simple: given some text, predict what comes next. Think of it as autocomplete scaled to the size of the internet. You type "the cat sat on the" and the model predicts "mat." Impressive at scale. Useless for conversation.</p>
 
-                        <h3>Phase Two: The Conversation Machine</h3>
+                        <h3 id="phase-two-the-conversation-machine">Phase Two: The Conversation Machine</h3>
 
                         <p>Researchers figured out how to train these autocomplete engines to take turns. One turn for you, one turn for the AI. User and assistant, back and forth. This was the <strong>instruction phase</strong> &mdash; the LLM went from replicating text found on the internet to generating text that looks like a conversation.</p>
 
@@ -145,7 +145,7 @@
 
                         <p>It was not. It was generating tokens that pattern-matched conversations from its training data. But the result was close enough to be transformative.</p>
 
-                        <h3>Phase Three: The Tool-Using Machine</h3>
+                        <h3 id="phase-three-the-tool-using-machine">Phase Three: The Tool-Using Machine</h3>
 
                         <p>Then the vocabulary expanded.</p>
 
@@ -155,7 +155,7 @@
 
                         <p>This is where we are now. Some tokens are words you read. Some are commands you never see. All of them are text.</p>
 
-                        <h3>The Context Window</h3>
+                        <h3 id="the-context-window">The Context Window</h3>
 
                         <p>One more engine concept. Every LLM has a limit on how much text it can see at once. That limit is the <strong>context window</strong> &mdash; measured in tokens.</p>
 
@@ -167,7 +167,7 @@
 
                         <hr>
 
-                        <h2>From Browser to Desktop: CLI Agents</h2>
+                        <h2 id="from-browser-to-desktop-cli-agents">From Browser to Desktop: CLI Agents</h2>
 
                         <p>Everything so far is the engine. Now: where does it live?</p>
 
@@ -195,7 +195,7 @@
 
                         <p>That is the shift. From using an assistant the company designed for everyone, to owning one you design for yourself. Same intelligence underneath. Completely different level of control on top. This is the idea from the <a href="../b1/01-llms-are-not-the-agents.html">first essay</a>: the agent is the filesystem, not the model. Now you have the word for the form factor that makes it real.</p>
 
-                        <h2>The Briefing: System Messages and Persona</h2>
+                        <h2 id="the-briefing-system-messages-and-persona">The Briefing: System Messages and Persona</h2>
 
                         <p>So you have a CLI agent on your machine. What makes it <em>yours</em>?</p>
 
@@ -211,7 +211,7 @@
 
                         <p>One engine. A thousand possible agents.</p>
 
-                        <h2>The Craft: From Prompt Engineering to Context Engineering</h2>
+                        <h2 id="the-craft-from-prompt-engineering-to-context-engineering">The Craft: From Prompt Engineering to Context Engineering</h2>
 
                         <p>You have probably heard the term <strong>prompt engineering</strong>. It means carefully crafting what you type to get better results from the AI.</p>
 
@@ -233,7 +233,7 @@
 
                         <hr>
 
-                        <h2>The Reflexes: Hooks</h2>
+                        <h2 id="the-reflexes-hooks">The Reflexes: Hooks</h2>
 
                         <p>When you drive a car, you do not think about checking your mirrors. You just do it. It is a reflex &mdash; an automatic action triggered by a specific moment.</p>
 
@@ -249,7 +249,7 @@
 
                         <p>We will formalize the workflow those hooks enforce &mdash; Observe, Plan, Execute, Verify, Condense &mdash; in a <a href="../b6/06_1-phasic-foundation.html">later essay</a>.</p>
 
-                        <h2>The Skill Set: Skills, Commands, and Sub-agents</h2>
+                        <h2 id="the-skill-set-skills-commands-and-sub-agents">The Skill Set: Skills, Commands, and Sub-agents</h2>
 
                         <p>Here is the hierarchy.</p>
 
@@ -261,7 +261,7 @@
 
                         <p>Skills are what the agent knows. Commands are what you tell it to do. Sub-agents are who it delegates to.</p>
 
-                        <h2>The Connections: MCPs</h2>
+                        <h2 id="the-connections-mcps">The Connections: MCPs</h2>
 
                         <p>Your agent sits on your computer. But the world does not live on your computer.</p>
 
@@ -271,7 +271,7 @@
 
                         <p>MCPs are what turn a local agent into a connected one. The agent stays on your machine, under your control. But it can reach out and interact with the tools you already use.</p>
 
-                        <h2>The Extensions: Plugins</h2>
+                        <h2 id="the-extensions-plugins">The Extensions: Plugins</h2>
 
                         <p>A <strong>plugin</strong> is a container. It bundles tools, hooks, instructions, skills, and even sub-agents into a single package you can add to your agent. Think of it as a cognitive organ transplant &mdash; not a single capability, but an entire system of connected parts that integrates with everything already there.</p>
 
@@ -281,7 +281,7 @@
 
                         <hr>
 
-                        <h2>The Structure: Jobs and Rhythms</h2>
+                        <h2 id="the-structure-jobs-and-rhythms">The Structure: Jobs and Rhythms</h2>
 
                         <p>If hooks are reflexes and skills are knowledge, how does the agent actually organize its day? Without structure, an AI is just a chatbot waiting for a prompt. To act autonomously, it needs architecture.</p>
 
@@ -293,7 +293,7 @@
 
                         <p>At the end of that rhythm is <strong>Condense</strong>. When a job finishes, the agent must pause to condense what it learned. Did it discover a new rule about your project? It extracts that lesson and adds it to its permanent memory. This happens immediately after the task.</p>
 
-                        <h2>The Memory: Seed Agents and Agentic Workforces</h2>
+                        <h2 id="the-memory-seed-agents-and-agentic-workforces">The Memory: Seed Agents and Agentic Workforces</h2>
 
                         <p>Two more terms, and these matter more than any of the technical ones.</p>
 
@@ -309,7 +309,7 @@
 
                         <hr>
 
-                        <h2>The Big Picture</h2>
+                        <h2 id="the-big-picture">The Big Picture</h2>
 
                         <p>Picture all of this running at once. You open a terminal in your project folder. The <strong>seed agent</strong> wakes up, reads its <strong>persona</strong> and <strong>context</strong> from the files you have shaped over weeks of conversation. A <strong>hook</strong> fires &mdash; checking whether anything changed since your last session.</p>
 
@@ -317,7 +317,7 @@
 
                         <p>None of this required code. You described what you needed. The system built itself around your words.</p>
 
-                        <h2>Why This Vocabulary Matters</h2>
+                        <h2 id="why-this-vocabulary-matters">Why This Vocabulary Matters</h2>
 
                         <p>Every profession has its language. Lawyers have torts and depositions. Doctors have diagnoses and prognoses. Accountants have amortization and accruals.</p>
 
