@@ -95,7 +95,7 @@ A skill that enforces a consistent workflow every time you start a new task? **C
 
 These are the organs of your digital cortex. Memory that persists across weeks. Reflexes that catch mistakes before they compound. Specialized reasoning that runs while you sleep. Your biology — now extended with organs designed for the actual jungle you live in.
 
-Your [`.claude/`](https://docs.anthropic.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make it function.
+Your [`.claude/`](https://docs.claude.com/en/docs/claude-code/memory "Claude Code memory and project files") directory — or whatever your CLI agent calls its brain — is the first draft of that organ system. One you design. One you grow. One that is **yours**. In the essays that follow, we will see exactly what these organs look like — the files, the hooks, the jobs that make it function.
 
 ---
 
