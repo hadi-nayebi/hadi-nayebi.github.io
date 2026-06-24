@@ -117,7 +117,7 @@
 
                         <p>A toaster is a simple structure. It takes raw electrical energy and channels it into a <strong>specific, repeatable outcome</strong> &mdash; toast, every time. Not because electricity "decided" to make toast. Because the wires, the timer, and the slots shaped the energy into a predictable result.</p>
 
-                        <p>This is the relationship between an <a href="https://en.wikipedia.org/wiki/Large_language_model "Large Language Model &mdash; AI software like ChatGPT or Claude that generates text"">LLM</a> and an agent.</p>
+                        <p>This is the relationship between an <a href="https://en.wikipedia.org/wiki/Large_language_model" title="Large Language Model &mdash; AI software like ChatGPT or Claude that generates text">LLM</a> and an agent.</p>
 
                         <p>The LLM provides <strong>raw reasoning power</strong>. It can write, analyze, plan, and create. But without structure, the token stream it produces can flow in any direction. The agent provides the structure. It channels that stream into <strong>consistent, reliable behavior</strong>.</p>
 
@@ -129,7 +129,7 @@
 
                         <p><strong>That is the root misunderstanding.</strong></p>
 
-                        <p>The model is not the agent. The model is the <strong>engine</strong> &mdash; a <a href="https://en.wikipedia.org/wiki/Language_model "A system that produces text one piece at a time based on statistical patterns learned during training"">token generator</a> that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create. But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model.</p>
+                        <p>The model is not the agent. The model is the <strong>engine</strong> &mdash; a <a href="https://en.wikipedia.org/wiki/Language_model" title="A system that produces text one piece at a time based on statistical patterns learned during training">token generator</a> that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create. But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model.</p>
 
                         <p>A jet engine sitting on the ground is incredibly powerful &mdash; but it is not an airplane.</p>
 
@@ -150,7 +150,7 @@
 
                         <p>An agent is the engine <strong>plus a local brain</strong>.</p>
 
-                        <p>The most direct way to build that brain today is with a <a href="https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface &mdash; a text-based way to interact with software"">CLI agent</a> &mdash; a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM.</p>
+                        <p>The most direct way to build that brain today is with a <a href="https://en.wikipedia.org/wiki/Command-line_interface" title="Command Line Interface &mdash; a text-based way to interact with software">CLI agent</a> &mdash; a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM.</p>
 
                         <p>Current tools &mdash; Claude Code, OpenCode, Gemini CLI &mdash; are marketed toward technical users. The names suggest it: Claude <em>Code</em>, Open<em>Code</em>. But what these tools actually do is manipulate files and respond to file content. That capability extends far beyond writing code.</p>
 
@@ -203,7 +203,7 @@
 
                         <figure class="blog-image" style="margin: 2rem 0;">
                           <img src="images/action-space-markov-chain-b1-2.png" alt="Markov chain diagram showing Claude Code&#x27;s action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities &mdash; a <a href="https://en.wikipedia.org/wiki/Markov_chain "A system where the next step depends only on the current state, not the full history"">Markov chain</a> where every path is equally likely.</figcaption>
+                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities &mdash; a <a href="https://en.wikipedia.org/wiki/Markov_chain" title="A system where the next step depends only on the current state, not the full history">Markov chain</a> where every path is equally likely.</figcaption>
                         </figure>
 
                         <ul>
@@ -245,7 +245,7 @@
 
                         <p>This is not something the LLM invented on its own. It is a structure you define in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space. We will return to these phases in detail as we build the seed agent in later essays.</p>
 
-                        <p>But defining a workflow in instruction files does not guarantee the agent will respect it. Instruction files guide. They shape context. They do not enforce. To make certain behaviors <strong>mandatory</strong>, you need something stronger: <a href="https://en.wikipedia.org/wiki/Hooking "Trigger points where custom rules automatically run when an event happens""><strong>hooks</strong></a>.</p>
+                        <p>But defining a workflow in instruction files does not guarantee the agent will respect it. Instruction files guide. They shape context. They do not enforce. To make certain behaviors <strong>mandatory</strong>, you need something stronger: <a href="https://en.wikipedia.org/wiki/Hooking" title="Trigger points where custom rules automatically run when an event happens"><strong>hooks</strong></a>.</p>
 
                         <p>Modern CLI agents support <strong>hook systems</strong> &mdash; events that fire at specific points in the agent&rsquo;s lifecycle.</p>
 
@@ -279,9 +279,9 @@
                         <p>Right now, multiple CLI agent platforms support hook and event systems:</p>
 
                         <ul>
-                            <li><strong>Claude Code</strong> &mdash; <a href="https://code.claude.com/docs/en/hooks "Claude Code hooks documentation &mdash; shell commands, HTTP endpoints, and LLM prompts triggered by agent events"">hooks</a> via <code>.claude/settings.json</code> (PreToolUse, PostToolUse, Stop, Notification, etc.)</li>
-                            <li><strong>Gemini CLI</strong> &mdash; <a href="https://geminicli.com/docs/hooks/ "Gemini CLI hooks documentation &mdash; event-driven shell commands modeled after Claude Code&rsquo;s design"">hooks</a> shipped January 2026 (BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc.)</li>
-                            <li><strong>OpenCode</strong> &mdash; hooks via <a href="https://opencode.ai/docs/plugins/ "OpenCode plugin system &mdash; JS/TS modules that subscribe to agent events"">plugin system</a> (<code>tool.execute.before</code>, <code>tool.execute.after</code>, <code>session.idle</code>, <code>stop</code>)</li>
+                            <li><strong>Claude Code</strong> &mdash; <a href="https://code.claude.com/docs/en/hooks" title="Claude Code hooks documentation &mdash; shell commands, HTTP endpoints, and LLM prompts triggered by agent events">hooks</a> via <code>.claude/settings.json</code> (PreToolUse, PostToolUse, Stop, Notification, etc.)</li>
+                            <li><strong>Gemini CLI</strong> &mdash; <a href="https://geminicli.com/docs/hooks/" title="Gemini CLI hooks documentation &mdash; event-driven shell commands modeled after Claude Code&#x27;s design">hooks</a> shipped January 2026 (BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc.)</li>
+                            <li><strong>OpenCode</strong> &mdash; hooks via <a href="https://opencode.ai/docs/plugins/" title="OpenCode plugin system &mdash; JS/TS modules that subscribe to agent events">plugin system</a> (<code>tool.execute.before</code>, <code>tool.execute.after</code>, <code>session.idle</code>, <code>stop</code>)</li>
                         </ul>
 
                         <p>As of early 2026, all three shipped hook systems within months of each other &mdash; confirmation that interception points are becoming a standard primitive in agent infrastructure.</p>
