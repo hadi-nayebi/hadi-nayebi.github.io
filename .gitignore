@@ -19,7 +19,9 @@ dev-server.py
 feedback.json
 
 # Agent working memory (not part of the website)
-CLAUDE.md
+# NOTE: project working-memory CLAUDE.md files (root + blog/**) are now TRACKED
+# (the website is treated as a normal project). Only the architect's Layer-2
+# brain + tooling under .claude/ stays ignored.
 .claude/
 .claude/skills/
 memory/
