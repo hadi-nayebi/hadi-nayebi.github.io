@@ -72,3 +72,4 @@ blog/b*/audio/*/
 # Video production pipeline (Remotion + node_modules + per-project git) — LOCAL ONLY,
 # never deployed. Final rendered videos are exported to assets/video/ (committed).
 /video-projects/
+/context-map/
