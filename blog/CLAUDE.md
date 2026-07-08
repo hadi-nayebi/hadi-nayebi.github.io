@@ -433,10 +433,10 @@ These rules emerged from cycle-1 review of the Blog 5 draft. Apply to ALL Part-2
 - RIGHT: "the always-on plugins run continuously, each minding its own concern; the phasic system uses the CLAUDE.md layer to think ahead, gather experiential data, and process it into the agent's longer-term memory forms"
 - Blog 5 introduces the always-on plugins and the CLAUDE.md layer side by side as separate strands. Blog 6 shows the phasic system USING the CLAUDE.md layer. Blog 7 deep-dives plugin anatomy.
 
-**Rule 5 — Context numbers are operating thresholds, not system limits.**
-- The seed agent uses Opus 4.8 with 1M-token context, but `brain_guard` triggers compaction much earlier (soft tier 200k, hard tier 250k, critical 300k).
-- When mentioning these numbers, frame as "current operating threshold" or "compaction trigger" — never as "the chat fits 250k tokens" (which sounds like a model limit).
-- The 1M ceiling is the model; the 200k/250k/300k tiers are the discipline `brain_guard` enforces to keep cognitive coherence.
+**Rule 5 — Context numbers are ACCRUAL boundaries over a baseline, not absolute window thresholds.**
+- The seed agent uses Opus 4.8 with 1M-token context, but `brain_guard` triggers compaction on **self-accrued** context — tokens the session piles on over its post-clear baseline — well before the window fills: soft coaching + heartbeat debt from ~120k accrued, Read blocked at baseline + ~160k, Read+Edit+Write+MultiEdit blocked at baseline + ~180k (Bash is never blocked). Config knobs: `ACCRUAL_SOFT` / `ACCRUAL_READ_BLOCK` / `ACCRUAL_CRITICAL`.
+- Frame these as **accrual boundaries** measured over the session's baseline — never as a fraction of the window, and never as absolute totals like "the chat blocks at 250k." The boundaries are window-independent by construction, so the same numbers hold on a 1M Opus and a 200k model.
+- The 1M window is the model; the ~120k / ~160k / ~180k accrual boundaries are the discipline `brain_guard` enforces to keep cognitive coherence. Do NOT present the RETIRED absolute 200k / 250k / 300k tiers (the superseded `SOFT/READ/CRITICAL_THRESHOLD_TIER` knobs) as current. Canonical: `.claude/context/brain-memory.md` "Accrual-anchored boundaries."
 
 **Rule 6 — Series-aware references for pre-split essays.**
 - When an essay references another that may later split into a sub-series (B6, B7, B8 are candidates — Essay 5 has already split), the framing depends on what the ref promises.
