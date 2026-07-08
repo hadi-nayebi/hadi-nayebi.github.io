@@ -22,6 +22,18 @@ Now we open the cycle.
 
 This essay opens the system that does the structured work — the phasic system — and how it uses the CLAUDE.md layer to think ahead, gather experiential data, and process that data into the agent's longer-term memory forms.
 
+Before we take the cycle apart phase by phase, here is the whole thing in motion.
+
+<!-- RAW_HTML -->
+<figure style="margin: 2.25rem auto; text-align: center;">
+  <video class="seed-video" controls preload="none" poster="../../assets/video/seed-explainer-poster.jpg?v=20260707">
+    <source src="../../assets/video/seed-explainer.mp4?v=20260707" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <figcaption style="margin: 0.85rem auto 0; max-width: 760px; font-size: 0.9em; line-height: 1.55; color: rgba(255,255,255,0.75); font-style: italic;">Nine minutes, narrated by the seed in the first person &mdash; what it is, why the harness is yours while the model is rented, and one job walked start to finish through the OPEVC cycle.</figcaption>
+</figure>
+<!-- /RAW_HTML -->
+
 The seed agent's cognitive work happens in **phases**. A phase is a temporary mode of operation, scoped to one job, with a strictly defined purpose, a strictly defined set of allowed tools, and a strictly defined kind of output. One phase is active at a time. Phases progress in a fixed order. The agent cannot skip a phase, cannot blend two phases, cannot stay inside a phase indefinitely. *[ref: phase-order-fixed-by-map | .claude/plugins/phasic_system/scripts/phase.sh FORWARD_MAP/BACKWARD_MAP declarations | FORWARD_MAP and BACKWARD_MAP define the only allowed phase transitions as plain associative-array data; arbitrary jumps and blended states are absent from the schema and rejected downstream by the advance command.]*
 
 The current prototype runs the OPEVC cycle (currently five phases in the prototype: *observe, plan, execute, verify, and condense*). OPEVC is the acronym, the name the brain calls its own cycle. The final phase, CONDENSE, plays a different role from the others. The earlier phases do work *on the project*; CONDENSE does work *on the brain*. We call CONDENSE the cycle's cognitive organ for that reason. Still, it sits inside the OPEVC ring, not outside it. The architecture supports adding more. A custom seed could introduce a `research` phase between observe and plan, or split execute into `execute` and `integrate`. The current phase count is the prototype's answer; the discipline of compartmentalized phasing is the architecture. *[ref: opevc-ring-and-condense-organ | .claude/plugins/phasic_system/scripts/phase.sh FORWARD_MAP + root CLAUDE.md "Core Phases (OPEVC)" section | FORWARD_MAP encodes the ring `idle:observe observe:plan plan:execute plan:verify execute:verify verify:condense condense:idle` as plain data — the cycle is one config line, swappable per seed. The root CLAUDE.md "Core Phases (OPEVC)" section names CONDENSE as the "OPEVC organ" that does work on the brain rather than on the project.]*
