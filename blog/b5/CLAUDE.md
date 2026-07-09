@@ -115,60 +115,74 @@ These calls were made during B5 authoring and apply across the series:
 
 ---Ob---
 
-**Cycle-4 forward-ref (ref-tag job 1781248437814993567).** Next run re-activates this dir for the **b5 B-LINE remainder 05_3–05_5** (18 tags, pre-censused 6/7/5 — a MAP, re-confirm BY CONTENT) + the B-LINE-3F third-field sweep. Method + criteria: silo `../../../.claude/knowledge/ref-tag-review/CLAUDE.md` + `run-5-cycle-3-lessons.md`. b5 `.md` gitignored → main-session acts; no `[JOB-APPROVE-PLUGIN]` (published prose).
+**ACTIVE JOB — ref-tag review/fix pass, b5 series (job 1783554633377038363, cycle-1 OBSERVE).** Re-run of job 1783194174436079495 (2026-07-04, git `15d54851`), reset before PLAN/EXECUTE. Objective: review the 9 b5 essays' ref-tags against the live implementation, find FIVE real verified problems (root-cause families, not raw instances), then fix each family completely — root cause, then the whole family, then the fix — before moving to the next.
 
-## ACTIVE JOB — single-cycle ref-tag line-number fix, 05_5-interaction-summary (job 1782018675569981227, Stage 1)
+**Ref-tag ground truth (3-source confirmed):** `*[ref: slug|source-pointer|content-summary]*` in `.md` → `<sup class="ref-marker" title="ref: SLUG|POINTER|SUMMARY">` in the mirrored `.html`. Line numbers are BANNED in every field (middle AND third) — stable file/section/function pointers only. Census by occurrence (`grep -oP`), never by line. Mirror invariant `.md`↔`.html` — targeted hand-edit both, never blind-regen. A stale tag is REDUCED to stable useful content (slug + pointer + value-bearing summary), never emptied, never left stale.
 
-**Scope:** THIS dir (`blog/b5/`) activated for EXECUTE. Execute edits TWO files here:
-- `05_5-interaction-summary.md` (the `*[ref: slug | source-pointer | content-summary]*` inline tags) — root-repo-tracked (gitignored from website git)
-- `05_5-interaction-summary.html` (the `title="..."` attr on each `<sup class="ref-marker">`) — website-repo-tracked
+**3 families verified but NOT YET FIXED (inherited from the reset prior run — re-verify fresh, don't inherit a number blind):**
+1. **line-echo / B-LINE-3F** — 2 tags in `05_6-question-discipline`, third-field line-number echoes (middle field is clean; the drift is in the content-summary's own line-number mentions).
+2. **stale-number** — 4 members, each a DIFFERENT fact kind needing its own verification (not one uniform check): `05_2` test-counts, `05_3` two-tier-chain percentage, `05_4` call-site count, `05_7` CLAUDE.md file-counts.
+3. **missing-tag** — 1 gap in `05_3-brain-guard` around L37-38 (a paragraph that should carry a ref-tag and doesn't).
 
-One-off: ~5 line-number-pointer tags in this ONE essay. NOT a full B-LINE sweep; NOT the 3F third-field sweep.
+**Ruled CLEAN (do not re-litigate):** banned middle-field line numbers across `05_1`–`05_5`.
 
-**Ref-tag ground rules (from `.claude/context/identity.md` consolidated term + `knowledge/ref-tag-review/` silo):**
-- **Stable pointer shape:** MIDDLE field = `file.ext` (or `file + file2` joined by ` + `) **plus a section/function name** — e.g. `lock-manager.sh (Gmode-OR gate)`. **Line numbers BANNED** ("not worth maintaining").
-- **Reduction rule (B-LINE):** drop only the `:LINE` specifics → replace with a stable named anchor LIFTED FROM THE TAG'S OWN SUMMARY (which usually names the symbol), ground-truthed main-session. If summary names no symbol → READ the cited file, find nearest enclosing stable anchor (function / named block / `## heading` / quoted comment). If lines span an unnamed region → FILE-LEVEL + descriptive phrase. **NEVER empty, NEVER re-baked numbers, NEVER left stale.**
-- **Keep:** slug + value-bearing content-summary (≤120w). Drop ONLY drifted line-number specifics.
-- **Mirror invariant:** fix BOTH surfaces IDENTICALLY — `.md` `*[ref:...]*` AND `.html` `title="..."`. Do NOT blind-regenerate the HTML (risks clobbering hand-edits); TARGETED hand-edit of both. Prior precedent: root `905d51db` + website `fcbf5c4`.
-- **D2 ground-truth:** run the census + verify EVERY cited claim MAIN-SESSION (subagents fetch, I adjudicate — they fabricate citations). Census: `grep -nE '\*\[ref:[^]]*\.[A-Za-z0-9]+:[0-9]' ...05_5*.md` (line-number pointers in middle field). Census by OCCURRENCE (`grep -oP`), not line. Third-field `:digits` are OUT of scope (B-LINE-3F debt).
-- **No `[WAITING]`:** this is decide-and-fix maintenance, not a design fork.
+**Unchecked gap — likely home of a 4th/5th family:** renamed/retired-mechanism drift (a ref-tag pointing at a file/section/mechanism that has since moved or been retired) has only been checked in 6/9 essays. `05_1`, `05_3`, `05_5` still need this specific sweep; fold in a missing-tag check on the same 3 essays while reading them.
 
-### Inventory + ground-truthed reduction map (8 tags total; 5 carry line-number MIDDLE pointers)
+**Method:** direct Read of each essay `.md` + the implementation file it cites (no Grep/Glob in this harness for the main session — dispatch an observe-* subagent, e.g. `observe-codebase-explorer`, for anything search-shaped; Read directly for files whose path is already known).
 
-Tags WITHOUT line numbers (NO CHANGE): `interaction-summary-exists-to-keep` (L25), `without-interaction-summary-long-jobs` (L51), `summary-length-knobs` (L61).
+**Scope:** blog files + their ref-tags ONLY, b5 series first. Don't touch anything outside blog files/tags without asking. Ask when priorities or scope are unclear — precedent from the reset prior run: the user approved closing at 3 families for this identical task; if the fresh sweep still yields fewer than 5, surface that honestly rather than invent problems.
 
-**5 FIX TARGETS — middle source-pointer field only. Each new anchor ground-truthed MAIN-SESSION against the live file (the named section/array/arm verified to EXIST):**
+**Post-clear resume progress (2026-07-09) — 05_3 drift-check underway:**
 
-| Tag (.md line) | slug | OLD middle pointer (drop `:LINE`) | NEW stable pointer (verified) |
-|---|---|---|---|
-| L45 | `two-phase-enforcement-post-then-pre` | `token-counter.sh:120-134 + summary.sh:287-302 + summary-guard.sh:2,114-115 + config.conf:36` | `token-counter.sh (Token Computation section) + summary.sh (flip-needed arm) + summary-guard.sh (Job State Read section) + config.conf (TOKEN_THRESHOLD)` |
-| L47 | `enforcement-runs-in-two-phases` | `summary.sh:230-236,277 + summary-guard.sh:119-128` | `summary.sh (REQUIRED_SECTIONS array + submit summary_chain append) + summary-guard.sh (Command Whitelist section)` |
-| L57 | `summary-threshold-config` | `config.conf:36` | `config.conf (TOKEN_THRESHOLD)` |
-| L59 | `five-section-template-source` | `summary.sh:230-236` | `summary.sh (REQUIRED_SECTIONS array)` |
-| L63 | `append-only-chain-shape` | `summary.sh:277` | `summary.sh (submit arm — summary_chain append)` |
+- **Confirmed missing-tag gap** (family 3 member) directly via own Read of `05_3-brain-guard.md`: the paragraph starting "Two distinct events touch the file, and they should not be confused..." (phase-exit append vs full compaction event, ~L37-38) carries NO ref-tag while every surrounding paragraph does. Real gap, matches the prior cycle's finding.
+- **Confirmed a NEW instance of the already-known "05_3 two-tier-chain percentage" stale-number family member (family 2)** via own Read of `.claude/plugins/brain_guard/config.conf`: `PRIOR_SUMMARY_PCT=30` (default; range 20-50). But `05_3`'s `two-tier-chain` ref-tag content-summary claims *"The Prior Summary is ~20% of θ_lc"* — drift between the essay's stated ~20% and the code's actual default of 30%. Dispatched `observe-codebase-explorer` (agent `afec287fadacf4a71`) to pull the exact canonical wording from `.claude/context/brain-memory.md` "Two-tier chain / Prior Summary" section before deciding the correct fix value.
+- **Spot-checked `context-gate.sh` header comment** — CLEAN. Its "GRADUATED HARD-GATE, ACCRUAL-ANCHORED" block matches the essay's `tier-positions-are-tunable` ref-tag content-summary near-verbatim (accrual<160k soft / 160k-179k Read-blocked / ≥180k Read+Edit+Write+MultiEdit blocked, Bash never blocked).
+- **Spot-checked `config.conf`'s accrual + θ_lc knobs** — CLEAN otherwise: `ACCRUAL_SOFT=120000` / `ACCRUAL_READ_BLOCK=160000` / `ACCRUAL_CRITICAL=180000` all match the essay's "~120k/~160k/~180k" claims; `THETA_LC=2000` / `THETA_LC_COACH_PCT=70` / `THETA_LC_BLOCK_PCT=85` / `THETA_LC_SEAL_PCT=80` all match the essay's "~2,000 words... ~70%... ~85%" claims.
+- **Next:** await the dispatched subagent's report on the canonical Prior Summary percentage, then decide whether to fix `05_3`'s ref-tag to the correct number (or flag as a code-vs-glossary conflict if they disagree too). Then continue the 05_1/05_3/05_5 renamed-mechanism-drift + missing-tag sweep on the remaining cited files (`context-sensor.sh`, `self-compact.sh`, `interaction_summary/CLAUDE.md`, `opevc-metacog.md`) in small batches. Once 05_3 is settled, decide the honest family count (3, or 4/5 if new families surface) and move toward the PLAN commit.
 
-(All paths keep their full `.claude/plugins/interaction_summary/...` prefix as in the source; only the `:LINE` token is replaced by the parenthetical anchor.)
+**NEW SESSION RESTART (job 1783561630806597472, post-/clear, same task re-bootstrapped from a fresh user prompt with identical wording/intent).** This job is a continuation of the above in-progress research, not a fresh investigation — the `blog/b5/CLAUDE.md` file survived the `/clear` even though the prior job id (1783554633377038363) did not carry forward as focused. Treating everything above as OBSERVE.recall input; will re-verify per its own instruction ("don't inherit a number blind") rather than redo from scratch.
 
-**Ground-truth evidence (read main-session):**
-- `token-counter.sh` L119 `# ### Token Computation` → L124 `unsummarized_count=...` → L134 threshold check. ✓
-- `config.conf` L36 `TOKEN_THRESHOLD="${TOKEN_THRESHOLD:-500}"` (Section 2 knob). ✓
-- `summary.sh` L230-236 `REQUIRED_SECTIONS=(...)` array; L277 `.summary_chain += [{...}]` inside the `submit` arm; L287 `# #### flip-needed` → L288 `flip-needed)` case arm. ✓
-- `summary-guard.sh` L109 `# ### Job State Read` (reads `summary_needed`, L114-116); L118 `# ### Command Whitelist` → L119-129 (allow `summary.sh submit` + read-only `job.sh focused|show|list`). ✓
+**Cross-validation from this cycle's dispatched agents (independent confirmation, not a re-derivation):**
+- `observe-context-anchorer` confirms `ref-tag` + `ref-tag review job` are `[consolidated]` at `.claude/context/identity.md` L116-135 — matches the ground-truth already recorded above verbatim (slug|source-pointer|content-summary, no line numbers ever, drift = essay-moved OR implementation-moved OR retired-mechanism OR missing-tag-where-warranted). No `[DRAFT-TERM]` needed.
+- `observe-codebase-explorer` independently mapped the 9 b5 files + the ref-tag markup shape (`*[ref: slug | source-pointer | content-summary]*` → `<sup class="ref-marker" title="ref: SLUG|POINTER|SUMMARY">`) — matches this file's recorded ground truth exactly. No new drift signal from this pass; it was a structure-mapping dispatch, not a content audit.
+- `observe-experience-recaller` dispatched, pending return — expected to surface any OTHER past job touching ref-tags/b5 beyond the two job ids already known here (1783194174436079495 original, 1783554633377038363 reset re-run).
 
-**KEEP the content-summary (3rd field) verbatim** — only the MIDDLE field changes. NOTE: 3rd-field summaries of L45/L47/L63 still contain `L287-302`/`L114`/`L115`/`:2`/`:36`/`line 277`/`:119-128` line refs — these are **B-LINE-3F debt, OUT of scope** this one-off job, already tracked in `knowledge/ref-tag-review/backlog-status.md` (do NOT touch, do NOT create a duplicate job).
+**Plan for the rest of this OBSERVE cycle:** (1) re-verify the 3 documented families fresh via own Read+grep (line-echo in 05_6, stale-number x4 across 05_2/05_3/05_4/05_7, missing-tag in 05_3) — do NOT inherit counts blind; (2) resolve the in-flight 05_3 two-tier-chain percentage check (essay says ~20%, `config.conf` says `PRIOR_SUMMARY_PCT=30` — needs the canonical glossary wording to know which is drift); (3) finish the renamed/retired-mechanism-drift + missing-tag sweep on 05_1/05_3/05_5 (only 6/9 essays swept so far) to see if a 4th/5th family surfaces, since the user wants 5 verified families; (4) if 5 aren't found honestly, surface that rather than inventing problems (explicit precedent: user approved closing at 3 for the identical task in a prior run).
 
-**MIRROR (.html):** `05_5-interaction-summary.html` `title="..."` lines confirmed matching the `.md` exactly for all 8 tags (.html L132/141/143/147/153/155/157/159). The 5 fixed `title=` attrs get the SAME new pointer string (targeted hand-edit, no blind regen).
+**`observe-experience-recaller` returned — 3 candidate drift sources for family 4/5 (highest-probability targets for the mechanism-drift sweep):**
+1. Point system + multiplier fully RETIRED 2026-06-10/2026-06-11, replaced by the count-based min-max gate + unconditional three-family exit gate; `METACOG_GATE_ENABLED` flag deleted. Any ref-tag still describing points/multiplier/sentinel-lock language is stale.
+2. Voice-ID renames to `observe.<component>.<slug>` scoping pattern, started in `phase_observe`, planned for other phase plugins. Any ref-tag citing an old bare voice ID may be stale.
+3. Session archives relocated from legacy `.claude/knowledge/session/` to the run-aware `.claude/jobs/<id>/run-<r>/session-log-<c>.md` path. Any ref-tag still citing the legacy path is stale.
 
-**OBSERVE seal (post-compact resume).** Cycle-1 custom gates closed this session: job NAMED (`ref-tag line-number fix 05_5-interaction-summary`) + objective EXPANDED to the 300-500w working form (both were empty after the prompt-hook bootstrap — the sealed compaction Forward State had missed them). Inventory + ground-truthed reduction map + Ve checklist + marked notes already banked (prior session). Scope FROZEN for PLAN: 5 MIDDLE-field line-number tags, decide-and-fix, no `[WAITING]`. Ready to advance OBSERVE→PLAN.
+Reusable methodology named by the recaller: `hadi-nayebi.github.io/.claude/agents/blog-ref-tag-auditor.md` v0.5 (9-dim R1-R9 audit) and `.claude/knowledge/opevc/shadow-cross-reference-validation.md` (phantom-pointer grep-and-classify method) — both directly usable for the mechanism-drift sweep instead of a bespoke read-and-compare.
 
-### Scope-declaration pointer (working memory lives in the tracked job-dir file)
+**Verification-methodology decision:** rather than dispatch the full 9-dim `blog-ref-tag-auditor` (built for the architect's Layer-2 publishing-gate workflow, heavier than needed here), this job will do direct Read-and-compare per essay/citation pair — matches the "Method" note above (no Grep/Glob for the main session; dispatch `observe-codebase-explorer` only for genuinely search-shaped lookups; Read directly once a target file is named).
 
-The STAGING-BLOCKER + JOB-OWNERSHIP-fork prose that sat here was **RESOLVED by the user (2026-06-21): NOT a seed bug — the "scope block" was a misread.** The altered-list is edit-based (data.json), gitignore-independent, so editing this gitignored file DOES declare `blog/b5/` editable for EXECUTE. The only real constraint was that `observe-commit` needs a *committable* CLAUDE.md update — satisfied by putting working memory in the **tracked** job-dir file.
+**NEW JOB (2026-07-08), same task, THIRD continuation — job 1783565540231629404.** After a `/clear`, this job was bootstrapped fresh from a fresh user prompt with the same wording/intent as the two prior job IDs recorded above (1783194174436079495 original; 1783554633377038363 reset re-run; 1783561630806597472 the prior post-clear restart). Treating ALL of the above OBSERVE content as OBSERVE.recall input per its own instruction — continuing the in-flight investigation, not restarting. Picking up exactly at the "Next" pointer left by the prior session: resolve the 05_3 two-tier-chain percentage (essay ~20% vs `config.conf` `PRIOR_SUMMARY_PCT=30`) using the dispatched `observe-codebase-explorer` agent's canonical-wording finding (agent id `afec287fadacf4a71` from the prior session — its report did not survive the clear, so this will be re-verified fresh via own Read of `.claude/context/brain-memory.md`), then finish the 05_1/05_3/05_5 renamed-mechanism-drift + missing-tag sweep, then settle the final family count (3 confirmed + line on whether a 4th/5th surfaces) before moving toward PLAN.
 
-- **Committable working memory + canonical marked notes:** `.claude/jobs/1782018675569981227/CLAUDE.md` (root-tracked). This file is **scope-declaration ONLY** — no working memory, no marked notes (they were duplicated here and are now owned solely by the job-dir file).
-- **Both `05_5-interaction-summary.{md,html}` are WEBSITE-repo-tracked** (one dir, one activation). EXECUTE's multi-git commit groups both to the website git; the job-dir CLAUDE.md commits to root. All repos end clean.
-- **Finish HERE** — single-cycle Stage-1, no gmode, no recreate-the-repeatable-owner now (separate vehicle, tracked as a `[PENDING-JOB]` in the job-dir file).
+**Cross-session memory recall — `feedback_verify_100_percent_before_advance.md`:** the user's exhaustion-before-advance discipline (verify ALL paths, investigate every anomaly rather than deferring, advance only on 100%) applies to this job's VERIFY phase later: once fixes land, every family's grep acceptance check must be run to a confirmed zero, and any anomaly found along the way gets investigated now, not waved through as "good enough for 3/5 families."
 
+**CRITICAL cross-session memory recall — `feedback_family_vs_instance_counting.md` (directly governs this job's counting model, confirmed by the user on THIS EXACT job's original run 2026-07-04):** "find FIVE real problems" means **5 distinct root-cause FAMILIES, not 5 individually-verified instances**. The 4 stale-number members (05_2/05_3/05_4/05_7) collapse into ONE family slot (family 2), not four — they get fixed together in one pass anyway. **Current honest family tally toward N=5: family 1 (line-echo, 05_6) + family 2 (stale-number, 4 members) + family 3 (missing-tag, 05_3) = 3 families confirmed.** If the renamed/retired-mechanism-drift sweep (05_1/05_3/05_5, in progress) finds real drift, that is family 4 (regardless of instance count within it) — still ONE slot toward 5. A genuine 5th family type is still needed beyond that, or the honest count is reported to the user per the memory's explicit precedent: "if the true family count comes up short of N after genuinely exhausting the plausible drift types, report the real count honestly rather than inventing problems to hit the target number."
+
+**Cross-session memory recall — `feedback_d2_extends_across_attention_surfaces.md`:** subagent quantitative claims (grep-counts, tag-counts, drift-instance-counts) are unreliable and MUST be main-session spot-checked (`grep -c` / `find`) before being treated as ground truth. Directly applicable here: when the dispatched `observe-codebase-explorer` sweep of 05_1/05_3/05_5 returns, every claimed drift instance gets a main-session Read-and-confirm against the actual cited file before it counts toward a family — this job's own ground rule ("Verify each one against the actual files before counting it — no guesses") is this exact discipline restated by the user for this job specifically.
+
+**Cross-session memory recall — `feedback_shallow_verify_antipattern.md`:** trust live-observed reality over self-reports/return-codes. Applies to this job's acceptance checks: the user wants deterministic greps they can run themselves — the check itself (not a subagent's "fixed!" claim) is the truth-source. When fixing each family, the fix is done only when the grep the user will run actually returns zero, verified by own-eyes grep, not assumed from the Edit having "succeeded."
+
+**Cross-session memory recall — `feedback_cycle_close_requires_user_approval.md`:** applies primarily to multi-cycle jobs; this job reads as Stage-1 single-cycle collaborative ("done together," "one-time pass," talk later about repeating) per the user's own framing, so the lighter single-cycle `[JOB-COMPLETE]` approval path applies rather than the multi-cycle per-cycle-close gate. Still: technical pass (deterministic greps at zero) + workflow pass (explicit user sign-off on each family's fix before calling the job complete) are BOTH required — never self-approve on grep-zero alone without surfacing the fix to the user first, consistent with this job's own ground rule to ask when priorities/scope are unclear.
+
+**Stage classification (cycle-1 PLAN decision, pre-noted here for continuity):** likely Stage 1 (single-cycle collaborative) given explicit user framing "This is a one-time pass for now, done together... if it proves useful we can talk later about making it a repeating job" — a textbook Stage-1-then-maybe-promote-to-Stage-2 pattern. Final call belongs to cycle-1 PLAN (informed by `plan-roster`), not pre-decided here.
+
+**05_3 two-tier-chain percentage — RESOLVED (2026-07-09, own Read of `.claude/CLAUDE.md` + `.claude/context/brain-memory.md`, confirming the pre-clear dispatch's target fact fresh):** the canonical wording (root `.claude/CLAUDE.md` "brain_guard phasic-compaction upgrade" section) says the Prior Summary is "sized at a tunable 20-50% of θ_lc (`PRIOR_SUMMARY_PCT` knob)" — and `.claude/plugins/brain_guard/config.conf` sets `PRIOR_SUMMARY_PCT=30` as the DEFAULT. `05_3`'s ref-tag content-summary states the Prior Summary is "~20% of θ_lc" as if that were the headline figure — but ~20% is only the LOW END of the tunable range; the actual shipped default is 30%. This IS drift: fix `05_3`'s ref-tag to state the ~30% default (with the 20-50% tunable range as a parenthetical), not the low-end 20% alone. Confirmed real, joins family 2 (stale-number) as one more member alongside the test-count/call-site/file-count members already logged above — still ONE family slot, not a new family.
+
+**FINAL SETTLED (2026-07-09, post-clear resume) — honest family count closes at 3, user-confirmed via chat.** The renamed/retired-mechanism-drift sweep is now CLEAN on all 9 essays (05_1/05_3/05_5 — the last 3 unchecked — returned clean this session and the prior one); the banned-line-number check on 05_6/05_8/05_9 (the last unchecked essays for that specific check) also returned ZERO violations (agent `ae63fa994d8b6030f`, re-dispatched post-clear after the pre-clear agent hit the same compaction boundary without a result). No 4th or 5th family surfaced despite exhausting every planned angle (banned line numbers × 9/9 essays, retired-mechanism drift × 9/9 essays, missing-tag spot-checks). Per the user's own precedent on this exact job (`feedback_family_vs_instance_counting.md`, confirmed 2026-07-04) and their explicit 2026-07-09 chat instruction — "close at whatever's HONEST... if it is short of 5, surface the shortfall... and STOP hunting" — **the count is honestly 3, confirmed by the user directly in chat (post a rejected AskUserQuestion popup), and OBSERVE is done. Do NOT split any family to manufacture a 5th.** The 3 families, final:
+
+1. **line-echo (`05_6`)** — 3 ref-tags (not 2 as previously inherited/logged — count corrected via own Read) carry third-field line-number echoes in their content-summary (middle/source-pointer field stays clean in all 3): L29 "line 135" (batch-cascade ref-tag), L35 "capture.sh:85-131" (per-prefix-shape-gates ref-tag), L41 "gmode-gate.sh:54-63" (waiting-current-vs-future-shape ref-tag). **Fix:** strip the line-number echo from each of the 3 content-summaries, leaving the stable file/function pointer only.
+2. **stale-number (4 members, one family)** — `05_2` test-counts, `05_3` two-tier-chain percentage (resolved above, ~20%→~30% default), `05_4` call-site count, `05_7` CLAUDE.md file-counts — 4 distinct facts across 3 essays, fixed together in one pass. **Fix:** refresh each of the 4 ref-tag values to a fresh count/fact at fix-time; `05_3` specifically restates the ~30% default with the 20-50% tunable range as a parenthetical.
+3. **missing-tag (`05_3`)** — the "Two distinct events touch the file..." paragraph (~L37-38) carries no ref-tag while every surrounding paragraph does. **Fix:** add a new ref-tag to that paragraph citing a real file/section with a value-bearing content-summary.
+
+Next: this OBSERVE cycle is ready to advance to PLAN — set fresh `---Ve---` deterministic-grep criteria for these 3 families (replacing the stale `05_5`-job checklist below, which belongs to a different completed job), then run the sanctioned observe→plan compaction boundary (rolling `--summary` + fresh `metacog-reflect` + `observe-commit.sh --force`).
+
+[PENDING-JOB]{observe-guard's Bash whitelist (job.sh show/focused, phase.sh, observe.sh, summary.sh, lib/marked-note append-note) has no entry for plugins/lib/comms/comms.sh ask-card, so a phase_observe seed cannot deliver an AskUserQuestion via the Telegram card path even when a PreToolUse hook says current_channel=telegram and a terminal question will sit unseen. Either whitelist comms.sh ask-card in every phase guard, or make AskUserQuestion itself route through comms when the channel hint says telegram, so the two systems stop contradicting each other.}
 ---Pl---
 
 ## PLAN scope-declaration — ref-tag line-number sweep (job 1782320396187605322, cycle 1)
@@ -193,13 +207,25 @@ the B5 essays — middle pointer AND any 3rd-field echo — and replace with the
 
 ---Ve---
 
-### Verify checklist — ref-tag line-number fix, 05_5 (job 1782018675569981227)
+### Verify checklist — ref-tag review/fix, b5 series (job 1783565540231629404) — 3 honest families
 
-- [ ] Census re-run MAIN-SESSION: `grep -onE '\*\[ref:[^]]*\.[A-Za-z0-9]+:[0-9]' 05_5-interaction-summary.md` returns ZERO line-number pointers (was ~5)
-- [ ] Every fixed tag's NEW middle-field pointer is stable (file + section/function), NO `:LINE` / `L<n>` token
-- [ ] Each fixed tag still carries its slug + a value-bearing content-summary (not emptied, not a `pending` shell)
-- [ ] Every NEW pointer ground-truthed MAIN-SESSION: the cited file exists AND the named section/function/anchor actually exists in it
-- [ ] Mirror invariant: each fixed `.md` tag's new pointer appears IDENTICALLY in the `.html` `title="..."` — grep ≥1 fixed tag's title in the `.html` and confirm it matches the `.md`
-- [ ] No collateral edits: only the targeted line-number tags changed (git diff shows only intended pointer changes; no blind HTML regen)
-- [ ] Third-field `:digits` (B-LINE-3F) left untouched — out of scope this job
-- [ ] Both repos clean after commit (root for `.md`, website for `.html`; multi-git execute-commit grouped each file)
+**Family 1 — line-echo (`05_6-question-discipline`, 3 members: L29/L35/L41 third-field line-number echoes)**
+- [ ] `grep -noP '\*\[ref:[^]]*\]\*' blog/b5/05_6-question-discipline.md | grep -E '(line [0-9]+|[A-Za-z0-9_.-]+\.(sh|py|md):[0-9]+(-[0-9]+)?)'` returns ZERO matches (was 3)
+- [ ] Each fixed tag's middle field (source-pointer) stays stable/unchanged — the drift was in the content-summary only, not the pointer
+- [ ] Mirror invariant: the 3 fixed tags' `title="ref: ..."` in `05_6-question-discipline.html` match the `.md` content-summary exactly (no line numbers there either)
+
+**Family 2 — stale-number (4 distinct facts across 3 essays, ONE family, fixed together)**
+- [ ] `05_2-plugin-integrity` test-count ref-tag value matches a fresh count of the actual cited plugin's tests at fix-time
+- [ ] `05_3-brain-guard` two-tier-chain ref-tag: `grep -c "20%" blog/b5/05_3-brain-guard.md` == 0 AND the essay states the ~30% default (20-50% tunable range as parenthetical) — matches `.claude/plugins/brain_guard/config.conf` `PRIOR_SUMMARY_PCT=30`
+- [ ] `05_4-job-core` call-site count ref-tag value matches a fresh grep of the actual call sites in the cited file at fix-time
+- [ ] `05_7-claude-md-hierarchy` CLAUDE.md file-count ref-tag value matches a fresh count of the actual files at fix-time
+- [ ] All 4 fixed tags still carry slug + a value-bearing content-summary (never an empty `pending` shell)
+
+**Family 3 — missing-tag (`05_3-brain-guard`, ~L37-38)**
+- [ ] The "Two distinct events touch the file..." paragraph now carries a ref-tag: grep for `\*\[ref:` on that paragraph's line range returns ≥1 match (was 0)
+- [ ] The new tag's content-summary is genuinely value-bearing (not a stub) and cites a real file/section that exists
+
+**Global**
+- [ ] No collateral edits: `git diff` on the 3 touched essays (`05_3`, `05_4`, `05_6`, `05_7`, `05_2` — 5 files) shows ONLY the targeted family fixes, no blind HTML regen
+- [ ] Both repos clean after commit (root for `.md`, website for `.html`; multi-git execute-commit groups each file to its owning repo)
+- [ ] Technical pass (all greps above return the expected zero/match) AND workflow pass (user explicitly signs off on each family's fix before `[JOB-COMPLETE]`) — both required per this job's Stage-1 collaborative framing
