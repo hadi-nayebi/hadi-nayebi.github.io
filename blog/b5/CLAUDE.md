@@ -185,23 +185,131 @@ Next: this OBSERVE cycle is ready to advance to PLAN — set fresh `---Ve---` de
 [PENDING-JOB]{observe-guard's Bash whitelist (job.sh show/focused, phase.sh, observe.sh, summary.sh, lib/marked-note append-note) has no entry for plugins/lib/comms/comms.sh ask-card, so a phase_observe seed cannot deliver an AskUserQuestion via the Telegram card path even when a PreToolUse hook says current_channel=telegram and a terminal question will sit unseen. Either whitelist comms.sh ask-card in every phase guard, or make AskUserQuestion itself route through comms when the channel hint says telegram, so the two systems stop contradicting each other.}
 ---Pl---
 
-## PLAN scope-declaration — ref-tag line-number sweep (job 1782320396187605322, cycle 1)
+## PLAN — ref-tag review/fix pass, b5 series (job 1783565540231629404, cycle 1)
 
-**This dir (`blog/b5/`) is activated for EXECUTE.** Strip every line number from every ref-tag in
-the B5 essays — middle pointer AND any 3rd-field echo — and replace with the STABLE anchor: filename
-+ the cited file's own heading/section/function NAME + distinctive keywords. Edit BOTH `.md`
-(`*[ref:…]*`) AND `.html` (`title="…"`) — mirror invariant, targeted hand-edit, never blind regen.
+**Superseding note:** the block previously here (a site-wide line-number-ban sweep, job
+`1782320396187605322`) belongs to a different, unrelated completed job. It is stale working-memory
+drift carried across `/clear` boundaries — a CONDENSE cleanup item, not this job's plan. Replaced
+below with the real plan for THIS job's 3 confirmed families (see `---Ob---` "FINAL SETTLED").
 
-- **Per-file targets (grep -c map; EXACT tag count re-greped at fix-time): b5 = 16** —
-  `05_4`:8 · `05_5`:5 · `05_2`:2 · `05_7`:1.
-- One `execute-file-editor` dispatch per essay file (both `.md` + `.html` in the same dispatch).
-- Commits land in the website git (multi-git aware). NOTE: b5 `.md` is gitignored from the website
-  git but root-tracked; execute-commit groups each file to its owning repo.
-- Stale "ACTIVE JOB — 05_5 line-number fix (job 1782018675569981227)" block above (L120) is
-  working-memory drift from a completed/pruned job → a CONDENSE cleanup note, NOT a blog-body fix.
-- **Re-registered this PLAN pass (post-clear resume):** the altered list reset to the job dir at the
-  `/clear` boundary, so this dir is re-touched HERE to re-declare `blog/b5/` editable for EXECUTE;
-  the per-file map stands and EXECUTE re-greps each `.md` at fix-time (census MAP, not ground truth).
+**Scope-declaration — `blog/b5/` is activated for EXECUTE.** Touches exactly 5 essay files, each as
+a `.md` + mirrored `.html` pair (mirror invariant — targeted hand-edit both, never blind regen):
+`05_2-plugin-integrity`, `05_3-brain-guard`, `05_4-job-core`, `05_6-question-discipline`,
+`05_7-claude-md-hierarchy`. No other blog file or non-blog file is in scope; anything else needs to
+be asked first per this job's own ground rule.
+
+**Fix order — one family fully closed (fix → deterministic verify → user sign-off) before the next:**
+
+### Step E1 — Family 1: line-echo (`05_6-question-discipline`)
+- Dispatch one `execute-file-editor` on `05_6-question-discipline.md` + `.html` together.
+- Fix the 3 ref-tags whose **content-summary** (3rd field) echoes a line number — source-pointer
+  (2nd field) stays untouched, it was already clean: L29 "line 135" (batch-cascade ref-tag), L35
+  "capture.sh:85-131" (per-prefix-shape-gates ref-tag), L41 "gmode-gate.sh:54-63"
+  (waiting-current-vs-future-shape ref-tag).
+- Strip the line-number echo from each content-summary, leaving the stable file/function-name
+  pointer + the value-bearing claim only — no numbers of any kind reintroduced.
+- Verify: `---Ve---` Family 1 checklist (3 checks) must all pass before moving to E2.
+
+### Step E2 — Family 3: missing-tag (`05_3-brain-guard`)
+- Dispatch one `execute-file-editor` on `05_3-brain-guard.md` + `.html`.
+- The paragraph starting "Two distinct events touch the file, and they should not be
+  confused..." (~L37-38, phase-exit footer-append vs full-compaction event) carries no ref-tag
+  while every surrounding paragraph does.
+- EXECUTE reads the paragraph + the implementation it describes (candidates: append-section vs
+  full-compact code paths in `.claude/plugins/brain_guard/scripts/compaction-io.sh` and
+  `self-compact.sh`, or the canonical distinction in `.claude/context/brain-memory.md`) and adds a
+  new ref-tag (slug + stable file/section pointer + value-bearing content-summary, no line numbers)
+  in both `.md` and `.html`.
+- **Citation-target steer (risk mitigation, plan-risk-assessor R1):** strongest candidate is
+  `.claude/context/brain-memory.md`'s "Two-tier chain / Prior Summary" section (or the sibling
+  section naming the phase-exit-append vs full-compaction distinction directly) — it is the
+  canonical, most-stable home for this exact distinction. EXECUTE confirms the section still exists
+  under that name before citing it; if renamed/moved, fall back to whichever of the two code files
+  actually implements the described behavior at fix-time (never cite a candidate without reading it
+  first).
+- The new tag's content-summary must actually EXPLAIN the paragraph's claimed distinction (phase-exit
+  footer-append vs full-compaction event) — not just point at a real file (risk mitigation,
+  plan-risk-assessor R5). A citation that exists but doesn't teach the distinction is an incomplete
+  fix.
+- Verify: `---Ve---` Family 3 checklist before moving to E3.
+
+### Step E3 — Family 2: stale-number (4 members, 3 files, ONE family, fixed together)
+- 4 dispatches, one per file (each `.md` + `.html` together):
+  1. `05_2-plugin-integrity` — refresh the test-count ref-tag value to a fresh count of the actual
+     cited plugin's tests at fix-time.
+  2. `05_3-brain-guard` — the two-tier-chain ref-tag: replace the "~20%" framing with the ~30%
+     default (20-50% tunable range as parenthetical), matching
+     `.claude/plugins/brain_guard/config.conf` `PRIOR_SUMMARY_PCT=30`. (Separate dispatch from E2 —
+     different concern, same file; keeps each family's diff separable for review.)
+  3. `05_4-job-core` — refresh the call-site count ref-tag to a fresh grep of the actual call sites
+     in the cited file at fix-time.
+  4. `05_7-claude-md-hierarchy` — refresh the CLAUDE.md file-count ref-tag to a fresh count of the
+     actual files at fix-time.
+- All 4 fixed tags keep slug + a value-bearing content-summary — never an empty `pending` shell.
+- Verify: `---Ve---` Family 2 checklist (all 5 sub-checks) + the Global checklist.
+- **Freshness method per member (closes premortem F2 — "matches a fresh count" was unverifiable
+  without a stated method):** `05_2` test-count → `grep -c "^\s*\(it(\|test(\|def test_\)"`-style
+  count (or the plugin's actual test-runner summary line) against the cited plugin's test dir at
+  fix-time; `05_4` call-site count → `grep -c` for the cited function/pattern across the actual
+  call sites in the cited file; `05_7` file-count → `find`/`ls` count of the actual CLAUDE.md files
+  the tag claims to enumerate. Each fix records the exact command run + its result inline in the
+  execution notes so VERIFY can re-run the same command and confirm the number still matches — a
+  count that happens to be UNCHANGED from the stale value is still a valid fix outcome as long as
+  it is the result of a fresh count, not an unexamined carry-forward.
+- **Pre-count source-pointer check (risk mitigation, plan-risk-assessor R3):** before running any
+  freshness command, EXECUTE confirms the ref-tag's EXISTING source-pointer (the file/section/dir it
+  currently cites) still exists and is the right target — a fresh count against a moved/renamed
+  target is a wrong count, not a fix. If the source-pointer itself is stale, do not blindly count
+  against the wrong file — note it in the execution notes and pick the correct current location
+  before counting.
+- **Criteria check for `05_7` file-count (risk mitigation, plan-risk-assessor R4):** the file-count
+  fix is not just a number swap — confirm the content-summary's stated ENUMERATION CRITERIA (which
+  files/dirs it claims to count) is still accurate. If the criteria itself has drifted (e.g. new
+  plugin dirs added, or the described scope no longer matches how CLAUDE.md files are actually
+  organized), update the criteria wording alongside the count, not the count alone.
+
+**Explicit non-scope guards (from this cycle's premortem review):**
+- **Do NOT re-run `tools/generate_blog_html.py` for these 5 essays during this job.** All 3 families
+  are targeted hand-edits to both `.md` and `.html`; a generator regen risks silently reverting the
+  hand-edited `.html` (premortem F4). If a generator run is ever needed later, hand-edits must be
+  re-applied after.
+- **Cross-series drift (b6/b7/b8 essays citing the same 4 stale-number facts) is OUT OF SCOPE for
+  this job** (premortem F8) — this job's declared scope is "blog files + their ref-tags ONLY, b5
+  series first" per the original OBSERVE ground rule. **Enforced, not just advisory (risk
+  mitigation, plan-risk-assessor R6):** if EXECUTE notices a matching stale value (same family, same
+  drift kind) cited in ANY essay outside `blog/b5/`, it MUST NOT fix it in this task — it records a
+  `[PENDING-JOB]` marked note in the execution notes naming the essay + the drift, for a follow-up
+  cross-series review job. Never silently fix it, never silently skip noting it.
+- **Family 3's missing-tag precondition (premortem F5) is ALREADY CONFIRMED, not an open risk:**
+  OBSERVE directly Read `05_3-brain-guard.md` and confirmed the "Two distinct events..." paragraph
+  exists at ~L37-38 with no ref-tag while every surrounding paragraph has one (see `---Ob---`
+  "Confirmed missing-tag gap"). EXECUTE does not need to re-verify this precondition, only find the
+  best citation for the new tag's content.
+
+**Commits:** land per-family (one commit per E-step, never bundled) so each family's diff is
+independently reviewable. Root git tracks `.md` (b5 `.md` is gitignored from the website git but
+root-tracked); website git tracks `.html`. `execute-commit` is multi-git aware — pass both files,
+it groups each to its owning repo.
+
+**Workflow gate (Stage-1 collaborative):** per this job's own ground rule ("ask when priorities or
+scope are unclear... I'd rather answer questions than undo work") and
+`feedback_cycle_close_requires_user_approval.md`, get the user's explicit sign-off on each family's
+fix before moving to the next family AND before `[JOB-COMPLETE]` — technical pass (greps at zero)
+alone never suffices.
+
+**Three low-stakes decisions — resolved autonomously (2026-07-09), per the user's explicit standing
+instruction on this exact job to decide fix-order/grouping/implementation-path choices without
+asking, and to reserve questions for genuine forks only:**
+1. **Fix order + commit granularity — DECIDED: proceed with E1→E2→E3 as drafted above** (one commit
+   per family, `05_3` touched in two separate commits across E2/E3 — keeps each family's diff
+   independently reviewable, no combining).
+2. **Family 3's new ref-tag citation — DECIDED: EXECUTE investigates the real implementation**
+   (`compaction-io.sh` append-section vs `self-compact.sh` full-compact, or the canonical
+   `brain-memory.md` distinction) and picks the most accurate stable pointer at fix-time — a
+   citation-accuracy call, not a design fork.
+3. **Sign-off cadence — DECIDED: per-family check-in** (3 separate sign-offs, each before the next
+   family starts) — this is already the job's own standing ground rule (see "Workflow gate" above:
+   "before moving to the next family AND before `[JOB-COMPLETE]`"), not actually an open question.
 
 ---Ex---
 
@@ -213,6 +321,13 @@ the B5 essays — middle pointer AND any 3rd-field echo — and replace with the
 - [ ] `grep -noP '\*\[ref:[^]]*\]\*' blog/b5/05_6-question-discipline.md | grep -E '(line [0-9]+|[A-Za-z0-9_.-]+\.(sh|py|md):[0-9]+(-[0-9]+)?)'` returns ZERO matches (was 3)
 - [ ] Each fixed tag's middle field (source-pointer) stays stable/unchanged — the drift was in the content-summary only, not the pointer
 - [ ] Mirror invariant: the 3 fixed tags' `title="ref: ..."` in `05_6-question-discipline.html` match the `.md` content-summary exactly (no line numbers there either)
+- [ ] **Precision check (premortem F6 + plan-risk-assessor R2 — MANDATORY, not just the grep above):**
+  the whole-tag grep checks BOTH fields at once, so a zero result alone is not sufficient proof —
+  for EACH of the 3 fixed tags, run `grep -A2 -B2 '<the specific line-number text that was there>'
+  blog/b5/05_6-question-discipline.md` (e.g. `grep -A2 -B2 'line 135'` for the L29 tag) and confirm
+  ZERO matches ANYWHERE in the file — this proves the line-number text was actually REMOVED, not
+  moved from field 3 into field 2 (which would make the whole-tag grep pass while the drift
+  persists in a different field)
 
 **Family 2 — stale-number (4 distinct facts across 3 essays, ONE family, fixed together)**
 - [ ] `05_2-plugin-integrity` test-count ref-tag value matches a fresh count of the actual cited plugin's tests at fix-time
@@ -220,12 +335,24 @@ the B5 essays — middle pointer AND any 3rd-field echo — and replace with the
 - [ ] `05_4-job-core` call-site count ref-tag value matches a fresh grep of the actual call sites in the cited file at fix-time
 - [ ] `05_7-claude-md-hierarchy` CLAUDE.md file-count ref-tag value matches a fresh count of the actual files at fix-time
 - [ ] All 4 fixed tags still carry slug + a value-bearing content-summary (never an empty `pending` shell)
+- [ ] **Source-pointer sanity (plan-risk-assessor R3):** for each of the 4 members, the ref-tag's
+  cited file/section/dir was confirmed to exist BEFORE the fresh count was taken (not counted against
+  a moved/renamed target) — check the execution notes record this confirmation, not just the count
+- [ ] **`05_7` criteria check (plan-risk-assessor R4):** the file-count tag's stated enumeration
+  criteria (which files/dirs it claims to count) was verified still accurate, not just the number
 
 **Family 3 — missing-tag (`05_3-brain-guard`, ~L37-38)**
 - [ ] The "Two distinct events touch the file..." paragraph now carries a ref-tag: grep for `\*\[ref:` on that paragraph's line range returns ≥1 match (was 0)
 - [ ] The new tag's content-summary is genuinely value-bearing (not a stub) and cites a real file/section that exists
+- [ ] **Pedagogy check (plan-risk-assessor R5):** read the cited section of the new tag's source and
+  confirm the content-summary text actually EXPLAINS the paragraph's claimed distinction (phase-exit
+  footer-append vs full-compaction event) — a real citation that doesn't teach the distinction is an
+  incomplete fix, not a pass
 
 **Global**
 - [ ] No collateral edits: `git diff` on the 3 touched essays (`05_3`, `05_4`, `05_6`, `05_7`, `05_2` — 5 files) shows ONLY the targeted family fixes, no blind HTML regen
 - [ ] Both repos clean after commit (root for `.md`, website for `.html`; multi-git execute-commit groups each file to its owning repo)
+- [ ] **No unresolved cross-series scope creep (plan-risk-assessor R6):** if EXECUTE flagged any
+  `[PENDING-JOB]` note for a matching stale value outside `blog/b5/`, confirm it was recorded (not
+  fixed in-scope and not silently dropped)
 - [ ] Technical pass (all greps above return the expected zero/match) AND workflow pass (user explicitly signs off on each family's fix before `[JOB-COMPLETE]`) — both required per this job's Stage-1 collaborative framing
