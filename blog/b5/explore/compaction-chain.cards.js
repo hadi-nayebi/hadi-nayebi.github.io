@@ -8,14 +8,22 @@
  * unbounded number of sessions at fixed cost. Paired with the shared deck-engine.js
  * + deck-engine.css (b6/explore, referenced cross-dir). Loaded BEFORE the engine.
  *
- * Every hood fact own-grep verified against the LIVE prototype 2026-06-17 (Rule 3).
+ * Every hood fact own-grep verified against the LIVE prototype (Rule 3); the context-gate
+ * boundaries are %-of-window (current total ÷ MAX_CONTEXT_TOKENS) per the consolidated design
+ * ground truth — brain-memory.md "Accrual-anchored boundaries" (now %-of-window, owner ruling
+ * 2026-07-09, superseding the accrual-anchored gate design). The compaction HEARTBEAT cadence
+ * stays SELF-ACCRUED (2 metacog calls per 10k of new work) — a separate, deliberate consumer.
  * Source pointers use STABLE anchors (file · arm/section/field), never line numbers,
  * per the glossary term-anatomy rule (Rule 20). Config NUMBERS are pinned because
  * they are the retunable knobs the design teaches (and are verified live); rot-prone
  * counts (test totals, voice-element totals) are deliberately NOT pinned.
  * Sources (all own-grep verified):
- *   brain_guard/config.conf — TOKENS_PER_TIER=10000; SOFT/READ/CRITICAL_THRESHOLD_TIER
- *     =20/25/30; MAX_CONTEXT_TOKENS=1000000; POST_COMPACT_GRACE_SECONDS=300;
+ *   brain_guard/config.conf — TOKENS_PER_TIER=10000; CONTEXT_SOFT_PCT=20 /
+ *     CONTEXT_READ_PCT=25 / CONTEXT_CRITICAL_PCT=30 (the context-gate/sensor trigger points,
+ *     as a %-of-window of MAX_CONTEXT_TOKENS — NO baseline, NO accrual; owner ruling
+ *     2026-07-09, superseding the accrual-anchored ACCRUAL_SOFT/READ_BLOCK/CRITICAL gate
+ *     knobs); HEARTBEAT_CALLS_PER_10K=2 (the compaction-heartbeat tempo — STILL self-accrued);
+ *     MAX_CONTEXT_TOKENS=1000000; POST_COMPACT_GRACE_SECONDS=300;
  *     THETA_LC=2000; THETA_LC_COACH_PCT=70 / _BLOCK_PCT=85 / _SEAL_PCT=80;
  *     TMUX_INSTRUCTION_MAX_BYTES=8192,
  *   brain_guard/hooks/context-sensor.sh (soft gate, fire-once-per-tier),
@@ -39,7 +47,7 @@ window.DECK_INFO = {
         title: 'the context window', tag: 'state',
         what: 'The model’s finite conversation buffer. It fills every turn, and past a few hundred thousand tokens the seed’s reasoning quality starts to drop.',
         why: 'Chat is the one place the seed’s memory does NOT live by design — it is capped and lossy at compaction. Watching how full it is, and acting early, is the whole reason brain_guard exists.',
-        hood: 'Measured by the shared <code>plugins/lib/context-helper/context-helper.sh</code> (<code>compute_context_size</code> reads the transcript’s last <code>.message.usage</code>). The 1M ceiling is <code>MAX_CONTEXT_TOKENS</code> in <code>config.conf</code> — display only; the gates compare tiers. Source: <code>brain-memory.md</code> · "context-helper.sh".'
+        hood: 'Measured by the shared <code>plugins/lib/context-helper/context-helper.sh</code> (<code>compute_context_size</code> reads the transcript’s last <code>.message.usage</code>). The 1M window is <code>MAX_CONTEXT_TOKENS</code> in <code>config.conf</code> — the DENOMINATOR the gate divides the current total context by to get the %-of-window it triggers on (<code>pct = current × 100 ÷ MAX_CONTEXT_TOKENS</code>). Source: <code>brain-memory.md</code> · "context-helper.sh".'
     },
     'compaction-file': {
         title: 'the compaction file', tag: 'object',
@@ -51,7 +59,7 @@ window.DECK_INFO = {
         title: 'the context ramp', tag: 'context',
         what: 'A graduated escalation keyed on how full the context window is. As tokens climb, it tightens the seed’s grip on tools one step at a time rather than flipping one switch.',
         why: 'It fires WELL before Claude Code’s default 100% auto-compact — which is what lets the seed run unattended and compact on its own terms, instead of crashing into the wall at the worst moment.',
-        hood: 'Two hooks: <code>context-sensor.sh</code> (soft, coaches) + <code>context-gate.sh</code> (hard, <code>exit 2</code>). Thresholds in <code>config.conf</code> as TIERS (<code>SOFT/READ/CRITICAL_THRESHOLD_TIER</code>). Walk into step 1. Source: <code>brain-memory.md</code> · "Progressive squeeze".'
+        hood: 'Two hooks: <code>context-sensor.sh</code> (soft, coaches + heartbeat debt) + <code>context-gate.sh</code> (hard, <code>exit 2</code>). Boundaries in <code>config.conf</code> as a %-of-window of the current total context (<code>CONTEXT_SOFT_PCT</code> / <code>CONTEXT_READ_PCT</code> / <code>CONTEXT_CRITICAL_PCT</code> of <code>MAX_CONTEXT_TOKENS</code> — NO baseline, NO accrual). Walk into step 1. Source: <code>brain-memory.md</code> · "Progressive squeeze".'
     },
     'fs-ramp': {
         title: 'the file-size ramp (θ_lc)', tag: 'context',
@@ -69,27 +77,27 @@ window.DECK_INFO = {
     /* ---- Card 2: the context ramp (detail of three tiers) ---- */
     'ctx-tier': {
         title: 'the context tier', tag: 'state',
-        what: 'The unit brain_guard reasons in: the token total floored into 10k buckets, so a milestone fires once per crossing instead of continuously.',
-        why: 'Collapsing a large noisy token count into a small integer makes the threshold comparisons clean — and makes the whole system retunable by editing a handful of numbers.',
-        hood: '<code>tier = floor(total_tokens / TOKENS_PER_TIER)</code>, <code>TOKENS_PER_TIER=10000</code> (<code>config.conf</code>); computed by <code>context_tier()</code> in <code>plugins/lib/context-helper/context-helper.sh</code>. 200k → tier 20. Source: <code>brain-memory.md</code> · "Context tier".'
+        what: 'The unit the context ramp reasons in: the current TOTAL context as a fraction of the window — current tokens ÷ the window size — the ONE number the ramp compares its thresholds against. No baseline, no accrual; the sensor floors the same total into 10k tiers so a milestone fires once per crossing.',
+        why: 'Measuring the %-of-window — not a raw token count — makes the thresholds scale automatically with the window and stay identical for the main session and every subagent; collapsing the count into a small integer keeps the comparisons clean and fires each milestone exactly once.',
+        hood: '<code>pct = current_total × 100 ÷ MAX_CONTEXT_TOKENS</code> — NO baseline, NO accrual (owner ruling 2026-07-09); the sensor floors the total into 10k tiers whose thresholds derive from <code>CONTEXT_SOFT_PCT</code> / <code>CONTEXT_READ_PCT</code> / <code>CONTEXT_CRITICAL_PCT</code> (<code>config.conf</code>), so a tier comparison IS a %-of-window comparison. 250k of a 1M window → 25%. Source: <code>brain-memory.md</code> · "Context tier".'
     },
     'soft-gate': {
-        title: 'soft gate — coach (tier 20)', tag: 'action',
-        what: 'At 200k tokens the sensor injects one coaching voice per tier crossing, nudging the seed to prep a compact. It never blocks a tool.',
-        why: 'A gentle early reminder, deduped to one voice per crossing, gives the seed room to finish cleanly and compact on its own before any tool is taken away.',
-        hood: '<code>context-sensor.sh</code> (PreToolUse, always <code>exit 0</code>); fires above <code>SOFT_THRESHOLD_TIER=20</code>, deduped by the <code>last_seen_tier</code> high-water mark. Source: <code>brain-memory.md</code> · "Soft gate (context-sensor)".'
+        title: 'soft gate — coach + heartbeat (20% of window)', tag: 'action',
+        what: 'From 20% of the window — 200k of context on today’s 1M window — the sensor injects one coaching voice per 10k crossing, nudging the seed to prep a compact. A heartbeat underneath it debt-blocks until the seed feeds its compaction file — a SEPARATE, deliberately accrual-keyed cadence: 2 metacog-reflect updates per 10k of NEW (self-accrued) work. No longer coach-only.',
+        why: 'The early coaching, deduped to one voice per crossing, gives the seed room to compact on its own terms — and the heartbeat debt makes feeding the compaction file non-optional, so its cognition accrues AHEAD of the boundary instead of being scrambled at it.',
+        hood: '<code>context-sensor.sh</code> (PreToolUse); the coach fires above <code>CONTEXT_SOFT_PCT=20</code> (20% of <code>MAX_CONTEXT_TOKENS</code>, on the current total — NO baseline/accrual), deduped by the <code>last_seen_tier</code> high-water mark. The heartbeat is the one accrual survivor here: it collects the full metacog debt (<code>HEARTBEAT_CALLS_PER_10K=2</code> per 10k self-accrued) on each crossing before any other tool proceeds (<code>metacog-reflect</code> itself always passes). Sources: <code>brain-memory.md</code> · "Soft gate (context-sensor)" + "Heartbeat cadence gate".'
     },
     'hard-gate': {
-        title: 'hard gate — block Read (tier 25)', tag: 'gate',
-        what: 'At 250k tokens the gate blocks the Read tool — the context firehose — while leaving Edit, Write, and Bash free so the seed can finish its thought and commit.',
+        title: 'hard gate — block Read (25% of window)', tag: 'gate',
+        what: 'At 25% of the window — 250k of context on a 1M window — the gate blocks the Read tool — the context firehose — while leaving Edit, Write, and Bash free so the seed can finish its thought and commit.',
         why: 'Read is what pours new tokens in. Cutting it first stops the bleeding while still letting the seed wrap up the current work and reach a clean compact point.',
-        hood: '<code>context-gate.sh</code> (PreToolUse, <code>exit 2</code> blocks); <code>READ_THRESHOLD_TIER=25</code> (<code>config.conf</code>). Matcher is <code>Read|Edit|Write|MultiEdit</code>; fail-safe-allow on a measurement failure. Source: <code>brain-memory.md</code> · "Graduated hard gate".'
+        hood: '<code>context-gate.sh</code> (PreToolUse, <code>exit 2</code> blocks) computes <code>pct = current_total × 100 ÷ MAX_CONTEXT_TOKENS</code> and blocks Read at <code>CONTEXT_READ_PCT=25</code> (<code>config.conf</code>). Matcher is <code>Read|Edit|Write|MultiEdit</code> (Bash never reaches it); fail-safe-allow on a measurement failure. Source: <code>brain-memory.md</code> · "Graduated hard gate".'
     },
     'critical-gate': {
-        title: 'critical — block writes (tier 30)', tag: 'gate',
-        what: 'At 300k tokens the gate blocks Read, Edit, Write, and MultiEdit, leaving only shell calls and questions — the only safe moves left.',
-        why: 'By now self-compaction is the only graceful exit. Removing the write tools makes that explicit: each tier removes one more capability until compacting is the obvious next act.',
-        hood: 'Same <code>context-gate.sh</code>, critical-tier branch; <code>CRITICAL_THRESHOLD_TIER=30</code> (<code>config.conf</code>). The block message tells the seed to run <code>self-compact.sh</code>. Source: <code>brain-memory.md</code> · "Progressive squeeze" three tiers.'
+        title: 'critical — block file I/O (30% of window)', tag: 'gate',
+        what: 'At 30% of the window — 300k of context on a 1M window — the gate blocks Read, Edit, Write, and MultiEdit — except the focused job’s own compaction file — leaving Bash and questions free. Bash is NEVER blocked, so sealing and clearing is always reachable.',
+        why: 'By now self-compaction is the only graceful exit. Removing the file-I/O tools makes that explicit: each tier removes one more capability until compacting is the obvious next act — and Bash stays open precisely so that act is never wedged.',
+        hood: 'Same <code>context-gate.sh</code>, critical branch; <code>CONTEXT_CRITICAL_PCT=30</code> (<code>config.conf</code>, 5% of the window above the Read block) with the compaction-file carve-out. The block message tells the seed to run <code>self-compact.sh</code>. Source: <code>brain-memory.md</code> · "Progressive squeeze" three tiers.'
     },
     'grace-bypass': {
         title: 'post-compact grace', tag: 'gate',
@@ -370,7 +378,7 @@ window.DECK_CARDS = {
             { from: 'ceiling-op', to: 'populate', kind: 'hard', label: 'leaves only' }
         ],
         stickies: [
-            { x: 660, y: 70, text: '100% of θ_lc is symmetric with context’s 20/25/30 tiers — both ramps share one ceiling op.' }
+            { x: 660, y: 70, text: '100% of θ_lc is symmetric with the context ramp’s %-of-window stages (20% / 25% / 30% of the window) — both ramps share one ceiling op.' }
         ],
         navHints: { up: 'two ramps, one ceiling' }
     },
@@ -381,16 +389,16 @@ window.DECK_CARDS = {
         title: 'The context ramp — squeeze, don’t slam',
         sub: 'As tokens climb, the ramp removes one tool per tier until self-compaction is the only graceful move left. It fires long before the default 100% auto-compact.',
         boxes: [
-            { id: 'ctx-tier', x: 60, y: 195, w: 210, h: 96, tag: 'state', t: 'the context tier', s: 'floor(tokens / 10k)' },
-            { id: 'soft-gate', x: 340, y: 50, w: 250, h: 84, tag: 'action', t: 'soft — coach (tier 20)', s: '200k · one voice/crossing · no block' },
-            { id: 'hard-gate', x: 340, y: 195, w: 250, h: 84, tag: 'gate', t: 'hard — block Read (tier 25)', s: '250k · firehose off · finish + commit' },
-            { id: 'critical-gate', x: 340, y: 340, w: 250, h: 84, tag: 'gate', t: 'critical — block writes (tier 30)', s: '300k · only Bash + questions' },
+            { id: 'ctx-tier', x: 60, y: 195, w: 210, h: 96, tag: 'state', t: 'the context tier', s: 'current ÷ window = %' },
+            { id: 'soft-gate', x: 340, y: 50, w: 250, h: 84, tag: 'action', t: 'soft — coach + heartbeat (20%)', s: '20% window · voice/crossing · heartbeat (accrual)' },
+            { id: 'hard-gate', x: 340, y: 195, w: 250, h: 84, tag: 'gate', t: 'hard — block Read (25%)', s: '25% window · firehose off · finish + commit' },
+            { id: 'critical-gate', x: 340, y: 340, w: 250, h: 84, tag: 'gate', t: 'critical — block file I/O (30%)', s: '30% window · Bash never blocked' },
             { id: 'grace-bypass', x: 690, y: 195, w: 230, h: 96, tag: 'gate', t: 'post-compact grace', s: '300s · don’t block the first Read' }
         ],
         edges: [
-            { from: 'ctx-tier', to: 'soft-gate', kind: 'soft', label: '20' },
-            { from: 'ctx-tier', to: 'hard-gate', kind: 'hard', label: '25' },
-            { from: 'ctx-tier', to: 'critical-gate', kind: 'hard', label: '30' },
+            { from: 'ctx-tier', to: 'soft-gate', kind: 'soft', label: '20%' },
+            { from: 'ctx-tier', to: 'hard-gate', kind: 'hard', label: '25%' },
+            { from: 'ctx-tier', to: 'critical-gate', kind: 'hard', label: '30%' },
             { from: 'critical-gate', to: 'grace-bypass', kind: 'soft', label: 'after compact' }
         ],
         stickies: [
