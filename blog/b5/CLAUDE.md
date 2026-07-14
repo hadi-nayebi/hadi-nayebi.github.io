@@ -115,6 +115,14 @@ These calls were made during B5 authoring and apply across the series:
 
 ---Ob---
 
+**NEW SESSION (2026-07-14) — FIFTH job continuation, job 1784069362162132501, cycle-1 OBSERVE.** Bootstrapped fresh from a user prompt with the same task/intent. The four prior job ids (1783194174436079495 / 1783554633377038363 / 1783561630806597472 / 1783565540231629404) all did OBSERVE (+ a full PLAN, see `---Pl---`/`---Ve---` below) but the EXECUTE fixes NEVER LANDED — each `/clear` re-bootstrapped a NEW job that restarts at OBSERVE cycle 1, so the b5 corpus is UNCHANGED and the 3 families below are STILL OPEN. Treating everything below as OBSERVE.recall input, per its own "don't inherit a number blind" instruction — re-verify, don't redo from scratch.
+
+**Key situation to SURFACE to the user FIRST (before launching any scan) — the genuine steering fork:**
+- Prior work SETTLED at **3 honest families, user-confirmed in chat 2026-07-09** (line-echo `05_6` / stale-number ×4 across `05_2`/`05_3`/`05_4`/`05_7` / missing-tag `05_3`).
+- This session's prompt asks for **FIVE**. Precedent `feedback_family_vs_instance_counting.md` + the 2026-07-09 settlement both say: report the honest count, never invent problems to hit N.
+- The REAL gap across 4 runs is **EXECUTION, not more OBSERVE** — the fixes were fully planned and never applied.
+- The fork is genuinely the user's: (a) re-verify the settled 3 fresh, then FIX them; (b) re-open the hunt for a 4th/5th family before fixing; (c) both, in some order. Do NOT silently pick — ask.
+
 **ACTIVE JOB — ref-tag review/fix pass, b5 series (job 1783554633377038363, cycle-1 OBSERVE).** Re-run of job 1783194174436079495 (2026-07-04, git `15d54851`), reset before PLAN/EXECUTE. Objective: review the 9 b5 essays' ref-tags against the live implementation, find FIVE real verified problems (root-cause families, not raw instances), then fix each family completely — root cause, then the whole family, then the fix — before moving to the next.
 
 **Ref-tag ground truth (3-source confirmed):** `*[ref: slug|source-pointer|content-summary]*` in `.md` → `<sup class="ref-marker" title="ref: SLUG|POINTER|SUMMARY">` in the mirrored `.html`. Line numbers are BANNED in every field (middle AND third) — stable file/section/function pointers only. Census by occurrence (`grep -oP`), never by line. Mirror invariant `.md`↔`.html` — targeted hand-edit both, never blind-regen. A stale tag is REDUCED to stable useful content (slug + pointer + value-bearing summary), never emptied, never left stale.
