@@ -353,6 +353,17 @@ Executing the architect's binding done-definition: EVERY b5 essay (all 9) own-ey
 
 **>>> RESUME NEXT (session-8): dispatch ONE grep-first subagent to close the F5 owed quote-verifications (05_7 L127 + 05_1 L138/L142/L184/L186) against the LIVE files → finalize F5 membership → SET THE OBJECTIVE (empty for 8 sessions, blocks force-advance) → raise ONE done-[WAITING] to architect (F1/F2/F3/F5 families + per-family grep-at-zero + F4-table-counts scope question) → on architect steer, advance observe→plan (Stage-1, set-plan-file false).**
 
+**✅ OBJECTIVE SET + EXPANDED (session-8) — cycle-1 duty done (seed 115w → expansion ~377w). The 8-session force-advance blocker is cleared.**
+
+**⚠️ F5 SUBAGENT BAILED (session-8) — the recurring wedge, now on a grep-instructed subagent.** The observe-contradiction-finder dispatched to verify F5 candidates hit its own 27%-of-window ceiling and returned WITHOUT verdicts (it tried to grep the blog HTML for tag text, but the ref-marker `title=` lines are so long they filled its context). ROOT CAUSE: verifying a verbatim-quote tag needs (a) the tag's long `title=` text AND (b) the live nested-plugin CLAUDE.md it quotes — reading either balloons; subagents inherit the ~26% injected baseline so they bail near-immediately. This is NOT a numeric task, so the "verify against live file" step genuinely wants GREP, which the OBSERVE main session lacks (VERIFY/EXECUTE have it).
+
+**F5 STATUS (honest):** 05_1 L136 = CONFIRMED class-2 stale-quote (verified from injected live files). 05_7 L127 + 05_1 L138/L142/L184/L186 = CANDIDATES, precisely located but NOT yet grep-verified against their live files. F5's membership is not a single deterministic grep (each tag quotes a different file/phrase) — so it is costlier to enumerate than F1/F2/F3.
+
+**DECISION (session-8): STOP grinding F5 in observe. F5 is a NEW family the architect has not scoped.** Per the Stage-1 collaborative contract, surface it in the done-[WAITING] BEFORE over-investing: present F1/F2/F3 (coverage-complete, deterministic greps) + F5 (1 confirmed + candidates, with the balloon obstacle) + the F4-table-counts scope question. Let the architect steer whether F5 is in-scope and where its candidate verification should run (a grep-native phase: EXECUTE/VERIFY, or a follow-up job). Do NOT re-dispatch the ballooning subagent (3-blocks discipline).
+
+**>>> RESUME NEXT: raise the done-[WAITING] to the architect (this is the collaborative checkpoint the architect explicitly requested: "bring me the verified families + per-family grep when coverage is complete"). On the architect's steer re F4/F5, advance observe→plan (Stage-1, set-plan-file false); F5 candidate grep-verification runs in the grep-native phase.**
+
+[AGENT-UPDATE]{observe-contradiction-finder | dispatched grep-first to verify F5 verbatim-quote candidates, STILL ballooned to 27%-of-window and returned NO verdicts (it grepped the blog HTML for the tag text, but ref-marker title= lines are so long they filled its context; it then tried to self-compact, which a subagent cannot do). | direction: for quote-verification, the MAIN session extracts the short quoted phrase via targeted Read, then the subagent greps ONLY the live files for that short phrase — never grep/Read the blog HTML for tag text, never read a nested CLAUDE.md whole. Add a hard rule to the agent def: a subagent CANNOT cross a compaction boundary; on hitting the ceiling it must RETURN partial findings, never attempt self-compact.}
 ---Pl---
 
 ---Ex---
