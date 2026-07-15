@@ -367,6 +367,83 @@ Executing the architect's binding done-definition: EVERY b5 essay (all 9) own-ey
 [VOICE-UPDATE]{observe-commit-force-summary-file-requirement (observe→plan boundary block) | It HARD-requires a rolling --summary FILE, but observe-guard forbids writing ANY non-CLAUDE.md file in observe (Write to a scratch summary file is blocked), so the observe→plan advance is unreachable in-phase; the operator self-compact Prior-Summary fix (no scratch file) did NOT reach this boundary path. This is a substrate contradiction, not a seed error. | direction: make observe-commit --force read the rolling summary from the compaction file's ## Prior Summary (no scratch --summary file), matching the self-compact fix; OR exempt the boundary summary-file write from observe-guard so the seed can author it.}
 ---Pl---
 
+## PLAN — b5 ref-tag review (Stage 1, cycle 1)
+
+**Stage:** 1 (single-cycle collaborative). `plan_file=false` committed — actionable steps live in these footers, no plan file.
+
+**Fix objective:** reduce every drifted b5 ref-tag to stable useful content (slug + VERIFIED file/section-or-function pointer + accurate summary), **TAGS ONLY**, **b5 essays only**, each fix proven by a deterministic grep-at-zero on the committed `.html`. Coverage is complete; the ARCHITECT calls DONE at CONDENSE.
+
+**Verified family slate (ready to fix):**
+- **F1** accrual→%-of-window · `05_3` · 5 tags (class 2+4)
+- **F2** "Principle 9 — Five Markers" rename · `05_7` · 1 tag (class 4)
+- **F3** line-numbers in pointers (Rule 20) · `05_1 / 05_2 / 05_6 / 05_7` · 14 tags (class 4 + policy)
+- **F5** stale-quoted-summary · `05_1` L136 confirmed · 1 tag (class 2)
+
+**Fix mechanic (source-of-truth):** edit the `.md` italic-bracket ref `*[ref: slug | pointer | summary]*` → regenerate the `.html` via `python3 tools/generate_blog_html.py blog/b5/<slug>.md blog/b5/<slug>.html --version <stamp>`. Both surfaces end consistent; grep-at-zero runs on `.html`.
+
+**Reduction standard (what a fixed tag looks like):** slug unchanged · pointer = stable file + section/function name **verified to exist in the live file** (Growth Rule 8), NO line numbers · summary = accurate current-behavior description. Never emptied, never left stale, never paraphrased-but-still-stale.
+
+**Risk mitigations (from premortem — EXECUTE must hold these):**
+1. **Regen-validation gate** — after each regen, confirm the `.html` rebuilt: command exit 0 + file non-empty + contains `<!DOCTYPE`. Else FAIL-STOP. Silent `.md`↔`.html` desync is the top risk (grep can pass on a stale `.html`).
+2. **New-pointer existence check** — before writing a repointed tag, grep the LIVE target to confirm it exists (F1 → `config.conf` `CONTEXT_*_PCT` + `brain-memory.md` "%-of-window boundaries"; F2 → `phase_condense/docs/principles.md` "9. Five CONDENSE Markers…").
+3. **ACCRUAL_CRITICAL is RETAINED** — never delete it (heartbeat/stop-gate); the F1 zero-grep excludes it on purpose. Own-eyes each F1 tag; do NOT blanket-delete "accrual".
+4. **Grep LOCATES, own-eyes ARBITRATES** — the literal greps find candidates; EXECUTE reads each located tag to catch variant line-number forms + paraphrased-stale quotes the pattern misses.
+5. **Scope guard** — tags-only + b5-only. Pre-commit `git diff` must show ONLY `*[ref: …]*` bracket lines + regenerated `.html`; any body-prose diff is scope-drift → revert. Do NOT sweep b6/b7/b8.
+
+**OPEN — architect steer required (raised as `[WAITING]` at the PLAN checkpoint):**
+- **F4** — stale COUNTS in THIS file's "9 sub-essays" table Refs column (05_3 13→25, 05_4 12→18, 05_6 13→15, 05_7 20→22, 05_9 16→25). Working-memory, not an inline essay ref-tag. In-scope this pass, or separate follow-up?
+- **F5** — the new stale-quoted-summary family: 05_1 L136 confirmed, in-scope? And the candidates (05_7 L127, 05_1 L138/L142/L184/L186) are located but NOT grep-verified (each quotes a different live file) — verify+fix them this pass in EXECUTE/VERIFY, or defer to a follow-up job and fix only 05_1 L136 now?
+
+[VOICE-UPDATE]{compact-wake-clear-inject-reanchor (brain_guard SessionStart clear-hook + the /clear command note) | The wake instruction says "Read the compaction file DIRECTLY at its path — it is carved out of EVERY phase guard." In PLAN this is false: phase_plan/plan-guard.sh BLOCKED my main-session Read of `.claude/jobs/<id>/run-1/compaction-9.md` ("Read outside CLAUDE.md layer") AND blocked the dispatched post-compact-context-refresher subagent from reading it. So the promised carve-out does not hold in a read-narrowed phase, making the stated resume path unreachable; I re-grounded from the b5 CLAUDE.md footers instead (which worked). | direction: either (a) soften the voice — say the compaction-file carve-out holds only where the guard admits it, and in read-narrowed phases (plan/verify) re-ground from the CLAUDE.md footers / pay heartbeat then advance; or (b) treat as a substrate gap for the architect — the phase guards do NOT actually carve out the `.claude/jobs/**/compaction-*.md` path though the design claims they do. Flag as substrate contradiction, not a seed error.}
+
 ---Ex---
 
+## EXECUTE — per-essay fix checklist (tags-only; Read-locate + Edit + regen)
+
+Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** — locate targets by Reading the `.md` and finding the tokens/lines below. Per essay: **Read** `.md` → **Edit** each drifted `*[ref: …]*` tags-only per the reduction standard (pointer targets were verified in OBSERVE) → **regen** `.html` via Bash → **regen-validation** (exit 0 + file non-empty + contains `<!DOCTYPE`). Commit per essay; pre-commit `git diff` shows ONLY ref-bracket + `.html` lines (any body-prose diff = scope-drift → revert).
+
+**`05_1-the-two-layer-foundation`** (F3 + F5) — F3: the tag carrying a `line NN` pointer → strip the line-number clause, keep file+section/function pointer. F5 (tag `cognition-as-memory-multi-form`, quotes "sole reference" / "5 deep-dives"): reduce quote → pointer `.claude/CLAUDE.md ### knowledge/`; summary = "the durable, monotonically-growing reference; knowledge/identity = INDEX + one deep-dive per identity fact; identity carries 6 facts." Regen → validate.
+
+**`05_2-plugin-integrity`** (F3, 6 tags) — the 6 tags carrying line-number pointers → strip line-numbers, keep file+section/function pointer. Regen → validate.
+
+**`05_3-brain-guard`** (F1, 5 tags) — the 5 tags citing `ACCRUAL_SOFT` / `ACCRUAL_READ_BLOCK`: repoint the 4 retired-knob tags → `config.conf (CONTEXT_SOFT_PCT / CONTEXT_READ_PCT / CONTEXT_CRITICAL_PCT) + brain-memory.md "%-of-window boundaries"`; rewrite the 1 class-2 WRONG summary to describe %-of-window behavior. **RETAIN any `ACCRUAL_CRITICAL` reference** (heartbeat/stop-gate — legitimate). Regen → validate.
+
+**`05_6-question-discipline`** (F3, 3 tags) — the 3 line-number tags → strip line-numbers, keep pointer. Regen → validate.
+
+**`05_7-claude-md-hierarchy`** (F2 + F3, 5 tags) — F2 (tag `footers-replace-chat-working-memory`): repoint section title "Principle 9 — Five Markers" → "9. Five CONDENSE Markers as Cross-Phase Signal System"; keep slug+summary. F3 (4 tags): strip line-numbers, keep pointer. **ONE regen after both families** → validate.
+
+**Deferred — do NOT fix until architect scopes:** F4 (this file's "9 sub-essays" table counts) · F5-candidates (05_7 L127, 05_1 L138/L142/L184/L186 — grep-verify in VERIFY first).
+
 ---Ve---
+
+## VERIFY — acceptance criteria (per-family grep-at-zero on the committed `.html`)
+
+**Coverage gate to pass VERIFY:** every in-scope family fixed in EXECUTE + its grep-at-zero returns 0 + `git diff` shows ONLY `*[ref: …]*` bracket lines and regenerated `.html` (zero body-prose diff = scope discipline). **Grep LOCATES; own-eyes ARBITRATE** each located tag (risk-mitigation #4 — variant line-number forms + paraphrased-stale quotes the pattern misses).
+
+**F1 — accrual→%-of-window (`05_3-brain-guard.html`, 5 tags):**
+- `grep -o 'ACCRUAL_SOFT\|ACCRUAL_READ_BLOCK' blog/b5/05_3-brain-guard.html` → **0** (retired knobs gone from tags)
+- `grep 'ACCRUAL-ANCHORED' blog/b5/05_3-brain-guard.html` → **0**
+- POSITIVE (own-eyes): the 5 repointed tags carry `CONTEXT_SOFT_PCT` / `CONTEXT_READ_PCT` / `CONTEXT_CRITICAL_PCT` + `%-of-window boundaries`.
+- GUARD: `ACCRUAL_CRITICAL` may still appear (heartbeat/stop-gate — RETAINED); a remaining hit there is NOT a failure — own-eyes confirm it is the retained knob, never a retired one.
+
+**F2 — Five-Markers rename (`05_7-claude-md-hierarchy.html`, 1 tag):**
+- `grep 'Principle 9 — Five Markers' blog/b5/05_7-claude-md-hierarchy.html` → **0**
+- POSITIVE (own-eyes): the tag carries `9. Five CONDENSE Markers as Cross-Phase Signal System`.
+
+**F3 — line-numbers in pointers (`05_1` / `05_2` / `05_6` / `05_7`, 14 tags):** per file,
+- `grep 'class="ref-marker"' blog/b5/<slug>.html | grep -Eo 'line [0-9]+|[a-zA-Z._-]+:[0-9]+|L[0-9]+(-[0-9]+)?'` → **0** file:line pointers inside ref-marker `title=` (own-eyes EXCLUDE legal digits: dates / versions / counts / times).
+- Per-file locators: 05_1 (1 — L190) · 05_2 (6 — L119/L143/L156/L164/L168/L170) · 05_6 (3 — L129/L135/L141) · 05_7 (4 — L133/L161/L183/L185).
+
+**F5 — stale-quoted-summary (`05_1-the-two-layer-foundation.html`, L136 CONFIRMED only):**
+- `grep 'sole reference' blog/b5/05_1-the-two-layer-foundation.html` → **0**
+- the old "5 deep-dives" / "INDEX + 5" quote string → **0**
+- POSITIVE (own-eyes): the tag reads "durable, monotonically-growing reference" + "one deep-dive per identity fact" + identity carries "6 facts".
+
+**HELD — NOT in the coverage gate until the architect scopes them (raised as `[WAITING]` at this PLAN checkpoint):**
+- **F4** — b5 CLAUDE.md "9 sub-essays" table Refs counts (working-memory drift, not an inline essay tag).
+- **F5-candidates** — 05_7 L127 + 05_1 L138/L142/L184/L186 (each quotes a DIFFERENT live file → not one deterministic grep; grep-verify in a grep-native phase before any fix).
+
+**Cross-cutting VERIFY checks (all families):**
+- Regen-validation held per essay (EXECUTE risk-mitigation #1): each regenerated `.html` exit 0 + non-empty + contains `<!DOCTYPE`.
+- `.md` ↔ `.html` consistency: the same fixed `*[ref: …]*` bracket present in BOTH surfaces (no silent desync).
+- New-pointer existence (risk-mitigation #2): each repointed target string still greps-present in its LIVE source (`config.conf`, `brain-memory.md`, `principles.md`).
