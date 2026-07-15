@@ -438,6 +438,8 @@ Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** 
 
 **F5-candidates (this pass)** — verify 05_7 L127 + 05_1 L138/L142/L184/L186 against their live files; reduce any CONFIRMED stale quote → stable file/section pointer + accurate summary (same reduction standard). Fix only what own-eyes confirms stale.
 
+[PENDING-JOB]{b6-b7-b8-combined-ref-tag-review — architect tool-selected ONE combined follow-up ref-tag review over b6+b7+b8 (same 5-class taxonomy as this b5 pass). Standalone; this b5 job does NOT depend on it. Same drift families likely (F3 line-numbers, F1 %-of-window, F2 renamed sections, F5 stale quotes). Reuse the coverage-soundness lesson: pair grep (classes 2/4) WITH own-eyes paragraph->tag (classes 1/3/5).}
+[KNOWLEDGE]{ref-tag-review-main-session-reads-not-subagents — SUBAGENT-READ DELEGATION FAILS under the context-gate: 3 of 4 execute-file-editor subagents dispatched to own-eyes-read a b5 essay blocked at their FIRST Read (window ~27%, over the 25% Read-block); they inherit a heavy injected baseline sitting at/over the block. Only the one that Read BEFORE any reasoning succeeded (S1 = 05_4+05_5, clean). LESSON: the own-eyes 1/3/5 reading + tags-only editing for this ref-tag job must run in the MAIN SESSION (Read is reliable there — the architect's 'Read each essay directly in EXECUTE' mandate), with phasic compaction between essays; do NOT 80/20-delegate context-heavy reads to subagents (delegation REINTRODUCES the OBSERVE balloon EXECUTE was meant to avoid). If a subagent is unavoidable: force 'Read is the literal FIRST action, zero pre-read reasoning' + rely on the glossary already injected.}
 ---Ve---
 
 ## VERIFY — acceptance criteria (per-family grep-at-zero on the committed `.html`)
@@ -472,3 +474,13 @@ Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** 
 - Regen-validation held per essay (EXECUTE risk-mitigation #1): each regenerated `.html` exit 0 + non-empty + contains `<!DOCTYPE`.
 - `.md` ↔ `.html` consistency: the same fixed `*[ref: …]*` bracket present in BOTH surfaces (no silent desync).
 - New-pointer existence (risk-mitigation #2): each repointed target string still greps-present in its LIVE source (`config.conf`, `brain-memory.md`, `principles.md`).
+
+## EXECUTE-RECORDED — Step-0 own-eyes 1/3/5 evidence (subagent-read, main-session-synthesized)
+
+**Method (balloon wedge broken):** own-eyes reads + tags-only edits run in the MAIN SESSION (subagent-read balloons past the 25% Read-block); EXECUTE blocks Bash for main + subagents alike, so `.html` regen + live-source grep relocate to VERIFY (scripts + Grep native). Compact between essays.
+
+**Own-eyes 1/3/5 ledger:** ✅ 05_4 / 05_5 / 05_8 (batch-1, clean — 05_4 full-field schema + pre/post hooks · 05_5 two-phase + `summary.sh submit` sole bypass · 05_8 every claim tagged, glossary-consistent) · ✅ **05_3** (session-9, main-session: 1/3/5 CLEAN; L37 two-events ¶ borderline-untagged, covered by adjacent L35 tag — not force-authored) · ⬜ 05_6 / 05_7 / 05_9 owed.
+
+**05_3 F1 → 6 tags (own-eyes catch grep MISSED):** the 5 known + `file-size-ramp` (its closing clause called the context ramp "accrual stages baseline+~120k/~160k/~180k", stale post the 2026-07-09 %-of-window ruling); `dispatch-mechanism-customization` correctly EXCLUDED (dispatch-only summary). **Fix:** all 6 repointed → `config.conf CONTEXT_SOFT_PCT/CONTEXT_READ_PCT/CONTEXT_CRITICAL_PCT` + `brain-memory.md "%-of-window boundaries"`; summaries → %-of-window (Read-block 25% / critical 30% of MAX_CONTEXT_TOKENS, no baseline/accrual); **ACCRUAL_CRITICAL RETAINED** as the heartbeat/stop-gate knob. grep-at-zero: `ACCRUAL_SOFT` / `ACCRUAL_READ_BLOCK` / `ACCRUAL-ANCHORED` → 0 in 05_3 tags.
+
+`[PENDING-JOB]`{b5-body-prose-accrual-to-percent-window — 05_3 BODY prose still teaches the retired accrual context-gate model as live (§"How it works — the progressive squeeze" L41; §"What you would customize" L114). Tags-only scope leaves the fixed F1 tags describing %-of-window while the body teaches accrual — a deliberate tag↔body mismatch flagging the body for a rewrite follow-up (b5, likely wider corpus); keep accrual framing only where it is genuinely the heartbeat tempo. Surface at architect done-checkpoint.}
