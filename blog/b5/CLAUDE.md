@@ -371,7 +371,7 @@ Executing the architect's binding done-definition: EVERY b5 essay (all 9) own-ey
 
 **Stage:** 1 (single-cycle collaborative). `plan_file=false` committed — actionable steps live in these footers, no plan file.
 
-**Fix objective:** reduce every drifted b5 ref-tag to stable useful content (slug + VERIFIED file/section-or-function pointer + accurate summary), **TAGS ONLY**, **b5 essays only**, each fix proven by a deterministic grep-at-zero on the committed `.html`. Coverage is complete; the ARCHITECT calls DONE at CONDENSE.
+**Fix objective:** reduce every drifted b5 ref-tag to stable useful content (slug + VERIFIED file/section-or-function pointer + accurate summary), **TAGS ONLY**, **b5 essays only**, each fix proven by a deterministic grep-at-zero on the committed `.html`. **Coverage is NOT yet sound** (grep-only for 7 of 9 essays — see the RESOLVED steer below); the SOUND own-eyes 1/3/5 pass runs in EXECUTE/VERIFY, then the ARCHITECT calls DONE at CONDENSE.
 
 **Verified family slate (ready to fix):**
 - **F1** accrual→%-of-window · `05_3` · 5 tags (class 2+4)
@@ -390,9 +390,20 @@ Executing the architect's binding done-definition: EVERY b5 essay (all 9) own-ey
 4. **Grep LOCATES, own-eyes ARBITRATES** — the literal greps find candidates; EXECUTE reads each located tag to catch variant line-number forms + paraphrased-stale quotes the pattern misses.
 5. **Scope guard** — tags-only + b5-only. Pre-commit `git diff` must show ONLY `*[ref: …]*` bracket lines + regenerated `.html`; any body-prose diff is scope-drift → revert. Do NOT sweep b6/b7/b8.
 
-**OPEN — architect steer required (raised as `[WAITING]` at the PLAN checkpoint):**
-- **F4** — stale COUNTS in THIS file's "9 sub-essays" table Refs column (05_3 13→25, 05_4 12→18, 05_6 13→15, 05_7 20→22, 05_9 16→25). Working-memory, not an inline essay ref-tag. In-scope this pass, or separate follow-up?
-- **F5** — the new stale-quoted-summary family: 05_1 L136 confirmed, in-scope? And the candidates (05_7 L127, 05_1 L138/L142/L184/L186) are located but NOT grep-verified (each quotes a different live file) — verify+fix them this pass in EXECUTE/VERIFY, or defer to a follow-up job and fix only 05_1 L136 now?
+**✅ ARCHITECT STEER — RESOLVED (Fable, this session; verbatim-faithful):**
+- **F1/F2/F3/F5 (21 confirmed defects) are REAL → FIX them.**
+- **F4 = FIX THIS PASS** — correct the b5 CLAUDE.md "9 sub-essays" table Refs counts (05_3 13→25, 05_4 12→18, 05_6 13→15, 05_7 20→22, 05_9 16→25).
+- **F5 = FIX ALL CANDIDATES too** (not defer) — verify 05_7 L127 + 05_1 L138/L142/L184/L186 the SOUND way in VERIFY (Read+Grep native), fix any confirmed stale.
+
+**⛔ COVERAGE IS NOT COMPLETE — architect caught the unsoundness. Do NOT call it "own-eyes coverage of all 9":**
+- Genuine own-eyes **paragraph→tag** reads happened ONLY for **05_1 + 05_2** (session-6). The other **7 essays (05_3–05_9) were PURE-GREP** = the **tag→source** direction, which **STRUCTURALLY cannot find class 1 (missing) / 3 (over-scoped) / 5 (glossary-drift)**.
+- My own ledger admits it: this file :237 "Class-1 MISSING under-verified — subagent grep couldn't scan full paragraphs"; :348 the grep pass MISSED F5 until own-eyes on 05_1 caught it. So **"1/3/5 clean corpus-wide" is UNSUPPORTED for 7 of 9 essays** — the same unsoundness that voided the prior review.
+- Architect's independent spot-check of **05_4/05_5/05_8 found the corpus genuinely well-tagged** → this pass will likely CONFIRM mostly-clean, but it must be verified the SOUND way, never grep-declared.
+
+**MANDATE — genuine own-eyes paragraph→tag pass of 05_3, 05_4, 05_5, 05_6, 05_7, 05_8, 05_9 in EXECUTE/VERIFY** (Read+Grep are NATIVE there — the OBSERVE context-gate balloon does NOT apply):
+- Per claim paragraph ask: **is it correctly + fully tagged?** class 1 = untagged real code/context claim · class 3 = tag over-claims its source · class 5 = tag's term drifted vs the `.claude/context/` dir.
+- **Balloon-safe method:** Read each essay file directly (small files), scan its paragraphs; for a suspect tag extract ONLY the needed field + compare to the live file/context; short quote + file:line; a few paragraphs per subagent → findings-with-evidence.
+- **Fold any new hits into the slate**, fix everything (incl. F4 + all F5 candidates), then re-present the COMPLETE slate with per-essay own-eyes 1/3/5 evidence at CONDENSE (the architect calls done).
 
 [VOICE-UPDATE]{compact-wake-clear-inject-reanchor (brain_guard SessionStart clear-hook + the /clear command note) | The wake instruction says "Read the compaction file DIRECTLY at its path — it is carved out of EVERY phase guard." In PLAN this is false: phase_plan/plan-guard.sh BLOCKED my main-session Read of `.claude/jobs/<id>/run-1/compaction-9.md` ("Read outside CLAUDE.md layer") AND blocked the dispatched post-compact-context-refresher subagent from reading it. So the promised carve-out does not hold in a read-narrowed phase, making the stated resume path unreachable; I re-grounded from the b5 CLAUDE.md footers instead (which worked). | direction: either (a) soften the voice — say the compaction-file carve-out holds only where the guard admits it, and in read-narrowed phases (plan/verify) re-ground from the CLAUDE.md footers / pay heartbeat then advance; or (b) treat as a substrate gap for the architect — the phase guards do NOT actually carve out the `.claude/jobs/**/compaction-*.md` path though the design claims they do. Flag as substrate contradiction, not a seed error.}
 
@@ -412,7 +423,11 @@ Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** 
 
 **`05_7-claude-md-hierarchy`** (F2 + F3, 5 tags) — F2 (tag `footers-replace-chat-working-memory`): repoint section title "Principle 9 — Five Markers" → "9. Five CONDENSE Markers as Cross-Phase Signal System"; keep slug+summary. F3 (4 tags): strip line-numbers, keep pointer. **ONE regen after both families** → validate.
 
-**Deferred — do NOT fix until architect scopes:** F4 (this file's "9 sub-essays" table counts) · F5-candidates (05_7 L127, 05_1 L138/L142/L184/L186 — grep-verify in VERIFY first).
+**Step 0 (do FIRST) — SOUND own-eyes 1/3/5 pass of 05_3, 05_4, 05_5, 05_6, 05_7, 05_8, 05_9** (architect mandate; Read+Grep native in EXECUTE): Read each essay directly (small files), scan paragraph→tag for class 1 (untagged real code/context claim) · class 3 (tag over-claims its source) · class 5 (tag's term drifted vs `.claude/context/`). Balloon-safe: for a suspect tag extract ONLY the needed field, compare to the live file/context, short quote + file:line. **Fold any new hits into the slate before fixing.** (05_1 + 05_2 already own-eyed session-6 — 1/3/5 clean there.)
+
+**F4 (this pass)** — correct the "9 sub-essays" table Refs column in THIS file against live `grep -o 'class="ref-marker"'` counts: 05_3→25, 05_4→18, 05_6→15, 05_7→22, 05_9→25 (05_1/05_2/05_5/05_8 rows already correct).
+
+**F5-candidates (this pass)** — verify 05_7 L127 + 05_1 L138/L142/L184/L186 against their live files; reduce any CONFIRMED stale quote → stable file/section pointer + accurate summary (same reduction standard). Fix only what own-eyes confirms stale.
 
 ---Ve---
 
@@ -439,9 +454,10 @@ Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** 
 - the old "5 deep-dives" / "INDEX + 5" quote string → **0**
 - POSITIVE (own-eyes): the tag reads "durable, monotonically-growing reference" + "one deep-dive per identity fact" + identity carries "6 facts".
 
-**HELD — NOT in the coverage gate until the architect scopes them (raised as `[WAITING]` at this PLAN checkpoint):**
-- **F4** — b5 CLAUDE.md "9 sub-essays" table Refs counts (working-memory drift, not an inline essay tag).
-- **F5-candidates** — 05_7 L127 + 05_1 L138/L142/L184/L186 (each quotes a DIFFERENT live file → not one deterministic grep; grep-verify in a grep-native phase before any fix).
+**NOW IN THE COVERAGE GATE (architect ruled IN-SCOPE this pass):**
+- **Own-eyes 1/3/5 evidence — per essay 05_3..05_9 (the SOUND verification the grep-only pass could NOT provide):** a recorded own-eyes paragraph→tag verdict (NOT grep-declared) for class 1 (missing) / class 3 (over-scoped) / class 5 (context-drift), each with a short quote + file:line. Without this the coverage claim is unsupported (architect precedent — the unsoundness that voided the prior review). 05_1 + 05_2 already own-eyed (session-6).
+- **F4** — the "9 sub-essays" table Refs counts in THIS file now match live `grep -o` counts (05_3=25, 05_4=18, 05_6=15, 05_7=22, 05_9=25).
+- **F5-candidates** — 05_7 L127 + 05_1 L138/L142/L184/L186 own-eyes-verified against their live files; any CONFIRMED stale reduced + its old verbatim quote greps to 0 in its essay.
 
 **Cross-cutting VERIFY checks (all families):**
 - Regen-validation held per essay (EXECUTE risk-mitigation #1): each regenerated `.html` exit 0 + non-empty + contains `<!DOCTYPE`.
