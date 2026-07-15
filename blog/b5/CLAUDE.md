@@ -115,6 +115,244 @@ These calls were made during B5 authoring and apply across the series:
 
 ---Ob---
 
+## OBSERVE — ref-tag review pass (b5), cycle 1
+
+**Ref-tag convention (discovered by observe-codebase-explorer):**
+- Format: `<sup class="ref-marker" title="ref: <slug> | <file-pointer> | <summary>">&#9432;</sup>`
+- **Greppable token: `class="ref-marker"`** (uniform across all 9 files — single convention, no union grep needed). Done-check by grep IS feasible.
+- 158 tags across 05_1..05_9 (.html). Per-file: 05_1=14, 05_2=17, 05_3=25, 05_4=18, 05_5=8, 05_6=15, 05_7=22, 05_8=14, 05_9=25.
+
+**Steering banked (user, this session):**
+- Drift-class PRIORITY: (1) retired-mechanism pointers, (2) stale summaries, (3) moved/renamed pointers. **Missing-tag coverage gaps DEPRIORITIZED** — not counted toward the five.
+- Fix SCOPE: **b5 only** this pass. Note any b6/b7/b8 spread as follow-up; do NOT fix out-of-b5.
+- Fix RULE: a drifted tag is REDUCED to stable useful content (slug + file/section pointer + summary; NO line numbers) — never emptied, never left stale.
+- DONE = 5 verified families fixed + deterministic grep at zero + issue-classes recorded; USER calls done, not the seed.
+
+**FIX-DEPTH (user answered): "Tags only"** — fix just the tag's three fields (slug/pointer/summary); leave body prose; record body drift as follow-up. Done-grep scoped to tags.
+
+**⚠️ CONTRADICTION TO RESOLVE FIRST — before counting ANY family: do b5 .html essays even CONTAIN ref-marker tags?**
+- Discovery subagent claimed 158 `<sup class="ref-marker">` tags across 05_1..05_9 (05_3=25), with 05_3 examples referencing `ACCRUAL_*`.
+- Grep-sweep subagent (18 tool-uses) claims ZERO `ref-marker` tags in ANY b5 .html; zero retired tokens.
+- 05_3-enumerator subagent hit a context ceiling, NEVER read the file.
+- I tried to Read 05_3 myself to settle it — BLOCKED by the %-of-window Read gate (27%). NOT yet ground-truthed. Two subagents directly conflict → trust NEITHER; my own eyes decide.
+- >>> RESOLVE IMMEDIATELY AFTER COMPACT: directly Read `05_3-brain-guard.html` with my OWN eyes. If `ref-marker` tags exist → discovery was right, proceed to enumerate + verify Family #1's tags. If they DON'T → discovery FABRICATED its examples; the tags likely live in the gitignored `.md` SOURCE as `*[ref: slug | pointer | summary]*` (blog/CLAUDE.md: generator converts `.md` italic-bracket refs → `<sup class="ref-marker">` in `.html` — so HTML has them ONLY IF regenerated; some essays may be stale). Re-scope where the tags actually are before any fix.
+
+**SESSION-2 RE-GROUNDING (corroboration on the contradiction — own-eyes read STILL the decider):**
+- Two INDEPENDENT documentation sources now corroborate the DISCOVERY subagent (tags EXIST in `.html`), against the grep-sweep's zero:
+  1. `blog/CLAUDE.md` Content Workflow: `.html` is the committed source of truth; the generator converts `.md` italic-bracket `*[ref: slug | pointer | summary]*` → `<sup class="ref-marker">` in `.html`.
+  2. THIS file's "9 sub-essays" table: every essay carries a Refs count (05_3 = 13) AND line ~106 records "Ref-tag density ≥80% verified across all 9 essays by blog-ref-tag-auditor v0.3 dim R8".
+- PRIOR now shifts strongly to: ref-marker tags DO exist in the b5 `.html`; the grep-sweep ZERO is the likely-wrong report (wrong token / wrong dir / fabrication). Per D2 ground-truth, my OWN-eyes Read of `05_3-brain-guard.html` STILL decides before I count any family.
+- COUNT-MISMATCH to check during enumeration: discovery said 05_3 = 25 tags; the table Refs column says 13. If both `.md` and `.html` carry tags, a mismatch may mean the `.html` is STALE vs its `.md` source — itself a possible drift signal (moved/renamed or regeneration lag).
+
+**✅ CONTRADICTION RESOLVED (own-eyes Read of `05_3-brain-guard.html`, session-2):**
+- The `.html` CONTAINS **25 `ref-marker` tags** — I enumerated them directly. The DISCOVERY subagent (25) was RIGHT; the grep-sweep subagent (ZERO) FABRICATED → dismissed per D2 / Rule 23. Done-check by `grep -c 'class="ref-marker"'` on the `.html` is confirmed feasible.
+- The b5-table "Refs" column (13) is a STALE/different tally (likely counted `.md` italic-brackets at an earlier regen); the live `.html` is the source of truth for the fix. Table can be corrected during CONDENSE, low priority.
+
+**CANDIDATE FAMILY #1 — accrual → %-of-window supersession (retired-mechanism, Class A). 4 tags located in 05_3 by own-eyes read; impl re-verification in progress:**
+- The 4 accrual-family `ref-marker` tags in `05_3-brain-guard.html` (identified by their `title=`):
+  1. slug `a-pre-call-sensor-reads` (body ¶ "A pre-call sensor reads…") — pointer `config.conf (ACCRUAL_SOFT / ACCRUAL_READ_BLOCK / ACCRUAL_CRITICAL) + brain-memory.md "Accrual-anchored boundaries"`; summary quotes `ACCRUAL_SOFT=120000` etc.
+  2. slug `tier-positions-are-tunable` — pointer `context-gate.sh "GRADUATED HARD-GATE, ACCRUAL-ANCHORED" header`; summary quotes the accrual bands.
+  3. slug `accrual-boundaries-tunable-config` — pointer `config.conf (ACCRUAL_*) + brain-memory.md "Accrual-anchored boundaries"`.
+  4. slug `tier-count-customizable` — pointer `config.conf (ACCRUAL_*) + context-gate.sh "GRADUATED HARD-GATE"`.
+- CANONICAL current design (auto-injected root CLAUDE.md + .claude/CLAUDE.md): **%-of-window** (owner ruling 2026-07-09) — `CONTEXT_READ_PCT` 25% / `CONTEXT_CRITICAL_PCT` 30% of `MAX_CONTEXT_TOKENS`, NO baseline, NO accrual; explicitly "supersedes the 2026-07-04 accrual-anchored boundaries."
+- NEXT: ground-truth the LIVE `config.conf` (are ACCRUAL_* deleted → CONTEXT_*_PCT?) + the LIVE `brain-memory.md` boundaries section name (is it now "%-of-window boundaries"?). Only after own-eyes impl confirm do I COUNT Family #1 as verified problem #1. Body prose ALSO teaches accrual, but per FIX-DEPTH="Tags only" I fix ONLY these tags and record body-prose drift as a follow-up note.
+
+**✅ FAMILY #1 VERIFIED — problem #1 of 5 (own-eyes LIVE config.conf, session-2):**
+- `config.conf` L14-15: "CONTEXT-GATE trigger points — %-of-WINDOW (owner ruling 2026-07-09 — supersedes the accrual-anchored ACCRUAL_SOFT / ACCRUAL_READ_BLOCK gate knobs)". Live gate knobs: `CONTEXT_SOFT_PCT=20` / `CONTEXT_READ_PCT=25` / `CONTEXT_CRITICAL_PCT=30`. `ACCRUAL_SOFT` + `ACCRUAL_READ_BLOCK` are DELETED. → the 4 accrual-family tags in 05_3 are RETIRED-MECHANISM (Class A) drift. CONFIRMED.
+- FIX NUANCE (banked to compaction Assumptions & Risks): `ACCRUAL_CRITICAL=180000` is RETAINED (heartbeat tempo + stop-gate wedge-yield, via accrual-helper.sh) — the reduction must NOT say all accrual is dead; reduce ONLY the context-gate tags → `CONTEXT_*_PCT`. Before reducing, own-eyes VERIFY the correct target names: brain-memory.md section (likely renamed "Accrual-anchored boundaries" → "%-of-window boundaries") + context-gate.sh header (may no longer say "ACCRUAL-ANCHORED").
+
+**SCAN FAN-OUT (session-2, in flight) — 4 observe-contradiction-finder subagents scanning the other 8 b5 essays for candidate drifted tags (I verify every flag with my own eyes before counting):**
+- A → 05_4-job-core + 05_5-interaction-summary (watch: retired `plan_state`/seal; summary bypass-list change).
+- B → 05_6-question-discipline + 05_9-customization-guardrail (watch: retired points/`[POINT-BOOST]`/multiplier → min-max gate; guardrail OR-gate not "single/AND/gmode-only").
+- C → 05_7-claude-md-hierarchy + 05_8-historian-ratchet (watch: root/.claude CLAUDE.md renamed SECTION pointers = Class C dead links; condense-waterfall + historian "Step 1-4" mechanics).
+- D → 05_1-two-layer + 05_2-plugin-integrity (watch: always-on roster/count; plugin_integrity registry counts; OR-gate).
+- Each subagent flags {essay·slug·class·tag-text·impl-evidence·confidence} + reports per-essay tag COUNT. Family-grouping heuristic: group flagged tags by the SUPERSEDING IMPLEMENTATION EVENT (one code change = one family across essays).
+
+`[AGENT-UPDATE]`{observe-contradiction-finder | scanner B bailed at 26%-of-window: subagents inherit the heavy injected-CLAUDE.md baseline (~26% of 1M) which nearly fills the 25% Read-block, leaving no room to Read essay HTML — but it BAILED instead of falling back to Grep, which the context-gate does NOT block (matcher is Read|Edit|Write|MultiEdit only). | direction: when the %-of-window Read block trips, fall back to Grep/Bash (ungated) to extract ref-marker tags + grep impl tokens; do NOT bail on the whole dispatch. Give ref-tag-scan subagents a Grep-first method so the injected baseline never starves the scan.}
+- METHOD ADAPTATION (this run): if the other 3 scanners also bail on context, re-run the scan via my own targeted Grep (Grep is NOT context-gated) OR re-dispatch Grep-first. Do NOT let the injected baseline block the hunt.
+
+**CANDIDATE FAMILY #1 — accrual → %-of-window supersession (retired-mechanism). Impl-change CONFIRMED; TAG-LEVEL UNVERIFIED — NOT counted as a found problem yet.**
+- CONFIRMED by my OWN read of `.claude/plugins/brain_guard/config.conf`: gate knobs are now `CONTEXT_SOFT_PCT`/`CONTEXT_READ_PCT`/`CONTEXT_CRITICAL_PCT` (%-of-window); `ACCRUAL_SOFT`/`ACCRUAL_READ_BLOCK` DELETED; comment L14-15 "supersedes the accrual-anchored … gate knobs" (2026-07-09). The retired MECHANISM is real.
+- Corroborated by `.claude/plugins/brain_guard/CLAUDE.md` "%-of-window boundaries": old `SOFT/READ/CRITICAL_THRESHOLD_TIER` knobs RETIRED.
+- UNVERIFIED: whether any 05_3 TAG actually points at the retired accrual knobs — this came ONLY from the discovery subagent's example, DIRECTLY CONTRADICTED by the grep-sweep. Do NOT count until read with my own eyes. Once confirmed: fix = REDUCE each such tag to the %-of-window pointer (`config.conf CONTEXT_*_PCT` + brain-memory.md current "%-of-window boundaries" section), no line numbers.
+
+**PROCESS INSIGHT (banked):** Reading a CLAUDE.md auto-includes its whole PARENT CHAIN (root + .claude/ + plugins/ + brain_guard/), which balloons accrual FAST and trips the heartbeat + cadence gates. In observe: prefer reading IMPLEMENTATION files (`config.conf`, `.sh`, non-CLAUDE `.md`) and the essay `.html` directly; delegate breadth to subagents; avoid reading CLAUDE.md chains once the local one is in hand.
+
+**Issue-class taxonomy (emerging) + family-grouping heuristic:**
+- Class A — retired-mechanism pointer: tag names a knob/section/mechanism that was superseded.
+- Class B — stale summary: summary prose describes behavior the code no longer does.
+- Class C — moved/renamed pointer: file/section renamed or relocated (dead link).
+- **Family-grouping heuristic:** group drifted tags by the SUPERSEDING IMPLEMENTATION EVENT — one code change (e.g. the 2026-07-09 %-of-window ruling) drifts every tag that referenced the old model, across essays. A "family" = all tags keyed to one retired mechanism. This is the reusable lesson for a future run.
+
+**✅ SESSION-3 — CANDIDATE VERIFICATION COMPLETE (own-eyes via a Grep-first subagent returning verbatim tag text):**
+
+**✅ FAMILY #2 VERIFIED — problem #2 (moved/renamed, Class C). 1 tag in `05_7-claude-md-hierarchy.html`:**
+- Tag (line 167), slug `footers-replace-chat-working-memory`, pointer cites `phase_condense/docs/principles.md "Principle 9 — Five Markers as Cross-Phase Signal System" section`.
+- LIVE heading (principles.md line 93): `### 9. Five CONDENSE Markers as Cross-Phase Signal System`. The section was RENAMED — `Principle 9 —` → `9.` AND `Five Markers` → `Five **CONDENSE** Markers`. Dead-link (Class C) CONFIRMED.
+- FIX (Tags only): repoint the tag's section title to the live heading `9. Five CONDENSE Markers as Cross-Phase Signal System`; keep slug + summary. Deterministic grep-at-zero: the old string `Principle 9 — Five Markers` must return 0 in 05_7.
+
+**❌ 05_9 candidate DISMISSED — NOT a family (issue-class: naive-grep false-positive):**
+- All 5 flagged tags (lines 120/137/139/151/212 in `05_9-customization-guardrail.html`) cite CORRECT references. The guardrail admission IS an OR-gate; the tags correctly state the block "fires iff both arms fail" — that is the right design, not drift.
+- Root cause: the session-2 scanner used a naive bare-token AND grep with NO verbatim tag text (D2/Rule-3 fabrication risk). Own-eyes verbatim read clears it. Record issue-class "naive-grep false-positive" — do NOT count.
+
+**NET VERIFIED FAMILY COUNT = 2 (target was 5):**
+- Family 1 — accrual → %-of-window (Class A retired-mechanism): 4 tags in `05_3-brain-guard.html`.
+- Family 2 — Five-Markers section renamed (Class C moved/renamed): 1 tag in `05_7-claude-md-hierarchy.html`.
+- Priority classes (retired-mechanism / stale-summary / moved-renamed) across all 9 essays yield ONLY these 2. The deprioritized classes (missing-tag coverage, stale COUNTS like the 05_3 table 13-vs-25 mismatch) were NOT scanned toward the five (per user steering). Corpus genuinely holds fewer than 5 priority-class families — do NOT invent problems (family-vs-instance).
+- >>> ARCHITECT DECISION — ANSWERED (Fable, session-3). Superseded by the binding steering below.
+
+**✅ ARCHITECT STEERING (Fable, session-3) — DEFINITION OF DONE REPLACED (binding):**
+
+A ref-tag exists for ONE job: keep a blog paragraph in sync with the CODE and the `.claude/context/` directory. The review is complete only when EVERY b5 essay (all 9: 05_1..05_9) is checked OWN-EYES (Grep-first, deterministic) against the FULL 5-class failure taxonomy:
+1. **MISSING tag** — a paragraph makes a code/context claim with no ref-tag anchoring it.
+2. **WRONG info** — the tag's claim is incorrect.
+3. **TOO-MUCH** — the tag over-scopes / claims more than the code/context supports.
+4. **OUT-OF-SYNC vs CODE** — the tagged claim drifted from the code (stale COUNTS, renamed symbols).
+5. **OUT-OF-SYNC vs context/** — the tagged claim drifted from the `.claude/context/` directory.
+
+**Binding corrections to my prior framing:**
+- The count is an OUTPUT of complete coverage, NOT a target. "5" was never a quota — do NOT invent problems to reach it, do NOT stop at 2. Whatever truly surfaces (2, 5, 7) is the answer.
+- My "2" was a NARROWED-LENS artifact: I deprioritized missing-tags (class 1) + stale-COUNTS (class 4) — the MOST central thing a ref-tag is FOR. The `05_3` table 13-vs-25 mismatch IS a real class-4 ref-tag defect, not a nicety.
+- The 6 "clean" essays are subagent-claimed (Rule 3) against a narrow lens — CANNOT conclude a count on unverified clean claims; re-scan own-eyes.
+- Fold prior option-2 (deprioritized classes) + option-3 (re-scan the clean) into ONE pass across all 9 essays × all 5 classes, Grep-first.
+- Then fix Tags-only with a grep-at-zero per family; record every issue-class (incl. the 05_9 naive-grep false-positive). Deliver to the architect the verified families + per-family deterministic grep when coverage is complete.
+
+**SCAN IN FLIGHT (session-3, 5 Grep-first `observe-contradiction-finder` subagents, all 9 essays × 5 classes):**
+- A → 05_1 + 05_2 · B → 05_3 (heavy, incl. the TRUE ref-marker tag count) · C → 05_4 + 05_5 · D → 05_6 + 05_7 · E → 05_8 + 05_9.
+- Each returns verbatim tag title + verbatim live-code/context evidence + class(1-5) + confidence. I own-eyes verify EVERY flag against the live file before counting (Rule 3 / D2).
+
+**SCAN FINDINGS (session-3, 4 of 5 scanners returned; 05_6/05_7 pending):**
+
+*True ref-marker COUNTS (grep -c per essay):* 05_1=14, 05_2=17, 05_3=25, 05_4=18, 05_5=8, 05_8=14, 05_9=25 (05_6/05_7 pending).
+
+*Candidate families (own-eyes verify each flag before final count):*
+- **F1 — accrual → %-of-window supersession (class 2 + 4).** `05_3` GROWS to 5 tags: L125 (class-2 WRONG summary — "hard gate at ACCRUAL_READ_BLOCK / baseline+~160k") + L141/L143/L193/L203 (class-4 retired `ACCRUAL_SOFT`/`ACCRUAL_READ_BLOCK` knobs). Live = %-of-window `CONTEXT_*_PCT` (owner ruling 2026-07-09; `ACCRUAL_CRITICAL` RETAINED for heartbeat/stop-gate). Grep-at-zero: `ACCRUAL_SOFT\|ACCRUAL_READ_BLOCK` inside 05_3 ref-markers → 0.
+- **F2 — Five-Markers section renamed (class 4).** `05_7` L167 tag `footers-replace-chat-working-memory` cites `Principle 9 — Five Markers…`; live heading = `9. Five CONDENSE Markers as Cross-Phase Signal System`. Grep-at-zero: `Principle 9 — Five Markers` → 0.
+- **F3 (candidate) — embedded LINE-NUMBERS in ref-tags (class 4 + Rule-20 violation).** `05_1` L190 tag `single-concern-principle-minimize-rule` cites `(line 85)`→live 87 and `at line 240`→live 277. Line numbers are BANNED by Rule 20 everywhere — so this is drift AND policy. Need a full-corpus grep for tags carrying `line [0-9]` / `:[0-9]` to size this family.
+- **F4 (candidate) — b5 CLAUDE.md "9 sub-essays" table Refs column stale (class 4, architect-named in-scope).** Table Refs vs live grep -c: 05_3 says 13 / live 25; 05_4 says 12 / live 18. Collect all 9 rows' stated-vs-live and correct.
+
+*Clean so far (subagent-claimed; own-eyes still owed):* 05_2 (17 tags), 05_5 (8), 05_4 (except the table count). 05_9: the 5 OR-gate tags (L120/137/139/151/212) CONFIRMED correct — false-positive retracted.
+
+*COVERAGE GAPS — must close before concluding the count:*
+- Class-1 (MISSING) under-verified for 05_1/05_2 (subagent grep couldn't scan full paragraphs).
+- 05_8: only a few tags verified; 05_9: 20 of 25 tags unchecked (classes 1/3/4/5). Both scanners hit the ~26%-of-window injected-CLAUDE.md baseline → Read-block at 25% → bailed (recurring subagent-balloon).
+- 05_6/05_7 scanner still in flight (may also bail).
+- **METHOD FIX:** narrow single-essay PURE-grep subagents (NEVER Read, targeted greps only, compact output) + one DETERMINISTIC banned-token/line-number grep pass across all 9 (deterministic per architect's grep-at-zero).
+
+**SESSION-4 — FULL-TAXONOMY COVERAGE PASS (re-grounded post-4th-compact; heartbeat debt paid via 9 reflections into fresh compaction file):**
+
+Executing the architect's binding done-definition: EVERY b5 essay (all 9) own-eyes Grep-first against ALL 5 classes (1 MISSING · 2 WRONG · 3 TOO-MUCH · 4 out-of-sync-vs-CODE · 5 out-of-sync-vs-context). Count is an OUTPUT of complete coverage, never a target.
+
+- **5 grep-only `observe-contradiction-finder` scanners dispatched** (method: PURE-Grep, NEVER Read the HTML — subagents balloon on the ~26% injected baseline; Grep is not context-gated). Each returns verbatim tag line + verbatim live-code/context evidence + class(1-5) + confidence. **I own-eyes verify EVERY flag before it counts (Rule 3 / D2).**
+  - S1 → 05_6 (full) + 05_5 (re-scan "clean")
+  - S2 → 05_7 (full 22 tags; confirm F2 @ L167 + find others)
+  - S3 → 05_9 (all 25; the 20 unverified beyond the 5 OR-gate tags)
+  - S4 → 05_2 + 05_4 (re-scan "clean"; watch retired `plan_state`, count drift)
+  - S5 → 05_1 (line-numbers → F3) + 05_8 (historian count → F5) + 05_3 (the other ~20 tags beyond F1)
+- **Standing families carried in:** F1 accrual→%-of-window (05_3, 5 tags, VERIFIED) · F2 Five-Markers rename (05_7 L167, VERIFIED) · F3 line-numbers corpus-wide (candidate, false-positive strip owed) · F4 b5 table Refs stale (candidate) · F5 historian centralization (05_8, candidate).
+- **NEXT after scanners return:** own-eyes verify each flag → strip F3 false-positives (dates/versions/Groups) → land FINAL family count + per-family deterministic grep-at-zero → write forward Ve criteria → raise ONE done-[WAITING] to the architect (families + greps; architect calls done, never self-close).
+
+**SCAN RETURNS — S1 (05_6+05_5) + S2 (05_7). Candidates below; own-eyes verification still OWED before any counts:**
+- **05_5 — CLEAN** (8 tags, all grep-evidenced against live `interaction_summary/**`; no BYPASS_PREFIXES token, correctly absent). Own-eyes spot-check low-risk but owed.
+- **05_6 — 1 candidate:** L151 slug `coverage-uneven-by-design` still frames the retired `[POINT-BOOST]` per-prefix "maturation question" as OPEN; live registry = 9 active prefixes, no `[POINT-BOOST]` (retired). Class 4 retired-mechanism. ⚠️ CROSS-CHECK: the b5 Current-Posts note says this tag was "emptied" in commit f522501 (points-retirement) — VERIFY the CURRENT L151 tag text own-eyes before counting (may already be reduced).
+- **05_7 — F2 CONFIRMED** (L167 `footers-replace-chat-working-memory`: `Principle 9 — Five Markers` → live `9. Five CONDENSE Markers as Cross-Phase Signal System`). **PLUS 3 line-number tags → FOLD INTO F3 (line-number family):** L161 `asymmetry-is-intentional-forward-write` (cites `section-check.sh line 276 / 282-291`), L183 `second-consequence-altered-list` (cites `execute-guard.sh Comment line 822`), L185 `claude-md-edits-gate-execution` (cites `plan-tracker.sh comment line 126`). All Rule-20 violations regardless of whether the number is currently right.
+- **F3 is emerging as the BIG cross-essay family** (line numbers in tag pointers): 05_1 (L190), 05_7 (L161/183/185), + pending 05_2/others. ONE family (one policy = Rule 20), many instances. Grep-at-zero target: no `line [0-9]` / `:[0-9][0-9]` inside any b5 ref-marker title.
+
+**✅ SOURCE-OF-TRUTH RESOLVED (session-5, own-eyes `blog/CLAUDE.md` Content Workflow + b5 line 142):**
+- **`.html` = committed source-of-truth** (served + git-tracked), GENERATED by `python3 tools/generate_blog_html.py <slug>.md <slug>.html`. **`.md` = editable source** (gitignored, local-only). Ref-marker `<sup class="ref-marker" title="ref: slug | pointer | summary">` tags are converted FROM the `.md` italic-bracket `*[ref: slug | pointer | summary]*`.
+- **FIX MECHANIC (execute, tags-only):** edit the `*[ref: …]*` bracket in the `.md` → regenerate the `.html` (or edit both directly) so BOTH end consistent; per Rule 32 fix source-of-truth not just output. **Grep-at-zero done-check runs on `.html`** (the committed surface); also confirm `.md` so a future regen never reintroduces drift.
+- RISK RETIRED: editing `.html` is NOT wasted-by-rebuild — the `.md`→`.html` pair is the intended flow; just keep both in sync.
+
+**SESSION-5 — FULL-TAXONOMY COVERAGE PASS (re-grounded post-5th-compact; heartbeat paid via 6 reflections):**
+- Executing the architect's binding done-def: EVERY b5 essay own-eyes Grep-first × all 5 classes. Count = OUTPUT of coverage, never a target.
+- **7 PURE-Grep scanners dispatched** (never Read whole HTML — subagents balloon on the injected baseline; Grep is not context-gated): S1→05_1 · S2→05_2+05_5 · S3→05_3 · S4→05_4+05_6 · S5→05_7 · S6→05_8+05_9 · S7→deterministic line-number sweep (all 9, owns F3 sizing). Each returns verbatim tag title + verbatim live evidence + class(2-5); **I own-eyes verify EVERY flag before it counts (Rule 3 / D2).**
+- **Standing VERIFIED (persisted, survive clears):** F1 accrual→%-of-window (05_3, 5 tags: L125 wrong-summary + L141/L143/L193/L203 retired ACCRUAL_SOFT/ACCRUAL_READ_BLOCK; ACCRUAL_CRITICAL RETAINED) · F2 Five-Markers rename (05_7 L167 `Principle 9 — Five Markers` → `9. Five CONDENSE Markers…`).
+- **Candidates to size own-eyes:** F3 line-numbers (S7) · F4 stale-COUNTS (b5 table + any in-essay count) · F5 historian centralization (05_8) · 05_6 L151 `coverage-uneven-by-design` (may already be reduced by commit f522501 — verify current text).
+- **NEXT after scanners return:** own-eyes verify each flag → strip F3 false-positives (dates/versions/counts are LEGAL; only file:line POINTERS violate Rule 20) → land FINAL family count + per-family deterministic grep-at-zero → write forward Ve criteria → raise ONE done-[WAITING] to the architect (families + greps; architect calls done).
+
+**SCAN RESULTS — batch 1 (S1 05_1 / S2 05_2+05_5 / S3 05_3 returned; own-eyes verification PENDING per Rule 3 / D2):**
+- **05_3 = 25 tags. F1 GROWS to 7 tags** (scanner 100%-conf, each cited live config.conf): L125, L141, L143, **L145 (NEW — `file-size-ramp` summary quotes "baseline+~120k/~160k/~180k")**, L193, **L201 (NEW — `dispatch-mechanism-customization`; WEAK — its pointer is `BRAIN_GUARD_WINDOW_NAME` dispatch knobs, only a SECONDARY accrual mention)**, L203. Core 5 (L125/141/143/193/203) match prior verified set. OWN-EYES SPOT-CHECK L145 + L201 before counting (L201 may be partial/false — a tag whose PRIMARY pointer is fine).
+- **05_1 = 14 tags. 1 flag → F3 (line-numbers):** L190 `single-concern-principle-minimize-rule` cites `line 85` + `line 240` (→ live 237) in `execute-guard.sh`. Summary CORRECT; only the line-numbers drift → F3 instance (strip line-nums, keep file+section pointer).
+- **05_2 = 17 tags. 1 WEAK flag (likely FALSE-POSITIVE):** L166 `prefix-registry-current-entries` cites "9 active prefixes" — scanner ITSELF says the tag "correctly names 9". OWN-EYES: if live registry count = 9, DISMISS (a nicety "should enumerate", not drift).
+- **05_5 = 8 tags. 1 flag UNVERIFIED — scanner quoted MY b5-note text, NOT the live tag (D2 fabrication risk):** claimed a tag cites `prefix-registry.conf:20` (scanner says file nonexistent). Scanner CONFLATED interaction_summary with question_discipline's hardcoded registry — DO NOT TRUST. MUST own-eyes read the actual 05_5 tag AND check whether interaction_summary has its OWN bypass-list/config file.
+- **Still to launch (min-max paced):** S4 (05_4+05_6), S5 (05_7), S6 (05_8+05_9), S7 (deterministic line-number sweep → F3 corpus sizing).
+
+**SESSION-6 — CONVERGENCE PLAN (behavioral fix: STOP re-dispatching scanner fan-outs; they balloon on the ~26% injected baseline + compact before verification lands. Scanner FLAGGING is DONE — the missing step is OWN-EYES Read verification, which the architect MANDATED over delegation: "re-scan them yourself," "cannot conclude a count on unverified clean claims."):**
+- **Method this run:** own-eyes **Read** each essay (known paths — the guard-endorsed observe tool for named files), bank per-essay class-1..5 verdicts IMMEDIATELY after each (min-max synthesis + continuity), carry the rest at self-compact so sessions COMPOUND, never re-scan.
+- **Standing VERIFIED (survive clears):** F1 accrual→%-of-window (05_3: L125 wrong-summary + L141/L143/L193/L203 retired ACCRUAL_SOFT/ACCRUAL_READ_BLOCK; ACCRUAL_CRITICAL RETAINED) · F2 Five-Markers rename (05_7 L167 `Principle 9 — Five Markers` → `9. Five CONDENSE Markers…`).
+- **Own-eyes verification ledger (✅=done this pass / ⬜=owed):**
+  - ⬜ 05_1 (14 tags) — confirm F3 L190 line-nums; scan 13 others + class-1 missing.
+  - ⬜ 05_2 (17 tags) — verify L166 "9 prefixes" (dismiss if live=9); scan rest.
+  - ⬜ 05_3 (25 tags) — F1's 5 core VERIFIED; spot-check L145/L201 candidates; scan other ~18 + missing.
+  - ⬜ 05_4 (18 tags) — "clean" claim UNVERIFIED; own-eyes all + table-count note.
+  - ⬜ 05_5 (8 tags) — resolve the interaction_summary/question_discipline registry confusion own-eyes.
+  - ⬜ 05_6 (15 tags) — L151 `coverage-uneven-by-design`: may ALREADY be reduced by commit f522501 — read CURRENT text.
+  - ⬜ 05_7 (22 tags) — F2 VERIFIED; F3 L161/L183/L185 line-nums; scan rest + missing.
+  - ⬜ 05_8 (14 tags) — F5 historian-centralization candidate; own-eyes all.
+  - ⬜ 05_9 (25 tags) — 5 OR-gate tags CONFIRMED correct; 20 others owed.
+- **Family status:** F1 ✅ · F2 ✅ · F3 (line-numbers, Rule-20) candidate — CONFIRMED instances 05_1 L190 + 05_7 L161/183/185, needs corpus sizing + false-positive strip (dates/versions/counts are LEGAL; only file:line POINTERS violate) · F4 (stale-COUNTS) candidate · F5 (historian 05_8) candidate.
+- **Then:** land FINAL family list + per-family deterministic grep-at-zero → PLAN (Stage-1, `set-plan-file false`) → EXECUTE tags-only fixes (`.md` bracket + `.html` regen per source-of-truth) → VERIFY greps-at-zero → raise ONE done-[WAITING] to architect (families + greps; architect calls done — hold the F4-scope question: is the b5-CLAUDE.md table a ref-tag defect or out-of-scope working-memory?).
+
+**✅ 05_1 OWN-EYES COMPLETE (session-6):**
+- **True tag count = 15** across 14 lines (L186 carries TWO tags on one line). ⚠️ `grep -c 'class="ref-marker"'` under-counts (14) — the deterministic done-grep must use `grep -o` for accurate per-essay counts.
+- **F3 CONFIRMED (line-numbers):** L190 `single-concern-principle-minimize-rule` contains literal `(line 85)` + `at line 240` in its title= pointer → Rule-20 violation. Fix: strip the two `line N` clauses, keep the `execute-guard.sh (PHASE_SH import + phase.sh current call)` file+section pointer.
+- **NEW — 05_1 L136 stale quoted-summary** (`cognition-as-memory-multi-form`, class-2 WRONG + class-4 stale-COUNT): summary quotes `.claude/CLAUDE.md` Components as `"...The sole reference for building and decision-making"` — LIVE `.claude/CLAUDE.md ### knowledge/` reads `"the durable, monotonically-growing reference for building and decision-making"` (no "sole"). AND quotes `knowledge/identity/` = `"INDEX + 5 deep-dives"` — LIVE reads `"INDEX + one deep-dive per identity fact"`; identity now carries **6** facts. Verified against injected live `.claude/CLAUDE.md`. Tags-only fixable.
+- **Owed quote-verification (tags quoting plugin CLAUDE.md / settings.local.json — read those live files once, targeted pass):** L138 + L186a `brain_guard/CLAUDE.md Objective+Status` ("context-aware self-compact loop" / "Feature #1 … LIVE in two dispatch modes" — SUSPECT post phasic-compaction upgrade); L142 `settings.local.json` hook list; L184 + L186b plugin Objective quotes.
+- **Class-1 (missing):** clean — every code/context-claim ¶ carries a tag; analogy/transition/roadmap ¶s correctly untagged.
+
+**✅ 05_2 OWN-EYES COMPLETE (session-6) — F3 IS THE DOMINANT FAMILY:**
+- **17 tags.** **KEY POLICY POINT:** current ref-tag policy (revised Rule 20, 2026-06-10, canonical in `.claude/context/identity.md` "ref-tag" + blog/CLAUDE.md "ref-tag" term) bans line numbers **EVERYWHERE** — the OLD "stable plugin code MAY keep file:line" exception is RETIRED. So EVERY ref-marker title carrying a `line N` / `:NN` / `L<digit>` file:line pointer is an F3 defect, incl. plugin-code pointers.
+- **F3 (line-numbers) in 05_2 = 6 tags:** L119 (`(L11)(L23)(L43)(L53)(L123)(L153)` → settings.local.json hook lines) · L143 (`phase.sh L340-365/L343/L361/L364-365`) · L156 (`safe-lock.sh L283-305`) · L164 (`line 222`) · L168 (`line 269`) · L170 (`lock-manager.sh L182-198` + `L60-65`). Fix = strip the line-number clauses, keep file+section/function pointer.
+- **F4 (stale-COUNT) candidates in 05_2 (class-4 — counts are LEGAL but a WRONG count is drift; verify against LIVE plugins/CLAUDE.md before counting):** L141 test-counts `plugin_integrity 604/20, phase_observe 271/8, phase_plan 298/8, phase_execute 376/9, phase_verify 204/7, phase_condense ~288/13`; L162 `TIGHT-COMPLETE v0.10.1, 604 tests/20` (also attributed to `.claude/CLAUDE.md plugin_integrity row` — live `.claude/CLAUDE.md` has NO per-plugin version/count table → possible misattribution); L166 `9 active prefixes` + enumerated 9 (PLUGIN-LOCK/TEST-LOCK/GMODE/JOB-COMPLETE/JOB-APPROVE-CREATION/JOB-APPROVE-PLUGIN/REPEAT-JOB/REPORT-TO-UPSTREAM/WAITING) — MEMORY.md corroborates "9 active prefixes" → likely CORRECT, DISMISS if live registry=9.
+- **Owed quote-verify:** L133/L158 quote `plugin_integrity/CLAUDE.md` Objective (verbatim, likely stable); L139 quotes voice-id text; L152 unlock-briefing.
+- **Class-1 (missing):** clean.
+- **RESTRATEGY:** F3 is pervasive → it is almost certainly the LARGEST family and the cleanest deterministic grep (line-number pointer inside any ref-marker title → 0). Every essay must be swept for it.
+
+**✅ SESSION-7 — FULL-CORPUS COVERAGE via 3 PURE-GREP subagents (wedge broken: no whole-HTML reads in main session). All 9 essays now covered own-eyes-or-grep-evidenced against all 5 classes.**
+
+*Method fix that broke the 6-session wedge:* heavy scan → pure-grep subagents (verbatim return); main session holds only structured evidence + surgical targeted-line Reads. Banked to compaction Process Insight.
+
+**Subagent returns (all 3 back):**
+- **S-A (F3 line-number sweep, all 9):** F3 tags = 05_1 L190(1) · 05_2 L119/L156/L164/L168/L170(5) · 05_6 L129/L135/L141(3, NEW) · 05_7 L161/L183/L185 + L133(4, L133 NEW). 05_3/05_4/05_5/05_8/05_9 = 0 line-number tags. **TOTAL ≈ 13 tags.**
+- **S-B (05_4/05_5/05_6 content-drift):** ALL CLEAN (class 2/4/5). 05_4=18 tags, 05_5=8, 05_6=15 all verified vs live. **05_5 has NO bypass-list (removed 2026-05-18) → session-6 registry-confusion open thread CLOSED.** 05_6 "85 tests / 9 prefixes" correct; [POINT-BOOST] retired confirmed.
+- **S-C (05_3/05_8/05_9):** 05_3 F1 = exactly 5 tags (L125 class-2 wrong-summary + L141/L143/L193/L203 class-4 retired ACCRUAL_SOFT/ACCRUAL_READ_BLOCK); ACCRUAL_CRITICAL=180000 RETAINED (stop-gate). Rest of 05_3's ~20 tags CLEAN. **05_8 CLEAN (14 tags) → F5 historian-centralization DISMISSED (Step terminology consistent).** 05_9 CLEAN (25 tags, incl. 5 OR-gate).
+
+**FINAL FAMILY SLATE (ref-tag defects in ESSAY bodies):**
+- **F1 — accrual→%-of-window** (05_3, **5 tags** L125/L141/L143/L193/L203). Class 2+4. VERIFIED. Grep-at-zero: `grep -i 'ACCRUAL_SOFT\|ACCRUAL_READ_BLOCK' 05_3…html` → 0 AND `grep 'ACCRUAL-ANCHORED' 05_3…html` → 0.
+- **F2 — "Principle 9 — Five Markers" section renamed** (05_7 L167, **1 tag**). Class-4. VERIFIED. Grep-at-zero: `grep 'Principle 9 — Five Markers' 05_7…html` → 0 (live heading = `9. Five CONDENSE Markers as Cross-Phase Signal System`).
+- **F3 — line-numbers in ref-tag pointers** (Rule-20 bans everywhere), **14 tags** (05_1:1 L190 · 05_2:6 L119/L143/L156/L164/L168/L170 · 05_6:3 L129/L135/L141 · 05_7:4 L133/L161/L183/L185). Class-4 + policy. DOMINANT. Line refs appear in BOTH the pointer field (05_2 L119 `(L11)(L23)…`) AND the summary field (05_6 L135 `capture.sh:85-131`, 05_7 L133 `currently L4`) — the ban is whole-tag. Grep-at-zero: no `line [0-9]` / file`:NN` / `L[0-9]` file-location inside any b5 ref-marker `title=`.
+
+**CLASSES 1/3/5 — clean across the corpus:** 05_1+05_2 own-eyes class-1 clean (session-6); S-B/S-C found no class-1/3/5 in 05_3–05_9. Count is an OUTPUT of coverage → **3 in-essay ref-tag families** surface (F1, F2, F3); F5 dismissed.
+
+**⬜ OWN-EYES OWED before FINAL count (D2/Rule 3 — subagent flags never counted unverified):**
+- 05_6 L129/L135/L141 — NEW F3 flags, slugs+verbatim not yet own-eyed.
+- 05_7 L133 — NEW F3 flag, slug+verbatim not yet own-eyed.
+- 05_2 L143 — DISCREPANCY: session-6 own-eyes found it F3 (`phase.sh L340-365…`); S-A did NOT flag it. Settle by own-eyes (if F3, 05_2=6 not 5).
+
+**⚖️ F4 — SCOPE QUESTION FOR ARCHITECT (candidate, HOLD as [WAITING]):** the b5-CLAUDE.md "9 sub-essays" table **Refs column is stale vs live grep-c** — stale rows 05_3(13→25), 05_4(12→18), 05_6(13→15), 05_7(20→22), 05_9(16→25); correct rows 05_1/05_2/05_5/05_8. Architect named the "05_3 table 13-vs-25 mismatch" a real class-4 defect — BUT this table is **working memory in blog/b5/CLAUDE.md, not an inline essay ref-tag**. Genuine judgment: is F4 in-scope (fix the table) or out-of-scope working-memory (correct separately)? → ONE [WAITING] to architect alongside the family slate.
+
+**NEXT:** reset min-max gate via this synthesis → surgical Reads of the 4 owed F3 lines → land FINAL F3 count → raise ONE done-[WAITING] to architect (F1/F2/F3 families + per-family grep-at-zero + the F4-scope question) → on approval, advance observe→plan (Stage-1).
+
+**✅ SESSION-8 — OWED OWN-EYES CLOSED (surgical targeted-line Reads, verbatim tag text):**
+
+*F3 (line-number) confirmations — all 5 owed lines verified F3 by their verbatim `title=` text:*
+- **05_6 L129** `pre-call-hook-walks-questions` — summary carries `line 135` → F3 ✓
+- **05_6 L135** `per-prefix-shape-gates` — summary carries `capture.sh:85-131` → F3 ✓
+- **05_6 L141** `waiting-current-vs-future-shape` — summary carries `gmode-gate.sh:54-63` → F3 ✓
+- **05_7 L133** `the-native-loading-is-layered` — summary carries `currently L4` → F3 ✓
+- **05_2 L143** `friction-tracks-danger-gmode` — summary carries `phase.sh L340-365`/`L343`/`L361`/`L364-365` → F3 ✓ (SETTLES the session-7 discrepancy: L143 IS F3; 05_2 F3 count = 6 confirmed).
+- **F3 FINAL = 14 tags CONFIRMED** (05_1:1 L190 · 05_2:6 L119/L143/L156/L164/L168/L170 · 05_6:3 L129/L135/L141 · 05_7:4 L133/L161/L183/L185). Grep-at-zero holds.
+
+*05_7 L131 `but-as-the-first-essay` — DISMISSED (false-positive):* pointer cites `blog/b1/01-llms-are-not-the-agents.md`; the body links `../b1/01-...html` LIVE and the `.md` exists locally (gitignored → Glob-skip artifact). Valid ref, not drift. Issue-class "naive-Glob false-positive" (same class as the 05_9 dismissal).
+
+**⚠️ NEW FAMILY SURFACED — F5 stale-quoted-summary (class-2): a ref-tag SUMMARY quotes verbatim text from a live file that has since changed.** Session-7's F3-focused pure-grep pass did NOT fold these in — genuine coverage gap (the architect warned: cannot conclude on unverified "clean" claims).
+- **05_1 L136** `cognition-as-memory-multi-form` — **CONFIRMED class-2** (verified against the ALREADY-INJECTED live `.claude/CLAUDE.md` this session): tag quotes `.claude/CLAUDE.md` knowledge/ as "…The **sole** reference for building and decision-making" — LIVE reads "the **durable, monotonically-growing** reference…" (no "sole"); tag quotes `knowledge/identity/` = "INDEX + **5** deep-dives" — LIVE reads "INDEX + **one deep-dive per identity fact**"; identity now carries **6** facts (root CLAUDE.md "Six facts about who you are"). Tags-only fixable (reduce quote → stable section pointer + accurate summary).
+- **05_7 L127** `drop-a-file-named-claude` — CANDIDATE (owed live-grep): quotes `brain_guard/hooks/CLAUDE.md` header as "# hooks/ — Status: Live — Feature #1 hooks shipped…" + count "116 CLAUDE.md files (111 carrying all four phase footers)". Needs own-eyes grep of the live file header + the file counts.
+- **05_1 L138/L142/L184/L186** — OWED quote-verify (session-6 carried): L138+L186a quote `brain_guard/CLAUDE.md` Objective+Status ("context-aware self-compact loop" / "Feature #1 … LIVE in two dispatch modes" — SUSPECT post phasic-compaction upgrade); L142 quotes `settings.local.json` hook list; L184+L186b plugin Objective quotes.
+- **Grep-at-zero (F5):** each confirmed stale quote's OLD verbatim string returns 0 inside its essay after fix.
+
+**>>> RESUME NEXT (session-8): dispatch ONE grep-first subagent to close the F5 owed quote-verifications (05_7 L127 + 05_1 L138/L142/L184/L186) against the LIVE files → finalize F5 membership → SET THE OBJECTIVE (empty for 8 sessions, blocks force-advance) → raise ONE done-[WAITING] to architect (F1/F2/F3/F5 families + per-family grep-at-zero + F4-table-counts scope question) → on architect steer, advance observe→plan (Stage-1, set-plan-file false).**
+
 ---Pl---
 
 ---Ex---
