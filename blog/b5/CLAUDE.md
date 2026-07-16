@@ -286,4 +286,25 @@ The audit correctly caught grep-only over-confidence: grep-at-zero proves the OL
 
 **Remaining (EXECUTE + done):** VERIFY→EXECUTE backward → fix 5 F5 tags (05_1×2 Objective, 05_7×1 principle-rename, 05_7×2 count) tags-only + correct the ---Ex--- ledger (05_7 → ✅ done S-13) → regen 05_1+05_7 `.html` → forward VERIFY → re-grep F5 zero → gap-5 F4 architect question + done-[WAITING] (architect calls done).
 
+## S-22 grep-at-zero RE-RUN (this session, post-clear) — CONFIRMED FAIL on committed `.html`; pure regen owed (md↔html desync, NOT a re-fix)
+
+The S-21 F5 `.md` fixes are all in place but 05_1.html + 05_7.html were NEVER regenerated (exactly the OWED note at the S-21 block). Main-session grep on the committed `.html` (each stale string, correct phrasing) → STILL PRESENT in ref-tag `title=`:
+- `05_1.html` **L138** `chat-session-not-where-memory-lives` + **L186** `long-before-the-model-runs` → `"context-aware self-compact loop"` (`.md` = fixed "finalize then clear-and-inject")
+- `05_7.html` **L127** `drop-a-file-named-claude` + **L230** `relationship-is-asymmetric-phasic-uses` → `"116 CLAUDE.md"` counts (`.md` = fixed "many … nearly all")
+- `05_7.html` **L222** `knowledge-directory-is-durable-layer` → `"Principle 6 — Subagents as Extractors"` (`.md` = fixed "6. Subagents as Extractors") — my first grep missed this (em-dash, not plain space)
+- `05_7.html` **L216** `brain-index-catalogs-plugins` → `"Voice Architecture (C2 lessons)"` (`.md` = fixed "Voice Architecture") — first grep missed (parens)
+
+`.md` confirmed fixed for all 4 → this is a md↔html regeneration gap, not stale `.md`. **NEXT (regen runs in VERIFY per the S-18 established pattern — EXECUTE blocks Bash for this job):** regen 05_1.html + 05_7.html → re-grep the 4 stale strings (correct phrasing) → 0 each → md↔html consistency spot-check → commit website → then F4 architect question + done-`[WAITING]` (architect calls done).
+
+**D2 LESSON (reaffirmed):** the async ground-truth subagent reported "all-zero-and-consistent" by INFERRING from commit messages + `blog/b5/CLAUDE.md` prose instead of running grep; main-session grep REFUTED it. Never accept an inferred grep count — reproduce it. (`[AGENT-UPDATE]` candidate: grep-at-zero dispatch prompts must forbid doc/commit inference and require the literal grep command + integer output.)
+
+## S-23 grep-at-zero PASS (architect ran the regen, Option 1) — F5 family VERIFIED on regenerated `.html`
+
+Architect regenerated 05_1.html + 05_7.html from the fixed `.md` via `generate_blog_html.py --version 20260704` (content-only diff: 05_1 +2/-2, 05_7 +4/-4 = the 5 F5 fixes, no other churn; still uncommitted at grep time). grep-at-zero on the regenerated `.html` (correct phrasing — em-dash / parens forms my first grep missed):
+- `05_1.html` `"context-aware self-compact loop"` → **0** (exit 1) ✅ · POSITIVE `"finalize then clear"` ×2 present (both `chat-session-not-where-memory-lives` L138 + `long-before-the-model-runs` L186 fixed)
+- `05_7.html` `"116 CLAUDE.md"` → **0** ✅ · `"Principle 6"` → **0** ✅ · `"Voice Architecture (C2 lessons)"` → **0** ✅ · POSITIVE `"6. Subagents as Extractors"` present + `"Voice Architecture"` (no C2) present
+- md↔html consistent by construction (regen from fixed `.md`).
+
+**⇒ F5 family COMPLETE on the (working-tree) `.html`.** Full verified slate now grep-at-zero clean: F1 (05_3, 6 tags) ✅ · F2 (05_7, 1 tag) ✅ · F3 (05_1/05_2/05_6/05_7, 14 tags) ✅ · F5 (05_1 L136 + the 5 S-21/S-22 tags + the 6th Voice-Arch tag) ✅. NEXT: commit the regenerated `.html` (website repo) → F4 architect scope call → done-`[WAITING]` (architect calls done).
+
 `[VOICE-UPDATE]`{verify-guard.bash-write (verify-guard.sh write-block regex) | The write-block regex matches a BARE `>` anywhere in the command, so read-only commands that merely redirect stderr (`find … 2>/dev/null`, `… 2>&1`) are FALSE-BLOCKED as "implementation work" in verify — the seed must strip all redirects to run a plain find/grep. Over-broad; `>` should match a FILE-redirect target, not fd-duplication/stderr-suppression. | direction: exclude fd-redirect forms (`[0-9]*>&[0-9]+`, `2>/dev/null`, `2>&1`) from the write-block `>` alternation (the segment-allow path already strips `[0-9]*>&[0-9]+` — mirror that in the `_wv_scan` write-block), OR steer the block voice to say "strip the `2>/dev/null` redirect; plain read-only find/grep is allowed."}
