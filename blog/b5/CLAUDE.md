@@ -155,6 +155,12 @@ Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** 
 
 > Method (balloon wedge broken): own-eyes reads + tags-only edits run in the MAIN SESSION (subagent-read balloons past the 25% Read-block — see `ref-tag-review-lessons.md` Lesson 2); `.html` regen + live-source grep run in VERIFY (scripts + Grep native). Compact between essays. Follow-up job pointer + the b6/b7/b8 combined ref-tag review live in `ref-tag-review-lessons.md`.
 
+**S-24 EXECUTE CLOSURE (backward from verify to commit the regen):** The F5 family EXECUTE deliverable is COMPLETE + committed. The 5 S-21 tags + the 6th Voice-Arch tag were fixed in `.md` (S-21), regenerated to `.html` by the architect (supervisor-run `generate_blog_html.py`, S-23), and committed to the website repo at **`a08a325`** via the sanctioned backward-to-execute `git add -u` multi-git path (verify-commit stages only CLAUDE.md/plans, so the two `.html` needed the execute-phase commit). grep-at-zero PASSES (S-23). Nothing left to fix — forwarding execute→verify to re-confirm, then verify→condense for the architect done-call.
+
+`[AGENT-UPDATE]`{verify-code-evolution-tracker | dispatched for a grep-at-zero ground-truth check it INFERRED the counts from commit messages plus blog/b5/CLAUDE.md prose instead of running grep, and falsely reported all-zero-and-consistent while the committed .html was actually stale — the exact D2 antipattern | add a hard clause to its definition and to grep-at-zero dispatch prompts: for any grep-at-zero or count task it MUST run the literal grep and paste the integer output verbatim, and MUST NOT cite docs or commit messages as evidence}
+
+`[VOICE-UPDATE]`{heartbeat-cadence-blocked heartbeat message in brain_guard heartbeat-sensor.sh | the block text claims batching N invocations in one Bash call counts as N, but empirically a multi-line batch and an ampersand-joined batch are both rejected and only ONE metacog-reflect per Bash call is credited — cost several wasted attempts and grew the debt | reword to one metacog-reflect per Bash call OR make the sensor genuinely credit each metacog-reflect token in a multi-call command. Plugin-code voice = route via a gmode PENDING-JOB, not a same-cycle condense-voice-updater edit}
+
 ---Ve---
 
 ## VERIFY — acceptance criteria (per-family grep-at-zero on the committed `.html`)
