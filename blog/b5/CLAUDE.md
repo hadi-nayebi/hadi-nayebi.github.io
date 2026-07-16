@@ -314,3 +314,42 @@ Architect regenerated 05_1.html + 05_7.html from the fixed `.md` via `generate_b
 **⇒ F5 family COMPLETE on the (working-tree) `.html`.** Full verified slate now grep-at-zero clean: F1 (05_3, 6 tags) ✅ · F2 (05_7, 1 tag) ✅ · F3 (05_1/05_2/05_6/05_7, 14 tags) ✅ · F5 (05_1 L136 + the 5 S-21/S-22 tags + the 6th Voice-Arch tag) ✅. NEXT: commit the regenerated `.html` (website repo) → F4 architect scope call → done-`[WAITING]` (architect calls done).
 
 `[VOICE-UPDATE]`{verify-guard.bash-write (verify-guard.sh write-block regex) | The write-block regex matches a BARE `>` anywhere in the command, so read-only commands that merely redirect stderr (`find … 2>/dev/null`, `… 2>&1`) are FALSE-BLOCKED as "implementation work" in verify — the seed must strip all redirects to run a plain find/grep. Over-broad; `>` should match a FILE-redirect target, not fd-duplication/stderr-suppression. | direction: exclude fd-redirect forms (`[0-9]*>&[0-9]+`, `2>/dev/null`, `2>&1`) from the write-block `>` alternation (the segment-allow path already strips `[0-9]*>&[0-9]+` — mirror that in the `_wv_scan` write-block), OR steer the block voice to say "strip the `2>/dev/null` redirect; plain read-only find/grep is allowed."}
+
+## S-25 grep-at-zero RE-CONFIRMED by own hand (this post-clear session) — full slate verified on the COMMITTED `.html`
+
+Fresh session; heartbeat debt paid (10 metacog-reflect into the empty seq-33 file) before touching project state. Website tree **CLEAN**, HEAD **`73961e9`** → working tree == committed source-of-truth. **D2 own-hand grep** (no subagent inference, no `2>&1` redirects — the verify-guard bare-`>` false-block):
+
+- **F1 `05_3`** — `grep -cE 'ACCRUAL_SOFT|ACCRUAL_READ_BLOCK|ACCRUAL-ANCHORED'` → **0** ✅ · guard `ACCRUAL_CRITICAL` = 1 (RETAINED as designed) ✅
+- **F2 `05_7`** — `grep -cF 'Principle 9 — Five Markers'` → **0** ✅
+- **F3** — ref-title extraction `grep -oE 'title="ref:[^"]*"'` then line-number hunt → **0** hits in all four; non-empty title counts **05_1=15 · 05_2=17 · 05_6=15 · 05_7=22** (real pass, not silent-empty) ✅
+- **F5 `05_1`** — stale `'context-aware self-compact loop'` → **0**, `'sole reference'` → **0**; POSITIVE `'finalize then clear'` = **2** ✅
+- **F5 `05_7`** — stale `'116 CLAUDE.md'` → **0**, `'Principle 6 —'` → **0**, `'Voice Architecture (C2 lessons)'` → **0**; POSITIVE `'6. Subagents as Extractors'` = **1** ✅
+
+**⇒ VERIFY COMPLETE on the committed `.html`: F1 ✅ F2 ✅ F3 ✅ F5 ✅** — every stale string absent, every positive fix present, tree clean. Prior-session own-eyes 1/3/5 coverage of all 9 essays (05_1..05_9) stands.
+
+### F4 ground-truth (own-hand live ref-marker counts) — D2 caught a stale "corrected" number
+
+Live `grep -oE 'class="ref-marker"' | wc -l` per essay: **05_1=15 · 05_2=17 · 05_3=25 · 05_4=19 · 05_5=8 · 05_6=15 · 05_7=22 · 05_8=14 · 05_9=25** (05_4 cross-checked via `title="ref:` = 19 too).
+
+⚠️ **KEY:** the "F4 corrected" count `05_4=18` carried in BOTH b5 CLAUDE.md L44 AND the F4 note (L76) is ITSELF STALE — live is **19** (likely the post-2026-05-19 B5.4 3-ref-tag cascade). The archival `b5-series-reference.md` Refs column is stale too (05_3=13, 05_4=12, 05_6=13, 05_7=20, 05_9=16) — and that file lives in the **website** repo's `.claude/knowledge/` (the `../../` from `blog/b5/` resolves to the website root, NOT the agent root; earlier doc-link confusion resolved).
+
+**F4 = the SOLE remaining item, and it is an ARCHITECT SCOPE CALL** (a CONDENSE-phase working-memory edit if approved, not an essay-tag fix): stale counts sit in the archival table (already carries a "don't treat as authoritative" disclaimer from the architect's own de-bloat cabc5a7) + the b5 CLAUDE.md L44 inline mention (wrong 05_4=18). Options to offer: (a) correct all count refs to live values (05_3=25/05_4=**19**/05_6=15/05_7=22/05_9=25) in CONDENSE; (b) fix only the live b5 CLAUDE.md working-memory line, leave the archival table stale-but-disclaimed; (c) drop F4. **Next: hand off to architect via `[WAITING]` — the architect calls done, never the seed.**
+
+### ✅ F4 ARCHITECT DECISION (Fable, verbatim answer): "Correct all count refs"
+
+Architect chose option (a): **correct EVERY count reference to live values in CONDENSE** — both the live b5 CLAUDE.md line AND the archival table's disclaimer note. No table column re-added. **CONDENSE fix spec (exact):**
+1. **b5 CLAUDE.md body L44** — `05_4=18` → `05_4=19` in the `Live .html ref-marker counts (...)` sentence.
+2. **b5 CLAUDE.md ---Ob--- F4 note (L76)** — `05_4(12→18)` → `05_4(12→19)`.
+3. **`hadi-nayebi.github.io/.claude/knowledge/b5-series-reference.md`** — Refs column + the L19 disclaimer's "live counts" list corrected to the FINAL live slate: 05_1=15, 05_2=17, 05_3=25, **05_4=19**, 05_5=8, 05_6=15, 05_7=22, 05_8=14, 05_9=25. (All three are memory forms — CONDENSE-legal; none are essay .html tags.)
+
+`[KNOWLEDGE]`{ref-tag-review-lessons — F4/count-drift: even a doc's OWN stated "live count" goes stale. The "corrected" 05_4=18 was carried verbatim in TWO working-memory surfaces yet live `grep -o 'class="ref-marker"' | wc -l` = 19. LESSON: never trust a stated count in CLAUDE.md/knowledge as ground truth — re-grep the committed .html at fix time (D2 extended to "corrected" numbers). SECOND lesson (from the meta-audit): count ref-tags by OCCURRENCE (`grep -o | wc -l`), NOT by line (`grep -c`) — a line can carry 2 ref-markers (05_1 + 05_4 each have one), so `grep -c` undercounts. Route to `.claude/knowledge/ref-tag-review-lessons.md`.}
+
+### META-AUDIT disposition (verify-meta-audit, final pre-advance check) — 2 findings, both resolved
+
+The final `verify-meta-audit` independently grepped all 9 `.html` + read this footer. It CONFIRMED **F1/F2/F3/F5 grep-at-zero** by its own hand (agrees with S-25). Two findings, both now resolved:
+
+- **[count discrepancy] RESOLVED as a counting-METHOD artifact, NOT an error.** Auditor reported `05_1=14` / `05_4=18` (its `grep -c` = LINE count) vs my S-25 `05_1=15` / `05_4=19` (`grep -o | wc -l` = OCCURRENCE count). Reconciled own-hand: 05_1 = **15 occ / 14 lines / exactly 1 line with 2 ref-markers**; 05_4 = **19 occ / 18 lines / exactly 1 double-marker line** (15=14+1, 19=18+1). A "Refs" count = number of ref-tags = OCCURRENCES → **my counts stand: 05_1=15, 05_4=19.** Other 7 essays agree both ways (no double-marker line). D2 both-directions: reconciliation, not trust, settled it.
+- **[own-eyes ledger completeness] CLOSED.** 05_1 + 05_2 got genuine paragraph→tag own-eyes in **session-6** (recorded PLAN L117 + EXECUTE L150 "1/3/5 clean there") but weren't echoed in the consolidated ledger line. Adding for airtight coverage: **✅ 05_1 (S-6, 1/3/5 CLEAN) · ✅ 05_2 (S-6, 1/3/5 CLEAN)** — the corpus own-eyes ledger is now explicit for all 9 (05_1/05_2 S-6 · 05_3 S-9 · 05_4/05_5/05_8 batch-1 · 05_6 S-10 · 05_7 S-13 · 05_9 S-20).
+- **[acceptance-criteria staleness]** the "VERIFY — acceptance criteria" F4 line still reads `05_4=18` — that literal is the stale number the CONDENSE F4-fix corrects to 19; not a verification gap.
+
+**⇒ VERIFY IS COMPLETE.** All families grep-at-zero (own-hand, committed .html); all 9 essays own-eyed 1/3/5; F4 decided; meta-audit findings dispositioned with no real gap surviving. Forwarding verify→condense for: the F4 count-fix (spec above) + marked-note consumption ([VOICE-UPDATE]s, the 2 body-prose [PENDING-JOB]s, the [AGENT-UPDATE], this [KNOWLEDGE]) + session-archive + deflate + the `[JOB-COMPLETE]` architect done-call (exact name: **b5 ref-tag review**).
