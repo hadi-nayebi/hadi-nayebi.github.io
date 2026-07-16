@@ -203,3 +203,75 @@ Altered scope = `blog/b5/`. **Grep is a VERIFY tool, not available in EXECUTE** 
 **APPLIED (S-11→S-15).** All `.md` fixes DONE: 05_1(F3+F5), 05_2(6 F3), 05_3(6 F1→%-of-window), 05_6(3 F3), 05_7(F2+4 F3+L149).
 
 **S-19 RE-GROUND (post-clear; git-audit confirmed; prior loop hand-mirrored `.html`, now resolved).** VERIFY landed the regen: HEAD `1e1f1f9` regenerated 05_2/05_3/05_6/05_7 `.html`; grep-at-zero PASSES F1(05_3)/F2(05_7)/F3(05_1,05_2,05_6)/F5(05_1 L136); tree CLEAN. **ONE defect → VERIFY backward to EXECUTE:** F3-05_7, 2 summary-field line-numbers the `.md` fix MISSED — tag `second-consequence-altered-list` (`execute-guard.sh Comment line 822`) + tag `claude-md-edits-gate-execution` (`plan-tracker.sh comment line 126`). FIX: Read 05_7.md → strip ONLY the line-number clause from each (keep file+function pointer, Rule 20) → commit → VERIFY regen 05_7.html + grep-at-zero F3-05_7. THEN owed VERIFY: own-eyes 1/3/5 (05_7, 05_9) · F5-candidates (05_7 L127/L155, 05_1 L138/L142/L184/L186) · F4 table → CONDENSE done-[WAITING] (architect calls done).
+
+## VERIFY-RESULTS — grep-at-zero re-run (S-20 session, post-clear; tree CLEAN so committed `.html` == working tree)
+
+Git-audit spot-check: HEAD chain confirms `1e1f1f9` (regen 4 essays) + `3b773ca` (F3-05_7 residual strip) + `970470c` (family fixes complete) landed; `git status` clean. Regen claim from S-18/S-19 CONFIRMED true, not stale.
+
+**grep-at-zero PASS (own-eyes-arbitrated, committed `.html`):**
+- **F1** `05_3` — `grep -nE 'ACCRUAL_SOFT|ACCRUAL_READ_BLOCK|ACCRUAL-ANCHORED'` → **0** ✅ · guard: `ACCRUAL_CRITICAL` count=1 → RETAINED as designed ✅
+- **F2** `05_7` — `grep 'Principle 9 — Five Markers'` → **0** ✅
+- **F5** `05_1` L136 — `grep -nE 'sole reference|INDEX \+ 5|5 deep-dives'` → **0** ✅
+
+- **F3** `05_1/05_2/05_6/05_7` — title-isolated `grep -oE 'title="ref:[^"]*"' <f> | grep -Eo 'line [0-9]+|[a-zA-Z._-]+:[0-9]+|L[0-9]+(-[0-9]+)?'` → **0** each ✅. D2 spot-check: extraction found **15/17/15/22** titles per file (non-empty → real pass, not a silent-empty false-pass); 05_6=15 + 05_7=22 also cross-match F4 expected ref-marker counts.
+
+**⇒ ALL FAMILY TAG-FIXES VERIFIED: F1 ✅ F2 ✅ F3 ✅ F5(05_1 L136) ✅ on the committed `.html`.**
+
+**F5-CANDIDATES — own-eyes vs live source (SOUND, architect-mandated):**
+- ⛔ **STALE (need EXECUTE fix, tags-only):**
+  1. `05_1 chat-session-not-where-memory-lives` — Objective quote "Currently enforces a context-aware self-compact loop" ABSENT from live `brain_guard/CLAUDE.md` (Objective reworded post phasic-compaction). Status quote ("Feature #1 … two dispatch modes", live L8) still accurate → fix ONLY the Objective clause.
+  2. `05_1 long-before-the-model-runs` — same stale Objective quote → same fix.
+  3. `05_7 knowledge-directory-is-durable-layer` — pointer "Principle 6 — Subagents as Extractors" renamed; live = `### 6. Subagents as Extractors` (F2-family 2nd instance) → repoint to `6. Subagents as Extractors`.
+  4. `05_7 drop-a-file-named-claude` — count "116 CLAUDE.md / 111 four-footer" stale; live `find .claude -name CLAUDE.md | wc -l` = **141**. Header quote (L3 "Status: Live — Feature #1 hooks shipped") still accurate → REDUCE the volatile count to stable phrasing (reduction standard: "stable useful content", not a fresh hardcoded 141 that re-drifts).
+- ✅ **CLEAN:** `05_1 the-always-on-layer-is-active` — all 7 named hooks present in `settings.local.json` (context-sensor/context-gate/prompt-handler/job-guard/summary-guard/plugin-guard/question-discipline-gate). BORDERLINE (architect's call, not forcing): newer `brain_guard/heartbeat-sensor` PreToolUse hook not named — the tag is illustrative, not an exhaustive registry, so not counted stale.
+
+## META-AUDIT (family-c, verify-meta-audit) — verification gaps to CLOSE before advance (DO NOT ADVANCE yet)
+
+The audit correctly caught grep-only over-confidence: grep-at-zero proves the OLD string GONE, it does NOT evidence class 1 (new pointer exists) / 3 (not over-scoped) / 5 (describes current behavior). Gaps ranked:
+
+1. **[HARD GATE] 05_9 own-eyes 1/3/5 still owed** — the last essay; architect mandate requires it before advance. Read 05_9, record 1/3/5 verdict.
+2. **New-pointer existence NOT spot-checked for F1/F2/F3** — a repoint can pass grep-zero on the OLD string while the NEW target is broken. Grep live: F1 `CONTEXT_*_PCT` in `config.conf` + `%-of-window boundaries` in `brain-memory.md`; F2 `9. Five CONDENSE Markers` in `principles.md`; F3 file+function pointers still valid.
+3. **Regen-validation not recorded** (PLAN risk-mit #1) — spot-check each regenerated `.html` non-empty + contains `<!DOCTYPE`.
+4. **05_1 candidate completeness** — I verified the brain_guard-quoting tags; MANY other 05_1 tags quote plugin Objectives (plugin_integrity/job_core/interaction_summary/question_discipline). Spot-check those vs live plugins/CLAUDE.md + each plugin's Objective.
+5. **F4 — audit says re-add the Refs column to the table; BUT the architect's OWN de-bloat (commit cabc5a7, 2026-07-15) REMOVED that column and moved the stale counts to `../../.claude/knowledge/b5-series-reference.md`.** The de-bloat is MORE RECENT than the PLAN-phase "fix the table" ruling, so re-adding the column would UNDO the architect's own edit. → NOT a unilateral fix: surface to architect as a done-checkpoint question (correct the stale counts in b5-series-reference.md via CONDENSE / re-add column / drop F4). Verify live counts first so whichever path has correct numbers.
+6. **05_7 own-eyes ledger contradiction** — line ~197 ledger marks 05_7 "⬜ owed" but line ~140/203 records 05_7 own-eyes CLEAN (S-13). The ledger is stale → correct it to ✅ 05_7 (done S-13).
+
+**Sequence:** close gaps 2/3/4 (VERIFY spot-checks) → gap 1 (05_9 own-eyes) → gap 6 (ledger fix) → VERIFY→EXECUTE backward to fix 4 stale F5 tags + any new hits, regen 05_1/05_7 `.html`, re-grep → gap 5 (F4 architect question) → done-[WAITING] to architect (architect calls done).
+
+## GAP-CLOSURE PROGRESS (S-20 session)
+
+**Gap 3 regen-validation — CLOSED ✅:** `grep -Li doctype` across 05_1/05_2/05_3/05_6/05_7 `.html` → empty (all 5 contain `<!DOCTYPE`, non-empty valid HTML).
+
+**Gap 2 new-pointer existence — F1 (05_3) SOUND ✅ (class 1/3/5 own-eyes-verified, not grep-only):**
+- Extracted the ACTUAL repointed F1 tags. Plan's "%-of-window boundaries" was PLAN SHORTHAND; the real anchors are correct and EXIST: `config.conf CONTEXT_SOFT_PCT=20/READ_PCT=25/CRITICAL_PCT=30` ✅ · `brain-memory.md "P cluster"` (line 452 `<!-- ===== P cluster: phasic compaction ... =====`) ✅ · `brain-memory.md "File-size ramp (θ_lc)"` (line 499) ✅ · `"Compaction file"` / `"Compaction-file sections"` / `"Finalization pass"` / `"Clear + inject"` / `"Two-tier chain / Prior Summary"` (all real P-cluster anchors).
+- class-5: F1 summaries describe CURRENT %-of-window behavior accurately (Read 25% / critical 30% of MAX_CONTEXT_TOKENS, Bash-never-blocked, ACCRUAL_CRITICAL RETAINED as heartbeat/stop-gate knob). class-3: scoped, not over-claiming. **⇒ F1 is genuinely sound, not just grep-zero.**
+- ✅ Remaining F1 anchors CONFIRMED: `context-gate.sh "GRADUATED HARD-GATE"` (line 3) + `context-sensor.sh "WHAT THIS HOOK DOES"` (line 7). **F1 fully sound (all anchors real, summaries current, not over-scoped).**
+
+**Gap 2 new-pointer existence — F2 (05_7) ✅:** `principles.md` line 93 `### 9. Five CONDENSE Markers as Cross-Phase Signal System` exists exactly (F2 repoint target real).
+
+**Gap 4 — 05_1 plugin-Objective quote completeness CLOSED ✅:** the `five-plugin-concern-roll` tag's four other-plugin Objective quotes all match live plugin CLAUDE.md verbatim — plugin_integrity ("No plugin can be silently broken…"), question_discipline ("Block any AskUserQuestion whose every question's text does not begin with a registered prefix"), interaction_summary ("Maintain a continuous summary chain…"), job_core ("Manage job lifecycle: create, status transitions…"). Table-quoting tags (`always-on-single-concern-claim`, `layers-composed-…`) also match the live Active Plugins table. Only **brain_guard's** Objective drifted → the 2 F5 tags already flagged; no NEW 05_1 staleness.
+
+**Gap 2 — F3 (05_6) pointer validity + F2 (05_7) summary CLOSED ✅:**
+- F3: 05_6 fixed tags carry clean file+function pointers, NO line numbers (`question-discipline-gate.sh (batch-cascade validation loop)`, `gmode-gate.sh ([WAITING] format guard)`, `question-capture.sh ([JOB-COMPLETE] per-prefix handler)`). Both referenced files EXIST: `job_core/hooks/question-capture.sh` (Pre-gate) + `question-capture-hook.sh` (Post-handler) — the documented two-file pattern, no broken pointer.
+- F2: summary quote matches principles.md line 95 verbatim ("…record findings via five standardized markers in their respective phase-section footers…") → class-5 accurate.
+
+**⇒ ALL THREE FAMILIES SOUND BEYOND GREP-ZERO: F1 ✅ F2 ✅ F3 ✅** (anchors real, summaries current, pointers valid, not over-scoped).
+
+### F5 confirmed-stale fix list (EXECUTE, tags-only) — 5 tags across 05_1 + 05_7:
+1. `05_1 chat-session-not-where-memory-lives` — strip/replace stale Objective clause "Currently enforces a context-aware self-compact loop" (fetch CURRENT brain_guard Objective text at fix time). Keep the accurate Status quote.
+2. `05_1 long-before-the-model-runs` — same stale Objective clause.
+3. `05_7 knowledge-directory-is-durable-layer` — pointer "Principle 6 — Subagents as Extractors" → `6. Subagents as Extractors`.
+4. `05_7 drop-a-file-named-claude` — reduce volatile count "116 CLAUDE.md / 111 four-footer" (live 141) to stable phrasing.
+5. `05_7 relationship-is-asymmetric-phasic-uses` — reduce "111 of 116 CLAUDE.md files … carry all four phase footers" to stable phrasing (SECOND count instance, found during F2 check).
+
+**Gap 1 — 05_9 own-eyes 1/3/5 CLOSED ✅ (CLEAN):** full paragraph→tag read in main session.
+- Class 1: every code/context claim tagged (¶19/34/36/38/44/46/48/75/77/79/87/89/91/93/95/101/103/109/111/117/119/121/123/125/131); opener/closer bridges (¶21-23, ¶133) correctly untagged → no missing tags.
+- Class 3: tags well-scoped, no over-claim. Class 5: terms current (gmode, plugin_lock_approval top-level, [JOB-APPROVE-CREATION] CONDENSE-only / [JOB-APPROVE-PLUGIN] any-active-phase, PREFIX_REGISTRY, 2026-05-19 schema flatten). Trivial borderline: `layered-discipline…` says "plugin-code layer" vs live Fact-2 "plugin layer" — immaterial, not a defect.
+- F3-clean too (05_9 tags use section/quote pointers, zero line-numbers).
+- **05_9 surfaces NO new fixes** → fix list stays at the 5 F5 tags.
+
+**⇒ VERIFY VERIFICATION COMPLETE.** All 9 essays own-eyed corpus-wide (05_1/05_2 S-6 · 05_3 S-9 · 05_4/05_5/05_8 batch-1 · 05_6 S-10 · 05_7 S-13 · 05_9 S-20). Families F1/F2/F3 sound beyond grep-zero; F5 = 5 confirmed-stale tags to fix.
+
+**Remaining (EXECUTE + done):** VERIFY→EXECUTE backward → fix 5 F5 tags (05_1×2 Objective, 05_7×1 principle-rename, 05_7×2 count) tags-only + correct the ---Ex--- ledger (05_7 → ✅ done S-13) → regen 05_1+05_7 `.html` → forward VERIFY → re-grep F5 zero → gap-5 F4 architect question + done-[WAITING] (architect calls done).
+
+`[VOICE-UPDATE]`{verify-guard.bash-write (verify-guard.sh write-block regex) | The write-block regex matches a BARE `>` anywhere in the command, so read-only commands that merely redirect stderr (`find … 2>/dev/null`, `… 2>&1`) are FALSE-BLOCKED as "implementation work" in verify — the seed must strip all redirects to run a plain find/grep. Over-broad; `>` should match a FILE-redirect target, not fd-duplication/stderr-suppression. | direction: exclude fd-redirect forms (`[0-9]*>&[0-9]+`, `2>/dev/null`, `2>&1`) from the write-block `>` alternation (the segment-allow path already strips `[0-9]*>&[0-9]+` — mirror that in the `_wv_scan` write-block), OR steer the block voice to say "strip the `2>/dev/null` redirect; plain read-only find/grep is allowed."}
