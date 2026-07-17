@@ -468,3 +468,22 @@ Six failure modes → concrete guards that TIGHTEN the existing E-steps / G-gate
 **DECISION: FAIL on G2 mirror → route BACKWARD to EXECUTE.** Backward task is narrow: regen `07_5-docs-and-historian.html` + `07_6-agents-and-80-20-budget.html` from their `.md` via approved `generate_blog_html.py`, commit, return to verify, re-check G2 (caveat in `.html`, `.md`==`.html` ref-tag count, regen idempotence twice = byte-parity). All OTHER gates already green. NOTE: b5 precedent (git 1e1f1f9 / a08a325) — generator may run in verify but the multi-git COMMIT of regenerated `.html` needs execute phase, so backward is the correct route. Pre-req: confirm the regen path is in job `allowed_commands` (else neither phase can run it).
 
 **CONDENSE hygiene note (not a verify blocker):** the ---Ob--- MARKED NOTES block (L304-308) holds backtick-wrapped copies of notes that also exist bare (L314-318); only the bare lines are CONDENSE-consumable (`^\[`). Minor duplication to clean at deflate.
+
+### VERIFY (cycle 1, session 4 post-clear 2026-07-17) — re-derived mirror gap, resolving the execute-vs-verify regen fork
+
+**Re-grounded (D2, main-session greps live this session):**
+- **Mirror gap CONFIRMED (the one open gate G2):** `07_5-docs-and-historian.md` = **2** `unimplemented`, its `.html` = **0**; `07_6-agents-and-80-20-budget.md` = **1**, its `.html` = **0`. Caveat lives in `.md`, absent from `.html`.
+- **Cause CONFIRMED:** `git show --stat 9e5e6cb` = `.md` (07_5, 07_6) + `b7/CLAUDE.md` + `.gitignore` only — NO `.html`. Execute deferred the regen.
+- **Both repos CLEAN** (root + website `git status --short` empty) — so `.md` caveat committed, `.html` never regenerated.
+- **Approved regen command CONFIRMED in `allowed_commands`:** `python3 | hadi-nayebi.github.io/.claude/tools/generate_blog_html.py | blog/bN/<slug>.md blog/bN/<slug>.html --version <stamp>`. Script exists (`generate_blog_html.py`, 68802 bytes).
+- **All other gates re-affirmed from session-3 verdict** (G1 line-# = 0, banned-13 = 0 in essays, B-B7V 57/14 exact, b8 bounded census clean incl. B-PRIN fixed + B-CNT preserved, `.gitignore` done, substrate PENDING-JOB = 1). Those stand unless re-derivation contradicts.
+
+**FORK to resolve before acting:** session-3 footer said backward-to-execute (b5 precedent: multi-git commit of regen'd `.html` needs execute); session-3 compaction carry said regen-in-verify via the approved command. Next step = inspect `verify-commit.sh` vs `execute-commit.sh` to see whether verify can COMMIT the regenerated `.html` deliverable, then pick the phase-clean route (no uncommitted `.html` left behind).
+
+**FORK RESOLVED (session 4, by reading `verify-commit.sh` — fact over newer-note):**
+- The `--force` forward path stages **only CLAUDE.md + plan files** (`_stage_verify_targets_in_repo`, L598) — NOT arbitrary project files like `.html`.
+- The post-commit **clean-git invariant** (`require_clean_all_repos`, L681, **exit 2**) then REFUSES the forward advance if the regenerated `.html` is uncommitted.
+- ∴ regen-in-verify + `verify-commit.sh --force` CANNOT commit the `.html` and CANNOT advance. The **session-3 fresh-carry was WRONG**; the **session-3 footer verdict + b5 precedent are RIGHT**.
+- **ROUTE (Option A):** `verify-commit.sh --backward execute --commit` → in EXECUTE regen 07_5+07_6 `.html` (execute has full write + the approved `generate_blog_html.py`; `execute-commit.sh` is multi-git-aware for `.html` deliverables) → `execute-commit.sh --force` back to VERIFY → re-check G2 (caveat in `.html`, `.md`==`.html` ref-tag count, regen idempotence twice = byte-parity) → all gates green → `verify-commit.sh --force` to CONDENSE.
+- **LESSON (anti-thrash):** checking the actual script capability, not trusting the most recent note, is what stopped an oscillation. The `.html` is a committed source-of-truth DELIVERABLE; producing+committing a deliverable is EXECUTE's job even though the regen command itself is verify-runnable.
+- **EXECUTE pre-step:** grep the current `--version` stamp in each `.html` FIRST and regen with that exact stamp, so the diff = only the caveat (no spurious version churn); confirm regen idempotence.
