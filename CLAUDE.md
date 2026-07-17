@@ -225,5 +225,8 @@ Every **new indexable page** MUST have in `<head>`:
 and `sitemap.xml`.
 ---Ob---
 ---Pl---
+
+**Ref-tag sync job 1784255953475439806 (Stage-1) — repo-root in EXECUTE scope (cycle 1).** EXECUTE edits .gitignore only (add *.anchor-heals — the section-check.sh sibling-backup recurrence fix; user already removed the orphan). Full plan lives in blog/CLAUDE.md plan-footer.
+
 ---Ex---
 ---Ve---

@@ -330,6 +330,88 @@ OBSERVE cycle 1 re-confirmed complete; the finalized top-5 above stands. Two ref
 
 ---Pl---
 
+### PLAN (cycle 1) — Ref-tag sync b6/b7/b8 (Stage-1, plan_file=false)
+
+Premortem (family-c, ACCEPT) reshaped this: TWO clean buckets (no "top-5 all in EXECUTE" framing); acceptance = THREE gates, not grep-zero alone.
+
+## EXECUTE Deliverables (edit .md → regen .html; mirror invariant; ground-truth MAIN-SESSION)
+
+**E1 · B-LINE** — strip line-number pointers from ref-tag MIDDLE fields → stable file/section anchors, BOTH surfaces.
+- **E1a PRE-GATE (runs FIRST, main-session):** 06_9 D2-audit of the unverified prior strip-work. Confirm ALL: zero line-#s in .md AND .html; .md tag-count == .html tag-count (exact); EVERY new anchor greps non-zero in its cited impl (100% real — no invented anchors e.g. "gmode-gate.sh Justification Floor"); no collapsed-space-after-extension. If ANY anchor fabricated → HALT + surface list. Clear fabrication → discard+redo; ambiguous → [WAITING] to user.
+- **E1b:** b7 07_1 / 07_4 / 07_5 / 07_7 / 07_9 (~10 tags) — strip, stable anchors, regen.
+- **E1c:** splits 06_2b / 06_7b / 06_10b — ls-confirm exist FIRST (census predates 2026-06-21 splits); re-census live; strip if present.
+
+**E2 · B-STUB** — 07_3 / 07_5 / 07_6: grep the EXACT plugin-count phrasing in each first (base may differ 13 vs 11 — premortem #10); reconcile base to context ("11 active + 2 unimplemented", plugins-entities.md [consolidated]); banned-phrase grep -i '13 plugins|thirteen plugins' = 0; add uniform "(2 unimplemented)" caveat BOTH surfaces; regen.
+
+**E3 · B-B7V** — grep BOTH hooks/ + scripts/ voice.xml live counts (essay must == SUM); locate the b7 essay(s) citing voice counts; if drifted fix BOTH surfaces + regen; else record verified.
+
+**E4 · .gitignore** — add *.anchor-heals to hadi-nayebi.github.io/.gitignore (recurrence fix; user already removed the orphan).
+
+**E5 · B8 FAST census (USER DIRECTIVE, fork-1 answer 2026-07-17) — bounded b8 sweep.** VERBATIM user directive:
+> "Do the b8 sweep (option 3) but BOUNDED — the job names b6/b7/b8, so b8 cannot be silently dropped from a 'sync,' but do NOT turn this into a deep re-audit that risks not shipping.
+> Concretely, in EXECUTE: run a FAST ref-tag census over the b8 essays (08_1, 08_2, 08_4-08_9) with a subagent — SAME method as b6/b7: grep every ref-tag, verify each against context (ground truth), fix real context-mismatches inline. Re-confirm 08_3's known items too (B-PRIN pointer + the preserved B-CNT dated counts — those stay preserved per the user decision).
+> Do NOT re-rank or re-open the severity metric — b8 hits simply append to the EXECUTE fix-list.
+> Circuit-breaker: if b8 has heavy, unexpected drift that would balloon the pass well beyond the top-5, PAUSE and tell me before expanding — do not silently convert this into a giant re-audit. If b8 is clean or light (likely — nothing but 08_3 was logged in the backlog), confirm it fast and proceed.
+> Net: full b6/b7/b8 coverage, kept shippable tonight."
+
+Operationalized: EXECUTE dispatches a subagent to FAST-census every ref-tag in b8 08_1/08_2/08_4-08_9 (fetch only — main-session ADJUDICATES each vs context, D2). Real context-mismatches → fix inline (edit .md → regen .html, mirror invariant), APPEND to the fix-list (no re-rank). 08_3: re-confirm B-PRIN pointer already-fixed + B-CNT dated counts PRESERVED (untouched). CIRCUIT-BREAKER: if b8 drift balloons well beyond the top-5, PAUSE + surface to user before expanding — never silently convert to a giant re-audit. Same 3-gate acceptance contract applies to b8 fixes.
+
+### 06_9 RECONCILIATION (user ground-truth, 2026-07-17) — LANDMINE PREMISE REFUTED
+
+VERBATIM user ground-truth (independently verified 06_9 live):
+> "31 ref-tags, ALL section-name anchors (e.g. gmode-gate.sh Justification Floor, phase.sh enter-gmode arm) — I found NO line-number tags in the .md, .html, .transcript.md, or .yaml. .md and .html each carry exactly 31 tags — no md↔html count mismatch. Every source file I spot-checked EXISTS and the named mechanisms are REAL: the GMODE_WORD_MIN floor in gmode-gate.sh:104; the gmode_prepped 3-state field + 'the gmode arc' in brain-memory.md; enter/exit-gmode + gmode-prep arms in phase.sh. So your 'line-number tags / fabricated anchors / tag-count mismatch' framing does not match ground truth — possibly a stale inventory from before a prior pass already converted line-numbers to section anchors."
+
+RECONCILIATION TABLE (inherited inventory claim vs user ground truth):
+| Inventory claim (b6-reftag-sweep-job-state.md) | Alleged defect | Ground truth (user-verified) | Verdict |
+|---|---|---|---|
+| "gmode-gate.sh Justification Floor" | UNVERIFIED invented anchor | GMODE_WORD_MIN floor real @ gmode-gate.sh:104 | REAL — not invented |
+| "phase.sh enter-gmode arm" | (reworded/unverified) | enter/exit-gmode + gmode-prep arms real in phase.sh | REAL |
+| gmode_prepped 3-state / "the gmode arc" | (unverified) | real in brain-memory.md | REAL |
+| "17 line-# tags, ~25 stripped (scope-creep)" | line-numbers unverified-stripped | 31 tags, ALL section-anchor, NO line-#s (.md/.html/.transcript/.yaml) | already clean |
+| "count 25 vs 17 mismatch" | .md/.html parity broken | .md = 31 == .html = 31 | parity OK |
+
+CONCLUSION: NO surviving 06_9 defect. The inventory is STALE — a prior pass DID convert 06_9's line-numbers to real section anchors and it landed (not left broken/uncommitted). The one named "invented anchor" is real. **06_9 DOWNGRADED from landmine → clean.** Per user decision rule: log the misread, no 06_9 edit. E1a PRE-GATE is REPLACED by a CONFIRMING grep only (zero line-# middle-fields both surfaces + .md==.html==31 tag count); if confirmed clean → 06_9 done, move on. A KNOWN defect can't be skipped, but there is no known defect here.
+
+BROADER IMPLICATION: the inherited B-LINE inventory is proven STALE on 06_9 → EXECUTE MUST re-census ALL B-LINE targets (b7 07_1/07_4/07_5/07_7/07_9, splits 06_2b/06_7b/06_10b) LIVE with grep and let live counts OVERRIDE the inherited claims. They may also be already-clean. Do NOT trust the inventory's "line-number" claims without a live grep.
+
+### B-LINE APPROACH (user STEER-4, 2026-07-17) — Option 3 chosen
+VERBATIM user directive:
+> "OPTION 3 — live-census + auto-fix survivors, pause if >5 in any one essay... I independently grepped b6/b7/b8 myself just now: ZERO ref-tags contain a :NNN line-number token across all three books. So 'little-to-nothing survives' is almost certainly 'nothing survives' — the B-LINE class looks EMPTY. Still run your own live census in EXECUTE as the authoritative pass; don't take my spot-check as the census. Two constraints on any survivor you DO find: 1. Fix by STRIPPING line-number -> section-name anchor (durable, matches 06_9's style). Never just re-point the number — it will drift again. 2. If the >5 breaker trips, show me the survivor list + your proposed new anchors before editing that essay (like 06_9). Otherwise trust the grep and proceed."
+
+Operationalized (E1 B-LINE REVISED): EXECUTE runs the AUTHORITATIVE live census — main-session grep every ref-tag middle-field across b6/b7/b8 for `:NNN` line-number tokens. Expected EMPTY (user spot-check + 06_9 both clean). Any survivor: FIX = strip line-# → stable section-name anchor (NEVER re-point the number). >5 survivors in ONE essay → PAUSE, show survivor list + proposed new anchors, get user eyeball before editing that essay. B-LINE is now a CONFIRM-EMPTY step, not a fix batch.
+
+[KNOWLEDGE]{ref-tag-live-census-over-stale-inventory — a repeatable ref-tag job treats the live deterministic grep as ground truth and any precompiled backlog/inventory (e.g. b6-reftag-sweep-job-state.md) as a STALE HINT to re-verify, never as fact. STEER-4 2026-07-17: the inherited 06_9 "landmine" was already-clean; user + live grep found zero :NNN tokens across b6/b7/b8. Trust the live check over any inherited list.}
+
+## CONDENSE Memory-Forms (NOT execute — memory-layer)
+- **C1 regen-path doc drift:** fix bare tools/… → .claude/tools/… in b6/CLAUDE.md "Tooling notes" (~L69-71) + blog-update SKILL.md (ls-confirm SKILL.md path first).
+- **C2 substrate:** the ONE already-emitted [PENDING-JOB]{substrate-plugin-ref-tag-drift-batch} — verify exactly one; NEVER fix inline.
+- **C3 tracker:** record each synced anchor in .claude/knowledge/ref-tag-review/backlog-status.md (Status + Cycle-closed); ls-confirm path first.
+- **C4:** the 4 already-emitted [DRAFT-TERM] notes → CONDENSE deposits [draft] stubs in context.
+
+## Acceptance Contract (3 gates — all MAIN-SESSION greps)
+- **G1 grep-zero:** line-# middle-field grep = 0 on 06_9 · 07_1/07_4/07_5/07_7/07_9 · splits(if present) — BOTH .md+.html; banned grep -i '13 plugins|thirteen plugins' = 0 across b6/b7/b8.
+- **G2 mirror:** per edited essay, .md ref-tag count == .html ref-tag count (exact 100%, grep -c both); regen exit-0; .html newer than .md; no unrelated line shift (regen idempotence).
+- **G3 anchor/whitespace:** every new 06_9 anchor greps non-zero in cited impl; zero collapsed-space-after-extension; B-B7V essay count == live voice.xml SUM (hooks+scripts).
+- **G4 scope:** substrate = exactly ONE [PENDING-JOB]; tracker + .gitignore updated.
+
+## Execute Scope (nearest-CLAUDE.md declarations)
+- blog/b6/ (06_9, splits) — declared in b6/CLAUDE.md observe-footer (already)
+- blog/b7/ (07_1/07_3/07_4/07_5/07_6/07_7/07_9) — declared in b7/CLAUDE.md observe-footer (already)
+- hadi-nayebi.github.io/ root (.gitignore) — declared in root website CLAUDE.md plan-footer (added this cycle)
+- blog/b8/ (08_1/08_2/08_4-08_9; 08_3 re-confirm only) — declared in b8/CLAUDE.md plan-footer (added this cycle, user b8-sweep directive)
+
+## Command Pre-Approval
+Regen [COMMAND-APPROVE] → **APPROVED** (user, 2026-07-17): path hadi-nayebi.github.io/.claude/tools/generate_blog_html.py in allowed_commands. EXECUTE runs it matching the approved path anchor; VERIFY re-runs for the mirror check. Transcript regen **DECLINED** — do NOT regen transcripts this pass (ref-tag body edits don't change narration).
+
+## Outstanding Items
+
+## Fork resolutions (2026-07-17)
+- **fork 1 essay-scope → RESOLVED (user):** bounded b8 FAST census (E5); full b6/b7/b8 coverage, shippable tonight; circuit-breaker on heavy drift.
+- **fork 2 diagrams → DISSOLVED (seed/CTO):** b6/b7/b8 diagram surface ≈ 1 on-disk image (quick-phase-map-b6-2.png); the rest are pending generation. No separate audit needed — the census checks that one image's caption/alt-text inline. Revisit when images are generated.
+- **fork 3 severity → CLOSED (user verbatim):** "Do NOT re-rank or re-open the severity metric — b8 hits simply append to the EXECUTE fix-list."
+
+[VOICE-UPDATE]{plan-guard-block-voice | it lists allowed scripts but never states "sole command only — no pipe/redirect/&&", the actual trip cause, so a reader retries with a pipe and re-blocks | append "run the command ALONE — no pipe, redirect, or chaining" to the allowed-scripts line}
+
 
 
 
