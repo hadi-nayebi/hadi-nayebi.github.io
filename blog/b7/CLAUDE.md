@@ -10,6 +10,12 @@ here (synced to live totals on both `.md` and `.html`); condensed — durable re
 
 ---Ob---
 
+**Ref-tag sync job `1784255953475439806` (Stage-1) — B7 in EXECUTE scope.** Corpus hub: `../CLAUDE.md` `---Ob---`.
+
+B7 = *The Plugin Kit* (07_1..07_9): teaches the 11 plugins. Its ref-tags cite plugin names, hooks, ceremony mechanics, and **test counts + plugin version numbers** — the highest stale-risk class here, because those numbers drift every time a plugin evolves (per `.claude/plugins/CLAUDE.md`: "this memory file goes stale fast on these numbers"). Prior run fixed the `07_6` image-prompt agent-pool counts. Durable record was cited at `.claude/knowledge/ref-tag-review/` but that pointer is BROKEN at root — recaller is locating the real path.
+
+Scan lens = 9-pt `blog-ref-tag-auditor` frame; R2 (file exists) / R3 (content-match) / R4 (no line numbers) / R9 (stale count/version) are the binary drift signals. b7 slugs pending from recaller; series findings recorded here as the scan lands.
+
 ---Pl---
 
 ---Ex---

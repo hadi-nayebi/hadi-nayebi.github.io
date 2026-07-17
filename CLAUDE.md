@@ -223,3 +223,7 @@ Every **new indexable page** MUST have in `<head>`:
 (reading order — essay 1 first … 8.9 last, current post marked `active`). The generator's
 `SIDEBAR_POSTS` array is the source of truth for this order and is mirrored by `blog.html`, `feed.xml`,
 and `sitemap.xml`.
+---Ob---
+---Pl---
+---Ex---
+---Ve---

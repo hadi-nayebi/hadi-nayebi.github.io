@@ -86,6 +86,10 @@ Live URLs: `https://hadi-nayebi.github.io/blog/b6/06_X-<slug>.html`. Old root-le
 
 ---Ob---
 
+**Ref-tag sync job `1784255953475439806` (Stage-1) active — this dir is in EXECUTE scope.** Corpus hub: `../CLAUDE.md` `---Ob---`. Prior B6 line-number sweep state (INACTIVE) + banked findings: `../../.claude/knowledge/b6-reftag-sweep-job-state.md`. Series-specific ref-tag findings recorded here as the scan lands.
+
+**SCAN FINDING — `06_10` (plan-state-machine) reads CLEAN** (main-session read 2026-07-16): current vocabulary (no `seal`/`Form 1/2/3`); all ~14 ref-tags use section-name pointers (R4-clean, no line numbers); tags cite `.claude/context/job-stages-plans.md` + `job-completion-reactivation.md` + `opevc-phases.md` + `brain-memory.md` + `job-system.md` by section; prose even self-corrects the old `.yaml`-as-dependent-job model. Implies b6's Stage/plan essays were recently swept → **LOW drift here**. Redirect the top-5 hunt toward **b8/`08_3`** (pre-identified IRR-4/IRR-5), **b7 plugin test-counts/versions**, and any un-swept essays. STILL TODO (scanner R2/R3): confirm those cited context section-names actually resolve.
+
 ---Pl---
 
 ---Ex---
