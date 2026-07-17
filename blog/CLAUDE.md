@@ -324,6 +324,10 @@ OBSERVE cycle 1 re-confirmed complete; the finalized top-5 above stands. Two ref
 - **COMMAND-APPROVE (PLAN todo):** job `allowed_commands` is EMPTY. PLAN must declare `[COMMAND-APPROVE]` for the `.html` regeneration command (`python3 .claude/tools/generate_blog_html.py …`) that EXECUTE runs and VERIFY re-checks (mirror invariant). Bare `grep`/`ls` census are system utils; the regen script is the project command that needs approval.
 - **New substrate item → folds into the ONE substrate `[PENDING-JOB]` above (top-5 #5), NOT a new separate marker:** brain_guard `heartbeat-sensor` voice tells the seed to batch metacog-reflect in one Bash call, but the phase_observe / phase_plan guard BLOCKS compound/multi-line Bash — so batching is impossible in observe/plan; run ONE reflect per Bash call. The heartbeat-sensor voice needs a phase-guard caveat. Plugin surface = locked here → route via the substrate PENDING-JOB, never inline.
 
+**Anchor-heals blocker RESOLVED (2026-07-17):** user chose remove+gitignore — user runs `! rm hadi-nayebi.github.io/CLAUDE.md.anchor-heals`; EXECUTE adds `*.anchor-heals` to the website .gitignore; the section-check.sh:465 root cause (un-gitignored sibling backup, no cleanup code, recurring transition wedge) folds into the substrate [PENDING-JOB].
+
+**Proposed Ve criteria (PLAN formalizes below ---Ve---; observe-guard blocks writing there now):** all greps at ZERO / count-parity, MAIN-SESSION — B-LINE middle-field line-# grep = 0 on 06_9 · 07_1/07_4/07_5/07_7/07_9 · splits 06_2b/06_7b/06_10b, plus .md/.html tag-count parity + 06_9 D2 (every new anchor verified real, no collapsed-space); B-STUB `grep -c '13 plugins'` = 0 + "(2 unimplemented)" caveat BOTH surfaces; B-B7V voice-count == live grep BOTH voice.xml surfaces; regen-path no bare `tools/`; substrate = exactly ONE [PENDING-JOB]; mirror = every edited .md regenerated to .html, diff = only my edits; tracker + gitignore updated.
+
 ---Pl---
 
 
