@@ -429,8 +429,18 @@ Six failure modes → concrete guards that TIGHTEN the existing E-steps / G-gate
 
 ---Ex---
 
+### EXECUTE (cycle 1, session 5) — clean pass-through: regenerated .html shipped from verify
 
+## What I Implemented
+No new build. Verify regenerated `07_5-docs-and-historian.html` + `07_6-agents-and-80-20-budget.html` from their `.md` (approved `generate_blog_html.py` ran IN verify — `allowed_commands` is a VERIFY affordance, checked before the interpreter-block) and swept both into the backward commit **website `7ab2a25`** via `verify-commit.sh --backward execute --commit` (`git add -u`). The B-STUB `.html` fix is already committed. This EXECUTE re-entry exists only to climb execute→verify so the mirror re-check + final gates run in verify, then CONDENSE.
 
+## Evidence
+`git show --stat 7ab2a25`: `07_5.html` (2±, both `evolution-md-*` + `historian-drift-*` ref-tags gained the caveat), `07_6.html` (1±, `agents-dir-per-plugin-scoping` ref-tag), `blog/CLAUDE.md` footer. Diff = caveat only; no version churn (stamp `20260704`), no B-IMGHTML mangling. Idempotent: 2nd regen produced zero added diff. `grep -c unimplemented` now 2 (07_5.html) / 1 (07_6.html) = mirror match with `.md`.
+
+## Plan Item Addressed
+E2 (B-STUB) `.html` mirror — the last-open G2 gate. All other gates green (G1 line-#=0, banned-13=0, E3 57/14 exact, E5 b8 clean, G4 substrate=1).
+
+## Outstanding Items
 
 
 ---Ve---
