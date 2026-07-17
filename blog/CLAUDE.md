@@ -487,3 +487,25 @@ Six failure modes → concrete guards that TIGHTEN the existing E-steps / G-gate
 - **ROUTE (Option A):** `verify-commit.sh --backward execute --commit` → in EXECUTE regen 07_5+07_6 `.html` (execute has full write + the approved `generate_blog_html.py`; `execute-commit.sh` is multi-git-aware for `.html` deliverables) → `execute-commit.sh --force` back to VERIFY → re-check G2 (caveat in `.html`, `.md`==`.html` ref-tag count, regen idempotence twice = byte-parity) → all gates green → `verify-commit.sh --force` to CONDENSE.
 - **LESSON (anti-thrash):** checking the actual script capability, not trusting the most recent note, is what stopped an oscillation. The `.html` is a committed source-of-truth DELIVERABLE; producing+committing a deliverable is EXECUTE's job even though the regen command itself is verify-runnable.
 - **EXECUTE pre-step:** grep the current `--version` stamp in each `.html` FIRST and regen with that exact stamp, so the diff = only the caveat (no spurious version churn); confirm regen idempotence.
+
+### VERIFY (cycle 1, session 5 post-clear 2026-07-17) — the ONLY open gate re-confirmed; regen-in-verify path
+
+**Re-grounded (D2 main-session, this session):**
+- **Both repos CLEAN** (root + website `git status --short` empty) — `.md` caveat committed, `.html` never regenerated.
+- **Mirror gap CONFIRMED (open gate G2):** `07_5-...md` grep `unimplemented` = present (L29,L33), `07_5-...html` = 0; `07_6-...md` = present (L25), `07_6-...html` = 0.
+- **Both .html use `?v=20260704`** uniformly (3 asset refs each) → regen with `--version 20260704` so diff = only the caveat.
+- **Approved generator:** `hadi-nayebi.github.io/.claude/tools/generate_blog_html.py` (job `allowed_commands`, VERIFY affordance per root CLAUDE.md COMMAND PRE-APPROVAL).
+- **Heartbeat debt paid** (6 metacog-reflect this session before any other tool).
+
+**FORK re-opened & to settle EMPIRICALLY (session-4 Option A regen-in-execute vs compaction-8 regen-in-verify):** root CLAUDE.md says `allowed_commands` is what "VERIFY will run" → the generator is a VERIFY affordance, not execute's. Compaction-8 (freshest carry) says execute-guard blocks ALL scripts and that mis-route burned 4 sessions. RESOLUTION: test verify-guard by running the approved generator IN verify; if it runs, ship via `verify-commit.sh --backward execute --commit` (ships .html) → `execute-commit.sh --force` back → re-check G2 → `verify-commit.sh --force` to CONDENSE. Confirm the backward+commit path ships .html by reading verify-commit.sh first.
+
+**FORK RESOLVED EMPIRICALLY (session 5) — compaction-8 was right, regen runs IN VERIFY:**
+- **verify-guard L760-793:** the job `allowed_commands` allowlist is checked BEFORE the interpreter-block (L827) — an approved `python3` command `exit 0`s first. Matcher anchors interpreter + the FULL script path `hadi-nayebi.github.io/.claude/tools/generate_blog_html.py` (via `shell_sole_invocation`, no chaining/redirect) → I MUST run from ROOT cwd with the full path, NOT cd into the site.
+- **Generator is cwd-independent** (L1007-1009 self-derives website root from `__file__` by walking up to the dir containing `blog/`); only `input_md`/`output_html` are cwd-relative → root-relative arg paths work from root cwd.
+- **verify-commit.sh L253-269:** `--backward execute --commit` runs `_stage_verify_targets_in_repo` + `git add -u` per owning repo → sweeps the regenerated `.html` into a multi-git backward commit. So regen-in-verify → backward-commit SHIPS the `.html`. (Session-4 Option A's "regen in execute" assumption was WRONG — allowed_commands is a VERIFY affordance.)
+
+**G2 RESOLVED — both `.html` regenerated in verify (`--version 20260704`, each file's own stamp):**
+- **07_5.html:** diff = exactly 2 ref-tags gaining "job_archiver and job_blocker are unimplemented designs" (4 lines, 2±). No version churn, no mangling.
+- **07_6.html:** diff = exactly 1 ref-tag gaining "the last two are unimplemented designs" (2 lines, 1±). No B-IMGHTML asterisk→em mangling introduced (title-attr `observe-*`/`condense-*` intact).
+- **Idempotence PASS:** 2nd regen of each produced ZERO additional diff (char counts stable 23,041 / 23,624) — byte-parity per premortem G2 guard.
+- **NEXT:** grep-confirm `unimplemented` present in both `.html`, then SHIP: `verify-commit.sh --backward execute --commit` → `execute-commit.sh --force` → re-check G2 → `verify-commit.sh --force` to CONDENSE. All other gates already green (G1/E3/E5/G4 per session-4 verdict).
