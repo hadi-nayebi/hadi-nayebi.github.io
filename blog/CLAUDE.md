@@ -316,6 +316,14 @@ Routing: gaps 1/2/5 → PLAN `[WAITING]`/decide (Stage-1's ≥3 PLAN questions).
 [DRAFT-TERM]{ref-tag-staleness / surface-desync (a ref-tag whose blog claim or cited impl drifted apart) distinct from Drift-gate's historian-ratchet meaning | only prose in the identity.md ref-tag Lifecycle paragraph, unnamed | .claude/context/identity.md (ref-tag section)}
 [DRAFT-TERM]{seed/website/plugin-dir three-repo edit-boundary (which repo/surface a given fix is allowed to touch) | stated only in root CLAUDE.md 'Three separate gits' + 'Workspace Structure', never promoted to context | .claude/context/identity.md (near the Customization guardrail term)}
 [DRAFT-TERM]{ref-tag-review skip-list convention = the backlog-status.md tracker (a re-run reads it to skip already-synced anchors; user-chosen 2026-07-16, no per-tag/frontmatter blog markup) | .claude/knowledge/ref-tag-review/backlog-status.md | .claude/context/identity.md (ref-tag Lifecycle subsection)}
+
+### OBSERVE-EXIT ADDENDUM (2026-07-17, post-compact resume — session 2)
+
+OBSERVE cycle 1 re-confirmed complete; the finalized top-5 above stands. Two refinements for PLAN/CONDENSE:
+
+- **COMMAND-APPROVE (PLAN todo):** job `allowed_commands` is EMPTY. PLAN must declare `[COMMAND-APPROVE]` for the `.html` regeneration command (`python3 .claude/tools/generate_blog_html.py …`) that EXECUTE runs and VERIFY re-checks (mirror invariant). Bare `grep`/`ls` census are system utils; the regen script is the project command that needs approval.
+- **New substrate item → folds into the ONE substrate `[PENDING-JOB]` above (top-5 #5), NOT a new separate marker:** brain_guard `heartbeat-sensor` voice tells the seed to batch metacog-reflect in one Bash call, but the phase_observe / phase_plan guard BLOCKS compound/multi-line Bash — so batching is impossible in observe/plan; run ONE reflect per Bash call. The heartbeat-sensor voice needs a phase-guard caveat. Plugin surface = locked here → route via the substrate PENDING-JOB, never inline.
+
 ---Pl---
 
 
