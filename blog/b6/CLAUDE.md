@@ -66,9 +66,9 @@ Live URLs: `https://hadi-nayebi.github.io/blog/b6/06_X-<slug>.html`. Old root-le
 
 ## Tooling notes
 
-- **Build:** `python3 tools/generate_blog_html.py blog/b6/<slug>.md blog/b6/<slug>.html --version 20260518` — the generator's `SLUG_SUBDIR_PREFIXES` map includes `"06_": "b6"`; it autodetects subdir from the output path and switches to depth-aware mode (`../../` site-nav, subdir canonical URL, subdir `audio/` path).
-- **Transcript:** `python3 tools/generate_blog_transcript.py blog/b6/<slug>.md blog/b6/<slug>.transcript.md` (always resets `final: false`).
-- **Audio:** `python3 tools/generate_blog_audio.py blog/b6/<slug>.transcript.md blog/b6/audio/<slug>.mp3` (refuses unless `final: true`; ~$0.75/essay on tts-1-hd; USER-GATED).
+- **Build:** `python3 .claude/tools/generate_blog_html.py blog/b6/<slug>.md blog/b6/<slug>.html --version 20260518` — the generator's `SLUG_SUBDIR_PREFIXES` map includes `"06_": "b6"`; it autodetects subdir from the output path and switches to depth-aware mode (`../../` site-nav, subdir canonical URL, subdir `audio/` path).
+- **Transcript:** `python3 .claude/tools/generate_blog_transcript.py blog/b6/<slug>.md blog/b6/<slug>.transcript.md` (always resets `final: false`).
+- **Audio:** `python3 .claude/tools/generate_blog_audio.py blog/b6/<slug>.transcript.md blog/b6/audio/<slug>.mp3` (refuses unless `final: true`; ~$0.75/essay on tts-1-hd; USER-GATED).
 
 ## Standards
 
@@ -86,16 +86,7 @@ Live URLs: `https://hadi-nayebi.github.io/blog/b6/06_X-<slug>.html`. Old root-le
 
 ---Ob---
 
-**Ref-tag sync job `1784255953475439806` (Stage-1) active — this dir is in EXECUTE scope.** Corpus hub: `../CLAUDE.md` `---Ob---`. Prior B6 line-number sweep state (INACTIVE) + banked findings: `../../.claude/knowledge/b6-reftag-sweep-job-state.md`. Series-specific ref-tag findings recorded here as the scan lands.
-
-**SCAN FINDING — `06_10` (plan-state-machine) reads CLEAN** (main-session read 2026-07-16): current vocabulary (no `seal`/`Form 1/2/3`); all ~14 ref-tags use section-name pointers (R4-clean, no line numbers); tags cite `.claude/context/job-stages-plans.md` + `job-completion-reactivation.md` + `opevc-phases.md` + `brain-memory.md` + `job-system.md` by section; prose even self-corrects the old `.yaml`-as-dependent-job model. Implies b6's Stage/plan essays were recently swept → **LOW drift here**. Redirect the top-5 hunt toward **b8/`08_3`** (pre-identified IRR-4/IRR-5), **b7 plugin test-counts/versions**, and any un-swept essays. STILL TODO (scanner R2/R3): confirm those cited context section-names actually resolve.
-
 ---Pl---
-
-**Ref-tag sync job `1784255953475439806` (Stage-1, plan_file=false) — B6 in EXECUTE scope; re-activated 2026-07-17.** Full plan: `../CLAUDE.md` `---Pl---` footer. EXECUTE edits here (edit `.md` → regen `.html`, mirror invariant; ground-truth MAIN-SESSION):
-- **06_9 (gmode) — CONFIRM-ONLY, NO edit:** landmine premise REFUTED (user + live grep) — 31 section-anchor tags, `.md`==`.html`, zero line-#s. EXECUTE runs a confirming grep only (zero `:NNN` middle-fields both surfaces + tag-count parity); clean → done, log the misread.
-- **B-LINE splits (06_2b / 06_7b / 06_10b):** `ls`-confirm exist (census predates the 2026-06-21 splits); re-census live; strip any surviving `:NNN` → stable section anchor (NEVER re-point).
-- Note: the regen-path doc drift in THIS file's "Tooling notes" (bare `tools/…` → `.claude/tools/…`) is a CONDENSE memory-form fix (C1), NOT an EXECUTE edit.
 
 ---Ex---
 

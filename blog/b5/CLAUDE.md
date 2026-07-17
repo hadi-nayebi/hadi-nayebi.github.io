@@ -45,9 +45,9 @@ Per-essay read-time / image / GOAL-provenance detail + the Refs column + asset t
 
 ## Tooling notes
 
-- **Build:** `python3 tools/generate_blog_html.py blog/b5/<slug>.md blog/b5/<slug>.html --version 20260518` (autodetects subdir → depth-aware mode: `../../` site-nav, subdir canonical URL, `audio/` in subdir).
-- **Transcript:** `python3 tools/generate_blog_transcript.py blog/b5/<slug>.md blog/b5/<slug>.transcript.md` (resets `final: false`; user flips to `true` to authorize audio).
-- **Audio:** `python3 tools/generate_blog_audio.py blog/b5/<slug>.transcript.md blog/b5/audio/<slug>.mp3` (refuses unless `final: true`; ~$0.75/essay on tts-1-hd).
+- **Build:** `python3 .claude/tools/generate_blog_html.py blog/b5/<slug>.md blog/b5/<slug>.html --version 20260518` (autodetects subdir → depth-aware mode: `../../` site-nav, subdir canonical URL, `audio/` in subdir).
+- **Transcript:** `python3 .claude/tools/generate_blog_transcript.py blog/b5/<slug>.md blog/b5/<slug>.transcript.md` (resets `final: false`; user flips to `true` to authorize audio).
+- **Audio:** `python3 .claude/tools/generate_blog_audio.py blog/b5/<slug>.transcript.md blog/b5/audio/<slug>.mp3` (refuses unless `final: true`; ~$0.75/essay on tts-1-hd).
 - **Live URL pattern:** `https://hadi-nayebi.github.io/blog/b5/05_X-<slug>.html` (old root-level URLs 404 — restructure approved, no redirects).
 
 ## Cross-references

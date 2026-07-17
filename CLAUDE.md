@@ -224,9 +224,9 @@ Every **new indexable page** MUST have in `<head>`:
 `SIDEBAR_POSTS` array is the source of truth for this order and is mirrored by `blog.html`, `feed.xml`,
 and `sitemap.xml`.
 ---Ob---
+
 ---Pl---
 
-**Ref-tag sync job 1784255953475439806 (Stage-1) — repo-root in EXECUTE scope (cycle 1).** EXECUTE edits .gitignore only (add *.anchor-heals — the section-check.sh sibling-backup recurrence fix; user already removed the orphan). Full plan lives in blog/CLAUDE.md plan-footer.
-
 ---Ex---
+
 ---Ve---

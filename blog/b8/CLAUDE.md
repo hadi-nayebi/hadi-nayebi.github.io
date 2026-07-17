@@ -12,8 +12,6 @@ condensed — durable record in `.claude/knowledge/ref-tag-review/`.
 
 ---Pl---
 
-**Ref-tag sync job 1784255953475439806 (Stage-1) — b8 in EXECUTE scope (cycle 1; user directive 2026-07-17: bounded b8 FAST census).** EXECUTE fixes real ref-tag/context mismatches inline in 08_1/08_2/08_4-08_9 (edit .md → regen .html, mirror invariant; ground-truth main-session). 08_3: re-confirm only — B-PRIN pointer already-fixed; B-CNT dated counts PRESERVED (do NOT touch, per user decision). Circuit-breaker: heavy/unexpected drift → PAUSE + surface before expanding. Full plan: ../CLAUDE.md plan-footer.
-
 ---Ex---
 
 ---Ve---
