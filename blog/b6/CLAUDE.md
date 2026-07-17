@@ -92,6 +92,11 @@ Live URLs: `https://hadi-nayebi.github.io/blog/b6/06_X-<slug>.html`. Old root-le
 
 ---Pl---
 
+**Ref-tag sync job `1784255953475439806` (Stage-1, plan_file=false) — B6 in EXECUTE scope; re-activated 2026-07-17.** Full plan: `../CLAUDE.md` `---Pl---` footer. EXECUTE edits here (edit `.md` → regen `.html`, mirror invariant; ground-truth MAIN-SESSION):
+- **06_9 (gmode) — CONFIRM-ONLY, NO edit:** landmine premise REFUTED (user + live grep) — 31 section-anchor tags, `.md`==`.html`, zero line-#s. EXECUTE runs a confirming grep only (zero `:NNN` middle-fields both surfaces + tag-count parity); clean → done, log the misread.
+- **B-LINE splits (06_2b / 06_7b / 06_10b):** `ls`-confirm exist (census predates the 2026-06-21 splits); re-census live; strip any surviving `:NNN` → stable section anchor (NEVER re-point).
+- Note: the regen-path doc drift in THIS file's "Tooling notes" (bare `tools/…` → `.claude/tools/…`) is a CONDENSE memory-form fix (C1), NOT an EXECUTE edit.
+
 ---Ex---
 
 ---Ve---

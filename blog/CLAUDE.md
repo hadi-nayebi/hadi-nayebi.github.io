@@ -412,6 +412,17 @@ Regen [COMMAND-APPROVE] → **APPROVED** (user, 2026-07-17): path hadi-nayebi.gi
 
 [VOICE-UPDATE]{plan-guard-block-voice | it lists allowed scripts but never states "sole command only — no pipe/redirect/&&", the actual trip cause, so a reader retries with a pipe and re-blocks | append "run the command ALONE — no pipe, redirect, or chaining" to the allowed-scripts line}
 
+### PREMORTEM GUARDS (cycle-1 plan-premortem, verdict ACCEPT — folded into E/V, no design change)
+Six failure modes → concrete guards that TIGHTEN the existing E-steps / G-gates (they refine VERIFY; they do NOT re-open the user-approved plan):
+- **G2 regen idempotence (was tag-count only):** VERIFY runs the regen TWICE per edited essay — the SECOND run must produce zero diff (byte-parity, not just `.md`/`.html` tag-count parity). Catches non-idempotent re-indent / trailing-space / line-ending churn + the asterisk→`<em>` mangling.
+- **E2 B-STUB base-first:** grep the EXACT base-count phrasing in EACH of 07_3/07_5/07_6 BEFORE adding the caveat (bases may differ — "11 plugins" vs "thirteen…" vs "13 enforcement tools"); confirm "(2 unimplemented)" reads naturally IN that sentence; only then edit. The G1 banned-grep is necessary, not sufficient.
+- **E1/G1 B-LINE full regex:** the census pattern must cover EVERY line-pointer variant, not just `:NNN` — also `:NN-NN` ranges and `#LNNN` GitHub anchors. VERIFY documents the exact regex + hit-count. A weak grep is how the inherited inventory went stale-clean.
+- **E5 B8 circuit-breaker THRESHOLD (CTO-set, operationalizes the user "heavy drift" directive):** PAUSE + AskUserQuestion if b8 shows **>5 real context-mismatches in ONE essay OR >12 total** across 08_1/08_2/08_4-08_9. At/under → fix inline + proceed. Removes the "guess" ambiguity without changing the user's intent.
+- **G4 substrate routing audit:** VERIFY reads the EXECUTE diff — ANY `.claude/` (plugin-dir) surface touched → FAIL. Verifying/patching a plugin pointer's correctness is BLOCKED; it routes into the ONE [PENDING-JOB], never inline. G4 now audits HOW corrections were routed, not just the [PENDING-JOB] count.
+- **E4/C1 ls-before-edit:** run the `ls`/path-confirm BEFORE any regen-path edit and capture it in the acceptance log; a missing file → surface it, never silently write the wrong path.
+
+[AGENT-UPDATE]{post-compact-context-refresher | dispatched during a read-only phase (PLAN/OBSERVE) it is guard-blocked from ALL Bash and code-Read, so it cannot run its git/ls/Read re-grounding and returns a block-report instead of a digest (observed 2026-07-17, plan cycle 1) | add a phase-guard caveat: in PLAN/OBSERVE the refresher can only re-ground from the CLAUDE.md-layer + job.sh/plan.sh state, so the seed should re-ground via main-session Read there and reserve the refresher for EXECUTE/VERIFY/CONDENSE/gmode where Bash is allowed}
+
 
 
 
