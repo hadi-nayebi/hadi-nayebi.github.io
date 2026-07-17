@@ -434,3 +434,37 @@ Six failure modes → concrete guards that TIGHTEN the existing E-steps / G-gate
 
 
 ---Ve---
+
+### VERIFY (cycle 1, session 3 post-clear 2026-07-17) — acceptance results
+
+**Ground truth:** EXECUTE commit `9e5e6cb` landed `.md`-only B-STUB caveats (07_5 x2, 07_6 x1) + `.gitignore`, and EXPLICITLY DEFERRED `.html` regen + E1/E3/E5 to VERIFY. But `.html` regen is a WRITE (implementation) — VERIFY cannot do it; deferred write work = a backward-to-execute trigger.
+
+**Gate results so far (all MAIN-SESSION greps, D2):**
+- **G1 B-LINE (line-# grep-zero) — PASS.** Live census `\.(sh|md|py|yaml|yml|json|conf|txt|xml):[0-9]+` AND `#L[0-9]+` across b6/b7/b8 (`.md`+`.html`) = ZERO. Confirms user spot-check + prior grep; B-LINE class is EMPTY (no strip work needed).
+- **G1 banned "13 plugins" — PASS (essays).** Only hits are in `blog/b7/CLAUDE.md` (working memory, NOT a deliverable). Zero in 06_/07_/08_ essay bodies.
+- **G2 mirror (B-STUB) — FAIL.** Caveat "unimplemented designs" present in `07_5-docs-and-historian.md` (L29, L33) + `07_6-agents-and-80-20-budget.md` (L25) but ABSENT from their `.html` mirror (never regenerated). → BACKWARD to EXECUTE: regen 07_5 + 07_6 `.html` from `.md` via the approved `generate_blog_html.py`.
+- **.gitignore — PASS.** `*.anchor-heals` at L41.
+
+**Still OPEN (verify before routing backward, so the backward pass fixes everything at once):**
+- **E3 B-B7V** — voice-count claim not yet checked vs live voice.xml SUM(hooks+scripts).
+- **E5 b8 census** — execute claims "65 tags, 0 flags"; needs main-session spot-check (D2 never inherits a subagent count). b8 B-LINE + banned already zero.
+- **G4** — substrate `[PENDING-JOB]` count == 1; tracker `backlog-status.md` updated.
+
+**Decision forming:** G2 mirror FAIL is a confirmed backward-to-execute. Finish B-B7V + b8 spot-check + G4 FIRST, then route backward ONCE to regen `.html` (+ any B-B7V fix), avoiding piecemeal trips.
+
+**UPDATE — B-B7V (E3/G3 voice count) — PASS.** Claim lives in `07_3-dual-voice-architecture.md` only (per b7/CLAUDE.md recon). Essay cites plugin_integrity `hooks/voice.xml` = 57 elements + `scripts/voice.xml` = 14. Live `grep -c 'id='`: hooks = **57**, scripts = **14** — EXACT match, NOT drifted. No 07_3 fix needed; no `.html` regen for 07_3 required.
+
+**Remaining before backward route:** (a) b8 bounded spot-check (execute subagent claimed "65 tags, 0 flags"; my b8 B-LINE + banned-13 already ZERO — need a light banned-vocab + pointer spot-check per the user's bounded-census directive, NOT a deep re-audit); (b) G4 substrate `[PENDING-JOB]` count; (c) then verify-commit.sh --backward execute to regen 07_5 + 07_6 `.html`.
+
+### VERIFY VERDICT (cycle 1) — all gates assessed
+- **G1 B-LINE line-# (b6/b7/b8, both surfaces): PASS** — `\.(ext):[0-9]+` + `#L[0-9]+` = ZERO.
+- **G1 banned "13 plugins" (essays): PASS** — zero; only hits are in `b7/CLAUDE.md` working memory.
+- **G2 mirror — B-STUB 07_5/07_6: FAIL** — caveat "unimplemented designs" in `07_5-docs-and-historian.md` (L29,L33) + `07_6-agents-and-80-20-budget.md` (L25), ABSENT from their `.html`. Execute added `.md` only, deferred `.html` regen.
+- **E3/G3 B-B7V: PASS** — 07_3 cites hooks=57/scripts=14; live `grep -c id=` = 57/14 exact.
+- **E5 b8 bounded census: PASS** — line-#=0, banned-13=0, banned-vocab(sibling-job/PLAN-APPROVAL/YAML-APPROVAL)=0; 08_2 slugs canonical + current. Corroborates subagent 0-flags. Bounded per user (no deep re-audit). **B-PRIN re-confirmed FIXED**: 08_3 `session-archive-full-snapshot` tag cites `context/opevc-condense.md "Session archive (step 7)"` (correct home), NOT the old `phase_condense/docs/principles.md` misattribution; no "last resort" phrasing survives. **B-CNT preserved** (08_3 dated 2026-05-18 snapshot untouched, per user).
+- **.gitignore `*.anchor-heals`: PASS** (L41).
+- **G4 substrate `[PENDING-JOB]` = 1: PASS** — exactly one consumable bare marker (blog/CLAUDE.md L314); other 16 "PENDING-JOB" strings are prose/backtick refs. (G4 tracker clause = CONDENSE C3, not due at verify.)
+
+**DECISION: FAIL on G2 mirror → route BACKWARD to EXECUTE.** Backward task is narrow: regen `07_5-docs-and-historian.html` + `07_6-agents-and-80-20-budget.html` from their `.md` via approved `generate_blog_html.py`, commit, return to verify, re-check G2 (caveat in `.html`, `.md`==`.html` ref-tag count, regen idempotence twice = byte-parity). All OTHER gates already green. NOTE: b5 precedent (git 1e1f1f9 / a08a325) — generator may run in verify but the multi-git COMMIT of regenerated `.html` needs execute phase, so backward is the correct route. Pre-req: confirm the regen path is in job `allowed_commands` (else neither phase can run it).
+
+**CONDENSE hygiene note (not a verify blocker):** the ---Ob--- MARKED NOTES block (L304-308) holds backtick-wrapped copies of notes that also exist bare (L314-318); only the bare lines are CONDENSE-consumable (`^\[`). Minor duplication to clean at deflate.
