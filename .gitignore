@@ -36,6 +36,10 @@ memory/
 # Seed-reset snapshots relocated out of the prototype root (reset-seed-for-test.sh)
 .claude/seed-reset-snapshots/
 
+# Plugin anchor-heal sibling backups (plugin_integrity section-check.sh writes
+# <file>.anchor-heals next to a healed CLAUDE.md; a local artifact, never deployed)
+*.anchor-heals
+
 # Audio transcript intermediates (HTML → transcript → audio pipeline)
 *.transcript.md
 
