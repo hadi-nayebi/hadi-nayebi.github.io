@@ -41,7 +41,7 @@ Ground truth: `hadosh_academy/.claude/context/INDEX.md` (Rule 40 — prose confl
 | `05_8-historian-ratchet` | The Historian Ratchet | Tier 3 | GOAL ACHIEVED |
 | `05_9-customization-guardrail` | The Customization Guardrail | Tier 3 | GOAL ACHIEVED |
 
-Per-essay read-time / image / GOAL-provenance detail + the Refs column + asset tree + banked series decisions → `../../.claude/knowledge/b5-series-reference.md`. Live `.html` ref-marker counts (05_1=15, 05_2=17, 05_3=25, 05_4=19, 05_5=8, 05_6=15, 05_7=22, 05_8=14, 05_9=25) — corrected 2026-07-16 by the ref-tag-review F4 fix (architect Fable ruled: correct all count refs). Audio: zero MP3s yet; audio gen is USER-GATED (Rule 12 paid TTS spend + 2026-05-18 "only if text is absolute-final") — triple-verify every transcript before any audio API call.
+Per-essay read-time / image / GOAL-provenance detail + the Refs column + asset tree + banked series decisions → `../../.claude/knowledge/b5-series-reference.md`. Live `.html` ref-marker counts (05_1=15, 05_2=17, 05_3=25, 05_4=20, 05_5=9, 05_6=16, 05_7=23, 05_8=14, 05_9=25) — base corrected 2026-07-16 (F4); 05_4/05_5/05_6/05_7 each +1 on 2026-07-19 from the missing-anchor inserts (job 1784416070407796247 — M3/M2/M1/M4); all four grep-confirmed 2026-07-19. Audio: zero MP3s yet; audio gen is USER-GATED (Rule 12 paid TTS spend + 2026-05-18 "only if text is absolute-final") — triple-verify every transcript before any audio API call.
 
 ## Tooling notes
 
@@ -81,7 +81,7 @@ B5 ref-tags were reviewed+fixed 2026-07-16 (F1–F5) but **TAGS-ONLY** — essay
 - **05_7** — stale count left in body (F5 touched tags only). VERIFY.
 - **B-B5 OPEN** (backlog): **05_2** test-counts ×2 + prefix-registry "eight→ten" — CONTEXT-SYNC/CODE candidate (`grep -c PASS` live suites; `grep -c` question_discipline PREFIX_REGISTRY).
 - **05_9** customization-guardrail (25 refs, Tier 3) — header says "B5.9 re-audit pending"; under-audited despite high ref density.
-- Live `.html` ref-marker counts (ground truth to diff vs any "N refs" claim): 05_1=15 · 05_2=17 · 05_3=25 · 05_4=19 · 05_5=8 · 05_6=15 · 05_7=22 · 05_8=14 · 05_9=25.
+- Live `.html` ref-marker counts (ground truth to diff vs any "N refs" claim): 05_1=15 · 05_2=17 · 05_3=25 · 05_4=20 · 05_5=9 · 05_6=16 · 05_7=23 · 05_8=14 · 05_9=25 (05_4–05_7 each +1 on 2026-07-19).
 
 Known-pending items are genuine problems but TRACKED — if I flag one, be transparent it intersects the backlog; prefer genuinely un-flagged drift where possible.
 

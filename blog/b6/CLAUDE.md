@@ -40,9 +40,9 @@ Status legend: **published** = drove clean through the 3-CLEAN gate · **correct
 | `06_3-observe` | OBSERVE — Read Wide, Write Once | 11 min | — | corrected v0.4.0 |
 | `06_4-plan` | PLAN — Decide, Then Lock | 10 min | — | corrected v0.4.0 |
 | `06_5-execute` | EXECUTE — Build, in Scope, in Steps | 10 min | 32 | corrected v0.4.0 |
-| `06_6-verify` | VERIFY — Independent Eyes | 9 min | — | corrected v0.3.0 |
-| `06_7-condense` | CONDENSE — The Cognitive Organ | 11 min | 32 | published (+dependency-removal lifecycle 2026-06-19) |
-| `06_7b-condense-uniquely-owns` | CONDENSE — What It Uniquely Owns | 6 min | 20 | new (split off 06_7) |
+| `06_6-verify` | VERIFY — Independent Eyes | 9 min | — | corrected v0.3.0 (+M8/M9 ref-tag anchors 2026-07-19) |
+| `06_7-condense` | CONDENSE — The Cognitive Organ | 11 min | 26 | published (+dependency-removal lifecycle 2026-06-19; +M11 anchor 2026-07-19 — live grep=26, recorded 32 was stale) |
+| `06_7b-condense-uniquely-owns` | CONDENSE — What It Uniquely Owns | 6 min | 21 | new (split off 06_7; +M13 anchor 2026-07-19 — live grep=21) |
 | `06_8-inverse-multiplier` | The Rhythm of Work (retitled 2026-06-10; was The Inverse Multiplier) | 11 min | 27 | published |
 | `06_9-gmode` | GMODE — The Off-Cycle Lane | 8 min | 25 | published |
 | `06_10-plan-state-machine` | The Plan File — Stages and Completion | 6 min | 16 | corrected/built-reconcile v0.4.0 (Tier 3) |
