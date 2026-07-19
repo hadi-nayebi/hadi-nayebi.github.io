@@ -397,6 +397,58 @@ A ref-tag review is BIDIRECTIONAL by nature (user ruling 2026-07-18): auditing e
 
 ---Pl---
 
+### Ref-tag review — PLAN (job 1784416070407796247, cycle 1, Stage 1)
+
+**Stage 1** (`plan_file=false`) — single-cycle. Plan lives HERE in the footer; no plan file. Slate LOCKED by user "HIGH-8" ruling — do NOT re-open discovery or re-add the 7 skipped MEDIUM anchors.
+
+**EXECUTE deliverable = 11 items × 2 surfaces (.md + .html mirror) = 22 edits** (3 DRIFT tag fixes + 8 HIGH MISSING anchor inserts).
+
+**UNIVERSAL CONTROLS (every edit):**
+- **MIRROR INVARIANT** — edit the `.md` tag AND the matching `.html` `title=` so the tag text is byte-identical on both surfaces.
+- **RE-LOCATE BY SLUG / CLAIM TEXT** — line numbers are approximate + BANNED in tags; find each spot by its slug or claim sentence, never blind-edit a line #.
+- **NEVER edit `.claude/plugins/`** inline — the 06_2b plugin-doc/code split is an emitted `[PENDING-JOB]` for CONDENSE (route to substrate job 1784284305940794400).
+- **Tag anatomy** — `*[ref: slug | code-or-context-path | claim/summary]*`; middle field = stable pointer (file + section/function, NO line numbers); exactly 2 pipes.
+
+**SCOPE SETUP (execute-scope declaration):** edits live in `blog/b5/`, `blog/b6/`, `blog/b8/`; each needs its nearest CLAUDE.md to declare it in-scope (exact, not recursive). b5 + b6 CLAUDE.md were declared in OBSERVE. **b8: DONE** — `blog/b8/CLAUDE.md` updated this job (its `---Pl---` scope note declares b8 in-scope for D3/08_4). All three series dirs now in EXECUTE scope (plan-scope-analyzer confirmed b5/b6/b8 CLAUDE.md all EXIST + carry this job's note).
+
+**DRIFT FIXES (3):**
+
+- **D1 · C2 · b5/05_2-plugin-integrity** {.md+.html} · slug `prefix-registry-current-entries` — "**9 active prefixes**" → "**10 active prefixes**", add `[COMMAND-APPROVE]` to the list. Ground truth: `.claude/context/prefixed-questions.md` + live `question-discipline-gate.sh` PREFIX_REGISTRY (10). **Accept:** "10 active prefixes" present + "9 active prefixes" absent + `[COMMAND-APPROVE]` in the tag list, on BOTH surfaces; mirror byte-identical.
+- **D2 · 06_2b · b6/06_2b-the-phase-map** {.md+.html} · slug `idle-bash-allowlist-named-scripts` — verb list `(show|focused|list|update|activate|focus|pause|complete|approve)` [9] → `(show|focused|list|activate|focus|pause)` [6]. Ground truth: live `phase-gate.sh` IDLE `job.sh` whitelist = those 6. **Essay-prose = FIX TAG ONLY (user ruling 2026-07-19):** correct ONLY the tag to the 6 verbs; do NOT edit the essay's prose — the "should idle allow update/complete/approve" question stays the architect's `[PENDING-JOB]`, and editing prose to 6 now would pre-decide it. **Accept:** tag lists exactly the 6 verbs, `update|complete|approve` absent from the tag, essay prose UNCHANGED, both surfaces, mirror byte-identical.
+- **D3 · 08_4 · b8/08_4-soft-hard-migration** {.md+.html} · slug `brain-maturation-soft-to-hard-canonical` — middle-field `CLAUDE.md "Brain Maturation Model"` → `root CLAUDE.md "Brain Maturation Model"` (disambiguate from `.claude/CLAUDE.md`'s different section). **Accept:** middle field reads "root CLAUDE.md …" both surfaces; mirror byte-identical.
+
+**MISSING ANCHOR INSERTS (8)** — write `*[ref: slug | target | summary]*` at the named claim; MIRROR .md + .html:
+
+| # | Essay {.md+.html} | Un-anchored claim (locate by text) | Target (middle field) |
+|---|---|---|---|
+| M1 | b5/05_6-question-discipline | "every question the seed agent asks … carries a registered prefix … dispatches on those prefixes" | `question_discipline/hooks/question-discipline-gate.sh` (PREFIX_REGISTRY) |
+| M2 | b5/05_5-interaction-summary | "…let the mega-prompt grow without compression … the next session loses the narrative thread" | `.claude/plugins/interaction_summary/CLAUDE.md` "Objective" |
+| M3 | b5/05_4-job-core | "The whole always-on layer attaches to the job structurally…" | `.claude/plugins/job_core/CLAUDE.md` "Design Principle" |
+| M4 | b5/05_7-claude-md-hierarchy | "The CLAUDE.md hierarchy is the one the phasic layer writes through." | root `CLAUDE.md` "Core Phases (OPEVC)" |
+| M8 | b6/06_6-verify | "Self-verification is biased — that is the whole reason VERIFY is its own phase." | `.claude/context/opevc-phases.md` VERIFY |
+| M9 | b6/06_6-verify | "…choosing where to go, edge by edge … gives the phasic layer its name" | `.claude/context/plugins-entities.md` "Phasic layer" |
+| M11 | b6/06_7-condense | "The footer is never shrunk before it is preserved." | `.claude/context/opevc-condense.md` "7-step waterfall" (preserve-before-deflate) |
+| M13 | b6/06_7b-condense-uniquely-owns | "…lock-forward-only rule, nor the preserve-before-delete ordering." | `.claude/context/opevc-condense.md` "Lock-forward only" |
+
+- New slug = descriptive kebab-case matching existing tag convention. **Summary field = PLAIN-LANGUAGE, READER-FIRST (user ruling 2026-07-19):** mirror the essay's own plain wording for the 80%-non-technical audience; traceability lives in the middle-field path, NOT in dense glossary terms in the summary. **Accept (per anchor):** slug present in BOTH .md + .html; tag sits at the named claim; middle-field target resolves (all 8 D2-confirmed); exactly 2 pipes; mirror byte-identical.
+
+**EXECUTE CONTROLS (premortem-hardened):**
+- **Exact-claim search, NOT paraphrase.** The MISSING claims above are OBSERVE paraphrases — at EXECUTE, Read the live essay, find the ACTUAL claim sentence, confirm it occurs ONCE, anchor there. If wording drifted or occurs 0×/multiple×, re-locate (don't blind-insert).
+- **Mirror parity checklist.** Track every item as two ticks (`item/.md ✓  item/.html ✓`); never advance to the next item until BOTH surfaces carry the byte-identical tag.
+- **Canonical middle-field format** (all 8 new anchors): `path/to/file.ext SECTION-OR-SYMBOL` — space-separated, NO parens/quotes — so the tag text is identical on both surfaces. E.g. `question_discipline/hooks/question-discipline-gate.sh PREFIX_REGISTRY`.
+- **Slug-collision check.** Before inserting each new slug, grep the corpus; if it already tags another spot, pick a distinct slug.
+- **Re-verify targets at EXECUTE (D2).** Live-Read each middle-field target file+section before inserting — ESPECIALLY M9 `.claude/context/plugins-entities.md "Phasic layer"` (absent from OBSERVE's short context-file list; if file/section missing, find the correct phasic-layer home before anchoring).
+- **Gitignored `.md`:** grep `.html` normally + `.md` by EXPLICIT path (Bash grep reads gitignored files; the Glob tool does NOT).
+
+**DONE = every acceptance grep passes on BOTH surfaces.** VERIFY re-greps each of the 11 slugs in .md AND .html + confirms claim-vs-ground-truth, item by item (no bulk "looks done").
+
+**GUARD VALIDATION:** every EXECUTE step = `Edit` on a `blog/*.{md,html}` file inside a declared-scope dir — permitted by execute-guard. No plugin edits, no new scripts.
+
+**CONDENSE owes:** consume the 4 emitted marked notes (2 `[PENDING-JOB]` + 2 `[KNOWLEDGE]`, which live in the `---Ob---` footer — CONDENSE greps all four phase footers, so no re-emit needed) + ask `[JOB-COMPLETE]`.
+
+[KNOWLEDGE]{ref-tag-review/anchor-apply-controls}
+Applying a ref-tag review inline (the EXECUTE half, distinct from the discovery method): each edit is a MIRROR PAIR — the .md tag and the .html title= must be byte-identical, tracked with a per-item two-tick parity checklist so neither surface is skipped. Re-locate every tag/claim by slug or live claim-sentence, never by line number — OBSERVE paraphrases must be matched to the essay's ACTUAL wording and confirmed to occur once before inserting. New anchors use a canonical middle-field format (path SPACE section-or-symbol, no parens/quotes) so the tag text is identical across surfaces; grep each new slug for collisions first. Re-verify each middle-field target still resolves via a live Read at EXECUTE (targets D2-verified at OBSERVE can go stale between phases/sessions). Gitignored .md files are grepped by explicit path (Bash grep reads them; the Glob tool does not). Summary voice follows the user's audience, set per-run.
+
 ---Ex---
 
 ---Ve---
