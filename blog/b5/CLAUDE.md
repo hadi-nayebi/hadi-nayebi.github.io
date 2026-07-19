@@ -74,6 +74,25 @@ Stage-1 tags-only ref-tag review-and-fix pass over all 9 b5 essays. Every drift 
 
 ---Ob---
 
+### Ref-tag review job (1784416070407796247, 2026-07-18) — B5 hunting notes
+
+B5 ref-tags were reviewed+fixed 2026-07-16 (F1–F5) but **TAGS-ONLY** — essay BODIES deliberately left stale (pending job `1784185778987757548`). So B5's richest drift is **PARAGRAPH** (prose vs its own corrected tag):
+- **05_3** — F1 corrected the tag to **%-of-window**, but body prose likely still teaches the retired **accrual / baseline+accrual** model → prose-vs-tag contradiction (PARAGRAPH). VERIFY by reading 05_3 body around the brain_guard tag.
+- **05_7** — stale count left in body (F5 touched tags only). VERIFY.
+- **B-B5 OPEN** (backlog): **05_2** test-counts ×2 + prefix-registry "eight→ten" — CONTEXT-SYNC/CODE candidate (`grep -c PASS` live suites; `grep -c` question_discipline PREFIX_REGISTRY).
+- **05_9** customization-guardrail (25 refs, Tier 3) — header says "B5.9 re-audit pending"; under-audited despite high ref density.
+- Live `.html` ref-marker counts (ground truth to diff vs any "N refs" claim): 05_1=15 · 05_2=17 · 05_3=25 · 05_4=19 · 05_5=8 · 05_6=15 · 05_7=22 · 05_8=14 · 05_9=25.
+
+Known-pending items are genuine problems but TRACKED — if I flag one, be transparent it intersects the backlog; prefer genuinely un-flagged drift where possible.
+
+**★C2 CONFIRMED (main-session ground-truth, 2026-07-18) — CODE (also CONTEXT-SYNC):**
+- **Tag** `prefix-registry-current-entries` @ `blog/b5/05_2-plugin-integrity.md:79` (mirror `.html:166`): claims "`readonly PREFIX_REGISTRY` bash array of **9 active prefixes**" and lists 9 — OMITS `[COMMAND-APPROVE]`.
+- **Live code** `.claude/plugins/question_discipline/hooks/question-discipline-gate.sh:81-92` = **10** entries incl. `[COMMAND-APPROVE]`.
+- **Context** `.claude/context/prefixed-questions.md:71` = "the canonical registry holds the **10 active prefixes** … including `[COMMAND-APPROVE]`" (matrix L60-69 lists all 10).
+- **Category:** CODE (tag's claim about the cited code array drifted: code gained a 10th prefix). Also satisfies CONTEXT-SYNC (blog 9 vs context 10). One-line fix: change "9 active prefixes" → "10" and add `[COMMAND-APPROVE]` (job_core / OBSERVE-PLAN pre-approve) to the list, mirror .md+.html.
+- **NOTE (related, NOT my flag — plugin-dir, FLAG-only):** `question_discipline/CLAUDE.md` + `hooks/CLAUDE.md` ALSO say "9 registered prefixes" (stale; code has 10). That's plugin-doc drift → belongs in a [PENDING-JOB], never edited here.
+- **Backlog intersection:** this IS the OPEN B-B5 item ("prefix-registry eight→ten"). Known-but-unfixed → feeds the scope [WAITING].
+
 ---Pl---
 
 ---Ex---

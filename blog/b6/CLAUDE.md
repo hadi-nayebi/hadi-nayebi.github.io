@@ -86,6 +86,21 @@ Live URLs: `https://hadi-nayebi.github.io/blog/b6/06_X-<slug>.html`. Old root-le
 
 ---Ob---
 
+### Ref-tag review job (1784416070407796247, 2026-07-18) — B6 hunting notes
+
+B6 = **richest fresh ground** (B6-SWEEP 277-tag deep pass still OPEN; only B-LINE + banned-"13 plugins" verified clean 2026-07-17). Leads by category:
+- **06_10-plan-state-machine** ("Plan File — Stages and Completion", Tier 3, 16 refs) — plan-file lifecycle had HEAVY vocab churn. Banned aliases to hunt in tags+prose: `plan_state` · `Form 1/2/3` · `seal/sealed`/`completed_plan`/`md_approved` · `[PLAN-APPROVAL]`/`[YAML-APPROVAL]` · "conditional forward transition" · "plan decided at job creation" (real: decided in cycle-1 PLAN). CONTEXT-SYNC/PARAGRAPH candidate — even the slug's "state-machine" framing is suspect.
+- **06_9-gmode** (25 refs) — inventory flagged `atomic-pre-gmode-stash` (:39, "atomic jq update" — PARAGRAPH: verify `enter-gmode arm` is single-jq atomic) + gmode edge/cycle-counter tags. Verify vs `phasic_system/scripts/phase.sh` enter-gmode/exit-gmode + `hooks/gmode-gate.sh`.
+- **06_5-execute** (32 refs) — inventory flagged `execute-checkpoint-vs-forward-commit` (CODE: verify `execute-commit.sh` --force prefix logic).
+- **06_3-observe** — inventory flagged `observe-direct-action-budget-mechanizes-80-20` (CODE: verify `observe-guard.sh` has the claimed budget logic).
+- Also check `.claude/knowledge/b6-reftag-sweep-job-state.md` (INACTIVE) for banked cross-job findings before flagging.
+
+Method: pick candidates, cheapest live check first (Read real code / context / .md-vs-.html), verify BEFORE flag. Aim to source CODE + CONTEXT-SYNC here; PARAGRAPH from b5 05_3/05_7; BLOG from .md↔.html mirror or malformed tag.
+
+**06_10-plan-state-machine READ (2026-07-18):** essay is WELL-maintained — explicitly says "There is no state machine walking a plan through named stages. There is a counting rule," correctly retires plan_state/named-approval-stages, tags cite real job-stages-plans.md + job-completion-reactivation.md sections. Two things to check, NOT yet flags:
+- **Slug-vs-thesis oddity (BLOG-ish):** slug is `plan-state-machine` + og_image `markov-phasic-brain-b6.png` while the essay's whole thesis is that there is NO state machine. Slug is not a ref-tag though — likely out of scope; note only.
+- **CANDIDATE to verify (`stage-2-md-plan` tag, :39):** claims cycle-1 EXECUTE creates the plan at `.claude/jobs/<job_id>/plan.md` (fixed name `plan.md`) while `set-plan-file` takes `<name>.md`. Is the on-disk name always `plan.md` or `<name>.md`? Check `.claude/context/job-stages-plans.md` "Plan file lifecycle" + `plan.sh`. Possible CONTEXT-SYNC/CODE mismatch — but 06_10 also says "plan.md" consistently, so ground-truth needed before flag.
+
 ---Pl---
 
 ---Ex---
