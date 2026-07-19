@@ -66,7 +66,7 @@ One walks the cycle's commit graph and asks whether the checkpoints tell a coher
 
 A family of perspectives, deliberately composed so that no single one dominates the verdict. None of them are allowed to fix what they find — they only report. *[ref: verify-entry-voice-lists-auditors | .claude/plugins/phase_verify/hooks/verify-sensor.sh entry-voice announcement | VERIFY's entry voice fires on phase entry and names the verify-* auditors the agent should launch: verify-observe-auditor, verify-plan-auditor, verify-execute-auditor, verify-git-historian, verify-code-evolution-tracker.]*
 
-Self-verification is biased — that is the whole reason VERIFY is its own phase. A separate phase, with separate tools, run by a separate cognitive posture — and frequently delegated to subagents for independence — gives the verification an honest chance to catch what execution missed.
+Self-verification is biased — that is the whole reason VERIFY is its own phase. *[ref: verify-separate-phase-bias | .claude/context/opevc-phases.md VERIFY | VERIFY is its own phase because self-checking your own work while building is biased]* A separate phase, with separate tools, run by a separate cognitive posture — and frequently delegated to subagents for independence — gives the verification an honest chance to catch what execution missed.
 
 ---
 
@@ -88,7 +88,7 @@ If VERIFY refines the plan itself — sharpens a criterion, drops one that can't
 
 ## Situational edges and the Markov property
 
-The backward edges are situational rather than a fixed menu — VERIFY rolls back to whichever prior phase the failure actually points at, and the plan-refinement case adds its own mandatory backward edge to PLAN — and it is this discipline of choosing where to go, edge by edge, that gives the phasic layer its name.
+The backward edges are situational rather than a fixed menu — VERIFY rolls back to whichever prior phase the failure actually points at, and the plan-refinement case adds its own mandatory backward edge to PLAN — and it is this discipline of choosing where to go, edge by edge, that gives the phasic layer its name. *[ref: phasic-layer-edge-by-edge-name | .claude/context/plugins-entities.md Phasic layer | choosing the next phase edge by edge is what gives the phasic (Markov) layer its name]*
 
 **Forward transitions are automatic** when the gate criteria are met; **backward transitions are explicit** and the agent has to choose where to roll back to. The state of the cycle is fully captured in the orchestrator's data file — current phase, cycle number, the rhythm counters, and a few transition flags (pre-gmode stash, suppress-increment, forwarded). No hidden continuation. *[ref: phasic-data-file-schema-minimal | .claude/plugins/phasic_system/scripts/phase.sh init) case arm + set-suppress) case arm + enter-gmode) case arm | The data.json job object initializes via phase.sh init with `{id, current_phase: "idle", cycle: 0}` and grows with phase-specific fields the orchestrator writes: current_phase per advance/back, cycle counter incremented at idle→observe, plus transition flags suppress_next_cycle_increment and pre_gmode_phase. No history list; phase changes overwrite current_phase in place.]*
 

@@ -95,7 +95,7 @@ A consulting practice could install the same dependency-walk pattern for client 
 
 You would tune the *mega-prompt strategy*. The current cumulative-list approach treats every interaction as load-bearing. Your seed may want a sliding window (last N interactions), topic-filtered slices (interactions matching a domain tag), or domain-specific summarization (research seeds compress citations differently from consulting seeds compress decisions). The `user_interactions` array is one shape — the mega-prompt could read from any structured field that survives across the session. *[ref: user-interactions-array-shape | .claude/plugins/job_core/scripts/job.sh (append-interaction subcommand section) | The append logic is one jq expression: `.user_interactions += [$t]` — append-only array of strings. A sliding-window or topic-filtered variant swaps the jq expression (`.user_interactions = (.user_interactions + [$t] | .[-N:])` for windowed; `.user_interactions[$tag] += [$t]` for tagged) without changing the hook contract; the mega-prompt could read from any structured field the job object carries.]*
 
-What you would **not** do is collapse the job into the current turn. The whole always-on layer attaches to the job structurally; without the compartment, the rest of the layer has nothing to hang on.
+What you would **not** do is collapse the job into the current turn. The whole always-on layer attaches to the job structurally; without the compartment, the rest of the layer has nothing to hang on. *[ref: always-on-attaches-to-job | .claude/plugins/job_core/CLAUDE.md Design Principle | the always-on layer attaches structurally to the job, which is what the rest of the layer hangs on]*
 
 ---
 

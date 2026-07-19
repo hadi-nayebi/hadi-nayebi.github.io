@@ -451,4 +451,26 @@ Applying a ref-tag review inline (the EXECUTE half, distinct from the discovery 
 
 ---Ex---
 
+### EXECUTE notes (job 1784416070407796247)
+
+**D2 re-verify at EXECUTE (per plan control):**
+- **M9 target CONFIRMED** — `.claude/context/plugins-entities.md` has the `### Phasic layer` section (the FORWARD_MAP/BACKWARD_MAP "choose where to go edge by edge" home). Anchor valid.
+- **C2 ground truth CONFIRMED via LIVE CODE** — `question_discipline/hooks/question-discipline-gate.sh` `PREFIX_REGISTRY` (lines 81-92) = 10 entries INCLUDING `[COMMAND-APPROVE]`. Blog "9 active prefixes" is real drift; fix 9→10 + add COMMAND-APPROVE is correct.
+
+[PENDING-JOB]{reconcile-prefix-registry-count-doc-vs-code | during C2 verification the LIVE question-discipline-gate.sh PREFIX_REGISTRY was confirmed to hold 10 entries INCLUDING [COMMAND-APPROVE], but two seed doc/context surfaces are drifted to 9 WITHOUT it: .claude/context/plugins-entities.md question_discipline "Registry" paragraph ("holds 9 entries", lists 9 sans COMMAND-APPROVE) AND .claude/plugins/question_discipline/CLAUDE.md + hooks/CLAUDE.md ("9 active/registered prefixes"). plugins/CLAUDE.md and prefixed-questions.md correctly say 10. Seed-internal doc/context drift (NOT the blog) — SUBSTRATE reconciliation, never edit inline in this website job; link/dependent to substrate job 1784284305940794400, same shape as the 06_2b doc-vs-code split. dep:link}
+
+**PROGRESS (execute — subagent dispatch, 80/20):** Delegated the 22 edits to 3 execute-file-editor subagents, one per series. **b5** (C2 drift + M1/M2/M3/M4 anchors) and **b6** (06_2b drift + M8/M9/M11/M13 anchors) LAUNCHED; **b8** (08_4 drift) launching next. Each subagent studies the existing `.html` ref-marker format, applies mirror-paired edits (.md + .html byte-identical), confirms each middle-field target resolves, and reports verbatim. Awaiting their reports; then VERIFY re-greps all 11 slugs on BOTH surfaces + confirms claim-vs-ground-truth item by item.
+
+**Confirmed `.html` ref-marker format (from b8 subagent report):** `<sup class="ref-marker" title="ref: SLUG | MIDDLE | CLAIM">&#9432;</sup>` — the `title=` carries `ref: slug | middle | claim`; any `"` inside the content is HTML-encoded as `&quot;` (so the mirror is byte-identical AFTER entity decoding, not literally). The `.md` side is the inline `*[ref: slug | middle | claim]*`. New anchors MUST match this exact `<sup class="ref-marker">` structure. **b8/D3 DONE + main-session verified** (middle field → "root CLAUDE.md", both surfaces). b5/b6 subagents still in flight.
+
+**ALL 3 SUBAGENTS DONE — 11 items / 22 edits reported applied (subagent CLAIMS — NOT yet main-session verified):**
+- **b8:** D3 08_4 ✓ verified.
+- **b6:** D2 06_2b (verbs 9→6, prose confirmed UNCHANGED) · M8+M9 06_6 · M11 06_7 · M13 06_7b.
+- **b5:** D1 05_2 (9→10 + COMMAND-APPROVE — subagent REWROTE the claim to a fuller 10-prefix enumerated list; accurate-looking but VERIFY must confirm accuracy + mirror) · M1 05_6 · M2 05_5 · M3 05_4 · M4 05_7.
+- All report mirror byte-identical (after HTML-entity decode) + targets resolve.
+
+**VERIFY OWES (main-session, D2):** re-check each of the 11 slugs on BOTH `.md`+`.html`; confirm (a) slug present both surfaces, (b) claim/tag content byte-identical after entity decode, (c) `.html` `<sup class="ref-marker">` well-formed, (d) middle-field target section actually exists. Extra scrutiny: **D1 claim-rewrite scope** + the 06_2b tag lists exactly the 6 verbs with prose untouched.
+
+**GROUND-TRUTH CORRECTION (main-session read of 05_2 both surfaces):** **D1 is CORRECT + mirror-INTACT** — BOTH `.md` L79 and `.html` L166 read "10 active prefixes" incl `[COMMAND-APPROVE]`, byte-identical (all 10 listed). The `execute-drift-auditor` **FABRICATED** the "`.md` still says 9" mirror-break — it does not exist (textbook D2: the AUDITOR subagent fabricated; ground truth is the only arbiter). Its reported anchor slugs also disagree with the edit-subagents' → untrusted; VERIFY resolves the ACTUAL slugs by grep. **No execute fix needed for D1.** Side-note: M1–M4 + M8/M9/M11/M13 each ADDED a marker, so the `blog/b5/CLAUDE.md` per-essay ref-marker counts (05_4/05_5/05_6/05_7 +1; 06_6 +2; 06_7/06_7b +1) are now stale — update in CONDENSE.
+
 ---Ve---

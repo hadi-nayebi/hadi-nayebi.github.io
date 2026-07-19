@@ -16,7 +16,7 @@ og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 
 ---
 
-[Essay 5.5](05_5-interaction-summary.html) covered the mega-prompt that grows with every question. This part covers the gate that grew the *asking surface* itself into something architectural — every question the seed agent asks the user carries a registered prefix, and the rest of the seed's machinery dispatches on those prefixes.
+[Essay 5.5](05_5-interaction-summary.html) covered the mega-prompt that grows with every question. This part covers the gate that grew the *asking surface* itself into something architectural — every question the seed agent asks the user carries a registered prefix, and the rest of the seed's machinery dispatches on those prefixes. *[ref: question-prefix-registry-dispatch | question_discipline/hooks/question-discipline-gate.sh PREFIX_REGISTRY | every user-facing question must open with a registered prefix, and the gate dispatches on it]*
 
 ---
 
