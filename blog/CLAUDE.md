@@ -474,3 +474,44 @@ Applying a ref-tag review inline (the EXECUTE half, distinct from the discovery 
 **GROUND-TRUTH CORRECTION (main-session read of 05_2 both surfaces):** **D1 is CORRECT + mirror-INTACT** — BOTH `.md` L79 and `.html` L166 read "10 active prefixes" incl `[COMMAND-APPROVE]`, byte-identical (all 10 listed). The `execute-drift-auditor` **FABRICATED** the "`.md` still says 9" mirror-break — it does not exist (textbook D2: the AUDITOR subagent fabricated; ground truth is the only arbiter). Its reported anchor slugs also disagree with the edit-subagents' → untrusted; VERIFY resolves the ACTUAL slugs by grep. **No execute fix needed for D1.** Side-note: M1–M4 + M8/M9/M11/M13 each ADDED a marker, so the `blog/b5/CLAUDE.md` per-essay ref-marker counts (05_4/05_5/05_6/05_7 +1; 06_6 +2; 06_7/06_7b +1) are now stale — update in CONDENSE.
 
 ---Ve---
+
+### Ref-tag review — VERIFY (job 1784416070407796247, cycle 1, Stage 1)
+
+**Method (D2 main-session ground truth):** re-grep each of the 11 slugs on BOTH `.md` + `.html`; the edit-subagents' and auditor's reported slugs are UNTRUSTED — VERIFY resolves the ACTUAL slug/tag by grep. Per-item accept: slug present both surfaces · tag body byte-identical after HTML-entity decode · `.html` `<sup class="ref-marker">` well-formed · middle-field target section exists · exactly 2 pipes.
+
+**Established pre-grep:** all 11 essay files exist (b5 05_2/05_4/05_5/05_6/05_7 · b6 06_2b/06_6/06_7/06_7b · b8 08_4), each with `.md` (gitignored) + `.html`. EXECUTE already main-session-confirmed D1 correct + auditor-fabrication caught (see ---Ex---).
+
+**Check matrix (fill as grepped):**
+
+| # | Slug | Essay | .md | .html | Mirror | Target | Verdict |
+|---|---|---|---|---|---|---|---|
+| D1 | prefix-registry-current-entries | 05_2 | ✓ L79 | ✓ L166 | ✓ | live registry=10, all names match | PASS |
+| D2 | idle-bash-allowlist-named-scripts | 06_2b | ✓ L28 | ✓ L125 | ✓ | phase-gate.sh=6 verbs | PASS |
+| D3 | brain-maturation-soft-to-hard-canonical | 08_4 | ✓ L19 | ✓ L120 | ✓ | root CLAUDE.md ✓ | PASS |
+| M1 | question-prefix-registry-dispatch | 05_6 | ✓ L19 | ✓ L119 | ✓ | PREFIX_REGISTRY ✓ | PASS |
+| M2 | interaction-summary-compression-gate | 05_5 | ✓ L65 | ✓ L154 | ✓ | interaction_summary/CLAUDE.md Objective ✓ | PASS |
+| M3 | always-on-attaches-to-job | 05_4 | ✓ L98 | ✓ L188 | ✓ | job_core/CLAUDE.md Design Principle ✓ | PASS |
+| M4 | claude-md-hierarchy-phasic-writes-through | 05_7 | ✓ L19 | ✓ L119 | ✓ | root CLAUDE.md Core Phases (OPEVC) ✓ | PASS |
+| M8 | verify-separate-phase-bias | 06_6 | ✓ L69 | ✓ L170 | ✓ | opevc-phases.md VERIFY ✓ | PASS |
+| M9 | phasic-layer-edge-by-edge-name | 06_6 | ✓ L91 | ✓ L192 | ✓ | plugins-entities.md Phasic layer ✓ | PASS |
+| M11 | condense-preserve-before-deflate | 06_7 | ✓ L86 | ✓ L171 | ✓ | opevc-condense.md 7-step waterfall ✓ | PASS |
+| M13 | condense-lock-forward-preserve-order | 06_7b | ✓ L88 | ✓ L188 | ✓ | opevc-condense.md Lock-forward only | PASS (L86 = pre-existing tag, untouched) |
+
+**VERDICT: ALL 11 ITEMS PASS** (main-session D2 grep, both surfaces). 3 drift fixes (D1/D2/D3) + 8 HIGH anchors (M1/M2/M3/M4/M8/M9/M11/M13) each: slug present on `.md` + `.html`, tag byte-identical after HTML-entity decode, `.html` `<sup class="ref-marker">` well-formed, exactly 2 pipes, middle-field target section confirmed to exist. Extra-scrutiny cleared: D1 fuller 10-name list matches the live `PREFIX_REGISTRY` set exactly; D2 tag lists exactly the 6 verbs with `update|complete|approve` absent from the tag and the essay prose UNCHANGED (the architect PENDING-JOB); D3 middle field disambiguated to "root CLAUDE.md". The `execute-drift-auditor`'s reported mirror-break was a fabrication (confirmed non-existent in EXECUTE + re-confirmed here). No backward routing needed.
+
+**Target-section confirmations (context files):** opevc-phases.md L29 VERIFY (self-verification-bias) · plugins-entities.md L33 `### Phasic layer` · opevc-condense.md L27 `### CONDENSE 7-step waterfall` + L48 `**Lock-forward only.**`.
+
+**CONDENSE follow-up (not outstanding VERIFY work — a durable-layer chore for the next phase):** the per-essay ref-marker COUNTS in `blog/b5/CLAUDE.md` + `blog/b6/CLAUDE.md` are now stale after the anchor inserts — 05_4/05_5/05_6/05_7 each +1, 06_6 +2, 06_7/06_7b each +1. CONDENSE should refresh those counts when it absorbs/migrates. (Not a marked-note class; a plain absorb chore.)
+
+**Auditor reports returned + ADJUDICATED (both advisory; main-session is arbiter):**
+
+- **verify-execute-auditor → "EXECUTE MATCHES PLAN — no gaps, no over-scope, no deviations."** Confirms the main-session finding: exactly the 22 edits, only b5/b6/b8 blog files touched, no `.claude/plugins/` edits, D2 prose correctly untouched. ACCEPTED (agrees with ground truth).
+- **verify-meta-audit → flagged M1 + M2 as "wrong-claim-anchor" (tag summary ≠ plan's claim quote). ADJUDICATED FALSE POSITIVE.** WHY: the auditor measured each tag's SUMMARY field against the PLAN's claim quote, but (a) the plan's claim quotes are explicitly OBSERVE **paraphrases for LOCATING** the sentence (blog/CLAUDE.md L436), NOT the required summary text; (b) the standing **user ruling** sets the summary field to **plain-language, reader-first** (L433, ruling 2026-07-18/19), NOT a verbatim copy; (c) the per-anchor acceptance criteria (L433) require slug/mirror/target/2-pipes, never summary=claim-verbatim. So the auditor applied a standard the user already overruled — the same false-positive shape as the earlier execute-drift-auditor mirror-break fabrication.
+- **Meta-audit's VALID process point HONORED:** it correctly noted VERIFY had checked slug/mirror/target but not summary *semantic accuracy*. So main-session performed that check on ALL 8 anchors (re-read each summary vs its live claim + target): M1 "questions carry prefixes; dispatch on prefixes" ✓ · M2 "the compression gate keeps a long job legible" ✓ (positive form of the paragraph's inverse framing; matches interaction_summary Objective) · M3/M4/M8/M9/M11/M13 each a faithful plain-language restatement of the anchored claim ✓. **All 8 summaries semantically faithful. Zero real defects. No backward routing.**
+
+[KNOWLEDGE]{ref-tag-review/auditor-summary-verdicts-are-advisory}
+Ref-tag review VERIFY lesson: subagent auditor FAIL verdicts on a tag's SUMMARY field are frequently FALSE POSITIVES and must be adjudicated main-session. Auditors tend to compare the summary against the plan's locating-paraphrase (or expect a verbatim claim copy), but the summary field is PLAIN-LANGUAGE, reader-first by standing user ruling. Adjudication rule: a summary PASSES if it faithfully states the claim's mechanism and names a resolving middle-field target — NOT if it matches the plan quote word-for-word. Two separate auditors on this job produced false-positive FAILs (execute-drift-auditor fabricated a non-existent mirror-break on 05_2; verify-meta-audit flagged M1/M2 summaries as wrong-claim-anchors); main-session grep + read overruled both. Keep dispatching the auditors (they honor the family-c gate and their VALID process points — e.g. "check summary semantic accuracy, not just slug/mirror" — are worth acting on), but treat every verdict as advisory input, never as the arbiter.
+
+## Outstanding Items
+
+(empty — all 11 items verified PASS; nothing to route backward. The two items above are a CONDENSE chore + a dispatch-status note, not outstanding verification work.)
