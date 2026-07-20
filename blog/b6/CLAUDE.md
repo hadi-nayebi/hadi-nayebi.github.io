@@ -101,6 +101,82 @@ Method: pick candidates, cheapest live check first (Read real code / context / .
 - **Slug-vs-thesis oddity (BLOG-ish):** slug is `plan-state-machine` + og_image `markov-phasic-brain-b6.png` while the essay's whole thesis is that there is NO state machine. Slug is not a ref-tag though — likely out of scope; note only.
 - **CANDIDATE to verify (`stage-2-md-plan` tag, :39):** claims cycle-1 EXECUTE creates the plan at `.claude/jobs/<job_id>/plan.md` (fixed name `plan.md`) while `set-plan-file` takes `<name>.md`. Is the on-disk name always `plan.md` or `<name>.md`? Check `.claude/context/job-stages-plans.md` "Plan file lifecycle" + `plan.sh`. Possible CONTEXT-SYNC/CODE mismatch — but 06_10 also says "plan.md" consistently, so ground-truth needed before flag.
 
+### Idle-verb prose-drift fix job (1784494198850522700, 2026-07-20) — OBSERVE
+
+**Objective:** in `06_2b-the-phase-map`, the PROSE (~L26) lists **9** idle verbs (extras believed update/complete/approve) while the ref-tag (~L28) and `phase-gate.sh:198` list only **6**. Reconcile prose DOWN to 6, on `.md` + `.html` mirror via the `blog-update` skill.
+
+**Problem family:** doc-vs-code drift — SAME class as just-closed job 642 (prefix-count reconcile). CODE is ground truth; prose reconciles to it. Discipline: sweep the WHOLE essay (both files) for every idle-verb enumeration + bare 9/nine near idle-context; remove the exact extra tokens (parity, not just digit).
+
+**Ground-truth anchors (3):** (a) `.claude/plugins/phasic_system/hooks/phase-gate.sh` ~L198 [code — canonical 6, PENDING verbatim confirm by file-comparer]; (b) in-essay ref-tag ~L28 [says 6 — becomes in-file template like prefixed-questions.md L71 was in 642]; (c) any `context/` idle-verb term [context-anchorer PENDING].
+
+**Deliverable + routing:** `.html` = committed source of truth; `.md` = gitignored editing copy (Read directly, Glob skips it). BOTH must reconcile. Sync via `blog-update` skill — build cmd `python3 .claude/tools/generate_blog_html.py blog/b6/06_2b-the-phase-map.md blog/b6/06_2b-the-phase-map.html --version <YYYYMMDD>`. This is EXECUTE work (full write in blog/b6/) — NOT CONDENSE-routed like 642. **Execute scope = this dir (blog/b6/); this CLAUDE.md is the scope declaration.**
+
+**Status caveat:** 06_2b is "new (split off 06_2)", NOT FINAL → prose edit permitted. (A FINAL essay would need explicit user direction.)
+
+**OPEN threads (resolve before EXECUTE):** (1) exact 9-list vs canonical-6 → derive the extras, don't assume; (2) does `.html` exist/built + do .md/.html carry the SAME two lines; (3) blog-update skill's .md→.html contract; (4) is there a canonical idle-verb list in `context/`.
+
+**CONFIRMED (observe-file-comparer, D2 verbatim + main-session spot-check DONE):**
+- **Prose L26 (.md) = L125 (.html), 9 verbs:** ``show, focused, list, `update`, activate, focus, pause, `complete`, `approve` `` — bullet: "Unlock the job-management CLI — the lifecycle surface (…). Creation and graph mutations live elsewhere."
+- **Ref-tag L28 (both files), 6:** job.sh whitelist `show|focused|list|activate|focus|pause`.
+- **Code phase-gate.sh:198, 6 [D2-CONFIRMED by main-session Read L185-214]:** `IDLE_WHITELIST_RES` regex ``job\.sh[[:space:]]+(show|focused|list|activate|focus|pause)``. **GROUND TRUTH LOCKED AT 6.**
+- **EXTRAS TO REMOVE (set-diff, derived): `update`, `complete`, `approve`.**
+- **Parity:** `.md` L26 and `.html` L125 IDENTICAL prose → BOTH need the same edit.
+- **Full sweep:** only ONE idle-verb enumeration; no other bare 9/nine near idle; CONDENSE's own ref-tag (L61) legitimately scopes `complete`/`update`/`add-dependency` to CONDENSE — LEAVE it.
+- **blog/b6/CLAUDE.md exists; blog-update skill at `hadi-nayebi.github.io/.claude/skills/blog-update/`.**
+
+**Fix shape (for PLAN):** in the L26/L125 prose bullet, drop the 3 extras so the lifecycle-surface list matches the 6 idle-callable verbs (`show`, `focused`, `list`, `activate`, `focus`, `pause`). Root cause = the bullet enumerated the *general* job CLI under the IDLE heading with no "idle-callable" qualifier; the adjacent ref-tag already had the correct 6.
+
+**Precedent (on-point):** phasic_system/CLAUDE.md "Idle — Allowed Activities" DELETED its own enumerated idle-verb table because it "DUPLICATED the code whitelist and drifted," replaced by a pointer to the phase-gate.sh whitelist. The 06_2b prose is the SAME failure. Essay fix mirrors it: enumerate only the 6 idle-callable verbs.
+
+**blog-update contract (from blog/CLAUDE.md; SKILL.md M-procedure deep-read deferred to PLAN):** `.html` = committed source of truth, `.md` = gitignored editing copy, sync BOTH. Build: `generate_blog_html.py blog/b6/06_2b-the-phase-map.md ...html --version <YYYYMMDD>`. TWO candidate EXECUTE routes for PLAN: (A) **surgical** identical 3-token removal in .md L26 + .html L125 — minimal/reversible, no rebuild, no ?v= bump; (B) edit .md then **regenerate** .html via skill (may reflow + bump stamp). Route A favored for a 3-token prose fix; confirm against SKILL.md.
+
+**OPEN still:** (1) blog-update SKILL.md M-procedure read [PLAN]; (2) context/ canonical idle-verb surface [context-anchorer]; (3) reflector (blindspot-finder) before advance [family-c gate].
+**Skipped:** experience-recaller — job 642 discipline already in context + file-comparer already swept (no over-orchestration on a 1-line drift).
+
+**BLINDSPOT REFLECTOR (observe-blindspot-finder) — 5 gaps (4 cheap OBSERVE checks + 1 user design Q):**
+1. **[CHECK] Parent 06_2 drift** — 06_2b split off `06_2-discipline-and-map`; does 06_2 STILL carry the 9-verb idle prose? If yes → OUT of this job's scope (scope=06_2b only) → emit `[PENDING-JOB]`; if clean → note only.
+2. **[CHECK] Transcript** — does `06_2b-the-phase-map.transcript.md` exist + mirror the L26 prose? Route A (surgical) may leave transcript stale (manual edit or regen needed); Route B regen from .md handles it.
+3. **[USER Q — HIGH] Remove vs Reframe** — editorial rule "reframe, don't remove." Reflector's proposed recast: *"The idle phase calls SIX of the job CLI verbs: show, focused, list, activate, focus, pause. Creation and graph mutations — plus job updates and approval — live elsewhere."* This is THE genuine design question → ask user.
+4. **[CHECK] Outbound refs** — is the enumeration quoted in sidebar/feed.xml/sibling essays? A prose-only fix would create NEW drift if so. Likely none; confirm via grep.
+5. **[CHECK] context/ canonical idle-verb** — Rule 40: a `[consolidated]` idle-verb list in context/ would be ground truth. LIKELY just a pointer to phase-gate.sh (per phasic_system/CLAUDE.md the idle table was DELETED as drift-prone). context-anchorer to confirm (it was cadence-blocked; relaunch).
+
+**Next:** dispatch investigation for gaps 1/2/4/5 (parallel observe-* agents), then batch the ONE genuine user Q (#3, remove-vs-reframe) via AskUserQuestion `[WAITING]`.
+
+**DRAFT acceptance criteria (PLAN formalizes below ---Ve---; hold for EITHER remove OR reframe):**
+- AC1: `06_2b-the-phase-map.md` idle-phase prose no longer presents `update`/`complete`/`approve` as idle-callable (removed, OR reframed so they are explicitly non-idle).
+- AC2: `.html` L125 matches the corrected `.md` prose (parity re-verified by grep).
+- AC3: transcript (if it exists) consistent with corrected prose (regenerated or hand-edited).
+- AC4: ref-tag L28 (already 6) + phase-gate.sh:198 remain the cited ground truth; NO new inaccuracy introduced; the "Creation and graph mutations live elsewhere" clause stays accurate.
+- AC5: no outbound reference (sidebar/feed/sibling essay) left contradicting the fix.
+- AC6: cache-bust `?v=` handled per blog-update skill IF .html regenerated (Route B); N/A for Route A surgical.
+
+**OBSERVE→PLAN handoff:** ground truth LOCKED (code=6, D2-confirmed); edit surface = .md L26 + .html L125 (+ transcript?); ONE user design Q pending (remove vs reframe); 4 completeness checks in flight (parent 06_2 / transcript / outbound / context-glossary). PLAN will: read blog-update SKILL.md (pick Route A vs B), set Stage (expect **Stage 1**, plan_file=false), formalize ACs below ---Ve---, and — if parent/outbound drift found — emit `[PENDING-JOB]` rather than expand this job's scope (scope stays 06_2b).
+
+**CHECKS RESOLVED (observe-file-comparer #2):**
+- **GAP 1 parent 06_2: CLEAN** — `06_2-discipline-and-map` has NO idle-verb enumeration (moved entirely to 06_2b in the 2026-06-21 split). No pending-job needed.
+- **GAP 2 transcript: DRIFTED** — `06_2b-the-phase-map.transcript.md` L16 carries the IDENTICAL 9-verb line (`final: false`, unpublished). → **EDIT SURFACE = 3 FILES: `.md` L26 + `.html` L125 + `.transcript.md` L16.**
+- **GAP 4 outbound: NONE** — no copy in feed.xml / sitemap.xml / blog.html / sibling essays. Fix self-contained to 06_2b's 3 files.
+- **Impl call (CTO, Route A):** surgical 3-token edit to ALL 3 files — transcript is final:false + regenerates from .md, but the surgical edit keeps every mirror consistent NOW at zero cost + avoids a full .html rebuild / cache-bust bump. Confirm no rebuild needed against SKILL.md in PLAN.
+- **GAP 5 context/: context-anchorer RELAUNCHED** (Rule-40 ground-truth check; expect "points-to-code-only" per phasic_system precedent).
+
+**USER ANSWER (Q1 [WAITING] — ANSWERED): REFRAME.** Chosen recast: *"Unlock the job-management CLI. Six of its verbs answer from idle — show, focused, list, activate, focus, pause. Creation, graph mutations, and job update / complete / approve belong to later phases."* Aligns editorial "reframe, don't remove"; teaches WHERE the other verbs live → prevents recurrence. Apply to ALL 3 files, voice-matched to the essay's jazz rhythm in EXECUTE (final wording drafted then).
+
+**GAP 5 RESOLVED (context-anchorer): context/ CORRECT (enumerates-and-self-verifies).** `.claude/context/opevc-phases.md:211` "Conductor/musicians model" `[consolidated]` enumerates the 6 idle verbs AND cross-checks phase-gate.sh:198. NOT drifted; no 4th surface to sync.
+- **Reinforcing:** that term carries `[sync:blog-body]` — it EXPECTS the essay to teach the same 6. The essay currently BREAKS that sync (teaches 9); MY fix RESTORES it.
+- **Separate cosmetic drift (NOT this job):** phase-gate.sh block-read voice still says "completing jobs" is an idle activity → ALREADY QUEUED as pending job `1784494390600149762`. No new job needed.
+
+**blog-update SKILL.md READ — EXECUTE/VERIFY route CONFIRMED (Route A surgical):**
+- **M5 md-html-mirror:** every .md prose edit gets a MATCHING .html edit; MD canonical for prose; NO full rebuild for a body-text edit. `.html` READ-before-Edit. The 9 verbs sit in `<code>` tags in .html → match that markup.
+- **M6 transcript:** edit transcript prose FREELY while `final: false` (never flip final = user's TTS gate). Hand-edit `.transcript.md` L16 (plain text, no code tags).
+- **M7 cache-bust:** `?v=` bump ONLY if CSS/JS changed → NOT needed (prose-only).
+- **VERIFY = M5 render-check greps + parity (no residual update|complete|approve as idle-callable; `<code>` verbs render) + M13 self-review-pass** (read reframed bullet as fresh reader, voice-match). Full M14 triple-audit = disproportionate for a 3-token reframe (note only).
+- **M3 validates my interview:** blog audit Qs are ONE-per-item; this fix = ONE audit item (idle drift) → ONE question (reframe vs remove), answered. The user's OWN documented blog method = one-Q-per-item — evidence the Stage-1 ≥3 quota mismatches a shallow single-item fix.
+
+**OBSERVE COMPLETE.** Fix = REFRAME the idle bullet in `.md` L26 + `.html` L125 (match `<code>`) + `.transcript.md` L16 (plain), Route A surgical, no rebuild / no cache-bust. Ground truth code=6 (D2). Verify via M5 greps + M13. Scope tight to 06_2b. Expected Stage 1 (plan_file=false).
+
+`[PENDING-JOB]{audit-06_2b-tour-and-b6-deep-dives-for-verb-command-drift | 06_2b is a phase-map TOUR listing each phase's traits; only the IDLE bullet was accuracy-checked. Other-phase bullets here (and the 06_3..06_10 deep-dive essays) may carry the same code-vs-prose verb/command drift — sweep each phase's stated verb/command set against its phase-gate whitelist. | standalone}` — deferred to keep THIS job scoped to the idle bullet (scope discipline).
+
+[PENDING-JOB]{audit-06_2b-tour-and-b6-deep-dives-for-verb-command-drift — 06_2b is a phase-map tour listing each phase's traits, but only the IDLE bullet was accuracy-checked; other-phase bullets here and the 06_3..06_10 deep-dive essays may carry the same code-vs-prose verb/command drift. Sweep each phase's stated verb/command set against its phase-gate whitelist. Standalone; scope-split from job 1784494198850522700 to keep that fix tight to the idle bullet.}
 ---Pl---
 
 ---Ex---
