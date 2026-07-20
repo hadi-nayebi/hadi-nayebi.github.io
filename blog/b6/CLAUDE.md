@@ -179,6 +179,56 @@ Method: pick candidates, cheapest live check first (Read real code / context / .
 [PENDING-JOB]{audit-06_2b-tour-and-b6-deep-dives-for-verb-command-drift — 06_2b is a phase-map tour listing each phase's traits, but only the IDLE bullet was accuracy-checked; other-phase bullets here and the 06_3..06_10 deep-dive essays may carry the same code-vs-prose verb/command drift. Sweep each phase's stated verb/command set against its phase-gate whitelist. Standalone; scope-split from job 1784494198850522700 to keep that fix tight to the idle bullet.}
 ---Pl---
 
+### PLAN (job 1784494198850522700, cycle 1, 2026-07-20) — Stage 1, Route A surgical REFRAME
+
+**Stage decision: Stage 1** (`plan_file=false`, set via `set-plan-file`). Single-surface prose doc-fix, single OPEVC cycle.
+
+**Scope (D2-confirmed):** EXECUTE writes only in `blog/b6/` — THIS CLAUDE.md's `---Ob---` footer (line ~112) is the exact-dir scope declaration. Targets: `06_2b-the-phase-map.{md,html,transcript.md}`. Nothing else editable. (Scope is EXACT, not recursive — the website-root CLAUDE.md being present does NOT authorize this dir; the blog/b6 declaration does.)
+
+**Route A surgical** (blog-update SKILL.md M5/M6/M7, confirmed in OBSERVE): hand-edit prose in all 3 mirrors; NO `generate_blog_html.py` rebuild; NO `?v=` cache-bust (prose-only). `.html` verbs in `<code>`; `.transcript.md` plain text; NEVER flip `final:false`.
+
+**FINAL reframe wording (contract — EXECUTE Reads exact current markup, applies, may micro-polish for jazz voice):**
+> Unlock the job-management CLI — the lifecycle surface. Six of its verbs answer from idle: `show`, `focused`, `list`, `activate`, `focus`, `pause` — you read the work and switch which job you are on. Changing a job or closing it out — `update`, `complete`, `approve` — belongs to later phases, not idle. Creation and graph mutations live elsewhere.
+
+- Honors editorial "reframe, don't remove"; teaches the DISTINCTION (these three are non-idle) → prevents recurrence; PRESERVES the original "Creation and graph mutations live elsewhere" clause.
+- **REVISED after premortem (family-c):** dropped the earlier "`update` in plan and verify, `complete`/`approve` in the condense wrap-up" phrasing. Pinning each verb to a named phase was (F1) possibly INACCURATE — OBSERVE L124 records the essay's own L61 CONDENSE ref-tag scoping `update` to CONDENSE, so `update` is likely multi-phase — and (F10) brittle to design change. The generic "belongs to later phases, not idle" is PROVABLY accurate from the D2 ground truth alone: `phase-gate.sh:198` IDLE_WHITELIST_RES holds EXACTLY the six, so anything outside it is non-idle by entailment (no extra code read needed). Also matches the user's own chosen recast (OBSERVE L162).
+- **Backtick normalization (premortem F3):** current .md backticks only update/complete/approve (L119); EXECUTE backticks ALL NINE verbs consistently (all nine in `<code>` in .html; all plain in .transcript.md).
+- Restores the `context/opevc-phases.md:211` `[sync:blog-body]` contract.
+
+**Premortem triage (10 findings):** F1/F2 accuracy → DISSOLVED by the generic-wording choice (accuracy entailed by the D2 whitelist). F3 backtick-normalize → folded into EXECUTE steps. F5 transcript-final → already `final:false` (OBSERVE L157). F8 outbound-refs → already NONE (OBSERVE L158) + AC7 re-check. F4 parity / F6 line-drift / F9 voice → covered by AC4 + step-5 parity diff, Read-before-Edit, AC8 self-review. F7 quota → the WATCH item below. F10 brittleness → mitigated by the durable generic wording.
+
+**EXECUTE steps (ordered — draft-once-then-render-per-surface):**
+1. Confirm the canonical wording (above) into the `---Ex---` footer.
+2. Edit `.md` (~L26): Read exact current bullet FIRST — current markup backticks only update/complete/approve (see `---Ob---` L119); NORMALIZE so the six idle verbs render consistently with `.html` `<code>`.
+3. Edit `.html` (~L125): mirror wording; six verbs in `<code>` tags; Read-before-Edit; preserve HTML structure.
+4. Edit `.transcript.md` (~L16): plain text, NO backticks/tags; keep `final:false`.
+5. In-execute parity check: prose identical across 3 files (modulo markup); six verbs verbatim in all 3; no line-count/structural drift; extras only in the later-phase clause.
+6. Commit immediately (`execute:` prefix, website repo) — the 3 files + this CLAUDE.md.
+
+**WATCH — Stage-1 collaborative question quota:** ≥3 answered `[WAITING]` in OBSERVE + ≥3 in PLAN may gate the PLAN→EXECUTE advance. Current: OBSERVE=1, PLAN=0. Per the user's OWN blog-update M3 (one-Q-per-audit-item), this shallow single-item fix legitimately carries ONE design question (reframe-vs-remove — ANSWERED). If the advance BLOCKS on the quota → surface the shallow-vs-deep-Stage-1 mismatch to the user with this evidence; DO NOT manufacture filler questions (no gate-chasing, per standing rule).
+
+`[AGENT-UPDATE]{plan-scope-analyzer | dispatched to confirm EXECUTE write-scope, it refused with "I need the altered_list + plan" and returned no answer — yet the activated scope was declared plainly in the target dir's CLAUDE.md footer (blog/b6/CLAUDE.md L112: "Execute scope = this dir; this CLAUDE.md is the scope declaration"), which it never read | teach plan-scope-analyzer that when no altered_list is handed in, it should Read the target directory's CLAUDE.md footer and treat an "Execute scope = <dir>; this CLAUDE.md is the scope declaration" line as valid activation proof, instead of refusing — and dispatch prompts should hand it the activated CLAUDE.md path}`
+
+**USER RULING (Q2 [WAITING] — ANSWERED): PARK THE FIX AS PENDING.** The Stage-1 collaborative 3+3 question quota HARD-BLOCKED the PLAN→EXECUTE advance (OBSERVE=1/PLAN=0). This shallow single-item doc-fix genuinely carried ONE design call (reframe-vs-remove, answered). Per standing rules I did NOT manufacture filler questions and did NOT bypass. User chose: leave the reframe AND the gate untouched this session; record the reframe as a pending (parked) job; revisit reframe + gate together in a dedicated later pass. NOTHING lands this session.
+
+**PARK actions taken:** (1) this reframe job (1784494198850522700) paused for later reactivation — the full plan + ACs (above / below `---Ve---`) persist here on disk, so a reactivation resumes with everything intact. (2) the gate-fix is spun out as a NEW standalone pending job (below). Revisit both together.
+
+`[PENDING-JOB]{fix-stage1-shallow-vs-deep-collaborative-quota | the Stage-1 collaborative question quota (≥3 answered [WAITING] in OBSERVE + ≥3 in PLAN, phase_plan config) HARD-BLOCKS shallow single-item Stage-1 doc-fixes that genuinely carry only ONE design question — the quota is designed for DEEP collaborative Stage-1 jobs (teaching a new skill). Add a shallow/deep Stage-1 distinction (or a shallow single-item exemption) so shallow Stage-1 jobs are not forced to manufacture filler questions to advance. Touches phase_plan quota gate — PLUGIN-substrate work, needs gmode or a user-approved job. Discovered blocking job 1784494198850522700 (06_2b idle-verb reframe), which is parked pending this fix. | standalone}`
+
 ---Ex---
 
 ---Ve---
+
+### ACCEPTANCE CRITERIA (PLAN-formalized; VERIFY runs these) — job 1784494198850522700
+
+Anchor: the bullet beginning "Unlock the job-management CLI" in `06_2b-the-phase-map` (.md ~L26, .html ~L125, .transcript.md ~L16). REFRAME shape (not removal).
+
+- **AC1 (reframe, per file):** in EACH of the 3 files, `update`/`complete`/`approve` NO LONGER appear inside the idle-callable enumeration — they appear ONLY in the "later phases" clause. (grep the bullet region; the six-verb idle list contains none of the 3 extras.)
+- **AC2 (six present):** the six idle verbs `show`,`focused`,`list`,`activate`,`focus`,`pause` are all present in the idle enumeration in each file.
+- **AC3 (names where):** the reframed bullet states update/complete/approve live in later phases (update→plan/verify; complete/approve→condense). grep bullet region for the phase names.
+- **AC4 (.md↔.html parity + render, M5 greps):** .md and .html bullets carry identical prose (modulo markup); .html six verbs in `<code>`; NO `<p>!<a` mis-render; NO unrendered backticks/markdown in .html; NO OPEVC anchor strings (`---Ob---` etc.) in blog source.
+- **AC5 (transcript plain):** `.transcript.md` bullet is plain text — no backticks, no `<code>`, no HTML angle brackets; frontmatter `final:false` unchanged.
+- **AC6 (clause preserved):** the "Creation and graph mutations live elsewhere" clause is still present and literally true.
+- **AC7 (no new outbound drift):** no feed.xml / sitemap.xml / blog.html / sibling-essay copy contradicts the fix (OBSERVE confirmed none; re-confirm at VERIFY).
+- **AC8 (M13 self-review — JUDGMENT):** the reframed bullet reads in the essay's jazz voice — auditor: verify-observe-auditor or a fresh-reader self-review pass.
+- **AC9 (Route A discipline):** NO `generate_blog_html.py` run; NO `?v=` cache-bust bump; git diff limited to the 3 files' bullet region + this CLAUDE.md.
