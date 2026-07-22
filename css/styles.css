@@ -9,10 +9,12 @@
     --primary: #6366f1;
     --primary-glow: rgba(99, 102, 241, 0.4);
     --accent: #8b5cf6;
+    --accent-light: #c4b5fd;
     --text-main: #ffffff;
     --text-muted: #9ca3af;
     --border: rgba(255, 255, 255, 0.1);
     --glass: blur(12px);
+    --card-bg: var(--bg-card);
 }
 
 * {
@@ -3510,47 +3512,88 @@ body.lightbox-open {
     min-width: 0;
 }
 
-.qseed-mark {
-    position: relative;
-    width: min(390px, 82vw);
-    aspect-ratio: 1;
-    margin: 0 auto;
-    border-radius: 50%;
-    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.14), transparent 64%);
-}
-
-.qseed-mark-piece,
-.qseed-mark-center {
-    position: absolute;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-.qseed-mark-piece {
-    width: 34%;
-    aspect-ratio: 1;
-    color: #071224;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-}
-
-.qseed-mark-mind { top: 3%; left: 33%; background: #fbbf24; }
-.qseed-mark-fork { bottom: 13%; left: 5%; background: #fb7185; }
-.qseed-mark-plugins { bottom: 13%; right: 5%; background: #2dd4bf; }
-
-.qseed-mark-center {
-    inset: 34%;
-    background: #0f1029;
-    border: 3px solid rgba(255, 255, 255, 0.18);
-    color: white;
-    font-size: 3rem;
-    box-shadow: 0 0 48px rgba(139, 92, 246, 0.32);
+.qseed-hero-img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 24px 70px -24px rgba(45, 212, 191, 0.38),
+                0 0 80px -34px rgba(139, 92, 246, 0.42);
 }
 
 .qseed-boundary-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.qseed-layer-card {
+    position: relative;
+    min-width: 0;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.qseed-layer-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, #2dd4bf, transparent 82%);
+}
+
+.qseed-layer-framework::before {
+    background: linear-gradient(90deg, #fb7185, transparent 82%);
+}
+
+.qseed-layer-brain::before {
+    background: linear-gradient(90deg, #a78bfa, transparent 82%);
+}
+
+.qseed-layer-number {
+    position: absolute;
+    top: 1.15rem;
+    right: 1.35rem;
+    color: rgba(255, 255, 255, 0.16);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.qseed-layer-card h3 {
+    margin: 0.7rem 0 0.8rem;
+    padding-right: 2rem;
+    font-size: 1.35rem;
+}
+
+.qseed-layer-card p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.qseed-model-note {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+    gap: 2rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 1.75rem 2rem;
+    border: 1px solid rgba(45, 212, 191, 0.24);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.06), rgba(139, 92, 246, 0.06));
+}
+
+.qseed-model-note h3,
+.qseed-model-note p {
+    margin: 0;
+}
+
+.qseed-model-note h3 {
+    margin-top: 0.8rem;
+}
+
+.qseed-model-note p {
+    color: var(--text-muted);
+}
+
+.qseed-model-note a {
+    color: #5eead4;
 }
 
 .qseed-boundary-label,
@@ -3618,6 +3661,37 @@ body.lightbox-open {
 .channel-card-featured {
     border-color: rgba(45, 212, 191, 0.42);
     box-shadow: 0 14px 34px rgba(45, 212, 191, 0.08);
+}
+
+.qseed-follow-section {
+    padding-top: 1rem;
+}
+
+.qseed-follow-card {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.25rem 2.5rem;
+    border: 1px solid rgba(45, 212, 191, 0.35);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(99, 102, 241, 0.08));
+}
+
+.qseed-follow-card h2 {
+    margin: 0.6rem 0 0.55rem;
+    text-align: left;
+}
+
+.qseed-follow-card p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.qseed-follow-card .btn {
+    flex: 0 0 auto;
+    text-align: center;
 }
 
 .access-hero {
@@ -3731,8 +3805,18 @@ body.lightbox-open {
     .agent-grid-two,
     .agent-status-panel,
     .qseed-process,
+    .qseed-model-note,
     .access-layout {
         grid-template-columns: 1fr;
+    }
+    .qseed-follow-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.75rem;
+        text-align: center;
+    }
+    .qseed-follow-card h2 {
+        text-align: center;
     }
     .support-tier-activity {
         justify-items: start;
@@ -3757,7 +3841,7 @@ body.lightbox-open {
         width: 100%;
         max-width: 320px;
     }
-    .qseed-mark {
-        width: min(320px, 78vw);
+    .qseed-hero-visual {
+        width: 100%;
     }
 }
