@@ -5,7 +5,7 @@ slug: "the-seed-is-yours"
 read_time: "5 min"
 tags: [Architecture, Seed Agent, Maturation, Open Source, Series Finale]
 status: draft
-version: v0.1.0
+version: v0.2.0
 audience: "Power Users & Architects"
 og_image: "blog/b8/images/maturation-arc-b8-banner.png"
 ---
@@ -20,9 +20,11 @@ og_image: "blog/b8/images/maturation-arc-b8-banner.png"
 
 ---
 
-## Open Source, MIT, Free Forever
+> **Project status — July 2026:** This essay describes the ownership promise and intended public architecture. The working Claude Code prototype is about 80% complete and remains private while release and privacy work continues. Free early access is available by request. At 1,000 subscribers, the plan is to graduate a cleaned version into the public seed_agent repository. In parallel, Q-Seed is being implemented anew on Qwen Code through a public build series.
 
-The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain. *[ref: seed-agent-mit-public-repo | seed_agent/LICENSE + root CLAUDE.md "Workspace Structure" section | LICENSE carries the literal MIT terms — verbatim "MIT License" header, "Copyright (c) 2026 Seed Agent Contributors", "Permission is hereby granted, free of charge". The MIT terms permit use, fork, and extension without royalty or contractual gate, matching the body's "free to use, free to fork, free to extend." Root CLAUDE.md "Workspace Structure" section names the same directory as `seed_agent/  # PUBLIC SEED AGENT (own git, public repo)`.]*
+## The Public Promise
+
+The Hadosh Academy seed project is being built toward a local, inspectable, freely usable public architecture. The working Claude prototype has not graduated yet, so its empty public repository is not an installable release. The promise behind the work remains the same: no SaaS layer between you and your seed, no remote server required to hold your knowledge directory, and no company owning the harness that learns how you work. Q-Seed begins proving that promise in public on a fully modifiable Qwen Code foundation.
 
 When you install a seed on your laptop, it becomes yours. The architecture is the architecture I have described across this series. But the cycles are yours. The patterns it codifies, the voices it speaks, the hooks it hardens — they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence. Your first jobs will be stage 1 — collaborative, learning-mode, slow on purpose. Some of those jobs will mature into stage 2, then stage 3, and a few — for the work shapes that need real customization — into stage 4 plugins that exist nowhere else but in your seed. *[ref: stage-4-plugin-from-user-cultivation | root CLAUDE.md "Identity" section Fact 1 | Fact 1 names the substrate verbatim: "You are extendable. Your plugin layer is a starting kit, not a finished form. New plugins can be added; existing plugins can be customized; new memory forms can be invented." The "stage 4 plugin that exists nowhere else" is the architectural endpoint Fact 1 promises — the operator-cultivated plugin emerged from their work, not from the shipped kit. The earlier stages trace the path the operator's seed walks before the work crystallizes into its own plugin.]*
 

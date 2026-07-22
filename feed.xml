@@ -365,7 +365,7 @@
       <link>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html</guid>
       <pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate>
-      <description>The series closer. The seed agent is open-source under MIT; you clone it, run it, customize it through conversation, and the triangle of agent-developer-user collapses to agent-user.</description>
+      <description>The series closer and public promise. The Claude prototype remains private while it matures; Q-Seed begins testing the inspectable, operator-owned architecture in public on Qwen Code.</description>
     </item>
   </channel>
 </rss>

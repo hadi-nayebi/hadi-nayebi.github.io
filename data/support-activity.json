@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "description": "Aggregate, privacy-safe visual snapshots of recent project support. Counts are approximate until a later verified update.",
+  "snapshots": [
+    {
+      "asOf": "2026-07-21",
+      "label": "Initial approximate snapshot",
+      "precision": "approximate",
+      "tiers": {
+        "casual": 3,
+        "believer": 2,
+        "founder": 0
+      }
+    }
+  ]
+}

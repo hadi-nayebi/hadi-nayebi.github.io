@@ -3392,3 +3392,372 @@ body.lightbox-open {
         grid-template-columns: 1fr;
     }
 }
+
+/* ========================================
+   Seed prototype split, Q-Seed, access, and channels
+   ======================================== */
+
+.badge-private {
+    background: rgba(244, 114, 182, 0.12);
+    border-color: rgba(244, 114, 182, 0.35);
+    color: #f9a8d4;
+}
+
+.badge-progress {
+    background: rgba(251, 191, 36, 0.11);
+    border-color: rgba(251, 191, 36, 0.32);
+    color: #fcd34d;
+}
+
+.badge-qwen {
+    background: rgba(45, 212, 191, 0.11);
+    border-color: rgba(45, 212, 191, 0.32);
+    color: #5eead4;
+}
+
+.agent-grid-two,
+.channel-grid,
+.qseed-boundary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.agent-card-status {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+}
+
+.agent-status-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.7fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--card-bg);
+}
+
+.agent-status-panel h2 {
+    margin: 0.8rem 0 0.75rem;
+}
+
+.agent-status-panel p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.agent-progress-block {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.agent-progress-label,
+.agent-progress-caption {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.agent-progress-track {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.agent-progress-fill {
+    display: block;
+    height: 100%;
+    min-width: 8px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), #2dd4bf);
+}
+
+.agent-progress-80 { width: 80%; }
+.agent-progress-1 { width: 1%; }
+
+.milestone-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.milestone-card h2 {
+    margin-top: 1rem;
+}
+
+.milestone-card p {
+    color: var(--text-muted);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seed-actions-centered {
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.qseed-hero {
+    align-items: center;
+}
+
+.qseed-hero .seed-hero-text {
+    min-width: 0;
+}
+
+.qseed-mark {
+    position: relative;
+    width: min(390px, 82vw);
+    aspect-ratio: 1;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.14), transparent 64%);
+}
+
+.qseed-mark-piece,
+.qseed-mark-center {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.qseed-mark-piece {
+    width: 34%;
+    aspect-ratio: 1;
+    color: #071224;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+}
+
+.qseed-mark-mind { top: 3%; left: 33%; background: #fbbf24; }
+.qseed-mark-fork { bottom: 13%; left: 5%; background: #fb7185; }
+.qseed-mark-plugins { bottom: 13%; right: 5%; background: #2dd4bf; }
+
+.qseed-mark-center {
+    inset: 34%;
+    background: #0f1029;
+    border: 3px solid rgba(255, 255, 255, 0.18);
+    color: white;
+    font-size: 3rem;
+    box-shadow: 0 0 48px rgba(139, 92, 246, 0.32);
+}
+
+.qseed-boundary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.qseed-boundary-label,
+.channel-role {
+    color: var(--accent-light);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.qseed-process {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.qseed-process li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--card-bg);
+}
+
+.qseed-process li > span {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.14);
+    color: var(--accent-light);
+    font-weight: 700;
+}
+
+.qseed-process h3,
+.qseed-process p {
+    margin: 0;
+}
+
+.qseed-process p {
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+.card-link-muted {
+    color: var(--text-muted);
+    cursor: default;
+}
+
+.channel-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.channel-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.channel-card-featured {
+    border-color: rgba(45, 212, 191, 0.42);
+    box-shadow: 0 14px 34px rgba(45, 212, 191, 0.08);
+}
+
+.access-hero {
+    max-width: 850px;
+    text-align: center;
+    padding-top: 4rem;
+}
+
+.access-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    align-items: start;
+    padding-bottom: 5rem;
+}
+
+.access-expectations,
+.access-form-card {
+    padding: 2rem;
+}
+
+.access-expectations li {
+    margin-bottom: 0.75rem;
+    color: var(--text-muted);
+}
+
+.access-agreement {
+    align-items: flex-start;
+}
+
+.form-optional,
+.form-status {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.form-status {
+    min-height: 1.4em;
+    margin-top: 1rem;
+}
+
+/* ---- Privacy-safe recent support visualization ---- */
+
+.support-activity-panel {
+    max-width: 860px;
+    margin: 0 auto 2.5rem;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    text-align: center;
+}
+
+.support-activity-panel h2 {
+    margin: 0.75rem 0 0.45rem;
+}
+
+.support-activity-legend,
+.support-activity-label {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.support-activity-dots {
+    display: flex;
+    gap: 0.42rem;
+    align-items: center;
+    min-height: 18px;
+    margin-top: 0.55rem;
+}
+
+.support-dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.48);
+    border: 1px solid rgba(196, 181, 253, 0.72);
+}
+
+.support-dot-new {
+    background: #2dd4bf;
+    border-color: #99f6e4;
+    box-shadow: 0 0 12px rgba(45, 212, 191, 0.4);
+}
+
+.support-dot-empty {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: none;
+}
+
+.support-tier-activity {
+    display: grid;
+    justify-items: end;
+}
+
+.support-tier-activity-label {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+@media (max-width: 900px) {
+    .qseed-boundary-grid,
+    .channel-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .agent-grid-two,
+    .agent-status-panel,
+    .qseed-process,
+    .access-layout {
+        grid-template-columns: 1fr;
+    }
+    .support-tier-activity {
+        justify-items: start;
+        margin-top: 0.75rem;
+    }
+    .qseed-hero {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        overflow: hidden;
+    }
+    .qseed-hero .seed-hero-eyebrow {
+        max-width: 100%;
+        letter-spacing: 0.16em;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+    .qseed-hero .seed-hero-actions {
+        width: 100%;
+    }
+    .qseed-hero .seed-hero-actions .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+    .qseed-mark {
+        width: min(320px, 78vw);
+    }
+}
