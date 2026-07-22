@@ -34,7 +34,7 @@
             newcomer: 'Seed access request'
         }).then(function () {
             form.reset();
-            status.textContent = 'Request sent. Hadi will follow up by email.';
+            status.textContent = 'Request sent. A reply will follow by email.';
             submit.textContent = 'Request Sent';
         }, function () {
             status.textContent = 'The request could not be sent. Please try again or use the general contact page.';

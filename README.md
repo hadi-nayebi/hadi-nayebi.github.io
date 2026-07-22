@@ -12,16 +12,14 @@ No coding required. Just conversation.
 
 ---
 
-## Our Agents
+## Seed Prototypes
 
 The Academy currently follows two related but distinct prototypes.
 
 | Agent | Description | Current access |
 |-------|-------------|----------------|
-| **Seed Agent — Claude** | The original private Claude Code plugin harness, about 80% complete. Its jobs, OPEVC phases, memory, plugins, and guards provide evidence for the next prototype. | [Request free early access](https://hadi-nayebi.github.io/seed-access.html). The public seed_agent repository remains an empty graduation shell until the 1,000-subscriber milestone and release checks. |
-| **Q-Seed — Qwen** | A new Qwen-native implementation built feature by feature from clarified behavior contracts—not copied from the Claude prototype. | [Follow the public build](https://hadi-nayebi.github.io/q-seed.html) and inspect the [public Qwen fork](https://github.com/hadi-nayebi/qwen-code). |
-
-More agents are on the way. Each will have its own identifiable compartmentalization design — a signature way of structuring information.
+| **Seed Agent — Claude** | The original private Claude Code plugin harness, about 80% complete. Its jobs, OPEVC phases, memory, plugins, and guards provide evidence for the next prototype. | [Request free early access](https://hadi-nayebi.github.io/seed-access.html). The public seed_agent repository remains a placeholder until the 1,000-subscriber milestone and release checks. |
+| **Q-Seed** | A model-flexible implementation on an open Qwen Code framework, built feature by feature from clarified behavior contracts—not copied from the Claude prototype. | [Follow the public build](https://hadi-nayebi.github.io/q-seed.html) and inspect the [public Qwen fork](https://github.com/hadi-nayebi/qwen-code). |
 
 ---
 
