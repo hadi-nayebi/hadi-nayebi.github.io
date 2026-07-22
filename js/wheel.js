@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Linked to the Seed Agent page
         { text: "Meet the Seed Agent", link: "seed-agent.html" },
         { text: "Engineer Agents, Not Chatbots", link: "seed-agent.html" },
-        { text: "Open Source. MIT. Free Forever.", link: "seed-agent.html" },
+        { text: "Private Seed. Public Q-Seed Build.", link: "agents.html" },
         { text: "One Mind, Many Domains", link: "seed-agent.html" },
         // Upcoming — blogs 5-8 (link to blog index for now)
         { text: "Every Agent Needs a Skeleton", link: "blog.html" },
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: "Get in Touch", link: "contact.html" },
         { text: "About the Academy", link: "about.html" },
         { text: "See the Agent Catalog", link: "agents.html" },
-        { text: "Back the Open-Source Project", link: "support.html" }
+        { text: "Support the Public Build", link: "support.html" }
     ];
 
     const ring = document.getElementById('orbitRing');

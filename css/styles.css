@@ -9,10 +9,12 @@
     --primary: #6366f1;
     --primary-glow: rgba(99, 102, 241, 0.4);
     --accent: #8b5cf6;
+    --accent-light: #c4b5fd;
     --text-main: #ffffff;
     --text-muted: #9ca3af;
     --border: rgba(255, 255, 255, 0.1);
     --glass: blur(12px);
+    --card-bg: var(--bg-card);
 }
 
 * {
@@ -3390,5 +3392,526 @@ body.lightbox-open {
 @media (max-width: 480px) {
     .vocab-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   Seed prototype split, Q-Seed, access, and channels
+   ======================================== */
+
+.badge-private {
+    background: rgba(244, 114, 182, 0.12);
+    border-color: rgba(244, 114, 182, 0.35);
+    color: #f9a8d4;
+}
+
+.badge-progress {
+    background: rgba(251, 191, 36, 0.11);
+    border-color: rgba(251, 191, 36, 0.32);
+    color: #fcd34d;
+}
+
+.badge-qwen {
+    background: rgba(45, 212, 191, 0.11);
+    border-color: rgba(45, 212, 191, 0.32);
+    color: #5eead4;
+}
+
+.agent-grid-two,
+.channel-grid,
+.qseed-boundary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.agent-card-status {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+}
+
+.agent-status-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.7fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--card-bg);
+}
+
+.agent-status-panel h2 {
+    margin: 0.8rem 0 0.75rem;
+    text-align: left;
+}
+
+.agent-status-panel p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.agent-progress-block {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.agent-progress-label,
+.agent-progress-caption {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.agent-progress-track {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.agent-progress-fill {
+    display: block;
+    height: 100%;
+    min-width: 8px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), #2dd4bf);
+}
+
+.agent-progress-80 { width: 80%; }
+.agent-progress-1 { width: 1%; }
+
+.milestone-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.milestone-card h2 {
+    margin-top: 1rem;
+}
+
+.milestone-card p {
+    color: var(--text-muted);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seed-actions-centered {
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.seed-release-note {
+    max-width: 680px;
+    margin: -0.5rem 0 1.75rem;
+    padding: 1rem 1.15rem;
+    border-left: 3px solid #a78bfa;
+    border-radius: 0 10px 10px 0;
+    background: rgba(139, 92, 246, 0.08);
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.seed-capability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.seed-capability-card {
+    position: relative;
+    min-width: 0;
+    padding: 1.8rem 2rem;
+    overflow: hidden;
+}
+
+.seed-capability-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(180deg, #a78bfa, transparent 88%);
+}
+
+.seed-capability-label {
+    color: #c4b5fd;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.seed-capability-card h3 {
+    margin: 0.55rem 0 0.65rem;
+    font-size: 1.3rem;
+}
+
+.seed-capability-card p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.qseed-hero {
+    align-items: center;
+}
+
+.qseed-hero .seed-hero-text {
+    min-width: 0;
+}
+
+.qseed-hero-img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 24px 70px -24px rgba(45, 212, 191, 0.38),
+                0 0 80px -34px rgba(139, 92, 246, 0.42);
+}
+
+.qseed-boundary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.qseed-layer-card {
+    position: relative;
+    min-width: 0;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.qseed-layer-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, #2dd4bf, transparent 82%);
+}
+
+.qseed-layer-framework::before {
+    background: linear-gradient(90deg, #fb7185, transparent 82%);
+}
+
+.qseed-layer-brain::before {
+    background: linear-gradient(90deg, #a78bfa, transparent 82%);
+}
+
+.qseed-layer-number {
+    position: absolute;
+    top: 1.15rem;
+    right: 1.35rem;
+    color: rgba(255, 255, 255, 0.16);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.qseed-layer-card h3 {
+    margin: 0.7rem 0 0.8rem;
+    padding-right: 2rem;
+    font-size: 1.35rem;
+}
+
+.qseed-layer-card p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.qseed-model-note {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+    gap: 2rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding: 1.75rem 2rem;
+    border: 1px solid rgba(45, 212, 191, 0.24);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.06), rgba(139, 92, 246, 0.06));
+}
+
+.qseed-model-note h3,
+.qseed-model-note p {
+    margin: 0;
+}
+
+.qseed-model-note h3 {
+    margin-top: 0.8rem;
+}
+
+.qseed-model-note p {
+    color: var(--text-muted);
+}
+
+.qseed-model-note a {
+    color: #5eead4;
+}
+
+.qseed-boundary-label,
+.channel-role {
+    color: var(--accent-light);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.qseed-process {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.qseed-process li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--card-bg);
+}
+
+.qseed-process li > span {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.14);
+    color: var(--accent-light);
+    font-weight: 700;
+}
+
+.qseed-process h3,
+.qseed-process p {
+    margin: 0;
+}
+
+.qseed-process p {
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+.card-link-muted {
+    color: var(--text-muted);
+    cursor: default;
+}
+
+.channel-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.channel-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.channel-card-featured {
+    border-color: rgba(45, 212, 191, 0.42);
+    box-shadow: 0 14px 34px rgba(45, 212, 191, 0.08);
+}
+
+.qseed-follow-section {
+    padding-top: 1rem;
+}
+
+.qseed-follow-card {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.25rem 2.5rem;
+    border: 1px solid rgba(45, 212, 191, 0.35);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(99, 102, 241, 0.08));
+}
+
+.qseed-follow-card h2 {
+    margin: 0.6rem 0 0.55rem;
+    text-align: left;
+}
+
+.qseed-follow-card p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.qseed-follow-card .btn {
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.access-hero {
+    max-width: 850px;
+    text-align: center;
+    padding-top: 4rem;
+}
+
+.access-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    align-items: start;
+    padding-bottom: 5rem;
+}
+
+.access-expectations,
+.access-form-card {
+    padding: 2rem;
+}
+
+.access-expectations li {
+    margin-bottom: 0.75rem;
+    color: var(--text-muted);
+}
+
+.access-agreement {
+    align-items: flex-start;
+}
+
+.form-optional,
+.form-status {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.form-status {
+    min-height: 1.4em;
+    margin-top: 1rem;
+}
+
+.access-delivery-note {
+    max-width: 520px;
+    margin: 1rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+/* ---- Privacy-safe recent support visualization ---- */
+
+.support-activity-panel {
+    max-width: 860px;
+    margin: 0 auto 2.5rem;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    text-align: center;
+}
+
+.support-activity-panel h2 {
+    margin: 0.75rem 0 0.45rem;
+}
+
+.support-activity-legend,
+.support-activity-label {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.support-activity-dots {
+    display: flex;
+    gap: 0.42rem;
+    align-items: center;
+    min-height: 18px;
+    margin-top: 0.55rem;
+}
+
+.support-dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.48);
+    border: 1px solid rgba(196, 181, 253, 0.72);
+}
+
+.support-dot-new {
+    background: #2dd4bf;
+    border-color: #99f6e4;
+    box-shadow: 0 0 12px rgba(45, 212, 191, 0.4);
+}
+
+.support-dot-empty {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: none;
+}
+
+.support-tier-activity {
+    display: grid;
+    justify-items: end;
+}
+
+.support-tier-activity-label {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+@media (max-width: 900px) {
+    .qseed-boundary-grid,
+    .channel-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .agent-grid-two,
+    .agent-status-panel,
+    .seed-capability-grid,
+    .qseed-process,
+    .qseed-model-note,
+    .access-layout {
+        grid-template-columns: 1fr;
+    }
+    .qseed-follow-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.75rem;
+        text-align: center;
+    }
+    .qseed-follow-card h2 {
+        text-align: center;
+    }
+    .support-tier-activity {
+        justify-items: start;
+        margin-top: 0.75rem;
+    }
+    .agent-status-panel h2 {
+        text-align: center;
+    }
+    .seed-release-note {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+    .qseed-hero {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        overflow: hidden;
+    }
+    .qseed-hero .seed-hero-eyebrow {
+        max-width: 100%;
+        letter-spacing: 0.16em;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+    .qseed-hero .seed-hero-actions {
+        width: 100%;
+    }
+    .qseed-hero .seed-hero-actions .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+    .qseed-hero-visual {
+        width: 100%;
     }
 }

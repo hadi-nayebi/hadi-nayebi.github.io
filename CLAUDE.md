@@ -42,7 +42,7 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 - Pure HTML/CSS/JS — no frameworks
 - Static site — GitHub Pages
 - Single CSS file: `css/styles.css` (~2000 lines)
-- 5 JS files in `js/`: `components.js`, `theme-manager.js`, `wheel.js`, `form-handler.js`, `feedback.js`
+- Shared JavaScript lives in `js/`; page-specific scripts include `seed-access.js` and `support-activity.js` alongside the existing components, theme, wheel, form, and local-feedback scripts.
 - Local dev: `python dev-server.py` (live-reload, port 8000)
 
 ## Current File Inventory
@@ -52,11 +52,13 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 |------|---------|
 | `index.html` | Landing — hero with orbit wheel + 3 cards (Blog / Agents / Community) |
 | `blog.html` | Blog index — 7 essays, sidebar mirrors index |
-| `agents.html` | Agent showcase — Seed Agent card (Coming Soon / Open Source / MIT / Free Forever) links to `seed-agent.html` + Skool CTA + soft support nudge |
-| `seed-agent.html` | Seed Agent dedicated page — what it is, OPEVC cycle, Job Stages, plugin list, install preview, repo + community + support CTAs |
+| `agents.html` | Two-prototype router — private Claude Seed (about 80%) and public-build Q-Seed (about 1%) |
+| `seed-agent.html` | Truthful Claude prototype page — private source boundary, free request access, 1,000-subscriber graduation plan, and Q-Seed bridge |
+| `q-seed.html` | Qwen-native prototype page — context-first reimplementation method, mind/plugin/fork boundary, public build, and channel network |
+| `seed-access.html` | Dedicated EmailJS early-access request form; collects experience and build intent without tying access to support |
 | `about.html` | Academy intro (3 pillars, visual sections) + founder bio |
 | `contact.html` | EmailJS contact form (newcomer checkbox triggers welcome email) |
-| `support.html` | Optional donation page — 12 Stripe Payment Links (10 one-time tiered + 2 monthly subs). See "Donations & Stripe" below. |
+| `support.html` | Optional donation page — 12 Stripe Payment Links plus a privacy-safe aggregate dot visualization loaded from `data/support-activity.json`. See "Donations & Stripe" below. |
 | `thanks.html` | Contact-form success page (noindex) |
 | `thanks-support.html` | Stripe success-redirect page (noindex) |
 | `404.html` | Custom 404 (noindex) |
@@ -141,7 +143,9 @@ HTML with stale CSS and broken pages. **A correct local preview is NOT proof the
 link, agents-page nudge, blog footers when added) only LINKS to it.
 
 ### Hard rules
-- The seed agent is **free and open-source forever**. Donations are NEVER a condition of access, never gated, never adjacent to install instructions.
+- Claude prototype access is free by request; Q-Seed is built in public. Donations are NEVER a condition of access, never gated, and never adjacent to access instructions.
+- Do not describe the empty public `seed_agent` graduation shell as an installable release. The actual Claude prototype remains private until the 1,000-subscriber graduation milestone plus privacy/release checks.
+- Support activity is aggregate-only. `data/support-activity.json` never stores donor names, emails, payment identifiers, or fabricated precision.
 - The word **"buy"** does NOT appear on `support.html`. Use *back*, *support*, *sponsor*. *Donate* is acceptable.
 - Every donation surface includes the optional clause within the same visual block — not buried in fine print.
 - No FOMO, no urgency, no scarcity, no countdown timers, no "exclusive access" framing.
@@ -161,7 +165,7 @@ Total: 12 Stripe Payment Links (10 one-time + 2 monthly).
 
 ### Where Support is linked from
 - Site-wide footer (injected by `js/components.js` `enhanceFooter()`)
-- `agents.html` — soft nudge below "More Agents Coming", single sentence linking to `support.html`
+- `agents.html` — soft nudge below the prototype comparison, single sentence linking to `support.html`
 - (Future) blog footers, GitHub README, Skool community
 - NOT linked from main nav. Support belongs in the footer / contextual nudges, not the journey.
 

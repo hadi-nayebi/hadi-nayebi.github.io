@@ -1,4 +1,4 @@
-<!-- Version: v0.3.0 -->
+<!-- Version: v0.4.0 -->
 
 # Hadosh Academy
 
@@ -12,15 +12,14 @@ No coding required. Just conversation.
 
 ---
 
-## Our Agents
+## Seed Prototypes
 
-Each agent has its own repo, its own architecture, and its own way of organizing information.
+The Academy currently follows two related but distinct prototypes.
 
-| Agent | Description | Repo |
-|-------|-------------|------|
-| **Seed Agent** | Job-based architecture — organizes work as jobs, runs each through an OPEVC cognitive cycle (observe, plan, execute, verify, condense), and refuses to stop mid-task. Customize through conversation. | [hadi-nayebi/seed_agent](https://github.com/hadi-nayebi/seed_agent) *(public soon)* |
-
-More agents are on the way. Each will have its own identifiable compartmentalization design — a signature way of structuring information.
+| Agent | Description | Current access |
+|-------|-------------|----------------|
+| **Seed Agent — Claude** | The original private Claude Code plugin harness, about 80% complete. Its jobs, OPEVC phases, memory, plugins, and guards provide evidence for the next prototype. | [Request free early access](https://hadi-nayebi.github.io/seed-access.html). The public seed_agent repository remains a placeholder until the 1,000-subscriber milestone and release checks. |
+| **Q-Seed** | A model-flexible implementation on an open Qwen Code framework, built feature by feature from clarified behavior contracts—not copied from the Claude prototype. | [Follow the public build](https://hadi-nayebi.github.io/q-seed.html) and inspect the [public Qwen fork](https://github.com/hadi-nayebi/qwen-code). |
 
 ---
 
@@ -30,6 +29,7 @@ More agents are on the way. Each will have its own identifiable compartmentaliza
 - **[Agents](https://hadi-nayebi.github.io/agents.html)** — Browse available seed agents
 - **[About](https://hadi-nayebi.github.io/about.html)** — The Academy's mission and the founder
 - **[Community](https://www.skool.com/claude-agents-engineering-4513)** — Agent Engineering on Skool
+- **[Let's Build It Together](https://www.youtube.com/@LetsBuildittogethersp)** — Q-Seed and future public build series
 - **[Contact](https://hadi-nayebi.github.io/contact.html)** — Consulting, collaboration, or just say hello
 
 ---

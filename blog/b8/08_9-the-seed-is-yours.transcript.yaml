@@ -1,8 +1,9 @@
 # Structured transcript — one block per spoken section.
+# Availability language is superseded as of 2026-07-21; regenerate from the corrected source before republishing audio.
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: the-seed-is-yours
 source_md: 08_9-the-seed-is-yours.md
-final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+final: false            # source corrected 2026-07-21; narration is intentionally stale
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
