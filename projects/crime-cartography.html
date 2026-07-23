@@ -88,6 +88,48 @@
             <p id="project-status-note">Public snapshot updated <time id="project-status-updated">locally</time>. No release is automatic.</p>
         </section>
 
+        <div class="container">
+            <nav class="project-jump-nav" aria-label="Crime Cartography project sections">
+                <a href="#project-room">Project room</a>
+                <a href="#how-it-works">Workflow</a>
+                <a href="#decisions">Decisions</a>
+                <a href="#revenue-model">Revenue model</a>
+                <a href="#working-terms">Terms</a>
+                <a href="#participate">Subscribe</a>
+            </nav>
+        </div>
+
+        <section class="container project-command-center" id="project-room">
+            <span class="eyebrow">Project room</span>
+            <h2>See the state. Choose one question. Leave a trace.</h2>
+            <div class="project-decision-grid">
+                <article class="project-decision-card">
+                    <span class="eyebrow">Operating now</span>
+                    <strong>Creator-led launch</strong>
+                    <p>Hadi edits the intro and one or two remade tests. Publishing does not wait for a subscriber threshold.</p>
+                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=general&amp;title=Launch%20sequence%20feedback" target="_blank" rel="noopener noreferrer">Discuss launch</a>
+                </article>
+                <article class="project-decision-card">
+                    <span class="eyebrow">Decision open</span>
+                    <strong>100 seats or 500?</strong>
+                    <p>The email list can remain open; a future active editorial cohort could have a voted cap. The 500 mark is a readiness milestone, not a YouTube rule.</p>
+                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=ideas&amp;title=Vote%20on%20the%20editorial%20seat%20cap" target="_blank" rel="noopener noreferrer">Vote on seat cap</a>
+                </article>
+                <article class="project-decision-card">
+                    <span class="eyebrow">Proposed</span>
+                    <strong>$42/hour manager work</strong>
+                    <p>Verified harness-manager work would have a published monthly cap before any operative compensation stage.</p>
+                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=general&amp;title=Manager%20rate%20and%20monthly%20cap" target="_blank" rel="noopener noreferrer">Discuss manager cap</a>
+                </article>
+                <article class="project-decision-card">
+                    <span class="eyebrow">Next checkpoint</span>
+                    <strong>Live Q&amp;A before the next drop</strong>
+                    <p>At a meaningful milestone, the project pauses for public questions about operations, evidence, economics, and governance.</p>
+                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=general&amp;title=Plan%20the%20next%20live%20project%20Q%26A" target="_blank" rel="noopener noreferrer">Suggest a question</a>
+                </article>
+            </div>
+        </section>
+
         <section class="container project-section project-narrow" id="how-it-works">
             <span class="eyebrow">The experiment</span>
             <h2>The harness produces. People give it judgment.</h2>
@@ -192,6 +234,33 @@
             </div>
             <p class="legal-callout">No revenue-sharing or gift-card program is active. Nothing on this page is an offer, employment agreement, contest, security, or promise of payment. Any future economic stage requires written rules, appropriate legal and tax review, participant consent, and an announced effective date.</p>
             <p class="legal-callout">The preferred first deployment is deliberately small: one private VPS for the production harness and mailbox worker, a static public website, and email for project interaction. <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/VPS-EMAIL-FIRST-OPERATIONS.md" target="_blank" rel="noopener noreferrer">Read the VPS and email-first operations design &rarr;</a></p>
+        </section>
+
+        <section class="container project-section project-narrow" id="decisions">
+            <span class="eyebrow">Open decisions</span>
+            <h2>Comment where a choice is still alive.</h2>
+            <p class="section-lede">You need a GitHub account to participate in the public discussion. Each topic keeps its own thread so the next project revision can point back to the actual reasoning.</p>
+            <div class="project-model-grid">
+                <article class="project-model-card"><h3>Editorial cohort cap</h3><p>Should the first active review cohort be capped at 100, 500, or another number while the project email list remains open?</p><a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=ideas&amp;title=Editorial%20cohort%20seat%20cap" target="_blank" rel="noopener noreferrer">Open discussion</a></article>
+                <article class="project-model-card"><h3>Reserve and overflow</h3><p>What reserve minimum should protect production, and when should surplus overflow fund new formats, new channels, or nonprofits?</p><a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=ideas&amp;title=War%20chest%20minimum%20and%20overflow" target="_blank" rel="noopener noreferrer">Open discussion</a></article>
+                <article class="project-model-card"><h3>Q&amp;A milestone</h3><p>Which evidence should trigger the first live Q&amp;A: project subscribers, remade test releases, revenue, or a combination?</p><a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=ideas&amp;title=Live%20Q%26A%20milestone" target="_blank" rel="noopener noreferrer">Open discussion</a></article>
+            </div>
+        </section>
+
+        <section class="container project-section project-narrow" id="revenue-model">
+            <details class="project-detail-card">
+                <summary>Revenue scenarios: a planning model, not a forecast</summary>
+                <div class="project-detail-body">
+                    <p>These examples use assumed RPM bands to make the allocation design testable. They are not promises, channel averages, or a prediction of Crime Cartography revenue. Actual RPM depends on audience, geography, advertiser suitability, monetized views, seasonality, and other revenue sources.</p>
+                    <div class="project-model-grid">
+                        <article class="project-model-card"><h3>Pilot</h3><p>20 videos × 10k monthly views = 200k views.</p><table><tbody><tr><th>Assumed RPM</th><td>$1.50–$4</td></tr><tr><th>Gross model</th><td>$300–$800</td></tr></tbody></table></article>
+                        <article class="project-model-card"><h3>Traction</h3><p>20 videos × 50k monthly views = 1m views.</p><table><tbody><tr><th>Assumed RPM</th><td>$2.50–$6</td></tr><tr><th>Gross model</th><td>$2,500–$6,000</td></tr></tbody></table></article>
+                        <article class="project-model-card"><h3>Strong month</h3><p>20 videos × 250k monthly views = 5m views.</p><table><tbody><tr><th>Assumed RPM</th><td>$3–$8</td></tr><tr><th>Gross model</th><td>$15,000–$40,000</td></tr></tbody></table></article>
+                    </div>
+                    <p class="legal-callout">Planning formula: <strong>views ÷ 1,000 × assumed RPM = modeled platform revenue</strong>. Costs, manager hours and cap, taxes/accounting, and the war-chest minimum come first. Only the remaining distributable surplus could enter a future allocation rule. <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/REVENUE-SCENARIOS-2026-07-23.md" target="_blank" rel="noopener noreferrer">Read the full scenario model</a> · <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/new?category=ideas&amp;title=Revenue%20scenario%20assumptions" target="_blank" rel="noopener noreferrer">Comment on assumptions</a></p>
+                    <p class="legal-callout">YouTube’s official documentation defines RPM as revenue per 1,000 views after revenue share and warns that earnings are not guaranteed. Long-form Watch Page revenue share is 55% of net ad revenue for eligible partners; ad revenue eligibility requires 1,000 subscribers plus 4,000 public watch hours or 10 million Shorts views. The project’s 100/500 seat choices are internal governance decisions, not YouTube monetization thresholds.</p>
+                </div>
+            </details>
         </section>
 
         <section class="project-milestones-section">
