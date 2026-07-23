@@ -1,4 +1,4 @@
-// Version: v0.8.0
+// Version: v0.8.1
 // Shared components — enhances static nav/footer markup, plus lightbox and blog filters.
 
 (function () {
@@ -15,6 +15,19 @@
         var toggle = header.querySelector('.nav-toggle');
         var navLinks = header.querySelector('.nav-links');
         if (toggle && navLinks) {
+            var hasProjectsLink = Array.prototype.some.call(
+                navLinks.querySelectorAll('a'),
+                function (link) { return link.textContent.trim() === 'Projects'; }
+            );
+            if (!hasProjectsLink) {
+                var projectsLink = document.createElement('a');
+                projectsLink.href = getPathPrefix() + 'projects/index.html';
+                projectsLink.textContent = 'Projects';
+                var aboutLink = Array.prototype.find.call(navLinks.querySelectorAll('a'), function (link) {
+                    return link.textContent.trim() === 'About';
+                });
+                navLinks.insertBefore(projectsLink, aboutLink || null);
+            }
             toggle.addEventListener('click', function () {
                 var expanded = toggle.getAttribute('aria-expanded') === 'true';
                 toggle.setAttribute('aria-expanded', String(!expanded));
@@ -73,7 +86,7 @@
      */
     function getPathPrefix() {
         var path = window.location.pathname;
-        var subdirs = ['/blog/'];
+        var subdirs = ['/blog/', '/projects/'];
         for (var i = 0; i < subdirs.length; i++) {
             if (path.indexOf(subdirs[i]) !== -1) {
                 return '../';

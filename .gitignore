@@ -51,6 +51,7 @@ blog/draft-*
 
 # System files
 .DS_Store
+.artifacts/
 Thumbs.db
 
 # Python bytecode (from tools/ scripts)

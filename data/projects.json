@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-07-23T16:45:00.000Z",
+  "projects": [
+    {
+      "id": "crime-cartography",
+      "name": "Crime Cartography",
+      "status": "public-design",
+      "status_label": "Creator-led launch",
+      "summary": "A human-directed, agent-operated crime channel launching now under Hadi's editorship while public feedback prepares a later community editorial workflow.",
+      "page": "projects/crime-cartography.html",
+      "subscription": "open"
+    },
+    {
+      "id": "future-fiction-studio",
+      "name": "Collective Fiction Studio",
+      "status": "coming-soon",
+      "status_label": "Coming soon",
+      "summary": "A future experiment applying the same production and editorial operating system to fictional worlds and stories.",
+      "page": null,
+      "subscription": "closed"
+    },
+    {
+      "id": "future-project",
+      "name": "The Next Collective Project",
+      "status": "coming-soon",
+      "status_label": "Coming soon",
+      "summary": "Each project improves the reusable harness, participation workflow, milestone system, and governance model for the next one.",
+      "page": null,
+      "subscription": "closed"
+    }
+  ]
+}
