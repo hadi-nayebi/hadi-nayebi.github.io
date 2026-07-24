@@ -1,72 +1,71 @@
 {
   "schema_version": "1.0.0",
   "project_id": "crime-cartography",
-  "last_synced_at": "2026-07-23T23:45:00Z",
-  "source": "https://github.com/hadi-nayebi/crime-cartography/discussions",
+  "synced_at": "2026-07-24T02:45:52.994Z",
   "topics": [
     {
       "topic_id": "milestone.launch",
       "discussion_number": 5,
+      "title": "Milestones 1-2: public room, intro, and first remade releases",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/5",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["viewers", "editors", "locals"]
+      "updated_at": "2026-07-24T02:44:48Z",
+      "comment_count": 0
     },
     {
       "topic_id": "milestone.live-qa",
       "discussion_number": 6,
+      "title": "Milestone 3: first live project Q&A and Project Update #2",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/6",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["all-participants"]
+      "updated_at": "2026-07-24T02:44:48Z",
+      "comment_count": 0
     },
     {
       "topic_id": "milestone.editorial-beta",
       "discussion_number": 7,
+      "title": "Milestone 4: activate the email editorial beta",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/7",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["editors", "privacy", "operations"]
+      "updated_at": "2026-07-24T02:44:49Z",
+      "comment_count": 0
     },
     {
       "topic_id": "milestone.content-growth",
       "discussion_number": 8,
+      "title": "Milestone 5: city batches, comparisons, and new formats",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/8",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["viewers", "data", "story", "local-context"]
+      "updated_at": "2026-07-24T02:44:49Z",
+      "comment_count": 0
     },
     {
       "topic_id": "milestone.economics",
       "discussion_number": 9,
+      "title": "Milestone 6: fair-value model, reserve, and formal operating terms",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/9",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["governance", "tax", "accounting", "contributors"]
+      "updated_at": "2026-07-24T02:44:50Z",
+      "comment_count": 0
     },
     {
       "topic_id": "expert.legal-governance",
       "discussion_number": 10,
+      "title": "Expert review: legal, tax, labor, privacy, and governance",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/10",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["legal", "tax", "labor", "privacy", "governance"]
+      "updated_at": "2026-07-24T02:44:50Z",
+      "comment_count": 0
     },
     {
       "topic_id": "expert.editorial-impact",
       "discussion_number": 11,
+      "title": "Expert review: crime data, journalism, ethics, and accessibility",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/11",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["crime-data", "journalism", "victim-advocacy", "accessibility"]
+      "updated_at": "2026-07-24T02:44:51Z",
+      "comment_count": 0
     },
     {
       "topic_id": "expert.engineering",
       "discussion_number": 12,
+      "title": "Expert review: harness, email workflow, VPS, and production reliability",
       "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/12",
-      "status": "open",
-      "comment_count": 0,
-      "audience": ["harness", "security", "email", "sre"]
+      "updated_at": "2026-07-24T02:44:52Z",
+      "comment_count": 0
     }
   ]
 }

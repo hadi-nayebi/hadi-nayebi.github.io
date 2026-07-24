@@ -14,6 +14,10 @@ const map = JSON.parse(
   await readFile(join(mapsRoot, "context/WEBSITE-CONTENT-MAP.json"), "utf8"),
 );
 
+async function readJson(path) {
+  return JSON.parse(await readFile(path, "utf8"));
+}
+
 const pages = [
   await readFile(join(websiteRoot, "projects/crime-cartography.html"), "utf8"),
   await readFile(join(websiteRoot, "projects/index.html"), "utf8"),
@@ -81,7 +85,18 @@ for (const source of repositoryLinks) {
 assert.doesNotMatch(projectPage, /Hadosh Video Studio|private human review studio/i);
 assert.doesNotMatch(projectPage, /A real contribution/i);
 
+assert.deepEqual(
+  await readJson(join(websiteRoot, "data/crime-cartography-status.json")),
+  await readJson(join(mapsRoot, "public/project-status.json")),
+  "website project-status fallback must be an exact projection from maps",
+);
+assert.deepEqual(
+  await readJson(join(websiteRoot, "data/crime-cartography-discussions.json")),
+  await readJson(join(mapsRoot, "public/discussion-status.json")),
+  "website Discussion fallback must be an exact projection from maps",
+);
+
 process.stdout.write(
   `PASS ${declaredBlocks.length} source-backed blocks, 3 story sections, ` +
-  `${discussionNumbers.size} canonical Discussion routes\n`,
+  `${discussionNumbers.size} canonical Discussion routes, exact fallback projections\n`,
 );

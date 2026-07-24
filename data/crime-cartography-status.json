@@ -3,7 +3,7 @@
   "project_id": "crime-cartography",
   "name": "Crime Cartography",
   "stage": "public-design",
-  "generated_at": "2026-07-23T23:56:42.214Z",
+  "generated_at": "2026-07-24T00:08:48.680Z",
   "production": {
     "cities_mapped": 20,
     "inherited_reference_cuts": 20,
