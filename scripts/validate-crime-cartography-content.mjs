@@ -49,6 +49,16 @@ for (const block of declaredBlocks) {
 }
 
 const projectPage = pages[0];
+assert.match(
+  projectPage,
+  /<main[^>]+data-content-id="crime-page"[^>]+data-project-source="[^"]+"/,
+  "the complete project-page main region must declare canonical sources",
+);
+assert.match(
+  projectPage,
+  /<nav[^>]+class="project-mobile-actions"[^>]+data-content-id="crime-mobile-actions"[^>]+data-project-source="[^"]+"/,
+  "the project-specific mobile action rail must declare canonical sources",
+);
 const storySections = [...projectPage.matchAll(
   /<section[^>]+id="(understand|define|join)"[^>]*>/g,
 )];
