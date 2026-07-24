@@ -14,7 +14,9 @@
     function renderStatus(status) {
         var production = status.production || {};
         setText('project-stage', status.current_milestone && status.current_milestone.label || 'Public design');
-        setText('project-next-stage', status.current_milestone && status.current_milestone.next || 'Editorial beta');
+        if (status.current_milestone && status.current_milestone.short_next) {
+            setText('project-next-stage', status.current_milestone.short_next);
+        }
         setText('status-total', production.cities_mapped ?? production.videos_total ?? '—');
         setText('status-rendered', production.dedicated_remakes_completed ?? production.rendered ?? '—');
         setText('status-review', production.reference_cuts_awaiting_remake_review ?? production.awaiting_editorial_review ?? '—');

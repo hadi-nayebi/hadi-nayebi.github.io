@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crime Cartography | A Public Human-Agent Experiment</title>
-    <meta name="description" content="Help build a sourced crime-data channel by reviewing work before publication and improving the human-agent editorial system behind it.">
+    <title>Crime Cartography | Build Better Factual Videos</title>
+    <meta name="description" content="A human-managed channel where a production harness maps crime data and people add the context, judgment, and taste that make each video worth remembering.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="canonical" href="https://hadi-nayebi.github.io/projects/crime-cartography.html">
-    <meta property="og:title" content="Crime Cartography | A Public Human-Agent Experiment">
-    <meta property="og:description" content="Inspect the production machine, review work before publication, and help decide what this collective project becomes.">
+    <meta property="og:title" content="Crime Cartography | Build Better Factual Videos">
+    <meta property="og:description" content="See what the production harness makes, what people improve, and which project decisions are open now.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/projects/crime-cartography.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/crime-cartography-banner.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Crime Cartography | A Public Human-Agent Experiment">
-    <meta name="twitter:description" content="Help build a sourced crime-data channel through pre-publication editorial work.">
+    <meta name="twitter:title" content="Crime Cartography | Build Better Factual Videos">
+    <meta name="twitter:description" content="A public experiment in combining an AI production harness with human editorial judgment.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/crime-cartography-banner.png">
-    <link rel="stylesheet" href="../css/styles.css?v=20260723-2">
+    <link rel="stylesheet" href="../css/styles.css?v=20260724-1">
 </head>
-<body>
+<body class="crime-project-page">
     <header id="site-header">
         <div class="container">
             <nav>
@@ -43,427 +43,297 @@
     </header>
 
     <main>
-        <section class="crime-project-hero">
+        <section class="crime-project-hero" data-content-id="crime-hero" data-project-source="context/PROJECT.md,public/project-status.json">
             <div class="crime-project-backdrop" aria-hidden="true"></div>
             <div class="container crime-hero-grid">
                 <div class="crime-hero-copy">
                     <div class="project-status-line">
-                        <span class="status-pill status-pill-live">Operating now</span>
-                        <span>Current stage: <strong id="project-stage">Public design</strong></span>
+                        <span class="status-pill status-pill-live">Public design is open</span>
+                        <span>Next: <strong id="project-next-stage">Intro + two remakes</strong></span>
                     </div>
                     <p class="eyebrow">Crime Cartography</p>
-                    <h1>Don’t just subscribe to another channel. Help build the machine behind it.</h1>
-                    <p class="hero-lede">An agentic harness builds sourced crime-data stories; people supply the judgment before release. Inspect the work, subscribe by email, and help shape the editorial system.</p>
+                    <h1>A machine can map the pattern. People make it worth remembering.</h1>
+                    <p class="hero-lede">Crime Cartography is a human-managed channel for sourced crime-data stories. The harness builds the factual first pass; people add context, skepticism, and taste before a human approves release.</p>
+
                     <div class="hero-actions">
-                        <a class="btn btn-primary" href="#participate">Subscribe to the project</a>
-                        <a class="btn btn-secondary" href="#roadmap-now">See the next milestone</a>
-                        <a class="btn btn-secondary" href="https://www.youtube.com/@CrimeCartography" target="_blank" rel="noopener noreferrer">Visit the channel</a>
+                        <a class="btn btn-primary" href="#understand">See one draft improve</a>
+                        <a class="btn btn-secondary" href="#define">Shape an open decision</a>
+                        <a class="btn btn-secondary" href="#join">Get project emails</a>
                     </div>
-                    <p class="project-distinction"><strong>Project subscription is not YouTube subscription.</strong> YouTube likes, comments, views, and subscriptions are welcome, but are not paid activity and do not determine project rewards.</p>
-                    <p class="project-distinction"><strong>The channel starts now.</strong> Hadi will edit the introduction and first remade test videos while project feedback helps improve the harness. We are not waiting for a subscriber threshold to begin publishing.</p>
+
+                    <p class="project-distinction"><strong>This is not a reward for YouTube engagement.</strong> Project emails and editorial work are separate from YouTube subscriptions, likes, comments, views, and shares.</p>
+
+                    <div class="hero-proof" aria-label="Current production facts">
+                        <div><strong id="status-total">20</strong><span>inherited reference cuts</span></div>
+                        <div><strong id="status-rendered">0</strong><span>dedicated remakes</span></div>
+                        <div><strong id="status-approved">0</strong><span>approved releases</span></div>
+                    </div>
+
+                    <a class="project-source-ref" href="https://github.com/hadi-nayebi/crime-cartography/blob/main/context/PROJECT.md" target="_blank" rel="noopener noreferrer">Source: canonical project context</a>
                 </div>
                 <div class="crime-hero-mark">
                     <img src="../assets/images/crime-cartography-profile.png" alt="Crime Cartography fingerprint map channel mark">
-                    <span>Human taste<br>before publish</span>
+                    <span>Evidence first.<br>Human release.</span>
                 </div>
             </div>
-        </section>
-
-        <section class="container live-project-strip" aria-label="Current project status">
-            <div>
-                <span id="status-total">20</span>
-                <small>cities mapped</small>
-            </div>
-            <div>
-                <span id="status-rendered">0</span>
-                <small>dedicated remakes</small>
-            </div>
-            <div>
-                <span id="status-review">20</span>
-                <small>reference cuts to remake</small>
-            </div>
-            <div>
-                <span id="status-approved">0</span>
-                <small>remakes approved</small>
-            </div>
-            <p id="project-status-note">Public snapshot updated <time id="project-status-updated">locally</time>. No release is automatic.</p>
         </section>
 
         <div class="project-jump-shell">
             <div class="container">
-                <nav class="project-jump-nav" aria-label="Crime Cartography project sections">
-                    <a href="#project-room">Project room</a>
-                    <a href="#how-it-works">Workflow</a>
-                    <a href="#roadmap-now">Timeline</a>
-                    <a href="#decisions">Decisions</a>
-                    <a href="#expert-review">Expert review</a>
-                    <a href="#revenue-model">Revenue model</a>
-                    <a href="#working-terms">Terms</a>
-                    <a href="#participate">Subscribe</a>
+                <nav class="project-jump-nav project-three-nav" aria-label="Crime Cartography project sections">
+                    <a href="#understand"><span>01</span> Understand it</a>
+                    <a href="#define"><span>02</span> Help define it</a>
+                    <a href="#join"><span>03</span> Join the loop</a>
                 </nav>
             </div>
         </div>
 
-        <section class="container project-roadmap-preview" id="roadmap-now" aria-labelledby="roadmap-now-title">
-            <div>
-                <span class="eyebrow">The next three moves</span>
-                <h2 id="roadmap-now-title">Start publishing. Measure judgment. Report what changes.</h2>
-            </div>
-            <ol>
-                <li>
-                    <span>Now</span>
-                    <strong>Subscription and public review open</strong>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Launch thread</a>
-                </li>
-                <li>
-                    <span>Next</span>
-                    <strong>Intro + two human-approved pilots</strong>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Release criteria</a>
-                </li>
-                <li>
-                    <span>Checkpoint</span>
-                    <strong>Live Q&amp;A + Project Update #2</strong>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/6" target="_blank" rel="noopener noreferrer">Shape the checkpoint</a>
-                </li>
-            </ol>
-            <a class="roadmap-full-link" href="#timeline">View the complete six-stage roadmap &darr;</a>
-        </section>
-
-        <section class="container project-command-center" id="project-room">
-            <span class="eyebrow">Project room</span>
-            <h2>See the state. Choose one question. Leave a trace.</h2>
-            <div class="project-decision-grid">
-                <article class="project-decision-card">
-                    <span class="eyebrow">Operating now</span>
-                    <strong>Creator-led launch</strong>
-                    <p>Hadi edits the intro and one or two remade tests. Publishing does not wait for a subscriber threshold.</p>
-                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Discuss launch</a>
-                </article>
-                <article class="project-decision-card">
-                    <span class="eyebrow">Decision open</span>
-                    <strong>100 seats or 500?</strong>
-                    <p>The email list can remain open; a future active editorial cohort could have a voted cap. The 500 mark is a readiness milestone, not a YouTube rule.</p>
-                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Discuss seat cap</a>
-                </article>
-                <article class="project-decision-card">
-                    <span class="eyebrow">Proposed</span>
-                    <strong>$42/hour manager work</strong>
-                    <p>Verified harness-manager work would have a published monthly cap before any operative compensation stage.</p>
-                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer">Discuss manager cap</a>
-                </article>
-                <article class="project-decision-card">
-                    <span class="eyebrow">Next checkpoint</span>
-                    <strong>Live Q&amp;A before the next drop</strong>
-                    <p>At a meaningful milestone, the project pauses for public questions about operations, evidence, economics, and governance.</p>
-                    <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/6" target="_blank" rel="noopener noreferrer">Suggest a question</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="container project-section project-narrow" id="how-it-works">
-            <span class="eyebrow">The experiment</span>
-            <h2>The harness produces. People give it judgment.</h2>
-            <p class="section-lede">Research, data processing, maps, scripts, narration, and draft assembly can be highly automated. Publication cannot. Hadi performs that editorial role during launch. The community loop below is the next operating layer being designed; it activates after 500 project subscribers and enough useful feedback.</p>
-
-            <ol class="project-loop" aria-label="Crime Cartography editorial loop">
-                <li>
-                    <span>01</span>
-                    <div>
-                        <h3>The harness prepares a draft</h3>
-                        <p>A participant may receive a script, chart, map, audio segment, or rough cut by email.</p>
-                    </div>
-                </li>
-                <li>
-                    <span>02</span>
-                    <div>
-                        <h3>A human reviews one bounded question</h3>
-                        <p>Is the claim supported? Is the pacing clear? Which visual feels like slop? What context is missing?</p>
-                    </div>
-                </li>
-                <li>
-                    <span>03</span>
-                    <div>
-                        <h3>The decision becomes traceable input</h3>
-                        <p>The harness records what changed and prepares the next revision. Reviewers can also assess other reviews.</p>
-                    </div>
-                </li>
-                <li>
-                    <span>04</span>
-                    <div>
-                        <h3>A human still controls release</h3>
-                        <p>No public upload, economic activation, or governance change happens merely because an agent proposed it.</p>
-                    </div>
-                </li>
-            </ol>
-        </section>
-
-        <section class="project-context-section">
-            <div class="container project-context-grid">
+        <section class="container project-section project-story" id="understand" data-content-id="crime-understand" data-project-source="context/PROJECT.md,context/EDITORIAL.md">
+            <div class="project-section-intro">
                 <div>
-                    <span class="eyebrow">A real contribution</span>
-                    <h2>Turn a moving chart into something a person remembers.</h2>
-                    <p>A chart around 1994 may change meaning when it marks the arrival of widespread public internet access. A reviewer can propose that historical annotation, attach a credible source, and explain why it improves the story.</p>
-                    <p>That is the work: not clicking “like,” but adding context, checking evidence, and shaping taste before publication.</p>
+                    <span class="eyebrow">01 · Understand the experiment</span>
+                    <h2>From factual first pass to useful human memory.</h2>
                 </div>
-                <div class="context-chart" role="img" aria-label="Illustrative chart with a 1994 context marker">
-                    <div class="context-chart-bars" aria-hidden="true">
-                        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-                    </div>
-                    <div class="context-marker">
-                        <span>1994</span>
-                        <strong>What happened here?</strong>
-                        <small>A reviewer supplies sourced context.</small>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-milestones-section" id="timeline">
-            <div class="container project-narrow">
-                <span class="eyebrow">Commentable roadmap</span>
-                <h2>Each stage must earn the next one.</h2>
-                <p class="section-lede">Project subscription opens with the public page. It is an interest and participation list, not an economic seat. Later stages unlock only after their evidence gates are met, reviewed, and documented.</p>
-                <p class="github-transition-note">Comment links open GitHub and may ask you to sign in or switch to the GitHub app on your phone. The project subscription form below remains the lower-friction email path.</p>
-                <div class="milestone-list milestone-roadmap">
-                    <article class="milestone-active">
-                        <span><strong>01</strong><small>Active</small></span>
-                        <div>
-                            <h3>Public room and project subscription</h3>
-                            <p>Publish the project context, accept email subscriptions, collect focused criticism, and keep Hadi as editor while the harness and public rules improve.</p>
-                            <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Comment on the launch foundation</a>
-                        </div>
-                    </article>
-                    <article>
-                        <span><strong>02</strong><small>Launch</small></span>
-                        <div>
-                            <h3>Introduction and first remade releases</h3>
-                            <p>Release the introduction and one or two remade city videos. Each release remains human-approved and carries stronger historical context, sourcing, and memory anchors.</p>
-                            <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Review the release criteria</a>
-                        </div>
-                    </article>
-                    <article>
-                        <span><strong>03</strong><small>Checkpoint</small></span>
-                        <div>
-                            <h3>First live project Q&amp;A</h3>
-                            <p>Proposed trigger: two human-approved pilot releases plus 30 substantive public contributions spanning at least three expertise lanes. Report subscriber count as context, not as the quality gate. Hold the Q&amp;A before the next batch and publish Project Update #2 with what changes afterward.</p>
-                            <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/6" target="_blank" rel="noopener noreferrer">Challenge the trigger or submit a question</a>
-                        </div>
-                    </article>
-                    <article>
-                        <span><strong>04</strong><small>Gated beta</small></span>
-                        <div>
-                            <h3>Email editorial cohort</h3>
-                            <p>After the 500-subscriber readiness milestone and enough useful feedback, activate a bounded cohort only when consent, privacy, scoring, appeals, and human release controls are testable. The first cohort may be capped at 100.</p>
-                            <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Design the editorial beta</a>
-                        </div>
-                    </article>
-                    <article>
-                        <span><strong>05</strong><small>Expansion</small></span>
-                        <div>
-                            <h3>More cities, comparisons, and formats</h3>
-                            <p>Expand only after the release loop is reliable: more cities and crime categories, city and state comparisons, national and international datasets, explainers, podcasts, and longer analysis.</p>
-                            <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/8" target="_blank" rel="noopener noreferrer">Shape the content roadmap</a>
-                        </div>
-                    </article>
-                    <article>
-                        <span><strong>06</strong><small>Formal gate</small></span>
-                        <div>
-                            <h3>Effective governance and value distribution</h3>
-                            <p>Only after sustainable operating evidence and appropriate professional review: publish versioned participation, privacy, manager-cap, reserve, contribution, tax, and economic terms with an effective date and explicit consent.</p>
-                            <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer">Review the formal-stage requirements</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="container project-section">
-            <div class="section-heading-row">
-                <div>
-                    <span class="eyebrow">What is true today</span>
-                    <h2>Clear boundaries before big promises.</h2>
-                </div>
-                <p>This page separates operating facts from proposals. The model will change as participants and qualified experts challenge it.</p>
+                <p>The project is testing one focused idea: let the harness repeat production work, then make the human pass responsible for truth, usefulness, and taste.</p>
             </div>
 
-            <details class="project-detail-card project-boundary-details">
-                <summary>Open the operating facts, proposals, and unresolved risks</summary>
-                <div class="project-detail-body">
-            <div class="truth-grid">
-                <article class="truth-card truth-card-live">
-                    <span class="status-pill status-pill-live">Operating now</span>
-                    <h3>Production and public design</h3>
-                    <ul>
-                        <li>A production harness and rendered video backlog exist.</li>
-                        <li>Hadi edits and approves the introduction and first remade test videos.</li>
-                        <li>The launch does not wait for project or YouTube subscribers.</li>
-                        <li>People can critique the model and request participation.</li>
-                        <li>Early feedback improves the harness and future editorial workflow.</li>
-                        <li>The preferred low-cost operating shape is one private VPS, with email as the primary project interface and no hosted database unless the workflow proves it needs one.</li>
-                    </ul>
+            <div class="project-three-grid project-principles">
+                <article>
+                    <span>1</span>
+                    <h3>The harness builds</h3>
+                    <p>It gathers sourced data, normalizes it, maps it, drafts the story, and assembles a reviewable cut.</p>
                 </article>
-                <article class="truth-card truth-card-proposed">
-                    <span class="status-pill status-pill-proposed">Proposed</span>
-                    <h3>Points and shared value</h3>
-                    <ul>
-                        <li>Points would recognize verified editorial contributions.</li>
-                        <li>A project reserve would cover production and emergencies first.</li>
-                        <li>A future surplus-sharing model may allocate up to 90% after costs and reserves.</li>
-                        <li>Manager work is currently modeled at $42/hour with a future published monthly cap.</li>
-                        <li>Individual and manager caps, war-chest overflow, and the $42 rate are design proposals, not current entitlements.</li>
-                    </ul>
+                <article>
+                    <span>2</span>
+                    <h3>People improve</h3>
+                    <p>They catch misleading comparisons, missing context, generic choices, privacy risks, and weak explanations.</p>
                 </article>
-                <article class="truth-card truth-card-open">
-                    <span class="status-pill status-pill-open">Open for discussion</span>
-                    <h3>Legal and governance design</h3>
-                    <ul>
-                        <li>Worker, contractor, contest, tax, securities, privacy, and state-law classification.</li>
-                        <li>Eligibility, identity verification, payout methods, and dispute handling.</li>
-                        <li>How contribution quality is scored without rewarding platform engagement.</li>
-                        <li>What milestones must be met before any economic program activates.</li>
-                    </ul>
+                <article>
+                    <span>3</span>
+                    <h3>A human releases</h3>
+                    <p>No agent approves its own consequential claim or upload. Hadi holds that responsibility during launch.</p>
                 </article>
             </div>
-            <p class="legal-callout">No revenue-sharing or gift-card program is active. Nothing on this page is an offer, employment agreement, contest, security, or promise of payment. Any future economic stage requires written rules, appropriate legal and tax review, participant consent, and an announced effective date.</p>
-            <p class="legal-callout">The preferred first deployment is deliberately small: one private VPS for the production harness and mailbox worker, a static public website, and email for project interaction. <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/VPS-EMAIL-FIRST-OPERATIONS.md" target="_blank" rel="noopener noreferrer">Read the VPS and email-first operations design &rarr;</a></p>
-                </div>
-            </details>
-        </section>
 
-        <section class="container project-section project-narrow" id="decisions">
-            <span class="eyebrow">Open decisions</span>
-            <h2>Comment where a choice is still alive.</h2>
-            <p class="section-lede">You need a GitHub account to participate in the public discussion. Each topic keeps its own thread so the next project revision can point back to the actual reasoning.</p>
-            <p id="discussion-activity" class="discussion-activity" aria-live="polite">Eight canonical discussions are open. Activity is synchronized into the public project snapshot without publishing subscriber data.</p>
-            <p class="form-note">GitHub Discussions is active. Each button below opens the project’s canonical thread for that topic; use the <a href="https://github.com/hadi-nayebi/crime-cartography/issues/new?template=project-feedback.yml" target="_blank" rel="noopener noreferrer">project-feedback issue form</a> when you need to report a concrete defect or provide repository-specific evidence.</p>
-            <div class="project-model-grid">
-                <article class="project-model-card"><h3>Editorial cohort cap</h3><p>Should the first active review cohort be capped at 100, 500, or another number while the project email list remains open?</p><a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Join the editorial-beta discussion</a></article>
-                <article class="project-model-card"><h3>Reserve and overflow</h3><p>What reserve minimum should protect production, and when should surplus overflow fund new formats, new channels, or nonprofits?</p><a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer">Join the economics discussion</a></article>
-                <article class="project-model-card"><h3>Q&amp;A milestone</h3><p>Which evidence should trigger the first live Q&amp;A: project subscribers, remade test releases, public contributions, or a combination?</p><a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/6" target="_blank" rel="noopener noreferrer">Join the Q&amp;A discussion</a></article>
-            </div>
-            <details class="project-detail-card project-change-log">
-                <summary>What human feedback has already changed</summary>
-                <div class="project-detail-body">
-                    <ol class="change-log-list">
-                        <li><strong>Dedicated channel only.</strong> Earth One left this project’s scope; channel identity is now locked separately from login.</li>
-                        <li><strong>Launch and community clocks separated.</strong> Hadi starts publishing pilot remakes now; 500 project requests is a later editorial-readiness milestone.</li>
-                        <li><strong>Phone-first, canonical discussions.</strong> Pre-launch review produced the compact roadmap, persistent phone actions, collapsed deep sections, and one durable thread per milestone/expert lane.</li>
+            <div class="editorial-story">
+                <div class="editorial-story-copy">
+                    <span class="eyebrow">A concrete contribution</span>
+                    <h3>The line is true. The explanation is not finished.</h3>
+                    <p>A Boston first pass can accurately show reported index crime falling 71% from its 1989 peak to 2015. A useful human review does more than approve the number.</p>
+                    <ol>
+                        <li><strong>Mark the ruler change.</strong> FBI annual index-crime counts and Boston Police incident records are different measures.</li>
+                        <li><strong>Open the total.</strong> Show category composition where the source supports an honest comparison.</li>
+                        <li><strong>Add memory, not mythology.</strong> Attach sourced context that helps orient the viewer without pretending proximity proves cause.</li>
                     </ol>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/PUBLIC-CHANGELOG.md" target="_blank" rel="noopener noreferrer">Read the versioned public changelog &rarr;</a>
                 </div>
-            </details>
-        </section>
 
-        <section class="container project-section project-narrow" id="expert-review">
-            <span class="eyebrow">Open expert review</span>
-            <h2>Bring the discipline the harness does not have.</h2>
-            <p class="section-lede">This experiment improves when specialists challenge its assumptions in public. You do not need to endorse the project; useful disagreement, missing constraints, and concrete corrections are valuable inputs.</p>
-            <p class="legal-callout">GitHub Discussions is public. Do not post confidential client, victim, subscriber, or case information. Public comments are project feedback—not retained professional advice and not an attorney-client, accountant-client, employment, or consulting relationship.</p>
-            <div class="expert-review-grid">
-                <article class="expert-review-card">
-                    <span class="expert-icon" aria-hidden="true">§</span>
-                    <div>
-                        <h3>Law, tax, privacy, and governance</h3>
-                        <p>Lawyers, accountants, privacy practitioners, labor specialists, and governance researchers can flag classification, consent, tax, identity, contest, securities, retention, and dispute risks.</p>
-                        <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/10" target="_blank" rel="noopener noreferrer">Enter the legal and governance review</a>
-                    </div>
-                </article>
-                <article class="expert-review-card">
-                    <span class="expert-icon" aria-hidden="true">∿</span>
-                    <div>
-                        <h3>Crime data, journalism, ethics, and accessibility</h3>
-                        <p>Criminologists, historians, journalists, victim advocates, data and visualization practitioners, and accessibility specialists can review uncertainty, bias, sourcing, harm, framing, context, and phone readability.</p>
-                        <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/11" target="_blank" rel="noopener noreferrer">Enter the editorial expert review</a>
-                    </div>
-                </article>
-                <article class="expert-review-card">
-                    <span class="expert-icon" aria-hidden="true">&lt;/&gt;</span>
-                    <div>
-                        <h3>Harness, email, security, and reliability</h3>
-                        <p>Agent engineers, security reviewers, deliverability specialists, and SREs can examine least privilege, idempotency, audit trails, backups, abuse controls, failure recovery, and the one-VPS operating boundary.</p>
-                        <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/12" target="_blank" rel="noopener noreferrer">Enter the engineering review</a>
-                    </div>
-                </article>
+                <div class="editorial-compare" aria-label="Illustration of a basic chart improved by a human editorial pass">
+                    <article>
+                        <div class="chart-card-heading"><span>Harness draft</span><strong>Accurate line</strong></div>
+                        <svg viewBox="0 0 420 210" role="img" aria-labelledby="draft-chart-title">
+                            <title id="draft-chart-title">Schematic Boston trend falling from a 1989 peak to 2015</title>
+                            <g class="chart-grid">
+                                <line x1="38" y1="30" x2="38" y2="178"></line>
+                                <line x1="38" y1="178" x2="398" y2="178"></line>
+                                <line x1="38" y1="80" x2="398" y2="80"></line>
+                                <line x1="38" y1="130" x2="398" y2="130"></line>
+                            </g>
+                            <path class="chart-line" d="M42 52 L78 44 L116 60 L154 84 L192 108 L230 119 L268 132 L306 142 L344 150 L392 159"></path>
+                            <circle class="chart-point" cx="78" cy="44" r="5"></circle>
+                            <circle class="chart-point" cx="392" cy="159" r="5"></circle>
+                            <text x="52" y="26">1989 peak</text>
+                            <text x="332" y="198">2015</text>
+                            <text class="chart-stat" x="285" y="54">−71%</text>
+                        </svg>
+                        <p>Correct headline. Little help interpreting what the line can—and cannot—mean.</p>
+                    </article>
+
+                    <article class="editorial-after">
+                        <div class="chart-card-heading"><span>Human editorial pass</span><strong>Useful memory</strong></div>
+                        <svg viewBox="0 0 420 210" role="img" aria-labelledby="edited-chart-title">
+                            <title id="edited-chart-title">The same Boston trend with a source seam and editorial context prompts</title>
+                            <g class="chart-grid">
+                                <line x1="38" y1="30" x2="38" y2="178"></line>
+                                <line x1="38" y1="178" x2="398" y2="178"></line>
+                                <line x1="38" y1="80" x2="398" y2="80"></line>
+                                <line x1="38" y1="130" x2="398" y2="130"></line>
+                            </g>
+                            <path class="chart-line" d="M42 52 L78 44 L116 60 L154 84 L192 108 L230 119 L268 132 L306 142 L344 150 L392 159"></path>
+                            <line class="chart-seam" x1="392" y1="30" x2="392" y2="178"></line>
+                            <circle class="chart-point" cx="78" cy="44" r="5"></circle>
+                            <text x="52" y="26">1989 peak</text>
+                            <text class="chart-label" x="250" y="37">Explain the long fall</text>
+                            <text class="chart-label" x="248" y="64">Open category mix</text>
+                            <text class="chart-label" x="248" y="91">2015 source seam</text>
+                        </svg>
+                        <p>The viewer gets a shape, a limit, and three ideas worth remembering.</p>
+                    </article>
+                </div>
             </div>
-        </section>
 
-        <section class="container project-section project-narrow" id="revenue-model">
             <details class="project-detail-card">
-                <summary>Revenue scenarios: a planning model, not a forecast</summary>
-                <div class="project-detail-body">
-                    <p>These examples use assumed RPM bands to make the allocation design testable. They are not promises, channel averages, or a prediction of Crime Cartography revenue. Actual RPM depends on audience, geography, advertiser suitability, monetized views, seasonality, and other revenue sources.</p>
-                    <div class="project-model-grid">
-                        <article class="project-model-card"><h3>Pilot</h3><p>20 videos × 10k monthly views = 200k views.</p><table><tbody><tr><th>Assumed RPM</th><td>$1.50–$4</td></tr><tr><th>Gross model</th><td>$300–$800</td></tr></tbody></table></article>
-                        <article class="project-model-card"><h3>Traction</h3><p>20 videos × 50k monthly views = 1m views.</p><table><tbody><tr><th>Assumed RPM</th><td>$2.50–$6</td></tr><tr><th>Gross model</th><td>$2,500–$6,000</td></tr></tbody></table></article>
-                        <article class="project-model-card"><h3>Strong month</h3><p>20 videos × 250k monthly views = 5m views.</p><table><tbody><tr><th>Assumed RPM</th><td>$3–$8</td></tr><tr><th>Gross model</th><td>$15,000–$40,000</td></tr></tbody></table></article>
+                <summary>What every release must prove</summary>
+                <div class="project-detail-body project-three-grid">
+                    <article><h3>True</h3><p>Claims recompute from release data and material source limits remain visible.</p></article>
+                    <article><h3>Useful</h3><p>The viewer leaves with a coherent model of time, place, and meaning.</p></article>
+                    <article><h3>Responsible</h3><p>The framing minimizes victim exposure, neighborhood stigma, and false precision.</p></article>
+                </div>
+            </details>
+
+            <div class="project-source-trail">
+                <span>Repository basis</span>
+                <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/context/EDITORIAL.md" target="_blank" rel="noopener noreferrer">Editorial system</a>
+                <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/context/PROJECT.md" target="_blank" rel="noopener noreferrer">Project definition</a>
+                <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/11" target="_blank" rel="noopener noreferrer">Challenge the editorial standard</a>
+            </div>
+        </section>
+
+        <section class="project-definition-section" id="define" data-content-id="crime-define" data-project-source="context/PROJECT.md,context/PARTICIPATION.md,context/GLOSSARY.md">
+            <div class="container project-section">
+                <div class="project-section-intro">
+                    <div>
+                        <span class="eyebrow">02 · Help define the project</span>
+                        <h2>Three horizons. Three decisions open now.</h2>
                     </div>
-                    <p class="legal-callout">Planning formula: <strong>views ÷ 1,000 × assumed RPM = modeled platform revenue</strong>. Costs, manager hours and cap, taxes/accounting, and the war-chest minimum come first. Only the remaining distributable surplus could enter a future allocation rule. <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/REVENUE-SCENARIOS-2026-07-23.md" target="_blank" rel="noopener noreferrer">Read the full scenario model</a> · <a class="topic-comment" href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer">Comment on assumptions</a></p>
-                    <p class="legal-callout">YouTube’s official documentation defines RPM as revenue per 1,000 views after revenue share and warns that earnings are not guaranteed. Long-form Watch Page revenue share is 55% of net ad revenue for eligible partners; ad revenue eligibility requires 1,000 subscribers plus 4,000 public watch hours or 10 million Shorts views. The project’s 100/500 seat choices are internal governance decisions, not YouTube monetization thresholds.</p>
+                    <p>The channel starts under Hadi’s editorial control. Community workflows and economics must earn their way into operation through evidence, discussion, and explicit gates.</p>
                 </div>
-            </details>
+
+                <div class="project-three-grid project-horizons">
+                    <article class="is-active">
+                        <span>Now</span>
+                        <h3>Prove the story</h3>
+                        <p>Open the public room, release the introduction, and human-approve two dedicated remakes.</p>
+                    </article>
+                    <article>
+                        <span>Next</span>
+                        <h3>Prove the editorial loop</h3>
+                        <p>Report what feedback changed, hold the first Q&amp;A, and test the email workflow safely.</p>
+                    </article>
+                    <article>
+                        <span>Later</span>
+                        <h3>Earn expansion</h3>
+                        <p>Scale formats and formalize governance only after the production and participation systems work.</p>
+                    </article>
+                </div>
+
+                <div class="decision-room">
+                    <div class="decision-room-heading">
+                        <div>
+                            <span class="eyebrow">Open decision rooms</span>
+                            <h3>Choose one question you can improve.</h3>
+                        </div>
+                        <p>Each link opens a substantive GitHub brief with current facts, draft choices, and exactly three focused questions.</p>
+                    </div>
+
+                    <div class="project-three-grid project-decision-grid">
+                        <article>
+                            <span class="status-pill status-pill-open">Release design</span>
+                            <h3>Which first two remakes?</h3>
+                            <p>Atlanta and Boston are recommended, but the pair should test the format honestly.</p>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Review launch and pilots</a>
+                        </article>
+                        <article>
+                            <span class="status-pill status-pill-open">Public checkpoint</span>
+                            <h3>What should trigger the Q&amp;A?</h3>
+                            <p>The current proposal combines two approved pilots with useful contributions across several disciplines.</p>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/6" target="_blank" rel="noopener noreferrer">Shape the checkpoint</a>
+                        </article>
+                        <article>
+                            <span class="status-pill status-pill-open">Editorial beta</span>
+                            <h3>When is the email cohort ready?</h3>
+                            <p>Five hundred requests alone are not enough; privacy, confirmation, scoring, and appeals must work.</p>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Design the beta</a>
+                        </article>
+                    </div>
+
+                    <details class="project-detail-card">
+                        <summary>Open five more specialist rooms</summary>
+                        <div class="project-detail-body compact-link-list">
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/8" target="_blank" rel="noopener noreferrer"><strong>Content growth</strong><span>cities, comparisons, and new formats</span></a>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer"><strong>Value and governance</strong><span>manager cap, reserve, and future surplus</span></a>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/10" target="_blank" rel="noopener noreferrer"><strong>Legal review</strong><span>tax, labor, privacy, and governance</span></a>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/11" target="_blank" rel="noopener noreferrer"><strong>Editorial review</strong><span>crime data, ethics, journalism, and access</span></a>
+                            <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/12" target="_blank" rel="noopener noreferrer"><strong>Engineering review</strong><span>harness, email, VPS, security, and reliability</span></a>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glossary-room">
+                    <div class="decision-room-heading">
+                        <div>
+                            <span class="eyebrow">Shared language</span>
+                            <h3>Define the terms before operating the system.</h3>
+                        </div>
+                        <p>Draft terms remain open. Consolidated terms are the common language used by the website, harness, and public project record.</p>
+                    </div>
+
+                    <div class="project-three-grid glossary-preview">
+                        <article>
+                            <span class="term-state term-consolidated">Consolidated</span>
+                            <h3>Project subscriber</h3>
+                            <p>A person who requests project emails. Separate from YouTube and not a promise of work or payment.</p>
+                        </article>
+                        <article>
+                            <span class="term-state term-draft">Draft</span>
+                            <h3>Editorial response</h3>
+                            <p>Specific, supported, actionable human judgment about one revision-bound content unit.</p>
+                        </article>
+                        <article>
+                            <span class="term-state term-draft">Draft</span>
+                            <h3>Distributable surplus</h3>
+                            <p>What may remain only after verified costs, manager cap, reserve, tax, and accounting obligations.</p>
+                        </article>
+                    </div>
+
+                    <div class="project-source-trail">
+                        <span>Shared context</span>
+                        <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/context/GLOSSARY.md" target="_blank" rel="noopener noreferrer">Open the complete glossary</a>
+                        <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/context/INDEX.md" target="_blank" rel="noopener noreferrer">How terms become consolidated</a>
+                        <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Improve participation terms</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="container project-section" id="working-terms">
-            <div class="section-heading-row">
+        <section class="container project-section project-join" id="join" data-content-id="crime-join" data-project-source="context/PARTICIPATION.md,experiment/EMAIL-INTERFACE-CONTRACT.md">
+            <div class="project-section-intro">
                 <div>
-                    <span class="eyebrow">Working terms v0.1</span>
-                    <h2>Define the system before asking people to trust it.</h2>
+                    <span class="eyebrow">03 · Join the loop</span>
+                    <h2>Start with the level of participation you want.</h2>
                 </div>
-                <p>These terms are proposed for discussion. Comments can improve a definition, but no term becomes operative without a versioned effective date, participant consent, and any required professional review.</p>
+                <p>Public review and project emails are open now. The pre-publication editorial cohort is a later, gated system—not something this form silently enrolls you into.</p>
             </div>
 
-            <details class="project-detail-card project-terms-details">
-                <summary>Open the six working terms and comment routes</summary>
-                <div class="project-detail-body">
-            <div class="truth-grid">
-                <article class="truth-card truth-card-live">
-                    <span class="status-pill status-pill-live">Operating now</span>
-                    <h3>Harness manager</h3>
-                    <p>Hadi manages the harness, edits the first batch, controls release, and remains accountable. The proposed rate for verified harness-manager work is <strong>$42/hour</strong>, with a monthly cap to be published before any operative compensation stage. A smaller management team may be defined later under published roles and controls.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer">Comment on this term &rarr;</a>
+            <div class="project-three-grid engagement-paths">
+                <article>
+                    <span>Open now</span>
+                    <h3>Review in public</h3>
+                    <p>Use a canonical Discussion to challenge a definition, milestone, editorial standard, or technical design.</p>
+                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions" target="_blank" rel="noopener noreferrer">Choose a discussion</a>
                 </article>
-                <article class="truth-card truth-card-proposed">
-                    <span class="status-pill status-pill-proposed">Proposed</span>
-                    <h3>Project subscriber</h3>
-                    <p>An adult who separately requests project emails. This is not a YouTube subscription and creates no entitlement to tasks, points, payment, or future selection.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Comment on this term &rarr;</a>
+                <article class="is-primary">
+                    <span>Open now</span>
+                    <h3>Request project emails</h3>
+                    <p>Receive updates and future invitations. This creates no right to tasks, points, payment, or selection.</p>
+                    <a href="#project-subscribe-form">Open the email form</a>
                 </article>
-                <article class="truth-card truth-card-proposed">
-                    <span class="status-pill status-pill-proposed">Proposed</span>
-                    <h3>Editorial content unit</h3>
-                    <p>One revision-bound beat, excerpt, chart, map, audio segment, visual treatment, rough cut, or full draft sent with one bounded editorial question.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Comment on this term &rarr;</a>
-                </article>
-                <article class="truth-card truth-card-proposed">
-                    <span class="status-pill status-pill-proposed">Proposed</span>
-                    <h3>Editorial response</h3>
-                    <p>The first pilot may require 100 words, but length is only an empty-response filter. Quality means specific, supported, actionable, impactful, and original judgment.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Comment on this term &rarr;</a>
-                </article>
-                <article class="truth-card truth-card-proposed">
-                    <span class="status-pill status-pill-proposed">Proposed</span>
-                    <h3>Contribution record</h3>
-                    <p>An accepted response may receive one base record. Responses to the same unit may be compared for a quality boost, with an auditable rubric, human review, and an appeal path.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Comment on this term &rarr;</a>
-                </article>
-                <article class="truth-card truth-card-open">
-                    <span class="status-pill status-pill-open">Not active</span>
-                    <h3>Economic conversion</h3>
-                    <p>Experimental points are not money, wages, gift cards, shares, or guaranteed claims. Any conversion rule belongs to a later agreement after operational evidence and professional review. Costs and the manager cap come first; reserve overflow remains a collective design question.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/9" target="_blank" rel="noopener noreferrer">Comment on this term &rarr;</a>
+                <article>
+                    <span>Later, if earned</span>
+                    <h3>Join an editorial cohort</h3>
+                    <p>A capped cohort may review pre-publication units only after confirmation, privacy, scoring, appeal, and release controls work.</p>
+                    <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/7" target="_blank" rel="noopener noreferrer">Help design it</a>
                 </article>
             </div>
-            <p class="legal-callout">The complete working draft also defines the email loop, pairwise quality safeguards, privacy boundary, future dashboard, and unresolved legal and governance questions. <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/CONTRIBUTOR-WORKFLOW-DRAFT.md" target="_blank" rel="noopener noreferrer">Read the complete terms draft &rarr;</a></p>
+
+            <form id="project-subscribe-form" class="project-subscribe-form compact-subscribe-form">
+                <div class="form-heading">
+                    <div>
+                        <span class="eyebrow">Project email request</span>
+                        <h3>What kind of judgment can you contribute?</h3>
+                    </div>
+                    <p>This form sends a structured request through EmailJS to the private EarthOne mailbox. It does not create a public profile or subscriber database.</p>
                 </div>
-            </details>
-        </section>
 
-        <section class="container project-section project-narrow" id="participate">
-            <span class="eyebrow">Choose your way in</span>
-            <h2>Subscribe to the project—not to a payout promise.</h2>
-            <p class="section-lede">You can request project updates and invitations to relevant editorial tasks. Subscription does not guarantee work, points, compensation, or selection for a later stage.</p>
-
-            <form id="project-subscribe-form" class="project-subscribe-form">
                 <div class="form-grid">
                     <label>
                         <span>Name <small>(optional)</small></span>
@@ -474,49 +344,41 @@
                         <input type="email" name="email" autocomplete="email" required>
                     </label>
                 </div>
+
+                <label class="form-honeypot" aria-hidden="true">
+                    <span>Website</span>
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </label>
+
                 <fieldset>
-                    <legend>What would you like to help review?</legend>
-                    <label class="check-row"><input type="checkbox" name="interests" value="evidence-and-sourcing"> Evidence and sourcing</label>
-                    <label class="check-row"><input type="checkbox" name="interests" value="data-and-maps"> Data and maps</label>
-                    <label class="check-row"><input type="checkbox" name="interests" value="scripts-and-story"> Scripts and story</label>
-                    <label class="check-row"><input type="checkbox" name="interests" value="visuals-audio-and-edits"> Visuals, audio, and edits</label>
-                    <label class="check-row"><input type="checkbox" name="interests" value="legal-tax-privacy-and-governance"> Legal, tax, privacy, and governance</label>
-                    <label class="check-row"><input type="checkbox" name="interests" value="community-impact-and-victim-privacy"> Community impact and victim privacy</label>
-                    <label class="check-row"><input type="checkbox" name="interests" value="harness-email-security-and-reliability"> Harness, email, security, and reliability</label>
+                    <legend>Choose any areas</legend>
+                    <label class="check-row"><input type="checkbox" name="interests" value="content-evidence-and-story"> Content, evidence, data, maps, and story</label>
+                    <label class="check-row"><input type="checkbox" name="interests" value="policy-privacy-and-governance"> Policy, privacy, economics, and governance</label>
+                    <label class="check-row"><input type="checkbox" name="interests" value="harness-email-and-reliability"> Harness, email, security, and reliability</label>
                 </fieldset>
+
                 <label class="consent-row">
                     <input type="checkbox" name="consent" required>
-                    <span>I want Crime Cartography project emails and understand my response will be processed by EmailJS and the EarthOne email provider to operate and improve the project. I can ask to leave the list. This is separate from YouTube and creates no right to payment.</span>
+                    <span>I request Crime Cartography project emails. I understand EmailJS and the EarthOne email provider process this request; this is separate from YouTube and creates no right to tasks or payment. I can ask to leave the list.</span>
                 </label>
-                <button id="project-subscribe-submit" class="btn btn-primary" type="submit">Subscribe to this project</button>
+                <button id="project-subscribe-submit" class="btn btn-primary" type="submit">Send project-email request</button>
                 <p id="project-subscribe-status" class="form-status" role="status" aria-live="polite"></p>
-                <p class="form-privacy-note">The initial subscriber record is the received project email; Crime Cartography does not publish subscriber addresses or maintain a separate public list.</p>
+                <p class="form-privacy-note">EmailJS acceptance is not address confirmation. A confirmation and suppression workflow must be operating before editorial tasks are sent.</p>
             </form>
 
-            <div class="participation-links">
-                <article>
-                    <h3>Report a concrete project defect</h3>
-                    <p>Use the issue form for a reproducible website, evidence, production, or repository defect. Use the canonical Discussions above for deliberation.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography/issues/new?template=project-feedback.yml" target="_blank" rel="noopener noreferrer">Open the defect form &rarr;</a>
-                </article>
-                <article>
-                    <h3>Ask your agent to inspect it</h3>
-                    <p>The short machine-readable brief identifies the repositories, current facts, proposals, and unresolved questions.</p>
-                    <a href="crime-cartography-agent-brief.md">Read the agent brief &rarr;</a>
-                </article>
-                <article>
-                    <h3>Inspect the production repository</h3>
-                    <p>See the public data, maps, pipeline, source notes, release gates, and contribution instructions.</p>
-                    <a href="https://github.com/hadi-nayebi/crime-cartography" target="_blank" rel="noopener noreferrer">Explore the repository &rarr;</a>
-                </article>
+            <div class="project-source-trail">
+                <span>Repository basis</span>
+                <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/context/PARTICIPATION.md" target="_blank" rel="noopener noreferrer">Participation design</a>
+                <a href="https://github.com/hadi-nayebi/crime-cartography/blob/main/experiment/EMAIL-INTERFACE-CONTRACT.md" target="_blank" rel="noopener noreferrer">Email contract</a>
+                <a href="https://github.com/hadi-nayebi/crime-cartography/issues/new?template=project-feedback.yml" target="_blank" rel="noopener noreferrer">Report a concrete defect</a>
             </div>
         </section>
     </main>
 
     <nav class="project-mobile-actions" aria-label="Quick project actions">
-        <a href="#participate">Subscribe</a>
-        <a href="#roadmap-now">Timeline</a>
-        <a href="https://github.com/hadi-nayebi/crime-cartography/discussions/5" target="_blank" rel="noopener noreferrer">Discuss</a>
+        <a href="#understand">Understand</a>
+        <a href="#define">Discuss</a>
+        <a href="#join">Join</a>
     </nav>
 
     <footer id="site-footer">
@@ -524,9 +386,10 @@
             <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="../js/components.js?v=20260723-2"></script>
-    <script src="../js/projects.js?v=20260723-2"></script>
-    <script src="../js/project-subscribe.js?v=20260723-2"></script>
+    <script src="../js/components.js?v=20260724-1"></script>
+    <script src="../js/projects.js?v=20260724-1"></script>
+    <script src="../js/project-subscribe.js?v=20260724-1"></script>
 </body>
 </html>

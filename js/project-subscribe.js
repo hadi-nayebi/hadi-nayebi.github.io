@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var CONSENT_VERSION = 'crime-cartography-public-design-v0.9';
+    var CONSENT_VERSION = 'crime-cartography-public-design-v1.0';
     var PROJECT_ID = 'crime-cartography';
     var PROTOCOL_MARKER = 'CRIME_CARTOGRAPHY_SUBSCRIPTION_V1:';
 
@@ -42,6 +42,11 @@
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             var formData = new FormData(form);
+            if (String(formData.get('website') || '').trim()) {
+                form.reset();
+                setStatus('Request received.', 'success');
+                return;
+            }
             var consent = formData.get('consent');
             if (!consent) {
                 setStatus('Please confirm the project-email and data-processing notice.', 'error');
@@ -83,7 +88,7 @@
                 message: message
             }).then(function () {
                 form.reset();
-                setStatus('Request received. We will confirm the project subscription by email.', 'success');
+                setStatus('EmailJS accepted the request. The address is still unconfirmed; confirmation will arrive only after that workflow is active.', 'success');
             }).catch(function () {
                 setStatus('The request could not be sent. Please try again or use the GitHub feedback link.', 'error');
             }).finally(function () {
