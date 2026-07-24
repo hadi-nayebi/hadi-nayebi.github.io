@@ -22,6 +22,10 @@ const pages = [
   await readFile(join(websiteRoot, "projects/crime-cartography.html"), "utf8"),
   await readFile(join(websiteRoot, "projects/index.html"), "utf8"),
 ];
+const subscriptionScript = await readFile(
+  join(websiteRoot, "js/project-subscribe.js"),
+  "utf8",
+);
 const html = pages.join("\n");
 
 const declaredBlocks = [...html.matchAll(
@@ -94,6 +98,13 @@ for (const source of repositoryLinks) {
 
 assert.doesNotMatch(projectPage, /Hadosh Video Studio|private human review studio/i);
 assert.doesNotMatch(projectPage, /A real contribution/i);
+assert.match(projectPage, /name="website"[^>]+tabindex="-1"/);
+assert.match(projectPage, /name="name"[^>]+maxlength="80"/);
+assert.match(projectPage, /name="email"[^>]+maxlength="254"/);
+assert.match(subscriptionScript, /blockHeadless:\s*true/);
+assert.match(subscriptionScript, /limitRate:\s*\{/);
+assert.match(subscriptionScript, /MIN_FORM_AGE_MS\s*=\s*4000/);
+assert.match(subscriptionScript, /SUCCESS_COOLDOWN_MS\s*=\s*15\s*\*\s*60\s*\*\s*1000/);
 
 assert.deepEqual(
   await readJson(join(websiteRoot, "data/crime-cartography-status.json")),

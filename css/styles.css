@@ -4859,7 +4859,10 @@ body.lightbox-open {
 #expert-review,
 #revenue-model,
 #working-terms,
-#participate {
+#participate,
+#understand,
+#define,
+#join {
     scroll-margin-top: 160px;
 }
 
