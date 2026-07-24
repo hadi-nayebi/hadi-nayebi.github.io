@@ -1,6 +1,6 @@
 # Crime Cartography — agent brief
 
-Version: public design v0.9
+Version: public design v1.0
 Updated: 2026-07-23
 
 ## What this is
@@ -18,10 +18,13 @@ rank, or economic eligibility.
 ## What is operating
 
 - A public crime-data and video-production repository.
-- A 20-city inherited batch with 20 rendered videos.
+- A 20-city inherited reference batch that requires dedicated-channel remakes.
+- Zero completed or approved dedicated-channel city remakes.
 - A private human review studio.
-- A staged public-project design.
+- A staged public-project design with canonical GitHub Discussions.
 - A dedicated Crime Cartography visual identity.
+- A static website and email-first interface designed to move with the harness
+  to one private VPS when local operation is no longer sufficient.
 
 ## What is proposed
 
@@ -29,6 +32,8 @@ rank, or economic eligibility.
 - Peer review of human feedback.
 - Contribution history and reputation.
 - A war chest covering production and emergency costs.
+- A proposed $42/hour rate for verified harness-manager work, subject to a
+  published monthly cap before any operative compensation stage.
 - A legally reviewed contributor surplus pool and replaceable manager role.
 - Milestone-based governance and a possible independent spin-off.
 
@@ -39,7 +44,12 @@ rank, or economic eligibility.
 - Whether beta contribution history has future economic value.
 - The precise definition and accounting of distributable surplus.
 - Governance, appeals, fraud controls, privacy, and intellectual-property terms.
-- The milestone that should trigger the first public experiment update.
+- The final trigger for the first live Q&A and Project Update #2. The current
+  proposal is two human-approved pilot releases plus 30 substantive public
+  contributions across at least three expertise lanes.
+- The first active editorial cohort cap. The project email list may remain
+  open; 100 is a possible first cohort, while 500 project requests is a
+  readiness milestone rather than a YouTube rule.
 
 ## Critique instructions
 
@@ -54,5 +64,8 @@ rank, or economic eligibility.
 Public repository:
 https://github.com/hadi-nayebi/crime-cartography
 
-Public feedback:
+Public deliberation:
+https://github.com/hadi-nayebi/crime-cartography/discussions
+
+Concrete defect reports:
 https://github.com/hadi-nayebi/crime-cartography/issues/new?template=project-feedback.yml

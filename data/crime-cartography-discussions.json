@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "crime-cartography",
+  "last_synced_at": "2026-07-23T23:45:00Z",
+  "source": "https://github.com/hadi-nayebi/crime-cartography/discussions",
+  "topics": [
+    {
+      "topic_id": "milestone.launch",
+      "discussion_number": 5,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/5",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["viewers", "editors", "locals"]
+    },
+    {
+      "topic_id": "milestone.live-qa",
+      "discussion_number": 6,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/6",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["all-participants"]
+    },
+    {
+      "topic_id": "milestone.editorial-beta",
+      "discussion_number": 7,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/7",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["editors", "privacy", "operations"]
+    },
+    {
+      "topic_id": "milestone.content-growth",
+      "discussion_number": 8,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/8",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["viewers", "data", "story", "local-context"]
+    },
+    {
+      "topic_id": "milestone.economics",
+      "discussion_number": 9,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/9",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["governance", "tax", "accounting", "contributors"]
+    },
+    {
+      "topic_id": "expert.legal-governance",
+      "discussion_number": 10,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/10",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["legal", "tax", "labor", "privacy", "governance"]
+    },
+    {
+      "topic_id": "expert.editorial-impact",
+      "discussion_number": 11,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/11",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["crime-data", "journalism", "victim-advocacy", "accessibility"]
+    },
+    {
+      "topic_id": "expert.engineering",
+      "discussion_number": 12,
+      "url": "https://github.com/hadi-nayebi/crime-cartography/discussions/12",
+      "status": "open",
+      "comment_count": 0,
+      "audience": ["harness", "security", "email", "sre"]
+    }
+  ]
+}

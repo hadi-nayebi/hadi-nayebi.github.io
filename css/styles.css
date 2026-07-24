@@ -4804,3 +4804,517 @@ body.lightbox-open {
         padding: 1.25rem;
     }
 }
+
+/* Crime Cartography mobile-first hardening and commentable roadmap. */
+.project-jump-shell {
+    position: sticky;
+    top: 80px;
+    z-index: 4;
+    border-bottom: 1px solid var(--border);
+    background: rgba(5, 5, 7, 0.92);
+    backdrop-filter: blur(14px);
+}
+
+.project-jump-nav {
+    position: static;
+    height: auto;
+    min-height: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+}
+
+.project-jump-nav a,
+.topic-comment {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.project-jump-nav a {
+    flex: 0 0 auto;
+    padding: 0.65rem 0.8rem;
+}
+
+.topic-comment {
+    max-width: 100%;
+    padding: 0.68rem 0.82rem;
+    overflow-wrap: anywhere;
+}
+
+#project-room,
+#how-it-works,
+#roadmap-now,
+#timeline,
+#decisions,
+#expert-review,
+#revenue-model,
+#working-terms,
+#participate {
+    scroll-margin-top: 160px;
+}
+
+.github-transition-note {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border-left: 2px solid var(--accent);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.discussion-activity {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    border-radius: 12px;
+    background: rgba(16, 185, 129, 0.055);
+    color: #a7f3d0;
+    font-size: 0.82rem;
+}
+
+.change-log-list {
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+}
+
+.change-log-list li + li {
+    margin-top: 0.75rem;
+}
+
+.change-log-list strong {
+    color: var(--text-main);
+}
+
+.milestone-roadmap {
+    position: relative;
+}
+
+.milestone-roadmap::before {
+    position: absolute;
+    top: 1.7rem;
+    bottom: 1.7rem;
+    left: 35px;
+    width: 1px;
+    background: linear-gradient(#6ee7b7, var(--accent), var(--border));
+    content: "";
+}
+
+.milestone-roadmap article {
+    position: relative;
+    grid-template-columns: 72px minmax(0, 1fr);
+    margin-bottom: 0.8rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(9, 9, 13, 0.78);
+}
+
+.milestone-roadmap article > span {
+    z-index: 1;
+    display: grid;
+    width: 48px;
+    min-height: 48px;
+    align-content: center;
+    justify-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: #09090d;
+}
+
+.milestone-roadmap article > span strong,
+.milestone-roadmap article > span small {
+    display: block;
+}
+
+.milestone-roadmap article > span strong {
+    font-size: 0.82rem;
+}
+
+.milestone-roadmap article > span small {
+    font-size: 0.52rem;
+    letter-spacing: 0.04em;
+}
+
+.milestone-roadmap .milestone-active {
+    border-color: rgba(52, 211, 153, 0.35);
+    background: rgba(16, 185, 129, 0.055);
+}
+
+.expert-review-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.expert-review-card {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-card);
+}
+
+.expert-review-card h3 {
+    margin-bottom: 0.45rem;
+}
+
+.expert-review-card p {
+    color: var(--text-muted);
+}
+
+.expert-icon {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(196, 181, 253, 0.35);
+    border-radius: 12px;
+    color: var(--accent-light);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.project-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.project-mobile-actions {
+    display: none;
+}
+
+.project-roadmap-preview {
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+.project-roadmap-preview h2 {
+    max-width: 760px;
+    font-size: clamp(1.55rem, 3vw, 2.2rem);
+    line-height: 1.12;
+}
+
+.project-roadmap-preview ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: 1.3rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--border);
+    list-style: none;
+}
+
+.project-roadmap-preview li {
+    display: grid;
+    gap: 0.35rem;
+    align-content: start;
+    min-width: 0;
+    padding: 1rem;
+    background: #09090d;
+}
+
+.project-roadmap-preview li > span {
+    color: var(--accent-light);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.project-roadmap-preview li > a,
+.roadmap-full-link {
+    min-height: 44px;
+    color: var(--accent-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.project-roadmap-preview li > a {
+    display: inline-flex;
+    align-items: center;
+}
+
+.roadmap-full-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.65rem;
+}
+
+.project-boundary-details,
+.project-terms-details {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    body:has(.project-mobile-actions) {
+        padding-bottom: 68px;
+    }
+
+    .container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .project-jump-nav {
+        margin-right: -1rem;
+        margin-left: -1rem;
+        padding: 0.55rem 1rem;
+    }
+
+    .nav-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .crime-project-hero {
+        padding-top: 6.25rem;
+        padding-bottom: 2rem;
+    }
+
+    .crime-project-hero h1,
+    .page-hero h1 {
+        font-size: clamp(2rem, 9.5vw, 2.8rem);
+        line-height: 1.02;
+    }
+
+    .crime-project-hero .hero-lede,
+    .page-hero p,
+    .section-lede {
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    .crime-hero-copy .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+
+    .crime-hero-copy .hero-actions .btn,
+    .project-card-body .btn,
+    .project-subscribe-form .btn {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .live-project-strip > * {
+        min-width: 0;
+        padding: 0.9rem;
+    }
+
+    .live-project-strip span {
+        font-size: 1.45rem;
+    }
+
+    .live-project-strip small {
+        display: block;
+        font-size: 0.72rem;
+        line-height: 1.35;
+    }
+
+    .project-command-center {
+        padding-top: 2.5rem;
+    }
+
+    .project-roadmap-preview {
+        padding-top: 2rem;
+    }
+
+    .project-roadmap-preview ol {
+        grid-template-columns: 1fr;
+    }
+
+    .project-section,
+    .project-context-section,
+    .project-milestones-section {
+        padding-top: 3.25rem;
+        padding-bottom: 3.25rem;
+    }
+
+    .section-heading-row h2,
+    .project-section > h2,
+    .project-context-grid h2,
+    .project-milestones-section h2 {
+        font-size: clamp(1.7rem, 8vw, 2.25rem);
+        line-height: 1.12;
+    }
+
+    .project-decision-card,
+    .project-model-card,
+    .truth-card,
+    .participation-links article {
+        padding: 1rem;
+    }
+
+    .milestone-roadmap::before {
+        left: 36px;
+    }
+
+    .milestone-roadmap article {
+        grid-template-columns: 54px minmax(0, 1fr);
+        gap: 0.65rem;
+        padding: 1rem 0.85rem;
+    }
+
+    .milestone-roadmap article > span {
+        width: 44px;
+        min-height: 44px;
+    }
+
+    .expert-review-card {
+        grid-template-columns: 44px minmax(0, 1fr);
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .project-detail-card summary {
+        display: flex;
+        min-height: 52px;
+        align-items: center;
+        padding: 0.9rem 1rem;
+    }
+
+    .project-detail-body {
+        padding: 0 1rem 1rem;
+    }
+
+    .project-subscribe-form input[type="text"],
+    .project-subscribe-form input[type="email"] {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    .project-subscribe-form .check-row {
+        min-height: 44px;
+        align-items: center;
+        padding: 0.45rem 0;
+    }
+
+    .project-subscribe-form .check-row input,
+    .project-subscribe-form .consent-row input {
+        width: 20px;
+        height: 20px;
+    }
+
+    .project-card-art {
+        min-height: 190px;
+    }
+
+    .project-card-body {
+        padding: 1.25rem;
+    }
+
+    .project-index-hero {
+        min-height: auto;
+        padding-top: 7rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .project-index-hero + .project-section {
+        padding-top: 2.5rem;
+    }
+
+    .project-card-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .project-mobile-actions {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 110;
+        display: grid;
+        height: auto;
+        min-height: 60px;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0.45rem max(0.65rem, env(safe-area-inset-right)) calc(0.45rem + env(safe-area-inset-bottom)) max(0.65rem, env(safe-area-inset-left));
+        border-top: 1px solid var(--border);
+        background: rgba(5, 5, 7, 0.96);
+        backdrop-filter: blur(16px);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(100%);
+        visibility: hidden;
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+    }
+
+    .project-mobile-actions.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .project-mobile-actions a {
+        display: grid;
+        min-height: 44px;
+        place-items: center;
+        border-right: 1px solid var(--border);
+        color: var(--text-main);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .project-mobile-actions a:first-child {
+        color: #ddd6fe;
+    }
+
+    .project-mobile-actions a:last-child {
+        border-right: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .logo {
+        max-width: 190px;
+        font-size: 1.15rem;
+    }
+
+    .project-jump-nav a {
+        font-size: 0.75rem;
+    }
+
+    .crime-project-hero h1,
+    .page-hero h1 {
+        font-size: clamp(1.9rem, 9.3vw, 2.35rem);
+    }
+
+    .project-distinction {
+        padding-left: 0.75rem;
+        font-size: 0.86rem;
+    }
+
+    .live-project-strip {
+        border-radius: 12px;
+    }
+
+    .context-chart {
+        min-height: 250px;
+    }
+
+    .context-marker {
+        left: 38%;
+        width: 60%;
+        padding: 0.75rem;
+    }
+}
