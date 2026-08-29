@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadi Nayebi | Agent Systems & Harness Engineering</title>
+    <meta name="description" content="Technical portfolio of Hadi Nayebi: agent harness abstraction engineering, persistent jobs, phasic cognition, plugin architecture, local memory, behavioral controls, evaluation, and human-steerable self-modification.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/portfolio.html">
+    <meta property="og:title" content="Hadi Nayebi | Agent Systems & Harness Engineering">
+    <meta property="og:description" content="I build and compare agent harnesses to discover stable abstractions between low-level agent primitives and human intent.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/portfolio.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hadi Nayebi | Agent Systems & Harness Engineering">
+    <meta name="twitter:description" content="Agent harness abstractions: jobs, phases, plugins, memory, authority, verification, maturation, and human-steerable self-modification.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="css/styles.css?v=20260723">
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="start-here.html">Start Here</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="agents.html">Agents</a>
+                    <a href="projects/index.html">Projects</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="hero hero-compact">
+            <div class="container">
+                <span class="badge">Technical Portfolio</span>
+                <h1>Agent Harness Abstraction Engineering</h1>
+                <p class="hero-description">I build and compare agent harnesses to discover the layer between low-level agent primitives and human intent: abstractions that are precise enough for agents to implement and enforce, but legible enough for people to understand, inspect, and direct.</p>
+                <div class="hero-actions">
+                    <a href="#systems" class="btn btn-primary">See the Systems</a>
+                    <a href="contact.html" class="btn btn-secondary">Technical Discussion</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">The Engineering Question</span>
+            <h2>How far can the abstraction boundary move upward?</h2>
+            <p class="seed-section-intro">Hooks, tools, scripts, skills, files, and model instructions are powerful primitives. They are also implementation-level concepts. Most professionals should not need to understand a PreToolUse hook or a shell script to decide how their agent should behave.</p>
+            <p class="seed-section-intro">My work asks what stable concepts can sit above those primitives &mdash; jobs, phases, plugins, memory boundaries, authority gates, verification, consolidation &mdash; so the agent can translate conceptual intent downward into platform-specific machinery. The human engineers behavior at the level of meaning; the agent helps build the mechanism.</p>
+            <p class="seed-section-intro"><strong>The research object is the abstraction layer, not one codebase.</strong> The published Seed architecture is one implementation family. Other private prototypes use many of the same conceptual abstractions with different enforcement mechanisms.</p>
+        </section>
+
+        <section class="container seed-section">
+            <h2>One System, Four Levels of Abstraction</h2>
+            <div class="grid">
+                <article class="card">
+                    <span class="badge">Human Intent</span>
+                    <h3>Conceptual Control</h3>
+                    <p>"Verify before closure." "Keep this knowledge local." "Ask me before changing the substrate." "Separate observation from production." These are behavioral requirements a domain expert can reason about.</p>
+                </article>
+                <article class="card">
+                    <span class="badge">Behavioral Architecture</span>
+                    <h3>Modes, Memory, Authority</h3>
+                    <p>Explicit cognitive modes, long-horizon work, independent verification, consolidation, recovery paths, and controlled self-modification turn intent into an operating architecture.</p>
+                </article>
+                <article class="card">
+                    <span class="badge">Harness Abstractions</span>
+                    <h3>Jobs, Phases, Plugins</h3>
+                    <p>Reusable semantic units give the architecture names and boundaries: durable jobs, constrained phases, composable plugins, guards, state interfaces, permissions, and memory forms.</p>
+                </article>
+                <article class="card">
+                    <span class="badge">Platform Primitives</span>
+                    <h3>Hooks, Tools, Scripts, Skills</h3>
+                    <p>The implementation layer changes with the platform. Hooks intercept events. Scripts expose verbs. Tools act. Skills inject procedures. Files carry durable state and context.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">Conceptual Invariants</span>
+            <h2>Patterns I Keep Testing Across Harnesses</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Work Becomes a Durable Object</h3>
+                    <p>A job outlives a chat turn. It carries objective, history, state, completion logic, and long-horizon memory so work can survive context boundaries and session boundaries.</p>
+                </article>
+                <article class="card">
+                    <h3>Cognition Has Explicit Modes</h3>
+                    <p>Different kinds of work benefit from different action spaces. Observation, planning, production, verification, and consolidation can have different tools, write authority, evidence, and transition rules.</p>
+                </article>
+                <article class="card">
+                    <h3>Behavior Is Composable</h3>
+                    <p>Small single-concern units compose into larger ceremonies. A plugin is a semantic boundary with an interface and owned state, not merely a folder containing scripts.</p>
+                </article>
+                <article class="card">
+                    <h3>Soft and Hard Controls Stay Distinct</h3>
+                    <p>Some behavior should be coached; some should be mechanically enforced. I prefer to start soft, measure failure, and harden only where deterministic friction earns its cost.</p>
+                </article>
+                <article class="card">
+                    <h3>Learning Has a Consolidation Step</h3>
+                    <p>Experience should not accumulate forever in working context. A deliberate consolidation process promotes durable knowledge, compresses transient state, updates behavior, and creates follow-up work.</p>
+                </article>
+                <article class="card">
+                    <h3>Self-Modification Has Authority Boundaries</h3>
+                    <p>An agent can help modify the harness that controls it, but substrate changes should pass through explicit human authority, tests, evidence, and recovery or rollback paths.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container seed-section" id="systems">
+            <span class="badge">Implementation Families</span>
+            <h2>Same Questions, Different Mechanisms</h2>
+            <p class="seed-section-intro">I deliberately build more than one harness. If an idea only works because of one platform-specific trick, it is not yet a stable abstraction. Comparing implementations helps separate conceptual invariants from accidental mechanics.</p>
+            <div class="grid">
+                <article class="card">
+                    <span class="badge badge-private">Private Working Prototype</span>
+                    <h3>Seed Agent &mdash; Claude Code</h3>
+                    <p>The most documented implementation family: plugin-based always-on controls, persistent jobs, a phasic OPEVC system, directory-local working memory, context management, structured questions, independent verification, consolidation, and guarded self-modification.</p>
+                    <a href="seed-agent.html" class="card-link">Prototype overview &rarr;</a>
+                </article>
+                <article class="card">
+                    <span class="badge badge-private">Private Team Harness</span>
+                    <h3>Biotech Startup Team Harness</h3>
+                    <p>A shared-repository harness and local dashboard for a startup team. It reuses conceptual ideas such as jobs, phased work, shared context, and authority boundaries, while enforcing them differently from the Claude Seed plugin architecture.</p>
+                    <p>The point of this implementation is not to reproduce Seed. It is to test whether the abstractions remain useful under a different team, workflow, interface, and governance model.</p>
+                </article>
+                <article class="card">
+                    <span class="badge badge-open-source">Public Reimplementation</span>
+                    <h3>Q-Seed &mdash; Qwen Code</h3>
+                    <p>A new implementation on an open framework. The Claude prototype supplies behavioral evidence, but model, framework, and cognitive-brain contracts are redefined rather than copied mechanically.</p>
+                    <a href="q-seed.html" class="card-link">Follow Q-Seed &rarr;</a>
+                </article>
+                <article class="card">
+                    <span class="badge">Ongoing Experiments</span>
+                    <h3>Alternate Harness Prototypes</h3>
+                    <p>I repeatedly build smaller agents and harnesses with different compositions and enforcement strategies. Many remain private. I use them to test which abstractions transfer, which are too coupled to one implementation, and where the conceptual vocabulary needs to change.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">One Documented Implementation</span>
+            <h2>What the Seed Technical Corpus Explores</h2>
+            <p class="seed-section-intro">The public technical series is a detailed record of one Claude Code implementation. I treat it as experimental evidence, not as a claim that every harness should use the same files, names, thresholds, or enforcement.</p>
+            <div class="grid">
+                <article class="card">
+                    <h3>Model vs. Harness</h3>
+                    <p>Why model capability and agent reliability are different problems, and why persistent structure around the model matters.</p>
+                    <a href="blog/b1/01-llms-are-not-the-agents.html" class="card-link">LLMs Are Not the Agents &rarr;</a>
+                </article>
+                <article class="card">
+                    <h3>Always-On Infrastructure</h3>
+                    <p>How single-concern controls for jobs, context, questions, edit safety, and summaries compose underneath phase-specific cognition.</p>
+                    <a href="blog/b5/05_1-the-two-layer-foundation.html" class="card-link">The Two-Layer Foundation &rarr;</a>
+                </article>
+                <article class="card">
+                    <h3>Constrained Cognitive Modes</h3>
+                    <p>Phases as temporary action spaces with their own purpose, tools, authority, artifacts, transition rules, and recovery paths.</p>
+                    <a href="blog/b6/06_1-phasic-foundation.html" class="card-link">Phasic Foundation &rarr;</a>
+                </article>
+                <article class="card">
+                    <h3>Plugin Anatomy</h3>
+                    <p>A plugin as a system boundary: each internal organ has declared readers, writers, dependencies, state, tests, and activation wiring.</p>
+                    <a href="blog/b7/07_1-plugin-kit-foundation.html" class="card-link">Plugin Kit Foundation &rarr;</a>
+                </article>
+                <article class="card">
+                    <h3>Evidence-Guided Hardening</h3>
+                    <p>How behavioral controls can move from soft coaching to measurement, deterministic enforcement, tests, and eventually reusable templates.</p>
+                    <a href="blog/b8/08_4-soft-hard-migration.html" class="card-link">Soft &rarr; Hard Migration &rarr;</a>
+                </article>
+                <article class="card">
+                    <h3>Governed Self-Modification</h3>
+                    <p>How the harness can participate in modifying itself while keeping authority, tests, rollback, and historical context around substrate changes.</p>
+                    <a href="blog/b8/08_8-safe-self-modification.html" class="card-link">A System That Safely Modifies Itself &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">Democratization</span>
+            <h2>The User Should Learn the Architecture, Not the Shell Script</h2>
+            <p class="seed-section-intro">The adoption problem I care about is not solved by hiding agent complexity behind a nicer chat box. It is solved when the important concepts become understandable enough that a domain expert can make architectural decisions without implementing the underlying machinery.</p>
+            <div class="grid">
+                <article class="card">
+                    <h3>Teach Semantics</h3>
+                    <p>A professional can learn what a job, phase, plugin, memory boundary, verification gate, or authority boundary means without learning Bash or the platform's hook schema.</p>
+                </article>
+                <article class="card">
+                    <h3>Let the Agent Compile Intent</h3>
+                    <p>The user describes the behavior and constraints at the conceptual level. The agent translates that intent into the current platform's files, hooks, scripts, tests, skills, and configuration.</p>
+                </article>
+                <article class="card">
+                    <h3>Keep the Result Inspectable</h3>
+                    <p>Abstraction should not mean opacity. The resulting harness remains local, inspectable, testable, and editable so the user can understand what became deterministic and why.</p>
+                </article>
+            </div>
+            <p class="seed-section-intro">The long-term target is to reduce the default three-role relationship &mdash; agent, developer, user &mdash; toward agent and user. The developer does not disappear because complexity vanished. The developer role shrinks because enough of the complexity has been captured in a teachable substrate and a stable architectural vocabulary.</p>
+            <a href="blog/b8/08_9-the-seed-is-yours.html" class="card-link">Read the full ownership and operator-architect thesis &rarr;</a>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">Research Method</span>
+            <h2>Implementation Is How I Test the Abstractions</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>1. Form a Behavioral Hypothesis</h3>
+                    <p>Identify a recurring failure or capability gap: context drift, premature action, weak verification, unsafe self-editing, poor long-horizon continuity, or too much operator implementation burden.</p>
+                </article>
+                <article class="card">
+                    <h3>2. Build a Mechanism</h3>
+                    <p>Implement a concrete answer using the primitives available on that platform. Instrument it, use it in real work, and watch where the design creates friction or fails.</p>
+                </article>
+                <article class="card">
+                    <h3>3. Reimplement Elsewhere</h3>
+                    <p>Change the platform, enforcement strategy, team structure, or interface. If the concept remains useful while the mechanism changes, it is a stronger candidate for a stable abstraction.</p>
+                </article>
+                <article class="card">
+                    <h3>4. Harden Only What Earns It</h3>
+                    <p>Keep judgment probabilistic where it should remain judgment. Add deterministic constraints only when observed failure makes their cost worthwhile.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">Open Questions</span>
+            <h2>What I Want to Test at Larger Scale</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Abstraction Portability</h3>
+                    <p>Which harness concepts survive changes in model, CLI, tool system, organization, and workload &mdash; and which are artifacts of one implementation?</p>
+                </article>
+                <article class="card">
+                    <h3>Harness as Evaluation Environment</h3>
+                    <p>Can a specific harness become an evaluation surface for model behavior: adherence to phase contracts, state transitions, authority, memory use, tool discipline, and recovery?</p>
+                </article>
+                <article class="card">
+                    <h3>Model&ndash;Harness Co-Adaptation</h3>
+                    <p>How much of a harness should a model learn to operate natively, and which constraints should remain external and deterministic?</p>
+                </article>
+                <article class="card">
+                    <h3>Agent-Generated Infrastructure</h3>
+                    <p>How much harness construction can be delegated back to the agent before the human loses meaningful understanding, ownership, or control?</p>
+                </article>
+                <article class="card">
+                    <h3>Personal vs. Team Governance</h3>
+                    <p>How do shared context, authority, synchronization, review, and individual customization change when one harness coordinates multiple people and multiple agents?</p>
+                </article>
+                <article class="card">
+                    <h3>Non-Technical Adoption</h3>
+                    <p>What is the smallest architectural vocabulary a professional needs in order to direct a capable agent to build and evolve a useful harness safely?</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <div class="milestone-card glass-card">
+                <span class="badge">Current Research Constraint</span>
+                <h2>Built Independently, Ready for Broader Evaluation</h2>
+                <p>I have developed these systems independently using consumer-scale model subscriptions, local hardware, and real project work. That constraint has pushed me toward architecture that earns its compute and toward experiments I can inspect closely.</p>
+                <p>The next step is comparative evaluation at a larger scale: run the same semantic abstractions across models, harness substrates, workloads, and longer horizons; measure where they improve adherence and reliability; and identify which ideas deserve to become stable primitives rather than prototype-specific conventions.</p>
+            </div>
+        </section>
+
+        <section class="container seed-section">
+            <span class="badge">Private Systems & Demonstrations</span>
+            <h2>Much of the Implementation Is Private; the Behavior Is Demonstrable</h2>
+            <p class="seed-section-intro">Several of my more developed harnesses contain accumulated working context, team-specific architecture, or experimental substrate that I do not publish directly. For technical discussions I can demonstrate working systems, execution traces, architecture boundaries, failure and recovery behavior, tests, and the differences between implementations.</p>
+            <p class="seed-section-intro">I am especially interested in discussing where my current abstractions fail. The purpose of multiple prototypes is to find the concepts that continue to make sense after the implementation underneath them changes.</p>
+        </section>
+
+        <section class="container seed-section">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/images/profile-pic1.png" alt="Hadi Nayebi" class="profile-img">
+                </div>
+                <div class="about-content">
+                    <span class="badge">Background</span>
+                    <h2>Hadi Nayebi</h2>
+                    <p>I trained as a scientist, with a PhD spanning organic chemistry and structural biology, and later moved into machine learning, software, and agent systems. I approach harness design experimentally: define the behavior, build an implementation, observe failure, compare alternatives, and keep only the abstractions that survive.</p>
+                    <p>I founded Hadosh Academy because education is also an architectural test. If a harness concept can be separated from its implementation details, named clearly, and used by a domain expert to direct an agent, that is evidence the abstraction is becoming stable enough to matter.</p>
+                    <div class="about-cta">
+                        <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                        <a href="https://github.com/hadi-nayebi" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+                        <a href="https://www.linkedin.com/in/hadinayebi" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer">
+        <div class="container">
+            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/theme-manager.js?v=20260723"></script>
+    <script src="js/components.js?v=20260723"></script>
+</body>
+
+</html>
