@@ -54,6 +54,27 @@ function targetExists(target) {
   return false;
 }
 
+function validateDynamicRootLinks(scriptRel) {
+  const file = path.join(root, scriptRel);
+  if (!fs.existsSync(file)) {
+    errors.push(`${scriptRel}: missing dynamic navigation script`);
+    return;
+  }
+  const source = fs.readFileSync(file, 'utf8');
+  const regex = /["'`](\/(?!\/)[^"'`\n]+)["'`]/g;
+  let match;
+  const seen = new Set();
+  while ((match = regex.exec(source))) {
+    const value = match[1];
+    if (seen.has(value)) continue;
+    seen.add(value);
+    const target = localTarget(path.join(root, 'index.html'), value);
+    if (target && !targetExists(target)) {
+      errors.push(`${scriptRel}: broken dynamic link="${value}"`);
+    }
+  }
+}
+
 const allFiles = walk(root);
 const htmlFiles = allFiles.filter(file => file.endsWith('.html'));
 const publicHtml = htmlFiles.filter(file => !rel(file).startsWith('.claude/'));
@@ -103,6 +124,11 @@ for (const file of publicHtml) {
   }
 }
 
+// Validate dynamic navigation surfaces that are populated in JavaScript rather
+// than declared directly in HTML.
+validateDynamicRootLinks('js/wheel.js');
+validateDynamicRootLinks('js/start-here.js');
+
 const canonicalPages = [
   'index.html', 'start-here.html', 'agents.html', 'about.html', 'portfolio.html', 'explore.html',
   'contact.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',
@@ -125,4 +151,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Site navigation validation passed: ${publicHtml.length} HTML files checked.`);
+console.log(`Site navigation validation passed: ${publicHtml.length} HTML files plus dynamic navigation maps checked.`);
