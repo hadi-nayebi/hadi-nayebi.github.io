@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Harnesses — Shared Cortex for Small Teams | Hadosh Academy</title>
-    <meta name="description" content="A shared harness architecture for roughly 2–7 people: one private repository, multiple local CLI agents, a common dashboard, and governed team-owned cognition.">
+    <meta name="description" content="A shared harness architecture for small teams: one private repository, multiple local CLI agents, a common dashboard, and governed team-owned cognition.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="canonical" href="https://hadi-nayebi.github.io/projects/team-harnesses.html">
     <meta property="og:title" content="Team Harnesses — Shared Cortex for Small Teams | Hadosh Academy">
-    <meta property="og:description" content="A small-team harness built from scratch with the team: shared private repo, local agents, dashboard, shared memory, and governed extension.">
+    <meta property="og:description" content="A team-owned harness built with the team: shared private repo, local agents, dashboard, shared memory, and governed extension.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/projects/team-harnesses.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
     <link rel="stylesheet" href="../css/project-pages.css?v=20260830-2">
     <link rel="stylesheet" href="../css/project-polish.css?v=20260830-1">
+    <link rel="stylesheet" href="../css/project-product.css?v=20260830-1">
 </head>
 <body class="project-detail-page team-project-page">
     <header id="site-header"><div class="container"><nav>
@@ -29,11 +30,11 @@
         <section class="project-hero">
             <div class="container project-hero-grid">
                 <div class="project-hero-copy">
-                    <span class="project-kicker">Group · small teams · built from scratch</span>
+                    <span class="project-kicker">Group · small teams · shared harness</span>
                     <h1>Team Harnesses</h1>
-                    <p class="project-lede">For roughly 2–7 people working on the same startup or project. The team shares one private-repository harness and a common dashboard, while each member can still use their own local CLI agent to animate that shared cognition.</p>
-                    <div class="project-meta-row"><span class="project-meta-pill">2–7 people</span><span class="project-meta-pill">Private repository</span><span class="project-meta-pill">Local CLI agents</span><span class="project-meta-pill">Shared dashboard</span></div>
-                    <div class="project-actions"><a class="btn btn-primary" href="#topology">See how it works</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/20" target="_blank" rel="noopener">Discuss the model</a></div>
+                    <p class="project-lede">A team harness gives a small startup or project group one shared cognitive substrate without forcing everyone into one central chatbot. Each member can use their own local CLI agent, while the private repository, dashboard, shared context, jobs, plugins, and governance belong to the team.</p>
+                    <div class="project-meta-row"><span class="project-meta-pill">Typical scale: 2–7 people</span><span class="project-meta-pill">Private repository</span><span class="project-meta-pill">Local CLI agents</span><span class="project-meta-pill">Shared dashboard</span></div>
+                    <div class="project-actions"><a class="btn btn-primary" href="#topology">See the architecture</a><a class="btn btn-secondary" href="#roadmap">Development path</a></div>
                 </div>
                 <div class="team-topology" aria-label="Small team harness topology">
                     <div class="team-member-node"><strong>Member A</strong><span>their CLI agent</span></div>
@@ -47,54 +48,60 @@
             </div>
         </section>
 
-        <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Team Harness sections"><a href="#topology">Topology</a><a href="#dashboard">Dashboard</a><a href="#boundaries">Shared vs personal</a><a href="#growth">How it grows</a><a href="#governance">Governance</a><a href="#training">Why build together</a></nav></div>
+        <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Team Harness sections"><a href="#mission">Mission</a><a href="#topology">Topology</a><a href="#dashboard">Dashboard</a><a href="#growth">How it grows</a><a href="#roadmap">Roadmap</a><a href="#participate">Participate</a></nav></div>
+
+        <section class="container project-long-section" id="mission">
+            <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Turn the team's working methods into shared, inspectable cognition.</h2></div><p>The system should help a small team coordinate work and agent behavior without erasing individual working styles.</p></div>
+            <div class="project-prose"><p>The shared harness holds the team-level layer: common project context, jobs, repeatable methods, plugins, authority, and the rules that should be consistent no matter which member's agent is working. Member-local context and personal preferences can remain local.</p><p>The result is closer to a shared digital office than a shared chat thread. The repository is concrete, versioned, and inspectable; the dashboard makes it usable beyond the terminal; each member's CLI agent can animate the same substrate independently.</p></div>
+        </section>
 
         <section class="container project-long-section" id="topology">
-            <div class="project-section-heading"><div><span class="project-kicker">One shared office, many agents</span><h2>The repository is the common substrate—not one central chat session.</h2></div><p>Every member can clone the same private repository. Their local CLI agents operate against the same team-owned harness and shared project context.</p></div>
-            <div class="project-prose"><p>Member A can start work with one model while Member B uses another compatible CLI agent elsewhere. The shared harness is what keeps team-level behavior, project context, jobs, and authority concrete across those sessions.</p><p>The goal is coordinated cognition without requiring the team to share one giant conversation or one identical personal agent.</p></div>
-        </section>
-
-        <section class="container project-long-section" id="dashboard">
-            <div class="project-section-heading"><div><span class="project-kicker">The group needs a shared surface</span><h2>The dashboard is the team's common interface to the harness.</h2></div><p>This is where group harnesses differ most visibly from the individual Seed. A team cannot reasonably expect every interaction to happen through a terminal.</p></div>
-            <div class="project-fact-grid">
-                <article class="project-fact-card"><h3>Jobs</h3><p>Start, inspect, and review shared work without hunting through individual agent sessions.</p></article>
-                <article class="project-fact-card"><h3>Questions & approvals</h3><p>Make human judgment visible when the harness needs a team member to decide something.</p></article>
-                <article class="project-fact-card"><h3>Workflows & feedback</h3><p>Expose processes, milestones, comments, and review in a browser while CLI agents operate the underlying repository.</p></article>
-            </div>
-            <div class="project-note">The dashboard is not a second system. It reads and writes the same repository that the agents use, so dashboard actions and CLI work remain part of one shared substrate.</div>
-        </section>
-
-        <section class="container project-long-section" id="boundaries">
-            <div class="project-section-heading"><div><span class="project-kicker">Shared does not mean everything</span><h2>Team cognition and personal working context need different homes.</h2></div><p>The architecture should make it clear when an agent is acting for one member and when it is changing something the whole team depends on.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">One shared office, many agents</span><h2>The repository is the common substrate—not one central model session.</h2></div><p>Every member can clone the same private repository and operate against the same team-owned harness.</p></div>
             <div class="team-split-grid">
                 <article class="team-split-panel"><h3>Shared team layer</h3><ul><li>Harness behavior and plugin contracts</li><li>Project context, milestones, methods, and decisions</li><li>Shared jobs and workflow state</li><li>Dashboard views and governed interactions</li><li>Authority for changing the shared substrate</li></ul></article>
                 <article class="team-split-panel"><h3>Member-local layer</h3><ul><li>Temporary working context</li><li>Personal notes and preferences</li><li>Compatible CLI/model choice</li><li>Member-specific branches or experiments</li><li>Personal customization that does not redefine team policy</li></ul></article>
             </div>
         </section>
 
-        <section class="container project-long-section" id="growth">
-            <div class="project-section-heading"><div><span class="project-kicker">The harness becomes its own teaching material</span><h2>New plugins should learn from this team's existing plugins.</h2></div><p>The long-term goal is that the team can extend the harness without always needing the person who initialized it.</p></div>
-            <div class="team-growth-flow">
-                <article class="team-growth-step"><strong>1. Need</strong><p>The team identifies a repeated behavior or coordination problem that deserves a stable owner.</p></article>
-                <article class="team-growth-step"><strong>2. Local examples</strong><p>A member points their CLI agent at the mature plugins and context already inside this harness.</p></article>
-                <article class="team-growth-step"><strong>3. Consistent extension</strong><p>The agent follows the anatomy, interfaces, state rules, tests, and terminology that this team has already learned.</p></article>
-                <article class="team-growth-step"><strong>4. Governed promotion</strong><p>The new behavior enters the shared harness through the team's review path rather than silently changing everyone else's agents.</p></article>
-            </div>
-        </section>
-
-        <section class="container project-long-section" id="governance">
-            <div class="project-section-heading"><div><span class="project-kicker">Team ownership needs authority boundaries</span><h2>Editing project content is not the same as editing the machinery that controls future behavior.</h2></div><p>The shared substrate should be easy to use and harder to change accidentally.</p></div>
+        <section class="container project-long-section" id="dashboard">
+            <div class="project-section-heading"><div><span class="project-kicker">Shared interaction surface</span><h2>The dashboard turns the harness into a team workspace.</h2></div><p>Group systems need a common browser surface because not every member should have to operate through a terminal.</p></div>
             <div class="project-fact-grid">
-                <article class="project-fact-card"><h3>Ordinary work</h3><p>Research, notes, artifacts, and team content can follow the collaboration model appropriate to the project.</p></article>
-                <article class="project-fact-card"><h3>Harness changes</h3><p>Plugins, authority rules, shared cognition, and other substrate changes can require PR review or explicit approval.</p></article>
-                <article class="project-fact-card"><h3>Roles</h3><p>Not every member needs permission to rewrite the shared harness just because every member uses it.</p></article>
+                <article class="project-fact-card"><h3>Jobs</h3><p>Start, inspect, and review shared work across members and agent sessions.</p></article>
+                <article class="project-fact-card"><h3>Questions & approvals</h3><p>Surface places where the harness needs human judgment, review, or authority.</p></article>
+                <article class="project-fact-card"><h3>Workflows & feedback</h3><p>Expose milestones, comments, processes, and team feedback while CLI agents operate the underlying repository.</p></article>
+            </div>
+            <div class="project-note">The dashboard and CLI are two surfaces over the same substrate. A dashboard action can create a job, capture feedback, or trigger work without creating a second disconnected system.</div>
+        </section>
+
+        <section class="container project-long-section" id="growth">
+            <div class="project-section-heading"><div><span class="project-kicker">The harness teaches its own extension patterns</span><h2>Existing plugins become examples for the next plugin.</h2></div><p>The goal is a team that can continue cultivating its own system after the initial build and training.</p></div>
+            <div class="team-growth-flow">
+                <article class="team-growth-step"><strong>1. Need</strong><p>The team identifies a repeated behavior, coordination problem, or control that deserves a stable owner.</p></article>
+                <article class="team-growth-step"><strong>2. Local examples</strong><p>A member points their CLI agent at mature plugins and context already inside this harness.</p></article>
+                <article class="team-growth-step"><strong>3. Consistent extension</strong><p>The agent follows the local anatomy, interfaces, state rules, tests, and terminology the team has learned.</p></article>
+                <article class="team-growth-step"><strong>4. Governed promotion</strong><p>The new behavior enters the shared substrate through the team's review path.</p></article>
+            </div>
+            <div class="project-lineage-grid" style="margin-top:1.3rem">
+                <a class="project-lineage-card" href="../blog/b7/07_1-plugin-kit-foundation.html"><span>Technical source</span><h3>Plugin Kit</h3><p>The public reference for thinking about bounded behavioral organs, interfaces, state, tests, and local extension patterns.</p><strong>Read B7 →</strong></a>
+                <a class="project-lineage-card" href="../blog/b8/08_1-apprentice-to-architect-foundation.html"><span>Training source</span><h3>Apprentice to Architect</h3><p>The maturation idea behind teaching users enough architecture to keep evolving the harness after initial setup.</p><strong>Read B8 →</strong></a>
+                <a class="project-lineage-card" href="../blog/b5/05_4-job-core.html"><span>Work source</span><h3>Job Core</h3><p>The reference concept for durable work units that survive individual model sessions and coordinate long-running activity.</p><strong>Read Job Core →</strong></a>
+                <a class="project-lineage-card" href="../blog/b4/04-the-language-of-agents.html"><span>Shared language</span><h3>The Language of Agents</h3><p>Why a small vocabulary matters when several humans and several agents must reason about one shared system.</p><strong>Read Essay 4 →</strong></a>
             </div>
         </section>
 
-        <section class="container project-long-section" id="training">
-            <div class="project-section-heading"><div><span class="project-kicker">Why build this from scratch?</span><h2>The construction process is part of the training.</h2></div><p>The team should leave the initial engagement understanding its own harness well enough to continue evolving it.</p></div>
-            <div class="project-prose"><p>Instead of dropping a mature personal Seed into a startup and asking everyone to learn a dozen unfamiliar concepts at once, the first stable behaviors, dashboard surfaces, jobs, and governance rules are built with the team involved. Earlier harnesses are pattern libraries, not mandatory code packages.</p><p>That makes the terminology and architecture local enough that team members can later say “check how our existing plugins do this” and have their own CLI agent extend the harness consistently.</p></div>
-            <div class="project-actions final-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/20" target="_blank" rel="noopener">Discuss Team Harnesses</a><a class="btn btn-secondary" href="family-games.html">Family-scale Group Project</a><a class="btn btn-secondary" href="index.html">All projects</a></div>
+        <section class="container project-long-section" id="roadmap">
+            <div class="project-section-heading"><div><span class="project-kicker">Development roadmap</span><h2>From initial shared substrate to a team that can extend its own harness.</h2></div><p>The applied prototype already established the core team topology and several mature plugin patterns; the next stages deepen that operating model.</p></div>
+            <div class="project-roadmap">
+                <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Stage 0 · Team foundation</span><h3>Shared repo + dashboard</h3><p>Establish the common repository, local agent model, shared dashboard, and team-level authority boundary.</p></article>
+                <article class="project-roadmap-step is-current"><span class="roadmap-stage">Stage 1 · Current</span><h3>Stable plugin patterns</h3><p>Clean and mature a small number of foundational plugins that teach the local anatomy and governance model.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 2</span><h3>Team-led extension</h3><p>Members use their own agents and the existing harness as context to add new team-specific behaviors consistently.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 3</span><h3>Operational cortex</h3><p>The harness coordinates more of the team's research, workflows, decisions, and accumulated working knowledge while remaining user-governed.</p></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="participate">
+            <div class="project-section-heading"><div><span class="project-kicker">Discuss the model</span><h2>What would your team want a shared cortex to coordinate?</h2></div><p>Use the comment thread below for team use cases, governance questions, dashboard ideas, or collaboration.</p></div>
+            <div class="project-comments-section"><div class="project-comments-head"><span>Project discussion</span><h2>Comments</h2><p>Discussion stays attached to this project page, using the same comment system as the technical essays.</p></div><div class="project-comments-shell"><script src="https://giscus.app/client.js" data-repo="hadi-nayebi/hadi-nayebi.github.io" data-repo-id="R_kgDOHL_tnQ" data-category="General" data-category-id="DIC_kwDOHL_tnc4C3cRQ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></div></div>
         </section>
     </main>
 
