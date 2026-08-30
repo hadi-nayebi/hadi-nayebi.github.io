@@ -48,19 +48,13 @@
     }
 
     function mountProjectComments() {
-        if (document.querySelector('.project-comments-section')) return;
+        if (document.querySelector('.article-comments')) return;
         var main = document.querySelector('main');
         if (!main) return;
 
         var section = document.createElement('section');
-        section.className = 'container project-comments-section crime-project-comments';
-        section.innerHTML =
-            '<div class="project-comments-head">' +
-                '<span>Project discussion</span>' +
-                '<h2>Comments</h2>' +
-                '<p>Questions, criticism, editorial ideas, and collaboration notes stay attached to this project page.</p>' +
-            '</div>' +
-            '<div class="project-comments-shell"></div>';
+        section.className = 'container article-comments';
+        section.innerHTML = '<h2>Comments</h2><p>Questions, criticism, editorial ideas, and collaboration notes stay attached to this project page.</p>';
         main.appendChild(section);
 
         var script = document.createElement('script');
@@ -79,7 +73,7 @@
         script.setAttribute('data-loading', 'lazy');
         script.crossOrigin = 'anonymous';
         script.async = true;
-        section.querySelector('.project-comments-shell').appendChild(script);
+        section.appendChild(script);
     }
 
     function initializeSubscription() {
