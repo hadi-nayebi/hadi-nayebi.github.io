@@ -1,8 +1,8 @@
-// Version: v0.3.0
+// Version: v0.4.0
 /**
  * Hadosh Academy theme + lightweight shared presentation behavior.
- * Random visual themes remain; homepage language stays aligned with the
- * open-source / free-education / user-owned-harness mission.
+ * The homepage intentionally changes on refresh: visual theme, hero language,
+ * profile image, and wheel emphasis vary while the underlying mission stays stable.
  */
 
 const themes = [
@@ -10,7 +10,10 @@ const themes = [
     { name: 'green', primary: '#10b981', primaryGlow: 'rgba(16, 185, 129, 0.4)', accent: '#34d399' },
     { name: 'yellow', primary: '#eab308', primaryGlow: 'rgba(234, 179, 8, 0.4)', accent: '#facc15' },
     { name: 'orange', primary: '#f97316', primaryGlow: 'rgba(249, 115, 22, 0.4)', accent: '#fb923c' },
-    { name: 'blue', primary: '#3b82f6', primaryGlow: 'rgba(59, 130, 246, 0.4)', accent: '#60a5fa' }
+    { name: 'blue', primary: '#3b82f6', primaryGlow: 'rgba(59, 130, 246, 0.4)', accent: '#60a5fa' },
+    { name: 'cyan', primary: '#06b6d4', primaryGlow: 'rgba(6, 182, 212, 0.4)', accent: '#22d3ee' },
+    { name: 'rose', primary: '#e11d48', primaryGlow: 'rgba(225, 29, 72, 0.38)', accent: '#fb7185' },
+    { name: 'lime', primary: '#65a30d', primaryGlow: 'rgba(101, 163, 13, 0.38)', accent: '#a3e635' }
 ];
 
 const profilePics = ['assets/images/profile-pic1.png', 'assets/images/profile-pic2.png'];
@@ -33,7 +36,7 @@ function applyRandomTheme() {
     }
 }
 
-// Homepage variants may rotate, but every variant must describe the same public mission.
+// Each refresh can tell the same mission from a different angle.
 const heroMessages = [
     {
         line1: 'Engineer Agents,',
@@ -54,6 +57,46 @@ const heroMessages = [
         line1: 'Open Architecture,',
         line2: 'Real Experiments',
         description: 'Follow public Seed implementations and shared-cognition projects while the architecture is developed in the open.'
+    },
+    {
+        line1: 'Your AI Can Change.',
+        line2: 'Your Cortex Can Stay.',
+        description: 'Keep the durable personalization layer in files and structures you can inspect, version, move, and keep evolving.'
+    },
+    {
+        line1: 'Turn General Intelligence',
+        line2: 'Into Your System',
+        description: 'Use an LLM as the engine while your own harness carries the memory, behavior, authority, and working methods.'
+    },
+    {
+        line1: 'Teach the Harness',
+        line2: 'How You Work',
+        description: 'Externalize repeatable judgment into jobs, plugins, phases, memory, and interfaces that improve through use.'
+    },
+    {
+        line1: 'Build Once.',
+        line2: 'Keep the Cognition.',
+        description: 'Let the model provider change while the architecture you cultivated around your work remains your asset.'
+    },
+    {
+        line1: 'From Empty CLI',
+        line2: 'To Personal Cortex',
+        description: 'Start with Codex, Claude Code, OpenCode, Qwen Code, or another CLI agent and grow the harness around your work.'
+    },
+    {
+        line1: 'Make Agent Behavior',
+        line2: 'Inspectable',
+        description: 'Move important cognition out of invisible prompt residue and into durable jobs, state, interfaces, rules, and tests.'
+    },
+    {
+        line1: 'Learn the Architecture.',
+        line2: 'Let the Agent Build It.',
+        description: 'Use a small shared vocabulary to guide your CLI agent while the implementation burden stays increasingly machine-side.'
+    },
+    {
+        line1: 'One Harness Idea,',
+        line2: 'Many Human Scales',
+        description: 'Explore personal Seeds, team cortices, family worlds, and collective systems built around user-owned cognition.'
     }
 ];
 
@@ -94,14 +137,14 @@ applyRandomHero();
 ensureCoreNavigation();
 
 const ctaPhrases = [
-    { text: 'Start Here', link: 'start-here.html' },
-    { text: 'Explore the Projects', link: 'projects/index.html' },
-    { text: 'Read the Technical Writing', link: 'blog.html' },
-    { text: 'See the Seed Implementations', link: 'agents.html' },
-    { text: 'Open the Technical Portfolio', link: 'portfolio.html' },
-    { text: 'Join a Project Discussion', link: 'projects/index.html' },
-    { text: 'About Hadosh Academy', link: 'about.html' },
-    { text: 'Get in Touch', link: 'contact.html' }
+    { text: 'Start Here', link: '/start-here.html' },
+    { text: 'Explore the Projects', link: '/projects/index.html' },
+    { text: 'Read the Technical Writing', link: '/blog.html' },
+    { text: 'See the Seed Implementations', link: '/agents.html' },
+    { text: 'Open the Technical Portfolio', link: '/portfolio.html' },
+    { text: 'Explore Interactive Diagrams', link: '/explore.html' },
+    { text: 'About Hadosh Academy', link: '/about.html' },
+    { text: 'Get in Touch', link: '/contact.html' }
 ];
 
 window.getRandomCTAPhrases = function (count = 3) {

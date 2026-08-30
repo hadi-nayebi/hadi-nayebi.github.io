@@ -1,66 +1,85 @@
-// Version: v0.3.0
+// Version: v0.4.0
 document.addEventListener('DOMContentLoaded', () => {
-    // Inject 3 random CTAs into hooks array
     const randomCTAs = window.getRandomCTAPhrases ? window.getRandomCTAPhrases(3) : [];
 
+    // The orbit is a navigation surface, not decorative copy. Every item lands on
+    // a live page where the concept is explained, implemented, or explored.
     const hooks = [
         ...randomCTAs,
-        // Published blog articles (direct links)
-        { text: "LLMs Are Not the Agents", link: "blog/01-llms-are-not-the-agents.html" },
-        { text: "We Could Have Had AGI By Now", link: "blog/02-we-could-have-had-agi.html" },
-        { text: "Your Brain Was Never Built for This", link: "blog/03-your-brain-was-never-built-for-this.html" },
-        { text: "The Folder Is Alive", link: "blog/03_1-the-folder-is-alive.html" },
-        { text: "The Language of Agents", link: "blog/04-the-language-of-agents.html" },
-        // Linked to Blog 1 — LLMs Are Not the Agents
-        { text: "The Engine Is Not the Agent", link: "blog/01-llms-are-not-the-agents.html" },
-        { text: "Your Agent Lives in Files", link: "blog/01-llms-are-not-the-agents.html" },
-        { text: "From Chatbots to Colleagues", link: "blog/01-llms-are-not-the-agents.html" },
-        { text: "Build the Toaster", link: "blog/01-llms-are-not-the-agents.html" },
-        // Linked to Blog 2 — We Could Have Had AGI By Now
-        { text: "Structure Over Scale", link: "blog/02-we-could-have-had-agi.html" },
-        { text: "Agents Are Complex Systems", link: "blog/02-we-could-have-had-agi.html" },
-        { text: "Building Cognitive Architectures", link: "blog/02-we-could-have-had-agi.html" },
-        { text: "The Seed Agent Pattern", link: "blog/02-we-could-have-had-agi.html" },
-        // Linked to Blog 3 — Your Brain Was Never Built for This
-        { text: "Your Biology Has Limits", link: "blog/03-your-brain-was-never-built-for-this.html" },
-        { text: "The Digital Cortex", link: "blog/03-your-brain-was-never-built-for-this.html" },
-        { text: "Scaling Cognitive Labor", link: "blog/03-your-brain-was-never-built-for-this.html" },
-        { text: "Cognitive Load Is Real", link: "blog/03-your-brain-was-never-built-for-this.html" },
-        // Linked to Blog 3.1 — The Folder Is Alive
-        { text: "A Folder Full of Specialists", link: "blog/03_1-the-folder-is-alive.html" },
-        { text: "Cognitive Metabolism", link: "blog/03_1-the-folder-is-alive.html" },
-        { text: "Your Personal Cognitive Workforce", link: "blog/03_1-the-folder-is-alive.html" },
-        { text: "Your Liver, But for Paperwork", link: "blog/03_1-the-folder-is-alive.html" },
-        { text: "Plant the Seed", link: "blog/03_1-the-folder-is-alive.html" },
-        // Linked to Blog 4 — The Language of Agents
-        { text: "Hooks, Skills, and Plugins", link: "blog/04-the-language-of-agents.html" },
-        { text: "Beyond the Context Window", link: "blog/04-the-language-of-agents.html" },
-        { text: "From Prompts to Context Engineering", link: "blog/04-the-language-of-agents.html" },
-        { text: "The Rise of the MCP", link: "blog/04-the-language-of-agents.html" },
-        // Linked to the Seed Agent page
-        { text: "Meet the Seed Agent", link: "seed-agent.html" },
-        { text: "Engineer Agents, Not Chatbots", link: "seed-agent.html" },
-        { text: "Private Seed. Public Q-Seed Build.", link: "agents.html" },
-        { text: "One Mind, Many Domains", link: "seed-agent.html" },
-        // Upcoming — blogs 5-8 (link to blog index for now)
-        { text: "Every Agent Needs a Skeleton", link: "blog.html" },
-        { text: "The OPEVC Loop", link: "blog.html" },
-        { text: "Why Agents Need Intentions", link: "blog.html" },
-        { text: "Memory Is Not Just Storage", link: "blog.html" },
-        { text: "The Agent Operating System", link: "blog.html" },
-        { text: "The Human-in-the-Loop Pattern", link: "blog.html" },
-        { text: "Vertical AI Agents", link: "blog.html" },
-        { text: "Democratizing Engineering", link: "blog.html" },
-        { text: "Natural Language Programming", link: "blog.html" },
-        // Contact / agents / about / community / support — contextual phrases
-        { text: "Want to Build Your Own Agent?", link: "contact.html" },
-        { text: "Meet the Agents", link: "agents.html" },
-        { text: "Who Is Behind Hadosh?", link: "about.html" },
-        { text: "Join Agent Engineers on Skool", link: "https://www.skool.com/claude-agents-engineering-4513" },
-        { text: "Get in Touch", link: "contact.html" },
-        { text: "About the Academy", link: "about.html" },
-        { text: "See the Agent Catalog", link: "agents.html" },
-        { text: "Support the Public Build", link: "support.html" }
+
+        // Part 1 — conceptual foundation
+        { text: 'LLMs Are Not the Agents', link: '/blog/b1/01-llms-are-not-the-agents.html' },
+        { text: 'The Engine Is Not the Agent', link: '/blog/b1/01-llms-are-not-the-agents.html' },
+        { text: 'Your Agent Lives in Files', link: '/blog/b1/01-llms-are-not-the-agents.html' },
+        { text: 'Structure Over Scale', link: '/blog/b2/02-we-could-have-had-agi.html' },
+        { text: 'Agents Are Complex Systems', link: '/blog/b2/02-we-could-have-had-agi.html' },
+        { text: 'The Digital Cortex', link: '/blog/b3/03-your-brain-was-never-built-for-this.html' },
+        { text: 'Cognitive Load Is Real', link: '/blog/b3/03-your-brain-was-never-built-for-this.html' },
+        { text: 'The Folder Is Alive', link: '/blog/b3/03_1-the-folder-is-alive.html' },
+        { text: 'A Folder Full of Specialists', link: '/blog/b3/03_1-the-folder-is-alive.html' },
+        { text: 'The Language of Agents', link: '/blog/b4/04-the-language-of-agents.html' },
+        { text: 'Hooks, Skills, and Plugins', link: '/blog/b4/04-the-language-of-agents.html' },
+        { text: 'Beyond the Context Window', link: '/blog/b4/04-the-language-of-agents.html' },
+
+        // Part 5 — always-on cortex
+        { text: 'The Always-On Cortex', link: '/blog/b5/05_1-the-two-layer-foundation.html' },
+        { text: 'Plugin Integrity', link: '/blog/b5/05_2-plugin-integrity.html' },
+        { text: 'Brain Guard', link: '/blog/b5/05_3-brain-guard.html' },
+        { text: 'Persistent Jobs', link: '/blog/b5/05_4-job-core.html' },
+        { text: 'Interaction Memory', link: '/blog/b5/05_5-interaction-summary.html' },
+        { text: 'Question Discipline', link: '/blog/b5/05_6-question-discipline.html' },
+        { text: 'Context Hierarchy', link: '/blog/b5/05_7-claude-md-hierarchy.html' },
+        { text: 'The Historian Ratchet', link: '/blog/b5/05_8-historian-ratchet.html' },
+        { text: 'Customization Guardrails', link: '/blog/b5/05_9-customization-guardrail.html' },
+
+        // Part 6 — phasic cognition
+        { text: 'The OPEVC Loop', link: '/blog/b6/06_1-phasic-foundation.html' },
+        { text: 'The Phase Map', link: '/blog/b6/06_2b-the-phase-map.html' },
+        { text: 'Observe', link: '/blog/b6/06_3-observe.html' },
+        { text: 'Plan', link: '/blog/b6/06_4-plan.html' },
+        { text: 'Execute', link: '/blog/b6/06_5-execute.html' },
+        { text: 'Verify', link: '/blog/b6/06_6-verify.html' },
+        { text: 'Condense', link: '/blog/b6/06_7-condense.html' },
+        { text: 'The Rhythm of Work', link: '/blog/b6/06_8-inverse-multiplier.html' },
+        { text: 'G-Mode', link: '/blog/b6/06_9-gmode.html' },
+        { text: 'Plan State Machine', link: '/blog/b6/06_10-plan-state-machine.html' },
+        { text: 'Long-Horizon Memory', link: '/blog/b6/06_10b-long-horizon-memory.html' },
+
+        // Part 7 — plugin anatomy
+        { text: 'The Plugin Kit', link: '/blog/b7/07_1-plugin-kit-foundation.html' },
+        { text: 'Plugin Skeleton', link: '/blog/b7/07_2-skeleton-claudemd-hooks-scripts.html' },
+        { text: 'Dual Voice Architecture', link: '/blog/b7/07_3-dual-voice-architecture.html' },
+        { text: 'Hidden State', link: '/blog/b7/07_4-data-json-hidden-state.html' },
+        { text: 'Docs and Historian', link: '/blog/b7/07_5-docs-and-historian.html' },
+        { text: '80/20 Delegation', link: '/blog/b7/07_6-agents-and-80-20-budget.html' },
+        { text: 'Smaller Organs and Wiring', link: '/blog/b7/07_7-smaller-organs-and-wiring.html' },
+        { text: 'The Lock Ceremony', link: '/blog/b7/07_8-lock-ceremony.html' },
+        { text: 'Create a New Plugin', link: '/blog/b7/07_9-creating-a-new-plugin.html' },
+
+        // Part 8 — maturation
+        { text: 'Apprentice to Architect', link: '/blog/b8/08_1-apprentice-to-architect-foundation.html' },
+        { text: 'Job Maturation', link: '/blog/b8/08_2-job-maturation-stages.html' },
+        { text: 'A Brain After Three Months', link: '/blog/b8/08_3-brain-after-three-months.html' },
+        { text: 'Soft to Hard', link: '/blog/b8/08_4-soft-hard-migration.html' },
+        { text: 'Enforced vs Discipline', link: '/blog/b8/08_5-enforced-vs-discipline.html' },
+        { text: 'Operator Maturation', link: '/blog/b8/08_6-apprentice-journeyman-architect.html' },
+        { text: 'When the Brain Stops Growing', link: '/blog/b8/08_7-brain-stops-growing.html' },
+        { text: 'Safe Self-Modification', link: '/blog/b8/08_8-safe-self-modification.html' },
+        { text: 'The Seed Is Yours', link: '/blog/b8/08_9-the-seed-is-yours.html' },
+
+        // Current program and projects
+        { text: 'Start with Your CLI Agent', link: '/start-here.html' },
+        { text: 'Seed Agent — Codex', link: '/projects/seed-agent.html' },
+        { text: 'Q-Seed — Qwen Code', link: '/projects/q-seed.html' },
+        { text: 'Team Harnesses', link: '/projects/team-harnesses.html' },
+        { text: 'Family Games', link: '/projects/family-games.html' },
+        { text: 'Crime Cartography', link: '/projects/crime-cartography.html' },
+        { text: 'Reference Explorables', link: '/explore.html' },
+        { text: 'Technical Portfolio', link: '/portfolio.html' },
+        { text: 'Private Seed Reference', link: '/seed-access.html' },
+        { text: 'About the Academy', link: '/about.html' },
+        { text: 'Get in Touch', link: '/contact.html' },
+        { text: 'Support the Open Work', link: '/support.html' }
     ];
 
     const ring = document.getElementById('orbitRing');
@@ -68,54 +87,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!ring || !container) return;
 
     const mql = window.matchMedia('(max-width: 768px) and (orientation: portrait)');
-    let activeMode = null; // 'desktop' | 'mobile'
-    let cleanupFn = null;  // teardown for current mode
+    let cleanupFn = null;
 
     function switchMode() {
-        // Teardown previous mode
-        if (cleanupFn) {
-            cleanupFn();
-            cleanupFn = null;
-        }
-        // Clear existing items
+        if (cleanupFn) cleanupFn();
         ring.innerHTML = '';
         ring.removeAttribute('style');
-
-        if (mql.matches) {
-            activeMode = 'mobile';
-            cleanupFn = initMobileCarousel(hooks, ring, container);
-        } else {
-            activeMode = 'desktop';
-            cleanupFn = initDesktopOrbit(hooks, ring, container);
-        }
+        cleanupFn = mql.matches
+            ? initMobileCarousel(hooks, ring, container)
+            : initDesktopOrbit(hooks, ring, container);
     }
 
     mql.addEventListener('change', switchMode);
     switchMode();
 });
 
-// ─── Desktop Orbit ───────────────────────────────────────────────
 function initDesktopOrbit(hooks, ring, container) {
     const radius = 950;
     const totalItems = hooks.length;
     const stepAngle = 360 / totalItems;
-
     let currentRotation = 0;
     let targetRotation = 0;
     let isHovering = false;
     let lastScrollTime = 0;
     let rafId = null;
 
-    // Create items
     hooks.forEach((hook, index) => {
         const angle = (index / totalItems) * 2 * Math.PI;
         const item = document.createElement('div');
         item.className = 'orbit-item';
-
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
         const rotationDeg = angle * (180 / Math.PI);
-
         item.style.transform = `translate(${x}px, ${y}px) rotate(${rotationDeg}deg)`;
 
         const link = document.createElement('a');
@@ -127,7 +130,6 @@ function initDesktopOrbit(hooks, ring, container) {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
         }
-
         item.appendChild(link);
         ring.appendChild(item);
     });
@@ -137,11 +139,9 @@ function initDesktopOrbit(hooks, ring, container) {
     function onMouseMove(e) {
         const rect = hero.getBoundingClientRect();
         const relativeY = e.clientY - rect.top;
-        const screenWidth = window.innerWidth;
-        const activeZoneStartX = screenWidth * 0.55;
+        const activeZoneStartX = window.innerWidth * 0.55;
         const activeZoneStartY = rect.height * 0.25;
         const activeZoneEndY = rect.height * 0.75;
-
         if (e.clientX > activeZoneStartX && relativeY > activeZoneStartY && relativeY < activeZoneEndY) {
             if (!isHovering) {
                 isHovering = true;
@@ -152,17 +152,14 @@ function initDesktopOrbit(hooks, ring, container) {
         }
     }
 
-    function onMouseLeave() {
-        isHovering = false;
-    }
+    function onMouseLeave() { isHovering = false; }
 
     function onWheel(e) {
         if (!isHovering) return;
         e.preventDefault();
         const now = Date.now();
         if (now - lastScrollTime > 60) {
-            const direction = e.deltaY > 0 ? -1 : 1;
-            targetRotation += direction * stepAngle;
+            targetRotation += (e.deltaY > 0 ? -1 : 1) * stepAngle;
             lastScrollTime = now;
         }
     }
@@ -171,17 +168,6 @@ function initDesktopOrbit(hooks, ring, container) {
         hero.addEventListener('mousemove', onMouseMove);
         hero.addEventListener('mouseleave', onMouseLeave);
         hero.addEventListener('wheel', onWheel, { passive: false });
-    }
-
-    function animate() {
-        if (isHovering) {
-            currentRotation += (targetRotation - currentRotation) * 0.35;
-        } else {
-            currentRotation += 0.02;
-        }
-        ring.style.transform = `rotate(${currentRotation}deg)`;
-        updateFocus();
-        rafId = requestAnimationFrame(animate);
     }
 
     function updateFocus() {
@@ -194,22 +180,14 @@ function initDesktopOrbit(hooks, ring, container) {
             const rect = item.getBoundingClientRect();
             const itemX = rect.left + rect.width / 2;
             const itemY = rect.top + rect.height / 2;
-            const dx = itemX - centerX;
-            const dy = itemY - centerY;
-            let angle = Math.atan2(dy, dx) * (180 / Math.PI);
-            let diff = Math.abs(angle);
-            if (diff > 180) diff = 360 - diff;
-
+            const angle = Math.atan2(itemY - centerY, itemX - centerX) * (180 / Math.PI);
+            const diff = Math.abs(angle);
             const sigma = 12;
             const intensity = Math.exp(-(diff * diff) / (2 * sigma * sigma));
-            const opacity = 0.1 + (0.9 * intensity);
-            const blur = 8 * (1 - intensity);
-            const scale = 1.0 + (0.3 * intensity);
-
             const text = item.querySelector('.orbit-text');
-            text.style.opacity = opacity;
-            text.style.filter = `blur(${blur}px)`;
-            text.style.transform = `scale(${scale})`;
+            text.style.opacity = 0.1 + (0.9 * intensity);
+            text.style.filter = `blur(${8 * (1 - intensity)}px)`;
+            text.style.transform = `scale(${1 + (0.3 * intensity)})`;
 
             if (intensity > 0.8) {
                 text.style.color = '#fff';
@@ -225,9 +203,14 @@ function initDesktopOrbit(hooks, ring, container) {
         });
     }
 
+    function animate() {
+        currentRotation += isHovering ? (targetRotation - currentRotation) * 0.35 : 0.02;
+        ring.style.transform = `rotate(${currentRotation}deg)`;
+        updateFocus();
+        rafId = requestAnimationFrame(animate);
+    }
     rafId = requestAnimationFrame(animate);
 
-    // Return cleanup function
     return function cleanup() {
         cancelAnimationFrame(rafId);
         if (hero) {
@@ -238,12 +221,10 @@ function initDesktopOrbit(hooks, ring, container) {
     };
 }
 
-// ─── Mobile Vertical Carousel ────────────────────────────────────
-function initMobileCarousel(hooks, ring, container) {
+function initMobileCarousel(hooks, ring) {
     const itemSpacing = 52;
     const totalItems = hooks.length;
     const totalHeight = totalItems * itemSpacing;
-
     let scrollOffset = 0;
     let velocity = 0;
     let isDragging = false;
@@ -253,17 +234,10 @@ function initMobileCarousel(hooks, ring, container) {
     let lastTouchTime = 0;
     let rafId = null;
 
-    // Create items with explicit initial styles
     hooks.forEach(hook => {
         const item = document.createElement('div');
         item.className = 'orbit-item';
-        item.style.transition = 'none';
-        item.style.position = 'absolute';
-        item.style.top = '50%';
-        item.style.left = '50%';
-        item.style.width = '90%';
-        item.style.textAlign = 'center';
-
+        Object.assign(item.style, { transition: 'none', position: 'absolute', top: '50%', left: '50%', width: '90%', textAlign: 'center' });
         const link = document.createElement('a');
         link.href = hook.link;
         link.className = 'orbit-text';
@@ -274,14 +248,11 @@ function initMobileCarousel(hooks, ring, container) {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
         }
-
         item.appendChild(link);
         ring.appendChild(item);
     });
 
     const items = ring.querySelectorAll('.orbit-item');
-
-    // Gaussian sigma — controls how many items are in the clarity zone
     const sigma = itemSpacing * 2;
 
     function onTouchStart(e) {
@@ -297,60 +268,36 @@ function initMobileCarousel(hooks, ring, container) {
     function onTouchMove(e) {
         if (!isDragging) return;
         const touch = e.touches[0];
-        const deltaY = touch.clientY - touchStartY;
-        scrollOffset = touchStartOffset - deltaY;
-
-        // Track velocity
+        scrollOffset = touchStartOffset - (touch.clientY - touchStartY);
         const now = Date.now();
         const dt = now - lastTouchTime;
-        if (dt > 0) {
-            velocity = (lastTouchY - touch.clientY) / dt * 16; // normalize to ~frame
-        }
+        if (dt > 0) velocity = (lastTouchY - touch.clientY) / dt * 16;
         lastTouchY = touch.clientY;
         lastTouchTime = now;
-
         e.preventDefault();
     }
 
-    function onTouchEnd() {
-        isDragging = false;
-        // velocity is already set from touchmove
-    }
+    function onTouchEnd() { isDragging = false; }
 
     ring.addEventListener('touchstart', onTouchStart, { passive: true });
     ring.addEventListener('touchmove', onTouchMove, { passive: false });
     ring.addEventListener('touchend', onTouchEnd, { passive: true });
 
-    // Position items at a given scrollOffset
     function renderItems() {
         items.forEach((item, i) => {
             let rawY = (i * itemSpacing) - scrollOffset;
-
-            // Wrap into [-totalHeight/2, totalHeight/2)
             rawY = ((rawY % totalHeight) + totalHeight + totalHeight / 2) % totalHeight - totalHeight / 2;
-
             const dist = Math.abs(rawY);
-
-            // Hide items far from center
             if (dist > itemSpacing * 5) {
                 item.style.display = 'none';
                 return;
             }
             item.style.display = 'block';
-
-            // Gaussian intensity
             const intensity = Math.exp(-(dist * dist) / (2 * sigma * sigma));
-
-            const opacity = 0.15 + (0.85 * intensity);
-            const blur = 6 * (1 - intensity);
-            const scale = 0.85 + (0.15 * intensity);
-
-            item.style.transform = `translate(-50%, -50%) translateY(${rawY}px) scale(${scale})`;
-
+            item.style.transform = `translate(-50%, -50%) translateY(${rawY}px) scale(${0.85 + (0.15 * intensity)})`;
             const text = item.querySelector('.orbit-text');
-            text.style.opacity = opacity;
-            text.style.filter = `blur(${blur}px)`;
-
+            text.style.opacity = 0.15 + (0.85 * intensity);
+            text.style.filter = `blur(${6 * (1 - intensity)}px)`;
             if (intensity > 0.7) {
                 text.style.color = '#fff';
                 text.style.textShadow = `0 0 ${14 * intensity}px var(--primary)`;
@@ -365,9 +312,6 @@ function initMobileCarousel(hooks, ring, container) {
         });
     }
 
-    // Immediate first render (no waiting for rAF)
-    renderItems();
-
     function animate() {
         if (!isDragging) {
             if (Math.abs(velocity) > 0.1) {
@@ -378,17 +322,14 @@ function initMobileCarousel(hooks, ring, container) {
                 velocity = 0;
             }
         }
-
-        // Wrap scrollOffset into [0, totalHeight)
         scrollOffset = ((scrollOffset % totalHeight) + totalHeight) % totalHeight;
-
         renderItems();
         rafId = requestAnimationFrame(animate);
     }
 
+    renderItems();
     rafId = requestAnimationFrame(animate);
 
-    // Return cleanup function
     return function cleanup() {
         cancelAnimationFrame(rafId);
         ring.removeEventListener('touchstart', onTouchStart);
