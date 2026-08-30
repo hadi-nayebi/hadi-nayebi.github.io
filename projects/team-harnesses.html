@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
     <link rel="stylesheet" href="../css/project-pages.css?v=20260830-2">
     <link rel="stylesheet" href="../css/project-polish.css?v=20260830-1">
-    <link rel="stylesheet" href="../css/project-product.css?v=20260830-1">
+    <link rel="stylesheet" href="../css/project-product.css?v=20260830-2">
 </head>
 <body class="project-detail-page team-project-page">
     <header id="site-header"><div class="container"><nav>
@@ -32,7 +32,7 @@
                 <div class="project-hero-copy">
                     <span class="project-kicker">Group · small teams · shared harness</span>
                     <h1>Team Harnesses</h1>
-                    <p class="project-lede">A team harness gives a small startup or project group one shared cognitive substrate without forcing everyone into one central chatbot. Each member can use their own local CLI agent, while the private repository, dashboard, shared context, jobs, plugins, and governance belong to the team.</p>
+                    <p class="project-lede">A team harness gives a small startup or project group one shared cognitive substrate. Each member can use their own local CLI agent, while the private repository, dashboard, shared context, jobs, plugins, and governance belong to the team.</p>
                     <div class="project-meta-row"><span class="project-meta-pill">Typical scale: 2–7 people</span><span class="project-meta-pill">Private repository</span><span class="project-meta-pill">Local CLI agents</span><span class="project-meta-pill">Shared dashboard</span></div>
                     <div class="project-actions"><a class="btn btn-primary" href="#topology">See the architecture</a><a class="btn btn-secondary" href="#roadmap">Development path</a></div>
                 </div>
@@ -48,29 +48,38 @@
             </div>
         </section>
 
+        <section class="project-opening">
+            <div class="container project-opening-inner">
+                <span class="project-opening-label">Project overview</span>
+                <p>Team Harnesses explores what changes when an agent harness belongs to a small group instead of one person. The core idea is a shared private repository that acts as the team's durable cognitive substrate. Each member can bring their own local CLI agent into that environment, while the team shares the context, jobs, plugins, rules, and interfaces that should remain consistent across everyone.</p>
+                <p>The dashboard becomes important at this scale because the harness is now a team workspace, not only a terminal environment. It gives members a common place to see jobs, questions, approvals, workflows, feedback, and project state while the CLI agents continue operating the same repository underneath. The browser and terminal are simply two ways of interacting with one shared system.</p>
+                <p>The longer-term goal is a team that understands its harness well enough to keep extending it. New behaviors can be built from the patterns already present in the repository, reviewed through the team's governance model, and added without depending permanently on the person who initialized the system.</p>
+            </div>
+        </section>
+
         <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Team Harness sections"><a href="#mission">Mission</a><a href="#topology">Topology</a><a href="#dashboard">Dashboard</a><a href="#growth">How it grows</a><a href="#roadmap">Roadmap</a><a href="#participate">Participate</a></nav></div>
 
         <section class="container project-long-section" id="mission">
-            <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Turn the team's working methods into shared, inspectable cognition.</h2></div><p>The system should help a small team coordinate work and agent behavior without erasing individual working styles.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Turn the team's working methods into shared, inspectable cognition.</h2></div><p>The system should help a small team coordinate work and agent behavior while preserving room for individual working styles.</p></div>
             <div class="project-prose"><p>The shared harness holds the team-level layer: common project context, jobs, repeatable methods, plugins, authority, and the rules that should be consistent no matter which member's agent is working. Member-local context and personal preferences can remain local.</p><p>The result is closer to a shared digital office than a shared chat thread. The repository is concrete, versioned, and inspectable; the dashboard makes it usable beyond the terminal; each member's CLI agent can animate the same substrate independently.</p></div>
         </section>
 
         <section class="container project-long-section" id="topology">
-            <div class="project-section-heading"><div><span class="project-kicker">One shared office, many agents</span><h2>The repository is the common substrate—not one central model session.</h2></div><p>Every member can clone the same private repository and operate against the same team-owned harness.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">One shared office, many agents</span><h2>The repository is the common substrate for the team's local agents.</h2></div><p>Every member can clone the same private repository and operate against the same team-owned harness.</p></div>
             <div class="team-split-grid">
                 <article class="team-split-panel"><h3>Shared team layer</h3><ul><li>Harness behavior and plugin contracts</li><li>Project context, milestones, methods, and decisions</li><li>Shared jobs and workflow state</li><li>Dashboard views and governed interactions</li><li>Authority for changing the shared substrate</li></ul></article>
-                <article class="team-split-panel"><h3>Member-local layer</h3><ul><li>Temporary working context</li><li>Personal notes and preferences</li><li>Compatible CLI/model choice</li><li>Member-specific branches or experiments</li><li>Personal customization that does not redefine team policy</li></ul></article>
+                <article class="team-split-panel"><h3>Member-local layer</h3><ul><li>Temporary working context</li><li>Personal notes and preferences</li><li>Compatible CLI/model choice</li><li>Member-specific branches or experiments</li><li>Personal customization that preserves team-level rules</li></ul></article>
             </div>
         </section>
 
         <section class="container project-long-section" id="dashboard">
-            <div class="project-section-heading"><div><span class="project-kicker">Shared interaction surface</span><h2>The dashboard turns the harness into a team workspace.</h2></div><p>Group systems need a common browser surface because not every member should have to operate through a terminal.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Shared interaction surface</span><h2>The dashboard turns the harness into a team workspace.</h2></div><p>Group systems benefit from a common browser surface alongside the local CLI agents.</p></div>
             <div class="project-fact-grid">
                 <article class="project-fact-card"><h3>Jobs</h3><p>Start, inspect, and review shared work across members and agent sessions.</p></article>
                 <article class="project-fact-card"><h3>Questions & approvals</h3><p>Surface places where the harness needs human judgment, review, or authority.</p></article>
                 <article class="project-fact-card"><h3>Workflows & feedback</h3><p>Expose milestones, comments, processes, and team feedback while CLI agents operate the underlying repository.</p></article>
             </div>
-            <div class="project-note">The dashboard and CLI are two surfaces over the same substrate. A dashboard action can create a job, capture feedback, or trigger work without creating a second disconnected system.</div>
+            <div class="project-note">The dashboard and CLI are two surfaces over the same substrate. A dashboard action can create a job, capture feedback, or trigger work while everything remains part of one shared repository.</div>
         </section>
 
         <section class="container project-long-section" id="growth">
