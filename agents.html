@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<!-- Version: v0.5.0 -->
+<!-- Version: v0.6.0 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agents | Hadosh Academy</title>
-    <meta name="description" content="Meet two Seed Agent prototypes: the working private Claude Code Seed Agent and Q-Seed, a model-flexible implementation on an open Qwen Code framework.">
+    <title>Seed Implementations | Hadosh Academy</title>
+    <meta name="description" content="One frozen private reference implementation and two public Seed paths: Seed Agent on Codex and Q-Seed on Qwen Code.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/agents.html">
-    <meta property="og:title" content="Agents | Hadosh Academy">
-    <meta property="og:description" content="The working private Claude Seed prototype and Q-Seed's model-flexible public build.">
+    <meta property="og:title" content="Seed Implementations | Hadosh Academy">
+    <meta property="og:description" content="The frozen Claude Seed reference, the public Codex Seed, and the public Q-Seed experiment on Qwen Code.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/agents.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Agents | Hadosh Academy">
-    <meta name="twitter:description" content="The working private Claude Seed prototype and Q-Seed's model-flexible public build.">
+    <meta name="twitter:title" content="Seed Implementations | Hadosh Academy">
+    <meta name="twitter:description" content="One frozen reference, two public reimplementation paths.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="css/styles.css?v=20260722">
@@ -41,6 +41,7 @@
                     <a href="start-here.html">Start Here</a>
                     <a href="blog.html">Blog</a>
                     <a href="agents.html" class="active" aria-current="page">Agents</a>
+                    <a href="projects/index.html">Projects</a>
                     <a href="about.html">About</a>
                     <a href="contact.html">Contact</a>
                 </div>
@@ -51,40 +52,51 @@
     <main class="page-content">
         <section class="hero hero-compact">
             <div class="container">
-                <h1>Seed Prototypes</h1>
-                <p class="hero-description">The program begins with a working private Claude Code prototype. Q-Seed is the next experiment: a model-flexible implementation on an open Qwen Code framework, built one clarified and verified feature at a time.</p>
+                <h1>Seed Implementations</h1>
+                <p class="hero-description">The original Claude Seed is now frozen as a private reference implementation. Public development continues through Seed Agent on Codex and Q-Seed on Qwen Code, with each new implementation reconsidering the architecture rather than copying the old code.</p>
                 <p class="start-here-hint">New to seed agents? Read the <a href="start-here.html">Start Here</a> page first &mdash; it explains the vocabulary in five minutes.</p>
             </div>
         </section>
 
         <section class="container">
-            <div class="agent-grid-two">
+            <div class="grid">
+                <article class="card agent-card-featured">
+                    <div class="agent-card-badges">
+                        <span class="badge badge-private">Frozen Private Reference</span>
+                    </div>
+                    <h3>Claude Seed — Hadosh Academy</h3>
+                    <p>The first deep personal harness: persistent jobs, OPEVC phases, directory-local working memory, plugins, guards, verification, condensation, question discipline, context controls, and governed self-modification developed through sustained use.</p>
+                    <p class="agent-card-status">No longer under active development · Not being prepared for public release</p>
+                    <a href="explore.html" class="card-link">Explore the documented reference &rarr;</a>
+                </article>
+
                 <a href="seed-agent.html" class="card agent-card-featured agent-card-link">
                     <div class="agent-card-badges">
-                        <span class="badge badge-private">Private Prototype</span>
-                        <span class="badge badge-progress">About 80% Built</span>
+                        <span class="badge badge-open-source">Public Foundation</span>
+                        <span class="badge badge-progress">Current Priority</span>
                     </div>
-                    <h3>Seed Agent — Claude</h3>
-                    <p>The original plugin-based harness: jobs, OPEVC phases, local memory, plugins, and guards developed through real work. It remains private while release and privacy work continues.</p>
-                    <p class="agent-card-status">Free early access by request · Public release process begins at 1,000 subscribers</p>
-                    <span class="card-link">Explore the Claude prototype &rarr;</span>
+                    <h3>Seed Agent — Codex</h3>
+                    <p>The primary public reimplementation. Codex is treated as the runtime while the Seed's cognitive/plugin and job layers are rebuilt from the behavioral lessons of the frozen reference.</p>
+                    <p class="agent-card-status">Open source · Foundation only · Not yet ready for installation</p>
+                    <span class="card-link">Explore the Codex Seed &rarr;</span>
                 </a>
+
                 <a href="q-seed.html" class="card agent-card-featured agent-card-link channel-card-featured">
                     <div class="agent-card-badges">
-                        <span class="badge badge-open-source">Building in Public</span>
-                        <span class="badge badge-progress">About 1% Built</span>
+                        <span class="badge badge-open-source">Public Foundation</span>
+                        <span class="badge badge-qwen">Qwen Code</span>
                     </div>
                     <h3>Q-Seed — Open Framework</h3>
-                    <p>A new implementation on a fork of Qwen Code. The Claude prototype supplies behavioral evidence; Q-Seed defines its own model, framework, and cognitive-brain contracts and implements each feature anew.</p>
-                    <p class="agent-card-status">Public framework fork · Public build series · Project repository opening with the Foundation snapshot</p>
-                    <span class="card-link">Follow the Q-Seed build &rarr;</span>
+                    <p>A sibling implementation that pairs an inspectable cognitive brain with a user-controlled Qwen Code fork. It explores where general runtime primitives should live when the CLI framework itself is open and user-owned.</p>
+                    <p class="agent-card-status">Foundation-stage research · Broad feature implementation has not begun</p>
+                    <span class="card-link">Explore Q-Seed &rarr;</span>
                 </a>
             </div>
 
             <div class="agents-more-section">
-                <h2>Choose a Path</h2>
-                <p>Request the Claude prototype to study the working architecture, or follow Q-Seed as the next implementation is defined, built, and tested in public.</p>
-                <div class="seed-hero-actions seed-actions-centered"><a href="seed-access.html" class="btn btn-primary">Request Prototype Access</a><a href="https://www.youtube.com/@LetsBuildittogethersp" target="_blank" class="btn btn-secondary" rel="noopener">Watch Let's Build It Together</a></div>
+                <h2>One Reference, Two Public Paths</h2>
+                <p>The private Claude Seed remains useful because it contains the longest behavioral history. The public Codex and Qwen implementations use that history as evidence while allowing the runtime, file anatomy, controls, and even some abstractions to change.</p>
+                <div class="seed-hero-actions seed-actions-centered"><a href="projects/seed-agent.html" class="btn btn-primary">Codex Seed Project</a><a href="projects/q-seed.html" class="btn btn-secondary">Q-Seed Project</a></div>
             </div>
 
             <!-- Soft support nudge — optional, never gated -->
