@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Agent — Codex Reimplementation | Hadosh Academy</title>
+    <meta name="description" content="The public Seed Agent project: a Codex-native reimplementation of the behavioral architecture learned from the frozen private Claude Seed, without forking Codex itself.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/projects/seed-agent.html">
+    <meta property="og:title" content="Seed Agent — Codex Reimplementation | Hadosh Academy">
+    <meta property="og:description" content="A public, cloneable Seed harness for Codex CLI. The frozen Claude Seed supplies reference evidence; the new implementation is built against Codex-native primitives.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/projects/seed-agent.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
+    <link rel="stylesheet" href="../css/project-pages.css?v=20260830-1">
+</head>
+<body class="project-detail-page seed-project-page">
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+                <div class="nav-links"><a href="../index.html">Home</a><a href="../start-here.html">Start Here</a><a href="../blog.html">Blog</a><a href="../agents.html">Agents</a><a href="index.html" class="active" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="container project-hero-grid">
+                <div>
+                    <span class="project-kicker">Individual · public foundation · Codex CLI</span>
+                    <h1>Seed Agent</h1>
+                    <p class="project-lede">A public, cloneable personal harness for Codex. It carries forward what was learned from the frozen private Claude Seed, but the new system is not a copy of that repository and does not require a fork of Codex itself.</p>
+                    <div class="project-meta-row"><span class="project-meta-pill">Scale: 1 primary user</span><span class="project-meta-pill">Status: foundation only</span><span class="project-meta-pill">Runtime: Codex CLI, not forked</span><span class="project-meta-pill">License: MIT</span></div>
+                    <div class="project-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Public repository</a><a class="btn btn-secondary" href="#lineage">How the reimplementation works</a></div>
+                </div>
+
+                <div class="seed-boundary-diagram" aria-label="Seed Agent boundary diagram">
+                    <div class="seed-boundary-layer runtime"><strong>Codex CLI</strong><p>Runtime, tools, sandbox, sessions, native instruction loading, and other general primitives.</p></div>
+                    <div class="seed-boundary-layer harness"><strong>Seed harness cognition</strong><p>Public, inspectable cognition built around Codex: jobs, plugins, phases, memory, guards, authority, verification, and reusable operating methods.</p></div>
+                    <div class="seed-boundary-layer jobs"><strong>User job experience</strong><p>The specific work, plans, outcomes, preferences, rulings, and accumulated experience of one deployed Seed.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container"><nav class="project-jump-links" aria-label="Seed Agent sections"><a href="#lineage">Lineage</a><a href="#boundary">Codex boundary</a><a href="#memory">Working memory</a><a href="#build">Build method</a><a href="#distribution">Distribution</a><a href="#status">Current status</a></nav></div>
+
+        <section class="container project-long-section" id="lineage">
+            <div class="project-section-heading"><div><span class="project-kicker">Reference → reimplementation</span><h2>The Claude Seed is the laboratory. The Codex Seed is a new organism.</h2></div><p>The earlier private Seed is now frozen. Its value is not that its Bash scripts should be copied forever; its value is that it records a long sequence of behavioral problems, attempted solutions, failures, corrections, and stable-looking patterns.</p></div>
+
+            <div class="seed-reference-map">
+                <article class="seed-reference-node is-frozen"><span class="project-meta-pill">Frozen private reference</span><h3>Claude Seed / Hadosh Academy</h3><p>Persistent jobs, OPEVC phases, directory-local working memory, plugins, guards, questioning discipline, verification, condensation, context controls, and governed self-modification were explored together in one personal harness.</p></article>
+                <div class="seed-reference-arrow" aria-hidden="true">→</div>
+                <article class="seed-reference-node"><span class="project-meta-pill">New public implementation</span><h3>Seed Agent / Codex</h3><p>Each capability is restated as a behavioral objective, compared with Codex-native primitives, and implemented anew only if the behavior still earns a place in the new architecture.</p></article>
+            </div>
+
+            <div class="project-note"><strong>What migrates:</strong> the reason a mechanism existed, the failure mode it addressed, the useful abstraction, and the evidence around it. <strong>What does not automatically migrate:</strong> Bash code, <code>.claude/</code>, <code>CLAUDE.md</code> footers, exact plugin names, thresholds, file layouts, and Claude-specific workarounds.</div>
+        </section>
+
+        <section class="container project-long-section" id="boundary">
+            <div class="project-section-heading"><div><span class="project-kicker">A deliberate difference from Q-Seed</span><h2>Seed Agent does not begin by modifying Codex itself.</h2></div><p>Codex is treated as the runtime. The first engineering target is the user-owned cognition around it, not a custom Codex fork.</p></div>
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3>Use native Codex primitives first</h3><p>Before recreating a historical hook or workaround, inspect what Codex already supplies through its instructions, tools, skills, scripts, sandbox, and other supported extension surfaces.</p></article>
+                <article class="project-fact-card"><h3>Keep Seed meaning outside the runtime</h3><p>Jobs, cognitive phases, plugin contracts, memory behavior, authority rules, verification, and learned working methods should remain visible and editable as harness cognition whenever they can be guaranteed there honestly.</p></article>
+                <article class="project-fact-card"><h3>Do not invent a fork without evidence</h3><p>If a future capability truly requires a lower-level primitive Codex does not expose, that becomes a separate architectural decision. It is not the starting assumption of this project.</p></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="memory">
+            <div class="project-section-heading"><div><span class="project-kicker">One lesson already carried forward</span><h2>Instructions and working memory should not be the same file merely because the runtime can load it.</h2></div><p>The private Claude Seed used directory-local <code>CLAUDE.md</code> files for both stable instructions and the mutable working surface used by its phases. The Codex version starts by separating those roles conceptually.</p></div>
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3><code>AGENTS.md</code></h3><p>Stable, scoped instruction. It should carry durable rules and local operating boundaries rather than inflate and deflate with every work cycle.</p></article>
+                <article class="project-fact-card"><h3><code>WM.md</code> — candidate name</h3><p>A future dynamic local working-memory organ. The name is provisional; its grammar, discovery, refresh, authority, persistence, concurrency, and phase interaction are intentionally not frozen yet.</p></article>
+                <article class="project-fact-card"><h3>Structured state stays structured</h3><p>Plugin and job state should have clear owners and interfaces rather than being hidden inside prose merely because prose is easy for the model to read.</p></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="build">
+            <div class="project-section-heading"><div><span class="project-kicker">PR-by-PR development</span><h2>One bounded behavior at a time.</h2></div><p>The project is intentionally not starting with a dozen empty plugin directories. The next real capability should earn its anatomy through evidence.</p></div>
+            <div class="seed-build-sequence">
+                <article class="seed-build-step"><div><h3>Study the reference behavior</h3><p>Read the frozen implementation, its tests, its history, and the user rulings that shaped it. Identify the problem rather than memorizing the files.</p></div></article>
+                <article class="seed-build-step"><div><h3>Write the objective in platform-independent language</h3><p>What must the Seed reliably do? What is explicitly outside this capability?</p></div></article>
+                <article class="seed-build-step"><div><h3>Inspect Codex-native surfaces</h3><p>Determine which guarantees Codex already provides and which still need external harness machinery.</p></div></article>
+                <article class="seed-build-step"><div><h3>Define ownership and recovery</h3><p>Name state owners, interfaces, authority, dependencies, failure modes, and escape paths for any hard invariant.</p></div></article>
+                <article class="seed-build-step"><div><h3>Specify acceptance evidence</h3><p>Tests should describe the behavior that matters rather than simply reproduce the old implementation shape.</p></div></article>
+                <article class="seed-build-step"><div><h3>Implement the smallest vertical slice</h3><p>Build enough to exercise the behavior end-to-end, learn from real operation, and only then generalize.</p></div></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="distribution">
+            <div class="project-section-heading"><div><span class="project-kicker">A Seed people can actually clone</span><h2>The public repository is the generic cognition layer, not one person's life.</h2></div><p>The eventual goal is a mature base a user can clone and continue cultivating. That does not mean Hadosh Academy's own jobs, history, and private operating context belong in the public distribution.</p></div>
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3>Public Seed</h3><p>Reusable cognition: job semantics, plugin behaviors, memory structures, phase systems, verification, authority, and the mechanisms needed for the Seed to keep evolving.</p></article>
+                <article class="project-fact-card"><h3>User layer</h3><p>The user's actual jobs, plans, personal preferences, domain context, artifacts, outcomes, and accumulated experience remain local to that deployment.</p></article>
+                <article class="project-fact-card"><h3>Two onboarding paths</h3><p>Some users can clone a mature Seed and learn it. Direct client work can instead begin from a thinner harness so the user learns the architecture while participating in its construction.</p></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="status">
+            <div class="project-section-heading"><div><span class="project-kicker">Current state</span><h2>The foundation is real. The cognitive system is not built yet.</h2></div><p>The repository has been reset so future work no longer inherits the abandoned Claude release shell. It is intentionally sparse and not ready for installation or general use.</p></div>
+            <div class="project-prose"><p>What exists now is the clean identity and architectural boundary: Codex as the runtime, <code>.codex/</code> as the starting cognition surface, the distinction between instructions and future working memory, and the rule that historical mechanisms are evidence rather than specifications.</p><p>The next meaningful milestone is not “fill the old plugin list.” It is to choose one behavior from the frozen reference, understand it deeply, and produce the first Codex-native implementation with tests.</p></div>
+            <div class="project-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Inspect the foundation</a><a class="btn btn-secondary" href="q-seed.html">Compare Q-Seed</a><a class="btn btn-secondary" href="index.html">All projects</a></div>
+        </section>
+    </main>
+
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="../js/theme-manager.js?v=20260724"></script><script src="../js/components.js?v=20260724"></script>
+</body>
+</html>

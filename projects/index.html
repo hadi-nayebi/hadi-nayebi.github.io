@@ -4,142 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Hadosh Academy</title>
-    <meta name="description" content="Hadosh Academy projects explore user-owned agent harnesses from one person to teams, families, and larger collectives.">
+    <meta name="description" content="Hadosh Academy projects test user-owned agent harnesses at different social scales: one person, small teams, families, and larger collectives.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="canonical" href="https://hadi-nayebi.github.io/projects/">
     <meta property="og:title" content="Projects | Hadosh Academy">
-    <meta property="og:description" content="Agent-harness experiments across individual, team, family, and collective scales.">
+    <meta property="og:description" content="Five different projects explore how harness ownership, interfaces, authority, and memory change as one user becomes a team, a family, or a collective.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/projects/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
     <meta property="og:site_name" content="Hadosh Academy">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="stylesheet" href="../css/styles.css?v=20260724-1">
+    <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
+    <link rel="stylesheet" href="../css/project-pages.css?v=20260830-1">
 </head>
-<body>
-    <header id="site-header">
-        <div class="container">
-            <nav>
-                <a href="../index.html" class="logo">Hadosh Academy</a>
-                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
-                <div class="nav-links">
-                    <a href="../index.html">Home</a>
-                    <a href="../start-here.html">Start Here</a>
-                    <a href="../blog.html">Blog</a>
-                    <a href="../agents.html">Agents</a>
-                    <a href="index.html" class="active" aria-current="page">Projects</a>
-                    <a href="../about.html">About</a>
-                    <a href="../contact.html">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<body class="projects-overview-page">
+    <header id="site-header"><div class="container"><nav>
+        <a href="../index.html" class="logo">Hadosh Academy</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <div class="nav-links"><a href="../index.html">Home</a><a href="../start-here.html">Start Here</a><a href="../blog.html">Blog</a><a href="../agents.html">Agents</a><a href="index.html" class="active" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+    </nav></div></header>
 
     <main>
         <section class="page-hero project-index-hero">
             <div class="container project-narrow">
-                <span class="eyebrow">Harnesses at different scales</span>
-                <h1>One idea, different social shapes.</h1>
-                <p>The same basic question changes as the number of people grows: who owns the harness, how people interact with it, what stays shared, and what remains personal?</p>
+                <span class="project-kicker">Harnesses at different human scales</span>
+                <h1>How does a digital cortex change when one user becomes a group?</h1>
+                <p>The projects are intentionally different. Some are public Seed implementations for one person. Others are new harnesses built from scratch for a team, a family, or a larger collective. The point is not to force them into one product; it is to learn which abstractions survive changes in runtime, interface, authority, privacy, and number of people.</p>
+
+                <div class="scale-spectrum" aria-label="Approximate scale of the projects">
+                    <div class="scale-step"><strong>1</strong><span>Individual</span><p>CLI-centered personal Seed. The user owns the harness and grows jobs around their own work.</p></div>
+                    <div class="scale-step"><strong>2–7</strong><span>Small team</span><p>Multiple local agents animate one shared private harness; a dashboard becomes the common team surface.</p></div>
+                    <div class="scale-step"><strong>7–15</strong><span>Family</span><p>A private web world becomes the interface; communication, play, permissions, and family memory become central.</p></div>
+                    <div class="scale-step"><strong>tens → ~100</strong><span>Collective</span><p>The harness cannot expect everyone to operate a dashboard. Email and lightweight participation become more useful interfaces.</p></div>
+                </div>
+                <p class="project-distinction">These ranges describe the current design targets, not hard technical limits.</p>
             </div>
         </section>
 
-        <section class="container project-section" aria-labelledby="active-projects-title">
+        <section class="container project-section">
             <div class="section-heading-row">
-                <div>
-                    <span class="eyebrow">Public foundations</span>
-                    <h2 id="active-projects-title">Individual Seed implementations</h2>
-                </div>
-                <p>Cloneable public bases for one person to understand, customize, and cultivate.</p>
+                <div><span class="eyebrow">Individual Seeds</span><h2>Two public implementations ask the same question at different depths.</h2></div>
+                <p>Both are intended to become cloneable bases for a single user. The difference is how much of the underlying CLI framework is treated as part of the owned system.</p>
             </div>
 
-            <div class="project-card-grid">
-                <article class="project-portfolio-card project-portfolio-card-featured">
-                    <div class="project-card-body">
-                        <div class="project-status-line"><span class="status-pill">Foundation</span><span>Codex CLI</span></div>
-                        <h3>Seed Agent</h3>
-                        <p>The primary public Seed: a new Codex-native implementation informed by the frozen private reference, not a source-code port of it.</p>
-                        <div class="project-card-actions">
-                            <a class="btn btn-primary" href="../seed-agent.html">Project page &rarr;</a>
-                            <a class="btn btn-secondary" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Public repo</a>
-                        </div>
-                    </div>
+            <div class="project-entry-grid">
+                <article class="project-entry seed-entry">
+                    <div class="project-status-line"><span class="status-pill">Foundation</span><span>Codex CLI</span></div>
+                    <h3>Seed Agent</h3>
+                    <p>The primary public build. Codex is treated as the runtime; the work focuses on reimplementing the cognitive/plugin and job architecture learned from the frozen private Claude Seed. The project does not begin by forking or modifying Codex itself.</p>
+                    <div class="project-actions"><a class="btn btn-primary" href="seed-agent.html">Full project &rarr;</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Repository</a></div>
                 </article>
 
-                <article class="project-portfolio-card project-portfolio-card-featured">
-                    <div class="project-card-body">
-                        <div class="project-status-line"><span class="status-pill">Foundation</span><span>Qwen Code</span></div>
-                        <h3>Q-Seed</h3>
-                        <p>A separate public Seed experiment using a user-controlled Qwen Code fork and an independently evolvable cognitive layer.</p>
-                        <div class="project-card-actions">
-                            <a class="btn btn-primary" href="../q-seed.html">Project page &rarr;</a>
-                            <a class="btn btn-secondary" href="https://github.com/hadi-nayebi/q-seed" target="_blank" rel="noopener">Public repo</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="container project-section" aria-labelledby="shared-projects-title">
-            <div class="section-heading-row">
-                <div>
-                    <span class="eyebrow">Shared cognition</span>
-                    <h2 id="shared-projects-title">From a few people to a crowd</h2>
-                </div>
-                <p>As participation grows, the interface can move from a local CLI and dashboard toward simpler channels such as messages or email.</p>
-            </div>
-
-            <div class="project-card-grid">
-                <article class="project-portfolio-card">
-                    <div class="project-card-body">
-                        <div class="project-status-line"><span class="status-pill">Prototype pattern</span><span>Small teams</span></div>
-                        <h3>Team Harnesses</h3>
-                        <p>A shared private-repository harness for startups or small teams. Members can use their own local CLI agents while a common dashboard and shared harness coordinate team-level cognition.</p>
-                        <div class="project-card-actions">
-                            <a class="btn btn-primary" href="team-harnesses.html">Concept &rarr;</a>
-                            <a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/20" target="_blank" rel="noopener">Discuss</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-portfolio-card">
-                    <div class="project-card-body">
-                        <div class="project-status-line"><span class="status-pill">Ideation</span><span>About 5–12 people</span></div>
-                        <h3>Family Games</h3>
-                        <p>A private family-owned persistent world where a small family can meet, play, create, and leave shared memories that remain between gatherings.</p>
-                        <div class="project-card-actions">
-                            <a class="btn btn-primary" href="family-games.html">Concept &rarr;</a>
-                            <a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/21" target="_blank" rel="noopener">Discuss</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-portfolio-card project-portfolio-card-featured">
-                    <div class="project-card-art project-card-art-crime" aria-hidden="true"><span class="map-node map-node-one"></span><span class="map-node map-node-two"></span><span class="map-node map-node-three"></span></div>
-                    <div class="project-card-body">
-                        <div class="project-status-line"><span class="status-pill status-pill-live">Public design</span><span>Large collective</span></div>
-                        <h3>Crime Cartography</h3>
-                        <p>A collective media experiment where a harness can coordinate research, editorial work, corrections, production, and participation across a much larger group.</p>
-                        <div class="project-card-actions">
-                            <a class="btn btn-primary" href="crime-cartography.html">Enter the project &rarr;</a>
-                            <a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/22" target="_blank" rel="noopener">Discuss</a>
-                        </div>
-                    </div>
+                <article class="project-entry qseed-entry">
+                    <div class="project-status-line"><span class="status-pill">Foundation</span><span>Qwen Code</span></div>
+                    <h3>Q-Seed</h3>
+                    <p>A sibling public experiment that owns a Qwen Code fork as a deeper framework layer. General deterministic runtime primitives may move into that fork while Q-Seed-specific cognitive meaning remains inspectable in the separate <code>.qwen/</code> brain.</p>
+                    <div class="project-actions"><a class="btn btn-primary" href="q-seed.html">Full project &rarr;</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/q-seed" target="_blank" rel="noopener">Repository</a></div>
                 </article>
             </div>
         </section>
 
         <section class="container project-section">
-            <div class="glass-card">
-                <h2>Why keep these experiments separate?</h2>
-                <p>A personal harness, a six-person startup harness, a family world, and a hundred-person collective should not be forced into one implementation. The useful research question is which abstractions survive while ownership, interface, authority, and scale change.</p>
-                <p>Projects in early ideation stay intentionally sparse. Public discussion helps shape them before implementation creates accidental requirements.</p>
+            <div class="section-heading-row">
+                <div><span class="eyebrow">Shared harnesses</span><h2>As more people join, the interface stops being the only thing that changes.</h2></div>
+                <p>Shared memory, role boundaries, synchronization, privacy, governance, and who is allowed to change the substrate all become part of the architecture.</p>
+            </div>
+
+            <div class="project-entry-grid">
+                <article class="project-entry team-entry">
+                    <div class="project-status-line"><span class="status-pill">Working design family</span><span>2–7 people</span></div>
+                    <h3>Team Harnesses</h3>
+                    <p>Built from scratch with small startup or project teams rather than cloned wholesale from the personal Seed. Each member can use their own local CLI agent, all agents operate against the same private-repository harness, and a local dashboard gives the team a shared non-terminal surface.</p>
+                    <div class="project-actions"><a class="btn btn-primary" href="team-harnesses.html">Architecture &rarr;</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/20" target="_blank" rel="noopener">Discussion</a></div>
+                </article>
+
+                <article class="project-entry family-entry">
+                    <div class="project-status-line"><span class="status-pill">Ideation</span><span>7–15 family members</span></div>
+                    <h3>Family Games</h3>
+                    <p>A family-owned, self-hosted illustrated world that persists between gatherings. Spatial voice, adult/child permissions, discovery, named animals, recorded sounds, hidden objects, wand authoring, configurable personal/shared economies, educational play, construction, birthdays, traditions, and a long-lived family archive all belong to the same world.</p>
+                    <div class="project-actions"><a class="btn btn-primary" href="family-games.html">Full game concept &rarr;</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/21" target="_blank" rel="noopener">Discussion</a></div>
+                </article>
+
+                <article class="project-entry collective-entry">
+                    <div class="project-status-line"><span class="status-pill status-pill-live">Public design open</span><span>tens to roughly 100 contributors</span></div>
+                    <h3>Crime Cartography</h3>
+                    <p>A collective factual-media project and the largest current harness-scale experiment. The agentic production system can produce at scale while a distributed human editorial layer contributes judgment, context, corrections, governance, and value-sharing decisions. At this size the participation interface moves toward project emails and focused response loops rather than asking every contributor to operate the underlying harness.</p>
+                    <div class="project-actions"><a class="btn btn-primary" href="crime-cartography.html">Enter the project &rarr;</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/crime-cartography/discussions" target="_blank" rel="noopener">Public design discussions</a></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="container project-section">
+            <div class="section-heading-row"><div><span class="eyebrow">What these projects are testing</span><h2>The stable abstraction should survive both a new runtime and a new social structure.</h2></div><p>The implementation should change when the problem changes. The abstraction earns confidence only when it keeps making sense after those changes.</p></div>
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3>Ownership</h3><p>Does the durable personalization layer remain with the user, team, family, or collective rather than becoming provider-only state?</p></article>
+                <article class="project-fact-card"><h3>Interface</h3><p>When is a CLI appropriate, when does a dashboard help, when should the interface become a world, and when is email enough?</p></article>
+                <article class="project-fact-card"><h3>Authority</h3><p>Who may change a personal behavior, a shared plugin, a family permission, or a collective governance rule?</p></article>
+                <article class="project-fact-card"><h3>Memory</h3><p>What belongs to one person, what becomes shared, what should be public, and what must remain private for decades?</p></article>
+                <article class="project-fact-card"><h3>Agent multiplicity</h3><p>Does one agent animate the harness, do many local agents share it, or does a central harness coordinate a broad human network?</p></article>
+                <article class="project-fact-card"><h3>Training and legibility</h3><p>Can the people who depend on the system understand enough of its architecture to keep shaping it after the original builder leaves?</p></article>
             </div>
         </section>
     </main>
 
     <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
-    <script src="../js/components.js?v=20260723-2"></script>
+    <script src="../js/theme-manager.js?v=20260724"></script><script src="../js/components.js?v=20260724"></script>
 </body>
 </html>
