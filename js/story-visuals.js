@@ -121,6 +121,11 @@
     }
 
     function installCrimeCartography() {
+        var heroLede = document.querySelector('.crime-project-hero .hero-lede');
+        if (heroLede) heroLede.textContent = 'Crime Cartography is the first city-data channel in a broader collective-media experiment. The harness turns long-run city data into repeatable visual stories, a distributed human crowd improves the facts, framing, taste and storyline, and the project explores sharing the value of the resulting YouTube channel with the people who help shape it.';
+        var distinction = document.querySelector('.crime-project-hero .project-distinction');
+        if (distinction) distinction.innerHTML = '<strong>The audience can become part of the production system.</strong> Subscribers can receive full videos, partial cuts, visualizations, or focused questions by email, then respond with corrections, missing context, local knowledge, story judgment, and stylistic improvements.';
+
         var opening = document.querySelector('.project-opening');
         if (opening) {
             var collective = makeCrimeCollectiveSection();
