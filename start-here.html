@@ -14,11 +14,25 @@
     <link rel="stylesheet" href="css/styles.css?v=20260830">
 </head>
 <body class="page-start-here">
-    <header id="site-header"><div class="container"><nav>
-        <a href="index.html" class="logo">Hadosh Academy</a>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
-        <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html" class="active" aria-current="page">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
-    </nav></div></header>
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+                </button>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="start-here.html" class="active" aria-current="page">Start Here</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="agents.html">Agents</a>
+                    <a href="projects/index.html">Projects</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <main class="page-content">
         <section class="container academy-hero">
@@ -39,31 +53,88 @@
             <h2>Who Is This For?</h2>
             <p>The site is written for people with valuable domain knowledge who want to understand and shape agentic systems without taking on the full implementation burden themselves. That can include researchers, founders, consultants, lawyers, project managers, educators, filmmakers, journalists, and technical builders.</p>
             <div class="audience-ladder">
-                <details class="audience-layer"><summary class="audience-layer-summary"><span class="audience-layer-name">Explorer</span><span class="audience-layer-tagline">Understand the idea.</span></summary><div class="audience-layer-content"><p>Read Part 1 of the technical writing and explore the project pages. You do not need to install anything.</p><p><strong>Next:</strong> <a href="blog/b1/01-llms-are-not-the-agents.html">Read Essay 1</a>.</p></div></details>
-                <details class="audience-layer"><summary class="audience-layer-summary"><span class="audience-layer-name">Operator</span><span class="audience-layer-tagline">Use and customize a harness through conversation.</span></summary><div class="audience-layer-content"><p>Learn the vocabulary well enough to tell your agent what to remember, which jobs to take on, what behavior should change, and which decisions should stay with you.</p><p><strong>Next:</strong> <a href="projects/seed-agent.html">Explore the Codex Seed project</a>.</p></div></details>
-                <details class="audience-layer"><summary class="audience-layer-summary"><span class="audience-layer-name">Architect</span><span class="audience-layer-tagline">Design the cognition.</span></summary><div class="audience-layer-content"><p>Go deeper into jobs, phases, plugins, state, authority, verification, memory, and the boundaries between runtime and harness cognition.</p><p><strong>Next:</strong> <a href="portfolio.html">Read the technical portfolio</a> and the B5–B8 series.</p></div></details>
-                <details class="audience-layer"><summary class="audience-layer-summary"><span class="audience-layer-name">Contributor</span><span class="audience-layer-tagline">Build or review the public implementations.</span></summary><div class="audience-layer-content"><p>Follow the repositories, tests, PRs, implementation decisions, and open project discussions.</p><p><strong>Next:</strong> <a href="agents.html">Compare the Seed implementations</a>.</p></div></details>
+                <details class="audience-layer">
+                    <summary class="audience-layer-summary"><span class="audience-layer-name">Explorer</span><span class="audience-layer-tagline">Understand the idea.</span></summary>
+                    <div class="audience-layer-content"><p>Read Part 1 of the technical writing and explore the project pages. You do not need to install anything.</p><p><strong>Next:</strong> <a href="blog/b1/01-llms-are-not-the-agents.html">Read Essay 1</a>.</p></div>
+                </details>
+                <details class="audience-layer">
+                    <summary class="audience-layer-summary"><span class="audience-layer-name">Operator</span><span class="audience-layer-tagline">Use and customize a harness through conversation.</span></summary>
+                    <div class="audience-layer-content"><p>Learn the vocabulary well enough to tell your agent what to remember, which jobs to take on, what behavior should change, and which decisions should stay with you.</p><p><strong>Next:</strong> <a href="projects/seed-agent.html">Explore the Codex Seed project</a>.</p></div>
+                </details>
+                <details class="audience-layer">
+                    <summary class="audience-layer-summary"><span class="audience-layer-name">Architect</span><span class="audience-layer-tagline">Design the cognition.</span></summary>
+                    <div class="audience-layer-content"><p>Go deeper into jobs, phases, plugins, state, authority, verification, memory, and the boundaries between runtime and harness cognition.</p><p><strong>Next:</strong> <a href="portfolio.html">Read the technical portfolio</a> and the B5–B8 series.</p></div>
+                </details>
+                <details class="audience-layer">
+                    <summary class="audience-layer-summary"><span class="audience-layer-name">Contributor</span><span class="audience-layer-tagline">Build or review the public implementations.</span></summary>
+                    <div class="audience-layer-content"><p>Follow the repositories, tests, PRs, implementation decisions, and open project discussions.</p><p><strong>Next:</strong> <a href="agents.html">Compare the Seed implementations</a>.</p></div>
+                </details>
             </div>
         </section>
 
         <section class="container academy-section">
-            <h2>What You Need to Learn</h2>
-            <p>You do not need the implementation syntax to begin. You need a small architectural vocabulary that lets you reason with the agent about its own behavior.</p>
+            <h2>What You Are — and Are Not — Expected to Do</h2>
+            <p>The site uses real architectural terms because useful ownership requires some shared language. That does not mean ordinary users should hand-write the implementation.</p>
+            <div class="expectations-grid">
+                <div class="glass-card expectations-card expectations-not">
+                    <h3>You are not expected to</h3>
+                    <ul>
+                        <li>Write hooks, scripts, schemas, or configuration by hand.</li>
+                        <li>Debug plugin source code as part of normal use.</li>
+                        <li>Understand the internals of the language model.</li>
+                        <li>Memorize platform-specific implementation details.</li>
+                        <li>Become the maintainer of every low-level mechanism.</li>
+                    </ul>
+                </div>
+                <div class="glass-card expectations-card expectations-are">
+                    <h3>You are expected to</h3>
+                    <ul>
+                        <li>Explain your work and judgment clearly.</li>
+                        <li>Learn enough vocabulary to describe the behavior you want.</li>
+                        <li>Notice when the harness is wrong, incomplete, or overly rigid.</li>
+                        <li>Understand the important compartments and authority boundaries of your own system.</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="lead-text">The user learns the anatomy; the CLI agent can increasingly handle the syntax.</p>
+        </section>
+
+        <section class="container academy-section">
+            <h2>PowerPoint-Level Vocabulary Is Enough to Start</h2>
+            <p>You need top-level concepts, not syntax. Think of a film director who understands “shot list,” “blocking,” and “wrap” without operating every camera.</p>
             <div class="vocab-grid">
                 <div class="glass-card vocab-card"><h3>Job</h3><p class="vocab-def">A durable unit of work with an objective, state, history, and completion path.</p><p class="vocab-example">“Take on a job to compare these three patent families.”</p></div>
                 <div class="glass-card vocab-card"><h3>Memory</h3><p class="vocab-def">Context the harness preserves because future work may need it.</p><p class="vocab-example">“Remember that uncertainty must be reported separately from conclusions.”</p></div>
                 <div class="glass-card vocab-card"><h3>Plugin</h3><p class="vocab-def">A bounded behavioral or operational capability with a clear objective and interface.</p><p class="vocab-example">“Add a behavior that checks every report for unsupported claims.”</p></div>
                 <div class="glass-card vocab-card"><h3>Phase</h3><p class="vocab-def">A compartment for a kind of cognition such as observing, planning, executing, verifying, or consolidating.</p><p class="vocab-example">“Return to observation before changing the plan.”</p></div>
             </div>
-            <p class="lead-text">The user learns the anatomy; the CLI agent can increasingly handle the syntax.</p>
         </section>
 
         <section class="container academy-section">
-            <h2>Where the Technical Writing Fits</h2>
+            <h2>What the Deep Essays Actually Teach</h2>
             <p><strong>Part 1</strong> develops the conceptual argument in plain language: why the model is not the whole agent, why structure matters, and why people need a vocabulary for the harness around the model.</p>
             <p><strong>Part 2</strong> documents the first-generation private Claude Seed in detail. The B5–B8 series covers its always-on digital cortex, OPEVC phasic brain, plugin anatomy, and maturation from soft behavior to harder controls.</p>
             <p>Those essays are valuable because they document a real implementation where these mechanisms coexisted. They are the technical lineage for the newer public implementations, not a rule that every future Seed must use the exact same files or mechanisms.</p>
             <figure class="system-overview-figure"><img src="assets/images/system-overview.png" alt="Reference architecture map of the first-generation Claude Seed." loading="lazy"><figcaption>The original Claude Seed architecture is a reference implementation and teaching surface for the newer public work.</figcaption></figure>
+        </section>
+
+        <section class="container academy-section">
+            <h2>The Three Things Working Together</h2>
+            <p>A personal Seed is easiest to understand as three cooperating layers.</p>
+            <div class="academy-pillars">
+                <div class="glass-card academy-pillar"><h3>Conversation</h3><p>You explain your work, corrections, preferences, and new ideas. Conversation is the main way non-technical users steer the architecture.</p></div>
+                <div class="glass-card academy-pillar"><h3>CLI Runtime</h3><p>Codex, Qwen Code, OpenCode, or another compatible runtime gives the model tools and access to the environment. The runtime is important, but it is not the whole identity of the harness.</p></div>
+                <div class="glass-card academy-pillar"><h3>Filesystem / Harness</h3><p>Durable instructions, context, jobs, memory, plugins, tests, and other cognition live outside the model session in inspectable assets you can back up, version, and evolve.</p></div>
+            </div>
+        </section>
+
+        <section class="container academy-section">
+            <h2>You Can Change the Harness in Two Ways</h2>
+            <div class="academy-pillars two-col">
+                <div class="glass-card academy-pillar"><h3>Through conversation</h3><p>Tell the agent what should change. A capable CLI agent can inspect the existing harness, propose the architectural change, implement it, test it, and show you what changed.</p></div>
+                <div class="glass-card academy-pillar"><h3>Through direct inspection</h3><p>Open the files, read the state, inspect a rule, review a diff, or edit directly when you want. Technical users should never be locked out of their own customization layer.</p></div>
+            </div>
+            <p class="lead-text">The goal is not “no files.” The goal is that understanding the architecture does not require manually implementing every file.</p>
         </section>
 
         <section class="container academy-section">
@@ -84,13 +155,18 @@
         </section>
 
         <section class="container academy-section">
-            <h2>Explore by Human Scale</h2>
-            <p>The Projects portfolio extends the same ownership question beyond a single user: personal Seeds, small team harnesses, a persistent family world, and a larger collective media system.</p>
+            <h2>Why the Concepts Matter Even If You Never Touch Code</h2>
+            <p>An agent you cannot steer precisely is difficult to own meaningfully. Vocabulary gives you words for what should be remembered, which behavior deserves a plugin, when a job needs a different phase, what requires verification, and which changes require your approval.</p>
+            <p class="lead-text">A small amount of architectural literacy can support years of more precise collaboration with a harness that keeps evolving around your work.</p>
+        </section>
+
+        <section class="container academy-section">
+            <h2>Where to Go Next</h2>
             <div class="about-essays-grid">
-                <a href="projects/seed-agent.html" class="glass-card about-essay-card"><span class="about-essay-number">1</span><span class="about-essay-title">Individual</span><span class="about-essay-desc">Personal Seed implementations centered on the user's own cognition and jobs.</span></a>
-                <a href="projects/team-harnesses.html" class="glass-card about-essay-card"><span class="about-essay-number">G</span><span class="about-essay-title">Groups</span><span class="about-essay-desc">Shared team and family systems where web interfaces, permissions, and shared context matter.</span></a>
-                <a href="projects/crime-cartography.html" class="glass-card about-essay-card"><span class="about-essay-number">C</span><span class="about-essay-title">Collectives</span><span class="about-essay-desc">Larger participation models where the interface can become focused email and lightweight review.</span></a>
-                <a href="projects/index.html" class="glass-card about-essay-card"><span class="about-essay-number">P</span><span class="about-essay-title">All Projects</span><span class="about-essay-desc">Compare the full portfolio and join the discussion on each project page.</span></a>
+                <a href="blog/b1/01-llms-are-not-the-agents.html" class="glass-card about-essay-card"><span class="about-essay-number">01</span><span class="about-essay-title">Read Essay 1</span><span class="about-essay-desc">Start with the core argument: why the model is not the whole agent.</span></a>
+                <a href="agents.html" class="glass-card about-essay-card"><span class="about-essay-number">S</span><span class="about-essay-title">Seed Implementations</span><span class="about-essay-desc">Compare the reference implementation, Codex Seed, and Q-Seed.</span></a>
+                <a href="projects/index.html" class="glass-card about-essay-card"><span class="about-essay-number">P</span><span class="about-essay-title">Project Portfolio</span><span class="about-essay-desc">Explore individual, group, and collective harness experiments and join their discussions.</span></a>
+                <a href="about.html" class="glass-card about-essay-card"><span class="about-essay-number">A</span><span class="about-essay-title">About the Academy</span><span class="about-essay-desc">Why the Academy exists and how the open project fits together.</span></a>
             </div>
         </section>
     </main>
