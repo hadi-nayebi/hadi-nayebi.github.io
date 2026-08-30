@@ -1,4 +1,4 @@
-// Version: v0.4.1
+// Version: v0.4.2
 /**
  * Hadosh Academy theme + lightweight shared presentation behavior.
  * The homepage intentionally changes on refresh: visual theme, hero language,
@@ -135,7 +135,7 @@ function ensureCoreNavigation() {
 function loadStoryVisuals() {
     if (document.querySelector('script[data-story-visuals]')) return;
     const script = document.createElement('script');
-    script.src = '/js/story-visuals.js?v=20260830-1';
+    script.src = '/js/story-visuals.js?v=20260830-2';
     script.async = false;
     script.setAttribute('data-story-visuals', 'true');
     document.head.appendChild(script);
