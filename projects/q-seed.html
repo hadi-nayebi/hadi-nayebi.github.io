@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
     <link rel="stylesheet" href="../css/project-pages.css?v=20260830-2">
     <link rel="stylesheet" href="../css/project-polish.css?v=20260830-1">
-    <link rel="stylesheet" href="../css/project-product.css?v=20260830-1">
+    <link rel="stylesheet" href="../css/project-product.css?v=20260830-2">
 </head>
 <body class="project-detail-page qseed-project-page">
     <header id="site-header"><div class="container"><nav>
@@ -44,21 +44,30 @@
             </div>
         </section>
 
+        <section class="project-opening">
+            <div class="container project-opening-inner">
+                <span class="project-opening-label">Project overview</span>
+                <p>Q-Seed is a second public route for the Seed architecture, built around an open Qwen Code framework. Like Seed Agent, it is meant to become a personal harness that carries durable memory, jobs, behavioral structure, and accumulated experience across model sessions. The difference is that Q-Seed also treats the CLI framework itself as part of the user-owned stack.</p>
+                <p>That deeper ownership creates a clean three-layer model. General runtime mechanisms can live in the Qwen Code fork; Seed-specific cognition stays visible in the <code>.qwen/</code> brain; and each user's real work remains in the job and experience layer. The separation makes it possible to ask, capability by capability, which ideas belong to the general runtime and which belong to the cognitive harness.</p>
+                <p>Q-Seed is especially useful as a comparative project. As the Codex and Qwen versions mature, the same behavioral ideas can be expressed under different runtime constraints. What survives those differences is stronger evidence for a stable harness abstraction rather than a habit inherited from one implementation.</p>
+            </div>
+        </section>
+
         <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Q-Seed sections"><a href="#mission">Mission</a><a href="#difference">Why Q-Seed</a><a href="#memory">Working memory</a><a href="#roadmap">Roadmap</a><a href="#lineage">Technical lineage</a><a href="#participate">Participate</a></nav></div>
 
         <section class="container project-long-section" id="mission">
-            <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Test how much of the agent stack can remain user-owned when the runtime is open too.</h2></div><p>Q-Seed treats framework, cognition, and job experience as distinct layers that can evolve at different speeds and under different authority.</p></div>
-            <div class="project-prose"><p>The project asks where a behavior truly belongs. If a guarantee can live cleanly in the cognitive layer, it stays there where the user can inspect and evolve it easily. If a capability is genuinely general, deterministic, and better expressed as a runtime primitive, Q-Seed has an open framework layer where that mechanism can be developed separately.</p><p>This gives the Seed architecture a useful comparison point against the Codex version: the same behavioral objective can eventually be tested once above an externally maintained runtime and once with the runtime itself available as another design layer.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Keep the framework and the cognitive harness independently evolvable.</h2></div><p>Q-Seed treats framework, cognition, and job experience as distinct layers that can evolve at different speeds and under different authority.</p></div>
+            <div class="project-prose"><p>The project asks where a behavior truly belongs. A Seed-specific rule or working method stays in the cognitive layer where it is easy to inspect and evolve. A general deterministic capability can move deeper into the framework when that produces a cleaner and more reusable primitive.</p><p>This creates a practical research environment for the Seed architecture: one layer can improve without forcing every other layer to change with it, while the user still owns the full stack.</p></div>
         </section>
 
         <section class="container project-long-section" id="difference">
-            <div class="project-section-heading"><div><span class="project-kicker">Why have both public Seeds?</span><h2>Codex Seed stays above the runtime. Q-Seed can also evolve the runtime.</h2></div><p>The two projects are siblings, not duplicates.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Why have both public Seeds?</span><h2>Codex Seed and Q-Seed explore different ownership boundaries.</h2></div><p>The projects share a common architectural lineage while testing it against different runtime conditions.</p></div>
             <div class="qseed-compare-wrap"><table class="qseed-compare-table">
                 <thead><tr><th></th><th>Seed Agent — Codex</th><th>Q-Seed — Qwen Code</th></tr></thead>
                 <tbody>
-                    <tr><td>Runtime</td><td>Codex CLI is the runtime surface.</td><td>User-controlled Qwen Code fork is part of the owned stack.</td></tr>
+                    <tr><td>Runtime</td><td>Codex CLI provides the runtime surface.</td><td>A user-controlled Qwen Code fork is part of the owned stack.</td></tr>
                     <tr><td>Main build surface</td><td>User-owned harness cognition and jobs around Codex.</td><td>Cognitive layer plus deeper runtime primitives when justified.</td></tr>
-                    <tr><td>Framework changes</td><td>Outside the normal Seed development path.</td><td>Possible through a separately reviewed framework path.</td></tr>
+                    <tr><td>Framework evolution</td><td>Harness development happens above Codex.</td><td>Framework changes have their own reviewed path.</td></tr>
                     <tr><td>Research question</td><td>How far can a mature Seed go above the runtime?</td><td>Which guarantees become cleaner primitives when the runtime is open?</td></tr>
                 </tbody>
             </table></div>
@@ -74,7 +83,7 @@
             <div class="project-roadmap">
                 <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Stage 0 · Reference</span><h3>Study the Claude Seed</h3><p>Extract behavioral objectives, failure history, and architecture vocabulary from the first-generation harness.</p></article>
                 <article class="project-roadmap-step is-current"><span class="roadmap-stage">Stage 1 · Current</span><h3>Framework + cognition boundary</h3><p>Maintain the Qwen integration line, define the three-layer architecture, authority model, and working-memory direction.</p></article>
-                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 2</span><h3>Runtime primitives</h3><p>Implement only the general mechanisms that genuinely belong in the Qwen fork, with separate review and compatibility evidence.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 2</span><h3>Runtime primitives</h3><p>Implement the general mechanisms that belong in the Qwen fork, with separate review and compatibility evidence.</p></article>
                 <article class="project-roadmap-step"><span class="roadmap-stage">Stage 3</span><h3>Cross-runtime comparison</h3><p>Reimplement selected Seed behaviors and compare their shape against the Codex version to identify stronger harness abstractions.</p></article>
             </div>
         </section>
@@ -90,10 +99,10 @@
         </section>
 
         <section class="container project-long-section" id="participate">
-            <div class="project-section-heading"><div><span class="project-kicker">Follow and participate</span><h2>Q-Seed remains a public research path for deeper ownership of the agent stack.</h2></div><p>Follow the two repositories or leave design questions and criticism directly on this page.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Follow and participate</span><h2>Follow the open framework experiment and help sharpen its boundaries.</h2></div><p>Follow the two repositories or leave design questions and criticism directly on this page.</p></div>
             <div class="project-participate">
                 <article><h3>Cognitive repository</h3><p>Q-Seed's public context and future cognitive implementation live separately from the framework fork.</p><a class="card-link" href="https://github.com/hadi-nayebi/q-seed" target="_blank" rel="noopener">Open Q-Seed &rarr;</a></article>
-                <article><h3>Framework repository</h3><p>The Qwen Code integration line makes deeper runtime changes reviewable as a different class of work.</p><a class="card-link" href="https://github.com/hadi-nayebi/qwen-code/tree/qseed/main" target="_blank" rel="noopener">Open the framework fork &rarr;</a></article>
+                <article><h3>Framework repository</h3><p>The Qwen Code integration line gives lower-level runtime work its own reviewable history.</p><a class="card-link" href="https://github.com/hadi-nayebi/qwen-code/tree/qseed/main" target="_blank" rel="noopener">Open the framework fork &rarr;</a></article>
             </div>
             <div class="project-comments-section"><div class="project-comments-head"><span>Project discussion</span><h2>Comments</h2><p>Use this thread for architecture questions, runtime-boundary ideas, or collaboration notes.</p></div><div class="project-comments-shell"><script src="https://giscus.app/client.js" data-repo="hadi-nayebi/hadi-nayebi.github.io" data-repo-id="R_kgDOHL_tnQ" data-category="General" data-category-id="DIC_kwDOHL_tnc4C3cRQ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></div></div>
         </section>
