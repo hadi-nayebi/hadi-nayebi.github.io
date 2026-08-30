@@ -1,0 +1,189 @@
+// Hadosh Academy visual-storytelling layer.
+// Adds conceptual illustrations only where they explain a relationship or system faster than prose.
+(function () {
+    'use strict';
+
+    function loadStyles() {
+        if (document.querySelector('link[data-story-visuals]')) return;
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '/css/story-visuals.css?v=20260830-1';
+        link.setAttribute('data-story-visuals', 'true');
+        document.head.appendChild(link);
+    }
+
+    function makeFigure(src, alt, caption, extraClass) {
+        var figure = document.createElement('figure');
+        figure.className = 'story-visual' + (extraClass ? ' ' + extraClass : '');
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        figure.appendChild(img);
+        if (caption) {
+            var fc = document.createElement('figcaption');
+            fc.textContent = caption;
+            figure.appendChild(fc);
+        }
+        return figure;
+    }
+
+    function after(target, node) {
+        if (!target || !target.parentNode || !node) return false;
+        target.insertAdjacentElement('afterend', node);
+        return true;
+    }
+
+    function sectionByHeading(text) {
+        var headings = Array.prototype.slice.call(document.querySelectorAll('main section h2'));
+        var hit = headings.find(function (h) { return h.textContent.trim().indexOf(text) !== -1; });
+        return hit ? hit.closest('section') : null;
+    }
+
+    function installStartHere() {
+        var hero = document.querySelector('.start-here-hero');
+        after(hero, makeFigure('/assets/images/story/start-here-cli-path.svg',
+            'A chalkboard map showing Codex, Claude Code, OpenCode, Qwen Code and other CLI agents learning from Hadosh Academy, then moving from learning to understanding to building one behavior and growing a harness.',
+            'The fastest entry path: point the CLI agent you already use at the Academy, learn the architecture together, then externalize one repeated behavior.',
+            'is-wide'));
+    }
+
+    function installAgents() {
+        var hero = document.querySelector('main .hero');
+        after(hero, makeFigure('/assets/images/story/agents-lineage-tree.svg',
+            'A chalkboard lineage tree with the Claude Seed reference branching into Seed Agent on Codex and Q-Seed on Qwen Code while carrying forward jobs, memory, plugins, phases, authority and verification.',
+            'One technical lineage, two public implementation paths. The behaviors carry forward while each runtime is free to reshape the mechanism.',
+            'is-wide'));
+    }
+
+    function installProjectsIndex() {
+        var hero = document.querySelector('.projects-overview-hero, .project-index-hero, main > section');
+        after(hero, makeFigure('/assets/images/story/projects-scale-map.svg',
+            'A chalkboard scale map from one person with a CLI agent, to a small team with a shared repository and dashboard, to a persistent family world, to a larger crowd-powered collective.',
+            'The projects are organized by human scale. As more people share the system, the interface and governance evolve with them.',
+            'is-wide'));
+    }
+
+    function installSeedAgent() {
+        var opening = document.querySelector('.project-opening');
+        after(opening, makeFigure('/assets/images/story/seed-agent-layered-ownership.svg',
+            'A chalkboard stack showing a changeable runtime layer, a user-owned Seed cognition layer, and the user-specific world of jobs, knowledge, history and preferences.',
+            'The runtime can change. The durable cognition and accumulated experience are the layers the user keeps.',
+            'is-medium'));
+    }
+
+    function installQSeed() {
+        var opening = document.querySelector('.project-opening');
+        after(opening, makeFigure('/assets/images/story/q-seed-depth-of-ownership.svg',
+            'A chalkboard comparison between Codex Seed, where the runtime is external, and Q-Seed, where the framework can also be user-controlled beneath the cognitive layer.',
+            'Q-Seed explores a deeper ownership boundary: the cognitive harness and the open CLI framework can both evolve under user control.',
+            'is-medium'));
+    }
+
+    function installTeamHarnesses() {
+        var opening = document.querySelector('.project-opening');
+        after(opening, makeFigure('/assets/images/story/team-harnesses-shared-office.svg',
+            'Several team members each use a local CLI agent while all connect to one private shared repository and dashboard; personal context remains near each member.',
+            'Many local agents, one team-owned substrate. The dashboard and terminals are different doors into the same shared cortex.',
+            'is-wide'));
+    }
+
+    function installFamilyGames() {
+        var existing = document.querySelector('.family-hero-figure');
+        if (existing) {
+            var img = existing.querySelector('img');
+            if (img) {
+                img.src = '/assets/images/story/family-games-world-hero.svg';
+                img.alt = 'A chalkboard storybook of a family together tonight, children exploring between gatherings, and the same persistent world years later filled with named animals, buildings and shared memories.';
+            }
+            var caption = existing.querySelector('figcaption');
+            if (caption) caption.textContent = 'One world across different kinds of family time: gathering, exploration, creation, and memory over years.';
+        } else {
+            var opening = document.querySelector('.project-opening');
+            after(opening, makeFigure('/assets/images/story/family-games-world-hero.svg',
+                'A chalkboard storybook showing a family together tonight, children exploring between gatherings, and the same persistent world years later.',
+                'The world persists between calls and accumulates the family’s own animals, structures, voices, rituals, and stories.',
+                'is-wide'));
+        }
+    }
+
+    function makeCrimeCollectiveSection() {
+        var section = document.createElement('section');
+        section.className = 'container project-section crime-collective-extension';
+        section.innerHTML = '<div class="project-section-intro"><div><span class="eyebrow">A crowd-owned channel pattern</span><h2>Crime is the first lens. The larger idea is city data told by a harness and improved by a crowd.</h2></div><p>The project can expand from crime time series and heat maps into other city-centered signals—population, schools, libraries, churches, businesses, public infrastructure, or any dataset that becomes more useful when it is visualized over time and place.</p></div>' +
+            '<div class="project-three-grid project-principles">' +
+            '<article><span>1</span><h3>Harness-led production</h3><p>The harness performs the repeatable majority of the work: finding and structuring data, building visualizations, drafting the story, assembling video, and preparing the questions that deserve human review.</p></article>' +
+            '<article><span>2</span><h3>Crowd editorial judgment</h3><p>Subscribers receive videos, partial cuts, visuals, or focused questions by email and can add missing context, fact checks, local knowledge, story judgment, and stylistic improvements.</p></article>' +
+            '<article><span>3</span><h3>Shared value, replicable model</h3><p>The channel explores sharing created value with the contributing collective. Other groups can copy the pattern for different topics and run their own crowd-managed media channels—a possible decentralized form of gig work built around shared ownership.</p></article>' +
+            '</div>';
+        return section;
+    }
+
+    function installCrimeCartography() {
+        var opening = document.querySelector('.project-opening');
+        if (opening) {
+            var collective = makeCrimeCollectiveSection();
+            after(opening, collective);
+            after(collective, makeFigure('/assets/images/story/crime-cartography-collective-channel.svg',
+                'A chalkboard pipeline from city data through an AI production harness and a human editorial crowd into a data-story YouTube channel, with value flowing back to contributors and the model branching into future collectives.',
+                'The core experiment is broader than crime: city data + repeatable AI production + human editorial judgment + a collective that can share the value it creates.',
+                'is-wide'));
+        }
+        var understand = document.getElementById('understand');
+        if (understand) {
+            var intro = understand.querySelector('.project-section-intro') || understand.firstElementChild;
+            after(intro, makeFigure('/assets/images/story/crime-cartography-data-to-video.svg',
+                'A chalkboard workflow from exploring city data to visualization, story construction, video production, and final crowd enhancement.',
+                'The harness gets a draft most of the way there; the editorial crowd improves the parts where local context, taste, skepticism, and judgment matter.',
+                'is-wide'));
+        }
+    }
+
+    function installPortfolio() {
+        var thesis = sectionByHeading('The LLM Is the Engine');
+        after(thesis, makeFigure('/assets/images/story/portfolio-human-digital-cortex.svg',
+            'A chalkboard cycle where human ideas and judgment enter the digital cortex as jobs and behaviors, execution happens there, results return to the human, and learning improves the harness.',
+            'The human steers; the cortex carries execution, state, memory, and repeatable cognition; the results come back for judgment.',
+            'is-wide'));
+        var upward = sectionByHeading('When Execution Moves Outward');
+        after(upward, makeFigure('/assets/images/story/portfolio-execution-ladder.svg',
+            'A chalkboard staircase from doing one task to designing methods, parallel cognition, comparing methods, and creating new context, with a calculator analogy.',
+            'Offloading known execution can move human attention upward—from doing one method to designing, comparing, and inventing methods.',
+            'is-wide'));
+    }
+
+    function installB85() {
+        var pending = document.querySelector('.article-body .image-placeholder-pending');
+        if (!pending) return;
+        var figure = document.createElement('figure');
+        figure.className = 'blog-image';
+        var img = document.createElement('img');
+        img.src = 'images/enforced-vs-discipline-b8-5.svg';
+        img.alt = 'Chalkboard comparison of two code-enforced hard caps and three discipline-based soft caps in the Seed reference implementation.';
+        img.loading = 'lazy';
+        figure.appendChild(img);
+        var cap = document.createElement('figcaption');
+        cap.textContent = 'Image 8.5. Two hard caps. Three soft. The asymmetry is honest.';
+        figure.appendChild(cap);
+        pending.replaceWith(figure);
+    }
+
+    function run() {
+        loadStyles();
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        if (path === '/start-here.html') return installStartHere();
+        if (path === '/agents.html') return installAgents();
+        if (path === '/projects' || path === '/projects/index.html') return installProjectsIndex();
+        if (path === '/projects/seed-agent.html') return installSeedAgent();
+        if (path === '/projects/q-seed.html') return installQSeed();
+        if (path === '/projects/team-harnesses.html') return installTeamHarnesses();
+        if (path === '/projects/family-games.html') return installFamilyGames();
+        if (path === '/projects/crime-cartography.html') return installCrimeCartography();
+        if (path === '/portfolio.html') return installPortfolio();
+        if (path === '/blog/b8/08_5-enforced-vs-discipline.html') return installB85();
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+    else run();
+})();
