@@ -1,4 +1,4 @@
-// Version: v0.9.0
+// Version: v0.9.1
 // Shared site components: canonical navigation, responsive support, blog series navigation,
 // footer, lightbox, blog filters, and audio controls.
 
@@ -44,9 +44,9 @@
         var toggle = header.querySelector('.nav-toggle');
         if (!navLinks || !toggle) return;
 
-        // The static HTML remains a no-JS fallback. At runtime, normalize every page
-        // to one canonical navigation order using root-relative links, so nested blog
-        // paths cannot generate broken ../ links.
+        // Static HTML remains the no-JS fallback. At runtime, every standard page
+        // uses one canonical root-relative navigation order so nested paths cannot
+        // produce broken relative links.
         navLinks.innerHTML = '';
         var active = currentSection();
         NAV_ITEMS.forEach(function (item) {
@@ -95,7 +95,7 @@
 
         var tagline = document.createElement('div');
         tagline.className = 'footer-tagline';
-        tagline.textContent = 'LEARN. BUILD. OWN.';
+        tagline.textContent = 'LEARN. EVOLVE. SCALE.';
         inner.insertBefore(tagline, inner.firstChild);
 
         var links = document.createElement('div');
@@ -179,13 +179,26 @@
         });
     }
 
+    function labelBeforeAnchor(anchor) {
+        var text = '';
+        var node = anchor.parentNode && anchor.parentNode.firstChild;
+        while (node && node !== anchor) {
+            text += node.textContent || '';
+            node = node.nextSibling;
+        }
+        var previousIndex = text.toLowerCase().lastIndexOf('previous:');
+        var nextIndex = text.toLowerCase().lastIndexOf('next:');
+        if (previousIndex === -1 && nextIndex === -1) return '';
+        return nextIndex > previousIndex ? 'next' : 'previous';
+    }
+
     function findSeriesLinks(articleBody) {
         var result = { previous: null, next: null };
         if (!articleBody) return result;
         Array.prototype.forEach.call(articleBody.querySelectorAll('a'), function (anchor) {
-            var parentText = (anchor.parentElement && anchor.parentElement.textContent || '').trim();
-            if (!result.previous && /^Previous:/i.test(parentText)) result.previous = anchor;
-            if (!result.next && /^Next:/i.test(parentText)) result.next = anchor;
+            var label = labelBeforeAnchor(anchor);
+            if (label === 'previous' && !result.previous) result.previous = anchor;
+            if (label === 'next' && !result.next) result.next = anchor;
         });
         return result;
     }
