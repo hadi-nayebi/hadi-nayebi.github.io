@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q-Seed — Qwen Code Framework + Cognitive Brain | Hadosh Academy</title>
+    <meta name="description" content="Q-Seed is the public Seed experiment that pairs an inspectable cognitive brain with a separately versioned, user-controlled Qwen Code fork.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/projects/q-seed.html">
+    <meta property="og:title" content="Q-Seed — Qwen Code Framework + Cognitive Brain | Hadosh Academy">
+    <meta property="og:description" content="A public agent-harness experiment where the framework fork, cognitive brain, and job experience can evolve at different depths.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/projects/q-seed.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/q-seed-cortex-hero.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
+    <link rel="stylesheet" href="../css/project-pages.css?v=20260830-1">
+</head>
+<body class="project-detail-page qseed-project-page">
+    <header id="site-header">
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Hadosh Academy</a>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+                <div class="nav-links"><a href="../index.html">Home</a><a href="../start-here.html">Start Here</a><a href="../blog.html">Blog</a><a href="../agents.html">Agents</a><a href="index.html" class="active" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="container project-hero-grid">
+                <div>
+                    <span class="project-kicker">Individual · public foundation · Qwen Code</span>
+                    <h1>Q-Seed</h1>
+                    <p class="project-lede">Q-Seed asks a deeper version of the Seed question: what changes when the user owns not only the cognitive harness, but also a maintained fork of the CLI framework underneath it?</p>
+                    <div class="project-meta-row">
+                        <span class="project-meta-pill">Scale: 1 primary user</span>
+                        <span class="project-meta-pill">Status: Foundation</span>
+                        <span class="project-meta-pill">Framework: Qwen Code fork</span>
+                        <span class="project-meta-pill">Cognition: <code>.qwen/</code></span>
+                    </div>
+                    <div class="project-actions">
+                        <a class="btn btn-primary" href="https://github.com/hadi-nayebi/q-seed" target="_blank" rel="noopener">Q-Seed repository</a>
+                        <a class="btn btn-secondary" href="https://github.com/hadi-nayebi/qwen-code/tree/qseed/main" target="_blank" rel="noopener">Qwen framework fork</a>
+                    </div>
+                </div>
+
+                <div class="qseed-stack" aria-label="Q-Seed layer stack">
+                    <div class="qseed-stack-layer framework"><strong>Qwen Code framework fork</strong><small>General runtime primitives, sessions, tools, hooks/events, permissions, context transport, concurrency, and other mechanisms that need to sit close to the runtime.</small></div>
+                    <div class="qseed-stack-layer brain"><strong>Q-Seed cognitive/plugin brain</strong><small>Shared context, jobs semantics, memory behavior, phases, guards, policies, knowledge, and user-shaped methods under `.qwen/`.</small></div>
+                    <div class="qseed-stack-layer jobs"><strong>Job experience</strong><small>Concrete objectives, rulings, plans, artifacts, outcomes, and accumulated experience of one user's work.</small></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container"><nav class="project-jump-links" aria-label="Q-Seed sections"><a href="#difference">Why a fork</a><a href="#layers">Layer ownership</a><a href="#memory">Working memory</a><a href="#authority">Authority</a><a href="#method">Build method</a><a href="#status">Status</a></nav></div>
+
+        <section class="container project-long-section" id="difference">
+            <div class="project-section-heading">
+                <div><span class="project-kicker">The key difference</span><h2>Codex Seed treats the CLI as the runtime. Q-Seed makes the runtime itself part of the owned architecture.</h2></div>
+                <p>This does not mean every Q-Seed feature belongs in the fork. It means the project can place a genuinely general deterministic primitive lower when the cognitive layer cannot honestly guarantee it by itself.</p>
+            </div>
+
+            <table class="qseed-compare-table">
+                <thead><tr><th>Question</th><th>Seed Agent — Codex</th><th>Q-Seed — Qwen Code</th></tr></thead>
+                <tbody>
+                    <tr><td>CLI/runtime ownership</td><td>Use Codex as the external runtime; no runtime fork is the starting assumption.</td><td>Maintain a user-controlled Qwen Code fork as a separately versioned framework layer.</td></tr>
+                    <tr><td>Main reimplementation target</td><td>Harness cognition and user/job layer around Codex.</td><td>Both cognitive layer and, when justified, reusable general runtime primitives in the fork.</td></tr>
+                    <tr><td>Framework change friction</td><td>Ordinary harness work should stay outside Codex.</td><td>Framework changes are deliberately higher-friction, isolated, tested, reviewed, and explicitly approved.</td></tr>
+                    <tr><td>Research value</td><td>Tests how far a sophisticated Seed can be built cleanly on top of a closed/runtime-owned CLI.</td><td>Tests the boundary between what should remain cognitive policy and what becomes a general runtime primitive when the framework is open.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="container project-long-section" id="layers">
+            <div class="project-section-heading">
+                <div><span class="project-kicker">Flexibility gradient</span><h2>Put a capability in the most flexible layer that can honestly provide its guarantee.</h2></div>
+                <p>The framework is deeper and more stable. The cognitive layer is more inspectable and adaptable. Job experience is the most fluid. A capability can span layers only when each layer owns a distinct part of the contract.</p>
+            </div>
+
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3>Framework mechanism</h3><p>General interception, lifecycle, context transport, tool permission, concurrency, or enforcement primitives that should not encode Q-Seed-specific meaning.</p></article>
+                <article class="project-fact-card"><h3>Cognitive meaning</h3><p>Why a phase exists, how a job behaves, what a guard protects, how memory should be used, and other reusable Seed-specific policy that a user should be able to inspect and evolve.</p></article>
+                <article class="project-fact-card"><h3>Instance experience</h3><p>The particular job's objective, approvals, plans, artifacts, decisions, and lived experience. It should not silently become global policy after one successful run.</p></article>
+            </div>
+
+            <div class="project-note"><strong>Mixed realization is allowed.</strong> For example, the fork may expose a reliable pre-mutation event, a Q-Seed plugin may define the policy that consumes it, and the active job may carry the approval state. What matters is explicit ownership rather than forcing everything into one folder.</div>
+        </section>
+
+        <section class="container project-long-section" id="memory">
+            <div class="project-section-heading">
+                <div><span class="project-kicker">The first architectural cleanup</span><h2>Q-Seed was where the instruction/working-memory split became explicit.</h2></div>
+                <p>The frozen Claude Seed used `CLAUDE.md` both as stable instruction and mutable phase tissue. Q-Seed began defining a runtime-neutral local working-memory concept rather than treating the runtime's instruction filename as the memory architecture.</p>
+            </div>
+
+            <div class="project-prose">
+                <p>`QWEN.md` is intended to remain a relatively stable runtime/brain orientation layer. A separate local `WM.md` is the candidate working-memory organ: its body would hold condensed directory-local memory while its dynamic surface would support temporary cognition that can later be consolidated and deflated.</p>
+                <p>The intended discovery behavior was also becoming more formal: when a tool accesses a file, the runtime could discover applicable working-memory files from the workspace boundary toward the target, inject only newly applicable context, label provenance, deduplicate it, refresh after edits, remain symlink-safe, and behave predictably under parallel tool calls.</p>
+            </div>
+            <div class="project-note">This is a design contract, not a finished feature. The pushed Q-Seed repository explicitly says the common `WM.md` grammar should be decided and tested before automatic discovery is implemented.</div>
+        </section>
+
+        <section class="container project-long-section" id="authority">
+            <div class="project-section-heading">
+                <div><span class="project-kicker">Self-modification has depth</span><h2>The agent can propose framework changes. It cannot silently approve its own substrate.</h2></div>
+                <p>Q-Seed's fork is part of the organism, but deeper ownership comes with deeper review friction.</p>
+            </div>
+
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3>Separate histories</h3><p>The Qwen Code fork and Q-Seed cognitive repository remain independently versioned. Q-Seed pins an approved framework revision rather than depending on a moving branch.</p></article>
+                <article class="project-fact-card"><h3>Framework PR required</h3><p>A consequential runtime change should be isolated in the framework repository with its own tests, compatibility evidence, and recovery plan.</p></article>
+                <article class="project-fact-card"><h3>User approval remains explicit</h3><p>An agent can study, propose, and prepare the change, but it does not gain authority to land a deeper framework revision simply because it authored it.</p></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="method">
+            <div class="project-section-heading">
+                <div><span class="project-kicker">Context before implementation</span><h2>Define the concept before historical code chooses the new architecture by accident.</h2></div>
+                <p>Q-Seed's current public work is primarily architectural because the project intentionally paused broad feature translation until its layer boundaries and shared language were clear.</p>
+            </div>
+
+            <div class="seed-build-sequence">
+                <article class="seed-build-step"><div><h3>Study behavior and failures</h3><p>Use the private reference as evidence, not implementation material.</p></div></article>
+                <article class="seed-build-step"><div><h3>Consolidate terminology</h3><p>Define what the capability means, why it exists, its invariants, its authority boundary, and whether it is current, target, or research.</p></div></article>
+                <article class="seed-build-step"><div><h3>Place the guarantee</h3><p>Decide framework, cognitive layer, job layer, or an explicit mixed contract.</p></div></article>
+                <article class="seed-build-step"><div><h3>Write acceptance evidence</h3><p>Tests should follow the new contract rather than clone the historical file structure.</p></div></article>
+                <article class="seed-build-step"><div><h3>Implement a narrow slice</h3><p>Only after ownership and behavior are clear does the code begin.</p></div></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="status">
+            <div class="project-section-heading">
+                <div><span class="project-kicker">Current state</span><h2>Q-Seed is an early public foundation, not a second active full-speed build.</h2></div>
+                <p>The repository has meaningful architectural contracts and a maintained Qwen Code integration line, but broad Seed feature implementation has not begun. Current priority is the Codex Seed; Q-Seed remains the sibling experiment to return to afterward.</p>
+            </div>
+
+            <div class="project-prose">
+                <p>The value of keeping Q-Seed public now is that its different boundary already teaches something: when the runtime is open, some capabilities can be decomposed into a general mechanism below and inspectable cognitive meaning above. That comparison will become more useful after the Codex version has real implemented behaviors to compare against.</p>
+            </div>
+            <div class="project-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/q-seed" target="_blank" rel="noopener">Inspect Q-Seed</a><a class="btn btn-secondary" href="seed-agent.html">Compare Codex Seed</a><a class="btn btn-secondary" href="index.html">All projects</a></div>
+        </section>
+    </main>
+
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="../js/theme-manager.js?v=20260724"></script><script src="../js/components.js?v=20260724"></script>
+</body>
+</html>
