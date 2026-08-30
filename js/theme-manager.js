@@ -1,127 +1,109 @@
-// Version: v0.2.0
+// Version: v0.3.0
 /**
- * Hadosh Academy Theme Manager
- * Handles random color themes, profile picture selection, and hero message rotation.
+ * Hadosh Academy theme + lightweight shared presentation behavior.
+ * Random visual themes remain; homepage language stays aligned with the
+ * open-source / free-education / user-owned-harness mission.
  */
 
 const themes = [
-    {
-        name: 'purple',
-        primary: '#6366f1', // Indigo 500
-        primaryGlow: 'rgba(99, 102, 241, 0.4)',
-        accent: '#8b5cf6'   // Violet 500
-    },
-    {
-        name: 'green',
-        primary: '#10b981', // Emerald 500
-        primaryGlow: 'rgba(16, 185, 129, 0.4)',
-        accent: '#34d399'   // Emerald 400
-    },
-    {
-        name: 'yellow',
-        primary: '#eab308', // Yellow 500
-        primaryGlow: 'rgba(234, 179, 8, 0.4)',
-        accent: '#facc15'   // Yellow 400
-    },
-    {
-        name: 'orange',
-        primary: '#f97316', // Orange 500
-        primaryGlow: 'rgba(249, 115, 22, 0.4)',
-        accent: '#fb923c'   // Orange 400
-    },
-    {
-        name: 'blue',
-        primary: '#3b82f6', // Blue 500
-        primaryGlow: 'rgba(59, 130, 246, 0.4)',
-        accent: '#60a5fa'   // Blue 400
-    }
+    { name: 'purple', primary: '#6366f1', primaryGlow: 'rgba(99, 102, 241, 0.4)', accent: '#8b5cf6' },
+    { name: 'green', primary: '#10b981', primaryGlow: 'rgba(16, 185, 129, 0.4)', accent: '#34d399' },
+    { name: 'yellow', primary: '#eab308', primaryGlow: 'rgba(234, 179, 8, 0.4)', accent: '#facc15' },
+    { name: 'orange', primary: '#f97316', primaryGlow: 'rgba(249, 115, 22, 0.4)', accent: '#fb923c' },
+    { name: 'blue', primary: '#3b82f6', primaryGlow: 'rgba(59, 130, 246, 0.4)', accent: '#60a5fa' }
 ];
 
-const profilePics = [
-    'assets/images/profile-pic1.png',
-    'assets/images/profile-pic2.png'
-];
+const profilePics = ['assets/images/profile-pic1.png', 'assets/images/profile-pic2.png'];
+
+function getSitePrefix() {
+    return window.location.pathname.indexOf('/projects/') !== -1 || window.location.pathname.indexOf('/blog/') !== -1 ? '../' : '';
+}
 
 function applyRandomTheme() {
-    // 1. Select Random Theme
-    // Use session storage to persist theme across navigation if desired, 
-    // but user asked for "randomly choose one... overtime I want to see which fits better", 
-    // implying potentially different on reload. 
-    // "randomly choose one at every visit" -> usually means per session or per load.
-    // Let's do per load for now as requested.
-
     const randomTheme = themes[Math.floor(Math.random() * themes.length)];
     const root = document.documentElement;
-
     root.style.setProperty('--primary', randomTheme.primary);
     root.style.setProperty('--primary-glow', randomTheme.primaryGlow);
     root.style.setProperty('--accent', randomTheme.accent);
 
-    // 2. Select Random Profile Pic (Only if element exists)
     const profileImg = document.getElementById('profile-image');
     if (profileImg) {
         const randomPic = profilePics[Math.floor(Math.random() * profilePics.length)];
-        profileImg.src = randomPic;
+        profileImg.src = getSitePrefix() + randomPic;
     }
 }
 
-// 2b. Hero Message Rotation
+// Homepage variants may rotate, but every variant must describe the same public mission.
 const heroMessages = [
     {
-        line1: "Engineer Agents,",
-        line2: "Not Chatbots",
-        description: "Seed agents that remember, learn, and improve at your work — customized through conversation, no coding required."
+        line1: 'Engineer Agents,',
+        line2: 'Not Chatbots',
+        description: 'Build and understand user-owned harnesses that give LLMs persistent memory, jobs, behavior, and experience.'
     },
     {
-        line1: "Your Brain Wasn't",
-        line2: "Built for This",
-        description: "Build cognitive organs — AI with memory, reflexes, and specialized skills that handle the complexity your brain never evolved to manage."
+        line1: 'Own the Harness,',
+        line2: 'Change the Model',
+        description: 'Explore a portable cognition layer that can outlive one model session, provider, or CLI runtime.'
     },
     {
-        line1: "Scale Yourself,",
-        line2: "Not Your Hours",
-        description: "Build your own agentic workforce through conversation. Seed agents that learn your work and get better over time."
+        line1: 'Build a Digital Cortex',
+        line2: 'You Can Inspect',
+        description: 'Learn how jobs, memory, plugins, phases, authority, and verification turn general models into durable agent systems.'
     },
     {
-        line1: "A Second Brain",
-        line2: "That Actually Works",
-        description: "Not a note app. Seed agents that remember your work, learn your patterns, and act on your behalf — built through conversation."
-    },
-    {
-        line1: "Grow Your Workforce",
-        line2: "Through Conversation",
-        description: "Seed agents you customize by talking, not coding. They learn, adapt, and grow into your personalized agentic workforce."
+        line1: 'Open Architecture,',
+        line2: 'Real Experiments',
+        description: 'Follow public Seed implementations and shared-cognition projects while the architecture is developed in the open.'
     }
 ];
 
 function applyRandomHero() {
     const h1 = document.querySelector('.central-circle-content h1');
-    const desc = document.querySelector('.hero-description');
+    const desc = document.querySelector('.central-circle-content .hero-description');
     if (!h1 || !desc) return;
-
     const msg = heroMessages[Math.floor(Math.random() * heroMessages.length)];
     h1.innerHTML = msg.line1 + ' <br><span>' + msg.line2 + '</span>';
     desc.textContent = msg.description;
 }
 
-// Apply immediately (script loads after hero HTML, so DOM is ready)
+function ensureCoreNavigation() {
+    const nav = document.querySelector('#site-header .nav-links');
+    if (!nav) return;
+    const prefix = getSitePrefix();
+    const links = Array.from(nav.querySelectorAll('a'));
+    const labels = links.map(link => link.textContent.trim());
+
+    if (labels.indexOf('Projects') === -1) {
+        const projects = document.createElement('a');
+        projects.href = prefix + 'projects/index.html';
+        projects.textContent = 'Projects';
+        const about = links.find(link => link.textContent.trim() === 'About');
+        nav.insertBefore(projects, about || null);
+    }
+
+    if (labels.indexOf('Contact') === -1) {
+        const contact = document.createElement('a');
+        contact.href = prefix + 'contact.html';
+        contact.textContent = 'Contact';
+        nav.appendChild(contact);
+    }
+}
+
 applyRandomTheme();
 applyRandomHero();
+ensureCoreNavigation();
 
-// 3. Landing Page Dynamic CTAs
-// Inject random actionable phrases into the wheel
 const ctaPhrases = [
-    { text: "Join the Community", link: "https://www.skool.com/claude-agents-engineering-4513" },
-    { text: "Contact Us Today", link: "contact.html" },
-    { text: "Explore the Academy", link: "about.html" },
-    { text: "Read the Blog", link: "blog.html" },
-    { text: "See Custom Agents", link: "agents.html" },
-    { text: "Start Your Journey", link: "about.html" },
-    { text: "Build Your Workforce", link: "https://www.skool.com/claude-agents-engineering-4513" },
-    { text: "Learn the Framework", link: "blog.html" }
+    { text: 'Start Here', link: 'start-here.html' },
+    { text: 'Explore the Projects', link: 'projects/index.html' },
+    { text: 'Read the Technical Writing', link: 'blog.html' },
+    { text: 'See the Seed Implementations', link: 'agents.html' },
+    { text: 'Open the Technical Portfolio', link: 'portfolio.html' },
+    { text: 'Join a Project Discussion', link: 'projects/index.html' },
+    { text: 'About Hadosh Academy', link: 'about.html' },
+    { text: 'Get in Touch', link: 'contact.html' }
 ];
 
-// Export for use in index.html
 window.getRandomCTAPhrases = function (count = 3) {
     const shuffled = [...ctaPhrases].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, count);
