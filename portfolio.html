@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.2.3 -->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,392 +7,57 @@
     <meta name="description" content="Technical portfolio of Hadi Nayebi: externalizing human agency into inspectable digital cortices through agent harness abstractions, plugins, persistent jobs, phasic cognition, memory, controls, and governed self-modification.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/portfolio.html">
     <meta property="og:title" content="Hadi Nayebi | Agent Systems & Harness Engineering">
     <meta property="og:description" content="I build agent harness abstractions that let people externalize parts of their cognition into persistent, inspectable digital cortices.">
-    <meta property="og:url" content="https://hadi-nayebi.github.io/portfolio.html">
-    <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
-    <meta property="og:site_name" content="Hadosh Academy">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hadi Nayebi | Agent Systems & Harness Engineering">
-    <meta name="twitter:description" content="Externalized agency, digital cortex design, and the abstraction layer between human cognition and agent harness implementation.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
-    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="css/styles.css?v=20260723">
+    <link rel="stylesheet" href="css/styles.css?v=20260830">
 </head>
-
 <body>
-    <header id="site-header">
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">Hadosh Academy</a>
-                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                </button>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="start-here.html">Start Here</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="agents.html">Agents</a>
-                    <a href="projects/index.html">Projects</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <header id="site-header"><div class="container"><nav>
+        <a href="index.html" class="logo">Hadosh Academy</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    </nav></div></header>
 
     <main class="page-content">
-        <section class="hero hero-compact">
-            <div class="container">
-                <span class="badge">Agent Systems · Harness Engineering</span>
-                <h1>Externalizing Human Agency Into a Digital Cortex</h1>
-                <p class="hero-description">I build and compare agent harnesses to understand how parts of a person's cognition can be mapped into a persistent, inspectable system around an LLM &mdash; a digital cortex that remembers, works, learns, and evolves with its user.</p>
-                <p class="hero-description">The engineering problem underneath that vision is abstraction: finding concepts that are precise enough for an agent to implement, but intuitive enough for a non-programmer to understand and use to shape their own harness.</p>
-                <div class="hero-actions">
-                    <a href="#architecture" class="btn btn-primary">How I Build It</a>
-                    <a href="contact.html" class="btn btn-secondary">Technical Discussion</a>
-                </div>
-            </div>
-        </section>
+        <section class="hero hero-compact"><div class="container"><span class="badge">Agent Systems · Harness Engineering</span><h1>Externalizing Human Agency Into a Digital Cortex</h1><p class="hero-description">I build and compare agent harnesses to understand how parts of a person's cognition can be mapped into a persistent, inspectable system around an LLM — a digital cortex that remembers, works, learns, and evolves with its user.</p><p class="hero-description">The engineering problem underneath that vision is abstraction: finding concepts that are precise enough for an agent to implement, but intuitive enough for a non-programmer to understand and use to shape their own harness.</p><div class="hero-actions"><a href="#architecture" class="btn btn-primary">How I Build It</a><a href="contact.html" class="btn btn-secondary">Technical Discussion</a></div></div></section>
 
-        <section class="container seed-section">
-            <span class="badge">Core Thesis</span>
-            <h2>The LLM Is the Engine. The Harness Is the Digital Cortex.</h2>
-            <p class="seed-section-intro">A CLI agent gives an LLM tools and access to a local environment. The model supplies general reasoning capability; the harness supplies the persistent structure around it &mdash; memory, behavioral controls, jobs, cognitive modes, state, permissions, interfaces, and learned patterns.</p>
-            <p class="seed-section-intro">My goal is not to make a generic artificial worker that belongs to a platform. It is to help a person externalize some of <strong>their own agency</strong> into a system they own. An idea can leave the biological cortex, enter the digital cortex as a job or new behavior, continue developing while the person is doing something else, and return later for the judgment only the person should make.</p>
-            <p class="seed-section-intro">That is why ownership and legibility matter. A mature harness becomes intimate infrastructure. The user should know its behaviors, its compartments, its strengths, and its limits because they participated in building it.</p>
-        </section>
+        <section class="container seed-section"><span class="badge">Core Thesis</span><h2>The LLM Is the Engine. The Harness Is the Digital Cortex.</h2><p class="seed-section-intro">A CLI agent gives an LLM tools and access to a local environment. The model supplies general reasoning capability; the harness supplies the persistent structure around it — memory, behavioral controls, jobs, cognitive modes, state, permissions, interfaces, and learned patterns.</p><p class="seed-section-intro">My goal is not to make a generic artificial worker that belongs to a platform. It is to help a person externalize some of <strong>their own agency</strong> into a system they own. An idea can leave the biological cortex, enter the digital cortex as a job or new behavior, continue developing while the person is doing something else, and return later for the judgment only the person should make.</p><p class="seed-section-intro">That is why ownership and legibility matter. A mature harness becomes intimate infrastructure. The user should know its behaviors, its compartments, its strengths, and its limits because they participated in building it.</p></section>
 
-        <section class="container seed-section">
-            <span class="badge">Why It Matters</span>
-            <h2>When Execution Moves Outward, Human Cognition Can Move Upward</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>From Doing the Work</h3>
-                    <p>A professional normally spends scarce attention executing one analysis, one workflow, or one line of reasoning at a time.</p>
-                </article>
-                <article class="card">
-                    <h3>To Designing the Work</h3>
-                    <p>When the digital cortex can execute a known method, the human can ask a higher-order question: is this the best method, and what other methods should exist?</p>
-                </article>
-                <article class="card">
-                    <h3>To Parallel Cognition</h3>
-                    <p>The harness can run several lenses, jobs, or specialist perspectives in parallel. The human can compare them, synthesize them, and design a better next round.</p>
-                </article>
-                <article class="card">
-                    <h3>To New Context</h3>
-                    <p>LLMs are trained largely on artifacts of how people have already worked. As execution becomes cheaper, humans can spend more time exploring higher-order combinations and problem formulations that were previously too costly to practice routinely.</p>
-                </article>
-                <article class="card">
-                    <h3>Make Cognitive Failure Modes Inspectable</h3>
-                    <p>When a method becomes explicit in jobs, phases, behaviors, and traces, failure modes such as inconsistency, premature closure, and confirmation bias become easier to observe and redesign. The digital cortex is not assumed to be unbiased; externalization makes cognition more inspectable and systematically improvable.</p>
-                </article>
-            </div>
-            <p class="seed-section-intro">The analogy I use is the calculator. Offloading arithmetic did not make mathematicians irrelevant; it let them spend cognition on higher-level mathematics. I think agentic AI can produce a similar shift for flexible professional cognition.</p>
-        </section>
+        <section class="container seed-section"><span class="badge">Why It Matters</span><h2>When Execution Moves Outward, Human Cognition Can Move Upward</h2><div class="grid"><article class="card"><h3>From Doing the Work</h3><p>A professional normally spends scarce attention executing one analysis, one workflow, or one line of reasoning at a time.</p></article><article class="card"><h3>To Designing the Work</h3><p>When the digital cortex can execute a known method, the human can ask a higher-order question: is this the best method, and what other methods should exist?</p></article><article class="card"><h3>To Parallel Cognition</h3><p>The harness can run several lenses, jobs, or specialist perspectives in parallel. The human can compare them, synthesize them, and design a better next round.</p></article><article class="card"><h3>To New Context</h3><p>LLMs are trained largely on artifacts of how people have already worked. As execution becomes cheaper, humans can spend more time exploring higher-order combinations and problem formulations that were previously too costly to practice routinely.</p></article><article class="card"><h3>Make Cognitive Failure Modes Inspectable</h3><p>When a method becomes explicit in jobs, phases, behaviors, and traces, failure modes such as inconsistency, premature closure, and confirmation bias become easier to observe and redesign. The digital cortex is not assumed to be unbiased; externalization makes cognition more inspectable and systematically improvable.</p></article></div><p class="seed-section-intro">The analogy I use is the calculator. Offloading arithmetic did not make mathematicians irrelevant; it let them spend cognition on higher-level mathematics. I think agentic AI can produce a similar shift for flexible professional cognition.</p></section>
 
-        <section class="container seed-section" id="architecture">
-            <span class="badge">The Abstraction Problem</span>
-            <h2>Architectural Literacy Without Implementation Burden</h2>
-            <p class="seed-section-intro">I do not want a lawyer, scientist, founder, consultant, or filmmaker to learn shell programming before they can own a sophisticated harness. I do want them to understand its anatomy.</p>
-            <p class="seed-section-intro">A user should understand what a hook is sensing, why a behavior needs state, which action a script exposes, when a specialist subagent should be dispatched, and how one behavior can use another behavior's interface. They do not need to write the hook payload parser, manipulate the JSON file, or implement the shell function themselves.</p>
-            <div class="grid">
-                <article class="card">
-                    <span class="badge">Human Layer</span>
-                    <h3>Describe the Cognition</h3>
-                    <p>The domain expert explains how they think: what they notice, what they remember, what decisions they make, what should be repeated, and where they want to stay in control.</p>
-                </article>
-                <article class="card">
-                    <span class="badge">Shared Language</span>
-                    <h3>Map It Into Architecture</h3>
-                    <p>Human and agent reason together using concepts such as plugins, sensors, state, jobs, phases, specialists, interfaces, verification, and memory.</p>
-                </article>
-                <article class="card">
-                    <span class="badge">Agent Layer</span>
-                    <h3>Compile Intent Into a Harness</h3>
-                    <p>The CLI agent translates that architectural intent into the platform's actual hooks, scripts, tools, skills, files, tests, and configuration.</p>
-                </article>
-            </div>
-            <p class="seed-section-intro"><strong>The user learns the anatomy, not the syntax.</strong> The vocabulary can also evolve: different people can rename concepts or invent abstractions that fit how they naturally think, while the implementation underneath remains machine-operable.</p>
-        </section>
+        <section class="container seed-section" id="architecture"><span class="badge">The Abstraction Problem</span><h2>Architectural Literacy Without Implementation Burden</h2><p class="seed-section-intro">I do not want a lawyer, scientist, founder, consultant, or filmmaker to learn shell programming before they can own a sophisticated harness. I do want them to understand its anatomy.</p><p class="seed-section-intro">A user should understand what a hook is sensing, why a behavior needs state, which action a script exposes, when a specialist subagent should be dispatched, and how one behavior can use another behavior's interface. They do not need to write the hook payload parser, manipulate the JSON file, or implement the shell function themselves.</p><div class="grid"><article class="card"><span class="badge">Human Layer</span><h3>Describe the Cognition</h3><p>The domain expert explains how they think: what they notice, what they remember, what decisions they make, what should be repeated, and where they want to stay in control.</p></article><article class="card"><span class="badge">Shared Language</span><h3>Map It Into Architecture</h3><p>Human and agent reason together using concepts such as plugins, sensors, state, jobs, phases, specialists, interfaces, verification, and memory.</p></article><article class="card"><span class="badge">Agent Layer</span><h3>Compile Intent Into a Harness</h3><p>The CLI agent translates that architectural intent into the platform's actual hooks, scripts, tools, skills, files, tests, and configuration.</p></article></div><p class="seed-section-intro"><strong>The user learns the anatomy, not the syntax.</strong> The vocabulary can also evolve: different people can rename concepts or invent abstractions that fit how they naturally think, while the implementation underneath remains machine-operable.</p></section>
 
-        <section class="container seed-section">
-            <span class="badge">Behavioral Architecture</span>
-            <h2>A Plugin Starts With One Behavioral Objective</h2>
-            <p class="seed-section-intro">When I work with a person or team, I like to build the harness behavior by behavior. Each plugin owns a narrow objective. The anatomy below is a way to reason about that objective before worrying about code.</p>
-            <div class="grid">
-                <article class="card">
-                    <h3>Objective</h3>
-                    <p>What consistent behavior should this part of the cortex produce?</p>
-                </article>
-                <article class="card">
-                    <h3>Sensors &mdash; Hooks</h3>
-                    <p>What events or actions must the behavior notice? A Stop hook, for example, can sense an attempt to end work.</p>
-                </article>
-                <article class="card">
-                    <h3>Internal State</h3>
-                    <p>What must the behavior remember about the current situation? State can remain private and be accessed through the plugin's own interface.</p>
-                </article>
-                <article class="card">
-                    <h3>Actions &mdash; Scripts</h3>
-                    <p>What functions or verbs must the behavior be able to perform when its sensors fire or another component calls it?</p>
-                </article>
-                <article class="card">
-                    <h3>Specialists &mdash; Subagents</h3>
-                    <p>Does the behavior need delegated investigation, execution, auditing, or another focused cognitive role?</p>
-                </article>
-                <article class="card">
-                    <h3>Interface / API</h3>
-                    <p>What should other plugins be allowed to query or change? Mature behaviors compose through explicit interfaces rather than reaching blindly into one another's state.</p>
-                </article>
-                <article class="card">
-                    <h3>Tests & Guards</h3>
-                    <p>Which parts of the behavior must remain reliable enough to earn deterministic enforcement and regression protection?</p>
-                </article>
-            </div>
-            <p class="seed-section-intro">A simple generic example is unfinished-work behavior: sense a Stop attempt, query the job system, and refuse the stop while active or pending jobs remain. A client can understand and modify that design without knowing how the underlying hook is written.</p>
-            <p class="seed-section-intro">As plugins accumulate, the harness becomes a library of learned behaviors. The user knows what their cortex already knows how to do, so new behavior can reuse existing state, functions, specialists, and interfaces instead of starting from scratch.</p>
-            <a href="blog/b7/07_1-plugin-kit-foundation.html" class="card-link">Read the documented Seed plugin anatomy &rarr;</a>
-        </section>
+        <section class="container seed-section"><span class="badge">Behavioral Architecture</span><h2>A Plugin Starts With One Behavioral Objective</h2><p class="seed-section-intro">When I work with a person or team, I like to build the harness behavior by behavior. Each plugin owns a narrow objective. The anatomy below is a way to reason about that objective before worrying about code.</p><div class="grid"><article class="card"><h3>Objective</h3><p>What consistent behavior should this part of the cortex produce?</p></article><article class="card"><h3>Sensors — Hooks</h3><p>What events or actions must the behavior notice? A Stop hook, for example, can sense an attempt to end work.</p></article><article class="card"><h3>Internal State</h3><p>What must the behavior remember about the current situation? State can remain private and be accessed through the plugin's own interface.</p></article><article class="card"><h3>Actions — Scripts</h3><p>What functions or verbs must the behavior be able to perform when its sensors fire or another component calls it?</p></article><article class="card"><h3>Specialists — Subagents</h3><p>Does the behavior need delegated investigation, execution, auditing, or another focused cognitive role?</p></article><article class="card"><h3>Interface / API</h3><p>What should other plugins be allowed to query or change? Mature behaviors compose through explicit interfaces rather than reaching blindly into one another's state.</p></article><article class="card"><h3>Tests & Guards</h3><p>Which parts of the behavior must remain reliable enough to earn deterministic enforcement and regression protection?</p></article></div><p class="seed-section-intro">A simple generic example is unfinished-work behavior: sense a Stop attempt, query the job system, and refuse the stop while active or pending jobs remain. A client can understand and modify that design without knowing how the underlying hook is written.</p><p class="seed-section-intro">As plugins accumulate, the harness becomes a library of learned behaviors. The user knows what their cortex already knows how to do, so new behavior can reuse existing state, functions, specialists, and interfaces instead of starting from scratch.</p><a href="blog/b7/07_1-plugin-kit-foundation.html" class="card-link">Read the documented Seed plugin anatomy →</a></section>
 
-        <section class="container seed-section">
-            <span class="badge">Work Architecture</span>
-            <h2>Jobs Compartmentalize Work. Phases Compartmentalize Cognition.</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>Jobs</h3>
-                    <p>A meaningful piece of work becomes a durable compartment with an objective, interaction history, state, dependencies, completion logic, and long-horizon context. Closing a chat does not have to erase the work.</p>
-                </article>
-                <article class="card">
-                    <h3>Phases</h3>
-                    <p>A job does not need to be one undifferentiated stream of tool calls. Different cognitive modes can have different goals, allowed actions, write authority, evidence, and transition rules.</p>
-                </article>
-                <article class="card">
-                    <h3>Cycles</h3>
-                    <p>Some work closes in one cognitive cycle. Other work needs multiple cycles, with persistent plans and learning carried from one pass into the next.</p>
-                </article>
-                <article class="card">
-                    <h3>Custom Cognition</h3>
-                    <p>OPEVC &mdash; Observe, Plan, Execute, Verify, Condense &mdash; is one implementation. A user's work may justify new phases, different transitions, or a job-specific plugin with its own sensing and constraints.</p>
-                </article>
-            </div>
-            <p class="seed-section-intro">The purpose is not to force everyone's cognition into my five labels. It is to give people a workable vocabulary for taking cognition they already perform in their profession and making it explicit enough that a CLI agent can reproduce, scale, and improve it.</p>
-            <a href="blog/b6/06_1-phasic-foundation.html" class="card-link">Read the documented Seed phasic implementation &rarr;</a>
-        </section>
+        <section class="container seed-section"><span class="badge">Work Architecture</span><h2>Jobs Compartmentalize Work. Phases Compartmentalize Cognition.</h2><div class="grid"><article class="card"><h3>Jobs</h3><p>A meaningful piece of work becomes a durable compartment with an objective, interaction history, state, dependencies, completion logic, and long-horizon context. Closing a chat does not have to erase the work.</p></article><article class="card"><h3>Phases</h3><p>A job does not need to be one undifferentiated stream of tool calls. Different cognitive modes can have different goals, allowed actions, write authority, evidence, and transition rules.</p></article><article class="card"><h3>Cycles</h3><p>Some work closes in one cognitive cycle. Other work needs multiple cycles, with persistent plans and learning carried from one pass into the next.</p></article><article class="card"><h3>Custom Cognition</h3><p>OPEVC — Observe, Plan, Execute, Verify, Condense — is one implementation. A user's work may justify new phases, different transitions, or a job-specific plugin with its own sensing and constraints.</p></article></div><p class="seed-section-intro">The purpose is not to force everyone's cognition into my five labels. It is to give people a workable vocabulary for taking cognition they already perform in their profession and making it explicit enough that a CLI agent can reproduce, scale, and improve it.</p><a href="blog/b6/06_1-phasic-foundation.html" class="card-link">Read the documented Seed phasic implementation →</a></section>
 
-        <section class="container seed-section">
-            <span class="badge">Worked Example</span>
-            <h2>From Doing One Patent Analysis to Designing Patent Analysis</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>1. Externalize the Existing Method</h3>
-                    <p>The professional explains how they currently analyze patents: what they inspect, how they compare claims, what risks matter, and where judgment enters.</p>
-                </article>
-                <article class="card">
-                    <h3>2. Encode the Cognition</h3>
-                    <p>The method becomes jobs, phases, specialist perspectives, memory, and behavioral controls inside the harness.</p>
-                </article>
-                <article class="card">
-                    <h3>3. Execute at Scale</h3>
-                    <p>The digital cortex can repeat that analysis, maintain multiple active jobs, or run several analytical lenses in parallel instead of forcing the human to choose one.</p>
-                </article>
-                <article class="card">
-                    <h3>4. Human Moves Up a Level</h3>
-                    <p>The professional spends attention asking which analytical methods should exist, why they disagree, what combination is stronger, and what new lens should be tested next.</p>
-                </article>
-                <article class="card">
-                    <h3>5. Feed the Learning Back</h3>
-                    <p>Useful lessons update the digital cortex: a plan matures, a new specialist appears, a repeated judgment becomes a plugin, or a soft behavior earns a harder guard.</p>
-                </article>
-            </div>
-            <p class="seed-section-intro">The same pattern can apply to market research, techno-economic analysis, drug discovery, client onboarding, filmmaking, legal work, or any profession where the person already carries a valuable way of thinking.</p>
-        </section>
+        <section class="container seed-section"><span class="badge">Worked Example</span><h2>From Doing One Patent Analysis to Designing Patent Analysis</h2><div class="grid"><article class="card"><h3>1. Externalize the Existing Method</h3><p>The professional explains how they currently analyze patents: what they inspect, how they compare claims, what risks matter, and where judgment enters.</p></article><article class="card"><h3>2. Encode the Cognition</h3><p>The method becomes jobs, phases, specialist perspectives, memory, and behavioral controls inside the harness.</p></article><article class="card"><h3>3. Execute at Scale</h3><p>The digital cortex can repeat that analysis, maintain multiple active jobs, or run several analytical lenses in parallel instead of forcing the human to choose one.</p></article><article class="card"><h3>4. Human Moves Up a Level</h3><p>The professional spends attention asking which analytical methods should exist, why they disagree, what combination is stronger, and what new lens should be tested next.</p></article><article class="card"><h3>5. Feed the Learning Back</h3><p>Useful lessons update the digital cortex: a plan matures, a new specialist appears, a repeated judgment becomes a plugin, or a soft behavior earns a harder guard.</p></article></div><p class="seed-section-intro">The same pattern can apply to market research, techno-economic analysis, drug discovery, client onboarding, filmmaking, legal work, or any profession where the person already carries a valuable way of thinking.</p></section>
 
-        <section class="container seed-section">
-            <span class="badge">Human in the Loop</span>
-            <h2>Autonomy Is a Division of Cognitive Labor, Not the Goal</h2>
-            <p class="seed-section-intro">I often think about the operating relationship as roughly 80/20. The harness should handle the bulk of routine execution, state management, delegation, and known decisions. The person should be pulled back in where their judgment, preference, authority, or genuinely new cognition matters.</p>
-            <p class="seed-section-intro">The ratio is not a law. The principle is that the digital cortex should reduce low-value cognitive repetition while preserving deliberate places for human feedback. Over time, what repeatedly no longer needs feedback can mature into the harness; what remains ambiguous stays with the person.</p>
-        </section>
+        <section class="container seed-section"><span class="badge">Human in the Loop</span><h2>Autonomy Is a Division of Cognitive Labor, Not the Goal</h2><p class="seed-section-intro">I often think about the operating relationship as roughly 80/20. The harness should handle the bulk of routine execution, state management, delegation, and known decisions. The person should be pulled back in where their judgment, preference, authority, or genuinely new cognition matters.</p><p class="seed-section-intro">The ratio is not a law. The principle is that the digital cortex should reduce low-value cognitive repetition while preserving deliberate places for human feedback. Over time, what repeatedly no longer needs feedback can mature into the harness; what remains ambiguous stays with the person.</p></section>
 
-        <section class="container seed-section" id="systems">
-            <span class="badge">Implementation Families</span>
-            <h2>The Concepts Matter More Than One Implementation</h2>
-            <p class="seed-section-intro">I deliberately build different harnesses because I want to know which concepts survive changes in model, platform, team structure, interface, and enforcement. If an idea only works because of one Claude-specific trick, it is not yet a stable abstraction.</p>
-            <div class="grid">
-                <article class="card">
-                    <span class="badge badge-private">Private Working Prototype</span>
-                    <h3>Seed Agent &mdash; Claude Code</h3>
-                    <p>The most documented implementation family: persistent jobs, always-on behavioral plugins, a phasic OPEVC system, local working memory, context discipline, structured questions, verification, consolidation, and guarded self-modification.</p>
-                    <a href="seed-agent.html" class="card-link">Prototype overview &rarr;</a>
-                </article>
-                <article class="card">
-                    <span class="badge badge-private">Private Team Harness</span>
-                    <h3>Biotech Startup Team Harness</h3>
-                    <p>A shared-repository harness with a local dashboard for a startup team. It uses related ideas &mdash; jobs, phased work, shared context, role/authority boundaries, agent-triggered workflows &mdash; but enforces them differently from the Claude Seed architecture.</p>
-                </article>
-                <article class="card">
-                    <span class="badge badge-open-source">Public Reimplementation</span>
-                    <h3>Q-Seed &mdash; Qwen Code</h3>
-                    <p>A new implementation on an open framework. The earlier prototype supplies behavioral evidence, while the model, framework, and cognitive contracts are reconsidered rather than copied mechanically.</p>
-                    <a href="q-seed.html" class="card-link">Follow Q-Seed &rarr;</a>
-                </article>
-                <article class="card">
-                    <span class="badge">Ongoing Experiments</span>
-                    <h3>Alternate Harness Prototypes</h3>
-                    <p>I repeatedly build smaller agents and harnesses with different compositions. Many remain private. They are how I test whether a concept is a true abstraction or just an implementation habit.</p>
-                </article>
-            </div>
-        </section>
+        <section class="container seed-section" id="systems"><span class="badge">Implementation Families</span><h2>The Concepts Matter More Than One Runtime</h2><p class="seed-section-intro">I deliberately build different harnesses because cross-implementation variation helps separate stable abstractions from platform-specific compensation and personal design habits.</p><div class="grid">
+            <article class="card"><span class="badge badge-private">Reference Implementation</span><h3>Claude Seed — Hadosh Academy</h3><p>The first-generation personal harness and the technical source behind the B5–B8 series. It remains available for private technical review and provides the deepest behavioral history.</p><a href="seed-access.html" class="card-link">Study the reference →</a></article>
+            <article class="card"><span class="badge badge-open-source">Public Seed</span><h3>Seed Agent — Codex</h3><p>The primary public reimplementation. Codex supplies the runtime while the user-owned cognitive layer is rebuilt from behavioral objectives and reference evidence.</p><a href="projects/seed-agent.html" class="card-link">Codex Seed project →</a></article>
+            <article class="card"><span class="badge badge-open-source">Public Seed</span><h3>Q-Seed — Qwen Code</h3><p>A sibling public experiment with an inspectable cognitive layer and a user-controlled Qwen Code framework fork beneath it.</p><a href="projects/q-seed.html" class="card-link">Q-Seed project →</a></article>
+            <article class="card"><span class="badge">Group Harness</span><h3>Small-Team Shared Cortex</h3><p>A separately cultivated implementation family for small teams: one shared private repository, multiple local agents, a dashboard, shared context, and explicit team authority.</p><a href="projects/team-harnesses.html" class="card-link">Team Harnesses →</a></article>
+        </div></section>
 
-        <section class="container seed-section">
-            <span class="badge">Engineering Principles</span>
-            <h2>Patterns I Keep Testing Across Harnesses</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>Single-Concern Behavioral Units</h3>
-                    <p>Give a behavior a clear objective and boundary so it can be understood, tested, composed, and changed without making the entire harness opaque.</p>
-                </article>
-                <article class="card">
-                    <h3>Soft Before Hard</h3>
-                    <p>Coach uncertain behavior first. Measure where it fails. Harden into deterministic enforcement only where the evidence justifies the friction and maintenance cost.</p>
-                </article>
-                <article class="card">
-                    <h3>Persistent State Over Chat Memory</h3>
-                    <p>Important cognition should survive the conversation window in explicit files, job state, plans, summaries, and knowledge structures.</p>
-                </article>
-                <article class="card">
-                    <h3>Consolidation as Learning</h3>
-                    <p>Working context should not grow forever. Experience needs a metabolism: preserve, synthesize, promote durable knowledge, update behavior, and discard what no longer deserves attention.</p>
-                </article>
-                <article class="card">
-                    <h3>Human Authority Around the Substrate</h3>
-                    <p>The agent can participate in changing its own harness, but changes to the machinery that controls future behavior should remain inspectable, testable, permissioned, and recoverable.</p>
-                </article>
-                <article class="card">
-                    <h3>Local Ownership</h3>
-                    <p>The model can be rented intelligence. The accumulated harness &mdash; the user's memory, behaviors, workflows, and institutional context &mdash; should be portable enough to remain the user's asset.</p>
-                </article>
-            </div>
-        </section>
+        <section class="container seed-section"><span class="badge">Engineering Principles</span><h2>Patterns I Keep Testing Across Harnesses</h2><div class="grid"><article class="card"><h3>Single-Concern Behavioral Units</h3><p>Give a behavior a clear objective and boundary so it can be understood, tested, composed, and changed without making the entire harness opaque.</p></article><article class="card"><h3>Soft Before Hard</h3><p>Coach uncertain behavior first. Measure where it fails. Harden into deterministic enforcement only where the evidence justifies the friction and maintenance cost.</p></article><article class="card"><h3>Persistent State Over Chat Memory</h3><p>Important cognition should survive the conversation window in explicit files, job state, plans, summaries, and knowledge structures.</p></article><article class="card"><h3>Consolidation as Learning</h3><p>Working context should not grow forever. Experience needs a metabolism: preserve, synthesize, promote durable knowledge, update behavior, and discard what no longer deserves attention.</p></article><article class="card"><h3>Human Authority Around the Substrate</h3><p>The agent can participate in changing its own harness, but changes to the machinery that controls future behavior should remain inspectable, testable, permissioned, and recoverable.</p></article><article class="card"><h3>Local Ownership</h3><p>The model can be rented intelligence. The accumulated harness — the user's memory, behaviors, workflows, and institutional context — should be portable enough to remain the user's asset.</p></article></div></section>
 
-        <section class="container seed-section">
-            <span class="badge">Research Direction</span>
-            <h2>What I Want to Contribute to the Agentic Ecosystem</h2>
-            <p class="seed-section-intro">The problem I want to keep working on is the layer between raw agent primitives and human cognition: a stable, composable language that models can reliably operate and ordinary professionals can meaningfully reason about.</p>
-            <div class="grid">
-                <article class="card">
-                    <h3>Stable Harness Abstractions</h3>
-                    <p>Which concepts &mdash; behavioral units, jobs, cognitive modes, authority, memory interfaces &mdash; remain useful across models and runtimes?</p>
-                </article>
-                <article class="card">
-                    <h3>Human&ndash;Agent Co-Authoring</h3>
-                    <p>What is the right abstraction language for a human to describe cognition while the agent handles the lower-level implementation?</p>
-                </article>
-                <article class="card">
-                    <h3>Harness as Evaluation Environment</h3>
-                    <p>Can a harness become an evaluation surface for model behavior: adherence to state transitions, tool discipline, authority, memory, recovery, and long-horizon execution?</p>
-                </article>
-                <article class="card">
-                    <h3>Model&ndash;Harness Co-Adaptation</h3>
-                    <p>Which behaviors should models learn to operate natively, and which controls are safer or clearer when they remain external and deterministic?</p>
-                </article>
-                <article class="card">
-                    <h3>Personal and Team Digital Cortices</h3>
-                    <p>How should context, authority, review, specialization, and shared memory change when one harness coordinates multiple people and multiple agents?</p>
-                </article>
-                <article class="card">
-                    <h3>Higher-Order Human Cognition</h3>
-                    <p>As agents absorb more established execution, how do we design systems that help humans spend their scarce cognition on problem formulation, methodology design, synthesis, and genuinely new context?</p>
-                </article>
-            </div>
-        </section>
+        <section class="container seed-section"><span class="badge">Research Direction</span><h2>What I Want to Contribute to the Agentic Ecosystem</h2><p class="seed-section-intro">The problem I want to keep working on is the layer between raw agent primitives and human cognition: a stable, composable language that models can reliably operate and ordinary professionals can meaningfully reason about.</p><div class="grid"><article class="card"><h3>Stable Harness Abstractions</h3><p>Which concepts — behavioral units, jobs, cognitive modes, authority, memory interfaces — remain useful across models and runtimes?</p></article><article class="card"><h3>Human–Agent Co-Authoring</h3><p>What is the right abstraction language for a human to describe cognition while the agent handles the lower-level implementation?</p></article><article class="card"><h3>Harness as Evaluation Environment</h3><p>Can a harness become an evaluation surface for model behavior: adherence to state transitions, tool discipline, authority, memory, recovery, and long-horizon execution?</p></article><article class="card"><h3>Model–Harness Co-Adaptation</h3><p>Which behaviors should models learn to operate natively, and which controls are safer or clearer when they remain external and deterministic?</p></article><article class="card"><h3>Personal and Team Digital Cortices</h3><p>How should context, authority, review, specialization, and shared memory change when one harness coordinates multiple people and multiple agents?</p></article><article class="card"><h3>Higher-Order Human Cognition</h3><p>As agents absorb more established execution, how do we design systems that help humans spend their scarce cognition on problem formulation, methodology design, synthesis, and genuinely new context?</p></article></div></section>
 
-        <section class="container seed-section">
-            <span class="badge">The Architectural Fork</span>
-            <h2>The Web, Social Media, and the Choice AI Is Making Now</h2>
-            <p class="seed-section-intro">I think about AI's customization layer through two earlier digital trajectories. The analogy is not that the technologies are identical; the important question is <strong>where the durable personalization layer lives, who can inspect it, and who can leave with it.</strong></p>
-            <div class="grid">
-                <article class="card">
-                    <span class="badge">Open Web</span>
-                    <h3>User-Side Software Became a Powerful Layer</h3>
-                    <p>Open standards and browsers &mdash; including open-source browsers &mdash; left much of the interaction layer on the user's device. Settings, extensions, local browsing state, and client behavior could be inspected, modified, replaced, or moved more independently from any one online service. That helped make the web a substrate many different parties could build on.</p>
-                </article>
-                <article class="card">
-                    <span class="badge">Social Media</span>
-                    <h3>Personalization Moved Into the Platform</h3>
-                    <p>Social platforms followed a different trajectory. Much of identity, social graph, behavioral history, recommendation, and personalization accumulated inside proprietary services. Users gained powerful experiences, but the customization layer became less portable, less inspectable, and more dependent on the company operating the platform.</p>
-                </article>
-                <article class="card">
-                    <span class="badge">AI</span>
-                    <h3>We Are Choosing the Architecture Now</h3>
-                    <p>AI can move in either direction. Memory, preferences, workflows, learned behaviors, permissions, and cognitive structure can accumulate mainly inside a provider &mdash; or the harness can remain a local or portable asset while different commercial or open-weight models act as interchangeable engines that animate it.</p>
-                </article>
-            </div>
-            <p class="seed-section-intro"><strong>My preference is explicit: I want AI to follow the more user-owned trajectory.</strong> The model can be rented intelligence, an API, or an open weight. The durable customization layer &mdash; the digital cortex built from a person's memory, behaviors, workflows, judgments, and accumulated experience &mdash; should remain something the person can understand, evolve, and carry forward.</p>
-            <p class="seed-section-intro">If that path becomes practical, <strong>harness cultivation becomes a common professional meta-skill.</strong> A filmmaker remains a filmmaker, a scientist remains a scientist, and a lawyer remains a lawyer. But each can increasingly spend part of their work designing methods, adding behaviors, shaping jobs and cognitive modes, reviewing failures, and deciding where their own judgment remains essential while the digital cortex executes more of the established process.</p>
-            <p class="seed-section-intro">This is not a prediction that the future must look this way. It is a consequence I am trying to make possible. Internet literacy, spreadsheet literacy, and smartphone literacy became ordinary capabilities once their interfaces became learnable enough. My long-term bet is that harness literacy can become similar if we discover the right abstraction language &mdash; and if models become reliable enough at translating that language into working, inspectable infrastructure.</p>
-            <p class="seed-section-intro">That is why I care about the abstractions now. The design choices being made around agents today influence whether future users merely operate somebody else's intelligence system or participate in constructing the cognitive infrastructure that extends their own agency.</p>
-        </section>
+        <section class="container seed-section"><span class="badge">The Architectural Fork</span><h2>The Web, Social Media, and the Choice AI Is Making Now</h2><p class="seed-section-intro">I think about AI's customization layer through two earlier digital trajectories. The analogy is not that the technologies are identical; the important question is <strong>where the durable personalization layer lives, who can inspect it, and who can leave with it.</strong></p><div class="grid"><article class="card"><span class="badge">Open Web</span><h3>User-Side Software Became a Powerful Layer</h3><p>Open standards and browsers — including open-source browsers — left much of the interaction layer on the user's device. Settings, extensions, local browsing state, and client behavior could be inspected, modified, replaced, or moved more independently from any one online service.</p></article><article class="card"><span class="badge">Social Media</span><h3>Personalization Moved Into the Platform</h3><p>Social platforms concentrated identity, graph, behavioral history, recommendation, and personalization inside proprietary services. Users gained powerful experiences, but the customization layer became less portable and less inspectable.</p></article><article class="card"><span class="badge">AI</span><h3>We Are Choosing the Architecture Now</h3><p>Memory, preferences, workflows, learned behaviors, permissions, and cognitive structure can accumulate mainly inside a provider — or the harness can remain a local or portable asset while different commercial or open-weight models animate it.</p></article></div><p class="seed-section-intro"><strong>My preference is explicit: I want AI to follow the more user-owned trajectory.</strong> The model can be rented intelligence, an API, or an open weight. The durable customization layer should remain something the person can understand, evolve, and carry forward.</p><p class="seed-section-intro">If that path becomes practical, harness cultivation becomes a common professional meta-skill: people remain experts in their domain while spending part of their work designing methods, behaviors, jobs, and review boundaries for their digital cortex.</p></section>
 
-        <section class="container seed-section">
-            <span class="badge">Technical Evidence</span>
-            <h2>One Documented Implementation Family</h2>
-            <p class="seed-section-intro">The public technical corpus documents the Claude Code Seed in detail. I treat it as one experimental answer, not as a claim that every harness should use the same names, files, thresholds, or mechanisms.</p>
-            <div class="grid">
-                <article class="card"><h3>Model vs. Harness</h3><p>The foundational argument for separating general model capability from the persistent structure that makes an agent reliable and personal.</p><a href="blog/b1/01-llms-are-not-the-agents.html" class="card-link">LLMs Are Not the Agents &rarr;</a></article>
-                <article class="card"><h3>Always-On Infrastructure</h3><p>Single-concern controls for jobs, context, questions, edit safety, and interaction continuity.</p><a href="blog/b5/05_1-the-two-layer-foundation.html" class="card-link">The Two-Layer Foundation &rarr;</a></article>
-                <article class="card"><h3>Constrained Cognitive Modes</h3><p>Phases as temporary action spaces with different purpose, tools, authority, evidence, and transitions.</p><a href="blog/b6/06_1-phasic-foundation.html" class="card-link">Phasic Foundation &rarr;</a></article>
-                <article class="card"><h3>Plugin Anatomy</h3><p>The documented cell/system model: readers, writers, dependencies, hooks, scripts, state, specialists, tests, and wiring.</p><a href="blog/b7/07_1-plugin-kit-foundation.html" class="card-link">Plugin Kit Foundation &rarr;</a></article>
-                <article class="card"><h3>Evidence-Guided Hardening</h3><p>How behavioral controls can move from coaching to measurement, deterministic enforcement, tests, and reusable templates.</p><a href="blog/b8/08_4-soft-hard-migration.html" class="card-link">Soft &rarr; Hard Migration &rarr;</a></article>
-                <article class="card"><h3>Governed Self-Modification</h3><p>How a harness can participate in modifying itself while keeping authority, tests, historical context, and rollback around substrate changes.</p><a href="blog/b8/08_8-safe-self-modification.html" class="card-link">A System That Safely Modifies Itself &rarr;</a></article>
-            </div>
-        </section>
+        <section class="container seed-section"><span class="badge">Technical Evidence</span><h2>One Documented Implementation Family</h2><p class="seed-section-intro">The public technical corpus documents the Claude Seed in detail. I treat it as one experimental answer, not as a claim that every harness should use the same names, files, thresholds, or mechanisms.</p><div class="grid"><article class="card"><h3>Model vs. Harness</h3><p>The foundational argument for separating general model capability from the persistent structure that makes an agent reliable and personal.</p><a href="blog/b1/01-llms-are-not-the-agents.html" class="card-link">LLMs Are Not the Agents →</a></article><article class="card"><h3>Always-On Infrastructure</h3><p>Single-concern controls for jobs, context, questions, edit safety, and interaction continuity.</p><a href="blog/b5/05_1-the-two-layer-foundation.html" class="card-link">The Two-Layer Foundation →</a></article><article class="card"><h3>Constrained Cognitive Modes</h3><p>Phases as temporary action spaces with different purpose, tools, authority, evidence, and transitions.</p><a href="blog/b6/06_1-phasic-foundation.html" class="card-link">Phasic Foundation →</a></article><article class="card"><h3>Plugin Anatomy</h3><p>The documented cell/system model: readers, writers, dependencies, hooks, scripts, state, specialists, tests, and wiring.</p><a href="blog/b7/07_1-plugin-kit-foundation.html" class="card-link">Plugin Kit Foundation →</a></article><article class="card"><h3>Evidence-Guided Hardening</h3><p>How behavioral controls can move from coaching to measurement, deterministic enforcement, tests, and reusable templates.</p><a href="blog/b8/08_4-soft-hard-migration.html" class="card-link">Soft → Hard Migration →</a></article><article class="card"><h3>Governed Self-Modification</h3><p>How a harness can participate in modifying itself while keeping authority, tests, historical context, and rollback around substrate changes.</p><a href="blog/b8/08_8-safe-self-modification.html" class="card-link">Safe Self-Modification →</a></article></div></section>
 
-        <section class="container seed-section">
-            <div class="milestone-card glass-card">
-                <span class="badge">Private Systems & Demonstrations</span>
-                <h2>The Code Is Not All Public. The Systems Are Demonstrable.</h2>
-                <p>Several of my more developed harnesses contain accumulated working context, team-specific architecture, or experimental substrate that I do not publish directly. In a technical discussion I can demonstrate working systems, architecture boundaries, execution traces, tests, failure/recovery behavior, and how the same conceptual idea changes across implementations.</p>
-                <p>I am especially interested in where these abstractions fail. The purpose of building multiple prototypes is to identify which concepts continue to make sense after the machinery underneath them changes.</p>
-            </div>
-        </section>
+        <section class="container seed-section"><div class="milestone-card glass-card"><span class="badge">Private Systems & Demonstrations</span><h2>The Code Is Not All Public. The Systems Are Demonstrable.</h2><p>Several developed harnesses contain accumulated working context, team-specific architecture, or experimental substrate that I do not publish directly. In a technical discussion I can demonstrate working systems, architecture boundaries, execution traces, tests, failure/recovery behavior, and how the same conceptual idea changes across implementations.</p><p>I am especially interested in where these abstractions fail. The purpose of building multiple prototypes is to identify which concepts continue to make sense after the machinery underneath them changes.</p></div></section>
 
-        <section class="container seed-section">
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="assets/images/profile-pic1.png" alt="Hadi Nayebi" class="profile-img">
-                </div>
-                <div class="about-content">
-                    <span class="badge">Background</span>
-                    <h2>Hadi Nayebi</h2>
-                    <p>I trained as a scientist, with a PhD spanning organic chemistry and structural biology, and later moved into machine learning, software, and agent systems. My default way of working is experimental: define the behavior, build a mechanism, observe failure, compare implementations, and keep the abstractions that survive.</p>
-                    <p>I founded Hadosh Academy because education is also an architectural test. If a complex harness concept can be separated from its implementation, named clearly, and used by a domain expert to externalize their own way of thinking, then the abstraction is becoming useful beyond the person who originally engineered it.</p>
-                    <p>The long-term outcome I am working toward is simple to state: people should be able to build a digital cortex they understand better than anyone else &mdash; an externalized part of their agency that grows with their work while the underlying models remain interchangeable engines.</p>
-                    <div class="about-cta">
-                        <a href="contact.html" class="btn btn-primary">Contact Me</a>
-                        <a href="https://github.com/hadi-nayebi" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
-                        <a href="https://www.linkedin.com/in/hadinayebi" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="container seed-section"><div class="about-grid"><div class="about-image"><img src="assets/images/profile-pic1.png" alt="Hadi Nayebi" class="profile-img"></div><div class="about-content"><span class="badge">Background</span><h2>Hadi Nayebi</h2><p>I trained as a scientist, with a PhD spanning organic chemistry and structural biology, and later moved into machine learning, software, and agent systems. My default way of working is experimental: define the behavior, build a mechanism, observe failure, compare implementations, and keep the abstractions that survive.</p><p>I founded Hadosh Academy because education is also an architectural test. If a complex harness concept can be separated from its implementation, named clearly, and used by a domain expert to externalize their own way of thinking, then the abstraction is becoming useful beyond the person who originally engineered it.</p><p>The long-term outcome I am working toward is simple to state: people should be able to build a digital cortex they understand better than anyone else — an externalized part of their agency that grows with their work while the underlying models remain interchangeable engines.</p><div class="about-cta"><a href="contact.html" class="btn btn-primary">Contact Me</a><a href="https://github.com/hadi-nayebi" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a><a href="https://www.linkedin.com/in/hadinayebi" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a></div></div></div></section>
     </main>
 
-    <footer id="site-footer">
-        <div class="container">
-            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/theme-manager.js?v=20260723"></script>
-    <script src="js/components.js?v=20260723"></script>
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="js/theme-manager.js?v=20260830"></script><script src="js/components.js?v=20260830"></script>
 </body>
-
 </html>
