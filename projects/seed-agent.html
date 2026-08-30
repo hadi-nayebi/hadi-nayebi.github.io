@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
     <link rel="stylesheet" href="../css/project-pages.css?v=20260830-2">
     <link rel="stylesheet" href="../css/project-polish.css?v=20260830-1">
-    <link rel="stylesheet" href="../css/project-product.css?v=20260830-1">
+    <link rel="stylesheet" href="../css/project-product.css?v=20260830-2">
 </head>
 <body class="project-detail-page seed-project-page">
     <header id="site-header"><div class="container"><nav>
@@ -44,6 +44,15 @@
             </div>
         </section>
 
+        <section class="project-opening">
+            <div class="container project-opening-inner">
+                <span class="project-opening-label">Project overview</span>
+                <p>Seed Agent is an open-source effort to make the agent harness—not a single model session—the durable layer that becomes specific to one person's work. A user interacts through Codex, while the Seed preserves the parts that should survive across sessions and model changes: ongoing jobs, memory, reusable behaviors, verification rules, authority boundaries, and the working methods the system learns over time.</p>
+                <p>The project grows out of the first Hadosh Academy Seed, a private Claude Code implementation where these ideas were developed together through sustained use. That earlier system is documented publicly across the B5–B8 technical series and remains available for private technical review, giving the Codex version a concrete architectural lineage rather than a blank-sheet concept.</p>
+                <p>The Codex generation reimplements those behaviors against Codex's own primitives instead of copying the earlier file structure. The long-term goal is a mature public Seed that a person can clone, understand, and cultivate into their own digital cortex while keeping their specific jobs, knowledge, and history local to their deployment.</p>
+            </div>
+        </section>
+
         <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Seed Agent sections"><a href="#mission">Mission</a><a href="#lineage">Technical lineage</a><a href="#architecture">Architecture</a><a href="#memory">Working memory</a><a href="#roadmap">Roadmap</a><a href="#participate">Participate</a></nav></div>
 
         <section class="container project-long-section" id="mission">
@@ -54,7 +63,7 @@
         <section class="container project-long-section" id="lineage">
             <div class="project-section-heading"><div><span class="project-kicker">Technical lineage</span><h2>The Codex Seed grows from a documented working prototype.</h2></div><p>The private Claude Seed is the first-generation reference implementation. Its architecture is described publicly across the Hadosh Academy technical series, while the repository itself can be reviewed privately by request.</p></div>
             <div class="seed-reference-map">
-                <article class="seed-reference-node is-frozen"><span class="project-meta-pill">Reference implementation</span><h3>Hadosh Academy Claude Seed</h3><p>The original personal harness where persistent jobs, OPEVC, plugin anatomy, local working memory, guards, questioning discipline, verification, condensation, and safe self-modification were developed together.</p><a class="card-link" href="../contact.html">Request private technical access &rarr;</a></article>
+                <article class="seed-reference-node is-frozen"><span class="project-meta-pill">Reference implementation</span><h3>Hadosh Academy Claude Seed</h3><p>The original personal harness where persistent jobs, OPEVC, plugin anatomy, local working memory, guards, questioning discipline, verification, condensation, and safe self-modification were developed together.</p><a class="card-link" href="../seed-access.html">Request private technical access &rarr;</a></article>
                 <div class="seed-reference-arrow" aria-hidden="true">→</div>
                 <article class="seed-reference-node"><span class="project-meta-pill">Codex generation</span><h3>Seed Agent</h3><p>The same behavioral problems are reconsidered against Codex's native primitives, with implementation details free to change while the useful abstractions are preserved and improved.</p><a class="card-link" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Follow the public implementation &rarr;</a></article>
             </div>
@@ -96,10 +105,10 @@
         </section>
 
         <section class="container project-long-section" id="participate">
-            <div class="project-section-heading"><div><span class="project-kicker">Follow and participate</span><h2>The project is being built in public while the reference architecture remains inspectable.</h2></div><p>People can follow the code, read the technical lineage, request access to the original reference, or contribute questions and design feedback directly below.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Follow and participate</span><h2>Follow the implementation and help sharpen the architecture.</h2></div><p>People can follow the code, read the technical lineage, request access to the original reference, or contribute questions and design feedback directly below.</p></div>
             <div class="project-participate">
                 <article><h3>Follow the implementation</h3><p>The public repository is the source of truth for Codex Seed development and future PR-by-PR capability work.</p><a class="card-link" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Open the Seed Agent repository &rarr;</a></article>
-                <article><h3>Study the reference</h3><p>Use the technical essays for public architecture context, or request private access to the frozen Claude Seed for deeper technical review.</p><a class="card-link" href="../contact.html">Request reference access &rarr;</a></article>
+                <article><h3>Study the reference</h3><p>Use the technical essays for public architecture context, or request private access to the Claude Seed for deeper technical review.</p><a class="card-link" href="../seed-access.html">Request reference access &rarr;</a></article>
             </div>
 
             <div class="project-comments-section">
