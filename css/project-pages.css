@@ -1,13 +1,15 @@
 /* Project-specific layouts. These pages deliberately do not share one normalized template. */
 
-.project-detail-page {
+.project-detail-page,
+.projects-overview-page {
     --project-panel: rgba(255, 255, 255, 0.035);
     --project-panel-strong: rgba(255, 255, 255, 0.065);
     --project-line: rgba(255, 255, 255, 0.12);
     --project-soft: #aab0bd;
 }
 
-.project-detail-page main {
+.project-detail-page main,
+.projects-overview-page main {
     padding-bottom: 5rem;
 }
 
@@ -78,7 +80,8 @@
     font-weight: 650;
 }
 
-.project-detail-page .project-actions {
+.project-detail-page .project-actions,
+.projects-overview-page .project-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -497,7 +500,13 @@
     margin-bottom: 0.8rem;
 }
 
-.team-split-panel li {
+.team-split-panel ul,
+.family-communication-panel ul {
+    padding-left: 1.2rem;
+}
+
+.team-split-panel li,
+.family-communication-panel li {
     margin: 0.45rem 0;
     color: var(--text-muted);
 }
@@ -513,6 +522,10 @@
     border: 1px solid var(--project-line);
     border-radius: 16px;
     background: var(--project-panel);
+}
+
+.team-growth-step p {
+    color: var(--text-muted);
 }
 
 /* Family Games project */
@@ -644,6 +657,10 @@
     background: var(--project-panel);
 }
 
+.family-communication-panel p {
+    color: var(--text-muted);
+}
+
 .family-ownership-stack {
     display: grid;
     gap: 0.7rem;
@@ -663,6 +680,10 @@
     color: var(--family-green);
 }
 
+.family-ownership-row span {
+    color: var(--text-muted);
+}
+
 .family-economy-examples {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -680,6 +701,10 @@
     display: block;
     margin-bottom: 0.45rem;
     color: var(--family-gold);
+}
+
+.family-economy-card p {
+    color: var(--text-muted);
 }
 
 /* Responsive */
@@ -743,6 +768,12 @@
     .qseed-stack-layer.brain,
     .qseed-stack-layer.jobs {
         margin-left: 0;
+    }
+
+    .qseed-compare-table {
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
     }
 
     .family-world-visual {
