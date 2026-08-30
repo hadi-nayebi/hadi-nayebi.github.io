@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/styles.css?v=20260724-2">
     <link rel="stylesheet" href="../css/project-pages.css?v=20260830-2">
     <link rel="stylesheet" href="../css/project-polish.css?v=20260830-1">
+    <link rel="stylesheet" href="../css/project-product.css?v=20260830-1">
 </head>
 <body class="project-detail-page family-project-page">
     <header id="site-header"><div class="container"><nav>
@@ -29,36 +30,37 @@
         <section class="project-hero family-hero">
             <div class="container project-hero-grid">
                 <div class="project-hero-copy">
-                    <span class="project-kicker">Group project · family scale · ideation</span>
+                    <span class="project-kicker">Group project · family scale · concept development</span>
                     <h1>Family Games</h1>
-                    <p class="project-lede">A private illustrated world for a real family—not an open social game. Roughly 7–15 invited family members return to the same place over years, talk as characters, discover animals and hidden objects, create things together, play at different times, and leave family history inside the world itself.</p>
+                    <p class="project-lede">Family Games imagines a private illustrated world that belongs to one real family. Roughly 7–15 invited family members return to the same place over years, talk as characters, discover animals and hidden objects, create things together, play at different times, and leave family history inside the world itself.</p>
                     <div class="project-meta-row"><span class="project-meta-pill">7–15 family members</span><span class="project-meta-pill">Private web / PWA world</span><span class="project-meta-pill">Live + asynchronous</span><span class="project-meta-pill">Family-owned data</span></div>
-                    <div class="project-actions"><a class="btn btn-primary" href="#concept">Understand the concept</a><a class="btn btn-secondary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/21" target="_blank" rel="noopener">Join the design discussion</a></div>
+                    <div class="project-actions"><a class="btn btn-primary" href="#concept">Explore the concept</a><a class="btn btn-secondary" href="#roadmap">Development roadmap</a></div>
                 </div>
                 <figure class="family-hero-figure">
-                    <img src="../assets/images/family-games-concept.svg" alt="Concept illustration of a persistent family game world with multiple family members, animals, shared building, voice proximity, memory markers, and magical authoring." loading="eager">
-                    <figcaption>Concept image: multiple family members inhabit one persistent world. The game grows from simple exploration into shared authorship, communication, and memory.</figcaption>
+                    <img src="../assets/images/family-games-concept.svg" alt="Illustrated concept of several family members exploring one persistent world with animals, a shared home, memory markers, proximity voice, and a child using a wand to awaken an object." loading="eager">
+                    <figcaption>Concept illustration: several family members share one persistent world that grows through discovery, communication, authorship, and time.</figcaption>
                 </figure>
             </div>
         </section>
 
-        <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Family Games sections"><a href="#concept">Concept</a><a href="#inspiration">Inspiration</a><a href="#gameplay">Gameplay</a><a href="#family">Family layer</a><a href="#memory">Memory</a><a href="#ownership">Ownership</a><a href="#open">Open questions</a></nav></div>
+        <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Family Games sections"><a href="#concept">Concept</a><a href="#inspiration">Inspiration</a><a href="#gameplay">Gameplay</a><a href="#family">Family layer</a><a href="#memory">Memory</a><a href="#ownership">Ownership</a><a href="#roadmap">Roadmap</a><a href="#participate">Discuss</a></nav></div>
 
         <section class="container project-long-section" id="concept">
-            <div class="project-section-heading"><div><span class="project-kicker">Why make this?</span><h2>A family call ends. A family world can remain.</h2></div><p>The core idea is not “a zoo game with family members.” It is a persistent place that can replace some of the social function of a group call while giving the family something shared to return to afterward.</p></div>
-            <div class="project-prose two-column-prose"><p>Every invited family member has a character in the same private world. When several people are online, they can walk together, split into smaller conversations, play, discover things, or work on a shared project. When only one person is online, the world still has useful activity—especially for children.</p><p>Nothing important resets when the session ends. Animals keep their names. Objects stay where they were created. Buildings remain. Memories can stay attached to places. The world becomes more specific to that family over time.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Give a family a place that survives the call.</h2></div><p>Video calls connect people for an hour. Family Games asks what happens when the gathering itself has a persistent place, shared objects, recurring rituals, and memory.</p></div>
+            <div class="project-prose two-column-prose"><p>Every invited family member has a character in the same private world. When several people are online, they can walk together, split into smaller conversations, play, discover things, or work on a shared project. When one person is online, the world still has useful activity—especially for children.</p><p>Nothing important has to reset when the session ends. Animals keep their names. Objects stay where they were created. Buildings remain. Memories can stay attached to places. The world becomes more specific to that family over time.</p></div>
         </section>
 
         <section class="container project-long-section" id="inspiration">
-            <div class="project-section-heading"><div><span class="project-kicker">Starting inspiration</span><h2>The simple loop was: walk, find an animal, name it.</h2></div><p>The gameplay clip below helped inspire the visual direction and the basic pleasure of moving through an illustrated top-down environment and discovering animals. Family Games deliberately extends that loop much further.</p></div>
-            <div class="family-inspiration-grid">
-                <div class="family-video-frame"><iframe src="https://www.youtube.com/embed/EBXPV2-CccM" title="Gameplay reference that inspired part of the Family Games concept" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-                <div class="family-inspiration-copy"><span class="project-meta-pill">Reference: We Build a Zoo gameplay clip</span><h3>What Family Games keeps</h3><ul><li>Simple top-down movement through a friendly illustrated world.</li><li>The satisfaction of encountering animals in the environment.</li><li>Naming animals so discoveries become personally meaningful.</li><li>A low-friction visual style that works for children and adults.</li></ul><h3>What Family Games adds</h3><ul><li>Many family characters in the world at the same time, not one player.</li><li>Spatial voice and family communication.</li><li>A persistent shared world rather than a single-player progression loop.</li><li>Hidden illustrated objects that can be awakened into interactive/persistent objects.</li><li>Family authorship, asynchronous play, memory, permissions, and self-hosted ownership.</li></ul></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Starting inspiration</span><h2>The seed mechanic was simple: walk, find an animal, name it.</h2></div><p>A cozy top-down zoo/exploration game inspired the initial visual and interaction direction. Family Games takes that small discovery loop and turns it into a much larger family system.</p></div>
+            <div class="family-inspiration-text">
+                <p><strong>What carries forward:</strong> easy top-down movement, a friendly illustrated world, the pleasure of discovering animals in the environment, and naming them so the discovery becomes personal.</p>
+                <p><strong>What Family Games adds:</strong> many family characters at once, spatial voice, adult/child permissions, persistent shared world state, hidden illustrated objects that can become interactive, family authoring, live and asynchronous play, long-term memory, shared construction, and family-owned hosting.</p>
+                <p>The inspiration is a starting interaction pattern, not the product definition. The core product idea is the family-owned persistent world and the social/harness system around it.</p>
             </div>
         </section>
 
         <section class="container project-long-section" id="gameplay">
-            <div class="project-section-heading"><div><span class="project-kicker">The world grows through use</span><h2>Explore first. Then the family begins authoring the place.</h2></div><p>The game can begin visually simple. Depth is introduced gradually through discovery and family-created objects rather than requiring a fully simulated 3D world from the beginning.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">The world grows through use</span><h2>Explore first. Then the family begins authoring the place.</h2></div><p>The world can begin visually simple and gain depth through discovery, creation, and repeated family use.</p></div>
             <div class="family-flow-grid">
                 <article><span>01</span><h3>Explore</h3><p>Move through illustrated regions and notice animals, landmarks, paths, and hidden hotspots.</p></article>
                 <article><span>02</span><h3>Discover</h3><p>Some flat background elements are latent objects. Finding one can make it interactive and attach a discoverer tag.</p></article>
@@ -70,26 +72,49 @@
         </section>
 
         <section class="container project-long-section" id="family">
-            <div class="project-section-heading"><div><span class="project-kicker">Why this is a family system</span><h2>Live conversation, asynchronous play, and household authority coexist.</h2></div><p>The project needs to work for adults and children without becoming either a generic video call or a children's game that adults have no reason to enter.</p></div>
-            <div class="family-feature-split"><article class="family-feature-panel"><h3>When the family is together</h3><ul><li><strong>Spatial voice:</strong> nearby characters hear one another; conversations can split naturally by location.</li><li><strong>Regroup:</strong> a family-wide call/shout can bring everyone back together.</li><li><strong>Cooperative activities:</strong> exploration, voting, construction, games, celebrations, and shared decisions.</li><li><strong>Visible presence:</strong> who is nearby and who can hear should be legible, not hidden.</li></ul></article><article class="family-feature-panel"><h3>Between family gatherings</h3><ul><li><strong>Children:</strong> educational puzzles, exploration, creative tasks, animal care, or games.</li><li><strong>Adults:</strong> leave objects, messages, small challenges, or contributions for later.</li><li><strong>World continuity:</strong> solo activity can create surprises or progress that the whole family sees next time.</li><li><strong>Agent-generated activities:</strong> future games can use the family's actual world and history, with adult review before persistent changes.</li></ul></article></div>
-            <div class="project-note"><strong>Family permissions matter.</strong> Adult and child accounts can have different authoring and communication powers. The household—not the software company—should define those rules.</div>
+            <div class="project-section-heading"><div><span class="project-kicker">Why this is a family system</span><h2>Live conversation, asynchronous play, and household authority coexist.</h2></div><p>The world should give both adults and children reasons to return without collapsing into either a generic group-call app or a children's game.</p></div>
+            <div class="family-feature-split">
+                <article class="family-feature-panel"><h3>When the family is together</h3><ul><li><strong>Spatial voice:</strong> nearby characters hear one another; conversations can split naturally by location.</li><li><strong>Regroup:</strong> a family-wide call/shout can bring everyone back together.</li><li><strong>Cooperative activities:</strong> exploration, voting, construction, games, celebrations, and shared decisions.</li><li><strong>Visible presence:</strong> who is nearby and who can hear should be legible.</li></ul></article>
+                <article class="family-feature-panel"><h3>Between family gatherings</h3><ul><li><strong>Children:</strong> educational puzzles, exploration, creative tasks, animal care, or games.</li><li><strong>Adults:</strong> leave objects, messages, small challenges, or contributions for later.</li><li><strong>World continuity:</strong> solo activity can create surprises or progress that the whole family sees next time.</li><li><strong>Agent-generated activities:</strong> future games can use the family's actual world and history, with adult review for persistent changes.</li></ul></article>
+            </div>
+            <div class="project-note"><strong>Family permissions are part of the game architecture.</strong> Adult and child accounts can have different authoring and communication powers. The household defines those rules.</div>
         </section>
 
         <section class="container project-long-section" id="memory">
-            <div class="project-section-heading"><div><span class="project-kicker">A world that becomes an archive</span><h2>Family memory stays connected to places and objects.</h2></div><p>The long-term value is not only game progress. It is that ordinary play slowly creates a navigable history of the family.</p></div>
-            <div class="project-fact-grid"><article class="project-fact-card"><h3>Provenance</h3><p>Objects can remember who discovered, named, built, or authored them.</p></article><article class="project-fact-card"><h3>Place-based memories</h3><p>Recordings, sounds, notes, or events can remain attached to the place where they happened.</p></article><article class="project-fact-card"><h3>Traditions</h3><p>Birthdays, recurring gatherings, family rituals, and shared projects can leave visible traces instead of resetting each year.</p></article><article class="project-fact-card"><h3>Changing world</h3><p>Animals can age or gain abilities; structures can evolve; old objects can become markers of earlier family periods.</p></article><article class="project-fact-card"><h3>Session highlights</h3><p>The harness could prepare short family-session summaries or videos, but private family media should remain reviewable before it is preserved or shared.</p></article><article class="project-fact-card"><h3>Generational continuity</h3><p>If the world lasts long enough, younger family members can encounter objects and stories created before they were old enough to remember them.</p></article></div>
+            <div class="project-section-heading"><div><span class="project-kicker">A world that becomes an archive</span><h2>Family memory stays connected to places and objects.</h2></div><p>The long-term value is not only game progression. Ordinary play can gradually create a navigable family history.</p></div>
+            <div class="project-fact-grid">
+                <article class="project-fact-card"><h3>Provenance</h3><p>Objects can remember who discovered, named, built, or authored them.</p></article>
+                <article class="project-fact-card"><h3>Place-based memories</h3><p>Recordings, sounds, notes, or events can remain attached to the place where they happened.</p></article>
+                <article class="project-fact-card"><h3>Traditions</h3><p>Birthdays, recurring gatherings, family rituals, and shared projects can leave visible traces instead of resetting each year.</p></article>
+                <article class="project-fact-card"><h3>Changing world</h3><p>Animals can age or gain abilities; structures can evolve; old objects can become markers of earlier family periods.</p></article>
+                <article class="project-fact-card"><h3>Session highlights</h3><p>The harness can prepare short family-session summaries or videos that the family reviews and chooses to keep.</p></article>
+                <article class="project-fact-card"><h3>Generational continuity</h3><p>Over enough years, younger family members can encounter objects and stories created before they were old enough to remember them.</p></article>
+            </div>
         </section>
 
         <section class="container project-long-section" id="ownership">
-            <div class="project-section-heading"><div><span class="project-kicker">The family owns the world</span><h2>Private family history should not depend on one company's account database.</h2></div><p>The intended architecture is a portable private web app/PWA that a family can host on a VPS, home server, or NAS—or use through a managed setup that remains exportable.</p></div>
-            <div class="family-ownership-grid"><article><strong>World</strong><p>Map, objects, progression, buildings, animals, permissions, and family rules.</p></article><article><strong>Media</strong><p>Voice clips, recordings, images, generated highlights, and other private family assets.</p></article><article><strong>Memory</strong><p>Any harness/agent memory learned from the family and its history.</p></article><article><strong>Extensions</strong><p>Custom games, authored content, household rules, and future family-created mechanics.</p></article></div>
-            <p class="project-open-note"><strong>Product packaging is still open:</strong> direct self-hosting, assisted VPS deployment, or optional managed hosting can all be explored. The non-negotiable direction is portability and family ownership.</p>
+            <div class="project-section-heading"><div><span class="project-kicker">The family owns the world</span><h2>Years of private family history should remain portable.</h2></div><p>The intended architecture is a private web app/PWA that can live on a family VPS, home server, NAS, or a managed deployment that preserves exportability and ownership.</p></div>
+            <div class="family-ownership-grid">
+                <article><strong>World</strong><p>Map, objects, progression, buildings, animals, permissions, and family rules.</p></article>
+                <article><strong>Media</strong><p>Voice clips, recordings, images, generated highlights, and other private family assets.</p></article>
+                <article><strong>Memory</strong><p>Any harness/agent memory learned from the family and its history.</p></article>
+                <article><strong>Extensions</strong><p>Custom games, authored content, household rules, and future family-created mechanics.</p></article>
+            </div>
         </section>
 
-        <section class="container project-long-section" id="open">
-            <div class="project-section-heading"><div><span class="project-kicker">Still in design</span><h2>The unresolved questions are part of the project.</h2></div><p>The concept is intentionally not pretending to be a finished game specification.</p></div>
-            <div class="family-question-grid"><article><h3>Return ritual</h3><p>What makes a family want to reopen the world every week or month rather than use it once?</p></article><article><h3>Adult / child balance</h3><p>Which activities are interesting to both, and which should be intentionally age-specific?</p></article><article><h3>Economy</h3><p>How much earned value stays personal versus entering a family chest? Should that split vary by resource or project?</p></article><article><h3>Privacy</h3><p>What should the world remember automatically, what requires consent, and what should never become persistent memory?</p></article><article><h3>AI authority</h3><p>Which new games or objects can the harness generate on its own, and which persistent changes require an adult or family vote?</p></article><article><h3>Hosting</h3><p>How technical can self-hosting be before the product stops being useful to ordinary families?</p></article></div>
-            <div class="project-actions final-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/issues/21" target="_blank" rel="noopener">Comment on the Design</a><a class="btn btn-secondary" href="team-harnesses.html">Small-Team Project</a><a class="btn btn-secondary" href="crime-cartography.html">Collective Project</a></div>
+        <section class="container project-long-section" id="roadmap">
+            <div class="project-section-heading"><div><span class="project-kicker">Development roadmap</span><h2>From a discovery-game idea to a family-owned persistent world.</h2></div><p>The current work is consolidating the world, communication, authorship, memory, and ownership systems into one coherent design.</p></div>
+            <div class="project-roadmap">
+                <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Stage 0 · Inspiration</span><h3>Animal discovery loop</h3><p>Start from the simple pleasure of moving through an illustrated world, finding animals, and naming them.</p></article>
+                <article class="project-roadmap-step is-current"><span class="roadmap-stage">Stage 1 · Current</span><h3>Family world design</h3><p>Define multiplayer presence, spatial communication, authoring, household permissions, asynchronous play, memory, and family ownership.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 2</span><h3>Private playable prototype</h3><p>Build the smallest family world with characters, proximity voice, animal discovery, persistence, and a first shared-creation mechanic.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 3</span><h3>Family pilot and expansion</h3><p>Run the world with a real family, then expand the systems that actually create return rituals, shared history, and multi-year value.</p></article>
+            </div>
+        </section>
+
+        <section class="container project-long-section" id="participate">
+            <div class="project-section-heading"><div><span class="project-kicker">Shape the design</span><h2>What would make your family return to the same world for years?</h2></div><p>Use the discussion below for gameplay ideas, family rituals, privacy expectations, child/adult permissions, hosting preferences, or critique of the concept.</p></div>
+            <div class="project-comments-section"><div class="project-comments-head"><span>Project discussion</span><h2>Comments</h2><p>The discussion lives on the project page, the same way comments live with the technical essays.</p></div><div class="project-comments-shell"><script src="https://giscus.app/client.js" data-repo="hadi-nayebi/hadi-nayebi.github.io" data-repo-id="R_kgDOHL_tnQ" data-category="General" data-category-id="DIC_kwDOHL_tnc4C3cRQ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></div></div>
         </section>
     </main>
 
