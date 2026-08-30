@@ -62,9 +62,15 @@ for (const file of publicHtml) {
   const html = fs.readFileSync(file, 'utf8');
   const fileRel = rel(file);
   const redirect = isRedirectPage(html);
+  const explorable = fileRel.startsWith('blog/') && fileRel.includes('/explore/');
 
-  if (!redirect && !/components\.js(?:\?[^"']*)?["']/i.test(html)) {
+  if (!redirect && !explorable && !/components\.js(?:\?[^"']*)?["']/i.test(html)) {
     errors.push(`${fileRel}: missing shared components.js`);
+  }
+
+  if (explorable) {
+    const hasBackControl = /class=["'][^"']*(?:chrome-back|explore-back|back-to-essay)[^"']*["']/i.test(html) || /Back to (?:Essay|Blog|Article)/i.test(html);
+    if (!hasBackControl) errors.push(`${fileRel}: full-screen explorable missing a back-to-essay control`);
   }
 
   for (const attribute of ['href', 'src']) {
@@ -76,7 +82,7 @@ for (const file of publicHtml) {
     }
   }
 
-  if (fileRel.startsWith('blog/') && !fileRel.includes('/explore/') && !redirect) {
+  if (fileRel.startsWith('blog/') && !explorable && !redirect) {
     if (!/class=["'][^"']*article-content/i.test(html)) {
       warnings.push(`${fileRel}: blog HTML is not an article layout; article-series checks skipped`);
       continue;
