@@ -1,0 +1,40 @@
+/* Shared visual-storytelling layer for Hadosh Academy conceptual illustrations. */
+.story-visual {
+    margin: clamp(1.6rem, 4vw, 3rem) auto;
+    max-width: 1120px;
+}
+.story-visual img,
+.story-visual svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #090b0c;
+    box-shadow: 0 20px 60px rgba(0,0,0,.32);
+}
+.story-visual figcaption {
+    max-width: 900px;
+    margin: .8rem auto 0;
+    color: var(--text-muted, #9ba0aa);
+    font-size: .9rem;
+    line-height: 1.55;
+    text-align: center;
+}
+.story-visual.is-wide { max-width: 1220px; }
+.story-visual.is-medium { max-width: 920px; }
+.story-visual.is-narrow { max-width: 760px; }
+.story-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 1rem;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+}
+.story-visual-grid .story-visual { margin: 0; }
+@media (max-width: 760px) {
+    .story-visual { margin: 1.35rem auto 2rem; }
+    .story-visual img,
+    .story-visual svg { border-radius: 14px; }
+    .story-visual figcaption { font-size: .82rem; text-align: left; }
+    .story-visual-grid { grid-template-columns: 1fr; }
+}
