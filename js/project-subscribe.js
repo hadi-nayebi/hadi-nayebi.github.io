@@ -43,12 +43,50 @@
         try {
             window.localStorage.setItem(SUCCESS_STORAGE_KEY, String(timestamp));
         } catch (_error) {
-            // Storage can be unavailable in strict privacy modes. Provider-side
-            // controls remain the authoritative abuse boundary.
+            // Storage can be unavailable in strict privacy modes.
         }
     }
 
-    function initialize() {
+    function mountProjectComments() {
+        if (document.querySelector('.article-comments')) return;
+        var main = document.querySelector('main');
+        if (!main) return;
+
+        var section = document.createElement('section');
+        section.id = 'project-comments';
+        section.className = 'container article-comments';
+        section.innerHTML = '<h2>Comments</h2><p>Questions, criticism, editorial ideas, and collaboration notes stay attached to this project page.</p>';
+        main.appendChild(section);
+
+        document.querySelectorAll('a[href*="github.com/hadi-nayebi/crime-cartography/discussions"]').forEach(function (link) {
+            link.href = '#project-comments';
+            link.removeAttribute('target');
+            link.removeAttribute('rel');
+            if (/challenge|define|design|discuss/i.test(link.textContent)) {
+                link.textContent = 'Discuss on this page';
+            }
+        });
+
+        var script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', 'hadi-nayebi/hadi-nayebi.github.io');
+        script.setAttribute('data-repo-id', 'R_kgDOHL_tnQ');
+        script.setAttribute('data-category', 'General');
+        script.setAttribute('data-category-id', 'DIC_kwDOHL_tnc4C3cRQ');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '0');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'top');
+        script.setAttribute('data-theme', 'dark');
+        script.setAttribute('data-lang', 'en');
+        script.setAttribute('data-loading', 'lazy');
+        script.crossOrigin = 'anonymous';
+        script.async = true;
+        section.appendChild(script);
+    }
+
+    function initializeSubscription() {
         var form = document.getElementById('project-subscribe-form');
         var submit = document.getElementById('project-subscribe-submit');
         if (!form || !submit) return;
@@ -57,7 +95,7 @@
 
         if (!window.emailjs) {
             submit.disabled = true;
-            setStatus('Email subscription is temporarily unavailable. You can still comment through GitHub.', 'error');
+            setStatus('Email subscription is temporarily unavailable. Project discussion remains available below.', 'error');
             return;
         }
 
@@ -69,6 +107,7 @@
                 throttle: SEND_THROTTLE_MS
             }
         });
+
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             if (sending) return;
@@ -143,13 +182,18 @@
                     setStatus('Too many requests were attempted. Please wait before trying again.', 'error');
                     return;
                 }
-                setStatus('The request could not be sent. Please try again later or use the GitHub feedback link.', 'error');
+                setStatus('The request could not be sent. Please try again later.', 'error');
             }).finally(function () {
                 sending = false;
                 submit.disabled = false;
                 submit.textContent = 'Send project-email request';
             });
         });
+    }
+
+    function initialize() {
+        initializeSubscription();
+        mountProjectComments();
     }
 
     if (document.readyState === 'loading') {
