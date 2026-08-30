@@ -1,93 +1,45 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.1 -->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Hadosh Academy</title>
-    <meta name="description" content="Get in touch with Hadosh Academy. Reach out about consulting, agent engineering, or collaboration.">
+    <meta name="description" content="Get in touch about Hadosh Academy projects, collaboration, harness research, training, or custom individual and team work.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/contact.html">
     <meta property="og:title" content="Contact | Hadosh Academy">
-    <meta property="og:description" content="Get in touch with Hadosh Academy. Reach out about consulting, agent engineering, or collaboration.">
-    <meta property="og:url" content="https://hadi-nayebi.github.io/contact.html">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
-    <meta property="og:site_name" content="Hadosh Academy">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Contact | Hadosh Academy">
-    <meta name="twitter:description" content="Get in touch with Hadosh Academy. Reach out about consulting, agent engineering, or collaboration.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
-    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="css/styles.css?v=20260704">
+    <meta property="og:description" content="Reach out about project collaboration, agent harnesses, public research, training, or custom work.">
+    <link rel="stylesheet" href="css/styles.css?v=20260830">
 </head>
-
 <body>
-    <header id="site-header">
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">Hadosh Academy</a>
-                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                </button>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="start-here.html">Start Here</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="agents.html">Agents</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html" class="active" aria-current="page">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <header id="site-header"><div class="container"><nav>
+        <a href="index.html" class="logo">Hadosh Academy</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="about.html">About</a><a href="contact.html" class="active" aria-current="page">Contact</a></div>
+    </nav></div></header>
 
     <main class="container">
         <section class="hero hero-compact">
             <div class="form-wrapper">
+                <span class="badge">Contact</span>
                 <h1>Get in Touch</h1>
-                <p>Interested in consulting, cohorts, or just want to say hello? Reach out directly.</p>
-
+                <p>Use this form for project collaboration, technical discussion, feedback on the public Seed work, custom individual or team harnesses, training, or other serious questions about Hadosh Academy.</p>
                 <div class="card contact-card">
                     <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" id="newcomer" name="newcomer" class="form-check-input">
-                            <label for="newcomer" class="form-check-label">I'm new here and would like some getting-started info.</label>
-                        </div>
+                        <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" class="form-control" required></div>
+                        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" class="form-control" required></div>
+                        <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" class="form-control" rows="6" required></textarea></div>
+                        <div class="form-group form-check"><input type="checkbox" id="newcomer" name="newcomer" class="form-check-input"><label for="newcomer" class="form-check-label">I'm new here and would like a pointer to the best starting material.</label></div>
                         <button type="submit" id="submit-button" class="btn btn-primary btn-submit">Send Message</button>
                     </form>
                 </div>
+                <div class="hero-actions"><a href="projects/index.html" class="btn btn-secondary">Explore Projects</a><a href="agents.html" class="btn btn-secondary">Seed Implementations</a></div>
             </div>
         </section>
     </main>
 
-    <footer id="site-footer">
-        <div class="container">
-            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="js/theme-manager.js?v=20260704"></script>
-    <script src="js/components.js?v=20260704"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript" src="js/form-handler.js?v=20260704"></script>
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="js/theme-manager.js?v=20260830"></script><script src="js/components.js?v=20260830"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script><script type="text/javascript" src="js/form-handler.js?v=20260704"></script>
 </body>
-
 </html>

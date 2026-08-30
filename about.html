@@ -1,273 +1,134 @@
 <!DOCTYPE html>
-<!-- Version: v0.5.1 -->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Academy | Hadosh Academy</title>
-    <meta name="description" content="Hadosh Academy teaches professionals how agent harnesses work, offers free access to its private Claude prototype by request, and builds Q-Seed in public.">
+    <meta name="description" content="Hadosh Academy is an open technical and educational project for user-owned agent harnesses, public Seed implementations, and collaborative experiments across individuals, groups, and collectives.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/about.html">
     <meta property="og:title" content="The Academy | Hadosh Academy">
-    <meta property="og:description" content="Learn from the private Claude Seed prototype and follow Q-Seed as it is built openly on Qwen Code.">
-    <meta property="og:url" content="https://hadi-nayebi.github.io/about.html">
-    <meta property="og:type" content="website">
+    <meta property="og:description" content="Learn the architecture, follow the public implementations, and help shape user-owned agent harnesses.">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
-    <meta property="og:site_name" content="Hadosh Academy">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Academy | Hadosh Academy">
-    <meta name="twitter:description" content="Learn from the private Claude Seed prototype and follow Q-Seed as it is built openly on Qwen Code.">
-    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
-    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="css/styles.css?v=20260721">
+    <link rel="stylesheet" href="css/styles.css?v=20260830">
 </head>
-
 <body>
     <header id="site-header">
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">Hadosh Academy</a>
-                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                    <span class="nav-toggle-bar"></span>
-                </button>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="start-here.html">Start Here</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="agents.html">Agents</a>
-                    <a href="about.html" class="active" aria-current="page">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+                <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="about.html" class="active" aria-current="page">About</a><a href="contact.html">Contact</a></div>
             </nav>
         </div>
     </header>
 
     <main class="page-content">
-
-        <!-- Hero -->
         <section class="container academy-hero">
             <span class="badge">Hadosh Academy</span>
             <h1>The Academy</h1>
-            <p class="academy-tagline">LEARN. EVOLVE. SCALE.</p>
-            <p class="academy-subtitle">Hadosh Academy teaches professionals how to build their own digital cortex through plain-language architecture, a working private prototype, and Q-Seed's public build.</p>
-            <p class="start-here-hint">New here? Begin with the <a href="start-here.html">Start Here</a> page &mdash; a five-minute bridge that explains what a seed agent is, who this site is for, and where to go next.</p>
+            <p class="academy-tagline">LEARN THE ARCHITECTURE. OWN THE HARNESS.</p>
+            <p class="academy-subtitle">Hadosh Academy is an open technical and educational project about building durable, inspectable agent harnesses that remain under the control of the people who use them.</p>
+            <p class="start-here-hint">New here? Begin with <a href="start-here.html">Start Here</a> for a five-minute introduction.</p>
         </section>
 
-        <!-- The Problem — visual section -->
         <section class="container about-visual-section">
-            <div class="about-visual-image">
-                <img src="assets/images/about/your-brain-vs-modern-world.png" alt="A person at a crossroads between a peaceful forest and an overwhelming wall of screens, drawn in colored chalk on a dark chalkboard" class="about-section-img" loading="lazy">
-            </div>
+            <div class="about-visual-image"><img src="assets/images/about/your-brain-vs-modern-world.png" alt="A person at a crossroads between a natural landscape and an overwhelming wall of screens." class="about-section-img" loading="lazy"></div>
             <div class="about-visual-content">
                 <h2>Why an Academy</h2>
-                <p>AI moves fast. The tools change every month. But the professionals who need them most &mdash; lawyers, consultants, researchers, project managers &mdash; do not have time to keep up.</p>
-                <p>Hadosh Academy exists to close that gap. The Academy teaches the ideas behind intelligent agents through plain-language essays and documents the real work of designing, building, and testing agent harnesses.</p>
-                <p class="lead-text">No prerequisites. No coding. Just a professional who wants to work smarter.</p>
+                <p>AI tools and models change quickly, but the harder problem is more stable: how does a person turn general model capability into a working system that remembers, coordinates, verifies, learns from experience, and remains understandable?</p>
+                <p>Hadosh Academy focuses on that layer. The goal is not to make every professional a software engineer. It is to make the important abstractions understandable enough that people can describe, inspect, and evolve their own harnesses while CLI agents handle more of the low-level implementation.</p>
+                <p class="lead-text">The user learns the anatomy, not the syntax.</p>
             </div>
         </section>
 
-        <!-- Philosophy — visual section (reversed) -->
         <section class="container about-visual-section reversed">
-            <div class="about-visual-image">
-                <img src="assets/images/about/from-chatbot-to-agent.png" alt="Three-stage evolution from simple chatbot to CLI agent to a living tree organism, drawn in colored chalk on a dark chalkboard" class="about-section-img" loading="lazy">
-            </div>
+            <div class="about-visual-image"><img src="assets/images/about/from-chatbot-to-agent.png" alt="Three-stage evolution from chatbot to CLI agent to a living agent system." class="about-section-img" loading="lazy"></div>
             <div class="about-visual-content">
                 <h2>From Chatbot to Digital Cortex</h2>
-                <p>Most people use AI as a chatbot &mdash; a helpful stranger they visit when they have a question. The Academy teaches a different approach: an agent that lives on your computer, learns your workflow, remembers your preferences, and improves every time you use it.</p>
-                <p>A seed agent is the starting point. The Claude prototype can be requested free while it matures; Q-Seed is being implemented publicly on Qwen Code. Over days and weeks, a seed can absorb your expertise and become something no generic chatbot can be &mdash; a cognitive extension built around <strong>your</strong> professional life.</p>
-                <p class="lead-text">That is what we mean by a digital cortex. And anyone can build one.</p>
+                <p>A chatbot is a conversation. A CLI agent adds tools and access to a local environment. A harness adds the durable cognitive structure around that runtime: memory, jobs, behavioral controls, authority, interfaces, verification, and learned working methods.</p>
+                <p>The long-term idea is a digital cortex that becomes specific to the user while remaining portable across model providers and runtimes. The model can change; the accumulated harness stays inspectable and user-owned.</p>
+                <p class="lead-text">The model is the engine. The harness is the durable layer.</p>
             </div>
         </section>
 
-        <!-- Cortex full-bleed visual section — "Your brain, extended" -->
         <section class="container cortex-feature-section">
             <div class="cortex-feature">
-                <picture>
-                    <source media="(max-width: 700px)" srcset="assets/images/digital-cortex-2-mobile.jpg">
-                    <img src="assets/images/digital-cortex-2-hero.jpg" alt="A profile silhouette of a person, with a glowing brain network spilling outward into a constellation of colorful domain icons — visualizing how a single mind extends into many areas of professional work." class="cortex-feature-img" loading="lazy">
-                </picture>
-                <div class="cortex-feature-overlay">
-                    <h2>Your Brain, Extended</h2>
-                    <p>One mind. Many domains. The seed agent is a structural extension of how you already think — applied across the work you actually do.</p>
-                </div>
+                <picture><source media="(max-width: 700px)" srcset="assets/images/digital-cortex-2-mobile.jpg"><img src="assets/images/digital-cortex-2-hero.jpg" alt="A profile silhouette with a glowing brain network extending into many domains of work." class="cortex-feature-img" loading="lazy"></picture>
+                <div class="cortex-feature-overlay"><h2>Your Brain, Extended</h2><p>One mind. Many domains. The harness is a structure for carrying your own methods, memory, and judgment farther than one model session.</p></div>
             </div>
         </section>
 
-        <!-- What We Build — three pillars -->
         <section class="container academy-section">
-            <h2>What the Academy Offers</h2>
+            <h2>The Seed Program</h2>
+            <p>The public work has one reference implementation and two public reimplementation paths.</p>
             <div class="academy-pillars">
-                <div class="glass-card academy-pillar">
-                    <h3>Seed Prototypes</h3>
-                    <p>Request free access to the private Claude prototype, or follow Q-Seed as its memory, rules, plugins, and framework boundaries are defined and built in public.</p>
-                </div>
-                <div class="glass-card academy-pillar">
-                    <h3>Education</h3>
-                    <p>Essays, guides, and a community that teach you how agents actually work &mdash; so you can shape yours with confidence, not guesswork.</p>
-                </div>
-                <div class="glass-card academy-pillar">
-                    <h3>Full Transparency</h3>
-                    <p>Every rule is a file. Every memory is inspectable. You can read exactly why your agent made any decision and change it if you disagree.</p>
-                </div>
+                <div class="glass-card academy-pillar"><h3>Claude Seed — Reference</h3><p>The first-generation personal harness where jobs, OPEVC, plugins, local working memory, guards, verification, condensation, and governed self-modification were developed together through sustained use.</p><a href="seed-access.html" class="card-link">Request technical reference access →</a></div>
+                <div class="glass-card academy-pillar"><h3>Seed Agent — Codex</h3><p>The primary public implementation. Codex supplies the runtime while the user-owned cognitive layer is rebuilt from the behavioral lessons documented in the reference and technical essays.</p><a href="projects/seed-agent.html" class="card-link">Explore Seed Agent →</a></div>
+                <div class="glass-card academy-pillar"><h3>Q-Seed — Qwen Code</h3><p>A sibling public experiment where a user-controlled Qwen Code fork becomes part of the owned stack beneath the inspectable cognitive layer.</p><a href="projects/q-seed.html" class="card-link">Explore Q-Seed →</a></div>
             </div>
         </section>
 
-        <!-- The Essays — blog series showcase -->
         <section class="container academy-section">
-            <h2>The Essays</h2>
-            <p>An eight-part series on building agents that actually work. The four essays below introduce the ideas behind the architecture &mdash; and the series continues with deeper, more technical essays.</p>
+            <h2>Two Valid Paths to Ownership</h2>
+            <div class="academy-pillars two-col">
+                <div class="glass-card academy-pillar"><h3>Start from a mature public Seed</h3><p>Clone an established base, learn its architecture, then cultivate its cognition and jobs around your own work.</p></div>
+                <div class="glass-card academy-pillar"><h3>Build a new harness with the user or team</h3><p>Begin from a thinner substrate, use earlier harnesses as pattern libraries, and let the new architecture form around the people and work it is meant to support.</p></div>
+            </div>
+            <p class="lead-text">The stable goal is ownership and architectural literacy, not forcing everyone into the same template.</p>
+        </section>
+
+        <section class="container academy-section">
+            <h2>The Writing</h2>
+            <p>The public writing serves two roles. Part 1 develops the conceptual argument. The deeper technical series documents the first-generation Claude Seed as a worked implementation that the newer public projects can study and reinterpret.</p>
             <div class="about-essays-grid">
-                <a href="blog/b1/01-llms-are-not-the-agents.html" class="glass-card about-essay-card">
-                    <span class="about-essay-number">01</span>
-                    <span class="about-essay-title">LLMs Are Not the Agents</span>
-                    <span class="about-essay-desc">Where the real intelligence lives &mdash; and why everyone is pointing at the wrong thing.</span>
-                </a>
-                <a href="blog/b2/02-we-could-have-had-agi.html" class="glass-card about-essay-card">
-                    <span class="about-essay-number">02</span>
-                    <span class="about-essay-title">We Could Have Had AGI By Now</span>
-                    <span class="about-essay-desc">What happens when you scale structure instead of parameters. A case for architecture over brute force.</span>
-                </a>
-                <a href="blog/b3/03-your-brain-was-never-built-for-this.html" class="glass-card about-essay-card">
-                    <span class="about-essay-number">03</span>
-                    <span class="about-essay-title">Your Brain Was Never Built for This</span>
-                    <span class="about-essay-desc">Why modern professional life exceeds human cognitive capacity &mdash; and what to do about it.</span>
-                </a>
-                <a href="blog/b4/04-the-language-of-agents.html" class="glass-card about-essay-card">
-                    <span class="about-essay-number">04</span>
-                    <span class="about-essay-title">The Language of Agents</span>
-                    <span class="about-essay-desc">The complete vocabulary &mdash; every term you need before we start building.</span>
-                </a>
+                <a href="blog/b1/01-llms-are-not-the-agents.html" class="glass-card about-essay-card"><span class="about-essay-number">01</span><span class="about-essay-title">LLMs Are Not the Agents</span><span class="about-essay-desc">Why the model is only one component of a durable agent system.</span></a>
+                <a href="blog/b2/02-we-could-have-had-agi.html" class="glass-card about-essay-card"><span class="about-essay-number">02</span><span class="about-essay-title">We Could Have Had AGI By Now</span><span class="about-essay-desc">A case for structure and architecture alongside model capability.</span></a>
+                <a href="blog/b3/03-your-brain-was-never-built-for-this.html" class="glass-card about-essay-card"><span class="about-essay-number">03</span><span class="about-essay-title">Your Brain Was Never Built for This</span><span class="about-essay-desc">Why externalized cognition matters for modern professional work.</span></a>
+                <a href="blog/b4/04-the-language-of-agents.html" class="glass-card about-essay-card"><span class="about-essay-number">04</span><span class="about-essay-title">The Language of Agents</span><span class="about-essay-desc">The vocabulary needed to reason about jobs, memory, phases, plugins, and control.</span></a>
             </div>
         </section>
 
-        <!-- For Every Professional — visual section -->
         <section class="container about-visual-section">
-            <div class="about-visual-image">
-                <img src="assets/images/about/one-seed-many-professionals.png" alt="A glowing seed growing into a tree with branches for different professions, drawn in colored chalk on a dark chalkboard" class="about-section-img" loading="lazy">
-            </div>
+            <div class="about-visual-image"><img src="assets/images/about/one-seed-many-professionals.png" alt="A seed growing into different professional branches." class="about-section-img" loading="lazy"></div>
             <div class="about-visual-content">
-                <h2>For Every Professional</h2>
-                <p>We designed seed agents for people who have deep expertise but no interest in programming. You bring the domain knowledge. The seed provides the cognitive structure.</p>
-                <p>A tax attorney and a documentary filmmaker start from the same template. Within a week of conversation, their agents look nothing alike &mdash; each one molded by a different professional reality.</p>
-                <div class="profession-tags">
-                    <span class="tag">Lawyers</span>
-                    <span class="tag">Consultants</span>
-                    <span class="tag">Researchers</span>
-                    <span class="tag">Real Estate Agents</span>
-                    <span class="tag">Educators</span>
-                    <span class="tag">Journalists</span>
-                    <span class="tag">Project Managers</span>
-                    <span class="tag">Therapists</span>
-                </div>
+                <h2>Different People, Different Harnesses</h2>
+                <p>A tax attorney, a filmmaker, a scientist, and a startup team may share useful abstractions without ending up with identical systems. Some will clone a mature Seed; others will cultivate a harness from scratch.</p>
+                <p>The work of the Academy is to make the reusable concepts legible while leaving room for the implementation to become specific to the person, team, and runtime.</p>
+                <div class="profession-tags"><span class="tag">Researchers</span><span class="tag">Founders</span><span class="tag">Lawyers</span><span class="tag">Consultants</span><span class="tag">Educators</span><span class="tag">Journalists</span><span class="tag">Project Managers</span><span class="tag">Filmmakers</span></div>
             </div>
         </section>
 
-        <!-- Founder -->
+        <section class="container academy-section">
+            <h2>Beyond One User</h2>
+            <p>The Projects portfolio tests how the same ownership questions change across individual users, small groups, families, and larger collectives. The interface evolves from CLI to dashboard or persistent web world to lightweight email participation, while shared memory and authority become more important as the group grows.</p>
+            <a href="projects/index.html" class="btn btn-primary">Explore the Projects</a>
+        </section>
+
         <section class="container founder-section">
             <div class="about-grid">
-                <div class="about-image">
-                    <!-- ID used by theme-manager.js to randomize image -->
-                    <img src="assets/images/profile-pic1.png" alt="Hadi Nayebi" class="profile-img" id="profile-image">
-                </div>
+                <div class="about-image"><img src="assets/images/profile-pic1.png" alt="Hadi Nayebi" class="profile-img" id="profile-image"></div>
                 <div class="about-content">
                     <span class="badge">Founder</span>
                     <h2>Hadi Nayebi</h2>
-
-                    <!-- Identity Dimensions -->
                     <div class="identity-section">
-                        <div class="identity-item">
-                            <div class="identity-header">
-                                <span>Scientist</span>
-                                <span>42%</span>
-                            </div>
-                            <div class="progress-track">
-                                <div class="progress-fill progress-fill-42"></div>
-                            </div>
-                        </div>
-
-                        <div class="identity-item">
-                            <div class="identity-header">
-                                <span>Creator</span>
-                                <span>13%</span>
-                            </div>
-                            <div class="progress-track">
-                                <div class="progress-fill progress-fill-13"></div>
-                            </div>
-                        </div>
-
-                        <div class="identity-item">
-                            <div class="identity-header">
-                                <span>Explorer</span>
-                                <span>4%</span>
-                            </div>
-                            <div class="progress-track">
-                                <div class="progress-fill progress-fill-4"></div>
-                            </div>
-                        </div>
+                        <div class="identity-item"><div class="identity-header"><span>Scientist</span><span>42%</span></div><div class="progress-track"><div class="progress-fill progress-fill-42"></div></div></div>
+                        <div class="identity-item"><div class="identity-header"><span>Creator</span><span>13%</span></div><div class="progress-track"><div class="progress-fill progress-fill-13"></div></div></div>
+                        <div class="identity-item"><div class="identity-header"><span>Explorer</span><span>4%</span></div><div class="progress-track"><div class="progress-fill progress-fill-4"></div></div></div>
                     </div>
-
-                    <!-- Three Text Blocks Grid -->
                     <div class="bio-grid">
-                        <div>
-                            <h4 class="bio-heading">Scientist</h4>
-                            <p class="bio-text">
-                                I value the scientific method above all else. With a PhD in Organic Chemistry and
-                                Structural Biology, I've spent years in the pursuit of understanding how things work at
-                                a fundamental level.
-                            </p>
-                        </div>
-                        <div>
-                            <h4 class="bio-heading">Creator</h4>
-                            <p class="bio-text">
-                                I want to build a space where anyone can use Agentic technology. My goal is to create an
-                                ecosystem that helps people from all backgrounds build their own tools and simplify
-                                their work.
-                            </p>
-                        </div>
-                        <div>
-                            <h4 class="bio-heading">Explorer</h4>
-                            <p class="bio-text">
-                                I love traveling and discovering new places. Currently, I'm exploring the cities and
-                                landscapes of Michigan, finding inspiration in the world around me.
-                            </p>
-                        </div>
+                        <div><h4 class="bio-heading">Scientist</h4><p class="bio-text">I value the scientific method above all else. With a PhD spanning organic chemistry and structural biology, I learned to reduce complicated systems to testable mechanisms and let evidence change the model.</p></div>
+                        <div><h4 class="bio-heading">Creator</h4><p class="bio-text">I want to build a space where people from different professional backgrounds can own useful agentic infrastructure without becoming full-time software engineers.</p></div>
+                        <div><h4 class="bio-heading">Explorer</h4><p class="bio-text">I approach harness engineering experimentally: build different implementations, compare what changes, study failures, and keep the abstractions that continue to make sense.</p></div>
                     </div>
-
-                    <div class="about-cta">
-                        <a href="contact.html" class="btn btn-primary">Get in Touch</a>
-                        <a href="portfolio.html" class="btn btn-secondary">Technical Portfolio</a>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/hadinayebi" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            </a>
-                            <a href="https://github.com/hadi-nayebi" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                            <a href="https://www.skool.com/claude-agents-engineering-4513" target="_blank" rel="noopener" aria-label="Skool Community" class="social-link">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                    <div class="about-cta"><a href="portfolio.html" class="btn btn-primary">Technical Portfolio</a><a href="contact.html" class="btn btn-secondary">Get in Touch</a><div class="social-links"><a href="https://www.linkedin.com/in/hadinayebi" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">LinkedIn</a><a href="https://github.com/hadi-nayebi" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">GitHub</a></div></div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer id="site-footer">
-        <div class="container">
-            <p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/theme-manager.js?v=20260704"></script>
-    <script src="js/components.js?v=20260704"></script>
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="js/theme-manager.js?v=20260830"></script><script src="js/components.js?v=20260830"></script>
 </body>
-
 </html>

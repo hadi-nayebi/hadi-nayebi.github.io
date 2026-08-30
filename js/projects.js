@@ -11,6 +11,19 @@
         if (element) element.textContent = value;
     }
 
+    function ensureContactNavigation() {
+        var nav = document.querySelector('#site-header .nav-links');
+        if (!nav) return;
+        var hasContact = Array.prototype.some.call(nav.querySelectorAll('a'), function (link) {
+            return link.textContent.trim() === 'Contact';
+        });
+        if (hasContact) return;
+        var contact = document.createElement('a');
+        contact.href = '../contact.html';
+        contact.textContent = 'Contact';
+        nav.appendChild(contact);
+    }
+
     function renderStatus(status) {
         var production = status.production || {};
         setText('project-stage', status.current_milestone && status.current_milestone.label || 'Public design');
@@ -67,7 +80,7 @@
             })
             .catch(function () {
                 return fetch(fallbackDiscussionStatus, {cache: 'no-store'}).then(function (response) {
-                    if (!response.ok) throw new Error('local discussion status unavailable');
+                    if (!response.ok) throw new Error('local status unavailable');
                     return response.json();
                 });
             })
@@ -101,15 +114,16 @@
         update();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () {
-            loadStatus();
-            loadDiscussionStatus();
-            initializeMobileActions();
-        });
-    } else {
+    function initialize() {
+        ensureContactNavigation();
         loadStatus();
         loadDiscussionStatus();
         initializeMobileActions();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
     }
 })();
