@@ -31,7 +31,7 @@ function isRedirectPage(html) {
 
 function extractAttributes(html, attribute) {
   const values = [];
-  const regex = new RegExp('\\b' + attribute + '\\s*=\\s*["\\']([^"\\']+)["\\']', 'gi');
+  const regex = new RegExp(`\\b${attribute}\\s*=\\s*["']([^"']+)["']`, 'gi');
   let match;
   while ((match = regex.exec(html))) values.push(match[1]);
   return values;
@@ -97,7 +97,6 @@ for (const file of publicHtml) {
   }
 }
 
-// Canonical public-page expectations.
 const canonicalPages = [
   'index.html', 'start-here.html', 'agents.html', 'about.html', 'portfolio.html', 'explore.html',
   'contact.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',
