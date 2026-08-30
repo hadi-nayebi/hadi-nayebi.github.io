@@ -5,7 +5,7 @@ slug: "discipline-and-map"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, OPEVC, Phases]
 status: draft
-version: v0.2.1
+version: v0.2.2
 audience: "Tier 2 → Tier 3"
 og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 ---
@@ -24,14 +24,17 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 The rim of the cycle has more edges than [Essay 5](../b5/05_1-the-two-layer-foundation.html) needed to show. Here is the complete map the orchestrator enforces.
 
-**Forward edges** fire automatically when the phase-commit script's gate passes: *[ref: plan-gate-passes-before-advance | .claude/context/opevc-phases.md "Phase commit shape" + "Intermediate vs force-advance commits" | Every phase's `--force` advance commit is gated identically in shape: the required `## `-section commit body, the three-family exit gate, and any per-phase custom gates must all clear before the advance fires; falling short blocks with a coaching voice naming the specific gap. The same pattern repeats in every phase commit script.]*
+**Forward edges** fire when the phase-commit script's gate passes: *[ref: plan-gate-passes-before-advance | .claude/context/opevc-phases.md "Phase commit shape" + "Intermediate vs force-advance commits" | Every phase's `--force` advance commit is gated identically in shape: the required `## `-section commit body, the three-family exit gate, and any per-phase custom gates must all clear before the advance fires; falling short blocks with a coaching voice naming the specific gap. The same pattern repeats in every phase commit script.]*
 
 - `idle → observe` (start a new cycle)
 - `observe → plan`
-- `plan → execute`
+- `plan → execute` (the normal build path)
+- `plan → verify` (the non-adjacent no-execute path when PLAN intentionally needs verification without another build step)
 - `execute → verify`
 - `verify → condense`
 - `condense → idle` (close the cycle)
+
+PLAN therefore has two forward exits in this prototype. `plan → execute` is the ordinary path. `plan → verify` is an explicit shortcut for cycles where the plan itself is the artifact that changed and another EXECUTE pass would add no useful work. The PLAN commit shape makes the choice visible by requiring a `Why No Execute` section when that edge is used; skipping execution is a declared decision, not an invisible bypass.
 
 **Backward edges** are explicit — the agent chooses where to roll back to: *[ref: agent-picks-backward-destination | .claude/plugins/phasic_system/scripts/phase.sh `back` arm + BACKWARD_MAP declaration | The back command accepts an explicit destination from the caller; the system validates the choice against BACKWARD_MAP and dies if the edge is not declared.]*
 
@@ -50,7 +53,7 @@ Inside gmode the agent can do real work for as long as it needs. Fix a deadlock.
 
 How gmode is used is a customization choice. The prototype was built running every job through OPEVC because the work was building the seed agent itself. Once the seed agent ships open-source, users will run their project work through OPEVC and may push routine plugin maintenance through gmode. Or define new phases. Or split phase plugins by job type. Gmode is the general-purpose escape hatch from the prototype's current ceremony, and the seed-cultivator decides what flows through it. *[ref: gmode-usage-policy-is-architect-tunable | root CLAUDE.md "Identity" section fact #1 (extendable-by-design) + .claude/plugins/phasic_system/hooks/gmode-gate.sh + .claude/plugins/phasic_system/hooks/gmode-hook.sh | Identity fact #1 names "your plugin layer is a starting kit, not a finished form." Gmode enforcement: gmode-gate.sh checks `[GMODE]` prefix format + ≥100-word justification (word-count gate); gmode-hook.sh dispatches the user's answer to phase.sh enter-gmode. Neither inspects WHICH work routes through gmode — subject-matter policy is the seed-cultivator's editorial call, not code-fixed.]*
 
-Taken together, the prototype's full state set names the OPEVC phases (`observe`, `plan`, `execute`, `verify`, `condense`) plus `idle` (the meta-state between cycles) and `gmode` (the freestyle side-channel). The rest of this essay series opens the OPEVC compartments. Idle and gmode are the bookends. *[ref: full-state-set-named-as-data | .claude/plugins/phasic_system/scripts/phase.sh FORWARD_MAP/BACKWARD_MAP + idle init + enter-gmode handler | All seven states are first-class peer values of the same `current_phase` field; FORWARD_MAP encodes the five OPEVC transitions plus `condense:idle`, BACKWARD_MAP encodes the within-cycle rollback edges, and the gmode handler treats it as a temporary `current_phase` override with `pre_gmode_phase` stash. The state set is literally seven jq-readable strings.]*
+Taken together, the prototype's full state set names the OPEVC phases (`observe`, `plan`, `execute`, `verify`, `condense`) plus `idle` (the meta-state between cycles) and `gmode` (the freestyle side-channel). The rest of this essay series opens the OPEVC compartments. Idle and gmode are the bookends. *[ref: full-state-set-named-as-data | .claude/plugins/phasic_system/scripts/phase.sh FORWARD_MAP/BACKWARD_MAP + idle init + enter-gmode handler | All seven states are first-class peer values of the same `current_phase` field; FORWARD_MAP encodes the adjacent OPEVC route plus the explicit non-adjacent `plan:verify` edge and `condense:idle`, BACKWARD_MAP encodes the within-cycle rollback edges, and the gmode handler treats gmode as a temporary `current_phase` override with `pre_gmode_phase` stash. The state set is literally seven jq-readable strings; the extra edge changes routing, not the state count.]*
 
 ---
 
