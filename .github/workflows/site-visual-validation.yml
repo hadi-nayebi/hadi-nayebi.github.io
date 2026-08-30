@@ -1,0 +1,27 @@
+name: Site visual validation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate-visuals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check visual JavaScript
+        run: |
+          node --check js/story-visuals.js
+          node --check js/theme-manager.js
+      - name: Parse story SVG assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          paths = list(Path('assets/images/story').glob('*.svg')) + [Path('blog/b8/images/enforced-vs-discipline-b8-5.svg')]
+          assert paths, 'No story SVGs found'
+          for path in paths:
+              ET.parse(path)
+              print('OK', path)
+          PY
