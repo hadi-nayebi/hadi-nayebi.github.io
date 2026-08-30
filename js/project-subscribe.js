@@ -53,9 +53,19 @@
         if (!main) return;
 
         var section = document.createElement('section');
+        section.id = 'project-comments';
         section.className = 'container article-comments';
         section.innerHTML = '<h2>Comments</h2><p>Questions, criticism, editorial ideas, and collaboration notes stay attached to this project page.</p>';
         main.appendChild(section);
+
+        document.querySelectorAll('a[href*="github.com/hadi-nayebi/crime-cartography/discussions"]').forEach(function (link) {
+            link.href = '#project-comments';
+            link.removeAttribute('target');
+            link.removeAttribute('rel');
+            if (/challenge|define|design|discuss/i.test(link.textContent)) {
+                link.textContent = 'Discuss on this page';
+            }
+        });
 
         var script = document.createElement('script');
         script.src = 'https://giscus.app/client.js';
