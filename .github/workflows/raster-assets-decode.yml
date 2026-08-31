@@ -1,0 +1,65 @@
+name: Decode raster story assets
+
+on:
+  push:
+    branches: [replace-svg-with-real-artwork]
+    paths:
+      - 'tmp-raster-assets/**'
+      - '.github/workflows/raster-assets-decode.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: replace-svg-with-real-artwork
+          fetch-depth: 0
+      - name: Exit until upload is complete
+        id: ready
+        run: |
+          if [ ! -f tmp-raster-assets/READY ]; then
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+      - name: Decode raster artwork
+        if: steps.ready.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          mkdir -p assets/images/story-raster
+          names=(
+            start-here-cli-path
+            agents-lineage-tree
+            projects-scale-map
+            seed-agent-layered-ownership
+            q-seed-depth-of-ownership
+            team-harnesses-shared-office
+            family-games-world-hero
+            portfolio-human-digital-cortex
+            portfolio-execution-ladder
+            crime-cartography-pipeline
+            crime-cartography-data-to-video
+            blog-b8-5-hard-vs-soft-caps
+          )
+          for name in "${names[@]}"; do
+            cat tmp-raster-assets/${name}.b64.* | base64 -d > assets/images/story-raster/${name}.webp
+            test -s assets/images/story-raster/${name}.webp
+            head -c 4 assets/images/story-raster/${name}.webp | grep -q 'RIFF'
+            dd if=assets/images/story-raster/${name}.webp bs=1 skip=8 count=4 status=none | grep -q 'WEBP'
+          done
+          rm -rf tmp-raster-assets
+          rm -f assets/images/story/*.svg
+          rm -f blog/b8/images/enforced-vs-discipline-b8-5.svg
+          rm -f .github/workflows/raster-assets-decode.yml
+      - name: Commit decoded artwork
+        if: steps.ready.outputs.ready == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Replace SVG story diagrams with raster chalkboard artwork'
+          git push origin HEAD:replace-svg-with-real-artwork
