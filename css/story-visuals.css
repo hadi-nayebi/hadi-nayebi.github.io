@@ -1,0 +1,60 @@
+/* Shared visual-storytelling layer for Hadosh Academy conceptual illustrations. */
+/* Version: 20260830-2 */
+.story-visual {
+    width: min(calc(100% - 2rem), 1120px);
+    margin: clamp(1.6rem, 4vw, 3rem) auto;
+    box-sizing: border-box;
+}
+.story-visual img,
+.story-visual svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #090b0c;
+    box-shadow: 0 20px 60px rgba(0,0,0,.32);
+}
+.story-visual figcaption {
+    max-width: 900px;
+    margin: .8rem auto 0;
+    color: var(--text-muted, #9ba0aa);
+    font-size: .9rem;
+    line-height: 1.55;
+    text-align: center;
+}
+.story-visual.is-wide { width: min(calc(100% - 2rem), 1220px); }
+.story-visual.is-medium { width: min(calc(100% - 2rem), 920px); }
+.story-visual.is-narrow { width: min(calc(100% - 2rem), 760px); }
+.story-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 1rem;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0;
+}
+.story-visual-grid .story-visual { margin: 0; }
+
+/* Crime Cartography: retire the older shallow hero art and let the new
+   chalkboard story visuals carry the concept. */
+.crime-project-page .crime-hero-mark { display: none !important; }
+.crime-project-page .crime-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+.crime-project-page .crime-hero-copy { max-width: 980px; }
+.crime-project-page .crime-project-backdrop {
+    background:
+        radial-gradient(circle at 18% 22%, rgba(34,211,238,.10), transparent 34%),
+        radial-gradient(circle at 82% 64%, rgba(244,114,182,.08), transparent 36%),
+        linear-gradient(180deg, rgba(8,10,12,.12), rgba(8,10,12,.94)) !important;
+    opacity: 1 !important;
+}
+.crime-collective-extension { padding-top: clamp(3rem, 6vw, 5rem); }
+
+@media (max-width: 760px) {
+    .story-visual { margin: 1.35rem auto 2rem; }
+    .story-visual img,
+    .story-visual svg { border-radius: 14px; }
+    .story-visual figcaption { font-size: .82rem; text-align: left; }
+    .story-visual-grid { grid-template-columns: 1fr; }
+    .crime-project-page .crime-hero-copy { max-width: none; }
+}
