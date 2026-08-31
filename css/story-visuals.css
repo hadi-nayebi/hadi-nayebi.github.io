@@ -1,4 +1,5 @@
 /* Shared visual-storytelling layer for Hadosh Academy conceptual illustrations. */
+/* Version: 20260830-2 */
 .story-visual {
     width: min(calc(100% - 2rem), 1120px);
     margin: clamp(1.6rem, 4vw, 3rem) auto;
