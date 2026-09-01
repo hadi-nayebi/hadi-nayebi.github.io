@@ -135,7 +135,7 @@ function ensureCoreNavigation() {
 function loadStoryVisuals() {
     if (document.querySelector('script[data-story-visuals]')) return;
     const script = document.createElement('script');
-    script.src = '/js/story-visuals.js?v=20260901-1';
+    script.src = '/js/story-visuals.js?v=20260901-3';
     script.async = false;
     script.setAttribute('data-story-visuals', 'true');
     document.head.appendChild(script);

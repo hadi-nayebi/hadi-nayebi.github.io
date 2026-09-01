@@ -127,6 +127,15 @@
     }
 
     function initLightbox() {
+        var lightboxImageSelector = [
+            '.blog-image img',
+            '.story-visual img',
+            '.family-hero-figure img',
+            '.about-section-img',
+            '.cortex-feature-img',
+            '.home-cortex-img',
+            '.system-overview-figure img'
+        ].join(', ');
         var overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         overlay.innerHTML =
@@ -163,8 +172,8 @@
 
         document.addEventListener('click', function (event) {
             var target = event.target;
-            if (target.matches('.blog-image img')) {
-                var figure = target.closest('.blog-image');
+            if (target.matches(lightboxImageSelector)) {
+                var figure = target.closest('figure, .blog-image, .about-visual-image, .home-cortex-visual');
                 var figureCaption = figure ? figure.querySelector('figcaption') : null;
                 var exploreHref = figure ? figure.getAttribute('data-explore') : null;
                 open(target.src, target.alt, figureCaption ? figureCaption.textContent : '', exploreHref);
