@@ -14,7 +14,7 @@
 
     function makeFigure(src, alt, caption, extraClass) {
         var figure = document.createElement('figure');
-        figure.className = 'story-visual' + (extraClass ? ' ' + extraClass : '');
+        figure.className = 'story-visual blog-image' + (extraClass ? ' ' + extraClass : '');
         var img = document.createElement('img');
         img.src = src;
         img.alt = alt;
@@ -100,6 +100,7 @@
     function installFamilyGames() {
         var existing = document.querySelector('.family-hero-figure');
         if (existing) {
+            existing.classList.add('blog-image');
             var img = existing.querySelector('img');
             if (img) {
                 img.src = '/assets/images/family-games-concept-chalk.jpg';
