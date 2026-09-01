@@ -94,14 +94,14 @@
         if (existing) {
             var img = existing.querySelector('img');
             if (img) {
-                img.src = '/assets/images/story/family-games-world-hero.svg';
+                img.src = '/assets/images/family-games-concept-chalk.jpg';
                 img.alt = 'A chalkboard storybook of a family together tonight, children exploring between gatherings, and the same persistent world years later filled with named animals, buildings and shared memories.';
             }
             var caption = existing.querySelector('figcaption');
             if (caption) caption.textContent = 'One world across different kinds of family time: gathering, exploration, creation, and memory over years.';
         } else {
             var opening = document.querySelector('.project-opening');
-            after(opening, makeFigure('/assets/images/story/family-games-world-hero.svg',
+            after(opening, makeFigure('/assets/images/family-games-concept-chalk.jpg',
                 'A chalkboard storybook showing a family together tonight, children exploring between gatherings, and the same persistent world years later.',
                 'The world persists between calls and accumulates the family’s own animals, structures, voices, rituals, and stories.',
                 'is-wide'));
