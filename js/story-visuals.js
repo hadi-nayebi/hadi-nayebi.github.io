@@ -51,7 +51,7 @@
 
     function installStartHere() {
         var hero = document.querySelector('.start-here-hero');
-        after(hero, makeFigure('/assets/images/story/start-here-cli-path-chalk.jpg',
+        after(hero, makeFigure('/assets/images/story/start-here-cli-path-educational-v2.jpg',
             'A chalkboard map showing Codex, Claude Code, OpenCode, Qwen Code and other CLI agents learning from Hadosh Academy, then moving from learning to understanding to building one behavior and growing a harness.',
             'The fastest entry path: point the CLI agent you already use at the Academy, learn the architecture together, then externalize one repeated behavior.',
             'is-wide'));
@@ -59,7 +59,7 @@
 
     function installAgents() {
         var hero = document.querySelector('main .hero');
-        after(hero, makeFigure('/assets/images/story/agents-lineage-chalk.jpg',
+        after(hero, makeFigure('/assets/images/story/agents-lineage-educational-v2.jpg',
             'A chalkboard lineage tree with the Claude Seed reference branching into Seed Agent on Codex and Q-Seed on Qwen Code while carrying forward jobs, memory, plugins, phases, authority and verification.',
             'One technical lineage, two public implementation paths. The behaviors carry forward while each runtime is free to reshape the mechanism.',
             'is-wide'));
@@ -67,7 +67,7 @@
 
     function installProjectsIndex() {
         var hero = document.querySelector('.projects-overview-hero, .project-index-hero, main > section');
-        after(hero, makeFigure('/assets/images/story/projects-scale-chalk.jpg',
+        after(hero, makeFigure('/assets/images/story/projects-scale-educational-v2.jpg',
             'A chalkboard scale map from one person with a CLI agent, to a small team with a shared repository and dashboard, to a persistent family world, to a larger crowd-powered collective.',
             'The projects are organized by human scale. As more people share the system, the interface and governance evolve with them.',
             'is-wide'));
@@ -169,7 +169,7 @@
 
     function installBlogIndex() {
         var header = document.querySelector('.blog-index-header');
-        after(header, makeFigure('/assets/images/story/blog-learning-journey-chalk.jpg',
+        after(header, makeFigure('/assets/images/story/blog-learning-journey-educational-v2.jpg',
             'A connected blackboard journey through engines, a digital cortex, cognitive organs, phases, plugins, durable jobs and memory, operator growth, and user ownership.',
             'The essays form one learning journey: distinguish the engine from the agent, understand the cortex, study its organs and rhythms, then learn how the operator and the harness mature together.',
             'is-wide'));
