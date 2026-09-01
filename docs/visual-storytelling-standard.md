@@ -35,10 +35,10 @@ Existing head, brain-network, profile, and digital-cortex artwork is established
 | 2 | Q-Seed — Codex Seed versus Q-Seed ownership depth | Educational | Replaced current SVG in Batch 2 |
 | 2 | Team Harnesses — local agents connected to one shared substrate | Hybrid | Replaced current SVG in Batch 2 |
 | 2 | Family Games — persistent family world across gatherings and years | Artwork | Raster artwork already delivered; preserve |
-| 3 | Crime Cartography — collective channel and value loop | Hybrid | Replace current SVG |
-| 3 | Crime Cartography — data-to-video production workflow | Educational | Replace current SVG |
-| 3 | Portfolio — human judgment and digital-cortex execution loop | Hybrid | Replace current SVG |
-| 3 | Portfolio — execution ladder from task work to method invention | Educational | Replace current SVG |
+| 3 | Crime Cartography — collective channel and value loop | Hybrid | Replaced current SVG in Batch 3 |
+| 3 | Crime Cartography — data-to-video production workflow | Educational | Replaced current SVG in Batch 3 |
+| 3 | Portfolio — human judgment and digital-cortex execution loop | Hybrid | Replaced current SVG in Batch 3 |
+| 3 | Portfolio — execution ladder from task work to method invention | Educational | Replaced current SVG in Batch 3 |
 | 4 | Blog 2 — the missed-AGI argument and persistent-agent thesis | Hybrid | Missing image |
 | 4 | Blog 3 — biological brain facing modern cognitive load | Artwork | Missing image; preserve related existing cortex artwork |
 | 4 | Blog 4 — agent language/anatomy and durable primitives | Educational | Missing image |
