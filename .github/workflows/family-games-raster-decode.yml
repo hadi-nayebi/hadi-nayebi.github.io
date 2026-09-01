@@ -18,7 +18,7 @@ jobs:
         with:
           ref: family-games-raster-proof
           fetch-depth: 0
-      - name: Reconstruct real PNG artwork
+      - name: Reconstruct real PNG artwork and wire it into the site
         run: |
           set -euo pipefail
           mkdir -p assets/images/story-raster
@@ -29,13 +29,21 @@ jobs:
           data = p.read_bytes()
           assert data[:8] == b'\x89PNG\r\n\x1a\n', 'Not a PNG file'
           assert len(data) > 100000, 'PNG unexpectedly small'
+          story = Path('js/story-visuals.js')
+          text = story.read_text()
+          old = '/assets/images/story/family-games-world-hero.svg'
+          new = '/assets/images/story-raster/family-games-world-hero.png'
+          assert old in text, 'Expected Family Games SVG reference not found'
+          story.write_text(text.replace(old, new))
           print('PNG OK:', len(data), 'bytes')
           PY
+          rm -f assets/images/story/family-games-world-hero.svg
           rm -rf tmp-family-raster
+          rm -f .github/workflows/family-games-raster-decode.yml
       - name: Commit raster artwork
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git commit -m 'Add real Family Games chalkboard artwork'
+          git commit -m 'Replace Family Games SVG with real chalkboard PNG'
           git push origin HEAD:family-games-raster-proof
