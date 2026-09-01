@@ -75,7 +75,7 @@
 
     function installSeedAgent() {
         var opening = document.querySelector('.project-opening');
-        after(opening, makeFigure('/assets/images/story/seed-agent-layered-ownership.svg',
+        after(opening, makeFigure('/assets/images/story/seed-agent-layered-ownership-hybrid-v2.jpg',
             'A chalkboard stack showing a changeable runtime layer, a user-owned Seed cognition layer, and the user-specific world of jobs, knowledge, history and preferences.',
             'The runtime can change. The durable cognition and accumulated experience are the layers the user keeps.',
             'is-medium'));
@@ -83,7 +83,7 @@
 
     function installQSeed() {
         var opening = document.querySelector('.project-opening');
-        after(opening, makeFigure('/assets/images/story/q-seed-depth-of-ownership.svg',
+        after(opening, makeFigure('/assets/images/story/q-seed-depth-of-ownership-educational-v2.jpg',
             'A chalkboard comparison between Codex Seed, where the runtime is external, and Q-Seed, where the framework can also be user-controlled beneath the cognitive layer.',
             'Q-Seed explores a deeper ownership boundary: the cognitive harness and the open CLI framework can both evolve under user control.',
             'is-medium'));
@@ -91,7 +91,7 @@
 
     function installTeamHarnesses() {
         var opening = document.querySelector('.project-opening');
-        after(opening, makeFigure('/assets/images/story/team-harnesses-shared-office.svg',
+        after(opening, makeFigure('/assets/images/story/team-harnesses-shared-office-hybrid-v2.jpg',
             'Several team members each use a local CLI agent while all connect to one private shared repository and dashboard; personal context remains near each member.',
             'Many local agents, one team-owned substrate. The dashboard and terminals are different doors into the same shared cortex.',
             'is-wide'));
