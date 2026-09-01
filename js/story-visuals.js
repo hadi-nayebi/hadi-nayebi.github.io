@@ -139,7 +139,7 @@
         if (opening) {
             var collective = makeCrimeCollectiveSection();
             after(opening, collective);
-            after(collective, makeFigure('/assets/images/story/crime-cartography-collective-channel.svg',
+            after(collective, makeFigure('/assets/images/story/crime-cartography-collective-channel-hybrid-v2.jpg',
                 'A chalkboard pipeline from city data through an AI production harness and a human editorial crowd into a data-story YouTube channel, with value flowing back to contributors and the model branching into future collectives.',
                 'The core experiment is broader than crime: city data + repeatable AI production + human editorial judgment + a collective that can share the value it creates.',
                 'is-wide'));
@@ -147,7 +147,7 @@
         var understand = document.getElementById('understand');
         if (understand) {
             var intro = understand.querySelector('.project-section-intro') || understand.firstElementChild;
-            after(intro, makeFigure('/assets/images/story/crime-cartography-data-to-video.svg',
+            after(intro, makeFigure('/assets/images/story/crime-cartography-data-to-video-educational-v2.jpg',
                 'A chalkboard workflow from exploring city data to visualization, story construction, video production, and final crowd enhancement.',
                 'The harness gets a draft most of the way there; the editorial crowd improves the parts where local context, taste, skepticism, and judgment matter.',
                 'is-wide'));
@@ -156,12 +156,12 @@
 
     function installPortfolio() {
         var thesis = sectionByHeading('The LLM Is the Engine');
-        after(thesis, makeFigure('/assets/images/story/portfolio-human-digital-cortex.svg',
+        after(thesis, makeFigure('/assets/images/story/portfolio-human-digital-cortex-hybrid-v2.jpg',
             'A chalkboard cycle where human ideas and judgment enter the digital cortex as jobs and behaviors, execution happens there, results return to the human, and learning improves the harness.',
             'The human steers; the cortex carries execution, state, memory, and repeatable cognition; the results come back for judgment.',
             'is-wide'));
         var upward = sectionByHeading('When Execution Moves Outward');
-        after(upward, makeFigure('/assets/images/story/portfolio-execution-ladder.svg',
+        after(upward, makeFigure('/assets/images/story/portfolio-execution-ladder-educational-v2.jpg',
             'A chalkboard staircase from doing one task to designing methods, parallel cognition, comparing methods, and creating new context, with a calculator analogy.',
             'Offloading known execution can move human attention upward—from doing one method to designing, comparing, and inventing methods.',
             'is-wide'));
