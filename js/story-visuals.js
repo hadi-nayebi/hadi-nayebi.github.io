@@ -41,9 +41,17 @@
         return hit ? hit.closest('section') : null;
     }
 
+    function installHome() {
+        var hero = document.querySelector('main .hero');
+        after(hero, makeFigure('/assets/images/story/home-engine-harness-chalk.jpg',
+            'Interchangeable intelligence engines feed a durable user-owned cortex workshop containing memory, tools, jobs, and connected working structures.',
+            'The model supplies intelligence. The durable harness keeps the user’s memory, working methods, tools, jobs, and accumulated experience.',
+            'is-wide'));
+    }
+
     function installStartHere() {
         var hero = document.querySelector('.start-here-hero');
-        after(hero, makeFigure('/assets/images/story/start-here-cli-path.svg',
+        after(hero, makeFigure('/assets/images/story/start-here-cli-path-chalk.jpg',
             'A chalkboard map showing Codex, Claude Code, OpenCode, Qwen Code and other CLI agents learning from Hadosh Academy, then moving from learning to understanding to building one behavior and growing a harness.',
             'The fastest entry path: point the CLI agent you already use at the Academy, learn the architecture together, then externalize one repeated behavior.',
             'is-wide'));
@@ -51,7 +59,7 @@
 
     function installAgents() {
         var hero = document.querySelector('main .hero');
-        after(hero, makeFigure('/assets/images/story/agents-lineage-tree.svg',
+        after(hero, makeFigure('/assets/images/story/agents-lineage-chalk.jpg',
             'A chalkboard lineage tree with the Claude Seed reference branching into Seed Agent on Codex and Q-Seed on Qwen Code while carrying forward jobs, memory, plugins, phases, authority and verification.',
             'One technical lineage, two public implementation paths. The behaviors carry forward while each runtime is free to reshape the mechanism.',
             'is-wide'));
@@ -59,7 +67,7 @@
 
     function installProjectsIndex() {
         var hero = document.querySelector('.projects-overview-hero, .project-index-hero, main > section');
-        after(hero, makeFigure('/assets/images/story/projects-scale-map.svg',
+        after(hero, makeFigure('/assets/images/story/projects-scale-chalk.jpg',
             'A chalkboard scale map from one person with a CLI agent, to a small team with a shared repository and dashboard, to a persistent family world, to a larger crowd-powered collective.',
             'The projects are organized by human scale. As more people share the system, the interface and governance evolve with them.',
             'is-wide'));
@@ -158,6 +166,14 @@
             'is-wide'));
     }
 
+    function installBlogIndex() {
+        var header = document.querySelector('.blog-index-header');
+        after(header, makeFigure('/assets/images/story/blog-learning-journey-chalk.jpg',
+            'A connected blackboard journey through engines, a digital cortex, cognitive organs, phases, plugins, durable jobs and memory, operator growth, and user ownership.',
+            'The essays form one learning journey: distinguish the engine from the agent, understand the cortex, study its organs and rhythms, then learn how the operator and the harness mature together.',
+            'is-wide'));
+    }
+
     function installB85() {
         var pending = document.querySelector('.article-body .image-placeholder-pending');
         if (!pending) return;
@@ -177,6 +193,8 @@
     function run() {
         loadStyles();
         var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        if (path === '/' || path === '/index.html') return installHome();
+        if (path === '/blog.html') return installBlogIndex();
         if (path === '/start-here.html') return installStartHere();
         if (path === '/agents.html') return installAgents();
         if (path === '/projects' || path === '/projects/index.html') return installProjectsIndex();
