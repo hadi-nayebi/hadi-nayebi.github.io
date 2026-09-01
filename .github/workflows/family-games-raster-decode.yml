@@ -4,7 +4,7 @@ on:
   push:
     branches: [family-games-raster-proof]
     paths:
-      - 'tmp-family-raster/READY'
+      - 'tmp-family-raster-v2/READY'
 
 permissions:
   contents: write
@@ -18,28 +18,33 @@ jobs:
         with:
           ref: family-games-raster-proof
           fetch-depth: 0
-      - name: Reconstruct real PNG artwork and wire it into the site
+      - name: Reconstruct real ImageGen artwork
         run: |
           set -euo pipefail
           mkdir -p assets/images/story-raster
-          base64 -d assets/images/story-raster/family-games-world-hero.png.b64 > assets/images/story-raster/family-games-world-hero.png
+          cat tmp-family-raster-v2/part.* | base64 -d > /tmp/family-games-source.jpg
+          python -m pip install --quiet pillow
           python - <<'PY'
+          from PIL import Image
           from pathlib import Path
-          p = Path('assets/images/story-raster/family-games-world-hero.png')
-          data = p.read_bytes()
+          src = Path('/tmp/family-games-source.jpg')
+          out = Path('assets/images/story-raster/family-games-world-hero.png')
+          im = Image.open(src).convert('RGB')
+          im.save(out, 'PNG', optimize=True)
+          data = out.read_bytes()
           assert data[:8] == b'\x89PNG\r\n\x1a\n', 'Not a PNG file'
-          assert len(data) > 100000, 'PNG unexpectedly small'
+          assert len(data) > 50000, 'PNG unexpectedly small'
           story = Path('js/story-visuals.js')
           text = story.read_text()
           old = '/assets/images/story/family-games-world-hero.svg'
           new = '/assets/images/story-raster/family-games-world-hero.png'
           assert old in text, 'Expected Family Games SVG reference not found'
           story.write_text(text.replace(old, new))
-          print('PNG OK:', len(data), 'bytes')
+          print('PNG OK:', im.size, len(data), 'bytes')
           PY
-          rm -f assets/images/story-raster/family-games-world-hero.png.b64
           rm -f assets/images/story/family-games-world-hero.svg
-          rm -rf tmp-family-raster
+          rm -f assets/images/story-raster/family-games-world-hero.png.b64
+          rm -rf tmp-family-raster tmp-family-raster-v2
           rm -f tmp-placeholder tmp-base64-note.txt
           rm -f .github/workflows/family-games-raster-decode.yml
       - name: Commit raster artwork
