@@ -1,4 +1,4 @@
-// Version: v0.4.2
+// Version: v0.4.3
 /**
  * Hadosh Academy theme + lightweight shared presentation behavior.
  * The homepage intentionally changes on refresh: visual theme, hero language,
@@ -15,6 +15,8 @@ const themes = [
     { name: 'rose', primary: '#e11d48', primaryGlow: 'rgba(225, 29, 72, 0.38)', accent: '#fb7185' },
     { name: 'lime', primary: '#65a30d', primaryGlow: 'rgba(101, 163, 13, 0.38)', accent: '#a3e635' }
 ];
+
+const themeManagerScript = document.currentScript;
 
 const profilePics = ['assets/images/profile-pic1.png', 'assets/images/profile-pic2.png'];
 
@@ -135,7 +137,9 @@ function ensureCoreNavigation() {
 function loadStoryVisuals() {
     if (document.querySelector('script[data-story-visuals]')) return;
     const script = document.createElement('script');
-    script.src = '/js/story-visuals.js?v=20260901-6';
+    const managerUrl = themeManagerScript ? new URL(themeManagerScript.src, window.location.href) : null;
+    const version = managerUrl ? managerUrl.searchParams.get('v') : null;
+    script.src = '/js/story-visuals.js?v=' + encodeURIComponent(version || '20260902-r1');
     script.async = false;
     script.setAttribute('data-story-visuals', 'true');
     document.head.appendChild(script);
