@@ -59,7 +59,7 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 | `about.html` | Academy intro (3 pillars, visual sections) + founder bio |
 | `contact.html` | EmailJS contact form (newcomer checkbox triggers welcome email) |
 | `support.html` | Optional donation page — 12 Stripe Payment Links plus a privacy-safe aggregate dot visualization loaded from `data/support-activity.json`. See "Donations & Stripe" below. |
-| `start-here.html` | Human introduction plus a distributed, collapsed nine-phase agent-onboarding syllabus. It teaches the harness as externalized user agency, internet-like agency literacy, reference organisms versus user-derived lineages, and Phase 9 as a permanent lifecycle. Each phase loads its complete operating protocol from canonical `start-here-agent.md`; phase-gate and benefit-gated participation rules are also present directly in the HTML. |
+| `start-here.html` | Human introduction plus Phase 0 and a distributed, collapsed nine-phase agent-onboarding syllabus. Phase 0 establishes Hadosh Academy's desired agentic future and indexes Phases 1–9. The page teaches the harness as externalized user agency, internet-like agency literacy, portable cognition versus protected work content, reference organisms versus user-derived lineages, and Phase 9 as a permanent lifecycle. Each phase loads its complete operating protocol from canonical `start-here-agent.md`; phase-gate and benefit-gated participation rules are also present directly in the HTML. |
 | `thanks.html` | Contact-form success page (noindex) |
 | `thanks-support.html` | Stripe success-redirect page (noindex) |
 | `404.html` | Custom 404 (noindex) |
