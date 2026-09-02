@@ -52,9 +52,9 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 |------|---------|
 | `index.html` | Landing — hero with orbit wheel + 3 cards (Blog / Agents / Community) |
 | `blog.html` | Blog index — 7 essays, sidebar mirrors index |
-| `agents.html` | Two-prototype router — private Claude Seed (about 80%) and public-build Q-Seed (about 1%) |
-| `seed-agent.html` | Truthful Claude prototype page — private source boundary, free request access, 1,000-subscriber graduation plan, and Q-Seed bridge |
-| `q-seed.html` | Qwen-native prototype page — context-first reimplementation method, mind/plugin/fork boundary, public build, and channel network |
+| `agents.html` | Three-lineage implementation router — private Claude reference, public Codex Seed Agent, and public Q-Seed/Qwen framework path. |
+| `seed-agent.html` | Compatibility redirect to the canonical `projects/seed-agent.html` Codex Seed page. |
+| `q-seed.html` | Compatibility redirect to the canonical `projects/q-seed.html` Q-Seed page. |
 | `seed-access.html` | Dedicated EmailJS early-access request form; collects experience and build intent without tying access to support |
 | `about.html` | Academy intro (3 pillars, visual sections) + founder bio |
 | `contact.html` | EmailJS contact form for questions, collaboration, harness guidance, and requests for an initial no-charge live guidance session (newcomer checkbox triggers welcome email). |
@@ -127,7 +127,7 @@ Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAU
 | `feedback.json` | Stored feedback bubble submissions |
 | `.claude/tools/` | Blog build pipeline (HTML/transcript/audio generators, audio-player wiring) — used by the `blog-update` skill |
 | `.claude/skills/` | Project skills (load on demand when working here): `blog-update`, `video-create`, `cache-bust-deploy`, `stripe-payment-link-setup` |
-| `README.md` | Project description |
+| `README.md` | Technical-reader gateway to the Academy thesis, Phase 0–9 syllabus, writing map, projects, participation, guidance, and site-development workflow. |
 | `CLAUDE.md` | This file — project working memory |
 | `docs/start-here-campaign-readiness.md` | Internal backlog for Base Dashboard, Origin writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
 
