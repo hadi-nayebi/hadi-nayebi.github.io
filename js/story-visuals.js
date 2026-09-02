@@ -12,9 +12,18 @@
         document.head.appendChild(link);
     }
 
-    function makeFigure(src, alt, caption, extraClass) {
+    function makeFigure(src, alt, caption, extraClass, styleCode) {
         var figure = document.createElement('figure');
         figure.className = 'story-visual blog-image' + (extraClass ? ' ' + extraClass : '');
+        if (styleCode) {
+            var weights = styleCode.match(/^I(\d+)-A(\d+)$/);
+            figure.setAttribute('data-visual-style', styleCode);
+            figure.setAttribute('data-visual-role', 'storytelling');
+            if (weights) {
+                figure.setAttribute('data-information-weight', weights[1]);
+                figure.setAttribute('data-artistic-weight', weights[2]);
+            }
+        }
         var img = document.createElement('img');
         img.src = src;
         img.alt = alt;
@@ -43,10 +52,10 @@
 
     function installHome() {
         var hero = document.querySelector('main .hero');
-        after(hero, makeFigure('/assets/images/story/home-engine-harness-chalk.jpg',
-            'Interchangeable intelligence engines feed a durable user-owned cortex workshop containing memory, tools, jobs, and connected working structures.',
-            'The model supplies intelligence. The durable harness keeps the user’s memory, working methods, tools, jobs, and accumulated experience.',
-            'is-wide'));
+        after(hero, makeFigure('/assets/images/story/home-engine-harness-hybrid-v3.jpg',
+            'Three interchangeable intelligence engines connect to one user-owned harness whose memory, rules, jobs, and knowledge compound into work, learning, and ownership.',
+            'Intelligence engines can change. The user-owned harness keeps the memory, rules, jobs, and knowledge that compound through use.',
+            'is-wide', 'I50-A50'));
     }
 
     function installStartHere() {
@@ -67,10 +76,10 @@
 
     function installProjectsIndex() {
         var hero = document.querySelector('.projects-overview-hero, .project-index-hero, main > section');
-        after(hero, makeFigure('/assets/images/story/projects-scale-educational-v2.jpg',
-            'A chalkboard scale map from one person with a CLI agent, to a small team with a shared repository and dashboard, to a persistent family world, to a larger crowd-powered collective.',
-            'The projects are organized by human scale. As more people share the system, the interface and governance evolve with them.',
-            'is-wide'));
+        after(hero, makeFigure('/assets/images/story/projects-scale-human-hybrid-v3.jpg',
+            'Four connected chalk scenes show an individual with personal context, a group sharing work, a family sharing a private world, and a collective participating publicly, all connected to one user-owned harness foundation.',
+            'One user-owned harness pattern can support personal context, shared work, a persistent family world, or public participation at collective scale.',
+            'is-wide', 'I50-A50'));
     }
 
     function installSeedAgent() {
@@ -169,10 +178,10 @@
 
     function installBlogIndex() {
         var header = document.querySelector('.blog-index-header');
-        after(header, makeFigure('/assets/images/story/blog-learning-journey-educational-v2.jpg',
-            'A connected blackboard journey through engines, a digital cortex, cognitive organs, phases, plugins, durable jobs and memory, operator growth, and user ownership.',
-            'The essays form one learning journey: distinguish the engine from the agent, understand the cortex, study its organs and rhythms, then learn how the operator and the harness mature together.',
-            'is-wide'));
+        after(header, makeFigure('/assets/images/story/blog-learning-journey-hybrid-v3.jpg',
+            'An illustrated chalk path moves through five learning environments: engine versus agent, digital cortex, organs and phases, jobs memory and plugins, then operator ownership.',
+            'The essays are one guided journey—from separating engine and agent to understanding the cortex and ultimately building a harness you own.',
+            'is-wide', 'I70-A30'));
     }
 
     function run() {
