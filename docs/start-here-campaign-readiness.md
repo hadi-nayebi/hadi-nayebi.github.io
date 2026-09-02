@@ -15,6 +15,11 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 - [x] Define reference organisms, reusable primitives, generic substrates, and user-derived lineages.
 - [x] Add the visiting-agent operating contract: roles, capability routing, ownership test, minimum harness, security, benefit evidence, complexity budget, anti-dependence, maturity language, and versioning.
 - [x] Redefine Phase 9 as the permanent developmental lifecycle with no terminal graduation.
+- [x] Add Phase 0 as the future-facing mental model and index of the complete Phase 1–9 journey.
+- [x] Define universal harness literacy, individual starting forms, and the user-owned versus platform-owned trajectory.
+- [x] Add the changing-work vision across employment, self-employment, consulting, micro-businesses, passion projects, and collaborative teams.
+- [x] Define portable personal cognition, portable capability, shared organizational structure, work content, and protected data as separate layers.
+- [x] Establish human autonomy as the objective, bounded agent autonomy as a mechanism, and cognitive freedom as a central benefit.
 - [ ] Run a final campaign-readiness and agent-readability audit after the supporting items below are linked.
 
 ## Base Dashboard repository
@@ -78,6 +83,9 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 - [ ] Confirm agents distinguish the technical agent, the harness, and the user's externalized agency.
 - [ ] Confirm agents treat Seed, Q-Seed, Origin, Base Dashboard, and other projects as references or substrates rather than universal finished agents.
 - [ ] Confirm Phase 9 is interpreted as a permanent evidence-driven lifecycle rather than a final checklist.
+- [ ] Confirm a context-free agent performs Phase 0 before Phase 1 and accurately previews the full journey.
+- [ ] Confirm agents present the future as Hadosh Academy's chosen direction without converting it into guaranteed prediction or fear-based inevitability.
+- [ ] Confirm agents preserve portable cognition while refusing to transfer company, client, confidential, proprietary, credential, or regulated content.
 - [ ] Confirm no public copy contains internal sequencing caveats or unnecessary future disclaimers.
 - [ ] Confirm the user can understand why each phase exists, what evidence completes it, and how to resume later.
 - [ ] Confirm the marketing message accurately promises an onboarding relationship, not instant autonomous construction.
