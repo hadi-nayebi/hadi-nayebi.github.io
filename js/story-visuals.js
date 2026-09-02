@@ -60,10 +60,10 @@
 
     function installStartHere() {
         var hero = document.querySelector('.start-here-hero');
-        after(hero, makeFigure('/assets/images/story/start-here-cli-path-educational-v2.jpg',
-            'A chalkboard map showing Codex, Claude Code, OpenCode, Qwen Code and other CLI agents learning from Hadosh Academy, then moving from learning to understanding to building one behavior and growing a harness.',
-            'The fastest entry path: point the CLI agent you already use at the Academy, learn the architecture together, then externalize one repeated behavior.',
-            'is-wide'));
+        after(hero, makeFigure('/assets/images/story/start-here-cli-learning-hybrid-v3.jpg',
+            'A learner follows four connected chalk scenes: pointing interchangeable CLI agents at a local folder, learning the architecture, building one behavior with an agent, and growing a user-owned harness containing memory, jobs, tools, and verification.',
+            'Point your CLI here, learn the ideas together, build one repeated behavior, and let that owned structure grow into a harness.',
+            'is-wide', 'I70-A30'));
     }
 
     function installAgents() {
@@ -170,10 +170,10 @@
             'The human steers; the cortex carries execution, state, memory, and repeatable cognition; the results come back for judgment.',
             'is-wide'));
         var upward = sectionByHeading('When Execution Moves Outward');
-        after(upward, makeFigure('/assets/images/story/portfolio-execution-ladder-educational-v2.jpg',
-            'A chalkboard staircase from doing one task to designing methods, parallel cognition, comparing methods, and creating new context, with a calculator analogy.',
-            'Offloading known execution can move human attention upward—from doing one method to designing, comparing, and inventing methods.',
-            'is-wide'));
+        after(upward, makeFigure('/assets/images/story/portfolio-execution-ladder-hybrid-v3.jpg',
+            'A chalk illustration shows repeatable tasks and methods moving into a user-owned harness while a human climbs toward comparison, judgment, improvement, and creating new context.',
+            'Known execution moves into the harness; human attention moves toward judgment, comparison, and invention.',
+            'is-wide', 'I70-A30'));
     }
 
     function installBlogIndex() {
