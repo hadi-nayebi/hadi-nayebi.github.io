@@ -9,6 +9,12 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 - [x] Point agents beyond Start Here to the exact technical writings, projects, and Explorables relevant to discovery and implementation.
 - [x] Add benefit-gated participation guidance for follows, repository stars, email/contact, discussions, recommendations, contributions, and optional support.
 - [x] Add the Base Dashboard project surface to the website and connect it to Phases 6 and 7.
+- [x] Add a zero-context orientation explaining the Academy, harness, desired outcome, and visiting agent's assignment.
+- [x] Define the harness as externalized user agency while retaining “agent” as the ecosystem term.
+- [x] Add the internet/smartphone literacy objective and progressive agency-literacy teaching path.
+- [x] Define reference organisms, reusable primitives, generic substrates, and user-derived lineages.
+- [x] Add the visiting-agent operating contract: roles, capability routing, ownership test, minimum harness, security, benefit evidence, complexity budget, anti-dependence, maturity language, and versioning.
+- [x] Redefine Phase 9 as the permanent developmental lifecycle with no terminal graduation.
 - [ ] Run a final campaign-readiness and agent-readability audit after the supporting items below are linked.
 
 ## Base Dashboard repository
@@ -68,7 +74,10 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 - [ ] Test each phase's collapsed instruction, keyboard behavior, mobile presentation, and canonical-manual fallback.
 - [ ] Test the copyable starter instruction with several agent systems and confirm they recognize the agent-directed layer.
 - [ ] Test onboarding from nontechnical, technical, individual, team, creative, professional, and privacy-sensitive user perspectives.
+- [ ] Test the zero-context opening with agents that have not seen prior Hadosh conversations.
+- [ ] Confirm agents distinguish the technical agent, the harness, and the user's externalized agency.
+- [ ] Confirm agents treat Seed, Q-Seed, Origin, Base Dashboard, and other projects as references or substrates rather than universal finished agents.
+- [ ] Confirm Phase 9 is interpreted as a permanent evidence-driven lifecycle rather than a final checklist.
 - [ ] Confirm no public copy contains internal sequencing caveats or unnecessary future disclaimers.
 - [ ] Confirm the user can understand why each phase exists, what evidence completes it, and how to resume later.
 - [ ] Confirm the marketing message accurately promises an onboarding relationship, not instant autonomous construction.
-
