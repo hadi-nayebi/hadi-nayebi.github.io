@@ -59,6 +59,7 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 | `about.html` | Academy intro (3 pillars, visual sections) + founder bio |
 | `contact.html` | EmailJS contact form (newcomer checkbox triggers welcome email) |
 | `support.html` | Optional donation page — 12 Stripe Payment Links plus a privacy-safe aggregate dot visualization loaded from `data/support-activity.json`. See "Donations & Stripe" below. |
+| `start-here.html` | Human introduction plus a distributed, collapsed nine-phase agent-onboarding syllabus; links a canonical text-only guide at `start-here-agent.md`. |
 | `thanks.html` | Contact-form success page (noindex) |
 | `thanks-support.html` | Stripe success-redirect page (noindex) |
 | `404.html` | Custom 404 (noindex) |

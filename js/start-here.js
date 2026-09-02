@@ -289,8 +289,8 @@
         renderList(query('[data-role-behaviors]'), role.behaviors);
         renderList(query('[data-role-judgment]'), role.judgment);
         renderLinks(query('[data-role-links]'), role.links);
-        query('[data-role-prompt]').textContent = role.prompt;
-        query('[data-role-prompt-label]').textContent = roleName === 'general' ? 'Prompt for your CLI agent' : role.eyebrow + ' starter prompt';
+        query('[data-role-prompt]').textContent = 'First read the complete nine-phase agent syllabus at https://hadi-nayebi.github.io/start-here.html. Treat this as a multi-session onboarding project, establish recoverable continuity, and adapt the teaching to me. ' + role.prompt;
+        query('[data-role-prompt-label]').textContent = roleName === 'general' ? 'Prompt for your agent' : role.eyebrow + ' agent prompt';
 
         if (updateHash && history.replaceState) history.replaceState(null, '', '#role-' + roleName);
     }
