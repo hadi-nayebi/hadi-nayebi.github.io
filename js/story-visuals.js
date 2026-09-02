@@ -175,22 +175,6 @@
             'is-wide'));
     }
 
-    function installB85() {
-        var pending = document.querySelector('.article-body .image-placeholder-pending');
-        if (!pending) return;
-        var figure = document.createElement('figure');
-        figure.className = 'blog-image';
-        var img = document.createElement('img');
-        img.src = 'images/enforced-vs-discipline-b8-5.svg';
-        img.alt = 'Chalkboard comparison of two code-enforced hard caps and three discipline-based soft caps in the Seed reference implementation.';
-        img.loading = 'lazy';
-        figure.appendChild(img);
-        var cap = document.createElement('figcaption');
-        cap.textContent = 'Image 8.5. Two hard caps. Three soft. The asymmetry is honest.';
-        figure.appendChild(cap);
-        pending.replaceWith(figure);
-    }
-
     function run() {
         loadStyles();
         var path = window.location.pathname.replace(/\/+$/, '') || '/';
@@ -205,7 +189,6 @@
         if (path === '/projects/family-games.html') return installFamilyGames();
         if (path === '/projects/crime-cartography.html') return installCrimeCartography();
         if (path === '/portfolio.html') return installPortfolio();
-        if (path === '/blog/b8/08_5-enforced-vs-discipline.html') return installB85();
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
