@@ -5,6 +5,47 @@
 (function () {
     'use strict';
 
+    // The detailed agent manual is intentionally maintained as one canonical,
+    // text-first resource. Each collapsed phase loads its complete protocol here
+    // so human readers see a compact page while visiting agents can consume the
+    // full instructions without the phase summaries drifting from the manual.
+    function loadDetailedAgentProtocols() {
+        const targets = Array.from(document.querySelectorAll('[data-agent-manual]'));
+        if (!targets.length || !window.fetch) return;
+
+        fetch('/start-here-agent.md')
+            .then(response => {
+                if (!response.ok) throw new Error('Agent syllabus unavailable');
+                return response.text();
+            })
+            .then(manual => {
+                targets.forEach(target => {
+                    const heading = target.dataset.agentManual;
+                    const startToken = '### ' + heading;
+                    const start = manual.indexOf(startToken);
+                    if (start === -1) return;
+                    const nextDetailed = manual.indexOf('\n### Detailed Phase ', start + startToken.length);
+                    const finalConstraints = manual.indexOf('\n## Final constraints', start + startToken.length);
+                    const candidates = [nextDetailed, finalConstraints].filter(index => index !== -1);
+                    const end = candidates.length ? Math.min.apply(null, candidates) : manual.length;
+                    target.textContent = manual.slice(start, end).trim();
+                    target.classList.add('is-loaded');
+                });
+            })
+            .catch(() => {
+                targets.forEach(target => {
+                    target.innerHTML = '';
+                    const link = document.createElement('a');
+                    link.href = '/start-here-agent.md';
+                    link.textContent = 'Open the complete canonical agent syllabus →';
+                    link.className = 'card-link';
+                    target.appendChild(link);
+                });
+            });
+    }
+
+    loadDetailedAgentProtocols();
+
     const roles = {
         general: {
             eyebrow: 'Any profession',

@@ -233,6 +233,26 @@ body {
     color: var(--text-main);
 }
 
+.start-agent-manual {
+    margin-top: 1rem;
+    padding: 1rem;
+    max-height: 38rem;
+    overflow: auto;
+    border: 1px solid rgba(139, 92, 246, 0.24);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #c9cbd6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+.start-agent-manual.is-loaded {
+    border-color: rgba(139, 92, 246, 0.42);
+}
+
 .start-phase-list {
     display: grid;
     gap: 1rem;

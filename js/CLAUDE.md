@@ -10,7 +10,7 @@
 | `wheel.js` | `index.html` | Orbit wheel animation with rotating phrases (hero) |
 | `form-handler.js` | `contact.html` | EmailJS contact form submit — sends notification email always; sends welcome email when newcomer checkbox is ticked. Service ID: `service_chq4jnq`, public key embedded |
 | `feedback.js` | (where included) | Feedback bubble system — captures user feedback, posts to backing store referenced via `feedback.json` |
-| `start-here.js` | `start-here.html` | Profession lenses, syllabus-aware profession prompts, accessible role tabs, and copy controls |
+| `start-here.js` | `start-here.html` | Profession lenses, syllabus-aware profession prompts, accessible role tabs, copy controls, and loading each complete detailed phase protocol from canonical `start-here-agent.md` into the matching collapsed instruction. |
 
 ## Subdirectory Detection Note
 

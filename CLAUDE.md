@@ -59,7 +59,7 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 | `about.html` | Academy intro (3 pillars, visual sections) + founder bio |
 | `contact.html` | EmailJS contact form (newcomer checkbox triggers welcome email) |
 | `support.html` | Optional donation page — 12 Stripe Payment Links plus a privacy-safe aggregate dot visualization loaded from `data/support-activity.json`. See "Donations & Stripe" below. |
-| `start-here.html` | Human introduction plus a distributed, collapsed nine-phase agent-onboarding syllabus; links a canonical text-only guide at `start-here-agent.md`. |
+| `start-here.html` | Human introduction plus a distributed, collapsed nine-phase agent-onboarding syllabus. Each phase loads its complete operating protocol from the canonical `start-here-agent.md`; phase-gate and benefit-gated participation rules are also present directly in the HTML. |
 | `thanks.html` | Contact-form success page (noindex) |
 | `thanks-support.html` | Stripe success-redirect page (noindex) |
 | `404.html` | Custom 404 (noindex) |
@@ -129,6 +129,13 @@ Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAU
 | `.claude/skills/` | Project skills (load on demand when working here): `blog-update`, `video-create`, `cache-bust-deploy`, `stripe-payment-link-setup` |
 | `README.md` | Project description |
 | `CLAUDE.md` | This file — project working memory |
+| `docs/start-here-campaign-readiness.md` | Internal backlog for Base Dashboard, Origin writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
+
+### Projects
+
+| File | Purpose |
+|------|---------|
+| `projects/base-dashboard.html` | Foundation dashboard-plus-harness pattern: contextual feedback, persistent state, and one bounded behavior from which a user-specific system can grow. |
 
 ## Cache-Busting (invariant)
 
