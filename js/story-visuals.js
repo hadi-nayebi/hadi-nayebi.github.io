@@ -71,7 +71,7 @@
         after(hero, makeFigure('/assets/images/story/agents-lineage-educational-v2.jpg',
             'A chalkboard lineage tree with the Claude Seed reference branching into Seed Agent on Codex and Q-Seed on Qwen Code while carrying forward jobs, memory, plugins, phases, authority and verification.',
             'One technical lineage, two public implementation paths. The behaviors carry forward while each runtime is free to reshape the mechanism.',
-            'is-wide'));
+            'is-wide', 'I90-A10'));
     }
 
     function installProjectsIndex() {
@@ -87,7 +87,7 @@
         after(opening, makeFigure('/assets/images/story/seed-agent-layered-ownership-hybrid-v2.jpg',
             'A chalkboard stack showing a changeable runtime layer, a user-owned Seed cognition layer, and the user-specific world of jobs, knowledge, history and preferences.',
             'The runtime can change. The durable cognition and accumulated experience are the layers the user keeps.',
-            'is-medium'));
+            'is-medium', 'I50-A50'));
     }
 
     function installQSeed() {
@@ -95,7 +95,7 @@
         after(opening, makeFigure('/assets/images/story/q-seed-depth-of-ownership-educational-v2.jpg',
             'A chalkboard comparison between Codex Seed, where the runtime is external, and Q-Seed, where the framework can also be user-controlled beneath the cognitive layer.',
             'Q-Seed explores a deeper ownership boundary: the cognitive harness and the open CLI framework can both evolve under user control.',
-            'is-medium'));
+            'is-medium', 'I90-A10'));
     }
 
     function installTeamHarnesses() {
@@ -103,13 +103,17 @@
         after(opening, makeFigure('/assets/images/story/team-harnesses-shared-office-hybrid-v2.jpg',
             'Several team members each use a local CLI agent while all connect to one private shared repository and dashboard; personal context remains near each member.',
             'Many local agents, one team-owned substrate. The dashboard and terminals are different doors into the same shared cortex.',
-            'is-wide'));
+            'is-wide', 'I50-A50'));
     }
 
     function installFamilyGames() {
         var existing = document.querySelector('.family-hero-figure');
         if (existing) {
             existing.classList.add('blog-image');
+            existing.setAttribute('data-visual-style', 'I10-A90');
+            existing.setAttribute('data-information-weight', '10');
+            existing.setAttribute('data-artistic-weight', '90');
+            existing.setAttribute('data-visual-role', 'storytelling');
             var img = existing.querySelector('img');
             if (img) {
                 img.src = '/assets/images/family-games-concept-chalk.jpg';
@@ -122,7 +126,7 @@
             after(opening, makeFigure('/assets/images/family-games-concept-chalk.jpg',
                 'A chalkboard storybook showing a family together tonight, children exploring between gatherings, and the same persistent world years later.',
                 'The world persists between calls and accumulates the family’s own animals, structures, voices, rituals, and stories.',
-                'is-wide'));
+                'is-wide', 'I10-A90'));
         }
     }
 
@@ -151,7 +155,7 @@
             after(collective, makeFigure('/assets/images/story/crime-cartography-collective-channel-hybrid-v2.jpg',
                 'A chalkboard pipeline from city data through an AI production harness and a human editorial crowd into a data-story YouTube channel, with value flowing back to contributors and the model branching into future collectives.',
                 'The core experiment is broader than crime: city data + repeatable AI production + human editorial judgment + a collective that can share the value it creates.',
-                'is-wide'));
+                'is-wide', 'I50-A50'));
         }
         var understand = document.getElementById('understand');
         if (understand) {
@@ -159,7 +163,7 @@
             after(intro, makeFigure('/assets/images/story/crime-cartography-data-to-video-educational-v2.jpg',
                 'A chalkboard workflow from exploring city data to visualization, story construction, video production, and final crowd enhancement.',
                 'The harness gets a draft most of the way there; the editorial crowd improves the parts where local context, taste, skepticism, and judgment matter.',
-                'is-wide'));
+                'is-wide', 'I90-A10'));
         }
     }
 
@@ -168,7 +172,7 @@
         after(thesis, makeFigure('/assets/images/story/portfolio-human-digital-cortex-hybrid-v2.jpg',
             'A chalkboard cycle where human ideas and judgment enter the digital cortex as jobs and behaviors, execution happens there, results return to the human, and learning improves the harness.',
             'The human steers; the cortex carries execution, state, memory, and repeatable cognition; the results come back for judgment.',
-            'is-wide'));
+            'is-wide', 'I50-A50'));
         var upward = sectionByHeading('When Execution Moves Outward');
         after(upward, makeFigure('/assets/images/story/portfolio-execution-ladder-hybrid-v3.jpg',
             'A chalk illustration shows repeatable tasks and methods moving into a user-owned harness while a human climbs toward comparison, judgment, improvement, and creating new context.',

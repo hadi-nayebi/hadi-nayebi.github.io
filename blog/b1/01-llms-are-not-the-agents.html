@@ -184,7 +184,7 @@
                             <li><strong>Continuity</strong> &mdash; persistent state that survives across sessions</li>
                         </ul>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
+                        <figure data-visual-style="I70-A30" data-information-weight="70" data-artistic-weight="30" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/llm-engine-agent-directory-b1-1.png" alt="Diagram comparing LLM as engine (reasoning, probabilistic, no persistent memory) versus Agent as directory brain (memory on disk, hooks and rules, intentions). Swapping the engine gives faster or smarter. Swapping the directory gives a different agent." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.</figcaption>
                         </figure>
@@ -203,7 +203,7 @@
 
                         <p>A CLI agent in an empty folder has an <strong>action space</strong> &mdash; the set of things it can do at any given moment:</p>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
+                        <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/action-space-markov-chain-b1-2.png" alt="Markov chain diagram showing Claude Code&#x27;s action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities &mdash; a <a href="https://en.wikipedia.org/wiki/Markov_chain" title="A system where the next step depends only on the current state, not the full history">Markov chain</a> where every path is equally likely.</figcaption>
                         </figure>
@@ -236,7 +236,7 @@
 
                         <p>What makes this layer powerful is that it does not just hold static information. It can define a <strong>workflow</strong> &mdash; a sequence of phases the agent moves through as it works. The workflow we use is called <strong>OPEVC</strong>: <strong>Observe, Plan, Execute, Verify, Condense.</strong></p>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
+                        <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/claude-md-working-memory-b1-3.png" alt="Circular diagram showing the Living Brain dynamic working memory cycle: 1. OBSERVE (absorb context), 2. PLAN (write detailed steps), 3. EXECUTE (perform tasks and log), 4. CONDENSE (clean and refine info), all revolving around a central Local CLAUDE.md file that serves as dynamic working memory." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The OPEVC cycle. The agent moves through five phases &mdash; Observe, Plan, Execute, Verify, Condense &mdash; with CLAUDE.md files at the center, updated throughout. Each phase produces different work and different updates to working memory.</figcaption>
                         </figure>
@@ -251,7 +251,7 @@
 
                         <p>Modern CLI agents support <strong>hook systems</strong> &mdash; events that fire at specific points in the agent&rsquo;s lifecycle.</p>
 
-                        <figure class="blog-image" data-explore="explore/hook-flow.html" style="margin: 2rem 0; text-align: center;">
+                        <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" data-explore="explore/hook-flow.html" style="margin: 2rem 0; text-align: center;">
   <span style="position: relative; display: inline-block; max-width: 800px; width: 100%;">
     <img src="images/hooks-and-action-space-b1-4.png" alt="Flow diagram of Claude Code Agent showing the full hook system: User Prompt flows through UPS Hook, then branches into Response, Thinking with PreToolUse and PostToolUse Hooks around tool use, Notification Hook, SubagentStop Hook, PreCompact Hook, and Stop Hook. Each hook is an interception point where deterministic rules can override probabilistic behavior." style="width: 100%; height: auto; display: block; border-radius: 8px;">
     <a href="explore/hook-flow.html" aria-label="Explore the interactive version of this diagram" title="Open the interactive hook map" style="position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 0.32rem; padding: 0.4rem 0.78rem; font-size: 0.82rem; font-weight: 700; line-height: 1; color: #ffffff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 8px; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5); transition: transform 0.18s ease, box-shadow 0.18s ease;" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 7px 22px rgba(139,92,246,0.65)';" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(99,102,241,0.5)';">&#8599; Explore the map</a>
@@ -296,7 +296,7 @@
 
                         <p>Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. <strong>Swap the filesystem?</strong> Now you have a completely different agent.</p>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
+                        <figure data-visual-style="I70-A30" data-information-weight="70" data-artistic-weight="30" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/one-brain-many-engines-b1-5.jpg" alt="Hand-drawn sketch titled &#x27;One Brain, Many Engines&#x27; showing an Agent Directory (.claude/) containing Knowledge, Rules, and Memory Files at center. Adapter Layers connect it to three interchangeable platforms: Claude Code, OpenCode, and Gemini CLI." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">One brain, many engines. The same agent directory &mdash; with its knowledge, rules, and memory &mdash; connects to different platforms through thin adapter layers. Swap the engine; the agent stays the same.</figcaption>
                         </figure>
@@ -309,7 +309,7 @@
 
                         <p>Compartmentalization means: <strong>every piece of knowledge has a home</strong>. Every behavior has a boundary. Every context is scoped to where it is needed.</p>
 
-                        <figure class="blog-image" style="margin: 2rem 0;">
+                        <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/claude-md-hierarchy-b1-6.jpg" alt="Four-level hierarchy of CLAUDE.md files: Level 1 at ~/.claude/CLAUDE.md for Global User Context, Level 2 at ./CLAUDE.md for Agent Identity, Level 3 at ./.claude/CLAUDE.md for the Brain Manual, and Level 4 at ./**/CLAUDE.md for Local Working Memory in subdirectories. A tree diagram on the right shows how these nest within the filesystem." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The four levels of compartmentalized memory. Global context at the top, local working memory at the bottom. Each file scoped to exactly where it is needed.</figcaption>
                         </figure>

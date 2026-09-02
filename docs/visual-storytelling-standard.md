@@ -1,56 +1,66 @@
 # Hadosh Academy visual storytelling standard
 
-All generated site visuals share a dark, hand-drawn chalkboard medium. The medium does not decide the image's job. Every image must be classified before generation as **artwork**, a **hybrid**, or an **educational diagram**.
+All generated site visuals share a dark, hand-drawn chalkboard medium. The medium does not decide the image's job. Every storytelling image must be classified before generation on the information-to-art spectrum below.
 
-## Three intentional modes
+## Five-category spectrum
 
-### Educational diagram
+| Code | Information | Art | Use when |
+|---|---:|---:|---|
+| `I90-A10` | 90% | 10% | Exact architecture, sequence, boundaries, labels, or causality must be reconstructed without distraction. |
+| `I70-A30` | 70% | 30% | A precise explanation benefits from a restrained metaphor or more humane composition. |
+| `I50-A50` | 50% | 50% | The image must teach a real relationship while also making the idea approachable and memorable. |
+| `I30-A70` | 30% | 70% | A coherent scene carries the main experience, with a small amount of instructional structure. |
+| `I10-A90` | 10% | 90% | The image primarily creates imagination, feeling, or memory; prose must carry the technical explanation. |
 
-Use when the visitor must learn exact names, order, architecture, contrast, inheritance, boundaries, or causality. Prefer large handwritten labels, arrows, stages, grouped components, restrained color, simple icons, and mobile/fullscreen readability. Technical accuracy and comprehension take priority over decoration.
-
-### Artwork
-
-Use when the visitor must imagine a world, feel a human consequence, or remember a central metaphor. Prefer one coherent scene, minimal labels, emotional clarity, and visible hand-drawn chalk texture. Artwork must not be the only carrier of technical information.
-
-### Hybrid
-
-Use when a human scene or memorable metaphor makes a system easier to approach, but the image must still teach real relationships. Combine one coherent artistic composition with a restrained set of exact labels, arrows, layers, or boundaries. The artwork and the explanation must describe the same idea; labels must not be decorative text placed over unrelated scenery.
+The endpoints are deliberately not `I100-A0` or `I0-A100`: even exact diagrams should have enough visual care to be inviting, and even artwork should retain some relationship to the page's idea.
 
 ## Decision rule
 
-If a visitor should reconstruct a system or sequence without distraction, use an educational diagram. If the image's job is only to make an idea felt or imagined, use artwork. If a human scene or metaphor materially improves approachability while exact relationships still matter, use a hybrid. A page being visually prominent is not sufficient reason to choose artwork.
+1. If a visitor must reproduce a system or sequence, start at `I90-A10`.
+2. If metaphor helps but precision still dominates, use `I70-A30`.
+3. If comprehension and atmosphere are equally important, use `I50-A50`.
+4. If the human consequence or imagined world is primary, use `I30-A70`.
+5. Use `I10-A90` only when prose already carries the explanation and the image's job is primarily emotional or imaginative.
+
+A prominent page is not sufficient reason to choose more artwork. Technical blog diagrams may correctly remain information-heavy. Distribution is a review lens, not a quota that overrides an image's job.
 
 Existing head, brain-network, profile, and digital-cortex artwork is established site vocabulary and is preserved unless a future task explicitly names it for replacement.
 
-## Five-batch inventory
+## Required metadata
 
-| Batch | Page / image purpose | Mode | Status |
-|---|---|---|---|
-| 1 | Home — interchangeable engines feeding the durable harness | Artwork | Keep deployed image |
-| 1 | Start Here — CLI-to-harness learning path | Educational | Corrected after Batch 1 review |
-| 1 | Agents — Claude Seed to Seed Agent and Q-Seed lineage | Educational | Corrected after Batch 1 review |
-| 1 | Projects — Individual, Group, Family, Collective scale map | Educational | Corrected after Batch 1 review |
-| 1 | Blog index — ordered learning journey | Educational | Corrected after Batch 1 review |
-| 2 | Seed Agent — runtime, cognition, and user-world ownership layers | Hybrid | Replaced current SVG in Batch 2 |
-| 2 | Q-Seed — Codex Seed versus Q-Seed ownership depth | Educational | Replaced current SVG in Batch 2 |
-| 2 | Team Harnesses — local agents connected to one shared substrate | Hybrid | Replaced current SVG in Batch 2 |
-| 2 | Family Games — persistent family world across gatherings and years | Artwork | Raster artwork already delivered; preserve |
-| 3 | Crime Cartography — collective channel and value loop | Hybrid | Replaced current SVG in Batch 3 |
-| 3 | Crime Cartography — data-to-video production workflow | Educational | Replaced current SVG in Batch 3 |
-| 3 | Portfolio — human judgment and digital-cortex execution loop | Hybrid | Replaced current SVG in Batch 3 |
-| 3 | Portfolio — execution ladder from task work to method invention | Educational | Replaced current SVG in Batch 3 |
-| 4 | Blog 2 — the missed-AGI argument and persistent-agent thesis | Hybrid | Missing image |
-| 4 | Blog 3 — biological brain facing modern cognitive load | Artwork | Missing image; preserve related existing cortex artwork |
-| 4 | Blog 4 — agent language/anatomy and durable primitives | Educational | Missing image |
-| 4 | Blog 6.2b — complete phase map and allowed transitions | Educational | Missing image |
-| 5 | Blog 6.10 — plan state machine | Educational | Missing image |
-| 5 | Blog 6.7b — Condense's unique ownership in the cycle | Educational | Missing image |
-| 5 | Blog 8.5 — enforced hard caps versus discipline-based soft caps | Educational | Replace current SVG placeholder |
+Every displayed storytelling image slot must expose these attributes on its containing figure or visual wrapper:
+
+```html
+data-visual-style="I70-A30"
+data-information-weight="70"
+data-artistic-weight="30"
+data-visual-role="storytelling"
+```
+
+Figures created by `js/story-visuals.js` receive the same attributes through `makeFigure`. The canonical per-slot record is `docs/storytelling-visual-inventory.md`.
+
+## Completed delivery sequence
+
+| Round | Scope | Result |
+|---|---|---|
+| Batch 1 | Home, Start Here, Agents, Projects, Blog index | Delivered; style corrections completed in the following PR. |
+| Batch 2 | Seed Agent, Q-Seed, Team Harnesses, Family Games | Delivered; Family Games artwork preserved. |
+| Batch 3 | Crime Cartography and Portfolio | Delivered. |
+| Batch 4 | Blogs 2, 3, 4, and Blog 6.2b | Delivered as raster images. |
+| Batch 5 | Blogs 6.10, 6.7b, and 8.5 | Delivered; final displayed illustrative SVG replacement completed. |
+| Rebalance 1 | Home, Projects, Blog index | Delivered. |
+| Rebalance 2 | Start Here and Portfolio execution ladder | Delivered. |
 
 ## Delivery requirements
 
-- Use raster assets, not generated SVG stand-ins.
-- Preserve unrelated existing images.
-- Make every generated chalkboard image open through the shared fullscreen lightbox.
+- Use raster assets for generated storytelling artwork; do not use generated SVG stand-ins.
+- Preserve unrelated existing images, especially founder headshots and established digital-cortex artwork.
+- Display one image per content slot; do not maintain alternate rendered page versions.
+- Make every blackboard storytelling image open through the shared fullscreen lightbox and close by the close button, backdrop click, or Escape.
 - Use versioned filenames or cache-key updates when replacing a deployed visual.
-- Verify exact labels, source references, page placement, mobile readability, and close behavior before merge.
+- Verify exact labels, source references, page placement, mobile readability, image loading, and close behavior before merge.
+- Inline SVG is permitted for functional charts, icons, and interface geometry; it is not a substitute for generated storytelling artwork.
+
+## Acceptance status
+
+The current inventory contains 74 displayed storytelling slots. All 74 are categorized, all 74 are covered by the shared lightbox, and no displayed storytelling slot references an SVG. Functional inline charts and non-story assets are explicitly excluded in the inventory.
