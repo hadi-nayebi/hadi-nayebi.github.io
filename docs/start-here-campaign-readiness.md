@@ -20,6 +20,9 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 - [x] Add the changing-work vision across employment, self-employment, consulting, micro-businesses, passion projects, and collaborative teams.
 - [x] Define portable personal cognition, portable capability, shared organizational structure, work content, and protected data as separate layers.
 - [x] Establish human autonomy as the objective, bounded agent autonomy as a mechanism, and cognitive freedom as a central benefit.
+- [x] Add a human-guidance escalation path through the contact form for conceptual, architectural, implementation, and case-specific uncertainty.
+- [x] Allow agents to prepare and, with explicit permission, submit a privacy-reviewed contact request for the user.
+- [x] Offer an initial live guidance session at no charge for understanding options or reaching a stable continuation point.
 - [ ] Run a final campaign-readiness and agent-readability audit after the supporting items below are linked.
 
 ## Base Dashboard repository
