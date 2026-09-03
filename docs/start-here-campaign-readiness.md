@@ -86,6 +86,8 @@ still requires live behavior testing with several agent systems and user perspec
 - [ ] Confirm the full manual is present in the HTML experience and the canonical Markdown source.
 - [ ] Test each phase's collapsed instruction, keyboard behavior, mobile presentation, and canonical-manual fallback.
 - [ ] Test the copyable starter instruction with several agent systems and confirm they recognize the agent-directed layer.
+- [ ] Test Gemini, ChatGPT, Claude, and at least one CLI with zero prior context; confirm the first response asks the interaction-mode question and contains no Phase 0 exposition before the user chooses.
+- [ ] Confirm conversational mode learns about the user through short back-and-forth while still completing the full Phase 0 substance and gate; confirm default-presentation mode preserves the structured orientation.
 - [ ] Test onboarding from nontechnical, technical, individual, team, creative, professional, and privacy-sensitive user perspectives.
 - [ ] Test the zero-context opening with agents that have not seen prior Hadosh conversations.
 - [ ] Confirm agents distinguish the technical agent, the harness, and the user's externalized agency.
