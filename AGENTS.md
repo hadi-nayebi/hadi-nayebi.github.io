@@ -46,6 +46,7 @@ Run the checks relevant to the changed surfaces. For ordinary website synchroniz
 ```bash
 node scripts/validate-site-navigation.mjs
 node scripts/validate-contribution-surfaces.mjs
+node scripts/validate-start-here-first-response.mjs
 node scripts/validate-storytelling-visuals.mjs
 node scripts/validate-whats-new.mjs
 ```
