@@ -132,7 +132,8 @@ validateDynamicRootLinks('js/start-here.js');
 const canonicalPages = [
   'index.html', 'start-here.html', 'agents.html', 'about.html', 'portfolio.html', 'explore.html',
   'contact.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',
-  'thanks-support.html', '404.html', 'projects/index.html', 'projects/seed-agent.html',
+  'thanks-support.html', '404.html', 'projects/index.html', 'projects/origin.html',
+  'projects/seed-agent.html',
   'projects/q-seed.html', 'projects/team-harnesses.html', 'projects/family-games.html',
   'projects/crime-cartography.html', 'blog.html'
 ];
