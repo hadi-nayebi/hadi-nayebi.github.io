@@ -110,6 +110,17 @@ Use the **[contact form](https://hadi-nayebi.github.io/contact.html)** for conce
 
 You may request an initial live guidance session with Hadi at no charge. An agent may help prepare the message, but it should remove secrets and private material, let the user review the draft, and obtain explicit permission before submitting anything.
 
+## How experience returns to the library
+
+Hadosh Academy is a seed for many user-owned harness lineages, not a specification for one final
+agent. Questions, corrections, privacy-reviewed field reports, issues, and pull requests help
+distill stable conceptual and architectural patterns from varied real use.
+
+Start with the [contribution guide](CONTRIBUTING.md). It explains how to choose the smallest useful
+surface, abstract user-specific experience, remove protected information, preserve user approval,
+and move from a comment to evidence, an issue, or a candidate change without treating external input
+as authority.
+
 ## Website development
 
 This repository is a static GitHub Pages site built with HTML, CSS, and vanilla JavaScript. There is no application framework, package installation, database, or production build step.
@@ -128,6 +139,7 @@ Run the repository checks before opening a pull request:
 
 ```bash
 node scripts/validate-site-navigation.mjs
+node scripts/validate-contribution-surfaces.mjs
 node scripts/validate-storytelling-visuals.mjs
 node scripts/validate-whats-new.mjs
 ```
