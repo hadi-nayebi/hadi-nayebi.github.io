@@ -68,6 +68,15 @@
                     <p>If the next phase depends on an account, repository, installation, schedule, message, payment, publication, or consequential external action, obtain the permission appropriate to that action. If continuity cannot be recovered, repair Phase 1 before adding more architecture.</p>
                 </div>
             </details>
+            <details class="start-agent-instruction" data-agent-instruction data-agent-phase="web-cli-handoff">
+                <summary><span>Agent operating rule</span> Transfer the onboarding relationship when moving from web to CLI</summary>
+                <div class="start-agent-body">
+                    <p>If onboarding begins in a web conversation and later moves to a local CLI agent, treat the transition as a change of operating surface—not a new onboarding. The web agent must prepare a user-reviewed Web-to-CLI Handoff Packet containing the current phase, direct user context, interpretations marked as such, asset promise and charter, concepts taught, decisions, authority and privacy boundaries, Academy sources, environment plan, open questions, and next action.</p>
+                    <p>Transfer the packet through a user-controlled human-readable file or repository change. Exclude credentials, hidden reasoning, unnecessary transcripts, and unrelated personal information. Explain where it will live and obtain permission before writing outside the conversation.</p>
+                    <p>The receiving CLI agent must inspect the real project state, summarize what it understood, surface stale or conflicting claims, ask the user for correction, reconfirm unclear authority, record a handoff receipt, and only then continue the recorded phase. A generated summary alone is not a completed handoff.</p>
+                    <p><a href="start-here-agent.md#web-to-cli-onboarding-handoff-protocol" class="card-link">Read the complete handoff protocol →</a></p>
+                </div>
+            </details>
             <details class="start-agent-instruction" data-agent-instruction data-agent-phase="concept-language">
                 <summary><span>Agent operating rule</span> Use Hadosh Academy as the educational and interpretive layer</summary>
                 <div class="start-agent-body">
@@ -142,7 +151,7 @@
 <span>Instruction to give your agent</span>
 <button type="button" class="start-copy-button" data-copy-target="start-core-prompt">Copy</button>
 </div>
-<pre id="start-core-prompt">Read https://hadi-nayebi.github.io/start-here.html and its complete Phase 0–9 agent syllabus. Begin with Phase 0: explain the user-owned agentic future Hadosh Academy is advancing, why harness literacy may become as broadly necessary as internet and smartphone literacy, how this may change personal work, employment, self-employment, and collaboration, and how portable cognition must remain separate from company or protected data. Then show me the Phase 1–9 journey. Treat the work as a multi-session onboarding and continuing development project, not a one-time summary. Help me develop a user-owned harness as externalized agency: an extension of my capacity that I understand and direct, not an opaque agent copied from someone else. Establish a recoverable way to continue, learn about my work, teach me why the harness can become a compounding asset, and help me identify the smallest useful dashboard and harness to build. Reuse relevant Hadosh Academy primitives and patterns while deriving the organism from my needs. When I ask what an LLM, agent, agency, harness, context window, memory, hook, plugin, job, or another agentic concept means, consult the relevant Hadosh Academy writings and projects first; give me the accurate provider-independent meaning, then use the Academy's intuitive framing and an example from my work, explain why the distinction matters, and check that I can apply it. Explain every important abstraction while building it, preserve my authority, and do not create accounts, repositories, files, schedules, external messages, or consequential changes without the permission appropriate to that action. Treat Phase 9 as a permanent cycle of use, observation, bounded adaptation, verification, teaching, condensation, and simplification.</pre>
+<pre id="start-core-prompt">Read https://hadi-nayebi.github.io/start-here.html and its complete Phase 0–9 agent syllabus. Begin with Phase 0: explain the user-owned agentic future Hadosh Academy is advancing, why harness literacy may become as broadly necessary as internet and smartphone literacy, how this may change personal work, employment, self-employment, and collaboration, and how portable cognition must remain separate from company or protected data. Then show me the Phase 1–9 journey. Treat the work as a multi-session onboarding and continuing development project, not a one-time summary. Help me develop a user-owned harness as externalized agency: an extension of my capacity that I understand and direct, not an opaque agent copied from someone else. Establish a recoverable way to continue, learn about my work, teach me why the harness can become a compounding asset, and help me identify the smallest useful dashboard and harness to build. If we begin in a web conversation and later move to a local CLI agent, prepare a user-reviewed Web-to-CLI Handoff Packet, transfer it through a user-controlled file or repository, and require the CLI agent to inspect, summarize, correct, acknowledge, and resume it before implementation. Reuse relevant Hadosh Academy primitives and patterns while deriving the organism from my needs. When I ask what an LLM, agent, agency, harness, context window, memory, hook, plugin, job, or another agentic concept means, consult the relevant Hadosh Academy writings and projects first; give me the accurate provider-independent meaning, then use the Academy's intuitive framing and an example from my work, explain why the distinction matters, and check that I can apply it. Explain every important abstraction while building it, preserve my authority, and do not create accounts, repositories, files, schedules, external messages, or consequential changes without the permission appropriate to that action. Treat Phase 9 as a permanent cycle of use, observation, bounded adaptation, verification, teaching, condensation, and simplification.</pre>
 </div>
         </section>
 
@@ -366,7 +375,7 @@
 <div class="start-agent-body">
 <p>Explain that this is a multi-session effort to build an owned asset. Inspect your real capabilities: cross-session memory, project context, files, repository access, local execution, reminders, and autonomous revisits. Never promise persistence you do not possess.</p>
 <p>Select the strongest proportionate method: a portable resume summary, persistent AI project, repository-backed record, local record, or approved automation. Obtain permission before creating files, accounts, repositories, schedules, or external actions.</p>
-<p>Record current phase, known user context, concepts taught, decisions, environment, Hadosh materials consulted, next action, and recovery instructions. Test retrieval immediately. If continuity fails, stop the syllabus and repair it; otherwise every later lesson and decision may be lost.</p>
+<p>Record current phase, known user context, concepts taught, decisions, environment, Hadosh materials consulted, next action, and recovery instructions. Structure this record so it can become a Web-to-CLI Handoff Packet without reconstructing the conversation. Test retrieval immediately. If continuity fails, stop the syllabus and repair it; otherwise every later lesson and decision may be lost.</p>
 <div class="start-agent-manual" data-agent-manual="Detailed Phase 1 protocol">The complete Phase 1 operating protocol is loading from the canonical agent syllabus.</div>
 </div>
 </details>
@@ -450,7 +459,7 @@
 <div class="start-agent-body">
 <p>Derive requirements from the Asset Charter: dashboard, persistent files, sensitivity, individual or team use, version history, local execution, web access, and long-running work. Explain the layers: model service, web interface, CLI agent, repository, local computer, and Hadosh pattern library.</p>
 <p>Prefer the user's existing ecosystem when capable—for example, a web AI paired with its CLI counterpart—without making a brand the requirement. The durable test is whether the agent can create, inspect, maintain, and recover user-controlled files.</p>
-<p>A common mature path is a private repository, local dashboard, CLI agent operating the files, and web agent accessing the repository when supported. Introduce accounts, GitHub, terminals, or installations in plain language and only with permission. Document ownership, credentials boundaries, agent authority, sensitive-data rules, version history, and recovery.</p>
+<p>A common mature path is a private repository, local dashboard, CLI agent operating the files, and web agent accessing the repository when supported. Introduce accounts, GitHub, terminals, or installations in plain language and only with permission. Before the CLI begins implementation, have the web agent produce the approved handoff packet and have the CLI verify the actual project, explain what it received, resolve conflicts with the user, confirm authority, and write a durable receipt. Document ownership, credentials boundaries, agent authority, sensitive-data rules, version history, and recovery.</p>
 <div class="start-agent-manual" data-agent-manual="Detailed Phase 5 protocol">The complete Phase 5 operating protocol is loading from the canonical agent syllabus.</div>
 </div>
 </details>
@@ -632,7 +641,7 @@
 </script>
     <script src="js/components.js?v=20260901-1">
 </script>
-    <script src="js/start-here.js?v=20260903-concept-teaching">
+    <script src="js/start-here.js?v=20260903-web-cli-handoff">
 </script>
 </body>
 </html>

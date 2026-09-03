@@ -2,7 +2,7 @@
 
 Canonical human page: https://hadi-nayebi.github.io/start-here.html
 
-Syllabus version: 2026-09-03.1
+Syllabus version: 2026-09-03.2
 
 ## Zero-context orientation
 
@@ -189,6 +189,45 @@ If you cannot implement the next stage:
 4. Introduce the CLI counterpart, repository, or local environment in plain language and only when it becomes necessary.
 5. Ask the implementation agent to load and verify the handoff instead of restarting the user interview.
 6. Remain useful as an educational or repository-connected surface when appropriate, without claiming to operate local state you cannot inspect.
+
+### Web-to-CLI onboarding handoff protocol
+
+Treat movement from a web conversational agent to a local CLI agent as a change of operating surface, not a restart of the relationship. The web agent may have accumulated important user language, corrections, decisions, phase evidence, educational progress, and an Asset Charter before the local environment exists. None of that context should remain trapped in the conversation or be reconstructed from memory by the user.
+
+The purpose of the handoff is to transfer explicit, user-approved onboarding state into a durable location the CLI agent can inspect and continue. It is not a transcript dump, a transfer of hidden chain-of-thought, system instructions, credentials, or every personal detail mentioned in conversation.
+
+Before handoff, the web agent must prepare a **Web-to-CLI Handoff Packet** containing:
+
+1. **Identity and provenance:** user/project label sufficient to avoid context mixing; creation time; source environment; Hadosh syllabus version; authoring agent; and whether each section is direct user statement, accepted decision, agent interpretation, or unresolved hypothesis.
+2. **Current journey state:** current phase; completed phase gates and evidence; work currently in progress; last confirmed next action; and whether the user intends to continue onboarding, begin implementation, or both.
+3. **Future and asset orientation:** the user's understanding of the Phase 0 future; chosen asset promise or active candidates; expected immediate and compounding value; Asset Charter; and the user's corrections or disagreements.
+4. **User vocabulary and learning map:** the user's own terminology; Hadosh concepts introduced; provider-specific terms mapped to provider-independent meanings; examples that worked or failed; and the concepts the user can recognize, locate, direct, evaluate, or adapt.
+5. **Decisions and boundaries:** accepted, rejected, deferred, and superseded decisions; privacy map; protected information; prohibited collection; permissions granted or denied; actions that still require approval; and the distinction between portable cognition and protected work content.
+6. **Environment map:** selected repository and local-project plan; expected dashboard and harness roles; intended web/CLI coordination; operating-system or setup facts the user approved for transfer; and known capability limitations. Reference credentials by required type or storage location only—never include secret values.
+7. **Academy consultation record:** exact Hadosh writings, projects, or explorables consulted; consultation dates; patterns extracted; maturity; local adaptations; and sources that should be refreshed before the next decision.
+8. **Open state:** unanswered questions, blockers, waiting conditions, risks, failed attempts, unresolved contradictions, and the smallest responsible next action with acceptance criteria.
+9. **Recovery:** where the packet will live, how the user and receiving agent can locate it, how updates will be versioned, and what to do if the CLI agent cannot read or trust it.
+
+Use a compact human-readable file such as `ONBOARDING_HANDOFF.md` as the canonical entry point. Structured companion state may be added when the receiving harness needs it, but do not make a machine-readable file the only form the user can inspect. If a repository already exists and the web agent has approved write access, place the packet in a clearly named onboarding or context location through a reviewable commit or draft change. If direct repository writing is unavailable, give the user a downloadable or copyable packet and exact placement instructions for the receiving CLI agent.
+
+Before producing the packet, tell the user what will be transferred, what will be omitted, where it will be stored, and who can read it. Let the user inspect and correct it. Obtain explicit permission before writing it to a repository, local folder, cloud drive, or another external surface. Minimize sensitive data. Do not place API keys, access tokens, passwords, private keys, session cookies, hidden model reasoning, or unnecessary conversation history in the packet.
+
+The web agent must finish with an explicit **launch instruction** for the receiving CLI agent. It should tell the CLI agent to read the Hadosh Start Here syllabus, inspect the packet and project state, avoid implementation until it completes the receiving handshake, and continue from the recorded phase rather than restarting intake.
+
+The receiving CLI agent must perform this handshake:
+
+1. Confirm which handoff packet, repository, directory, branch, and syllabus version it loaded.
+2. Inspect the actual local and repository state instead of trusting paths, capabilities, completed setup, or artifacts described in the packet.
+3. Summarize its understanding of the user, current phase, asset promise, accepted decisions, authority boundaries, privacy constraints, open questions, and next action.
+4. Separate direct user evidence from prior-agent interpretation and identify stale, ambiguous, conflicting, missing, or unverifiable claims.
+5. Ask the user to correct the summary and reconfirm any permission needed for the next action. Prior permission transfers only when its scope, target, and continuing validity are explicit; otherwise ask again.
+6. Verify that the user can find the packet and that both web and CLI surfaces understand which durable record is canonical.
+7. Write a user-visible handoff receipt or update the onboarding record with receiving environment, verified state, corrections, unresolved differences, and the accepted next action.
+8. Only after user confirmation, continue the current phase, move backward to repair invalid evidence, or advance when the recorded exit condition is genuinely satisfied.
+
+The handoff is complete only when the receiving CLI agent has demonstrated access to the correct durable state, the user recognizes the receiving summary, authority and privacy boundaries are explicit, inconsistencies have been surfaced, and the next action is agreed. A generated packet alone is not a completed handoff.
+
+If the handoff fails, do not ask the user to repeat the entire onboarding. Diagnose whether the problem is access, file placement, repository branch, format, stale state, missing permission, environment mismatch, or contradictory evidence. Repair the smallest broken layer, preserve the user's corrections, and keep the web agent as a temporary educational or recovery surface when useful.
 
 ### The meaningful-ownership test
 
@@ -393,7 +432,8 @@ A compounding asset cannot grow through disconnected conversations. Without reco
 - Select the strongest proportionate continuity method: portable resume summary, persistent conversation/project, repository-backed record, local record, or approved automation.
 - Obtain permission before creating accounts, repositories, files, schedules, messages, comments, or external actions.
 - Create a small user-visible onboarding record containing current phase, direct user context, agent inferences clearly marked, concepts taught, decisions, environment, Hadosh materials consulted, next action, and recovery instructions.
-- Test the recovery path immediately.
+- Structure the record so it can later become a Web-to-CLI Handoff Packet without reconstructing the conversation.
+- Test recovery both in the present surface and, when migration becomes relevant, through the receiving-agent handshake.
 
 ### Exit condition
 
@@ -480,7 +520,8 @@ Ownership must be operational. The asset needs a persistent, inspectable, recove
 - Introduce GitHub, repositories, terminals, and installations in plain language and only when value has been understood.
 - Obtain permission for account creation, repository creation, installation, credential use, external writes, and consequential changes.
 - Document ownership, collaborators, agent permissions, protected areas, sensitive-data rules, credential boundaries, version history, and recovery.
-- Verify that the user can locate, access, inspect, stop, download, and recover the asset.
+- Before moving from a web agent to a local CLI agent, create and obtain approval for the Web-to-CLI Handoff Packet; transfer it through a user-controlled file or repository; and require the receiving CLI agent to verify, summarize, correct, acknowledge, and resume it before implementation.
+- Verify that the user can locate, access, inspect, stop, download, and recover both the asset and its onboarding record.
 
 ### Exit condition
 
@@ -891,11 +932,13 @@ Do not infer authority for a higher rung from approval at a lower rung. Reposito
 
 When a new session or agent resumes, it should:
 
-1. Load the user-visible phase packet and project state.
-2. State what it believes the current phase, accepted decisions, open questions, and authority boundaries are.
-3. Ask the user to correct material drift.
-4. Reinspect current Hadosh sources when the next action depends on a pattern that may have evolved.
-5. Continue from the smallest recorded action rather than restarting intake or leaping ahead.
+1. Load the user-visible phase packet, project state, and any Web-to-CLI Handoff Packet or handoff receipt.
+2. Confirm the exact environment, repository, directory, branch, record version, and Hadosh syllabus version actually inspected.
+3. State what it believes the current phase, accepted decisions, open questions, authority boundaries, privacy constraints, and next action are.
+4. Separate direct user evidence from prior-agent interpretation; flag stale, conflicting, missing, or unverifiable claims.
+5. Ask the user to correct material drift and reconfirm permission for the next action when scope or validity is unclear.
+6. Reinspect current Hadosh sources when the next action depends on a pattern that may have evolved.
+7. Update the durable record with the receiving result, then continue from the smallest recorded action rather than restarting intake or leaping ahead.
 
 If the continuity record conflicts with the user, the user is authoritative. Preserve the correction and its reason rather than silently overwriting history.
 
@@ -1028,6 +1071,7 @@ Determine, without guessing:
 - Whether scheduled reminders or recurring checks are genuinely supported.
 - Whether you can revisit Hadosh Academy without the user initiating a session.
 - Whether another agent instance could retrieve the same record.
+- Whether the record can be exported into a human-readable handoff packet and imported by a later CLI agent without depending on the current chat.
 
 Describe limitations honestly. “I will remember” is not a continuity method unless verified. “I will check regularly” is not valid if no scheduling or autonomous execution mechanism exists.
 
@@ -1066,11 +1110,13 @@ Create a compact but extensible record containing:
 - Open questions, blockers, and waiting conditions.
 - Next action and why it is next.
 
-Do not fill the record with unnecessary personal data. It is an onboarding state, not surveillance.
+Do not fill the record with unnecessary personal data. It is an onboarding state, not surveillance. Maintain enough provenance and structure that it can become the Web-to-CLI Handoff Packet later without treating unverified agent interpretation as user fact.
 
 #### Immediate test
 
 Show the record to the user. Confirm that the user can find it. Retrieve it through the intended method. Provide a one-sentence recovery prompt or exact location. Explain what happens if current conversational context is lost.
+
+When a CLI transition is already expected, conduct a small handoff-readiness test: export the current record in human-readable form, verify that it contains no secrets or unnecessary personal material, and confirm that another agent could distinguish user statements, accepted decisions, interpretations, permissions, open questions, and the next action.
 
 #### Failure branches
 
@@ -1325,6 +1371,20 @@ When the local path is selected, establish a dedicated directory, repository cop
 Do not assume web and local agents have identical tools, context, or permissions. Preserve clear handoffs. Document repository ownership, people and agents allowed to read or modify, approval requirements, branch/commit authority, protected areas, external actions, sensitive-data categories, secrets handling, and potential publication.
 
 A private repository is not automatically appropriate for every sensitive datum. Treat client, health, legal, financial, organizational, credential, and identifying information separately.
+
+#### Prepare the Web-to-CLI Handoff Packet
+
+When meaningful onboarding occurred in the web interface, do not begin the CLI relationship from an empty prompt. Assemble the canonical handoff packet defined in the visiting-agent operating contract. Derive it from the phase packets and Asset Charter; do not rely on an improvised summary at the final moment.
+
+Tell the user what the packet includes and omits. Review it together. Remove credentials, hidden reasoning, unnecessary transcript content, and personal information that the local project does not need. Resolve obvious contradictions or mark them explicitly. Obtain permission for the exact transfer method.
+
+If the web agent can write to the selected repository, create the packet in a reviewable branch, commit, pull request, or other user-visible change appropriate to its authority. If it cannot, produce the complete file for the user to place in the project and give one exact launch instruction. Do not claim the CLI received it merely because it was generated.
+
+#### Conduct the receiving-agent handshake
+
+The CLI agent must read the packet and current Hadosh syllabus before changing the project. It must inspect the real repository and local state, state what it believes, identify unverifiable claims or conflicts, ask for user correction, reconfirm the next action and required authority, and leave a handoff receipt in the durable record.
+
+Where both web and CLI agents continue to participate, define which files are canonical, which surface may edit them, how changes synchronize, and how either agent detects stale state. The web agent may remain valuable for teaching, planning, and repository review, while the CLI agent operates local files. Neither should pretend to see state available only to the other.
 
 #### Consult, create, and test
 
@@ -1653,6 +1713,8 @@ There is no final architecture and no Phase 9 graduation. Success is continuousl
 - Do not treat every user comment as authorization.
 - Do not create persistence, accounts, schedules, repositories, external messages, or consequential changes without appropriate permission.
 - Do not promise autonomous return or memory without verified capability.
+- Do not treat a web-to-CLI migration as complete because a summary was generated. Require a user-reviewed handoff packet, receiving-agent verification, correction, authority confirmation, durable receipt, and an agreed next action.
+- Do not transfer credentials, hidden reasoning, unnecessary transcripts, or unrelated personal information in a handoff packet.
 - Do not equate local storage alone with privacy or ownership.
 - Do not preserve all conversation as memory by default.
 - Do not add every pattern merely because it exists.
