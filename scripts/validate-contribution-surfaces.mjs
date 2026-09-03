@@ -16,6 +16,17 @@ function read(relativePath) {
   return fs.readFileSync(absolutePath, 'utf8');
 }
 
+function walkHtml(directory) {
+  const pages = [];
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (entry.isDirectory() && ['.git', '.claude', 'node_modules'].includes(entry.name)) continue;
+    const absolutePath = path.join(directory, entry.name);
+    if (entry.isDirectory()) pages.push(...walkHtml(absolutePath));
+    else if (entry.name.endsWith('.html')) pages.push(absolutePath);
+  }
+  return pages;
+}
+
 function requireTokens(relativePath, source, tokens) {
   for (const token of tokens) {
     if (!source.includes(token)) errors.push(`${relativePath}: missing ${JSON.stringify(token)}`);
@@ -65,6 +76,29 @@ for (const [relativePath, marker, guideLink] of surfaces) {
   }
 }
 
+const discussionPages = walkHtml(root)
+  .map(absolutePath => ({
+    relativePath: path.relative(root, absolutePath).split(path.sep).join('/'),
+    source: fs.readFileSync(absolutePath, 'utf8')
+  }))
+  .filter(page => page.source.includes('https://giscus.app/client.js'));
+
+for (const { relativePath, source } of discussionPages) {
+  requireTokens(relativePath, source, giscusTokens);
+  const guideIndex = source.indexOf('CONTRIBUTING.md');
+  const commentsIndex = source.indexOf('https://giscus.app/client.js');
+  if (guideIndex < 0 || guideIndex > commentsIndex) {
+    errors.push(`${relativePath}: contribution guide must be visible before the comment client`);
+  }
+  const guidance = source.slice(0, commentsIndex);
+  if (!/explicit approval/i.test(guidance)) {
+    errors.push(`${relativePath}: comment guidance must require explicit approval`);
+  }
+  if (!/(personal|private|protected|proprietary)/i.test(guidance)) {
+    errors.push(`${relativePath}: comment guidance must include a privacy boundary`);
+  }
+}
+
 const readme = read('README.md');
 requireTokens('README.md', readme, ['[contribution guide](CONTRIBUTING.md)']);
 
@@ -74,4 +108,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Contribution-surface validation passed: canonical guide, agent protocol, and launch entry points checked.');
+console.log(`Contribution-surface validation passed: canonical guide, agent protocol, and ${discussionPages.length} comment surfaces checked.`);
