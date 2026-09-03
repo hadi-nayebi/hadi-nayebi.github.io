@@ -61,7 +61,7 @@
         <div class="article-content">
             <a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
             <h1>The Dashboard and the Harness Are One System</h1>
-            <div class="article-meta"><span>September 2026</span><span>&bull;</span><span>9 min</span><div class="article-meta-tags"><span class="tag tag-audience">Power Users &amp; Architects</span><span class="tag">Dashboard</span><span class="tag">Harness</span><span class="tag">Base Dashboard</span></div></div>
+            <div class="article-meta"><span>September 2026</span><span>&bull;</span><span>9 min</span><div class="article-meta-tags"><span class="tag tag-audience">Power Users &amp; Architects</span><span class="tag">Dashboard</span><span class="tag">Harness</span><span class="tag">Origin</span></div></div>
             <div class="article-authors">By Hadi Nayebi &amp; Codex</div>
 
             <div class="article-body">
@@ -78,7 +78,7 @@
 
                 <h2 id="one-world-two-surfaces">One World, Two Surfaces</h2>
 
-                <p>In <a href="../../projects/base-dashboard.html">Base Dashboard 1.0</a>, the page begins almost empty. A Wiki control sits on one side. A Feedback control sits on the other. The emptiness is not the product. It is room for the user&rsquo;s own operational world to appear.</p>
+                <p>In <a href="../../projects/origin.html">Origin 1.0</a>, the page begins almost empty. A Wiki control sits on one side. A Feedback control sits on the other. The emptiness is not the product. It is room for the user&rsquo;s own operational world to appear.</p>
 
                 <p>The user may also be speaking directly to Codex in the terminal. These are not two agents and not two separate conversations that occasionally synchronize. The dashboard sends events into the same foreground interactive Codex session the user can see and address. Terminal dialogue and dashboard activity meet one continuing relationship.</p>
 
@@ -112,7 +112,7 @@
 
                 <p>It would be easy to call everything “the feedback plugin.” That would be convenient today and expensive tomorrow.</p>
 
-                <p>Base Dashboard separates two cognitive concerns. The contextual-feedback plugin owns the thread: original input, interpretation, messages, questions, work state, verification, user review, reopening, event voices, and the commands and tests that protect those contracts.</p>
+                <p>Origin separates two cognitive concerns. The contextual-feedback plugin owns the thread: original input, interpretation, messages, questions, work state, verification, user review, reopening, event voices, and the commands and tests that protect those contracts.</p>
 
                 <p>The agent-stop-state plugin owns a different question: may the interactive agent stop? It tracks whether the harness is idle, active, waiting, or paused. Runnable feedback keeps the system active. One blocked thread does not justify waiting when another thread can progress. Pausing is an explicit user control, not a disguised completion state.</p>
 
@@ -122,7 +122,7 @@
 
                 <p>The agent can implement a page and run every relevant test. It still cannot know that the user&rsquo;s need has been satisfied.</p>
 
-                <p>Base Dashboard therefore splits verification from acceptance. The agent records what changed and how it was checked, then moves the thread to <code>ready_for_review</code>. The dashboard user can accept it, reopen it with a reason, or dismiss it. The agent-facing command surface does not expose those review actions.</p>
+                <p>Origin therefore splits verification from acceptance. The agent records what changed and how it was checked, then moves the thread to <code>ready_for_review</code>. The dashboard user can accept it, reopen it with a reason, or dismiss it. The agent-facing command surface does not expose those review actions.</p>
 
                 <p>This is not a security boundary against a malicious process running under the same operating-system account. It is a capability and audit boundary inside one trusted local relationship. Its purpose is to keep the ordinary workflow honest: implementation is the agent&rsquo;s claim; closure is the user&rsquo;s judgment.</p>
 
@@ -130,7 +130,7 @@
 
                 <h2 id="what-the-foundation-does-not-pretend">What the Foundation Does Not Pretend</h2>
 
-                <p>Base Dashboard 1.0 does not contain a general job system. Feedback records are its first durable queue. A later dashboard may promote substantial feedback into jobs that coordinate several threads, survive multiple cycles, or carry their own plans. Calling feedback a job before that machinery exists would make the documentation sound mature while making the implementation harder to inspect.</p>
+                <p>Origin 1.0 does not contain a general job system. Feedback records are its first durable queue. A later dashboard may promote substantial feedback into jobs that coordinate several threads, survive multiple cycles, or carry their own plans. Calling feedback a job before that machinery exists would make the documentation sound mature while making the implementation harder to inspect.</p>
 
                 <p>It also does not ship an OPEVC engine, accounts, remote access, synchronization, or team authority. The Wiki explains how those layers can grow; it does not turn future architecture into present capability.</p>
 
@@ -140,7 +140,7 @@
 
                 <p>A user should not clone the dashboard and spend a week admiring its emptiness.</p>
 
-                <p>By the time Start Here introduces Base Dashboard, the helping agent should already have an Asset Charter, a verified handoff, and enough context to propose the smallest useful pages in the user&rsquo;s language. The shared substrate saves that agent from rebuilding installation checks, session ownership, feedback persistence, stopping, recovery, and review. The saved effort goes into differentiation.</p>
+                <p>By the time Start Here introduces Origin, the helping agent should already have an Asset Charter, a verified handoff, and enough context to propose the smallest useful pages in the user&rsquo;s language. The shared substrate saves that agent from rebuilding installation checks, session ownership, feedback persistence, stopping, recovery, and review. The saved effort goes into differentiation.</p>
 
                 <p>Then the user begins shaping the system from inside the system. “Add a client timeline here.” “This status name makes no sense to me.” “Show the unanswered research question beside the draft.” Each comment lands in context. Each unresolved responsibility survives the session. Each proposed completion returns for judgment.</p>
 
@@ -153,7 +153,7 @@
 
         <aside class="sidebar"><div class="sidebar-title">The Visible Harness</div><div>
             <div class="article-card active"><div class="article-card-tags"><span class="tag tag-sm tag-audience">Power Users &amp; Architects</span><span class="tag tag-sm">Dashboard</span><span class="tag tag-sm">Harness</span></div><div class="sidebar-card-position">You are here</div><h3>Essay 9.1 &mdash; The Dashboard and the Harness Are One System</h3><div class="date">September 2026 &bull; 9 min read</div></div>
-            <a href="../../projects/base-dashboard.html" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Implementation evidence</div><h3>Base Dashboard 1.0</h3><div class="date">Project, boundary, and release status</div></div></a>
+            <a href="../../projects/origin.html" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Implementation evidence</div><h3>Origin 1.0</h3><div class="date">Project, boundary, and release status</div></div></a>
             <a href="/blog.html" class="article-card-link sidebar-all-essays-link"><div class="article-card sidebar-all-essays"><h3>All essays &rarr;</h3><div class="date">Browse the full library</div></div></a>
         </div></aside>
     </div></section></main>

@@ -4,23 +4,23 @@
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
     {
-      "id": "2026-09-03-base-dashboard-1-0",
+      "id": "2026-09-03-origin-1-0",
       "date": "2026-09-03",
       "type": "Project",
-      "title": "Base Dashboard 1.0 is now synchronized with onboarding",
-      "summary": "The project page, Start Here Phases 6–8, homepage, README, and a new technical writing now align around the demonstrated Base Dashboard 1.0 foundation.",
+      "title": "Origin 1.0 is now synchronized with onboarding",
+      "summary": "The project page, Start Here Phases 6–8, homepage, README, and a new technical writing now align around the demonstrated Origin 1.0 foundation.",
       "why_it_matters": "Users have a tested dashboard-plus-harness substrate for one local operator: a foreground interactive Codex session, contextual feedback, durable state, explicit stopping, verification, acceptance, reopening, and recovery.",
-      "affected": ["Base Dashboard", "Start Here", "Technical writing", "Phases 6–8"],
+      "affected": ["Origin", "Start Here", "Technical writing", "Phases 6–8"],
       "maturity": "Demonstrated 1.0 foundation",
       "intended_for": ["Individuals beginning a harness", "Codex users", "Cross-CLI implementers"],
       "sources": [
         {
-          "label": "Base Dashboard 1.0 synchronization pull request",
+          "label": "Origin 1.0 synchronization pull request",
           "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/55"
         },
         {
-          "label": "Base Dashboard project page",
-          "url": "/projects/base-dashboard.html"
+          "label": "Origin project page",
+          "url": "/projects/origin.html"
         },
         {
           "label": "The Dashboard and the Harness Are One System",
@@ -104,19 +104,19 @@
       "recommended_action": "Start with Phase 0, then let your agent establish a recoverable multi-session path before building."
     },
     {
-      "id": "2026-09-02-base-dashboard-foundation",
+      "id": "2026-09-02-origin-foundation",
       "date": "2026-09-02",
       "type": "Project",
-      "title": "Base Dashboard joins the public project portfolio",
+      "title": "Origin joins the public project portfolio",
       "summary": "A new project page defines the smallest dashboard–harness substrate: a visible page, contextual feedback, persistent local state, and one bounded behavior through which a user can shape what develops next.",
       "why_it_matters": "It gives onboarding a concrete bridge between understanding harness concepts and growing a user-specific operational world through actual feedback and use.",
-      "affected": ["Base Dashboard", "Projects", "Phases 6 and 7"],
+      "affected": ["Origin", "Projects", "Phases 6 and 7"],
       "maturity": "Design specified",
       "intended_for": ["Individuals beginning a harness", "Dashboard-oriented users", "Implementers"],
       "sources": [
         {
-          "label": "Base Dashboard project page",
-          "url": "/projects/base-dashboard.html"
+          "label": "Origin project page",
+          "url": "/projects/origin.html"
         },
         {
           "label": "Foundation and syllabus pull request",

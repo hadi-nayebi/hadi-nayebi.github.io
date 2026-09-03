@@ -32,7 +32,7 @@ Hadosh Academy advances a particular direction for the emerging agentic ecosyste
 1. **Models become replaceable intelligence utilities.** They may be commercial services, open-weight models, or local runtimes.
 2. **The harness becomes the durable customization layer.** State, jobs, methods, permissions, interfaces, and verified experience remain outside disposable model sessions.
 3. **The user develops architectural literacy.** The agent may implement syntax, but the user learns enough to understand, direct, question, and own the system.
-4. **Patterns are reused; organisms are not copied wholesale.** Seed, Q-Seed, Base Dashboard, and other projects are references, specimens, or starting substrates. Each user's harness should become its own lineage.
+4. **Patterns are reused; organisms are not copied wholesale.** Seed, Q-Seed, Origin, and other projects are references, specimens, or starting substrates. Each user's harness should become its own lineage.
 5. **Human autonomy is the objective.** Agent autonomy is a bounded mechanism. More autonomous activity is valuable only when it expands the user's effective capacity without removing understanding, interruption, correction, or control.
 6. **Portable cognition stays separate from protected content.** Personal methods and lawful reusable capability must not become a pretext for moving employer, client, confidential, proprietary, credential, or regulated data.
 
@@ -65,7 +65,7 @@ The projects test the same principles across individual, group, and collective s
 | Claude Seed reference | The original private implementation in which persistent jobs, OPEVC, plugins, memory, guards, verification, and controlled self-modification were developed through sustained use | [Technical access](https://hadi-nayebi.github.io/seed-access.html) |
 | Seed Agent | The primary public Codex-native personal harness lineage | [Project](https://hadi-nayebi.github.io/projects/seed-agent.html) · [Repository](https://github.com/hadi-nayebi/seed_agent) |
 | Q-Seed | A public cognitive layer paired with a user-controlled Qwen Code framework path | [Project](https://hadi-nayebi.github.io/projects/q-seed.html) · [Cognition](https://github.com/hadi-nayebi/q-seed) · [Framework fork](https://github.com/hadi-nayebi/qwen-code/tree/qseed/main) |
-| Base Dashboard | A single-user Codex dashboard-plus-harness foundation: empty canvas, Wiki, contextual feedback, durable review state, and one foreground interactive tmux session | [Project and release status](https://hadi-nayebi.github.io/projects/base-dashboard.html) |
+| Origin | A single-user Codex dashboard-plus-harness foundation: empty canvas, Wiki, contextual feedback, durable review state, and one foreground interactive tmux session | [Project](https://hadi-nayebi.github.io/projects/origin.html) · [Repository](https://github.com/hadi-nayebi/origin) |
 | Team Harnesses | A governed shared dashboard and repository model for small teams | [Project](https://hadi-nayebi.github.io/projects/team-harnesses.html) |
 | Family Games | A private persistent family world with shared authorship and family-owned history | [Project](https://hadi-nayebi.github.io/projects/family-games.html) |
 | Crime Cartography | A collective factual-media experiment combining an agentic production harness with distributed human judgment | [Project](https://hadi-nayebi.github.io/projects/crime-cartography.html) · [Repository](https://github.com/hadi-nayebi/crime-cartography) |
