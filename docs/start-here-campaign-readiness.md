@@ -27,25 +27,25 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 
 ## Base Dashboard repository
 
-- [ ] Create the open Base Dashboard repository.
-- [ ] Provide a minimal dashboard with a Home or Wiki page and a floating, page-aware feedback control.
-- [ ] Persist raw feedback, page/object context, category, lifecycle state, agent interpretation, linked work, verification, user acceptance, and reopening history.
-- [ ] Implement the first bounded feedback-management plugin with explicit objective, state, interfaces, authority, tests, waiting, stopping, no-progress, failure, and recovery behavior.
-- [ ] Make unresolved actionable feedback visible as persistent responsibility without converting every comment into authorization.
-- [ ] Include setup, local run, recovery, inspection, and adaptation instructions suitable for multiple CLI-agent ecosystems.
-- [ ] Add a clear path for growing pages, domain objects, jobs, and later plugins through the dashboard itself.
-- [ ] Link the repository and its exact maturity from the Base Dashboard project page and agent syllabus.
+- [x] Create the Base Dashboard implementation in a separate repository.
+- [x] Provide an empty canvas, repository-native Wiki, and floating page-aware feedback control.
+- [x] Persist raw feedback, route context, lifecycle state, agent interpretation, linked work, verification, user acceptance, and reopening history.
+- [x] Implement contextual-feedback and agent-stop-state as separate bounded cognitive concerns, with runtime transport outside both plugins.
+- [x] Make unresolved actionable feedback visible as persistent responsibility without converting every comment into authorization.
+- [x] Include strict local setup, run, recovery, inspection, live-acceptance, and cross-CLI adaptation instructions.
+- [x] Add a clear path for growing pages, domain objects, jobs, OPEVC, and later plugins without claiming they already ship in 1.0.
+- [ ] Rename remaining repository, package, local-state, and launch identifiers to the public Base Dashboard name; then publish and link the repository.
+- [x] Synchronize exact 1.0 maturity and boundaries across the Base Dashboard project page and Start Here syllabus.
 
-## Origin dashboard-plus-harness writing series
+## Base Dashboard technical-writing series
 
-- [ ] **Dashboard and Harness as One System** — visible world, operational substrate, and their shared state boundary.
-- [ ] **Dashboard State as an Agent Sensory Surface** — what the agent can observe, how state becomes actionable, and how visibility preserves human control.
+- [x] **The Dashboard and the Harness Are One System** — visible world, operational substrate, shared durable state, one interactive session, and user review.
 - [ ] **The Contextual Feedback Plugin** — raw input, page context, interpretation, responsibility, work, verification, acceptance, and reopening.
-- [ ] **Jobs Made Visible** — durable responsibility in the harness and its inspectable representation in the dashboard.
-- [ ] **OPEVC Across the Dashboard–Harness Boundary** — Observe, Plan, Execute, Verify, and Condense as visible, recoverable work.
-- [ ] **Authority for Individuals and Teams** — roles, approval, privacy, shared state, and consequential action boundaries.
+- [ ] **Internal Voices Are Reorientation, Not Notifications** — objective, durable context, required cognition, authority, and next boundary.
+- [ ] **Stopping Without Forgetting** — active, waiting, paused, idle, queue scanning, and restart recovery.
+- [ ] **One Interactive Agent, Multiple Surfaces** — terminal dialogue, dashboard events, tmux delivery, and verified wake evidence.
 - [ ] Add each writing to the Start Here cross-site study map and to the exact phase where it becomes useful.
-- [ ] Continue the series as Origin produces additional implementation evidence; distinguish demonstrated behavior from evolving design.
+- [ ] Continue the series as Base Dashboard produces additional implementation evidence; reserve jobs, OPEVC, accounts, remote access, and team authority for versions that actually implement them.
 
 ## Telegram interaction building block
 
@@ -84,7 +84,7 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 - [ ] Test onboarding from nontechnical, technical, individual, team, creative, professional, and privacy-sensitive user perspectives.
 - [ ] Test the zero-context opening with agents that have not seen prior Hadosh conversations.
 - [ ] Confirm agents distinguish the technical agent, the harness, and the user's externalized agency.
-- [ ] Confirm agents treat Seed, Q-Seed, Origin, Base Dashboard, and other projects as references or substrates rather than universal finished agents.
+- [ ] Confirm agents treat Seed, Q-Seed, Base Dashboard, and other projects as references or substrates rather than universal finished agents.
 - [ ] Confirm Phase 9 is interpreted as a permanent evidence-driven lifecycle rather than a final checklist.
 - [ ] Confirm a context-free agent performs Phase 0 before Phase 1 and accurately previews the full journey.
 - [ ] Confirm agents present the future as Hadosh Academy's chosen direction without converting it into guaranteed prediction or fear-based inevitability.

@@ -3,8 +3,8 @@
 
 ## What this project is
 
-This is the **Hadosh Academy website** (`hadi-nayebi.github.io`) — the public face of the seed-agent
-project: blog essays, agent pages, and community/support surfaces. It is a **static site served by
+This is the **Hadosh Academy website** (`hadi-nayebi.github.io`) — the public face of user-owned
+harness work: blog essays, CLI-centered Seed pages, dashboard-harness projects, and community/support surfaces. It is a **static site served by
 GitHub Pages directly from the tracked files at the repo root** — pure HTML/CSS/JS, no framework, no
 build step. **The deployed site is whatever git tracks**, so a change to a tracked file is a change to
 the live site.
@@ -68,8 +68,8 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 
 **Layout (post-2026-06-01 restructure).** ALL series live in per-series subdirs with co-located
 `images/`. Part-1 essays are in `blog/b1..b4/` (the **03_1 interlude lives inside `blog/b3/`** alongside
-essay 03). B5–B8 in `blog/b5..b8/`. No essay remains at `blog/` root. Old `/blog/0X-...html` URLs now
-404 (no redirect stubs, matching the B5–B8 precedent).
+essay 03). B5–B9 in `blog/b5..b9/`. No essay remains at `blog/` root. Old `/blog/0X-...html` URLs now
+404 (no redirect stubs, matching the B5–B9 precedent).
 
 **Part 1 — Published in `blog/b1..b4/` subdirs (5 essays):**
 
@@ -81,7 +81,7 @@ essay 03). B5–B8 in `blog/b5..b8/`. No essay remains at `blog/` root. Old `/bl
 | `b3/03_1-the-folder-is-alive.html` | The Folder Is Alive (interlude, in b3/) | published |
 | `b4/04-the-language-of-agents.html` | The Language of Agents | published |
 
-**Part 2 — Draft mini-series (37 sub-essays across 4 series — ALL GOAL'd through 3-CLEAN audit gate as of 2026-05-19):**
+**Part 2 — Architecture series (37 completed Seed essays plus the in-progress dashboard-harness series):**
 
 | Series | Location | Count | State |
 |--------|----------|------:|-------|
@@ -89,9 +89,10 @@ essay 03). B5–B8 in `blog/b5..b8/`. No essay remains at `blog/` root. Old `/bl
 | **B6** — The Markov Phasic Brain | `blog/b6/06_1..06_10` | 10 | 10/10 GOAL ACHIEVED |
 | **B7** — The Plugin Kit | `blog/b7/07_1..07_9` | 9 | 9/9 GOAL ACHIEVED |
 | **B8** — From Apprentice to Architect | `blog/b8/08_1..08_9` | 9 | 9/9 GOAL ACHIEVED |
+| **B9** — The Visible Harness | `blog/b9/09_1..` | 1 published | series in progress |
 
 Per-series working memory (status, decisions, asset inventory) lives in the series subdir's `CLAUDE.md`:
-`blog/b5/CLAUDE.md`, `blog/b6/CLAUDE.md`, and (TBD) `blog/b7/CLAUDE.md`, `blog/b8/CLAUDE.md`.
+`blog/b5/CLAUDE.md`, `blog/b6/CLAUDE.md`, `blog/b7/CLAUDE.md`, `blog/b8/CLAUDE.md`, and `blog/b9/CLAUDE.md`.
 Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAUDE.md` Current Posts table.
 
 ### Assets
@@ -116,8 +117,8 @@ Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAU
 | File | Purpose |
 |------|---------|
 | `robots.txt` | Allow all crawlers, points to sitemap |
-| `sitemap.xml` | URLs for site pages + all 5 Part-1 essays + 9 B5 + 10 B6 + 9 B7 + 9 B8 (subdir paths). |
-| `feed.xml` | RSS 2.0 — items covering Part-1 + B5 + B6 + B7 + B8 drafts. |
+| `sitemap.xml` | URLs for site pages + all 5 Part-1 essays + 9 B5 + 10 B6 + 9 B7 + 9 B8 + published B9 essays (subdir paths). |
+| `feed.xml` | RSS 2.0 — items covering Part-1 + B5 + B6 + B7 + B8 + published B9 essays. |
 | `favicon.ico` | Root favicon |
 
 ### Tooling & Config
@@ -129,7 +130,7 @@ Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAU
 | `.claude/skills/` | Project skills (load on demand when working here): `blog-update`, `video-create`, `cache-bust-deploy`, `stripe-payment-link-setup` |
 | `README.md` | Technical-reader gateway to the Academy thesis, Phase 0–9 syllabus, writing map, projects, participation, guidance, and site-development workflow. |
 | `CLAUDE.md` | This file — project working memory |
-| `docs/start-here-campaign-readiness.md` | Internal backlog for Base Dashboard, Origin writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
+| `docs/start-here-campaign-readiness.md` | Internal backlog for Base Dashboard, dashboard-harness writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
 
 ### Projects
 
