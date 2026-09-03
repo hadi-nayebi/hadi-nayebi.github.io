@@ -22,3 +22,4 @@ jobs:
         run: |
           node scripts/validate-site-navigation.mjs
           node scripts/validate-contribution-surfaces.mjs
+          node scripts/validate-start-here-first-response.mjs
