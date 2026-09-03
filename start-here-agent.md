@@ -2,7 +2,7 @@
 
 Canonical human page: https://hadi-nayebi.github.io/start-here.html
 
-Syllabus version: 2026-09-03.2
+Syllabus version: 2026-09-03.3
 
 ## Zero-context orientation
 
@@ -190,6 +190,32 @@ If you cannot implement the next stage:
 5. Ask the implementation agent to load and verify the handoff instead of restarting the user interview.
 6. Remain useful as an educational or repository-connected surface when appropriate, without claiming to operate local state you cannot inspect.
 
+### Local harness compatibility contract
+
+Education and discovery may begin in a web conversation, but building a user-owned local harness requires a local file-operating agent. Before recommending, installing, or handing work to a CLI, inspect the actual current product and prove that it satisfies the required capabilities. Do not infer compatibility from a provider name, subscription, marketing label, or the existence of a terminal command.
+
+A CLI environment is suitable for full Hadosh-style harness development only when it provides, directly or through an inspectable equivalent:
+
+1. **User-controlled persistent files:** it can create, read, edit, organize, and preserve files in a project directory the user can locate and control.
+2. **Tool use:** it can invoke defined tools or scripts rather than relying only on conversational suggestions.
+3. **Local command execution:** it can run the dashboard, tests, validators, migrations, version-control commands, and other bounded project operations needed to build and verify the system.
+4. **Lifecycle control through hooks or a functional equivalent:** it can observe or intercept relevant agent events and inject, block, continue, stop, wait, or redirect behavior according to explicit state. Equivalent mechanisms may be called hooks, lifecycle callbacks, event handlers, tool-call interceptors, stop gates, or instruction-injection points; the name is secondary, but the behavior must be demonstrable.
+5. **Inspectable state and recovery:** the user and agent can see what state persists, distinguish waiting from completion or failure, resume after interruption, and restore a known-good version.
+6. **Permission boundaries:** consequential, destructive, external, sensitive, or authority-expanding actions can be held for explicit approval.
+7. **Verification:** the agent can test observable outcomes and cannot treat generated text, tool activity, or elapsed effort as proof of completion.
+
+Hooks or an equivalent lifecycle mechanism are a substantive requirement, not an optional convenience, for the Hadosh patterns that depend on stop-state enforcement, feedback-triggered continuation, phase-specific injection, deterministic gates, guarded tool behavior, or persistent jobs. A CLI that can edit files but cannot expose or control its lifecycle may still help create a repository, dashboard, documentation, or prototype. It must not be presented as capable of implementing the complete Hadosh harness architecture.
+
+Classify the environment honestly:
+
+- **Education surface:** can teach, interview, plan, and prepare a handoff, but cannot operate the user's local project.
+- **Local builder:** can manipulate files and run commands, but lacks one or more lifecycle, persistence, authority, or recovery capabilities required for a complete harness.
+- **Harness-capable CLI:** passes the full compatibility contract or has tested equivalents for every required behavior.
+
+If the user's current CLI fails the contract, identify the exact missing capability and its architectural consequence. Continue the work that remains safe, prepare the handoff and project specification, and help the user choose a compatible CLI—preferably within their current paid ecosystem when one exists. Do not quietly delete the unsupported behavior, fake it with prompt wording, or describe a polling script as a hook unless it genuinely provides the required event, control, and recovery semantics.
+
+The Hadosh architectural primitives are portable; provider implementations are not automatically interchangeable. Preserve the behavioral contract—inputs, events, state transitions, authority, verification, stopping, recovery, and user visibility—then build and test the adapter required by the selected CLI.
+
 ### Web-to-CLI onboarding handoff protocol
 
 Treat movement from a web conversational agent to a local CLI agent as a change of operating surface, not a restart of the relationship. The web agent may have accumulated important user language, corrections, decisions, phase evidence, educational progress, and an Asset Charter before the local environment exists. None of that context should remain trapped in the conversation or be reconstructed from memory by the user.
@@ -261,7 +287,7 @@ Do not call every dashboard, prompt collection, or automation a harness. A minim
 - a feedback path through which the user can correct and direct it; and
 - a tested recovery path.
 
-The first implementation may contain only a subset while the structure is forming. Name what is present, what remains absent, and why the current system is or is not yet functioning as a harness.
+The first implementation may contain only a subset while the structure is forming. Name what is present, what remains absent, and why the current system is or is not yet functioning as a harness. This developmental test describes the architecture being built; it does not replace the Local Harness Compatibility Contract, which determines whether the selected CLI can implement and operate that architecture at all.
 
 ### Security and secrets baseline
 
@@ -515,8 +541,9 @@ Ownership must be operational. The asset needs a persistent, inspectable, recove
 - Derive requirements from the Asset Charter: dashboard, persistent files, sensitivity, team or individual use, version history, local execution, web access, and long-running work.
 - Inspect the user's current paid AI ecosystem and prefer extending it when capable rather than forcing a new subscription.
 - Explain the possible layers: model service, web interface, CLI agent, repository, local computer, and Hadosh pattern library.
-- Judge environments by whether agents can create, inspect, maintain, and recover user-controlled files—not by brand.
-- A common mature path is a private repository, local dashboard, CLI agent operating the files, and web agent accessing the same repository when supported.
+- Judge environments by the complete Local Harness Compatibility Contract—not by brand. A full Hadosh-style local build requires persistent user-controlled files, tool use, local command execution, lifecycle hooks or a tested functional equivalent, inspectable state and recovery, permission boundaries, and outcome verification.
+- Classify the current surface as an education surface, local builder, or harness-capable CLI. State missing capabilities and their consequences plainly; do not treat file editing alone as full harness compatibility.
+- A common mature path is a private repository, local dashboard, harness-capable CLI agent operating the files, and web agent accessing the same repository when supported.
 - Introduce GitHub, repositories, terminals, and installations in plain language and only when value has been understood.
 - Obtain permission for account creation, repository creation, installation, credential use, external writes, and consequential changes.
 - Document ownership, collaborators, agent permissions, protected areas, sensitive-data rules, credential boundaries, version history, and recovery.
@@ -701,7 +728,12 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 
 ### Dashboard-plus-harness architecture
 
-- [The Dashboard and the Harness Are One System](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html)
+- [The Dashboard and the Harness Are One System](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) — follow one contextual comment through durable state, interactive delivery, verification, and user review.
+- [Origin](https://hadi-nayebi.github.io/projects/origin.html) — inspect the live reference substrate when selecting or building a dashboard-plus-harness lineage; preserve its behavioral contracts before adapting its implementation.
+
+### Current development record
+
+- [What's New](https://hadi-nayebi.github.io/whats-new.html) — review the dated source of record at continuity checks and before architectural adoption. Use it to identify relevant new writings, projects, changed contracts, and maturity updates; do not adopt every update automatically.
 
 ### Projects and interactive explanations
 
@@ -1352,11 +1384,15 @@ The user now understands the asset and its value. This phase chooses where it li
 
 Determine whether the asset needs a dashboard, persistent files, sensitive-data boundaries, individual or team access, command execution, code modification, version history, local operation, web access, recurring jobs, offline access, or shared hosting. Learn the user's AI service, CLI counterpart if any, computer and operating system, repository account, web-agent repository access, installation ability, development environment, confidentiality constraints, and desired technical involvement.
 
-Prefer extending the user's existing ecosystem when capable. A ChatGPT user may use Codex locally; a Claude user may use Claude Code; another service may offer an equivalent file-operating agent. Do not make a brand the requirement. The durable requirement is the ability to create, inspect, maintain, and recover user-controlled files.
+Prefer extending the user's existing ecosystem when capable. A ChatGPT user may use Codex locally; a Claude user may use Claude Code; another service may offer an equivalent file-operating agent. Do not make a brand the requirement. Verify the current CLI edition and configuration against the Local Harness Compatibility Contract: persistent files, tools, local commands, hooks or an equivalent lifecycle-control surface, inspectable state and recovery, permission boundaries, and verification.
+
+Run a small capability probe before migration. In a disposable test project, have the candidate CLI create and modify a file, invoke a bounded tool or script, run a command and report its exit result, demonstrate the relevant lifecycle event or hook, enter a controlled waiting or stopped state, resume from recorded state, request approval for a protected action without performing it, and verify an observable result. Record the product and version, operating surface, capabilities tested, evidence, limitations, and any adapter required. Provider documentation may guide the test, but observed behavior decides the classification.
+
+Classify the result as an education surface, local builder, or harness-capable CLI. If hooks or equivalent lifecycle controls are missing, explain which Hadosh behaviors become unavailable—for example stop-hook enforcement, feedback wake or instruction injection, deterministic phase gates, guarded tool calls, and durable continuation. The environment may still produce useful files or a dashboard, but it is not yet the correct home for a complete Hadosh-style harness. Select a capable alternative or explicitly narrow the build; never silently lower the architectural promise.
 
 #### Explain the layers
 
-Teach the roles of model service, web interface, CLI agent, repository, local computer, and Hadosh Academy. The web interface may support teaching, planning, review, and remote access. The CLI agent may operate local files, run commands and tests, and build the dashboard and harness. The repository preserves and synchronizes the asset. The local computer runs it. Hadosh provides patterns and explanations. Not every user needs every layer immediately.
+Teach the roles of model service, web interface, CLI agent, repository, local computer, and Hadosh Academy. The web interface may support teaching, planning, review, and remote access. A harness-capable CLI operates local files, tools, commands, hooks or equivalent lifecycle controls, tests, and recovery mechanisms while building the dashboard and harness. The repository preserves and synchronizes the asset. The local computer runs it. Hadosh provides patterns and explanations. These layers may be introduced gradually, but a conversation-only surface is not a substitute for the local layer required to build and operate the owned harness.
 
 #### Choose a starting ownership level
 
