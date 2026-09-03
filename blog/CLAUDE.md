@@ -10,6 +10,7 @@
 - **B6 mini-series** (`06_1..06_10`): `blog/b6/<slug>.{md,html,transcript.md}` — moved 2026-05-19. Images at `blog/b6/images/`. Series working memory at `blog/b6/CLAUDE.md`.
 - **B7 mini-series** (`07_1..07_9`): `blog/b7/<slug>.{md,html,transcript.md}` — moved 2026-05-18 (Commit F).
 - **B8 mini-series** (`08_1..08_9`): `blog/b8/<slug>.{md,html,transcript.md}` — moved 2026-05-18 (Commit G).
+- **B9 mini-series** (`09_1..`): `blog/b9/<slug>.html` — dashboard-plus-harness series opened 2026-09-03; current public source is HTML and series memory lives at `blog/b9/CLAUDE.md`.
 - B5 + B6 images co-located at `blog/b{5,6}/images/`. Part-1 + B7/B8 essay-specific images live under `assets/images/blog/b{7,8}/` (subdir-restructure landed but image co-location pending for B7/B8).
 
 When working on B5 or B6, prefer the series-local CLAUDE.md at `blog/b5/CLAUDE.md` / `blog/b6/CLAUDE.md` for current state.
@@ -169,6 +170,7 @@ Status by series (status word only). **Full roster with slugs + titles + per-ess
 | B6 `b6/06_1..06_10` | The Markov Phasic Brain (10 parts) | `06_1..06_6` **drafting** · `06_7..06_10` **GOAL ACHIEVED** |
 | B7 `b7/07_1..07_9` | The Plugin Kit (9 parts) | **GOAL ACHIEVED** (all 9) |
 | B8 `b8/08_1..08_9` | Apprentice to Architect (9 parts) | **GOAL ACHIEVED · published** (all 9; og:image pending, b4 fallback) |
+| B9 `b9/09_1..` | The Visible Harness | **IN PROGRESS** (1 published) |
 
 Per B8.9's last recorded state: **37 of 37 essays GOAL'd + corpus published**. B5 + early-B6 are the remaining draft-polish surface.
 
