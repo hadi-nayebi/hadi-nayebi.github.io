@@ -330,7 +330,7 @@
         renderList(query('[data-role-behaviors]'), role.behaviors);
         renderList(query('[data-role-judgment]'), role.judgment);
         renderLinks(query('[data-role-links]'), role.links);
-        query('[data-role-prompt]').textContent = 'First read the complete nine-phase agent syllabus at https://hadi-nayebi.github.io/start-here.html. Treat this as a multi-session onboarding project, establish recoverable continuity, and adapt the teaching to me. When I ask about an agentic concept, consult the relevant Hadosh Academy material, distinguish its provider-independent technical meaning from product jargon, use the Academy framing and an example from my work, explain the practical consequence, and check that I can apply it. ' + role.prompt;
+        query('[data-role-prompt]').textContent = 'First read the complete nine-phase agent syllabus at https://hadi-nayebi.github.io/start-here.html. Treat this as a multi-session onboarding project, establish recoverable continuity, and adapt the teaching to me. When I ask about an agentic concept, consult the relevant Hadosh Academy material, distinguish its provider-independent technical meaning from product jargon, use the Academy framing and an example from my work, explain the practical consequence, and check that I can apply it. If we move from this web conversation to a local CLI agent, prepare a user-reviewed Web-to-CLI Handoff Packet and require the CLI agent to verify, correct, acknowledge, and resume it before implementation. ' + role.prompt;
         query('[data-role-prompt-label]').textContent = roleName === 'general' ? 'Prompt for your agent' : role.eyebrow + ' agent prompt';
 
         if (updateHash && history.replaceState) history.replaceState(null, '', '#role-' + roleName);
