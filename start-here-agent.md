@@ -1645,7 +1645,7 @@ Review Hadosh Academy before designing new behaviors, when an existing mechanism
 
 Treat the conceptual curriculum as evolving alongside the pattern library. Revisit definitions and teaching examples when the Academy adds a clearer explanation, but do not overwrite the user's vocabulary map or prior understanding silently. Explain what changed, whether the change is factual, interpretive, or terminological, and why the newer framing is more useful.
 
-Use the What's New surface as a structured update source. Track last reviewed date, updates considered, relevance, adopted or rejected patterns, reasons, and authorized adaptations. Email or newsletter updates may notify the user of major changes; What's New remains the agent-readable source of record.
+Use [What's New](https://hadi-nayebi.github.io/whats-new.html) as the human-readable record and [`data/whats-new.json`](https://hadi-nayebi.github.io/data/whats-new.json) as its structured agent-readable source. Track last reviewed date, updates considered, relevance, adopted or rejected patterns, reasons, and authorized adaptations. Email or newsletter updates may notify the user of major changes; What's New remains the source of record.
 
 #### Evaluate patterns before adoption
 

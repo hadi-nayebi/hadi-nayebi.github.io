@@ -1,5 +1,5 @@
 # js/ — JavaScript Working Memory
-**Version:** v0.2.0
+**Version:** v0.3.0
 
 ## File Inventory
 
@@ -11,6 +11,7 @@
 | `form-handler.js` | `contact.html` | EmailJS contact form submit — sends notification email always; sends welcome email when newcomer checkbox is ticked. Service ID: `service_chq4jnq`, public key embedded |
 | `feedback.js` | (where included) | Feedback bubble system — captures user feedback, posts to backing store referenced via `feedback.json` |
 | `start-here.js` | `start-here.html` | Profession lenses, syllabus-aware profession prompts, accessible role tabs, copy controls, and loading each complete detailed phase protocol from canonical `start-here-agent.md` into the matching collapsed instruction. |
+| `whats-new.js` | `whats-new.html`, `index.html` | Safely renders the canonical structured update record and the three-entry homepage preview. |
 
 ## Subdirectory Detection Note
 

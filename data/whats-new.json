@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "updated": "2026-09-03",
+  "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
+  "entries": [
+    {
+      "id": "2026-09-03-origin-1-0",
+      "date": "2026-09-03",
+      "type": "Project",
+      "title": "Origin 1.0 is now synchronized with onboarding",
+      "summary": "The project page, Start Here Phases 6–8, homepage, README, and a new technical writing now align around the demonstrated Origin 1.0 foundation.",
+      "why_it_matters": "Users have a tested dashboard-plus-harness substrate for one local operator: a foreground interactive Codex session, contextual feedback, durable state, explicit stopping, verification, acceptance, reopening, and recovery.",
+      "affected": ["Origin", "Start Here", "Technical writing", "Phases 6–8"],
+      "maturity": "Demonstrated 1.0 foundation",
+      "intended_for": ["Individuals beginning a harness", "Codex users", "Cross-CLI implementers"],
+      "sources": [
+        {
+          "label": "Origin 1.0 synchronization pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/55"
+        },
+        {
+          "label": "Origin project page",
+          "url": "/projects/origin.html"
+        },
+        {
+          "label": "The Dashboard and the Harness Are One System",
+          "url": "/blog/b9/09_1-dashboard-and-harness.html"
+        }
+      ],
+      "adoption_notes": "The demonstrated scope is one local user with an empty canvas and Wiki, tmux-based delivery, durable feedback, Stop and waiting states, verification, acceptance, reopening, and recovery. General jobs, an OPEVC engine, accounts, remote access, synchronization, and team authority remain later work. Authenticated live acceptance remains separate from deterministic CI.",
+      "recommended_action": "Compatible Codex users can adopt the tested substrate; other CLI users should port and verify the documented behavioral contract rather than changing only an executable name."
+    },
+    {
+      "id": "2026-09-03-web-to-cli-handoff",
+      "date": "2026-09-03",
+      "type": "Onboarding",
+      "title": "Web-to-CLI onboarding now has a handoff protocol",
+      "summary": "Start Here now treats a move from a web conversation to a local CLI agent as a continuation of the same onboarding relationship rather than a restart.",
+      "why_it_matters": "A user can begin with the interface they already have, learn enough to choose a local environment, and carry reviewed context, decisions, authority, and unfinished work into that environment without transferring secrets or unnecessary conversation history.",
+      "affected": ["Start Here", "Phase 5", "Session continuity"],
+      "maturity": "Published protocol",
+      "intended_for": ["New users", "Visiting agents", "People moving from web to local tools"],
+      "sources": [
+        {
+          "label": "Web-to-CLI handoff pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/54"
+        },
+        {
+          "label": "Start Here",
+          "url": "/start-here.html"
+        }
+      ],
+      "adoption_notes": "Use the protocol only when a user changes operating surfaces. The packet must be user-reviewed, exclude credentials and hidden reasoning, and be verified by the receiving agent before implementation resumes.",
+      "recommended_action": "If your onboarding may move to a local CLI, review the handoff section before choosing the transfer path."
+    },
+    {
+      "id": "2026-09-03-concept-teaching",
+      "date": "2026-09-03",
+      "type": "Technical education",
+      "title": "Agentic concepts now route through the Academy's current sources",
+      "summary": "The onboarding syllabus now tells visiting agents to consult the smallest relevant Hadosh Academy writing, project, or explorable before explaining concepts such as harnesses, jobs, plugins, memory, dashboards, and verification.",
+      "why_it_matters": "Users receive provider-independent definitions, the Academy's intuitive framing, a relevant example, and the practical consequence of the distinction instead of an answer based only on model memory or vendor terminology.",
+      "affected": ["Start Here", "Technical writing", "Concept vocabulary"],
+      "maturity": "Published protocol",
+      "intended_for": ["Learners", "Visiting agents", "Harness operators"],
+      "sources": [
+        {
+          "label": "Concept-teaching pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/53"
+        },
+        {
+          "label": "Technical writing index",
+          "url": "/blog.html"
+        }
+      ],
+      "adoption_notes": "Use Academy framing after establishing the accurate technical core. Keep factual claims, interpretation, analogy, provider behavior, and uncertainty distinct.",
+      "recommended_action": "When an architectural term is unclear, ask your agent to follow the concept-teaching sequence in Start Here."
+    },
+    {
+      "id": "2026-09-02-phase-zero-to-nine",
+      "date": "2026-09-02",
+      "type": "Onboarding",
+      "title": "Start Here became a Phase 0–9 developmental path",
+      "summary": "Start Here now combines a readable human introduction with a complete agent-facing syllabus for orientation, continuity, discovery, ownership, environment choice, visible construction, bounded behavior, deliberate growth, and long-term maintenance.",
+      "why_it_matters": "The Academy can guide someone from an ordinary web conversation toward a user-owned harness over multiple sessions without compressing the work into a setup wizard or requiring the person to become a programmer.",
+      "affected": ["Start Here", "Phase 0–9 syllabus", "Human guidance"],
+      "maturity": "Published foundation",
+      "intended_for": ["Newcomers", "Non-technical professionals", "Visiting agents"],
+      "sources": [
+        {
+          "label": "Expanded onboarding foundation",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/47"
+        },
+        {
+          "label": "Phase 0 orientation",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/50"
+        },
+        {
+          "label": "Human-guidance path",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/51"
+        }
+      ],
+      "adoption_notes": "Treat the phases as an evidence-guided path that may pause or move backward. Phase 9 is a continuing lifecycle, not a graduation point.",
+      "recommended_action": "Start with Phase 0, then let your agent establish a recoverable multi-session path before building."
+    },
+    {
+      "id": "2026-09-02-origin-foundation",
+      "date": "2026-09-02",
+      "type": "Project",
+      "title": "Origin joins the public project portfolio",
+      "summary": "A new project page defines the smallest dashboard–harness substrate: a visible page, contextual feedback, persistent local state, and one bounded behavior through which a user can shape what develops next.",
+      "why_it_matters": "It gives onboarding a concrete bridge between understanding harness concepts and growing a user-specific operational world through actual feedback and use.",
+      "affected": ["Origin", "Projects", "Phases 6 and 7"],
+      "maturity": "Design specified",
+      "intended_for": ["Individuals beginning a harness", "Dashboard-oriented users", "Implementers"],
+      "sources": [
+        {
+          "label": "Origin project page",
+          "url": "/projects/origin.html"
+        },
+        {
+          "label": "Foundation and syllabus pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/48"
+        }
+      ],
+      "adoption_notes": "The public page specifies the developmental pattern. It does not claim that every user needs a dashboard or that the planned reference implementation is already a stable release.",
+      "recommended_action": "Use the project page when deciding whether a visible dashboard should become the first surface of a new harness."
+    },
+    {
+      "id": "2026-08-30-public-project-architecture",
+      "date": "2026-08-30",
+      "type": "Site",
+      "title": "The website now presents one harness idea across three human scales",
+      "summary": "The homepage and project portfolio were reorganized around open technical education, public implementations, and projects for individuals, groups, and larger collectives.",
+      "why_it_matters": "A first-time visitor can see that Hadosh Academy is an evolving pattern and project library—not one universal agent, a software sales funnel, or a collection of disconnected experiments.",
+      "affected": ["Homepage", "Projects", "Agents", "Public positioning"],
+      "maturity": "Published structure",
+      "intended_for": ["First-time visitors", "Potential contributors", "Technical readers"],
+      "sources": [
+        {
+          "label": "Project portfolio rebuild",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/28"
+        },
+        {
+          "label": "Homepage repositioning",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/29"
+        },
+        {
+          "label": "Whole-site alignment",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/30"
+        }
+      ],
+      "adoption_notes": "Project pages remain distinct and retain the depth their designs require. The shared taxonomy is a navigation and comparison layer, not a universal implementation template.",
+      "recommended_action": "Explore the project portfolio by scale, then follow the project or technical-writing path closest to your current question."
+    }
+  ]
+}

@@ -72,6 +72,12 @@ The projects test the same principles across individual, group, and collective s
 
 See the complete **[Projects portfolio](https://hadi-nayebi.github.io/projects/)** and the **[Seed implementations map](https://hadi-nayebi.github.io/agents.html)**.
 
+## Follow the work as it changes
+
+**[What's New](https://hadi-nayebi.github.io/whats-new.html)** is the public development record across projects, technical writing, architectural patterns, and onboarding. It consolidates related work into meaningful updates with maturity, intended audience, evidence, adoption notes, and recommended action rather than mirroring every commit.
+
+Agents and tools can read the same record directly from **[`data/whats-new.json`](data/whats-new.json)**.
+
 ## Core building blocks
 
 The Academy treats these as reusable architectural abstractions rather than one fixed framework:
@@ -123,6 +129,7 @@ Run the repository checks before opening a pull request:
 ```bash
 node scripts/validate-site-navigation.mjs
 node scripts/validate-storytelling-visuals.mjs
+node scripts/validate-whats-new.mjs
 ```
 
 The first validator checks static and dynamically injected navigation. The visual validator checks the shared storytelling-image inventory and metadata.
@@ -134,6 +141,7 @@ The first validator checks static and dynamically injected navigation. The visua
 ├── index.html                 # Home
 ├── start-here.html            # Human path + collapsed Phase 0–9 agent syllabus
 ├── start-here-agent.md        # Canonical text-only agent instruction
+├── whats-new.html             # Human-readable public development record
 ├── blog.html                  # Technical-writing index
 ├── blog/b1 … blog/b9          # Essays and series assets
 ├── agents.html                # Seed implementation map
@@ -142,7 +150,7 @@ The first validator checks static and dynamically injected navigation. The visua
 ├── css/                       # Shared and project-specific presentation
 ├── js/                        # Navigation, forms, interaction, and page behavior
 ├── assets/                    # Images, audio, and other static media
-├── data/                      # Public static data used by site features
+├── data/                      # Public static data, including the What's New source of record
 └── scripts/                   # Repository validation tools
 ```
 

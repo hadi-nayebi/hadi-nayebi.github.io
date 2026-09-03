@@ -1,5 +1,5 @@
 # css/ — Styles Working Memory
-**Version:** v0.2.0
+**Version:** v0.3.0
 
 ## Single-File Rule
 
@@ -54,6 +54,9 @@
 `.audience-ladder`, `.audience-layer` (`<details>`; `[open]` state), `.audience-layer-summary` (clickable `<summary>` with `::after` chevron that rotates on open), `.audience-layer-name`, `.audience-layer-tagline`, `.audience-layer-content`, `.expectations-grid`, `.expectations-card`, `.expectations-not` (red ✕ bullets), `.expectations-are` (green ✓ bullets), `.vocab-grid` (4-col responsive), `.vocab-card`, `.vocab-def`, `.vocab-example`, `.academy-pillars.two-col` (variant of academy-pillars), `body.page-start-here .academy-section` (page-scoped: lifts max-width 900→1200px across every section on start-here.html so grids/cards/figures all align at one width — no jagged section alternation), `.system-overview-figure` (`<figure>` wrapping the canonical 8-node ontology map at `assets/images/system-overview.png`; image stays centred at its own 900px cap inside the wider section)
 
 The current Start Here experience uses `.start-human-*` and `.start-library-*` cards for the human path, `.start-choice-*` for the ownership argument, `.start-phase-*` for the nine-phase syllabus, and distributed `.start-agent-instruction` `<details>` blocks. `.start-agent-manual` presents the complete canonical phase protocol loaded into each matching collapsed block. Agent instructions stay visible in the HTML DOM while collapsed for human readers. `start-here-agent.md` is the canonical text-only agent syllabus linked from page metadata.
+
+### What's New page and homepage preview
+`.updates-hero`, `.updates-purpose`, `.updates-record`, `.updates-list`, `.update-card`, `.update-card-top`, `.update-date`, `.update-type`, `.update-maturity`, `.update-why`, `.update-details`, `.update-detail-row`, `.update-sources`, `.updates-agent-source`, `.home-updates-section`, `.home-updates-heading`, `.home-updates-grid`, `.update-card-compact`
 
 ## Breakpoints
 

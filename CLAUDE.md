@@ -1,5 +1,5 @@
 # CLAUDE.md — Hadosh Academy Website (Project Working Memory)
-**Version:** v0.9.0
+**Version:** v0.10.0
 
 ## What this project is
 
@@ -41,9 +41,9 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 
 - Pure HTML/CSS/JS — no frameworks
 - Static site — GitHub Pages
-- Single CSS file: `css/styles.css` (~2000 lines)
+- Single shared CSS file for new work: `css/styles.css`
 - Shared JavaScript lives in `js/`; page-specific scripts include `seed-access.js` and `support-activity.js` alongside the existing components, theme, wheel, form, and local-feedback scripts.
-- Local dev: `python dev-server.py` (live-reload, port 8000)
+- Local preview: `python3 -m http.server 8000`
 
 ## Current File Inventory
 
@@ -60,6 +60,7 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 | `contact.html` | EmailJS contact form for questions, collaboration, harness guidance, and requests for an initial no-charge live guidance session (newcomer checkbox triggers welcome email). |
 | `support.html` | Optional donation page — 12 Stripe Payment Links plus a privacy-safe aggregate dot visualization loaded from `data/support-activity.json`. See "Donations & Stripe" below. |
 | `start-here.html` | Human introduction plus Phase 0 and a distributed, collapsed nine-phase agent-onboarding syllabus. Phase 0 establishes Hadosh Academy's desired agentic future and indexes Phases 1–9. The page teaches the harness as externalized user agency, internet-like agency literacy, portable cognition versus protected work content, reference organisms versus user-derived lineages, and Phase 9 as a permanent lifecycle. Each phase loads its complete operating protocol from canonical `start-here-agent.md`; phase-gate and benefit-gated participation rules are also present directly in the HTML. |
+| `whats-new.html` | Human-readable public development record rendered from `data/whats-new.json`; linked from the main navigation, homepage preview, and Phase 9 onboarding guidance. |
 | `thanks.html` | Contact-form success page (noindex) |
 | `thanks-support.html` | Stripe success-redirect page (noindex) |
 | `404.html` | Custom 404 (noindex) |
@@ -131,6 +132,8 @@ Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAU
 | `README.md` | Technical-reader gateway to the Academy thesis, Phase 0–9 syllabus, writing map, projects, participation, guidance, and site-development workflow. |
 | `CLAUDE.md` | This file — project working memory |
 | `docs/start-here-campaign-readiness.md` | Internal backlog for Origin, dashboard-harness writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
+| `data/whats-new.json` | Canonical agent-readable source of record for meaningful public updates. Entries are newest-first and include date, type, scope, maturity, audience, evidence, adoption notes, and recommended action. |
+| `scripts/validate-whats-new.mjs` | Validates update schema, ordering, source links, render targets, homepage preview, and navigation wiring. |
 
 ### Projects
 
