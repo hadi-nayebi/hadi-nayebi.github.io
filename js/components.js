@@ -1,4 +1,4 @@
-// Version: v0.9.1
+// Version: v0.10.0
 // Shared site components: canonical navigation, responsive support, blog series navigation,
 // footer, lightbox, blog filters, and audio controls.
 
@@ -11,6 +11,7 @@
         { label: 'Blog', href: '/blog.html' },
         { label: 'Agents', href: '/agents.html' },
         { label: 'Projects', href: '/projects/index.html' },
+        { label: "What's New", href: '/whats-new.html' },
         { label: 'About', href: '/about.html' },
         { label: 'Contact', href: '/contact.html' }
     ];
@@ -22,6 +23,7 @@
         if (path === '/blog.html' || path.indexOf('/blog/') === 0) return 'Blog';
         if (path === '/agents.html') return 'Agents';
         if (path === '/projects' || path === '/projects/index.html' || path.indexOf('/projects/') === 0) return 'Projects';
+        if (path === '/whats-new.html') return "What's New";
         if (path === '/about.html') return 'About';
         if (path === '/contact.html') return 'Contact';
         return '';

@@ -89,6 +89,10 @@ for (const file of publicHtml) {
     errors.push(`${fileRel}: missing shared components.js`);
   }
 
+  if (!redirect && !explorable && /id=["']site-header["']/i.test(html) && !/href=["'][^"']*whats-new\.html/i.test(html)) {
+    errors.push(`${fileRel}: static navigation is missing What's New`);
+  }
+
   if (explorable) {
     const hasBackControl = /class=["'][^"']*(?:chrome-back|explore-back|back-to-essay)[^"']*["']/i.test(html) || /Back to (?:Essay|Blog|Article)/i.test(html);
     if (!hasBackControl) errors.push(`${fileRel}: full-screen explorable missing a back-to-essay control`);
@@ -130,7 +134,7 @@ validateDynamicRootLinks('js/wheel.js');
 validateDynamicRootLinks('js/start-here.js');
 
 const canonicalPages = [
-  'index.html', 'start-here.html', 'agents.html', 'about.html', 'portfolio.html', 'explore.html',
+  'index.html', 'start-here.html', 'agents.html', 'whats-new.html', 'about.html', 'portfolio.html', 'explore.html',
   'contact.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',
   'thanks-support.html', '404.html', 'projects/index.html', 'projects/seed-agent.html',
   'projects/q-seed.html', 'projects/team-harnesses.html', 'projects/family-games.html',

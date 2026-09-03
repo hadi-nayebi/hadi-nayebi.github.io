@@ -59,12 +59,12 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 
 ## What's New and continuing updates
 
-- [ ] Create a human-readable and agent-readable What's New surface.
-- [ ] Give every update a date, type, affected project or pattern, maturity, intended user, reason it matters, source links, migration or adoption notes, and recommended action.
-- [ ] Let agents track last review, updates considered, relevance, adoption/rejection, rationale, and authorized local adaptations.
+- [x] Create a human-readable and agent-readable What's New surface.
+- [x] Give every update a date, type, affected project or pattern, maturity, intended user, reason it matters, source links, migration or adoption notes, and recommended action.
+- [x] Let agents track last review, updates considered, relevance, adoption/rejection, rationale, and authorized local adaptations.
 - [ ] Add a newsletter/email path that alerts users to material updates while keeping What's New the inspectable source of record.
 - [ ] Connect contact-form questions and requests to the editorial/pattern backlog without implying guaranteed implementation.
-- [ ] Add update-review guidance to Phase 9 and link the live surface from Start Here.
+- [x] Add update-review guidance to Phase 9 and link the live surface from Start Here.
 
 ## Community and support safeguards
 
