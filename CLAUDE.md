@@ -130,13 +130,13 @@ Per-post status detail (titles, word counts, last-fix notes) lives in `blog/CLAU
 | `.claude/skills/` | Project skills (load on demand when working here): `blog-update`, `video-create`, `cache-bust-deploy`, `stripe-payment-link-setup` |
 | `README.md` | Technical-reader gateway to the Academy thesis, Phase 0–9 syllabus, writing map, projects, participation, guidance, and site-development workflow. |
 | `CLAUDE.md` | This file — project working memory |
-| `docs/start-here-campaign-readiness.md` | Internal backlog for Base Dashboard, dashboard-harness writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
+| `docs/start-here-campaign-readiness.md` | Internal backlog for Origin, dashboard-harness writings, Telegram plugin, What's New, participation safeguards, and campaign audit. |
 
 ### Projects
 
 | File | Purpose |
 |------|---------|
-| `projects/base-dashboard.html` | Foundation dashboard-plus-harness pattern: contextual feedback, persistent state, and one bounded behavior from which a user-specific system can grow. |
+| `projects/origin.html` | Foundation dashboard-plus-harness pattern: contextual feedback, persistent state, and one bounded behavior from which a user-specific system can grow. |
 
 ## Cache-Busting (invariant)
 

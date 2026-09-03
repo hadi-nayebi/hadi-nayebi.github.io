@@ -1,8 +1,8 @@
 # CLAUDE.md — Blog 9 Mini-Series (The Visible Harness)
 **Version:** v0.1.0
-**Series:** B9 — Dashboard-plus-harness architecture grounded in Base Dashboard implementation evidence
+**Series:** B9 — Dashboard-plus-harness architecture grounded in Origin implementation evidence
 
-This series explains the public Base Dashboard architecture without exposing private project names,
+This series explains the public Origin architecture without exposing private project names,
 private domain material, or unpublished implementation history. Claims must remain bounded to public,
 verified behavior.
 
@@ -15,7 +15,7 @@ verified behavior.
 5. **One Interactive Agent, Multiple Surfaces** — planned.
 
 Jobs, OPEVC, accounts, remote access, synchronization, and team authority belong to later writing only
-after a public implementation provides evidence. Base Dashboard 1.0 uses feedback records as its
+after a public implementation provides evidence. Origin 1.0 uses feedback records as its
 durable work queue; do not describe it as shipping a general job system or an OPEVC engine.
 
 ---Ob---
