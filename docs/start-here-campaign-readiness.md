@@ -68,12 +68,17 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 
 ## Community and support safeguards
 
-- [ ] Verify every participation insert requires user-confirmed benefit first.
-- [ ] Verify agents offer at most one proportionate invitation at a time.
-- [ ] Verify stars, follows, subscriptions, contact submissions, discussions, recommendations, contributions, and payments require explicit permission.
-- [ ] Verify contribution guidance removes personal, client, employer, and proprietary information and gives the user final review.
-- [ ] Verify optional support is never presented as access, priority, influence, perks, obligation, or guaranteed future work.
-- [ ] Verify public explanations describe how participation expands the open context and pattern library that agents can reuse.
+- [x] Verify every participation insert requires user-confirmed benefit first.
+- [x] Verify agents offer at most one proportionate invitation at a time.
+- [x] Verify stars, follows, subscriptions, contact submissions, discussions, recommendations, contributions, and payments require explicit permission.
+- [x] Verify contribution guidance removes personal, client, employer, and proprietary information and gives the user final review.
+- [x] Verify optional support is never presented as access, priority, influence, perks, obligation, or guaranteed future work.
+- [x] Verify public explanations describe how participation expands the open context and pattern library that agents can reuse.
+- [x] Publish the canonical contribution contract and add routed discussion surfaces to Start Here, Origin, and the first dashboard-harness essay.
+- [x] Add automated validation for the canonical guide, agent return protocol, privacy/permission language, and launch-entry comment configuration.
+
+These checks cover the static public contract and repository validation. The campaign audit below
+still requires live behavior testing with several agent systems and user perspectives.
 
 ## Campaign launch audit
 
