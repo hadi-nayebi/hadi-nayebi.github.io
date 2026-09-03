@@ -139,6 +139,7 @@ Run the repository checks before opening a pull request:
 
 ```bash
 node scripts/validate-site-navigation.mjs
+node scripts/validate-contribution-surfaces.mjs
 node scripts/validate-storytelling-visuals.mjs
 node scripts/validate-whats-new.mjs
 ```
