@@ -18,5 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate public links and navigation
-        run: node scripts/validate-site-navigation.mjs
+      - name: Validate public links, navigation, and contribution surfaces
+        run: |
+          node scripts/validate-site-navigation.mjs
+          node scripts/validate-contribution-surfaces.mjs
