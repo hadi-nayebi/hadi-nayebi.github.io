@@ -133,6 +133,25 @@ for (const file of publicHtml) {
 validateDynamicRootLinks('js/wheel.js');
 validateDynamicRootLinks('js/start-here.js');
 
+const feedPath = path.join(root, 'feed.xml');
+if (!fs.existsSync(feedPath)) {
+  errors.push('feed.xml: missing RSS feed');
+} else {
+  const feed = fs.readFileSync(feedPath, 'utf8');
+  const buildDateMatch = feed.match(/<lastBuildDate>([^<]+)<\/lastBuildDate>/i);
+  const publicationDates = [...feed.matchAll(/<pubDate>([^<]+)<\/pubDate>/gi)]
+    .map(match => Date.parse(match[1]));
+  const buildDate = buildDateMatch ? Date.parse(buildDateMatch[1]) : Number.NaN;
+  if (!buildDateMatch || Number.isNaN(buildDate)) {
+    errors.push('feed.xml: missing or invalid lastBuildDate');
+  }
+  if (publicationDates.some(Number.isNaN)) {
+    errors.push('feed.xml: contains an invalid pubDate');
+  } else if (!Number.isNaN(buildDate) && publicationDates.some(date => date > buildDate)) {
+    errors.push('feed.xml: lastBuildDate is older than the newest item pubDate');
+  }
+}
+
 const canonicalPages = [
   'index.html', 'start-here.html', 'agents.html', 'whats-new.html', 'about.html', 'portfolio.html', 'explore.html',
   'contact.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',

@@ -40,9 +40,9 @@ This is the implementation backlog for preparing Hadosh Academy's agent-onboardi
 ## Origin technical-writing series
 
 - [x] **The Dashboard and the Harness Are One System** — visible world, operational substrate, shared durable state, one interactive session, and user review.
-- [ ] **The Contextual Feedback Plugin** — raw input, page context, interpretation, responsibility, work, verification, acceptance, and reopening.
-- [ ] **Internal Voices Are Reorientation, Not Notifications** — objective, durable context, required cognition, authority, and next boundary.
-- [ ] **Stopping Without Forgetting** — active, waiting, paused, idle, queue scanning, and restart recovery.
+- [x] **The Contextual Feedback Plugin** — raw input, page context, interpretation, responsibility, work, verification, acceptance, and reopening.
+- [x] **Internal Voices Are Reorientation, Not Notifications** — objective, durable context, required cognition, authority, and next boundary.
+- [x] **Stopping Without Forgetting** — active, waiting, paused, idle, queue scanning, and restart recovery.
 - [ ] **One Interactive Agent, Multiple Surfaces** — terminal dialogue, dashboard events, tmux delivery, and verified wake evidence.
 - [ ] Add each writing to the Start Here cross-site study map and to the exact phase where it becomes useful.
 - [ ] Continue the series as Origin produces additional implementation evidence; reserve jobs, OPEVC, accounts, remote access, and team authority for versions that actually implement them.

@@ -53,7 +53,10 @@ requireTokens('start-here-agent.md', syllabus, [
 const surfaces = [
   ['start-here.html', 'data-contribution-surface="onboarding"', 'CONTRIBUTING.md'],
   ['projects/origin.html', 'data-contribution-surface="origin"', '../CONTRIBUTING.md'],
-  ['blog/b9/09_1-dashboard-and-harness.html', 'data-contribution-surface="essay-b9-1"', '../../CONTRIBUTING.md']
+  ['blog/b9/09_1-dashboard-and-harness.html', 'data-contribution-surface="essay-b9-1"', '../../CONTRIBUTING.md'],
+  ['blog/b9/09_2-contextual-feedback-plugin.html', 'data-contribution-surface="essay-b9-2"', '../../CONTRIBUTING.md'],
+  ['blog/b9/09_3-internal-voices-reorientation.html', 'data-contribution-surface="essay-b9-3"', '../../CONTRIBUTING.md'],
+  ['blog/b9/09_4-stopping-without-forgetting.html', 'data-contribution-surface="essay-b9-4"', '../../CONTRIBUTING.md']
 ];
 
 const giscusTokens = [
