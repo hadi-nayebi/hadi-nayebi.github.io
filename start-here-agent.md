@@ -831,6 +831,9 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 ### Dashboard-plus-harness architecture
 
 - [The Dashboard and the Harness Are One System](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) — follow one contextual comment through durable state, interactive delivery, verification, and user review.
+- [The Contextual Feedback Plugin](https://hadi-nayebi.github.io/blog/b9/09_2-contextual-feedback-plugin.html) — study how situated raw input, interpretation, responsibility, questions, verification, and user-owned closure remain distinct.
+- [Internal Voices Are Reorientation, Not Notifications](https://hadi-nayebi.github.io/blog/b9/09_3-internal-voices-reorientation.html) — design event voices that restore objective, durable context, cognitive work, authority, and the next boundary without pretending prose is enforcement.
+- [Stopping Without Forgetting](https://hadi-nayebi.github.io/blog/b9/09_4-stopping-without-forgetting.html) — distinguish active, waiting, paused, and idle state and connect legitimate stopping to durable recovery.
 - [Origin](https://hadi-nayebi.github.io/projects/origin.html) — inspect the live reference substrate when selecting or building a dashboard-plus-harness lineage; preserve its behavioral contracts before adapting its implementation.
 
 ### Current development record
@@ -1621,7 +1624,7 @@ Turn the selected asset into something the user can recognize and use. For a das
 
 #### Review patterns and model the world
 
-Consult current dashboard-harness writings, projects, job/state patterns, authority, and verification. Consider individual versus team use. Record sources and maturity. Origin contains no domain model to copy; derive entities, vocabulary, permissions, and workflows from the user's Asset Charter and verified handoff.
+Consult current dashboard-harness writings, projects, job/state patterns, authority, and verification. Begin with [The Dashboard and the Harness Are One System](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) for the shared visible/operational world and [The Contextual Feedback Plugin](https://hadi-nayebi.github.io/blog/b9/09_2-contextual-feedback-plugin.html) for situated feedback state. Consider individual versus team use. Record sources and maturity. Origin contains no domain model to copy; derive entities, vocabulary, permissions, and workflows from the user's Asset Charter and verified handoff.
 
 When the user's environment is compatible with the public Codex edition, prefer adopting Origin's tested common substrate over rebuilding its launcher, tmux delivery, feedback persistence, stop-state control, recovery, and review boundary. Treat the empty canvas and Wiki as installation evidence, not as completion of this phase. Add the smallest useful pages and real data derived from the user's world. For another CLI, port the documented behavioral contract and verify the replacement adapter; changing an executable name is not a compatible port.
 
@@ -1659,7 +1662,7 @@ Make the asset operational through the most intuitive first relationship: the us
 
 #### Review the relevant Academy patterns
 
-Before design, study current writings about dashboard-harness unity, plugin anatomy, jobs, state, stop controls, question discipline, authority, verification, waiting, recovery, no-progress detection, and safe modification. Review Origin's current maturity and evidence. Explain to the user which implemented contracts are being adopted, which are being adapted, and which later patterns are not yet present.
+Before design, study current writings about dashboard-harness unity, plugin anatomy, jobs, state, stop controls, question discipline, authority, verification, waiting, recovery, no-progress detection, and safe modification. Use [The Contextual Feedback Plugin](https://hadi-nayebi.github.io/blog/b9/09_2-contextual-feedback-plugin.html) for the responsibility lifecycle, [Internal Voices Are Reorientation, Not Notifications](https://hadi-nayebi.github.io/blog/b9/09_3-internal-voices-reorientation.html) for event-specific cognitive orientation, and [Stopping Without Forgetting](https://hadi-nayebi.github.io/blog/b9/09_4-stopping-without-forgetting.html) for active, waiting, paused, idle, and restart behavior. Review Origin's current maturity and evidence. Explain to the user which implemented contracts are being adopted, which are being adapted, and which later patterns are not yet present.
 
 #### Explain the behavior before its implementation
 

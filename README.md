@@ -52,7 +52,7 @@ The writing progresses from the central distinction between model and agent into
 | B6 | OPEVC: Observe, Plan, Execute, Verify, Condense | [The Phasic Foundation](https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html) |
 | B7 | Plugin anatomy: bounded behavioral organs with state and authority | [The Plugin Kit Foundation](https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html) |
 | B8 | Maturation, hardening, user literacy, and controlled evolution | [From Apprentice to Architect](https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html) |
-| B9 | Dashboard and harness as one visible, durable user-agent system | [The Dashboard and the Harness Are One System](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) |
+| B9 | Dashboard and harness as one visible, durable user-agent system: contextual feedback, internal voices, stopping, recovery, and user review | [The Visible Harness](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) |
 
 Browse the complete **[technical-writing index](https://hadi-nayebi.github.io/blog.html)** or use the **[interactive Explorables](https://hadi-nayebi.github.io/explore.html)** to inspect relationships among hooks, jobs, phases, memory, plugins, verification, and control.
 
