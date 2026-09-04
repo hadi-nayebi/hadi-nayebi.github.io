@@ -1,8 +1,93 @@
 {
   "version": 1,
-  "updated": "2026-09-03",
+  "updated": "2026-09-04",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-04-contribution-return-loop",
+      "date": "2026-09-04",
+      "type": "Community pattern",
+      "title": "Public contributions now follow one return loop",
+      "summary": "The Academy website, Origin, Seed Agent, and both Q-Seed repository layers now route questions, field evidence, issues, and candidate code through one privacy-reviewed contribution path.",
+      "why_it_matters": "Useful experience can return to the shared pattern library without turning a user's private harness into public material or allowing an agent, comment, or pull request to bypass user approval and maintainer review.",
+      "affected": ["Contribution return pattern", "Origin", "Seed Agent", "Q-Seed"],
+      "maturity": "Published cross-repository governance foundation",
+      "intended_for": ["Contributors", "Harness users", "Agent-assisted researchers", "Project maintainers"],
+      "sources": [
+        {
+          "label": "Academy-wide contribution-return pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/60"
+        },
+        {
+          "label": "Canonical Academy contribution guide",
+          "url": "/CONTRIBUTING.md"
+        },
+        {
+          "label": "Origin contribution boundary",
+          "url": "https://github.com/hadi-nayebi/origin/pull/3"
+        },
+        {
+          "label": "Seed Agent contribution boundary",
+          "url": "https://github.com/hadi-nayebi/seed_agent/pull/3"
+        },
+        {
+          "label": "Q-Seed cognitive-layer contribution boundary",
+          "url": "https://github.com/hadi-nayebi/q-seed/pull/1"
+        },
+        {
+          "label": "Q-Seed framework-layer contribution boundary",
+          "url": "https://github.com/hadi-nayebi/qwen-code/pull/3"
+        }
+      ],
+      "adoption_notes": "Begin on the smallest appropriate surface: page discussion for a question or generalized lesson, the owning repository for reproducible implementation evidence, and private security reporting for vulnerabilities. Agents must abstract protected context, preview the exact destination and content, and obtain action-specific approval. External submissions remain untrusted evidence until reviewed and accepted; public adoption of the protocol has not yet been demonstrated.",
+      "recommended_action": "Before returning a lesson or fix, use the canonical guide to select the narrowest public surface and complete its privacy and approval review."
+    },
+    {
+      "id": "2026-09-04-contextual-adaptive-onboarding",
+      "date": "2026-09-04",
+      "type": "Onboarding",
+      "title": "Start Here now begins from the user's existing AI practice",
+      "summary": "The Start Here protocol now asks a visiting agent to recall reliable context about the user's present AI workflow, combine it with relevant Academy context, and adapt the Phase 0–9 path through conversation.",
+      "why_it_matters": "Onboarding can continue from the user's real tools, knowledge, constraints, and prior progress instead of restarting with a generic Academy presentation or forcing every person through the same sequence.",
+      "affected": ["Start Here", "Contextual onboarding", "Phase 0–9 syllabus"],
+      "maturity": "Published protocol with deterministic validation",
+      "intended_for": ["New and returning users", "Visiting agents", "People with an existing AI workflow"],
+      "sources": [
+        {
+          "label": "Contextual and adaptive onboarding pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/62"
+        },
+        {
+          "label": "Start Here",
+          "url": "/start-here.html"
+        }
+      ],
+      "adoption_notes": "Conversation is the default, while a requested structured presentation remains available as a personalized format. Agents may overlap, revisit, compress, or responsibly reorder phases, but must preserve relevant outcomes, evidence, permissions, privacy, ownership, authority, verification, and recovery. Cross-agent live acceptance remains separate from the deterministic first-response validator.",
+      "recommended_action": "Use the current Start Here instruction with an agent that has reliable context about you, then correct its opening reflection before continuing the path."
+    },
+    {
+      "id": "2026-09-04-local-harness-compatibility",
+      "date": "2026-09-04",
+      "type": "Architecture guidance",
+      "title": "Local harness choices now have a capability contract",
+      "summary": "Start Here now distinguishes education surfaces, local file-and-command builders, and fully harness-capable CLIs through an explicit, provider-independent compatibility contract.",
+      "why_it_matters": "A terminal command or file-editing feature alone no longer counts as evidence that an environment can support persistent state, lifecycle control, guarded tools, recovery, permission boundaries, and verified outcomes.",
+      "affected": ["Start Here", "Phase 5", "Local harness selection", "Cross-CLI portability"],
+      "maturity": "Published compatibility contract",
+      "intended_for": ["Users choosing a local CLI", "Harness implementers", "Cross-provider adopters"],
+      "sources": [
+        {
+          "label": "Local-harness compatibility pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/59"
+        },
+        {
+          "label": "Start Here compatibility contract",
+          "url": "/start-here.html"
+        }
+      ],
+      "adoption_notes": "Inspect the current product and run a disposable capability probe before migration. Hooks or tested lifecycle-control equivalents are required when the design depends on stop enforcement, feedback-triggered continuation, deterministic phase gates, guarded tools, or persistent jobs. If a capability is missing, narrow the design explicitly or choose a compatible environment; do not replace the missing behavior with prompt wording.",
+      "recommended_action": "Classify the intended environment against the contract and record the evidence for each required capability before building or porting a harness."
+    },
     {
       "id": "2026-09-03-origin-1-0",
       "date": "2026-09-03",
