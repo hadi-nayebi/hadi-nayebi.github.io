@@ -31,8 +31,8 @@
         "Life appears much earlier. Rocks preserve evidence of microbial communities at least 3.5 billion years old. Exactly how the first living systems formed is still an open scientific problem, so there is no honest date when we can point to a puddle and say: there, information became alive.",
         "But at some point, chemistry acquired a remarkable property: parts of a living system could help make another living system with related structure. Information could persist by being copied into descendants. Modern organisms use DNA as the central hereditary molecule, although we should not imagine that the first life already carried the complete modern genetic machinery.",
         "Inside life, molecules were doing more than supplying material and energy. Their sequence, shape, concentration, timing, and location could change what happened next. The same molecule could be construction material in one process, fuel in another, and a signal in a third. Its informational value came from how a living system produced it, detected it, and responded to it.",
-        "For this story, that is enough. The important change is not a particular molecule appearing on a particular Tuesday. It is that living systems became carriers and interpreters of reusable patterns. A body could disappear while some of the organization that built it continued into another body.",
-        "That made life different from a footprint in rock or a pattern in a cloud. The pattern could participate in making more pattern. Earth now had a molecular information substrate — one that could keep accumulating changes for billions of years."
+        "The important change is not a particular molecule appearing on a particular Tuesday. It is that living systems became carriers and interpreters of reusable patterns. Unlike a footprint in rock or a pattern in a cloud, this pattern could participate in making more pattern. A body could disappear while some of the organization that built it continued into another body.",
+        "Earth now had a molecular information substrate — one that could keep accumulating changes for billions of years."
       ],
       "sources": [
         {
@@ -59,7 +59,7 @@
     {
       "id": "molecular-world",
       "title": "A molecular world already senses and speaks",
-      "read_minutes": 2.0,
+      "read_minutes": 1.6,
       "image": {
         "src": "images/episode-01/02-molecular-world.jpg",
         "alt": "A community of luminous bacteria exchanges clouds of signal molecules while one cell follows a chemical gradient and retains a fading molecular trace of earlier conditions.",
@@ -70,7 +70,7 @@
         "Bacteria release molecules that other bacteria detect. As those signals accumulate, their concentration can reveal something about the cells nearby. Through processes such as quorum sensing, bacteria can coordinate gene expression and collective behavior. The chemical conversation can happen within one species, across species, and sometimes even across the boundaries between bacteria and their hosts.",
         "A bacterium can also compare the present with the recent past. When an E. coli cell follows a chemical gradient, molecular changes in its receptors preserve a fading trace of the conditions it encountered moments earlier. That trace helps the cell respond to whether life is getting better or worse as it moves.",
         "Calling this memory does not turn a bacterium into a tiny person. There is no private movie playing inside it. Memory here means capacity: an earlier condition leaves a physical state that changes a later response. Some such states vanish quickly. Others can persist through growth or cell division.",
-        "So even at the bacterial level, the familiar information problems are already present. There is storage. There is transmission. There is sensing, interpretation, coordination, and limited memory. Life did not postpone those functions until it could grow a brain. It performed them with the substrate it had: molecules interacting inside and between cells.",
+        "Together, these capacities already form an information system built from molecules: signals cross between cells, internal states preserve traces, and responses change accordingly.",
         "The first information world was not silent. It spoke chemistry."
       ],
       "sources": [
@@ -98,16 +98,15 @@
     {
       "id": "substrate-horizon",
       "title": "Every substrate has a horizon",
-      "read_minutes": 2.0,
+      "read_minutes": 1.7,
       "image": {
         "src": "images/episode-01/03-substrate-horizon.jpg",
         "alt": "Molecular signals and microbial colonies fill one layer while a multicellular animal form emerges above them, showing an expanding information scale without a ladder or progress arrow.",
         "category": "I70-A30"
       },
       "paragraphs": [
-        "A substrate can become astonishingly capable without becoming unlimited.",
-        "Molecular life found ways to preserve information across billions of years, transmit signals between cells, coordinate communities, compare changing conditions, and carry traces of the past into the future. Again and again, the same broad information needs appeared, and evolution produced molecular ways of meeting them.",
-        "But every molecular message still had to be made, moved, detected, and translated through chemistry. Signals diffuse, react, dilute, and degrade. A molecular memory lasts only as long as some physical state can preserve it. Hereditary information is remarkably durable, but most changes to that archive move through generations rather than recording the ordinary experiences of one individual.",
+        "A substrate can become astonishingly capable without escaping its physics.",
+        "Every molecular message still has to be made, moved, detected, and translated through chemistry. Signals diffuse, react, dilute, and degrade. A molecular memory lasts only as long as some physical state can preserve it. Hereditary information is remarkably durable, but most changes to that archive move through generations rather than recording the ordinary experiences of one individual.",
         "This did not make multicellular life inevitable. Single-celled organisms remain among the planet’s most successful forms of life. Evolution has no staircase and no destination. But in some lineages, cells began cooperating as one body. They specialized. They exchanged signals. Their combined body created a new scale on which information could move and act.",
         "As some animals became larger, faster, and more behaviorally complex, coordination across that body became increasingly valuable. A signal from one region had to influence distant muscles and organs quickly. Different sensations had to be combined. Past events had to alter future behavior in more varied ways.",
         "Molecular signaling did not fail or disappear. It reached a horizon, and another layer began extending what it could do."
@@ -137,19 +136,17 @@
     {
       "id": "second-clock",
       "title": "A second clock appears",
-      "read_minutes": 1.8,
+      "read_minutes": 1.5,
       "image": {
         "src": "images/episode-01/04-second-clock.jpg",
         "alt": "Several translucent marine animals show different glowing neural organizations, from diffuse nerve nets to more concentrated signaling centers.",
         "category": "I50-A50"
       },
       "paragraphs": [
-        "Nervous systems did not arrive as a brain, and they did not invent signaling.",
-        "They arrived on a planet already fluent in molecules. Long before anything resembling a mammalian brain existed, cells used electrical and chemical signals to sense conditions, coordinate activity, and change what happened next. Early animal evolution assembled some of those capabilities into specialized networks connecting sensation, movement, feeding, internal regulation, and behavior across a multicellular body.",
+        "Nervous systems did not arrive as brains. Early animal evolution specialized a much older electrical and chemical repertoire into networks connecting sensation, movement, feeding, internal regulation, and behavior across a multicellular body.",
         "The exact evolutionary origin is still debated. Comb jellies are one reason the family tree remains interesting: their nervous systems are unusual enough that researchers still argue about whether neurons arose once in animals or more than once. The safe statement is the useful one: by well over half a billion years ago, animal nervous systems were diversifying into very different organizations.",
-        "That change expanded the information timescale and the range of possible responses. A genetic system can help build an animal that responds to light. Molecular signals still regulate the cells. A nervous system can connect what is happening right now — where the light is, what touched the body, which direction it is moving — to a coordinated response across the animal.",
-        "Then some nervous systems do something even more consequential: experience changes what happens next time.",
-        "Now the organism is not only carrying information inherited from a lineage or short-lived molecular traces of recent conditions. Its own encounters can become part of its future behavior in a more flexible and varied way. The old molecular substrate remains underneath everything, but interconnected excitable cells give information a new place to move, combine, and persist."
+        "That change expanded the information timescale and the range of possible responses. A genetic system can help build an animal that responds to light. A nervous system can connect what is happening right now — where the light is, what touched the body, which direction it is moving — to a coordinated response across the animal.",
+        "Then experience can change what happens next time. Interconnected excitable cells give an animal’s own encounters a new place to move, combine, and persist."
       ],
       "sources": [
         {
@@ -176,20 +173,19 @@
     {
       "id": "learning",
       "title": "Learning before reproduction",
-      "read_minutes": 1.7,
+      "read_minutes": 1.5,
       "image": {
         "src": "images/episode-01/05-learning-within-lifetime.jpg",
-        "alt": "A glowing jellyfish-like animal moves through a maze of mangrove roots, with a faint failed path and a brighter altered route suggesting behavior changed by experience.",
+        "alt": "A small box jellyfish moves through a maze of mangrove roots, with a faint failed path and a brighter altered route suggesting behavior changed by experience.",
         "category": "I30-A70"
       },
       "paragraphs": [
-        "Here is the upgrade in its simplest form: the same animal can behave differently after something happens to it.",
+        "Here is learning in its simplest form: an encounter changes what the same animal does next.",
         "A tiny Caribbean box jellyfish gives us a wonderfully inconvenient example. It has no conventional centralized brain. Its nervous system is distributed through sensory structures and nerve tissue. Yet in laboratory experiments, researchers showed that it could combine visual and mechanical cues and learn to avoid obstacles.",
-        "The animal did not need to wait for a new generation. Its genome did not have to become a different genome. Experience during that individual lifetime changed future behavior.",
+        "The animal did not need to wait for a new generation or a different genome. The update happened during its own lifetime.",
         "That sounds ordinary to us because we live inside nervous systems that do it constantly. But viewed across deep time, it is a profound change in the planet’s information capacity. An event in the environment can leave a usable trace inside one organism, and that trace can influence what the organism does minutes, hours, days, or sometimes much longer afterward.",
-        "Learning and memory take many forms, and no single experiment tells us when they first appeared. The jellyfish matters because it breaks an easy assumption: associative learning does not require a large centralized brain.",
-        "The second clock can be surprisingly small.",
-        "Biological inheritance still builds the machinery. Evolution still shapes what kinds of things the animal can sense and learn. But now the machinery can write part of its own history while it is running."
+        "Learning and memory take many forms, and no single experiment tells us when they first appeared. The jellyfish matters because it breaks an easy assumption: associative learning does not require a large centralized brain. The second clock can be surprisingly small.",
+        "Evolution still builds and shapes the machinery. But now the machinery can write part of its own history while it is running."
       ],
       "sources": [
         {
@@ -211,19 +207,17 @@
     {
       "id": "many-architectures",
       "title": "There was never one ladder of minds",
-      "read_minutes": 1.7,
+      "read_minutes": 1.5,
       "image": {
         "src": "images/episode-01/06-many-architectures.jpg",
         "alt": "Different animal forms — a jellyfish, an octopus-like body, an insect, and a bird-like animal — surround distinct glowing neural patterns without any hierarchy or progression arrow.",
         "category": "I50-A50"
       },
       "paragraphs": [
-        "A new substrate does not create one destination. Once nervous systems exist, the story does not become a straight staircase toward us.",
-        "Animal nervous systems branch into many architectures. Some are diffuse. Some concentrate processing into rings, cords, ganglia, or brains. Some lineages independently evolve more centralized organizations. Different bodies and environments reward different solutions.",
+        "Animal nervous systems branch into many architectures. Some are diffuse. Some concentrate processing into rings, cords, ganglia, or brains. Some lineages independently evolved more centralized organizations. Different bodies and environments rewarded different solutions.",
         "That matters because the phrase more information can quietly smuggle in a ranking system that biology does not support. A nervous system is not valuable because it resembles a human brain. It is valuable to an organism when it helps solve the problems that organism actually has.",
         "A jellyfish moving through mangrove roots, an insect navigating among flowers, a predator tracking prey, and a migratory animal crossing enormous distances live in different information worlds. Their senses sample different things. Their nervous systems compress different problems. Their memories matter on different timescales.",
-        "So our planetary story is not a march from stupid life to intelligent humans. It is an expanding landscape of ways to sense, coordinate, learn, and remember.",
-        "One branch of that landscape will eventually become especially important to us, because human nervous systems become unusually dependent on information acquired from other individuals. But even that development grows out of older capacities already scattered across the animal world.",
+        "One branch will eventually become especially important to us, because human nervous systems become unusually dependent on information acquired from other individuals. But that development grows from capacities already scattered across the animal world.",
         "Before we get there, one more bottleneck has to become visible: a private memory is still private."
       ],
       "sources": [
@@ -251,20 +245,20 @@
     {
       "id": "learned-experience-crosses",
       "title": "When learned experience stops being private",
-      "read_minutes": 1.9,
+      "read_minutes": 1.6,
       "image": {
         "src": "images/episode-01/07-information-crosses.jpg",
         "alt": "Two stylized bumblebees face the same flower-like puzzle while layered chemical, visual, and behavioral signals connect the experienced individual to the observer.",
         "category": "I30-A70"
       },
       "paragraphs": [
-        "Communication is ancient. Learned experience traveling between nervous systems is a different step.",
-        "A chemical signal can already tell another cell that neighbors are present, danger is nearby, or conditions have changed. But when an animal discovers a better route, a useful trick, or a dangerous place, much of that individually acquired information can still vanish when the animal dies. The planet has gained flexible lifetime memory, but lifetime memory does not automatically become collective memory.",
-        "Animals developed many ways to widen that channel. They watch one another. They follow. They imitate. They respond to chemical signals, touch, posture, vibration, sound, movement, and changes in the environment made by others. None of these appeared in one sudden invention. The ancient functions remain; a new substrate gives them greater range, variety, and flexibility.",
+        "Communication is ancient. What changes here is the payload: an experience acquired by one individual can begin to alter another.",
+        "If an animal discovers a better route, a useful trick, or a dangerous place, much of that information can still vanish when the animal dies. Lifetime memory does not automatically become collective memory.",
+        "Animals developed many ways to widen the channel. They watch, follow, and imitate one another. They respond to touch, posture, vibration, sound, movement, chemical signals, and changes others leave in the environment. No single moment invented social transmission.",
         "A striking modern experiment with bumblebees shows why this matters. Researchers trained demonstrator bees to solve a two-step puzzle. Naive bees had failed to discover the solution on their own even after long exposure, but some learned the complete behavior after watching trained bees.",
         "That does not mean bees have human cumulative culture, and it does not tell us when social transmission first began. It shows something more basic and more important for our story: information acquired during one individual’s lifetime can change what another individual is able to do.",
-        "This is not the first communication between organisms. It is a wider bridge: learned experience beginning to travel beyond the body that acquired it.",
-        "The next part of the story follows that bridge as it expands — through many channels, across many animal lineages, with growing complexity. The old molecular conversation remains underneath it all.",
+        "This is the threshold: learned experience has begun to travel beyond the body that acquired it.",
+        "The next part of the story follows that movement through many channels and across many animal lineages.",
         "The next upgrade is a bridge."
       ],
       "sources": [
