@@ -153,7 +153,6 @@ The first validator checks static and dynamically injected navigation. The visua
 .
 ├── index.html                 # Home
 ├── start-here.html            # Human-facing orientation and agent handoff
-├── start-here-agent.md        # Separate agent syllabus and first-response contract
 ├── start-here-agent.md        # Canonical text-only agent instruction
 ├── whats-new.html             # Human-readable public development record
 ├── blog.html                  # Technical-writing index
