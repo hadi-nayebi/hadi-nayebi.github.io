@@ -1,0 +1,281 @@
+{
+  "number": 1,
+  "slug": "when-life-learned-before-it-died",
+  "title": "When Life Learned Before It Died",
+  "status": "published",
+  "published": "2026-09-05",
+  "deckline": "For most of life’s history, useful information could persist across generations. Nervous systems added another timescale: experience could change what an organism did before reproduction ever happened.",
+  "objective": "Establish the first major transition in the Observation: from information that persists mainly through biological inheritance to nervous systems that let experience alter behavior within an individual lifetime, ending at the pressure for information to cross between individuals.",
+  "learning_outcomes": [
+    "See hereditary information as a durable biological memory that persists across generations without treating evolution as conscious learning.",
+    "Understand why nervous systems added a much faster timescale for sensing, coordination, learning, and memory within a lifetime.",
+    "Recognize that nervous systems diversified in many forms rather than progressing along a single ladder toward human brains.",
+    "Identify the next bottleneck: most individually learned information disappears unless it can affect other individuals."
+  ],
+  "continuity": "This is the opening episode. It begins with deep time and biological inheritance, then follows the gradual emergence of nervous systems and lifetime learning without making human language the protagonist yet.",
+  "future_pressure": "Once experience can alter one individual, what changes when that experience can alter another individual too? The next learning gap is the gradual growth of communication and social transmission across animals.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-1-when-life-learned-before-it-died",
+  "slides": [
+    {
+      "id": "deep-time",
+      "title": "The archive begins inside life",
+      "read_minutes": 2.3,
+      "image": {
+        "src": "images/episode-01/01-deep-time.jpg",
+        "alt": "A stylized young Earth with volcanic land above a dark ocean where layered microbial communities and glowing microscopic life appear below the surface.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Earth is about 4.54 billion years old. That number is so large that nearly every part of the human story disappears when you put it beside the planet’s. Cities, writing, agriculture, even our species arrive almost at the last moment.",
+        "Life appears much earlier. Rocks preserve evidence of microbial communities at least 3.5 billion years old. Exactly how the first living systems formed is still an open scientific problem, so there is no honest date when we can point to a puddle and say: there, information became alive.",
+        "But at some point, chemistry acquired a remarkable property: parts of a living system could help make another living system with related structure. Information could persist by being copied into descendants. Modern organisms use DNA as the central hereditary molecule, although we should not imagine that the first life already carried the complete modern genetic machinery.",
+        "For this story, that is enough. The important change is not a particular molecule appearing on a particular Tuesday. It is that living systems became carriers of reusable biological instructions. A body could disappear while some of the organization that built it continued into another body.",
+        "That made life different from a footprint in rock or a pattern in a cloud. The pattern could participate in making more pattern. Earth now had a biological archive — one that could keep accumulating changes for billions of years."
+      ],
+      "sources": [
+        {
+          "label": "U.S. Geological Survey — Age of the Earth",
+          "url": "https://pubs.usgs.gov/gip/geotime/age.html",
+          "note": "Earth age estimate of about 4.54 billion years."
+        },
+        {
+          "label": "Smithsonian — History of Life on Earth",
+          "url": "https://naturalhistory.si.edu/education/teaching-resources/life-science/early-life-earth-animal-origins",
+          "note": "Evidence of microbial stromatolites dating to about 3.5 billion years ago."
+        },
+        {
+          "label": "NHGRI — DNA Fact Sheet",
+          "url": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+          "note": "DNA carries biological instructions and is passed to offspring in modern organisms."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "inheritance",
+      "title": "A memory that survives the body",
+      "read_minutes": 2.1,
+      "image": {
+        "src": "images/episode-01/02-inherited-memory.jpg",
+        "alt": "A luminous double-helix-like thread crosses a sequence of translucent cells, suggesting hereditary continuity as individual bodies appear and disappear.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "An individual organism is temporary. A lineage is not.",
+        "DNA gives modern life an extraordinarily durable way to move biological information through time. During reproduction, hereditary material passes from parents to offspring. The copy is not always identical. Mutations, recombination, and other sources of variation create differences, and those differences can matter for survival and reproduction.",
+        "Over generations, populations change. A useful inherited variation can become more common. A harmful one can disappear. Environments change, populations split, lineages branch, and the biological instructions carried forward change with them.",
+        "It is tempting to call this the planet learning. That metaphor is useful only if we keep the boundary clear: evolution is not a mind taking notes. A bacterium does not remember what happened to its ancestors. A species does not sit down after a bad century and rewrite its genome.",
+        "What accumulates is structure. The chemistry of a cell, the shape of a limb, a sensory receptor, a developmental program — these can embody the results of an enormous history of variation and selection without any organism understanding that history.",
+        "So the first great information system in our story is powerful but peculiar. It can preserve successful patterns for astonishing lengths of time. Yet its main channel runs through reproduction. The archive moves forward because bodies make new bodies."
+      ],
+      "sources": [
+        {
+          "label": "NHGRI — DNA Fact Sheet",
+          "url": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+          "note": "DNA contains biological instructions and is inherited during reproduction."
+        },
+        {
+          "label": "Smithsonian Human Origins — Introduction to Human Evolution",
+          "url": "https://humanorigins.si.edu/education/introduction-human-evolution",
+          "note": "Explains that evolution changes inherited characteristics of populations rather than transforming a single individual."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "slow-update",
+      "title": "The slow update cycle",
+      "read_minutes": 2.4,
+      "image": {
+        "src": "images/episode-01/03-slow-update-cycle.jpg",
+        "alt": "Dozens of small organism forms flow along a long spiral path, changing only gradually as the lineage crosses a dark field of deep time.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "This system has a speed limit.",
+        "If an animal discovers a safe path to water at noon and dies at sunset, that route does not normally get written into its DNA and handed to its offspring as a learned lesson. Biological inheritance has more channels than DNA alone, and researchers study epigenetic and other transgenerational effects, but the everyday memories acquired by an individual are not a genetic notebook passed intact to the next generation.",
+        "Evolution therefore works on a different clock from experience. Populations can change dramatically, but inherited change usually has to move through generations. The solution is durable; the update cycle can be slow.",
+        "And even this is not a clean before-and-after story. Living things without nervous systems can sense their environments, communicate chemically, regulate themselves, and alter their responses. Scientists even debate how broadly the word learning should be applied outside nervous systems. Nature rarely waits for one technology to be fully finished before experimenting with the next.",
+        "The transition we care about is a change in capacity. As animals became larger and more behaviorally complex, rapid coordination across a body became increasingly valuable. Signals had to travel from sensors to muscles, between different parts of the organism, and eventually through networks capable of changing future behavior based on what had happened before.",
+        "The old biological clock did not disappear. Another clock began running on top of it."
+      ],
+      "sources": [
+        {
+          "label": "Smithsonian Human Origins — Introduction to Human Evolution",
+          "url": "https://humanorigins.si.edu/education/introduction-human-evolution",
+          "note": "Population-level inherited change rather than evolution of a single individual."
+        },
+        {
+          "label": "PMC — Is a Nervous System Necessary for Learning?",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6701508/",
+          "note": "Reviews the difficulty of defining learning and debates about learning-like processes beyond nervous systems."
+        },
+        {
+          "label": "Annual Review — Animal Nervous System Diversification",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39052757/",
+          "note": "Reviews nervous systems as interfaces for environmental sensing and coordination in multicellular animals."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "second-clock",
+      "title": "A second clock appears",
+      "read_minutes": 2.5,
+      "image": {
+        "src": "images/episode-01/04-second-clock.jpg",
+        "alt": "Several translucent marine animals show different glowing neural organizations, from diffuse nerve nets to more concentrated signaling centers.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Nervous systems did not arrive as a brain.",
+        "Long before anything resembling a mammalian brain existed, cells already used electrical and chemical signals. Early animal evolution assembled some of those capabilities into networks that could connect sensation, movement, feeding, internal regulation, and behavior across a multicellular body.",
+        "The exact evolutionary origin is still debated. Comb jellies are one reason the family tree remains interesting: their nervous systems are unusual enough that researchers still argue about whether neurons arose once in animals or more than once. The safe statement is the useful one: by well over half a billion years ago, animal nervous systems were diversifying into very different organizations.",
+        "That change added a new information timescale. A genetic system can help build an animal that responds to light. A nervous system can let that animal integrate what is happening right now — where the light is, what touched it, which direction it is moving — and coordinate an immediate response.",
+        "Then some nervous systems do something even more consequential: experience changes what happens next time.",
+        "Now the organism is not only carrying information inherited from a lineage. Its own history can become part of its future behavior. The body still arrives with biology shaped by ancient evolution, but during one lifetime the nervous system can accumulate a small private history of the world."
+      ],
+      "sources": [
+        {
+          "label": "Annual Review — Animal Nervous System Diversification",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39052757/",
+          "note": "Reviews nervous systems as interfaces for environmental sensing and coordination, including independent centralization in several lineages."
+        },
+        {
+          "label": "Nature Reviews Neuroscience — From nerve net to brain",
+          "url": "https://www.nature.com/articles/nrn.2015.15",
+          "note": "Reviews evolutionary transitions among nerve nets, integration centers, nerve cords, and brains."
+        },
+        {
+          "label": "PubMed — Ctenophore nervous-system origins",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38390763/",
+          "note": "Summarizes the continuing debate over one versus multiple origins of animal nervous systems."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "learning",
+      "title": "Learning before reproduction",
+      "read_minutes": 2.4,
+      "image": {
+        "src": "images/episode-01/05-learning-within-lifetime.jpg",
+        "alt": "A glowing jellyfish-like animal moves through a maze of mangrove roots, with a faint failed path and a brighter altered route suggesting behavior changed by experience.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Here is the upgrade in its simplest form: the same animal can behave differently after something happens to it.",
+        "A tiny Caribbean box jellyfish gives us a wonderfully inconvenient example. It has no conventional centralized brain. Its nervous system is distributed through sensory structures and nerve tissue. Yet in laboratory experiments, researchers showed that it could combine visual and mechanical cues and learn to avoid obstacles.",
+        "The animal did not need to wait for a new generation. Its genome did not have to become a different genome. Experience during that individual lifetime changed future behavior.",
+        "That sounds ordinary to us because we live inside nervous systems that do it constantly. But viewed across deep time, it is a profound change in the planet’s information capacity. An event in the environment can leave a usable trace inside one organism, and that trace can influence what the organism does minutes, hours, days, or sometimes much longer afterward.",
+        "Learning and memory take many forms, and no single experiment tells us when they first appeared. The jellyfish matters because it breaks an easy assumption: sophisticated learning does not require a large centralized brain.",
+        "The second clock can be surprisingly small.",
+        "Biological inheritance still builds the machinery. Evolution still shapes what kinds of things the animal can sense and learn. But now the machinery can write part of its own history while it is running."
+      ],
+      "sources": [
+        {
+          "label": "Current Biology — Associative learning in a box jellyfish",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37741280/",
+          "note": "Primary study showing associative learning in Tripedalia cystophora, which lacks a conventional centralized brain."
+        },
+        {
+          "label": "Nature — How to train your jellyfish",
+          "url": "https://www.nature.com/articles/d41586-023-02975-x",
+          "note": "Accessible overview of the box-jellyfish learning result and its significance."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "many-architectures",
+      "title": "There was never one ladder of minds",
+      "read_minutes": 2.5,
+      "image": {
+        "src": "images/episode-01/06-many-architectures.jpg",
+        "alt": "Different animal forms — a jellyfish, an octopus-like body, an insect, and a bird-like animal — surround distinct glowing neural patterns without any hierarchy or progression arrow.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Once nervous systems exist, the story does not become a straight staircase toward us.",
+        "Animal nervous systems branch into many architectures. Some are diffuse. Some concentrate processing into rings, cords, ganglia, or brains. Some lineages independently evolve more centralized organizations. Different bodies and environments reward different solutions.",
+        "That matters because the phrase more information can quietly smuggle in a ranking system that biology does not support. A nervous system is not valuable because it resembles a human brain. It is valuable to an organism when it helps solve the problems that organism actually has.",
+        "A jellyfish moving through mangrove roots, an insect navigating among flowers, a predator tracking prey, and a migratory animal crossing enormous distances live in different information worlds. Their senses sample different things. Their nervous systems compress different problems. Their memories matter on different timescales.",
+        "So our planetary story is not a march from stupid life to intelligent humans. It is an expanding landscape of ways to sense, coordinate, learn, and remember.",
+        "One branch of that landscape will eventually become especially important to us, because human nervous systems become unusually dependent on information acquired from other individuals. But even that development grows out of older capacities already scattered across the animal world.",
+        "Before we get there, one more bottleneck has to become visible: a private memory is still private."
+      ],
+      "sources": [
+        {
+          "label": "Annual Review — Animal Nervous System Diversification",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39052757/",
+          "note": "Reviews cellular and architectural diversification of nervous systems across animals."
+        },
+        {
+          "label": "Nature — More than one way to a central nervous system",
+          "url": "https://www.nature.com/articles/d41586-017-08195-4",
+          "note": "Discusses evidence that centralized nervous systems can arise through more than one evolutionary route."
+        },
+        {
+          "label": "Nature Reviews Neuroscience — From nerve net to brain",
+          "url": "https://www.nature.com/articles/nrn.2015.15",
+          "note": "Reviews multiple nervous-system organizations and proposed transitions among them."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-06.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "information-crosses",
+      "title": "When experience stops being private",
+      "read_minutes": 2.4,
+      "image": {
+        "src": "images/episode-01/07-information-crosses.jpg",
+        "alt": "Two stylized bumblebees face the same flower-like puzzle while a faint luminous arc connects the experienced individual to the observer.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A nervous system can learn quickly. It has another problem: it lives inside one animal.",
+        "If an individual discovers a better route, a useful trick, or a dangerous place, much of that acquired information can vanish when the individual dies. The planet has gained fast local memory, but local memory does not automatically become collective memory.",
+        "Animals found many partial ways around that bottleneck. They watch one another. They follow. They imitate. They respond to chemical signals, touch, posture, vibration, sound, movement, and changes in the environment made by others. None of these appeared in one sudden invention. Communication and social learning are spectra with deep evolutionary roots.",
+        "A striking modern experiment with bumblebees shows why this matters. Researchers trained demonstrator bees to solve a two-step puzzle. Naive bees had failed to discover the solution on their own even after long exposure, but some learned the complete behavior after watching trained bees.",
+        "That does not mean bees have human cumulative culture, and it does not tell us when social transmission first began. It shows something more basic and more important for our story: information acquired in one nervous system can change what another nervous system is able to do.",
+        "The information system has crossed a boundary.",
+        "Until now our main carriers were lineages and individual bodies. The next part of the story begins when experience can move between individuals — slowly at first, through many channels, then with growing complexity.",
+        "The next upgrade is a bridge."
+      ],
+      "sources": [
+        {
+          "label": "Nature — Bumblebees socially learn complex behaviour",
+          "url": "https://www.nature.com/articles/s41586-024-07126-4",
+          "note": "Primary study showing naive bumblebees acquiring a two-step behavior socially after failing to innovate it independently."
+        },
+        {
+          "label": "Nature Human Behaviour / PMC — Chimpanzees acquire a skill socially",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11132989/",
+          "note": "Independent evidence that social information can transmit a complex skill that individuals failed to innovate alone."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-07.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
