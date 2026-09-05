@@ -53,28 +53,23 @@ if (
   errors.push('start-here-agent.md: contextual start and two-context synthesis must precede the remaining syllabus');
 }
 
-requireText('start-here.html', page, 'data-agent-phase="contextual-start"');
-requireText('start-here.html', page, 'Recall the user, then establish a personalized path');
-requireText('start-here.html', page, 'Conversation is the default');
-requireText('start-here.html', page, 'combine two living contexts');
-requireText('start-here.html', page, 'never a generic replication of the website');
-requireText('start-here.html', page, 'Treat the nine phases as a recommended developmental scaffold');
-requireText('start-here.html', page, 'briefly reflect only the relevant high-confidence context');
+requireText('start-here.html', page, 'id="continue-with-agent"');
+requireText('start-here.html', page, 'href="start-here-agent.md"');
+requireText('start-here.html', page, 'id="start-core-prompt" hidden');
+requireText('start-here.html', page, 'Read https://hadi-nayebi.github.io/start-here-agent.md');
 forbidText('start-here.html', page, retiredModeQuestion);
-forbidText('start-here.html', page, 'data-agent-phase="interaction-mode"');
+forbidText('start-here.html', page, '<details class="start-agent-instruction"');
+forbidText('start-here.html', page, 'data-agent-instruction');
+forbidText('start-here.html', page, 'data-agent-phase=');
+forbidText('start-here.html', page, 'Agent operating rule');
+forbidText('start-here.html', page, '<span>Agent instruction</span>');
+forbidText('start-here.html', page, '<span>Agent phase');
+forbidText('start-here.html', page, '>For agents<');
 
-const contextualRule = page.indexOf('data-agent-phase="contextual-start"');
-const tempoRule = page.indexOf('data-agent-phase="tempo"');
-const starterPrompt = page.indexOf('<pre id="start-core-prompt">');
-if (contextualRule < 0 || tempoRule < 0 || contextualRule > tempoRule) {
-  errors.push('start-here.html: contextual-start rule must be the first visible agent operating rule');
-}
-if (
-  starterPrompt < 0 ||
-  page.indexOf('briefly reflect only the relevant high-confidence context', starterPrompt) < 0 ||
-  page.indexOf('Every explanation, question, example, and artifact must be a personalized bridge', starterPrompt) < 0
-) {
-  errors.push('start-here.html: copied starter instruction must enforce contextual synthesis');
+const humanPath = page.indexOf('id="human-path"');
+const agentHandoff = page.indexOf('id="continue-with-agent"');
+if (humanPath < 0 || agentHandoff < 0 || humanPath > agentHandoff) {
+  errors.push('start-here.html: the human path must precede the optional agent handoff');
 }
 
 if (errors.length) {
@@ -83,4 +78,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log('Start Here first-response validation passed: user context and Hadosh context produce a personalized path.');
+console.log('Start Here boundary validation passed: the page stays human-facing and the agent syllabus stays separate.');

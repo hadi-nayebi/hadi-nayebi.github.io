@@ -51,6 +51,17 @@ maintain the page.
   accessibility instructions, privacy notices, or controls whose behavior a visitor needs to
   understand. Keep those concise and user-relevant.
 
+### Start Here boundary
+
+`start-here.html` is a human reading surface. Its visible flow must never contain instructions
+addressed to an AI agent, including collapsed `Agent instruction`, `Agent phase`, `First response`,
+or `Agent operating rule` cards. Collapsing agent text does not make it visitor-facing.
+
+Keep the complete agent operating syllabus in `start-here-agent.md`. The visible Start Here page may
+offer a concise, human-labeled action to open or copy that separate guide, but it must explain the
+benefit to the person and must not print the agent's production prompt or operating protocol into the
+main reading flow.
+
 ## Editing discipline
 
 - Preserve unrelated user changes and keep each pull request limited to its stated purpose.
