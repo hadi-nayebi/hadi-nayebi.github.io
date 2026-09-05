@@ -14,6 +14,13 @@ jobs:
         run: |
           node --check js/story-visuals.js
           node --check js/theme-manager.js
+          node --check blog/observations/information-system-of-a-planet/observation.js
+      - name: Validate storytelling assets and Observations
+        run: |
+          node scripts/validate-storytelling-visuals.mjs
+          for validator in blog/observations/*/validate-observation.mjs; do
+            node "$validator"
+          done
       - name: Parse story SVG assets
         run: |
           python - <<'PY'

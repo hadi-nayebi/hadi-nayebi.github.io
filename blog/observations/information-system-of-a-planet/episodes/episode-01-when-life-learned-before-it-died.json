@@ -1,0 +1,282 @@
+{
+  "number": 1,
+  "slug": "when-life-learned-before-it-died",
+  "title": "When Life Learned Before It Died",
+  "status": "published",
+  "published": "2026-09-05",
+  "deckline": "Life was sensing, signaling, storing, and responding long before nerves existed. Nervous systems did not invent those information functions; they gave them a new substrate, a faster clock, and a much larger range of possible behavior.",
+  "objective": "Establish the recurring pattern of the Observation: every information substrate supports storage, transmission, sensing, response, and some form of memory, while also imposing limits that later substrates can expand. Begin with molecular information in early life, show that bacteria already communicate and retain transient state, then introduce multicellular nervous systems as a new substrate for faster and more varied learning, ending at the expansion of learned experience between individuals.",
+  "learning_outcomes": [
+    "See molecules as the first substrate in this story: carrying material and energy while their sequence, shape, concentration, timing, and location can also carry information.",
+    "Recognize that bacteria already sense, communicate chemically, coordinate behavior, and retain limited molecular traces of prior conditions.",
+    "Understand new information layers as expansions rather than clean beginnings: nervous systems increase speed, range, capacity, and behavioral variety without replacing molecular information.",
+    "Recognize that nervous systems diversified in many forms rather than progressing along a single ladder toward human brains.",
+    "Identify the next expansion: information learned within one lifetime beginning to alter what another individual can do."
+  ],
+  "continuity": "This is the opening episode. It begins with deep time and molecular information, establishes that communication and limited memory already exist among bacteria, then follows the emergence of multicellular nervous systems as a more capable information substrate without making human language the protagonist yet.",
+  "future_pressure": "Communication is already ancient. The next learning gap is how animal signals and social learning increasingly transmit information acquired during a lifetime, eventually creating richer bridges between nervous systems.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-1-when-life-learned-before-it-died",
+  "slides": [
+    {
+      "id": "deep-time",
+      "title": "The archive begins inside life",
+      "read_minutes": 1.9,
+      "image": {
+        "src": "images/episode-01/01-deep-time.jpg",
+        "alt": "A stylized young Earth above a dark ocean, descending into glowing microbial life and molecular patterns whose shapes, concentrations, and sequences carry information.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Earth is about 4.54 billion years old. That number is so large that nearly every part of the human story disappears when you put it beside the planet’s. Cities, writing, agriculture, even our species arrive almost at the last moment.",
+        "Life appears much earlier. Rocks preserve evidence of microbial communities at least 3.5 billion years old. Exactly how the first living systems formed is still an open scientific problem, so there is no honest date when we can point to a puddle and say: there, information became alive.",
+        "But at some point, chemistry acquired a remarkable property: parts of a living system could help make another living system with related structure. Information could persist by being copied into descendants. Modern organisms use DNA as the central hereditary molecule, although we should not imagine that the first life already carried the complete modern genetic machinery.",
+        "Inside life, molecules were doing more than supplying material and energy. Their sequence, shape, concentration, timing, and location could change what happened next. The same molecule could be construction material in one process, fuel in another, and a signal in a third. Its informational value came from how a living system produced it, detected it, and responded to it.",
+        "The important change is not a particular molecule appearing on a particular Tuesday. It is that living systems became carriers and interpreters of reusable patterns. Unlike a footprint in rock or a pattern in a cloud, this pattern could participate in making more pattern. A body could disappear while some of the organization that built it continued into another body.",
+        "Earth now had a molecular information substrate — one that could keep accumulating changes for billions of years."
+      ],
+      "sources": [
+        {
+          "label": "U.S. Geological Survey — Age of the Earth",
+          "url": "https://pubs.usgs.gov/gip/geotime/age.html",
+          "note": "Earth age estimate of about 4.54 billion years."
+        },
+        {
+          "label": "Smithsonian — History of Life on Earth",
+          "url": "https://naturalhistory.si.edu/education/teaching-resources/life-science/early-life-earth-animal-origins",
+          "note": "Evidence of microbial stromatolites dating to about 3.5 billion years ago."
+        },
+        {
+          "label": "NHGRI — DNA Fact Sheet",
+          "url": "https://www.genome.gov/about-genomics/fact-sheets/Deoxyribonucleic-Acid-Fact-Sheet",
+          "note": "DNA carries biological instructions and is passed to offspring in modern organisms."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "molecular-world",
+      "title": "A molecular world already senses and speaks",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-01/02-molecular-world.jpg",
+        "alt": "A community of luminous bacteria exchanges clouds of signal molecules while one cell follows a chemical gradient and retains a fading molecular trace of earlier conditions.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Communication did not wait for animals.",
+        "Bacteria release molecules that other bacteria detect. As those signals accumulate, their concentration can reveal something about the cells nearby. Through processes such as quorum sensing, bacteria can coordinate gene expression and collective behavior. The chemical conversation can happen within one species, across species, and sometimes even across the boundaries between bacteria and their hosts.",
+        "A bacterium can also compare the present with the recent past. When an E. coli cell follows a chemical gradient, molecular changes in its receptors preserve a fading trace of the conditions it encountered moments earlier. That trace helps the cell respond to whether life is getting better or worse as it moves.",
+        "Calling this memory does not turn a bacterium into a tiny person. There is no private movie playing inside it. Memory here means capacity: an earlier condition leaves a physical state that changes a later response. Some such states vanish quickly. Others can persist through growth or cell division.",
+        "Together, these capacities already form an information system built from molecules: signals cross between cells, internal states preserve traces, and responses change accordingly.",
+        "The first information world was not silent. It spoke chemistry."
+      ],
+      "sources": [
+        {
+          "label": "Annual Review — Bacterial Quorum-Sensing Network Architectures",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4313539/",
+          "note": "Reviews how bacteria produce and detect extracellular signal molecules to monitor neighbors and coordinate collective behavior."
+        },
+        {
+          "label": "PNAS — Interspecies communication in bacteria",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC228483/",
+          "note": "Describes chemical signaling within and between bacterial species."
+        },
+        {
+          "label": "Trends in Microbiology — Responding to Chemical Gradients: Bacterial Chemotaxis",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320702/",
+          "note": "Explains how receptor modification gives bacterial chemotaxis a memory of recent conditions."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "substrate-horizon",
+      "title": "Every substrate has a horizon",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-01/03-substrate-horizon.jpg",
+        "alt": "Molecular signals and microbial colonies fill one layer while a multicellular animal form emerges above them, showing an expanding information scale without a ladder or progress arrow.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "A substrate can become astonishingly capable without escaping its physics.",
+        "Every molecular message still has to be made, moved, detected, and translated through chemistry. Signals diffuse, react, dilute, and degrade. A molecular memory lasts only as long as some physical state can preserve it. Hereditary information is remarkably durable, but most changes to that archive move through generations rather than recording the ordinary experiences of one individual.",
+        "This did not make multicellular life inevitable. Single-celled organisms remain among the planet’s most successful forms of life. Evolution has no staircase and no destination. But in some lineages, cells began cooperating as one body. They specialized. They exchanged signals. Their combined body created a new scale on which information could move and act.",
+        "As some animals became larger, faster, and more behaviorally complex, coordination across that body became increasingly valuable. A signal from one region had to influence distant muscles and organs quickly. Different sensations had to be combined. Past events had to alter future behavior in more varied ways.",
+        "Molecular signaling did not fail or disappear. It reached a horizon, and another layer began extending what it could do."
+      ],
+      "sources": [
+        {
+          "label": "Smithsonian — Early Life on Earth and Animal Origins",
+          "url": "https://naturalhistory.si.edu/education/teaching-resources/life-science/early-life-earth-animal-origins",
+          "note": "Overview of early life, cooperative cells, specialization, and the emergence of multicellular animals."
+        },
+        {
+          "label": "PMC — Is a Nervous System Necessary for Learning?",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6701508/",
+          "note": "Reviews the difficulty of defining learning and debates about learning-like processes beyond nervous systems."
+        },
+        {
+          "label": "Annual Review — Animal Nervous System Diversification",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39052757/",
+          "note": "Reviews nervous systems as interfaces for environmental sensing and coordination in multicellular animals."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "second-clock",
+      "title": "A second clock appears",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-01/04-second-clock.jpg",
+        "alt": "Several translucent marine animals show different glowing neural organizations, from diffuse nerve nets to more concentrated signaling centers.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Nervous systems did not arrive as brains. Early animal evolution specialized a much older electrical and chemical repertoire into networks connecting sensation, movement, feeding, internal regulation, and behavior across a multicellular body.",
+        "The exact evolutionary origin is still debated. Comb jellies are one reason the family tree remains interesting: their nervous systems are unusual enough that researchers still argue about whether neurons arose once in animals or more than once. The safe statement is the useful one: by well over half a billion years ago, animal nervous systems were diversifying into very different organizations.",
+        "That change expanded the information timescale and the range of possible responses. A genetic system can help build an animal that responds to light. A nervous system can connect what is happening right now — where the light is, what touched the body, which direction it is moving — to a coordinated response across the animal.",
+        "Then experience can change what happens next time. Interconnected excitable cells give an animal’s own encounters a new place to move, combine, and persist."
+      ],
+      "sources": [
+        {
+          "label": "Annual Review — Animal Nervous System Diversification",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39052757/",
+          "note": "Reviews nervous systems as interfaces for environmental sensing and coordination, including independent centralization in several lineages."
+        },
+        {
+          "label": "Nature Reviews Neuroscience — From nerve net to brain",
+          "url": "https://www.nature.com/articles/nrn.2015.15",
+          "note": "Reviews evolutionary transitions among nerve nets, integration centers, nerve cords, and brains."
+        },
+        {
+          "label": "PubMed — Ctenophore nervous-system origins",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38390763/",
+          "note": "Summarizes the continuing debate over one versus multiple origins of animal nervous systems."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "learning",
+      "title": "Learning before reproduction",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-01/05-learning-within-lifetime.jpg",
+        "alt": "A small box jellyfish moves through a maze of mangrove roots, with a faint failed path and a brighter altered route suggesting behavior changed by experience.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Here is learning in its simplest form: an encounter changes what the same animal does next.",
+        "A tiny Caribbean box jellyfish gives us a wonderfully inconvenient example. It has no conventional centralized brain. Its nervous system is distributed through sensory structures and nerve tissue. Yet in laboratory experiments, researchers showed that it could combine visual and mechanical cues and learn to avoid obstacles.",
+        "The animal did not need to wait for a new generation or a different genome. The update happened during its own lifetime.",
+        "That sounds ordinary to us because we live inside nervous systems that do it constantly. But viewed across deep time, it is a profound change in the planet’s information capacity. An event in the environment can leave a usable trace inside one organism, and that trace can influence what the organism does minutes, hours, days, or sometimes much longer afterward.",
+        "Learning and memory take many forms, and no single experiment tells us when they first appeared. The jellyfish matters because it breaks an easy assumption: associative learning does not require a large centralized brain. The second clock can be surprisingly small.",
+        "Evolution still builds and shapes the machinery. But now the machinery can write part of its own history while it is running."
+      ],
+      "sources": [
+        {
+          "label": "Current Biology — Associative learning in a box jellyfish",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37741280/",
+          "note": "Primary study showing associative learning in Tripedalia cystophora, which lacks a conventional centralized brain."
+        },
+        {
+          "label": "Nature — How to train your jellyfish",
+          "url": "https://www.nature.com/articles/d41586-023-02975-x",
+          "note": "Accessible overview of the box-jellyfish learning result and its significance."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "many-architectures",
+      "title": "There was never one ladder of minds",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-01/06-many-architectures.jpg",
+        "alt": "Different animal forms — a jellyfish, an octopus-like body, an insect, and a bird-like animal — surround distinct glowing neural patterns without any hierarchy or progression arrow.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Animal nervous systems branch into many architectures. Some are diffuse. Some concentrate processing into rings, cords, ganglia, or brains. Some lineages independently evolved more centralized organizations. Different bodies and environments rewarded different solutions.",
+        "That matters because the phrase more information can quietly smuggle in a ranking system that biology does not support. A nervous system is not valuable because it resembles a human brain. It is valuable to an organism when it helps solve the problems that organism actually has.",
+        "A jellyfish moving through mangrove roots, an insect navigating among flowers, a predator tracking prey, and a migratory animal crossing enormous distances live in different information worlds. Their senses sample different things. Their nervous systems compress different problems. Their memories matter on different timescales.",
+        "One branch will eventually become especially important to us, because human nervous systems become unusually dependent on information acquired from other individuals. But that development grows from capacities already scattered across the animal world.",
+        "Before we get there, one more bottleneck has to become visible: a private memory is still private."
+      ],
+      "sources": [
+        {
+          "label": "Annual Review — Animal Nervous System Diversification",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39052757/",
+          "note": "Reviews cellular and architectural diversification of nervous systems across animals."
+        },
+        {
+          "label": "Nature — More than one way to a central nervous system",
+          "url": "https://www.nature.com/articles/d41586-017-08195-4",
+          "note": "Discusses evidence that centralized nervous systems can arise through more than one evolutionary route."
+        },
+        {
+          "label": "Nature Reviews Neuroscience — From nerve net to brain",
+          "url": "https://www.nature.com/articles/nrn.2015.15",
+          "note": "Reviews multiple nervous-system organizations and proposed transitions among them."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-06.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "learned-experience-crosses",
+      "title": "When learned experience stops being private",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-01/07-information-crosses.jpg",
+        "alt": "Two stylized bumblebees face the same flower-like puzzle while layered chemical, visual, and behavioral signals connect the experienced individual to the observer.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Communication is ancient. What changes here is the payload: an experience acquired by one individual can begin to alter another.",
+        "If an animal discovers a better route, a useful trick, or a dangerous place, much of that information can still vanish when the animal dies. Lifetime memory does not automatically become collective memory.",
+        "Animals developed many ways to widen the channel. They watch, follow, and imitate one another. They respond to touch, posture, vibration, sound, movement, chemical signals, and changes others leave in the environment. No single moment invented social transmission.",
+        "A striking modern experiment with bumblebees shows why this matters. Researchers trained demonstrator bees to solve a two-step puzzle. Naive bees had failed to discover the solution on their own even after long exposure, but some learned the complete behavior after watching trained bees.",
+        "That does not mean bees have human cumulative culture, and it does not tell us when social transmission first began. It shows something more basic and more important for our story: information acquired during one individual’s lifetime can change what another individual is able to do.",
+        "This is the threshold: learned experience has begun to travel beyond the body that acquired it.",
+        "The next part of the story follows that movement through many channels and across many animal lineages.",
+        "The next upgrade is a bridge."
+      ],
+      "sources": [
+        {
+          "label": "Nature — Bumblebees socially learn complex behaviour",
+          "url": "https://www.nature.com/articles/s41586-024-07126-4",
+          "note": "Primary study showing naive bumblebees acquiring a two-step behavior socially after failing to innovate it independently."
+        },
+        {
+          "label": "Nature Human Behaviour / PMC — Chimpanzees acquire a skill socially",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11132989/",
+          "note": "Independent evidence that social information can transmit a complex skill that individuals failed to innovate alone."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-01/slide-07.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
