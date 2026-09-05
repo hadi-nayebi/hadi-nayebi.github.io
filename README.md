@@ -63,8 +63,8 @@ The projects test the same principles across individual, group, and collective s
 | Project | Scale and purpose | Code or project page |
 |---|---|---|
 | Claude Seed reference | The original private implementation in which persistent jobs, OPEVC, plugins, memory, guards, verification, and controlled self-modification were developed through sustained use | [Technical access](https://hadi-nayebi.github.io/seed-access.html) |
-| Seed Agent | The primary public Codex-native personal harness lineage | [Project](https://hadi-nayebi.github.io/projects/seed-agent.html) · [Repository](https://github.com/hadi-nayebi/seed_agent) |
-| Q-Seed | A public cognitive layer paired with a user-controlled Qwen Code framework path | [Project](https://hadi-nayebi.github.io/projects/q-seed.html) · [Cognition](https://github.com/hadi-nayebi/q-seed) · [Framework fork](https://github.com/hadi-nayebi/qwen-code/tree/qseed/main) |
+| Seed Agent | Codex-specific context and selectively reusable harness patterns | [Project](https://hadi-nayebi.github.io/projects/seed-agent.html) · [Repository](https://github.com/hadi-nayebi/seed_agent) |
+| Q-Seed | Qwen-specific context and patterns with a pinned user-controlled framework | [Project](https://hadi-nayebi.github.io/projects/q-seed.html) · [Cognition](https://github.com/hadi-nayebi/q-seed) · [Framework fork](https://github.com/hadi-nayebi/qwen-code/tree/qseed/main) |
 | Origin | A single-user Codex dashboard-plus-harness foundation: empty canvas, Wiki, contextual feedback, durable review state, and one foreground interactive tmux session | [Project](https://hadi-nayebi.github.io/projects/origin.html) · [Repository](https://github.com/hadi-nayebi/origin) |
 | Team Harnesses | A governed shared dashboard and repository model for small teams | [Project](https://hadi-nayebi.github.io/projects/team-harnesses.html) |
 | Family Games | A private persistent family world with shared authorship and family-owned history | [Project](https://hadi-nayebi.github.io/projects/family-games.html) |
@@ -152,7 +152,8 @@ The first validator checks static and dynamically injected navigation. The visua
 ```text
 .
 ├── index.html                 # Home
-├── start-here.html            # Human path + collapsed Phase 0–9 agent syllabus
+├── start-here.html            # Human-facing orientation and agent handoff
+├── start-here-agent.md        # Separate agent syllabus and first-response contract
 ├── start-here-agent.md        # Canonical text-only agent instruction
 ├── whats-new.html             # Human-readable public development record
 ├── blog.html                  # Technical-writing index

@@ -28,6 +28,14 @@ The public dashboard-plus-harness project is named **Origin**. Use `projects/ori
 aliases for it on public website surfaces. Legacy Claude-owned instruction files are outside this
 synchronization rule unless the user explicitly brings them into scope.
 
+## Public Seed purpose
+
+Academy writings supply task- and framework-agnostic principles. Public Seed repositories
+start deliberately sparse and selectively accumulate foundational concepts and reusable
+building blocks as community evidence supports them. Each user and their agent build a
+distinct harness, using selected components or the writings alone. Preserve this model
+across project pages and agent context; do not impose a standard-harness release ladder.
+
 ## Public-surface boundary
 
 Visitor-facing content and agent-facing production context are different responsibilities. Never put
