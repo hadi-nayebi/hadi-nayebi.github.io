@@ -125,6 +125,12 @@ for (const file of publicHtml) {
   }
 
   if (fileRel.startsWith('blog/') && !explorable && !redirect) {
+    if (/^blog\/b\d+\/[^/]+\.html$/.test(fileRel)) {
+      const markdownSource = file.slice(0, -'.html'.length) + '.md';
+      if (!fs.existsSync(markdownSource)) {
+        errors.push(`${fileRel}: missing canonical Markdown source ${rel(markdownSource)}`);
+      }
+    }
     if (!/class=["'][^"']*article-content/i.test(html)) {
       warnings.push(`${fileRel}: blog HTML is not an article layout; article-series checks skipped`);
       continue;
