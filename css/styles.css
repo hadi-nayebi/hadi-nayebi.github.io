@@ -163,96 +163,6 @@ body {
     color: var(--text-main);
 }
 
-.start-agent-instruction {
-    margin-top: 1.25rem;
-    overflow: hidden;
-    border: 1px solid rgba(99, 102, 241, 0.32);
-    border-radius: 15px;
-    background: rgba(99, 102, 241, 0.045);
-}
-
-.start-agent-instruction summary {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    min-height: 54px;
-    padding: 0.85rem 3.2rem 0.85rem 1rem;
-    color: var(--text-main);
-    font-size: 0.94rem;
-    font-weight: 650;
-    cursor: pointer;
-    list-style: none;
-}
-
-.start-agent-instruction summary::-webkit-details-marker {
-    display: none;
-}
-
-.start-agent-instruction summary::after {
-    content: '+';
-    position: absolute;
-    right: 1rem;
-    color: var(--accent-light);
-    font-size: 1.35rem;
-    line-height: 1;
-}
-
-.start-agent-instruction[open] summary::after {
-    content: '−';
-}
-
-.start-agent-instruction summary span {
-    flex: 0 0 auto;
-    padding: 0.25rem 0.55rem;
-    border: 1px solid rgba(139, 92, 246, 0.36);
-    border-radius: 999px;
-    color: var(--accent-light);
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.start-agent-instruction[open] summary {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(99, 102, 241, 0.055);
-}
-
-.start-agent-body {
-    padding: 1rem 1.1rem 1.15rem;
-    color: var(--text-muted);
-    font-size: 0.94rem;
-}
-
-.start-agent-body p + p {
-    margin-top: 0.8rem;
-}
-
-.start-agent-body strong {
-    color: var(--text-main);
-}
-
-.start-agent-manual {
-    margin-top: 1rem;
-    padding: 1rem;
-    max-height: 38rem;
-    overflow: auto;
-    border: 1px solid rgba(139, 92, 246, 0.24);
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.2);
-    color: #c9cbd6;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.86rem;
-    line-height: 1.65;
-}
-
-.start-agent-manual.is-loaded {
-    border-color: rgba(139, 92, 246, 0.42);
-}
-
 .start-phase-list {
     display: grid;
     gap: 1rem;
@@ -328,11 +238,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .start-agent-instruction summary {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.45rem;
-    }
 }
 
 @media (max-width: 560px) {
