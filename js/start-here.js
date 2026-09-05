@@ -5,47 +5,6 @@
 (function () {
     'use strict';
 
-    // The detailed agent manual is intentionally maintained as one canonical,
-    // text-first resource. Each collapsed phase loads its complete protocol here
-    // so human readers see a compact page while visiting agents can consume the
-    // full instructions without the phase summaries drifting from the manual.
-    function loadDetailedAgentProtocols() {
-        const targets = Array.from(document.querySelectorAll('[data-agent-manual]'));
-        if (!targets.length || !window.fetch) return;
-
-        fetch('/start-here-agent.md')
-            .then(response => {
-                if (!response.ok) throw new Error('Agent syllabus unavailable');
-                return response.text();
-            })
-            .then(manual => {
-                targets.forEach(target => {
-                    const heading = target.dataset.agentManual;
-                    const startToken = '### ' + heading;
-                    const start = manual.indexOf(startToken);
-                    if (start === -1) return;
-                    const nextDetailed = manual.indexOf('\n### Detailed Phase ', start + startToken.length);
-                    const finalConstraints = manual.indexOf('\n## Final constraints', start + startToken.length);
-                    const candidates = [nextDetailed, finalConstraints].filter(index => index !== -1);
-                    const end = candidates.length ? Math.min.apply(null, candidates) : manual.length;
-                    target.textContent = manual.slice(start, end).trim();
-                    target.classList.add('is-loaded');
-                });
-            })
-            .catch(() => {
-                targets.forEach(target => {
-                    target.innerHTML = '';
-                    const link = document.createElement('a');
-                    link.href = '/start-here-agent.md';
-                    link.textContent = 'Open the complete canonical agent syllabus →';
-                    link.className = 'card-link';
-                    target.appendChild(link);
-                });
-            });
-    }
-
-    loadDetailedAgentProtocols();
-
     const roles = {
         general: {
             eyebrow: 'Any profession',
@@ -330,8 +289,10 @@
         renderList(query('[data-role-behaviors]'), role.behaviors);
         renderList(query('[data-role-judgment]'), role.judgment);
         renderLinks(query('[data-role-links]'), role.links);
-        query('[data-role-prompt]').textContent = 'First read the complete nine-phase agent syllabus at https://hadi-nayebi.github.io/start-here.html. Treat this as a multi-session onboarding project, establish recoverable continuity, and adapt the teaching to me. When I ask about an agentic concept, consult the relevant Hadosh Academy material, distinguish its provider-independent technical meaning from product jargon, use the Academy framing and an example from my work, explain the practical consequence, and check that I can apply it. If we move from this web conversation to a local CLI agent, first test that the actual CLI can persist user-controlled files, use tools, run local commands, expose hooks or an equivalent lifecycle-control mechanism, recover inspectable state, enforce permission boundaries, and verify outcomes. Then prepare a user-reviewed Web-to-CLI Handoff Packet and require the CLI agent to verify, correct, acknowledge, and resume it before implementation. ' + role.prompt;
-        query('[data-role-prompt-label]').textContent = roleName === 'general' ? 'Prompt for your agent' : role.eyebrow + ' agent prompt';
+        query('[data-role-prompt]').textContent = 'First read the complete nine-phase agent syllabus at https://hadi-nayebi.github.io/start-here-agent.md. Treat this as a multi-session onboarding project, establish recoverable continuity, and adapt the teaching to me. When I ask about an agentic concept, consult the relevant Hadosh Academy material, distinguish its provider-independent technical meaning from product jargon, use the Academy framing and an example from my work, explain the practical consequence, and check that I can apply it. If we move from this web conversation to a local CLI agent, first test that the actual CLI can persist user-controlled files, use tools, run local commands, expose hooks or an equivalent lifecycle-control mechanism, recover inspectable state, enforce permission boundaries, and verify outcomes. Then prepare a user-reviewed Web-to-CLI Handoff Packet and require the CLI agent to verify, correct, acknowledge, and resume it before implementation. ' + role.prompt;
+        query('[data-role-prompt-label]').textContent = roleName === 'general'
+            ? 'Continue this path with your agent'
+            : 'Continue the ' + role.eyebrow.toLowerCase() + ' path with your agent';
 
         if (updateHash && history.replaceState) history.replaceState(null, '', '#role-' + roleName);
     }
