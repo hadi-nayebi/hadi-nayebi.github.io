@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seed Agent — Codex | Hadosh Academy</title>
-    <meta name="description" content="Seed Agent is the public Codex-native foundation for a user-owned personal harness, with capability reimplementation planned from the behavioral architecture documented by Hadosh Academy.">
+    <meta name="description" content="Seed Agent accumulates Codex-specific patterns and selectively reusable building blocks for distinct user-owned harnesses, informed by Hadosh Academy writings and community experience.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="canonical" href="https://hadi-nayebi.github.io/projects/seed-agent.html">
     <meta property="og:title" content="Seed Agent — Codex | Hadosh Academy">
-    <meta property="og:description" content="The foundation and roadmap for a public personal Seed on Codex; its jobs, plugins, working memory, phases, and verification remain planned capability stages.">
+    <meta property="og:description" content="A deliberately sparse public home for Codex harness patterns: use selected components or build from the Academy writings with your agent.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/projects/seed-agent.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-1-og.jpg">
@@ -33,10 +33,10 @@
                 <div class="project-hero-copy">
                     <span class="project-kicker">Individual · public Seed · Codex CLI</span>
                     <h1>Seed Agent</h1>
-                    <p class="project-lede">Seed Agent is the public Codex-native foundation for the personal digital cortex developed through the original Hadosh Academy prototype. Today the repository establishes the runtime boundary, instruction model, and reimplementation method. It does not yet ship the jobs, plugins, working memory, cognitive phases, authority controls, or verification system intended for the mature Seed.</p>
-                    <div class="project-meta-row"><span class="project-meta-pill">1 primary user</span><span class="project-meta-pill">Codex runtime</span><span class="project-meta-pill">Current stage: foundation only</span><span class="project-meta-pill">MIT</span></div>
-                    <div class="project-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Public repository</a><a class="btn btn-secondary" href="#roadmap">Development roadmap</a></div>
-                    <p><strong>Current boundary:</strong> Foundation only. The repository is not ready for installation or general use; capability reimplementation begins in Stage 2.</p>
+                    <p class="project-lede">Seed Agent is a public home for Codex-specific harness patterns and selectively reusable building blocks. It starts deliberately sparse, with architectural context. Community implementations supply evidence for what belongs here; each user and their agent build a distinct harness.</p>
+                    <div class="project-meta-row"><span class="project-meta-pill">1 primary user</span><span class="project-meta-pill">Codex runtime</span><span class="project-meta-pill">Current contents: architectural context</span><span class="project-meta-pill">MIT</span></div>
+                    <div class="project-actions"><a class="btn btn-primary" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Public repository</a><a class="btn btn-secondary" href="#roadmap">Pattern accumulation</a></div>
+                    <p><strong>How to use it:</strong> Read the Academy writings for general principles, adapt a useful component when available, or build from the writings entirely from scratch. Runtime capabilities must be distinguished from design proposals.</p>
                 </div>
                 <div class="seed-boundary-diagram" aria-label="Seed Agent target architecture">
                     <div class="seed-boundary-layer runtime"><span class="diagram-label">Runtime</span><strong>Codex CLI</strong><p>Model sessions, tools, sandbox, permissions, and native Codex capabilities.</p></div>
@@ -49,17 +49,17 @@
         <section class="project-opening">
             <div class="container project-opening-inner">
                 <span class="project-opening-label">Project overview</span>
-                <p>Seed Agent is an open-source effort to make the agent harness the durable layer that becomes specific to one person's work. The current foundation defines how Codex and that future harness will meet; later stages are intended to add the ongoing jobs, memory, reusable behaviors, verification rules, authority boundaries, and learned working methods that should persist across sessions and model changes.</p>
+                <p>The Academy writings describe task- and framework-agnostic principles for user-owned harnesses. Seed Agent gives sufficiently foundational concepts and selected Codex building blocks a public home as practical experience supports them.</p>
                 <p>The project grows out of the first Hadosh Academy Seed, a Claude Code implementation where these ideas were developed together through sustained use. That reference is documented publicly across the B5–B8 technical series and is also available for private technical review, giving the Codex version a concrete architectural lineage.</p>
-                <p>The Codex generation reimplements those behaviors against Codex's own primitives and lets the implementation anatomy evolve with the runtime. The long-term goal is a mature public Seed that a person can clone, understand, and cultivate into their own digital cortex while their specific jobs, knowledge, and history stay local to their deployment.</p>
+                <p>Users and their agents choose their own implementation anatomy against Codex's primitives. They may use or ignore the public components. Their jobs, knowledge, and history remain specific to their own harness; there is no single standard organism everyone must install.</p>
             </div>
         </section>
 
-        <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Seed Agent sections"><a href="#mission">Mission</a><a href="#lineage">Technical lineage</a><a href="#architecture">Architecture</a><a href="#memory">Working memory</a><a href="#roadmap">Roadmap</a><a href="#participate">Participate</a></nav></div>
+        <div class="project-subnav-wrap"><nav class="container project-jump-links" aria-label="Seed Agent sections"><a href="#mission">Mission</a><a href="#lineage">Technical lineage</a><a href="#architecture">Architecture</a><a href="#memory">Working memory</a><a href="#roadmap">Pattern accumulation</a><a href="#participate">Participate</a></nav></div>
 
         <section class="container project-long-section" id="mission">
             <div class="project-section-heading"><div><span class="project-kicker">Mission</span><h2>Make the harness the user's durable AI asset.</h2></div><p>Models and CLI runtimes can change. The cognition that becomes specific to one person's work remains inspectable, portable, and extensible outside the model session.</p></div>
-            <div class="project-prose"><p>The project treats the LLM as the engine and the harness as the digital cortex around it. The target Seed will remember ongoing work through jobs, separate reusable behavior into plugins, compartmentalize different kinds of cognition, keep important state outside the model, and learn from completed work so the system can become more specific to its user over time.</p><p>The public repository is intended to become a general Seed that people can clone and cultivate. Each deployment then adds its own jobs, knowledge, interfaces, and optional dashboard while the public cognition layer remains generic and reusable.</p></div>
+            <div class="project-prose"><p>The writings explore the harness as a durable layer around the model: ongoing jobs, reusable behavior, cognitive compartments, inspectable state, and learning from completed work. These are design ideas that users can evaluate against their own needs.</p><p>The public repository selectively accumulates useful patterns from those implementations. A sparse repository is a valid starting point; shared components need evidence of benefit before admission.</p></div>
         </section>
 
         <section class="container project-long-section" id="lineage">
@@ -79,7 +79,7 @@
         </section>
 
         <section class="container project-long-section" id="architecture">
-            <div class="project-section-heading"><div><span class="project-kicker">Architecture</span><h2>Codex is the runtime. Target Seed cognition stays inspectable above it.</h2></div><p>The current foundation defines the boundary; later stages will implement the cognition and job layers around the runtime.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Architecture</span><h2>Codex is the runtime. Target Seed cognition stays inspectable above it.</h2></div><p>The current context describes an architectural boundary. Any reusable cognition or job component needs its own implementation evidence.</p></div>
             <div class="project-fact-grid">
                 <article class="project-fact-card"><h3>Use Codex-native primitives</h3><p>When Codex already provides a reliable tool, instruction surface, sandbox rule, skill, or runtime behavior, the Seed builds on that primitive directly.</p></article>
                 <article class="project-fact-card"><h3>Keep cognitive meaning visible</h3><p>Why a job persists, what a plugin owns, how a phase behaves, what needs verification, and who has authority remain part of the user-owned harness.</p></article>
@@ -97,19 +97,19 @@
         </section>
 
         <section class="container project-long-section" id="roadmap">
-            <div class="project-section-heading"><div><span class="project-kicker">Development roadmap</span><h2>From reference architecture to a Codex-native public Seed.</h2></div><p>The timeline shows the current stage and the next engineering milestones.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Pattern accumulation</span><h2>From principles and personal use to reusable patterns.</h2></div><p>This is an evidence loop, not a release ladder toward one standard harness.</p></div>
             <div class="project-roadmap">
-                <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Stage 0 · Reference</span><h3>Claude Seed prototype</h3><p>Develop the first full personal harness and document its architecture through the technical essay series.</p></article>
-                <article class="project-roadmap-step is-current"><span class="roadmap-stage">Stage 1 · Current</span><h3>Codex foundation</h3><p>Establish the Codex repository, runtime/harness/job boundary, instruction model, and reimplementation method.</p></article>
-                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 2</span><h3>Capability reimplementation</h3><p>Rebuild the strongest reference behaviors one at a time—jobs, plugin controls, phases, working memory, verification, and related cognition.</p></article>
-                <article class="project-roadmap-step"><span class="roadmap-stage">Stage 3</span><h3>Operational Seed</h3><p>Run sustained real jobs, refine the harness from use, and mature the generic public Seed through operating evidence.</p></article>
+                <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Reference</span><h3>Claude Seed prototype</h3><p>Develop the first full personal harness and document its architecture through the technical essay series.</p></article>
+                <article class="project-roadmap-step is-current"><span class="roadmap-stage">Current context</span><h3>Codex architectural context</h3><p>Keep the runtime boundary and instruction model inspectable while the repository remains deliberately sparse.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Personal implementations</span><h3>Build for real work</h3><p>Users and their agents implement what their own work needs, using selected components or the writings alone.</p></article>
+                <article class="project-roadmap-step"><span class="roadmap-stage">Community return</span><h3>Admit useful shared patterns</h3><p>Generalized field reports and implementation evidence help identify the few components worth maintaining publicly.</p></article>
             </div>
         </section>
 
         <section class="container project-long-section" id="participate">
             <div class="project-section-heading"><div><span class="project-kicker">Follow and participate</span><h2>Follow the implementation and help sharpen the architecture.</h2></div><p>Follow the code, read the technical lineage, study the reference, or contribute questions and design feedback directly below.</p></div>
             <div class="project-participate">
-                <article><h3>Follow the implementation</h3><p>The public repository is the source of truth for the current Codex foundation and future capability work.</p><a class="card-link" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Open the Seed Agent repository &rarr;</a></article>
+                <article><h3>Follow the implementation</h3><p>The public repository records current Codex context and any reusable components admitted through evidence and review.</p><a class="card-link" href="https://github.com/hadi-nayebi/seed_agent" target="_blank" rel="noopener">Open the Seed Agent repository &rarr;</a></article>
                 <article><h3>Study the reference</h3><p>Use the technical essays for public architecture context, or request private access to the Claude Seed for deeper technical review.</p><a class="card-link" href="../seed-access.html">Request reference access &rarr;</a></article>
             </div>
 
