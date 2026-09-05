@@ -1,4 +1,7 @@
 .observation-page {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
     --obs-surface: color-mix(in srgb, var(--card-bg, #151824) 88%, transparent);
     --obs-border: color-mix(in srgb, var(--text-primary, #f4f6ff) 16%, transparent);
     --obs-muted: var(--text-secondary, #a9afc3);
@@ -6,10 +9,111 @@
     --obs-accent-soft: color-mix(in srgb, var(--obs-accent) 18%, transparent);
 }
 
+/* A single viewport: navigation, the current image/narration, reader controls. */
+.observation-page main {
+    position: fixed;
+    inset: 80px 0 0;
+    overflow: hidden;
+}
+.observation-page main > .observation-hero,
+.observation-page #site-footer { display: none; }
+.observation-page #episode-root {
+    height: 100%;
+    min-height: 0;
+    display: block;
+    padding: clamp(.5rem, 1.5vw, 1.5rem);
+}
+.observation-page .observation-episode {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+.observation-page .observation-episode[hidden],
+.observation-page .episode-head { display: none; }
+.observation-page .slide-shell {
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    border-radius: 16px;
+}
+.observation-page .slide-visual {
+    min-height: 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    padding: clamp(.5rem, 1.5vw, 1.5rem);
+}
+.observation-page .slide-image-button { height: 100%; }
+.observation-page .slide-image-button img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+.observation-page .slide-copy {
+    min-width: 0;
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding: clamp(1.25rem, 3vw, 3rem);
+    border-left: 1px solid var(--obs-border);
+    overflow-wrap: anywhere;
+}
+.observation-page .slide-copy h3 { margin-top: .8rem; }
+.observation-page .slide-nav {
+    grid-column: 1 / -1;
+    height: auto;
+    padding: .65rem 1rem;
+    gap: .5rem 1rem;
+}
+.observation-page .slide-nav button { font-size: .875rem; }
+.episode-navigation {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    font-size: .875rem;
+}
+.episode-navigation a { color: var(--obs-muted); }
+.episode-navigation select {
+    background: var(--bg-core);
+    color: inherit;
+    border: 1px solid var(--obs-border);
+    border-radius: 6px;
+    padding: .3rem;
+    font: inherit;
+}
+.story-about { margin-top: 1.25rem; }
+.story-about summary { cursor: pointer; font-weight: 700; }
+.story-about h1 { font-size: 1.5rem; line-height: 1.2; margin: 1rem 0; }
+.story-about .observation-deckline { font-size: 1rem; margin: 1rem 0; }
+.story-about .observation-breadcrumb,
+.story-about .observation-kicker { display: none; }
+.observation-page :focus-visible { outline: 2px solid var(--obs-accent); outline-offset: -2px; }
+@media (max-width: 760px) {
+    .observation-page .slide-shell {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 30%) minmax(0, 1fr) auto;
+    }
+    .observation-page .slide-copy { border-left: 0; border-top: 1px solid var(--obs-border); padding: 1rem; }
+    .observation-page .slide-copy h3 { font-size: 1.5rem; }
+    .observation-page .slide-nav { grid-template-columns: auto minmax(0, 1fr) auto; gap: .3rem; padding: .4rem; }
+    .observation-page .slide-progress { grid-column: auto; grid-row: auto; }
+    .observation-page .slide-dots { display: none; }
+    .observation-page .slide-nav button { padding: .4rem .5rem; }
+    .episode-navigation { gap: .3rem .5rem; }
+}
+
 .observation-hero {
     max-width: 980px;
     margin: 0 auto;
-    padding: 5rem 1.25rem 2.5rem;
+    padding: 7.5rem 1.5rem 3.5rem;
 }
 
 .observation-breadcrumb {
@@ -125,11 +229,20 @@
 }
 
 .episode-head {
+    /* The global site header is fixed; keep this semantic episode header in flow. */
+    position: static;
+    top: auto;
+    width: auto;
+    z-index: auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 1.5rem;
     align-items: end;
-    margin-bottom: 1.35rem;
+    margin-bottom: 1.75rem;
+    padding: 0 .25rem;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 0;
 }
 
 .episode-label {
@@ -319,7 +432,7 @@
 .observation-lightbox button { position: absolute; top: .7rem; right: .7rem; border: 1px solid rgba(255,255,255,.35); background: rgba(0,0,0,.6); color: #fff; border-radius: 999px; padding: .55rem .7rem; cursor: pointer; }
 
 @media (max-width: 760px) {
-    .observation-hero { padding-top: 3.5rem; }
+    .observation-hero { padding: 6.75rem 1rem 2.75rem; }
     .observation-lens { grid-template-columns: 1fr; }
     .episode-head { grid-template-columns: 1fr; align-items: start; }
     .episode-play { justify-self: start; }

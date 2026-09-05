@@ -7,6 +7,16 @@
     const lightboxClose = document.getElementById('observation-lightbox-close');
     const state = new Map();
     let series = null;
+    let episodes = [];
+
+    const activateEpisode = (number) => {
+        root.querySelectorAll('.observation-episode').forEach((section) => {
+            section.hidden = section.id !== `episode-${number}`;
+        });
+        document.querySelectorAll('audio').forEach((audio) => audio.pause());
+        const episode = episodes.find((item) => item.number === number);
+        if (episode) renderSlide(episode, state.get(number)?.index || 0);
+    };
 
     if (!root) return;
 
@@ -87,6 +97,10 @@
         const section = document.getElementById(`episode-${episode.number}`);
         const shell = section?.querySelector('.slide-shell');
         if (!shell) return;
+        const discussion = section.querySelector('.episode-discussion');
+        if (discussion) discussion.remove();
+        const episodePlay = section.querySelector('.episode-play');
+        if (episodePlay) episodePlay.remove();
 
         const weights = visualWeights(slide.image.category);
         const dots = episode.slides.map((_, dotIndex) => `
@@ -103,7 +117,8 @@
                     <img src="${escapeHtml(slide.image.src)}" alt="${escapeHtml(slide.image.alt)}">
                 </button>
             </figure>
-            <div class="slide-copy">
+            <div class="slide-copy" tabindex="0" role="region" aria-label="Slide narration">
+                <div class="episode-label">Episode ${episode.number} · ${escapeHtml(episode.title)}</div>
                 <div class="slide-eyebrow">
                     <span>Slide ${index + 1}</span>
                     <span>•</span>
@@ -112,7 +127,10 @@
                 <h3>${escapeHtml(slide.title)}</h3>
                 <div class="slide-paragraphs">${slide.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</div>
                 ${buildAudio(episode, slide, index)}
+                <div class="episode-audio-slot"></div>
                 ${buildSources(slide)}
+                <details class="story-about"><summary>About this Observation</summary>${document.querySelector('.observation-hero').innerHTML}</details>
+                <div class="discussion-slot"></div>
             </div>
             <nav class="slide-nav" aria-label="Episode ${episode.number} slide navigation">
                 <button type="button" class="slide-prev" ${index === 0 ? 'disabled' : ''}>← Previous</button>
@@ -121,7 +139,20 @@
                     <div class="slide-dots">${dots}</div>
                 </div>
                 <button type="button" class="slide-next" ${index === episode.slides.length - 1 ? 'disabled' : ''}>Next →</button>
+                <div class="episode-navigation">
+                    <a href="/blog.html">All writings</a>
+                    <button type="button" class="episode-prev" ${episodes.indexOf(episode) === 0 ? 'disabled' : ''}>Previous episode</button>
+                    <label>Episode <select class="episode-select" aria-label="Choose episode">${episodes.map((item) => `<option value="${item.number}" ${item.number === episode.number ? 'selected' : ''}>${item.number}</option>`).join('')}</select></label>
+                    <button type="button" class="episode-next" ${episodes.indexOf(episode) === episodes.length - 1 ? 'disabled' : ''}>Next episode</button>
+                </div>
             </nav>`;
+
+        if (discussion) shell.querySelector('.discussion-slot').appendChild(discussion);
+        if (episodePlay) shell.querySelector('.episode-audio-slot').appendChild(episodePlay);
+        const episodeIndex = episodes.indexOf(episode);
+        shell.querySelector('.episode-prev').addEventListener('click', () => activateEpisode(episodes[episodeIndex - 1]?.number));
+        shell.querySelector('.episode-next').addEventListener('click', () => activateEpisode(episodes[episodeIndex + 1]?.number));
+        shell.querySelector('.episode-select').addEventListener('change', (event) => activateEpisode(Number(event.target.value)));
 
         shell.querySelector('.slide-image-button')?.addEventListener('click', () => openLightbox(slide.image.src, slide.image.alt));
         shell.querySelector('.slide-prev')?.addEventListener('click', () => renderSlide(episode, index - 1));
@@ -262,21 +293,22 @@
                 return;
             }
 
-            const episodes = [];
+            episodes = [];
+            const requested = parseHash();
             for (const item of series.episode_index) {
                 const episodeResponse = await fetch(item.path, { cache: 'no-store' });
                 if (!episodeResponse.ok) throw new Error(`${item.path} returned ${episodeResponse.status}`);
                 episodes.push(await episodeResponse.json());
             }
             episodes.sort((a, b) => a.number - b.number);
+            root.replaceChildren();
             episodes.forEach(renderEpisode);
 
-            const requested = parseHash();
+            activateEpisode(episodes.find((item) => item.number === requested?.episode)?.number || episodes[0].number);
             if (requested) {
                 const episode = episodes.find((item) => item.number === requested.episode);
                 if (episode && requested.slide >= 1 && requested.slide <= episode.slides.length) {
                     renderSlide(episode, requested.slide - 1);
-                    document.getElementById(`episode-${episode.number}`)?.scrollIntoView({ block: 'start' });
                 }
             }
         } catch (error) {
@@ -288,6 +320,14 @@
                 </section>`;
         }
     };
+
+    window.addEventListener('hashchange', () => {
+        const requested = parseHash();
+        const episode = episodes.find((item) => item.number === requested?.episode);
+        if (!episode || requested.slide < 1 || requested.slide > episode.slides.length) return;
+        activateEpisode(episode.number);
+        renderSlide(episode, requested.slide - 1);
+    });
 
     init();
 })();
