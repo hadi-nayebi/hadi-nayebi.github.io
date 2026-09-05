@@ -31,6 +31,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://hadi-nayebi.github.io/blog/observations/information-system-of-a-planet/</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://hadi-nayebi.github.io/explore.html</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
