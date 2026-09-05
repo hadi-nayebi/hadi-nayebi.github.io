@@ -10,20 +10,9 @@
       "title": "The Visible Harness now explains feedback, voices, and stopping",
       "summary": "Three new essays extend the Visible Harness series from its dashboard-and-harness foundation through contextual feedback, event-specific internal voices, explicit stopping state, recovery, verification, and user review.",
       "why_it_matters": "Readers can now follow one responsibility from a page-aware comment into durable evidence, agent reorientation, lifecycle control, and human acceptance without mistaking a finished model response for finished work.",
-      "affected": [
-        "The Visible Harness",
-        "Origin",
-        "Start Here",
-        "Contextual feedback",
-        "Agent stopping and recovery"
-      ],
+      "affected": ["The Visible Harness", "Origin", "Start Here", "Contextual feedback", "Agent stopping and recovery"],
       "maturity": "Published guidance grounded in demonstrated Origin 1.0",
-      "intended_for": [
-        "Harness users",
-        "Agent architects",
-        "Dashboard builders",
-        "People adopting contextual feedback"
-      ],
+      "intended_for": ["Harness users", "Agent architects", "Dashboard builders", "People adopting contextual feedback"],
       "sources": [
         {
           "label": "Visible Harness publication pull request",
@@ -52,19 +41,9 @@
       "title": "Public contributions now follow one return loop",
       "summary": "The Academy website, Origin, Seed Agent, and both Q-Seed repository layers now route questions, field evidence, issues, and candidate code through one privacy-reviewed contribution path.",
       "why_it_matters": "Useful experience can return to the shared pattern library without turning a user's private harness into public material or allowing an agent, comment, or pull request to bypass user approval and maintainer review.",
-      "affected": [
-        "Contribution return pattern",
-        "Origin",
-        "Seed Agent",
-        "Q-Seed"
-      ],
+      "affected": ["Contribution return pattern", "Origin", "Seed Agent", "Q-Seed"],
       "maturity": "Published cross-repository governance foundation",
-      "intended_for": [
-        "Contributors",
-        "Harness users",
-        "Agent-assisted researchers",
-        "Project maintainers"
-      ],
+      "intended_for": ["Contributors", "Harness users", "Agent-assisted researchers", "Project maintainers"],
       "sources": [
         {
           "label": "Academy-wide contribution-return pull request",
@@ -101,17 +80,9 @@
       "title": "Start Here now begins from the user's existing AI practice",
       "summary": "The Start Here protocol now asks a visiting agent to recall reliable context about the user's present AI workflow, combine it with relevant Academy context, and adapt the Phase 0–9 path through conversation.",
       "why_it_matters": "Onboarding can continue from the user's real tools, knowledge, constraints, and prior progress instead of restarting with a generic Academy presentation or forcing every person through the same sequence.",
-      "affected": [
-        "Start Here",
-        "Contextual onboarding",
-        "Phase 0–9 syllabus"
-      ],
+      "affected": ["Start Here", "Contextual onboarding", "Phase 0–9 syllabus"],
       "maturity": "Published protocol with deterministic validation",
-      "intended_for": [
-        "New and returning users",
-        "Visiting agents",
-        "People with an existing AI workflow"
-      ],
+      "intended_for": ["New and returning users", "Visiting agents", "People with an existing AI workflow"],
       "sources": [
         {
           "label": "Contextual and adaptive onboarding pull request",
@@ -132,18 +103,9 @@
       "title": "Local harness choices now have a capability contract",
       "summary": "Start Here now distinguishes education surfaces, local file-and-command builders, and fully harness-capable CLIs through an explicit, provider-independent compatibility contract.",
       "why_it_matters": "A terminal command or file-editing feature alone no longer counts as evidence that an environment can support persistent state, lifecycle control, guarded tools, recovery, permission boundaries, and verified outcomes.",
-      "affected": [
-        "Start Here",
-        "Phase 5",
-        "Local harness selection",
-        "Cross-CLI portability"
-      ],
+      "affected": ["Start Here", "Phase 5", "Local harness selection", "Cross-CLI portability"],
       "maturity": "Published compatibility contract",
-      "intended_for": [
-        "Users choosing a local CLI",
-        "Harness implementers",
-        "Cross-provider adopters"
-      ],
+      "intended_for": ["Users choosing a local CLI", "Harness implementers", "Cross-provider adopters"],
       "sources": [
         {
           "label": "Local-harness compatibility pull request",
@@ -164,18 +126,9 @@
       "title": "Origin 1.0 is now synchronized with onboarding",
       "summary": "The project page, Start Here Phases 6–8, homepage, README, and a new technical writing now align around the demonstrated Origin 1.0 foundation.",
       "why_it_matters": "Users have a tested dashboard-plus-harness substrate for one local operator: a foreground interactive Codex session, contextual feedback, durable state, explicit stopping, verification, acceptance, reopening, and recovery.",
-      "affected": [
-        "Origin",
-        "Start Here",
-        "Technical writing",
-        "Phases 6–8"
-      ],
+      "affected": ["Origin", "Start Here", "Technical writing", "Phases 6–8"],
       "maturity": "Demonstrated 1.0 foundation",
-      "intended_for": [
-        "Individuals beginning a harness",
-        "Codex users",
-        "Cross-CLI implementers"
-      ],
+      "intended_for": ["Individuals beginning a harness", "Codex users", "Cross-CLI implementers"],
       "sources": [
         {
           "label": "Origin 1.0 synchronization pull request",
@@ -200,17 +153,9 @@
       "title": "Web-to-CLI onboarding now has a handoff protocol",
       "summary": "Start Here now treats a move from a web conversation to a local CLI agent as a continuation of the same onboarding relationship rather than a restart.",
       "why_it_matters": "A user can begin with the interface they already have, learn enough to choose a local environment, and carry reviewed context, decisions, authority, and unfinished work into that environment without transferring secrets or unnecessary conversation history.",
-      "affected": [
-        "Start Here",
-        "Phase 5",
-        "Session continuity"
-      ],
+      "affected": ["Start Here", "Phase 5", "Session continuity"],
       "maturity": "Published protocol",
-      "intended_for": [
-        "New users",
-        "Visiting agents",
-        "People moving from web to local tools"
-      ],
+      "intended_for": ["New users", "Visiting agents", "People moving from web to local tools"],
       "sources": [
         {
           "label": "Web-to-CLI handoff pull request",
@@ -231,17 +176,9 @@
       "title": "Agentic concepts now route through the Academy's current sources",
       "summary": "The onboarding syllabus now tells visiting agents to consult the smallest relevant Hadosh Academy writing, project, or explorable before explaining concepts such as harnesses, jobs, plugins, memory, dashboards, and verification.",
       "why_it_matters": "Users receive provider-independent definitions, the Academy's intuitive framing, a relevant example, and the practical consequence of the distinction instead of an answer based only on model memory or vendor terminology.",
-      "affected": [
-        "Start Here",
-        "Technical writing",
-        "Concept vocabulary"
-      ],
+      "affected": ["Start Here", "Technical writing", "Concept vocabulary"],
       "maturity": "Published protocol",
-      "intended_for": [
-        "Learners",
-        "Visiting agents",
-        "Harness operators"
-      ],
+      "intended_for": ["Learners", "Visiting agents", "Harness operators"],
       "sources": [
         {
           "label": "Concept-teaching pull request",
@@ -262,17 +199,9 @@
       "title": "Start Here became a Phase 0–9 developmental path",
       "summary": "Start Here now combines a readable human introduction with a complete agent-facing syllabus for orientation, continuity, discovery, ownership, environment choice, visible construction, bounded behavior, deliberate growth, and long-term maintenance.",
       "why_it_matters": "The Academy can guide someone from an ordinary web conversation toward a user-owned harness over multiple sessions without compressing the work into a setup wizard or requiring the person to become a programmer.",
-      "affected": [
-        "Start Here",
-        "Phase 0–9 syllabus",
-        "Human guidance"
-      ],
+      "affected": ["Start Here", "Phase 0–9 syllabus", "Human guidance"],
       "maturity": "Published foundation",
-      "intended_for": [
-        "Newcomers",
-        "Non-technical professionals",
-        "Visiting agents"
-      ],
+      "intended_for": ["Newcomers", "Non-technical professionals", "Visiting agents"],
       "sources": [
         {
           "label": "Expanded onboarding foundation",
@@ -297,17 +226,9 @@
       "title": "Origin joins the public project portfolio",
       "summary": "A new project page defines the smallest dashboard–harness substrate: a visible page, contextual feedback, persistent local state, and one bounded behavior through which a user can shape what develops next.",
       "why_it_matters": "It gives onboarding a concrete bridge between understanding harness concepts and growing a user-specific operational world through actual feedback and use.",
-      "affected": [
-        "Origin",
-        "Projects",
-        "Phases 6 and 7"
-      ],
+      "affected": ["Origin", "Projects", "Phases 6 and 7"],
       "maturity": "Design specified",
-      "intended_for": [
-        "Individuals beginning a harness",
-        "Dashboard-oriented users",
-        "Implementers"
-      ],
+      "intended_for": ["Individuals beginning a harness", "Dashboard-oriented users", "Implementers"],
       "sources": [
         {
           "label": "Origin project page",
@@ -328,18 +249,9 @@
       "title": "The website now presents one harness idea across three human scales",
       "summary": "The homepage and project portfolio were reorganized around open technical education, public implementations, and projects for individuals, groups, and larger collectives.",
       "why_it_matters": "A first-time visitor can see that Hadosh Academy is an evolving pattern and project library—not one universal agent, a software sales funnel, or a collection of disconnected experiments.",
-      "affected": [
-        "Homepage",
-        "Projects",
-        "Agents",
-        "Public positioning"
-      ],
+      "affected": ["Homepage", "Projects", "Agents", "Public positioning"],
       "maturity": "Published structure",
-      "intended_for": [
-        "First-time visitors",
-        "Potential contributors",
-        "Technical readers"
-      ],
+      "intended_for": ["First-time visitors", "Potential contributors", "Technical readers"],
       "sources": [
         {
           "label": "Project portfolio rebuild",
