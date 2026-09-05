@@ -28,6 +28,11 @@
         return { episode: Number(match[1]), slide: Number(match[2]) };
     };
 
+    const visualWeights = (category) => {
+        const match = String(category || '').match(/^I(10|30|50|70|90)-A(10|30|50|70|90)$/);
+        return match ? { information: match[1], artistic: match[2] } : { information: '', artistic: '' };
+    };
+
     const openLightbox = (src, alt) => {
         if (!lightbox || !lightboxImage) return;
         lightboxImage.src = src;
@@ -53,23 +58,22 @@
     };
 
     const buildAudio = (episode, slide, index) => {
-        const available = slide.audio?.status === 'available';
+        if (slide.audio?.status !== 'available') return '';
         return `
             <div class="slide-audio">
-                <button type="button" class="slide-audio-play" data-episode="${episode.number}" data-slide-index="${index}" ${available ? '' : 'disabled'}>
-                    ${available ? '▶ Listen to this slide' : 'Audio coming soon'}
+                <button type="button" class="slide-audio-play" data-episode="${episode.number}" data-slide-index="${index}">
+                    ▶ Listen to this slide
                 </button>
                 <label>
                     <span class="sr-only">Playback speed</span>
-                    <select class="slide-audio-rate" data-episode="${episode.number}" aria-label="Playback speed" ${available ? '' : 'disabled'}>
+                    <select class="slide-audio-rate" data-episode="${episode.number}" aria-label="Playback speed">
                         <option value="0.9">0.9×</option>
                         <option value="1" selected>1×</option>
                         <option value="1.25">1.25×</option>
                         <option value="1.5">1.5×</option>
                     </select>
                 </label>
-                <span class="audio-status">${available ? 'Narration available' : 'Narration placeholder reserved'}</span>
-                <audio preload="none" data-audio-for="${episode.number}-${index}" ${available ? `src="${escapeHtml(slide.audio.src)}"` : ''}></audio>
+                <audio preload="none" data-audio-for="${episode.number}-${index}" src="${escapeHtml(slide.audio.src)}"></audio>
             </div>`;
     };
 
@@ -84,14 +88,19 @@
         const shell = section?.querySelector('.slide-shell');
         if (!shell) return;
 
+        const weights = visualWeights(slide.image.category);
         const dots = episode.slides.map((_, dotIndex) => `
             <button type="button" class="slide-dot" aria-label="Go to slide ${dotIndex + 1}" aria-current="${dotIndex === index ? 'true' : 'false'}" data-dot="${dotIndex}"></button>
         `).join('');
 
         shell.innerHTML = `
-            <figure class="slide-visual">
+            <figure class="slide-visual"
+                data-visual-style="${escapeHtml(slide.image.category)}"
+                data-information-weight="${escapeHtml(weights.information)}"
+                data-artistic-weight="${escapeHtml(weights.artistic)}"
+                data-visual-role="storytelling">
                 <button type="button" class="slide-image-button" aria-label="Open image fullscreen">
-                    <img src="${escapeHtml(slide.image.src)}" alt="${escapeHtml(slide.image.alt)}" data-visual-category="${escapeHtml(slide.image.category)}">
+                    <img src="${escapeHtml(slide.image.src)}" alt="${escapeHtml(slide.image.alt)}">
                 </button>
             </figure>
             <div class="slide-copy">
@@ -99,8 +108,6 @@
                     <span>Slide ${index + 1}</span>
                     <span>•</span>
                     <span>~${escapeHtml(slide.read_minutes)} min</span>
-                    <span>•</span>
-                    <span>${escapeHtml(slide.image.category)}</span>
                 </div>
                 <h3>${escapeHtml(slide.title)}</h3>
                 <div class="slide-paragraphs">${slide.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</div>
@@ -126,7 +133,7 @@
         const playButton = shell.querySelector('.slide-audio-play');
         const rate = shell.querySelector('.slide-audio-rate');
         const audio = shell.querySelector('audio');
-        if (playButton && audio && slide.audio?.status === 'available') {
+        if (playButton && audio) {
             playButton.addEventListener('click', async () => {
                 document.querySelectorAll('audio').forEach((other) => {
                     if (other !== audio) other.pause();
@@ -200,7 +207,7 @@
                     <h2>${escapeHtml(episode.title)}</h2>
                     <p>${escapeHtml(episode.deckline || '')}</p>
                 </div>
-                <button type="button" class="episode-play" ${hasAudio ? '' : 'disabled'}>${hasAudio ? '▶ Play episode' : 'Audio coming soon'}</button>
+                ${hasAudio ? '<button type="button" class="episode-play">▶ Play episode</button>' : ''}
             </header>
             <div class="slide-shell" aria-live="polite"></div>
             <details class="episode-discussion">
@@ -213,7 +220,7 @@
         renderSlide(episode, 0);
 
         const play = section.querySelector('.episode-play');
-        if (play && hasAudio) {
+        if (play) {
             play.addEventListener('click', () => {
                 const episodeState = state.get(episode.number);
                 episodeState.playEpisode = !episodeState.playEpisode;
@@ -249,8 +256,8 @@
             if (!Array.isArray(series.episode_index) || series.episode_index.length === 0) {
                 root.innerHTML = `
                     <section class="observation-empty">
-                        <h2>The observation has a frame. The first episode comes next.</h2>
-                        <p>This page is now the permanent home for the visual series. Episodes will appear here only after each one has been researched, illustrated, reviewed, and merged.</p>
+                        <h2>The story begins with life itself.</h2>
+                        <p>Before information could travel between minds, it first had to survive in bodies — and then become something an organism could learn.</p>
                     </section>`;
                 return;
             }
@@ -277,7 +284,7 @@
             root.innerHTML = `
                 <section class="observation-empty">
                     <h2>The story could not load.</h2>
-                    <p>The page shell is available, but its episode manifest could not be read. Please try again after the site updates.</p>
+                    <p>Please try again after the site finishes updating.</p>
                 </section>`;
         }
     };
