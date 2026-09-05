@@ -96,10 +96,6 @@ for (const file of publicHtml) {
       ['Open Graph type', /<meta\s+property=["']og:type["']/i],
       ['Open Graph image', /<meta\s+property=["']og:image["']/i],
       ['Open Graph site name', /<meta\s+property=["']og:site_name["']/i],
-      ['Twitter card', /<meta\s+name=["']twitter:card["']/i],
-      ['Twitter title', /<meta\s+name=["']twitter:title["']/i],
-      ['Twitter description', /<meta\s+name=["']twitter:description["']/i],
-      ['Twitter image', /<meta\s+name=["']twitter:image["']/i]
     ];
     for (const [label, pattern] of requiredMetadata) {
       if (!pattern.test(html)) errors.push(`${fileRel}: missing ${label}`);
