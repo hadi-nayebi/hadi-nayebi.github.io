@@ -28,6 +28,29 @@ The public dashboard-plus-harness project is named **Origin**. Use `projects/ori
 aliases for it on public website surfaces. Legacy Claude-owned instruction files are outside this
 synchronization rule unless the user explicitly brings them into scope.
 
+## Public-surface boundary
+
+Visitor-facing content and agent-facing production context are different responsibilities. Never put
+internal production information on the visible website merely because an agent needs it to build or
+maintain the page.
+
+- Visible prose, labels, notices, and interface copy must earn their place for the visitor: they must
+  help the visitor understand the subject, use the feature, make a decision, navigate, or understand
+  a genuine safety, privacy, uncertainty, or maturity boundary.
+- Agent instructions, generation objectives, page/slide anatomy, internal schemas, editorial rules,
+  workflow notes, status bookkeeping, TODOs, validation requirements, source-management rules,
+  placeholder mechanics, and publication procedures belong in `AGENTS.md`, structured metadata,
+  JSON/data files, comments, or other non-visible machine-facing surfaces unless a visitor truly
+  needs that information to use the page.
+- Do not expose implementation disclaimers or production commentary as reader-facing copy by
+  default. A page should talk about its subject, not explain how agents generated or maintain it.
+- Before publishing any visible explanatory sentence, ask: **Would a visitor who does not know or
+  care how this site is produced benefit from reading this?** If not, move it to the appropriate
+  agent-facing or metadata surface.
+- This boundary does not prohibit necessary public maturity labels, uncertainty disclosures,
+  accessibility instructions, privacy notices, or controls whose behavior a visitor needs to
+  understand. Keep those concise and user-relevant.
+
 ## Editing discipline
 
 - Preserve unrelated user changes and keep each pull request limited to its stated purpose.
