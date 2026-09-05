@@ -83,7 +83,28 @@ for (const file of publicHtml) {
   const html = fs.readFileSync(file, 'utf8');
   const fileRel = rel(file);
   const redirect = isRedirectPage(html);
+  const noindex = /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
   const explorable = fileRel.startsWith('blog/') && fileRel.includes('/explore/');
+
+  if (!redirect && !noindex) {
+    const requiredMetadata = [
+      ['description', /<meta\s+name=["']description["']/i],
+      ['canonical URL', /<link\s+rel=["']canonical["']/i],
+      ['Open Graph title', /<meta\s+property=["']og:title["']/i],
+      ['Open Graph description', /<meta\s+property=["']og:description["']/i],
+      ['Open Graph URL', /<meta\s+property=["']og:url["']/i],
+      ['Open Graph type', /<meta\s+property=["']og:type["']/i],
+      ['Open Graph image', /<meta\s+property=["']og:image["']/i],
+      ['Open Graph site name', /<meta\s+property=["']og:site_name["']/i],
+      ['Twitter card', /<meta\s+name=["']twitter:card["']/i],
+      ['Twitter title', /<meta\s+name=["']twitter:title["']/i],
+      ['Twitter description', /<meta\s+name=["']twitter:description["']/i],
+      ['Twitter image', /<meta\s+name=["']twitter:image["']/i]
+    ];
+    for (const [label, pattern] of requiredMetadata) {
+      if (!pattern.test(html)) errors.push(`${fileRel}: missing ${label}`);
+    }
+  }
 
   if (!redirect && !explorable && !/components\.js(?:\?[^"']*)?["']/i.test(html)) {
     errors.push(`${fileRel}: missing shared components.js`);
