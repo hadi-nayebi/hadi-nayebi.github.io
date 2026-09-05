@@ -9,7 +9,7 @@
 .observation-hero {
     max-width: 980px;
     margin: 0 auto;
-    padding: 5rem 1.25rem 2.5rem;
+    padding: 7.5rem 1.5rem 3.5rem;
 }
 
 .observation-breadcrumb {
@@ -125,11 +125,20 @@
 }
 
 .episode-head {
+    /* The global site header is fixed; keep this semantic episode header in flow. */
+    position: static;
+    top: auto;
+    width: auto;
+    z-index: auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 1.5rem;
     align-items: end;
-    margin-bottom: 1.35rem;
+    margin-bottom: 1.75rem;
+    padding: 0 .25rem;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 0;
 }
 
 .episode-label {
@@ -319,7 +328,7 @@
 .observation-lightbox button { position: absolute; top: .7rem; right: .7rem; border: 1px solid rgba(255,255,255,.35); background: rgba(0,0,0,.6); color: #fff; border-radius: 999px; padding: .55rem .7rem; cursor: pointer; }
 
 @media (max-width: 760px) {
-    .observation-hero { padding-top: 3.5rem; }
+    .observation-hero { padding: 6.75rem 1rem 2.75rem; }
     .observation-lens { grid-template-columns: 1fr; }
     .episode-head { grid-template-columns: 1fr; align-items: start; }
     .episode-play { justify-self: start; }
