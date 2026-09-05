@@ -1,0 +1,33 @@
+{
+  "id": "observation-1-information-system-of-a-planet",
+  "type": "observation",
+  "title": "The Information System of a Planet",
+  "observation_number": 1,
+  "status": "foundation",
+  "canonical_url": "https://hadi-nayebi.github.io/blog/observations/information-system-of-a-planet/",
+  "series_objective": "Help readers intuitively understand how Earth's information layer accumulated on top of biological evolution, how successive changes in storage, communication, replication, selection, and embodiment expanded collective human capability, and eventually how that trajectory creates the conditions for a user-owned digital cortex.",
+  "reader_takeaways": [
+    "Human progress can be viewed partly as the evolution of information outside individual brains.",
+    "Communication technologies do more than move messages; they change what groups of minds can accumulate, coordinate, test, and build.",
+    "Major transitions are feedback loops between social needs, material conditions, institutions, and information tools rather than one-way technological causes.",
+    "The modern information environment is part of a very long trajectory, not an isolated AI-era event."
+  ],
+  "narrative_boundary": {
+    "current_arc": "Build from biological information through the early twentieth-century threshold.",
+    "hold_before": "modern computation, internet, LLMs, AI, and the digital-cortex conclusion",
+    "rule": "Do not cross this boundary until Hadi explicitly supplies the next framing."
+  },
+  "format": {
+    "episode_model": "one vertically stacked slideshow per episode on one canonical page",
+    "slide_model": "image first, complete narrated text underneath, sources/go-deeper drawer, audio placeholder",
+    "target_slide_read_minutes": {
+      "min": 1,
+      "preferred_min": 1.5,
+      "preferred_max": 3,
+      "max": 5
+    },
+    "audio_mode": "manual per-slide playback plus user-initiated episode playback with optional auto-advance",
+    "discussion_mode": "one discussion surface per episode"
+  },
+  "episode_index": []
+}
