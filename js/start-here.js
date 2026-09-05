@@ -292,7 +292,7 @@
         query('[data-role-prompt]').textContent = 'First read the complete nine-phase agent syllabus at https://hadi-nayebi.github.io/start-here-agent.md. Treat this as a multi-session onboarding project, establish recoverable continuity, and adapt the teaching to me. When I ask about an agentic concept, consult the relevant Hadosh Academy material, distinguish its provider-independent technical meaning from product jargon, use the Academy framing and an example from my work, explain the practical consequence, and check that I can apply it. If we move from this web conversation to a local CLI agent, first test that the actual CLI can persist user-controlled files, use tools, run local commands, expose hooks or an equivalent lifecycle-control mechanism, recover inspectable state, enforce permission boundaries, and verify outcomes. Then prepare a user-reviewed Web-to-CLI Handoff Packet and require the CLI agent to verify, correct, acknowledge, and resume it before implementation. ' + role.prompt;
         query('[data-role-prompt-label]').textContent = roleName === 'general'
             ? 'Continue this path with your agent'
-            : 'Continue the ' + role.eyebrow.toLowerCase() + ' path with your agent';
+            : 'Continue the ' + role.eyebrow + ' path with your agent';
 
         if (updateHash && history.replaceState) history.replaceState(null, '', '#role-' + roleName);
     }
@@ -312,22 +312,45 @@
         });
     });
 
+    async function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return true;
+            } catch (error) {
+                // Fall through to the local selection-based copy path.
+            }
+        }
+
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        textarea.style.pointerEvents = 'none';
+        document.body.appendChild(textarea);
+        textarea.select();
+        textarea.setSelectionRange(0, textarea.value.length);
+
+        let copied = false;
+        try {
+            copied = document.execCommand('copy');
+        } catch (error) {
+            copied = false;
+        } finally {
+            textarea.remove();
+        }
+        return copied;
+    }
+
     document.querySelectorAll('.start-copy-button').forEach(button => {
         button.addEventListener('click', async () => {
             const target = document.getElementById(button.dataset.copyTarget);
             if (!target) return;
-            try {
-                await navigator.clipboard.writeText(target.textContent.trim());
-                const original = button.textContent;
-                button.textContent = 'Copied';
-                setTimeout(() => { button.textContent = original; }, 1400);
-            } catch (error) {
-                const selection = window.getSelection();
-                const range = document.createRange();
-                range.selectNodeContents(target);
-                selection.removeAllRanges();
-                selection.addRange(range);
-            }
+            const copied = await copyText(target.textContent.trim());
+            const original = button.textContent;
+            button.textContent = copied ? 'Copied' : 'Copy failed';
+            setTimeout(() => { button.textContent = original; }, 1400);
         });
     });
 

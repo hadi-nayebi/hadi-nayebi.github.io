@@ -26,6 +26,19 @@ function forbidText(relativePath, source, text) {
   if (source.includes(text)) errors.push(`${relativePath}: contains retired ${JSON.stringify(text)}`);
 }
 
+function requireHiddenElement(relativePath, source, id) {
+  const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const elementPattern = new RegExp(`<[^>]*\\bid\\s*=\\s*(["'])${escapedId}\\1[^>]*>`, 'i');
+  const element = source.match(elementPattern)?.[0];
+  if (!element) {
+    errors.push(`${relativePath}: missing element with id ${JSON.stringify(id)}`);
+    return;
+  }
+  if (!/(?:^|\s)hidden(?:\s*=\s*(?:["']hidden["']|hidden|["']["']))?(?=\s|>)/i.test(element)) {
+    errors.push(`${relativePath}: ${JSON.stringify(id)} must remain hidden from the visitor flow`);
+  }
+}
+
 const syllabus = read('start-here-agent.md');
 const page = read('start-here.html');
 
@@ -55,7 +68,7 @@ if (
 
 requireText('start-here.html', page, 'id="continue-with-agent"');
 requireText('start-here.html', page, 'href="start-here-agent.md"');
-requireText('start-here.html', page, 'id="start-core-prompt" hidden');
+requireHiddenElement('start-here.html', page, 'start-core-prompt');
 requireText('start-here.html', page, 'Read https://hadi-nayebi.github.io/start-here-agent.md');
 forbidText('start-here.html', page, retiredModeQuestion);
 forbidText('start-here.html', page, '<details class="start-agent-instruction"');

@@ -83,8 +83,8 @@ still requires live behavior testing with several agent systems and user perspec
 ## Campaign launch audit
 
 - [ ] Confirm all syllabus links resolve and point to current resources.
-- [ ] Confirm the full manual is present in the HTML experience and the canonical Markdown source.
-- [ ] Test each phase's collapsed instruction, keyboard behavior, mobile presentation, and canonical-manual fallback.
+- [x] Confirm the human Start Here page keeps the operating manual out of the visitor flow while linking to the canonical Markdown syllabus and keeping the copied handoff pointed at it.
+- [ ] Test the human page's keyboard and mobile presentation, the copyable handoff instructions, and the canonical-syllabus fallback without restoring the retired inline or collapsed agent manual.
 - [ ] Test the copyable starter instruction with several agent systems and confirm they recognize the agent-directed layer.
 - [ ] Test Gemini, ChatGPT, Claude, and at least one CLI with zero prior context; confirm the first response recalls only reliable available user context, states uncertainty instead of inventing context, asks one adaptive question that advances the conversation, and contains no Phase 0 exposition dump before the user responds.
 - [ ] Confirm the default conversation learns about the user through short back-and-forth while still completing the full Phase 0 substance and gate; confirm any structured presentation is personalized from learned context rather than delivered as a separate generic mode.
