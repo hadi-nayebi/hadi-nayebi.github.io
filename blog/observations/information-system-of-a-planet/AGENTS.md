@@ -76,7 +76,7 @@ The objective is editorial control metadata. The narration should teach it natur
 
 ## Slide contract
 
-A slide is one narrative beat: **image first, complete narrated text underneath**.
+A slide is one narrative beat: **a persistent image beside independently scrolling complete narration on desktop**, stacked within the viewport on narrow screens.
 
 Each slide must contain:
 
@@ -138,7 +138,7 @@ Keep content in episode data rather than hard-coding new episodes into the shell
 
 ## Reader experience
 
-Episodes remain stacked vertically in chronological order on one page. Inside each episode, only one slide is active at a time.
+The canonical page is a fixed-viewport story reader, with one active episode and one active slide. Keep the website navigation above the workspace and persistent slide/episode navigation below it. The image remains visible while only the narration panel scrolls; do not restore whole-page scrolling or a large introduction above the workspace. Keep the series introduction accessible inside the narration panel.
 
 Support:
 
