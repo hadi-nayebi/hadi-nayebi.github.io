@@ -1,8 +1,39 @@
 {
   "version": 1,
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-04-visible-harness-publication",
+      "date": "2026-09-04",
+      "type": "Technical writing",
+      "title": "The Visible Harness now explains feedback, voices, and stopping",
+      "summary": "Three new essays extend the Visible Harness series from its dashboard-and-harness foundation through contextual feedback, event-specific internal voices, explicit stopping state, recovery, verification, and user review.",
+      "why_it_matters": "Readers can now follow one responsibility from a page-aware comment into durable evidence, agent reorientation, lifecycle control, and human acceptance without mistaking a finished model response for finished work.",
+      "affected": ["The Visible Harness", "Origin", "Start Here", "Contextual feedback", "Agent stopping and recovery"],
+      "maturity": "Published guidance grounded in demonstrated Origin 1.0",
+      "intended_for": ["Harness users", "Agent architects", "Dashboard builders", "People adopting contextual feedback"],
+      "sources": [
+        {
+          "label": "Visible Harness publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/65"
+        },
+        {
+          "label": "The Contextual Feedback Plugin",
+          "url": "/blog/b9/09_2-contextual-feedback-plugin.html"
+        },
+        {
+          "label": "Internal Voices Are Reorientation, Not Notifications",
+          "url": "/blog/b9/09_3-internal-voices-reorientation.html"
+        },
+        {
+          "label": "Stopping Without Forgetting",
+          "url": "/blog/b9/09_4-stopping-without-forgetting.html"
+        }
+      ],
+      "adoption_notes": "These are explanatory publications grounded in Origin's demonstrated 1.0 foundation, not a new Origin release. Treat voices as probabilistic orientation and keep hard lifecycle, permission, verification, and user-acceptance boundaries in deterministic surfaces. Live authenticated Codex and tmux acceptance remains separate, and the planned essay on one interactive agent across multiple surfaces is not yet published.",
+      "recommended_action": "Read essays 9.2–9.4 after the series foundation, then evaluate their behavioral contracts against the capabilities and authority boundaries of your own harness before porting them."
+    },
     {
       "id": "2026-09-04-contribution-return-loop",
       "date": "2026-09-04",
