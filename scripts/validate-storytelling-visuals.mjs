@@ -7,8 +7,6 @@ const inventoryPath = path.join(root, 'docs/storytelling-visual-inventory.md');
 const inventory = fs.readFileSync(inventoryPath, 'utf8');
 const storyVisuals = fs.readFileSync(path.join(root, 'js/story-visuals.js'), 'utf8');
 const components = fs.readFileSync(path.join(root, 'js/components.js'), 'utf8');
-const observationRendererPath = path.join(root, 'blog/observations/information-system-of-a-planet/observation.js');
-const observationRenderer = fs.existsSync(observationRendererPath) ? fs.readFileSync(observationRendererPath, 'utf8') : '';
 const rows = [];
 
 for (const line of inventory.split('\n')) {
@@ -131,11 +129,18 @@ if (!components.includes("event.key === 'Escape'")) failures.push('Escape-to-clo
 if (!components.includes("event.target === overlay")) failures.push('backdrop-to-close lightbox behavior is missing');
 if (!components.includes("event.target.classList.contains('lightbox-close')")) failures.push('close-button lightbox behavior is missing');
 
-if (rows.some((row) => row.source === 'EpisodeJSON')) {
-    if (!observationRenderer.includes('slide-image-button')) failures.push('Observation fullscreen image button is missing');
-    if (!observationRenderer.includes('openLightbox')) failures.push('Observation fullscreen lightbox behavior is missing');
+const episodePages = [...new Set(rows.filter((row) => row.source === 'EpisodeJSON').map((row) => row.page))];
+for (const page of episodePages) {
+    const rendererPath = path.join(root, path.dirname(page), 'observation.js');
+    if (!fs.existsSync(rendererPath)) {
+        failures.push(`${page}: Observation renderer is missing: ${path.relative(root, rendererPath)}`);
+        continue;
+    }
+    const renderer = fs.readFileSync(rendererPath, 'utf8');
+    if (!renderer.includes('slide-image-button')) failures.push(`${page}: Observation fullscreen image button is missing`);
+    if (!renderer.includes('openLightbox')) failures.push(`${page}: Observation fullscreen lightbox behavior is missing`);
     for (const token of ['data-visual-style=', 'data-information-weight=', 'data-artistic-weight=', 'data-visual-role="storytelling"']) {
-        if (!observationRenderer.includes(token)) failures.push(`Observation renderer is missing ${token}`);
+        if (!renderer.includes(token)) failures.push(`${page}: Observation renderer is missing ${token}`);
     }
 }
 

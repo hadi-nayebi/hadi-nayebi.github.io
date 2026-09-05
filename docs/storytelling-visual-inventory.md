@@ -24,8 +24,8 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `agents.html` | `/assets/images/story/agents-lineage-educational-v2.jpg` | I90-A10 | Injected | Yes |
 | `blog.html` | `/assets/images/story/blog-learning-journey-hybrid-v3.jpg` | I70-A30 | Injected | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/01-deep-time.jpg` | I30-A70 | EpisodeJSON | Yes |
-| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/02-inherited-memory.jpg` | I50-A50 | EpisodeJSON | Yes |
-| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/03-slow-update-cycle.jpg` | I70-A30 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/02-molecular-world.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/03-substrate-horizon.jpg` | I70-A30 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/04-second-clock.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/05-learning-within-lifetime.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/06-many-architectures.jpg` | I50-A50 | EpisodeJSON | Yes |

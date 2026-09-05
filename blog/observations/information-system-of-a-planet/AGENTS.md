@@ -12,6 +12,14 @@ The page teaches one big intuition: life first accumulated information biologica
 
 The long-term destination is the Hadosh Academy idea of a user-owned **digital cortex**: a durable external cognitive layer that grows with a person and accumulates experience around them. Do not rush there. Hadi intends to add more framing when the narrative reaches the twentieth-century threshold. **Do not create episodes that enter modern computation, the internet, LLMs, or the AI/digital-cortex stage until Hadi explicitly authorizes that transition.**
 
+## Substrate continuity principle
+
+The story is not a sequence in which storage, communication, sensing, memory, or coordination suddenly appears for the first time at each new stage. Molecular life already performs all of those functions in limited forms: hereditary molecules preserve patterns, cells detect changing conditions, bacteria exchange chemical signals within and between species, molecular states can retain traces of prior conditions, and communities coordinate behavior.
+
+Each later information layer should therefore be framed as an **expansion through a new substrate**, not the invention of information itself. A substrate develops many ways to store, transmit, interpret, remember, and act, while its physical form limits the speed, range, capacity, durability, and variety available to it. New substrates extend some of those limits while retaining older layers underneath. Nervous systems still depend on molecular signaling; language still depends on nervous systems and bodies; external memory will still depend on material carriers.
+
+Do not make these transitions teleological or inevitable. Evolution is not trying to reach nervous systems, humans, writing, or a digital cortex. Multicellularity and centralization are branches rather than universal destinations, and older substrates remain successful after newer ones appear. Use the recurring substrate pattern to create continuity without turning biological or cultural history into a ladder of progress.
+
 ## Narrator and voice
 
 Write in the conceptual voice of the first four Hadosh Academy essays and *The Folder Is Alive*: direct, visual, curious, occasionally irreverent, and understandable without technical prerequisites.
