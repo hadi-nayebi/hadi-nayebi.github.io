@@ -75,6 +75,32 @@ function validateDynamicRootLinks(scriptRel) {
   }
 }
 
+function validateEmailForm(htmlRel, formId, submitId, statusId) {
+  const htmlPath = path.join(root, htmlRel);
+  const html = fs.readFileSync(htmlPath, 'utf8');
+  const formPattern = new RegExp(
+    `<form\\b(?=[^>]*\\bid=["']${formId}["'])(?=[^>]*\\bmethod=["']post["'])(?=[^>]*\\baction=["'][^"']+["'])[^>]*>`,
+    'i'
+  );
+  if (!formPattern.test(html)) {
+    errors.push(`${htmlRel}: ${formId} must declare a POST fallback action`);
+  }
+  const submitPattern = new RegExp(
+    `<button\\b(?=[^>]*\\bid=["']${submitId}["'])(?=[^>]*\\bdisabled(?:\\s|=|>))[^>]*>`,
+    'i'
+  );
+  if (!submitPattern.test(html)) {
+    errors.push(`${htmlRel}: ${submitId} must remain disabled until email delivery initializes`);
+  }
+  const statusPattern = new RegExp(
+    `<[^>]+(?=[^>]*\\bid=["']${statusId}["'])(?=[^>]*\\brole=["']status["'])(?=[^>]*\\baria-live=["']polite["'])[^>]*>`,
+    'i'
+  );
+  if (!statusPattern.test(html)) {
+    errors.push(`${htmlRel}: ${statusId} must expose an accessible delivery status`);
+  }
+}
+
 const allFiles = walk(root);
 const htmlFiles = allFiles.filter(file => file.endsWith('.html'));
 const publicHtml = htmlFiles.filter(file => !rel(file).startsWith('.claude/'));
@@ -155,6 +181,9 @@ for (const file of publicHtml) {
 // than declared directly in HTML.
 validateDynamicRootLinks('js/wheel.js');
 validateDynamicRootLinks('js/start-here.js');
+validateEmailForm('contact.html', 'contact-form', 'submit-button', 'contact-form-status');
+validateEmailForm('seed-access.html', 'seed-access-form', 'seed-access-submit', 'seed-access-status');
+validateEmailForm('projects/crime-cartography.html', 'project-subscribe-form', 'project-subscribe-submit', 'project-subscribe-status');
 
 const feedPath = path.join(root, 'feed.xml');
 if (!fs.existsSync(feedPath)) {
