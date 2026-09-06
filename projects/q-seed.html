@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="canonical" href="https://hadi-nayebi.github.io/projects/q-seed.html">
     <meta property="og:title" content="Q-Seed — Qwen Code | Hadosh Academy">
-    <meta property="og:description" content="A reference architecture for distinct user-owned harnesses, separating framework, cognition, and personal experience.">
+    <meta property="og:description" content="A Qwen Code-specific pattern-accumulation surface separating framework, cognition, and personal experience.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/projects/q-seed.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/q-seed-cortex-hero.jpg">
@@ -69,20 +69,20 @@
                     <tr><td>Runtime</td><td>Codex CLI provides the runtime surface.</td><td>A user-controlled Qwen Code fork is part of the owned stack.</td></tr>
                     <tr><td>Main build surface</td><td>User-owned harness cognition and jobs around Codex.</td><td>Cognitive layer plus deeper runtime primitives when useful.</td></tr>
                     <tr><td>Framework evolution</td><td>Harness development happens above Codex.</td><td>Framework changes have their own reviewed path.</td></tr>
-                    <tr><td>Research question</td><td>How far can a mature Seed go above the runtime?</td><td>Which guarantees become cleaner primitives when the runtime is open?</td></tr>
+                    <tr><td>Research question</td><td>Which reusable harness guarantees can remain above an externally managed runtime?</td><td>Which guarantees become cleaner primitives when the runtime is open?</td></tr>
                 </tbody>
             </table></div>
         </section>
 
         <section class="container project-long-section" id="memory">
-            <div class="project-section-heading"><div><span class="project-kicker">Working memory</span><h2>Q-Seed is where the instruction / working-memory split became explicit.</h2></div><p>This architectural cleanup is already influencing the Codex generation.</p></div>
+            <div class="project-section-heading"><div><span class="project-kicker">Working memory</span><h2>Q-Seed is where the instruction / working-memory split became explicit.</h2></div><p>This architectural cleanup is also documented in Seed Agent's Codex-specific context.</p></div>
             <div class="project-prose"><p>The original Claude Seed used <code>CLAUDE.md</code> both as durable local instruction and as mutable phase working memory. Q-Seed separated those responsibilities conceptually: <code>QWEN.md</code> for stable orientation and a candidate <code>WM.md</code> layer for dynamic local working memory.</p><p>The working-memory design also began specifying discovery, provenance, deduplication, refresh after edits, symlink safety, and predictable behavior during parallel tool calls. That work turns “memory in instruction files” into a more general harness concept that can be reused across runtimes.</p></div>
         </section>
 
         <section class="container project-long-section" id="roadmap">
             <div class="project-section-heading"><div><span class="project-kicker">Pattern accumulation</span><h2>Compare implementations and admit useful patterns.</h2></div><p>The current repository holds architectural context and a pinned framework. Further components need practical evidence, their own review, and a clear boundary between framework mechanisms and user cognition.</p></div>
             <div class="project-roadmap">
-                <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Reference</span><h3>Study the Claude Seed</h3><p>Extract behavioral objectives, design history, and architecture vocabulary from the first-generation harness.</p></article>
+                <article class="project-roadmap-step is-complete"><span class="roadmap-stage">Reference</span><h3>Study the Claude Seed</h3><p>Extract behavioral objectives, design history, and architecture vocabulary from the original private harness.</p></article>
                 <article class="project-roadmap-step is-current"><span class="roadmap-stage">Current context</span><h3>Framework + cognition boundary</h3><p>Maintain the Qwen integration line and define the three-layer architecture, authority model, and working-memory direction.</p></article>
                 <article class="project-roadmap-step"><span class="roadmap-stage">Candidate components</span><h3>Runtime primitives</h3><p>Implement reusable mechanisms in the Qwen fork with their own review and compatibility evidence.</p></article>
                 <article class="project-roadmap-step"><span class="roadmap-stage">Community evidence</span><h3>Cross-runtime comparison</h3><p>Compare independent user implementations across runtimes to identify useful shared abstractions; users may also build without these components.</p></article>

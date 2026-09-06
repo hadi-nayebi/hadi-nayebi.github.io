@@ -23,3 +23,4 @@ jobs:
           node scripts/validate-site-navigation.mjs
           node scripts/validate-contribution-surfaces.mjs
           node scripts/validate-start-here-first-response.mjs
+          node scripts/validate-public-seed-framing.mjs
