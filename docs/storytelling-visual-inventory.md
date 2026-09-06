@@ -4,11 +4,11 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 
 ## Coverage
 
-- Displayed storytelling image slots: **81**
-- Slots with five-category metadata: **81**
-- Fullscreen/lightbox coverage: **81**
+- Displayed storytelling image slots: **88**
+- Slots with five-category metadata: **88**
+- Fullscreen/lightbox coverage: **88**
 - Active storytelling SVG references: **0**
-- Distribution: **I90-A10 41, I70-A30 18, I50-A50 13, I30-A70 6, I10-A90 3**
+- Distribution: **I90-A10 41, I70-A30 18, I50-A50 15, I30-A70 9, I10-A90 5**
 
 `Injected` means the figure is added by `js/story-visuals.js`; its metadata is applied when the figure is created.
 `EpisodeJSON` means the figure is loaded from an Observation episode data file; its visual category is machine-readable in that slide record and the Observation renderer provides fullscreen behavior.
@@ -30,6 +30,13 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/05-learning-within-lifetime.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/06-many-architectures.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/07-information-crosses.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/01-another-body.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/02-flock-tradition.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/03-route-in-the-flock.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/04-ocean-song.jpg` | I10-A90 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/05-many-cultures.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/06-living-archive.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/07-bridge-horizon.jpg` | I10-A90 | EpisodeJSON | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/action-space-markov-chain-b1-2.png` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/claude-md-hierarchy-b1-6.jpg` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/claude-md-working-memory-b1-3.png` | I90-A10 | HTML | Yes |
