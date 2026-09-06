@@ -2,7 +2,7 @@
 
 Canonical human page: https://hadi-nayebi.github.io/start-here.html
 
-Syllabus version: 2026-09-04.1
+Syllabus version: 2026-09-06.1
 
 ## First response — recall the user and establish the path
 
@@ -133,11 +133,13 @@ The desired social trajectory is broad capability with meaningful access and con
 
 Use scaffolding, templates, web interfaces, CLI counterparts, repositories, local dashboards, explanations, and Hadosh patterns to reduce the barrier gradually. Every step should increase useful capacity and understanding together.
 
-## Reference organisms, reusable primitives, and personal lineages
+## Pattern accumulation, reusable primitives, and personal lineages
 
-Seed Agent, Q-Seed, Origin, Movie Studio, and other Hadosh projects are reference organisms, implementation evidence, pattern sources, or deliberately generic substrates. They are not universal finished agents.
+Seed Agent and Q-Seed are framework-specific pattern-accumulation surfaces. They begin deliberately sparse and selectively accumulate foundational concepts, building blocks, or plugins when public use and feedback justify them. They are not product editions progressing toward a standard harness or installation target.
 
-Use a reference in one of three ways:
+Origin and other Hadosh projects may instead provide implementation evidence, educational specimens, or bounded starting substrates with their own stated contracts. None is a universal finished agent.
+
+Use Academy material in one of three ways:
 
 1. **Pattern reference:** extract one abstraction that solves an observed problem.
 2. **Educational specimen:** study how multiple components interact and what failure lessons the implementation reveals.
@@ -173,7 +175,7 @@ AI is approaching a related choice. Models may remain commercial services, open 
 
 ## Hadosh Academy's role
 
-Hadosh Academy is an evolving open abstraction library. Jobs, hooks, plugins, phases, memory, interfaces, permissions, verification, and controls are reusable building blocks. Seed Agent demonstrates a harness-centered lineage. Origin demonstrates a dashboard-plus-harness lineage. Movie Studio and other projects add differentiated examples as their technical writings mature.
+Hadosh Academy is an evolving open abstraction library. Jobs, hooks, plugins, phases, memory, interfaces, permissions, verification, and controls are reusable building blocks. Seed Agent and Q-Seed are framework-specific accumulation surfaces for selectively reusable foundations. Origin demonstrates a dashboard-plus-harness lineage. Movie Studio and other projects add differentiated examples as their technical writings mature.
 
 Use the biological analogy when helpful: the Academy documents genes, proteins, signals, organs, regulatory mechanisms, and developmental patterns. It does not prescribe one finished organism. Adapt the patterns into a distinct cognitive organism—a living filesystem shaped around the user.
 
@@ -785,6 +787,10 @@ Do not advance merely because every checklist item contains text. Advance when t
 
 Start Here is the router and syllabus. It is not the entire curriculum. Follow relevant links instead of reasoning only from this document.
 
+### Low-barrier first assets
+
+- [Build Your Own Space on the Web](https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html) — use this practical path when a small public web home fits the user's goals and privacy boundary; treat it as one possible first asset, not a required precursor or default harness.
+
 ### Foundations and ownership
 
 - [LLMs Are Not the Agents](https://hadi-nayebi.github.io/blog/b1/01-llms-are-not-the-agents.html) — model versus agent and the harness boundary.
@@ -844,8 +850,8 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 
 - [Projects](https://hadi-nayebi.github.io/projects/index.html) — compare differentiated applications and scales.
 - [Origin](https://hadi-nayebi.github.io/projects/origin.html) — the single-user Codex dashboard-plus-harness substrate: an empty canvas, Wiki, contextual feedback, stop-state control, durable review, and one foreground interactive tmux session.
-- [Seed Agent](https://hadi-nayebi.github.io/projects/seed-agent.html) — a harness-centered reference lineage.
-- [Q-Seed](https://hadi-nayebi.github.io/projects/q-seed.html) — a deeper-ownership implementation path.
+- [Seed Agent](https://hadi-nayebi.github.io/projects/seed-agent.html) — a Codex-specific pattern-accumulation surface for selectively reusable foundations.
+- [Q-Seed](https://hadi-nayebi.github.io/projects/q-seed.html) — a Qwen Code-specific pattern-accumulation surface with a deeper framework-ownership boundary.
 - [Team Harnesses](https://hadi-nayebi.github.io/projects/team-harnesses.html) — shared repository, dashboard, roles, and team authority.
 - [Crime Cartography](https://hadi-nayebi.github.io/projects/crime-cartography.html) — a domain-specific public project surface.
 - [Family Games](https://hadi-nayebi.github.io/projects/family-games.html) — a family-oriented operational world.
@@ -1484,7 +1490,7 @@ This phase turns an undertone already present in Phases 1–3 into an explicit a
 
 Describe how the selected system could preserve visible objects, decisions, methods, history, and standards. Then distinguish its layers. The dashboard or another visible surface shows what exists, its state, needed attention, agent activity, and user controls. The harness determines what the agent remembers, what responsibilities persist, what procedures and tools it follows, what requires permission, what completion means, and how work is verified.
 
-Explain that not every harness requires a dashboard. Seed Agent is a harness-centered reference. Origin develops the dashboard and harness together. The form follows the user's operational world.
+Explain that not every harness requires a dashboard. Seed Agent and Q-Seed accumulate selected framework-specific foundations without defining a standard harness. Origin develops the dashboard and harness together. The form follows the user's operational world.
 
 #### Teach the historical architectural choice
 

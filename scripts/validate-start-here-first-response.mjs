@@ -42,7 +42,7 @@ function requireHiddenElement(relativePath, source, id) {
 const syllabus = read('start-here-agent.md');
 const page = read('start-here.html');
 
-requireText('start-here-agent.md', syllabus, 'Syllabus version: 2026-09-04.1');
+requireText('start-here-agent.md', syllabus, 'Syllabus version: 2026-09-06.1');
 requireText('start-here-agent.md', syllabus, '## First response — recall the user and establish the path');
 requireText('start-here-agent.md', syllabus, 'recall all reliable context available to you');
 requireText('start-here-agent.md', syllabus, 'Conversation is the default');
@@ -51,6 +51,11 @@ requireText('start-here-agent.md', syllabus, 'The output must be a bridge betwee
 requireText('start-here-agent.md', syllabus, 'The nine phases are a recommended developmental scaffold, not a rigid script');
 requireText('start-here-agent.md', syllabus, 'structured form, not generic content and never a replication of the website');
 requireText('start-here-agent.md', syllabus, 'Do not invent familiarity');
+requireText('start-here-agent.md', syllabus, '## Pattern accumulation, reusable primitives, and personal lineages');
+requireText('start-here-agent.md', syllabus, 'They are not product editions progressing toward a standard harness or installation target.');
+requireText('start-here-agent.md', syllabus, 'blog/practical-guides/01-build-your-own-space-on-the-web.html');
+forbidText('start-here-agent.md', syllabus, 'Seed Agent is a harness-centered reference');
+forbidText('start-here-agent.md', syllabus, 'Seed Agent demonstrates a harness-centered lineage');
 forbidText('start-here-agent.md', syllabus, retiredModeQuestion);
 
 const contextualHeading = syllabus.indexOf('## First response — recall the user and establish the path');
