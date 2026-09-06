@@ -53,6 +53,7 @@ The writing progresses from the central distinction between model and agent into
 | B7 | Plugin anatomy: bounded behavioral organs with state and authority | [The Plugin Kit Foundation](https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html) |
 | B8 | Maturation, hardening, user literacy, and controlled evolution | [From Apprentice to Architect](https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html) |
 | B9 | Dashboard and harness as one visible, durable user-agent system: contextual feedback, internal voices, stopping, recovery, and user review | [The Visible Harness](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) |
+| Practical Guides | Low-barrier projects that turn agent conversation into useful user-owned assets | [Build Your Own Space on the Web](https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html) |
 
 Browse the complete **[technical-writing index](https://hadi-nayebi.github.io/blog.html)** or use the **[interactive Explorables](https://hadi-nayebi.github.io/explore.html)** to inspect relationships among hooks, jobs, phases, memory, plugins, verification, and control.
 
@@ -157,6 +158,7 @@ The first validator checks static and dynamically injected navigation. The visua
 ├── whats-new.html             # Human-readable public development record
 ├── blog.html                  # Technical-writing index
 ├── blog/b1 … blog/b9          # Essays and series assets
+├── blog/practical-guides/     # Step-by-step, low-barrier building guides
 ├── agents.html                # Seed implementation map
 ├── projects/                  # Project portfolio and project detail pages
 ├── explore.html               # Interactive architectural explanations

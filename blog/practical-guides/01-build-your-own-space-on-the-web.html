@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Own Space on the Web | Hadosh Academy</title>
+    <meta name="description" content="A practical guide for publishing a personal static website and growing it through conversation with ChatGPT, Codex, or another AI agent.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html">
+    <meta property="og:title" content="Build Your Own Space on the Web | Hadosh Academy">
+    <meta property="og:description" content="Publish a useful personal website in a few hours, then grow it through a repository-based relationship with your AI agent.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Build Your Own Space on the Web | Hadosh Academy">
+    <meta name="twitter:description" content="A step-by-step first project for turning conversation with an AI agent into a useful, portable public asset.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
+    <style>
+        .article-body table {
+            width: 100%;
+            margin: 1.75rem 0 2rem;
+            border-collapse: collapse;
+            font-size: 0.96rem;
+            line-height: 1.55;
+        }
+
+        .article-body th,
+        .article-body td {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .article-body th {
+            background: rgba(99, 102, 241, 0.12);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .article-body tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        @media (max-width: 720px) {
+            .article-body table {
+                display: block;
+                overflow-x: auto;
+                white-space: normal;
+            }
+
+            .article-body th,
+            .article-body td {
+                min-width: 10rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "HowTo",
+                "name": "Build Your Own Space on the Web",
+                "datePublished": "2026-09-06",
+                "dateModified": "2026-09-06",
+                "author": { "@type": "Person", "name": "Hadi Nayebi", "url": "https://hadi-nayebi.github.io/about.html" },
+                "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
+                "description": "A practical guide for publishing a personal static website and growing it through conversation with an AI agent.",
+                "image": "https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg",
+                "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
+                    { "@type": "ListItem", "position": 3, "name": "Practical Guides", "item": "https://hadi-nayebi.github.io/blog.html#practical-guides" },
+                    { "@type": "ListItem", "position": 4, "name": "Build Your Own Space on the Web", "item": "https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html" }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header id="site-header"><div class="container"><nav>
+        <a href="../../index.html" class="logo">Hadosh Academy</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <div class="nav-links"><a href="../../index.html">Home</a><a href="../../start-here.html">Start Here</a><a href="../../blog.html" class="active" aria-current="page">Blog</a><a href="../../whats-new.html">What's New</a><a href="../../agents.html">Agents</a><a href="../../projects/index.html">Projects</a><a href="../../about.html">About</a><a href="../../contact.html">Contact</a></div>
+    </nav></div></header>
+
+    <main class="page-content"><section class="container"><div class="blog-layout">
+        <div class="article-content">
+            <a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+            <h1>Build Your Own Space on the Web</h1>
+            <div class="article-meta"><span>September 2026</span><span>&bull;</span><span>24 min</span><div class="article-meta-tags"><span class="tag tag-audience">Everyone</span><span class="tag">Practical Guide</span><span class="tag">Personal Website</span><span class="tag">GitHub Pages</span><span class="tag">Agent Literacy</span></div></div>
+            <div class="article-authors">By Hadi Nayebi &amp; Codex</div>
+
+            <div class="article-body">
+<p>In a few hours, you can create a useful place on the internet that begins with your own idea, lives in files you control, and can grow whenever you have something new to share.</p>
+<p>It might become your professional portfolio. It might collect recipes, paintings, research notes, local history, clothing designs, sports analysis, teaching material, travel stories, or a subject that only you would think to organize in this way. It can begin as one page and gradually become a substantial public body of work.</p>
+<p>You do not need to learn software development before you begin. You will learn a small amount of practical language—repository, commit, branch, pull request, and deployment—because those words let you understand what your agent is doing and keep you in control of what becomes public.</p>
+<p>This is the objective of the guide:</p>
+<blockquote>
+<p>Build the smallest useful space of your own on the web, publish it at little or no cost, and establish a working relationship in which your AI agent can help you improve it without taking ownership away from you.</p>
+</blockquote>
+<h2 id="what-you-will-have-at-the-end">What You Will Have at the End</h2>
+<p>By the end of the first path, you will have:</p>
+<ul>
+<li>a public web address you can share;</li>
+<li>a website organized around your own purpose;</li>
+<li>the files that create the site;</li>
+<li>a recorded history of every accepted change;</li>
+<li>a way to ask ChatGPT, Codex, or another coding agent to improve it;</li>
+<li>enough vocabulary to review those improvements before publishing them; and</li>
+<li>a foundation that can later move to a custom domain or another host.</li>
+</ul>
+<p>The first version does not need to represent everything you may eventually build. Its job is to make the first piece real.</p>
+<h2 id="a-static-website-can-already-do-a-great-deal">A Static Website Can Already Do a Great Deal</h2>
+<p>A static website is made from files that a visitor's browser can load directly: HTML for structure, CSS for appearance, JavaScript for interaction, and images, audio, video, or documents for media.</p>
+<p>That foundation supports much more than a page of text. A static site can contain:</p>
+<ul>
+<li>a portfolio, résumé, biography, and contact surface;</li>
+<li>articles, stories, essays, tutorials, or documentation;</li>
+<li>recipes, collections, galleries, maps, and visual archives;</li>
+<li>interactive diagrams, filters, calculators, slideshows, and browser-based tools;</li>
+<li>links or embeds for video, newsletters, booking, events, communities, and social accounts;</li>
+<li>contact and application forms handled by a form service;</li>
+<li>public discussion through a service such as GitHub Discussions and Giscus; and</li>
+<li>payment links or embedded buttons whose secure checkout is handled by a provider such as Stripe.</li>
+</ul>
+<p>The site presents and organizes your world. When a specialized service is useful, the site can become the doorway to that service. Stripe, for example, provides hosted Payment Links and embeddable buy buttons, so the website does not need to collect card details itself.</p>
+<p><a href="../../index.html">Hadosh Academy</a> is itself a static website hosted with GitHub Pages. It includes long-form writing, visual stories, interactive diagrams, project pages, a contact form, GitHub-based discussions, RSS, and links to payment and community services. A static foundation has not prevented the site from becoming a varied public environment.</p>
+<p>If you later need accounts, a private database, complex server-side workflows, or a full application, the website can grow toward those capabilities. The pages, writing, visual identity, and accumulated decisions you begin here remain useful context for that next system.</p>
+<h2 id="the-simple-architecture">The Simple Architecture</h2>
+<p>Your first website has five parts:</p>
+<ol type="1">
+<li><strong>You</strong> decide what the space is for and what should become public.</li>
+<li><strong>Your AI agent</strong> helps translate your intent into pages, styles, and changes.</li>
+<li><strong>The repository</strong> stores the files and remembers their history.</li>
+<li><strong>The host</strong> publishes those files at a web address.</li>
+<li><strong>Visitors</strong> read or use the published result.</li>
+</ol>
+<p>The durable asset is the repository and the content inside it. The model and hosting provider can change later. Your accumulated work does not need to begin again with each change of tool.</p>
+<h2 id="choose-the-easiest-starting-path">Choose the Easiest Starting Path</h2>
+<p>There are three useful entry points. They all lead to the same kind of website.</p>
+<h3 id="path-a--chat-and-a-web-browser">Path A — Chat and a Web Browser</h3>
+<p>Use ChatGPT or another conversational AI to prepare the page. Copy the finished file into your repository through the hosting platform's web interface.</p>
+<p>This requires no terminal and no local installation. It is the lowest-barrier path and a complete way to publish the first version.</p>
+<h3 id="path-b--connect-a-cloud-agent-to-the-repository">Path B — Connect a Cloud Agent to the Repository</h3>
+<p>Authorize a supported agent, such as Codex cloud, to work with the website repository. Ask for an improvement, review the proposed file changes or pull request, provide feedback, and merge when satisfied.</p>
+<p>This removes most copying while preserving the repository and review history.</p>
+<h3 id="path-c--work-locally-with-a-cli-agent">Path C — Work Locally with a CLI Agent</h3>
+<p>Clone the repository onto a laptop and open it with Codex CLI, Claude Code, Gemini CLI, Qwen Code, OpenCode, GitHub Copilot, or another agent that can read and edit local files.</p>
+<p>This provides the richest working relationship. The agent can inspect the complete site, run it locally, verify links and layouts, manage branches, and help prepare pull requests. You can begin with Path A and move here whenever you are ready.</p>
+<p>The rest of this guide uses GitHub Pages and ChatGPT/Codex for the complete first route. Later sections show how the same asset can use other hosts and agents.</p>
+<h2 id="part-1--decide-what-your-space-is-for">Part 1 — Decide What Your Space Is For</h2>
+<p>Begin with one conversation. Do not begin by selecting colors or a software framework. Give the agent enough information to understand the human purpose.</p>
+<p>You can start with this prompt:</p>
+<blockquote>
+<p>I want to build a small personal website that I can grow over time. I do not have a technical background. Help me decide the purpose, audience, name, and first three sections. Ask me one question at a time. The first version should be useful within a few hours, not a complete representation of everything I may eventually build.</p>
+</blockquote>
+<p>Your first answer may be as simple as:</p>
+<ul>
+<li>“A professional home for my architecture work.”</li>
+<li>“A place where I collect and explain regional Persian recipes.”</li>
+<li>“A gallery and journal for the hats I design.”</li>
+<li>“A public notebook about the local basketball teams I follow.”</li>
+<li>“A teaching portfolio for parents and schools.”</li>
+</ul>
+<p>Choose one primary purpose and a first visitor. You can add other dimensions later.</p>
+<h3 id="first-checkpoint">First checkpoint</h3>
+<p>Before creating an account, be able to complete this sentence:</p>
+<blockquote>
+<p>This website is a place where I __________ for people who __________.</p>
+</blockquote>
+<p>That sentence gives your agent a better design direction than a long list of features.</p>
+<h2 id="part-2--create-a-free-github-account">Part 2 — Create a Free GitHub Account</h2>
+<p>GitHub is a repository service: it stores files, records their history, and supports structured review. GitHub Pages publishes static websites directly from those repositories.</p>
+<ol type="1">
+<li>Open <a href="https://github.com/signup">github.com/signup</a>.</li>
+<li>Create a free personal account.</li>
+<li>Choose your username carefully. For the personal-site route, it becomes part of your web address.</li>
+<li>Verify your email address. GitHub requires a verified address for basic actions such as creating a repository.</li>
+<li>Set up two-factor authentication while the account is still new.</li>
+</ol>
+<p>If your username is <code>samira-cooks</code>, the free personal-site address will be:</p>
+<p><code>https://samira-cooks.github.io</code></p>
+<p>GitHub Pages is available from public repositories on GitHub Free. GitHub also supports one main user site for an account and project sites associated with other repositories. See GitHub's current <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">Pages overview</a> and <a href="https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github">account guide</a>.</p>
+<h2 id="part-3--create-the-website-repository">Part 3 — Create the Website Repository</h2>
+<p>After signing in to GitHub:</p>
+<ol type="1">
+<li>Select <strong>New repository</strong>.</li>
+<li>Name it exactly <code>YOUR-USERNAME.github.io</code>, replacing <code>YOUR-USERNAME</code> with your actual GitHub username.</li>
+<li>Set the repository to <strong>Public</strong>.</li>
+<li>Turn <strong>Add a README file</strong> on.</li>
+<li>Select <strong>Create repository</strong>.</li>
+</ol>
+<p>The exact repository name is important. It tells GitHub that this is the main website for your account.</p>
+<p>You now own the container for your website. The repository will hold the visible pages and the instructions that help future agents work with them.</p>
+<h2 id="part-4--ask-chatgpt-to-create-the-first-page">Part 4 — Ask ChatGPT to Create the First Page</h2>
+<p>Return to ChatGPT. You can continue the earlier conversation or begin a new one with the purpose sentence you created.</p>
+<p>Use this prompt and replace the bracketed parts:</p>
+<blockquote>
+<p>Create the first version of my personal website as one complete <code>index.html</code> file that I can publish with GitHub Pages.</p>
+<p>Purpose: [your purpose sentence]</p>
+<p>Include: [your name or site name], a clear introduction, three useful sections, and these contact or social links: [links, or “none yet”].</p>
+<p>Make it polished, readable, accessible, and responsive on phones and computers. Use plain HTML and CSS inside the single file, with no build system or external framework. Do not invent biography, credentials, projects, testimonials, contact information, or links. Ask me for missing content before finalizing it. When the content is approved, give me the complete file in one code block and explain exactly where to paste it in GitHub.</p>
+</blockquote>
+<p>The one-file constraint is useful for the first publication. It keeps the mechanism visible: one file enters the repository and becomes one website. Your agent can separate styles, scripts, articles, and images into their own files after the site starts growing.</p>
+<p>Review the generated page as writing, not as code. Check:</p>
+<ul>
+<li>Is every personal fact correct?</li>
+<li>Does the opening explain what the site is for?</li>
+<li>Would the intended visitor know where to go next?</li>
+<li>Are you comfortable making every sentence and link public?</li>
+<li>Does the design feel close enough to begin?</li>
+</ul>
+<p>Ask for changes in ordinary language until the content is ready.</p>
+<h2 id="part-5--put-indexhtml-in-github">Part 5 — Put <code>index.html</code> in GitHub</h2>
+<p>In your new repository:</p>
+<ol type="1">
+<li>Select <strong>Add file</strong>, then <strong>Create new file</strong>.</li>
+<li>Enter <code>index.html</code> as the file name.</li>
+<li>Paste the complete code from ChatGPT into the editor.</li>
+<li>Select <strong>Commit changes</strong>.</li>
+<li>Use a short description such as <code>Publish the first website page</code>.</li>
+<li>Confirm the commit.</li>
+</ol>
+<p>A <strong>commit</strong> is a recorded version of the files. You are not merely saving over the past. You are adding a new point to a history that can be inspected and recovered later.</p>
+<h2 id="part-6--turn-on-github-pages">Part 6 — Turn on GitHub Pages</h2>
+<p>In the repository:</p>
+<ol type="1">
+<li>Open <strong>Settings</strong>.</li>
+<li>In the left sidebar, open <strong>Pages</strong>.</li>
+<li>Under <strong>Build and deployment</strong>, choose <strong>Deploy from a branch</strong>.</li>
+<li>Select the <code>main</code> branch and the <code>/ (root)</code> folder.</li>
+<li>Save the setting.</li>
+<li>Wait for the first deployment, then open <code>https://YOUR-USERNAME.github.io</code>.</li>
+</ol>
+<p>GitHub notes that the first publication can take several minutes. Its <a href="https://docs.github.com/en/pages/quickstart">Pages quickstart</a> shows the current interface and publishing steps.</p>
+<p>Your first website is now real. Send the address to someone or open it on another device. The point of this moment is not perfection. It is the shift from discussing an idea to owning a working public surface.</p>
+<h2 id="the-seven-words-you-need-for-the-next-stage">The Seven Words You Need for the Next Stage</h2>
+<p>You do not need to memorize Git. You do need enough shared language to understand what your agent proposes.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Word</th>
+<th>What it means in this website</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Repository</strong></td>
+<td>The complete folder, history, and collaboration surface for the site. Often shortened to “repo.”</td>
+</tr>
+<tr class="even">
+<td><strong>Commit</strong></td>
+<td>One recorded set of changes with a short explanation.</td>
+</tr>
+<tr class="odd">
+<td><strong>Branch</strong></td>
+<td>A separate working line where a change can be prepared without immediately changing the public site.</td>
+</tr>
+<tr class="even">
+<td><strong>Diff</strong></td>
+<td>The exact lines added, removed, or changed.</td>
+</tr>
+<tr class="odd">
+<td><strong>Pull request (PR)</strong></td>
+<td>A review page proposing that one branch be added to the main site.</td>
+</tr>
+<tr class="even">
+<td><strong>Merge</strong></td>
+<td>Your acceptance of the pull request into the main branch.</td>
+</tr>
+<tr class="odd">
+<td><strong>Deploy</strong></td>
+<td>The host publishing the accepted files as the live website.</td>
+</tr>
+</tbody>
+</table>
+<p>The normal rhythm is:</p>
+<blockquote>
+<p>You describe an improvement → the agent works on a branch → commits the files → opens a pull request → you review and respond → you merge → the host deploys the new site.</p>
+</blockquote>
+<p>These terms are useful because they give you handles for directing the work. You can say, “Show me the diff,” “Keep this on a separate branch,” “Update the PR after my feedback,” or “Do not merge until I see the page.”</p>
+<h2 id="part-7--keep-growing-it-through-chat">Part 7 — Keep Growing It Through Chat</h2>
+<p>You can maintain the site without a direct GitHub connection. Ask ChatGPT for an updated complete file, replace the contents of <code>index.html</code> in GitHub, and commit the change.</p>
+<p>Useful next requests include:</p>
+<ul>
+<li>“Add a portfolio section containing these three projects. Preserve everything else.”</li>
+<li>“Turn this recipe into a readable article and link it from the homepage.”</li>
+<li>“Create an About page using only the biography I provide.”</li>
+<li>“Improve the mobile layout without changing my words.”</li>
+<li>“Add a gallery for these ten images, with useful alternative text.”</li>
+<li>“Review the site for broken links, repeated text, and confusing navigation.”</li>
+</ul>
+<p>As the site becomes larger, ask the agent to move shared styling into <code>styles.css</code> and create a clear file structure:</p>
+<pre class="text"><code>YOUR-USERNAME.github.io/
+├── index.html
+├── about.html
+├── articles/
+├── projects/
+├── assets/
+│   └── images/
+├── styles.css
+├── AGENTS.md
+└── README.md</code></pre>
+<p>The folders should follow your content. A cook may need <code>recipes/</code> and <code>ingredients/</code>. An artist may need <code>works/</code>, <code>exhibitions/</code>, and <code>process/</code>. A consultant may need <code>services/</code>, <code>case-studies/</code>, and <code>writing/</code>. Do not force every person into the same mature structure.</p>
+<h2 id="part-8--connect-chatgpt-or-codex-to-the-repository">Part 8 — Connect ChatGPT or Codex to the Repository</h2>
+<p>When your ChatGPT account provides the GitHub connection, you can let ChatGPT or Codex work with the repository directly.</p>
+<h3 id="from-chatgpt">From ChatGPT</h3>
+<ol type="1">
+<li>Open <strong>Plugins</strong> and find the GitHub plugin.</li>
+<li>Install it and connect your GitHub account.</li>
+<li>Authorize the website repository. Begin with only the repository the agent needs.</li>
+<li>Start a new ChatGPT Work or Codex conversation so the connection is available.</li>
+<li>Name the repository in your request and state whether the agent may edit files, open a pull request, or only advise.</li>
+</ol>
+<p>OpenAI's current <a href="https://learn.chatgpt.com/docs/plugins">plugin guidance</a> explains installation, authentication, connected tools, and repository-scoped permissions.</p>
+<h3 id="from-codex-cloud">From Codex cloud</h3>
+<ol type="1">
+<li>Open Codex and sign in with your ChatGPT account.</li>
+<li>Connect GitHub when prompted.</li>
+<li>Select the website repository.</li>
+<li>Create an environment for it.</li>
+<li>Describe the change you want.</li>
+<li>Review the summary and diff, ask for refinements, and open a pull request when ready.</li>
+</ol>
+<p>The current <a href="https://learn.chatgpt.com/docs/cloud">Codex cloud quickstart</a> covers this connection and review flow.</p>
+<p>Use an instruction like this for the first connected change:</p>
+<blockquote>
+<p>Work only in <code>YOUR-USERNAME/YOUR-USERNAME.github.io</code>. First inspect the existing pages and explain the current structure in plain language. Then create a focused branch that adds [the requested improvement]. Preserve my approved content and visual identity. Keep the site static, accessible, and usable on phones. Check every changed link and review the final diff. Open a pull request for me, but do not merge it.</p>
+</blockquote>
+<p>The agent is now operating on the asset rather than merely describing code in a separate chat. Your review remains the publication boundary.</p>
+<h2 id="part-9--give-future-agents-durable-instructions">Part 9 — Give Future Agents Durable Instructions</h2>
+<p>A conversation can end. Repository instructions remain beside the website.</p>
+<p>For Codex, create an <code>AGENTS.md</code> file in the root of the repository. Begin with a short charter like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Website instructions</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>This repository is my public personal website.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Purpose</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>The site exists to <span class="co">[</span><span class="ot">complete this sentence</span><span class="co">]</span>. Its primary audience is <span class="co">[</span><span class="ot">complete this sentence</span><span class="co">]</span>.</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working rules</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Preserve my factual claims and voice. Ask when information is missing.</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Keep the site static, responsive, accessible, and easy to move to another host.</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Never add private information, credentials, secret keys, or unpublished personal material.</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Prepare meaningful changes on a focused branch and show me the diff.</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Check changed pages, navigation, and links before opening a pull request.</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Open a pull request for review. Do not merge or publish on my behalf.</span></code></pre></div>
+<p>Adapt the file as you learn what matters. Add preferred language, design principles, content categories, verification steps, and boundaries that have repeatedly proved useful.</p>
+<p>Other agent runtimes may look for another instruction filename, such as <code>CLAUDE.md</code> or <code>GEMINI.md</code>. The principle is stable even when the filename changes: keep the website's purpose and operating rules with the website, where you can inspect and move them.</p>
+<h2 id="part-10--move-to-a-laptop-and-a-cli-agent">Part 10 — Move to a Laptop and a CLI Agent</h2>
+<p>The browser path can keep working for a long time. A local checkout becomes useful when the site contains many pages or you want richer previews and verification.</p>
+<p>Install Git and the CLI agent you want to use. For Codex, follow the current <a href="https://learn.chatgpt.com/docs/codex/cli">Codex CLI installation guide</a>. Then open a terminal and run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/YOUR-USERNAME/YOUR-USERNAME.github.io.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> YOUR-USERNAME.github.io</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span></span></code></pre></div>
+<p>If this is your first time using a terminal, ask the agent to guide one command at a time and explain what each command changes. Authentication belongs to GitHub and your chosen agent; never place passwords, access tokens, or API keys in the public website files.</p>
+<p>Start the local relationship with:</p>
+<blockquote>
+<p>Read <code>AGENTS.md</code> and inspect this website. Explain its structure and current publication workflow in plain language. Help me preview it locally. Do not change anything yet. After I confirm that understanding, help me plan one small improvement.</p>
+</blockquote>
+<p>For each improvement, use the same review rhythm:</p>
+<ol type="1">
+<li>Create a focused branch.</li>
+<li>Make the change.</li>
+<li>Preview the page locally.</li>
+<li>Check the relevant links and responsive layout.</li>
+<li>Review the diff together.</li>
+<li>Commit the accepted work.</li>
+<li>Push the branch and open a pull request.</li>
+<li>Merge only after your final review.</li>
+</ol>
+<p>This is already a small harness. The repository carries purpose, content, history, operating rules, and a repeatable path from conversation to publication.</p>
+<h2 id="add-services-without-giving-up-the-website">Add Services Without Giving Up the Website</h2>
+<p>Your static site can remain the center while specialized providers perform particular jobs.</p>
+<h3 id="payments">Payments</h3>
+<p>Create a hosted checkout link or buy button with a payment provider and place the link on your site. Stripe's <a href="https://docs.stripe.com/payment-links">Payment Links</a> are one example. The provider handles payment details; your page explains the offer and sends the visitor to the secure transaction surface.</p>
+<h3 id="forms-and-contact">Forms and contact</h3>
+<p>Use a form service, a hosted form, or a simple email link. The page remains yours while the form provider receives and delivers the submission.</p>
+<h3 id="discussion-and-community">Discussion and community</h3>
+<p>Link to a community, forum, or social account, or embed comments backed by a service such as GitHub Discussions. Hadosh Academy uses this pattern to place discussion beside static articles and project pages.</p>
+<h3 id="scheduling-newsletters-and-events">Scheduling, newsletters, and events</h3>
+<p>Connect visitors to a booking page, newsletter service, event platform, video channel, or calendar. Your website becomes the stable map that explains how the pieces relate.</p>
+<h3 id="browser-side-interaction">Browser-side interaction</h3>
+<p>JavaScript can add filters, galleries, interactive diagrams, calculators, reading controls, and other behavior that runs in the visitor's browser. A static site can therefore be interactive without becoming a full server application.</p>
+<p>The practical rule is simple: public configuration can live in the site; credentials and secret keys belong in the service that protects them.</p>
+<h2 id="github-is-a-starting-route-not-the-definition">GitHub Is a Starting Route, Not the Definition</h2>
+<p>The asset should not depend conceptually on one host. GitHub is the primary route in this guide because it combines a free public repository, version history, pull requests, agent integrations, and static hosting in one place.</p>
+<p>Other useful routes include:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Host</th>
+<th>What it offers</th>
+<th>How the ownership pattern carries over</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>GitLab Pages</strong></td>
+<td>Static sites from GitLab projects on its Free tier, with CI/CD deployment and custom-domain support.</td>
+<td>Keep the site in a GitLab repository and use merge requests instead of pull requests.</td>
+</tr>
+<tr class="even">
+<td><strong>Cloudflare Pages</strong></td>
+<td>A free Pages plan, Git integration, direct upload, preview deployments, and custom domains.</td>
+<td>Keep the canonical files in GitHub or GitLab and let Cloudflare publish each accepted change.</td>
+</tr>
+<tr class="odd">
+<td><strong>Netlify</strong></td>
+<td>Git-connected continuous deployment, deploy previews, and direct drag-and-drop publishing.</td>
+<td>Keep the repository as the source of truth even if Netlify becomes the host.</td>
+</tr>
+<tr class="even">
+<td><strong>Vercel</strong></td>
+<td>A free Hobby plan for personal, non-commercial work, Git integration, previews, and automatic HTTPS.</td>
+<td>Connect the same repository and move to a suitable plan if the site becomes commercial.</td>
+</tr>
+</tbody>
+</table>
+<p>See the providers' current documentation before choosing: <a href="https://docs.gitlab.com/user/project/pages/">GitLab Pages</a>, <a href="https://developers.cloudflare.com/pages/">Cloudflare Pages</a>, <a href="https://docs.netlify.com/deploy/create-deploys/">Netlify deploys</a>, and <a href="https://vercel.com/docs/plans">Vercel plans</a>.</p>
+<p>You can also keep the repository on GitHub and host the site elsewhere. Repository provider, publishing provider, domain registrar, and AI agent are separable roles. That separability is part of the ownership design.</p>
+<h2 id="your-agent-can-change-too">Your Agent Can Change Too</h2>
+<p>Codex is the primary worked example because it can operate in ChatGPT, in the cloud, and locally against a repository. It is not the only possible runtime.</p>
+<p>Claude Code, Gemini CLI, Qwen Code, OpenCode, GitHub Copilot, and other coding agents can all participate in a repository-based workflow. Some work locally. Some connect through GitHub Actions or their own cloud integrations. The stable requirements are more important than the brand:</p>
+<ul>
+<li>the agent can inspect the existing files before changing them;</li>
+<li>it can edit the repository rather than trapping the result in a chat response;</li>
+<li>it can respect repository-level instructions;</li>
+<li>it can show the proposed change;</li>
+<li>it can run relevant checks; and</li>
+<li>it can leave publication or merge authority with you.</li>
+</ul>
+<p>If you change agents, begin with the repository, <code>README.md</code>, and the applicable instruction file. Ask the new agent to explain the current structure before it edits anything. The intelligence provider changes; the website and its accumulated context stay in place.</p>
+<h2 id="move-to-a-personal-domain-when-it-becomes-valuable">Move to a Personal Domain When It Becomes Valuable</h2>
+<p>The free address is enough to begin. Later, you can buy a domain such as <code>yourname.com</code> or a name connected to your subject and point it to the same static site.</p>
+<p>A personally registered domain gives the public address another layer of portability. You can move from GitHub Pages to GitLab Pages, Cloudflare Pages, Netlify, or another host while keeping the address people already know. The repository continues to hold the site; the domain continues to point visitors toward it.</p>
+<p>The useful sequence is:</p>
+<ol type="1">
+<li>Build something worth visiting.</li>
+<li>Learn what name and structure actually fit it.</li>
+<li>Add a domain when a stable public identity is valuable.</li>
+<li>Keep the files and history portable throughout.</li>
+</ol>
+<p>You do not need to delay the first page while deciding the final form of the tenth version.</p>
+<h2 id="a-good-first-month">A Good First Month</h2>
+<p>After publishing, grow the website through small, visible cycles.</p>
+<h3 id="week-1--establish-the-home">Week 1 — Establish the home</h3>
+<p>Publish the homepage, purpose, first three sections, and a reliable way to contact or follow you.</p>
+<h3 id="week-2--add-one-real-piece-of-work">Week 2 — Add one real piece of work</h3>
+<p>Publish one article, project, recipe, artwork, analysis, story, or resource that gives the site substance.</p>
+<h3 id="week-3--improve-the-path-for-visitors">Week 3 — Improve the path for visitors</h3>
+<p>Ask someone to use the site. Improve navigation, readability, mobile behavior, and the next action a visitor should take.</p>
+<h3 id="week-4--improve-the-agent-relationship">Week 4 — Improve the agent relationship</h3>
+<p>Update the repository instructions with what you learned. Add a simple review checklist. Ask the agent to identify repeated manual work that could become a reliable script or workflow.</p>
+<p>After four weeks, the value is larger than four pages. You have a public asset, a working vocabulary, a history of decisions, and experience directing an agent through a real project.</p>
+<h2 id="your-completion-check">Your Completion Check</h2>
+<p>The first version is established when you can answer yes to these questions:</p>
+<ul>
+<li>Can I open the website from its public address?</li>
+<li>Does it clearly express one purpose that belongs to me?</li>
+<li>Is at least one piece of real content present?</li>
+<li>Do I know where its files and history live?</li>
+<li>Can I ask my agent for one focused change?</li>
+<li>Can I inspect that change before it becomes public?</li>
+<li>Could I download or clone the site and continue with another tool?</li>
+</ul>
+<p>If yes, you have built more than a profile inside another platform. You have established a small place on the open web, learned the first language needed to direct its development, and created an asset that can grow with your interests and professional life.</p>
+<p>The next improvement can begin as simply as the first one:</p>
+<blockquote>
+<p>Visit my website, understand what it is becoming, and help me add one useful thing without losing what already works.</p>
+</blockquote>
+<hr />
+<p><em>Practical Guide 1. Build something small enough to begin and useful enough to keep.</em></p>
+            </div>
+
+            <div class="article-comments" data-contribution-surface="practical-guide-1">
+                <h2>Discuss this guide</h2>
+                <p>Use this thread to share where the setup was unclear, which step blocked you, what kind of personal space you created, or which hosting and agent path you used. Remove credentials and private material before posting.</p>
+                <p data-community-guidance>If an agent prepared your comment, review the exact public message and destination, remove private material, and post only with your explicit approval. See the <a href="../../CONTRIBUTING.md">contribution guide</a>.</p>
+                <script src="https://giscus.app/client.js" data-repo="hadi-nayebi/hadi-nayebi.github.io" data-repo-id="R_kgDOHL_tnQ" data-category="General" data-category-id="DIC_kwDOHL_tnc4C3cRQ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-title">Practical Guide Series</div>
+            <div>
+                <div class="article-card"><div class="sidebar-card-position">Guide 1</div><h3>Build Your Own Space on the Web</h3><div class="date">From first idea to a live, agent-maintained website</div></div>
+                <div class="article-card"><div class="sidebar-card-position">The outcome</div><h3>One useful public asset</h3><div class="date">Your files, history, instructions, and publishing path</div></div>
+                <div class="article-card"><div class="sidebar-card-position">The method</div><h3>Learn by directing real work</h3><div class="date">Conversation &rarr; branch &rarr; review &rarr; publication</div></div>
+            </div>
+        </aside>
+    </div></section></main>
+
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="../../js/theme-manager.js?v=20260903-whats-new-1"></script>
+    <script src="../../js/components.js?v=20260903-whats-new-1"></script>
+</body>
+</html>
