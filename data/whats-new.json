@@ -1,8 +1,62 @@
 {
   "version": 1,
-  "updated": "2026-09-05",
+  "updated": "2026-09-06",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-06-personal-web-home-guide",
+      "date": "2026-09-06",
+      "type": "Practical guide",
+      "title": "The first Practical Guide turns a personal website into a learning surface",
+      "summary": "A new browser-first guide walks a non-technical reader from an empty GitHub repository to a personal static website they can continue shaping through conversation with an AI agent.",
+      "why_it_matters": "The website becomes both a useful public asset and a concrete way to learn repositories, commits, branches, pull requests, instructions, and deployment without beginning from abstract software lessons.",
+      "affected": ["Practical Guides", "Personal websites", "GitHub Pages", "Agent literacy", "Blog navigation"],
+      "maturity": "Published guide with a complete browser-only path",
+      "intended_for": ["Non-technical builders", "People establishing a personal web presence", "New repository users", "People working with repository-capable agents"],
+      "sources": [
+        {
+          "label": "Practical Guide publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/79"
+        },
+        {
+          "label": "Build Your Own Space on the Web",
+          "url": "/blog/practical-guides/01-build-your-own-space-on-the-web.html"
+        },
+        {
+          "label": "Reorganized Blog index",
+          "url": "/blog.html"
+        }
+      ],
+      "adoption_notes": "The primary path uses GitHub Pages and can be completed in a browser; repository-connected ChatGPT/Codex and Codex CLI are later options, not prerequisites. The guide introduces enough repository vocabulary to review an agent's work, but the reader remains responsible for account access, public content, and merge decisions. Alternative hosts and repository-capable agents may require different setup and capability checks.",
+      "recommended_action": "Use the browser-only path to publish one small page, then add durable repository instructions and agent assistance only when you are ready to review changes through branches and pull requests."
+    },
+    {
+      "id": "2026-09-05-observation-episode-one",
+      "date": "2026-09-05",
+      "type": "Observation",
+      "title": "The Information System of a Planet begins with life's first information substrate",
+      "summary": "The first Observation episode now tells a seven-slide visual story about molecular life, bacterial communication, substrate limits, nervous systems, lifetime learning, and experience crossing between organisms.",
+      "why_it_matters": "Readers can see later information systems as expansions of older substrates rather than a ladder in which sensing, memory, communication, or coordination suddenly appears for the first time.",
+      "affected": ["The Information System of a Planet", "Observations", "Visual storytelling", "Evolution of information"],
+      "maturity": "Published Episode 1 with a fixed-viewport story reader",
+      "intended_for": ["General readers", "People curious about life and information", "Visual learners", "Readers without technical prerequisites"],
+      "sources": [
+        {
+          "label": "Episode 1 publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/70"
+        },
+        {
+          "label": "Observation reader redesign pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/75"
+        },
+        {
+          "label": "The Information System of a Planet",
+          "url": "/blog/observations/information-system-of-a-planet/index.html"
+        }
+      ],
+      "adoption_notes": "The episode is narrative nonfiction with per-slide sources and explicit uncertainty boundaries. Its computational language is metaphorical, not a claim that cells or nervous systems are literal digital machines. The story currently stops before language, writing, modern computation, or the digital-cortex stage. Narration audio paths are reserved, but audio is not yet published; readers control slide pacing.",
+      "recommended_action": "Read Episode 1 in the story reader, open the source drawers for claims you want to inspect, and return episode-specific corrections or evidence through its discussion link."
+    },
     {
       "id": "2026-09-04-visible-harness-publication",
       "date": "2026-09-04",
