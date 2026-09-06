@@ -36,6 +36,13 @@
       "path": "episodes/episode-01-when-life-learned-before-it-died.json",
       "title": "When Life Learned Before It Died",
       "published": "2026-09-05"
+    },
+    {
+      "number": 2,
+      "slug": "when-experience-found-another-body",
+      "path": "episodes/episode-02-when-experience-found-another-body.json",
+      "title": "When Experience Found Another Body",
+      "published": "2026-09-06"
     }
   ]
 }

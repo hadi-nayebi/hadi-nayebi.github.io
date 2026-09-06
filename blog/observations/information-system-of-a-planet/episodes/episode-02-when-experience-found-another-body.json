@@ -1,0 +1,269 @@
+{
+  "number": 2,
+  "slug": "when-experience-found-another-body",
+  "title": "When Experience Found Another Body",
+  "status": "published",
+  "published": "2026-09-06",
+  "deckline": "A nervous system could learn. Once other animals could watch, follow, listen, and copy, some of that learning could survive as a tradition instead of disappearing with one body.",
+  "objective": "Show how social learning lets information acquired during one lifetime spread through animal groups and sometimes persist beyond the original learner, creating living traditions and animal cultures before human language becomes the protagonist, while distinguishing communication, social learning, culture, and cumulative culture.",
+  "learning_outcomes": [
+    "Distinguish communication from social learning: a signal can affect another animal without transmitting a learned behavior, while social information can also travel through observation and environmental traces.",
+    "See how socially learned behaviors can spread, stabilize, and persist as group traditions in animals.",
+    "Recognize animal culture across very different information forms, including foraging techniques, migration routes, songs, tools, grooming, and social customs.",
+    "Understand a group tradition as a distributed and vulnerable archive that lives in bodies, relationships, and repeated practice rather than in an external durable record.",
+    "Recognize cumulative culture as a debated spectrum rather than a clean human-versus-animal switch, while seeing why channel capacity and fidelity become the next pressure in the story."
+  ],
+  "continuity": "Episode 1 established that molecular life already communicates, that nervous systems expanded lifetime learning, and that learned experience can cross from one animal to another. This episode follows that crossing into animal groups and asks when transferred experience begins to persist as a tradition.",
+  "future_pressure": "A living tradition can preserve information beyond one learner, but it remains limited by what bodies can demonstrate, observe, remember, and repeat. The next gap is how increasingly expressive communication expands what can be transferred between minds without pretending that language appeared all at once.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-2-when-experience-found-another-body",
+  "slides": [
+    {
+      "id": "another-body",
+      "title": "A memory finds another body",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-02/01-another-body.jpg",
+        "alt": "One animal discovers a safe path around danger while another watches, with the learned route appearing as a faint luminous trace that continues into the observer.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "At the end of the last episode, one bumblebee watched another solve a problem it had not solved alone. That small crossing changes the shape of the story.",
+        "A private memory lasts only as long as the system carrying it. But if what one animal learned changes what another animal does, the information has found a second body. It may travel because the observer copies an action, follows a route, notices where others are feeding, or simply avoids the place where everyone else looks terrified.",
+        "This is social learning: an animal acquires information through another animal or through evidence another animal leaves behind. It overlaps with communication, but the two are not identical. A call may change behavior without teaching a new tradition. A youngster may learn where to find food by following an adult who never intended to teach anything.",
+        "Nothing here requires a spoken explanation, a classroom, or even deliberate instruction. One nervous system changes the information available to another, and the second animal performs part of the learning instead of starting from zero.",
+        "The fossils do not preserve the first copied detour. Living species are not a staircase showing us that event in order. What they reveal is the breadth of the possibility: across insects, fish, birds, and mammals, experience can move socially.",
+        "The bridge from Episode 1 now has two ends."
+      ],
+      "sources": [
+        {
+          "label": "Frontiers in Neuroscience — Social learning in humans and other animals",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3982061/",
+          "note": "Reviews the widespread forms and mechanisms of social learning across species."
+        },
+        {
+          "label": "Science — Public information: from nosy neighbors to cultural evolution",
+          "url": "https://doi.org/10.1126/science.1098254",
+          "note": "Explains how animals use the behavior and performance of others as information about their environment."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "flock-tradition",
+      "title": "A flock learns a left turn",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-02/02-flock-tradition.jpg",
+        "alt": "A woodland flock of great tits gathers around a two-sided puzzle feeder, with most birds repeating the same locally learned sliding motion.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "A tradition can begin with almost nothing: two birds and a door that slides both ways.",
+        "Researchers gave wild great tits puzzle feeders with two equally rewarding solutions. In several woodland populations, they trained just two birds to open the door in one direction — left in some groups, right in others — and released them back into their flocks.",
+        "The introduced technique moved through the birds’ social networks. Each population developed a local preference, and birds increasingly conformed to the method common around them. New birds joining later were more likely to adopt the local solution too. The preference persisted across two seasons even as individual birds came and went.",
+        "No bird held the master copy. The tradition existed in repeated encounters: one bird watched another, then became an example for the next. The population carried a pattern that was not reducible to the genes of any one bird and did not have to be rediscovered independently by every newcomer.",
+        "This is one useful scientific meaning of culture: information or behavior shared in a group and sustained at least partly through social learning. It does not require museums, violins, or extremely serious people discussing extremely serious books.",
+        "A flock can have a local way of doing things. Once that way survives the original innovators, the group has begun to remember."
+      ],
+      "sources": [
+        {
+          "label": "Nature — Persistent culture via conformity in wild birds",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4344839/",
+          "note": "Primary field experiment showing introduced foraging techniques spreading and persisting as local traditions in wild great tits."
+        },
+        {
+          "label": "Convention on Migratory Species — Animal culture and social learning",
+          "url": "https://www.cms.int/conservation-priorities/conservation-needs/animal-culture-and-social-learning",
+          "note": "Provides an accessible, conservation-oriented definition of animal culture."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "route-in-the-flock",
+      "title": "The map can live in the flock",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-02/03-route-in-the-flock.jpg",
+        "alt": "A mixed-age flock of whooping cranes flies above wetlands, led along a luminous remembered migration route by an older bird while younger birds follow.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Sometimes the information moving between animals is not a trick. It is a path across a continent.",
+        "Scientists studied reintroduced whooping cranes whose migration histories were unusually well documented. The birds had first been guided south by ultralight aircraft, then had to make later journeys as cranes among cranes. By comparing years of migration data, researchers could ask what made a flock’s route improve.",
+        "The answer was not simply more birds. Groups flew straighter when they contained an older, more experienced individual. As birds accumulated years of travel, their performance improved; seven years of experience was associated with a 38 percent reduction in deviation from a straight route.",
+        "A route can involve inherited tendencies, environmental cues, individual exploration, and social learning at the same time. The crane study does not turn migration into a purely cultural behavior. It shows that, for these birds, experience carried by older individuals materially improved what the group could do.",
+        "The landscape held mountains, winds, rivers, and wetlands. The flock held another kind of map: where earlier journeys had worked.",
+        "That map was not drawn anywhere. It moved because experienced wings kept flying beside inexperienced ones."
+      ],
+      "sources": [
+        {
+          "label": "Science — Social learning of migratory performance",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23990559/",
+          "note": "Primary study linking older group members and accumulated experience to improved migration routes in reintroduced whooping cranes."
+        },
+        {
+          "label": "Philosophical Transactions B — Collective animal navigation and migratory culture",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5882979/",
+          "note": "Reviews how social interactions and cultural transmission can shape migratory knowledge."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "ocean-song",
+      "title": "An ocean changes its song",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-02/04-ocean-song.jpg",
+        "alt": "Humpback whales sing beneath a vast night ocean as layered sound patterns pass between distant groups across the South Pacific.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "Now enlarge the bridge until it crosses an ocean.",
+        "Male humpback whales sing long, structured displays. Within a population, many males converge on the same current song. The song changes gradually, but in the South Pacific researchers have also documented revolutions: a substantially new song arrives from a neighboring population and replaces the previous one.",
+        "By comparing recordings across years and breeding grounds, researchers have traced related song themes eastward through multiple populations. Work published in 2022 found matching themes connecting French Polynesia and Ecuador, extending evidence of cultural transmission across the South Pacific basin. The exact encounters that carry each theme are difficult to observe; shared feeding grounds and migration routes are leading possibilities.",
+        "Genes do not rewrite an entire whale population’s song on that timescale. Each singer is listening inside a moving acoustic world, learning a pattern that other singers are also changing. The culture is stable enough to be recognizable and fluid enough to be replaced.",
+        "This is information traveling without a fixed object. No page crosses the water. No archive waits on shore. The pattern survives because bodies keep hearing it, reproducing it, and passing its changing structure onward.",
+        "For a while, an ocean can hold a tune."
+      ],
+      "sources": [
+        {
+          "label": "Royal Society Open Science — Humpback whale song revolutions across the South Pacific",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9428538/",
+          "note": "Primary study tracing shared song themes from central to eastern South Pacific humpback populations."
+        },
+        {
+          "label": "Scientific Reports — Song complexity during inter-population transmission",
+          "url": "https://www.nature.com/articles/s41598-022-12784-3",
+          "note": "Analyzes how humpback song structure is maintained as songs pass between populations."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "many-cultures",
+      "title": "Culture was never ours alone",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-02/05-many-cultures.jpg",
+        "alt": "Different chimpanzee communities inhabit separate forest clearings, each practicing distinct tool, grooming, and courtship traditions without being arranged in a hierarchy.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Humans spent a long time using culture as a fence around themselves. The animals have been quietly damaging the fence.",
+        "In 1999, researchers combined 151 years of observation from seven long-term chimpanzee field sites. They identified 39 behavior patterns — involving tools, grooming, courtship, and other activities — that were customary or habitual in some communities but absent in others where the researchers had tried to rule out ecological explanations.",
+        "The conclusion was not that chimpanzee and human cultures are identical. It was that members of the same species can grow into different local repertoires. A young chimpanzee does not encounter generic chimpanzee life. It encounters this community: these materials, these companions, these gestures, these techniques, these tolerated habits.",
+        "Later research has widened the picture far beyond primates. Socially learned traditions have been studied in insects, fish, birds, and many mammals. They can concern food, movement, predators, tools, mating displays, songs, and social customs.",
+        "Researchers still argue about definitions and about how strongly particular cases exclude genetic or environmental alternatives. That argument is healthy. Culture is not a magic substance detected by finding one clever animal. It is a claim about how a pattern spreads and persists in a group.",
+        "The safe lesson is already large enough: biology can build an animal capable of entering a local information world that biology alone did not specify."
+      ],
+      "sources": [
+        {
+          "label": "Nature — Cultures in chimpanzees",
+          "url": "https://www.nature.com/articles/21415",
+          "note": "Landmark synthesis of behavioral variation across seven long-studied chimpanzee communities."
+        },
+        {
+          "label": "Science — The burgeoning reach of animal culture",
+          "url": "https://doi.org/10.1126/science.abe6514",
+          "note": "Reviews the expanding evidence for socially learned traditions across animal species and behavioral domains."
+        },
+        {
+          "label": "Science Advances — Biased cultural transmission of a chimpanzee social custom",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9931211/",
+          "note": "Examines social transmission of community-specific grooming conventions in chimpanzees."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "living-archive",
+      "title": "The archive has no shelf",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-02/06-living-archive.jpg",
+        "alt": "An elder animal and younger group members carry luminous fragments of routes, calls, and foraging knowledge between them, while one missing connection causes part of the pattern to fade.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A living tradition is an archive with no shelf.",
+        "Its storage medium is a population: nervous systems, bodies, relationships, and repeated practice. That makes it wonderfully adaptive. A route can bend around a new danger. A feeding technique can spread when it works. A song can change while remaining recognizable to the animals learning it.",
+        "It also makes the archive vulnerable. If knowledgeable individuals disappear, if social groups are broken apart, or if young animals can no longer observe the behavior in the right setting, information can vanish even when the species survives. Conservation researchers now argue that protecting animals sometimes requires protecting culturally important knowledge and the social pathways that carry it, not only preserving a head count and a genome.",
+        "This does not mean every old animal is a librarian or every group difference is culture. It means that the information needed to live in a particular place may be distributed unevenly through a population. Remove the wrong relationships and the remaining bodies may possess less usable knowledge than their number suggests.",
+        "DNA crosses generations by reproduction. A tradition crosses generations by renewed contact. It must be performed again, noticed again, and learned again.",
+        "The archive stays alive by being used."
+      ],
+      "sources": [
+        {
+          "label": "Science — Animal cultures matter for conservation",
+          "url": "https://www.science.org/doi/10.1126/science.aaw3557",
+          "note": "Reviews how socially learned knowledge and group-specific traditions affect wildlife conservation."
+        },
+        {
+          "label": "Convention on Migratory Species — Animal culture and social learning",
+          "url": "https://www.cms.int/conservation-priorities/conservation-needs/animal-culture-and-social-learning",
+          "note": "Describes why conserving social knowledge can matter alongside genes, individuals, and habitats."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-06.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "bridge-horizon",
+      "title": "Every bridge has a bandwidth",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-02/07-bridge-horizon.jpg",
+        "alt": "Animal traditions flow across many living bridges, but increasingly intricate patterns narrow at the limits of what observation, calls, gestures, and memory can faithfully carry.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "Once experience can move between bodies, another question appears: how much can the bridge carry?",
+        "A tradition may spread and persist without becoming more complex. Cumulative culture asks for something stronger: socially transmitted changes that build on earlier changes so that a group’s behavior improves, diversifies, or becomes too elaborate for one individual to invent alone.",
+        "Humans eventually do this at extraordinary scale. But drawing a bright line around the capacity has become difficult. Researchers have reported limited forms or ingredients of cumulative culture in several other animals, while debating definitions, experimental tests, and whether the results resemble the open-ended accumulation characteristic of human societies.",
+        "We do not need to settle that border here. The more important pattern is gradual. Different channels carry different payloads with different speed, range, fidelity, and flexibility. Watching another animal can transmit a route or a technique. Calls can coordinate action or warn of danger. Songs can preserve intricate learned sequences. None of these channels arrives from nowhere, and none simply replaces the others.",
+        "As the possible payload grows, the limits of the bridge become more important. Can it refer to something absent? Can it combine familiar signals into a new idea? Can a learner reconstruct a complicated sequence closely enough to modify it rather than merely lose pieces?",
+        "Information has escaped one body. It has not yet escaped bodies themselves."
+      ],
+      "sources": [
+        {
+          "label": "Proceedings B — What is cumulative cultural evolution?",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6015846/",
+          "note": "Reviews competing definitions and proposes core criteria for identifying cumulative cultural evolution."
+        },
+        {
+          "label": "Learning & Behavior — Experimental assessment of capacities for cumulative culture",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6916575/",
+          "note": "Reviews evidence and methodological challenges in comparing cumulative culture across humans and other animals."
+        },
+        {
+          "label": "Philosophical Transactions B — Cumulative culture in nonhumans",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5843669/",
+          "note": "Argues for careful attention to possible nonhuman cases and to variation in how cumulative culture is defined."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-02/slide-07.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
