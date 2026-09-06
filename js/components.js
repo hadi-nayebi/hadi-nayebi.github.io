@@ -1,4 +1,4 @@
-// Version: v0.10.0
+// Version: v0.11.0
 // Shared site components: canonical navigation, responsive support, blog series navigation,
 // footer, lightbox, blog filters, and audio controls.
 
@@ -300,29 +300,35 @@
         if (!cards.length || container.querySelector('.blog-filter-bar')) return;
 
         var AUDIENCE_TOOLTIPS = {
+            'everyone': 'Accessible starting points for general readers',
             'professionals': 'For lawyers, consultants, PMs, researchers — no coding required',
             'power-users': 'For professionals ready for deeper technical understanding',
             'architects': 'For technical builders creating novel agent architectures'
         };
         var AUDIENCE_LABELS = {
+            'everyone': 'Everyone',
             'professionals': 'Professionals',
             'power-users': 'Power Users',
             'architects': 'Architects'
         };
+        var CATEGORY_LABELS = {
+            'practical-guides': 'Practical Guides',
+            'principles': 'Principles',
+            'observations': 'Observations',
+            'technical-writing': 'Technical Writing'
+        };
+        var categories = [];
         var audiences = [];
-        var topics = [];
         cards.forEach(function (card) {
+            var category = card.getAttribute('data-category');
+            if (category && categories.indexOf(category) === -1) categories.push(category);
             var audience = card.getAttribute('data-audience');
             if (audience && audiences.indexOf(audience) === -1) audiences.push(audience);
-            (card.getAttribute('data-tags') || '').split(',').forEach(function (tag) {
-                tag = tag.trim();
-                if (tag && topics.indexOf(tag) === -1) topics.push(tag);
-            });
         });
 
         var bar = document.createElement('div');
         bar.className = 'blog-filter-bar';
-        bar.setAttribute('aria-label', 'Filter essays');
+        bar.setAttribute('aria-label', 'Filter writing by category and audience');
 
         function makeButton(label, attribute, value, title) {
             var button = document.createElement('button');
@@ -335,14 +341,14 @@
             return button;
         }
 
-        var allButton = makeButton('All', 'data-filter', 'all');
+        var allButton = makeButton('All writing', 'data-filter', 'all');
         allButton.classList.add('active');
         allButton.setAttribute('aria-pressed', 'true');
         bar.appendChild(allButton);
 
-        audiences.forEach(function (audience) {
-            var button = makeButton(AUDIENCE_LABELS[audience] || audience, 'data-filter-audience', audience, AUDIENCE_TOOLTIPS[audience] || '');
-            button.classList.add('tag-audience');
+        categories.forEach(function (category) {
+            var button = makeButton(CATEGORY_LABELS[category] || category, 'data-filter-category', category, 'Show this writing category');
+            button.classList.add('tag-category');
             bar.appendChild(button);
         });
 
@@ -351,9 +357,10 @@
         divider.setAttribute('aria-hidden', 'true');
         bar.appendChild(divider);
 
-        topics.forEach(function (topic) {
-            var label = topic.split('-').map(function (word) { return word.charAt(0).toUpperCase() + word.slice(1); }).join(' ');
-            bar.appendChild(makeButton(label, 'data-filter-tag', topic));
+        audiences.forEach(function (audience) {
+            var button = makeButton(AUDIENCE_LABELS[audience] || audience, 'data-filter-audience', audience, AUDIENCE_TOOLTIPS[audience] || '');
+            button.classList.add('tag-audience');
+            bar.appendChild(button);
         });
 
         var header = container.querySelector('.blog-index-header');
@@ -366,13 +373,13 @@
         }
 
         function applyFilters() {
+            var activeCategories = [];
             var activeAudiences = [];
-            var activeTags = [];
+            bar.querySelectorAll('[data-filter-category].active').forEach(function (element) {
+                activeCategories.push(element.getAttribute('data-filter-category'));
+            });
             bar.querySelectorAll('[data-filter-audience].active').forEach(function (element) {
                 activeAudiences.push(element.getAttribute('data-filter-audience'));
-            });
-            bar.querySelectorAll('[data-filter-tag].active').forEach(function (element) {
-                activeTags.push(element.getAttribute('data-filter-tag'));
             });
             var showAll = allButton.classList.contains('active');
             cards.forEach(function (card) {
@@ -380,11 +387,14 @@
                     card.classList.remove('filter-hidden');
                     return;
                 }
+                var cardCategory = card.getAttribute('data-category');
                 var cardAudience = card.getAttribute('data-audience');
-                var cardTags = (card.getAttribute('data-tags') || '').split(',').map(function (tag) { return tag.trim(); });
-                var matchAudience = activeAudiences.length > 0 && activeAudiences.indexOf(cardAudience) !== -1;
-                var matchTag = activeTags.length > 0 && activeTags.some(function (tag) { return cardTags.indexOf(tag) !== -1; });
-                card.classList.toggle('filter-hidden', !(matchAudience || matchTag));
+                var matchCategory = activeCategories.length === 0 || activeCategories.indexOf(cardCategory) !== -1;
+                var matchAudience = activeAudiences.length === 0 || activeAudiences.indexOf(cardAudience) !== -1;
+                card.classList.toggle('filter-hidden', !(matchCategory && matchAudience));
+            });
+            container.querySelectorAll('[data-category-section]').forEach(function (section) {
+                section.classList.toggle('filter-hidden', !section.querySelector('.blog-index-card:not(.filter-hidden)'));
             });
         }
 
@@ -397,7 +407,7 @@
             } else {
                 setPressed(button, !button.classList.contains('active'));
                 setPressed(allButton, false);
-                if (!bar.querySelector('[data-filter-audience].active, [data-filter-tag].active')) setPressed(allButton, true);
+                if (!bar.querySelector('[data-filter-category].active, [data-filter-audience].active')) setPressed(allButton, true);
             }
             applyFilters();
         });
