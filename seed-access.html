@@ -52,7 +52,7 @@
             </div>
 
             <div class="card access-form-card">
-                <form id="seed-access-form">
+                <form id="seed-access-form" method="post" action="/seed-access.html">
                     <div class="form-group"><label for="access-name">Name</label><input type="text" id="access-name" name="name" class="form-control" autocomplete="name" required></div>
                     <div class="form-group"><label for="access-email">Email</label><input type="email" id="access-email" name="email" class="form-control" autocomplete="email" required></div>
                     <div class="form-group">
@@ -69,7 +69,7 @@
                     <div class="form-group"><label for="access-tools">Tools or frameworks you use <span class="form-optional">(optional)</span></label><input type="text" id="access-tools" name="tools" class="form-control" placeholder="Claude Code, Codex, Qwen Code, OpenCode, or something else"></div>
                     <div class="form-group"><label for="access-goal">What do you want to study, compare, or build?</label><textarea id="access-goal" name="goal" class="form-control" rows="6" required></textarea></div>
                     <div class="form-group form-check access-agreement"><input type="checkbox" id="access-agreement" name="agreement" class="form-check-input" required><label for="access-agreement" class="form-check-label">I understand this is private reference access and I will not redistribute repository content without permission.</label></div>
-                    <button type="submit" id="seed-access-submit" class="btn btn-primary">Send Access Request</button>
+                    <button type="submit" id="seed-access-submit" class="btn btn-primary" disabled>Send Access Request</button>
                     <p class="access-delivery-note">Your request is sent through the site's existing email service. No separate applicant database is created.</p>
                     <p id="seed-access-status" class="form-status" role="status" aria-live="polite"></p>
                 </form>
@@ -81,6 +81,6 @@
     <script src="js/theme-manager.js?v=20260903-whats-new-1"></script>
     <script src="js/components.js?v=20260903-whats-new-1"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="js/seed-access.js?v=20260903-whats-new-1"></script>
+    <script src="js/seed-access.js?v=20260906-form-fallback-1"></script>
 </body>
 </html>
