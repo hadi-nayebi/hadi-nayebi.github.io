@@ -1,19 +1,27 @@
 (function() {
-    // Initialize EmailJS with your Public Key
-    emailjs.init('UrA0snZAj1om7ilbd');
-
     const form = document.getElementById('contact-form');
     const submitButton = document.getElementById('submit-button');
-    if (!form || !submitButton) return;
+    const status = document.getElementById('contact-form-status');
+    if (!form || !submitButton || !status) return;
+
+    function setStatus(message, state) {
+        status.textContent = message;
+        if (state) status.setAttribute('data-state', state);
+        else status.removeAttribute('data-state');
+    }
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        // Change button text to indicate sending
+        if (typeof emailjs === 'undefined') {
+            setStatus('The contact form is temporarily unavailable. Please try again later.', 'error');
+            return;
+        }
+
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
+        setStatus('', '');
 
-        // Collect form data
         const formData = new FormData(form);
         const templateParams = {
             name: formData.get('name'),
@@ -22,34 +30,45 @@
             newcomer: formData.get('newcomer') ? 'Yes' : 'No'
         };
 
-        // Define Service and Template IDs
         const serviceID = 'service_chq4jnq';
         const notificationTemplateID = 'template_5he0blr';
         const welcomeTemplateID = 'template_wq2dosk';
 
-        // --- All promises array ---
-        const emailPromises = [];
-
-        // 1. Always send the notification email to the site owner
-        emailPromises.push(emailjs.send(serviceID, notificationTemplateID, templateParams));
-
-        // 2. If the newcomer checkbox is checked, send the welcome email to the user
+        const emailRequests = [
+            function() {
+                return emailjs.send(serviceID, notificationTemplateID, templateParams);
+            }
+        ];
         if (formData.get('newcomer')) {
-            emailPromises.push(emailjs.send(serviceID, welcomeTemplateID, templateParams));
+            emailRequests.push(function() {
+                return emailjs.send(serviceID, welcomeTemplateID, templateParams);
+            });
         }
 
-        // --- Execute all promises ---
-        Promise.all(emailPromises)
+        Promise.all(emailRequests.map(function(send) {
+            return Promise.resolve().then(send);
+        }))
             .then(function(responses) {
                 console.log('SUCCESS!', responses);
-                // On success, redirect to the thank you page
                 window.location.href = '/thanks.html';
             }, function(error) {
                 console.log('FAILED...', error);
-                // On failure, alert the user and re-enable the button
-                alert('Sorry, there was an error sending your message. Please try again.');
+                setStatus('The message could not be sent. Please try again later.', 'error');
                 submitButton.textContent = 'Send Message';
                 submitButton.disabled = false;
             });
     });
+
+    if (typeof emailjs === 'undefined') {
+        setStatus('The contact form is temporarily unavailable. Please try again later.', 'error');
+        return;
+    }
+
+    try {
+        emailjs.init('UrA0snZAj1om7ilbd');
+        submitButton.disabled = false;
+    } catch (error) {
+        console.log('FAILED TO INITIALIZE EMAIL DELIVERY...', error);
+        setStatus('The contact form is temporarily unavailable. Please try again later.', 'error');
+    }
 })();
