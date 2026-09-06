@@ -11,16 +11,18 @@ function read(relativePath) {
   const absolutePath = path.join(root, relativePath);
   if (!fs.existsSync(absolutePath)) {
     errors.push(`${relativePath}: missing public Seed surface`);
-    return '';
+    return null;
   }
   return fs.readFileSync(absolutePath, 'utf8');
 }
 
 function requireText(relativePath, source, text) {
+  if (source === null) return;
   if (!source.includes(text)) errors.push(`${relativePath}: missing ${JSON.stringify(text)}`);
 }
 
 function forbidText(relativePath, source, text) {
+  if (source === null) return;
   if (source.includes(text)) errors.push(`${relativePath}: contains retired product framing ${JSON.stringify(text)}`);
 }
 
