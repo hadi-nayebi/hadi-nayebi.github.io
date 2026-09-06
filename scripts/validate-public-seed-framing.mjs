@@ -31,7 +31,9 @@ const surfaces = new Map([
   ['agents.html', read('agents.html')],
   ['projects/index.html', read('projects/index.html')],
   ['projects/seed-agent.html', read('projects/seed-agent.html')],
-  ['projects/q-seed.html', read('projects/q-seed.html')]
+  ['projects/q-seed.html', read('projects/q-seed.html')],
+  ['blog/b8/08_9-the-seed-is-yours.md', read('blog/b8/08_9-the-seed-is-yours.md')],
+  ['blog/b8/08_9-the-seed-is-yours.html', read('blog/b8/08_9-the-seed-is-yours.html')]
 ]);
 
 requireText('index.html', surfaces.get('index.html'), 'Seed Agent and Q-Seed are framework-specific places where selected foundations can accumulate');
@@ -39,6 +41,8 @@ requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, diff
 requireText('projects/index.html', surfaces.get('projects/index.html'), 'Pattern accumulation');
 requireText('projects/seed-agent.html', surfaces.get('projects/seed-agent.html'), 'Codex pattern accumulation');
 requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Qwen Code-specific pattern-accumulation surface');
+requireText('blog/b8/08_9-the-seed-is-yours.md', surfaces.get('blog/b8/08_9-the-seed-is-yours.md'), 'technical writings are the primary framework-agnostic source');
+requireText('blog/b8/08_9-the-seed-is-yours.html', surfaces.get('blog/b8/08_9-the-seed-is-yours.html'), 'technical writings are the primary framework-agnostic source');
 
 const retiredPhrases = [
   'Seed Agent and Q-Seed as CLI-centered harnesses',
@@ -51,7 +55,10 @@ const retiredPhrases = [
   'How far can a mature Seed go above the runtime?',
   'foundation only',
   'not installable',
-  'not ready'
+  'not ready',
+  'The architectures are the same',
+  'clone, install, and run your first stage-1 cycle',
+  'At 1,000 subscribers, the plan is to graduate'
 ];
 
 for (const [relativePath, source] of surfaces) {
