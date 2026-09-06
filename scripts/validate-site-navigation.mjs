@@ -105,6 +105,17 @@ const allFiles = walk(root);
 const htmlFiles = allFiles.filter(file => file.endsWith('.html'));
 const publicHtml = htmlFiles.filter(file => !rel(file).startsWith('.claude/'));
 
+const blogIndexPath = path.join(root, 'blog.html');
+if (fs.existsSync(blogIndexPath)) {
+  const blogIndexHtml = fs.readFileSync(blogIndexPath, 'utf8');
+  if (/<nav\b[^>]*class=["'][^"']*\bblog-category-nav\b/i.test(blogIndexHtml)) {
+    errors.push('blog.html: blog-category-nav must not use a nav element because the global header-nav layout constrains its height');
+  }
+  if (!/<div\b(?=[^>]*class=["'][^"']*\bblog-category-nav\b)(?=[^>]*role=["']navigation["'])(?=[^>]*aria-label=["'][^"']+["'])[^>]*>/i.test(blogIndexHtml)) {
+    errors.push('blog.html: blog-category-nav must remain an explicitly labelled navigation region');
+  }
+}
+
 for (const file of publicHtml) {
   const html = fs.readFileSync(file, 'utf8');
   const fileRel = rel(file);
