@@ -92,25 +92,15 @@
         if (!form || !submit) return;
         var mountedAt = Date.now();
         var sending = false;
-
-        if (!window.emailjs) {
-            submit.disabled = true;
-            setStatus('Email subscription is temporarily unavailable. Project discussion remains available below.', 'error');
-            return;
-        }
-
-        window.emailjs.init({
-            publicKey: 'UrA0snZAj1om7ilbd',
-            blockHeadless: true,
-            limitRate: {
-                id: 'crime-cartography-subscribe',
-                throttle: SEND_THROTTLE_MS
-            }
-        });
+        var emailReady = false;
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             if (sending) return;
+            if (!emailReady) {
+                setStatus('Email subscription is temporarily unavailable. Project discussion remains available below.', 'error');
+                return;
+            }
             var formData = new FormData(form);
             if (String(formData.get('website') || '').trim()) {
                 form.reset();
@@ -168,11 +158,13 @@
                 PROTOCOL_MARKER + base64UrlJson(subscription)
             ].join('\n');
 
-            window.emailjs.send('service_chq4jnq', 'template_5he0blr', {
-                name: formData.get('name') || 'Project subscriber',
-                email: email,
-                newcomer: 'Crime Cartography Project Subscriber',
-                message: message
+            Promise.resolve().then(function () {
+                return window.emailjs.send('service_chq4jnq', 'template_5he0blr', {
+                    name: formData.get('name') || 'Project subscriber',
+                    email: email,
+                    newcomer: 'Crime Cartography Project Subscriber',
+                    message: message
+                });
             }).then(function () {
                 rememberSuccessfulRequest(Date.now());
                 form.reset();
@@ -189,6 +181,27 @@
                 submit.textContent = 'Send project-email request';
             });
         });
+
+        if (!window.emailjs) {
+            setStatus('Email subscription is temporarily unavailable. Project discussion remains available below.', 'error');
+            return;
+        }
+
+        try {
+            window.emailjs.init({
+                publicKey: 'UrA0snZAj1om7ilbd',
+                blockHeadless: true,
+                limitRate: {
+                    id: 'crime-cartography-subscribe',
+                    throttle: SEND_THROTTLE_MS
+                }
+            });
+            emailReady = true;
+            submit.disabled = false;
+        } catch (error) {
+            console.log('FAILED TO INITIALIZE EMAIL DELIVERY...', error);
+            setStatus('Email subscription is temporarily unavailable. Project discussion remains available below.', 'error');
+        }
     }
 
     function initialize() {
