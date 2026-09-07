@@ -1,0 +1,273 @@
+{
+  "number": 3,
+  "slug": "how-much-can-a-message-carry",
+  "title": "How Much Can a Message Carry?",
+  "status": "published",
+  "published": "2026-09-07",
+  "deckline": "Information had learned to cross between bodies and persist in groups. The next question was not whether animals could communicate. It was how much their many kinds of messages could carry.",
+  "objective": "Show how nonhuman animal communication spans multiple physical channels and can transmit information about danger, remote locations, individual identity, and structured combinations, while distinguishing these capacities from human language and presenting language as an expansion of older ingredients rather than a sudden invention.",
+  "learning_outcomes": [
+    "Recognize that animal communication uses chemical, visual, tactile, vibrational, electrical, and acoustic channels whose physics shapes range, speed, persistence, and detail.",
+    "See that some animal signals influence receivers in ways that depend on external categories, distant locations, individual identity, and social context.",
+    "Understand that a few nonhuman systems combine signal units or sequences in regular ways, while claims about semantics, syntax, and compositionality require careful definitions and remain scientifically debated.",
+    "Avoid treating one impressive trait as a miniature version of human language or arranging species on a communication ladder.",
+    "Identify the next learning gap: how the human lineage greatly expanded the open-ended recombination and shared interpretation of signals without leaving a fossil date for language's beginning."
+  ],
+  "continuity": "Episode 2 showed socially learned information persisting as living traditions in animal groups and ended at the bandwidth limits of an archive still carried by bodies. This episode examines the channels and payloads of nonhuman communication before human language becomes the protagonist.",
+  "future_pressure": "Many ingredients of language have deep or convergent histories outside humans, but no known nonhuman system has the open-ended expressive range of human language. The next gap is how a multimodal animal communication system in the human lineage became capable of recombining shared signals into indefinitely many meanings.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-3-how-much-can-a-message-carry",
+  "slides": [
+    {
+      "id": "many-bridges",
+      "title": "A bridge is not one thing",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-03/01-many-bridges.jpg",
+        "alt": "A twilight forest meets clear water as a moth, spider, bird, fish, and several mammals exchange subtle light, vibration, posture, and sound patterns through different parts of the scene.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Episode 2 left us with information living in a flock, a whale population, a chimpanzee community. But how did one body reach another? Not through one grand invention called communication. Life had been exchanging signals since long before bodies had faces.",
+        "Animals inherited that molecular world and then became gloriously excessive about it. They release chemicals, flash colors, touch, drum on surfaces, disturb electric fields, vibrate water, move tails, expose teeth, sing, click, grunt, dance, and occasionally throw things. A message can be a molecule, a pressure wave, a posture, or a patch of skin changing color.",
+        "Some signals evolved because changing another animal's behavior benefited the sender: attract this mate, avoid this territory, feed this offspring, join this defense. Other useful information arrives as a cue that was not produced for the receiver at all — the smell of a predator, the sudden flight of a neighbor, the tracks left in mud.",
+        "The distinction matters. Communication is not simply information existing nearby. It is part of an interaction between a producer and a receiver, shaped by what each can send, detect, and do.",
+        "Once nervous systems and social lives diversified, so did the bridges between them. The planet did not acquire one communication network. It grew millions of incompatible networks, each fitted to particular bodies and worlds."
+      ],
+      "sources": [
+        {
+          "label": "Current Biology — Animal signals",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24070440/",
+          "note": "Reviews animal signaling across chemical, electric, acoustic, optical, and tactile channels."
+        },
+        {
+          "label": "Behavioral Ecology and Sociobiology — Ten unanswered questions in multimodal communication",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3742419/",
+          "note": "Reviews how animals combine and interpret signals across multiple sensory channels."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "channel-physics",
+      "title": "Physics edits every message",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-03/02-channel-physics.jpg",
+        "alt": "A forest stream scene shows a scent-like current in the air, a bird call crossing foliage, vibrations passing through a fallen trunk, and broad sound waves moving underwater from a fish.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "Every channel comes with an opinion about what can be said.",
+        "A chemical mark may remain after the sender has left, but wind and water can smear it. A visual display can change quickly and carry intricate patterns, but only if the receiver can see it. Touch is private and reliable at close range. Vibrations travel through webs, stems, soil, and water while remaining almost invisible to animals that are not built to notice them.",
+        "Sound is unusually good at crossing darkness and obstacles. Yet sound is not free. Forests scatter it. Wind masks it. High frequencies tend to fade faster than low ones. Water carries sound differently from air: it travels several times faster, and some low-frequency calls can remain detectable across extraordinary distances in deep water while shallow water filters them differently.",
+        "An animal's body is part of the channel too. What frequencies can it produce? Which colors can its eyes distinguish? Can it leave a scent without also informing a predator? Can a tiny insect shake a leaf more effectively than it can shout across a meadow?",
+        "So communication systems do not merely become more complex over time. They branch around local constraints. A whale's ocean, a bee's dark hive, and a monkey's dense forest are different transmission problems.",
+        "Before asking how intelligent a message looks to us, it helps to ask a less flattering question: could we even receive it?"
+      ],
+      "sources": [
+        {
+          "label": "Journal of Experimental Biology — Acoustic communication in terrestrial and aquatic vertebrates",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28679789/",
+          "note": "Reviews how the physics of air and water shapes the production, propagation, and detection of animal sounds."
+        },
+        {
+          "label": "Frontiers in Ecology and Evolution — A systems approach to animal communication",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4810859/",
+          "note": "Treats signaling as a system involving senders, receivers, environments, and multiple interacting channels."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "danger-categories",
+      "title": "A warning can sort the danger",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-03/03-danger-categories.jpg",
+        "alt": "An alert vervet monkey calls while members of the troop look skyward, downward, and toward a tree as an eagle, snake, and leopard appear in different parts of the landscape.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "A vervet monkey hears an alarm call. What should it do? Running randomly is an excellent way to become lunch.",
+        "Classic field experiments in East Africa found that vervets produced acoustically different alarms around major predator classes. When researchers played recordings without showing a predator, listeners responded in ways fitted to the danger: scanning the sky or leaving exposed branches for an eagle-type alarm, looking down for a snake-type alarm, or moving into trees after a leopard-type alarm.",
+        "That result made vervet calls famous as an example of functionally referential communication. The receiver behaved as though the sound provided information about a kind of threat beyond the sound itself.",
+        "But an alarm is not simply a spoken noun in monkey. Later analyses found overlap with calls used in aggressive situations and showed that context and the caller's internal state also matter. The sound, the scene, the recent behavior of the group, and the listener's own knowledge can work together.",
+        "This is more interesting than a tiny dictionary. A message does not need to contain a complete description to guide a useful interpretation. It can narrow the world: danger from above rather than below; hide this way rather than that way.",
+        "The bridge can now carry a category. Not a sentence about an eagle's childhood. Enough information to change the receiver's next move."
+      ],
+      "sources": [
+        {
+          "label": "Science — Monkey responses to three different alarm calls",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/7433999/",
+          "note": "The landmark playback study showing predator-appropriate responses to distinct vervet monkey alarm calls."
+        },
+        {
+          "label": "Scientific Reports — Vervets revisited",
+          "url": "https://www.nature.com/articles/srep13220",
+          "note": "A quantitative reanalysis showing both predator specificity and important overlap with aggressive contexts."
+        },
+        {
+          "label": "Royal Society Open Science — Context-dependent alarm responses in wild vervet monkeys",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10345060/",
+          "note": "Tests how listeners combine alarm calls with contextual information."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "dance-map",
+      "title": "A dance points outside the hive",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-03/04-dance-map.jpg",
+        "alt": "Inside a dark honeybee hive, one forager performs a waggle dance while a luminous geometric echo connects her body angle and movement to a distant flower patch under the sun outside.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Inside a honeybee hive, it is dark. A returning forager climbs onto the comb and dances about a place that is not there.",
+        "During the waggle portion of the dance, her body angle encodes the direction of a resource relative to the sun. The duration of the waggle run varies with distance. Other details, odors, and the vigor and repetition of the dance help recruits decide whether and where to search.",
+        "In 2005, researchers attached tiny radar transponders to recruited bees and followed their flights. The bees initially flew along the vector indicated by the dance, then searched near the expected destination, using local cues such as scent to finish the job. The dance was neither a perfect coordinate packet nor decorative bee aerobics. It supplied usable spatial information about a remote target.",
+        "Notice how much machinery sits underneath that message. A forager measures travel partly through the visual motion of the landscape. She tracks the sun. In darkness, followers detect her movement through close contact, vibration, sound, and other cues. Then they translate an angle on a vertical comb into a direction across open terrain.",
+        "The message refers beyond the sender's present body and beyond the hive. It can recruit another animal toward something neither of them can currently see.",
+        "A nervous system the size of a sesame seed can carry a map without drawing one."
+      ],
+      "sources": [
+        {
+          "label": "Nature — The flight paths of honeybees recruited by the waggle dance",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15889092/",
+          "note": "Radar tracking showed recruited bees flying the vector indicated by a dance before searching near the target."
+        },
+        {
+          "label": "PeerJ — Honey bees communicate distance via non-linear waggle duration functions",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8029670/",
+          "note": "Explains how body orientation and waggle duration encode direction and distance, including uncertainty in the exact distance function."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "identity-whistle",
+      "title": "A whistle can find one individual",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-03/05-identity-whistle.jpg",
+        "alt": "Two bottlenose dolphins separated in blue water exchange a distinctive curling whistle pattern that remains recognizable as it crosses the distance between them.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Bottlenose dolphins live in a world where companions disappear behind moving water. They cannot leave a forwarding address on the reef.",
+        "Each dolphin develops a learned, individually distinctive signature whistle. Playback studies show that listeners recognize identity from the whistle's frequency pattern even when researchers remove the voice features that might reveal who produced the sound. The pattern, not merely the voice, carries the identity information.",
+        "Dolphins also copy the signature whistles of familiar companions. In a field experiment, wild dolphins answered when researchers played a synthetic copy of their own signature whistle, but not when they heard control whistles from familiar or unfamiliar animals. The authors interpreted this as evidence that copied signature whistles can be used to address a particular individual.",
+        "Calling these whistles names is tempting and sometimes useful, but it can smuggle in more than the experiment shows. We do not know that a dolphin's whistle behaves like a human name in every conversational setting. We do know that a socially learned sound pattern can point the receiver toward one individual rather than another.",
+        "The payload has changed again. Not only danger there or food that way, but you — this particular body in a moving social world.",
+        "The ocean does not need a roll call. It has whistles."
+      ],
+      "sources": [
+        {
+          "label": "Proceedings B — Signature whistle shape conveys identity information",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1472465/",
+          "note": "Playback experiments show dolphins extract identity from signature-whistle shape independently of voice features."
+        },
+        {
+          "label": "PNAS — Bottlenose dolphins can use learned vocal labels to address each other",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3740840/",
+          "note": "Wild dolphins responded selectively to copies of their own signature whistles."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "assembled-calls",
+      "title": "Small repertoires can be assembled",
+      "read_minutes": 1.9,
+      "image": {
+        "src": "images/episode-03/06-assembled-calls.jpg",
+        "alt": "A Campbell's monkey calls from a dense rainforest canopy while a few distinct colored sound motifs repeat and join into longer patterned sequences around the troop.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "A fixed set of signals creates an obvious problem. If there are only six calls, must the world contain only six discussable situations?",
+        "Male Campbell's monkeys in West African forests produce a small repertoire of alarm and social calls. Researchers found that adding an “oo” ending to some calls predictably broadened the contexts in which they were used. They also found regular call sequences associated with different events: predators, disturbances, falling trees, and travel.",
+        "This is striking because the information is not carried only by isolated call types. Modification and arrangement matter. A limited inventory is being reused.",
+        "Human ears immediately want to declare a suffix, a sentence, perhaps a monkey grammar department. Slow down. Linguists and biologists disagree about which animal combinations count as syntax or compositional meaning, and similar-sounding technical labels can hide very different mechanisms. A regular sequence may be meaningful without having the flexible structure of a human sentence.",
+        "Still, the clean border has failed again. Some animals do not merely choose one signal from a box. They modify units, order them, or combine them so that receivers can respond to differences in the larger pattern.",
+        "Recombination matters because it changes the arithmetic. A system no longer needs a completely new signal for every new circumstance. It can make more from what it already has — even if, for these monkeys, the number of combinations remains small and tightly tied to context."
+      ],
+      "sources": [
+        {
+          "label": "PLOS ONE — Campbell's monkeys use affixation to alter call meaning",
+          "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0007808",
+          "note": "Reports predictable changes in call context after an acoustically stable ending is added."
+        },
+        {
+          "label": "PNAS — Campbell's monkeys concatenate vocalizations into context-specific call sequences",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2799830/",
+          "note": "Describes regular combinations of six call types into context-associated sequences."
+        },
+        {
+          "label": "Biological Reviews — Animal linguistics: a primer",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10091714/",
+          "note": "Reviews criteria and common pitfalls when applying terms such as semantics, pragmatics, and syntax to animal communication."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-06.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "border-without-date",
+      "title": "The border has no date",
+      "read_minutes": 1.9,
+      "image": {
+        "src": "images/episode-03/07-border-without-date.jpg",
+        "alt": "Across a vast dusk landscape, many animal signal patterns form an unfinished constellation above a small distant group of early humans, suggesting continuity without a staircase or dividing line.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "We now have messages about danger, distance, identity, group membership, readiness, emotion, and action. We have learned signals, inherited signals, improvised gestures, long sequences, and a few systems where combinations affect interpretation.",
+        "The ingredients of communication are scattered across the animal world. No species forms one rung on a staircase toward us. Bees solve a spatial problem no ape solves with a dance. Dolphins learn identity signals. Birds and whales learn elaborate vocal patterns. Primates combine calls and gestures in ways that depend on relationships and context.",
+        "Yet none of these known natural systems has the open-ended expressive range of human language. Humans can reuse a finite collection of sounds or gestures to discuss an absent animal, deny that it was there, imagine three impossible animals, ask who told the story, and complain that the story took too long — all before breakfast.",
+        "That difference is enormous. It is not evidence that every ingredient appeared at once. Comparative researchers find pieces of vocal learning, reference, turn-taking, sequence, intention, and shared attention in other species, while arguing about how those pieces relate to the distinctive whole humans possess.",
+        "Language itself left no fossil. Anatomy, archaeology, genetics, living languages, and comparisons with other animals can constrain the story, but they cannot give us a morning when the first sentence was spoken. Speech was not switched on by a lone genius while everyone else waited politely.",
+        "The next transformation will therefore begin without a birthday. An already social, gesturing, calling animal will make the bridge between minds vastly more recombinable — and the planet's living archive will discover a much larger payload."
+      ],
+      "sources": [
+        {
+          "label": "Philosophical Transactions B — What can animal communication teach us about human language?",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6895550/",
+          "note": "Introduces comparative research on vocal learning, semantics, syntax, intentionality, cognition, and language evolution, including major disagreements."
+        },
+        {
+          "label": "Philosophical Transactions B — Animal cognition and the evolution of human language",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6895558/",
+          "note": "Reviews shared components and the limits of treating animal communication as a direct ladder to language."
+        },
+        {
+          "label": "Animal Behavior and Cognition — Why are no animal communication systems simple languages?",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8018278/",
+          "note": "Compares semanticity, learnability, cultural transmission, and productivity across animal systems and human language."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-03/slide-07.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
