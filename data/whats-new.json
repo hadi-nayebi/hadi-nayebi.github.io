@@ -1,8 +1,62 @@
 {
   "version": 1,
-  "updated": "2026-09-06",
+  "updated": "2026-09-07",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-06-public-seed-pattern-accumulation",
+      "date": "2026-09-06",
+      "type": "Architecture guidance",
+      "title": "Public Seeds now accumulate patterns instead of defining one product",
+      "summary": "The Academy's public routing, project pages, and Seed-series finale now distinguish framework-agnostic writings from Seed Agent and Q-Seed: two deliberately sparse, framework-specific places where selected building blocks can accumulate without becoming editions of one standard harness.",
+      "why_it_matters": "People can use the writings, adapt selected components, or build from scratch without waiting for a universal installable release. Each user and agent can grow different structures, plugins, and adaptations while still returning proven, privacy-safe patterns to shared public repositories.",
+      "affected": ["Seed Agent", "Q-Seed", "Technical writing", "Start Here", "Project navigation"],
+      "maturity": "Published cross-site architectural clarification; standard-product lineage retired",
+      "intended_for": ["People building user-owned harnesses", "Seed Agent and Q-Seed contributors", "Readers choosing a starting point", "Agents using Academy resources"],
+      "sources": [
+        {
+          "label": "Public Seed architecture alignment pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/85"
+        },
+        {
+          "label": "Seed-series finale alignment pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/86"
+        },
+        {
+          "label": "Seed Architecture",
+          "url": "/agents.html"
+        },
+        {
+          "label": "The Seed Is Yours",
+          "url": "/blog/b8/08_9-the-seed-is-yours.html"
+        }
+      ],
+      "adoption_notes": "Do not treat Seed Agent and Q-Seed as Codex and Qwen editions of one product, or interpret their sparseness as an incomplete installation package. Existing readers and agents should retire instructions that assume a shared release ladder, identical architecture, subscriber-gated graduation, or a clone-and-install starting path. Origin remains a separate demonstrated dashboard-plus-harness substrate, not a Seed edition.",
+      "recommended_action": "Choose the smallest relevant Academy writing or public component, let your agent adapt it to your own local structure, and return only generalized, privacy-reviewed evidence through the contribution path when it is genuinely reusable."
+    },
+    {
+      "id": "2026-09-06-observation-episode-two",
+      "date": "2026-09-06",
+      "type": "Observation",
+      "title": "The Information System of a Planet reaches animal culture",
+      "summary": "Episode 2 continues the seven-slide visual story from experience crossing between animals into social learning, local traditions, migration knowledge, whale song, animal culture, and the vulnerability of an archive that still lives in bodies and relationships.",
+      "why_it_matters": "The series can now show how learned information persists beyond one individual without claiming that communication, teaching, or culture appeared all at once, and it establishes the limits that make richer communication the next pressure in the story.",
+      "affected": ["The Information System of a Planet", "Observations", "Animal culture", "Social learning", "Visual storytelling"],
+      "maturity": "Published Episode 2 with seven complete visual slides",
+      "intended_for": ["General readers", "People curious about culture and information", "Visual learners", "Readers continuing from Episode 1"],
+      "sources": [
+        {
+          "label": "Episode 2 publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/81"
+        },
+        {
+          "label": "The Information System of a Planet",
+          "url": "/blog/observations/information-system-of-a-planet/index.html"
+        }
+      ],
+      "adoption_notes": "Read this after Episode 1. The episode distinguishes communication, social learning, culture, and cumulative culture; it treats cumulative culture as a debated spectrum rather than a clean human-versus-animal switch. Its examples are evidence-backed but do not form an evolutionary staircase. Narration paths remain placeholders, so no audio is published yet, and the story intentionally stops before human language becomes the protagonist.",
+      "recommended_action": "Continue to Episode 2 in the Observation reader, inspect its per-slide sources, and use the discussion link for evidence-based corrections or questions."
+    },
     {
       "id": "2026-09-06-personal-web-home-guide",
       "date": "2026-09-06",
