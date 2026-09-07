@@ -8,7 +8,7 @@
 
 The model supplies general probabilistic intelligence. The harness supplies the durable operational structure. When that structure remains inspectable, recoverable, and portable, it can become an extension of the user's agency rather than personalization trapped inside one model provider, chat interface, or employer platform.
 
-This repository contains the Hadosh Academy website. The public harness implementations live in their own repositories and are linked below.
+This repository contains the Hadosh Academy website. Public project repositories—including pattern-accumulation surfaces, concrete implementations, and framework forks—live separately and are linked below.
 
 ## Start here—with your agent
 
@@ -57,7 +57,7 @@ The writing progresses from the central distinction between model and agent into
 
 Browse the complete **[technical-writing index](https://hadi-nayebi.github.io/blog.html)** or use the **[interactive Explorables](https://hadi-nayebi.github.io/explore.html)** to inspect relationships among hooks, jobs, phases, memory, plugins, verification, and control.
 
-## Implementations and projects
+## Projects and public repositories
 
 The projects test the same principles across individual, group, and collective scales. Their maturity and architecture differ; they are not interchangeable products.
 
@@ -71,7 +71,7 @@ The projects test the same principles across individual, group, and collective s
 | Family Games | A private persistent family world with shared authorship and family-owned history | [Project](https://hadi-nayebi.github.io/projects/family-games.html) |
 | Crime Cartography | A collective factual-media experiment combining an agentic production harness with distributed human judgment | [Project](https://hadi-nayebi.github.io/projects/crime-cartography.html) · [Repository](https://github.com/hadi-nayebi/crime-cartography) |
 
-See the complete **[Projects portfolio](https://hadi-nayebi.github.io/projects/)** and the **[Seed implementations map](https://hadi-nayebi.github.io/agents.html)**.
+See the complete **[Projects portfolio](https://hadi-nayebi.github.io/projects/)** and the **[Seed architecture map](https://hadi-nayebi.github.io/agents.html)**.
 
 ## Follow the work as it changes
 
@@ -98,7 +98,7 @@ Technical readers can contribute at several levels:
 - Read and challenge the architectural assumptions.
 - Report broken links, accessibility problems, technical inaccuracies, or documentation gaps in this website repository.
 - Open focused pull requests for corrections and clearly bounded site improvements.
-- Study, test, star, or contribute to the public implementation repository relevant to the pattern you are evaluating.
+- Study, test, star, or contribute to the public repository relevant to the pattern you are evaluating.
 - Use project discussions for project-specific questions and design feedback where available.
 - Propose generalized patterns, professional use cases, failure lessons, or missing technical-writing topics without exposing private, employer, client, or proprietary material.
 - Point another agent to Start Here and report where it misunderstood, skipped, compressed, or overprescribed the syllabus.
@@ -159,7 +159,7 @@ The first validator checks static and dynamically injected navigation. The visua
 ├── blog.html                  # Technical-writing index
 ├── blog/b1 … blog/b9          # Essays and series assets
 ├── blog/practical-guides/     # Step-by-step, low-barrier building guides
-├── agents.html                # Seed implementation map
+├── agents.html                # Seed architecture map
 ├── projects/                  # Project portfolio and project detail pages
 ├── explore.html               # Interactive architectural explanations
 ├── css/                       # Shared and project-specific presentation
