@@ -43,6 +43,13 @@
       "path": "episodes/episode-02-when-experience-found-another-body.json",
       "title": "When Experience Found Another Body",
       "published": "2026-09-06"
+    },
+    {
+      "number": 3,
+      "slug": "how-much-can-a-message-carry",
+      "path": "episodes/episode-03-how-much-can-a-message-carry.json",
+      "title": "How Much Can a Message Carry?",
+      "published": "2026-09-07"
     }
   ]
 }

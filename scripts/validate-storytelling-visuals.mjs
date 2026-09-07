@@ -24,7 +24,7 @@ for (const line of inventory.split('\n')) {
 }
 
 const failures = [];
-const expectedCount = 88;
+const expectedCount = 95;
 
 if (rows.length !== expectedCount) {
     failures.push(`inventory contains ${rows.length} rows; expected ${expectedCount}`);
