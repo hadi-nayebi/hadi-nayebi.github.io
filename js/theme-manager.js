@@ -1,4 +1,4 @@
-// Version: v0.4.3
+// Version: v0.4.4
 /**
  * Hadosh Academy theme + lightweight shared presentation behavior.
  * The homepage intentionally changes on refresh: visual theme, hero language,
@@ -58,7 +58,7 @@ const heroMessages = [
     {
         line1: 'Open Architecture,',
         line2: 'Real Experiments',
-        description: 'Follow public Seed implementations and shared-cognition projects while the architecture is developed in the open.'
+        description: 'Follow public Seed pattern repositories and shared-cognition projects while the architecture is developed in the open.'
     },
     {
         line1: 'Your AI Can Change.',
@@ -154,7 +154,7 @@ const ctaPhrases = [
     { text: 'Start Here', link: '/start-here.html' },
     { text: 'Explore the Projects', link: '/projects/index.html' },
     { text: 'Read the Technical Writing', link: '/blog.html' },
-    { text: 'See the Seed Implementations', link: '/agents.html' },
+    { text: 'Explore Seed Architecture', link: '/agents.html' },
     { text: 'Open the Technical Portfolio', link: '/portfolio.html' },
     { text: 'Explore Interactive Diagrams', link: '/explore.html' },
     { text: 'About Hadosh Academy', link: '/about.html' },
