@@ -68,9 +68,9 @@
 
     function installAgents() {
         var hero = document.querySelector('main .hero');
-        after(hero, makeFigure('/assets/images/story/agents-lineage-educational-v2.jpg',
-            'A chalkboard lineage tree with the Claude Seed reference branching into Seed Agent on Codex and Q-Seed on Qwen Code while carrying forward jobs, memory, plugins, phases, authority and verification.',
-            'One technical lineage, two public implementation paths. The behaviors carry forward while each runtime is free to reshape the mechanism.',
+        after(hero, makeFigure('/assets/images/story/seed-architecture-pattern-sources-v3.jpg',
+            'A chalkboard map separates framework-agnostic technical writings, private Claude Seed evidence, and the Seed Agent and Q-Seed public pattern repositories, then shows three users and agents growing visibly different local harnesses from different selections.',
+            'Three sources, many distinct harnesses. Each user and agent can choose patterns, adapt components, or build from scratch.',
             'is-wide', 'I90-A10'));
     }
 

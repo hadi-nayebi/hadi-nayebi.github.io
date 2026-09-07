@@ -1,8 +1,8 @@
 # Contributing to Hadosh Academy
 
 Hadosh Academy is an open context and pattern library for user-owned AI harnesses. It begins with
-seed concepts, reference organisms, technical writing, and public implementations. Community
-experience helps test and refine the library over time.
+seed concepts, reference organisms, technical writing, and public pattern-accumulation
+repositories. Community experience helps test and refine the library over time.
 
 The goal is not one final harness or one mandatory implementation. We are looking for stable
 generative grammar: conserved mechanisms, useful boundaries, failure lessons, and design patterns
@@ -77,7 +77,7 @@ When in doubt, keep the material private and ask a generalized question first.
 
 ```markdown
 ### Context
-Which Academy page, pattern, or public implementation was used?
+Which Academy page, pattern, public repository, or concrete implementation was used?
 
 ### Benefit or problem
 What became easier, more reliable, more visible, or less cognitively expensive?
@@ -100,16 +100,16 @@ unrelated information was removed.
 
 ## Repository-specific instructions
 
-Each implementation repository owns its architecture, tests, security process, and acceptance
+Each public repository owns its architecture, tests, security process, and acceptance
 criteria. Read its `AGENTS.md`, `CONTRIBUTING.md`, security guidance, and local documentation
 before proposing code.
 
 - [Origin](https://github.com/hadi-nayebi/origin) — the public empty-canvas dashboard-plus-harness
   substrate and its contextual-feedback lifecycle.
-- [Seed Agent](https://github.com/hadi-nayebi/seed_agent) — the Codex-native foundation; not yet a
-  general-use agent.
-- [Q-Seed](https://github.com/hadi-nayebi/q-seed) — the Qwen-based foundation with separate
-  cognitive and framework ownership.
+- [Seed Agent](https://github.com/hadi-nayebi/seed_agent) — a deliberately sparse Codex-specific
+  pattern-accumulation surface.
+- [Q-Seed](https://github.com/hadi-nayebi/q-seed) — a Qwen Code-specific pattern-accumulation
+  surface with separate cognitive and framework ownership.
 
 Hadosh Academy may incorporate, reject, defer, or reframe contributions. Submission does not
 guarantee implementation, attribution, support, priority, influence, access, or future work.

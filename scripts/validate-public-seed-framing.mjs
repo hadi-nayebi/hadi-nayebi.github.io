@@ -37,8 +37,10 @@ const surfaces = new Map([
   ['projects/index.html', read('projects/index.html')],
   ['projects/seed-agent.html', read('projects/seed-agent.html')],
   ['projects/q-seed.html', read('projects/q-seed.html')],
+  ['CONTRIBUTING.md', read('CONTRIBUTING.md')],
   ['blog/b8/08_9-the-seed-is-yours.md', read('blog/b8/08_9-the-seed-is-yours.md')],
   ['blog/b8/08_9-the-seed-is-yours.html', read('blog/b8/08_9-the-seed-is-yours.html')],
+  ['js/story-visuals.js', read('js/story-visuals.js')],
   ['js/theme-manager.js', read('js/theme-manager.js')]
 ]);
 
@@ -52,8 +54,11 @@ requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, diff
 requireText('projects/index.html', surfaces.get('projects/index.html'), 'Pattern accumulation');
 requireText('projects/seed-agent.html', surfaces.get('projects/seed-agent.html'), 'Codex pattern accumulation');
 requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Qwen Code-specific pattern-accumulation surface');
+requireText('CONTRIBUTING.md', surfaces.get('CONTRIBUTING.md'), 'public pattern-accumulation');
 requireText('blog/b8/08_9-the-seed-is-yours.md', surfaces.get('blog/b8/08_9-the-seed-is-yours.md'), 'technical writings are the primary framework-agnostic source');
 requireText('blog/b8/08_9-the-seed-is-yours.html', surfaces.get('blog/b8/08_9-the-seed-is-yours.html'), 'technical writings are the primary framework-agnostic source');
+requireText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'Three sources, many distinct harnesses.');
+forbidText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'agents-lineage-educational-v2.jpg');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Seed is reimplemented on Codex');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Codex reimplementation');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'Codex Seed Project');
@@ -82,6 +87,7 @@ const retiredPhrases = [
   'Some will clone a mature Seed',
   'Start from a mature public Seed',
   'one reference implementation and two public reimplementation paths',
+  'One technical lineage, two public implementation paths',
   'primary public implementation'
 ];
 

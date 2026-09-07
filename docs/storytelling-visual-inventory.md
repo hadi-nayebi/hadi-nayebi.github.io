@@ -21,7 +21,7 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `about.html` | `assets/images/about/one-seed-many-professionals.png` | I50-A50 | HTML | Yes |
 | `about.html` | `assets/images/about/your-brain-vs-modern-world.png` | I30-A70 | HTML | Yes |
 | `about.html` | `assets/images/digital-cortex-2-hero.jpg` | I10-A90 | HTML | Yes |
-| `agents.html` | `/assets/images/story/agents-lineage-educational-v2.jpg` | I90-A10 | Injected | Yes |
+| `agents.html` | `/assets/images/story/seed-architecture-pattern-sources-v3.jpg` | I90-A10 | Injected | Yes |
 | `blog.html` | `/assets/images/story/blog-learning-journey-hybrid-v3.jpg` | I70-A30 | Injected | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/01-deep-time.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/02-molecular-world.jpg` | I50-A50 | EpisodeJSON | Yes |
