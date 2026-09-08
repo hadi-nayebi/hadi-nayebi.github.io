@@ -26,6 +26,27 @@ function forbidText(relativePath, source, text) {
   if (source.includes(text)) errors.push(`${relativePath}: contains retired ${JSON.stringify(text)}`);
 }
 
+function validateAcademyLinks(relativePath, source) {
+  const linkPattern = /\\[[^\\]]+\\]\\((https:\\/\\/hadi-nayebi\\.github\\.io\\/[^)\\s]+)\\)/g;
+  const checked = new Set();
+  let match;
+
+  while ((match = linkPattern.exec(source))) {
+    const url = new URL(match[1]);
+    const target = decodeURIComponent(url.pathname).replace(/^\\/+/, '') || 'index.html';
+    if (checked.has(target)) continue;
+    checked.add(target);
+
+    if (!fs.existsSync(path.join(root, target))) {
+      errors.push(`${relativePath}: broken Academy link ${JSON.stringify(match[1])}`);
+    }
+  }
+
+  if (checked.size === 0) {
+    errors.push(`${relativePath}: no Academy study links found`);
+  }
+}
+
 function requireHiddenElement(relativePath, source, id) {
   const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const elementPattern = new RegExp(`<[^>]*\\bid\\s*=\\s*(["'])${escapedId}\\1[^>]*>`, 'i');
@@ -41,6 +62,8 @@ function requireHiddenElement(relativePath, source, id) {
 
 const syllabus = read('start-here-agent.md');
 const page = read('start-here.html');
+
+validateAcademyLinks('start-here-agent.md', syllabus);
 
 requireText('start-here-agent.md', syllabus, 'Syllabus version: 2026-09-06.1');
 requireText('start-here-agent.md', syllabus, '## First response — recall the user and establish the path');
