@@ -27,13 +27,13 @@ function forbidText(relativePath, source, text) {
 }
 
 function validateAcademyLinks(relativePath, source) {
-  const linkPattern = /\\[[^\\]]+\\]\\((https:\\/\\/hadi-nayebi\\.github\\.io\\/[^)\\s]+)\\)/g;
+  const linkPattern = /\[[^\]]+\]\((https:\/\/hadi-nayebi\.github\.io\/[^)\s]+)\)/g;
   const checked = new Set();
   let match;
 
   while ((match = linkPattern.exec(source))) {
     const url = new URL(match[1]);
-    const target = decodeURIComponent(url.pathname).replace(/^\\/+/, '') || 'index.html';
+    const target = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html';
     if (checked.has(target)) continue;
     checked.add(target);
 
