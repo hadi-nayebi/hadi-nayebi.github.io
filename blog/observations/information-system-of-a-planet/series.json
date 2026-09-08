@@ -50,6 +50,13 @@
       "path": "episodes/episode-03-how-much-can-a-message-carry.json",
       "title": "How Much Can a Message Carry?",
       "published": "2026-09-07"
+    },
+    {
+      "number": 4,
+      "slug": "when-a-message-could-become-almost-anything",
+      "path": "episodes/episode-04-when-a-message-could-become-almost-anything.json",
+      "title": "When a Message Could Become Almost Anything",
+      "published": "2026-09-08"
     }
   ]
 }
