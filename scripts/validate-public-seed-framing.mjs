@@ -34,6 +34,8 @@ const surfaces = new Map([
   ['thanks-support.html', read('thanks-support.html')],
   ['seed-access.html', read('seed-access.html')],
   ['agents.html', read('agents.html')],
+  ['explore.html', read('explore.html')],
+  ['portfolio.html', read('portfolio.html')],
   ['projects/index.html', read('projects/index.html')],
   ['projects/seed-agent.html', read('projects/seed-agent.html')],
   ['projects/q-seed.html', read('projects/q-seed.html')],
@@ -51,6 +53,8 @@ requireText('support.html', surfaces.get('support.html'), 'accumulate framework-
 requireText('seed-access.html', surfaces.get('seed-access.html'), 'preserved as evidence, not as a product base or public release candidate');
 requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'Follow public Seed pattern repositories');
 requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, different accumulation surfaces');
+requireText('explore.html', surfaces.get('explore.html'), 'Explore Seed Agent');
+requireText('portfolio.html', surfaces.get('portfolio.html'), 'A deliberately sparse Codex-specific pattern-accumulation surface');
 requireText('projects/index.html', surfaces.get('projects/index.html'), 'Pattern accumulation');
 requireText('projects/seed-agent.html', surfaces.get('projects/seed-agent.html'), 'Codex pattern accumulation');
 requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Qwen Code-specific pattern-accumulation surface');
@@ -88,7 +92,9 @@ const retiredPhrases = [
   'Start from a mature public Seed',
   'one reference implementation and two public reimplementation paths',
   'One technical lineage, two public implementation paths',
-  'primary public implementation'
+  'primary public implementation',
+  'primary public reimplementation',
+  'Codex Reimplementation'
 ];
 
 for (const [relativePath, source] of surfaces) {
