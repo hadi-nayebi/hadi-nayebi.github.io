@@ -53,11 +53,13 @@ requireText('support.html', surfaces.get('support.html'), 'accumulate framework-
 requireText('seed-access.html', surfaces.get('seed-access.html'), 'preserved as evidence, not as a product base or public release candidate');
 requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'Follow public Seed pattern repositories');
 requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, different accumulation surfaces');
+requireText('agents.html', surfaces.get('agents.html'), 'Seed Agent Project');
 requireText('explore.html', surfaces.get('explore.html'), 'Explore Seed Agent');
 requireText('portfolio.html', surfaces.get('portfolio.html'), 'A deliberately sparse Codex-specific pattern-accumulation surface');
 requireText('projects/index.html', surfaces.get('projects/index.html'), 'Pattern accumulation');
 requireText('projects/seed-agent.html', surfaces.get('projects/seed-agent.html'), 'Codex pattern accumulation');
 requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Qwen Code-specific pattern-accumulation surface');
+requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Seed Agent and Q-Seed explore different ownership boundaries.');
 requireText('CONTRIBUTING.md', surfaces.get('CONTRIBUTING.md'), 'public pattern-accumulation');
 requireText('blog/b8/08_9-the-seed-is-yours.md', surfaces.get('blog/b8/08_9-the-seed-is-yours.md'), 'technical writings are the primary framework-agnostic source');
 requireText('blog/b8/08_9-the-seed-is-yours.html', surfaces.get('blog/b8/08_9-the-seed-is-yours.html'), 'technical writings are the primary framework-agnostic source');
@@ -94,7 +96,10 @@ const retiredPhrases = [
   'One technical lineage, two public implementation paths',
   'primary public implementation',
   'primary public reimplementation',
-  'Codex Reimplementation'
+  'Codex Reimplementation',
+  'Codex Seed Project',
+  'Codex Seed and Q-Seed',
+  'share a common architectural lineage'
 ];
 
 for (const [relativePath, source] of surfaces) {
