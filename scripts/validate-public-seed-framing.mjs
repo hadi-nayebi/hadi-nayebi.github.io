@@ -42,6 +42,7 @@ const surfaces = new Map([
   ['CONTRIBUTING.md', read('CONTRIBUTING.md')],
   ['blog/b8/08_9-the-seed-is-yours.md', read('blog/b8/08_9-the-seed-is-yours.md')],
   ['blog/b8/08_9-the-seed-is-yours.html', read('blog/b8/08_9-the-seed-is-yours.html')],
+  ['blog/b8/08_9-the-seed-is-yours.transcript.yaml', read('blog/b8/08_9-the-seed-is-yours.transcript.yaml')],
   ['js/story-visuals.js', read('js/story-visuals.js')],
   ['js/theme-manager.js', read('js/theme-manager.js')]
 ]);
@@ -63,6 +64,8 @@ requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Seed 
 requireText('CONTRIBUTING.md', surfaces.get('CONTRIBUTING.md'), 'public pattern-accumulation');
 requireText('blog/b8/08_9-the-seed-is-yours.md', surfaces.get('blog/b8/08_9-the-seed-is-yours.md'), 'technical writings are the primary framework-agnostic source');
 requireText('blog/b8/08_9-the-seed-is-yours.html', surfaces.get('blog/b8/08_9-the-seed-is-yours.html'), 'technical writings are the primary framework-agnostic source');
+requireText('blog/b8/08_9-the-seed-is-yours.transcript.yaml', surfaces.get('blog/b8/08_9-the-seed-is-yours.transcript.yaml'), 'final: true');
+requireText('blog/b8/08_9-the-seed-is-yours.transcript.yaml', surfaces.get('blog/b8/08_9-the-seed-is-yours.transcript.yaml'), 'The writings provide the design context; you and your agent assemble the architecture.');
 requireText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'Three sources, many distinct harnesses.');
 forbidText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'agents-lineage-educational-v2.jpg');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Seed is reimplemented on Codex');
