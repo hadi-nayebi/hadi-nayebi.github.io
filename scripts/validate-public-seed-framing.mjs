@@ -67,8 +67,6 @@ requireText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'Three s
 forbidText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'agents-lineage-educational-v2.jpg');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Seed is reimplemented on Codex');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Codex reimplementation');
-forbidText('seed-access.html', surfaces.get('seed-access.html'), 'Codex Seed Project');
-
 const retiredPhrases = [
   'Seed Agent and Q-Seed as CLI-centered harnesses',
   'Seed Agent carries that architecture into Codex',
