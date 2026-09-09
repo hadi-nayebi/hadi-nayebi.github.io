@@ -34,11 +34,16 @@ const surfaces = new Map([
   ['thanks-support.html', read('thanks-support.html')],
   ['seed-access.html', read('seed-access.html')],
   ['agents.html', read('agents.html')],
+  ['explore.html', read('explore.html')],
+  ['portfolio.html', read('portfolio.html')],
   ['projects/index.html', read('projects/index.html')],
   ['projects/seed-agent.html', read('projects/seed-agent.html')],
   ['projects/q-seed.html', read('projects/q-seed.html')],
+  ['CONTRIBUTING.md', read('CONTRIBUTING.md')],
   ['blog/b8/08_9-the-seed-is-yours.md', read('blog/b8/08_9-the-seed-is-yours.md')],
   ['blog/b8/08_9-the-seed-is-yours.html', read('blog/b8/08_9-the-seed-is-yours.html')],
+  ['blog/b8/08_9-the-seed-is-yours.transcript.yaml', read('blog/b8/08_9-the-seed-is-yours.transcript.yaml')],
+  ['js/story-visuals.js', read('js/story-visuals.js')],
   ['js/theme-manager.js', read('js/theme-manager.js')]
 ]);
 
@@ -49,15 +54,22 @@ requireText('support.html', surfaces.get('support.html'), 'accumulate framework-
 requireText('seed-access.html', surfaces.get('seed-access.html'), 'preserved as evidence, not as a product base or public release candidate');
 requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'Follow public Seed pattern repositories');
 requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, different accumulation surfaces');
+requireText('agents.html', surfaces.get('agents.html'), 'Seed Agent Project');
+requireText('explore.html', surfaces.get('explore.html'), 'Explore Seed Agent');
+requireText('portfolio.html', surfaces.get('portfolio.html'), 'A deliberately sparse Codex-specific pattern-accumulation surface');
 requireText('projects/index.html', surfaces.get('projects/index.html'), 'Pattern accumulation');
 requireText('projects/seed-agent.html', surfaces.get('projects/seed-agent.html'), 'Codex pattern accumulation');
 requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Qwen Code-specific pattern-accumulation surface');
+requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Seed Agent and Q-Seed explore different ownership boundaries.');
+requireText('CONTRIBUTING.md', surfaces.get('CONTRIBUTING.md'), 'public pattern-accumulation');
 requireText('blog/b8/08_9-the-seed-is-yours.md', surfaces.get('blog/b8/08_9-the-seed-is-yours.md'), 'technical writings are the primary framework-agnostic source');
 requireText('blog/b8/08_9-the-seed-is-yours.html', surfaces.get('blog/b8/08_9-the-seed-is-yours.html'), 'technical writings are the primary framework-agnostic source');
+requireText('blog/b8/08_9-the-seed-is-yours.transcript.yaml', surfaces.get('blog/b8/08_9-the-seed-is-yours.transcript.yaml'), 'final: true');
+requireText('blog/b8/08_9-the-seed-is-yours.transcript.yaml', surfaces.get('blog/b8/08_9-the-seed-is-yours.transcript.yaml'), 'The writings provide the design context; you and your agent assemble the architecture.');
+requireText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'Three sources, many distinct harnesses.');
+forbidText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'agents-lineage-educational-v2.jpg');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Seed is reimplemented on Codex');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Codex reimplementation');
-forbidText('seed-access.html', surfaces.get('seed-access.html'), 'Codex Seed Project');
-
 const retiredPhrases = [
   'Seed Agent and Q-Seed as CLI-centered harnesses',
   'Seed Agent carries that architecture into Codex',
@@ -82,7 +94,13 @@ const retiredPhrases = [
   'Some will clone a mature Seed',
   'Start from a mature public Seed',
   'one reference implementation and two public reimplementation paths',
-  'primary public implementation'
+  'One technical lineage, two public implementation paths',
+  'primary public implementation',
+  'primary public reimplementation',
+  'Codex Reimplementation',
+  'Codex Seed Project',
+  'Codex Seed and Q-Seed',
+  'share a common architectural lineage'
 ];
 
 for (const [relativePath, source] of surfaces) {

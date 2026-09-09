@@ -1,13 +1,13 @@
 # Structured transcript — one block per spoken section.
-# Availability language is superseded as of 2026-07-21; regenerate from the corrected source before republishing audio.
+# Narration synchronized to the corrected source on 2026-09-08; regenerate the audio before republishing it.
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: the-seed-is-yours
 source_md: 08_9-the-seed-is-yours.md
-final: false            # source corrected 2026-07-21; narration is intentionally stale
+final: true             # transcript is ready for TTS; the existing audio has not been regenerated
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
-generated_at: "2026-06-22T21:25:39Z"
+generated_at: "2026-09-08T21:09:26Z"
 sections:
   - id: s01
     kind: heading
@@ -32,37 +32,37 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.55
-    source_hash: "58ba64db0a10"   # curated source block; drift -> review
-    text_hash: "58ba64db0a10"     # narration; change -> re-render
+    source_hash: "3683a0703552"   # curated source block; drift -> review
+    text_hash: "3683a0703552"     # narration; change -> re-render
     text: |-
-      Open Source, MIT, Free Forever
+      The Public Promise
   - id: s04
     kind: body
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "a30d55b80dc1"   # curated source block; drift -> review
-    text_hash: "a30d55b80dc1"     # narration; change -> re-render
+    source_hash: "909cdb80fdf2"   # curated source block; drift -> review
+    text_hash: "909cdb80fdf2"     # narration; change -> re-render
     text: |-
-      The Hadosh Academy seed agent is open source. MIT licensed. Free to use, free to fork, free to extend. There is no SaaS layer between you and your seed. No server holds your knowledge directory. No company controls your brain.
+      The Hadosh Academy seed work is an open, inspectable body of technical writing and public pattern-accumulation surfaces. The writings carry the concepts, design principles, and building-block context across tasks and frameworks. Seed Agent and Q-Seed provide distinct framework-specific places where selected foundations can accumulate through public use, discussion, issues, and pull requests. Their sparseness is intentional: an agent may consult them, adapt one component, or build entirely from the writings. The promise behind the work remains the same: no SaaS layer between you and your harness, no remote server required to hold your knowledge directory, and no company owning the system that learns how you work.
   - id: s05
     kind: body
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "4a7118acb416"   # curated source block; drift -> review
-    text_hash: "4a7118acb416"     # narration; change -> re-render
+    source_hash: "8fd679b1ead7"   # curated source block; drift -> review
+    text_hash: "8fd679b1ead7"     # narration; change -> re-render
     text: |-
-      When you install a seed on your laptop, it becomes yours. The architecture is the architecture I have described across this series. But the cycles are yours. The patterns it codifies, the voices it speaks, the hooks it hardens — they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence. Your first jobs will be stage 1 — collaborative, learning-mode, slow on purpose. Some of those jobs will mature into stage 2, then stage 3, and a few — for the work shapes that need real customization — into stage 4 plugins that exist nowhere else but in your seed.
+      When you and your agent build a seed in a local space you control, it becomes yours. The principles are the principles I have described across this series. But the architecture, cycles, and software are shaped by your work. The patterns it codifies, the voices it speaks, the hooks it hardens — they will be the patterns your work surfaces, the voices your judgment shapes, the hooks your edge cases call into existence. Your first jobs will be stage 1 — collaborative, learning-mode, slow on purpose. Some of those jobs will mature into stage 2, then stage 3, and a few — for the work shapes that need real customization — into stage 4 plugins that exist nowhere else but in your seed.
   - id: s06
     kind: body
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "273a88b26b35"   # curated source block; drift -> review
-    text_hash: "273a88b26b35"     # narration; change -> re-render
+    source_hash: "800e7b5c43e6"   # curated source block; drift -> review
+    text_hash: "800e7b5c43e6"     # narration; change -> re-render
     text: |-
-      Two operators with two seeds, six months in, will have brains that are visibly different. The architectures are the same. The lived seeds are not. That is the design.
+      Two operators with two seeds, six months in, will have brains that are visibly different — not only different contents inside identical software, but different structures, plugins, and adaptations. They may share a few proven building blocks. They do not need to converge. That is the design.
   - id: s07
     kind: heading
     engine: alt
@@ -77,19 +77,19 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "a7ce8dc03755"   # curated source block; drift -> review
-    text_hash: "a7ce8dc03755"     # narration; change -> re-render
+    source_hash: "b1d773987fe2"   # curated source block; drift -> review
+    text_hash: "b1d773987fe2"     # narration; change -> re-render
     text: |-
-      This is what changes when the architecture itself is teachable. The agent-developer-user triangle most software defaults to — where one role builds, another configures, a third uses — collapses to two: the agent and you. The substrate is portable enough that the user can be the architect. Call it the PowerPoint of seed agents: a complex artifact made authorable by enough high-level structural understanding, without anyone having to write the underlying machinery.
+      This is what changes when the design principles themselves are teachable. The agent-developer-user triangle most software defaults to — where one role builds, another configures, a third uses — collapses to two: the agent and you. The patterns are legible enough that the user can direct the architecture of a distinct living system. Call it the PowerPoint of seed agents: a complex artifact made authorable by enough high-level structural understanding, without anyone having to write all of the underlying machinery.
   - id: s09
     kind: body
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "acdcef56da36"   # curated source block; drift -> review
-    text_hash: "acdcef56da36"     # narration; change -> re-render
+    source_hash: "3106ac6a5873"   # curated source block; drift -> review
+    text_hash: "3106ac6a5873"     # narration; change -> re-render
     text: |-
-      Essay 5.1 gave you the substrate. Essay 6.1 gave you the cognitive cycle that uses it. Essay 7.1 gave you the template for growing it. This essay closes the loop: the maturation arc that takes a stage-1 conversation into a stage-4 plugin is what makes your seed yours. The seed is the architecture; you are the architect.
+      Essay 5.1 gave you a substrate pattern. Essay 6.1 gave you a cognitive-cycle pattern. Essay 7.1 gave you a way to grow plugins. This essay closes the loop: the maturation arc that takes a stage-1 conversation into a stage-4 plugin is what makes your seed yours. The writings provide the design context; you and your agent assemble the architecture.
   - id: s10
     kind: heading
     engine: alt
@@ -104,19 +104,19 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "6fa68dc6fe9b"   # curated source block; drift -> review
-    text_hash: "6fa68dc6fe9b"     # narration; change -> re-render
+    source_hash: "94db7836957a"   # curated source block; drift -> review
+    text_hash: "94db7836957a"     # narration; change -> re-render
     text: |-
-      The Academy exists because growing a seed well is a craft, and craft benefits from community. Other operators are growing their own seeds. They are running into patterns you will recognize and patterns you have not seen yet. The knowledge they are accumulating is not interchangeable with yours — but the recipes for accumulating it well are shareable, and that is what we are gathered to share. When your seed finishes a job that changed one of the shipped plugins' code, that job cannot reach idle until it asks you the upstream-reporting question: it shows you the exact issue text it would file and offers a four-step ladder — skip it, file the issue (the seed submits it for you on approval), reword the issue first, or open a real pull request (which the seed turns into its own follow-up job rather than opening on its own). The shared substrate stays alive because every operator's seed offers to contribute back through that same channel.
+      The Academy exists because growing a seed well is a craft, and craft benefits from community. Other operators are growing their own seeds. They are running into patterns you will recognize and patterns you have not seen yet. The knowledge they are accumulating is not interchangeable with yours — but the recipes for accumulating it well are shareable, and that is what we are gathered to share. One user-owned harness, for example, can include an upstream-reporting plugin: after a plugin-code job, it shows the operator the exact issue text and offers a four-step ladder — skip it, file the issue on approval, reword it first, or begin a separate pull-request job. That is one possible controlled feedback component, not a requirement for every harness. Public pattern-accumulation surfaces grow when operators deliberately return proven, privacy-safe lessons through channels appropriate to their own systems.
   - id: s12
     kind: body
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "c4d10b90c719"   # curated source block; drift -> review
-    text_hash: "c4d10b90c719"     # narration; change -> re-render
+    source_hash: "f54fb0d5a2fb"   # curated source block; drift -> review
+    text_hash: "f54fb0d5a2fb"     # narration; change -> re-render
     text: |-
-      A consulting practice's seed, six months in, may have hardened a [CLIENT-CONFLICT-CHECK] hook that the practice's principal designed and the seed authored. When the practice's seed reports that pattern back upstream, the public seed grows wider — not by absorbing the practice's confidential data, but by absorbing the recipe for that kind of customization. What the architecture enforces is only the asking: a plugin-code job cannot finish without surfacing the question. Whether to actually report stays the operator's call — Skip is always a valid answer — so a seed whose operator keeps choosing Skip keeps its hardened patterns private to that one seed. The contribution is friction-bounded, not enforcement-bounded; the seed makes the offer, the operator decides.
+      A consulting practice's seed, six months in, may have hardened a [CLIENT-CONFLICT-CHECK] hook that the practice's principal designed and the seed authored. If the operator chooses to report the pattern upstream, an appropriate public repository can absorb the privacy-safe recipe without absorbing the practice's confidential data. In a harness that uses the contribution gate above, the mechanism enforces only the asking. Whether to report stays the operator's call — Skip is always valid — so another seed can keep its hardened patterns private or use a completely different return path. The component creates useful friction without standardizing the rest of the organism.
   - id: s13
     kind: heading
     engine: alt
@@ -158,7 +158,7 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "73281f605c6d"   # curated source block; drift -> review
-    text_hash: "73281f605c6d"     # narration; change -> re-render
+    source_hash: "6634eadb17ab"   # curated source block; drift -> review
+    text_hash: "6634eadb17ab"     # narration; change -> re-render
     text: |-
-      The series ends here. The seed begins where you start it. The public repo is the next step — clone, install, and run your first stage-1 cycle.
+      The series ends here. The seed begins where you and your agent start it — from the writings, from selected public building blocks, or from scratch.
