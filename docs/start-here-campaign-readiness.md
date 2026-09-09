@@ -82,7 +82,7 @@ still requires live behavior testing with several agent systems and user perspec
 
 ## Campaign launch audit
 
-- [ ] Confirm all syllabus links resolve and point to current resources.
+- [x] Confirm all syllabus links resolve and point to current resources; the Start Here validator now checks every canonical Hadosh Academy target against the repository.
 - [x] Confirm the human Start Here page keeps the operating manual out of the visitor flow while linking to the canonical Markdown syllabus and keeping the copied handoff pointed at it.
 - [ ] Test the human page's keyboard and mobile presentation, the copyable handoff instructions, and the canonical-syllabus fallback without restoring the retired inline or collapsed agent manual.
 - [ ] Test the copyable starter instruction with several agent systems and confirm they recognize the agent-directed layer.
