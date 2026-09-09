@@ -91,6 +91,8 @@
     counter-increment: steps;
 }
 
+.services-progress-list li[hidden] { display: none; }
+
 .services-progress-list li::before {
     display: grid;
     width: 22px;

@@ -109,9 +109,9 @@ Please keep contributions scoped, explain the problem being solved, preserve the
 
 ## Ask for guidance
 
-Use the **[contact form](https://hadi-nayebi.github.io/contact.html)** for conceptual questions, case-specific harness problems, implementation uncertainty, architecture reviews, collaboration, or help reaching a stable point from which you and your agent can continue.
+Use the **[contact form](https://hadi-nayebi.github.io/contact.html)** for general questions, public-project discussion, feedback, or collaboration. Use the **[guided services intake](https://hadi-nayebi.github.io/services.html)** for harness reviews, training, collaborative builds, startup pilots, or personal-website guidance.
 
-You may request an initial live guidance session with Hadi at no charge. An agent may help prepare the message, but it should remove secrets and private material, let the user review the draft, and obtain explicit permission before submitting anything.
+Every consulting path can begin with a free discovery conversation. An agent may help prepare the request, but it should remove secrets and private material, let the user review the draft, and obtain explicit permission before submitting anything.
 
 ## How experience returns to the library
 

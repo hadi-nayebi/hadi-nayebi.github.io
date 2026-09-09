@@ -87,14 +87,14 @@
     };
 
     function values(form, name) {
-        return Array.prototype.slice.call(form.querySelectorAll('[name="' + name + '"]:checked'))
+        return Array.prototype.slice.call(form.querySelectorAll('[name="' + name + '"]:checked:not(:disabled)'))
             .map(function (input) { return input.value; });
     }
 
     function value(form, name) {
-        var checked = form.querySelector('[name="' + name + '"]:checked');
+        var checked = form.querySelector('[name="' + name + '"]:checked:not(:disabled)');
         if (checked) return String(checked.value || '').trim();
-        var field = form.querySelector('[name="' + name + '"]');
+        var field = form.querySelector('[name="' + name + '"]:not(:disabled)');
         if (!field || field.type === 'radio' || field.type === 'checkbox') return '';
         return String(field.value || '').trim();
     }
@@ -134,8 +134,28 @@
         var sending = false;
         var emailReady = false;
 
-        stepTotal.textContent = String(steps.length);
-        progress.max = steps.length;
+        function activeRoute() {
+            var primary = value(form, 'primary_help');
+            var shortPath = primary === 'Support the open-source work' ||
+                primary === 'Learn the foundations' ||
+                primary === 'Not sure';
+            return shortPath ? [0, 1, 2, 3, 4, 8, 9] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        }
+
+        function applyRouteState(route) {
+            steps.forEach(function (step, stepIndex) {
+                var skipped = route.indexOf(stepIndex) === -1;
+                step.querySelectorAll('input, select, textarea, button').forEach(function (field) {
+                    if (skipped && !field.disabled) {
+                        field.disabled = true;
+                        field.setAttribute('data-route-disabled', 'true');
+                    } else if (!skipped && field.getAttribute('data-route-disabled') === 'true') {
+                        field.disabled = false;
+                        field.removeAttribute('data-route-disabled');
+                    }
+                });
+            });
+        }
 
         function setStatus(message, state) {
             status.textContent = message;
@@ -150,17 +170,25 @@
         function setStep(index, options) {
             var settings = options || {};
             currentIndex = Math.max(0, Math.min(index, steps.length - 1));
+            var route = activeRoute();
+            if (route.indexOf(currentIndex) === -1) currentIndex = route[0];
+            applyRouteState(route);
             steps.forEach(function (step, stepIndex) { step.hidden = stepIndex !== currentIndex; });
-            progress.value = currentIndex + 1;
-            progress.textContent = 'Step ' + (currentIndex + 1) + ' of ' + steps.length;
-            stepNumber.textContent = String(currentIndex + 1);
+            var routePosition = route.indexOf(currentIndex);
+            progress.max = route.length;
+            progress.value = routePosition + 1;
+            progress.textContent = 'Step ' + (routePosition + 1) + ' of ' + route.length;
+            stepNumber.textContent = String(routePosition + 1);
+            stepTotal.textContent = String(route.length);
             progressItems.forEach(function (item, itemIndex) {
+                var itemPosition = route.indexOf(itemIndex);
+                item.hidden = itemPosition === -1;
                 item.classList.toggle('is-current', itemIndex === currentIndex);
-                item.classList.toggle('is-complete', itemIndex < currentIndex);
+                item.classList.toggle('is-complete', itemPosition !== -1 && itemPosition < routePosition);
             });
-            backButton.hidden = currentIndex === 0;
-            nextButton.hidden = currentIndex === steps.length - 1;
-            submitButton.hidden = currentIndex !== steps.length - 1;
+            backButton.hidden = routePosition === 0;
+            nextButton.hidden = routePosition === route.length - 1;
+            submitButton.hidden = routePosition !== route.length - 1;
             nextButton.textContent = currentIndex === 0 ? 'Begin' : 'Continue';
             setStatus('', '');
 
@@ -228,6 +256,7 @@
             if (choices.indexOf(previous) !== -1) select.value = previous;
             else if (choices.length === 1) select.value = choices[0];
             document.getElementById('ownership-outcome').required = select.value !== 'Support the open-source work';
+            if (currentIndex === 4) setStep(currentIndex, { history: false, focus: false });
         }
 
         function recommendationKeys() {
@@ -445,6 +474,7 @@
             if (field.name === 'primary_help') {
                 var outcome = document.getElementById('ownership-outcome');
                 outcome.required = field.value !== 'Support the open-source work';
+                setStep(currentIndex, { history: false, focus: false });
             }
 
             if (currentIndex === steps.length - 1) renderReview();
@@ -457,7 +487,9 @@
 
         nextButton.addEventListener('click', function () {
             if (!validateCurrentStep()) return;
-            setStep(currentIndex + 1);
+            var route = activeRoute();
+            var routePosition = route.indexOf(currentIndex);
+            setStep(route[routePosition + 1]);
         });
 
         backButton.addEventListener('click', function () { window.history.back(); });
@@ -508,9 +540,14 @@
                 name: payload.contact.name,
                 email: payload.contact.email,
                 newcomer: 'Services discovery request',
+                preferred_path: payload.project.preferred_path,
+                primary_help: payload.project.primary_help,
+                client_type: payload.background.client_type,
+                requested_at: payload.requested_at,
                 message: readableMessage(payload)
             }).then(function () {
                 rememberSuccess(Date.now());
+                form.reset();
                 form.hidden = true;
                 document.querySelector('.services-rail').hidden = true;
                 document.querySelector('.services-workspace').classList.add('is-complete');

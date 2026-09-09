@@ -147,6 +147,10 @@ for (const file of publicHtml) {
     errors.push(`${fileRel}: static navigation is missing What's New`);
   }
 
+  if (!redirect && !explorable && /id=["']site-header["']/i.test(html) && !/href=["'][^"']*services\.html/i.test(html)) {
+    errors.push(`${fileRel}: static navigation is missing Services`);
+  }
+
   if (explorable) {
     const hasBackControl = /class=["'][^"']*(?:chrome-back|explore-back|back-to-essay)[^"']*["']/i.test(html) || /Back to (?:Essay|Blog|Article)/i.test(html);
     if (!hasBackControl) errors.push(`${fileRel}: full-screen explorable missing a back-to-essay control`);
@@ -210,6 +214,9 @@ if (fs.existsSync(servicesPath)) {
   }
   if (!/blog\/practical-guides\/01-build-your-own-space-on-the-web\.html/i.test(servicesHtml)) {
     errors.push('services.html: missing free personal-website guide path');
+  }
+  if (!/@emailjs\/browser@4\/dist\/email\.min\.js/i.test(servicesHtml)) {
+    errors.push('services.html: services intake must use the current EmailJS browser SDK');
   }
   if (/type=["'](?:submit|button)["'][^>]*(?:pay|checkout)|(?:pay|checkout)[^<]*<button/i.test(servicesHtml)) {
     errors.push('services.html: intake must not introduce a payment or checkout control');
