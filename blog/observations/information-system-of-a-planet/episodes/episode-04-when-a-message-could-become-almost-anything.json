@@ -4,35 +4,32 @@
   "title": "When a Message Could Become Almost Anything",
   "status": "published",
   "published": "2026-09-08",
-  "deckline": "Animal messages could warn, identify, direct, and combine. Human language widened that bridge until a finite collection of sounds and gestures could carry nearly any shared idea.",
-  "objective": "Show human language as a multimodal, culturally learned, open-ended expansion of older communication capacities that greatly increases what groups can explain, imagine, teach, and coordinate, while keeping its origins uncertain and its oral substrate dependent on living bodies.",
+  "deckline": "The human lineage did not invent communication on a known day. Across a deep and poorly dated interval, language turned a small learned signal set into a high-capacity shared workspace for absent, future, and imagined worlds.",
+  "objective": "Make Episode 4 faster and historically legible: orient the reader within millions of years of human-lineage evolution without inventing a language date, center the information-system upgrade of open-ended recombination, then show its consequences for teaching, planning, and oral memory across generations.",
   "learning_outcomes": [
-    "Understand why language has no known invention date: speech and gesture do not fossilize, and surviving anatomy and artifacts constrain possibilities without preserving a first sentence.",
-    "Recognize human language as multimodal rather than identical with speech, and signed languages as complete natural languages rather than simplified substitutes.",
-    "See how finite, reusable elements and shared rules create an open-ended range of meanings, including absent, past, future, denied, and imagined events.",
-    "Understand language as an amplifier of teaching, coordination, and cumulative culture rather than their single cause or inevitable destination.",
-    "Recognize oral tradition as a powerful, adaptive living archive whose dependence on performance and memory creates pressure for more durable external traces."
+    "Understand why the origin of language cannot be assigned a reliable invention date even though evidence spans millions of years of human evolution.",
+    "See open-ended recombination as the central performance upgrade: a finite learned system can generate an enormous range of meanings across speech, sign, gesture, and context.",
+    "Recognize language as increasing information bandwidth, addressability, error correction, and collective planning without making it the sole cause of human cooperation or culture.",
+    "See oral tradition as powerful multi-generation storage that still requires living people to repeatedly read, perform, and rewrite the information."
   ],
-  "continuity": "Episode 3 showed that nonhuman animal messages can carry danger, direction, identity, and structured combinations, then stopped at the gap between these specialized systems and the open-ended expressive range of human language. This episode follows that expansion without assigning it a sudden origin or reducing language to speech.",
-  "future_pressure": "Spoken and signed language greatly expand what can move between minds, but an oral message must still be perceived, remembered, repeated, and carried by living people. The next gap is how humans began giving selected information a durable external body through marks, images, tallies, and eventually writing, without treating non-literate societies as stagnant or memoryless.",
+  "continuity": "Episode 3 compared the bandwidth, range, and addressability of living animal communication systems and ended where chronology becomes uncertain. Episode 4 enters the human lineage: the evidence spans millions of years, the emergence of language has no defensible birthday, and the important change is the operating capacity of the shared communication system.",
+  "future_pressure": "Language can keep complex information alive across generations, but oral storage still depends on repeated performance by living carriers. The next pressure is durable external storage that can wait without a remembering body present.",
   "discussion_term": "observation-1-information-system-of-a-planet-episode-4-when-a-message-could-become-almost-anything",
   "slides": [
     {
       "id": "no-first-sentence",
-      "title": "No first sentence survives",
-      "read_minutes": 1.8,
+      "title": "Millions of years, no first sentence",
+      "read_minutes": 1.4,
       "image": {
         "src": "images/episode-04/01-no-first-sentence.jpg",
         "alt": "Across a deep-time dusk landscape, several early human groups communicate with voice, hands, gaze, and posture while faint traces of their exchanges disappear into the air.",
         "category": "I30-A70"
       },
       "paragraphs": [
-        "Episode 3 brought us to a border with no gate. On one side were alarms, dances, whistles, learned calls, gestures, and a few small combinations. On the other side was a human conversation that could wander almost anywhere.",
-        "There was no morning when one animal cleared its throat, invented language, and surprised the neighbors. The human lineage changed across millions of years. Bodies, brains, social lives, gestures, breathing control, vocal learning, shared attention, and cultural conventions could all have influenced the result. Researchers disagree about the sequence and about which ingredients mattered most.",
-        "The central problem is brutally simple: language does not fossilize. A skull can suggest what sounds its owner might have been able to produce. A tool can show that someone performed a complicated sequence. Pigments, ornaments, burials, and images can reveal symbolic behavior. None of them records the grammar of a vanished conversation.",
-        "Living languages do not give us a staircase backward either. Every known human community uses language of enormous expressive depth. A language spoken by a small foraging society is not an unfinished draft waiting to become French, Arabic, Mandarin, or American Sign Language.",
-        "Evidence can narrow possibilities, and experiments can test how particular capacities work. It cannot recover the first sentence or even prove there was one clean first sentence to recover.",
-        "So this transformation begins honestly: without a birthday, without a lone inventor, and without pretending uncertainty is an empty space. Something expanded gradually inside an already social animal. The bridge between nervous systems became astonishingly wide."
+        "Episode 3 ended at a border with no timestamp. Now the scale changes again: we are inside millions of years of human-lineage evolution, but language itself has no reliable start date.",
+        "Speech and gesture do not fossilize. Skulls constrain anatomy. Tools reveal complicated action sequences. Pigments, ornaments, burials, and images can show forms of symbolic behavior. None records the grammar of a vanished conversation.",
+        "So do not picture a first speaker booting up language while everyone else stared. Bodies, brains, social lives, gesture, vocal control, shared attention, and cultural conventions changed across long overlapping histories.",
+        "The honest timeline is broad and foggy. The performance change is clearer: at some point within that history, the communication system became vastly more open-ended."
       ],
       "sources": [
         {
@@ -53,20 +50,18 @@
     },
     {
       "id": "more-than-sound",
-      "title": "Language has more than one door",
-      "read_minutes": 1.7,
+      "title": "The interface was never only sound",
+      "read_minutes": 1.0,
       "image": {
         "src": "images/episode-04/02-more-than-sound.jpg",
         "alt": "A close human gathering shares meaning through coordinated hand signs, facial expressions, gaze, posture, and voice, with a signed exchange given equal focus.",
         "category": "I50-A50"
       },
       "paragraphs": [
-        "Speech gets excellent publicity. It travels in darkness, works when hands are busy, and can reach someone who is looking the other way. But human language never became a disembodied stream of sound.",
-        "Watch an ordinary conversation with the volume removed. Eyebrows question. Eyes nominate the next speaker. A hand sketches the shape of an object. A pause can invite, refuse, threaten, or reveal that somebody has forgotten the point halfway through making it. Put the sound back and these channels align, contradict, repair, and elaborate one another.",
-        "Some humans carry language primarily through the hands, face, body, and visual space. Signed languages are complete natural languages with their own vocabularies and grammars. American Sign Language is not English acted out with the fingers; British Sign Language is not the same language; there is no universal sign language quietly waiting behind them all.",
-        "This matters to the history even though no one can reconstruct the exact mixture of gesture and voice in early language. It shows that the extraordinary capacity is not imprisoned in one output device. Human nervous systems can build richly structured language in an auditory-vocal channel or a visual-gestural one.",
-        "And spoken language remains visibly multimodal. Gesture is not decorative packaging added after the words are finished. Face-to-face meaning is assembled across bodies interacting in a shared scene.",
-        "The bridge did not become powerful because sound defeated gesture. It became powerful because humans could coordinate many channels around shared conventions — and because a convention can be learned by another mind."
+        "Speech gets excellent publicity, but human language is not married to one output device.",
+        "Face-to-face communication already mixes voice, hands, gaze, facial expression, posture, timing, and shared context. Signed languages show the point cleanly: they are complete natural languages with their own vocabularies and grammars, not spoken languages acted out with fingers.",
+        "The extraordinary system is therefore not a better throat. It is a brain-and-community capacity that can build richly structured conventions through different bodily channels.",
+        "Different interface. Same larger upgrade."
       ],
       "sources": [
         {
@@ -92,20 +87,19 @@
     },
     {
       "id": "small-kit-many-worlds",
-      "title": "A small kit can make many worlds",
-      "read_minutes": 1.8,
+      "title": "A small kit becomes a huge address space",
+      "read_minutes": 1.5,
       "image": {
         "src": "images/episode-04/03-small-kit-many-worlds.jpg",
         "alt": "Around a night fire, a few recurring sound and hand motifs recombine above a group into many shared scenes including an animal, a route, a storm, a shelter, and an imagined creature.",
         "category": "I50-A50"
       },
       "paragraphs": [
-        "A vervet alarm can narrow the world to danger from above. A bee dance can direct another bee toward food. Campbell's monkeys can reuse a small call repertoire in several regular combinations. Human language takes the same basic economy — reuse — and pushes it into a different arithmetic.",
-        "No speaker stores a separate noise for every possible thought. A language offers a limited collection of contrasts, signs, words, patterns, and expectations. People combine and recombine them. Change the order, the context, the ending, the facial expression, or what both people already know, and the interpretation can change.",
-        "This is sometimes described as making infinite use of finite means. Humans are finite creatures, so nobody actually produces an infinity of sentences. The useful point is open-endedness: you can understand a sentence you have never encountered because familiar pieces arrive in a structured relationship.",
-        "The pieces are not meaningful alone in a universal way. Communities build conventions, children learn them, and generations reshape them. Even then, language is not merely copied into a child. Studies of children who lacked a conventional language model have shown that they can introduce systematic combinations into their own gestures. Emerging sign languages show how individual inventions and community interaction can organize one another over time.",
-        "The planetary information system has gained compression. Instead of manufacturing an entirely new signal for every new circumstance, a group can reuse a manageable kit to describe an unmanageable world.",
-        "A few ingredients. A ridiculous number of possible meals. Humans have always liked this arrangement."
+        "This is the center of the episode. Human language does not need a unique signal for every possible thought.",
+        "A community learns a finite collection of contrasts, signs, words, patterns, and expectations, then recombines them. Familiar pieces can arrive in a new structure and still be understood. The practical result is open-endedness: yesterday's pieces can describe a sentence nobody has heard before.",
+        "In information-system language, this is compression with an exploding address space. A manageable set of reusable units can point toward an enormous range of events, objects, relationships, possibilities, and invented nonsense.",
+        "Children and communities also reshape the system as they learn and use it. Language is not a static codebook copied perfectly from one generation to the next. It is a living protocol.",
+        "This is the bandwidth jump the earlier episodes were approaching."
       ],
       "sources": [
         {
@@ -131,20 +125,18 @@
     },
     {
       "id": "absent-enters-circle",
-      "title": "The absent enters the circle",
-      "read_minutes": 1.7,
+      "title": "The present is no longer the address limit",
+      "read_minutes": 1.3,
       "image": {
         "src": "images/episode-04/04-absent-enters-circle.jpg",
         "alt": "A firelit group discusses a world beyond the present scene as translucent impressions of distant animals, a storm, a river crossing, and an imagined creature fill the landscape around them.",
         "category": "I30-A70"
       },
       "paragraphs": [
-        "The bee from Episode 3 could dance about flowers beyond the hive. So reference to something absent did not begin with humans. The change is range and flexibility.",
-        "A human conversation can leave the visible scene and keep going. The group can discuss the herd that passed yesterday, the river after the rains, a person now far away, or a route nobody in the circle has traveled. It can compare what happened with what might have happened. It can deny the leopard, invent a leopard with feathers, then argue about whether the feathered leopard is an insult.",
-        "Linguists call this capacity to refer beyond the here and now displacement. In ordinary life it rarely travels alone. Recombination lets speakers and signers build a new description; shared conventions let others interpret it; gesture and iconicity can connect an unfamiliar idea to a familiar shape or action; memory and imagination supply the missing scene.",
-        "That combination changes what a group can hold together. A danger no one currently sees can become everyone’s concern. An absent person's experience can enter a decision. A possible future can be compared with another possible future before either consumes a week of labor.",
-        "Language does not transmit a thought intact, like pouring water between cups. The receiver reconstructs meaning from the signal, the situation, prior knowledge, and assumptions about the sender. Misunderstanding remains extremely human.",
-        "But the shared present has widened. Bodies are still gathered around one fire while their information ranges across yesterday, elsewhere, tomorrow, and impossible worlds."
+        "Bees already show that information can point beyond the immediate scene, so humans did not invent reference to the absent. The difference is flexibility.",
+        "A human conversation can address yesterday, another valley, a missing person, tomorrow's river, a rule that might be changed, or an animal that has never existed. The group can compare two futures before either one happens.",
+        "The receiver does not download a thought intact. Meaning is reconstructed from the signal, context, memory, convention, and assumptions about the sender. Misunderstanding remains a permanent feature, not a bug we ever fully patched.",
+        "But the shared workspace has expanded. Bodies can remain around one fire while attention moves across time, distance, and imagination."
       ],
       "sources": [
         {
@@ -165,20 +157,18 @@
     },
     {
       "id": "skill-explained",
-      "title": "A skill can be explained",
-      "read_minutes": 1.8,
+      "title": "A learner can debug the hidden step",
+      "read_minutes": 1.2,
       "image": {
         "src": "images/episode-04/05-skill-explained.jpg",
         "alt": "An experienced stone knapper points to an edge and demonstrates a strike while a younger learner attempts the next step and nearby observers watch.",
         "category": "I50-A50"
       },
       "paragraphs": [
-        "Imagine learning to shape a stone edge. You can watch the expert's hands. You can copy the angle, the grip, the force. But an almost-correct strike can still turn tomorrow's knife into today's gravel.",
-        "Language adds another route into the skill. The expert can direct attention: not that bulge, this one. The learner can ask what went wrong. A gesture can show the movement while a word separates the tool, the target, and the result. The demonstration remains essential; explanation can make crucial relationships easier to notice and repair.",
-        "Experimental archaeologists tested versions of this problem with modern participants learning to make stone flakes. In one large transmission-chain experiment, teaching improved performance more than imitation alone, and teaching with language outperformed teaching without it. Other experiments have likewise found benefits from gestural and verbal instruction during knapping.",
-        "These experiments do not date language. Stone tools existed millions of years ago, and a modern person learning in a laboratory is not a transparent substitute for an extinct hominin. Toolmaking could be learned through observation, practice, gesture, social tolerance, and simpler communication long before anyone could explain it as we do.",
-        "The narrower conclusion is enough: once language exists, a learner does not have to infer every hidden step from the finished movement. Information about sequence, cause, error, and intention can travel beside the action.",
-        "Culture still needs hands, materials, attention, trust, and many failed attempts. Language does not manufacture the tool. It lets one mind point more precisely at what another mind should notice next."
+        "Stone tools remind us why higher message capacity matters. Toolmaking existed millions of years ago, long before we can responsibly date language, and observation, practice, gesture, and simpler communication could transmit skill.",
+        "Once language is available, teaching gains another channel. An expert can direct attention to the hidden variable: this edge, not that one; strike here; the angle changed; try again.",
+        "Experiments with modern learners show that gestural and verbal teaching can improve stone-knapping transmission. They do not date prehistoric language. They show what explanation can add to demonstration.",
+        "Information about error and cause can now travel beside the action. The learner does not have to reverse-engineer every mistake alone."
       ],
       "sources": [
         {
@@ -204,20 +194,18 @@
     },
     {
       "id": "rehearse-tomorrow",
-      "title": "A group can rehearse tomorrow",
-      "read_minutes": 1.7,
+      "title": "Many minds can edit the same future",
+      "read_minutes": 1.3,
       "image": {
         "src": "images/episode-04/06-rehearse-tomorrow.jpg",
         "alt": "A community debates and revises a future river crossing around a model of stones and sticks while others prepare fibers, carrying frames, supplies, and child care.",
         "category": "I30-A70"
       },
       "paragraphs": [
-        "Many animals coordinate beautifully without language. Ants allocate work. Wolves hunt together. Chimpanzees form alliances. Communication did not invent cooperation, and human groups did not wait for perfect grammar before helping one another.",
-        "Language expands the kinds of coordination available. A group can negotiate roles for an event that has not begun, describe a problem encountered by someone absent, state a rule, challenge the rule, promise a future action, and revise the plan when one person notices that the river is doing something inconveniently river-like.",
-        "The important unit is no longer only the message. It is the shared model being built across many messages. One person proposes a route. Another remembers a flood. A third explains who can carry what. Agreement, refusal, humor, status, kinship, trust, tools, and the physical landscape all influence what the group finally does.",
-        "This is why language should not be cast as the single engine of human cumulative culture. High-fidelity imitation, deliberate teaching, long childhoods, cooperative relationships, population connections, material technologies, and social institutions all matter. Researchers still debate how these factors interacted and when particular forms intensified.",
-        "Language is an amplifier inside that system. It can expose hidden reasons, compare alternatives, and let improvements be discussed rather than only demonstrated. A modification made by one generation can arrive in the next with commentary attached.",
-        "The group can now rehearse tomorrow while everyone is still standing today. Information has become a workspace shared between bodies — temporary, contested, and far larger than any one message."
+        "Animals coordinate without human language. Human cooperation did not begin here.",
+        "What language expands is the shared model. One person proposes a route. Another recalls a flood. Someone objects, assigns a role, changes a rule, promises an action, or explains why the plan will fail before everyone discovers the failure together.",
+        "In system terms, the group has something like a temporary shared workspace with multiple readers and writers. It is noisy, political, emotional, and very unlike a clean database — but alternatives can be compared and revised before action.",
+        "Language is one amplifier inside a larger cultural system of imitation, teaching, trust, institutions, tools, population connections, and long childhoods. It is powerful without being the sole engine."
       ],
       "sources": [
         {
@@ -243,21 +231,18 @@
     },
     {
       "id": "archive-breathed",
-      "title": "The archive still breathed",
-      "read_minutes": 1.8,
+      "title": "The archive can last generations — but it still breathes",
+      "read_minutes": 1.3,
       "image": {
         "src": "images/episode-04/07-archive-breathed.jpg",
         "alt": "An elder tells a story through voice, gesture, rhythm, and song as listeners repeat and correct it, while related gatherings continue the living pattern across generations and a distant strand fades.",
         "category": "I10-A90"
       },
       "paragraphs": [
-        "With language, a group can preserve far more than a route or technique. Stories can carry social rules, ecological knowledge, genealogies, warnings, explanations, humor, identity, and arguments about what a community owes its members.",
-        "An oral tradition is not a broken written archive. It is a different information system. Knowledge can be distributed among storytellers, specialists, families, songs, ceremonies, landmarks, seasons, and repeated practices. Rhythm and narrative shape aid recall. Listeners are not always passive recipients; they may answer, correct, reinterpret, or retell for a new situation.",
-        "That flexibility is power, not merely noise. A story can remain recognizable while adjusting to a different audience or danger. Research with forager communities shows oral storytelling functioning as deliberate teaching, transmitting general knowledge that listeners could not easily acquire from one immediate event. Other work describes storytelling as collective sensemaking: groups use narrative to organize experience rather than just store a frozen transcript.",
-        "But the archive still breathes. A spoken sentence vanishes as sound unless a nervous system catches it. A signed sentence vanishes as movement unless someone sees it. To cross a generation, the pattern must be remembered, performed, received, and performed again.",
-        "Communities develop formidable methods for doing exactly that. Information can survive for generations without paper and can remain useful because people keep testing it against life. Yet distance, interruption, death, dispersal, and changing social relationships can break parts of the chain.",
-        "Language widened the bridge between living minds. It did not give the message a body of its own.",
-        "Much later, humans would begin leaving selected traces that could wait in the world after the hands stopped moving and the voices went quiet."
+        "A spoken sound may last seconds. A signed movement may vanish almost as quickly. Yet oral traditions can keep complex knowledge alive across generations because people repeatedly remember, perform, teach, correct, and adapt it.",
+        "That is a remarkable storage extension. Stories, songs, ceremonies, specialists, landmarks, and repeated practices can distribute knowledge across a community instead of leaving it inside one memory.",
+        "But the medium still requires active readers and writers. If transmission chains break, parts of the archive can disappear. Oral systems are not failed writing systems; they are powerful living storage with different durability and failure modes.",
+        "After billions of years of biological storage, hundreds of millions of years of nervous systems, and generations of social and oral memory, the next pressure is almost embarrassingly obvious: can information wait in the world without a living mind continuously carrying it?"
       ],
       "sources": [
         {
