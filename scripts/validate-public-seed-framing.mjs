@@ -100,7 +100,8 @@ const retiredPhrases = [
   'Codex Reimplementation',
   'Codex Seed Project',
   'Codex Seed and Q-Seed',
-  'share a common architectural lineage'
+  'share a common architectural lineage',
+  'The same Hadosh architecture'
 ];
 
 for (const [relativePath, source] of surfaces) {
