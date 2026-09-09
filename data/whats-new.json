@@ -1,8 +1,31 @@
 {
   "version": 1,
-  "updated": "2026-09-07",
+  "updated": "2026-09-08",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-07-observation-episode-three",
+      "date": "2026-09-07",
+      "type": "Observation",
+      "title": "The Information System of a Planet asks how much a message can carry",
+      "summary": "Episode 3 follows animal communication across chemical, visual, tactile, vibrational, electrical, and acoustic channels, then examines messages about danger, remote locations, individual identity, and structured call combinations.",
+      "why_it_matters": "Readers can see how the physics of each channel shapes a message's range, speed, persistence, and detail while avoiding the false shortcut that every meaningful animal signal is a word or that impressive communication systems form a ladder toward humans.",
+      "affected": ["The Information System of a Planet", "Observations", "Animal communication", "Communication channels", "Visual storytelling"],
+      "maturity": "Published Episode 3 with seven complete visual slides",
+      "intended_for": ["General readers", "People curious about animal communication", "Visual learners", "Readers continuing from Episode 2"],
+      "sources": [
+        {
+          "label": "Episode 3 publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/88"
+        },
+        {
+          "label": "The Information System of a Planet",
+          "url": "/blog/observations/information-system-of-a-planet/index.html"
+        }
+      ],
+      "adoption_notes": "Read this after Episode 2. The examples distinguish evolved signals from incidental cues and qualify claims about reference, names, syntax, and compositional meaning. They do not establish a human-like language or an evolutionary staircase. Narration paths remain placeholders, so no audio is published yet, and the episode intentionally stops before human language becomes the protagonist.",
+      "recommended_action": "Continue to Episode 3 in the Observation reader, compare its examples and source drawers, and return episode-specific corrections or evidence through its discussion link."
+    },
     {
       "id": "2026-09-06-public-seed-pattern-accumulation",
       "date": "2026-09-06",
