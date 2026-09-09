@@ -26,6 +26,19 @@
     font-size: clamp(1rem, 2vw, 1.16rem);
 }
 
+.services-no-script {
+    margin-bottom: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    border-radius: 18px;
+    background: rgba(245, 158, 11, 0.06);
+}
+
+.services-no-script h2 { margin-bottom: 0.4rem; font-size: 1.35rem; }
+.services-no-script p { max-width: 720px; color: var(--text-muted); }
+.services-no-script .btn { margin-top: 1rem; }
+.no-js .services-workspace { display: none; }
+
 .services-workspace {
     display: grid;
     grid-template-columns: minmax(190px, 0.45fr) minmax(0, 1.55fr);
@@ -86,7 +99,7 @@
     grid-template-columns: 22px 1fr;
     gap: 0.55rem;
     align-items: center;
-    color: #71717a;
+    color: #7c7c86;
     font-size: 0.77rem;
     counter-increment: steps;
 }
@@ -111,7 +124,7 @@
 
 .services-save-note {
     margin-top: 1.6rem;
-    color: #71717a;
+    color: #7c7c86;
     font-size: 0.72rem;
     line-height: 1.55;
 }
@@ -213,6 +226,7 @@
 
 .services-choice:hover,
 .services-check:hover { border-color: rgba(139, 92, 246, 0.58); background: rgba(139, 92, 246, 0.055); }
+.services-choice[hidden] { display: none; }
 .services-choice:has(input:checked),
 .services-check:has(input:checked) { border-color: var(--accent); background: rgba(139, 92, 246, 0.11); }
 .services-choice:has(input:focus-visible),
@@ -351,8 +365,6 @@
 .services-consent { display: flex; gap: 0.75rem; align-items: flex-start; cursor: pointer; }
 .services-consent span { color: var(--text-main); font-size: 0.875rem; line-height: 1.55; }
 .services-privacy-notice > p { margin: 0.65rem 0 0 1.8rem; color: var(--text-muted); font-size: 0.75rem; }
-.services-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-
 .services-form-actions {
     display: flex;
     gap: 0.75rem;
@@ -362,6 +374,7 @@
 }
 
 .services-form-actions .btn { min-width: 120px; border: 0; cursor: pointer; font: inherit; }
+.page-services .btn-primary { background: linear-gradient(90deg, #4f46e5, #7c3aed); color: #fff; }
 .services-form-actions .btn:disabled { cursor: not-allowed; filter: grayscale(0.5); opacity: 0.58; }
 .services-form-status { min-height: 1.5em; margin-top: 0.75rem; text-align: right; }
 .services-success { justify-content: center; }
@@ -436,5 +449,7 @@
 @media (prefers-reduced-motion: reduce) {
     .services-choice,
     .services-check,
-    .services-summary-mark { transition: none; }
+    .services-summary-mark,
+    .page-services .btn { transition: none; }
+    .page-services .btn:hover { transform: none; }
 }

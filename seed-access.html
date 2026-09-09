@@ -26,7 +26,7 @@
 <body>
     <header id="site-header"><div class="container"><nav>
         <a href="index.html" class="logo">Hadosh Academy</a>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
         <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a>
                     <a href="whats-new.html">What&apos;s New</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
     </nav></div></header>
@@ -52,9 +52,10 @@
             </div>
 
             <div class="card access-form-card">
+                <noscript><p class="access-delivery-note">JavaScript is required to send this request. The public Seed patterns and technical writing remain available without it.</p></noscript>
                 <form id="seed-access-form" method="post" action="/seed-access.html">
-                    <div class="form-group"><label for="access-name">Name</label><input type="text" id="access-name" name="name" class="form-control" autocomplete="name" required></div>
-                    <div class="form-group"><label for="access-email">Email</label><input type="email" id="access-email" name="email" class="form-control" autocomplete="email" required></div>
+                    <div class="form-group"><label for="access-name">Name</label><input type="text" id="access-name" name="name" class="form-control" maxlength="80" autocomplete="name" required></div>
+                    <div class="form-group"><label for="access-email">Email</label><input type="email" id="access-email" name="email" class="form-control" maxlength="254" autocomplete="email" required></div>
                     <div class="form-group">
                         <label for="access-experience">Experience with agent harnesses</label>
                         <select id="access-experience" name="experience" class="form-control" required>
@@ -66,11 +67,13 @@
                             <option>I maintain a larger agent system</option>
                         </select>
                     </div>
-                    <div class="form-group"><label for="access-tools">Tools or frameworks you use <span class="form-optional">(optional)</span></label><input type="text" id="access-tools" name="tools" class="form-control" placeholder="Claude Code, Codex, Qwen Code, OpenCode, or something else"></div>
-                    <div class="form-group"><label for="access-goal">What do you want to study, compare, or build?</label><textarea id="access-goal" name="goal" class="form-control" rows="6" required></textarea></div>
+                    <div class="form-group"><label for="access-tools">Tools or frameworks you use <span class="form-optional">(optional)</span></label><input type="text" id="access-tools" name="tools" class="form-control" maxlength="160" placeholder="Claude Code, Codex, Qwen Code, OpenCode, or something else"></div>
+                    <div class="form-group"><label for="access-goal">What do you want to study, compare, or build?</label><textarea id="access-goal" name="goal" class="form-control" rows="6" maxlength="1500" required></textarea></div>
+                    <div class="form-honeypot" aria-hidden="true"><label for="access-website">Leave this field empty</label><input id="access-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
                     <div class="form-group form-check access-agreement"><input type="checkbox" id="access-agreement" name="agreement" class="form-check-input" required><label for="access-agreement" class="form-check-label">I understand this is private reference access and I will not redistribute repository content without permission.</label></div>
+                    <div class="form-group form-check access-agreement"><input type="checkbox" id="access-consent" name="consent" class="form-check-input" required><label for="access-consent" class="form-check-label">I understand that this request will be delivered through EmailJS so Hadi can review it and reply.</label></div>
                     <button type="submit" id="seed-access-submit" class="btn btn-primary" disabled>Send Access Request</button>
-                    <p class="access-delivery-note">Your request is sent through the site's existing email service. No separate applicant database is created.</p>
+                    <p class="access-delivery-note">No separate applicant database or marketing signup is created. Do not include secrets, confidential client material, or regulated personal data. Email delivery is handled under the <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS privacy policy</a>.</p>
                     <p id="seed-access-status" class="form-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
@@ -79,8 +82,8 @@
 
     <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
     <script src="js/theme-manager.js?v=20260903-whats-new-1"></script>
-    <script src="js/components.js?v=20260909-services-1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="js/seed-access.js?v=20260906-form-fallback-1"></script>
+    <script src="js/components.js?v=20260909-services-2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/seed-access.js?v=20260909-services-1"></script>
 </body>
 </html>

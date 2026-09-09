@@ -104,6 +104,7 @@ function validateEmailForm(htmlRel, formId, submitId, statusId) {
 const allFiles = walk(root);
 const htmlFiles = allFiles.filter(file => file.endsWith('.html'));
 const publicHtml = htmlFiles.filter(file => !rel(file).startsWith('.claude/'));
+const practicalGuidePages = publicHtml.filter(file => /^blog\/practical-guides\/[^/]+\.html$/.test(rel(file)));
 
 const blogIndexPath = path.join(root, 'blog.html');
 if (fs.existsSync(blogIndexPath)) {
@@ -122,6 +123,7 @@ for (const file of publicHtml) {
   const redirect = isRedirectPage(html);
   const noindex = /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
   const explorable = fileRel.startsWith('blog/') && fileRel.includes('/explore/');
+  const observationApp = /^blog\/observations\/[^/]+\/index\.html$/.test(fileRel);
 
   if (!redirect && !noindex) {
     const requiredMetadata = [
@@ -165,7 +167,7 @@ for (const file of publicHtml) {
     }
   }
 
-  if (fileRel.startsWith('blog/') && !explorable && !redirect) {
+  if (fileRel.startsWith('blog/') && !explorable && !observationApp && !redirect) {
     if (/^blog\/(?:b\d+|practical-guides)\/[^/]+\.html$/.test(fileRel)) {
       const markdownSource = file.slice(0, -'.html'.length) + '.md';
       if (!fs.existsSync(markdownSource)) {
@@ -187,7 +189,8 @@ for (const file of publicHtml) {
       const footer = bodyMatch[1];
       const hasPrev = /Previous:/i.test(footer);
       const hasNext = /Next:/i.test(footer);
-      if (!hasPrev && !hasNext) warnings.push(`${fileRel}: no Previous/Next footer link detected`);
+      const onlyPracticalGuide = fileRel.startsWith('blog/practical-guides/') && practicalGuidePages.length === 1;
+      if (!hasPrev && !hasNext && !onlyPracticalGuide) warnings.push(`${fileRel}: no Previous/Next footer link detected`);
     }
   }
 }
@@ -204,10 +207,19 @@ validateEmailForm('projects/crime-cartography.html', 'project-subscribe-form', '
 const servicesPath = path.join(root, 'services.html');
 if (fs.existsSync(servicesPath)) {
   const servicesHtml = fs.readFileSync(servicesPath, 'utf8');
-  const servicesSteps = [...servicesHtml.matchAll(/\bdata-step=["'][^"']+["']/gi)].length;
-  if (servicesSteps !== 10) errors.push(`services.html: expected 10 guided steps, found ${servicesSteps}`);
+  const servicesSteps = [...servicesHtml.matchAll(/\bdata-step=["']([^"']+)["']/gi)].map(match => match[1]);
+  const expectedSteps = ['orientation', 'background', 'context', 'current-system', 'desired-help', 'ownership', 'participation', 'practical-fit', 'recommendation', 'contact-review'];
+  if (servicesSteps.join('|') !== expectedSteps.join('|')) {
+    errors.push(`services.html: guided step order changed: ${servicesSteps.join(', ')}`);
+  }
   if (!/<details\b[^>]*class=["'][^"']*services-catalog/i.test(servicesHtml)) {
     errors.push('services.html: full services catalog must remain progressively disclosed');
+  }
+  if (/<details\b(?=[^>]*class=["'][^"']*services-catalog)[^>]*\bopen\b/i.test(servicesHtml)) {
+    errors.push('services.html: full services catalog must not be open by default');
+  }
+  if (!/<html\b[^>]*class=["'][^"']*\bno-js\b/i.test(servicesHtml) || !/<noscript>[\s\S]*guided intake needs JavaScript/i.test(servicesHtml)) {
+    errors.push('services.html: missing explicit no-JavaScript intake fallback');
   }
   if (!/href=["']\/support\.html["']/i.test(servicesHtml)) {
     errors.push('services.html: missing quiet support path');
@@ -221,6 +233,40 @@ if (fs.existsSync(servicesPath)) {
   if (/type=["'](?:submit|button)["'][^>]*(?:pay|checkout)|(?:pay|checkout)[^<]*<button/i.test(servicesHtml)) {
     errors.push('services.html: intake must not introduce a payment or checkout control');
   }
+
+  const servicesScript = fs.readFileSync(path.join(root, 'js/services-intake.js'), 'utf8');
+  if (!/foundationsGuide[\s\S]*href:\s*["']\/start-here\.html["']/.test(servicesScript)) {
+    errors.push('js/services-intake.js: missing free Start Here recommendation');
+  }
+  if (!/budget === ["']Free resources only["'][\s\S]*foundationsGuide/.test(servicesScript)) {
+    errors.push('js/services-intake.js: free-only budget must produce a free recommendation path');
+  }
+  if (/!preferred\s*&&\s*index\s*===\s*0/.test(servicesScript)) {
+    errors.push('js/services-intake.js: recommendations must require an explicit visitor choice');
+  }
+  if (/history\.pushState/.test(servicesScript)) {
+    errors.push('js/services-intake.js: wizard steps must not create stale browser-history entries');
+  }
+}
+
+const emailPages = ['contact.html', 'services.html', 'seed-access.html', 'projects/crime-cartography.html'];
+for (const page of emailPages) {
+  const source = fs.readFileSync(path.join(root, page), 'utf8');
+  if (!/@emailjs\/browser@4\/dist\/email\.min\.js/i.test(source)) {
+    errors.push(`${page}: email form must use EmailJS browser SDK v4`);
+  }
+}
+
+const emailScripts = ['js/form-handler.js', 'js/services-intake.js', 'js/seed-access.js', 'js/project-subscribe.js']
+  .map(file => fs.readFileSync(path.join(root, file), 'utf8'))
+  .join('\n');
+const templateIds = new Set([...emailScripts.matchAll(/["'](template_[a-z0-9]+)["']/gi)].map(match => match[1]));
+const expectedTemplateIds = ['template_5he0blr', 'template_wq2dosk'];
+if ([...templateIds].sort().join('|') !== expectedTemplateIds.sort().join('|')) {
+  errors.push(`EmailJS integration must stay within the two-template free-plan limit; found: ${[...templateIds].join(', ')}`);
+}
+if ((emailScripts.match(/request_type\s*:/g) || []).length < 4) {
+  errors.push('EmailJS notification calls must identify all four website request types');
 }
 
 const feedPath = path.join(root, 'feed.xml');

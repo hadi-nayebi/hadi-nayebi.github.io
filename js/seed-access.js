@@ -4,6 +4,7 @@
     var form = document.getElementById('seed-access-form');
     var submit = document.getElementById('seed-access-submit');
     var status = document.getElementById('seed-access-status');
+    var SEND_THROTTLE_MS = 60000;
     if (!form || !submit || !status) return;
 
     form.addEventListener('submit', function (event) {
@@ -21,6 +22,12 @@
         status.textContent = '';
 
         var data = new FormData(form);
+        if (String(data.get('website') || '').trim()) {
+            form.reset();
+            status.setAttribute('data-state', 'success');
+            status.textContent = 'Request received.';
+            return;
+        }
         var message = [
             'Seed Agent early-access request',
             '',
@@ -38,7 +45,8 @@
                 name: data.get('name'),
                 email: data.get('email'),
                 message: message,
-                newcomer: 'Seed access request'
+                newcomer: 'Seed access request',
+                request_type: 'Seed access request'
             });
         }).then(function () {
             form.reset();
@@ -47,7 +55,7 @@
             submit.textContent = 'Request Sent';
         }, function () {
             status.setAttribute('data-state', 'error');
-            status.textContent = 'The request could not be sent. Please try again or use the general contact page.';
+            status.textContent = 'The request could not be sent. Please try again later.';
             submit.disabled = false;
             submit.textContent = 'Send Access Request';
         });
@@ -60,7 +68,11 @@
     }
 
     try {
-        emailjs.init('UrA0snZAj1om7ilbd');
+        emailjs.init({
+            publicKey: 'UrA0snZAj1om7ilbd',
+            blockHeadless: true,
+            limitRate: { id: 'hadosh-seed-access', throttle: SEND_THROTTLE_MS }
+        });
         submit.disabled = false;
     } catch (error) {
         console.log('FAILED TO INITIALIZE EMAIL DELIVERY...', error);

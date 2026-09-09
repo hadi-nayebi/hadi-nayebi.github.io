@@ -163,6 +163,7 @@
                     name: formData.get('name') || 'Project subscriber',
                     email: email,
                     newcomer: 'Crime Cartography Project Subscriber',
+                    request_type: 'Crime Cartography project subscriber',
                     message: message
                 });
             }).then(function () {

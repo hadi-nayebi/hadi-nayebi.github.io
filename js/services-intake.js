@@ -8,8 +8,8 @@
     var SUCCESS_COOLDOWN_MS = 15 * 60 * 1000;
     var SUCCESS_STORAGE_KEY = 'hadosh-services-last-success';
 
-    // First-PR delivery route. These three values are intentionally isolated so a
-    // dedicated EmailJS services template can replace the generic contact route.
+    // Shared inbound-notification route. The existing BLR template handles every
+    // website request type, so the free EmailJS plan does not need a third template.
     var EMAILJS_PUBLIC_KEY = 'UrA0snZAj1om7ilbd';
     var EMAILJS_SERVICE_ID = 'service_chq4jnq';
     var EMAILJS_TEMPLATE_ID = 'template_5he0blr';
@@ -17,68 +17,89 @@
     var OFFERINGS = {
         discovery: {
             title: 'Free Initial Guidance Conversation',
+            startingCost: 0,
             price: 'Free · 30 minutes',
             description: 'Clarify the situation, compare routes, and decide whether paid work is warranted.'
         },
         individualReview: {
             title: 'Individual Harness Review',
+            startingCost: 300,
             price: '$300 · scope adjustable',
             description: 'A focused review of your current structure, failure points, and next improvements.'
         },
         teamReview: {
             title: 'Team / Startup Harness Review',
+            startingCost: 650,
             price: '$650 · scope adjustable',
             description: 'Review shared architecture, ownership, coordination, and operating practices.'
         },
         training: {
             title: 'Guided Harness Training',
+            startingCost: 1200,
             price: '$1,200 · four sessions over one month',
             description: 'Build skill through guided sessions and practical work inside your own system.'
         },
         initialBuild: {
             title: 'Initial Harness Build + Training',
+            startingCost: 2400,
             price: 'From $2,400 · scope adjustable',
             description: 'Build the first durable version together, with training and a path for continued cultivation.'
         },
         startupPilot: {
             title: 'Startup Dashboard + Harness Pilot',
+            startingCost: 4500,
             price: 'From $4,500 · scope adjustable',
             description: 'Create a working dashboard connected to a maintainable, team-owned harness.'
         },
         workshop: {
             title: 'Private Team Workshop',
+            startingCost: 1250,
             price: '$1,250 · scope adjustable',
             description: 'A practical workshop aligned to your team’s work, language, and immediate decisions.'
         },
         continuingIndividual: {
             title: 'Continuing Individual Guidance',
+            startingCost: 95,
             price: '$95/month',
             description: 'Lightweight recurring guidance as your personal harness continues to change.'
         },
         continuingTeam: {
             title: 'Continuing Team Guidance',
+            startingCost: 350,
             price: '$350/month',
             description: 'Recurring guidance for the people responsible for a changing shared harness.'
         },
         websiteGuide: {
             title: 'Build Your Own Space on the Web',
+            startingCost: 0,
             price: 'Free practical guide',
             description: 'Publish a static personal website with GitHub Pages and learn to maintain it yourself.',
             href: '/blog/practical-guides/01-build-your-own-space-on-the-web.html',
             linkLabel: 'Open the free guide'
         },
+        foundationsGuide: {
+            title: 'Start Here: Harness Foundations',
+            startingCost: 0,
+            price: 'Free self-guided path',
+            description: 'Learn the model-versus-harness foundation and choose a small first responsibility to develop.',
+            href: '/start-here.html',
+            linkLabel: 'Open Start Here'
+        },
         websiteGuided: {
             title: 'Guided Personal Website Launch',
+            startingCost: 300,
             price: '$300 · two sessions',
             description: 'Publish your first user-owned website with guidance, while learning the whole path.'
         },
         websiteWorkspace: {
             title: 'Personal Website + Agent Workspace',
+            startingCost: 650,
             price: 'From $650 · scope adjustable',
             description: 'Use the website as the first public surface of a user-owned agent workspace.'
         },
         support: {
             title: 'Support the Open-Source Work',
+            startingCost: 0,
             price: 'Free to explore · optional support',
             description: 'Use the public repositories and writing, then support continued development if they help.',
             href: '/support.html',
@@ -178,6 +199,7 @@
             progress.max = route.length;
             progress.value = routePosition + 1;
             progress.textContent = 'Step ' + (routePosition + 1) + ' of ' + route.length;
+            progress.setAttribute('aria-label', 'Intake progress: step ' + (routePosition + 1) + ' of ' + route.length);
             stepNumber.textContent = String(routePosition + 1);
             stepTotal.textContent = String(route.length);
             progressItems.forEach(function (item, itemIndex) {
@@ -200,7 +222,7 @@
 
             var hash = '#step-' + steps[currentIndex].dataset.step;
             if (settings.history !== false && window.location.hash !== hash) {
-                window.history.pushState({ servicesStep: currentIndex }, '', hash);
+                window.history.replaceState({ servicesStep: currentIndex }, '', hash);
             }
             if (settings.focus !== false) focusStep();
         }
@@ -264,22 +286,41 @@
             var clientType = value(form, 'client_type');
             var budget = value(form, 'budget');
             var selected = values(form, 'desired_help');
+            var sensitivity = value(form, 'sensitivity');
             var keys = [];
 
             if (primary === 'Support the open-source work') keys.push('support', 'discovery');
+            else if (budget === 'Free resources only') {
+                if (primary === 'Launch a personal website') keys.push('websiteGuide', 'foundationsGuide', 'discovery');
+                else keys.push('foundationsGuide', 'discovery');
+            }
             else if (primary === 'Launch a personal website') {
-                if (budget === 'Free resources only') keys.push('websiteGuide', 'websiteGuided');
-                else if (selected.indexOf('Build an initial harness') !== -1) keys.push('websiteWorkspace', 'websiteGuided', 'websiteGuide');
+                if (selected.indexOf('Build an initial harness') !== -1) keys.push('websiteWorkspace', 'websiteGuided', 'websiteGuide');
                 else keys.push('websiteGuided', 'websiteGuide', 'websiteWorkspace');
             } else if (primary === 'Build a startup dashboard and harness') keys.push('startupPilot', 'teamReview', 'discovery');
             else if (primary === 'Review an existing harness') keys.push(clientType === 'Individual' ? 'individualReview' : 'teamReview', clientType === 'Individual' ? 'continuingIndividual' : 'continuingTeam', 'discovery');
             else if (primary === 'Train through guided sessions') keys.push(clientType === 'Individual' ? 'training' : 'workshop', clientType === 'Individual' ? 'individualReview' : 'teamReview', 'discovery');
             else if (primary === 'Run a team workshop') keys.push('workshop', 'teamReview', 'discovery');
             else if (primary === 'Build an initial harness') keys.push('initialBuild', clientType === 'Individual' ? 'training' : 'teamReview', 'discovery');
-            else if (primary === 'Learn the foundations') keys.push('discovery', 'websiteGuide', clientType === 'Individual' ? 'training' : 'workshop');
-            else keys.push('discovery', clientType === 'Individual' ? 'individualReview' : 'teamReview');
+            else if (primary === 'Learn the foundations') keys.push('foundationsGuide', 'discovery', clientType === 'Individual' ? 'training' : 'workshop');
+            else keys.push('discovery', 'foundationsGuide', clientType === 'Individual' ? 'individualReview' : 'teamReview');
 
-            return keys.filter(function (key, index) { return keys.indexOf(key) === index; }).slice(0, 3);
+            keys = keys.filter(function (key, index) { return keys.indexOf(key) === index; });
+
+            var budgetCeilings = {
+                'Under $500': 499,
+                '$500–$1,500': 1500,
+                '$1,500–$3,000': 3000,
+                '$3,000–$6,000': 6000,
+                '$6,000+': Number.POSITIVE_INFINITY
+            };
+            var ceiling = budgetCeilings[budget];
+            var boundaryFirst = sensitivity === 'Potentially regulated or highly sensitive';
+            var firstOffer = OFFERINGS[keys[0]];
+            if (ceiling && firstOffer && firstOffer.startingCost > ceiling) boundaryFirst = true;
+            if (boundaryFirst) keys = ['discovery'].concat(keys.filter(function (key) { return key !== 'discovery'; }));
+
+            return keys.slice(0, 3);
         }
 
         function renderRecommendations() {
@@ -297,7 +338,7 @@
                 input.name = 'preferred_path';
                 input.value = offer.title;
                 input.required = true;
-                if (preferred === offer.title || (!preferred && index === 0)) input.checked = true;
+                if (preferred === offer.title) input.checked = true;
                 var content = document.createElement('span');
                 var title = document.createElement('strong');
                 title.textContent = offer.title;
@@ -326,17 +367,28 @@
         function reviewRows() {
             var experience = value(form, 'experience');
             if (experience === 'Other') experience = value(form, 'experience_other') || 'Other';
-            return [
+            var route = activeRoute();
+            var rows = [
                 ['Background', experience],
                 ['Context', [value(form, 'client_type'), value(form, 'role'), value(form, 'organization'), value(form, 'team_size') ? 'team size ' + value(form, 'team_size') : ''].filter(Boolean).join(' · ')],
                 ['Current system', values(form, 'current_system').join(', ')],
+                ['Current system notes', value(form, 'current_system_notes')],
                 ['Desired help', values(form, 'desired_help').join(', ')],
-                ['Priority', value(form, 'primary_help')],
-                ['Desired ownership', value(form, 'ownership_outcome') || 'Not provided'],
-                ['Participation', value(form, 'participation')],
-                ['Practical fit', [value(form, 'timeframe'), value(form, 'sensitivity'), value(form, 'budget'), values(form, 'tools').join(', ')].filter(Boolean).join(' · ')],
-                ['Suggested path', value(form, 'preferred_path')]
+                ['Priority', value(form, 'primary_help')]
             ];
+            if (route.indexOf(5) !== -1) rows.push(['Desired ownership', value(form, 'ownership_outcome')]);
+            if (route.indexOf(6) !== -1) rows.push(['Participation', value(form, 'participation')]);
+            if (route.indexOf(7) !== -1) {
+                rows.push(['Tools', [values(form, 'tools').join(', '), value(form, 'tools_other')].filter(Boolean).join(' · ')]);
+                rows.push(['Timeframe', value(form, 'timeframe')]);
+                rows.push(['Information sensitivity', value(form, 'sensitivity')]);
+                rows.push(['Starting range', value(form, 'budget') || 'Prefer not to say']);
+            }
+            rows.push(['Suggested path', value(form, 'preferred_path')]);
+            rows.push(['Reply details', [value(form, 'name'), value(form, 'email'), value(form, 'timezone')].filter(Boolean).join(' · ')]);
+            if (values(form, 'availability').length) rows.push(['Availability', values(form, 'availability').join(', ')]);
+            if (value(form, 'final_note')) rows.push(['Final note', value(form, 'final_note')]);
+            return rows.filter(function (row) { return row[1]; });
         }
 
         function renderReview() {
@@ -360,7 +412,7 @@
                 requested_at: new Date().toISOString(),
                 contact: {
                     name: String(formData.get('name') || '').trim(),
-                    email: String(formData.get('email') || '').trim().toLowerCase(),
+                    email: String(formData.get('email') || '').trim(),
                     timezone: String(formData.get('timezone') || '').trim(),
                     availability: formData.getAll('availability')
                 },
@@ -399,6 +451,7 @@
                 'client_type: ' + payload.background.client_type,
                 'organization: ' + (payload.background.organization || 'not provided'),
                 'role: ' + (payload.background.role || 'not provided'),
+                'team_size: ' + (payload.background.team_size || 'not provided'),
                 'experience: ' + payload.background.experience + (payload.background.experience_other ? ' — ' + payload.background.experience_other : ''),
                 'current_system: ' + (payload.project.current_system.join(', ') || 'not provided'),
                 'current_system_notes: ' + (payload.project.current_system_notes || 'not provided'),
@@ -431,11 +484,17 @@
 
             if (field.matches('input[name="client_type"]')) {
                 var groupContext = field.value !== 'Individual';
+                var participationAvailable = activeRoute().indexOf(6) !== -1;
+                var teamParticipation = document.getElementById('team-representatives-choice');
+                var teamParticipationInput = teamParticipation.querySelector('input');
                 document.getElementById('organization-field').hidden = !groupContext;
                 document.getElementById('team-size-field').hidden = !groupContext;
-                if (!groupContext) {
+                teamParticipation.hidden = !groupContext;
+                teamParticipationInput.disabled = !groupContext || !participationAvailable;
+                if (!groupContext || !participationAvailable) {
                     document.getElementById('organization').value = '';
                     document.getElementById('team-size').value = '';
+                    teamParticipationInput.checked = false;
                 }
             }
 
@@ -485,6 +544,10 @@
             document.getElementById('ownership-count').textContent = String(ownership.value.length);
         });
 
+        form.addEventListener('input', function () {
+            if (steps[currentIndex].dataset.step === 'contact-review') renderReview();
+        });
+
         nextButton.addEventListener('click', function () {
             if (!validateCurrentStep()) return;
             var route = activeRoute();
@@ -492,14 +555,12 @@
             setStep(route[routePosition + 1]);
         });
 
-        backButton.addEventListener('click', function () { window.history.back(); });
-        form.querySelector('[data-edit-step]').addEventListener('click', function () { setStep(1); });
-
-        window.addEventListener('popstate', function () {
-            var hashStep = window.location.hash.replace(/^#step-/, '');
-            var index = steps.findIndex(function (step) { return step.dataset.step === hashStep; });
-            setStep(index !== -1 ? index : 0, { history: false });
+        backButton.addEventListener('click', function () {
+            var route = activeRoute();
+            var routePosition = route.indexOf(currentIndex);
+            if (routePosition > 0) setStep(route[routePosition - 1]);
         });
+        form.querySelector('[data-edit-step]').addEventListener('click', function () { setStep(1); });
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -540,6 +601,7 @@
                 name: payload.contact.name,
                 email: payload.contact.email,
                 newcomer: 'Services discovery request',
+                request_type: 'Services inquiry: ' + payload.project.preferred_path,
                 preferred_path: payload.project.preferred_path,
                 primary_help: payload.project.primary_help,
                 client_type: payload.background.client_type,
@@ -579,9 +641,8 @@
             }
         }
 
-        var initialHash = window.location.hash.replace(/^#step-/, '');
-        var initialIndex = steps.findIndex(function (step) { return step.dataset.step === initialHash; });
-        setStep(initialIndex > 0 ? initialIndex : 0, { history: false, focus: false });
+        window.history.replaceState({ servicesStep: 0 }, '', '#step-orientation');
+        setStep(0, { history: false, focus: false });
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialize);

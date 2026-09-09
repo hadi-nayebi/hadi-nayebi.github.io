@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,13 @@
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
     <meta property="og:site_name" content="Hadosh Academy">
     <link rel="stylesheet" href="css/styles.css?v=20260903-whats-new-1">
-    <link rel="stylesheet" href="css/services.css?v=20260909-services-2">
+    <link rel="stylesheet" href="css/services.css?v=20260909-services-3">
+    <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="page-services">
     <header id="site-header"><div class="container"><nav>
         <a href="index.html" class="logo">Hadosh Academy</a>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
         <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="whats-new.html">What&apos;s New</a><a href="about.html">About</a><a href="services.html" class="active" aria-current="page">Services</a><a href="contact.html">Contact</a></div>
     </nav></div></header>
 
@@ -31,6 +32,14 @@
                 <h1 id="services-title">Find the right next step.</h1>
                 <p>Tell me where you are and what you are trying to build. This short guided intake will suggest a practical starting point—free or paid—before any commitment.</p>
             </div>
+
+            <noscript>
+                <div class="services-no-script" role="status">
+                    <h2>The guided intake needs JavaScript.</h2>
+                    <p>You can still open the service and pricing catalog below, including the free practical guide and the optional open-source support path.</p>
+                    <a class="btn btn-secondary" href="#services-catalog">View the service catalog</a>
+                </div>
+            </noscript>
 
             <div class="services-workspace">
                 <aside class="services-rail" aria-label="Intake progress">
@@ -107,6 +116,7 @@
                             <label class="services-check"><input type="checkbox" name="current_system" value="Repository or file structure"><span>Repository or file structure</span></label>
                             <label class="services-check"><input type="checkbox" name="current_system" value="Custom agents or tools"><span>Custom agents or tools</span></label>
                             <label class="services-check"><input type="checkbox" name="current_system" value="Dashboard or interface"><span>Dashboard or interface</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Website, domain, or portfolio"><span>Website, domain, or portfolio</span></label>
                             <label class="services-check"><input type="checkbox" name="current_system" value="Team process"><span>Team process</span></label>
                             <label class="services-check"><input type="checkbox" name="current_system" value="Nothing yet" data-exclusive><span>Nothing yet</span></label>
                         </div>
@@ -152,7 +162,7 @@
                         <div class="services-choice-stack">
                             <label class="services-choice"><input type="radio" name="participation" value="Active co-builder" required><span><strong>Active co-builder</strong><small>I can work between sessions and make decisions with you.</small></span></label>
                             <label class="services-choice"><input type="radio" name="participation" value="Weekly guided contributor"><span><strong>Weekly guided contributor</strong><small>I want structured sessions and manageable work between them.</small></span></label>
-                            <label class="services-choice"><input type="radio" name="participation" value="Team representatives"><span><strong>Team representatives</strong><small>A few people can own the system and carry the training forward.</small></span></label>
+                            <label class="services-choice" id="team-representatives-choice" hidden><input type="radio" name="participation" value="Team representatives" disabled><span><strong>Team representatives</strong><small>A few people can own the system and carry the training forward.</small></span></label>
                             <label class="services-choice"><input type="radio" name="participation" value="Unsure"><span><strong>I’m not sure</strong><small>We can clarify the level of involvement in discovery.</small></span></label>
                         </div>
                     </fieldset>
@@ -196,11 +206,11 @@
                         </div>
                         <fieldset class="services-nested-fieldset">
                             <legend>Times that are usually easiest <span class="services-optional">optional</span></legend>
-                            <div class="services-check-grid services-check-grid-small">
+                            <div class="services-check-grid services-check-grid-small" data-checkbox-group="availability">
                                 <label class="services-check"><input type="checkbox" name="availability" value="Weekday mornings"><span>Weekday mornings</span></label>
                                 <label class="services-check"><input type="checkbox" name="availability" value="Weekday afternoons"><span>Weekday afternoons</span></label>
                                 <label class="services-check"><input type="checkbox" name="availability" value="Weekday evenings"><span>Weekday evenings</span></label>
-                                <label class="services-check"><input type="checkbox" name="availability" value="Flexible"><span>Flexible</span></label>
+                                <label class="services-check"><input type="checkbox" name="availability" value="Flexible" data-exclusive><span>Flexible</span></label>
                             </div>
                         </fieldset>
                         <label for="final-note">Anything else before we talk? <span class="services-optional">optional</span></label>
@@ -213,9 +223,9 @@
 
                         <div class="services-privacy-notice">
                             <label class="services-consent"><input type="checkbox" name="consent" value="services-intake-v1.0" required><span>I understand that my answers will be delivered to Hadosh Academy through EmailJS so Hadi can reply about this request. I have not included passwords, secrets, confidential client material, or regulated personal data.</span></label>
-                            <p>No purchase is created. Your address is not added to a marketing list. Final scope and price are agreed only after discovery. Email delivery is handled under the <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS privacy policy</a>.</p>
+                            <p>No purchase is created. Your address is not added to a marketing list. Final scope and price are agreed only after discovery. Email delivery is handled under the <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS privacy policy</a>; after delivery, the request is treated as ordinary email correspondence.</p>
                         </div>
-                        <div class="services-honeypot" aria-hidden="true"><label for="services-website">Leave this field empty</label><input id="services-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+                        <div class="form-honeypot" aria-hidden="true"><label for="services-website">Leave this field empty</label><input id="services-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
                     </div>
 
                     <div class="services-form-actions">
@@ -236,23 +246,23 @@
         </section>
 
         <section class="services-catalog-section container" aria-labelledby="services-catalog-title">
-            <details class="services-catalog">
+            <details class="services-catalog" id="services-catalog">
                 <summary><span><strong id="services-catalog-title">Prefer to see every option?</strong><small>Open the full service and pricing catalog.</small></span><span class="services-summary-mark" aria-hidden="true">+</span></summary>
                 <div class="services-catalog-content">
                     <div class="services-catalog-intro">
                         <p>These are initial offers, not fixed packages imposed before discovery. Each paid engagement begins with a free 30-minute conversation, then a written scope and agreed price.</p>
-                        <p><strong>Price note:</strong> indicative starting price · scope and price negotiable. Smaller first stages are welcome.</p>
+                        <p><strong>Price note:</strong> indicative starting price · scope and price negotiable. Smaller first stages are welcome. Any model, API, hosting, domain, or other third-party cost is separate unless the written scope says otherwise.</p>
                     </div>
                     <div class="services-catalog-grid">
                         <article class="services-offer"><span class="services-offer-type">Start free</span><h3>Initial Guidance Conversation</h3><p>Thirty minutes to understand the situation, identify a useful route, and decide whether any paid work is warranted.</p><strong class="services-price">Free · 30 minutes</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Review</span><h3>Individual Harness Review</h3><p>A focused review of your current harness, failure points, structure, and practical next improvements.</p><strong class="services-price">$300 · scope adjustable</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Review</span><h3>Team / Startup Harness Review</h3><p>Review shared architecture, ownership, coordination, safety boundaries, and team operating practices.</p><strong class="services-price">$650 · scope adjustable</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Training</span><h3>Guided Harness Training</h3><p>Four sessions across one month, with practical work between sessions so you learn by cultivating your own system.</p><strong class="services-price">$1,200 · four sessions</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Build with you</span><h3>Initial Harness Build + Training</h3><p>Design and build the first durable version together, including handoff, training, and a path for continued growth.</p><strong class="services-price">From $2,400 · scope adjustable</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Startup pilot</span><h3>Dashboard + Harness Pilot</h3><p>A working startup dashboard connected to a maintainable harness, built with the people who will own it.</p><strong class="services-price">From $4,500 · scope adjustable</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Team learning</span><h3>Private Team Workshop</h3><p>A practical workshop aligned to your team’s work, shared language, and immediate next decisions.</p><strong class="services-price">$1,250 · scope adjustable</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">Continuing guidance</span><h3>Ongoing Cultivation</h3><p>Lightweight recurring guidance for systems that keep changing after the initial engagement.</p><strong class="services-price">$95/mo individual · $350/mo team</strong></article>
-                        <article class="services-offer"><span class="services-offer-type">First ownership project</span><h3>Guided Personal Website Launch</h3><p>Two sessions to publish a free static website through GitHub and understand how to maintain it yourself.</p><strong class="services-price">$300 · two sessions</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Review</span><h3>Individual Harness Review</h3><p>A focused review of your current harness, failure points, structure, and practical next improvements. The starting scope is one 75-minute review and a written action memo.</p><strong class="services-price">$300 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Review</span><h3>Team / Startup Harness Review</h3><p>Review shared architecture, ownership, coordination, safety boundaries, and team operating practices. The starting scope is one 90-minute review with key owners and a written action memo.</p><strong class="services-price">$650 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Training</span><h3>Guided Harness Training</h3><p>Four 60-minute sessions across one month, with practical work between sessions so you learn by cultivating your own system.</p><strong class="services-price">$1,200 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Build with you</span><h3>Initial Harness Build + Training</h3><p>Design and build the first durable version together over a typical 2–4 week engagement. You keep the working files and learn how to continue cultivating them.</p><strong class="services-price">From $2,400 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Startup pilot</span><h3>Dashboard + Harness Pilot</h3><p>A working startup dashboard and maintainable harness, developed over a typical 4–6 week pilot with training and delivery through a repository the client controls.</p><strong class="services-price">From $4,500 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Team learning</span><h3>Private Team Workshop</h3><p>A 90-minute practical workshop aligned to your team’s work, shared language, and immediate next decisions.</p><strong class="services-price">$1,250 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Continuing guidance</span><h3>Ongoing Cultivation</h3><p>Lightweight monthly guidance for systems that keep changing, with the exact session and review cadence agreed before starting.</p><strong class="services-price">$95/mo individual · $350/mo team · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">First ownership project</span><h3>Guided Personal Website Launch</h3><p>Two 60-minute sessions to publish a free static website through GitHub and understand how to maintain it yourself.</p><strong class="services-price">$300 · scope adjustable</strong></article>
                         <article class="services-offer"><span class="services-offer-type">Website + workspace</span><h3>Personal Website + Agent Workspace</h3><p>Use the website as the first public surface of a user-owned agent workspace rather than a one-off web design project.</p><strong class="services-price">From $650 · scope adjustable</strong></article>
                     </div>
                     <div class="services-free-paths">
@@ -266,8 +276,8 @@
 
     <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
     <script src="js/theme-manager.js?v=20260903-whats-new-1"></script>
-    <script src="js/components.js?v=20260909-services-1"></script>
+    <script src="js/components.js?v=20260909-services-2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="js/services-intake.js?v=20260909-services-3"></script>
+    <script src="js/services-intake.js?v=20260909-services-4"></script>
 </body>
 </html>
