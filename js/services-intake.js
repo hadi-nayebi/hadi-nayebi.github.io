@@ -506,7 +506,7 @@
             if (sending) return;
             if (!validateCurrentStep() || !form.reportValidity()) return;
             if (!emailReady) {
-                setStatus('Email delivery is temporarily unavailable. Please try again later or use the Contact page.', 'error');
+                setStatus('Email delivery is temporarily unavailable. Your answers remain here; please try again later.', 'error');
                 return;
             }
             var formData = new FormData(form);
@@ -557,7 +557,7 @@
                 window.history.replaceState({}, '', '#request-received');
             }).catch(function (error) {
                 if (error && error.status === 429) setStatus('Too many requests were attempted. Please wait before trying again.', 'error');
-                else setStatus('The request could not be sent. Please try again later or use the Contact page.', 'error');
+                else setStatus('The request could not be sent. Your answers remain here; please try again later.', 'error');
             }).finally(function () {
                 sending = false;
                 submitButton.disabled = !emailReady;
