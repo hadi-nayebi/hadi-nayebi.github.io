@@ -193,8 +193,28 @@ for (const file of publicHtml) {
 validateDynamicRootLinks('js/wheel.js');
 validateDynamicRootLinks('js/start-here.js');
 validateEmailForm('contact.html', 'contact-form', 'submit-button', 'contact-form-status');
+validateEmailForm('services.html', 'services-intake-form', 'services-submit', 'services-intake-status');
 validateEmailForm('seed-access.html', 'seed-access-form', 'seed-access-submit', 'seed-access-status');
 validateEmailForm('projects/crime-cartography.html', 'project-subscribe-form', 'project-subscribe-submit', 'project-subscribe-status');
+
+const servicesPath = path.join(root, 'services.html');
+if (fs.existsSync(servicesPath)) {
+  const servicesHtml = fs.readFileSync(servicesPath, 'utf8');
+  const servicesSteps = [...servicesHtml.matchAll(/\bdata-step=["'][^"']+["']/gi)].length;
+  if (servicesSteps !== 10) errors.push(`services.html: expected 10 guided steps, found ${servicesSteps}`);
+  if (!/<details\b[^>]*class=["'][^"']*services-catalog/i.test(servicesHtml)) {
+    errors.push('services.html: full services catalog must remain progressively disclosed');
+  }
+  if (!/href=["']\/support\.html["']/i.test(servicesHtml)) {
+    errors.push('services.html: missing quiet support path');
+  }
+  if (!/blog\/practical-guides\/01-build-your-own-space-on-the-web\.html/i.test(servicesHtml)) {
+    errors.push('services.html: missing free personal-website guide path');
+  }
+  if (/type=["'](?:submit|button)["'][^>]*(?:pay|checkout)|(?:pay|checkout)[^<]*<button/i.test(servicesHtml)) {
+    errors.push('services.html: intake must not introduce a payment or checkout control');
+  }
+}
 
 const feedPath = path.join(root, 'feed.xml');
 if (!fs.existsSync(feedPath)) {
@@ -217,7 +237,7 @@ if (!fs.existsSync(feedPath)) {
 
 const canonicalPages = [
   'index.html', 'start-here.html', 'agents.html', 'whats-new.html', 'about.html', 'portfolio.html', 'explore.html',
-  'contact.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',
+  'contact.html', 'services.html', 'support.html', 'seed-access.html', 'seed-agent.html', 'q-seed.html', 'thanks.html',
   'thanks-support.html', '404.html', 'projects/index.html', 'projects/origin.html',
   'projects/seed-agent.html',
   'projects/q-seed.html', 'projects/team-harnesses.html', 'projects/family-games.html',

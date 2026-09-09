@@ -1,4 +1,4 @@
-// Version: v0.11.0
+// Version: v0.12.0
 // Shared site components: canonical navigation, responsive support, blog series navigation,
 // footer, lightbox, blog filters, and audio controls.
 
@@ -13,6 +13,7 @@
         { label: 'Projects', href: '/projects/index.html' },
         { label: "What's New", href: '/whats-new.html' },
         { label: 'About', href: '/about.html' },
+        { label: 'Services', href: '/services.html' },
         { label: 'Contact', href: '/contact.html' }
     ];
 
@@ -25,6 +26,7 @@
         if (path === '/projects' || path === '/projects/index.html' || path.indexOf('/projects/') === 0) return 'Projects';
         if (path === '/whats-new.html') return "What's New";
         if (path === '/about.html') return 'About';
+        if (path === '/services.html') return 'Services';
         if (path === '/contact.html') return 'Contact';
         return '';
     }
@@ -33,7 +35,7 @@
         if (document.querySelector('link[data-site-stability]')) return;
         var link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = '/css/site-stability.css?v=20260830-1';
+        link.href = '/css/site-stability.css?v=20260909-services-1';
         link.setAttribute('data-site-stability', 'true');
         document.head.appendChild(link);
     }
@@ -108,6 +110,12 @@
         projects.className = 'footer-link';
         projects.textContent = 'Projects';
         links.appendChild(projects);
+
+        var contact = document.createElement('a');
+        contact.href = '/contact.html';
+        contact.className = 'footer-link';
+        contact.textContent = 'Contact';
+        links.appendChild(contact);
 
         var support = document.createElement('a');
         support.href = '/support.html';
