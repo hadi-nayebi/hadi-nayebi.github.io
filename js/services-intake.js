@@ -19,54 +19,70 @@
             title: 'Free Initial Guidance Conversation',
             startingCost: 0,
             price: 'Free · 30 minutes',
+            effort: '≈0.5 hour · no expenses',
             description: 'Clarify the situation, compare routes, and decide whether paid work is warranted.'
+        },
+        focusedSession: {
+            title: 'Focused Consulting Session',
+            startingCost: 100,
+            price: '$100 · 60 minutes',
+            effort: '≈1 hour + expenses',
+            description: 'Work through one specific architecture, workflow, implementation, or harness question.'
         },
         individualReview: {
             title: 'Individual Harness Review',
             startingCost: 300,
             price: '$300 · scope adjustable',
+            effort: '≈6 hours + expenses',
             description: 'A focused review of your current structure, failure points, and next improvements.'
         },
         teamReview: {
             title: 'Team / Startup Harness Review',
-            startingCost: 650,
-            price: '$650 · scope adjustable',
+            startingCost: 600,
+            price: '$600 · scope adjustable',
+            effort: '≈12 hours + expenses',
             description: 'Review shared architecture, ownership, coordination, and operating practices.'
         },
         training: {
             title: 'Guided Harness Training',
-            startingCost: 1200,
-            price: '$1,200 · four sessions over one month',
+            startingCost: 1050,
+            price: '$1,050 · four sessions over one month',
+            effort: '≈16 hours + expenses',
             description: 'Build skill through guided sessions and practical work inside your own system.'
         },
         initialBuild: {
             title: 'Initial Harness Build + Training',
-            startingCost: 2400,
-            price: 'From $2,400 · scope adjustable',
+            startingCost: 2250,
+            price: 'From $2,250 · scope adjustable',
+            effort: '≈40 hours + expenses',
             description: 'Build the first durable version together, with training and a path for continued cultivation.'
         },
         startupPilot: {
             title: 'Startup Dashboard + Harness Pilot',
             startingCost: 4500,
             price: 'From $4,500 · scope adjustable',
+            effort: '≈80 hours + expenses',
             description: 'Create a working dashboard connected to a maintainable, team-owned harness.'
         },
         workshop: {
             title: 'Private Team Workshop',
-            startingCost: 1250,
-            price: '$1,250 · scope adjustable',
+            startingCost: 600,
+            price: '$600 · scope adjustable',
+            effort: '≈12 hours + expenses',
             description: 'A practical workshop aligned to your team’s work, language, and immediate decisions.'
         },
         continuingIndividual: {
             title: 'Continuing Individual Guidance',
-            startingCost: 95,
-            price: '$95/month',
+            startingCost: 100,
+            price: '$100/month',
+            effort: '≈2 hours/month + expenses',
             description: 'Lightweight recurring guidance as your personal harness continues to change.'
         },
         continuingTeam: {
             title: 'Continuing Team Guidance',
-            startingCost: 350,
-            price: '$350/month',
+            startingCost: 300,
+            price: '$300/month',
+            effort: '≈6 hours/month + expenses',
             description: 'Recurring guidance for the people responsible for a changing shared harness.'
         },
         websiteGuide: {
@@ -87,14 +103,16 @@
         },
         websiteGuided: {
             title: 'Guided Personal Website Launch',
-            startingCost: 300,
-            price: '$300 · two sessions',
+            startingCost: 250,
+            price: '$250 · two sessions',
+            effort: '≈5 hours + expenses',
             description: 'Publish your first user-owned website with guidance, while learning the whole path.'
         },
         websiteWorkspace: {
             title: 'Personal Website + Agent Workspace',
-            startingCost: 650,
-            price: 'From $650 · scope adjustable',
+            startingCost: 850,
+            price: 'From $850 · scope adjustable',
+            effort: '≈12 hours + expenses',
             description: 'Use the website as the first public surface of a user-owned agent workspace.'
         },
         support: {
@@ -336,7 +354,7 @@
             else if (primary === 'Run a team workshop') keys.push('workshop', 'teamReview', 'discovery');
             else if (primary === 'Build an initial harness') keys.push('initialBuild', clientType === 'Individual' ? 'training' : 'teamReview', 'discovery');
             else if (primary === 'Learn the foundations') keys.push('foundationsGuide', 'discovery', clientType === 'Individual' ? 'training' : 'workshop');
-            else keys.push('discovery', 'foundationsGuide', clientType === 'Individual' ? 'individualReview' : 'teamReview');
+            else keys.push('discovery', 'foundationsGuide', 'focusedSession');
 
             keys = keys.filter(function (key, index) { return keys.indexOf(key) === index; });
 
@@ -383,6 +401,12 @@
                 content.appendChild(title);
                 content.appendChild(description);
                 content.appendChild(price);
+                if (offer.effort) {
+                    var effort = document.createElement('span');
+                    effort.className = 'services-rec-effort';
+                    effort.textContent = offer.effort;
+                    content.appendChild(effort);
+                }
                 label.appendChild(input);
                 label.appendChild(content);
                 item.appendChild(label);
