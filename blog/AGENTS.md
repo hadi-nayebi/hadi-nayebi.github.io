@@ -63,6 +63,11 @@ B5 through B9 are technical writings. Correct them as extensively as required
 for accuracy. Prefer product- and framework-agnostic principles, and label a
 specific prototype or reference implementation as such. Do not present a
 historical private implementation as a currently shipped public architecture.
+Use the owner-supplied Hadosh Academy Claude prototype as read-only
+implementation evidence for B5-B8. Use the owning Origin repository and its
+dashboard evidence for B9. Read the applicable owner instructions and live Git
+state before relying on either source; do not copy private implementation text
+into the public site without a reader-facing reason.
 
 The Observation series is narrative nonfiction. Follow its nested scientific,
 historical, sourcing, voice, and incremental-episode rules. The practical guide
@@ -76,6 +81,20 @@ benefits from the citation. For each changed writing, preserve a concise review
 record containing the source revision, issues found, changes made, evidence,
 remaining uncertainty, and validation result. End the corpus review with a
 short per-writing change report for Hadi.
+
+Complete one numbered writing as an independent review unit: canonical prose,
+published-page parity, metadata, evidence record, validation, and coherent Git
+commit. After that unit passes, send Hadi one separate Telegram voice report
+covering that writing's changes before beginning the next numbered writing.
+These checkpoint recordings are review summaries, not publication narration.
+
+## Pull-request delivery
+
+Deliver every website change through a reviewable pull request. Do not merge a
+pull request for Hadi. Each Part 1 principle writing — B1, B2, B3, B3.1, and
+B4 — must have its own pull request so its language diff can be reviewed in
+isolation. Technical writings may share a pull request when the grouping is
+coherent and the per-writing review records remain distinct.
 
 ## Narration handoff
 

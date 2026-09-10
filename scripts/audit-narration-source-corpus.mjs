@@ -7,6 +7,7 @@ import process from 'node:process';
 
 const root = path.resolve(import.meta.dirname, '..');
 const blogRoot = path.join(root, 'blog');
+const reviewRecordsDir = path.join(root, 'docs', 'narration-source-review', 'reviews');
 
 const sha256 = (text) => crypto.createHash('sha256').update(text).digest('hex');
 const rel = (file) => path.relative(root, file).split(path.sep).join('/');
@@ -16,6 +17,33 @@ const words = (text) => (text.match(/[\p{L}\p{N}][\p{L}\p{N}'’-]*/gu) || []).l
 function read(file) {
   return fs.readFileSync(file, 'utf8');
 }
+
+function loadReviewIndex() {
+  const essays = {};
+  if (!fs.existsSync(reviewRecordsDir)) return { essays };
+  const names = fs.readdirSync(reviewRecordsDir).filter((name) => name.endsWith('.json')).sort(natural);
+  for (const name of names) {
+    const file = path.join(reviewRecordsDir, name);
+    const record = JSON.parse(read(file));
+    if (record.schema_version !== 1 || typeof record.path !== 'string' || typeof record.review !== 'object' || record.review === null) {
+      throw new Error(`invalid narration review record: ${rel(file)}`);
+    }
+    if (essays[record.path]) throw new Error(`duplicate narration review record for ${record.path}`);
+    essays[record.path] = record;
+  }
+  return { essays };
+}
+
+const reviewIndex = loadReviewIndex();
+const pendingEssayReview = () => ({
+  factual: 'pending',
+  technical_or_historical: 'pending',
+  chronology_and_maturity: 'pending',
+  cross_writing_consistency: 'pending',
+  editorial: 'pending',
+  source_page_parity: 'pending',
+  hadi_content_lock: 'pending',
+});
 
 function frontmatter(text) {
   const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
@@ -55,6 +83,7 @@ const conceptualPaths = new Set([
 function inspectEssay(file) {
   const source = read(file);
   const sourcePath = rel(file);
+  const sourceHash = sha256(source);
   const metadata = frontmatter(source);
   const refTags = [...source.matchAll(/\*\[ref:\s*([\s\S]*?)\]\*/g)].map((match) => match[1]);
   const longRefTags = refTags.filter((tag) => {
@@ -63,15 +92,31 @@ function inspectEssay(file) {
   }).length;
   const html = file.replace(/\.md$/, '.html');
   const transcript = file.replace(/\.md$/, '.transcript.yaml');
+  const publishedPage = fs.existsSync(html) ? read(html) : '';
   const issues = [];
   if (!fs.existsSync(html)) issues.push('missing-published-html');
   if (!metadata.status) issues.push('missing-source-status');
   if (metadata.status === 'draft') issues.push('source-marked-draft');
   if (longRefTags) issues.push(`${longRefTags}-overlong-evidence-annotations`);
+  const recorded = reviewIndex.essays[sourcePath] || null;
+  let review = pendingEssayReview();
+  let reviewRecord = null;
+  if (recorded) {
+    reviewRecord = recorded.report || null;
+    if (recorded.source_sha256 === sourceHash) {
+      review = { ...review, ...recorded.review };
+    } else {
+      review = Object.fromEntries(Object.keys(review).map((gate) => [gate, 'stale']));
+      issues.push('stale-review-record');
+    }
+  }
+  if (recorded && review.hadi_content_lock !== 'passed' && /class="article-audio"/.test(publishedPage)) {
+    issues.push('unlocked-narration-exposed');
+  }
   return {
     path: sourcePath,
     class: conceptualPaths.has(sourcePath) ? 'principle-writing' : 'technical-writing',
-    source_sha256: sha256(source),
+    source_sha256: sourceHash,
     words: words(source.replace(/\*\[ref:[\s\S]*?\]\*/g, '')),
     source_status: metadata.status || null,
     version: metadata.version || null,
@@ -79,15 +124,8 @@ function inspectEssay(file) {
     external_sources: externalUrls(source).length,
     published_html: fs.existsSync(html) ? rel(html) : null,
     transcript_yaml: fs.existsSync(transcript) ? rel(transcript) : null,
-    review: {
-      factual: 'pending',
-      technical_or_historical: 'pending',
-      chronology_and_maturity: 'pending',
-      cross_writing_consistency: 'pending',
-      editorial: 'pending',
-      source_page_parity: 'pending',
-      hadi_content_lock: 'pending',
-    },
+    review_record: reviewRecord,
+    review,
     issues,
   };
 }

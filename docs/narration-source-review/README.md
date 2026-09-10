@@ -89,3 +89,8 @@ reviewed. They are not narration approvals.
 
 Every changed page will receive a concise final report of the issue, the
 change, the evidence used, and any remaining uncertainty.
+
+Machine-readable review locks live as one JSON file per writing under
+`reviews/`. Keeping each record independent lets the principle writings ship as
+separate pull requests without creating a shared-index merge conflict. The
+corpus audit accepts a review record only when its source SHA-256 still matches.

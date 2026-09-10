@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-10T22:26:43.657Z",
-  "repository_revision": "9985d0b9c57040ba803747b25968b3747960b65e",
+  "generated_at": "2026-09-10T23:02:28.916Z",
+  "repository_revision": null,
   "policy": {
     "audio_phase": "blocked-until-written-content-lock",
     "principle_writings": "minimal-corrections-preserve-approved-voice",
@@ -23,6 +23,9 @@
     "practical_guides": 1
   },
   "structural_errors": [],
+  "private_boundary": {
+    "noema_public_surface_leaks": []
+  },
   "essays": [
     {
       "path": "blog/b1/01-llms-are-not-the-agents.md",
@@ -35,6 +38,7 @@
       "external_sources": 8,
       "published_html": "blog/b1/01-llms-are-not-the-agents.html",
       "transcript_yaml": "blog/b1/01-llms-are-not-the-agents.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -57,6 +61,7 @@
       "external_sources": 14,
       "published_html": "blog/b2/02-we-could-have-had-agi.html",
       "transcript_yaml": "blog/b2/02-we-could-have-had-agi.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -79,6 +84,7 @@
       "external_sources": 2,
       "published_html": "blog/b3/03_1-the-folder-is-alive.html",
       "transcript_yaml": "blog/b3/03_1-the-folder-is-alive.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -101,6 +107,7 @@
       "external_sources": 9,
       "published_html": "blog/b3/03-your-brain-was-never-built-for-this.html",
       "transcript_yaml": "blog/b3/03-your-brain-was-never-built-for-this.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -123,6 +130,7 @@
       "external_sources": 1,
       "published_html": "blog/b4/04-the-language-of-agents.html",
       "transcript_yaml": "blog/b4/04-the-language-of-agents.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -145,6 +153,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_1-the-two-layer-foundation.html",
       "transcript_yaml": "blog/b5/05_1-the-two-layer-foundation.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -170,6 +179,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_2-plugin-integrity.html",
       "transcript_yaml": "blog/b5/05_2-plugin-integrity.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -194,6 +204,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_3-brain-guard.html",
       "transcript_yaml": "blog/b5/05_3-brain-guard.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -219,6 +230,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_4-job-core.html",
       "transcript_yaml": "blog/b5/05_4-job-core.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -244,6 +256,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_5-interaction-summary.html",
       "transcript_yaml": "blog/b5/05_5-interaction-summary.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -268,6 +281,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_6-question-discipline.html",
       "transcript_yaml": "blog/b5/05_6-question-discipline.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -293,6 +307,7 @@
       "external_sources": 1,
       "published_html": "blog/b5/05_7-claude-md-hierarchy.html",
       "transcript_yaml": "blog/b5/05_7-claude-md-hierarchy.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -317,6 +332,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_8-historian-ratchet.html",
       "transcript_yaml": "blog/b5/05_8-historian-ratchet.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -341,6 +357,7 @@
       "external_sources": 0,
       "published_html": "blog/b5/05_9-customization-guardrail.html",
       "transcript_yaml": "blog/b5/05_9-customization-guardrail.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -366,6 +383,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_1-phasic-foundation.html",
       "transcript_yaml": "blog/b6/06_1-phasic-foundation.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -390,6 +408,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_2-discipline-and-map.html",
       "transcript_yaml": "blog/b6/06_2-discipline-and-map.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -414,6 +433,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_2b-the-phase-map.html",
       "transcript_yaml": "blog/b6/06_2b-the-phase-map.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -439,6 +459,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_3-observe.html",
       "transcript_yaml": "blog/b6/06_3-observe.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -463,6 +484,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_4-plan.html",
       "transcript_yaml": "blog/b6/06_4-plan.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -487,6 +509,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_5-execute.html",
       "transcript_yaml": "blog/b6/06_5-execute.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -511,6 +534,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_6-verify.html",
       "transcript_yaml": "blog/b6/06_6-verify.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -535,6 +559,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_7-condense.html",
       "transcript_yaml": "blog/b6/06_7-condense.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -559,6 +584,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_7b-condense-uniquely-owns.html",
       "transcript_yaml": "blog/b6/06_7b-condense-uniquely-owns.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -583,6 +609,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_8-inverse-multiplier.html",
       "transcript_yaml": "blog/b6/06_8-inverse-multiplier.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -607,6 +634,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_9-gmode.html",
       "transcript_yaml": "blog/b6/06_9-gmode.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -632,6 +660,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_10-plan-state-machine.html",
       "transcript_yaml": "blog/b6/06_10-plan-state-machine.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -657,6 +686,7 @@
       "external_sources": 0,
       "published_html": "blog/b6/06_10b-long-horizon-memory.html",
       "transcript_yaml": "blog/b6/06_10b-long-horizon-memory.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -681,6 +711,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_1-plugin-kit-foundation.html",
       "transcript_yaml": "blog/b7/07_1-plugin-kit-foundation.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -705,6 +736,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_2-skeleton-claudemd-hooks-scripts.html",
       "transcript_yaml": "blog/b7/07_2-skeleton-claudemd-hooks-scripts.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -729,6 +761,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_3-dual-voice-architecture.html",
       "transcript_yaml": "blog/b7/07_3-dual-voice-architecture.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -753,6 +786,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_4-data-json-hidden-state.html",
       "transcript_yaml": "blog/b7/07_4-data-json-hidden-state.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -778,6 +812,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_5-docs-and-historian.html",
       "transcript_yaml": "blog/b7/07_5-docs-and-historian.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -802,6 +837,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_6-agents-and-80-20-budget.html",
       "transcript_yaml": "blog/b7/07_6-agents-and-80-20-budget.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -826,6 +862,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_7-smaller-organs-and-wiring.html",
       "transcript_yaml": "blog/b7/07_7-smaller-organs-and-wiring.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -850,6 +887,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_8-lock-ceremony.html",
       "transcript_yaml": "blog/b7/07_8-lock-ceremony.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -875,6 +913,7 @@
       "external_sources": 0,
       "published_html": "blog/b7/07_9-creating-a-new-plugin.html",
       "transcript_yaml": "blog/b7/07_9-creating-a-new-plugin.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -900,6 +939,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_1-apprentice-to-architect-foundation.html",
       "transcript_yaml": "blog/b8/08_1-apprentice-to-architect-foundation.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -924,6 +964,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_2-job-maturation-stages.html",
       "transcript_yaml": "blog/b8/08_2-job-maturation-stages.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -948,6 +989,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_3-brain-after-three-months.html",
       "transcript_yaml": "blog/b8/08_3-brain-after-three-months.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -972,6 +1014,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_4-soft-hard-migration.html",
       "transcript_yaml": "blog/b8/08_4-soft-hard-migration.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -997,6 +1040,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_5-enforced-vs-discipline.html",
       "transcript_yaml": "blog/b8/08_5-enforced-vs-discipline.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1021,6 +1065,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_6-apprentice-journeyman-architect.html",
       "transcript_yaml": "blog/b8/08_6-apprentice-journeyman-architect.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1045,6 +1090,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_7-brain-stops-growing.html",
       "transcript_yaml": "blog/b8/08_7-brain-stops-growing.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1069,6 +1115,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_8-safe-self-modification.html",
       "transcript_yaml": "blog/b8/08_8-safe-self-modification.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1093,6 +1140,7 @@
       "external_sources": 0,
       "published_html": "blog/b8/08_9-the-seed-is-yours.html",
       "transcript_yaml": "blog/b8/08_9-the-seed-is-yours.transcript.yaml",
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1117,6 +1165,7 @@
       "external_sources": 0,
       "published_html": "blog/b9/09_1-dashboard-and-harness.html",
       "transcript_yaml": null,
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1141,6 +1190,7 @@
       "external_sources": 0,
       "published_html": "blog/b9/09_2-contextual-feedback-plugin.html",
       "transcript_yaml": null,
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1165,6 +1215,7 @@
       "external_sources": 0,
       "published_html": "blog/b9/09_3-internal-voices-reorientation.html",
       "transcript_yaml": null,
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1189,6 +1240,7 @@
       "external_sources": 0,
       "published_html": "blog/b9/09_4-stopping-without-forgetting.html",
       "transcript_yaml": null,
+      "review_record": null,
       "review": {
         "factual": "pending",
         "technical_or_historical": "pending",
@@ -1671,7 +1723,7 @@
           },
           {
             "id": "archive-breathed",
-            "title": "The archive can last generations \u2014 but it still breathes",
+            "title": "The archive can last generations — but it still breathes",
             "source_sha256": "961f6779549afc3ceea417a3c462d544d217704eda6798db10c678a2d1d545c1",
             "words": 140,
             "sources": 3,
