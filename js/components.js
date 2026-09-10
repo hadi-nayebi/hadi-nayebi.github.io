@@ -1,4 +1,4 @@
-// Version: v0.12.1
+// Version: v0.12.2
 // Shared site components: canonical navigation, responsive support, blog series navigation,
 // footer, lightbox, blog filters, and audio controls.
 
@@ -13,8 +13,7 @@
         { label: 'Projects', href: '/projects/index.html' },
         { label: "What's New", href: '/whats-new.html' },
         { label: 'About', href: '/about.html' },
-        { label: 'Services', href: '/services.html' },
-        { label: 'Contact', href: '/contact.html' }
+        { label: 'Services', href: '/services.html' }
     ];
 
     function currentSection() {

@@ -153,6 +153,11 @@ for (const file of publicHtml) {
     errors.push(`${fileRel}: static navigation is missing Services`);
   }
 
+  const headerMatch = html.match(/<header\b[^>]*id=["']site-header["'][^>]*>[\s\S]*?<\/header>/i);
+  if (!redirect && !explorable && headerMatch && /href=["'][^"']*contact\.html/i.test(headerMatch[0])) {
+    errors.push(`${fileRel}: Contact must remain outside the primary header navigation`);
+  }
+
   if (explorable) {
     const hasBackControl = /class=["'][^"']*(?:chrome-back|explore-back|back-to-essay)[^"']*["']/i.test(html) || /Back to (?:Essay|Blog|Article)/i.test(html);
     if (!hasBackControl) errors.push(`${fileRel}: full-screen explorable missing a back-to-essay control`);
@@ -212,6 +217,11 @@ if (fs.existsSync(servicesPath)) {
   if (servicesSteps.join('|') !== expectedSteps.join('|')) {
     errors.push(`services.html: guided step order changed: ${servicesSteps.join(', ')}`);
   }
+  const progressListMatch = servicesHtml.match(/<ol\b[^>]*class=["'][^"']*services-progress-list[^"']*["'][^>]*>([\s\S]*?)<\/ol>/i);
+  const progressItems = progressListMatch ? (progressListMatch[1].match(/<li(?:\s|>)/gi) || []).length : 0;
+  if (progressItems !== 9 || !/class=["']services-rail["'][^>]*\bhidden\b/i.test(servicesHtml)) {
+    errors.push('services.html: orientation must remain outside the nine-step progress count');
+  }
   if (!/<details\b[^>]*class=["'][^"']*services-catalog/i.test(servicesHtml)) {
     errors.push('services.html: full services catalog must remain progressively disclosed');
   }
@@ -256,6 +266,17 @@ if (fs.existsSync(servicesPath)) {
   if (!/services-review-summary["']\)\.textContent\s*=\s*["']{2}/.test(servicesScript)) {
     errors.push('js/services-intake.js: successful submission must clear the rendered review summary');
   }
+  if (!/name=["']send_welcome["']/i.test(servicesHtml) ||
+      !/EMAILJS_WELCOME_TEMPLATE_ID\s*=\s*["']template_wq2dosk["']/.test(servicesScript) ||
+      !/newcomerGuideRecommended\(\)[\s\S]*New to the concepts[\s\S]*Learn the foundations/.test(servicesScript)) {
+    errors.push('services intake: missing explicit, recommended newcomer-guide choice using the existing welcome template');
+  }
+  if (/name=["'](?:current_system_notes|final_note)["']/i.test(servicesHtml)) {
+    errors.push('services.html: redundant open-ended intake fields were reintroduced');
+  }
+  if (!/name=["']consent["'][^>]*value=["']services-intake-v1\.1["']/i.test(servicesHtml)) {
+    errors.push('services.html: consent copy/version must cover the optional one-time newcomer email');
+  }
 
   const servicesCss = fs.readFileSync(path.join(root, 'css/services.css'), 'utf8');
   if (!/\.page-services\s+\[hidden\]\s*\{[^}]*display:\s*none\s*!important;?[^}]*\}/.test(servicesCss)) {
@@ -267,6 +288,15 @@ const baseCss = fs.readFileSync(path.join(root, 'css/styles.css'), 'utf8');
 if (!/select\.form-control\s*\{[^}]*color-scheme:\s*dark;?[^}]*\}/.test(baseCss) ||
     !/select\.form-control\s+option\s*\{[^}]*background-color:[^}]*color:[^}]*\}/.test(baseCss)) {
   errors.push('css/styles.css: dark form selects must define legible native option colors');
+}
+
+const componentsScript = fs.readFileSync(path.join(root, 'js/components.js'), 'utf8');
+const navItemsMatch = componentsScript.match(/var NAV_ITEMS\s*=\s*\[([\s\S]*?)\];/);
+if (!navItemsMatch || !/href:\s*["']\/services\.html["']/.test(navItemsMatch[1]) || /href:\s*["']\/contact\.html["']/.test(navItemsMatch[1])) {
+  errors.push('js/components.js: primary navigation must include Services and keep Contact in secondary surfaces');
+}
+if (!/contact\.href\s*=\s*["']\/contact\.html["']/.test(componentsScript)) {
+  errors.push('js/components.js: footer must retain the standalone Contact page');
 }
 
 const emailPages = ['contact.html', 'services.html', 'seed-access.html', 'projects/crime-cartography.html'];
