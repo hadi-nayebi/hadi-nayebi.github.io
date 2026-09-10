@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v1.3.0 -->
 <html lang="en">
 
 <head>
@@ -104,16 +104,7 @@
                         By Hadi Nayebi &amp; Claude Opus 4.8
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="audio/llms-are-not-the-agents.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (17 min)</span>
-                    </div>
-
                     <div class="article-body">
-
                         <blockquote><p><strong>LLMs are electricity. Agents are toasters.</strong></p></blockquote>
 
                         <p>Electricity is raw power. It can heat a room, run a hospital, or power a city. But plug it into nothing and it just arcs. It needs a <strong>structure</strong> to become useful.</p>
@@ -139,10 +130,10 @@
                         <p>Here is what happens when you treat the LLM as the agent:</p>
 
                         <ul>
-                            <li><strong>No memory between sessions.</strong> The model forgets everything when the conversation ends. Every session starts from zero.</li>
+                            <li><strong>No durable project memory on its own.</strong> The model forgets the conversation unless the surrounding system supplies history, saved memory, or files.</li>
                             <li><strong>No consistent behavior.</strong> The same prompt can produce different results on different days. There are no habits, only probabilities.</li>
                             <li><strong>No identity.</strong> The model does not know who "it" is in the context of your project. It adapts to whatever you tell it in the moment.</li>
-                            <li><strong>No growth.</strong> The model cannot learn from its own experience. It cannot refine itself over time. It cannot get better at <em>your</em> specific tasks.</li>
+                            <li><strong>No growth on its own.</strong> A deployed model does not update its weights after your task. A surrounding system must preserve and reuse what was learned.</li>
                         </ul>
 
                         <p>If your "agent" loses everything when you close the chat session, <strong>you do not have an agent</strong>. You have a very expensive autocomplete.</p>
@@ -151,7 +142,7 @@
 
                         <h2 id="what-is-an-agent-really">What Is an Agent, Really?</h2>
 
-                        <p>An agent is the engine <strong>plus a local brain</strong>.</p>
+                        <p>In this series, an agent is the engine <strong>plus a local brain</strong>: the durable, user-shaped system around the model.</p>
 
                         <p>The most direct way to build that brain today is with a <a href="https://en.wikipedia.org/wiki/Command-line_interface" title="Command Line Interface &mdash; a text-based way to interact with software">CLI agent</a> &mdash; a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM.</p>
 
@@ -165,15 +156,15 @@
 
                         <p>And here is the key insight: since a CLI agent&rsquo;s entire capability is generating text and using it to create and modify files &mdash; it can build the brain itself. Give it a well-designed seed &mdash; a filesystem with a basic cognitive architecture already defined &mdash; and the agent can read its own structure, understand it, and extend it.</p>
 
-                        <p>You describe what you need through conversation. The agent builds. The same seed works for any user &mdash; its architecture knows how to grow, but what it grows into depends on you. We will dive deep into what makes a seed agent work in the second half of this series.</p>
+                        <p>You describe what you need through conversation. The agent builds. The same seed can offer shared principles and building blocks, but what it grows into depends on you. You control the composition and authorize its growth. We will dive deep into what makes a seed agent work in the second half of this series.</p>
 
-                        <p>This is good news. Training an LLM costs hundreds of millions of dollars and requires specialized hardware most people will never touch. Building an agent? You need a subscription to Claude &mdash; or even a free, open-source model. You describe what you need through conversation. The LLM builds the filesystem. No training runs. No specialized hardware. Just files.</p>
+                        <p>This is good news. Training a frontier LLM requires budgets and specialized hardware most people will never touch. Building an agent around an existing hosted or open-weight model is far more accessible. You describe what you need through conversation. The LLM builds the filesystem. No training run. Just files.</p>
 
                         <p>As the agent takes on more work, it may consume more LLM calls &mdash; you might move up a subscription tier. But the total cost is a utility bill, not a research budget.</p>
 
                         <p>You are not creating intelligence &mdash; that already exists. You are organizing files that shape existing intelligence into reliable behavior.</p>
 
-                        <p>And because it is just files, everything is transparent. You can open a folder and see exactly what your agent knows, what rules it follows, and what it is about to do. You can audit it. You can move it to another machine. You can hand it to a colleague. Try doing that with a neural network.</p>
+                        <p>And because its durable layer is made of files, much of it is transparent. You can open a folder and inspect the external memory and rules you designed. You can audit it. You can move it to another machine. You can hand it to a colleague. The model&rsquo;s internal inference remains a black box; your own structure does not have to be.</p>
 
                         <p>That filesystem gives rise to capabilities the LLM cannot achieve on its own:</p>
 
@@ -190,9 +181,9 @@
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The LLM is the engine. The directory is the agent. Swap the engine and you get a faster model. Swap the directory and you get a different agent entirely.</figcaption>
                         </figure>
 
-                        <p>When you open one of these CLI agents in an <strong>empty directory</strong>, you have an LLM with file access &mdash; nothing more. It can read, write, search, and run commands. But every decision is purely probabilistic, shaped only by its training and the current conversation. There is no memory of yesterday. No rules it has learned. No identity it maintains. Out of the box, even the most capable CLI agent is just a token generator that can touch files.</p>
+                        <p>When you open one of these CLI agents in an <strong>empty directory</strong>, you have the platform agent and its built-in tools &mdash; but none of the durable project brain defined here. There is no local memory of yesterday. No rules it has learned from this project. No project identity it maintains.</p>
 
-                        <p><strong>This is not yet an agent.</strong> This is a raw engine with no car around it.</p>
+                        <p><strong>By the definition used in this series, this is not yet the agent.</strong> It is an engine and platform with no local car built around them.</p>
 
                         <p>But when you add a <code>.claude/</code> directory (or <code>.opencode/</code> in OpenCode, or any equivalent brain directory) &mdash; with knowledge files, operational rules, memory structures, and workflow definitions &mdash; something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
 
@@ -206,7 +197,7 @@
 
                         <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/action-space-markov-chain-b1-2.png" alt="Markov chain diagram showing Claude Code&#x27;s action space as probabilistic state transitions. Multiple states like PLAN, EXECUTE, OBSERVE connected by arrows representing probabilistic choices." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The raw action space of a CLI agent. Without structure, the LLM bounces between states based on probabilities &mdash; a <a href="https://en.wikipedia.org/wiki/Markov_chain" title="A system where the next step depends only on the current state, not the full history">Markov chain</a> where every path is equally likely.</figcaption>
+                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">A simplified view of the raw action space. Without project structure, the LLM moves probabilistically among possible actions, with the available context shaping which paths are likely.</figcaption>
                         </figure>
 
                         <ul>
@@ -231,7 +222,7 @@
 
                         <p>Now watch what happens when you add structure.</p>
 
-                        <p>The first and most fundamental piece of structure is an <strong>instruction file</strong>. In Claude Code, this file is called <code>CLAUDE.md</code>. It is a plain text file that the agent reads automatically every time it starts working in a directory. Along with the current conversation, these instruction files are <strong>everything the agent sees</strong> &mdash; its entire context. Whatever you write in them becomes part of how the agent thinks, what it prioritizes, and what rules it follows.</p>
+                        <p>The first and most fundamental piece of structure is an <strong>instruction file</strong>. In Claude Code, this file is called <code>CLAUDE.md</code>. It is plain-text project context loaded according to its scope and the files Claude discovers. Along with the conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.</p>
 
                         <p>One file at the project root is just the beginning. <code>CLAUDE.md</code> files can exist at every level of the directory tree &mdash; each one scoped to its location, each one adding local context as the agent navigates your project. Together, they form a <strong>layer of working memory</strong> spread across the entire filesystem. We will see this layer&rsquo;s full architecture in the compartmentalization section below.</p>
 
@@ -242,7 +233,7 @@
                           <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The OPEVC cycle. The agent moves through five phases &mdash; Observe, Plan, Execute, Verify, Condense &mdash; with CLAUDE.md files at the center, updated throughout. Each phase produces different work and different updates to working memory.</figcaption>
                         </figure>
 
-                        <p>An effective agent following the OPEVC flow is constantly moving information. During <strong>Observe</strong>, it gathers context&mdash;from local files, the web, the user&mdash;and writes its findings into the local <code>CLAUDE.md</code> file where the work will happen. During <strong>Plan</strong>, it updates that same file with the exact steps it intends to take. During <strong>Execute</strong>, it acts, capturing implementation lessons directly into the file. During <strong>Verify</strong>, it checks the results, recording what passed, what failed, and what to watch out for next time. By now, the working memory layer is inflated with rich context. Finally, during <strong>Condense</strong>, the agent actively deflates that layer&mdash;cleaning up its temporary scratchpad notes, migrating permanent architectural lessons UP into <code>CLAUDE.md</code> files higher in the directory tree, and other location, also creating pending jobs to finish later if outside the scope of current job and finally, returning the system to a clean, optimized state for the next task.</p>
+                        <p>In the reference system explored later, an agent following OPEVC is constantly moving information. During <strong>Observe</strong>, it gathers context&mdash;from local files, the web, and the user&mdash;and records findings in local working memory. During <strong>Plan</strong>, it writes the steps it intends to take. During <strong>Execute</strong>, it acts and captures implementation lessons. During <strong>Verify</strong>, it records what passed, what failed, and what to watch next time. Finally, during <strong>Condense</strong>, it cleans temporary notes, routes durable lessons to the right files, creates pending jobs for work outside the current scope, and returns the system to a clean state.</p>
 
                         <p>Every phase reads from the <code>CLAUDE.md</code> layer and writes back to it. The instruction files are not static documents. They are living working memory that inflates as the agent works and contracts as it absorbs what it learned.</p>
 
@@ -260,7 +251,7 @@
   <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">The hook system in Claude Code. Every arrow is a moment where you can intervene. Every hook is a checkpoint where your rules control what happens next.</figcaption>
 </figure>
 
-                        <p>Every time the agent is about to take an action &mdash; use a tool, respond, manage memory, stop &mdash; a <strong>hook fires</strong>. That hook can:</p>
+                        <p>At supported lifecycle events, a configured <strong>hook can fire</strong>. Depending on the event and platform, that hook can:</p>
 
                         <ul>
                             <li><strong>Block</strong> the action entirely</li>
@@ -269,7 +260,7 @@
                             <li><strong>Log</strong> what happened for future reference</li>
                         </ul>
 
-                        <p>This is how you turn a probabilistic chain into a <strong>deterministic pipeline</strong>. The LLM still does the thinking. But the hooks define the guardrails, the checkpoints, the reflexes &mdash; and most importantly, a <strong>place where the agent&rsquo;s behavior can be recorded</strong>. Every hook captures what the agent decided and what it did. Later, the agent reviews those recordings &mdash; seeing what worked, adding better controls, and tightening its own guardrails (engaging you only when specified). The agent gets smarter over time because it can see exactly where to make itself smarter. The LLM proposes. The structure disposes.</p>
+                        <p>This is how you put a <strong>guarded pipeline</strong> around a probabilistic chain. The LLM still does the thinking. Hooks define guardrails, checkpoints, reflexes, and places where selected behavior can be recorded. Later, the agent can review those recordings, see what worked, and propose better controls under your authority. The LLM proposes. The structure disposes.</p>
 
                         <p>Two layers of structure. <strong>Instruction files</strong> shape behavior through what the agent reads &mdash; context, phases, rules, memory. <strong>Hooks</strong> enforce behavior through what the agent cannot bypass &mdash; blocking actions, triggering responses, logging events. Together, they transform a probabilistic token generator into a reliable cognitive system.</p>
 
@@ -284,16 +275,16 @@
                         <ul>
                             <li><strong>Claude Code</strong> &mdash; <a href="https://code.claude.com/docs/en/hooks" title="Claude Code hooks documentation &mdash; shell commands, HTTP endpoints, and LLM prompts triggered by agent events">hooks</a> via <code>.claude/settings.json</code> (PreToolUse, PostToolUse, Stop, Notification, etc.)</li>
                             <li><strong>Gemini CLI</strong> &mdash; <a href="https://geminicli.com/docs/hooks/" title="Gemini CLI hooks documentation &mdash; event-driven shell commands modeled after Claude Code&#x27;s design">hooks</a> shipped January 2026 (BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc.)</li>
-                            <li><strong>OpenCode</strong> &mdash; hooks via <a href="https://opencode.ai/docs/plugins/" title="OpenCode plugin system &mdash; JS/TS modules that subscribe to agent events">plugin system</a> (<code>tool.execute.before</code>, <code>tool.execute.after</code>, <code>session.idle</code>, <code>stop</code>)</li>
+                            <li><strong>OpenCode</strong> &mdash; hooks via <a href="https://opencode.ai/docs/plugins/" title="OpenCode plugin system &mdash; JS/TS modules that subscribe to agent events">plugin system</a> (<code>tool.execute.before</code>, <code>tool.execute.after</code>, <code>session.idle</code>)</li>
                         </ul>
 
                         <p>As of early 2026, all three shipped hook systems within months of each other &mdash; confirmation that interception points are becoming a standard primitive in agent infrastructure.</p>
 
-                        <p>The syntax differs. The concepts are identical. Each platform provides <strong>interception points</strong> where your rules can override the LLM&rsquo;s default behavior.</p>
+                        <p>The syntax and powers differ, but the underlying pattern is similar. Each platform provides <strong>interception points</strong> where your rules can influence or block supported behavior.</p>
 
                         <p>Think of it this way: <code>hook.sh</code> in Claude Code and <code>plugin.ts</code> in OpenCode are <strong>adapters</strong>. They translate platform-specific events into your agent&rsquo;s decision system. The hook mechanism is an interchangeable sensory layer &mdash; like swapping out ears for antennae. The brain behind them stays the same.</p>
 
-                        <p>This means your agent&rsquo;s core identity &mdash; its <strong>knowledge, behaviors, rules, memory structures, and workflows</strong> &mdash; is platform-agnostic. Those files do not care which LLM reads them. They do not care which CLI runs them. The filesystem IS the identity.</p>
+                        <p>This means much of your agent&rsquo;s core identity &mdash; its <strong>knowledge, behaviors, rules, memory structures, and workflows</strong> &mdash; can remain in portable files. Platform-specific instructions, permissions, and events still need adapters. The filesystem IS the durable identity.</p>
 
                         <p>Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. <strong>Swap the filesystem?</strong> Now you have a completely different agent.</p>
 
@@ -344,7 +335,7 @@
 
                         <p>4. <strong>Design for portability.</strong> Your agent&rsquo;s brain should not be locked to one platform or one model. Keep the core identity in plain files &mdash; markdown, JSON, scripts. Let the platform-specific hooks be thin adapters, not the whole system.</p>
 
-                        <p>5. <strong>Think in compartments.</strong> Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves &mdash; and the more gracefully it grows. And here is the most important part: you do not write these files yourself. A well-defined agent architecture builds its own brain. You simply have a conversation with the agent, and its structural reflexes force it to write, organize, and update these files as it grows.</p>
+                        <p>5. <strong>Think in compartments.</strong> Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves &mdash; and the more gracefully it grows. And here is the most important part: you do not have to write every file yourself. A well-defined agent architecture can help build its own brain through conversation, then organize and update it under your control.</p>
 
                         <p>The electricity keeps getting stronger. That has never been the bottleneck.</p>
 
@@ -355,7 +346,6 @@
                         <p><em>Essay 1 of 8 in the Hadosh Academy series on agent architecture.</em></p>
 
                         <p><em>Next: <a href="../b2/02-we-could-have-had-agi.html">"We Could Have Had AGI By Now"</a> &mdash; what happens when you scale architecture instead of the model.</em></p>
-
                     </div>
 
                     <!-- Comments (Giscus) -->

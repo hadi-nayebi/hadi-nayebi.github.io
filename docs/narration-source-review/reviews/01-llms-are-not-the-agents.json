@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b1/01-llms-are-not-the-agents.md",
+  "source_sha256": "5bc8a932516581fc1282aa7ea6eea71fd26173016888a85b22c4f54170007771",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/01-llms-are-not-the-agents.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
