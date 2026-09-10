@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b3/03-your-brain-was-never-built-for-this.md",
+  "source_sha256": "c8b0897a197b54a85db3c6f709d248764621e9ee856e02eb740b9592546541a0",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/03-your-brain-was-never-built-for-this.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
