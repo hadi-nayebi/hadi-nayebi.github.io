@@ -1,8 +1,66 @@
 {
   "version": 1,
-  "updated": "2026-09-08",
+  "updated": "2026-09-10",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-10-guided-services-intake",
+      "date": "2026-09-10",
+      "type": "Services",
+      "title": "Hadosh Academy now offers a guided path from questions to practical help",
+      "summary": "A new Services experience asks about a visitor's background, goals, ownership expectations, participation, and practical constraints, then recommends an appropriate free or paid starting path before any commitment.",
+      "why_it_matters": "People can distinguish self-guided learning, focused advice, reviews, training, collaborative builds, workshops, startup pilots, and continuing guidance without treating every question as a sales lead or buying a fixed package before scope is understood.",
+      "affected": ["Services", "Guided intake", "Harness consulting", "Training", "Personal websites"],
+      "maturity": "Published guided intake and public service catalog with indicative pricing",
+      "intended_for": ["Individuals building user-owned harnesses", "Teams and startups", "People seeking focused guidance", "Newcomers choosing a starting point"],
+      "sources": [
+        {
+          "label": "Guided Services publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/99"
+        },
+        {
+          "label": "Services onboarding refinement pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/100"
+        },
+        {
+          "label": "Pricing and effort alignment pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/101"
+        },
+        {
+          "label": "Guided Services",
+          "url": "/services.html"
+        }
+      ],
+      "adoption_notes": "The intake is a discovery route, not a checkout or automatic engagement. Free learning and open-source support remain valid outcomes. Paid offers show indicative prices, approximate effort, and separately scoped expenses; final scope and price require a written agreement after discovery. Visitors should not submit credentials, regulated data, confidential client material, or other sensitive information.",
+      "recommended_action": "Use the guided intake to identify the smallest useful next step, review the recommendation, and request the free discovery conversation only if direct help would be valuable."
+    },
+    {
+      "id": "2026-09-08-observation-episode-four",
+      "date": "2026-09-08",
+      "type": "Observation",
+      "title": "The Information System of a Planet reaches open-ended language",
+      "summary": "Episode 4 completes the opening four-episode arc by following communication into human language: finite sounds and gestures become recombinable messages about absent, past, future, denied, and imagined events, while oral tradition carries knowledge across generations.",
+      "why_it_matters": "Readers can see language as a gradual, multimodal expansion of older communication capacities and as a higher-bandwidth substrate for teaching, coordination, planning, and shared imagination without assigning it a single invention date or treating speech as the only complete form.",
+      "affected": ["The Information System of a Planet", "Observations", "Human language", "Oral tradition", "Information substrates"],
+      "maturity": "Published Episode 4 with seven complete visual slides; Episodes 1–4 editorially synchronized",
+      "intended_for": ["General readers", "People curious about language and information", "Visual learners", "Readers continuing from Episode 3"],
+      "sources": [
+        {
+          "label": "Episode 4 publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/94"
+        },
+        {
+          "label": "Episodes 1–4 editorial synchronization pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/96"
+        },
+        {
+          "label": "The Information System of a Planet",
+          "url": "/blog/observations/information-system-of-a-planet/index.html"
+        }
+      ],
+      "adoption_notes": "Read this after Episode 3. The revised opening arc keeps geological time, information lifetime, read/write speed, bandwidth, latency, storage, and failure modes visible without presenting living species as a progress ladder. Language amplifies teaching and cumulative culture rather than causing them alone; signed languages are complete natural languages, origins remain uncertain, and narration paths remain placeholders rather than published audio.",
+      "recommended_action": "Continue to Episode 4, inspect its per-slide evidence and uncertainty boundaries, and use the discussion link for episode-specific corrections or questions."
+    },
     {
       "id": "2026-09-07-observation-episode-three",
       "date": "2026-09-07",
