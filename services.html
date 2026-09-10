@@ -14,15 +14,15 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
     <meta property="og:site_name" content="Hadosh Academy">
-    <link rel="stylesheet" href="css/styles.css?v=20260903-whats-new-1">
-    <link rel="stylesheet" href="css/services.css?v=20260909-services-3">
+    <link rel="stylesheet" href="css/styles.css?v=20260910-services-ux-2">
+    <link rel="stylesheet" href="css/services.css?v=20260910-services-ux-2">
     <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="page-services">
     <header id="site-header"><div class="container"><nav>
         <a href="index.html" class="logo">Hadosh Academy</a>
         <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
-        <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="whats-new.html">What&apos;s New</a><a href="about.html">About</a><a href="services.html" class="active" aria-current="page">Services</a><a href="contact.html">Contact</a></div>
+        <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="whats-new.html">What&apos;s New</a><a href="about.html">About</a><a href="services.html" class="active" aria-current="page">Services</a></div>
     </nav></div></header>
 
     <main>
@@ -31,6 +31,7 @@
                 <span class="badge">Guided services</span>
                 <h1 id="services-title">Find the right next step.</h1>
                 <p>Tell me where you are and what you are trying to build. This short guided intake will suggest a practical starting point—free or paid—before any commitment.</p>
+                <p class="services-general-contact">Have a general question, project comment, or collaboration idea? <a href="/contact.html">Use the shorter Contact form.</a></p>
             </div>
 
             <noscript>
@@ -41,24 +42,23 @@
                 </div>
             </noscript>
 
-            <div class="services-workspace">
-                <aside class="services-rail" aria-label="Intake progress">
+            <div class="services-workspace is-orientation">
+                <aside class="services-rail" aria-label="Intake progress" hidden>
                     <p class="services-rail-label">Your path</p>
-                    <p class="services-step-count"><span id="services-step-number">1</span> of <span id="services-step-total">10</span></p>
-                    <progress id="services-progress" max="10" value="1" aria-label="Intake progress">Step 1 of 10</progress>
+                    <p class="services-step-count"><span id="services-step-number">1</span> of <span id="services-step-total">9</span></p>
+                    <progress id="services-progress" max="9" value="1" aria-label="Intake progress">Step 1 of 9</progress>
                     <ol class="services-progress-list" aria-hidden="true">
-                        <li class="is-current">Orientation</li>
                         <li>Background</li>
                         <li>Context</li>
                         <li>Current system</li>
-                        <li>Desired help</li>
+                        <li>Goals &amp; priority</li>
                         <li>Ownership</li>
                         <li>Participation</li>
                         <li>Practical fit</li>
                         <li>Recommendation</li>
                         <li>Contact &amp; review</li>
                     </ol>
-                    <p class="services-save-note">Your answers stay in this browser until you submit. They are not saved between visits.</p>
+                    <p class="services-save-note">Your answers remain on this page until you submit, refresh, or leave. They are not saved between visits.</p>
                 </aside>
 
                 <form id="services-intake-form" class="services-intake" method="post" action="/services.html" novalidate>
@@ -120,13 +120,11 @@
                             <label class="services-check"><input type="checkbox" name="current_system" value="Team process"><span>Team process</span></label>
                             <label class="services-check"><input type="checkbox" name="current_system" value="Nothing yet" data-exclusive><span>Nothing yet</span></label>
                         </div>
-                        <label for="current-system-notes">Anything useful to know? <span class="services-optional">optional</span></label>
-                        <textarea class="form-control" id="current-system-notes" name="current_system_notes" rows="4" maxlength="800" placeholder="For example: what works, what keeps breaking, or what you have outgrown."></textarea>
                     </fieldset>
 
-                    <fieldset class="services-step" data-step="desired-help" data-step-label="Desired help" hidden>
-                        <legend tabindex="-1">What kind of help would be most useful?</legend>
-                        <p class="services-helper">Choose up to three. You will identify the most important one next.</p>
+                    <fieldset class="services-step" data-step="desired-help" data-step-label="Goals &amp; priority" hidden>
+                        <legend tabindex="-1">Which directions are you considering?</legend>
+                        <p class="services-helper">Choose up to three possibilities. Then identify the priority you want the recommendation to follow.</p>
                         <div class="services-check-grid" data-checkbox-group="desired_help" data-required-group="true" data-max="3">
                             <label class="services-check"><input type="checkbox" name="desired_help" value="Learn the foundations"><span>Learn the foundations</span></label>
                             <label class="services-check"><input type="checkbox" name="desired_help" value="Review an existing harness"><span>Review an existing harness</span></label>
@@ -140,25 +138,22 @@
                         </div>
                         <p class="services-selection-status" id="desired-help-status" role="status" aria-live="polite"></p>
                         <div class="services-primary-choice" id="services-primary-choice" hidden>
-                            <label for="primary-help">Which one matters most right now?</label>
+                            <label for="primary-help">What is your priority right now?</label>
                             <select class="form-control" id="primary-help" name="primary_help" required disabled><option value="">Select your priority</option></select>
                         </div>
                     </fieldset>
 
                     <fieldset class="services-step" data-step="ownership" data-step-label="Ownership" hidden>
                         <legend tabindex="-1">What should this work help you own?</legend>
-                        <p class="services-helper">Describe the responsibility, repeated work, or public presence you want to improve. Avoid secrets, credentials, private client data, or regulated information.</p>
-                        <label for="ownership-outcome">The outcome in your own words</label>
-                        <textarea class="form-control services-large-textarea" id="ownership-outcome" name="ownership_outcome" rows="7" maxlength="1500" placeholder="For example: I want a durable research workflow that preserves decisions across projects…"></textarea>
+                        <p class="services-helper">Describe what you want to improve and what currently gets in the way. Avoid secrets, credentials, private client data, or regulated information.</p>
+                        <label for="ownership-outcome">The present problem and desired outcome</label>
+                        <textarea class="form-control services-large-textarea" id="ownership-outcome" name="ownership_outcome" rows="7" maxlength="1500" placeholder="For example: decisions are being lost between projects, and I want a durable research workflow I can keep improving…"></textarea>
                         <p class="services-character-count"><span id="ownership-count">0</span> / 1500</p>
                     </fieldset>
 
                     <fieldset class="services-step" data-step="participation" data-step-label="Participation" hidden>
                         <legend tabindex="-1">How do you want to participate in the build?</legend>
-                        <div class="services-principle services-principle-compact">
-                            <strong>The goal is not to hand you a sealed system.</strong>
-                            <p>We build with you so you can understand, maintain, and keep cultivating the harness after the engagement.</p>
-                        </div>
+                        <p class="services-helper">Choose the working rhythm that would help you understand, maintain, and continue cultivating the system.</p>
                         <div class="services-choice-stack">
                             <label class="services-choice"><input type="radio" name="participation" value="Active co-builder" required><span><strong>Active co-builder</strong><small>I can work between sessions and make decisions with you.</small></span></label>
                             <label class="services-choice"><input type="radio" name="participation" value="Weekly guided contributor"><span><strong>Weekly guided contributor</strong><small>I want structured sessions and manageable work between them.</small></span></label>
@@ -213,8 +208,10 @@
                                 <label class="services-check"><input type="checkbox" name="availability" value="Flexible" data-exclusive><span>Flexible</span></label>
                             </div>
                         </fieldset>
-                        <label for="final-note">Anything else before we talk? <span class="services-optional">optional</span></label>
-                        <textarea class="form-control" id="final-note" name="final_note" rows="4" maxlength="1000"></textarea>
+                        <div class="services-newcomer-choice" id="services-newcomer-choice">
+                            <label class="services-consent services-welcome-consent"><input type="checkbox" id="services-send-welcome" name="send_welcome" value="Yes"><span><strong>Also send me the newcomer guide.</strong> It includes Start Here, public projects, LinkedIn, and Bluesky so I can continue exploring.</span></label>
+                            <p id="services-newcomer-recommended" class="services-newcomer-recommended" hidden>Recommended based on your earlier answers. You can uncheck it.</p>
+                        </div>
 
                         <section class="services-review" aria-labelledby="services-review-title">
                             <div class="services-review-heading"><h3 id="services-review-title">Review your request</h3><button class="services-text-button" type="button" data-edit-step="background">Edit answers</button></div>
@@ -222,8 +219,8 @@
                         </section>
 
                         <div class="services-privacy-notice">
-                            <label class="services-consent"><input type="checkbox" name="consent" value="services-intake-v1.0" required><span>I understand that my answers will be delivered to Hadosh Academy through EmailJS so Hadi can reply about this request. I have not included passwords, secrets, confidential client material, or regulated personal data.</span></label>
-                            <p>No purchase is created. Your address is not added to a marketing list. Final scope and price are agreed only after discovery. Email delivery is handled under the <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS privacy policy</a>; after delivery, the request is treated as ordinary email correspondence.</p>
+                            <label class="services-consent"><input type="checkbox" name="consent" value="services-intake-v1.1" required><span>I understand that my answers will be delivered to Hadosh Academy through EmailJS so Hadi can reply about this request. If I request the newcomer guide, EmailJS will also send that one-time message. I have not included passwords, secrets, confidential client material, or regulated personal data.</span></label>
+                            <p>No purchase is created. Your address is not added to a marketing list or newsletter. Final scope and price are agreed only after discovery. Email delivery is handled under the <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS privacy policy</a>; after delivery, the request is treated as ordinary email correspondence.</p>
                         </div>
                         <div class="form-honeypot" aria-hidden="true"><label for="services-website">Leave this field empty</label><input id="services-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
                     </div>
@@ -231,7 +228,7 @@
                     <div class="services-form-actions">
                         <button type="button" id="services-back" class="btn btn-secondary" hidden>Back</button>
                         <button type="button" id="services-next" class="btn btn-primary">Begin</button>
-                        <button type="submit" id="services-submit" class="btn btn-primary" disabled hidden>Request a discovery conversation</button>
+                        <button type="submit" id="services-submit" class="btn btn-primary" disabled hidden>Send request</button>
                     </div>
                     <p id="services-intake-status" class="form-status services-form-status" role="status" aria-live="polite"></p>
                 </form>
@@ -240,6 +237,7 @@
                     <span class="services-kicker">Request received</span>
                     <h2 id="services-success-title">Thank you. I’ll review the context before replying.</h2>
                     <p>Your request is not a purchase. The next step is a reply and, if useful, a free 30-minute discovery conversation.</p>
+                    <p id="services-success-welcome" class="services-success-welcome" hidden></p>
                     <div class="hero-actions"><a class="btn btn-secondary" href="/start-here.html">Explore Start Here</a><a class="btn btn-secondary" href="/projects/index.html">View public projects</a></div>
                 </section>
             </div>
@@ -276,8 +274,8 @@
 
     <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
     <script src="js/theme-manager.js?v=20260903-whats-new-1"></script>
-    <script src="js/components.js?v=20260909-services-2"></script>
+    <script src="js/components.js?v=20260910-services-ux-2"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="js/services-intake.js?v=20260909-services-4"></script>
+    <script src="js/services-intake.js?v=20260910-services-ux-2"></script>
 </body>
 </html>

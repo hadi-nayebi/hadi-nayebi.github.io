@@ -1312,6 +1312,18 @@ nav {
     font-family: inherit;
 }
 
+/* Keep native select popups legible in the site's dark interface. */
+select.form-control {
+    color-scheme: dark;
+    background-color: var(--bg-card, #111116);
+    color: var(--text-main, #f4f4f5);
+}
+
+select.form-control option {
+    background-color: #111116;
+    color: #f4f4f5;
+}
+
 .form-control:focus {
     outline: none;
     border-color: var(--primary);

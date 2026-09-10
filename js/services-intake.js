@@ -1,10 +1,9 @@
 (function () {
     'use strict';
 
-    var CONSENT_VERSION = 'services-intake-v1.0';
+    var CONSENT_VERSION = 'services-intake-v1.1';
     var PROTOCOL_MARKER = 'HADOSH_SERVICES_INTAKE_V1:';
     var MIN_FORM_AGE_MS = 5000;
-    var SEND_THROTTLE_MS = 60000;
     var SUCCESS_COOLDOWN_MS = 15 * 60 * 1000;
     var SUCCESS_STORAGE_KEY = 'hadosh-services-last-success';
 
@@ -13,6 +12,7 @@
     var EMAILJS_PUBLIC_KEY = 'UrA0snZAj1om7ilbd';
     var EMAILJS_SERVICE_ID = 'service_chq4jnq';
     var EMAILJS_TEMPLATE_ID = 'template_5he0blr';
+    var EMAILJS_WELCOME_TEMPLATE_ID = 'template_wq2dosk';
 
     var OFFERINGS = {
         discovery: {
@@ -149,11 +149,17 @@
         var stepNumber = document.getElementById('services-step-number');
         var stepTotal = document.getElementById('services-step-total');
         var progressItems = Array.prototype.slice.call(document.querySelectorAll('.services-progress-list li'));
+        var progressRail = document.querySelector('.services-rail');
+        var workspace = document.querySelector('.services-workspace');
         var status = document.getElementById('services-intake-status');
+        var welcomeCheckbox = document.getElementById('services-send-welcome');
+        var welcomeRecommendation = document.getElementById('services-newcomer-recommended');
         var mountedAt = Date.now();
         var currentIndex = 0;
         var sending = false;
         var emailReady = false;
+        var completed = false;
+        var welcomeChoiceTouched = false;
 
         function activeRoute() {
             var primary = value(form, 'primary_help');
@@ -188,34 +194,60 @@
             if (heading) window.setTimeout(function () { heading.focus(); }, 0);
         }
 
+        function newcomerGuideRecommended() {
+            return value(form, 'experience') === 'New to the concepts' ||
+                value(form, 'primary_help') === 'Learn the foundations' ||
+                value(form, 'preferred_path') === OFFERINGS.foundationsGuide.title;
+        }
+
+        function syncWelcomeChoice() {
+            var recommended = newcomerGuideRecommended();
+            welcomeRecommendation.hidden = !recommended;
+            if (!welcomeChoiceTouched) welcomeCheckbox.checked = recommended;
+        }
+
         function setStep(index, options) {
             var settings = options || {};
-            currentIndex = Math.max(0, Math.min(index, steps.length - 1));
             var route = activeRoute();
-            if (route.indexOf(currentIndex) === -1) currentIndex = route[0];
+            if (!Number.isInteger(index) || route.indexOf(index) === -1) return false;
+            currentIndex = index;
             applyRouteState(route);
             steps.forEach(function (step, stepIndex) { step.hidden = stepIndex !== currentIndex; });
             var routePosition = route.indexOf(currentIndex);
-            progress.max = route.length;
-            progress.value = routePosition + 1;
-            progress.textContent = 'Step ' + (routePosition + 1) + ' of ' + route.length;
-            progress.setAttribute('aria-label', 'Intake progress: step ' + (routePosition + 1) + ' of ' + route.length);
-            stepNumber.textContent = String(routePosition + 1);
-            stepTotal.textContent = String(route.length);
+            var isOrientation = currentIndex === 0;
+            var numberedRoute = route.filter(function (stepIndex) { return stepIndex !== 0; });
+            var numberedPosition = numberedRoute.indexOf(currentIndex);
+            progressRail.hidden = isOrientation;
+            workspace.classList.toggle('is-orientation', isOrientation);
+            if (!isOrientation) {
+                progress.max = numberedRoute.length;
+                progress.value = numberedPosition + 1;
+                progress.textContent = 'Step ' + (numberedPosition + 1) + ' of ' + numberedRoute.length;
+                progress.setAttribute('aria-label', 'Intake progress: step ' + (numberedPosition + 1) + ' of ' + numberedRoute.length);
+                stepNumber.textContent = String(numberedPosition + 1);
+                stepTotal.textContent = String(numberedRoute.length);
+            }
             progressItems.forEach(function (item, itemIndex) {
-                var itemPosition = route.indexOf(itemIndex);
+                var stepIndex = itemIndex + 1;
+                var itemPosition = numberedRoute.indexOf(stepIndex);
                 item.hidden = itemPosition === -1;
-                item.classList.toggle('is-current', itemIndex === currentIndex);
-                item.classList.toggle('is-complete', itemPosition !== -1 && itemPosition < routePosition);
+                item.classList.toggle('is-current', stepIndex === currentIndex);
+                item.classList.toggle('is-complete', itemPosition !== -1 && itemPosition < numberedPosition);
             });
             backButton.hidden = routePosition === 0;
+            backButton.disabled = routePosition === 0;
             nextButton.hidden = routePosition === route.length - 1;
+            nextButton.disabled = routePosition === route.length - 1;
             submitButton.hidden = routePosition !== route.length - 1;
+            submitButton.disabled = routePosition !== route.length - 1 || !emailReady || sending || completed;
             nextButton.textContent = currentIndex === 0 ? 'Begin' : 'Continue';
             setStatus('', '');
 
             if (steps[currentIndex].dataset.step === 'recommendation') renderRecommendations();
-            if (steps[currentIndex].dataset.step === 'contact-review') renderReview();
+            if (steps[currentIndex].dataset.step === 'contact-review') {
+                syncWelcomeChoice();
+                renderReview();
+            }
             if (steps[currentIndex].dataset.step === 'contact-review' && !emailReady) {
                 setStatus('Email delivery is temporarily unavailable. Your answers remain in this browser while you review them.', 'error');
             }
@@ -225,6 +257,7 @@
                 window.history.replaceState({ servicesStep: currentIndex }, '', hash);
             }
             if (settings.focus !== false) focusStep();
+            return true;
         }
 
         function checkGroup(group) {
@@ -372,7 +405,6 @@
                 ['Background', experience],
                 ['Context', [value(form, 'client_type'), value(form, 'role'), value(form, 'organization'), value(form, 'team_size') ? 'team size ' + value(form, 'team_size') : ''].filter(Boolean).join(' · ')],
                 ['Current system', values(form, 'current_system').join(', ')],
-                ['Current system notes', value(form, 'current_system_notes')],
                 ['Desired help', values(form, 'desired_help').join(', ')],
                 ['Priority', value(form, 'primary_help')]
             ];
@@ -387,7 +419,7 @@
             rows.push(['Suggested path', value(form, 'preferred_path')]);
             rows.push(['Reply details', [value(form, 'name'), value(form, 'email'), value(form, 'timezone')].filter(Boolean).join(' · ')]);
             if (values(form, 'availability').length) rows.push(['Availability', values(form, 'availability').join(', ')]);
-            if (value(form, 'final_note')) rows.push(['Final note', value(form, 'final_note')]);
+            rows.push(['Newcomer guide', welcomeCheckbox.checked ? 'Requested' : 'Not requested']);
             return rows.filter(function (row) { return row[1]; });
         }
 
@@ -406,7 +438,7 @@
 
         function payloadFromForm(formData) {
             return {
-                schema_version: '1.0.0',
+                schema_version: '1.1.0',
                 action: 'request_discovery',
                 consent_version: CONSENT_VERSION,
                 requested_at: new Date().toISOString(),
@@ -414,7 +446,8 @@
                     name: String(formData.get('name') || '').trim(),
                     email: String(formData.get('email') || '').trim(),
                     timezone: String(formData.get('timezone') || '').trim(),
-                    availability: formData.getAll('availability')
+                    availability: formData.getAll('availability'),
+                    newcomer_guide_requested: formData.get('send_welcome') === 'Yes'
                 },
                 background: {
                     experience: String(formData.get('experience') || ''),
@@ -426,7 +459,6 @@
                 },
                 project: {
                     current_system: formData.getAll('current_system'),
-                    current_system_notes: String(formData.get('current_system_notes') || '').trim(),
                     desired_help: formData.getAll('desired_help'),
                     primary_help: String(formData.get('primary_help') || ''),
                     ownership_outcome: String(formData.get('ownership_outcome') || '').trim(),
@@ -436,8 +468,7 @@
                     timeframe: String(formData.get('timeframe') || ''),
                     sensitivity: String(formData.get('sensitivity') || ''),
                     budget: String(formData.get('budget') || ''),
-                    preferred_path: String(formData.get('preferred_path') || ''),
-                    final_note: String(formData.get('final_note') || '').trim()
+                    preferred_path: String(formData.get('preferred_path') || '')
                 }
             };
         }
@@ -454,7 +485,6 @@
                 'team_size: ' + (payload.background.team_size || 'not provided'),
                 'experience: ' + payload.background.experience + (payload.background.experience_other ? ' — ' + payload.background.experience_other : ''),
                 'current_system: ' + (payload.project.current_system.join(', ') || 'not provided'),
-                'current_system_notes: ' + (payload.project.current_system_notes || 'not provided'),
                 'desired_help: ' + payload.project.desired_help.join(', '),
                 'ownership_outcome: ' + (payload.project.ownership_outcome || 'not provided'),
                 'participation: ' + payload.project.participation,
@@ -465,7 +495,7 @@
                 'budget: ' + (payload.project.budget || 'not provided'),
                 'timezone: ' + (payload.contact.timezone || 'not provided'),
                 'availability: ' + (payload.contact.availability.join(', ') || 'not provided'),
-                'final_note: ' + (payload.project.final_note || 'not provided'),
+                'newcomer_guide: ' + (payload.contact.newcomer_guide_requested ? 'requested' : 'not requested'),
                 'consent_version: ' + payload.consent_version,
                 '',
                 PROTOCOL_MARKER + encodePayload(payload)
@@ -536,6 +566,8 @@
                 setStep(currentIndex, { history: false, focus: false });
             }
 
+            if (field.name === 'send_welcome') welcomeChoiceTouched = true;
+
             if (currentIndex === steps.length - 1) renderReview();
         });
 
@@ -552,6 +584,7 @@
             if (!validateCurrentStep()) return;
             var route = activeRoute();
             var routePosition = route.indexOf(currentIndex);
+            if (routePosition < 0 || routePosition >= route.length - 1) return;
             setStep(route[routePosition + 1]);
         });
 
@@ -564,7 +597,8 @@
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            if (sending) return;
+            var route = activeRoute();
+            if (sending || completed || currentIndex !== route[route.length - 1]) return;
             if (!validateCurrentStep() || !form.reportValidity()) return;
             if (!emailReady) {
                 setStatus('Email delivery is temporarily unavailable. Your answers remain here; please try again later.', 'error');
@@ -597,23 +631,51 @@
             submitButton.textContent = 'Sending request…';
             setStatus('', '');
 
-            window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            var templateParams = {
                 name: payload.contact.name,
                 email: payload.contact.email,
-                newcomer: 'Services discovery request',
+                newcomer: payload.contact.newcomer_guide_requested ? 'Yes' : 'No',
                 request_type: 'Services inquiry: ' + payload.project.preferred_path,
                 preferred_path: payload.project.preferred_path,
                 primary_help: payload.project.primary_help,
                 client_type: payload.background.client_type,
                 requested_at: payload.requested_at,
                 message: readableMessage(payload)
-            }).then(function () {
+            };
+
+            window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams).then(function () {
                 rememberSuccess(Date.now());
+                if (!payload.contact.newcomer_guide_requested) return { requested: false, sent: false };
+                return new Promise(function (resolve) { window.setTimeout(resolve, 1100); })
+                    .then(function () { return window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_WELCOME_TEMPLATE_ID, templateParams); })
+                    .then(function () { return { requested: true, sent: true }; })
+                    .catch(function (error) {
+                        console.log('SERVICES WELCOME EMAIL FAILED...', error);
+                        return { requested: true, sent: false };
+                    });
+            }).then(function (welcomeResult) {
+                completed = true;
                 form.reset();
+                document.getElementById('services-review-summary').textContent = '';
+                document.getElementById('ownership-count').textContent = '0';
+                document.getElementById('desired-help-status').textContent = '';
                 form.hidden = true;
-                document.querySelector('.services-rail').hidden = true;
-                document.querySelector('.services-workspace').classList.add('is-complete');
+                progressRail.hidden = true;
+                workspace.classList.remove('is-orientation');
+                workspace.classList.add('is-complete');
                 var success = document.getElementById('services-success');
+                var welcomeStatus = document.getElementById('services-success-welcome');
+                if (welcomeResult.requested) {
+                    welcomeStatus.hidden = false;
+                    welcomeStatus.textContent = welcomeResult.sent ?
+                        'The newcomer guide is on its way to your inbox.' :
+                        'Your request was received, but the automatic newcomer guide could not be sent. You can open Start Here below.';
+                    welcomeStatus.setAttribute('data-state', welcomeResult.sent ? 'success' : 'warning');
+                } else {
+                    welcomeStatus.hidden = true;
+                    welcomeStatus.textContent = '';
+                    welcomeStatus.removeAttribute('data-state');
+                }
                 success.hidden = false;
                 success.focus();
                 window.history.replaceState({}, '', '#request-received');
@@ -622,8 +684,9 @@
                 else setStatus('The request could not be sent. Your answers remain here; please try again later.', 'error');
             }).finally(function () {
                 sending = false;
-                submitButton.disabled = !emailReady;
-                submitButton.textContent = 'Request a discovery conversation';
+                var route = activeRoute();
+                submitButton.disabled = completed || !emailReady || currentIndex !== route[route.length - 1];
+                submitButton.textContent = 'Send request';
             });
         });
 
@@ -631,11 +694,11 @@
             try {
                 window.emailjs.init({
                     publicKey: EMAILJS_PUBLIC_KEY,
-                    blockHeadless: true,
-                    limitRate: { id: 'hadosh-services-intake', throttle: SEND_THROTTLE_MS }
+                    blockHeadless: true
                 });
                 emailReady = true;
-                submitButton.disabled = false;
+                var route = activeRoute();
+                submitButton.disabled = currentIndex !== route[route.length - 1];
             } catch (error) {
                 console.log('FAILED TO INITIALIZE SERVICES EMAIL DELIVERY...', error);
             }
