@@ -39,6 +39,7 @@ const surfaces = new Map([
   ['projects/index.html', read('projects/index.html')],
   ['projects/seed-agent.html', read('projects/seed-agent.html')],
   ['projects/q-seed.html', read('projects/q-seed.html')],
+  ['feed.xml', read('feed.xml')],
   ['CONTRIBUTING.md', read('CONTRIBUTING.md')],
   ['blog/b8/08_9-the-seed-is-yours.md', read('blog/b8/08_9-the-seed-is-yours.md')],
   ['blog/b8/08_9-the-seed-is-yours.html', read('blog/b8/08_9-the-seed-is-yours.html')],
@@ -100,7 +101,9 @@ const retiredPhrases = [
   'Codex Reimplementation',
   'Codex Seed Project',
   'Codex Seed and Q-Seed',
-  'share a common architectural lineage'
+  'share a common architectural lineage',
+  'The same Hadosh architecture',
+  'remains private while it matures'
 ];
 
 for (const [relativePath, source] of surfaces) {
