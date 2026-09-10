@@ -1,0 +1,209 @@
+{
+  "number": 5,
+  "slug": "a-message-that-could-wait",
+  "title": "A Message That Could Wait",
+  "status": "published",
+  "published": "2026-09-10",
+  "deckline": "Oral memory could cross generations, but it still needed living people to keep performing it. Marks, images, and counters gave selected information a different lifetime: the message could remain in the world while every voice went quiet.",
+  "objective": "Show how intentional marks, images, patterned objects, and counters extended selected information from living performance into durable external traces across roughly 100,000 years of prehistory, while keeping interpretation uncertain and avoiding a false straight line from art to writing.",
+  "learning_outcomes": [
+    "Locate durable mark-making within a long, fragmentary record reaching back at least tens of thousands of years, rather than treating writing as humanity's first external memory.",
+    "Understand the state change: selected information could persist unattended beyond a moment, a lifetime, or a transmission chain, sometimes for millennia.",
+    "Distinguish durability from expressive capacity: a surviving image or pattern can preserve form while losing much of the context needed to interpret it.",
+    "See repeated graphic conventions and material counters as different experiments in external storage, not stages on an inevitable ladder toward writing."
+  ],
+  "continuity": "Episode 4 expanded the communication system into open-ended language and multi-generation oral memory, then exposed its dependence on repeated living performance. Episode 5 begins roughly 100,000 years ago and follows surviving material traces toward the last millennia before writing: the information-lifetime clock stretches from seconds and generations to objects that can wait for thousands of years.",
+  "state_change": "Selected information moves from living memory that must be repeatedly performed into durable material traces that can wait unattended for years, centuries, or millennia.",
+  "future_pressure": "External traces can wait, but most early marks carry narrow or context-dependent meanings. The next pressure is a graphic system flexible enough to record many kinds of information with conventions that distant readers can reliably recover.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-5-a-message-that-could-wait",
+  "slides": [
+    {
+      "id": "after-the-voices",
+      "title": "After the voices go quiet",
+      "read_minutes": 1.1,
+      "image": {
+        "src": "images/episode-05/01-after-the-voices.jpg",
+        "alt": "An empty prehistoric gathering place at dawn, with a fading fire and footprints around a rock bearing one deliberate red mark that remains after the people have gone.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "Episode 4 ended with an oral tradition crossing generations. Powerful storage — but busy storage. Someone had to remember, perform, listen, correct, and perform again.",
+        "A voice lasts seconds. A memory may last a lifetime. A tradition can last much longer, but only while a chain of living people keeps rewriting it into new bodies.",
+        "Now imagine the gathering ends. The fire cools. Everyone leaves. One deliberate mark remains on stone.",
+        "The mark does not remember in the way a person remembers. Bodies had long been changing landscapes, and tools already embodied traces of technique. A deliberate graphic mark adds a more directly inspectable layer: selected information can wait without a living carrier continuously holding it. The write may take seconds or hours. The stored trace may survive days, generations, or — under absurdly lucky conditions — tens of thousands of years."
+      ],
+      "sources": [
+        {
+          "label": "Nature — An abstract drawing from 73,000-year-old levels at Blombos Cave",
+          "url": "https://www.nature.com/articles/s41586-018-0514-3",
+          "note": "Primary study of an intentional ochre drawing preserved on stone, showing that durable graphic traces reach deep into the Late Pleistocene."
+        },
+        {
+          "label": "Nature — Narrative cave art in Indonesia by 51,200 years ago",
+          "url": "https://www.nature.com/articles/s41586-024-07541-7",
+          "note": "Primary dating and interpretation of a surviving pictorial scene whose maker did not need to remain present for later viewers."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-05/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "survival-filter",
+      "title": "Prehistory arrives through a brutal filter",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-05/02-survival-filter.jpg",
+        "alt": "A deep-time landscape shows markings on skin, wood, fiber, sand, eggshell, and stone, with most fading away while a few sheltered stone and ochre fragments survive into an archaeological layer.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "The oldest mark we have found is not necessarily the first mark anyone made. Archaeology receives whatever escaped weather, fire, decay, reuse, burial, and our own talent for building parking lots on top of interesting things.",
+        "People may have marked skin, wood, fiber, sand, and other materials that rarely survive. What remains is a biased sample, unusually friendly to stone, mineral pigment, shell, bone, and protected caves.",
+        "At Blombos Cave in South Africa, people prepared and stored an ochre-rich mixture about 100,000 years ago. From layers around 73,000 years old comes a small stone flake crossed by deliberate red lines; researchers concluded that the pattern once extended beyond the broken edges.",
+        "We can establish material, technique, and approximate age. Meaning is harder. Was a pattern decoration, identity, practice, notation, ritual, or several things at once? The file survived. Most of its metadata did not."
+      ],
+      "sources": [
+        {
+          "label": "Science / PubMed — A 100,000-Year-Old Ochre-Processing Workshop at Blombos Cave",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/21940890/",
+          "note": "Primary archaeological study of ochre-rich compounds prepared and stored in abalone shells about 100,000 years ago."
+        },
+        {
+          "label": "Nature — An abstract drawing from 73,000-year-old levels at Blombos Cave",
+          "url": "https://www.nature.com/articles/s41586-018-0514-3",
+          "note": "Analyzes the deliberate ochre lines, their production, and the evidence that the design continued beyond the surviving fragment."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-05/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "hand-waits",
+      "title": "A hand waits 67,800 years",
+      "read_minutes": 1.2,
+      "image": {
+        "src": "images/episode-05/03-hand-waits.jpg",
+        "alt": "Inside a limestone cave, a person sprays red pigment around an outstretched hand; the scene dissolves into the same hand stencil mineralized and weathered across deep time.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "On the Indonesian island of Muna, someone placed a hand against a limestone wall and blew pigment around it. Later, parts of the finger outlines appear to have been deliberately narrowed. Mineral deposits eventually grew over the image.",
+        "In 2026, researchers dated the calcium carbonate above one stencil. Their result gives the art a minimum age of 67,800 years. The pigment must already have been there when that mineral layer began to form; the image itself may be older.",
+        "Look at the performance change. The original gesture lasted moments. The hand lasted one human life. Its outline remained on the wall for more than six hundred centuries, including long stretches when nobody may have looked at it at all.",
+        "But durability is not mind-reading. We can still see the shape. We cannot interview the maker about what it meant. External storage extends the lifetime of a signal; it does not guarantee that a future reader retains the protocol."
+      ],
+      "sources": [
+        {
+          "label": "Nature — Rock art from at least 67,800 years ago in Sulawesi",
+          "url": "https://www.nature.com/articles/s41586-025-09968-y",
+          "note": "Primary 2026 study reporting the minimum age, dating method, and modified form of the Muna hand stencil."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-05/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "pattern-repeats",
+      "title": "A pattern learns to repeat",
+      "read_minutes": 1.3,
+      "image": {
+        "src": "images/episode-05/04-pattern-repeats.jpg",
+        "alt": "Several people across successive generations engrave related hatched patterns onto portable ostrich-eggshell water containers, with variation inside a recognizable visual tradition.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "One mark can be personal. Repeated marks can become a social convention.",
+        "At Diepkloof Rock Shelter in South Africa, archaeologists recovered about 270 engraved fragments from ostrich-eggshell containers, mostly from layers roughly 60,000 years old. The designs changed over time, but related geometric rules recur across many objects and archaeological layers.",
+        "That does not give us a translation. The patterns may have helped communicate identity, ownership, affiliation, or something else. The careful claim is that a community maintained a graphic tradition with shared constraints and room for variation.",
+        "In information language, the marks now have something like a format. Their meaning still depends on people, but the visible pattern can be copied onto portable objects and recognized beyond the instant of its creation. Storage has begun borrowing power from convention."
+      ],
+      "sources": [
+        {
+          "label": "PNAS / PubMed — A Howiesons Poort tradition of engraving ostrich eggshell containers",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20194764/",
+          "note": "Primary study of roughly 270 engraved fragments, their recurring design rules, changing styles, and archaeological context around 60,000 years ago."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-05/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-remains",
+      "title": "A picture can hold a scene",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-05/05-scene-remains.jpg",
+        "alt": "A firelit storyteller gestures toward a cave wall where a red pig and several human-like figures form a composed scene; later viewers study the same weathered relationships after the storyteller is gone.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A hand stencil preserves presence. A composed picture can preserve relationships: this figure beside that animal, this action aimed toward that body, these participants inside one scene.",
+        "At Leang Karampuang in Sulawesi, a red-painted pig and at least three human-like figures form a composition dated to at least 51,200 years ago. The details are damaged and interpretation is cautious, but the arrangement invites a viewer to infer action among the figures.",
+        "This is not a historical step after Diepkloof, and neither site is an ancestor we can trace directly to writing. They are surviving windows into different graphic practices in different regions. Together they show that humans had been putting persistent structure into the visible world for tens of thousands of years.",
+        "Pictures can carry a great deal at once — shape, position, gesture, emphasis. They also leave room for many readings. High visual bandwidth is not the same thing as a precise, general-purpose code."
+      ],
+      "sources": [
+        {
+          "label": "Nature — Narrative cave art in Indonesia by 51,200 years ago",
+          "url": "https://www.nature.com/articles/s41586-024-07541-7",
+          "note": "Primary study dating the Leang Karampuang composition and discussing the communicative potential of persistent visual scenes."
+        },
+        {
+          "label": "Google Arts & Culture with BRIN — Indonesia's 51,200-year-old narrative cave art",
+          "url": "https://artsandculture.google.com/story/indonesia-39-s-51-200-years-old-narrative-cave-art-brin/BgXRnYO53jNZSg?hl=en",
+          "note": "Accessible presentation from Indonesia's national research agency showing the site, figures, and dating work."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-05/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "small-exact-answers",
+      "title": "Then a record answers a small question exactly",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-05/06-small-exact-answers.jpg",
+        "alt": "In an early farming settlement, hands sort small clay counters beside baskets of grain and animals; the counters cast impressions into a clay surface while open-ended spoken conversation continues around them.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "Jump forward. Not to the next rung of a ladder, but to a different problem in a different world.",
+        "By around 8000 BCE in parts of the ancient Near East, small clay tokens were used to represent quantities and kinds of goods. A cone, sphere, or other shaped counter could help a community track grain, animals, labor, or exchange without asking one person's memory to hold the entire account.",
+        "Compared with a picture, this can look almost embarrassingly narrow. Good. Narrowness can buy precision. The token does not need to tell a myth or describe tomorrow's weather. It needs to preserve an answer such as how many units of something were counted.",
+        "The operating trade-off has changed. Material records are slow to make and depend on learned conventions, but they can be durable, portable, inspectable, and less vulnerable to one carrier forgetting. Marks, images, and counters did not replace oral knowledge, and none formed a single inevitable road to writing. Older layers kept doing most of the cultural work.",
+        "Yet a new pressure is visible. Could durable marks become flexible enough to record not only one category or quantity, but names, actions, obligations, events, and eventually language itself? The message can wait. Now it needs a much larger range."
+      ],
+      "sources": [
+        {
+          "label": "University of Texas at Austin — Tokens and the origin of counting and writing",
+          "url": "https://sites.utexas.edu/dsb/tokens/",
+          "note": "Archaeologist Denise Schmandt-Besserat's overview of clay tokens as material devices for counting and communicating economic data before writing."
+        },
+        {
+          "label": "University of Cincinnati — Before Numerals",
+          "url": "https://journals.uc.edu/index.php/vl/article/view/5272",
+          "note": "Scholarly account of counting devices in the ancient Middle East between roughly 10,000 and 3000 BCE, including tallies and clay tokens."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — The Origins of Writing",
+          "url": "https://www.metmuseum.org/essays/the-origins-of-writing",
+          "note": "Museum overview of early Mesopotamian writing, its administrative context, and its later expansion beyond accounting."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-05/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
