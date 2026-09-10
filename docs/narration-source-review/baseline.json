@@ -1,0 +1,1813 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-10T22:26:43.657Z",
+  "repository_revision": "9985d0b9c57040ba803747b25968b3747960b65e",
+  "policy": {
+    "audio_phase": "blocked-until-written-content-lock",
+    "principle_writings": "minimal-corrections-preserve-approved-voice",
+    "technical_writings": "substantive-corrections-allowed-for-accuracy",
+    "excluded": [
+      "NoemaProjects",
+      "Explore pages",
+      "diagram narration",
+      "portfolio and project pages",
+      "all other website pages"
+    ]
+  },
+  "totals": {
+    "numbered_essays": 49,
+    "principle_writings": 5,
+    "technical_writings": 44,
+    "observation_episodes": 5,
+    "observation_slides": 34,
+    "practical_guides": 1
+  },
+  "structural_errors": [],
+  "essays": [
+    {
+      "path": "blog/b1/01-llms-are-not-the-agents.md",
+      "class": "principle-writing",
+      "source_sha256": "0d24be8816a74c78cf6112760da98cd6c087984d9ee081a30de2ce648b3319c4",
+      "words": 3698,
+      "source_status": "published",
+      "version": "v1.2.0",
+      "evidence_annotations": 0,
+      "external_sources": 8,
+      "published_html": "blog/b1/01-llms-are-not-the-agents.html",
+      "transcript_yaml": "blog/b1/01-llms-are-not-the-agents.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": []
+    },
+    {
+      "path": "blog/b2/02-we-could-have-had-agi.md",
+      "class": "principle-writing",
+      "source_sha256": "e56d405e2a9b535376a7a69dcdf71ee8cd705f09c1d05861a98f4348bf6b74ff",
+      "words": 3484,
+      "source_status": "published",
+      "version": "v1.1.0",
+      "evidence_annotations": 0,
+      "external_sources": 14,
+      "published_html": "blog/b2/02-we-could-have-had-agi.html",
+      "transcript_yaml": "blog/b2/02-we-could-have-had-agi.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": []
+    },
+    {
+      "path": "blog/b3/03_1-the-folder-is-alive.md",
+      "class": "principle-writing",
+      "source_sha256": "7d42180c1683dffeb659d4f633a4d8bf7a69bbd72f56be0521e1ad3c15616e3f",
+      "words": 3179,
+      "source_status": "published",
+      "version": "v1.0.0",
+      "evidence_annotations": 0,
+      "external_sources": 2,
+      "published_html": "blog/b3/03_1-the-folder-is-alive.html",
+      "transcript_yaml": "blog/b3/03_1-the-folder-is-alive.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": []
+    },
+    {
+      "path": "blog/b3/03-your-brain-was-never-built-for-this.md",
+      "class": "principle-writing",
+      "source_sha256": "8b33e5862fb0f859d3bd93ffaf373bc21544b6546dd791f089c36451cf53ffba",
+      "words": 2824,
+      "source_status": "published",
+      "version": "v0.1.1",
+      "evidence_annotations": 0,
+      "external_sources": 9,
+      "published_html": "blog/b3/03-your-brain-was-never-built-for-this.html",
+      "transcript_yaml": "blog/b3/03-your-brain-was-never-built-for-this.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": []
+    },
+    {
+      "path": "blog/b4/04-the-language-of-agents.md",
+      "class": "principle-writing",
+      "source_sha256": "1a24e27883e70d83cbe4d2d725975e6b0483885cb773d6a8a7b9d7a785e7b75e",
+      "words": 3328,
+      "source_status": "published",
+      "version": "v1.0.1",
+      "evidence_annotations": 0,
+      "external_sources": 1,
+      "published_html": "blog/b4/04-the-language-of-agents.html",
+      "transcript_yaml": "blog/b4/04-the-language-of-agents.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": []
+    },
+    {
+      "path": "blog/b5/05_1-the-two-layer-foundation.md",
+      "class": "technical-writing",
+      "source_sha256": "c377bf37dcd2439d295398e009771fe43bb36907c01665522f80d6f1b011025e",
+      "words": 1725,
+      "source_status": "draft",
+      "version": "v0.5.0",
+      "evidence_annotations": 15,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_1-the-two-layer-foundation.html",
+      "transcript_yaml": "blog/b5/05_1-the-two-layer-foundation.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b5/05_2-plugin-integrity.md",
+      "class": "technical-writing",
+      "source_sha256": "daaac6dd8c696ef223e067de24cbd733dd4da36715c54c0567a9b00bf5a33b7c",
+      "words": 1896,
+      "source_status": "draft",
+      "version": "v0.7.0",
+      "evidence_annotations": 17,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_2-plugin-integrity.html",
+      "transcript_yaml": "blog/b5/05_2-plugin-integrity.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b5/05_3-brain-guard.md",
+      "class": "technical-writing",
+      "source_sha256": "1a82ab7f9048e4ce039bb996174b52cf11856c8efb424bc60391294247672b3e",
+      "words": 3886,
+      "source_status": "draft",
+      "version": "v0.3.1",
+      "evidence_annotations": 25,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_3-brain-guard.html",
+      "transcript_yaml": "blog/b5/05_3-brain-guard.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "3-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b5/05_4-job-core.md",
+      "class": "technical-writing",
+      "source_sha256": "5cef50796243d5c513ea470ad78e0830e3f3a55376a2d2efaf39f89caeb7e484",
+      "words": 2859,
+      "source_status": "draft",
+      "version": "v0.3.0",
+      "evidence_annotations": 20,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_4-job-core.html",
+      "transcript_yaml": "blog/b5/05_4-job-core.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "2-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b5/05_5-interaction-summary.md",
+      "class": "technical-writing",
+      "source_sha256": "7651406b6cdda73a737f6744caef4fb62117579d990f3d4de1991a321d4192a3",
+      "words": 1283,
+      "source_status": "draft",
+      "version": "v0.5.0",
+      "evidence_annotations": 9,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_5-interaction-summary.html",
+      "transcript_yaml": "blog/b5/05_5-interaction-summary.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b5/05_6-question-discipline.md",
+      "class": "technical-writing",
+      "source_sha256": "d2ebdd8ed0664609605034634701d28d37c01a73bccc13082431c84e5498926f",
+      "words": 2084,
+      "source_status": "draft",
+      "version": "v0.4.0",
+      "evidence_annotations": 16,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_6-question-discipline.html",
+      "transcript_yaml": "blog/b5/05_6-question-discipline.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b5/05_7-claude-md-hierarchy.md",
+      "class": "technical-writing",
+      "source_sha256": "f7d6918a347ac4dc8fb9bbc86a9aca0b9afd2b4318523e16392a538d8165897c",
+      "words": 2760,
+      "source_status": "draft",
+      "version": "v0.4.0",
+      "evidence_annotations": 23,
+      "external_sources": 1,
+      "published_html": "blog/b5/05_7-claude-md-hierarchy.html",
+      "transcript_yaml": "blog/b5/05_7-claude-md-hierarchy.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b5/05_8-historian-ratchet.md",
+      "class": "technical-writing",
+      "source_sha256": "4284d8d357032e0f4706b0ee1b5f531a9a082104b5f5f0566aeb956b17f5bac5",
+      "words": 2290,
+      "source_status": "draft",
+      "version": "v0.3.0",
+      "evidence_annotations": 14,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_8-historian-ratchet.html",
+      "transcript_yaml": "blog/b5/05_8-historian-ratchet.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b5/05_9-customization-guardrail.md",
+      "class": "technical-writing",
+      "source_sha256": "51c5be09d86cb895afb6282ea39cbcb2dee17cc56ee77060623605b1031a1fe0",
+      "words": 2759,
+      "source_status": "draft",
+      "version": "v0.6.0",
+      "evidence_annotations": 25,
+      "external_sources": 0,
+      "published_html": "blog/b5/05_9-customization-guardrail.html",
+      "transcript_yaml": "blog/b5/05_9-customization-guardrail.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b6/06_1-phasic-foundation.md",
+      "class": "technical-writing",
+      "source_sha256": "55969be90f9d6eaf8b64b6b0c78e741679263962634113ec593387faa8a0d2c6",
+      "words": 2523,
+      "source_status": "draft",
+      "version": "v0.2.4",
+      "evidence_annotations": 20,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_1-phasic-foundation.html",
+      "transcript_yaml": "blog/b6/06_1-phasic-foundation.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_2-discipline-and-map.md",
+      "class": "technical-writing",
+      "source_sha256": "1c7e7882489eb79964d663a519afab8f950160edb3f1c484f30f666c93fcdc85",
+      "words": 3252,
+      "source_status": "draft",
+      "version": "v0.2.2",
+      "evidence_annotations": 29,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_2-discipline-and-map.html",
+      "transcript_yaml": "blog/b6/06_2-discipline-and-map.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_2b-the-phase-map.md",
+      "class": "technical-writing",
+      "source_sha256": "20764fdca5b1f55a5a87175c1d4cd8fc3558dc8f44f414bf2f1da5ae51290cb9",
+      "words": 1618,
+      "source_status": "draft",
+      "version": "v0.1.1",
+      "evidence_annotations": 13,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_2b-the-phase-map.html",
+      "transcript_yaml": "blog/b6/06_2b-the-phase-map.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b6/06_3-observe.md",
+      "class": "technical-writing",
+      "source_sha256": "a592f01555789bcde01cb7f892b0c69ae4853b7d63bcc70198717cc572fe809f",
+      "words": 3555,
+      "source_status": "draft",
+      "version": "v0.5.2",
+      "evidence_annotations": 35,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_3-observe.html",
+      "transcript_yaml": "blog/b6/06_3-observe.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_4-plan.md",
+      "class": "technical-writing",
+      "source_sha256": "ca89d2317726c81dfbc7f041e6b66597a85b8efc174ea94fa95a2700e007345c",
+      "words": 2992,
+      "source_status": "draft",
+      "version": "v0.5.1",
+      "evidence_annotations": 29,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_4-plan.html",
+      "transcript_yaml": "blog/b6/06_4-plan.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_5-execute.md",
+      "class": "technical-writing",
+      "source_sha256": "cacbb244f33ffd254fe385fdd98d76fe64a84f79d6a30dadb98320d4baef8cf0",
+      "words": 2852,
+      "source_status": "draft",
+      "version": "v0.5.1",
+      "evidence_annotations": 32,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_5-execute.html",
+      "transcript_yaml": "blog/b6/06_5-execute.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_6-verify.md",
+      "class": "technical-writing",
+      "source_sha256": "047e683d0ec3054f6ba2490a2226a6a592f7fe034056b4ecfe019162f8340175",
+      "words": 3237,
+      "source_status": "draft",
+      "version": "v0.4.1",
+      "evidence_annotations": 33,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_6-verify.html",
+      "transcript_yaml": "blog/b6/06_6-verify.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_7-condense.md",
+      "class": "technical-writing",
+      "source_sha256": "6c1889af147ae1d9b98a240113e18eec4611967671aa67e98d2bb16a0db596f8",
+      "words": 2751,
+      "source_status": "draft",
+      "version": "v0.4.1",
+      "evidence_annotations": 26,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_7-condense.html",
+      "transcript_yaml": "blog/b6/06_7-condense.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_7b-condense-uniquely-owns.md",
+      "class": "technical-writing",
+      "source_sha256": "755fd4d6c93b331c7bb62adef09039b5e73678e45b9548eba483ec7d76242823",
+      "words": 2967,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 21,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_7b-condense-uniquely-owns.html",
+      "transcript_yaml": "blog/b6/06_7b-condense-uniquely-owns.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_8-inverse-multiplier.md",
+      "class": "technical-writing",
+      "source_sha256": "17aa9ef30f14a5ac2830c1961501e1418e26679100964b714915ee7f678591dc",
+      "words": 3426,
+      "source_status": "draft",
+      "version": "v0.4.1",
+      "evidence_annotations": 19,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_8-inverse-multiplier.html",
+      "transcript_yaml": "blog/b6/06_8-inverse-multiplier.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b6/06_9-gmode.md",
+      "class": "technical-writing",
+      "source_sha256": "05024a5c0a9eaf2a65e1c27ed2283cbe480943ebd876f85770345ec1672da84f",
+      "words": 3562,
+      "source_status": "draft",
+      "version": "v0.2.1",
+      "evidence_annotations": 31,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_9-gmode.html",
+      "transcript_yaml": "blog/b6/06_9-gmode.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b6/06_10-plan-state-machine.md",
+      "class": "technical-writing",
+      "source_sha256": "20484c472acaad2e1ff1eae34fa46d5461ca8b4c11f2731182df6629adfcab90",
+      "words": 1984,
+      "source_status": "draft",
+      "version": "v0.6.0",
+      "evidence_annotations": 17,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_10-plan-state-machine.html",
+      "transcript_yaml": "blog/b6/06_10-plan-state-machine.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b6/06_10b-long-horizon-memory.md",
+      "class": "technical-writing",
+      "source_sha256": "2be8906e9ae6855b28fe03c8903f311baf7628a8a1b5c0668f3da6cef8bd00f1",
+      "words": 3729,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 26,
+      "external_sources": 0,
+      "published_html": "blog/b6/06_10b-long-horizon-memory.html",
+      "transcript_yaml": "blog/b6/06_10b-long-horizon-memory.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_1-plugin-kit-foundation.md",
+      "class": "technical-writing",
+      "source_sha256": "18dd00bccebca695d73edbdfcbe3faf2eaaab5e37f6e6729577db04a3437136e",
+      "words": 1741,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 5,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_1-plugin-kit-foundation.html",
+      "transcript_yaml": "blog/b7/07_1-plugin-kit-foundation.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_2-skeleton-claudemd-hooks-scripts.md",
+      "class": "technical-writing",
+      "source_sha256": "09e28f476a56f44f1dfc5fc36aac48c477456bd645484c1f3b57387b7ca03496",
+      "words": 2056,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 19,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_2-skeleton-claudemd-hooks-scripts.html",
+      "transcript_yaml": "blog/b7/07_2-skeleton-claudemd-hooks-scripts.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_3-dual-voice-architecture.md",
+      "class": "technical-writing",
+      "source_sha256": "a4e3c6998a34bb457ae122875e64693ca4ab87385934989bd92ec0412828658b",
+      "words": 1710,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 12,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_3-dual-voice-architecture.html",
+      "transcript_yaml": "blog/b7/07_3-dual-voice-architecture.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_4-data-json-hidden-state.md",
+      "class": "technical-writing",
+      "source_sha256": "324cf2cc1e72fb9d64fecbef67f3c048b66e8bf84bb64c4faca25d0d88feacb8",
+      "words": 1327,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 8,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_4-data-json-hidden-state.html",
+      "transcript_yaml": "blog/b7/07_4-data-json-hidden-state.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b7/07_5-docs-and-historian.md",
+      "class": "technical-writing",
+      "source_sha256": "29705c4a7fcee0be3220663081f0e84e59a7b339f5014675276e02ce777fa94b",
+      "words": 1166,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 6,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_5-docs-and-historian.html",
+      "transcript_yaml": "blog/b7/07_5-docs-and-historian.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_6-agents-and-80-20-budget.md",
+      "class": "technical-writing",
+      "source_sha256": "20f91a4f278cb9e6239fa96f025a9bba955cba66f14165fb2109333cb4eec2ab",
+      "words": 1297,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 6,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_6-agents-and-80-20-budget.html",
+      "transcript_yaml": "blog/b7/07_6-agents-and-80-20-budget.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_7-smaller-organs-and-wiring.md",
+      "class": "technical-writing",
+      "source_sha256": "2dc19088921b4887d1fc12a4c85fd8b31be76edf24b3065020c427305994d103",
+      "words": 1272,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 9,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_7-smaller-organs-and-wiring.html",
+      "transcript_yaml": "blog/b7/07_7-smaller-organs-and-wiring.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b7/07_8-lock-ceremony.md",
+      "class": "technical-writing",
+      "source_sha256": "c1b8690786b9e252b5fa1807bbe574172929a1fe28c277854e81dcd970731e24",
+      "words": 1794,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 9,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_8-lock-ceremony.html",
+      "transcript_yaml": "blog/b7/07_8-lock-ceremony.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "1-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b7/07_9-creating-a-new-plugin.md",
+      "class": "technical-writing",
+      "source_sha256": "81dc1aaebef437bb73bfd879b0807218a8ac65c4a3147a90646158febcecb5dd",
+      "words": 1586,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 9,
+      "external_sources": 0,
+      "published_html": "blog/b7/07_9-creating-a-new-plugin.html",
+      "transcript_yaml": "blog/b7/07_9-creating-a-new-plugin.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "2-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b8/08_1-apprentice-to-architect-foundation.md",
+      "class": "technical-writing",
+      "source_sha256": "eaa10cd141cf0a770887cbb40dee9ee481871d8feebefb2c660de65544622d3a",
+      "words": 1759,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 4,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_1-apprentice-to-architect-foundation.html",
+      "transcript_yaml": "blog/b8/08_1-apprentice-to-architect-foundation.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_2-job-maturation-stages.md",
+      "class": "technical-writing",
+      "source_sha256": "a1b9f79520a9e15002e29123c6245f2fb2cb704251bdf382dcbb34378d3308c2",
+      "words": 3187,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 21,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_2-job-maturation-stages.html",
+      "transcript_yaml": "blog/b8/08_2-job-maturation-stages.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_3-brain-after-three-months.md",
+      "class": "technical-writing",
+      "source_sha256": "858d8564698f3c18474321b9ab16d71ce618918c107f70a84bce78bca881c19b",
+      "words": 1373,
+      "source_status": "draft",
+      "version": "v0.1.1",
+      "evidence_annotations": 7,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_3-brain-after-three-months.html",
+      "transcript_yaml": "blog/b8/08_3-brain-after-three-months.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_4-soft-hard-migration.md",
+      "class": "technical-writing",
+      "source_sha256": "284b052676dbdb7335d587373e5695e58674a01b4b0ae54ee708bd65e88524b3",
+      "words": 1377,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 9,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_4-soft-hard-migration.html",
+      "transcript_yaml": "blog/b8/08_4-soft-hard-migration.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft",
+        "2-overlong-evidence-annotations"
+      ]
+    },
+    {
+      "path": "blog/b8/08_5-enforced-vs-discipline.md",
+      "class": "technical-writing",
+      "source_sha256": "2d63ac000c03bbafddb0cf48b0bccc6f0c8359081d36903c18bad8bb8f0c5fa3",
+      "words": 1478,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 7,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_5-enforced-vs-discipline.html",
+      "transcript_yaml": "blog/b8/08_5-enforced-vs-discipline.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_6-apprentice-journeyman-architect.md",
+      "class": "technical-writing",
+      "source_sha256": "8278635555c60002234d6691d76cf2d3afb47410d739e5aabe7ca87b810a6638",
+      "words": 1484,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 10,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_6-apprentice-journeyman-architect.html",
+      "transcript_yaml": "blog/b8/08_6-apprentice-journeyman-architect.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_7-brain-stops-growing.md",
+      "class": "technical-writing",
+      "source_sha256": "0d0e9e6c5e22190321a044a1493be1dcc2ad432c3f5ff1d95462b5117e456cb5",
+      "words": 1030,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 4,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_7-brain-stops-growing.html",
+      "transcript_yaml": "blog/b8/08_7-brain-stops-growing.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_8-safe-self-modification.md",
+      "class": "technical-writing",
+      "source_sha256": "ebd2d34c6d4c0dd77b2732f35b8dd510a83bfbfa541ec842d1df108c48be120b",
+      "words": 1346,
+      "source_status": "draft",
+      "version": "v0.1.0",
+      "evidence_annotations": 7,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_8-safe-self-modification.html",
+      "transcript_yaml": "blog/b8/08_8-safe-self-modification.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b8/08_9-the-seed-is-yours.md",
+      "class": "technical-writing",
+      "source_sha256": "3f51d5d97f6d85a2bad9954ecc74f7010ec09a8feb487d656fbd70afbb38586e",
+      "words": 1364,
+      "source_status": "draft",
+      "version": "v0.2.0",
+      "evidence_annotations": 6,
+      "external_sources": 0,
+      "published_html": "blog/b8/08_9-the-seed-is-yours.html",
+      "transcript_yaml": "blog/b8/08_9-the-seed-is-yours.transcript.yaml",
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "source-marked-draft"
+      ]
+    },
+    {
+      "path": "blog/b9/09_1-dashboard-and-harness.md",
+      "class": "technical-writing",
+      "source_sha256": "65a4187d58ecbb090dcdeab59405c686af864e02eee8bc9e60f058f006448275",
+      "words": 1372,
+      "source_status": null,
+      "version": null,
+      "evidence_annotations": 0,
+      "external_sources": 0,
+      "published_html": "blog/b9/09_1-dashboard-and-harness.html",
+      "transcript_yaml": null,
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "missing-source-status"
+      ]
+    },
+    {
+      "path": "blog/b9/09_2-contextual-feedback-plugin.md",
+      "class": "technical-writing",
+      "source_sha256": "fd9c752dd51d4d3c8d07f7eb6ed068c83412e92c35d5f2ce1fbe67712c246431",
+      "words": 1186,
+      "source_status": null,
+      "version": null,
+      "evidence_annotations": 0,
+      "external_sources": 0,
+      "published_html": "blog/b9/09_2-contextual-feedback-plugin.html",
+      "transcript_yaml": null,
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "missing-source-status"
+      ]
+    },
+    {
+      "path": "blog/b9/09_3-internal-voices-reorientation.md",
+      "class": "technical-writing",
+      "source_sha256": "a1770bbb189116d8a66962e18b6278deb3778525fe5118a4aa43bac901fb01ad",
+      "words": 1160,
+      "source_status": null,
+      "version": null,
+      "evidence_annotations": 0,
+      "external_sources": 0,
+      "published_html": "blog/b9/09_3-internal-voices-reorientation.html",
+      "transcript_yaml": null,
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "missing-source-status"
+      ]
+    },
+    {
+      "path": "blog/b9/09_4-stopping-without-forgetting.md",
+      "class": "technical-writing",
+      "source_sha256": "e3e1a4662997d01a09fc0930d2404533343a3b053ce9280799bbd1660e21fcfc",
+      "words": 1252,
+      "source_status": null,
+      "version": null,
+      "evidence_annotations": 0,
+      "external_sources": 0,
+      "published_html": "blog/b9/09_4-stopping-without-forgetting.html",
+      "transcript_yaml": null,
+      "review": {
+        "factual": "pending",
+        "technical_or_historical": "pending",
+        "chronology_and_maturity": "pending",
+        "cross_writing_consistency": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      },
+      "issues": [
+        "missing-source-status"
+      ]
+    }
+  ],
+  "observation": {
+    "series": "The Information System of a Planet",
+    "series_path": "blog/observations/information-system-of-a-planet/series.json",
+    "episodes": [
+      {
+        "path": "blog/observations/information-system-of-a-planet/episodes/episode-01-when-life-learned-before-it-died.json",
+        "number": 1,
+        "title": "When Life Learned Before It Died",
+        "source_sha256": "843f39be6b86afa3843d4c3096e8f7c7fd9e13a21c744742bcf68bc14791fbd4",
+        "slides": [
+          {
+            "id": "deep-time",
+            "title": "The archive begins inside life",
+            "source_sha256": "76ad5d4d7bcda73bb6e961e533459c053511b5b992c15b72bc9f7b59bf5d45d2",
+            "words": 147,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "molecular-world",
+            "title": "The molecular system was already online",
+            "source_sha256": "15258ba17861b66ff4dd6e6bc0ff28779ce3a503a888e929f81ba5458e3578e6",
+            "words": 110,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "substrate-horizon",
+            "title": "Physics sets the performance ceiling",
+            "source_sha256": "88701e8f92ea6fd3e62973f9c946d054481e61a86ef7f8146e495631688a0b46",
+            "words": 111,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "second-clock",
+            "title": "A much faster clock appears",
+            "source_sha256": "724a1b2b920330bd7abff40777a9dc6c2c14a4980fcc38f5e31dc76eefbc743f",
+            "words": 109,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "learning",
+            "title": "Experience becomes writable",
+            "source_sha256": "90f0f7c83f2896e961d9f4512356e929cf48329fcb3502321cbceab082e1b42b",
+            "words": 103,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "many-architectures",
+            "title": "There was never one ladder of minds",
+            "source_sha256": "07e24de653b000792942e40956382557e1d57db29210b6fbcc54ddd61b6cf107",
+            "words": 87,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "learned-experience-crosses",
+            "title": "The first copy leaves the original body",
+            "source_sha256": "b134c43f0736bac092915d017462078705f8cf47046fd0842eea1254a62dcb08",
+            "words": 116,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          }
+        ]
+      },
+      {
+        "path": "blog/observations/information-system-of-a-planet/episodes/episode-02-when-experience-found-another-body.json",
+        "number": 2,
+        "title": "When Experience Found Another Body",
+        "source_sha256": "b2bc24f8edb91f751f3b6a24668f378e90b0bae362290a27356c1395fee625e9",
+        "slides": [
+          {
+            "id": "another-body",
+            "title": "A memory finds another body",
+            "source_sha256": "72d6d103377b1dad71c74ef586e67f510d101e1865e20adc50ecd4d64da6c120",
+            "words": 123,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "flock-tradition",
+            "title": "A flock stores a local setting",
+            "source_sha256": "158f205e9eadc4e48e936e17f5cbd1e698eed901c13823ed7cf6c1250be26a2c",
+            "words": 127,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "route-in-the-flock",
+            "title": "The map can live in the flock",
+            "source_sha256": "aec2d6f74334434b531e27dd612db812bbb51f87bead825f730fe4f7e26144c1",
+            "words": 97,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "ocean-song",
+            "title": "A distributed file can cross an ocean",
+            "source_sha256": "5bf820405538dc6599acd5121a7a1b9bfd8d743bd2468b541bf822beba17ce47",
+            "words": 113,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "many-cultures",
+            "title": "Culture was never ours alone",
+            "source_sha256": "640b753b4777f8f4fca63ac92e504d5645d3d6c578418e0c75e55ed9332d3f86",
+            "words": 120,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "living-archive",
+            "title": "Distributed storage has failure modes",
+            "source_sha256": "72008bf59fd1f18f03d4e8a09492088f66313a8db15cd43f16244504adfa576b",
+            "words": 110,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "bridge-horizon",
+            "title": "The network has a bandwidth limit",
+            "source_sha256": "5f6bb8464e1a8bd14ec5fd5e7a04c20105626c61958d4c3e75b4c52c74f6b075",
+            "words": 93,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          }
+        ]
+      },
+      {
+        "path": "blog/observations/information-system-of-a-planet/episodes/episode-03-how-much-can-a-message-carry.json",
+        "number": 3,
+        "title": "How Much Can a Message Carry?",
+        "source_sha256": "f405ebfae1979c5b250bdd86f62173411b543e31381416ae3b421338ff58dc4d",
+        "slides": [
+          {
+            "id": "many-bridges",
+            "title": "The network has many incompatible ports",
+            "source_sha256": "447d65af40d6cd726a6975b4134c0b72b6994f4299a40172a708e79d9b4465e4",
+            "words": 111,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "channel-physics",
+            "title": "Physics edits every message",
+            "source_sha256": "f330eb25dc6756e024042c0db2c0add37342201b76026ede87b8c4e7bab4db99",
+            "words": 113,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "danger-categories",
+            "title": "A message can carry a category",
+            "source_sha256": "3d16c0a58ac9e2b31b95f7bfdeb3a68bed4db78ad861ed63f8f1ba52e3f2b38f",
+            "words": 101,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "dance-map",
+            "title": "A message can point somewhere else",
+            "source_sha256": "7ea83cefa7b97e63df8579bfd97c5ae4eb23f21301bae95b085f835be973328d",
+            "words": 98,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "identity-whistle",
+            "title": "A message can address one individual",
+            "source_sha256": "236459dfe38c3d4429e3bce16decb304dfe5b2215672665a17f11f5241c64e08",
+            "words": 83,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "assembled-calls",
+            "title": "A small repertoire can be recombined",
+            "source_sha256": "e360c26e4afb6ed0dc30a739e00d48f6d15000bd12eb587522df6b3cd762b724",
+            "words": 98,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "border-without-date",
+            "title": "Then the clock becomes foggy again",
+            "source_sha256": "8018b36ec3c2cd28709302af41fcaa83dcc4337f97c19e2eb916817532f8c6bf",
+            "words": 112,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          }
+        ]
+      },
+      {
+        "path": "blog/observations/information-system-of-a-planet/episodes/episode-04-when-a-message-could-become-almost-anything.json",
+        "number": 4,
+        "title": "When a Message Could Become Almost Anything",
+        "source_sha256": "6e4d3436b9e79ec128d10ac9ee8e4da40f9f27099ddaf42d06b4e1d9bfd95e29",
+        "slides": [
+          {
+            "id": "no-first-sentence",
+            "title": "Millions of years, no first sentence",
+            "source_sha256": "c2edb17b233f9f4bf0d86a3c1d2b799428af6bd9134447c19966de9eea9ecd9c",
+            "words": 120,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "more-than-sound",
+            "title": "The interface was never only sound",
+            "source_sha256": "4d4106a060cdac18fc3d4a4a9036a6a882d3e6ea0ab1998b00d2a7562226df10",
+            "words": 81,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "small-kit-many-worlds",
+            "title": "A small kit becomes a huge address space",
+            "source_sha256": "6b16da04a8478b5394ce0e6c887b3f92f9b99e648f2d6f9a6870e1c3aa017810",
+            "words": 135,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "absent-enters-circle",
+            "title": "The present is no longer the address limit",
+            "source_sha256": "a92164a6c3fb9f9d954c90e9452ba7a856fbb632aba7d16bd4c0e25ba7b0fa15",
+            "words": 114,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "skill-explained",
+            "title": "A learner can debug the hidden step",
+            "source_sha256": "2baba17477dab8168f1daac1efe6bec4c38c8dda6be34dafd7f09744d8b9d4c5",
+            "words": 110,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "rehearse-tomorrow",
+            "title": "Many minds can edit the same future",
+            "source_sha256": "fafb12083956849d0d20b394840ffc0aff88c778b3d562e67bc1fc53ae02e46a",
+            "words": 116,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "archive-breathed",
+            "title": "The archive can last generations \u2014 but it still breathes",
+            "source_sha256": "961f6779549afc3ceea417a3c462d544d217704eda6798db10c678a2d1d545c1",
+            "words": 140,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          }
+        ]
+      },
+      {
+        "path": "blog/observations/information-system-of-a-planet/episodes/episode-05-a-message-that-could-wait.json",
+        "number": 5,
+        "title": "A Message That Could Wait",
+        "source_sha256": "d2db7bc3f64bba66776351574b9a694520f1ea557c97230dfcd0efd30ef7756c",
+        "slides": [
+          {
+            "id": "after-the-voices",
+            "title": "After the voices go quiet",
+            "source_sha256": "1fb5c2c8d2b48848310c6201a039f5263fe4b1cf2f2f1f3a04d53796b9902805",
+            "words": 139,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "survival-filter",
+            "title": "Prehistory arrives through a brutal filter",
+            "source_sha256": "0eeeeefeac314287a1782def3779a56557c8dd84a1432089313b7c0034a24947",
+            "words": 146,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "hand-waits",
+            "title": "A hand waits 67,800 years",
+            "source_sha256": "a774e66ab0a09cdeb8f56ec18a13e3833029f91774ac14d116b3f13cb44138ce",
+            "words": 159,
+            "sources": 1,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "pattern-repeats",
+            "title": "A pattern learns to repeat",
+            "source_sha256": "6aceeef58c629dafb6fd7669f1b84d8396c8e6d2d1d3a0c2dd2cab7a2e8b51a1",
+            "words": 131,
+            "sources": 1,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "scene-remains",
+            "title": "A picture can hold a scene",
+            "source_sha256": "e93bce3802d29b008522a1418ede9e0375a307bf988d14ce259389dc1d6c8401",
+            "words": 155,
+            "sources": 2,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          },
+          {
+            "id": "small-exact-answers",
+            "title": "Then a record answers a small question exactly",
+            "source_sha256": "85f84a93c316d766165f60cfc3a4ebb0f21068beaf8571a084ceacde52d7fbe8",
+            "words": 209,
+            "sources": 3,
+            "audio_status": "placeholder",
+            "review": {
+              "factual": "pending",
+              "historical": "pending",
+              "source_support": "pending",
+              "narrative_continuity": "pending",
+              "editorial": "pending",
+              "hadi_content_lock": "pending"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "practical_guides": [
+    {
+      "path": "blog/practical-guides/01-build-your-own-space-on-the-web.md",
+      "source_sha256": "f4b3ac8c1b9561dd61391c1456fcc351585dce2e3f50cdcbdbbf5f377c522495",
+      "words": 4022,
+      "external_sources": 15,
+      "published_html": "blog/practical-guides/01-build-your-own-space-on-the-web.html",
+      "review": {
+        "factual": "pending",
+        "procedural_reproduction": "pending",
+        "safety_and_privacy": "pending",
+        "editorial": "pending",
+        "source_page_parity": "pending",
+        "hadi_content_lock": "pending"
+      }
+    }
+  ]
+}
