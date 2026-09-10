@@ -19,6 +19,8 @@ The primary entry point is **[Start Here](https://hadi-nayebi.github.io/start-he
 
 The complete agent-facing instruction is also available as canonical Markdown: **[start-here-agent.md](start-here-agent.md)**.
 
+Visitors who want direct help can use the **[guided services intake](https://hadi-nayebi.github.io/services.html)**. It recommends free resources, reviews, training, collaborative builds, startup pilots, or a first user-owned website path before any commitment. Every paid route begins with a free discovery conversation; scope and price are agreed afterward.
+
 Phase 0 establishes the future Hadosh Academy is advancing: harness literacy as a broadly useful capability, externalized agency as a personal asset, and a user-owned customization layer that can remain portable across models, projects, and legitimate changes in employment. Phases 1–8 guide continuity, user understanding, asset discovery, ownership, environment selection, visible construction, the first bounded behavior, and deliberate growth. Phase 9 is the permanent developmental lifecycle: use, observe, adapt, teach, verify, condense, simplify, and continue.
 
 You can give an AI agent this starting instruction:
@@ -107,9 +109,9 @@ Please keep contributions scoped, explain the problem being solved, preserve the
 
 ## Ask for guidance
 
-Use the **[contact form](https://hadi-nayebi.github.io/contact.html)** for conceptual questions, case-specific harness problems, implementation uncertainty, architecture reviews, collaboration, or help reaching a stable point from which you and your agent can continue.
+Use the **[contact form](https://hadi-nayebi.github.io/contact.html)** for general questions, public-project discussion, feedback, or collaboration. Use the **[guided services intake](https://hadi-nayebi.github.io/services.html)** for harness reviews, training, collaborative builds, startup pilots, or personal-website guidance.
 
-You may request an initial live guidance session with Hadi at no charge. An agent may help prepare the message, but it should remove secrets and private material, let the user review the draft, and obtain explicit permission before submitting anything.
+Every consulting path can begin with a free discovery conversation. An agent may help prepare the request, but it should remove secrets and private material, let the user review the draft, and obtain explicit permission before submitting anything.
 
 ## How experience returns to the library
 

@@ -1,4 +1,4 @@
-// Version: v0.11.0
+// Version: v0.12.1
 // Shared site components: canonical navigation, responsive support, blog series navigation,
 // footer, lightbox, blog filters, and audio controls.
 
@@ -13,6 +13,7 @@
         { label: 'Projects', href: '/projects/index.html' },
         { label: "What's New", href: '/whats-new.html' },
         { label: 'About', href: '/about.html' },
+        { label: 'Services', href: '/services.html' },
         { label: 'Contact', href: '/contact.html' }
     ];
 
@@ -25,6 +26,7 @@
         if (path === '/projects' || path === '/projects/index.html' || path.indexOf('/projects/') === 0) return 'Projects';
         if (path === '/whats-new.html') return "What's New";
         if (path === '/about.html') return 'About';
+        if (path === '/services.html') return 'Services';
         if (path === '/contact.html') return 'Contact';
         return '';
     }
@@ -33,7 +35,7 @@
         if (document.querySelector('link[data-site-stability]')) return;
         var link = document.createElement('link');
         link.rel = 'stylesheet';
-        link.href = '/css/site-stability.css?v=20260830-1';
+        link.href = '/css/site-stability.css?v=20260909-services-2';
         link.setAttribute('data-site-stability', 'true');
         document.head.appendChild(link);
     }
@@ -45,6 +47,9 @@
         var navLinks = header.querySelector('.nav-links');
         var toggle = header.querySelector('.nav-toggle');
         if (!navLinks || !toggle) return;
+        navLinks.id = 'site-navigation';
+        toggle.setAttribute('aria-controls', navLinks.id);
+        toggle.setAttribute('aria-label', 'Open navigation');
 
         // Static HTML remains the no-JS fallback. At runtime, every standard page
         // uses one canonical root-relative navigation order so nested paths cannot
@@ -62,16 +67,19 @@
             navLinks.appendChild(anchor);
         });
 
-        function closeMenu() {
+        function closeMenu(restoreFocus) {
             toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open navigation');
             toggle.classList.remove('is-active');
             navLinks.classList.remove('is-open');
             document.body.classList.remove('nav-open');
+            if (restoreFocus) toggle.focus();
         }
 
         toggle.addEventListener('click', function () {
             var opening = toggle.getAttribute('aria-expanded') !== 'true';
             toggle.setAttribute('aria-expanded', String(opening));
+            toggle.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
             toggle.classList.toggle('is-active', opening);
             navLinks.classList.toggle('is-open', opening);
             document.body.classList.toggle('nav-open', opening);
@@ -82,7 +90,11 @@
         });
 
         document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape') closeMenu();
+            if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') closeMenu(true);
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 980 && toggle.getAttribute('aria-expanded') === 'true') closeMenu(false);
         });
     }
 
@@ -108,6 +120,12 @@
         projects.className = 'footer-link';
         projects.textContent = 'Projects';
         links.appendChild(projects);
+
+        var contact = document.createElement('a');
+        contact.href = '/contact.html';
+        contact.className = 'footer-link';
+        contact.textContent = 'Contact';
+        links.appendChild(contact);
 
         var support = document.createElement('a');
         support.href = '/support.html';

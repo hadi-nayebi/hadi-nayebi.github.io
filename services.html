@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Hadosh Academy</title>
+    <meta name="description" content="Find the right Hadosh Academy guidance for a personal harness, team system, startup dashboard, or first user-owned website through a short guided intake.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/services.html">
+    <meta property="og:title" content="Guided Services | Hadosh Academy">
+    <meta property="og:description" content="A guided path to harness reviews, training, builds, team workshops, startup pilots, and first ownership projects.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/services.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <link rel="stylesheet" href="css/styles.css?v=20260903-whats-new-1">
+    <link rel="stylesheet" href="css/services.css?v=20260909-services-3">
+    <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body class="page-services">
+    <header id="site-header"><div class="container"><nav>
+        <a href="index.html" class="logo">Hadosh Academy</a>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <div class="nav-links"><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="blog.html">Blog</a><a href="agents.html">Agents</a><a href="projects/index.html">Projects</a><a href="whats-new.html">What&apos;s New</a><a href="about.html">About</a><a href="services.html" class="active" aria-current="page">Services</a><a href="contact.html">Contact</a></div>
+    </nav></div></header>
+
+    <main>
+        <section class="services-hero container" aria-labelledby="services-title">
+            <div class="services-hero-copy">
+                <span class="badge">Guided services</span>
+                <h1 id="services-title">Find the right next step.</h1>
+                <p>Tell me where you are and what you are trying to build. This short guided intake will suggest a practical starting point—free or paid—before any commitment.</p>
+            </div>
+
+            <noscript>
+                <div class="services-no-script" role="status">
+                    <h2>The guided intake needs JavaScript.</h2>
+                    <p>You can still open the service and pricing catalog below, including the free practical guide and the optional open-source support path.</p>
+                    <a class="btn btn-secondary" href="#services-catalog">View the service catalog</a>
+                </div>
+            </noscript>
+
+            <div class="services-workspace">
+                <aside class="services-rail" aria-label="Intake progress">
+                    <p class="services-rail-label">Your path</p>
+                    <p class="services-step-count"><span id="services-step-number">1</span> of <span id="services-step-total">10</span></p>
+                    <progress id="services-progress" max="10" value="1" aria-label="Intake progress">Step 1 of 10</progress>
+                    <ol class="services-progress-list" aria-hidden="true">
+                        <li class="is-current">Orientation</li>
+                        <li>Background</li>
+                        <li>Context</li>
+                        <li>Current system</li>
+                        <li>Desired help</li>
+                        <li>Ownership</li>
+                        <li>Participation</li>
+                        <li>Practical fit</li>
+                        <li>Recommendation</li>
+                        <li>Contact &amp; review</li>
+                    </ol>
+                    <p class="services-save-note">Your answers stay in this browser until you submit. They are not saved between visits.</p>
+                </aside>
+
+                <form id="services-intake-form" class="services-intake" method="post" action="/services.html" novalidate>
+                    <div class="services-step" data-step="orientation" data-step-label="Orientation">
+                        <span class="services-kicker">Before we begin</span>
+                        <h2 tabindex="-1">This is a discovery path, not a checkout.</h2>
+                        <p class="services-lede">The result is a suggested route and, if you want it, a free 30-minute conversation. We will clarify scope together before any paid work or payment.</p>
+                        <div class="services-principle">
+                            <strong>A harness is personal infrastructure.</strong>
+                            <p>You must be intimately involved in building it. Training and knowledge transfer are part of the work because a useful harness is never “finished”—you keep cultivating, testing, and expanding it as your work changes.</p>
+                        </div>
+                        <ul class="services-orientation-list">
+                            <li>Usually 3–8 minutes</li>
+                            <li>No account or payment required</li>
+                            <li>Free and self-guided routes are valid outcomes</li>
+                        </ul>
+                    </div>
+
+                    <fieldset class="services-step" data-step="background" data-step-label="Background" hidden>
+                        <legend tabindex="-1">How familiar are you with AI agents or harnesses?</legend>
+                        <p class="services-helper">Choose the closest answer. “I’m not sure” is completely fine.</p>
+                        <div class="services-choice-grid">
+                            <label class="services-choice"><input type="radio" name="experience" value="New to the concepts" required><span><strong>New to the concepts</strong><small>I need plain-language orientation.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="experience" value="Exploring tools"><span><strong>Exploring tools</strong><small>I have tried models, assistants, or automations.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="experience" value="Building a system"><span><strong>Building a system</strong><small>I have prompts, files, agents, or workflows in progress.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="experience" value="Operating a mature system"><span><strong>Operating a mature system</strong><small>I need review, scale, or governance.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="experience" value="Not sure"><span><strong>I’m not sure</strong><small>Help me identify where I am.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="experience" value="Other" data-reveals="experience-other"><span><strong>Something else</strong><small>Describe it in your own words.</small></span></label>
+                        </div>
+                        <div class="services-conditional" id="experience-other" hidden>
+                            <label for="experience-other-input">Your experience</label>
+                            <input class="form-control" id="experience-other-input" name="experience_other" type="text" maxlength="160" autocomplete="off">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="context" data-step-label="Context" hidden>
+                        <legend tabindex="-1">Who is this work for?</legend>
+                        <div class="services-choice-grid services-choice-grid-compact">
+                            <label class="services-choice"><input type="radio" name="client_type" value="Individual" required><span><strong>Just me</strong><small>A personal system or project.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="client_type" value="Team or startup"><span><strong>A team or startup</strong><small>A shared operating environment.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="client_type" value="Organization"><span><strong>An organization</strong><small>A department or wider deployment.</small></span></label>
+                        </div>
+                        <div class="services-inline-fields">
+                            <div><label for="role">Your role <span class="services-optional">optional</span></label><input class="form-control" id="role" name="role" type="text" maxlength="100" autocomplete="organization-title"></div>
+                            <div id="organization-field" hidden><label for="organization">Organization <span class="services-optional">optional</span></label><input class="form-control" id="organization" name="organization" type="text" maxlength="120" autocomplete="organization"></div>
+                            <div id="team-size-field" hidden><label for="team-size">Approximate team size <span class="services-optional">optional</span></label><select class="form-control" id="team-size" name="team_size"><option value="">Select one</option><option>2–5</option><option>6–15</option><option>16–50</option><option>51+</option></select></div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="current-system" data-step-label="Current system" hidden>
+                        <legend tabindex="-1">What do you already have?</legend>
+                        <p class="services-helper">Select all that apply.</p>
+                        <div class="services-check-grid" data-checkbox-group="current_system" data-required-group="true">
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Prompts or instructions"><span>Prompts or instructions</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Repository or file structure"><span>Repository or file structure</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Custom agents or tools"><span>Custom agents or tools</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Dashboard or interface"><span>Dashboard or interface</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Website, domain, or portfolio"><span>Website, domain, or portfolio</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Team process"><span>Team process</span></label>
+                            <label class="services-check"><input type="checkbox" name="current_system" value="Nothing yet" data-exclusive><span>Nothing yet</span></label>
+                        </div>
+                        <label for="current-system-notes">Anything useful to know? <span class="services-optional">optional</span></label>
+                        <textarea class="form-control" id="current-system-notes" name="current_system_notes" rows="4" maxlength="800" placeholder="For example: what works, what keeps breaking, or what you have outgrown."></textarea>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="desired-help" data-step-label="Desired help" hidden>
+                        <legend tabindex="-1">What kind of help would be most useful?</legend>
+                        <p class="services-helper">Choose up to three. You will identify the most important one next.</p>
+                        <div class="services-check-grid" data-checkbox-group="desired_help" data-required-group="true" data-max="3">
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Learn the foundations"><span>Learn the foundations</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Review an existing harness"><span>Review an existing harness</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Build an initial harness"><span>Build an initial harness</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Train through guided sessions"><span>Train through guided sessions</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Build a startup dashboard and harness"><span>Build a startup dashboard + harness</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Run a team workshop"><span>Run a team workshop</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Launch a personal website"><span>Launch a personal website</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Support the open-source work"><span>Support the open-source work</span></label>
+                            <label class="services-check"><input type="checkbox" name="desired_help" value="Not sure" data-exclusive><span>I’m not sure yet</span></label>
+                        </div>
+                        <p class="services-selection-status" id="desired-help-status" role="status" aria-live="polite"></p>
+                        <div class="services-primary-choice" id="services-primary-choice" hidden>
+                            <label for="primary-help">Which one matters most right now?</label>
+                            <select class="form-control" id="primary-help" name="primary_help" required disabled><option value="">Select your priority</option></select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="ownership" data-step-label="Ownership" hidden>
+                        <legend tabindex="-1">What should this work help you own?</legend>
+                        <p class="services-helper">Describe the responsibility, repeated work, or public presence you want to improve. Avoid secrets, credentials, private client data, or regulated information.</p>
+                        <label for="ownership-outcome">The outcome in your own words</label>
+                        <textarea class="form-control services-large-textarea" id="ownership-outcome" name="ownership_outcome" rows="7" maxlength="1500" placeholder="For example: I want a durable research workflow that preserves decisions across projects…"></textarea>
+                        <p class="services-character-count"><span id="ownership-count">0</span> / 1500</p>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="participation" data-step-label="Participation" hidden>
+                        <legend tabindex="-1">How do you want to participate in the build?</legend>
+                        <div class="services-principle services-principle-compact">
+                            <strong>The goal is not to hand you a sealed system.</strong>
+                            <p>We build with you so you can understand, maintain, and keep cultivating the harness after the engagement.</p>
+                        </div>
+                        <div class="services-choice-stack">
+                            <label class="services-choice"><input type="radio" name="participation" value="Active co-builder" required><span><strong>Active co-builder</strong><small>I can work between sessions and make decisions with you.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="participation" value="Weekly guided contributor"><span><strong>Weekly guided contributor</strong><small>I want structured sessions and manageable work between them.</small></span></label>
+                            <label class="services-choice" id="team-representatives-choice" hidden><input type="radio" name="participation" value="Team representatives" disabled><span><strong>Team representatives</strong><small>A few people can own the system and carry the training forward.</small></span></label>
+                            <label class="services-choice"><input type="radio" name="participation" value="Unsure"><span><strong>I’m not sure</strong><small>We can clarify the level of involvement in discovery.</small></span></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="practical-fit" data-step-label="Practical fit" hidden>
+                        <legend tabindex="-1">What would make this practical?</legend>
+                        <div class="services-field-block">
+                            <span class="services-field-label">Tools you currently use <span class="services-optional">optional</span></span>
+                            <div class="services-check-grid services-check-grid-small">
+                                <label class="services-check"><input type="checkbox" name="tools" value="Claude"><span>Claude</span></label>
+                                <label class="services-check"><input type="checkbox" name="tools" value="ChatGPT or Codex"><span>ChatGPT / Codex</span></label>
+                                <label class="services-check"><input type="checkbox" name="tools" value="GitHub"><span>GitHub</span></label>
+                                <label class="services-check"><input type="checkbox" name="tools" value="Other"><span>Other</span></label>
+                            </div>
+                            <div class="services-conditional" id="tools-other-field" hidden><label for="tools-other">Other tools</label><input class="form-control" id="tools-other" name="tools_other" type="text" maxlength="160" autocomplete="off"></div>
+                        </div>
+                        <div class="services-inline-fields">
+                            <div><label for="timeframe">Preferred timeframe</label><select class="form-control" id="timeframe" name="timeframe" required><option value="">Select one</option><option>As soon as practical</option><option>Within 1 month</option><option>Within 1–3 months</option><option>Exploring for later</option><option>Not sure</option></select></div>
+                            <div><label for="sensitivity">Information sensitivity</label><select class="form-control" id="sensitivity" name="sensitivity" required><option value="">Select one</option><option>Public or non-sensitive</option><option>Private business information</option><option>Potentially regulated or highly sensitive</option><option>Not sure</option></select></div>
+                            <div><label for="budget">Comfortable starting range <span class="services-optional">optional</span></label><select class="form-control" id="budget" name="budget"><option value="">Prefer not to say</option><option>Free resources only</option><option>Under $500</option><option>$500–$1,500</option><option>$1,500–$3,000</option><option>$3,000–$6,000</option><option>$6,000+</option><option>Need help scoping it</option></select></div>
+                        </div>
+                        <p class="services-sensitivity-warning" id="services-sensitivity-warning" hidden>Do not submit regulated, confidential, credential, or client data here. Discovery can establish a safer boundary before any examples are shared.</p>
+                        <p class="services-transparency-note"><strong>Pricing is adjustable.</strong> Public prices are initial reference points, not automatic quotes. We can reduce scope to a smaller first stage; larger, organizational, or sensitive work may cost more.</p>
+                    </fieldset>
+
+                    <fieldset class="services-step" data-step="recommendation" data-step-label="Recommendation" hidden>
+                        <legend tabindex="-1">Your suggested starting point</legend>
+                        <p class="services-helper">This is a working recommendation based on your answers. Choose the route you want to discuss, or tell me you are still unsure.</p>
+                        <div id="services-recommendations" class="services-recommendations"></div>
+                        <label class="services-choice services-unsure-choice"><input type="radio" name="preferred_path" value="Still deciding" required><span><strong>I’m still deciding</strong><small>Use the discovery conversation to compare the options.</small></span></label>
+                    </fieldset>
+
+                    <div class="services-step" data-step="contact-review" data-step-label="Contact &amp; review" hidden>
+                        <span class="services-kicker">Final step</span>
+                        <h2 tabindex="-1">Where should I reply?</h2>
+                        <p class="services-helper">Submitting requests a reply and an optional free 30-minute discovery conversation. It does not create a purchase, subscription, or marketing signup.</p>
+                        <div class="services-inline-fields">
+                            <div><label for="services-name">Name</label><input class="form-control" id="services-name" name="name" type="text" maxlength="80" autocomplete="name" required></div>
+                            <div><label for="services-email">Email</label><input class="form-control" id="services-email" name="email" type="email" maxlength="254" autocomplete="email" required></div>
+                            <div><label for="timezone">Time zone <span class="services-optional">optional</span></label><input class="form-control" id="timezone" name="timezone" type="text" maxlength="80" autocomplete="off" placeholder="For example: Eastern or UTC+1"></div>
+                        </div>
+                        <fieldset class="services-nested-fieldset">
+                            <legend>Times that are usually easiest <span class="services-optional">optional</span></legend>
+                            <div class="services-check-grid services-check-grid-small" data-checkbox-group="availability">
+                                <label class="services-check"><input type="checkbox" name="availability" value="Weekday mornings"><span>Weekday mornings</span></label>
+                                <label class="services-check"><input type="checkbox" name="availability" value="Weekday afternoons"><span>Weekday afternoons</span></label>
+                                <label class="services-check"><input type="checkbox" name="availability" value="Weekday evenings"><span>Weekday evenings</span></label>
+                                <label class="services-check"><input type="checkbox" name="availability" value="Flexible" data-exclusive><span>Flexible</span></label>
+                            </div>
+                        </fieldset>
+                        <label for="final-note">Anything else before we talk? <span class="services-optional">optional</span></label>
+                        <textarea class="form-control" id="final-note" name="final_note" rows="4" maxlength="1000"></textarea>
+
+                        <section class="services-review" aria-labelledby="services-review-title">
+                            <div class="services-review-heading"><h3 id="services-review-title">Review your request</h3><button class="services-text-button" type="button" data-edit-step="background">Edit answers</button></div>
+                            <dl id="services-review-summary"></dl>
+                        </section>
+
+                        <div class="services-privacy-notice">
+                            <label class="services-consent"><input type="checkbox" name="consent" value="services-intake-v1.0" required><span>I understand that my answers will be delivered to Hadosh Academy through EmailJS so Hadi can reply about this request. I have not included passwords, secrets, confidential client material, or regulated personal data.</span></label>
+                            <p>No purchase is created. Your address is not added to a marketing list. Final scope and price are agreed only after discovery. Email delivery is handled under the <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">EmailJS privacy policy</a>; after delivery, the request is treated as ordinary email correspondence.</p>
+                        </div>
+                        <div class="form-honeypot" aria-hidden="true"><label for="services-website">Leave this field empty</label><input id="services-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+                    </div>
+
+                    <div class="services-form-actions">
+                        <button type="button" id="services-back" class="btn btn-secondary" hidden>Back</button>
+                        <button type="button" id="services-next" class="btn btn-primary">Begin</button>
+                        <button type="submit" id="services-submit" class="btn btn-primary" disabled hidden>Request a discovery conversation</button>
+                    </div>
+                    <p id="services-intake-status" class="form-status services-form-status" role="status" aria-live="polite"></p>
+                </form>
+
+                <section id="services-success" class="services-success" hidden tabindex="-1" aria-labelledby="services-success-title">
+                    <span class="services-kicker">Request received</span>
+                    <h2 id="services-success-title">Thank you. I’ll review the context before replying.</h2>
+                    <p>Your request is not a purchase. The next step is a reply and, if useful, a free 30-minute discovery conversation.</p>
+                    <div class="hero-actions"><a class="btn btn-secondary" href="/start-here.html">Explore Start Here</a><a class="btn btn-secondary" href="/projects/index.html">View public projects</a></div>
+                </section>
+            </div>
+        </section>
+
+        <section class="services-catalog-section container" aria-labelledby="services-catalog-title">
+            <details class="services-catalog" id="services-catalog">
+                <summary><span><strong id="services-catalog-title">Prefer to see every option?</strong><small>Open the full service and pricing catalog.</small></span><span class="services-summary-mark" aria-hidden="true">+</span></summary>
+                <div class="services-catalog-content">
+                    <div class="services-catalog-intro">
+                        <p>These are initial offers, not fixed packages imposed before discovery. Each paid engagement begins with a free 30-minute conversation, then a written scope and agreed price.</p>
+                        <p><strong>Price note:</strong> indicative starting price · scope and price negotiable. Smaller first stages are welcome. Any model, API, hosting, domain, or other third-party cost is separate unless the written scope says otherwise.</p>
+                    </div>
+                    <div class="services-catalog-grid">
+                        <article class="services-offer"><span class="services-offer-type">Start free</span><h3>Initial Guidance Conversation</h3><p>Thirty minutes to understand the situation, identify a useful route, and decide whether any paid work is warranted.</p><strong class="services-price">Free · 30 minutes</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Review</span><h3>Individual Harness Review</h3><p>A focused review of your current harness, failure points, structure, and practical next improvements. The starting scope is one 75-minute review and a written action memo.</p><strong class="services-price">$300 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Review</span><h3>Team / Startup Harness Review</h3><p>Review shared architecture, ownership, coordination, safety boundaries, and team operating practices. The starting scope is one 90-minute review with key owners and a written action memo.</p><strong class="services-price">$650 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Training</span><h3>Guided Harness Training</h3><p>Four 60-minute sessions across one month, with practical work between sessions so you learn by cultivating your own system.</p><strong class="services-price">$1,200 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Build with you</span><h3>Initial Harness Build + Training</h3><p>Design and build the first durable version together over a typical 2–4 week engagement. You keep the working files and learn how to continue cultivating them.</p><strong class="services-price">From $2,400 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Startup pilot</span><h3>Dashboard + Harness Pilot</h3><p>A working startup dashboard and maintainable harness, developed over a typical 4–6 week pilot with training and delivery through a repository the client controls.</p><strong class="services-price">From $4,500 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Team learning</span><h3>Private Team Workshop</h3><p>A 90-minute practical workshop aligned to your team’s work, shared language, and immediate next decisions.</p><strong class="services-price">$1,250 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Continuing guidance</span><h3>Ongoing Cultivation</h3><p>Lightweight monthly guidance for systems that keep changing, with the exact session and review cadence agreed before starting.</p><strong class="services-price">$95/mo individual · $350/mo team · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">First ownership project</span><h3>Guided Personal Website Launch</h3><p>Two 60-minute sessions to publish a free static website through GitHub and understand how to maintain it yourself.</p><strong class="services-price">$300 · scope adjustable</strong></article>
+                        <article class="services-offer"><span class="services-offer-type">Website + workspace</span><h3>Personal Website + Agent Workspace</h3><p>Use the website as the first public surface of a user-owned agent workspace rather than a one-off web design project.</p><strong class="services-price">From $650 · scope adjustable</strong></article>
+                    </div>
+                    <div class="services-free-paths">
+                        <div><span class="services-offer-type">Do it yourself</span><h3>Build Your Own Space on the Web</h3><p>Follow the free practical guide to publish a static personal website with GitHub Pages.</p><a class="btn btn-secondary" href="/blog/practical-guides/01-build-your-own-space-on-the-web.html">Read the free guide</a></div>
+                        <div><span class="services-offer-type">Open source</span><h3>Support the public work</h3><p>If the open-source repositories and educational material already help you, you can support their continued development.</p><a class="btn btn-secondary" href="/support.html">View support options</a></div>
+                    </div>
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="js/theme-manager.js?v=20260903-whats-new-1"></script>
+    <script src="js/components.js?v=20260909-services-2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/services-intake.js?v=20260909-services-4"></script>
+</body>
+</html>
