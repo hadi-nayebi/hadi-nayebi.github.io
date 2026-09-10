@@ -3,6 +3,9 @@
     --services-error: #fca5a5;
 }
 
+/* Author display rules can override the browser's default [hidden] rule. */
+.page-services [hidden] { display: none !important; }
+
 .services-hero {
     padding-top: 7.5rem;
     padding-bottom: 3rem;

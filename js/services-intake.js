@@ -154,6 +154,7 @@
         var currentIndex = 0;
         var sending = false;
         var emailReady = false;
+        var completed = false;
 
         function activeRoute() {
             var primary = value(form, 'primary_help');
@@ -190,9 +191,9 @@
 
         function setStep(index, options) {
             var settings = options || {};
-            currentIndex = Math.max(0, Math.min(index, steps.length - 1));
             var route = activeRoute();
-            if (route.indexOf(currentIndex) === -1) currentIndex = route[0];
+            if (!Number.isInteger(index) || route.indexOf(index) === -1) return false;
+            currentIndex = index;
             applyRouteState(route);
             steps.forEach(function (step, stepIndex) { step.hidden = stepIndex !== currentIndex; });
             var routePosition = route.indexOf(currentIndex);
@@ -209,8 +210,11 @@
                 item.classList.toggle('is-complete', itemPosition !== -1 && itemPosition < routePosition);
             });
             backButton.hidden = routePosition === 0;
+            backButton.disabled = routePosition === 0;
             nextButton.hidden = routePosition === route.length - 1;
+            nextButton.disabled = routePosition === route.length - 1;
             submitButton.hidden = routePosition !== route.length - 1;
+            submitButton.disabled = routePosition !== route.length - 1 || !emailReady || sending || completed;
             nextButton.textContent = currentIndex === 0 ? 'Begin' : 'Continue';
             setStatus('', '');
 
@@ -225,6 +229,7 @@
                 window.history.replaceState({ servicesStep: currentIndex }, '', hash);
             }
             if (settings.focus !== false) focusStep();
+            return true;
         }
 
         function checkGroup(group) {
@@ -552,6 +557,7 @@
             if (!validateCurrentStep()) return;
             var route = activeRoute();
             var routePosition = route.indexOf(currentIndex);
+            if (routePosition < 0 || routePosition >= route.length - 1) return;
             setStep(route[routePosition + 1]);
         });
 
@@ -564,7 +570,8 @@
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            if (sending) return;
+            var route = activeRoute();
+            if (sending || completed || currentIndex !== route[route.length - 1]) return;
             if (!validateCurrentStep() || !form.reportValidity()) return;
             if (!emailReady) {
                 setStatus('Email delivery is temporarily unavailable. Your answers remain here; please try again later.', 'error');
@@ -609,7 +616,11 @@
                 message: readableMessage(payload)
             }).then(function () {
                 rememberSuccess(Date.now());
+                completed = true;
                 form.reset();
+                document.getElementById('services-review-summary').textContent = '';
+                document.getElementById('ownership-count').textContent = '0';
+                document.getElementById('desired-help-status').textContent = '';
                 form.hidden = true;
                 document.querySelector('.services-rail').hidden = true;
                 document.querySelector('.services-workspace').classList.add('is-complete');
@@ -622,7 +633,8 @@
                 else setStatus('The request could not be sent. Your answers remain here; please try again later.', 'error');
             }).finally(function () {
                 sending = false;
-                submitButton.disabled = !emailReady;
+                var route = activeRoute();
+                submitButton.disabled = completed || !emailReady || currentIndex !== route[route.length - 1];
                 submitButton.textContent = 'Request a discovery conversation';
             });
         });
@@ -635,7 +647,8 @@
                     limitRate: { id: 'hadosh-services-intake', throttle: SEND_THROTTLE_MS }
                 });
                 emailReady = true;
-                submitButton.disabled = false;
+                var route = activeRoute();
+                submitButton.disabled = currentIndex !== route[route.length - 1];
             } catch (error) {
                 console.log('FAILED TO INITIALIZE SERVICES EMAIL DELIVERY...', error);
             }

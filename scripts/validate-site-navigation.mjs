@@ -247,6 +247,26 @@ if (fs.existsSync(servicesPath)) {
   if (/history\.pushState/.test(servicesScript)) {
     errors.push('js/services-intake.js: wizard steps must not create stale browser-history entries');
   }
+  if (!/routePosition\s*<\s*0\s*\|\|\s*routePosition\s*>=\s*route\.length\s*-\s*1/.test(servicesScript)) {
+    errors.push('js/services-intake.js: Continue must not advance beyond the final routed step');
+  }
+  if (!/currentIndex\s*!==\s*route\[route\.length\s*-\s*1\]/.test(servicesScript)) {
+    errors.push('js/services-intake.js: submission must be restricted to the final routed step');
+  }
+  if (!/services-review-summary["']\)\.textContent\s*=\s*["']{2}/.test(servicesScript)) {
+    errors.push('js/services-intake.js: successful submission must clear the rendered review summary');
+  }
+
+  const servicesCss = fs.readFileSync(path.join(root, 'css/services.css'), 'utf8');
+  if (!/\.page-services\s+\[hidden\]\s*\{[^}]*display:\s*none\s*!important;?[^}]*\}/.test(servicesCss)) {
+    errors.push('css/services.css: all hidden wizard elements must remain visually hidden');
+  }
+}
+
+const baseCss = fs.readFileSync(path.join(root, 'css/styles.css'), 'utf8');
+if (!/select\.form-control\s*\{[^}]*color-scheme:\s*dark;?[^}]*\}/.test(baseCss) ||
+    !/select\.form-control\s+option\s*\{[^}]*background-color:[^}]*color:[^}]*\}/.test(baseCss)) {
+  errors.push('css/styles.css: dark form selects must define legible native option colors');
 }
 
 const emailPages = ['contact.html', 'services.html', 'seed-access.html', 'projects/crime-cartography.html'];
