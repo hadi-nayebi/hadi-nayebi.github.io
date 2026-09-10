@@ -336,6 +336,7 @@
 }
 
 .services-recommendation .services-rec-price { display: block; margin-top: 0.45rem; color: var(--accent-light); font-size: 0.8rem; }
+.services-recommendation .services-rec-effort { display: block; margin-top: 0.2rem; color: var(--text-muted); font-size: 0.76rem; }
 .services-unsure-choice { margin-top: 0.85rem; }
 
 .services-nested-fieldset {
@@ -432,6 +433,7 @@
 .services-offer p,
 .services-free-paths p { color: var(--text-muted); font-size: 0.875rem; }
 .services-price { display: block; margin-top: 0.8rem; color: var(--accent-light); font-size: 0.79rem; }
+.services-effort { display: block; margin-top: 0.25rem; color: var(--text-muted); font-size: 0.76rem; line-height: 1.45; }
 .services-free-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.8rem; }
 .services-free-paths > div { padding: 1.3rem; border: 1px solid rgba(110, 231, 183, 0.2); border-radius: 15px; background: rgba(110, 231, 183, 0.025); }
 .services-free-paths .btn { margin-top: 1rem; }
