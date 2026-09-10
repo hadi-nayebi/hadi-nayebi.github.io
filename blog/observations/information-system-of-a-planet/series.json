@@ -57,6 +57,13 @@
       "path": "episodes/episode-04-when-a-message-could-become-almost-anything.json",
       "title": "When a Message Could Become Almost Anything",
       "published": "2026-09-08"
+    },
+    {
+      "number": 5,
+      "slug": "a-message-that-could-wait",
+      "path": "episodes/episode-05-a-message-that-could-wait.json",
+      "title": "A Message That Could Wait",
+      "published": "2026-09-10"
     }
   ]
 }
