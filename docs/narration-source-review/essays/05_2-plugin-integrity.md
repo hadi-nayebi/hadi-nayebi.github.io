@@ -143,9 +143,7 @@ unpublished evidence details are intentionally omitted from this public
 record.
 
 Factual, technical, chronology, editorial, metadata, and source-page parity
-gates pass for the exact source hash. Cross-writing consistency remains
-provisional until the remaining technical series is reviewed. Hadi's content
-lock remains pending.
+gates pass for the exact source hash. Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
 
 ## Validation
 
