@@ -56,7 +56,10 @@ PRONUNCIATIONS = {
 
 CONTEXTUAL_CHECKS = (
     (
-        re.compile(r"\bknowledge lives\b", re.I),
+        re.compile(
+            r"\b(?:knowledge|context|identity|documentation|memory) lives\b",
+            re.I,
+        ),
         {
             "term": "lives",
             "sense": "verb form of live",
