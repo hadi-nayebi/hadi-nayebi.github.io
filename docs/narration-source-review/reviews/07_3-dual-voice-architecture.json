@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_3-dual-voice-architecture.md",
+  "source_sha256": "6236dc1d20bac69e46ff1fbebff49cfdf0443b182b72cdc30799f2a0166d2840",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_3-dual-voice-architecture.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

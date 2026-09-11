@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v0.2.0 -->
 <html lang="en">
 
 <head>
@@ -31,8 +31,8 @@
             {
                 "@type": "BlogPosting",
                 "headline": "docs/ and the Historian",
-                "datePublished": "2026-05-13",
-                "dateModified": "2026-05-13",
+                "datePublished": "2026-05-17",
+                "dateModified": "2026-09-11",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
@@ -90,7 +90,7 @@
 
                     <h1>docs/ and the Historian</h1>
                     <div class="article-meta">
-                        <span>May 2026</span>
+                        <span>May 17, 2026 &bull; revised September 11, 2026</span>
                         <span>&bull;</span>
                         <span>4 min</span>
                         <div class="article-meta-tags">
@@ -107,41 +107,32 @@
                         By Hadi Nayebi &amp; Claude Opus 4.8
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="audio/docs-and-historian.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (4 min)</span>
-                    </div>
-
                     <div class="article-body">
-
                         <p><em>Essay 7.5 &mdash; The Plugin Kit, Part 5 of 9.</em></p>
 
                         <hr>
 
-                        <p><a href="07_4-data-json-hidden-state.html">Essay 7.4</a> opened the data organ &mdash; private, script-mediated, mutation-serialized. This sub-essay opens the <em>documentation</em> organ &mdash; the surface where the plugin carries its own narrated history, what it learned across cycles, why it was shaped the way it was. The hidden state is what the plugin knows about itself <em>right now</em>; <code>docs/</code> is what it remembers about <em>how it got here</em>.</p>
+                        <p><a href="07_4-data-json-hidden-state.html">Essay 7.4</a> opened the data organ &mdash; private, script-mediated, mutation-serialized. This sub-essay opens the <em>documentation</em> organ &mdash; the surface where the plugin carries its own narrated history, what it learned across cycles, why it was shaped the way it was. The hidden state is what the plugin knows about itself <em>right now</em>; <code>docs/</code> is what it remembers about <em>how it got here</em>. The concrete file names come from one historical Claude-based reference architecture; other CLI-agent harnesses can carry the same roles under their own project-instruction conventions.</p>
 
                         <hr>
 
                         <h2 id="code2-the-documentation-layer-the-historian"><code>docs/</code> &mdash; The Documentation Layer + The Historian</h2>
 
-                        <p><strong>What it is.</strong> A directory carrying the plugin&rsquo;s narrated knowledge. These files are common across nearly every plugin:</p>
+                        <p><strong>What it is.</strong> A directory carrying the plugin&rsquo;s narrated knowledge. In the historical reference architecture, these files appear across nearly every plugin:</p>
 
                         <ul>
-                            <li><code>docs/CLAUDE.md</code> &mdash; the docs/ directory&rsquo;s own descriptor; names the conventions docs/ files follow.</li>
-                            <li><code>docs/evolution.md</code> &mdash; the plugin&rsquo;s auto-narrated history. Capped (currently 2000 words in the prototype, configurable via <code>config.conf</code>) by a hard-enforced <code>PreToolUse</code> hook. The historian subagent writes this; the operator typically does not.</li>
-                            <li><code>docs/principles.md</code> OR <code>docs/decisions.md</code> (depending on the plugin) &mdash; the overflow surface for design rationale that doesn&rsquo;t fit in evolution.md. <sup class="ref-marker" title="ref: evolution-md-universal-across-plugins | .claude/plugins/*/docs/evolution.md | `find .claude/plugins -name evolution.md -path &quot;*/docs/*&quot;` returns 14 hits — one per plugin (brain_guard, interaction_summary, job_archiver, job_blocker, job_core, phase_condense, phase_execute, phase_observe, phase_plan, phase_verify, phasic_system, plugin_integrity, question_discipline — job_archiver and job_blocker are unimplemented designs, not active plugins) PLUS the template at `plugin_integrity/template/docs/evolution.md` so newly-stamped plugins inherit the file at birth. The discipline is universal: no plugin ships without one.">&#9432;</sup></li>
+                            <li>a scoped project-instruction file &mdash; the directory&rsquo;s own descriptor, naming the conventions its documentation follows (<code>docs/CLAUDE.md</code> in the historical Claude implementation; another harness may use <code>AGENTS.md</code>, <code>QWEN.md</code>, or its own convention).</li>
+                            <li><code>docs/evolution.md</code> &mdash; the plugin&rsquo;s auto-narrated history. Capped at 2,000 words by default, configurable through the plugin&rsquo;s settings, and protected by a pre-edit hook. The historian subagent writes this; the operator typically does not.</li>
+                            <li><code>docs/principles.md</code> or <code>docs/decisions.md</code>, depending on the plugin &mdash; overflow surfaces for design rationale that does not fit in <code>evolution.md</code>. <sup class="ref-marker" title="ref: evolution-md-universal-across-plugins | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></li>
                         </ul>
 
-                        <p><strong>Who reads them.</strong> The agent, especially at plugin unlock &mdash; the lock-manager auto-injects <code>docs/evolution.md</code> into the agent&rsquo;s context every time PLUGIN-LOCK is approved. This is how the editor inherits the plugin&rsquo;s reasoning before touching code. The historian subagent reads evolution.md when re-narrating new commits. New users read these to understand a plugin&rsquo;s lived history before customizing. <sup class="ref-marker" title="ref: evolution-md-auto-injected-on-unlock | .claude/plugins/plugin_integrity/hooks/lock-manager.sh (PostToolUse unlock branch — the D44-fix `evo_section` emit) | On a PLUGIN-LOCK unlock the hook reads the plugin&#x27;s `docs/evolution.md` into an `evo_section`, folds it into a `context_msg` block, and delivers it to the agent via `hookSpecificOutput.additionalContext` JSON on stdout. (PostToolUse stderr from an exit-0 hook is silently dropped by Claude Code, so `additionalContext` is the only channel that reaches the agent&#x27;s context.) That emit IS the auto-injection. A sibling cap in `evolution-cap.sh` bounds the file&#x27;s word count precisely because it is dumped into context on every unlock — keeping it lean preserves the per-unlock context budget.">&#9432;</sup></p>
+                        <p><strong>Who reads them.</strong> The agent, especially at plugin unlock &mdash; the lock manager injects <code>docs/evolution.md</code> into context whenever the operator authorizes an editing session. This is how the editor inherits the plugin&rsquo;s reasoning before touching code. The historian subagent reads <code>evolution.md</code> when re-narrating new commits. New users read these files to understand a plugin&rsquo;s lived history before customizing it. <sup class="ref-marker" title="ref: evolution-md-auto-injected-on-unlock | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
-                        <p><strong>Who writes them.</strong> The historian subagent writes <code>docs/evolution.md</code> when dispatched by the drift-counter ratchet. The operator writes the sibling files (<code>docs/principles.md</code>, <code>docs/decisions.md</code>) through gmode &mdash; these surfaces are not under the same auto-narration discipline. <sup class="ref-marker" title="ref: historian-drift-counter-ratchet | .claude/plugins/plugin_integrity/scripts/drift-check.sh — header contract | The drift-check script&#x27;s header contract: &quot;every N git commits to the plugin, the historian must update [evolution.md] — no insertion thresholds — the historian is mandated to update on schedule.&quot; The historian-* subagents (13 total — one per plugin, though job_archiver and job_blocker are unimplemented designs): twelve live centralized in `plugin_integrity/agents/` (historian-brain-guard, historian-interaction-summary, historian-job-archiver, historian-job-blocker, historian-job-core, historian-phase-condense, historian-phase-execute, historian-phase-observe, historian-phase-plan, historian-phase-verify, historian-phasic-system, historian-plugin-integrity); `question_discipline` owns its own at `question_discipline/agents/historian-question-discipline.md`. Each is dispatched when its plugin&#x27;s drift count crosses DRIFT_THRESHOLD (default 10, configurable via config.conf).">&#9432;</sup></p>
+                        <p><strong>Who writes them.</strong> The historian subagent writes <code>docs/evolution.md</code> when dispatched by the drift-counter ratchet. The operator writes the sibling files (<code>docs/principles.md</code>, <code>docs/decisions.md</code>) through the harness&rsquo;s authorized edit mode; those surfaces are not under the same auto-narration discipline. <sup class="ref-marker" title="ref: historian-drift-counter-ratchet | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
-                        <p><strong>What they depend on.</strong> <code>docs/CLAUDE.md</code> (the descriptor that names the documentation conventions). The plugin&rsquo;s drift counter inside <code>data.json</code> (which fires the historian when drift exceeds threshold). The hard-cap hook (<code>evolution-cap.sh</code> inside plugin_integrity, which blocks any edit pushing evolution.md past the configured cap). <sup class="ref-marker" title="ref: evolution-cap-2000-word-pretooluse-block | .claude/plugins/plugin_integrity/hooks/evolution-cap.sh — # Source config section (MAX_EVOLUTION_WORDS) + # Only police evolution.md guard + # If the edit would push past the cap, block section | The # Source config section sets the cap: `MAX_EVOLUTION_WORDS=&quot;${MAX_EVOLUTION_WORDS:-2000}&quot;` (configurable but default 2000). The # Only police evolution.md guard restricts the gate to ONE file: &quot;Only police evolution.md — other docs/*.md files are uncapped per user directive&quot; + `[[ &quot;$FILE_PATH&quot; != */docs/evolution.md ]] &amp;&amp; exit 0`. The # If the edit would push past the cap, block section emits the BLOCK message via voice (`evolution-word-cap`) when an edit would push the word count over the cap. This is the canonical soft-vs-hard pairing: evolution.md hard-capped (PreToolUse exit 2); sibling docs uncapped (operator + historian judgment).">&#9432;</sup></p>
+                        <p><strong>What they depend on.</strong> The scoped project-instruction file that names the documentation conventions, the plugin&rsquo;s drift counter inside <code>data.json</code>, and the hard-cap hook that blocks an edit when <code>evolution.md</code> would exceed its configured limit. <sup class="ref-marker" title="ref: evolution-cap-2000-word-pretooluse-block | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
-                        <p><strong>The relationship between evolution.md and its siblings is the architectural heart of the documentation layer.</strong> Evolution.md is the 2000-word summary; when the historian&rsquo;s narrative needs more depth, the cap forces overflow into a sibling file &mdash; <code>docs/principles.md</code> for architectural rationale, <code>docs/decisions.md</code> for specific design choices, <code>docs/lessons.md</code> for hard-won cycle lessons. The historian decides at narration time which sibling file each overflow chunk belongs in, and evolution.md becomes an index pointing at the siblings. This is the canonical example of soft-versus-hard discipline at the size-cap level: only <code>docs/evolution.md</code> carries a hard cap; the siblings absorb the overflow under the historian&rsquo;s judgment. <sup class="ref-marker" title="ref: evolution-block-message-names-overflow-siblings | .claude/plugins/plugin_integrity/hooks/evolution-cap.sh — # If the edit would push past the cap, block section | The BLOCK message itself NAMES the overflow surfaces: &quot;consolidate older dated sections (1-line summaries OR archive verbatim into docs/decisions.md / docs/lessons.md / docs/lessons-&lt;topic&gt;.md), THEN add your new entry.&quot; When the cap fires, the hook tells the editor exactly which sibling files to overflow into. The cap&#x27;s behavior is the documentation contract.">&#9432;</sup></p>
+                        <p><strong>The relationship between <code>evolution.md</code> and its siblings is the architectural heart of the documentation layer.</strong> <code>evolution.md</code> is the bounded summary; when the historian&rsquo;s narrative needs more depth, the cap forces overflow into a sibling file &mdash; <code>docs/principles.md</code> for architectural rationale, <code>docs/decisions.md</code> for specific design choices, <code>docs/lessons.md</code> for hard-won cycle lessons. The historian decides at narration time where each overflow chunk belongs, and <code>evolution.md</code> becomes an index pointing at the siblings. This is the canonical example of soft-versus-hard discipline at the size-cap level: only <code>docs/evolution.md</code> carries a hard cap; the siblings absorb the overflow under the historian&rsquo;s judgment. <sup class="ref-marker" title="ref: evolution-block-message-names-overflow-siblings | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/historian-overflow-b7-5.png" alt="The word-cap meter on docs/evolution.md (capped) on the left, the historian subagent depicted as an arrow that re-narrates new commits into evolution.md, and the overflow routing to uncapped sibling files on the right when the meter fills up" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
@@ -150,11 +141,11 @@
 
                         <p>Target asset: assets/images/blog/b7/evolution-cap-overflow-b7-5.png</p>
 
-                        <p><strong>The new-plugin lens.</strong> When you guide your seed to create a plugin, the seed authors the cycle-1 <code>docs/evolution.md</code> by hand &mdash; a short narrative of the plugin&rsquo;s birth, what concern it owns, what it doesn&rsquo;t own. The historian subagent takes over from cycle 2 onward, re-narrating each cycle&rsquo;s commits into evolution.md until it hits the cap. From there, overflow goes into <code>docs/principles.md</code> (or whichever sibling the plugin&rsquo;s docs/CLAUDE.md establishes). Tell your seed: <em>every plugin gets a historian by birth.</em> Without one, the plugin&rsquo;s memory dies with the operator&rsquo;s session.</p>
+                        <p><strong>The new-plugin lens.</strong> When you guide your seed to create a plugin, the seed authors the initial <code>docs/evolution.md</code> by hand &mdash; a short narrative of the plugin&rsquo;s birth, what concern it owns, what it does not own. The historian subagent takes over after birth, re-narrating later commits into <code>evolution.md</code> until it hits the cap. From there, overflow goes into <code>docs/principles.md</code> or whichever sibling the plugin&rsquo;s scoped project instructions establish. Tell your seed: <em>every plugin gets a historian by birth.</em> Without one, the plugin&rsquo;s memory dies with the operator&rsquo;s session.</p>
 
                         <p>A consulting practice&rsquo;s seed could carry the same shape &mdash; every plugin (intake, engagement, deliverable QA) ships a <code>docs/evolution.md</code> capped narration of how its standards drifted across client cycles, with the historian dispatching after every N engagement-close commits.</p>
 
-                        <p><strong>The ratchet fires at the seam.</strong> Drift accumulates silently between unlocks; the next unlock attempt is the seam where the historian-injection voice fires, instructing the agent to invoke the per-plugin historian before proceeding. <sup class="ref-marker" title="ref: drift-injection-on-unlock-block | .claude/plugins/plugin_integrity/hooks/lock-manager.sh — # Distinguish &quot;existing plugin edit&quot; vs &quot;new plugin birth&quot; block + # Calculate drift for the target plugin block | At PLUGIN-LOCK approval (PreToolUse on AskUserQuestion), the hook computes drift_count via drift-check.sh (# Calculate drift for the target plugin block). If drift_count ≥ DRIFT_THRESHOLD, the script emits the `plugin-evolution-stale` voice naming the per-plugin historian (`historian-${target//_/-}`) and exits 2 — hard-blocks the unlock until the agent invokes the historian. The narration commit resets drift to 0; the next unlock proceeds. The ratchet is enforced at the seam, not silently in the background.">&#9432;</sup></p>
+                        <p><strong>The ratchet fires at the seam.</strong> Drift accumulates silently between unlocks; the next unlock attempt is the seam where the historian-injection voice fires, instructing the agent to invoke the per-plugin historian before proceeding. <sup class="ref-marker" title="ref: drift-injection-on-unlock-block | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <hr>
 
@@ -165,7 +156,6 @@
                         <p><em>Essay 7.5 &mdash; The Plugin Kit, Part 5 of 9.</em></p>
 
                         <p><em>Previous: <a href="07_4-data-json-hidden-state.html">Essay 7.4 &mdash; <code>data.json</code> &mdash; The Hidden State</a> &mdash; private state, script-mediated, atomic mutation.</em> <em>Next: <a href="07_6-agents-and-80-20-budget.html">Essay 7.6 &mdash; <code>agents/</code> and the 80/20 Dispatch Budget</a> &mdash; per-plugin subagent pools + the budget the main session must earn.</em></p>
-
                     </div>
 
                     <!-- Comments (Giscus) -->
