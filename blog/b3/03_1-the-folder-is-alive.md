@@ -8,7 +8,7 @@ audience: professionals
 og_image: "blog/b3/images/folder-of-specialists-b3_1-1.png"
 series: "Hadosh Academy – Agents"
 series_position: "3.1 — vision interlude between Essays 3 and 4"
-version: v1.0.0
+version: v1.1.0
 status: published
 ---
 
@@ -20,9 +20,9 @@ Open the laptop of a person five years from now.
 
 Inside one folder, twenty smaller folders. One handles the year-end taxes. One drafts the monthly client report. One scouts new academic papers in their field. One plans the family vacation. One reconciles bank statements. One files insurance claims. One curates the kid's reading list. One knows how their consulting firm onboards every new account.
 
-None of them came pre-built. The person taught each one, one job at a time. Most started clumsy. All of them got better.
+None of them came pre-built. The person taught each one, one job at a time. Most started clumsy. The useful ones got better through correction, evidence, and repetition.
 
-This is not science fiction. It is not a roadmap either. It is the foreseeable consequence of one quiet idea: **a generic substrate for cognition that any professional can shape.**
+This is a prospective thought experiment, not a promise or a roadmap. It follows from one quiet idea: **a generic substrate for cognition that any professional can shape.**
 
 We have a name for it. We call it the [seed agent](../b1/01-llms-are-not-the-agents.html). The folder full of seed agents is your **personal cognitive workforce.**
 
@@ -54,9 +54,9 @@ This is what an academy is for. Not to ship a hundred specialty agents we sell o
 
 The architectural fact under all of this is small enough to fit in one sentence:
 
-**Add a `.claude/` directory to any folder on your computer, and that folder becomes an agent.**
+**Add a compatible instruction and memory layer to a working folder, connect it to an agent runtime, and that folder can carry a distinct agent context.**
 
-The brain lives in `.claude/`. The work lives in sibling directories under the same folder — the data, the reports, the references, whatever the job actually operates on. The LLM reads the brain, operates on the siblings, writes back the lessons it learned along the way. The same pattern works for `.opencode/` and any equivalent brain directory in any other CLI agent.
+In the Claude-based reference system, the brain lives largely in `.claude/`. The work lives in sibling directories — the data, reports, references, and whatever the job operates on. The runtime loads selected context, works through tools within its permissions, and writes back only the lessons its process is authorized to preserve. Other CLI agents use different names and event systems, but the broader file-backed pattern can travel.
 
 ```
 your-job/
@@ -66,11 +66,11 @@ your-job/
 └── references/     ← work
 ```
 
-That is it. That is the whole architectural primitive that gives you the folder full of specialists. Each "specialist" in the folder is exactly this: a folder with a brain dir and a few sibling work dirs.
+That is the starting primitive behind the folder full of specialists: bounded work plus durable context. A dependable specialist also needs permissions, verification, recovery, and clear responsibility for the state it changes.
 
 Without the LLM, that folder is just files. They sit on disk. They do nothing.
 
-But add the LLM, and the folder starts to move. The agent reads its own knowledge files, updates its plans, migrates lessons from one corner of the folder to another, refines what it has learned about you, and tightens its own rules. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.
+But add the LLM, and the folder starts to move. Under explicit rules and permissions, the agent reads knowledge, updates plans, routes reviewed lessons, and proposes tighter controls. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.
 
 There is no good word for this in plain English yet. So let us coin one.
 
@@ -78,7 +78,7 @@ Call it **cognitive metabolism.**
 
 The LLM is the metabolism's energy — the same way electricity is energy in a toaster, the same way [ATP is energy](https://en.wikipedia.org/wiki/Adenosine_triphosphate "Adenosine triphosphate — the molecule that carries energy in living cells") in your cells. The files are the tissue. The metabolism is the continuous motion that keeps the tissue alive. ([Essay 2](../b2/02-we-could-have-had-agi.html) put the verb in your hands — *the agent metabolizes tokens.* This essay names the noun.)
 
-This is what makes a seed agent *yours.* Not the files. The metabolism running on top of them. Your taught lessons get consolidated. Your corrections get absorbed. Your patterns get learned. All of it happens in the background, by an agent following the rules you helped it write.
+This is what makes a seed agent *yours.* The files and the metabolism running over them. Reviewed lessons get consolidated, corrections get preserved, and useful patterns get reused. Background work happens only where you deliberately schedule it and define its authority.
 
 Static files would be a brain in a jar. Cognitive metabolism makes them a brain at work.
 
@@ -93,13 +93,13 @@ Teaching one of these agents is concrete. There is no mystique to it.
 
 The first time you do a job with the seed agent, you sit next to it. You explain what you care about. You correct it when it misses something. You tell it which fields matter, which ones don't, which mistakes are unforgivable, which corners it can cut. The agent watches and listens, and writes everything down.
 
-Not as transcript. As **structured memory.** What you taught it ends up in files inside the brain dir. You can open them and read them. There is no black box. There is a folder, there are notes, and the notes describe the job you just did together.
+Not as a transcript dump. As **structured memory.** Selected lessons end up in files inside the brain directory. You can open and audit that external memory. The model remains a black box, but the state you chose to preserve does not have to be.
 
 The second time, the agent is faster. It remembers the last conversation. It still asks questions, but the right ones. You correct less.
 
 By the third or fourth time, the agent has a **plan file** — a document the agent wrote that describes how the job goes, your way, in your words, refined through practice. The plan file is the agent's promotion. It used to make it up each time. Now it works from a script you co-authored.
 
-For jobs you do enough, the agent eventually grows the plan into something stronger. A piece of itself that knows the job by heart. Inside the agent, this is called a **plugin.** To you, it is the moment a particular job moved out of your head and into the cortex, where it can be done without drawing on your attention for the small stuff anymore.
+For jobs you do enough, the agent can grow the plan into something stronger: a skill, script, hook, plugin, or combination that knows more of the job by heart. To you, it is the moment a procedure moves out of your head and into the cortex, while consequential judgment stays visible.
 
 Three steps. Apprentice. Trained colleague. Resident specialist.
 
@@ -154,7 +154,7 @@ The same multiplier applies wherever professional life has structure. A research
 The agent runs the procedure. The professional spends their hours on what only they can do. This is what scaling looks like when the bottleneck was never the work — it was the cognitive overhead around the work.
 
 ![The 80/20 Scale Effect: 20% up front you teach the agent your way; 80% ongoing the agent handles the work in the background, gets better, makes fewer mistakes, saves time. Taught once. Used thousands of times.](images/eighty-twenty-scale-b3_1-4.png)
-*Taught once. Used thousands of times. Gets better every time.*
+*Teach, verify, reuse, and improve when the evidence supports it.*
 
 
 
@@ -188,7 +188,7 @@ Now flip that around.
 
 Your seed agent reads the same sources newsletter authors read — the academic journals, the trade publications, the early-access feeds, the [arXiv](https://en.wikipedia.org/wiki/ArXiv "An open-access archive for scholarly articles") preprints. It reads the newsletters too, because newsletters are also signal. It reads everything you trust, and filters it through *your* interests, not someone else's. *One curation, one reader.*
 
-The result arrives in your inbox every morning, written by an agent that has been learning your taste for months. No one else gets it. No one else needs it.
+The result can arrive in your inbox every morning, written by an agent that has been learning your stated preferences for months. No one else needs the same curation.
 
 Now go further.
 
@@ -206,11 +206,11 @@ The same logic extends everywhere — your news, your reading recommendations, y
 
 The deepest version of this is not a feed. It is a **personal super-app**. Your fitness dashboard. Your project tracker. Your finance overview. Your communication hub. Built by your agent, running on your hardware, holding your data — yours.
 
-[Blog 3 already saw the architecture for this](03-your-brain-was-never-built-for-this.html). The seed agent makes it concrete. Every feed, every dashboard, every utility you depend on can be replaced by something you shaped.
+[Blog 3 already saw the architecture for this](03-your-brain-was-never-built-for-this.html). The seed agent makes parts of it concrete. Some feeds, dashboards, and utilities can be replaced by something you shaped; others still depend on networks or infrastructure you do not own.
 
 ### The Punch Line
 
-Privacy is part of this. You stop being someone else's product. Your data stops being mined and resold.
+Privacy is part of this. Local, user-controlled tools can reduce how much data you hand to advertising platforms, although privacy still depends on the models, connectors, hosting, logs, and policies you choose.
 
 But privacy is the supporting argument. The headline is bigger.
 
