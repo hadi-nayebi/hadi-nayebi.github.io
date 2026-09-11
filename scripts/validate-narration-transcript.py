@@ -48,8 +48,11 @@ def main() -> None:
         fail("canonical source hash changed")
     if document.get("content_lock", {}).get("status") != "approved":
         fail("source content lock is not approved")
-    if document.get("voice_review") != "pending":
-        fail("pilot must remain pending until Hadi reviews the audio")
+    voice_review = document.get("voice_review")
+    if voice_review not in {"pending", "approved"}:
+        fail("voice review must be pending or approved")
+    if voice_review == "approved" and not document.get("voice_review_approved_at"):
+        fail("approved voice review is missing its approval date")
 
     records = []
     for path in (root / "docs/narration-source-review/reviews").glob("*.json"):

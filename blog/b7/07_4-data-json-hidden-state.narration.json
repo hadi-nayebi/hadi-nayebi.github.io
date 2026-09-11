@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "source": "blog/b7/07_4-data-json-hidden-state.md",
   "source_sha256": "24a34739957892c2281588258c991bcb088068ec5b14c477aa8dc15fb4e7bcd4",
-  "status": "voice-review",
+  "status": "voice-approved",
   "content_lock": {
     "status": "approved",
     "approved_at": "2026-09-11"
   },
-  "voice_review": "pending",
+  "voice_review": "approved",
   "canonical_text_policy": "Readable published wording is retained in text; render-only aliases live in tts_text.",
   "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
   "audio": {
@@ -379,5 +379,6 @@
       "gap_after_ms": 900,
       "text_sha256": "769d62fef59f989a9aad06b0b19ffce02a4bb1971689541da39dc3d2c7bedb31"
     }
-  ]
+  ],
+  "voice_review_approved_at": "2026-09-11"
 }

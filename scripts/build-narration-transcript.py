@@ -126,17 +126,17 @@ def spoken_rewrites(text: str) -> str:
         ),
         (
             r"Claude Code — hooks via \.claude/settings\.json "
-            r"\(PreToolUse, PostToolUse, Stop, Notification, etc\.\)\.",
+            r"\(PreToolUse, PostToolUse, Stop, Notification, etc\.\)",
             "Claude Code uses hooks configured in its settings file, including events before and after tool use, stopping, and notifications.",
         ),
         (
             r"Gemini CLI — hooks shipped January 2026 "
-            r"\(BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc\.\)\.",
+            r"\(BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc\.\)",
             "Gemini CLI exposes events before and after tools and before and after the agent.",
         ),
         (
             r"OpenCode — hooks via plugin system "
-            r"\(tool\.execute\.before, tool\.execute\.after, session\.idle\)\.",
+            r"\(tool\.execute\.before, tool\.execute\.after, session\.idle\)",
             "OpenCode provides plugin events before and after tool execution and when a session becomes idle.",
         ),
         (
