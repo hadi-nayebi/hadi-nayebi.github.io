@@ -17,7 +17,8 @@
     "sample_rate_hz": 24000,
     "channels": 1,
     "loudness_lufs": -16,
-    "true_peak_dbtp": -1.5
+    "true_peak_dbtp": -1.5,
+    "publication_path": "blog/b3/audio/the-folder-is-alive.mp3"
   },
   "curation": {
     "source_file_words": 3183,
