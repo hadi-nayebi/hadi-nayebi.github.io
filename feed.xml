@@ -85,7 +85,7 @@
       <link>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</guid>
       <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The agent's unit of compartmentalization. Cumulative mega-prompt, shared-key cross-plugin extension, phase-aware refusal to stop, staged completion. Re-shape the noun for your domain.</description>
+      <description>An earlier Claude-based seed-agent prototype gives durable work a lifecycle, shared identity across plugins, a stop gate, and a user-approved completion protocol.</description>
     </item>
 
     <item>
