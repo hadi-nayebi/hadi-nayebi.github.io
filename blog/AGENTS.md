@@ -74,6 +74,14 @@ force and narration flow for details that do not affect the principle. Signal
 future scenarios as prospective; verify empirical support and concrete current
 capability claims to the degree needed to protect the argument.
 
+Essay 4, "The Language of Agents," has an explicit terminology exception for
+the 2026-09-10 review. It is an older vocabulary essay and may be revised or
+expanded beyond the usual preservation threshold where the current harness
+model is absent or incomplete. Preserve its central message and accessible
+professional voice while bringing its account of models, files, runtime,
+instructions, memory, tools, commands, hooks, permissions, jobs, skills,
+plugins, verification, and assembled systems into a coherent vocabulary.
+
 B5 through B9 are technical writings. Correct them as extensively as required
 for accuracy. Prefer product- and framework-agnostic principles, and label a
 specific prototype or reference implementation as such. Do not present a
