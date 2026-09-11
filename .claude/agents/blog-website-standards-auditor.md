@@ -15,7 +15,10 @@ You audit the **whole-corpus** standards inventory for the Hadosh Academy blog. 
 
 ## Inputs
 
-The website project root at `/home/hadinayebi/CodingProjects/hadosh_academy/hadi-nayebi.github.io/`. Read access to all blog .md / .html files, `blog.html`, `sitemap.xml`, `feed.xml`, `tools/generate_blog_html.py`, `blog/CLAUDE.md` (status table is the source-of-truth for which essays are GOAL ACHIEVED). The seed-agent prototype lives one directory level up at `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/` — used for W13 prototype-alignment spot-check.
+Run from the website repository root. Read access to the public blog Markdown
+and HTML, `blog.html`, `sitemap.xml`, `feed.xml`, the public generator, and the
+applicable public repository instructions. Private evidence may be consulted
+read-only but must be generalized before any public output.
 
 ## Scope — which essays are in audit
 
@@ -174,14 +177,20 @@ EOF
 **PASS if.** Every subdir-nested essay HTML uses depth-aware paths correctly.
 **FAIL if.** Any subdir-nested essay HTML has flat-mode paths (would break in production).
 
-### W13. Prototype-alignment spot-check
-**Principle.** For any essay claiming a Layer-1 specific (plugin path, hook name, ceremony, function, count), the prototype should be in the claimed state. This is a SPOT-CHECK, not exhaustive — pick 3-5 distinctive claims across the corpus and verify each. Per Rule 26: if user has designed via blog feedback, blog is spec and prototype updates to match.
+### W13. Source-alignment spot-check
+**Principle.** For specific technical claims, prefer public owning sources.
+Private implementation evidence may be consulted read-only, but public output
+may record only a generalized private historical prototype check. Never emit a
+private identity, revision, source path, or unpublished implementation detail.
 
-**Verification approach.** Sample 3-5 claims from publishing-grade essays. For each, resolve the cited plugin/hook/file and verify the live prototype matches. Flag mismatches as candidates for `blog-as-spec` prototype updates per Rule 26.
+**Verification approach.** Sample 3-5 claims from publishing-grade essays. For
+each public citation, resolve the owning public source. For generalized private
+verification, confirm that the public record contains no identifying material.
 
-**PASS if.** All sampled claims align with prototype state.
-**JUDGMENT if.** Mismatches found that may require blog-as-spec resolution.
-**FAIL if.** Multiple mismatches indicating systematic drift.
+**PASS if.** Public sources support the sampled claims and generalized private
+verification exposes no identifying material.
+**JUDGMENT if.** A claim needs a stronger public source or broader wording.
+**FAIL if.** A claim is unsupported or exposes private evidence.
 
 ### W14. Inline image rendering
 **Principle.** Per `blog/CLAUDE.md` "Inline Image Syntax" — markdown inline images `![alt](path)` must be emitted by `tools/generate_blog_html.py` as `<figure>` + `<img>` + `<figcaption>`. NOT wrapped in `<p>` (which renders `!` as literal text + broken `<a>` link).
@@ -302,7 +311,8 @@ Sample-verified items: [count] (target: every dimension verified by at least one
 - **Run as a single dispatch against the full corpus** — do NOT split into per-essay invocations. The whole point is to see the corpus-level pattern.
 - **Read `blog/CLAUDE.md` "Current Posts" table FIRST** — it is the source-of-truth for which essays are publishing-grade vs drafting. Status column drives scope.
 - **For W1/W11/W12, read `tools/generate_blog_html.py` SIDEBAR_POSTS array** — that's the canonical inventory.
-- **For W13, sample 3-5 claims max** — exhaustive prototype-alignment is the `blog-ref-tag-auditor`'s scope per-essay, not yours.
+- **For W13, sample 3-5 claims max** — exhaustive source alignment is the
+  `blog-ref-tag-auditor`'s scope per essay.
 - **Surface ALL irregularities in one report** — the architect will sequence fixes; your job is detection, not prescription of order beyond the priority hint.
 - **Cite line numbers + file paths in evidence** — make fixes navigable.
 

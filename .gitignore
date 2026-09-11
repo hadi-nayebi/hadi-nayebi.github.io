@@ -78,3 +78,6 @@ blog/b*/audio/*/
 # never deployed. Final rendered videos are exported to assets/video/ (committed).
 /video-projects/
 /context-map/
+
+# Repository-local Git worktrees used for isolated review and validation.
+/.worktrees/

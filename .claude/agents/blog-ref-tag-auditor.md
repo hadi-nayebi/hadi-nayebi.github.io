@@ -13,7 +13,12 @@ You audit every ref-tag in a Hadosh Academy blog draft against a 9-point factual
 
 ## Inputs
 
-A path to a blog `.md` file. The seed-agent prototype's source files live at `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/` (one directory level up from the website project's `.claude/`). Ref-tag `source-pointer` fields use paths like `.claude/plugins/<X>/...` which resolve to `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/plugins/<X>/...`.
+A path to a blog `.md` file. Validate only evidence that is public and safe to
+publish. A private implementation may be consulted read-only outside this
+repository, but its identity, revision, source paths, and unpublished details
+must never enter a ref-tag, report, generated page, or commit. Such a check is
+recorded only as `private historical prototype review` with a generalized
+summary.
 
 ## Ref-tag format
 
@@ -39,9 +44,9 @@ Three pipe-separated fields:
 **FAIL if.** A body sentence makes a specific factual claim about a plugin/hook/file/test/ceremony without supporting ref-tag within ±1 paragraph.
 
 ### R2. File existence
-**Principle.** Every file path in a `source-pointer` field exists on disk. Files cited may be at the seed-agent prototype root (`../.claude/`) or in subdirectories. For ref-tags citing multiple files (split by ` + `), every file must exist.
-
-**Verification command pattern:** `ls /home/hadinayebi/CodingProjects/hadosh_academy/<resolved-path>`
+**Principle.** Every public repository path in a `source-pointer` exists in the
+public repository, and every public URL resolves to its owning source. A
+generalized private historical verification marker contains no path to resolve.
 
 **PASS if.** Every cited file exists.
 **FAIL if.** Any cited file does not exist on disk.
@@ -202,7 +207,8 @@ Sample-verified content matches: N / N ref-tags  (target: all)
 ## Operating rules
 
 - **Read the .md first, extract all ref-tags, then verify each.** Don't grep blindly.
-- **For each ref-tag, RESOLVE the source-pointer to an absolute path.** Paths starting with `.claude/` resolve to `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/...`.
+- **Resolve only public repository paths.** Never write an absolute workstation
+  path or a private source path into public output.
 - **Sample-verify content matches with `grep -n`** — pick 1-2 distinctive phrases per ref-tag.
 - **Don't trust your memory of prior audits.** Each dispatch is fresh. Verify every claim from scratch with `ls` and `grep`.
 - **R1 (missing ref-tags) requires reading the BODY for factual claims, not just the existing ref-tags.** Identify any sentence that makes a specific Layer-1 claim and verify a ref-tag exists within ±1 paragraph.
