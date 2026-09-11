@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_5-interaction-summary.md",
+  "source_sha256": "7542ac51905a9cf759801f0a1384fe3121964a3e3fedf0ff7d89c1a56dcb4516",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/05_5-interaction-summary.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

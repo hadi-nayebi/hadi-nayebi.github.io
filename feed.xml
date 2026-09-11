@@ -84,16 +84,16 @@
       <title>The Always-On Digital Cortex — Pt 4: Job Lifecycle (job_core)</title>
       <link>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_4-job-core.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
       <description>An earlier Claude-based seed-agent prototype gives durable work a lifecycle, shared identity across plugins, a stop gate, and a user-approved completion protocol.</description>
     </item>
 
     <item>
-      <title>The Always-On Digital Cortex — Pt 5: Cross-Session Memory (interaction_summary)</title>
+      <title>The Always-On Digital Cortex — Pt 5: Mega-Prompt Compression (interaction_summary)</title>
       <link>https://hadi-nayebi.github.io/blog/b5/05_5-interaction-summary.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_5-interaction-summary.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>Block-until-summarized. Five-section template forces shape-compels-production on the job's growing mega-prompt. Threshold + sections are this prototype's choice; the shape is the lesson.</description>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>An earlier Claude-based seed-agent prototype turns growing interaction history into an indexed, structured, and recoverable summary chain.</description>
     </item>
 
     <item>
