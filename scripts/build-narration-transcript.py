@@ -74,6 +74,14 @@ def remove_frontmatter(source: str) -> str:
     return re.sub(r"\A---\s*\n.*?\n---\s*\n", "", source, count=1, flags=re.S)
 
 
+def frontmatter_title(source: str) -> str | None:
+    frontmatter = re.match(r"\A---\s*\n(.*?)\n---\s*\n", source, re.S)
+    if not frontmatter:
+        return None
+    match = re.search(r'^title:\s*["\']?(.+?)["\']?\s*$', frontmatter.group(1), re.M)
+    return html.unescape(match.group(1)).strip() if match else None
+
+
 def strip_inline(markdown: str) -> str:
     value = IMAGE.sub("", markdown)
     value = LINK.sub(r"\1", value)
@@ -103,6 +111,7 @@ def spoken_rewrites(text: str) -> str:
 
 
 def markdown_blocks(source: str) -> list[dict[str, str]]:
+    title = frontmatter_title(source)
     body = remove_frontmatter(source)
     body = RAW_HTML.sub("\n", body)
     body = COMMENT.sub("\n", body)
@@ -152,7 +161,11 @@ def markdown_blocks(source: str) -> list[dict[str, str]]:
             flush_paragraph()
             flush_list()
             continue
-        orientation = re.fullmatch(r"\*(Essay\s+\d+(?:\.\d+)?\s+—\s+.+)\*", line, re.I)
+        orientation = re.fullmatch(
+            r"\*(Essay\s+\d+(?:\.\d+)?\s+(?:—\s+|of\s+).+)\*",
+            line,
+            re.I,
+        )
         if orientation:
             flush_paragraph()
             flush_list()
@@ -183,6 +196,8 @@ def markdown_blocks(source: str) -> list[dict[str, str]]:
 
     flush_paragraph()
     flush_list()
+    if title and not any(block["kind"] == "title" for block in blocks):
+        blocks.insert(0, {"kind": "title", "text": title})
     if blocks:
         title_key = re.sub(r"\W+", "", blocks[0]["text"]).lower()
         blocks = [
@@ -201,7 +216,14 @@ def markdown_blocks(source: str) -> list[dict[str, str]]:
             if key not in seen_orientation:
                 deduplicated.append(block)
                 seen_orientation.add(key)
-        blocks = deduplicated
+        orientations = [
+            block for block in deduplicated if block["kind"] == "orientation"
+        ]
+        blocks = [
+            block for block in deduplicated if block["kind"] != "orientation"
+        ]
+        insertion = 1 if blocks and blocks[0]["kind"] == "title" else 0
+        blocks[insertion:insertion] = orientations
     return blocks
 
 
