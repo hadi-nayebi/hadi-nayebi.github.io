@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_7-smaller-organs-and-wiring.md",
+  "source_sha256": "1f8692ead263dc886d475f5c9382a4b3abd5f0313182020afbe3052d1a2dc178",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_7-smaller-organs-and-wiring.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
