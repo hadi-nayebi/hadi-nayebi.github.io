@@ -28,9 +28,9 @@ The approved source corpus for the current review contains:
 
 It excludes Explore pages and their diagrams, project and portfolio pages,
 site navigation/onboarding/marketing pages, and every other extra page.
-NoemaProjects is private and excluded. Do not add a Noema article, transcript,
-audio asset, source text, or discovery link to this public repository without
-Hadi's explicit publication approval.
+Owner-identified unpublished writing is excluded. Do not name, add, summarize,
+or create a transcript, audio asset, source copy, or discovery link for excluded
+material in this public repository without Hadi's explicit publication approval.
 
 ## Written-content lock before narration
 
@@ -63,7 +63,12 @@ These principle writings are philosophical, metaphorical, prospective essays
 for professionals across many fields. They aim to change the frame around
 models, harnesses, files, tools, hooks, jobs, and complex systems and to argue
 for a healthier future, even while current products and terminology continue
-to mature. Preserve at least roughly 90 percent of each approved essay's
+to mature. Preserve Hadi's declarative voice. Do not weaken an architectural
+definition, future-facing argument, or thought experiment merely because the
+future has not fully arrived. Distinguish concrete present-product claims,
+proposed architectural definitions, prospective arguments, and metaphors.
+Judge a metaphor by whether its central relationship illuminates the concept,
+not by literal one-to-one equivalence. Preserve at least roughly 90 percent of each approved essay's
 language, structure, metaphors, voice, and narrative. Use a strict token-level
 sequence comparison with the review baseline as a warning when the diff may be
 too large; then judge the actual prose rather than optimizing the number.
@@ -74,15 +79,28 @@ force and narration flow for details that do not affect the principle. Signal
 future scenarios as prospective; verify empirical support and concrete current
 capability claims to the degree needed to protect the argument.
 
+Essay 4, "The Language of Agents," has an explicit terminology exception for
+the 2026-09-10 review. It is an older vocabulary essay and may be revised or
+expanded beyond the usual preservation threshold where the current harness
+model is absent or incomplete. Preserve its central message and accessible
+professional voice while bringing its account of models, files, runtime,
+instructions, memory, tools, commands, hooks, permissions, jobs, skills,
+plugins, verification, and assembled systems into a coherent vocabulary.
+
 B5 through B9 are technical writings. Correct them as extensively as required
-for accuracy. Prefer product- and framework-agnostic principles, and label a
-specific prototype or reference implementation as such. Do not present a
-historical private implementation as a currently shipped public architecture.
-Use the owner-supplied Hadosh Academy Claude prototype as read-only
-implementation evidence for B5-B8. Use the owning Origin repository and its
-dashboard evidence for B9. Read the applicable owner instructions and live Git
-state before relying on either source; do not copy private implementation text
-into the public site without a reader-facing reason.
+for accuracy. Prefer framework-generic language such as CLI agent, project
+instructions, harness, runtime, hooks or events, and durable state. Mention
+specific frameworks and their conventional instruction files parenthetically
+when an example helps. Label the earlier Claude-based system in B5-B8 as one
+historical reference architecture rather than a universal or current Hadosh
+architecture. Private historical evidence may be consulted read-only, but no
+private repository identity, revision, source path, internal compartment name,
+or unpublished implementation detail may enter this public repository, its Git
+history, review reports, ref tags, rendered tooltips, tests, or PR text. Public
+records may say only that a claim was checked against a private historical
+prototype. Keep sensitive-name scanning and its configuration outside this
+repository. Use the public Origin repository and its public dashboard evidence
+for B9.
 
 The Observation series is narrative nonfiction. Follow its nested scientific,
 historical, sourcing, voice, and incremental-episode rules. The practical guide
@@ -90,10 +108,11 @@ must be safe, current, reproducible, and clear for its stated audience.
 
 ## Evidence and review report
 
-Prefer official documentation, owning repositories, primary sources, and
-peer-reviewed research. Keep source evidence machine-facing unless a reader
-benefits from the citation. For each changed writing, preserve a concise review
-record containing the source revision, issues found, changes made, evidence,
+Prefer official documentation, public owning repositories, primary sources,
+and peer-reviewed research. Keep source evidence machine-facing unless a reader
+benefits from the citation. For each changed writing, preserve a concise public
+review record containing the public source baseline, issues found, changes
+made, public evidence, generalized private verification where applicable,
 remaining uncertainty, and validation result. End the corpus review with a
 short per-writing change report for Hadi.
 

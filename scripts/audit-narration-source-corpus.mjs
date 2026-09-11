@@ -195,18 +195,9 @@ const essays = essayFiles().map(inspectEssay);
 const observation = inspectObservation();
 const guide = inspectGuide();
 const structuralErrors = [];
-const noemaPublicSurfaces = [
-  'blog.html',
-  'feed.xml',
-  'sitemap.xml',
-  'README.md',
-  'data/whats-new.json',
-].filter((file) => fs.existsSync(path.join(root, file)));
-const noemaLeaks = noemaPublicSurfaces.filter((file) => /NoemaProjects|noemaprojects/i.test(read(path.join(root, file))));
 if (essays.length !== 49) structuralErrors.push(`expected 49 numbered essays, found ${essays.length}`);
 if (essays.filter((item) => item.class === 'principle-writing').length !== 5) structuralErrors.push('expected 5 Part 1 principle writings');
 if (observation.episodes.length !== 5) structuralErrors.push(`expected 5 published Observation episodes, found ${observation.episodes.length}`);
-if (noemaLeaks.length) structuralErrors.push(`private Noema material appears on public surfaces: ${noemaLeaks.join(', ')}`);
 
 const report = {
   schema_version: 1,
@@ -216,7 +207,7 @@ const report = {
     audio_phase: 'blocked-until-written-content-lock',
     principle_writings: 'minimal-corrections-preserve-approved-voice',
     technical_writings: 'substantive-corrections-allowed-for-accuracy',
-    excluded: ['NoemaProjects', 'Explore pages', 'diagram narration', 'portfolio and project pages', 'all other website pages'],
+    excluded: ['owner-excluded unpublished writing', 'Explore pages', 'diagram narration', 'portfolio and project pages', 'all other website pages'],
   },
   totals: {
     numbered_essays: essays.length,
@@ -227,9 +218,6 @@ const report = {
     practical_guides: 1,
   },
   structural_errors: structuralErrors,
-  private_boundary: {
-    noema_public_surface_leaks: noemaLeaks,
-  },
   essays,
   observation,
   practical_guides: [guide],
