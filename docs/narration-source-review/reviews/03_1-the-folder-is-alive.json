@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b3/03_1-the-folder-is-alive.md",
+  "source_sha256": "7ed4bf56dbaa19e7d8ae2f0739575e6f5e09bafc879b34c40464e4b07e3c41b3",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/03_1-the-folder-is-alive.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

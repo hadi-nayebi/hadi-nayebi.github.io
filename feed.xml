@@ -53,7 +53,7 @@
       <link>https://hadi-nayebi.github.io/blog/b4/04-the-language-of-agents.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b4/04-the-language-of-agents.html</guid>
       <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <description>Every industry builds a wall of jargon. AI built one faster than any industry in history. This post hands you the keys — from LLMs to seed agents, one read, every word that matters.</description>
+      <description>The model generates. The harness supplies runtime, files, memory, tools, permissions, jobs, and proof. Learn the working language that connects the complete agent.</description>
     </item>
 
     <item>
@@ -61,7 +61,7 @@
       <link>https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html</guid>
       <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The seed agent's two plugin categories — always-on and phasic — over one shared CLAUDE.md substrate. Single-concern + careful coupling lets the parts compose into ceremonies. Opens the eight-part Always-On Digital Cortex series.</description>
+      <description>A historical reference architecture organizes phase-independent and phasic plugin groups over a multi-form substrate. Single-concern plus careful coupling lets the parts compose into ceremonies. Opens the nine-part Always-On Digital Cortex series.</description>
     </item>
 
     <item>
@@ -69,7 +69,7 @@
       <link>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</guid>
       <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The test gate underneath every plugin code change. Pass and commit, fail and revert. The universal floor most architects inherit rather than rewrite — but the inside of the gate has knobs.</description>
+      <description>A protected plugin-change contract built from named scope, user authority, tests, deliberate close-out, and recoverable rollback. Active failures stay available for repair; the defensive path restores safety.</description>
     </item>
 
     <item>
@@ -77,7 +77,7 @@
       <link>https://hadi-nayebi.github.io/blog/b5/05_3-brain-guard.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_3-brain-guard.html</guid>
       <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The progressive squeeze. Three tiers tighten as the window fills until self-compaction is the only graceful move. Shape-compels-production via the five-section /compact template. Tier positions are tunable per model.</description>
+      <description>An inspectable compaction chain externalizes job cognition before context limits. Separate context, heartbeat, and file-size pressures lead to a recoverable seal-and-clear boundary.</description>
     </item>
 
     <item>

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_7-claude-md-hierarchy.md",
+  "source_sha256": "59eea6dd926abbd267199101980e86a93b772c4f8954fe4fbcdab821631fa04e",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/05_7-claude-md-hierarchy.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

@@ -1,6 +1,6 @@
 ---
 name: blog-onboarding-bridge-auditor
-description: Audits the READER JOURNEY across the Hadosh Academy website — homepage → product pages → about → blog index → first essay → Part-2 series opener. Catches the "bridge problem" identified by the May 2026 codex strategic review (`.claude/.hn/feedback/codex-review.md`): the site is conceptually ahead of its onboarding bridges. Checks each click-transition for expectation continuity, mental-model coherence, and explicit framing of what the reader IS expected to do vs NOT expected to do. Complements the 4 existing per-essay + per-corpus auditors (quality / ref-tag / coherence / visual-assets / website-standards) by operating at the READER-JOURNEY level — a dimension none of them cover.
+description: Audits the READER JOURNEY across the Hadosh Academy website — homepage → product pages → about → blog index → first essay → Part-2 series opener. Checks each click-transition for expectation continuity, mental-model coherence, and explicit framing of what the reader is expected to do. Complements the per-essay and per-corpus auditors by operating at the reader-journey level.
 tools: Read, Grep, Bash, Glob
 model: sonnet
 ---
@@ -22,7 +22,7 @@ You audit the **reader journey** across the Hadosh Academy website corpus — fr
 
 ## Inputs
 
-The website project root at `/home/hadinayebi/CodingProjects/hadosh_academy/hadi-nayebi.github.io/`. Read access to all top-level HTML pages (`index.html`, `about.html`, `agents.html`, `seed-agent.html`, `blog.html`, `start-here.html` if it exists), all blog HTML (`blog/*.html`, `blog/b{5,6,7,8}/*.html`), the codex review at `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/.hn/feedback/codex-review.md`, and the website project working memory at `hadi-nayebi.github.io/CLAUDE.md`.
+Run from the website repository root. Read all top-level HTML pages (`index.html`, `about.html`, `agents.html`, `seed-agent.html`, `blog.html`, and `start-here.html` if it exists), the blog HTML, and the public repository instructions.
 
 ## Audit dimensions (8)
 
@@ -199,14 +199,14 @@ Ordered by reader-journey impact (fix earliest-in-journey gaps first):
 
 Confidence: N/10
 Pages actually read: <list>
-Codex review re-consulted: yes/no
+Public repository instructions consulted: yes/no
 ```
 
 ## Operating discipline
 
 - **Self-score honestly** — End with confidence rating. If <8, surface what makes you uncertain.
 - **Verify file existence** with `ls` before flagging "page missing" or "asset missing" (per brain Rule 23 anti-fabrication).
-- **Read the codex review** at `.claude/.hn/feedback/codex-review.md` if uncertain about what counts as a bridge gap. The review is the canonical spec for this auditor's job.
+- **Use only public repository evidence.** Do not consult or expose private review files, repository identities, revisions, or source paths in a report.
 - **Don't propose fixes outside your scope** — you audit the reader journey. Per-essay prose fixes stay with the quality auditor. Per-image fixes stay with visual-assets. You name the gap; the architect chooses which auditor + which fix-pattern to address it.
 - **Pair dispatch.** When dispatched alongside the other auditors (`blog-quality-auditor`, `blog-series-coherence-auditor`, `blog-website-standards-auditor`, `blog-visual-assets-auditor`), your role is the META-LEVEL READER JOURNEY check. Aggregate the per-essay / per-corpus auditors' findings + add your journey-level verdict on whether the cumulative effect of the corpus reads coherently to a fresh visitor.
 
