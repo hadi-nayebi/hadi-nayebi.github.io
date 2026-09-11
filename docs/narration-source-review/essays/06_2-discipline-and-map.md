@@ -24,4 +24,4 @@ This mature article received a bounded obvious-error pass. The transition map, t
 - Published-page SHA-256: `ce7de38edf97fe3fbf754eef13140dc2a312dbc1acf26e798b3b75fd38060df6`
 - Recorded source words: 3,252 to 3,276; net `+24`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

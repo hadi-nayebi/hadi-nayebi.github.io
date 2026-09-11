@@ -30,4 +30,4 @@ This mature article received a bounded obvious-error pass. The phase architectur
 - Published-page SHA-256: `fbf6aa5300de3eef28e8cc4e437ff62ebcfd3437d2e628e109f777356ba4ee4f`
 - Recorded source words: 2,523 to 2,626; net `+103`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

@@ -54,5 +54,5 @@ the contradiction between “empty footers” and deferred fragments.
 - Markdown/HTML parity, metadata, transcript state, links, site validators, and
   `git diff --check`: passed.
 - Detailed historical slot and phase behavior was preserved under the requested
-  obvious-error pass. Cross-writing consistency remains provisional; Hadi's
-  content lock remains pending.
+  obvious-error pass. Cross-writing consistency passed the complete
+  narration-source continuity review. Hadi's content lock remains pending.

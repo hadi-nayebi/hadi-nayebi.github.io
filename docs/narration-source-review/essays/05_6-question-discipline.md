@@ -49,5 +49,4 @@ the owning handler, and accounts for the command-approval exception.
 - Markdown/HTML parity, metadata, transcript state, site validators, and
   `git diff --check`: passed.
 - Detailed historical prefix and phase mechanics were preserved under the
-  requested obvious-error pass. Cross-writing consistency remains provisional;
-  Hadi's content lock remains pending.
+  requested obvious-error pass. Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

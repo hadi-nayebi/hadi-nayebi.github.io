@@ -28,4 +28,4 @@ This mature article received a bounded obvious-error pass. Its hidden-state boun
 - Published-page SHA-256: `e34efccca127b7aae9f4178f38eaf9bdbb8094ba0a16a56a44eced9f7ecb623d`
 - Recorded source words: 1,327 to 1,335; net `+8`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

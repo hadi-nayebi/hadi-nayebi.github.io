@@ -29,4 +29,4 @@ This mature article received a bounded obvious-error pass. The scoped-building a
 - Published-page SHA-256: `cc40b9c76818f6b2592a214647f484ac3f54d3b7c2301e72f9e66335ce904185`
 - Recorded source words: 2,852 to 2,911; net `+59`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

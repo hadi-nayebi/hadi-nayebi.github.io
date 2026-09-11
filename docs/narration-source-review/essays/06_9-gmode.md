@@ -41,5 +41,4 @@ historical mechanism actually requires.
 - Source SHA-256: `9e00beacbcec6d0a3bd2a711c95506bb249985a9189d0ecefb0c7f0340a22388`
 - Published-page SHA-256: `1a5e20c8970741b806152bf1ef7e6c49b2ad4605838a73ad9d8411a26736968f`
 - Recorded source words: 3,562 to 3,696; net `+134`.
-- Cross-writing consistency remains provisional; Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
