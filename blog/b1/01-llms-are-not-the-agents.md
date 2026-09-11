@@ -63,7 +63,7 @@ In a CLI agent, the brain is not abstract or metaphorical. It is **literal**. It
 
 **The agent is the filesystem.**
 
-And here is the key insight: since a CLI agent's entire capability is generating text and using it to create and modify files — it can build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it.
+And here is the key insight: because a CLI agent can generate text and use tools to create and modify files, it can help build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it.
 
 You describe what you need through conversation. The agent builds. The same seed can offer shared principles and building blocks, but what it grows into depends on you. You control the composition and authorize its growth. We will dive deep into what makes a seed agent work in the second half of this series.
 

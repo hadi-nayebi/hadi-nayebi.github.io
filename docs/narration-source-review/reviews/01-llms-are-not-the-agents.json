@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "path": "blog/b1/01-llms-are-not-the-agents.md",
-  "source_sha256": "ec8f672341ffccf199fb462de0bce2a308dad0b3375f948ae54ce2bb533fe27f",
+  "source_sha256": "bd08b432d80d51640080af1cad38ea5f2c3298aedf78eff66f18834a7b344111",
   "reviewed_at": "2026-09-10",
   "report": "docs/narration-source-review/essays/01-llms-are-not-the-agents.md",
   "review": {
