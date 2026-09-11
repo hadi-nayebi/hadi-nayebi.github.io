@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b2/02-we-could-have-had-agi.md",
+  "source_sha256": "6d23a64ee8157f75a14cf67d2c0b699330efe5042d091b74ec73b2b7724b1425",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/02-we-could-have-had-agi.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
