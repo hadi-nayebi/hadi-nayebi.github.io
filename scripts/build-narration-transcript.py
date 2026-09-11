@@ -17,6 +17,21 @@ from pathlib import Path
 
 
 PRONUNCIATIONS = {
+    "AGENTS.md": {
+        "tts": "AGENTS dot em dee",
+        "ipa": None,
+        "asr_accept": ["AGENTS.md", "agents dot m d", "agents m d"],
+    },
+    "CLAUDE.md": {
+        "tts": "CLAUDE dot em dee",
+        "ipa": None,
+        "asr_accept": ["CLAUDE.md", "Claude dot m d", "cloud dot m d"],
+    },
+    "QWEN.md": {
+        "tts": "quen dot em dee",
+        "ipa": None,
+        "asr_accept": ["QWEN.md", "Qwen dot m d", "quen dot m d"],
+    },
     "data.json": {
         "tts": "data dot json",
         "ipa": None,
@@ -142,6 +157,10 @@ def spoken_rewrites(text: str) -> str:
         (
             r"hook\.sh in Claude Code and plugin\.ts in OpenCode",
             "a shell hook in Claude Code and a TypeScript plugin in OpenCode",
+        ),
+        (
+            r"(?<!\w)\.claude/(?!\w)",
+            "the hidden Claude configuration directory",
         ),
     )
     for pattern, replacement in rewrites:
