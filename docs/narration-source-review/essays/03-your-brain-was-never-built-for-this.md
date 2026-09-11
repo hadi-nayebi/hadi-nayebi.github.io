@@ -4,17 +4,18 @@
 
 The snake-versus-spreadsheet opening, digital cortex, personal infrastructure,
 future of work, invisible wall, and closing call for more organs remain the
-essay's narrative. The revision retains 90.3 percent token-sequence similarity
-to the approved source and corrects only details that materially distort the
-metaphor or state a changing product fact as a permanent guarantee.
+essay's narrative. Concrete present-day claims are corrected while the
+future-facing argument remains declarative: the cortex is overloaded, CLI
+agents become a new cognitive layer, delegation costs fall, and ownership
+moves back toward the user.
 
 ## Reviewed revision
 
 - Canonical source: `blog/b3/03-your-brain-was-never-built-for-this.md`
 - Source version: `v0.2.0` (previously `v0.1.1`)
-- Source SHA-256: `c8b0897a197b54a85db3c6f709d248764621e9ee856e02eb740b9592546541a0`
+- Source SHA-256: `1e10e6509cdf29af339d6c96ff44c4f56f80b517ad780a7d8b4af324aebc8c0a`
 - Published page: `blog/b3/03-your-brain-was-never-built-for-this.html`
-- Published-page SHA-256: `66a88eab9d4562213353de441d7fa4818ef25cca7442c0f25a21b083ae4b2bcd`
+- Published-page SHA-256: `430987f0740a6c1e31f93f6345898ed51076bdd2c2f9877dc18ceb701b5e2b47`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -36,17 +37,17 @@ metaphor or state a changing product fact as a permanent guarantee.
 6. **Corrected the memory example.** Reviewed external memory helps with
    information a person might fail to retain or retrieve; sleep does not
    simply make the hippocampus discard project knowledge.
-7. **Kept the business future prospective.** The 80-to-90-percent sentence is
-   now an imagined large share of routine operations. The beverage-market
-   thought experiment and revenue-dispersion argument remain, while the
-   hundred-dollar compute scenario is explicitly conditional and other
-   business constraints remain visible.
+7. **Restored force to the business future.** The 80-to-90-percent passage is
+   framed as a coming shift rather than softened into a distant possibility.
+   The beverage-market thought experiment and revenue-dispersion argument
+   remain, while the unstable fixed compute price is replaced by the durable
+   claim that the economic default shifts as delegation costs fall.
 8. **Kept the OpenClaw and Moltbook signal.** Their popularity and ecosystem
    role remain examples of active experimentation, while trustworthy agent
    commerce remains an open outcome.
-9. **Qualified digital ownership.** Local storage and inspectable rules can
-   make software and data far more user-controlled, while hardware and model
-   providers may still remain in the stack.
+9. **Preserved the ownership direction.** Software and data move back toward
+   the user through local storage and inspectable rules, while the text remains
+   accurate about hardware and model providers that may stay in the stack.
 10. **Kept adoption as the invisible wall without erasing structural access.**
     Money, education, disability, infrastructure, and policy remain part of
     the divide.

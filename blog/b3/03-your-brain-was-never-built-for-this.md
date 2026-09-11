@@ -76,7 +76,7 @@ For twelve thousand years, delegation required hiring another human. A specialis
 
 The [brainstem](https://www.ncbi.nlm.nih.gov/books/NBK544297/) helps regulate breathing, heartbeat, arousal, and basic reflexes. The [cortex](https://pmc.ncbi.nlm.nih.gov/articles/PMC3606080/) — shared across mammals and extensively expanded and reorganized in humans — supports language, planning, and abstract thought alongside deeper structures.
 
-Evolution did not stop. But it does not redesign a nervous system on the timetable of tax codes, cryptocurrency, or changing privacy settings. The cortex that can write poetry and build bridges **can still be overloaded** by the world it created.
+Evolution did not stop. But it does not redesign a nervous system on the timetable of tax codes, cryptocurrency, or changing privacy settings. The cortex that can write poetry and build bridges is **overloaded** by the world it created.
 
 So we build the next layer ourselves.
 
@@ -88,7 +88,7 @@ That phrase is deliberate. An **organ**.
 
 Your liver does not wait for instructions. It processes toxins continuously, silently, as part of your body's background operations. Your immune system does not require a prompt. It monitors, detects, and responds — because that is what it was built to do.
 
-A CLI agent can do something analogous — preserve procedures, monitor selected events, and prepare work for judgment. The snake detector trying to process tax law finally gets help.
+Harnessed well, a CLI agent becomes the analogous layer — preserving procedures, monitoring selected events, and preparing work for judgment. The snake detector trying to process tax law finally gets help.
 
 A [hook](https://en.wikipedia.org/wiki/Hooking "A technique that intercepts events or actions to monitor or change behavior") that watches your file system for sensitive data exposure? **Cognitive reflex** — a digital immune system catching what your organic attention missed.
 
@@ -108,7 +108,7 @@ For generations, the default economic relationship has been: you have a **job**.
 
 That made sense when delegation was expensive — when running a business required hiring the accountants, lawyers, logistics managers, and marketing teams that only a fraction of people could afford.
 
-Imagine what happens if your digital cortex reliably handles a large share of routine business operations.
+Watch what happens as your digital cortex takes over more routine business operations.
 
 You go to the supermarket and pay for someone else's brand. What if you had your own? Pick the flavor. Choose the ingredients. Make it healthier. Someone buying your drink pays your salary. Every person a corporation.
 
@@ -126,7 +126,7 @@ The same logic applies across industries — from packaged snacks to consulting 
 
 Remove that overhead and **revenue disperses**. Not because the market grows, but because more people can compete in it. A seventy-billion-dollar industry does not disappear. It distributes across more brand owners — each one bringing their own audience, their own human connection to the table.
 
-And if running a business eventually costs roughly one hundred dollars a month in compute, then the economic default could shift. Not from job to *a* company. From job to **several micro-businesses** — each one supported by organs you designed, while capital, regulation, relationships, and demand still matter.
+As the cost of operating these systems falls, the economic default shifts. Not from job to *a* company. From job to **several micro-businesses** — each one supported by organs you designed, while capital, regulation, relationships, and demand still matter.
 
 ### What Survives
 
@@ -156,9 +156,9 @@ A personal super-app on your phone, built by your agent, collecting your own dat
 
 Look at the stack that makes this possible. Cloud hardware providers sell compute the way power companies sell electricity. LLM providers sell intelligence the way water utilities sell clean water. You do not build the power plant. You plug in. Your LLM bill arrives monthly, the same way your electric bill does. Your agent runs on intelligence piped to your machine, the same way your refrigerator runs on electricity piped to your house.
 
-This is already happening — messily, the way all early infrastructure does. [OpenClaw](https://github.com/openclaw/openclaw) — an open-source personal agent — went from obscurity to hundreds of thousands of GitHub stars. [Moltbook](https://www.moltbook.com/), a social network experiment for AI agents, attracted massive attention before anyone could verify what the numbers meant. Messy? Absolutely. But the signal underneath is clear: personalized agents are running independently and forming new ecosystems. Whether trustworthy agent-driven commerce emerges remains open.
+This is already happening — messily, the way all early infrastructure does. [OpenClaw](https://github.com/openclaw/openclaw) — an open-source personal agent — went from obscurity to hundreds of thousands of GitHub stars. [Moltbook](https://www.moltbook.com/), a social network experiment for AI agents, attracted massive attention before anyone could verify what the numbers meant. Messy? Absolutely. But the signal underneath is clear: personalized agents are running independently and forming new ecosystems. Pair that movement with accountable trust infrastructure and the early architecture for agent-driven commerce comes into view.
 
-Still relying on hardware companies for the silicon. Often still paying for intelligence by subscription or usage. But the software and data layer can become far more **yours** when you choose inspectable rules, local storage, and services with boundaries you understand.
+Still relying on hardware companies for the silicon. Often still paying for intelligence by subscription or usage. But the software and data layer moves back toward **you** when you choose inspectable rules, local storage, and services with boundaries you understand.
 
 ### The Invisible Wall
 
@@ -172,7 +172,7 @@ Not the loud, visible kind. Not rich versus poor in the way we usually mean. An 
 
 The first group will run micro-businesses, manage their own data, navigate bureaucracy through cognitive reflexes, and make better decisions because their digital cortex fills the gaps their biology cannot.
 
-The second group will feel the world getting faster, more confusing, more demanding — without understanding why. Money, education, disability, infrastructure, and policy still matter. But part of the wall between them is **adoption**.
+The second group will feel the world getting faster, more confusing, more demanding — without understanding why. The wall between them is made from access and **adoption**: money, education, disability, infrastructure, policy, and whether anyone showed them how to claim this new layer.
 
 But here is what makes this shift different from every one before it. Literacy required years of schooling. Electricity required infrastructure. The internet required learning an entirely new medium. This? You talk to it. You describe what you need, and it builds itself around your words. Adoption has never required less — because the tool does the work. And this cycle is shorter than any before it.
 
