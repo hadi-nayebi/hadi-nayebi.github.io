@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "source": "blog/b1/01-llms-are-not-the-agents.md",
   "source_sha256": "bd08b432d80d51640080af1cad38ea5f2c3298aedf78eff66f18834a7b344111",
-  "status": "voice-review",
+  "status": "voice-approved",
   "content_lock": {
     "status": "approved",
     "approved_at": "2026-09-11"
   },
-  "voice_review": "pending",
+  "voice_review": "approved",
   "canonical_text_policy": "Canonical meaning and the reader-facing argument are preserved in text; eye-oriented notation may be expanded into equivalent spoken prose; render-only aliases live in tts_text.",
   "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
   "audio": {
@@ -1542,5 +1542,6 @@
       "gap_after_ms": 900,
       "text_sha256": "2aa7a0d1b84dd93a1cb4b48931501c01fa2cb209e6c197b1be6043358c11f471"
     }
-  ]
+  ],
+  "voice_review_approved_at": "2026-09-11"
 }
