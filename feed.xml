@@ -68,8 +68,8 @@
       <title>The Always-On Digital Cortex — Pt 2: Plugin Edit Safety (plugin_integrity)</title>
       <link>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_2-plugin-integrity.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The test gate underneath every plugin code change. Pass and commit, fail and revert. The universal floor most architects inherit rather than rewrite — but the inside of the gate has knobs.</description>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>An earlier Claude-based seed-agent prototype protects plugin changes with user-gated scope, test-protected closeout, preserved work on active failure, and a recoverable auto-revert fallback.</description>
     </item>
 
     <item>
