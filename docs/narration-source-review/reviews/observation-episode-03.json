@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "path": "blog/observations/information-system-of-a-planet/episodes/episode-03-how-much-can-a-message-carry.json",
+  "source_sha256": "f405ebfae1979c5b250bdd86f62173411b543e31381416ae3b421338ff58dc4d",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/observations/episode-03-how-much-can-a-message-carry.md",
+  "review": {
+    "factual": "passed",
+    "historical": "passed",
+    "source_support": "passed",
+    "narrative_continuity": "passed",
+    "editorial": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

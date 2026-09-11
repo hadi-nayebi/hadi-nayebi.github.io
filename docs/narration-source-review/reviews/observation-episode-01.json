@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "path": "blog/observations/information-system-of-a-planet/episodes/episode-01-when-life-learned-before-it-died.json",
+  "source_sha256": "d5dc66d7f891b42ae90c92ce6769eb027e6482a4aae63e341587d492e1c2d5ee",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/observations/episode-01-when-life-learned-before-it-died.md",
+  "review": {
+    "factual": "passed",
+    "historical": "passed",
+    "source_support": "passed",
+    "narrative_continuity": "passed",
+    "editorial": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
