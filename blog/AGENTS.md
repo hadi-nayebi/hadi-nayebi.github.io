@@ -157,6 +157,13 @@ code-only detail, and production annotations; retain explanations a listener
 needs. Expand abbreviations and add pauses deliberately. Chunk by semantic beat,
 then verify the assembled audio against the approved transcript and source hash.
 
+Record the public destination in the transcript before rendering. A standalone
+writing uses one repository-relative `audio.publication_path` under that
+writing directory's `audio/` folder. A grouped Observation transcript records
+the canonical `slide_audio_path` on every chunk. Publication tooling must use
+these explicit paths and refuse absent, absolute, traversing, or conflicting
+destinations; it must never infer a filename from a title or slug.
+
 Keep three forms distinct:
 
 - canonical source prose remains the authority for meaning;

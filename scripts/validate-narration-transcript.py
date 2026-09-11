@@ -7,7 +7,7 @@ import argparse
 import hashlib
 import json
 import re
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 
 BANNED = (
@@ -32,6 +32,20 @@ def digest(text: str) -> str:
 
 def fail(message: str) -> None:
     raise SystemExit(f"Narration validation failed: {message}")
+
+
+def audio_path(value: object, label: str, allowed_directory: PurePosixPath) -> str:
+    candidate = str(value or "").strip()
+    path = PurePosixPath(candidate)
+    if (
+        not candidate
+        or path.is_absolute()
+        or ".." in path.parts
+        or path.suffix.lower() != ".mp3"
+        or path.parent != allowed_directory
+    ):
+        fail(f"{label} must be a repository-relative MP3 in {allowed_directory}")
+    return candidate
 
 
 def main() -> None:
@@ -70,6 +84,27 @@ def main() -> None:
     chunks = document.get("chunks", [])
     if not chunks:
         fail("no chunks")
+    audio = document.get("audio", {})
+    publication_path = audio.get("publication_path")
+    grouped_paths = [chunk.get("slide_audio_path") for chunk in chunks]
+    has_grouped_paths = any(grouped_paths)
+    if publication_path and has_grouped_paths:
+        fail("manifest cannot mix publication_path with slide_audio_path")
+    if not publication_path and not has_grouped_paths:
+        fail("audio output mapping is missing")
+    source_posix = PurePosixPath(document["source"])
+    if publication_path:
+        audio_path(
+            publication_path,
+            "audio.publication_path",
+            source_posix.parent / "audio",
+        )
+    else:
+        if not all(grouped_paths):
+            fail("every grouped narration chunk requires slide_audio_path")
+        allowed = source_posix.parent.parent / "audio"
+        for index, grouped_path in enumerate(grouped_paths, start=1):
+            audio_path(grouped_path, f"chunk {index} slide_audio_path", allowed / PurePosixPath(str(grouped_path)).parent.name)
     ids = set()
     aliases = set()
     for expected, chunk in enumerate(chunks, start=1):
