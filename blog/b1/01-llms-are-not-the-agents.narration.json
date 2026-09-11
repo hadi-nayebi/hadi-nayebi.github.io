@@ -1,0 +1,1541 @@
+{
+  "schema_version": "1.0.0",
+  "source": "blog/b1/01-llms-are-not-the-agents.md",
+  "source_sha256": "bd08b432d80d51640080af1cad38ea5f2c3298aedf78eff66f18834a7b344111",
+  "status": "voice-review",
+  "content_lock": {
+    "status": "approved",
+    "approved_at": "2026-09-11"
+  },
+  "voice_review": "pending",
+  "canonical_text_policy": "Canonical meaning and the reader-facing argument are preserved in text; eye-oriented notation may be expanded into equivalent spoken prose; render-only aliases live in tts_text.",
+  "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
+  "audio": {
+    "engine": "Qwen3-TTS voice clone",
+    "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "target_wpm": 155,
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "loudness_lufs": -16,
+    "true_peak_dbtp": -1.5
+  },
+  "curation": {
+    "source_file_words": 3542,
+    "narration_words": 2872,
+    "excluded": [
+      "front matter",
+      "evidence annotations",
+      "visual and asset-production instructions",
+      "image captions",
+      "code blocks",
+      "raw link destinations",
+      "previous and next navigation",
+      "duplicate headings and repeated series footer"
+    ]
+  },
+  "pronunciation_lexicon": {
+    "AGENTS.md": {
+      "tts": "AGENTS dot em dee",
+      "ipa": null,
+      "asr_accept": [
+        "AGENTS.md",
+        "agents dot m d",
+        "agents m d",
+        "agents md"
+      ]
+    },
+    "CLAUDE.md": {
+      "tts": "CLAUDE dot em dee",
+      "ipa": null,
+      "asr_accept": [
+        "CLAUDE.md",
+        "Claude dot m d",
+        "cloud dot m d",
+        "Claude md",
+        "claud md",
+        "cloud md"
+      ]
+    },
+    "QWEN.md": {
+      "tts": "quen dot em dee",
+      "ipa": null,
+      "asr_accept": [
+        "QWEN.md",
+        "Qwen dot m d",
+        "quen dot m d",
+        "Qwen md",
+        "quen md"
+      ]
+    },
+    "OPEVC": {
+      "tts": "oh pee ee vee see",
+      "ipa": null,
+      "asr_accept": [
+        "OPEVC",
+        "O P E V C"
+      ]
+    }
+  },
+  "chunks": [
+    {
+      "id": "n001",
+      "sequence": 1,
+      "kind": "title",
+      "text": "LLMs Are Not the Agents",
+      "tts_text": "LLMs Are Not the Agents",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 700,
+      "text_sha256": "379ac6f9fc6674f04a799e2f21dd2c5845d18437f7558bd0f94856d95a52d31a"
+    },
+    {
+      "id": "n002",
+      "sequence": 2,
+      "kind": "orientation",
+      "text": "Essay 1 of 8 in the Hadosh Academy series on agent architecture.",
+      "tts_text": "Essay 1 of 8 in the Hadosh Academy series on agent architecture.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "c4545c93b35cd0648920662c0be3b661108e40aa90cacecdaf7b7b5b35e2ff74"
+    },
+    {
+      "id": "n003",
+      "sequence": 3,
+      "kind": "body",
+      "text": "LLMs are electricity. Agents are toasters.",
+      "tts_text": "LLMs are electricity. Agents are toasters.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c76ab977bbcc625af4a0609074eb13560f5230044a0761c00b2c0e01bf5866da"
+    },
+    {
+      "id": "n004",
+      "sequence": 4,
+      "kind": "body",
+      "text": "Electricity is raw power. It can heat a room, run a hospital, or power a city. But plug it into nothing and it just arcs. It needs a structure to become useful.",
+      "tts_text": "Electricity is raw power. It can heat a room, run a hospital, or power a city. But plug it into nothing and it just arcs. It needs a structure to become useful.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "274a14ddce921a67fb1245ca0521e0398968a47011b3983732fc6d6c21ec31bc"
+    },
+    {
+      "id": "n005",
+      "sequence": 5,
+      "kind": "body",
+      "text": "A toaster is a simple structure. It takes raw electrical energy and channels it into a specific, repeatable outcome — toast, every time. Not because electricity \"decided\" to make toast. Because the wires, the timer, and the slots shaped the energy into a predictable result.",
+      "tts_text": "A toaster is a simple structure. It takes raw electrical energy and channels it into a specific, repeatable outcome — toast, every time. Not because electricity \"decided\" to make toast. Because the wires, the timer, and the slots shaped the energy into a predictable result.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a67edc84a44ecb113522693b8cbb88e40877df850dd58d28628bd9d48974c463"
+    },
+    {
+      "id": "n006",
+      "sequence": 6,
+      "kind": "body",
+      "text": "This is the relationship between a large language model, or LLM, and an agent.",
+      "tts_text": "This is the relationship between a large language model, or LLM, and an agent.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "13ade66b1991efa09e72dce32865ba00f0e6417f0e876ab01e965c9795efa6aa"
+    },
+    {
+      "id": "n007",
+      "sequence": 7,
+      "kind": "body",
+      "text": "The LLM provides raw reasoning power. It can write, analyze, plan, and create. But without structure, the token stream it produces can flow in any direction. The agent provides the structure. It channels that stream into consistent, reliable behavior.",
+      "tts_text": "The LLM provides raw reasoning power. It can write, analyze, plan, and create. But without structure, the token stream it produces can flow in any direction. The agent provides the structure. It channels that stream into consistent, reliable behavior.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "819b06b4cc7c305ecd1a6dcc04e0f8f71c28c4c7a21cd3a3778ae9d209714342"
+    },
+    {
+      "id": "n008",
+      "sequence": 8,
+      "kind": "body",
+      "text": "Most people building with artificial intelligence, or AI, today are staring at the electricity and wondering why it does not make toast on its own.",
+      "tts_text": "Most people building with artificial intelligence, or AI, today are staring at the electricity and wondering why it does not make toast on its own.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "de064b146dae2823f297d415abe0a079556c6af9a70b2fa6738dc52604f71fac"
+    },
+    {
+      "id": "n009",
+      "sequence": 9,
+      "kind": "heading",
+      "text": "The Misunderstanding",
+      "tts_text": "The Misunderstanding",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "e29ee40178f58a46ca395aeec9797daaccea0da52f9d5bfc8f326f2b797b409c"
+    },
+    {
+      "id": "n010",
+      "sequence": 10,
+      "kind": "body",
+      "text": "When people say \"AI agent,\" they almost always mean the model. Claude, GPT, Gemini — pick your favorite. They point at the LLM and say: \"That is my agent.\"",
+      "tts_text": "When people say \"AI agent,\" they almost always mean the model. Claude, GPT, Gemini — pick your favorite. They point at the LLM and say: \"That is my agent.\"",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "69fc07a228e0fafa29dddb76acdd30b4cfd069c5e87ed544af2b5ca1fb6a8299"
+    },
+    {
+      "id": "n011",
+      "sequence": 11,
+      "kind": "body",
+      "text": "That is the root misunderstanding.",
+      "tts_text": "That is the root misunderstanding.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7a86f15c06db15ee7990c36d4430e4be4dcdcb87f0b1a04601115c0bd809e45d"
+    },
+    {
+      "id": "n012",
+      "sequence": 12,
+      "kind": "body",
+      "text": "The model is not the agent. The model is the engine — a token generator that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create.",
+      "tts_text": "The model is not the agent. The model is the engine — a token generator that produces text one piece at a time based on patterns in its training data. It can reason, analyze, and create.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "d208bbd5380908c84ec208fc1c65b4c93cce0d63271068ef28cf41d19f37cde4"
+    },
+    {
+      "id": "n013",
+      "sequence": 13,
+      "kind": "body",
+      "text": "But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model.",
+      "tts_text": "But on its own, a token generator does not form memories, build identity, learn from experience, or maintain consistency across sessions. Those require something outside the model.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "abc4014a8baddca05041d5bae51dd9c7306c4ea9f7b21b286307e3952f94eee9"
+    },
+    {
+      "id": "n014",
+      "sequence": 14,
+      "kind": "body",
+      "text": "A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.",
+      "tts_text": "A jet engine sitting on the ground is incredibly powerful — but it is not an airplane.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "9da180e8a2b99cdcd033d02f25128b68a2fd8cf579285c3b086167eb4ee5a696"
+    },
+    {
+      "id": "n015",
+      "sequence": 15,
+      "kind": "body",
+      "text": "Here is what happens when you treat the LLM as the agent:",
+      "tts_text": "Here is what happens when you treat the LLM as the agent:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0dc6cf427363c7536abef6ae21ca30fecbce25622e9f6ff4f242bb245ebf547d"
+    },
+    {
+      "id": "n016",
+      "sequence": 16,
+      "kind": "list",
+      "text": "No durable project memory on its own. The model forgets the conversation unless the surrounding system supplies history, saved memory, or files.",
+      "tts_text": "No durable project memory on its own. The model forgets the conversation unless the surrounding system supplies history, saved memory, or files.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "608b236370ff0f0291ad3407b7f5d453636202ae9658d2eadaf1e102d11a1b13"
+    },
+    {
+      "id": "n017",
+      "sequence": 17,
+      "kind": "list",
+      "text": "No consistent behavior. The same prompt can produce different results on different days. There are no habits, only probabilities.",
+      "tts_text": "No consistent behavior. The same prompt can produce different results on different days. There are no habits, only probabilities.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "90df7c78052d239634eb14f962bfb2e2b7d16633fc9ba8bebdf2b72cc9e33e55"
+    },
+    {
+      "id": "n018",
+      "sequence": 18,
+      "kind": "list",
+      "text": "No identity. The model does not know who \"it\" is in the context of your project. It adapts to whatever you tell it in the moment.",
+      "tts_text": "No identity. The model does not know who \"it\" is in the context of your project. It adapts to whatever you tell it in the moment.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "1e5aa7440c092dc336e30dd6f115dd6bde12cd26edac9afe5625d05fe133c2b1"
+    },
+    {
+      "id": "n019",
+      "sequence": 19,
+      "kind": "list",
+      "text": "No growth on its own. A deployed model does not update its weights after your task. A surrounding system must preserve and reuse what was learned.",
+      "tts_text": "No growth on its own. A deployed model does not update its weights after your task. A surrounding system must preserve and reuse what was learned.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "d6b90f889ca3a4afa12916180e8a9b51f6795bc6a15f5d2039a6a00b06e2c462"
+    },
+    {
+      "id": "n020",
+      "sequence": 20,
+      "kind": "body",
+      "text": "If your \"agent\" loses everything when you close the chat session, you do not have an agent. You have a very expensive autocomplete.",
+      "tts_text": "If your \"agent\" loses everything when you close the chat session, you do not have an agent. You have a very expensive autocomplete.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c1d0f0a9fd84df08720801f07a395f31778b7f440eeb9776c137af99195e7be8"
+    },
+    {
+      "id": "n021",
+      "sequence": 21,
+      "kind": "body",
+      "text": "The real agent is something else entirely.",
+      "tts_text": "The real agent is something else entirely.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "492b2691e31660f08c12d16ac6bac56c4e7407824ca868cac3a4e5aafd23ac98"
+    },
+    {
+      "id": "n022",
+      "sequence": 22,
+      "kind": "heading",
+      "text": "What Is an Agent, Really?",
+      "tts_text": "What Is an Agent, Really?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "4557498034f60efd980f9e45842bd9d54d55e8576c927a85c40bd70dabe28349"
+    },
+    {
+      "id": "n023",
+      "sequence": 23,
+      "kind": "body",
+      "text": "In this series, an agent is the engine plus a local brain: the durable, user-shaped system around the model.",
+      "tts_text": "In this series, an agent is the engine plus a local brain: the durable, user-shaped system around the model.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ecf775c0c2dfb2f66bd0721e41b802b4c7a16c489220601d749a1583f489c573"
+    },
+    {
+      "id": "n024",
+      "sequence": 24,
+      "kind": "body",
+      "text": "The most direct way to build that brain today is with a command-line interface agent, or CLI agent — a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM.",
+      "tts_text": "The most direct way to build that brain today is with a command-line interface agent, or CLI agent — a program that sits in a folder on your computer, reads and writes files in that folder, and can be controlled by the content of those files. Think of it as a general-purpose file manager powered by an LLM.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3e506ae6b6525b8e9238662ea86dd3eb1737f6c4e9f92ef13c925ee417c0ca1c"
+    },
+    {
+      "id": "n025",
+      "sequence": 25,
+      "kind": "body",
+      "text": "Current tools — Claude Code, OpenCode, Gemini CLI — are marketed toward technical users. The names suggest it: Claude Code, OpenCode. But what these tools actually do is manipulate files and respond to file content. That capability extends far beyond writing code.",
+      "tts_text": "Current tools — Claude Code, OpenCode, Gemini CLI — are marketed toward technical users. The names suggest it: Claude Code, OpenCode. But what these tools actually do is manipulate files and respond to file content. That capability extends far beyond writing code.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a0668792bcf558fe2339c55d8b751bd70d04f6bad61a14a31579427b53a86d70"
+    },
+    {
+      "id": "n026",
+      "sequence": 26,
+      "kind": "body",
+      "text": "We will explore what CLI agents make possible in a later essay.",
+      "tts_text": "We will explore what CLI agents make possible in a later essay.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f8fe8c2c63d83b05e082a702565ed7c958a6ea4d334b1d48707aa9166d2ad94d"
+    },
+    {
+      "id": "n027",
+      "sequence": 27,
+      "kind": "body",
+      "text": "In a CLI agent, the brain is not abstract or metaphorical. It is literal. It is a collection of files and directories on your local disk.",
+      "tts_text": "In a CLI agent, the brain is not abstract or metaphorical. It is literal. It is a collection of files and directories on your local disk.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b1198418b4f3c1d01af13795b73c639313db160bb6aa8133efa8ba606db11933"
+    },
+    {
+      "id": "n028",
+      "sequence": 28,
+      "kind": "body",
+      "text": "The agent is the filesystem.",
+      "tts_text": "The agent is the filesystem.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7c04c5ee21b59569393ff527acbd8cc80c31c7f37f56030a57c8178325fdc3c0"
+    },
+    {
+      "id": "n029",
+      "sequence": 29,
+      "kind": "body",
+      "text": "And here is the key insight: because a CLI agent can generate text and use tools to create and modify files, it can help build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it.",
+      "tts_text": "And here is the key insight: because a CLI agent can generate text and use tools to create and modify files, it can help build the brain itself. Give it a well-designed seed — a filesystem with a basic cognitive architecture already defined — and the agent can read its own structure, understand it, and extend it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "82544eafe06151f5848d4e07704e88aebda36caa16faeab5662c4c70211ded1b"
+    },
+    {
+      "id": "n030",
+      "sequence": 30,
+      "kind": "body",
+      "text": "You describe what you need through conversation. The agent builds. The same seed can offer shared principles and building blocks, but what it grows into depends on you. You control the composition and authorize its growth. We will dive deep into what makes a seed agent work in the second half of this series.",
+      "tts_text": "You describe what you need through conversation. The agent builds. The same seed can offer shared principles and building blocks, but what it grows into depends on you. You control the composition and authorize its growth. We will dive deep into what makes a seed agent work in the second half of this series.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7dbedc31d9237570f1cff72a67d3569ed10ec29d386585118c086a931adb7ac3"
+    },
+    {
+      "id": "n031",
+      "sequence": 31,
+      "kind": "body",
+      "text": "This is good news. Training a frontier LLM requires budgets and specialized hardware most people will never touch. Building an agent around an existing hosted or open-weight model is far more accessible. You describe what you need through conversation. The LLM builds the filesystem. No training run. Just files.",
+      "tts_text": "This is good news. Training a frontier LLM requires budgets and specialized hardware most people will never touch. Building an agent around an existing hosted or open-weight model is far more accessible. You describe what you need through conversation. The LLM builds the filesystem. No training run. Just files.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e75389bddf1971a6c20502958dd41bc1294701c95474fc69d3c451af97be5b37"
+    },
+    {
+      "id": "n032",
+      "sequence": 32,
+      "kind": "body",
+      "text": "As the agent takes on more work, it may consume more LLM calls — you might move up a subscription tier. But the total cost is a utility bill, not a research budget.",
+      "tts_text": "As the agent takes on more work, it may consume more LLM calls — you might move up a subscription tier. But the total cost is a utility bill, not a research budget.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8ac261a516d5d6532b668ccfc8ffd626d0462f81d0908e5346d35d547757967f"
+    },
+    {
+      "id": "n033",
+      "sequence": 33,
+      "kind": "body",
+      "text": "You are not creating intelligence — that already exists. You are organizing files that shape existing intelligence into reliable behavior.",
+      "tts_text": "You are not creating intelligence — that already exists. You are organizing files that shape existing intelligence into reliable behavior.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "710a6b1018d5694b548ab9e1f94b397631bca677b1349d96aed9969def6d97e1"
+    },
+    {
+      "id": "n034",
+      "sequence": 34,
+      "kind": "body",
+      "text": "And because its durable layer is made of files, much of it is transparent. You can open a folder and inspect the external memory and rules you designed. You can audit it. You can move it to another machine. You can hand it to a colleague.",
+      "tts_text": "And because its durable layer is made of files, much of it is transparent. You can open a folder and inspect the external memory and rules you designed. You can audit it. You can move it to another machine. You can hand it to a colleague.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "45b89041692c478477f6741c06edb1d9a4c0fa57fbd640dbf6190f0068ddc1fc"
+    },
+    {
+      "id": "n035",
+      "sequence": 35,
+      "kind": "body",
+      "text": "The model's internal inference remains a black box; your own structure does not have to be.",
+      "tts_text": "The model's internal inference remains a black box; your own structure does not have to be.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "931a4287afac02bb19618c6cb91bea9ed7b98543148ba9c052890925927b2ed6"
+    },
+    {
+      "id": "n036",
+      "sequence": 36,
+      "kind": "body",
+      "text": "That filesystem gives rise to capabilities the LLM cannot achieve on its own:",
+      "tts_text": "That filesystem gives rise to capabilities the LLM cannot achieve on its own:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8441424492f4a492245ae1b0db2131a3f8c68ed3f422203828de79570890d080"
+    },
+    {
+      "id": "n037",
+      "sequence": 37,
+      "kind": "list",
+      "text": "Memory — knowledge files, past decisions, learned patterns.",
+      "tts_text": "Memory — knowledge files, past decisions, learned patterns.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "df7c2982970d13da53ee4ae4807da516e9acb66faf17e6844407daa13d4d2248"
+    },
+    {
+      "id": "n038",
+      "sequence": 38,
+      "kind": "list",
+      "text": "Structure — operational phases, rules, workflows.",
+      "tts_text": "Structure — operational phases, rules, workflows.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "967a2b990d2d09dd3cd921f6be7dffb611045f7ac059d360658664438e471d3d"
+    },
+    {
+      "id": "n039",
+      "sequence": 39,
+      "kind": "list",
+      "text": "Reflexes — automatic actions that trigger at specific moments.",
+      "tts_text": "Reflexes — automatic actions that trigger at specific moments.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "5c2cf51b7012ba8aa7d70258167575db9323ef2ac5a08516c88cb37cb69372ff"
+    },
+    {
+      "id": "n040",
+      "sequence": 40,
+      "kind": "list",
+      "text": "Identity — who the agent is, how it behaves, what it prioritizes.",
+      "tts_text": "Identity — who the agent is, how it behaves, what it prioritizes.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "6b0e4b0cbeb6a29c515b5d3913bb5c9ddafed291e7284dfdd66163a2721984eb"
+    },
+    {
+      "id": "n041",
+      "sequence": 41,
+      "kind": "list",
+      "text": "Continuity — persistent state that survives across sessions.",
+      "tts_text": "Continuity — persistent state that survives across sessions.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "3f27db00bef7d5925623cfca7d461a6313c5aec0746603ed792ab49230304cc4"
+    },
+    {
+      "id": "n042",
+      "sequence": 42,
+      "kind": "body",
+      "text": "When you open one of these CLI agents in an empty directory, you have the platform agent and its built-in tools — but none of the durable project brain defined here. There is no local memory of yesterday. No rules it has learned from this project. No project identity it maintains.",
+      "tts_text": "When you open one of these CLI agents in an empty directory, you have the platform agent and its built-in tools — but none of the durable project brain defined here. There is no local memory of yesterday. No rules it has learned from this project. No project identity it maintains.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "357d109cc791841e707ab943f05a50d14950cde9600b0ee6d312cc319eeb4585"
+    },
+    {
+      "id": "n043",
+      "sequence": 43,
+      "kind": "body",
+      "text": "By the definition used in this series, this is not yet the agent. It is an engine and platform with no local car built around them.",
+      "tts_text": "By the definition used in this series, this is not yet the agent. It is an engine and platform with no local car built around them.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "02c37fd940baad8a991326eccd764cbfaf89dceae72a93488922d499a27483b1"
+    },
+    {
+      "id": "n044",
+      "sequence": 44,
+      "kind": "body",
+      "text": "But when you add project instructions and a durable brain directory, something fundamental changes. The exact file and directory names depend on the platform: AGENTS.md in Codex; CLAUDE.md and the hidden Claude configuration directory in Claude Code; QWEN.md in Qwen Code; or the equivalent in OpenCode and Gemini CLI.",
+      "tts_text": "But when you add project instructions and a durable brain directory, something fundamental changes. The exact file and directory names depend on the platform: AGENTS dot em dee in Codex; CLAUDE dot em dee and the hidden Claude configuration directory in Claude Code; quen dot em dee in Qwen Code; or the equivalent in OpenCode and Gemini CLI.",
+      "pronunciations": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "QWEN.md"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "181199ec4cb238e1f1b57e8034a3a1705cc339402b8d720e8e73afd2289dc0ae"
+    },
+    {
+      "id": "n045",
+      "sequence": 45,
+      "kind": "body",
+      "text": "Add knowledge files, operational rules, memory structures, and workflow definitions. Those files become the inspectable brain of your agent. The brain tells the runtime and model how to behave in this project.",
+      "tts_text": "Add knowledge files, operational rules, memory structures, and workflow definitions. Those files become the inspectable brain of your agent. The brain tells the runtime and model how to behave in this project.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "63468e4048cc9a56104df8bbea3ea5e248e4c823b1acfe780a27493e3aed6648"
+    },
+    {
+      "id": "n046",
+      "sequence": 46,
+      "kind": "body",
+      "text": "Without the LLM, this brain is just files on disk — sleeping. Nothing reads them, nothing acts on them. The moment you add the LLM, the filesystem comes alive. The agent reads its own instructions, follows its own rules, and writes back what it learns. Neither piece is the agent on its own.",
+      "tts_text": "Without the LLM, this brain is just files on disk — sleeping. Nothing reads them, nothing acts on them. The moment you add the LLM, the filesystem comes alive. The agent reads its own instructions, follows its own rules, and writes back what it learns. Neither piece is the agent on its own.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "bb8634cd31c2994f6fe917b378ccfda49f10ce3fad7e2abf839a805ffd9448ca"
+    },
+    {
+      "id": "n047",
+      "sequence": 47,
+      "kind": "body",
+      "text": "The agent is what emerges when the two meet.",
+      "tts_text": "The agent is what emerges when the two meet.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "57b165ea734e3d6fc3157d8c553be8f724962f05dc13a3555e48d6fe53792fd2"
+    },
+    {
+      "id": "n048",
+      "sequence": 48,
+      "kind": "heading",
+      "text": "The Default State: The Random Walk Problem",
+      "tts_text": "The Default State: The Random Walk Problem",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "ad9e917087cc8e0cac270a9b171d1ba6a4838b82937877f8dfaff3b48f9b1432"
+    },
+    {
+      "id": "n049",
+      "sequence": 49,
+      "kind": "body",
+      "text": "To understand why structure matters, look at what happens without it.",
+      "tts_text": "To understand why structure matters, look at what happens without it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8250dd4c4223ac393307e5defd65d23f4e8047bd51484a42d3485dd33f07cc84"
+    },
+    {
+      "id": "n050",
+      "sequence": 50,
+      "kind": "body",
+      "text": "A CLI agent in an empty folder has an action space — the set of things it can do at any given moment:",
+      "tts_text": "A CLI agent in an empty folder has an action space — the set of things it can do at any given moment:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c41e79fda88abcae4ce243be176fb8205fb81cda8166965144dbb1eb8bce5114"
+    },
+    {
+      "id": "n051",
+      "sequence": 51,
+      "kind": "list",
+      "text": "Respond in chat.",
+      "tts_text": "Respond in chat.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "f83df0c3b7b643ea9b3178196de3b26e10c165be04d5e9a082e69303b9491e12"
+    },
+    {
+      "id": "n052",
+      "sequence": 52,
+      "kind": "list",
+      "text": "Use deep reasoning mode.",
+      "tts_text": "Use deep reasoning mode.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "a1a6e4288b104bf912a17b15210700b89926c1c6472cff96b923568d7af22850"
+    },
+    {
+      "id": "n053",
+      "sequence": 53,
+      "kind": "list",
+      "text": "Use tools (read, write, edit, run, search).",
+      "tts_text": "Use tools (read, write, edit, run, search).",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "97f8250f042a15d7362da9ed003a405827601368d32d97bbf180bc25e0a99a9e"
+    },
+    {
+      "id": "n054",
+      "sequence": 54,
+      "kind": "list",
+      "text": "Ask for permission.",
+      "tts_text": "Ask for permission.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "600afcb425317d94a84bdb719d3cbbc8c504b7275313a84e35be7236892fbced"
+    },
+    {
+      "id": "n055",
+      "sequence": 55,
+      "kind": "list",
+      "text": "Delegate work to other agents.",
+      "tts_text": "Delegate work to other agents.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "bff09d70e59afb68ce0f1c89b8a135e34111946aa3106359dde3325d91f66d17"
+    },
+    {
+      "id": "n056",
+      "sequence": 56,
+      "kind": "list",
+      "text": "Manage its working memory.",
+      "tts_text": "Manage its working memory.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "e9d608490e614200018aa1ee96e4e5961c332fd9e1879c0404b835ba603201c1"
+    },
+    {
+      "id": "n057",
+      "sequence": 57,
+      "kind": "list",
+      "text": "Stop.",
+      "tts_text": "Stop.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "8dfd80ba047e575b1a31bffa865145de0b7e909ecc2e6c61955e4c98f7b254bf"
+    },
+    {
+      "id": "n058",
+      "sequence": 58,
+      "kind": "body",
+      "text": "At each step, the LLM picks one of these actions based on probabilities. Then it picks again. And again. This creates a probabilistic action chain — a sequence of decisions where each step depends on the current state of the conversation.",
+      "tts_text": "At each step, the LLM picks one of these actions based on probabilities. Then it picks again. And again. This creates a probabilistic action chain — a sequence of decisions where each step depends on the current state of the conversation.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "65f53271791fbf172317fc5f33d4f98ff0e6c72ef3eb6b1bc42afb0901192989"
+    },
+    {
+      "id": "n059",
+      "sequence": 59,
+      "kind": "body",
+      "text": "The problem? Small changes in context lead to completely different paths. Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.",
+      "tts_text": "The problem? Small changes in context lead to completely different paths. Rephrase your prompt slightly and you get a different sequence of actions. Run the same task twice and you might get two different approaches. The chain is inherently unstable.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7c06b64c81bd949421af64d536e7679858802b178ed3f9f9ae15942d284f1b1e"
+    },
+    {
+      "id": "n060",
+      "sequence": 60,
+      "kind": "body",
+      "text": "This is why working with a bare LLM can feel like a random walk. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. A raw LLM agent behaves like a brilliant mind with no executive function.",
+      "tts_text": "This is why working with a bare LLM can feel like a random walk. It is intelligent, but it is not reliable. It might solve your problem beautifully today and stumble on the same problem tomorrow. A raw LLM agent behaves like a brilliant mind with no executive function.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "6ce84e55fe058f8a67e6968152a403fb42b92da39c5031d84b7f98b0913a5e49"
+    },
+    {
+      "id": "n061",
+      "sequence": 61,
+      "kind": "body",
+      "text": "Full of potential, but scattered and inconsistent — unable to stay on track without external structure holding it accountable.",
+      "tts_text": "Full of potential, but scattered and inconsistent — unable to stay on track without external structure holding it accountable.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ab31c7944d03a523202ff9725f0c54a010628bbf48fbb544689d8f9d53ac602b"
+    },
+    {
+      "id": "n062",
+      "sequence": 62,
+      "kind": "body",
+      "text": "Intelligence alone is not reliability. Structure is.",
+      "tts_text": "Intelligence alone is not reliability. Structure is.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "9278cd1bb399e53403deeb829922252be83e78ab3d6004cec7bc5a8cd3bce99e"
+    },
+    {
+      "id": "n063",
+      "sequence": 63,
+      "kind": "heading",
+      "text": "Structure Changes Everything",
+      "tts_text": "Structure Changes Everything",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "af59e75ba0b590f14f6f19a89a716d00768bc39ce91c32c54f44cc53888330e1"
+    },
+    {
+      "id": "n064",
+      "sequence": 64,
+      "kind": "body",
+      "text": "Now watch what happens when you add structure.",
+      "tts_text": "Now watch what happens when you add structure.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "1bb847b66d8ffecd9bfa08787f6f92cd93aa96204a2cf93f2757c5406743be35"
+    },
+    {
+      "id": "n065",
+      "sequence": 65,
+      "kind": "body",
+      "text": "The first and most fundamental piece of structure is a project-instruction file.",
+      "tts_text": "The first and most fundamental piece of structure is a project-instruction file.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "83188348477d560d9a9fdf8fcf6dad0cff2ce569e0dfb5cc213ad6e44a0f519e"
+    },
+    {
+      "id": "n066",
+      "sequence": 66,
+      "kind": "body",
+      "text": "Codex calls it AGENTS.md.",
+      "tts_text": "Codex calls it AGENTS dot em dee.",
+      "pronunciations": [
+        "AGENTS.md"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "e559d36afa5c0d3b196e1c2c607a4a6777dce33170f9caf4206a718200cc3994"
+    },
+    {
+      "id": "n067",
+      "sequence": 67,
+      "kind": "body",
+      "text": "Claude Code uses CLAUDE.md.",
+      "tts_text": "Claude Code uses CLAUDE dot em dee.",
+      "pronunciations": [
+        "CLAUDE.md"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "34b7321d8ac99b03df9893a52229b5557e3e944162035a0ce774ad52ce055112"
+    },
+    {
+      "id": "n068",
+      "sequence": 68,
+      "kind": "body",
+      "text": "Qwen Code uses QWEN.md.",
+      "tts_text": "Qwen Code uses quen dot em dee.",
+      "pronunciations": [
+        "QWEN.md"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "c5718dadfef03aa0382672d1bc1aabdac1717c2d210a86ad5a0b7ac6d7f53cc2"
+    },
+    {
+      "id": "n069",
+      "sequence": 69,
+      "kind": "body",
+      "text": "It is plain-text project context loaded according to the runtime's scope rules.",
+      "tts_text": "It is plain-text project context loaded according to the runtime's scope rules.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "df90bab4fa49780cbaaa602c03395dbdf81b3320436169c2fb9191f61ba2b54e"
+    },
+    {
+      "id": "n070",
+      "sequence": 70,
+      "kind": "body",
+      "text": "Along with the current conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.",
+      "tts_text": "Along with the current conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "6325279ff6cbff5b024eba7cb37277827b61040ab31342cf0d842f9b43fd8c83"
+    },
+    {
+      "id": "n071",
+      "sequence": 71,
+      "kind": "body",
+      "text": "One file at the project root is just the beginning. Instruction files can exist at multiple levels of the directory tree — each one scoped to its location, each one adding local context as the runtime discovers it. Together, they form a layer of working context spread across the filesystem.",
+      "tts_text": "One file at the project root is just the beginning. Instruction files can exist at multiple levels of the directory tree — each one scoped to its location, each one adding local context as the runtime discovers it. Together, they form a layer of working context spread across the filesystem.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "8505b21a8b367accf91858b6ee222d7e3cf73196aa74e93529af37695243c0fe"
+    },
+    {
+      "id": "n072",
+      "sequence": 72,
+      "kind": "body",
+      "text": "We will see this layer's full architecture in the compartmentalization section later in this essay.",
+      "tts_text": "We will see this layer's full architecture in the compartmentalization section later in this essay.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "517d4dd42eb9b7c95af35bd79bfd0886c70a185fe4b5b2b5c7eccea6e291ebb5"
+    },
+    {
+      "id": "n073",
+      "sequence": 73,
+      "kind": "body",
+      "text": "What makes this layer powerful is that it does not just hold static information. It can define a workflow — a sequence of phases the agent moves through as it works. The workflow we use is called OPEVC: Observe, Plan, Execute, Verify, Condense.",
+      "tts_text": "What makes this layer powerful is that it does not just hold static information. It can define a workflow — a sequence of phases the agent moves through as it works. The workflow we use is called oh pee ee vee see: Observe, Plan, Execute, Verify, Condense.",
+      "pronunciations": [
+        "OPEVC"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4d445890c95d86cbcc8560e6c4fa1d858282ad050c6b79c44942821b33289aa9"
+    },
+    {
+      "id": "n074",
+      "sequence": 74,
+      "kind": "body",
+      "text": "In the reference system explored later, an agent following OPEVC is constantly moving information. During Observe, it gathers context—from local files, the web, and the user—and records findings in local working memory. During Plan, it writes the steps it intends to take.",
+      "tts_text": "In the reference system explored later, an agent following oh pee ee vee see is constantly moving information. During Observe, it gathers context—from local files, the web, and the user—and records findings in local working memory. During Plan, it writes the steps it intends to take.",
+      "pronunciations": [
+        "OPEVC"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "d70e4ab35ffbcc3f3125dff483f243b8242b692ff3a21953c3ace3e71b8740ae"
+    },
+    {
+      "id": "n075",
+      "sequence": 75,
+      "kind": "body",
+      "text": "During Execute, it acts and captures implementation lessons. During Verify, it records what passed, what failed, and what to watch next time.",
+      "tts_text": "During Execute, it acts and captures implementation lessons. During Verify, it records what passed, what failed, and what to watch next time.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "f99ebc1c5968cdf60147de71854a01773f339e4376cd4592008e5a38c7345f55"
+    },
+    {
+      "id": "n076",
+      "sequence": 76,
+      "kind": "body",
+      "text": "Finally, during Condense, it cleans temporary notes, routes durable lessons to the right files, creates pending jobs for work outside the current scope, and returns the system to a clean state.",
+      "tts_text": "Finally, during Condense, it cleans temporary notes, routes durable lessons to the right files, creates pending jobs for work outside the current scope, and returns the system to a clean state.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0c34c0cd5fdbacc6facaf0ad727d74d080163dd1dfc3bc2e48b32b1cc86ff39c"
+    },
+    {
+      "id": "n077",
+      "sequence": 77,
+      "kind": "body",
+      "text": "In the historical OPEVC implementation explored later, every phase reads applicable project instructions and writes to controlled working-memory surfaces. These files are not static documents. The working layer inflates as the agent works and contracts as it absorbs what it learned.",
+      "tts_text": "In the historical oh pee ee vee see implementation explored later, every phase reads applicable project instructions and writes to controlled working-memory surfaces. These files are not static documents. The working layer inflates as the agent works and contracts as it absorbs what it learned.",
+      "pronunciations": [
+        "OPEVC"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "861c8f0af2aea8a06d13fb4aa6f12120e81619e1cc37aee42de4a3b7a3b737cd"
+    },
+    {
+      "id": "n078",
+      "sequence": 78,
+      "kind": "body",
+      "text": "The principle does not depend on one platform's filename.",
+      "tts_text": "The principle does not depend on one platform's filename.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3226d881abd65101ba984fa5d135362a9ac94c328418a3bffc516d07c8cd940c"
+    },
+    {
+      "id": "n079",
+      "sequence": 79,
+      "kind": "body",
+      "text": "This is not something the LLM invented on its own. It is a structure you define in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space.",
+      "tts_text": "This is not something the LLM invented on its own. It is a structure you define in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "5bf84319692a17d66ec69840de5e5ce8a12dbf1e80b53930ba0e1d2c17cb7263"
+    },
+    {
+      "id": "n080",
+      "sequence": 80,
+      "kind": "body",
+      "text": "We will return to these phases in detail as we build the seed agent in later essays.",
+      "tts_text": "We will return to these phases in detail as we build the seed agent in later essays.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "202f7a2acdc85ad229ec2b994d23bba46e6105a36c5654d6c252113f77fd518a"
+    },
+    {
+      "id": "n081",
+      "sequence": 81,
+      "kind": "body",
+      "text": "But defining a workflow in instruction files does not guarantee the agent will respect it. Instruction files guide. They shape context. They do not enforce. To make certain behaviors mandatory, you need something stronger: hooks.",
+      "tts_text": "But defining a workflow in instruction files does not guarantee the agent will respect it. Instruction files guide. They shape context. They do not enforce. To make certain behaviors mandatory, you need something stronger: hooks.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "16bf136755dbf4ffebf8bd91cdd51c2944d350b4af800da5c4a845fd80321f2b"
+    },
+    {
+      "id": "n082",
+      "sequence": 82,
+      "kind": "body",
+      "text": "Modern CLI agents support hook systems — events that fire at specific points in the agent's lifecycle.",
+      "tts_text": "Modern CLI agents support hook systems — events that fire at specific points in the agent's lifecycle.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c7e6e27c5f70f4a656f9475b5619be22afe3775ab2441963af9f445551c1896b"
+    },
+    {
+      "id": "n083",
+      "sequence": 83,
+      "kind": "body",
+      "text": "At supported lifecycle events, a configured hook can fire. Depending on the event and platform, that hook can:",
+      "tts_text": "At supported lifecycle events, a configured hook can fire. Depending on the event and platform, that hook can:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "459488e04f254fc748b3fb3e48697456138daaa6e4069d90b3493ec34636eb58"
+    },
+    {
+      "id": "n084",
+      "sequence": 84,
+      "kind": "list",
+      "text": "Block the action entirely.",
+      "tts_text": "Block the action entirely.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "91774065e35afd3055100d3f292cdecbd874cf2cf63fcc501c2637b54a432710"
+    },
+    {
+      "id": "n085",
+      "sequence": 85,
+      "kind": "list",
+      "text": "Modify the action before it executes.",
+      "tts_text": "Modify the action before it executes.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "9d4e8a392e5a7035fc1dee909364de05133611f67e07c1c0daf2e83411ebfa73"
+    },
+    {
+      "id": "n086",
+      "sequence": 86,
+      "kind": "list",
+      "text": "Trigger additional behaviors.",
+      "tts_text": "Trigger additional behaviors.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "6072aaeb9b45c64310c88c020fc53bd5c97c7e34d0abcebceae986219d0a3f1a"
+    },
+    {
+      "id": "n087",
+      "sequence": 87,
+      "kind": "list",
+      "text": "Log what happened for future reference.",
+      "tts_text": "Log what happened for future reference.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "46b1a4ca027c1fdbea3dcf0133e16feec42f3037a8574f37547f53eeff190eac"
+    },
+    {
+      "id": "n088",
+      "sequence": 88,
+      "kind": "body",
+      "text": "This is how you put a guarded pipeline around a probabilistic chain. The LLM still does the thinking. Hooks define guardrails, checkpoints, reflexes, and places where selected behavior can be recorded. Later, the agent can review those recordings, see what worked, and propose better controls under your authority.",
+      "tts_text": "This is how you put a guarded pipeline around a probabilistic chain. The LLM still does the thinking. Hooks define guardrails, checkpoints, reflexes, and places where selected behavior can be recorded. Later, the agent can review those recordings, see what worked, and propose better controls under your authority.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "13b22483160e601c46920d3198b05121800da3ed9435446afd8f0600be3c4aae"
+    },
+    {
+      "id": "n089",
+      "sequence": 89,
+      "kind": "body",
+      "text": "The LLM proposes. The structure disposes.",
+      "tts_text": "The LLM proposes. The structure disposes.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0e0fc90416586f3fc9d0370699f8bcdae659b3bfc76f26f8beb2ae7add4dd4ac"
+    },
+    {
+      "id": "n090",
+      "sequence": 90,
+      "kind": "body",
+      "text": "Two layers of structure inside the broader harness. Instruction files and memory shape behavior through what the runtime places in context — phases, rules, knowledge, and history. Hooks and events enforce supported boundaries through what the runtime can block, trigger, or record.",
+      "tts_text": "Two layers of structure inside the broader harness. Instruction files and memory shape behavior through what the runtime places in context — phases, rules, knowledge, and history. Hooks and events enforce supported boundaries through what the runtime can block, trigger, or record.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "d80896b1d058948594699ebfcbfc2cb07acbcb066aa3efec7f8c83afaad5a9c8"
+    },
+    {
+      "id": "n091",
+      "sequence": 91,
+      "kind": "body",
+      "text": "The model proposes; the runtime carries context, tools, and permissions; the cognitive layer supplies durable direction; the job layer carries objective and lived state. Together, they transform a probabilistic token generator into a reliable cognitive system.",
+      "tts_text": "The model proposes; the runtime carries context, tools, and permissions; the cognitive layer supplies durable direction; the job layer carries objective and lived state. Together, they transform a probabilistic token generator into a reliable cognitive system.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "30889fe1bb8c3fec78a093750024aa162a58885357a64ff4887c649353cb6076"
+    },
+    {
+      "id": "n092",
+      "sequence": 92,
+      "kind": "body",
+      "text": "The structure does not replace intelligence. It channels it. The same way a toaster does not generate electricity — it shapes electricity into toast.",
+      "tts_text": "The structure does not replace intelligence. It channels it. The same way a toaster does not generate electricity — it shapes electricity into toast.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8f5a8357267e7c0c7b9e6c42ce5449b532522cfd495fb42931e389718bad8eb1"
+    },
+    {
+      "id": "n093",
+      "sequence": 93,
+      "kind": "heading",
+      "text": "The Platform Does Not Matter",
+      "tts_text": "The Platform Does Not Matter",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "0870ccd4d17b878d8a365ea2661aa10764612d88681867bba1e05a12d82283f4"
+    },
+    {
+      "id": "n094",
+      "sequence": 94,
+      "kind": "body",
+      "text": "If the agent is the filesystem, then the platform is just the adapter.",
+      "tts_text": "If the agent is the filesystem, then the platform is just the adapter.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4fbce343f528d80f95f69de2d05dd51ee88f1f427a2996a94ecf873f299cb354"
+    },
+    {
+      "id": "n095",
+      "sequence": 95,
+      "kind": "body",
+      "text": "Right now, multiple CLI agent platforms support hook and event systems:",
+      "tts_text": "Right now, multiple CLI agent platforms support hook and event systems:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "632cb58f8d5eb3bddfba5dd4edd8b5317f3f24a4b3ef7a0e6bd6df155bd548a1"
+    },
+    {
+      "id": "n096",
+      "sequence": 96,
+      "kind": "list",
+      "text": "Claude Code uses hooks configured in its settings file, including events before and after tool use, stopping, and notifications.",
+      "tts_text": "Claude Code uses hooks configured in its settings file, including events before and after tool use, stopping, and notifications.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "774beeb34dfb3392959f00b97cd06287169d43c3c00f0b9b6d6ec7bd035d85b5"
+    },
+    {
+      "id": "n097",
+      "sequence": 97,
+      "kind": "list",
+      "text": "Gemini CLI, which shipped hooks in January 2026, exposes events before and after tools and before and after the agent.",
+      "tts_text": "Gemini CLI, which shipped hooks in January 2026, exposes events before and after tools and before and after the agent.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "415e0007edbedaaaba4240ee4b56922ffb3966d25dfcde71b246a4e4be6ac2c6"
+    },
+    {
+      "id": "n098",
+      "sequence": 98,
+      "kind": "list",
+      "text": "OpenCode provides plugin events before and after tool execution and when a session becomes idle.",
+      "tts_text": "OpenCode provides plugin events before and after tool execution and when a session becomes idle.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "f9762a31ff1f5219f0f83a41c5a4bd9052b5ad8c37efcdb527a26a5a67d7e882"
+    },
+    {
+      "id": "n099",
+      "sequence": 99,
+      "kind": "body",
+      "text": "As of early 2026, all three shipped hook systems within months of each other — confirmation that interception points are becoming a standard primitive in agent infrastructure.",
+      "tts_text": "As of early 2026, all three shipped hook systems within months of each other — confirmation that interception points are becoming a standard primitive in agent infrastructure.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7ab3b041bd9c52debd6036bff3c3dc5cd7fa75604cf05e2ddafaa1dfb83addcb"
+    },
+    {
+      "id": "n100",
+      "sequence": 100,
+      "kind": "body",
+      "text": "The syntax and powers differ, but the underlying pattern is similar. Each platform provides interception points where your rules can influence or block supported behavior.",
+      "tts_text": "The syntax and powers differ, but the underlying pattern is similar. Each platform provides interception points where your rules can influence or block supported behavior.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c46dd06814ce2342002dd6680b35e0a5fb0d6d5a9d1ce994743586ad26078ac4"
+    },
+    {
+      "id": "n101",
+      "sequence": 101,
+      "kind": "body",
+      "text": "Think of it this way: a shell hook in Claude Code and a TypeScript plugin in OpenCode are adapters. They translate platform-specific events into your agent's decision system. The hook mechanism is an interchangeable sensory layer — like swapping out ears for antennae. The brain behind them stays the same.",
+      "tts_text": "Think of it this way: a shell hook in Claude Code and a TypeScript plugin in OpenCode are adapters. They translate platform-specific events into your agent's decision system. The hook mechanism is an interchangeable sensory layer — like swapping out ears for antennae. The brain behind them stays the same.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "316777173417328c21628c57f1a29a5833117f54ced7e8e9d0780ffd59543135"
+    },
+    {
+      "id": "n102",
+      "sequence": 102,
+      "kind": "body",
+      "text": "This means much of your agent's core identity — its knowledge, behaviors, rules, memory structures, and workflows — can remain in portable files. Platform-specific instructions, permissions, and events still need adapters. The filesystem IS the durable identity.",
+      "tts_text": "This means much of your agent's core identity — its knowledge, behaviors, rules, memory structures, and workflows — can remain in portable files. Platform-specific instructions, permissions, and events still need adapters. The filesystem IS the durable identity.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "34041cc2d37d2271bef9eccd7196aff9d0368f9cc649609839d2f784688dce4f"
+    },
+    {
+      "id": "n103",
+      "sequence": 103,
+      "kind": "body",
+      "text": "Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. Swap the filesystem? Now you have a completely different agent.",
+      "tts_text": "Swap the LLM? The agent still knows who it is. Swap the platform? The agent adapts through a new adapter layer. Swap the filesystem? Now you have a completely different agent.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2a0ff392c6c452e519ee1b85d27e1e6374756b0dc0222f8db4c6c4044604baba"
+    },
+    {
+      "id": "n104",
+      "sequence": 104,
+      "kind": "heading",
+      "text": "The Core Principle: Compartmentalization",
+      "tts_text": "The Core Principle: Compartmentalization",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "2cd3181457273da8b4bf911d0f39a2e30edb0d12ca6d3dd333b8e69b16e932d8"
+    },
+    {
+      "id": "n105",
+      "sequence": 105,
+      "kind": "body",
+      "text": "If the agent is the filesystem, then the quality of the agent depends on how well that filesystem is organized.",
+      "tts_text": "If the agent is the filesystem, then the quality of the agent depends on how well that filesystem is organized.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2166f13b1ee8e94db179864e442b60d64a07a94087d52685f7977eaf5ea5515f"
+    },
+    {
+      "id": "n106",
+      "sequence": 106,
+      "kind": "body",
+      "text": "This is where compartmentalization becomes the core principle.",
+      "tts_text": "This is where compartmentalization becomes the core principle.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "37e79aebab5e989455d320133613fd558ed9d9370cc34b8aeb8e4095bf98b779"
+    },
+    {
+      "id": "n107",
+      "sequence": 107,
+      "kind": "body",
+      "text": "Compartmentalization means: every piece of knowledge has a home. Every behavior has a boundary. Every context is scoped to where it is needed.",
+      "tts_text": "Compartmentalization means: every piece of knowledge has a home. Every behavior has a boundary. Every context is scoped to where it is needed.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7f4a2a421ba3f40ea5a67f25f3999cdf97a54f95de6eb27ad37729eae097a3c1"
+    },
+    {
+      "id": "n108",
+      "sequence": 108,
+      "kind": "body",
+      "text": "A compartmentalized hierarchy can be organized this way. Information is not dumped into one giant instruction file. Instead:",
+      "tts_text": "A compartmentalized hierarchy can be organized this way. Information is not dumped into one giant instruction file. Instead:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f4ad12186331307b134b7d0ec02c7ff40bb197c15b2f3427ca15bedf5a41cf65"
+    },
+    {
+      "id": "n109",
+      "sequence": 109,
+      "kind": "list",
+      "text": "Global context lives at the user level — preferences, conventions, stable patterns.",
+      "tts_text": "Global context lives at the user level — preferences, conventions, stable patterns.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
+      ],
+      "gap_after_ms": 480,
+      "text_sha256": "e36e3d94e600b8de76a40461881073f2b86adbf7b5aa1d00032f83bd2bd070e4"
+    },
+    {
+      "id": "n110",
+      "sequence": 110,
+      "kind": "list",
+      "text": "Agent identity lives at the project root — who the agent is, its operational phases, its personality.",
+      "tts_text": "Agent identity lives at the project root — who the agent is, its operational phases, its personality.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
+      ],
+      "gap_after_ms": 480,
+      "text_sha256": "fef5b1436d8ea2b18e5d2dd869fba16fb77a7662b355b7fa549f9fc473d21790"
+    },
+    {
+      "id": "n111",
+      "sequence": 111,
+      "kind": "list",
+      "text": "Brain documentation lives in the agent's brain directory — how the brain works, its growth rules, its structure.",
+      "tts_text": "Brain documentation lives in the agent's brain directory — how the brain works, its growth rules, its structure.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
+      ],
+      "gap_after_ms": 480,
+      "text_sha256": "a15ef5ddac1e1774e664ed29e16d9c2f31cf31f6a5a2115aebe9edb6bb4f431c"
+    },
+    {
+      "id": "n112",
+      "sequence": 112,
+      "kind": "list",
+      "text": "Local working memory lives in each subdirectory — task-specific context, scoped to exactly where it is needed. Think of it like the body's circulatory system: blood flows where it is needed most — to the digestive system after eating, to the muscles during a workout.",
+      "tts_text": "Local working memory lives in each subdirectory — task-specific context, scoped to exactly where it is needed. Think of it like the body's circulatory system: blood flows where it is needed most — to the digestive system after eating, to the muscles during a workout.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
+      ],
+      "gap_after_ms": 240,
+      "text_sha256": "e79d598ad69a5085f98750969ba34585063a33592dc7c2641330f4ea797e04c1"
+    },
+    {
+      "id": "n113",
+      "sequence": 113,
+      "kind": "list",
+      "text": "Working memory inflates in the directory where the agent is active and contracts when attention moves elsewhere.",
+      "tts_text": "Working memory inflates in the directory where the agent is active and contracts when attention moves elsewhere.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "2297765abb3c99f9791a65d3c03aca55508e5eca318df36fff0faf633b9b6cba"
+    },
+    {
+      "id": "n114",
+      "sequence": 114,
+      "kind": "body",
+      "text": "Without compartmentalization, you get \"prompt soup\" — every piece of context dumped into a single undifferentiated blob. The LLM drowns in noise. Behavior becomes unpredictable. The agent loses coherence.",
+      "tts_text": "Without compartmentalization, you get \"prompt soup\" — every piece of context dumped into a single undifferentiated blob. The LLM drowns in noise. Behavior becomes unpredictable. The agent loses coherence.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3d75a0be0b8318276a049d9eb21afc4c20ca78cc83dec60586fd1d96687e2b00"
+    },
+    {
+      "id": "n115",
+      "sequence": 115,
+      "kind": "body",
+      "text": "With compartmentalization, you get bounded contexts. The agent loads only the information relevant to its current task. Knowledge is discoverable but not overwhelming. The agent can grow without collapsing under its own weight.",
+      "tts_text": "With compartmentalization, you get bounded contexts. The agent loads only the information relevant to its current task. Knowledge is discoverable but not overwhelming. The agent can grow without collapsing under its own weight.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7b8577322715f1e0d73e5e74253877f23f66d7c42f636565611ab7adc60fd2b5"
+    },
+    {
+      "id": "n116",
+      "sequence": 116,
+      "kind": "body",
+      "text": "This is also what gives the agent identity over time. When the filesystem is well-compartmentalized, the agent's \"personality\" — its rules, its preferences, its memory — persists across sessions, across context compactions, even across LLM swaps. The compartmentalized information is the agent's identity.",
+      "tts_text": "This is also what gives the agent identity over time. When the filesystem is well-compartmentalized, the agent's \"personality\" — its rules, its preferences, its memory — persists across sessions, across context compactions, even across LLM swaps. The compartmentalized information is the agent's identity.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d0eb37f8a759c421f4a796a27c67706179f29e403f98ca1fb3ce3ab155328585"
+    },
+    {
+      "id": "n117",
+      "sequence": 117,
+      "kind": "heading",
+      "text": "What This Means for You",
+      "tts_text": "What This Means for You",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "5eb7f1fe0b8736af40f4e80212dbe3d4bfe76357bedbf75d1f05845410608426"
+    },
+    {
+      "id": "n118",
+      "sequence": 118,
+      "kind": "body",
+      "text": "If the vocabulary in this essay felt unfamiliar, that is normal. Learning agent concepts is like learning any professional tool — the way you once learned to think in slides and templates when you picked up PowerPoint, or in cells and formulas when you first opened a spreadsheet. The concepts are not hard.",
+      "tts_text": "If the vocabulary in this essay felt unfamiliar, that is normal. Learning agent concepts is like learning any professional tool — the way you once learned to think in slides and templates when you picked up PowerPoint, or in cells and formulas when you first opened a spreadsheet. The concepts are not hard.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "35b8cbf004771f7f68d8547038495c0a62305e5ba3cfbebefbaf358af9fec388"
+    },
+    {
+      "id": "n119",
+      "sequence": 119,
+      "kind": "body",
+      "text": "They just need exposure and repetition. This series will build them up, one essay at a time.",
+      "tts_text": "They just need exposure and repetition. This series will build them up, one essay at a time.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8fcdf86c14fbaf6ef3a833432a1968dc7c73d521b3c286c31e584bd273090fe4"
+    },
+    {
+      "id": "n120",
+      "sequence": 120,
+      "kind": "body",
+      "text": "If you are building with AI agents — or want to start — here is the shift in thinking:",
+      "tts_text": "If you are building with AI agents — or want to start — here is the shift in thinking:",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b6aad7a53e5d5980916374fa3034c36cc6346133acc30472019d4e1ea9d4f6ef"
+    },
+    {
+      "id": "n121",
+      "sequence": 121,
+      "kind": "list",
+      "text": "Stop obsessing over which model to use. New LLMs are being trained constantly. New forms of token generators will arrive. The engine keeps getting better — that was never the bottleneck.",
+      "tts_text": "Stop obsessing over which model to use. New LLMs are being trained constantly. New forms of token generators will arrive. The engine keeps getting better — that was never the bottleneck.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "a1f8754ddd5aa8bb73e3d93d9d63bdb01b2ad4ee8ed65cb21d6781736a958b28"
+    },
+    {
+      "id": "n122",
+      "sequence": 122,
+      "kind": "list",
+      "text": "Give your agent a brain. Create a dedicated directory with structure, knowledge files, operational rules, and memory. This is not configuration — this is the agent itself. Without it, the engine has nothing to build on — no memory to consult, no rules to follow, no identity to maintain.",
+      "tts_text": "Give your agent a brain. Create a dedicated directory with structure, knowledge files, operational rules, and memory. This is not configuration — this is the agent itself. Without it, the engine has nothing to build on — no memory to consult, no rules to follow, no identity to maintain.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "561745f777e45e37a0a3895f35abab875f7800848f1093fd6d1ebca739308c51"
+    },
+    {
+      "id": "n123",
+      "sequence": 123,
+      "kind": "list",
+      "text": "Write the habits down. Consistency comes from structure, not from intelligence. Define phases. Define workflows. Define what the agent should do at each event. If it is not written in a file, it does not exist.",
+      "tts_text": "Write the habits down. Consistency comes from structure, not from intelligence. Define phases. Define workflows. Define what the agent should do at each event. If it is not written in a file, it does not exist.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "713ebc1251fee22b12404a3d106f90bf7b4f6c9345cd1e353b86b966224b8e6c"
+    },
+    {
+      "id": "n124",
+      "sequence": 124,
+      "kind": "list",
+      "text": "Design for portability. Your agent's brain should not be locked to one platform or one model. Keep the core identity in plain files — markdown, JSON, scripts. Let the platform-specific hooks be thin adapters, not the whole system.",
+      "tts_text": "Design for portability. Your agent's brain should not be locked to one platform or one model. Keep the core identity in plain files — markdown, JSON, scripts. Let the platform-specific hooks be thin adapters, not the whole system.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "6c9885cf27749c0c575684c9c2bc4d7381978fab418783d91942ae41a572ac17"
+    },
+    {
+      "id": "n125",
+      "sequence": 125,
+      "kind": "list",
+      "text": "Think in compartments. Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows. And here is the most important part: you do not have to write every file yourself.",
+      "tts_text": "Think in compartments. Scope knowledge to the directory that needs it. Bound behaviors to the phase they belong in. The better you compartmentalize, the more reliably your agent behaves — and the more gracefully it grows. And here is the most important part: you do not have to write every file yourself.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "e78d1608871adab3014a8f5101e46bc60ac3847d18e3d36a73cb03a5310e1fd9"
+    },
+    {
+      "id": "n126",
+      "sequence": 126,
+      "kind": "list",
+      "text": "A well-defined agent architecture can help build its own brain through conversation, then organize and update it under your control.",
+      "tts_text": "A well-defined agent architecture can help build its own brain through conversation, then organize and update it under your control.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 480,
+      "text_sha256": "d32dc65c8c4cd1142e85c2f16010d797f4e3a3ab358ac97c9ed5f759f19dbff9"
+    },
+    {
+      "id": "n127",
+      "sequence": 127,
+      "kind": "body",
+      "text": "The electricity keeps getting stronger. That has never been the bottleneck.",
+      "tts_text": "The electricity keeps getting stronger. That has never been the bottleneck.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "db99dc7ab05fdaa94995c331552731b884c1b774e554a8d29ba31242ca24bf7e"
+    },
+    {
+      "id": "n128",
+      "sequence": 128,
+      "kind": "body",
+      "text": "Build the toaster.",
+      "tts_text": "Build the toaster.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "2aa7a0d1b84dd93a1cb4b48931501c01fa2cb209e6c197b1be6043358c11f471"
+    }
+  ]
+}
