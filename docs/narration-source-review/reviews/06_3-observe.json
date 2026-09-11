@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_3-observe.md",
+  "source_sha256": "c4678821fe87158d1e78f1f8616819277b040837b9c770bcf01eff344d435e09",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_3-observe.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
