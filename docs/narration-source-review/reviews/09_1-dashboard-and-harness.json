@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b9/09_1-dashboard-and-harness.md",
+  "source_sha256": "d032559c36209c5bdec589473eae4ecdcbbe04b44ef0dd6831731dae3f5655bd",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/09_1-dashboard-and-harness.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

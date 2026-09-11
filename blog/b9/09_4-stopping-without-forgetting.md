@@ -1,3 +1,15 @@
+---
+title: "Stopping Without Forgetting"
+date: "September 4, 2026"
+slug: "stopping-without-forgetting"
+read_time: "9 min"
+tags: [Stop State, Recovery, Hooks, Origin]
+status: published
+version: v0.2.0
+audience: "Power Users & Architects"
+og_image: "assets/images/digital-cortex-2-og.jpg"
+---
+
 # Stopping Without Forgetting
 
 *Essay 9.4 — The Visible Harness, Part 4.*
@@ -16,7 +28,7 @@ The end of a model turn is a property of the conversation runtime. The end of a 
 
 Confusing them produces a common failure: the agent writes a plausible closing paragraph while actionable work still exists. The session feels finished because the language is finished.
 
-Origin 1.0 places a Stop hook at that boundary. The hook does not ask whether the last response sounded complete. It reads the clone-local state owned by `agent-stop-state` and decides whether stopping is compatible with the complete known queue.
+Origin 1.0 places a Stop hook at that boundary. The hook does not ask whether the last response sounded complete. It reads the clone-local state owned by `agent-stop-state` and decides whether stopping is compatible with that state. Contextual Feedback reconciles the state from its complete known queue.
 
 The state has four modes: `active`, `waiting`, `paused`, and `idle`. They are not four writing styles. They describe four different relationships between responsibility, progress, and authority.
 
@@ -36,7 +48,7 @@ Waiting must be earned. One blocked thread does not make the entire harness wait
 
 This prevents two opposite failures. The agent cannot use waiting as a convenient exit while useful work remains. It also cannot fill uncertainty with guesses merely to remain active.
 
-Stopping is allowed in waiting, but the work is not complete. The recorded question and thread survive. When the answer arrives, one journal event stores the answer, makes the responsibility runnable, and wakes the same interactive session.
+Stopping is allowed in waiting, but the work is not complete. The recorded question and thread survive. When the answer arrives, one journal event stores the answer and makes the responsibility runnable. Origin then records a durable wake for the same interactive session.
 
 ## Paused Is Human Interruption
 
@@ -70,7 +82,7 @@ This creates an important distinction: stopping may be valid before completion, 
 
 Stopping is safe only if resumption is real.
 
-Origin stores feedback in an append-only, sequence-numbered journal with hashes, maintains backups, keeps global continuation state under the local `.origin/` directory, and records pending wake delivery in a durable outbox. The dashboard saves state before attempting terminal delivery. On startup, missing wake records for actionable journal revisions are reconstructed and pending delivery resumes.
+Origin stores feedback in an append-only, sequence-numbered journal with hashes, maintains backups, keeps global continuation state under the local `.origin/` directory, and records pending wake delivery in a durable outbox. Origin saves the thread and its wake intent before attempting terminal delivery. On startup, missing wake records for actionable journal revisions are reconstructed and pending delivery resumes.
 
 If a fresh Codex session opens while runnable feedback exists but no wake is pending, Origin creates a session-resume orientation. The voice points the agent back to the current thread and ordered queue. The new context window does not become permission to reconstruct responsibility from memory.
 
@@ -102,4 +114,4 @@ The harness can then let the model stop without allowing responsibility to evapo
 
 ---
 
-*Essay 9.4 — The Visible Harness, Part 4. Next: One Interactive Agent, Multiple Surfaces.*
+*Essay 9.4 — The Visible Harness, Part 4 of 4. Previous: [Essay 9.3 — Internal Voices Are Reorientation, Not Notifications](09_3-internal-voices-reorientation.html). This essay closes the series.*
