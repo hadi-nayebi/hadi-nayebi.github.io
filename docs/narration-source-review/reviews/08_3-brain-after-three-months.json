@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b8/08_3-brain-after-three-months.md",
+  "source_sha256": "70f58a6e717af2fb710225c82125a25d88442171383e68161b0614ae82200f3c",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/08_3-brain-after-three-months.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
