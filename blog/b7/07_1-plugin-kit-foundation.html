@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v0.2.0 -->
 <html lang="en">
 
 <head>
@@ -31,8 +31,8 @@
             {
                 "@type": "BlogPosting",
                 "headline": "Plugin Kit Foundation",
-                "datePublished": "2026-05-13",
-                "dateModified": "2026-05-13",
+                "datePublished": "2026-05-17",
+                "dateModified": "2026-09-11",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
@@ -90,7 +90,7 @@
 
                     <h1>Plugin Kit Foundation</h1>
                     <div class="article-meta">
-                        <span>May 2026</span>
+                        <span>May 17, 2026 &bull; revised September 11, 2026</span>
                         <span>&bull;</span>
                         <span>5 min</span>
                         <div class="article-meta-tags">
@@ -105,16 +105,7 @@
                         By Hadi Nayebi &amp; Claude Opus 4.8
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="audio/plugin-kit-foundation.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (5 min)</span>
-                    </div>
-
                     <div class="article-body">
-
                         <p><em>Essay 7.1 &mdash; The Plugin Kit, Part 1 of 9. Essay 7 opens here; Parts 2 through 9 follow.</em></p>
 
                         <hr>
@@ -126,19 +117,19 @@
 
                         <p>A plugin is a cell.</p>
 
-                        <p><a href="../b5/05_1-the-two-layer-foundation.html">Essay 5</a> opened the always-on layer &mdash; the plugins that run continuously, each minding one concern, side-by-side with the CLAUDE.md hierarchy. <a href="../b6/06_1-phasic-foundation.html">Essay 6</a> opened the phasic layer &mdash; the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a <strong>plugin</strong>, sitting in its own directory under <code>.claude/plugins/</code>, carrying its own organs. This essay opens that object. <sup class="ref-marker" title="ref: plugin-directory-anatomy | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section + &quot;Active Plugins&quot; section + .claude/plugins/plugin_integrity/ as a worked example | The canonical convention names six directories per plugin (`CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/`) with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md.&quot; Real plugins layer optional organs on top — `plugin_integrity` adds `agents/`, `template/`, `config.conf`, `evolution.md`, and dual `voice.xml` (hooks-side + scripts-side). The kit IS the architectural unit; the convention is a floor, not a ceiling.">&#9432;</sup></p>
+                        <p><a href="../b5/05_1-the-two-layer-foundation.html">Essay 5</a> opened the always-on layer &mdash; the plugins that run continuously, each minding one concern, side-by-side with the project&rsquo;s instruction hierarchy. <a href="../b6/06_1-phasic-foundation.html">Essay 6</a> opened the phasic layer &mdash; the cycle of phases whose moves are themselves Markov chains. Both layers are built from the same kind of object: a <strong>plugin</strong>, a bounded subsystem carrying its own organs. In the historical Claude implementation, each plugin sits in its own directory under <code>.claude/plugins/</code>. This essay opens that object. <sup class="ref-marker" title="ref: plugin-directory-anatomy | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <p><strong>Runtime boundary.</strong> This series documents the plugin kit as implemented in the original Claude Code Seed. Its behavioral abstraction&mdash;a bounded concern with explicit readers, writers, dependencies, state, interfaces, verification, and authority&mdash;can transfer across harnesses. The concrete <code>.claude/</code>, <code>CLAUDE.md</code>, hook registry, shell/exit-code, <code>voice.xml</code>, and PLUGIN-LOCK anatomy does not transfer wholesale; each runtime needs its own adapter. <a href="../../projects/origin.html">Origin</a> now provides public Codex-native evidence of the same behavioral idea using <code>.codex-plugin/plugin.json</code>, <code>AGENTS.md</code>, schemas, libraries, scripts, tests, Wiki documentation, and a root voice file.</p>
 
-                        <p>The cell metaphor is load-bearing. A plugin is not a collection of loose files; it is a <em>system</em> of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Each organ inside the cell carries the same read / write / depend-on triple: <sup class="ref-marker" title="ref: triple-as-the-kit-design-model | .claude/plugins/plugin_integrity/CLAUDE.md &quot;Structure&quot; section | The Structure section of plugin_integrity catalogs one concrete plugin&#x27;s organs: `hooks/` (event-fired writers — `plugin-guard.sh`, `lock-manager.sh`, `evolution-cap.sh`, `upstream-reporter-hook.sh`), `scripts/` (operator-callable surfaces — `lock-cmd.sh`, `safe-lock.sh`, `drift-check.sh`, `health-check.sh`), `agents/` (per-plugin `historian-*.md` guardians, one for each plugin in the registry), `data.json` (hidden state read by hooks). Each organ slots into one read/write/depend-on role; the triple is the kit&#x27;s design language.">&#9432;</sup></p>
+                        <p>The cell metaphor is load-bearing. A plugin is not a collection of loose files; it is a <em>system</em> of cognitive organs that read each other, write to each other, and depend on each other through declared channels. Each organ inside the cell carries the same read / write / depend-on triple: <sup class="ref-marker" title="ref: triple-as-the-kit-design-model | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <ul>
-                            <li><strong>Who reads it</strong> &mdash; which subsystem (the LLM, Claude Code itself, another plugin, the human operator) consumes the contents at runtime.</li>
+                            <li><strong>Who reads it</strong> &mdash; which subsystem (the model, the runtime, another plugin, or the human operator) consumes the contents at runtime.</li>
                             <li><strong>Who writes it</strong> &mdash; which ceremony or phase is allowed to mutate it. Most organs have exactly one writer; the security model rests on that exclusivity.</li>
                             <li><strong>What it depends on</strong> &mdash; which other organs must already be in place for this organ to function correctly.</li>
                         </ul>
 
-                        <p>The read / write / depend-on triple is how the cell wall stays porous (organs talk through declared channels) and rigid (organs never reach through undeclared ones). Essay 7 opens the cell organ by organ, naming who reads it / writes it / what it depends on at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch. <sup class="ref-marker" title="ref: plugin-lock-serializes-edits | .claude/plugins/plugin_integrity/scripts/lock-cmd.sh + .claude/plugins/plugin_integrity/CLAUDE.md &quot;Structure&quot; section + &quot;How to Use&quot; section | PLUGIN-LOCK is the exclusivity primitive — `lock-cmd.sh` admits one writer at a time per plugin by toggling state in `data.json` against the lock-manager hook chain. Declared channels (file paths, hook events, voice.xml block ids) make the read-graph auditable. Undeclared edits are blocked by per-organ guards (plugin-guard, evolution-cap, lock-manager) before they touch disk.">&#9432;</sup></p>
+                        <p>The read / write / depend-on triple is how the cell wall stays porous (organs talk through declared channels) and rigid (authority stays inside those channels). Essay 7 opens the cell organ by organ, naming who reads it / writes it / what it depends on at each step, then closes with a Tier-3 walkthrough of authoring a new plugin from scratch. <sup class="ref-marker" title="ref: plugin-lock-serializes-edits | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <figure data-visual-style="I70-A30" data-information-weight="70" data-artistic-weight="30" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/plugin-cell-anatomy-b7-1.png" alt="A single plugin &quot;cell&quot; with its internal cognitive organs visible inside the cell wall, the PLUGIN-LOCK ceremony drawn as a membrane gate on the wall, and the three property labels (reads / writes / depends on) listed beside the cell as the Claude prototype&#x27;s anatomy frame" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
@@ -161,20 +152,19 @@
                             <li><a href="07_9-creating-a-new-plugin.html">Essay 7.9 &mdash; Building a New Plugin</a> &mdash; Tier-3 walkthrough</li>
                         </ul>
 
-                        <p>Essays 7.2 through 7.7 deep-dive the plugin organs, one cluster per essay &mdash; the parts every mature plugin understands, with some organs intentionally absent in minimal or pure-gate plugins. Essay 7.8 opens the ceremony that protects hard-substrate edits once the plugin is in flight. Essay 7.9 is for the architects in the audience &mdash; a walkthrough of putting the kit to use, authoring a new plugin end to end.</p>
+                        <p>Essays 7.2 through 7.7 examine the plugin organs, one cluster per essay &mdash; the parts every mature plugin understands, with some organs intentionally absent in minimal or pure-gate plugins. Essay 7.8 opens the ceremony that protects hard-substrate edits once the plugin is in flight. Essay 7.9 is for the architects in the audience &mdash; a walkthrough of putting the kit to use, authoring a new plugin end to end.</p>
 
                         <hr>
 
-                        <p>We start with the Claude prototype&rsquo;s skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the load-bearing organs Essay 7.2 deep-dives. <sup class="ref-marker" title="ref: universal-skeleton-trio | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section | The canonical convention names six directories — `CLAUDE.md`, `data.json`, `hooks/`, `scripts/`, `tests/`, `docs/` — with the explicit caveat &quot;Not all directories required. Minimal plugin: just CLAUDE.md. Tests needed for revert protection.&quot; Essay 7.2 takes the load-bearing organs (CLAUDE.md as working memory, hooks/ as event-driven reflexes, scripts/ as operator-callable surface) first because those organs are what give a plugin its read/write/dispatch shape; data.json, tests/, docs/ ride on top.">&#9432;</sup></p>
+                        <p>We start with the Claude prototype&rsquo;s skeleton &mdash; CLAUDE.md, hooks, and scripts &mdash; the load-bearing organs Essay 7.2 examines in detail. <sup class="ref-marker" title="ref: universal-skeleton-trio | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
-                        <p>A consulting practice using this Claude architecture could organize a plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell model. The behavioral contract&mdash;bounded responsibility, explicit interfaces, owned state, verification, and authority&mdash;can transfer, but the concrete organ list must be adapted for other runtimes. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating hard-substrate edits, test-pass-or-revert undoing failed runs, dual voices coaching the operator and the LLM separately) plus operator discipline. Soft memory surfaces like docs, voice files, and agent definitions move through phase discipline instead. <sup class="ref-marker" title="ref: protections-are-friction-not-math | .claude/plugins/plugin_integrity/hooks/plugin-guard.sh &quot;### DOCUMENTATION + VOICE + AGENTS ALWAYS FREE&quot; section + .claude/plugins/plugin_integrity/scripts/safe-lock.sh | `plugin-guard.sh` explicitly exempts CLAUDE.md, docs/*.md, voice.xml, and agents/*.md as configuration/soft-memory surfaces, while code-bearing plugin substrate remains gated. `safe-lock.sh` wraps the unlock window in a test-pass-or-revert cycle (runs plugin tests on close and reverts the working tree on failure). The architecture is strong friction plus tests, not an OS/kernel capability boundary.">&#9432;</sup></p>
+                        <p>A consulting practice using this Claude architecture could organize a plugin around a <code>[CLIENT-INTAKE]</code> ceremony built from the same cell model. The behavioral contract&mdash;bounded responsibility, explicit interfaces, owned state, verification, and authority&mdash;can transfer, but the concrete organ list must be adapted for other runtimes. Nothing in the kit is mathematically enforced; the protections are friction (PLUGIN-LOCK gating hard-substrate edits, test-pass-or-revert undoing failed runs, dual voices serving operator-facing and model-facing channels) plus operator discipline. Soft memory surfaces like docs, voice files, and agent definitions move through phase discipline instead. <sup class="ref-marker" title="ref: protections-are-friction-not-math | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <hr>
 
                         <p><em>Essay 7.1 &mdash; The Plugin Kit, Part 1 of 9.</em></p>
 
-                        <p><em>Previous: <a href="../b6/06_10b-long-horizon-memory.html">Essay 6.10b &mdash; The Plan File &mdash; Long-Horizon Memory</a> &mdash; closes the markov phasic brain series.</em> <em>Next: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the skeleton organs and the hard/soft edit boundary.</em></p>
-
+                        <p><em>Previous: <a href="../b6/06_10b-long-horizon-memory.html">Essay 6.10b &mdash; The Plan File &mdash; Long-Horizon Memory</a> &mdash; closes the Markov phasic brain series.</em> <em>Next: <a href="07_2-skeleton-claudemd-hooks-scripts.html">Essay 7.2 &mdash; Skeleton: CLAUDE.md, Hooks, and Scripts</a> &mdash; the skeleton organs and the hard/soft edit boundary.</em></p>
                     </div>
 
                     <!-- Comments (Giscus) -->

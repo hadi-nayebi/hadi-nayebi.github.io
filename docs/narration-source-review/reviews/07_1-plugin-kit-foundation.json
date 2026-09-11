@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_1-plugin-kit-foundation.md",
+  "source_sha256": "3610db2a1cfc221d5de8373319c0594df53aff96a26f721587b67bcb2180938d",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_1-plugin-kit-foundation.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
