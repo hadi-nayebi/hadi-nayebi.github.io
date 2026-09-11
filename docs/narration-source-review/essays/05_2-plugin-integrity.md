@@ -19,11 +19,10 @@ named scope, user authority, proportionate evidence, and recoverable failure.
 
 - Canonical source: `blog/b5/05_2-plugin-integrity.md`
 - Review baseline: `6e0214ff113c8888a16222bc9c111e9049cbfacb`
-- Evidence prototype: `3395d2d048f44435546ab055d0c2f4c32a34fd25`
 - Source version: `v0.8.0` (previously `v0.7.0`)
-- Source SHA-256: `984d4579b68fbca7485613292632e283e787a86691b5ebe47949f151b0cfb45a`
+- Source SHA-256: `9f1a283c2a085cbeee9c991f30b82e46f603438385339480dacdb7e833f1afe3`
 - Published page: `blog/b5/05_2-plugin-integrity.html`
-- Published-page SHA-256: `c21cc2af9ffad3031f3af5a103dba91f995faf5d4db45fe9d5e0b771d94403bc`
+- Published-page SHA-256: `8a1850d46909b12fc9e7738b3ad7e53b1f392bfedb59f8900245841c7343a89a`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -97,7 +96,8 @@ inside a retained part of the arc is accounted for below:
   only the defensive path. Active failure preserves the work and lock so the
   agent can diagnose and fix it.
 - **The universal-adoption claim was replaced.** The mechanism is one
-  prototype's answer; the portable contract is the reason an architect should
+  historical reference architecture's answer; the portable contract is the
+  reason an architect should
   retain an equivalent boundary.
 - **The claim that every test requires `[TEST-LOCK]` was narrowed.** Existing
   shell tests require it; new shell test creation is admitted and becomes
@@ -127,22 +127,20 @@ inside a retained part of the arc is accounted for below:
 - **A proposed third lock for direct `data.json` editing was replaced.** Direct
   state access is already prohibited. A reviewed schema-migration ceremony is
   a useful higher-risk extension.
-- **Oversized ref-tag implementation excerpts were replaced where their claims
-  changed.** Exact handlers, guard branches, scripts, indexes, and the reviewed
-  prototype revision retain paragraph-level evidence without embedding stale
-  interpretations.
+- **Private evidence locators were removed from ref tags.** The public markers
+  retain paragraph-level traceability and say that the claim was checked
+  against a private historical prototype, without exposing its repository,
+  revision, paths, or unpublished evidence details.
 - **The public audio player was removed from this revision.** Its MP3 narrates
   the superseded source. The asset remains available for comparison and later
   replacement after Hadi approves the writing.
 
 ## Evidence and review state
 
-Claims were checked read-only against the private Claude prototype at parent
-revision `3395d2d048f44435546ab055d0c2f4c32a34fd25`, especially the live hook
-registry, `plugin_integrity` lock manager, guard, active close-out, defensive
-safe-lock, test-lock tests, state schema, shared prefix registry, and plugin
-indexes. The private prototype and its untracked Noema compartment were not
-modified.
+Implementation-specific claims were checked read-only against a private
+historical prototype. Its repository identity, revision, source paths, and
+unpublished evidence details are intentionally omitted from this public
+record.
 
 Factual, technical, chronology, editorial, metadata, and source-page parity
 gates pass for the exact source hash. Cross-writing consistency remains

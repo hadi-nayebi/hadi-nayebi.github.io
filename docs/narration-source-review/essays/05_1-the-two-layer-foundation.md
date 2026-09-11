@@ -12,28 +12,28 @@ No narrative section, journey-map item, analogy, or core principle was removed.
 The original arc remains: open the filesystem, distinguish the two plugin
 groups, tour the nine-part series, explain single concern plus careful
 coupling, use the historian ratchet and real-estate closing as examples, then
-move to `plugin_integrity`. The revision makes clear that this is an
-inspectable private Claude-based prototype, while the reusable lesson is the
-set of boundaries and interfaces rather than one universal two-layer anatomy.
+move to `plugin_integrity`. The revision makes clear that this is one
+historical Claude-based reference architecture, while the reusable lesson is
+the set of boundaries and interfaces rather than one universal two-layer
+anatomy.
 
 ## Reviewed revision
 
 - Canonical source: `blog/b5/05_1-the-two-layer-foundation.md`
 - Review baseline: `6e0214ff113c8888a16222bc9c111e9049cbfacb`
-- Evidence prototype: `3395d2d048f44435546ab055d0c2f4c32a34fd25`
 - Source version: `v0.6.0` (previously `v0.5.0`)
-- Source SHA-256: `d890ff9341116fa50b6dfe8fd31f5108119eea335c026c07f02213a537e967a4`
+- Source SHA-256: `22207958de388f29f38c4d522359b8a9ce583040e98b7275f71ebde4863f96b0`
 - Published page: `blog/b5/05_1-the-two-layer-foundation.html`
-- Published-page SHA-256: `d16acf4bcee01034c6a420c8bd846248c8df42aa96514384a0ef1d0e5f5544a7`
+- Published-page SHA-256: `a23f889baeb87a966ce0261e91015fba100d7e57b0ca971756da6195d0fc61b8`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
 
 1. **Established the implementation boundary.** The article now says that
-   always-on and phasic are two behavioral groups inside an earlier private
-   implementation of the cognitive layer. It preserves the concrete prototype
-   tour without presenting it as every agent's complete anatomy or the current
-   public Q-Seed specification.
+   always-on and phasic are two behavioral groups inside one historical
+   Claude-based reference architecture. It preserves the concrete tour without
+   presenting it as every agent's complete anatomy or the current public
+   Q-Seed specification.
 2. **Corrected Claude Code instruction loading.** Current official
    documentation identifies `./CLAUDE.md` and `./.claude/CLAUDE.md` as project
    instruction locations and nested `CLAUDE.md` files as on-demand context.
@@ -99,7 +99,8 @@ inside a retained paragraph is accounted for below:
   primitive.
 - **Automatic loading of the whole `.claude/` directory was removed.** It was
   false. The replacement states the native instruction locations and explains
-  how the prototype wires other files into runtime behavior.
+  how the historical reference architecture wires other files into runtime
+  behavior.
 - **The claim that every form is memory was narrowed.** The replacement keeps
   the multi-form insight while separating stored knowledge, state,
   configuration, controls, and active model context.
@@ -111,7 +112,8 @@ inside a retained paragraph is accounted for below:
   metaphor while reconnecting it to Essay 4's model, runtime, tools, and job
   anatomy.
 - **“Every prompt, every tool call, every session start” was removed.** The
-  prototype registry is event-specific. The replacement explains what
+  historical reference architecture is event-specific. The replacement
+  explains what
   always-on means without weakening the group’s phase-independent role.
 - **Absolute phase summaries were replaced.** “Read-only” and “scripts only”
   hid working-memory and transition carve-outs. The new wording describes the
@@ -128,22 +130,20 @@ inside a retained paragraph is accounted for below:
 - **Claims of guaranteed independence were replaced with bounded benefits.**
   Gateways reduce blast radius and support focused tests, while registration
   and integration work still exist.
-- **Long, brittle implementation excerpts inside ref tags were replaced with
-  exact document, registry, guard, and script pointers.** The old annotations
-  repeated implementation prose and encoded stale absolutes. The new tags keep
-  paragraph-level traceability while stating what each source proves.
+- **Private evidence locators were removed from ref tags.** The public markers
+  retain paragraph-level traceability and say that the claim was checked
+  against a private historical prototype, without exposing its repository,
+  revision, paths, or unpublished evidence details.
 - **The public audio player was removed from this revision.** Its MP3 narrates
   the superseded source. The file remains in the branch for later comparison;
   it is simply no longer offered as if it matched the article.
 
 ## Evidence and review state
 
-Prototype-specific claims were checked read-only against the private Claude
-reference at parent revision
-`3395d2d048f44435546ab055d0c2f4c32a34fd25`, including the brain and plugin
-indexes, hook registry, five phase guards, `brain_guard`, `plugin_integrity`,
-`job_core`, `interaction_summary`, and `question_discipline`. The prototype's
-untracked private Noema compartment was left untouched.
+Implementation-specific claims were checked read-only against a private
+historical prototype. Its repository identity, revision, source paths, and
+unpublished evidence details are intentionally omitted from this public
+record.
 
 Claude Code's native instruction-loading behavior was checked against current
 official documentation:
