@@ -136,6 +136,27 @@ function inspectObservation() {
   const episodes = manifest.episode_index.map((entry) => {
     const file = path.join(dir, entry.path);
     const episode = JSON.parse(read(file));
+    const sourcePath = rel(file);
+    const sourceHash = sha256(read(file));
+    const issues = [];
+    const recorded = reviewIndex.essays[sourcePath] || null;
+    const pendingReview = {
+      factual: 'pending',
+      historical: 'pending',
+      source_support: 'pending',
+      narrative_continuity: 'pending',
+      editorial: 'pending',
+      hadi_content_lock: 'pending',
+    };
+    let review = pendingReview;
+    if (recorded) {
+      if (recorded.source_sha256 === sourceHash) {
+        review = { ...pendingReview, ...recorded.review };
+      } else {
+        review = Object.fromEntries(Object.keys(pendingReview).map((gate) => [gate, 'stale']));
+        issues.push('stale-review-record');
+      }
+    }
     const slides = episode.slides.map((slide) => {
       const prose = slide.paragraphs.join('\n\n');
       return {
@@ -145,22 +166,20 @@ function inspectObservation() {
         words: words(prose),
         sources: slide.sources?.length || 0,
         audio_status: slide.audio?.status || null,
-        review: {
-          factual: 'pending',
-          historical: 'pending',
-          source_support: 'pending',
-          narrative_continuity: 'pending',
-          editorial: 'pending',
-          hadi_content_lock: 'pending',
-        },
       };
     });
+    if (review.hadi_content_lock !== 'passed' && slides.some((slide) => slide.audio_status === 'available')) {
+      issues.push('unlocked-narration-exposed');
+    }
     return {
-      path: rel(file),
+      path: sourcePath,
       number: episode.number,
       title: episode.title,
-      source_sha256: sha256(read(file)),
+      source_sha256: sourceHash,
       slides,
+      review_record: recorded?.report || null,
+      review,
+      issues,
     };
   });
   return {
@@ -174,20 +193,36 @@ function inspectGuide() {
   const file = path.join(blogRoot, 'practical-guides', '01-build-your-own-space-on-the-web.md');
   const source = read(file);
   const html = file.replace(/\.md$/, '.html');
+  const sourcePath = rel(file);
+  const sourceHash = sha256(source);
+  const issues = [];
+  const recorded = reviewIndex.essays[sourcePath] || null;
+  const pendingReview = {
+    factual: 'pending',
+    procedural_reproduction: 'pending',
+    safety_and_privacy: 'pending',
+    editorial: 'pending',
+    source_page_parity: 'pending',
+    hadi_content_lock: 'pending',
+  };
+  let review = pendingReview;
+  if (recorded) {
+    if (recorded.source_sha256 === sourceHash) {
+      review = { ...pendingReview, ...recorded.review };
+    } else {
+      review = Object.fromEntries(Object.keys(pendingReview).map((gate) => [gate, 'stale']));
+      issues.push('stale-review-record');
+    }
+  }
   return {
-    path: rel(file),
-    source_sha256: sha256(source),
+    path: sourcePath,
+    source_sha256: sourceHash,
     words: words(source),
     external_sources: externalUrls(source).length,
     published_html: fs.existsSync(html) ? rel(html) : null,
-    review: {
-      factual: 'pending',
-      procedural_reproduction: 'pending',
-      safety_and_privacy: 'pending',
-      editorial: 'pending',
-      source_page_parity: 'pending',
-      hadi_content_lock: 'pending',
-    },
+    review_record: recorded?.report || null,
+    review,
+    issues,
   };
 }
 
