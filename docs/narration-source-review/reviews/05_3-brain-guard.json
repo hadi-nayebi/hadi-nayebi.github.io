@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_3-brain-guard.md",
+  "source_sha256": "86c5540ded9425df34476600dacd19f3432f24aa8d1554e5523c64b4a4e83e59",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/05_3-brain-guard.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
