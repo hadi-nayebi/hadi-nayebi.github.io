@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_2-skeleton-claudemd-hooks-scripts.md",
+  "source_sha256": "67b9941620ec904fd1d36e7e6a84eae2877b28ceac2ea9a42f3280382083a891",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_2-skeleton-claudemd-hooks-scripts.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
