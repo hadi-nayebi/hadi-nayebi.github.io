@@ -64,8 +64,8 @@ personal-super-app, future-of-work, and adoption passages remain prospective
 thought experiments rather than forecasts presented as settled facts.
 
 Factual, chronology, editorial, and source-page parity gates pass for the
-exact source hash. Cross-writing consistency remains provisional, and Hadi's
-content lock remains pending. The essay's metaphors, poetry, professional
+exact source hash. Cross-writing consistency passed the complete narration-source continuity
+review. Hadi's content lock remains pending. The essay's metaphors, poetry, professional
 audience, and future-shaping intent remain the authority for the prose.
 
 ## Validation

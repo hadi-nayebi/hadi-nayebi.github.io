@@ -63,8 +63,8 @@ against the repository's current agent and harness vocabulary without turning
 the essay into technical documentation.
 
 Factual, chronology, editorial, and source-page parity gates pass for the
-exact source hash. Cross-writing consistency remains provisional, and Hadi's
-content lock remains pending. The approved essay's poetry, metaphors, and
+exact source hash. Cross-writing consistency passed the complete narration-source continuity
+review. Hadi's content lock remains pending. The approved essay's poetry, metaphors, and
 professional audience remain the authority for the revision.
 
 ## Validation
