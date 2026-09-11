@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v1.1.0 -->
 <html lang="en">
 
 <head>
@@ -105,25 +105,16 @@
                         By Hadi Nayebi &amp; Claude Opus 4.8
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="audio/the-folder-is-alive.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (17 min)</span>
-                    </div>
-
                     <div class="article-body">
-
                         <blockquote><p><strong>Your liver runs in the background. So will the work you taught your cortex.</strong></p></blockquote>
 
                         <p>Open the laptop of a person five years from now.</p>
 
                         <p>Inside one folder, twenty smaller folders. One handles the year-end taxes. One drafts the monthly client report. One scouts new academic papers in their field. One plans the family vacation. One reconciles bank statements. One files insurance claims. One curates the kid&rsquo;s reading list. One knows how their consulting firm onboards every new account.</p>
 
-                        <p>None of them came pre-built. The person taught each one, one job at a time. Most started clumsy. All of them got better.</p>
+                        <p>None of them came pre-built. The person taught each one, one job at a time. Most started clumsy. The useful ones got better through correction, evidence, and repetition.</p>
 
-                        <p>This is not science fiction. It is not a roadmap either. It is the foreseeable consequence of one quiet idea: <strong>a generic substrate for cognition that any professional can shape.</strong></p>
+                        <p>This is a prospective thought experiment, not a promise or a roadmap. It follows from one quiet idea: <strong>a generic substrate for cognition that any professional can shape.</strong></p>
 
                         <p>We have a name for it. We call it the <a href="../b1/01-llms-are-not-the-agents.html">seed agent</a>. The folder full of seed agents is your <strong>personal cognitive workforce.</strong></p>
 
@@ -155,9 +146,9 @@
 
                         <p>The architectural fact under all of this is small enough to fit in one sentence:</p>
 
-                        <p><strong>Add a <code>.claude/</code> directory to any folder on your computer, and that folder becomes an agent.</strong></p>
+                        <p><strong>Add a compatible instruction and memory layer to a working folder, connect it to an agent runtime, and that folder can carry a distinct agent context.</strong></p>
 
-                        <p>The brain lives in <code>.claude/</code>. The work lives in sibling directories under the same folder &mdash; the data, the reports, the references, whatever the job actually operates on. The LLM reads the brain, operates on the siblings, writes back the lessons it learned along the way. The same pattern works for <code>.opencode/</code> and any equivalent brain directory in any other CLI agent.</p>
+                        <p>In the Claude-based reference system, the brain lives largely in <code>.claude/</code>. The work lives in sibling directories &mdash; the data, reports, references, and whatever the job operates on. The runtime loads selected context, works through tools within its permissions, and writes back only the lessons its process is authorized to preserve. Other CLI agents use different names and event systems, but the broader file-backed pattern can travel.</p>
 
                         <pre style="white-space: pre-wrap; overflow-wrap: break-word; max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 6px; font-size: 0.88em; line-height: 1.5;"><code>your-job/
 ├── .claude/        ← the brain
@@ -165,11 +156,11 @@
 ├── drafts/         ← work
 └── references/     ← work</code></pre>
 
-                        <p>That is it. That is the whole architectural primitive that gives you the folder full of specialists. Each "specialist" in the folder is exactly this: a folder with a brain dir and a few sibling work dirs.</p>
+                        <p>That is the starting primitive behind the folder full of specialists: bounded work plus durable context. A dependable specialist also needs permissions, verification, recovery, and clear responsibility for the state it changes.</p>
 
                         <p>Without the LLM, that folder is just files. They sit on disk. They do nothing.</p>
 
-                        <p>But add the LLM, and the folder starts to move. The agent reads its own knowledge files, updates its plans, migrates lessons from one corner of the folder to another, refines what it has learned about you, and tightens its own rules. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.</p>
+                        <p>But add the LLM, and the folder starts to move. Under explicit rules and permissions, the agent reads knowledge, updates plans, routes reviewed lessons, and proposes tighter controls. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.</p>
 
                         <p>There is no good word for this in plain English yet. So let us coin one.</p>
 
@@ -177,7 +168,7 @@
 
                         <p>The LLM is the metabolism&rsquo;s energy &mdash; the same way electricity is energy in a toaster, the same way <a href="https://en.wikipedia.org/wiki/Adenosine_triphosphate" title="Adenosine triphosphate &mdash; the molecule that carries energy in living cells">ATP is energy</a> in your cells. The files are the tissue. The metabolism is the continuous motion that keeps the tissue alive. (<a href="../b2/02-we-could-have-had-agi.html">Essay 2</a> put the verb in your hands &mdash; <em>the agent metabolizes tokens.</em> This essay names the noun.)</p>
 
-                        <p>This is what makes a seed agent <em>yours.</em> Not the files. The metabolism running on top of them. Your taught lessons get consolidated. Your corrections get absorbed. Your patterns get learned. All of it happens in the background, by an agent following the rules you helped it write.</p>
+                        <p>This is what makes a seed agent <em>yours.</em> The files and the metabolism running over them. Reviewed lessons get consolidated, corrections get preserved, and useful patterns get reused. Background work happens only where you deliberately schedule it and define its authority.</p>
 
                         <p>Static files would be a brain in a jar. Cognitive metabolism makes them a brain at work.</p>
 
@@ -192,13 +183,13 @@
 
                         <p>The first time you do a job with the seed agent, you sit next to it. You explain what you care about. You correct it when it misses something. You tell it which fields matter, which ones don&rsquo;t, which mistakes are unforgivable, which corners it can cut. The agent watches and listens, and writes everything down.</p>
 
-                        <p>Not as transcript. As <strong>structured memory.</strong> What you taught it ends up in files inside the brain dir. You can open them and read them. There is no black box. There is a folder, there are notes, and the notes describe the job you just did together.</p>
+                        <p>Not as a transcript dump. As <strong>structured memory.</strong> Selected lessons end up in files inside the brain directory. You can open and audit that external memory. The model remains a black box, but the state you chose to preserve does not have to be.</p>
 
                         <p>The second time, the agent is faster. It remembers the last conversation. It still asks questions, but the right ones. You correct less.</p>
 
                         <p>By the third or fourth time, the agent has a <strong>plan file</strong> &mdash; a document the agent wrote that describes how the job goes, your way, in your words, refined through practice. The plan file is the agent&rsquo;s promotion. It used to make it up each time. Now it works from a script you co-authored.</p>
 
-                        <p>For jobs you do enough, the agent eventually grows the plan into something stronger. A piece of itself that knows the job by heart. Inside the agent, this is called a <strong>plugin.</strong> To you, it is the moment a particular job moved out of your head and into the cortex, where it can be done without drawing on your attention for the small stuff anymore.</p>
+                        <p>For jobs you do enough, the agent can grow the plan into something stronger: a skill, script, hook, plugin, or combination that knows more of the job by heart. To you, it is the moment a procedure moves out of your head and into the cortex, while consequential judgment stays visible.</p>
 
                         <p>Three steps. Apprentice. Trained colleague. Resident specialist.</p>
 
@@ -252,7 +243,7 @@
 
                         <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
                           <img src="images/eighty-twenty-scale-b3_1-4.png" alt="The 80/20 Scale Effect: 20% up front you teach the agent your way; 80% ongoing the agent handles the work in the background, gets better, makes fewer mistakes, saves time. Taught once. Used thousands of times." style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Taught once. Used thousands of times. Gets better every time.</figcaption>
+                          <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Teach the judgment once. Reuse the procedure thousands of times.</figcaption>
                         </figure>
 
                         <h2 id="rhythms">Rhythms</h2>
@@ -301,11 +292,11 @@
 
                         <p>The deepest version of this is not a feed. It is a <strong>personal super-app</strong>. Your fitness dashboard. Your project tracker. Your finance overview. Your communication hub. Built by your agent, running on your hardware, holding your data &mdash; yours.</p>
 
-                        <p><a href="03-your-brain-was-never-built-for-this.html">Blog 3 already saw the architecture for this</a>. The seed agent makes it concrete. Every feed, every dashboard, every utility you depend on can be replaced by something you shaped.</p>
+                        <p><a href="03-your-brain-was-never-built-for-this.html">Blog 3 already saw the architecture for this</a>. The seed agent makes parts of it concrete. Some feeds, dashboards, and utilities can be replaced by something you shaped; others still depend on networks or infrastructure you do not own.</p>
 
                         <h3 id="the-punch-line">The Punch Line</h3>
 
-                        <p>Privacy is part of this. You stop being someone else&rsquo;s product. Your data stops being mined and resold.</p>
+                        <p>Privacy is part of this. Local, user-controlled tools can reduce how much data you hand to advertising platforms, although privacy still depends on the models, connectors, hosting, logs, and policies you choose.</p>
 
                         <p>But privacy is the supporting argument. The headline is bigger.</p>
 
@@ -360,7 +351,6 @@
                         <p><em>Series interlude &mdash; sits between Essay 3 and Essay 4 of the Hadosh Academy series on agent architecture.</em></p>
 
                         <p><em>Previous: <a href="03-your-brain-was-never-built-for-this.html">"Your Brain Was Never Built for This"</a> &mdash; why your biology can&rsquo;t keep up with the world your civilization built.</em> <em>Next: <a href="../b4/04-the-language-of-agents.html">"The Language of Agents"</a> &mdash; every term you need, in one read.</em></p>
-
                     </div>
 
                     <!-- Comments (Giscus) -->
