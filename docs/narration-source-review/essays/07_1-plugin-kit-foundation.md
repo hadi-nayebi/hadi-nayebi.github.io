@@ -27,4 +27,4 @@ This mature article received a bounded obvious-error pass. Its cell metaphor, or
 - Published-page SHA-256: `99b120ab4eb163093e7eabf46933c43af385c5389de28b0ae45aeb63211ff219`
 - Recorded source words: 1,741 to 1,751; net `+10`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

@@ -35,4 +35,4 @@ This mature article received a bounded obvious-error pass. Its three-organ skele
 - Published-page SHA-256: `64c47c3e8ff445318d9585df5a3b7d0543ddfca6a5e78d8ff4e1686166bfeb06`
 - Recorded source words: 2,056 to 2,016; net `-40`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
