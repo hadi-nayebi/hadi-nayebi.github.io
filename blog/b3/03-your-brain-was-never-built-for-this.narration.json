@@ -131,7 +131,10 @@
       "pronunciations": [],
       "pronunciation_checks": [],
       "gap_after_ms": 550,
-      "text_sha256": "cdd7164bc0154a8261aa6edd9367f2265452402950d5d7647ca7b77c8a30797a"
+      "text_sha256": "cdd7164bc0154a8261aa6edd9367f2265452402950d5d7647ca7b77c8a30797a",
+      "asr_accept": [
+        "12,000 years of drift"
+      ]
     },
     {
       "id": "n009",
