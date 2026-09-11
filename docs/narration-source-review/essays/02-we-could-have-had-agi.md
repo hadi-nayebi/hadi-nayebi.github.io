@@ -13,9 +13,9 @@ current systems guarantee.
 
 - Canonical source: `blog/b2/02-we-could-have-had-agi.md`
 - Source version: `v1.2.0` (previously `v1.1.0`)
-- Source SHA-256: `d92a4b89e8572a1737e41fad22253c0c789cf8f38af060d69ea3c2037f9e3357`
+- Source SHA-256: `3cbbb6f781dad5ba3f1d96a0849151fdaa0159e46b80447ce045d9caca1875ee`
 - Published page: `blog/b2/02-we-could-have-had-agi.html`
-- Published-page SHA-256: `cf344de038168a1fcb3d498f42ec85bd095fa35a8462b239c297f6116d5a2789`
+- Published-page SHA-256: `babced83213ef7186b53feb001f4ebc1b910a462abc820103f19c3faeab232e8`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -30,9 +30,11 @@ current systems guarantee.
 4. **Kept the RNA metaphor with a correct relationship.** RNA is described as
    a family that includes information carriers and catalytic ribozymes. The
    giant-molecule thought experiment and organism analogy remain.
-5. **Kept the Thousand Brains metaphor while labeling the theory.** The
-   architectural picture remains useful without presenting every cortical
-   claim as settled neuroscience.
+5. **Restored the Thousand Brains passage as an architectural metaphor.**
+   Cortical columns learn associations among sensing, movement, and expected
+   outcomes; LLMs learn associations in linguistic and semantic space. The
+   mechanisms are explicitly different, while the shared pattern of learned
+   relationships, specialization, and coordination keeps its force.
 6. **Made engine replacement conditional.** Diffusion language models remain
    an example of changing engines; adapters may change while much of the
    file-backed structure persists.
@@ -60,8 +62,9 @@ current systems guarantee.
 ## Evidence and review state
 
 Concrete mechanics were checked against the owning Ralph Loop repository,
-current hook documentation, NCBI's RNA-world overview, the Thousand Brains
-hypothesis paper, diffusion-language-model research, and the owning AutoGPT
+current hook documentation, NCBI's RNA-world overview, the cortical-column
+architecture paper associated with Thousand Brains, diffusion-language-model
+research, and the owning AutoGPT
 and BabyAGI repositories.
 
 Factual, technical, chronology, editorial, and source-page parity gates pass
