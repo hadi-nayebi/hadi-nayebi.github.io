@@ -890,11 +890,7 @@
       "kind": "body",
       "text": "Project instructions describe how work should happen in a particular folder: the role, standards, commands, boundaries, and definition of done.",
       "tts_text": "Project instructions describe how work should happen in a particular folder: the role, standards, commands, boundaries, and definition of done.",
-      "pronunciations": [
-        "CLAUDE.md",
-        "AGENTS.md",
-        "QWEN.md"
-      ],
+      "pronunciations": [],
       "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "97b10a81013e0a1bcdea15b669021a78da1376a479d6afe72ef975415ae9423d"
