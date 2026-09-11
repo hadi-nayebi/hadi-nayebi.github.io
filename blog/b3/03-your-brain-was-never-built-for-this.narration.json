@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "source": "blog/b3/03-your-brain-was-never-built-for-this.md",
   "source_sha256": "1e10e6509cdf29af339d6c96ff44c4f56f80b517ad780a7d8b4af324aebc8c0a",
-  "status": "voice-review",
+  "status": "voice-approved",
   "content_lock": {
     "status": "approved",
     "approved_at": "2026-09-11"
   },
-  "voice_review": "pending",
+  "voice_review": "approved",
   "canonical_text_policy": "Canonical meaning and the reader-facing argument are preserved in text; eye-oriented notation may be expanded into equivalent spoken prose; render-only aliases live in tts_text.",
   "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
   "audio": {
@@ -1256,5 +1256,6 @@
       "gap_after_ms": 900,
       "text_sha256": "1365292ac9ef49eb6ba63e60c9c28c50b0cab0670150b27cfc44cdc17af8c966"
     }
-  ]
+  ],
+  "voice_review_approved_at": "2026-09-11"
 }
