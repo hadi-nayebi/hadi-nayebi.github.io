@@ -114,4 +114,4 @@ The harness can then let the model stop without allowing responsibility to evapo
 
 ---
 
-*Essay 9.4 — The Visible Harness, Part 4 of 4. This essay closes the series.*
+*Essay 9.4 — The Visible Harness, Part 4 of 4. Previous: [Essay 9.3 — Internal Voices Are Reorientation, Not Notifications](09_3-internal-voices-reorientation.html). This essay closes the series.*

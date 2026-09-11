@@ -9,7 +9,7 @@ This mature article received a bounded obvious-error pass against the current pu
 1. The Stop hook reads `agent-stop-state`; Contextual Feedback separately reconciles that state from its queue.
 2. The atomic answer-and-lifecycle journal event is separated from the subsequent durable wake record.
 3. Origin saves the thread and wake intent before terminal delivery, replacing the vague claim that “the dashboard saves state.”
-4. The final line closes the current four-part series instead of promising a nonexistent next essay.
+4. The final line links back to Essay 9.3 and closes the current four-part series instead of promising a nonexistent next essay.
 5. Canonical metadata records the September 4 repository introduction date, published status, and version `v0.2.0`.
 6. The rendered page records the September 11 review date and is synchronized from canonical Markdown.
 
@@ -25,8 +25,8 @@ This mature article received a bounded obvious-error pass against the current pu
 
 - Baseline: `ec6b34efbaa4f7a5af81f44a6cb374cd8d624ae2`
 - Version: `v0.2.0`
-- Source SHA-256: `5a200236af0252a15bdde32cfbf0d216eab2063b72318b48446caf10c503e39d`
-- Published-page SHA-256: `623eb65ba5539020a278da44c413ec7e3765c3ccba3b8c6e15b29acebbe55264`
-- Reader-facing prose words: 1,252 to 1,271; net `+19`.
+- Source SHA-256: `736f422584f336cbc426bd776b6a090cba1cf985adb79006a666c5a1fb8adf63`
+- Published-page SHA-256: `2f041da3d4c91990892a75d2f40a9ac330653a8cb00f7bbccb5ca96767ec6131`
+- Reader-facing prose words: 1,252 to 1,282; net `+30`.
 - This page has no narration player or transcript to invalidate.
 - Cross-writing consistency passed the complete B9 continuity review; Hadi's content lock remains pending.
