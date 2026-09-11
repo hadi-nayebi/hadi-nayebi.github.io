@@ -351,7 +351,10 @@
       "pronunciations": [],
       "pronunciation_checks": [],
       "gap_after_ms": 420,
-      "text_sha256": "49c8ff2fdacbf273488457b0d0d9a2d3a09643b6c1fc8546e6aad0bb88068d36"
+      "text_sha256": "49c8ff2fdacbf273488457b0d0d9a2d3a09643b6c1fc8546e6aad0bb88068d36",
+      "asr_accept": [
+        "There is no good word for this in plain English yet. So let us coin 1."
+      ]
     },
     {
       "id": "n029",
