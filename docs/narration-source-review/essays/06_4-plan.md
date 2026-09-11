@@ -21,13 +21,14 @@ This mature article received a bounded obvious-error pass. The contract-first ar
 ## Consecutive-series correction
 
 - The cycle-three example now repairs the current working contract without proposing an edit to the run-frozen YAML plan; its handoff calls EXECUTE the project-deliverable phase.
+- The plan lifecycle now states the actual refinement window: VERIFY may refine the plan during cycle one of a run, and the plan is frozen from cycle two onward.
 
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.6.0`
-- Source SHA-256: `e1c5739d586b5d7a456899b4f351d03340b682abbf148bb6035d234521f3d4f1`
-- Published-page SHA-256: `5577172f7f796dd18f526dc15af5292200a316283cffa3647496b93d41cb33e6`
-- Recorded source words: 2,992 to 3,010; net `+18`.
+- Source SHA-256: `abadfb95e5f1e4ce2ee2e71989313285de3b2d16614d954966b45127d9ce31db`
+- Published-page SHA-256: `59c13f6bfcdca79b998ae61b8f86ce957eda761b4f80397a58e108443a740d62`
+- Recorded source words: 2,992 to 3,004; net `+12`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.
