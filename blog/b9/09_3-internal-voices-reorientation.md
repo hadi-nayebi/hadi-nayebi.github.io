@@ -1,3 +1,15 @@
+---
+title: "Internal Voices Are Reorientation, Not Notifications"
+date: "September 4, 2026"
+slug: "internal-voices-reorientation"
+read_time: "8 min"
+tags: [Voice, Plugins, Hooks, Origin]
+status: published
+version: v0.2.0
+audience: "Power Users & Architects"
+og_image: "assets/images/digital-cortex-2-og.jpg"
+---
+
 # Internal Voices Are Reorientation, Not Notifications
 
 *Essay 9.3 — The Visible Harness, Part 3.*

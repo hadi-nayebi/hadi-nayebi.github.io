@@ -18,11 +18,6 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BODY_START = '                    <div class="article-body">\n'
-BODY_END = "\n                    </div>\n\n                    <!-- Comments (Giscus) -->"
-
-
-
 def figures_by_source(body: str) -> dict[str, str]:
     figures: dict[str, str] = {}
     for match in re.finditer(r"<figure\b[\s\S]*?</figure>", body):
@@ -84,15 +79,20 @@ def preserve_figure_shells(rendered: str, current: str) -> str:
     return result
 
 
-def bounded_body(html: str) -> tuple[str, str, str]:
-    start = html.find(BODY_START)
-    if start < 0:
+def bounded_body(html: str) -> tuple[str, str, str, str]:
+    start_match = re.search(r'(?m)^([ \t]*)<div class="article-body">\n', html)
+    if not start_match:
         raise RuntimeError("article-body start marker not found")
-    content_start = start + len(BODY_START)
-    end = html.find(BODY_END, content_start)
-    if end < 0:
+    shell_indent = start_match.group(1)
+    content_start = start_match.end()
+    end_match = re.search(
+        rf'\n{re.escape(shell_indent)}</div>\n\n{re.escape(shell_indent)}(?:<!-- Comments \(Giscus\) -->|<div class="article-comments")',
+        html[content_start:],
+    )
+    if not end_match:
         raise RuntimeError("article-body end marker not found")
-    return html[:content_start], html[content_start:end], html[end:]
+    end = content_start + end_match.start()
+    return html[:content_start], html[content_start:end], html[end:], shell_indent + "    "
 
 
 def main() -> int:
@@ -106,8 +106,8 @@ def main() -> int:
     html_file = args.html.resolve()
     if ROOT not in markdown.parents or ROOT not in html_file.parents:
         raise SystemExit("both files must be inside the website repository")
-    if not re.fullmatch(r"b[1-8]", markdown.parent.name):
-        raise SystemExit("this synchronizer is limited to numbered B1-B8 essays")
+    if not re.fullmatch(r"b[1-9]", markdown.parent.name):
+        raise SystemExit("this synchronizer is limited to numbered B1-B9 essays")
     if markdown.with_suffix(".html") != html_file:
         raise SystemExit("Markdown and HTML basenames must match")
 
@@ -115,9 +115,9 @@ def main() -> int:
     new_body = render_body(source_body, input_md_dir=str(markdown.parent))
 
     current_html = html_file.read_text()
-    before, current_body, after = bounded_body(current_html)
+    before, current_body, after, content_indent = bounded_body(current_html)
     new_body = preserve_figure_shells(new_body, current_body)
-    updated = before + "                        " + new_body + after
+    updated = before + content_indent + new_body + after
     version = metadata.get("version")
     if version:
         updated, count = re.subn(r"<!-- Version: v[^ ]+ -->", f"<!-- Version: {version} -->", updated, count=1)
