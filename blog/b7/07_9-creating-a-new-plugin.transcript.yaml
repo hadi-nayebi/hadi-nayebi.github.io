@@ -1,12 +1,13 @@
 # Structured transcript — one block per spoken section.
+# Narration synchronized to the corrected source on 2026-09-10; regenerate the audio before republishing it.
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: creating-a-new-plugin
 source_md: 07_9-creating-a-new-plugin.md
-final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+final: true             # transcript is ready for TTS; the existing audio has not been regenerated
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
-generated_at: "2026-06-22T21:25:38Z"
+generated_at: "2026-09-10T21:30:39Z"
 sections:
   - id: s01
     kind: heading
@@ -40,10 +41,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "598e1ac22c58"   # curated source block; drift -> review
-    text_hash: "598e1ac22c58"     # narration; change -> re-render
+    source_hash: "b14f56f9fa38"   # curated source block; drift -> review
+    text_hash: "b14f56f9fa38"     # narration; change -> re-render
     text: |-
-      When you install the public seed agent on your laptop and start running it, every job you point it at is a single-cycle O P E V C job at first (Essay 8 covers the maturation stages). The seed is in learning mode — it asks questions, takes its time, builds experiential data from your work. When a job recurs, the seed's soft voices nudge you toward running it as a repeatable .md-plan job (Stage 2) — often, not always. When a stable pattern wants per-cycle context injection, you and the seed may decide to run it as a .yaml-plan job (Stage 3) — a user-discussed choice for that job, never an automatic flip. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job itself becomes a plugin.
+      When you and your agent assemble a seed in a local space you control, new jobs can begin as single-cycle O P E V C work (Essay 8 covers the maturation stages). In the reference implementation described here, this is the Stage-1 starting pattern. The seed is in learning mode — it asks questions, takes its time, builds experiential data from your work. When a job recurs, the seed's soft voices nudge you toward running it as a repeatable .md-plan job (Stage 2) — often, not always. When a stable pattern wants per-cycle context injection, you and the seed may decide to run it as a .yaml-plan job (Stage 3) — a user-discussed choice for that job, never an automatic flip. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job itself becomes a plugin.
   - id: s05
     kind: body
     engine: alt
@@ -139,19 +140,19 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "5592b8cc4ffc"   # curated source block; drift -> review
-    text_hash: "5592b8cc4ffc"     # narration; change -> re-render
+    source_hash: "1efab423b7c9"   # curated source block; drift -> review
+    text_hash: "1efab423b7c9"     # narration; change -> re-render
     text: |-
-      This is the part most plugin tutorials skip. When the seed authors a new plugin, the seed also authors the plugin's knowledge directory at .claude/knowledge/. This is where the plugin's deep self-knowledge lives — the architectural rationale, the operating patterns, the lessons captured across cycles. The public seed agent ships every active plugin's knowledge directory along with the plugin code, so every operator's seed has the same depth of recall. Future OBSERVE phases will recall these knowledge files when the agent encounters work touching this plugin.
+      This is the part most plugin tutorials skip. When the seed authors a new plugin, the seed also authors the plugin's knowledge directory at .claude/knowledge/. This is where the plugin's deep self-knowledge lives — the architectural rationale, the operating patterns, the lessons captured across cycles. In the reference implementation, each active plugin's code is paired with its own knowledge directory, giving that user-owned seed durable context for reasoning about its organs. Another seed may keep equivalent context in a different structure; the portable principle is that a reusable component should travel with enough rationale and operational knowledge to be understood and evolved. Future OBSERVE phases in this implementation recall these knowledge files when the agent encounters work touching this plugin.
   - id: s16
     kind: body
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "05912c725a07"   # curated source block; drift -> review
-    text_hash: "05912c725a07"     # narration; change -> re-render
+    source_hash: "1c3feb89a485"   # curated source block; drift -> review
+    text_hash: "1c3feb89a485"     # narration; change -> re-render
     text: |-
-      Tell your seed: every new plugin gets a knowledge directory by birth, not as an afterthought. Without it, the plugin migrates to the public repo as code without context; with it, the public seed agent can teach new operators how to think about that plugin's concern.
+      Tell your seed: give every new plugin durable context by birth, not as an afterthought. Without it, reusable code becomes detached from the rationale and operating knowledge needed to adapt it; with it, another agent can evaluate the component, select what is useful, and reshape it for its user.
   - id: s17
     kind: heading
     engine: alt

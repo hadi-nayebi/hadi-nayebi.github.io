@@ -1,12 +1,13 @@
 # Structured transcript — one block per spoken section.
+# Narration synchronized to the corrected source on 2026-09-10; regenerate the audio before republishing it.
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: apprentice-to-architect-foundation
 source_md: 08_1-apprentice-to-architect-foundation.md
-final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+final: true             # transcript is ready for TTS; the existing audio has not been regenerated
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
-generated_at: "2026-06-22T21:25:39Z"
+generated_at: "2026-09-10T21:30:39Z"
 sections:
   - id: s01
     kind: heading
@@ -31,10 +32,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "432398553a72"   # curated source block; drift -> review
-    text_hash: "432398553a72"     # narration; change -> re-render
+    source_hash: "74ed3b86a1c5"   # curated source block; drift -> review
+    text_hash: "74ed3b86a1c5"     # narration; change -> re-render
     text: |-
-      The seed agent is not a product. It is not a thing that gets installed and works. It is a thing that gets installed, and then grows, cycle by cycle, under the operator's care. A new seed in week one looks different from the same seed in month three. The architecture is identical. What has changed is the brain — what it has learned, what it has codified, what has fossilized into permanent enforcement, and what is still being shaped by hand.
+      A seed is not a standard product that gets installed once and then used unchanged. It is a distinct system a user and agent assemble, then grows, cycle by cycle, under the operator's care. A new seed in week one looks different from the same seed in month three — not only because its memory has changed, but because its structures, plugins, and adaptations may have changed with the work. Shared design principles may remain recognizable; the software does not need to stay identical.
   - id: s04
     kind: body
     engine: alt
