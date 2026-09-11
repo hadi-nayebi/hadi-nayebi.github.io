@@ -22,7 +22,7 @@
   },
   "curation": {
     "source_file_words": 4880,
-    "narration_words": 4732,
+    "narration_words": 4734,
     "excluded": [
       "front matter",
       "evidence annotations",
@@ -41,7 +41,8 @@
       "asr_accept": [
         "AGENTS.md",
         "agents dot m d",
-        "agents m d"
+        "agents m d",
+        "agents md"
       ]
     },
     "CLAUDE.md": {
@@ -50,7 +51,9 @@
       "asr_accept": [
         "CLAUDE.md",
         "Claude dot m d",
-        "cloud dot m d"
+        "cloud dot m d",
+        "Claude md",
+        "cloud md"
       ]
     },
     "QWEN.md": {
@@ -59,7 +62,9 @@
       "asr_accept": [
         "QWEN.md",
         "Qwen dot m d",
-        "quen dot m d"
+        "quen dot m d",
+        "Qwen md",
+        "quen md"
       ]
     },
     "OPEVC": {
@@ -900,20 +905,55 @@
       "id": "n069",
       "sequence": 69,
       "kind": "body",
-      "text": "Depending on the platform, a CLI agent may discover them through files such as AGENTS.md in Codex, CLAUDE.md in Claude Code, or QWEN.md in Qwen Code.",
-      "tts_text": "Depending on the platform, a CLI agent may discover them through files such as AGENTS dot em dee in Codex, CLAUDE dot em dee in Claude Code, or quen dot em dee in Qwen Code.",
+      "text": "Depending on the platform, a CLI agent may discover project instructions through different files.",
+      "tts_text": "Depending on the platform, a CLI agent may discover project instructions through different files.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "38889c106617f5b41409c38abbe67daf8766ad78d46208cf39724786739cc29e"
+    },
+    {
+      "id": "n069b",
+      "sequence": 70,
+      "kind": "body",
+      "text": "Codex may use AGENTS.md.",
+      "tts_text": "Codex may use AGENTS dot em dee.",
       "pronunciations": [
-        "CLAUDE.md",
-        "AGENTS.md",
+        "AGENTS.md"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "bb629021167afd284a76c8e58cae48aca500df29213db9094302b390e60b457f"
+    },
+    {
+      "id": "n069c",
+      "sequence": 71,
+      "kind": "body",
+      "text": "Claude Code may use CLAUDE.md.",
+      "tts_text": "Claude Code may use Claude dot em dee.",
+      "pronunciations": [
+        "CLAUDE.md"
+      ],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "853e917d385cf94441d278d8ea60b0d90433cae9c5521f9053bdb6cb78d103b3"
+    },
+    {
+      "id": "n069d",
+      "sequence": 72,
+      "kind": "body",
+      "text": "Qwen Code may use QWEN.md.",
+      "tts_text": "Qwen Code may use quen dot em dee.",
+      "pronunciations": [
         "QWEN.md"
       ],
       "pronunciation_checks": [],
       "gap_after_ms": 420,
-      "text_sha256": "946be2c7d4736374726b6a2c88f10abd055a82c9eee1886d3b915c96d5efbe0e"
+      "text_sha256": "3c6129ffa0b7fe81e7272f29ebb52df14c392db8f7c8cb349e0831059e5c5622"
     },
     {
       "id": "n070",
-      "sequence": 70,
+      "sequence": 73,
       "kind": "body",
       "text": "OpenCode and Gemini CLI have their own instruction surfaces and discovery rules. The files are visible and editable, but their exact authority and loading rules depend on the runtime.",
       "tts_text": "OpenCode and Gemini CLI have their own instruction surfaces and discovery rules. The files are visible and editable, but their exact authority and loading rules depend on the runtime.",
@@ -924,7 +964,7 @@
     },
     {
       "id": "n071",
-      "sequence": 71,
+      "sequence": 74,
       "kind": "body",
       "text": "Context is everything the model can use on this turn: instructions, your request, relevant conversation, selected files, tool definitions, retrieved material, and tool results. Context is the desk. Context engineering decides what deserves space on it.",
       "tts_text": "Context is everything the model can use on this turn: instructions, your request, relevant conversation, selected files, tool definitions, retrieved material, and tool results. Context is the desk. Context engineering decides what deserves space on it.",
@@ -935,7 +975,7 @@
     },
     {
       "id": "n072",
-      "sequence": 72,
+      "sequence": 75,
       "kind": "body",
       "text": "Memory is information preserved outside that temporary desk so it can be considered again. A transcript is one form of storage, but useful memory is often smaller and structured: accepted decisions, stable facts, preferences, open work, and lessons with provenance. Memory does nothing merely by existing.",
       "tts_text": "Memory is information preserved outside that temporary desk so it can be considered again. A transcript is one form of storage, but useful memory is often smaller and structured: accepted decisions, stable facts, preferences, open work, and lessons with provenance. Memory does nothing merely by existing.",
@@ -946,7 +986,7 @@
     },
     {
       "id": "n073",
-      "sequence": 73,
+      "sequence": 76,
       "kind": "body",
       "text": "The harness must discover, select, and reload it at the right time.",
       "tts_text": "The harness must discover, select, and reload it at the right time.",
@@ -957,7 +997,7 @@
     },
     {
       "id": "n074",
-      "sequence": 74,
+      "sequence": 77,
       "kind": "body",
       "text": "State is the system's recorded condition at a particular moment: which job is active, which phase it reached, which approvals are pending, which artifacts exist, and what happened before an interruption. Memory helps the agent interpret experience. State helps it continue the right process.",
       "tts_text": "State is the system's recorded condition at a particular moment: which job is active, which phase it reached, which approvals are pending, which artifacts exist, and what happened before an interruption. Memory helps the agent interpret experience. State helps it continue the right process.",
@@ -968,7 +1008,7 @@
     },
     {
       "id": "n075",
-      "sequence": 75,
+      "sequence": 78,
       "kind": "body",
       "text": "A file may serve both roles, but the responsibility should remain clear.",
       "tts_text": "A file may serve both roles, but the responsibility should remain clear.",
@@ -979,7 +1019,7 @@
     },
     {
       "id": "n076",
-      "sequence": 76,
+      "sequence": 79,
       "kind": "body",
       "text": "Persona is the recognizable role and manner expressed across those layers. It may begin in one instruction file, but a mature agent's identity spreads across instructions, memory, policies, habits, and the experience accumulated through work — the way a person's character is not stored in one place.",
       "tts_text": "Persona is the recognizable role and manner expressed across those layers. It may begin in one instruction file, but a mature agent's identity spreads across instructions, memory, policies, habits, and the experience accumulated through work — the way a person's character is not stored in one place.",
@@ -990,7 +1030,7 @@
     },
     {
       "id": "n077",
-      "sequence": 77,
+      "sequence": 80,
       "kind": "body",
       "text": "A legal research agent might be told to cite primary sources, protect confidential material, distinguish research from legal advice, and leave accountable decisions to the human professional.",
       "tts_text": "A legal research agent might be told to cite primary sources, protect confidential material, distinguish research from legal advice, and leave accountable decisions to the human professional.",
@@ -1001,7 +1041,7 @@
     },
     {
       "id": "n078",
-      "sequence": 78,
+      "sequence": 81,
       "kind": "body",
       "text": "One engine. A thousand possible agents.",
       "tts_text": "One engine. A thousand possible agents.",
@@ -1012,7 +1052,7 @@
     },
     {
       "id": "n079",
-      "sequence": 79,
+      "sequence": 82,
       "kind": "heading",
       "text": "The Craft: From Prompt Engineering to Context Engineering",
       "tts_text": "The Craft: From Prompt Engineering to Context Engineering",
@@ -1023,7 +1063,7 @@
     },
     {
       "id": "n080",
-      "sequence": 80,
+      "sequence": 83,
       "kind": "body",
       "text": "You have probably heard the term prompt engineering. It means carefully crafting what you type to get better results from the AI.",
       "tts_text": "You have probably heard the term prompt engineering. It means carefully crafting what you type to get better results from the AI.",
@@ -1034,7 +1074,7 @@
     },
     {
       "id": "n081",
-      "sequence": 81,
+      "sequence": 84,
       "kind": "body",
       "text": "Prompt engineering works. It matters. But when treated as the whole interface, it puts the burden on you. Learn the right phrasing. Structure your request just so. Add the right context manually. The better you get at prompting, the better your results.",
       "tts_text": "Prompt engineering works. It matters. But when treated as the whole interface, it puts the burden on you. Learn the right phrasing. Structure your request just so. Add the right context manually. The better you get at prompting, the better your results.",
@@ -1045,7 +1085,7 @@
     },
     {
       "id": "n082",
-      "sequence": 82,
+      "sequence": 85,
       "kind": "body",
       "text": "That disproportionately rewards people willing to learn a new way of talking to a machine.",
       "tts_text": "That disproportionately rewards people willing to learn a new way of talking to a machine.",
@@ -1056,7 +1096,7 @@
     },
     {
       "id": "n083",
-      "sequence": 83,
+      "sequence": 86,
       "kind": "body",
       "text": "The field is moving toward something broader: context engineering. Instead of expecting the user to pack everything into one perfect prompt, you design the information environment so the AI has a better chance of performing well across ordinary requests.",
       "tts_text": "The field is moving toward something broader: context engineering. Instead of expecting the user to pack everything into one perfect prompt, you design the information environment so the AI has a better chance of performing well across ordinary requests.",
@@ -1067,7 +1107,7 @@
     },
     {
       "id": "n084",
-      "sequence": 84,
+      "sequence": 87,
       "kind": "body",
       "text": "Context engineering moves recurring prompting work into the architecture. Structured instructions, selected context, and retrieval rules can be prepared by the system instead of reconstructed by the user every time.",
       "tts_text": "Context engineering moves recurring prompting work into the architecture. Structured instructions, selected context, and retrieval rules can be prepared by the system instead of reconstructed by the user every time.",
@@ -1078,7 +1118,7 @@
     },
     {
       "id": "n085",
-      "sequence": 85,
+      "sequence": 88,
       "kind": "body",
       "text": "Internal model calls still need careful prompts, and ambiguous requests can still require clarification, but the user carries less of that burden manually.",
       "tts_text": "Internal model calls still need careful prompts, and ambiguous requests can still require clarification, but the user carries less of that burden manually.",
@@ -1089,7 +1129,7 @@
     },
     {
       "id": "n086",
-      "sequence": 86,
+      "sequence": 89,
       "kind": "body",
       "text": "It also expands the focus beyond just talking to the LLM.",
       "tts_text": "It also expands the focus beyond just talking to the LLM.",
@@ -1100,7 +1140,7 @@
     },
     {
       "id": "n087",
-      "sequence": 87,
+      "sequence": 90,
       "kind": "body",
       "text": "Think of it as a metabolism. Everything that flows through the AI — your prompts, selected files, intermediate reasoning, and results from tools — is information being processed.",
       "tts_text": "Think of it as a metabolism. Everything that flows through the AI — your prompts, selected files, intermediate reasoning, and results from tools — is information being processed.",
@@ -1111,7 +1151,7 @@
     },
     {
       "id": "n088",
-      "sequence": 88,
+      "sequence": 91,
       "kind": "body",
       "text": "Good context engineering decides what enters the working context, what stays outside, what deserves durable memory, and what should be discarded. The token generator has been invented. The real work now is building the rest of the system so those tokens are metabolized rather than merely accumulated.",
       "tts_text": "Good context engineering decides what enters the working context, what stays outside, what deserves durable memory, and what should be discarded. The token generator has been invented. The real work now is building the rest of the system so those tokens are metabolized rather than merely accumulated.",
@@ -1122,7 +1162,7 @@
     },
     {
       "id": "n089",
-      "sequence": 89,
+      "sequence": 92,
       "kind": "body",
       "text": "What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?",
       "tts_text": "What files does the agent see? What instructions does it receive at startup? What tools can it use? What rules does it follow? What memory does it carry from previous sessions?",
@@ -1133,7 +1173,7 @@
     },
     {
       "id": "n090",
-      "sequence": 90,
+      "sequence": 93,
       "kind": "body",
       "text": "Prompt engineering is choosing your words carefully. Context engineering is designing the room so that a simple request is enough — the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors. The prompting still happens. It just happens inside the architecture, not inside your head.",
       "tts_text": "Prompt engineering is choosing your words carefully. Context engineering is designing the room so that a simple request is enough — the desk, the filing cabinets, the rulebooks on the shelf, the locks on the doors. The prompting still happens. It just happens inside the architecture, not inside your head.",
@@ -1144,7 +1184,7 @@
     },
     {
       "id": "n091",
-      "sequence": 91,
+      "sequence": 94,
       "kind": "body",
       "text": "In the second essay, we called this balanced context composition — making sure every compartment that should influence the agent's thinking has a pathway in.",
       "tts_text": "In the second essay, we called this balanced context composition — making sure every compartment that should influence the agent's thinking has a pathway in.",
@@ -1155,7 +1195,7 @@
     },
     {
       "id": "n092",
-      "sequence": 92,
+      "sequence": 95,
       "kind": "body",
       "text": "For a non-technical professional, context engineering might sound intimidating. It can start with one project-instruction file. You describe the work, the boundaries, and how the agent should behave; then you and the agent add structure only as evidence shows what is needed.",
       "tts_text": "For a non-technical professional, context engineering might sound intimidating. It can start with one project-instruction file. You describe the work, the boundaries, and how the agent should behave; then you and the agent add structure only as evidence shows what is needed.",
@@ -1166,7 +1206,7 @@
     },
     {
       "id": "n093",
-      "sequence": 93,
+      "sequence": 96,
       "kind": "heading",
       "text": "The Hands and the Locks: Tools, Permissions, and Authority",
       "tts_text": "The Hands and the Locks: Tools, Permissions, and Authority",
@@ -1177,7 +1217,7 @@
     },
     {
       "id": "n094",
-      "sequence": 94,
+      "sequence": 97,
       "kind": "body",
       "text": "A model can propose an action. A tool gives the runtime a way to perform one.",
       "tts_text": "A model can propose an action. A tool gives the runtime a way to perform one.",
@@ -1188,7 +1228,7 @@
     },
     {
       "id": "n095",
-      "sequence": 95,
+      "sequence": 98,
       "kind": "body",
       "text": "Reading a file, searching the web, querying a database, running a calculation, editing a document, and sending a message can all be tools. Each tool has an interface: a name, a description, expected inputs, and a result returned to the model. Tool use turns generated text into contact with the world.",
       "tts_text": "Reading a file, searching the web, querying a database, running a calculation, editing a document, and sending a message can all be tools. Each tool has an interface: a name, a description, expected inputs, and a result returned to the model. Tool use turns generated text into contact with the world.",
@@ -1199,7 +1239,7 @@
     },
     {
       "id": "n096",
-      "sequence": 96,
+      "sequence": 99,
       "kind": "body",
       "text": "That contact needs boundaries. A permission answers whether a particular action is allowed: may this tool read that folder, run this command, or call that service? Permissions can allow, deny, or pause for a human decision. A tool being available does not mean every use of it is authorized.",
       "tts_text": "That contact needs boundaries. A permission answers whether a particular action is allowed: may this tool read that folder, run this command, or call that service? Permissions can allow, deny, or pause for a human decision. A tool being available does not mean every use of it is authorized.",
@@ -1210,7 +1250,7 @@
     },
     {
       "id": "n097",
-      "sequence": 97,
+      "sequence": 100,
       "kind": "body",
       "text": "Authority is the larger question behind permission: who has the right to make the decision? An agent may have permission to edit a draft while lacking authority to publish it. It may prepare a payment without authority to send it. It may propose a change to its own rules without authority to approve the change.",
       "tts_text": "Authority is the larger question behind permission: who has the right to make the decision? An agent may have permission to edit a draft while lacking authority to publish it. It may prepare a payment without authority to send it. It may propose a change to its own rules without authority to approve the change.",
@@ -1221,7 +1261,7 @@
     },
     {
       "id": "n098",
-      "sequence": 98,
+      "sequence": 101,
       "kind": "body",
       "text": "This distinction matters because intelligence and authority are separate. A better model may make a better recommendation. It does not earn the right to widen its own boundaries.",
       "tts_text": "This distinction matters because intelligence and authority are separate. A better model may make a better recommendation. It does not earn the right to widen its own boundaries.",
@@ -1232,7 +1272,7 @@
     },
     {
       "id": "n099",
-      "sequence": 99,
+      "sequence": 102,
       "kind": "body",
       "text": "In a dependable harness, consequential authority stays explicit, and the strongest controls live where the runtime can enforce them before the side effect occurs.",
       "tts_text": "In a dependable harness, consequential authority stays explicit, and the strongest controls live where the runtime can enforce them before the side effect occurs.",
@@ -1243,7 +1283,7 @@
     },
     {
       "id": "n100",
-      "sequence": 100,
+      "sequence": 103,
       "kind": "body",
       "text": "A guardrail is the general name for a boundary meant to keep behavior inside acceptable limits. An instruction can be a soft guardrail: the model is asked to comply. A permission check or pre-action hook can be a hard guardrail when the runtime enforces it regardless of what the model proposes.",
       "tts_text": "A guardrail is the general name for a boundary meant to keep behavior inside acceptable limits. An instruction can be a soft guardrail: the model is asked to comply. A permission check or pre-action hook can be a hard guardrail when the runtime enforces it regardless of what the model proposes.",
@@ -1254,7 +1294,7 @@
     },
     {
       "id": "n101",
-      "sequence": 101,
+      "sequence": 104,
       "kind": "body",
       "text": "Use the soft layer for judgment and guidance; use the hard layer when failure must be blocked.",
       "tts_text": "Use the soft layer for judgment and guidance; use the hard layer when failure must be blocked.",
@@ -1265,7 +1305,7 @@
     },
     {
       "id": "n102",
-      "sequence": 102,
+      "sequence": 105,
       "kind": "heading",
       "text": "The Reflexes: Hooks",
       "tts_text": "The Reflexes: Hooks",
@@ -1276,7 +1316,7 @@
     },
     {
       "id": "n103",
-      "sequence": 103,
+      "sequence": 106,
       "kind": "body",
       "text": "When you drive a car, you do not think about checking your mirrors. You just do it. It is a reflex — an automatic action triggered by a specific moment.",
       "tts_text": "When you drive a car, you do not think about checking your mirrors. You just do it. It is a reflex — an automatic action triggered by a specific moment.",
@@ -1287,7 +1327,7 @@
     },
     {
       "id": "n104",
-      "sequence": 104,
+      "sequence": 107,
       "kind": "body",
       "text": "Hooks are an agent's reflexes.",
       "tts_text": "Hooks are an agent's reflexes.",
@@ -1298,7 +1338,7 @@
     },
     {
       "id": "n105",
-      "sequence": 105,
+      "sequence": 108,
       "kind": "body",
       "text": "An event is a named moment exposed by the runtime: the session started, a tool is about to run, a tool finished, the agent asked a question, the context is being compacted, or the agent is trying to stop.",
       "tts_text": "An event is a named moment exposed by the runtime: the session started, a tool is about to run, a tool finished, the agent asked a question, the context is being compacted, or the agent is trying to stop.",
@@ -1309,7 +1349,7 @@
     },
     {
       "id": "n106",
-      "sequence": 106,
+      "sequence": 109,
       "kind": "body",
       "text": "A hook is a configured handler attached to one of those moments.",
       "tts_text": "A hook is a configured handler attached to one of those moments.",
@@ -1320,7 +1360,7 @@
     },
     {
       "id": "n107",
-      "sequence": 107,
+      "sequence": 110,
       "kind": "body",
       "text": "Depending on the platform, that handler may run a command, call a service, or ask another model to evaluate the event. Before a tool edits a file, a deterministic hook may inspect the requested path and deny the action. After a tool runs, another hook may log the result.",
       "tts_text": "Depending on the platform, that handler may run a command, call a service, or ask another model to evaluate the event. Before a tool edits a file, a deterministic hook may inspect the requested path and deny the action. After a tool runs, another hook may log the result.",
@@ -1331,7 +1371,7 @@
     },
     {
       "id": "n108",
-      "sequence": 108,
+      "sequence": 111,
       "kind": "body",
       "text": "When the agent tries to stop, a Stop hook may return feedback that keeps the loop active. What a hook can observe, change, or block depends on the platform and event, so the boundary must be tested rather than assumed.",
       "tts_text": "When the agent tries to stop, a Stop hook may return feedback that keeps the loop active. What a hook can observe, change, or block depends on the platform and event, so the boundary must be tested rather than assumed.",
@@ -1342,7 +1382,7 @@
     },
     {
       "id": "n109",
-      "sequence": 109,
+      "sequence": 112,
       "kind": "body",
       "text": "You may describe the behavior in plain language and let the agent draft the hook, but the result is still an operational mechanism with influence over your tools. Review it, test both the allowed and blocked paths, and confirm how it fails before trusting it.",
       "tts_text": "You may describe the behavior in plain language and let the agent draft the hook, but the result is still an operational mechanism with influence over your tools. Review it, test both the allowed and blocked paths, and confirm how it fails before trusting it.",
@@ -1353,7 +1393,7 @@
     },
     {
       "id": "n110",
-      "sequence": 110,
+      "sequence": 113,
       "kind": "body",
       "text": "Conversation can make implementation accessible; it does not remove engineering responsibility.",
       "tts_text": "Conversation can make implementation accessible; it does not remove engineering responsibility.",
@@ -1364,7 +1404,7 @@
     },
     {
       "id": "n111",
-      "sequence": 111,
+      "sequence": 114,
       "kind": "body",
       "text": "A good practice: after you describe a new hook, test it. Ask the agent to try the action the hook should catch, and verify it fires correctly.",
       "tts_text": "A good practice: after you describe a new hook, test it. Ask the agent to try the action the hook should catch, and verify it fires correctly.",
@@ -1375,7 +1415,7 @@
     },
     {
       "id": "n112",
-      "sequence": 112,
+      "sequence": 115,
       "kind": "body",
       "text": "Think of it like hiring a new assistant — you give them an instruction, then you watch them handle it a few times until you trust the process.",
       "tts_text": "Think of it like hiring a new assistant — you give them an instruction, then you watch them handle it a few times until you trust the process.",
@@ -1386,7 +1426,7 @@
     },
     {
       "id": "n113",
-      "sequence": 113,
+      "sequence": 116,
       "kind": "body",
       "text": "These systems are very good, but not perfect. A quick test builds confidence.",
       "tts_text": "These systems are very good, but not perfect. A quick test builds confidence.",
@@ -1397,7 +1437,7 @@
     },
     {
       "id": "n114",
-      "sequence": 114,
+      "sequence": 117,
       "kind": "body",
       "text": "Hooks give a reactive model dependable moments where the surrounding system can inspect, record, redirect, or block behavior. They can enforce parts of a process when the runtime exposes the right event and honors the result.",
       "tts_text": "Hooks give a reactive model dependable moments where the surrounding system can inspect, record, redirect, or block behavior. They can enforce parts of a process when the runtime exposes the right event and honors the result.",
@@ -1417,7 +1457,7 @@
     },
     {
       "id": "n115",
-      "sequence": 115,
+      "sequence": 118,
       "kind": "body",
       "text": "We will formalize the workflow those hooks enforce — Observe, Plan, Execute, Verify, Condense — in the later essay, The Phasic Foundation.",
       "tts_text": "We will formalize the workflow those hooks enforce — Observe, Plan, Execute, Verify, Condense — in the later essay, The Phasic Foundation.",
@@ -1428,7 +1468,7 @@
     },
     {
       "id": "n116",
-      "sequence": 116,
+      "sequence": 119,
       "kind": "heading",
       "text": "The Skill Set: Skills, Commands, Scripts, and Sub-agents",
       "tts_text": "The Skill Set: Skills, Commands, Scripts, and Sub-agents",
@@ -1439,7 +1479,7 @@
     },
     {
       "id": "n117",
-      "sequence": 117,
+      "sequence": 120,
       "kind": "body",
       "text": "Here is the hierarchy.",
       "tts_text": "Here is the hierarchy.",
@@ -1450,7 +1490,7 @@
     },
     {
       "id": "n118",
-      "sequence": 118,
+      "sequence": 121,
       "kind": "body",
       "text": "A skill is a reusable package of instructions and supporting resources — like a recipe card with its tools and examples. Some runtimes let the agent select a skill when its description matches the task; users can also invoke one explicitly. Exact loading and precedence rules vary by platform.",
       "tts_text": "A skill is a reusable package of instructions and supporting resources — like a recipe card with its tools and examples. Some runtimes let the agent select a skill when its description matches the task; users can also invoke one explicitly. Exact loading and precedence rules vary by platform.",
@@ -1461,7 +1501,7 @@
     },
     {
       "id": "n119",
-      "sequence": 119,
+      "sequence": 122,
       "kind": "body",
       "text": "A command is an explicit entry point you trigger, often with a short name such as /review or /commit. It starts a defined workflow, but the workflow may still branch, call tools, or ask for input.",
       "tts_text": "A command is an explicit entry point you trigger, often with a short name such as slash review or slash commit. It starts a defined workflow, but the workflow may still branch, call tools, or ask for input.",
@@ -1472,7 +1512,7 @@
     },
     {
       "id": "n120",
-      "sequence": 120,
+      "sequence": 123,
       "kind": "body",
       "text": "A script is executable procedure. Where a skill explains how to perform a review, a script might calculate the hashes, transform the files, or run the same deterministic check every time. The model can choose or prepare a script; the computer executes its instructions.",
       "tts_text": "A script is executable procedure. Where a skill explains how to perform a review, a script might calculate the hashes, transform the files, or run the same deterministic check every time. The model can choose or prepare a script; the computer executes its instructions.",
@@ -1483,7 +1523,7 @@
     },
     {
       "id": "n121",
-      "sequence": 121,
+      "sequence": 124,
       "kind": "body",
       "text": "A sub-agent is a specialist. When the main agent faces a task that needs focused attention — deep research, complex analysis, parallel work — it can spin up a sub-agent. The sub-agent works independently, finishes the job, and reports back.",
       "tts_text": "A sub-agent is a specialist. When the main agent faces a task that needs focused attention — deep research, complex analysis, parallel work — it can spin up a sub-agent. The sub-agent works independently, finishes the job, and reports back.",
@@ -1494,7 +1534,7 @@
     },
     {
       "id": "n122",
-      "sequence": 122,
+      "sequence": 125,
       "kind": "body",
       "text": "Like sending an associate to the library while you stay at your desk.",
       "tts_text": "Like sending an associate to the library while you stay at your desk.",
@@ -1505,7 +1545,7 @@
     },
     {
       "id": "n123",
-      "sequence": 123,
+      "sequence": 126,
       "kind": "body",
       "text": "Skills package a method. Commands provide an explicit entrance. Scripts perform repeatable mechanics. Sub-agents receive delegated work. A mature workflow may compose all four.",
       "tts_text": "Skills package a method. Commands provide an explicit entrance. Scripts perform repeatable mechanics. Sub-agents receive delegated work. A mature workflow may compose all four.",
@@ -1516,7 +1556,7 @@
     },
     {
       "id": "n124",
-      "sequence": 124,
+      "sequence": 127,
       "kind": "heading",
       "text": "The Connections: Model Context Protocol",
       "tts_text": "The Connections: Model Context Protocol",
@@ -1527,7 +1567,7 @@
     },
     {
       "id": "n125",
-      "sequence": 125,
+      "sequence": 128,
       "kind": "body",
       "text": "Your agent sits on your computer. But the world does not live on your computer.",
       "tts_text": "Your agent sits on your computer. But the world does not live on your computer.",
@@ -1547,7 +1587,7 @@
     },
     {
       "id": "n126",
-      "sequence": 126,
+      "sequence": 129,
       "kind": "body",
       "text": "MCP stands for Model Context Protocol. It is an open client-host-server protocol for exposing tools, resources, and prompts from external systems to an AI application.",
       "tts_text": "MCP stands for Model Context Protocol. It is an open client-host-server protocol for exposing tools, resources, and prompts from external systems to an AI application.",
@@ -1568,7 +1608,7 @@
     },
     {
       "id": "n127",
-      "sequence": 127,
+      "sequence": 130,
       "kind": "body",
       "text": "An MCP server might connect to email, Google Drive, a calendar, a database, or an internal service when an implementation and the necessary authorization exist.",
       "tts_text": "An MCP server might connect to email, Google Drive, a calendar, a database, or an internal service when an implementation and the necessary authorization exist.",
@@ -1579,7 +1619,7 @@
     },
     {
       "id": "n128",
-      "sequence": 128,
+      "sequence": 131,
       "kind": "body",
       "text": "Think of MCP as a standardized socket. The protocol defines how a host and server describe capabilities and exchange requests; the server still has to implement the service-specific application programming interface, or API, credentials, permissions, and safety boundaries.",
       "tts_text": "Think of MCP as a standardized socket. The protocol defines how a host and server describe capabilities and exchange requests; the server still has to implement the service-specific application programming interface, or API, credentials, permissions, and safety boundaries.",
@@ -1600,7 +1640,7 @@
     },
     {
       "id": "n129",
-      "sequence": 129,
+      "sequence": 132,
       "kind": "body",
       "text": "A connector or adapter is the service-specific bridge behind that socket. It translates an outside system into tools or resources the host understands. MCP can standardize the connection; it does not eliminate the adapter or its trust boundary.",
       "tts_text": "A connector or adapter is the service-specific bridge behind that socket. It translates an outside system into tools or resources the host understands. MCP can standardize the connection; it does not eliminate the adapter or its trust boundary.",
@@ -1611,7 +1651,7 @@
     },
     {
       "id": "n130",
-      "sequence": 130,
+      "sequence": 133,
       "kind": "body",
       "text": "MCP servers can turn a local agent into a connected one. Each connection also extends the system's trust boundary, so local control of the host does not automatically make remote data or actions local or private.",
       "tts_text": "MCP servers can turn a local agent into a connected one. Each connection also extends the system's trust boundary, so local control of the host does not automatically make remote data or actions local or private.",
@@ -1622,7 +1662,7 @@
     },
     {
       "id": "n131",
-      "sequence": 131,
+      "sequence": 134,
       "kind": "heading",
       "text": "The Extensions: Plugins",
       "tts_text": "The Extensions: Plugins",
@@ -1633,7 +1673,7 @@
     },
     {
       "id": "n132",
-      "sequence": 132,
+      "sequence": 135,
       "kind": "body",
       "text": "A plugin is a platform-defined extension package. Depending on the runtime, it may bundle tools, hooks, instructions, skills, commands, or sub-agents. Think of it as a possible cognitive organ transplant, while remembering that plugin anatomy and authority differ across platforms.",
       "tts_text": "A plugin is a platform-defined extension package. Depending on the runtime, it may bundle tools, hooks, instructions, skills, commands, or sub-agents. Think of it as a possible cognitive organ transplant, while remembering that plugin anatomy and authority differ across platforms.",
@@ -1644,7 +1684,7 @@
     },
     {
       "id": "n133",
-      "sequence": 133,
+      "sequence": 136,
       "kind": "body",
       "text": "One plugin might bundle professional skills together with guardrail hooks that prevent mistakes. Another might add cognitive memory tissue — persistence files, consolidation rules, and the hooks that trigger them — letting the agent keep working across sessions without forgetting where it left off.",
       "tts_text": "One plugin might bundle professional skills together with guardrail hooks that prevent mistakes. Another might add cognitive memory tissue — persistence files, consolidation rules, and the hooks that trigger them — letting the agent keep working across sessions without forgetting where it left off.",
@@ -1655,7 +1695,7 @@
     },
     {
       "id": "n134",
-      "sequence": 134,
+      "sequence": 137,
       "kind": "body",
       "text": "Plugins can help agents grow without scattering every new behavior through the existing system. You add a package, and the harness gains a bounded set of capabilities. Good compartmentalization still requires the package to declare what it owns, which interfaces it uses, and how it can be removed or recovered.",
       "tts_text": "Plugins can help agents grow without scattering every new behavior through the existing system. You add a package, and the harness gains a bounded set of capabilities. Good compartmentalization still requires the package to declare what it owns, which interfaces it uses, and how it can be removed or recovered.",
@@ -1666,7 +1706,7 @@
     },
     {
       "id": "n135",
-      "sequence": 135,
+      "sequence": 138,
       "kind": "heading",
       "text": "The Structure: Jobs and Rhythms",
       "tts_text": "The Structure: Jobs and Rhythms",
@@ -1677,7 +1717,7 @@
     },
     {
       "id": "n136",
-      "sequence": 136,
+      "sequence": 139,
       "kind": "body",
       "text": "If hooks are reflexes and skills are knowledge, how does the agent actually organize its day? Without structure, an AI is just a chatbot waiting for a prompt. To act autonomously, it needs architecture.",
       "tts_text": "If hooks are reflexes and skills are knowledge, how does the agent actually organize its day? Without structure, an AI is just a chatbot waiting for a prompt. To act autonomously, it needs architecture.",
@@ -1688,7 +1728,7 @@
     },
     {
       "id": "n137",
-      "sequence": 137,
+      "sequence": 140,
       "kind": "body",
       "text": "In the Hadosh reference architecture, a job is the persistent unit of work. It has an objective, durable state, and completion criteria stored outside the conversation. If you close your laptop halfway through, the job record can remain active.",
       "tts_text": "In the Hadosh reference architecture, a job is the persistent unit of work. It has an objective, durable state, and completion criteria stored outside the conversation. If you close your laptop halfway through, the job record can remain active.",
@@ -1708,7 +1748,7 @@
     },
     {
       "id": "n138",
-      "sequence": 138,
+      "sequence": 141,
       "kind": "body",
       "text": "Recovery still depends on a restart path that reloads the right state and verifies what happened before the interruption.",
       "tts_text": "Recovery still depends on a restart path that reloads the right state and verifies what happened before the interruption.",
@@ -1719,7 +1759,7 @@
     },
     {
       "id": "n139",
-      "sequence": 139,
+      "sequence": 142,
       "kind": "body",
       "text": "An obligation is work the system remains responsible for surfacing later: a scheduled review, a promised follow-up, or a task waiting on an outside event.",
       "tts_text": "An obligation is work the system remains responsible for surfacing later: a scheduled review, a promised follow-up, or a task waiting on an outside event.",
@@ -1730,7 +1770,7 @@
     },
     {
       "id": "n140",
-      "sequence": 140,
+      "sequence": 143,
       "kind": "body",
       "text": "A durable obligation needs an owner, a trigger, state, and a clear way to cancel or complete it. A note hidden in an old chat is not an obligation system.",
       "tts_text": "A durable obligation needs an owner, a trigger, state, and a clear way to cancel or complete it. A note hidden in an old chat is not an obligation system.",
@@ -1741,7 +1781,7 @@
     },
     {
       "id": "n141",
-      "sequence": 141,
+      "sequence": 144,
       "kind": "body",
       "text": "But how does a job get done? Through a Cognitive Rhythm.",
       "tts_text": "But how does a job get done? Through a Cognitive Rhythm.",
@@ -1752,7 +1792,7 @@
     },
     {
       "id": "n142",
-      "sequence": 142,
+      "sequence": 145,
       "kind": "body",
       "text": "A cognitive rhythm is a staged workflow that gives different kinds of work explicit boundaries. The rhythm used in this series is OPEVC: Observe, Plan, Execute, Verify, Condense. A hardened implementation can restrict what the agent may do in each phase and require evidence before advancing.",
       "tts_text": "A cognitive rhythm is a staged workflow that gives different kinds of work explicit boundaries. The rhythm used in this series is oh pee ee vee see: Observe, Plan, Execute, Verify, Condense. A hardened implementation can restrict what the agent may do in each phase and require evidence before advancing.",
@@ -1765,7 +1805,7 @@
     },
     {
       "id": "n143",
-      "sequence": 143,
+      "sequence": 146,
       "kind": "body",
       "text": "The rhythm reduces avoidable mistakes when its gates are correctly implemented; the words alone do not enforce discipline.",
       "tts_text": "The rhythm reduces avoidable mistakes when its gates are correctly implemented; the words alone do not enforce discipline.",
@@ -1776,7 +1816,7 @@
     },
     {
       "id": "n144",
-      "sequence": 144,
+      "sequence": 147,
       "kind": "body",
       "text": "At the end of that rhythm is Condense. Before a completed cycle closes, the agent reviews what it learned, routes warranted lessons to durable memory, and records follow-up work that belongs elsewhere. Not every observation deserves permanence, and user or external-action gates still apply.",
       "tts_text": "At the end of that rhythm is Condense. Before a completed cycle closes, the agent reviews what it learned, routes warranted lessons to durable memory, and records follow-up work that belongs elsewhere. Not every observation deserves permanence, and user or external-action gates still apply.",
@@ -1796,7 +1836,7 @@
     },
     {
       "id": "n145",
-      "sequence": 145,
+      "sequence": 148,
       "kind": "heading",
       "text": "The Proof: Verification and Recovery",
       "tts_text": "The Proof: Verification and Recovery",
@@ -1807,7 +1847,7 @@
     },
     {
       "id": "n146",
-      "sequence": 146,
+      "sequence": 149,
       "kind": "body",
       "text": "An agent saying done is a claim. Verification is the evidence that makes the claim believable.",
       "tts_text": "An agent saying done is a claim. Verification is the evidence that makes the claim believable.",
@@ -1818,7 +1858,7 @@
     },
     {
       "id": "n147",
-      "sequence": 147,
+      "sequence": 150,
       "kind": "body",
       "text": "The evidence depends on the work. A calculation can be checked against known cases. A report can be traced to its sources. A website can be tested in a browser. A changed procedure can be tried on both the path it should allow and the path it should block.",
       "tts_text": "The evidence depends on the work. A calculation can be checked against known cases. A report can be traced to its sources. A website can be tested in a browser. A changed procedure can be tried on both the path it should allow and the path it should block.",
@@ -1829,7 +1869,7 @@
     },
     {
       "id": "n148",
-      "sequence": 148,
+      "sequence": 151,
       "kind": "body",
       "text": "Verification turns confidence into something another person can inspect.",
       "tts_text": "Verification turns confidence into something another person can inspect.",
@@ -1840,7 +1880,7 @@
     },
     {
       "id": "n149",
-      "sequence": 149,
+      "sequence": 152,
       "kind": "body",
       "text": "Validation is the repeatable part of that proof: a test, schema, checklist, comparison, or rule that decides whether an output meets a stated contract. It does not replace human judgment. It protects the parts that can be stated clearly enough to check.",
       "tts_text": "Validation is the repeatable part of that proof: a test, schema, checklist, comparison, or rule that decides whether an output meets a stated contract. It does not replace human judgment. It protects the parts that can be stated clearly enough to check.",
@@ -1851,7 +1891,7 @@
     },
     {
       "id": "n150",
-      "sequence": 150,
+      "sequence": 153,
       "kind": "body",
       "text": "Recovery answers what happens when the model, tool, network, or machine fails halfway through. Durable job state, logs, backups, reversible changes, and restart rules let the system determine what already happened before it acts again. Persistence without recovery can preserve confusion.",
       "tts_text": "Recovery answers what happens when the model, tool, network, or machine fails halfway through. Durable job state, logs, backups, reversible changes, and restart rules let the system determine what already happened before it acts again. Persistence without recovery can preserve confusion.",
@@ -1862,7 +1902,7 @@
     },
     {
       "id": "n151",
-      "sequence": 151,
+      "sequence": 154,
       "kind": "body",
       "text": "Autonomy without verification can repeat it.",
       "tts_text": "Autonomy without verification can repeat it.",
@@ -1873,7 +1913,7 @@
     },
     {
       "id": "n152",
-      "sequence": 152,
+      "sequence": 155,
       "kind": "body",
       "text": "These terms belong in a vocabulary essay because they complete the meaning of agent. Generation creates a possible next step. The harness must decide whether that step is allowed, whether it worked, and how to continue if it did not.",
       "tts_text": "These terms belong in a vocabulary essay because they complete the meaning of agent. Generation creates a possible next step. The harness must decide whether that step is allowed, whether it worked, and how to continue if it did not.",
@@ -1884,7 +1924,7 @@
     },
     {
       "id": "n153",
-      "sequence": 153,
+      "sequence": 156,
       "kind": "heading",
       "text": "The Growth Pattern: Seed Agents and Agentic Workforces",
       "tts_text": "The Growth Pattern: Seed Agents and Agentic Workforces",
@@ -1895,7 +1935,7 @@
     },
     {
       "id": "n154",
-      "sequence": 154,
+      "sequence": 157,
       "kind": "body",
       "text": "Two more terms, and these matter more than any of the technical ones.",
       "tts_text": "Two more terms, and these matter more than any of the technical ones.",
@@ -1906,7 +1946,7 @@
     },
     {
       "id": "n155",
-      "sequence": 155,
+      "sequence": 158,
       "kind": "body",
       "text": "A seed agent is a sparse starting composition — a complex system intended to grow through evidence. It may provide principles and selected reusable components rather than one fixed anatomy. You and your agent decide what to adopt, adapt, or build as your work reveals the need.",
       "tts_text": "A seed agent is a sparse starting composition — a complex system intended to grow through evidence. It may provide principles and selected reusable components rather than one fixed anatomy. You and your agent decide what to adopt, adapt, or build as your work reveals the need.",
@@ -1917,7 +1957,7 @@
     },
     {
       "id": "n156",
-      "sequence": 156,
+      "sequence": 159,
       "kind": "body",
       "text": "Think of it as receiving a small kit of tested building materials and a set of architectural principles. Different users may assemble different foundations because their work, risks, and platforms differ.",
       "tts_text": "Think of it as receiving a small kit of tested building materials and a set of architectural principles. Different users may assemble different foundations because their work, risks, and platforms differ.",
@@ -1928,7 +1968,7 @@
     },
     {
       "id": "n157",
-      "sequence": 157,
+      "sequence": 160,
       "kind": "body",
       "text": "The growth of that system produces emergence: useful behavior appears from the interaction of parts rather than from one enormous instruction or plugin. Memory influences which skill is selected. A job scopes which authority is appropriate. A hook blocks an unsafe action.",
       "tts_text": "The growth of that system produces emergence: useful behavior appears from the interaction of parts rather than from one enormous instruction or plugin. Memory influences which skill is selected. A job scopes which authority is appropriate. A hook blocks an unsafe action.",
@@ -1939,7 +1979,7 @@
     },
     {
       "id": "n158",
-      "sequence": 158,
+      "sequence": 161,
       "kind": "body",
       "text": "Verification changes what the job may call complete. The capability belongs to the composition.",
       "tts_text": "Verification changes what the job may call complete. The capability belongs to the composition.",
@@ -1950,7 +1990,7 @@
     },
     {
       "id": "n159",
-      "sequence": 159,
+      "sequence": 162,
       "kind": "body",
       "text": "An agentic workforce is what happens when you grow multiple seed agents, each one specialized for a different part of your professional life. One handles legal research. One manages client communication. One runs your billing. One organizes your knowledge base.",
       "tts_text": "An agentic workforce is what happens when you grow multiple seed agents, each one specialized for a different part of your professional life. One handles legal research. One manages client communication. One runs your billing. One organizes your knowledge base.",
@@ -1961,7 +2001,7 @@
     },
     {
       "id": "n160",
-      "sequence": 160,
+      "sequence": 163,
       "kind": "body",
       "text": "You do not have to hand-code every layer. Conversation can express, \"Here is how I want this to work.\" Files, scripts, permissions, tests, and review turn that intent into dependable behavior.",
       "tts_text": "You do not have to hand-code every layer. Conversation can express, \"Here is how I want this to work.\" Files, scripts, permissions, tests, and review turn that intent into dependable behavior.",
@@ -1972,7 +2012,7 @@
     },
     {
       "id": "n161",
-      "sequence": 161,
+      "sequence": 164,
       "kind": "body",
       "text": "That is the endgame. Not one AI assistant. A workforce of specialized agents, each one customized to your work and operated through harnesses you can inspect and shape.",
       "tts_text": "That is the endgame. Not one AI assistant. A workforce of specialized agents, each one customized to your work and operated through harnesses you can inspect and shape.",
@@ -1983,7 +2023,7 @@
     },
     {
       "id": "n162",
-      "sequence": 162,
+      "sequence": 165,
       "kind": "heading",
       "text": "The Big Picture",
       "tts_text": "The Big Picture",
@@ -1994,7 +2034,7 @@
     },
     {
       "id": "n163",
-      "sequence": 163,
+      "sequence": 166,
       "kind": "body",
       "text": "Picture all of this running at once. You open a terminal in your project folder. The runtime starts a session and loads applicable instructions. It restores the active job, selects relevant memory, and composes the model's working context.",
       "tts_text": "Picture all of this running at once. You open a terminal in your project folder. The runtime starts a session and loads applicable instructions. It restores the active job, selects relevant memory, and composes the model's working context.",
@@ -2005,7 +2045,7 @@
     },
     {
       "id": "n164",
-      "sequence": 164,
+      "sequence": 167,
       "kind": "body",
       "text": "A hook checks the start boundary. The agent loads a relevant skill. The model proposes a tool call. Permissions decide whether it may run.",
       "tts_text": "A hook checks the start boundary. The agent loads a relevant skill. The model proposes a tool call. Permissions decide whether it may run.",
@@ -2016,7 +2056,7 @@
     },
     {
       "id": "n165",
-      "sequence": 165,
+      "sequence": 168,
       "kind": "body",
       "text": "An MCP server may provide the connection. A sub-agent may receive a bounded research task. A script performs a repeatable check.",
       "tts_text": "An MCP server may provide the connection. A sub-agent may receive a bounded research task. A script performs a repeatable check.",
@@ -2027,7 +2067,7 @@
     },
     {
       "id": "n166",
-      "sequence": 166,
+      "sequence": 169,
       "kind": "body",
       "text": "The job records progress, validation tests the result, and recovery state makes interruption survivable.",
       "tts_text": "The job records progress, validation tests the result, and recovery state makes interruption survivable.",
@@ -2047,7 +2087,7 @@
     },
     {
       "id": "n167",
-      "sequence": 167,
+      "sequence": 170,
       "kind": "body",
       "text": "Files preserve the inspectable mind and lived work. The runtime provides the body. The model supplies generative intelligence. The permissions and authority model define the locks. The whole composition is the harness. The harness in motion, shaped by its history and current objective, is the agent.",
       "tts_text": "Files preserve the inspectable mind and lived work. The runtime provides the body. The model supplies generative intelligence. The permissions and authority model define the locks. The whole composition is the harness. The harness in motion, shaped by its history and current objective, is the agent.",
@@ -2058,7 +2098,7 @@
     },
     {
       "id": "n168",
-      "sequence": 168,
+      "sequence": 171,
       "kind": "body",
       "text": "Conversation may have initiated all of this, but dependable behavior required files, code, permissions, tests, and review. Your words supplied intent. The architecture made that intent inspectable and enforceable where enforcement was possible.",
       "tts_text": "Conversation may have initiated all of this, but dependable behavior required files, code, permissions, tests, and review. Your words supplied intent. The architecture made that intent inspectable and enforceable where enforcement was possible.",
@@ -2069,7 +2109,7 @@
     },
     {
       "id": "n169",
-      "sequence": 169,
+      "sequence": 172,
       "kind": "heading",
       "text": "Why This Vocabulary Matters",
       "tts_text": "Why This Vocabulary Matters",
@@ -2080,7 +2120,7 @@
     },
     {
       "id": "n170",
-      "sequence": 170,
+      "sequence": 173,
       "kind": "body",
       "text": "Every profession has its language. Lawyers have torts and depositions. Doctors have diagnoses and prognoses. Accountants have amortization and accruals.",
       "tts_text": "Every profession has its language. Lawyers have torts and depositions. Doctors have diagnoses and prognoses. Accountants have amortization and accruals.",
@@ -2091,7 +2131,7 @@
     },
     {
       "id": "n171",
-      "sequence": 171,
+      "sequence": 174,
       "kind": "body",
       "text": "Those words need not exist to exclude you. They can exist because precision matters. When a lawyer says \"deposition,\" every other lawyer knows the procedure being discussed without rebuilding the definition each time.",
       "tts_text": "Those words need not exist to exclude you. They can exist because precision matters. When a lawyer says \"deposition,\" every other lawyer knows the procedure being discussed without rebuilding the definition each time.",
@@ -2102,7 +2142,7 @@
     },
     {
       "id": "n172",
-      "sequence": 172,
+      "sequence": 175,
       "kind": "body",
       "text": "The same is true here, with one caution: platforms do not use every term identically. When this series says “hook,” it means code attached to a supported lifecycle event.",
       "tts_text": "The same is true here, with one caution: platforms do not use every term identically. When this series says “hook,” it means code attached to a supported lifecycle event.",
@@ -2113,7 +2153,7 @@
     },
     {
       "id": "n173",
-      "sequence": 173,
+      "sequence": 176,
       "kind": "body",
       "text": "When it says “seed agent,” it means a sparse, user-shaped starting composition. These definitions are handles for the architecture that follows.",
       "tts_text": "When it says “seed agent,” it means a sparse, user-shaped starting composition. These definitions are handles for the architecture that follows.",
@@ -2124,7 +2164,7 @@
     },
     {
       "id": "n174",
-      "sequence": 174,
+      "sequence": 177,
       "kind": "body",
       "text": "The industry built the jargon wall fast. You just walked through it.",
       "tts_text": "The industry built the jargon wall fast. You just walked through it.",
@@ -2135,7 +2175,7 @@
     },
     {
       "id": "n175",
-      "sequence": 175,
+      "sequence": 178,
       "kind": "body",
       "text": "You have the language. Next, we build the skeleton.",
       "tts_text": "You have the language. Next, we build the skeleton.",
