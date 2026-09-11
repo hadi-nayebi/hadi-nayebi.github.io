@@ -23,4 +23,4 @@ This mature article received a bounded obvious-error pass against the current pu
 - Published-page SHA-256: `09e767c491832b3cdebcf5732d5d2d4f03ee6ae32362580c414791c5166d5530`
 - Reader-facing prose words: 1,160 to 1,160; net `0`.
 - This page has no narration player or transcript to invalidate.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B9 continuity review; Hadi's content lock remains pending.
