@@ -49,7 +49,8 @@
       "asr_accept": [
         "evolution.md",
         "evolution dot m d",
-        "evolution m d"
+        "evolution m d",
+        "evolution md"
       ]
     },
     "jq": {
@@ -72,6 +73,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 700,
       "text_sha256": "1c2df5a8a2a8c1654f2d19706f834146411cfbf0a4dacf35a2d82aac1e29a29b"
     },
@@ -82,6 +84,7 @@
       "text": "Essay 7.4 — The Plugin Kit, Part 4 of 9.",
       "tts_text": "Essay 7.4, The Plugin Kit, Part 4 of 9.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 550,
       "text_sha256": "c192d7868a2b468ba6739b6aa9ab4a3aea86be7f2267e9f71b735cd9296b988c"
     },
@@ -92,6 +95,7 @@
       "text": "Essay 7.3 opened the two voice surfaces — one for the LLM, one for the operator — and named Lock 13 as the policy that governs when soft coaching hardens into a deterministic block.",
       "tts_text": "Essay 7.3 opened the two voice surfaces, one for the LLM, one for the operator, and named Lock 13 as the policy that governs when soft coaching hardens into a deterministic block.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "8b5e2d288f8b6b1380d6d43bbfa3095ec07088f9d366ddd6d75a552709ce105b"
     },
@@ -102,6 +106,7 @@
       "text": "This sub-essay opens the organ that carries the plugin's state — and the discipline that keeps it from being corrupted by concurrent reads, partial writes, or cross-plugin reach-arounds.",
       "tts_text": "This sub-essay opens the organ that carries the plugin's state, and the discipline that keeps it from being corrupted by concurrent reads, partial writes, or cross-plugin reach-arounds.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "3368926c50965cc984fa3e655881cc2144edc3e4cff90fc5ec378a259e534eb9"
     },
@@ -112,6 +117,7 @@
       "text": "The file names describe one historical Claude-based reference architecture; the broader pattern applies to any command-line agent harness that keeps plugin-owned state behind a stable interface.",
       "tts_text": "The file names describe one historical Claude-based reference architecture; the broader pattern applies to any command-line agent harness that keeps plugin-owned state behind a stable interface.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "8fddce4ff5411b3380039f13355c5d67587785002322a11d6bac07068ac412a9"
     },
@@ -122,6 +128,7 @@
       "text": "What it is. The plugin's private runtime state. The active focused job, the tier counter, the summary chain, the lock manifest. Encoded as JSON, written atomically, lives only on the operator's machine, ignored by Git.",
       "tts_text": "What it is. The plugin's private runtime state. The active focused job, the tier counter, the summary chain, the lock manifest. Encoded as JSON, written atomically, lives only on the operator's machine, ignored by Git.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "d12a06264a1edab40cdc6f2c31cb3e3f58ed880e54adafd8b31b7fd5b578fe1a"
     },
@@ -134,6 +141,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "bb9c920b3c633a68dc1a83a494dfadfc95700d73869dc386aacfcff9a2fcc836"
     },
@@ -144,6 +152,7 @@
       "text": "Who writes it. ONLY the plugin's own scripts. Direct file-system writes are forbidden. Every mutation follows the same protocol: the flock command on a machine-local lockfile serializes concurrent hook fires.",
       "tts_text": "Who writes it. ONLY the plugin's own scripts. Direct file-system writes are forbidden. Every mutation follows the same protocol: the flock command on a machine-local lockfile serializes concurrent hook fires.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "c8316573b11c5b91f146e8d0ca4c62aa0f155f958480ae881868a2c107559fe0"
     },
@@ -156,6 +165,7 @@
       "pronunciations": [
         "jq"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "036865d53d13559c14259762da4036d03f882cd71b1c7882e7278f07475f2540"
     },
@@ -166,6 +176,7 @@
       "text": "If parsing fails at read time, the gateway script rebuilds cheap state from defaults rather than blocking the agent.",
       "tts_text": "If parsing fails at read time, the gateway script rebuilds cheap state from defaults rather than blocking the agent.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "4af15b9c472e091e31cd9248255330135ee8c656dbc919d23447581e83048b5f"
     },
@@ -176,6 +187,7 @@
       "text": "What it depends on. The plugin's scripts, which mediate every read and write, plus a shared voice helper for operator-facing errors when validation or atomicity fails.",
       "tts_text": "What it depends on. The plugin's scripts, which mediate every read and write, plus a shared voice helper for operator-facing errors when validation or atomicity fails.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "1bf8c69d08d1a25a9f606a267cc662bc81715995d244a11be2c760342c5df8b4"
     },
@@ -188,6 +200,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "baff425eac7d8e5fa25d484022f30dcfcbaae558d2307b014d26dd120e9f2e0c"
     },
@@ -198,6 +211,7 @@
       "text": "The flock discipline serializes all mutations through the script gateway. Reads also go through scripts so each plugin can apply the recovery policy its state requires.",
       "tts_text": "The flock discipline serializes all mutations through the script gateway. Reads also go through scripts so each plugin can apply the recovery policy its state requires.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "243bcea7746a7aa2b27529e06585e9e3440717a3e39a0cae8e7c2d1160e60d36"
     },
@@ -208,6 +222,7 @@
       "text": "But \"fail-safe\" is not the same answer everywhere. Rebuilding is the right move when the lost state is cheap — a tier counter or a phase marker reconstructs from defaults with no harm done. Where the state is not cheap, the same corruption demands the opposite reflex.",
       "tts_text": "But \"fail-safe\" is not the same answer everywhere. Rebuilding is the right move when the lost state is cheap, a tier counter or a phase marker reconstructs from defaults with no harm done. Where the state is not cheap, the same corruption demands the opposite reflex.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "ad99ddec9eb2fba61ea8c36ea7450b1e7c4141fd26ca6092e18ffd8fe089a15b"
     },
@@ -220,6 +235,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "495a671e27139699aa37ca8a1fde0ba0ae992221f132bff65c131c895be7de0f"
     },
@@ -230,6 +246,7 @@
       "text": "Silently resetting job state to a clean slate would erase work the agent has not finished — so the safe outcome is to halt and force a repair, not to wave the agent through on an empty rebuild. Forgiving where loss is cheap; refusing where loss is not.",
       "tts_text": "Silently resetting job state to a clean slate would erase work the agent has not finished, so the safe outcome is to halt and force a repair, not to wave the agent through on an empty rebuild. Forgiving where loss is cheap; refusing where loss is not.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "9367b647d089d98a596294e17b573fbf11d0ea785f952bfa92193a4a0f02c229"
     },
@@ -242,6 +259,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "8c83fc977e8273df9166266dc82f08a706afee9cf2695a82e375819da5bb932a"
     },
@@ -254,6 +272,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "015617b2ac50ee0dde821a5f07721ae68dc89c8d4cd2c614e2e35c6679dcca04"
     },
@@ -264,6 +283,7 @@
       "text": "Each helper does the same small thing: check whether its field is present, add a default if it is missing, and no-op if it is already there. The plugin's command router runs the stack before it touches a subcommand, so an old but valid file reaches the current shape on first touch.",
       "tts_text": "Each helper does the same small thing: check whether its field is present, add a default if it is missing, and no-op if it is already there. The plugin's command router runs the stack before it touches a subcommand, so an old but valid file reaches the current shape on first touch.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "3e4b2826818a473ea1cfd542fcd166bd63f61fc4fd6f5cbfc261e9d7d639e4ff"
     },
@@ -274,6 +294,7 @@
       "text": "That is distinct from corruption recovery: migration adds fields to valid older state; recovery decides what to do when the file cannot be parsed at all.",
       "tts_text": "That is distinct from corruption recovery: migration adds fields to valid older state; recovery decides what to do when the file cannot be parsed at all.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "5345cec2380cca1abfbf4c69b881e46eb7ee6ef1acb02cc2f5d16a18e17b85e7"
     },
@@ -284,6 +305,7 @@
       "text": "The new-plugin lens. When you guide your seed to add a plugin that needs state, the seed designs the state's interface first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use?",
       "tts_text": "The new-plugin lens. When you guide your seed to add a plugin that needs state, the seed designs the state's interface first: what read commands does this plugin publish for other plugins (and the agent) to use? What mutation commands does this plugin publish for its own hooks to use?",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "4925eb8468237d39c0e4e9d832271fdec64593275a6e2125d747b23d163bf8be"
     },
@@ -296,6 +318,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "67fdb25cb3470de87b2f6e4300139af06e02ee9ca103b2d865a2e8b90853ae89"
     },
@@ -306,6 +329,7 @@
       "text": "A real-estate broker's seed could carry an open-listings manifest the same way; only the listings plugin's scripts mutate it, and concurrent showings-update hooks serialize through the same flock protocol.",
       "tts_text": "A real-estate broker's seed could carry an open-listings manifest the same way; only the listings plugin's scripts mutate it, and concurrent showings-update hooks serialize through the same flock protocol.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "a861ca0969ea4b94517b36293c642ffa27b445c0ea36a47a4a83bc5b62b7f313"
     },
@@ -318,6 +342,7 @@
       "pronunciations": [
         "data.json"
       ],
+      "pronunciation_checks": [],
       "gap_after_ms": 420,
       "text_sha256": "115e4853a90791b07a78a9fb1d6d3b2a4edb905d5308c43a9d475a75f407d702"
     },
@@ -328,6 +353,7 @@
       "text": "State is private. Mutation is serialized. Cross-plugin queries route through the script CLI, never through the raw file.",
       "tts_text": "State is private. Mutation is serialized. Cross-plugin queries route through the script CLI, never through the raw file.",
       "pronunciations": [],
+      "pronunciation_checks": [],
       "gap_after_ms": 240,
       "text_sha256": "0b25248e2b6882b3ffd38a4103ee20dcf056ece7d36e85185fbe386ef624f9e9"
     },
@@ -339,6 +365,16 @@
       "tts_text": "The next sub-essay opens the organ where the plugin's narrated knowledge lives, the docs directory, including the word-capped evolution dot M D and the historian ratchet that injects it before an authorized editing session.",
       "pronunciations": [
         "evolution.md"
+      ],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
       ],
       "gap_after_ms": 900,
       "text_sha256": "769d62fef59f989a9aad06b0b19ffce02a4bb1971689541da39dc3d2c7bedb31"

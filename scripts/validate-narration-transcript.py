@@ -89,6 +89,15 @@ def main() -> None:
         if re.search(r"/home/|[0-9a-f]{40}", text, re.I):
             fail(f"private path or revision-like evidence leaked into {chunk.get('id')}")
         aliases.update(chunk.get("pronunciations", []))
+        for check in chunk.get("pronunciation_checks", []):
+            if not check.get("term") or not check.get("asr_accept"):
+                fail(f"incomplete contextual pronunciation check at {chunk.get('id')}")
+            if not re.search(
+                rf"(?<!\w){re.escape(check['term'])}(?!\w)",
+                text,
+                re.I,
+            ):
+                fail(f"contextual pronunciation term is absent at {chunk.get('id')}")
 
     lexicon = document.get("pronunciation_lexicon", {})
     if aliases != set(lexicon):

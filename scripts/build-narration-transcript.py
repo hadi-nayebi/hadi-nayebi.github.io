@@ -25,7 +25,7 @@ PRONUNCIATIONS = {
     "evolution.md": {
         "tts": "evolution dot M D",
         "ipa": None,
-        "asr_accept": ["evolution.md", "evolution dot m d", "evolution m d"],
+        "asr_accept": ["evolution.md", "evolution dot m d", "evolution m d", "evolution md"],
     },
     "OPEVC": {
         "tts": "oh pee ee vee see",
@@ -38,6 +38,18 @@ PRONUNCIATIONS = {
         "asr_accept": ["jq", "J Q", "jay cue"],
     },
 }
+
+CONTEXTUAL_CHECKS = (
+    (
+        re.compile(r"\bknowledge lives\b", re.I),
+        {
+            "term": "lives",
+            "sense": "verb form of live",
+            "ipa": "lɪvz",
+            "asr_accept": ["lives"],
+        },
+    ),
+)
 
 RAW_HTML = re.compile(r"<!--\s*RAW_HTML\s*-->.*?<!--\s*/RAW_HTML\s*-->", re.I | re.S)
 COMMENT = re.compile(r"<!--.*?-->", re.S)
@@ -243,6 +255,11 @@ def build(
         for part_index, part in enumerate(parts):
             sequence += 1
             tts_text, applied = render_aliases(part, pronunciations)
+            pronunciation_checks = [
+                rule
+                for pattern, rule in CONTEXTUAL_CHECKS
+                if pattern.search(part)
+            ]
             kind = block["kind"]
             chunks.append({
                 "id": f"n{sequence:03d}",
@@ -251,6 +268,7 @@ def build(
                 "text": part,
                 "tts_text": tts_text,
                 "pronunciations": applied,
+                "pronunciation_checks": pronunciation_checks,
                 "gap_after_ms": (
                     240 if part_index < len(parts) - 1
                     else 700 if kind == "title"
