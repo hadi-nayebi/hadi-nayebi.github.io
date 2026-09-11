@@ -102,6 +102,25 @@ prototype. Keep sensitive-name scanning and its configuration outside this
 repository. Use the public Origin repository and its public dashboard evidence
 for B9.
 
+The objective of this review is to make each writing better: improve its
+explanations, descriptions, examples, narrative arc, factual accuracy, and
+useful reader-facing references. Article length, audio duration, editing speed,
+token use, and the number of changes are outcomes or diagnostics, never review
+objectives. Begin each technical writing from its untouched canonical version
+at the accepted baseline plus the owner-supplied reference evidence; do not use
+a compressed rewrite as the source. If the intended result or a consequential
+editorial choice is genuinely unclear, ask Hadi before making that dependent
+change rather than inventing a proxy objective.
+
+Judge repetition by the work it performs in the whole arc. An idea may return
+after new context to reinforce the reader's model. When that return is useful,
+reword it, deepen it, or approach it from the new angle rather than deleting it.
+Remove prose only when it is false, misplaced, or actual duplication that adds
+no reader value. The per-writing report must identify every substantive
+removal or replacement and explain why it improves the reader's result. Record
+baseline and final visible word counts as outcomes only; a shorter or longer
+article does not establish quality.
+
 The Observation series is narrative nonfiction. Follow its nested scientific,
 historical, sourcing, voice, and incremental-episode rules. The practical guide
 must be safe, current, reproducible, and clear for its stated audience.

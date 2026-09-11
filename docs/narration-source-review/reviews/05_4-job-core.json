@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "path": "blog/b2/02-we-could-have-had-agi.md",
-  "source_sha256": "6d23a64ee8157f75a14cf67d2c0b699330efe5042d091b74ec73b2b7724b1425",
-  "reviewed_at": "2026-09-10",
-  "report": "docs/narration-source-review/essays/02-we-could-have-had-agi.md",
+  "path": "blog/b5/05_4-job-core.md",
+  "source_sha256": "53985598e53d84bbeda36854b33545f391a112859418298ab9fb0c4edac0d645",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/05_4-job-core.md",
   "review": {
     "factual": "passed",
     "technical_or_historical": "passed",

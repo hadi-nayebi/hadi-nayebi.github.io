@@ -2,7 +2,7 @@
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: brain-guard
 source_md: 05_3-brain-guard.md
-final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+final: false            # source changed in factual review; narration requires Hadi content lock
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5

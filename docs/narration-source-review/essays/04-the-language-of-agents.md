@@ -101,8 +101,8 @@ tuning and tool use:
 - [Toolformer: Language Models Can Teach Themselves to Use Tools](https://arxiv.org/abs/2302.04761)
 
 Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the technical series is reviewed. Hadi's content lock remains pending.
+for the exact source hash. Cross-writing consistency passed the complete narration-source continuity
+review. Hadi's content lock remains pending.
 
 ## Validation
 

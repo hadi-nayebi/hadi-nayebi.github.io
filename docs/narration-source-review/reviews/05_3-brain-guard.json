@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "path": "blog/b2/02-we-could-have-had-agi.md",
-  "source_sha256": "6d23a64ee8157f75a14cf67d2c0b699330efe5042d091b74ec73b2b7724b1425",
-  "reviewed_at": "2026-09-10",
-  "report": "docs/narration-source-review/essays/02-we-could-have-had-agi.md",
+  "path": "blog/b5/05_3-brain-guard.md",
+  "source_sha256": "9ac4569f132d5bbe79d8bd979524e4ccbe378b213009efe857988f5b572bded0",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/05_3-brain-guard.md",
   "review": {
     "factual": "passed",
     "technical_or_historical": "passed",
