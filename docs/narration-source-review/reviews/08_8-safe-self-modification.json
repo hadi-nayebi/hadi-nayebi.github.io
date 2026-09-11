@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b8/08_8-safe-self-modification.md",
+  "source_sha256": "932a6ff25ef82b5efbe6277afbb7617706aa98d4b50367d5fa629945eead17ec",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/08_8-safe-self-modification.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
