@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "source": "blog/b3/03_1-the-folder-is-alive.md",
   "source_sha256": "7ed4bf56dbaa19e7d8ae2f0739575e6f5e09bafc879b34c40464e4b07e3c41b3",
-  "status": "voice-review",
+  "status": "voice-approved",
   "content_lock": {
     "status": "approved",
     "approved_at": "2026-09-11"
   },
-  "voice_review": "pending",
+  "voice_review": "approved",
   "canonical_text_policy": "Canonical meaning and the reader-facing argument are preserved in text; eye-oriented notation may be expanded into equivalent spoken prose; render-only aliases live in tts_text.",
   "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
   "audio": {
@@ -1452,5 +1452,6 @@
       "gap_after_ms": 900,
       "text_sha256": "5e7654c59b324c25d409cf8903b7b6a29087f609e8e11cba8b58a36f30615095"
     }
-  ]
+  ],
+  "voice_review_approved_at": "2026-09-11"
 }
