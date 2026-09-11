@@ -124,8 +124,8 @@
       <title>The Always-On Digital Cortex — Pt 9: The Customization Guardrail</title>
       <link>https://hadi-nayebi.github.io/blog/b5/05_9-customization-guardrail.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_9-customization-guardrail.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The gate that decides when substrate edits are admitted at all. PLUGIN-LOCK admits on gmode OR a user-approved job. The propose-and-confirm flow via [JOB-APPROVE-CREATION]. The two-route design and why both routes exist.</description>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>An earlier Claude-based seed-agent prototype separates approval of plugin work from the concrete lock, edit, test, and acceptance steps.</description>
     </item>
 
     <item>
