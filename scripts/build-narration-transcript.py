@@ -128,7 +128,7 @@ def spoken_rewrites(text: str) -> str:
         ),
         (
             r"\bLook at the hierarchy above\.",
-            "Consider how that hierarchy is organized.",
+            "A compartmentalized hierarchy can be organized this way.",
         ),
         (
             r"\bThis is the relationship between an LLM and an agent\.",
@@ -150,7 +150,7 @@ def spoken_rewrites(text: str) -> str:
         (
             r"Gemini CLI — hooks shipped January 2026 "
             r"\(BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc\.\)",
-            "Gemini CLI exposes events before and after tools and before and after the agent.",
+            "Gemini CLI, which shipped hooks in January 2026, exposes events before and after tools and before and after the agent.",
         ),
         (
             r"OpenCode — hooks via plugin system "
@@ -168,7 +168,7 @@ def spoken_rewrites(text: str) -> str:
             r"— with knowledge files, operational rules, memory structures, and "
             r"workflow definitions — something fundamental changes\.",
             "But when you add project instructions and a durable brain directory, something fundamental changes. "
-            "The filename depends on the platform: AGENTS.md in Codex; CLAUDE.md and the hidden Claude configuration "
+            "The exact file and directory names depend on the platform: AGENTS.md in Codex; CLAUDE.md and the hidden Claude configuration "
             "directory in Claude Code; QWEN.md in Qwen Code; or the equivalent in OpenCode and Gemini CLI. "
             "Add knowledge files, operational rules, memory structures, and workflow definitions.",
         ),
