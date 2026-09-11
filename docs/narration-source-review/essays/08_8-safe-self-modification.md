@@ -20,6 +20,7 @@ This mature article received a bounded obvious-error pass. Its recursive self-pr
 - Private component names, source paths, log fields, exact file counts, and recovery commands were removed because they are evidence-only implementation details that cannot enter the public repository.
 - Universal claims about every edit, plugin, guard, and self-test were replaced with the actual protected-edit scope.
 - “Durability guarantee” became “durability pattern” because rollback cannot catch failures outside its guarded paths or tests.
+- The old diagram remains inventory-linked but is hidden because it exposes historical internal component and checkpoint labels. Diagram regeneration is outside this narration-source run.
 - No section, example, metaphor, image instruction, or narrative beat was removed.
 
 ## Review record
@@ -27,7 +28,7 @@ This mature article received a bounded obvious-error pass. Its recursive self-pr
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
 - Source SHA-256: `932a6ff25ef82b5efbe6277afbb7617706aa98d4b50367d5fa629945eead17ec`
-- Published-page SHA-256: `ee573bf8cd612a551befcb46bf36e72d35859475354442717c2347af4bf094c0`
+- Published-page SHA-256: `a0ff9af5e179bad1cd5ef7f11329ddb099830dc4fc4ce15b8bb1d68fa516c317`
 - Recorded source words: 1,346 to 1,321; net `-25`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

@@ -18,6 +18,7 @@ This mature article received a bounded obvious-error pass. Its four-form framewo
 
 - The path-heavy, incorrect Stage 2 lifecycle explanation was replaced with the actual create-refine-freeze sequence.
 - Repeated universal and automatic-promotion claims were removed because they contradicted the article's own valid-starting-form explanation.
+- The old diagram remains inventory-linked but is hidden because it depicts mandatory graduation and says Stage 2 is chunked from Stage 1. Diagram regeneration is outside this narration-source run.
 - No section, worked example, table, mechanism, image instruction, or narrative beat was removed.
 
 ## Review record
@@ -25,7 +26,7 @@ This mature article received a bounded obvious-error pass. Its four-form framewo
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
 - Source SHA-256: `b6ea0aded158ccb3235c4920d868fa1c83e876b24117cb6219329718732bbada`
-- Published-page SHA-256: `26dbf74de2aa2fe1d5ed1d93abe2c32fa787f2efc02aa71df8beb1bfba0e02d4`
+- Published-page SHA-256: `9627b55a923ba2e3b04c5cced4df1193f0d5af3e2276ea44685ede69550ebfb6`
 - Recorded source words: 3,187 to 3,122; net `-65`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

@@ -17,6 +17,7 @@ This mature case study received a bounded obvious-error pass. Its numerical snap
 
 - Stale “current,” “live,” and universal-convergence qualifiers were removed because the evidence is a dated snapshot.
 - Private-location specificity was removed while preserving the inventory and its architectural meaning.
+- The old diagram remains inventory-linked but is hidden because it presents runtime-specific labels and compaction behavior as the general architecture. Diagram regeneration is outside this narration-source run.
 - No section, numerical example, diagram concept, or narrative beat was removed.
 
 ## Review record
@@ -24,7 +25,7 @@ This mature case study received a bounded obvious-error pass. Its numerical snap
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
 - Source SHA-256: `70f58a6e717af2fb710225c82125a25d88442171383e68161b0614ae82200f3c`
-- Published-page SHA-256: `846227fceaf3ef6f9237f680740d2fc40a4881d76e2148b431922fabc6bf1d56`
+- Published-page SHA-256: `1cd205f26bd1921ce0ef6657c14f35bfecec23be5531ddbc10b345d8d150289e`
 - Recorded source words: 1,373 to 1,337; net `-36`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - The historical numerical snapshot remains dated evidence rather than a newly reconstructed current inventory.
