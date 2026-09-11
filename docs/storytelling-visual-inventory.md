@@ -4,11 +4,11 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 
 ## Coverage
 
-- Displayed storytelling image slots: **108**
-- Slots with five-category metadata: **108**
-- Fullscreen/lightbox coverage: **108**
+- Displayed storytelling image slots: **113**
+- Slots with five-category metadata: **113**
+- Fullscreen/lightbox coverage: **113**
 - Active storytelling SVG references: **0**
-- Distribution: **I90-A10 41, I70-A30 21, I50-A50 22, I30-A70 16, I10-A90 8**
+- Distribution: **I90-A10 40, I70-A30 24, I50-A50 24, I30-A70 17, I10-A90 8**
 
 `Injected` means the figure is added by `js/story-visuals.js`; its metadata is applied when the figure is created.
 `EpisodeJSON` means the figure is loaded from an Observation episode data file; its visual category is machine-readable in that slide record and the Observation renderer provides fullscreen behavior.
@@ -57,6 +57,12 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-05/04-pattern-repeats.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-05/05-scene-remains.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-05/06-small-exact-answers.jpg` | I70-A30 | EpisodeJSON | Yes |
+| `blog/principles/the-ai-that-grows-with-you.html` | `images/the-ai-that-grows-with-you-hero.jpg` | I30-A70 | HTML | Yes |
+| `blog/principles/the-ai-that-grows-with-you.html` | `images/browser-as-an-open-gateway.jpg` | I70-A30 | HTML | Yes |
+| `blog/principles/the-ai-that-grows-with-you.html` | `images/reopening-the-social-web.jpg` | I70-A30 | HTML | Yes |
+| `blog/principles/the-ai-that-grows-with-you.html` | `images/intelligence-as-a-utility.jpg` | I50-A50 | HTML | Yes |
+| `blog/principles/the-ai-that-grows-with-you.html` | `images/five-protections-of-a-personal-harness.jpg` | I70-A30 | HTML | Yes |
+| `blog/principles/the-ai-that-grows-with-you.html` | `images/shared-anatomy-personal-organisms.jpg` | I50-A50 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/action-space-markov-chain-b1-2.png` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/claude-md-hierarchy-b1-6.jpg` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/claude-md-working-memory-b1-3.png` | I90-A10 | HTML | Yes |

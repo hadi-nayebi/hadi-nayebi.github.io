@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Synchronize one numbered essay's article body without rebuilding its page shell.
+"""Synchronize one canonical essay's article body without rebuilding its page shell.
 
 The old full-page generator predates the current navigation, metadata, visual
 inventory, contribution guidance, and path layout. This wrapper uses the
@@ -106,8 +106,8 @@ def main() -> int:
     html_file = args.html.resolve()
     if ROOT not in markdown.parents or ROOT not in html_file.parents:
         raise SystemExit("both files must be inside the website repository")
-    if not re.fullmatch(r"b[1-9]", markdown.parent.name):
-        raise SystemExit("this synchronizer is limited to numbered B1-B9 essays")
+    if not (re.fullmatch(r"b[1-9]", markdown.parent.name) or markdown.parent.name == "principles"):
+        raise SystemExit("this synchronizer is limited to numbered B1-B9 essays and standalone principles")
     if markdown.with_suffix(".html") != html_file:
         raise SystemExit("Markdown and HTML basenames must match")
 
