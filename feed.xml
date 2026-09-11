@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Principles, technical architecture, observations, and practical guides for building useful, user-owned systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The AI That Grows With You</title>
+      <link>https://hadi-nayebi.github.io/blog/principles/the-ai-that-grows-with-you.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/principles/the-ai-that-grows-with-you.html</guid>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+      <description>The web browser, social media, and Bluesky reveal two possible futures for personalization. As agentic AI learns how you live and work, its personal harness must remain inspectable, portable, and yours.</description>
+    </item>
 
     <item>
       <title>Practical Guide 1: Build Your Own Space on the Web</title>

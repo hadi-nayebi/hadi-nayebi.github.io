@@ -173,7 +173,7 @@ for (const file of publicHtml) {
   }
 
   if (fileRel.startsWith('blog/') && !explorable && !observationApp && !redirect) {
-    if (/^blog\/(?:b\d+|practical-guides)\/[^/]+\.html$/.test(fileRel)) {
+    if (/^blog\/(?:b\d+|practical-guides|principles)\/[^/]+\.html$/.test(fileRel)) {
       const markdownSource = file.slice(0, -'.html'.length) + '.md';
       if (!fs.existsSync(markdownSource)) {
         errors.push(`${fileRel}: missing canonical Markdown source ${rel(markdownSource)}`);
