@@ -26,8 +26,8 @@ reviewed. They are not narration approvals.
 - 49 numbered essays: 5 Part 1 principle writings and 44 technical writings.
 - 5 published Observation episodes containing 34 narrated slides.
 - 1 practical guide.
-- NoemaProjects, Explore pages, diagram narration, project and portfolio
-  pages, and every other website page are excluded.
+- Owner-excluded unpublished writing, Explore pages, diagram narration,
+  project and portfolio pages, and every other website page are excluded.
 
 ## Baseline findings
 
@@ -59,10 +59,9 @@ reviewed. They are not narration approvals.
 6. **The legacy HTML generator cannot establish parity.** A clean rebuild of
    B1-B8 currently regresses canonical URLs, directory depth, navigation,
    storytelling metadata, public contribution guidance, cache versions, and
-   audio state. It also contains an excluded Noema sidebar entry. The review
+   audio state. It also contains an owner-excluded unpublished sidebar entry. The review
    must use a safe parity check or repair a Codex-owned build path before
-   rebuilding published pages. The legacy `.claude/` generator remains
-   untouched.
+   rebuilding published pages. The legacy page generator remains untouched.
 7. **B9 cannot use the legacy generator at all.** Its four Markdown files lack
    the frontmatter that generator requires. Their canonical-source and page
    relationship must be normalized before content lock.
