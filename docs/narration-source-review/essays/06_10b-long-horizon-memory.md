@@ -38,5 +38,4 @@ editing window and the relationship between Markdown and YAML plan forms.
 - Source SHA-256: `d49201a4e5e27b636f5ccb7377cb7e5c54b2b89f4d64d6769f87ce8c9af764de`
 - Published-page SHA-256: `9e32438a07347a5d81b51d3e9ed605cc88c3c260809c7b2727eb440016dd8094`
 - Visible words: 3,729 to 3,732; net `+3`.
-- Cross-writing consistency remains provisional; Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

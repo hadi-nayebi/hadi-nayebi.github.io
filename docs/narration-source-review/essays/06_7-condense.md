@@ -23,4 +23,4 @@ This mature article received a bounded obvious-error pass. The waterfall, metabo
 - Published-page SHA-256: `31bf00dd95b5e5c8809d520279121b74c4b487f66988aedc6594cc3b174e9698`
 - Recorded source words: 2,751 to 2,779; net `+28`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

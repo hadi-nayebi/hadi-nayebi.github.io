@@ -48,5 +48,5 @@ initiated, and it records both setters of the job-level approval right.
 - Source SHA-256: `6f722239447726002ce65e6b4786143f0023ec6c03673c0d676afb3acf4fb6df`
 - Published-page SHA-256: `e1be1452a562308a7306da24c448389b592674ca6fe50994d8a58730fda191a1`
 - Visible words: 2,759 to 2,762; net `+3`.
-- Cross-writing consistency remains provisional; Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity
+  review. Hadi's content lock remains pending.

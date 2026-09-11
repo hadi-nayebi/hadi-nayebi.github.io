@@ -31,4 +31,4 @@ This mature article received a bounded obvious-error pass. The separation of bui
 - Published-page SHA-256: `bfe6785cfa2d871185be06dcc8a25c5d157fc38d78439aead14180f57b57619b`
 - Recorded source words: 3,237 to 3,381; net `+144`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
