@@ -172,6 +172,10 @@ IPA only as pronunciation reference metadata. Put tested English respellings in
 the render-only field, preserve their readable spelling separately, and require
 an ASR check for every protected term.
 
+Keep canonical spelling when the fixed-seed render already pronounces a term
+correctly. Add an override only when a bounded same-seed comparison proves a
+specific failure and the replacement fixes it without degrading rhythm.
+
 Before a mass render, produce one representative technical-writing transcript
 and a short pronunciation comparison. Hadi reviews voice identity, pace,
 prosody, pauses, and protected-term pronunciation. Keep the transcript and

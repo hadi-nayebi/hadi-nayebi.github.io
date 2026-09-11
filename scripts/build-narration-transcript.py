@@ -17,34 +17,26 @@ from pathlib import Path
 
 
 PRONUNCIATIONS = {
-    "data.json.tmp": {"tts": "data dot jay sawn dot temp", "ipa": None},
-    "data.json": {"tts": "data dot jay sawn", "ipa": None},
-    "AGENTS.md": {"tts": "agents dot em dee", "ipa": None},
-    "CLAUDE.md": {"tts": "Claude dot em dee", "ipa": None},
-    "evolution.md": {"tts": "evolution dot em dee", "ipa": None},
-    "QWEN.md": {"tts": "quen dot em dee", "ipa": None},
-    "OPEVC": {"tts": "oh pee ee vee see", "ipa": None},
-    "LLMs": {"tts": "ell ell ems", "ipa": None},
-    "LLM": {"tts": "ell ell em", "ipa": None},
-    "AGI": {"tts": "ay gee eye", "ipa": None},
-    "CLI": {"tts": "see ell eye", "ipa": None},
-    "APIs": {"tts": "ay pee eyes", "ipa": None},
-    "API": {"tts": "ay pee eye", "ipa": None},
-    "JSON": {"tts": "jay sawn", "ipa": None},
-    "YAML": {"tts": "yam ul", "ipa": None},
-    "GPTs": {"tts": "gee pee tees", "ipa": None},
-    "GPT": {"tts": "gee pee tee", "ipa": None},
-    "TTS": {"tts": "tee tee ess", "ipa": None},
-    "STT": {"tts": "ess tee tee", "ipa": None},
-    "mRNA": {"tts": "em are en ay", "ipa": None},
-    "RNA": {"tts": "are en ay", "ipa": None},
-    "DNA": {"tts": "dee en ay", "ipa": None},
-    "AI": {"tts": "ay eye", "ipa": None},
-    "OS": {"tts": "oh ess", "ipa": None},
-    "jq": {"tts": "jay cue", "ipa": None},
-    "mv": {"tts": "em vee", "ipa": None},
-    "Qwen": {"tts": "quen", "ipa": "kwɛn"},
-    "Codex": {"tts": "code ex", "ipa": "ˈkoʊdɛks"},
+    "data.json": {
+        "tts": "data dot json",
+        "ipa": None,
+        "asr_accept": ["data.json", "data dot json", "data json"],
+    },
+    "evolution.md": {
+        "tts": "evolution dot M D",
+        "ipa": None,
+        "asr_accept": ["evolution.md", "evolution dot m d", "evolution m d"],
+    },
+    "OPEVC": {
+        "tts": "oh pee ee vee see",
+        "ipa": None,
+        "asr_accept": ["OPEVC", "O P E V C"],
+    },
+    "jq": {
+        "tts": "J Q",
+        "ipa": None,
+        "asr_accept": ["jq", "J Q", "jay cue"],
+    },
 }
 
 RAW_HTML = re.compile(r"<!--\s*RAW_HTML\s*-->.*?<!--\s*/RAW_HTML\s*-->", re.I | re.S)
@@ -57,7 +49,7 @@ LINK = re.compile(r"\[([^\]]+)\]\((?:[^()]|\([^)]*\))*\)")
 IMAGE = re.compile(r"!\[[^\]]*\]\((?:[^()]|\([^)]*\))*\)")
 SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'“])")
 NAVIGATION = re.compile(
-    r"^\*(?:Previous|Next|Companion|Essay\s+\d+(?:\.\d+)?(?:\s+of|\s+—)|Series interlude)[^\n]*\*\s*$",
+    r"^\*(?:Previous|Next|Companion|Series interlude)[^\n]*\*\s*$",
     re.I | re.M,
 )
 
@@ -87,9 +79,11 @@ def spoken_rewrites(text: str) -> str:
         (r"\bCLI-agent\b", "command-line agent"),
         (r"\bOS-level\b", "operating-system-level"),
         (r"\bJSON-encoded\b", "Encoded as JSON"),
-        (r"\bgitignored\b", "excluded from Git"),
+        (r"\bgitignored\b", "ignored by Git"),
         (r"\bmvs over\b", "moves the temporary file over"),
         (r"\bdocs/", "the docs directory"),
+        (r"\bflock on a machine-local lockfile\b", "the flock command on a machine-local lockfile"),
+        (r"\bvalidates with jq empty\b", "validates by running jq empty"),
     )
     for pattern, replacement in rewrites:
         text = re.sub(pattern, replacement, text)
@@ -146,6 +140,12 @@ def markdown_blocks(source: str) -> list[dict[str, str]]:
             flush_paragraph()
             flush_list()
             continue
+        orientation = re.fullmatch(r"\*(Essay\s+\d+(?:\.\d+)?\s+—\s+.+)\*", line, re.I)
+        if orientation:
+            flush_paragraph()
+            flush_list()
+            blocks.append({"kind": "orientation", "text": strip_inline(orientation.group(1))})
+            continue
         if re.match(r"^(?:Target asset|Target video|Asset):\s+", line, re.I):
             flush_paragraph()
             flush_list()
@@ -179,6 +179,17 @@ def markdown_blocks(source: str) -> list[dict[str, str]]:
             or block["kind"] != "heading"
             or re.sub(r"\W+", "", block["text"]).lower() != title_key
         ]
+        seen_orientation: set[str] = set()
+        deduplicated: list[dict[str, str]] = []
+        for block in blocks:
+            if block["kind"] != "orientation":
+                deduplicated.append(block)
+                continue
+            key = block["text"].casefold()
+            if key not in seen_orientation:
+                deduplicated.append(block)
+                seen_orientation.add(key)
+        blocks = deduplicated
     return blocks
 
 
@@ -204,10 +215,10 @@ def split_semantic(text: str, max_chars: int) -> list[str]:
     return output
 
 
-def render_aliases(text: str) -> tuple[str, list[str]]:
+def render_aliases(text: str, active: set[str]) -> tuple[str, list[str]]:
     rendered = text
     applied: list[str] = []
-    for source in sorted(PRONUNCIATIONS, key=len, reverse=True):
+    for source in sorted(active, key=len, reverse=True):
         replaced, count = re.subn(rf"(?<!\w){re.escape(source)}(?!\w)", PRONUNCIATIONS[source]["tts"], rendered)
         if count:
             applied.append(source)
@@ -217,14 +228,21 @@ def render_aliases(text: str) -> tuple[str, list[str]]:
     return rendered, applied
 
 
-def build(source_path: Path, max_chars: int, target_wpm: int, approved_at: str) -> dict:
+def build(
+    source_path: Path,
+    max_chars: int,
+    target_wpm: int,
+    approved_at: str,
+    pronunciations: set[str],
+) -> dict:
     source = source_path.read_text(encoding="utf-8")
     chunks: list[dict] = []
     sequence = 0
     for block in markdown_blocks(source):
-        for part in split_semantic(block["text"], max_chars):
+        parts = split_semantic(block["text"], max_chars)
+        for part_index, part in enumerate(parts):
             sequence += 1
-            tts_text, applied = render_aliases(part)
+            tts_text, applied = render_aliases(part, pronunciations)
             kind = block["kind"]
             chunks.append({
                 "id": f"n{sequence:03d}",
@@ -233,9 +251,17 @@ def build(source_path: Path, max_chars: int, target_wpm: int, approved_at: str) 
                 "text": part,
                 "tts_text": tts_text,
                 "pronunciations": applied,
-                "gap_after_ms": 700 if kind == "title" else 550 if kind == "heading" else 480 if kind == "list" else 360,
+                "gap_after_ms": (
+                    240 if part_index < len(parts) - 1
+                    else 700 if kind == "title"
+                    else 550 if kind in {"heading", "orientation"}
+                    else 480 if kind == "list"
+                    else 420
+                ),
                 "text_sha256": sha256_text(part),
             })
+    if chunks:
+        chunks[-1]["gap_after_ms"] = 900
     narration_words = sum(len(chunk["text"].split()) for chunk in chunks)
     return {
         "schema_version": "1.0.0",
@@ -248,7 +274,7 @@ def build(source_path: Path, max_chars: int, target_wpm: int, approved_at: str) 
         },
         "voice_review": "pending",
         "canonical_text_policy": "Readable published wording is retained in text; render-only aliases live in tts_text.",
-        "pronunciation_policy": "Use tested English respellings. IPA is reference metadata only for engines without a documented phoneme interface.",
+        "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
         "audio": {
             "engine": "Qwen3-TTS voice clone",
             "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
@@ -269,6 +295,7 @@ def build(source_path: Path, max_chars: int, target_wpm: int, approved_at: str) 
                 "code blocks",
                 "raw link destinations",
                 "previous and next navigation",
+                "duplicate title and series footer",
             ],
         },
         "pronunciation_lexicon": {key: value for key, value in PRONUNCIATIONS.items() if any(key in chunk["pronunciations"] for chunk in chunks)},
@@ -281,12 +308,25 @@ def main() -> None:
     parser.add_argument("source", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--max-chars", type=int, default=320)
-    parser.add_argument("--target-wpm", type=int, default=180)
+    parser.add_argument("--target-wpm", type=int, default=165)
     parser.add_argument("--approved-at", required=True)
+    parser.add_argument(
+        "--pronunciation",
+        action="append",
+        default=[],
+        choices=sorted(PRONUNCIATIONS),
+        help="Enable one tested render-only pronunciation override; repeat as needed.",
+    )
     args = parser.parse_args()
     if not 180 <= args.max_chars <= 700:
         raise SystemExit("--max-chars must be between 180 and 700")
-    document = build(args.source, args.max_chars, args.target_wpm, args.approved_at)
+    document = build(
+        args.source,
+        args.max_chars,
+        args.target_wpm,
+        args.approved_at,
+        set(args.pronunciation),
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {args.output}: {len(document['chunks'])} semantic chunks")
