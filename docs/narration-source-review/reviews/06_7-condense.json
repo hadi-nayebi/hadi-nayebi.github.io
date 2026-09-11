@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_7-condense.md",
+  "source_sha256": "271b5f97b4d991e6aabe9e58c75ffd4676ddba45ded1be75f9f8f08bb8723ddb",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_7-condense.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
