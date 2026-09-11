@@ -127,7 +127,7 @@
 
                         <p>Scaling the electricity will not build the toaster. It will build a brighter arc.</p>
 
-                        <p>But here is the thing: <strong>do not build a toaster.</strong> A toaster is an engineered artifact. Fixed wires, fixed outcome. No matter how much toast it makes, it never becomes a television. It cannot grow new capabilities from experience. That is the nature of engineered things &mdash; they do exactly what they were designed to do, nothing more. If something like AGI emerges from a token generator, it will not be because someone engineered a better appliance. It will be because someone grew a <strong>complex system</strong> &mdash; one that rewires itself through use.</p>
+                        <p>But here is the thing: <strong>do not build a toaster.</strong> A toaster is a fixed appliance. Fixed wires, fixed outcome. No matter how much toast it makes, it never becomes a television. It cannot grow new capabilities from experience. That is the nature of a fixed appliance &mdash; it does exactly what it was designed to do, nothing more. If something like AGI emerges from a token generator, it will not be because someone engineered a better appliance. It will be because someone grew a <strong>complex system</strong> &mdash; one that rewires itself through use.</p>
 
                         <h2 id="a-lawyer-is-not-one-giant-thought">A lawyer is not one giant thought</h2>
 
@@ -215,7 +215,7 @@
 
                         <p>Modern <a href="https://en.wikipedia.org/wiki/Command-line_interface" title="Command Line Interface &mdash; a text-based way to interact with software">CLI</a> agents give you something that looks small but is profound: <strong>interception points</strong>.</p>
 
-                        <p><strong>Stop hooks</strong> &mdash; fire when the agent tries to finish, letting you block premature exits. <strong>Pre-tool</strong> and <strong>post-tool hooks</strong> &mdash; fire before and after every action, letting you inject rules or log what happened. <strong>Compact hooks</strong> &mdash; fire when the agent summarizes its context to free up space, the moment where forgetting usually happens and where your rules can prevent it. Notification hooks, session events, and more.</p>
+                        <p><strong>Stop hooks</strong> &mdash; fire when the agent tries to finish, letting you block premature exits. <strong>Pre-tool</strong> and <strong>post-tool hooks</strong> &mdash; fire around supported tool actions, letting you inject rules or log what happened. <strong>Compact hooks</strong> &mdash; fire when the runtime compacts context to free up space, the moment where forgetting usually happens and where your rules can preserve what matters. Notification hooks, session events, and more.</p>
 
                         <p>Each one is a place where the architecture &mdash; not the model &mdash; decides what happens next. The model proposes. The structure disposes.</p>
 
@@ -229,7 +229,7 @@
 
                         <p>A long-running agent should do the same. During work: collect raw traces &mdash; tool calls, file edits, outcomes, feedback. During consolidation: analyze traces, detect patterns, propose changes.</p>
 
-                        <p>Crucially, changes are not magic. They are edits: update an instruction file &mdash; the same CLAUDE.md files we introduced in the first essay, now serving as the working memory layer the agent writes back to. Refine a checklist. Add a guardrail hook. Create a specialized skill module. Eventually, <a href="https://en.wikipedia.org/wiki/Fine-tuning_%28deep_learning%29" title="Further training a pre-built AI model on a specific task to make it better at that task">fine-tune</a> a small internal decision model for one narrow choice.</p>
+                        <p>Crucially, changes are not magic. They are edits: update project instructions or controlled working-memory files. Refine a checklist. Add a guardrail hook. Create a specialized skill module. Eventually, <a href="https://en.wikipedia.org/wiki/Fine-tuning_%28deep_learning%29" title="Further training a pre-built AI model on a specific task to make it better at that task">fine-tune</a> a small internal decision model for one narrow choice.</p>
 
                         <p>This is how you get professional competence without requiring the main model to internalize everything.</p>
 
@@ -277,7 +277,7 @@
 
                         <p>If you want to build toward AGI-like autonomy now, do not wait for the next model. Build these four layers:</p>
 
-                        <p><strong>1) A filesystem brain with compartmentalized memory.</strong> Persistent state with clear boundaries &mdash; knowledge files, job ledgers, memory stores, and instruction files (CLAUDE.md, AGENT.md) scoped to where they are needed.</p>
+                        <p><strong>1) A filesystem brain with compartmentalized memory.</strong> Persistent state with clear boundaries &mdash; knowledge files, job ledgers, memory stores, and project instructions (<code>AGENTS.md</code> in Codex, <code>CLAUDE.md</code> in Claude Code, <code>QWEN.md</code> in Qwen Code, or the platform&rsquo;s equivalent) scoped to where they are needed.</p>
 
                         <p><strong>2) A hook system that enforces phases and permissions.</strong> Interception points where deterministic rules override probabilistic behavior.</p>
 

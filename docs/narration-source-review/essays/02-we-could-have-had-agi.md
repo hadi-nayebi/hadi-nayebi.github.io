@@ -13,9 +13,9 @@ current systems guarantee.
 
 - Canonical source: `blog/b2/02-we-could-have-had-agi.md`
 - Source version: `v1.2.0` (previously `v1.1.0`)
-- Source SHA-256: `3cbbb6f781dad5ba3f1d96a0849151fdaa0159e46b80447ce045d9caca1875ee`
+- Source SHA-256: `6d23a64ee8157f75a14cf67d2c0b699330efe5042d091b74ec73b2b7724b1425`
 - Published page: `blog/b2/02-we-could-have-had-agi.html`
-- Published-page SHA-256: `babced83213ef7186b53feb001f4ebc1b910a462abc820103f19c3faeab232e8`
+- Published-page SHA-256: `668144fe7b98c76d03dc0f5027e1728c037f8313b53bd35ac0754b75fa0beb1c`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -23,7 +23,8 @@ current systems guarantee.
 1. **Kept AGI as a prospective argument.** The opening identifies the essay's
    practical target as AGI-like and removes only the fixed monthly-cost claim.
 2. **Preserved complex-system thinking.** The contrast is now with a fixed
-   artifact and outcome, acknowledging that engineered structures can adapt.
+   appliance and outcome rather than all engineered systems, acknowledging
+   that engineered structures can adapt.
 3. **Clarified context loss.** Earlier tokens may leave active context through
    compaction, pruning, or a new session; a larger generator still does not
    create durable project memory by itself.
@@ -46,7 +47,9 @@ current systems guarantee.
    recovery. Required evidence becomes durable before closing; it does not
    make forgetting impossible.
 9. **Narrowed hook recording.** Hooks perceive and record the supported events
-   they are configured to capture. The sensory-layer metaphor remains.
+   they are configured to capture. Pre-tool, post-tool, and compaction hooks
+   are described around supported runtime events. The sensory-layer metaphor
+   remains.
 10. **Kept growth under user authority.** Reviewed patterns, operations, and
     guardrails may accumulate without implying uncontrolled self-modification.
 11. **Kept the one-year scenario as a thought experiment.** The professional
@@ -58,6 +61,10 @@ current systems guarantee.
 13. **Restored canonical figure ownership and removed stale narration.** The
     Seed figure now belongs to Markdown, and the old MP3 remains hidden because
     it predates version 1.2.0.
+14. **Made the practical roadmap framework-generic.** Project instructions are
+    named first, with `AGENTS.md`, `CLAUDE.md`, and `QWEN.md` as platform
+    examples; consolidation writes to controlled instruction or working-memory
+    surfaces rather than assuming one filename.
 
 ## Evidence and review state
 

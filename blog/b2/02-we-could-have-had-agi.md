@@ -33,7 +33,7 @@ This essay extends that idea to a harder question: **what would actual AGI look 
 
 Scaling the electricity will not build the toaster. It will build a brighter arc.
 
-But here is the thing: **do not build a toaster.** A toaster is an engineered artifact. Fixed wires, fixed outcome. No matter how much toast it makes, it never becomes a television. It cannot grow new capabilities from experience. That is the nature of engineered things — they do exactly what they were designed to do, nothing more. If something like AGI emerges from a token generator, it will not be because someone engineered a better appliance. It will be because someone grew a **complex system** — one that rewires itself through use.
+But here is the thing: **do not build a toaster.** A toaster is a fixed appliance. Fixed wires, fixed outcome. No matter how much toast it makes, it never becomes a television. It cannot grow new capabilities from experience. That is the nature of a fixed appliance — it does exactly what it was designed to do, nothing more. If something like AGI emerges from a token generator, it will not be because someone engineered a better appliance. It will be because someone grew a **complex system** — one that rewires itself through use.
 
 ## A lawyer is not one giant thought
 
@@ -121,7 +121,7 @@ This pattern is platform-agnostic. Any CLI agent with a Stop-blocking hook can r
 
 Modern [CLI](https://en.wikipedia.org/wiki/Command-line_interface "Command Line Interface — a text-based way to interact with software") agents give you something that looks small but is profound: **interception points**.
 
-**Stop hooks** — fire when the agent tries to finish, letting you block premature exits. **Pre-tool** and **post-tool hooks** — fire before and after every action, letting you inject rules or log what happened. **Compact hooks** — fire when the agent summarizes its context to free up space, the moment where forgetting usually happens and where your rules can prevent it. Notification hooks, session events, and more.
+**Stop hooks** — fire when the agent tries to finish, letting you block premature exits. **Pre-tool** and **post-tool hooks** — fire around supported tool actions, letting you inject rules or log what happened. **Compact hooks** — fire when the runtime compacts context to free up space, the moment where forgetting usually happens and where your rules can preserve what matters. Notification hooks, session events, and more.
 
 Each one is a place where the architecture — not the model — decides what happens next. The model proposes. The structure disposes.
 
@@ -135,7 +135,7 @@ Humans do not improve only while acting. They consolidate. In the [first essay](
 
 A long-running agent should do the same. During work: collect raw traces — tool calls, file edits, outcomes, feedback. During consolidation: analyze traces, detect patterns, propose changes.
 
-Crucially, changes are not magic. They are edits: update an instruction file — the same CLAUDE.md files we introduced in the first essay, now serving as the working memory layer the agent writes back to. Refine a checklist. Add a guardrail hook. Create a specialized skill module. Eventually, [fine-tune](https://en.wikipedia.org/wiki/Fine-tuning_%28deep_learning%29 "Further training a pre-built AI model on a specific task to make it better at that task") a small internal decision model for one narrow choice.
+Crucially, changes are not magic. They are edits: update project instructions or controlled working-memory files. Refine a checklist. Add a guardrail hook. Create a specialized skill module. Eventually, [fine-tune](https://en.wikipedia.org/wiki/Fine-tuning_%28deep_learning%29 "Further training a pre-built AI model on a specific task to make it better at that task") a small internal decision model for one narrow choice.
 
 This is how you get professional competence without requiring the main model to internalize everything.
 
@@ -183,7 +183,7 @@ Same engine. Same electricity. One forgot everything. The other became a profess
 
 If you want to build toward AGI-like autonomy now, do not wait for the next model. Build these four layers:
 
-**1) A filesystem brain with compartmentalized memory.** Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and instruction files (CLAUDE.md, AGENT.md) scoped to where they are needed.
+**1) A filesystem brain with compartmentalized memory.** Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and project instructions (`AGENTS.md` in Codex, `CLAUDE.md` in Claude Code, `QWEN.md` in Qwen Code, or the platform's equivalent) scoped to where they are needed.
 
 **2) A hook system that enforces phases and permissions.** Interception points where deterministic rules override probabilistic behavior.
 
