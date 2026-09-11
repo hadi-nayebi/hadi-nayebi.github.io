@@ -16,14 +16,14 @@ This mature article received a bounded obvious-error pass. Its lock ceremony, pr
 
 - The inaccurate claim that safe-lock alone closes the failing-test risk was replaced because the article's own detailed section correctly assigns that responsibility to two mechanisms.
 - Private paths, code excerpts, state fields, and unpublished implementation details were replaced with generalized verification.
-- The misleading published diagram was removed from this revision because diagram regeneration is outside the narration-source run; no prose section, example, lock stage, or narrative beat was removed.
+- The misleading diagram remains inventory-linked but is hidden from the rendered page because diagram regeneration is outside the narration-source run; no prose section, example, lock stage, or narrative beat was removed.
 
 ## Review record
 
 - Baseline: `2664c97e80c73943a217715b88abfac36e19935a`
 - Version: `v0.2.0`
-- Source SHA-256: `97131db97fafdbf10023c3d433fb9775fba219ceba63d1f9a09eef21614c5f41`
-- Published-page SHA-256: `7d936da89c321830aca35b32e6e47b87c99a74b2d374a04bf6e3a2b5c4826570`
-- Recorded source words: 1,794 to 1,829; net `+35`.
+- Source SHA-256: `55fb908909afe86b7a4acce1389a0f126a1f5c4b7e32eb368435714cd81a26a9`
+- Published-page SHA-256: `3531ad9aa15c485662ddaa4b16d39d0b18c84bc763fadb3e20a674248a65157c`
+- Recorded source words: 1,794 to 1,826; net `+32`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

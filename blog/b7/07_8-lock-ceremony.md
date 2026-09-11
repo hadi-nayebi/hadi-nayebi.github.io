@@ -59,9 +59,9 @@ Two scripts share the close-out duty. The agent invokes `lock-cmd.sh` when edits
 
 The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by one of the two mechanisms above, with the test suite as the gate. There is no inline override; the deliberate `[GMODE]` route covered above (plus the user-approved-job route) are the only ways to admit an existing-plugin edit, and both leave an auditable trail. There is no "commit anyway"; there is no "I will fix it next session." Either the active-lock cycle leaves the agent looking at preserved failures it now has to fix, or the auto-revert cycle removes the broken edit from the working tree entirely. *[ref: safe-lock-auto-revert-no-commit-anyway-path | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-<!-- STALE IMAGE BRIEF — withheld until the diagram matches both close-out paths:
+<!-- IMAGE PLACEHOLDER:
   ASSET: images/lock-ceremony-b7-8.png
-  Concept: Chalk-on-blackboard flowchart — the active and defensive close-out paths shown separately.
+  Concept: STALE ASSET — do not publish until the active and defensive close-out paths are shown separately.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
   and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
@@ -78,7 +78,7 @@ The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by one of t
     Right arrow labeled IN WHITE CHALK exactly "defensive fail" → orange box labeled "revert + log"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
   STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "run plugin test suite", "all tests pass?", "yes", "active fail", "defensive fail", "commit + clear lock", "preserve + fix + re-run", "revert + log". No other words, file names, folders, or state descriptors may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.8. Both paths test before commit. Active failure preserves work for repair; defensive failure reverts and logs."
+  Caption (HTML text shown under the image, not drawn inside the image): "Stale figure withheld until it distinguishes active repair from defensive revert."
 -->
 
 ---
