@@ -116,8 +116,8 @@
       <title>The Always-On Digital Cortex — Pt 8: The Historian Ratchet</title>
       <link>https://hadi-nayebi.github.io/blog/b5/05_8-historian-ratchet.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_8-historian-ratchet.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>Per-plugin living history. Drift counter climbs with commits, blocks unlock at the threshold, historian re-narrates evolution.md, counter resets. Three plugins compose into one ceremony — no single plugin owns the whole thing.</description>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>An earlier Claude-based seed-agent prototype turns commit drift into bounded documentation debt before the next plugin unlock.</description>
     </item>
 
     <item>

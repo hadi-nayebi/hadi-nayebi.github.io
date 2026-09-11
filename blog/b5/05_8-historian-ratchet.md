@@ -2,10 +2,10 @@
 title: "The Historian Ratchet"
 date: "May 2026"
 slug: "historian-ratchet"
-read_time: "10 min"
+read_time: "7 min"
 tags: [Architecture, Seed Agent, Plugins, Composed Ceremony]
 status: draft
-version: v0.3.0
+version: v0.4.0
 audience: "Tier 3"
 og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
@@ -16,105 +16,108 @@ og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 
 ---
 
-[Essay 5.7](05_7-claude-md-hierarchy.html) built the working-memory form — the CLAUDE.md hierarchy with its four-footer protocol and altered-list gate. This part closes the essay's deep-dive set with one example of what the always-on layer can *do* when its single-concern plugins compose. Single-concern plugins composing into one ceremony, no plugin owning the whole thing.
+[Essay 5.7](05_7-claude-md-hierarchy.html) described a visible working-memory hierarchy. This part examines a different kind of memory: the bounded history that is required before a frequently changed plugin can be unlocked again.
+
+This essay describes an earlier private Claude Code prototype. Its historian is a local maintenance mechanism, not a native Claude Code feature.
 
 ---
 
-## Per-plugin living history
+## Mechanical history and narrated history
 
-For the architects in the audience: the historian ratchet we sketched earlier is worth examining in detail, because it captures the discipline of the whole always-on layer. *[ref: historian-ratchet-captures-discipline | .claude/plugins/plugin_integrity/CLAUDE.md Historian Mechanism section | plugin_integrity "Historian Mechanism" section: drift gate (`drift-check.sh`) + word cap (`evolution-cap.sh`) + 13 historian agents on disk (11 attached to active plugins + 2 reserved for the unimplemented `job_archiver` / `job_blocker` plugin designs). "The ratchet: every historian commit increments its own plugin's drift counter, so a future lock will eventually demand a re-sync."]*
+Git already records what changed: commits, authors, timestamps, and diffs. That record is precise but does not automatically explain which architectural lesson should guide the next edit.
 
-Every plugin has a file called `evolution.md`. It is a word-capped narrative (the prototype caps it at a few thousand words; your seed can tune the cap) of how the plugin got to its current state — what was added, what was rejected, what was learned during which cycle. It is auto-injected into the agent's context whenever the plugin is unlocked for editing. Think of it as the per-plugin counterpart to `interaction_summary`'s durable conversation memory. `interaction_summary` carries the summary of the user-agent conversation across compactions; `evolution.md` carries the summary of the plugin's own life across cycles. Where `git log` keeps the mechanical record, `evolution.md` keeps the narrative one. *[ref: every-plugin-has-evolution-md | .claude/plugins/plugin_integrity/hooks/lock-manager.sh unlock-success branch inside the `### [PLUGIN-LOCK] handler` section | Lock unlock builds `[LIVING HISTORY (evolution.md)]` via an `evo_section` assembly that reads from the evolution.md path under each plugin's `docs/`, with a no-evolution.md fallback. Injected via `hookSpecificOutput.additionalContext` on the hook's stdout jq emit. Word cap at `evolution-cap.sh — MAX_EVOLUTION_WORDS=2000`.]*
+Participating plugins in this prototype therefore maintain `docs/evolution.md`. The file gives a concise account of the plugin's origin, milestones, lessons, invariants, and current state. When an existing plugin is unlocked, `plugin_integrity` injects that living history along with the recent unsummarized commit log. The next editor receives both the narrative and a path back to the underlying evidence. *[ref: living-history-injection | .claude/plugins/plugin_integrity/hooks/lock-manager.sh, existing-plugin unlock context; .claude/plugins/plugin_integrity/template/_historian.md | The unlock response includes `docs/evolution.md` and recent commits; historian instructions keep the plugin as protagonist and preserve commit-backed history.]*
 
-The naive version of this would be: "documentation that updates itself when the plugin changes."
+The distinction matters. Git is the source record. `evolution.md` is an interpretation built from it. The narrative can accelerate orientation, but it can also be incomplete or wrong; commit references and archived detail keep it auditable.
 
-The seed agent's version is sharper.
+## Counting drift
 
-## The drift counter and the block
+When the agent proposes `[PLUGIN-LOCK] <name>`, the lock manager runs `drift-check.sh` for the target plugin. The script finds the most recent commit that touched that plugin's `docs/evolution.md`, then counts later commits that touched the plugin directory.
 
-When the agent attempts to unlock a plugin for editing — by issuing a question with the prefix `[PLUGIN-LOCK] <plugin_name>` — the lock manager runs a small drift-check against the target plugin. The check is a single git command that counts how many commits have touched the plugin since the last time its evolution narrative was synced. The result is the *drift count*: the number of commits the plugin has accumulated since its history was last narrated. If that count meets or exceeds a configurable threshold (currently ten in the prototype), the unlock is *blocked* and the agent is told to dispatch the plugin's historian subagent first. *[ref: plugin-lock-prefix-runs-drift-check | .claude/plugins/plugin_integrity/scripts/drift-check.sh (git rev-list --count drift command) | Single git command: `git rev-list --count "${LAST_SYNC_COMMIT}..HEAD" -- "$PLUGIN_DIR"` counts commits to the plugin since the last `evolution.md` sync. `plugin_integrity/config.conf — DRIFT_THRESHOLD` (default 10) is the block threshold.]*
+The current default threshold is ten commits. When drift is below ten, the remaining lock checks can continue. At ten or more, the pre-tool hook blocks the unlock and names the plugin's historian. It also shows a bounded list of recent commits that have not yet been condensed into the living history. *[ref: drift-gate | .claude/plugins/plugin_integrity/scripts/drift-check.sh; .claude/plugins/plugin_integrity/config.conf, DRIFT_THRESHOLD; .claude/plugins/plugin_integrity/hooks/lock-manager.sh, Evolution gate | Drift is commit-based, defaults to ten, and blocks the proposed unlock at or above the threshold.]*
 
-Each plugin has its own dedicated historian — `historian-brain-guard`, `historian-phasic-system`, `historian-job-core`, and so on — so the narrative voice for each plugin stays consistent across its lifetime. The narrators live centrally inside `plugin_integrity`'s own folder, with one architectural exception — `historian-question-discipline` ships inside `question_discipline/agents/` instead. *[ref: historians-named-and-centrally-located | .claude/plugins/plugin_integrity/agents/ (directory listing) + .claude/plugins/question_discipline/agents/historian-question-discipline.md | Per-plugin historian agents live as `agents/historian-<plugin-dashed>.md` files. All but one sit inside `plugin_integrity/agents/` (centralization keeps the historian template's authoring discipline owned by a single plugin); the lone outlier `historian-question-discipline.md` ships inside `question_discipline/agents/` because that plugin's distinct slot-set + interaction history warranted a sibling-located narrator.]*
+This is a periodic debt mechanism:
 
-The template that new plugins clone from when they are born lives in `plugin_integrity/template/_historian.md`. When dispatched, the plugin's historian reads the drift log, synthesizes what changed since the last sync, and edits `evolution.md` under the word cap enforced by a dedicated hook that blocks any edit which would push the file past it. When the cap fires, the block does more than refuse — it coaches the historian to retry with a tighter narrative and to migrate any overflow into sibling documents (per-cycle deep-dives, a decisions log, technical appendices), with `evolution.md` becoming an executive summary that references those siblings rather than absorbing them. *[ref: historians-live-centrally-template | .claude/plugins/plugin_integrity/template/_historian.md (PLUGIN_DASHED/PLUGIN_NAME template body) | Historian template with `{{PLUGIN_DASHED}}`/`{{PLUGIN_NAME}}` substitution — every plugin clones this on birth. Lines 17-19 define EDIT scope, 2000-word cap on `evolution.md`, overflow archives (`docs/decisions.md`, `docs/lessons.md`). Historians live centrally in `plugin_integrity/agents/` with one exception: `historian-question-discipline.md` lives in `question_discipline/agents/` alongside its plugin.]*
+1. normal plugin commits accumulate;
+2. the drift count reaches its threshold;
+3. the next unlock is denied;
+4. the historian updates and commits the plugin's documentation;
+5. that commit becomes the new synchronization point.
 
-The historian's last mandatory step is to commit. That commit touches `evolution.md`, which becomes the new sync point, which means the drift counter resets to zero — and the next set of edits will eventually push it back up, and the cycle repeats. *[ref: commit-resets-sync-point-to-zero | .claude/plugins/plugin_integrity/scripts/drift-check.sh (git rev-list --count drift command) | The drift count is computed by `git rev-list --count "${LAST_SYNC_COMMIT}..HEAD" -- "$PLUGIN_DIR"`. Whatever commit most recently touched the plugin and updated its `evolution.md` becomes the new `LAST_SYNC_COMMIT` reference — so the historian's terminal commit, by definition, drops the count to zero. The next plugin edit increments it; the threshold (`plugin_integrity/config.conf — DRIFT_THRESHOLD`, default 10) eventually fires again; the ratchet re-engages.]*
+Because the count starts after the last commit that touched `evolution.md`, a successful historian commit returns the immediate count to zero. Editing the file without committing does not pay the debt. The gauge follows Git history, not modification time. *[ref: reset-semantics | .claude/plugins/plugin_integrity/scripts/drift-check.sh; .claude/plugins/plugin_integrity/template/_historian.md, mandatory auto-commit | The last evolution commit defines the exclusive range used for the next drift count.]*
 
-This is the **ratchet pattern**. A plugin cannot be edited indefinitely without periodically forcing the historian to re-narrate its evolution. Several mechanisms enforce it together: the drift counter that measures elapsed commits, the block that refuses unlock at the threshold, and the historian's own commit that resets the counter — without that reset, the next `[PLUGIN-LOCK]` deadlocks. *[ref: this-is-the-ratchet-pattern | .claude/plugins/plugin_integrity/hooks/voice.xml block id=plugin-evolution-stale | Canonical voice `plugin-evolution-stale`: "BLOCKED: {{plugin}} evolution.md is outdated ({{drift}} commits since last update)... drift gate keeps the per-plugin living history fresh... EXPECTED STATE on historian commit: drift resets to 0, [PLUGIN-LOCK] {{plugin}} succeeds."]*
+## What the historian must produce
 
-The pattern is portable. Anywhere a system needs to enforce a discipline-that-must-be-done-eventually, the same shape works: a counter that climbs with normal work, a block that fires when the counter crosses a threshold, and a corrective action whose own completion resets the counter. A consulting practice could install the same ratchet on client-deliverable templates: a counter climbs with every template edit, blocks the next checkout at a threshold, and only the practice lead's narrative re-sync (what changed, why, what's still open) resets it. The discipline becomes mechanically inescapable.
+New plugins receive a historian definition from the `plugin_integrity` template. The historian may edit documentation under the target plugin, but not its hooks, scripts, tests, state, voices, or instruction file.
 
-The lesson is small: **read the work before changing it**.
+On a first backfill it reconstructs the plugin's history from Git. On an incremental run it reads the existing evolution narrative and the later diffs, then appends a dated synthesis and updates Things To Remember. The plugin remains the subject: the prose records what the plugin learned and how its architecture changed, rather than narrating the historian's activity.
 
-The mechanism makes the lesson non-negotiable. The agent is not *suggested* to re-read the plugin's history before editing — a suggestion would be ignored under deadline pressure. The lock blocks. The historian runs. Only then can the work proceed. There is no quiet way around it. `GMODE` — the operator's deliberate maintenance lane, entered only by writing a long `[GMODE]` justification (the prototype sets a word floor; your seed can tune it) — lifts the OPEVC *phase* controls but not the always-on layer beneath them. `plugin_integrity` keeps enforcing in gmode, so a `[PLUGIN-LOCK]` there still hits the drift gate and the historian still has to run before the plugin unlocks. The ratchet is part of the substrate the maintenance lane rests on, not something the lane steps over. *[ref: lock-blocks-historian-runs | .claude/plugins/plugin_integrity/hooks/lock-manager.sh "Evolution gate: block unlock if drift >= threshold" branch (inside the `### [PLUGIN-LOCK] handler` section) + .claude/plugins/plugin_integrity/scripts/drift-check.sh + .claude/plugins/plugin_integrity/hooks/voice.xml block id=plugin-evolution-stale | When drift exceeds the threshold (`plugin_integrity/config.conf — DRIFT_THRESHOLD`, default 10), lock-manager fires the `plugin-evolution-stale` block voice and refuses unlock. The agent must dispatch the plugin's historian subagent before the next `[PLUGIN-LOCK]` will admit; only the historian's commit to evolution.md resets the drift counter. The block is bash-mechanical (exit 2 from the hook), not LLM-judgment.]*
+`evolution.md` has a hard default ceiling of 2,000 words. The cap is enforced on projected Edit, Write, and MultiEdit operations, blocks shell write paths that cannot be projected safely, and checks the actual file again after writes. When the file approaches the ceiling, the historian can compress older entries or move detail into uncapped sibling documents such as decisions or topical lessons. *[ref: historian-scope-and-cap | .claude/plugins/plugin_integrity/template/_historian.md; .claude/plugins/plugin_integrity/hooks/evolution-cap.sh; .claude/plugins/plugin_integrity/config.conf, MAX_EVOLUTION_WORDS | Historian edits are documentation-scoped; the primary narrative is capped at 2,000 words with archive paths for detail.]*
+
+The cap keeps the auto-injected narrative useful. Without it, a mechanism intended to speed orientation would eventually consume increasing context on every unlock.
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/historian-ratchet-b5-8.png
-  Concept: Chalk-on-blackboard wheel — plugin_integrity's historian ratchet: drift counter climbs with commits, blocks at threshold, historian subagent re-narrates, counter resets.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk circles and arrows;
-  pastel chalk for the four step nodes (cyan = Step 1, green = Step 2, orange = Step 3, pink = Step 4);
-  white chalk for ALL labels, counter values, and arrows; chalk sticks at the bottom edge.
-  IMPORTANT: Use only the literal labels listed below. Do not invent other plugin names, file names, threshold values, or captions.
-  Layout: Four pastel chalk circles arranged in a wheel (top → right → bottom → left), connected clockwise by short curving white-chalk arrows.
-    Step 1 circle (top, cyan fill): inside or beside it draw a small stack of chalk commit-square icons growing upward, plus a chalk counter labeled in white chalk exactly "drift_count = 1, 2, 3, ..." — caption above the circle in white chalk reads exactly "Step 1: plugin commits accumulate".
-    Step 2 circle (right, green fill): inside or beside it draw the counter redrawn in pink chalk reading exactly "drift_count ≥ DRIFT_THRESHOLD (default 10)", plus a small chalk barrier in front of a chalk tag labeled in white chalk exactly "[PLUGIN-LOCK]" — caption above the circle in white chalk reads exactly "Step 2: drift threshold crossed, unlock blocked".
-    Step 3 circle (bottom, orange fill): inside or beside it draw a small chalk figure reading a chalk commit log and writing into a chalk file labeled in white chalk exactly "docs/evolution.md"; next to the file a vertical chalk fill-bar marked exactly "MAX_EVOLUTION_WORDS = 2000" — caption above the circle in white chalk reads exactly "Step 3: historian-${plugin_name} subagent dispatched".
-    Step 4 circle (left, pink fill): inside or beside it draw the counter snapping back, labeled in white chalk exactly "drift_count = 0", and the chalk barrier dissolving — caption above the circle in white chalk reads exactly "Step 4: historian commits, drift resets".
-  At the center of the wheel, a small white-chalk caption reads exactly: "work cannot proceed without periodic narration".
-  Keep all arrows slightly curved and hand-drawn, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings: "Step 1: plugin commits accumulate", "Step 2: drift threshold crossed, unlock blocked", "Step 3: historian-${plugin_name} subagent dispatched", "Step 4: historian commits, drift resets", "drift_count = 1, 2, 3, ...", "drift_count ≥ DRIFT_THRESHOLD (default 10)", "drift_count = 0", "[PLUGIN-LOCK]", "docs/evolution.md", "MAX_EVOLUTION_WORDS = 2000", "work cannot proceed without periodic narration". No other words, plugin names, or file names may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 5.8.1. Drift climbs with every commit, blocks the next unlock at the threshold, and resets only when the historian re-narrates the plugin's evolution."
+  STATUS: Existing diagram remains accurate at concept level; diagram redesign is outside this editorial pass.
+  Concept: Plugin commits increase drift; the threshold blocks the next unlock; a historian updates and commits docs/evolution.md; the synchronization point resets.
+  Caption: "Image 5.8.1. Commit drift creates documentation debt, and a committed historian update pays it before the next plugin unlock."
 -->
 
-## Composed ceremony from single-concern plugins
+## Why call it a ratchet?
 
-The ratchet looks like one mechanism, but it is actually a small ring of single-concern plugins working together. Recall the plugin sketch from earlier — here it is in full.
+A mechanical ratchet permits motion in one direction and prevents reversal. This software pattern is looser. An operator can change the threshold, disable the hook, rewrite history, or edit the narrative poorly. The mechanism does not make knowledge irreversible.
 
-The agent must be able to ask a `[PLUGIN-LOCK]` question. That depends on `question_discipline` recognizing the prefix and letting the question through; without that registration, the call is blocked before the user even sees it. The user's answer must then be captured and routed to the lock manager. That depends on `job_core`'s split pre-call/post-call pair, which validates the question, captures the approval, and hands the result over. Finally, the edit must close cleanly under test. That depends on `plugin_integrity`'s own safe-lock cycle, which runs the plugin's test suite when the lock closes and reverts the working tree if the tests fail. *[ref: agent-must-ask-plugin-lock-question | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh (PREFIX_REGISTRY validation) + .claude/plugins/job_core/hooks/question-capture-hook.sh + .claude/plugins/plugin_integrity/scripts/safe-lock.sh (test-suite-run + revert-on-failure branch) | Three-plugin composition for one ceremony: `question-discipline-gate` validates the `[PLUGIN-LOCK]` prefix is registered in `PREFIX_REGISTRY` (otherwise the PreToolUse hook blocks the question before the user sees it); `job_core`'s `question-capture-hook` (PostToolUse) routes the user's answer and admits the lock; `safe-lock` runs the plugin's test suite when the lock closes and reverts on failure (`find "$plugin_dir" -mindepth 1 -delete` + `git checkout "$checkpoint" -- "$plugin_dir/"` + `git reset HEAD` — no partial edits survive a failed test run).]*
+The useful similarity is periodic forward pressure. Ordinary work can defer narration for a bounded interval, but the next unlock eventually encounters a hard gate. Progress resumes only after a new history commit establishes a later synchronization point.
 
-No single plugin enforces the historian ratchet. Single-concern plugins compose to make it possible — `question_discipline` opens the asking surface, `job_core` carries the answer, `plugin_integrity` protects the edit. Each plugin owns its own narrow concern. The ceremony emerges from the way they fit together. The [Essay 7 series](../b7/07_1-plugin-kit-foundation.html) takes `plugin_integrity` apart on its own terms — the lock-and-historian ceremony as a single plugin's anatomy. *[ref: no-single-plugin-enforces-ratchet | .claude/plugins/CLAUDE.md Plugin Building Lessons section | Plugin Building Lessons: "Plugins own their own controls — don't extend another plugin's guard for your concerns" + "Soft controls belong inside plugins". Single-concern boundary that lets ceremonies compose from narrow parts.]*
+Inside the configured hook boundary, this converts “document the architecture occasionally” from advice into scheduled maintenance. It still cannot prove the quality of the resulting history. The historian's scope, word cap, evidence rules, and future review constrain that quality problem without eliminating it.
+
+The pattern generalizes to any discipline that may be deferred briefly but should not be deferred indefinitely. A consulting practice could count revisions to a delivery template and require a short practice note before its next checkout. A data team could count schema migrations and require the runbook to be resynchronized before another change.
+
+## Where composition actually occurs
+
+The historian drift gate itself belongs to `plugin_integrity`. That plugin owns the drift check, historian templates, evolution cap, unlock state, and the safe-lock process that tests and either commits or recovers plugin edits.
+
+The complete unlock ceremony still composes several owners:
+
+- `question_discipline` admits `[PLUGIN-LOCK]` as a registered, shaped user question;
+- `phasic_system` supplies whether the focused work is in gmode;
+- `job_core` supplies the focused job's persistent `plugin_lock_approval`;
+- `plugin_integrity` requires one of those protected contexts, checks drift, captures the lock answer, unlocks the target, and later closes the edit through its test-and-recovery path.
+
+This corrects an earlier account in which `job_core` was said to carry the lock answer. The lock manager is registered on both sides of `AskUserQuestion` and reads that answer itself. `job_core` contributes job-level authorization state; it does not own the lock response. *[ref: composed-unlock | .claude/plugins/question_discipline/hooks/question-discipline-gate.sh; .claude/plugins/plugin_integrity/hooks/lock-manager.sh, PLUGIN-LOCK handler; .claude/plugins/job_core job state; .claude/plugins/phasic_system/scripts/phase.sh | Registry admission, protected-context state, drift enforcement, and post-answer unlocking come from distinct owned surfaces.]*
+
+Composition is useful when the boundaries stay clear. One plugin can ask whether a question is registered without learning how plugin checkpoints work. Another can own job authorization without parsing every lock request. The ceremony is larger than each interface, while each mutation still has one owner.
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/historian-ratchet-b5-8b.png
-  Concept: Chalk-on-blackboard composition — three single-concern plugins fitting together into the historian-ratchet ceremony, each contributing its own narrow concern.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard; hand-drawn chalk tiles and a connecting arc;
-  pastel chalk for each plugin tile (cyan = Tile 1, green = Tile 2, orange = Tile 3);
-  white chalk for ALL labels, the arc, and the substrate slab; chalk sticks at the bottom edge.
-  IMPORTANT: Use only the literal labels listed below. Plugin names use UNDERSCORES, not hyphens. Do not invent other plugin names or substrate labels.
-  Layout: Three pastel chalk tiles arranged left to right, side by side on the board.
-    Tile 1 (cyan fill): plugin-name label in white chalk reads exactly "question_discipline"; inside the tile, draw a small chalk tag labeled exactly "[PLUGIN-LOCK]" passing through a chalk gate; caption below the tile in white chalk reads exactly "opens the asking surface".
-    Tile 2 (green fill): plugin-name label in white chalk reads exactly "job_core"; inside the tile, draw a chalk question-and-answer pair being captured into a chalk container labeled exactly "job"; caption below the tile in white chalk reads exactly "carries the answer".
-    Tile 3 (orange fill): plugin-name label in white chalk reads exactly "plugin_integrity"; inside the tile, draw a chalk shield around a chalk folder labeled exactly "plugins/<name>/" plus a chalk checkpoint marker labeled exactly "git checkpoint"; caption below the tile in white chalk reads exactly "protects the edit".
-  Above the three tiles, a curving white-chalk arc labeled in white chalk exactly "historian ratchet ceremony" connects them, suggesting emergence from composition.
-  Below all three tiles, a long horizontal chalk slab labeled in white chalk exactly "the .claude/ substrate (multi-form: CLAUDE.md hierarchy + plugin data.json + voice.xml + agents/ + knowledge/)" sits as the shared substrate.
-  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings: "question_discipline", "job_core", "plugin_integrity", "[PLUGIN-LOCK]", "job", "plugins/<name>/", "git checkpoint", "opens the asking surface", "carries the answer", "protects the edit", "historian ratchet ceremony", "the .claude/ substrate (multi-form: CLAUDE.md hierarchy + plugin data.json + voice.xml + agents/ + knowledge/)". No other plugin names or labels may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 5.8.2. No single plugin enforces the ratchet — three single-concern plugins compose the ceremony, each contributing what it owns."
+  STATUS: Historical diagram retained; diagram redesign is outside this editorial pass.
+  Note: The existing diagram incorrectly says job_core carries the PLUGIN-LOCK answer. The live lock-manager captures the answer; job_core contributes plugin_lock_approval state.
+  Caption: "Image 5.8.2. The unlock ceremony composes question admission, phase and job authorization, and plugin_integrity's lock and historian machinery."
 -->
 
-Call this **composed ceremony**: narrow parts, structured interfaces, emergent rituals — the same shape as the compaction file's five sections, the same shape as the ratchet itself. Narrow constraints composing into behaviors larger than any single constraint. *[ref: composed-ceremony-narrow-parts | .claude/plugins/CLAUDE.md Control Types in Plugins section | Control Types in Plugins: "Hard controls — hooks that block (exit 2)" + "Soft controls — injections that guide via voice" + "Structural controls — design choices that make bypass impossible". Each plugin mixes all three; emergent behavior from narrow control forms.]*
+## What would break without it
 
-The always-on layer is not a stack of independent guardrails sitting in parallel. It is a small, deliberate ring of single-concern guardrails composing into ceremonies none of them could enforce alone. Your next always-on plugin will join the ring — and the ring's shape, not its current membership, is what carries forward into your own seed. *[ref: small-deliberate-ring-guardrails | .claude/plugins/CLAUDE.md Plugin Building Lessons section | Plugin Building Lesson: "Verify problems exist before creating jobs... Example: 'session awareness' was already solved by stop-gate + UPS composing into a closed system." Two single-concern plugins compose into emergent system behavior.]*
+Without a drift gate, `evolution.md` can remain unchanged while the plugin moves through many revisions. The injected history then becomes actively misleading: it presents an old architecture with the authority of current onboarding material.
 
-That's the always-on layer in microcosm. Each plugin a small lesson. Each lesson backed by mechanical enforcement. Discipline the filesystem itself preserves.
+Removing the narrative entirely would avoid that false freshness, but the next editor would have to reconstruct intent from raw history every time. The ratchet keeps a concise interpretation while forcing it to revisit the evidence on a bounded cadence.
+
+## What you would customize
+
+The threshold should follow change rate and consequence. Ten commits is a local compromise, not a universal optimum. A small, stable plugin may tolerate more drift. A high-risk control may deserve a lower limit or a time-based review in addition to commit count.
+
+The narrative schema should also follow the domain. A production service might emphasize incidents, migrations, and rollback lessons. A research pipeline might emphasize methodological changes, invalidated assumptions, and dataset lineage.
+
+Keep the mechanical and narrative records separate. The narrative should cite the source history rather than replace it. Keep its primary form bounded, and give overflow a durable home.
+
+The portable pattern is a counter, a gate, a scoped corrective action, and a verifiable reset. It schedules reflection without pretending to automate judgment.
 
 ---
 
-## The bus is just one form of substrate
-
-The bus we built up across the CLAUDE.md hierarchy is one form within `.claude/` — the working-memory form, the one the phasic layer writes through. The hierarchy itself, the always-on layer, the durable knowledge directory, the per-plugin hidden state, the voice files, the subagent definitions — together they form the multi-form *digital cortex* the seed agent rests on. They keep state, enforce work structure, and discipline conversation, all without doing any of the actual cognitive work. *[ref: bus-is-substrate-digital-cortex | CLAUDE.md "Spatial level:" bullets under "Core Principle: Compartmentalization" | Spatial-level Compartmentalization names three axes: "Brain vs Project — agent thinking stays in `.claude/`, published content in the website repo"; "Knowledge vs Working Memory — long-term storage in `knowledge/`, current context in CLAUDE.md"; "Depth placement — information goes in the CLAUDE.md closest to where it's needed." The 3-layer substrate.]*
-
-The actual work happens in the phasic layer. Compartmentalized phases (currently five in the prototype). One cognitive organ called CONDENSE. Tools forbidden in each phase that force the agent to think before acting. *[ref: actual-work-in-phasic-layer | CLAUDE.md "JOB.phase" operation under "Specialized Operations" | JOB.phase operation states: "Phase-locked tool access enforces compartmentalization (observe/plan = read-only, execute = full, verify = scripts only, condense = `.claude/` only)." Five phases + CONDENSE organ, tools restricted per phase to force thought before action.]*
-
-The substrate is what makes the architecture *teachable*. A non-developer with enough high-level architectural understanding can customize a seed agent the way someone with the right training can author a complex artifact — without writing the underlying machinery. The destination this series carries you toward is an agent-developer-user triangle that collapses to agent-user, because the architecture is portable enough that the user can be the architect.
-
-But a bus is just substrate. What USES it intelligently — that's the phasic brain.
-
-Next.
+The final part examines the authorization boundary that decides when the prototype may alter its own plugin layer.
 
 ---
 
 *Essay 5.8 — The Always-On Digital Cortex, Part 8 of 9.*
 
-*Previous: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — substrate, four-footer protocol, altered-list gate.*
-*Next: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted at all.*
+*Previous: [Essay 5.7 — The CLAUDE.md Hierarchy](05_7-claude-md-hierarchy.html) — phased working memory built on native instruction files.*
+*Next: [Essay 5.9 — The Customization Guardrail](05_9-customization-guardrail.html) — the protected contexts required for plugin-layer change.*
