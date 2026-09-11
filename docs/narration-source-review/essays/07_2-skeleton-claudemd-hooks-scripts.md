@@ -18,7 +18,7 @@ This mature article received a bounded obvious-error pass. Its three-organ skele
 
 ## Removal and replacement ledger
 
-- Forty-three net words were removed by consolidating repeated implementation qualifications and deleting the unsupported milliseconds claim.
+- Forty net words were removed by consolidating repeated implementation qualifications and deleting the unsupported milliseconds claim.
 - False absolutes about startup loading, write ownership, dependency sets, and close-out behavior were replaced with accurate scoped descriptions.
 - No section, organ, example, interface explanation, image instruction, or narrative beat was removed.
 
@@ -31,8 +31,8 @@ This mature article received a bounded obvious-error pass. Its three-organ skele
 
 - Baseline: `2664c97e80c73943a217715b88abfac36e19935a`
 - Version: `v0.2.0`
-- Source SHA-256: `67b9941620ec904fd1d36e7e6a84eae2877b28ceac2ea9a42f3280382083a891`
-- Published-page SHA-256: `d2f10b491f4db775a3f603b3130793d6dbeb4ac7fc7946448d7abfcc2d57edd7`
-- Recorded source words: 2,056 to 2,013; net `-43`.
+- Source SHA-256: `bc1e642729edc3cf046a80d94a3df6899a84dbe0bbb1079b84dcb8fc8147a0ab`
+- Published-page SHA-256: `64c47c3e8ff445318d9585df5a3b7d0543ddfca6a5e78d8ff4e1686166bfeb06`
+- Recorded source words: 2,056 to 2,016; net `-40`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

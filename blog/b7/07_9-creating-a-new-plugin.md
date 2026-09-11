@@ -22,9 +22,9 @@ og_image: "blog/b7/images/plugin-kit-b7-banner.png"
 
 ## Two Paths to a New Plugin
 
-When you and your agent assemble a seed in a local space you control, new jobs can begin as single-cycle OPEVC work ([Essay 8](../b8/08_1-apprentice-to-architect-foundation.html) covers the maturation stages). In the reference implementation described here, this is the Stage-1 starting pattern. The seed is in *learning mode* — it asks questions, takes its time, builds experiential data from your work. When a job recurs, the seed's soft voices nudge you toward running it as a repeatable `.md`-plan job (Stage 2) — often, not always. When a stable pattern wants per-cycle context injection, you and the seed may decide to run it as a `.yaml`-plan job (Stage 3) — a user-discussed choice for that job, never an automatic flip. And eventually — for jobs whose phase cognition needs customization beyond context injection — the job *itself* becomes a plugin. *[ref: maturation-arc-job-stages-taxonomy | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+When you and your agent assemble a seed in a local space you control, cycle-one PLAN chooses the job's form from its actual horizon ([Essay 8](../b8/08_1-apprentice-to-architect-foundation.html) covers the Stage taxonomy). A bounded request may use single-cycle Stage 1. Repeatable work may begin directly with a prose `.md` plan in Stage 2. Work that needs structured per-cycle context may begin directly with a `.yaml` plan in Stage 3. The choice is discussed with the user and never flips automatically. Learning from any of those forms can later be reused or restructured; when the job needs phase cognition beyond context injection, the job itself can become a plugin without first traversing every earlier Stage. *[ref: maturation-arc-job-stages-taxonomy | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-That is one path to a new plugin: work that has settled through the earlier Stages (a stable `.yaml`-plan job) and now needs phase-cognition customization the voice injection cannot deliver.
+That is one path to a new plugin: existing work reveals a need for phase-cognition customization that plan context alone cannot deliver, regardless of which Stage first carried the work.
 
 The other path is direct: you notice a gap in the seed's substrate and tell the seed to fix it — paying off the promise [Essay 5.1](../b5/05_1-the-two-layer-foundation.html) planted, that the always-on layer is addable: another always-on plugin slots in by exposing its own public commands, not by rewiring anyone else's. *[ref: plugin-extensibility-no-central-coupling | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
@@ -56,7 +56,7 @@ This is the part most plugin tutorials skip. When the seed authors a new plugin,
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/plugin-birth-b7-9.png
-  Concept: Chalk-on-blackboard linear flow — the plugin birth sequence inside the EXECUTE phase of a single-cycle DEEP job.
+  Concept: Chalk-on-blackboard linear flow — the plugin birth sequence inside the EXECUTE phase of a job whose Stage matches its actual horizon.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
   and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
@@ -87,7 +87,7 @@ Once the lock closes, the plugin exists as files on disk — but in this histori
 
 This is not a couple of editing sessions. A real new phase plugin is closer to a multi-cycle deep job: several editing sessions for the guard logic, more for the tracker and sensor, substantial voice content across the plugin's hooks and scripts, a meaningful test-assertion footprint across the plugin's test files, plus the orchestrator update for the two-lock pattern. The kit's gift is that the work is *bounded*, not that the work is small. Every file has a purpose, every purpose is named, and the safe-lock cycle keeps every step honest. *[ref: phase-plugin-organ-multiplicity | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-What makes the work feel different from a from-scratch build is that the operator and seed are not inventing the structure. The cell template knows what cognitive organs every plugin needs. The operator's seed is filling each organ with the substance for *this* plugin's concern. New users guide that filling-in through conversation; the seed records the conversation, learns the operator's preferences, and over time, the operator's seed becomes one that knows *how the operator wants plugins shaped*.
+What makes the work feel different from a from-scratch build is that the operator and seed are not inventing the structure. The cell template supplies the common floor and a kit of optional organs. The operator's seed selects what this plugin needs and fills each chosen organ with the substance for *this* concern. New users guide that filling-in through conversation; the seed records the conversation, learns the operator's preferences, and over time, the operator's seed becomes one that knows *how the operator wants plugins shaped*.
 
 ---
 

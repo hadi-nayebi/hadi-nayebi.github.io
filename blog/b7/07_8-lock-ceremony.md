@@ -26,7 +26,7 @@ The lock names and mechanics below belong to one historical Claude-based referen
 
 Plugin code does not get edited the way ordinary files do. Each plugin's hooks, scripts, tests, and code-bearing files have earned their current shape; the test suite enshrines that shape; any change pays the cost of opening the plugin, editing inside it, and re-passing the tests before the change commits. *[ref: plugin-guard-blocks-staged-unlocked-edits | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-The parts of the ceremony form a closed loop: **PLUGIN-LOCK** opens an edit session, **TEST-LOCK** gates test edits inside it, **safe-lock close-out** commits or reverts on the test result, and the **historian ratchet** can refuse to open the lock at all when the plugin's narrative has fallen behind. Each part guards a different risk; together they make plugin edits earn their landing.
+The parts of the ceremony form a closed loop: **PLUGIN-LOCK** opens an edit session, **TEST-LOCK** gates test edits inside it, two **close-out paths** test the result and either commit, preserve for repair, or defensively revert, and the **historian ratchet** can refuse to open the lock at all when the plugin's narrative has fallen behind. Each part guards a different risk; together they make plugin edits earn their landing.
 
 <!-- RAW_HTML -->
 <aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
@@ -53,33 +53,32 @@ Two-tier lock — PLUGIN-LOCK opens the cell; TEST-LOCK opens a specific shell t
 
 ---
 
-## Safe-Lock Close-Out — Pass or Revert
+## Two Close-Out Paths — Pass, Repair, or Revert
 
 Two scripts share the close-out duty. The agent invokes `lock-cmd.sh` when edits are done — the active path: the plugin's full test suite runs at the lock boundary; on PASS the change commits and the lock clears; on FAIL the failures surface to stderr and the working tree is **preserved** (no revert) so the agent can fix and re-run. The defensive partner is `safe-lock.sh`, which fires automatically when the agent attempts a non-whitelisted operation while a plugin is unlocked — editing outside the plugin's directory, transitioning phases, finalizing a job: on FAIL the working tree rolls back to the captured `checkpoint_ref`, the plugin's hidden state records a structured revert entry, and a voice line writes to the operator's terminal. The agent does not get to ship a plugin change that breaks the plugin's own self-test. *[ref: lock-cmd-active-vs-safe-lock-defensive | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 The cycle is symmetric to PLUGIN-LOCK: every lock opened gets closed by one of the two mechanisms above, with the test suite as the gate. There is no inline override; the deliberate `[GMODE]` route covered above (plus the user-approved-job route) are the only ways to admit an existing-plugin edit, and both leave an auditable trail. There is no "commit anyway"; there is no "I will fix it next session." Either the active-lock cycle leaves the agent looking at preserved failures it now has to fix, or the auto-revert cycle removes the broken edit from the working tree entirely. *[ref: safe-lock-auto-revert-no-commit-anyway-path | private historical prototype | Claim checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-<!-- IMAGE PLACEHOLDER:
+<!-- STALE IMAGE BRIEF — withheld until the diagram matches both close-out paths:
   ASSET: images/lock-ceremony-b7-8.png
-  Concept: Chalk-on-blackboard flowchart — the safe-lock cycle's pass-or-revert branch.
+  Concept: Chalk-on-blackboard flowchart — the active and defensive close-out paths shown separately.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk boxes
   and arrows; pastel chalk for box fills (cyan, green, orange, pink, magenta — same palette as the cycle image);
   white chalk for ALL labels and arrows; faint chalk dust at the edges; chalk sticks resting along the bottom.
   IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other state names, command names, or descriptors.
-  Layout: Five hand-drawn chalk boxes arranged in a vertical flow down the center of the board, each labeled IN WHITE CHALK with its exact text:
+  Layout: Four hand-drawn chalk boxes arranged in a vertical flow down the center of the board, each labeled IN WHITE CHALK with its exact text:
     Box 1 (cyan fill, top): "[PLUGIN-LOCK] <name> approved"
     Box 2 (green fill): "edits inside unlocked plugin only"
-    Box 3 (orange fill): "lock-cmd.sh OR safe-lock.sh fires"
-    Box 4 (pink fill): "run plugin test suite"
-    Box 5 (no fill, decision diamond drawn as a chalk rhombus): "all tests pass?"
-  Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4 → Box 5.
-  From Box 5, two arrows fan out to two terminal boxes side-by-side at the bottom:
-    Left arrow labeled IN WHITE CHALK exactly "yes" → magenta box labeled "commit + clear unlocked_plugin"
-    Right arrow labeled IN WHITE CHALK exactly "no" → orange box (warmer chalk) labeled "revert to checkpoint_ref + log revert"
-  Below the two terminal boxes, draw a small chalk note IN WHITE CHALK reading exactly: "no override".
+    Box 3 (pink fill): "run plugin test suite"
+    Box 4 (no fill, decision diamond drawn as a chalk rhombus): "all tests pass?"
+  Single white-chalk arrows connect Box 1 → Box 2 → Box 3 → Box 4.
+  From Box 4, three arrows fan out to terminal boxes at the bottom:
+    Left arrow labeled IN WHITE CHALK exactly "yes" → magenta box labeled "commit + clear lock"
+    Center arrow labeled IN WHITE CHALK exactly "active fail" → orange box labeled "preserve + fix + re-run"
+    Right arrow labeled IN WHITE CHALK exactly "defensive fail" → orange box labeled "revert + log"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "lock-cmd.sh OR safe-lock.sh fires", "run plugin test suite", "all tests pass?", "yes", "no", "commit + clear unlocked_plugin", "revert to checkpoint_ref + log revert", "no override". No other words, file names, folders, or state descriptors may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.8. Test pass-or-revert. Every plugin edit passes through the same gate."
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "[PLUGIN-LOCK] <name> approved", "edits inside unlocked plugin only", "run plugin test suite", "all tests pass?", "yes", "active fail", "defensive fail", "commit + clear lock", "preserve + fix + re-run", "revert + log". No other words, file names, folders, or state descriptors may appear.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 7.8. Both paths test before commit. Active failure preserves work for repair; defensive failure reverts and logs."
 -->
 
 ---
