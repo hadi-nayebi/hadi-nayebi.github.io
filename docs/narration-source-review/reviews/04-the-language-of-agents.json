@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b4/04-the-language-of-agents.md",
+  "source_sha256": "47301a8a69b5fdfa75b827cdf41e914c3a4a2284f2ec6f447d023ce37b2fa434",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/04-the-language-of-agents.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
