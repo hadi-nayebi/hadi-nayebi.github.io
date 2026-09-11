@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b8/08_1-apprentice-to-architect-foundation.md",
+  "source_sha256": "24c83917d1c757649cb9d091d4b55fe6278fa8c4787db6277af4c4a75352d374",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/08_1-apprentice-to-architect-foundation.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
