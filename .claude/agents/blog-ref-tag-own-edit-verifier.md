@@ -24,7 +24,11 @@ BEFORE the `git commit` lands. If the verdict is FAIL, the architect must fix th
 
 ## Inputs
 
-The path to the blog `.md` file that was just edited. Optionally a base commit reference (e.g., `HEAD` if changes are unstaged, or `HEAD~1` if changes are staged but not yet committed). The seed-agent prototype lives at `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/` — used for resolving relative `.claude/` paths in ref-tag source-pointers.
+The path to the public blog `.md` file that was just edited. Optionally accept a
+base commit reference. Validate public repository paths and public owning
+sources only. A private implementation may be checked read-only, but its
+identity, revision, paths, and unpublished details must not enter the public
+ref-tag or report.
 
 ## Verification methodology
 
@@ -40,7 +44,9 @@ For each, extract the three fields: `slug`, `source-pointer`, `content-summary`.
 
 For each ref-tag in scope:
 
-1. **Resolve the source-pointer to absolute path(s).** Paths starting with `.claude/` resolve to `/home/hadinayebi/CodingProjects/hadosh_academy/.claude/...`. For multi-file refs (split by ` + `), each file gets resolved separately.
+1. **Resolve public source pointers only.** A generalized `private historical
+   prototype review` marker deliberately contains no path. Never expose an
+   absolute workstation path or private source path.
 
 2. **Verify file existence via `ls`.** If any cited file doesn't exist → FAIL (R2 violation propagated).
 
@@ -51,10 +57,9 @@ For each ref-tag in scope:
 
 4. **Grep each distinctive phrase against the cited file(s).** Use `grep -nF` for literal string match (avoid regex surprises).
 
-5. **For numeric claims, verify against live state.** Examples:
-   - "11 plugins in the prototype" → `find /home/hadinayebi/CodingProjects/hadosh_academy/.claude/plugins -maxdepth 1 -type d | grep -v '^\.claude/plugins$' | grep -v '/lib$' | wc -l`
-   - "MAX_EVOLUTION_WORDS default 2000" → `grep -n MAX_EVOLUTION_WORDS=2000 <cited-file>`
-   - "168k words / 182 files" → `find ... -name "*.md" | xargs wc -w | tail -1` AND `find ... -name "*.md" | wc -l`
+5. **For numeric claims, verify against a public owning source.** If the only
+   evidence is private, omit the unstable number or state the public claim at a
+   level that can be supported without identifying private material.
 
 6. **For line-number claims (only valid for stable plugin code per Rule 20), verify the cited lines contain the claimed content.** Read the file at the cited range and confirm.
 
