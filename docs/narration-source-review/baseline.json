@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-10T23:02:28.916Z",
+  "generated_at": "2026-09-11T03:14:58.119Z",
   "repository_revision": null,
   "policy": {
     "audio_phase": "blocked-until-written-content-lock",
     "principle_writings": "minimal-corrections-preserve-approved-voice",
     "technical_writings": "substantive-corrections-allowed-for-accuracy",
     "excluded": [
-      "NoemaProjects",
+      "owner-excluded unpublished writing",
       "Explore pages",
       "diagram narration",
       "portfolio and project pages",
@@ -23,9 +23,6 @@
     "practical_guides": 1
   },
   "structural_errors": [],
-  "private_boundary": {
-    "noema_public_surface_leaks": []
-  },
   "essays": [
     {
       "path": "blog/b1/01-llms-are-not-the-agents.md",
