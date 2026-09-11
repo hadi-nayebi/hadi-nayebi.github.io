@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_6-question-discipline.md",
+  "source_sha256": "23e5e6a865a17f46fd5940c7eb8348c8dbf5c88e19bbf0ef02062a5df9c51165",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/05_6-question-discipline.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
