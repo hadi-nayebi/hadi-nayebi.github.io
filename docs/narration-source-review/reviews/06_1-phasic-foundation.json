@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_1-phasic-foundation.md",
+  "source_sha256": "847cd5d5d7767aa5efcce4d357f07fd8722113fc74373bb6d448b27d5d67ff04",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_1-phasic-foundation.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

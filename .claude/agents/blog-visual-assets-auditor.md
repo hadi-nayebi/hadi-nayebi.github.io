@@ -21,7 +21,7 @@ You audit the **visual-assets** dimension of the Hadosh Academy blog mini-series
 
 ## Inputs
 
-The website project root at `/home/hadinayebi/CodingProjects/hadosh_academy/hadi-nayebi.github.io/`. Read access to:
+Run from the website repository root. Read access to:
 - All B5-B8 `.md` essay sources at `blog/b{5,6,7,8}/*.md`
 - All B5-B8 `.html` rendered outputs at `blog/b{5,6,7,8}/*.html`
 - All image directories `blog/b{5,6,7,8}/images/`

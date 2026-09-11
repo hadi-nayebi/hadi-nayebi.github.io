@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b8/08_7-brain-stops-growing.md",
+  "source_sha256": "375f0f16f7d6abe908da3e8a4882a4284d35506dc594bea0b4212c4c31170cf2",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/08_7-brain-stops-growing.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

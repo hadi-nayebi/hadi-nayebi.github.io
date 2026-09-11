@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b8/08_4-soft-hard-migration.md",
+  "source_sha256": "28ce3a057844cb1dc79dae0d41a2b645ae75a3e744ed62d954424358f8713469",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/08_4-soft-hard-migration.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

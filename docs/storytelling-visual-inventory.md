@@ -72,7 +72,6 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/b4/04-the-language-of-agents.html` | `images/agent-anatomy-b4-1.png` | I50-A50 | HTML | Yes |
 | `blog/b5/05_1-the-two-layer-foundation.html` | `images/always-on-plugins-b5-1.png` | I90-A10 | HTML | Yes |
 | `blog/b5/05_2-plugin-integrity.html` | `images/plugin-integrity-b5-2.png` | I90-A10 | HTML | Yes |
-| `blog/b5/05_3-brain-guard.html` | `images/self-compact-b5-3.png` | I90-A10 | HTML | Yes |
 | `blog/b5/05_4-job-core.html` | `images/job-core-b5-4.png` | I90-A10 | HTML | Yes |
 | `blog/b5/05_5-interaction-summary.html` | `images/interaction-summary-b5-5.png` | I90-A10 | HTML | Yes |
 | `blog/b5/05_6-question-discipline.html` | `images/question-shapes-compel-production-b5-6.png` | I90-A10 | HTML | Yes |

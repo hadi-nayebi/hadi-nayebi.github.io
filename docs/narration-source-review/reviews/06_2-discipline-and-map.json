@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_2-discipline-and-map.md",
+  "source_sha256": "84c70e6f2a3cb5f02d684997e6e26d1e587461273fefd4597f5946f7ab084a81",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_2-discipline-and-map.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

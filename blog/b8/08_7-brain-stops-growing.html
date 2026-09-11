@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.1.0 -->
+<!-- Version: v0.2.0 -->
 <html lang="en">
 
 <head>
@@ -31,8 +31,8 @@
             {
                 "@type": "BlogPosting",
                 "headline": "The Brain Stops Growing in Size",
-                "datePublished": "2026-05-13",
-                "dateModified": "2026-05-13",
+                "datePublished": "2026-05-17",
+                "dateModified": "2026-09-11",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
@@ -90,7 +90,7 @@
 
                     <h1>The Brain Stops Growing in Size</h1>
                     <div class="article-meta">
-                        <span>May 2026</span>
+                        <span>May 17, 2026 &bull; revised September 11, 2026</span>
                         <span>&bull;</span>
                         <span>5 min</span>
                         <div class="article-meta-tags">
@@ -106,23 +106,14 @@
                         By Hadi Nayebi &amp; Claude Opus 4.8
                     </div>
 
-                    <div class="article-audio">
-                        <audio controls preload="none">
-                            <source src="audio/brain-stops-growing.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <span class="audio-label">Listen to this article (5 min)</span>
-                    </div>
-
                     <div class="article-body">
-
                         <p><em>Essay 8.7 &mdash; From Apprentice to Architect, Part 7 of 9.</em></p>
 
                         <hr>
 
-                        <p><a href="08_6-apprentice-journeyman-architect.html">Essay 8.6</a> closed the operator&rsquo;s three-stage arc &mdash; apprentice, journeyman, architect &mdash; with the prototype&rsquo;s plugin-version spread as a concrete artifact. The arc raises the deepest claim of this series: at what point does the brain <em>stop</em> growing, and why doesn&rsquo;t that stop the learning? This essay opens that claim.</p>
+                        <p><a href="08_6-apprentice-journeyman-architect.html">Essay 8.6</a> closed the operator&rsquo;s three-stage arc &mdash; apprentice, journeyman, architect &mdash; with the historical Claude-based reference architecture&rsquo;s plugin-version spread as a concrete artifact. The arc raises the deepest claim of this series: at what point does the brain <em>stop</em> growing, and why doesn&rsquo;t that stop the learning? This essay opens that claim.</p>
 
-                        <p>A brain that grows without bound becomes its own problem. Every CLAUDE.md the agent reads at session start is a tax on the context window. A ten-thousand-word root brain plus several three-thousand-word plugin brains plus several five-thousand-word working CLAUDE.md files is half the agent&rsquo;s working memory before any prompt is processed. The brain would drown the cognition. <sup class="ref-marker" title="ref: size-limits-as-canonical-caps | root CLAUDE.md &quot;Size Limits&quot; section | The &quot;Size Limits&quot; section is a five-row table naming the per-file word caps the prototype currently runs against: root CLAUDE.md 3,500 words; subdir CLAUDE.md 800; plan files 2,000; MEMORY.md 400; skill files 500. The hypothetical word counts in this paragraph (ten-thousand-word root, three-thousand-word plugin brains, five-thousand-word working CLAUDE.md) are deliberately drawn well above those caps to illustrate what unchecked growth would cost — the canonical caps are an order of magnitude smaller.">&#9432;</sup></p>
+                        <p>A brain that grows without bound becomes its own problem. Every project instruction or working-memory file the agent loads into a session consumes part of the context available for the task. In the historical Claude-based reference architecture, a ten-thousand-word root instruction file plus several three-thousand-word plugin instructions and several five-thousand-word working files would consume a large share of that budget before task-specific material arrived. The brain would drown the cognition. <sup class="ref-marker" title="ref: size-limits-as-canonical-caps | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <hr>
 
@@ -132,23 +123,23 @@
 
                         <h2 id="the-forgetting-discipline">The Forgetting Discipline</h2>
 
-                        <p>The size caps force the brain to do what your own brain does: forget the right things. Or more precisely, <em>move</em> the right things. The destinations below are the routing the prototype&rsquo;s brain currently carries; your seed can re-route to fit its own work.</p>
+                        <p>The size caps create pressure for the brain to do what your own brain does: forget the right things. Or more precisely, <em>move</em> the right things. The destinations below are the routing one historical reference architecture carries; your seed can re-route to fit its own work.</p>
 
-                        <p>Root-brain overflow distills into focused skill files under <code>.claude/skills/</code> in the brain root, with a one-line pointer left behind in the brain. Plugin CLAUDE.md overflow routes into that plugin&rsquo;s slice of the knowledge directory, the body kept lean enough to read in one sitting. Working CLAUDE.md overflow gets handled at cycle close by the deflation gate from <a href="../b6/06_7-condense.html">Essay 6.7</a>, walking the file&rsquo;s footer-to-body absorption and refusing to advance until enough has compressed. Memory-file overflow splits into multiple narrowly-scoped entries. Findings that don&rsquo;t belong in any CLAUDE.md belong in plugin behavior &mdash; hardened into a hook &mdash; or in the topic-organized knowledge layer. <sup class="ref-marker" title="ref: skill-files-as-managed-overflow-layer | root CLAUDE.md &quot;Size Limits&quot; section | The &quot;Size Limits&quot; section is a five-row table listing Skills with a 500-word cap, alongside the brain (3,500), subdir CLAUDE.md (800), plans (2,000), and memory (400). Skills appearing in this table is the architecture&#x27;s commitment that they are a managed overflow layer — bounded per file, so however many accumulate, each stays brief enough to keep the brain&#x27;s pointer surface readable.">&#9432;</sup></p>
+                        <p>Root-instruction overflow distills into focused skill files, with a one-line pointer left behind in the brain. Component-instruction overflow routes into that component&rsquo;s slice of durable knowledge, keeping the instruction body lean enough to read in one sitting. Working-memory overflow gets handled at cycle close by the deflation gate from <a href="../b6/06_7-condense.html">Essay 6.7</a>, walking footer-to-body absorption and refusing to advance until enough has compressed. Memory-file overflow splits into multiple narrowly scoped entries. In the historical Claude-based reference architecture, these surfaces appear as <code>.claude/skills/</code>, plugin and working <code>CLAUDE.md</code> files, hooks, and the topic-organized knowledge layer; another runtime can preserve the routing with different files and events. <sup class="ref-marker" title="ref: skill-files-as-managed-overflow-layer | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <h2 id="the-equilibrium">The Equilibrium</h2>
 
-                        <p>The result is a brain that reaches a ceiling and stays there &mdash; even though the seed is learning constantly. The new learning is being <em>placed</em> in compartments outside the brain: the knowledge directory keeps growing, each plugin&rsquo;s <code>docs/evolution.md</code> keeps narrating, the hooks keep hardening. The brain itself &mdash; the small set of files the agent reads at session start &mdash; finds an equilibrium and stays close to it. <sup class="ref-marker" title="ref: brain-maturation-young-vs-mature | root CLAUDE.md &quot;Brain Maturation Model&quot; section | The &quot;Brain Maturation Model&quot; section describes the shape of this equilibrium directly: &quot;Young agent: Large brain, few hooks. Learns by guidance. Most controls are probabilistic.&quot; vs &quot;Mature agent: Lean brain, many hooks. Operates by enforcement. Proven patterns are deterministic.&quot; And the flow that moves the system between them: &quot;Experience → notice pattern → add to brain → pattern proves reliable → migrate to hook → remove from brain.&quot; The brain shrinks as the hook layer grows; the knowledge layer holds what the brain can no longer carry.">&#9432;</sup></p>
+                        <p>The result is a brain that reaches a ceiling and stays there &mdash; even though the seed is learning constantly. The new learning is being <em>placed</em> in compartments outside the brain: the durable knowledge layer keeps growing, component evolution records keep accumulating, and proven controls keep hardening into hooks or runtime enforcement. The brain itself &mdash; the small set of durable instructions and working context loaded at session start &mdash; finds an equilibrium and stays close to it. <sup class="ref-marker" title="ref: brain-maturation-young-vs-mature | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
                         <p>This is what I mean when I say the brain stops growing in size but never stops learning. The compression isn&rsquo;t a limitation. It is the discipline by which the seed remains coherent across long timescales.</p>
 
                         <p>A mature seed is a small brain over a large knowledge layer.</p>
 
-                        <p>The limit on this equilibrium is, again, friction: the operator who edits the brain carelessly during gmode without re-routing the overflow can grow the brain past its cap; CONDENSE will not retroactively shrink it. The architecture trusts the operator to do the routing; the discipline is the operator&rsquo;s plus the cycle ceremony&rsquo;s, not a single hard gate. <sup class="ref-marker" title="ref: condense-compress-per-cycle-plus-gmode-escape | root CLAUDE.md &quot;Sub-Operations of CONDENSE&quot; section + Identity Fact 2 | `CONDENSE.compress` is defined in the &quot;Sub-Operations of CONDENSE&quot; section as &quot;Enforce size limits across all managed files&quot; with the per-file caps listed inline (Brain 3,500 words, CLAUDE.md 800, Plans 2,000, Memory 400, Skills 500). The sub-op fires inside CONDENSE — per-cycle compression — not as a retroactive shrink across the whole brain history. Identity Fact 2 names gmode as one of the two protected contexts in which the agent can edit its own plugin layer freely (&quot;gmode — the operator&#x27;s deliberate maintenance lane, entered via `[GMODE]` with ≥100-word justification&quot;). Edits made there bypass the cycle ceremony; the operator carries the routing responsibility.">&#9432;</sup></p>
+                        <p>The limit on this equilibrium is, again, friction: an operator who enters a maintenance lane and edits durable instructions carelessly can grow the brain past its intended cap until a later compression pass. Even then, no counter can decide where meaning belongs. The architecture relies on operator judgment plus the cycle ceremony to do the routing, not a single unbreakable gate. <sup class="ref-marker" title="ref: condense-compress-per-cycle-plus-gmode-escape | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.">&#9432;</sup></p>
 
-                        <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
-                          <img src="images/brain-vs-knowledge-curves-b8-7.png" alt="Two curves over time. A flat ceiling line for the brain&#x27;s size; a rising monotonic curve for the knowledge directory" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
-                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 8.7. The brain reaches a ceiling. The knowledge layer never does.</figcaption>
+                        <figure hidden aria-hidden="true" data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
+                          <img src="images/brain-vs-knowledge-curves-b8-7.png" alt="Image placeholder" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 8.7. The brain approaches equilibrium while knowledge keeps growing.</figcaption>
                         </figure>
 
                         <hr>
@@ -160,7 +151,6 @@
                         <p><em>Essay 8.7 &mdash; From Apprentice to Architect, Part 7 of 9.</em></p>
 
                         <p><em>Previous: <a href="08_6-apprentice-journeyman-architect.html">Essay 8.6 &mdash; The Maturation Arc &mdash; Apprentice, Journeyman, Architect</a> &mdash; the operator&rsquo;s three rough stages and the visible markers of each.</em> <em>Next: <a href="08_8-safe-self-modification.html">Essay 8.8 &mdash; A System That Safely Modifies Itself</a> &mdash; the Tier-3 close, the recursive lock ceremony, and the rollback substrate.</em></p>
-
                     </div>
 
                     <!-- Comments (Giscus) -->

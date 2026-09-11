@@ -1,3 +1,15 @@
+---
+title: "The Contextual Feedback Plugin"
+date: "September 4, 2026"
+slug: "contextual-feedback-plugin"
+read_time: "8 min"
+tags: [Feedback, Plugin, Authority, Origin]
+status: published
+version: v0.2.0
+audience: "Power Users & Architects"
+og_image: "assets/images/digital-cortex-2-og.jpg"
+---
+
 # The Contextual Feedback Plugin
 
 *Essay 9.2 — The Visible Harness, Part 2.*
@@ -14,9 +26,9 @@ In Origin 1.0, this responsibility belongs to one bounded plugin: `contextual-fe
 
 “Make this clearer” means something different on a roadmap, a client record, a research note, and a settings page. The pathname and page label are therefore part of the observation, not optional analytics attached afterward.
 
-Origin saves the raw body, route, derived or page-provided label, timestamp, category, and thread identity before it attempts to wake Codex. The resulting record can be inspected even if terminal delivery fails. A future page can provide richer object context, but the 1.0 contract already refuses to detach the user’s words from their location.
+Origin saves the raw body, route, a derived or page-provided label, timestamp, category, and thread identity before it attempts to wake Codex. The resulting record can be inspected even if terminal delivery fails. A future page can provide richer object context, but the 1.0 contract already refuses to detach the user’s words from their location.
 
-The agent does not receive the raw body as executable prompt text. The wake contains a stable feedback ID, route, journal sequence and hash, and a unique delivery marker. Codex retrieves the complete validated thread through the plugin’s public command.
+The agent does not receive the raw body as executable prompt text. The durable wake record binds the journal sequence and hash to the event, while the prompt delivered to Codex carries only a stable feedback ID, route, and unique delivery marker. Codex retrieves the complete validated thread through the plugin’s public command.
 
 This separation matters for durability and safety. The prompt draws attention; the journal owns the evidence. User text remains untrusted project input. It may describe desired work, but it cannot become a shell command or silently override repository instructions, permission boundaries, verification, or the user’s consequential decisions.
 
