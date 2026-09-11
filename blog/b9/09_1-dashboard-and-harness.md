@@ -1,3 +1,15 @@
+---
+title: "The Dashboard and the Harness Are One System"
+date: "September 3, 2026"
+slug: "dashboard-and-harness"
+read_time: "9 min"
+tags: [Dashboard, Harness, Origin, Architecture]
+status: published
+version: v0.2.0
+audience: "Power Users & Architects"
+og_image: "assets/images/digital-cortex-2-og.jpg"
+---
+
 # The Dashboard and the Harness Are One System
 
 *Essay 9.1 — The Visible Harness, Part 1.*
