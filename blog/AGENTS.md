@@ -156,4 +156,31 @@ editorial artifact. Remove visual-only controls, source drawers, raw URLs,
 code-only detail, and production annotations; retain explanations a listener
 needs. Expand abbreviations and add pauses deliberately. Chunk by semantic beat,
 then verify the assembled audio against the approved transcript and source hash.
-Pronunciation experiments and voice-engine choices are a later gated phase.
+
+Keep three forms distinct:
+
+- canonical source prose remains the authority for meaning;
+- readable narration text contains only words a listener should hear and may
+  translate eye-oriented notation into equivalent spoken prose; and
+- render-only text may use tested English respellings for names, acronyms,
+  filenames, commands, or context-dependent homographs.
+
+Do not rewrite the readable transcript in IPA. The current Qwen clone interface
+does not expose a documented phoneme-input channel, and local trials found that
+raw IPA and ARPAbet-like input were spoken as unrelated words or letters. Store
+IPA only as pronunciation reference metadata. Put tested English respellings in
+the render-only field, preserve their readable spelling separately, and require
+an ASR check for every protected term.
+
+Before a mass render, produce one representative technical-writing transcript
+and a short pronunciation comparison. Hadi reviews voice identity, pace,
+prosody, pauses, and protected-term pronunciation. Keep the transcript and
+audio in review state until that checkpoint passes. After approval, generate in
+bounded batches with exact source hashes, per-chunk timing, actual-duration
+assembly, transcript round-trip checks, clipped-ending and filler-leak checks,
+and decoded-media validation. A passing machine check does not replace the
+voice-quality checkpoint.
+
+Use one consistent Qwen-cloned Hadi voice across a publication narration unless
+Hadi approves an engine change. Public players identify it concisely as
+`Cloned voice: Hadi (Qwen).`
