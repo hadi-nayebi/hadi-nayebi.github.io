@@ -44,5 +44,5 @@ historian ratchet from the wider ceremony assembled around it.
 - Source SHA-256: `12db976b83c3a5ced8717b8ae709c750a7ac5817f6568a35728ae2eb45418b57`
 - Published-page SHA-256: `e24f54ff695081b6d44f0d7ec08a973b92208344cebd1c042e8a903472685d00`
 - Visible words: 2,290 to 2,258; net `-32`.
-- Cross-writing consistency remains provisional; Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity
+  review. Hadi's content lock remains pending.

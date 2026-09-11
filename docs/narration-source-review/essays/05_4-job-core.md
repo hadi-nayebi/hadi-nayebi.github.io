@@ -48,5 +48,4 @@ named Claude mechanism as one historical reference architecture.
 - Visible words: 2,859 to 2,917; net `+58`.
 - Markdown/HTML parity, metadata, transcript state, site validators, and
   `git diff --check`: passed.
-- Cross-writing consistency remains provisional. Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
