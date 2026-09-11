@@ -391,7 +391,7 @@ def build(
             "approved_at": approved_at,
         },
         "voice_review": "pending",
-        "canonical_text_policy": "Readable published wording is retained in text; render-only aliases live in tts_text.",
+        "canonical_text_policy": "Canonical meaning and the reader-facing argument are preserved in text; eye-oriented notation may be expanded into equivalent spoken prose; render-only aliases live in tts_text.",
         "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
         "audio": {
             "engine": "Qwen3-TTS voice clone",
@@ -413,7 +413,7 @@ def build(
                 "code blocks",
                 "raw link destinations",
                 "previous and next navigation",
-                "duplicate title and series footer",
+                "duplicate headings and repeated series footer",
             ],
         },
         "pronunciation_lexicon": {key: value for key, value in PRONUNCIATIONS.items() if any(key in chunk["pronunciations"] for chunk in chunks)},
