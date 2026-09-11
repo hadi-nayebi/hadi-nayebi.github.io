@@ -41,7 +41,8 @@
       "asr_accept": [
         "AGENTS.md",
         "agents dot m d",
-        "agents m d"
+        "agents m d",
+        "agents md"
       ]
     },
     "CLAUDE.md": {
@@ -50,7 +51,11 @@
       "asr_accept": [
         "CLAUDE.md",
         "Claude dot m d",
-        "cloud dot m d"
+        "cloud dot m d",
+        "Claude md",
+        "claud md",
+        "cloud md",
+        "clu md"
       ]
     },
     "QWEN.md": {
@@ -59,7 +64,8 @@
       "asr_accept": [
         "QWEN.md",
         "Qwen dot m d",
-        "quen dot m d"
+        "quen dot m d",
+        "quen md"
       ]
     }
   },
@@ -1222,7 +1228,7 @@
       "sequence": 105,
       "kind": "body",
       "text": "1) A filesystem brain with compartmentalized memory. Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and project instructions (AGENTS.md in Codex, CLAUDE.md in Claude Code, QWEN.md in Qwen Code, or the platform's equivalent) scoped to where they are needed.",
-      "tts_text": "1) A filesystem brain with compartmentalized memory. Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and project instructions (AGENTS dot em dee in Codex, CLAUDE dot em dee in Claude Code, quen dot em dee in Qwen Code, or the platform's equivalent) scoped to where they are needed.",
+      "tts_text": "1) A filesystem brain with compartmentalized memory. Persistent state with clear boundaries — knowledge files, job ledgers, memory stores, and project instructions. AGENTS dot em dee in Codex. Claude dot em dee in Claude Code. quen dot em dee in Qwen Code. Or the platform’s equivalent. These instructions are scoped to where they are needed.",
       "pronunciations": [
         "CLAUDE.md",
         "AGENTS.md",
