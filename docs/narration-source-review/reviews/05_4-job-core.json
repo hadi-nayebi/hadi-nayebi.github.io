@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_4-job-core.md",
+  "source_sha256": "53985598e53d84bbeda36854b33545f391a112859418298ab9fb0c4edac0d645",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/05_4-job-core.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
