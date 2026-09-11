@@ -25,6 +25,8 @@ initiated, and it records both setters of the job-level approval right.
    with generalized private verification.
 8. Metadata records the May 18 publication date and September 11 review. The
    transcript is non-final and the stale audio player is hidden.
+9. The handoff to B6 now identifies its thirteen published parts instead of
+   calling it a ten-part series.
 
 ## Removal and replacement ledger
 
@@ -34,6 +36,8 @@ initiated, and it records both setters of the job-level approval right.
   replaced with the two-setter explanation.
 - The phrase “two routes” was narrowed where it meant gate conditions and
   expanded where it meant concrete authorization moments.
+- The B6 series count was corrected because the published sequence contains
+  thirteen parts.
 - No section, customization example, authorization step, warning, or
   declarative conclusion was removed.
 
@@ -41,8 +45,8 @@ initiated, and it records both setters of the job-level approval right.
 
 - Baseline: `ed70bb941467ce90dc4febd18501efead53217eb`
 - Version: `v0.7.0`
-- Source SHA-256: `7652850d9dbdb97d9b388938393d9972ac4f9f5e911016b229a5a091e658ca29`
-- Published-page SHA-256: `65d032bebf795af77b0e6dba4bda0056f41b3609b244b80aacc9728e0155c335`
+- Source SHA-256: `6f722239447726002ce65e6b4786143f0023ec6c03673c0d676afb3acf4fb6df`
+- Published-page SHA-256: `e1be1452a562308a7306da24c448389b592674ca6fe50994d8a58730fda191a1`
 - Visible words: 2,759 to 2,762; net `+3`.
 - Cross-writing consistency remains provisional; Hadi's content lock remains
   pending.
