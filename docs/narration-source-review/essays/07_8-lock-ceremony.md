@@ -26,4 +26,4 @@ This mature article received a bounded obvious-error pass. Its lock ceremony, pr
 - Published-page SHA-256: `3531ad9aa15c485662ddaa4b16d39d0b18c84bc763fadb3e20a674248a65157c`
 - Recorded source words: 1,794 to 1,826; net `+32`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

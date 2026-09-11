@@ -38,5 +38,4 @@ historical implementation boundary is now explicit.
 - Source SHA-256: `8403a681ab4251a0416ba3e9c161ffb6db210c120dd56feca1ca93214b3e227a`
 - Published-page SHA-256: `2fc0868a98835f1d180c6fa4dd682cb0c122c508b4bb82b5dbe8f14e3e16d402`
 - Recorded source words: 3,426 to 3,466; net `+40`.
-- Cross-writing consistency remains provisional; Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.

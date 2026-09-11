@@ -48,5 +48,4 @@ pre-existing published figure markup required for Markdown/HTML parity.
 - Recorded source words: 1,984 to 2,122; net `+138`.
   canonical figure markup. Narration prose excluding refs, frontmatter, and
   raw figure markup is 1,959 words.
-- Cross-writing consistency remains provisional; Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
