@@ -135,9 +135,7 @@ specific claims were checked read-only against a private historical prototype.
 Its identity, revision, paths, and unpublished evidence details are omitted.
 
 Factual, technical, chronology, editorial, metadata, and source-page parity
-gates pass for the exact source hash. Cross-writing consistency remains
-provisional until the rest of B5-B9 is reviewed. Hadi's content lock remains
-pending.
+gates pass for the exact source hash. Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
 
 ## Validation
 

@@ -44,5 +44,4 @@ reference architecture.
 - Visible words: 1,283 to 1,324; net `+41`.
 - Markdown/HTML parity, metadata, transcript state, site validators, and
   `git diff --check`: passed.
-- Cross-writing consistency remains provisional. Hadi's content lock remains
-  pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
