@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_8-historian-ratchet.md",
+  "source_sha256": "4476b6ba1b4fc37492bd5fa5cf391eddaf2debe481c664179a91bb4c08535e69",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/05_8-historian-ratchet.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
