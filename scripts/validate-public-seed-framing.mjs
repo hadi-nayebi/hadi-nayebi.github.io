@@ -48,6 +48,15 @@ const surfaces = new Map([
   ['js/theme-manager.js', read('js/theme-manager.js')]
 ]);
 
+for (let series = 1; series <= 9; series += 1) {
+  const directory = path.join(root, 'blog', `b${series}`);
+  for (const name of fs.readdirSync(directory)) {
+    if (!/^\d.*\.(?:md|html|transcript\.yaml)$/.test(name) || name.endsWith('.transcript.md')) continue;
+    const relativePath = path.posix.join('blog', `b${series}`, name);
+    surfaces.set(relativePath, read(relativePath));
+  }
+}
+
 requireText('index.html', surfaces.get('index.html'), 'Seed Agent and Q-Seed are framework-specific places where selected foundations can accumulate');
 requireText('index.html', surfaces.get('index.html'), 'public Seed pattern repositories');
 requireText('about.html', surfaces.get('about.html'), 'The technical writings are the shared, framework-agnostic layer');
@@ -65,7 +74,6 @@ requireText('projects/q-seed.html', surfaces.get('projects/q-seed.html'), 'Seed 
 requireText('CONTRIBUTING.md', surfaces.get('CONTRIBUTING.md'), 'public pattern-accumulation');
 requireText('blog/b8/08_9-the-seed-is-yours.md', surfaces.get('blog/b8/08_9-the-seed-is-yours.md'), 'technical writings are the primary framework-agnostic source');
 requireText('blog/b8/08_9-the-seed-is-yours.html', surfaces.get('blog/b8/08_9-the-seed-is-yours.html'), 'technical writings are the primary framework-agnostic source');
-requireText('blog/b8/08_9-the-seed-is-yours.transcript.yaml', surfaces.get('blog/b8/08_9-the-seed-is-yours.transcript.yaml'), 'final: true');
 requireText('blog/b8/08_9-the-seed-is-yours.transcript.yaml', surfaces.get('blog/b8/08_9-the-seed-is-yours.transcript.yaml'), 'The writings provide the design context; you and your agent assemble the architecture.');
 requireText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'Three sources, many distinct harnesses.');
 forbidText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'agents-lineage-educational-v2.jpg');
@@ -103,7 +111,13 @@ const retiredPhrases = [
   'Codex Seed and Q-Seed',
   'share a common architectural lineage',
   'The same Hadosh architecture',
-  'remains private while it matures'
+  'remains private while it matures',
+  'The same seed works for any user',
+  'Every architect who adopts this architecture inherits it',
+  'most architects inherit, not rewrite',
+  'Once the seed agent ships open-source',
+  'In a public seed implementation',
+  'ready for the public seed agent'
 ];
 
 for (const [relativePath, source] of surfaces) {

@@ -85,10 +85,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "653c0a99540d"   # curated source block; drift -> review
-    text_hash: "653c0a99540d"     # narration; change -> re-render
+    source_hash: "fe756d7d5ea4"   # curated source block; drift -> review
+    text_hash: "fe756d7d5ea4"     # narration; change -> re-render
     text: |-
-      LICENSE + README.md — open-source migration-readiness signals. Plugins carrying both are ready for the public seed agent; plugins not yet carrying them are still maturing in the prototype.
+      LICENSE plus README.md — open-source migration-preparation signals. Carrying both makes a plugin's terms and public explanation explicit; it does not, by itself, prove that the code is ready to migrate. In the historical prototype, some plugins carried both while others were still being prepared.
   - id: s10
     kind: body
     engine: alt
@@ -166,7 +166,7 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "7157c4c3b0f4"   # curated source block; drift -> review
-    text_hash: "7157c4c3b0f4"     # narration; change -> re-render
+    source_hash: "802c5346249c"   # curated source block; drift -> review
+    text_hash: "802c5346249c"     # narration; change -> re-render
     text: |-
-      The smaller organs fill in the kit's specialized surfaces — operator tuning, test coverage, plugin birthing, end-to-end orchestration, migration-readiness. The brain-root wiring file is what makes any of it fire: the brain registers; the plugins don't self-register. Cell wall and central nervous system, named together. The next sub-essay opens the ceremony that protects hard-substrate plugin edits — plugin-lock, test-lock, the safe-lock cycle that commits-or-reverts code changes, and the historian ratchet.
+      The smaller organs fill in the kit's specialized surfaces — operator tuning, test coverage, plugin birthing, end-to-end orchestration, and migration preparation. The brain-root wiring file is what makes any of it fire: the brain registers; the plugins don't self-register. Cell wall and central nervous system, named together. The next sub-essay opens the ceremony that protects hard-substrate plugin edits — plugin-lock, test-lock, the safe-lock cycle that commits-or-reverts code changes, and the historian ratchet.

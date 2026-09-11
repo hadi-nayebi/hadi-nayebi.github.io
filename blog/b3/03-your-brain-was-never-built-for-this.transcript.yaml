@@ -2,7 +2,7 @@
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: your-brain-was-never-built-for-this
 source_md: 03-your-brain-was-never-built-for-this.md
-final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
+final: false            # canonical source revised 2026-09-11; legacy transcript requires a new source-locked narration artifact
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
