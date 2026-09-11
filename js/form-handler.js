@@ -4,6 +4,7 @@
     const status = document.getElementById('contact-form-status');
     const SUCCESS_COOLDOWN_MS = 60000;
     const SUCCESS_STORAGE_KEY = 'hadosh-contact-last-success';
+    let sending = false;
     if (!form || !submitButton || !status) return;
 
     function setStatus(message, state) {
@@ -24,15 +25,12 @@
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+        if (sending) return;
 
         if (typeof emailjs === 'undefined') {
             setStatus('The contact form is temporarily unavailable. Please try again later.', 'error');
             return;
         }
-
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-        setStatus('', '');
 
         const formData = new FormData(form);
         if (String(formData.get('website') || '').trim()) {
@@ -45,6 +43,10 @@
             setStatus('A message was already accepted from this browser recently. Please wait before trying again.', 'error');
             return;
         }
+        sending = true;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        setStatus('', '');
         const isNewcomer = Boolean(formData.get('newcomer'));
         const templateParams = {
             name: formData.get('name'),
@@ -77,6 +79,7 @@
             }, function(error) {
                 console.log('FAILED...', error);
                 setStatus('The message could not be sent. Please try again later.', 'error');
+                sending = false;
                 submitButton.textContent = 'Send Message';
                 submitButton.disabled = false;
             });

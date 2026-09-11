@@ -144,11 +144,29 @@ Run the repository checks before opening a pull request:
 node scripts/validate-site-navigation.mjs
 node scripts/validate-contribution-surfaces.mjs
 node scripts/validate-start-here-first-response.mjs
+node scripts/validate-public-seed-framing.mjs
 node scripts/validate-storytelling-visuals.mjs
 node scripts/validate-whats-new.mjs
 ```
 
 The first validator checks static and dynamically injected navigation. The visual validator checks the shared storytelling-image inventory and metadata.
+
+Browser regressions exercise the existing contact and service forms, including cooldown, failed
+delivery, retry, duplicate submission and the short mobile route. All EmailJS calls are replaced by
+local test doubles; no email is sent:
+
+```bash
+npm install --no-save --package-lock=false playwright@1.62.1
+npx playwright install chromium
+node --test scripts/test-form-behavior.cjs
+```
+
+To verify Crime Cartography projections against its owning repository, set the checkout path
+explicitly when it is not in the usual sibling location:
+
+```bash
+CRIME_CARTOGRAPHY_REPO=/path/to/crime-cartography node scripts/validate-crime-cartography-content.mjs
+```
 
 ### Repository map
 

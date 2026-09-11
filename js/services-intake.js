@@ -667,7 +667,9 @@
                 message: readableMessage(payload)
             };
 
-            window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams).then(function () {
+            Promise.resolve().then(function () {
+                return window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+            }).then(function () {
                 rememberSuccess(Date.now());
                 if (!payload.contact.newcomer_guide_requested) return { requested: false, sent: false };
                 return new Promise(function (resolve) { window.setTimeout(resolve, 1100); })
