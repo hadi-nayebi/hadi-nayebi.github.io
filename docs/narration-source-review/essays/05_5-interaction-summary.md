@@ -57,9 +57,9 @@ revision `3395d2d048f44435546ab055d0c2f4c32a34fd25`, including the
 guard, submission gateway, and the relevant `job_core` interaction boundary.
 The private prototype was not modified.
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the B5 series is reviewed. Hadi's content lock remains pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 

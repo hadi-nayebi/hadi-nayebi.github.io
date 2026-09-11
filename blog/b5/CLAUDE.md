@@ -2,7 +2,7 @@
 **Version:** v1.2.0
 **Series:** B5 — Pt 1 of the Part-2 (How) arc of the Hadosh Academy series on agent architecture
 **Audience:** Power Users & Architects (Tier 2 → Tier 3)
-**Last updated:** 2026-07-16 (ref-tag review CLOSED — architect Fable called done; the job's OPEVC working-memory footers were deflated into the session-log archive. De-bloat 2026-07-15: series reference + banked decisions + session narration extracted to `../../.claude/knowledge/b5-series-reference.md`, `b5-ref-tag-review-session-log.md`, `ref-tag-review-lessons.md`.) Series status: 9/9 GOAL ACHIEVED (2026-05-19); B5.9 re-audit pending.
+**Last updated:** 2026-09-10. Series status: all nine canonical essays passed the factual, technical, chronology, cross-writing, editorial, and source-page parity review for narration-source preparation. Hadi's content approval remains pending; all derived narration transcripts are invalidated until that approval.
 
 ## Purpose
 

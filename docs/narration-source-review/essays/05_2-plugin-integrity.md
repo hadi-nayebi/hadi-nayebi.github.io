@@ -12,10 +12,10 @@ quarantines recoverable work and then restores the checkpoint.
 ## Reviewed revision
 
 - Canonical source: `blog/b5/05_2-plugin-integrity.md`
-- Source version: `v0.8.0` (previously `v0.7.0`)
-- Source SHA-256: `aff94f7bbe63deec0bf5f06f136bcc5e2530d516f052c9fdd792c83d4bb0049c`
+- Source version: `v0.9.0` (review began at `v0.7.0`)
+- Source SHA-256: `f848a8f89cf515ae38366ad23e7f06a2fc604d0c17824cff92792d458ceac878`
 - Published page: `blog/b5/05_2-plugin-integrity.html`
-- Published-page SHA-256: `4c28d44497f5d148815d21bf52be9c92faf5cfa0a407a34f33c2a1f8faa1f2bd`
+- Published-page SHA-256: `95c878f2b2007a19c5644b85c21a388ce62a2ebf2f550415e7b448aacec40cc3`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -52,6 +52,9 @@ quarantines recoverable work and then restores the checkpoint.
 12. Corrected the May 14, 2026 publication date, September 10 modification
     date, seven-minute reading time, RSS summary, adjacent-series descriptions,
     and stale audio player.
+13. Replaced the closing B5.3 preview's obsolete "tiers" language with the
+    reviewed essay's actual subject: preparing an inspectable handoff before a
+    context boundary.
 
 ## Evidence and review state
 
@@ -61,9 +64,9 @@ Claims were checked against the private Claude prototype at parent revision
 configuration, state schema, and tests, plus the live question registry. The
 private prototype was read as evidence and was not modified.
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the B5 series is reviewed. Hadi's content lock remains pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 

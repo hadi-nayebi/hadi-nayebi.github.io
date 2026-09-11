@@ -59,9 +59,9 @@ the plugin integrity configuration, the lock manager's pre- and post-question
 paths, protected-context admission, and safe-lock ownership. The private
 prototype was not modified.
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the B5 series is reviewed. Hadi's content lock remains pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 

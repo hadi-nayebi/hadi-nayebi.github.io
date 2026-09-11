@@ -68,9 +68,9 @@ Native behavior was checked against current official Claude Code documentation:
 - [Explore the context window](https://code.claude.com/docs/en/context-window)
 - [Environment variables](https://code.claude.com/docs/en/env-vars)
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the B5 series is reviewed. Hadi's content lock remains pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 

@@ -5,7 +5,7 @@ slug: "plugin-integrity"
 read_time: "7 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: draft
-version: v0.8.0
+version: v0.9.0
 audience: "Tier 2"
 og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
@@ -89,4 +89,4 @@ The next part covers the second phase-independent plugin — the one that manage
 *Essay 5.2 — The Always-On Digital Cortex, Part 2 of 9.*
 
 *Previous: [Essay 5.1 — The Two-Layer Foundation](05_1-the-two-layer-foundation.html) — two behavioral plugin groups inside an earlier prototype's cognitive layer.*
-*Next: [Essay 5.3 — Context Window Discipline — `brain_guard`](05_3-brain-guard.html) — the self-compaction tiers and the architectural fact behind them.*
+*Next: [Essay 5.3 — Context Window Discipline — `brain_guard`](05_3-brain-guard.html) — preparing an inspectable handoff before crossing a context boundary.*

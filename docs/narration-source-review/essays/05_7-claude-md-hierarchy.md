@@ -65,9 +65,9 @@ Native behavior was checked against current official Claude Code documentation:
 
 - [How Claude remembers your project](https://code.claude.com/docs/en/memory)
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the B5 series is reviewed. Hadi's content lock remains pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 

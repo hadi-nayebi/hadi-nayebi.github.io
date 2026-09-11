@@ -5,7 +5,7 @@ slug: "the-two-layer-foundation"
 read_time: "7 min"
 tags: [Architecture, Seed Agent, Plugins, Information Bus]
 status: draft
-version: v0.6.0
+version: v0.7.0
 audience: "Tier 2"
 og_image: "blog/b5/images/always-on-plugins-b5-1.png"
 ---
@@ -90,7 +90,7 @@ Each plugin lives in its own folder under `.claude/plugins/<name>/`. A mature pl
 
 The single-concern principle is a *minimize* rule, not an *eliminate* rule. Pure isolation is what a traditional library aims for — clean modules with no shared state, talking to nothing they don't import. The seed agent is a complex cognitive system, and a small amount of structured coupling between plugins is what lets the parts compose into ceremonies larger than any one plugin. Call this **single-concern + careful coupling**: each part stays narrow; the composition is what makes the ceremony possible.
 
-The historian ratchet inside `plugin_integrity` is a concrete example. When a plugin's evolution narrative falls behind the commit history, the edit flow can require its historian before unlocking more work. The ceremony combines `question_discipline`'s registered `[PLUGIN-LOCK]` request, `job_core`'s capture of the user's answer, the historian sub-agent, and `plugin_integrity`'s safe edit cycle. We deconstruct this composition in [Essay 5.8](05_8-historian-ratchet.html); the cell-anatomy view is in [Essay 7](../b7/07_1-plugin-kit-foundation.html). *[ref: historian-ratchet-composition | .claude/plugins/plugin_integrity/hooks/lock-manager.sh + .claude/plugins/question_discipline/hooks/question-discipline-gate.sh + .claude/plugins/job_core/hooks/question-capture-hook.sh | The lock request, approval capture, drift gate, historian routing, and protected edit cycle are owned by separate components.]*
+The historian ratchet inside `plugin_integrity` is a concrete example. When a plugin's evolution narrative falls behind the commit history, the edit flow can require its historian before unlocking more work. The ceremony combines `question_discipline`'s registered `[PLUGIN-LOCK]` request, the lock manager's capture of the user's answer, `job_core`'s durable authorization state, the historian sub-agent, and `plugin_integrity`'s safe edit cycle. We deconstruct this composition in [Essay 5.8](05_8-historian-ratchet.html); the cell-anatomy view is in [Essay 7](../b7/07_1-plugin-kit-foundation.html). *[ref: historian-ratchet-composition | .claude/plugins/plugin_integrity/hooks/lock-manager.sh + .claude/plugins/question_discipline/hooks/question-discipline-gate.sh + .claude/plugins/job_core/hooks/question-capture-hook.sh | The registry admits the question, the lock manager captures the answer and enforces drift, and job_core contributes the focused job's plugin-lock authorization state.]*
 
 The shape is not unique to software. A real-estate transaction closes through distinct responsibilities: the buyer's agent, listing agent, escrow officer, title underwriter, lender, and inspector coordinate through shared documents and events on a common timeline. Their boundaries are not perfect isolation, but the closing works because each participant has a defined role, source material, and handoff.
 

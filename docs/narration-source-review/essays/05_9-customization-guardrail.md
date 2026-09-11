@@ -63,9 +63,9 @@ protected-context gate, job approval questions and writers, reactivation
 semantics, plugin birth, drift enforcement, checkpoint state, and safe-lock
 close path. The private prototype was not modified.
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the grouped B5 review is completed. Hadi's content lock remains pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 

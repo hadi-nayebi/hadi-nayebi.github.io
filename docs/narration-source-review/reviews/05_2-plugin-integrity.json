@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "path": "blog/b5/05_2-plugin-integrity.md",
-  "source_sha256": "aff94f7bbe63deec0bf5f06f136bcc5e2530d516f052c9fdd792c83d4bb0049c",
+  "source_sha256": "f848a8f89cf515ae38366ad23e7f06a2fc604d0c17824cff92792d458ceac878",
   "reviewed_at": "2026-09-10",
   "report": "docs/narration-source-review/essays/05_2-plugin-integrity.md",
   "review": {
     "factual": "passed",
     "technical_or_historical": "passed",
     "chronology_and_maturity": "passed",
-    "cross_writing_consistency": "provisional",
+    "cross_writing_consistency": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
     "hadi_content_lock": "pending"

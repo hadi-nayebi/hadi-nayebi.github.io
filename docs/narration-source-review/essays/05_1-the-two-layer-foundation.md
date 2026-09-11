@@ -18,10 +18,10 @@ as a tested interface discipline rather than guaranteed isolation.
 ## Reviewed revision
 
 - Canonical source: `blog/b5/05_1-the-two-layer-foundation.md`
-- Source version: `v0.6.0` (previously `v0.5.0`)
-- Source SHA-256: `7fc3973befdbbac714449f93dc742b6d7c16c5804609c5f81551e30ce4b9c680`
+- Source version: `v0.7.0` (review began at `v0.5.0`)
+- Source SHA-256: `ee83553fc9ccb3b96635f39eca173882301357d9507c875d285d5bdb41b014fa`
 - Published page: `blog/b5/05_1-the-two-layer-foundation.html`
-- Published-page SHA-256: `636dcd393d30f8ebb3059ec405ac5fbb57d566ad6a1824b6ef8d60164f573565`
+- Published-page SHA-256: `ac92da08eb8ba3a9d3036d92e28ece03f54240ef5aee112e0f14c3b65b7a920e`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -55,8 +55,10 @@ as a tested interface discipline rather than guaranteed isolation.
 9. **Qualified single concern.** Each plugin has one primary responsibility,
    while supporting functions and dependencies remain explicit.
 10. **Grounded the historian ratchet.** The example now names the actual
-    contribution from the question registry, answer capture, historian
-    sub-agent, and protected edit cycle.
+    contribution from the question registry, lock manager, durable job
+    authorization, historian sub-agent, and protected edit cycle. The grouped
+    consistency pass corrected an earlier sentence that assigned capture of
+    the concrete lock answer to `job_core`.
 11. **Qualified isolation and addability.** Runtime guards reduce accidental
     coupling, but operating-system access can bypass conventions. Independent
     evolution and focused tests remain practical benefits that depend on stable
@@ -83,10 +85,9 @@ official documentation:
 
 - [Claude Code project memory](https://code.claude.com/docs/en/memory)
 
-Factual, technical, chronology, editorial, and source-page parity gates pass
-for the exact source hash. Cross-writing consistency remains provisional until
-the rest of the technical series is reviewed. Hadi's content lock remains
-pending.
+Factual, technical, chronology, cross-writing consistency, editorial, and
+source-page parity gates pass for the exact source hash. Hadi's content lock
+remains pending.
 
 ## Validation
 
