@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_4-plan.md",
+  "source_sha256": "abadfb95e5f1e4ce2ee2e71989313285de3b2d16614d954966b45127d9ce31db",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_4-plan.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

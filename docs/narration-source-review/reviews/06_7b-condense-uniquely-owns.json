@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_7b-condense-uniquely-owns.md",
+  "source_sha256": "439ead403abeb602eca781e1e5b238f6bb6e904dc50825f31882a68365e583d9",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_7b-condense-uniquely-owns.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}

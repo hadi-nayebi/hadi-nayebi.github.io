@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_10-plan-state-machine.md",
+  "source_sha256": "79ff290fed314dd87a2b93962364738b03bfac95c8f3bc610efc6961739eda2a",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_10-plan-state-machine.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
