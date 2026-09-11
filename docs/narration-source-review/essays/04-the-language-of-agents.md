@@ -5,11 +5,9 @@
 The jargon-wall opening, engine-to-agent progression, desk-and-filing-cabinet
 metaphor, hooks as reflexes, plugins as organs, seed-agent growth, and closing
 invitation to build remain the narrative. This essay received Hadi's explicit
-terminology exception: unlike the other principle writings, it could be
-expanded beyond the usual preservation threshold because its older vocabulary
-did not explain the harness. The revision grows from about 3,320 to 4,830
-words and has 49.9 percent strict token-sequence similarity to the approved
-source.
+terminology exception because its older vocabulary did not explain the
+harness. The revision keeps the full architecture and gives it a spoken-flow
+and accessibility pass rather than using length as an editorial target.
 
 The central addition is one connected anatomy: the model supplies generative
 intelligence; the framework and runtime operate the loop; files carry
@@ -21,9 +19,9 @@ recovery make completion credible; and the full composition is the harness.
 
 - Canonical source: `blog/b4/04-the-language-of-agents.md`
 - Source version: `v1.2.0` (previously `v1.0.1`)
-- Source SHA-256: `302d3dddc0de2feff69775f6aa70a2ff4face966580ebbfed86f623f971a79ef`
+- Source SHA-256: `47301a8a69b5fdfa75b827cdf41e914c3a4a2284f2ec6f447d023ce37b2fa434`
 - Published page: `blog/b4/04-the-language-of-agents.html`
-- Published-page SHA-256: `7b5c7d7511c6db3109a13a74825b073010e7d8effcf125646b91b18646dc5241`
+- Published-page SHA-256: `e092e80c8547fa64a904df13e66d44e6b84e1e29c09c5ce2ae786624dfa77b8d`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -76,17 +74,24 @@ recovery make completion credible; and the full composition is the harness.
 15. **Made the visual canonical and removed stale narration.** The existing
     anatomy figure now belongs to Markdown, and the old MP3 player is hidden
     because it predates version 1.2.0.
+16. **Improved spoken flow and platform access.** The opening expands LLM on
+    first use, the essay sequence is described accurately, the MCP heading is
+    singular, and project instructions begin with the generic role before
+    naming `AGENTS.md` in Codex, `CLAUDE.md` in Claude Code, `QWEN.md` in Qwen
+    Code, OpenCode, and Gemini CLI as platform examples.
 
 ## Evidence and review state
 
 The technical definitions were checked against the public Q-Seed harness-layer
 contract at revision `291f59c29d38d0339dc39fa4f0cb62cb71961c65`, current
-official Claude Code documentation for instruction memory and hooks, current
+official Codex guidance for `AGENTS.md`, current official Claude Code
+documentation for instruction memory and hooks, current
 official Qwen Code documentation for skills and hooks, the latest official
 Model Context Protocol architecture, and primary research on instruction
 tuning and tool use:
 
 - [Q-Seed harness layers](https://github.com/hadi-nayebi/q-seed/blob/291f59c29d38d0339dc39fa4f0cb62cb71961c65/.qwen/context/harness-layers.md)
+- [Codex and `AGENTS.md`](https://developers.openai.com/api/docs/guides/latest-model)
 - [Claude Code project memory](https://code.claude.com/docs/en/memory)
 - [Claude Code hooks](https://code.claude.com/docs/en/hooks-guide)
 - [Qwen Code skills](https://qwenlm.github.io/qwen-code-docs/en/users/features/skills/)
