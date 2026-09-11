@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_4-data-json-hidden-state.md",
+  "source_sha256": "24a34739957892c2281588258c991bcb088068ec5b14c477aa8dc15fb4e7bcd4",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_4-data-json-hidden-state.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
