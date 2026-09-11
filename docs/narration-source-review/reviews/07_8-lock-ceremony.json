@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_8-lock-ceremony.md",
+  "source_sha256": "733c5bc99f30118fe1f0c4a92d1e2ac0ad705061f004b4d7d33883cb61c94a08",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_8-lock-ceremony.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
