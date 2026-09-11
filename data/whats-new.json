@@ -1,8 +1,31 @@
 {
   "version": 1,
-  "updated": "2026-09-10",
+  "updated": "2026-09-11",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-10-observation-episode-five",
+      "date": "2026-09-10",
+      "type": "Observation",
+      "title": "The Information System of a Planet gives messages a material lifetime",
+      "summary": "Episode 5 follows intentional marks, images, patterned objects, and counters as ways for selected information to persist after voices and living memory go quiet.",
+      "why_it_matters": "Readers can see the state change from repeatedly performed memory to durable external traces while distinguishing persistence from expressive range: a surviving mark can wait for millennia without preserving its original meaning or becoming a general-purpose writing system.",
+      "affected": ["The Information System of a Planet", "Observations", "External memory", "Material records", "Visual storytelling"],
+      "maturity": "Published Episode 5 with six complete visual slides",
+      "intended_for": ["General readers", "People curious about memory and information", "Visual learners", "Readers continuing from Episode 4"],
+      "sources": [
+        {
+          "label": "Episode 5 publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/103"
+        },
+        {
+          "label": "The Information System of a Planet",
+          "url": "/blog/observations/information-system-of-a-planet/index.html"
+        }
+      ],
+      "adoption_notes": "Read this after Episode 4. The episode moves across fragmentary evidence from deep prehistory to early material counting without presenting different sites or practices as a single ladder toward writing. It separates durability from interpretation, treats meanings cautiously, and shows marks, pictures, counters, and oral knowledge coexisting. Narration paths remain placeholders, so no audio is presented as published.",
+      "recommended_action": "Continue to Episode 5, inspect the evidence attached to each slide, and use its discussion link for source-based corrections or questions."
+    },
     {
       "id": "2026-09-10-guided-services-intake",
       "date": "2026-09-10",
