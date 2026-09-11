@@ -4,19 +4,17 @@
 
 The folder of specialists, PowerPoint moment, cognitive metabolism, teaching
 arc, 80/20 scale effect, personal algorithm, digital cortex, and closing call
-to plant the seed remain the essay's narrative. The revision retains 93.5
-percent token-sequence similarity to the approved source. It narrows only the
-claims that improvement happens automatically, that a `.claude/` directory
-alone creates an agent, that external memory removes every black box, and that
-local software guarantees privacy or replaces every service.
+to plant the seed remain the essay's narrative. Concrete boundaries remain
+accurate without weakening its memorable claims about personal curation and
+the compounding value of a taught procedure.
 
 ## Reviewed revision
 
 - Canonical source: `blog/b3/03_1-the-folder-is-alive.md`
 - Source version: `v1.1.0` (previously `v1.0.0`)
-- Source SHA-256: `3c4e255af954e111b8d6140bda6d4cf14008fb90381f76b71396ae8e84da7c23`
+- Source SHA-256: `7ed4bf56dbaa19e7d8ae2f0739575e6f5e09bafc879b34c40464e4b07e3c41b3`
 - Published page: `blog/b3/03_1-the-folder-is-alive.html`
-- Published-page SHA-256: `ea5ae4e54269e3ddbb1a1af2e3bbe562a30e4bc9916d543c5a65231d614d0c86`
+- Published-page SHA-256: `4d20f255760bafd154a3f381e473fda9ee415fb12602413ea9a9e282780fb9d4`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -48,6 +46,12 @@ local software guarantees privacy or replaces every service.
    connectors, hosting, logs, and policies.
 10. **Removed stale narration.** The old MP3 player is hidden because it
     predates version 1.1.0 and Hadi's content lock.
+11. **Restored force to the scaling image.** The caption now states the idea
+    directly: “Teach the judgment once. Reuse the procedure thousands of
+    times.”
+12. **Restored the personal-curation ending.** The morning edition again lands
+    with “No one else gets it. No one else needs it,” preserving the rhythm and
+    point of one curation for one reader.
 
 ## Evidence and review state
 

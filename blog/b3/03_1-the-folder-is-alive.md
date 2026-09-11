@@ -154,7 +154,7 @@ The same multiplier applies wherever professional life has structure. A research
 The agent runs the procedure. The professional spends their hours on what only they can do. This is what scaling looks like when the bottleneck was never the work — it was the cognitive overhead around the work.
 
 ![The 80/20 Scale Effect: 20% up front you teach the agent your way; 80% ongoing the agent handles the work in the background, gets better, makes fewer mistakes, saves time. Taught once. Used thousands of times.](images/eighty-twenty-scale-b3_1-4.png)
-*Teach, verify, reuse, and improve when the evidence supports it.*
+*Teach the judgment once. Reuse the procedure thousands of times.*
 
 
 
@@ -188,7 +188,7 @@ Now flip that around.
 
 Your seed agent reads the same sources newsletter authors read — the academic journals, the trade publications, the early-access feeds, the [arXiv](https://en.wikipedia.org/wiki/ArXiv "An open-access archive for scholarly articles") preprints. It reads the newsletters too, because newsletters are also signal. It reads everything you trust, and filters it through *your* interests, not someone else's. *One curation, one reader.*
 
-The result can arrive in your inbox every morning, written by an agent that has been learning your stated preferences for months. No one else needs the same curation.
+The result arrives in your inbox every morning, written by an agent that has been learning your taste for months. No one else gets it. No one else needs it.
 
 Now go further.
 
