@@ -30,4 +30,4 @@ This mature article received a bounded obvious-error pass. The at-a-glance phase
 - Published-page SHA-256: `aba4741478eb12217d6fbc8f74f17256f64434908f329bee248c33959d8a82df`
 - Recorded source words: 1,618 to 1,737; net `+119`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
