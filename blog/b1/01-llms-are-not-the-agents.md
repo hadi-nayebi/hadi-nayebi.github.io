@@ -90,7 +90,7 @@ When you open one of these CLI agents in an **empty directory**, you have the pl
 
 **By the definition used in this series, this is not yet the agent.** It is an engine and platform with no local car built around them.
 
-But when you add a `.claude/` directory (or `.opencode/` in OpenCode, or any equivalent brain directory) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. That directory becomes the **brain** of your agent. The brain is the collection of files that tell the LLM **how to behave**.
+But when you add project instructions and a durable brain directory (`AGENTS.md` in Codex, `CLAUDE.md` and `.claude/` in Claude Code, `QWEN.md` in Qwen Code, or the equivalent in OpenCode and Gemini CLI) — with knowledge files, operational rules, memory structures, and workflow definitions — something fundamental changes. Those files become the inspectable **brain** of your agent. The brain tells the runtime and model **how to behave** in this project.
 
 Without the LLM, this brain is just files on disk — sleeping. Nothing reads them, nothing acts on them. The moment you add the LLM, the filesystem **comes alive**. The agent reads its own instructions, follows its own rules, and writes back what it learns. Neither piece is the agent on its own. The agent is what emerges when the two meet.
 
@@ -127,9 +127,9 @@ This is why working with a bare LLM can feel like a **random walk**. It is intel
 
 Now watch what happens when you add structure.
 
-The first and most fundamental piece of structure is an **instruction file**. In Claude Code, this file is called `CLAUDE.md`. It is plain-text project context loaded according to its scope and the files Claude discovers. Along with the conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.
+The first and most fundamental piece of structure is a **project-instruction file**. Codex calls it `AGENTS.md`; Claude Code uses `CLAUDE.md`; Qwen Code uses `QWEN.md`. It is plain-text project context loaded according to the runtime's scope rules. Along with the current conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.
 
-One file at the project root is just the beginning. `CLAUDE.md` files can exist at every level of the directory tree — each one scoped to its location, each one adding local context as the agent navigates your project. Together, they form a **layer of working memory** spread across the entire filesystem. We will see this layer's full architecture in the compartmentalization section below.
+One file at the project root is just the beginning. Instruction files can exist at multiple levels of the directory tree — each one scoped to its location, each one adding local context as the runtime discovers it. Together, they form a **layer of working context** spread across the filesystem. We will see this layer's full architecture in the compartmentalization section below.
 
 What makes this layer powerful is that it does not just hold static information. It can define a **workflow** — a sequence of phases the agent moves through as it works. The workflow we use is called **OPEVC**: **Observe, Plan, Execute, Verify, Condense.**
 
@@ -138,7 +138,7 @@ What makes this layer powerful is that it does not just hold static information.
 
 In the reference system explored later, an agent following OPEVC is constantly moving information. During **Observe**, it gathers context—from local files, the web, and the user—and records findings in local working memory. During **Plan**, it writes the steps it intends to take. During **Execute**, it acts and captures implementation lessons. During **Verify**, it records what passed, what failed, and what to watch next time. Finally, during **Condense**, it cleans temporary notes, routes durable lessons to the right files, creates pending jobs for work outside the current scope, and returns the system to a clean state.
 
-Every phase reads from the `CLAUDE.md` layer and writes back to it. The instruction files are not static documents. They are living working memory that inflates as the agent works and contracts as it absorbs what it learned.
+In the historical OPEVC implementation explored later, every phase reads applicable project instructions and writes to controlled working-memory surfaces. These files are not static documents. The working layer inflates as the agent works and contracts as it absorbs what it learned. The principle does not depend on one platform's filename.
 
 This is not something the LLM invented on its own. It is a structure you define in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space. We will return to these phases in detail as we build the seed agent in later essays.
 
@@ -165,7 +165,7 @@ At supported lifecycle events, a configured **hook can fire**. Depending on the 
 
 This is how you put a **guarded pipeline** around a probabilistic chain. The LLM still does the thinking. Hooks define guardrails, checkpoints, reflexes, and places where selected behavior can be recorded. Later, the agent can review those recordings, see what worked, and propose better controls under your authority. The LLM proposes. The structure disposes.
 
-Two layers of structure. **Instruction files** shape behavior through what the agent reads — context, phases, rules, memory. **Hooks** enforce behavior through what the agent cannot bypass — blocking actions, triggering responses, logging events. Together, they transform a probabilistic token generator into a reliable cognitive system.
+Two layers of structure inside the broader harness. **Instruction files and memory** shape behavior through what the runtime places in context — phases, rules, knowledge, and history. **Hooks and events** enforce supported boundaries through what the runtime can block, trigger, or record. The model proposes; the runtime carries context, tools, and permissions; the cognitive layer supplies durable direction; the job layer carries objective and lived state. Together, they transform a probabilistic token generator into a reliable cognitive system.
 
 The structure does not replace intelligence. It **channels** it. The same way a toaster does not generate electricity — it shapes electricity into toast.
 

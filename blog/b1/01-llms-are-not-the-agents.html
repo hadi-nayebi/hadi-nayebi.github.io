@@ -185,7 +185,7 @@
 
                         <p><strong>By the definition used in this series, this is not yet the agent.</strong> It is an engine and platform with no local car built around them.</p>
 
-                        <p>But when you add a <code>.claude/</code> directory (or <code>.opencode/</code> in OpenCode, or any equivalent brain directory) &mdash; with knowledge files, operational rules, memory structures, and workflow definitions &mdash; something fundamental changes. That directory becomes the <strong>brain</strong> of your agent. The brain is the collection of files that tell the LLM <strong>how to behave</strong>.</p>
+                        <p>But when you add project instructions and a durable brain directory (<code>AGENTS.md</code> in Codex, <code>CLAUDE.md</code> and <code>.claude/</code> in Claude Code, <code>QWEN.md</code> in Qwen Code, or the equivalent in OpenCode and Gemini CLI) &mdash; with knowledge files, operational rules, memory structures, and workflow definitions &mdash; something fundamental changes. Those files become the inspectable <strong>brain</strong> of your agent. The brain tells the runtime and model <strong>how to behave</strong> in this project.</p>
 
                         <p>Without the LLM, this brain is just files on disk &mdash; sleeping. Nothing reads them, nothing acts on them. The moment you add the LLM, the filesystem <strong>comes alive</strong>. The agent reads its own instructions, follows its own rules, and writes back what it learns. Neither piece is the agent on its own. The agent is what emerges when the two meet.</p>
 
@@ -222,9 +222,9 @@
 
                         <p>Now watch what happens when you add structure.</p>
 
-                        <p>The first and most fundamental piece of structure is an <strong>instruction file</strong>. In Claude Code, this file is called <code>CLAUDE.md</code>. It is plain-text project context loaded according to its scope and the files Claude discovers. Along with the conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.</p>
+                        <p>The first and most fundamental piece of structure is a <strong>project-instruction file</strong>. Codex calls it <code>AGENTS.md</code>; Claude Code uses <code>CLAUDE.md</code>; Qwen Code uses <code>QWEN.md</code>. It is plain-text project context loaded according to the runtime&rsquo;s scope rules. Along with the current conversation and other runtime context, it helps shape what the agent prioritizes and which rules it follows.</p>
 
-                        <p>One file at the project root is just the beginning. <code>CLAUDE.md</code> files can exist at every level of the directory tree &mdash; each one scoped to its location, each one adding local context as the agent navigates your project. Together, they form a <strong>layer of working memory</strong> spread across the entire filesystem. We will see this layer&rsquo;s full architecture in the compartmentalization section below.</p>
+                        <p>One file at the project root is just the beginning. Instruction files can exist at multiple levels of the directory tree &mdash; each one scoped to its location, each one adding local context as the runtime discovers it. Together, they form a <strong>layer of working context</strong> spread across the filesystem. We will see this layer&rsquo;s full architecture in the compartmentalization section below.</p>
 
                         <p>What makes this layer powerful is that it does not just hold static information. It can define a <strong>workflow</strong> &mdash; a sequence of phases the agent moves through as it works. The workflow we use is called <strong>OPEVC</strong>: <strong>Observe, Plan, Execute, Verify, Condense.</strong></p>
 
@@ -235,7 +235,7 @@
 
                         <p>In the reference system explored later, an agent following OPEVC is constantly moving information. During <strong>Observe</strong>, it gathers context&mdash;from local files, the web, and the user&mdash;and records findings in local working memory. During <strong>Plan</strong>, it writes the steps it intends to take. During <strong>Execute</strong>, it acts and captures implementation lessons. During <strong>Verify</strong>, it records what passed, what failed, and what to watch next time. Finally, during <strong>Condense</strong>, it cleans temporary notes, routes durable lessons to the right files, creates pending jobs for work outside the current scope, and returns the system to a clean state.</p>
 
-                        <p>Every phase reads from the <code>CLAUDE.md</code> layer and writes back to it. The instruction files are not static documents. They are living working memory that inflates as the agent works and contracts as it absorbs what it learned.</p>
+                        <p>In the historical OPEVC implementation explored later, every phase reads applicable project instructions and writes to controlled working-memory surfaces. These files are not static documents. The working layer inflates as the agent works and contracts as it absorbs what it learned. The principle does not depend on one platform&rsquo;s filename.</p>
 
                         <p>This is not something the LLM invented on its own. It is a structure you define in the filesystem. The LLM follows it because the instruction files tell it to. Remove those files and the LLM goes back to random-walking through its action space. We will return to these phases in detail as we build the seed agent in later essays.</p>
 
@@ -262,7 +262,7 @@
 
                         <p>This is how you put a <strong>guarded pipeline</strong> around a probabilistic chain. The LLM still does the thinking. Hooks define guardrails, checkpoints, reflexes, and places where selected behavior can be recorded. Later, the agent can review those recordings, see what worked, and propose better controls under your authority. The LLM proposes. The structure disposes.</p>
 
-                        <p>Two layers of structure. <strong>Instruction files</strong> shape behavior through what the agent reads &mdash; context, phases, rules, memory. <strong>Hooks</strong> enforce behavior through what the agent cannot bypass &mdash; blocking actions, triggering responses, logging events. Together, they transform a probabilistic token generator into a reliable cognitive system.</p>
+                        <p>Two layers of structure inside the broader harness. <strong>Instruction files and memory</strong> shape behavior through what the runtime places in context &mdash; phases, rules, knowledge, and history. <strong>Hooks and events</strong> enforce supported boundaries through what the runtime can block, trigger, or record. The model proposes; the runtime carries context, tools, and permissions; the cognitive layer supplies durable direction; the job layer carries objective and lived state. Together, they transform a probabilistic token generator into a reliable cognitive system.</p>
 
                         <p>The structure does not replace intelligence. It <strong>channels</strong> it. The same way a toaster does not generate electricity &mdash; it shapes electricity into toast.</p>
 

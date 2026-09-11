@@ -5,16 +5,16 @@
 The electricity-and-toaster argument, “the agent is the filesystem,” the
 random-walk problem, OPEVC, hooks, portability, compartmentalization, and the
 closing call to build the toaster remain the essay's narrative. The revision
-retains 91.5 percent token-sequence similarity to the approved source and adds
-only the scope needed to keep concrete product claims from misleading readers.
+keeps the concrete corrections while making the architecture framework-generic
+and connecting it to Essay 4's model, runtime, harness, and agent definitions.
 
 ## Reviewed revision
 
 - Canonical source: `blog/b1/01-llms-are-not-the-agents.md`
 - Source version: `v1.3.0` (previously `v1.2.0`)
-- Source SHA-256: `5bc8a932516581fc1282aa7ea6eea71fd26173016888a85b22c4f54170007771`
+- Source SHA-256: `ec8f672341ffccf199fb462de0bce2a308dad0b3375f948ae54ce2bb533fe27f`
 - Published page: `blog/b1/01-llms-are-not-the-agents.html`
-- Published-page SHA-256: `a203a737d1034197d32ac3d18e0c9b43092220081921d76144987bdb13f776a1`
+- Published-page SHA-256: `1439193500631d30dca39cdf44aaecbbeb07552d9a11a206095cb4abe1445e30`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -37,27 +37,33 @@ only the scope needed to keep concrete product claims from misleading readers.
 6. **Clarified the empty-folder example.** A CLI still brings its platform and
    built-in tools, but it lacks the local project brain meant by “agent” in
    this essay.
-7. **Repaired two concrete mechanics.** A `CLAUDE.md` file supplies scoped
-   project context rather than the agent's entire context, and OPEVC's dynamic
-   working-memory behavior is identified as the reference system used by this
-   series.
-8. **Kept the hook metaphor while narrowing its guarantee.** Configured hooks
+7. **Made project instructions framework-generic.** The architecture begins
+   with project instructions and durable state rather than one provider's
+   filename. `AGENTS.md` in Codex, `CLAUDE.md` and `.claude/` in Claude Code,
+   `QWEN.md` in Qwen Code, and the corresponding OpenCode and Gemini CLI
+   surfaces remain concrete examples.
+8. **Aligned the thesis with Essay 4.** The model supplies generative energy;
+   the runtime carries context, tools, events, and permissions; the harness
+   composes those parts with durable cognition and job state; the agent is the
+   whole composition in motion.
+9. **Kept the hook metaphor while narrowing its guarantee.** Configured hooks
    fire only at supported events, their powers vary, and selected records can
    support later review. They guard a probabilistic process rather than making
    the whole system deterministic. The nonexistent generic OpenCode `stop`
    event was removed.
-9. **Made portability architectural rather than automatic.** The durable
+10. **Made portability architectural rather than automatic.** The durable
    identity can remain in portable files, while instructions, permissions, and
    event mechanisms still need platform adapters.
-10. **Kept conversational construction under user control.** The agent can help
+11. **Kept conversational construction under user control.** The agent can help
     write and organize its file-backed brain; structural reflexes do not force
     self-modification without the user.
-11. **Removed stale narration.** The old MP3 predates version 1.3.0 and remains
+12. **Removed stale narration.** The old MP3 predates version 1.3.0 and remains
     hidden until the writing and later narration gates pass.
 
 ## Evidence and review state
 
 Concrete product mechanics were checked against the owning documentation for
+[Codex and `AGENTS.md`](https://developers.openai.com/api/docs/guides/latest-model),
 [Claude Code memory](https://code.claude.com/docs/en/memory), [Claude Code
 hooks](https://code.claude.com/docs/en/hooks), [Gemini CLI
 hooks](https://geminicli.com/docs/hooks/reference/), and [OpenCode
