@@ -104,6 +104,45 @@ def spoken_rewrites(text: str) -> str:
         (r"\bdocs/", "the docs directory"),
         (r"\bflock on a machine-local lockfile\b", "the flock command on a machine-local lockfile"),
         (r"\bvalidates with jq empty\b", "validates by running jq empty"),
+        (
+            r"\bthe compartmentalization section below\b",
+            "the compartmentalization section later in this essay",
+        ),
+        (
+            r"\bLook at the hierarchy above\.",
+            "Consider how that hierarchy is organized.",
+        ),
+        (
+            r"\bThis is the relationship between an LLM and an agent\.",
+            "This is the relationship between a large language model, or LLM, and an agent.",
+        ),
+        (
+            r"\bMost people building with AI today\b",
+            "Most people building with artificial intelligence, or AI, today",
+        ),
+        (
+            r"\bwith a CLI agent\b",
+            "with a command-line interface agent, or CLI agent",
+        ),
+        (
+            r"Claude Code — hooks via \.claude/settings\.json "
+            r"\(PreToolUse, PostToolUse, Stop, Notification, etc\.\)\.",
+            "Claude Code uses hooks configured in its settings file, including events before and after tool use, stopping, and notifications.",
+        ),
+        (
+            r"Gemini CLI — hooks shipped January 2026 "
+            r"\(BeforeTool, AfterTool, BeforeAgent, AfterAgent, etc\.\)\.",
+            "Gemini CLI exposes events before and after tools and before and after the agent.",
+        ),
+        (
+            r"OpenCode — hooks via plugin system "
+            r"\(tool\.execute\.before, tool\.execute\.after, session\.idle\)\.",
+            "OpenCode provides plugin events before and after tool execution and when a session becomes idle.",
+        ),
+        (
+            r"hook\.sh in Claude Code and plugin\.ts in OpenCode",
+            "a shell hook in Claude Code and a TypeScript plugin in OpenCode",
+        ),
     )
     for pattern, replacement in rewrites:
         text = re.sub(pattern, replacement, text)
@@ -135,8 +174,8 @@ def markdown_blocks(source: str) -> list[dict[str, str]]:
 
     def flush_list() -> None:
         nonlocal list_items
-        if list_items:
-            blocks.append({"kind": "list", "text": " ".join(list_items)})
+        for item in list_items:
+            blocks.append({"kind": "list", "text": item})
         list_items = []
 
     for raw in body.splitlines():
@@ -257,7 +296,6 @@ def render_aliases(text: str, active: set[str]) -> tuple[str, list[str]]:
         if count:
             applied.append(source)
             rendered = replaced
-    rendered = re.sub(r"\s*[\u2014\u2013]\s*|\s+-\s+", ", ", rendered)
     rendered = re.sub(r"\s+", " ", rendered).strip()
     return rendered, applied
 
@@ -275,6 +313,13 @@ def build(
     for block in markdown_blocks(source):
         parts = split_semantic(block["text"], max_chars)
         for part_index, part in enumerate(parts):
+            if (
+                part_index > 0
+                and len(part) <= 100
+                and len(part.split()) <= 16
+                and chunks
+            ):
+                chunks[-1]["gap_after_ms"] = 520
             sequence += 1
             tts_text, applied = render_aliases(part, pronunciations)
             pronunciation_checks = [
