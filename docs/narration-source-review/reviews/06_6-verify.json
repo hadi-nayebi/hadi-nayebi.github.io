@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b6/06_6-verify.md",
+  "source_sha256": "277371bb66d4cc44c6ed60c164f17fb894d704e0d8f6f4816b6b41b48f613284",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/06_6-verify.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
