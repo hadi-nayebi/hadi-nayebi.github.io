@@ -44,7 +44,7 @@ The decision is concrete: in PLAN of cycle 1, the seed calls `plan.sh set-plan-f
 
 Most of what was *backward edges* inside the stage-1 cycle becomes *cycle transitions* in stage 2. Where the user previously pushed back mid-cycle and the seed iterated within OPEVC, now the seed completes a clean cycle, presents results in VERIFY, and the user approves or sends back. CONDENSE absorbs between cycles, the next cycle's OBSERVE recalls the prior cycle's lessons, and the work compounds. The deflation gate at cycle close is the same for every job — eighty percent of the footer words must be absorbed before the cycle can advance, whether the job runs once or across many cycles — because the cross-cycle handoff lives in the plan file, not in the footers. *[ref: deflation-single-80-uniform | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-A stage-2 blog-writing job is one where the writing arc is well-understood. The plan document, authored in cycle 1, declares how many cycles the job runs and what each one advances (cycle 1 outline; cycle 2 first draft; cycle 3 ref tags; cycle 4 transcript + audio; cycle 5 cross-blog consistency). The job completes when it reaches its declared last cycle: that final cycle's VERIFY makes `[JOB-COMPLETE]` eligible through the cycle-count formula, and that cycle's CONDENSE asks it. There is no separate approval step — completion is the cycle-count formula, asked once at the end. *[ref: job-complete-cycle-formula | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+A stage-2 blog-writing job is one where the writing arc is well-understood. The plan document, authored in cycle 1, declares how many cycles the job runs and what each one advances (cycle 1 outline; cycle 2 first draft; cycle 3 ref tags; cycle 4 cross-blog consistency and content lock; cycle 5 transcript and audio). The job completes when it reaches its declared last cycle: that final cycle's VERIFY makes `[JOB-COMPLETE]` eligible through the cycle-count formula, and that cycle's CONDENSE asks it. There is no separate approval step — completion is the cycle-count formula, asked once at the end. *[ref: job-complete-cycle-formula | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 ## Stage 3 — Multi-Cycle With a YAML Plan
 
@@ -62,13 +62,13 @@ The yaml key IS the voice id directly — no transform, no naming convention —
 
 A planned job carries its scope-thinking in the plan itself. Phase entry is coached, never gated — there is no forecast ceremony for any job — and for a Stage-2 or Stage-3 job the coaching arrives pre-loaded: the plan file already declares the cycle's work, and the `.yaml` form injects per-phase context straight into the entry voice, so the agent enters each phase oriented by the document instead of re-deriving the scope from scratch. *[ref: planned-jobs-entry-orientation-from-plan | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-What this means in practice: a stage-3 blog-writing job's `.yaml` carries not just the per-phase objective but also per-phase reading lists (which knowledge files OBSERVE should pull first), per-phase tools-focus hints (which subagents PLAN should dispatch most), per-phase exit signals (what VERIFY should specifically check). Every field pairs with a voice id from `phase_observe/hooks/voice.xml` or the equivalent. The seed agent doing the job receives the job-specific context as part of its normal phase entry — same delivery mechanism as the universal voices, just more of them, all framed for this job's specific shape.
+What this means in practice: a stage-3 blog-writing job's `.yaml` carries not just the per-phase objective but also per-phase reading lists (which knowledge files OBSERVE should pull first), per-phase tools-focus hints (which subagents PLAN should dispatch most), per-phase exit signals (what VERIFY should specifically check). Every field pairs with a voice id from the matching phase-entry voice definition or its equivalent. The seed agent doing the job receives the job-specific context as part of its normal phase entry — same delivery mechanism as the universal voices, just more of them, all framed for this job's specific shape.
 
 Stage 3 completes the same way Stage 2 does — through the cycle-count formula, not a separate approval step. The `.yaml` injects from the first cycle it exists, and it keeps injecting on every reactivation. What earns a job the extra structure is not a new gate but the leverage of that injection: the same job, run again, arrives at each phase already briefed on what this specific work needs. *[ref: stage-3-completes-like-stage-2 | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-## Stage 4 — Plugin Form of a Job
+## Stage 4 — Proposed Plugin Form of a Job
 
-The final stage is the deepest customization layer. A Stage-3 `.yaml` job tailors only the *soft* controls — the voice injections a phase already carries. A plugin form of a job reaches the *hard* layer: it can extend or limit a phase's guards, or introduce entirely new phases. It is the shape reserved for jobs whose phase cognition needs customization *beyond* what voice injection can deliver. *[ref: stage-4-plugin-form | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+The proposed final form is the deepest customization layer. A Stage-3 `.yaml` job tailors only the *soft* controls — the voice injections a phase already carries. A plugin form of a job reaches the *hard* layer: it can extend or limit a phase's guards, or introduce entirely new phases. It is the shape reserved for jobs whose phase cognition needs customization *beyond* what voice injection can deliver. *[ref: stage-4-plugin-form | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 Some jobs require specific tools allowed only during certain phases. Some require the OBSERVE phase to read a specific set of sources before any tool fires. Some require the EXECUTE phase to enforce a specific pattern on writes. Voice injection cannot deliver this; the discipline has to be *structural*. That is when the operator and the seed decide the work has earned its own plugin.
 
@@ -78,45 +78,19 @@ This stage is the bridge between the seed agent's plugin kit ([Essay 7.1](../b7/
 
 ## How Jobs Spawn Alongside Each Other — Standalone and Dependent
 
-Across the maturation arc, jobs do not run in isolation. The job system also tracks *relationships* between jobs through creation patterns; the current prototype exposes two — *standalone* and *dependent* — and the same lifecycle could add more. *[ref: two-creation-patterns | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+Across the maturation arc, jobs do not run in isolation. The job system also tracks *relationships* between jobs through creation patterns; the historical reference architecture exposes two — *standalone* and *dependent* — and the same lifecycle could add more. *[ref: two-creation-patterns | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-A **standalone job** is one the focused job spawns to do parallel work that does not block. `job.sh create <name>` while a parent is focused creates a pending job with no link to the parent — an empty `depends_on` array. The standalone job waits its turn in the queue. Standalone creation is how the focused cycle says: *I noticed something else worth doing, but it does not belong inside this cycle.* *[ref: standalone-job-no-parent-link | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+A **standalone job** begins as a non-blocking work intention recorded by the focused cycle. During CONDENSE, the job-graph consumer evaluates that note and creates a pending job with no dependency link to the parent. The standalone job waits its turn in the queue. The pattern is how the focused cycle says: *I noticed something else worth doing, but it does not belong inside this cycle.* *[ref: standalone-job-no-parent-link | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-A **dependent job** is one the focused job spawns that must finish before the focused job itself can complete. `job.sh create-dependent <name>` writes the new job's id into the focused job's `depends_on` array, and the focused job's job-complete approval will be refused until every entry in `depends_on` reaches `completed`. Dependent jobs let the operator declare ordering: *this fix must finish before this feature can ship.* The completion gate enforces the relationship structurally — the agent and the user can both want to approve the parent, but the gate refuses until the dependencies clear. *[ref: dependent-job-completion-gate | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+A **dependent job** begins as a blocking work intention recorded by the focused cycle. During CONDENSE, the job-graph consumer creates the new job and links its id to the focused job's dependency set. The focused job cannot complete until every linked dependency reaches completion. Dependent jobs let the operator declare ordering: *this fix must finish before this feature can ship.* The completion gate enforces the relationship structurally — the agent and the user can both want to approve the parent, but the gate refuses until the dependencies clear. *[ref: dependent-job-completion-gate | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 These patterns work across every step of the maturation arc. A stage-1 deep job can spawn standalone jobs. A stage-3 yaml job can spawn dependents. The discipline is consistent: jobs are created during CONDENSE (when the cycle's wider context surfaces follow-up work), not in IDLE or mid-execute. *[ref: jobs-created-during-condense-only | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard ladder — four ascending stages of job maturation, with a small horizontal strip below showing the two creation patterns (standalone / dependent) that apply across all stages.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk steps
-  and labels; pastel chalk fills for each stage (cyan = stage 1, green = stage 2, orange = stage 3, magenta = stage 4 — drawn from the cycle image palette);
-  white chalk for ALL labels, gate text, and lesson text; faint chalk dust at the edges; chalk sticks resting along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other stage names, gate names, or descriptors.
-  Layout: Four hand-drawn rectangular chalk steps ascending diagonally from lower-left to upper-right across the top two-thirds of the board, like a chalk staircase. Each step is wider than tall. From low to high:
-    Step 1 (cyan fill, lowest-left). Three lines of label centered on the step IN WHITE CHALK:
-      Top line:    "Stage 1: Deep single-cycle"
-      Middle line: "plan_file = false"
-      Bottom line: "seed in learning mode"
-    Step 2 (green fill). Three lines of label:
-      Top line:    "Stage 2: Multi-cycle .md plan"
-      Middle line: "plan_file = .md, persists"
-      Bottom line: "chosen in cycle 1 PLAN"
-    Step 3 (orange fill). Three lines of label:
-      Top line:    "Stage 3: Multi-cycle .yaml plan"
-      Middle line: "same as Stage 2, .yaml format"
-      Bottom line: "voice-paired injections per phase"
-    Step 4 (magenta fill, highest-right). Three lines of label:
-      Top line:    "Stage 4: Plugin form of job"
-      Middle line: "phase-cognition customization"
-      Bottom line: "ships its own plugin"
-  Below the staircase, draw a horizontal chalk strip across the board's lower third with header IN WHITE CHALK exactly "Creation patterns (apply across all stages)". Inside the strip, two small chalk pills side by side, each labeled IN WHITE CHALK with TWO lines:
-    Pill 1 (pink fill): top line "standalone" / bottom line "job.sh create <name>"
-    Pill 2 (cyan darker fill): top line "dependent" / bottom line "job.sh create-dependent <name>"
-  Above the staircase, draw a single curving chalk arrow running left-to-right along the climb with one short caption riding its curve IN WHITE CHALK exactly: "richer forms require evidence".
-  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "Stage 1: Deep single-cycle", "plan_file = false", "seed in learning mode", "Stage 2: Multi-cycle .md plan", "plan_file = .md, persists", "chosen in cycle 1 PLAN", "Stage 3: Multi-cycle .yaml plan", "same as Stage 2, .yaml format", "voice-paired injections per phase", "Stage 4: Plugin form of job", "phase-cognition customization", "ships its own plugin", "Creation patterns (apply across all stages)", "standalone", "job.sh create <name>", "dependent", "job.sh create-dependent <name>", "richer forms require evidence". No other words, file names, folders, or stage descriptors may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.2. Four stages of job maturation. Most jobs never reach stage 4. Some never leave stage 1."
+  STATUS: The existing asset is stale and hidden. Regenerate only in the later diagram round.
   ASSET: images/four-stages-b8-2.png
+  Replacement requirements: Show four selectable work-form cards at equal height, not an ascending staircase: Stage 1 single-cycle, Stage 2 Markdown plan, Stage 3 YAML plan, and proposed Stage 4 plugin form. Show standalone and dependent intentions flowing into CONDENSE, where jobs are created and dependencies linked. Do not include private commands or imply mandatory graduation.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.2. Four work forms, selected for the work."
 -->
 
 ---

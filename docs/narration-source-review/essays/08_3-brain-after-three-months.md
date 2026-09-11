@@ -13,6 +13,11 @@ This mature case study received a bounded obvious-error pass. Its numerical snap
 5. The durability diagram brief uses framework-generic project instructions, knowledge directory, and cross-project memory.
 6. All seven ref tags retain their IDs and use generalized private verification.
 
+## Continuity corrections
+
+- The historical snapshot now names both hard-cap families: plugin evolution records and growth-only protection for local project-instruction files. The remaining size targets stay soft.
+- Soft-to-hard migration is described as one mechanism that helps produce the mature shape; compression and routing remain equally necessary.
+
 ## Removal and replacement ledger
 
 - Stale “current,” “live,” and universal-convergence qualifiers were removed because the evidence is a dated snapshot.
@@ -24,9 +29,9 @@ This mature case study received a bounded obvious-error pass. Its numerical snap
 
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
-- Source SHA-256: `70f58a6e717af2fb710225c82125a25d88442171383e68161b0614ae82200f3c`
-- Published-page SHA-256: `1cd205f26bd1921ce0ef6657c14f35bfecec23be5531ddbc10b345d8d150289e`
-- Recorded source words: 1,373 to 1,337; net `-36`.
+- Source SHA-256: `2b28daead7a4824148e4b52fef995d259e58aaedf17683bbf53cb5ddf7d7d5a2`
+- Published-page SHA-256: `51601012268a5822b119d4aee3e32441bb79fa0cadda840c79745c3a3ac46740`
+- Reader-facing prose words: 968 to 950; net `-18`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - The historical numerical snapshot remains dated evidence rather than a newly reconstructed current inventory.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

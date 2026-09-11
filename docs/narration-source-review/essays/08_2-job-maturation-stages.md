@@ -14,6 +14,14 @@ This mature article received a bounded obvious-error pass. Its four-form framewo
 6. Repeated automatic-graduation language became evidence that can justify a richer form.
 7. All twenty-one ref tags retain their IDs and use generalized private verification.
 
+## Continuity corrections
+
+- The blog workflow now completes cross-writing consistency and content lock before transcript and audio work.
+- Stage 4 is labeled as the proposed plugin form consistently with Essays 8.4 and 8.6.
+- An exact historical voice-definition path became the framework-generic “matching phase-entry voice definition.”
+- Standalone and dependent work begin as intentions recorded by the focused cycle; CONDENSE owns job creation and dependency linking. This corrects the earlier direct-creation claim and aligns with B6.
+- The stale diagram remains hidden and its future labels no longer expose direct historical creation commands.
+
 ## Removal and replacement ledger
 
 - The path-heavy, incorrect Stage 2 lifecycle explanation was replaced with the actual create-refine-freeze sequence.
@@ -25,8 +33,8 @@ This mature article received a bounded obvious-error pass. Its four-form framewo
 
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
-- Source SHA-256: `b6ea0aded158ccb3235c4920d868fa1c83e876b24117cb6219329718732bbada`
-- Published-page SHA-256: `9627b55a923ba2e3b04c5cced4df1193f0d5af3e2276ea44685ede69550ebfb6`
-- Recorded source words: 3,187 to 3,122; net `-65`.
+- Source SHA-256: `7494de266602abdd681cb203e4c70275afcbfe2933784578b8a0c43c963f11cf`
+- Published-page SHA-256: `33aa72e038f475181131085e89ae801af76c189a54d3de7475846eafa2f3b0f6`
+- Reader-facing prose words: 2,646 to 2,572; net `-74`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

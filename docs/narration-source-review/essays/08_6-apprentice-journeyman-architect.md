@@ -31,7 +31,7 @@ This mature article received a bounded obvious-error pass. Its three-part operat
 - Version: `v0.2.0`
 - Source SHA-256: `d454df3ce684c8b89dac706aeb1e8a5749ce3a4d915cf19a318d89a950ed0fd8`
 - Published-page SHA-256: `d9616001307167cbad2253a52e367d301f9fed6bc0d0f2f652ef9ede794c21a3`
-- Recorded source words: 1,484 to 1,539; net `+55`.
+- Reader-facing prose words: 1,074 to 1,128; net `+54`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - The apprentice, journeyman, and architect timelines remain explicitly heuristic.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

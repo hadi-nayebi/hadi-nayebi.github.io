@@ -12,6 +12,11 @@ This mature finale received a bounded obvious-error pass. Its ownership promise,
 4. The user-owned upstream-reporting example remains optional and operator-gated.
 5. All six ref tags retain their IDs and use generalized private verification.
 
+## Continuity corrections
+
+- The opening now carries Essay 8.8’s full tested-closeout model: active failures stay for repair, while defensive failures revert and log.
+- The diagram brief uses “local harness” rather than one runtime’s directory name. The existing runtime-specific image remains inventory-linked but hidden until regenerated.
+
 ## Removal and replacement ledger
 
 - Automatic Stage 1-to-2-to-3 progression was replaced because B6 defines plan shape as a cycle-one decision, not a required promotion sequence.
@@ -21,8 +26,8 @@ This mature finale received a bounded obvious-error pass. Its ownership promise,
 
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.3.0`
-- Source SHA-256: `5eb4da10cbd2e93ae99a35ed40f49af8fc4a0e182c8bed35af5cd3a780455884`
-- Published-page SHA-256: `913a88c7dc6455bd0d71dacb0981c8d846aa7d78da6b375f89a23c294ead5621`
-- Recorded source words: 1,364 to 1,377; net `+13`.
+- Source SHA-256: `079df5f0b305342e1e44bfe9a96926982442dae69097f8dd49859e5afd6da8ad`
+- Published-page SHA-256: `14af480ff20053172947bae8d1b27cca1aa96da6703dabf84ebe70da22cab572`
+- Reader-facing prose words: 928 to 946; net `+18`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final; this page had no visible audio player to hide.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

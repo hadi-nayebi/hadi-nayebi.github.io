@@ -16,7 +16,7 @@ og_image: "blog/b8/images/maturation-arc-b8-banner.png"
 
 ---
 
-[Essay 8.8](08_8-safe-self-modification.html) closed the Tier-3 recursion — a system that safely modifies itself, under your direction, in your filesystem, with rollback as the default when tests fail. The architecture is in your hands. This essay closes the series.
+[Essay 8.8](08_8-safe-self-modification.html) closed the Tier-3 recursion — a system that safely modifies itself, under your direction, in your filesystem, with tested closeout: active failures stay for repair, while defensive failures revert and log. The architecture is in your hands. This essay closes the series.
 
 ---
 
@@ -37,9 +37,9 @@ This is what changes when the design principles themselves are teachable. The ag
 [Essay 5.1](../b5/05_1-the-two-layer-foundation.html) gave you a substrate pattern. [Essay 6.1](../b6/06_1-phasic-foundation.html) gave you a cognitive-cycle pattern. [Essay 7.1](../b7/07_1-plugin-kit-foundation.html) gave you a way to grow plugins. This essay closes the loop: Stage-1 collaboration, Stage-2 or Stage-3 planned work, and the Stage-4 plugin form give your work different shapes without forcing every job through a ladder. The writings provide the design context; you and your agent assemble the architecture. *[ref: stage-arc-grounded-in-job-stages | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard side-by-side comparison — left half shows the traditional three-role triangle (agent, developer, user); right half shows the collapsed two-role line (agent, you) with the shared .claude/ substrate sitting between them.
+  Concept: Chalk-on-blackboard side-by-side comparison — left half shows the traditional three-role triangle (agent, developer, user); right half shows the collapsed two-role line (agent, you) with the shared local harness sitting between them.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines
-  (triangle and line); pastel chalk (cyan, green, orange, pink, magenta) fills for the three triangle nodes and the two collapsed nodes (cyan = agent node on both sides, green = developer node on left, orange = user node on left, magenta = you node on right, pink = .claude/ substrate box in the middle of the right half — drawn from the cycle image palette);
+  (triangle and line); pastel chalk (cyan, green, orange, pink, magenta) fills for the three triangle nodes and the two collapsed nodes (cyan = agent node on both sides, green = developer node on left, orange = user node on left, magenta = you node on right, pink = local harness box in the middle of the right half — drawn from the cycle image palette);
   white chalk for ALL node labels, arrows, and headers; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
   IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other role names, file names, or descriptors.
   Layout: A vertical white-chalk divider line down the middle of the board splits it into two halves. Above each half, a one-line header IN WHITE CHALK:
@@ -53,12 +53,12 @@ This is what changes when the design principles themselves are teachable. The ag
     Left node (cyan fill, large circle): "agent"
     Pink center box (the substrate, in the middle of the arrow):
       Two lines of label IN WHITE CHALK inside the box:
-        Top line:    ".claude/"
+        Top line:    "local harness"
         Bottom line: "shared substrate"
     Right node (magenta fill, large circle): "you"
   Below both halves, a single horizontal white-chalk note runs across the bottom of the board reading exactly: "the substrate is teachable; the third role dissolves"
   Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "default triangle", "collapsed line", "agent", "developer", "user", ".claude/", "shared substrate", "you", "the substrate is teachable; the third role dissolves". No other words, file names, folders, or role descriptors may appear.
+  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "default triangle", "collapsed line", "agent", "developer", "user", "local harness", "shared substrate", "you", "the substrate is teachable; the third role dissolves". No other words, file names, folders, or role descriptors may appear.
   Caption (HTML text shown under the image, not drawn inside the image): "Image 8.9. Three roles collapse to two. The substrate carries what the developer used to."
   ASSET: images/triangle-to-two-b8-9.png
 -->

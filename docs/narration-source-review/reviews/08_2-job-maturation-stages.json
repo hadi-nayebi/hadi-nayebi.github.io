@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "path": "blog/b8/08_2-job-maturation-stages.md",
-  "source_sha256": "b6ea0aded158ccb3235c4920d868fa1c83e876b24117cb6219329718732bbada",
+  "source_sha256": "7494de266602abdd681cb203e4c70275afcbfe2933784578b8a0c43c963f11cf",
   "reviewed_at": "2026-09-11",
   "report": "docs/narration-source-review/essays/08_2-job-maturation-stages.md",
   "review": {
     "factual": "passed",
     "technical_or_historical": "passed",
     "chronology_and_maturity": "passed",
-    "cross_writing_consistency": "provisional",
+    "cross_writing_consistency": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
     "hadi_content_lock": "pending"

@@ -16,7 +16,7 @@ og_image: "blog/b8/images/maturation-arc-b8-banner.png"
 
 ---
 
-[Essay 8.2](08_2-job-maturation-stages.html) closed the job-maturation arc — Stage 1 deep single-cycle through Stage 4 plugin form, plus standalone and dependent job patterns. The arc describes *how* a job grows. This sub-essay opens the *outcome*: a May 2026 snapshot of what one earlier Claude-based reference architecture held after three months of cycles.
+[Essay 8.2](08_2-job-maturation-stages.html) closed the job-maturation arc — Stage 1 deep single-cycle through proposed Stage 4 plugin form, plus standalone and dependent job patterns. The arc describes *how* a job grows. This sub-essay opens the *outcome*: a May 2026 snapshot of what one earlier Claude-based reference architecture held after three months of cycles.
 
 That historical snapshot is a useful case study. Its inventory reveals one mature shape: a small working brain, a large knowledge layer, and narrow cross-project memory.
 
@@ -32,51 +32,26 @@ A research lab running experiment-protocol jobs through the same maturation arc 
 
 **The cross-project memory layer stayed narrow** in the historical snapshot: a small set of entries carrying guidance across projects, with the exact count varying by operator and date. Most were feedback rules — operator-given operating directives the brain carried across sessions; the rest were project memories, session handoffs, operational templates, and an index. Your seed's memory layer will hold whatever guidance most often crosses your project boundaries — composition varies; narrowness is the design pressure. This layer is organized by the *kind* of guidance it captures rather than by plugin. Feedback rules are *meta-instructions*, not data; if they multiply without discipline, the operator loses track of the rules steering the system. *[ref: memory-fifty-entries-feedback-heavy | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-**Each plugin's `docs/evolution.md` is capped at the historical implementation's current limit** (2000 words there, configurable for a seed's appetite). Older sections migrate into sibling files (`docs/decisions.md`, `docs/lessons.md`, `docs/principles.md`) as the narrative grows. That cap is the implementation's only hard-enforced size limit; every other limit is soft, enforced by CONDENSE discipline rather than a code gate. *[ref: evolution-md-only-hard-cap | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+**Each plugin's `docs/evolution.md` is capped at the historical implementation's current limit** (2000 words there, configurable for a seed's appetite). Older sections migrate into sibling files (`docs/decisions.md`, `docs/lessons.md`, `docs/principles.md`) as the narrative grows. That cap is one of two hard-enforced size-limit families in the documented snapshot. The other protects local project-instruction files against growth beyond its threshold; the remaining size targets are soft and depend on CONDENSE discipline rather than their own word-count gates. *[ref: evolution-md-only-hard-cap | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 The shape is consistent: a small brain, a large knowledge layer, a narrow memory. The compression is structural — caps plus the CONDENSE waterfall plus soft thresholds — and the result is a seed whose persistent memory grows where it should grow (knowledge) and stays narrow where narrowness matters (memory, root brain). [Essay 1](../b1/01-llms-are-not-the-agents.html) said the filesystem is the agent. This historical snapshot shows what *filesystem* can mean after a few months of accumulation: a knowledge directory thick with operational understanding, a brain just small enough to read in one sitting, and a memory layer that captures the operator's hard-won rules in a short list. In the earlier Claude-based implementation, the essays supplied the *why* and the knowledge directory supplied the *how*. The limit on every number above is honest: caps and discipline are friction, not impossibility — a careless operator could bloat any layer; the architecture's design choice is to make the bloat visibly costly rather than to prevent it. *[ref: caps-plus-condense-discipline-not-code | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-The image below maps the same architecture along a different axis — by *durability*. The transient layers sit at top (active chat context resets at compaction, working project-instruction files deflate each cycle, and plan files persist across a job's cycles). The durable layers sit at bottom (knowledge silos grow over time, while a narrow memory layer crosses projects). The one hard cap in this historical implementation (`evolution.md` at 2000 words) sits in the middle, the only band the architecture polices with a code gate rather than discipline. *[ref: durability-stack-three-bands | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+Viewed along a different axis — *durability* — the transient layers sit at top (active chat context resets at compaction, the footer sections of project-instruction files touched during the cycle deflate at cycle close, and plan files persist across a job's cycles). The durable layers sit at bottom (knowledge silos grow over time, while a narrow memory layer crosses projects). The evolution-record cap sits in the middle as one of two hard-cap families in this historical implementation; the other is the growth-only protection for local project-instruction files described in Essay 8.5. *[ref: durability-stack-three-bands | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 <!-- IMAGE PLACEHOLDER:
+  STATUS: The existing asset is stale and hidden. Regenerate only in the later diagram round.
   ASSET: images/brain-layers-b8-3.png
-  Concept: Chalk-on-blackboard layered stack — transient layers on top, durable layers on the bottom, the seed's working memory pyramid inverted.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk bands
-  stacked vertically; pastel chalk fills (dim cyan = most transient, magenta = most durable, with a graded scale between);
-  white chalk for ALL band labels, lifespan notes, and arrows; faint chalk dust at the edges; chalk sticks along the bottom.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other layer names, directory names, or lifespan descriptors.
-  Layout: Six horizontal chalk bands stacked vertically across the board, top to bottom. The topmost band is the narrowest and dimmest; bands get wider and brighter as they go down. Each band is split into a left half (the layer's name IN WHITE CHALK) and a right half (its lifespan IN WHITE CHALK).
-    Band 1 (top, dim cyan, narrowest):
-      Left:  "active chat context"
-      Right: "resets at compaction"
-    Band 2 (dim green):
-      Left:  "project instructions"
-      Right: "deflates each cycle"
-    Band 3 (orange):
-      Left:  "plan files"
-      Right: "persists across cycles"
-    Band 4 (pink):
-      Left:  "plugin evolution.md"
-      Right: "capped 2000w, narrated"
-    Band 5 (magenta):
-      Left:  "knowledge directory"
-      Right: "topic silos, grows over time"
-    Band 6 (bottom, magenta darker, widest):
-      Left:  "cross-project memory"
-      Right: "narrow durable guidance"
-  On the left edge of the stack, draw a single vertical white-chalk arrow running TOP-DOWN along the entire stack — the arrowhead at the BOTTOM, pointing toward the widest, most-durable band (cross-project memory) — with one short caption riding the arrow IN WHITE CHALK exactly: "more durable".
-  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "active chat context", "resets at compaction", "project instructions", "deflates each cycle", "plan files", "persists across cycles", "plugin evolution.md", "capped 2000w, narrated", "knowledge directory", "topic silos, grows over time", "cross-project memory", "narrow durable guidance", "more durable". No other words, file names, folders, or lifespan descriptors may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.3. Transient layers above. Durable substrate below. The seed's long-term store is the bottom of the stack."
+  Replacement requirements: Show a durability stack with active session context at the top; working instructions and touched footers that deflate during cycle close; plans persisting across cycles; and durable evolution records, knowledge, and cross-project memory below. Keep the historical snapshot framing and do not present every project instruction as cycle-deflated.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.3. Transient context above; durable knowledge below."
 -->
 
 ---
 
-A small brain, a large knowledge layer, a narrow memory — these are the *outcomes* of three months of cycles. The mechanism that produces those outcomes is the soft-to-hard control migration, where behavioral patterns travel from coaching voice to hardened code. That migration is the next sub-essay.
+A small brain, a large knowledge layer, a narrow memory — these are the *outcomes* of three months of cycles. One mechanism that helps produce those outcomes is soft-to-hard control migration, where behavioral patterns travel from coaching voice to hardened code. That migration is the next sub-essay.
 
 ---
 
 *Essay 8.3 — From Apprentice to Architect, Part 3 of 9.*
 
-*Previous: [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle through Stage 4 plugin form, plus standalone and dependent jobs.*
+*Previous: [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — Stage 1 deep cycle through proposed Stage 4 plugin form, plus standalone and dependent jobs.*
 *Next: [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template.*

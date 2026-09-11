@@ -29,7 +29,7 @@ This mature article received a bounded obvious-error pass. Its hard-versus-soft 
 - Version: `v0.2.0`
 - Source SHA-256: `adc74a3f94e4d5077d52bb6621539d6e526bc838815111595ed5a916bf15a85d`
 - Published-page SHA-256: `5649d1e323f5eee5f72b4ac8af03aaecbb9093bb34fa13091696968f19899316`
-- Recorded source words: 1,478 to 1,438; net `-40`.
+- Reader-facing prose words: 986 to 944; net `-42`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - This is intentionally a dated cap snapshot, not a claim about every current or future harness.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

@@ -15,6 +15,12 @@ This mature article received a bounded obvious-error pass. Its recursive self-pr
 7. The rollback promise is bounded by guarded paths and defined test coverage.
 8. All seven ref tags retain their IDs and use generalized private verification.
 
+## Continuity corrections
+
+- Tested closeout now distinguishes three outcomes: pass commits; active failure preserves the working tree for repair and rerun; defensive failure reverts to a captured checkpoint and logs the event.
+- The historical integrity component and its diagram brief use generalized public labels rather than an internal component identifier or state-field name.
+- The hidden stale diagram remains withheld until it can show pass, active failure, and defensive failure separately.
+
 ## Removal and replacement ledger
 
 - Private component names, source paths, log fields, exact file counts, and recovery commands were removed because they are evidence-only implementation details that cannot enter the public repository.
@@ -27,8 +33,8 @@ This mature article received a bounded obvious-error pass. Its recursive self-pr
 
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
-- Source SHA-256: `932a6ff25ef82b5efbe6277afbb7617706aa98d4b50367d5fa629945eead17ec`
-- Published-page SHA-256: `a0ff9af5e179bad1cd5ef7f11329ddb099830dc4fc4ce15b8bb1d68fa516c317`
-- Recorded source words: 1,346 to 1,321; net `-25`.
+- Source SHA-256: `b43b896be6868283ddd2fc4a3c628a60d2b8137dfbdebac8c15f8831f4ecb5a2`
+- Published-page SHA-256: `6411fd82e25ae3723443dcfc0696c2172b19919fdf0e83f19dd4c7fe7d161ad3`
+- Reader-facing prose words: 899 to 890; net `-9`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

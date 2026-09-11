@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "path": "blog/b8/08_9-the-seed-is-yours.md",
-  "source_sha256": "5eb4da10cbd2e93ae99a35ed40f49af8fc4a0e182c8bed35af5cd3a780455884",
+  "source_sha256": "079df5f0b305342e1e44bfe9a96926982442dae69097f8dd49859e5afd6da8ad",
   "reviewed_at": "2026-09-11",
   "report": "docs/narration-source-review/essays/08_9-the-seed-is-yours.md",
   "review": {
     "factual": "passed",
     "technical_or_historical": "passed",
     "chronology_and_maturity": "passed",
-    "cross_writing_consistency": "provisional",
+    "cross_writing_consistency": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
     "hadi_content_lock": "pending"

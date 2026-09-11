@@ -13,6 +13,10 @@ This mature article received a bounded obvious-error pass. Its forgetting discip
 5. CONDENSE can compress later maintenance growth, correcting the earlier claim that it could not act retroactively.
 6. All four ref tags retain their IDs and use generalized private verification.
 
+## Continuity correction
+
+- The old graph remains inventory-linked but is hidden because it depicts several soft targets and warning-only thresholds as hard ceilings. Diagram regeneration is outside this narration-source run.
+
 ## Removal and replacement ledger
 
 - The exact half-context claim was removed because no model window or loading profile established it.
@@ -23,8 +27,8 @@ This mature article received a bounded obvious-error pass. Its forgetting discip
 
 - Baseline: `7e0fdff98753cd1ddaf5bab4c48acdb09a62c7eb`
 - Version: `v0.2.0`
-- Source SHA-256: `71edfd06d7b817e8ae418bf8158bbff4c7c7c6152bd245c7dad6d13fc28224d1`
-- Published-page SHA-256: `9873c994e9b446011fdd530f2ae9f437d6c58b7c614e0fbe2c42e9c33d6e20e9`
-- Recorded source words: 1,030 to 1,059; net `+29`.
+- Source SHA-256: `375f0f16f7d6abe908da3e8a4882a4284d35506dc594bea0b4212c4c31170cf2`
+- Published-page SHA-256: `a72353beb490b2140dc909c5c2923a036f72efcd30689304e2222e74762b1109`
+- Reader-facing prose words: 621 to 649; net `+28`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
-- Cross-writing consistency remains provisional; Hadi's content lock remains pending.
+- Cross-writing consistency passed the complete B8 continuity review; Hadi's content lock remains pending.

@@ -18,7 +18,7 @@ og_image: "blog/b8/images/three-growth-axes-b8-1.png"
 
 <!-- IMAGE PLACEHOLDER:
   ASSET: images/maturation-arc-b8-banner.png
-  Concept: Chalk-on-blackboard SERIES BANNER — three ascending stages of the operator's arc (apprentice → journeyman → architect), with seed-evolution markers visible at each stage. This is the og:image source for the B8 series (Essays 8.2-8.9 use this as their social card; opener 8.1 uses its own three-growth-axes image below). Lives on disk at blog/b8/images/maturation-arc-b8-banner.png.
+  Concept: Chalk-on-blackboard series banner — three ascending stages of the operator's arc (apprentice → journeyman → architect), with seed-evolution markers visible at each stage.
   Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk lines;
   pastel chalk fills for the three stage-platforms (cyan = apprentice / green = journeyman / magenta = architect — drawn from cycle palette);
   white chalk for ALL labels, arrows, and the title; faint chalk dust at the edges; chalk sticks resting along the bottom.
@@ -39,29 +39,13 @@ A seed is not a standard product that gets installed once and then used unchange
 
 The load-bearing claim of this series is this. The seed grows along several parallel axes — one earlier Claude-based reference architecture names three of them: jobs take increasingly structured forms; behavioral controls migrate inward from soft voice to hard hook to fossilized template; and the operator's relationship with the seed shifts from supervising its cognition to composing with it. Each axis has its own pace, its own evidence, its own gates. None is automatic. And — the part most operators do not expect — *the brain stops growing in size while never stopping learning*. The architecture is bounded by design; the substrate the brain rests on is not. *[ref: three-growth-axes-prototype-design | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
-That last claim is what makes the seed sustainable across long timescales. A brain that grew without bound would drown its own cognition. A brain that stopped learning would stop adapting. The seed does both: caps and compression force the brain into a stable equilibrium, while the knowledge directory and the plugin kit absorb the durable patterns the brain compresses away. The seed does not try to preserve every transient detail in the working brain. It preserves what keeps mattering, and stores most of that somewhere other than the brain. *[ref: brain-bounded-knowledge-unbounded | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+That last claim is what makes the seed sustainable across long timescales. A brain that grew without bound would drown its own cognition. A brain that stopped learning would stop adapting. The seed does both: caps and compression push the brain toward a stable equilibrium, while the knowledge directory and the plugin kit absorb the durable patterns the brain compresses away. The seed does not try to preserve every transient detail in the working brain. It preserves what keeps mattering, and stores most of that somewhere other than the brain. *[ref: brain-bounded-knowledge-unbounded | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 <!-- IMAGE PLACEHOLDER:
-  Concept: Chalk-on-blackboard three-axis growth diagram — a small seed icon in the lower-left corner with three labeled arrows fanning outward, each axis labeled with what grows along it.
-  Style: Match opevc-cycle-blackboard.png exactly. Dark slate chalkboard background; hand-drawn chalk axes
-  and arrows; pastel chalk fills for the three axis arrows (cyan = jobs-mature axis, green = controls-migrate axis, magenta = operator-shift axis — drawn from the cycle image palette);
-  white chalk for ALL labels, axis-end markers, and the seed icon; faint chalk dust at the edges; chalk sticks resting along the bottom edge.
-  IMPORTANT: Use only the literal text strings listed below. Do not invent or substitute any other axis names, labels, or descriptors.
-  Layout: A small white-chalk circular seed icon in the lower-left corner of the board, with a tiny sprout drawn above it. From the seed, three hand-drawn chalk arrows fan outward across the board, each in a different pastel chalk color, each tipped with an arrowhead at the far end:
-    Arrow A (cyan, pointing straight UP along the left side of the board). Two-line label IN WHITE CHALK riding along the arrow:
-      Top line:    "jobs mature upward"
-      Bottom line: "single → .md plan → .yaml plan"
-    Arrow B (green, pointing diagonally up-right across the center of the board). Two-line label IN WHITE CHALK riding along the arrow:
-      Top line:    "controls migrate inward"
-      Bottom line: "voice → hook → template"
-    Arrow C (magenta, pointing straight RIGHT along the bottom of the board). Two-line label IN WHITE CHALK riding along the arrow:
-      Top line:    "operator shifts"
-      Bottom line: "supervising → composing"
-  Above the seed icon, a single short white-chalk caption reads exactly: "week 1". Near the far end of arrow B, a small white-chalk caption reads exactly: "month 3+". These two anchor the time arc of the diagram.
-  Keep every line hand-drawn and slightly imperfect, never ruler-straight.
-  STRICT NAME WHITELIST — the image must contain only these literal text strings as labels: "jobs mature upward", "single → .md plan → .yaml plan", "controls migrate inward", "voice → hook → template", "operator shifts", "supervising → composing", "week 1", "month 3+". No other words, file names, folders, or axis descriptors may appear.
-  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.0. Three growth axes. All three move in parallel. None automatic."
+  STATUS: The existing asset is stale and hidden. Regenerate only in the later diagram round.
   ASSET: images/three-growth-axes-b8-1.png
+  Replacement requirements: Show three independent axes rather than a ladder. Job form is selected from single-cycle, Markdown-plan, YAML-plan, or proposed plugin form; controls can move from guidance toward enforcement; the operator moves from supervision toward composition. Do not imply automatic progression.
+  Caption (HTML text shown under the image, not drawn inside the image): "Image 8.1. Three axes mature independently."
 -->
 
 <!-- RAW_HTML -->
@@ -76,7 +60,7 @@ That last claim is what makes the seed sustainable across long timescales. A bra
 Essay 8 unfolds across the parts below:
 
 - **Essay 8.1 — Apprentice to Architect Foundation** *(you are here)* — the three-axis growth frame and this map
-- [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — the Job Stages (Stage 1 deep single-cycle through Stage 4 plugin form) plus the standalone and dependent job-creation patterns
+- [Essay 8.2 — The Stages of Job Maturation](08_2-job-maturation-stages.html) — the Job Stages (Stage 1 deep single-cycle through proposed Stage 4 plugin form) plus the standalone and dependent job-creation patterns
 - [Essay 8.3 — What Lives in the Brain After Three Months](08_3-brain-after-three-months.html) — a historical three-month snapshot of one mature seed's compartments
 - [Essay 8.4 — Soft → Hard Migration](08_4-soft-hard-migration.html) — how a behavioral control travels from coaching voice to hook to template
 - [Essay 8.5 — What's Enforced vs What's Discipline](08_5-enforced-vs-discipline.html) — the honest accounting of which size caps are gates and which are CONDENSE discipline
