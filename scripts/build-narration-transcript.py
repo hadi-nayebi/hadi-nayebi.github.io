@@ -159,6 +159,17 @@ def spoken_rewrites(text: str) -> str:
             "a shell hook in Claude Code and a TypeScript plugin in OpenCode",
         ),
         (
+            r"But when you add project instructions and a durable brain directory "
+            r"\(AGENTS\.md in Codex, CLAUDE\.md and \.claude/ in Claude Code, "
+            r"QWEN\.md in Qwen Code, or the equivalent in OpenCode and Gemini CLI\) "
+            r"— with knowledge files, operational rules, memory structures, and "
+            r"workflow definitions — something fundamental changes\.",
+            "But when you add project instructions and a durable brain directory, something fundamental changes. "
+            "The filename depends on the platform: AGENTS.md in Codex; CLAUDE.md and the hidden Claude configuration "
+            "directory in Claude Code; QWEN.md in Qwen Code; or the equivalent in OpenCode and Gemini CLI. "
+            "Add knowledge files, operational rules, memory structures, and workflow definitions.",
+        ),
+        (
             r"(?<!\w)\.claude/(?!\w)",
             "the hidden Claude configuration directory",
         ),
