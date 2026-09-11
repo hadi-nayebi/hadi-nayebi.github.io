@@ -108,8 +108,8 @@
       <title>The Always-On Digital Cortex — Pt 7: The CLAUDE.md Hierarchy</title>
       <link>https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html</link>
       <guid>https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html</guid>
-      <pubDate>Wed, 14 May 2026 00:00:00 GMT</pubDate>
-      <description>The substrate underneath the always-on layer. CLAUDE.md as native primitive, partitioned into a body and four phase footers that inflate across OPEVC and deflate at CONDENSE. The altered list scopes execution.</description>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>An earlier Claude-based seed-agent prototype turns a hierarchy of instruction files into phased, inspectable working memory with guarded write regions and execution scope.</description>
     </item>
 
     <item>
