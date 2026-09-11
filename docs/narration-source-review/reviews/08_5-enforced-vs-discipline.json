@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b8/08_5-enforced-vs-discipline.md",
+  "source_sha256": "adc74a3f94e4d5077d52bb6621539d6e526bc838815111595ed5a916bf15a85d",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/08_5-enforced-vs-discipline.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
