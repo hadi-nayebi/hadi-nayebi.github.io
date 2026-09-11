@@ -4,7 +4,7 @@
 
 This mature article received a bounded obvious-error pass. Its ratchet pattern,
 portable examples, and composed-ceremony arc remain intact. The article moves
-from 2,290 to 2,249 visible words. It now identifies the Claude-based system as
+from 2,290 to 2,258 visible words. It now identifies the Claude-based system as
 a historical reference architecture and correctly separates ownership of the
 historian ratchet from the wider ceremony assembled around it.
 
@@ -25,6 +25,8 @@ historian ratchet from the wider ceremony assembled around it.
    verification rather than private paths, revisions, or implementation detail.
 7. Metadata records the May 18 publication date and September 11 review. The
    transcript is non-final and the stale audio player is hidden.
+8. The final handoff now leads to Essay 5.9's substrate-authorization question
+   before the following series opens the phasic brain.
 
 ## Removal and replacement ledger
 
@@ -39,8 +41,8 @@ historian ratchet from the wider ceremony assembled around it.
 
 - Baseline: `ed70bb941467ce90dc4febd18501efead53217eb`
 - Version: `v0.4.0`
-- Source SHA-256: `d6cbc87c9b7de3c8922f387cb4d2951dc230b17f9fabd8babd9630016a30860f`
-- Published-page SHA-256: `0e3d3616f890fbd1de13108d7e89989465e55c2c24ee109903f159ade4422d24`
-- Visible words: 2,290 to 2,249; net `-41`.
+- Source SHA-256: `12db976b83c3a5ced8717b8ae709c750a7ac5817f6568a35728ae2eb45418b57`
+- Published-page SHA-256: `e24f54ff695081b6d44f0d7ec08a973b92208344cebd1c042e8a903472685d00`
+- Visible words: 2,290 to 2,258; net `-32`.
 - Cross-writing consistency remains provisional; Hadi's content lock remains
   pending.

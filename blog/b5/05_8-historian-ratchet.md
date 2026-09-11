@@ -108,9 +108,7 @@ The actual work happens in the phasic layer. Compartmentalized phases (currently
 
 The substrate is what makes the architecture *teachable*. A non-developer with enough high-level architectural understanding can customize a seed agent the way someone with the right training can author a complex artifact — without writing the underlying machinery. The destination this series carries you toward is an agent-developer-user triangle that collapses to agent-user, because the architecture is portable enough that the user can be the architect.
 
-But a bus is just substrate. What USES it intelligently — that's the phasic brain.
-
-Next.
+But before we move to the phasic brain, one final question remains: who is allowed to modify this substrate? The customization guardrail answers it.
 
 ---
 

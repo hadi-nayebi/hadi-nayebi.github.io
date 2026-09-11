@@ -4,7 +4,7 @@
 
 This mature article received a bounded obvious-error pass. Its hierarchy,
 working-memory, deflation, and portability arc remains intact. The article
-moves from 2,760 to 2,744 visible words. It now begins with the generic pattern
+moves from 2,760 to 2,745 visible words. It now begins with the generic pattern
 of scoped project instructions, presents `CLAUDE.md` as one historical Claude
 implementation, reflects current Claude Code loading behavior, and resolves
 the contradiction between “empty footers” and deferred fragments.
@@ -27,6 +27,9 @@ the contradiction between “empty footers” and deferred fragments.
    verification. Current provider behavior links to public documentation.
 9. Metadata records the May 18 publication date and September 11 review. The
    transcript is non-final and the stale audio player is hidden.
+10. The consecutive series read qualified EXECUTE as the only phase that edits
+    non-instruction project files, preserving the stated OBSERVE and PLAN
+    exception for scoped instruction files.
 
 ## Removal and replacement ledger
 
@@ -45,9 +48,9 @@ the contradiction between “empty footers” and deferred fragments.
 
 - Baseline: `ed70bb941467ce90dc4febd18501efead53217eb`
 - Version: `v0.5.0`
-- Source SHA-256: `1a92facddae3380dc6196e77768d9bf558200c0e1aa686c7854944b0f933d748`
-- Published-page SHA-256: `9f1de9c55bd11e0729893b77e53184168fec8766811e1ab7fa6a519857735197`
-- Visible words: 2,760 to 2,744; net `-16`.
+- Source SHA-256: `59eea6dd926abbd267199101980e86a93b772c4f8954fe4fbcdab821631fa04e`
+- Published-page SHA-256: `6d6c537adb91d624baf2e701674a59dfa8dbced654d74825857798df9659fe85`
+- Visible words: 2,760 to 2,745; net `-15`.
 - Markdown/HTML parity, metadata, transcript state, links, site validators, and
   `git diff --check`: passed.
 - Detailed historical slot and phase behavior was preserved under the requested
