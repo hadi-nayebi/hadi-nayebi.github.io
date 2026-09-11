@@ -27,6 +27,6 @@ This mature article received a bounded obvious-error pass against the current pu
 - Version: `v0.2.0`
 - Source SHA-256: `736f422584f336cbc426bd776b6a090cba1cf985adb79006a666c5a1fb8adf63`
 - Published-page SHA-256: `2f041da3d4c91990892a75d2f40a9ac330653a8cb00f7bbccb5ca96767ec6131`
-- Reader-facing prose words: 1,252 to 1,282; net `+30`.
+- Reader-facing prose words: 1,252 to 1,284; net `+32`.
 - This page has no narration player or transcript to invalidate.
 - Cross-writing consistency passed the complete B9 continuity review; Hadi's content lock remains pending.
