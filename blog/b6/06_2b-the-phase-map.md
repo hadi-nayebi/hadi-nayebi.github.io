@@ -41,7 +41,7 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 - Populate the working-memory CLAUDE.md files with relevant context
 - Dispatch parallel research subagents and synthesize their returns
 - Refuse code edits — the only allowed write target is CLAUDE.md
-- Cross the exit threshold only after enough investigation has happened
+- Pace investigation through the min-max rhythm; cross the boundary only after the required synthesis and reflection evidence is present
 
 **PLAN** — turn observations into a binding contract. *[ref: plan-names-file-claude-md-only | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 - Record the Stage decision in cycle 1 via an explicit `set-plan-file` call — `false` for a single-cycle job, a `.md`/`.yaml` name for a multi-cycle one; PLAN itself never writes the plan file — EXECUTE creates it
@@ -51,7 +51,7 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 **EXECUTE** — build what the plan declared, in checkpoints. *[ref: execute-creates-plan-file-cycle-1 | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 - Edit project files, but only inside the altered list — the merged set of CLAUDE.md files OBSERVE and PLAN together declared, frozen at execute entry
-- Materialize every artifact the seed agent produces — code, the `.md` plan in cycle 1 of a Stage-2 job, the `.yaml` plan in cycle 1 of a Stage-3 job, anything else with a path; EXECUTE is the universal file-creator
+- Materialize project deliverables and the cycle-1 `.md` or `.yaml` plan file. Project-instruction creation remains with its authorized phase; CONDENSE creates memory, knowledge, and session artifacts
 - Favor small, focused checkpoint commits over one long uncommitted run; the intermediate-commit mode keeps checkpoints cheap
 - Capture *execution notes* in the working CLAUDE.md so the cycle stays narratable
 - Delegate file work to execute subagents (sequential by default, a small in-flight ceiling); keep the main session on the spine
@@ -59,8 +59,8 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 **VERIFY** — judge prior work with independent eyes. *[ref: verify-refines-plan-forces-backward | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 - Run scripts and validators; refuse all code edits in this phase
 - Dispatch auditor subagents to read the executed work without bias
-- Write pass/fail results into CLAUDE.md and the plan file
-- Refine the focused job's plan file (`.md` or `.yaml`) — but editing it blocks forward-advance and forces a backward step to PLAN; the plan is refined in place and persists, nothing is approved or sealed
+- Write pass/fail results into the project-instruction footer; during cycle 1 only, VERIFY may refine the focused plan file
+- A cycle-1 plan-file edit blocks forward advance and forces a backward step to PLAN; from cycle 2 onward the plan is frozen for the run
 - Hand completion to CONDENSE — VERIFY has no job-completion authority; `[JOB-COMPLETE]` is a CONDENSE-only ceremony, a phase away
 - Review the focused job's open dependencies and, when the audit reveals one is no longer needed, either unlink it but keep the work (`job.sh remove-dependency` — the child survives as standalone work) or unlink and abandon it (`job.sh void-dependency` — the child is marked `voided`, a terminal-abandon state) — the lifecycle-symmetry partner of CONDENSE's `add-dependency`
 - Route the cycle forward to CONDENSE, or backward to whichever prior phase the failure points at

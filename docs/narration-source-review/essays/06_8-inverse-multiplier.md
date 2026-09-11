@@ -27,12 +27,16 @@ historical implementation boundary is now explicit.
 - Private evidence locators were replaced with generalized verification.
 - The duplicated word in “pair of paired gates” was removed as a copy error.
 
+## Consecutive-series correction
+
+- The opening now counts four work-on-project phases plus CONDENSE, avoiding double-counting the cognitive organ as a sixth phase.
+
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.5.0`
-- Source SHA-256: `525c47e711b97c00819fb92d237c672834be033efa47be987e7c0bfe8762f59a`
-- Published-page SHA-256: `5a1458e4edb2651ab120173d06185bd90b416a7c32d54fd044816cfb0ab42b86`
-- Visible words: 3,426 to 3,466; net `+40`.
+- Source SHA-256: `8403a681ab4251a0416ba3e9c161ffb6db210c120dd56feca1ca93214b3e227a`
+- Published-page SHA-256: `2fc0868a98835f1d180c6fa4dd682cb0c122c508b4bb82b5dbe8f14e3e16d402`
+- Recorded source words: 3,426 to 3,466; net `+40`.
 - Cross-writing consistency remains provisional; Hadi's content lock remains
   pending.

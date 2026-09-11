@@ -16,12 +16,16 @@ This mature article received a bounded obvious-error pass. The job-graph, reflec
 - No visible prose, section, job-graph example, reflection step, or narrative beat was removed.
 - Private evidence locators were replaced with generalized verification.
 
+## Consecutive-series correction
+
+- The handoff to Essay 6.8 now names the within-phase rhythm and exit reflection gate rather than a nonexistent entry dial.
+
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.2.0`
-- Source SHA-256: `7ef46e1963a8d0af134c16d919563aa1cfc45f011df82ccfa363eaabe2bc448b`
-- Published-page SHA-256: `b251d87f31602f618ae412e56ecc451e6d1396c437b2629a32fd539782112651`
-- Recorded source words: 2,967 to 3,083; net `+116`.
+- Source SHA-256: `439ead403abeb602eca781e1e5b238f6bb6e904dc50825f31882a68365e583d9`
+- Published-page SHA-256: `34e7919a0b444497d237f1016a616b6dbb5ccbedc37535fccc8ec7ec8cc05083`
+- Recorded source words: 2,967 to 3,077; net `+110`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

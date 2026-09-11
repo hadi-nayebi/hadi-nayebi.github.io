@@ -18,7 +18,7 @@ og_image: "blog/b6/images/markov-phasic-brain-b6.png"
 
 [Essay 6.4](06_4-plan.html) closed with PLAN handing forward — a plan_file named, an altered-list scoped, the cycle's contract written down. EXECUTE is the phase that builds against that contract. The mechanics in this essay come from one historical Claude-based reference architecture; the broader pattern is a producing phase that builds within an explicitly approved scope.
 
-EXECUTE is the cycle's only producing phase. Every other phase reads, analyzes, refines, or routes; EXECUTE is the one that turns analysis into artifact. Project source code, scripts, configuration, the `.md` plan, the `.yaml` plan, every file the seed agent ever materializes on disk — all of it is brought into existence here. *[ref: execute-is-the-producing-phase | private historical prototype | Claim checked against a private historical prototype.]*
+EXECUTE is the cycle's project-deliverable phase. It turns the approved working contract into source code, scripts, configuration, and other project artifacts; in cycle 1 it also creates the job's `.md` or `.yaml` plan file. Other authorized phases still create their own instruction, memory, knowledge, and session artifacts. *[ref: execute-is-the-producing-phase | private historical prototype | Claim checked against a private historical prototype.]*
 
 The cognitive failure EXECUTE prevents is the *unstructured build* — the long uncommitted run that drifts away from the plan, accumulates change, and either ships a different feature than the one designed or erases everything when a failure hits halfway through. EXECUTE's discipline is checkpointing: short, focused commits that close one piece of the plan before opening the next. *[ref: execute-checkpointing-is-the-core-discipline | private historical prototype | Claim checked against a private historical prototype.]*
 
@@ -31,15 +31,15 @@ Inside CLAUDE.md files, the anchor discipline cascades downward from `---Ex---`.
 Pacing follows the cycle's shared shape. There is no entry ceremony — the entry voice orients the phase toward its kind of work, the plan it is fulfilling, and the subagents that carry the file work; thinking about the build's depth is coached cognition, not a checked act. *[ref: execute-entry-coached-not-gated | private historical prototype | Claim checked against a private historical prototype.]*
 
 The min-max gate paces the work/notes cadence against the working CLAUDE.md, and the direct-action budget biases the main session toward subagent dispatch. *[ref: execute-min-max-paces-synthesis | private historical prototype | Claim checked against a private historical prototype.]*
-The rest of this essay opens the universal-file-creator role, walks the two fences (path scope and anchor cascade), explains the checkpointing pattern, and names the delegation bias the budget encodes.
+The rest of this essay opens the project-deliverable role, walks the two fences (path scope and anchor cascade), explains the checkpointing pattern, and names the delegation bias the budget encodes.
 
 ---
 
-## The universal file-creator
+## The project-deliverable phase
 
-EXECUTE doesn't just write code — it writes everything. Within this architecture, the rule is broad: every file the seed agent materializes on disk is brought into existence by EXECUTE. Project source, scripts, configuration, the .md plan, the .yaml plan, anything else with a path — all of it is EXECUTE's deliverable. *[ref: execute-creates-all-files-via-write-tool-branch | private historical prototype | Claim checked against a private historical prototype.]*
+EXECUTE doesn't just write code. Within this architecture, it owns the project deliverables authorized by the altered list: source, scripts, configuration, and related artifacts. It also creates a Stage-2 or Stage-3 plan file during cycle 1. This ownership does not absorb the instruction files OBSERVE and PLAN may create or the memory, knowledge, and session artifacts CONDENSE produces. *[ref: execute-creates-all-files-via-write-tool-branch | private historical prototype | Claim checked against a private historical prototype.]*
 
-OBSERVE and PLAN do their thinking inside CLAUDE.md working memory; VERIFY refines what EXECUTE produced; CONDENSE routes content into durable layers. EXECUTE is the only phase that turns analysis into artifact. *[ref: execute-only-phase-allowed-to-write-plan-file | private historical prototype | Claim checked against a private historical prototype.]*
+OBSERVE and PLAN shape working memory and the contract; VERIFY judges what EXECUTE produced; CONDENSE turns verified experience into durable cognitive artifacts. EXECUTE uniquely owns the project-building step inside the cycle. *[ref: execute-only-phase-allowed-to-write-plan-file | private historical prototype | Claim checked against a private historical prototype.]*
 
 The plan file is one of those artifacts, and EXECUTE is where it is born. A Stage-2 job's cycle-1 EXECUTE materializes its `.md` plan; a Stage-3 job's cycle-1 EXECUTE materializes its `.yaml` plan. The producing phase creates the plan — not the read-only phases that named it, and not at job creation. VERIFY may refine it during the rest of the cycle-1 establishment window; later cycles read it as a frozen contract. EXECUTE remains the phase that brings it into existence. *[ref: plan-file-born-in-cycle-1-execute | private historical prototype | Claim checked against a private historical prototype.]*
 
@@ -136,5 +136,4 @@ When EXECUTE believes the plan is implemented, it commits the final checkpoint a
 
 *Previous: [Essay 6.4 — PLAN — Decide, Then Lock](06_4-plan.html) — deciding the Stage, locking the contract.*
 *Next: [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — scripts-only, auditor subagents, the cycle's final guardrail.*
-
 

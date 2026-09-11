@@ -35,13 +35,17 @@ pre-existing published figure markup required for Markdown/HTML parity.
   place with the corrected mechanics.
 - Private evidence locators were replaced with generalized verification.
 
+## Consecutive-series correction
+
+- The Stage-2 description now limits VERIFY refinement to cycle one of a run and states that cycles two through N keep the plan frozen.
+
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.7.0`
-- Source SHA-256: `43f4212d6d5a18910f7382c45433980db68bf9529db5d285eb136e2ef23dd2b2`
-- Published-page SHA-256: `b59bdc0c8cdaa77986354337c50df22864bd7589034047d794734f64327a3742`
-- Recorded source words: 1,984 to 2,115; net `+131`, including restored
+- Source SHA-256: `79ff290fed314dd87a2b93962364738b03bfac95c8f3bc610efc6961739eda2a`
+- Published-page SHA-256: `725c836b300c0e1ab735fee2aef8f74f73529a237cd5ba482c618ee59ebfa553`
+- Recorded source words: 1,984 to 2,122; net `+138`.
   canonical figure markup. Narration prose excluding refs, frontmatter, and
   raw figure markup is 1,959 words.
 - Cross-writing consistency remains provisional; Hadi's content lock remains

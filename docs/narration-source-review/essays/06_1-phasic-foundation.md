@@ -18,12 +18,16 @@ This mature article received a bounded obvious-error pass. The phase architectur
 - The unsupported indefinite-stay claim was removed because the described mechanism has no duration gate.
 - No section, example, phase, or narrative beat was removed.
 
+## Consecutive-series correction
+
+- The series list now calls EXECUTE the project-deliverable phase instead of implying that no other phase may create its authorized instruction or memory artifacts.
+
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.3.0`
-- Source SHA-256: `828671f204beb1a428bda8b9d27091f5ca3e10178197bb3b8a0483aa9b1bca00`
-- Published-page SHA-256: `4cd1931033ce1d1f982649e9df9fd7cad94d90eafe071659221cd7d107e0ca6c`
-- Recorded source words: 2,523 to 2,629; net `+106`.
+- Source SHA-256: `847cd5d5d7767aa5efcce4d357f07fd8722113fc74373bb6d448b27d5d67ff04`
+- Published-page SHA-256: `fbf6aa5300de3eef28e8cc4e437ff62ebcfd3437d2e628e109f777356ba4ee4f`
+- Recorded source words: 2,523 to 2,626; net `+103`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

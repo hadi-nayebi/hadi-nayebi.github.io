@@ -18,12 +18,16 @@ This mature article received a bounded obvious-error pass. The contract-first ar
 - Only inaccurate universal phrasing and a fragmentary paragraph break were removed or joined.
 - No section, contract component, worked-example step, or narrative beat was removed.
 
+## Consecutive-series correction
+
+- The cycle-three example now repairs the current working contract without proposing an edit to the run-frozen YAML plan; its handoff calls EXECUTE the project-deliverable phase.
+
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.6.0`
-- Source SHA-256: `3c299e1c4cb33674f7d53b466f051d695589d6e94fa3f051d643f40ec218c49c`
-- Published-page SHA-256: `8af60817122a3e01403c0f61f09d3e95c5d10df9bd22af59fa00c812bae82d3e`
-- Recorded source words: 2,992 to 2,989; net `-3`.
+- Source SHA-256: `e1c5739d586b5d7a456899b4f351d03340b682abbf148bb6035d234521f3d4f1`
+- Published-page SHA-256: `5577172f7f796dd18f526dc15af5292200a316283cffa3647496b93d41cb33e6`
+- Recorded source words: 2,992 to 3,010; net `+18`.
 - Metadata uses the repository introduction date and records the September 11 review. The transcript is non-final and the stale audio player is hidden.
 - Cross-writing consistency remains provisional; Hadi's content lock remains pending.

@@ -104,7 +104,7 @@ Bash falls the same way. Read-only git inspections pass — `git log`, `git diff
 
 ## A worked example
 
-The multi-cycle plan-job from the previous essay enters its third cycle's PLAN phase. The orchestrator has already injected the .yaml at phase entry, OBSERVE has handed forward a synthesis that flagged the marker-schema contradiction from cycle 2, and the architect's `[WAITING]` answer routed the work toward "revert cycle 2's code and re-author the .yaml entry." *[ref: waiting-routes-to-architect-not-cycle-stop | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
+The multi-cycle plan-job from the previous essay enters its third cycle's PLAN phase. The orchestrator has already injected the `.yaml` at phase entry, OBSERVE has handed forward a synthesis that flagged the marker-schema contradiction from cycle 2, and the architect's `[WAITING]` answer routed the work toward “revert cycle 2's code and add backward compatibility to this cycle's acceptance criteria.” The run's plan file is frozen after cycle 1; PLAN refines the current cycle's working contract instead. *[ref: waiting-routes-to-architect-not-cycle-stop | private historical prototype | Checked against a private historical prototype; identifying repository, revision, source paths, and unpublished implementation details are omitted.]*
 
 The phase is tighter than OBSERVE — the decisions are narrower, and the entry voice frames it that way. The agent re-reads the `.yaml` plan file (allowed — it is this job's focused plan_file), re-reads the OBSERVE synthesis in the working CLAUDE.md, and walks the cycle-2 entry in that plan side-by-side.
 
@@ -143,6 +143,5 @@ When PLAN exits, the orchestrator advances the job to EXECUTE.
 *Essay 6.4 — The Markov Phasic Brain, Part 5 of 13.*
 
 *Previous: [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — project-read-only synthesis, wide sources, the paired rhythm gates.*
-*Next: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the universal file-creator, fenced to the altered list.*
-
+*Next: [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the project-deliverable phase, fenced to the altered list.*
 

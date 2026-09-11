@@ -30,12 +30,16 @@ historical mechanism actually requires.
   sequence so the worked example agrees with the mechanism it teaches.
 - Private evidence locators were replaced with generalized verification.
 
+## Consecutive-series correction
+
+- The customization section now agrees that commit or stash can produce a clean exit, and the final handoff correctly keeps plan-file work inside OPEVC across cycles.
+
 ## Review record
 
 - Baseline: `ed64b6c2f37d961c51c47efb8b8d669bac05e0f9`
 - Version: `v0.3.0`
-- Source SHA-256: `6c7730abe2b8278bfd6b7746372f248a3db7d414744fca88351e7f8b19ba7f3b`
-- Published-page SHA-256: `64150a3757aee19a819b11cbea679316763eb77aaf2d75c8da6ce4c4df06d668`
-- Visible words: 3,562 to 3,729; net `+167`.
+- Source SHA-256: `9e00beacbcec6d0a3bd2a711c95506bb249985a9189d0ecefb0c7f0340a22388`
+- Published-page SHA-256: `1a5e20c8970741b806152bf1ef7e6c49b2ad4605838a73ad9d8411a26736968f`
+- Recorded source words: 3,562 to 3,696; net `+134`.
 - Cross-writing consistency remains provisional; Hadi's content lock remains
   pending.

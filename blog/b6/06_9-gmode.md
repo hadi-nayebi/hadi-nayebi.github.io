@@ -117,7 +117,7 @@ Gmode is one of the more architecturally opinionated surfaces in the prototype. 
 
 You would tune the **justification floor.** The prototype's word-count minimum is calibrated for an architect operator who occasionally needs ad-hoc work; a more experimental seed may lower it; a more cautious one may raise it. The number lives in `config.conf` and is read by the gate hook on every fire — no code change required. *[ref: gmode-word-min-in-config-conf | private historical prototype | Claim checked against a private historical prototype.]* Lowering the floor lowers the cost of entry; raising it raises the bar at which gmode is the right choice rather than a fresh job.
 
-You would relax the **clean-git exit requirement.** The prototype requires the working tree to be fully committed before the home phase is restored. A seed that does heavy experimental work — long-running gmode sessions that span multiple work blocks — may want to allow exit with a structured stash, or with a directory-scoped clean check rather than a global one. The trade-off is substrate integrity: a relaxed exit means the home phase resumes on a working tree it didn't produce, which the next phase's altered-list discipline will have to handle. *[ref: clean-git-exit-tunability | private historical prototype | Claim checked against a private historical prototype.]*
+You would adjust the **clean-git exit requirement.** The prototype requires a clean working tree, reached by committing or stashing, before the home phase is restored. A seed that does heavy experimental work may prefer a directory-scoped clean check or a recorded dirty-state handoff. The trade-off is substrate integrity: a relaxed exit can resume the home phase on a working tree it did not produce, which the next phase's altered-list discipline must handle. *[ref: clean-git-exit-tunability | private historical prototype | Claim checked against a private historical prototype.]*
 
 You would decide **what flows through gmode versus OPEVC versus new phases.** The prototype defaults to routing every job through OPEVC because foundational architectural work demands the discipline; routine plugin maintenance has gone through gmode by exception. Once a seed ships and starts being used for project work, the proportion shifts. Some seeds will route nearly all maintenance through gmode; others will split phase plugins by job type and keep gmode for genuine emergencies. The off-cycle lane is the architect's pressure valve — how often it opens is your call. *[ref: gmode-vs-opevc-routing-default | private historical prototype | Claim checked against a private historical prototype.]*
 
@@ -139,7 +139,7 @@ The architecture accepts them because the alternative — letting the agent quie
 
 The off-cycle lane covers one kind of work that doesn't fit the phasic ceremony: **ad-hoc**, **fast**, **bypass-justified**. The next essay covers the other: **planned**, **long-horizon**, **carried across cycles** — the plan file the seed agent reaches for when the work is too large for a single OPEVC pass.
 
-Gmode is the side-channel; the plan file is the long-channel. Both exist outside the per-cycle compartmentalization OPEVC enforces. Both are deliberate exits — one for the work that's too small for ceremony, one for the work that's too large.
+Gmode routes exceptional work outside the cycle; the plan file keeps larger work inside OPEVC by carrying its contract across cycles.
 
 ---
 
@@ -147,5 +147,4 @@ Gmode is the side-channel; the plan file is the long-channel. Both exist outside
 
 *Previous: [Essay 6.8 — The Rhythm of Work](06_8-inverse-multiplier.html) — the min-max rhythm inside every phase and the exit gate that opens each boundary.*
 *Next: [Essay 6.10 — The Plan File — Stages and Completion](06_10-plan-state-machine.html) — what the plan file owns, the three Stages, the counting rule that closes a multi-cycle job, and where the plan lives on disk.*
-
 

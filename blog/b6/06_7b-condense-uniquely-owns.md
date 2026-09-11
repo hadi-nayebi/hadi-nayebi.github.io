@@ -106,7 +106,7 @@ That is the cognitive organ. The work-on-project phases produce experiential dat
 
 The phases give the agent compartmentalized cognition. CONDENSE is the step that lets the compartmentalization compound.
 
-But the phases share one more mechanism we have not named yet — the small dial each one turns at its entry. That dial is where the cycle's discipline and the agent's meta-cognition meet.
+But the phases share one more mechanism we have not opened yet — the rhythm that paces work inside each phase and the reflection gate that closes it.
 
 Next.
 

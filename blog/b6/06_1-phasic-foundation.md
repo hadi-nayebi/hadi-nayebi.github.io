@@ -53,7 +53,7 @@ Essay 6 unfolds across short parts:
 - [Essay 6.2b — The Phase Map](06_2b-the-phase-map.html) — a quick tour of all the phases before the per-phase deep-dives
 - [Essay 6.3 — OBSERVE — Read Wide, Write Once](06_3-observe.html) — the read-only sweep that grounds every cycle
 - [Essay 6.4 — PLAN — Decide, Then Lock](06_4-plan.html) — the analysis phase whose deliverable is a named contract
-- [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the only phase with project-write access, fenced by the altered list
+- [Essay 6.5 — EXECUTE — Build, in Scope, in Steps](06_5-execute.html) — the project-deliverable phase, fenced by the altered list
 - [Essay 6.6 — VERIFY — Independent Eyes](06_6-verify.html) — scripts-only, auditor-driven, backward-routed
 - [Essay 6.7 — CONDENSE — The Cognitive Organ](06_7-condense.html) — the 7-step waterfall that grows the brain
 - [Essay 6.7b — CONDENSE — What It Uniquely Owns](06_7b-condense-uniquely-owns.html) — the job graph CONDENSE mutates and the reflection that closes it
@@ -142,4 +142,3 @@ The foundation is in place: a Markov brain whose moves are themselves Markov cha
 
 *Previous: [Essay 5.9 — The Customization Guardrail](../b5/05_9-customization-guardrail.html) — the gate that decides when substrate edits are admitted.*
 *Next: [Essay 6.2 — The Discipline and the Map](06_2-discipline-and-map.html) — the full transition graph and the tool-restriction pedagogy.*
-
