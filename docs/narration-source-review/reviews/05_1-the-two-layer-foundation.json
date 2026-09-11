@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b5/05_1-the-two-layer-foundation.md",
+  "source_sha256": "7fc3973befdbbac714449f93dc742b6d7c16c5804609c5f81551e30ce4b9c680",
+  "reviewed_at": "2026-09-10",
+  "report": "docs/narration-source-review/essays/05_1-the-two-layer-foundation.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
