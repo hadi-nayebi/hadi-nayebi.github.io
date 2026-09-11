@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "path": "blog/practical-guides/01-build-your-own-space-on-the-web.md",
+  "source_sha256": "f4b3ac8c1b9561dd61391c1456fcc351585dce2e3f50cdcbdbbf5f377c522495",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/guides/01-build-your-own-space-on-the-web.md",
+  "review": {
+    "factual": "passed",
+    "procedural_reproduction": "passed",
+    "safety_and_privacy": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
