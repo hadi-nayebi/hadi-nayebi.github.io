@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_9-creating-a-new-plugin.md",
+  "source_sha256": "d11fc840030922f5a470abab48bd0f9a610f3189b5981d03dd77964e99201301",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_9-creating-a-new-plugin.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "provisional",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
