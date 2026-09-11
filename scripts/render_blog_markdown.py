@@ -458,7 +458,7 @@ def render_body(body: str, input_md_dir: str = "") -> str:
     structural blocks (headings, lists) to avoid misclassifying a sentinel that
     happens to start a line as, for example, a heading marker.
     """
-    # Private editorial anchors belong to the canonical Markdown and claim map,
+    # Machine-facing editorial anchors belong to the canonical Markdown and claim map,
     # never to the public projection. Removing only this bounded marker form also
     # keeps a marker before a heading from changing the block's classification.
     body = re.sub(r"<!--\s*block:\s*[a-z0-9][a-z0-9-]{1,79}\s*-->\s*", "", body)

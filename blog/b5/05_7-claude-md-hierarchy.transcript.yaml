@@ -2,7 +2,7 @@
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: claude-md-hierarchy
 source_md: 05_7-claude-md-hierarchy.md
-final: false            # source changed in the 2026-09-10 review; narration rebuild requires Hadi's content approval
+final: true             # finalized 2026-06-22 (curation scanned: no HTML/acronym leaks)
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5

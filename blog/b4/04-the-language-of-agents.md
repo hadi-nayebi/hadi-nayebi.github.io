@@ -18,11 +18,11 @@ status: published
 
 You already use AI. You open ChatGPT, or Claude, or Gemini in your browser. You type something. It types back. You have been doing this for a year, maybe two. You are not new here.
 
-But then someone starts talking about LLMs and context windows, hooks and MCPs, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. That is not your fault — the industry moves faster than its own vocabulary can settle.
+But then someone starts talking about large language models — LLMs — and context windows, hooks and connected tools, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. That is not your fault — the industry moves faster than its own vocabulary can settle.
 
 This post gives you the working language for the architecture ahead. By the end, you will not just recognize the terms — you will see how they connect into a single, coherent picture. No prerequisites. No code.
 
-The first three essays planted the ideas — the toaster and the electricity, the organism that grows from a seed, the digital cortex your biology never built. Each one introduced terms that matter. This essay collects them, adds the ones still missing, and lays out the full vocabulary. After this, we build.
+The essays before this one planted the ideas — the toaster and the electricity, the organism that grows from a seed, the digital cortex your biology never built. Each introduced terms that matter. This essay collects them, adds the ones still missing, and lays out the full vocabulary. After this, we build.
 
 ![A chalk anatomical figure mapping an agent's model core, hooks, tools, skills, memory, knowledge, plugins, context window, state, and guardrails into one connected system.](images/agent-anatomy-b4-1.png)
 *The vocabulary becomes easier when every term has a place in the agent's anatomy.*
@@ -132,7 +132,7 @@ Before you type your first word, the runtime has already assembled instructions 
 
 A **system message** is a high-priority instruction layer supplied by the host or provider. It defines broad behavior and boundaries for the session. In a browser product, the company controls that layer. You may add custom instructions, but you do not replace its highest-priority rules.
 
-**Project instructions** describe how work should happen in a particular folder: the role, standards, commands, boundaries, and definition of done. Depending on the platform, a CLI agent may discover them through files with names such as `CLAUDE.md`, `AGENTS.md`, or `QWEN.md`. They are visible and editable, but their exact authority and loading rules depend on the runtime.
+**Project instructions** describe how work should happen in a particular folder: the role, standards, commands, boundaries, and definition of done. Depending on the platform, a CLI agent may discover them through files such as `AGENTS.md` in Codex, `CLAUDE.md` in Claude Code, or `QWEN.md` in Qwen Code. OpenCode and Gemini CLI have their own instruction surfaces and discovery rules. The files are visible and editable, but their exact authority and loading rules depend on the runtime.
 
 **Context** is everything the model can use on this turn: instructions, your request, relevant conversation, selected files, tool definitions, retrieved material, and tool results. Context is the desk. Context engineering decides what deserves space on it.
 
@@ -210,7 +210,7 @@ A **sub-agent** is a specialist. When the main agent faces a task that needs foc
 
 Skills package a method. Commands provide an explicit entrance. Scripts perform repeatable mechanics. Sub-agents receive delegated work. A mature workflow may compose all four.
 
-## The Connections: MCPs
+## The Connections: MCP
 
 Your agent sits on your computer. But the world does not live on your computer.
 
@@ -304,6 +304,6 @@ You have the language. Next, we build the skeleton.
 *Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
 
 *Previous: ["The Folder Is Alive"](../b3/03_1-the-folder-is-alive.html) — what happens when a folder gets a brain of its own.*
-*Next: ["The Two-Layer Foundation"](../b5/05_1-the-two-layer-foundation.html) — the always-on plugins that run regardless of phase, and the CLAUDE.md hierarchy they coordinate through.*
+*Next: ["The Two-Layer Foundation"](../b5/05_1-the-two-layer-foundation.html) — the always-on plugins that run regardless of phase, and the project-instruction hierarchy they coordinate through.*
 
 *Companion: ["The Primitives of Agent Architecture"](../../papers/the-primitives-of-agent-architecture.pdf) (reference guide)*

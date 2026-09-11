@@ -109,11 +109,11 @@
 
                         <p>You already use AI. You open ChatGPT, or Claude, or Gemini in your browser. You type something. It types back. You have been doing this for a year, maybe two. You are not new here.</p>
 
-                        <p>But then someone starts talking about LLMs and context windows, hooks and MCPs, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. That is not your fault &mdash; the industry moves faster than its own vocabulary can settle.</p>
+                        <p>But then someone starts talking about large language models &mdash; LLMs &mdash; and context windows, hooks and connected tools, prompt engineering and seed agents. The words stack up fast. Nobody stops to explain them. That is not your fault &mdash; the industry moves faster than its own vocabulary can settle.</p>
 
                         <p>This post gives you the working language for the architecture ahead. By the end, you will not just recognize the terms &mdash; you will see how they connect into a single, coherent picture. No prerequisites. No code.</p>
 
-                        <p>The first three essays planted the ideas &mdash; the toaster and the electricity, the organism that grows from a seed, the digital cortex your biology never built. Each one introduced terms that matter. This essay collects them, adds the ones still missing, and lays out the full vocabulary. After this, we build.</p>
+                        <p>The essays before this one planted the ideas &mdash; the toaster and the electricity, the organism that grows from a seed, the digital cortex your biology never built. Each introduced terms that matter. This essay collects them, adds the ones still missing, and lays out the full vocabulary. After this, we build.</p>
 
                         <figure class="blog-image" data-visual-style="I50-A50" data-information-weight="50" data-artistic-weight="50" data-visual-role="storytelling" data-visual-batch="4" style="margin: 2rem 0;">
                           <img src="images/agent-anatomy-b4-1.png" alt="A chalk anatomical figure mapping an agent&#x27;s model core, hooks, tools, skills, memory, knowledge, plugins, context window, state, and guardrails into one connected system." style="display: block; width: 100%; max-width: 800px; height: auto; margin: 0 auto; border-radius: 8px;">
@@ -227,7 +227,7 @@
 
                         <p>A <strong>system message</strong> is a high-priority instruction layer supplied by the host or provider. It defines broad behavior and boundaries for the session. In a browser product, the company controls that layer. You may add custom instructions, but you do not replace its highest-priority rules.</p>
 
-                        <p><strong>Project instructions</strong> describe how work should happen in a particular folder: the role, standards, commands, boundaries, and definition of done. Depending on the platform, a CLI agent may discover them through files with names such as <code>CLAUDE.md</code>, <code>AGENTS.md</code>, or <code>QWEN.md</code>. They are visible and editable, but their exact authority and loading rules depend on the runtime.</p>
+                        <p><strong>Project instructions</strong> describe how work should happen in a particular folder: the role, standards, commands, boundaries, and definition of done. Depending on the platform, a CLI agent may discover them through files such as <code>AGENTS.md</code> in Codex, <code>CLAUDE.md</code> in Claude Code, or <code>QWEN.md</code> in Qwen Code. OpenCode and Gemini CLI have their own instruction surfaces and discovery rules. The files are visible and editable, but their exact authority and loading rules depend on the runtime.</p>
 
                         <p><strong>Context</strong> is everything the model can use on this turn: instructions, your request, relevant conversation, selected files, tool definitions, retrieved material, and tool results. Context is the desk. Context engineering decides what deserves space on it.</p>
 
@@ -305,7 +305,7 @@
 
                         <p>Skills package a method. Commands provide an explicit entrance. Scripts perform repeatable mechanics. Sub-agents receive delegated work. A mature workflow may compose all four.</p>
 
-                        <h2 id="the-connections-mcps">The Connections: MCPs</h2>
+                        <h2 id="the-connections-mcp">The Connections: MCP</h2>
 
                         <p>Your agent sits on your computer. But the world does not live on your computer.</p>
 
@@ -397,7 +397,7 @@
 
                         <p><em>Essay 4 of 8 in the Hadosh Academy series on agent architecture.</em></p>
 
-                        <p><em>Previous: <a href="../b3/03_1-the-folder-is-alive.html">"The Folder Is Alive"</a> &mdash; what happens when a folder gets a brain of its own.</em> <em>Next: <a href="../b5/05_1-the-two-layer-foundation.html">"The Two-Layer Foundation"</a> &mdash; two behavioral plugin groups inside an earlier seed-agent prototype, composed over a shared substrate.</em></p>
+                        <p><em>Previous: <a href="../b3/03_1-the-folder-is-alive.html">"The Folder Is Alive"</a> &mdash; what happens when a folder gets a brain of its own.</em> <em>Next: <a href="../b5/05_1-the-two-layer-foundation.html">"The Two-Layer Foundation"</a> &mdash; the always-on plugins that run regardless of phase, and the project-instruction hierarchy they coordinate through.</em></p>
 
                         <p><em>Companion: <a href="../../papers/the-primitives-of-agent-architecture.pdf">"The Primitives of Agent Architecture"</a> (reference guide)</em></p>
                     </div>
@@ -463,7 +463,7 @@
                                 </div>
                                 <div class="sidebar-card-position">Next in series &rarr;</div>
                                 <h3>Essay 5.1 — The Two-Layer Foundation</h3>
-                                <div class="date">May 2026 &bull; 7 min read</div>
+                                <div class="date">May 2026 &bull; 6 min read</div>
                             </div>
                         </a>
                         <a href="/blog.html" class="article-card-link sidebar-all-essays-link">

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<!-- Version: v0.5.0 -->
+<!-- Version: v0.1.0 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The CLAUDE.md Hierarchy | Hadosh Academy</title>
-    <meta name="description" content="How an earlier Claude-based seed-agent prototype turns a hierarchy of instruction files into phased, inspectable working memory.">
+    <meta name="description" content="The CLAUDE.md Hierarchy — Hadosh Academy seed agent essay.">
     <meta name="author" content="Hadi Nayebi">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html">
     <meta property="og:title" content="The CLAUDE.md Hierarchy | Hadosh Academy">
-    <meta property="og:description" content="How an earlier Claude-based seed-agent prototype turns a hierarchy of instruction files into phased, inspectable working memory.">
+    <meta property="og:description" content="The CLAUDE.md Hierarchy — Hadosh Academy seed agent essay.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html">
     <meta property="og:type" content="article">
     <meta property="og:image" content="https://hadi-nayebi.github.io/blog/b5/images/always-on-digital-cortex-b5.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The CLAUDE.md Hierarchy | Hadosh Academy">
-    <meta name="twitter:description" content="How an earlier Claude-based seed-agent prototype turns a hierarchy of instruction files into phased, inspectable working memory.">
+    <meta name="twitter:description" content="The CLAUDE.md Hierarchy — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b5/images/always-on-digital-cortex-b5.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
@@ -31,15 +31,15 @@
             {
                 "@type": "BlogPosting",
                 "headline": "The CLAUDE.md Hierarchy",
-                "datePublished": "2026-05-14",
-                "dateModified": "2026-09-10",
+                "datePublished": "2026-05-13",
+                "dateModified": "2026-05-13",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
                     "url": "https://hadi-nayebi.github.io/about.html"
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
-                "description": "How an earlier Claude-based seed-agent prototype turns a hierarchy of instruction files into phased, inspectable working memory.",
+                "description": "The CLAUDE.md Hierarchy — Hadosh Academy seed agent essay.",
                 "image": "https://hadi-nayebi.github.io/blog/b5/images/always-on-digital-cortex-b5.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/b5/05_7-claude-md-hierarchy.html"
             },
@@ -92,7 +92,7 @@
                     <div class="article-meta">
                         <span>May 2026</span>
                         <span>&bull;</span>
-                        <span>8 min</span>
+                        <span>12 min</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="">Tier 2 → Tier 3</span>
                             <span class="tag">Architecture</span>
@@ -105,127 +105,145 @@
                         By Hadi Nayebi &amp; Claude Opus 4.8
                     </div>
 
+                    <div class="article-audio">
+                        <audio controls preload="none">
+                            <source src="audio/claude-md-hierarchy.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <span class="audio-label">Listen to this article (12 min)</span>
+                    </div>
+
                     <div class="article-body">
+
                         <p><em>Essay 5.7 &mdash; The Always-On Digital Cortex, Part 7 of 9.</em></p>
 
                         <hr>
 
-                        <p><a href="05_6-question-discipline.html">Essay 5.6</a> closed the tour of the prototype&rsquo;s always-on plugins. This part turns to one substrate they work around: a hierarchy of <code>CLAUDE.md</code> instruction files that the phase layer also uses as structured working memory.</p>
+                        <p><a href="05_6-question-discipline.html">Essay 5.6</a> closed the tour of the always-on plugins. This part covers one of the substrate forms underneath them &mdash; the <strong>working-memory form</strong>: a hierarchy of plain Markdown files (<code>CLAUDE.md</code> files) at known locations on disk, plus the protocol that turns those files into a structured information bus. The substrate as a whole holds many forms &mdash; <code>knowledge/</code>, each plugin&rsquo;s hidden state, <code>voice.xml</code>, <code>evolution.md</code>, <code>agents/</code>. The CLAUDE.md hierarchy is the one the phasic layer writes through. <sup class="ref-marker" title="ref: claude-md-hierarchy-phasic-writes-through | root CLAUDE.md Core Phases (OPEVC) | the phasic layer reads and writes its working memory through the CLAUDE.md hierarchy">&#9432;</sup></p>
 
-                        <p>This essay describes an earlier private Claude Code prototype. Its four-footer protocol is an experimental layer built on top of Claude Code&rsquo;s native instruction loading.</p>
+                        <p>The plugins do their work in parallel; this is where the cycle&rsquo;s experiential data <em>lands</em>.</p>
 
                         <hr>
 
                         <h2 id="the-native-primitive">The native primitive</h2>
 
-                        <p>Claude Code supports project instructions in <code>./CLAUDE.md</code> or <code>./.claude/CLAUDE.md</code>. At launch it walks upward from the working directory and loads the instruction files it discovers along that path. It discovers nested <code>CLAUDE.md</code> files below the working directory on demand when it reads files in those subdirectories. The files are concatenated into context rather than replacing one another. <sup class="ref-marker" title="ref: native-loading | Claude Code documentation, How CLAUDE.md files load | Project and ancestor instructions load at launch; nested files load when Claude accesses their subdirectories.">&#9432;</sup> <a href="https://code.claude.com/docs/en/memory">Official Claude Code documentation</a> describes the current resolution order and scopes.</p>
+                        <p>Drop a file named <code>CLAUDE.md</code> into a project, and the standard Claude Code CLI agent reads it. Drop one into <code>.claude/</code>, and it gets read too. Nest more of them inside subdirectories, and Claude Code surfaces each one when the agent works near it. The shared move: a plain Markdown file at a known location, automatically appended to the model&rsquo;s context whenever the agent reads or edits files in that directory. <sup class="ref-marker" title="ref: drop-a-file-named-claude | .claude/plugins/brain_guard/hooks/CLAUDE.md header (title + Status line) | Proof of nested loading: 4-level-deep `hooks/` CLAUDE.md begins &quot;# hooks/ — Status: Live — Feature #1 hooks shipped...&quot; The prototype carries many CLAUDE.md files inside `.claude/` alone, nearly all of them carrying all four phase footers, each automatically surfaced when the agent works near it.">&#9432;</sup></p>
 
-                        <p>This gives a repository a plain-text instruction hierarchy. A root file can explain the project as a whole; a nested file can add conventions for one directory. The closer instructions provide local context without requiring every rule to live in one giant document.</p>
+                        <p>Other agentic CLI agents run the same pattern in their own ecosystems &mdash; Codex and opencode read <code>AGENTS.md</code>, Gemini CLI reads <code>GEMINI.md</code>. The convention is most obviously useful for code, where each <code>CLAUDE.md</code> doubles as meta-information about how to manage future edits &mdash; and most agentic CLI agents were originally built for software work. <sup class="ref-marker" title="ref: other-agentic-cli-agents-run | GEMINI.md (Gemini CLI Project Mandates header) + CLAUDE.md &quot;Collaboration Rules (from AGENTS.md)&quot; section | Workspace root contains `GEMINI.md` titled &quot;Gemini CLI Project Mandates&quot; — direct proof Gemini CLI reads this convention. Codex/opencode&#x27;s `AGENTS.md` pattern is externally documented; root CLAUDE.md&#x27;s &quot;Collaboration Rules (from AGENTS.md)&quot; section header itself cites that file, confirming the cross-agent convention is in this project&#x27;s awareness.">&#9432;</sup></p>
 
-                        <p>The primitive is behavioral guidance. Claude Code&rsquo;s documentation explicitly distinguishes <code>CLAUDE.md</code> instructions from permissions and hooks: instructions shape model behavior, while client-side controls enforce fixed boundaries. The private prototype uses both. Its Markdown files carry identity, working context, and local rules; its hooks guard how designated parts of those files may change.</p>
+                        <p>But as <a href="../b1/01-llms-are-not-the-agents.html">the first essay</a> argued, the CLI form factor extends far beyond writing code &mdash; to any work whose product lives in files: research, legal analysis, business operations, consulting work, and beyond. <sup class="ref-marker" title="ref: but-as-the-first-essay | blog/b1/01-llms-are-not-the-agents.md &quot;What Is an Agent, Really?&quot; section | Blog 1&#x27;s exact phrasing: &quot;Current tools — Claude Code, OpenCode, Gemini CLI — are marketed toward technical users... But what these tools actually do is manipulate files and respond to file content. That capability extends far beyond writing code.&quot; The specific enumeration (research, legal, business, consulting) is Blog 5&#x27;s elaboration.">&#9432;</sup></p>
 
-                        <h2 id="the-prototypes-four-footers">The prototype&rsquo;s four footers</h2>
+                        <p>The native loading is layered. The <a href="https://docs.claude.com/en/docs/claude-code/memory">Claude Code memory documentation</a> recognizes two locations for project-level instructions &mdash; <code>./CLAUDE.md</code> and <code>./.claude/CLAUDE.md</code> &mdash; and both load at session start. The seed agent uses both: a high-level <code>CLAUDE.md</code> at the workspace root for identity and operating rules, and a brain index inside <code>.claude/</code> cataloging plugins and active jobs. Run <code>/memory</code> inside Claude Code and you will see them both listed alongside any user-level CLAUDE.md files. After a <code>/compact</code>, Claude re-reads the project-root file from disk and re-injects it. Every other <code>CLAUDE.md</code> further down the tree loads on demand: per the docs, <em>"they are included when Claude reads files in those subdirectories."</em> <sup class="ref-marker" title="ref: the-native-loading-is-layered | CLAUDE.md Identity section + `.claude/CLAUDE.md` Components section | Root CLAUDE.md&#x27;s Identity section opens &quot;You are a **seed agent** — a customizable cognitive system that lives on disk, organized through plugins...&quot; and points at `.claude/` as the brain. Root holds identity + operating rules; `.claude/CLAUDE.md` Components section catalogues plugins as the brain index. Identity section anchored at `## Identity`, pointer to `.claude/` at the section&#x27;s tail.">&#9432;</sup></p>
 
-                        <p>Inside this prototype, participating <code>CLAUDE.md</code> files end with four anchors:</p>
+                        <p>Every Claude Code user gets this primitive for free. What the seed agent does on top is <em>partition</em> each <code>CLAUDE.md</code> into compartments. <sup class="ref-marker" title="ref: seed-agent-partitions-claude-md | CLAUDE.md footer-anchor block (`---Ob---` / `---Pl---` / `---Ex---` / `---Ve---`) | Root CLAUDE.md itself partitioned with the four footer anchors at the file&#x27;s tail (each anchor sits on its own line, separated by blank-line gutters that the four phases write into). Every CLAUDE.md inside the seed-agent brain carries the same four anchors — the partition the seed agent adds on top of Claude Code&#x27;s native loading.">&#9432;</sup></p>
 
-                        <pre style="white-space: pre-wrap; overflow-wrap: break-word; max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 6px; font-size: 0.88em; line-height: 1.5;"><code>(durable body)
+                        <h2 id="the-four-footer-protocol">The four-footer protocol</h2>
+
+                        <p>The body of the file &mdash; everything above the four anchors below &mdash; keeps the standard Claude Code semantics: identity, rules, structure, the things the agent should remember about this directory at all times. Below the body, every <code>CLAUDE.md</code> inside the seed agent&rsquo;s brain carries four anchored sections: <sup class="ref-marker" title="ref: body-keeps-standard-claude-code-semantics | .claude/plugins/brain_guard/hooks/CLAUDE.md four phase-section anchors | brain_guard/hooks/CLAUDE.md as universal example: the body (Files, Hook Contract, Prefix bypass) sits above the four phase-section anchors `---Ob---` / `---Pl---` / `---Ex---` / `---Ve---` at the file&#x27;s tail, each on its own line separated by blank-line gutters that the four phases write into. Same body+footer split across every brain CLAUDE.md.">&#9432;</sup></p>
+
+                        <pre style="white-space: pre-wrap; overflow-wrap: break-word; max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 6px; font-size: 0.88em; line-height: 1.5;"><code>(body content — identity, rules, structure)
 
 ---Ob---
-(OBSERVE working notes)
+
+(observation content goes here)
 
 ---Pl---
-(PLAN working notes)
+
+(plan content goes here)
 
 ---Ex---
-(EXECUTE working notes)
+
+(execution content goes here)
 
 ---Ve---
-(VERIFY working notes)</code></pre>
 
-                        <p>There is no fifth CONDENSE footer. CONDENSE reads across the four phase regions and decides what should be absorbed, moved, deferred, or discarded.</p>
+(verification content goes here)</code></pre>
 
-                        <p>The body above <code>---Ob---</code> is the file&rsquo;s durable instruction layer. During an OPEVC cycle, phase guards protect it and give each phase a bounded write region. OBSERVE can write below its anchor, PLAN below <code>---Pl---</code>, EXECUTE below <code>---Ex---</code>, and VERIFY below <code>---Ve---</code>. This creates a forward asymmetry: an earlier phase can prepare notes for a later phase, while a later phase cannot rewrite the earlier region or the durable body. <sup class="ref-marker" title="ref: section-guard | .claude/plugins/lib/section_guard/section-check.sh; phase observe, plan, execute, and verify guards | Each phase supplies its own anchor to the common section check, which denies edits at or above that boundary.">&#9432;</sup></p>
+                        <p>Each footer section corresponds to one phase of the OPEVC cycle. The guard hooks inside each phase plugin enforce a single rule: a phase cannot edit <em>above</em> its own anchor. During OBSERVE, the agent can write into <code>---Ob---</code> and into any of the three sections below it. During PLAN, into <code>---Pl---</code> and below. During EXECUTE, into <code>---Ex---</code> and <code>---Ve---</code>. During VERIFY, only into <code>---Ve---</code>. The body &mdash; everything above the first anchor &mdash; is off-limits to all four phases. Only the CONDENSE phase is allowed to absorb content upward into the body, and only when closing the cycle. <sup class="ref-marker" title="ref: each-footer-section-corresponds-phase | .claude/plugins/phase_observe/hooks/observe-guard.sh (check_section_edit &quot;---Ob---&quot; call) | OBSERVE guard: `section_result=$(check_section_edit &quot;---Ob---&quot; &quot;$FILE_PATH&quot; &quot;$OLD_STR&quot; &quot;$NEW_STR&quot;)`. Sister calls in plan-guard.sh (`---Pl---`), execute-guard.sh (`---Ex---`), verify-guard.sh (`---Ve---`). Each blocks edits above its own anchor; body protected; CONDENSE absorbs upward.">&#9432;</sup></p>
 
-                        <p>The anchors are structural, so the guard can repair a missing anchor when a participating file is encountered. It snapshots the file, restores missing anchors in canonical order, and reports the repair. Duplicate or out-of-order anchors are not silently rewritten because that would require guessing how existing content should move; those cases block for explicit repair. New <code>CLAUDE.md</code> files created during OBSERVE or PLAN must contain all four anchors from birth. <sup class="ref-marker" title="ref: anchor-integrity | .claude/plugins/lib/section_guard/section-check.sh, missing-anchor healing and new-file validation; phase guards | Missing anchors can be restored with a snapshot; ambiguous duplicate or ordering problems block; new files require the complete anchor set.">&#9432;</sup></p>
+                        <p>The asymmetry is intentional. Earlier phases can leave forward-looking notes for later phases &mdash; OBSERVE can sketch an early plan or seed a verify checklist if it spots one; PLAN can pre-stage verification criteria for the work it is about to dispatch &mdash; but no phase can rewrite what an earlier phase has already committed. Information flows <em>downward</em> through the cycle. The full per-phase semantics &mdash; what each phase is encouraged to write where, how subagents feed OBSERVE from the knowledge directory, and how all four phases can drop prefixed marked notes for CONDENSE to consume &mdash; is the subject of the <a href="../b6/06_1-phasic-foundation.html">Essay 6 series</a>. For now, the load-bearing fact is that the footer is a structured, append-forward, multi-author region. <sup class="ref-marker" title="ref: asymmetry-is-intentional-forward-write | .claude/plugins/lib/section_guard/section-check.sh (&quot;STRICTLY BELOW&quot; gate) | The &quot;STRICTLY BELOW&quot; gate blocks edits whose anchor sits at or above the phase anchor: &quot;Edit anchor &#x27;${first_sub}&#x27; found at line ${first_match_line} (at or above ${phase_anchor}). Edit must target content below ${phase_anchor}.&quot;">&#9432;</sup></p>
 
-                        <p>The protocol does not turn Markdown into a database. It creates visible lanes for phase-specific cognition inside files that remain readable and editable by a person.</p>
+                        <p>What about a hand-authored or project-tree <code>CLAUDE.md</code> that arrives missing some of its anchors? When a phase engages such a file &mdash; editing it or even just reading it &mdash; the guard restores the absent anchors in place, at their canonical position, keeping a snapshot, and work proceeds. The four anchors are a derivable structural fact, so the system can simply re-derive them &mdash; the same self-healing principle that runs throughout the prototype. <sup class="ref-marker" title="ref: anchor-self-heal-engagement | .claude/plugins/lib/section_guard/section-check.sh heal_missing_anchors + the four phase guards&#x27; heal callsites | `heal_missing_anchors` counts each anchor, snapshots the file to a sibling `.anchor-heals` copy before any change, then inserts only the absent anchors at their canonical position (Ob &lt; Pl &lt; Ex &lt; Ve) — never a blind append, which could leave an interior gap out of order. Duplicated or out-of-order anchors are NOT auto-fixed (that would be destructive) — the guard blocks and escalates instead. The wrapper `heal_claude_md_anchors_or_block` is called by all four phase guards at their Edit and Read engagement points (observe-guard.sh, plan-guard.sh, execute-guard.sh, verify-guard.sh) and emits one loud stderr line naming the file and the anchors added, so the heal is never silent.">&#9432;</sup></p>
 
-                        <h2 id="inflate-across-the-cycle">Inflate across the cycle</h2>
+                        <h2 id="inflate-and-deflate">Inflate and deflate</h2>
 
-                        <p>As work advances through OBSERVE, PLAN, EXECUTE, and VERIFY, the footer regions accumulate what was learned, decided, changed, and checked. The working memory therefore inflates through the cycle.</p>
+                        <p>The footers are why the seed agent does not need to rely on the chat to hold its working memory. As a job moves through OBSERVE → PLAN → EXECUTE → VERIFY, each phase writes its experiential output &mdash; what was gathered, what was decided, what was built, what was checked &mdash; into its own footer slot in whichever <code>CLAUDE.md</code> is closest to where the work is happening. The footers <em>inflate</em> across the cycle. By the time the job reaches the end of VERIFY, the four sections together can hold thousands of words of fresh, cycle-specific memory. <sup class="ref-marker" title="ref: footers-replace-chat-working-memory | .claude/plugins/phase_condense/docs/principles.md &quot;9. Five CONDENSE Markers as Cross-Phase Signal System&quot; section | Section 9 states: &quot;Observe, plan, execute, verify phases record findings via five standardized markers in their respective phase-section footers (`---Ob---`, `---Pl---`, `---Ex---`, `---Ve---`).&quot; Each phase appends; CONDENSE consumes + deflates only at cycle close.">&#9432;</sup></p>
 
-                        <p>This moves important cognition out of the transient chat. A future phase can inspect the files near the work and see the notes prepared for it. Because the records are plain Markdown, the user can also inspect how the agent reached its current state.</p>
-
-                        <p>The mechanism has limits. A nested <code>CLAUDE.md</code> is not guaranteed to sit in context forever. Claude Code loads nested instructions when their directories are accessed, and after compaction they reload when those files are accessed again. The prototype&rsquo;s phase hooks and compaction machinery add their own recall and continuity behavior; they should not be confused with the native loader. <sup class="ref-marker" title="ref: compaction-loading-boundary | Claude Code documentation, Instructions seem lost after compact | Project-root instructions are re-read after compaction; nested instructions reload on later directory access.">&#9432;</sup> The same <a href="https://code.claude.com/docs/en/memory">official memory documentation</a> covers that boundary.</p>
-
-                        <h2 id="deflate-at-condense">Deflate at CONDENSE</h2>
-
-                        <p>At cycle close, CONDENSE evaluates the accumulated footer material. Durable instructions can move into the body. Reusable knowledge can move into <code>.claude/knowledge/</code>. Marked work can create a future job, update a voice, or feed another owned surface.</p>
-
-                        <p>The current gate requires at least 80 percent of the footer words measured at CONDENSE entry to be absorbed or removed before advancing to idle. It does not require literal emptiness. A bounded remainder can survive when material is intentionally deferred or still needs resolution. <sup class="ref-marker" title="ref: deflation | .claude/plugins/phase_condense/scripts/condense-commit.sh, deflation gate; .claude/plugins/phase_condense/docs/principles.md | The live rule measures the combined phase-footer baseline and blocks unless the remaining total reflects at least 80 percent deflation.">&#9432;</sup></p>
-
-                        <p>This corrects a tempting but misleading picture of “automatic learning.” The hierarchy does not grow smarter merely because the cycle ended. CONDENSE performs an editorial act: keep what should influence future behavior, route what belongs elsewhere, and remove temporary scaffolding. A poor condensation can still preserve the wrong lesson or discard a useful one.</p>
+                        <p>CONDENSE deflates them. CONDENSE is the cognitive organ that closes each OPEVC cycle &mdash; its waterfall pulls durable findings from the four footer sections up into the body of the same <code>CLAUDE.md</code> (so they survive the next cycle), routes topic-specific knowledge into <code>.claude/knowledge/</code>, and migrates anything that belongs higher up the tree into a parent <code>CLAUDE.md</code> or into the root brain. When CONDENSE finishes, the footers are empty again. The next cycle of OPEVC starts with a clean working memory and a slightly enriched body. The hierarchy as a whole grows smarter with each pass. <sup class="ref-marker" title="ref: condense-deflates-footers-organ | .claude/plugins/phase_condense/scripts/condense-commit.sh (80% deflation gate) | Deflation gate — a single 80% rule: at least 80% of the bottom-section words must be absorbed or migrated before `condense-commit.sh` advances to idle (it blocks if `current_total &gt; max_remaining`). The threshold is uniform regardless of Job Stage. (The prototype&#x27;s former split `CONDENSE_DEF_THRESHOLD_STAGE2=50` was removed with the stage-aware-deflation retirement — the gate is the single 80% threshold.) Footer emptiness is enforced, not coincidental.">&#9432;</sup></p>
 
                         <figure data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" class="blog-image" style="margin: 2rem 0;">
-                          <img src="images/claude-md-anchors-b5-7.png" alt="Four footer regions inflate through OBSERVE, PLAN, EXECUTE, and VERIFY, then CONDENSE moves durable findings upward and reduces the footer total" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
+                          <img src="images/claude-md-anchors-b5-7.png" alt="Five panels of a CLAUDE.md file across the OPEVC cycle, footers inflating then CONDENSE deflating them" style="display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px;">
                           <figcaption style="margin-top: 0.75rem; font-size: 0.9em; line-height: 1.5; color: rgba(255, 255, 255, 0.75); text-align: center; font-style: italic;">Image 5.7. Footers inflate across OPEVC, then CONDENSE deflates them &mdash; durable findings ratchet upward into the body, the rest discards.</figcaption>
                         </figure>
 
-                        <h2 id="the-altered-list-gives-the-bus-teeth">The altered list gives the bus teeth</h2>
+                        <aside class="explore-callout" style="margin: 2rem 0; padding: 1.1rem 1.3rem; border-radius: 10px; background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(139,92,246,0.10)); border: 1px solid rgba(139,92,246,0.30); display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; justify-content: space-between;">
+  <span style="font-size: 0.92rem; color: rgba(255,255,255,0.82);">The whole substrate, walkable. The Markov self-model the seed reads at session start, the CLAUDE.md bus and the teeth that updating it grows, the layered hierarchy, the four-state lifecycle, the footer anchors with their birth-block and self-heal, the three durable surfaces the bus condenses into, and the soft size caps with the forgetting discipline &mdash; laid out as an interactive concept-deck you can hover and click.</span>
+  <a href="explore/claude-md-hierarchy.html" style="flex-shrink: 0; display: inline-block; padding: 0.6rem 1.1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; color: #fff; text-decoration: none; background: linear-gradient(135deg, var(--primary, #6366f1), var(--accent, #8b5cf6)); box-shadow: 0 4px 16px rgba(99,102,241,0.5);">&#8599; Walk the CLAUDE.md hierarchy</a>
+</aside>
 
-                        <p>The hierarchy also participates in execution scope.</p>
+                        <h2 id="the-altered-list-claudemd-edits-scope-execution">The altered list &mdash; CLAUDE.md edits scope execution</h2>
 
-                        <p>During OBSERVE and PLAN, edits to a directory&rsquo;s <code>CLAUDE.md</code> add that file to the job&rsquo;s altered list. At EXECUTE initialization, the prototype combines those records. The EXECUTE guard then permits project-file changes only inside directories represented by the altered list. VERIFY remains read-only for project files. <sup class="ref-marker" title="ref: altered-list | .claude/plugins/phase_observe and phase_plan altered-list trackers; .claude/plugins/phase_execute/hooks/execute-guard.sh | OBSERVE and PLAN record altered instruction files; EXECUTE imports the list and checks the nearest governing path before allowing project edits.">&#9432;</sup></p>
+                        <p>There is a second consequence of CLAUDE.md edits during a cycle, and it is what gives the bus teeth. EXECUTE &mdash; the only phase that may touch project files outside <code>.claude/</code> &mdash; is fenced to the <em>altered list</em>: the set of directories whose <code>CLAUDE.md</code> the agent edited during OBSERVE or PLAN. EXECUTE inherits the list and may only modify files inside those directories. If a directory&rsquo;s <code>CLAUDE.md</code> was never touched during the read-only phases, EXECUTE cannot make project changes there in this cycle, however clearly the work seems to call for them. <sup class="ref-marker" title="ref: second-consequence-altered-list | .claude/plugins/phase_execute/hooks/execute-guard.sh (altered-list membership gate) | Comment: &quot;Observe + plan altered_claude_md lists are merged into execute&#x27;s data.json at sensor init.&quot; Subsequent block enforces: `if ! echo &quot;$altered_list&quot; | grep -qxF &quot;$claude_rel&quot;; then block ...`. Verify-guard.sh separately blocks any project-file edit in VERIFY.">&#9432;</sup></p>
 
-                        <p>Editing the local instruction file during the read-only phases therefore serves two purposes. It writes working context, and it declares where implementation is expected to land. A directory that needs work but has no participating file can receive a well-formed <code>CLAUDE.md</code> during OBSERVE or PLAN.</p>
+                        <p>The bus is not only where the agent stores experiential notes &mdash; it is where the agent <em>declares</em> the work it intends to do. Editing a <code>CLAUDE.md</code> during OBSERVE or PLAN is a commitment that scopes what EXECUTE will be allowed to attempt. GMODE &mdash; the deliberate user-gated escape &mdash; bypasses these phase guards entirely; outside GMODE, the altered-list gate is friction the agent reads and obeys, not a mathematical proof of containment. The deeper mechanics &mdash; how the altered list is checked, what file types EXECUTE may write inside an altered-list directory, how multi-commit checkpoints land &mdash; are the subject of the <a href="../b6/06_1-phasic-foundation.html">Essay 6 series</a>. For the bus story, the structural fact is enough: <code>CLAUDE.md</code> edits gate execution. <sup class="ref-marker" title="ref: claude-md-edits-gate-execution | .claude/plugins/phase_plan/hooks/plan-tracker.sh (add-altered handler) | When a `CLAUDE.md` is edited during PLAN, `add-altered` records its path into the job&#x27;s altered_claude_md list (comment: &quot;builds altered list&quot;). Mirror in observe-tracker.sh fires the same hook during OBSERVE. The list freezes scope for EXECUTE.">&#9432;</sup></p>
 
-                        <p>Within the configured runtime this is a hard hook boundary, not merely a reminder. It still has a defined scope: the operator controls the runtime, and gmode is the prototype&rsquo;s user-gated maintenance path outside normal phase guards. The altered list constrains the phase workflow; it does not claim to secure the operating system.</p>
+                        <p>A directory with no <code>CLAUDE.md</code> yet is not a dead end &mdash; OBSERVE or PLAN simply creates the first one (body plus the four anchors) to declare it editable. Creation is blocked only if the new file lacks the four-footer protocol, so every working-memory file is born well-formed. <sup class="ref-marker" title="ref: observe-plan-create-first-claude-md | .claude/plugins/lib/section_guard/section-check.sh validate_new_claude_md_anchors + observe-guard.sh / plan-guard.sh callsites | `validate_new_claude_md_anchors` greps the proposed content for all four anchors (`---Ob---` / `---Pl---` / `---Ex---` / `---Ve---`) and returns &quot;missing&quot; if any are absent; observe-guard and plan-guard call it before allowing a Write to a non-existent `CLAUDE.md`, blocking creation of an anchorless file. EXECUTE and VERIFY cannot create `CLAUDE.md` files at all.">&#9432;</sup></p>
 
-                        <h2 id="one-hierarchy-several-roles">One hierarchy, several roles</h2>
+                        <h2 id="the-hierarchy-itself">The hierarchy itself</h2>
 
-                        <p>The prototype&rsquo;s tree contains several kinds of instruction file:</p>
+                        <p>The seed agent&rsquo;s bus is not one <code>CLAUDE.md</code>. It is a hierarchy.</p>
 
-                        <pre style="white-space: pre-wrap; overflow-wrap: break-word; max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 6px; font-size: 0.88em; line-height: 1.5;"><code>workspace/
-├── CLAUDE.md
+                        <pre style="white-space: pre-wrap; overflow-wrap: break-word; max-width: 100%; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 6px; font-size: 0.88em; line-height: 1.5;"><code>hadosh_academy/
+├── CLAUDE.md                              ← root brain
 ├── .claude/
-│   ├── CLAUDE.md
+│   ├── CLAUDE.md                          ← brain index
 │   ├── plugins/
-│   │   └── &lt;plugin&gt;/CLAUDE.md
+│   │   ├── plugin_integrity/CLAUDE.md     ← plugin brain
+│   │   ├── brain_guard/CLAUDE.md          ← plugin brain
+│   │   └── ...                            ← one per plugin
 │   └── knowledge/
-└── project/
-    └── CLAUDE.md</code></pre>
+│       ├── plugin_integrity/              ← durable, per-topic
+│       ├── brain_guard/
+│       └── ...
+└── hadi-nayebi.github.io/
+    └── CLAUDE.md                          ← project working memory</code></pre>
 
-                        <p>The root file carries the broad identity and operating contract. The <code>.claude/</code> file indexes the private cognitive system. Plugin files state each plugin&rsquo;s objective, interfaces, tests, and maintenance rules. Project and directory files carry context near the work.</p>
+                        <p>Your hierarchy will mirror your work, not this website. Same shape &mdash; root brain, plugin brains, knowledge silos, per-directory working memory &mdash; different folders, different layouts. The architecture is portable; the specific folder tree is one seed&rsquo;s answer to one user&rsquo;s work.</p>
 
-                        <p>The knowledge directory is related but distinct. Knowledge files store durable topic material; they are not automatically phase footers merely because they are Markdown. CONDENSE may route reusable findings there, and later OBSERVE work may read them as evidence.</p>
+                        <p>A lawyer building a case-analysis seed could mirror the same shape &mdash; a root <code>CLAUDE.md</code> for firm-wide research protocols, per-matter <code>CLAUDE.md</code> files inside each case folder, knowledge silos for jurisdiction-specific precedent libraries. The four-footer protocol scopes which case files the agent may edit in any given cycle, the same way it scopes the seed agent&rsquo;s plugin work here.</p>
 
-                        <p>This hierarchy should mirror the user&rsquo;s real work. A legal environment might place local instruction files by matter and durable knowledge by jurisdiction. A research environment might organize them by program, dataset, or instrument. The filesystem shape matters because it communicates ownership and scope before a model interprets any prose.</p>
+                        <p>Each layer plays a different role on the bus.</p>
+
+                        <p>The <strong>root CLAUDE.md</strong> declares the agent&rsquo;s identity and operating rules &mdash; what phases exist, what the size limits are, how the brain is allowed to grow. It is the top of the bus, and one of the two project-level CLAUDE.md files Claude Code loads at session start. <sup class="ref-marker" title="ref: root-CLAUDE-md-declares-identity | CLAUDE.md &quot;Growth Rules&quot; section under &quot;Markov Brain&quot; | Growth Rules section (8 numbered rules): new operations need definition + transition maps, recurring patterns codify, &gt;50-word ops extract to skills, CONDENSE grows brain, size limits drive reorganization, soft→hard migration, brain never stops growing, enumeration requires verification.">&#9432;</sup></p>
+
+                        <p>The <strong>brain index</strong> at <code>.claude/CLAUDE.md</code> is the other one. It catalogs the plugins, points to the knowledge directory, and records the brain-maturation lessons accumulated across cycles. <sup class="ref-marker" title="ref: brain-index-catalogs-plugins | .claude/CLAUDE.md &quot;Components&quot; section | Components section enumerates every plugin (the plugins block, with version + tests + status) and the knowledge layer (the knowledge block immediately above). &quot;Brain Maturation&quot; and &quot;Voice Architecture&quot; sections at the file&#x27;s tail hold cross-cycle disciplines.">&#9432;</sup></p>
+
+                        <p>The <strong>plugin CLAUDE.md files</strong> declare what each plugin owns. They are how a plugin tells the rest of the system "I am responsible for X, here is how I work, here are my tests, here is my current version." When a plugin is being edited, that plugin&rsquo;s CLAUDE.md is the agent&rsquo;s working memory for the edit, and its footer is where the cycle&rsquo;s experiential data accumulates until CONDENSE absorbs it. <sup class="ref-marker" title="ref: plugin-CLAUDE-md-files-declare | .claude/plugins/CLAUDE.md &quot;Plugin Structure Convention&quot; section | Plugin Structure Convention describes each plugin&#x27;s `CLAUDE.md` as &quot;Working memory — objective, state, maintenance rules.&quot; Layout includes hooks/, scripts/, tests/, docs/ each with their own nested CLAUDE.md. Minimal plugin = just CLAUDE.md.">&#9432;</sup></p>
+
+                        <p>The <strong>working-directory CLAUDE.md files</strong> are local. The website project has one. So does the blog folder. So does &mdash; when work is happening there &mdash; any directory deep in the tree where the focus currently sits. These are the files whose footers most often inflate during the OPEVC cycle and deflate during CONDENSE. <sup class="ref-marker" title="ref: working-directory-CLAUDE-md-files-local | CLAUDE.md &quot;CLAUDE.md Lifecycle&quot; section | CLAUDE.md Lifecycle states — Active (updated in every phase), Proactive (created before work in a directory), Retroactive (updated after work), Condensed (distilled at cycle close, knowledge migrated to .claude/knowledge/). Per-directory working memory.">&#9432;</sup></p>
+
+                        <p>The <strong>knowledge directory</strong> is the durable layer. When something has been learned that is worth keeping past the current cycle, CONDENSE routes it into <code>.claude/knowledge/&lt;topic&gt;/</code> as a real Markdown file with its own structure. The current prototype carries one topic silo per major plugin (<code>brain_guard/</code>, <code>phase_observe/</code>, <code>phase_condense/</code>, and so on) plus a cross-cutting <code>opevc/</code> directory that holds dozens of operational recipes mined from cycles across the system. Each topic dir tends to grow an <code>INDEX.md</code> plus a handful of focused topic files, refined cycle after cycle. OBSERVE phases recall from the directory; CONDENSE phases extend it; subagents are dispatched against it for parallel research. Knowledge files are how the agent remembers things across sessions, across cycles, across months. <sup class="ref-marker" title="ref: knowledge-directory-is-durable-layer | .claude/plugins/phase_condense/docs/principles.md &quot;6. Subagents as Extractors&quot; section | Section 6, Subagents as Extractors, names `condense-knowledge-extractor → .claude/knowledge/&lt;topic&gt;/` as the routing rule. Subagents RESOLVE a note or HAND IT BACK to the seed; they do not reject or discard content. The session archive (run-aware job dir `run-&lt;r&gt;/session-log-&lt;c&gt;.md`) is the full-footer snapshot, NOT a fallback for knowledge no subagent accepted. Knowledge directory is the durable destination CONDENSE routes into.">&#9432;</sup></p>
 
                         <h2 id="the-pluginhierarchy-asymmetry">The plugin–hierarchy asymmetry</h2>
 
-                        <p>The always-on plugins generally keep operational state in plugin-owned JSON and expose mutations through their gateway scripts. <code>job_core</code>, <code>interaction_summary</code>, and <code>brain_guard</code> do not use the <code>CLAUDE.md</code> hierarchy as their primary state store.</p>
+                        <p>Every always-on plugin keeps its own state in hidden files inside its plugin directory &mdash; files the seed agent itself cannot read or edit directly. Every state mutation goes through a plugin-owned script. Some of that script&rsquo;s commands are public, callable as part of the agent&rsquo;s workflow (<code>job.sh focused</code> is a typical example); others are flagged as internal-only and restricted to other scripts and hooks within the seed, so the agent cannot reach them at all. None of these plugins treat <code>CLAUDE.md</code> as their primary state surface. The relationship to the hierarchy varies plugin by plugin &mdash; <code>plugin_integrity</code> polices the four phase anchors from removal but otherwise leaves <code>CLAUDE.md</code> content free to edit, while the others are mostly orthogonal, owning concerns (context budget, job lifecycle, interaction summarization, question discipline) that live in their own data files. <sup class="ref-marker" title="ref: every-plugin-hidden-state-files | .claude/plugins/CLAUDE.md &quot;Plugin State Model (data.json)&quot; section | Plugin State Model: &quot;data.json is hidden internal state. The agent cannot read or edit it directly. All access through the plugin&#x27;s own scripts.&quot; Two modes — Public + `--hook`. plugin_integrity blocks direct reads/edits and the `--hook` flag from the agent.">&#9432;</sup></p>
 
-                        <p>The phase layer has the deeper relationship with the hierarchy. Its guards define the footer write boundaries; its trackers build execution scope from instruction-file changes; and CONDENSE routes the resulting experiential record. <code>plugin_integrity</code> also protects the structural anchors during plugin-edit work, but it does not own their content. <sup class="ref-marker" title="ref: ownership-asymmetry | .claude/plugins/CLAUDE.md, Plugin State Model; .claude/plugins/phase_condense/docs/principles.md; .claude/plugins/plugin_integrity hooks | Plugin state remains gateway-owned while phase plugins actively write, guard, and condense the instruction hierarchy.">&#9432;</sup></p>
+                        <p>The <strong>phasic plugins</strong> generate the bus&rsquo;s content. The choreography of how each phase writes its footer and how CONDENSE absorbs them is the subject of the <a href="../b6/06_1-phasic-foundation.html">Essay 6 series</a>. <sup class="ref-marker" title="ref: phasic-plugins-generate-bus-content | .claude/plugins/phase_condense/scripts/condense-commit.sh (anchor-grep + word-count in deflation gate) | CONDENSE deflation gate greps `^---(Ob|Pl|Ex|Ve)---$` first anchor in every altered CLAUDE.md, counts words AFTER (all four footers combined), computes `words_absorbed = total_baseline - current_total`. All four phasic plugins write through these anchors.">&#9432;</sup></p>
 
-                        <p>This is why the hierarchy behaves like a bus without becoming one central authority. The files carry visible context between phases and directory scopes. Plugins retain their own state and responsibilities.</p>
+                        <p>The relationship is asymmetric. The phasic layer is the system that actively uses the hierarchy &mdash; its phases write into footers during the cycle, and CONDENSE absorbs the durable parts upward into bodies, sideways into knowledge files, and into voice files, subagent definitions, and the brain&rsquo;s own operations, at cycle close. The always-on layer mostly does not &mdash; each of its plugins runs its own concern through its own state, with at most narrow points of contact (<code>plugin_integrity</code> guards the phase anchors; the rest are orthogonal). In the current prototype, well over a hundred <code>CLAUDE.md</code> files across the brain carry the four phase footers &mdash; nearly all of those inside <code>.claude/</code> alone. The footer convention is the protocol &mdash; and the phasic layer is what writes through it. <sup class="ref-marker" title="ref: relationship-is-asymmetric-phasic-uses | CLAUDE.md &quot;CONDENSE.consume-markers&quot; sub-operation (under &quot;Sub-Operations of CONDENSE&quot;) | CONDENSE.consume-markers (steps 3-6) routes footer marked notes to multiple destinations: `[PENDING-JOB]` → job creation, `[VOICE-UPDATE]` → voice.xml, `[AGENT-UPDATE]` → subagent defs, `[KNOWLEDGE]` → knowledge files. Filesystem: nearly all CLAUDE.md files inside `.claude/` carry all four phase footers.">&#9432;</sup></p>
 
-                        <h2 id="what-you-would-customize">What you would customize</h2>
-
-                        <p>A new seed does not need four footers merely because this prototype used OPEVC. Its working-memory partitions should follow its actual stages. A research workflow might separate collection, interpretation, challenge, and synthesis. A consulting workflow might separate discovery, proposal, delivery, and review.</p>
-
-                        <p>Keep the durable body small enough to remain effective. Claude Code currently recommends concise instruction files and offers path-scoped rules for guidance that only applies to certain files. More hierarchy can reduce irrelevant context, but contradictory or oversized instructions can still reduce adherence.</p>
-
-                        <p>The portable lesson is to distinguish native instruction loading from the workflow built on top of it. Use plain files for inspectable context, hooks for boundaries that must fire, and explicit condensation for deciding what deserves to survive.</p>
+                        <p>This is the bus.</p>
 
                         <hr>
 
-                        <p>The next part shows several single-purpose plugins composing into one maintenance ceremony.</p>
+                        <p>The working-memory form is built &mdash; body + four footers + altered-list gate + the layered hierarchy. The next part deconstructs one of the architecture&rsquo;s most elegant proofs that this substrate works in concert: three plugins compose into a ceremony that no plugin could enforce alone.</p>
 
                         <hr>
 
                         <p><em>Essay 5.7 &mdash; The Always-On Digital Cortex, Part 7 of 9.</em></p>
 
-                        <p><em>Previous: <a href="05_6-question-discipline.html">Essay 5.6 &mdash; Structured Questions &mdash; <code>question_discipline</code></a> &mdash; the named and shaped user-question surface.</em> <em>Next: <a href="05_8-historian-ratchet.html">Essay 5.8 &mdash; The Historian Ratchet</a> &mdash; a composed maintenance ceremony with separate owners.</em></p>
+                        <p><em>Previous: <a href="05_6-question-discipline.html">Essay 5.6 &mdash; Structured Questions &mdash; <code>question_discipline</code></a> &mdash; the registered-prefix gate.</em> <em>Next: <a href="05_8-historian-ratchet.html">Essay 5.8 &mdash; The Historian Ratchet</a> &mdash; composed ceremony from three single-concern plugins.</em></p>
+
                     </div>
 
                     <!-- Comments (Giscus) -->
@@ -265,7 +283,7 @@
                                 </div>
                                 <div class="sidebar-card-position">&larr; Previous in series</div>
                                 <h3>Essay 5.6 — Structured Questions — question_discipline</h3>
-                                <div class="date">May 2026 &bull; 7 min read</div>
+                                <div class="date">May 2026 &bull; 8 min read</div>
                             </div>
                         </a>
                         <div class="article-card active">
@@ -277,7 +295,7 @@
                             </div>
                             <div class="sidebar-card-position">You are here</div>
                             <h3>Essay 5.7 — The CLAUDE.md Hierarchy</h3>
-                            <div class="date">May 2026 &bull; 8 min read</div>
+                            <div class="date">May 2026 &bull; 12 min read</div>
                         </div>
                         <a href="05_8-historian-ratchet.html" class="article-card-link">
                             <div class="article-card">
@@ -289,7 +307,7 @@
                                 </div>
                                 <div class="sidebar-card-position">Next in series &rarr;</div>
                                 <h3>Essay 5.8 — The Historian Ratchet</h3>
-                                <div class="date">May 2026 &bull; 7 min read</div>
+                                <div class="date">May 2026 &bull; 10 min read</div>
                             </div>
                         </a>
                         <a href="/blog.html" class="article-card-link sidebar-all-essays-link">
