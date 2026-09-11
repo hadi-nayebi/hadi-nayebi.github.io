@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "path": "blog/b7/07_6-agents-and-80-20-budget.md",
+  "source_sha256": "7991631e37abc2d2353823d8131ec51d003771324fc289e99e53b7a89a68477d",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/07_6-agents-and-80-20-budget.md",
+  "review": {
+    "factual": "passed",
+    "technical_or_historical": "passed",
+    "chronology_and_maturity": "passed",
+    "cross_writing_consistency": "passed",
+    "editorial": "passed",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "pending"
+  }
+}
