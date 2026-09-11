@@ -59,6 +59,21 @@ approved conceptual work. Preserve their voice, thesis, imagery, and structure.
 Make only restrained corrections for factual accuracy, avoidable repetition,
 continuity, grammar, and a coherent spoken arc. Report every prose change.
 
+These principle writings are philosophical, metaphorical, prospective essays
+for professionals across many fields. They aim to change the frame around
+models, harnesses, files, tools, hooks, jobs, and complex systems and to argue
+for a healthier future, even while current products and terminology continue
+to mature. Preserve at least roughly 90 percent of each approved essay's
+language, structure, metaphors, voice, and narrative. Use a strict token-level
+sequence comparison with the review baseline as a warning when the diff may be
+too large; then judge the actual prose rather than optimizing the number.
+Correct a metaphor only when its central relationship would materially mislead
+the intended professional reader. Do not demand a literal one-to-one mapping,
+flatten thought experiments into technical documentation, or trade poetic
+force and narration flow for details that do not affect the principle. Signal
+future scenarios as prospective; verify empirical support and concrete current
+capability claims to the degree needed to protect the argument.
+
 B5 through B9 are technical writings. Correct them as extensively as required
 for accuracy. Prefer product- and framework-agnostic principles, and label a
 specific prototype or reference implementation as such. Do not present a
