@@ -24,7 +24,7 @@ reviewed. They are not narration approvals.
 ## Confirmed corpus
 
 - 49 numbered essays: 5 Part 1 principle writings and 44 technical writings.
-- 5 published Observation episodes containing 34 narrated slides.
+- 6 published Observation episodes containing 40 narrated slides.
 - 1 practical guide.
 - Owner-excluded unpublished writing, Explore pages, diagram narration,
   project and portfolio pages, and every other website page are excluded.
@@ -67,7 +67,7 @@ reviewed. They are not narration approvals.
    relationship must be normalized before content lock.
 8. **Observation has the strongest source structure.** Every slide already
    separates narration from source links and reserves audio as a placeholder.
-   Its 34 slides still require claim-by-claim source support, chronology,
+   At the original review baseline, its 34 slides still required claim-by-claim source support, chronology,
    uncertainty, narrative-continuity, and editorial review.
 9. **The practical guide needs a clean-room reproduction pass.** Every user
    action, product label, privacy choice, and GitHub Pages step must be tested
