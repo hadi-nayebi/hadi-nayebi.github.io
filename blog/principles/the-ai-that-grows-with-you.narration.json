@@ -1,0 +1,2741 @@
+{
+  "schema_version": "1.0.0",
+  "source": "blog/principles/the-ai-that-grows-with-you.md",
+  "source_sha256": "d4458428a9c83131ea494ed7d40ef89a45a6c3ffde4da34dfa610f878c396c75",
+  "status": "voice-review",
+  "content_lock": {
+    "status": "approved",
+    "approved_at": "2026-09-11"
+  },
+  "voice_review": "pending",
+  "canonical_text_policy": "Readable published wording is retained in text; render-only aliases live in tts_text.",
+  "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
+  "audio": {
+    "engine": "Qwen3-TTS voice clone",
+    "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "target_wpm": 165,
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "loudness_lufs": -16,
+    "true_peak_dbtp": -1.5,
+    "publication_path": "blog/principles/audio/the-ai-that-grows-with-you.mp3"
+  },
+  "curation": {
+    "source_file_words": 8014,
+    "narration_words": 7632,
+    "excluded": [
+      "front matter",
+      "evidence annotations",
+      "visual and asset-production instructions",
+      "image captions",
+      "code blocks",
+      "raw link destinations",
+      "previous and next navigation",
+      "duplicate title and series footer"
+    ]
+  },
+  "pronunciation_lexicon": {
+    "Bluesky": {
+      "tts": "Blue sky",
+      "ipa": null,
+      "asr_accept": [
+        "Bluesky",
+        "blue sky",
+        "blue ski"
+      ]
+    }
+  },
+  "chunks": [
+    {
+      "id": "n001",
+      "sequence": 1,
+      "kind": "title",
+      "text": "The AI That Grows With You",
+      "tts_text": "The AI That Grows With You",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 700,
+      "text_sha256": "c85d86a77c7588e83e29ead9883ba31015322fbb801a49695a2061efc0679475"
+    },
+    {
+      "id": "n002",
+      "sequence": 2,
+      "kind": "body",
+      "text": "We usually compare artificial-intelligence systems by asking which model is more capable. Which model can reason more clearly? Which one writes better? Which one understands more information, uses more tools, or completes more difficult work? These are important questions. But notice where they direct our attention.",
+      "tts_text": "We usually compare artificial-intelligence systems by asking which model is more capable. Which model can reason more clearly? Which one writes better? Which one understands more information, uses more tools, or completes more difficult work? These are important questions. But notice where they direct our attention.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "eeef01afd040f8bb4f249bf2f8c57772526f8575a476eef7b1244a6fd3bbcfbc"
+    },
+    {
+      "id": "n003",
+      "sequence": 3,
+      "kind": "body",
+      "text": "Almost all of them shine the spotlight on the model: the large language model, or LLM, that provides the system’s general capacity for language and reasoning. This is also the part that AI companies promote most heavily. Models receive names, rankings, benchmarks, launch events, and headlines.",
+      "tts_text": "Almost all of them shine the spotlight on the model: the large language model, or LLM, that provides the system’s general capacity for language and reasoning. This is also the part that AI companies promote most heavily. Models receive names, rankings, benchmarks, launch events, and headlines.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8ed509158acf1953008d27d6b0d4c0bf7878c16772980427a775f43a5782b491"
+    },
+    {
+      "id": "n004",
+      "sequence": 4,
+      "kind": "body",
+      "text": "As a result, it is easy to speak about the model as if it were the entire AI system. But an agentic AI system has two major parts. The first is the model. It supplies general intelligence: the ability to interpret language, reason through a problem, generate possibilities, and decide what might be done next.",
+      "tts_text": "As a result, it is easy to speak about the model as if it were the entire AI system. But an agentic AI system has two major parts. The first is the model. It supplies general intelligence: the ability to interpret language, reason through a problem, generate possibilities, and decide what might be done next.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e98c975efb407a5b5e598bae5a698b8728b4042bdb464c3de2bd9b5f229b2ea5"
+    },
+    {
+      "id": "n005",
+      "sequence": 5,
+      "kind": "body",
+      "text": "The second is the harness: the surrounding structure that allows that intelligence to operate in a particular environment, for a particular purpose, and eventually for a particular person.",
+      "tts_text": "The second is the harness: the surrounding structure that allows that intelligence to operate in a particular environment, for a particular purpose, and eventually for a particular person.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "232bddfbf126ba8e9afec0478948af7d5e25b21e13fe7c485354943b1fff482a"
+    },
+    {
+      "id": "n006",
+      "sequence": 6,
+      "kind": "body",
+      "text": "A harness can give the model access to tools. It can preserve memory, organize work, define permissions, connect information, enforce boundaries, verify actions, and determine what happens before or after the model makes a decision.",
+      "tts_text": "A harness can give the model access to tools. It can preserve memory, organize work, define permissions, connect information, enforce boundaries, verify actions, and determine what happens before or after the model makes a decision.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "0f6c6aa934a6b65e7947dcef2c56801227dc6782d57e8d08ef7049c117a31e31"
+    },
+    {
+      "id": "n007",
+      "sequence": 7,
+      "kind": "body",
+      "text": "Hooks and similar mechanisms—which we have explored in The Language of Agents—can observe important moments, provide instructions, or stop an unsafe action before it proceeds. The distinction between the model and the harness did not become obvious all at once.",
+      "tts_text": "Hooks and similar mechanisms—which we have explored in The Language of Agents—can observe important moments, provide instructions, or stop an unsafe action before it proceeds. The distinction between the model and the harness did not become obvious all at once.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "dd4dd25f46e10377ae37294420514b8b35cb8deb1b400477f8a7408f7fcb0f4e"
+    },
+    {
+      "id": "n008",
+      "sequence": 8,
+      "kind": "body",
+      "text": "Large language models came first. Early applications placed relatively thin software around them: a chat window, a system instruction, perhaps a few connected tools. But as people asked these models to perform longer and more consequential work, the limitations became increasingly visible.",
+      "tts_text": "Large language models came first. Early applications placed relatively thin software around them: a chat window, a system instruction, perhaps a few connected tools. But as people asked these models to perform longer and more consequential work, the limitations became increasingly visible.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e9fdda63c66d793b6ee7b4923692b2a9fd024d938ea2eeab409f25fea98f624b"
+    },
+    {
+      "id": "n009",
+      "sequence": 9,
+      "kind": "body",
+      "text": "A capable model could reason, but reasoning alone did not give it durable memory. It could use a tool, but it did not automatically know when that tool should be allowed. It could begin a complicated task, but it needed structure to preserve its progress, verify the result, recover from failure, and continue over time.",
+      "tts_text": "A capable model could reason, but reasoning alone did not give it durable memory. It could use a tool, but it did not automatically know when that tool should be allowed. It could begin a complicated task, but it needed structure to preserve its progress, verify the result, recover from failure, and continue over time.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d24e87eeabf0aaf6084b908b69922629e94e45323415dd89756b6435772334d8"
+    },
+    {
+      "id": "n010",
+      "sequence": 10,
+      "kind": "body",
+      "text": "The software surrounding the model therefore began to grow. What started as a thin connection between a model and a few tools gradually became a more substantial operating structure. Memory was added. Then retrieval, permissions, workflows, hooks, verification systems, and ways of coordinating multiple steps.",
+      "tts_text": "The software surrounding the model therefore began to grow. What started as a thin connection between a model and a few tools gradually became a more substantial operating structure. Memory was added. Then retrieval, permissions, workflows, hooks, verification systems, and ways of coordinating multiple steps.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "f36e3f64feeb7614a667f034e06fd7c76f01334cc1d03c8b41bc5c471584c582"
+    },
+    {
+      "id": "n011",
+      "sequence": 11,
+      "kind": "body",
+      "text": "In command-line agents and other emerging systems, the harness increasingly determines how the intelligence behaves in practice. Yet this part of the system still receives much less attention than the model. That imbalance matters because the two parts create different kinds of value.",
+      "tts_text": "In command-line agents and other emerging systems, the harness increasingly determines how the intelligence behaves in practice. Yet this part of the system still receives much less attention than the model. That imbalance matters because the two parts create different kinds of value.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4132062a9f9794510095f022d9d3e4bf03d8bb9bc4da4a79eb06f143244348a5"
+    },
+    {
+      "id": "n012",
+      "sequence": 12,
+      "kind": "body",
+      "text": "A powerful model can provide general intelligence to millions of people. The same model may help a scientist, a filmmaker, a lawyer, a teacher, or a small-business owner. It does not need to be rebuilt from the beginning for every user. The harness is different.",
+      "tts_text": "A powerful model can provide general intelligence to millions of people. The same model may help a scientist, a filmmaker, a lawyer, a teacher, or a small-business owner. It does not need to be rebuilt from the beginning for every user. The harness is different.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "005c07636c884920ffc00b184d573871528fcf8506f7039079ca81c1230502a3"
+    },
+    {
+      "id": "n013",
+      "sequence": 13,
+      "kind": "body",
+      "text": "The more useful it becomes, the more it must reflect a particular person: their responsibilities, habits, standards, tools, relationships, boundaries, and ways of making decisions. Some of its building blocks can be shared, but the complete structure cannot be meaningfully identical for everyone.",
+      "tts_text": "The more useful it becomes, the more it must reflect a particular person: their responsibilities, habits, standards, tools, relationships, boundaries, and ways of making decisions. Some of its building blocks can be shared, but the complete structure cannot be meaningfully identical for everyone.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "88af717019793d1d8b3c5604a70b85e51bb4629bd3d184fc6b0b48c7fa43d665"
+    },
+    {
+      "id": "n014",
+      "sequence": 14,
+      "kind": "body",
+      "text": "This is where personalization in AI becomes more consequential than choosing which model performs best on a benchmark.",
+      "tts_text": "This is where personalization in AI becomes more consequential than choosing which model performs best on a benchmark.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2ce9918cebf4047f468296edfeca3d749a6a5c83c397484a6854e386b9a39401"
+    },
+    {
+      "id": "n015",
+      "sequence": 15,
+      "kind": "body",
+      "text": "As an AI system becomes part of someone’s everyday life, value begins to accumulate inside the harness. The system gradually learns how that person communicates, how they organize their work, what they consider important, which mistakes they tend to make, and how they prefer to solve problems.",
+      "tts_text": "As an AI system becomes part of someone’s everyday life, value begins to accumulate inside the harness. The system gradually learns how that person communicates, how they organize their work, what they consider important, which mistakes they tend to make, and how they prefer to solve problems.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "5677bee94da08a9bf6eab3d15362387addf245d8b23962d2dc85a701f2ddf331"
+    },
+    {
+      "id": "n016",
+      "sequence": 16,
+      "kind": "body",
+      "text": "At first, this accumulation may look insignificant: a few saved instructions, some conversation history, a preferred writing style, or a connection to a calendar. But over time, these fragments can become something much larger. They can develop into a working understanding of a person’s life.",
+      "tts_text": "At first, this accumulation may look insignificant: a few saved instructions, some conversation history, a preferred writing style, or a connection to a calendar. But over time, these fragments can become something much larger. They can develop into a working understanding of a person’s life.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a2466de1241141fd4f4aa4e5e39ea41edcad60073b74412127e2d21fae78b8f8"
+    },
+    {
+      "id": "n017",
+      "sequence": 17,
+      "kind": "body",
+      "text": "We have seen a simpler version of this process before.",
+      "tts_text": "We have seen a simpler version of this process before.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "1b25f21ff767b3e248a16eb8d73a2f77f96685f8d8b970e24fd9039334b9ef45"
+    },
+    {
+      "id": "n018",
+      "sequence": 18,
+      "kind": "body",
+      "text": "A new computer, phone, or browser begins as a generic product. It is nearly identical to thousands or millions of other copies. But after months of use, it no longer feels generic. It contains your bookmarks, passwords, contacts, shortcuts, settings, documents, extensions, and history.",
+      "tts_text": "A new computer, phone, or browser begins as a generic product. It is nearly identical to thousands or millions of other copies. But after months of use, it no longer feels generic. It contains your bookmarks, passwords, contacts, shortcuts, settings, documents, extensions, and history.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "5827e3d6b797eb596ddbb33487996da9a5523607d001823c59320f6951ad2d81"
+    },
+    {
+      "id": "n019",
+      "sequence": 19,
+      "kind": "body",
+      "text": "You have arranged it around your habits, often without consciously deciding to do so. The original software may have been created by a company, but the particular way it has been shaped around you was created through your own time and experience.",
+      "tts_text": "You have arranged it around your habits, often without consciously deciding to do so. The original software may have been created by a company, but the particular way it has been shaped around you was created through your own time and experience.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ed32ef006f8cf6ba0264c6226606b5edcef57056eae98800ff1a1660092258e6"
+    },
+    {
+      "id": "n020",
+      "sequence": 20,
+      "kind": "body",
+      "text": "That distinction is easy to overlook because, in earlier generations of technology, personalization was usually limited. Losing a browser configuration was frustrating. Losing a social-media account could be painful. But neither one contained a complete working model of how you think and operate.",
+      "tts_text": "That distinction is easy to overlook because, in earlier generations of technology, personalization was usually limited. Losing a browser configuration was frustrating. Losing a social-media account could be painful. But neither one contained a complete working model of how you think and operate.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "49cd0d81c67b9854dcb4d201f7d6ec4fe6e0531316b837f9d3822f250b089f7a"
+    },
+    {
+      "id": "n021",
+      "sequence": 21,
+      "kind": "body",
+      "text": "Agentic AI may be different. An AI system that works with you for years could accumulate far more than preferences. It could learn how you conduct research, manage projects, evaluate evidence, communicate with different people, protect sensitive information, and recover when something goes wrong.",
+      "tts_text": "Agentic AI may be different. An AI system that works with you for years could accumulate far more than preferences. It could learn how you conduct research, manage projects, evaluate evidence, communicate with different people, protect sensitive information, and recover when something goes wrong.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "4162b0974cdc6a73d6d44f6318d14ca4db9739178e4d3376b42feaa0706283ea"
+    },
+    {
+      "id": "n022",
+      "sequence": 22,
+      "kind": "body",
+      "text": "It could remember not only what you have done, but how and why you tend to do it. At that point, the most valuable part of the system may no longer be the intelligence supplied by the AI company. It may be the personal structure that has grown around that intelligence through years of use.",
+      "tts_text": "It could remember not only what you have done, but how and why you tend to do it. At that point, the most valuable part of the system may no longer be the intelligence supplied by the AI company. It may be the personal structure that has grown around that intelligence through years of use.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2a786304f68930179fd417e8d5bd7721befc38d0927b1598ac3328213cbe7743"
+    },
+    {
+      "id": "n023",
+      "sequence": 23,
+      "kind": "body",
+      "text": "This leads to the central argument of this essay: The model can belong to a company. The part that learns your life and work should belong to you. To understand why this distinction matters, we need to look beyond AI. The same question has appeared repeatedly throughout the history of digital technology.",
+      "tts_text": "This leads to the central argument of this essay: The model can belong to a company. The part that learns your life and work should belong to you. To understand why this distinction matters, we need to look beyond AI. The same question has appeared repeatedly throughout the history of digital technology.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "49af244c88278c1e79adb3e21904863bb8174f742bdb628e525adfe7e0b31519"
+    },
+    {
+      "id": "n024",
+      "sequence": 24,
+      "kind": "body",
+      "text": "Each generation has created new ways for technology to adapt to individuals. Sometimes that adaptation remained close to the user, where it could be inspected, modified, replaced, and carried elsewhere.",
+      "tts_text": "Each generation has created new ways for technology to adapt to individuals. Sometimes that adaptation remained close to the user, where it could be inspected, modified, replaced, and carried elsewhere.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "81b675f1eb3442f0885c55eb5a4ca9f440e18c8eb5c9d886cf0cf5633034fea0"
+    },
+    {
+      "id": "n025",
+      "sequence": 25,
+      "kind": "body",
+      "text": "At other times, it moved inside a company’s platform, where it became powerful but difficult to understand or leave behind. The history of the web, the browser, and social media shows us both possibilities. It also helps us recognize the much more consequential choice now appearing in AI.",
+      "tts_text": "At other times, it moved inside a company’s platform, where it became powerful but difficult to understand or leave behind. The history of the web, the browser, and social media shows us both possibilities. It also helps us recognize the much more consequential choice now appearing in AI.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7b27511f72e82b3697d8a94de19881c0c2fa779b55296ba8d43853c2c5df0ffe"
+    },
+    {
+      "id": "n026",
+      "sequence": 26,
+      "kind": "heading",
+      "text": "The Choices That Create Different Futures",
+      "tts_text": "The Choices That Create Different Futures",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "5d5578655a24342b9f8f2f2996e6601e44a21836d0070d2d64dac184fe86eae9"
+    },
+    {
+      "id": "n027",
+      "sequence": 27,
+      "kind": "body",
+      "text": "The history of digital technology is often presented as a sequence of inventions. The internet appeared. The web was built on it. Browsers made it accessible. Social networks connected people. Artificial intelligence arrived afterward. But there is another way to understand this history.",
+      "tts_text": "The history of digital technology is often presented as a sequence of inventions. The internet appeared. The web was built on it. Browsers made it accessible. Social networks connected people. Artificial intelligence arrived afterward. But there is another way to understand this history.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "9fb6e870f3ffa0c001cd19837d913dd5ca909b87e60e32dc4e0ae420fb4ee188"
+    },
+    {
+      "id": "n028",
+      "sequence": 28,
+      "kind": "body",
+      "text": "At every stage, people made choices about where control should reside, what should remain visible, what users should be allowed to change, and which parts of the technology should be open to inspection.",
+      "tts_text": "At every stage, people made choices about where control should reside, what should remain visible, what users should be allowed to change, and which parts of the technology should be open to inspection.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d507b423b883106009cc53999dba2ec1779df99eeed58e5a375feb60c326ef43"
+    },
+    {
+      "id": "n029",
+      "sequence": 29,
+      "kind": "body",
+      "text": "Those choices did more than determine how the technology worked at that moment. They made some futures easier to reach and other futures more difficult. The early web is an important example.",
+      "tts_text": "Those choices did more than determine how the technology worked at that moment. They made some futures easier to reach and other futures more difficult. The early web is an important example.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "bc61664b47043662336d75dd801a48fbe8786f998e901ead696a5951ae8ce383"
+    },
+    {
+      "id": "n030",
+      "sequence": 30,
+      "kind": "body",
+      "text": "The internet provided the underlying network through which computers could communicate. The web introduced common standards for pages, links, and addresses. Because those standards were open, different people and organizations could build websites, servers, and browsers that worked together.",
+      "tts_text": "The internet provided the underlying network through which computers could communicate. The web introduced common standards for pages, links, and addresses. Because those standards were open, different people and organizations could build websites, servers, and browsers that worked together.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "382c7985e1222fe12e3f49476d7f902f11eee39c256292dcf951b533b9fd1aa9"
+    },
+    {
+      "id": "n031",
+      "sequence": 31,
+      "kind": "body",
+      "text": "No single company needed to own the whole environment. But open standards alone could not guarantee an open experience.",
+      "tts_text": "No single company needed to own the whole environment. But open standards alone could not guarantee an open experience.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "6f535ea4940ce410de7b28889173f5a392e54f1e6f849fb69090f1633cca1deb"
+    },
+    {
+      "id": "n032",
+      "sequence": 32,
+      "kind": "body",
+      "text": "Most people did not interact directly with internet protocols or web standards. They experienced the web through a browser. The browser stood between the individual and almost everything available online. That position gave browsers enormous power.",
+      "tts_text": "Most people did not interact directly with internet protocols or web standards. They experienced the web through a browser. The browser stood between the individual and almost everything available online. That position gave browsers enormous power.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "47edc126c1d26db3562bcc20ba43c662e4266b1c48f209831d7170fdafcf07bd"
+    },
+    {
+      "id": "n033",
+      "sequence": 33,
+      "kind": "body",
+      "text": "A browser could decide how a page was displayed. It could allow or block certain capabilities. It could protect users from harmful behavior, but it could also potentially hide information, favor particular services, restrict certain websites, or shape what the user was able to do.",
+      "tts_text": "A browser could decide how a page was displayed. It could allow or block certain capabilities. It could protect users from harmful behavior, but it could also potentially hide information, favor particular services, restrict certain websites, or shape what the user was able to do.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c159c9c9b880b82c0b745b146824ad6b9085276f11357284eb230f423b50aaf1"
+    },
+    {
+      "id": "n034",
+      "sequence": 34,
+      "kind": "body",
+      "text": "This means that an open web could still have been experienced through a closed and highly controlled doorway. We can imagine an alternate history in which every widely used browser remained proprietary, impossible to inspect, difficult to extend, and controlled by a small number of companies.",
+      "tts_text": "This means that an open web could still have been experienced through a closed and highly controlled doorway. We can imagine an alternate history in which every widely used browser remained proprietary, impossible to inspect, difficult to extend, and controlled by a small number of companies.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "5eaf712c3a8f18da340aac3584ade83273ea28ea3caf8529749e2489791dcf32"
+    },
+    {
+      "id": "n035",
+      "sequence": 35,
+      "kind": "body",
+      "text": "The standards underneath might still have been open. Millions of websites might still have existed. But ordinary users would have had no reliable way to know what was happening between those websites and their screens. Was the browser blocking something for security, or for the business interests of its owner?",
+      "tts_text": "The standards underneath might still have been open. Millions of websites might still have existed. But ordinary users would have had no reliable way to know what was happening between those websites and their screens. Was the browser blocking something for security, or for the business interests of its owner?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "5fa88fe2e27be01d9fce3fd7a01bb2086d070053e88862482a021a3e05fe1769"
+    },
+    {
+      "id": "n036",
+      "sequence": 36,
+      "kind": "body",
+      "text": "Was it treating every website equally? Was it collecting information that the user did not knowingly provide? Was it changing what people could see, which services worked properly, or which parts of the web were easiest to access?",
+      "tts_text": "Was it treating every website equally? Was it collecting information that the user did not knowingly provide? Was it changing what people could see, which services worked properly, or which parts of the web were easiest to access?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c6e8c07f1dd393d5ca329c0b8b7e509baa08906368638780a56efa8b689fb004"
+    },
+    {
+      "id": "n037",
+      "sequence": 37,
+      "kind": "body",
+      "text": "Without transparency, users would have had to trust the companies controlling their browsers. They could observe some of the results, but they could not meaningfully inspect the mechanisms producing them. Open-source browsers made this future more difficult to impose.",
+      "tts_text": "Without transparency, users would have had to trust the companies controlling their browsers. They could observe some of the results, but they could not meaningfully inspect the mechanisms producing them. Open-source browsers made this future more difficult to impose.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "852cfe055651bdfc2462c261ef292c2178f32665b53dc519a7ff32d0269119a3"
+    },
+    {
+      "id": "n038",
+      "sequence": 38,
+      "kind": "body",
+      "text": "When software is open source, its code can be examined. Developers, researchers, security experts, competing organizations, and interested members of the public can study what it does. If something suspicious is introduced, more people have an opportunity to discover it.",
+      "tts_text": "When software is open source, its code can be examined. Developers, researchers, security experts, competing organizations, and interested members of the public can study what it does. If something suspicious is introduced, more people have an opportunity to discover it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "41cd4f49b6b3cdc077c50364914b27050b068f03cddbb9639138f44efb23f500"
+    },
+    {
+      "id": "n039",
+      "sequence": 39,
+      "kind": "body",
+      "text": "If the project moves in a harmful direction, others may be able to modify the code or create a different version. Open source does not make manipulation impossible.",
+      "tts_text": "If the project moves in a harmful direction, others may be able to modify the code or create a different version. Open source does not make manipulation impossible.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "68fcdf82862eb73679ea48e639d49bf61de44bb5dae7e4560842c3c8be560a77"
+    },
+    {
+      "id": "n040",
+      "sequence": 40,
+      "kind": "body",
+      "text": "Code can be extremely complex. Most users will never personally inspect it. Large projects can still be influenced by powerful organizations. Harmful changes can escape attention, and an open-source project can still make poor decisions. But openness changes the difficulty of hiding those decisions.",
+      "tts_text": "Code can be extremely complex. Most users will never personally inspect it. Large projects can still be influenced by powerful organizations. Harmful changes can escape attention, and an open-source project can still make poor decisions. But openness changes the difficulty of hiding those decisions.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f50b315d7d944d6fda4247741a3043a5b2034bcb8c914b156d3fbb5e8d3af41f"
+    },
+    {
+      "id": "n041",
+      "sequence": 41,
+      "kind": "body",
+      "text": "It creates more eyes, more opportunities for scrutiny, and more possibilities for disagreement to become action. It makes certain forms of concealed control harder to sustain. It also makes experimentation, extension, and correction easier.",
+      "tts_text": "It creates more eyes, more opportunities for scrutiny, and more possibilities for disagreement to become action. It makes certain forms of concealed control harder to sustain. It also makes experimentation, extension, and correction easier.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ca8725dea427d761df87c8cddf8784f9777abaf6d8b5cb05c236e055dbcdbf03"
+    },
+    {
+      "id": "n042",
+      "sequence": 42,
+      "kind": "body",
+      "text": "The release of Netscape’s browser source code in 1998 helped begin the Mozilla project, from which Firefox later emerged. This mattered for more than the survival of another browser. It helped preserve the possibility that an important doorway into the web could remain publicly inspectable and modifiable.",
+      "tts_text": "The release of Netscape’s browser source code in 1998 helped begin the Mozilla project, from which Firefox later emerged. This mattered for more than the survival of another browser. It helped preserve the possibility that an important doorway into the web could remain publicly inspectable and modifiable.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Netscape",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Netscape"
+          ]
+        },
+        {
+          "term": "Mozilla",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Mozilla"
+          ]
+        },
+        {
+          "term": "Firefox",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Firefox"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "1cfc03ed14fb502ec7f040da10d5d5a50ae5be59cad0b2a4af7309292328ad17"
+    },
+    {
+      "id": "n043",
+      "sequence": 43,
+      "kind": "body",
+      "text": "The presence of open-source browsers also affected the environment around proprietary browsers. A company considering a restrictive or intrusive decision did not operate in a world where every alternative was equally closed. Its behavior could be compared against an inspectable implementation.",
+      "tts_text": "The presence of open-source browsers also affected the environment around proprietary browsers. A company considering a restrictive or intrusive decision did not operate in a world where every alternative was equally closed. Its behavior could be compared against an inspectable implementation.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "fe4c03bbfab229f85884c3b67497511f88a876b7f3cef7c1dd9cc36742c31fff"
+    },
+    {
+      "id": "n044",
+      "sequence": 44,
+      "kind": "body",
+      "text": "Developers could study differences. Users could move elsewhere. Competing browsers could adopt features that restored capabilities or protected privacy. Open source did not eliminate corporate power, but it created resistance to invisible control.",
+      "tts_text": "Developers could study differences. Users could move elsewhere. Competing browsers could adopt features that restored capabilities or protected privacy. Open source did not eliminate corporate power, but it created resistance to invisible control.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7c4781ad5ed952b6a206b1c18a687a79677b56724d605c0b6b4c94fabbca3d39"
+    },
+    {
+      "id": "n045",
+      "sequence": 45,
+      "kind": "body",
+      "text": "It helped establish the expectation that the browser should serve the user, even while connecting that user to websites and services operated by other parties. This expectation appeared in practical ways.",
+      "tts_text": "It helped establish the expectation that the browser should serve the user, even while connecting that user to websites and services operated by other parties. This expectation appeared in practical ways.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b799e2d6ae1ecf2633d24d5dbda96deb7abc1be602e96dd1ff2e3c8c07fb6732"
+    },
+    {
+      "id": "n046",
+      "sequence": 46,
+      "kind": "body",
+      "text": "People could install extensions that changed how websites behaved. They could block advertising or tracking. They could modify the visual appearance of pages. They could inspect what a website sent to their computer. They could manage cookies, permissions, passwords, downloads, and browsing history.",
+      "tts_text": "People could install extensions that changed how websites behaved. They could block advertising or tracking. They could modify the visual appearance of pages. They could inspect what a website sent to their computer. They could manage cookies, permissions, passwords, downloads, and browsing history.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2cc4656235396d2c000696bd2b8ff2ab2c32eb267658886e3cce7a47658d8b1f"
+    },
+    {
+      "id": "n047",
+      "sequence": 47,
+      "kind": "body",
+      "text": "The website did not possess complete authority over the experience. Neither did the browser company. Some decisions remained with the person using the computer, and open-source browsers helped protect the possibility that more of those decisions could remain there.",
+      "tts_text": "The website did not possess complete authority over the experience. Neither did the browser company. Some decisions remained with the person using the computer, and open-source browsers helped protect the possibility that more of those decisions could remain there.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "5117b23dd403d9350a212e1167e8dd5a87a74495bd2795867e884492efd85d7b"
+    },
+    {
+      "id": "n048",
+      "sequence": 48,
+      "kind": "body",
+      "text": "This is also why local personalization was not the only important feature.",
+      "tts_text": "This is also why local personalization was not the only important feature.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "1236b2e4378c3b9269d84363609f6ba7709e5c4cf04cbed85d5df44047acc9be"
+    },
+    {
+      "id": "n049",
+      "sequence": 49,
+      "kind": "body",
+      "text": "A proprietary browser could still store bookmarks and settings on the user’s computer. That would make the data local, but locality alone would not make the system transparent. If the user could not understand or challenge what the browser was doing, the company could still exercise hidden control through the software.",
+      "tts_text": "A proprietary browser could still store bookmarks and settings on the user’s computer. That would make the data local, but locality alone would not make the system transparent. If the user could not understand or challenge what the browser was doing, the company could still exercise hidden control through the software.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "177cafbce867b5b92eba6f21eb799786ed3c3ba477987eebca83b92eec8c7c1e"
+    },
+    {
+      "id": "n050",
+      "sequence": 50,
+      "kind": "body",
+      "text": "User ownership therefore requires more than keeping files nearby. It also requires transparency: the ability for the system’s behavior to be inspected and understood. It requires autonomy: the practical ability of the person to change that behavior, reject a decision, add a capability, or choose another implementation.",
+      "tts_text": "User ownership therefore requires more than keeping files nearby. It also requires transparency: the ability for the system’s behavior to be inspected and understood. It requires autonomy: the practical ability of the person to change that behavior, reject a decision, add a capability, or choose another implementation.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0e32ffc9e1dd278f4348035160503df518e1867e2b827bb383c452ab7a05e1bc"
+    },
+    {
+      "id": "n051",
+      "sequence": 51,
+      "kind": "body",
+      "text": "And it requires portability: the ability to leave without losing everything that has accumulated through years of use. These qualities reinforce one another.",
+      "tts_text": "And it requires portability: the ability to leave without losing everything that has accumulated through years of use. These qualities reinforce one another.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "791d13f2b75793fc5c941613582f507234ed90e1a74c82c4d234807fce527384"
+    },
+    {
+      "id": "n052",
+      "sequence": 52,
+      "kind": "body",
+      "text": "Local information without transparency can still be manipulated by opaque software. Transparency without autonomy may reveal a problem without giving the user a way to change it. Portability without open alternatives may provide an export file but nowhere meaningful to take it.",
+      "tts_text": "Local information without transparency can still be manipulated by opaque software. Transparency without autonomy may reveal a problem without giving the user a way to change it. Portability without open alternatives may provide an export file but nowhere meaningful to take it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a737c2d6e2a0e9b4afea6a1608e1a1fa08b6d9543c5cb769c58fb4658bc7c4a9"
+    },
+    {
+      "id": "n053",
+      "sequence": 53,
+      "kind": "body",
+      "text": "The healthier history of the web emerged from a combination of these protections.",
+      "tts_text": "The healthier history of the web emerged from a combination of these protections.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4a1821a4ec43d8bcbe7bc7b704c06b67e3dc20bd60bdf578b0269d7ecbac3256"
+    },
+    {
+      "id": "n054",
+      "sequence": 54,
+      "kind": "body",
+      "text": "Open standards prevented one organization from owning the underlying environment. Open-source browsers made the user’s doorway more inspectable and contestable. Extensions allowed people to modify their experience. Local storage allowed some personal structure to remain close to the user.",
+      "tts_text": "Open standards prevented one organization from owning the underlying environment. Open-source browsers made the user’s doorway more inspectable and contestable. Extensions allowed people to modify their experience. Local storage allowed some personal structure to remain close to the user.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "2b6cc32735e7c5c98c282d23ab98ac3d48df39bac9d3e2ddc4aed3bec3feea28"
+    },
+    {
+      "id": "n055",
+      "sequence": 55,
+      "kind": "body",
+      "text": "Competing implementations made exit possible. None of these protections was complete. Together, however, they helped create a better range of possible futures. Social media developed along a different path.",
+      "tts_text": "Competing implementations made exit possible. None of these protections was complete. Together, however, they helped create a better range of possible futures. Social media developed along a different path.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4d97092c81d5b6076367be263a78f9dda84b34adc6bb9bb006d31c46e77b4f0d"
+    },
+    {
+      "id": "n056",
+      "sequence": 56,
+      "kind": "body",
+      "text": "Centralized platforms solved genuine problems from the early web. They made publishing easier. They made it simple to find friends, follow public figures, share photographs, discover conversations, and participate without building or maintaining a website.",
+      "tts_text": "Centralized platforms solved genuine problems from the early web. They made publishing easier. They made it simple to find friends, follow public figures, share photographs, discover conversations, and participate without building or maintaining a website.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7c27d4dd091072d683095edb25cf825cd7a5211d5289bc9a6a0c23d2398883ff"
+    },
+    {
+      "id": "n057",
+      "sequence": 57,
+      "kind": "body",
+      "text": "But the price of this convenience was not merely that people used a company’s application. The platform gradually absorbed the entire environment.",
+      "tts_text": "But the price of this convenience was not merely that people used a company’s application. The platform gradually absorbed the entire environment.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "30fad0ff9ee18b53d7905078098ffdbcad7b5139671d5d52d903d86783dd0a8c"
+    },
+    {
+      "id": "n058",
+      "sequence": 58,
+      "kind": "body",
+      "text": "It held the user’s identity. It stored their content. It maintained their relationships. It observed their behavior. It selected what appeared in their feed. It decided which forms of interaction were encouraged, discouraged, amplified, or hidden.",
+      "tts_text": "It held the user’s identity. It stored their content. It maintained their relationships. It observed their behavior. It selected what appeared in their feed. It decided which forms of interaction were encouraged, discouraged, amplified, or hidden.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "38dff5c38468c0c4ba4d278b1857bcd18bfd0ba0fcd88c31cdaae9cbf8c3679d"
+    },
+    {
+      "id": "n059",
+      "sequence": 59,
+      "kind": "body",
+      "text": "Most importantly, these decisions occurred inside systems that users could not inspect. A person could see the feed but not the machinery constructing it. They could respond to individual recommendations, but they could not examine the complete objective being optimized.",
+      "tts_text": "Most importantly, these decisions occurred inside systems that users could not inspect. A person could see the feed but not the machinery constructing it. They could respond to individual recommendations, but they could not examine the complete objective being optimized.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "3b471d8ccb37baeaacbc03273a4992ee5433b7e9c50d2443f4cea4ebd1a81fce"
+    },
+    {
+      "id": "n060",
+      "sequence": 60,
+      "kind": "body",
+      "text": "They could not meaningfully rewrite the ranking system, install a different one, or carry their relationships into another application that offered a different experience. The algorithm itself was not necessarily the problem.",
+      "tts_text": "They could not meaningfully rewrite the ranking system, install a different one, or carry their relationships into another application that offered a different experience. The algorithm itself was not necessarily the problem.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "33200cea12bd96093de588ee7a139cce218e12c13a2a7eae26d090c94575fbac"
+    },
+    {
+      "id": "n061",
+      "sequence": 61,
+      "kind": "body",
+      "text": "Any system containing more information than a person can consume needs some method of selection. Chronological order is also a form of selection. Filters and recommendations can be genuinely useful. The critical question is who chooses the method and whose interests it serves.",
+      "tts_text": "Any system containing more information than a person can consume needs some method of selection. Chronological order is also a form of selection. Filters and recommendations can be genuinely useful. The critical question is who chooses the method and whose interests it serves.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8b98a491d61749b59385e6e482c88d28e717f4c1187011cfceeed20b043f3c36"
+    },
+    {
+      "id": "n062",
+      "sequence": 62,
+      "kind": "body",
+      "text": "On the open web, a person could select a different browser or install an extension that changed part of the experience. On a centralized social platform, the application, the network, the identity system, the behavioral history, and the feed were bound together.",
+      "tts_text": "On the open web, a person could select a different browser or install an extension that changed part of the experience. On a centralized social platform, the application, the network, the identity system, the behavioral history, and the feed were bound together.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8da07f31ece522d90c13f8c47647cbc58f7f474f0e3fb705a58c60adfedd9236"
+    },
+    {
+      "id": "n063",
+      "sequence": 63,
+      "kind": "body",
+      "text": "The company did not simply provide access to a social environment. It owned the environment in which the personalization occurred. This made manipulation much easier.",
+      "tts_text": "The company did not simply provide access to a social environment. It owned the environment in which the personalization occurred. This made manipulation much easier.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4598c6793fa8bb49b27e74148e4b8c7a490cf53a8a8b5aff97617956b5fa0d93"
+    },
+    {
+      "id": "n064",
+      "sequence": 64,
+      "kind": "body",
+      "text": "The platform could adjust what received attention without publicly explaining the change. It could optimize the feed for engagement, advertising, growth, or another business objective. It could conduct experiments across millions of people.",
+      "tts_text": "The platform could adjust what received attention without publicly explaining the change. It could optimize the feed for engagement, advertising, growth, or another business objective. It could conduct experiments across millions of people.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "29067a462868cca47fb97f3615bd254696dd25b810cb95d49a550c6033b20083"
+    },
+    {
+      "id": "n065",
+      "sequence": 65,
+      "kind": "body",
+      "text": "It could infer intimate preferences from behavior while giving users little access to the resulting profile. Again, this does not mean that every platform decision was malicious. The deeper problem was that the architecture required trust without providing equivalent transparency or control.",
+      "tts_text": "It could infer intimate preferences from behavior while giving users little access to the resulting profile. Again, this does not mean that every platform decision was malicious. The deeper problem was that the architecture required trust without providing equivalent transparency or control.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7436b095e5d0d46db44976d6630788009460787a11839b4c2d72c3835f6a1e23"
+    },
+    {
+      "id": "n066",
+      "sequence": 66,
+      "kind": "body",
+      "text": "Users were asked to trust that the platform’s interests would remain aligned with their own, even though they could not inspect the system, replace its central mechanisms, or leave with a functioning version of what they had built there.",
+      "tts_text": "Users were asked to trust that the platform’s interests would remain aligned with their own, even though they could not inspect the system, replace its central mechanisms, or leave with a functioning version of what they had built there.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7fdee737cb6004f71aee4b8544c468eda7e789265bb7de3e64bb90d0f4deacbb"
+    },
+    {
+      "id": "n067",
+      "sequence": 67,
+      "kind": "body",
+      "text": "Downloading an archive of posts was not the same as taking a social life elsewhere.",
+      "tts_text": "Downloading an archive of posts was not the same as taking a social life elsewhere.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7d8e85f39d1b2ff0d445d73a224ca9d6a43f689e1e6aac0260cfdec597699e3c"
+    },
+    {
+      "id": "n068",
+      "sequence": 68,
+      "kind": "body",
+      "text": "The relationships might not come with it. The accumulated understanding of preferences might not come with it. The ranking choices could not be transferred. The exported information was a record of the old system, not a working version of that system under the user’s control. This is the contrast that matters.",
+      "tts_text": "The relationships might not come with it. The accumulated understanding of preferences might not come with it. The ranking choices could not be transferred. The exported information was a record of the old system, not a working version of that system under the user’s control. This is the contrast that matters.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e907eb20283d0d25a41aa45798d370e0ae9464ca3265266d4d872f373929f234"
+    },
+    {
+      "id": "n069",
+      "sequence": 69,
+      "kind": "body",
+      "text": "The open web and open-source browser tradition made hidden control more difficult and user-directed modification easier. Centralized social media made hidden control easier and user-directed modification extremely difficult. Neither outcome was inevitable.",
+      "tts_text": "The open web and open-source browser tradition made hidden control more difficult and user-directed modification easier. Centralized social media made hidden control easier and user-directed modification extremely difficult. Neither outcome was inevitable.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "6869d149230fc369cd8f5e5fb5e478869093f5d654a5d5f2208c6f0d73339521"
+    },
+    {
+      "id": "n070",
+      "sequence": 70,
+      "kind": "body",
+      "text": "They arose from choices about architecture, ownership, transparency, and where personalization was allowed to accumulate. Artificial intelligence is now approaching a similar choice.",
+      "tts_text": "They arose from choices about architecture, ownership, transparency, and where personalization was allowed to accumulate. Artificial intelligence is now approaching a similar choice.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "32c3a239f98caadbbcb111f892487a5d9a52bc7e4a51de3fdb5599c8525be43a"
+    },
+    {
+      "id": "n071",
+      "sequence": 71,
+      "kind": "body",
+      "text": "The model may be the most visible part of the system, but the harness is becoming the place where personal memory, rules, tools, permissions, workflows, and experience accumulate. The decisions we make about that harness today will determine what kinds of AI futures become easy tomorrow.",
+      "tts_text": "The model may be the most visible part of the system, but the harness is becoming the place where personal memory, rules, tools, permissions, workflows, and experience accumulate. The decisions we make about that harness today will determine what kinds of AI futures become easy tomorrow.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "475dda225ffda9b649d5020abf12f940e95874e85f8eac71695d332d8e98150c"
+    },
+    {
+      "id": "n072",
+      "sequence": 72,
+      "kind": "body",
+      "text": "It can grow inside a company’s platform, where the user receives convenience but must trust an opaque system with an increasingly complete understanding of their life. Or it can grow on the user’s side: inspectable, extensible, portable, and ultimately governed by the person it serves.",
+      "tts_text": "It can grow inside a company’s platform, where the user receives convenience but must trust an opaque system with an increasingly complete understanding of their life. Or it can grow on the user’s side: inspectable, extensible, portable, and ultimately governed by the person it serves.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "fa5dad7bc273ef3830c9d20afb6f79d084d204ca3898cbede025904735dcded3"
+    },
+    {
+      "id": "n073",
+      "sequence": 73,
+      "kind": "body",
+      "text": "The technology is still young enough that both futures remain possible.",
+      "tts_text": "The technology is still young enough that both futures remain possible.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "68382aa6862b91c315afc9fc8499d67a2018f318de858f6ad6edca73a0f5dc6b"
+    },
+    {
+      "id": "n074",
+      "sequence": 74,
+      "kind": "heading",
+      "text": "Reopening What the Platforms Closed",
+      "tts_text": "Reopening What the Platforms Closed",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "f99060ebb10054793486776d0e2578ab5e94d30531d5d4b860e02b187fc3a381"
+    },
+    {
+      "id": "n075",
+      "sequence": 75,
+      "kind": "body",
+      "text": "The social-media story is not finished. Once the costs of centralized platforms became clearer, developers and communities began trying to reopen the social web.",
+      "tts_text": "The social-media story is not finished. Once the costs of centralized platforms became clearer, developers and communities began trying to reopen the social web.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "02b7a128ed69b5e32978f7e3832254e1b593b6320da3354f07521e838a3ab934"
+    },
+    {
+      "id": "n076",
+      "sequence": 76,
+      "kind": "body",
+      "text": "One important effort was ActivityPub, the open standard used by services such as Mastodon. Instead of placing everyone inside one company’s platform, it allows independently operated social services to communicate.",
+      "tts_text": "One important effort was ActivityPub, the open standard used by services such as Mastodon. Instead of placing everyone inside one company’s platform, it allows independently operated social services to communicate.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "ActivityPub",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "ActivityPub",
+            "activity pub"
+          ]
+        },
+        {
+          "term": "Mastodon",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Mastodon"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "9f24d8c3a76a1d51322a136e8e01be31a71516dbc2604426392ef372c1d40c34"
+    },
+    {
+      "id": "n077",
+      "sequence": 77,
+      "kind": "body",
+      "text": "A community can operate its own service and establish its own rules. People using different services can still interact. If one provider changes direction, it does not necessarily control the entire social environment. This restores some of the independence of the earlier web.",
+      "tts_text": "A community can operate its own service and establish its own rules. People using different services can still interact. If one provider changes direction, it does not necessarily control the entire social environment. This restores some of the independence of the earlier web.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "70b2c5a1ff76e225cb7175f16d094200caf72bb1b87cbd0a72adad5085810663"
+    },
+    {
+      "id": "n078",
+      "sequence": 78,
+      "kind": "body",
+      "text": "But it also restores some of its difficulties. Different services can have different policies and interfaces. Moving between them may require effort. Moderating a distributed network is complicated. An open system that only experts can navigate will struggle against a closed platform that anyone can use.",
+      "tts_text": "But it also restores some of its difficulties. Different services can have different policies and interfaces. Moving between them may require effort. Moderating a distributed network is complicated. An open system that only experts can navigate will struggle against a closed platform that anyone can use.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a93cb53ded3960f4489498b3dbc546757962f77729937b37267107373a4c9cc8"
+    },
+    {
+      "id": "n079",
+      "sequence": 79,
+      "kind": "body",
+      "text": "This is why Bluesky is an important experiment. Bluesky is both a social application and part of a larger attempt to build social media around an open protocol. The application may look familiar, but the structure underneath it begins to separate responsibilities that traditional platforms combined.",
+      "tts_text": "This is why Blue sky is an important experiment. Blue sky is both a social application and part of a larger attempt to build social media around an open protocol. The application may look familiar, but the structure underneath it begins to separate responsibilities that traditional platforms combined.",
+      "pronunciations": [
+        "Bluesky"
+      ],
+      "pronunciation_checks": [
+        {
+          "term": "Bluesky",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Bluesky",
+            "blue sky"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "9dac3edcfe97f33575368262560056049971533c07e510dff40198eedb417755",
+      "asr_accept": [
+        "This is why Bluesky is an important experiment. Bluesky is both a social application and part of a larger attempt to build social media around an open protocol. The application may look familiar, but the structure underneath it begins to separate responsibilities that traditional platforms combine."
+      ]
+    },
+    {
+      "id": "n080",
+      "sequence": 80,
+      "kind": "body",
+      "text": "A person can choose among different feeds instead of depending entirely on one company’s ranking system. Different applications can provide access to the same social environment. Moderation can include additional filters and labeling services rather than relying exclusively on one central authority.",
+      "tts_text": "A person can choose among different feeds instead of depending entirely on one company’s ranking system. Different applications can provide access to the same social environment. Moderation can include additional filters and labeling services rather than relying exclusively on one central authority.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "00cd0192fe187d3db4447f4a0d33785ace8f9d28ff4ec0f1395271758d44a3ae"
+    },
+    {
+      "id": "n081",
+      "sequence": 81,
+      "kind": "body",
+      "text": "The underlying protocol also aims to make identity and account data more movable between providers. The technical details matter to developers, but the general principle is simple: The company providing the application does not have to own every part of the experience. That is the connection to our larger story.",
+      "tts_text": "The underlying protocol also aims to make identity and account data more movable between providers. The technical details matter to developers, but the general principle is simple: The company providing the application does not have to own every part of the experience. That is the connection to our larger story.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b2779684b470c228c095451a49c982acab022729f1af5b1e54bd8cef8e5ee0c1"
+    },
+    {
+      "id": "n082",
+      "sequence": 82,
+      "kind": "body",
+      "text": "The purpose of feed choice is not to eliminate algorithms. Every large information environment needs some way to select and organize what people see. The purpose is to separate the existence of an algorithm from the authority of one company to impose the same algorithm on everyone.",
+      "tts_text": "The purpose of feed choice is not to eliminate algorithms. Every large information environment needs some way to select and organize what people see. The purpose is to separate the existence of an algorithm from the authority of one company to impose the same algorithm on everyone.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "122974f2388ff5d73c4ebd254688ba80885b18a1307dff7d710ab7bac7211960"
+    },
+    {
+      "id": "n083",
+      "sequence": 83,
+      "kind": "body",
+      "text": "A person may choose a feed created for a scientific community, a local area, an artistic interest, or a particular way of discovering new people. Most users will never inspect the code behind those feeds, but the feeds can still be compared and replaced. The ability to choose changes the relationship.",
+      "tts_text": "A person may choose a feed created for a scientific community, a local area, an artistic interest, or a particular way of discovering new people. Most users will never inspect the code behind those feeds, but the feeds can still be compared and replaced. The ability to choose changes the relationship.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "909f2c23aa08dbfff81f47b0b40e730cc62bac8ce078d3b3530dddc4543b3a8a"
+    },
+    {
+      "id": "n084",
+      "sequence": 84,
+      "kind": "body",
+      "text": "Instead of asking the platform to understand you and then silently decide what you should see, you can participate in choosing how the environment is organized around you. The same principle applies to moderation.",
+      "tts_text": "Instead of asking the platform to understand you and then silently decide what you should see, you can participate in choosing how the environment is organized around you. The same principle applies to moderation.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c1ee4c8c4aeeb094825caa206df43a2097bbc1ee9274068baf072d84b1fcf13e"
+    },
+    {
+      "id": "n085",
+      "sequence": 85,
+      "kind": "body",
+      "text": "Moderation is necessary, but one company does not necessarily need to make every judgment for every community. Different services can contribute additional filters and protections while the user retains more influence over the experience.",
+      "tts_text": "Moderation is necessary, but one company does not necessarily need to make every judgment for every community. Different services can contribute additional filters and protections while the user retains more influence over the experience.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "42959c10ef33dde4138a7162bc46f54932b2f3e5ec050c8d78332d73a9b5cf14"
+    },
+    {
+      "id": "n086",
+      "sequence": 86,
+      "kind": "body",
+      "text": "Once again, the goal is not unlimited individual freedom without social responsibility. It is transparency and distributed authority.",
+      "tts_text": "Once again, the goal is not unlimited individual freedom without social responsibility. It is transparency and distributed authority.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a57c00e12713c91d49f411afa55b5c245925ddb05c9438cea10640fc331cfaad"
+    },
+    {
+      "id": "n087",
+      "sequence": 87,
+      "kind": "body",
+      "text": "Bluesky has not completed this transformation. Most people still rely on its main application, infrastructure, defaults, and moderation. Moving accounts is not yet effortless, and not every part of the experience is fully portable.",
+      "tts_text": "Blue sky has not completed this transformation. Most people still rely on its main application, infrastructure, defaults, and moderation. Moving accounts is not yet effortless, and not every part of the experience is fully portable.",
+      "pronunciations": [
+        "Bluesky"
+      ],
+      "pronunciation_checks": [
+        {
+          "term": "Bluesky",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Bluesky",
+            "blue sky"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "44524273d22cd0baf55ab3d5f823aeec96475669343528c4af919af3bf59a5af"
+    },
+    {
+      "id": "n088",
+      "sequence": 88,
+      "kind": "body",
+      "text": "It would therefore be premature to describe Bluesky as a completely user-owned social system. Its importance is directional.",
+      "tts_text": "It would therefore be premature to describe Blue sky as a completely user-owned social system. Its importance is directional.",
+      "pronunciations": [
+        "Bluesky"
+      ],
+      "pronunciation_checks": [
+        {
+          "term": "Bluesky",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Bluesky",
+            "blue sky"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "a3bcdc387eed126903a38507e50a67708a3dea7446386aadc2c2e77ad16adf5b"
+    },
+    {
+      "id": "n089",
+      "sequence": 89,
+      "kind": "body",
+      "text": "It demonstrates that identity, hosting, applications, feeds, and moderation do not have to remain permanently fused inside one platform. They can be separated enough to create meaningful alternatives. That separation makes hidden control harder and user choice easier.",
+      "tts_text": "It demonstrates that identity, hosting, applications, feeds, and moderation do not have to remain permanently fused inside one platform. They can be separated enough to create meaningful alternatives. That separation makes hidden control harder and user choice easier.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "31d40c84007b15f934fa22cab1a5b0f06b3155a816a78a3024a8c1d1d9c7345c"
+    },
+    {
+      "id": "n090",
+      "sequence": 90,
+      "kind": "body",
+      "text": "It points toward the same principle that open-source browsers helped protect: the company connecting you to a digital environment should not automatically possess complete authority over how you experience that environment. And this brings us back to artificial intelligence.",
+      "tts_text": "It points toward the same principle that open-source browsers helped protect: the company connecting you to a digital environment should not automatically possess complete authority over how you experience that environment. And this brings us back to artificial intelligence.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b82940984e4d30007cb77389a0236ab7f86f077458e493a73a51e3535678c09a"
+    },
+    {
+      "id": "n091",
+      "sequence": 91,
+      "kind": "body",
+      "text": "Bluesky is useful here not because AI should copy every part of its technical design. It is useful because it reminds us that capabilities bundled together by one generation of platforms can be separated again. The social network can be distinct from the application. The algorithm can be distinct from the platform.",
+      "tts_text": "Blue sky is useful here not because AI should copy every part of its technical design. It is useful because it reminds us that capabilities bundled together by one generation of platforms can be separated again. The social network can be distinct from the application. The algorithm can be distinct from the platform.",
+      "pronunciations": [
+        "Bluesky"
+      ],
+      "pronunciation_checks": [
+        {
+          "term": "Bluesky",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Bluesky",
+            "blue sky"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "ce89b01c01452755f5ae8996e296b04e6f6af32b5c4a1f7828f831006f36668c"
+    },
+    {
+      "id": "n092",
+      "sequence": 92,
+      "kind": "body",
+      "text": "The user’s identity can be distinct from the company currently serving it. In AI, we need to make a similar separation between the model and the harness. In the first Hadosh Academy essay, we compared an LLM to electricity and an agent to an appliance.",
+      "tts_text": "The user’s identity can be distinct from the company currently serving it. In AI, we need to make a similar separation between the model and the harness. In the first Hadosh Academy essay, we compared an LLM to electricity and an agent to an appliance.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Hadosh Academy",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Hadosh Academy",
+            "Haddosh Academy",
+            "Haddash Academy",
+            "Hadoja Academy",
+            "Hadosha Academy"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "45f6a1a4cda49927dcf0b5a626f1580e36ba4a8ab96b82c20f8b0a17870ff639"
+    },
+    {
+      "id": "n093",
+      "sequence": 93,
+      "kind": "body",
+      "text": "Electricity provides general power. But electricity alone does not make toast, cool a room, wash clothes, or illuminate a house. Appliances shape that general power into particular forms of usefulness. An LLM plays a similar role.",
+      "tts_text": "Electricity provides general power. But electricity alone does not make toast, cool a room, wash clothes, or illuminate a house. Appliances shape that general power into particular forms of usefulness. An LLM plays a similar role.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ae0a278574afecc540339a605a1e29a02ee41fd9567c711dd6367de8149a2912"
+    },
+    {
+      "id": "n094",
+      "sequence": 94,
+      "kind": "body",
+      "text": "It supplies a general capacity for language and reasoning. But the model alone does not know how your work should be organized, which information it may access, when it needs your permission, how its actions should be verified, or what it should remember for the future.",
+      "tts_text": "It supplies a general capacity for language and reasoning. But the model alone does not know how your work should be organized, which information it may access, when it needs your permission, how its actions should be verified, or what it should remember for the future.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "5f5a953c6776dd958e05bb001e1d1ae67cb47d1edee1a24af1f83d162edc950a"
+    },
+    {
+      "id": "n095",
+      "sequence": 95,
+      "kind": "body",
+      "text": "The harness gives that general intelligence an operational form. In this sense, the harness is the structure of the appliance. It connects the intelligence to tools, memory, rules, permissions, workflows, and methods of verification. Together, the model and the harness form the functioning agentic system.",
+      "tts_text": "The harness gives that general intelligence an operational form. In this sense, the harness is the structure of the appliance. It connects the intelligence to tools, memory, rules, permissions, workflows, and methods of verification. Together, the model and the harness form the functioning agentic system.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "50f6e94b5e3ae8054ac5195ec855d3ad0b57186a5a54ced402b5b2413c9883bd"
+    },
+    {
+      "id": "n096",
+      "sequence": 96,
+      "kind": "body",
+      "text": "Now imagine if an electricity company also owned every appliance in your home.",
+      "tts_text": "Now imagine if an electricity company also owned every appliance in your home.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "141e8dc52a7ac646a13ddc8e38cb7a165df7533cf53515c3fdd89ba0e6805092"
+    },
+    {
+      "id": "n097",
+      "sequence": 97,
+      "kind": "body",
+      "text": "The company would not merely sell you electricity. It would decide how your refrigerator operated, when your lights could turn on, which settings were available on your washing machine, and how dark your toaster was permitted to make your bread.",
+      "tts_text": "The company would not merely sell you electricity. It would decide how your refrigerator operated, when your lights could turn on, which settings were available on your washing machine, and how dark your toaster was permitted to make your bread.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2fc6d603c8a9dabdc01fc2adaacf3e7c105c4688198b4a16191dac2cdd3cc6ca"
+    },
+    {
+      "id": "n098",
+      "sequence": 98,
+      "kind": "body",
+      "text": "Perhaps these appliances would become remarkably convenient. The energy company could study your routines and automatically adjust them. It might learn when you wake up, when you cook, how you wash your clothes, and which rooms you use throughout the day. But you would not be able to inspect how the appliances worked.",
+      "tts_text": "Perhaps these appliances would become remarkably convenient. The energy company could study your routines and automatically adjust them. It might learn when you wake up, when you cook, how you wash your clothes, and which rooms you use throughout the day. But you would not be able to inspect how the appliances worked.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f62796c53f2da71571d6f17fefb96c546377bd5646a576dc5309d6d39d597e28"
+    },
+    {
+      "id": "n099",
+      "sequence": 99,
+      "kind": "body",
+      "text": "You could not modify them. You could not meaningfully reject the company’s decisions. And if you changed electricity providers, the intelligence accumulated across your home might stop functioning. The problem would not be that the energy company supplied electricity. Supplying reliable power is a valuable service.",
+      "tts_text": "You could not modify them. You could not meaningfully reject the company’s decisions. And if you changed electricity providers, the intelligence accumulated across your home might stop functioning. The problem would not be that the energy company supplied electricity. Supplying reliable power is a valuable service.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "08d20f623d320c4807825523570c65ff9d1fafabe05bf3e5be885a9527b9e0e2"
+    },
+    {
+      "id": "n100",
+      "sequence": 100,
+      "kind": "body",
+      "text": "The problem would be that the provider of general power had also absorbed ownership of the personal systems through which that power became useful. Our actual relationship with electricity is healthier.",
+      "tts_text": "The problem would be that the provider of general power had also absorbed ownership of the personal systems through which that power became useful. Our actual relationship with electricity is healthier.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7abc053c359c3cdb0f38da1c243b599b4c6c6e828d4ecbae668d3f2f619828ae"
+    },
+    {
+      "id": "n101",
+      "sequence": 101,
+      "kind": "body",
+      "text": "The energy provider supplies power. We own or control the appliances that convert that power into the outcomes we need. We can replace a toaster without rebuilding the electrical grid. We can change electricity providers without surrendering every appliance in the house.",
+      "tts_text": "The energy provider supplies power. We own or control the appliances that convert that power into the outcomes we need. We can replace a toaster without rebuilding the electrical grid. We can change electricity providers without surrendering every appliance in the house.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3e35f0025b7a20d4006650cbdaee19fe35684a5f53c55c29568bf206db7b5332"
+    },
+    {
+      "id": "n102",
+      "sequence": 102,
+      "kind": "body",
+      "text": "The provider and the appliance perform different roles. The same separation should guide the agentic era.",
+      "tts_text": "The provider and the appliance perform different roles. The same separation should guide the agentic era.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ec39d8b18514c956b5ce52b20eeec40390fe6b598eccac7f0d54cb20cd900717"
+    },
+    {
+      "id": "n103",
+      "sequence": 103,
+      "kind": "body",
+      "text": "AI companies can develop and provide extraordinarily capable models. Those models may require enormous investments in research, computing infrastructure, energy, and specialized expertise. Most individuals will not build such models themselves. That does not mean the model provider must also own the user’s harness.",
+      "tts_text": "AI companies can develop and provide extraordinarily capable models. Those models may require enormous investments in research, computing infrastructure, energy, and specialized expertise. Most individuals will not build such models themselves. That does not mean the model provider must also own the user’s harness.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "647e671afec70a88731c26e5a26c7d917f5f19e76051326e790e3636cf6dfd44"
+    },
+    {
+      "id": "n104",
+      "sequence": 104,
+      "kind": "body",
+      "text": "The model can be rented as a source of general intelligence. The harness that shapes that intelligence around a particular person can remain under that person’s control. This distinction becomes more important as AI systems learn.",
+      "tts_text": "The model can be rented as a source of general intelligence. The harness that shapes that intelligence around a particular person can remain under that person’s control. This distinction becomes more important as AI systems learn.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "18270a797b8a7b9bb5d534c093b47cf1750306381c7fd5a330979bf962bd99cd"
+    },
+    {
+      "id": "n105",
+      "sequence": 105,
+      "kind": "body",
+      "text": "Early language-model applications mostly responded to individual prompts. A person asked a question, received an answer, and moved on. Agentic systems can do much more. They can use tools, work across multiple steps, preserve progress, act inside digital environments, and improve how they assist a person over time.",
+      "tts_text": "Early language-model applications mostly responded to individual prompts. A person asked a question, received an answer, and moved on. Agentic systems can do much more. They can use tools, work across multiple steps, preserve progress, act inside digital environments, and improve how they assist a person over time.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "07a872f84adbea0e8915e5113ff318fca188a96cf2f5eb9b4650b1fb1d06b473"
+    },
+    {
+      "id": "n106",
+      "sequence": 106,
+      "kind": "body",
+      "text": "That improvement creates a new kind of personal asset. The system may learn how you conduct research, organize projects, evaluate evidence, prepare for meetings, communicate with different people, or recover when a process fails. It may accumulate your corrections, standards, permissions, and preferred ways of working.",
+      "tts_text": "That improvement creates a new kind of personal asset. The system may learn how you conduct research, organize projects, evaluate evidence, prepare for meetings, communicate with different people, or recover when a process fails. It may accumulate your corrections, standards, permissions, and preferred ways of working.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c08d76d6fc36bbd6c4d695903c10193793f3254867807f6f7eceaea208730e84"
+    },
+    {
+      "id": "n107",
+      "sequence": 107,
+      "kind": "body",
+      "text": "The danger is not that AI companies will fail to remember these things. Their systems may become extremely good at remembering them. The danger is that everything they learn may remain inside an appliance that the same company owns, controls, and can disconnect.",
+      "tts_text": "The danger is not that AI companies will fail to remember these things. Their systems may become extremely good at remembering them. The danger is that everything they learn may remain inside an appliance that the same company owns, controls, and can disconnect.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "54f7b38461f65f5f86344c39f7a729388880e2b9b3615ea1f4f72d9400ad2cb5"
+    },
+    {
+      "id": "n108",
+      "sequence": 108,
+      "kind": "body",
+      "text": "A social platform primarily learns how to hold your attention. A mature agentic system may learn how you live and work—and may be able to act on that understanding. This makes the AI choice more consequential.",
+      "tts_text": "A social platform primarily learns how to hold your attention. A mature agentic system may learn how you live and work—and may be able to act on that understanding. This makes the AI choice more consequential.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d435d1f8f53fce7d15761f6d65f2c179ef897f7c070d2e920f78212180370243"
+    },
+    {
+      "id": "n109",
+      "sequence": 109,
+      "kind": "body",
+      "text": "If you leave a social platform, you may lose an audience, a history, or a familiar feed. These losses can be serious. If you leave a mature agentic system, you could lose part of your working capacity: years of accumulated memory, rules, corrections, workflows, permissions, and experience.",
+      "tts_text": "If you leave a social platform, you may lose an audience, a history, or a familiar feed. These losses can be serious. If you leave a mature agentic system, you could lose part of your working capacity: years of accumulated memory, rules, corrections, workflows, permissions, and experience.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3557e9540fd20d1583906d7674ddc8045e6371c3791828ed8ca6c27c24aef440"
+    },
+    {
+      "id": "n110",
+      "sequence": 110,
+      "kind": "body",
+      "text": "The company might give you an export of your conversations. But an archive would not necessarily preserve the functioning system. It would be like receiving a document describing how your appliances once operated after the provider had removed them from your home.",
+      "tts_text": "The company might give you an export of your conversations. But an archive would not necessarily preserve the functioning system. It would be like receiving a document describing how your appliances once operated after the provider had removed them from your home.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b2f35be13838b63bd71d6a6107cb90ca5c90ef238142cdb792155af32151beb6"
+    },
+    {
+      "id": "n111",
+      "sequence": 111,
+      "kind": "body",
+      "text": "The information might technically be yours, while its practical usefulness remained with the company. Two AI futures are therefore beginning to separate.",
+      "tts_text": "The information might technically be yours, while its practical usefulness remained with the company. Two AI futures are therefore beginning to separate.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "347b225d22b5bbf4652e49022117c7f0150f3df6e84380a0d9e55f41844bf0d9"
+    },
+    {
+      "id": "n112",
+      "sequence": 112,
+      "kind": "body",
+      "text": "In one future, every provider builds the user’s memory, tools, workflows, and personal operating structure inside its own platform. The model and the harness are fused together. Changing the source of intelligence means abandoning much of the system that has grown around it.",
+      "tts_text": "In one future, every provider builds the user’s memory, tools, workflows, and personal operating structure inside its own platform. The model and the harness are fused together. Changing the source of intelligence means abandoning much of the system that has grown around it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2c2c71348e1af14b85a9b8c6842f10f26bcc684c4982329212463b70070513f4"
+    },
+    {
+      "id": "n113",
+      "sequence": 113,
+      "kind": "body",
+      "text": "In the other future, models remain replaceable sources of general intelligence. A person might use one commercial model today, another provider tomorrow, and an open model for certain private work. The source of intelligence can change as technology, prices, and needs change. But the harness remains.",
+      "tts_text": "In the other future, models remain replaceable sources of general intelligence. A person might use one commercial model today, another provider tomorrow, and an open model for certain private work. The source of intelligence can change as technology, prices, and needs change. But the harness remains.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f43972d8ac3ae4d4150c2ef104096cb4608b9728efd7f07bac8dd83bb4975ea9"
+    },
+    {
+      "id": "n114",
+      "sequence": 114,
+      "kind": "body",
+      "text": "The accumulated understanding of the person—their memory, tools, boundaries, workflows, and experience—stays under their control. The electricity can come from different providers. The appliance remains in the user’s home.",
+      "tts_text": "The accumulated understanding of the person—their memory, tools, boundaries, workflows, and experience—stays under their control. The electricity can come from different providers. The appliance remains in the user’s home.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "fb1ddfcbb4d01a87f59aef59feb6ecfe3630549f0106bbdcb165e0d2e0521f87"
+    },
+    {
+      "id": "n115",
+      "sequence": 115,
+      "kind": "body",
+      "text": "For that future to become real, the harness must provide more than technical access. It must be local enough to remain centered on the user, owned in a meaningful sense, portable as a functioning system, transparent enough to inspect, and governed by the person it serves. These are not optional conveniences.",
+      "tts_text": "For that future to become real, the harness must provide more than technical access. It must be local enough to remain centered on the user, owned in a meaningful sense, portable as a functioning system, transparent enough to inspect, and governed by the person it serves. These are not optional conveniences.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "574ee1827ca8fefac33a3486c98cf846f413b5d4cb64b746a1be1c42fcdff52e"
+    },
+    {
+      "id": "n116",
+      "sequence": 116,
+      "kind": "body",
+      "text": "They are the conditions that separate a personal asset from a platform dependency. The model can be provided as a service. The personal harness must remain yours.",
+      "tts_text": "They are the conditions that separate a personal asset from a platform dependency. The model can be provided as a service. The personal harness must remain yours.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c8c3831f147ce6b43ad5fcaac75d4e88c6ae2397a6227d307bf39bd319dd271d"
+    },
+    {
+      "id": "n117",
+      "sequence": 117,
+      "kind": "heading",
+      "text": "What It Means for the Harness to Be Yours",
+      "tts_text": "What It Means for the Harness to Be Yours",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "be581642e50539a6a82c307df1d5910a4c7167866d99b65dfb4d022f65d31fda"
+    },
+    {
+      "id": "n118",
+      "sequence": 118,
+      "kind": "body",
+      "text": "Saying that the harness should belong to the user sounds simple. But what does belonging mean in practice?",
+      "tts_text": "Saying that the harness should belong to the user sounds simple. But what does belonging mean in practice?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a88242ff26223d0289d36e31c9f9c77c9646809464423ba41b66bc2cabaadd5b"
+    },
+    {
+      "id": "n119",
+      "sequence": 119,
+      "kind": "body",
+      "text": "A company may tell you that your data is yours while keeping it in a format that no other system can use. It may allow you to download years of conversations without providing the rules, memories, connections, and workflows that made those conversations useful.",
+      "tts_text": "A company may tell you that your data is yours while keeping it in a format that no other system can use. It may allow you to download years of conversations without providing the rules, memories, connections, and workflows that made those conversations useful.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b88d32d5d900107e0e23677ec51a9953b88c9390b44e9ea56ec9a57cb28f2ac5"
+    },
+    {
+      "id": "n120",
+      "sequence": 120,
+      "kind": "body",
+      "text": "You may technically own the information while remaining unable to continue without the platform. Ownership in the agentic era therefore requires more than a statement in a privacy policy. It must be visible in how the system is built.",
+      "tts_text": "You may technically own the information while remaining unable to continue without the platform. Ownership in the agentic era therefore requires more than a statement in a privacy policy. It must be visible in how the system is built.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "35a108edb091cb916ffd7db292892e7d5a8e07b796b9fa31d182091396ec740a"
+    },
+    {
+      "id": "n121",
+      "sequence": 121,
+      "kind": "heading",
+      "text": "What Exactly Is the Harness?",
+      "tts_text": "What Exactly Is the Harness?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "7e84f2a7cab784a7529b002a5086a14893364a03f7fbf26ac860de4f43684465"
+    },
+    {
+      "id": "n122",
+      "sequence": 122,
+      "kind": "body",
+      "text": "The harness is not an imaginary future abstraction. Its basic structure has already become visible in today’s command-line agents.",
+      "tts_text": "The harness is not an imaginary future abstraction. Its basic structure has already become visible in today’s command-line agents.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "17c00c12804e5f7eb8bfac536773f3fbb21f75ba0fbfdc98af8ed5f7ff427fd1"
+    },
+    {
+      "id": "n123",
+      "sequence": 123,
+      "kind": "body",
+      "text": "At its foundation is a runtime: the application that receives the model’s output, recognizes structured messages such as responses and tool requests, and turns permitted requests into actions.",
+      "tts_text": "At its foundation is a runtime: the application that receives the model’s output, recognizes structured messages such as responses and tool requests, and turns permitted requests into actions.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "9f4f3dde77a856c8690f774303e1b130d6d94d1150f64d5dc3366523aa69cafd"
+    },
+    {
+      "id": "n124",
+      "sequence": 124,
+      "kind": "body",
+      "text": "The runtime may also expose hooks—specific moments when another process can observe an action, add instructions, run a check, issue a warning, or block the action entirely.",
+      "tts_text": "The runtime may also expose hooks—specific moments when another process can observe an action, add instructions, run a check, issue a warning, or block the action entirely.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "6c5754bbcd514605c3db4a16ef8b8634abf25783e4562fb18be237db9ce7ae90"
+    },
+    {
+      "id": "n125",
+      "sequence": 125,
+      "kind": "body",
+      "text": "Around that runtime are the user-defined parts of the harness: instruction files, memories, configurations, skills, plugins, scripts, tests, tool definitions, and descriptions of specialized sub-agents.",
+      "tts_text": "Around that runtime are the user-defined parts of the harness: instruction files, memories, configurations, skills, plugins, scripts, tests, tool definitions, and descriptions of specialized sub-agents.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c673fb05ad8e91684edf4ae563d6308b571fc0d5c764ff746289a8d688d4722b"
+    },
+    {
+      "id": "n126",
+      "sequence": 126,
+      "kind": "body",
+      "text": "A plugin can gather several of these pieces around one objective. It might contain instructions describing a responsibility, hooks that notice relevant events, scripts that perform checks, tests that verify behavior, and messages that guide or warn the agent.",
+      "tts_text": "A plugin can gather several of these pieces around one objective. It might contain instructions describing a responsibility, hooks that notice relevant events, scripts that perform checks, tests that verify behavior, and messages that guide or warn the agent.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "1a32161436f51ae979ccd360d351421b81b9a7b68de6fe5e3d9315859c5f3b82"
+    },
+    {
+      "id": "n127",
+      "sequence": 127,
+      "kind": "body",
+      "text": "The specific anatomy can vary among systems, but the underlying idea is already established. Much of a personal harness is therefore surprisingly ordinary. It is a collection of files and small programs that determine how general intelligence should behave for a particular user.",
+      "tts_text": "The specific anatomy can vary among systems, but the underlying idea is already established. Much of a personal harness is therefore surprisingly ordinary. It is a collection of files and small programs that determine how general intelligence should behave for a particular user.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7ad513b06c0ad33fbfb0f25deb664db01ed3972db6da081dcea20130520e4899"
+    },
+    {
+      "id": "n128",
+      "sequence": 128,
+      "kind": "body",
+      "text": "These are the things that should remain on the user’s side.",
+      "tts_text": "These are the things that should remain on the user’s side.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "bda78904f1af2bc9b7cdeb2082834317f18a871c9a24d3826dc2bbd690d1f99c"
+    },
+    {
+      "id": "n129",
+      "sequence": 129,
+      "kind": "body",
+      "text": "The runtime interpreting them should be open and inspectable. The personal plugins, instructions, memories, tests, and configurations should exist wherever the user chooses to keep them. They should not disappear merely because one model provider or CLI application is replaced.",
+      "tts_text": "The runtime interpreting them should be open and inspectable. The personal plugins, instructions, memories, tests, and configurations should exist wherever the user chooses to keep them. They should not disappear merely because one model provider or CLI application is replaced.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7fbc72e50ebd6f5af8a88cce95b133b5db8e70d27b813fb6ecec765abe857395"
+    },
+    {
+      "id": "n130",
+      "sequence": 130,
+      "kind": "body",
+      "text": "The five qualities that follow—locality, ownership, portability, transparency, and autonomy—apply to these concrete components, not to a vague idea surrounding the model. Imagine that an AI system has worked with you for five years.",
+      "tts_text": "The five qualities that follow—locality, ownership, portability, transparency, and autonomy—apply to these concrete components, not to a vague idea surrounding the model. Imagine that an AI system has worked with you for five years.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d2813aaa6d73e3fa01be3623931936eba98252be9729d5895ac249fbc42d4381"
+    },
+    {
+      "id": "n131",
+      "sequence": 131,
+      "kind": "body",
+      "text": "It knows how you organize projects, which sources you trust, how you prepare reports, when it must ask permission, and how you prefer its work to be verified. It has learned from hundreds of corrections and thousands of completed tasks. Then imagine that its provider disappears.",
+      "tts_text": "It knows how you organize projects, which sources you trust, how you prepare reports, when it must ask permission, and how you prefer its work to be verified. It has learned from hundreds of corrections and thousands of completed tasks. Then imagine that its provider disappears.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "390b567f531e21eee7ec30d7437c509fe56c0eb41343cff5d57f21753f871e02"
+    },
+    {
+      "id": "n132",
+      "sequence": 132,
+      "kind": "body",
+      "text": "Perhaps the company closes. Perhaps it changes its prices, policies, or business model. Perhaps you simply find a better model and decide to leave. What remains? This is the departure test.",
+      "tts_text": "Perhaps the company closes. Perhaps it changes its prices, policies, or business model. Perhaps you simply find a better model and decide to leave. What remains? This is the departure test.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "edbe3d98af2cff5a31d2041bfdecbdc6dce7b2a1210d18cb86b50b5615263da6"
+    },
+    {
+      "id": "n133",
+      "sequence": 133,
+      "kind": "body",
+      "text": "If the accumulated system can continue working with another intelligence provider, it is meaningfully yours. If it becomes an unusable archive—or disappears entirely—it was primarily an asset of the platform.",
+      "tts_text": "If the accumulated system can continue working with another intelligence provider, it is meaningfully yours. If it becomes an unusable archive—or disappears entirely—it was primarily an asset of the platform.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b73fdc43ad50a5adba6ff2cbb0a10d784c5e59fe2a01659307167db82d1e5568"
+    },
+    {
+      "id": "n134",
+      "sequence": 134,
+      "kind": "body",
+      "text": "Passing this test requires five connected qualities: locality, ownership, portability, transparency, and autonomy.",
+      "tts_text": "Passing this test requires five connected qualities: locality, ownership, portability, transparency, and autonomy.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "615532680dc7e7152bd62ba7ffe4c83139cdbb58cbae49ac0dc1c7ce56947ea6"
+    },
+    {
+      "id": "n135",
+      "sequence": 135,
+      "kind": "heading",
+      "text": "Locality",
+      "tts_text": "Locality",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "23621fc0f5716dfcfbf17d6d77710b46d05352a260863fbe47c56aefab569d6f"
+    },
+    {
+      "id": "n136",
+      "sequence": 136,
+      "kind": "body",
+      "text": "Locality means that the harness has its center of gravity on the user’s side. It does not mean that everything must operate offline. A user-owned harness can call commercial models, search the internet, connect to cloud services, and communicate with other people and systems.",
+      "tts_text": "Locality means that the harness has its center of gravity on the user’s side. It does not mean that everything must operate offline. A user-owned harness can call commercial models, search the internet, connect to cloud services, and communicate with other people and systems.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4fb8562559b95266d62b4115feccd0de1ced0791a0a3d437bfcdb42b11f9ffcd"
+    },
+    {
+      "id": "n137",
+      "sequence": 137,
+      "kind": "body",
+      "text": "Your appliances are local to your home even though the electricity comes from an external grid. In the same way, the personal structure of an agentic system can remain with you while drawing intelligence and other services from outside providers. The important question is where the durable structure lives.",
+      "tts_text": "Your appliances are local to your home even though the electricity comes from an external grid. In the same way, the personal structure of an agentic system can remain with you while drawing intelligence and other services from outside providers. The important question is where the durable structure lives.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "19b05d677ea43908ffd79a00aa60a83e77325c0608b590579c10b0049afae3ca"
+    },
+    {
+      "id": "n138",
+      "sequence": 138,
+      "kind": "body",
+      "text": "Where are the plugins, memories, instructions, permissions, workflows, configurations, and records of experience that allow the system to continue developing?",
+      "tts_text": "Where are the plugins, memories, instructions, permissions, workflows, configurations, and records of experience that allow the system to continue developing?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c1cb89cb9feba5c217a16d953803b7e3d68f72a1deb4b05c130de5a471769428"
+    },
+    {
+      "id": "n139",
+      "sequence": 139,
+      "kind": "body",
+      "text": "If their only functioning form exists inside a provider’s account, then the provider remains the center of the system. If these files remain in an environment the user controls, providers can be connected, changed, or removed without destroying the whole structure.",
+      "tts_text": "If their only functioning form exists inside a provider’s account, then the provider remains the center of the system. If these files remain in an environment the user controls, providers can be connected, changed, or removed without destroying the whole structure.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a91e212352516805789cd27e9295720ec63616a55d827591ffbac2397fed8ceb"
+    },
+    {
+      "id": "n140",
+      "sequence": 140,
+      "kind": "body",
+      "text": "Locality does not guarantee ownership, but it gives ownership somewhere practical to exist.",
+      "tts_text": "Locality does not guarantee ownership, but it gives ownership somewhere practical to exist.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "580ddcde71d375bb274491cc214ea3c8ee28354ffe9565ca035d10d1795ba63b"
+    },
+    {
+      "id": "n141",
+      "sequence": 141,
+      "kind": "heading",
+      "text": "Ownership",
+      "tts_text": "Ownership",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "c7d3acc826a80cf2029d915f79cc3bf5f1c097392cbc554799ba0bed1e73a36e"
+    },
+    {
+      "id": "n142",
+      "sequence": 142,
+      "kind": "body",
+      "text": "Ownership means more than being allowed to use something. You rent a hotel room, but you do not own it. You may arrange a few belongings inside it, but the owner can change the rules, limit your access, or close the building.",
+      "tts_text": "Ownership means more than being allowed to use something. You rent a hotel room, but you do not own it. You may arrange a few belongings inside it, but the owner can change the rules, limit your access, or close the building.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "close",
+          "sense": "verb meaning shut or terminate",
+          "ipa": "kloʊz",
+          "asr_accept": [
+            "close"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "cdac7dc5d8d7fffbaa47c1185b87a096d8c881ad8a54bfe8b579a089d1bf0d13"
+    },
+    {
+      "id": "n143",
+      "sequence": 143,
+      "kind": "body",
+      "text": "Many digital products create a similar relationship. The user is invited to personalize an account, but everything they build remains inside property controlled by someone else. A user-owned harness requires a stronger relationship.",
+      "tts_text": "Many digital products create a similar relationship. The user is invited to personalize an account, but everything they build remains inside property controlled by someone else. A user-owned harness requires a stronger relationship.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "28564b71018b85e3c71f00b31925b74506d1848a64c21c83cf16c5dbf8903721"
+    },
+    {
+      "id": "n144",
+      "sequence": 144,
+      "kind": "body",
+      "text": "The person must be able to retain it, copy it, modify it, remove parts of it, and decide which services may interact with it. The provider should not be able to withdraw the harness merely because the user stops purchasing its model.",
+      "tts_text": "The person must be able to retain it, copy it, modify it, remove parts of it, and decide which services may interact with it. The provider should not be able to withdraw the harness merely because the user stops purchasing its model.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "21690f20d66aab898004267e9b6ceea0c79e4e043cf23756c79e6d29f7fdc06d"
+    },
+    {
+      "id": "n145",
+      "sequence": 145,
+      "kind": "body",
+      "text": "This does not mean that every connected service becomes free or user-owned. A commercial model remains a commercial service. A cloud-storage provider may still charge for storage. A specialized database may require a subscription.",
+      "tts_text": "This does not mean that every connected service becomes free or user-owned. A commercial model remains a commercial service. A cloud-storage provider may still charge for storage. A specialized database may require a subscription.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "fae15fd83d7f2bd7470d913337fcec26dfed8f88358b3685ecfdcab3bdde5e51"
+    },
+    {
+      "id": "n146",
+      "sequence": 146,
+      "kind": "body",
+      "text": "But ending one service should not dissolve the personal system that connected those services together. The user owns the home, even when some of its utilities are rented.",
+      "tts_text": "But ending one service should not dissolve the personal system that connected those services together. The user owns the home, even when some of its utilities are rented.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0bdb66ed612d731f7bd081d3c1036405570e6e56cddef756bb5a6d432f0e3972"
+    },
+    {
+      "id": "n147",
+      "sequence": 147,
+      "kind": "heading",
+      "text": "Portability",
+      "tts_text": "Portability",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "ce0790d2311205c45d889a954278687bcf82eef9b823cd58fe9655eb9defeddd"
+    },
+    {
+      "id": "n148",
+      "sequence": 148,
+      "kind": "body",
+      "text": "Portability means that the harness can continue functioning when part of its environment changes. This is more demanding than downloading data. An archive can preserve what happened in the past. A portable system preserves the ability to continue into the future.",
+      "tts_text": "Portability means that the harness can continue functioning when part of its environment changes. This is more demanding than downloading data. An archive can preserve what happened in the past. A portable system preserves the ability to continue into the future.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "fbd3842cac6293d16ab312f806efec0040fefa2120320a57ff1c98c4a6f4628a"
+    },
+    {
+      "id": "n149",
+      "sequence": 149,
+      "kind": "body",
+      "text": "Suppose an AI provider gives you a file containing every conversation you have ever had. That file may be valuable. But does it contain the system’s operational memory? Does it preserve your workflows, permissions, tool connections, verification methods, and learned corrections?",
+      "tts_text": "Suppose an AI provider gives you a file containing every conversation you have ever had. That file may be valuable. But does it contain the system’s operational memory? Does it preserve your workflows, permissions, tool connections, verification methods, and learned corrections?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 520,
+      "text_sha256": "c2f43406c0bba4a4851c3e517abb80ffa5123dfac40581c12408ed5edeaeab9c"
+    },
+    {
+      "id": "n150",
+      "sequence": 150,
+      "kind": "body",
+      "text": "Can another model and compatible runtime understand and use them? If not, you possess a record of the relationship without possessing the working relationship itself.",
+      "tts_text": "Can another model and compatible runtime understand and use them? If not, you possess a record of the relationship without possessing the working relationship itself.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3e99e3ab1d370805b6c0694b8b2b3d3059b3aa2afa6df1672f849730e3e2b3ad"
+    },
+    {
+      "id": "n151",
+      "sequence": 151,
+      "kind": "body",
+      "text": "Real portability means that one model or runtime can be replaced by another without rebuilding the user’s accumulated life from the beginning. Human-readable files and open formats make that continuation possible; adapters can translate the smaller differences among runtimes.",
+      "tts_text": "Real portability means that one model or runtime can be replaced by another without rebuilding the user’s accumulated life from the beginning. Human-readable files and open formats make that continuation possible; adapters can translate the smaller differences among runtimes.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "9e1601402a95340940ba8e12a89ae6aa88e0d17f13c7274d65b4db73012d4cf8"
+    },
+    {
+      "id": "n152",
+      "sequence": 152,
+      "kind": "body",
+      "text": "The replacement may not be perfect. Different models and runtimes have different capabilities, and some adjustments may be necessary. But the harness should survive the transition. The intelligence changes. The personal structure continues.",
+      "tts_text": "The replacement may not be perfect. Different models and runtimes have different capabilities, and some adjustments may be necessary. But the harness should survive the transition. The intelligence changes. The personal structure continues.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a9836be914be4a036c7b2d3108662d0d2ca51c1174d39cf036de1ed55d9abdc8"
+    },
+    {
+      "id": "n153",
+      "sequence": 153,
+      "kind": "heading",
+      "text": "Transparency",
+      "tts_text": "Transparency",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "8b773803e66e0fc2e2bb6a629f56a915cf65dffb599302b3d54a08179af6bd07"
+    },
+    {
+      "id": "n154",
+      "sequence": 154,
+      "kind": "body",
+      "text": "Transparency means that the user can understand what the harness knows and how it operates. This does not require every person to read software code. Most people never inspect the source code of their browser or operating system. But meaningful inspection must remain possible.",
+      "tts_text": "Transparency means that the user can understand what the harness knows and how it operates. This does not require every person to read software code. Most people never inspect the source code of their browser or operating system. But meaningful inspection must remain possible.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "30fb84b4a5450f7d7873c1c1f39a46cc8a03891af0405bc04588c33f0b606d5d"
+    },
+    {
+      "id": "n155",
+      "sequence": 155,
+      "kind": "body",
+      "text": "The runtime and its hook behavior should be open to scrutiny. The harness should not contain a hidden profile that only the provider can see. Its plugin files, memories, rules, permissions, and important decisions should be available for examination.",
+      "tts_text": "The runtime and its hook behavior should be open to scrutiny. The harness should not contain a hidden profile that only the provider can see. Its plugin files, memories, rules, permissions, and important decisions should be available for examination.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "ad2864df6713f1d2fbd3e2cc0ffac8a6607e0f542881d8fb806a3c0e6ae3aec5"
+    },
+    {
+      "id": "n156",
+      "sequence": 156,
+      "kind": "body",
+      "text": "The user should be able to discover why an action occurred, what information influenced it, and which instructions were active. Open-source building blocks strengthen this transparency because independent people can inspect how the underlying mechanisms work. But source code is only one part of the requirement.",
+      "tts_text": "The user should be able to discover why an action occurred, what information influenced it, and which instructions were active. Open-source building blocks strengthen this transparency because independent people can inspect how the underlying mechanisms work. But source code is only one part of the requirement.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "46e49ca2f05eeb17bb3776cc6267ce95266ab539de0c387807c8399cf268d90b"
+    },
+    {
+      "id": "n157",
+      "sequence": 157,
+      "kind": "body",
+      "text": "A harness could be built from open-source software while still hiding its personal memory from the user. Meaningful transparency therefore includes both the machinery and the accumulated personal state inside it. You should be able to ask: What does this system believe about me?",
+      "tts_text": "A harness could be built from open-source software while still hiding its personal memory from the user. Meaningful transparency therefore includes both the machinery and the accumulated personal state inside it. You should be able to ask: What does this system believe about me?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d6e7cdac8c719a26be0a192d598e59e6430ad6405ba2580e31ae6a9cd37b3128"
+    },
+    {
+      "id": "n158",
+      "sequence": 158,
+      "kind": "body",
+      "text": "Which parts came from my direct instructions? Which parts were inferred from my behavior? What has it been told never to do? What will happen before it sends a message, changes a file, or spends money? A system that acts for a person should not remain mysterious to the person whose authority it exercises.",
+      "tts_text": "Which parts came from my direct instructions? Which parts were inferred from my behavior? What has it been told never to do? What will happen before it sends a message, changes a file, or spends money? A system that acts for a person should not remain mysterious to the person whose authority it exercises.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "219dd02819b271f7581a715d95f7d1c1fd1f41ff2df8d6c948da3b1fa22a7def"
+    },
+    {
+      "id": "n159",
+      "sequence": 159,
+      "kind": "heading",
+      "text": "Autonomy",
+      "tts_text": "Autonomy",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "30edc47c24de2727a86d50ba88c3516db28c0494a7c5f0b127e4329e855c6840"
+    },
+    {
+      "id": "n160",
+      "sequence": 160,
+      "kind": "body",
+      "text": "Autonomy means that understanding can become action. Transparency allows the user to see what the system is doing. Autonomy allows them to change it.",
+      "tts_text": "Autonomy means that understanding can become action. Transparency allows the user to see what the system is doing. Autonomy allows them to change it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c151410fff655c296f2a0dad026a067d42261e028f091bd4d545e53dcb5ced94"
+    },
+    {
+      "id": "n161",
+      "sequence": 161,
+      "kind": "body",
+      "text": "The person must be able to correct a memory, reject an inference, change a workflow, reduce a permission, replace a tool, or stop the system altogether. They should be able to decide which model performs a task and when human approval is required. This is human autonomy.",
+      "tts_text": "The person must be able to correct a memory, reject an inference, change a workflow, reduce a permission, replace a tool, or stop the system altogether. They should be able to decide which model performs a task and when human approval is required. This is human autonomy.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "105dea0fd4ec8df6cf45027633c508c90607eea8d378d2d79e1b4107ae2bb6a4"
+    },
+    {
+      "id": "n162",
+      "sequence": 162,
+      "kind": "body",
+      "text": "It should not be confused with giving the AI unlimited autonomy to act without supervision. An agent may receive delegated freedom inside clearly defined boundaries. It might organize files without asking about every small change, while still requiring approval before publishing something publicly or spending money.",
+      "tts_text": "It should not be confused with giving the AI unlimited autonomy to act without supervision. An agent may receive delegated freedom inside clearly defined boundaries. It might organize files without asking about every small change, while still requiring approval before publishing something publicly or spending money.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "bffbbc52a30d9accb588a5611226140d06623c210bc8bb227b78ebe2de95f20e"
+    },
+    {
+      "id": "n163",
+      "sequence": 163,
+      "kind": "body",
+      "text": "The purpose of the harness is partly to make these boundaries explicit. The agent’s autonomy should remain bounded by the person’s autonomy.",
+      "tts_text": "The purpose of the harness is partly to make these boundaries explicit. The agent’s autonomy should remain bounded by the person’s autonomy.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "de01e6e544160eb40c274398bd9a68b4cfb2c5d59c42321236873f6bb142f7b2"
+    },
+    {
+      "id": "n164",
+      "sequence": 164,
+      "kind": "body",
+      "text": "A platform-owned harness can reverse this relationship. The company defines the available settings, the permitted models, the accessible tools, and the behaviors the user cannot change. The person may customize within those boundaries but cannot meaningfully challenge the boundaries themselves.",
+      "tts_text": "A platform-owned harness can reverse this relationship. The company defines the available settings, the permitted models, the accessible tools, and the behaviors the user cannot change. The person may customize within those boundaries but cannot meaningfully challenge the boundaries themselves.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3c10cdf92fcb3f1ebb031681d4d336968bb1d4a4cee2d7ff60b6e48a603fe59c"
+    },
+    {
+      "id": "n165",
+      "sequence": 165,
+      "kind": "body",
+      "text": "A user-owned harness gives the person greater authority over the system’s design.",
+      "tts_text": "A user-owned harness gives the person greater authority over the system’s design.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "934e42f6e85b6841b747a12c277358cd5707732d7e3ee94e52f64aaae3a4fecf"
+    },
+    {
+      "id": "n166",
+      "sequence": 166,
+      "kind": "heading",
+      "text": "One Structure, Five Protections",
+      "tts_text": "One Structure, Five Protections",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "051ad6c4065eafe6d888630e71790118f1d9bd646e92c8754dc13228fc61f818"
+    },
+    {
+      "id": "n167",
+      "sequence": 167,
+      "kind": "body",
+      "text": "These five qualities depend on one another. A local harness that cannot be inspected may still conceal harmful behavior. A transparent harness that cannot be modified gives the user knowledge without control. An owned harness stored in an unusable format cannot meaningfully move.",
+      "tts_text": "These five qualities depend on one another. A local harness that cannot be inspected may still conceal harmful behavior. A transparent harness that cannot be modified gives the user knowledge without control. An owned harness stored in an unusable format cannot meaningfully move.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "d424e8f7acbd3564160c87d0a75e9e71f8be17508c69bdd89ae0e39e525c77fc"
+    },
+    {
+      "id": "n168",
+      "sequence": 168,
+      "kind": "body",
+      "text": "A portable archive that cannot resume its work preserves history without preserving capability. Together, locality, ownership, portability, transparency, and autonomy create the conditions under which a harness can genuinely remain a user asset. They also improve privacy and recoverability.",
+      "tts_text": "A portable archive that cannot resume its work preserves history without preserving capability. Together, locality, ownership, portability, transparency, and autonomy create the conditions under which a harness can genuinely remain a user asset. They also improve privacy and recoverability.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3f23ec8a37bd88180f30eaba45d5803dff8162110f0424cdece5f4923d671a1a"
+    },
+    {
+      "id": "n169",
+      "sequence": 169,
+      "kind": "body",
+      "text": "A user-controlled system can limit which information reaches each provider. It can maintain records of important actions. It can preserve earlier versions, reverse mistakes, and continue after a service failure.",
+      "tts_text": "A user-controlled system can limit which information reaches each provider. It can maintain records of important actions. It can preserve earlier versions, reverse mistakes, and continue after a service failure.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4c8b20c8640746dea548d047746d4f2fdf1e1aa8686e06fd9d89e2ff47bf0f41"
+    },
+    {
+      "id": "n170",
+      "sequence": 170,
+      "kind": "body",
+      "text": "None of these protections is automatic. Local software can still be insecure. Open-source code can still contain errors. A user-controlled system can still be configured poorly. The purpose is not to promise a perfect system.",
+      "tts_text": "None of these protections is automatic. Local software can still be insecure. Open-source code can still contain errors. A user-controlled system can still be configured poorly. The purpose is not to promise a perfect system.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b09b928929257783012ef44aee34c670eaab1c2632e43b2af9a150d7f2ce00d1"
+    },
+    {
+      "id": "n171",
+      "sequence": 171,
+      "kind": "body",
+      "text": "It is to determine who has the authority and opportunity to inspect problems, correct them, and choose another direction. That is the deeper meaning of ownership in agentic AI.",
+      "tts_text": "It is to determine who has the authority and opportunity to inspect problems, correct them, and choose another direction. That is the deeper meaning of ownership in agentic AI.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "73543ade3c3bed4384f16effdf3942211eb60a6f57370587d3af6d89be655d95"
+    },
+    {
+      "id": "n172",
+      "sequence": 172,
+      "kind": "body",
+      "text": "The model may come from elsewhere. Some tools and services may also come from elsewhere. But the structure that combines them, remembers experience, and gradually learns how to serve one person should remain with that person. And once we accept that principle, another conclusion follows.",
+      "tts_text": "The model may come from elsewhere. Some tools and services may also come from elsewhere. But the structure that combines them, remembers experience, and gradually learns how to serve one person should remain with that person. And once we accept that principle, another conclusion follows.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "01fe8c7e82903db3383862c6206f48af5beff6000366e417d13c6176d8e42bc6"
+    },
+    {
+      "id": "n173",
+      "sequence": 173,
+      "kind": "body",
+      "text": "A truly personal harness cannot be manufactured as one identical piece of software and handed to everyone. It must grow differently for every user.",
+      "tts_text": "A truly personal harness cannot be manufactured as one identical piece of software and handed to everyone. It must grow differently for every user.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b49d85b343cd67a279c42560d61c568d8100e6934de1c75a432ae5a67e102ef7"
+    },
+    {
+      "id": "n174",
+      "sequence": 174,
+      "kind": "heading",
+      "text": "Software That Grows With One Person",
+      "tts_text": "Software That Grows With One Person",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "dc305ad4aa556d4a6d32e315b1cbcc3afba97b70a868883c9cb9459bd2393587"
+    },
+    {
+      "id": "n175",
+      "sequence": 175,
+      "kind": "body",
+      "text": "Once the harness becomes concrete, another distinction becomes visible. A personal harness is not traditional software. Traditional software is usually developed as a finished product. A company designs an application, tests a release, and distributes nearly identical copies to thousands or millions of people.",
+      "tts_text": "Once the harness becomes concrete, another distinction becomes visible. A personal harness is not traditional software. Traditional software is usually developed as a finished product. A company designs an application, tests a release, and distributes nearly identical copies to thousands or millions of people.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e85106c67e8d4a4b1364682ff0a215db7f24203e0f2e5cd5985d106f8f548ccd"
+    },
+    {
+      "id": "n176",
+      "sequence": 176,
+      "kind": "body",
+      "text": "Users may adjust some settings, but the underlying product remains substantially the same. A personal harness reverses this relationship. Its foundations may be shared, but its final composition emerges around one person.",
+      "tts_text": "Users may adjust some settings, but the underlying product remains substantially the same. A personal harness reverses this relationship. Its foundations may be shared, but its final composition emerges around one person.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e32dee92099bb47c5d40bec986cafa011c17504034236f6d5fdf83acd5ffff08"
+    },
+    {
+      "id": "n177",
+      "sequence": 177,
+      "kind": "body",
+      "text": "Many users may rely on the same runtime, hook system, file formats, and plugin conventions. They may begin with some of the same open-source components. But the combination of instructions, memories, permissions, tools, tests, and workflows should develop differently for each of them.",
+      "tts_text": "Many users may rely on the same runtime, hook system, file formats, and plugin conventions. They may begin with some of the same open-source components. But the combination of instructions, memories, permissions, tools, tests, and workflows should develop differently for each of them.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "776735b5a57d404cd8322d0e3d51c5fbd55e3dc00fefe9eb1684eae8004f3975"
+    },
+    {
+      "id": "n178",
+      "sequence": 178,
+      "kind": "body",
+      "text": "The shared parts provide a common anatomy. The personal parts create a distinct organism.",
+      "tts_text": "The shared parts provide a common anatomy. The personal parts create a distinct organism.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "72f5a5ace11fdf28eef89ff022fe37b1700709677a9cea42698e4b5b582a6d47"
+    },
+    {
+      "id": "n179",
+      "sequence": 179,
+      "kind": "heading",
+      "text": "Common Building Blocks, Different Systems",
+      "tts_text": "Common Building Blocks, Different Systems",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "e1d9100709c29f4a228fe09377032114495b4e9a15f24e835e0cd1b9e97119b9"
+    },
+    {
+      "id": "n180",
+      "sequence": 180,
+      "kind": "body",
+      "text": "The plugin is becoming an important unit in this new form of software. Plugins were not invented by Hadosh Academy. Different agent platforms already use plugins, skills, hooks, instruction files, scripts, and related mechanisms to extend agent behavior.",
+      "tts_text": "The plugin is becoming an important unit in this new form of software. Plugins were not invented by Hadosh Academy. Different agent platforms already use plugins, skills, hooks, instruction files, scripts, and related mechanisms to extend agent behavior.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Hadosh Academy",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Hadosh Academy",
+            "Haddosh Academy",
+            "Haddash Academy",
+            "Hadoja Academy",
+            "Hadosha Academy"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "9e7f9d791c1005831202295a2a765ee597b6af947e3cbd9de67bf3214d68bfa2"
+    },
+    {
+      "id": "n181",
+      "sequence": 181,
+      "kind": "body",
+      "text": "What Hadosh Academy contributes is a more disciplined way of thinking about how these pieces can be assembled.",
+      "tts_text": "What Hadosh Academy contributes is a more disciplined way of thinking about how these pieces can be assembled.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Hadosh Academy",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Hadosh Academy",
+            "Haddosh Academy",
+            "Haddash Academy",
+            "Hadoja Academy",
+            "Hadosha Academy"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "cd56c11b868f62b605a060f7f5c7444471b2cd627d53511c45fbe3f01ef0b12b"
+    },
+    {
+      "id": "n182",
+      "sequence": 182,
+      "kind": "body",
+      "text": "In the Plugin Anatomy writings, a plugin has a narrow responsibility. It can contain instructions, hook-triggered checks, scripts, tests, memory, specialized sub-agents, and messages injected at important moments.",
+      "tts_text": "In the Plugin Anatomy writings, a plugin has a narrow responsibility. It can contain instructions, hook-triggered checks, scripts, tests, memory, specialized sub-agents, and messages injected at important moments.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b96dc0dfea45491b7a20eee84aded1d464d2272647fb94cc49b5ab04ca1c6755"
+    },
+    {
+      "id": "n183",
+      "sequence": 183,
+      "kind": "body",
+      "text": "One plugin might protect sensitive information. Another might manage a long-running job. Another could preserve interaction summaries, verify evidence, monitor context limits, or prevent a task from being declared complete before its requirements are satisfied. The components may be reusable.",
+      "tts_text": "One plugin might protect sensitive information. Another might manage a long-running job. Another could preserve interaction summaries, verify evidence, monitor context limits, or prevent a task from being declared complete before its requirements are satisfied. The components may be reusable.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "ecf63909f52ae3d363d9002334bf0d4bfa9de5fdfb870e9982b54fe6082ee26c"
+    },
+    {
+      "id": "n184",
+      "sequence": 184,
+      "kind": "body",
+      "text": "Their selection, arrangement, and development remain personal. A scientist may need plugins for managing experimental evidence, recording uncertainty, tracking samples, or checking scientific claims.",
+      "tts_text": "Their selection, arrangement, and development remain personal. A scientist may need plugins for managing experimental evidence, recording uncertainty, tracking samples, or checking scientific claims.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "91e16a7ab50778345d33608844ad0d57fda304413441fc04b2cf0462b8f1c865"
+    },
+    {
+      "id": "n185",
+      "sequence": 185,
+      "kind": "body",
+      "text": "A filmmaker may need a system that preserves creative decisions, organizes footage, tracks revisions, coordinates production tasks, and distinguishes tentative ideas from approved choices. A lawyer may require strict controls around confidentiality, citations, document versions, and authorization.",
+      "tts_text": "A filmmaker may need a system that preserves creative decisions, organizes footage, tracks revisions, coordinates production tasks, and distinguishes tentative ideas from approved choices. A lawyer may require strict controls around confidentiality, citations, document versions, and authorization.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f25c51c23618ba1f80b70440cf00a0bd22a3587b0003c29c2386102b05e60dd2"
+    },
+    {
+      "id": "n186",
+      "sequence": 186,
+      "kind": "body",
+      "text": "A teacher may need workflows for lesson preparation, student feedback, scheduling, and adapting material to different levels of understanding. These people can use the same underlying abstractions. They should not receive identical harnesses.",
+      "tts_text": "A teacher may need workflows for lesson preparation, student feedback, scheduling, and adapting material to different levels of understanding. These people can use the same underlying abstractions. They should not receive identical harnesses.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "bdf3f9fbb23863c4f64b7210808c4832b8fbbb6ee70acb1fa1aba5ac5e203c7e"
+    },
+    {
+      "id": "n187",
+      "sequence": 187,
+      "kind": "body",
+      "text": "Even two scientists working in the same field may organize their work differently. They may tolerate different levels of uncertainty, rely on different instruments, follow different review processes, and need different points of human approval. The purpose of shared building blocks is not to erase these differences.",
+      "tts_text": "Even two scientists working in the same field may organize their work differently. They may tolerate different levels of uncertainty, rely on different instruments, follow different review processes, and need different points of human approval. The purpose of shared building blocks is not to erase these differences.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "025e3015df2bccf40a3eee28de9e25e5dfab261578a6eed9cc3fff56f7cb435e"
+    },
+    {
+      "id": "n188",
+      "sequence": 188,
+      "kind": "body",
+      "text": "It is to make constructing around them easier.",
+      "tts_text": "It is to make constructing around them easier.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f2ea803d0ae54367e45370e0182e438433a5c94b4434051c448add48076b426b"
+    },
+    {
+      "id": "n189",
+      "sequence": 189,
+      "kind": "heading",
+      "text": "Built From Scratch Does Not Mean Reinventing Everything",
+      "tts_text": "Built From Scratch Does Not Mean Reinventing Everything",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "b28cb70114bd7164a6697e9f31a652bc098ee332d89f38c2b1aeb43af4365e87"
+    },
+    {
+      "id": "n190",
+      "sequence": 190,
+      "kind": "body",
+      "text": "Saying that every person should build a harness from scratch can create the wrong impression. It does not mean that every user must write a new runtime, invent a new hook system, or recreate every plugin.",
+      "tts_text": "Saying that every person should build a harness from scratch can create the wrong impression. It does not mean that every user must write a new runtime, invent a new hook system, or recreate every plugin.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "412b90ae4a8e62e8a0f4269ea95ab5542c9fdf03a5fb4253f56ac7018074711b"
+    },
+    {
+      "id": "n191",
+      "sequence": 191,
+      "kind": "body",
+      "text": "A house can be built for one family without requiring them to invent bricks, windows, plumbing, and electrical wiring. Similarly, a personal harness can be assembled from established components, common design principles, reusable plugins, and open-source tools. What begins from scratch is the composition.",
+      "tts_text": "A house can be built for one family without requiring them to invent bricks, windows, plumbing, and electrical wiring. Similarly, a personal harness can be assembled from established components, common design principles, reusable plugins, and open-source tools. What begins from scratch is the composition.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "2ca6d891f403eb8dfed60eead1ae17639dcd61a70b7baefffd4b21f9edd2b827"
+    },
+    {
+      "id": "n192",
+      "sequence": 192,
+      "kind": "body",
+      "text": "Which capabilities does this person need? Which actions require permission? What should be remembered? Which tools may access which information? How should completed work be verified? Which failures should change future behavior?",
+      "tts_text": "Which capabilities does this person need? Which actions require permission? What should be remembered? Which tools may access which information? How should completed work be verified? Which failures should change future behavior?",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "029a0ef9e5faa43910428c1139607d4de33cc7fa132d463f1c7ae882ebbf2a8d"
+    },
+    {
+      "id": "n193",
+      "sequence": 193,
+      "kind": "body",
+      "text": "These questions cannot be answered completely by a universal installer because their answers depend on the person’s work, risks, habits, and judgment. The harness must be built from the user outward.",
+      "tts_text": "These questions cannot be answered completely by a universal installer because their answers depend on the person’s work, risks, habits, and judgment. The harness must be built from the user outward.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "b7567e67f5ec32b5c126c43eb08ad6be15782b0a21efdf81bc9acf7e2d66675d"
+    },
+    {
+      "id": "n194",
+      "sequence": 194,
+      "kind": "heading",
+      "text": "The Agent Can Help Build Its Own Harness",
+      "tts_text": "The Agent Can Help Build Its Own Harness",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "f460196de69aeb6b6274e758678cfc16af16334083d41c7617c214f2acb50b83"
+    },
+    {
+      "id": "n195",
+      "sequence": 195,
+      "kind": "body",
+      "text": "Until recently, individualized software at this scale would have been impractical. Custom software required programmers, lengthy development cycles, and considerable expense. Most individuals had to accept generic applications because building a personal alternative was unrealistic.",
+      "tts_text": "Until recently, individualized software at this scale would have been impractical. Custom software required programmers, lengthy development cycles, and considerable expense. Most individuals had to accept generic applications because building a personal alternative was unrealistic.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "80edddb9990a07d8aa5454306503e4c7ce3c2c9bc17cd5187840ab21d6b5f510"
+    },
+    {
+      "id": "n196",
+      "sequence": 196,
+      "kind": "body",
+      "text": "LLM-powered command-line agents change this calculation. These agents can already create files, write scripts, modify configurations, connect tools, run tests, and inspect their own results. A user can describe a need conversationally, and the agent can help translate that need into a working component.",
+      "tts_text": "LLM-powered command-line agents change this calculation. These agents can already create files, write scripts, modify configurations, connect tools, run tests, and inspect their own results. A user can describe a need conversationally, and the agent can help translate that need into a working component.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0d96d225e33fc224dff566b17f55c7bba8a8dd1a3c3192e5bcfcc6330a3c07b6"
+    },
+    {
+      "id": "n197",
+      "sequence": 197,
+      "kind": "body",
+      "text": "A person might say: Before sending any public message, show me the final text and identify any claim that has not been verified. The agent can help turn that requirement into instructions, hooks, checks, and tests.",
+      "tts_text": "A person might say: Before sending any public message, show me the final text and identify any claim that has not been verified. The agent can help turn that requirement into instructions, hooks, checks, and tests.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "95320fcbf07fe62c74e30da1e2402db7c230b0aa0d1bfc73bf982f4e960e3a3a"
+    },
+    {
+      "id": "n198",
+      "sequence": 198,
+      "kind": "body",
+      "text": "Later, experience may reveal that the rule is too broad. Perhaps internal team messages should not require the same review. The user explains the distinction, and the harness is revised. The person does not need to write every line of code personally.",
+      "tts_text": "Later, experience may reveal that the rule is too broad. Perhaps internal team messages should not require the same review. The user explains the distinction, and the harness is revised. The person does not need to write every line of code personally.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "085db109df50e740d3055542c1df0f726082c040648b275577e150c698107fc5"
+    },
+    {
+      "id": "n199",
+      "sequence": 199,
+      "kind": "body",
+      "text": "But they should gradually understand what the component does, why it exists, and where its authority begins and ends. This is another reason the harness should remain transparent. If an agent helps build the structure through which it operates, the user must be able to inspect and correct the result.",
+      "tts_text": "But they should gradually understand what the component does, why it exists, and where its authority begins and ends. This is another reason the harness should remain transparent. If an agent helps build the structure through which it operates, the user must be able to inspect and correct the result.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "275da254a20cadf48c50e91e00168f37ba24019493798a2d5ae3983f2ba07eea"
+    },
+    {
+      "id": "n200",
+      "sequence": 200,
+      "kind": "body",
+      "text": "The agent can participate in construction. It cannot become the unquestioned owner of the building.",
+      "tts_text": "The agent can participate in construction. It cannot become the unquestioned owner of the building.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "0f79ad56d1a00b5d493f9f7a59a061f537df20c1793d41fe5359af316a4cb93f"
+    },
+    {
+      "id": "n201",
+      "sequence": 201,
+      "kind": "heading",
+      "text": "A System That Matures Through Experience",
+      "tts_text": "A System That Matures Through Experience",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "59dec0a7420f4aed14593f5e999354f112056f72ffe0e50e90010af931c6f828"
+    },
+    {
+      "id": "n202",
+      "sequence": 202,
+      "kind": "body",
+      "text": "Traditional software is often described through versions. A product reaches version one, then version two. Features are added, bugs are fixed, and releases are delivered to every user. A personal harness can still have stable versions and reliable checkpoints. But it is never finished in quite the same sense.",
+      "tts_text": "Traditional software is often described through versions. A product reaches version one, then version two. Features are added, bugs are fixed, and releases are delivered to every user. A personal harness can still have stable versions and reliable checkpoints. But it is never finished in quite the same sense.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "7b2bff5a370b06e02cf882da33f57506210b030d7ebb497d3edac35a0c843c7b"
+    },
+    {
+      "id": "n203",
+      "sequence": 203,
+      "kind": "body",
+      "text": "It matures through use. A new harness may begin with a few instructions, tools, and safety boundaries. Then it encounters real work. A task fails because important context was lost. That experience may produce a better memory mechanism. The agent acts too early. A new approval hook is added.",
+      "tts_text": "It matures through use. A new harness may begin with a few instructions, tools, and safety boundaries. Then it encounters real work. A task fails because important context was lost. That experience may produce a better memory mechanism. The agent acts too early. A new approval hook is added.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "8a05b67a9b9bc30d9a1480d7514fe7d766bc238c229d61ff96b021ea6052ebcb"
+    },
+    {
+      "id": "n204",
+      "sequence": 204,
+      "kind": "body",
+      "text": "A source turns out to be unreliable. The verification process becomes stricter. The user repeatedly provides the same correction. That correction becomes a durable instruction or test. Over time, experience is converted into structure.",
+      "tts_text": "A source turns out to be unreliable. The verification process becomes stricter. The user repeatedly provides the same correction. That correction becomes a durable instruction or test. Over time, experience is converted into structure.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "3b9f701673100df2f801c7b0f263c9b873eea6cb349041a2ed79b10cafc1a855"
+    },
+    {
+      "id": "n205",
+      "sequence": 205,
+      "kind": "body",
+      "text": "This is what makes the harness more like an organism than a conventional application. An organism has recognizable anatomy, but it is not assembled once and considered complete. It grows, adapts, encounters stress, repairs damage, and develops through interaction with its environment.",
+      "tts_text": "This is what makes the harness more like an organism than a conventional application. An organism has recognizable anatomy, but it is not assembled once and considered complete. It grows, adapts, encounters stress, repairs damage, and develops through interaction with its environment.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c96151efa8237d984a4ea9c8ed59a7221b69392e32423acdc507d3487e792645"
+    },
+    {
+      "id": "n206",
+      "sequence": 206,
+      "kind": "body",
+      "text": "The same plugin may begin simply and become more capable after months of work. New hooks may be added. Instructions may become more precise. Tests may preserve lessons learned from earlier failures. The harness develops a history. That history is part of its value.",
+      "tts_text": "The same plugin may begin simply and become more capable after months of work. New hooks may be added. Instructions may become more precise. Tests may preserve lessons learned from earlier failures. The harness develops a history. That history is part of its value.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "6e28d4c3ab5748ee965e3a9e334ebd5be9b27cd8c1942926d902eb40d37c87fa"
+    },
+    {
+      "id": "n207",
+      "sequence": 207,
+      "kind": "heading",
+      "text": "The Gym Analogy",
+      "tts_text": "The Gym Analogy",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "1aa702a0eb9ea5ce63c19a5825286feee1f2bd4e38278125b2d16664bae74150"
+    },
+    {
+      "id": "n208",
+      "sequence": 208,
+      "kind": "body",
+      "text": "Building a personal harness is also similar to developing the body through exercise. Human beings share a common anatomy. Gyms contain similar equipment. Training programs use many of the same principles. But physical development remains personal.",
+      "tts_text": "Building a personal harness is also similar to developing the body through exercise. Human beings share a common anatomy. Gyms contain similar equipment. Training programs use many of the same principles. But physical development remains personal.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "918404b10d7b0a05aba86dcf0c591c2a9c8a280d134f3ebab03ebf4ec240e323"
+    },
+    {
+      "id": "n209",
+      "sequence": 209,
+      "kind": "body",
+      "text": "One person discovers that their back is weak. Another needs greater mobility. Someone recovering from an injury must train differently from an athlete preparing for competition. Through practice, each person develops an intimate understanding of their own strengths, limitations, and patterns of recovery.",
+      "tts_text": "One person discovers that their back is weak. Another needs greater mobility. Someone recovering from an injury must train differently from an athlete preparing for competition. Through practice, each person develops an intimate understanding of their own strengths, limitations, and patterns of recovery.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "4041b5f55d6210ca9a5496cd8ac07ff22ea32d51cf8470ca75d9e3d1057439de"
+    },
+    {
+      "id": "n210",
+      "sequence": 210,
+      "kind": "body",
+      "text": "A mature harness should develop through a similar relationship. The user discovers where the system is reliable, where it becomes confused, which tasks require closer supervision, and which capabilities can safely receive more independence. This knowledge cannot be delivered entirely through installation.",
+      "tts_text": "A mature harness should develop through a similar relationship. The user discovers where the system is reliable, where it becomes confused, which tasks require closer supervision, and which capabilities can safely receive more independence. This knowledge cannot be delivered entirely through installation.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "f033e2ab6f228915e610e461aa708aea85725518785909d0699d8df23f5aeece"
+    },
+    {
+      "id": "n211",
+      "sequence": 211,
+      "kind": "body",
+      "text": "It develops through participation. By helping build and mature the harness, the user gains an intuitive understanding of a new cognitive ability—a kind of digital cortex that extends what they can observe, remember, organize, and accomplish. This does not mean surrendering human thought to a machine.",
+      "tts_text": "It develops through participation. By helping build and mature the harness, the user gains an intuitive understanding of a new cognitive ability—a kind of digital cortex that extends what they can observe, remember, organize, and accomplish. This does not mean surrendering human thought to a machine.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "84b76387278c91211344d295b5be7f0cd8d87bd4aa2dae2a32adda5dc6e59816"
+    },
+    {
+      "id": "n212",
+      "sequence": 212,
+      "kind": "body",
+      "text": "A useful digital cortex should make the person’s intentions more effective while keeping its own mechanisms visible and correctable.",
+      "tts_text": "A useful digital cortex should make the person’s intentions more effective while keeping its own mechanisms visible and correctable.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "aa9c3bf7b0fe0115b23850dfc27bd50a03f1d815141385bcb2db24f295b00c55"
+    },
+    {
+      "id": "n213",
+      "sequence": 213,
+      "kind": "heading",
+      "text": "The Role of Hadosh Academy",
+      "tts_text": "The Role of Hadosh Academy",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Hadosh Academy",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Hadosh Academy",
+            "Haddosh Academy",
+            "Haddash Academy",
+            "Hadoja Academy",
+            "Hadosha Academy"
+          ]
+        }
+      ],
+      "gap_after_ms": 550,
+      "text_sha256": "6f3671485753fd3dc13299e694e538b5fe4c5cb4b5a956b3f422108ac188e2cc"
+    },
+    {
+      "id": "n214",
+      "sequence": 214,
+      "kind": "body",
+      "text": "This understanding also defines the role of Hadosh Academy. The goal is not to produce one supposedly complete harness and distribute an identical copy to everyone.",
+      "tts_text": "This understanding also defines the role of Hadosh Academy. The goal is not to produce one supposedly complete harness and distribute an identical copy to everyone.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Hadosh Academy",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Hadosh Academy",
+            "Haddosh Academy",
+            "Haddash Academy",
+            "Hadoja Academy",
+            "Hadosha Academy"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "d54ff27d4643d665d11bd367c0b033d20c00b92417192c44088878f56f87ce15"
+    },
+    {
+      "id": "n215",
+      "sequence": 215,
+      "kind": "body",
+      "text": "The goal is to develop an open library of design principles, technical writings, shared abstractions, plugin anatomies, building blocks, and practical examples.",
+      "tts_text": "The goal is to develop an open library of design principles, technical writings, shared abstractions, plugin anatomies, building blocks, and practical examples.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "e90f09fd49e6685fda7febb48094e34c2a02545ab5d0c9888bc79c9075f86f05"
+    },
+    {
+      "id": "n216",
+      "sequence": 216,
+      "kind": "body",
+      "text": "Some people may reuse complete components. Others may adapt them. Some may use only the underlying ideas to build something suited to a very different environment. The library is shared. The organism is personal.",
+      "tts_text": "Some people may reuse complete components. Others may adapt them. Some may use only the underlying ideas to build something suited to a very different environment. The library is shared. The organism is personal.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "00454a667cfb4aa6cb9f7d5ba0d2f865af7725b480e3c98b05db804c55ceac75"
+    },
+    {
+      "id": "n217",
+      "sequence": 217,
+      "kind": "body",
+      "text": "This approach also makes harness literacy important. People do not need to become conventional software engineers, but they should learn enough to recognize the major parts of their system.",
+      "tts_text": "This approach also makes harness literacy important. People do not need to become conventional software engineers, but they should learn enough to recognize the major parts of their system.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "9aff4244d52280b4cc54eb270a09b92792d82716f75ffa8235ae5cb67bf6a87d"
+    },
+    {
+      "id": "n218",
+      "sequence": 218,
+      "kind": "body",
+      "text": "They should understand where memory lives, what activates a plugin, which actions can be blocked, how authority is delegated, and how the system can recover when something goes wrong. That understanding is itself a form of autonomy.",
+      "tts_text": "They should understand where memory lives, what activates a plugin, which actions can be blocked, how authority is delegated, and how the system can recover when something goes wrong. That understanding is itself a form of autonomy.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "lives",
+          "sense": "verb form of live",
+          "ipa": "lɪvz",
+          "asr_accept": [
+            "lives"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "a652737b9f22a77c12f64a38e62fdb8a98c3d55003ee7cdc7bb5778f7d502f7d"
+    },
+    {
+      "id": "n219",
+      "sequence": 219,
+      "kind": "body",
+      "text": "The technical series closes this argument in The Seed Is Yours: the writings provide the design context and selected public building blocks, while each person and agent assemble a distinct architecture.",
+      "tts_text": "The technical series closes this argument in The Seed Is Yours: the writings provide the design context and selected public building blocks, while each person and agent assemble a distinct architecture.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "9e0c57b5ac7c46ad94f5d1e4032a198d123a63363c8676139141caaaca0a4b2d"
+    },
+    {
+      "id": "n220",
+      "sequence": 220,
+      "kind": "heading",
+      "text": "A Future Already Beginning",
+      "tts_text": "A Future Already Beginning",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "f3bb55faecee377e79a1b01da9e002a824852c903fc870cbaffb1ae94e3a8074"
+    },
+    {
+      "id": "n221",
+      "sequence": 221,
+      "kind": "body",
+      "text": "Much of this is prospective. The building blocks already exist. CLI agents can use tools, read local instructions, run scripts, respond to hooks, call specialized agents, and modify the environments in which they operate. But the broader ecosystem of lifelong personal harnesses is still immature.",
+      "tts_text": "Much of this is prospective. The building blocks already exist. CLI agents can use tools, read local instructions, run scripts, respond to hooks, call specialized agents, and modify the environments in which they operate. But the broader ecosystem of lifelong personal harnesses is still immature.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "read",
+          "sense": "present-tense verb",
+          "ipa": "riːd",
+          "asr_accept": [
+            "read"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "65ba9b7cf68effc76e09ecb75dd3a08fc4bda3431e5d1c6dd268e7cb82756ab8"
+    },
+    {
+      "id": "n222",
+      "sequence": 222,
+      "kind": "body",
+      "text": "The standards are only beginning to consolidate. Portability remains limited. Different runtimes support different hooks and conventions. Many products still combine the model and personal harness inside one provider-controlled service. This means the future has not been decided.",
+      "tts_text": "The standards are only beginning to consolidate. Portability remains limited. Different runtimes support different hooks and conventions. Many products still combine the model and personal harness inside one provider-controlled service. This means the future has not been decided.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "a936a9e69e94eeeccdb3ea622f117cc69e245c2aaa886f7830c65b40cceef9a8"
+    },
+    {
+      "id": "n223",
+      "sequence": 223,
+      "kind": "body",
+      "text": "The web could have developed through completely closed gateways, but open standards and open-source browsers protected another possibility. Social media concentrated power inside platforms, but systems such as ActivityPub and Bluesky show that parts of the social experience can be reopened.",
+      "tts_text": "The web could have developed through completely closed gateways, but open standards and open-source browsers protected another possibility. Social media concentrated power inside platforms, but systems such as ActivityPub and Blue sky show that parts of the social experience can be reopened.",
+      "pronunciations": [
+        "Bluesky"
+      ],
+      "pronunciation_checks": [
+        {
+          "term": "ActivityPub",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "ActivityPub",
+            "activity pub"
+          ]
+        },
+        {
+          "term": "Bluesky",
+          "sense": "proper name",
+          "ipa": null,
+          "asr_accept": [
+            "Bluesky",
+            "blue sky"
+          ]
+        }
+      ],
+      "gap_after_ms": 420,
+      "text_sha256": "98278ace5c805deb538a45764f65511dd9deef09593c240479e9ecffdef4ab5c"
+    },
+    {
+      "id": "n224",
+      "sequence": 224,
+      "kind": "body",
+      "text": "Agentic AI has now reached its own fork. We can allow every provider to construct a private model of each user inside an environment only that provider controls. Or we can build the personal harness as an open, inspectable, evolving asset that remains with the person while models and services change around it.",
+      "tts_text": "Agentic AI has now reached its own fork. We can allow every provider to construct a private model of each user inside an environment only that provider controls. Or we can build the personal harness as an open, inspectable, evolving asset that remains with the person while models and services change around it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 420,
+      "text_sha256": "c7b3d94f68eaf7b7fe451d3532f53c7198b233655b56e6b963c2b71ac9ef591e"
+    },
+    {
+      "id": "n225",
+      "sequence": 225,
+      "kind": "body",
+      "text": "The first path may initially appear easier. The second preserves the user’s place in the future. The most important part of your AI may not be the model that knows the most about the world. It may be the system that has learned the most about you. Make sure that system remains yours.",
+      "tts_text": "The first path may initially appear easier. The second preserves the user’s place in the future. The most important part of your AI may not be the model that knows the most about the world. It may be the system that has learned the most about you. Make sure that system remains yours.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "f7c137084bc5e420f3c42e575223e8d494efbf1a19baa27bc29426deaa052b6f"
+    }
+  ]
+}

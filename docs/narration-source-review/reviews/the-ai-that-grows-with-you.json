@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "path": "blog/principles/the-ai-that-grows-with-you.md",
+  "source_sha256": "d4458428a9c83131ea494ed7d40ef89a45a6c3ffde4da34dfa610f878c396c75",
+  "reviewed_at": "2026-09-11",
+  "report": "docs/narration-source-review/essays/the-ai-that-grows-with-you.md",
+  "review": {
+    "factual": "not-reopened-user-approved-prose",
+    "technical_or_historical": "not-reopened-user-approved-prose",
+    "chronology_and_maturity": "not-reopened-user-approved-prose",
+    "cross_writing_consistency": "not-reopened-user-approved-prose",
+    "editorial": "not-reopened-user-approved-prose",
+    "source_page_parity": "passed",
+    "hadi_content_lock": "approved"
+  },
+  "hadi_content_lock_approved_at": "2026-09-11"
+}
