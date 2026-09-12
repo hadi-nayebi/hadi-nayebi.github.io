@@ -45,7 +45,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-01.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     },
     {
@@ -82,7 +82,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-02.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     },
     {
@@ -120,7 +120,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-03.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     },
     {
@@ -152,7 +152,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-04.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     },
     {
@@ -189,7 +189,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-05.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     },
     {
@@ -226,7 +226,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-06.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     },
     {
@@ -263,7 +263,7 @@
       ],
       "audio": {
         "src": "audio/episode-04/slide-07.mp3",
-        "status": "placeholder"
+        "status": "available"
       }
     }
   ]

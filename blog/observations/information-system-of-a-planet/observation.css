@@ -280,6 +280,21 @@
     font-weight: 700;
 }
 
+.episode-playback {
+    display: grid;
+    justify-items: end;
+    gap: .35rem;
+}
+
+.episode-playback p {
+    max-width: 18rem;
+    margin: 0;
+    color: var(--obs-muted);
+    font-size: .8rem;
+    line-height: 1.35;
+    text-align: right;
+}
+
 .episode-play:disabled { opacity: .45; cursor: not-allowed; }
 
 .slide-shell {
@@ -435,6 +450,8 @@
     .observation-hero { padding: 6.75rem 1rem 2.75rem; }
     .observation-lens { grid-template-columns: 1fr; }
     .episode-head { grid-template-columns: 1fr; align-items: start; }
+    .episode-playback { justify-items: start; }
+    .episode-playback p { text-align: left; }
     .episode-play { justify-self: start; }
     .slide-shell { border-radius: 20px; }
     .slide-copy { padding: 1.35rem; }
