@@ -10,6 +10,7 @@
     "safety_and_privacy": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
-    "hadi_content_lock": "pending"
-  }
+    "hadi_content_lock": "approved"
+  },
+  "hadi_content_lock_approved_at": "2026-09-11"
 }

@@ -10,6 +10,7 @@
     "source_support": "passed",
     "narrative_continuity": "passed",
     "editorial": "passed",
-    "hadi_content_lock": "pending"
-  }
+    "hadi_content_lock": "approved"
+  },
+  "hadi_content_lock_approved_at": "2026-09-11"
 }
