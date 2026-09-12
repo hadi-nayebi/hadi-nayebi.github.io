@@ -1,0 +1,223 @@
+{
+  "number": 6,
+  "slug": "when-a-mark-could-say-more-than-it-showed",
+  "title": "When a Mark Could Say More Than It Showed",
+  "status": "published",
+  "published": "2026-09-12",
+  "deckline": "A mark can outlive its maker and still say almost nothing to a stranger. Writing changed the protocol: shared signs let trained readers recover information that was no longer standing in front of them.",
+  "objective": "Show how shared graphic conventions expanded durable marks into writing systems capable of recording a widening range of recoverable information, using early Mesopotamia as a close case and independent inventions elsewhere to reject a single-origin progress story.",
+  "learning_outcomes": [
+    "Distinguish the physical survival of a mark from a writing system whose conventions let trained readers recover intended information.",
+    "Locate early Mesopotamian writing around the late fourth millennium BCE within an existing world of cities, institutions, seals, counters, and oral communication rather than crediting it with creating civilization by itself.",
+    "Understand how word signs and limited phonetic or rebus uses expanded what visible signs could encode, while recognizing that proto-cuneiform did not suddenly transcribe every detail of speech.",
+    "Recognize several independent inventions of writing and the new tradeoff they introduced: greater persistence and expressive range, but expensive training, restricted access, and slow manual copying."
+  ],
+  "continuity": "Episode 5 followed surviving material traces from tens of thousands of years ago toward early Near Eastern counters and exposed their dependence on local context. Episode 6 moves into the late fourth millennium BCE and asks how shared conventions let a mark carry recoverable information beyond the object, scene, or speaker that first gave it meaning.",
+  "state_change": "Durable traces become conventional writing systems: trained readers can recover a much wider range of recorded information after the speaker, event, and local context are gone.",
+  "future_pressure": "Writing can preserve complex records, but reading and copying remain slow, skilled, and institutionally concentrated. The next pressure is not merely longer storage, but wider access and cheaper reproduction.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-6-when-a-mark-could-say-more-than-it-showed",
+  "slides": [
+    {
+      "id": "reader-problem",
+      "title": "The tablet is patient. The reader is the problem.",
+      "read_minutes": 1.2,
+      "image": {
+        "src": "images/episode-06/01-reader-problem.jpg",
+        "alt": "In a quiet mud-brick archive, a clay tablet waits in morning light while a later reader studies its abstract impressions and an absent figure fades through the doorway.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "A handprint can wait sixty thousand years. That does not mean it can explain itself.",
+        "The last episode stretched information's lifetime from a spoken moment to a mark that could remain after every witness was gone. It solved one problem spectacularly: persistence. It did not automatically solve interpretation.",
+        "A stranger can see the mark and still have no idea whether it means a person, a place, a promise, a warning, or simply: I was bored and there was a wall.",
+        "For durable marks to carry more precise information, makers and readers need shared expectations. Which signs count? How do they combine? What does their position change? In computer language, the clay is storage. The convention is the file format. Without the format, the file may survive perfectly and remain beautifully useless."
+      ],
+      "sources": [
+        {
+          "label": "University of Chicago ISAC — Visible Language: Inventions of Writing",
+          "url": "https://isac.uchicago.edu/research/publications/oimp/oimp-32-visible-language-inventions-writing-ancient-middle-east-and",
+          "note": "Scholarly overview defining writing as visible, durable language and comparing the origins and uses of early writing systems."
+        },
+        {
+          "label": "University of Chicago ISAC — Seen Not Heard symposium",
+          "url": "https://isac.uchicago.edu/research/symposia/2017.html",
+          "note": "Research abstracts on how material, layout, iconicity, and convention carry meaning in logosyllabic scripts beyond a simple copy of speech."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-06/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "paperwork-arrives",
+      "title": "Around 3300 BCE, the paperwork arrives",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-06/02-paperwork-arrives.jpg",
+        "alt": "In a busy but plain late-Uruk courtyard, workers move grain and goods while two scribes press reed styluses into wet clay beside tokens, seals, baskets, and jars.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Now the story's clock changes sharply. We leave marks separated from us by tens of thousands of years and arrive in southern Mesopotamia near the end of the fourth millennium BCE — roughly 5,300 years ago.",
+        "Cities and institutions were already growing there. Grain arrived, workers received rations, animals changed hands, storehouses filled and emptied. People counted with tokens, sealed containers and doors, spoke, remembered, negotiated, and occasionally disagreed with impressive human enthusiasm.",
+        "Around 3300 BCE, clay tablets join this administrative toolkit. The earliest surviving proto-cuneiform tablets are heavily concerned with quantities, goods, labor, and institutional accounts. Cheap wet clay made an excellent scratch pad that could become durable once dried.",
+        "Writing did not descend from the sky and invent cities. The Metropolitan Museum describes it as one of several administrative technologies that accompanied the growth of cities and states. The relationship ran both ways: larger institutions generated more recording problems; recording helped institutions manage more people and material. Civilization was not waiting for one heroic app. It was already a crowded system asking for better bookkeeping."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — The Origins of Writing",
+          "url": "https://www.metmuseum.org/essays/the-origins-of-writing",
+          "note": "Museum essay on late-fourth-millennium Uruk, administrative recording on clay, and the debated, complex development of early writing."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — Late Babylonian grammatical tablet",
+          "url": "https://www.metmuseum.org/art/collection/search/321677",
+          "note": "Collection research situating writing around 3300 BCE among tokens, seals, and other administrative technologies accompanying early cities and states."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-06/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "pictures-take-jobs",
+      "title": "Pictures begin doing jobs they do not resemble",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-06/03-pictures-take-jobs.jpg",
+        "alt": "Hands work across a clay surface where counting tokens, rounded pictorial impressions, and increasingly abstract stylus marks coexist without forming a simple evolutionary staircase.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "Some early signs resemble things: a vessel, a head, a stalk of grain. Many others are abstract, especially numerical signs. Meaning also lives in the tablet's arrangement — compartments, order, size, and placement can help show what kind of transaction is being recorded.",
+        "Then repetition begins sanding the pictures down. A drawn image is slow. A practiced stylus impression is fast. Curves become awkward in clay; wedges are easy. Over centuries, many signs grow more abstract, while scribes learn the conventions that make those abstractions readable.",
+        "This is not a tidy march from picture to perfect writing. Tokens, seals, images, speech, memory, and tablets overlap. Different tools keep doing different jobs. The upgrade is that a visible mark can now participate in a shared system instead of depending entirely on resemblance.",
+        "Its write speed improves. Its meaning becomes less obvious to an untrained eye and more precise inside the community that knows the code. More capability, more dependency — a familiar bargain in information systems."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — The Origins of Writing",
+          "url": "https://www.metmuseum.org/essays/the-origins-of-writing",
+          "note": "Explains the use of pictographs and abstract signs on clay and their gradual transformation into impressed cuneiform forms."
+        },
+        {
+          "label": "University of Chicago ISAC — Seen Not Heard symposium",
+          "url": "https://isac.uchicago.edu/research/symposia/2017.html",
+          "note": "Includes research on how tablet shape, layout, iconicity, syntax, and semantics organized information in early Mesopotamian writing."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-06/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "sign-borrows-sound",
+      "title": "A sign can borrow a sound",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-06/04-sign-borrows-sound.jpg",
+        "alt": "A scribe repeats one invented mark on clay while painted associations connect it to a vessel, a person, an action, and a breath-carried sound recognized by another reader.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "A picture of a jar is useful when the subject is a jar. It is less helpful when the subject is a person's name, a verb, or something that refuses to sit still for a portrait.",
+        "One escape route is the rebus principle: use a sign not only for what it pictures, but for the sound of the word it evokes. In English, a drawing of an eye can stand for the sound of “I.” The drawing has stopped being confined to eyeball business. It has borrowed a sound and gained another job.",
+        "Early Mesopotamian writing did not flip into full speech recording overnight. Rebus and other phonetic uses are rare in the earliest cuneiform between roughly 3200 and 3000 BCE. Their more consistent use becomes visible after about 2600 BCE. That gap matters: the system was changing across centuries, not during one genius afternoon.",
+        "As word signs and signs for sounds work together, writing can reach beyond lists of visible goods. Names, actions, grammar, messages, law, literature, and scholarship become increasingly recordable. The medium's expressive range expands — not because pictures disappear, but because a mark can say more than it shows."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — The Origins of Writing",
+          "url": "https://www.metmuseum.org/essays/the-origins-of-writing",
+          "note": "Describes the rebus principle, limited early phonetic uses, and their more consistent appearance after about 2600 BCE."
+        },
+        {
+          "label": "University of Chicago ISAC — Visible Language: Inventions of Writing",
+          "url": "https://isac.uchicago.edu/research/publications/oimp/oimp-32-visible-language-inventions-writing-ancient-middle-east-and",
+          "note": "Scholarly chapters cover the earliest Mesopotamian writing and later adaptation of cuneiform to additional languages."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-06/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "not-invented-once",
+      "title": "Writing was not invented once",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-06/05-not-invented-once.jpg",
+        "alt": "Four equally lit pools on a dark curved world hold different writing materials: Mesopotamian clay, an Egyptian ivory label, a Chinese oracle bone, and Mesoamerican stone and bark paper, with no arrows connecting them.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Mesopotamia gives us one unusually rich trail from counting and administration into a flexible writing tradition. It is not the planet's universal origin story.",
+        "Researchers commonly identify at least four “pristine” writing traditions — systems developed without prior exposure to another writing system — in Mesopotamia, Egypt, China, and Mesoamerica. The archaeological clocks differ. Writing appears in Mesopotamia and Egypt by the late fourth millennium BCE. Surviving Chinese oracle-bone inscriptions belong to the Shang world of the second millennium BCE. Writing develops independently in Mesoamerica on another material and historical path.",
+        "Even that summary is cleaner than the evidence. Perishable surfaces vanish. Early marks can be difficult to classify. Systems influence neighbors, split, adapt to new languages, and change what they are used for. “When was writing invented?” sounds like it wants one date. Earth declines to cooperate.",
+        "What repeats is not a single script spreading everywhere. Different societies build different protocols for making information visible and recoverable. Clay, bone, shell, ivory, stone, wood, and paper each alter cost, durability, portability, and scale. There was no one upgrade package and no obligation for every society to install it."
+      ],
+      "sources": [
+        {
+          "label": "University of Chicago ISAC — Visible Language: Inventions of Writing",
+          "url": "https://isac.uchicago.edu/research/publications/oimp/oimp-32-visible-language-inventions-writing-ancient-middle-east-and",
+          "note": "Compares Mesopotamia, Egypt, China, and Mesoamerica as four independently developed or “pristine” writing systems."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — Shang dynasty oracle bone",
+          "url": "https://www.metmuseum.org/art/collection/search/60695",
+          "note": "Public collection record for an inscribed oracle bone from Shang China, dated broadly to ca. 1600–1046 BCE."
+        },
+        {
+          "label": "University of Chicago ISAC — Seen Not Heard symposium",
+          "url": "https://isac.uchicago.edu/research/symposia/2017.html",
+          "note": "Comparative scholarship on Mesopotamian, Egyptian, Chinese, and Maya scripts and their distinct visual and material systems."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-06/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "message-finds-reader",
+      "title": "The message can find a reader after the speaker is gone",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-06/06-message-finds-reader.jpg",
+        "alt": "Inside a clay-tablet archive, an early scribe leaves, one tablet waits beneath dust, and a later trained reader studies it while another person copies by hand and oral storytelling continues nearby.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "With a shared writing system, a message can wait for a reader who was not present when it was made. It can cross a courtyard, a kingdom, a century — sometimes much more — without requiring an unbroken chain of people to memorize the exact performance.",
+        "By the middle of the third millennium BCE, cuneiform served economic, political, religious, literary, and scholarly purposes. Later, merchants carried clay letters and contracts across long-distance trade networks. Archives preserved loans, disputes, names, family messages, and the ordinary friction of people trying to conduct business while separated by days of travel.",
+        "The operating characteristics have changed. Persistence remains high. Expressive range and recovery fidelity increase for trained readers. Information can be addressed to someone absent and revisited without asking the original speaker to repeat it.",
+        "But this is not unlimited memory. Scribal training is costly. Access is uneven. Texts are copied chiefly by trained hands, one object at a time, and institutions decide what deserves storage. Speech, gesture, oral tradition, pictures, seals, and memory continue doing most of life's communication. Writing joins them as a powerful new layer — one whose messages can wait, but whose readers and copies still arrive slowly."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — The Origins of Writing",
+          "url": "https://www.metmuseum.org/essays/the-origins-of-writing",
+          "note": "Describes cuneiform's expansion by the middle of the third millennium BCE into economic, religious, political, literary, and scholarly records."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — Old Assyrian record of a lawsuit",
+          "url": "https://www.metmuseum.org/art/collection/search/325846",
+          "note": "Shows cuneiform in a second-millennium-BCE trade network recording loans, deals, disputes, letters, and household archives across distance."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — Late Babylonian grammatical tablet",
+          "url": "https://www.metmuseum.org/art/collection/search/321677",
+          "note": "A later teaching text that illustrates the skilled labor required to preserve and interpret ancient written languages."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-06/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}

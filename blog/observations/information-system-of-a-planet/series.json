@@ -64,6 +64,13 @@
       "path": "episodes/episode-05-a-message-that-could-wait.json",
       "title": "A Message That Could Wait",
       "published": "2026-09-10"
+    },
+    {
+      "number": 6,
+      "slug": "when-a-mark-could-say-more-than-it-showed",
+      "path": "episodes/episode-06-when-a-mark-could-say-more-than-it-showed.json",
+      "title": "When a Mark Could Say More Than It Showed",
+      "published": "2026-09-12"
     }
   ]
 }
