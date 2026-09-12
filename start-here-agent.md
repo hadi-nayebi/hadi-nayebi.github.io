@@ -849,7 +849,7 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 ### Projects and interactive explanations
 
 - [Projects](https://hadi-nayebi.github.io/projects/index.html) — compare differentiated applications and scales.
-- [Origin](https://hadi-nayebi.github.io/projects/origin.html) — the single-user Codex dashboard-plus-harness substrate: an empty canvas, Wiki, contextual feedback, stop-state control, durable review, and one foreground interactive tmux session.
+- [Origin](https://hadi-nayebi.github.io/projects/origin.html) — the single-user Codex dashboard-plus-harness substrate: a guided empty canvas, Admin with Wiki and plugin references, independent dashboard and optional text-first Telegram engagement, PR-backed review, and one foreground interactive tmux session.
 - [Seed Agent](https://hadi-nayebi.github.io/projects/seed-agent.html) — a Codex-specific pattern-accumulation surface for selectively reusable foundations.
 - [Q-Seed](https://hadi-nayebi.github.io/projects/q-seed.html) — a Qwen Code-specific pattern-accumulation surface with a deeper framework-ownership boundary.
 - [Team Harnesses](https://hadi-nayebi.github.io/projects/team-harnesses.html) — shared repository, dashboard, roles, and team authority.
@@ -1632,7 +1632,7 @@ Turn the selected asset into something the user can recognize and use. For a das
 
 Consult current dashboard-harness writings, projects, job/state patterns, authority, and verification. Begin with [The Dashboard and the Harness Are One System](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) for the shared visible/operational world and [The Contextual Feedback Plugin](https://hadi-nayebi.github.io/blog/b9/09_2-contextual-feedback-plugin.html) for situated feedback state. Consider individual versus team use. Record sources and maturity. Origin contains no domain model to copy; derive entities, vocabulary, permissions, and workflows from the user's Asset Charter and verified handoff.
 
-When the user's environment is compatible with the public Codex edition, prefer adopting Origin's tested common substrate over rebuilding its launcher, tmux delivery, feedback persistence, stop-state control, recovery, and review boundary. Treat the empty canvas and Wiki as installation evidence, not as completion of this phase. Add the smallest useful pages and real data derived from the user's world. For another CLI, port the documented behavioral contract and verify the replacement adapter; changing an executable name is not a compatible port.
+When the user's environment is compatible with the public Codex edition, prefer adopting Origin's tested common substrate over rebuilding its launcher, tmux delivery, feedback persistence, channel-owned continuation, recovery, worktree/PR review, and owner-merge boundary. Treat the empty canvas, onboarding guide, and Admin references as installation evidence, not as completion of this phase. Add the smallest useful pages and real data derived from the user's world. For another CLI, port the documented behavioral contract and verify the replacement adapter; changing an executable name is not a compatible port.
 
 Identify entities, relationships, stages, decisions, history, attention needs, possible agent actions, and human authority. Use the user's terminology. Define one real workflow: entry, progression, blocking, decisions, backward movement, review, and completion. Choose what the home view must answer: current work, attention, stage, changes, blockers, next action, context, and agent activity.
 
@@ -1646,7 +1646,7 @@ Use a small amount of real work. Connect storage, display, inspection, one permi
 
 #### Add contextual feedback as a foundational feature
 
-Add a floating feedback control on relevant pages. Capture original words, page/view/route/object context, submission time, optional category or priority, apparent type, lifecycle status, agent interpretation, resulting work, verification, and user acceptance. Keep raw input separate from interpretation. If Origin is the substrate, verify these existing contracts against the actual clone before extending them.
+Add a floating feedback control on relevant pages. Capture original words, page/view/route/object context, submission time, optional category or priority, apparent type, lifecycle status, agent interpretation, resulting work, verification, and owner acceptance. Keep raw input separate from interpretation. If Origin is the substrate, preserve its one-parent-thread, one-worktree, one-PR contract and GitHub-confirmed owner merge before resolution.
 
 Provide a feedback view for new, acknowledged, active, waiting, proposed, resolved, declined, and postponed items as appropriate. The exact terms follow the user. The mechanism is both a useful feature and a future sensory surface; do not yet pretend every comment is automatically durable work.
 
@@ -1700,7 +1700,7 @@ Evaluate whether an item is a direct request, observation, question, idea, dupli
 
 #### Convert responsibility into durable work
 
-In Origin 1.0, the feedback record itself is the durable unit of responsibility. Record its identifier, context, interpreted objective, authority, state, relevant files or objects, next action, verification, and review history. Introduce a separate general job only when work truly spans threads, sessions, or responsibilities and the distinction solves an observed problem. Do not claim the 1.0 substrate already contains a general job system.
+In Origin 1.0, the parent feedback thread and its linked worktree/PR are the durable unit of responsibility. Record its identifier, context, interpreted objective, authority, state, relevant files or objects, next action, verification, linked PR, and review history. Introduce a separate general job only when work truly spans threads, sessions, or responsibilities and the distinction solves an observed problem. Do not claim the 1.0 substrate already contains a general job system.
 
 #### Define the first plugin contract
 
@@ -1732,7 +1732,7 @@ Provide a user interruption path. A stop control protects responsibility; it mus
 
 #### Completion authority
 
-Define who may close each category. In Origin 1.0, the agent may verify work and move a thread to `ready_for_review`, but only the dashboard user can accept, dismiss, or reopen it. Preserve that simple authority boundary unless the user explicitly designs and tests a different policy. Higher-impact actions still require approval before execution; team systems require a separate role and authority design. “The agent changed something” is not the same as resolution.
+Define who may close each category. In Origin 1.0, the agent may create the thread's isolated branch and PR, verify work, and move the thread to `ready_for_review`. Only the owner-facing dashboard or paired Telegram action can merge that exact PR and resolve it; owner withdrawal and reopening remain separate. The trusted hook blocks supported agent merge paths. Preserve that authority boundary unless the user explicitly designs and tests a different policy. Higher-impact actions still require approval before execution; team systems require a separate role and authority design. “The agent changed something” is not the same as resolution.
 
 #### Make cognition visible
 
@@ -1748,7 +1748,7 @@ Review categories, recurring questions, misinterpretations, inadequate completio
 
 #### Teach the anatomy after use
 
-Explain: the floating control is an input surface; the feedback store preserves durable responsibility; the contextual-feedback plugin owns one bounded cognitive concern; the runtime transports events into the same foreground interactive session; the stop-state plugin protects unfinished responsibility; waiting prevents futile loops; agent verification prepares review; user acceptance closes the thread; the dashboard makes the process visible. Introduce jobs, OPEVC, or Condense as later patterns only when they have actually been added.
+Explain: the floating control is an input surface; the feedback store preserves durable responsibility; the contextual-feedback plugin owns the dashboard conversation and its continuation state; optional Telegram engagement owns a separate remote conversation and continuation state; the neutral runtime transports both into the same foreground interactive session; each active channel protects unfinished responsibility while passive channels abstain; waiting prevents futile loops; agent verification prepares review; user acceptance closes the thread; the dashboard makes the process visible. Introduce jobs, OPEVC, or Condense as later patterns only when they have actually been added.
 
 #### Participation and phase gate
 
