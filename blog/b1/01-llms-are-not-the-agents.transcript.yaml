@@ -2,7 +2,7 @@
 # Built by transcript-yaml-build.py; hand-finalize `text`, then flip final: true.
 slug: llms-are-not-the-agents
 source_md: 01-llms-are-not-the-agents.md
-final: true             # finalized 2026-06-22: HTML/figure blocks stripped, acronyms guarded, tokens scanned
+final: false            # canonical source revised 2026-09-11; legacy transcript is not the source-locked narration artifact
 target_wpm: 200          # global default; a section may override with its own wpm:
 default_vary: 0.05       # per-sentence pace variation (Qwen); section may override
 default_engine: alt      # alt = pipeline picks per section (stable); or qwen | f5
@@ -220,10 +220,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "e1db5c19e78e"   # curated source block; drift -> review
-    text_hash: "e1db5c19e78e"     # narration; change -> re-render
+    source_hash: "7dbedc31d923"   # curated source block; drift -> review
+    text_hash: "7dbedc31d923"     # narration; change -> re-render
     text: |-
-      You describe what you need through conversation. The agent builds. The same seed works for any user — its architecture knows how to grow, but what it grows into depends on you. We will dive deep into what makes a seed agent work in the second half of this series.
+      You describe what you need through conversation. The agent builds. The same seed can offer shared principles and building blocks, but what it grows into depends on you. You control the composition and authorize its growth. We will dive deep into what makes a seed agent work in the second half of this series.
   - id: s25
     kind: body
     engine: alt

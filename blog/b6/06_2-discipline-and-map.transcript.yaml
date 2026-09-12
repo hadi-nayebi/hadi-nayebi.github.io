@@ -121,10 +121,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "6a713718038f"   # curated source block; drift -> review
-    text_hash: "6a713718038f"     # narration; change -> re-render
+    source_hash: "0419468343e9"   # curated source block; drift -> review
+    text_hash: "0419468343e9"     # narration; change -> re-render
     text: |-
-      How gmode is used is a customization choice. The prototype was built running every job through O P E V C because the work was building the seed agent itself. Once the seed agent ships open-source, users will run their project work through O P E V C and may push routine plugin maintenance through gmode. Or define new phases. Or split phase plugins by job type. Gmode is the general-purpose escape hatch from the prototype's current ceremony, and the seed-cultivator decides what flows through it.
+      How gmode is used is a customization choice. The historical prototype ran every job through O P E V C because the work was building the seed agent itself. A user-owned harness assembled from public Seed patterns may run project work through O P E V C and route routine plugin maintenance through gmode. Or define new phases. Or split phase plugins by job type. Gmode is the general-purpose escape hatch from the prototype's current ceremony, and the seed-cultivator decides what flows through it.
   - id: s14
     kind: body
     engine: alt

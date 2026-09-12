@@ -93,6 +93,9 @@ function inspectEssay(file) {
   const html = file.replace(/\.md$/, '.html');
   const transcript = file.replace(/\.md$/, '.transcript.yaml');
   const publishedPage = fs.existsSync(html) ? read(html) : '';
+  const transcriptSource = fs.existsSync(transcript) ? read(transcript) : '';
+  const transcriptFinalMatch = transcriptSource.match(/^final:\s*(true|false)\b/m);
+  const transcriptFinal = transcriptFinalMatch ? transcriptFinalMatch[1] === 'true' : null;
   const issues = [];
   if (!fs.existsSync(html)) issues.push('missing-published-html');
   if (!metadata.status) issues.push('missing-source-status');
@@ -113,6 +116,9 @@ function inspectEssay(file) {
   if (recorded && review.hadi_content_lock !== 'passed' && /class="article-audio"/.test(publishedPage)) {
     issues.push('unlocked-narration-exposed');
   }
+  if (transcriptFinal && review.hadi_content_lock !== 'passed') {
+    issues.push('transcript-final-without-current-content-lock');
+  }
   return {
     path: sourcePath,
     class: conceptualPaths.has(sourcePath) ? 'principle-writing' : 'technical-writing',
@@ -124,6 +130,7 @@ function inspectEssay(file) {
     external_sources: externalUrls(source).length,
     published_html: fs.existsSync(html) ? rel(html) : null,
     transcript_yaml: fs.existsSync(transcript) ? rel(transcript) : null,
+    transcript_final: transcriptFinal,
     review_record: reviewRecord,
     review,
     issues,
@@ -233,6 +240,14 @@ const structuralErrors = [];
 if (essays.length !== 49) structuralErrors.push(`expected 49 numbered essays, found ${essays.length}`);
 if (essays.filter((item) => item.class === 'principle-writing').length !== 5) structuralErrors.push('expected 5 Part 1 principle writings');
 if (observation.episodes.length !== 5) structuralErrors.push(`expected 5 published Observation episodes, found ${observation.episodes.length}`);
+const unlockedFinalTranscripts = essays.filter((item) =>
+  item.issues.includes('transcript-final-without-current-content-lock'),
+);
+if (unlockedFinalTranscripts.length) {
+  structuralErrors.push(
+    `${unlockedFinalTranscripts.length} structured transcripts are marked final without a current Hadi content lock`,
+  );
+}
 
 const report = {
   schema_version: 1,
@@ -269,6 +284,7 @@ if (process.argv.includes('--json')) {
   console.log(`  Essay sources missing status: ${essays.filter((item) => item.issues.includes('missing-source-status')).length}`);
   console.log(`  Evidence annotations: ${essays.reduce((sum, item) => sum + item.evidence_annotations, 0)}`);
   console.log(`  Overlong evidence annotations: ${essays.reduce((sum, item) => sum + item.issues.filter((issue) => issue.endsWith('overlong-evidence-annotations')).reduce((n, issue) => n + Number.parseInt(issue, 10), 0), 0)}`);
+  console.log(`  Final transcripts without current content lock: ${unlockedFinalTranscripts.length}`);
   if (structuralErrors.length) {
     for (const error of structuralErrors) console.error(`  ERROR: ${error}`);
   }

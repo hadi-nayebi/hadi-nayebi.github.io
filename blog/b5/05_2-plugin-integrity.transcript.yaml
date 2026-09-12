@@ -76,10 +76,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "21f79836fda2"   # curated source block; drift -> review
-    text_hash: "21f79836fda2"     # narration; change -> re-render
+    source_hash: "00c166bd3be9"   # curated source block; drift -> review
+    text_hash: "00c166bd3be9"     # narration; change -> re-render
     text: |-
-      That gate is the most universal pattern in the seed-agent prototype. Every plugin's code is protected by it. Every architect who adopts this architecture inherits it.
+      That gate is the foundational pattern in this reference architecture: controls that govern other controls need a protected way to change. Another architect may implement the boundary differently, but removing the contract — named scope, user authority, verification, and recovery — would make the rest of a composing harness harder to trust.
   - id: s09
     kind: body
     engine: alt
@@ -184,10 +184,10 @@ sections:
     engine: alt
     sync: in-sync
     gap_after: 0.45
-    source_hash: "efe6a2837277"   # curated source block; drift -> review
-    text_hash: "efe6a2837277"     # narration; change -> re-render
+    source_hash: "ad08c16030fb"   # curated source block; drift -> review
+    text_hash: "ad08c16030fb"     # narration; change -> re-render
     text: |-
-      plugin-integrity is the rare always-on plugin most architects inherit, not rewrite. The test gate is the universal floor — every logical plugin-code change should pass through it, no matter what the plugin does. Replacing it makes the architecture less safe, not more. But the inside of the gate has knobs.
+      plugin-integrity is a plugin most architects should preserve as a contract even when they reimplement its mechanism. A protected test-and-recovery boundary is the floor for changing controls that govern other controls. Replacing the shell scripts with continuous integration, a transaction log, a policy engine, or another runtime can improve the architecture; removing named scope, authority, evidence, or recovery makes it less trustworthy. Inside that contract, many knobs remain.
   - id: s21
     kind: body
     engine: alt
