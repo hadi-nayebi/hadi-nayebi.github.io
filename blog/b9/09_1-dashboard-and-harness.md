@@ -5,7 +5,7 @@ slug: "dashboard-and-harness"
 read_time: "9 min"
 tags: [Dashboard, Harness, Origin, Architecture]
 status: published
-version: v0.2.0
+version: v0.3.0
 audience: "Power Users & Architects"
 og_image: "assets/images/digital-cortex-2-og.jpg"
 ---
@@ -26,9 +26,9 @@ The dashboard and the harness are two surfaces of one operational system. The us
 
 ## One World, Two Surfaces
 
-In [Origin 1.0](../../projects/origin.html), the page begins almost empty. A Wiki control sits on one side. A Feedback control sits on the other. The emptiness is not the product. It is room for the user’s own operational world to appear.
+In [Origin 1.0](../../projects/origin.html), the page begins almost empty. A short first-visit guide points toward Admin on one side and Feedback on the other. Admin contains the Wiki and the two installed engagement plugins as reference anatomy. The emptiness is not the product. It is room for the user’s own operational world to appear.
 
-The user may also be speaking directly to Codex in the terminal. These are not two agents and not two separate conversations that occasionally synchronize. The dashboard sends events into the same foreground interactive Codex session the user can see and address. Terminal dialogue and dashboard activity meet one continuing relationship.
+The user may also be speaking directly to Codex in the terminal. These are not two agents and not two separate conversations that occasionally synchronize. The dashboard sends events into the same foreground interactive Codex session the user can see and address. An optional Telegram channel can carry paired remote text into that relationship without speech dependencies; local transcription and cloned-voice replies are optional additions. Terminal dialogue and both engagement channels meet one continuing agent relationship while preserving separate histories and controls.
 
 This choice matters. A hidden headless worker can process a queue, but it creates a second agent relationship beside the one the user already inhabits. The interactive-session design keeps the agent legible: the user can watch it wake, talk to it directly, interrupt it, inspect what it is doing, and see dashboard events arrive with an explicit source.
 
@@ -56,21 +56,23 @@ When new feedback arrives during active work, the voice should not blindly deman
 
 This is the division between soft orientation and hard control. A voice explains the situation. Schemas, services, hooks, and tests preserve the invariant when the voice is misunderstood or ignored. The voice is not a decorative notification, and it is not the enforcement mechanism.
 
-## Two Plugins, One Runtime
+## Two Engagement Plugins, One Runtime
 
 It would be easy to call everything “the feedback plugin.” That would be convenient today and expensive tomorrow.
 
-Origin separates two cognitive concerns. The contextual-feedback plugin owns the thread: original input, interpretation, messages, questions, work state, verification, user review, reopening, event voices, and the commands and tests that protect those contracts.
+Origin separates its engagement channels. The `contextual-feedback` plugin owns dashboard threads: original input, page context, interpretation, messages, files, questions, work state, verification, user review, reopening, event voices, and continuation state.
 
-The agent-stop-state plugin owns a different question: may the interactive agent stop? It tracks whether the harness is idle, active, waiting, or paused. Runnable feedback keeps the system active. One blocked thread does not justify waiting when another thread can progress. Pausing is an explicit user control, not a disguised completion state.
+The optional `telegram-engagement` plugin owns remote threads, paired identity, media intake, local transcription, cloned-voice replies with exact text captions, inline review, and its own continuation state. Either engagement plugin can be removed without disabling the other. Each active channel blocks Stop; a passive channel abstains instead of cancelling the other's vote.
 
-The runtime owns neither concern. It starts the local server, opens the browser, creates or reuses the repository-scoped tmux session, launches Codex, queues wake events, verifies paste and submission evidence, and recovers pending delivery. This is [plugin anatomy](../b7/07_1-plugin-kit-foundation.html) applied through compartmentalization: cognition belongs to bounded organs; transport belongs to infrastructure.
+Neutral lifecycle code enforces their shared contracts without owning either channel. The runtime starts the local server, opens the browser, creates or reuses the repository-scoped tmux session, launches Codex, serializes wake events, verifies paste and submission evidence, and recovers pending delivery. This is [plugin anatomy](../b7/07_1-plugin-kit-foundation.html) applied through compartmentalization: cognition and continuation belong to bounded organs; transport belongs to infrastructure.
 
 ## Completion Returns to the User
 
 The agent can implement a page and run every relevant test. It still cannot know that the user’s need has been satisfied.
 
-Origin therefore splits verification from acceptance. The agent records what changed and how it was checked, then moves the thread to `ready_for_review`. The dashboard user can accept it, reopen it with a reason, or dismiss it. The agent-facing command surface does not expose those review actions.
+Origin therefore splits verification from acceptance. Each actionable parent thread receives one isolated worktree and one linked GitHub pull request. The agent records what changed and how it was checked, then moves the thread to `ready_for_review`. The owner can merge that exact PR, reject and reopen the thread, or withdraw it through the owning channel's review surface. The agent-facing command surface does not expose merge or those review actions.
+
+The dashboard button and paired Telegram button or command feed one owner broker. It checks the current thread version, repository, managed branch, PR state, and GitHub's final merge result before resolution is recorded. A trusted pre-tool hook denies supported agent merge and protected-base paths while still allowing feature-branch pushes and PR creation. Because every local component runs under one operating-system user, the hook is a workflow boundary rather than a sandbox against malicious local code; GitHub branch protection supplies the stronger remote boundary.
 
 This is not a security boundary against a malicious process running under the same operating-system account. It is a capability and audit boundary inside one trusted local relationship. Its purpose is to keep the ordinary workflow honest: implementation is the agent’s claim; closure is the user’s judgment.
 
@@ -80,9 +82,9 @@ When the user reopens a thread, the prior history remains. A new wake event retu
 
 Origin 1.0 does not contain a general job system. Feedback records are its first durable queue. A later dashboard may promote substantial feedback into jobs that coordinate several threads, survive multiple cycles, or carry their own plans. Calling feedback a job before that machinery exists would make the documentation sound mature while making the implementation harder to inspect.
 
-It also does not ship an OPEVC engine, accounts, remote access, synchronization, or team authority. The Wiki explains how those layers can grow; it does not turn future architecture into present capability.
+It also does not ship an OPEVC engine, accounts, a hosted dashboard, synchronization, or team authority. The optional Telegram client provides bounded remote engagement through a dedicated paired bot; it is not a general account or cloud-sync layer. Admin and its Wiki explain how later layers can grow; they do not turn future architecture into present capability.
 
-The same honesty applies to evidence. Automated tests can prove state transitions, schemas, hooks, adapter commands, APIs, interface behavior, and recovery logic. They cannot prove that a particular person’s authenticated Codex session opened correctly inside tmux on a particular laptop. That requires a separate local acceptance run.
+The same honesty applies to evidence. Automated tests can prove state transitions, schemas, independent hooks and plugin removal, adapter commands, APIs, simulated Telegram boundaries, interface behavior, and recovery logic. They cannot prove that a particular person’s authenticated Codex session opened correctly inside tmux on a particular laptop, or that a cloned voice sounds right to its owner. Those claims require separate live acceptance.
 
 ## The Empty Page Is a Beginning
 
