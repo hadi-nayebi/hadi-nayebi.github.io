@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Principles, technical architecture, observations, and practical guides for building useful, user-owned systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>One Agent, Many Doors</title>
+      <link>https://hadi-nayebi.github.io/blog/principles/one-agent-many-doors.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/principles/one-agent-many-doors.html</guid>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Terminal, dashboard, and Telegram should reach one continuing agent relationship without collapsing their histories, permissions, delivery states, or review boundaries into one fragile queue.</description>
+    </item>
 
     <item>
       <title>The AI That Grows With You</title>
