@@ -5,7 +5,7 @@ slug: "internal-voices-reorientation"
 read_time: "8 min"
 tags: [Voice, Plugins, Hooks, Origin]
 status: published
-version: v0.2.0
+version: v0.3.0
 audience: "Power Users & Architects"
 og_image: "assets/images/digital-cortex-2-og.jpg"
 ---
@@ -28,7 +28,7 @@ In Hadosh plugin anatomy, a plugin exists for one coherent behavioral objective.
 
 Origin’s Contextual Feedback plugin exists to turn page-aware comments into durable user-agent conversation and reviewed responsibility. Its new-feedback voice therefore does not merely announce a comment. It reminds Codex that the raw observation must be preserved, interpretation must remain separate, current focus must be respected, and verified work must return to the user.
 
-Agent Stop State has a different objective: decide whether the interactive agent may stop. Its voice speaks about runnable responsibility, legitimate waiting, explicit pause, and derived idleness. Copying the feedback voice into the Stop plugin would be repetition without ownership.
+Continuation is also channel-owned. Contextual Feedback's Stop voice speaks about runnable dashboard responsibility, legitimate waiting, explicit dashboard pause, and derived idleness. Telegram engagement uses its own voice for remote conversation and transport responsibility. Copying one channel's voice into a global Stop component would erase the source, authority, and recovery boundary the agent needs.
 
 The shared shape can be reused. The meaning must come from the organ that fired.
 
@@ -62,7 +62,7 @@ The voice therefore acts like a map back to the organism. It does not attempt to
 
 One generic voice cannot accurately describe every boundary.
 
-When feedback arrives during active work, immediate context switching may be harmful. The voice protects the existing focus while ensuring the new thread survives. When the user answers a question, the relevant boundary is different: the recorded reason for waiting may now be resolved. When work is reopened, the voice must preserve prior failure evidence and direct attention to the user’s rejection. When accepted work closes, the voice should not keep polishing it; it should scan the ordered queue.
+When feedback arrives during active work, immediate context switching may be harmful. The voice protects the existing focus while ensuring the new thread survives. When the user answers a question, the relevant boundary is different: the recorded reason for waiting may now be resolved. When work is reopened, the voice must preserve prior failure evidence and direct attention to the user’s rejection. When GitHub confirms the owner's merge and accepted work closes, the voice should not keep polishing it; it should scan the ordered queue.
 
 Origin therefore provides distinct voices for new feedback, feedback during active work, answers, reopening, acceptance, withdrawal, and session resumption. Their structure is related, but their cognitive verbs differ: retrieve, compare, preserve, reconsider, measure, verify, reconcile.
 
@@ -72,7 +72,7 @@ This is not personality design. It is event-specific operational language.
 
 A model can misunderstand, ignore, or partially follow excellent prose. A voice is probabilistic coaching.
 
-Hard controls must remain correct when the voice fails. Origin’s lifecycle service permits only one in-progress feedback thread. Schemas validate identifiers, routes, roles, and payload bounds. The journal couples meaningful conversation and state transitions. The durable outbox retains nonterminal wake events. The Stop hook exits nonzero while global state is active. The agent CLI does not expose user-owned acceptance or dismissal.
+Hard controls must remain correct when the voice fails. Origin’s lifecycle service permits only one in-progress thread per channel. Schemas validate identifiers, routes, roles, and payload bounds. Each journal couples meaningful conversation and state transitions. Durable outboxes retain nonterminal wake events. Each active channel's Stop hook exits nonzero, while a passive hook abstains and cannot cancel another channel's vote. The agent CLI does not expose merge or user-owned review actions, and the trusted owner-authority hook denies supported agent merge and protected-base paths. The hook is deterministic inside the trusted tool path, not an operating-system sandbox; GitHub branch protection remains the stronger remote boundary.
 
 The voice explains why focus, retrieval, continuation, and review matter. Code enforces the portions that cannot depend on persuasion.
 
