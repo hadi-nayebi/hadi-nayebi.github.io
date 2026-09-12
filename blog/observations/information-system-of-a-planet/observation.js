@@ -5,11 +5,13 @@
     const lightbox = document.getElementById('observation-lightbox');
     const lightboxImage = document.getElementById('observation-lightbox-image');
     const lightboxClose = document.getElementById('observation-lightbox-close');
+    const playback = window.ObservationPlayback;
     const state = new Map();
     let series = null;
     let episodes = [];
 
     const activateEpisode = (number) => {
+        state.forEach((episodeState) => playback.stop(episodeState));
         root.querySelectorAll('.observation-episode').forEach((section) => {
             section.hidden = section.id !== `episode-${number}`;
         });
@@ -72,7 +74,7 @@
         return `
             <div class="slide-audio">
                 <button type="button" class="slide-audio-play" data-episode="${episode.number}" data-slide-index="${index}">
-                    ▶ Listen to this slide
+                    ▶ Play narration
                 </button>
                 <label>
                     <span class="sr-only">Playback speed</span>
@@ -87,6 +89,12 @@
             </div>`;
     };
 
+    const navigateToSlide = (episode, index) => {
+        const episodeState = state.get(episode.number);
+        if (!episodeState) return;
+        renderSlide(episode, index, playback.navigationOptions(episodeState));
+    };
+
     const renderSlide = (episode, index, options = {}) => {
         const episodeState = state.get(episode.number);
         if (!episodeState) return;
@@ -99,8 +107,8 @@
         if (!shell) return;
         const discussion = section.querySelector('.episode-discussion');
         if (discussion) discussion.remove();
-        const episodePlay = section.querySelector('.episode-play');
-        if (episodePlay) episodePlay.remove();
+        const episodePlayback = section.querySelector('.episode-playback');
+        if (episodePlayback) episodePlayback.remove();
 
         const weights = visualWeights(slide.image.category);
         const dots = episode.slides.map((_, dotIndex) => `
@@ -148,17 +156,17 @@
             </nav>`;
 
         if (discussion) shell.querySelector('.discussion-slot').appendChild(discussion);
-        if (episodePlay) shell.querySelector('.episode-audio-slot').appendChild(episodePlay);
+        if (episodePlayback) shell.querySelector('.episode-audio-slot').appendChild(episodePlayback);
         const episodeIndex = episodes.indexOf(episode);
         shell.querySelector('.episode-prev').addEventListener('click', () => activateEpisode(episodes[episodeIndex - 1]?.number));
         shell.querySelector('.episode-next').addEventListener('click', () => activateEpisode(episodes[episodeIndex + 1]?.number));
         shell.querySelector('.episode-select').addEventListener('change', (event) => activateEpisode(Number(event.target.value)));
 
         shell.querySelector('.slide-image-button')?.addEventListener('click', () => openLightbox(slide.image.src, slide.image.alt));
-        shell.querySelector('.slide-prev')?.addEventListener('click', () => renderSlide(episode, index - 1));
-        shell.querySelector('.slide-next')?.addEventListener('click', () => renderSlide(episode, index + 1));
+        shell.querySelector('.slide-prev')?.addEventListener('click', () => navigateToSlide(episode, index - 1));
+        shell.querySelector('.slide-next')?.addEventListener('click', () => navigateToSlide(episode, index + 1));
         shell.querySelectorAll('.slide-dot').forEach((button) => {
-            button.addEventListener('click', () => renderSlide(episode, Number(button.dataset.dot)));
+            button.addEventListener('click', () => navigateToSlide(episode, Number(button.dataset.dot)));
         });
 
         const playButton = shell.querySelector('.slide-audio-play');
@@ -169,35 +177,48 @@
                 document.querySelectorAll('audio').forEach((other) => {
                     if (other !== audio) other.pause();
                 });
+                playback.start(episodeState);
+                syncEpisodePlayButton(episode);
                 audio.playbackRate = Number(rate?.value || 1);
-                try { await audio.play(); } catch (_) { /* Browser/user gesture policy owns playback. */ }
+                try {
+                    await audio.play();
+                } catch (_) {
+                    playback.stop(episodeState);
+                    syncEpisodePlayButton(episode);
+                }
             });
             rate?.addEventListener('change', () => { audio.playbackRate = Number(rate.value || 1); });
             audio.addEventListener('ended', () => {
-                if (episodeState.playEpisode && index < episode.slides.length - 1) {
-                    renderSlide(episode, index + 1, { autoplayAudio: true });
-                } else if (index === episode.slides.length - 1) {
-                    episodeState.playEpisode = false;
-                    syncEpisodePlayButton(episode);
-                }
+                playback.finishSlide(episodeState, index === episode.slides.length - 1);
+                syncEpisodePlayButton(episode);
             });
             if (options.autoplayAudio && episodeState.playEpisode) {
                 audio.playbackRate = Number(rate?.value || 1);
                 audio.play().catch(() => {
-                    episodeState.playEpisode = false;
+                    playback.stop(episodeState);
                     syncEpisodePlayButton(episode);
                 });
             }
         }
 
+        syncEpisodePlayButton(episode);
         setHash(episode.number, index + 1);
     };
 
     const syncEpisodePlayButton = (episode) => {
         const button = document.querySelector(`#episode-${episode.number} .episode-play`);
+        const status = document.querySelector(`#episode-${episode.number} .episode-play-status`);
         const episodeState = state.get(episode.number);
         if (!button || !episodeState) return;
-        button.textContent = episodeState.playEpisode ? '■ Stop episode' : '▶ Play episode';
+        button.textContent = episodeState.playEpisode ? '■ Stop narration' : '▶ Start narrated reading';
+        button.setAttribute('aria-pressed', String(episodeState.playEpisode));
+        if (status) {
+            status.textContent = episodeState.waitingForAdvance
+                ? 'Slide complete. Move to another slide to continue.'
+                : episodeState.playEpisode
+                    ? 'Narration is active and will pause at this slide’s end.'
+                    : 'Narration pauses at each slide. Move to another slide to continue.';
+        }
     };
 
     const loadDiscussion = (details, episode) => {
@@ -225,7 +246,7 @@
     };
 
     const renderEpisode = (episode) => {
-        state.set(episode.number, { index: 0, playEpisode: false });
+        state.set(episode.number, playback.createState());
         const hasAudio = episode.slides.some((slide) => slide.audio?.status === 'available');
         const section = document.createElement('section');
         section.className = 'observation-episode';
@@ -238,7 +259,7 @@
                     <h2>${escapeHtml(episode.title)}</h2>
                     <p>${escapeHtml(episode.deckline || '')}</p>
                 </div>
-                ${hasAudio ? '<button type="button" class="episode-play">▶ Play episode</button>' : ''}
+                ${hasAudio ? '<div class="episode-playback"><button type="button" class="episode-play" aria-pressed="false">▶ Start narrated reading</button><p class="episode-play-status" aria-live="polite">Narration pauses at each slide. Move to another slide to continue.</p></div>' : ''}
             </header>
             <div class="slide-shell" aria-live="polite"></div>
             <details class="episode-discussion">
@@ -254,7 +275,8 @@
         if (play) {
             play.addEventListener('click', () => {
                 const episodeState = state.get(episode.number);
-                episodeState.playEpisode = !episodeState.playEpisode;
+                if (episodeState.playEpisode) playback.stop(episodeState);
+                else playback.start(episodeState);
                 syncEpisodePlayButton(episode);
                 document.querySelectorAll('audio').forEach((audio) => audio.pause());
                 if (episodeState.playEpisode) renderSlide(episode, episodeState.index, { autoplayAudio: true });
@@ -273,7 +295,7 @@
             const next = event.key === 'ArrowLeft' ? episodeState.index - 1 : episodeState.index + 1;
             if (next >= 0 && next < episode.slides.length) {
                 event.preventDefault();
-                renderSlide(episode, next);
+                navigateToSlide(episode, next);
             }
         });
     };

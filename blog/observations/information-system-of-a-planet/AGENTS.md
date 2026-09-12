@@ -115,7 +115,7 @@ Every slide reserves a predictable audio path from its first publication. Hadi w
 - `placeholder`: path is reserved; no audio file is required.
 - `available`: the referenced audio file must exist and match the published narration semantically.
 
-The page supports manual slide playback and an episode-play mode that may auto-advance **only after the reader initiates playback**. Never force autoplay on page load.
+The page exposes playback on each slide and supports a narrated-reading mode that starts only after the reader initiates playback. Each slide uses its own audio file. When that file ends, remain on the current slide and pause. Preserve the reader's playback intent so that navigating to another slide starts that slide's audio, but never change slides automatically and never force autoplay on page load.
 
 ## Sources and comments
 
@@ -148,7 +148,7 @@ Support:
 - stable hashes such as `#episode-2-slide-4`;
 - image fullscreen viewing;
 - per-slide audio when available;
-- episode playback that advances after audio ends;
+- narrated reading that pauses at each slide boundary and resumes only after the reader navigates;
 - one comment/discussion block per episode.
 
 Do not auto-advance text-only slides. The reader controls pacing.

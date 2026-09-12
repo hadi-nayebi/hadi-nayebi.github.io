@@ -1,0 +1,571 @@
+{
+  "schema_version": "1.0.0",
+  "source": "blog/observations/information-system-of-a-planet/episodes/episode-05-a-message-that-could-wait.json",
+  "source_sha256": "a08c5592a1040e304ff627ddac30c1ff5d7cac1c2d1c1fdd7a9d0149e6a11134",
+  "status": "voice-review",
+  "content_lock": {
+    "status": "approved",
+    "approved_at": "2026-09-11"
+  },
+  "voice_review": "pending",
+  "canonical_text_policy": "Published slide titles and narration paragraphs are preserved verbatim in text; sentence-boundary chunks and slide pauses prepare the same approved narration for audio; render-only aliases live in tts_text.",
+  "pronunciation_policy": "Use canonical spelling by default. Add a render-only English respelling only after a bounded same-seed test proves a concrete pronunciation error. IPA is reference metadata only.",
+  "audio": {
+    "engine": "Qwen3-TTS voice clone",
+    "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "target_wpm": 165,
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "loudness_lufs": -16,
+    "true_peak_dbtp": -1.5
+  },
+  "curation": {
+    "source_file_words": 2006,
+    "narration_words": 973,
+    "excluded": [
+      "episode status, publication, objective, learning-outcome, continuity, and discussion metadata",
+      "image paths, alt text, and visual-category metadata",
+      "source drawers and raw link destinations",
+      "reserved audio status metadata"
+    ]
+  },
+  "pronunciation_lexicon": {},
+  "chunks": [
+    {
+      "id": "n001",
+      "sequence": 1,
+      "kind": "slide-title",
+      "slide_id": "after-the-voices",
+      "slide_sequence": 1,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-01.mp3",
+      "text": "After the voices go quiet",
+      "tts_text": "After the voices go quiet",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "f8aa32c9e12566059153e7bc09ed667eeff10a96c6402e2a3fd6138d610cddcf"
+    },
+    {
+      "id": "n002",
+      "sequence": 2,
+      "kind": "body",
+      "slide_id": "after-the-voices",
+      "slide_sequence": 1,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-01.mp3",
+      "text": "Episode 4 ended with an oral tradition crossing generations. Powerful storage — but busy storage. Someone had to remember, perform, listen, correct, and perform again.",
+      "tts_text": "Episode 4 ended with an oral tradition crossing generations. Powerful storage — but busy storage. Someone had to remember, perform, listen, correct, and perform again.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "ea69079d76ead6760762e26ecc545a949dbb3e4622b9bbec1d032579da33cf8e"
+    },
+    {
+      "id": "n003",
+      "sequence": 3,
+      "kind": "body",
+      "slide_id": "after-the-voices",
+      "slide_sequence": 1,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-01.mp3",
+      "text": "A voice lasts seconds. A memory may last a lifetime. A tradition can last much longer, but only while a chain of living people keeps rewriting it into new bodies.",
+      "tts_text": "A voice lasts seconds. A memory may last a lifetime. A tradition can last much longer, but only while a chain of living people keeps rewriting it into new bodies.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "78e11058833ebe84e719ce60c22c4f8c7825b167ef9866478a5a4ba4e55f3928"
+    },
+    {
+      "id": "n004",
+      "sequence": 4,
+      "kind": "body",
+      "slide_id": "after-the-voices",
+      "slide_sequence": 1,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-01.mp3",
+      "text": "Now imagine the gathering ends. The fire cools. Everyone leaves. One deliberate mark remains on stone.",
+      "tts_text": "Now imagine the gathering ends. The fire cools. Everyone leaves. One deliberate mark remains on stone.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "220dff17cc278670a18de932e0355fd362cda941e921ad0a847b16c330b64a98"
+    },
+    {
+      "id": "n005",
+      "sequence": 5,
+      "kind": "body",
+      "slide_id": "after-the-voices",
+      "slide_sequence": 1,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-01.mp3",
+      "text": "The mark does not remember in the way a person remembers. Bodies had long been changing landscapes, and tools already embodied traces of technique. A deliberate graphic mark adds a more directly inspectable layer: selected information can wait without a living carrier continuously holding it.",
+      "tts_text": "The mark does not remember in the way a person remembers. Bodies had long been changing landscapes, and tools already embodied traces of technique. A deliberate graphic mark adds a more directly inspectable layer: selected information can wait without a living carrier continuously holding it.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "1660cf1ed83e9a3c5abc58964feaeeeeeb85d94cf56941b3bca3bb3d6dcb2724"
+    },
+    {
+      "id": "n006",
+      "sequence": 6,
+      "kind": "body",
+      "slide_id": "after-the-voices",
+      "slide_sequence": 1,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-01.mp3",
+      "text": "The write may take seconds or hours. The stored trace may survive days, generations, or — under absurdly lucky conditions — tens of thousands of years.",
+      "tts_text": "The write may take seconds or hours. The stored trace may survive days, generations, or — under absurdly lucky conditions — tens of thousands of years.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "5941ad6747e2a0a3f950540fa465a05c93bbf70be3a7e3c45411fe9d118ade6c"
+    },
+    {
+      "id": "n007",
+      "sequence": 7,
+      "kind": "slide-title",
+      "slide_id": "survival-filter",
+      "slide_sequence": 2,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-02.mp3",
+      "text": "Prehistory arrives through a brutal filter",
+      "tts_text": "Prehistory arrives through a brutal filter",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "f82b301dbbde7fdcba1bb8015104347aaeb2efc0b7763a4dccc133c387ce3a71"
+    },
+    {
+      "id": "n008",
+      "sequence": 8,
+      "kind": "body",
+      "slide_id": "survival-filter",
+      "slide_sequence": 2,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-02.mp3",
+      "text": "The oldest mark we have found is not necessarily the first mark anyone made. Archaeology receives whatever escaped weather, fire, decay, reuse, burial, and our own talent for building parking lots on top of interesting things.",
+      "tts_text": "The oldest mark we have found is not necessarily the first mark anyone made. Archaeology receives whatever escaped weather, fire, decay, reuse, burial, and our own talent for building parking lots on top of interesting things.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "6d828db4e60749092227e61f9e6c496ad498fb9878db315f2b158ce6bd6281a8"
+    },
+    {
+      "id": "n009",
+      "sequence": 9,
+      "kind": "body",
+      "slide_id": "survival-filter",
+      "slide_sequence": 2,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-02.mp3",
+      "text": "People may have marked skin, wood, fiber, sand, and other materials that rarely survive. What remains is a biased sample, unusually friendly to stone, mineral pigment, shell, bone, and protected caves.",
+      "tts_text": "People may have marked skin, wood, fiber, sand, and other materials that rarely survive. What remains is a biased sample, unusually friendly to stone, mineral pigment, shell, bone, and protected caves.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "3ad064192cc7e853331b3505f65749e6e5708162cee8df6da4bd378132224ae8"
+    },
+    {
+      "id": "n010",
+      "sequence": 10,
+      "kind": "body",
+      "slide_id": "survival-filter",
+      "slide_sequence": 2,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-02.mp3",
+      "text": "At Blombos Cave in South Africa, people prepared and stored an ochre-rich mixture about 100,000 years ago. From layers around 73,000 years old comes a small stone flake crossed by deliberate red lines; researchers concluded that the pattern once extended beyond the broken edges.",
+      "tts_text": "At Blombos Cave in South Africa, people prepared and stored an ochre-rich mixture about 100,000 years ago. From layers around 73,000 years old comes a small stone flake crossed by deliberate red lines; researchers concluded that the pattern once extended beyond the broken edges.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Blombos",
+          "sense": "Blombos Cave place name",
+          "ipa": null,
+          "asr_accept": [
+            "Blombos"
+          ]
+        }
+      ],
+      "gap_after_ms": 320,
+      "text_sha256": "f9e28c9e42740f9615ae6b89d2bf3be41655a41d67126b498a668e5862350cf9"
+    },
+    {
+      "id": "n011",
+      "sequence": 11,
+      "kind": "body",
+      "slide_id": "survival-filter",
+      "slide_sequence": 2,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-02.mp3",
+      "text": "We can establish material, technique, and approximate age. Meaning is harder. Was a pattern decoration, identity, practice, notation, ritual, or several things at once? The file survived. Most of its metadata did not.",
+      "tts_text": "We can establish material, technique, and approximate age. Meaning is harder. Was a pattern decoration, identity, practice, notation, ritual, or several things at once? The file survived. Most of its metadata did not.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "5222a1212ceca3eb4b80e55c2413d4fc5b88bfd72cc83f3de6b8aa27b4615f62"
+    },
+    {
+      "id": "n012",
+      "sequence": 12,
+      "kind": "slide-title",
+      "slide_id": "hand-waits",
+      "slide_sequence": 3,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-03.mp3",
+      "text": "A hand waits 67,800 years",
+      "tts_text": "A hand waits 67,800 years",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "ac3587b772d4002258a783a7cbc58a219b92b0b3522b983f6a202f4ba1d608a5"
+    },
+    {
+      "id": "n013",
+      "sequence": 13,
+      "kind": "body",
+      "slide_id": "hand-waits",
+      "slide_sequence": 3,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-03.mp3",
+      "text": "On the Indonesian island of Muna, someone placed a hand against a limestone wall and blew pigment around it. Later, parts of the finger outlines appear to have been deliberately narrowed. Mineral deposits eventually grew over the image.",
+      "tts_text": "On the Indonesian island of Muna, someone placed a hand against a limestone wall and blew pigment around it. Later, parts of the finger outlines appear to have been deliberately narrowed. Mineral deposits eventually grew over the image.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Muna",
+          "sense": "Muna island place name",
+          "ipa": null,
+          "asr_accept": [
+            "Muna"
+          ]
+        }
+      ],
+      "gap_after_ms": 320,
+      "text_sha256": "375bca5a937bdc42348f0fef06002945cf41c0babb456e27c4accc5a53834f15"
+    },
+    {
+      "id": "n014",
+      "sequence": 14,
+      "kind": "body",
+      "slide_id": "hand-waits",
+      "slide_sequence": 3,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-03.mp3",
+      "text": "In 2026, researchers dated the calcium carbonate above one stencil. Their result gives the art a minimum age of 67,800 years. The pigment must already have been there when that mineral layer began to form; the image itself may be older.",
+      "tts_text": "In 2026, researchers dated the calcium carbonate above one stencil. Their result gives the art a minimum age of 67,800 years. The pigment must already have been there when that mineral layer began to form; the image itself may be older.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "944b1d2bdd1096912e56ca72a2ff75303e6bab228e780660a25a88bef0f73ba9"
+    },
+    {
+      "id": "n015",
+      "sequence": 15,
+      "kind": "body",
+      "slide_id": "hand-waits",
+      "slide_sequence": 3,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-03.mp3",
+      "text": "Look at the performance change. The original gesture lasted moments. The hand lasted one human life. Its outline remained on the wall for more than six hundred centuries, including long stretches when nobody may have looked at it at all.",
+      "tts_text": "Look at the performance change. The original gesture lasted moments. The hand lasted one human life. Its outline remained on the wall for more than six hundred centuries, including long stretches when nobody may have looked at it at all.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "1d8c0b94bf4242f3d29c8b2fc320c630235f6a82b3c7de5f36b95be2327ca293"
+    },
+    {
+      "id": "n016",
+      "sequence": 16,
+      "kind": "body",
+      "slide_id": "hand-waits",
+      "slide_sequence": 3,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-03.mp3",
+      "text": "But durability is not mind-reading. We can still see the shape. We cannot interview the maker about what it meant. External storage extends the lifetime of a signal; it does not guarantee that a future reader retains the protocol.",
+      "tts_text": "But durability is not mind-reading. We can still see the shape. We cannot interview the maker about what it meant. External storage extends the lifetime of a signal; it does not guarantee that a future reader retains the protocol.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "bff617ba8a80ac042ee6ddc7d43cd9dc478d12da309378da00d9dba3fc0616e8"
+    },
+    {
+      "id": "n017",
+      "sequence": 17,
+      "kind": "slide-title",
+      "slide_id": "pattern-repeats",
+      "slide_sequence": 4,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-04.mp3",
+      "text": "A pattern learns to repeat",
+      "tts_text": "A pattern learns to repeat",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "6d5ae13cb4519bf7e72f1db4310b2d0d24a85e110b5fabdfd002351e306482c9"
+    },
+    {
+      "id": "n018",
+      "sequence": 18,
+      "kind": "body",
+      "slide_id": "pattern-repeats",
+      "slide_sequence": 4,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-04.mp3",
+      "text": "One mark can be personal. Repeated marks can become a social convention.",
+      "tts_text": "One mark can be personal. Repeated marks can become a social convention.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "024cc93e9ba5b10c8826c59ff11f27fa9a5af487568a2d4fcc0e5dea0f4c7121"
+    },
+    {
+      "id": "n019",
+      "sequence": 19,
+      "kind": "body",
+      "slide_id": "pattern-repeats",
+      "slide_sequence": 4,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-04.mp3",
+      "text": "At Diepkloof Rock Shelter in South Africa, archaeologists recovered about 270 engraved fragments from ostrich-eggshell containers, mostly from layers roughly 60,000 years old. The designs changed over time, but related geometric rules recur across many objects and archaeological layers.",
+      "tts_text": "At Diepkloof Rock Shelter in South Africa, archaeologists recovered about 270 engraved fragments from ostrich-eggshell containers, mostly from layers roughly 60,000 years old. The designs changed over time, but related geometric rules recur across many objects and archaeological layers.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Diepkloof",
+          "sense": "Diepkloof Rock Shelter place name",
+          "ipa": null,
+          "asr_accept": [
+            "Diepkloof",
+            "Deep kloof",
+            "Deepcloof",
+            "Deep Loof",
+            "Deep Blue Frog"
+          ]
+        }
+      ],
+      "gap_after_ms": 320,
+      "text_sha256": "3dacf853eb1d1e51698caca293a0f3bb1ff289e54c4607738939658a9df0121b"
+    },
+    {
+      "id": "n020",
+      "sequence": 20,
+      "kind": "body",
+      "slide_id": "pattern-repeats",
+      "slide_sequence": 4,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-04.mp3",
+      "text": "That does not give us a translation. The patterns may have helped communicate identity, ownership, affiliation, or something else. The careful claim is that a community maintained a graphic tradition with shared constraints and room for variation.",
+      "tts_text": "That does not give us a translation. The patterns may have helped communicate identity, ownership, affiliation, or something else. The careful claim is that a community maintained a graphic tradition with shared constraints and room for variation.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "9b0a9893ae4d11b710c65735d1e85e7ec36699227d352d5c0b2c40c89dba1999"
+    },
+    {
+      "id": "n021",
+      "sequence": 21,
+      "kind": "body",
+      "slide_id": "pattern-repeats",
+      "slide_sequence": 4,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-04.mp3",
+      "text": "In information language, the marks now have something like a format. Their meaning still depends on people, but the visible pattern can be copied onto portable objects and recognized beyond the instant of its creation. Storage has begun borrowing power from convention.",
+      "tts_text": "In information language, the marks now have something like a format. Their meaning still depends on people, but the visible pattern can be copied onto portable objects and recognized beyond the instant of its creation. Storage has begun borrowing power from convention.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "536f27585574c6f946d1e915a1cdb396cb84bebda6be6660eaf3867150e3f092"
+    },
+    {
+      "id": "n022",
+      "sequence": 22,
+      "kind": "slide-title",
+      "slide_id": "scene-remains",
+      "slide_sequence": 5,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-05.mp3",
+      "text": "A picture can hold a scene",
+      "tts_text": "A picture can hold a scene",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "e16975d9dd2ef6d399340cf552137330b3a49b70aa06000fe3c0cc987a3f80b1"
+    },
+    {
+      "id": "n023",
+      "sequence": 23,
+      "kind": "body",
+      "slide_id": "scene-remains",
+      "slide_sequence": 5,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-05.mp3",
+      "text": "A hand stencil preserves presence. A composed picture can preserve relationships: this figure beside that animal, this action aimed toward that body, these participants inside one scene.",
+      "tts_text": "A hand stencil preserves presence. A composed picture can preserve relationships: this figure beside that animal, this action aimed toward that body, these participants inside one scene.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "dd5e939745ac6c9a8d0a4a795ffb854ce18373001ee25ca857f4c0010e885d5e"
+    },
+    {
+      "id": "n024",
+      "sequence": 24,
+      "kind": "body",
+      "slide_id": "scene-remains",
+      "slide_sequence": 5,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-05.mp3",
+      "text": "At Leang Karampuang in Sulawesi, a red-painted pig and at least three human-like figures form a composition dated to at least 51,200 years ago. The details are damaged and interpretation is cautious, but the arrangement invites a viewer to infer action among the figures.",
+      "tts_text": "At Leang Karampuang in Sulawesi, a red-painted pig and at least three human-like figures form a composition dated to at least 51,200 years ago. The details are damaged and interpretation is cautious, but the arrangement invites a viewer to infer action among the figures.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Leang Karampuang",
+          "sense": "Leang Karampuang cave place name",
+          "ipa": null,
+          "asr_accept": [
+            "Leang Karampuang"
+          ]
+        },
+        {
+          "term": "Sulawesi",
+          "sense": "Indonesian island place name",
+          "ipa": null,
+          "asr_accept": [
+            "Sulawesi"
+          ]
+        }
+      ],
+      "gap_after_ms": 320,
+      "text_sha256": "5a830bb60403238f40c4a8ac3bae6ac864a4196e999308aaab0544561dc35cf0"
+    },
+    {
+      "id": "n025",
+      "sequence": 25,
+      "kind": "body",
+      "slide_id": "scene-remains",
+      "slide_sequence": 5,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-05.mp3",
+      "text": "This is not a historical step after Diepkloof, and neither site is an ancestor we can trace directly to writing. They are surviving windows into different graphic practices in different regions. Together they show that humans had been putting persistent structure into the visible world for tens of thousands of years.",
+      "tts_text": "This is not a historical step after Diepkloof, and neither site is an ancestor we can trace directly to writing. They are surviving windows into different graphic practices in different regions. Together they show that humans had been putting persistent structure into the visible world for tens of thousands of years.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "Diepkloof",
+          "sense": "Diepkloof Rock Shelter place name",
+          "ipa": null,
+          "asr_accept": [
+            "Diepkloof",
+            "Deep kloof",
+            "Deepcloof",
+            "Deep Loof",
+            "Deep Blue",
+            "Deep Glove",
+            "Deep Glue"
+          ]
+        }
+      ],
+      "gap_after_ms": 320,
+      "text_sha256": "10036657f9d1ba763dd4b46f7672b42b3debd14ccedeaef00184446f00819fac"
+    },
+    {
+      "id": "n026",
+      "sequence": 26,
+      "kind": "body",
+      "slide_id": "scene-remains",
+      "slide_sequence": 5,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-05.mp3",
+      "text": "Pictures can carry a great deal at once — shape, position, gesture, emphasis. They also leave room for many readings. High visual bandwidth is not the same thing as a precise, general-purpose code.",
+      "tts_text": "Pictures can carry a great deal at once — shape, position, gesture, emphasis. They also leave room for many readings. High visual bandwidth is not the same thing as a precise, general-purpose code.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "a798f5b1d1a04c73307e043247575b364f9cfbcffee2ba9b8973999996bf6fa1"
+    },
+    {
+      "id": "n027",
+      "sequence": 27,
+      "kind": "slide-title",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "Then a record answers a small question exactly",
+      "tts_text": "Then a record answers a small question exactly",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 550,
+      "text_sha256": "d3e76a2b1aedda46c88772e803b7669b5ef8565828d621e9a3607eaa250650ed"
+    },
+    {
+      "id": "n028",
+      "sequence": 28,
+      "kind": "body",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "Jump forward. Not to the next rung of a ladder, but to a different problem in a different world.",
+      "tts_text": "Jump forward. Not to the next rung of a ladder, but to a different problem in a different world.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "09cd0852bd8b5218478f7ca89cb4e096d906875c83fc7629624ad75645c5ec98"
+    },
+    {
+      "id": "n029",
+      "sequence": 29,
+      "kind": "body",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "By around 8000 BCE in parts of the ancient Near East, small clay tokens were used to represent quantities and kinds of goods. A cone, sphere, or other shaped counter could help a community track grain, animals, labor, or exchange without asking one person's memory to hold the entire account.",
+      "tts_text": "By around 8000 BCE in parts of the ancient Near East, small clay tokens were used to represent quantities and kinds of goods. A cone, sphere, or other shaped counter could help a community track grain, animals, labor, or exchange without asking one person's memory to hold the entire account.",
+      "pronunciations": [],
+      "pronunciation_checks": [
+        {
+          "term": "BCE",
+          "sense": "Before the Common Era abbreviation",
+          "ipa": null,
+          "asr_accept": [
+            "BCE",
+            "B C E",
+            "Before the Common Era"
+          ]
+        }
+      ],
+      "gap_after_ms": 320,
+      "text_sha256": "dda81e932731934c131dc3138ddaf33f74db73b79c649fc67aaf83b9bb25b21c"
+    },
+    {
+      "id": "n030",
+      "sequence": 30,
+      "kind": "body",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "Compared with a picture, this can look almost embarrassingly narrow. Good. Narrowness can buy precision. The token does not need to tell a myth or describe tomorrow's weather. It needs to preserve an answer such as how many units of something were counted.",
+      "tts_text": "Compared with a picture, this can look almost embarrassingly narrow. Good. Narrowness can buy precision. The token does not need to tell a myth or describe tomorrow's weather. It needs to preserve an answer such as how many units of something were counted.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "f82f001261a209f62bad7d45246f655c7f02439da2521341a44bf8766e6e029c"
+    },
+    {
+      "id": "n031",
+      "sequence": 31,
+      "kind": "body",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "The operating trade-off has changed. Material records are slow to make and depend on learned conventions, but they can be durable, portable, inspectable, and less vulnerable to one carrier forgetting. Marks, images, and counters did not replace oral knowledge, and none formed a single inevitable road to writing.",
+      "tts_text": "The operating trade-off has changed. Material records are slow to make and depend on learned conventions, but they can be durable, portable, inspectable, and less vulnerable to one carrier forgetting. Marks, images, and counters did not replace oral knowledge, and none formed a single inevitable road to writing.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 240,
+      "text_sha256": "ff2ec7bb13e70698854bef345fb221eaa94eab99e5a87a25a9ea77308ee4e660"
+    },
+    {
+      "id": "n032",
+      "sequence": 32,
+      "kind": "body",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "Older layers kept doing most of the cultural work.",
+      "tts_text": "Older layers kept doing most of the cultural work.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 320,
+      "text_sha256": "3e302a60936dd011606348069cf3f9dcbd98f64052764d130b477b2180f7311d"
+    },
+    {
+      "id": "n033",
+      "sequence": 33,
+      "kind": "body",
+      "slide_id": "small-exact-answers",
+      "slide_sequence": 6,
+      "slide_audio_path": "blog/observations/information-system-of-a-planet/audio/episode-05/slide-06.mp3",
+      "text": "Yet a new pressure is visible. Could durable marks become flexible enough to record not only one category or quantity, but names, actions, obligations, events, and eventually language itself? The message can wait. Now it needs a much larger range.",
+      "tts_text": "Yet a new pressure is visible. Could durable marks become flexible enough to record not only one category or quantity, but names, actions, obligations, events, and eventually language itself? The message can wait. Now it needs a much larger range.",
+      "pronunciations": [],
+      "pronunciation_checks": [],
+      "gap_after_ms": 900,
+      "text_sha256": "09fef3c6a2792dcab396ef4dcc3ef7813c1e1360b4e2799186a0ba498df435fb"
+    }
+  ]
+}
