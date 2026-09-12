@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "path": "blog/b9/09_4-stopping-without-forgetting.md",
-  "source_sha256": "736f422584f336cbc426bd776b6a090cba1cf985adb79006a666c5a1fb8adf63",
-  "reviewed_at": "2026-09-11",
+  "source_sha256": "1a28c771b8adb4d44877358c3a038cb9436f4ef9a9a8cf44c4e88455b17954da",
+  "reviewed_at": "2026-09-12",
   "report": "docs/narration-source-review/essays/09_4-stopping-without-forgetting.md",
   "review": {
     "factual": "passed",
@@ -11,7 +11,6 @@
     "cross_writing_consistency": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
-    "hadi_content_lock": "approved"
-  },
-  "hadi_content_lock_approved_at": "2026-09-11"
+    "hadi_content_lock": "pending"
+  }
 }

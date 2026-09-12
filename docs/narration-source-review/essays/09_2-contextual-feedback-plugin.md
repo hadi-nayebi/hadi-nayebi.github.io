@@ -2,26 +2,30 @@
 
 ## TLDR
 
-This mature article received a bounded obvious-error pass against the current public Origin source. Its situated-evidence model, thread layers, authority boundary, state machine, verification, recovery, and privacy rule remain intact. One sentence now separates durable wake metadata from the smaller prompt payload delivered to Codex.
+This article was re-reviewed against the current public Origin PR stack. Its situated-evidence model, thread layers, authority boundary, state machine, verification, recovery, and privacy rule remain intact. Its ownership section now describes dashboard-channel continuation rather than the retired global `agent-stop-state` model.
 
 ## Substantive changes
 
-1. A missing article was added before “derived or page-provided label.”
-2. The wake boundary now states that journal sequence and hash live in the durable wake record, while the delivered prompt contains only feedback ID, route, and delivery marker.
-3. Canonical metadata records the September 4 repository introduction date, published status, and version `v0.2.0`.
-4. The rendered page records the September 11 review date and is synchronized from canonical Markdown.
+1. Thread layers now include attached materials and history-preserving association of related threads.
+2. Contextual Feedback now explicitly owns dashboard continuation state and its own Stop decision, while Telegram owns a separate channel vote.
+3. Queue reconciliation now runs through the neutral engagement core; an inactive hook abstains instead of overriding another channel.
+4. Canonical version is `v0.3.0`; the published article body is synchronized from Markdown.
+5. Each actionable parent thread now creates one managed worktree and one exact linked PR; related feedback stays in that unit.
+6. A thread becomes resolved only after the owner-authorized merge broker confirms GitHub merged that exact PR. The trusted hook denies agent merge attempts and protected authority-file edits.
 
 ## Removal and replacement ledger
 
-- The old wake sentence was replaced because it conflated durable transport metadata with the prompt payload.
+- The former global Stop ownership sentences were replaced because the public implementation now has independent channel-owned continuation.
 - No section, example, state, authority boundary, or narrative beat was removed.
 
 ## Review record
 
 - Baseline: `ec6b34efbaa4f7a5af81f44a6cb374cd8d624ae2`
-- Version: `v0.2.0`
-- Source SHA-256: `621ff68dddba5d62dfd3ed0fb9c181bb7bbf507ec886ecb406a103b914e5e8ff`
-- Published-page SHA-256: `1e15987d2229d002237dc93d789d31afc3ef7440cfb2b91b12b27c478440ca0f`
-- Reader-facing prose words: 1,186 to 1,200; net `+14`.
+- Version: `v0.3.0`
+- Source SHA-256: `b0c35e5a44471e0db3db79aca5975e9c20ec415448cf9979901d9dfeadcaab11`
+- Published-page SHA-256: `0c35f85ae098c88bfca7ca44c5b7c68ee7f76c7adeadf18625049bcc4affba7c`
+- Reader-facing prose words: 1,186 to approximately 1,253; net `+67` across both review passes.
 - This page has no narration player or transcript to invalidate.
-- Cross-writing consistency passed the complete B9 continuity review; Hadi's content lock remains pending.
+- Technical accuracy and source-page parity passed on September 12. Cross-writing consistency is
+  evaluated with the complete B9 correction PR. Hadi's content lock is pending for the changed
+  source hash.

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "path": "blog/b9/09_3-internal-voices-reorientation.md",
-  "source_sha256": "8e00d8399f9f2d5026c6e8c07a5dfa416b25e9d3afe0009900aa2d13b25b16f1",
-  "reviewed_at": "2026-09-11",
+  "source_sha256": "2e8a82702cf97f1caa0d918d44eacb9f87e6ed4fd603c8ee2001c778c4dc49fe",
+  "reviewed_at": "2026-09-12",
   "report": "docs/narration-source-review/essays/09_3-internal-voices-reorientation.md",
   "review": {
     "factual": "passed",
@@ -11,7 +11,6 @@
     "cross_writing_consistency": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
-    "hadi_content_lock": "approved"
-  },
-  "hadi_content_lock_approved_at": "2026-09-11"
+    "hadi_content_lock": "pending"
+  }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.2.0 -->
+<!-- Version: v0.3.0 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -91,7 +91,7 @@
 
                         <p>Suppose the user writes, “The timeline is too optimistic.” The agent may interpret this as a request to change dates. The user may instead mean that uncertainty is invisible, dependencies are missing, or the presentation is misleading. If the system stores only “change dates,” it converts a hypothesis into history.</p>
 
-                        <p>Contextual Feedback keeps separate fields and thread messages for raw input, classification, interpretation, linked work, questions, answers, progress, and verification. The agent can state what it thinks the comment requires and revise that interpretation later. The user can always see the distance between what was said and what the system inferred.</p>
+                        <p>Contextual Feedback keeps separate fields and thread messages for raw input, classification, interpretation, linked work, questions, answers, progress, verification, and attached materials. Related threads can be associated without deleting either history. The agent can state what it thinks the comment requires and revise that interpretation later. The user can always see the distance between what was said and what the system inferred.</p>
 
                         <p>That is a small but important architecture of authority: the model may propose meaning; it does not own the user’s past words.</p>
 
@@ -106,7 +106,7 @@
                             <li><code>in_progress</code> means it is the one current focus.</li>
                             <li><code>waiting</code> means a specific recorded condition blocks it.</li>
                             <li><code>ready_for_review</code> means the agent implemented and verified an outcome.</li>
-                            <li><code>resolved</code> means the user accepted that outcome.</li>
+                            <li><code>resolved</code> means GitHub confirmed that the owner merged the thread&rsquo;s linked pull request.</li>
                             <li><code>dismissed</code> means the user withdrew the request; it does not mean the work was completed.</li>
                         </ul>
 
@@ -128,17 +128,19 @@
 
                         <p>The agent can report that it changed a file, ran a test, opened a page, or observed a result. Those are verification claims. They are not proof that the user’s need was satisfied.</p>
 
-                        <p>When work is complete, the agent records concrete evidence and moves the thread to <code>ready_for_review</code>. The agent-facing command surface cannot accept, dismiss, or perform review-based reopening. Those operations remain on the dashboard side of the relationship.</p>
+                        <p>For actionable work, the agent first creates the thread&rsquo;s managed worktree, implements on that branch, opens exactly one matching GitHub pull request, and links it to the thread. When work is complete, the agent records concrete evidence and moves the thread to <code>ready_for_review</code>. The agent-facing command surface cannot merge, dismiss, or perform review-based reopening. Those operations remain on the owner side of the relationship.</p>
 
-                        <p>The user may accept the outcome, reject it with a reason, or withdraw the request. Reopening preserves the earlier interpretation, implementation notes, verification, and review. The next attempt begins from failure evidence rather than pretending the first attempt never happened.</p>
+                        <p>The owner may merge the linked PR, reject it with a reason, or withdraw the request. The dashboard and paired Telegram merge actions use one broker that verifies the current thread version, repository, managed branch, PR state, and final GitHub result before recording resolution. Reopening preserves the earlier interpretation, implementation notes, verification, and review. The next attempt begins from failure evidence rather than pretending the first attempt never happened.</p>
+
+                        <p>A trusted pre-tool hook makes the ordinary agent boundary deterministic by blocking supported merge, direct-resolution, protected-base-push, and authority-file-edit paths while permitting feature work and PR creation. It is not an operating-system sandbox against malicious local code sharing the owner&rsquo;s account; remote branch protection remains a separate layer.</p>
 
                         <p>Because every Origin component runs under one local operating-system account, this is not a security boundary against a malicious local process. It is a capability and audit boundary for ordinary operation. The interface makes the intended authority visible and makes bypass harder to confuse with correct completion.</p>
 
                         <h2 id="the-plugin-does-not-own-everything">The Plugin Does Not Own Everything</h2>
 
-                        <p>Contextual Feedback owns the feedback thread and its meaning. It does not own global Stop policy, tmux delivery, user identity, clone synchronization, general jobs, or the implementation of whatever change the user requested.</p>
+                        <p>Contextual Feedback owns the dashboard thread, its meaning, its continuation state, and its Stop decision. It does not own Telegram&rsquo;s separate conversation or Stop vote, tmux delivery, user identity, clone synchronization, general jobs, or the implementation of whatever change the user requested.</p>
 
-                        <p>After an authoritative thread mutation, the plugin reconciles its complete queue through <code>agent-stop-state</code>. The dashboard runtime transports the plugin’s voice into the interactive session. Those neighboring systems have their own objectives and tests.</p>
+                        <p>After an authoritative thread mutation, the plugin derives <code>active</code>, <code>waiting</code>, <code>paused</code>, or <code>idle</code> from its complete queue through the neutral engagement core. Its registered hook blocks Stop when that channel remains active and abstains when it is passive; it cannot cancel another channel&rsquo;s active vote. The dashboard runtime transports the plugin’s voice into the shared interactive session. Those neighboring systems have their own objectives and tests.</p>
 
                         <p>This division keeps the plugin understandable. If feedback, stopping, terminal transport, identity, and general project management were fused into one component, every later change would require an agent to reason across unrelated authority and failure boundaries.</p>
 

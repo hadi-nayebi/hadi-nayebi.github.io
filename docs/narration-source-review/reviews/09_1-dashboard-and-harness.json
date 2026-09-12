@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "path": "blog/b9/09_1-dashboard-and-harness.md",
-  "source_sha256": "d032559c36209c5bdec589473eae4ecdcbbe04b44ef0dd6831731dae3f5655bd",
-  "reviewed_at": "2026-09-11",
+  "source_sha256": "30480bfe68a5e327b59237d6f7956afeab0800fb14b6724f386fc35736d0b4fb",
+  "reviewed_at": "2026-09-12",
   "report": "docs/narration-source-review/essays/09_1-dashboard-and-harness.md",
   "review": {
     "factual": "passed",
@@ -11,7 +11,6 @@
     "cross_writing_consistency": "passed",
     "editorial": "passed",
     "source_page_parity": "passed",
-    "hadi_content_lock": "approved"
-  },
-  "hadi_content_lock_approved_at": "2026-09-11"
+    "hadi_content_lock": "pending"
+  }
 }

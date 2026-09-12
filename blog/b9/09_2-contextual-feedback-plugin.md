@@ -5,7 +5,7 @@ slug: "contextual-feedback-plugin"
 read_time: "8 min"
 tags: [Feedback, Plugin, Authority, Origin]
 status: published
-version: v0.2.0
+version: v0.3.0
 audience: "Power Users & Architects"
 og_image: "assets/images/digital-cortex-2-og.jpg"
 ---
@@ -38,7 +38,7 @@ An agent must interpret language to act. The danger begins when interpretation r
 
 Suppose the user writes, “The timeline is too optimistic.” The agent may interpret this as a request to change dates. The user may instead mean that uncertainty is invisible, dependencies are missing, or the presentation is misleading. If the system stores only “change dates,” it converts a hypothesis into history.
 
-Contextual Feedback keeps separate fields and thread messages for raw input, classification, interpretation, linked work, questions, answers, progress, and verification. The agent can state what it thinks the comment requires and revise that interpretation later. The user can always see the distance between what was said and what the system inferred.
+Contextual Feedback keeps separate fields and thread messages for raw input, classification, interpretation, linked work, questions, answers, progress, verification, and attached materials. Related threads can be associated without deleting either history. The agent can state what it thinks the comment requires and revise that interpretation later. The user can always see the distance between what was said and what the system inferred.
 
 That is a small but important architecture of authority: the model may propose meaning; it does not own the user’s past words.
 
@@ -52,7 +52,7 @@ Origin uses a bounded lifecycle:
 - `in_progress` means it is the one current focus.
 - `waiting` means a specific recorded condition blocks it.
 - `ready_for_review` means the agent implemented and verified an outcome.
-- `resolved` means the user accepted that outcome.
+- `resolved` means GitHub confirmed that the owner merged the thread's linked pull request.
 - `dismissed` means the user withdrew the request; it does not mean the work was completed.
 
 Only one feedback thread may be in progress. New comments are not allowed to erase the current objective, but they are preserved and ordered. When feedback arrives during active work, the agent compares it with the current responsibility: does it change the same bounded outcome, or is it independent work that should wait behind it?
@@ -73,17 +73,19 @@ This is one example of a broader harness principle: atomicity should follow the 
 
 The agent can report that it changed a file, ran a test, opened a page, or observed a result. Those are verification claims. They are not proof that the user’s need was satisfied.
 
-When work is complete, the agent records concrete evidence and moves the thread to `ready_for_review`. The agent-facing command surface cannot accept, dismiss, or perform review-based reopening. Those operations remain on the dashboard side of the relationship.
+For actionable work, the agent first creates the thread's managed worktree, implements on that branch, opens exactly one matching GitHub pull request, and links it to the thread. When work is complete, the agent records concrete evidence and moves the thread to `ready_for_review`. The agent-facing command surface cannot merge, dismiss, or perform review-based reopening. Those operations remain on the owner side of the relationship.
 
-The user may accept the outcome, reject it with a reason, or withdraw the request. Reopening preserves the earlier interpretation, implementation notes, verification, and review. The next attempt begins from failure evidence rather than pretending the first attempt never happened.
+The owner may merge the linked PR, reject it with a reason, or withdraw the request. The dashboard and paired Telegram merge actions use one broker that verifies the current thread version, repository, managed branch, PR state, and final GitHub result before recording resolution. Reopening preserves the earlier interpretation, implementation notes, verification, and review. The next attempt begins from failure evidence rather than pretending the first attempt never happened.
+
+A trusted pre-tool hook makes the ordinary agent boundary deterministic by blocking supported merge, direct-resolution, protected-base-push, and authority-file-edit paths while permitting feature work and PR creation. It is not an operating-system sandbox against malicious local code sharing the owner's account; remote branch protection remains a separate layer.
 
 Because every Origin component runs under one local operating-system account, this is not a security boundary against a malicious local process. It is a capability and audit boundary for ordinary operation. The interface makes the intended authority visible and makes bypass harder to confuse with correct completion.
 
 ## The Plugin Does Not Own Everything
 
-Contextual Feedback owns the feedback thread and its meaning. It does not own global Stop policy, tmux delivery, user identity, clone synchronization, general jobs, or the implementation of whatever change the user requested.
+Contextual Feedback owns the dashboard thread, its meaning, its continuation state, and its Stop decision. It does not own Telegram's separate conversation or Stop vote, tmux delivery, user identity, clone synchronization, general jobs, or the implementation of whatever change the user requested.
 
-After an authoritative thread mutation, the plugin reconciles its complete queue through `agent-stop-state`. The dashboard runtime transports the plugin’s voice into the interactive session. Those neighboring systems have their own objectives and tests.
+After an authoritative thread mutation, the plugin derives `active`, `waiting`, `paused`, or `idle` from its complete queue through the neutral engagement core. Its registered hook blocks Stop when that channel remains active and abstains when it is passive; it cannot cancel another channel's active vote. The dashboard runtime transports the plugin’s voice into the shared interactive session. Those neighboring systems have their own objectives and tests.
 
 This division keeps the plugin understandable. If feedback, stopping, terminal transport, identity, and general project management were fused into one component, every later change would require an agent to reason across unrelated authority and failure boundaries.
 
