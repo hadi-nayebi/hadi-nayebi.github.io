@@ -1,8 +1,58 @@
 {
   "version": 1,
-  "updated": "2026-09-11",
+  "updated": "2026-09-12",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-11-origin-independent-engagement-channels",
+      "date": "2026-09-11",
+      "type": "Project",
+      "title": "Origin separates local and remote engagement into independent channels",
+      "summary": "Origin now implements independently removable dashboard and Telegram engagement plugins, each with its own durable conversation journal, continuation state, and Stop decision, while shared infrastructure coordinates lifecycle rules and delivery into one interactive Codex session.",
+      "why_it_matters": "A user can engage the same local harness from the dashboard or remotely without collapsing the channels into one global state. Either active channel can preserve responsibility while the other waits or pauses, and each can be removed without making the other responsible for its records or decisions.",
+      "affected": ["Origin", "Dashboard engagement", "Telegram engagement", "Local speech", "Plugin boundaries", "Recovery"],
+      "maturity": "Merged public implementation with deterministic and bounded host evidence; dedicated-bot and fresh-machine voice acceptance remain incomplete",
+      "intended_for": ["Origin users", "People who need local and remote access to one Codex harness", "Builders studying durable engagement plugins", "Single-user local deployments"],
+      "sources": [
+        {
+          "label": "Independent engagement channels pull request",
+          "url": "https://github.com/hadi-nayebi/origin/pull/7"
+        },
+        {
+          "label": "Origin repository",
+          "url": "https://github.com/hadi-nayebi/origin"
+        },
+        {
+          "label": "Two-channel review record",
+          "url": "https://github.com/hadi-nayebi/origin/blob/main/docs/TWO-CHANNEL-REVIEW.md"
+        }
+      ],
+      "adoption_notes": "The dashboard and Telegram plugins are optional, independently removable engagement surfaces for one local user and one Codex session; they are not a multi-user or team authority system. Telegram requires a dedicated bot, owner pairing, local speech dependencies and models, and an owner voice sample. Automated tests, browser scenarios, bounded authenticated Codex checks, and limited real speech/transport evidence exist, but dedicated-bot media, reply, callback, restart, fresh-machine enrollment, and owner listening acceptance are still pending.",
+      "recommended_action": "Review Origin's installation, security, and two-channel acceptance records before enabling Telegram, keep the dashboard-only path when remote engagement is unnecessary, and do not treat the remaining live acceptance scenarios as completed."
+    },
+    {
+      "id": "2026-09-11-ai-that-grows-with-you",
+      "date": "2026-09-11",
+      "type": "Principle writing",
+      "title": "The AI That Grows With You centers ownership of the personal harness",
+      "summary": "A new conceptual essay distinguishes the general intelligence supplied by a model from the personal harness that accumulates a user's memory, tools, permissions, workflows, and experience, then uses the open web, browsers, centralized social media, and Bluesky to examine where that growing structure should live.",
+      "why_it_matters": "As an agentic system learns how a person works and makes decisions, the difficult question is no longer only which model is strongest. The essay gives readers five protections for the user-specific system around the model: locality, ownership, portability, transparency, and autonomy.",
+      "affected": ["Principles & Perspectives", "Personal harnesses", "AI ownership", "Portability", "Open source", "User autonomy"],
+      "maturity": "Published conceptual guidance with synchronized Markdown and HTML, six original visuals, RSS, sitemap, and neighboring-reading routes",
+      "intended_for": ["General readers", "People choosing how to personalize AI", "Builders of user-owned harnesses", "Readers concerned with platform control and portability"],
+      "sources": [
+        {
+          "label": "Conceptual essay publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/130"
+        },
+        {
+          "label": "The AI That Grows With You",
+          "url": "/blog/principles/the-ai-that-grows-with-you.html"
+        }
+      ],
+      "adoption_notes": "This is published architectural guidance, not a claim that one standard harness or current product already satisfies all five protections. Readers can use the framework to evaluate where their own system stores memory and rules, what they can inspect or modify, whether they can switch models and tools, and what remains usable if they leave a provider.",
+      "recommended_action": "Read the essay, identify which parts of your AI system are model capacity and which are accumulated personal harness, then test whether the latter remains inspectable, changeable, portable, and under your control."
+    },
     {
       "id": "2026-09-10-observation-episode-five",
       "date": "2026-09-10",
