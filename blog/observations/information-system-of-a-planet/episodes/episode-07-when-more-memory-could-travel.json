@@ -1,0 +1,224 @@
+{
+  "number": 7,
+  "slug": "when-more-memory-could-travel",
+  "title": "When More Memory Could Travel",
+  "status": "published",
+  "published": "2026-09-13",
+  "deckline": "Writing had learned to wait. Then its containers began changing: lighter surfaces carried more words, and pages made distant passages easier to reach. The message could travel farther, though every copy still needed a human hand.",
+  "objective": "Show how lightweight writing surfaces and page-based book forms increased the portability, storage density, and navigability of written information without implying one global material ladder or cheap mass access.",
+  "learning_outcomes": [
+    "Understand that individual clay letters could travel long distances while the weight and bulk of large tablet collections constrained how much written information moved at once.",
+    "Locate papyrus in Egypt by about 2900 BCE and distinguish its gains in portability and density from its environmental fragility and uneven survival.",
+    "Recognize that societies developed many overlapping book materials and forms, including bamboo or wood slips, palm leaves, bark, parchment, papyrus, and clay, rather than moving through one universal sequence.",
+    "Explain how the gradual shift from roll to codex in the early centuries CE changed physical navigation and capacity while leaving copying slow, skilled, and manual."
+  ],
+  "continuity": "Episode 6 followed durable marks into shared writing systems and ended with a new constraint: complex messages could wait, but reading and copying remained skilled, slow, and concentrated. Episode 7 keeps the writing system in place and asks what changed when its physical containers became lighter, denser, and easier to navigate.",
+  "state_change": "Lightweight writing surfaces and page-based book forms let more recorded information travel together and made distant passages more directly reachable, while replication still depended on hand copying.",
+  "future_pressure": "A portable, navigable book can carry a great deal, but producing another copy still costs hours, days, or months of skilled labor. The next pressure is replication: how can one written object become many without rewriting every line?",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-7-when-more-memory-could-travel",
+  "slides": [
+    {
+      "id": "library-has-luggage",
+      "title": "One message can travel. A library has luggage.",
+      "read_minutes": 1.2,
+      "image": {
+        "src": "images/episode-07/01-library-has-luggage.jpg",
+        "alt": "At a Mesopotamian archive, a courier holds one small clay tablet while workers strain to move baskets filled with many tablets.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A clay tablet is not chained to the floor. Mesopotamian merchants sent letters and contracts across long trade routes. A small message could fit in one hand and survive a very bad day.",
+        "But quantity changes the problem. One tablet is luggage. Ten thousand tablets are architecture: shelves, baskets, rooms, catalogues, guards, and a considerable amount of heavy lifting.",
+        "Writing had already changed information's lifetime. A message could wait for years, centuries, even millennia. Now the question was how much memory could travel together — and how easily a reader could move through it once it arrived.",
+        "Clay did not fail. It continued doing jobs that rewarded cheap local material and extraordinary durability. But different jobs began favoring different containers. Earth's written memory was about to lose some weight."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — Old Assyrian record of a lawsuit",
+          "url": "https://www.metmuseum.org/art/collection/search/325846",
+          "note": "A clay record from the long-distance Old Assyrian trade network, where merchants exchanged letters, contracts, loans, and household records across many days of travel."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — The Origins of Writing",
+          "url": "https://www.metmuseum.org/essays/the-origins-of-writing",
+          "note": "Overview of clay as a cheap, locally available support that could harden into a durable record."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-07/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "river-grows-surface",
+      "title": "The Nile grows a writing surface",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-07/02-river-grows-surface.jpg",
+        "alt": "Beside the Nile, artisans cut papyrus stalks, arrange pale pith strips in crossing layers, press them, and dry finished sheets.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "In Egypt, the landscape offered another answer. Papyrus grew thick along the Nile: a tall wetland plant with a tough green rind and pale pith inside.",
+        "That pith could be cut into strips, laid in crossing layers, pressed, dried, joined into sheets, and assembled into rolls. We know the structure from surviving material; the ancient Egyptians did not leave us a complete factory manual, so some details of the process remain debated.",
+        "The earliest known papyrus roll, found in the tomb of the official Hemaka, dates to about 2900 BCE. It is blank. The earliest surviving papyri with writing are administrative documents from Wadi el-Jarf around 2500 BCE. The dates are a useful warning: a material can exist before the messages written on it happen to survive.",
+        "Papyrus did not replace clay everywhere, and it was not a universal next step. It was one locally brilliant conversion: river plant into a surface that could carry ink, bend without breaking, and roll into a compact package."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — Papyrus in Ancient Egypt",
+          "url": "https://www.metmuseum.org/essays/papyrus-in-ancient-egypt",
+          "note": "Explains papyrus manufacture, the ca. 2900 BCE blank roll from Hemaka, and the ca. 2500 BCE written papyri from Wadi el-Jarf."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — Papyrus-Making in Egypt",
+          "url": "https://www.metmuseum.org/essays/papyrus-making-in-egypt",
+          "note": "Detailed material history of papyrus, including its perpendicular pith layers and uncertainty about the exact ancient manufacturing process."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-07/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "archive-loses-weight",
+      "title": "The archive loses weight",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-07/03-archive-loses-weight.jpg",
+        "alt": "At an ancient river port, one courier boards a sailboat with several papyrus rolls while two workers lift a basket of clay tablets.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A papyrus roll could hold many joined sheets while remaining light enough to carry under an arm. Letters, accounts, contracts, religious works, medicine, mathematics, stories, and official records could travel as ink on plant fiber instead of impressions in clay.",
+        "In information-system language, the storage density improved. More written material could move with one reader, messenger, merchant, or boat. Large collections still demanded rooms and organization, but the same cargo space could carry much more text.",
+        "The bargain came with a different failure mode. Clay that dries hard — or is baked by design or accident — can survive conditions that destroy plant fiber. Papyrus survives magnificently in Egypt partly because dry desert conditions preserved it. Moisture, insects, fire, repeated handling, and ordinary neglect erase flexible materials with alarming efficiency.",
+        "So our evidence is filtered again. The surviving papyri do not show everything that was written, and places with wetter climates lose far more. Portability increased. Durability became more dependent on environment and care. Every storage upgrade arrives with terms and conditions."
+      ],
+      "sources": [
+        {
+          "label": "The Metropolitan Museum of Art — Papyrus in Ancient Egypt",
+          "url": "https://www.metmuseum.org/essays/papyrus-in-ancient-egypt",
+          "note": "Describes papyrus rolls, the many kinds of documents written on them, and the exceptional preservation produced by Egypt's dry desert climate."
+        },
+        {
+          "label": "Princeton University Library — Other forms, other materials",
+          "url": "https://dpul.princeton.edu/global-book-forms/feature/other-forms-other-materials",
+          "note": "Global book-history exhibition emphasizing how cultures chose different durable and perishable materials to transmit knowledge."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-07/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "many-materials",
+      "title": "Earth does not standardize",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-07/04-many-materials.jpg",
+        "alt": "Four equally weighted workshops show hands rolling papyrus, tying bamboo slips, preparing parchment, and inscribing palm leaves around an unlabeled earth-toned center.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Zoom out and the tidy sequence disappears. There is no planetary conveyor belt labeled clay, then papyrus, then parchment, then book. The examples in this scene belong to different places and centuries; they are a comparison of material possibilities, not one synchronized historical moment.",
+        "In China, long narrow strips of bamboo or wood were written on and bound together with cord; most surviving examples date from the fourth century BCE onward, although scholars infer earlier use. Lighter silk also carried writing, but at greater cost. In South and Southeast Asia, treated palm leaves became narrow pages stacked and tied through holes. Elsewhere people used parchment, bark, wood, bone, metal, cloth, paper, and materials that rarely survive long enough to enter a museum case.",
+        "Material shapes form. Bamboo becomes a bundle. Palm leaves become long, narrow stacks. Papyrus favors the roll. Folded parchment and papyrus can become leaves gathered at one edge. Writers adapt to what grows, what can be made, what can be afforded, and what the message needs to endure.",
+        "These are not rungs on one ladder. They overlap for centuries, travel between communities, borrow shapes, and keep older forms alive. The planet is not upgrading one machine. It is experimenting through many societies with portability, cost, durability, capacity, and repair."
+      ],
+      "sources": [
+        {
+          "label": "Princeton University Library — From bamboo to printed paper",
+          "url": "https://dpul.princeton.edu/global-book-forms/feature/from-bamboo-to-printed-paper",
+          "note": "Describes the independent East Asian book tradition, cord-bound bamboo or wood strips, costly silk, and later paper forms."
+        },
+        {
+          "label": "Princeton University Library — From palm leaves to loose paper bundles",
+          "url": "https://dpul.princeton.edu/global-book-forms/feature/from-palm-leaves-to-loose-paper-bundles",
+          "note": "Explains how narrow palm leaves were stacked, pierced, tied, and later imitated by paper book forms across South Asia."
+        },
+        {
+          "label": "Princeton University Library — Other forms, other materials",
+          "url": "https://dpul.princeton.edu/global-book-forms/feature/other-forms-other-materials",
+          "note": "Surveys local book materials including clay, metal, wood, bamboo, bark, amate, conch shell, and knotted-string records."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-07/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scroll-direction",
+      "title": "A roll reads in one direction",
+      "read_minutes": 1.3,
+      "image": {
+        "src": "images/episode-07/05-scroll-direction.jpg",
+        "alt": "An ancient reader uses both hands to wind a long papyrus roll across a table while many other rolls wait in wall niches and baskets.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "The roll solved one problem and made another easy to feel with your wrists.",
+        "A Mediterranean book roll was commonly written in columns and unrolled sideways. To read forward, you opened new material with one hand and gathered the finished portion with the other. To reach something far away, you moved through the intervening roll — or remembered very well where to start winding.",
+        "Calling this “sequential access” is a modern metaphor, not an ancient technical category. Scroll readers developed labels, divisions, memory practices, and other ways to navigate. They were not helplessly lost in a paper tunnel. Still, the object's shape influenced reading: usually one stretch was visible, both hands were occupied, and a distant passage remained physically distant.",
+        "Written information could now travel lightly. Finding one piece inside a long work could still take time. Storage capacity had outrun the interface."
+      ],
+      "sources": [
+        {
+          "label": "University of Oxford — From Roll to Codex",
+          "url": "https://podcasts.ox.ac.uk/roll-codex",
+          "note": "Bodleian Libraries introduction to the ancient Mediterranean roll, parallel columns, and the later bound-page codex form."
+        },
+        {
+          "label": "Princeton University Library — Forms & Function",
+          "url": "https://dpul.princeton.edu/global-book-forms/feature/other-forms-other-materials",
+          "note": "Global exhibition framing book forms as functional responses rather than a single universal sequence."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-07/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "book-grows-edges",
+      "title": "Then the book grows edges",
+      "read_minutes": 1.9,
+      "image": {
+        "src": "images/episode-07/06-book-grows-edges.jpg",
+        "alt": "In a late antique workshop, a reader opens a compact sewn codex near its middle beside a papyrus roll and wax tablets while a scribe copies another book by hand.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "During the first centuries CE, another form spreads through the Greco-Roman world: leaves folded, gathered, and bound along one edge. The codex looks familiar because its descendants are still sitting on shelves today.",
+        "The shift was gradual and untidy. Papyrus rolls remained the normal form for many literary works well into the early centuries CE. One of the earliest surviving Latin codex fragments dates only broadly to the late first or early second century. By late antiquity, codices had become the majority form in the surviving evidence, while rolls continued in some traditions for much longer.",
+        "A codex could use both sides of a leaf and pack substantial text into a compact object. A reader could open near the middle, hold one place while checking another, and move between separated passages without winding the entire work past the eyes. If a scroll behaves roughly like sequential storage, a codex introduces something closer to direct access — still human, physical, and imperfect, but noticeably quicker.",
+        "Why the form won particular communities is not settled. Early Christians strongly preferred codices, but scholars dispute the reasons, and evidence from Egypt cannot represent the whole ancient world. Material, religion, genre, travel, cost, habit, and institutions became entangled. History refuses the single-cause button again.",
+        "The balance had shifted: more writing could fit under one arm, and a reader could reach parts of it more directly. Yet every additional copy still began with a person, a blank surface, and a great many strokes. The book had become portable. Multiplication remained painfully manual."
+      ],
+      "sources": [
+        {
+          "label": "British Library — The beginnings of the Codex",
+          "url": "https://www.bl.uk/stories/blogs/posts/the-beginnings-of-the-codex",
+          "note": "Curatorial account of the gradual roll-to-codex transition, the late-first- or early-second-century Latin fragment, portability evidence, and limits of the surviving record."
+        },
+        {
+          "label": "University of Oxford — From Roll to Codex",
+          "url": "https://podcasts.ox.ac.uk/roll-codex",
+          "note": "Explains bound leaves, two-sided use, increased text capacity, and the codex's eventual prominence in late antiquity."
+        },
+        {
+          "label": "University of Washington — Christians and the Codex",
+          "url": "https://history.washington.edu/sites/history/files/documents/research/Larsen%20and%20Letteney%20-%202019%20-%20Christians%20and%20the%20Codex%20Generic%20Materiality%20and%20Early%20Gosp.pdf",
+          "note": "Peer-reviewed scholarship cautioning that proposed practical, religious, and social explanations for early Christian codex preference remain contested and partly speculative."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-07/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
