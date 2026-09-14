@@ -1,8 +1,89 @@
 {
   "version": 1,
-  "updated": "2026-09-12",
+  "updated": "2026-09-13",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-12-origin-reviewed-work-and-many-doors",
+      "date": "2026-09-12",
+      "type": "Project and principle writing",
+      "title": "Origin makes reviewed work part of one continuing agent relationship",
+      "summary": "Origin now resumes the latest Codex session when available, exposes a repository-native Admin and Wiki, keeps Telegram useful as a text-first channel, and gives each actionable feedback thread an isolated worktree and pull request that only the owner can accept by merge. The new essay One Agent, Many Doors explains why those distinct interfaces should preserve one continuing relationship without sharing one global state.",
+      "why_it_matters": "The expanded contract connects recovery, operational guidance, remote access, implementation, verification, and owner acceptance. A request can retain its route and conversation context, become reviewable repository work, and close only after GitHub confirms the owner's decision, while terminal, dashboard, and Telegram responsibilities remain independently recoverable.",
+      "affected": ["Origin", "Contextual feedback", "Pull-request review", "Admin and Wiki", "Session recovery", "Telegram engagement", "Principles & Perspectives"],
+      "maturity": "Merged public implementation and published companion guidance with automated and bounded integration evidence; live GitHub, dedicated-bot, cross-platform, and fresh-machine acceptance remain incomplete",
+      "intended_for": ["Origin users", "Builders of single-user Codex harnesses", "People reviewing agent work through pull requests", "Readers studying multi-channel agent continuity"],
+      "sources": [
+        {
+          "label": "Runtime recovery repair",
+          "url": "https://github.com/hadi-nayebi/origin/pull/8"
+        },
+        {
+          "label": "Admin and Wiki implementation",
+          "url": "https://github.com/hadi-nayebi/origin/pull/10"
+        },
+        {
+          "label": "Pull-request-backed work units",
+          "url": "https://github.com/hadi-nayebi/origin/pull/12"
+        },
+        {
+          "label": "One Agent, Many Doors",
+          "url": "/blog/principles/one-agent-many-doors.html"
+        }
+      ],
+      "adoption_notes": "The pull-request path is for one owner and repository-scoped feedback, not autonomous merge authority or a multi-user review service. Telegram works in text-only mode; speech remains optional. The public Origin repository was not yet configured as a GitHub template when this update was reviewed, so the advertised template-generation path is not live and should not be treated as completed onboarding. Existing clone or fork installations can adopt the merged runtime and documentation changes after reviewing the security, recovery, and acceptance records.",
+      "recommended_action": "Read One Agent, Many Doors and Origin's acceptance records, use clone or fork onboarding until the repository's template setting is verified, and keep the owner merge boundary and remaining live-acceptance gaps visible when evaluating the new workflow."
+    },
+    {
+      "id": "2026-09-12-six-essay-narration-publication",
+      "date": "2026-09-12",
+      "type": "Accessibility and publication",
+      "title": "Six Academy essays gain source-locked narration",
+      "summary": "The first five foundational essays and The AI That Grows With You now include published narration in Hadi's cloned voice, synchronized narration manifests, canonical-source locks, explicit review records, and browser playback controls.",
+      "why_it_matters": "Readers can listen to a coherent opening path through the Academy without losing the written source of record. The publication workflow ties every audio artifact to reviewed prose and makes a source change invalidate the corresponding approval instead of allowing stale narration to remain silently final.",
+      "affected": ["Foundational essays 1–4", "The Folder Is Alive", "The AI That Grows With You", "Narration workflow", "Accessibility"],
+      "maturity": "Published narration for six essays with approved content locks, deterministic manifests, synchronized HTML, and automated corpus validation",
+      "intended_for": ["Readers who prefer listening", "People using the Academy's opening essay sequence", "Editors maintaining source and audio parity", "Builders studying reviewable narration pipelines"],
+      "sources": [
+        {
+          "label": "Foundational essay narration pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/123"
+        },
+        {
+          "label": "The AI That Grows With You narration pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/132"
+        },
+        {
+          "label": "Academy writings",
+          "url": "/blog.html"
+        }
+      ],
+      "adoption_notes": "This is a published six-essay slice, not a claim that every Academy writing or Observation episode has narration. Written pages remain canonical, and later source edits require renewed parity and approval before their audio can be treated as current. Playback speed is available visually, but the selected speed is not yet exposed as assistive state, so that control still needs an accessibility repair.",
+      "recommended_action": "Use the Listen controls on the six narrated essays, report pronunciation or parity problems through each page's discussion link, and rely on the written article when exact wording or the current source state matters."
+    },
+    {
+      "id": "2026-09-12-observation-episode-six",
+      "date": "2026-09-12",
+      "type": "Observation",
+      "title": "The Information System of a Planet reaches writing",
+      "summary": "Episode 6 follows durable marks into shared writing systems, using early Mesopotamia as a close case while comparing independent inventions elsewhere and rejecting a single-origin progress story.",
+      "why_it_matters": "The series now separates a mark's physical survival from a reader's ability to recover intended information. It shows how shared graphic conventions, word signs, and limited phonetic uses widened what could be recorded while adding new dependencies on training, institutions, access, and slow manual copying.",
+      "affected": ["The Information System of a Planet", "Observations", "Writing systems", "External memory", "Visual storytelling"],
+      "maturity": "Published Episode 6 with six complete, source-backed visual slides; the series now contains six episodes and 40 slides",
+      "intended_for": ["General readers", "People curious about writing and information systems", "Visual learners", "Readers continuing from Episode 5"],
+      "sources": [
+        {
+          "label": "Episode 6 publication pull request",
+          "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/134"
+        },
+        {
+          "label": "The Information System of a Planet",
+          "url": "/blog/observations/information-system-of-a-planet/index.html"
+        }
+      ],
+      "adoption_notes": "Read this after Episode 5. The episode treats writing as a family of independently developed protocols rather than one invention that every society was obliged to adopt, and it distinguishes early administrative recording from later expressive range. Its chronology and examples are source-backed but necessarily incomplete because perishable surfaces disappear and early marks can be difficult to classify. Episode 6 narration is not yet published.",
+      "recommended_action": "Continue to Episode 6, compare persistence with recoverability across its six slides, and use the attached sources or discussion link for evidence-based corrections."
+    },
     {
       "id": "2026-09-11-origin-independent-engagement-channels",
       "date": "2026-09-11",
