@@ -1,0 +1,256 @@
+{
+  "number": 8,
+  "slug": "when-one-page-became-many",
+  "title": "When One Page Became Many",
+  "status": "published",
+  "published": "2026-09-14",
+  "deckline": "A book could travel, but its twin still had to be rewritten. Printing moved the expensive work to a reusable surface, then let one prepared page leave hundreds of impressions behind.",
+  "objective": "Show how matrix-based printing changed written information from serial hand copying into batch replication across East Asia and Europe, while preserving the different material, script, institutional, and economic conditions that shaped woodblock and movable-type systems.",
+  "learning_outcomes": [
+    "Locate documented East Asian woodblock printing by the seventh to eighth centuries, the dated Diamond Sutra in 868, Bi Sheng's movable clay type in the eleventh century, Korean metal type by the thirteenth to fourteenth centuries, and European typographic printing in the 1450s.",
+    "Understand the central performance change: preparation became expensive up front, but each additional impression required far less labor than rewriting the page.",
+    "Compare whole-page blocks and movable type as different replication strategies whose usefulness depends on script, print run, materials, labor, and the likelihood that a page will be printed again.",
+    "Recognize that Gutenberg assembled a highly effective European production system but did not begin the global history of printing, and that rapid replication did not automatically create universal literacy or reliable truth."
+  ],
+  "continuity": "Episode 7 made written memory lighter, denser, and easier to navigate, then stopped at the stubborn cost of producing a second copy. Episode 8 begins with that manual bottleneck and moves from documented East Asian printing in the first millennium CE through the rapid expansion of European typographic print by 1500.",
+  "state_change": "Written information moves from serial hand copying to matrix-based batch replication: setup becomes expensive, but additional copies become faster, cheaper, more consistent, and redundant enough to outlive the loss of any one object.",
+  "future_pressure": "Once copies multiply, scarcity is no longer the only problem. Readers must decide what to preserve, find, compare, authorize, censor, correct, and trust inside a growing population of texts.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-8-when-one-page-became-many",
+  "slides": [
+    {
+      "id": "copyist-clock",
+      "title": "Every copy resets the clock",
+      "read_minutes": 1.3,
+      "image": {
+        "src": "images/episode-08/01-copyist-clock.jpg",
+        "alt": "Across several historical workshops, scribes copy books by hand while completed volumes remain few and piles of blank pages remain high.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "By the time the codex spread, a book could hold a great deal of information and open near the passage a reader wanted. But ask for a second book and the whole job began again.",
+        "Someone prepared the surface. Someone mixed ink, ruled lines, copied words, checked them, corrected them, decorated them, gathered the leaves, and bound them. Workshops divided and accelerated this labor in many ways. In medieval European universities, for example, sections of approved texts could be loaned out separately so several scribes worked at once. Clever scheduling helped. The letters still arrived one human stroke at a time.",
+        "That made replication mostly serial. A copyist could produce a copy; ten copyists could work on ten. Each new branch consumed another large block of trained attention, and each branch could introduce omissions, substitutions, or fresh corrections.",
+        "The information might survive for centuries once written, but its copy speed was measured in human hands and workdays. The storage layer had improved. The replication loop was still waiting for a shortcut."
+      ],
+      "sources": [
+        {
+          "label": "Cambridge University Press — The Technologies of Print",
+          "url": "https://commons.princeton.edu/rbwg/wp-content/uploads/sites/141/2019/09/The-Technologies-of-Print.pdf",
+          "note": "Scholarly overview noting the professional European book trade before movable type and the pecia system that let university readers copy separate sections in parallel."
+        },
+        {
+          "label": "Cambridge University Press — Manuscripts and Printed Books in Europe",
+          "url": "https://www.cambridge.org/core/journals/journal-of-economic-history/article/charting-the-rise-of-the-west-manuscripts-and-printed-books-in-europe-a-longterm-perspective-from-the-sixth-through-eighteenth-centuries/0740F5F9030A706BB7E9FACCD5D975D4",
+          "note": "Quantitative reconstruction of manuscript and printed-book production, emphasizing that manuscript production was already dynamic before print."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "page-becomes-tool",
+      "title": "Then the page becomes a tool",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-08/02-page-becomes-tool.jpg",
+        "alt": "In a Tang-era Chinese workshop, an artisan transfers a brush-written page onto a woodblock, carves away blank areas, inks the raised surface, and rubs paper against it.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "In China, by the seventh to eighth centuries CE, another workflow appears clearly in the surviving record. Instead of writing the final page again and again, artisans prepared a surface that could print the page again and again.",
+        "A calligraphed sheet could be placed face down on a smooth wooden block. The carver removed the empty space around the reversed characters and images. Ink touched the raised surface; paper met the block; rubbing transferred the page. Lift the paper and the block remained ready for another impression.",
+        "The first copy was not suddenly free. It became more expensive in a new way. Preparing and correcting a block demanded material, judgment, and highly skilled labor. But once the block existed, another impression no longer required rewriting every line. In modern information-system language, the workflow moved cost from every copy into setup. Compile the page once; run it many times. That is a metaphor, not a Tang job description, but the performance change is real.",
+        "Nor was woodblock printing merely an awkward rehearsal for movable type. A complete carved page preserved calligraphy and illustration together, could be stored, corrected by recarving, and printed again when demand returned. For many texts and scripts, that was an excellent machine."
+      ],
+      "sources": [
+        {
+          "label": "Columbia University — Printing in Song Dynasty China",
+          "url": "https://afe.easia.columbia.edu/songdynasty-module/tech-printing.html",
+          "note": "University teaching resource on the early development of Chinese printing, woodblock book production, and Bi Sheng's eleventh-century movable type."
+        },
+        {
+          "label": "The Metropolitan Museum of Art — The Printed Image in China",
+          "url": "https://www.metmuseum.org/exhibitions/listings/2012/printed-image-in-china",
+          "note": "Explains how a brush-written or drawn sheet is transferred face down, carved in relief, inked, and printed from a wooden block."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "diamond-multiplies",
+      "title": "A prayer enters the copy machine",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-08/03-diamond-multiplies.jpg",
+        "alt": "A ninth-century Dunhuang printing workshop produces several paper impressions of a Buddhist scroll, with the finished illustrated Diamond Sutra stretching across a table toward travelers.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "On 11 May 868, a Chinese Buddhist scroll received a date in its colophon. The surviving copy is now known as the Diamond Sutra, the earliest complete dated printed book we possess. Earliest surviving and dated does not mean first ever made. Printing was already an established practice by then; survival simply gives this object the loudest timestamp.",
+        "Its opening image and text were printed from carved blocks on multiple sheets, then joined into a roll more than five metres long. The colophon says Wang Jie commissioned it on behalf of his parents. A religious act and a replication technology met on the same paper.",
+        "That purpose matters. Buddhist communities used printing to reproduce sacred words and images; governments, businesses, and private printers also found uses for calendars, charms, dictionaries, classics, examinations, practical texts, and literature. Printing grew inside institutions and markets, not from a machine acting alone.",
+        "One block could leave the same arrangement on sheet after sheet. Those sheets could travel separately, enter different collections, and survive different accidents. Copying had begun creating redundancy: the message no longer needed one heroic object to live forever if enough relatives could scatter."
+      ],
+      "sources": [
+        {
+          "label": "Harvard Divinity Bulletin — The Mogao Caves as Cultural Embassies",
+          "url": "https://bulletin.hds.harvard.edu/the-mogao-caves-as-cultural-embassies/",
+          "note": "Scholarly museum-exhibition account of the 868 Diamond Sutra, its Wang Jie commission, frontispiece, colophon, and mature woodblock production."
+        },
+        {
+          "label": "Getty CONA — The Diamond Sutra",
+          "url": "https://www.getty.edu/cona/CONAFullSubject.aspx?subid=700009008",
+          "note": "Collection record describing the 868 date, seven woodblock-printed paper panels, Wang Jie commission, and the mature publishing practice implied by the object."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "page-breaks-apart",
+      "title": "The page breaks into reusable pieces",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-08/04-page-breaks-apart.jpg",
+        "alt": "An eleventh-century Chinese artisan arranges hundreds of small fired clay characters in an iron frame while intact woodblocks stand nearby as an equally active alternative.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "A carved block makes one page wonderfully repeatable. Change the page, however, and most of the carving begins again. During the 1040s, an artisan named Bi Sheng tried another unit of reuse: the individual character.",
+        "We know his method from Shen Kuo, a scholar who described it a few decades later. Bi Sheng formed characters in clay, fired them, arranged them inside an iron frame over a sticky bed, pressed the surface level, printed, then broke the form apart so the pieces could serve again. The reusable object was no longer the page. It was a vocabulary of parts.",
+        "That sounds automatically superior only if we ignore the work around the machine. A Chinese printer might need thousands of characters sorted and retrievable. Types had to be selected, arranged, corrected, cleaned, and redistributed. For a popular work likely to be reprinted, a proven woodblock could remain economical and preserve the writer's visual style. Movable type was an option, not destiny wearing tiny clay shoes.",
+        "The deeper change was architectural. A page could now be assembled, printed as a batch, dismantled, and assembled into something else. The storage medium had become temporarily programmable — again as a metaphor — and replication was beginning to separate the message from one permanently carved surface."
+      ],
+      "sources": [
+        {
+          "label": "Columbia University — Printing in Song Dynasty China",
+          "url": "https://afe.easia.columbia.edu/songdynasty-module/tech-printing.html",
+          "note": "Summarizes the eleventh-century invention of movable type and explains why whole-block printing remained widely practical in China."
+        },
+        {
+          "label": "Princeton Rare Book Working Group — The History of the Book in China",
+          "url": "https://commons.princeton.edu/rbwg/wp-content/uploads/sites/141/2019/09/History-of-the-Book-in-China.pdf",
+          "note": "Scholarly overview of the economics of Chinese block and movable-type printing, including why woodblocks remained competitive for many publishing jobs."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "metal-before-mainz",
+      "title": "Metal type moves before Mainz",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-08/05-metal-before-mainz.jpg",
+        "alt": "In a fourteenth-century Korean Buddhist temple workshop, printers arrange metal type and lift fresh pages while a bound copy of Jikji rests nearby.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "The pieces changed material too. Korean records place movable metal type in use during the Goryeo dynasty before the middle of the thirteenth century, although the books named in those records have not survived in their original metal-type editions.",
+        "One book has. In 1377, printers at Heungdeok Temple in what is now Cheongju printed a Buddhist anthology commonly called Jikji. Only its final volume survives. It is the oldest known surviving book printed with movable metal type — not necessarily the first metal-type book, and definitely not the beginning of printing.",
+        "The date matters because it breaks a very persistent story. Johannes Gutenberg did not awaken a silent planet in the 1450s. By then, East Asian printers had centuries of experience with blocks, paper, ink, movable clay type, and metal type. Different systems continued side by side because they solved different production problems.",
+        "Did knowledge of those systems travel all the way to Europe? Long-distance exchange makes influence imaginable, but the surviving evidence does not establish a clean handoff to Gutenberg. The responsible picture is less cinematic: connected worlds, incomplete records, and more than one history of making text multiply."
+      ],
+      "sources": [
+        {
+          "label": "Bibliothèque nationale de France — Jikji, a treasure of the world of printing",
+          "url": "https://www.bnf.fr/en/jikji-treasure-world-printing",
+          "note": "Identifies Jikji as the oldest known surviving book printed with movable metal type and dates it to Cheongju in 1377."
+        },
+        {
+          "label": "UNESCO Memory of the World — Jikji nomination",
+          "url": "https://media.unesco.org/sites/default/files/webform/mow001/korea_buljo_jikj_simch_yo_jeol.pdf",
+          "note": "Documentary-heritage record describing the 1377 Heungdeok Temple edition and earlier Korean metal-type context."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "mainz-system",
+      "title": "Mainz assembles another machine",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-08/06-mainz-system.jpg",
+        "alt": "Inside a 1450s Mainz workshop, craftspeople cast alphabetic metal type, arrange a page, ink it, operate a wooden screw press, and hang fresh sheets to dry.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Around the 1450s in Mainz, Johannes Gutenberg and the people financing and working with him assembled a different production system around movable metal type. Its achievement was not one magical lever. It was a coordinated stack: repeatable cast type, an oil-based ink suited to metal, careful composition, a press that applied even pressure, paper supply, skilled labor, credit, and customers.",
+        "Alphabetic scripts gave this system a particular economy. A printer needed many copies of a comparatively small set of letters rather than separate type for thousands of commonly used characters. Individual pieces could be cast to consistent dimensions, arranged into lines, locked into a page, printed, and returned to the cases for another text.",
+        "The Gutenberg Bible, produced in Mainz around 1454–1455, was the first large-format book printed in Western Europe with movable metal type. It did not look like a cheap modern paperback. Copies were large, costly, sometimes printed on vellum, and finished by hand with rubrication and illumination. The new process entered an existing craft world and borrowed its visual expectations.",
+        "But beneath that familiar beauty, the replication clock had changed. Once a page was composed and corrected, the press could pull impression after impression before the type was rearranged. One prepared page was learning to become a crowd."
+      ],
+      "sources": [
+        {
+          "label": "Library of Congress — Introduction to the Gutenberg Bible",
+          "url": "https://guides.loc.gov/gutenberg",
+          "note": "Dates the large-format Mainz Bible to 1454–1455 and identifies it as the first such European work printed with movable metal type."
+        },
+        {
+          "label": "Library of Congress — The Gutenberg Bible",
+          "url": "https://www.loc.gov/exhibits/bibles/the-gutenberg-bible.html",
+          "note": "Collection history and explanation of the Bible as a turning point in Western European bookmaking with movable metal type."
+        },
+        {
+          "label": "Harvard Library — The Gutenberg Bible",
+          "url": "https://library.harvard.edu/collections/gutenberg-bible",
+          "note": "Describes the Gutenberg Bible as the first major European work printed with movable metal type and shows its hand-finished appearance."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-06.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "copies-become-population",
+      "title": "Copies become a population",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-08/07-copies-become-population.jpg",
+        "alt": "From a late-fifteenth-century European print shop, bundles of matching books spread by cart and ship toward many towns while handwritten books remain in use.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "The European system spread quickly, though not smoothly. By the end of the fifteenth century, presses had operated in more than 250 European places. Many shops failed; production clustered in major centers; manuscripts continued to be written and used. New media rarely wait for old media to leave the room politely.",
+        "Still, the scale is difficult to miss. One scholarly reconstruction estimates about 12.6 million printed books in Europe between the mid-1450s and 1500 — more than the estimated manuscript output of the previous thousand years. The number is an estimate, not a celestial book counter, but its order of magnitude reveals the state change.",
+        "Replication was now a batch process. The expensive part happened before the run: type, blocks, composition, correction, ink, paper, press, capital. After that, the marginal copy arrived much faster. Copies from one setting were not perfectly identical; compositors corrected forms during printing, sheets were lost, readers annotated pages, and errors could multiply alongside truths. Fidelity improved in one sense while mistakes gained excellent distribution.",
+        "The information-lifetime clock changed again. A single book could still burn. A population of copies scattered across cities was harder to erase. More readers could encounter the same arrangement of words, compare it, argue with it, prohibit it, repair it, or print a reply.",
+        "For most of Earth's history, a useful pattern survived by reproduction inside living cells. Now an idea could produce descendants by the cartload. The planet had not solved knowledge. It had made knowledge much better at multiplying — which created an entirely new class of problems."
+      ],
+      "sources": [
+        {
+          "label": "Cambridge University Press — Centre and Periphery in the European Book World",
+          "url": "https://www.cambridge.org/core/journals/transactions-of-the-royal-historical-society/article/centre-and-periphery-in-the-european-book-world/9C364B78ADFCCA1BEDBADB2ECF9D1CC1",
+          "note": "Peer-reviewed account of presses appearing in more than 250 European locations by 1500, short-lived shops, and later production concentration."
+        },
+        {
+          "label": "Cambridge University Press — Restrictions on the Printing Press",
+          "url": "https://www.cambridge.org/core/books/rulers-religion-and-riches/restrictions-on-the-printing-press/29D4B5D062C62B08A5B347DB74F6B383",
+          "note": "Reports the reconstruction of roughly 12.6 million printed books produced from 1454 to 1500, compared with estimated manuscript output over the prior millennium."
+        },
+        {
+          "label": "Cambridge University Press — The Coming of Print to Europe",
+          "url": "https://www.cambridge.org/core/books/cambridge-companion-to-the-history-of-the-book/coming-of-print-to-europe/1CE8819B80B86894D09C0C292F15FEDD",
+          "note": "Scholarly overview of the press's greater output, lower copy cost, and relationship to the established manuscript book trade."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-08/slide-07.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}

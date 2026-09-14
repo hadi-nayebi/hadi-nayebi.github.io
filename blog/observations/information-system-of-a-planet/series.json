@@ -78,6 +78,13 @@
       "path": "episodes/episode-07-when-more-memory-could-travel.json",
       "title": "When More Memory Could Travel",
       "published": "2026-09-13"
+    },
+    {
+      "number": 8,
+      "slug": "when-one-page-became-many",
+      "path": "episodes/episode-08-when-one-page-became-many.json",
+      "title": "When One Page Became Many",
+      "published": "2026-09-14"
     }
   ]
 }
