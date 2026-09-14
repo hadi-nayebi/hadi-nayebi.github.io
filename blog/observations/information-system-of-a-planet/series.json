@@ -71,6 +71,13 @@
       "path": "episodes/episode-06-when-a-mark-could-say-more-than-it-showed.json",
       "title": "When a Mark Could Say More Than It Showed",
       "published": "2026-09-12"
+    },
+    {
+      "number": 7,
+      "slug": "when-more-memory-could-travel",
+      "path": "episodes/episode-07-when-more-memory-could-travel.json",
+      "title": "When More Memory Could Travel",
+      "published": "2026-09-13"
     }
   ]
 }
