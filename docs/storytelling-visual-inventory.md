@@ -4,11 +4,11 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 
 ## Coverage
 
-- Displayed storytelling image slots: **125**
-- Slots with five-category metadata: **125**
-- Fullscreen/lightbox coverage: **125**
+- Displayed storytelling image slots: **132**
+- Slots with five-category metadata: **132**
+- Fullscreen/lightbox coverage: **132**
 - Active storytelling SVG references: **0**
-- Distribution: **I90-A10 40, I70-A30 26, I50-A50 28, I30-A70 22, I10-A90 9**
+- Distribution: **I90-A10 40, I70-A30 26, I50-A50 31, I30-A70 25, I10-A90 10**
 
 `Injected` means the figure is added by `js/story-visuals.js`; its metadata is applied when the figure is created.
 `EpisodeJSON` means the figure is loaded from an Observation episode data file; its visual category is machine-readable in that slide record and the Observation renderer provides fullscreen behavior.
@@ -69,6 +69,13 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-07/04-many-materials.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-07/05-scroll-direction.jpg` | I70-A30 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-07/06-book-grows-edges.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/01-copyist-clock.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/02-page-becomes-tool.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/03-diamond-multiplies.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/04-page-breaks-apart.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/05-metal-before-mainz.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/06-mainz-system.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/07-copies-become-population.jpg` | I10-A90 | EpisodeJSON | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/the-ai-that-grows-with-you-hero.jpg` | I30-A70 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/browser-as-an-open-gateway.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/reopening-the-social-web.jpg` | I70-A30 | HTML | Yes |
