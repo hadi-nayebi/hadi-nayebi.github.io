@@ -27,10 +27,10 @@ The initial draft framed Hadosh through first-principles reasoning: human agency
 - [Farnam Street: First Principles](https://fs.blog/first-principles/)
 - [Farnam Street: The Great Mental Models](https://fs.blog/tgmm/)
 - [Origin](https://github.com/hadi-nayebi/origin)
-- [Seed Agent](https://github.com/hadi-nayebi/seed-agent)
+- [Seed Agent](https://github.com/hadi-nayebi/seed_agent)
 - [Q-Seed](https://github.com/hadi-nayebi/q-seed)
 - Existing Academy essays: *The AI That Grows With You*, *The Language of Agents*, and *The Seed Is Yours*
 
 ## Uncertainty and review boundary
 
-This release is an exploratory synthesis, not a final architecture specification. Claims about future pattern crystallization and contribution-review plugins are proposals to test. The article is ready for website review; its narration remains intentionally unprepared until Hadi approves the prose. Comments and implementation reports are evidence and proposals, not automatic changes to the Academy’s accepted context.
+This article is published as an exploratory synthesis, not a final architecture specification. Claims about future pattern crystallization and contribution-review plugins are proposals to test. Its narration remains intentionally unprepared until Hadi separately approves the prose. Comments and implementation reports are evidence and proposals, not automatic changes to the Academy’s accepted context.

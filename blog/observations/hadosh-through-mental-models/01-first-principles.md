@@ -9,7 +9,7 @@ og_image: "images/first-principles-hero.jpg"
 series: "Hadosh Through Mental Models"
 series_position: "Lens 1"
 version: v0.9.0
-status: review
+status: published
 ---
 
 # Hadosh Academy Through First Principles

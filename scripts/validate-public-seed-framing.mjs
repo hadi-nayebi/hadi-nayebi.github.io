@@ -114,6 +114,8 @@ const retiredPhrases = [
   'remains private while it matures',
   'The same seed works for any user',
   'Every architect who adopts this architecture inherits it',
+  'every mature seed converges toward',
+  'the proportions hold across any seed',
   'most architects inherit, not rewrite',
   'Once the seed agent ships open-source',
   'In a public seed implementation',
