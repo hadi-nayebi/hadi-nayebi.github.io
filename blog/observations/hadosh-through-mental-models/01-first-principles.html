@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!-- Version: v0.9.0 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadosh Academy Through First Principles | Hadosh Academy</title>
+    <meta name="description" content="A first-principles observation of why Hadosh teaches modular patterns for user-specific harnesses instead of prescribing one finished agent.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/01-first-principles.html">
+    <meta property="og:title" content="Hadosh Academy Through First Principles | Hadosh Academy">
+    <meta property="og:description" content="Human agency, durable state, modular patterns, local adaptation, and an Academy that evolves through evidence.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/01-first-principles.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/images/first-principles-hero.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hadosh Academy Through First Principles">
+    <meta name="twitter:description" content="Lens 1 of Hadosh Through Mental Models: rebuild the Academy from its deepest constraints.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/images/first-principles-hero.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../../../css/styles.css?v=20260903-whats-new-1">
+    <style>
+      .series-note { margin: 1.25rem 0 2rem; padding: 1rem 1.15rem; border: 1px solid rgba(139, 124, 246, .35); border-radius: 10px; background: rgba(139, 124, 246, .08); }
+      .series-note p { margin: 0; }
+      .blog-image { margin: 2rem 0; }
+      .blog-image img { width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+      .blog-image figcaption { text-align: center; font-style: italic; margin-top: .5rem; color: rgba(255,255,255,.7); font-size: .9rem; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Hadosh Academy Through First Principles",
+          "datePublished": "2026-09-15",
+          "dateModified": "2026-09-15",
+          "author": {"@type": "Person", "name": "Hadi Nayebi", "url": "https://hadi-nayebi.github.io/about.html"},
+          "publisher": {"@id": "https://hadi-nayebi.github.io/#organization"},
+          "description": "A first-principles observation of why Hadosh teaches modular patterns for user-specific harnesses instead of prescribing one finished agent.",
+          "image": "https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/images/first-principles-hero.jpg",
+          "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/01-first-principles.html",
+          "isPartOf": {"@type": "CreativeWorkSeries", "name": "Hadosh Through Mental Models", "url": "https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html"},
+            {"@type": "ListItem", "position": 3, "name": "Hadosh Through Mental Models", "item": "https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/"},
+            {"@type": "ListItem", "position": 4, "name": "First Principles", "item": "https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/01-first-principles.html"}
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header id="site-header"><div class="container"><nav>
+        <a href="../../../index.html" class="logo">Hadosh Academy</a>
+        <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <div class="nav-links"><a href="../../../index.html">Home</a><a href="../../../start-here.html">Start Here</a><a href="../../../blog.html" class="active" aria-current="page">Blog</a><a href="../../../agents.html">Agents</a><a href="../../../projects/index.html">Projects</a><a href="../../../whats-new.html">What's New</a><a href="../../../about.html">About</a><a href="../../../services.html">Services</a></div>
+    </nav></div></header>
+
+    <main class="page-content"><section class="container"><div class="blog-layout">
+        <div class="article-content">
+            <a href="index.html" class="blog-back-link">&larr; Hadosh Through Mental Models</a>
+            <div class="article-meta"><span>September 15, 2026</span><span>&bull;</span><span>14 min read</span><div class="article-meta-tags"><span class="tag tag-audience">Everyone</span><span class="tag">Observation</span><span class="tag">Mental Models</span><span class="tag">First Principles</span><span class="tag">Personal Harness</span></div></div>
+            <div class="article-authors">By Hadi Nayebi &amp; Codex</div>
+            <div class="series-note"><p><strong>Review status:</strong> This is an exploratory synthesis and publication candidate. The argument, images, and wording remain open to Hadi's review and later evidence-backed revision.</p></div>
+            <div class="article-body">
+<h1 id="hadosh-academy-through-first-principles">Hadosh Academy Through
+First Principles</h1>
+<p><em>Hadosh Through Mental Models — Lens 1</em></p>
+<p>This is the first entry in a continuing experiment: look at Hadosh
+Academy through one mental model at a time and see what becomes
+clearer.</p>
+<p>The lenses come from the broad mental-model tradition, beginning with
+first-principles thinking as presented in <em>The Great Mental
+Models</em>. The goal is not to force Hadosh into a book summary. It is
+to use each lens as an instrument. A useful lens should expose
+assumptions, contradictions, missing parts, and new design
+possibilities.</p>
+<p>The observations published here are not declarations from a finished
+system. They are current syntheses. Readers can challenge them. Builders
+can test them. Better evidence can change them. Some ideas may stabilize
+quickly; others may keep moving for years.</p>
+<p>First-principles thinking is the right place to begin because it asks
+a severe question:</p>
+<blockquote>
+<p><strong>If we remove the products, repositories, interfaces, and
+terminology that happen to exist today, what must remain true for Hadosh
+Academy to make sense?</strong></p>
+</blockquote>
+<figure class="blog-image" data-visual-style="I70-A30" data-information-weight="70" data-artistic-weight="30" data-visual-role="storytelling">
+<img src="images/first-principles-hero.jpg" alt="A blackboard drawing strips an agent system down from interfaces and products to five foundation stones: human agency, temporary sessions, durable state, authority, and protected boundaries.">
+<figcaption>
+First principles begin below the current implementation: what must
+remain true even when models, tools, and interfaces change?
+</figcaption>
+</figure>
+<hr />
+<h2 id="start-below-the-current-implementation">Start Below the Current
+Implementation</h2>
+<p>First-principles thinking does not begin by copying the visible form
+of a successful system. It breaks the subject into the most basic
+elements that can be defended in the situation, then reasons upward from
+them. Those elements are contextual rather than permanently final; as
+knowledge improves, the claimed foundations can be challenged too.</p>
+<p>That distinction matters for Hadosh.</p>
+<p>If we begin with today’s implementations, we might conclude that
+Hadosh is a particular command-line agent, dashboard, repository layout,
+plugin format, model provider, or collection of instructions. Those
+things are real, but they are present forms—not the foundation.</p>
+<p>Remove them and several deeper facts remain.</p>
+<h3 id="the-human-is-the-objective">The human is the objective</h3>
+<p>The purpose of the system is to expand a person’s ability to think,
+learn, create, decide, and act. Agent autonomy can be useful, but it is
+instrumental and bounded. It is not the final objective.</p>
+<p>That means important decisions must continue to return to the user.
+The agent can investigate, draft, implement, test, and recommend. The
+user decides what becomes accepted history, which capabilities are
+installed, what crosses a public boundary, and when the relationship
+should change direction.</p>
+<h3 id="model-sessions-are-temporary">Model sessions are temporary</h3>
+<p>A model session can be powerful and still be replaceable. It ends.
+Its context window is finite. Providers, model families, prices, and
+capabilities change. A person’s work should not disappear every time the
+intelligence engine or interface changes.</p>
+<p>The durable value therefore has to live somewhere else: in files,
+instructions, tools, permissions, decisions, workflows, tests, history,
+and recoverable state that the user can keep.</p>
+<h3 id="useful-work-creates-durable-state">Useful work creates durable
+state</h3>
+<p>A conversation becomes more valuable when its result survives the
+conversation. A preference can become an instruction. A repeated task
+can become a job. A failure can become a test. A safety concern can
+become an enforced boundary. A successful procedure can become a
+reusable pattern.</p>
+<p>The harness is where this accumulation becomes operational rather
+than anecdotal.</p>
+<h3 id="authority-must-be-explicit">Authority must be explicit</h3>
+<p>The ability to perform an action is different from the authority to
+decide that it should become final. A system that can write code does
+not automatically have authority to merge it. A system that can draft a
+public comment does not automatically have authority to post it.
+Capability without a legible authority boundary makes convenience
+indistinguishable from silent transfer of control.</p>
+<h3 id="some-boundaries-need-deterministic-enforcement">Some boundaries
+need deterministic enforcement</h3>
+<p>Natural-language instructions are useful, but they are not the
+strongest possible control. When the consequence matters, a rule may
+need to be represented in permissions, validation, hooks, state
+transitions, review requirements, or another mechanism outside the
+model’s moment-to-moment discretion.</p>
+<p>These five claims are more stable than any current Hadosh
+implementation. Together they point toward a user-owned, inspectable,
+portable, and recoverable harness that can grow around changing models
+without transferring final authority away from the person.</p>
+<h2 id="a-harness-is-personal-software-made-from-context">A Harness Is
+Personal Software Made From Context</h2>
+<p>At the level an agent can consume, much of a harness is text.</p>
+<p>Its instructions are text. Tool descriptions and schemas are text.
+File names, state labels, validation messages, prompts, policies, and
+code can all be represented as text. Runtime mechanisms still matter—the
+difference between a written warning and a rule the runtime actually
+enforces is enormous—but the architecture is largely specified through a
+context the system can read and execute around.</p>
+<p>This creates a useful way to think about optimization.</p>
+<p>Imagine one particular harness, for one person doing one kind of work
+in one runtime, described in one thousand words. Those exact thousand
+words are not a universal target. A lawyer, a biologist, a filmmaker,
+and a software maintainer should not receive identical systems. Even two
+people with the same profession will have different responsibilities,
+tolerances, tools, terminology, and rhythms.</p>
+<p>But inside that particular situation, word choice and structure still
+matter. Some versions will produce more reliable behavior than others.
+One instruction may be ambiguous. Another may conflict with a
+permission. A state name may make sense to one user and confuse another.
+A validation rule may capture the real boundary, while a long paragraph
+merely sounds responsible.</p>
+<p>So the design problem is not to discover one perfect thousand-word
+harness.</p>
+<p>It is to help each user and their agent search for better context for
+their own work.</p>
+<figure class="blog-image" data-visual-style="I50-A50" data-information-weight="50" data-artistic-weight="50" data-visual-role="storytelling">
+<img src="images/context-becomes-personal-software.jpg" alt="Loose instructions, state names, tools, permissions, and tests are selected and assembled around one person into a distinct local harness; nearby people assemble visibly different harnesses from related patterns.">
+<figcaption>
+Shared patterns enter a local design process. The resulting software is
+specific to the user, task, runtime, and accumulated work.
+</figcaption>
+</figure>
+<p>This is why natural language is so important at the beginning. It
+lets people explore a much larger design space before every idea has
+hardened into a conventional software package. A behavioral objective
+can be described, tried, criticized, rewritten, and compared across
+implementations. Over time, the forms that repeatedly work can
+crystallize into more durable components.</p>
+<p>The text is not a shortcut around software engineering. It is an
+unusually accessible material for designing software behavior.</p>
+<h2 id="share-the-pattern-not-a-finished-agent">Share the Pattern, Not a
+Finished Agent</h2>
+<p>The first-principles result is not a complete Hadosh agent that
+everyone should install. The result is almost the opposite.</p>
+<p>If the harness must reflect the user, then prescribing the complete
+harness would erase the very variation the system needs to learn from.
+Hadosh Academy should instead provide concepts, behavioral objectives,
+design patterns, examples, and sparse building blocks that a user’s
+agent can understand and adapt.</p>
+<p>The modularity begins at the backbone.</p>
+<p>Each meaningful behavior can become a component the user deliberately
+selects. A component may be independent or may declare a real dependency
+on another. Several components may later form a coherent collection. But
+the user should be able to understand what behavior is being added, what
+authority it requires, what state it owns, and what happens when it is
+removed.</p>
+<p>Consider one behavioral objective: an agent should not stop while
+actionable work remains.</p>
+<p>That objective does not dictate one implementation. In a simple
+harness it may live inside a job definition. In another it may become a
+dedicated Stop Gate plugin. In a multi-channel harness, each channel may
+expose its own continuation state and a small coordinator may compose
+them. The stable element is the behavior being protected; the
+implementation belongs to the local architecture.</p>
+<figure class="blog-image" data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling">
+<img src="images/one-objective-many-patterns.jpg" alt="One behavioral objective—do not stop while actionable work remains—branches into three locally valid patterns: a job rule, a Stop Gate plugin, and composed channel gates.">
+<figcaption>
+A transferable behavior is not the same thing as a universal
+implementation.
+</figcaption>
+</figure>
+<p>This also explains the roles of the public projects.</p>
+<p><a href="../../../projects/origin.html">Origin</a> is a concrete
+single-user harness where patterns can be experienced in a working
+system. <a href="../../../projects/seed-agent.html">Seed Agent</a> and
+<a href="../../../projects/q-seed.html">Q-Seed</a> are deliberately
+sparse, framework-specific places where reusable patterns can
+accumulate. They are not three stages of one required product and they
+are not templates that every user must mechanically copy.</p>
+<p>A released plugin should therefore arrive with an invitation to
+reinterpret it. Preserve the behavioral objective and its evidence. Then
+implement it in harmony with the local harness: its vocabulary, function
+names, state model, permissions, and existing components.</p>
+<p>That variation has another possible benefit. A monoculture gives an
+attacker a repeated surface: identical names, identical assumptions,
+identical injection targets. Diverse local implementations can make one
+exploit harder to scale across many harnesses. This is only a defensive
+advantage, not a security guarantee. Terminology changes do not replace
+least privilege, validation, isolation, review, or deterministic
+enforcement. But avoiding unnecessary sameness can reduce correlated
+failure.</p>
+<h2 id="patterns-crystallize-through-use">Patterns Crystallize Through
+Use</h2>
+<p>A plugin should not exist merely because an idea can be named.</p>
+<p>The healthier sequence begins with a behavior that people can
+understand. Different users and agents attempt it in their own contexts.
+The implementations are tested through real work. Failures and tradeoffs
+become visible. The Academy compares what happened and explains the
+lesson. Only then do sufficiently repeated and well-understood
+structures crystallize into reusable components.</p>
+<p>This creates a production and education loop:</p>
+<ol type="1">
+<li><strong>Teach</strong> the behavior and why it matters.</li>
+<li><strong>Implement</strong> it in a framework-appropriate form.</li>
+<li><strong>Test</strong> it through real use and explicit
+evidence.</li>
+<li><strong>Compare</strong> independent implementations and
+failures.</li>
+<li><strong>Publish</strong> the more general lesson.</li>
+<li><strong>Preserve</strong> a reusable component when the pattern has
+earned one.</li>
+<li><strong>Adapt</strong> it into new personal harnesses, creating the
+next round of evidence.</li>
+</ol>
+<figure class="blog-image" data-visual-style="I70-A30" data-information-weight="70" data-artistic-weight="30" data-visual-role="storytelling">
+<img src="images/pattern-crystallization-loop.jpg" alt="A widening chalk loop moves through Teach, Implement, Test, Compare, Publish, Preserve, and Adapt; repeated passes produce clearer reusable blocks while distinct personal harnesses keep branching outward.">
+<figcaption>
+Education and production are one loop: practice produces evidence,
+evidence improves the teaching, and mature lessons become reusable
+without becoming compulsory.
+</figcaption>
+</figure>
+<p>This is the line connecting the Academy, Origin, Seed Agent, and
+Q-Seed. The writing is not marketing added after software production. It
+helps define the behavior before implementation and interpret the
+evidence afterward. The implementation is not merely an example attached
+to the lesson. It is one of the instruments used to test whether the
+lesson survives contact with work.</p>
+<p>The same line can continue through the most basic behaviors
+introduced in Harness 101. A behavior is taught, tried in Origin or a
+Seed lineage when appropriate, tested, and then revisited publicly. Once
+the current Stop Gate work and Origin’s two engagement plugins have been
+tested and accepted, they can support their own companion posts. Later
+stop-related patterns can be adapted into Origin, Q-Seed, or Seed Agent
+according to each framework rather than copied as identical code.</p>
+<h2 id="contributions-can-become-a-behavior-too">Contributions Can
+Become a Behavior Too</h2>
+<p>The loop needs a way for experience to return.</p>
+<p>Today, a reader can comment on an article or report an issue in a
+related project. In the future, an optional contribution-review plugin
+could make an agent’s participation more structured. With the user’s
+explicit permission, the agent could prepare a correction, field
+observation, bug report, or implementation note for the relevant public
+surface. Before anything is posted, the plugin could require a defined
+structure, strip private material, verify the destination, show the
+exact proposed text to the user, and reject submissions that do not meet
+the local contract.</p>
+<p>That would be one plugin: one selectable behavior, with explicit
+authority and a narrow purpose. A user who wants their agent to
+participate could add it. Another user could decline. Different Academy
+surfaces could publish different contribution schemas without forcing
+one global commenting system into every harness.</p>
+<p>This remains a proposal, not an existing guarantee. Its value here is
+illustrative: even participation in the ecosystem can be decomposed into
+an understandable behavior rather than hidden inside a complete
+agent.</p>
+<h2 id="hadosh-academy-is-also-a-context">Hadosh Academy Is Also a
+Context</h2>
+<p>The first-principles lens applies recursively.</p>
+<p>Hadosh Academy is itself a body of context intended for humans and
+agents. Its <a href="../../../start-here.html">Start Here</a> page,
+concepts, examples, project boundaries, contribution rules, and links
+influence what a visiting agent understands and what it helps its user
+build.</p>
+<p>That context has better and worse possible forms.</p>
+<p>There may be a form of the Academy that lets an agent orient a new
+user with unusually little confusion: it distinguishes the model from
+the harness, preserves the user’s authority, keeps private work private,
+explains how patterns should be adapted, and helps the person begin with
+a useful local change. We do not yet know that form. The website is part
+of the same search process as the harnesses it teaches.</p>
+<p>That is why publication is not finality.</p>
+<p>An article can be coherent enough to publish and still remain open to
+revision. Comments are proposals, not automatic truth. New
+implementations provide evidence, not commands. Hadi’s review and
+explicit approval determine what becomes accepted public context.
+Version history preserves how the context changed and why.</p>
+<p>Some passages may find a stable position quickly. Others may keep
+changing as models, runtimes, and practices evolve. The objective is not
+endless motion. It is an increasingly useful context whose claims
+stabilize in proportion to the evidence behind them.</p>
+<h2 id="what-first-principles-exposes">What First Principles
+Exposes</h2>
+<p>Looking at Hadosh Academy through this lens produces a connected set
+of conclusions:</p>
+<ul>
+<li>The objective is increased human agency, not autonomous activity for
+its own sake.</li>
+<li>Models can remain temporary and replaceable; the user’s accumulated
+capability should persist.</li>
+<li>Durable work belongs in an inspectable, portable, recoverable
+harness under user control.</li>
+<li>The complete harness must be personal because work, terminology,
+authority, and risk are personal.</li>
+<li>Natural language makes the early architecture accessible to
+exploration, while deterministic mechanisms enforce the boundaries that
+matter most.</li>
+<li>Reusable behaviors should be shared as patterns and modular
+components, not imposed as one complete agent.</li>
+<li>Independent implementations create evidence; repeated evidence lets
+some patterns crystallize.</li>
+<li>The Academy, its projects, and its contributors form one learning
+loop.</li>
+<li>The Academy itself must evolve as a reviewed public context.</li>
+</ul>
+<p>None of these conclusions specifies the one architecture everyone
+should build. Together, they define the conditions under which many
+distinct architectures can grow without losing the person at their
+center.</p>
+<h2 id="use-the-lens-yourself">Use the Lens Yourself</h2>
+<p>To apply the same technique to another topic, begin with five
+questions:</p>
+<ol type="1">
+<li>What visible implementation am I accidentally treating as
+inevitable?</li>
+<li>If I remove today’s tools and terminology, what facts still
+constrain the problem?</li>
+<li>Which claims are observations, which are assumptions, and which are
+merely conventions?</li>
+<li>What different designs become possible when I rebuild from the
+remaining constraints?</li>
+<li>What evidence would make me revise the supposed foundations?</li>
+</ol>
+<p>The fifth question keeps first principles from becoming dogma. A
+foundation is useful because it survives serious challenge—not because
+we wrote it near the bottom of a diagram.</p>
+<p>This series will keep applying other lenses to Hadosh Academy over
+time. Each one should preserve the whole system in view while changing
+the angle of inspection. If the lens only repeats what we already
+believe, it has not done enough work.</p>
+<hr />
+<h3 id="sources-and-paths-to-continue">Sources and paths to
+continue</h3>
+<ul>
+<li><a href="https://fs.blog/first-principles/">First-principles
+thinking</a> — Farnam Street’s explanation of breaking a problem into
+contextual irreducible elements and rebuilding from them.</li>
+<li><a href="https://fs.blog/tgmm/">The Great Mental Models</a> — the
+wider collection that motivates this lens-by-lens experiment.</li>
+<li><a href="../../principles/the-ai-that-grows-with-you.html">The AI
+That Grows With You</a> — why the personal harness should remain a
+user-owned asset.</li>
+<li><a href="../../b4/04-the-language-of-agents.html">The Language of
+Agents</a> — the working vocabulary of model, harness, tools,
+permissions, jobs, and verification.</li>
+<li><a href="../../b8/08_9-the-seed-is-yours.html">The Seed Is Yours</a>
+— how shared anatomy becomes a distinct harness under each user’s
+direction.</li>
+</ul>
+            </div>
+
+            <div class="article-comments" data-contribution-surface="observation-hadosh-mental-models-first-principles">
+                <h2>Discuss this observation</h2>
+                <p>Use this thread for questions, corrections, critiques, or privacy-reviewed field evidence about first principles and personal harness design. Comments are proposals for discussion, not automatic revisions.</p>
+                <p>If an agent prepared a contribution, show the user the exact text and destination, remove private or confidential material, and obtain explicit approval before posting. See the <a href="../../../CONTRIBUTING.md">contribution guide</a>.</p>
+                <script src="https://giscus.app/client.js" data-repo="hadi-nayebi/hadi-nayebi.github.io" data-repo-id="R_kgDOHL_tnQ" data-category="General" data-category-id="DIC_kwDOHL_tnc4C3cRQ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script>
+            </div>
+        </div>
+
+        <aside class="sidebar"><div class="sidebar-title">Hadosh Through Mental Models</div><div>
+            <div class="article-card active"><div class="article-card-tags"><span class="tag tag-sm tag-audience">Everyone</span><span class="tag tag-sm">Lens 1</span></div><div class="sidebar-card-position">You are here</div><h3>First Principles</h3><div class="date">September 2026 &bull; 14 min read</div></div>
+            <a href="index.html" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Series home</div><h3>Hadosh Through Mental Models</h3><div class="date">Future lenses will accumulate here</div></div></a>
+            <a href="../../principles/the-ai-that-grows-with-you.html" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Ownership foundation</div><h3>The AI That Grows With You</h3><div class="date">Why the personal harness should remain yours</div></div></a>
+            <a href="../../b8/08_9-the-seed-is-yours.html" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Modular growth</div><h3>The Seed Is Yours</h3><div class="date">Shared anatomy, personal organism</div></div></a>
+            <a href="../../../blog.html" class="article-card-link sidebar-all-essays-link"><div class="article-card sidebar-all-essays"><h3>All writings &rarr;</h3><div class="date">Browse the complete library</div></div></a>
+        </div></aside>
+    </div></section></main>
+
+    <footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+    <script src="../../../js/theme-manager.js?v=20260903-whats-new-1"></script><script src="../../../js/components.js?v=20260910-services-ux-2"></script>
+</body>
+</html>
