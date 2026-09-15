@@ -76,6 +76,10 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/05-metal-before-mainz.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/06-mainz-system.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/07-copies-become-population.jpg` | I10-A90 | EpisodeJSON | Yes |
+| `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/first-principles-hero.jpg` | I70-A30 | HTML | Yes |
+| `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/context-becomes-personal-software.jpg` | I50-A50 | HTML | Yes |
+| `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/one-objective-many-patterns.jpg` | I90-A10 | HTML | Yes |
+| `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/pattern-crystallization-loop.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/the-ai-that-grows-with-you-hero.jpg` | I30-A70 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/browser-as-an-open-gateway.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/reopening-the-social-web.jpg` | I70-A30 | HTML | Yes |

@@ -55,6 +55,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/01-first-principles.html</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://hadi-nayebi.github.io/blog/observations/information-system-of-a-planet/</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>daily</changefreq>
