@@ -1,0 +1,245 @@
+{
+  "number": 9,
+  "slug": "when-knowledge-got-an-address",
+  "title": "When Knowledge Got an Address",
+  "status": "published",
+  "published": "2026-09-16",
+  "deckline": "Printing gave the world more books. Page numbers, indexes, bibliographies, and catalogs taught readers how to find one useful piece inside the multiplying pile.",
+  "objective": "Show how finding aids and bibliographic systems made growing collections of printed information more addressable from the late fifteenth through the eighteenth century, while recognizing much older cataloging traditions and the human choices hidden inside every map of knowledge.",
+  "learning_outcomes": [
+    "Understand the post-printing bottleneck: multiplying texts increases storage and redundancy, but can make retrieval harder unless information receives stable coordinates.",
+    "See page and leaf numbers, indexes, catalogs, bibliographies, and cross-references as layers of metadata that reduce lookup time at different scales.",
+    "Recognize that cataloging long predates European printing, including major Chinese bibliographic traditions, so early modern European tools were an expansion under new conditions rather than the invention of organized knowledge.",
+    "Notice that addressability is never neutral: people and institutions choose categories, names, priorities, inclusions, and omissions."
+  ],
+  "continuity": "Episode 8 ended around 1500 with written information entering batch replication: copies became faster, cheaper, more consistent, and more redundant. Episode 9 stays mainly between the late fifteenth and late eighteenth centuries and asks what happened when readers could possess more texts than they could reliably remember or search.",
+  "state_change": "Recorded knowledge becomes increasingly addressable: readers can move from a subject or author to a catalog entry, shelf, volume, and specific page without scanning the entire collection in sequence.",
+  "future_pressure": "Addresses make information easier to retrieve and compare, but they do not decide whether a claim is true, current, honestly copied, or politically permitted. A faster lookup system still needs ways to test, correct, and update what it finds.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-9-when-knowledge-got-an-address",
+  "slides": [
+    {
+      "id": "too-many-books",
+      "title": "More memory, less certainty where it went",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-09/01-too-many-books.jpg",
+        "alt": "Around 1500, a scholar searches through crowded shelves and stacks while a printing workshop produces still more books behind him.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Printing changed the replication clock. By 1500, presses had produced an enormous population of European editions in only a few decades. A text could now leave relatives in many cities instead of depending on one manuscript line of descent.",
+        "Excellent. Humanity had solved the problem of too few books by creating a new problem: too many books.",
+        "Readers had complained about abundance long before movable type, and other scholarly cultures had developed their own tools for managing large bodies of writing. But rapid print production intensified the pressure in early modern Europe. No single memory could hold the expanding inventory. Owning more pages did not guarantee finding the useful sentence before lunch, death, or the arrival of another shipment.",
+        "This was a different performance limit. Storage capacity and copy speed had increased; retrieval speed had not kept pace. The planet's external memory was growing faster than any reader's ability to scan it. Information needed more than containers and copies. It needed addresses."
+      ],
+      "sources": [
+        {
+          "label": "Harvard DASH — Reading Strategies for Coping with Information Overload",
+          "url": "https://dash.harvard.edu/server/api/core/bitstreams/7312037c-6086-6bd4-e053-0100007fdf3b/content",
+          "note": "Ann Blair's peer-reviewed study of early modern complaints about abundant books and the reading, note-taking, and reference practices used to manage them."
+        },
+        {
+          "label": "Journal of Economic History — Manuscripts and Printed Books in Europe",
+          "url": "https://www.cambridge.org/core/journals/journal-of-economic-history/article/charting-the-rise-of-the-west-manuscripts-and-printed-books-in-europe-a-longterm-perspective-from-the-sixth-through-eighteenth-centuries/0740F5F9030A706BB7E9FACCD5D975D4",
+          "note": "Quantitative reconstruction of European manuscript and printed-book production across the transition to print."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "coordinates-inside-book",
+      "title": "The book grows coordinates",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-09/02-coordinates-inside-book.jpg",
+        "alt": "A printer and scholar in an early European workshop trace a glowing path from an index in an open book to one numbered page.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Begin inside one book. A reader can always start at the first line and continue until the desired idea appears. That is reliable in the way walking every street is a reliable method for finding a bakery. It works. It is also a terrible search algorithm.",
+        "Tables, headings, marginal signs, alphabetical ordering, and indexes all existed before print. Manuscript scholars used them with considerable ingenuity. But hand-copied books varied: the same passage might land on different leaves in different copies. A locator built for one object did not automatically point into its sibling.",
+        "Printing made batches of pages materially more repeatable. During the late fifteenth century, printed foliation and pagination began appearing, then spread more broadly during the sixteenth. An index could now say, in effect, 'go there,' and many copies of the edition could share the same destination. Contents described the route through the book; an alphabetical index offered side entrances; page or leaf numbers supplied coordinates.",
+        "The information itself had not changed, but its access pattern had. A reader no longer had to consume a volume only as a sequence. The book was becoming random-access memory—metaphorically, and still at the speed of fingers, eyes, and paper."
+      ],
+      "sources": [
+        {
+          "label": "Early Printed Books — The Index",
+          "url": "https://www.earlyprintedbooks.com/feature/index/",
+          "note": "Book-history reference on the varied forms and functions of indexes in early modern printed books."
+        },
+        {
+          "label": "Harvard DASH — Reading Strategies for Coping with Information Overload",
+          "url": "https://dash.harvard.edu/server/api/core/bitstreams/7312037c-6086-6bd4-e053-0100007fdf3b/content",
+          "note": "Explains how reference genres, indexes, reading aids, and selective reading practices developed before and during the early modern period."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "catalogs-before-print",
+      "title": "Catalogs were already ancient",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-09/03-catalogs-before-print.jpg",
+        "alt": "In a Han-era Chinese library, archivists organize bamboo-slip bundles and scrolls while a catalog on the central desk maps the surrounding racks.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Pause the European clock. Organizing a collection did not wait for a press, a numbered page, or a Renaissance scholar to invent order.",
+        "In China, imperial bibliography had deep roots. During the late first century BCE, Liu Xiang and Liu Xin worked on surveys and classifications of the imperial collection. Ban Gu's first-century CE Book of Han preserved a bibliographic treatise based on that earlier work, arranging recorded writings into categories. Later Chinese bibliographies repeatedly described, classified, evaluated, and sometimes reconstructed bodies of literature across dynastic change.",
+        "The materials and conventions differed: bamboo or wooden slips, silk, scrolls, bound paper books, handwritten and printed catalogs. The underlying move was familiar. A smaller body of information described a larger one. A title, author, category, or note became metadata—a compact pointer that helped a reader reason about texts without opening every container.",
+        "The shift, then, was not 'humans discover catalogs.' Growing print systems made layers of addressability unusually consequential and widely reproducible. The older substrate remained underneath, carrying centuries of experiments in how a civilization remembers what it remembers."
+      ],
+      "sources": [
+        {
+          "label": "Library of Congress — Complete Library in Four Sections",
+          "url": "https://www.loc.gov/item/2021666133/",
+          "note": "Primary collection record for the eighteenth-century Siku quanshu, a later monumental continuation of China's long cataloging and compilation traditions."
+        },
+        {
+          "label": "Journal of the American Oriental Society — China's Bibliographic Tradition",
+          "url": "https://www.jstor.org/stable/43956349",
+          "note": "Scholarly review of imperial-library catalogues and their importance for Chinese book history."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "gessner-map-of-books",
+      "title": "One book tries to map the others",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-09/04-gessner-map-of-books.jpg",
+        "alt": "Conrad Gessner works at a crowded Zurich desk where letters, printers' lists, library notes, and book-fair information converge into an organized bibliography.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "By the sixteenth century, the useful question was no longer only 'where is the passage?' It was also 'which book contains it, who wrote that book, which edition exists, and where might a copy be found?' The address had to expand beyond the page.",
+        "In Zurich, Conrad Gessner attempted something audacious. His Bibliotheca universalis of 1545 gathered information about authors and works in Latin, Greek, and Hebrew from libraries, correspondence, printers, booksellers, and his own travel. It was not actually universal. No bibliography is. Its languages, networks, judgments, and available evidence set boundaries around what it could see.",
+        "Still, the project turned a scattered book world into a reference tool. Three years later, Gessner published the Pandectae, arranging much of this material by fields and topics. A reader could approach the map through an author or through a subject. The books remained dispersed; their descriptions became concentrated.",
+        "This is compression of a practical kind. A bibliography discards almost all of each book in order to preserve a few retrieval clues: a name, title, place, printer, subject, perhaps an evaluation. The smaller map cannot replace the territory. It can save years of wandering through it."
+      ],
+      "sources": [
+        {
+          "label": "Harvard DASH — The Capacious Bibliographical Practice of Conrad Gessner",
+          "url": "https://dash.harvard.edu/server/api/core/bitstreams/1a5ace94-ebfc-4d16-928d-7a118ee94bfc/content",
+          "note": "Ann Blair's scholarly analysis of Gessner's 1545 bibliography, its sources, methods, scope, and later uses."
+        },
+        {
+          "label": "Papers of the Bibliographical Society of America — Conrad Gesner",
+          "url": "https://www.jstor.org/stable/45275758",
+          "note": "Open scholarly study of Gessner's bibliographic work and the structure of the Bibliotheca universalis."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "bodleian-catalog",
+      "title": "The library prints a map of itself",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-09/05-bodleian-catalog.jpg",
+        "alt": "Inside the early Bodleian Library, Thomas James uses an open printed catalog to direct a scholar toward one illuminated volume among long shelves.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A bibliography can say that a work exists. A library catalog must connect that description to a collection someone can actually search.",
+        "Oxford's restored university library opened to readers in 1602. Its first librarian, Thomas James, prepared a printed catalog in 1605. The collection already had a physical order; the catalog made a version of that order portable. Readers could inspect the inventory without walking past every chained volume. A later catalog in 1620 reorganized access around authors more directly as the holdings grew.",
+        "The catalog became a middle layer between a question and an object. First identify a likely work. Then find its record. Then locate its place. Then open the volume. Then use the book's internal coordinates to reach the passage. Each layer reduced the search space for the next.",
+        "But a catalog was also a snapshot. Collections changed, names varied, descriptions contained errors, and shelves moved. Addressability demanded maintenance. The map had to be updated because the territory kept accepting donations."
+      ],
+      "sources": [
+        {
+          "label": "Bodleian Libraries — History of the Bodleian",
+          "url": "https://visit.bodleian.ox.ac.uk/files/historybodleianpdf",
+          "note": "Official history dating the library's opening to 1602 and its first printed catalog to 1605."
+        },
+        {
+          "label": "Bodleian Conveyor — Early Catalogues and Thomas James",
+          "url": "https://blogs.bodleian.ox.ac.uk/theconveyor/annotated-books-from-joseph-scaligers-1540-1609-library-in-the-bodleian/",
+          "note": "Bodleian account placing Thomas James's 1605 catalog alongside other early scholarly-library catalogues."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "encyclopedie-crosslinks",
+      "title": "An article points beyond itself",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-09/06-encyclopedie-crosslinks.jpg",
+        "alt": "In an eighteenth-century Paris workshop, editors, writers, engravers, and craftspeople connect articles and technical plates across many fields with fine luminous threads.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "By the eighteenth century, some reference works did more than tell readers where books were. They tried to reorganize what those books knew.",
+        "The Encyclopédie, directed by Denis Diderot and Jean le Rond d'Alembert, appeared between 1751 and 1772 in seventeen volumes of text and eleven volumes of plates. More than 130 contributors produced roughly 74,000 articles. Crafts, tools, philosophy, natural knowledge, arts, and trades occupied one deliberately connected work.",
+        "Its cross-references mattered. An article could point to another article or to an image plate, allowing a reader to move sideways through the collection rather than remain inside one sequence. Some links clarified; some contrasted; some quietly carried arguments into places where censors might not expect them. The reference system was also an editorial voice.",
+        "Here, addressability became relational. A location did not only say where a fact sat. It suggested what the fact belonged beside. The encyclopedia behaved less like one long road and more like a paper network, with human editors choosing the nodes and drawing the edges. Those choices made knowledge easier to traverse—and gave the mapmakers unusual power over the route."
+      ],
+      "sources": [
+        {
+          "label": "University of Chicago ARTFL — The Encyclopédie",
+          "url": "https://encyclopedie.uchicago.edu/",
+          "note": "Academic project documenting the publication dates, 28-volume structure, article count, contributors, classification, and cross-referencing of the Encyclopédie."
+        },
+        {
+          "label": "University of Chicago ARTFL — Editor's Introduction",
+          "url": "https://encyclopedie.uchicago.edu/editors-introduction",
+          "note": "Detailed academic account of the work's classification, authorship, plates, editorial decisions, and complex cross-reference system."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-06.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "addresses-and-omissions",
+      "title": "The address is part of the argument",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-09/07-addresses-and-omissions.jpg",
+        "alt": "A reader follows a glowing route from catalog drawers to a shelf, a chosen volume, and an exact page while uncataloged books remain in shadowed peripheral storage.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "By the late eighteenth century, a reader could increasingly follow a chain: subject to reference work, author to catalog entry, catalog to shelf, book to page, page to another book. A search that might have consumed days could collapse into minutes—if the collection, catalog, language, and reader lined up.",
+        "The external memory had acquired addresses at several scales. Page numbers made locations repeatable inside an edition. Indexes exposed selected concepts. Bibliographies described works beyond one shelf. Catalogs mapped descriptions to collections. Cross-references turned isolated entries into paths.",
+        "None of these layers was neutral. Someone chose the spelling, category, subject heading, approved title, included author, and missing book. Classification reveals knowledge; it also casts shadows. A perfect catalog of a restricted collection is still a perfect route through somebody's decisions.",
+        "The operating change was unmistakable: more of civilization's stored information became directly reachable without sequentially reading the entire archive. But finding a claim is not the same as trusting it. Now that texts could multiply and be located, the next problem was how communities would compare them, challenge them, correct them, and decide what deserved another edition."
+      ],
+      "sources": [
+        {
+          "label": "Journal of the American Oriental Society — China's Bibliographic Tradition",
+          "url": "https://www.jstor.org/stable/43956349",
+          "note": "Scholarly discussion of how imperial catalogues organized texts and carried cultural judgments, not merely neutral inventory data."
+        },
+        {
+          "label": "Harvard DASH — Mediating Information, 1450–1800",
+          "url": "https://dash.harvard.edu/server/api/core/bitstreams/7312037d-deae-6bd4-e053-0100007fdf3b/content",
+          "note": "Historical synthesis of the people, genres, institutions, and material practices that mediated expanding information during the early modern period."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-09/slide-07.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}

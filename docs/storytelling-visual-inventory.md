@@ -76,6 +76,13 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/05-metal-before-mainz.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/06-mainz-system.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-08/07-copies-become-population.jpg` | I10-A90 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/01-too-many-books.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/02-coordinates-inside-book.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/03-catalogs-before-print.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/04-gessner-map-of-books.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/05-bodleian-catalog.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/06-encyclopedie-crosslinks.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/07-addresses-and-omissions.jpg` | I10-A90 | EpisodeJSON | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/first-principles-hero.jpg` | I70-A30 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/context-becomes-personal-software.jpg` | I50-A50 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/one-objective-many-patterns.jpg` | I90-A10 | HTML | Yes |

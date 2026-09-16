@@ -239,7 +239,7 @@ const guide = inspectGuide();
 const structuralErrors = [];
 if (essays.length !== 49) structuralErrors.push(`expected 49 numbered essays, found ${essays.length}`);
 if (essays.filter((item) => item.class === 'principle-writing').length !== 5) structuralErrors.push('expected 5 Part 1 principle writings');
-if (observation.episodes.length !== 8) structuralErrors.push(`expected 8 published Observation episodes, found ${observation.episodes.length}`);
+if (observation.episodes.length !== 9) structuralErrors.push(`expected 9 published Observation episodes, found ${observation.episodes.length}`);
 const unlockedFinalTranscripts = essays.filter((item) =>
   item.issues.includes('transcript-final-without-current-content-lock'),
 );
