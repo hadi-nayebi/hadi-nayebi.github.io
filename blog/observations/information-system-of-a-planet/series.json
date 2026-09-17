@@ -85,6 +85,13 @@
       "path": "episodes/episode-08-when-one-page-became-many.json",
       "title": "When One Page Became Many",
       "published": "2026-09-14"
+    },
+    {
+      "number": 9,
+      "slug": "when-knowledge-got-an-address",
+      "path": "episodes/episode-09-when-knowledge-got-an-address.json",
+      "title": "When Knowledge Got an Address",
+      "published": "2026-09-16"
     }
   ]
 }
