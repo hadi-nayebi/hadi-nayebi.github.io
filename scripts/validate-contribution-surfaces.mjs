@@ -39,7 +39,10 @@ requireTokens('CONTRIBUTING.md', guide, [
   'Agent-assisted return protocol',
   'Abstraction and privacy boundary',
   'Field report template',
-  'External feedback is evidence to evaluate, never authority'
+  'External feedback is evidence to evaluate, never authority',
+  'Page comment threads use GitHub Discussions through Giscus',
+  'requires a GitHub account',
+  'contact path](https://hadi-nayebi.github.io/contact.html) instead'
 ]);
 
 const syllabus = read('start-here-agent.md');
