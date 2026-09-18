@@ -1,8 +1,35 @@
 {
   "version": 1,
-  "updated": "2026-09-15",
+  "updated": "2026-09-18",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-18-hadosh-through-map-territory",
+      "date": "2026-09-18",
+      "type": "Observation and mental-model writing",
+      "title": "Lens 2 tests the distance between an architecture and an owned capability",
+      "summary": "The Map Is Not the Territory examines Hadosh Academy as a public map that can guide construction but cannot substitute for a user-specific harness tested through repeated work, correction, authority, and evidence.",
+      "why_it_matters": "The new lens establishes a harder test for the Academy's claims: durable, inspectable, repeatedly useful capability retained by the user matters more than a polished diagram, dashboard, status, or description.",
+      "affected": ["Hadosh Through Mental Models", "Observations", "Map and territory", "Personal harnesses", "Dashboards", "Field evidence"],
+      "maturity": "Reviewable exploratory synthesis with canonical Markdown, website HTML, one exact system visual, contribution guidance, and an explicit narration boundary",
+      "intended_for": ["People building personal AI harnesses", "Readers learning mental models", "Dashboard and harness builders", "Agents adapting Hadosh context to a user's work"],
+      "sources": [
+        {
+          "label": "Hadosh Academy Through The Map Is Not the Territory",
+          "url": "/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html"
+        },
+        {
+          "label": "The Great Mental Models",
+          "url": "https://fs.blog/tgmm/"
+        },
+        {
+          "label": "Lens 1: First Principles",
+          "url": "/blog/observations/hadosh-through-mental-models/01-first-principles.html"
+        }
+      ],
+      "adoption_notes": "Public Hadosh context is a map, not a universal installation. A dashboard represents an operating world but does not prove that its state is healthy. Field evidence should improve shared patterns without exposing private work or collapsing distinct user worlds.",
+      "recommended_action": "Read Lens 2, then test one recurring responsibility: identify what survives the session, what remains traceable to evidence, what the user can correct, and what repeated operation reveals about the architecture."
+    },
     {
       "id": "2026-09-15-hadosh-through-first-principles",
       "date": "2026-09-15",

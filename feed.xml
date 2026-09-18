@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Principles, technical architecture, observations, and practical guides for building useful, user-owned systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Hadosh Academy Through The Map Is Not the Territory</title>
+      <link>https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Lens 2 distinguishes public architectural maps from the user-owned operating territory created through repeated work, correction, visible authority, and retained capability.</description>
+    </item>
 
     <item>
       <title>Hadosh Academy Through First Principles</title>
