@@ -8,11 +8,17 @@ The goal is not one final harness or one mandatory implementation. We are lookin
 generative grammar: conserved mechanisms, useful boundaries, failure lessons, and design patterns
 that can support many personal, professional, creative, and collaborative lineages.
 
+Page comment threads use GitHub Discussions through Giscus, so posting there requires a GitHub account
+and the comment will be public. If you do not have a GitHub account—or want to ask privately before
+deciding what can be shared—use the [contact path](https://hadi-nayebi.github.io/contact.html) instead.
+The same privacy boundary applies: exclude secrets, confidential material, and unnecessary personal
+information.
+
 ## Choose the smallest useful return path
 
 | What you have | Best first surface |
 | --- | --- |
-| A question, correction, critique, or interpretive gap tied to a page | That page's comment thread |
+| A question, correction, critique, or interpretive gap tied to a page | That page's public comment thread (GitHub account required) |
 | A generalized use case, field observation, or failure lesson | The closest project or essay discussion |
 | A reproducible implementation problem | An issue in the repository that owns the implementation |
 | A tested candidate solution | A focused pull request in the owning repository |
