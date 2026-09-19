@@ -2,9 +2,9 @@
 
 *Practical Guide 2 — See who controls your AI use, what survives a platform change, and what is actually accumulating for you.*
 
-Your AI setup can feel personal without being yours.
+Your AI setup may know you better every month. That does not mean the system growing around you belongs to you.
 
-It may remember your preferences, continue conversations, search your files, call tools, and produce useful work. But where do those capabilities live? Can you inspect them? Can you correct them? Can you stop them? If the model, account, provider, or device changes, what remains?
+It may remember your preferences, continue conversations, search your files, call tools, and produce useful work. But where do those capabilities live? Can you inspect and correct them? Can you stop them? If the model, account, provider, runtime, or device changes, what remains—and what disappears?
 
 The Agentic AI Use Doctor turns those questions into one evidence-based examination.
 
@@ -431,3 +431,22 @@ The strongest result is not “no providers.” It is:
 - repeated use leaves the user with more reusable capability than before.
 
 Keep the Doctor result with the workflow. Repeat the diagnosis when a major model, provider, account, runtime, device, permission, storage layer, or responsibility changes.
+
+
+## Run the Diagnosis
+
+Copy the Doctor prompt above into the agent you already use. Choose one real workflow and require evidence for every score.
+
+The most useful result is not a perfect number. It is a clearer boundary between:
+
+- capability you rent;
+- structure you control;
+- dependence you choose;
+- dependence you did not know about; and
+- experience that is—or is not—compounding into your own harness.
+
+If you discuss your result publicly, do not expose private files, accounts, clients, credentials, or another person's information. A useful response can be simple:
+
+> The axis that surprised me was ____. The first repair I chose was ____.
+
+For the deeper architectural argument, read [The AI That Grows With You](../principles/the-ai-that-grows-with-you.html). To build broader harness literacy with your agent, continue through [Start Here](../../start-here.html).
