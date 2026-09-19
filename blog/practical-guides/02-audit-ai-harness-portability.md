@@ -1,180 +1,136 @@
-# Audit Whether Your AI Setup Is Actually Portable
+# Run the Agentic AI Use Doctor
 
-*Practical Guide 2 — Find out what would survive a model or provider change, then repair one weak point.*
+*Practical Guide 2 — See who controls your AI use, what survives a platform change, and what is actually accumulating for you.*
 
-Changing AI providers should not force you to rebuild the way you work.
+Your AI setup can feel personal without being yours.
 
-A chat export can preserve old conversations. It does not automatically preserve active jobs, durable memory, rules, permissions, tools, verification, or the ability to continue tomorrow. Those capabilities live in the harness around the model.
+It may remember your preferences, continue conversations, search your files, call tools, and produce useful work. But where do those capabilities live? Can you inspect them? Can you correct them? Can you stop them? If the model, account, provider, or device changes, what remains?
 
-This guide helps you inspect that layer. You can run the audit with the agent you already use. You do not need to move anything first, and you do not need to make your current setup perfectly independent from every provider.
+The Agentic AI Use Doctor turns those questions into one evidence-based examination.
 
-The objective is narrower:
+You can point the agent you already use to this guide. It will inspect one real workflow with you, score six health axes, show what the platform controls, identify what would be lost, and recommend the smallest useful repairs.
 
-> Identify what you own, what depends on a provider, what can be adapted, and the smallest change that would make your working system easier to understand, recover, or move.
+The objective is not to eliminate every provider or move everything onto your own computer. Remote services can be valuable. A local system can still be opaque or fragile. The objective is to make control, dependence, continuity, and accumulated value visible enough for you to choose deliberately.
 
-## Before You Begin
+## What the Doctor Will Tell You
 
-Choose one real workflow. Do not audit your entire relationship with AI at once.
+At the end, you should be able to answer:
 
-Good candidates include:
+1. Where do my model, instructions, work state, memory, files, tools, and permissions live?
+2. Which parts can I inspect, edit, correct, interrupt, or remove?
+3. Which parts belong to me, and which remain controlled by a platform?
+4. What would stop working if I changed the model, account, provider, runtime, or device?
+5. Which useful corrections, methods, tests, and decisions are compounding for me?
+6. What is the smallest repair that would improve ownership, transparency, continuity, authority, or recovery?
+
+The Doctor does not grade the intelligence of the model. It examines the harness around the model: the layer that turns general intelligence into persistent work.
+
+## Choose One Real Workflow
+
+Do not diagnose your entire relationship with AI at once.
+
+Choose one responsibility that matters and repeats:
 
 - recurring research;
 - maintaining a website;
 - preparing a weekly report;
 - managing a creative project;
 - tracking clients or applications;
-- publishing a content series; or
+- publishing a content series;
+- running a coding or analysis workflow; or
 - any responsibility that becomes difficult when a conversation ends.
 
-Write its objective in one sentence. Then gather only the evidence needed to explain how the work continues:
+Write its objective in one sentence. Name the result that counts as complete. Then gather only the evidence needed to understand how the work continues.
 
-- the current conversation or project;
-- files, notes, or databases;
-- saved instructions;
-- scheduled tasks;
-- connected tools;
-- approval rules;
-- tests or review steps; and
-- backup or export options.
+Useful evidence may include:
 
-Do not paste credentials, private client material, employer data, regulated information, or another person's personal information into a new system for this audit.
+- conversations and project spaces;
+- files, repositories, notes, or databases;
+- saved instructions and memory;
+- task, job, or schedule state;
+- tool and integration lists;
+- approval and permission rules;
+- tests, review steps, logs, and version history;
+- backups, exports, and restore instructions.
 
-## The Six-Part Audit
+Do not paste credentials, private client material, employer data, regulated information, or another person's personal information into a new system for this diagnosis. Describe sensitive mechanisms without exposing their contents.
 
-For each dimension, ask the question, identify the evidence, and give it one status.
+## The Ten Evidence Dimensions
 
-Use these four statuses:
+The Doctor inspects ten dimensions. They are separated because one strong area can hide another weak one.
 
-- **Portable:** the capability can continue with another model or environment with little change.
-- **Adaptable:** the underlying information or method is yours, but an adapter or reconstruction step is required.
-- **Trapped:** the capability depends on a provider-owned surface with no tested continuation path.
-- **Unknown:** you do not yet have evidence.
+### 1. Surface and locality map
 
-### 1. Work state
+**Question:** Where does each important capability run, and where is its state stored?
 
-**Question:** If this conversation disappeared, where would the workflow resume?
+Map the conversation surface, model, instructions, active work, durable memory, files, tools, permissions, logs, and backups. Mark each as local to a device, stored in a user-controlled remote space, or controlled by a provider.
 
-Look for the objective, current stage, completed work, unresolved questions, dependencies, and next step.
+Locality is evidence, not an automatic score. A local file you cannot understand or restore may be less useful than a well-documented remote system you control.
 
-A transcript may contain this information, but it is not durable work state unless the important parts can be found and resumed without rereading the entire history.
+### 2. Transparency and inspectability
 
-**Useful evidence:** a job file, project record, issue, task object, dashboard state, or another inspectable source of truth.
+**Question:** Can you see what the system knows, what instructions it received, what tools it can use, what it did, and what it kept?
 
-### 2. Durable context
+Look for readable instructions, context sources, tool manifests, action logs, state changes, and durable records. A polished interface is not the same as an inspectable system.
+
+### 3. Ownership and control
+
+**Question:** What can you access, edit, correct, move, archive, or remove without losing the workflow?
+
+Check whether the durable layer can be managed independently of one model or account. Data export matters, but control also includes the ability to keep operating.
+
+### 4. Jobs and active work
+
+**Question:** If the current conversation disappeared, where would the work resume?
+
+Find the objective, current state, completed work, unresolved questions, evidence, authority boundaries, and next step. A transcript may contain these facts without turning them into resumable work state.
+
+### 5. Context and memory
 
 **Question:** What has the system learned that should still matter next month?
 
-Separate durable context from conversation history. Durable context includes accepted decisions, terminology, preferences, reusable methods, and verified facts. It should also show scope: which project, person, or responsibility may use it.
+Identify durable decisions, terminology, preferences, reusable methods, corrections, and verified facts. Check who may write them, which project or person may use them, how outdated memory is corrected, and how durable context is separated from temporary conversation.
 
-**Useful evidence:** Markdown, structured data, a versioned knowledge file, or an export with a documented way to restore and query it.
+### 6. Rules, permissions, and human authority
 
-### 3. Rules and permissions
+**Question:** Which boundaries are visible and enforceable?
 
-**Question:** Which boundaries remain enforceable if the model changes?
+Check who may read, write, send, publish, merge, spend, or delete. Identify what always requires approval and whether you can interrupt, narrow, revoke, or recover delegated authority.
 
-A preference inside an old conversation may be forgotten. A rule in an inspectable instruction file, permission system, or approval gate has a clearer owner and continuation path.
+### 7. Tools and interfaces
 
-Check who may read, write, send, publish, merge, spend, or delete. Identify which actions always require you.
+**Question:** What can the agent do, and how tightly is each capability tied to one product?
 
-**Useful evidence:** instruction files, tool policies, approval gates, access controls, or tests that fail when a boundary is crossed.
+Name tools by function before naming products: search, file editing, messaging, calendar, code execution, publishing, or database access. Record credentials boundaries, side effects, manual fallbacks, and replacement options.
 
-### 4. Tools and interfaces
+### 8. Verification and recovery
 
-**Question:** Which capabilities are portable, and which exist only inside one product?
+**Question:** How does the system prove completion, detect error, restart, and restore?
 
-Name tools by function before naming products: search, file editing, email, calendar, code execution, publishing, or database access. Then record the current implementation.
+Look for completion criteria, tests, checklists, review checkpoints, logs, version history, backups, rollback instructions, and real restore exercises.
 
-This reveals whether the workflow has a stable behavioral objective with a replaceable adapter, or whether the product itself has become the architecture.
+### 9. Portability and provider dependence
 
-**Useful evidence:** tool manifests, scripts, APIs, documented manual fallbacks, or a list of provider-specific connectors.
+**Question:** What continues when the model, account, provider, runtime, or device changes?
 
-### 5. Verification and recovery
+Distinguish a readable export from an operational continuation path. Record what is portable, what can be adapted, what is trapped, and what remains unknown. A provider-specific feature is not automatically unhealthy; an invisible or unexamined dependency is the problem.
 
-**Question:** How does the system prove that work is complete, and how does it recover when it is wrong?
+### 10. Accumulation and retained value
 
-A portable workflow needs more than inputs and outputs. It needs completion criteria, tests, review checkpoints, logs, and a recovery path.
+**Question:** After months of use, what useful capability belongs to you that did not exist before?
 
-**Useful evidence:** automated tests, checklists, approval records, version history, backups, rollback instructions, or a known-good restore exercise.
+Look for retained corrections, methods, tests, templates, decisions, working state, and reusable patterns. If repeated use produces only more transcripts inside one platform, the system may be active without compounding for you.
 
-### 6. Provider-specific dependencies
+## The Doctor's Required Result
 
-**Question:** What would stop working if the current model, account, or product disappeared tomorrow?
+The diagnosis must produce seven connected outputs:
 
-List each dependency without treating it as automatically bad. Some provider-specific features are worth using. The objective is to make the dependency visible and deliberate.
+1. **System map:** what runs where and who controls each component.
+2. **Evidence table:** the claim, evidence, current status, confidence, and missing proof.
+3. **Control profile:** six scored health axes with plain-language explanations.
+4. **Dependency map:** deliberate, adaptable, trapped, and unknown dependencies.
+5. **Loss map:** what stops, disappears, or becomes inaccessible after a model, provider, account, runtime, or device change.
+6. **Non-accumulation map:** useful corrections, methods, state, or verification that repeated use is failing to retain.
+7. **Repair and verification plan:** strengths to preserve, the smallest repair, later improvements, tradeoffs, and the tests that would prove progress.
 
-For each dependency, record:
-
-1. what value it provides;
-2. what data or behavior it holds;
-3. whether it can be exported;
-4. whether the export can restore operation elsewhere; and
-5. the acceptable fallback.
-
-**Useful evidence:** export documentation, local copies, open formats, provider contracts, or a small migration test.
-
-## Copy This Audit Prompt
-
-> Audit one AI-supported workflow for operational portability.
->
-> First, ask me which workflow we are auditing and what it must accomplish. Then inspect six dimensions: work state, durable context, rules and permissions, tools and interfaces, verification and recovery, and provider-specific dependencies.
->
-> For each dimension:
->
-> 1. describe the current mechanism in plain language;
-> 2. identify the evidence supporting that description;
-> 3. classify it as Portable, Adaptable, Trapped, or Unknown;
-> 4. explain what would fail if I changed models or providers; and
-> 5. recommend the smallest useful improvement.
->
-> Distinguish a data export from a working continuation path. Do not request or expose credentials, private client data, employer information, regulated records, or another person's personal information. Do not make changes yet.
->
-> Finish with a table, one overall finding, and one recommended first repair. Wait for my approval before changing files, settings, permissions, integrations, or public surfaces.
-
-## Read the Result Carefully
-
-A useful audit does not produce a single portability percentage. One trapped dependency may be harmless; another may hold the only copy of years of working memory.
-
-Prioritize by consequence:
-
-1. **Can the user lose the ability to continue the work?**
-2. **Can private or authority-sensitive information cross a boundary?**
-3. **Can the setup be understood and restored?**
-4. **Is a provider-specific feature creating enough value to justify the dependency?**
-5. **What is the smallest repair that improves the system without rebuilding it?**
-
-Examples of small repairs:
-
-- extract the objective, current state, and next step from one long conversation into a project file;
-- copy accepted instructions into a user-owned, versioned document;
-- document which actions require approval;
-- name a product-specific tool by its stable function and record a fallback;
-- export one memory surface and test whether it can actually be used elsewhere;
-- add a completion checklist and a recovery note; or
-- place one important workflow in a repository with visible history.
-
-## Verify the Repair
-
-Do not mark a capability portable because an export button exists.
-
-Test one real continuation path:
-
-1. make a safe copy of the relevant state;
-2. open a different model, account, or local environment;
-3. provide only the portable assets you identified;
-4. ask the new environment to explain the workflow's objective, current state, authority boundaries, and next step;
-5. compare its answer with the source of truth; and
-6. record what was missing or provider-specific.
-
-The test does not need to complete the whole workflow. It needs to reveal whether the system can resume coherently.
-
-## What Success Looks Like
-
-A portable harness is not a provider-free harness.
-
-It is a system in which provider dependencies are visible, the user's durable structure remains inspectable, and a model change does not erase the ability to understand and continue the work.
-
-The model supplies intelligence. The harness carries the user's accumulated way of working.
-
-When the audit is complete, keep the evidence with the workflow. Repeat it when a major tool, model, account, permission, or storage layer changes.
-
-For the deeper architectural argument, read [The AI That Grows With You](../principles/the-ai-that-grows-with-you.html). To begin a broader guided path, open [Start Here](../../start-here.html).
+The result should make the user's current choices understandable. It should not shame the user for choosing convenience or assume that every system must be fully local.
