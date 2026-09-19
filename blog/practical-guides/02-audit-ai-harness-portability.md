@@ -13,7 +13,7 @@ Point the agent you already use to this guide. The agent should combine four sou
 
 The result is a personalized guided conversation about your complete relationship with AI—not an audit of one isolated workflow.
 
-![Chalkboard Doctor result with gauges for control, transparency, continuity, authority, recovery, and accumulation; two result boxes ask what would be lost and what is not accumulating, leading to a first repair.](images/agentic-ai-use-doctor.png)
+![Chalkboard diagram with separate ladders for depth of AI use and harness ownership, leading to current fit, growth ceiling, and next experiment.](images/agentic-ai-use-doctor-v2.webp)
 
 The Doctor asks two different questions:
 
