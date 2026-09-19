@@ -125,6 +125,34 @@ Distinguish a readable export from an operational continuation path. Record what
 
 Look for retained corrections, methods, tests, templates, decisions, working state, and reusable patterns. If repeated use produces only more transcripts inside one platform, the system may be active without compounding for you.
 
+## Map the Control Stack Before You Score
+
+Do not collapse “the AI” into one product. Map these layers separately:
+
+| Layer | What to identify |
+|---|---|
+| **Interaction surface** | The chat, app, editor, or interface where the person works |
+| **Model and runtime** | The reasoning engine, where it runs, and whether its behavior or weights are inspectable |
+| **Harness and execution layer** | The code or product layer that assembles context, invokes tools, schedules work, records state, and controls the loop |
+| **User-owned context and work state** | Instructions, jobs, memory, files, decisions, and corrections the user can directly manage |
+| **Tools, credentials, and services** | Capabilities with side effects, their permission boundaries, and their replacement paths |
+| **Verification and recovery** | Tests, logs, backups, restore paths, and evidence that operation can continue |
+
+For each layer, record its location, controller, source visibility, replaceability, and continuation evidence. Use one of three source-visibility labels: **open and inspectable**, **closed but documented**, or **opaque**. Keep model-layer transparency separate from harness-layer transparency. An open model inside a closed harness does not make the harness inspectable; an open-source harness calling a closed model does not make the model inspectable.
+
+### Apply structural ceilings
+
+These ceilings prevent convenience features from being mistaken for user control:
+
+- **Provider-only surface:** If memory, schedules, tools, and active state live only inside a hosted product, with no user-owned orchestration layer, direct harness-building control is **0**. Ownership/control and transparency normally cannot exceed **1** for those mechanisms. Exportable outputs may score separately.
+- **Hosted surface plus user-owned files or instructions:** This can support partial control, usually **1–2** for the harness-dependent mechanisms. Continuity still cannot exceed **2** without a real continuation test.
+- **Closed-source CLI plus user-owned local state:** Direct control can reach **3** when the user governs files, tools, permissions, and execution. Harness transparency cannot reach **4** while a necessary execution layer remains closed and uninspectable.
+- **Open-source CLI plus user-owned local state:** Harness control and transparency may reach **4**, but only after inspecting the relevant code or behavior and demonstrating permissions, verification, continuation, and recovery. Open source and locality are opportunities for control, not proof.
+- **User-owned API orchestration plus a remote closed model:** The harness may reach **3–4** when the user owns the orchestration, state, adapters, and tests. Model transparency remains a separate, lower finding.
+- **Open model plus open harness:** Model and harness transparency may both reach **4** when the deployed artifacts are actually inspectable and verified. Authority, recovery, and continuity must still be evidenced independently.
+
+If a workflow depends on several layers, report the layer-specific findings and let the necessary weakest layer constrain the relevant overall axis. Do not average an opaque critical layer away.
+
 ## Classify the Evidence Before You Score
 
 For every mechanism, use one operational status:
@@ -152,6 +180,8 @@ Evidence quality limits the score. Use these rules consistently:
 - Low-confidence evidence cannot support a score above **2**.
 - Continuity or recovery cannot score above **2** without a real continuation or recovery test. Documentation and an export button are not enough.
 - Permissions and human authority cannot score above **2** unless the user can demonstrate at least one meaningful control such as approval, interruption, revocation, or scope reduction.
+- Apply the control-stack ceilings above. A hosted convenience feature is not user-owned harness control; an open model is not proof of an open harness; local files are not proof that the execution layer is inspectable.
+- Report **model-layer control/transparency** and **harness-layer control/transparency** as required subfindings. If either layer is necessary to the workflow, the weaker necessary layer constrains the related overall axis.
 - When evidence conflicts, record the conflict, use the lower confidence, and explain what test would resolve it.
 - Never raise one axis because another axis is strong. Visible instructions do not prove portability; local files do not prove recovery; human review does not prove durable accumulation.
 
@@ -178,9 +208,9 @@ Score these axes separately:
 5. **Verification and recovery**
 6. **Accumulation and retained value**
 
-Do not hide weakness inside one average. Report all six scores, the evidence confidence, and the lowest critical axis.
+Do not hide weakness inside one average. Report all six scores, the evidence confidence, the lowest critical axis, and the two required layer findings: **model-layer control/transparency** and **harness-layer control/transparency**.
 
-A remote or provider-specific system can score well when control, evidence, correction, and continuation are strong. A local CLI harness can score poorly when its state is undocumented, its permissions are loose, or nobody has tested recovery.
+A remote or provider-specific model can participate in a strong workflow when the user owns the harness, state, adapters, and tests. A provider-only chat with platform memory and schedules still gives the user no direct control over building those harness mechanisms. A local CLI can score poorly when its state is undocumented, its permissions are loose, or nobody has tested recovery. Open-source models and harnesses raise the attainable ceiling only when the deployed layers are actually inspectable and governed.
 
 ## Find What You Would Lose—and What You Are Not Gaining
 
@@ -302,6 +332,8 @@ This test does not assume products are interchangeable. It reveals exactly where
 >
 > Do not request passwords, tokens, credentials, private client material, employer data, regulated records, or another person's personal information. Do not change files, settings, permissions, integrations, accounts, or public surfaces during the diagnosis.
 >
+> First map the control stack as separate layers: interaction surface; model and runtime; harness and execution layer; user-owned context and work state; tools, credentials, and services; verification and recovery. For each layer, record location, controller, source visibility (open and inspectable, closed but documented, or opaque), replaceability, and continuation evidence. Keep model transparency separate from harness transparency.
+>
 > Inspect ten evidence dimensions:
 >
 > 1. surface and locality map;
@@ -328,7 +360,9 @@ This test does not assume products are interchangeable. It reveals exactly where
 >
 > Explain every score. Apply these safeguards: a 4 requires High-confidence direct evidence; Low-confidence evidence cannot support more than 2; continuity and recovery cannot exceed 2 without a real test; human authority cannot exceed 2 without a demonstrated approval, interruption, revocation, or scope control. Keep Absent separate from Unknown. Record conflicting evidence at the lower confidence and name the test that would resolve it. Flag any critical finding separately from the scores.
 >
-> Do not hide the profile inside one average. Do not penalize a system merely because it is remote or provider-specific. Judge control, evidence, correction, continuity, consequence, and recovery.
+> Apply these structural ceilings: provider-only memory, scheduling, tools, and state with no user-owned orchestration mean 0 direct harness-building control; a closed-source CLI can support user control but cannot earn 4 for harness transparency; an open-source CLI or harness can earn 4 only with inspection and demonstrated governance; user-owned API orchestration may earn high harness control even when the model is remote and closed; and open-model transparency must remain separate from open-harness transparency.
+>
+> Do not hide the profile inside one average. Report model-layer control/transparency and harness-layer control/transparency as required subfindings. Let the weakest necessary layer constrain the relevant overall axis. Do not penalize a system merely because it is remote or provider-specific; judge who controls the harness and state, what is inspectable, and what has been demonstrated.
 >
 > Produce:
 >
@@ -351,26 +385,36 @@ The Doctor should adapt its evidence search rather than assuming one ideal archi
 
 ### Hosted chat or project space
 
-Inspect exports, project instructions, memory controls, connected tools, account boundaries, conversation history, and whether active work can be reconstructed without the original interface. Do not assume an export recreates behavior.
+Inspect exports, project instructions, memory controls, connected tools, account boundaries, conversation history, and whether active work can be reconstructed without the original interface. When the product alone supplies memory, schedules, tools, and active state, record **0 direct harness-building control** for those mechanisms. Do not assume an export recreates behavior.
 
 ### Desktop or mobile AI application
 
-Inspect where local and remote state live, which files the application can reach, how permissions are granted, what survives reinstall or device loss, and whether backups restore useful operation.
+Inspect where local and remote state live, which files the application can reach, how permissions are granted, what survives reinstall or device loss, and whether backups restore useful operation. Separate app-visible settings from the closed execution layer beneath them.
 
 ### API workflow or automation
 
-Inspect prompts and instructions, state stores, queues, schedules, credentials boundaries, tool schemas, logs, tests, retry behavior, and provider adapters. Distinguish user-controlled infrastructure from managed dependencies.
+Inspect prompts and instructions, state stores, queues, schedules, credentials boundaries, tool schemas, logs, tests, retry behavior, and provider adapters. User-owned orchestration can provide high harness control even when the model is remote or closed. Score model transparency separately.
 
-### CLI agent or local harness
+### Closed-source CLI with user-owned state
 
-Inspect project instructions, job state, memory files, hooks or lifecycle controls, tool permissions, tests, logs, backups, and restore behavior. Do not award a high score merely because files are local; require evidence that the user can understand, govern, and recover them.
+Inspect the local files, permissions, tool calls, logs, and recovery path the user controls. This arrangement may provide strong operational control, but a necessary closed client caps harness transparency below **4**.
+
+### Open-source CLI or harness
+
+Inspect the actual deployed code path, configuration, context assembly, permissions, tool invocation, state, tests, and restore behavior. Open source and local files raise the attainable ceiling; they do not earn a high score without inspection and demonstrated governance.
+
+### Open versus closed models
+
+Record whether the deployed model is open and inspectable, closed but documented, or opaque. Keep that finding separate from harness ownership. An open model can sit inside an opaque harness; a user-owned open harness can call a closed model.
 
 
 ## Example: Reading a Control Profile
 
 Imagine a person uses a hosted AI project to produce a weekly research brief.
 
-The project retains conversations and a few instructions. Source files are also saved in a user-controlled folder. The final brief is reviewed by the person, but the research state, corrections, and completion checklist remain inside conversations. No one has tested an export or restart.
+The project retains conversations and a few instructions. Source files are also saved in a user-controlled folder. The final brief is reviewed by the person, but the research state, corrections, schedules, and completion checklist remain inside conversations. No one has tested an export or restart.
+
+The control-stack finding comes first: the model and product harness are closed; the user owns the source folder but not the orchestration, memory, or schedule. Direct harness-building control for the provider mechanisms is **0**. The source folder improves output ownership, but it does not turn the platform harness into a user-owned one.
 
 A careful result might look like this:
 
