@@ -344,3 +344,90 @@ Inspect prompts and instructions, state stores, queues, schedules, credentials b
 ### CLI agent or local harness
 
 Inspect project instructions, job state, memory files, hooks or lifecycle controls, tool permissions, tests, logs, backups, and restore behavior. Do not award a high score merely because files are local; require evidence that the user can understand, govern, and recover them.
+
+
+## Example: Reading a Control Profile
+
+Imagine a person uses a hosted AI project to produce a weekly research brief.
+
+The project retains conversations and a few instructions. Source files are also saved in a user-controlled folder. The final brief is reviewed by the person, but the research state, corrections, and completion checklist remain inside conversations. No one has tested an export or restart.
+
+A careful result might look like this:
+
+| Health axis | Score | Evidence | Interpretation |
+|---|---:|---|---|
+| Ownership and control | 2/4 | Source files are user-controlled; project state and memory remain in the platform | Important outputs belong to the user, but the working method does not |
+| Transparency and inspectability | 2/4 | Instructions are visible; hidden retrieval and retained memory are unclear | Some inputs can be inspected, but the full working context cannot |
+| Continuity and portability | 1/4 | An export exists; no continuation test has been run | History may move, but useful operation is unproven |
+| Permissions and human authority | 3/4 | The person reviews the brief before publication | The consequential action remains human-controlled |
+| Verification and recovery | 2/4 | Human review exists; there is no reusable checklist or restore path | Quality depends on memory and manual judgment |
+| Accumulation and retained value | 1/4 | Corrections stay in weekly conversations | Repeated work is producing history, not a growing method |
+
+The Doctor should not conclude, “Stop using the platform.” It should say what is already healthy, what the user is risking, and which small repair creates the largest gain.
+
+In this case, the first repair might be a user-controlled weekly job file containing:
+
+- the brief's objective;
+- current state;
+- accepted sources;
+- recurring corrections;
+- the completion checklist;
+- the approval boundary; and
+- the next issue date.
+
+The next verification would start a new conversation or another model using only that file and the source folder. If the workflow can explain its state and produce a reviewable draft, continuity has improved.
+
+## Turn the Diagnosis into a Repair Ladder
+
+Organize repairs in three levels.
+
+### First repair
+
+Choose one change that reduces the highest-consequence weakness without rebuilding the system.
+
+Examples:
+
+- extract active state from a long conversation;
+- store accepted instructions in a versioned document;
+- document which actions require approval;
+- create an inventory of tools and side effects;
+- test one export;
+- add one completion checklist;
+- record a manual fallback;
+- make one verified backup and restore it.
+
+### Next improvements
+
+Add only the mechanisms justified by real friction:
+
+- scoped durable memory;
+- explicit job state;
+- provider adapters;
+- permission gates;
+- action logs;
+- automated tests;
+- rollback or restart procedures;
+- a second continuation environment.
+
+### Structural redesign
+
+Recommend a larger migration only when evidence shows that essential state, authority, or accumulated value cannot be repaired in place.
+
+The user should see the tradeoff: convenience, cost, effort, capability, privacy, control, and maintenance. More local or more portable is not automatically better if the user cannot operate or recover the result.
+
+## What a Healthy Result Looks Like
+
+A healthy agentic setup does not need perfect scores.
+
+It should make its dependencies deliberate, its authority visible, its important state recoverable, and its accumulated value increasingly user-controlled.
+
+The strongest result is not “no providers.” It is:
+
+- the user understands where capability and state live;
+- the user can inspect and correct the durable layer;
+- consequential actions remain bounded and interruptible;
+- another suitable environment can continue important work;
+- verification and recovery are tested;
+- repeated use leaves the user with more reusable capability than before.
+
+Keep the Doctor result with the workflow. Repeat the diagnosis when a major model, provider, account, runtime, device, permission, storage layer, or responsibility changes.
