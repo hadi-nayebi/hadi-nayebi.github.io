@@ -223,3 +223,124 @@ The diagnosis must produce seven connected outputs:
 7. **Repair and verification plan:** strengths to preserve, the smallest repair, later improvements, tradeoffs, and the tests that would prove progress.
 
 The result should make the user's current choices understandable. It should not shame the user for choosing convenience or assume that every system must be fully local.
+
+
+## Run Two Revealing Tests
+
+### Test 1: Continuity versus export
+
+A data export is not automatically a working continuation path.
+
+For one non-sensitive workflow:
+
+1. identify the minimum state another environment would need;
+2. separate readable history from active job state, durable memory, rules, permissions, tools, verification, and recovery information;
+3. make a safe copy of the assets the user controls;
+4. in another suitable model, account, runtime, or environment, ask it to explain the objective, current state, authority boundaries, evidence, and next step;
+5. compare the answer with the source of truth;
+6. record what continued, what required adaptation, what remained trapped, and what is still unknown.
+
+The test can stop after explanation. Do not authorize real side effects merely to prove portability.
+
+### Test 2: Remove the product names
+
+Product names can hide the architecture.
+
+Rewrite the workflow only as roles:
+
+- input;
+- model or reasoning engine;
+- active work state;
+- durable context;
+- rules;
+- permissions;
+- tools;
+- verification;
+- recovery;
+- output.
+
+Then add each actual product or provider beside the role it performs.
+
+Mark every dependency:
+
+- **deliberate:** the value justifies the dependency;
+- **adaptable:** another component could perform the role with known work;
+- **trapped:** the role or accumulated value cannot currently continue elsewhere;
+- **unknown:** the continuation path has not been inspected.
+
+This test does not assume products are interchangeable. It reveals exactly where a product-specific choice matters.
+
+## Copy This Doctor Prompt
+
+> Run the Hadosh Academy Agentic AI Use Doctor on one real workflow.
+>
+> Begin by asking me:
+>
+> 1. Which workflow are we examining?
+> 2. What must it accomplish?
+> 3. What result counts as complete?
+> 4. Which surfaces, files, accounts, tools, or scheduled jobs may contain its state?
+> 5. Which privacy or authority boundaries must you respect during the diagnosis?
+>
+> Do not request passwords, tokens, credentials, private client material, employer data, regulated records, or another person's personal information. Do not change files, settings, permissions, integrations, accounts, or public surfaces during the diagnosis.
+>
+> Inspect ten evidence dimensions:
+>
+> 1. surface and locality map;
+> 2. transparency and inspectability;
+> 3. ownership and control;
+> 4. jobs and active work;
+> 5. context and memory;
+> 6. rules, permissions, and human authority;
+> 7. tools and interfaces;
+> 8. verification and recovery;
+> 9. portability and provider dependence; and
+> 10. accumulation and retained value.
+>
+> For every material claim, show the evidence and classify the mechanism as Portable, Adaptable, Trapped, Absent, or Unknown. Give the evidence High, Medium, or Low confidence. Do not treat a product claim, export button, local file, or remembered behavior as proof by itself.
+>
+> Score six health axes from 0–4:
+>
+> - ownership and control;
+> - transparency and inspectability;
+> - continuity and portability;
+> - permissions and human authority;
+> - verification and recovery; and
+> - accumulation and retained value.
+>
+> Explain every score. Do not hide the profile inside one average. Do not penalize a system merely because it is remote or provider-specific. Judge control, evidence, correction, continuity, consequence, and recovery.
+>
+> Produce:
+>
+> 1. a system map;
+> 2. an evidence table;
+> 3. the six-axis control profile;
+> 4. a dependency map;
+> 5. a loss map showing what changes or disappears if the model, provider, account, runtime, or device changes;
+> 6. a non-accumulation map showing useful corrections, methods, state, tests, or decisions that repeated use is failing to retain;
+> 7. strengths to preserve;
+> 8. the smallest high-value repair;
+> 9. later repair options with tradeoffs; and
+> 10. safe tests that would verify improvement.
+>
+> Finish by teaching me the result in plain language. Wait for my approval before making any change or running a test with external side effects.
+
+## The Same Doctor, Different Setups
+
+The Doctor should adapt its evidence search rather than assuming one ideal architecture.
+
+### Hosted chat or project space
+
+Inspect exports, project instructions, memory controls, connected tools, account boundaries, conversation history, and whether active work can be reconstructed without the original interface. Do not assume an export recreates behavior.
+
+### Desktop or mobile AI application
+
+Inspect where local and remote state live, which files the application can reach, how permissions are granted, what survives reinstall or device loss, and whether backups restore useful operation.
+
+### API workflow or automation
+
+Inspect prompts and instructions, state stores, queues, schedules, credentials boundaries, tool schemas, logs, tests, retry behavior, and provider adapters. Distinguish user-controlled infrastructure from managed dependencies.
+
+### CLI agent or local harness
+
+Inspect project instructions, job state, memory files, hooks or lifecycle controls, tool permissions, tests, logs, backups, and restore behavior. Do not award a high score merely because files are local; require evidence that the user can understand, govern, and recover them.
