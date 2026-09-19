@@ -139,6 +139,20 @@ Also record evidence confidence:
 - **Medium:** documented and plausible, but not tested in this workflow;
 - **Low:** inferred from interface behavior, memory, or a product claim.
 
+### Apply scoring safeguards
+
+Evidence quality limits the score. Use these rules consistently:
+
+- Keep **Absent** and **Unknown** separate. Absent means the needed mechanism is missing; Unknown means the diagnosis lacks enough evidence.
+- A **4** requires High-confidence evidence from a real workflow, authority check, continuation test, recovery test, or equivalent direct demonstration.
+- Low-confidence evidence cannot support a score above **2**.
+- Continuity or recovery cannot score above **2** without a real continuation or recovery test. Documentation and an export button are not enough.
+- Permissions and human authority cannot score above **2** unless the user can demonstrate at least one meaningful control such as approval, interruption, revocation, or scope reduction.
+- When evidence conflicts, record the conflict, use the lower confidence, and explain what test would resolve it.
+- Never raise one axis because another axis is strong. Visible instructions do not prove portability; local files do not prove recovery; human review does not prove durable accumulation.
+
+Flag a **critical finding** separately from the six numbers when any consequential action cannot be interrupted, essential state has only one uncontrolled copy, or the workflow's only recovery path is unknown. A critical finding becomes the first repair candidate even when the average profile looks healthy.
+
 ## Score Six Health Axes
 
 Use a 0–4 scale. Always show the evidence and confidence beside the number.
@@ -308,7 +322,9 @@ This test does not assume products are interchangeable. It reveals exactly where
 > - verification and recovery; and
 > - accumulation and retained value.
 >
-> Explain every score. Do not hide the profile inside one average. Do not penalize a system merely because it is remote or provider-specific. Judge control, evidence, correction, continuity, consequence, and recovery.
+> Explain every score. Apply these safeguards: a 4 requires High-confidence direct evidence; Low-confidence evidence cannot support more than 2; continuity and recovery cannot exceed 2 without a real test; human authority cannot exceed 2 without a demonstrated approval, interruption, revocation, or scope control. Keep Absent separate from Unknown. Record conflicting evidence at the lower confidence and name the test that would resolve it. Flag any critical finding separately from the scores.
+>
+> Do not hide the profile inside one average. Do not penalize a system merely because it is remote or provider-specific. Judge control, evidence, correction, continuity, consequence, and recovery.
 >
 > Produce:
 >
