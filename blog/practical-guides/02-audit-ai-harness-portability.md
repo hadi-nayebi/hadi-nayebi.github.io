@@ -12,6 +12,10 @@ You can point the agent you already use to this guide. It will inspect one real 
 
 The objective is not to eliminate every provider or move everything onto your own computer. Remote services can be valuable. A local system can still be opaque or fragile. The objective is to make control, dependence, continuity, and accumulated value visible enough for you to choose deliberately.
 
+![Chalkboard Doctor result with six 0–4 gauges for control, transparency, continuity, authority, recovery, and accumulation; two result boxes ask what would be lost and what is not accumulating, leading to a first repair.](images/agentic-ai-use-doctor.png)
+
+The Doctor makes one profile visible: six independent health axes, two consequence maps, and the first repair that evidence supports.
+
 ## What the Doctor Will Tell You
 
 At the end, you should be able to answer:
