@@ -50,3 +50,20 @@ Lens 2 asks what the Academy's public architecture is for: not one universal har
 - the image keeps its required five-category metadata and accessible description;
 - series navigation, contribution surfaces, and links remain valid;
 - repository validators and diff checks pass on the final branch head.
+
+
+## Hadi review absorbed — v0.9.2
+
+Hadi’s review in Departments Issue #43 identified two defects: the prose moved between clear and vague passages, and the visual looked like a generated SVG-style diagram rather than the established Hadosh chalkboard style.
+
+The v0.9.2 repair:
+
+- rewrites the opening around one plain causal loop;
+- explains map/territory as a comparison before introducing the four levels;
+- replaces “local operationalization” and “population-scale feedback” with concrete language;
+- simplifies the computation and evidence sections without removing the shared model;
+- replaces the image with a natural hand-drawn chalkboard illustration using rough chalk, four large stages, and no vector finish;
+- preserves the exact public seed → local harnesses → lived work → generalized evidence loop;
+- keeps publication, narration, and derivative social work unapproved.
+
+The revised article is approximately 1759 words (8 minutes).
