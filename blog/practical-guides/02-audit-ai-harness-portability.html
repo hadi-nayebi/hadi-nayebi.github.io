@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Whether Your AI Setup Is Actually Portable | Hadosh Academy</title>
+    <meta name="description" content="A practical six-part audit for testing whether your AI workflow can continue when a model, provider, account, or tool changes.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/practical-guides/02-audit-ai-harness-portability.html">
+    <meta property="og:title" content="Audit Whether Your AI Setup Is Actually Portable | Hadosh Academy">
+    <meta property="og:description" content="Find out what would survive a model or provider change, then repair one weak point.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/practical-guides/02-audit-ai-harness-portability.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/blog/principles/images/the-ai-that-grows-with-you-hero.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Audit Whether Your AI Setup Is Actually Portable">
+    <meta name="twitter:description" content="A six-part audit for operational portability beyond chat export.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/principles/images/the-ai-that-grows-with-you-hero.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
+    <style>
+        .audit-statuses { display: grid; grid-template-columns: repeat(auto-fit,minmax(13rem,1fr)); gap: .85rem; margin: 1.25rem 0 2rem; }
+        .audit-statuses article { padding: 1rem; border: 1px solid var(--border); border-radius: .75rem; background: rgba(255,255,255,.025); }
+        .audit-statuses strong { display: block; color: var(--text-main); margin-bottom: .35rem; }
+        .audit-prompt { padding: 1.25rem; border: 1px solid rgba(99,102,241,.48); border-radius: .8rem; background: rgba(99,102,241,.1); }
+        .audit-prompt p:first-child { margin-top: 0; }
+        .audit-prompt p:last-child { margin-bottom: 0; }
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"HowTo","name":"Audit Whether Your AI Setup Is Actually Portable","datePublished":"2026-09-19","dateModified":"2026-09-19","author":{"@type":"Person","name":"Hadi Nayebi","url":"https://hadi-nayebi.github.io/about.html"},"publisher":{"@id":"https://hadi-nayebi.github.io/#organization"},"description":"A practical six-part audit for operational AI harness portability.","image":"https://hadi-nayebi.github.io/blog/principles/images/the-ai-that-grows-with-you-hero.jpg","mainEntityOfPage":"https://hadi-nayebi.github.io/blog/practical-guides/02-audit-ai-harness-portability.html"}
+    </script>
+</head>
+<body>
+<header id="site-header"><div class="container"><nav>
+<a href="../../index.html" class="logo">Hadosh Academy</a>
+<button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+<div class="nav-links"><a href="../../index.html">Home</a><a href="../../start-here.html">Start Here</a><a href="../../blog.html" class="active" aria-current="page">Blog</a><a href="../../agents.html">Agents</a><a href="../../projects/index.html">Projects</a><a href="../../whats-new.html">What's New</a><a href="../../about.html">About</a><a href="../../services.html">Services</a></div>
+</nav></div></header>
+<main class="page-content"><section class="container"><div class="blog-layout"><div class="article-content">
+<a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+<h1>Audit Whether Your AI Setup Is Actually Portable</h1>
+<div class="article-meta"><span>September 2026</span><span>&bull;</span><span>10 min</span><div class="article-meta-tags"><span class="tag tag-audience">Everyone</span><span class="tag">Practical Guide</span><span class="tag">Portability</span><span class="tag">Ownership</span></div></div>
+<div class="article-authors">By Hadi Nayebi &amp; Codex</div>
+<div class="article-body">
+<p>Changing AI providers should not force you to rebuild the way you work.</p>
+<p>A chat export can preserve old conversations. It does not automatically preserve active jobs, durable memory, rules, permissions, tools, verification, or the ability to continue tomorrow. Those capabilities live in the harness around the model.</p>
+<p>This guide helps you inspect that layer. You can run the audit with the agent you already use. You do not need to move anything first, and you do not need to make your current setup perfectly independent from every provider.</p>
+<p>The objective is narrower:</p>
+<blockquote><p>Identify what you own, what depends on a provider, what can be adapted, and the smallest change that would make your working system easier to understand, recover, or move.</p></blockquote>
+<h2>Before You Begin</h2>
+<p>Choose one real workflow. Do not audit your entire relationship with AI at once.</p>
+<p>Good candidates include recurring research, maintaining a website, preparing a weekly report, managing a creative project, tracking clients or applications, publishing a content series, or any responsibility that becomes difficult when a conversation ends.</p>
+<p>Write its objective in one sentence. Then gather only the evidence needed to explain how the work continues: current project state, files or databases, saved instructions, scheduled tasks, connected tools, approval rules, tests, and backup options.</p>
+<p>Do not paste credentials, private client material, employer data, regulated information, or another person's personal information into a new system for this audit.</p>
+<h2>The Six-Part Audit</h2>
+<p>For each dimension, ask the question, identify the evidence, and give it one status.</p>
+<div class="audit-statuses">
+<article><strong>Portable</strong>The capability can continue with another model or environment with little change.</article>
+<article><strong>Adaptable</strong>The information or method is yours, but an adapter or reconstruction step is required.</article>
+<article><strong>Trapped</strong>The capability depends on a provider-owned surface with no tested continuation path.</article>
+<article><strong>Unknown</strong>You do not yet have evidence.</article>
+</div>
+<h3>1. Work state</h3>
+<p><strong>Question:</strong> If this conversation disappeared, where would the workflow resume?</p>
+<p>Look for the objective, current stage, completed work, unresolved questions, dependencies, and next step. A transcript may contain this information, but it is not durable work state unless the important parts can be found and resumed without rereading the entire history.</p>
+<p><strong>Useful evidence:</strong> a job file, project record, issue, task object, dashboard state, or another inspectable source of truth.</p>
+<h3>2. Durable context</h3>
+<p><strong>Question:</strong> What has the system learned that should still matter next month?</p>
+<p>Separate durable context from conversation history. Durable context includes accepted decisions, terminology, preferences, reusable methods, and verified facts. It should also show scope: which project, person, or responsibility may use it.</p>
+<p><strong>Useful evidence:</strong> Markdown, structured data, a versioned knowledge file, or an export with a documented way to restore and query it.</p>
+<h3>3. Rules and permissions</h3>
+<p><strong>Question:</strong> Which boundaries remain enforceable if the model changes?</p>
+<p>A preference inside an old conversation may be forgotten. A rule in an inspectable instruction file, permission system, or approval gate has a clearer owner and continuation path.</p>
+<p>Check who may read, write, send, publish, merge, spend, or delete. Identify which actions always require you.</p>
+<p><strong>Useful evidence:</strong> instruction files, tool policies, approval gates, access controls, or tests that fail when a boundary is crossed.</p>
+<h3>4. Tools and interfaces</h3>
+<p><strong>Question:</strong> Which capabilities are portable, and which exist only inside one product?</p>
+<p>Name tools by function before naming products: search, file editing, email, calendar, code execution, publishing, or database access. Then record the current implementation.</p>
+<p>This reveals whether the workflow has a stable behavioral objective with a replaceable adapter, or whether the product itself has become the architecture.</p>
+<p><strong>Useful evidence:</strong> tool manifests, scripts, APIs, documented manual fallbacks, or a list of provider-specific connectors.</p>
+<h3>5. Verification and recovery</h3>
+<p><strong>Question:</strong> How does the system prove that work is complete, and how does it recover when it is wrong?</p>
+<p>A portable workflow needs more than inputs and outputs. It needs completion criteria, tests, review checkpoints, logs, and a recovery path.</p>
+<p><strong>Useful evidence:</strong> automated tests, checklists, approval records, version history, backups, rollback instructions, or a known-good restore exercise.</p>
+<h3>6. Provider-specific dependencies</h3>
+<p><strong>Question:</strong> What would stop working if the current model, account, or product disappeared tomorrow?</p>
+<p>List each dependency without treating it as automatically bad. Some provider-specific features are worth using. The objective is to make the dependency visible and deliberate.</p>
+<p>For each dependency, record the value it provides, the data or behavior it holds, whether it can be exported, whether the export can restore operation elsewhere, and the acceptable fallback.</p>
+<h2>Copy This Audit Prompt</h2>
+<div class="audit-prompt">
+<p>Audit one AI-supported workflow for operational portability.</p>
+<p>First, ask me which workflow we are auditing and what it must accomplish. Then inspect six dimensions: work state, durable context, rules and permissions, tools and interfaces, verification and recovery, and provider-specific dependencies.</p>
+<p>For each dimension: describe the current mechanism in plain language; identify the evidence; classify it as Portable, Adaptable, Trapped, or Unknown; explain what would fail if I changed models or providers; and recommend the smallest useful improvement.</p>
+<p>Distinguish a data export from a working continuation path. Do not request or expose credentials, private client data, employer information, regulated records, or another person's personal information. Do not make changes yet.</p>
+<p>Finish with a table, one overall finding, and one recommended first repair. Wait for my approval before changing files, settings, permissions, integrations, or public surfaces.</p>
+</div>
+<h2>Read the Result Carefully</h2>
+<p>A useful audit does not produce a single portability percentage. One trapped dependency may be harmless; another may hold the only copy of years of working memory.</p>
+<p>Prioritize by consequence:</p>
+<ol>
+<li>Can the user lose the ability to continue the work?</li>
+<li>Can private or authority-sensitive information cross a boundary?</li>
+<li>Can the setup be understood and restored?</li>
+<li>Is a provider-specific feature creating enough value to justify the dependency?</li>
+<li>What is the smallest repair that improves the system without rebuilding it?</li>
+</ol>
+<p>Small repairs include extracting current state from one long conversation, copying accepted instructions into a versioned document, documenting approval boundaries, recording a fallback for one product-specific tool, testing an export, adding a completion checklist, or placing one important workflow in a repository with visible history.</p>
+<h2>Verify the Repair</h2>
+<p>Do not mark a capability portable because an export button exists.</p>
+<ol>
+<li>Make a safe copy of the relevant state.</li>
+<li>Open a different model, account, or local environment.</li>
+<li>Provide only the portable assets you identified.</li>
+<li>Ask the new environment to explain the workflow's objective, current state, authority boundaries, and next step.</li>
+<li>Compare its answer with the source of truth.</li>
+<li>Record what was missing or provider-specific.</li>
+</ol>
+<p>The test does not need to complete the whole workflow. It needs to reveal whether the system can resume coherently.</p>
+<h2>What Success Looks Like</h2>
+<p>A portable harness is not a provider-free harness.</p>
+<p>It is a system in which provider dependencies are visible, the user's durable structure remains inspectable, and a model change does not erase the ability to understand and continue the work.</p>
+<p>The model supplies intelligence. The harness carries the user's accumulated way of working.</p>
+<p>When the audit is complete, keep the evidence with the workflow. Repeat it when a major tool, model, account, permission, or storage layer changes.</p>
+<p>For the deeper architectural argument, read <a href="../principles/the-ai-that-grows-with-you.html">The AI That Grows With You</a>. To begin a broader guided path, open <a href="../../start-here.html">Start Here</a>.</p>
+</div></div></div></section></main>
+<footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+<script src="../../js/theme-manager.js?v=20260903-whats-new-1"></script>
+<script src="../../js/components.js?v=20260910-services-ux-2"></script>
+</body>
+</html>
