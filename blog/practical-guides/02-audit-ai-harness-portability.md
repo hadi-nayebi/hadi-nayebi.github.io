@@ -121,6 +121,95 @@ Distinguish a readable export from an operational continuation path. Record what
 
 Look for retained corrections, methods, tests, templates, decisions, working state, and reusable patterns. If repeated use produces only more transcripts inside one platform, the system may be active without compounding for you.
 
+## Classify the Evidence Before You Score
+
+For every mechanism, use one operational status:
+
+- **Portable:** demonstrated continuation in another suitable model, runtime, account, or environment with little change.
+- **Adaptable:** the user controls the information or method, but an adapter, translation, or reconstruction step is required.
+- **Trapped:** useful state or behavior depends on a provider-controlled surface with no demonstrated continuation path.
+- **Absent:** the workflow needs the mechanism, but no mechanism currently exists.
+- **Unknown:** the evidence is missing or insufficient.
+
+Unknown is not a polite version of Portable. It is a finding that tells you what must be inspected or tested next.
+
+Also record evidence confidence:
+
+- **High:** directly inspected or demonstrated in a real test;
+- **Medium:** documented and plausible, but not tested in this workflow;
+- **Low:** inferred from interface behavior, memory, or a product claim.
+
+## Score Six Health Axes
+
+Use a 0–4 scale. Always show the evidence and confidence beside the number.
+
+| Score | Meaning |
+|---:|---|
+| **0** | No visible mechanism or usable evidence. The condition cannot currently be determined or the required capability is absent. |
+| **1** | Predominantly opaque or provider-controlled. Correction, exit, or recovery is not demonstrated. |
+| **2** | Partly visible or exportable, but operational control and continuity remain dependent. |
+| **3** | User-governed and adaptable. Important mechanisms are inspectable, but migration, verification, or recovery still needs work. |
+| **4** | User ownership or control is demonstrated through continuation, authority, verification, or recovery evidence. |
+
+Score these axes separately:
+
+1. **Ownership and control**
+2. **Transparency and inspectability**
+3. **Continuity and portability**
+4. **Permissions and human authority**
+5. **Verification and recovery**
+6. **Accumulation and retained value**
+
+Do not hide weakness inside one average. Report all six scores, the evidence confidence, and the lowest critical axis.
+
+A remote or provider-specific system can score well when control, evidence, correction, and continuation are strong. A local CLI harness can score poorly when its state is undocumented, its permissions are loose, or nobody has tested recovery.
+
+## Find What You Would Lose—and What You Are Not Gaining
+
+The Doctor must answer two different questions.
+
+### What would you lose?
+
+For each model, account, provider, tool, storage layer, and device, ask what disappears or stops:
+
+- active work state;
+- durable memory;
+- instructions and rules;
+- scheduled jobs;
+- tool access;
+- permissions and approval history;
+- verification evidence;
+- recovery paths;
+- identity, relationships, or accumulated history.
+
+### What are you not accumulating?
+
+Repeated use should make some part of the user's system more capable. Identify useful value that is currently evaporating:
+
+- corrections that remain buried in conversations;
+- methods that are rediscovered instead of retained;
+- decisions with no durable source;
+- tests that are performed but not reusable;
+- project state that must be reconstructed;
+- authority rules remembered only by the user;
+- dependencies that remain undocumented;
+- lessons that never return to the user's harness.
+
+A system can preserve data while failing to accumulate usable capability.
+
+## Interpret Scores by Consequence
+
+Do not rank every low score equally. Prioritize:
+
+1. a boundary the user cannot see or interrupt;
+2. the only copy of essential work state or memory;
+3. an action path with meaningful side effects and weak permission control;
+4. a workflow that cannot be verified or recovered;
+5. a dependency whose failure stops important work;
+6. a missed opportunity to retain reusable value.
+
+Preserve strengths. Repair the highest-consequence weakness first. Do not recommend rebuilding the entire setup when one explicit state file, approval rule, export test, fallback, or recovery drill would materially improve it.
+
 ## The Doctor's Required Result
 
 The diagnosis must produce seven connected outputs:
