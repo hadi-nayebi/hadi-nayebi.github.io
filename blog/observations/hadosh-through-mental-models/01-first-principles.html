@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.9.0 -->
+<!-- Version: v0.9.1 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,6 +29,7 @@
       .blog-image { margin: 2rem 0; }
       .blog-image img { width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
       .blog-image figcaption { text-align: center; font-style: italic; margin-top: .5rem; color: rgba(255,255,255,.7); font-size: .9rem; }
+      .article-series-nav { display: flex; justify-content: space-between; gap: 1rem; margin: 2.5rem 0; }
     </style>
     <script type="application/ld+json">
     {
@@ -38,7 +39,7 @@
           "@type": "BlogPosting",
           "headline": "Hadosh Academy Through First Principles",
           "datePublished": "2026-09-15",
-          "dateModified": "2026-09-15",
+          "dateModified": "2026-09-19",
           "author": {"@type": "Person", "name": "Hadi Nayebi", "url": "https://hadi-nayebi.github.io/about.html"},
           "publisher": {"@id": "https://hadi-nayebi.github.io/#organization"},
           "description": "A first-principles observation of why Hadosh teaches modular patterns for user-specific harnesses instead of prescribing one finished agent.",
@@ -412,6 +413,11 @@ permissions, jobs, and verification.</li>
 direction.</li>
 </ul>
             </div>
+
+            <nav class="article-series-nav" aria-label="Mental-model series navigation">
+                <a href="index.html" class="btn btn-secondary">Series home</a>
+                <a href="02-map-is-not-territory.html" class="btn btn-secondary">Lens 2: The Map Is Not the Territory &rarr;</a>
+            </nav>
 
             <div class="article-comments" data-contribution-surface="observation-hadosh-mental-models-first-principles">
                 <h2>Discuss this observation</h2>
