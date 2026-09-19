@@ -67,3 +67,18 @@ The v0.9.2 repair:
 - keeps publication, narration, and derivative social work unapproved.
 
 The revised article is approximately 1759 words (8 minutes).
+
+## Hadi review absorbed — v0.9.4
+
+Hadi’s review in Departments Issue #55 found that v0.9.3 opened too abruptly, did not explain the mental-model technique, and lacked a clear beginning–middle–end story.
+
+The v0.9.4 repair:
+
+- opens by telling readers what the article will examine and how the mental-model technique works;
+- previews the three-stage journey before introducing the central loop;
+- restructures the body as **Beginning: public map**, **Middle: lived-work encounter**, and **End: evidence and return**;
+- turns the filmmaker example into the narrative conflict: the harness reports completion while an unresolved music-rights question blocks release;
+- carries that correction into the evidence ladder and the final return to the public map;
+- preserves the settled nested model, cognitive-operability outcome, privacy boundary, conditional future-of-work claim, and five reader questions.
+
+The revised article contains approximately 1,576 words before sources. Publication, narration, and derivative social work remain unapproved.
