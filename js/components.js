@@ -21,7 +21,7 @@
         if (path === '/' || path === '/index.html') return 'Home';
         if (path === '/start-here.html') return 'Start Here';
         if (path === '/blog.html' || path.indexOf('/blog/') === 0) return 'Blog';
-        if (path === '/agents.html') return 'Agents';
+        if (path === '/agents.html' || path.indexOf('/agents/') === 0) return 'Agents';
         if (path === '/projects' || path === '/projects/index.html' || path.indexOf('/projects/') === 0) return 'Projects';
         if (path === '/whats-new.html') return "What's New";
         if (path === '/about.html') return 'About';
