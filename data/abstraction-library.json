@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "title": "Hadosh Academy Canonical Abstraction Library",
+  "description": "A framework-, model-, provider-, and CLI-agnostic language for building local, inspectable, user-owned AI harnesses.",
+  "updated": "2026-09-20",
+  "definitionStates": {
+    "draft": "Open to revision. Unresolved questions remain visible and discussion is treated as evidence.",
+    "consolidated": "Explicitly aligned and stable enough to guide new work until later evidence requires revision."
+  },
+  "categories": [
+    {
+      "id": "capability-runtime",
+      "name": "Capability and runtime",
+      "description": "The learned capability and the operational environment that makes it available."
+    },
+    {
+      "id": "harness-anatomy",
+      "name": "Harness anatomy",
+      "description": "The structures that turn general capability into bounded, continuing work."
+    },
+    {
+      "id": "human-control-growth",
+      "name": "Human control and growth",
+      "description": "The conditions under which a harness expands the user's capacity, custody, and understanding."
+    }
+  ],
+  "categoryPolicy": "Categories are navigational views, not a fixed ontology. They may be added, split, merged, or renamed as the vocabulary grows.",
+  "terms": [
+    {
+      "id": "CAL-T-001",
+      "name": "Model",
+      "slug": "model",
+      "category": "capability-runtime",
+      "weight": 3,
+      "related": [
+        "large-language-model",
+        "runtime",
+        "harness",
+        "agent"
+      ],
+      "openQuestions": [
+        {
+          "id": "MODEL-Q1",
+          "text": "What minimum properties must remain true for future models that produce decisions, actions, or representations rather than language tokens?"
+        },
+        {
+          "id": "MODEL-Q2",
+          "text": "Should a routed or compound system of several learned components count as one model or as a model system?"
+        },
+        {
+          "id": "MODEL-Q3",
+          "text": "What evidence is sufficient to attribute a behavior to the model rather than to the surrounding harness?"
+        }
+      ],
+      "status": "draft",
+      "definition": "A model is a learned computational system that transforms supplied input into an inference, prediction, representation, or generated output.",
+      "role": "The model supplies general learned capability. It may interpret language, recognize patterns, estimate likely outcomes, generate candidate actions, or support decisions. The harness determines how that capability receives context, which tools it can reach, what state persists, which actions require authority, and how results are verified.",
+      "boundary": [
+        "A model is not the complete agent. It does not, by itself, establish durable identity, local memory, job continuity, permissions, recovery, or ownership. A model may be commercial or open-weight, remote or local, general or specialized. Replacing the model may change capability, cost, speed, privacy, and compatibility without necessarily replacing the user's harness.",
+        "A future model may produce tokens, typed decisions, embeddings, actions, or another form of output. Hadosh Academy therefore uses model as the broad class and reserves LLM for one important current subclass."
+      ],
+      "relationships": "A model is accessed through a runtime, operates inside a harness, and contributes capability to an agent.",
+      "adaptationQuestions": [
+        "Where does inference run?",
+        "What inputs leave the user's environment?",
+        "Which outputs are probabilistic?",
+        "Can the model be replaced?",
+        "What harness behavior depends on provider-specific features?"
+      ],
+      "evidence": "Conceptual; demonstrated across current hosted and local inference systems.",
+      "avoid": "“The model is the agent,” model intelligence as proof of authority, or model openness as proof that the surrounding harness is open."
+    },
+    {
+      "id": "CAL-T-002",
+      "name": "Large language model (LLM)",
+      "slug": "large-language-model",
+      "category": "capability-runtime",
+      "weight": 4,
+      "related": [
+        "model",
+        "runtime",
+        "harness",
+        "agent"
+      ],
+      "openQuestions": [
+        {
+          "id": "LARGE_LANGUAGE_MODEL-Q1",
+          "text": "Which guarantees must always remain outside LLM discretion even when structured output becomes more reliable?"
+        },
+        {
+          "id": "LARGE_LANGUAGE_MODEL-Q2",
+          "text": "When does the narrower term LLM stop being useful and the broader term model become the better abstraction?"
+        },
+        {
+          "id": "LARGE_LANGUAGE_MODEL-Q3",
+          "text": "How should the definition describe multimodal models whose language interface is only one part of their capability?"
+        }
+      ],
+      "status": "draft",
+      "definition": "An LLM is a model trained to predict or generate language tokens from context, often with additional training that supports instruction-following, tool selection, reasoning-like behavior, or structured output.",
+      "role": "In many current harnesses, the LLM is the general reasoning and language operator. It interprets instructions and state, proposes plans, communicates with the user, selects available tools, and helps crystallize conversation into files or software.",
+      "boundary": [
+        "The LLM remains probabilistic. Fluent output does not prove factual correctness, policy compliance, permission, execution, or completion. The surrounding harness must expose authoritative state, constrain side effects, preserve continuity, and verify important claims.",
+        "An LLM may need a thick harness because it does not retain dependable local state across sessions. A future model may internalize more procedure or use a different output mechanism, which could make parts of the harness thinner. Practical agency will still require some interface connecting learned capability to context, state, tools, authority, action, and verification."
+      ],
+      "relationships": "LLM is a subclass of model. It is animated through a runtime and becomes part of an agent only when joined to a harness and a responsibility.",
+      "adaptationQuestions": [
+        "Which context limits and tool semantics apply?",
+        "Does the runtime support hooks, permissions, structured output, resumable sessions, or local inference?",
+        "Which guarantees must remain outside model discretion?"
+      ],
+      "evidence": "Conceptual and observed across Claude, Codex, Qwen, OpenCode, and other current systems.",
+      "avoid": "“LLM equals agent,” “token generation equals action,” or assuming a larger context window eliminates the need for durable state."
+    },
+    {
+      "id": "CAL-T-003",
+      "name": "Runtime",
+      "slug": "runtime",
+      "category": "capability-runtime",
+      "weight": 3,
+      "related": [
+        "model",
+        "harness",
+        "agent",
+        "local"
+      ],
+      "openQuestions": [
+        {
+          "id": "RUNTIME-Q1",
+          "text": "Where should the runtime boundary be drawn when execution is divided among a CLI, local server, provider API, and operating system?"
+        },
+        {
+          "id": "RUNTIME-Q2",
+          "text": "Which enforcement capabilities are necessary before a runtime can honestly support consequential agent action?"
+        },
+        {
+          "id": "RUNTIME-Q3",
+          "text": "Which runtime behaviors must be portable, and which may remain adapter-specific?"
+        }
+      ],
+      "status": "draft",
+      "definition": "A runtime is the operational environment that connects a model to context, tools, processes, interfaces, and execution.",
+      "role": "The runtime starts or resumes sessions, assembles model input, exposes tools, returns tool results, manages events, and may enforce permissions or lifecycle controls. It is the mechanism through which model output can affect the environment.",
+      "boundary": [
+        "A runtime is not identical to the model or the complete harness. A CLI, API orchestration service, desktop application, local server, or agent framework can act as a runtime. Some runtimes are inspectable and user-controlled; others are closed provider services. Their capabilities constrain which behavioral patterns can be implemented honestly.",
+        "A written instruction can request behavior. Only the runtime or another deterministic mechanism can guarantee a pre-action block, atomic write, protected merge, or enforced permission boundary."
+      ],
+      "relationships": "The runtime provides access to a model, animates the structures in the harness, and exposes the execution surface used by an agent.",
+      "adaptationQuestions": [
+        "Who controls the runtime?",
+        "What state does it own?",
+        "Which lifecycle events are exposed?",
+        "What can it enforce before side effects?",
+        "How are failures, retries, logs, and recovery handled?"
+      ],
+      "evidence": "Conceptual; demonstrated differently in Codex CLI, Claude Code, Qwen Code, and Origin.",
+      "avoid": "Treating an executable name as the architecture, or claiming equivalent behavior after replacing only one CLI command."
+    },
+    {
+      "id": "CAL-T-004",
+      "name": "Harness",
+      "slug": "harness",
+      "category": "harness-anatomy",
+      "weight": 5,
+      "related": [
+        "model",
+        "runtime",
+        "agent",
+        "agency",
+        "context",
+        "user-owned",
+        "seed"
+      ],
+      "openQuestions": [
+        {
+          "id": "HARNESS-Q1",
+          "text": "What is the smallest structure that still deserves to be called a harness rather than a prompt or tool wrapper?"
+        },
+        {
+          "id": "HARNESS-Q2",
+          "text": "Which functions are essential across all practical harnesses, and which are optional responses to particular risks or jobs?"
+        },
+        {
+          "id": "HARNESS-Q3",
+          "text": "How should the definition cover distributed harnesses whose state, execution, and interfaces live in different places?"
+        }
+      ],
+      "status": "draft",
+      "definition": "A harness is the durable operational structure around model capability that makes continuing, bounded, inspectable work possible.",
+      "role": "The harness carries the parts that should survive individual inference calls and sessions: selected context, instructions, memory, active jobs, state, tools, permissions, interfaces, verification, history, recovery, and accumulated experience. It turns general capability into a system shaped around a user and their responsibilities.",
+      "boundary": [
+        "A harness may be thin or extensive, local or partly distributed, mostly textual or heavily coded. It is defined by function rather than by one directory layout. Not every harness requires every component, but a claimed capability must have a real owner and an honest mechanism.",
+        "The harness is not merely a prompt, transcript archive, dashboard, CLI, or repository. Those can be parts of it. A user may control files while still depending on a closed runtime or remote model; ownership and locality must therefore be assessed layer by layer."
+      ],
+      "relationships": "A harness supplies durable structure to a model through a runtime. Model plus harness plus an active responsibility produce an agent. The harness is the primary software surface through which user agency can accumulate.",
+      "adaptationQuestions": [
+        "What must persist?",
+        "What can act?",
+        "Which decisions remain human?",
+        "How is state verified, stopped, recovered, moved, or deleted?",
+        "Which components are provider-specific?"
+      ],
+      "evidence": "Consolidated direction across Academy work; this exact wording remains draft.",
+      "avoid": "One universal Hadosh harness, “local folder” as a complete definition, or treating installed tools as proof of coherent architecture."
+    },
+    {
+      "id": "CAL-T-005",
+      "name": "Agent",
+      "slug": "agent",
+      "category": "harness-anatomy",
+      "weight": 5,
+      "related": [
+        "model",
+        "runtime",
+        "harness",
+        "agency"
+      ],
+      "openQuestions": [
+        {
+          "id": "AGENT-Q1",
+          "text": "What makes one bounded responsibility a distinct agent rather than a job, plugin, or component inside a larger agent?"
+        },
+        {
+          "id": "AGENT-Q2",
+          "text": "How much persistence is required before a system should be called an agent?"
+        },
+        {
+          "id": "AGENT-Q3",
+          "text": "How should several cooperating model sessions be described when they share one harness and authority boundary?"
+        }
+      ],
+      "status": "draft",
+      "definition": "An agent is model capability operating through a runtime and harness toward a bounded responsibility.",
+      "role": "The term names the acting system, not only the model. An agent perceives supplied state, reasons or classifies, uses permitted tools, updates owned state, communicates, and advances work under defined authority and verification.",
+      "boundary": [
+        "An agent does not become the independent owner of the user's purposes. Its responsibility, permissions, and stopping conditions come from the harness and the user. The same model can animate many distinct agents because each harness supplies different context, state, tools, constraints, and experience.",
+        "The boundary of one agent is architectural rather than anthropomorphic. It may be one persistent project, one plugin, one job-specific specialist, or a larger organism with several components. The boundary must say what state, authority, and objective belong together."
+      ],
+      "relationships": "An agent combines a model, runtime, harness, and responsibility. It should expand user agency, not silently replace it.",
+      "adaptationQuestions": [
+        "What is the responsibility?",
+        "Where is authoritative state?",
+        "What can the agent change?",
+        "How does the user interrupt, correct, or recover it?",
+        "What evidence proves progress or completion?"
+      ],
+      "evidence": "Conceptual; reflected across all Academy project lineages.",
+      "avoid": "“Chatbot,” independent digital personhood, or naming every one-shot model response an agent."
+    },
+    {
+      "id": "CAL-T-006",
+      "name": "Agency",
+      "slug": "agency",
+      "category": "human-control-growth",
+      "weight": 4,
+      "related": [
+        "agent",
+        "harness",
+        "user-owned"
+      ],
+      "openQuestions": [
+        {
+          "id": "AGENCY-Q1",
+          "text": "Which observable signs show that a harness is expanding a person's agency rather than only increasing automated activity?"
+        },
+        {
+          "id": "AGENCY-Q2",
+          "text": "How should shared or organizational agency be distinguished from individual agency?"
+        },
+        {
+          "id": "AGENCY-Q3",
+          "text": "What minimum understanding and intervention ability must the user retain for agency to remain meaningfully theirs?"
+        }
+      ],
+      "status": "draft",
+      "definition": "Agency is the capacity to form purposes, make judgments, and cause directed change. In Hadosh Academy, externalized agency means part of a person's practical capacity is expressed through a harness they can understand and govern.",
+      "role": "Agency is the human outcome. A useful harness lets the user remember more, sustain more responsibilities, apply learned procedures, inspect consequences, and coordinate work without reconstructing everything from memory.",
+      "boundary": [
+        "Agent activity is not automatically user agency. More background execution can reduce agency when the user loses visibility, correction, ownership, or the ability to stop. Autonomy is therefore a bounded mechanism; the objective is expanded human capacity.",
+        "Externalization does not transfer authorship or responsibility to the model. The harness preserves the user's purposes, accepted decisions, methods, and intervention points in operational form."
+      ],
+      "relationships": "An agent performs bounded work. A harness is the accumulating software structure. Agency is the capability that the person retains and extends through them.",
+      "adaptationQuestions": [
+        "Which burden is being externalized?",
+        "Which judgments must stay visible?",
+        "Does the system make the user more capable and less dependent, or only more automated?"
+      ],
+      "evidence": "Foundational Academy principle; wording remains draft.",
+      "avoid": "Equating agency with autonomy, activity, anthropomorphism, or provider-controlled personalization."
+    },
+    {
+      "id": "CAL-T-007",
+      "name": "Context",
+      "slug": "context",
+      "category": "harness-anatomy",
+      "weight": 4,
+      "related": [
+        "harness",
+        "runtime",
+        "model",
+        "seed"
+      ],
+      "openQuestions": [
+        {
+          "id": "CONTEXT-Q1",
+          "text": "Which properties distinguish authoritative context from useful but untrusted context?"
+        },
+        {
+          "id": "CONTEXT-Q2",
+          "text": "How should a harness expose conflicts among current instructions, historical decisions, retrieved memory, and live evidence?"
+        },
+        {
+          "id": "CONTEXT-Q3",
+          "text": "When should context be removed rather than condensed or preserved?"
+        }
+      ],
+      "status": "draft",
+      "definition": "Context is the selected information made available for interpreting and acting at a particular cognitive moment.",
+      "role": "Context lets a model understand the current responsibility, relevant history, constraints, definitions, state, evidence, and authority. Good context reduces reconstruction while keeping irrelevant or protected material outside the active reasoning surface.",
+      "boundary": [
+        "Context is not synonymous with memory, knowledge, transcript, or every file the user owns. It is a temporary selection assembled from those sources. Durable information may exist without being loaded; loaded text may be transient and never deserve preservation.",
+        "Context quality depends on selection, provenance, freshness, scope, and conflict handling—not only token quantity. An enormous undifferentiated context can obscure the governing evidence as easily as a thin one can omit it."
+      ],
+      "relationships": "The harness stores and routes potential context. The runtime presents selected context to the model. Work may produce new candidate context that requires review before becoming durable.",
+      "adaptationQuestions": [
+        "What does the model need now?",
+        "What is authoritative?",
+        "What is stale, inferred, private, or irrelevant?",
+        "Which source should win when contexts conflict?"
+      ],
+      "evidence": "Conceptual and widely demonstrated; selection mechanisms vary by runtime.",
+      "avoid": "“More context is always better,” transcript dumping, or treating model-visible text as automatically canonical."
+    },
+    {
+      "id": "CAL-T-008",
+      "name": "Local",
+      "slug": "local",
+      "category": "human-control-growth",
+      "weight": 3,
+      "related": [
+        "harness",
+        "runtime",
+        "model",
+        "user-owned"
+      ],
+      "openQuestions": [
+        {
+          "id": "LOCAL-Q1",
+          "text": "Which layer must be under direct user control before a system can be described publicly as local?"
+        },
+        {
+          "id": "LOCAL-Q2",
+          "text": "How should partially local systems communicate remote inference, logging, connectors, and hosted state without misleading users?"
+        },
+        {
+          "id": "LOCAL-Q3",
+          "text": "Does user-operated remote infrastructure belong inside the same definition or need a separate term?"
+        }
+      ],
+      "status": "draft",
+      "definition": "Local describes a harness layer operating within infrastructure the user directly controls, rather than existing only inside an external provider's hidden application state.",
+      "role": "Locality can improve custody, inspectability, continuity, recovery, and the user's ability to replace providers. Ordinary files, repositories, databases, local services, and user-operated machines can provide local surfaces.",
+      "boundary": [
+        "Local does not automatically mean offline, private, secure, open-source, or entirely self-hosted. A local harness may call a remote model or external service. A private hosted repository may be user-controlled without being local execution. Each dependency must be described honestly.",
+        "Locality is layered. Context can be local while inference is remote; execution can be local while credentials or notifications depend on hosted services. The relevant question is what the user controls and what disappears when a dependency is removed."
+      ],
+      "relationships": "A local harness may use a remote model through a local runtime. Locality contributes to, but does not prove, user-owned status.",
+      "adaptationQuestions": [
+        "Where does each layer run?",
+        "What data leaves the environment?",
+        "What can continue offline?",
+        "What can the user back up, restore, inspect, or move?"
+      ],
+      "evidence": "Conceptual; demonstrated in several partial combinations across Academy projects.",
+      "avoid": "Calling a connected private GitHub repository local, or treating local storage alone as sufficient privacy and ownership."
+    },
+    {
+      "id": "CAL-T-009",
+      "name": "User-owned",
+      "slug": "user-owned",
+      "category": "human-control-growth",
+      "weight": 4,
+      "related": [
+        "local",
+        "harness",
+        "agency"
+      ],
+      "openQuestions": [
+        {
+          "id": "USER_OWNED-Q1",
+          "text": "What minimum combination of custody, authority, portability, and recoverability justifies the term user-owned?"
+        },
+        {
+          "id": "USER_OWNED-Q2",
+          "text": "How should ownership be described when an organization, family, or community governs the harness collectively?"
+        },
+        {
+          "id": "USER_OWNED-Q3",
+          "text": "Which provider dependencies are compatible with meaningful ownership, and which make the claim misleading?"
+        }
+      ],
+      "status": "draft",
+      "definition": "A harness layer is user-owned when the user has durable custody and practical authority to inspect, modify, copy, recover, move, and dispose of it without depending entirely on one provider's permission.",
+      "role": "Ownership keeps accumulated methods, state, corrections, and working history as the user's asset. It creates the possibility of replacing models, runtimes, interfaces, or service providers while retaining meaningful continuity.",
+      "boundary": [
+        "Access is not ownership. Export is not full operational portability. A user may own files while lacking control over the runtime that interprets them. Ownership must be evaluated by layer: data, context, instructions, code, execution, credentials, history, interfaces, and deployment may have different custodians.",
+        "Ownership also carries responsibility. The user needs understandable backup, security, permission, and recovery practices. Shared or organizational harnesses require governed ownership rather than pretending one individual controls collective state."
+      ],
+      "relationships": "Local operation can support ownership but is not identical to it. A harness becomes an accumulating user asset only to the extent its important layers meet this definition.",
+      "adaptationQuestions": [
+        "Can the user retrieve the complete operational state?",
+        "Can another suitable runtime use it?",
+        "Can the user refuse changes, recover prior state, and remove access?",
+        "Which dependencies remain non-portable?"
+      ],
+      "evidence": "Foundational Academy direction; individual claims require layer-specific evidence.",
+      "avoid": "“The user can log in, therefore the user owns it,” export-only portability, or ignoring organizational and third-party rights."
+    },
+    {
+      "id": "CAL-T-010",
+      "name": "Seed",
+      "slug": "seed",
+      "category": "human-control-growth",
+      "weight": 3,
+      "related": [
+        "harness",
+        "context",
+        "agent"
+      ],
+      "openQuestions": [
+        {
+          "id": "SEED-Q1",
+          "text": "What is the minimum coherent content a context seed must contain before an agent can begin adapting it safely?"
+        },
+        {
+          "id": "SEED-Q2",
+          "text": "Which additions make a seed prematurely prescriptive rather than usefully orienting?"
+        },
+        {
+          "id": "SEED-Q3",
+          "text": "How should contextual seeds and executable seeds share a name without collapsing their different roles?"
+        }
+      ],
+      "status": "draft",
+      "definition": "A seed is the smallest coherent context or substrate from which a distinct harness can grow through use.",
+      "role": "The seed gives an agent enough shared language, boundaries, and developmental method to begin without pre-deciding the user's mature system. It reduces blank-page cost while preserving differentiation.",
+      "boundary": [
+        "A seed is not a miniature finished agent. It should contain only the foundations needed to orient construction, preserve authority, and select the first useful behavior. Additional anatomy is earned by real responsibilities, evidence, and user decisions.",
+        "A seed can be primarily contextual, as in this library, or include a minimal executable substrate, as in Origin. Framework-specific Seed repositories may accumulate selected components. These are different seed forms and should not be collapsed."
+      ],
+      "relationships": "The Academy's abstraction library is a public context seed. Origin, Seed Agent, and Q-Seed are distinct implementation or accumulation surfaces. A seed matures into a user-specific harness through adaptation and evidence.",
+      "adaptationQuestions": [
+        "What is the smallest useful starting responsibility?",
+        "Which assumptions should remain undecided?",
+        "What must be understood before the first consequential change?"
+      ],
+      "evidence": "Foundational Academy metaphor, observed across several lineages; this cross-lineage definition remains draft.",
+      "avoid": "Treating the seed as a standard installation, pre-populating every possible component, or measuring maturity by file count."
+    }
+  ]
+}

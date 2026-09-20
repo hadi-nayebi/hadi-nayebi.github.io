@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Large language model (LLM) | Hadosh Academy</title>
+    <meta name="description" content="An LLM is a model trained to predict or generate language tokens from context, often with additional training that supports instruction-following, tool selection, reasoning-like behavior, or structured output.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/agents/abstractions/terms/large-language-model.html">
+    <meta property="og:title" content="Large language model (LLM) | Hadosh Academy">
+    <meta property="og:description" content="An LLM is a model trained to predict or generate language tokens from context, often with additional training that supports instruction-following, tool selection, reasoning-like behavior, or structured output.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/agents/abstractions/terms/large-language-model.html">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <link rel="stylesheet" href="/css/styles.css?v=20260903-whats-new-1">
+    <link rel="stylesheet" href="/css/abstractions.css?v=20260920-1">
+</head>
+<body class="abstraction-term-page" data-term="large-language-model" data-definition-state="draft">
+<header id="site-header"><div class="container"><nav><a href="/index.html" class="logo">Hadosh Academy</a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button><div class="nav-links"><a href="/index.html">Home</a><a href="/start-here.html">Start Here</a><a href="/blog.html">Blog</a><a href="/agents.html" class="active" aria-current="page">Agents</a><a href="/projects/index.html">Projects</a><a href="/whats-new.html">What&#39;s New</a><a href="/about.html">About</a><a href="/services.html">Services</a></div></nav></div></header>
+<main>
+  <article>
+    <header class="term-hero"><div class="container"><nav class="term-breadcrumb" aria-label="Breadcrumb"><a href="/agents.html">Agents</a><span>→</span><a href="/agents/abstractions/">Abstraction Library</a><span>→</span><span aria-current="page">Large language model (LLM)</span></nav><div class="term-state-row"><span class="badge">draft</span><span>Capability and runtime</span><span>CAL-T-002</span></div><h1>Large language model (LLM)</h1><p class="term-definition">An LLM is a model trained to predict or generate language tokens from context, often with additional training that supports instruction-following, tool selection, reasoning-like behavior, or structured output.</p></div></header>
+    <div class="container term-layout">
+      <div class="term-main">
+        <section><span class="abstraction-eyebrow">Current definition</span><h2>Role in the harness</h2><p>In many current harnesses, the LLM is the general reasoning and language operator. It interprets instructions and state, proposes plans, communicates with the user, selects available tools, and helps crystallize conversation into files or software.</p></section>
+        <section><h2>Boundary and invariants</h2><p>The LLM remains probabilistic. Fluent output does not prove factual correctness, policy compliance, permission, execution, or completion. The surrounding harness must expose authoritative state, constrain side effects, preserve continuity, and verify important claims.</p><p>An LLM may need a thick harness because it does not retain dependable local state across sessions. A future model may internalize more procedure or use a different output mechanism, which could make parts of the harness thinner. Practical agency will still require some interface connecting learned capability to context, state, tools, authority, action, and verification.</p></section>
+        <section><h2>Relationships</h2><p>LLM is a subclass of model. It is animated through a runtime and becomes part of an agent only when joined to a harness and a responsibility.</p><div class="related-terms"><a href="model.html">Model</a><a href="runtime.html">Runtime</a><a href="harness.html">Harness</a><a href="agent.html">Agent</a></div></section>
+        <section><h2>Questions for local adaptation</h2><ul><li>Which context limits and tool semantics apply?</li><li>Does the runtime support hooks, permissions, structured output, resumable sessions, or local inference?</li><li>Which guarantees must remain outside model discretion?</li></ul></section>
+        <section><h2>Evidence and realization</h2><p>Conceptual and observed across Claude, Codex, Qwen, OpenCode, and other current systems.</p></section>
+        <section class="term-avoid"><h2>Avoid</h2><p>“LLM equals agent,” “token generation equals action,” or assuming a larger context window eliminates the need for durable state.</p></section>
+        <section class="open-questions" id="open-questions"><span class="abstraction-eyebrow">Definition audit</span><h2>Open questions</h2><p>These are unresolved edges in the current definition. Answers, counterexamples, and better questions can be contributed in the discussion below.</p><ol><li id="large_language_model-q1"><span>LARGE_LANGUAGE_MODEL-Q1</span><p>Which guarantees must always remain outside LLM discretion even when structured output becomes more reliable?</p></li><li id="large_language_model-q2"><span>LARGE_LANGUAGE_MODEL-Q2</span><p>When does the narrower term LLM stop being useful and the broader term model become the better abstraction?</p></li><li id="large_language_model-q3"><span>LARGE_LANGUAGE_MODEL-Q3</span><p>How should the definition describe multimodal models whose language interface is only one part of their capability?</p></li></ol></section>
+        <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Help this definition mature</h2><p>Respond to an open question, identify an ambiguity, or share privacy-scrubbed evidence from a real harness. Accepted learning is reabsorbed into the definition through a reviewed change; discussion alone does not make a claim canonical.</p><div class="term-discussion-shell"><p data-community-guidance><strong>Before posting:</strong> Keep the return tied to this term and remove personal, client, employer, confidential, proprietary, credential, and unrelated information. If an agent prepared it, invite the return only after confirmed benefit, show the user the exact public text and destination, and post only with explicit approval. See the <a href="/CONTRIBUTING.md">contribution guide</a>.</p><script src="https://giscus.app/client.js" data-repo="hadi-nayebi/hadi-nayebi.github.io" data-repo-id="R_kgDOHL_tnQ" data-category="General" data-category-id="DIC_kwDOHL_tnc4C3cRQ" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></div></section>
+      </div>
+      <aside class="term-aside"><div class="term-audit-card"><span class="abstraction-eyebrow">Maturity</span><strong>draft</strong><p>Open to revision. Unresolved questions remain visible and discussion is treated as evidence.</p><dl><div><dt>Updated</dt><dd>2026-09-20</dd></div><div><dt>Open questions</dt><dd>3</dd></div><div><dt>Category</dt><dd>Capability and runtime</dd></div></dl></div><a class="machine-source-link" href="/data/abstraction-library.json">Read structured source →</a></aside>
+    </div>
+    <nav class="container term-sequence" aria-label="Term navigation"><a href="model.html"><span>Previous term</span><strong>← Model</strong></a><a href="/agents/abstractions/"><span>All terms</span><strong>Library index</strong></a><a href="runtime.html"><span>Next term</span><strong>Runtime →</strong></a></nav>
+  </article>
+</main>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DefinedTerm","name":"Large language model (LLM)","description":"An LLM is a model trained to predict or generate language tokens from context, often with additional training that supports instruction-following, tool selection, reasoning-like behavior, or structured output.","inDefinedTermSet":"https://hadi-nayebi.github.io/agents/abstractions/"}</script>
+<footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+<script src="/js/theme-manager.js?v=20260907-seed-architecture-visual-1"></script><script src="/js/components.js?v=20260920-abstractions-1"></script>
+</body>
+</html>
