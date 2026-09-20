@@ -12,6 +12,7 @@ const slugs=new Set(library.terms.map(x=>x.slug));
 for(const term of library.terms){
   if(!categories.has(term.category))errors.push(`${term.slug}: unknown category`);
   if(!["draft","consolidated"].includes(term.status))errors.push(`${term.slug}: invalid status`);
+  if(!Number.isInteger(term.weight)||term.weight<1||term.weight>5)errors.push(`${term.slug}: weight must be an integer from 1 to 5`);
   if(term.status==="draft"&&!term.openQuestions.length)errors.push(`${term.slug}: draft requires open questions`);
   if(term.status==="consolidated"&&term.openQuestions.length)errors.push(`${term.slug}: consolidated term cannot retain open questions`);
   const words=[term.definition,term.role,...term.boundary,term.relationships,term.evidence,term.avoid].join(" ").trim().split(/\s+/).filter(Boolean).length;
