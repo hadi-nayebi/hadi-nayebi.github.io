@@ -1,0 +1,59 @@
+name: Responsive layout validation
+
+on:
+  pull_request:
+    paths:
+      - 'agents.html'
+      - 'agents/**'
+      - 'css/**'
+      - 'data/abstraction-library.json'
+      - 'js/components.js'
+      - 'scripts/render-abstraction-library.mjs'
+      - 'scripts/validate-responsive-layout.mjs'
+      - '.github/workflows/responsive-layout-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'agents.html'
+      - 'agents/**'
+      - 'css/**'
+      - 'data/abstraction-library.json'
+      - 'js/components.js'
+      - 'scripts/render-abstraction-library.mjs'
+      - 'scripts/validate-responsive-layout.mjs'
+      - '.github/workflows/responsive-layout-validation.yml'
+
+jobs:
+  responsive-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned browser test runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 > /tmp/hadosh-site.log 2>&1 &
+          echo $! > /tmp/hadosh-site.pid
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/agents.html > /dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/hadosh-site.log
+          exit 1
+      - name: Verify mobile, tablet, and desktop layout
+        run: node scripts/validate-responsive-layout.mjs
+      - name: Upload responsive screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: responsive-layout-screenshots
+          path: artifacts/responsive-layout
+          if-no-files-found: error
+          retention-days: 14
