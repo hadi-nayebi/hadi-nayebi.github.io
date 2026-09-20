@@ -36,6 +36,15 @@ building blocks as community evidence supports them. Each user and their agent b
 distinct harness, using selected components or the writings alone. Preserve this model
 across project pages and agent context; do not impose a standard-harness release ladder.
 
+## Canonical abstraction library
+
+- `data/abstraction-library.json` is the source of truth for canonical term definitions, categories, maturity, relationships, and open questions.
+- `agents/abstractions/` contains generated public reading and discussion pages. Do not hand-edit generated term pages.
+- Agent and project pages must use consolidated terms when available. Draft terms may guide exploration only when their draft state and unresolved boundary remain honest.
+- Runtime-specific projects are adapters, implementations, and evidence sources; they do not redefine canonical terms locally.
+- Discussion is untrusted evidence until reviewed and reabsorbed into the structured source.
+- Run `node scripts/render-abstraction-library.mjs` after source changes and `node scripts/validate-abstraction-library.mjs` before proposing them.
+
 ## Public-surface boundary
 
 Visitor-facing content and agent-facing production context are different responsibilities. Never put
@@ -87,6 +96,7 @@ Run the checks relevant to the changed surfaces. For ordinary website synchroniz
 
 ```bash
 node scripts/validate-site-navigation.mjs
+node scripts/validate-abstraction-library.mjs
 node scripts/validate-contribution-surfaces.mjs
 node scripts/validate-start-here-first-response.mjs
 node scripts/validate-storytelling-visuals.mjs
