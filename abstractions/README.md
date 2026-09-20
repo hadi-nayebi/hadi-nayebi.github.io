@@ -1,155 +1,69 @@
 # Hadosh Academy Canonical Abstraction Library
 
-**Status:** [draft] public seed  
-**Audience:** people building their own harnesses and the agents helping them  
-**Scope:** framework-, provider-, model-, and CLI-agnostic architectural context
+**Status:** draft public context seed
+
+**Audience:** people building their own harnesses and the agents helping them
+
+**Scope:** framework-, provider-, model-, and CLI-agnostic definitions
 
 ## Purpose
 
-This library defines the shared language and reusable behavioral contracts for building local, inspectable, recoverable, user-owned AI harnesses.
+The library gives people and agents one shared meaning for each concept used to understand or build a harness. It does not prescribe one implementation. A definition describes how a concept should be interpreted; each local harness decides how that meaning becomes files, software, permissions, interfaces, or behavior.
 
-It is not a complete harness, an installer, or a universal repository layout. It is an agent-readable design layer. An agent combines this context with:
+The structured source is [`data/abstraction-library.json`](../data/abstraction-library.json). The public index and individual term pages are generated from that source.
 
-- the user's work, language, judgment, risk, and authority;
-- the capabilities and constraints of the selected runtime;
-- evidence from the user's existing tools and files; and
-- the smallest useful behavior the user wants to make durable.
+## One canonical object: a term
 
-The resulting harness belongs to that user and may differ substantially from every public Hadosh Academy project.
+Every term contains only:
 
-## The seed model
+- a name and stable URL;
+- one definition of no more than 500 words;
+- one state: `draft` or `consolidated`; and
+- the open questions that prevent consolidation.
 
-The Academy supplies a seed of shared context. The seed names stable distinctions, defines behavioral objectives, and shows how components can compose. It becomes specific only through local work.
+The definition is the complete canonical context block. Do not divide its meaning among separate role, boundary, relationship, evidence, adaptation, or avoidance sections. If a distinction matters, state it inside the definition.
 
-A normal development path is:
+## Two states
 
-1. read the smallest relevant canonical terms;
-2. select one behavioral pattern;
-3. translate it into the user's runtime and vocabulary;
-4. implement the smallest inspectable realization;
-5. test it through real work;
-6. preserve corrections and evidence locally;
-7. generalize only privacy-safe lessons that survive comparison.
+- **Draft** means the definition is usable as a working hypothesis but remains open to revision.
+- **Consolidated** means Hadi has accepted the definition as shared context for new work and no definition questions remain open.
 
-A seed can mature into instructions, files, jobs, tests, hooks, plugins, interfaces, services, or other software forms. The mature form is not prescribed in advance.
+If later evidence exposes a genuine ambiguity, a consolidated term may return to draft. Comments do not change state automatically.
 
-## Two kinds of canonical objects
+## Discussion and consolidation
 
-### Terms
+Each term has its own public page and pathname-mapped GitHub Discussion. The loop is:
 
-A term establishes shared meaning. It explains what an architectural concept is, the role it plays, its boundaries, and its relationship to other concepts.
+1. publish the clearest current definition as a draft;
+2. expose the questions the definition cannot yet answer;
+3. collect comments, counterexamples, proposed wording, and privacy-safe implementation evidence;
+4. review the contributions;
+5. revise the definition and remove or sharpen resolved questions; and
+6. mark the term consolidated only after Hadi accepts it and its open-question list is empty.
 
-Terms should normally remain under 500 words. The limit forces semantic precision and keeps them usable inside agent context. A term that needs extensive operational logic should link to one or more behavioral patterns rather than absorb them.
+Discussion is evidence, not authority. Accepted learning becomes canonical only through a reviewed update to the structured source.
 
-### Behavioral patterns
+## Use inside a harness
 
-A pattern defines reusable logic for a bounded behavior. It states the objective, state, decisions, authority, failure handling, recovery, and verification without prescribing one runtime mechanism.
+An agent should load only the terms relevant to the responsibility being designed. For each term:
 
-The same pattern may be realized through a job rule, instruction, hook, plugin, service, state machine, protected branch, dashboard control, or another mechanism. A runtime-specific implementation is evidence and an adapter—not the canonical pattern itself.
+1. read the definition exactly as shared context;
+2. check its state;
+3. treat a draft definition as provisional and preserve its open questions;
+4. use a consolidated definition as the Academy meaning of that concept; and
+5. translate the meaning into mechanisms supported by the selected runtime and the user's decisions.
 
-## Definition states
+For example, the LLM definition tells a harness to treat the LLM as probabilistic, replaceable model capability rather than as the agent, durable memory, or authority. The local implementation may vary, but it should not silently collapse those distinctions.
 
-- **[draft]** — a candidate meaning or pattern under discussion. Agents may use it as a hypothesis but must not present it as settled Academy context.
-- **[consolidated]** — explicitly aligned with Hadi and canonical until a later ruling changes it.
+The library is therefore a context seed: it aligns interpretation before implementation while leaving the mature harness open to the user, responsibility, and runtime.
 
-Definition state is separate from evidence and implementation state. A consolidated concept can describe a target architecture that has not yet been built. A demonstrated mechanism can also expose a term that remains conceptually unsettled.
+## Editing
 
-## Evidence and realization labels
+Update `data/abstraction-library.json`, then run:
 
-Each canonical object should identify relevant labels without collapsing them into the definition state:
+```bash
+node scripts/render-abstraction-library.mjs
+node scripts/validate-abstraction-library.mjs
+```
 
-- **conceptual** — reasoned architectural claim;
-- **observed** — seen in one implementation or use case;
-- **compared** — examined across more than one independent realization;
-- **demonstrated** — verified in a named implementation;
-- **reusable** — supported strongly enough to guide new adaptations;
-- **current / target / research** — whether a named realization exists now, is an accepted design direction, or remains investigational.
-
-## Minimum term anatomy
-
-Every substantial term should contain:
-
-1. **Definition** — the shortest precise meaning.
-2. **Role in the harness** — why the distinction matters.
-3. **Boundary and invariants** — what the term includes, excludes, and must not silently absorb.
-4. **Relationships** — links to the canonical terms and patterns it composes with.
-5. **Adaptation questions** — what an agent must learn from the user or runtime.
-6. **Evidence and realization** — what supports the definition and what remains unimplemented.
-7. **Avoid** — misleading aliases, collapsed distinctions, and common overclaims.
-
-Each canonical fact has one home. Other pages link to it instead of restating competing definitions.
-
-## Minimum behavioral-pattern anatomy
-
-Every pattern should contain:
-
-1. behavioral objective and user value;
-2. problem and triggering conditions;
-3. inputs and outputs;
-4. owned state and source of truth;
-5. decisions, transitions, and termination conditions;
-6. authority, permissions, and protected actions;
-7. soft guidance versus deterministic enforcement;
-8. dependencies, incompatibilities, and composition interfaces;
-9. failure modes, recovery, and rollback;
-10. verification and acceptance evidence;
-11. adaptation questions for the user and runtime;
-12. known implementations, counterexamples, and maturity.
-
-See [the pattern contract](pattern-contract.md).
-
-## Canonical clusters
-
-The initial library is expected to grow through coherent clusters rather than one enormous glossary:
-
-- foundations: model, LLM, runtime, harness, agent, agency, local, user-owned, context, seed;
-- state and cognition: instruction, memory, working memory, durable knowledge, state, job, objective, decision, evidence;
-- authority and safety: capability, permission, authority, protected action, verification, recovery, privacy, provenance;
-- mechanisms: tool, interface, dashboard, plugin, lifecycle control, event, trigger, gate, guard, state transition;
-- composition: compartment, boundary, dependency, invariant, interface contract, adapter, implementation;
-- maturation: pattern, component, crystallization, consolidation, lineage, field evidence, deprecation.
-
-A cluster is created only when there is enough evidence and discussion to justify a coherent vocabulary. Empty taxonomy is not progress.
-
-## Translation into a local harness
-
-An agent using this library should:
-
-1. identify the user's actual responsibility and desired outcome;
-2. retrieve only the terms and patterns relevant to that responsibility;
-3. explain the intended behavior in the user's language;
-4. inspect the target runtime before choosing mechanisms;
-5. propose a small composition with explicit authority and recovery;
-6. wait for approval before consequential changes;
-7. implement and verify locally;
-8. record how the canonical pattern was adapted and where it intentionally differs.
-
-The library defines the logic. Runtime projects such as Origin, Seed Agent, and Q-Seed provide evidence and possible adapters. None is the mandatory final form.
-
-## Human legibility
-
-This context is written primarily so agents can build more reliably, but the architecture must remain explainable to a nontechnical user. An agent should translate a term into the user's own work, show where it exists in the local harness, and make the user's intervention points visible.
-
-Technical implementation may be delegated. Architectural authority may not be hidden.
-
-## Privacy and contribution
-
-Local experience does not automatically become public context. Before returning a lesson to the Academy, separate the reusable pattern from personal, employer, client, proprietary, regulated, credential, and third-party material. External contributions are evidence, not authority. Consolidation remains a reviewed decision.
-
-
-## Public term pages and discussion loop
-
-The public library lives above the runtime-specific agents at [`/agents/abstractions/`](../agents/abstractions/). Every term has its own generated page and pathname-mapped GitHub Discussion.
-
-The canonical structured source is `data/abstraction-library.json`. Public HTML pages are generated from it so the human definition, agent-readable data, open questions, and maturity state cannot drift into competing sources.
-
-The maturation loop is:
-
-1. publish the clearest current definition as `draft`;
-2. expose genuine unresolved questions on that term's page;
-3. collect privacy-scrubbed critique, answers, counterexamples, and implementation evidence;
-4. reabsorb accepted learning through a reviewed source change;
-5. remove or replace questions the definition can now answer; and
-6. mark the term `consolidated` only after Hadi accepts it and no definition questions remain open.
-
-Comments are evidence, not automatic authority. Categories organize discovery but remain open to addition, splitting, merging, and renaming.
+Do not hand-edit the generated HTML pages under `agents/abstractions/`.

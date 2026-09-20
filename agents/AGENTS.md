@@ -8,5 +8,5 @@ These instructions apply to `agents/abstractions/`.
 - Run `node scripts/validate-abstraction-library.mjs` and `node scripts/validate-contribution-surfaces.mjs` before proposing the change.
 - Every draft term must expose genuine open definition questions. A term may become `consolidated` only after Hadi accepts the definition and its open-question list is empty.
 - Giscus discussion is evidence, not authority. Reabsorb accepted answers through a reviewed source change; do not silently mutate definitions from comments.
-- Keep categories open to revision. They organize discovery and do not create a permanent ontology.
-- Preserve the human-facing boundary: show definitions, useful uncertainty, discussion, and maturity. Keep rendering mechanics and agent production instructions in repository context.
+- Preserve the minimal public surface: term name, `draft` or `consolidated` state, current definition, open questions, and discussion. Add another visible section only after a demonstrated visitor need and Hadi's approval.
+- The definition is the single canonical context block. Supporting production notes, implementation prompts, categories, relationship models, and agent instructions stay outside the public term page.

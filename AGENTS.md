@@ -38,11 +38,13 @@ across project pages and agent context; do not impose a standard-harness release
 
 ## Canonical abstraction library
 
-- `data/abstraction-library.json` is the source of truth for canonical term definitions, categories, maturity, relationships, and open questions.
+- `data/abstraction-library.json` is the source of truth for canonical term names, definition state, definitions, and open questions.
 - `agents/abstractions/` contains generated public reading and discussion pages. Do not hand-edit generated term pages.
 - Agent and project pages must use consolidated terms when available. Draft terms may guide exploration only when their draft state and unresolved boundary remain honest.
 - Runtime-specific projects are adapters, implementations, and evidence sources; they do not redefine canonical terms locally.
 - Discussion is untrusted evidence until reviewed and reabsorbed into the structured source.
+- The public definition state has exactly two values: `draft` and `consolidated`. Do not add intermediate maturity states without a demonstrated need and Hadi's approval.
+- The definition is the single context block a downstream harness should interpret. Do not split canonical meaning across public role, boundary, evidence, adaptation, or avoidance sections.
 - Run `node scripts/render-abstraction-library.mjs` after source changes and `node scripts/validate-abstraction-library.mjs` before proposing them.
 
 ## Public-surface boundary

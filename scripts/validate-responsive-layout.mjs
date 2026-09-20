@@ -31,6 +31,7 @@ for (const viewport of viewports) {
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(150);
+    await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
 
     const issues = await page.evaluate(() => {
       const problems = [];
@@ -86,7 +87,7 @@ for (const viewport of viewports) {
         if (!topOwner || !topOwner.closest('#site-header')) problems.push(`fixed site header is visually covered by ${topOwner ? label(topOwner) : 'nothing'}`);
       }
 
-      for (const selector of ['.abstraction-entry-cloud', '.abstraction-cloud', '.abstraction-actions', '.term-sequence', '.term-hero', '.term-discussion-shell']) {
+      for (const selector of ['.abstraction-entry-cloud', '.abstraction-cloud', '.abstraction-actions', '.term-hero', '.term-discussion-shell']) {
         document.querySelectorAll(selector).forEach(element => {
           const style = getComputedStyle(element);
           if (element.scrollHeight > element.clientHeight + 2 && !['auto', 'scroll'].includes(style.overflowY)) {
@@ -95,11 +96,7 @@ for (const viewport of viewports) {
         });
       }
 
-      const pairGroups = [
-        ['.abstraction-entry-cloud a', '.abstraction-actions a'],
-        ['.abstraction-cloud a', '.vocabulary-toolbar'],
-        ['.term-hero h1', '.term-hero-summary']
-      ];
+      const pairGroups = [['.abstraction-entry-cloud a', '.abstraction-actions a']];
       for (const [leftSelector, rightSelector] of pairGroups) {
         const left = [...document.querySelectorAll(leftSelector)].filter(visible);
         const right = [...document.querySelectorAll(rightSelector)].filter(visible);
@@ -108,7 +105,7 @@ for (const viewport of viewports) {
         }
       }
 
-      for (const selector of ['.abstraction-entry-cloud a', '.cloud-term', '.abstraction-actions .btn', '.term-card', '.term-sequence a', '.term-hero-actions a']) {
+      for (const selector of ['.abstraction-entry-cloud a', '.cloud-term', '.abstraction-actions .btn', '.term-comment-link']) {
         const elements = [...document.querySelectorAll(selector)].filter(visible);
         for (let i = 0; i < elements.length; i += 1) {
           const rect = elements[i].getBoundingClientRect();
@@ -122,7 +119,7 @@ for (const viewport of viewports) {
       }
 
       const termHero = document.querySelector('.term-hero');
-      const definition = document.querySelector('.term-definition');
+      const definition = document.querySelector('.canonical-definition p');
       if (termHero && definition) {
         const heroStyle = getComputedStyle(termHero);
         const definitionStyle = getComputedStyle(definition);
@@ -149,21 +146,17 @@ for (const viewport of viewports) {
     });
 
     if (route.kind === 'library') {
-      await page.locator('#term-search').fill('learned computational system');
-      const cloudVisible = await page.locator('.cloud-term:not([hidden])').count();
-      const cardsVisible = await page.locator('.term-card:not([hidden])').count();
-      const countText = await page.locator('#library-result-count').innerText();
-      if (cloudVisible !== 1 || cardsVisible !== 1 || countText !== '1 term shown') {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: search did not synchronize cloud, count, and directory`);
-      }
-      await page.locator('#term-search').fill('');
-      await page.locator('[data-filter-group="category"][data-filter="harness-anatomy"]').click();
-      const filteredCategories = await page.locator('.cloud-term:not([hidden])').evaluateAll(elements => [...new Set(elements.map(element => element.dataset.category))]);
-      if (filteredCategories.length !== 1 || filteredCategories[0] !== 'harness-anatomy') {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: category filter exposed terms outside its category`);
-      }
-      await page.locator('[data-filter-group="category"][data-filter="all"]').click();
-      await page.evaluate(() => window.scrollTo(0, 0));
+      const cloudTerms = await page.locator('.cloud-term').count();
+      if (cloudTerms !== library.terms.length) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected ${library.terms.length} direct term links, found ${cloudTerms}`);
+      const excessControls = await page.locator('#term-search, .filter-button, .term-card, .cloud-legend, .maturation-flow, .agent-handoff').count();
+      if (excessControls) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: removed search, filters, directory cards, legends, or workflow panels returned`);
+    }
+
+    if (route.kind === 'term') {
+      const coreParts = await page.locator('.term-status-badge, .canonical-definition, .open-questions, .term-discussion').count();
+      if (coreParts !== 4) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: term page does not contain exactly the four core parts`);
+      const excessSections = await page.locator('#boundaries, #relationships, #adaptation, #evidence, #avoid, .term-audit-card, .term-jump-shell, .term-sequence').count();
+      if (excessSections) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: removed auxiliary term sections returned`);
     }
 
     if (route.kind !== 'agents' && ['phone-small', 'desktop'].includes(viewport.name)) {
@@ -185,7 +178,7 @@ for (const viewport of viewports) {
           fullPage: false
         });
         if (route.kind === 'library') {
-          await page.locator('.vocabulary-explorer').screenshot({
+          await page.locator('.abstraction-cloud').screenshot({
             path: path.join(artifactDir, `library-cloud-${viewport.width}x${viewport.height}.png`)
           });
         }
