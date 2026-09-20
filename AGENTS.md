@@ -92,6 +92,18 @@ main reading flow.
 
 ## Verification
 
+### Rendered layout verification
+
+Any job that changes visitor-visible HTML, CSS, responsive behavior, shared navigation, generated pages, or JavaScript that changes layout must verify the rendered result—not only syntax and link structure.
+
+- Run `node scripts/validate-responsive-layout.mjs` through the responsive-layout workflow.
+- Inspect the produced phone and desktop screenshots for hierarchy, spacing, wrapping, clipping, overflow, overlap, contrast, and consistency with adjacent pages.
+- Exercise at least 360 px, 412 px, 768 px, and 1440 px widths for a new or materially changed layout.
+- Check fixed-header clearance, opened mobile navigation, buttons, cards, long labels, discussion containers, and the transition into the next section.
+- A structural validator or green unrelated visual-asset check is not evidence that the page rendered correctly.
+- If a reusable semantic element inherits global site styling unexpectedly, repair the component boundary and add a regression assertion for that exact collision.
+- Do not mark the deliverable ready while visible overlap, clipping, unintended horizontal scrolling, inconsistent component styling, or contradictory maturity/status presentation remains.
+
 Run the checks relevant to the changed surfaces. For ordinary website synchronization, use:
 
 ```bash
