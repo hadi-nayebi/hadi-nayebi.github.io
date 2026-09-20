@@ -92,6 +92,23 @@ main reading flow.
 
 ## Verification
 
+### Rendered layout verification
+
+Any job that changes visitor-visible HTML, CSS, responsive behavior, shared navigation, generated pages, or JavaScript that changes layout must verify the rendered result—not only syntax and link structure.
+
+- Run `node scripts/validate-responsive-layout.mjs` through the responsive-layout workflow.
+- Inspect the produced phone and desktop screenshots for hierarchy, spacing, wrapping, clipping, overflow, overlap, contrast, and consistency with adjacent pages.
+- Inspect both the initial viewport and the complete page. A full-page screenshot can render fixed elements differently and cannot substitute for checking what a visitor sees above the fold.
+- Exercise at least 360 px, 412 px, 768 px, and 1440 px widths for a new or materially changed layout.
+- Check fixed-header clearance, opened mobile navigation, buttons, cards, long labels, discussion containers, and the transition into the next section.
+- For a generated page family, render and inspect every generated page at phone and desktop widths; a sample page is not sufficient when shared content can change wrapping or height.
+- Exercise visitor interactions that change presentation, including search, filters, tabs, expanded navigation, anchor links, and empty-result states. Confirm that visualizations and their accessible list or directory stay synchronized.
+- A structural validator or green unrelated visual-asset check is not evidence that the page rendered correctly.
+- Audit global type selectors such as `header`, `nav`, `section`, and `aside` whenever introducing those semantic elements. Confirm which element owns the top of the viewport and which elements participate in normal document flow. If a reusable semantic element inherits global site styling unexpectedly, repair the component boundary and add a regression assertion for that exact collision.
+- Text reading surfaces must remain opaque enough for dependable contrast; decorative gradients, glass effects, and overlays must never sit between the reader and the definition.
+- Do not mark the deliverable ready while visible overlap, clipping, unintended horizontal scrolling, inconsistent component styling, or contradictory maturity/status presentation remains.
+- “Ready” is a release claim. Do not ask the user to merge until the relevant automated checks pass and their screenshot artifacts have been manually reviewed for every changed surface.
+
 Run the checks relevant to the changed surfaces. For ordinary website synchronization, use:
 
 ```bash

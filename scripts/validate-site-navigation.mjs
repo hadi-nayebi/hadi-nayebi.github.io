@@ -120,6 +120,19 @@ if (fs.existsSync(blogIndexPath)) {
 for (const file of publicHtml) {
   const html = fs.readFileSync(file, 'utf8');
   const fileRel = rel(file);
+
+  // The shared stylesheet intentionally constrains the primary header nav.
+  // Reusable page navigation regions must therefore use labelled divs instead
+  // of inheriting the header's fixed height and flex rules.
+  if (/<nav\b[^>]*class=["'][^"']*\b(?:abstraction-entry-cloud|abstraction-cloud|term-breadcrumb|term-sequence)\b/i.test(html)) {
+    errors.push(`${fileRel}: abstraction navigation regions must not use the globally constrained nav element`);
+  }
+  for (const className of ['abstraction-entry-cloud', 'abstraction-cloud', 'term-breadcrumb', 'term-sequence']) {
+    if (html.includes(className)) {
+      const safeRegion = new RegExp(`<div\\b(?=[^>]*class=["'][^"']*\\b${className}\\b)(?=[^>]*role=["']navigation["'])[^>]*>`, 'i');
+      if (!safeRegion.test(html)) errors.push(`${fileRel}: ${className} must be a labelled div navigation region`);
+    }
+  }
   const redirect = isRedirectPage(html);
   const noindex = /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html);
   const explorable = fileRel.startsWith('blog/') && fileRel.includes('/explore/');
