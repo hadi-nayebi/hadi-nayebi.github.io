@@ -20,7 +20,7 @@ function head(title,description,canonical) {
     <meta property="og:title" content="${escapeHtml(title)} | Hadosh Academy">
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${canonical}">
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">\n    <meta property="og:type" content="website">
     <meta property="og:site_name" content="Hadosh Academy">
     <link rel="stylesheet" href="/css/styles.css?v=20260903-whats-new-1">
     <link rel="stylesheet" href="/css/abstractions.css?v=20260920-1">
