@@ -70,3 +70,30 @@
 .term-sequence span{display:block;color:var(--text-muted);font-size:.72rem}
 @media(max-width:900px){.term-category-heading,.agent-handoff,.term-layout{grid-template-columns:1fr}.term-aside{order:-1}.term-audit-card{position:static}.term-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.maturation-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.abstraction-hero,.term-hero{padding-top:8.5rem}.abstraction-hero h1,.term-hero h1{font-size:clamp(2.6rem,15vw,4.6rem)}.term-card-grid,.maturation-flow,.term-sequence{grid-template-columns:1fr}.abstraction-cloud{min-height:260px;padding:1.2rem}.term-sequence a,.term-sequence a:last-child{text-align:left}}
+
+/* Defensive reset for reusable navigation regions */
+.abstraction-entry-cloud,
+.abstraction-cloud,
+.term-breadcrumb,
+.term-sequence {
+    height: auto;
+    min-height: 0;
+}
+
+.abstraction-entry-cloud {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+@media (max-width: 620px) {
+    .abstraction-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .abstraction-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        text-align: center;
+    }
+}
