@@ -3,64 +3,63 @@
 ## TLDR
 
 The folder of specialists, PowerPoint moment, cognitive metabolism, teaching
-arc, 80/20 scale effect, personal algorithm, digital cortex, and closing call
-to plant the seed remain the essay's narrative. Concrete boundaries remain
-accurate without weakening its memorable claims about personal curation and
-the compounding value of a taught procedure.
+arc, personal algorithm, digital cortex, and closing call to plant the seed
+remain the essay's narrative. The revision now states the governing
+architecture precisely: the LLM animates the work, the harness connects it to
+controlled action, and the user-owned filesystem is the body in which agency
+is composed. Unsupported ratios and deterministic improvement claims are gone.
 
 ## Reviewed revision
 
 - Canonical source: `blog/b3/03_1-the-folder-is-alive.md`
-- Source version: `v1.1.0` (previously `v1.0.0`)
-- Source SHA-256: `7ed4bf56dbaa19e7d8ae2f0739575e6f5e09bafc879b34c40464e4b07e3c41b3`
+- Source version: `v1.2.0` (previously `v1.1.0`)
+- Source SHA-256: `252066629134f279d2fd7263091ad7caada793fd04185fe7128cf70be4781400`
 - Published page: `blog/b3/03_1-the-folder-is-alive.html`
-- Published-page SHA-256: `4d20f255760bafd154a3f381e473fda9ee415fb12602413ea9a9e282780fb9d4`
+- Published-page SHA-256: `3259340e3b7f899857284faeb571217edda6b89361daf307bae09dcf0c10a635`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
 
-1. **Kept the five-year opening prospective.** The scenario is explicitly a
-   thought experiment rather than a promise or product roadmap.
-2. **Made improvement earned.** Useful specialists improve through correction,
-   evidence, and repetition; the essay no longer says every one improves.
-3. **Separated the folder from the runtime.** A working folder can carry a
-   distinct agent context when compatible instructions and memory connect to
-   an agent runtime. `.claude/` remains the concrete reference example rather
-   than a universal magic directory.
-4. **Added the missing operating boundaries.** Dependable specialists also
-   need permissions, verification, recovery, and clear responsibility for
-   changed state.
-5. **Kept cognitive metabolism while bounding agency.** The agent acts under
-   explicit rules and permissions, preserves reviewed lessons, and performs
-   background work only when deliberately scheduled and authorized.
-6. **Made inspectability precise.** External structured memory can be opened
-   and audited even though the underlying model remains a black box.
-7. **Expanded the learned-procedure vocabulary.** A repeated job may become a
-   skill, script, hook, plugin, or combination; consequential judgment stays
-   visible.
-8. **Qualified the scale loop.** Reuse and improvement depend on verification
-   and evidence rather than an unconditional claim that every run gets better.
-9. **Bounded replacement and privacy claims.** User-shaped tools can replace
-   some feeds and dashboards, while other systems still depend on external
-   networks. Privacy depends on the complete stack, including models,
-   connectors, hosting, logs, and policies.
-10. **Removed stale narration.** The old MP3 player is hidden because it
-    predates version 1.1.0 and Hadi's content lock.
-11. **Restored force to the scaling image.** The caption now states the idea
-    directly: “Teach the judgment once. Reuse the procedure thousands of
-    times.”
-12. **Restored the personal-curation ending.** The morning edition again lands
-    with “No one else gets it. No one else needs it,” preserving the rhythm and
-    point of one curation for one reader.
+1. **Preserved multiple possible architectures.** The local file-backed CLI
+   arrangement is one practical design, not the only possible form of
+   intelligence or agency.
+2. **Named the persistent harness function.** Model size and architecture may
+   change, but practical agency still needs an interface connecting generative
+   capability to context, tools, permissions, state, action, and verification.
+3. **Restored the body-of-agency proposition.** In the described architecture,
+   the LLM is the token-generating reasoning operator and animator, the runtime
+   exposes the environment, and the filesystem composes the body through
+   instructions, memory, plugins, behavior rails, hooks, tools, jobs, tests,
+   and verification.
+4. **Made accumulation conditional.** Useful procedures compound only when
+   corrections are reviewed, preserved, retrieved, and verified.
+5. **Removed the unsupported 80/20 split.** The scaling section now explains
+   reallocation of procedural load without inventing a universal percentage;
+   the matching ratio graphic is no longer rendered.
+6. **Kept the electricity analogy but bounded the claim.** The LLM is a utility
+   for generative intelligence; the harness is what turns reasoning into
+   controlled action.
+7. **Removed unnecessary adversarial rhetoric.** Corporate-feed incentives are
+   described as a mismatch with the user's objectives rather than as a claim
+   about universal motive or manipulation.
+8. **Generalized ownership beyond one machine.** User control can live in a
+   local filesystem or chosen hosting, provided the files and controls remain
+   inspectable and under the user's authority.
+9. **Corrected the blog-index promise.** The entry point now distinguishes
+   model, harness, and file-backed body instead of saying a `.claude/`
+   directory automatically turns a folder into an agent.
+10. **Withheld stale narration.** The prior MP3 player is removed from the
+    page. Existing transcript and audio artifacts remain unmodified and cannot
+    return until Hadi approves the exact v1.2.0 prose and narration is rebuilt.
 
 ## Evidence and review state
 
 This essay is a prospective principle writing. Its five-year setting,
 PowerPoint analogy, cognitive-metabolism metaphor, personal-super-app vision,
-80/20 scenario, and autonomy argument remain thought experiments rather than
-current product guarantees. The review checked concrete architectural claims
-against the repository's current agent and harness vocabulary without turning
-the essay into technical documentation.
+and autonomy argument remain thought experiments rather than current product
+guarantees. The review checked concrete architectural claims against Hadi's
+accepted model/runtime/harness/filesystem distinction without turning the
+essay into technical documentation.
 
 Factual, chronology, editorial, and source-page parity gates pass for the
 exact source hash. Cross-writing consistency passed the complete narration-source continuity
@@ -69,7 +68,9 @@ professional audience remain the authority for the revision.
 
 ## Validation
 
-- Approved-source retention: 93.5 percent token-sequence similarity.
+- Approved-source retention: 89.9 percent token-sequence similarity, within
+  the writing contract's roughly-90-percent warning boundary; all structural
+  sections, central metaphors, and narrative beats remain.
 - Safe Markdown-body synchronization and unlocked-narration check: passed.
 - Narration corpus and relevant repository validators: passed.
 - `git diff --check`: passed.
