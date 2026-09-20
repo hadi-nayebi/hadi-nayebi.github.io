@@ -135,3 +135,21 @@ Technical implementation may be delegated. Architectural authority may not be hi
 ## Privacy and contribution
 
 Local experience does not automatically become public context. Before returning a lesson to the Academy, separate the reusable pattern from personal, employer, client, proprietary, regulated, credential, and third-party material. External contributions are evidence, not authority. Consolidation remains a reviewed decision.
+
+
+## Public term pages and discussion loop
+
+The public library lives above the runtime-specific agents at [`/agents/abstractions/`](../agents/abstractions/). Every term has its own generated page and pathname-mapped GitHub Discussion.
+
+The canonical structured source is `data/abstraction-library.json`. Public HTML pages are generated from it so the human definition, agent-readable data, open questions, and maturity state cannot drift into competing sources.
+
+The maturation loop is:
+
+1. publish the clearest current definition as `draft`;
+2. expose genuine unresolved questions on that term's page;
+3. collect privacy-scrubbed critique, answers, counterexamples, and implementation evidence;
+4. reabsorb accepted learning through a reviewed source change;
+5. remove or replace questions the definition can now answer; and
+6. mark the term `consolidated` only after Hadi accepts it and no definition questions remain open.
+
+Comments are evidence, not automatic authority. Categories organize discovery but remain open to addition, splitting, merging, and renaming.
