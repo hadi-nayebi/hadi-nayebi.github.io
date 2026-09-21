@@ -89,7 +89,7 @@ ${nav()}
     <section class="term-hero" aria-labelledby="term-title"><div class="container term-reading-width"><a class="back-to-library" href="/agents/abstractions/">← All terms</a><div class="term-state-row"><span class="term-status-badge">${escapeHtml(term.status)}</span><span>${escapeHtml(lib.definitionStates[term.status])}</span></div><h1 id="term-title">${escapeHtml(term.name)}</h1><div class="canonical-definition"><span class="abstraction-eyebrow">Current definition</span><p>${escapeHtml(term.definition)}</p></div><a class="term-comment-link" href="#discussion">Comment on this term</a></div></section>
     <div class="container term-reading-width term-content">
       <section class="open-questions" id="open-questions"><span class="abstraction-eyebrow">${escapeHtml(questionLabel)}</span><h2>Open questions</h2>${questionIntroduction}${renderQuestions(term)}</section>
-      <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Discuss this term</h2><p>Identify an ambiguity, propose clearer wording, or answer an open question. Accepted contributions are reviewed and folded back into the definition.</p>${giscus()}</section>
+      <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Discuss this term</h2><p>Ask a question that could expose or reduce ambiguity, identify wording that can be interpreted more than one way, or propose a more precise definition. Accepted contributions are reviewed and folded back into the definition.</p>${giscus()}</section>
       <a class="back-to-library back-to-library-bottom" href="/agents/abstractions/">← Return to all terms</a>
     </div>
   </article>
