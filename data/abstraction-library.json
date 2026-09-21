@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "title": "Hadosh Academy Canonical Abstraction Library",
   "purpose": "A shared, framework-agnostic context for understanding and building local, inspectable, user-owned AI harnesses. Each term gives people and agents one current meaning to work from.",
-  "updated": "2026-09-20",
+  "updated": "2026-09-21",
   "definitionStates": {
     "draft": "Open to revision.",
     "consolidated": "Accepted as shared context for new work."
@@ -11,13 +11,9 @@
     {
       "name": "Model",
       "slug": "model",
-      "status": "draft",
-      "definition": "A model is a learned computational system that transforms supplied input into an inference, prediction, representation, decision, action proposal, or generated output. It provides learned capability, but it is not the complete agent. By itself, a model does not establish durable identity, local memory, job continuity, permissions, recovery, or ownership. Those responsibilities belong to the surrounding harness and runtime. A model may be general or specialized, remote or local, commercial or open-weight. Replacing it may change capability, cost, speed, privacy, and compatibility without necessarily replacing the user’s harness.",
-      "openQuestions": [
-        "What minimum properties must remain true for future models that produce decisions, actions, or representations rather than language tokens?",
-        "Should a routed or compound system of learned components count as one model or as a model system?",
-        "What evidence is sufficient to attribute a behavior to the model rather than to the surrounding harness?"
-      ]
+      "status": "consolidated",
+      "definition": "In Hadosh Academy, a model is the category of computational component to which large language models belong. A model receives supplied context as input and produces an output through learned behavior. The output may be language, media, a prediction, classification, score, probability, representation, structured decision, action proposal, or another defined result. Architecture, training data, training method, fine-tuning, size, context capacity, modality, provider, and deployment location may change a particular model’s capabilities and limitations, but they do not define its role in a harness. A model is one building block of an agentic system, not the agent or harness itself. Information encoded in a model and temporary state used during inference must not be treated as durable, inspectable, user-controlled memory unless the model provides an explicit and verified guarantee. The harness therefore supplies and preserves durable context, memory, identity, jobs, permissions, tools, verification, recovery, and ownership. A model’s output is not by itself proof of truth, authorization, execution, or completion.",
+      "openQuestions": []
     },
     {
       "name": "Large language model (LLM)",

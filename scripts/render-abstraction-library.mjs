@@ -75,6 +75,9 @@ function renderQuestions(term) {
 
 function renderTerm(lib, term) {
   const questionLabel = term.openQuestions.length === 1 ? "1 open question" : `${term.openQuestions.length} open questions`;
+  const questionIntroduction = term.openQuestions.length
+    ? `<p>These are the parts of the definition that still need clarification.</p>`
+    : "";
   const schema = JSON.stringify({"@context":"https://schema.org","@type":"DefinedTerm",name:term.name,description:term.definition,inDefinedTermSet:"https://hadi-nayebi.github.io/agents/abstractions/"});
   return `<!DOCTYPE html>
 <html lang="en">
@@ -85,8 +88,8 @@ ${nav()}
   <article>
     <section class="term-hero" aria-labelledby="term-title"><div class="container term-reading-width"><a class="back-to-library" href="/agents/abstractions/">← All terms</a><div class="term-state-row"><span class="term-status-badge">${escapeHtml(term.status)}</span><span>${escapeHtml(lib.definitionStates[term.status])}</span></div><h1 id="term-title">${escapeHtml(term.name)}</h1><div class="canonical-definition"><span class="abstraction-eyebrow">Current definition</span><p>${escapeHtml(term.definition)}</p></div><a class="term-comment-link" href="#discussion">Comment on this term</a></div></section>
     <div class="container term-reading-width term-content">
-      <section class="open-questions" id="open-questions"><span class="abstraction-eyebrow">${escapeHtml(questionLabel)}</span><h2>Open questions</h2><p>These are the parts of the definition that still need clarification.</p>${renderQuestions(term)}</section>
-      <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Help consolidate this term</h2><p>Answer an open question, identify an ambiguity, or propose clearer wording. Accepted contributions are reviewed and folded back into the definition.</p>${giscus()}</section>
+      <section class="open-questions" id="open-questions"><span class="abstraction-eyebrow">${escapeHtml(questionLabel)}</span><h2>Open questions</h2>${questionIntroduction}${renderQuestions(term)}</section>
+      <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Discuss this term</h2><p>Identify an ambiguity, propose clearer wording, or answer an open question. Accepted contributions are reviewed and folded back into the definition.</p>${giscus()}</section>
       <a class="back-to-library back-to-library-bottom" href="/agents/abstractions/">← Return to all terms</a>
     </div>
   </article>
