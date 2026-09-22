@@ -98,4 +98,11 @@ The v1.0.0 revision:
 
 The conceptual thesis, filmmaker story, evidence ladder, privacy boundary, conditional future-of-work claim, and reader application remain intact. Narration and the article-specific social derivative remain separate later artifacts.
 
-The v1.0.0 article contains approximately 1,505 words before sources and is presented as an eight-minute read.
+## Filmmaker cognitive-building-block refinement — v1.0.0 draft
+
+Later discussion clarified why trailer production is useful territory for the article. The example now distinguishes the filmmaker's creative authorship from a bounded analytical search that a local harness could retain and improve: candidate excerpt generation and annotation, alternative sequence construction, the filmmaker's curiosity-versus-disclosure criteria, and accepted corrections carried into later jobs.
+
+The revision is deliberately additive. It does not make the example the article's thesis, prescribe a universal trailer pipeline, or replace the music-rights conflict. The existing conflict remains the map–territory test: an analytically successful cut is still not releasable when a real authority boundary remains unresolved. The new detail makes cognitive operability and compartmentalization more visible while preserving the nested model, evidence ladder, privacy boundary, and conditional future-of-work claim.
+
+
+The v1.0.0 article contains approximately 1,667 words before sources and is presented as an eight-minute read.
