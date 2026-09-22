@@ -50,7 +50,7 @@
         <div class="article-content">
             <a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
             <h1>Give Your AI Work a Private GitHub Home</h1>
-            <div class="article-meta"><span>September 2026</span><span>&bull;</span><span>22 min</span><div class="article-meta-tags"><span class="tag tag-audience">Everyone</span><span class="tag">Practical Guide</span><span class="tag">GitHub</span><span class="tag">Continuity</span><span class="tag">Ownership</span></div></div>
+            <div class="article-meta"><span>September 2026</span><span>&bull;</span><span>24 min</span><div class="article-meta-tags"><span class="tag tag-audience">Everyone</span><span class="tag">Practical Guide</span><span class="tag">GitHub</span><span class="tag">Continuity</span><span class="tag">Ownership</span></div></div>
             <div class="article-authors">By Hadi Nayebi &amp; Codex</div>
 
             <div class="article-body">
@@ -77,6 +77,20 @@
 <li>a fresh-conversation test showing whether the repository carries enough context to continue.</li>
 </ul>
 <p>The repository is useful even if you later change models or agents. Its files and history remain a separate asset under your control.</p>
+<h2 id="the-shortest-useful-route">The Shortest Useful Route</h2>
+<p>If the full guide feels long, keep this sequence in view:</p>
+<ol type="1">
+<li>Choose one continuing project.</li>
+<li>Create one private repository and secure the account.</li>
+<li>Install GitHub Mobile.</li>
+<li>Add a short README, project instructions, current state, and decision record.</li>
+<li>Connect one agent to only that repository.</li>
+<li>Test the direct connection without allowing a change.</li>
+<li>Open one Issue from your phone.</li>
+<li>Review one proposed patch or pull request.</li>
+<li>Start a fresh conversation and test whether it can recover the work.</li>
+</ol>
+<p>The agent can guide each step. You only need to understand the decision being made now and where its result will live.</p>
 <h2 id="choose-one-real-project">Choose One Real Project</h2>
 <p>Do not begin by building a universal personal operating system. Choose one continuing responsibility that already creates repeated context.</p>
 <p>Examples include:</p>
@@ -340,6 +354,44 @@
 </blockquote>
 <p>The test succeeds only when the agent names the correct repository and reports its observed capability honestly.</p>
 <p>If the agent cannot reach the repository, fix the connection or repository authorization. Do not substitute browsing the repository's website as if that were the same capability.</p>
+<p>Use the observed result—not the product name—to choose the next route:</p>
+<table>
+<thead>
+<tr class="header">
+<th>What the agent demonstrates</th>
+<th>What to do next</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>It cannot identify or read the exact repository</td>
+<td>Stop and repair the connection or repository authorization.</td>
+</tr>
+<tr class="even">
+<td>It can read files but cannot read Issues</td>
+<td>Keep requests in chat temporarily or copy the Issue text, while treating repository files as accepted context.</td>
+</tr>
+<tr class="odd">
+<td>It can read files and Issues but cannot write</td>
+<td>Use the read-only patch path.</td>
+</tr>
+<tr class="even">
+<td>It can comment or create Issues but cannot change files</td>
+<td>Use Issues for interaction and apply approved file changes manually or through another authorized agent.</td>
+</tr>
+<tr class="odd">
+<td>It can change files and open pull requests</td>
+<td>Use the branch-and-PR path, while keeping merge authority with the user.</td>
+</tr>
+<tr class="even">
+<td>A capability is untested</td>
+<td>Mark it unknown and test it with a harmless, reversible action only when that capability becomes necessary.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="keep-an-exit-path">Keep an exit path</h3>
+<p>You should know how to reduce or remove the connection. In GitHub, open <strong>Settings</strong>, then <strong>Applications</strong>, and review the authorized or installed GitHub Apps and OAuth apps. Narrow repository access or revoke an app you no longer use. GitHub's current guidance explains how to <a href="https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps">review installed GitHub Apps</a> and <a href="https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/reviewing-your-authorized-oauth-apps">review authorized OAuth apps</a>.</p>
+<p>Revoking a connection may stop future tool access. It does not delete the repository or its accepted history.</p>
 <h2 id="part-8--use-issues-as-requests-from-your-phone">Part 8 — Use Issues as Requests From Your Phone</h2>
 <p>Open the repository in GitHub Mobile, select <strong>Issues</strong>, and create a new Issue. GitHub supports Issue creation through the web interface and GitHub Mobile; the exact button placement can change.</p>
 <p>If <strong>Issues</strong> is not available, open the repository settings in a browser and confirm that the Issues feature is enabled before treating the connection as broken.</p>
