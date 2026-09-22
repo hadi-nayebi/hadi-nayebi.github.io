@@ -106,6 +106,8 @@ The modularity begins at the backbone.
 
 Each meaningful behavior can become a component the user deliberately selects. A component may be independent or may declare a real dependency on another. Several components may later form a coherent collection. But the user should be able to understand what behavior is being added, what authority it requires, what state it owns, and what happens when it is removed.
 
+Consider a filmmaker who enjoys making films but wants to externalize part of trailer production. The filmmaker might define a bounded analytical responsibility: produce and annotate candidate excerpts, assemble alternative short sequences, preserve the chosen balance between curiosity and disclosure, retain accepted corrections, and return rights and final acceptance to the person. Those are cognitive building blocks, not a prescribed filmmaking agent. One local harness may separate them into several components; another may express them differently. Compartmentalization keeps each behavior, state, authority boundary, and improvement path understandable, allowing repeatable search to move into the harness without transferring authorship or creative control.
+
 Consider one behavioral objective: an agent should not stop while actionable work remains.
 
 That objective does not dictate one implementation. In a simple harness it may live inside a job definition. In another it may become a dedicated Stop Gate plugin. In a multi-channel harness, each channel may expose its own continuation state and a small coordinator may compose them. The stable element is the behavior being protected; the implementation belongs to the local architecture.
