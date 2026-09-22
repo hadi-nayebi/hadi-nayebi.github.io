@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "path": "blog/b3/03_1-the-folder-is-alive.md",
-  "source_sha256": "252066629134f279d2fd7263091ad7caada793fd04185fe7128cf70be4781400",
-  "reviewed_at": "2026-09-20",
+  "source_sha256": "db6c90ec27318741017a29a6782dd99cb0a3779d29d77f9e61e7c4c2c7a325ac",
+  "reviewed_at": "2026-09-22",
   "report": "docs/narration-source-review/essays/03_1-the-folder-is-alive.md",
   "review": {
     "factual": "passed",
