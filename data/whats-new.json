@@ -4,6 +4,33 @@
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
     {
+      "id": "2026-09-22-private-github-home",
+      "date": "2026-09-22",
+      "type": "Practical guide",
+      "title": "A private GitHub repository becomes a low-barrier continuity layer for AI work",
+      "summary": "Practical Guide 3 helps a person and their agent establish one private repository for one real project, install GitHub Mobile, use Issues as request and clarification threads, verify the direct repository connection, and review proposed changes before acceptance.",
+      "why_it_matters": "The guide turns the Academy's filesystem and harness abstractions into an accessible hosted form. Files make context inspectable, Git records and compartmentalizes change, GitHub adds mobile interaction and review, and the user retains merge authority.",
+      "affected": ["Practical Guides", "GitHub Mobile", "Private repositories", "Issues", "Pull requests", "Agent continuity", "Harness ownership", "Start Here"],
+      "maturity": "Reviewable guided-conversation article with current official product references, read-only and write-capable paths, explicit hosted-versus-local boundaries, and a scored quality review",
+      "intended_for": ["People already using ChatGPT or another agent", "Nontechnical users beginning durable project context", "Agents onboarding users into repository-based work"],
+      "sources": [
+        {
+          "label": "Give Your AI Work a Private GitHub Home",
+          "url": "/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html"
+        },
+        {
+          "label": "LLMs Are Not the Agents",
+          "url": "/blog/b1/01-llms-are-not-the-agents.html"
+        },
+        {
+          "label": "Run the Agentic AI Use Doctor",
+          "url": "/blog/practical-guides/02-audit-ai-harness-portability.html"
+        }
+      ],
+      "adoption_notes": "This is a user-controlled, file-based hosted continuity layer, not a complete local harness. Verify actual connector capabilities, keep sensitive material outside the repository, and preserve human review and merge authority.",
+      "recommended_action": "Give the guide to the agent you already use, choose one continuing project, open one Issue from your phone, and test whether a fresh conversation can recover the accepted state through the direct GitHub connection."
+    },
+    {
       "id": "2026-09-18-hadosh-through-map-territory",
       "date": "2026-09-18",
       "type": "Observation and mental-model writing",
