@@ -13,10 +13,10 @@ is composed. Unsupported ratios and deterministic improvement claims are gone.
 
 - Canonical source: `blog/b3/03_1-the-folder-is-alive.md`
 - Source version: `v1.2.0` (previously `v1.1.0`)
-- Source SHA-256: `252066629134f279d2fd7263091ad7caada793fd04185fe7128cf70be4781400`
+- Source SHA-256: `db6c90ec27318741017a29a6782dd99cb0a3779d29d77f9e61e7c4c2c7a325ac`
 - Published page: `blog/b3/03_1-the-folder-is-alive.html`
-- Published-page SHA-256: `3259340e3b7f899857284faeb571217edda6b89361daf307bae09dcf0c10a635`
-- Hadi's narration-source approval remains pending.
+- Published-page SHA-256: `c5ff808e8e75ecfba989a9c8ff6c7898c3909ecb3e8bf04068f9d68e5bd3131e`
+- Hadi's terminology correction is absorbed; narration-source approval remains pending.
 
 ## Changes made
 
@@ -26,19 +26,19 @@ is composed. Unsupported ratios and deterministic improvement claims are gone.
 2. **Named the persistent harness function.** Model size and architecture may
    change, but practical agency still needs an interface connecting generative
    capability to context, tools, permissions, state, action, and verification.
-3. **Restored the body-of-agency proposition.** In the described architecture,
-   the LLM is the token-generating reasoning operator and animator, the runtime
-   exposes the environment, and the filesystem composes the body through
-   instructions, memory, plugins, behavior rails, hooks, tools, jobs, tests,
-   and verification.
+3. **Separated the text calculator from the digital cortex.** In the described
+   architecture, the LLM is the token-generating text calculator and animator,
+   not the cortex itself. The runtime exposes the environment, while the
+   filesystem composes the digital cortex through instructions, memory,
+   plugins, behavior rails, hooks, tools, jobs, tests, and verification.
 4. **Made accumulation conditional.** Useful procedures compound only when
    corrections are reviewed, preserved, retrieved, and verified.
 5. **Removed the unsupported 80/20 split.** The scaling section now explains
    reallocation of procedural load without inventing a universal percentage;
    the matching ratio graphic is no longer rendered.
-6. **Kept the electricity analogy but bounded the claim.** The LLM is a utility
-   for generative intelligence; the harness is what turns reasoning into
-   controlled action.
+6. **Kept the electricity analogy but restored the accepted lens.** The LLM is
+   a text calculator and utility for generative intelligence; the harness is
+   what turns token output into controlled action.
 7. **Removed unnecessary adversarial rhetoric.** Corporate-feed incentives are
    described as a mismatch with the user's objectives rather than as a claim
    about universal motive or manipulation.
