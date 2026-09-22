@@ -177,6 +177,7 @@ Working version convention:
 | Published Lens 1 baseline | Teach → implement → test → compare → publish; repeated structures may crystallize into reusable components. Publication is exploratory, not final. | Lens 2 made the map itself explicitly revisable and showed that later evidence can correct earlier maps. | A pattern remains provisional or an open question until evidence is sufficient. Evidence can travel backward into an earlier article, diagram, feature, or instruction. |
 | Contribution path | Comments and a possible contribution-review plugin could return experience to the Academy under user control. | The newer context exposed that no general comment-to-stable-context mechanism has yet been established. | The plugin remains an illustrative proposal. Comments begin as proposals; some correct wording, some remain open, and some need comparison. The general mechanism stays visibly unresolved. |
 | Series responsibility | Each lens changes the angle while preserving the whole system. | The responsibility previously ran mainly forward. | Each lens now adds a new view **and** audits what earlier public context should change, preserve, defer, or route to a new job. |
+| Filmmaker refinement | Lens 1 already established modularity, personal adaptation, and explicit authority. | The later scenario made selected cognitive externalization easier to visualize. | One bounded example now shows compartmentalized trailer work without changing the foundations or prescribing an implementation. |
 
 The five foundations did not change. Lens 2 changed the epistemic and editorial behavior around them: how they are tested, revised, and allowed to remain uncertain.
 
@@ -189,13 +190,28 @@ The five foundations did not change. Lens 2 changed the epistemic and editorial 
 | v0.9.2 | Prose and visual style moved between clear and vague; the image appeared too diagrammatic. | Simplified the causal loop and replaced the visual with a natural chalkboard composition. | Clearer public seed → local harnesses → lived work → generalized evidence story. |
 | v0.9.3 | Compression improved length but produced a sharp opening and insufficient narrative progression. | v0.9.4 restored a direct explanation of the mental-model technique and a beginning–middle–end story. | The filmmaker's unresolved music-rights boundary demonstrates how software completion can diverge from real completion. |
 | v1.0.0 draft baseline | The corrective loop mainly appeared to improve the newest map. | Applied the correction to every affected earlier or later public surface; distinguished proposals from accepted context; made publication non-terminal. | Field evidence may revise Lens 2, Lens 1, diagrams, project explanations, instructions, or features. The general comment-to-context mechanism remains open. |
+| Filmmaker refinement | The existing story showed a rights-boundary failure but only briefly showed how capability accumulated. | Added bounded analytical search, retained correction, and local cognitive building blocks while preserving the original conflict. | The reader can now see how selected cognition moves into a local harness and improves without confusing offloading with transferred authorship. |
+
+
+
+## Recency-bias check for new context
+
+New input is classified before it changes the corpus:
+
+1. Does it alter a foundation, extend an existing claim, clarify an example, or merely supply another implementation possibility?
+2. Which existing claims support it, and which constraints prevent it from becoming the new center of gravity?
+3. What is the smallest proportional revision that preserves the accumulated argument?
+4. Which established sections and examples should remain unchanged?
+5. Does the review record explain why the change is additive, corrective, or foundational?
+
+The filmmaker refinement is classified as an **additive clarification**. It strengthens the existing claims about compartmentalization, selected cognitive externalization, retained correction, and human authority. It does not change the article sequence, the five first-principles foundations, the nested map–territory model, or the evidentiary and privacy boundaries.
 
 ## Current Lens 1–2 backward audit
 
 | Surface | Disposition | Result or exact proposal | Approval |
 | --- | --- | --- | --- |
-| Lens 1 canonical Markdown and HTML | revise—implemented in draft | Added provisional-pattern language, backward-traveling evidence, the open comment-to-context question, two-direction lens responsibility, and the conclusion audit rule. | Pending final Lens 1–2 approval |
-| Lens 2 canonical Markdown and HTML | revise—implemented in draft | Applied corrections across all affected maps, clarified proposal status, made publication non-terminal, and widened the fifth application question to earlier maps. | Pending final Lens 1–2 approval |
+| Lens 1 canonical Markdown and HTML | revise—implemented in draft | Added provisional-pattern language, backward-traveling evidence, the open comment-to-context question, two-direction lens responsibility, the conclusion audit rule, and one compact filmmaker compartmentalization example. | Pending final Lens 1–2 approval |
+| Lens 2 canonical Markdown and HTML | revise—implemented in draft | Applied corrections across all affected maps, clarified proposal status, made publication non-terminal, widened the fifth application question, and clarified selected cognitive externalization inside the existing filmmaker story. | Pending final Lens 1–2 approval |
 | Series home and series instructions | revise—implemented in draft | Made bidirectional continuity and explicit backward-audit records part of the series method. | Pending final Lens 1–2 approval |
 | Repository and blog instructions | revise—implemented in draft | Added rolling-context and rolling-corpus gates. | Pending final Lens 1–2 approval |
 | Lens 1 and Lens 2 review records | revise—implemented in draft | Preserved the evolution, unchanged foundations, evidence boundaries, and current reading lengths. | Pending final Lens 1–2 approval |
