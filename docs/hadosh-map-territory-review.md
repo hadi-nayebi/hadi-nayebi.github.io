@@ -97,3 +97,5 @@ The v1.0.0 revision:
 - updates the series contract and public series explanation to require future backward audits.
 
 The conceptual thesis, filmmaker story, evidence ladder, privacy boundary, conditional future-of-work claim, and reader application remain intact. Narration and the article-specific social derivative remain separate later artifacts.
+
+The v1.0.0 article contains approximately 1,505 words before sources and is presented as an eight-minute read.
