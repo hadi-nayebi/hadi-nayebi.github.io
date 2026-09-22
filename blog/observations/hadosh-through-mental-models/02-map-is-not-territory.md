@@ -48,7 +48,11 @@ Consider an independent filmmaker preparing a trailer.
 
 The work is not one prompt. It includes reviewing footage, finding emotional beats, tracking music rights, generating candidate cuts, collecting feedback, remembering rejected directions, and coordinating collaborators. Interruptions are common. Decisions made on Monday still matter on Friday.
 
-The filmmaker and an agent use Academy principles to build a local harness. It preserves the current thesis, scene inventory, decision history, audience assumptions, review criteria, and authority boundaries. The agent can prepare candidate sequences, compare them with the intended arc, record why alternatives failed, and ask exact questions when human judgment is required.
+Trailer making includes creative judgment, but it also contains a bounded analytical search. The filmmaker can define a local objective: find emotionally useful excerpts, build curiosity, avoid revealing too much, preserve the intended arc, and respect release boundaries. A local harness might generate and annotate many short candidates, assemble alternative trailer-length sequences, compare them against those criteria, and remember why directions were rejected.
+
+At the end of each work cycle, accepted corrections can improve the next one instead of disappearing into a conversation. The filmmaker may help form the procedure once, then keep correcting its criteria as the work develops. The point is not this particular pipeline. It is that selected cognition can become an inspectable, repeatable, locally improving responsibility while the person retains creative and release authority.
+
+The filmmaker and an agent use Academy principles to build whatever local form fits that work. It may preserve the film thesis, scene inventory, decision history, audience assumptions, review criteria, and authority boundaries. The actual tools, state names, components, and decomposition belong to the filmmaker’s environment rather than to one universal Academy implementation.
 
 Relative to the Academy’s general guidance, this working harness is territory. Abstract ideas have become actual files, permissions, tools, states, and routines.
 
@@ -66,11 +70,11 @@ That correction has three effects.
 
 First, it improves the current trailer. The immediate state now matches reality.
 
-Second, it improves the local harness. Future projects will not treat a finished cut as publication-ready while rights remain unresolved.
+Second, it improves the local harness. Future projects will not treat a finished cut as publication-ready while rights remain unresolved. Other accepted lessons—how excerpts are annotated, which reveals weaken mystery, and which comparisons are useful—can also be condensed into later trailer jobs rather than rediscovered.
 
 Third, it may reveal a reusable pattern: completion states should represent the real authority and evidence required by the responsibility, not merely the last successful software action.
 
-The filmmaker has not transferred authorship. Selected parts of the work have become durable, user-governed operations. The person can resume faster, explore more alternatives, coordinate more complexity, and keep creative reasoning across interruptions.
+The filmmaker has not transferred authorship. Selected analytical operations have become durable, user-governed capabilities. Offloading that repeatable search can leave more time for the filmmaking work the person values, while the person can still resume, inspect, correct, and redirect the process.
 
 That is **cognitive operability**: the ability to direct, inspect, correct, and retain complex cognitive work through an owned system.
 
