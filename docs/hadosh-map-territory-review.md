@@ -81,4 +81,19 @@ The v0.9.4 repair:
 - carries that correction into the evidence ladder and the final return to the public map;
 - preserves the settled nested model, cognitive-operability outcome, privacy boundary, conditional future-of-work claim, and five reader questions.
 
-The revised article contains approximately 1,576 words before sources. Publication, narration, and derivative social work remain unapproved.
+The revised article contains approximately 1,360 words before sources. Publication, narration, and derivative social work remain unapproved.
+
+## Hadi review absorbed — v1.0.0
+
+Hadi established a bidirectional corpus rule: new context must not only extend the newest article; it must audit and improve affected earlier writings and features. Questions without enough context should remain open until later discussion, implementation, or evidence can support an answer.
+
+The v1.0.0 revision:
+
+- makes the corrective loop apply to earlier articles, diagrams, instructions, and features;
+- states that publication creates a usable version rather than terminal truth;
+- distinguishes a comment or field observation from accepted stable context;
+- preserves the general comment-to-context mechanism as an explicit open design question;
+- revises Lens 1 in the same pull request so the new understanding propagates backward;
+- updates the series contract and public series explanation to require future backward audits.
+
+The conceptual thesis, filmmaker story, evidence ladder, privacy boundary, conditional future-of-work claim, and reader application remain intact. Narration and the article-specific social derivative remain separate later artifacts.
