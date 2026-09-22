@@ -14,7 +14,7 @@ status: published
 
 # The Folder Is Alive
 
-> **Your liver runs in the background. So will the work you taught your cortex.**
+> **Your liver runs in the background. So will the work you taught your digital cortex.**
 
 Open the laptop of a person five years from now.
 
@@ -74,7 +74,7 @@ Without the LLM, that folder is just files. They sit on disk. They do nothing.
 
 But add the LLM, and the folder starts to move. Under explicit rules and permissions, the agent reads knowledge, updates plans, routes reviewed lessons, and proposes tighter controls. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.
 
-In the local CLI architecture described here, the LLM is the **text calculator**: a token-generating reasoning operator that animates the work without becoming the cortex itself. A thin runtime interprets its output and exposes the environment. The filesystem is the body in which the agency is composed: instructions, memory, plugins, behavior rails, hooks, tools, jobs, tests, and verification form its anatomy. Other architectures may arrange these parts differently.
+In the local CLI architecture described here, the LLM is the **text calculator**: a token-generating reasoning operator that animates the work without becoming the digital cortex itself. A thin runtime interprets its output and exposes the environment. The filesystem is the body in which the agency is composed: instructions, memory, plugins, behavior rails, hooks, tools, jobs, tests, and verification form its anatomy. Other architectures may arrange these parts differently.
 
 There is no good word for this in plain English yet. So let us coin one.
 
@@ -103,7 +103,7 @@ The second time can be faster if the useful correction was preserved and retriev
 
 After enough validated repetition, the agent can have a **plan file** — a document that describes how the job goes, your way, in your words, refined through practice. The plan file is the agent's promotion. It used to make it up each time. Now it can work from a procedure you co-authored and continue to verify.
 
-For jobs you do enough, the agent can grow the plan into something stronger: a skill, script, hook, plugin, or combination that knows more of the job by heart. To you, it is the moment a procedure moves out of your head and into the cortex, while consequential judgment stays visible.
+For jobs you do enough, the agent can grow the plan into something stronger: a skill, script, hook, plugin, or combination that knows more of the job by heart. To you, it is the moment a procedure moves out of your head and into the digital cortex, while consequential judgment stays visible.
 
 Three steps. Apprentice. Trained colleague. Resident specialist.
 
@@ -137,7 +137,7 @@ The honest framing is quieter and truer: **the agent holds the procedure so your
 
 You still decide *that* the taxes need filing. You still set the year's strategy. You still answer the questions that require your judgment, your taste, your relationships. What the agent holds is the **how** — every checklist item, every form, every gotcha you discovered three years ago, every corner you decided was OK to cut. That part used to live in your head, and every time you needed it, you had to dig it back out.
 
-Now it lives in the cognitive metabolism. The cortex remembers. You don't have to.
+Now it lives in the cognitive metabolism. The digital cortex remembers. You don't have to.
 
 Different jobs split the labor differently. For some, the agent only needs you for the strategic moments. For others, it does the prep work and hands you a clean situation to decide in. For the easiest, it just does the thing and shows you what it did.
 
@@ -175,7 +175,7 @@ Each agent in the folder is shaped by the rhythm of its own job. Many of them, i
 
 ## The Other Direction
 
-So far we have talked about what the cortex *produces.* Work going out.
+So far we have talked about what the digital cortex *produces.* Work going out.
 
 There is another direction. What comes *in.*
 
@@ -199,7 +199,7 @@ Replace the algorithm.
 
 Tell your seed agent what you actually want from a feed. The handful of people whose work you genuinely care about. The topics you want to go deeper on this season. The kind of content that makes you a better professional, versus the kind that merely holds your attention. The agent assembles your feed. *You* defined the algorithm.
 
-The same logic extends everywhere — your news, your reading recommendations, your podcast queue, your alerts, your inbox. The cortex does not just produce work. It filters reality, on terms you set.
+The same logic extends everywhere — your news, your reading recommendations, your podcast queue, your alerts, your inbox. The digital cortex does not just produce work. It filters reality, on terms you set.
 
 ### Your Apps, Your Data
 
@@ -219,7 +219,7 @@ The terms of your digital life no longer have to be chosen entirely by a corpora
 
 That is autonomy. Real autonomy. Not the marketing version.
 
-The cortex isn't only there to handle the work you don't want to do. It is also there to handle the manipulation you don't want to live under.
+The digital cortex isn't only there to handle the work you don't want to do. It is also there to handle the manipulation you don't want to live under.
 
 
 
