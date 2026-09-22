@@ -2,7 +2,7 @@
 title: "Hadosh Academy Through The Map Is Not the Territory"
 slug: "map-is-not-territory"
 date: "2026-09-18"
-version: "0.9.4"
+version: "1.0.0"
 description: "How a public map of user-owned harnesses can help people create distinct local systems—and how lived work must keep correcting the map."
 author: "Hadi Nayebi & Codex"
 og_image: "images/map-territory-loop.png"
@@ -39,6 +39,8 @@ That creates the basic loop:
 > public seed map → local harnesses → lived work → generalized evidence → improved public map
 
 The rest of the essay follows that loop.
+
+Because the map is cumulative, a correction does not belong only to the newest page. A later lens, comment, or implementation may reveal that an earlier article, diagram, instruction, or feature should change. When the evidence is strong enough, the Academy should revise every affected map and preserve how it changed.
 
 ## A Filmmaker Enters the Territory
 
@@ -104,6 +106,8 @@ Other useful lessons may take the same form. A permission boundary prevented an 
 
 These lessons should remain provisional until comparison across different systems supports them. The public map improves through selective abstraction, not extraction of private territory.
 
+Not every contribution is ready to become stable context. A comment begins as a proposal. It may correct wording immediately, remain an open question, or require comparison across several cases. We do not yet know the best general mechanism for moving every kind of comment into the Academy's more stable layers. Until enough experience reveals it, that mechanism should remain an explicit open design question rather than a fictional finished process.
+
 ## Where the Story Can Lead
 
 If this loop works repeatedly, the future of work may contain more independent operators.
@@ -122,6 +126,8 @@ That is what “the map is not the territory” contributes here. It is not a wa
 
 Hadosh Academy earns its value when its public map helps people enter new territory, build systems that belong to them, discover what the map missed, and return with evidence that improves the next journey.
 
+That return can revise this article, Lens 1, a diagram, a project explanation, or a future component. Publication makes a map available for use. It does not make the map terminal.
+
 ## Use the Lens Yourself
 
 Apply this lens to any agentic system with five questions:
@@ -130,7 +136,7 @@ Apply this lens to any agentic system with five questions:
 2. What has been locally constructed rather than merely described?
 3. What repeated work shows that capability was actually retained?
 4. Has the person gained operability while preserving authority and correction?
-5. What can improve the public map without exposing private territory?
+5. What can improve this or an earlier public map without exposing private territory?
 
 The map is useful because it can change. The territory gives it something real to learn from.
 
