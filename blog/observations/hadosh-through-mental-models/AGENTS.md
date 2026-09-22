@@ -38,7 +38,8 @@ Each entry must:
 7. Include a canonical Markdown source, published HTML, review record, contribution surface, discovery metadata, and purposeful visuals.
 8. Record the backward audit: which earlier lenses or related surfaces changed, which did not require revision, and which questions remain open for future context.
 
+Use [the mental-model article production and backward-audit method](../../../docs/hadosh-mental-model-production-method.md) as the review procedure. It governs context recovery, shared-model development, the semantic-neighborhood audit, exact change ledgers, open-question routing, scoring, and the Hadi review packet. It does not prescribe one article outline.
+
 ## Publication state
 
 An entry may be coherent enough to publish without being permanently final. Publication establishes a usable, versioned synthesis—not a terminal doctrine. A later lens may reopen an earlier entry when new accepted context materially improves it. Before narration or external promotion, Hadi reviews the website prose and visuals. Narration is derived only after prose approval and must follow the parent blog narration contract.
-
