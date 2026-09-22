@@ -74,7 +74,7 @@ Without the LLM, that folder is just files. They sit on disk. They do nothing.
 
 But add the LLM, and the folder starts to move. Under explicit rules and permissions, the agent reads knowledge, updates plans, routes reviewed lessons, and proposes tighter controls. Files inflate during work. Files contract when work is done. Information flows through the folder the way blood flows through tissue.
 
-In the local CLI architecture described here, the LLM is the token-generating reasoning operator and animator. A thin runtime interprets its output and exposes the environment. The filesystem is the body in which the agency is composed: instructions, memory, plugins, behavior rails, hooks, tools, jobs, tests, and verification form its anatomy. Other architectures may arrange these parts differently.
+In the local CLI architecture described here, the LLM is the **text calculator**: a token-generating reasoning operator that animates the work without becoming the cortex itself. A thin runtime interprets its output and exposes the environment. The filesystem is the body in which the agency is composed: instructions, memory, plugins, behavior rails, hooks, tools, jobs, tests, and verification form its anatomy. Other architectures may arrange these parts differently.
 
 There is no good word for this in plain English yet. So let us coin one.
 
@@ -121,7 +121,7 @@ Forty years of normal people paying — in money or in favors — to bridge the 
 
 Then [the cost of delegation began to collapse](03-your-brain-was-never-built-for-this.html).
 
-Electricity is a utility for energy. The plug in the wall does not care if you are a physicist. In the same practical sense, **the LLM can be treated as a utility for generative intelligence.** But useful work does not come from the model alone. The harness supplies the context, tools, permissions, state, and verification that let reasoning become controlled action.
+Electricity is a utility for energy. The plug in the wall does not care if you are a physicist. In the same practical sense, **the LLM is a text calculator and a utility for generative intelligence:** it turns context into token output. But useful work does not come from the model alone. The harness supplies the context, tools, permissions, state, and verification that turn that output into controlled action.
 
 When generative intelligence becomes broadly available, delegation becomes easier to design. You may not need to perform every technical step yourself. You can teach the agent in plain words, inspect the harness it builds, and keep consequential authority visible while it handles bounded technical execution.
 
@@ -247,7 +247,7 @@ Here is what is *not* in the folder: one model, provider, interface, or invisibl
 
 Here is what *is* in the folder: agents that you taught, that you can read, that you can correct, that you can pass on, that you can scrap and rebuild from the same seed when the work changes. Files in a repository or filesystem you control. Memory you can open in a text editor. Cognitive metabolism running in the background — your liver, but for paperwork. A workforce that exists because *you* grew it.
 
-This is what we mean when we say *digital cortex.* Not a metaphor for a chat assistant. A structural extension of your own cognition, made of folders and files and the slow accumulation of jobs you taught well.
+This is what we mean when we say *digital cortex.* The term is deliberate: *digital* names the medium; *cortex* names the structural extension of your cognition. It is not the LLM and not a metaphor for a chat assistant. It is made of folders, files, and the slow accumulation of jobs you taught well.
 
 ### What This Means for You
 
