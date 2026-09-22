@@ -30,6 +30,22 @@ You will have:
 
 The repository is useful even if you later change models or agents. Its files and history remain a separate asset under your control.
 
+## The Shortest Useful Route
+
+If the full guide feels long, keep this sequence in view:
+
+1. Choose one continuing project.
+2. Create one private repository and secure the account.
+3. Install GitHub Mobile.
+4. Add a short README, project instructions, current state, and decision record.
+5. Connect one agent to only that repository.
+6. Test the direct connection without allowing a change.
+7. Open one Issue from your phone.
+8. Review one proposed patch or pull request.
+9. Start a fresh conversation and test whether it can recover the work.
+
+The agent can guide each step. You only need to understand the decision being made now and where its result will live.
+
 ## Choose One Real Project
 
 Do not begin by building a universal personal operating system. Choose one continuing responsibility that already creates repeated context.
@@ -309,6 +325,23 @@ Give the connected agent this test:
 The test succeeds only when the agent names the correct repository and reports its observed capability honestly.
 
 If the agent cannot reach the repository, fix the connection or repository authorization. Do not substitute browsing the repository's website as if that were the same capability.
+
+Use the observed result—not the product name—to choose the next route:
+
+| What the agent demonstrates | What to do next |
+| --- | --- |
+| It cannot identify or read the exact repository | Stop and repair the connection or repository authorization. |
+| It can read files but cannot read Issues | Keep requests in chat temporarily or copy the Issue text, while treating repository files as accepted context. |
+| It can read files and Issues but cannot write | Use the read-only patch path. |
+| It can comment or create Issues but cannot change files | Use Issues for interaction and apply approved file changes manually or through another authorized agent. |
+| It can change files and open pull requests | Use the branch-and-PR path, while keeping merge authority with the user. |
+| A capability is untested | Mark it unknown and test it with a harmless, reversible action only when that capability becomes necessary. |
+
+### Keep an exit path
+
+You should know how to reduce or remove the connection. In GitHub, open **Settings**, then **Applications**, and review the authorized or installed GitHub Apps and OAuth apps. Narrow repository access or revoke an app you no longer use. GitHub's current guidance explains how to [review installed GitHub Apps](https://docs.github.com/en/apps/using-github-apps/reviewing-and-modifying-installed-github-apps) and [review authorized OAuth apps](https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/reviewing-your-authorized-oauth-apps).
+
+Revoking a connection may stop future tool access. It does not delete the repository or its accepted history.
 
 ## Part 8 — Use Issues as Requests From Your Phone
 
