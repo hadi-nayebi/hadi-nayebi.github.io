@@ -11,7 +11,7 @@
       "summary": "Practical Guide 3 helps a person and their agent establish one private repository for one real project, install GitHub Mobile, use Issues as request and clarification threads, verify the direct repository connection, and review proposed changes before acceptance.",
       "why_it_matters": "The guide turns the Academy's filesystem and harness abstractions into an accessible hosted form. Files make context inspectable, Git records and compartmentalizes change, GitHub adds mobile interaction and review, and the user retains merge authority.",
       "affected": ["Practical Guides", "GitHub Mobile", "Private repositories", "Issues", "Pull requests", "Agent continuity", "Harness ownership", "Start Here"],
-      "maturity": "Reviewable guided-conversation article with current official product references, read-only and write-capable paths, explicit hosted-versus-local boundaries, and a scored quality review",
+      "maturity": "Guided-conversation article with current official product references, read-only and write-capable paths, explicit hosted-versus-local boundaries, and a fresh-conversation verification method",
       "intended_for": ["People already using ChatGPT or another agent", "Nontechnical users beginning durable project context", "Agents onboarding users into repository-based work"],
       "sources": [
         {
