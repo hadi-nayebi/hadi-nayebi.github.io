@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!-- Version: v0.1.0 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a GitHub Home for Your AI Agent | Hadosh Academy</title>
+    <meta name="description" content="Give this guide to the AI agent you already use. Together, create a private GitHub project home, connect a capable agent, use Issues from your phone, and prove the work can continue across fresh conversations.">
+    <meta name="author" content="Hadi Nayebi">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://hadi-nayebi.github.io/blog/practical-guides/03-build-a-github-home-for-your-agent.html">
+    <meta property="og:title" content="Build a GitHub Home for Your AI Agent | Hadosh Academy">
+    <meta property="og:description" content="An agent-led guide to establishing a private, durable GitHub layer for real projects—without requiring the user to become a developer.">
+    <meta property="og:url" content="https://hadi-nayebi.github.io/blog/practical-guides/03-build-a-github-home-for-your-agent.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
+    <meta property="og:site_name" content="Hadosh Academy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Build a GitHub Home for Your AI Agent">
+    <meta name="twitter:description" content="Use one private repository, one real project, and one capable agent to build a durable operating layer you can inspect and govern.">
+    <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
+    <style>
+        .guide-prompt { padding: 1.25rem; border: 1px solid rgba(99,102,241,.48); border-radius: .8rem; background: rgba(99,102,241,.1); margin: 1.25rem 0 2rem; }
+        .guide-prompt p:first-child { margin-top: 0; }
+        .guide-prompt p:last-child { margin-bottom: 0; }
+        .guide-callout { padding: 1.1rem 1.25rem; border-left: .3rem solid #6366f1; border-radius: .25rem .75rem .75rem .25rem; background: rgba(99,102,241,.08); margin: 1.25rem 0; }
+        .guide-warning { border-left-color: #f59e0b; background: rgba(245,158,11,.09); }
+        .guide-table-wrap { overflow-x: auto; margin: 1.25rem 0 2rem; }
+        .guide-table-wrap table { width: 100%; border-collapse: collapse; min-width: 42rem; }
+        .guide-table-wrap th, .guide-table-wrap td { padding: .75rem; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+        .guide-table-wrap th { color: var(--text-main); background: rgba(99,102,241,.1); }
+        .control-ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin: 1.25rem 0 2rem; }
+        .control-step { padding: 1rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--surface); }
+        .control-step strong { display: block; margin-bottom: .35rem; }
+        .completion-list li { margin-bottom: .5rem; }
+        .source-note { font-size: .95rem; color: var(--text-muted); }
+        @media (max-width: 760px) {
+            .control-ladder { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 440px) {
+            .control-ladder { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"HowTo",
+      "name":"Build a GitHub Home for Your AI Agent",
+      "datePublished":"2026-09-22",
+      "dateModified":"2026-09-22",
+      "author":{"@type":"Person","name":"Hadi Nayebi","url":"https://hadi-nayebi.github.io/about.html"},
+      "publisher":{"@id":"https://hadi-nayebi.github.io/#organization"},
+      "description":"An agent-led guide to creating a private GitHub project home, connecting a capable AI agent, using Issues from a phone, and testing fresh-context continuity.",
+      "image":"https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg",
+      "mainEntityOfPage":"https://hadi-nayebi.github.io/blog/practical-guides/03-build-a-github-home-for-your-agent.html"
+    }
+    </script>
+</head>
+<body>
+<header id="site-header"><div class="container"><nav>
+<a href="../../index.html" class="logo">Hadosh Academy</a>
+<button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+<div class="nav-links"><a href="../../index.html">Home</a><a href="../../start-here.html">Start Here</a><a href="../../blog.html" class="active" aria-current="page">Blog</a><a href="../../agents.html">Agents</a><a href="../../projects/index.html">Projects</a><a href="../../whats-new.html">What's New</a><a href="../../about.html">About</a><a href="../../services.html">Services</a></div>
+</nav></div></header>
+
+<main class="page-content"><section class="container"><div class="blog-layout"><div class="article-content">
+<a href="../../blog.html#practical-guides" class="blog-back-link">&larr; Back to Practical Guides</a>
+<h1>Build a GitHub Home for Your AI Agent</h1>
+<div class="article-meta"><span>September 2026</span><span>&bull;</span><span>24 min</span><div class="article-meta-tags"><span class="tag tag-audience">Everyone</span><span class="tag">Practical Guide</span><span class="tag">GitHub</span><span class="tag">Ownership</span></div></div>
+<div class="article-authors">By Hadi Nayebi &amp; Codex</div>
+<div class="article-body">
+
+<p><em>Practical Guide 3 — Give this page to the AI agent you already use. Together, create one private project home that can survive a fresh conversation, a changed model, and the limits of your memory.</em></p>
+
+<p>If you use ChatGPT, Claude, or another AI agent for a real project, the conversation may already contain useful decisions, corrections, and plans. But a conversation is not yet a durable project home.</p>
+
+<p>This guide helps you add a practical GitHub layer to work you already do. You do not need to become a developer. Your agent should translate GitHub into the language of your work, guide you one step at a time, and stop whenever a choice affects privacy, permissions, cost, publication, or accepted project state.</p>
+
+<div class="guide-callout"><strong>The promise:</strong> begin with one private repository, one real project, and one bounded request. Finish with a project that a fresh authorized agent can read, explain, and continue without depending on one old chat.</div>
+
+<p>GitHub is not the final or universal architecture for a user-owned AI harness. It is an accessible first implementation: files, history, Issues, branches, and pull requests already provide useful surfaces for durable context and controlled change. You can sync the repository to your own computer later or move the same patterns elsewhere.</p>
+
+<h2 id="start-with-your-agent">Start by Giving This Guide to Your Agent</h2>
+
+<p>Send your agent this link and the instruction below. The guide is designed to become a conversation, not a form you must complete alone.</p>
+
+<div class="guide-prompt">
+<p><strong>Agent instruction</strong></p>
+<p>Read this entire Hadosh Academy guide before acting. Help me establish one private GitHub repository as a durable home for one real project.</p>
+<p>Begin by asking what project I want to preserve and how familiar I am with GitHub. Ask one high-value question at a time. Explain every GitHub term through an analogy from my own work, then show the exact GitHub meaning.</p>
+<p>Use the smallest useful setup. Do not ask for my password, two-factor code, recovery code, API key, access token, or other secret. Do not ask me to paste private conversations or confidential material into the repository. Do not create accounts, repositories, integrations, secrets, branches, pull requests, or public content without telling me exactly what will happen and obtaining my approval for that step.</p>
+<p>Keep these authorities separate: reading, proposing, writing, reviewing, merging, publishing, changing visibility, and changing permissions. Repository access is not blanket authority.</p>
+<p>Adapt the path to the capabilities actually available in this chat. If you can only read GitHub, say so. If a separate coding or cloud-agent surface is required to write or open pull requests, explain that distinction. If you cannot inspect the live interface, guide me without pretending you clicked anything.</p>
+<p>Do not finish after setup. Run the read-back test, help me create one bounded Issue, produce one reviewable proposal or exact patch, and run the fresh-context continuity test. Mark unsupported claims as unknown.</p>
+</div>
+
+<h2 id="what-you-will-build">What You Will Build</h2>
+
+<p>By the end, you should have:</p>
+
+<ul class="completion-list">
+<li>a secured GitHub account;</li>
+<li>GitHub Mobile installed so the project remains reachable away from a desk;</li>
+<li>one private repository for one real project;</li>
+<li>a short README that tells a new reader what the project is;</li>
+<li>an agent instruction file that states how work should be handled;</li>
+<li>small, explicit places for current context, decisions, jobs, and evidence;</li>
+<li>one AI setup with verified read or write capability;</li>
+<li>one Issue containing one complete request;</li>
+<li>one branch and pull request, or an exact patch when the agent is read-only;</li>
+<li>a fresh-context test showing whether continuity actually works.</li>
+</ul>
+
+<p>The target is not “learn GitHub.” The target is “make one project easier to continue and govern.” You learn the pieces because you use them.</p>
+
+<h2 id="choose-project">1. Choose One Project Worth Continuing</h2>
+
+<p>Do not begin by moving your entire digital life. Choose one project that is already real enough to benefit from continuity and safe enough to use as a pilot.</p>
+
+<p>Good first projects include:</p>
+
+<ul>
+<li>a personal research question;</li>
+<li>a writing, course, portfolio, or learning project;</li>
+<li>a small software or automation idea;</li>
+<li>a job-search or professional-development project with sensitive details removed;</li>
+<li>a household, community, or creative project that has clear next steps.</li>
+</ul>
+
+<p>Avoid a first pilot that contains employer secrets, client material, medical or legal records, credentials, regulated data, or another person's private information. “Private repository” means access is restricted on GitHub; it does not mean the contents are local-only, risk-free, or appropriate for every kind of data.</p>
+
+<p>Your agent should ask:</p>
+
+<div class="guide-prompt"><p>Which one project do you most want a fresh conversation to understand without making you explain everything again?</p></div>
+
+<h2 id="account-mobile">2. Create and Secure the GitHub Account</h2>
+
+<p>If you already have a GitHub account, your agent should skip account creation and help you check security. If you do not, create a personal account at <a href="https://github.com/signup">github.com/signup</a> and verify the email address. GitHub requires a verified email for basic tasks such as creating a repository.</p>
+
+<p>Then enable two-factor authentication. GitHub recommends a time-based one-time-password app and recommends saving recovery codes in a secure location. Your agent should explain the steps, but you must handle the password, authentication codes, recovery codes, and security keys yourself.</p>
+
+<div class="guide-callout guide-warning"><strong>Secret boundary:</strong> never paste a password, two-factor code, recovery code, personal access token, API key, OAuth token, or repository secret into an AI conversation or ordinary repository file.</div>
+
+<h3>Install GitHub Mobile</h3>
+
+<p>Install the official <a href="https://github.com/mobile">GitHub Mobile app</a> for iOS or Android and sign in. GitHub Mobile can read and collaborate on Issues and pull requests, review notifications, browse repositories, and support account authentication.</p>
+
+<p>This matters because the repository should become part of the way you direct work. From your phone, you can capture a bounded request as an Issue, answer a genuine question, or review a proposed change without reconstructing the whole project in a new chat.</p>
+
+<h2 id="create-repository">3. Create One Private Repository</h2>
+
+<p>On GitHub, use the <strong>New repository</strong> action. Give the repository a plain name that describes the project, choose <strong>Private</strong>, and initialize it with a README.</p>
+
+<p>Your agent should help you choose the name and first description, but you should confirm:</p>
+
+<ul>
+<li>the owning GitHub account or organization;</li>
+<li>that visibility is Private;</li>
+<li>that the repository contains no copied secrets or restricted material;</li>
+<li>that changing visibility later would require a separate decision.</li>
+</ul>
+
+<p>A repository is the project's controlled online home. It contains the current files and the history of how they changed. It can later be copied or cloned to a computer, but a GitHub private repository is hosted infrastructure—not the same thing as local storage.</p>
+
+<h2 id="learn-pieces">4. Learn the Pieces Through Your Own Project</h2>
+
+<p>Your agent should translate each term into your domain. If you are writing a book, a branch is a separate revision path. If you are running a community project, an Issue is a complete work request or decision card. If you manage a laboratory, the main branch is closer to the currently accepted protocol than to a scratch notebook.</p>
+
+<div class="guide-table-wrap">
+<table>
+<thead><tr><th>GitHub piece</th><th>Plain-language role</th><th>How this guide uses it</th></tr></thead>
+<tbody>
+<tr><td><strong>Repository</strong></td><td>The controlled online home for one project</td><td>Holds durable context, work, evidence, and history</td></tr>
+<tr><td><strong>README</strong></td><td>The front door</td><td>Explains the objective, current state, boundaries, and where to look next</td></tr>
+<tr><td><strong>Files and folders</strong></td><td>The project's organized memory</td><td>Separate instructions, context, decisions, jobs, and evidence</td></tr>
+<tr><td><strong>Issue</strong></td><td>One bounded request, question, or decision</td><td>Lets you direct work from the web or phone without losing the complete request</td></tr>
+<tr><td><strong>Branch</strong></td><td>A separate proposal path</td><td>Keeps agent changes away from the accepted version while work is underway</td></tr>
+<tr><td><strong>Pull request</strong></td><td>The review surface for a proposed change</td><td>Shows what changed, why, checks, discussion, and authority before acceptance</td></tr>
+<tr><td><strong>Main branch</strong></td><td>The currently accepted project state</td><td>Changes only after the appropriate review and decision</td></tr>
+<tr><td><strong>Commit and history</strong></td><td>A recorded change and the trail behind it</td><td>Make corrections and project development inspectable</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="seed-repository">5. Seed the Smallest Useful Project Memory</h2>
+
+<p>Start with a small structure. Do not create dozens of empty folders. Your agent can propose these files as a starting point:</p>
+
+<pre><code>README.md
+AGENTS.md
+context/current-state.md
+decisions/README.md
+jobs/README.md
+evidence/README.md</code></pre>
+
+<h3>README.md — the project front door</h3>
+
+<p>Keep it short enough that a fresh agent can orient itself quickly:</p>
+
+<pre><code># Project name
+
+## Objective
+What this project is trying to accomplish and for whom.
+
+## Current verified state
+What is true now, with dates or evidence where needed.
+
+## Protected boundaries
+What must not be published, merged, disclosed, purchased,
+deleted, or changed without explicit approval.
+
+## Where work lives
+- Instructions: AGENTS.md
+- Current state: context/current-state.md
+- Decisions: decisions/
+- Active work: jobs/
+- Evidence: evidence/
+
+## Next executable step
+The next action that can be taken now, or the exact boundary
+that must be resolved first.</code></pre>
+
+<h3>AGENTS.md — how an agent should work here</h3>
+
+<p>This file is not a magic command. It is durable guidance that capable repository agents can read. Keep it specific to the project:</p>
+
+<pre><code># Agent instructions
+
+Read README.md and context/current-state.md before proposing work.
+
+State what evidence you inspected. Mark unsupported claims as unknown.
+
+Keep reading, proposing, writing, reviewing, merging, publishing,
+visibility changes, permission changes, spending, deletion, and
+external contact as separate authority gates.
+
+Use a branch and pull request for changes when the runtime supports it.
+If access is read-only, provide an exact patch or replacement text.
+
+Never store credentials or secrets in this repository.
+Do not move private material across audiences without explicit approval.
+
+Before claiming completion, verify the result and record what changed.</code></pre>
+
+<h3>Context, decisions, jobs, and evidence</h3>
+
+<ul>
+<li><strong>Current state</strong> tells the next reader what is true now—not the full history.</li>
+<li><strong>Decisions</strong> preserve choices and their reasons so the project does not relitigate them silently.</li>
+<li><strong>Jobs</strong> hold bounded ongoing work, owners, evidence, next actions, and real boundaries.</li>
+<li><strong>Evidence</strong> contains or points to the material supporting claims. Sensitive evidence can remain elsewhere as a scoped reference.</li>
+</ul>
+
+<p>The names can change. The functions matter more than the folders.</p>
+
+<h2 id="connect-agent">6. Connect the Agent You Actually Use</h2>
+
+<p>“Connect the agent to GitHub” can mean several different things. Your agent should identify the exact surface and verify what it can do before promising work.</p>
+
+<div class="control-ladder" aria-label="Four distinct capability levels">
+<div class="control-step"><strong>Read</strong><span>Find and explain authorized repository content.</span></div>
+<div class="control-step"><strong>Propose</strong><span>Prepare exact changes without writing them.</span></div>
+<div class="control-step"><strong>Write</strong><span>Create a branch, commit, or pull request.</span></div>
+<div class="control-step"><strong>Accept</strong><span>Review and merge into the accepted state.</span></div>
+</div>
+
+<p>These levels are not interchangeable. A connector that searches repository content may be read-only. A coding agent may work in a repository environment and open a pull request. A GitHub Action may have explicit contents, Issues, and pull-request permissions. None of those facts automatically gives the agent authority to merge, publish, change visibility, or broaden its own permissions.</p>
+
+<h3>ChatGPT: repository reading and Codex work are distinct</h3>
+
+<p>A connected GitHub source in ChatGPT can search authorized repository content on demand. A private or new repository must be selected for the GitHub app and may require organization approval. Repository availability can also take a few minutes.</p>
+
+<p>For write-capable repository work, Codex cloud is a separate path: you connect GitHub, choose the repositories Codex can access, create an environment, review the result, and may open a pull request. Do not assume that an ordinary ChatGPT conversation with GitHub reading access can edit the repository.</p>
+
+<h3>Claude: choose the actual Claude surface</h3>
+
+<p>Claude products also have different capabilities. Claude Code GitHub Actions can respond to <code>@claude</code> in an Issue or pull request and can turn Issues into pull requests when the repository is deliberately configured. Anthropic's documented setup requires repository administration, a GitHub App, explicit permissions, a workflow, and an authentication secret.</p>
+
+<p>That is a powerful route, not a required beginner step. If you use Claude in a surface without repository write access, ask it for a read-back or exact patch. If you use Claude Code locally or in the cloud, verify the repository and permission model for that environment. Never place the authentication secret in an ordinary file or conversation.</p>
+
+<h3>Local or other agents</h3>
+
+<p>A CLI or desktop agent may work from a repository cloned to your computer. That can increase local control, but it also introduces filesystem, command, network, and credential permissions. Start with read-only inspection or a disposable branch. Do not equate “runs on my laptop” with “safe by default.”</p>
+
+<div class="guide-callout"><strong>Capability check:</strong> ask the agent to state the repository it can access, whether access is read-only or write-capable, how proposed changes are isolated, and which actions still require you.</div>
+
+<h2 id="read-back">7. Run the Read-Back Test Before Any Edit</h2>
+
+<p>Before asking for work, test whether the agent understands the repository.</p>
+
+<div class="guide-prompt"><p>Read README.md, AGENTS.md, and context/current-state.md first. Tell me:</p>
+<ol>
+<li>the project objective;</li>
+<li>the current verified state;</li>
+<li>the protected boundaries;</li>
+<li>the next executable step;</li>
+<li>what remains unknown.</li>
+</ol>
+<p>Cite the files you used. Do not edit anything.</p></div>
+
+<p>If the agent invents state, misses a boundary, or cannot identify the next step, improve the repository before giving it more authority. A failed read-back is useful evidence: it tells you the project memory is incomplete, ambiguous, inaccessible, or not being followed.</p>
+
+<h2 id="issue">8. Use One Issue as One Complete Request</h2>
+
+<p>An Issue can be a convenient request surface, especially from GitHub Mobile. It should not become a dumping ground for every thought or a substitute for durable accepted context.</p>
+
+<p>Create an Issue only when one complete request, question, or decision is ready. Include:</p>
+
+<pre><code>## Objective
+What result do I want?
+
+## Current state
+What is true now?
+
+## Relevant evidence
+Which files, links, examples, or checks matter?
+
+## Protected actions
+What may not happen without separate approval?
+
+## Done when
+What observable result and verification define completion?</code></pre>
+
+<p>Example:</p>
+
+<div class="guide-prompt">
+<p><strong>Objective:</strong> Rewrite the project introduction for a reader who has never used GitHub.</p>
+<p><strong>Current state:</strong> README.md explains the architecture but not the first benefit.</p>
+<p><strong>Relevant evidence:</strong> README.md and decisions/audience.md.</p>
+<p><strong>Protected actions:</strong> Do not merge, publish, change repository visibility, or add new claims without sources.</p>
+<p><strong>Done when:</strong> A branch and pull request contain the revised opening, explain the change, and pass the repository's checks.</p>
+</div>
+
+<p>During a project, accepted knowledge should move into the appropriate file. Close the Issue when its request is finished or its required answer has been absorbed. Do not leave an Issue open merely to preserve memory that belongs in the repository.</p>
+
+<h2 id="reviewable-change">9. Produce One Reviewable Change</h2>
+
+<p>If the agent can write, it should work on a branch and open a pull request. If it can only read, it should provide an exact patch or replacement text that you can apply through a write-capable surface.</p>
+
+<p>The pull request should answer:</p>
+
+<ul>
+<li>What changed?</li>
+<li>Why was this change needed?</li>
+<li>What evidence or Issue supports it?</li>
+<li>What checks were run?</li>
+<li>What remains uncertain?</li>
+<li>Who has authority to accept the change?</li>
+</ul>
+
+<p>Review the <strong>Files changed</strong> view. Look for accidental secrets, unrelated changes, unsupported claims, missing context, and changes to permissions or workflows. Review the checks. Ask for revisions when needed.</p>
+
+<p>Merging changes the accepted project state. Keep that as a separate human decision unless you have explicitly designed and tested a narrower authority model.</p>
+
+<h2 id="corrections">10. Make Corrections Survive the Conversation</h2>
+
+<p>The repository becomes a real learning surface when corrections improve the system around the model.</p>
+
+<p>If an agent repeatedly acts before reading, do more than say “be careful.” Ask:</p>
+
+<ul>
+<li>Which instruction was missing or ambiguous?</li>
+<li>Which evidence should have been read first?</li>
+<li>Which authority boundary was unclear?</li>
+<li>Which check would detect this next time?</li>
+<li>What is the smallest durable surface to update?</li>
+</ul>
+
+<p>The answer might be one line in AGENTS.md, one decision record, one checklist, or one test. Review that correction like any other proposed change. Over time, the project can accumulate not just information, but better ways of working.</p>
+
+<h2 id="fresh-context">11. Run the Fresh-Context Continuity Test</h2>
+
+<p>Open a fresh conversation—or use another authorized agent—and provide only the repository. Do not paste the old conversation. Ask it to recover:</p>
+
+<ol>
+<li>the objective;</li>
+<li>the current verified state;</li>
+<li>one accepted decision;</li>
+<li>the main unresolved question;</li>
+<li>the authority boundary;</li>
+<li>the next executable action.</li>
+</ol>
+
+<p>Require file citations and unknown marking. Compare the response with the repository.</p>
+
+<div class="guide-table-wrap">
+<table>
+<thead><tr><th>Result</th><th>Meaning</th><th>Next move</th></tr></thead>
+<tbody>
+<tr><td><strong>Accurate and cited</strong></td><td>The repository carries enough context for bounded continuation.</td><td>Try one slightly more complex request.</td></tr>
+<tr><td><strong>Mostly accurate, some gaps</strong></td><td>The structure works, but key state or decisions are missing.</td><td>Update the smallest relevant file and rerun the test.</td></tr>
+<tr><td><strong>Confident invention</strong></td><td>The agent is not grounding itself reliably.</td><td>Tighten read-first instructions, evidence requirements, and verification.</td></tr>
+<tr><td><strong>Cannot access the repository</strong></td><td>The connection or permissions are incomplete.</td><td>Repair access; do not compensate by pasting secrets or bulk private context.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Passing this test does not prove complete portability or safety. It proves one useful thing: the project no longer depends entirely on one conversation and one person's recollection.</p>
+
+<h2 id="mobile-loop">12. Use a Small Mobile-to-Review Loop</h2>
+
+<p>Once the pilot works, the daily loop can remain simple:</p>
+
+<ol>
+<li>Capture one complete request or decision as an Issue from GitHub Mobile.</li>
+<li>Let an authorized agent read the Issue and repository context.</li>
+<li>Receive a branch and pull request, or an exact patch.</li>
+<li>Review the change, evidence, checks, and authority boundary.</li>
+<li>Accept, revise, or reject it.</li>
+<li>Move accepted knowledge into durable files and close the Issue.</li>
+</ol>
+
+<p>Not every thought needs an Issue. Not every Issue needs an agent. The goal is a clear path from request to evidence to reviewable change to accepted state.</p>
+
+<h2 id="failure-recovery">Failure and Recovery Rules</h2>
+
+<ul>
+<li><strong>The agent cannot see the repository:</strong> confirm the correct account, repository selection, organization approval, and connection. New repositories may take time to appear.</li>
+<li><strong>The agent can read but not write:</strong> use read-back and exact patches. Move to a write-capable surface only when you want that capability.</li>
+<li><strong>The agent changed too much:</strong> do not merge. Narrow the Issue, compare the diff, and ask for a smaller proposal.</li>
+<li><strong>A secret entered history:</strong> treat it as compromised, revoke or rotate it, and follow GitHub's sensitive-data removal guidance. Deleting the visible line alone may not remove it from history.</li>
+<li><strong>The repository is becoming cluttered:</strong> update current state, condense accepted decisions, close absorbed Issues, and archive obsolete material without erasing necessary history.</li>
+<li><strong>You want local control:</strong> clone the repository to your computer and establish backups. Treat that as the next architecture step, not as proof that every connected service is local.</li>
+</ul>
+
+<h2 id="completion">Completion Check</h2>
+
+<p>The guide is complete when you can answer yes to each question:</p>
+
+<ul class="completion-list">
+<li>Can I name the one project this repository serves?</li>
+<li>Is the repository private, and do I understand what “private” does and does not mean?</li>
+<li>Is my account protected with two-factor authentication and securely stored recovery methods?</li>
+<li>Can I reach the repository and its Issues from GitHub Mobile?</li>
+<li>Can a fresh authorized agent recover the project's objective, state, decision, question, boundary, and next action from files?</li>
+<li>Do I know whether my current agent can read, propose, write, or open pull requests?</li>
+<li>Have I completed one bounded Issue-to-review cycle?</li>
+<li>Did I personally review what would become accepted state?</li>
+<li>Can I point to one correction that now survives beyond the conversation?</li>
+</ul>
+
+<p>If the fresh-context test fails, the project is not a failure. You have found the next concrete improvement.</p>
+
+<h2 id="sources">Capability Notes and Official Sources</h2>
+
+<p class="source-note">Product capabilities and setup paths were checked against official documentation on September 22, 2026. Interfaces, plans, and permissions can change; your agent should verify the current product surface before guiding live setup.</p>
+
+<ul>
+<li><a href="https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github">GitHub: Creating an account</a></li>
+<li><a href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication">GitHub: Configuring two-factor authentication</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-github/github-mobile">GitHub: GitHub Mobile</a></li>
+<li><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">GitHub: Creating a new repository</a></li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues">GitHub: About Issues</a></li>
+<li><a href="https://docs.github.com/en/pull-requests/reference/pull-requests">GitHub: Pull requests</a></li>
+<li><a href="https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt-deep-research">OpenAI: Connecting GitHub to ChatGPT</a></li>
+<li><a href="https://learn.chatgpt.com/docs/cloud">OpenAI: Codex cloud</a></li>
+<li><a href="https://code.claude.com/docs/en/github-actions">Anthropic: Claude Code GitHub Actions</a></li>
+</ul>
+
+<h2 id="continue">Continue When the First Layer Is Stable</h2>
+
+<p>This GitHub arrangement is a beginning. Later, you may sync locally, add backups, define recurring jobs, connect more than one agent, introduce a dashboard, or move to a more open harness. Grow only when a real need appears and the current layer is understandable.</p>
+
+<p>For a diagnosis of your broader AI use and ownership, run <a href="02-audit-ai-harness-portability.html">the Agentic AI Use Doctor</a>. If your first goal is a public personal website, use <a href="01-build-your-own-space-on-the-web.html">Build Your Own Space on the Web</a>.</p>
+
+<hr>
+<p><strong>Previous:</strong> <a href="02-audit-ai-harness-portability.html">Practical Guide 2 — Run the Agentic AI Use Doctor</a></p>
+
+</div></div>
+<aside class="sidebar">
+<div class="sidebar-title">Guide Map</div>
+<div>
+<a href="#start-with-your-agent" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Begin</div><h3>Give the guide to your agent</h3><div class="date">One question at a time, adapted to you</div></div></a>
+<a href="#connect-agent" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Capability</div><h3>Connect the actual agent surface</h3><div class="date">Keep read, write, review, and merge distinct</div></div></a>
+<a href="#fresh-context" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Proof</div><h3>Run the fresh-context test</h3><div class="date">Six items a new agent must recover</div></div></a>
+<a href="02-audit-ai-harness-portability.html" class="article-card-link"><div class="article-card"><div class="sidebar-card-position">Related guide</div><h3>Agentic AI Use Doctor</h3><div class="date">Diagnose your wider AI-use system</div></div></a>
+</div>
+</aside>
+</div></section></main>
+
+<footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
+<script src="../../js/theme-manager.js?v=20260903-whats-new-1"></script>
+<script src="../../js/components.js?v=20260910-services-ux-2"></script>
+</body>
+</html>
