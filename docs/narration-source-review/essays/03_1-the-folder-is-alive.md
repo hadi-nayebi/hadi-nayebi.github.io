@@ -13,10 +13,10 @@ is composed. Unsupported ratios and deterministic improvement claims are gone.
 
 - Canonical source: `blog/b3/03_1-the-folder-is-alive.md`
 - Source version: `v1.2.0` (previously `v1.1.0`)
-- Source SHA-256: `db6c90ec27318741017a29a6782dd99cb0a3779d29d77f9e61e7c4c2c7a325ac`
+- Source SHA-256: `edcee260bcd9c77f0fe443dd8a793c7f27cae949b81388c8d4da589a10d7c6b4`
 - Published page: `blog/b3/03_1-the-folder-is-alive.html`
-- Published-page SHA-256: `c5ff808e8e75ecfba989a9c8ff6c7898c3909ecb3e8bf04068f9d68e5bd3131e`
-- Hadi's terminology correction is absorbed; narration-source approval remains pending.
+- Published-page SHA-256: `3304de827eff2a98bab373f68655d253ea644572d8609b368cfafa1b0fa44db7`
+- Hadi's terminology correction and article-wide audit are absorbed; narration-source approval remains pending.
 
 ## Changes made
 
@@ -28,9 +28,12 @@ is composed. Unsupported ratios and deterministic improvement claims are gone.
    capability to context, tools, permissions, state, action, and verification.
 3. **Separated the text calculator from the digital cortex.** In the described
    architecture, the LLM is the token-generating text calculator and animator,
-   not the cortex itself. The runtime exposes the environment, while the
-   filesystem composes the digital cortex through instructions, memory,
-   plugins, behavior rails, hooks, tools, jobs, tests, and verification.
+   not the digital cortex itself. The runtime exposes the environment, while
+   the filesystem composes the digital cortex through instructions, memory,
+   plugins, behavior rails, hooks, tools, jobs, tests, and verification. An
+   article-wide pass replaced every structural bare-cortex reference—including
+   the opening—with the full intentional term; only the final definition uses
+   *cortex* alone to explain the compound.
 4. **Made accumulation conditional.** Useful procedures compound only when
    corrections are reviewed, preserved, retrieved, and verified.
 5. **Removed the unsupported 80/20 split.** The scaling section now explains
@@ -72,5 +75,6 @@ professional audience remain the authority for the revision.
   the writing contract's roughly-90-percent warning boundary; all structural
   sections, central metaphors, and narrative beats remain.
 - Safe Markdown-body synchronization and unlocked-narration check: passed.
+- Terminology audit: every structural reference uses **digital cortex**; the sole bare *cortex* usage explains the compound term.
 - Narration corpus and relevant repository validators: passed.
 - `git diff --check`: passed.
