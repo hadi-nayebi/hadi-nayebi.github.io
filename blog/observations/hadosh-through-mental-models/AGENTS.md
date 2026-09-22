@@ -10,9 +10,11 @@ This directory owns **Hadosh Through Mental Models**, an analytical Observation 
 
 The series may grow across many lenses over time. Add one lens at a time; do not pre-write or lock a complete roadmap.
 
-## Continuity rule
+## Bidirectional continuity rule
 
 Every new lens must interpret the complete accumulated Hadosh thesis, not rebuild the thesis around the newest comment, analogy, project, or implementation. New evidence should change the synthesis only in proportion to its scope and strength.
+
+The obligation also runs backward. Each lens job must audit earlier lenses and related public context. When the new work materially improves an earlier explanation, distinction, question, diagram, or implication, revise the affected earlier surfaces and their version or review records rather than leaving the learning isolated in the newest entry. When the series lacks enough context to answer a question, keep it explicitly open until later discussion, implementation, or evidence makes a responsible answer possible.
 
 In particular, preserve these established constraints unless Hadi explicitly changes them:
 
@@ -34,8 +36,10 @@ Each entry must:
 5. Give readers a compact way to apply the lens to another topic.
 6. Use only public evidence and protect the public/private boundary.
 7. Include a canonical Markdown source, published HTML, review record, contribution surface, discovery metadata, and purposeful visuals.
+8. Record the backward audit: which earlier lenses or related surfaces changed, which did not require revision, and which questions remain open for future context.
+
+Use [the mental-model article production and backward-audit method](../../../docs/hadosh-mental-model-production-method.md) as the review procedure. It governs context recovery, shared-model development, the semantic-neighborhood audit, exact change ledgers, open-question routing, scoring, and the Hadi review packet. It does not prescribe one article outline.
 
 ## Publication state
 
-An entry may be coherent enough to publish without being permanently final. Before narration or external promotion, Hadi reviews the website prose and visuals. Narration is derived only after prose approval and must follow the parent blog narration contract.
-
+An entry may be coherent enough to publish without being permanently final. Publication establishes a usable, versioned synthesis—not a terminal doctrine. A later lens may reopen an earlier entry when new accepted context materially improves it. Before narration or external promotion, Hadi reviews the website prose and visuals. Narration is derived only after prose approval and must follow the parent blog narration contract.

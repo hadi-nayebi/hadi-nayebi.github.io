@@ -1,8 +1,35 @@
 {
   "version": 1,
-  "updated": "2026-09-15",
+  "updated": "2026-09-22",
   "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
   "entries": [
+    {
+      "id": "2026-09-18-hadosh-through-map-territory",
+      "date": "2026-09-18",
+      "type": "Observation and mental-model writing",
+      "title": "Lens 2 tests the distance between an architecture and an owned capability",
+      "summary": "The Map Is Not the Territory examines Hadosh Academy as a revisable public map that guides distinct user-owned harnesses, learns from lived work, and returns new evidence to every affected earlier or later public surface.",
+      "why_it_matters": "The lens establishes a harder test for the Academy's claims and a rolling-context rule for the corpus: durable user capability matters more than polished representations, later evidence can revise earlier writings, and questions without adequate context remain open.",
+      "affected": ["Hadosh Through Mental Models", "First Principles", "Observations", "Map and territory", "Rolling public context", "Personal harnesses", "Dashboards", "Field evidence"],
+      "maturity": "Versioned exploratory synthesis with canonical Markdown, website HTML, one exact system visual, contribution guidance, backward corpus propagation, and an explicit narration boundary",
+      "intended_for": ["People building personal AI harnesses", "Readers learning mental models", "Dashboard and harness builders", "Agents adapting Hadosh context to a user's work"],
+      "sources": [
+        {
+          "label": "Hadosh Academy Through The Map Is Not the Territory",
+          "url": "/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html"
+        },
+        {
+          "label": "The Great Mental Models",
+          "url": "https://fs.blog/tgmm/"
+        },
+        {
+          "label": "Lens 1: First Principles",
+          "url": "/blog/observations/hadosh-through-mental-models/01-first-principles.html"
+        }
+      ],
+      "adoption_notes": "Public Hadosh context is a revisable map, not a universal installation. A comment begins as a proposal, not automatic doctrine. Supported learning should update every affected public surface; unresolved questions remain open until the context needed to answer them exists.",
+      "recommended_action": "Read Lens 2, then test one recurring responsibility: identify what survives the session, what remains traceable to evidence, what the user can correct, and what repeated operation reveals about the architecture."
+    },
     {
       "id": "2026-09-15-hadosh-through-first-principles",
       "date": "2026-09-15",
@@ -11,7 +38,7 @@
       "summary": "A new analytical Observation series begins with First Principles, separating Hadosh's enduring constraints from today's implementations and explaining why shared patterns should become user-selected, locally adapted harness components rather than one prescribed agent.",
       "why_it_matters": "The lens connects human agency, replaceable model sessions, durable user-owned state, explicit authority, protected boundaries, natural-language exploration, modularity, and evidence-driven pattern crystallization into one reviewable argument.",
       "affected": ["Hadosh Through Mental Models", "Observations", "First principles", "Personal harnesses", "Origin", "Seed Agent", "Q-Seed"],
-      "maturity": "Published exploratory synthesis with canonical Markdown, website HTML, four reviewed visual concepts, contribution guidance, and an explicit revision boundary; narration awaits Hadi's separate prose approval",
+      "maturity": "Published versioned synthesis with canonical Markdown, website HTML, four reviewed visual concepts, contribution guidance, backward revision from Lens 2, and an explicit narration boundary",
       "intended_for": ["People building personal AI harnesses", "Readers learning mental models", "Origin, Seed Agent, and Q-Seed contributors", "Agents helping users interpret Hadosh Academy"],
       "sources": [
         {
@@ -27,7 +54,7 @@
           "url": "https://fs.blog/tgmm/"
         }
       ],
-      "adoption_notes": "The thousand-word harness is an analogy for optimizing one particular user-, task-, and runtime-specific context. It does not propose one universal harness. The contribution-review plugin is a future example, and implementation diversity is only a possible defense-in-depth benefit, not a substitute for permissions, validation, review, isolation, or deterministic enforcement.",
+      "adoption_notes": "The thousand-word harness is an analogy for one user-, task-, and runtime-specific context. Lens 2 later clarified that new evidence can revise earlier published context and that the general route from comments to stable context remains an open design question until repeated experience supports it.",
       "recommended_action": "Read Lens 1 on the website, challenge the claimed foundations with public evidence, and adapt any useful behavioral pattern to the local harness rather than copying a complete architecture."
     },
     {

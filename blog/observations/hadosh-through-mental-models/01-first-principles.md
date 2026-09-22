@@ -2,13 +2,13 @@
 title: "Hadosh Academy Through First Principles"
 date: "September 2026"
 slug: "first-principles"
-read_time: "14 min"
+read_time: "15 min"
 tags: [Observations, Mental Models, First Principles, Personal Harness, Modularity]
 audience: everyone
 og_image: "images/first-principles-hero.jpg"
 series: "Hadosh Through Mental Models"
 series_position: "Lens 1"
-version: v0.9.0
+version: v1.0.0
 status: published
 ---
 
@@ -106,6 +106,8 @@ The modularity begins at the backbone.
 
 Each meaningful behavior can become a component the user deliberately selects. A component may be independent or may declare a real dependency on another. Several components may later form a coherent collection. But the user should be able to understand what behavior is being added, what authority it requires, what state it owns, and what happens when it is removed.
 
+Consider a filmmaker who enjoys making films but wants to externalize part of trailer production. The filmmaker might define a bounded analytical responsibility: produce and annotate candidate excerpts, assemble alternative short sequences, preserve the chosen balance between curiosity and disclosure, retain accepted corrections, and return rights and final acceptance to the person. Those are cognitive building blocks, not a prescribed filmmaking agent. One local harness may separate them into several components; another may express them differently. Compartmentalization keeps each behavior, state, authority boundary, and improvement path understandable, allowing repeatable search to move into the harness without transferring authorship or creative control.
+
 Consider one behavioral objective: an agent should not stop while actionable work remains.
 
 That objective does not dictate one implementation. In a simple harness it may live inside a job definition. In another it may become a dedicated Stop Gate plugin. In a multi-channel harness, each channel may expose its own continuation state and a small coordinator may compose them. The stable element is the behavior being protected; the implementation belongs to the local architecture.
@@ -127,7 +129,7 @@ That variation has another possible benefit. A monoculture gives an attacker a r
 
 A plugin should not exist merely because an idea can be named.
 
-The healthier sequence begins with a behavior that people can understand. Different users and agents attempt it in their own contexts. The implementations are tested through real work. Failures and tradeoffs become visible. The Academy compares what happened and explains the lesson. Only then do sufficiently repeated and well-understood structures crystallize into reusable components.
+The healthier sequence begins with a behavior that people can understand. Different users and agents attempt it in their own contexts. The implementations are tested through real work. Failures and tradeoffs become visible. The Academy compares what happened and explains the lesson. When the evidence is sufficiently repeated and understood, a structure can crystallize into a reusable component. Before that threshold, the responsible state is a provisional pattern or an open question—not an invented mechanism presented as settled.
 
 This creates a production and education loop:
 
@@ -146,6 +148,8 @@ This creates a production and education loop:
 
 This is the line connecting the Academy, Origin, Seed Agent, and Q-Seed. The writing is not marketing added after software production. It helps define the behavior before implementation and interpret the evidence afterward. The implementation is not merely an example attached to the lesson. It is one of the instruments used to test whether the lesson survives contact with work.
 
+Evidence can also travel backward. A later lens, comment, or implementation may show that an earlier article framed a concept too narrowly or treated an open question as settled. In that case, the earlier public context should be revised, with its history preserved, rather than leaving the correction isolated in the newest piece.
+
 The same line can continue through the most basic behaviors introduced in Harness 101. A behavior is taught, tried in Origin or a Seed lineage when appropriate, tested, and then revisited publicly. Once the current Stop Gate work and Origin's two engagement plugins have been tested and accepted, they can support their own companion posts. Later stop-related patterns can be adapted into Origin, Q-Seed, or Seed Agent according to each framework rather than copied as identical code.
 
 ## Contributions Can Become a Behavior Too
@@ -157,6 +161,8 @@ Today, a reader can comment on an article or report an issue in a related projec
 That would be one plugin: one selectable behavior, with explicit authority and a narrow purpose. A user who wants their agent to participate could add it. Another user could decline. Different Academy surfaces could publish different contribution schemas without forcing one global commenting system into every harness.
 
 This remains a proposal, not an existing guarantee. Its value here is illustrative: even participation in the ecosystem can be decomposed into an understandable behavior rather than hidden inside a complete agent.
+
+The Academy has not yet settled one general route from comments to accepted context. Current discussion surfaces collect proposals. Some may correct a passage directly; others may remain open questions or require comparison across several implementations. Later experience will reveal which review structures should become durable. Until then, the missing mechanism should remain visible rather than being invented to complete the diagram.
 
 ## Hadosh Academy Is Also a Context
 
@@ -171,6 +177,8 @@ There may be a form of the Academy that lets an agent orient a new user with unu
 That is why publication is not finality.
 
 An article can be coherent enough to publish and still remain open to revision. Comments are proposals, not automatic truth. New implementations provide evidence, not commands. Hadi's review and explicit approval determine what becomes accepted public context. Version history preserves how the context changed and why.
+
+Each new lens therefore has two responsibilities: add a new angle and audit what earlier lenses now need to say differently. A correction may change the newest article, an earlier article, a diagram, a project explanation, or a shared instruction. If the available context cannot yet support the correction, the question remains open with a reason to revisit it.
 
 Some passages may find a stable position quickly. Others may keep changing as models, runtimes, and practices evolve. The objective is not endless motion. It is an increasingly useful context whose claims stabilize in proportion to the evidence behind them.
 
@@ -187,6 +195,7 @@ Looking at Hadosh Academy through this lens produces a connected set of conclusi
 - Independent implementations create evidence; repeated evidence lets some patterns crystallize.
 - The Academy, its projects, and its contributors form one learning loop.
 - The Academy itself must evolve as a reviewed public context.
+- New public context should audit and, where evidence warrants, revise earlier writings; questions without enough context should remain explicitly open.
 
 None of these conclusions specifies the one architecture everyone should build. Together, they define the conditions under which many distinct architectures can grow without losing the person at their center.
 

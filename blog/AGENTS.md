@@ -17,6 +17,17 @@ instructions continue to apply.
 - Transcript files are derived narration surfaces. An old `final: true` flag
   or an existing MP3 is not evidence that current prose and audio still match.
 
+## Rolling corpus synthesis
+
+Every new or materially revised writing has two directions of responsibility:
+
+1. develop the current artifact from the complete accepted context; and
+2. audit related earlier writings and public explanatory surfaces for conclusions, terminology, examples, diagrams, or open questions that the new context materially improves.
+
+When a later lens, implementation, comment, or discussion produces sufficiently supported context, revise every affected earlier canonical source and its rendered page, review record, metadata, and navigation in the same coherent pull request when practical. Published means available and versioned, not permanently final.
+
+When the available context cannot yet resolve a question, preserve the question and the evidence needed to revisit it. Do not manufacture a mechanism, definition, or conclusion merely to make the corpus appear complete. Comments and field reports begin as proposals; they enter more stable public context only after interpretation, privacy review, comparison where needed, and Hadi's acceptance.
+
 ## Current narration-source scope
 
 The approved source corpus for the current review contains:

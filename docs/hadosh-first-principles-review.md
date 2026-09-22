@@ -22,6 +22,29 @@ The initial draft framed Hadosh through first-principles reasoning: human agency
 - Established “Hadosh Through Mental Models” as an analytical Observation series whose entries are current syntheses open to evidence-backed revision.
 - Added four purpose-built storytelling visuals and a separate LinkedIn composition.
 
+## Lens 2 backward synthesis — v1.0.0
+
+Lens 2 established that public context is a revisable map and that corrections can travel backward across the corpus. The First Principles article was therefore re-audited rather than treated as a frozen baseline.
+
+Changes:
+
+- made provisional patterns and open questions the correct state before evidence is sufficient for crystallization;
+- clarified that later lenses, comments, and implementations may revise earlier published context;
+- preserved the comment-to-context mechanism as an open design question rather than claiming a finished governance path;
+- gave each new lens two responsibilities: add a view and audit earlier public context;
+- updated the conclusion, version, modification date, and reading time.
+
+The five first-principles foundations remain unchanged. Lens 2 deepened how the Academy learns and revises them; it did not displace them.
+
+
+## Filmmaker compartmentalization refinement — v1.0.0 draft
+
+Later discussion supplied a concrete test of the existing compartmentalization argument: a filmmaker can externalize a bounded analytical part of trailer production while retaining authorship, creative direction, rights decisions, and final acceptance.
+
+This is an additive example, not a new foundation or a prescribed filmmaking implementation. The article adds one compact paragraph showing cognitive building blocks, local decomposition, inspectable authority, and retained correction. It does not reorganize the article around the newest example or change the five first-principles foundations.
+
+The revised article contains approximately 2,649 words before sources and remains a 15-minute read.
+
 ## Public evidence
 
 - [Farnam Street: First Principles](https://fs.blog/first-principles/)

@@ -83,6 +83,12 @@ main reading flow.
 
 ## Editing discipline
 
+### Rolling-context audit
+
+Published pages are versioned public context, not frozen endpoints. When a new article, feature, implementation, comment, or discussion produces accepted context, inspect earlier related public surfaces for claims, explanations, diagrams, navigation, or instructions that the new context materially improves. Include justified backward revisions in the same coherent pull request when scope allows.
+
+Do not change older work merely for consistency theater, and do not invent an answer to close a question for which the portfolio lacks adequate context. Preserve such questions explicitly until evidence or later work can resolve them, then update every affected surface and its review or version record.
+
 - Preserve unrelated user changes and keep each pull request limited to its stated purpose.
 - Treat public prose, agent-facing onboarding instructions, repository operating instructions, and
   historical implementation descriptions as different file responsibilities. Update only the
