@@ -5,11 +5,14 @@ on:
     paths:
       - 'agents.html'
       - 'agents/**'
+      - 'start-here.html'
       - 'css/**'
       - 'data/abstraction-library.json'
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-start-here-participation-layout.mjs'
+      - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
   push:
     branches: [main]
@@ -49,11 +52,15 @@ jobs:
           exit 1
       - name: Verify layout, interaction, contrast, and accessibility
         run: node scripts/validate-responsive-layout.mjs
+      - name: Verify Start Here participation choices
+        run: node scripts/validate-start-here-participation-layout.mjs
       - name: Upload responsive screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: responsive-layout-screenshots
-          path: artifacts/responsive-layout
+          path: |
+            artifacts/responsive-layout
+            artifacts/start-here-participation
           if-no-files-found: error
           retention-days: 14
