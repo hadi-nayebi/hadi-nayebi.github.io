@@ -6662,3 +6662,8 @@ body.lightbox-open {
     color: #e9ddff;
     opacity: 1;
 }
+
+.page-start-here .card-link,
+.page-start-here .vocab-card h3 {
+    color: #e9ddff;
+}
