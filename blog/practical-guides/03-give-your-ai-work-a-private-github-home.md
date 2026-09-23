@@ -19,6 +19,7 @@ This is a practical starting layer, not a complete local harness. GitHub supplie
 You will have:
 
 - a private repository owned by your GitHub account;
+- a ChatGPT or Claude project whose instructions explain how a private jobs/context repository and one or more work repositories fit together;
 - a small set of files describing one real project;
 - the GitHub Mobile app for requests, comments, notifications, and review;
 - Issues used as request and interaction points;
@@ -38,11 +39,12 @@ If the full guide feels long, keep this sequence in view:
 2. Create one private repository and secure the account.
 3. Install GitHub Mobile.
 4. Add a short README, project instructions, current state, and decision record.
-5. Connect one agent to only that repository.
-6. Test the direct connection without allowing a change.
-7. Open one Issue from your phone.
-8. Review one proposed patch or pull request.
-9. Start a fresh conversation and test whether it can recover the work.
+5. Create a ChatGPT or Claude project for the work and give it a short repository map.
+6. Connect the project to only the repositories it needs.
+7. Test each direct connection without allowing a change.
+8. Open one Issue from your phone.
+9. Review one proposed patch or pull request.
+10. Start a fresh project conversation and test whether it can recover the work.
 
 The agent can guide each step. You only need to understand the decision being made now and where its result will live.
 
@@ -314,6 +316,31 @@ OpenAI's current [Codex cloud guide](https://learn.chatgpt.com/docs/cloud) descr
 
 Use the provider's official repository integration. Grant the narrowest practical access, verify the exact repository, and ask the agent to state what it can actually do before relying on it.
 
+### Create the agent-side project home
+
+The repository is the durable file-backed home. A **Project** in ChatGPT or Claude can become the doorway through which the agent repeatedly enters that home.
+
+ChatGPT Projects keep related chats, files, and project instructions together. Claude Projects provide a workspace with their own chats, knowledge, and project instructions. Product interfaces, connectors, and account availability can change, so follow the current official [ChatGPT Projects guide](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude Projects guide](https://support.claude.com/en/articles/9517075-what-are-projects) and verify what your account can actually access.
+
+Create one project for the continuing area of work. Its project instructions should explain the repository system rather than copy all repository content into the platform:
+
+- name the private **jobs or context repository** that holds current responsibilities, decisions, and cross-project orientation;
+- name the one or more **work repositories** that hold the actual project files and proposed changes;
+- tell the agent which entry file to read first in each repository;
+- require the agent to read and obey local `AGENTS.md` or equivalent instructions after entering a repository;
+- require it to inspect current job and decision state before proposing work;
+- forbid copying private material from one repository to another unless you explicitly authorize that movement;
+- keep repository access separate from merge, publication, messaging, spending, and other protected authority; and
+- treat platform chat memory as helpful working context, while the reviewed repository files remain the accepted durable context.
+
+A compact project instruction can begin like this:
+
+> This project coordinates my user-owned work across private GitHub repositories. Begin with `[jobs-repository]/README.md` and its local instructions to understand current responsibilities and decisions. Then enter only the named work repository needed for the task and read its local instructions before acting. Treat the jobs repository as coordination context and each work repository as the place where that project's files and proposals live. Do not copy private material across repositories, expand access, merge, publish, message, spend, or take another consequential action without my explicit approval. At the start of each task, state which repositories you can directly access and which capability remains unverified.
+
+Connect or authorize only the named repositories. Test the jobs/context repository and every work repository separately; access to one does not prove access to another. If the Project cannot use the repository connector, the connector supports only one repository, or the feature is unavailable on the account, keep the same architecture but use the narrowest available path: one repository first, a bounded manual context transfer, or a local/cloud coding agent that can open the repositories directly. Do not pretend that a platform Project automatically reads a GitHub repository.
+
+This layer changes the agentic system in a practical way: the platform Project supplies a stable conversational doorway, while the private repositories give the user's customization context more inspectable places to grow.
+
 ## Part 7 — Test the Direct Repository Connection
 
 Do not accept a web search result, a public website page, or a remembered copy as proof that the agent can use your private repository.
@@ -498,7 +525,9 @@ Give the following instruction—and the link to this guide—to the agent you w
 >
 > Before proposing repository structure, understand the project's purpose, current state, repeated work, important decisions, privacy boundaries, review needs, and what a future conversation must recover. Propose the smallest useful set of files and explain why each one earns its place. Treat Issues as the main request and interaction surface, especially from GitHub Mobile.
 >
-> Help me connect GitHub to ChatGPT, Codex cloud, or the agent I am using through the product's supported connection. Grant the narrowest practical repository access. Then test the direct repository connection without browsing the web or changing files. Report observed capabilities separately: reading files; reading, creating, or commenting on Issues; creating branches; changing files; opening pull requests; and merging. Never infer a capability from the product name. Access is not authority.
+> Help me create a Project in ChatGPT or Claude when that surface is available. Its project instructions should map one private jobs/context repository and the one or more work repositories required for this area. Tell the agent which entry file and local instructions to read first, keep coordination context separate from project deliverables, and forbid moving private material across repositories without my approval. Treat the Project as the conversational doorway and the reviewed repository files as the accepted durable context.
+>
+> Help me connect GitHub to ChatGPT, Codex cloud, Claude, or the agent I am using through the product's supported connection. Grant the narrowest practical repository access. Then test each named repository connection without browsing the web or changing files. Report observed capabilities separately for each repository: reading files; reading, creating, or commenting on Issues; creating branches; changing files; opening pull requests; and merging. Never infer a capability from the product name or from access to a different repository. Access is not authority.
 >
 > Follow the path the verified capability supports. With write access, use a focused branch and pull request. With read-only access, prepare an exact patch for review. With no connection, keep the repository as the accepted home while helping me move approved context manually and repair the connection.
 >
@@ -512,8 +541,9 @@ The first version is established when you can answer yes to these questions:
 
 - Do I own and control the private repository?
 - Can I reach it through GitHub Mobile?
+- Does my ChatGPT or Claude Project explain the jobs/context repository, the work repositories, and which instructions to read first?
+- Can the agent prove access to each named repository separately?
 - Can I open a useful Issue as a request?
-- Can my agent prove direct access to the correct repository?
 - Do I know whether that access is read-only or write-capable?
 - Can a fresh conversation recover the project's objective and current state?
 - Can I see an exact proposal before accepting it?
