@@ -364,13 +364,23 @@
         window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
     }
 
-    if (window.location.hash === '#community-return') {
-        window.addEventListener('load', async () => {
-            if (document.fonts && document.fonts.ready) await document.fonts.ready;
-            requestAnimationFrame(() => requestAnimationFrame(alignCommunityReturn));
-        }, { once: true });
+    function stabilizeCommunityReturn() {
+        if (window.location.hash !== '#community-return') return;
+        alignCommunityReturn();
+        requestAnimationFrame(() => requestAnimationFrame(alignCommunityReturn));
+        setTimeout(alignCommunityReturn, 250);
+        setTimeout(alignCommunityReturn, 1000);
     }
-    window.addEventListener('hashchange', alignCommunityReturn);
+
+    if (window.location.hash === '#community-return') {
+        stabilizeCommunityReturn();
+        document.addEventListener('DOMContentLoaded', stabilizeCommunityReturn, { once: true });
+        window.addEventListener('load', stabilizeCommunityReturn, { once: true });
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(stabilizeCommunityReturn);
+        }
+    }
+    window.addEventListener('hashchange', stabilizeCommunityReturn);
 
     const hashRole = window.location.hash.match(/^#role-([a-z]+)$/);
     selectRole(hashRole && roles[hashRole[1]] ? hashRole[1] : 'general', false);
