@@ -6,7 +6,7 @@ Your agent may already know something about your work, projects, habits, and amb
 
 Point the agent you already use to this guide. The agent should combine four sources of context:
 
-1. the Hadosh Academy diagnostic framework in this guide;
+1. the Hadosh Academy mapping framework in this guide;
 2. what it already knows about you, with uncertainty made visible;
 3. what you explain and correct during the conversation; and
 4. evidence you choose to inspect together.
@@ -24,7 +24,7 @@ A person can be doing sophisticated work inside a platform-controlled environmen
 
 ## What This Guide Maps
 
-Agentic-use health is not model intelligence, prompt cleverness, or time spent chatting.
+A useful map of AI use examines more than model intelligence, prompt cleverness, or time spent chatting.
 
 It is the relationship among:
 
@@ -158,7 +158,7 @@ Use existing memory first. Ask for correction and missing context.
 
 Explore whether the agent is mainly an answer source, brainstorming partner, extended working memory, project collaborator, or operating layer.
 
-Use one or two recent examples chosen because they reveal the person's normal practice. The example supports the whole-person diagnosis; it does not replace it.
+Use one or two recent examples chosen because they reveal the person's normal practice. The example supports the whole-person map; it does not replace it.
 
 ### 3. Examine what persists
 
@@ -196,7 +196,7 @@ Identify:
 
 ### 6. Teach the next possibility
 
-Reflect the emerging diagnosis in plain language. Explain what is already healthy, the current capability ceiling, and one more capable pattern relevant to the user's ambitions.
+Reflect the emerging picture in plain language. Explain what is already healthy, the current capability ceiling, and one more capable pattern relevant to the user's ambitions.
 
 Do not prescribe Hadi's implementation as the only architecture. Use dashboards, versioned repositories, persistent jobs, local CLI agents, and multi-agent context as concrete examples of what becomes possible.
 
@@ -204,7 +204,7 @@ Do not prescribe Hadi's implementation as the only architecture. Use dashboards,
 
 Before final scoring, ask the user whether the description feels accurate. Correct the model when it does not.
 
-A diagnosis that the user does not recognize is not complete.
+A map the user does not recognize is not complete.
 
 ## Score Eight Independent Axes
 
@@ -253,7 +253,7 @@ The final result contains:
 2. **Agentic-use map:** the person's current depth patterns, including where they build context and where they rely on isolated answers.
 3. **Harness-ownership map:** what the platform controls, what the user controls, and what remains mixed or unknown.
 4. **Control-stack map:** model, runtime, harness, context, tools, authority, verification, and recovery as separate layers.
-5. **Eight-axis health profile:** every score with evidence, confidence, and a plain-language explanation.
+5. **Eight-axis evidence profile:** every score with evidence, confidence, and a plain-language explanation.
 6. **Current-fit judgment:** whether the setup is healthy for the user's present goals.
 7. **Growth-ceiling judgment:** what more complex work is difficult at the current level.
 8. **Loss map:** what disappears after a platform, account, model, runtime, or device change.
@@ -276,7 +276,7 @@ The result should distinguish “adequate for what you currently want” from �
 >
 > Ask one high-value question or one small related group at a time. Let each answer determine the next question. Reflect the emerging model periodically so I can correct it.
 >
-> Diagnose two primary maps separately:
+> Build two primary maps separately:
 >
 > 1. the depth of my agentic use—from isolated answers and brainstorming through context construction, extended working memory, persistent complex work, externalized agency, and independent operation;
 > 2. my ownership of the harness—from platform-controlled conversations and memory through user-controlled context, local or user-owned execution, user-built mechanisms, and open interoperable infrastructure.
@@ -289,9 +289,9 @@ The result should distinguish “adequate for what you currently want” from �
 >
 > Apply structural limits. Platform-provided memory, schedules, tools, and state do not create direct harness-building control. A closed necessary execution layer cannot receive full transparency. Open source raises the attainable ceiling but does not prove healthy governance. A user-owned harness may use a closed remote model. Do not hide weakness inside an average.
 >
-> Teach while diagnosing. Explain unfamiliar concepts through my own examples. Do not prescribe one implementation. Show me the current fit of my setup, its growth ceiling, what I am losing, what I am failing to accumulate, and what greater local autonomy could make possible for my actual goals.
+> Teach while mapping. Explain unfamiliar concepts through my own examples. Do not prescribe one implementation. Show me the current fit of my setup, its growth ceiling, what I am losing, what I am failing to accumulate, and what greater local autonomy could make possible for my actual goals.
 >
-> Before finalizing, ask whether the diagnosis feels accurate and revise it if necessary.
+> Before finalizing, ask whether the map feels accurate and revise it if necessary.
 >
 > Return the twelve outputs defined in this guide. Finish with one safe immediate experiment and a personalized Hadosh Academy learning path. Do not change files, settings, permissions, accounts, integrations, or public surfaces without my approval. Do not request or expose credentials, regulated information, private client material, employer data, or another person's personal information.
 
@@ -309,7 +309,7 @@ The guide might later explain:
 
 > Your cognitive use is already relatively deep: you use AI as extended working memory and for contextual problem-solving. Your growth ceiling comes from accumulation. Important distinctions and decisions remain in platform conversations, so another agent cannot reliably inherit them and you must reconstruct parts of your world. The first useful experiment is to externalize one project's accepted decisions, current state, and next actions into a user-controlled document, then ask another agent to explain that project from the document alone.
 
-That is personalized diagnosis, teaching, and evidence production in one conversation.
+That is personalized mapping, teaching, and evidence production in one conversation.
 
 ## From Better Conversations to Independent Operation
 
