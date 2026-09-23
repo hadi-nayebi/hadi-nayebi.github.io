@@ -6,6 +6,8 @@ import AxeBuilder from '@axe-core/playwright';
 const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
+  { name: 'guide-index', path: '/blog.html#practical-guides', kind: 'guide-index' },
+  { name: 'guide-private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
@@ -157,6 +159,43 @@ for (const viewport of viewports) {
       if (coreParts !== 4) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: term page does not contain exactly the four core parts`);
       const excessSections = await page.locator('#boundaries, #relationships, #adaptation, #evidence, #avoid, .term-audit-card, .term-jump-shell, .term-sequence').count();
       if (excessSections) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: removed auxiliary term sections returned`);
+    }
+
+    if (route.kind === 'guide-index') {
+      const guideLinks = await page.locator('a[href="blog/practical-guides/03-give-your-ai-work-a-private-github-home.html"]').count();
+      if (guideLinks < 2) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Guide 3 is missing from the guide index or newest list`);
+    }
+
+    if (route.kind === 'guide') {
+      const title = (await page.locator('main h1').textContent())?.trim();
+      if (title !== 'Give Your AI Work a Private GitHub Home') failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: unexpected guide title`);
+      const sectionCount = await page.locator('.article-body h2').count();
+      if (sectionCount < 15) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: guide hierarchy is unexpectedly short (${sectionCount} sections)`);
+      const contributionCount = await page.locator('[data-contribution-surface="practical-guide-3"]').count();
+      if (contributionCount !== 1) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: contribution surface is missing or duplicated`);
+
+      const articleIssues = await page.evaluate(() => {
+        const problems = [];
+        for (const element of document.querySelectorAll('.article-body pre, .article-body blockquote, .article-body table')) {
+          const rect = element.getBoundingClientRect();
+          const style = getComputedStyle(element);
+          const contained = rect.left >= -1 && rect.right <= window.innerWidth + 1;
+          const horizontallyScrollable = ['auto', 'scroll'].includes(style.overflowX) && element.scrollWidth >= element.clientWidth;
+          if (!contained && !horizontallyScrollable) problems.push(`${element.tagName.toLowerCase()} leaves the viewport without horizontal scrolling`);
+        }
+        return [...new Set(problems)];
+      });
+      articleIssues.forEach(issue => failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: ${issue}`));
+
+      if (viewport.width <= 412) {
+        await page.locator('.nav-toggle').click();
+        await page.waitForTimeout(100);
+        const expanded = await page.locator('.nav-toggle').getAttribute('aria-expanded');
+        const visibleLinks = await page.locator('.nav-links a:visible').count();
+        if (expanded !== 'true' || visibleLinks < 5) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: mobile navigation did not open`);
+        await page.screenshot({ path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}-nav.png`), fullPage: false });
+        await page.locator('.nav-toggle').click();
+      }
     }
 
     if (route.kind !== 'agents' && ['phone-small', 'desktop'].includes(viewport.name)) {
