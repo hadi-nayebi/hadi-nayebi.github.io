@@ -19,11 +19,14 @@ on:
     paths:
       - 'agents.html'
       - 'agents/**'
+      - 'start-here.html'
       - 'css/**'
       - 'data/abstraction-library.json'
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-start-here-participation-layout.mjs'
+      - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
 
 jobs:
