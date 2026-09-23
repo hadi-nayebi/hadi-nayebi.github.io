@@ -132,9 +132,9 @@
 | Examples and edge cases | 9.7 | Includes profession-adaptive examples, read-only/write/disconnected cases, disabled Issues, untested capability, and large-diff mobile limits. |
 | Repeatability and verification method | 9.8 | One Issue and a fresh-conversation read-back provide a repeatable, falsifiable continuity test. |
 | Cross-channel entry-point value | 9.8 | The guide works as a direct agent handoff, Blog entry, Start Here route, RSS item, What's New item, and LinkedIn destination. |
-| Web, accessibility, and technical quality | 9.6 | Semantic headings, accessible tables, metadata, canonical URL, sidebar, contribution surface, and responsive CSS are present; final rendering remains the release check. |
+| Web, accessibility, and technical quality | 9.8 | Five GitHub checks pass; the guide is verified at 360, 412, 768, and 1440 px with serious/critical accessibility checks, keyboard-scrollable tables, mobile navigation, and targeted lower-page captures. |
 
-All content-review dimensions exceed the requested 9.5/10 quality gate. The 9.6 web score is provisional until responsive screenshots and validators pass; any material rendering defect reopens Pass 5.
+All fifteen dimensions exceed the requested 9.5/10 quality gate. Actual reader behavior remains unknown and should inform later revisions; the current content and release gates are complete.
 
 ## Primary evidence checked
 
@@ -159,12 +159,20 @@ All content-review dimensions exceed the requested 9.5/10 quality gate. The 9.6 
 - Add the previously omitted Practical Guide 2 to the RSS feed and sitemap while those surfaces are being updated.
 - Do not revise the filesystem essay or vocabulary essay merely to advertise the new guide; linking from Guide 3 is sufficient because their arguments remain accurate.
 
-## Validation required before merge recommendation
+## Release verification — passed
 
-- Markdown/HTML parity review
-- internal-link and metadata validation
-- contribution-surface validation
-- What's New validation
-- responsive rendering at 360, 412, 768, and 1440 px
-- mobile-navigation and long-table inspection
-- final diff review against `main`
+Verified on website PR #164 at head `ecd0f1c29dbb6d3c344a6cc17aed2392d5b4c49c`:
+
+- Site navigation validation: success
+- Site visual validation: success
+- Form behavior validation: success
+- Existing responsive layout validation: success
+- Practical Guide responsive validation: success
+- Guide rendered at 360, 412, 768, and 1440 px
+- Serious and critical accessibility scan: no violations reported
+- Keyboard-focusable long tables and horizontal mobile scrolling: passed
+- Mobile navigation open state: passed and visually inspected in a fresh page
+- Opening fold, terminology table, capability routing, direct-connection test, adaptive agent handoff, completion list, and discussion surface: captured and visually inspected
+- Final diff whitespace check against `main`: passed
+
+The responsive workflow and screenshot artifact are part of this PR so later guide changes can repeat the same checks. The merge and publication decision remains Hadi's.
