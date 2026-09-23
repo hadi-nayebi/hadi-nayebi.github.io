@@ -142,7 +142,7 @@ for (const viewport of viewports) {
 
   if (viewport.width <= 412) {
     const navPage = await context.newPage();
-    await navPage.route(/^https?:\\/\\/(?!127\\.0\\.0\\.1:4173)/, requestRoute => requestRoute.abort());
+    await navPage.route('**/*', requestRoute => requestRoute.request().url().startsWith(baseUrl) ? requestRoute.continue() : requestRoute.abort());
     await navPage.goto(baseUrl + route, { waitUntil: 'domcontentloaded' });
     await navPage.waitForTimeout(150);
     await navPage.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
