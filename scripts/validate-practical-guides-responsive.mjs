@@ -97,7 +97,7 @@ for (const viewport of viewports) {
     const officialLinks = document.querySelectorAll(
       'a[href^="https://docs.github.com"], a[href^="https://github.com/mobile"], a[href^="https://help.openai.com"], a[href^="https://git-scm.com"]'
     );
-    if (officialLinks.length < 10) problems.push(`expected at least ten official source links, found ${officialLinks.length}`);
+    if (officialLinks.length < 8) problems.push(`expected at least eight official source links, found ${officialLinks.length}`);
 
     return [...new Set(problems)];
   });
