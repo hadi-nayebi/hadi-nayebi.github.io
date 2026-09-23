@@ -113,4 +113,4 @@ The initial program will investigate these as independent contracts:
 - model replacement and adapter compatibility;
 - human and agent handoff;
 - conflict resolution;
-- confidence-gated probabilistic decisioning.
+- typed probabilistic decisioning with explicit policy, escalation, and abstention.
