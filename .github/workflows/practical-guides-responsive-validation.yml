@@ -1,0 +1,60 @@
+name: Practical Guide responsive validation
+
+on:
+  pull_request:
+    paths:
+      - 'blog/practical-guides/**'
+      - 'blog.html'
+      - 'index.html'
+      - 'css/styles.css'
+      - 'js/components.js'
+      - 'scripts/validate-practical-guides-responsive.mjs'
+      - '.github/workflows/practical-guides-responsive-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'blog/practical-guides/**'
+      - 'blog.html'
+      - 'index.html'
+      - 'css/styles.css'
+      - 'js/components.js'
+      - 'scripts/validate-practical-guides-responsive.mjs'
+      - '.github/workflows/practical-guides-responsive-validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  practical-guide-responsive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned browser test runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0 @axe-core/playwright@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 > /tmp/hadosh-site.log 2>&1 &
+          echo $! > /tmp/hadosh-site.pid
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html > /dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/hadosh-site.log
+          exit 1
+      - name: Verify Practical Guide layout and accessibility
+        run: node scripts/validate-practical-guides-responsive.mjs
+      - name: Upload Practical Guide screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: practical-guide-responsive-screenshots
+          path: artifacts/practical-guide-layout
+          if-no-files-found: error
+          retention-days: 14
