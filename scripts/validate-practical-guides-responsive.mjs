@@ -127,7 +127,7 @@ for (const viewport of viewports) {
     path: path.join(artifactDir, `guide-03-capability-table-${viewport.width}x${viewport.height}.png`)
   });
 
-  const fixedHeaderMask = await page.addStyleTag({ content: '#site-header { visibility: hidden !important; }' });
+  const fixedHeaderMask = await page.addStyleTag({ content: '#site-header { display: none !important; }' });
   for (const [name, selector] of [
     ['connection-test', '#part-7--test-the-direct-repository-connection ~ blockquote'],
     ['agent-handoff', '#copy-this-guided-conversation-instruction ~ blockquote'],
@@ -141,22 +141,23 @@ for (const viewport of viewports) {
   await fixedHeaderMask.evaluate(element => element.remove());
 
   if (viewport.width <= 412) {
-    await page.reload({ waitUntil: 'domcontentloaded' });
-    await page.waitForTimeout(150);
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await page.waitForTimeout(100);
-    await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
-    await page.locator('.nav-toggle').click();
-    await page.waitForTimeout(100);
-    const expanded = await page.locator('.nav-toggle').getAttribute('aria-expanded');
-    const visibleLinks = await page.locator('.nav-links a:visible').count();
+    const navPage = await context.newPage();
+    await navPage.route(/^https?:\\/\\/(?!127\\.0\\.0\\.1:4173)/, requestRoute => requestRoute.abort());
+    await navPage.goto(baseUrl + route, { waitUntil: 'domcontentloaded' });
+    await navPage.waitForTimeout(150);
+    await navPage.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
+    await navPage.locator('.nav-toggle').click();
+    await navPage.waitForTimeout(100);
+    const expanded = await navPage.locator('.nav-toggle').getAttribute('aria-expanded');
+    const visibleLinks = await navPage.locator('.nav-links a:visible').count();
     if (expanded !== 'true' || visibleLinks < 5) {
       failures.push(`${viewport.width}x${viewport.height}: mobile navigation did not open`);
     }
-    await page.screenshot({
+    await navPage.screenshot({
       path: path.join(artifactDir, `guide-03-mobile-nav-${viewport.width}x${viewport.height}.png`),
       fullPage: false
     });
+    await navPage.close();
   }
 
   for (const issue of issues) failures.push(`${viewport.width}x${viewport.height}: ${issue}`);
