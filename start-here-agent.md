@@ -822,6 +822,8 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 ### Low-barrier first assets
 
 - [Build Your Own Space on the Web](https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html) — use this practical path when a small public web home fits the user's goals and privacy boundary; treat it as one possible first asset, not a required precursor or default harness.
+- [Run the Agentic AI Use Doctor](https://hadi-nayebi.github.io/blog/practical-guides/02-audit-ai-harness-portability.html) — use this adaptive diagnostic when the user needs to understand their AI-use depth, accumulation, ownership, current fit, and growth ceiling before choosing the next experiment.
+- [Give Your AI Work a Private GitHub Home](https://hadi-nayebi.github.io/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html) — use this phone-friendly path when one real project needs durable files, Issues as requests, direct repository access, visible proposals, and human merge authority; describe it as a hosted continuity layer, not a complete local harness.
 
 ### Foundations and ownership
 

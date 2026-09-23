@@ -4204,7 +4204,6 @@ body.lightbox-open {
     letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    opacity: 0.7;
 }
 
 /* Ref-marker — subtle inline marker that surfaces a [ref: ...] tooltip on hover.
