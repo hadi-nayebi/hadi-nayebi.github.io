@@ -62,8 +62,7 @@ for (const record of data.records ?? []) {
     `data-category="${record.destination.category}"`,
     `data-category-id="${record.destination.category_id}"`,
     `data-mapping="${record.destination.mapping}"`,
-    'data-community-guidance',
-    'explicit approval'
+    ...(record.source_markers ?? [])
   ] : [];
   for (const token of tokens) {
     if (!source.includes(token)) errors.push(`${record.surface_id}: ${record.source_path} missing ${JSON.stringify(token)}`);
