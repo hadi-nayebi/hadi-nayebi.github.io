@@ -1570,8 +1570,8 @@ body:has(.blog-layout) .container {
 .tag {
     padding: 0.25rem 0.75rem;
     background: rgba(99, 102, 241, 0.1);
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    color: var(--accent-light);
+    border: 1px solid var(--accent-light);
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1721,6 +1721,12 @@ body:has(.blog-layout) .container {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.article-comments a {
+    color: var(--accent-light);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
 .article-comments h2 {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
@@ -1741,8 +1747,8 @@ body:has(.blog-layout) .container {
 
 .tag-audience {
     background: rgba(139, 92, 246, 0.12);
-    color: var(--accent, #8b5cf6);
-    border-color: var(--accent, #8b5cf6);
+    color: var(--accent-light);
+    border-color: var(--accent-light);
 }
 
 .article-body ul {
@@ -1867,14 +1873,15 @@ body:has(.blog-layout) .container {
 }
 
 .article-body a {
-    color: var(--primary);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease;
+    color: var(--accent-light);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-thickness 0.3s ease;
 }
 
 .article-body a:hover {
-    border-bottom-color: var(--primary);
+    text-decoration-thickness: 2px;
 }
 
 /* Blog Images & Figures */

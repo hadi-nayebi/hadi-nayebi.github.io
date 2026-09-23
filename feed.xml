@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/blog.html</link>
     <description>Principles, technical architecture, observations, and practical guides for building useful, user-owned systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Hadosh Academy Through Circle of Competence</title>
+      <link>https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/03-circle-of-competence.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/observations/hadosh-through-mental-models/03-circle-of-competence.html</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Lens 3 routes each responsibility to a bounded capability and makes verification, escalation, abstention, and human authority visible.</description>
+    </item>
 
     <item>
       <title>Practical Guide 3: Give Your AI Work a Private GitHub Home</title>

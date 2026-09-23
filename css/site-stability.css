@@ -540,6 +540,7 @@ form .btn-primary {
         padding: 0.55rem 0.8rem;
         border: 1px solid rgba(255,255,255,0.12);
         border-radius: 999px;
+        color: var(--accent-light);
         text-decoration: none;
         white-space: nowrap;
     }

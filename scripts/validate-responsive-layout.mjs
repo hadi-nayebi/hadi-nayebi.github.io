@@ -8,6 +8,7 @@ const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf
 const routes = [
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
+  { name: 'circle-of-competence', path: '/blog/observations/hadosh-through-mental-models/03-circle-of-competence.html', kind: 'story' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
 const viewports = [
