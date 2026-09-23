@@ -23,7 +23,14 @@ for (const viewport of viewports) {
   const page = await context.newPage();
   await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, route => route.abort());
   await page.goto(baseUrl + '/start-here.html#community-return', { waitUntil: 'domcontentloaded' });
-  await page.waitForTimeout(150);
+  await page.waitForFunction(() => {
+    const section = document.querySelector('#community-return');
+    const header = document.querySelector('#site-header');
+    if (!section || !header) return false;
+    const sectionTop = section.getBoundingClientRect().top;
+    const headerBottom = header.getBoundingClientRect().bottom;
+    return sectionTop >= headerBottom + 8 && sectionTop <= headerBottom + 80;
+  }, { timeout: 5000 });
   await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
 
   const result = await page.evaluate(() => {
