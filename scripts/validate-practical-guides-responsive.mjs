@@ -147,7 +147,7 @@ for (const viewport of viewports) {
     await navPage.waitForTimeout(150);
     await navPage.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
     await navPage.locator('.nav-toggle').click();
-    await navPage.waitForTimeout(100);
+    await navPage.waitForTimeout(500);
     const expanded = await navPage.locator('.nav-toggle').getAttribute('aria-expanded');
     const visibleLinks = await navPage.locator('.nav-links a:visible').count();
     if (expanded !== 'true' || visibleLinks < 5) {
