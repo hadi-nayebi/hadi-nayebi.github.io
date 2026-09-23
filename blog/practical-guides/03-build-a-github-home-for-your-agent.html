@@ -36,6 +36,9 @@
         .control-step strong { display: block; margin-bottom: .35rem; }
         .completion-list li { margin-bottom: .5rem; }
         .source-note { font-size: .95rem; color: var(--text-muted); }
+        .article-body a { color: #c4b5fd; text-decoration: underline; text-decoration-thickness: .08em; text-underline-offset: .16em; }
+        .blog-series-mobile-nav a { color: #c4b5fd; }
+        .footer-tagline { opacity: 1; }
         @media (max-width: 760px) {
             .control-ladder { grid-template-columns: 1fr 1fr; }
         }
@@ -168,7 +171,7 @@
 
 <p>Your agent should translate each term into your domain. If you are writing a book, a branch is a separate revision path. If you are running a community project, an Issue is a complete work request or decision card. If you manage a laboratory, the main branch is closer to the currently accepted protocol than to a scratch notebook.</p>
 
-<div class="guide-table-wrap">
+<div class="guide-table-wrap" tabindex="0" aria-label="GitHub project surfaces comparison; scroll horizontally for all columns">
 <table>
 <thead><tr><th>GitHub piece</th><th>Plain-language role</th><th>How this guide uses it</th></tr></thead>
 <tbody>
@@ -188,7 +191,7 @@
 
 <p>Start with a small structure. Do not create dozens of empty folders. Your agent can propose these files as a starting point:</p>
 
-<pre><code>README.md
+<pre tabindex="0"><code>README.md
 AGENTS.md
 context/current-state.md
 decisions/README.md
@@ -199,7 +202,7 @@ evidence/README.md</code></pre>
 
 <p>Keep it short enough that a fresh agent can orient itself quickly:</p>
 
-<pre><code># Project name
+<pre tabindex="0"><code># Project name
 
 ## Objective
 What this project is trying to accomplish and for whom.
@@ -226,7 +229,7 @@ that must be resolved first.</code></pre>
 
 <p>This file is not a magic command. It is durable guidance that capable repository agents can read. Keep it specific to the project:</p>
 
-<pre><code># Agent instructions
+<pre tabindex="0"><code># Agent instructions
 
 Read README.md and context/current-state.md before proposing work.
 
@@ -308,7 +311,7 @@ Before claiming completion, verify the result and record what changed.</code></p
 
 <p>Create an Issue only when one complete request, question, or decision is ready. Include:</p>
 
-<pre><code>## Objective
+<pre tabindex="0"><code>## Objective
 What result do I want?
 
 ## Current state
@@ -385,7 +388,7 @@ What observable result and verification define completion?</code></pre>
 
 <p>Require file citations and unknown marking. Compare the response with the repository.</p>
 
-<div class="guide-table-wrap">
+<div class="guide-table-wrap" tabindex="0" aria-label="Permission layers comparison; scroll horizontally for all columns">
 <table>
 <thead><tr><th>Result</th><th>Meaning</th><th>Next move</th></tr></thead>
 <tbody>
