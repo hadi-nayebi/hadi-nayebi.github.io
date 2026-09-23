@@ -7,6 +7,8 @@ const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
   { name: 'agents', path: '/agents.html', kind: 'agents' },
+  { name: 'start-here', path: '/start-here.html', kind: 'start' },
+  { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
@@ -150,6 +152,34 @@ for (const viewport of viewports) {
       if (cloudTerms !== library.terms.length) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected ${library.terms.length} direct term links, found ${cloudTerms}`);
       const excessControls = await page.locator('#term-search, .filter-button, .term-card, .cloud-legend, .maturation-flow, .agent-handoff').count();
       if (excessControls) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: removed search, filters, directory cards, legends, or workflow panels returned`);
+    }
+
+    if (route.kind === 'start') {
+      const cards = await page.locator('#practical-guides a').evaluateAll(elements =>
+        elements.map(element => {
+          const rect = element.getBoundingClientRect();
+          return { href: element.getAttribute('href'), left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+        })
+      );
+      const expected = [
+        'blog/practical-guides/02-audit-ai-harness-portability.html',
+        'blog/practical-guides/01-build-your-own-space-on-the-web.html',
+        'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
+      ];
+      if (cards.length !== 3 || cards.some((card, index) => card.href !== expected[index])) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: practical-guide chooser does not contain three correct destinations`);
+      }
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].left < -1 || cards[i].right > viewport.width + 1) {
+          failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: guide card ${i + 1} leaves viewport`);
+        }
+        for (let j = i + 1; j < cards.length; j++) {
+          if (Math.min(cards[i].right, cards[j].right) - Math.max(cards[i].left, cards[j].left) > 1 &&
+              Math.min(cards[i].bottom, cards[j].bottom) - Math.max(cards[i].top, cards[j].top) > 1) {
+            failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: practical-guide cards overlap`);
+          }
+        }
+      }
     }
 
     if (route.kind === 'term') {
