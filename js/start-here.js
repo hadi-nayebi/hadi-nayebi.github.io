@@ -354,6 +354,24 @@
         });
     });
 
+    function alignCommunityReturn() {
+        if (window.location.hash !== '#community-return') return;
+        const target = document.getElementById('community-return');
+        if (!target) return;
+        const header = document.getElementById('site-header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+    }
+
+    if (window.location.hash === '#community-return') {
+        window.addEventListener('load', async () => {
+            if (document.fonts && document.fonts.ready) await document.fonts.ready;
+            requestAnimationFrame(() => requestAnimationFrame(alignCommunityReturn));
+        }, { once: true });
+    }
+    window.addEventListener('hashchange', alignCommunityReturn);
+
     const hashRole = window.location.hash.match(/^#role-([a-z]+)$/);
     selectRole(hashRole && roles[hashRole[1]] ? hashRole[1] : 'general', false);
 })();
