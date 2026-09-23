@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "title": "Hadosh Academy Canonical Abstraction Library",
   "purpose": "A shared, framework-agnostic context for understanding and building local, inspectable, user-owned AI harnesses. Each term gives people and agents one current meaning to work from.",
-  "updated": "2026-09-20",
+  "updated": "2026-09-23",
   "definitionStates": {
     "draft": "Open to revision.",
     "consolidated": "Accepted as shared context for new work."
@@ -11,13 +11,9 @@
     {
       "name": "Model",
       "slug": "model",
-      "status": "draft",
-      "definition": "A model is a learned computational system that transforms supplied input into an inference, prediction, representation, decision, action proposal, or generated output. It provides learned capability, but it is not the complete agent. By itself, a model does not establish durable identity, local memory, job continuity, permissions, recovery, or ownership. Those responsibilities belong to the surrounding harness and runtime. A model may be general or specialized, remote or local, commercial or open-weight. Replacing it may change capability, cost, speed, privacy, and compatibility without necessarily replacing the user’s harness.",
-      "openQuestions": [
-        "What minimum properties must remain true for future models that produce decisions, actions, or representations rather than language tokens?",
-        "Should a routed or compound system of learned components count as one model or as a model system?",
-        "What evidence is sufficient to attribute a behavior to the model rather than to the surrounding harness?"
-      ]
+      "status": "consolidated",
+      "definition": "In Hadosh Academy, a model is the parametric information-processing compartment of an agentic system and the category to which large language models belong. Its learned capabilities, representations, tendencies, knowledge, memory, and any reasoning performed in parameter or latent space are encoded in or produced through its parameters. A model receives supplied context, performs inference, and returns model-originated output to that shared interface. The output may be language, media, a prediction, classification, score, probability, representation, structured decision, action proposal, reasoning trace, or another inferred result. A model may be commercial, open-weight, provider-hosted, private, local, general, specialized, or fine-tuned to operate a harness. Architecture, training data and method, size, context capacity, modality, provider, and deployment affect a particular model’s capabilities without defining the compartment. Hadosh Academy treats model capability as a replaceable utility: powerful and necessary, but not the complete agentic system. Its utility becomes effective through interaction with a harness. A model may contain parametric memory and may generate explicit reasoning. When reasoning remains in latent or parameter space, it remains model-side. When it is emitted as text or another inspectable representation, it enters context and can be surrounded by harness mechanisms. A model output can propose or describe an action, but it is not by itself proof of truth, authorization, execution, verification, or completion. The boundary is intentionally practical rather than a claim that every system must distribute cognition identically. It lets people locate parametric behavior, evaluate it independently, replace it, and avoid assigning it responsibilities that another compartment can perform more reliably.",
+      "openQuestions": []
     },
     {
       "name": "Large language model (LLM)",
@@ -28,6 +24,17 @@
         "Which guarantees must always remain outside LLM discretion even when structured output becomes more reliable?",
         "When does the narrower term LLM stop being useful and the broader term model become the better abstraction?",
         "How should this definition cover multimodal models whose language interface is only one part of their capability?"
+      ]
+    },
+    {
+      "name": "Decision model",
+      "slug": "decision-model",
+      "status": "draft",
+      "definition": "A decision model is a model exposed through a bounded interface that evaluates supplied state against caller-defined questions and returns typed judgments with declared uncertainty for use inside explicit software logic. A judgment may estimate whether a condition holds, choose among defined options, rank candidates, score an ordered rubric, or use another bounded form whose meaning is declared by the caller. The term describes the model’s interface and role in a harness, not one internal architecture: a specialized model, large language model, ensemble, or future learned system may realize the interface. Typed output constrains shape, not truth. The harness selects and minimizes the state, defines the questions and criteria, validates the returned schema, interprets probabilities or scores through explicit policy, handles ambiguity, abstention, timeout, and failure, and retains authority over side effects. A decision model can supply one inference step inside a hook or workflow, but it does not by itself verify a claim, authorize an action, execute a transition, or own source-of-truth state.",
+      "openQuestions": [
+        "What minimum output contract distinguishes a decision model from a general model returning arbitrary structured JSON?",
+        "How should calibration and abstention expectations be represented without assuming that every provider has demonstrated them?",
+        "Which automatic consequences may responsibly depend on a probabilistic judgment, and which parts of that boundary belong in a separate behavioral pattern?"
       ]
     },
     {
@@ -44,13 +51,9 @@
     {
       "name": "Harness",
       "slug": "harness",
-      "status": "draft",
-      "definition": "A harness is the durable operational structure around model capability that makes continuing, bounded, and inspectable work possible. It may hold selected context, instructions, memory, jobs, state, tools, permissions, interfaces, verification, history, and recovery mechanisms. A harness can be thin or extensive, local or partly distributed, mostly textual or heavily coded; it is defined by what it does rather than by one framework or directory layout. It is not merely a prompt, transcript, dashboard, CLI, or repository, although each may be part of one. The harness is the primary software surface through which a user’s methods, decisions, and working capacity can accumulate.",
-      "openQuestions": [
-        "What is the smallest structure that still deserves to be called a harness rather than a prompt or tool wrapper?",
-        "Which functions are essential across all practical harnesses, and which are optional responses to particular risks or jobs?",
-        "How should the definition cover distributed harnesses whose state, execution, and interfaces live in different places?"
-      ]
+      "status": "consolidated",
+      "definition": "In Hadosh Academy, a harness is the non-parametric information-processing compartment around model capability. It is composed from explicit, inspectable structures such as text, files, commands, code, rules, hooks, jobs, state, tools, permissions, workflows, interfaces, tests, histories, and recovery mechanisms. It constructs and supplies context to models, receives model-originated output, and determines what is interpreted, stored, removed, routed, executed, verified, rejected, or returned in later context. The harness turns model inference into continuing, bounded, and effective work. It can preserve durable memory, identity, responsibilities, authority, evidence, corrections, methods, and accumulated experience while models are replaced or assigned to different jobs, phases, or subtasks. A tool-call output is model inference; the software that authorizes and performs the call is harness behavior. A conditional hook that injects information is harness memory combined with a trigger. Harnesses may be thin or extensive, local or distributed, provider-controlled or user-controlled, textual or heavily coded, and they may surround different stages of cognition, including exposed reasoning traces. Hadosh Academy does not prescribe one universal configuration. It favors arrangements that move durable customization, inspectability, intervention, recovery, and practical control toward the user’s own harness. A harness does not replace parametric inference, and more structure is not automatically better. Its components are separated so their logic, state, authority, failures, and effects can be evaluated and improved independently. The filesystem is a current practical body for this durable structure, not the only possible implementation. The defining role is the non-parametric organization that carries the user’s relationship, continuity, and control around replaceable model capability.",
+      "openQuestions": []
     },
     {
       "name": "Agent",
@@ -77,13 +80,9 @@
     {
       "name": "Context",
       "slug": "context",
-      "status": "draft",
-      "definition": "Context is the selected information made available for interpreting and acting at a particular cognitive moment. It may include the current responsibility, relevant history, constraints, definitions, state, evidence, and authority. Context is not the same as memory, knowledge, a transcript, or every file the user owns; it is a temporary selection assembled from those sources. Durable information may exist without being loaded, and loaded information may not deserve preservation. Context quality depends on relevance, provenance, freshness, scope, and conflict handling—not only on token quantity. The harness stores and routes potential context, while the runtime presents a selected portion to the model.",
-      "openQuestions": [
-        "Which properties distinguish authoritative context from useful but untrusted context?",
-        "How should a harness expose conflicts among current instructions, historical decisions, retrieved memory, and live evidence?",
-        "When should context be removed rather than condensed or preserved?"
-      ]
+      "status": "consolidated",
+      "definition": "In Hadosh Academy, context is the active, bidirectional interface through which a model and harness influence one another. It is the bounded working surface containing information supplied for inference and the model-generated output returned from inference. At any moment, context is a mixture of harness-originated material—such as instructions, injections, retrieved memory, observations, tool results, state, constraints, and authority—and model-originated material—such as continuations, questions, reasoning traces, decisions, and action proposals. The harness constructs context by selecting, arranging, adding, removing, and formatting explicit information. The model interprets that context and extends or transforms it through inference. The harness then decides what model-generated material to display, persist, validate, execute, condense, reuse, or discard. This makes influence bidirectional without collapsing the two compartments: the harness influences the model through what it supplies, and the model influences the harness through what it generates. Context is not identical to memory or to a complete transcript. Parametric memory can influence output without appearing explicitly in context. Harness memory can remain stored without being loaded. Model-originated material can become harness state when it is deliberately preserved, while harness state can temporarily enter context when selected for an invocation. Provenance should remain visible even when material crosses the boundary. Different systems may expose different portions of cognition. Latent reasoning that never crosses the interface remains model-side; textual or otherwise inspectable reasoning that is exposed enters context and can be managed by local or provider-controlled harnesses. The purpose of the context boundary is not to impose one configuration, but to make the location and movement of information inspectable enough to evaluate and improve.",
+      "openQuestions": []
     },
     {
       "name": "Local",
