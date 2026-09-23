@@ -3,6 +3,8 @@ name: Responsive layout validation
 on:
   pull_request:
     paths:
+      - 'blog.html'
+      - 'blog/practical-guides/**'
       - 'agents.html'
       - 'agents/**'
       - 'css/**'
@@ -14,6 +16,8 @@ on:
   push:
     branches: [main]
     paths:
+      - 'blog.html'
+      - 'blog/practical-guides/**'
       - 'agents.html'
       - 'agents/**'
       - 'css/**'
