@@ -28,9 +28,18 @@
         .article-body th, .article-body td { padding: .85rem 1rem; border: 1px solid var(--border); text-align: left; vertical-align: top; }
         .article-body th { background: rgba(99, 102, 241, .12); color: var(--text-main); font-weight: 600; }
         .article-body tbody tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
+        .article-body a { color: #c4b5fd; text-decoration: underline; text-decoration-thickness: .08em; text-underline-offset: .16em; }
+        .article-body :not(pre) > code { color: #fef3c7; background: rgba(245, 158, 11, .14); padding: .08em .3em; border-radius: .25rem; }
+        .article-meta .tag { color: #c7d2fe; border-color: #818cf8; background: rgba(99, 102, 241, .16); }
+        .article-meta .tag-audience { color: #ddd6fe; border-color: #a78bfa; background: rgba(139, 92, 246, .16); }
+        .blog-series-mobile-nav a { color: #c4b5fd; }
+        .footer-tagline { opacity: 1; }
         @media (max-width: 720px) {
             .article-body table { display: block; overflow-x: auto; white-space: normal; }
             .article-body th, .article-body td { min-width: 10rem; }
+        }
+        @media (max-width: 440px) {
+            .article-meta-tags { width: 100%; margin-left: 0; flex-wrap: wrap; }
         }
     </style>
     <script type="application/ld+json">
@@ -137,7 +146,7 @@
 <p>Nothing in this loop makes the repository an autonomous agent. It creates dependable friction: a request is visible, a proposal is isolated, acceptance is explicit, and the result survives the chat.</p>
 <h2 id="the-github-words-that-give-you-control">The GitHub Words That Give You Control</h2>
 <p>Your agent should not recite definitions at you. It should ask enough about your background to explain these building blocks through a familiar example, then return to the exact GitHub meaning.</p>
-<table>
+<table tabindex="0" aria-label="GitHub terms and their practical functions; scroll horizontally for all columns">
 <thead>
 <tr class="header">
 <th>GitHub word</th>
@@ -247,7 +256,7 @@
 <p>Only then should it propose the smallest useful structure.</p>
 <h2 id="part-5--create-the-smallest-useful-context">Part 5 — Create the Smallest Useful Context</h2>
 <p>A beginning structure might be:</p>
-<pre class="text"><code>your-project/
+<pre tabindex="0" class="text"><code>your-project/
 ├── README.md
 ├── AGENTS.md
 └── context/
@@ -274,7 +283,7 @@
 </ul>
 <p><code>AGENTS.md</code> is the conventional project-instruction filename for Codex. Another agent may use a different instruction filename. The stable idea is more important than the name: keep the working agreement beside the work, and do not duplicate it into several files unless the tools you actually use require that.</p>
 <p>A useful first version is:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Project instructions</span></span>
+<div class="sourceCode" id="cb2"><pre tabindex="0" class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Project instructions</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Read <span class="in">`README.md`</span>, <span class="in">`context/current-state.md`</span>, and <span class="in">`context/decisions.md`</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>before proposing work.</span>
@@ -353,7 +362,7 @@
 <p>The test succeeds only when the agent names the correct repository and reports its observed capability honestly.</p>
 <p>If the agent cannot reach the repository, fix the connection or repository authorization. Do not substitute browsing the repository's website as if that were the same capability.</p>
 <p>Use the observed result—not the product name—to choose the next route:</p>
-<table>
+<table tabindex="0" aria-label="Agent capability fallback paths; scroll horizontally for all columns">
 <thead>
 <tr class="header">
 <th>What the agent demonstrates</th>
@@ -398,7 +407,7 @@
 <p>Define how trailer candidates should be selected</p>
 </blockquote>
 <p>The body can follow this small pattern:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Outcome</span></span>
+<div class="sourceCode" id="cb3"><pre tabindex="0" class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Outcome</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>What should be different when this request is complete?</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why it matters</span></span>
