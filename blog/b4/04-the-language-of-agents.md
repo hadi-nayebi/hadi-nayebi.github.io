@@ -94,6 +94,15 @@ That is what the first essay meant by *the agent is the filesystem, not the LLM.
 
 This is also why one giant prompt is not a harness. A harness decides what enters context, what remains durable, what may act, what must stop, what evidence counts, and who has authority to change the system itself.
 
+A healthy harness also does not need to route every responsibility through one general-purpose model. It may use models in different **roles**:
+
+- a **harness-operating model** to read, operate, repair, and extend the harness;
+- a **domain model** to supply a bounded professional perspective such as chemistry, law, filmmaking, or education;
+- a **decision model** to return fast typed judgments for bounded branches; and
+- a **general synthesis model** to integrate context, explanation, and open-ended reasoning.
+
+These are roles, not mandatory products or fixed architectures. One model may fill several roles. Several providers may fill one role. Deterministic software may replace a model wherever inference is unnecessary. The harness—not any one model—owns routing, durable context, policy, permissions, verification, recovery, and side effects.
+
 ---
 
 ## From Browser to Desktop: CLI Agents
