@@ -27,6 +27,7 @@ No new empirical effectiveness claim is made. This is navigation, teaching-route
 
 ## Verification
 
-- Canonical and HTML guide headings were checked for parity after the rename.
-- Existing site navigation, Start Here boundary, contribution, abstraction, public Seed, and What's New validation passed on the substantive branch head before this review-record and RSS-only update.
-- Responsive layout validation for Start Here and Guide 2, practical guide rendering, accessibility, and manual screenshot inspection are required before this draft is marked ready.
+- Canonical and HTML Guide 2 headings were checked for parity after the rename.
+- Exact-head commit `2fa8990d` passed site visual, site navigation, form behavior, Practical Guide responsive, and expanded responsive layout validation. The expanded check covers 360, 412, 768, and 1440 px widths, guide destinations, overlap, contrast, keyboard access, and full-page screenshots.
+- The first expanded pass found low-contrast labels and links and keyboard-inaccessible horizontally scrollable tables. Page-scoped fixes were added. Mobile Guide 2 tags now wrap; its final 360 px and 412 px full-page screenshots match their viewport widths.
+- Manually reviewed final phone and desktop fold screenshots of Start Here and Guide 2, plus the Start Here three-guide section in the full-page captures. The chooser stacks without clipping on a phone and forms three cards on desktop. Screenshot artifact: [responsive-layout-screenshots](https://github.com/hadi-nayebi/hadi-nayebi.github.io/actions/runs/35928841790/artifacts/10780301302).
