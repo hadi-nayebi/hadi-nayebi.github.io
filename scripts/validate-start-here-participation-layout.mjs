@@ -27,7 +27,7 @@ for (const viewport of viewports) {
   await page.evaluate(async () => {
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
   });
-  await page.waitForTimeout(250);
+  await page.waitForTimeout(1250);
   await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
 
   const result = await page.evaluate(() => {
