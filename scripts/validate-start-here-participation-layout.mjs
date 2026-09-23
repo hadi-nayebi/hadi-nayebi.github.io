@@ -23,14 +23,11 @@ for (const viewport of viewports) {
   const page = await context.newPage();
   await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, route => route.abort());
   await page.goto(baseUrl + '/start-here.html#community-return', { waitUntil: 'domcontentloaded' });
-  await page.waitForFunction(() => {
-    const section = document.querySelector('#community-return');
-    const header = document.querySelector('#site-header');
-    if (!section || !header) return false;
-    const sectionTop = section.getBoundingClientRect().top;
-    const headerBottom = header.getBoundingClientRect().bottom;
-    return sectionTop >= headerBottom + 8 && sectionTop <= headerBottom + 80;
-  }, { timeout: 5000 });
+  await page.waitForLoadState('load');
+  await page.evaluate(async () => {
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+  });
+  await page.waitForTimeout(250);
   await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
 
   const result = await page.evaluate(() => {
@@ -39,6 +36,12 @@ for (const viewport of viewports) {
 
     const problems = [];
     const actions = [...section.querySelectorAll('.start-agent-entry-actions a')];
+    const sectionTop = section.getBoundingClientRect().top;
+    const header = document.querySelector('#site-header');
+    const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+    if (sectionTop < headerBottom + 8 || sectionTop > headerBottom + 80) {
+      problems.push(`anchor target is not settled below the header: section top ${sectionTop}px, header bottom ${headerBottom}px`);
+    }
     const overlaps = (a, b) => {
       const ar = a.getBoundingClientRect();
       const br = b.getBoundingClientRect();
