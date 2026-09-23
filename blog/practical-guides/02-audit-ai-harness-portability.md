@@ -1,8 +1,8 @@
-# Run the Agentic AI Use Doctor
+# Map Your AI Use
 
 *Practical Guide 2 — Have your agent examine how you use AI, what is accumulating for you, and how much of the surrounding harness you can understand, shape, and own.*
 
-Your agent may already know something about your work, projects, habits, and ambitions. The Agentic AI Use Doctor uses that relationship rather than pretending every person begins from the same blank questionnaire.
+Your agent may already know something about your work, projects, habits, and ambitions. The AI Use Map uses that relationship rather than pretending every person begins from the same blank questionnaire.
 
 Point the agent you already use to this guide. The agent should combine four sources of context:
 
@@ -15,14 +15,14 @@ The result is a personalized guided conversation about your complete relationshi
 
 ![Chalkboard diagram with separate ladders for depth of AI use and harness ownership, leading to current fit, growth ceiling, and next experiment.](images/agentic-ai-use-doctor-v2.webp)
 
-The Doctor asks two different questions:
+The guide asks two different questions:
 
 - **How deeply are you using AI to think, build context, and conduct complex work?**
 - **How much of the system growing around that work can you inspect, build, move, and control?**
 
-A person can be doing sophisticated work inside a platform-controlled environment. Another person can own a local harness and still use it only for shallow tasks. The Doctor keeps these findings separate.
+A person can be doing sophisticated work inside a platform-controlled environment. Another person can own a local harness and still use it only for shallow tasks. The guide keeps these findings separate.
 
-## What the Doctor Is Diagnosing
+## What This Guide Maps
 
 Agentic-use health is not model intelligence, prompt cleverness, or time spent chatting.
 
@@ -38,7 +38,7 @@ It is the relationship among:
 - how authority, verification, and recovery work; and
 - what becomes possible for you next.
 
-The Doctor evaluates both **current fit** and **growth ceiling**. A hosted chat may be entirely adequate for occasional questions while still imposing a low ceiling for persistent projects, reusable context, local autonomy, and independent operation.
+The guide evaluates both **current fit** and **growth ceiling**. A hosted chat may be entirely adequate for occasional questions while still imposing a low ceiling for persistent projects, reusable context, local autonomy, and independent operation.
 
 The objective is not to shame convenient tools or prescribe one implementation. It is to make the user's current choices, structural limits, and next possibilities understandable.
 
@@ -66,7 +66,7 @@ The conversation should feel like an agent helping one person understand their o
 
 The first map examines what the user is doing with AI. These are patterns, not identities. A person may use several levels for different purposes.
 
-| Level | Use pattern | What the Doctor looks for |
+| Level | Use pattern | What the guide looks for |
 |---:|---|---|
 | **0** | Occasional answer or search | Isolated facts, opinions, summaries, or recommendations with little retained context |
 | **1** | Interactive ideation | Brainstorming, exploration, comparison, and conversational discovery |
@@ -76,13 +76,13 @@ The first map examines what the user is doing with AI. These are patterns, not i
 | **5** | Externalized agency | Agents help manage jobs, dashboards, tools, verification, and several continuing responsibilities |
 | **6** | Independent operation | The user can direct and govern a growing agentic ecosystem that expands how much meaningful work one person can sustain |
 
-The Doctor should not assume that more complexity is always necessary. It should ask whether the current pattern matches the user's goals and show what becomes difficult at the current level.
+The guide should not assume that more complexity is always necessary. It should ask whether the current pattern matches the user's goals and show what becomes difficult at the current level.
 
 ### Context construction matters
 
 A conversation becomes more valuable when it builds the context needed for better questions.
 
-The Doctor should examine a recent meaningful exchange:
+The guide should examine a recent meaningful exchange:
 
 - Did the user ask for an answer immediately?
 - Did the user explain the objective and why it mattered?
@@ -112,7 +112,7 @@ Locality raises the attainable ceiling, but it does not prove health. A local sy
 
 ## Keep the Model and Harness Separate
 
-The Doctor maps the control stack as distinct layers:
+The guide maps the control stack as distinct layers:
 
 1. interaction surface;
 2. model and inference runtime;
@@ -136,7 +136,7 @@ A closed-source CLI with local files may provide strong operational control, but
 
 ## The Adaptive Conversation
 
-The Doctor follows a stateful path. It may revisit an earlier stage when new information changes the picture.
+The guide follows a stateful path. It may revisit an earlier stage when new information changes the picture.
 
 ### 1. Recover the user's world
 
@@ -245,7 +245,7 @@ Use **High**, **Medium**, or **Low** evidence confidence. Preserve **Unknown** w
 - A score of 4 requires High-confidence direct evidence.
 - Weak evidence cannot be hidden inside an average.
 
-## What the Doctor Must Return
+## What Your Agent Should Return
 
 The final result contains:
 
@@ -266,7 +266,7 @@ The result should distinguish “adequate for what you currently want” from �
 
 ## Copy This Guided-Conversation Instruction
 
-> Run the Hadosh Academy Agentic AI Use Doctor with me.
+> Use Hadosh Academy's “Map Your AI Use” guide with me.
 >
 > Treat this as a personalized guided conversation about my complete use of AI, not a fixed questionnaire and not an audit of one isolated workflow.
 >
@@ -293,7 +293,7 @@ The result should distinguish “adequate for what you currently want” from �
 >
 > Before finalizing, ask whether the diagnosis feels accurate and revise it if necessary.
 >
-> Return the twelve Doctor outputs defined in this guide. Finish with one safe immediate experiment and a personalized Hadosh Academy learning path. Do not change files, settings, permissions, accounts, integrations, or public surfaces without my approval. Do not request or expose credentials, regulated information, private client material, employer data, or another person's personal information.
+> Return the twelve outputs defined in this guide. Finish with one safe immediate experiment and a personalized Hadosh Academy learning path. Do not change files, settings, permissions, accounts, integrations, or public surfaces without my approval. Do not request or expose credentials, regulated information, private client material, employer data, or another person's personal information.
 
 ## Example of a Personalized Turn
 
@@ -305,7 +305,7 @@ A useful opening is:
 
 If the user confirms it, the next question should examine persistence—not restart the interview by asking what they use AI for.
 
-The Doctor might later explain:
+The guide might later explain:
 
 > Your cognitive use is already relatively deep: you use AI as extended working memory and for contextual problem-solving. Your growth ceiling comes from accumulation. Important distinctions and decisions remain in platform conversations, so another agent cannot reliably inherit them and you must reconstruct parts of your world. The first useful experiment is to externalize one project's accepted decisions, current state, and next actions into a user-controlled document, then ask another agent to explain that project from the document alone.
 
@@ -319,9 +319,9 @@ A person may begin by learning to build context before asking an important quest
 
 The long-term prospect is the independent operator: a person able to sustain more meaningful projects, businesses, research, creative work, or community responsibilities because useful agency has been externalized into a system they can understand and govern.
 
-The Doctor should reveal that prospect only after understanding the person. It should feel like the next possibility in their own trajectory, not a generic sales pitch.
+The guide should reveal that prospect only after understanding the person. It should feel like the next possibility in their own trajectory, not a generic sales pitch.
 
-## Run the Doctor
+## Start the Conversation
 
 Give the guided-conversation instruction above to the agent that knows you best.
 
