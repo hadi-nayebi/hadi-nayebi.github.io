@@ -123,6 +123,40 @@ for (const viewport of viewports) {
   await page.locator('table').first().screenshot({
     path: path.join(artifactDir, `guide-03-terms-table-${viewport.width}x${viewport.height}.png`)
   });
+  await page.locator('table').nth(1).screenshot({
+    path: path.join(artifactDir, `guide-03-capability-table-${viewport.width}x${viewport.height}.png`)
+  });
+
+  for (const [name, selector] of [
+    ['connection-test', '#part-7--test-the-direct-repository-connection'],
+    ['agent-handoff', '#copy-this-guided-conversation-instruction'],
+    ['completion', '#completion-check'],
+    ['discussion', '.article-comments']
+  ]) {
+    const target = page.locator(selector);
+    await target.evaluate(element => element.scrollIntoView({ block: 'start' }));
+    await page.evaluate(() => window.scrollBy(0, -100));
+    await page.waitForTimeout(100);
+    await page.screenshot({
+      path: path.join(artifactDir, `guide-03-${name}-${viewport.width}x${viewport.height}.png`),
+      fullPage: false
+    });
+  }
+
+  if (viewport.width <= 412) {
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.locator('.nav-toggle').click();
+    await page.waitForTimeout(100);
+    const expanded = await page.locator('.nav-toggle').getAttribute('aria-expanded');
+    const visibleLinks = await page.locator('.nav-links a:visible').count();
+    if (expanded !== 'true' || visibleLinks < 5) {
+      failures.push(`${viewport.width}x${viewport.height}: mobile navigation did not open`);
+    }
+    await page.screenshot({
+      path: path.join(artifactDir, `guide-03-mobile-nav-${viewport.width}x${viewport.height}.png`),
+      fullPage: false
+    });
+  }
 
   for (const issue of issues) failures.push(`${viewport.width}x${viewport.height}: ${issue}`);
   await page.close();
