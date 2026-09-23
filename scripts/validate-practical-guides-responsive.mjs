@@ -128,23 +128,20 @@ for (const viewport of viewports) {
   });
 
   for (const [name, selector] of [
-    ['connection-test', '#part-7--test-the-direct-repository-connection'],
-    ['agent-handoff', '#copy-this-guided-conversation-instruction'],
-    ['completion', '#completion-check'],
+    ['connection-test', '#part-7--test-the-direct-repository-connection + p + blockquote'],
+    ['agent-handoff', '#copy-this-guided-conversation-instruction + p + blockquote'],
+    ['completion', '#completion-check + p + ul'],
     ['discussion', '.article-comments']
   ]) {
-    const target = page.locator(selector);
-    await target.evaluate(element => element.scrollIntoView({ block: 'start' }));
-    await page.evaluate(() => window.scrollBy(0, -100));
-    await page.waitForTimeout(100);
-    await page.screenshot({
-      path: path.join(artifactDir, `guide-03-${name}-${viewport.width}x${viewport.height}.png`),
-      fullPage: false
+    await page.locator(selector).screenshot({
+      path: path.join(artifactDir, `guide-03-${name}-${viewport.width}x${viewport.height}.png`)
     });
   }
 
   if (viewport.width <= 412) {
-    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(150);
+    await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
     await page.locator('.nav-toggle').click();
     await page.waitForTimeout(100);
     const expanded = await page.locator('.nav-toggle').getAttribute('aria-expanded');
