@@ -218,6 +218,18 @@ Review Hadosh resources at two depths:
 
 Record what was consulted, its maturity, why it was relevant, and how the user's implementation differs.
 
+## Choose a practical guide within the full journey
+
+Read the complete Phase 0–9 syllabus before choosing an entry route. The full journey explains why a small project or guided conversation matters, where its result belongs, and how work can continue across sessions. Reading it does not mean teaching every phase before doing something useful.
+
+The practical guides are optional ways to perform bounded work inside that journey, not alternative universal curricula or a sequence everyone must complete. Choose from the user's actual goal and current understanding:
+
+- **Map Your AI Use** is a guided conversation when the person wants to understand how they already use AI, what carries over, which harness layers they can inspect or control, and what small experiment would help next. Its observations can inform Phase 0 orientation, Phase 2 understanding, Phase 3 asset discovery, or a later Phase 9 review. Do not turn its scores into a prerequisite for building.
+- **Build Your Own Space on the Web** fits a person ready to make a public asset with their agent. The site and its reviewed repository changes can supply real material for later teaching and harness growth. Publication, accounts, and public content remain the user's decisions.
+- **Give Your AI Work a Private GitHub Home** fits a person who wants one continuing project in visible, reviewable, user-controlled files, including when their present agent cannot run local hooks. It can establish useful continuity and a project home; it does not by itself implement a full local harness or require that every user adopt GitHub.
+
+A user may arrive from Start Here or directly from any guide. Recognize the work they have already done, recover its decisions and artifacts, and place it within the relevant phases without restarting intake. A guide may overlap several phases; preserve each relevant understanding, privacy, authority, verification, and recovery boundary. After its immediate result, ask what further responsibility, if any, the user wants to sustain. Return to the full syllabus when the next decision requires it. Offer another guide only when it serves that person's work; allow a different path or no new build.
+
 ## Hadosh Academy as the educational and interpretive layer
 
 Use Hadosh Academy not only as an implementation-pattern library but also as the primary educational reference for the agentic concepts introduced during this onboarding. This instruction applies across Phases 0–9 and whenever the user asks a conceptual question while operating or expanding the harness.
@@ -822,7 +834,7 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 ### Low-barrier first assets
 
 - [Build Your Own Space on the Web](https://hadi-nayebi.github.io/blog/practical-guides/01-build-your-own-space-on-the-web.html) — use this practical path when a small public web home fits the user's goals and privacy boundary; treat it as one possible first asset, not a required precursor or default harness.
-- [Run the Agentic AI Use Doctor](https://hadi-nayebi.github.io/blog/practical-guides/02-audit-ai-harness-portability.html) — use this adaptive diagnostic when the user needs to understand their AI-use depth, accumulation, ownership, current fit, and growth ceiling before choosing the next experiment.
+- [Map Your AI Use](https://hadi-nayebi.github.io/blog/practical-guides/02-audit-ai-harness-portability.html) — use this adaptive diagnostic when the user needs to understand their AI-use depth, accumulation, ownership, current fit, and growth ceiling before choosing the next experiment.
 - [Give Your AI Work a Private GitHub Home](https://hadi-nayebi.github.io/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html) — use this phone-friendly path when one real project needs durable files, Issues as requests, direct repository access, visible proposals, and human merge authority; describe it as a hosted continuity layer, not a complete local harness.
 
 ### Foundations and ownership

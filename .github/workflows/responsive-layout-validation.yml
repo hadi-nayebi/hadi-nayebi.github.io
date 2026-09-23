@@ -5,6 +5,8 @@ on:
     paths:
       - 'agents.html'
       - 'agents/**'
+      - 'start-here.html'
+      - 'blog/practical-guides/02-audit-ai-harness-portability.html'
       - 'css/**'
       - 'data/abstraction-library.json'
       - 'js/components.js'
@@ -16,6 +18,8 @@ on:
     paths:
       - 'agents.html'
       - 'agents/**'
+      - 'start-here.html'
+      - 'blog/practical-guides/02-audit-ai-harness-portability.html'
       - 'css/**'
       - 'data/abstraction-library.json'
       - 'js/components.js'
