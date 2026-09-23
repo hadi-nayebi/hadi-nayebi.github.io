@@ -128,12 +128,12 @@ for (const viewport of viewports) {
   });
 
   for (const [name, selector] of [
-    ['connection-test', '#part-7--test-the-direct-repository-connection + p + blockquote'],
-    ['agent-handoff', '#copy-this-guided-conversation-instruction + p + blockquote'],
-    ['completion', '#completion-check + p + ul'],
+    ['connection-test', '#part-7--test-the-direct-repository-connection ~ blockquote'],
+    ['agent-handoff', '#copy-this-guided-conversation-instruction ~ blockquote'],
+    ['completion', '#completion-check ~ ul'],
     ['discussion', '.article-comments']
   ]) {
-    await page.locator(selector).screenshot({
+    await page.locator(selector).first().screenshot({
       path: path.join(artifactDir, `guide-03-${name}-${viewport.width}x${viewport.height}.png`)
     });
   }
