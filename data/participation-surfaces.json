@@ -14,6 +14,7 @@
       "surface_kind": "canonical-term",
       "canonical_url": "https://hadi-nayebi.github.io/agents/abstractions/terms/large-language-model.html",
       "source_path": "agents/abstractions/terms/large-language-model.html",
+      "source_markers": ["term-discussion", "explicit approval", "CONTRIBUTING.md"],
       "destination": {
         "kind": "giscus-discussion",
         "repository": "hadi-nayebi/hadi-nayebi.github.io",
@@ -34,7 +35,7 @@
         "evidence_ref": "agents/abstractions/terms/large-language-model.html",
         "owner": "hadi-nayebi/hadi-nayebi.github.io"
       },
-      "record_digest": "50c3abd2898965e5724f68363ab022137f5e653d0833343b598d455c5e39ab52"
+      "record_digest": "1f19c4db063b276ff5340a26878864af6997d255b44eea77a743b8fb68634dec"
     },
     {
       "schema_version": "hadosh-participation/v0.1",
@@ -42,6 +43,7 @@
       "surface_kind": "technical-writing",
       "canonical_url": "https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html",
       "source_path": "blog/b8/08_9-the-seed-is-yours.html",
+      "source_markers": ["data-community-guidance", "explicit approval", "CONTRIBUTING.md"],
       "destination": {
         "kind": "giscus-discussion",
         "repository": "hadi-nayebi/hadi-nayebi.github.io",
@@ -62,7 +64,7 @@
         "evidence_ref": "blog/b8/08_9-the-seed-is-yours.html",
         "owner": "hadi-nayebi/hadi-nayebi.github.io"
       },
-      "record_digest": "ba0d82431a914eff6ecaa5b2413a37116af76167044af47d1b78d13de8e12f32"
+      "record_digest": "7491f25dd62c2e58e47c9b1cf7aa8571f7ddf647e7accd0305a732bbb6b9877b"
     },
     {
       "schema_version": "hadosh-participation/v0.1",
@@ -70,6 +72,7 @@
       "surface_kind": "project",
       "canonical_url": "https://hadi-nayebi.github.io/projects/q-seed.html",
       "source_path": "projects/q-seed.html",
+      "source_markers": ["data-community-guidance", "explicit approval", "CONTRIBUTING.md"],
       "destination": {
         "kind": "giscus-discussion",
         "repository": "hadi-nayebi/hadi-nayebi.github.io",
@@ -90,7 +93,7 @@
         "evidence_ref": "projects/q-seed.html",
         "owner": "hadi-nayebi/hadi-nayebi.github.io"
       },
-      "record_digest": "c397431b6c548616eecd128c88dad17cf223d5567af27e4b8883ab106d0eba86"
+      "record_digest": "65e651e7cc445bee6d500c85a1f6cec351f7938ff763f4dfbbb1e7704eba8649"
     },
     {
       "schema_version": "hadosh-participation/v0.1",
@@ -98,6 +101,7 @@
       "surface_kind": "implementation-repository",
       "canonical_url": "https://github.com/hadi-nayebi/q-seed",
       "source_path": null,
+      "source_markers": [],
       "destination": {
         "kind": "repository-owned-route",
         "repository": "hadi-nayebi/q-seed",
@@ -115,7 +119,7 @@
         "evidence_ref": null,
         "owner": "hadi-nayebi/q-seed"
       },
-      "record_digest": "a66796e35eb68c71e01c17db3509d78215472917680c5f6d9ddfcbaa466c6057"
+      "record_digest": "e3493545a9fd5421cb043ee9922d55b622722f592d025f113e72112b84f2c83a"
     }
   ]
 }
