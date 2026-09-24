@@ -112,3 +112,9 @@ The v1.0.0 article contains approximately 1,667 words before sources and is pres
 Hadi accepted a five-paragraph website voice review on September 24, 2026. One paragraph in the filmmaker sequence now shows a proposed trailer cut being rejected because it reveals the ending, a review criterion retained for the next search, and final creative and release authority staying with the filmmaker. The surrounding analytical search and later music-rights boundary remain in place. This is a patch-level editorial clarification, not a new trailer workflow or a change to the nested map–territory thesis.
 
 The canonical Markdown and rendered HTML carry the same replacement. Source SHA-256: `fb350f4a58951b7c03ce04007e82f45a81f3e5caf5dd0d7dc86c16471beecf5f`; page SHA-256: `f32cb889466599cbb12970d11a830dc5ef0a7507d0f5cbab34ff97455e1ee87a`. Narration remains a separate approval and must be rechecked against this source version.
+
+## v1.0.2 — the search before the correction
+
+Hadi accepted the adjacent paragraph in a second voice review. It now describes the filmmaker's criteria and the agent's search in two concrete sentences, then lets the existing rejected-cut paragraph demonstrate how a correction survives. The music-rights conflict and map–territory argument later in the essay remain. The source and HTML match; narration remains outside this editorial change and needs a fresh source review.
+
+Current canonical Markdown SHA-256: `87343c6c329be24b0d64fc40d0aef9f599ad11d2195796c34c27194745adddbb`; current HTML SHA-256: `dff8aeb01d36cc8a0bf6a5621ebbf393c710a3df8d026d76d1cf994820b3d4ae`.
