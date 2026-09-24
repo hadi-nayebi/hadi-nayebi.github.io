@@ -5,7 +5,7 @@ slug: "job-core"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: published
-version: v0.4.0
+version: v0.4.1
 audience: "Tier 2"
 og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
@@ -18,7 +18,7 @@ og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 
 [Essay 5.3](05_3-brain-guard.html) covered the ceiling — keeping the agent under the model's reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of *what work it is doing*.
 
-The concrete mechanics below come from an earlier Claude-based prototype, used here as a historical reference architecture. The broader pattern — durable work units, lifecycle gates, and shared state — applies across CLI agent frameworks.
+This is one answer from an earlier Claude-based Seed. Its hook names and file layout belong to that prototype. The question applies to other CLI agents too: where does a piece of work live between prompts, and what prevents the agent from calling it finished while there is still work to do?
 
 ---
 
