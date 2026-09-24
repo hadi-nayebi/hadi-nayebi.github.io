@@ -106,6 +106,10 @@ body {
     background: linear-gradient(145deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.035));
 }
 
+#community-return {
+    scroll-margin-top: 100px;
+}
+
 .start-agent-entry-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.65fr) minmax(220px, 0.65fr);
