@@ -69,3 +69,43 @@ jobs:
           path: artifacts/responsive-layout
           if-no-files-found: error
           retention-days: 14
+      - name: Upload changed-page screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-home
+          path: artifacts/responsive-layout/home-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload About screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-about
+          path: artifacts/responsive-layout/about-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Start Here screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-start-here
+          path: artifacts/responsive-layout/start-here-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Essay 5.4 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-job-core
+          path: artifacts/responsive-layout/job-core-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Lens 2 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-map-territory
+          path: artifacts/responsive-layout/map-territory-*.png
+          if-no-files-found: error
+          retention-days: 14
