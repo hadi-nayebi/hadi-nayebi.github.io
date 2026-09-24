@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'agents.html'
+      - 'whats-new.html'
+      - 'data/whats-new.json'
+      - 'js/whats-new.js'
       - 'agents/**'
       - 'start-here.html'
       - 'blog/practical-guides/02-audit-ai-harness-portability.html'
@@ -17,6 +20,9 @@ on:
     branches: [main]
     paths:
       - 'agents.html'
+      - 'whats-new.html'
+      - 'data/whats-new.json'
+      - 'js/whats-new.js'
       - 'agents/**'
       - 'start-here.html'
       - 'blog/practical-guides/02-audit-ai-harness-portability.html'
