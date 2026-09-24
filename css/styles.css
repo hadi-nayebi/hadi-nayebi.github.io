@@ -6696,3 +6696,7 @@ body.lightbox-open {
     text-decoration: underline;
     text-underline-offset: 0.18em;
 }
+
+.article-body code {
+    color: #e9ddff;
+}
