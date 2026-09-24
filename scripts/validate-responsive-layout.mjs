@@ -7,11 +7,13 @@ const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
   { name: 'home', path: '/index.html', kind: 'copy' },
+  { name: 'home-open-architecture', path: '/index.html', kind: 'copy' },
   { name: 'about', path: '/about.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
   { name: 'job-core', path: '/blog/b5/05_4-job-core.html', kind: 'copy' },
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
+  { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
@@ -35,6 +37,7 @@ for (const viewport of viewports) {
   for (const route of routes) {
     const page = await context.newPage();
     if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
+    if (route.name === 'home-open-architecture') await page.addInitScript(() => { Math.random = () => 0.28; });
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(150);
@@ -44,6 +47,12 @@ for (const viewport of viewports) {
       const heroCopy = await page.locator('.hero-description').innerText();
       if (!heroCopy.startsWith('Your AI agent already has a system around it.')) {
         failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved hero wording was replaced at runtime`);
+      }
+    }
+    if (route.name === 'home-open-architecture') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      if (!heroCopy.startsWith('A public pattern should show what it does')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Open Architecture wording was replaced at runtime`);
       }
     }
 
