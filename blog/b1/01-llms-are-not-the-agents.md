@@ -7,7 +7,7 @@ tags: [Agents, AI, Fundamentals]
 audience: professionals
 og_image: "blog/b1/images/llm-engine-agent-directory-b1-1.png"
 series: "Hadosh Academy – Agents"
-version: v1.3.0
+version: v1.3.1
 status: published
 ---
 
@@ -231,7 +231,7 @@ If you are building with AI agents — or want to start — here is the shift in
 
 1. **Stop obsessing over which model to use.** New LLMs are being trained constantly. New forms of token generators will arrive. The engine keeps getting better — that was never the bottleneck.
 
-2. **Give your agent a brain.** Create a dedicated directory with structure, knowledge files, operational rules, and memory. This is not configuration — this is the agent itself. Without it, the engine has nothing to build on — no memory to consult, no rules to follow, no identity to maintain.
+2. **Own your agent's brain.** Create a dedicated directory with structure, knowledge files, operational rules, and memory. A platform may already hold memory, rules, and project state. The directory does not invent those capabilities. It puts the durable layer where you can inspect it, shape it, and move it. In this series, that user-owned structure is the agent's brain.
 
 3. **Write the habits down.** Consistency comes from structure, not from intelligence. Define phases. Define workflows. Define what the agent should do at each event. If it is not written in a file, it does not exist.
 

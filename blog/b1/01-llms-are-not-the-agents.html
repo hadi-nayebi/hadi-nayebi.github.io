@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v1.3.0 -->
+<!-- Version: v1.3.1 -->
 <html lang="en">
 
 <head>
@@ -24,6 +24,19 @@
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b1/images/llm-engine-agent-directory-b1-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
     <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
+    <style>
+        .article-meta-tags .tag,
+        .blog-series-mobile-nav a,
+        .article-body a,
+        .article-comments a { color: #e9ddff; }
+        .article-meta-tags .tag { border-color: #e9ddff; }
+        .article-body a,
+        .article-comments a { text-decoration: underline; text-underline-offset: .18em; }
+        .article-body code { color: #e9ddff; }
+        @media (max-width: 600px) {
+            .article-meta-tags { width: 100%; margin-left: 0; flex-wrap: wrap; }
+        }
+    </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -102,13 +115,6 @@
                     </div>
                     <div class="article-authors">
                         By Hadi Nayebi &amp; Claude Opus 4.8
-                    </div>
-
-                    <div class="article-audio">
-                        <span class="audio-label">Narration<br><small>Cloned voice: Hadi (Qwen).</small></span>
-                        <audio controls preload="metadata" src="audio/llms-are-not-the-agents.mp3" aria-label="Narration of LLMs Are Not the Agents">
-                            Your browser does not support audio playback.
-                        </audio>
                     </div>
 
                     <div class="article-body">
@@ -336,7 +342,7 @@
 
                         <p>1. <strong>Stop obsessing over which model to use.</strong> New LLMs are being trained constantly. New forms of token generators will arrive. The engine keeps getting better &mdash; that was never the bottleneck.</p>
 
-                        <p>2. <strong>Give your agent a brain.</strong> Create a dedicated directory with structure, knowledge files, operational rules, and memory. This is not configuration &mdash; this is the agent itself. Without it, the engine has nothing to build on &mdash; no memory to consult, no rules to follow, no identity to maintain.</p>
+                        <p>2. <strong>Own your agent&rsquo;s brain.</strong> Create a dedicated directory with structure, knowledge files, operational rules, and memory. A platform may already hold memory, rules, and project state. The directory does not invent those capabilities. It puts the durable layer where you can inspect it, shape it, and move it. In this series, that user-owned structure is the agent&rsquo;s brain.</p>
 
                         <p>3. <strong>Write the habits down.</strong> Consistency comes from structure, not from intelligence. Define phases. Define workflows. Define what the agent should do at each event. If it is not written in a file, it does not exist.</p>
 

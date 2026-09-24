@@ -11,10 +11,10 @@ and connecting it to Essay 4's model, runtime, harness, and agent definitions.
 ## Reviewed revision
 
 - Canonical source: `blog/b1/01-llms-are-not-the-agents.md`
-- Source version: `v1.3.0` (previously `v1.2.0`)
-- Source SHA-256: `bd08b432d80d51640080af1cad38ea5f2c3298aedf78eff66f18834a7b344111`
+- Source version: `v1.3.1` (previously `v1.3.0`)
+- Source SHA-256: `e695ca0f37c8a8e5275c192a176a340210ab77dfbb38c124020ef000e391bab7`
 - Published page: `blog/b1/01-llms-are-not-the-agents.html`
-- Published-page SHA-256: `3ad27208e490c666ffcdb50dd4a2dad8507d1ef7a1cd9d4e5276ab83eb498b04`
+- Published-page SHA-256: `117a4aeee5b061b869c1458f0e74c7695d15a5ff31a7ae8d4d425e98811d8062`
 - Hadi's narration-source approval remains pending.
 
 ## Changes made
@@ -60,8 +60,23 @@ and connecting it to Essay 4's model, runtime, harness, and agent definitions.
 12. **Kept conversational construction under user control.** The agent can help
     write and organize its file-backed brain; structural reflexes do not force
     self-modification without the user.
-13. **Removed stale narration.** The old MP3 predates version 1.3.0 and remains
-    hidden until the writing and later narration gates pass.
+13. **Removed stale narration.** The current MP3 predates version 1.3.1 and is
+    hidden until the revised writing receives Hadi's content approval and a
+    matching narration artifact passes its own gates.
+14. **Corrected capability location.** The closing action now says a local
+    directory does not invent memory, rules, or project state that a provider
+    may already supply. It moves the durable layer into a form the user can
+    inspect, shape, and move.
+15. **Preserved the thesis and force.** “Own your agent's brain” keeps the
+    direct call to action while making ownership—not missing capability—the
+    public distinction.
+16. **Repaired discovery copy and the companion reference.** The blog index
+    and primitive definitions now distinguish provider-retained context from
+    user-controlled files instead of claiming all sessions otherwise start
+    from zero.
+17. **Repaired the affected render and contrast.** Essay metadata tags now
+    wrap on a 360 px viewport instead of clipping beyond the article card;
+    links, tags, and inline code pass serious/critical contrast checks.
 
 ## Evidence and review state
 
@@ -81,6 +96,7 @@ engineering descriptions. Diagram redesign remains outside this round.
 ## Validation
 
 - Approved-source retention: 91.5 percent token-sequence similarity.
+- Version 1.3.0 → 1.3.1 retention: 99.18 percent token-sequence similarity.
 - Safe Markdown-body synchronization and unlocked-narration check: passed.
 - Narration corpus and relevant repository validators: passed.
 - `git diff --check`: passed.
