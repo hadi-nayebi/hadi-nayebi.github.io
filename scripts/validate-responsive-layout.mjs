@@ -10,6 +10,7 @@ const routes = [
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
+  { name: 'whats-new', path: '/whats-new.html', kind: 'whats-new' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
 const viewports = [
@@ -180,6 +181,15 @@ for (const viewport of viewports) {
           }
         }
       }
+    }
+
+    if (route.kind === 'whats-new') {
+      const cards = await page.locator('.update-card').count();
+      if (!cards) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: weekly summary did not render`);
+      const firstType = cards ? await page.locator('.update-card .update-type').first().innerText() : '';
+      if (firstType !== 'Weekly public summary') failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: first entry is not the weekly public summary`);
+      const engagementRoutes = await page.locator('.update-card a[href="/start-here.html#community-return"]').count();
+      if (!engagementRoutes) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: public engagement route is missing`);
     }
 
     if (route.kind === 'term') {
