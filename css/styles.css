@@ -6705,3 +6705,8 @@ body.lightbox-open {
 .page-about .card-link {
     color: #e9ddff;
 }
+
+/* Keep the Services invitation legible on the hero surface. */
+.page-services .services-hero-copy .badge {
+    color: #e9ddff;
+}
