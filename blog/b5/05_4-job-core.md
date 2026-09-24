@@ -81,7 +81,7 @@ They can land together. A single-cycle job reaches its one and only CONDENSE, as
 
 ## What would break without it
 
-Without `job_core`, the agent has no notion of *what work am I doing*. Every prompt is a one-off, there is no thread of intent to come back to, no place for follow-up work to live, no signal that says the agent is or isn't done. The cognitive horizon collapses to the current turn — and everything the rest of the always-on layer is built to support has nothing structural to attach to. *[ref: without-job-core-the-agent | Checked against a private historical prototype.]*
+In the historical Seed, `job_core` gave work a shared ID and lifecycle. Remove it and the plugins that track interactions and phases would lose the key they use to connect their state to the active job. The stop gate would also lose the active/pending job status it checks. Other agents may provide those functions differently; this is how that Seed made them explicit. *[ref: without-job-core-the-agent | Checked against a private historical prototype.]*
 
 ## What you would customize
 
