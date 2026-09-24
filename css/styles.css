@@ -6700,3 +6700,8 @@ body.lightbox-open {
 .article-body code {
     color: #e9ddff;
 }
+
+.page-about .academy-pillar h3,
+.page-about .card-link {
+    color: #e9ddff;
+}
