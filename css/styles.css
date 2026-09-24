@@ -6667,3 +6667,13 @@ body.lightbox-open {
 .page-start-here .vocab-card h3 {
     color: #e9ddff;
 }
+
+
+/* Shared copy-surface contrast gate: homepage cards, About essay numbers, and article contribution/navigation links. */
+.page-home .card-link,
+.page-home .badge:not(.badge-open-source),
+.about-essay-number,
+.blog-series-mobile-nav a,
+.article-comments a {
+    color: #e9ddff;
+}
