@@ -6,8 +6,12 @@ import AxeBuilder from '@axe-core/playwright';
 const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
+  { name: 'home', path: '/index.html', kind: 'copy' },
+  { name: 'about', path: '/about.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
+  { name: 'job-core', path: '/blog/b5/05_4-job-core.html', kind: 'copy' },
+  { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
