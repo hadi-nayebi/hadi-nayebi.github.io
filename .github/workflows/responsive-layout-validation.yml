@@ -7,6 +7,7 @@ on:
       - 'about.html'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
+      - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -24,6 +25,7 @@ on:
       - 'about.html'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
+      - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -107,5 +109,13 @@ jobs:
         with:
           name: voice-review-map-territory
           path: artifacts/responsive-layout/map-territory-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload principle essay screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-ai-that-grows
+          path: artifacts/responsive-layout/ai-that-grows-with-you-*.png
           if-no-files-found: error
           retention-days: 14
