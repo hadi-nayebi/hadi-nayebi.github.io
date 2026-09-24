@@ -9,6 +9,7 @@ const routes = [
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
+  { name: 'claude-md-hierarchy', path: '/blog/b5/explore/claude-md-hierarchy.html', kind: 'explorable' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
@@ -146,6 +147,26 @@ for (const viewport of viewports) {
 
       return [...new Set(problems)];
     });
+
+    if (route.kind === 'explorable') {
+      const orientation = await page.locator('.orient.is-open').count();
+      if (orientation !== 1) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation overlay is not open on first load`);
+      const framing = await page.locator('.orient__lead, .orient__thesis').evaluateAll(elements => elements.map(element => element.textContent.trim()));
+      if (framing.length !== 2 || !framing[0].startsWith('In this historical Claude Seed') || !framing[1].startsWith('This Seed did not rely on one chat state')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: capability-location framing drifted`);
+      }
+      const card = await page.locator('.orient__card').evaluate(element => {
+        const rect = element.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, scrollHeight: element.scrollHeight, clientHeight: element.clientHeight };
+      });
+      if (card.left < -1 || card.right > viewport.width + 1 || card.top < -1 || card.bottom > viewport.height + 1) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation card leaves viewport`);
+      }
+      if (card.scrollHeight > card.clientHeight + 2) {
+        const overflowY = await page.locator('.orient__card').evaluate(element => getComputedStyle(element).overflowY);
+        if (!['auto', 'scroll'].includes(overflowY)) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation content clips without scrolling`);
+      }
+    }
 
     if (route.kind === 'library') {
       const cloudTerms = await page.locator('.cloud-term').count();
