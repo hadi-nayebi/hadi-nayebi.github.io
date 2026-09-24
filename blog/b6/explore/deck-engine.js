@@ -906,11 +906,15 @@
      * ORIENTATION overlay
      * ====================================================================== */
     var orient = document.getElementById('orient');
+    var orientCard = orient.querySelector('.orient__card');
+    var orientTitle = document.getElementById('orient-title');
+    orientTitle.setAttribute('tabindex', '-1');
     var orientLastFocus = null;
     function openOrient() {
         orientLastFocus = document.activeElement;
         orient.classList.add('is-open');
-        document.getElementById('orient-go').focus();
+        try { orientTitle.focus({ preventScroll: true }); } catch (e) { orientTitle.focus(); }
+        orientCard.scrollTop = 0;
     }
     function closeOrient() {
         orient.classList.remove('is-open');
@@ -921,7 +925,7 @@
     orient.addEventListener('click', function (e) { if (e.target === orient) closeOrient(); });
     orient.addEventListener('keydown', function (e) {
         if (e.key !== 'Tab') return;
-        var f = orient.querySelectorAll('button');
+        var f = orient.querySelectorAll('[tabindex="-1"], button');
         if (!f.length) return;
         var first = f[0], last = f[f.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
