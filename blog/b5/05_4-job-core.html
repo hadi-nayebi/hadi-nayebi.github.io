@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.4.0 -->
+<!-- Version: v0.4.1 -->
 <html lang="en">
 
 <head>
@@ -32,7 +32,7 @@
                 "@type": "BlogPosting",
                 "headline": "Job Lifecycle — job_core",
                 "datePublished": "2026-05-13",
-                "dateModified": "2026-05-13",
+                "dateModified": "2026-09-24",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
@@ -112,7 +112,7 @@
 
                         <p><a href="05_3-brain-guard.html">Essay 5.3</a> covered the ceiling &mdash; keeping the agent under the model&rsquo;s reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of <em>what work it is doing</em>.</p>
 
-                        <p>The concrete mechanics below come from an earlier Claude-based prototype, used here as a historical reference architecture. The broader pattern &mdash; durable work units, lifecycle gates, and shared state &mdash; applies across CLI agent frameworks.</p>
+                        <p>This is one answer from an earlier Claude-based Seed. Its hook names and file layout belong to that prototype. The question applies to other CLI agents too: where does a piece of work live between prompts, and what prevents the agent from calling it finished while there is still work to do?</p>
 
                         <hr>
 
