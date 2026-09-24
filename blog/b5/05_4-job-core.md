@@ -5,7 +5,7 @@ slug: "job-core"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: published
-version: v0.4.1
+version: v0.4.2
 audience: "Tier 2"
 og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
@@ -24,7 +24,7 @@ This is one answer from an earlier Claude-based Seed. Its hook names and file la
 
 ## What it owns
 
-`job_core` exists to compartmentalize the seed agent's *work*. The unit of compartmentalization is the *job* — a container for everything the agent does between the moment a piece of work begins and the moment it is complete. Every prompt, every reasoning cycle, every action belongs to one. The plugin works by routing each user prompt into a job (creating a new one if none is focused, attaching as an interaction if one is) and by refusing to let the agent stop while any job remains active or pending. It applies on every prompt the user submits, every turn-end event the agent triggers, and every `[JOB-COMPLETE]` claim the agent makes. *[ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.]*
+`job_core` gives the historical Seed one place to track an active piece of work. It creates a job when a prompt arrives with none focused; later prompts are added to the focused job as interactions. Prompts, reasoning cycles, and actions remain associated with that job until completion. The plugin runs on prompt and turn-end hooks and checks `[JOB-COMPLETE]` claims; it refuses a stop while any job is active or pending. *[ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.]*
 
 ## How a job is born
 
