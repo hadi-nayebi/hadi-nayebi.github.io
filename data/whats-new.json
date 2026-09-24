@@ -1,34 +1,59 @@
 {
   "version": 1,
   "updated": "2026-09-22",
-  "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
+  "description": "A weekly public summary of Hadosh Academy changes that benefit readers, builders, and participants, with direct routes to explore and engage.",
+  "cadence": {
+    "unit": "weekly",
+    "minimum_days_between_summaries": 7,
+    "effective_from": "2026-09-21",
+    "audience": "public",
+    "focus": "Public benefit, usable artifacts, and engagement routes—not internal operating decisions."
+  },
   "entries": [
     {
-      "id": "2026-09-22-private-github-home",
+      "id": "2026-09-22-public-weekly-summary",
       "date": "2026-09-22",
-      "type": "Practical guide",
-      "title": "A private GitHub repository becomes a low-barrier continuity layer for AI work",
-      "summary": "Practical Guide 3 helps a person and their agent establish one private repository for one real project, install GitHub Mobile, use Issues as request and clarification threads, verify the direct repository connection, and review proposed changes before acceptance.",
-      "why_it_matters": "The guide turns the Academy's filesystem and harness abstractions into an accessible hosted form. Files make context inspectable, Git records and compartmentalizes change, GitHub adds mobile interaction and review, and the user retains merge authority.",
-      "affected": ["Practical Guides", "GitHub Mobile", "Private repositories", "Issues", "Pull requests", "Agent continuity", "Harness ownership", "Start Here"],
-      "maturity": "Guided-conversation article with current official product references, read-only and write-capable paths, explicit hosted-versus-local boundaries, and a fresh-conversation verification method",
-      "intended_for": ["People already using ChatGPT or another agent", "Nontechnical users beginning durable project context", "Agents onboarding users into repository-based work"],
+      "type": "Weekly public summary",
+      "title": "From principles to working systems",
+      "summary": "This week, Hadosh Academy connected three layers of practical agency: Mental Model lenses for testing the ideas, a private GitHub guide for preserving work across conversations, and the Map Your AI Use for choosing a healthier next step. Origin also gained a visible System status surface so people can inspect the harness around the model.",
+      "why_it_matters": "Readers can now move from understanding why a user-owned harness matters to trying a bounded continuity system and inspecting one public implementation. Each route preserves the distinction between model capability, durable user-owned context, and the authority to accept changes.",
+      "affected": [
+        "Mental Models",
+        "Practical Guide 3",
+        "Map Your AI Use",
+        "Origin",
+        "Public participation"
+      ],
+      "maturity": "Published public guidance and demonstrated project surfaces, summarized as one weekly reader-facing update",
+      "intended_for": [
+        "People exploring user-owned AI harnesses",
+        "Current ChatGPT, Claude, or CLI-agent users",
+        "Builders evaluating inspectable continuity and authority"
+      ],
       "sources": [
+        {
+          "label": "Mental Models",
+          "url": "/blog/observations/hadosh-through-mental-models/index.html"
+        },
         {
           "label": "Give Your AI Work a Private GitHub Home",
           "url": "/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html"
         },
         {
-          "label": "LLMs Are Not the Agents",
-          "url": "/blog/b1/01-llms-are-not-the-agents.html"
+          "label": "Run the Map Your AI Use",
+          "url": "/blog/practical-guides/02-audit-ai-harness-portability.html"
         },
         {
-          "label": "Run the Agentic AI Use Doctor",
-          "url": "/blog/practical-guides/02-audit-ai-harness-portability.html"
+          "label": "Origin",
+          "url": "/projects/origin.html"
+        },
+        {
+          "label": "Discuss or contribute",
+          "url": "/start-here.html#community-return"
         }
       ],
-      "adoption_notes": "This is a user-controlled, file-based hosted continuity layer, not a complete local harness. Verify actual connector capabilities, keep sensitive material outside the repository, and preserve human review and merge authority.",
-      "recommended_action": "Give the guide to the agent you already use, choose one continuing project, open one Issue from your phone, and test whether a fresh conversation can recover the accepted state through the direct GitHub connection."
+      "adoption_notes": "Use the smallest route that matches your current need: clarify the model with a Mental Model lens, map your current AI use and next step, try repository-backed continuity with Practical Guide 3, or inspect Origin as a public implementation.",
+      "recommended_action": "Choose one route above, try it on a real responsibility, and use the discussion or contribution pathway to return evidence, questions, or corrections."
     },
     {
       "id": "2026-09-18-hadosh-through-map-territory",
