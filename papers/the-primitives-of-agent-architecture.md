@@ -30,7 +30,7 @@ These primitives compartmentalize **what the agent knows**.
 
 ### File
 
-The most basic unit of persistent information. A file holds text, data, instructions, or configuration. Everything the agent remembers between sessions lives in a file. Everything the agent reads to understand its job comes from a file.
+The most basic unit of persistent information in a file-based harness. A file holds text, data, instructions, or configuration. Provider platforms may also retain memory or project history behind their interfaces. Files move selected durable context into a layer the user can inspect, change, and carry. They are one source the agent can read to understand its job, not the only possible source.
 
 A file is to an agent what a neuron is to a brain — the smallest unit that can carry a signal.
 
@@ -46,7 +46,7 @@ The first thing the agent reads. The system message — usually stored in a file
 
 ### Memory File
 
-A file that persists what the agent has learned across sessions. User preferences, project patterns, past decisions. Without memory files, every session starts from zero. With them, the agent accumulates experience.
+A file that persists selected learning across sessions: user preferences, project patterns, and past decisions. A provider may already supply memory or conversation history. The memory file puts chosen context in a user-controlled form that another authorized runtime can inspect and reuse.
 
 ### Knowledge File
 
