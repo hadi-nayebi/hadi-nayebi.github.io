@@ -5,6 +5,9 @@ on:
     paths:
       - 'index.html'
       - 'about.html'
+      - 'services.html'
+      - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
+      - 'js/theme-manager.js'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
@@ -23,6 +26,9 @@ on:
     paths:
       - 'index.html'
       - 'about.html'
+      - 'services.html'
+      - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
+      - 'js/theme-manager.js'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
@@ -125,5 +131,21 @@ jobs:
         with:
           name: voice-review-ai-use-map
           path: artifacts/responsive-layout/ai-use-map-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Services screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-services
+          path: artifacts/responsive-layout/services-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Guide 3 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-private-github-home
+          path: artifacts/responsive-layout/private-github-home-*.png
           if-no-files-found: error
           retention-days: 14
