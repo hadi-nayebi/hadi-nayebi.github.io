@@ -157,10 +157,14 @@ for (const viewport of viewports) {
       }
       const card = await page.locator('.orient__card').evaluate(element => {
         const rect = element.getBoundingClientRect();
-        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, scrollHeight: element.scrollHeight, clientHeight: element.clientHeight };
+        const title = element.querySelector('#orient-title').getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, scrollHeight: element.scrollHeight, clientHeight: element.clientHeight, scrollTop: element.scrollTop, titleTop: title.top, titleBottom: title.bottom };
       });
       if (card.left < -1 || card.right > viewport.width + 1 || card.top < -1 || card.bottom > viewport.height + 1) {
         failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation card leaves viewport`);
+      }
+      if (card.scrollTop > 1 || card.titleTop < card.top || card.titleBottom > card.bottom) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: first-load orientation does not begin at its visible heading`);
       }
       if (card.scrollHeight > card.clientHeight + 2) {
         const overflowY = await page.locator('.orient__card').evaluate(element => getComputedStyle(element).overflowY);
