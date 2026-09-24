@@ -2,7 +2,7 @@
 title: "Hadosh Academy Through The Map Is Not the Territory"
 slug: "map-is-not-territory"
 date: "2026-09-18"
-version: "1.0.0"
+version: "1.0.2"
 description: "How a public map of user-owned harnesses can help people create distinct local systems—and how lived work must keep correcting the map."
 author: "Hadi Nayebi & Codex"
 og_image: "images/map-territory-loop.png"
@@ -48,9 +48,9 @@ Consider an independent filmmaker preparing a trailer.
 
 The work is not one prompt. It includes reviewing footage, finding emotional beats, tracking music rights, generating candidate cuts, collecting feedback, remembering rejected directions, and coordinating collaborators. Interruptions are common. Decisions made on Monday still matter on Friday.
 
-Trailer making includes creative judgment, but it also contains a bounded analytical search. The filmmaker can define a local objective: find emotionally useful excerpts, build curiosity, avoid revealing too much, preserve the intended arc, and respect release boundaries. A local harness might generate and annotate many short candidates, assemble alternative trailer-length sequences, compare them against those criteria, and remember why directions were rejected.
+The filmmaker can tell the agent what feeling to look for, what must stay unrevealed, and which footage and music are cleared. The agent searches the footage, marks possible moments, and assembles short cuts for review.
 
-At the end of each work cycle, accepted corrections can improve the next one instead of disappearing into a conversation. The filmmaker may help form the procedure once, then keep correcting its criteria as the work develops. The point is not this particular pipeline. It is that selected cognition can become an inspectable, repeatable, locally improving responsibility while the person retains creative and release authority.
+Suppose the agent brings back three trailer cuts. The filmmaker rejects one because it reveals the ending. They change the review criterion and keep that correction where the next trailer search can use it. The agent can repeat the search. The filmmaker still decides which cut represents the film and whether it can be released.
 
 The filmmaker and an agent use Academy principles to build whatever local form fits that work. It may preserve the film thesis, scene inventory, decision history, audience assumptions, review criteria, and authority boundaries. The actual tools, state names, components, and decomposition belong to the filmmaker’s environment rather than to one universal Academy implementation.
 

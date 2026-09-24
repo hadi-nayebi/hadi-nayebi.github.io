@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.4.0 -->
+<!-- Version: v0.4.2 -->
 <html lang="en">
 
 <head>
@@ -32,7 +32,7 @@
                 "@type": "BlogPosting",
                 "headline": "Job Lifecycle — job_core",
                 "datePublished": "2026-05-13",
-                "dateModified": "2026-05-13",
+                "dateModified": "2026-09-24",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
@@ -112,13 +112,13 @@
 
                         <p><a href="05_3-brain-guard.html">Essay 5.3</a> covered the ceiling &mdash; keeping the agent under the model&rsquo;s reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of <em>what work it is doing</em>.</p>
 
-                        <p>The concrete mechanics below come from an earlier Claude-based prototype, used here as a historical reference architecture. The broader pattern &mdash; durable work units, lifecycle gates, and shared state &mdash; applies across CLI agent frameworks.</p>
+                        <p>This is one answer from an earlier Claude-based Seed. Its hook names and file layout belong to that prototype. The question applies to other CLI agents too: where does a piece of work live between prompts, and what prevents the agent from calling it finished while there is still work to do?</p>
 
                         <hr>
 
                         <h2 id="what-it-owns">What it owns</h2>
 
-                        <p><code>job_core</code> exists to compartmentalize the seed agent&rsquo;s <em>work</em>. The unit of compartmentalization is the <em>job</em> &mdash; a container for everything the agent does between the moment a piece of work begins and the moment it is complete. Every prompt, every reasoning cycle, every action belongs to one. The plugin works by routing each user prompt into a job (creating a new one if none is focused, attaching as an interaction if one is) and by refusing to let the agent stop while any job remains active or pending. It applies on every prompt the user submits, every turn-end event the agent triggers, and every <code>[JOB-COMPLETE]</code> claim the agent makes. <sup class="ref-marker" title="ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.">&#9432;</sup></p>
+                        <p><code>job_core</code> gives the historical Seed one place to track an active piece of work. It creates a job when a prompt arrives with none focused; later prompts are added to the focused job as interactions. Prompts, reasoning cycles, and actions remain associated with that job until completion. The plugin runs on prompt and turn-end hooks and checks <code>[JOB-COMPLETE]</code> claims; it refuses a stop while any job is active or pending. <sup class="ref-marker" title="ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.">&#9432;</sup></p>
 
                         <h2 id="how-a-job-is-born">How a job is born</h2>
 

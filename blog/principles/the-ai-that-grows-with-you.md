@@ -7,7 +7,7 @@ tags: [AI, Ownership, Open Source, Personal Harness]
 audience: everyone
 og_image: "blog/principles/images/the-ai-that-grows-with-you-hero.jpg"
 series: "Hadosh Academy – Principles & Perspectives"
-version: v1.0.0
+version: v1.0.1
 status: published
 ---
 
@@ -53,7 +53,7 @@ The more useful it becomes, the more it must reflect a particular person: their 
 
 This is where personalization in AI becomes more consequential than choosing which model performs best on a benchmark.
 
-As an AI system becomes part of someone’s everyday life, value begins to accumulate inside the harness. The system gradually learns how that person communicates, how they organize their work, what they consider important, which mistakes they tend to make, and how they prefer to solve problems.
+Imagine returning to a project after six months and asking your agent why you set it aside. If it can find the decision, the evidence, and the correction that changed your mind, you can pick up the work with more than a summary. Those records are part of the value accumulating in the harness.
 
 At first, this accumulation may look insignificant: a few saved instructions, some conversation history, a preferred writing style, or a connection to a calendar. But over time, these fragments can become something much larger. They can develop into a working understanding of a person’s life.
 

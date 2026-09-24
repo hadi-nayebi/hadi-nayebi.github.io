@@ -49,3 +49,15 @@ named Claude mechanism as one historical reference architecture.
 - Markdown/HTML parity, metadata, transcript state, site validators, and
   `git diff --check`: passed.
 - Cross-writing consistency passed the complete narration-source continuity review. Hadi's content lock remains pending.
+
+## v0.4.1 editorial follow-up — September 24, 2026
+
+Hadi accepted a five-paragraph website voice review. The historical Claude example remains explicitly scoped, but the opening now asks the portable job-lifecycle question before `job_core` gives its concrete answer. The rest of the mechanism and its evidence boundaries remain as reviewed above.
+
+Current canonical Markdown SHA-256: `a5e8e068768a6f7915006c01363418708103e3ef41ab9c752aebd74a40457db0`; current HTML SHA-256: `56122e874c6f9e3f4cee811633ece95c08b095b9421727ecccd2cebf5a2d8e67`. The earlier hashes above document v0.4.0 only. Any narration lock must review this new source; this note does not approve narration or regenerate audio.
+
+## v0.4.2 editorial follow-up — September 24, 2026
+
+Hadi accepted a shorter `What it owns` paragraph after the revised handoff. It keeps prompt routing, focused-job interactions, association of work with the job, turn-end and completion checks, the active/pending stop gate, and the historical evidence marker. The next section still expands the creation pathways. No existing narration is claimed to match this source.
+
+Current canonical Markdown SHA-256: `676f12f238794892fe565fa0b4d31fb50f2a89aba74fc80d7287e49c612d377d`; current HTML SHA-256: `1efb96ce8976254c63aa3bee4871ea9989ac07cdcd0403acb9c3d0016ac148b3`.
