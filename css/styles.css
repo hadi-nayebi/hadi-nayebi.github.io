@@ -6659,3 +6659,18 @@ body.lightbox-open {
         width: 100%;
     }
 }
+
+/* Start Here labels and series numbers need readable contrast on the dark surface. */
+.page-start-here .academy-section .badge {
+    color: #e9ddff;
+}
+
+.page-start-here .about-essay-card .about-essay-number {
+    color: #e9ddff;
+    opacity: 1;
+}
+
+.page-start-here .card-link,
+.page-start-here .vocab-card h3 {
+    color: #e9ddff;
+}

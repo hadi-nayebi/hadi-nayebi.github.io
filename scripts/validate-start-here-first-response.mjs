@@ -77,6 +77,9 @@ requireText('start-here-agent.md', syllabus, 'Do not invent familiarity');
 requireText('start-here-agent.md', syllabus, '## Pattern accumulation, reusable primitives, and personal lineages');
 requireText('start-here-agent.md', syllabus, 'They are not product editions progressing toward a standard harness or installation target.');
 requireText('start-here-agent.md', syllabus, 'blog/practical-guides/01-build-your-own-space-on-the-web.html');
+requireText('start-here-agent.md', syllabus, '## Choose a practical guide within the full journey');
+requireText('start-here-agent.md', syllabus, 'blog/practical-guides/02-audit-ai-harness-portability.html');
+requireText('start-here-agent.md', syllabus, 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html');
 forbidText('start-here-agent.md', syllabus, 'Seed Agent is a harness-centered reference');
 forbidText('start-here-agent.md', syllabus, 'Seed Agent demonstrates a harness-centered lineage');
 forbidText('start-here-agent.md', syllabus, retiredModeQuestion);
@@ -96,6 +99,14 @@ if (
 
 requireText('start-here.html', page, 'id="continue-with-agent"');
 requireText('start-here.html', page, 'href="start-here-agent.md"');
+requireText('start-here.html', page, 'id="practical-guides"');
+for (const guidePath of [
+  '01-build-your-own-space-on-the-web.html',
+  '02-audit-ai-harness-portability.html',
+  '03-give-your-ai-work-a-private-github-home.html',
+]) {
+  requireText('start-here.html', page, `href="blog/practical-guides/${guidePath}"`);
+}
 requireHiddenElement('start-here.html', page, 'start-core-prompt');
 requireText('start-here.html', page, 'Read https://hadi-nayebi.github.io/start-here-agent.md');
 requireText('start-here.html', page, 'Seed Agent and Q-Seed are distinct, deliberately sparse framework-specific pattern-accumulation surfaces.');
