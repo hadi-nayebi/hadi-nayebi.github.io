@@ -55,7 +55,7 @@ This is where personalization in AI becomes more consequential than choosing whi
 
 Imagine returning to a project after six months and asking your agent why you set it aside. If it can find the decision, the evidence, and the correction that changed your mind, you can pick up the work with more than a summary. Those records are part of the value accumulating in the harness.
 
-At first, this accumulation may look insignificant: a few saved instructions, some conversation history, a preferred writing style, or a connection to a calendar. But over time, these fragments can become something much larger. They can develop into a working understanding of a person’s life.
+Start smaller: a saved instruction, a writing preference, a calendar connection. Each one matters more when it can inform a real decision in a continuing project. That is how a handful of settings begins to become a working relationship.
 
 We have seen a simpler version of this process before.
 

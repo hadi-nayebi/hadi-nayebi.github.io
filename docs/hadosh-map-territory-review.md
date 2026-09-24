@@ -118,3 +118,9 @@ The canonical Markdown and rendered HTML carry the same replacement. Source SHA-
 Hadi accepted the adjacent paragraph in a second voice review. It now describes the filmmaker's criteria and the agent's search in two concrete sentences, then lets the existing rejected-cut paragraph demonstrate how a correction survives. The music-rights conflict and map–territory argument later in the essay remain. The source and HTML match; narration remains outside this editorial change and needs a fresh source review.
 
 Current canonical Markdown SHA-256: `87343c6c329be24b0d64fc40d0aef9f599ad11d2195796c34c27194745adddbb`; current HTML SHA-256: `dff8aeb01d36cc8a0bf6a5621ebbf393c710a3df8d026d76d1cf994820b3d4ae`.
+
+## v1.0.3 — the filmmaker's records and reader-first opening
+
+Hadi accepted one adjacent filmmaker paragraph and removal of the public production-status box. The replacement names project records a filmmaker could actually retain—purpose, scene notes, rejected cuts, review criteria, and release permissions—without prescribing one universal implementation. The music-rights conflict, nested map–territory comparison, and evidence return remain intact. The removed box repeated the opening and mixed editorial state with reader-facing prose; narration state remains here.
+
+Current canonical Markdown SHA-256: `dd2810f721e7a325a2108aa65102044e7f6c95665546ff95b6ebd5edfb033c83`; HTML SHA-256: `1d19ef0e92df173c75f7562cc18486a66959ad9a5450a155a0ac2707b6c5ae0a`. Narration remains separately gated.

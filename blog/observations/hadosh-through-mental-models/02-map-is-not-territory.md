@@ -52,7 +52,7 @@ The filmmaker can tell the agent what feeling to look for, what must stay unreve
 
 Suppose the agent brings back three trailer cuts. The filmmaker rejects one because it reveals the ending. They change the review criterion and keep that correction where the next trailer search can use it. The agent can repeat the search. The filmmaker still decides which cut represents the film and whether it can be released.
 
-The filmmaker and an agent use Academy principles to build whatever local form fits that work. It may preserve the film thesis, scene inventory, decision history, audience assumptions, review criteria, and authority boundaries. The actual tools, state names, components, and decomposition belong to the filmmaker’s environment rather than to one universal Academy implementation.
+The filmmaker needs a place to keep those decisions. Their harness may hold the film's purpose, scene notes, rejected cuts, review criteria, and release permissions in files or tools they control. Those records make this particular project workable; another filmmaker may arrange them differently.
 
 Relative to the Academy’s general guidance, this working harness is territory. Abstract ideas have become actual files, permissions, tools, states, and routines.
 

@@ -61,3 +61,9 @@ Current canonical Markdown SHA-256: `a5e8e068768a6f7915006c01363418708103e3ef41a
 Hadi accepted a shorter `What it owns` paragraph after the revised handoff. It keeps prompt routing, focused-job interactions, association of work with the job, turn-end and completion checks, the active/pending stop gate, and the historical evidence marker. The next section still expands the creation pathways. No existing narration is claimed to match this source.
 
 Current canonical Markdown SHA-256: `676f12f238794892fe565fa0b4d31fb50f2a89aba74fc80d7287e49c612d377d`; current HTML SHA-256: `1efb96ce8976254c63aa3bee4871ea9989ac07cdcd0403acb9c3d0016ac148b3`.
+
+## v0.4.3 editorial follow-up — September 24, 2026
+
+Hadi accepted the revised “What would break without it” paragraph. The failure now names the historical Seed's shared job ID, lifecycle, interaction and phase links, and stop gate, while acknowledging that other agents can supply comparable functions differently. The following customization section is unchanged. The source marker stays public-safe. This edit does not lock or regenerate narration.
+
+Current canonical Markdown SHA-256: `65f0c27d1ba2497fbfa9ec28643e561f5920b0e6973130baf791bc9e007a8526`; HTML SHA-256: `01403009f09259a8d58fd11900088f3d9e6066b4c713163f2d657a1bee80d55a`.
