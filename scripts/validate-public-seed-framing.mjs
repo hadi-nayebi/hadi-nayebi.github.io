@@ -35,6 +35,7 @@ const surfaces = new Map([
   ['seed-access.html', read('seed-access.html')],
   ['agents.html', read('agents.html')],
   ['explore.html', read('explore.html')],
+  ['blog/b5/explore/claude-md-hierarchy.html', read('blog/b5/explore/claude-md-hierarchy.html')],
   ['portfolio.html', read('portfolio.html')],
   ['projects/index.html', read('projects/index.html')],
   ['projects/seed-agent.html', read('projects/seed-agent.html')],
@@ -66,6 +67,8 @@ requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'Follow 
 requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, different accumulation surfaces');
 requireText('agents.html', surfaces.get('agents.html'), 'Seed Agent Project');
 requireText('explore.html', surfaces.get('explore.html'), 'Explore Seed Agent');
+requireText('blog/b5/explore/claude-md-hierarchy.html', surfaces.get('blog/b5/explore/claude-md-hierarchy.html'), 'In this historical Claude Seed, the chat window was temporary working context.');
+requireText('blog/b5/explore/claude-md-hierarchy.html', surfaces.get('blog/b5/explore/claude-md-hierarchy.html'), 'This Seed did not rely on one chat state for continuity');
 requireText('portfolio.html', surfaces.get('portfolio.html'), 'A deliberately sparse Codex-specific pattern-accumulation surface');
 requireText('projects/index.html', surfaces.get('projects/index.html'), 'Pattern accumulation');
 requireText('projects/seed-agent.html', surfaces.get('projects/seed-agent.html'), 'Codex pattern accumulation');
@@ -79,6 +82,8 @@ requireText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'Three s
 forbidText('js/story-visuals.js', surfaces.get('js/story-visuals.js'), 'agents-lineage-educational-v2.jpg');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Seed is reimplemented on Codex');
 forbidText('seed-access.html', surfaces.get('seed-access.html'), 'public Codex reimplementation');
+forbidText('blog/b5/explore/claude-md-hierarchy.html', surfaces.get('blog/b5/explore/claude-md-hierarchy.html'), 'A seed agent does not keep its memory in the chat window');
+forbidText('blog/b5/explore/claude-md-hierarchy.html', surfaces.get('blog/b5/explore/claude-md-hierarchy.html'), "Chat is the one place the seed's memory does not live");
 const retiredPhrases = [
   'Seed Agent and Q-Seed as CLI-centered harnesses',
   'Seed Agent carries that architecture into Codex',
