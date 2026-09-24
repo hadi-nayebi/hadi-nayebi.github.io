@@ -64,8 +64,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: responsive-layout-screenshots
-          path: |
-            artifacts/responsive-layout
-            artifacts/start-here-participation
+          path: artifacts/responsive-layout
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload focused Start Here participation screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: start-here-participation-screenshots
+          path: artifacts/start-here-participation
           if-no-files-found: error
           retention-days: 14
