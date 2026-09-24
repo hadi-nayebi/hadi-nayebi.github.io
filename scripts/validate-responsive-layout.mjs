@@ -34,10 +34,18 @@ for (const viewport of viewports) {
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, colorScheme: 'dark' });
   for (const route of routes) {
     const page = await context.newPage();
+    if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(150);
     await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
+
+    if (route.name === 'home') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      if (!heroCopy.startsWith('Your AI agent already has a system around it.')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved hero wording was replaced at runtime`);
+      }
+    }
 
     const issues = await page.evaluate(() => {
       const problems = [];
