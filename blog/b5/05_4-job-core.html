@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: v0.4.1 -->
+<!-- Version: v0.4.2 -->
 <html lang="en">
 
 <head>
@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Job Lifecycle — job_core — Hadosh Academy seed agent essay.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b5/images/always-on-digital-cortex-b5.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20260924-voice-contrast-1">
+    <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -118,7 +118,7 @@
 
                         <h2 id="what-it-owns">What it owns</h2>
 
-                        <p><code>job_core</code> exists to compartmentalize the seed agent&rsquo;s <em>work</em>. The unit of compartmentalization is the <em>job</em> &mdash; a container for everything the agent does between the moment a piece of work begins and the moment it is complete. Every prompt, every reasoning cycle, every action belongs to one. The plugin works by routing each user prompt into a job (creating a new one if none is focused, attaching as an interaction if one is) and by refusing to let the agent stop while any job remains active or pending. It applies on every prompt the user submits, every turn-end event the agent triggers, and every <code>[JOB-COMPLETE]</code> claim the agent makes. <sup class="ref-marker" title="ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.">&#9432;</sup></p>
+                        <p><code>job_core</code> gives the historical Seed one place to track an active piece of work. It creates a job when a prompt arrives with none focused; later prompts are added to the focused job as interactions. Prompts, reasoning cycles, and actions remain associated with that job until completion. The plugin runs on prompt and turn-end hooks and checks <code>[JOB-COMPLETE]</code> claims; it refuses a stop while any job is active or pending. <sup class="ref-marker" title="ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.">&#9432;</sup></p>
 
                         <h2 id="how-a-job-is-born">How a job is born</h2>
 
