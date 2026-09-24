@@ -2,7 +2,7 @@
 
 ## Status
 
-- **Version:** 0.9.0 draft
+- **Version:** 0.10.0 draft
 - **Date:** 2026-09-23
 - **Series:** Hadosh Through Mental Models
 - **Canonical source:** `blog/observations/hadosh-through-mental-models/03-circle-of-competence.md`
@@ -25,6 +25,8 @@ NIST’s AI Resource Center supplies a compatible testing, evaluation, verificat
 - **Circle of Competence:** assign the responsibility to bounded capability and define the exit.
 
 The third lens adds responsibility routing. It does not restate decomposition or corrigibility as its thesis.
+
+Hadi's Issue #164 correction sharpens the unit of learning: the circle is a proxy for who or what is responsible for each cognitive step. The harness can retain that assignment with outcomes, checks, and corrections, then expand, contract, or move the responsibility as experience accumulates. This makes improvement attributable instead of describing the whole agent as generically better or worse.
 
 ## Portfolio case tests
 
