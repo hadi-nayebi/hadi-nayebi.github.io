@@ -11,7 +11,7 @@ Point the agent you already use to this guide. The agent should combine four sou
 3. what you explain and correct during the conversation; and
 4. evidence you choose to inspect together.
 
-The result is a personalized guided conversation about your complete relationship with AI—not an audit of one isolated workflow.
+By the end, you should be able to point to the different work you do with AI, what carries over between sessions, and which parts of that setup you can inspect or move. If the agent cannot tell, that becomes the next question to investigate together.
 
 ![Chalkboard diagram with separate ladders for depth of AI use and harness ownership, leading to current fit, growth ceiling, and next experiment.](images/agentic-ai-use-doctor-v2.webp)
 
