@@ -92,6 +92,13 @@
       "path": "episodes/episode-09-when-knowledge-got-an-address.json",
       "title": "When Knowledge Got an Address",
       "published": "2026-09-16"
+    },
+    {
+      "number": 10,
+      "slug": "when-knowledge-learned-to-correct-itself",
+      "path": "episodes/episode-10-when-knowledge-learned-to-correct-itself.json",
+      "title": "When Knowledge Learned to Correct Itself",
+      "published": "2026-09-19"
     }
   ]
 }
