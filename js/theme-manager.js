@@ -58,7 +58,7 @@ const heroMessages = [
     {
         line1: 'Open Architecture,',
         line2: 'Real Experiments',
-        description: 'Follow public Seed pattern repositories and shared-cognition projects while the architecture is developed in the open.'
+        description: 'A public pattern should show what it does and what evidence supports it. Explore the Seed repositories and project experiments, then decide what belongs in your own harness.'
     },
     {
         line1: 'Your AI Can Change.',
