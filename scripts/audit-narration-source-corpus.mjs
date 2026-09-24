@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { artifactSha256, narrationSha256 } from './lib/observation-narration-hash.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const blogRoot = path.join(root, 'blog');
@@ -25,8 +26,12 @@ function loadReviewIndex() {
   for (const name of names) {
     const file = path.join(reviewRecordsDir, name);
     const record = JSON.parse(read(file));
-    if (record.schema_version !== 1 || typeof record.path !== 'string' || typeof record.review !== 'object' || record.review === null) {
+    if (![1, 2].includes(record.schema_version) || typeof record.path !== 'string' || typeof record.review !== 'object' || record.review === null) {
       throw new Error(`invalid narration review record: ${rel(file)}`);
+    }
+    if (record.schema_version === 2 &&
+        (typeof record.artifact_sha256 !== 'string' || typeof record.narration_sha256 !== 'string')) {
+      throw new Error(`invalid dual-hash narration review record: ${rel(file)}`);
     }
     if (essays[record.path]) throw new Error(`duplicate narration review record for ${record.path}`);
     essays[record.path] = record;
@@ -144,7 +149,9 @@ function inspectObservation() {
     const file = path.join(dir, entry.path);
     const episode = JSON.parse(read(file));
     const sourcePath = rel(file);
-    const sourceHash = sha256(read(file));
+    const source = read(file);
+    const sourceHash = artifactSha256(source);
+    const narrationHash = narrationSha256(episode);
     const issues = [];
     const recorded = reviewIndex.essays[sourcePath] || null;
     const pendingReview = {
@@ -157,11 +164,23 @@ function inspectObservation() {
     };
     let review = pendingReview;
     if (recorded) {
-      if (recorded.source_sha256 === sourceHash) {
+      const artifactMatches = recorded.schema_version === 2
+        ? recorded.artifact_sha256 === sourceHash
+        : recorded.source_sha256 === sourceHash;
+      const narrationMatches = recorded.schema_version === 2
+        ? recorded.narration_sha256 === narrationHash
+        : artifactMatches;
+      if (artifactMatches) {
         review = { ...pendingReview, ...recorded.review };
       } else {
         review = Object.fromEntries(Object.keys(pendingReview).map((gate) => [gate, 'stale']));
+        if (narrationMatches && recorded.review.hadi_content_lock) {
+          review.hadi_content_lock = recorded.review.hadi_content_lock;
+        }
         issues.push('stale-review-record');
+      }
+      if (!narrationMatches && ['approved', 'passed'].includes(recorded.review.hadi_content_lock)) {
+        issues.push('stale-narration-approval');
       }
     }
     const slides = episode.slides.map((slide) => {
@@ -182,7 +201,8 @@ function inspectObservation() {
       path: sourcePath,
       number: episode.number,
       title: episode.title,
-      source_sha256: sourceHash,
+      artifact_sha256: sourceHash,
+      narration_sha256: narrationHash,
       slides,
       review_record: recorded?.report || null,
       review,
