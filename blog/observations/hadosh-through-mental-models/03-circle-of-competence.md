@@ -2,7 +2,7 @@
 title: "Hadosh Academy Through Circle of Competence"
 slug: "circle-of-competence"
 date: "2026-09-23"
-version: "0.9.0"
+version: "0.10.0"
 description: "How a user-owned harness can route each responsibility to a bounded capability—and know when to verify, escalate, or stop."
 author: "Hadi Nayebi & Codex"
 og_image: "images/circle-of-competence-boundaries.jpg"
@@ -58,6 +58,16 @@ These circles are not identical, and none is universal.
 A domain model may supply a chemist’s perspective without receiving permission to publish a result. A decision model may return a typed judgment without owning the policy applied to it. A plugin may validate a schema without knowing whether the content is true. A harness may preserve a claim perfectly without making that claim correct.
 
 The value comes from the interfaces between the circles.
+
+## Responsibility Makes Learning Possible
+
+A circle of competence is also a map of responsibility. Every cognitive step needs an owner: a person, model, plugin, harness mechanism, or deterministic program responsible for producing that part of the work.
+
+Without that assignment, success and failure dissolve into “the agent did well” or “the agent failed.” The system cannot tell which part of its cognition should change.
+
+A user-owned harness can preserve the assignment together with the result, the conditions, the check, and any correction. Repeated work then creates usable evidence. The harness can compare whether the assigned circle is becoming more reliable, whether it needs another check, or whether the responsibility should move.
+
+Competence is therefore a proxy for responsibility, and responsibility gives improvement a target. The system can optimize one cognitive step from experience instead of treating the whole agent as one undifferentiated intelligence.
 
 ## A Boundary in Practice
 
@@ -145,6 +155,7 @@ Apply the lens to one real responsibility:
 4. Which check separates a useful proposal from an accepted result?
 5. What signal should trigger comparison, escalation, or abstention?
 6. Who retains authority over the final effect?
+7. What result and correction will return to the responsible circle so the next attempt can improve?
 
 A circle of competence is useful only if its boundary changes behavior.
 
