@@ -3,6 +3,10 @@ name: Responsive layout validation
 on:
   pull_request:
     paths:
+      - 'index.html'
+      - 'about.html'
+      - 'blog/b5/05_4-job-core.html'
+      - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -16,6 +20,10 @@ on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
+      - 'about.html'
+      - 'blog/b5/05_4-job-core.html'
+      - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
