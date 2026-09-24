@@ -43,7 +43,7 @@ const heroMessages = [
     {
         line1: 'Engineer Agents,',
         line2: 'Not Chatbots',
-        description: 'Build and understand user-owned harnesses that give LLMs persistent memory, jobs, behavior, and experience.'
+        description: 'Your AI agent already has a system around it. How much of that system can you see, change, and keep? Hadosh Academy helps you build a harness that grows around your work and stays under your control.'
     },
     {
         line1: 'Own the Harness,',
