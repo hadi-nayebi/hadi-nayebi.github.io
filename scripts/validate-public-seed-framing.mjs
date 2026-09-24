@@ -62,7 +62,8 @@ requireText('index.html', surfaces.get('index.html'), 'public Seed pattern repos
 requireText('about.html', surfaces.get('about.html'), 'The technical writings are the shared, framework-agnostic layer');
 requireText('support.html', surfaces.get('support.html'), 'accumulate framework-specific patterns');
 requireText('seed-access.html', surfaces.get('seed-access.html'), 'preserved as evidence, not as a product base or public release candidate');
-requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'Follow public Seed pattern repositories');
+requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'A public pattern should show what it does and what evidence supports it.');
+requireText('js/theme-manager.js', surfaces.get('js/theme-manager.js'), 'Explore the Seed repositories and project experiments');
 requireText('agents.html', surfaces.get('agents.html'), 'Shared principles, different accumulation surfaces');
 requireText('agents.html', surfaces.get('agents.html'), 'Seed Agent Project');
 requireText('explore.html', surfaces.get('explore.html'), 'Explore Seed Agent');
