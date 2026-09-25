@@ -41,9 +41,9 @@ function applyRandomTheme() {
 // Each refresh can tell the same mission from a different angle.
 const heroMessages = [
     {
-        line1: 'Engineer Agents,',
-        line2: 'Not Chatbots',
-        description: 'Build and understand user-owned harnesses that give LLMs persistent memory, jobs, behavior, and experience.'
+        line1: 'See the System.',
+        line2: 'Make It Yours.',
+        description: 'Your AI agent already has a system around it. How much of that system can you see, change, and keep? Hadosh Academy helps you build a harness that grows around your work and stays under your control.'
     },
     {
         line1: 'Own the Harness,',
@@ -53,12 +53,12 @@ const heroMessages = [
     {
         line1: 'Build a Digital Cortex',
         line2: 'You Can Inspect',
-        description: 'Learn how jobs, memory, plugins, phases, authority, and verification turn general models into durable agent systems.'
+        description: 'Where does a correction go after you make it? How does the agent know which work is still open, or when it must ask before acting? Build those answers into a harness you can inspect.'
     },
     {
         line1: 'Open Architecture,',
         line2: 'Real Experiments',
-        description: 'Follow public Seed pattern repositories and shared-cognition projects while the architecture is developed in the open.'
+        description: 'A public pattern should show what it does and what evidence supports it. Explore the Seed repositories and project experiments, then decide what belongs in your own harness.'
     },
     {
         line1: 'Your AI Can Change.',

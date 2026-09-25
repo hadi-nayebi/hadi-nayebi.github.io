@@ -6667,3 +6667,46 @@ body.lightbox-open {
 .page-start-here .vocab-card h3 {
     color: #e9ddff;
 }
+
+
+/* Shared copy-surface contrast gate: homepage cards, About essay numbers, and article navigation/content links. */
+.page-home .card-link,
+.page-home .badge:not(.badge-open-source) {
+    color: var(--accent-light);
+}
+
+.about-essay-number {
+    color: #e9ddff;
+    opacity: 1;
+}
+
+.article-meta-tags .tag,
+.blog-series-mobile-nav a,
+.article-body a,
+.article-comments a {
+    color: #e9ddff;
+}
+
+.article-meta-tags .tag {
+    border-color: #e9ddff;
+}
+
+.article-body a,
+.article-comments a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.article-body code {
+    color: #e9ddff;
+}
+
+.page-about .academy-pillar h3,
+.page-about .card-link {
+    color: #e9ddff;
+}
+
+/* Keep the Services invitation legible on the hero surface. */
+.page-services .services-hero-copy .badge {
+    color: #e9ddff;
+}

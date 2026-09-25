@@ -2,7 +2,7 @@
 
 *Practical Guide 3 — Build a low-barrier continuity layer that you can reach from your phone and use with ChatGPT, Codex, or another repository-connected agent.*
 
-If you already use an AI agent for work that matters, you may have felt the cost of beginning again: a new conversation does not know the current state, an important correction disappears into history, or a second agent cannot tell what the first one decided.
+Your agent may already remember parts of an ongoing project. Can you see what it kept, correct a decision, and let another agent continue from the same state? Choose one project where those answers matter.
 
 A private GitHub repository can become a simple operational home for that work. It gives your agent a place to read the accepted context, gives you a visible place to make requests, and gives both of you a reviewable path from an idea to an accepted change.
 
