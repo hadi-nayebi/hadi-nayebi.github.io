@@ -2289,6 +2289,18 @@ body.lightbox-open {
     text-decoration: underline;
 }
 
+.home-participation-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    padding: 0.35rem 0;
+}
+
+.page-home .card-link,
+.page-home .badge:not(.badge-open-source) {
+    color: var(--accent-light);
+}
+
 /* ============ About Page ============ */
 
 .academy-hero {
