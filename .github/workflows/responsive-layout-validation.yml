@@ -3,6 +3,14 @@ name: Responsive layout validation
 on:
   pull_request:
     paths:
+      - 'index.html'
+      - 'about.html'
+      - 'services.html'
+      - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
+      - 'js/theme-manager.js'
+      - 'blog/b5/05_4-job-core.html'
+      - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
+      - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -18,6 +26,14 @@ on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
+      - 'about.html'
+      - 'services.html'
+      - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
+      - 'js/theme-manager.js'
+      - 'blog/b5/05_4-job-core.html'
+      - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
+      - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -73,5 +89,78 @@ jobs:
         with:
           name: start-here-participation-screenshots
           path: artifacts/start-here-participation
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload changed-page screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-home
+          path: artifacts/responsive-layout/home-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload About screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-about
+          path: artifacts/responsive-layout/about-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Start Here screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-start-here
+          path: artifacts/responsive-layout/start-here-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Essay 5.4 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-job-core
+          path: artifacts/responsive-layout/job-core-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Lens 2 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-map-territory
+          path: artifacts/responsive-layout/map-territory-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload principle essay screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-ai-that-grows
+          path: artifacts/responsive-layout/ai-that-grows-with-you-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Guide 2 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-ai-use-map
+          path: artifacts/responsive-layout/ai-use-map-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Services screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-services
+          path: artifacts/responsive-layout/services-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Guide 3 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-review-private-github-home
+          path: artifacts/responsive-layout/private-github-home-*.png
           if-no-files-found: error
           retention-days: 14
