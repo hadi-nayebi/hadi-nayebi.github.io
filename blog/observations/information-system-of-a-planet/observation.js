@@ -140,7 +140,7 @@
                 </div>
                 <button type="button" class="slide-next" ${index === episode.slides.length - 1 ? 'disabled' : ''}>Next →</button>
                 <div class="episode-navigation">
-                    <a href="/blog.html">All writings</a>
+                    <a href="/content.html">All content</a>
                     <button type="button" class="episode-prev" ${episodes.indexOf(episode) === 0 ? 'disabled' : ''}>Previous episode</button>
                     <label>Episode <select class="episode-select" aria-label="Choose episode">${episodes.map((item) => `<option value="${item.number}" ${item.number === episode.number ? 'selected' : ''}>${item.number}</option>`).join('')}</select></label>
                     <button type="button" class="episode-next" ${episodes.indexOf(episode) === episodes.length - 1 ? 'disabled' : ''}>Next episode</button>
