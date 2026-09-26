@@ -6,7 +6,20 @@ import AxeBuilder from '@axe-core/playwright';
 const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
+  { name: 'home', path: '/index.html', kind: 'copy' },
+  { name: 'home-open-architecture', path: '/index.html', kind: 'copy' },
+  { name: 'home-digital-cortex', path: '/index.html', kind: 'copy' },
+  { name: 'about', path: '/about.html', kind: 'copy' },
+  { name: 'content', path: '/content.html', kind: 'copy' },
+  { name: 'diagrams', path: '/explore.html', kind: 'copy' },
+  { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
+  { name: 'start-here', path: '/start-here.html', kind: 'start' },
+  { name: 'job-core', path: '/blog/b5/05_4-job-core.html', kind: 'copy' },
+  { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
+  { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
+  { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
+  { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
@@ -28,10 +41,35 @@ for (const viewport of viewports) {
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, colorScheme: 'dark' });
   for (const route of routes) {
     const page = await context.newPage();
+    if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
+    if (route.name === 'home-open-architecture') await page.addInitScript(() => { Math.random = () => 0.28; });
+    if (route.name === 'home-digital-cortex') await page.addInitScript(() => { Math.random = () => 0.2; });
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(150);
     await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
+
+    if (route.name === 'home') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      const heroHeading = await page.locator('.central-circle-content h1').innerText();
+      if (!heroHeading.includes('See the System.') || !heroHeading.includes('Make It Yours.')) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved homepage heading was replaced at runtime`);
+      if (!heroCopy.startsWith('Your AI agent already has a system around it.')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved hero wording was replaced at runtime`);
+      }
+    }
+    if (route.name === 'home-open-architecture') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      if (!heroCopy.startsWith('A public pattern should show what it does')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Open Architecture wording was replaced at runtime`);
+      }
+    }
+
+    if (route.name === 'home-digital-cortex') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      if (!heroCopy.startsWith('Where does a correction go after you make it?')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Digital Cortex wording was replaced at runtime`);
+      }
+    }
 
     const issues = await page.evaluate(() => {
       const problems = [];
@@ -150,6 +188,34 @@ for (const viewport of viewports) {
       if (cloudTerms !== library.terms.length) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected ${library.terms.length} direct term links, found ${cloudTerms}`);
       const excessControls = await page.locator('#term-search, .filter-button, .term-card, .cloud-legend, .maturation-flow, .agent-handoff').count();
       if (excessControls) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: removed search, filters, directory cards, legends, or workflow panels returned`);
+    }
+
+    if (route.kind === 'start') {
+      const cards = await page.locator('#practical-guides a').evaluateAll(elements =>
+        elements.map(element => {
+          const rect = element.getBoundingClientRect();
+          return { href: element.getAttribute('href'), left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+        })
+      );
+      const expected = [
+        'blog/practical-guides/02-audit-ai-harness-portability.html',
+        'blog/practical-guides/01-build-your-own-space-on-the-web.html',
+        'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
+      ];
+      if (cards.length !== 3 || cards.some((card, index) => card.href !== expected[index])) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: practical-guide chooser does not contain three correct destinations`);
+      }
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].left < -1 || cards[i].right > viewport.width + 1) {
+          failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: guide card ${i + 1} leaves viewport`);
+        }
+        for (let j = i + 1; j < cards.length; j++) {
+          if (Math.min(cards[i].right, cards[j].right) - Math.max(cards[i].left, cards[j].left) > 1 &&
+              Math.min(cards[i].bottom, cards[j].bottom) - Math.max(cards[i].top, cards[j].top) > 1) {
+            failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: practical-guide cards overlap`);
+          }
+        }
+      }
     }
 
     if (route.kind === 'term') {
