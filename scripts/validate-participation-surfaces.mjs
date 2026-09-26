@@ -33,7 +33,7 @@ if (data.trustedSource?.path !== 'data/participation-surfaces.json') errors.push
 if (!Array.isArray(data.records) || data.records.length < 4) errors.push('expected at least four participation records');
 
 const ids = new Set();
-const required = ['schema_version', 'surface_id', 'surface_kind', 'canonical_url', 'destination', 'accepted_returns', 'required_fields', 'privacy_profile', 'authority_profile', 'maturation_path', 'owner', 'verification', 'record_digest'];
+const required = ['schema_version', 'surface_id', 'surface_kind', 'canonical_url', 'visibility', 'privacy_route', 'destination', 'accepted_returns', 'required_fields', 'privacy_profile', 'authority_profile', 'maturation_path', 'owner', 'verification', 'record_digest'];
 const forbiddenAuthority = /auto(?:matic)?[-_ ]?(?:post|submit|approve)|standing[-_ ]?permission/i;
 
 for (const record of data.records ?? []) {
@@ -44,6 +44,9 @@ for (const record of data.records ?? []) {
   if (record.record_digest !== digest(record)) errors.push(`${record.surface_id}: record digest mismatch`);
   if (forbiddenAuthority.test(JSON.stringify(record))) errors.push(`${record.surface_id}: metadata must not grant posting authority`);
   if (!['verified', 'unverified', 'stale'].includes(record.verification?.status)) errors.push(`${record.surface_id}: invalid verification status`);
+  if (!['public', 'private'].includes(record.visibility)) errors.push(`${record.surface_id}: invalid visibility`);
+  if (!['public', 'private'].includes(record.privacy_route)) errors.push(`${record.surface_id}: invalid privacy route`);
+  if (record.visibility !== record.privacy_route) errors.push(`${record.surface_id}: visibility/privacy route mismatch`);
 
   if (record.verification?.status !== 'verified') {
     if (record.destination?.route) errors.push(`${record.surface_id}: unverified destination must not expose an actionable route`);
@@ -52,6 +55,18 @@ for (const record of data.records ?? []) {
 
   if (!record.source_path || !record.verification.checked_at || !record.verification.evidence_ref) {
     errors.push(`${record.surface_id}: verified record lacks evidence`);
+    continue;
+  }
+
+  const validFrom = Date.parse(record.verification.valid_from);
+  const expiresAt = Date.parse(record.verification.expires_at);
+  const now = Date.now();
+  if (![validFrom, expiresAt].every(Number.isFinite) || validFrom >= expiresAt) {
+    errors.push(`${record.surface_id}: invalid verification window`);
+    continue;
+  }
+  if (now < validFrom || now >= expiresAt) {
+    errors.push(`${record.surface_id}: verification window is not current`);
     continue;
   }
 
