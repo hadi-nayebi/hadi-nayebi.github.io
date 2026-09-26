@@ -176,3 +176,28 @@ Verified on website PR #164 at head `ecd0f1c29dbb6d3c344a6cc17aed2392d5b4c49c`:
 - Final diff whitespace check against `main`: passed
 
 The responsive workflow and screenshot artifact are part of this PR so later guide changes can repeat the same checks. The merge and publication decision remains Hadi's.
+
+
+## Pass 6 — platform Project and repository-system correction
+
+**Source correction:** Hadi asked whether the guide actually creates a Project in ChatGPT or Claude and supplies project instructions that orient the agent across a private jobs/context repository plus one or more work repositories. The merged guide connected an agent to a repository but did not make this agent-side Project layer explicit.
+
+**Evidence checked on 2026-09-23:**
+
+- OpenAI documents that ChatGPT Projects keep related chats, files, and project instructions together; project instructions apply within that Project; connected apps can be used in project chats.
+- Anthropic documents that Claude Projects provide self-contained workspaces with chat histories and knowledge bases, support project instructions, and are rolling out a newer form in which threads can start with files, repositories, instructions, and memory.
+- Neither product name proves access to a particular GitHub repository. Every named repository still requires an observed direct-access test.
+
+**Material revision:**
+
+1. Added a ChatGPT/Claude Project to the promised outcome and shortest route.
+2. Added one explicit agent-side project-home section under the connection phase.
+3. Distinguished a private jobs/context repository from one or more work repositories.
+4. Added a reusable project-instruction block that tells the agent which entry context to read first, requires local `AGENTS.md` discovery, separates coordination context from deliverables, and protects cross-repository privacy and authority.
+5. Required capability verification per repository; access to one repository cannot stand in for access to another.
+6. Added fallbacks for unavailable Projects, connectors that cannot span the required repositories, and bounded manual transfer.
+7. Updated the copyable guided-conversation instruction and completion check.
+
+**Architectural result:** the platform Project is the stable conversational doorway; reviewed GitHub files remain the accepted durable context. This gives the user's customization context more inspectable places to grow without mislabeling platform memory as the owned repository body.
+
+**Protected boundary:** the correction changes public guide copy only. It does not authorize repository access, project creation on a user's behalf, permission expansion, cross-repository copying, merge, publication, or external contact.
