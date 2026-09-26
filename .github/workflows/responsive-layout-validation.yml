@@ -1,4 +1,5 @@
 name: Responsive layout validation
+# What’s New remains inside current-main responsive coverage.
 
 on:
   pull_request:
