@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hadosh Academy Blog</title>
-    <link>https://hadi-nayebi.github.io/blog.html</link>
-    <description>Principles, technical architecture, observations, and practical guides for building useful, user-owned systems.</description>
+    <title>Hadosh Academy Content</title>
+    <link>https://hadi-nayebi.github.io/content.html</link>
+    <description>Practical guides, principles, observations, agent architecture, and interactive diagrams for building user-owned systems.</description>
     <language>en-us</language>
     <lastBuildDate>Wed, 23 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>

@@ -50,8 +50,9 @@ blog-facing subset (compact glosses + banned aliases + a Phase-C sweep list) is 
 ### Pages (top-level)
 | File | Purpose |
 |------|---------|
-| `index.html` | Landing — hero with orbit wheel + 3 cards (Blog / Agents / Community) |
-| `blog.html` | Blog index — 7 essays, sidebar mirrors index |
+| `index.html` | Landing — hero with orbit wheel and routes into Content, Agents, and the rest of the Academy. |
+| `content.html` | Content collection — Practical Guides, Principles & Perspectives, Observations, Agent Architecture, and Diagrams & Explorables. |
+| `blog.html` | Legacy noindex redirect to `content.html`; preserve incoming links, queries, and anchors. |
 | `agents.html` | Three-lineage implementation router — private Claude reference, public Codex Seed Agent, and public Q-Seed/Qwen framework path. |
 | `seed-agent.html` | Compatibility redirect to the canonical `projects/seed-agent.html` Codex Seed page. |
 | `q-seed.html` | Compatibility redirect to the canonical `projects/q-seed.html` Q-Seed page. |
@@ -229,15 +230,15 @@ Every **new indexable page** MUST have in `<head>`:
 
 **Utility pages** (404, thanks, etc.): `<meta name="robots" content="noindex, nofollow">`; do NOT add to sitemap.
 
-**RSS link** — add to `index.html`, `blog.html`, and all blog posts:
-`<link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">`
+**RSS link** — add to `index.html`, `content.html`, and all published writings:
+`<link rel="alternate" type="application/rss+xml" title="Hadosh Academy Content" href="/feed.xml">`
 
 **Default og:image:** `https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png`
 **Base URL:** `https://hadi-nayebi.github.io/` (no trailing-slash inconsistencies)
 
 **Sidebar sync rule:** When a new blog post is published, ALL blog post sidebars must list every post
 (reading order — essay 1 first … 8.9 last, current post marked `active`). The generator's
-`SIDEBAR_POSTS` array is the source of truth for this order and is mirrored by `blog.html`, `feed.xml`,
+`SIDEBAR_POSTS` array is the source of truth for this order and is mirrored by `content.html`, `feed.xml`,
 and `sitemap.xml`.
 ---Ob---
 
