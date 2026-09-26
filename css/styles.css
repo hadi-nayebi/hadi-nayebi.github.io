@@ -1639,6 +1639,7 @@ body:has(.blog-layout) .container {
 .article-meta-tags {
     margin-left: auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -6732,4 +6733,13 @@ body.lightbox-open {
 /* Keep the Services invitation legible on the hero surface. */
 .page-services .services-hero-copy .badge {
     color: #e9ddff;
+}
+
+
+@media (max-width: 768px) {
+    .article-meta-tags {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
 }
