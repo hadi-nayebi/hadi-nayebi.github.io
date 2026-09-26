@@ -183,6 +183,37 @@ for (const viewport of viewports) {
       return [...new Set(problems)];
     });
 
+    if (route.name === 'home') {
+      const communityCard = page.locator('.card').filter({ has: page.getByRole('heading', { name: 'Join the Conversation', exact: true }) });
+      const cardCount = await communityCard.count();
+      if (cardCount !== 1) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected one Join the Conversation card, found ${cardCount}`);
+      } else {
+        const link = communityCard.getByRole('link', { name: 'Choose how to participate →', exact: true });
+        if (await link.count() !== 1) {
+          failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: participation CTA is missing or duplicated`);
+        } else {
+          const href = await link.getAttribute('href');
+          if (href !== 'start-here.html#community-return') {
+            failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: participation CTA points to ${href}`);
+          }
+        }
+        const cardIssues = await communityCard.evaluate(card => {
+          const problems = [];
+          const rect = card.getBoundingClientRect();
+          if (rect.left < -1 || rect.right > window.innerWidth + 1) {
+            problems.push(`community card leaves viewport: ${rect.left}px..${rect.right}px`);
+          }
+          const link = card.querySelector('a');
+          if (link && link.getBoundingClientRect().height < 44) {
+            problems.push(`community CTA has a ${link.getBoundingClientRect().height}px touch target`);
+          }
+          return problems;
+        });
+        cardIssues.forEach(problem => failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: ${problem}`));
+      }
+    }
+
     if (route.kind === 'library') {
       const cloudTerms = await page.locator('.cloud-term').count();
       if (cloudTerms !== library.terms.length) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected ${library.terms.length} direct term links, found ${cloudTerms}`);
@@ -243,6 +274,14 @@ for (const viewport of viewports) {
           path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}-fold.png`),
           fullPage: false
         });
+        if (route.name === 'home') {
+          const communityCard = page.locator('.card').filter({ has: page.getByRole('heading', { name: 'Join the Conversation', exact: true }) });
+          if (await communityCard.count() === 1) {
+            await communityCard.screenshot({
+              path: path.join(artifactDir, `homepage-community-${viewport.width}x${viewport.height}.png`)
+            });
+          }
+        }
         if (route.kind === 'library') {
           await page.locator('.abstraction-cloud').screenshot({
             path: path.join(artifactDir, `library-cloud-${viewport.width}x${viewport.height}.png`)

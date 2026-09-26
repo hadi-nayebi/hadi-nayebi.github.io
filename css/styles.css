@@ -2302,6 +2302,18 @@ body.lightbox-open {
     text-decoration: underline;
 }
 
+.home-participation-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    padding: 0.35rem 0;
+}
+
+.page-home .card-link,
+.page-home .badge:not(.badge-open-source) {
+    color: var(--accent-light);
+}
+
 /* ============ About Page ============ */
 
 .academy-hero {
@@ -6715,8 +6727,15 @@ body.lightbox-open {
 }
 
 .page-about .academy-pillar h3,
-.page-about .card-link {
+.page-about .card-link,
+.page-about .about-content > .badge,
+.page-about .bio-heading {
     color: #e9ddff;
+}
+
+.page-about .profession-tags .tag {
+    color: #e9ddff;
+    border-color: #a78bfa;
 }
 
 /* Keep the Services invitation legible on the hero surface. */
