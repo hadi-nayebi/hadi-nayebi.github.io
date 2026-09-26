@@ -1749,6 +1749,10 @@ body:has(.blog-layout) .container {
     border-color: var(--accent, #8b5cf6);
 }
 
+.page-about .profession-tags .tag {
+    color: #c4b5fd;
+}
+
 .article-body ul {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
@@ -2253,6 +2257,15 @@ body.lightbox-open {
     color: var(--primary);
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+/* The collection's small text stays legible across every random accent theme. */
+.blog-layout .blog-category-link span,
+.blog-layout .blog-category-heading > span,
+.blog-layout .tag,
+.blog-layout .blog-card-read-more,
+.blog-layout .start-here-hint a {
+    color: #c4b5fd;
 }
 
 .article-card-link {
