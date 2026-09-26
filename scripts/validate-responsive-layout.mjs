@@ -17,6 +17,7 @@ const routes = [
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
   { name: 'job-core', path: '/blog/b5/05_4-job-core.html', kind: 'copy' },
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
+  { name: 'circle-of-competence', path: '/blog/observations/hadosh-through-mental-models/03-circle-of-competence.html', kind: 'story' },
   { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
