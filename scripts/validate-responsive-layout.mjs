@@ -19,6 +19,7 @@ const routes = [
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
   { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
+  { name: 'claude-md-hierarchy', path: '/blog/b5/explore/claude-md-hierarchy.html', kind: 'explorable' },
   { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
@@ -182,6 +183,30 @@ for (const viewport of viewports) {
 
       return [...new Set(problems)];
     });
+
+    if (route.kind === 'explorable') {
+      const orientation = await page.locator('.orient.is-open').count();
+      if (orientation !== 1) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation overlay is not open on first load`);
+      const framing = await page.locator('.orient__lead, .orient__thesis').evaluateAll(elements => elements.map(element => element.textContent.trim()));
+      if (framing.length !== 2 || !framing[0].startsWith('In this historical Claude Seed') || !framing[1].startsWith('This Seed did not rely on one chat state')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: capability-location framing drifted`);
+      }
+      const card = await page.locator('.orient__card').evaluate(element => {
+        const rect = element.getBoundingClientRect();
+        const title = element.querySelector('#orient-title').getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, scrollHeight: element.scrollHeight, clientHeight: element.clientHeight, scrollTop: element.scrollTop, titleTop: title.top, titleBottom: title.bottom };
+      });
+      if (card.left < -1 || card.right > viewport.width + 1 || card.top < -1 || card.bottom > viewport.height + 1) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation card leaves viewport`);
+      }
+      if (card.scrollTop > 1 || card.titleTop < card.top || card.titleBottom > card.bottom) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: first-load orientation does not begin at its visible heading`);
+      }
+      if (card.scrollHeight > card.clientHeight + 2) {
+        const overflowY = await page.locator('.orient__card').evaluate(element => getComputedStyle(element).overflowY);
+        if (!['auto', 'scroll'].includes(overflowY)) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: orientation content clips without scrolling`);
+      }
+    }
 
     if (route.kind === 'library') {
       const cloudTerms = await page.locator('.cloud-term').count();

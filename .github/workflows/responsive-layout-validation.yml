@@ -15,6 +15,7 @@ on:
       - 'agents/**'
       - 'start-here.html'
       - 'blog/practical-guides/02-audit-ai-harness-portability.html'
+      - 'blog/b5/explore/claude-md-hierarchy.html'
       - 'css/**'
       - 'data/abstraction-library.json'
       - 'js/components.js'
@@ -36,6 +37,7 @@ on:
       - 'agents/**'
       - 'start-here.html'
       - 'blog/practical-guides/02-audit-ai-harness-portability.html'
+      - 'blog/b5/explore/claude-md-hierarchy.html'
       - 'css/**'
       - 'data/abstraction-library.json'
       - 'js/components.js'
@@ -75,6 +77,14 @@ jobs:
         with:
           name: responsive-layout-screenshots
           path: artifacts/responsive-layout
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload CLAUDE.md explorable screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-md-hierarchy-responsive-screenshots
+          path: artifacts/responsive-layout/claude-md-hierarchy-*.png
           if-no-files-found: error
           retention-days: 14
       - name: Upload Content screenshots separately

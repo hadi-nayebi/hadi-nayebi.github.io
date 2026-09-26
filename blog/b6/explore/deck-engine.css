@@ -627,7 +627,7 @@
 
         /* ============================ ORIENTATION OVERLAY ============================ */
         .orient {
-            position: fixed; inset: 0; z-index: 4000;
+            position: fixed; inset: 0; z-index: 4300;
             display: none; align-items: center; justify-content: center; padding: 1.5rem;
             background: rgba(3,3,6,0.7); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
         }
@@ -639,6 +639,7 @@
         }
         .orient__kicker { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; }
         .orient__card h2 { margin: 0 0 0.9rem; font-size: 1.5rem; line-height: 1.15; }
+        .orient__card h2:focus { outline: none; }
         .orient__lead { font-size: 0.95rem; line-height: 1.55; color: var(--text-main); margin: 0 0 1.2rem; }
         .orient__lead b { color: #efeaff; }
         .orient__keys { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.9rem; margin: 0 0 1.3rem; align-items: center; }

@@ -770,7 +770,7 @@
      * hover, not as static text). Driven by the transparent .edge-hit paths.
      * ====================================================================== */
     var edgetip = document.createElement('div');
-    edgetip.className = 'edgetip'; edgetip.setAttribute('role', 'tooltip');
+    edgetip.className = 'edgetip'; edgetip.setAttribute('role', 'tooltip'); edgetip.setAttribute('aria-hidden', 'true');
     document.body.appendChild(edgetip);
     function posEdgetip(ev) {
         var pad = 12, w = edgetip.offsetWidth, h = edgetip.offsetHeight;
@@ -783,11 +783,12 @@
     function showEdgetip(hit, ev) {
         var lab = hit.getAttribute('data-elabel') || '', mean = hit.getAttribute('data-emean') || '';
         edgetip.innerHTML = '<b>' + esc(lab) + '</b>' + (mean ? '<br>' + esc(mean) : '');
+        edgetip.setAttribute('aria-hidden', 'false');
         edgetip.classList.add('is-on'); posEdgetip(ev);
     }
     grid.addEventListener('mouseover', function (e) { var h = e.target.closest && e.target.closest('.edge-hit'); if (h) showEdgetip(h, e); });
     grid.addEventListener('mousemove', function (e) { if (edgetip.classList.contains('is-on') && e.target.closest('.edge-hit')) posEdgetip(e); });
-    grid.addEventListener('mouseout',  function (e) { if (e.target.closest && e.target.closest('.edge-hit')) edgetip.classList.remove('is-on'); });
+    grid.addEventListener('mouseout',  function (e) { if (e.target.closest && e.target.closest('.edge-hit')) { edgetip.classList.remove('is-on'); edgetip.setAttribute('aria-hidden', 'true'); } });
 
     /* ========================================================================
      * DRAGGABLE STICKY NOTES — the reader can reposition any note; the new
@@ -905,11 +906,15 @@
      * ORIENTATION overlay
      * ====================================================================== */
     var orient = document.getElementById('orient');
+    var orientCard = orient.querySelector('.orient__card');
+    var orientTitle = document.getElementById('orient-title');
+    orientTitle.setAttribute('tabindex', '-1');
     var orientLastFocus = null;
     function openOrient() {
         orientLastFocus = document.activeElement;
         orient.classList.add('is-open');
-        document.getElementById('orient-go').focus();
+        try { orientTitle.focus({ preventScroll: true }); } catch (e) { orientTitle.focus(); }
+        orientCard.scrollTop = 0;
     }
     function closeOrient() {
         orient.classList.remove('is-open');
@@ -920,7 +925,7 @@
     orient.addEventListener('click', function (e) { if (e.target === orient) closeOrient(); });
     orient.addEventListener('keydown', function (e) {
         if (e.key !== 'Tab') return;
-        var f = orient.querySelectorAll('button');
+        var f = orient.querySelectorAll('[tabindex="-1"], button');
         if (!f.length) return;
         var first = f[0], last = f[f.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
