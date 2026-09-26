@@ -14,7 +14,11 @@
       "surface_kind": "canonical-term",
       "canonical_url": "https://hadi-nayebi.github.io/agents/abstractions/terms/large-language-model.html",
       "source_path": "agents/abstractions/terms/large-language-model.html",
-      "source_markers": ["term-discussion", "explicit approval", "CONTRIBUTING.md"],
+      "source_markers": [
+        "term-discussion",
+        "explicit approval",
+        "CONTRIBUTING.md"
+      ],
       "destination": {
         "kind": "giscus-discussion",
         "repository": "hadi-nayebi/hadi-nayebi.github.io",
@@ -23,19 +27,37 @@
         "category_id": "DIC_kwDOHL_tnc4C3cRQ",
         "mapping": "pathname"
       },
-      "accepted_returns": ["open-question-answer", "ambiguity", "proposed-wording"],
-      "required_fields": ["target-question-or-passage", "observation", "proposal", "rationale", "uncertainty", "privacy-review"],
+      "accepted_returns": [
+        "open-question-answer",
+        "ambiguity",
+        "proposed-wording"
+      ],
+      "required_fields": [
+        "target-question-or-passage",
+        "observation",
+        "proposal",
+        "rationale",
+        "uncertainty",
+        "privacy-review"
+      ],
       "privacy_profile": "academy-public-concept",
       "authority_profile": "exact-public-message-and-destination",
-      "maturation_path": ["discussion", "reviewed-definition-change"],
+      "maturation_path": [
+        "discussion",
+        "reviewed-definition-change"
+      ],
       "owner": "hadi-nayebi/hadi-nayebi.github.io",
       "verification": {
         "status": "verified",
         "checked_at": "2026-09-23",
         "evidence_ref": "agents/abstractions/terms/large-language-model.html",
-        "owner": "hadi-nayebi/hadi-nayebi.github.io"
+        "owner": "hadi-nayebi/hadi-nayebi.github.io",
+        "valid_from": "2026-09-23T00:00:00Z",
+        "expires_at": "2027-09-23T00:00:00Z"
       },
-      "record_digest": "1f19c4db063b276ff5340a26878864af6997d255b44eea77a743b8fb68634dec"
+      "record_digest": "484d7ccb64b0d1c413000949f60189471ab21f374068ff689fe5088e11e4fc22",
+      "visibility": "public",
+      "privacy_route": "public"
     },
     {
       "schema_version": "hadosh-participation/v0.1",
@@ -43,7 +65,11 @@
       "surface_kind": "technical-writing",
       "canonical_url": "https://hadi-nayebi.github.io/blog/b8/08_9-the-seed-is-yours.html",
       "source_path": "blog/b8/08_9-the-seed-is-yours.html",
-      "source_markers": ["data-community-guidance", "explicit approval", "CONTRIBUTING.md"],
+      "source_markers": [
+        "data-community-guidance",
+        "explicit approval",
+        "CONTRIBUTING.md"
+      ],
       "destination": {
         "kind": "giscus-discussion",
         "repository": "hadi-nayebi/hadi-nayebi.github.io",
@@ -52,19 +78,40 @@
         "category_id": "DIC_kwDOHL_tnc4C3cRQ",
         "mapping": "pathname"
       },
-      "accepted_returns": ["question", "correction", "critique", "field-report"],
-      "required_fields": ["target-claim", "observed-context", "direct-observation", "interpretation", "generalizable-lesson", "maturity-and-limits", "privacy-review"],
+      "accepted_returns": [
+        "question",
+        "correction",
+        "critique",
+        "field-report"
+      ],
+      "required_fields": [
+        "target-claim",
+        "observed-context",
+        "direct-observation",
+        "interpretation",
+        "generalizable-lesson",
+        "maturity-and-limits",
+        "privacy-review"
+      ],
       "privacy_profile": "academy-public-field-report",
       "authority_profile": "exact-public-message-and-destination",
-      "maturation_path": ["discussion", "accepted-issue", "reviewed-article-change"],
+      "maturation_path": [
+        "discussion",
+        "accepted-issue",
+        "reviewed-article-change"
+      ],
       "owner": "hadi-nayebi/hadi-nayebi.github.io",
       "verification": {
         "status": "verified",
         "checked_at": "2026-09-23",
         "evidence_ref": "blog/b8/08_9-the-seed-is-yours.html",
-        "owner": "hadi-nayebi/hadi-nayebi.github.io"
+        "owner": "hadi-nayebi/hadi-nayebi.github.io",
+        "valid_from": "2026-09-23T00:00:00Z",
+        "expires_at": "2027-09-23T00:00:00Z"
       },
-      "record_digest": "7491f25dd62c2e58e47c9b1cf7aa8571f7ddf647e7accd0305a732bbb6b9877b"
+      "record_digest": "d21e596bbb26a65f926b3c2716f54d89c184fe47e44fabd79c3828c607f601a3",
+      "visibility": "public",
+      "privacy_route": "public"
     },
     {
       "schema_version": "hadosh-participation/v0.1",
@@ -72,7 +119,11 @@
       "surface_kind": "project",
       "canonical_url": "https://hadi-nayebi.github.io/projects/q-seed.html",
       "source_path": "projects/q-seed.html",
-      "source_markers": ["data-community-guidance", "explicit approval", "CONTRIBUTING.md"],
+      "source_markers": [
+        "data-community-guidance",
+        "explicit approval",
+        "CONTRIBUTING.md"
+      ],
       "destination": {
         "kind": "giscus-discussion",
         "repository": "hadi-nayebi/hadi-nayebi.github.io",
@@ -81,19 +132,36 @@
         "category_id": "DIC_kwDOHL_tnc4C3cRQ",
         "mapping": "pathname"
       },
-      "accepted_returns": ["architecture-question", "runtime-boundary-idea", "collaboration-note"],
-      "required_fields": ["project-area", "contribution", "expected-benefit", "uncertainty", "privacy-review"],
+      "accepted_returns": [
+        "architecture-question",
+        "runtime-boundary-idea",
+        "collaboration-note"
+      ],
+      "required_fields": [
+        "project-area",
+        "contribution",
+        "expected-benefit",
+        "uncertainty",
+        "privacy-review"
+      ],
       "privacy_profile": "academy-public-project",
       "authority_profile": "exact-public-message-and-destination",
-      "maturation_path": ["project-discussion", "owning-repository-investigation"],
+      "maturation_path": [
+        "project-discussion",
+        "owning-repository-investigation"
+      ],
       "owner": "hadi-nayebi/hadi-nayebi.github.io",
       "verification": {
         "status": "verified",
         "checked_at": "2026-09-23",
         "evidence_ref": "projects/q-seed.html",
-        "owner": "hadi-nayebi/hadi-nayebi.github.io"
+        "owner": "hadi-nayebi/hadi-nayebi.github.io",
+        "valid_from": "2026-09-23T00:00:00Z",
+        "expires_at": "2027-09-23T00:00:00Z"
       },
-      "record_digest": "65e651e7cc445bee6d500c85a1f6cec351f7938ff763f4dfbbb1e7704eba8649"
+      "record_digest": "b05d5487f832437a7697cd86b1fdedad7385ca140e6ed35d4ffdcc0557365225",
+      "visibility": "public",
+      "privacy_route": "public"
     },
     {
       "schema_version": "hadosh-participation/v0.1",
@@ -107,19 +175,38 @@
         "repository": "hadi-nayebi/q-seed",
         "route": null
       },
-      "accepted_returns": ["reproducible-bug", "tested-candidate-solution", "security-report"],
-      "required_fields": ["runtime-and-version", "observed-behavior", "expected-behavior", "reproduction-or-evidence", "scope", "privacy-review"],
+      "accepted_returns": [
+        "reproducible-bug",
+        "tested-candidate-solution",
+        "security-report"
+      ],
+      "required_fields": [
+        "runtime-and-version",
+        "observed-behavior",
+        "expected-behavior",
+        "reproduction-or-evidence",
+        "scope",
+        "privacy-review"
+      ],
       "privacy_profile": "academy-public-implementation",
       "authority_profile": "exact-action-content-and-destination",
-      "maturation_path": ["issue", "focused-pull-request", "private-security-report"],
+      "maturation_path": [
+        "issue",
+        "focused-pull-request",
+        "private-security-report"
+      ],
       "owner": "hadi-nayebi/q-seed",
       "verification": {
         "status": "unverified",
         "checked_at": null,
         "evidence_ref": null,
-        "owner": "hadi-nayebi/q-seed"
+        "owner": "hadi-nayebi/q-seed",
+        "valid_from": null,
+        "expires_at": null
       },
-      "record_digest": "e3493545a9fd5421cb043ee9922d55b622722f592d025f113e72112b84f2c83a"
+      "record_digest": "0699f44ccb4d6a52daf786ed73115324db47403f27ce6abe4d1780890976d4ed",
+      "visibility": "public",
+      "privacy_route": "public"
     }
   ]
 }
