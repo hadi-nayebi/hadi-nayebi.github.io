@@ -4,7 +4,7 @@
 
 **Engineer agents, not chatbots. Build externalized agency that belongs to the user.**
 
-[Hadosh Academy](https://hadi-nayebi.github.io/) is an open technical-education and project library for user-owned AI harnesses: the persistent memory, jobs, rules, tools, workflows, permissions, interfaces, verification, and accumulated experience that turn a general model into a system shaped around a person or team.
+[Hadosh Academy](https://hadi-nayebi.github.io/) is an open learning and project library for user-owned AI harnesses: the persistent memory, jobs, rules, tools, workflows, permissions, interfaces, verification, and accumulated experience that turn a general model into a system shaped around a person or team.
 
 The model supplies general probabilistic intelligence. The harness supplies the durable operational structure. When that structure remains inspectable, recoverable, and portable, it can become an extension of the user's agency rather than personalization trapped inside one model provider, chat interface, or employer platform.
 
@@ -40,9 +40,9 @@ Hadosh Academy advances a particular direction for the emerging agentic ecosyste
 
 The larger goal is agency literacy that can become as ordinary as internet and smartphone literacy—without repeating the mistake of placing the most important personalization and behavioral layers entirely beyond the user's inspection and control.
 
-## Technical writing
+## Content
 
-The writing progresses from the central distinction between model and agent into increasingly concrete harness architecture.
+The collection includes principles and perspectives, practical guides, Observations, agent architecture essays, and diagrams. The numbered essay sequence moves from the central distinction between model and agent into increasingly concrete harness architecture.
 
 | Series | Focus | Entry point |
 |---|---|---|
@@ -55,9 +55,11 @@ The writing progresses from the central distinction between model and agent into
 | B7 | Plugin anatomy: bounded behavioral organs with state and authority | [The Plugin Kit Foundation](https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html) |
 | B8 | Maturation, hardening, user literacy, and controlled evolution | [From Apprentice to Architect](https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html) |
 | B9 | Dashboard and harness as one visible, durable user-agent system: contextual feedback, internal voices, stopping, recovery, and user review | [The Visible Harness](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) |
-| Practical Guides | Low-barrier guided conversations for diagnosis, public assets, and durable private context | [Browse the Practical Guides](https://hadi-nayebi.github.io/blog.html#practical-guides) |
+| Practical Guides | Low-barrier guided conversations for diagnosis, public assets, and durable private context | [Browse the Practical Guides](https://hadi-nayebi.github.io/content.html#practical-guides) |
+| Observations | Visual stories and mental-model lenses | [Browse Observations](https://hadi-nayebi.github.io/content.html#observations) |
+| Diagrams & Explorables | Interactive diagrams for inspecting mechanisms | [Browse Diagrams](https://hadi-nayebi.github.io/content.html#diagrams) |
 
-Browse the complete **[technical-writing index](https://hadi-nayebi.github.io/blog.html)** or use the **[interactive Explorables](https://hadi-nayebi.github.io/explore.html)** to inspect relationships among hooks, jobs, phases, memory, plugins, verification, and control.
+Browse **[Academy content](https://hadi-nayebi.github.io/content.html)** for principles, guides, observations, agent architecture, and diagrams; use the **[interactive Explorables](https://hadi-nayebi.github.io/explore.html)** to inspect relationships among hooks, jobs, phases, memory, plugins, verification, and control.
 
 ## Projects and public repositories
 
@@ -77,7 +79,7 @@ See the complete **[Projects portfolio](https://hadi-nayebi.github.io/projects/)
 
 ## Follow the work as it changes
 
-**[What's New](https://hadi-nayebi.github.io/whats-new.html)** is the public development record across projects, technical writing, architectural patterns, and onboarding. It consolidates related work into meaningful updates with maturity, intended audience, evidence, adoption notes, and recommended action rather than mirroring every commit.
+**[What's New](https://hadi-nayebi.github.io/whats-new.html)** is the public development record across projects, content, architectural patterns, and onboarding. It consolidates related work into meaningful updates with maturity, intended audience, evidence, adoption notes, and recommended action rather than mirroring every commit.
 
 Agents and tools can read the same record directly from **[`data/whats-new.json`](data/whats-new.json)**.
 
@@ -102,7 +104,7 @@ Technical readers can contribute at several levels:
 - Open focused pull requests for corrections and clearly bounded site improvements.
 - Study, test, star, or contribute to the public repository relevant to the pattern you are evaluating.
 - Use project discussions for project-specific questions and design feedback where available.
-- Propose generalized patterns, professional use cases, failure lessons, or missing technical-writing topics without exposing private, employer, client, or proprietary material.
+- Propose generalized patterns, professional use cases, failure lessons, or missing agent architecture topics without exposing private, employer, client, or proprietary material.
 - Point another agent to Start Here and report where it misunderstood, skipped, compressed, or overprescribed the syllabus.
 
 Please keep contributions scoped, explain the problem being solved, preserve the existing static architecture unless the change requires otherwise, and distinguish demonstrated behavior from proposals or analogies.
@@ -177,7 +179,8 @@ CRIME_CARTOGRAPHY_REPO=/path/to/crime-cartography node scripts/validate-crime-ca
 ├── start-here.html            # Human-facing orientation and agent handoff
 ├── start-here-agent.md        # Canonical text-only agent instruction
 ├── whats-new.html             # Human-readable public development record
-├── blog.html                  # Technical-writing index
+├── content.html               # Academy content collection
+├── blog.html                  # Legacy redirect to content.html
 ├── blog/b1 … blog/b9          # Essays and series assets
 ├── blog/practical-guides/     # Step-by-step, low-barrier building guides
 ├── agents.html                # Seed architecture map

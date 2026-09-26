@@ -6,7 +6,7 @@ function escapeHtml(value) {
 }
 
 function nav(active = "Agents") {
-  const items = [["Home","/index.html"],["Start Here","/start-here.html"],["Blog","/blog.html"],["Agents","/agents.html"],["Projects","/projects/index.html"],["What's New","/whats-new.html"],["About","/about.html"],["Services","/services.html"]];
+  const items = [["Home","/index.html"],["Start Here","/start-here.html"],["Content","/content.html"],["Agents","/agents.html"],["Projects","/projects/index.html"],["What's New","/whats-new.html"],["About","/about.html"],["Services","/services.html"]];
   return `<header id="site-header"><div class="container"><nav><a href="/index.html" class="logo">Hadosh Academy</a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button><div class="nav-links">${items.map(([label, href]) => `<a href="${href}"${label === active ? ' class="active" aria-current="page"' : ""}>${escapeHtml(label)}</a>`).join("")}</div></nav></div></header>`;
 }
 
@@ -33,7 +33,7 @@ function head(title, description, canonical) {
 
 function footer() {
   return `<footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
-<script src="/js/theme-manager.js?v=20260907-seed-architecture-visual-1"></script><script src="/js/components.js?v=20260920-abstractions-1"></script>`;
+<script src="/js/theme-manager.js?v=20260925-content-1"></script><script src="/js/components.js?v=20260925-content-1"></script>`;
 }
 
 function giscus() {
@@ -75,6 +75,9 @@ function renderQuestions(term) {
 
 function renderTerm(lib, term) {
   const questionLabel = term.openQuestions.length === 1 ? "1 open question" : `${term.openQuestions.length} open questions`;
+  const questionIntroduction = term.openQuestions.length
+    ? `<p>These are the parts of the definition that still need clarification.</p>`
+    : "";
   const schema = JSON.stringify({"@context":"https://schema.org","@type":"DefinedTerm",name:term.name,description:term.definition,inDefinedTermSet:"https://hadi-nayebi.github.io/agents/abstractions/"});
   return `<!DOCTYPE html>
 <html lang="en">
@@ -85,8 +88,8 @@ ${nav()}
   <article>
     <section class="term-hero" aria-labelledby="term-title"><div class="container term-reading-width"><a class="back-to-library" href="/agents/abstractions/">← All terms</a><div class="term-state-row"><span class="term-status-badge">${escapeHtml(term.status)}</span><span>${escapeHtml(lib.definitionStates[term.status])}</span></div><h1 id="term-title">${escapeHtml(term.name)}</h1><div class="canonical-definition"><span class="abstraction-eyebrow">Current definition</span><p>${escapeHtml(term.definition)}</p></div><a class="term-comment-link" href="#discussion">Comment on this term</a></div></section>
     <div class="container term-reading-width term-content">
-      <section class="open-questions" id="open-questions"><span class="abstraction-eyebrow">${escapeHtml(questionLabel)}</span><h2>Open questions</h2><p>These are the parts of the definition that still need clarification.</p>${renderQuestions(term)}</section>
-      <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Help consolidate this term</h2><p>Answer an open question, identify an ambiguity, or propose clearer wording. Accepted contributions are reviewed and folded back into the definition.</p>${giscus()}</section>
+      <section class="open-questions" id="open-questions"><span class="abstraction-eyebrow">${escapeHtml(questionLabel)}</span><h2>Open questions</h2>${questionIntroduction}${renderQuestions(term)}</section>
+      <section class="term-discussion" id="discussion"><span class="abstraction-eyebrow">Public discussion</span><h2>Discuss this term</h2><p>Ask a question that could expose or reduce ambiguity, identify wording that can be interpreted more than one way, or propose a more precise definition. Accepted contributions are reviewed and folded back into the definition.</p>${giscus()}</section>
       <a class="back-to-library back-to-library-bottom" href="/agents/abstractions/">← Return to all terms</a>
     </div>
   </article>
