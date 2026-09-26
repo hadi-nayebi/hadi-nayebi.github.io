@@ -20,6 +20,8 @@ on:
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-start-here-participation-layout.mjs'
+      - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
   push:
     branches: [main]
@@ -41,6 +43,8 @@ on:
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-start-here-participation-layout.mjs'
+      - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
 
 jobs:
@@ -69,6 +73,8 @@ jobs:
           exit 1
       - name: Verify layout, interaction, contrast, and accessibility
         run: node scripts/validate-responsive-layout.mjs
+      - name: Verify Start Here participation choices
+        run: node scripts/validate-start-here-participation-layout.mjs
       - name: Upload responsive screenshots
         if: always()
         uses: actions/upload-artifact@v4
@@ -77,6 +83,15 @@ jobs:
           path: artifacts/responsive-layout
           if-no-files-found: error
           retention-days: 14
+      - name: Upload focused Start Here participation screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: start-here-participation-screenshots
+          path: artifacts/start-here-participation
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Upload Content screenshots separately
         if: always()
         uses: actions/upload-artifact@v4

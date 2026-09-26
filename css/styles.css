@@ -106,6 +106,10 @@ body {
     background: linear-gradient(145deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.035));
 }
 
+#community-return {
+    scroll-margin-top: 100px;
+}
+
 .start-agent-entry-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.65fr) minmax(220px, 0.65fr);
@@ -6715,8 +6719,15 @@ body.lightbox-open {
 }
 
 .page-about .academy-pillar h3,
-.page-about .card-link {
+.page-about .card-link,
+.page-about .about-content > .badge,
+.page-about .bio-heading {
     color: #e9ddff;
+}
+
+.page-about .profession-tags .tag {
+    color: #e9ddff;
+    border-color: #a78bfa;
 }
 
 /* Keep the Services invitation legible on the hero surface. */
