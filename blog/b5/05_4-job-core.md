@@ -5,7 +5,7 @@ slug: "job-core"
 read_time: "10 min"
 tags: [Architecture, Seed Agent, Plugins, Always-On]
 status: published
-version: v0.4.0
+version: v0.4.2
 audience: "Tier 2"
 og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 ---
@@ -18,13 +18,13 @@ og_image: "blog/b5/images/always-on-digital-cortex-b5.png"
 
 [Essay 5.3](05_3-brain-guard.html) covered the ceiling — keeping the agent under the model's reasoning curve. This part covers the spine: the always-on plugin that gives the seed agent a notion of *what work it is doing*.
 
-The concrete mechanics below come from an earlier Claude-based prototype, used here as a historical reference architecture. The broader pattern — durable work units, lifecycle gates, and shared state — applies across CLI agent frameworks.
+This is one answer from an earlier Claude-based Seed. Its hook names and file layout belong to that prototype. The question applies to other CLI agents too: where does a piece of work live between prompts, and what prevents the agent from calling it finished while there is still work to do?
 
 ---
 
 ## What it owns
 
-`job_core` exists to compartmentalize the seed agent's *work*. The unit of compartmentalization is the *job* — a container for everything the agent does between the moment a piece of work begins and the moment it is complete. Every prompt, every reasoning cycle, every action belongs to one. The plugin works by routing each user prompt into a job (creating a new one if none is focused, attaching as an interaction if one is) and by refusing to let the agent stop while any job remains active or pending. It applies on every prompt the user submits, every turn-end event the agent triggers, and every `[JOB-COMPLETE]` claim the agent makes. *[ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.]*
+`job_core` gives the historical Seed one place to track an active piece of work. It creates a job when a prompt arrives with none focused; later prompts are added to the focused job as interactions. Prompts, reasoning cycles, and actions remain associated with that job until completion. The plugin runs on prompt and turn-end hooks and checks `[JOB-COMPLETE]` claims; it refuses a stop while any job is active or pending. *[ref: job-core-exists-to-compartmentalize | Checked against a private historical prototype.]*
 
 ## How a job is born
 
@@ -81,7 +81,7 @@ They can land together. A single-cycle job reaches its one and only CONDENSE, as
 
 ## What would break without it
 
-Without `job_core`, the agent has no notion of *what work am I doing*. Every prompt is a one-off, there is no thread of intent to come back to, no place for follow-up work to live, no signal that says the agent is or isn't done. The cognitive horizon collapses to the current turn — and everything the rest of the always-on layer is built to support has nothing structural to attach to. *[ref: without-job-core-the-agent | Checked against a private historical prototype.]*
+In the historical Seed, `job_core` gave work a shared ID and lifecycle. Remove it and the plugins that track interactions and phases would lose the key they use to connect their state to the active job. The stop gate would also lose the active/pending job status it checks. Other agents may provide those functions differently; this is how that Seed made them explicit. *[ref: without-job-core-the-agent | Checked against a private historical prototype.]*
 
 ## What you would customize
 

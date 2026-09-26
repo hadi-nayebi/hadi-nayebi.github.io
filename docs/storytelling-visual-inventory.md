@@ -22,7 +22,7 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `about.html` | `assets/images/about/your-brain-vs-modern-world.png` | I30-A70 | HTML | Yes |
 | `about.html` | `assets/images/digital-cortex-2-hero.jpg` | I10-A90 | HTML | Yes |
 | `agents.html` | `/assets/images/story/seed-architecture-pattern-sources-v3.jpg` | I90-A10 | Injected | Yes |
-| `blog.html` | `/assets/images/story/blog-learning-journey-hybrid-v3.jpg` | I70-A30 | Injected | Yes |
+| `content.html` | `/assets/images/story/blog-learning-journey-hybrid-v3.jpg` | I70-A30 | Injected | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/01-deep-time.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/02-molecular-world.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-01/03-substrate-horizon.jpg` | I70-A30 | EpisodeJSON | Yes |
@@ -102,7 +102,6 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/one-brain-many-engines-b1-5.jpg` | I70-A30 | HTML | Yes |
 | `blog/b2/02-we-could-have-had-agi.html` | `images/seed-agent-growth-b2-1.png` | I50-A50 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/cognitive-metabolism-b3_1-3.png` | I90-A10 | HTML | Yes |
-| `blog/b3/03_1-the-folder-is-alive.html` | `images/eighty-twenty-scale-b3_1-4.png` | I90-A10 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/folder-of-specialists-b3_1-1.png` | I70-A30 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/powerpoint-moment-b3_1-2.png` | I70-A30 | HTML | Yes |
 | `blog/b3/03-your-brain-was-never-built-for-this.html` | `images/snake-vs-spreadsheet-b3-1.png` | I50-A50 | HTML | Yes |
