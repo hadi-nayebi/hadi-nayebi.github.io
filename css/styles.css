@@ -1745,6 +1745,10 @@ body:has(.blog-layout) .container {
     border-color: var(--accent, #8b5cf6);
 }
 
+.page-about .profession-tags .tag {
+    color: #c4b5fd;
+}
+
 .article-body ul {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
@@ -2249,6 +2253,15 @@ body.lightbox-open {
     color: var(--primary);
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+/* The collection's small text stays legible across every random accent theme. */
+.blog-layout .blog-category-link span,
+.blog-layout .blog-category-heading > span,
+.blog-layout .tag,
+.blog-layout .blog-card-read-more,
+.blog-layout .start-here-hint a {
+    color: #c4b5fd;
 }
 
 .article-card-link {
@@ -6665,5 +6678,48 @@ body.lightbox-open {
 
 .page-start-here .card-link,
 .page-start-here .vocab-card h3 {
+    color: #e9ddff;
+}
+
+
+/* Shared copy-surface contrast gate: homepage cards, About essay numbers, and article navigation/content links. */
+.page-home .card-link,
+.page-home .badge:not(.badge-open-source) {
+    color: var(--accent-light);
+}
+
+.about-essay-number {
+    color: #e9ddff;
+    opacity: 1;
+}
+
+.article-meta-tags .tag,
+.blog-series-mobile-nav a,
+.article-body a,
+.article-comments a {
+    color: #e9ddff;
+}
+
+.article-meta-tags .tag {
+    border-color: #e9ddff;
+}
+
+.article-body a,
+.article-comments a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.article-body code {
+    color: #e9ddff;
+}
+
+.page-about .academy-pillar h3,
+.page-about .card-link {
+    color: #e9ddff;
+}
+
+/* Keep the Services invitation legible on the hero surface. */
+.page-services .services-hero-copy .badge {
     color: #e9ddff;
 }

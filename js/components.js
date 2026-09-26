@@ -8,7 +8,7 @@
     var NAV_ITEMS = [
         { label: 'Home', href: '/index.html' },
         { label: 'Start Here', href: '/start-here.html' },
-        { label: 'Blog', href: '/blog.html' },
+        { label: 'Content', href: '/content.html' },
         { label: 'Agents', href: '/agents.html' },
         { label: 'Projects', href: '/projects/index.html' },
         { label: "What's New", href: '/whats-new.html' },
@@ -20,7 +20,7 @@
         var path = window.location.pathname.replace(/\/+$/, '') || '/';
         if (path === '/' || path === '/index.html') return 'Home';
         if (path === '/start-here.html') return 'Start Here';
-        if (path === '/blog.html' || path.indexOf('/blog/') === 0) return 'Blog';
+        if (path === '/content.html' || path === '/explore.html' || path.indexOf('/blog/') === 0) return 'Content';
         if (path === '/agents.html' || path.indexOf('/agents/') === 0) return 'Agents';
         if (path === '/projects' || path === '/projects/index.html' || path.indexOf('/projects/') === 0) return 'Projects';
         if (path === '/whats-new.html') return "What's New";
@@ -280,9 +280,9 @@
         if (next) list.appendChild(next);
 
         var all = document.createElement('a');
-        all.href = '/blog.html';
+        all.href = '/content.html';
         all.className = 'article-card-link sidebar-all-essays-link';
-        all.innerHTML = '<div class="article-card sidebar-all-essays"><h3>All essays →</h3><div class="date">Browse the full series</div></div>';
+        all.innerHTML = '<div class="article-card sidebar-all-essays"><h3>All content →</h3><div class="date">Browse the full series</div></div>';
         list.appendChild(all);
         sidebar.appendChild(list);
 
@@ -298,8 +298,8 @@
             mobile.appendChild(prev);
         }
         var allMobile = document.createElement('a');
-        allMobile.href = '/blog.html';
-        allMobile.textContent = 'All essays';
+        allMobile.href = '/content.html';
+        allMobile.textContent = 'All content';
         mobile.appendChild(allMobile);
         if (links.next) {
             var nxt = document.createElement('a');
@@ -332,7 +332,8 @@
             'practical-guides': 'Practical Guides',
             'principles': 'Principles',
             'observations': 'Observations',
-            'technical-writing': 'Technical Writing'
+            'technical-writing': 'Agent Architecture',
+            'diagrams': 'Diagrams & Explorables'
         };
         var categories = [];
         var audiences = [];

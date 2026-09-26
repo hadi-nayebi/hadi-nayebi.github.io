@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-09-22",
-  "description": "The public source of record for meaningful changes to Hadosh Academy projects, technical writing, patterns, and onboarding.",
+  "description": "The public source of record for meaningful changes to Hadosh Academy projects, content, patterns, and onboarding.",
   "entries": [
     {
       "id": "2026-09-22-private-github-home",
@@ -136,7 +136,7 @@
         },
         {
           "label": "Academy writings",
-          "url": "/blog.html"
+          "url": "/content.html"
         }
       ],
       "adoption_notes": "This is a published six-essay slice, not a claim that every Academy writing or Observation episode has narration. Written pages remain canonical, and later source edits require renewed parity and approval before their audio can be treated as current. Playback speed is available visually, but the selected speed is not yet exposed as assistive state, so that control still needs an accessibility repair.",
@@ -326,7 +326,7 @@
       "title": "Public Seeds now accumulate patterns instead of defining one product",
       "summary": "The Academy's public routing, project pages, and Seed-series finale now distinguish framework-agnostic writings from Seed Agent and Q-Seed: two deliberately sparse, framework-specific places where selected building blocks can accumulate without becoming editions of one standard harness.",
       "why_it_matters": "People can use the writings, adapt selected components, or build from scratch without waiting for a universal installable release. Each user and agent can grow different structures, plugins, and adaptations while still returning proven, privacy-safe patterns to shared public repositories.",
-      "affected": ["Seed Agent", "Q-Seed", "Technical writing", "Start Here", "Project navigation"],
+      "affected": ["Seed Agent", "Q-Seed", "Agent Architecture", "Start Here", "Project navigation"],
       "maturity": "Published cross-site architectural clarification; standard-product lineage retired",
       "intended_for": ["People building user-owned harnesses", "Seed Agent and Q-Seed contributors", "Readers choosing a starting point", "Agents using Academy resources"],
       "sources": [
@@ -380,7 +380,7 @@
       "title": "The first Practical Guide turns a personal website into a learning surface",
       "summary": "A new browser-first guide walks a non-technical reader from an empty GitHub repository to a personal static website they can continue shaping through conversation with an AI agent.",
       "why_it_matters": "The website becomes both a useful public asset and a concrete way to learn repositories, commits, branches, pull requests, instructions, and deployment without beginning from abstract software lessons.",
-      "affected": ["Practical Guides", "Personal websites", "GitHub Pages", "Agent literacy", "Blog navigation"],
+      "affected": ["Practical Guides", "Personal websites", "GitHub Pages", "Agent literacy", "Content navigation"],
       "maturity": "Published guide with a complete browser-only path",
       "intended_for": ["Non-technical builders", "People establishing a personal web presence", "New repository users", "People working with repository-capable agents"],
       "sources": [
@@ -393,8 +393,8 @@
           "url": "/blog/practical-guides/01-build-your-own-space-on-the-web.html"
         },
         {
-          "label": "Reorganized Blog index",
-          "url": "/blog.html"
+          "label": "Content collection",
+          "url": "/content.html"
         }
       ],
       "adoption_notes": "The primary path uses GitHub Pages and can be completed in a browser; repository-connected ChatGPT/Codex and Codex CLI are later options, not prerequisites. The guide introduces enough repository vocabulary to review an agent's work, but the reader remains responsible for account access, public content, and merge decisions. Alternative hosts and repository-capable agents may require different setup and capability checks.",
@@ -430,7 +430,7 @@
     {
       "id": "2026-09-04-visible-harness-publication",
       "date": "2026-09-04",
-      "type": "Technical writing",
+      "type": "Agent Architecture",
       "title": "The Visible Harness now explains feedback, voices, and stopping",
       "summary": "Three new essays extend the Visible Harness series from its dashboard-and-harness foundation through contextual feedback, event-specific internal voices, explicit stopping state, recovery, verification, and user review.",
       "why_it_matters": "Readers can now follow one responsibility from a page-aware comment into durable evidence, agent reorientation, lifecycle control, and human acceptance without mistaking a finished model response for finished work.",
@@ -548,9 +548,9 @@
       "date": "2026-09-03",
       "type": "Project",
       "title": "Origin 1.0 is now synchronized with onboarding",
-      "summary": "The project page, Start Here Phases 6–8, homepage, README, and a new technical writing now align around the demonstrated Origin 1.0 foundation.",
+      "summary": "The project page, Start Here Phases 6–8, homepage, README, and a new agent architecture essay now align around the demonstrated Origin 1.0 foundation.",
       "why_it_matters": "Users have a tested dashboard-plus-harness substrate for one local operator: a foreground interactive Codex session, contextual feedback, durable state, explicit stopping, verification, acceptance, reopening, and recovery.",
-      "affected": ["Origin", "Start Here", "Technical writing", "Phases 6–8"],
+      "affected": ["Origin", "Start Here", "Agent Architecture", "Phases 6–8"],
       "maturity": "Demonstrated 1.0 foundation",
       "intended_for": ["Individuals beginning a harness", "Codex users", "Cross-CLI implementers"],
       "sources": [
@@ -600,7 +600,7 @@
       "title": "Agentic concepts now route through the Academy's current sources",
       "summary": "The onboarding syllabus now tells visiting agents to consult the smallest relevant Hadosh Academy writing, project, or explorable before explaining concepts such as harnesses, jobs, plugins, memory, dashboards, and verification.",
       "why_it_matters": "Users receive provider-independent definitions, the Academy's intuitive framing, a relevant example, and the practical consequence of the distinction instead of an answer based only on model memory or vendor terminology.",
-      "affected": ["Start Here", "Technical writing", "Concept vocabulary"],
+      "affected": ["Start Here", "Agent Architecture", "Concept vocabulary"],
       "maturity": "Published protocol",
       "intended_for": ["Learners", "Visiting agents", "Harness operators"],
       "sources": [
@@ -609,8 +609,8 @@
           "url": "https://github.com/hadi-nayebi/hadi-nayebi.github.io/pull/53"
         },
         {
-          "label": "Technical writing index",
-          "url": "/blog.html"
+          "label": "Agent architecture essays",
+          "url": "/content.html#technical-writing"
         }
       ],
       "adoption_notes": "Use Academy framing after establishing the accurate technical core. Keep factual claims, interpretation, analogy, provider behavior, and uncertainty distinct.",
@@ -691,7 +691,7 @@
         }
       ],
       "adoption_notes": "Project pages remain distinct and retain the depth their designs require. The shared taxonomy is a navigation and comparison layer, not a universal implementation template.",
-      "recommended_action": "Explore the project portfolio by scale, then follow the project or technical-writing path closest to your current question."
+      "recommended_action": "Explore the project portfolio by scale, then follow the project or agent architecture path closest to your current question."
     }
   ]
 }
