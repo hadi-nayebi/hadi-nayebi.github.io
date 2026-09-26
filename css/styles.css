@@ -6727,8 +6727,15 @@ body.lightbox-open {
 }
 
 .page-about .academy-pillar h3,
-.page-about .card-link {
+.page-about .card-link,
+.page-about .about-content > .badge,
+.page-about .bio-heading {
     color: #e9ddff;
+}
+
+.page-about .profession-tags .tag {
+    color: #e9ddff;
+    border-color: #a78bfa;
 }
 
 /* Keep the Services invitation legible on the hero surface. */
