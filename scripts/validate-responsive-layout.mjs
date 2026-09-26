@@ -10,6 +10,8 @@ const routes = [
   { name: 'home-open-architecture', path: '/index.html', kind: 'copy' },
   { name: 'home-digital-cortex', path: '/index.html', kind: 'copy' },
   { name: 'about', path: '/about.html', kind: 'copy' },
+  { name: 'content', path: '/content.html', kind: 'copy' },
+  { name: 'diagrams', path: '/explore.html', kind: 'copy' },
   { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'start-here', path: '/start-here.html', kind: 'start' },

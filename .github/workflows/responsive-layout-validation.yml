@@ -87,7 +87,22 @@ jobs:
           path: artifacts/responsive-layout/claude-md-hierarchy-*.png
           if-no-files-found: error
           retention-days: 14
-
+      - name: Upload Content screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-collection-screenshots
+          path: artifacts/responsive-layout/content-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload diagram directory screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-diagrams-screenshots
+          path: artifacts/responsive-layout/diagrams-*.png
+          if-no-files-found: error
+          retention-days: 14
       - name: Upload changed-page screenshots separately
         if: always()
         uses: actions/upload-artifact@v4
