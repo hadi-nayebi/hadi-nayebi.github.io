@@ -153,7 +153,7 @@ loadStoryVisuals();
 const ctaPhrases = [
     { text: 'Start Here', link: '/start-here.html' },
     { text: 'Explore the Projects', link: '/projects/index.html' },
-    { text: 'Read the Technical Writing', link: '/blog.html' },
+    { text: 'Explore Academy Content', link: '/content.html' },
     { text: 'Explore Seed Architecture', link: '/agents.html' },
     { text: 'Open the Technical Portfolio', link: '/portfolio.html' },
     { text: 'Explore Interactive Diagrams', link: '/explore.html' },

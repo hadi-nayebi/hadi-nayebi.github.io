@@ -1,7 +1,7 @@
 # Contributing to Hadosh Academy
 
 Hadosh Academy is an open context and pattern library for user-owned AI harnesses. It begins with
-seed concepts, reference organisms, technical writing, and public pattern-accumulation
+seed concepts, reference organisms, agent architecture writing, and public pattern-accumulation
 repositories. Community experience helps test and refine the library over time.
 
 The goal is not one final harness or one mandatory implementation. We are looking for stable
