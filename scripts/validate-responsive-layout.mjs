@@ -19,6 +19,7 @@ const routes = [
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
   { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
+  { name: 'whats-new', path: '/whats-new.html', kind: 'whats-new' },
   { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
@@ -216,6 +217,15 @@ for (const viewport of viewports) {
           }
         }
       }
+    }
+
+    if (route.kind === 'whats-new') {
+      const cards = await page.locator('.update-card').count();
+      if (!cards) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: weekly summary did not render`);
+      const firstType = cards ? await page.locator('.update-card .update-type').first().innerText() : '';
+      if (firstType !== 'Weekly public summary') failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: first entry is not the weekly public summary`);
+      const engagementRoutes = await page.locator('.update-card a[href="/start-here.html#community-return"]').count();
+      if (!engagementRoutes) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: public engagement route is missing`);
     }
 
     if (route.kind === 'term') {

@@ -1,4 +1,5 @@
 name: Responsive layout validation
+# What’s New remains inside current-main responsive coverage.
 
 on:
   pull_request:
@@ -12,6 +13,9 @@ on:
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'agents.html'
+      - 'whats-new.html'
+      - 'data/whats-new.json'
+      - 'js/whats-new.js'
       - 'agents/**'
       - 'start-here.html'
       - 'blog/practical-guides/02-audit-ai-harness-portability.html'
@@ -33,6 +37,9 @@ on:
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'agents.html'
+      - 'whats-new.html'
+      - 'data/whats-new.json'
+      - 'js/whats-new.js'
       - 'agents/**'
       - 'start-here.html'
       - 'blog/practical-guides/02-audit-ai-harness-portability.html'
