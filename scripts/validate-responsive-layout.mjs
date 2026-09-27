@@ -77,6 +77,10 @@ for (const viewport of viewports) {
       if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected the Markov and hooks diagrams`);
       if (await page.locator('.article-audio').count()) failures.push(`${route.path}: old narration player returned`);
       if (await page.locator('.article-body a[href*="/original/01-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
     }
 
     const issues = await page.evaluate(() => {
