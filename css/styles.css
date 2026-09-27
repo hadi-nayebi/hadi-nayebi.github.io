@@ -1570,8 +1570,8 @@ body:has(.blog-layout) .container {
 .tag {
     padding: 0.25rem 0.75rem;
     background: rgba(99, 102, 241, 0.1);
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    color: var(--accent-light);
+    border: 1px solid var(--accent-light);
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1664,6 +1664,7 @@ body:has(.blog-layout) .container {
 .article-meta-tags {
     margin-left: auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -6760,4 +6761,13 @@ body.lightbox-open {
 /* Keep the Services invitation legible on the hero surface. */
 .page-services .services-hero-copy .badge {
     color: #e9ddff;
+}
+
+
+@media (max-width: 768px) {
+    .article-meta-tags {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
 }

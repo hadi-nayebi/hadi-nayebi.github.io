@@ -88,6 +88,7 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/one-objective-many-patterns.jpg` | I90-A10 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/pattern-crystallization-loop.jpg` | I70-A30 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html` | `images/map-territory-loop.png` | I90-A10 | HTML | Yes |
+| `blog/observations/hadosh-through-mental-models/03-circle-of-competence.html` | `images/circle-of-competence-boundaries.jpg` | I90-A10 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/the-ai-that-grows-with-you-hero.jpg` | I30-A70 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/browser-as-an-open-gateway.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/reopening-the-social-web.jpg` | I70-A30 | HTML | Yes |
