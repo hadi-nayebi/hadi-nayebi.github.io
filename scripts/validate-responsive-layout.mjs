@@ -11,6 +11,7 @@ const routes = [
   { name: 'home-digital-cortex', path: '/index.html', kind: 'copy' },
   { name: 'about', path: '/about.html', kind: 'copy' },
   { name: 'content', path: '/content.html', kind: 'copy' },
+  { name: 'essay1', path: '/blog/b1/01-llms-are-not-the-agents.html', kind: 'essay' },
   { name: 'diagrams', path: '/explore.html', kind: 'copy' },
   { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
@@ -69,6 +70,18 @@ for (const viewport of viewports) {
       if (!heroCopy.startsWith('Where does a correction go after you make it?')) {
         failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Digital Cortex wording was replaced at runtime`);
       }
+    }
+
+    if (route.name === 'essay1') {
+      if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
+      if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected the Markov and hooks diagrams`);
+      if (await page.locator('.article-audio').count()) failures.push(`${route.path}: old narration player returned`);
+      if (await page.locator('.article-body a[href*="/original-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & GPT-6 Sol') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
     }
 
     const issues = await page.evaluate(() => {
