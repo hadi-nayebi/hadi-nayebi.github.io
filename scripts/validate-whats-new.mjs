@@ -14,6 +14,7 @@ const requiredFields = [
   'maturity', 'intended_for', 'sources', 'adoption_notes', 'recommended_action'
 ];
 const errors = [];
+const retiredPublicLabels = new Set(['Run the Agentic AI Use Doctor']);
 
 function localTarget(raw) {
   const clean = raw.split('#')[0].split('?')[0].replace(/^\/+/, '');
@@ -55,6 +56,9 @@ if (record) {
 
     for (const source of entry.sources || []) {
       if (!source.label || !source.url) errors.push(`${entry.id}: every source needs label and url`);
+      if (retiredPublicLabels.has(source.label)) {
+        errors.push(`${entry.id}: retired public source label: ${source.label}`);
+      }
       if (source.url && source.url.startsWith('/') && !fs.existsSync(localTarget(source.url))) {
         errors.push(`${entry.id}: missing local source ${source.url}`);
       }
