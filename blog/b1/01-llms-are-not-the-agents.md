@@ -1,5 +1,6 @@
 ---
 title: "LLMs Are Not the Agents"
+authors: ["Hadi Nayebi", "GPT-6 Sol"]
 date: "February 2026"
 modified: "September 2026"
 slug: "llms-are-not-the-agents"
@@ -157,4 +158,4 @@ That gives intelligence a structure for repeatable work. As the structure grows,
 
 *Next: [“We Could Have Had AGI By Now”](https://hadi-nayebi.github.io/blog/b2/02-we-could-have-had-agi.html) asks why agent architecture belongs to the design of complex systems.*
 
-*Original version: [Read the first essay in Markdown](https://github.com/hadi-nayebi/hadi-nayebi.github.io/blob/main/blog/b1/original/01-llms-are-not-the-agents-v1.3.0.md).*
+*Original version: [Read the first essay in Markdown](https://github.com/hadi-nayebi/hadi-nayebi.github.io/blob/main/blog/b1/original-llms-are-not-the-agents-v1.3.0.md).*
