@@ -76,7 +76,8 @@ for (const viewport of viewports) {
       if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
       if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected the Markov and hooks diagrams`);
       if (await page.locator('.article-audio').count()) failures.push(`${route.path}: old narration player returned`);
-      if (await page.locator('.article-body a[href*="/original/01-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if (await page.locator('.article-body a[href*="/original-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & GPT-6 Sol') failures.push(`${route.path}: current co-author byline missing`);
       const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
       );
