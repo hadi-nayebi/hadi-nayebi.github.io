@@ -1588,6 +1588,31 @@ body:has(.blog-layout) .container {
     margin-bottom: 1.5rem;
 }
 
+.article-body .essay-abstract {
+    margin: 0 0 2rem;
+    padding: 1.25rem 1.5rem;
+    background: #171c2e;
+    border: 1px solid #454267;
+    border-left: 4px solid #a5b4fc;
+    border-radius: 0 12px 12px 0;
+}
+
+.article-body .essay-abstract-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #c7d2fe;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.article-body .essay-abstract p {
+    margin: 0;
+    color: #eef0f7;
+    line-height: 1.7;
+}
+
 /* Blog Sidebar */
 .sidebar {
     position: sticky;
@@ -1640,6 +1665,14 @@ body:has(.blog-layout) .container {
     margin-left: auto;
     display: flex;
     gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .article-meta-tags {
+        width: 100%;
+        margin-left: 0;
+        flex-wrap: wrap;
+    }
 }
 
 .article-authors {
@@ -1743,6 +1776,10 @@ body:has(.blog-layout) .container {
     background: rgba(139, 92, 246, 0.12);
     color: var(--accent, #8b5cf6);
     border-color: var(--accent, #8b5cf6);
+}
+
+.page-about .profession-tags .tag {
+    color: #c4b5fd;
 }
 
 .article-body ul {
@@ -2249,6 +2286,15 @@ body.lightbox-open {
     color: var(--primary);
     font-weight: 500;
     font-size: 0.9rem;
+}
+
+/* The collection's small text stays legible across every random accent theme. */
+.blog-layout .blog-category-link span,
+.blog-layout .blog-category-heading > span,
+.blog-layout .tag,
+.blog-layout .blog-card-read-more,
+.blog-layout .start-here-hint a {
+    color: #c4b5fd;
 }
 
 .article-card-link {
@@ -6665,5 +6711,53 @@ body.lightbox-open {
 
 .page-start-here .card-link,
 .page-start-here .vocab-card h3 {
+    color: #e9ddff;
+}
+
+
+/* Shared copy-surface contrast gate: homepage cards, About essay numbers, and article navigation/content links. */
+.page-home .card-link,
+.page-home .badge:not(.badge-open-source) {
+    color: var(--accent-light);
+}
+
+.about-essay-number {
+    color: #e9ddff;
+    opacity: 1;
+}
+
+.article-meta-tags .tag,
+.blog-series-mobile-nav a,
+.article-body a,
+.article-comments a {
+    color: #e9ddff;
+}
+
+.article-meta-tags .tag {
+    border-color: #e9ddff;
+}
+
+.article-body a,
+.article-comments a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.article-body code {
+    color: #e9ddff;
+}
+
+.page-about .academy-pillar h3,
+.page-about .card-link {
+    color: #e9ddff;
+}
+
+.page-about .about-content > .badge,
+.page-about .bio-heading {
+    color: #e9ddff;
+}
+
+/* Keep the Services invitation legible on the hero surface. */
+.page-services .services-hero-copy .badge {
     color: #e9ddff;
 }

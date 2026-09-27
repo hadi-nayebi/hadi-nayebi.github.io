@@ -23,7 +23,7 @@
 ### Index page (orbit wheel)
 `.orbit-container`, `.central-circle`, `.central-circle-content`, `.orbit-ring`, `.orbit-item`, `.orbit-text`, `.orbit-item.focused`
 
-### Blog index page
+### Content collection page
 `.blog-index-cards`, `.blog-index-header`, `.blog-index-card` (+ `:hover`, `.filter-hidden`), `.blog-card-tags`, `.blog-card-meta`, `.blog-card-excerpt`, `.blog-card-read-more`, `.blog-filter-bar`, `.blog-filter-divider`
 
 ### Blog post layout

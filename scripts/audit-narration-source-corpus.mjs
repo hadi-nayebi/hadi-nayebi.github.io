@@ -291,3 +291,4 @@ if (process.argv.includes('--json')) {
 }
 
 process.exitCode = structuralErrors.length ? 1 : 0;
+

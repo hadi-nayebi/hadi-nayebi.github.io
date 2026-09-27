@@ -6,9 +6,21 @@ import AxeBuilder from '@axe-core/playwright';
 const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
+  { name: 'home', path: '/index.html', kind: 'copy' },
+  { name: 'home-open-architecture', path: '/index.html', kind: 'copy' },
+  { name: 'home-digital-cortex', path: '/index.html', kind: 'copy' },
+  { name: 'about', path: '/about.html', kind: 'copy' },
+  { name: 'content', path: '/content.html', kind: 'copy' },
+  { name: 'essay1', path: '/blog/b1/01-llms-are-not-the-agents.html', kind: 'essay' },
+  { name: 'diagrams', path: '/explore.html', kind: 'copy' },
+  { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
+  { name: 'job-core', path: '/blog/b5/05_4-job-core.html', kind: 'copy' },
+  { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
+  { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
+  { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
@@ -30,10 +42,47 @@ for (const viewport of viewports) {
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, colorScheme: 'dark' });
   for (const route of routes) {
     const page = await context.newPage();
+    if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
+    if (route.name === 'home-open-architecture') await page.addInitScript(() => { Math.random = () => 0.28; });
+    if (route.name === 'home-digital-cortex') await page.addInitScript(() => { Math.random = () => 0.2; });
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(150);
     await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
+
+    if (route.name === 'home') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      const heroHeading = await page.locator('.central-circle-content h1').innerText();
+      if (!heroHeading.includes('See the System.') || !heroHeading.includes('Make It Yours.')) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved homepage heading was replaced at runtime`);
+      if (!heroCopy.startsWith('Your AI agent already has a system around it.')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved hero wording was replaced at runtime`);
+      }
+    }
+    if (route.name === 'home-open-architecture') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      if (!heroCopy.startsWith('A public pattern should show what it does')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Open Architecture wording was replaced at runtime`);
+      }
+    }
+
+    if (route.name === 'home-digital-cortex') {
+      const heroCopy = await page.locator('.hero-description').innerText();
+      if (!heroCopy.startsWith('Where does a correction go after you make it?')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Digital Cortex wording was replaced at runtime`);
+      }
+    }
+
+    if (route.name === 'essay1') {
+      if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
+      if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected the Markov and hooks diagrams`);
+      if (await page.locator('.article-audio').count()) failures.push(`${route.path}: old narration player returned`);
+      if (await page.locator('.article-body a[href*="/original-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & GPT-6 Sol') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
 
     const issues = await page.evaluate(() => {
       const problems = [];
