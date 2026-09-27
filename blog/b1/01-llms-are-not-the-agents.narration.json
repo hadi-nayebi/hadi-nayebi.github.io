@@ -3,6 +3,7 @@
   "source": "blog/b1/01-llms-are-not-the-agents.md",
   "source_sha256": "bd08b432d80d51640080af1cad38ea5f2c3298aedf78eff66f18834a7b344111",
   "status": "voice-approved",
+  "current_page_status": "superseded-by-v2.0.0; new script and audio required",
   "content_lock": {
     "status": "approved",
     "approved_at": "2026-09-11"
