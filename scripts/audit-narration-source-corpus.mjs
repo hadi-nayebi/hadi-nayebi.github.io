@@ -239,7 +239,7 @@ const guide = inspectGuide();
 const structuralErrors = [];
 if (essays.length !== 49) structuralErrors.push(`expected 49 numbered essays, found ${essays.length}`);
 if (essays.filter((item) => item.class === 'principle-writing').length !== 5) structuralErrors.push('expected 5 Part 1 principle writings');
-if (observation.episodes.length !== 10) structuralErrors.push(`expected 10 published Observation episodes, found ${observation.episodes.length}`);
+if (observation.episodes.length !== 11) structuralErrors.push(`expected 11 published Observation episodes, found ${observation.episodes.length}`);
 const unlockedFinalTranscripts = essays.filter((item) =>
   item.issues.includes('transcript-final-without-current-content-lock'),
 );
@@ -291,4 +291,3 @@ if (process.argv.includes('--json')) {
 }
 
 process.exitCode = structuralErrors.length ? 1 : 0;
-

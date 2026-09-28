@@ -89,6 +89,12 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/04-recipe-meets-apparatus.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/05-review-becomes-infrastructure.jpg` | I70-A30 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/06-knowledge-becomes-corrigible.jpg` | I10-A90 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/01-distance-without-a-timetable.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/02-road-becomes-relay.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/03-departure-gains-a-rhythm.jpg` | I70-A30 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/04-answer-becomes-planable.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/05-every-route-creates-a-gate.jpg` | I70-A30 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/06-planet-grows-circulation.jpg` | I10-A90 | EpisodeJSON | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/first-principles-hero.jpg` | I70-A30 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/context-becomes-personal-software.jpg` | I50-A50 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/one-objective-many-patterns.jpg` | I90-A10 | HTML | Yes |
@@ -169,4 +175,3 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 - `assets/images/crime-cartography-profile.png`: project/channel mark, not a storytelling illustration.
 - Inline SVG charts in `projects/crime-cartography.html`: functional data examples, not generated story artwork.
 - Open Graph images referenced only through metadata: social previews, not displayed page slots.
-

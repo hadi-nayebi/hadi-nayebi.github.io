@@ -99,7 +99,13 @@
       "path": "episodes/episode-10-when-knowledge-learned-to-correct-itself.json",
       "title": "When Knowledge Learned to Correct Itself",
       "published": "2026-09-19"
+    },
+    {
+      "number": 11,
+      "slug": "when-more-messages-kept-time",
+      "path": "episodes/episode-11-when-more-messages-kept-time.json",
+      "title": "When More Messages Kept Time",
+      "published": "2026-09-27"
     }
   ]
 }
-
