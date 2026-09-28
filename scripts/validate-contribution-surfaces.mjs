@@ -82,6 +82,18 @@ for (const [relativePath, marker, guideLink] of surfaces) {
   }
 }
 
+const startHere = read('start-here.html');
+const communityReturn = startHere.slice(
+  startHere.indexOf('id="community-return"'),
+  startHere.indexOf('</section>', startHere.indexOf('id="community-return"'))
+);
+requireTokens('start-here.html#community-return', communityReturn, [
+  'href="CONTRIBUTING.md"',
+  'Browse public discussions',
+  'href="contact.html"',
+  'Ask Hadi privately'
+]);
+
 const discussionPages = walkHtml(root)
   .map(absolutePath => ({
     relativePath: path.relative(root, absolutePath).split(path.sep).join('/'),
