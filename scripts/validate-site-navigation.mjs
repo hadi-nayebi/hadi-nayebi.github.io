@@ -106,15 +106,29 @@ const htmlFiles = allFiles.filter(file => file.endsWith('.html'));
 const publicHtml = htmlFiles.filter(file => !rel(file).startsWith('.claude/'));
 const practicalGuidePages = publicHtml.filter(file => /^blog\/practical-guides\/[^/]+\.html$/.test(rel(file)));
 
-const blogIndexPath = path.join(root, 'blog.html');
+const blogIndexPath = path.join(root, 'content.html');
 if (fs.existsSync(blogIndexPath)) {
   const blogIndexHtml = fs.readFileSync(blogIndexPath, 'utf8');
   if (/<nav\b[^>]*class=["'][^"']*\bblog-category-nav\b/i.test(blogIndexHtml)) {
-    errors.push('blog.html: blog-category-nav must not use a nav element because the global header-nav layout constrains its height');
+    errors.push('content.html: blog-category-nav must not use a nav element because the global header-nav layout constrains its height');
   }
   if (!/<div\b(?=[^>]*class=["'][^"']*\bblog-category-nav\b)(?=[^>]*role=["']navigation["'])(?=[^>]*aria-label=["'][^"']+["'])[^>]*>/i.test(blogIndexHtml)) {
-    errors.push('blog.html: blog-category-nav must remain an explicitly labelled navigation region');
+    errors.push('content.html: blog-category-nav must remain an explicitly labelled navigation region');
   }
+  for (const [anchor, label] of [
+    ['practical-guides', 'Practical Guides'], ['principles', 'Principles &amp; Perspectives'],
+    ['observations', 'Observations'], ['technical-writing', 'Agent Architecture'],
+    ['diagrams', 'Diagrams &amp; Explorables']
+  ]) {
+    if (!blogIndexHtml.includes(`id="${anchor}"`) || !blogIndexHtml.includes(label)) {
+      errors.push(`content.html: missing ${label} route or heading`);
+    }
+  }
+}
+
+const legacyBlogHtml = fs.readFileSync(path.join(root, 'blog.html'), 'utf8');
+if (!isRedirectPage(legacyBlogHtml) || !legacyBlogHtml.includes("location.search + location.hash")) {
+  errors.push('blog.html: legacy route must redirect to Content and preserve query and anchor');
 }
 
 for (const file of publicHtml) {
@@ -167,12 +181,15 @@ for (const file of publicHtml) {
   }
 
   const headerMatch = html.match(/<header\b[^>]*id=["']site-header["'][^>]*>[\s\S]*?<\/header>/i);
+  if (!redirect && headerMatch && /href=["'][^"']*blog\.html/i.test(headerMatch[0])) {
+    errors.push(`${fileRel}: primary navigation still points to the legacy Blog index`);
+  }
   if (!redirect && !explorable && headerMatch && /href=["'][^"']*contact\.html/i.test(headerMatch[0])) {
     errors.push(`${fileRel}: Contact must remain outside the primary header navigation`);
   }
 
   if (explorable) {
-    const hasBackControl = /class=["'][^"']*(?:chrome-back|explore-back|back-to-essay)[^"']*["']/i.test(html) || /Back to (?:Essay|Blog|Article)/i.test(html);
+    const hasBackControl = /class=["'][^"']*(?:chrome-back|explore-back|back-to-essay)[^"']*["']/i.test(html) || /Back to (?:Essay|Content|Article)/i.test(html);
     if (!hasBackControl) errors.push(`${fileRel}: full-screen explorable missing a back-to-essay control`);
   }
 
@@ -197,7 +214,7 @@ for (const file of publicHtml) {
       continue;
     }
     if (!/class=["'][^"']*blog-back-link/i.test(html)) {
-      errors.push(`${fileRel}: missing Back to Blog link`);
+      errors.push(`${fileRel}: missing back-to-content link`);
     }
     if (!/class=["'][^"']*sidebar/i.test(html)) {
       errors.push(`${fileRel}: missing article sidebar fallback`);
@@ -357,7 +374,7 @@ const canonicalPages = [
   'thanks-support.html', '404.html', 'projects/index.html', 'projects/origin.html',
   'projects/seed-agent.html',
   'projects/q-seed.html', 'projects/team-harnesses.html', 'projects/family-games.html',
-  'projects/crime-cartography.html', 'blog.html'
+  'projects/crime-cartography.html', 'content.html'
 ];
 for (const expected of canonicalPages) {
   if (!fs.existsSync(path.join(root, expected))) errors.push(`missing canonical page: ${expected}`);

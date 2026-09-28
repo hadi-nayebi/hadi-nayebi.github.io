@@ -2,7 +2,7 @@
 
 *Practical Guide 3 — Build a low-barrier continuity layer that you can reach from your phone and use with ChatGPT, Codex, or another repository-connected agent.*
 
-If you already use an AI agent for work that matters, you may have felt the cost of beginning again: a new conversation does not know the current state, an important correction disappears into history, or a second agent cannot tell what the first one decided.
+Your agent may already remember parts of an ongoing project. Can you see what it kept, correct a decision, and let another agent continue from the same state? Choose one project where those answers matter.
 
 A private GitHub repository can become a simple operational home for that work. It gives your agent a place to read the accepted context, gives you a visible place to make requests, and gives both of you a reviewable path from an idea to an accepted change.
 
@@ -523,7 +523,7 @@ The first version is established when you can answer yes to these questions:
 
 If yes, you have created a practical bridge between conversational AI and a user-controlled working context. You can now improve it through real use: one request, one correction, one reviewed change, and one retained lesson at a time.
 
-For a diagnosis of your broader AI-use and ownership position, run [Practical Guide 2: The Agentic AI Use Doctor](02-audit-ai-harness-portability.html). If your project should become a public website, continue with [Practical Guide 1: Build Your Own Space on the Web](01-build-your-own-space-on-the-web.html).
+For a diagnosis of your broader AI-use and ownership position, run [Practical Guide 2: Map Your AI Use](02-audit-ai-harness-portability.html). If your project should become a public website, continue with [Practical Guide 1: Build Your Own Space on the Web](01-build-your-own-space-on-the-web.html).
 
 ---
 

@@ -22,7 +22,7 @@
     <meta name="twitter:title" content="The Language of Agents | Hadosh Academy">
     <meta name="twitter:description" content="Learn how models, runtime, files, memory, tools, permissions, jobs, and verification compose into an agent harness.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b4/images/agent-anatomy-b4-1.png">
-    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Blog" href="/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Content" href="/feed.xml">
     <link rel="stylesheet" href="../../css/styles.css?v=20260903-whats-new-1">
     <script type="application/ld+json">
     {
@@ -47,7 +47,7 @@
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hadi-nayebi.github.io/" },
-                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://hadi-nayebi.github.io/blog.html" },
+                    { "@type": "ListItem", "position": 2, "name": "Content", "item": "https://hadi-nayebi.github.io/content.html" },
                     { "@type": "ListItem", "position": 3, "name": "The Language of Agents", "item": "https://hadi-nayebi.github.io/blog/b4/04-the-language-of-agents.html" }
                 ]
             }
@@ -69,7 +69,7 @@
                 <div class="nav-links">
                     <a href="../../index.html">Home</a>
                     <a href="../../start-here.html">Start Here</a>
-                    <a href="../../blog.html" class="active" aria-current="page">Blog</a>
+                    <a href="../../content.html" class="active" aria-current="page">Content</a>
                     <a href="../../agents.html">Agents</a>
                     <a href="../../projects/index.html">Projects</a>
                     <a href="../../whats-new.html">What&apos;s New</a>
@@ -86,7 +86,7 @@
             <div class="blog-layout">
                 <!-- Main Article -->
                 <div class="article-content">
-                    <a href="../../blog.html" class="blog-back-link">&larr; Back to Blog</a>
+                    <a href="../../content.html" class="blog-back-link">&larr; Back to Content</a>
 
                     <h1>The Language of Agents</h1>
                     <div class="article-meta">
@@ -195,6 +195,17 @@
                         <p>That is what the first essay meant by <em>the agent is the filesystem, not the LLM.</em> It is a statement about the center of ownership. The durable, inspectable part of the agent lives mainly in the files and machinery around the model. The filesystem is the tissue; the runtime supplies the motion; the model supplies the generative energy.</p>
 
                         <p>This is also why one giant prompt is not a harness. A harness decides what enters context, what remains durable, what may act, what must stop, what evidence counts, and who has authority to change the system itself.</p>
+
+                        <p>A healthy harness also does not need to route every responsibility through one general-purpose model. It may use models in different <strong>roles</strong>:</p>
+
+                        <ul>
+                            <li>a <strong>harness-operating model</strong> to read, operate, repair, and extend the harness;</li>
+                            <li>a <strong>domain model</strong> to supply a bounded professional perspective such as chemistry, law, filmmaking, or education;</li>
+                            <li>a <strong>decision model</strong> to return fast typed judgments for bounded branches; and</li>
+                            <li>a <strong>general synthesis model</strong> to integrate context, explanation, and open-ended reasoning.</li>
+                        </ul>
+
+                        <p>These are roles, not mandatory products or fixed architectures. One model may fill several roles. Several providers may fill one role. Deterministic software may replace a model wherever inference is unnecessary. The harness&mdash;not any one model&mdash;owns routing, durable context, policy, permissions, verification, recovery, and side effects.</p>
 
                         <hr>
 
@@ -473,7 +484,7 @@
                                 <div class="date">May 2026 &bull; 6 min read</div>
                             </div>
                         </a>
-                        <a href="/blog.html" class="article-card-link sidebar-all-essays-link">
+                        <a href="/content.html" class="article-card-link sidebar-all-essays-link">
                             <div class="article-card sidebar-all-essays">
                                 <h3>All essays &rarr;</h3>
                                 <div class="date">Browse the full series</div>
@@ -491,8 +502,8 @@
         </div>
     </footer>
 
-    <script src="../../js/theme-manager.js?v=20260903-whats-new-1"></script>
-    <script src="../../js/components.js?v=20260910-services-ux-2"></script>
+    <script src="../../js/theme-manager.js?v=20260925-content-1"></script>
+    <script src="../../js/components.js?v=20260925-content-1"></script>
 </body>
 
 </html>

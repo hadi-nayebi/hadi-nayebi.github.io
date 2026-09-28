@@ -69,7 +69,7 @@
     function installAgents() {
         var hero = document.querySelector('main .hero');
         after(hero, makeFigure('/assets/images/story/seed-architecture-pattern-sources-v3.jpg',
-            'A chalkboard map separates framework-agnostic technical writings, private Claude Seed evidence, and the Seed Agent and Q-Seed public pattern repositories, then shows three users and agents growing visibly different local harnesses from different selections.',
+            'A chalkboard map separates framework-agnostic Academy writings, private Claude Seed evidence, and the Seed Agent and Q-Seed public pattern repositories, then shows three users and agents growing visibly different local harnesses from different selections.',
             'Three sources, many distinct harnesses. Each user and agent can choose patterns, adapt components, or build from scratch.',
             'is-wide', 'I90-A10'));
     }
@@ -192,7 +192,7 @@
         loadStyles();
         var path = window.location.pathname.replace(/\/+$/, '') || '/';
         if (path === '/' || path === '/index.html') return installHome();
-        if (path === '/blog.html') return installBlogIndex();
+        if (path === '/content.html') return installBlogIndex();
         if (path === '/start-here.html') return installStartHere();
         if (path === '/agents.html') return installAgents();
         if (path === '/projects' || path === '/projects/index.html') return installProjectsIndex();

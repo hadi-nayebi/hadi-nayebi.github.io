@@ -6,7 +6,7 @@ function escapeHtml(value) {
 }
 
 function nav(active = "Agents") {
-  const items = [["Home","/index.html"],["Start Here","/start-here.html"],["Blog","/blog.html"],["Agents","/agents.html"],["Projects","/projects/index.html"],["What's New","/whats-new.html"],["About","/about.html"],["Services","/services.html"]];
+  const items = [["Home","/index.html"],["Start Here","/start-here.html"],["Content","/content.html"],["Agents","/agents.html"],["Projects","/projects/index.html"],["What's New","/whats-new.html"],["About","/about.html"],["Services","/services.html"]];
   return `<header id="site-header"><div class="container"><nav><a href="/index.html" class="logo">Hadosh Academy</a><button class="nav-toggle" aria-label="Open navigation" aria-expanded="false"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button><div class="nav-links">${items.map(([label, href]) => `<a href="${href}"${label === active ? ' class="active" aria-current="page"' : ""}>${escapeHtml(label)}</a>`).join("")}</div></nav></div></header>`;
 }
 
@@ -33,7 +33,7 @@ function head(title, description, canonical) {
 
 function footer() {
   return `<footer id="site-footer"><div class="container"><p>&copy; <span id="copyright-year">2026</span> Hadosh Academy. All rights reserved.</p></div></footer>
-<script src="/js/theme-manager.js?v=20260907-seed-architecture-visual-1"></script><script src="/js/components.js?v=20260920-abstractions-1"></script>`;
+<script src="/js/theme-manager.js?v=20260925-content-1"></script><script src="/js/components.js?v=20260925-content-1"></script>`;
 }
 
 function giscus() {
