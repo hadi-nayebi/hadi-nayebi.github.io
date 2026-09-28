@@ -128,6 +128,8 @@ async function services(page, short = false) {
     }
     await page.locator('[name="preferred_path"][value="Still deciding"]').check();
     await next.click();
+    assert.equal(await page.locator('#services-newcomer-recommended').isVisible(), true);
+    assert.equal(await page.locator('#services-send-welcome').isChecked(), true);
     await page.locator('#services-name').fill('Test Visitor');
     await page.locator('#services-email').fill('test@example.invalid');
     await page.locator('[name="consent"]').check();

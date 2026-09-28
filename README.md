@@ -146,6 +146,7 @@ Run the repository checks before opening a pull request:
 node scripts/validate-site-navigation.mjs
 node scripts/validate-abstraction-library.mjs
 node scripts/validate-contribution-surfaces.mjs
+node scripts/validate-participation-surfaces.mjs
 node scripts/validate-start-here-first-response.mjs
 node scripts/validate-public-seed-framing.mjs
 node scripts/validate-storytelling-visuals.mjs
