@@ -87,7 +87,7 @@ for (const viewport of viewports) {
       const imageLoaded = await image.evaluate(element =>
         element.complete && element.naturalWidth > 0 && element.naturalHeight > 0
       );
-      if (!label.includes('Episode 11 · When More Messages Kept Time')) {
+      if (!label.toLowerCase().includes('episode 11 · when more messages kept time')) {
         failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Episode 11 label is missing`);
       }
       if (count.trim() !== `${route.slide} / 6`) {
