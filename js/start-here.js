@@ -354,6 +354,34 @@
         });
     });
 
+    function alignCommunityReturn() {
+        if (window.location.hash !== '#community-return') return;
+        const target = document.getElementById('community-return');
+        if (!target) return;
+        const header = document.getElementById('site-header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+    }
+
+    function stabilizeCommunityReturn() {
+        if (window.location.hash !== '#community-return') return;
+        alignCommunityReturn();
+        requestAnimationFrame(() => requestAnimationFrame(alignCommunityReturn));
+        setTimeout(alignCommunityReturn, 250);
+        setTimeout(alignCommunityReturn, 1000);
+    }
+
+    if (window.location.hash === '#community-return') {
+        stabilizeCommunityReturn();
+        document.addEventListener('DOMContentLoaded', stabilizeCommunityReturn, { once: true });
+        window.addEventListener('load', stabilizeCommunityReturn, { once: true });
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(stabilizeCommunityReturn);
+        }
+    }
+    window.addEventListener('hashchange', stabilizeCommunityReturn);
+
     const hashRole = window.location.hash.match(/^#role-([a-z]+)$/);
     selectRole(hashRole && roles[hashRole[1]] ? hashRole[1] : 'general', false);
 })();
