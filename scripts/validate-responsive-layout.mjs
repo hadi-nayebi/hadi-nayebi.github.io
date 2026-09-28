@@ -18,6 +18,12 @@ const routes = [
   { name: 'start-here', path: '/start-here.html', kind: 'start' },
   { name: 'job-core', path: '/blog/b5/05_4-job-core.html', kind: 'copy' },
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
+  ...Array.from({ length: 6 }, (_, index) => ({
+    name: `observation-episode-11-slide-${index + 1}`,
+    path: `/blog/observations/information-system-of-a-planet/#episode-11-slide-${index + 1}`,
+    kind: 'observation',
+    slide: index + 1
+  })),
   { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
@@ -69,6 +75,26 @@ for (const viewport of viewports) {
       const heroCopy = await page.locator('.hero-description').innerText();
       if (!heroCopy.startsWith('Where does a correction go after you make it?')) {
         failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Digital Cortex wording was replaced at runtime`);
+      }
+    }
+
+    if (route.kind === 'observation') {
+      const slide = page.locator('#episode-11 .slide-shell');
+      await slide.locator('.episode-label').waitFor({ state: 'visible' });
+      const label = await slide.locator('.episode-label').innerText();
+      const count = await slide.locator('.slide-count').innerText();
+      const image = slide.locator('.slide-visual img');
+      const imageLoaded = await image.evaluate(element =>
+        element.complete && element.naturalWidth > 0 && element.naturalHeight > 0
+      );
+      if (!label.toLowerCase().includes('episode 11 · when more messages kept time')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Episode 11 label is missing`);
+      }
+      if (count.trim() !== `${route.slide} / 6`) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected slide ${route.slide} / 6, found ${count.trim()}`);
+      }
+      if (!imageLoaded) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: slide image did not load`);
       }
     }
 

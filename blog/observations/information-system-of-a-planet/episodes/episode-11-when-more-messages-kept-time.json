@@ -1,0 +1,241 @@
+{
+  "number": 11,
+  "slug": "when-more-messages-kept-time",
+  "title": "When More Messages Kept Time",
+  "status": "review",
+  "published": "2026-09-27",
+  "deckline": "State relays had moved official messages for millennia. In early modern Europe, expanding fixed routes and recurring dispatches made predictable long-distance exchange useful to wider—still unequal—circles of officials, merchants, scholars, and newsmakers.",
+  "objective": "Show how early modern fixed routes, relay handoffs, and recurring postal dispatches expanded and reconfigured an ancient state capability: some long-distance communication became a schedulable cycle for wider—still unequal—groups, while physical latency, route hierarchy, cost, and institutional control remained.",
+  "learning_outcomes": [
+    "Distinguish ancient, restricted state relay systems from the later expansion of recurring postal circulation into wider official, commercial, scholarly, and eventually public use.",
+    "Understand why relay infrastructure improves reliability through organized handoffs rather than a dramatically faster carrier.",
+    "See how recurring dispatches let people and institutions plan send–receive–reply cycles across distance.",
+    "Recognize that cost, route hierarchy, interception, censorship, and centralized control accompany the network’s reliability.",
+    "Carry the remaining question into periodic news without prematurely introducing newspapers or telegraphy."
+  ],
+  "continuity": "Episode 10 showed a correction network whose letters, journals, observations, and replies still moved at the speed of roads, horses, and ships. Organized relay transport was already ancient; Episode 11 isolates a later change in scale and usability, as recurring early modern postal routes made some distant exchange predictable enough for wider groups to schedule without yet creating periodic public news or separating message speed from physical transport.",
+  "state_change": "An old state capability becomes a wider planning layer: more officials, merchants, scholars, and other connected users can send on a recurring dispatch, expect passage through known stages, and organize a later decision around an approximate return.",
+  "future_pressure": "Once information can arrive on a recurring schedule, what should arrive each time—and who gets to select, package, verify, and sell the renewed account of distant events?",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-11-when-distance-became-scheduled",
+  "slides": [
+    {
+      "id": "distance-without-a-timetable",
+      "title": "Distance without a timetable",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-11/01-distance-without-a-timetable.jpg",
+        "alt": "An early modern letter writer watches a privileged official courier use a maintained route while merchants and ordinary travelers depart by less predictable paths.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Long before the sixteenth century, rulers had organized fast message systems for governing large territories. Herodotus described Persian couriers working through successive stages in the fifth century BCE. Suetonius later wrote that Augustus stationed couriers at intervals along Roman military roads before changing how dispatches traveled. Relay logic was already old.",
+        "But an imperial channel is not the same thing as an ordinary service. These systems primarily served rulers, officials, armies, and administration. Outside privileged routes, letters still traveled with merchants, diplomats, pilgrims, relatives, and anyone else already going the right way.",
+        "So the early modern problem was not that humanity had never scheduled movement across distance. It was that predictable long-distance exchange remained narrow, fragmented, and hard for most senders to use repeatedly.",
+        "A message could cross a continent. What many people could not yet do was build an ordinary plan around the next departure and the answer after that."
+      ],
+      "sources": [
+        {
+          "label": "Herodotus, Histories 8.98",
+          "url": "https://lexundria.com/hdt/8.98/mcly",
+          "note": "Primary account of Persian couriers arranged in successive stages; evidence that relay organization predates early modern Europe by roughly two millennia."
+        },
+        {
+          "label": "Suetonius, Life of Augustus 49.3",
+          "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Augustus*.html",
+          "note": "Primary account of Augustus stationing couriers at intervals along military roads and later using post-chaises for provincial dispatches."
+        },
+        {
+          "label": "Oxford Handbook — Travel and Communications",
+          "url": "https://academic.oup.com/edited-volume/28045/chapter-abstract/211950481",
+          "note": "Overview of early modern travel and communication, including the later postal systems that supported printed news."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "road-becomes-relay",
+      "title": "The road becomes a relay",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-11/02-road-becomes-relay.jpg",
+        "alt": "A sealed packet passes through a chain of post stations and fresh riders, turning one long journey into repeatable handoffs.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "A relay post changes a journey by dividing it into expected stages. Instead of asking one messenger or horse to complete the whole distance, a packet passes through known stations where another carrier, mount, or route can take over.",
+        "That mechanism was not a European invention of the sixteenth century. Ancient Persian and Roman administrations already used staged or supported official transport. The later change followed here is expansion and reconfiguration: denser routes, prepared handoffs, recurring dispatches, and access extending—unevenly—beyond a ruler’s immediate command.",
+        "The performance gain is organizational rather than biological. No horse needs to become dramatically faster. Reliability comes from the chain: maintained roads, recognized destinations, prepared handoffs, and people responsible for keeping the next stage available.",
+        "The road is no longer only terrain. For a growing set of users, it becomes reusable infrastructure."
+      ],
+      "sources": [
+        {
+          "label": "Rachel Midura — Itinerating Europe",
+          "url": "https://model-articles.rrchnm.org/articles/midura/",
+          "note": "Peer-reviewed study of printed itineraries and the pan-European relay network that expanded from northern Italy from the fifteenth century; also shows how route knowledge reached administrators, travelers, and correspondents."
+        },
+        {
+          "label": "University of Oregon — Postal Systems in Early Modern Europe",
+          "url": "https://mappinghistory.uoregon.edu/english/EU/EU22-01.html",
+          "note": "Historical map and account of the uneven expansion of early modern European postal routes and super-regional communication."
+        },
+        {
+          "label": "Oxford Handbook — Travel and Communications",
+          "url": "https://academic.oup.com/edited-volume/28045/chapter-abstract/211950481",
+          "note": "Overview of the development and effects of more efficient early modern postal systems."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "departure-gains-a-rhythm",
+      "title": "Departure gains a rhythm",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-11/03-departure-gains-a-rhythm.jpg",
+        "alt": "Riders leave a Milanese post station on successive named departure days, showing a recurring schedule on one early modern route.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "A maintained route is not yet a schedule. The deeper change arrives when dispatches recur. A sender can aim for a known departure. A receiving office can expect traffic on a recognizable rhythm. Miss one post, and another is supposed to follow.",
+        "In 1608, Milanese postal official Ottavio Codogno published a guide with more than two hundred routes; his expanded 1623 edition nearly doubled them. Readers could look up relay stages, distances, departure days, and connections. From Milan, for example, one courier left for Bergamo on Sunday morning and another for Venice on Wednesday.",
+        "That did not create one neat European timetable. Routes differed, access remained unequal, and war, weather, or local officials could break the promised rhythm. But on a working corridor, waiting was no longer entirely open-ended: a letter could be aimed at a departure and its likely passage measured against a later post.",
+        "Distance remains slow. It becomes schedulable."
+      ],
+      "sources": [
+        {
+          "label": "Rachel Midura — Itinerating Europe",
+          "url": "https://model-articles.rrchnm.org/articles/midura/",
+          "note": "Peer-reviewed account of Codogno's 1608 guide, its two hundred-plus relay routes, the expanded 1623 edition, and the uneven infrastructure represented by printed itineraries."
+        },
+        {
+          "label": "Treccani — Ottavio Codogno",
+          "url": "https://www.treccani.it/enciclopedia/ottavio-codogno_%28Dizionario-Biografico%29/",
+          "note": "Scholarly biographical entry documenting Codogno's route, departure-day, and connection tables, including Sunday Milan–Bergamo and Wednesday Milan–Venice departures."
+        },
+        {
+          "label": "English Historical Review — Postal Culture in Europe, 1500–1800",
+          "url": "https://academic.oup.com/ehr/article-abstract/133/563/969/5036936",
+          "note": "Review of scholarship identifying quantity and regularity, rather than a simple speed breakthrough, as the main early modern postal change."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "answer-becomes-planable",
+      "title": "A distant answer becomes plan-able",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-11/04-answer-becomes-planable.jpg",
+        "alt": "Two people in distant rooms plan connected actions around an outbound letter and a later return post.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Once dispatches recur, a letter can become part of a plan. A merchant sends an instruction before a market date. An official requests a report and reserves time for the reply. A scholar waits for a correspondent’s answer before revising an argument.",
+        "The exchange is still slow. A single question may require weeks or months. But the participants can begin coordinating around a sequence: send, travel, receive, answer, return.",
+        "That sequence changes what distance permits. People do not need to share one room or one moment to organize connected actions. A reply can shape a later decision because both sides expect another movement through the same chain.",
+        "The possibility remains unevenly distributed. Yet for those with access, a distant answer is becoming less like a fortunate event and more like an option that can be deliberately used."
+      ],
+      "sources": [
+        {
+          "label": "News Networks in Early Modern Europe",
+          "url": "https://www.jstor.org/stable/j.ctv5vddm4",
+          "note": "Evidence for interlocking correspondence and news networks that supported repeated exchange across distance."
+        },
+        {
+          "label": "University of Oregon — Postal Systems in Early Modern Europe",
+          "url": "https://mappinghistory.uoregon.edu/english/EU/EU22-01.html",
+          "note": "Frames postal development as a change in the possibilities of super-regional information delivery."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "every-route-creates-a-gate",
+      "title": "Every route creates a gate",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-11/05-every-route-creates-a-gate.jpg",
+        "alt": "Postal routes converge at an official checkpoint where a letter is inspected, while distant settlements remain faint beyond the main network.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "Predictability does not make a network neutral. A route connects some places more often than others. Fees and literacy restrict participation. States, courts, armies, and commercial institutions decide where stations operate, which traffic receives priority, and who is allowed to carry it.",
+        "The same centralization that makes delivery dependable can make communication inspectable. Authorities can delay, intercept, copy, censor, or refuse messages. A route may serve the center frequently while leaving peripheral settlements with longer waits or no reliable connection.",
+        "Infrastructure therefore creates capability and dependence together. The promise of scheduled arrival rests on gates that someone owns, funds, maintains, and controls.",
+        "A network can shrink distance while enlarging the power of the checkpoint."
+      ],
+      "sources": [
+        {
+          "label": "English Historical Review — Postal Culture in Europe, 1500–1800",
+          "url": "https://academic.oup.com/ehr/article-abstract/133/563/969/5036936",
+          "note": "Scholarly review covering postal cost, unequal material access, censorship, black cabinets, surveillance, and emerging claims to privacy."
+        },
+        {
+          "label": "Rachel Midura — Postal Intelligence",
+          "url": "https://ecommons.cornell.edu/entities/publication/552f6108-12f7-45ff-8258-a79aaa3e670d",
+          "note": "Open Cornell University Press history showing how sixteenth-century postal services extended governance, surveillance, commerce, and control over public information."
+        },
+        {
+          "label": "News Networks in Early Modern Europe",
+          "url": "https://www.jstor.org/stable/j.ctv5vddm4",
+          "note": "Scholarly treatment of the political and commercial institutions through which early modern information moved."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "planet-grows-circulation",
+      "title": "The planet grows circulation",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-11/06-planet-grows-circulation.jpg",
+        "alt": "Recurring postal routes connect distant early modern cities while an unopened bundle waits beside a printer, hinting at periodic news.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "Scheduled post does not create instant communication. Information still travels with bodies, animals, ships, roads, and weather. Nor does it create one equal public. Many routes serve states, courts, armies, and commerce before broader users can depend on them.",
+        "What changes is the presence of recurring connective tissue. Distant places can be joined by an expected cycle of departure, passage, arrival, and return. Institutions begin building practices around that cycle because the next movement is not merely imaginable. It is supposed to happen.",
+        "The planet has gained another information layer: not a shared mind, but a maintained rhythm through which separated minds can repeatedly exchange material traces.",
+        "That rhythm creates the next pressure. If information can arrive every week, what should arrive each time? Who chooses it, packages it, verifies it, and pays to keep it coming?",
+        "Those questions open Episode 12: When News Learned to Arrive."
+      ],
+      "sources": [
+        {
+          "label": "English Historical Review — Postal Culture in Europe, 1500–1800",
+          "url": "https://academic.oup.com/ehr/article-abstract/133/563/969/5036936",
+          "note": "Supports the episode's bounded state change: increasing quantity and regularity of postal circulation, not instant transmission."
+        },
+        {
+          "label": "Oxford Handbook — Travel and Communications",
+          "url": "https://academic.oup.com/edited-volume/28045/chapter-abstract/211950481",
+          "note": "Historical synthesis connecting early modern postal infrastructure to later printed news."
+        },
+        {
+          "label": "Jan Hillgaertner — The History of the English Newspaper",
+          "url": "https://research-repository.st-andrews.ac.uk/handle/10023/19734",
+          "note": "Research on the separate production, supply, subscription, reporting, and reader-context pressures created by periodic newspapers."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
+
