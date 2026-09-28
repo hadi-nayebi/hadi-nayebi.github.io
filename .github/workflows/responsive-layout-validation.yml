@@ -10,6 +10,7 @@ on:
       - 'js/theme-manager.js'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
+      - 'blog/observations/information-system-of-a-planet/**'
       - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'blog/b1/01-llms-are-not-the-agents.html'
       - 'agents.html'
@@ -32,6 +33,7 @@ on:
       - 'js/theme-manager.js'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
+      - 'blog/observations/information-system-of-a-planet/**'
       - 'blog/principles/the-ai-that-grows-with-you.html'
       - 'blog/b1/01-llms-are-not-the-agents.html'
       - 'agents.html'
@@ -93,6 +95,14 @@ jobs:
         with:
           name: content-collection-screenshots
           path: artifacts/responsive-layout/content-*.png
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Observation Episode 11 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-episode-11-screenshots
+          path: artifacts/responsive-layout/observation-episode-11-*.png
           if-no-files-found: error
           retention-days: 14
       - name: Upload diagram directory screenshots separately
