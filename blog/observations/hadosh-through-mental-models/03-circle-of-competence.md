@@ -67,7 +67,7 @@ Without that assignment, success and failure dissolve into “the agent did well
 
 A user-owned harness can preserve the assignment together with the result, the conditions, the check, and any correction. Repeated work then creates usable evidence. The harness can compare whether the assigned circle is becoming more reliable, whether it needs another check, or whether the responsibility should move.
 
-Responsibility names who or what owns the step, the check, and the exit. Competence is the evidence that the assigned participant can perform that responsibility under stated conditions. A circle helps place responsibility; it is not a synonym for responsibility. Keeping those two ideas separate gives improvement a target without confusing capability with authority.
+Responsibility records who owns each step, who checks its result, and who controls the exit. Competence is the evidence that the assigned participant can perform that responsibility under stated conditions. A circle helps place responsibility; it is not a synonym for responsibility. Keeping those two ideas separate gives improvement a target without confusing capability with authority.
 
 ## A Boundary in Practice
 
