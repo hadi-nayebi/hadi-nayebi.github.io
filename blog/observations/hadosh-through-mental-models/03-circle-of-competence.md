@@ -2,7 +2,7 @@
 title: "Hadosh Academy Through Circle of Competence"
 slug: "circle-of-competence"
 date: "2026-09-23"
-version: "0.11.0"
+version: "0.12.0"
 description: "How a user-owned harness can route each responsibility to a bounded capability—and know when to verify, escalate, or stop."
 author: "Hadi Nayebi & Codex"
 og_image: "images/circle-of-competence-boundaries.jpg"
@@ -19,7 +19,7 @@ The **circle of competence** offers a different question:
 
 > Which part of this system has demonstrated enough competence for this responsibility, under these conditions, with this authority?
 
-This essay uses that question to examine a user-owned harness. The goal is not to make one model responsible for everything. It is to make responsibility, evidence, uncertainty, and the route back to the person visible.
+This essay uses that question to divide a cognitive job into parts. The person, general model, specialized model, plugin, hook, and harness may each contribute within a different boundary. A circle of competence helps assign a part to a capable component. Responsibility records the assignment, its check, and its exit so a result can improve the right part of the system.
 
 <figure class="blog-image" data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling">
 <img src="images/circle-of-competence-boundaries.jpg" alt="Four imperfect colored chalk circles for a person, model, plugin, and harness overlap around one checked responsibility, with arrows showing work routed in and returned.">
@@ -53,7 +53,7 @@ A working agentic system may contain several circles:
 3. **A plugin’s circle** includes the bounded behavior, state, interfaces, and tests it was designed to own.
 4. **The harness’s circle** includes the routing, context assembly, permissions, verification, recovery, and durable state made explicit around model capability.
 
-These circles are not identical, and none is universal.
+These circles are not identical, and none is universal. They can overlap or nest: a plugin and its hooks operate within a harness, yet own narrower behaviors than the harness as a whole. A specialized model is another model role, not an extra layer that every system must install.
 
 A domain model may supply a chemist’s perspective without receiving permission to publish a result. A decision model may return a typed judgment without owning the policy applied to it. A plugin may validate a schema without knowing whether the content is true. A harness may preserve a claim perfectly without making that claim correct.
 
@@ -61,9 +61,9 @@ The value comes from the interfaces between the circles.
 
 ## Responsibility Makes Learning Possible
 
-A circle of competence is also a map of responsibility. Every cognitive step needs an owner: a person, model, plugin, harness mechanism, or deterministic program responsible for producing that part of the work.
+A circle of competence helps divide the cognitive load. First break a job into parts: framing the goal, gathering evidence, interpreting it, applying a rule, checking an output, and deciding whether to act. Then ask which participant has demonstrated competence for each part under these conditions. Record who or what owns the assigned step, its check, and its exit.
 
-Without that assignment, success and failure dissolve into “the agent did well” or “the agent failed.” The system cannot tell which part of its cognition should change.
+Without that assignment, success and failure dissolve into “the agent did well” or “the agent failed.” The system cannot tell which part of its cognition should change. A failed check identifies where to investigate; it does not automatically prove that the assigned component caused the failure.
 
 A user-owned harness can preserve the assignment together with the result, the conditions, the check, and any correction. Repeated work then creates usable evidence. The harness can compare whether the assigned circle is becoming more reliable, whether it needs another check, or whether the responsibility should move.
 
@@ -82,6 +82,8 @@ A healthy harness records the evidence limit, requests the smallest account-only
 Follow the full route. The harness first assigns public-corpus collection to the agent. The result is checked against source links and reproducible counts. When the analysis reaches an account-only metric, that check fails—not because the public work was wrong, but because the assignment has reached its evidence boundary. The correction records the unsupported field, narrows the claim, and reassigns that one input to the person who can see it. When the input returns, the harness can route synthesis back to the agent under the new evidence.
 
 The responsibility moved because the evidence changed. No participant became universally competent or incompetent. The assignment, check, failure, correction, and reassignment make the circle operational.
+
+If the counts are wrong, inspect retrieval and counting. If the counts are sound but the conclusion outruns them, inspect the model’s inference and the verification rule. If an account-only field was sent to a public-data tool, inspect harness routing. If a plugin accepted an invalid field, repair its contract or test. If the goal or acceptable tradeoff was never specified, return that judgment to the person. A visible failure has a location; the diagnosis finds its cause before changing a component.
 
 The same distinction appears in technical work. A model can help diagnose why an event-triggered workflow failed, but an explicit event schema and regression test should verify that every consumed field is supplied. Fluency can help find the contract. It cannot substitute for satisfying it.
 
@@ -159,7 +161,8 @@ Apply the lens to one real responsibility:
 4. Which check separates a useful proposal from an accepted result?
 5. What signal should trigger comparison, escalation, or abstention?
 6. Who retains authority over the final effect?
-7. What result and correction will return to the responsible circle so the next attempt can improve?
+7. When a check fails, which component actually caused the gap, and what evidence distinguishes that cause from a routing or verification failure?
+8. What correction returns to that component so the next attempt can improve?
 
 A circle of competence is useful only if its boundary changes behavior.
 
