@@ -79,10 +79,11 @@ for (const viewport of viewports) {
     }
 
     if (route.kind === 'observation') {
-      await page.waitForSelector('#episode-11 .episode-label');
-      const label = await page.locator('#episode-11 .episode-label').innerText();
-      const count = await page.locator('#episode-11 .slide-count').innerText();
-      const image = page.locator('#episode-11 .slide-visual img');
+      const slide = page.locator('#episode-11 .slide-shell');
+      await slide.locator('.episode-label').waitFor({ state: 'visible' });
+      const label = await slide.locator('.episode-label').innerText();
+      const count = await slide.locator('.slide-count').innerText();
+      const image = slide.locator('.slide-visual img');
       const imageLoaded = await image.evaluate(element =>
         element.complete && element.naturalWidth > 0 && element.naturalHeight > 0
       );
