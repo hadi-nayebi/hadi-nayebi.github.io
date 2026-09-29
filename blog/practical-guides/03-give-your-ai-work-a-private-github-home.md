@@ -246,6 +246,14 @@ before proposing work.
 - Accepted context can improve later. When new information changes an earlier decision or explanation, identify the affected files and propose a backward audit.
 ```
 
+### If you also use a ChatGPT Project
+
+ChatGPT Project instructions are a separate live setting. A repository `AGENTS.md` file does not update that setting by itself. If you use a ChatGPT Project, keep its instruction as a short entry point:
+
+> For this project, use the connected GitHub tool to read `[OWNER/REPOSITORY]`, then follow its `AGENTS.md`, `README.md`, and current state before proposing changes. If you cannot reach the repository, tell me. Ask before merging or publishing.
+
+Keep the detailed working agreement in the repository, where you can review and version it. A Project setting does not grant GitHub access or prove the agent read the files. Repeat the direct-connection and fresh-conversation tests below when the route or instructions change. See [OpenAI's Project instructions guide](https://help.openai.com/en/articles/10169521-projects-in-chatgpt) for the current setting.
+
 ### `context/current-state.md`
 
 Keep this short enough that a new conversation can recover the work quickly:
