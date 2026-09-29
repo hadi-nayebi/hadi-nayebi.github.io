@@ -128,14 +128,16 @@ for (const viewport of viewports) {
   });
 
   const fixedHeaderMask = await page.addStyleTag({ content: '#site-header { display: none !important; }' });
-  await page.locator('#if-you-also-use-a-chatgpt-project').evaluate(element => element.scrollIntoView({ block: 'start' }));
-  await page.screenshot({
-    path: path.join(artifactDir, `guide-03-project-instructions-${viewport.width}x${viewport.height}.png`)
-  });
-  await page.evaluate(() => window.scrollBy(0, 500));
-  await page.screenshot({
-    path: path.join(artifactDir, `guide-03-project-instructions-continuation-${viewport.width}x${viewport.height}.png`)
-  });
+  for (const [name, selector] of [
+    ['project-heading', '#if-you-also-use-a-chatgpt-project'],
+    ['project-introduction', '#if-you-also-use-a-chatgpt-project + p'],
+    ['project-example', '#if-you-also-use-a-chatgpt-project + p + blockquote'],
+    ['project-boundary', '#if-you-also-use-a-chatgpt-project + p + blockquote + p']
+  ]) {
+    await page.locator(selector).screenshot({
+      path: path.join(artifactDir, `guide-03-${name}-${viewport.width}x${viewport.height}.png`)
+    });
+  }
   for (const [name, selector] of [
     ['connection-test', '#part-7--test-the-direct-repository-connection ~ blockquote'],
     ['agent-handoff', '#copy-this-guided-conversation-instruction ~ blockquote'],
