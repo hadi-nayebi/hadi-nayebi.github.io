@@ -176,3 +176,11 @@ Verified on website PR #164 at head `ecd0f1c29dbb6d3c344a6cc17aed2392d5b4c49c`:
 - Final diff whitespace check against `main`: passed
 
 The responsive workflow and screenshot artifact are part of this PR so later guide changes can repeat the same checks. The merge and publication decision remains Hadi's.
+
+## September 29 — ChatGPT Project instruction boundary
+
+A later Academy operations job proposed a compact live ChatGPT Project router backed by versioned repository instructions. The public guide already taught `AGENTS.md` as a repository working agreement and required a direct connection test, but did not explain that a ChatGPT Project's live setting is a separate surface. This could make a reader assume the GitHub file updates the Project setting or grants access automatically.
+
+Added one optional subsection after the starter `AGENTS.md` example. It gives a short generic Project entry point, keeps detailed rules in the repository, says neither setting implies connector access, and points back to the guide's existing direct-connection and fresh-conversation tests. The Hadosh-specific 7,949-character Project block and internal job mechanics were not copied into this public beginner guide. Official OpenAI Projects documentation supports the separate live setting. Canonical Markdown and published HTML are paired; no CSS, JavaScript, navigation, or unrelated guide content changed.
+
+Verification pending: exact diff, source/HTML parity, website validators, and fresh phone/desktop inspection of the inserted subsection before release.
