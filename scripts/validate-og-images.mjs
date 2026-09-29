@@ -33,18 +33,32 @@ function metaAttributes(tag) {
 }
 
 function localSocialImage(value) {
-  if (!value) return null;
+  if (typeof value !== 'string' || value.trim() === '') {
+    return { target: null, error: 'requires a non-empty content value' };
+  }
+
+  let url;
+  try {
+    url = new URL(value, SITE_ORIGIN);
+  } catch {
+    return { target: null, error: 'contains an invalid image URL' };
+  }
+
+  if (url.origin !== SITE_ORIGIN) return { target: null, error: null };
+
   let pathname;
   try {
-    const url = new URL(value, SITE_ORIGIN);
-    if (url.origin !== SITE_ORIGIN) return null;
     pathname = decodeURIComponent(url.pathname);
   } catch {
-    return null;
+    return { target: null, error: 'contains malformed percent-encoding' };
   }
+
   const target = path.resolve(root, pathname.replace(/^\/+/, ''));
-  if (target !== root && !target.startsWith(`${root}${path.sep}`)) return null;
-  return target;
+  if (target !== root && !target.startsWith(`${root}${path.sep}`)) {
+    return { target: null, error: 'resolves outside the repository root' };
+  }
+
+  return { target, error: null };
 }
 
 const htmlFiles = walk(root).filter((file) => file.endsWith('.html'));
@@ -55,11 +69,17 @@ for (const file of htmlFiles) {
     const attrs = metaAttributes(tag);
     const key = (attrs.property || attrs.name || '').toLowerCase();
     if (!['og:image', 'twitter:image'].includes(key)) continue;
-    const target = localSocialImage(attrs.content);
-    if (!target) continue;
-    references.push({ page: rel(file), key, target: rel(target) });
-    if (!fs.existsSync(target) || !fs.statSync(target).isFile()) {
-      errors.push(`${rel(file)}: ${key} points to missing local file ${rel(target)}`);
+
+    const resolved = localSocialImage(attrs.content);
+    if (resolved.error) {
+      errors.push(`${rel(file)}: ${key} ${resolved.error}`);
+      continue;
+    }
+    if (!resolved.target) continue;
+
+    references.push({ page: rel(file), key, target: rel(resolved.target) });
+    if (!fs.existsSync(resolved.target) || !fs.statSync(resolved.target).isFile()) {
+      errors.push(`${rel(file)}: ${key} points to missing local file ${rel(resolved.target)}`);
     }
   }
 }
