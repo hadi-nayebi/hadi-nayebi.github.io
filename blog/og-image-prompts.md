@@ -26,8 +26,9 @@ There is no active five-image generation backlog at this path.
 
 `scripts/validate-og-images.mjs` scans public HTML, resolves same-origin
 `og:image` and `twitter:image` URLs to repository files, and fails when a
-referenced local card is absent. The site-navigation workflow runs both its
-positive/negative controls and the complete repository scan.
+referenced local card is absent, empty, or malformed. The site-navigation
+workflow runs one positive and four negative controls plus the complete
+repository scan.
 
 This record remains at the old path so repository links to the former brief
 resolve to corrected state instead of preserving a false production claim.
