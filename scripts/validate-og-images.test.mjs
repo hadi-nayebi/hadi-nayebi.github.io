@@ -5,8 +5,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
-const validator = path.resolve('validate-og-images.mjs');
+const validator = path.join(path.dirname(fileURLToPath(import.meta.url)), 'validate-og-images.mjs');
 
 function fixture({ image = true, stale = false } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'og-image-validator-'));
@@ -35,4 +36,3 @@ assert.equal(stale.status, 1);
 assert.match(stale.stderr, /stale missing-card claim returned/);
 
 console.log('Local social-card validator tests passed: 1 positive, 2 negative controls.');
-
