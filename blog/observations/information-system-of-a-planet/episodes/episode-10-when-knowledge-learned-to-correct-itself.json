@@ -1,0 +1,215 @@
+{
+  "number": 10,
+  "slug": "when-knowledge-learned-to-correct-itself",
+  "title": "When Knowledge Learned to Correct Itself",
+  "status": "review",
+  "published": "2026-09-19",
+  "deckline": "Printing made claims cheaper to multiply and catalogs made them findable. The resulting abundance exposed new selection, credibility, correction, and feedback bottlenecks.",
+  "objective": "Show how cheaper, higher-volume print changed the limiting problem from copying scarce texts to selecting, testing, and correcting abundant claims, and how early modern experimental communities linked witnessed demonstrations, written methods, correspondence, periodicals, criticism, and evolving editorial review—without pretending that one society invented science or that review guaranteed truth.",
+  "learning_outcomes": [
+    "Understand the post-addressability bottleneck: finding a claim is not the same as knowing whether it survives observation, experiment, criticism, or time.",
+    "See a recurring systems pattern: when an information technology lowers one cost or removes one bottleneck, greater volume and reach expose new limits in attention, selection, credibility, feedback, and correction.",
+    "See witnessed experiments, correspondence, journals, replication attempts, and editorial review as connected but imperfect correction layers.",
+    "Recognize that modern peer review did not appear fully formed in 1665; its institutions and purposes developed gradually.",
+    "Notice that corrigibility depends on access, instruments, skill, trust, and participation, so every knowledge network also has exclusions and blind spots."
+  ],
+  "continuity": "Episode 9 showed how cheaper, more consistent print expanded textual volume and made growing archives addressable through page numbers, indexes, bibliographies, catalogs, and cross-references. Episode 10 stays mainly in the seventeenth and eighteenth centuries and asks what happened when abundance and findability created new selection, credibility, testing, and correction pressures.",
+  "state_change": "Recorded knowledge becomes increasingly corrigible: a claim can circulate with methods and observations, meet criticism or attempted reproduction elsewhere, and return to the shared record as confirmation, qualification, dispute, or correction.",
+  "future_pressure": "The correction network still moves at the speed of meetings, printers, roads, horses, and ships. As participation and output grow, distance and delay become a new performance limit: how quickly can an observation, warning, measurement, or correction reach the people who need it?",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-10-when-knowledge-learned-to-correct-itself",
+  "slides": [
+    {
+      "id": "archive-learns-to-doubt",
+      "title": "The archive learns to doubt",
+      "read_minutes": 1.6,
+      "image": {
+        "src": "images/episode-10/01-archive-learns-to-doubt.jpg",
+        "alt": "A late-seventeenth-century scholar sits among open books containing conflicting astronomical and anatomical diagrams while a blank experiment notebook waits in a beam of light.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Episode 9 gave knowledge addresses. A reader could move from subject to catalog, catalog to shelf, book to page, and page to another book without walking every aisle of civilization's growing memory.",
+        "Printing had changed the economics of recorded memory. Once a page was composed, producing another copy required less labor than copying the whole text again by hand, and growing print networks put more texts into circulation. That solved part of the scarcity and copying problem while creating another systems pattern: lower production cost increased volume, greater volume strained attention and selection, and more competing claims made credibility and correction harder. The technology did not remove limits. It moved the bottleneck.",
+        "That made a new problem easier to see. Two reachable books could disagree. An old authority could be precise and wrong. A fresh report could be exciting and mistaken. A printer could reproduce an error with the same enthusiasm used to reproduce a discovery.",
+        "The archive had become better at storing and retrieving claims. It had not acquired an automatic truth filter. No index entry could tell a reader whether a comet had really appeared, whether a medicine worked, whether an instrument leaked, or whether a spectacular result survived a second look.",
+        "So the next information-layer change was not another container. It was a loop: claim, observation, challenge, reply, correction. Humans had practiced parts of that loop in many scholarly, medical, legal, craft, and religious traditions for centuries. Early modern print and experimental societies began coupling those parts into unusually visible networks. The archive was learning that one of its most valuable records might be: we checked, and the first answer did not hold."
+      ],
+      "sources": [
+        {
+          "label": "Stanford Encyclopedia of Philosophy — Scientific Method",
+          "url": "https://plato.stanford.edu/entries/scientific-method/",
+          "note": "Historical and philosophical overview showing that scientific method is a changing family of practices rather than one timeless recipe."
+        },
+        {
+          "label": "Cambridge University Press — The Royal Society and the Prehistory of Peer Review",
+          "url": "https://www.cambridge.org/core/journals/historical-journal/article/royal-society-and-the-prehistory-of-peer-review-16651965/93B903FD4D6561AA7224C62EE57B0C18",
+          "note": "Peer-reviewed history cautioning against projecting modern peer-review machinery backward onto early scientific publishing."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-10/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "facts-need-a-room",
+      "title": "Facts need a room",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-10/02-facts-need-a-room.jpg",
+        "alt": "Natural philosophers and instrument makers gather closely around a glass air pump during a witnessed experiment in a 1660s London meeting room.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "On 28 November 1660, after a lecture by Christopher Wren, a group in London agreed to form what became the Royal Society. It was not the first community to observe nature, compare remedies, record the sky, or challenge inherited claims. It was one institutional experiment among several emerging learned networks in Europe and beyond.",
+        "Its distinctive machinery joined meetings, instruments, demonstrations, argument, records, and publication. Fellows arranged weekly experiments. Robert Hooke served as Curator of Experiments, preparing demonstrations and maintaining devices. Craftspeople and instrument makers supplied knowledge that polished prose alone could not produce.",
+        "The Society later adopted the motto nullius in verba—commonly rendered as 'take nobody's word for it.' The phrase did not mean that testimony vanished. Most people in the room could not personally repeat every voyage, dissection, astronomical observation, or chemical trial. It meant that rank and reputation should not end the question: a claim should face observation, experiment, and discussion.",
+        "A meeting room therefore worked like a temporary verification surface. Witnesses could inspect an apparatus, dispute what they saw, ask for another trial, or record uncertainty. But the room was also a boundary. Membership, geography, patronage, language, gender, class, and access to equipment shaped who could enter and whose testimony traveled. Collective checking widened the evidence base while still leaving much of the planet outside the door."
+      ],
+      "sources": [
+        {
+          "label": "The Royal Society — Nullius in Verba",
+          "url": "https://artsandculture.google.com/story/the-royal-society-nullius-in-verba-the-royal-society/RQVBqbxeuY5HLg?hl=en",
+          "note": "Royal Society collection history covering the 1660 founding meeting, charter, motto, weekly demonstrations, Hooke's experimental role, instruments, and publishing."
+        },
+        {
+          "label": "Science Museum — Nullius in verba: science in the post-truth era",
+          "url": "https://blog.sciencemuseum.org.uk/nullius-in-verba-science-in-the-post-truth-era/",
+          "note": "Museum discussion of the motto's historical emphasis on evidence and experiment rather than deference to authority."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-10/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "room-becomes-journal",
+      "title": "The room becomes a journal",
+      "read_minutes": 1.7,
+      "image": {
+        "src": "images/episode-10/03-room-becomes-journal.jpg",
+        "alt": "At a seventeenth-century desk, sealed letters converge on an editor while printed scientific sheets and outgoing packets spread across a faint map of Europe.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A witnessed experiment could persuade the people present. The rest of the network needed a portable version of the event.",
+        "In March 1665, the Royal Society's first secretary, Henry Oldenburg, launched Philosophical Transactions. The Journal des sçavans had appeared in Paris weeks earlier with a broader scholarly range; the two periodicals helped establish a new rhythm in which recent observations and experiments could circulate as smaller, dated installments rather than waiting for a large book.",
+        "Oldenburg sat at the center of a wide correspondence network. Letters brought astronomical sightings, anatomical reports, experiments, books, rumors, and priority claims. He selected, summarized, translated, edited, and printed material, then sent the resulting issue back through the network. The journal was not yet a neutral pipe owned by an abstract institution. For decades it depended heavily on individual editors, their judgment, contacts, finances, and labor.",
+        "Still, the operating change was enormous. A local event could acquire a date, author, description, and reproducible printed form. Distant readers could compare the report with another observation, write back, dispute priority, or attempt the procedure. The meeting room had grown paper wings."
+      ],
+      "sources": [
+        {
+          "label": "The Royal Society — History of Philosophical Transactions",
+          "url": "https://royalsociety.org/journals/publishing-activities/publishing350/history-philosophical-transactions/",
+          "note": "Official history of the journal's March 1665 launch by Henry Oldenburg and its development as a scientific periodical."
+        },
+        {
+          "label": "PubMed Central — Celebrating 350 years of Philosophical Transactions",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4360094/",
+          "note": "Historical overview of Oldenburg's editorship, correspondence, journal practices, and long-term changes in scientific communication."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-10/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "recipe-meets-apparatus",
+      "title": "The recipe meets the apparatus",
+      "read_minutes": 2,
+      "image": {
+        "src": "images/episode-10/04-recipe-meets-apparatus.jpg",
+        "alt": "Two seventeenth-century laboratories attempt similar air-pump experiments with different glass vessels, fittings, leaks, and teams of skilled makers.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Print could carry a procedure farther than the apparatus itself. But a written method is a compressed package. It rarely contains every pressure of the hand, every material variation, every leak, every judgment about when a device is behaving normally, or every repair learned by the person who built it.",
+        "Robert Boyle's air-pump work made the problem visible. Assisted by Robert Hooke, Boyle published detailed accounts of experiments on rarefied air. Readers could inspect the sequence, the observations, and the instrument's intended behavior. Yet reproducing the result elsewhere required more than possessing the sentences.",
+        "Christiaan Huygens and others encountered difficulty with air-pump trials outside Boyle's immediate setting. Parts differed. Seals leaked. Instruments required skilled construction and operation. Boyle's elaborate descriptions helped create what historians call virtual witnessing: a reader could imagine the event closely enough to judge it. Actual replication remained expensive, social, and technically demanding.",
+        "This is not a failure of experimental knowledge. It is the lesson experimental knowledge teaches about itself. A result lives in a stack: question, apparatus, materials, procedure, operator skill, observation, interpretation, and report. When another laboratory obtains a different answer, the disagreement may expose an error—or reveal a hidden layer in the stack. Replication is not a photocopier. It is another experiment."
+      ],
+      "sources": [
+        {
+          "label": "The Royal Society — Nullius in Verba",
+          "url": "https://artsandculture.google.com/story/the-royal-society-nullius-in-verba-the-royal-society/RQVBqbxeuY5HLg?hl=en",
+          "note": "Collection history of Boyle and Hooke's air-pump work, experimental demonstrations, and instrument making at the early Society."
+        },
+        {
+          "label": "Harvard DASH — Pump and Circumstance: Robert Boyle's Literary Technology",
+          "url": "https://dash.harvard.edu/handle/1/3353827",
+          "note": "Influential history-of-science analysis of Boyle's written experimental reports, virtual witnessing, and the practical difficulty of replication."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-10/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "review-becomes-infrastructure",
+      "title": "Review becomes infrastructure",
+      "read_minutes": 1.9,
+      "image": {
+        "src": "images/episode-10/05-review-becomes-infrastructure.jpg",
+        "alt": "An eighteenth-century scientific paper moves across a long table through an author, secretary, committee readers, and printer while several hands mark questions and point back toward an experiment.",
+        "category": "I70-A30"
+      },
+      "paragraphs": [
+        "It is tempting to tell the next part as an origin myth: the journal appeared in 1665, peer review switched on, and science became self-correcting. History is less cooperative.",
+        "Oldenburg consulted other people, and the Society sometimes examined material before publication. But Philosophical Transactions began largely as his private editorial venture. In 1752, the Royal Society formally took responsibility for the journal and created a Committee of Papers to decide what would be printed. Even then, selection did not function exactly like modern anonymous specialist review, and publication did not certify that a claim was true.",
+        "Refereeing practices expanded unevenly during the nineteenth and twentieth centuries as fields specialized, submissions multiplied, and editors needed judgments beyond their own expertise. Different journals used different systems. Reports could improve a paper, reject weak work, protect a field from noise, enforce fashion, miss fraud, or reproduce the prejudices of the people allowed to judge.",
+        "The important system change is narrower than the myth. Criticism gained a durable place in the publication pipeline. A claim increasingly had to pass through other minds before entering a shared record, and those judgments could themselves be recorded, debated, and redesigned. Review became infrastructure: useful, fallible, and never the last word."
+      ],
+      "sources": [
+        {
+          "label": "Cambridge University Press — The Royal Society and the Prehistory of Peer Review",
+          "url": "https://www.cambridge.org/core/journals/historical-journal/article/royal-society-and-the-prehistory-of-peer-review-16651965/93B903FD4D6561AA7224C62EE57B0C18",
+          "note": "Detailed history distinguishing early editorial consultation, the 1752 Committee of Papers, later refereeing, and modern peer-review mythology."
+        },
+        {
+          "label": "Carnegie Mellon University — Peer Review",
+          "url": "https://ethos.lps.library.cmu.edu/article/id/38/",
+          "note": "Encyclopedia history tracing the gradual development and changing purposes of editorial peer review."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-10/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "knowledge-becomes-corrigible",
+      "title": "Knowledge becomes corrigible",
+      "read_minutes": 1.8,
+      "image": {
+        "src": "images/episode-10/06-knowledge-becomes-corrigible.jpg",
+        "alt": "A preindustrial web of letters, journals, experiments, and diagrams glows across a map of Earth as one flawed diagram is crossed out and replaced while unconnected observers remain beyond the lit network.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "By now the correction loop had several layers. A person observed or experimented. A local group witnessed and argued. A report entered correspondence or print. Distant readers compared it with other records, attempted related work, and returned criticism or confirmation. Editors and societies selected some of that traffic for wider circulation. Later readers could reopen the case.",
+        "No layer guaranteed truth. Witnesses could agree and still be wrong. A beautiful apparatus could hide a defect. A journal could amplify fashion. A reviewer could block an outsider. A replicated mistake could become a tradition. The system's strength came from keeping claims exposed to more than one route of correction—not from making any one checkpoint sacred.",
+        "The planet's external memory was therefore changing its relationship to error. A wrong claim no longer had to vanish for the archive to improve. It could remain visible beside a rebuttal, a revised measurement, a failed reproduction, a new edition, or a better explanation. Knowledge became less like a finished monument and more like a maintained structure.",
+        "But maintenance was slow. A letter crossed borders at the speed of transport. A journal waited for composition, printing, and delivery. Instruments and books clustered where money, institutions, and empire carried them. The correction network had learned to update itself, unevenly. Its next performance limit was latency: how quickly could a warning, observation, standard, or correction move around the planet?"
+      ],
+      "sources": [
+        {
+          "label": "PubMed Central — Celebrating 350 years of Philosophical Transactions",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4360094/",
+          "note": "Historical overview of a long-running correction and communication institution, including changing editorial and publication practices."
+        },
+        {
+          "label": "Cambridge University Press — The Royal Society and the Prehistory of Peer Review",
+          "url": "https://www.cambridge.org/core/journals/historical-journal/article/royal-society-and-the-prehistory-of-peer-review-16651965/93B903FD4D6561AA7224C62EE57B0C18",
+          "note": "Evidence that scientific review developed through changing institutions rather than one timeless validation gate."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-10/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}

@@ -32,7 +32,7 @@ def figures_by_source(body: str) -> dict[str, str]:
     return figures
 
 
-def preserve_figure_shells(rendered: str, current: str) -> str:
+def preserve_figure_shells(rendered: str, current: str, allow_removed: bool = False) -> str:
     """Keep page-only figure attributes while accepting Markdown text updates."""
     preserved = figures_by_source(current)
     seen: set[str] = set()
@@ -74,7 +74,7 @@ def preserve_figure_shells(rendered: str, current: str) -> str:
 
     result = re.sub(r"<figure\b[\s\S]*?</figure>", replace, rendered)
     missing = sorted(set(preserved) - seen)
-    if missing:
+    if missing and not allow_removed:
         raise RuntimeError(f"rendered Markdown dropped existing figure(s): {', '.join(missing)}")
     return result
 
@@ -100,6 +100,11 @@ def main() -> int:
     parser.add_argument("markdown", type=Path)
     parser.add_argument("html", type=Path)
     parser.add_argument("--check", action="store_true", help="report drift without writing")
+    parser.add_argument(
+        "--allow-removed-figures",
+        action="store_true",
+        help="allow a deliberate editorial removal of figures absent from canonical Markdown",
+    )
     args = parser.parse_args()
 
     markdown = args.markdown.resolve()
@@ -116,7 +121,9 @@ def main() -> int:
 
     current_html = html_file.read_text()
     before, current_body, after, content_indent = bounded_body(current_html)
-    new_body = preserve_figure_shells(new_body, current_body)
+    new_body = preserve_figure_shells(
+        new_body, current_body, allow_removed=args.allow_removed_figures
+    )
     updated = before + content_indent + new_body + after
     version = metadata.get("version")
     if version:

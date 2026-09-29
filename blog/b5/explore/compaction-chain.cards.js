@@ -46,7 +46,7 @@ window.DECK_INFO = {
     'ctx-window': {
         title: 'the context window', tag: 'state',
         what: 'The model’s finite conversation buffer. It fills every turn, and past a few hundred thousand tokens the seed’s reasoning quality starts to drop.',
-        why: 'Chat is the one place the seed’s memory does NOT live by design — it is capped and lossy at compaction. Watching how full it is, and acting early, is the whole reason brain_guard exists.',
+        why: 'This Seed does not treat chat as its durable source of truth: its context is capped and lossy at compaction. Watching how full the active window is, and acting early, is why brain_guard exists.',
         hood: 'Measured by the shared <code>plugins/lib/context-helper/context-helper.sh</code> (<code>compute_context_size</code> reads the transcript’s last <code>.message.usage</code>). The 1M window is <code>MAX_CONTEXT_TOKENS</code> in <code>config.conf</code> — the DENOMINATOR the gate divides the current total context by to get the %-of-window it triggers on (<code>pct = current × 100 ÷ MAX_CONTEXT_TOKENS</code>). Source: <code>brain-memory.md</code> · "context-helper.sh".'
     },
     'compaction-file': {
@@ -200,7 +200,7 @@ window.DECK_INFO = {
     'clear-inject': {
         title: 'clear + inject', tag: 'action',
         what: 'The session-boundary operation: end the saturated session and start a fresh one carrying exactly the sealed cognition — nothing more, nothing lost. The command is escape, then clear, then the new-session instruction plus the compaction file.',
-        why: 'This is the seed’s one and only way to compact — it replaces native /compact entirely. The seed’s mind lives on disk, so the clear sheds only the conversation trace, not the cognition.',
+        why: 'This is this historical Seed’s compaction path — it replaces native /compact entirely. Its operational continuity is reconstructed from project files, so the clear sheds the conversation trace without discarding the checkpointed cognition.',
         hood: 'Command: <code>esc + /clear + &lt;new-session instruction&gt; + &lt;compaction file&gt; + Enter</code>. Inject is state-keyed — SUPPRESSED in gmode (the gmode arc). Source: <code>brain-memory.md</code> · "Clear + inject".'
     },
     'dispatch-mode': {
@@ -251,7 +251,7 @@ window.DECK_INFO = {
     /* ---- Card 6: the wake reflex ---- */
     'wake-reflex': {
         title: 'the compact-wake reflex', tag: 'action',
-        what: 'The moment a clear+inject births the fresh session, a hook deterministically re-grounds the seed in what it was doing — exploiting that the seed’s mind lives on disk.',
+        what: 'The moment a clear+inject births the fresh session, a hook deterministically re-grounds the Seed from its disk-backed checkpoint.',
         why: 'A SessionStart hook can inject context but cannot start a turn — so the reflex makes orientation DETERMINISTIC even if the follow-up paste mis-fires: the next prompt of any kind arrives into an already-grounded session.',
         hood: '<code>compact-wake.sh</code> on <code>SessionStart(source=clear)</code>; distinct from <code>session-init.sh</code> (which handles <code>source=startup|resume</code>). Source: <code>brain-memory.md</code> · "Compact-wake reflex".'
     },
@@ -599,7 +599,7 @@ window.DECK_CARDS = {
             { from: 'wake-chain', to: 'prior-summary', kind: 'hard', label: 'loads' }
         ],
         stickies: [
-            { x: 640, y: 360, text: 'The seed’s mind lives ON DISK — the clear sheds only the conversation trace, never the cognition.', aha: true }
+            { x: 640, y: 360, text: 'This Seed reconstructs continuity from project files — the clear sheds the conversation trace, not its checkpoint.', aha: true }
         ],
         navHints: { left: 'clear + inject', right: 'the two-tier chain', down: 'optional deepening' }
     },

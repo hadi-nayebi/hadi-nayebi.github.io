@@ -11,6 +11,7 @@ on:
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
+      - 'blog/b1/01-llms-are-not-the-agents.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -32,6 +33,7 @@ on:
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
+      - 'blog/b1/01-llms-are-not-the-agents.html'
       - 'agents.html'
       - 'agents/**'
       - 'start-here.html'
@@ -75,6 +77,14 @@ jobs:
         with:
           name: responsive-layout-screenshots
           path: artifacts/responsive-layout
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Essay 1 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: essay1-responsive-screenshots
+          path: artifacts/responsive-layout/essay1-*.png
           if-no-files-found: error
           retention-days: 14
       - name: Upload Content screenshots separately

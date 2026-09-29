@@ -1570,8 +1570,8 @@ body:has(.blog-layout) .container {
 .tag {
     padding: 0.25rem 0.75rem;
     background: rgba(99, 102, 241, 0.1);
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    color: var(--accent-light);
+    border: 1px solid var(--accent-light);
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1586,6 +1586,31 @@ body:has(.blog-layout) .container {
 
 .article-body p {
     margin-bottom: 1.5rem;
+}
+
+.article-body .essay-abstract {
+    margin: 0 0 2rem;
+    padding: 1.25rem 1.5rem;
+    background: #171c2e;
+    border: 1px solid #454267;
+    border-left: 4px solid #a5b4fc;
+    border-radius: 0 12px 12px 0;
+}
+
+.article-body .essay-abstract-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #c7d2fe;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.article-body .essay-abstract p {
+    margin: 0;
+    color: #eef0f7;
+    line-height: 1.7;
 }
 
 /* Blog Sidebar */
@@ -1639,7 +1664,16 @@ body:has(.blog-layout) .container {
 .article-meta-tags {
     margin-left: auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .article-meta-tags {
+        width: 100%;
+        margin-left: 0;
+        flex-wrap: wrap;
+    }
 }
 
 .article-authors {
@@ -6719,7 +6753,21 @@ body.lightbox-open {
     color: #e9ddff;
 }
 
+.page-about .about-content > .badge,
+.page-about .bio-heading {
+    color: #e9ddff;
+}
+
 /* Keep the Services invitation legible on the hero surface. */
 .page-services .services-hero-copy .badge {
     color: #e9ddff;
+}
+
+
+@media (max-width: 768px) {
+    .article-meta-tags {
+        width: 100%;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
 }
