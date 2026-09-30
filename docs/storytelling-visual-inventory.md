@@ -83,11 +83,18 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/05-bodleian-catalog.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/06-encyclopedie-crosslinks.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-09/07-addresses-and-omissions.jpg` | I10-A90 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/01-archive-learns-to-doubt.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/02-facts-need-a-room.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/03-room-becomes-journal.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/04-recipe-meets-apparatus.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/05-review-becomes-infrastructure.jpg` | I70-A30 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-10/06-knowledge-becomes-corrigible.jpg` | I10-A90 | EpisodeJSON | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/first-principles-hero.jpg` | I70-A30 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/context-becomes-personal-software.jpg` | I50-A50 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/one-objective-many-patterns.jpg` | I90-A10 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/01-first-principles.html` | `images/pattern-crystallization-loop.jpg` | I70-A30 | HTML | Yes |
 | `blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html` | `images/map-territory-loop.png` | I90-A10 | HTML | Yes |
+| `blog/observations/hadosh-through-mental-models/03-circle-of-competence.html` | `images/circle-of-competence-boundaries.jpg` | I90-A10 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/the-ai-that-grows-with-you-hero.jpg` | I30-A70 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/browser-as-an-open-gateway.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/reopening-the-social-web.jpg` | I70-A30 | HTML | Yes |
@@ -95,11 +102,7 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/five-protections-of-a-personal-harness.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/shared-anatomy-personal-organisms.jpg` | I50-A50 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/action-space-markov-chain-b1-2.png` | I90-A10 | HTML | Yes |
-| `blog/b1/01-llms-are-not-the-agents.html` | `images/claude-md-hierarchy-b1-6.jpg` | I90-A10 | HTML | Yes |
-| `blog/b1/01-llms-are-not-the-agents.html` | `images/claude-md-working-memory-b1-3.png` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/hooks-and-action-space-b1-4.png` | I90-A10 | HTML | Yes |
-| `blog/b1/01-llms-are-not-the-agents.html` | `images/llm-engine-agent-directory-b1-1.png` | I70-A30 | HTML | Yes |
-| `blog/b1/01-llms-are-not-the-agents.html` | `images/one-brain-many-engines-b1-5.jpg` | I70-A30 | HTML | Yes |
 | `blog/b2/02-we-could-have-had-agi.html` | `images/seed-agent-growth-b2-1.png` | I50-A50 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/cognitive-metabolism-b3_1-3.png` | I90-A10 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/folder-of-specialists-b3_1-1.png` | I70-A30 | HTML | Yes |
@@ -167,3 +170,4 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 - `assets/images/crime-cartography-profile.png`: project/channel mark, not a storytelling illustration.
 - Inline SVG charts in `projects/crime-cartography.html`: functional data examples, not generated story artwork.
 - Open Graph images referenced only through metadata: social previews, not displayed page slots.
+
