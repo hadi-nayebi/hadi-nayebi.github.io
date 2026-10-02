@@ -62,6 +62,7 @@ function requireHiddenElement(relativePath, source, id) {
 
 const syllabus = read('start-here-agent.md');
 const page = read('start-here.html');
+const readme = read('README.md');
 
 validateAcademyLinks('start-here-agent.md', syllabus);
 
@@ -121,6 +122,13 @@ forbidText('start-here.html', page, 'Agent operating rule');
 forbidText('start-here.html', page, '<span>Agent instruction</span>');
 forbidText('start-here.html', page, '<span>Agent phase');
 forbidText('start-here.html', page, '>For agents<');
+
+requireText('README.md', readme, 'The primary human entry point is');
+requireText('README.md', readme, 'The canonical agent entry point is');
+requireText('README.md', readme, 'Read https://hadi-nayebi.github.io/start-here-agent.md as your complete Phase 0–9 operating guide.');
+requireText('README.md', readme, 'Use https://hadi-nayebi.github.io/start-here.html as the human-facing map we can read together.');
+forbidText('README.md', readme, 'It serves two audiences at once');
+forbidText('README.md', readme, 'Read https://hadi-nayebi.github.io/start-here.html and its complete Phase 0–9 agent syllabus.');
 
 const humanPath = page.indexOf('id="human-path"');
 const agentHandoff = page.indexOf('id="continue-with-agent"');
