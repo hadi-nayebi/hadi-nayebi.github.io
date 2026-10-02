@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "title": "Hadosh Academy Canonical Abstraction Library",
   "purpose": "A shared, framework-agnostic context for understanding and building local, inspectable, user-owned AI harnesses. Each term gives people and agents one current meaning to work from.",
-  "updated": "2026-09-23",
+  "updated": "2026-09-25",
   "definitionStates": {
     "draft": "Open to revision.",
     "consolidated": "Accepted as shared context for new work."
@@ -41,11 +41,11 @@
       "name": "Runtime",
       "slug": "runtime",
       "status": "draft",
-      "definition": "A runtime is the operational environment that connects a model to context, tools, processes, interfaces, and execution. It starts or resumes sessions, assembles model input, exposes available actions, returns results, and may enforce permissions or lifecycle controls. A CLI, local server, desktop application, API orchestrator, or agent framework can act as a runtime. The runtime is not the model and is not the complete harness. Its capabilities determine which behaviors can be implemented honestly: an instruction can request a restriction, but only the runtime or another deterministic mechanism can guarantee a block, protected action, atomic update, or enforced permission boundary.",
+      "definition": "A runtime is active execution machinery that turns stored capability and harness structure into running behavior. Because the word is overloaded, Hadosh Academy qualifies it when the distinction matters. A model runtime executes or provides model inference. An agent runtime activates and orchestrates harness mechanisms around that capability: it assembles selected context, carries sessions or events, exposes permitted tools, invokes models, applies available control points, and returns results and evidence for verification. A runtime is not the complete harness; durable instructions, memory, jobs, identity, authority, and history can remain while no runtime is active. A command-line interface may launch, attach to, or control a runtime, but the interface is not itself the execution machinery. Model and agent runtimes may be local, hosted, distributed, embedded, or composed across services. Their location, custody, enforcement capabilities, and failure boundaries should be explicit. Instructions can request behavior, but only runtime or other deterministic harness mechanisms can guarantee a block, protected action, atomic update, or enforced permission boundary.",
       "openQuestions": [
-        "Where should the runtime boundary be drawn when execution is divided among a CLI, local server, provider API, and operating system?",
-        "Which enforcement capabilities are necessary before a runtime can honestly support consequential agent action?",
-        "Which runtime behaviors must be portable, and which may remain adapter-specific?"
+        "How should model-runtime and agent-runtime responsibility be reported when inference, orchestration, tools, and state span several services?",
+        "Which enforcement capabilities are necessary before an agent runtime can honestly support consequential action?",
+        "Which continuity state belongs to an active runtime, and which must remain in the durable harness so the agent can recover after execution stops?"
       ]
     },
     {
@@ -56,14 +56,25 @@
       "openQuestions": []
     },
     {
+      "name": "Plugin",
+      "slug": "plugin",
+      "status": "draft",
+      "definition": "A plugin is a bounded, composable, separately improvable harness module with one scoped responsibility. It may contribute instructions, context selection or injection, state, triggers or hooks, tool adapters, permission relationships, lifecycle rules, outputs, and verification, but no single file shape or mechanism is required. The runtime may load, invoke, or provide control points for a plugin; runtime, hook, and plugin are not synonyms. The harness retains the surrounding authority, routing, and source-of-truth boundaries, while the plugin owns only its declared scope. A dependable plugin makes its inputs, state, effects, failure behavior, and evidence inspectable enough to remove, replace, or adapt it without silently redefining the rest of the agent. Plugin portability therefore lives first in its responsibility and behavioral contract. Its concrete hooks, commands, files, APIs, and event wiring may remain runtime-specific.",
+      "openQuestions": [
+        "What minimum separability or removability distinguishes a plugin from an internal harness component?",
+        "Which parts of plugin anatomy must be declared before its behavioral contract can be adapted across runtimes?",
+        "How should a plugin's authority remain bounded when it registers hooks, exposes tools, or updates shared harness state?"
+      ]
+    },
+    {
       "name": "Agent",
       "slug": "agent",
       "status": "draft",
-      "definition": "An agent is model capability operating through a runtime and harness toward a bounded responsibility. The term names the acting system, not the model alone. An agent can interpret supplied state, make or propose decisions, use permitted tools, update owned state, communicate, and advance work under defined authority and verification. Its responsibility, permissions, and stopping conditions come from the user and harness. The same model can therefore animate many distinct agents because each harness supplies different context, tools, constraints, state, and accumulated experience. An agent should extend the user’s agency rather than silently becoming the owner of the user’s purposes.",
+      "definition": "An agent is a persistent, bounded, governed system formed from model capability and a harness with durable identity, responsibilities, state, authority, tools, memory, and verification. The term names the composed system, not the model, harness, runtime, interface, or one conversation alone. Its identity can persist while no runtime is active because the harness can preserve the structures that make its responsibilities and history distinct. When an agent runtime activates that composition with selected context, the result is an active agent session or instance. One agent may therefore continue across restarts, model substitutions, and several interfaces, while one model can animate many distinct agents. An agent can interpret supplied state, propose or make bounded decisions, use permitted tools, update owned state, communicate, and advance work only within the authority and stopping conditions established by the user and harness. It should extend the user’s agency rather than silently becoming the owner of the user’s purposes.",
       "openQuestions": [
         "What makes one bounded responsibility a distinct agent rather than a job, plugin, or component inside a larger agent?",
-        "How much persistence is required before a system should be called an agent?",
-        "How should cooperating model sessions be described when they share one harness and authority boundary?"
+        "What durable identity evidence distinguishes a dormant agent from a reusable harness template that has not yet been assigned responsibility?",
+        "How should cooperating sessions or model roles be described when they share one agent identity and authority boundary?"
       ]
     },
     {
