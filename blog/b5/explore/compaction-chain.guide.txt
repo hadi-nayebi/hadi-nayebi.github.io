@@ -14,12 +14,12 @@ Step three is the compaction file itself. This is not a summary of the work. It 
 
 Step four is the finalization seal. Before any session boundary, an ordered quality pass runs: it deduplicates, fills any empty section from the live session, folds the file below a target size, then stamps it sealed. It is a quality gate, not a summarizer. It invents nothing new. Crucially, the seal aims below the size band that would block the next session's first read — so the fresh session that injects the file can always open it.
 
-Step five is clear plus inject. This is the session boundary itself. The seed ends the saturated session and starts a fresh one carrying exactly the sealed cognition. The command is escape, then slash-clear, then the new-session instruction and the compaction file. This replaces native compact entirely. The seed's mind lives on disk, so the clear sheds only the conversation trace, never the cognition.
+Step five is clear plus inject. This is the session boundary itself. The seed ends the saturated session and starts a fresh one carrying exactly the sealed cognition. The command is escape, then slash-clear, then the new-session instruction and the compaction file. This replaces native compact entirely. This historical Seed reconstructs operational continuity from project files, so the clear sheds the conversation trace without discarding its checkpointed cognition.
 
 Step six is the wake reflex. The moment a clear plus inject births the fresh session, a hook fires. It resets the context tier counter, injects the focused job and current phase, re-plays the phase's entry voice so the seed wakes into the right cognitive state, and loads the sealed compaction file off disk. Orientation is deterministic even if the follow-up paste misfires.
 
 Step seven closes the chain: the two-tier Prior Summary. A job can run across an unlimited number of sessions. The first session opens with just a template. The second carries the last sealed file in full. From the third session on, each session injects the last sealed file plus a rolling summary of all prior sessions. That single rolling summary absorbs the entire history behind it. Session thirty still knows what session two learned, at a fixed cost.
 
-That is the chain. Two ramps, one file, one seal, one boundary, one reflex, one rolling summary. The seed's mind lives on disk — so a clear sheds only the conversation trace, never the cognition.
+That is the chain. Two ramps, one file, one seal, one boundary, one reflex, one rolling summary. This historical Seed reconstructs operational continuity from project files — so a clear sheds the conversation trace without discarding its checkpointed cognition.
 
 Press the right arrow to begin at step one.
