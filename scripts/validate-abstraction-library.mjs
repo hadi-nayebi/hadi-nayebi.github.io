@@ -43,6 +43,21 @@ for (const term of library.terms) {
   }
 }
 
+const sitemap = fs.readFileSync("sitemap.xml", "utf8");
+const canonicalTermPrefix = "https://hadi-nayebi.github.io/agents/abstractions/terms/";
+const listedTermUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
+  .map(match => match[1])
+  .filter(url => url.startsWith(canonicalTermPrefix));
+const expectedTermUrls = new Set(library.terms.map(term => `${canonicalTermPrefix}${term.slug}.html`));
+
+unique(listedTermUrls, "abstraction sitemap URL");
+for (const url of expectedTermUrls) {
+  if (!listedTermUrls.includes(url)) errors.push(`missing abstraction sitemap URL: ${url}`);
+}
+for (const url of listedTermUrls) {
+  if (!expectedTermUrls.has(url)) errors.push(`stale abstraction sitemap URL: ${url}`);
+}
+
 if (errors.length) {
   console.error("Abstraction-library validation FAILED:\n" + errors.map(error => "  - " + error).join("\n"));
   process.exit(1);

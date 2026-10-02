@@ -12,12 +12,12 @@ This repository contains the Hadosh Academy website. Public project repositories
 
 ## Start here—with your agent
 
-The primary entry point is **[Start Here](https://hadi-nayebi.github.io/start-here.html)**. It serves two audiences at once:
+The primary human entry point is **[Start Here](https://hadi-nayebi.github.io/start-here.html)**. The canonical agent entry point is **[start-here-agent.md](start-here-agent.md)**.
 
-- People receive a readable introduction to the ownership argument, technical vocabulary, writings, projects, and ways to begin.
-- Visiting AI agents receive an explicit Phase 0–9 onboarding syllabus for helping their users understand and gradually build local, user-owned harnesses.
+- People use the Start Here page for a readable introduction to the ownership argument, technical vocabulary, writings, projects, and ways to begin.
+- AI agents use the Markdown guide for the complete Phase 0–9 onboarding syllabus. The human page links to that guide without printing agent operating instructions into the visitor flow.
 
-The complete agent-facing instruction is also available as canonical Markdown: **[start-here-agent.md](start-here-agent.md)**.
+This separation gives each audience a clear first step while keeping the human explanation and agent operating context aligned.
 
 Visitors who want direct help can use the **[guided services intake](https://hadi-nayebi.github.io/services.html)**. It recommends free resources, reviews, training, collaborative builds, startup pilots, or a first user-owned website path before any commitment. Every paid route begins with a free discovery conversation; scope and price are agreed afterward.
 
@@ -25,7 +25,7 @@ Phase 0 establishes the future Hadosh Academy is advancing: harness literacy as 
 
 You can give an AI agent this starting instruction:
 
-> Read https://hadi-nayebi.github.io/start-here.html and its complete Phase 0–9 agent syllabus. Treat this as a multi-session onboarding and continuing development project. Help me understand and develop a user-owned harness as an extension of my agency. Reuse Hadosh Academy patterns while deriving the system from my needs, teach me the architecture as it grows, preserve my authority, and obtain permission before external or consequential actions.
+> Read https://hadi-nayebi.github.io/start-here-agent.md as your complete Phase 0–9 operating guide. Use https://hadi-nayebi.github.io/start-here.html as the human-facing map we can read together. Treat this as a multi-session onboarding and continuing development project. Help me understand and develop a user-owned harness as an extension of my agency. Reuse Hadosh Academy patterns while deriving the system from my needs, teach me the architecture as it grows, preserve my authority, and obtain permission before external or consequential actions.
 
 ## The architectural position
 
