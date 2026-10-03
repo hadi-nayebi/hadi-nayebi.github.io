@@ -70,13 +70,33 @@ jobs:
           fs.writeFileSync(output+'/report.json',JSON.stringify(report,null,2));
           const failures=report.filter(row=>row.cards<2 || row.gaps.some(gap=>gap<15.5) || row.overflow);
           console.log(JSON.stringify({width,routes:report.length,failures}));
+          const names=fs.readdirSync(output);
+          const cards=names.filter(name=>name.endsWith('-sidebar.png') || name==='report.json');
+          const examples=['content.html-full.png','blog_b6_06_6-verify.html-full.png','blog_b1_01-llms-are-not-the-agents.html-full.png'];
+          for(const group of [cards,examples]) {
+            const bytes=group.reduce((sum,name)=>sum+fs.statSync(path.join(output,name)).size,0);
+            if(bytes>28*1024*1024) throw new Error('Evidence bundle exceeds the 28 MiB transport budget: '+bytes);
+          }
           if(failures.length)process.exit(1);
           JS
       - name: Upload viewport-sized sidebar evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: shared-sidebar-${{ matrix.width }}
-          path: artifacts/sidebar-evidence
+          name: shared-sidebar-${{ matrix.width }}-cards
+          path: |
+            artifacts/sidebar-evidence/*-sidebar.png
+            artifacts/sidebar-evidence/report.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload representative full-page evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shared-sidebar-${{ matrix.width }}-pages
+          path: |
+            artifacts/sidebar-evidence/content.html-full.png
+            artifacts/sidebar-evidence/blog_b6_06_6-verify.html-full.png
+            artifacts/sidebar-evidence/blog_b1_01-llms-are-not-the-agents.html-full.png
           if-no-files-found: error
           retention-days: 14
