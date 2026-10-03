@@ -1,7 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "path": "blog/observations/information-system-of-a-planet/episodes/episode-04-when-a-message-could-become-almost-anything.json",
-  "source_sha256": "6e4d3436b9e79ec128d10ac9ee8e4da40f9f27099ddaf42d06b4e1d9bfd95e29",
+  "artifact_sha256": "5d9fd9071139702d855ddd1b19fbbef23d886e341ceeaf4c22e7dd9460285245",
+  "narration_sha256": "72fa4320fd035cd12b91b4356f49e6e11c72321530125c6fa7c0b8677909de43",
   "reviewed_at": "2026-09-11",
   "report": "docs/narration-source-review/observations/episode-04-when-a-message-could-become-almost-anything.md",
   "review": {
