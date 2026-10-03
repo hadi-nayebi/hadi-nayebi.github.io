@@ -83,6 +83,18 @@ for (const width of [360, 412, 768, 1440]) {
       await page.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${width}-full.png`),fullPage:true});
       await page.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${width}-fold.png`)});
     }
+    // Inspect each repaired reading component at readable scale, beside the full-page record.
+    const repairSelectors=['.article-comments','.milestone-card','.about-content','.blog-category-heading',
+      '.project-three-grid','.project-principles-grid','.seed-reference-map','.project-participate',
+      '.family-inspiration-text','.series-hero','.series-entry','.observation-empty',
+      '.access-hero','.access-expectations','.support-activity-panel','.services-offer','.services-free-paths','.update-why'];
+    if(changedRoutes.has(route)) for(const selector of repairSelectors) {
+      let index=0;
+      for(const component of await page.locator(selector).all()) {
+        if(!await component.isVisible()) continue;
+        await component.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${selector.slice(1)}-${index++}-${width}.png`)});
+      }
+    }
     if(route==='/start-here.html') {
       for(const section of await page.locator('main > section').all()) {
         const id=await section.getAttribute('id') || 'hero';
