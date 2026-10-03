@@ -237,7 +237,7 @@ validateDynamicRootLinks('js/start-here.js');
 validateEmailForm('contact.html', 'contact-form', 'submit-button', 'contact-form-status');
 validateEmailForm('services.html', 'services-intake-form', 'services-submit', 'services-intake-status');
 validateEmailForm('seed-access.html', 'seed-access-form', 'seed-access-submit', 'seed-access-status');
-validateEmailForm('projects/crime-cartography.html', 'project-subscribe-form', 'project-subscribe-submit', 'project-subscribe-status');
+validateEmailForm('projects/cartography.html', 'project-subscribe-form', 'project-subscribe-submit', 'project-subscribe-status');
 
 const servicesPath = path.join(root, 'services.html');
 if (fs.existsSync(servicesPath)) {
@@ -329,7 +329,7 @@ if (!/contact\.href\s*=\s*["']\/contact\.html["']/.test(componentsScript)) {
   errors.push('js/components.js: footer must retain the standalone Contact page');
 }
 
-const emailPages = ['contact.html', 'services.html', 'seed-access.html', 'projects/crime-cartography.html'];
+const emailPages = ['contact.html', 'services.html', 'seed-access.html', 'projects/cartography.html'];
 for (const page of emailPages) {
   const source = fs.readFileSync(path.join(root, page), 'utf8');
   if (!/@emailjs\/browser@4\/dist\/email\.min\.js/i.test(source)) {
@@ -374,7 +374,7 @@ const canonicalPages = [
   'thanks-support.html', '404.html', 'projects/index.html', 'projects/origin.html',
   'projects/seed-agent.html',
   'projects/q-seed.html', 'projects/team-harnesses.html', 'projects/family-games.html',
-  'projects/crime-cartography.html', 'content.html'
+  'projects/cartography.html', 'content.html'
 ];
 for (const expected of canonicalPages) {
   if (!fs.existsSync(path.join(root, expected))) errors.push(`missing canonical page: ${expected}`);

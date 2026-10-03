@@ -58,7 +58,7 @@
         section.innerHTML = '<h2>Comments</h2><p>Questions, criticism, editorial ideas, and collaboration notes stay attached to this project page.</p>';
         main.appendChild(section);
 
-        document.querySelectorAll('a[href*="github.com/hadi-nayebi/crime-cartography/discussions"]').forEach(function (link) {
+        document.querySelectorAll('a[href*="github.com/hadi-nayebi/cartography/discussions"]').forEach(function (link) {
             link.href = '#project-comments';
             link.removeAttribute('target');
             link.removeAttribute('rel');
@@ -73,7 +73,8 @@
         script.setAttribute('data-repo-id', 'R_kgDOHL_tnQ');
         script.setAttribute('data-category', 'General');
         script.setAttribute('data-category-id', 'DIC_kwDOHL_tnc4C3cRQ');
-        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-mapping', 'specific');
+        script.setAttribute('data-term', 'projects/crime-cartography');
         script.setAttribute('data-strict', '0');
         script.setAttribute('data-reactions-enabled', '1');
         script.setAttribute('data-emit-metadata', '0');
@@ -162,8 +163,8 @@
                 return window.emailjs.send('service_chq4jnq', 'template_5he0blr', {
                     name: formData.get('name') || 'Project subscriber',
                     email: email,
-                    newcomer: 'Crime Cartography Project Subscriber',
-                    request_type: 'Crime Cartography project subscriber',
+                    newcomer: 'Cartography Project Subscriber',
+                    request_type: 'Cartography project subscriber',
                     message: message
                 });
             }).then(function () {

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var remoteStatus = 'https://raw.githubusercontent.com/hadi-nayebi/crime-cartography/main/public/project-status.json';
+    var remoteStatus = 'https://raw.githubusercontent.com/hadi-nayebi/cartography/main/public/project-status.json';
     var fallbackStatus = '../data/crime-cartography-status.json';
-    var remoteDiscussionStatus = 'https://raw.githubusercontent.com/hadi-nayebi/crime-cartography/main/public/discussion-status.json';
+    var remoteDiscussionStatus = 'https://raw.githubusercontent.com/hadi-nayebi/cartography/main/public/discussion-status.json';
     var fallbackDiscussionStatus = '../data/crime-cartography-discussions.json';
 
     function setText(id, value) {

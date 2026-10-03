@@ -155,8 +155,6 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `index.html` | `assets/images/digital-cortex-2-hero.jpg` | I10-A90 | HTML | Yes |
 | `portfolio.html` | `/assets/images/story/portfolio-execution-ladder-hybrid-v3.jpg` | I70-A30 | Injected | Yes |
 | `portfolio.html` | `/assets/images/story/portfolio-human-digital-cortex-hybrid-v2.jpg` | I50-A50 | Injected | Yes |
-| `projects/crime-cartography.html` | `/assets/images/story/crime-cartography-collective-channel-hybrid-v2.jpg` | I50-A50 | Injected | Yes |
-| `projects/crime-cartography.html` | `/assets/images/story/crime-cartography-data-to-video-educational-v2.jpg` | I90-A10 | Injected | Yes |
 | `projects/family-games.html` | `../assets/images/family-games-concept-chalk.jpg` | I10-A90 | HTML | Yes |
 | `projects/index.html` | `/assets/images/story/projects-scale-human-hybrid-v3.jpg` | I50-A50 | Injected | Yes |
 | `projects/q-seed.html` | `/assets/images/story/q-seed-depth-of-ownership-educational-v2.jpg` | I90-A10 | Injected | Yes |

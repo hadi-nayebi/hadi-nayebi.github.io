@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { text: 'Q-Seed — Qwen Code', link: '/projects/q-seed.html' },
         { text: 'Team Harnesses', link: '/projects/team-harnesses.html' },
         { text: 'Family Games', link: '/projects/family-games.html' },
-        { text: 'Crime Cartography', link: '/projects/crime-cartography.html' },
+        { text: 'Cartography', link: '/projects/cartography.html' },
         { text: 'Reference Explorables', link: '/explore.html' },
         { text: 'Technical Portfolio', link: '/portfolio.html' },
         { text: 'Private Seed Reference', link: '/seed-access.html' },

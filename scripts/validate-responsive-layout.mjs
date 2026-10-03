@@ -6,6 +6,8 @@ import AxeBuilder from '@axe-core/playwright';
 const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
+  { name: 'cartography', path: '/projects/cartography.html', kind: 'copy' },
+  { name: 'projects', path: '/projects/index.html', kind: 'copy' },
   { name: 'home', path: '/index.html', kind: 'copy' },
   { name: 'home-open-architecture', path: '/index.html', kind: 'copy' },
   { name: 'home-digital-cortex', path: '/index.html', kind: 'copy' },
@@ -26,6 +28,7 @@ const routes = [
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
+const selectedRoutes = process.env.LAYOUT_ROUTES ? routes.filter(route => process.env.LAYOUT_ROUTES.split(',').includes(route.name)) : routes;
 const viewports = [
   { name: 'phone-small', width: 360, height: 800 },
   { name: 'phone-large', width: 412, height: 915 },
@@ -38,11 +41,11 @@ const shouldCapture = (route, viewport) =>
 const artifactDir = path.resolve('artifacts/responsive-layout');
 fs.mkdirSync(artifactDir, { recursive: true });
 const failures = [];
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}) });
 
 for (const viewport of viewports) {
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, colorScheme: 'dark' });
-  for (const route of routes) {
+  for (const route of selectedRoutes) {
     const page = await context.newPage();
     if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
     if (route.name === 'home-open-architecture') await page.addInitScript(() => { Math.random = () => 0.28; });
@@ -280,6 +283,21 @@ for (const viewport of viewports) {
       if (excessSections) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: removed auxiliary term sections returned`);
     }
 
+    if (route.name === 'cartography') {
+      const body = await page.locator('main').innerText();
+      if (/Crime Cartography|channel stays focused on crime|inherited reference cuts|dedicated remakes/i.test(body)) failures.push('Cartography: obsolete identity or production bookkeeping returned');
+      const commentKey = await page.locator('script[src="https://giscus.app/client.js"]').getAttribute('data-term');
+      if (commentKey !== 'projects/crime-cartography') failures.push('Cartography: existing comment mapping changed');
+      for (const target of ['understand', 'define', 'join', 'project-comments']) {
+        if (await page.locator('#' + target).count() !== 1) failures.push('Cartography: missing anchor ' + target);
+      }
+      const redirect = await context.newPage();
+      await redirect.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
+      await redirect.goto(baseUrl + '/projects/crime-cartography.html?source=legacy#understand');
+      await redirect.waitForURL('**/cartography.html?source=legacy#understand');
+      await redirect.close();
+    }
+
     if (route.kind !== 'agents' && ['phone-small', 'desktop'].includes(viewport.name)) {
       const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       axe.violations.filter(violation => ['serious', 'critical'].includes(violation.impact)).forEach(violation => {
@@ -325,4 +343,4 @@ if (failures.length) {
   [...new Set(failures)].forEach(failure => console.error('  - ' + failure));
   process.exit(1);
 }
-console.log(`Responsive layout validation passed: ${routes.length} pages across ${viewports.length} viewports; every term was captured at phone and desktop sizes in ${path.relative(process.cwd(), artifactDir)}.`);
+console.log(`Responsive layout validation passed: ${selectedRoutes.length} pages across ${viewports.length} viewports; every term was captured at phone and desktop sizes in ${path.relative(process.cwd(), artifactDir)}.`);
