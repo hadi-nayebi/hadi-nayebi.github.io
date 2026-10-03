@@ -47,12 +47,12 @@ jobs:
               return entry.isDirectory()?files(file):entry.name.endsWith('.html')?[file]:[];
             });
           }
-          const routes=files('.').filter(file=>/class=["']sidebar(?:\\s|["'])/.test(fs.readFileSync(file,'utf8')));
+          const routes=files('.').filter(file=>/class=["']sidebar(?:\s|["'])/.test(fs.readFileSync(file,'utf8')));
           const browser=await chromium.launch({headless:true});
           const report=[];
           for(const file of routes) {
             const page=await browser.newPage({viewport:{width,height:900}});
-            await page.route(/^https?:\\/\\/(?!127\\.0\\.0\\.1:4173)/,route=>route.abort());
+            await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/,route=>route.abort());
             await page.goto('http://127.0.0.1:4173/'+file,{waitUntil:'networkidle'});
             await page.evaluate(async()=>{await document.fonts.ready});
             const result=await page.evaluate(()=>{
