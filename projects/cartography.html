@@ -107,50 +107,50 @@
                     <h3>A trend needs more than a moving line.</h3>
                     <p>Boston’s reported index crime fell 71% from its 1989 peak to 2015 in this example dataset. Interpreting the trend also means understanding what was counted and where the measure changes.</p>
                     <ol>
-                        <li><strong>Mark the ruler change.</strong> FBI annual index-crime counts and Boston Police incident records are different measures.</li>
+                        <li><strong>Mark the ruler change.</strong> The FBI series ends in 2015; Boston Police records from 2016 use a different measure.</li>
                         <li><strong>Open the total.</strong> Show category composition where the source supports an honest comparison.</li>
                         <li><strong>Add memory, not mythology.</strong> Attach sourced context that helps orient the viewer without pretending proximity proves cause.</li>
                     </ol>
                 </div>
 
-                <div class="editorial-compare" aria-label="Schematic comparison of a trend alone and a trend with interpretive context">
+                <div class="editorial-compare" aria-label="Boston reported index-crime trend with its measurement context">
                     <article>
                         <div class="chart-card-heading"><span>The trend</span><strong>Accurate line</strong></div>
                         <svg viewBox="0 0 420 210" role="img" aria-labelledby="draft-chart-title">
-                            <title id="draft-chart-title">Schematic Boston trend falling from a 1989 peak to 2015</title>
+                            <title id="draft-chart-title">Boston annual reported index-crime counts, 1985 to 2015</title>
                             <g class="chart-grid">
                                 <line x1="38" y1="30" x2="38" y2="178"></line>
                                 <line x1="38" y1="178" x2="398" y2="178"></line>
                                 <line x1="38" y1="80" x2="398" y2="80"></line>
                                 <line x1="38" y1="130" x2="398" y2="130"></line>
                             </g>
-                            <path class="chart-line" d="M42 52 L78 44 L116 60 L154 84 L192 108 L230 119 L268 132 L306 142 L344 150 L392 159"></path>
-                            <circle class="chart-point" cx="78" cy="44" r="5"></circle>
-                            <circle class="chart-point" cx="392" cy="159" r="5"></circle>
+                            <path class="chart-line" d="M42.00 47.39 L53.67 45.67 L65.33 48.62 L77.00 50.31 L88.67 44.00 L100.33 47.73 L112.00 59.24 L123.67 70.04 L135.33 71.66 L147.00 74.86 L158.67 76.73 L170.33 91.23 L182.00 104.47 L193.67 111.04 L205.33 110.85 L217.00 109.34 L228.67 106.44 L240.33 109.65 L252.00 110.91 L263.67 111.90 L275.33 115.44 L287.00 115.55 L298.67 117.86 L310.33 122.29 L322.00 126.43 L333.67 127.38 L345.33 130.72 L357.00 132.80 L368.67 134.18 L380.33 135.85 L392.00 139.51"></path>
+                            <circle class="chart-point" cx="88.67" cy="44.00" r="5"></circle>
+                            <circle class="chart-point" cx="392.00" cy="139.51" r="5"></circle>
                             <text x="52" y="26">1989 peak</text>
                             <text x="332" y="198">2015</text>
                             <text class="chart-stat" x="285" y="54">−71%</text>
                         </svg>
-                        <p>Correct headline. Little help interpreting what the line can—and cannot—mean.</p>
+                        <p>Reported index-crime counts, 1985–2015. These are counts, not population-adjusted rates.</p>
                     </article>
 
                     <article class="editorial-after">
                         <div class="chart-card-heading"><span>The context</span><strong>Useful memory</strong></div>
                         <svg viewBox="0 0 420 210" role="img" aria-labelledby="edited-chart-title">
-                            <title id="edited-chart-title">The same Boston trend with a source seam and interpretive context</title>
+                            <title id="edited-chart-title">The same Boston trend with its measure and source boundary labeled</title>
                             <g class="chart-grid">
                                 <line x1="38" y1="30" x2="38" y2="178"></line>
                                 <line x1="38" y1="178" x2="398" y2="178"></line>
                                 <line x1="38" y1="80" x2="398" y2="80"></line>
                                 <line x1="38" y1="130" x2="398" y2="130"></line>
                             </g>
-                            <path class="chart-line" d="M42 52 L78 44 L116 60 L154 84 L192 108 L230 119 L268 132 L306 142 L344 150 L392 159"></path>
+                            <path class="chart-line" d="M42.00 47.39 L53.67 45.67 L65.33 48.62 L77.00 50.31 L88.67 44.00 L100.33 47.73 L112.00 59.24 L123.67 70.04 L135.33 71.66 L147.00 74.86 L158.67 76.73 L170.33 91.23 L182.00 104.47 L193.67 111.04 L205.33 110.85 L217.00 109.34 L228.67 106.44 L240.33 109.65 L252.00 110.91 L263.67 111.90 L275.33 115.44 L287.00 115.55 L298.67 117.86 L310.33 122.29 L322.00 126.43 L333.67 127.38 L345.33 130.72 L357.00 132.80 L368.67 134.18 L380.33 135.85 L392.00 139.51"></path>
                             <line class="chart-seam" x1="392" y1="30" x2="392" y2="178"></line>
-                            <circle class="chart-point" cx="78" cy="44" r="5"></circle>
+                            <circle class="chart-point" cx="88.67" cy="44.00" r="5"></circle>
                             <text x="52" y="26">1989 peak</text>
-                            <text class="chart-label" x="250" y="37">Reported index crime</text>
-                            <text class="chart-label" x="248" y="64">Counts, not a crime rate</text>
-                            <text class="chart-label" x="248" y="91">2015 source seam</text>
+                            <text class="chart-label" style="font-size: 14px" x="222" y="37">Index-crime counts</text>
+                            <text class="chart-label" style="font-size: 14px" x="222" y="64">BPD starts: 2016</text>
+                            <text class="chart-label" style="font-size: 14px" x="222" y="91">UCR ends: 2015</text>
                         </svg>
                         <p>A clear measure and source boundary make the trend easier to interpret.</p>
                     </article>
