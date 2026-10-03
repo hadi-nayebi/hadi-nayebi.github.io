@@ -24,6 +24,11 @@ for (const width of [360, 412, 768, 1440]) {
     const page = await context.newPage();
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, request => request.abort());
     await page.goto(base + route, { waitUntil: 'load' });
+    // JSON-backed readers and collections must finish rendering before geometry is inspected.
+    await page.waitForLoadState('networkidle');
+    if(route==='/blog/observations/information-system-of-a-planet/index.html') {
+      await page.locator('.observation-episode:not([hidden])').waitFor({state:'visible'});
+    }
     await page.evaluate(async () => { if(document.fonts) await document.fonts.ready; });
     if(route === '/start-here.html') await page.waitForTimeout(1250);
     const findings = await page.evaluate(() => {
