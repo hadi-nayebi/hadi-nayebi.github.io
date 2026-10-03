@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-07-23T16:45:00.000Z",
+  "updated_at": "2026-10-03T17:00:00.000Z",
   "projects": [
     {
       "id": "crime-cartography",
-      "name": "Crime Cartography",
+      "name": "Cartography",
       "status": "public-design",
-      "status_label": "Creator-led launch",
-      "summary": "A human-directed, agent-operated crime channel launching now under Hadi's editorship while public feedback prepares a later community editorial workflow.",
-      "page": "projects/crime-cartography.html",
+      "status_label": "City data stories",
+      "summary": "City data stories through maps, charts, and sourced context: businesses, housing, transport, population, crime, and more.",
+      "page": "projects/cartography.html",
       "subscription": "open"
     },
     {

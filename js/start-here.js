@@ -240,7 +240,7 @@
             links: [
                 ['Your Brain Was Never Built for This', '/blog/b3/03-your-brain-was-never-built-for-this.html'],
                 ['The Folder Is Alive', '/blog/b3/03_1-the-folder-is-alive.html'],
-                ['Crime Cartography', '/projects/crime-cartography.html'],
+                ['Cartography', '/projects/cartography.html'],
                 ['Family Games', '/projects/family-games.html']
             ],
             prompt: 'Use Hadosh Academy to help me build a creator/media harness around this project. Study the current research, drafts, assets, feedback, production stages, and publishing flow. Identify one repeated behavior worth externalizing while keeping taste and final editorial judgment with me. Explain the job, memory, plugin, phase, and verification design first, then propose the smallest useful implementation.'

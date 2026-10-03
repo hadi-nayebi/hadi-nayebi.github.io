@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 
 const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const mapsRoot = resolve(
-  process.env.CRIME_CARTOGRAPHY_REPO ||
+  process.env.CARTOGRAPHY_REPO || process.env.CRIME_CARTOGRAPHY_REPO ||
   join(websiteRoot, "..", "..", "maps"),
 );
 const map = JSON.parse(
@@ -19,7 +19,7 @@ async function readJson(path) {
 }
 
 const pages = [
-  await readFile(join(websiteRoot, "projects/crime-cartography.html"), "utf8"),
+  await readFile(join(websiteRoot, "projects/cartography.html"), "utf8"),
   await readFile(join(websiteRoot, "projects/index.html"), "utf8"),
 ];
 const subscriptionScript = await readFile(
@@ -78,7 +78,7 @@ assert.equal(
 );
 
 const discussionNumbers = new Set(
-  [...projectPage.matchAll(/crime-cartography\/discussions\/(\d+)/g)]
+  [...projectPage.matchAll(/cartography\/discussions\/(\d+)/g)]
     .map((match) => match[1]),
 );
 for (const number of discussionNumbers) {
@@ -89,7 +89,7 @@ for (const number of discussionNumbers) {
 
 const repositoryLinks = [
   ...projectPage.matchAll(
-    /github\.com\/hadi-nayebi\/crime-cartography\/blob\/main\/([^"#?]+)/g,
+    /github\.com\/hadi-nayebi\/cartography\/blob\/main\/([^"#?]+)/g,
   ),
 ].map((match) => decodeURIComponent(match[1]));
 for (const source of repositoryLinks) {

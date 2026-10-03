@@ -73,7 +73,7 @@ The projects test the same principles across individual, group, and collective s
 | Origin | A single-user Codex dashboard-plus-harness foundation: empty canvas, Wiki, contextual feedback, durable review state, and one foreground interactive tmux session | [Project](https://hadi-nayebi.github.io/projects/origin.html) · [Repository](https://github.com/hadi-nayebi/origin) |
 | Team Harnesses | A governed shared dashboard and repository model for small teams | [Project](https://hadi-nayebi.github.io/projects/team-harnesses.html) |
 | Family Games | A private persistent family world with shared authorship and family-owned history | [Project](https://hadi-nayebi.github.io/projects/family-games.html) |
-| Crime Cartography | A collective factual-media experiment combining an agentic production harness with distributed human judgment | [Project](https://hadi-nayebi.github.io/projects/crime-cartography.html) · [Repository](https://github.com/hadi-nayebi/crime-cartography) |
+| Cartography | A collective factual-media experiment combining an agentic production harness with distributed human judgment | [Project](https://hadi-nayebi.github.io/projects/cartography.html) · [Repository](https://github.com/hadi-nayebi/cartography) |
 
 See the complete **[Projects portfolio](https://hadi-nayebi.github.io/projects/)** and the **[Seed architecture map](https://hadi-nayebi.github.io/agents.html)**.
 
@@ -165,11 +165,11 @@ npx playwright install chromium
 node --test scripts/test-form-behavior.cjs
 ```
 
-To verify Crime Cartography projections against its owning repository, set the checkout path
+To verify Cartography projections against its owning repository, set the checkout path
 explicitly when it is not in the usual sibling location:
 
 ```bash
-CRIME_CARTOGRAPHY_REPO=/path/to/crime-cartography node scripts/validate-crime-cartography-content.mjs
+CARTOGRAPHY_REPO=/path/to/cartography node scripts/validate-crime-cartography-content.mjs
 ```
 
 ### Repository map

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-labelledby="title desc">
+<title id="title">City patterns</title><desc id="desc">An illustrative city map with a river and a chart. No measured data is depicted.</desc>
+<rect width="480" height="480" rx="32" fill="#0d2230"/>
+<g stroke="#365d6b" stroke-width="3" fill="#173d49"><path d="M35 50H155L180 160 80 195 35 130Z"/><path d="M170 50H285L267 160 195 158Z"/><path d="M302 50H445V152L355 194 284 158Z"/><path d="M35 150L83 214 178 182 211 280 115 315 35 270Z"/><path d="M200 180L270 181 321 260 228 278Z"/><path d="M292 178L359 215 445 176V302L337 276Z"/></g>
+<path d="M140 15C210 85 150 145 223 200S288 270 250 340" fill="none" stroke="#55c8d1" stroke-width="15" opacity=".8"/>
+<g fill="#f3c977"><circle cx="97" cy="110" r="8"/><circle cx="233" cy="114" r="12"/><circle cx="382" cy="106" r="7"/><circle cx="115" cy="260" r="10"/><circle cx="362" cy="249" r="14"/></g>
+<rect x="32" y="332" width="416" height="115" rx="12" fill="#112b39"/>
+<path d="M55 420H425M55 355V420" fill="none" stroke="#7898a2" stroke-width="2"/>
+<path d="M55 408L115 389 177 398 237 370 300 379 363 354 425 360" fill="none" stroke="#f3c977" stroke-width="5"/>
+<circle cx="237" cy="370" r="6" fill="#f3c977"/>
+<path d="M237 344V412" stroke="#a8d4dc" stroke-dasharray="4 5"/>
+</svg>

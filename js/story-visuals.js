@@ -130,43 +130,6 @@
         }
     }
 
-    function makeCrimeCollectiveSection() {
-        var section = document.createElement('section');
-        section.className = 'container project-section crime-collective-extension';
-        section.innerHTML = '<div class="project-section-intro"><div><span class="eyebrow">A crowd-owned channel pattern</span><h2>Crime is the first lens. The larger idea is city data told by a harness and improved by a crowd.</h2></div><p>The project can expand from crime time series and heat maps into other city-centered signals—population, schools, libraries, churches, businesses, public infrastructure, or any dataset that becomes more useful when it is visualized over time and place.</p></div>' +
-            '<div class="project-three-grid project-principles">' +
-            '<article><span>1</span><h3>Harness-led production</h3><p>The harness performs the repeatable majority of the work: finding and structuring data, building visualizations, drafting the story, assembling video, and preparing the questions that deserve human review.</p></article>' +
-            '<article><span>2</span><h3>Crowd editorial judgment</h3><p>Subscribers receive videos, partial cuts, visuals, or focused questions by email and can add missing context, fact checks, local knowledge, story judgment, and stylistic improvements.</p></article>' +
-            '<article><span>3</span><h3>Shared value, replicable model</h3><p>The channel explores sharing created value with the contributing collective. Other groups can copy the pattern for different topics and run their own crowd-managed media channels—a possible decentralized form of gig work built around shared ownership.</p></article>' +
-            '</div>';
-        return section;
-    }
-
-    function installCrimeCartography() {
-        var heroLede = document.querySelector('.crime-project-hero .hero-lede');
-        if (heroLede) heroLede.textContent = 'Crime Cartography is the first city-data channel in a broader collective-media experiment. The harness turns long-run city data into repeatable visual stories, a distributed human crowd improves the facts, framing, taste and storyline, and the project explores sharing the value of the resulting YouTube channel with the people who help shape it.';
-        var distinction = document.querySelector('.crime-project-hero .project-distinction');
-        if (distinction) distinction.innerHTML = '<strong>The audience can become part of the production system.</strong> Subscribers can receive full videos, partial cuts, visualizations, or focused questions by email, then respond with corrections, missing context, local knowledge, story judgment, and stylistic improvements.';
-
-        var opening = document.querySelector('.project-opening');
-        if (opening) {
-            var collective = makeCrimeCollectiveSection();
-            after(opening, collective);
-            after(collective, makeFigure('/assets/images/story/crime-cartography-collective-channel-hybrid-v2.jpg',
-                'A chalkboard pipeline from city data through an AI production harness and a human editorial crowd into a data-story YouTube channel, with value flowing back to contributors and the model branching into future collectives.',
-                'The core experiment is broader than crime: city data + repeatable AI production + human editorial judgment + a collective that can share the value it creates.',
-                'is-wide', 'I50-A50'));
-        }
-        var understand = document.getElementById('understand');
-        if (understand) {
-            var intro = understand.querySelector('.project-section-intro') || understand.firstElementChild;
-            after(intro, makeFigure('/assets/images/story/crime-cartography-data-to-video-educational-v2.jpg',
-                'A chalkboard workflow from exploring city data to visualization, story construction, video production, and final crowd enhancement.',
-                'The harness gets a draft most of the way there; the editorial crowd improves the parts where local context, taste, skepticism, and judgment matter.',
-                'is-wide', 'I90-A10'));
-        }
-    }
-
     function installPortfolio() {
         var thesis = sectionByHeading('The LLM Is the Engine');
         after(thesis, makeFigure('/assets/images/story/portfolio-human-digital-cortex-hybrid-v2.jpg',
@@ -200,7 +163,6 @@
         if (path === '/projects/q-seed.html') return installQSeed();
         if (path === '/projects/team-harnesses.html') return installTeamHarnesses();
         if (path === '/projects/family-games.html') return installFamilyGames();
-        if (path === '/projects/crime-cartography.html') return installCrimeCartography();
         if (path === '/portfolio.html') return installPortfolio();
     }
 

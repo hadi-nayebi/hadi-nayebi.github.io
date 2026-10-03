@@ -899,7 +899,7 @@ Start Here is the router and syllabus. It is not the entire curriculum. Follow r
 - [Seed Agent](https://hadi-nayebi.github.io/projects/seed-agent.html) — a Codex-specific pattern-accumulation surface for selectively reusable foundations.
 - [Q-Seed](https://hadi-nayebi.github.io/projects/q-seed.html) — a Qwen Code-specific pattern-accumulation surface with a deeper framework-ownership boundary.
 - [Team Harnesses](https://hadi-nayebi.github.io/projects/team-harnesses.html) — shared repository, dashboard, roles, and team authority.
-- [Crime Cartography](https://hadi-nayebi.github.io/projects/crime-cartography.html) — a domain-specific public project surface.
+- [Cartography](https://hadi-nayebi.github.io/projects/cartography.html) — a domain-specific public project surface.
 - [Family Games](https://hadi-nayebi.github.io/projects/family-games.html) — a family-oriented operational world.
 - [Explorables](https://hadi-nayebi.github.io/explore.html) — interactive maps of mechanisms and relationships.
 - [Agents](https://hadi-nayebi.github.io/agents.html) — implementation lineages and current program routes.
