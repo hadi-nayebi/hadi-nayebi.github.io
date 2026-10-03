@@ -83,6 +83,38 @@ for (const width of [360, 412, 768, 1440]) {
         const id=await section.getAttribute('id') || 'hero';
         await section.screenshot({path:path.join(output,`start-section-${id}-${width}.png`)});
       }
+      for(const tab of await page.locator('.start-role-tab').all()) {
+        const role=await tab.getAttribute('data-role');
+        await tab.click();
+        if(await tab.getAttribute('aria-selected')!=='true') failures.push(`Start Here @ ${width}: ${role} tab did not activate`);
+        const roleProblems=await page.locator('#start-role-panel').evaluate(panel=>{
+          const problems=[];
+          for(const card of panel.querySelectorAll('.start-role-card')) {
+            const style=getComputedStyle(card);
+            if(parseFloat(style.paddingTop)<16 || parseFloat(style.paddingBottom)<16) problems.push('role card padding under 16px');
+            const heading=card.querySelector('h3'),body=heading?.nextElementSibling;
+            if(heading && body && body.getBoundingClientRect().top-heading.getBoundingClientRect().bottom<8) problems.push('role heading/body gap under 8px');
+          }
+          if(document.documentElement.scrollWidth>innerWidth+1) problems.push('horizontal overflow');
+          return problems;
+        });
+        failures.push(...roleProblems.map(p=>`Start Here @ ${width}, ${role}: ${p}`));
+        await page.locator('#profession').screenshot({path:path.join(output,`start-role-${role}-${width}.png`)});
+      }
+      for(const id of ['continue-with-agent','human-guidance','community-return']) {
+        await page.goto(base+route+'#'+id,{waitUntil:'load'});
+        await page.waitForTimeout(1300);
+        const position=await page.locator('#'+id).evaluate(e=>({top:e.getBoundingClientRect().top,header:document.querySelector('#site-header').getBoundingClientRect().bottom}));
+        if(position.top<position.header+8) failures.push(`Start Here @ ${width}: #${id} hidden under navigation`);
+        await page.screenshot({path:path.join(output,`start-anchor-${id}-${width}.png`)});
+      }
+      const toggle=page.locator('.nav-toggle');
+      if(await toggle.isVisible()) {
+        await toggle.click();
+        if(await toggle.getAttribute('aria-expanded')!=='true') failures.push(`Start Here @ ${width}: navigation did not expand`);
+        await page.screenshot({path:path.join(output,`start-nav-expanded-${width}.png`)});
+        await toggle.click();
+      }
     }
     await page.close();
   }
