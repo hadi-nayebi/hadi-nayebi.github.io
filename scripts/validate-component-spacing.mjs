@@ -40,6 +40,13 @@ for (const width of [360, 412, 768, 1440]) {
         const gap=heroNote.getBoundingClientRect().top-heroNote.previousElementSibling.getBoundingClientRect().bottom;
         if(gap<16) items.push({type:'reading-gap',parent:'project-hero-copy',a:'actions',b:'usage note',gap});
       }
+      for(const node of document.querySelectorAll('.team-member-node, .team-core-node')) {
+        const children=[...node.children].filter(visible);
+        for(let i=1;i<children.length;i++) {
+          const gap=children[i].getBoundingClientRect().top-children[i-1].getBoundingClientRect().bottom;
+          if(gap<8) items.push({type:'reading-gap',parent:label(node),a:label(children[i-1]),b:label(children[i]),gap});
+        }
+      }
       const accessActions=document.querySelector('.access-expectations > .seed-hero-actions');
       if(accessActions?.previousElementSibling) {
         const gap=accessActions.getBoundingClientRect().top-accessActions.previousElementSibling.getBoundingClientRect().bottom;
@@ -95,7 +102,7 @@ for (const width of [360, 412, 768, 1440]) {
     }
     // Inspect each repaired reading component at readable scale, beside the full-page record.
     const repairSelectors=['.article-comments','.milestone-card','.about-content','.blog-category-heading',
-      '.project-three-grid','.project-principles-grid','.seed-reference-map','.seed-boundary-diagram','.qseed-stack','.project-participate',
+      '.project-three-grid','.project-principles-grid','.seed-reference-map','.seed-boundary-diagram','.qseed-stack','.team-topology','.project-participate',
       '.family-inspiration-text','.series-hero','.series-entry','.observation-empty',
       '.access-hero','.access-expectations','.support-activity-panel','.services-offer','.services-free-paths','.update-why'];
     if(changedRoutes.has(route)) for(const selector of repairSelectors) {

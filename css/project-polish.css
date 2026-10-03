@@ -293,3 +293,5 @@
 .qseed-stack-layer > strong { display: block; }
 .seed-boundary-layer > strong + p { margin-top: .5rem; }
 .qseed-stack-layer > small { margin-top: .5rem; }
+.team-member-node,
+.team-core-node { gap: .5rem; }
