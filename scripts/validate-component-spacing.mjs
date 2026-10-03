@@ -30,6 +30,12 @@ for (const width of [360, 412, 768, 1440]) {
       await page.locator('.observation-episode:not([hidden])').waitFor({state:'visible'});
     }
     await page.evaluate(async () => { if(document.fonts) await document.fonts.ready; });
+    if(route==='/services.html' || route==='/projects/crime-cartography.html') {
+      const disclosureSelector=route==='/services.html' ? '#services-catalog > summary' : 'details.project-detail-card > summary';
+      for(const summary of await page.locator(disclosureSelector).all()) {
+        if(await summary.isVisible()) await summary.click();
+      }
+    }
     if(route === '/start-here.html') await page.waitForTimeout(1250);
     const findings = await page.evaluate(() => {
       const visible = e => { const r=e.getBoundingClientRect(),s=getComputedStyle(e); return r.width>1 && r.height>1 && s.display!=='none' && s.visibility!=='hidden'; };
