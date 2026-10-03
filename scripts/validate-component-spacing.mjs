@@ -30,6 +30,16 @@ for (const width of [360, 412, 768, 1440]) {
       const visible = e => { const r=e.getBoundingClientRect(),s=getComputedStyle(e); return r.width>1 && r.height>1 && s.display!=='none' && s.visibility!=='hidden'; };
       const label = e => e.tagName.toLowerCase() + (e.id ? '#'+e.id : '') + (typeof e.className==='string' && e.className ? '.'+e.className.trim().split(/\s+/).join('.') : '');
       const items=[];
+      for(const labelElement of document.querySelectorAll('.seed-boundary-layer > .diagram-label, .qseed-stack-layer > .diagram-label')) {
+        const heading=labelElement.nextElementSibling;
+        const gap=heading.getBoundingClientRect().top-labelElement.getBoundingClientRect().bottom;
+        if(gap<8) items.push({type:'reading-gap',parent:label(labelElement.parentElement),a:'layer label',b:'layer heading',gap});
+      }
+      const heroNote=document.querySelector('.project-hero-copy > .project-actions + p');
+      if(heroNote) {
+        const gap=heroNote.getBoundingClientRect().top-heroNote.previousElementSibling.getBoundingClientRect().bottom;
+        if(gap<16) items.push({type:'reading-gap',parent:'project-hero-copy',a:'actions',b:'usage note',gap});
+      }
       const accessActions=document.querySelector('.access-expectations > .seed-hero-actions');
       if(accessActions?.previousElementSibling) {
         const gap=accessActions.getBoundingClientRect().top-accessActions.previousElementSibling.getBoundingClientRect().bottom;
@@ -85,7 +95,7 @@ for (const width of [360, 412, 768, 1440]) {
     }
     // Inspect each repaired reading component at readable scale, beside the full-page record.
     const repairSelectors=['.article-comments','.milestone-card','.about-content','.blog-category-heading',
-      '.project-three-grid','.project-principles-grid','.seed-reference-map','.project-participate',
+      '.project-three-grid','.project-principles-grid','.seed-reference-map','.seed-boundary-diagram','.qseed-stack','.project-participate',
       '.family-inspiration-text','.series-hero','.series-entry','.observation-empty',
       '.access-hero','.access-expectations','.support-activity-panel','.services-offer','.services-free-paths','.update-why'];
     if(changedRoutes.has(route)) for(const selector of repairSelectors) {
