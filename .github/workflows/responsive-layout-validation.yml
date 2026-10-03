@@ -24,6 +24,7 @@ on:
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-component-spacing.mjs'
       - 'scripts/validate-start-here-participation-layout.mjs'
       - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
@@ -51,6 +52,7 @@ on:
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-component-spacing.mjs'
       - 'scripts/validate-start-here-participation-layout.mjs'
       - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
@@ -79,6 +81,16 @@ jobs:
           done
           cat /tmp/hadosh-site.log
           exit 1
+      - name: Audit component spacing across all HTML routes
+        run: node scripts/validate-component-spacing.mjs
+      - name: Upload component spacing audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-spacing-audit
+          path: artifacts/component-spacing
+          if-no-files-found: error
+          retention-days: 14
       - name: Verify layout, interaction, contrast, and accessibility
         run: node scripts/validate-responsive-layout.mjs
       - name: Verify Start Here participation choices
@@ -195,3 +207,4 @@ jobs:
           path: artifacts/responsive-layout/private-github-home-*.png
           if-no-files-found: error
           retention-days: 14
+
