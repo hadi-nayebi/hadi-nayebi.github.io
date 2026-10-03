@@ -1,0 +1,102 @@
+name: Shared sidebar spacing evidence
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sidebar-spacing-evidence.yml'
+      - 'css/styles.css'
+      - 'content.html'
+      - 'js/components.js'
+jobs:
+  sidebar-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        width: [360, 412, 768, 1440]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned browser runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Render and measure every shared sidebar
+        env:
+          VIEWPORT_WIDTH: ${{ matrix.width }}
+        run: |
+          python3 -m http.server 4173 > /tmp/sidebar-evidence.log 2>&1 &
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/content.html > /dev/null && break
+            sleep 1
+          done
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { chromium } from 'playwright';
+          const width=Number(process.env.VIEWPORT_WIDTH);
+          const output='artifacts/sidebar-evidence';
+          fs.mkdirSync(output,{recursive:true});
+          function files(dir) {
+            return fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>{
+              if(entry.name.startsWith('.') || ['node_modules','artifacts'].includes(entry.name))return [];
+              const file=path.join(dir,entry.name);
+              return entry.isDirectory()?files(file):entry.name.endsWith('.html')?[file]:[];
+            });
+          }
+          const routes=files('.').filter(file=>/class=["']sidebar(?:\s|["'])/.test(fs.readFileSync(file,'utf8')));
+          const browser=await chromium.launch({headless:true});
+          const report=[];
+          for(const file of routes) {
+            const page=await browser.newPage({viewport:{width,height:900}});
+            await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/,route=>route.abort());
+            await page.goto('http://127.0.0.1:4173/'+file,{waitUntil:'networkidle'});
+            await page.evaluate(async()=>{await document.fonts.ready});
+            const result=await page.evaluate(()=>{
+              const cards=[...document.querySelectorAll('.sidebar .article-card')].filter(e=>e.getBoundingClientRect().height>1);
+              const gaps=cards.slice(1).map((card,i)=>card.getBoundingClientRect().top-cards[i].getBoundingClientRect().bottom);
+              return {cards:cards.length,gaps,overflow:document.documentElement.scrollWidth>innerWidth+1};
+            });
+            report.push({file,width,...result});
+            const name=file.replaceAll('/','_');
+            await page.screenshot({path:output+'/'+name+'-full.png',fullPage:true});
+            await page.locator('.sidebar').screenshot({path:output+'/'+name+'-sidebar.png'});
+            await page.close();
+          }
+          await browser.close();
+          fs.writeFileSync(output+'/report.json',JSON.stringify(report,null,2));
+          const failures=report.filter(row=>row.cards<2 || row.gaps.some(gap=>gap<15.5) || row.overflow);
+          console.log(JSON.stringify({width,routes:report.length,failures}));
+          const names=fs.readdirSync(output);
+          const cards=names.filter(name=>name.endsWith('-sidebar.png') || name==='report.json');
+          const examples=['content.html-full.png','blog_b6_06_6-verify.html-full.png','blog_b1_01-llms-are-not-the-agents.html-full.png'];
+          for(const group of [cards,examples]) {
+            const bytes=group.reduce((sum,name)=>sum+fs.statSync(path.join(output,name)).size,0);
+            if(bytes>28*1024*1024) throw new Error('Evidence bundle exceeds the 28 MiB transport budget: '+bytes);
+          }
+          if(failures.length)process.exit(1);
+          JS
+      - name: Upload viewport-sized sidebar evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shared-sidebar-${{ matrix.width }}-cards
+          path: |
+            artifacts/sidebar-evidence/*-sidebar.png
+            artifacts/sidebar-evidence/report.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload representative full-page evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shared-sidebar-${{ matrix.width }}-pages
+          path: |
+            artifacts/sidebar-evidence/content.html-full.png
+            artifacts/sidebar-evidence/blog_b6_06_6-verify.html-full.png
+            artifacts/sidebar-evidence/blog_b1_01-llms-are-not-the-agents.html-full.png
+          if-no-files-found: error
+          retention-days: 14

@@ -83,7 +83,7 @@ for (const width of [360, 412, 768, 1440]) {
       }
       // Painted sibling panels need external breathing room, not just internal padding.
       const painted = e => { const s=getComputedStyle(e); return parseFloat(s.borderTopWidth)>0 && s.backgroundColor!=='rgba(0, 0, 0, 0)'; };
-      for(const parent of document.querySelectorAll('main, main section, main div')) {
+      for(const parent of document.querySelectorAll('main, main section, main div, main aside, main aside div')) {
         const children=[...parent.children].filter(visible);
         for(let i=1;i<children.length;i++) {
           const a=children[i-1],b=children[i];
@@ -91,6 +91,11 @@ for (const width of [360, 412, 768, 1440]) {
           const ar=a.getBoundingClientRect(),br=b.getBoundingClientRect(),gap=br.top-ar.bottom;
           if(Math.min(ar.right,br.right)>Math.max(ar.left,br.left)+1 && gap>=-1 && gap<8) items.push({type:'painted-boundary',parent:label(parent),a:label(a),b:label(b),gap:Number(gap.toFixed(2))});
         }
+      }
+      const newestCards=[...document.querySelectorAll('.sidebar .article-card')].filter(visible);
+      for(let i=1;i<newestCards.length;i++) {
+        const gap=newestCards[i].getBoundingClientRect().top-newestCards[i-1].getBoundingClientRect().bottom;
+        if(gap<16) items.push({type:'reading-gap',parent:'Sidebar painted cards',a:'painted card',b:'painted card',gap:Number(gap.toFixed(2))});
       }
       const panels=[...document.querySelectorAll('main > section.start-agent-entry')];
       for(const panel of panels) {
@@ -122,6 +127,11 @@ for (const width of [360, 412, 768, 1440]) {
         if(!await component.isVisible()) continue;
         await component.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${selector.slice(1)}-${index++}-${width}.png`)});
       }
+    }
+
+    if(await page.locator('.sidebar .article-card').count()) {
+      await page.locator('.sidebar').screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-sidebar-${width}.png`)});
+      await page.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-sidebar-page-${width}.png`),fullPage:true});
     }
     if(route==='/start-here.html') {
       for(const section of await page.locator('main > section').all()) {
