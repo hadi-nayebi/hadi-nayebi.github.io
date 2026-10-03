@@ -212,3 +212,33 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+
+  content-sidebar-spacing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned browser test runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify repaired and baseline Content sidebar
+        run: |
+          python3 -m http.server 4173 > /tmp/content-sidebar-site.log 2>&1 &
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/content.html > /dev/null && break
+            sleep 1
+          done
+          node scripts/validate-content-sidebar-spacing.mjs
+      - name: Upload Content sidebar regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-sidebar-spacing
+          path: artifacts/content-sidebar
+          if-no-files-found: error
+          retention-days: 14
