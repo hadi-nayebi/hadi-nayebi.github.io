@@ -30,6 +30,11 @@ for (const width of [360, 412, 768, 1440]) {
       const visible = e => { const r=e.getBoundingClientRect(),s=getComputedStyle(e); return r.width>1 && r.height>1 && s.display!=='none' && s.visibility!=='hidden'; };
       const label = e => e.tagName.toLowerCase() + (e.id ? '#'+e.id : '') + (typeof e.className==='string' && e.className ? '.'+e.className.trim().split(/\s+/).join('.') : '');
       const items=[];
+      const accessActions=document.querySelector('.access-expectations > .seed-hero-actions');
+      if(accessActions?.previousElementSibling) {
+        const gap=accessActions.getBoundingClientRect().top-accessActions.previousElementSibling.getBoundingClientRect().bottom;
+        if(gap<16) items.push({type:'reading-gap',parent:'access-expectations',a:'request note',b:'actions',gap});
+      }
       for(const section of document.querySelectorAll('.page-start-here main > .academy-section')) {
         const style=getComputedStyle(section);
         for(const edge of ['Top','Bottom']) {
