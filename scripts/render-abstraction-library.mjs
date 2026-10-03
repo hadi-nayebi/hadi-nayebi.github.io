@@ -26,7 +26,7 @@ function head(title, description, canonical) {
     <meta property="og:image" content="https://hadi-nayebi.github.io/assets/images/digital-cortex-2-og.jpg">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Hadosh Academy">
-    <link rel="stylesheet" href="/css/styles.css?v=20260903-whats-new-1">
+    <link rel="stylesheet" href="/css/styles.css?v=20261002-spacing-1">
     <link rel="stylesheet" href="/css/abstractions.css?v=20260920-3">
 </head>`;
 }
@@ -122,3 +122,4 @@ if (stale.length) {
   process.exit(1);
 }
 console.log(checking ? `Abstraction pages current: ${outputs.size} files checked.` : `Abstraction pages rendered: ${outputs.size} files written.`);
+

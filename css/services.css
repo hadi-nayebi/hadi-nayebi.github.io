@@ -473,3 +473,7 @@
     .page-services .btn { transition: none; }
     .page-services .btn:hover { transform: none; }
 }
+
+
+.services-offer h3,
+.services-free-paths h3 { margin-bottom: .75rem; }

@@ -3,6 +3,8 @@ name: Responsive layout validation
 on:
   pull_request:
     paths:
+      - '**/*.html'
+      - 'scripts/component-spacing-routes.json'
       - 'index.html'
       - 'about.html'
       - 'services.html'
@@ -31,6 +33,8 @@ on:
   push:
     branches: [main]
     paths:
+      - '**/*.html'
+      - 'scripts/component-spacing-routes.json'
       - 'index.html'
       - 'about.html'
       - 'services.html'
@@ -60,7 +64,7 @@ on:
 jobs:
   responsive-layout:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

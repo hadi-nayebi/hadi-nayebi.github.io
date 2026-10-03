@@ -279,3 +279,10 @@
     .qseed-compare-table th,
     .qseed-compare-table td { min-width:170px; }
 }
+
+
+/* Shared project cards need their own reading rhythm. */
+.project-principles-grid article > h3 + p,
+.seed-reference-node > h3 + p,
+.project-participate > article > h3 + p { margin-top: .75rem; }
+.family-inspiration-text > p + p { margin-top: 1rem; }

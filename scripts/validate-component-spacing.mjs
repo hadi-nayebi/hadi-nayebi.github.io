@@ -16,13 +16,16 @@ function htmlFiles(dir) {
 const routes = htmlFiles(root).map(file => '/' + path.relative(root, file).split(path.sep).join('/'));
 const report = [];
 const failures = [];
+const changedRoutes = new Set(JSON.parse(fs.readFileSync('scripts/component-spacing-routes.json', 'utf8')));
 const browser = await chromium.launch({ headless: true });
-for (const width of [360, 1440]) {
+for (const width of [360, 412, 768, 1440]) {
   const context = await browser.newContext({ viewport: { width, height: width === 360 ? 800 : 900 } });
   for (const route of routes) {
     const page = await context.newPage();
     await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, request => request.abort());
     await page.goto(base + route, { waitUntil: 'load' });
+    await page.evaluate(async () => { if(document.fonts) await document.fonts.ready; });
+    if(route === '/start-here.html') await page.waitForTimeout(1250);
     const findings = await page.evaluate(() => {
       const visible = e => { const r=e.getBoundingClientRect(),s=getComputedStyle(e); return r.width>1 && r.height>1 && s.display!=='none' && s.visibility!=='hidden'; };
       const label = e => e.tagName.toLowerCase() + (e.id ? '#'+e.id : '') + (typeof e.className==='string' && e.className ? '.'+e.className.trim().split(/\s+/).join('.') : '');
@@ -38,6 +41,17 @@ for (const width of [360, 1440]) {
           if(Math.min(ar.right,br.right)>Math.max(ar.left,br.left) && gap<8 && gap>=-1) items.push({type:'reading-gap',parent:label(parent),a:label(a),b:label(b),gap:Number(gap.toFixed(2))});
         }
       }
+      // Painted sibling panels need external breathing room, not just internal padding.
+      const painted = e => { const s=getComputedStyle(e); return parseFloat(s.borderTopWidth)>0 && s.backgroundColor!=='rgba(0, 0, 0, 0)'; };
+      for(const parent of document.querySelectorAll('main, main section, main div')) {
+        const children=[...parent.children].filter(visible);
+        for(let i=1;i<children.length;i++) {
+          const a=children[i-1],b=children[i];
+          if(!a.matches('section,article,div,a') || !b.matches('section,article,div,a') || !painted(a) || !painted(b)) continue;
+          const ar=a.getBoundingClientRect(),br=b.getBoundingClientRect(),gap=br.top-ar.bottom;
+          if(Math.min(ar.right,br.right)>Math.max(ar.left,br.left)+1 && gap>=-1 && gap<8) items.push({type:'painted-boundary',parent:label(parent),a:label(a),b:label(b),gap:Number(gap.toFixed(2))});
+        }
+      }
       const panels=[...document.querySelectorAll('main > section.start-agent-entry')];
       for(const panel of panels) {
         const next=panel.nextElementSibling;
@@ -50,10 +64,17 @@ for (const width of [360, 1440]) {
     });
     report.push({route,width,findings});
     for(const finding of findings.filter(x=>x.type==='panel-gap' && x.gap<24)) failures.push(`${route} @ ${width}: ${finding.a} to ${finding.b} gap ${finding.gap}px; expected at least 24px`);
+    for(const finding of findings.filter(x=>x.type==='reading-gap')) failures.push(`${route} @ ${width}: ${finding.parent}: ${finding.a} to ${finding.b} gap ${finding.gap}px; expected at least 8px`);
     // Capture actual defects for diagnosis, not as an automatic universal spacing rule.
-    if(findings.some(x=>x.type==='reading-gap') || route==='/start-here.html') {
+    if(findings.some(x=>x.type!=='panel-gap') || changedRoutes.has(route)) {
       await page.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${width}-full.png`),fullPage:true});
       await page.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${width}-fold.png`)});
+    }
+    if(route==='/start-here.html') {
+      for(const section of await page.locator('main > section').all()) {
+        const id=await section.getAttribute('id') || 'hero';
+        await section.screenshot({path:path.join(output,`start-section-${id}-${width}.png`)});
+      }
     }
     await page.close();
   }
@@ -61,5 +82,5 @@ for (const width of [360, 1440]) {
 }
 await browser.close();
 fs.writeFileSync(path.join(output,'audit.json'),JSON.stringify(report,null,2));
-console.log(`Spacing inventory: ${routes.length} HTML routes at phone and desktop widths; audit saved.`);
+console.log(`Spacing inventory: ${routes.length} HTML routes at 360, 412, 768, 1440; ${failures.length} failed reading/panel gaps. Painted-boundary candidates remain diagnostic for visual review; audit saved.`);
 if(failures.length){ console.error(failures.join('\n')); process.exit(1); }

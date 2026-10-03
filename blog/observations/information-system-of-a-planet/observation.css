@@ -219,7 +219,7 @@
     background: var(--obs-surface);
 }
 
-.observation-empty h2 { margin-top: 0; }
+.observation-empty h2 { margin: 0 0 1rem; }
 .observation-empty p { color: var(--obs-muted); margin-bottom: 0; }
 
 .observation-episode {
@@ -445,3 +445,4 @@
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+
