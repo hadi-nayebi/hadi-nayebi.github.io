@@ -107,6 +107,7 @@ Any job that changes visitor-visible HTML, CSS, responsive behavior, shared navi
 - Run `node scripts/validate-responsive-layout.mjs` through the responsive-layout workflow.
 - Inspect the produced phone and desktop screenshots for hierarchy, spacing, wrapping, clipping, overflow, overlap, contrast, and consistency with adjacent pages.
 - Inspect both the initial viewport and the complete page. A full-page screenshot can render fixed elements differently and cannot substitute for checking what a visitor sees above the fold.
+- Measure spacing at reported text/component boundaries. Interior padding does not separate adjacent painted panels; test their actual outer edges. Check the complete page and dynamic states, trace shared styles to their consumers, and add a regression assertion that fails on the original touching-block defect. Do not use blanket margins that disrupt deliberate inline groups or diagram layouts.
 - Exercise at least 360 px, 412 px, 768 px, and 1440 px widths for a new or materially changed layout.
 - Check fixed-header clearance, opened mobile navigation, buttons, cards, long labels, discussion containers, and the transition into the next section.
 - For a generated page family, render and inspect every generated page at phone and desktop widths; a sample page is not sufficient when shared content can change wrapping or height.
@@ -130,3 +131,4 @@ node scripts/validate-whats-new.mjs
 
 Also run `git diff --check` and inspect the final diff against the intended base branch before
 publishing a pull request.
+

@@ -3,6 +3,8 @@ name: Responsive layout validation
 on:
   pull_request:
     paths:
+      - '**/*.html'
+      - 'scripts/component-spacing-routes.json'
       - 'index.html'
       - 'about.html'
       - 'services.html'
@@ -24,12 +26,15 @@ on:
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-component-spacing.mjs'
       - 'scripts/validate-start-here-participation-layout.mjs'
       - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
   push:
     branches: [main]
     paths:
+      - '**/*.html'
+      - 'scripts/component-spacing-routes.json'
       - 'index.html'
       - 'about.html'
       - 'services.html'
@@ -51,6 +56,7 @@ on:
       - 'js/components.js'
       - 'scripts/render-abstraction-library.mjs'
       - 'scripts/validate-responsive-layout.mjs'
+      - 'scripts/validate-component-spacing.mjs'
       - 'scripts/validate-start-here-participation-layout.mjs'
       - 'scripts/validate-contribution-surfaces.mjs'
       - '.github/workflows/responsive-layout-validation.yml'
@@ -58,7 +64,7 @@ on:
 jobs:
   responsive-layout:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -79,6 +85,16 @@ jobs:
           done
           cat /tmp/hadosh-site.log
           exit 1
+      - name: Audit component spacing across all HTML routes
+        run: node scripts/validate-component-spacing.mjs
+      - name: Upload component spacing audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-spacing-audit
+          path: artifacts/component-spacing
+          if-no-files-found: error
+          retention-days: 14
       - name: Verify layout, interaction, contrast, and accessibility
         run: node scripts/validate-responsive-layout.mjs
       - name: Verify Start Here participation choices
@@ -195,3 +211,4 @@ jobs:
           path: artifacts/responsive-layout/private-github-home-*.png
           if-no-files-found: error
           retention-days: 14
+

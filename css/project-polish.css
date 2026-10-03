@@ -279,3 +279,19 @@
     .qseed-compare-table th,
     .qseed-compare-table td { min-width:170px; }
 }
+
+
+/* Shared project cards need their own reading rhythm. */
+.project-principles-grid article > h3 + p,
+.seed-reference-node > h3 + p,
+.project-participate > article > h3 + p { margin-top: .75rem; }
+.family-inspiration-text > p + p { margin-top: 1rem; }
+.project-hero-copy > .project-actions + p { margin-top: 1rem; }
+.seed-boundary-layer > .diagram-label,
+.qseed-stack-layer > .diagram-label { display: block; margin-bottom: .5rem; }
+.seed-boundary-layer > strong,
+.qseed-stack-layer > strong { display: block; }
+.seed-boundary-layer > strong + p { margin-top: .5rem; }
+.qseed-stack-layer > small { margin-top: .5rem; }
+.team-member-node,
+.team-core-node { gap: .5rem; }
