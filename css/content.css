@@ -1,5 +1,0 @@
-/* Content-only layout: separate the painted cards inside their link wrappers. */
-.blog-sidebar-newest {
-    display: grid;
-    gap: 16px;
-}

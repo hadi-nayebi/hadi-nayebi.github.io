@@ -29,7 +29,10 @@ for(const width of [360,412,768,1440]) {
 }
 // Prove the regression detects the original zero-gap layout when only the repair stylesheet is absent.
 const baseline=await browser.newPage({viewport:{width:1440,height:900}});
-await baseline.route('**/css/content.css*',route=>route.fulfill({status:200,contentType:'text/css',body:''}));
+const currentStyles=fs.readFileSync('css/styles.css','utf8');
+const repair="\n/* Sidebar lists contain painted cards inside both linked and unlinked wrappers. */\n.sidebar > div:has(> .article-card-link, > .article-card) {\n    display: grid;\n    gap: 16px;\n}\n";
+if(!currentStyles.includes(repair)) throw new Error('Shared sidebar repair rule not found');
+await baseline.route('**/css/styles.css*',route=>route.fulfill({status:200,contentType:'text/css',body:currentStyles.replace(repair,'')}));
 await baseline.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/,route=>route.abort());
 await baseline.goto(base+'/content.html',{waitUntil:'networkidle'});
 const oldLayout=await inspect(baseline);

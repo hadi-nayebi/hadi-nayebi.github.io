@@ -6816,3 +6816,9 @@ body.lightbox-open {
 .page-start-here .start-phase-human h3 { margin-bottom: .75rem; }
 .academy-pillar > p + .card-link { display: inline-block; margin-top: 1rem; }
 .project-three-grid article > h3 + p { margin-top: .75rem; }
+
+/* Sidebar lists contain painted cards inside both linked and unlinked wrappers. */
+.sidebar > div:has(> .article-card-link, > .article-card) {
+    display: grid;
+    gap: 16px;
+}
