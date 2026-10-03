@@ -30,6 +30,13 @@ for (const width of [360, 412, 768, 1440]) {
       const visible = e => { const r=e.getBoundingClientRect(),s=getComputedStyle(e); return r.width>1 && r.height>1 && s.display!=='none' && s.visibility!=='hidden'; };
       const label = e => e.tagName.toLowerCase() + (e.id ? '#'+e.id : '') + (typeof e.className==='string' && e.className ? '.'+e.className.trim().split(/\s+/).join('.') : '');
       const items=[];
+      for(const section of document.querySelectorAll('.page-start-here main > .academy-section')) {
+        const style=getComputedStyle(section);
+        for(const edge of ['Top','Bottom']) {
+          const gap=parseFloat(style['padding'+edge]);
+          if(gap<24) items.push({type:'section-padding',parent:label(section),a:edge,b:'content',gap});
+        }
+      }
       for (const parent of document.querySelectorAll('main, main section, main article, main div, main a')) {
         const children=[...parent.children].filter(visible);
         for(let i=1;i<children.length;i++) {
@@ -65,6 +72,7 @@ for (const width of [360, 412, 768, 1440]) {
     report.push({route,width,findings});
     for(const finding of findings.filter(x=>x.type==='panel-gap' && x.gap<24)) failures.push(`${route} @ ${width}: ${finding.a} to ${finding.b} gap ${finding.gap}px; expected at least 24px`);
     for(const finding of findings.filter(x=>x.type==='reading-gap')) failures.push(`${route} @ ${width}: ${finding.parent}: ${finding.a} to ${finding.b} gap ${finding.gap}px; expected at least 8px`);
+    for(const finding of findings.filter(x=>x.type==='section-padding')) failures.push(`${route} @ ${width}: ${finding.parent} ${finding.a} padding ${finding.gap}px; expected at least 24px`);
     // Capture actual defects for diagnosis, not as an automatic universal spacing rule.
     if(findings.some(x=>x.type!=='panel-gap') || changedRoutes.has(route)) {
       await page.screenshot({path:path.join(output,route.slice(1).replace(/\//g,'_')+`-${width}-full.png`),fullPage:true});

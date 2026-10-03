@@ -108,6 +108,7 @@ body {
 
 /* Separate painted panels; their interior padding cannot create an outer gap. */
 .page-start-here .start-agent-entry {
+    padding: clamp(1.5rem, 3vw, 2.4rem);
     margin-block: clamp(1.5rem, 3vw, 2rem);
     scroll-margin-top: 100px;
 }
@@ -282,7 +283,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding-inline: 2rem;
 }
 
 header {
@@ -2837,7 +2838,7 @@ body.lightbox-open {
 
     /* --- Layout --- */
     .container {
-        padding: 0 1.5rem;
+        padding-inline: 1.5rem;
     }
 
     /* --- Hero --- */
