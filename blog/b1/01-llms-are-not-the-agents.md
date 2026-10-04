@@ -58,7 +58,7 @@ A useful plan is still output until something acts on it. A proposed tool call i
 
 The most direct place to see it is a **CLI agent**: a command-line program that works in a folder on your computer, reads and writes files, and connects a model to tools. Think of it as a general-purpose file manager powered by an LLM. Its name may suggest coding, but its ability to work with files extends to research, writing, project management, and any work whose state can be represented there.
 
-The program's **runtime** supplies context, presents available tools, reads the model's proposed calls, and carries out the permitted ones. The **harness** is the wider arrangement around the model: runtime, files, tools, instructions, permissions, and controls. An agentic tool already relies on such machinery whenever model output can become an action.
+The program's **runtime** supplies context, presents available tools, reads the model's proposed calls, and carries out the permitted ones. The **harness** is the wider non-parametric software layer around the model: runtime behavior, files, memory, tools, instructions, hooks, permissions, controls, and persistent state. Together, **model + harness form the working agentic system**.
 
 Here is the choice that the conversation box tends to hide. A product can keep improving a general assistant, place more responsibility on the model, and make its surrounding machinery less visible to the person using it. The user supplies requests; the product decides much of the context, memory, and method. More model capability can make that assistant more autonomous. It does not, by itself, make the assistant more specific to how *you* work. A product can become more capable and more generic at the same time.
 
@@ -75,6 +75,8 @@ The difference is not whether a harness exists. It is what responsibility we giv
 In this series, the agent's durable brain is literal: a collection of files and directories that holds the project memory, rules, jobs, and working state we choose to preserve.
 
 **The agent is the filesystem.**
+
+That is deliberate shorthand for the agent's **durable identity**. The complete working system is larger: the model supplies intelligence, the runtime animates the work, and the harness connects files, tools, instructions, hooks, permissions, and state. But the filesystem is where much of the user-specific structure can survive when a model call ends.
 
 ![Diagram comparing the LLM as the reasoning engine with the user-shaped directory as the agent's durable brain: memory, rules, jobs, and controls persist outside the model. Swapping the engine changes capability; swapping the directory changes the agent.](images/llm-engine-agent-directory-b1-1.png)
 *The model supplies intelligence. The filesystem carries the user-specific structure that makes one agent different from another.*
@@ -153,7 +155,7 @@ The filesystem gives those distinctions visible form. Files sit within directori
 
 Working memory can expand in the directory where a job is active and contract when its durable lessons are routed to the right files. That is how the agent can accumulate experience without carrying its entire history into every context window. An instruction that never reaches the relevant context cannot guide anything. A hook that never sees the event cannot enforce anything. The paths between files, context, and actions make the brain work.
 
-The platform serves as an adapter to that brain. Runtimes differ in how they load context and enforce controls; the adapters will differ too. But the project's knowledge, jobs, rules, and memory can remain in files you own. Swap the model and the engine changes. Change the adapter and the agent may gain different tools. Swap the filesystem and you have changed the agent itself.
+The platform serves as an adapter to that brain. Runtimes differ in how they load context and enforce controls; the adapters will differ too. But the project's knowledge, jobs, rules, and memory can remain in files you own. Swap the model and the intelligence engine changes. Change the runtime or adapter and the system may gain different ways to act. Change the durable filesystem—the accumulated memory, rules, jobs, and methods—and you have changed the part that makes this agent specifically **yours**.
 
 ## What this means for you
 
