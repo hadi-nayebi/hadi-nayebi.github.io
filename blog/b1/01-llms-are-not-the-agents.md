@@ -99,7 +99,9 @@ Think of this as a **probabilistic Markov brain**. The model proposes one move, 
 
 That is the **random walk problem**. A model can solve a task beautifully today and miss the same project's rule tomorrow. Intelligence alone is not reliability. If yesterday's decision never reaches today's context, the model cannot follow it.
 
-A saved decision can enter the next context. An instruction can guide the next proposal. A runtime control can stop an action where a boundary matters. These do different jobs. Consider what happens to one correction after the conversation ends.
+This brings us back to the context we separated from the model earlier. A saved decision can enter the next context. An instruction can guide the next proposal. A runtime control can stop an action where a boundary matters. These do different jobs.
+
+The easiest way to see the difference is to follow one correction after the conversation ends.
 
 ## A correction that survives
 
@@ -111,7 +113,9 @@ The correction now has a home and a path into future work. A finding becomes kno
 
 > **The model's weights did not change. The system grew.**
 
-To use that rule consistently, the agent needs a rhythm for work and controls at critical moments.
+Persistence solves one problem: the correction can survive. It does not yet guarantee that the next run will use it at the right moment.
+
+To make durable context operational, the agent needs a rhythm for work and controls at critical moments.
 
 ## Structure changes everything
 
@@ -130,7 +134,9 @@ Now the two layers are visible. **Instructions and memory** guide behavior throu
 
 Together, these parts give the agent memory of decisions, structure for work, reflexes at critical events, identity across tasks, and continuity across sessions. Intelligence now has a structure that carries its work forward.
 
-But each job leaves observations. Each review may suggest a rule. Each rule needs a scope. Put everything into one enormous prompt and you do not have a brain. You have **prompt soup**.
+But structure creates its own problem. Each job leaves observations. Each review may suggest a rule. Each rule needs a scope. Put everything into one enormous prompt and you do not have a brain. You have **prompt soup**.
+
+That is why the next principle matters.
 
 ## The core principle: compartmentalization
 
