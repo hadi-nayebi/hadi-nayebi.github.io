@@ -2,14 +2,14 @@
 title: "LLMs Are Not the Agents"
 authors: ["Hadi Nayebi", "GPT-6 Sol"]
 date: "February 2026"
-modified: "September 2026"
+modified: "October 2026"
 slug: "llms-are-not-the-agents"
 read_time: "14 min"
 tags: [Agents, AI, Fundamentals]
 audience: professionals
 og_image: "blog/b1/images/llm-engine-agent-directory-b1-1.png"
 series: "Hadosh Academy – Agents"
-version: v2.0.0
+version: v2.0.1
 status: published
 narration_status: needs-new-script-and-audio
 ---
@@ -63,6 +63,8 @@ The program's **runtime** supplies context, presents available tools, reads the 
 Here is the choice that the conversation box tends to hide. A product can keep improving a general assistant, place more responsibility on the model, and make its surrounding machinery less visible to the person using it. The user supplies requests; the product decides much of the context, memory, and method. More model capability can make that assistant more autonomous. It does not, by itself, make the assistant more specific to how *you* work. A product can become more capable and more generic at the same time.
 
 Or we can make the harness a layer the user helps shape. The person and agent can decide what knowledge to keep, which decisions govern later work, how a job proceeds, what requires approval, and what a correction should change. The same model can then work differently for different people because their accumulated contexts and methods are different.
+
+The further that layer can change with the user, the less it looks like one fixed application shared by everyone and the more it starts to look like personal software.
 
 > **Same model. Different project brains. Different agents.**
 
@@ -152,7 +154,11 @@ The electricity keeps getting stronger. More power alone will not decide what it
 
 **Build the toaster.**
 
-That gives intelligence a structure for repeatable work. As the structure grows, another question opens: what kind of system are we building? That is where the next essay begins.
+Give intelligence a body.
+
+But a fixed appliance is only the beginning. If the harness is the part that changes with its user, what kind of software should that body become?
+
+That is where the next essay begins.
 
 ---
 
