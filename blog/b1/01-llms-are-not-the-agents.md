@@ -76,6 +76,9 @@ In this series, the agent's durable brain is literal: a collection of files and 
 
 **The agent is the filesystem.**
 
+![Diagram comparing the LLM as the reasoning engine with the user-shaped directory as the agent's durable brain: memory, rules, jobs, and controls persist outside the model. Swapping the engine changes capability; swapping the directory changes the agent.](images/llm-engine-agent-directory-b1-1.png)
+*The model supplies intelligence. The filesystem carries the user-specific structure that makes one agent different from another.*
+
 Without a model and runtime, the brain is sleeping. Connect them, and the system can read its instructions, act within its boundaries, and write back what it learns. The files carry its history and rules beyond the current conversation.
 
 Open a CLI agent in an **empty directory**. You still have the platform's conversation loop and tools. The model may already be brilliant. But where is *your project's* last decision? Its active job? The rule it learned after yesterday's mistake? By the definition used in this series, the durable project agent has not been built yet.
