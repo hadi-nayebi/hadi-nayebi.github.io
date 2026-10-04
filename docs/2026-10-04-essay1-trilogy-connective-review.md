@@ -56,3 +56,14 @@ SA2 answers:
 ## Validation boundary
 
 Canonical Markdown and rendered HTML were updated together. This is a visitor-visible prose change, so the PR is not merge-ready until repository checks pass and the rendered Essay 1 page is inspected at required widths. No narration action is authorized; existing narration remains stale/withheld.
+
+
+## Final editorial maturity pass
+
+After listening review, three semantic callbacks were added without changing the argument:
+
+1. The random-walk section now explicitly reconnects to the earlier context/model distinction before following one correction.
+2. The correction-survival section now states the next problem: persistence does not guarantee the correction will be used at the right moment, which earns the hooks/structure section.
+3. The hooks section now names the next problem created by structure—scope—and uses that to hand off to compartmentalization.
+
+These are connective edits only. No new concept, example, or architectural claim was added.
