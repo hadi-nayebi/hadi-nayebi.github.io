@@ -116,6 +116,8 @@ The correction now has a home and a path into future work. A finding becomes kno
 
 > **The model's weights did not change. The system grew.**
 
+In this broader sense, the harness stores more than factual memory. A note can remember *what is true*. An instruction can remember *how we decided to work*. A hook can embody **procedural memory**: *when this event happens again, remember to check, inject, block, or record this*. Different mechanisms carry different kinds of memory, but all of them let lessons from earlier work shape later behavior without changing the model's weights.
+
 Persistence solves one problem: the correction can survive. It does not yet guarantee that the next run will use it at the right moment.
 
 To make durable context operational, the agent needs a rhythm for work and controls at critical moments.
