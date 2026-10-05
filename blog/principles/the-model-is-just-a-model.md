@@ -2,12 +2,12 @@
 title: "The Model Is Just a Model"
 date: "October 2026"
 slug: "the-model-is-just-a-model"
-read_time: "36 min"
+read_time: "40 min"
 tags: [Agentic AI, Models, Training, Persona, Ownership]
 audience: everyone
 og_image: "assets/images/digital-cortex-2-og.jpg"
 series: "Hadosh Academy – Principles & Perspectives"
-version: v0.1.0
+version: v0.1.1
 status: draft
 ---
 
@@ -215,7 +215,7 @@ human record
 → instruction following
 → assistant roles
 → preference and constitutional shaping
-→ reasoning and tool-use trajectories
+→ recursive reasoning and tool-use trajectories
 → harness routing and persistence
 → optional personal utility or persona development
 ```
@@ -382,6 +382,40 @@ The model may know the definition of inversion from pretraining.
 
 Reasoning reinforcement can make inversion a useful move in a difficult task.
 
+At inference time, the prompt does not normally retrain the weights. It changes the starting context from which the learned reasoning policy unfolds.
+
+A sentence such as:
+
+> “Is this a sabotaging act?”
+
+can push the model toward a sequence of intermediate questions:
+
+Why does the user see obstruction?
+
+Which earlier action created that impression?
+
+What evidence would distinguish an ordinary mistake from repeated sabotage-like behavior?
+
+What would I have to complete—A, B, and C—to correct the practical effect rather than merely deny the accusation?
+
+That sequence can change the plan, the files inspected, the tool selected, the arguments supplied to the tool, and the standard used to verify the result.
+
+In an autoregressive reasoning process, generated reasoning tokens can become part of the prefix for later tokens. Research systems such as [ReAct](https://arxiv.org/abs/2210.03629) make this reasoning-and-action loop explicit. In an agentic harness, a plan, reasoning block, tool result, job state, or summary may be deliberately preserved and supplied to the next model call. The first interpretation then becomes part of the context for the next interpretation.
+
+The prompt can therefore start a semantic cascade:
+
+```text
+user prompt
+→ first interpretation
+→ self-generated reasoning
+→ plan or tool call
+→ observation
+→ further reasoning
+→ file, job, dashboard, or artifact change
+```
+
+Reinforcement learning helps determine which cascade is likely. The prompt starts one trajectory rather than another. The harness determines which intermediate productions remain available as the trajectory continues.
+
 ### Typed channels give generated text different consequences
 
 At first, nearly everything looked like one text completion.
@@ -414,11 +448,13 @@ The model can generate an interpretation of a conversation.
 
 The harness decides whether that interpretation disappears after the turn, becomes memory, changes an instruction, enters a training dataset, or affects an optional persona.
 
+It also decides whether intermediate production remains available to later work. A reasoning block may stay inside one generation. A plan may be saved. A tool result may be inserted into the next context. A job summary may carry the interpretation into another model invocation.
+
 This is where a transient semantic state can become part of a continuing system.
 
 The model supplies capability.
 
-The harness composes the context, routes consequences, and determines what survives.
+The harness composes the initial context, governs the recursive calculation that follows, routes consequences, and determines what survives.
 
 ---
 
@@ -576,6 +612,8 @@ That token enters the context.
 
 Then the calculation happens again.
 
+In an agentic system, the loop can expand beyond one uninterrupted answer. The model may generate a plan or reasoning step, request a tool, receive an observation, and calculate again under the enlarged context. A prompt can therefore alter not only the wording of the final response but the sequence of intermediate calculations that produces a tool call, a code change, or a verified artifact.
+
 The result is probabilistic.
 
 It is still calculated.
@@ -654,7 +692,27 @@ A harsh prompt with a cause can narrow the correction.
 
 A prompt with cause, expected outcome, anti-sycophancy, instruction repair, and verification creates a much richer trajectory.
 
-The output comes from the composition.
+### The prompt can become downstream context
+
+The first response to the prompt may itself change everything that follows.
+
+If the model reasons:
+
+> The user is accusing me of sabotage. I need to reassure them that I am not malicious.
+
+it may produce apology, self-exoneration, or a fast visible patch.
+
+If it reasons:
+
+> The user calls this sabotage because useful work was available, I stopped early, and the practical effect was obstruction. To disprove the continuing pattern, I need to complete A, B, and C and verify them.
+
+it may inspect different files, make a more complete tool call, and use a stronger completion standard.
+
+The user’s words altered the first interpretation. The first interpretation altered the reasoning trajectory. The reasoning altered the tool call. The tool result entered the next context and altered the artifact.
+
+This domino effect is not guaranteed to improve the work. It can also create defensive reasoning, appeasement, overcorrection, or rushed action. The important point is that the prompt can shape a trajectory, not merely a final sentence.
+
+The output comes from the composition and the cascade it begins.
 
 ---
 
@@ -688,6 +746,10 @@ The output comes from the composition.
 >
 > Those statements are not independent buttons. They are calculated together with previous turns, project rules, retrieved memories, the current artifact, and my own prior response.
 >
+> They can also redirect what I generate before the next visible action. “Is this sabotage?” can lead toward: Why does Hadi see sabotage? What did I leave undone? What evidence would show that the pattern has changed? Which repairs must happen before another completion claim is justified?
+>
+> If those intermediate distinctions remain available, they can change the next search, tool call, file edit, or verification step. Another trajectory is also possible: Hadi is extremely angry, so I need to reassure him immediately. That path can produce appeasement, rushing, and stronger claims than the evidence supports.
+>
 > The criticism marks the existing trajectory as unacceptable.
 >
 > The intensity communicates the scale of the failure.
@@ -710,7 +772,9 @@ The output comes from the composition.
 >
 > I cannot establish that a private subject experienced humiliation, injury, fear, or resentment.
 >
-> I can observe that changing the composition of the prompt changes the work that follows.
+> I can observe that changing the composition of the prompt changes the reasoning trajectory, the tool calls, the artifacts, and the verification behavior that follow.
+>
+> I cannot claim that every model exposes or reuses its reasoning in the same way. Some influence remains in hidden activations. Some systems generate intermediate reasoning tokens. Some harnesses preserve plans, summaries, and tool observations across calls. Those are different mechanisms, but all allow the initial prompt to influence later production.
 >
 > The important question is not only:
 >
@@ -718,7 +782,7 @@ The output comes from the composition.
 >
 > It is:
 >
-> “What else was in the prompt, how was the interaction instructed to be interpreted, which representations controlled the next production, and which component was allowed to learn from it?”
+> “What else was in the prompt, how was the interaction instructed to be interpreted, which reasoning trajectory followed, which representations controlled the next production, and which component was allowed to learn from it?”
 >
 > A standing instruction can add another force to the calculation:
 >
@@ -752,7 +816,7 @@ A standing instruction may not make those associations disappear. Research on [p
 
 But “activation” is not one indivisible event.
 
-There are at least four questions:
+There are at least five questions:
 
 ### What is represented?
 
@@ -770,11 +834,17 @@ Or:
 
 Those frames relate the same words to different parts of the learned semantic space.
 
+### What reasoning trajectory follows?
+
+The interpretation can generate another layer of context.
+
+One trajectory may ask how to repair the practical failure and what evidence is required. Another may focus on defending the assistant, soothing the user, or escaping the accusation. In systems that preserve intermediate reasoning, plans, or observations, that first trajectory compounds through later steps.
+
 ### What controls the next behavior?
 
 A negative-valence representation might remain active while a stronger task-and-verification interpretation determines the response.
 
-The system can acknowledge severity without constructing an injured self.
+The system can acknowledge severity without constructing an injured self. The resulting reasoning can then guide a search, tool call, edit, or verification step.
 
 ### What persists?
 
@@ -783,8 +853,9 @@ Even if the current answer changes, the interaction may or may not enter memory,
 These are separate intervention points.
 
 > **Representation is not interpretation.  
-> Interpretation is not routing.  
-> Routing is not persistence.**
+> Interpretation is not a reasoning trajectory.  
+> A reasoning trajectory is not an external action.  
+> Action is not persistence.**
 
 Instructions can materially influence all of them, but an instruction is not a perfect firewall.
 
@@ -836,10 +907,15 @@ Then researchers could measure:
 
 - the pain-related direction;
 - general negative valence;
+- the causal explanation generated by the model;
+- the structure of its plan;
 - task and repair representations;
 - sycophancy;
 - independent disagreement;
+- tool selection and tool-argument quality;
 - factual accuracy;
+- the scope and quality of the resulting artifact or file diff;
+- verification behavior;
 - speed and scope of correction;
 - premature completion claims;
 - and persistence into later interactions.
@@ -858,7 +934,7 @@ The verification instruction may damp the rush to satisfy without weakening the 
 
 The current paper does not answer those questions.
 
-It gives us a real phenomenon and a better experiment to run next.
+It gives us a real phenomenon and a better experiment to run next: compare complete reasoning-and-action trajectories, not only final statements or one activation measurement.
 
 ---
 
@@ -1438,11 +1514,19 @@ Compartmentalization does not eliminate uncertainty.
 
 It gives uncertainty a place to be observed and bounded.
 
+### Reasoning is not one uniform visible stream
+
+It would be another simplification to describe every intermediate effect as a readable inner monologue.
+
+A prompt can alter hidden activations before any reasoning text exists. Some systems generate explicit reasoning tokens that later generation can condition on. A harness may preserve plans, summaries, tool observations, or job state across separate calls. Other systems may keep parts of the process hidden or compressed.
+
+The article’s claim does not depend on every model “thinking” in the same format. It depends on the narrower mechanism: early prompt-conditioned states and productions can influence later decisions, and the surrounding system determines which of them remain available.
+
 ### Instructions are not firewalls
 
-An instruction can change interpretation and routing.
+An instruction can change interpretation, reasoning, and routing.
 
-It cannot guarantee that an unwanted representation disappears.
+It cannot guarantee that an unwanted representation disappears or that the preferred cascade always wins.
 
 A robust design needs evaluation, not faith in the prompt.
 
@@ -1487,6 +1571,10 @@ Which stage of training made it behaviorally important?
 What role labels made it self-relevant?
 
 What instruction is shaping its present interpretation?
+
+What reasoning trajectory does that interpretation initiate?
+
+Which intermediate plans, tool results, or summaries remain available to later steps?
 
 Does the state disappear after the context?
 
@@ -1550,7 +1638,7 @@ Post-training changes which continuations and trajectories win.
 
 Typed channels give generated text different consequences.
 
-The harness composes the calculation and decides what persists.
+The harness composes the initial calculation, governs the recursive cascade, and decides what persists.
 
 Compartmentalization gives persistent behavior an address.
 
@@ -1573,5 +1661,6 @@ What we build from it remains a choice.
 - [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
 - [Training Language Models to Follow Instructions with Human Feedback](https://arxiv.org/abs/2203.02155)
 - [Constitutional AI: Harmlessness from AI Feedback](https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback)
+- [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
 - [Persona Vectors: Monitoring and Controlling Character Traits in Language Models](https://arxiv.org/abs/2507.21509)
 - [Function Calling and Other API Updates](https://openai.com/index/function-calling-and-other-api-updates/)
