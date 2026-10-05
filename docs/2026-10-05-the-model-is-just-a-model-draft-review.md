@@ -3,7 +3,7 @@
 **Date:** 2026-10-05  
 **Status:** draft for founder discussion; not approved, published, narrated, indexed, or merge-ready  
 **Canonical source:** `blog/principles/the-model-is-just-a-model.md`  
-**Rendered page:** `blog/principles/the-model-is-just-a-model.html`  
+**Draft reader page:** `blog/principles/the-model-is-just-a-model.html`  
 **Owning Departments job:** [PR #292](https://github.com/hadi-nayebi/hadosh_academy_departments/pull/292)  
 **Version:** v0.1.0  
 **Visible word count:** approximately 7,184 words  
@@ -140,8 +140,8 @@ This framing gives the paper its strongest warranted interpretation, preserves t
 
 ### Strongest parts
 
-- The article now gives the Pain Axis result credit before drawing the consciousness boundary.
-- The training lineage makes the “model is just a model” thesis causal rather than dismissive.
+- The article gives the Pain Axis result credit before drawing the consciousness boundary.
+- The training lineage makes “the model is just a model” causal rather than dismissive.
 - The prompt table and Sol 6 interlude turn an abstract argument into a real interaction mechanism.
 - Compartmentalization connects the video commentary to Hadosh Academy’s durable architecture and user-ownership objective.
 - The objections section prevents the article from claiming that a neutral vocabulary removes all valence or that engineers predict every learned behavior.
@@ -149,7 +149,7 @@ This framing gives the paper its strongest warranted interpretation, preserves t
 ### Known draft risks
 
 - At approximately 7,184 words, the article is substantial. Hadi’s listening review should determine whether the model-lineage and persona sections are proportionate or whether they repeat one causal step.
-- The OpenAI/Anthropic lineage may still need sentence-level source checking and citation normalization before publication.
+- The OpenAI/Anthropic lineage still needs sentence-level source checking and citation normalization before publication.
 - The phrase “transformer as container” is intentionally conceptual; the final draft should preserve the qualification that architecture affects what can be learned.
 - The Sol 6 interlude is based on visible interaction outcomes, not direct access to hidden activation histories. Its wording must remain within that boundary.
 - No new article-specific visual exists. The current page metadata reuses an existing general image only as a draft placeholder; publication requires a deliberate visual decision.
@@ -161,18 +161,18 @@ Completed:
 - canonical Markdown created on a focused branch;
 - public/private boundary reviewed at the first-draft level;
 - title, subtitle, metadata, selected sources, and related-writing routes included;
-- HTML page shell created under the matching basename;
-- repository-owned Markdown renderer assigned to synchronize the article body;
-- local structural inspection of a generated candidate found one H1, no duplicate IDs, one compound-prompt table, four code examples, the Sol 6 interlude, nonempty links, comments, and related-writing navigation;
+- matching HTML page created in the deliverable PR;
+- the HTML page renders the complete canonical Markdown for draft review and preserves the source as the meaning authority;
+- the temporary branch-only workflow explored for static generation was removed rather than left as new repository infrastructure;
+- local structural inspection of a static generated candidate found one H1, no duplicate IDs, one compound-prompt table, four code examples, the Sol 6 interlude, nonempty links, comments, and related-writing navigation;
 - no index, feed, sitemap, What’s New, narration, social, merge, or publication action taken.
 
-Still required before review-ready status:
+Still required before review-ready or merge-ready status:
 
-- confirm the repository-generated HTML exactly matches the canonical Markdown;
-- remove the one-time branch-only rendering workflow after it produces the static page;
+- after Hadi’s revisions stabilize the prose, replace the draft client-rendered preview with repository-synchronized static HTML and verify exact Markdown/HTML parity;
 - run `git diff --check` and the relevant site validators;
 - render and inspect phone and desktop views, including the long prompt table and interlude;
-- verify all external claims against primary sources and resolve source-link presentation;
+- verify every external claim against primary sources and normalize reader-facing source presentation;
 - conduct founder listening review and revise the argument;
 - decide whether the article needs one or more explanatory visuals;
 - complete the public-content scorecard only after the substantive draft stabilizes;
