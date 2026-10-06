@@ -97,7 +97,7 @@
                     <div class="article-meta">
                         <span>Updated September 2026</span>
                         <span>&bull;</span>
-                        <span>14 min</span>
+                        <span>16 min</span>
                         <div class="article-meta-tags">
                             <span class="tag tag-audience" title="">professionals</span>
                             <span class="tag">Agents</span>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="article-body">
-                        <div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. That mistake changes the products we build and our role in using them. A model can reason, write, and propose actions. A harness supplies context and carries out permitted work. In the architecture developed here, the project's memory, jobs, rules, and state live in an inspectable filesystem shaped by its user. The model supplies capability. The filesystem gives one agent its continuing identity. That distinction changes how people work with their agents.</p></div>
+                        <div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. This essay separates the model from the harness around it. The model supplies parametric capability; the harness composes active context, connects tools and controls, and carries user-specific durable context across sessions. In the architecture developed here, much of that durable identity lives in an inspectable filesystem shaped by its user. The distinction matters because personalization, memory, rules, jobs, and corrections accumulate primarily in the harness&mdash;not in one model response.</p></div>
 
                         <blockquote><p><strong>LLMs are electricity. Agents are toasters.</strong></p></blockquote>
 
@@ -146,7 +146,7 @@
 
                         <p>The harness connects the two. It composes active context from durable context, lets the model calculate over it, and can route selected consequences of the current work back into durable context so they can shape later work.</p>
 
-                        <p>The model has knowledge, capability, and tendencies in its weights &mdash; its <strong>parametric</strong> side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the project&rsquo;s memory, current jobs, rules, permissions, and decisions <strong>must live outside those weights</strong>, in inspectable, non-parametric structures. If a decision governs your work, you should be able to open it, correct it, and see how the system uses it.</p>
+                        <p>The model has knowledge, capability, and tendencies in its weights &mdash; its <strong>parametric</strong> side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the <strong>canonical, user-governed form</strong> of the project&rsquo;s memory, current jobs, rules, permissions, and decisions must remain outside those weights, in inspectable, non-parametric structures. Some behavior may later be compiled into an adapter or specialized model, but the user should still be able to trace, correct, and rebuild the source that governs the work.</p>
 
                         <p>A useful plan is still output until something acts on it. A proposed tool call is still output until something interprets it, checks its permissions, and executes it. To find the agent, we have to look at that surrounding machinery.</p>
 
@@ -284,9 +284,11 @@
 
                         <hr>
 
-                        <p><em>Next: <a href="https://hadi-nayebi.github.io/blog/b2/02-we-could-have-had-agi.html">“We Could Have Had AGI By Now”</a> asks why agent architecture belongs to the design of complex systems.</em></p>
+                        <p><em>Next: <a href="../b2/02-we-could-have-had-agi.html">“We Could Have Had AGI By Now”</a> asks what kind of software the harness should become.</em></p>
 
-                        <p><em>Original version: <a href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/blob/main/blog/b1/original-llms-are-not-the-agents-v1.3.0.md">Read the first essay in Markdown</a>.</em></p>
+                        <p><em>Continue deeper: <a href="../b4/04-the-language-of-agents.html">“The Language of Agents”</a> provides the working vocabulary; <a href="../b5/05_1-the-two-layer-foundation.html">“The Two-Layer Foundation”</a> opens one concrete technical architecture.</em></p>
+
+                        <p><em>Original version: <a href="original-llms-are-not-the-agents-v1.3.0.md">Read the first essay in Markdown</a>.</em></p>
                     </div>
 
                     <!-- Comments (Giscus) -->
