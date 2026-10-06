@@ -28,7 +28,7 @@ A toaster is a simple structure. It takes raw electrical energy and channels it 
 
 This is the relationship between an LLM and an agent. The model can reason through language, write, analyze, plan, and propose actions. But the token stream it produces needs a structure around it before those capabilities become continuing, reliable work.
 
-Most people building with AI today are staring at the electricity and wondering why it does not make toast on its own.
+Much of the industry's attention is still fixed on the electricity, wondering why it does not make toast on its own.
 
 ## The relationship we were taught
 
