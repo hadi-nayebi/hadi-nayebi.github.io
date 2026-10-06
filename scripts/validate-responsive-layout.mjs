@@ -55,25 +55,15 @@ for (const viewport of viewports) {
     await page.waitForTimeout(150);
     await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
 
-    if (route.name === 'home') {
+    if (route.name.startsWith('home')) {
       const heroCopy = await page.locator('.hero-description').innerText();
       const heroHeading = await page.locator('.central-circle-content h1').innerText();
-      if (!heroHeading.includes('See the System.') || !heroHeading.includes('Make It Yours.')) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved homepage heading was replaced at runtime`);
-      if (!heroCopy.startsWith('Your AI agent already has a system around it.')) {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved hero wording was replaced at runtime`);
+      if (!heroHeading.includes('Understand It.') || !heroHeading.includes('Build It. Live Through It.')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Understand → Build → Live homepage heading was replaced at runtime`);
       }
-    }
-    if (route.name === 'home-open-architecture') {
-      const heroCopy = await page.locator('.hero-description').innerText();
-      if (!heroCopy.startsWith('A public pattern should show what it does')) {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Open Architecture wording was replaced at runtime`);
-      }
-    }
-
-    if (route.name === 'home-digital-cortex') {
-      const heroCopy = await page.locator('.hero-description').innerText();
-      if (!heroCopy.startsWith('Where does a correction go after you make it?')) {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: approved Digital Cortex wording was replaced at runtime`);
+      const expectedHeroCopy = 'Learn what Agentic AI is made of. Build with open primitives. Turn those ideas into user-owned projects and a harness that grows around your work—visible, changeable, and yours to keep.';
+      if (heroCopy !== expectedHeroCopy) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: accepted Understand → Build → Live hero wording was replaced at runtime`);
       }
     }
 
