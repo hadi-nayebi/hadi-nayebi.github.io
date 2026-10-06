@@ -17,7 +17,7 @@ narration_status: needs-new-script-and-audio
 # LLMs Are Not the Agents
 
 <!-- RAW_HTML -->
-<div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. That mistake changes the products we build and our role in using them. A model can reason, write, and propose actions. A harness supplies context and carries out permitted work. In the architecture developed here, the project's memory, jobs, rules, and state live in an inspectable filesystem shaped by its user. The model supplies capability. The filesystem gives one agent its continuing identity. That distinction changes how people work with their agents.</p></div>
+<div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. This essay separates the model from the harness around it. The model supplies parametric capability; the harness composes active context, connects tools and controls, and carries user-specific durable context across sessions. In the architecture developed here, much of that durable identity lives in an inspectable filesystem shaped by its user. The distinction matters because personalization, memory, rules, jobs, and corrections accumulate primarily in the harness—not in one model response.</p></div>
 <!-- /RAW_HTML -->
 
 > **LLMs are electricity. Agents are toasters.**
@@ -54,7 +54,7 @@ The material available to one model call is the **active context**. It can be ri
 
 The harness connects the two. It composes active context from durable context, lets the model calculate over it, and can route selected consequences of the current work back into durable context so they can shape later work.
 
-The model has knowledge, capability, and tendencies in its weights — its **parametric** side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the project's memory, current jobs, rules, permissions, and decisions **must live outside those weights**, in inspectable, non-parametric structures. If a decision governs your work, you should be able to open it, correct it, and see how the system uses it.
+The model has knowledge, capability, and tendencies in its weights — its **parametric** side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the **canonical, user-governed form** of the project's memory, current jobs, rules, permissions, and decisions must remain outside those weights, in inspectable, non-parametric structures. Some behavior may later be compiled into an adapter or specialized model, but the user should still be able to trace, correct, and rebuild the source that governs the work.
 
 A useful plan is still output until something acts on it. A proposed tool call is still output until something interprets it, checks its permissions, and executes it. To find the agent, we have to look at that surrounding machinery.
 
@@ -189,6 +189,8 @@ That is where the next essay begins.
 
 ---
 
-*Next: [“We Could Have Had AGI By Now”](https://hadi-nayebi.github.io/blog/b2/02-we-could-have-had-agi.html) asks why agent architecture belongs to the design of complex systems.*
+*Next: [“We Could Have Had AGI By Now”](../b2/02-we-could-have-had-agi.html) asks what kind of software the harness should become.*
 
-*Original version: [Read the first essay in Markdown](https://github.com/hadi-nayebi/hadi-nayebi.github.io/blob/main/blog/b1/original-llms-are-not-the-agents-v1.3.0.md).*
+*Continue deeper: [“The Language of Agents”](../b4/04-the-language-of-agents.html) provides the working vocabulary; [“The Two-Layer Foundation”](../b5/05_1-the-two-layer-foundation.html) opens one concrete technical architecture.*
+
+*Original version: [Read the first essay in Markdown](original-llms-are-not-the-agents-v1.3.0.md).*
