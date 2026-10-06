@@ -8,7 +8,10 @@ read_time: "16 min"
 tags: [Agents, AI, Fundamentals]
 audience: professionals
 og_image: "blog/b1/images/llm-engine-agent-directory-b1-1.png"
-series: "Hadosh Academy – Agents"
+series: "Hadosh Academy – Principles & Perspectives"
+collection: "Foundational Trilogy"
+conceptual_role: "foundation"
+foundation_sequence: 1
 version: v2.0.1
 status: published
 narration_status: needs-new-script-and-audio
