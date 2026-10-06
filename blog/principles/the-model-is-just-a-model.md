@@ -263,6 +263,8 @@ Those two updates create different future systems.
 
 The same idea can extend further. A user could choose to route selected interactions through a persona interpreter, generate synthetic examples, review them, and use them to update a separate persona model. Another user could disable that path completely. A verified operational result could pass through the persona for expression and then through an integrity check so the persona cannot change the facts.
 
+Research on persona vectors suggests that trait-related activation directions can help monitor and influence persona shifts during fine-tuning.[[6]](#ref-6)
+
 None of this has to happen invisibly.
 
 Memory can preserve provenance.
