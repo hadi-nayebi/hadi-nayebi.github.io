@@ -142,6 +142,10 @@
 
                         <p>Think of it as a <strong>text calculator</strong>. You give it a working context; it continues from that context using capabilities learned in training. The input matters. Change the context and you can change what the model notices, proposes, and explains.</p>
 
+                        <p>The material available to one model call is the <strong>active context</strong>. It can be rich, but it is temporary. Anything that must reliably survive that call needs <strong>durable context</strong> outside the model's temporary window: files, decisions, jobs, rules, memory, evaluations, and other persistent structures.</p>
+
+                        <p>The harness connects the two. It composes active context from durable context, lets the model calculate over it, and can route selected consequences of the current work back into durable context so they can shape later work.</p>
+
                         <p>The model has knowledge, capability, and tendencies in its weights &mdash; its <strong>parametric</strong> side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the project&rsquo;s memory, current jobs, rules, permissions, and decisions <strong>must live outside those weights</strong>, in inspectable, non-parametric structures. If a decision governs your work, you should be able to open it, correct it, and see how the system uses it.</p>
 
                         <p>A useful plan is still output until something acts on it. A proposed tool call is still output until something interprets it, checks its permissions, and executes it. To find the agent, we have to look at that surrounding machinery.</p>
@@ -158,7 +162,7 @@
 
                         <p>The further that layer can change with the user, the less it looks like one fixed application shared by everyone and the more it starts to look like personal software.</p>
 
-                        <blockquote><p><strong>Same model. Different project brains. Different agents.</strong></p></blockquote>
+                        <div class="punchline"><strong>Same model. Different project brains. Different agents.</strong></div>
 
                         <p>The difference is not whether a harness exists. It is what responsibility we give that layer, whether we can inspect it, and how much of its growth belongs to the user.</p>
 
@@ -212,7 +216,7 @@
 
                         <p>The correction now has a home and a path into future work. A finding becomes knowledge. A repeated decision becomes a rule. A recurring mistake can become a checkpoint.</p>
 
-                        <blockquote><p><strong>The model&rsquo;s weights did not change. The system grew.</strong></p></blockquote>
+                        <div class="punchline"><strong>The model&rsquo;s weights did not change. The system grew.</strong></div>
 
                         <p>In this broader sense, the harness stores more than factual memory. A note can remember <em>what is true</em>. An instruction can remember <em>how we decided to work</em>. A hook can embody <strong>procedural memory</strong>: <em>when this event happens again, remember to check, inject, block, or record this</em>. Different mechanisms carry different kinds of memory, but all of them let lessons from earlier work shape later behavior without changing the model&rsquo;s weights.</p>
 
@@ -238,7 +242,9 @@
   <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Hooks organize the action space. They can supply context, check a proposed action, block it, or record what happened.</figcaption>
 </figure>
 
-                        <p>Now the two layers are visible. <strong>Instructions and memory</strong> guide behavior through context. <strong>Hooks</strong> respond to events and enforce supported boundaries at the point of action. The model still reasons and creates; the runtime carries out permitted work. A later review can use the record of what happened to improve a rule or control. <strong>The LLM proposes. The structure disposes.</strong></p>
+                        <p>Now the two layers are visible. <strong>Instructions and memory</strong> guide behavior through context. <strong>Hooks</strong> respond to events and enforce supported boundaries at the point of action. The model still reasons and creates; the runtime carries out permitted work. A later review can use the record of what happened to improve a rule or control.</p>
+
+                        <div class="punchline"><strong>The LLM proposes. The structure disposes.</strong></div>
 
                         <p>Together, these parts give the agent memory of decisions, structure for work, reflexes at critical events, identity across tasks, and continuity across sessions. Intelligence now has a structure that carries its work forward.</p>
 
