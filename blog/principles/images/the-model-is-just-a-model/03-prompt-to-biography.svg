@@ -20,7 +20,7 @@
       <text x="800" y="347" text-anchor="middle" font-size="29" font-weight="700">SEMANTIC ACTIVATION</text>
       <line x1="800" y1="377" x2="800" y2="425" stroke="#e8eadf" stroke-width="5" marker-end="url(#arrow)"/>
       <rect x="535" y="433" width="530" height="74" rx="20" fill="#172722" stroke="#f4d35e" stroke-width="4"/>
-      <text x="800" y="480" text-anchor="middle" font-size="27" font-weight="700">INTERPRETATION + CURRENT RESPONSE</text>
+      <text x="800" y="480" text-anchor="middle" font-size="24" font-weight="700">INTERPRETATION + CURRENT RESPONSE</text>
       <line x1="800" y1="510" x2="800" y2="554" stroke="#e8eadf" stroke-width="5" marker-end="url(#arrow)"/>
       <path d="M800 560 L920 630 L800 700 L680 630 Z" fill="#172722" stroke="#f2f0e6" stroke-width="4"/>
       <text x="800" y="621" text-anchor="middle" font-size="27" font-weight="700">DURABLE</text>
@@ -37,7 +37,7 @@
     <text x="1240" y="740" text-anchor="middle" font-size="23" font-weight="700">MEMORY / INSTRUCTIONS / EVALUATIONS</text>
     <text x="1240" y="775" text-anchor="middle" font-size="24" font-weight="700">ADAPTER OR MODEL UPDATE</text>
     <text x="1240" y="807" text-anchor="middle" font-size="20" fill="#c9d6cf">later interpretation and behavior change</text>
-    <rect x="200" y="828" width="1200" height="42" rx="16" fill="#0c1210" stroke="#60746b" stroke-width="3"/>
-    <text x="800" y="857" text-anchor="middle" font-size="24" font-weight="700">PRESENT STEERING BECOMES DEVELOPMENTAL HISTORY ONLY WHEN CONSEQUENCES SURVIVE.</text>
+    <rect x="145" y="824" width="1310" height="46" rx="16" fill="#0c1210" stroke="#60746b" stroke-width="3"/>
+    <text x="800" y="855" text-anchor="middle" font-size="21" font-weight="700">PRESENT STEERING BECOMES DEVELOPMENTAL HISTORY ONLY WHEN CONSEQUENCES SURVIVE.</text>
   </g>
 </svg>
