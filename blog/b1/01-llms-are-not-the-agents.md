@@ -196,4 +196,4 @@ That is where the next essay begins.
 
 *Continue deeper: [“The Language of Agents”](../b4/04-the-language-of-agents.html) provides the working vocabulary; [“The Two-Layer Foundation”](../b5/05_1-the-two-layer-foundation.html) opens one concrete technical architecture.*
 
-*Original version: [Read the first essay in Markdown](original-llms-are-not-the-agents-v1.3.0.md).*
+*Original version: [Read the first essay in Markdown](./original-llms-are-not-the-agents-v1.3.0.md).*
