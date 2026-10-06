@@ -163,6 +163,8 @@ The next time an agent gives you a useful answer, look beyond the answer. What c
 
 Start with one directory and one kind of work. Give its decisions a home. Write down the rule you keep repeating. Let the agent help build the structure, then inspect what it proposes to keep. Add a checkpoint where a mistake would matter. The more of your method you can see and shape, the less you have to rely on a generic assistant guessing how you work.
 
+This is where Hadosh Academy begins: **understanding the anatomy of Agentic AI well enough to see where your own cognition is accumulating**. The Academy's first role is literacy — helping people distinguish the model from the harness, recognize where memory, rules, permissions, tools, and working state live, and understand which parts can become durable personal assets. You do not need to implement every component yourself. But if this layer is going to grow around your work, you should be able to see what it is becoming.
+
 The electricity keeps getting stronger. More power alone will not decide what it is for.
 
 **Build the toaster.**
