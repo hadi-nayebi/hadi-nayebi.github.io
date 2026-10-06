@@ -9,7 +9,7 @@
   <rect width="1600" height="900" rx="28" fill="#111816"/>
   <rect x="28" y="28" width="1544" height="844" rx="24" fill="none" stroke="#35433d" stroke-width="3"/>
   <g font-family="Arial, Helvetica, sans-serif" fill="#f2f0e6">
-    <text x="800" y="82" text-anchor="middle" font-size="44" font-weight="700" letter-spacing="1.5">A CHECKPOINT IS A SNAPSHOT. A SYSTEM CAN HAVE A HISTORY.</text>
+    <text x="800" y="82" text-anchor="middle" font-size="40" font-weight="700" letter-spacing="1.5">A CHECKPOINT IS A SNAPSHOT. A SYSTEM CAN HAVE A HISTORY.</text>
     <line x1="95" y1="112" x2="1505" y2="112" stroke="#53645d" stroke-width="3"/>
     <rect x="70" y="150" width="560" height="610" rx="28" fill="#121d1a" stroke="#74d4e8" stroke-width="4"/>
     <text x="350" y="205" text-anchor="middle" font-size="31" font-weight="700" fill="#74d4e8">MODEL CHECKPOINT</text>
@@ -56,7 +56,7 @@
     <rect x="1130" y="636" width="235" height="68" rx="18" fill="#172722" stroke="#86efac" stroke-width="3"/>
     <text x="1248" y="678" text-anchor="middle" font-size="26" font-weight="700">MODEL B</text>
     <text x="1105" y="737" text-anchor="middle" font-size="23" fill="#c9d6cf">History, commitments, and rules can continue across the replacement.</text>
-    <rect x="205" y="790" width="1190" height="62" rx="20" fill="#0c1210" stroke="#60746b" stroke-width="3"/>
-    <text x="800" y="832" text-anchor="middle" font-size="32" font-weight="700">A MODEL GENERATES A RESPONSE. A SYSTEM CAN ACCUMULATE A BIOGRAPHY.</text>
+    <rect x="130" y="790" width="1340" height="62" rx="20" fill="#0c1210" stroke="#60746b" stroke-width="3"/>
+    <text x="800" y="831" text-anchor="middle" font-size="28" font-weight="700">A MODEL GENERATES A RESPONSE. A SYSTEM CAN ACCUMULATE A BIOGRAPHY.</text>
   </g>
 </svg>
