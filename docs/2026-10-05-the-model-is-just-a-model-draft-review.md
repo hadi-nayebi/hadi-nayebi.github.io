@@ -105,11 +105,11 @@ Three original blackboard diagrams were created as deterministic SVGs so exact t
 | `02-snapshot-versus-trajectory.svg` | At the pivot from checkpoint to harness | Show one temporary model episode beside a time-extended system carrying memory, instructions, evaluations, permissions, and history across model replacement. |
 | `03-prompt-to-biography.svg` | After the live prompt experiment | Show where present steering ends and where a persistent update begins developmental history. |
 
-Each figure has accessible SVG title/description metadata, article alt text, and a caption. Full-size 1600×900 and reduced 800×450 raster inspections were completed. Overlapping labels, overlong subtitles, and a clipped bottom caption found in the first render were repaired before the repository update.
+Each figure has accessible SVG title/description metadata, article alt text, and a caption. An initial full-size 1600×900 and reduced 800×450 inspection repaired first-pass overlaps and clipping. A second independent inspection of the exact committed SVGs found residual small-feed overflow in Figure 1’s Qwen subtitle, Figure 2’s bottom thesis line, and Figure 3’s interpretation and bottom thesis labels. The source SVGs were corrected, then both sizes were rendered and inspected again before founder handoff.
 
 ## Website and accessibility verification
 
-Completed locally before push:
+Completed before founder handoff:
 
 - canonical Markdown and review-page metadata synchronized to v0.2.0;
 - approximately 2,760 visible words / 18 minutes;
@@ -119,6 +119,7 @@ Completed locally before push:
 - one H1, no duplicate IDs, no empty links, and no images without alt text;
 - the branch reader page loads the canonical Markdown for founder review and displays the embedded video, figures, citations, and references;
 - title, subtitle, metadata, sidebar reading time, structured data, and review record agree;
+- exact committed SVGs rendered and inspected at 1600×900 and 800×450 after the final text-fit corrections;
 - draft carries `noindex,nofollow` and remains absent from content index, feed, sitemap, and What’s New;
 - no narration, social promo image, LinkedIn package, publication, or merge action taken.
 
