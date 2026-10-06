@@ -23,8 +23,9 @@
       <text x="390" y="497" text-anchor="middle" font-size="24" fill="#c9d6cf">the internal direction is experimentally altered</text>
       <line x1="390" y1="532" x2="390" y2="594" stroke="#e8eadf" stroke-width="5" marker-end="url(#arrowSolid)"/>
       <rect x="120" y="602" width="540" height="120" rx="22" fill="#17231f" stroke="#ff9f7a" stroke-width="4"/>
-      <text x="390" y="650" text-anchor="middle" font-size="30" font-weight="700">BEHAVIOR CHANGES</text>
-      <text x="390" y="689" text-anchor="middle" font-size="24" fill="#c9d6cf">language shifts; costly choices appear in Qwen tests</text>
+      <text x="390" y="643" text-anchor="middle" font-size="30" font-weight="700">BEHAVIOR CHANGES</text>
+      <text x="390" y="680" text-anchor="middle" font-size="22" fill="#c9d6cf">language shifts; costly choices appear</text>
+      <text x="390" y="708" text-anchor="middle" font-size="22" fill="#c9d6cf">in Qwen tests</text>
     </g>
     <g filter="url(#chalk)">
       <rect x="940" y="218" width="540" height="120" rx="22" fill="#201f17" stroke="#f4d35e" stroke-width="4" stroke-dasharray="12 10"/>
