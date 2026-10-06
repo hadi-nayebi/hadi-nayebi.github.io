@@ -1,6 +1,6 @@
 # The Model Is Just a Model — v0.2.0 review record
 
-**Date:** 2026-10-06  
+**Date:** 2026-10-05  
 **Status:** complete founder-review draft; not approved, indexed, narrated, published, or merge-ready  
 **Canonical source:** `blog/principles/the-model-is-just-a-model.md`  
 **Reader page:** `blog/principles/the-model-is-just-a-model.html`  
