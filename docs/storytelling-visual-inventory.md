@@ -172,3 +172,6 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 - Inline SVG charts in `projects/crime-cartography.html`: functional data examples, not generated story artwork.
 - Open Graph images referenced only through metadata: social previews, not displayed page slots.
 
+
+| `blog/b3/03-your-brain-was-never-built-for-this.html` | `images/cognitive-organs-diagram.png` | I70-A30 | HTML | Yes |
+| `blog/b3/03-your-brain-was-never-built-for-this.html` | `images/job-to-microbusinesses.png` | I70-A30 | HTML | Yes |

@@ -133,6 +133,14 @@ jobs:
           path: artifacts/responsive-layout/essay2-*.png
           if-no-files-found: error
           retention-days: 14
+      - name: Upload Essay 3 screenshots separately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: essay3-responsive-screenshots
+          path: artifacts/responsive-layout/essay3-*.png
+          if-no-files-found: error
+          retention-days: 14
       - name: Upload Content screenshots separately
         if: always()
         uses: actions/upload-artifact@v4
