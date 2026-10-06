@@ -4,7 +4,7 @@ authors: ["Hadi Nayebi", "GPT-6 Sol"]
 date: "February 2026"
 modified: "October 2026"
 slug: "llms-are-not-the-agents"
-read_time: "14 min"
+read_time: "16 min"
 tags: [Agents, AI, Fundamentals]
 audience: professionals
 og_image: "blog/b1/images/llm-engine-agent-directory-b1-1.png"
