@@ -101,6 +101,7 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/intelligence-as-a-utility.jpg` | I50-A50 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/five-protections-of-a-personal-harness.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/shared-anatomy-personal-organisms.jpg` | I50-A50 | HTML | Yes |
+| `blog/b1/01-llms-are-not-the-agents.html` | `images/llm-engine-agent-directory-b1-1.png` | I70-A30 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/action-space-markov-chain-b1-2.png` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/hooks-and-action-space-b1-4.png` | I90-A10 | HTML | Yes |
 | `blog/b2/02-we-could-have-had-agi.html` | `images/seed-agent-growth-b2-1.png` | I50-A50 | HTML | Yes |

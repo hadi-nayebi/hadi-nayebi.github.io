@@ -79,7 +79,20 @@ for (const viewport of viewports) {
 
     if (route.name === 'essay1') {
       if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
-      if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected the Markov and hooks diagrams`);
+      const expectedEssayVisuals = [
+        'images/llm-engine-agent-directory-b1-1.png',
+        'images/action-space-markov-chain-b1-2.png',
+        'images/hooks-and-action-space-b1-4.png'
+      ];
+      const essayVisuals = await page.locator('.article-body figure img').evaluateAll(images =>
+        images.map(image => image.getAttribute('src'))
+      );
+      for (const src of expectedEssayVisuals) {
+        if (!essayVisuals.includes(src)) failures.push(`${route.path}: expected teaching visual ${src}`);
+      }
+      if (essayVisuals.length !== expectedEssayVisuals.length) {
+        failures.push(`${route.path}: expected ${expectedEssayVisuals.length} teaching visuals, found ${essayVisuals.length}`);
+      }
       if (await page.locator('.article-audio').count()) failures.push(`${route.path}: old narration player returned`);
       if (await page.locator('.article-body a[href*="/original-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
       if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & GPT-6 Sol') failures.push(`${route.path}: current co-author byline missing`);
