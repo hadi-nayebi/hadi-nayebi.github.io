@@ -67,3 +67,15 @@ After listening review, three semantic callbacks were added without changing the
 3. The hooks section now names the next problem created by structure—scope—and uses that to hand off to compartmentalization.
 
 These are connective edits only. No new concept, example, or architectural claim was added.
+
+
+## Final trilogy pass — October 6
+
+Final cross-essay review found four remaining issues and resolved them:
+
+- updated the abstract to match the mature model/harness ontology and active-context/durable-context distinction;
+- narrowed the absolute “must live outside the weights” claim so the canonical, user-governed source remains inspectable even if selected behavior is later compiled into an adapter or specialized model;
+- added stable follow-on links to `The Language of Agents` and `The Two-Layer Foundation`;
+- updated the reading-time label from 14 to 16 minutes after the revised essay reached roughly 3,100 words.
+
+No additional conceptual contradiction was found after the later `The Model Is Just a Model` backward audit.
