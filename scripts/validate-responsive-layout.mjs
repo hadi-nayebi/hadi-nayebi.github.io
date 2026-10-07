@@ -181,6 +181,30 @@ for (const viewport of viewports) {
     }
 
 
+    if (['essay1', 'essay2', 'essay3'].includes(route.name)) {
+      const abstract = page.locator('.essay-abstract');
+      if (await abstract.count() !== 1) {
+        failures.push(`${route.path}: expected exactly one essay abstract`);
+      } else {
+        const abstractState = await abstract.evaluate(element => {
+          const style = getComputedStyle(element);
+          const label = element.querySelector('.essay-abstract-label');
+          return {
+            background: style.backgroundColor,
+            borderLeftWidth: parseFloat(style.borderLeftWidth || '0'),
+            paddingTop: parseFloat(style.paddingTop || '0'),
+            rawMarkdown: element.innerHTML.includes('**'),
+            labelText: label?.textContent?.trim() || ''
+          };
+        });
+        if (abstractState.background === 'rgba(0, 0, 0, 0)' || abstractState.borderLeftWidth < 3 || abstractState.paddingTop < 10) {
+          failures.push(`${route.path}: abstract panel styling is missing`);
+        }
+        if (abstractState.rawMarkdown) failures.push(`${route.path}: raw Markdown emphasis leaked into abstract HTML`);
+        if (abstractState.labelText !== 'Abstract') failures.push(`${route.path}: abstract label missing`);
+      }
+    }
+
     if (route.kind === 'essay' && viewport.width <= 720) {
       const mobileSeriesNavOverflows = await page.locator('.blog-series-mobile-nav').evaluate(nav => {
         const linksLeaveViewport = [...nav.querySelectorAll('a')].some(link => {
