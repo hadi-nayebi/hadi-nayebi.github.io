@@ -6,7 +6,9 @@ read_time: "22 min"
 tags: [Agents, AI, Vocabulary]
 audience: professionals
 og_image: "blog/b4/images/agent-anatomy-b4-1.png"
-series: "Hadosh Academy – Agents"
+series: "Hadosh Academy – Principles & Perspectives"
+conceptual_role: "vocabulary-bridge"
+reference_library: "agents/abstractions/"
 companion_paper: "the-primitives-of-agent-architecture"
 version: v1.2.0
 status: published
@@ -310,9 +312,10 @@ You have the language. Next, we build the skeleton.
 
 ---
 
-*Essay 4 of 8 in the Hadosh Academy series on agent architecture.*
+*Vocabulary bridge between Hadosh Academy's conceptual foundations and the technical architecture series.*
 
-*Previous: ["The Folder Is Alive"](../b3/03_1-the-folder-is-alive.html) — what happens when a folder gets a brain of its own.*
-*Next: ["The Two-Layer Foundation"](../b5/05_1-the-two-layer-foundation.html) — the always-on plugins that run regardless of phase, and the project-instruction hierarchy they coordinate through.*
+*Builds from: [the Foundational Trilogy](../../content.html#principles) and ["The Folder Is Alive"](../b3/03_1-the-folder-is-alive.html).*
+*Continue technical: ["The Two-Layer Foundation"](../b5/05_1-the-two-layer-foundation.html) — one concrete architecture for separating persistent responsibilities.*
+*Current definitions: [Canonical Abstraction Library](../../agents/abstractions/) — the living framework-agnostic reference for Academy terminology.*
 
 *Companion: ["The Primitives of Agent Architecture"](../../papers/the-primitives-of-agent-architecture.pdf) (reference guide)*

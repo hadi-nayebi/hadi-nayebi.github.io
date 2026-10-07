@@ -65,12 +65,24 @@ source hash changes.
 
 ## Editorial change boundary
 
-The five Part 1 principle writings — B1, B2, B3, B3.1, and B4 — are previously
-approved conceptual work. Preserve their voice, thesis, imagery, and structure.
-Make only restrained corrections for factual accuracy, avoidable repetition,
-continuity, grammar, and a coherent spoken arc. Report every prose change.
+The foundational conceptual path currently under the legacy narration-review scope contains
+the three-essay foundational trilogy (B1, B2, B3), the conceptual branch *The Folder Is Alive*
+(B3.1), and the vocabulary bridge *The Language of Agents* (B4). Their file names remain stable
+for compatibility, but public conceptual navigation is no longer one numbered sequence.
+Preserve their voice, thesis, imagery, and structure. Make only restrained corrections for
+factual accuracy, avoidable repetition, continuity, grammar, and a coherent spoken arc.
+Report every prose change.
 
-These principle writings are philosophical, metaphorical, prospective essays
+Conceptual information architecture is relational:
+- **Foundational Trilogy:** B1 → B2 → B3.
+- **Vocabulary & Reference:** B4 bridges the foundations into the technical architecture and
+  points to the Canonical Abstraction Library for current definitions.
+- **Conceptual Branches:** B3.1 and standalone Principles & Perspectives essays extend specific
+  questions without inheriting a global essay number.
+- **Technical Architecture:** B5–B9 may retain local numbering where ordered sequence teaches
+  a concrete architecture.
+
+These conceptual writings are philosophical, metaphorical, prospective essays
 for professionals across many fields. They aim to change the frame around
 models, harnesses, files, tools, hooks, jobs, and complex systems and to argue
 for a healthier future, even while current products and terminology continue
@@ -90,7 +102,7 @@ force and narration flow for details that do not affect the principle. Signal
 future scenarios as prospective; verify empirical support and concrete current
 capability claims to the degree needed to protect the argument.
 
-Essay 4, "The Language of Agents," has an explicit terminology exception for
+"The Language of Agents" has an explicit terminology exception for
 the 2026-09-10 review. It is an older vocabulary essay and may be revised or
 expanded beyond the usual preservation threshold where the current harness
 model is absent or incomplete. Preserve its central message and accessible
@@ -146,7 +158,7 @@ made, public evidence, generalized private verification where applicable,
 remaining uncertainty, and validation result. End the corpus review with a
 short per-writing change report for Hadi.
 
-Complete one numbered writing as an independent review unit: canonical prose,
+Complete one writing as an independent review unit: canonical prose,
 published-page parity, metadata, evidence record, validation, and coherent Git
 commit. After that unit passes, send Hadi one separate Telegram voice report
 covering that writing's changes before beginning the next numbered writing.
@@ -155,9 +167,10 @@ These checkpoint recordings are review summaries, not publication narration.
 ## Pull-request delivery
 
 Deliver every website change through a reviewable pull request. Do not merge a
-pull request for Hadi. Each Part 1 principle writing — B1, B2, B3, B3.1, and
-B4 — must have its own pull request so its language diff can be reviewed in
-isolation. Technical writings may share a pull request when the grouping is
+pull request for Hadi. Each foundational-path conceptual writing — B1, B2, B3, B3.1, and B4 — must have its own
+pull request when its prose changes so its language diff can be reviewed in isolation. Pure
+cross-writing navigation/metadata changes may share one focused PR when they do not rewrite
+the article bodies. Technical writings may share a pull request when the grouping is
 coherent and the per-writing review records remain distinct.
 
 ## Narration handoff

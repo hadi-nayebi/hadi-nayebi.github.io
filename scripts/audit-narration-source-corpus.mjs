@@ -238,7 +238,7 @@ const observation = inspectObservation();
 const guide = inspectGuide();
 const structuralErrors = [];
 if (essays.length !== 49) structuralErrors.push(`expected 49 numbered essays, found ${essays.length}`);
-if (essays.filter((item) => item.class === 'principle-writing').length !== 5) structuralErrors.push('expected 5 Part 1 principle writings');
+if (essays.filter((item) => item.class === 'principle-writing').length !== 5) structuralErrors.push('expected 5 foundational conceptual narration sources');
 if (observation.episodes.length !== 10) structuralErrors.push(`expected 10 published Observation episodes, found ${observation.episodes.length}`);
 const unlockedFinalTranscripts = essays.filter((item) =>
   item.issues.includes('transcript-final-without-current-content-lock'),
@@ -277,7 +277,7 @@ if (process.argv.includes('--json')) {
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
 } else {
   console.log('Narration source corpus');
-  console.log(`  Numbered essays: ${report.totals.numbered_essays} (${report.totals.principle_writings} principle, ${report.totals.technical_writings} technical)`);
+  console.log(`  Numbered essays: ${report.totals.numbered_essays} (${report.totals.principle_writings} foundational conceptual, ${report.totals.technical_writings} technical)`);
   console.log(`  Observation: ${report.totals.observation_episodes} episodes / ${report.totals.observation_slides} slides`);
   console.log(`  Practical guides: ${report.totals.practical_guides}`);
   console.log(`  Essay sources marked draft: ${essays.filter((item) => item.issues.includes('source-marked-draft')).length}`);

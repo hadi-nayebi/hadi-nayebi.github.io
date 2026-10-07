@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<!-- Version: v2.0.0 -->
+<!-- Version: v2.0.1 -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LLMs Are Not the Agents | Hadosh Academy</title>
-    <meta name="description" content="The model supplies intelligence. A user-shaped filesystem gives an agent its memory, rules, and continuing identity.">
+    <meta name="description" content="Why the model is only one part of an agentic system, and how the harness carries durable context, memory, tools, rules, jobs, and user control.">
     <meta name="author" content="Hadi Nayebi; GPT-6 Sol (AI co-author)">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="canonical" href="https://hadi-nayebi.github.io/blog/b1/01-llms-are-not-the-agents.html">
     <meta property="og:title" content="LLMs Are Not the Agents | Hadosh Academy">
-    <meta property="og:description" content="The model supplies intelligence. A user-shaped filesystem gives an agent its memory, rules, and continuing identity.">
+    <meta property="og:description" content="Why the model is only one part of an agentic system, and how the harness carries durable context, memory, tools, rules, jobs, and user control.">
     <meta property="og:url" content="https://hadi-nayebi.github.io/blog/b1/01-llms-are-not-the-agents.html">
     <meta property="og:type" content="article">
     <meta property="og:image" content="https://hadi-nayebi.github.io/blog/b1/images/llm-engine-agent-directory-b1-1.png">
     <meta property="og:site_name" content="Hadosh Academy">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LLMs Are Not the Agents | Hadosh Academy">
-    <meta name="twitter:description" content="The model supplies intelligence. A user-shaped filesystem gives an agent its memory, rules, and continuing identity.">
+    <meta name="twitter:description" content="Why the model is only one part of an agentic system, and how the harness carries durable context, memory, tools, rules, jobs, and user control.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/blog/b1/images/llm-engine-agent-directory-b1-1.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Content" href="/feed.xml">
-    <link rel="stylesheet" href="../../css/styles.css?v=20261002-spacing-2">
+    <link rel="stylesheet" href="../../css/styles.css?v=20261006-trilogy-parity-1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -32,7 +32,7 @@
                 "@type": "BlogPosting",
                 "headline": "LLMs Are Not the Agents",
                 "datePublished": "2026-05-13",
-                "dateModified": "2026-09-26",
+                "dateModified": "2026-10-06",
                 "author": {
                     "@type": "Person",
                     "name": "Hadi Nayebi",
@@ -44,7 +44,7 @@
                     "description": "AI co-author"
                 },
                 "publisher": { "@id": "https://hadi-nayebi.github.io/#organization" },
-                "description": "The model supplies intelligence. A user-shaped filesystem gives an agent its memory, rules, and continuing identity.",
+                "description": "Why the model is only one part of an agentic system, and how the harness carries durable context, memory, tools, rules, jobs, and user control.",
                 "image": "https://hadi-nayebi.github.io/blog/b1/images/llm-engine-agent-directory-b1-1.png",
                 "mainEntityOfPage": "https://hadi-nayebi.github.io/blog/b1/01-llms-are-not-the-agents.html"
             },
@@ -95,11 +95,11 @@
 
                     <h1>LLMs Are Not the Agents</h1>
                     <div class="article-meta">
-                        <span>Updated September 2026</span>
+                        <span>Updated October 2026</span>
                         <span>&bull;</span>
-                        <span>14 min</span>
+                        <span>16 min</span>
                         <div class="article-meta-tags">
-                            <span class="tag tag-audience" title="">professionals</span>
+                            <span class="tag tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
                             <span class="tag">Agents</span>
                             <span class="tag">AI</span>
                             <span class="tag">Fundamentals</span>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="article-body">
-                        <div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. That mistake changes the products we build and our role in using them. A model can reason, write, and propose actions. A harness supplies context and carries out permitted work. In the architecture developed here, the project's memory, jobs, rules, and state live in an inspectable filesystem shaped by its user. The model supplies capability. The filesystem gives one agent its continuing identity. That distinction changes how people work with their agents.</p></div>
+                        <div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. This essay separates the model from the harness around it. The model supplies parametric capability; the harness composes active context, connects tools and controls, and carries user-specific durable context across sessions. In the architecture developed here, much of that durable identity lives in an inspectable filesystem shaped by its user. The distinction matters because personalization, memory, rules, jobs, and corrections accumulate primarily in the harness&mdash;not in one model response.</p></div>
 
                         <blockquote><p><strong>LLMs are electricity. Agents are toasters.</strong></p></blockquote>
 
@@ -120,7 +120,7 @@
 
                         <p>This is the relationship between an LLM and an agent. The model can reason through language, write, analyze, plan, and propose actions. But the token stream it produces needs a structure around it before those capabilities become continuing, reliable work.</p>
 
-                        <p>Most people building with AI today are staring at the electricity and wondering why it does not make toast on its own.</p>
+                        <p>Much of the industry's attention is still fixed on the electricity, wondering why it does not make toast on its own.</p>
 
                         <h2 id="the-relationship-we-were-taught">The relationship we were taught</h2>
 
@@ -142,7 +142,11 @@
 
                         <p>Think of it as a <strong>text calculator</strong>. You give it a working context; it continues from that context using capabilities learned in training. The input matters. Change the context and you can change what the model notices, proposes, and explains.</p>
 
-                        <p>The model has knowledge, capability, and tendencies in its weights &mdash; its <strong>parametric</strong> side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the project&rsquo;s memory, current jobs, rules, permissions, and decisions <strong>must live outside those weights</strong>, in inspectable, non-parametric structures. If a decision governs your work, you should be able to open it, correct it, and see how the system uses it.</p>
+                        <p>The material available to one model call is the <strong>active context</strong>. It can be rich, but it is temporary. Anything that must reliably survive that call needs <strong>durable context</strong> outside the model's temporary window: files, decisions, jobs, rules, memory, evaluations, and other persistent structures.</p>
+
+                        <p>The harness connects the two. It composes active context from durable context, lets the model calculate over it, and can route selected consequences of the current work back into durable context so they can shape later work.</p>
+
+                        <p>The model has knowledge, capability, and tendencies in its weights &mdash; its <strong>parametric</strong> side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the <strong>canonical, user-governed form</strong> of the project&rsquo;s memory, current jobs, rules, permissions, and decisions must remain outside those weights, in inspectable, non-parametric structures. Some behavior may later be compiled into an adapter or specialized model, but the user should still be able to trace, correct, and rebuild the source that governs the work.</p>
 
                         <p>A useful plan is still output until something acts on it. A proposed tool call is still output until something interprets it, checks its permissions, and executes it. To find the agent, we have to look at that surrounding machinery.</p>
 
@@ -156,7 +160,9 @@
 
                         <p>Or we can make the harness a layer the user helps shape. The person and agent can decide what knowledge to keep, which decisions govern later work, how a job proceeds, what requires approval, and what a correction should change. The same model can then work differently for different people because their accumulated contexts and methods are different.</p>
 
-                        <blockquote><p><strong>Same model. Different project brains. Different agents.</strong></p></blockquote>
+                        <p>The further that layer can change with the user, the less it looks like one fixed application shared by everyone and the more it starts to look like personal software.</p>
+
+                        <div class="punchline"><strong>Same model. Different project brains. Different agents.</strong></div>
 
                         <p>The difference is not whether a harness exists. It is what responsibility we give that layer, whether we can inspect it, and how much of its growth belongs to the user.</p>
 
@@ -165,6 +171,13 @@
                         <p>In this series, the agent&rsquo;s durable brain is literal: a collection of files and directories that holds the project memory, rules, jobs, and working state we choose to preserve.</p>
 
                         <p><strong>The agent is the filesystem.</strong></p>
+
+                        <p>That is deliberate shorthand for the agent&rsquo;s <strong>durable identity</strong>. The complete working system is larger: the model supplies intelligence, the runtime animates the work, and the harness connects files, tools, instructions, hooks, permissions, and state. But the filesystem is where much of the user-specific structure can survive when a model call ends.</p>
+
+                        <figure class="blog-image" data-visual-style="I70-A30" data-information-weight="70" data-artistic-weight="30" data-visual-role="storytelling" style="margin: 2rem 0;">
+                          <img src="images/llm-engine-agent-directory-b1-1.png" alt="Diagram comparing the LLM as the reasoning engine with the user-shaped directory as the agent's durable brain: memory, rules, jobs, and controls persist outside the model. Swapping the engine changes capability; swapping the directory changes the agent." style="display:block;width:100%;max-width:800px;height:auto;margin:0 auto;border-radius:8px;">
+                          <figcaption>The model supplies intelligence. The filesystem carries the user-specific structure that makes one agent different from another.</figcaption>
+                        </figure>
 
                         <p>Without a model and runtime, the brain is sleeping. Connect them, and the system can read its instructions, act within its boundaries, and write back what it learns. The files carry its history and rules beyond the current conversation.</p>
 
@@ -191,7 +204,9 @@
 
                         <p>That is the <strong>random walk problem</strong>. A model can solve a task beautifully today and miss the same project&rsquo;s rule tomorrow. Intelligence alone is not reliability. If yesterday&rsquo;s decision never reaches today&rsquo;s context, the model cannot follow it.</p>
 
-                        <p>A saved decision can enter the next context. An instruction can guide the next proposal. A runtime control can stop an action where a boundary matters. These do different jobs. Consider what happens to one correction after the conversation ends.</p>
+                        <p>This brings us back to the context we separated from the model earlier. A saved decision can enter the next context. An instruction can guide the next proposal. A runtime control can stop an action where a boundary matters. These do different jobs.</p>
+
+                        <p>The easiest way to see the difference is to follow one correction after the conversation ends.</p>
 
                         <h2 id="a-correction-that-survives">A correction that survives</h2>
 
@@ -201,9 +216,13 @@
 
                         <p>The correction now has a home and a path into future work. A finding becomes knowledge. A repeated decision becomes a rule. A recurring mistake can become a checkpoint.</p>
 
-                        <blockquote><p><strong>The model&rsquo;s weights did not change. The system grew.</strong></p></blockquote>
+                        <div class="punchline"><strong>The model&rsquo;s weights did not change. The system grew.</strong></div>
 
-                        <p>To use that rule consistently, the agent needs a rhythm for work and controls at critical moments.</p>
+                        <p>In this broader sense, the harness stores more than factual memory. A note can remember <em>what is true</em>. An instruction can remember <em>how we decided to work</em>. A hook can embody <strong>procedural memory</strong>: <em>when this event happens again, remember to check, inject, block, or record this</em>. Different mechanisms carry different kinds of memory, but all of them let lessons from earlier work shape later behavior without changing the model&rsquo;s weights.</p>
+
+                        <p>Persistence solves one problem: the correction can survive. It does not yet guarantee that the next run will use it at the right moment.</p>
+
+                        <p>To make durable context operational, the agent needs a rhythm for work and controls at critical moments.</p>
 
                         <h2 id="structure-changes-everything">Structure changes everything</h2>
 
@@ -223,11 +242,15 @@
   <figcaption style="text-align: center; font-style: italic; margin-top: 0.5rem; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Hooks organize the action space. They can supply context, check a proposed action, block it, or record what happened.</figcaption>
 </figure>
 
-                        <p>Now the two layers are visible. <strong>Instructions and memory</strong> guide behavior through context. <strong>Hooks</strong> respond to events and enforce supported boundaries at the point of action. The model still reasons and creates; the runtime carries out permitted work. A later review can use the record of what happened to improve a rule or control. <strong>The LLM proposes. The structure disposes.</strong></p>
+                        <p>Now the two layers are visible. <strong>Instructions and memory</strong> guide behavior through context. <strong>Hooks</strong> respond to events and enforce supported boundaries at the point of action. The model still reasons and creates; the runtime carries out permitted work. A later review can use the record of what happened to improve a rule or control.</p>
+
+                        <div class="punchline"><strong>The LLM proposes. The structure disposes.</strong></div>
 
                         <p>Together, these parts give the agent memory of decisions, structure for work, reflexes at critical events, identity across tasks, and continuity across sessions. Intelligence now has a structure that carries its work forward.</p>
 
-                        <p>But each job leaves observations. Each review may suggest a rule. Each rule needs a scope. Put everything into one enormous prompt and you do not have a brain. You have <strong>prompt soup</strong>.</p>
+                        <p>But structure creates its own problem. Each job leaves observations. Each review may suggest a rule. Each rule needs a scope. Put everything into one enormous prompt and you do not have a brain. You have <strong>prompt soup</strong>.</p>
+
+                        <p>That is why the next principle matters.</p>
 
                         <h2 id="the-core-principle-compartmentalization">The core principle: compartmentalization</h2>
 
@@ -247,17 +270,25 @@
 
                         <p>Start with one directory and one kind of work. Give its decisions a home. Write down the rule you keep repeating. Let the agent help build the structure, then inspect what it proposes to keep. Add a checkpoint where a mistake would matter. The more of your method you can see and shape, the less you have to rely on a generic assistant guessing how you work.</p>
 
+                        <p>This is where Hadosh Academy begins: <strong>understanding the anatomy of Agentic AI well enough to see where your own cognition is accumulating</strong>. The Academy's first role is literacy &mdash; helping people distinguish the model from the harness, recognize where memory, rules, permissions, tools, and working state live, and understand which parts can become durable personal assets. You do not need to implement every component yourself. But if this layer is going to grow around your work, you should be able to see what it is becoming.</p>
+
                         <p>The electricity keeps getting stronger. More power alone will not decide what it is for.</p>
 
                         <p><strong>Build the toaster.</strong></p>
 
-                        <p>That gives intelligence a structure for repeatable work. As the structure grows, another question opens: what kind of system are we building? That is where the next essay begins.</p>
+                        <p>Give intelligence a body.</p>
+
+                        <p>But a fixed appliance is only the beginning. If the harness is the part that changes with its user, what kind of software should that body become?</p>
+
+                        <p>That is where the next essay begins.</p>
 
                         <hr>
 
-                        <p><em>Next: <a href="https://hadi-nayebi.github.io/blog/b2/02-we-could-have-had-agi.html">“We Could Have Had AGI By Now”</a> asks why agent architecture belongs to the design of complex systems.</em></p>
+                        <p><em>Next: <a href="../b2/02-we-could-have-had-agi.html">“We Could Have Had AGI By Now”</a> asks what kind of software the harness should become.</em></p>
 
-                        <p><em>Original version: <a href="https://github.com/hadi-nayebi/hadi-nayebi.github.io/blob/main/blog/b1/original-llms-are-not-the-agents-v1.3.0.md">Read the first essay in Markdown</a>.</em></p>
+                        <p><em>Continue deeper: <a href="../b4/04-the-language-of-agents.html">“The Language of Agents”</a> provides the working vocabulary; <a href="../b5/05_1-the-two-layer-foundation.html">“The Two-Layer Foundation”</a> opens one concrete technical architecture.</em></p>
+
+                        <p><em>Original version: <a href="./original-llms-are-not-the-agents-v1.3.0.md">Read the first essay in Markdown</a>.</em></p>
                     </div>
 
                     <!-- Comments (Giscus) -->
@@ -284,8 +315,8 @@
                 </div>
 
                 <!-- Sidebar -->
-                <aside class="sidebar">
-                    <div class="sidebar-title">Latest Articles</div>
+                <aside class="sidebar" data-preserve-navigation="true">
+                    <div class="sidebar-title">Foundational Trilogy</div>
                     <div>
                         <div class="article-card active">
                             <div class="article-card-tags">
@@ -296,7 +327,7 @@
                             </div>
                             <div class="sidebar-card-position">You are here</div>
                             <h3>LLMs Are Not the Agents</h3>
-                            <div class="date">Updated September 2026 &bull; 14 min read</div>
+                            <div class="date">Updated October 2026 &bull; 16 min read</div>
                         </div>
                         <a href="../b2/02-we-could-have-had-agi.html" class="article-card-link">
                             <div class="article-card">
@@ -307,15 +338,15 @@
                                     <span class="tag tag-sm">Architecture</span>
                                     <span class="tag tag-sm">AGI</span>
                                 </div>
-                                <div class="sidebar-card-position">Next in series &rarr;</div>
+                                <div class="sidebar-card-position">Next in trilogy &rarr;</div>
                                 <h3>We Could Have Had AGI By Now</h3>
-                                <div class="date">February 2026 &bull; 20 min read</div>
+                                <div class="date">Updated October 2026 &bull; 21 min read</div>
                             </div>
                         </a>
-                        <a href="/content.html" class="article-card-link sidebar-all-essays-link">
+                        <a href="/content.html#principles" class="article-card-link sidebar-all-essays-link">
                             <div class="article-card sidebar-all-essays">
-                                <h3>All essays &rarr;</h3>
-                                <div class="date">Browse the full series</div>
+                                <h3>Conceptual writings &rarr;</h3>
+                                <div class="date">Browse all reading paths</div>
                             </div>
                         </a>
                     </div>
@@ -331,7 +362,7 @@
     </footer>
 
     <script src="../../js/theme-manager.js?v=20260925-content-1"></script>
-    <script src="../../js/components.js?v=20260925-content-1"></script>
+    <script src="../../js/components.js?v=20261007-trilogy-parity-1"></script>
 </body>
 
 </html>

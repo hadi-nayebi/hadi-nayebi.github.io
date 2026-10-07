@@ -2,14 +2,17 @@
 title: "LLMs Are Not the Agents"
 authors: ["Hadi Nayebi", "GPT-6 Sol"]
 date: "February 2026"
-modified: "September 2026"
+modified: "October 2026"
 slug: "llms-are-not-the-agents"
-read_time: "14 min"
+read_time: "16 min"
 tags: [Agents, AI, Fundamentals]
 audience: professionals
 og_image: "blog/b1/images/llm-engine-agent-directory-b1-1.png"
-series: "Hadosh Academy – Agents"
-version: v2.0.0
+series: "Hadosh Academy – Principles & Perspectives"
+collection: "Foundational Trilogy"
+conceptual_role: "foundation"
+foundation_sequence: 1
+version: v2.0.1
 status: published
 narration_status: needs-new-script-and-audio
 ---
@@ -17,7 +20,7 @@ narration_status: needs-new-script-and-audio
 # LLMs Are Not the Agents
 
 <!-- RAW_HTML -->
-<div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. That mistake changes the products we build and our role in using them. A model can reason, write, and propose actions. A harness supplies context and carries out permitted work. In the architecture developed here, the project's memory, jobs, rules, and state live in an inspectable filesystem shaped by its user. The model supplies capability. The filesystem gives one agent its continuing identity. That distinction changes how people work with their agents.</p></div>
+<div class="essay-abstract"><span class="essay-abstract-label">Abstract</span><p>We keep pointing at the language model and calling it the agent. This essay separates the model from the harness around it. The model supplies parametric capability; the harness composes active context, connects tools and controls, and carries user-specific durable context across sessions. In the architecture developed here, much of that durable identity lives in an inspectable filesystem shaped by its user. The distinction matters because personalization, memory, rules, jobs, and corrections accumulate primarily in the harness—not in one model response.</p></div>
 <!-- /RAW_HTML -->
 
 > **LLMs are electricity. Agents are toasters.**
@@ -28,7 +31,7 @@ A toaster is a simple structure. It takes raw electrical energy and channels it 
 
 This is the relationship between an LLM and an agent. The model can reason through language, write, analyze, plan, and propose actions. But the token stream it produces needs a structure around it before those capabilities become continuing, reliable work.
 
-Most people building with AI today are staring at the electricity and wondering why it does not make toast on its own.
+Much of the industry's attention is still fixed on the electricity, wondering why it does not make toast on its own.
 
 ## The relationship we were taught
 
@@ -50,7 +53,11 @@ A language model receives a context and continues from it. The context may conta
 
 Think of it as a **text calculator**. You give it a working context; it continues from that context using capabilities learned in training. The input matters. Change the context and you can change what the model notices, proposes, and explains.
 
-The model has knowledge, capability, and tendencies in its weights — its **parametric** side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the project's memory, current jobs, rules, permissions, and decisions **must live outside those weights**, in inspectable, non-parametric structures. If a decision governs your work, you should be able to open it, correct it, and see how the system uses it.
+The material available to one model call is the **active context**. It can be rich, but it is temporary. Anything that must reliably survive that call needs **durable context** outside the model's temporary window: files, decisions, jobs, rules, memory, evaluations, and other persistent structures.
+
+The harness connects the two. It composes active context from durable context, lets the model calculate over it, and can route selected consequences of the current work back into durable context so they can shape later work.
+
+The model has knowledge, capability, and tendencies in its weights — its **parametric** side. A model could even be trained toward a particular agenda. That is a design choice about the model. For the agentic system we are building here, the **canonical, user-governed form** of the project's memory, current jobs, rules, permissions, and decisions must remain outside those weights, in inspectable, non-parametric structures. Some behavior may later be compiled into an adapter or specialized model, but the user should still be able to trace, correct, and rebuild the source that governs the work.
 
 A useful plan is still output until something acts on it. A proposed tool call is still output until something interprets it, checks its permissions, and executes it. To find the agent, we have to look at that surrounding machinery.
 
@@ -58,13 +65,17 @@ A useful plan is still output until something acts on it. A proposed tool call i
 
 The most direct place to see it is a **CLI agent**: a command-line program that works in a folder on your computer, reads and writes files, and connects a model to tools. Think of it as a general-purpose file manager powered by an LLM. Its name may suggest coding, but its ability to work with files extends to research, writing, project management, and any work whose state can be represented there.
 
-The program's **runtime** supplies context, presents available tools, reads the model's proposed calls, and carries out the permitted ones. The **harness** is the wider arrangement around the model: runtime, files, tools, instructions, permissions, and controls. An agentic tool already relies on such machinery whenever model output can become an action.
+The program's **runtime** supplies context, presents available tools, reads the model's proposed calls, and carries out the permitted ones. The **harness** is the wider non-parametric software layer around the model: runtime behavior, files, memory, tools, instructions, hooks, permissions, controls, and persistent state. Together, **model + harness form the working agentic system**.
 
 Here is the choice that the conversation box tends to hide. A product can keep improving a general assistant, place more responsibility on the model, and make its surrounding machinery less visible to the person using it. The user supplies requests; the product decides much of the context, memory, and method. More model capability can make that assistant more autonomous. It does not, by itself, make the assistant more specific to how *you* work. A product can become more capable and more generic at the same time.
 
 Or we can make the harness a layer the user helps shape. The person and agent can decide what knowledge to keep, which decisions govern later work, how a job proceeds, what requires approval, and what a correction should change. The same model can then work differently for different people because their accumulated contexts and methods are different.
 
-> **Same model. Different project brains. Different agents.**
+The further that layer can change with the user, the less it looks like one fixed application shared by everyone and the more it starts to look like personal software.
+
+<!-- RAW_HTML -->
+<div class="punchline"><strong>Same model. Different project brains. Different agents.</strong></div>
+<!-- /RAW_HTML -->
 
 The difference is not whether a harness exists. It is what responsibility we give that layer, whether we can inspect it, and how much of its growth belongs to the user.
 
@@ -73,6 +84,11 @@ The difference is not whether a harness exists. It is what responsibility we giv
 In this series, the agent's durable brain is literal: a collection of files and directories that holds the project memory, rules, jobs, and working state we choose to preserve.
 
 **The agent is the filesystem.**
+
+That is deliberate shorthand for the agent's **durable identity**. The complete working system is larger: the model supplies intelligence, the runtime animates the work, and the harness connects files, tools, instructions, hooks, permissions, and state. But the filesystem is where much of the user-specific structure can survive when a model call ends.
+
+![Diagram comparing the LLM as the reasoning engine with the user-shaped directory as the agent's durable brain: memory, rules, jobs, and controls persist outside the model. Swapping the engine changes capability; swapping the directory changes the agent.](images/llm-engine-agent-directory-b1-1.png)
+*The model supplies intelligence. The filesystem carries the user-specific structure that makes one agent different from another.*
 
 Without a model and runtime, the brain is sleeping. Connect them, and the system can read its instructions, act within its boundaries, and write back what it learns. The files carry its history and rules beyond the current conversation.
 
@@ -97,7 +113,9 @@ Think of this as a **probabilistic Markov brain**. The model proposes one move, 
 
 That is the **random walk problem**. A model can solve a task beautifully today and miss the same project's rule tomorrow. Intelligence alone is not reliability. If yesterday's decision never reaches today's context, the model cannot follow it.
 
-A saved decision can enter the next context. An instruction can guide the next proposal. A runtime control can stop an action where a boundary matters. These do different jobs. Consider what happens to one correction after the conversation ends.
+This brings us back to the context we separated from the model earlier. A saved decision can enter the next context. An instruction can guide the next proposal. A runtime control can stop an action where a boundary matters. These do different jobs.
+
+The easiest way to see the difference is to follow one correction after the conversation ends.
 
 ## A correction that survives
 
@@ -107,9 +125,15 @@ If the correction stays in chat, you repaired one paragraph. Put the distinction
 
 The correction now has a home and a path into future work. A finding becomes knowledge. A repeated decision becomes a rule. A recurring mistake can become a checkpoint.
 
-> **The model's weights did not change. The system grew.**
+<!-- RAW_HTML -->
+<div class="punchline"><strong>The model's weights did not change. The system grew.</strong></div>
+<!-- /RAW_HTML -->
 
-To use that rule consistently, the agent needs a rhythm for work and controls at critical moments.
+In this broader sense, the harness stores more than factual memory. A note can remember *what is true*. An instruction can remember *how we decided to work*. A hook can embody **procedural memory**: *when this event happens again, remember to check, inject, block, or record this*. Different mechanisms carry different kinds of memory, but all of them let lessons from earlier work shape later behavior without changing the model's weights.
+
+Persistence solves one problem: the correction can survive. It does not yet guarantee that the next run will use it at the right moment.
+
+To make durable context operational, the agent needs a rhythm for work and controls at critical moments.
 
 ## Structure changes everything
 
@@ -124,11 +148,17 @@ The action space is still there. Now the project can place context and checkpoin
 ![A hook map places prompt, tool-use, notification, compaction, and stop checkpoints along the agent's possible action paths.](images/hooks-and-action-space-b1-4.png)
 *Hooks organize the action space. They can supply context, check a proposed action, block it, or record what happened.*
 
-Now the two layers are visible. **Instructions and memory** guide behavior through context. **Hooks** respond to events and enforce supported boundaries at the point of action. The model still reasons and creates; the runtime carries out permitted work. A later review can use the record of what happened to improve a rule or control. **The LLM proposes. The structure disposes.**
+Now the two layers are visible. **Instructions and memory** guide behavior through context. **Hooks** respond to events and enforce supported boundaries at the point of action. The model still reasons and creates; the runtime carries out permitted work. A later review can use the record of what happened to improve a rule or control.
+
+<!-- RAW_HTML -->
+<div class="punchline"><strong>The LLM proposes. The structure disposes.</strong></div>
+<!-- /RAW_HTML -->
 
 Together, these parts give the agent memory of decisions, structure for work, reflexes at critical events, identity across tasks, and continuity across sessions. Intelligence now has a structure that carries its work forward.
 
-But each job leaves observations. Each review may suggest a rule. Each rule needs a scope. Put everything into one enormous prompt and you do not have a brain. You have **prompt soup**.
+But structure creates its own problem. Each job leaves observations. Each review may suggest a rule. Each rule needs a scope. Put everything into one enormous prompt and you do not have a brain. You have **prompt soup**.
+
+That is why the next principle matters.
 
 ## The core principle: compartmentalization
 
@@ -140,7 +170,7 @@ The filesystem gives those distinctions visible form. Files sit within directori
 
 Working memory can expand in the directory where a job is active and contract when its durable lessons are routed to the right files. That is how the agent can accumulate experience without carrying its entire history into every context window. An instruction that never reaches the relevant context cannot guide anything. A hook that never sees the event cannot enforce anything. The paths between files, context, and actions make the brain work.
 
-The platform serves as an adapter to that brain. Runtimes differ in how they load context and enforce controls; the adapters will differ too. But the project's knowledge, jobs, rules, and memory can remain in files you own. Swap the model and the engine changes. Change the adapter and the agent may gain different tools. Swap the filesystem and you have changed the agent itself.
+The platform serves as an adapter to that brain. Runtimes differ in how they load context and enforce controls; the adapters will differ too. But the project's knowledge, jobs, rules, and memory can remain in files you own. Swap the model and the intelligence engine changes. Change the runtime or adapter and the system may gain different ways to act. Change the durable filesystem—the accumulated memory, rules, jobs, and methods—and you have changed the part that makes this agent specifically **yours**.
 
 ## What this means for you
 
@@ -148,14 +178,22 @@ The next time an agent gives you a useful answer, look beyond the answer. What c
 
 Start with one directory and one kind of work. Give its decisions a home. Write down the rule you keep repeating. Let the agent help build the structure, then inspect what it proposes to keep. Add a checkpoint where a mistake would matter. The more of your method you can see and shape, the less you have to rely on a generic assistant guessing how you work.
 
+This is where Hadosh Academy begins: **understanding the anatomy of Agentic AI well enough to see where your own cognition is accumulating**. The Academy's first role is literacy — helping people distinguish the model from the harness, recognize where memory, rules, permissions, tools, and working state live, and understand which parts can become durable personal assets. You do not need to implement every component yourself. But if this layer is going to grow around your work, you should be able to see what it is becoming.
+
 The electricity keeps getting stronger. More power alone will not decide what it is for.
 
 **Build the toaster.**
 
-That gives intelligence a structure for repeatable work. As the structure grows, another question opens: what kind of system are we building? That is where the next essay begins.
+Give intelligence a body.
+
+But a fixed appliance is only the beginning. If the harness is the part that changes with its user, what kind of software should that body become?
+
+That is where the next essay begins.
 
 ---
 
-*Next: [“We Could Have Had AGI By Now”](https://hadi-nayebi.github.io/blog/b2/02-we-could-have-had-agi.html) asks why agent architecture belongs to the design of complex systems.*
+*Next: [“We Could Have Had AGI By Now”](../b2/02-we-could-have-had-agi.html) asks what kind of software the harness should become.*
 
-*Original version: [Read the first essay in Markdown](https://github.com/hadi-nayebi/hadi-nayebi.github.io/blob/main/blog/b1/original-llms-are-not-the-agents-v1.3.0.md).*
+*Continue deeper: [“The Language of Agents”](../b4/04-the-language-of-agents.html) provides the working vocabulary; [“The Two-Layer Foundation”](../b5/05_1-the-two-layer-foundation.html) opens one concrete technical architecture.*
+
+*Original version: [Read the first essay in Markdown](./original-llms-are-not-the-agents-v1.3.0.md).*
