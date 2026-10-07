@@ -14,6 +14,7 @@ const routes = [
   { name: 'about', path: '/about.html', kind: 'copy' },
   { name: 'content', path: '/content.html', kind: 'copy' },
   { name: 'essay1', path: '/blog/b1/01-llms-are-not-the-agents.html', kind: 'essay' },
+  { name: 'essay2', path: '/blog/b2/02-we-could-have-had-agi.html', kind: 'essay' },
   { name: 'diagrams', path: '/explore.html', kind: 'copy' },
   { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
@@ -41,6 +42,54 @@ const shouldCapture = (route, viewport) =>
 const artifactDir = path.resolve('artifacts/responsive-layout');
 fs.mkdirSync(artifactDir, { recursive: true });
 const failures = [];
+const maxReliableScreenshotHeight = 14000;
+const screenshotSegmentOverlap = 120;
+
+async function captureFullPageEvidence(page, route, viewport) {
+  const pageHeight = await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = 'auto';
+    if (document.body) document.body.style.scrollBehavior = 'auto';
+    return Math.max(
+      document.documentElement.scrollHeight,
+      document.body?.scrollHeight || 0
+    );
+  });
+  if (!['essay2', 'essay3'].includes(route.name) || pageHeight <= maxReliableScreenshotHeight) {
+    await page.screenshot({
+      path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}.png`),
+      fullPage: true
+    });
+    return;
+  }
+
+  const maxScroll = Math.max(0, pageHeight - viewport.height);
+  const step = Math.max(1, viewport.height - screenshotSegmentOverlap);
+  const positions = [];
+  for (let y = 0; y < maxScroll; y += step) positions.push(y);
+  if (positions.at(-1) !== maxScroll) positions.push(maxScroll);
+
+  let part = 1;
+  for (const y of positions) {
+    await page.evaluate(scrollY => window.scrollTo({ left: 0, top: scrollY, behavior: 'instant' }), y);
+    await page.waitForTimeout(40);
+    const actualScroll = await page.evaluate(() => window.scrollY);
+    if (Math.abs(actualScroll - y) > 2) {
+      throw new Error(`Unable to capture ${route.name} at ${viewport.width}x${viewport.height}: requested scroll ${y}, reached ${actualScroll}`);
+    }
+    await page.screenshot({
+      path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}-full-${String(part).padStart(2, '0')}.png`),
+      fullPage: false
+    });
+    part += 1;
+  }
+
+  await page.evaluate(() => window.scrollTo({ left: 0, top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(40);
+  const resetScroll = await page.evaluate(() => window.scrollY);
+  if (resetScroll !== 0) {
+    throw new Error(`Unable to reset ${route.name} to the top before the fold screenshot`);
+  }
+}
 const browser = await chromium.launch({ headless: true, ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}) });
 
 for (const viewport of viewports) {
@@ -100,6 +149,30 @@ for (const viewport of viewports) {
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
       );
       if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+    if (route.name === 'essay2') {
+      if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
+      if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected all three teaching visuals`);
+      if (await page.locator('.article-audio').count()) failures.push(`${route.path}: stale narration player returned`);
+      if (await page.locator('.article-body a[href$="original-we-could-have-had-agi-v1.2.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & Claude Opus 4.8') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+
+    if (route.kind === 'essay' && viewport.width <= 720) {
+      const mobileSeriesNavOverflows = await page.locator('.blog-series-mobile-nav').evaluate(nav => {
+        const linksLeaveViewport = [...nav.querySelectorAll('a')].some(link => {
+          const rect = link.getBoundingClientRect();
+          return rect.left < -1 || rect.right > window.innerWidth + 1;
+        });
+        return linksLeaveViewport || nav.scrollWidth > nav.clientWidth + 1;
+      });
+      if (mobileSeriesNavOverflows) failures.push(`${route.path} @ ${viewport.width}px: series navigation actions are not fully visible`);
     }
 
     const issues = await page.evaluate(() => {
@@ -320,10 +393,7 @@ for (const viewport of viewports) {
     }
 
     if (issues.length || shouldCapture(route, viewport)) {
-      await page.screenshot({
-        path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}.png`),
-        fullPage: true
-      });
+      await captureFullPageEvidence(page, route, viewport);
       if (shouldCapture(route, viewport)) {
         await page.screenshot({
           path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}-fold.png`),
