@@ -258,6 +258,7 @@
         var article = layout && layout.querySelector('.article-content');
         var sidebar = layout && layout.querySelector('.sidebar');
         if (!article || !sidebar) return;
+        if (sidebar.hasAttribute('data-preserve-navigation')) return;
 
         var articleBody = article.querySelector('.article-body');
         var links = findSeriesLinks(articleBody);
