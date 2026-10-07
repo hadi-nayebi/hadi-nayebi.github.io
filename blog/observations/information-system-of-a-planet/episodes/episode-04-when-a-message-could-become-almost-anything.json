@@ -26,7 +26,7 @@
         "category": "I30-A70"
       },
       "paragraphs": [
-        "Episode 3 ended at a border with no timestamp. Now the scale changes again: we are inside millions of years of human-lineage evolution, but language itself has no reliable start date.",
+        "Somewhere across millions of years of human-lineage history, voices and gestures acquired extraordinary expressive power. No one can point to the first sentence. Language leaves no fossil, and the evidence gives us a broad history rather than a birthday.",
         "Speech and gesture do not fossilize. Skulls constrain anatomy. Tools reveal complicated action sequences. Pigments, ornaments, burials, and images can show forms of symbolic behavior. None records the grammar of a vanished conversation.",
         "So do not picture a first speaker booting up language while everyone else stared. Bodies, brains, social lives, gesture, vocal control, shared attention, and cultural conventions changed across long overlapping histories.",
         "The honest timeline is broad and foggy. The performance change is clearer: at some point within that history, the communication system became vastly more open-ended."
@@ -51,7 +51,7 @@
     {
       "id": "more-than-sound",
       "title": "The interface was never only sound",
-      "read_minutes": 1.0,
+      "read_minutes": 1,
       "image": {
         "src": "images/episode-04/02-more-than-sound.jpg",
         "alt": "A close human gathering shares meaning through coordinated hand signs, facial expressions, gaze, posture, and voice, with a signed exchange given equal focus.",
@@ -95,11 +95,11 @@
         "category": "I50-A50"
       },
       "paragraphs": [
-        "This is the center of the episode. Human language does not need a unique signal for every possible thought.",
+        "A community does not need a separate signal for every possible thought. A limited set of learned sounds, signs, words, and patterns can be recombined into messages no one has heard before.",
         "A community learns a finite collection of contrasts, signs, words, patterns, and expectations, then recombines them. Familiar pieces can arrive in a new structure and still be understood. The practical result is open-endedness: yesterday's pieces can describe a sentence nobody has heard before.",
         "In information-system language, this is compression with an exploding address space. A manageable set of reusable units can point toward an enormous range of events, objects, relationships, possibilities, and invented nonsense.",
         "Children and communities also reshape the system as they learn and use it. Language is not a static codebook copied perfectly from one generation to the next. It is a living protocol.",
-        "This is the bandwidth jump the earlier episodes were approaching."
+        "With familiar pieces arranged in new ways, the range of possible messages expands enormously. That is the change in expressive capacity the earlier episodes were approaching."
       ],
       "sources": [
         {
