@@ -1,0 +1,199 @@
+{
+  "number": 14,
+  "slug": "when-information-outpaced-distance",
+  "title": "When Information Outpaced Distance",
+  "status": "draft",
+  "published": null,
+  "deckline": "Electrical signaling changes the time relationship between information and distance.",
+  "objective": "Electrical signaling changes the time relationship between information and distance.",
+  "learning_outcomes": [
+    "Coded messages travel through electrical circuits and increasingly coordinate distant decisions faster than the people or goods concerned.",
+    "Faster transmission expands demand for network reach, capacity, reliability, interpretation and control."
+  ],
+  "continuity": "Episode 13 showed postal and news networks alongside optical relays that already outran messengers. Episode 14 examines the distinct electrical channel and its infrastructure.",
+  "state_change": "Coded messages travel through electrical circuits and increasingly coordinate distant decisions faster than the people or goods concerned.",
+  "future_pressure": "Faster transmission expands demand for network reach, capacity, reliability, interpretation and control.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-14-when-information-outpaced-distance",
+  "slides": [
+    {
+      "id": "scene-01",
+      "title": "The signal and the traveler",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-14/01-when-information-outpaced-distance.jpg",
+        "alt": "Historical explanatory scene for When Information Outpaced Distance: The signal and the traveler.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "For most long-distance exchange, a message moved with a carrier. Optical relays had already shown that signals could outrun physical dispatch, but towers needed daylight or visibility and a maintained chain of operators.",
+        "A different physical channel promised another kind of reach: an electrical change traveling through a conductor."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://www.sciencemuseum.org.uk/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.britannica.com/technology/telegraph",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-14/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-02",
+      "title": "A laboratory effect is not a network",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-14/02-when-information-outpaced-distance.jpg",
+        "alt": "Historical explanatory scene for When Information Outpaced Distance: A laboratory effect is not a network.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Knowing that electricity could act across a wire did not immediately create dependable communication. Experimenters needed sources of current, instruments sensitive enough to detect signals, workable insulation, circuits, and ways to encode messages.",
+        "The idea had to become an operating system of equipment and trained people, not merely a striking demonstration."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://www.sciencemuseum.org.uk/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.britannica.com/technology/telegraph",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-14/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-03",
+      "title": "A message becomes a code",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-14/03-when-information-outpaced-distance.jpg",
+        "alt": "Historical explanatory scene for When Information Outpaced Distance: A message becomes a code.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Electrical telegraph systems converted selected messages into agreed signal patterns. Morse's system was one influential approach among several competing designs and national networks. Codes reduced words to transmissible signals that operators could send, detect, and reconstruct.",
+        "Information was moving through a new medium, but its meaning still depended on conventions and human work."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://www.sciencemuseum.org.uk/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.britannica.com/technology/telegraph",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-14/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-04",
+      "title": "Wires connect distant decisions",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-14/04-when-information-outpaced-distance.jpg",
+        "alt": "Historical explanatory scene for When Information Outpaced Distance: Wires connect distant decisions.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Telegraph lines spread along routes shaped by investment, states, railways, trade, and war. Their benefits were uneven, and failures, costs, and monopolies mattered. Yet distant offices could increasingly coordinate without waiting for a rider to cover the same ground.",
+        "The network shortened the interval between an event and a decision elsewhere."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://www.sciencemuseum.org.uk/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.britannica.com/technology/telegraph",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-14/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-05",
+      "title": "The consequences arrive before the goods",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-14/05-when-information-outpaced-distance.jpg",
+        "alt": "Historical explanatory scene for When Information Outpaced Distance: The consequences arrive before the goods.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Prices, dispatches, orders, railway coordination, and news could travel ahead of ships and cargo. The physical world had not accelerated to the same degree. Instead, information about it arrived sooner, sometimes changing what people did before the objects themselves appeared.",
+        "Distance remained real. Its relationship to communication time had changed."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://www.sciencemuseum.org.uk/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.britannica.com/technology/telegraph",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-14/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-06",
+      "title": "Another bottleneck appears",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-14/06-when-information-outpaced-distance.jpg",
+        "alt": "Historical explanatory scene for When Information Outpaced Distance: Another bottleneck appears.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "An electrical network made some messages startlingly fast, but it did not make all knowledge equally accessible, accurate, or useful. Operators, tariffs, cables, institutions, and control points still governed the flow.",
+        "The planet had gained another powerful information channel. More speed would create new demands for capacity, coordination, reliability, and the ability to interpret what arrived."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://www.sciencemuseum.org.uk/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.britannica.com/technology/telegraph",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-14/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
