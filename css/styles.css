@@ -6869,6 +6869,10 @@ body.lightbox-open {
     color: var(--text-muted);
 }
 
+.conceptual-path > .card-link {
+    color: var(--accent-light);
+}
+
 .conceptual-path p a,
 .page-about .start-here-hint a {
     color: #ddd6fe;
