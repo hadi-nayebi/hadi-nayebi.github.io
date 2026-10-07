@@ -6869,6 +6869,11 @@ body.lightbox-open {
     color: var(--text-muted);
 }
 
+.conceptual-path p a,
+.page-about .start-here-hint a {
+    color: #ddd6fe;
+}
+
 .conceptual-path-links,
 .conceptual-branch-links {
     display: grid;
