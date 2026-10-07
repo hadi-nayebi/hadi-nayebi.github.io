@@ -182,7 +182,7 @@ for (const viewport of viewports) {
 
 
     if (['essay1', 'essay2', 'essay3'].includes(route.name)) {
-      const abstract = page.locator('.essay-abstract');
+      const abstract = page.locator('.article-body > .essay-abstract');
       if (await abstract.count() !== 1) {
         failures.push(`${route.path}: expected exactly one essay abstract`);
       } else {
