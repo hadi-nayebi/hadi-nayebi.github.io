@@ -1,0 +1,199 @@
+{
+  "number": 12,
+  "slug": "when-print-found-its-publics",
+  "title": "When Print Found Its Publics",
+  "status": "draft",
+  "published": null,
+  "deckline": "Publishers, editors, subscribers, and readers organize the social life of printed information.",
+  "objective": "Publishers, editors, subscribers, and readers organize the social life of printed information.",
+  "learning_outcomes": [
+    "Publishing becomes a negotiated network of investment, editorial mediation, production and readership rather than a machine making neutral copies.",
+    "The growing appetite for information requires reliable, repeated channels of circulation."
+  ],
+  "continuity": "Episode 11 showed how records, makers and instruments reinforce capability. Episode 12 follows the human and economic relationships that make editions possible and find their publics.",
+  "state_change": "Publishing becomes a negotiated network of investment, editorial mediation, production and readership rather than a machine making neutral copies.",
+  "future_pressure": "The growing appetite for information requires reliable, repeated channels of circulation.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-12-when-print-found-its-publics",
+  "slides": [
+    {
+      "id": "scene-01",
+      "title": "The press meets a budget",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-12/01-when-print-found-its-publics.jpg",
+        "alt": "Historical explanatory scene for When Print Found Its Publics: The press meets a budget.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A press can make hundreds of copies from one prepared setting. But before the first sheet reaches a reader, someone must pay for paper, type, labor, ink, illustrations, and transport. The machinery of reproduction has changed. The uncertainty of finding readers has not disappeared.",
+        "Information could now multiply faster, but multiplication required people willing to organize and finance it."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://catalogue.nla.gov.au/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.british-library.uk/",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-12/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-02",
+      "title": "A public begins before the book",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-12/02-when-print-found-its-publics.jpg",
+        "alt": "Historical explanatory scene for When Print Found Its Publics: A public begins before the book.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Booksellers, printers, patrons, and subscribers did not all perform the same job. Some provided capital, some made commitments, some selected material, and others found buyers. Their arrangements varied by place, genre, and period.",
+        "A public was not always a crowd waiting after publication. Sometimes a network of promised readers helped bring the edition into existence."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://catalogue.nla.gov.au/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.british-library.uk/",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-12/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-03",
+      "title": "An old poem finds new readers",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-12/03-when-print-found-its-publics.jpg",
+        "alt": "Historical explanatory scene for When Print Found Its Publics: An old poem finds new readers.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "In 1715, John Hughes's edition of Edmund Spenser appeared in six volumes printed for Jacob Tonson. It was not simply an old text copied again. Notes, a glossary, illustrations, and editorial choices shaped how eighteenth-century readers encountered it.",
+        "The text survived, but its interface with a new generation had to be built."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://catalogue.nla.gov.au/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.british-library.uk/",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-12/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-04",
+      "title": "Names inside the edition",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-12/04-when-print-found-its-publics.jpg",
+        "alt": "Historical explanatory scene for When Print Found Its Publics: Names inside the edition.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Surviving copies of the 1715 edition include subscriber-list leaves. These names make part of the production network visible. They do not tell us exactly how much of the total cost subscriptions covered, or why each person joined.",
+        "A printed book could contain traces of the social relationships that helped bring it into the world."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://catalogue.nla.gov.au/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.british-library.uk/",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-12/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-05",
+      "title": "The book returns to market",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-12/05-when-print-found-its-publics.jpg",
+        "alt": "Historical explanatory scene for When Print Found Its Publics: The book returns to market.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "The Hughes edition was revised and reprinted in 1750. Other Spenser editions followed in 1751 and 1758. Each edition was another decision about presentation, investment, and audience, not proof that every reader wanted the same thing.",
+        "The same inherited work could enter different markets and acquire different routes toward its readers."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://catalogue.nla.gov.au/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.british-library.uk/",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-12/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-06",
+      "title": "Readers create another demand",
+      "read_minutes": 1,
+      "image": {
+        "src": "images/episode-12/06-when-print-found-its-publics.jpg",
+        "alt": "Historical explanatory scene for When Print Found Its Publics: Readers create another demand.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "People have always wanted to learn, compare, argue, and discover. More available texts gave that desire additional outlets, while readers, institutions, and sellers created reasons to produce and circulate still more.",
+        "Information production and human demand began reinforcing one another. But the expanding public also needed regular channels to hear what was new, and ways to receive it beyond the print shop."
+      ],
+      "sources": [
+        {
+          "label": "Historical source and institutional background",
+          "url": "https://catalogue.nla.gov.au/",
+          "note": "Source reference pending scene-specific verification."
+        },
+        {
+          "label": "Material and historical context",
+          "url": "https://www.british-library.uk/",
+          "note": "Source reference pending scene-specific verification."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-12/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
