@@ -1,0 +1,66 @@
+# Episode 11 — When Knowledge Learned to Build
+
+**Status:** complete six-scene narration candidate for editorial and visual production. Not published; no image or audio claims.
+
+## 1. The next maker does not start from zero
+
+A useful idea can survive on a page. But a page cannot grind a lens, bore a cylinder, or make a machine work. Someone still has to take the record into a workshop, put their hands on material, and discover which details matter.
+
+For centuries, craftspeople had learned through practice, apprenticeship, experiment, and the stubborn resistance of wood, glass, iron, and stone. Printed instructions did not replace that knowledge. They offered something new alongside it: a procedure or observation that another person might find, compare with experience, criticize, and improve.
+
+The information system was beginning to do more than preserve descriptions. It could help the next maker start somewhere beyond the beginning.
+
+## 2. A lens returns an answer
+
+In 1665, Robert Hooke published *Micrographia*. Its engravings opened unfamiliar landscapes inside familiar things: insects, surfaces, structures too small for ordinary sight. The book did not invent the microscope. It made particular observations and methods inspectable to people who had not stood beside Hooke's instrument.
+
+Across the North Sea, Antoni van Leeuwenhoek developed remarkable skills in making and using small lenses. His work was his own, not a copy of Hooke's. Yet the circulating record of microscopic observation helped create a world in which one person's instrument could provoke another person's attempt.
+
+An improved lens could reveal something new. A description could carry that observation beyond the room. Someone elsewhere could ask: can I see it too?
+
+## 3. The method travels back
+
+In 1673, Leeuwenhoek's observations began appearing in *Philosophical Transactions*. Letters carried descriptions; correspondents requested specimens and details; investigators attempted to repeat observations. Some claims were difficult to check. Instruments varied. Skill mattered. A drawing could clarify an observation, but it could not transfer the maker's hands.
+
+That difficulty is part of the story. The network was not a machine that automatically converted reports into truth. It was a developing practice of asking, trying, doubting, correcting, and trying again.
+
+The important loop now ran in both directions: a tool changed what could be seen, and what was seen changed what other people tried to build.
+
+## 4. A design reaches the workshop
+
+Now move from a lens to an engine. James Watt's separate condenser addressed a serious loss of heat in earlier steam engines. The idea was powerful. But an efficient design still needed a cylinder and piston that fit closely enough to do their job.
+
+A cylinder that leaked steam could defeat the advantage of the design. On paper, the machine might be ingenious. In iron, it could still fail.
+
+Here the information system meets a limit that cannot be solved by better words alone. The answer must be cut into metal.
+
+## 5. Precision becomes capability
+
+Around 1775, John Wilkinson's boring machinery made it possible to produce large iron cylinders with substantially improved accuracy. A supported boring bar and secured cylinder brought a new level of control to a difficult manufacturing operation. Watt's engines depended on accurate cylinders, and Wilkinson's work was a critical enabling contribution.
+
+The breakthrough was not simply a clever drawing or a heroic inventor. It was the fit between an idea, a material process, skilled makers, and machinery capable of producing the required precision.
+
+A machine tool helped make another machine practical. The result could power work that had previously been limited by muscle, water, or older engines. Making had begun to expand the conditions for more making.
+
+## 6. Capability compounds
+
+Return to the two scenes: a lens and an iron cylinder. They seem to belong to different histories. One changes what can be observed; the other changes what can be manufactured. But both reveal the same pattern.
+
+Records allow practices to travel. Makers adapt them. Instruments and machines extend what people can observe and do. Results return as new descriptions, measurements, disputes, and improved methods. Not every attempt succeeds, and the gains are never equally shared. Yet later work can increasingly begin from earlier work.
+
+Information is no longer only surviving, speaking, waiting, and multiplying. In the hands of people and institutions, it is helping to reshape the physical world—and that changed world produces more information in return.
+
+But every new instrument, workshop, edition, and claim needs materials, money, skilled labor, and people willing to receive it. The next question is not only what can be built. It is how a growing public comes together around what is made and printed.
+
+## Visual treatment — not yet rendered
+
+1. An artisan at a bench comparing a printed procedure with a stubborn physical object; show hands, tools, and page.
+2. Hooke's engraved microscopic world juxtaposed with lens work, avoiding a false inventor handoff.
+3. Letters, specimens and attempted replication across a correspondence network.
+4. Watt engine cylinder and piston cross-section showing the leakage problem.
+5. Wilkinson boring mill and accurately bored cylinder, grounded in museum objects.
+6. Two looping tracks—observation/instruments and design/machine tools—converging into larger human capability.
+
+## Research guardrails
+
+Do not claim printing alone caused modern science, Leeuwenhoek copied Hooke, modern peer review was already complete, Wilkinson invented steam power, or thermodynamic theory preceded the practical engine sequence. Source anchors: Royal Society Hooke–Leeuwenhoek history; Science Museum Group Wilkinson boring bar and Bersham mill objects. See Departments print-era treatment condensation for links and evidence limits.
