@@ -15,6 +15,7 @@ const routes = [
   { name: 'content', path: '/content.html', kind: 'copy' },
   { name: 'essay1', path: '/blog/b1/01-llms-are-not-the-agents.html', kind: 'essay' },
   { name: 'essay2', path: '/blog/b2/02-we-could-have-had-agi.html', kind: 'essay' },
+  { name: 'essay3', path: '/blog/b3/03-your-brain-was-never-built-for-this.html', kind: 'essay' },
   { name: 'diagrams', path: '/explore.html', kind: 'copy' },
   { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
@@ -156,6 +157,22 @@ for (const viewport of viewports) {
       if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected all three teaching visuals`);
       if (await page.locator('.article-audio').count()) failures.push(`${route.path}: stale narration player returned`);
       if (await page.locator('.article-body a[href$="original-we-could-have-had-agi-v1.2.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & Claude Opus 4.8') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+
+    if (route.name === 'essay3') {
+      if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
+      if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected all three trilogy visuals`);
+      if (await page.locator('.article-audio').count()) failures.push(`${route.path}: stale narration player returned`);
+      if (await page.locator('.article-body a[href$="original-your-brain-was-never-built-for-this-v0.2.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if (await page.locator('.article-body a[href$="02-we-could-have-had-agi.html"]').count() !== 1) failures.push(`${route.path}: previous essay link missing`);
+      if (await page.locator('.article-body a[href$="03_1-the-folder-is-alive.html"]').count() !== 1) failures.push(`${route.path}: next essay link missing`);
+      if (await page.locator('.blog-series-mobile-nav a').count() !== 3) failures.push(`${route.path}: complete mobile series navigation missing`);
       if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & Claude Opus 4.8') failures.push(`${route.path}: current co-author byline missing`);
       const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
