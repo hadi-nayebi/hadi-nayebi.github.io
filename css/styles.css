@@ -1606,7 +1606,7 @@ body:has(.blog-layout) .container {
     margin-bottom: 1.5rem;
 }
 
-.article-body .essay-abstract {
+.article-content .essay-abstract {
     margin: 0 0 2rem;
     padding: 1.25rem 1.5rem;
     background: #171c2e;
@@ -1615,7 +1615,7 @@ body:has(.blog-layout) .container {
     border-radius: 0 12px 12px 0;
 }
 
-.article-body .essay-abstract-label {
+.article-content .essay-abstract-label {
     display: block;
     margin-bottom: 0.5rem;
     color: #c7d2fe;
@@ -1625,7 +1625,7 @@ body:has(.blog-layout) .container {
     text-transform: uppercase;
 }
 
-.article-body .essay-abstract p {
+.article-content .essay-abstract p {
     margin: 0;
     color: #eef0f7;
     line-height: 1.7;
@@ -6867,6 +6867,15 @@ body.lightbox-open {
 
 .conceptual-path p {
     color: var(--text-muted);
+}
+
+.conceptual-path > .card-link {
+    color: var(--accent-light);
+}
+
+.conceptual-path p a,
+.page-about .start-here-hint a {
+    color: #ddd6fe;
 }
 
 .conceptual-path-links,

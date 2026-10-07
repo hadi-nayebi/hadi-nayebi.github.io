@@ -181,6 +181,52 @@ for (const viewport of viewports) {
     }
 
 
+    if (['essay1', 'essay2', 'essay3'].includes(route.name)) {
+      const abstract = page.locator('.article-body > .essay-abstract');
+      if (await abstract.count() !== 1) {
+        failures.push(`${route.path}: expected exactly one essay abstract`);
+      } else {
+        const abstractState = await abstract.evaluate(element => {
+          const style = getComputedStyle(element);
+          const label = element.querySelector('.essay-abstract-label');
+          return {
+            background: style.backgroundColor,
+            borderLeftWidth: parseFloat(style.borderLeftWidth || '0'),
+            paddingTop: parseFloat(style.paddingTop || '0'),
+            rawMarkdown: element.innerHTML.includes('**'),
+            labelText: label?.textContent?.trim() || ''
+          };
+        });
+        if (abstractState.background === 'rgba(0, 0, 0, 0)' || abstractState.borderLeftWidth < 3 || abstractState.paddingTop < 10) {
+          failures.push(`${route.path}: abstract panel styling is missing`);
+        }
+        if (abstractState.rawMarkdown) failures.push(`${route.path}: raw Markdown emphasis leaked into abstract HTML`);
+        if (abstractState.labelText !== 'Abstract') failures.push(`${route.path}: abstract label missing`);
+      }
+    }
+
+    if (['essay1', 'essay2', 'essay3'].includes(route.name)) {
+      const expectedReadTime = { essay1: '16 min read', essay2: '21 min read', essay3: '18 min read' }[route.name];
+      const sidebarTitle = (await page.locator('.sidebar-title').innerText()).trim();
+      if (sidebarTitle !== 'Foundational Trilogy') failures.push(`${route.path}: trilogy sidebar heading is stale`);
+      const activeDate = (await page.locator('.article-card.active .date').innerText()).trim();
+      if (!activeDate.includes('Updated October 2026') || !activeDate.includes(expectedReadTime)) {
+        failures.push(`${route.path}: active trilogy sidebar metadata is stale`);
+      }
+      const sidebarText = (await page.locator('.sidebar').innerText()).toLowerCase();
+      if (sidebarText.includes('in series') || sidebarText.includes('browse the full series') || sidebarText.includes('all essays')) {
+        failures.push(`${route.path}: retired global-series wording remains in trilogy sidebar`);
+      }
+      const conceptualLink = page.locator('.sidebar-all-essays-link');
+      if (await conceptualLink.count() !== 1 || !(await conceptualLink.getAttribute('href'))?.endsWith('/content.html#principles')) {
+        failures.push(`${route.path}: conceptual reading-path link is missing from trilogy sidebar`);
+      }
+      const mobileConceptualLink = page.locator('.blog-series-mobile-nav a[href="/content.html#principles"]');
+      if (await mobileConceptualLink.count() !== 1 || (await mobileConceptualLink.innerText()).trim() !== 'Conceptual writings') {
+        failures.push(`${route.path}: conceptual reading-path link is missing from trilogy mobile navigation`);
+      }
+    }
+
     if (route.kind === 'essay' && viewport.width <= 720) {
       const mobileSeriesNavOverflows = await page.locator('.blog-series-mobile-nav').evaluate(nav => {
         const linksLeaveViewport = [...nav.querySelectorAll('a')].some(link => {
