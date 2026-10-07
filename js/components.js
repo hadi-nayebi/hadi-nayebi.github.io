@@ -258,34 +258,35 @@
         var article = layout && layout.querySelector('.article-content');
         var sidebar = layout && layout.querySelector('.sidebar');
         if (!article || !sidebar) return;
-        if (sidebar.hasAttribute('data-preserve-navigation')) return;
 
         var articleBody = article.querySelector('.article-body');
         var links = findSeriesLinks(articleBody);
         var heading = article.querySelector('h1');
         var currentTitle = heading ? heading.textContent.trim() : document.title.replace(/\s*\|.*$/, '');
 
-        sidebar.innerHTML = '';
-        sidebar.setAttribute('aria-label', 'Article series navigation');
-        var title = document.createElement('div');
-        title.className = 'sidebar-title';
-        title.textContent = 'In This Series';
-        sidebar.appendChild(title);
+        if (!sidebar.hasAttribute('data-preserve-navigation')) {
+            sidebar.innerHTML = '';
+            sidebar.setAttribute('aria-label', 'Article series navigation');
+            var title = document.createElement('div');
+            title.className = 'sidebar-title';
+            title.textContent = 'In This Series';
+            sidebar.appendChild(title);
 
-        var list = document.createElement('div');
-        var previous = buildSeriesCard('previous', links.previous, currentTitle);
-        var current = buildSeriesCard('current', null, currentTitle);
-        var next = buildSeriesCard('next', links.next, currentTitle);
-        if (previous) list.appendChild(previous);
-        list.appendChild(current);
-        if (next) list.appendChild(next);
+            var list = document.createElement('div');
+            var previous = buildSeriesCard('previous', links.previous, currentTitle);
+            var current = buildSeriesCard('current', null, currentTitle);
+            var next = buildSeriesCard('next', links.next, currentTitle);
+            if (previous) list.appendChild(previous);
+            list.appendChild(current);
+            if (next) list.appendChild(next);
 
-        var all = document.createElement('a');
-        all.href = '/content.html';
-        all.className = 'article-card-link sidebar-all-essays-link';
-        all.innerHTML = '<div class="article-card sidebar-all-essays"><h3>All content →</h3><div class="date">Browse the full series</div></div>';
-        list.appendChild(all);
-        sidebar.appendChild(list);
+            var all = document.createElement('a');
+            all.href = '/content.html';
+            all.className = 'article-card-link sidebar-all-essays-link';
+            all.innerHTML = '<div class="article-card sidebar-all-essays"><h3>All content →</h3><div class="date">Browse the full series</div></div>';
+            list.appendChild(all);
+            sidebar.appendChild(list);
+        }
 
         var backLink = article.querySelector('.blog-back-link');
         if (!backLink || article.querySelector('.blog-series-mobile-nav')) return;
