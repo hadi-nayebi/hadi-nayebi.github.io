@@ -14,6 +14,8 @@ const routes = [
   { name: 'about', path: '/about.html', kind: 'copy' },
   { name: 'content', path: '/content.html', kind: 'copy' },
   { name: 'essay1', path: '/blog/b1/01-llms-are-not-the-agents.html', kind: 'essay' },
+  { name: 'essay2', path: '/blog/b2/02-we-could-have-had-agi.html', kind: 'essay' },
+  { name: 'essay3', path: '/blog/b3/03-your-brain-was-never-built-for-this.html', kind: 'essay' },
   { name: 'diagrams', path: '/explore.html', kind: 'copy' },
   { name: 'services', path: '/services.html', kind: 'copy' },
   { name: 'agents', path: '/agents.html', kind: 'agents' },
@@ -41,6 +43,54 @@ const shouldCapture = (route, viewport) =>
 const artifactDir = path.resolve('artifacts/responsive-layout');
 fs.mkdirSync(artifactDir, { recursive: true });
 const failures = [];
+const maxReliableScreenshotHeight = 14000;
+const screenshotSegmentOverlap = 120;
+
+async function captureFullPageEvidence(page, route, viewport) {
+  const pageHeight = await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = 'auto';
+    if (document.body) document.body.style.scrollBehavior = 'auto';
+    return Math.max(
+      document.documentElement.scrollHeight,
+      document.body?.scrollHeight || 0
+    );
+  });
+  if (!['essay2', 'essay3'].includes(route.name) || pageHeight <= maxReliableScreenshotHeight) {
+    await page.screenshot({
+      path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}.png`),
+      fullPage: true
+    });
+    return;
+  }
+
+  const maxScroll = Math.max(0, pageHeight - viewport.height);
+  const step = Math.max(1, viewport.height - screenshotSegmentOverlap);
+  const positions = [];
+  for (let y = 0; y < maxScroll; y += step) positions.push(y);
+  if (positions.at(-1) !== maxScroll) positions.push(maxScroll);
+
+  let part = 1;
+  for (const y of positions) {
+    await page.evaluate(scrollY => window.scrollTo({ left: 0, top: scrollY, behavior: 'instant' }), y);
+    await page.waitForTimeout(40);
+    const actualScroll = await page.evaluate(() => window.scrollY);
+    if (Math.abs(actualScroll - y) > 2) {
+      throw new Error(`Unable to capture ${route.name} at ${viewport.width}x${viewport.height}: requested scroll ${y}, reached ${actualScroll}`);
+    }
+    await page.screenshot({
+      path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}-full-${String(part).padStart(2, '0')}.png`),
+      fullPage: false
+    });
+    part += 1;
+  }
+
+  await page.evaluate(() => window.scrollTo({ left: 0, top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(40);
+  const resetScroll = await page.evaluate(() => window.scrollY);
+  if (resetScroll !== 0) {
+    throw new Error(`Unable to reset ${route.name} to the top before the fold screenshot`);
+  }
+}
 const browser = await chromium.launch({ headless: true, ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}) });
 
 for (const viewport of viewports) {
@@ -79,7 +129,20 @@ for (const viewport of viewports) {
 
     if (route.name === 'essay1') {
       if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
-      if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected the Markov and hooks diagrams`);
+      const expectedEssayVisuals = [
+        'images/llm-engine-agent-directory-b1-1.png',
+        'images/action-space-markov-chain-b1-2.png',
+        'images/hooks-and-action-space-b1-4.png'
+      ];
+      const essayVisuals = await page.locator('.article-body figure img').evaluateAll(images =>
+        images.map(image => image.getAttribute('src'))
+      );
+      for (const src of expectedEssayVisuals) {
+        if (!essayVisuals.includes(src)) failures.push(`${route.path}: expected teaching visual ${src}`);
+      }
+      if (essayVisuals.length !== expectedEssayVisuals.length) {
+        failures.push(`${route.path}: expected ${expectedEssayVisuals.length} teaching visuals, found ${essayVisuals.length}`);
+      }
       if (await page.locator('.article-audio').count()) failures.push(`${route.path}: old narration player returned`);
       if (await page.locator('.article-body a[href*="/original-llms-are-not-the-agents-v1.3.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
       if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & GPT-6 Sol') failures.push(`${route.path}: current co-author byline missing`);
@@ -87,6 +150,92 @@ for (const viewport of viewports) {
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
       );
       if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+    if (route.name === 'essay2') {
+      if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
+      if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected all three teaching visuals`);
+      if (await page.locator('.article-audio').count()) failures.push(`${route.path}: stale narration player returned`);
+      if (await page.locator('.article-body a[href$="original-we-could-have-had-agi-v1.2.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & Claude Opus 4.8') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+
+    if (route.name === 'essay3') {
+      if (await page.locator('.essay-abstract').count() !== 1) failures.push(`${route.path}: abstract missing`);
+      if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected all three trilogy visuals`);
+      if (await page.locator('.article-audio').count()) failures.push(`${route.path}: stale narration player returned`);
+      if (await page.locator('.article-body a[href$="original-your-brain-was-never-built-for-this-v0.2.0.md"]').count() !== 1) failures.push(`${route.path}: original Markdown reference missing`);
+      if (await page.locator('.article-body a[href$="02-we-could-have-had-agi.html"]').count() !== 1) failures.push(`${route.path}: previous essay link missing`);
+      if (await page.locator('.article-body a[href$="03_1-the-folder-is-alive.html"]').count() !== 1) failures.push(`${route.path}: next essay link missing`);
+      if (await page.locator('.blog-series-mobile-nav a').count() !== 3) failures.push(`${route.path}: complete mobile series navigation missing`);
+      if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & Claude Opus 4.8') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+
+    if (['essay1', 'essay2', 'essay3'].includes(route.name)) {
+      const abstract = page.locator('.article-body > .essay-abstract');
+      if (await abstract.count() !== 1) {
+        failures.push(`${route.path}: expected exactly one essay abstract`);
+      } else {
+        const abstractState = await abstract.evaluate(element => {
+          const style = getComputedStyle(element);
+          const label = element.querySelector('.essay-abstract-label');
+          return {
+            background: style.backgroundColor,
+            borderLeftWidth: parseFloat(style.borderLeftWidth || '0'),
+            paddingTop: parseFloat(style.paddingTop || '0'),
+            rawMarkdown: element.innerHTML.includes('**'),
+            labelText: label?.textContent?.trim() || ''
+          };
+        });
+        if (abstractState.background === 'rgba(0, 0, 0, 0)' || abstractState.borderLeftWidth < 3 || abstractState.paddingTop < 10) {
+          failures.push(`${route.path}: abstract panel styling is missing`);
+        }
+        if (abstractState.rawMarkdown) failures.push(`${route.path}: raw Markdown emphasis leaked into abstract HTML`);
+        if (abstractState.labelText !== 'Abstract') failures.push(`${route.path}: abstract label missing`);
+      }
+    }
+
+    if (['essay1', 'essay2', 'essay3'].includes(route.name)) {
+      const expectedReadTime = { essay1: '16 min read', essay2: '21 min read', essay3: '18 min read' }[route.name];
+      const sidebarTitle = (await page.locator('.sidebar-title').innerText()).trim();
+      if (sidebarTitle !== 'Foundational Trilogy') failures.push(`${route.path}: trilogy sidebar heading is stale`);
+      const activeDate = (await page.locator('.article-card.active .date').innerText()).trim();
+      if (!activeDate.includes('Updated October 2026') || !activeDate.includes(expectedReadTime)) {
+        failures.push(`${route.path}: active trilogy sidebar metadata is stale`);
+      }
+      const sidebarText = (await page.locator('.sidebar').innerText()).toLowerCase();
+      if (sidebarText.includes('in series') || sidebarText.includes('browse the full series') || sidebarText.includes('all essays')) {
+        failures.push(`${route.path}: retired global-series wording remains in trilogy sidebar`);
+      }
+      const conceptualLink = page.locator('.sidebar-all-essays-link');
+      if (await conceptualLink.count() !== 1 || !(await conceptualLink.getAttribute('href'))?.endsWith('/content.html#principles')) {
+        failures.push(`${route.path}: conceptual reading-path link is missing from trilogy sidebar`);
+      }
+      const mobileConceptualLink = page.locator('.blog-series-mobile-nav a[href="/content.html#principles"]');
+      if (await mobileConceptualLink.count() !== 1 || (await mobileConceptualLink.innerText()).trim() !== 'Conceptual writings') {
+        failures.push(`${route.path}: conceptual reading-path link is missing from trilogy mobile navigation`);
+      }
+    }
+
+    if (route.kind === 'essay' && viewport.width <= 720) {
+      const mobileSeriesNavOverflows = await page.locator('.blog-series-mobile-nav').evaluate(nav => {
+        const linksLeaveViewport = [...nav.querySelectorAll('a')].some(link => {
+          const rect = link.getBoundingClientRect();
+          return rect.left < -1 || rect.right > window.innerWidth + 1;
+        });
+        return linksLeaveViewport || nav.scrollWidth > nav.clientWidth + 1;
+      });
+      if (mobileSeriesNavOverflows) failures.push(`${route.path} @ ${viewport.width}px: series navigation actions are not fully visible`);
     }
 
     const issues = await page.evaluate(() => {
@@ -307,10 +456,7 @@ for (const viewport of viewports) {
     }
 
     if (issues.length || shouldCapture(route, viewport)) {
-      await page.screenshot({
-        path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}.png`),
-        fullPage: true
-      });
+      await captureFullPageEvidence(page, route, viewport);
       if (shouldCapture(route, viewport)) {
         await page.screenshot({
           path: path.join(artifactDir, `${route.name}-${viewport.width}x${viewport.height}-fold.png`),

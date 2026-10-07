@@ -6,8 +6,9 @@ read_time: "17 min"
 tags: [Vision, Seed Agent, Future of Work, Autonomy]
 audience: professionals
 og_image: "blog/b3/images/folder-of-specialists-b3_1-1.png"
-series: "Hadosh Academy – Agents"
-series_position: "3.1 — vision interlude between Essays 3 and 4"
+series: "Hadosh Academy – Principles & Perspectives"
+conceptual_role: "branch"
+extends: "digital-cortex, seed-agent, future-of-work"
 version: v1.2.0
 status: published
 ---
@@ -265,7 +266,7 @@ It is coming because you will build it. We will teach you how.
 
 ---
 
-*Series interlude — sits between Essay 3 and Essay 4 of the Hadosh Academy series on agent architecture.*
+*Conceptual branch in Hadosh Academy Principles & Perspectives — extends the digital-cortex and seed-agent ideas into a personal cognitive workforce.*
 
-*Previous: ["Your Brain Was Never Built for This"](03-your-brain-was-never-built-for-this.html) — why your biology can't keep up with the world your civilization built.*
-*Next: ["The Language of Agents"](../b4/04-the-language-of-agents.html) — every term you need, in one read.*
+*Builds from: ["Your Brain Was Never Built for This"](03-your-brain-was-never-built-for-this.html) — why external cognitive infrastructure matters for the human.*
+*Vocabulary bridge: ["The Language of Agents"](../b4/04-the-language-of-agents.html) — the working terms used across the architecture.*

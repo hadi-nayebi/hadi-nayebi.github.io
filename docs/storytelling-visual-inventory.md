@@ -101,9 +101,12 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/intelligence-as-a-utility.jpg` | I50-A50 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/five-protections-of-a-personal-harness.jpg` | I70-A30 | HTML | Yes |
 | `blog/principles/the-ai-that-grows-with-you.html` | `images/shared-anatomy-personal-organisms.jpg` | I50-A50 | HTML | Yes |
+| `blog/b1/01-llms-are-not-the-agents.html` | `images/llm-engine-agent-directory-b1-1.png` | I70-A30 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/action-space-markov-chain-b1-2.png` | I90-A10 | HTML | Yes |
 | `blog/b1/01-llms-are-not-the-agents.html` | `images/hooks-and-action-space-b1-4.png` | I90-A10 | HTML | Yes |
 | `blog/b2/02-we-could-have-had-agi.html` | `images/seed-agent-growth-b2-1.png` | I50-A50 | HTML | Yes |
+| `blog/b2/02-we-could-have-had-agi.html` | `../observations/hadosh-through-mental-models/images/context-becomes-personal-software.jpg` | I50-A50 | HTML | Yes |
+| `blog/b2/02-we-could-have-had-agi.html` | `../principles/images/shared-anatomy-personal-organisms.jpg` | I50-A50 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/cognitive-metabolism-b3_1-3.png` | I90-A10 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/folder-of-specialists-b3_1-1.png` | I70-A30 | HTML | Yes |
 | `blog/b3/03_1-the-folder-is-alive.html` | `images/powerpoint-moment-b3_1-2.png` | I70-A30 | HTML | Yes |
@@ -169,3 +172,6 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 - Inline SVG charts in `projects/crime-cartography.html`: functional data examples, not generated story artwork.
 - Open Graph images referenced only through metadata: social previews, not displayed page slots.
 
+
+| `blog/b3/03-your-brain-was-never-built-for-this.html` | `images/cognitive-organs-diagram.png` | I70-A30 | HTML | Yes |
+| `blog/b3/03-your-brain-was-never-built-for-this.html` | `images/job-to-microbusinesses.png` | I70-A30 | HTML | Yes |
