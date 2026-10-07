@@ -263,8 +263,9 @@
         var links = findSeriesLinks(articleBody);
         var heading = article.querySelector('h1');
         var currentTitle = heading ? heading.textContent.trim() : document.title.replace(/\s*\|.*$/, '');
+        var preserveNavigation = sidebar.hasAttribute('data-preserve-navigation');
 
-        if (!sidebar.hasAttribute('data-preserve-navigation')) {
+        if (!preserveNavigation) {
             sidebar.innerHTML = '';
             sidebar.setAttribute('aria-label', 'Article series navigation');
             var title = document.createElement('div');
@@ -300,8 +301,8 @@
             mobile.appendChild(prev);
         }
         var allMobile = document.createElement('a');
-        allMobile.href = '/content.html';
-        allMobile.textContent = 'All content';
+        allMobile.href = preserveNavigation ? '/content.html#principles' : '/content.html';
+        allMobile.textContent = preserveNavigation ? 'Conceptual writings' : 'All content';
         mobile.appendChild(allMobile);
         if (links.next) {
             var nxt = document.createElement('a');

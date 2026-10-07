@@ -221,6 +221,10 @@ for (const viewport of viewports) {
       if (await conceptualLink.count() !== 1 || !(await conceptualLink.getAttribute('href'))?.endsWith('/content.html#principles')) {
         failures.push(`${route.path}: conceptual reading-path link is missing from trilogy sidebar`);
       }
+      const mobileConceptualLink = page.locator('.blog-series-mobile-nav a[href="/content.html#principles"]');
+      if (await mobileConceptualLink.count() !== 1 || (await mobileConceptualLink.innerText()).trim() !== 'Conceptual writings') {
+        failures.push(`${route.path}: conceptual reading-path link is missing from trilogy mobile navigation`);
+      }
     }
 
     if (route.kind === 'essay' && viewport.width <= 720) {
