@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="Practical guides, principles, observations, agent architecture, and interactive diagrams for building user-owned systems.">
     <meta name="twitter:image" content="https://hadi-nayebi.github.io/assets/images/hadosh-logo-dark.png">
     <link rel="alternate" type="application/rss+xml" title="Hadosh Academy Content" href="/feed.xml">
-    <link rel="stylesheet" href="css/styles.css?v=20261002-spacing-2">
+    <link rel="stylesheet" href="css/styles.css?v=20261006-conceptual-map-1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -173,6 +173,43 @@
                             <h2>Principles &amp; Perspectives</h2>
                             <p>Plain-language essays about agents, human cognition, autonomy, and the concepts that make the deeper architecture understandable.</p>
                         </div>
+
+                        <div class="conceptual-reading-map" aria-label="Conceptual writing paths">
+                            <article class="conceptual-path conceptual-path-foundations">
+                                <span class="conceptual-path-kicker">Start here</span>
+                                <h3>Foundational Trilogy</h3>
+                                <p>Three connected essays build the core mental model: what the agentic system is, what its harness can become, and what that means for the human using it.</p>
+                                <ol class="conceptual-path-links">
+                                    <li><a href="blog/b1/01-llms-are-not-the-agents.html"><strong>LLMs Are Not the Agents</strong><span>Model vs harness; active vs durable context.</span></a></li>
+                                    <li><a href="blog/b2/02-we-could-have-had-agi.html"><strong>We Could Have Had AGI By Now</strong><span>Personal complex software assembled from shared primitives.</span></a></li>
+                                    <li><a href="blog/b3/03-your-brain-was-never-built-for-this.html"><strong>Your Brain Was Never Built for This</strong><span>Digital cortex, harness literacy, and the Independent Operator.</span></a></li>
+                                </ol>
+                                <p class="conceptual-path-note">Each revised trilogy page keeps a link to its earlier Markdown manuscript. The history stays visible so readers can see how Academy context changes through review and new evidence.</p>
+                            </article>
+                            <article class="conceptual-path">
+                                <span class="conceptual-path-kicker">Learn the language</span>
+                                <h3>Vocabulary &amp; Reference</h3>
+                                <p><a href="blog/b4/04-the-language-of-agents.html"><strong>The Language of Agents</strong></a> gives the human-readable vocabulary that connects the foundations to the technical architecture.</p>
+                                <p style="margin-top:0.7rem;">The <a href="agents/abstractions/"><strong>Canonical Abstraction Library</strong></a> owns the current framework-agnostic definitions as they mature.</p>
+                            </article>
+                            <article class="conceptual-path">
+                                <span class="conceptual-path-kicker">Follow a question</span>
+                                <h3>Conceptual Branches</h3>
+                                <p>These essays extend specific questions rather than continuing one numbered sequence.</p>
+                                <ul class="conceptual-branch-links">
+                                    <li><a href="blog/b3/03_1-the-folder-is-alive.html"><strong>The Folder Is Alive</strong><span>Living filesystem, specialist cognition, and the seed.</span></a></li>
+                                    <li><a href="blog/principles/the-ai-that-grows-with-you.html"><strong>The AI That Grows With You</strong><span>Ownership, portability, and personal accumulation.</span></a></li>
+                                    <li><a href="blog/principles/one-agent-many-doors.html"><strong>One Agent, Many Doors</strong><span>Continuity across interfaces without splitting the relationship.</span></a></li>
+                                </ul>
+                                <p class="conceptual-path-note">New principle essays can branch from these questions without becoming another numbered step.</p>
+                            </article>
+                            <article class="conceptual-path conceptual-path-technical">
+                                <span class="conceptual-path-kicker">Go deeper</span>
+                                <h3>Technical Architecture</h3>
+                                <p>The numbered B5–B9 series remain ordered where sequence helps learning: persistent jobs and guards, phasic cognition, plugins, maturation, and visible dashboard-plus-harness systems.</p>
+                                <a class="card-link" href="#technical-writing">Study Agent Architecture &rarr;</a>
+                            </article>
+                        </div>
                     <!-- Article: One Agent, Many Doors -->
                     <a href="blog/principles/one-agent-many-doors.html" class="blog-index-card" data-category="principles" data-audience="professionals" data-tags="agents,interfaces,reliability,origin">
                         <div class="blog-card-tags">
@@ -219,11 +256,11 @@
                         </div>
                         <h3>LLMs Are Not the Agents</h3>
                         <div class="blog-card-meta">
-                            <span>Updated September 2026</span>
+                            <span>Updated October 2026</span>
                             <span>&bull;</span>
-                            <span>14 min read</span>
+                            <span>16 min read</span>
                         </div>
-                        <p class="blog-card-excerpt">The model supplies intelligence. The harness turns its output into action. A filesystem shaped by its user gives one agent its memory, rules, and continuing identity.</p>
+                        <p class="blog-card-excerpt">The model supplies parametric capability. The harness composes active context, connects action and control, and carries user-specific durable context across sessions.</p>
                         <span class="blog-card-read-more">Read essay &rarr;</span>
                     </a>
                     <!-- Article: We Could Have Had AGI By Now -->
@@ -239,9 +276,9 @@
                         <div class="blog-card-meta">
                             <span>February 2026</span>
                             <span>&bull;</span>
-                            <span>20 min read</span>
+                            <span>21 min read</span>
                         </div>
-                        <p class="blog-card-excerpt">The building blocks for durable, self-improving agents have been available for months. If we had scaled architecture instead of scaling only the model, we could have had AGI-like autonomy already.</p>
+                        <p class="blog-card-excerpt">Shared primitives can become user-specific complex software. Coding-capable models increasingly help assemble that harness while the user retains literacy, ownership, and authority.</p>
                         <span class="blog-card-read-more">Read article &rarr;</span>
                     </a>
 
@@ -258,13 +295,13 @@
                         <div class="blog-card-meta">
                             <span>March 2026</span>
                             <span>&bull;</span>
-                            <span>16 min read</span>
+                            <span>18 min read</span>
                         </div>
-                        <p class="blog-card-excerpt">Your skull holds a brain optimized for spotting snakes in tall grass. You are asking it to run a business in a civilization of eight billion people. CLI agents are the digital cognitive organs your biology never built.</p>
+                        <p class="blog-card-excerpt">A user-owned harness can become a digital cortex: external cognitive infrastructure that carries more operational load while human judgment, taste, relationships, and responsibility remain central.</p>
                         <span class="blog-card-read-more">Read article &rarr;</span>
                     </a>
 
-                    <!-- Article: The Folder Is Alive (Series Interlude 3.1) -->
+                    <!-- Article: The Folder Is Alive -->
                     <a href="blog/b3/03_1-the-folder-is-alive.html" class="blog-index-card" data-category="principles" data-audience="professionals" data-tags="vision,seed-agent,future-of-work,autonomy">
                         <div class="blog-card-tags">
                             <span class="tag tag-sm tag-audience" title="For lawyers, consultants, PMs, researchers — no coding required">Professionals</span>
@@ -278,8 +315,6 @@
                             <span>May 2026</span>
                             <span>&bull;</span>
                             <span>17 min read</span>
-                            <span>&bull;</span>
-                            <span>Series interlude 3.1</span>
                         </div>
                         <p class="blog-card-excerpt">A model animates the work, a harness connects it to action, and files become the inspectable body of agency. Teach that body one bounded job at a time, and useful procedures can accumulate under your control.</p>
                         <span class="blog-card-read-more">Read article &rarr;</span>
@@ -297,7 +332,7 @@
                         <div class="blog-card-meta">
                             <span>March 2026</span>
                             <span>&bull;</span>
-                            <span>18 min read</span>
+                            <span>22 min read</span>
                         </div>
                         <p class="blog-card-excerpt">The model generates. The harness supplies runtime, files, memory, tools, permissions, jobs, and proof. Learn the working language that connects the complete agent.</p>
                         <span class="blog-card-read-more">Read article &rarr;</span>

@@ -42,24 +42,31 @@ The larger goal is agency literacy that can become as ordinary as internet and s
 
 ## Content
 
-The collection includes principles and perspectives, practical guides, Observations, agent architecture essays, and diagrams. The numbered essay sequence moves from the central distinction between model and agent into increasingly concrete harness architecture.
+The collection includes principles and perspectives, practical guides, Observations, agent architecture essays, and diagrams. The conceptual layer is a **knowledge graph**, not one global numbered series:
 
-| Series | Focus | Entry point |
+- **Foundational Trilogy:** *LLMs Are Not the Agents* → *We Could Have Had AGI By Now* → *Your Brain Was Never Built for This*.
+- **Vocabulary & Reference:** *The Language of Agents* teaches the working vocabulary; the [Canonical Abstraction Library](https://hadi-nayebi.github.io/agents/abstractions/) owns current framework-agnostic definitions.
+- **Conceptual Branches:** essays such as *The Folder Is Alive*, *The AI That Grows With You*, and *One Agent, Many Doors* extend specific questions without becoming another numbered step.
+- **Technical Architecture:** B5–B9 retain local numbering because their internal sequence teaches concrete implementations and design patterns.
+
+Existing B1–B4 file paths remain stable for compatibility; those path names are no longer the public conceptual hierarchy.
+
+| Path | Focus | Entry point |
 |---|---|---|
-| B1 | Why the LLM is not the complete agent | [LLMs Are Not the Agents](https://hadi-nayebi.github.io/blog/b1/01-llms-are-not-the-agents.html) |
-| B2 | Why architecture and context matter alongside model capability | [We Could Have Had AGI by Now](https://hadi-nayebi.github.io/blog/b2/02-we-could-have-had-agi.html) |
-| B3 | Cognitive load and the living filesystem | [Your Brain Was Never Built for This](https://hadi-nayebi.github.io/blog/b3/03-your-brain-was-never-built-for-this.html) |
-| B4 | A practical vocabulary for directing harness architecture | [The Language of Agents](https://hadi-nayebi.github.io/blog/b4/04-the-language-of-agents.html) |
+| Foundations | Model vs harness → personal complex software → digital cortex | [Start the trilogy](https://hadi-nayebi.github.io/blog/b1/01-llms-are-not-the-agents.html) |
+| Vocabulary | Shared language connecting concepts to implementation | [The Language of Agents](https://hadi-nayebi.github.io/blog/b4/04-the-language-of-agents.html) |
+| Canonical definitions | Current framework-agnostic abstraction definitions | [Canonical Abstraction Library](https://hadi-nayebi.github.io/agents/abstractions/) |
+| Principle branches | Ownership, interfaces, living filesystems, and other focused questions | [Browse Principles & Perspectives](https://hadi-nayebi.github.io/content.html#principles) |
 | B5 | Persistent jobs, guards, interaction memory, and the always-on cortex | [The Two-Layer Foundation](https://hadi-nayebi.github.io/blog/b5/05_1-the-two-layer-foundation.html) |
 | B6 | OPEVC: Observe, Plan, Execute, Verify, Condense | [The Phasic Foundation](https://hadi-nayebi.github.io/blog/b6/06_1-phasic-foundation.html) |
 | B7 | Plugin anatomy: bounded behavioral organs with state and authority | [The Plugin Kit Foundation](https://hadi-nayebi.github.io/blog/b7/07_1-plugin-kit-foundation.html) |
 | B8 | Maturation, hardening, user literacy, and controlled evolution | [From Apprentice to Architect](https://hadi-nayebi.github.io/blog/b8/08_1-apprentice-to-architect-foundation.html) |
-| B9 | Dashboard and harness as one visible, durable user-agent system: contextual feedback, internal voices, stopping, recovery, and user review | [The Visible Harness](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) |
+| B9 | Dashboard and harness as one visible, durable user-agent system | [The Visible Harness](https://hadi-nayebi.github.io/blog/b9/09_1-dashboard-and-harness.html) |
 | Practical Guides | Low-barrier guided conversations for diagnosis, public assets, and durable private context | [Browse the Practical Guides](https://hadi-nayebi.github.io/content.html#practical-guides) |
 | Observations | Visual stories and mental-model lenses | [Browse Observations](https://hadi-nayebi.github.io/content.html#observations) |
 | Diagrams & Explorables | Interactive diagrams for inspecting mechanisms | [Browse Diagrams](https://hadi-nayebi.github.io/content.html#diagrams) |
 
-Browse **[Academy content](https://hadi-nayebi.github.io/content.html)** for principles, guides, observations, agent architecture, and diagrams; use the **[interactive Explorables](https://hadi-nayebi.github.io/explore.html)** to inspect relationships among hooks, jobs, phases, memory, plugins, verification, and control.
+Browse **[Academy content](https://hadi-nayebi.github.io/content.html)** for the complete reader-facing map.
 
 ## Projects and public repositories
 
