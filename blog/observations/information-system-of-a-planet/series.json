@@ -99,7 +99,20 @@
       "path": "episodes/episode-10-when-knowledge-learned-to-correct-itself.json",
       "title": "When Knowledge Learned to Correct Itself",
       "published": "2026-09-19"
+    },
+    {
+      "number": 11,
+      "slug": "when-knowledge-learned-to-build",
+      "path": "episodes/episode-11-when-knowledge-learned-to-build.json",
+      "title": "When Knowledge Learned to Build",
+      "published": null
+    },
+    {
+      "number": 12,
+      "slug": "when-print-found-its-publics",
+      "path": "episodes/episode-12-when-print-found-its-publics.json",
+      "title": "When Print Found Its Publics",
+      "published": null
     }
   ]
 }
-

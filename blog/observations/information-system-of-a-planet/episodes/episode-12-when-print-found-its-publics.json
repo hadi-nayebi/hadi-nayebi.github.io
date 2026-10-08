@@ -2,7 +2,7 @@
   "number": 12,
   "slug": "when-print-found-its-publics",
   "title": "When Print Found Its Publics",
-  "status": "draft",
+  "status": "ready",
   "published": null,
   "deckline": "Publishers, editors, subscribers, and readers organize the social life of printed information.",
   "objective": "Publishers, editors, subscribers, and readers organize the social life of printed information.",
@@ -18,17 +18,35 @@
     {
       "id": "scene-01",
       "title": "The press meets a budget",
-      "read_minutes": 1,
+      "read_minutes": 1.1,
       "image": {
         "src": "images/episode-12/01-when-print-found-its-publics.jpg",
-        "alt": "Planned illustration for scene 1: The press meets a budget. Asset not yet created.",
+        "alt": "A printer checks accounts and coins while workers prepare paper, type and a wooden press.",
         "category": "I30-A70"
       },
       "paragraphs": [
         "A press can make hundreds of copies from one prepared setting. But before the first sheet reaches a reader, someone must pay for paper, type, labor, ink, illustrations, and transport. The machinery of reproduction has changed. The uncertainty of finding readers has not disappeared.",
+        "Picture a room full of blank paper. It is already a cost, although none of it has yet said anything. A compositor spends time arranging tiny pieces of metal. An illustrator prepares a plate. The press crew must eat while they work. A book begins as a chain of commitments before it becomes a pile of objects.",
+        "Additional copies spread some of that preparatory work across more readers. But a large edition also means more stock that may remain unsold. Multiplication changes the economics of a text; it does not remove the need to decide which text to multiply.",
         "Information could now multiply faster, but multiplication required people willing to organize and finance it."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "label": "National Library of Australia — Spenser, 1715",
+          "url": "https://catalogue.nla.gov.au/catalog/4940961",
+          "note": "Six volumes, glossary, plates, subscriber-list leaves and paper variants; not sales totals."
+        },
+        {
+          "label": "Spenser Online Archive — Editions and markets",
+          "url": "https://www.english.cam.ac.uk/spenseronline/review/item/49.1.5/index.html",
+          "note": "Scholarly interpretation of publishers, editorial treatments and competing editions."
+        },
+        {
+          "label": "Library of Congress — Early American printing",
+          "url": "https://www.loc.gov/exhibits/bay-psalm-book-and-american-printing/online-exhibition.html",
+          "note": "Material inputs, printing craft and the conditions of producing editions."
+        }
+      ],
       "audio": {
         "src": "audio/episode-12/slide-01.mp3",
         "status": "placeholder"
@@ -37,17 +55,30 @@
     {
       "id": "scene-02",
       "title": "A public begins before the book",
-      "read_minutes": 1,
+      "read_minutes": 1.1,
       "image": {
         "src": "images/episode-12/02-when-print-found-its-publics.jpg",
-        "alt": "Planned illustration for scene 2: A public begins before the book. Asset not yet created.",
+        "alt": "Booksellers, patrons and readers discuss a proposed edition as one person signs a commitment.",
         "category": "I50-A50"
       },
       "paragraphs": [
         "Booksellers, printers, patrons, and subscribers did not all perform the same job. Some provided capital, some made commitments, some selected material, and others found buyers. Their arrangements varied by place, genre, and period.",
+        "A subscription commitment could connect a future reader to an unfinished edition. A patron could supply support or prestige. A bookseller could combine selection, investment, and access to customers. These relationships overlapped, and the same person might occupy several roles. There was no single publishing machine hidden behind every title.",
+        "Notice what changes in the information layer. Producing a text now involves expectations about people who are not in the room: what they can pay, what they want to read, what they consider credible, and how the edition will reach them. The audience is becoming part of the production problem.",
         "A public was not always a crowd waiting after publication. Sometimes a network of promised readers helped bring the edition into existence."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "label": "National Library of Australia — Spenser, 1715",
+          "url": "https://catalogue.nla.gov.au/catalog/4940961",
+          "note": "Six volumes, glossary, plates, subscriber-list leaves and paper variants; not sales totals."
+        },
+        {
+          "label": "Spenser Online Archive — Editions and markets",
+          "url": "https://www.english.cam.ac.uk/spenseronline/review/item/49.1.5/index.html",
+          "note": "Scholarly interpretation of publishers, editorial treatments and competing editions."
+        }
+      ],
       "audio": {
         "src": "audio/episode-12/slide-02.mp3",
         "status": "placeholder"
@@ -56,17 +87,30 @@
     {
       "id": "scene-03",
       "title": "An old poem finds new readers",
-      "read_minutes": 1,
+      "read_minutes": 1.1,
       "image": {
         "src": "images/episode-12/03-when-print-found-its-publics.jpg",
-        "alt": "Planned illustration for scene 3: An old poem finds new readers. Asset not yet created.",
+        "alt": "An editor compares an older Spenser volume with proof sheets, a glossary and a six-volume set.",
         "category": "I30-A70"
       },
       "paragraphs": [
         "In 1715, John Hughes's edition of Edmund Spenser appeared in six volumes printed for Jacob Tonson. It was not simply an old text copied again. Notes, a glossary, illustrations, and editorial choices shaped how eighteenth-century readers encountered it.",
+        "Spenser had written for an earlier world. A later reader could hold the words and still stumble over their vocabulary or miss their references. A glossary supplied a bridge across that distance. Editorial framing offered a route into the poem, while illustrations gave some passages a visual form.",
+        "None of those additions was merely packaging around a perfectly transparent message. They influenced what a reader noticed and how the inherited work became intelligible. The archive could preserve the text, but preservation alone did not guarantee a useful encounter. Another generation had to build that encounter with the materials and judgments available to it.",
         "The text survived, but its interface with a new generation had to be built."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "label": "National Library of Australia — Spenser, 1715",
+          "url": "https://catalogue.nla.gov.au/catalog/4940961",
+          "note": "Six volumes, glossary, plates, subscriber-list leaves and paper variants; not sales totals."
+        },
+        {
+          "label": "University of Cambridge — Census of Spenser editions",
+          "url": "https://www.english.cam.ac.uk/spenser/census.html",
+          "note": "1715 Hughes edition, revised 1750 reprint and later competing editions."
+        }
+      ],
       "audio": {
         "src": "audio/episode-12/slide-03.mp3",
         "status": "placeholder"
@@ -75,17 +119,25 @@
     {
       "id": "scene-04",
       "title": "Names inside the edition",
-      "read_minutes": 1,
+      "read_minutes": 1.2,
       "image": {
         "src": "images/episode-12/04-when-print-found-its-publics.jpg",
-        "alt": "Planned illustration for scene 4: Names inside the edition. Asset not yet created.",
+        "alt": "A reader follows columns of names on a subscriber-list leaf in a bound volume.",
         "category": "I50-A50"
       },
       "paragraphs": [
         "Surviving copies of the 1715 edition include subscriber-list leaves. These names make part of the production network visible. They do not tell us exactly how much of the total cost subscriptions covered, or why each person joined.",
+        "Open the volume and the apparently solitary act of reading reveals company. Before the poem, rows of names connect the object to people beyond its author. The surviving edition makes that participation inspectable: a later observer can find the list rather than relying only on a story about how the book was financed.",
+        "The list is evidence with a boundary. It records names in this edition, not a complete account of its economics. We cannot turn it into sales figures or read every subscriber's motives from the typography. What it does show is enough: a public can leave a material trace inside the thing it helped support.",
         "A printed book could contain traces of the social relationships that helped bring it into the world."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "label": "National Library of Australia — Spenser, 1715",
+          "url": "https://catalogue.nla.gov.au/catalog/4940961",
+          "note": "Six volumes, glossary, plates, subscriber-list leaves and paper variants; not sales totals."
+        }
+      ],
       "audio": {
         "src": "audio/episode-12/slide-04.mp3",
         "status": "placeholder"
@@ -94,17 +146,30 @@
     {
       "id": "scene-05",
       "title": "The book returns to market",
-      "read_minutes": 1,
+      "read_minutes": 1.1,
       "image": {
         "src": "images/episode-12/05-when-print-found-its-publics.jpg",
-        "alt": "Planned illustration for scene 5: The book returns to market. Asset not yet created.",
+        "alt": "A bookseller offers readers volumes in different formats while new stock arrives at a street stall.",
         "category": "I30-A70"
       },
       "paragraphs": [
         "The Hughes edition was revised and reprinted in 1750. Other Spenser editions followed in 1751 and 1758. Each edition was another decision about presentation, investment, and audience, not proof that every reader wanted the same thing.",
+        "A new edition could alter notes, format, illustrations, or the way an older author was presented. A bookseller choosing to offer it was making another wager about readers. Rival editions made different wagers around the same inherited text. The book was stable enough to return, yet open enough to be reorganized.",
+        "Reprinting does not prove that the public unanimously approved the earlier version, or that demand alone caused a revision. The surviving dates establish renewed production. Together with the differing editorial treatments, they show an archive continuing to participate in a market rather than sitting outside it.",
         "The same inherited work could enter different markets and acquire different routes toward its readers."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "label": "University of Cambridge — Census of Spenser editions",
+          "url": "https://www.english.cam.ac.uk/spenser/census.html",
+          "note": "1715 Hughes edition, revised 1750 reprint and later competing editions."
+        },
+        {
+          "label": "Spenser Online Archive — Editions and markets",
+          "url": "https://www.english.cam.ac.uk/spenseronline/review/item/49.1.5/index.html",
+          "note": "Scholarly interpretation of publishers, editorial treatments and competing editions."
+        }
+      ],
       "audio": {
         "src": "audio/episode-12/slide-05.mp3",
         "status": "placeholder"
@@ -113,17 +178,30 @@
     {
       "id": "scene-06",
       "title": "Readers create another demand",
-      "read_minutes": 1,
+      "read_minutes": 1.2,
       "image": {
         "src": "images/episode-12/06-when-print-found-its-publics.jpg",
-        "alt": "Planned illustration for scene 6: Readers create another demand. Asset not yet created.",
+        "alt": "Readers and listeners gather around a printed sheet as another person writes and a messenger waits nearby.",
         "category": "I10-A90"
       },
       "paragraphs": [
         "People have always wanted to learn, compare, argue, and discover. More available texts gave that desire additional outlets, while readers, institutions, and sellers created reasons to produce and circulate still more.",
+        "A person finds a book, encounters an unfamiliar idea, and asks for another explanation. Someone hears a passage read aloud and wants the whole work. A bookseller notices requests and looks for material to supply. These are ordinary human actions, but together they can alter what is worth printing and carrying.",
+        "The loop is selective. Money, literacy, language, censorship, and distribution shape which requests reach a publisher and which people ever see the result. More copies widen some possibilities without making every voice equally audible. The public is neither a passive container for print nor a single mind giving instructions to it.",
         "Information production and human demand began reinforcing one another. But the expanding public also needed regular channels to hear what was new, and ways to receive it beyond the print shop."
       ],
-      "sources": [],
+      "sources": [
+        {
+          "label": "Spenser Online Archive — Editions and markets",
+          "url": "https://www.english.cam.ac.uk/spenseronline/review/item/49.1.5/index.html",
+          "note": "Scholarly interpretation of publishers, editorial treatments and competing editions."
+        },
+        {
+          "label": "Bibliothèque nationale de France — Gazette and the early press",
+          "url": "https://www.bnf.fr/fr/mediatheque/de-la-gazette-de-renaudot-au-premier-empire",
+          "note": "Royal privilege and political control alongside periodic news."
+        }
+      ],
       "audio": {
         "src": "audio/episode-12/slide-06.mp3",
         "status": "placeholder"
