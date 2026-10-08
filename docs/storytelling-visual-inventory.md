@@ -4,11 +4,11 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 
 ## Coverage
 
-- Displayed storytelling image slots: **155**
-- Slots with five-category metadata: **155**
-- Fullscreen/lightbox coverage: **155**
+- Displayed storytelling image slots: **161**
+- Slots with five-category metadata: **161**
+- Fullscreen/lightbox coverage: **161**
 - Active storytelling SVG references: **0**
-- Distribution: **I90-A10 39, I70-A30 30, I50-A50 39, I30-A70 34, I10-A90 13**
+- Distribution: **I90-A10 39, I70-A30 30, I50-A50 41, I30-A70 37, I10-A90 14**
 
 `Injected` means the figure is added by `js/story-visuals.js`; its metadata is applied when the figure is created.
 `EpisodeJSON` means the figure is loaded from an Observation episode data file; its visual category is machine-readable in that slide record and the Observation renderer provides fullscreen behavior.
@@ -171,6 +171,13 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/04-when-knowledge-learned-to-build.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/05-when-knowledge-learned-to-build.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/06-when-knowledge-learned-to-build.jpg` | I10-A90 | EpisodeJSON | Yes |
+
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-12/01-when-print-found-its-publics.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-12/02-when-print-found-its-publics.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-12/03-when-print-found-its-publics.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-12/04-when-print-found-its-publics.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-12/05-when-print-found-its-publics.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-12/06-when-print-found-its-publics.jpg` | I10-A90 | EpisodeJSON | Yes |
 
 ## Exclusions
 

@@ -106,6 +106,13 @@
       "path": "episodes/episode-11-when-knowledge-learned-to-build.json",
       "title": "When Knowledge Learned to Build",
       "published": null
+    },
+    {
+      "number": 12,
+      "slug": "when-print-found-its-publics",
+      "path": "episodes/episode-12-when-print-found-its-publics.json",
+      "title": "When Print Found Its Publics",
+      "published": null
     }
   ]
 }
