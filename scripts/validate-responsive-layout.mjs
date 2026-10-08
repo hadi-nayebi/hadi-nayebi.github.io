@@ -371,6 +371,22 @@ for (const viewport of viewports) {
       }
     }
 
+    if (route.name === 'about') {
+      const writing = page.locator('section').filter({ has: page.getByRole('heading', { name: 'The Writing', exact: true }) });
+      const labels = await writing.locator('.about-essay-number').allTextContents();
+      if (JSON.stringify(labels) !== JSON.stringify(['Foundation', 'Foundation', 'Foundation', 'Vocabulary'])) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: accepted conceptual-map labels were replaced: ${labels.join(', ')}`);
+      }
+      for (const href of ['content.html#principles', 'agents/abstractions/']) {
+        if (await writing.locator('a[href="' + href + '"]').count() !== 1) {
+          failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Writing section lost conceptual route ${href}`);
+        }
+      }
+      if (!(await writing.innerText()).includes('The conceptual library is no longer one numbered sequence.')) {
+        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Writing section lost the accepted branching model`);
+      }
+    }
+
     if (route.kind === 'library') {
       const cloudTerms = await page.locator('.cloud-term').count();
       if (cloudTerms !== library.terms.length) failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: expected ${library.terms.length} direct term links, found ${cloudTerms}`);
