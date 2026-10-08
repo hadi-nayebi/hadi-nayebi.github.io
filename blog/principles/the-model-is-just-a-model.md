@@ -3,7 +3,7 @@ title: "The Model Is Just a Model"
 date: "October 2026"
 slug: "the-model-is-just-a-model"
 subtitle: "Pain representations, growing context, and the systems we choose to build"
-read_time: "12 min"
+read_time: "13 min"
 tags: [Agentic AI, Models, Training, Persona, Ownership]
 audience: everyone
 og_image: "assets/images/digital-cortex-2-og.jpg"

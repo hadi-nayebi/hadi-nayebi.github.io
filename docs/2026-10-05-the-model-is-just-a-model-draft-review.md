@@ -6,12 +6,12 @@
 **Reader page:** `blog/principles/the-model-is-just-a-model.html`  
 **Owning Departments job:** [PR #292](https://github.com/hadi-nayebi/hadosh_academy_departments/pull/292)  
 **Version:** v0.4.0  
-**Visible word count:** approximately 2,337 words  
-**Planned reading time:** 12 minutes
+**Visible word count:** approximately 2,537 words  
+**Planned reading time:** 13 minutes
 
 ## Outcome
 
-The article has been compressed again from v0.2.0’s approximately 2,760 words / 18 minutes to one 12-minute argument.
+The v0.3.0 baseline compressed the article to approximately 2,337 words / 12 minutes. The approved v0.4.0 context and consolidation revision is approximately 2,537 visible words / 13 minutes.
 
 The governing progression is now:
 
