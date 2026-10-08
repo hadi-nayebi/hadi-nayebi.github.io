@@ -113,6 +113,13 @@
       "path": "episodes/episode-12-when-print-found-its-publics.json",
       "title": "When Print Found Its Publics",
       "published": null
+    },
+    {
+      "number": 13,
+      "slug": "when-information-found-its-routes",
+      "path": "episodes/episode-13-when-information-found-its-routes.json",
+      "title": "When Information Found Its Routes",
+      "published": null
     }
   ]
 }
