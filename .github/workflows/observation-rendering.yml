@@ -17,6 +17,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -33,7 +35,11 @@ jobs:
             curl --fail --silent http://127.0.0.1:4173/blog/observations/information-system-of-a-planet/series.json > /dev/null && break
             sleep 1
           done
-      - name: Verify every new slide at four widths
+      - name: Select episodes changed by this revision
+        run: |
+          episodes=$(git diff --name-only HEAD^ HEAD -- blog/observations/information-system-of-a-planet/episodes/ | sed -nE 's|.*/episode-0*([0-9]+)-.*[.]json$|\1|p' | sort -nu | paste -sd, -)
+          echo "OBSERVATION_EPISODES=$episodes" >> "$GITHUB_ENV"
+      - name: Verify selected episodes at four widths
         run: node scripts/validate-observation-rendering.mjs
       - name: Upload rendering evidence
         if: always()
