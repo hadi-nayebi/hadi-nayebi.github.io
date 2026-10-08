@@ -99,7 +99,13 @@
       "path": "episodes/episode-10-when-knowledge-learned-to-correct-itself.json",
       "title": "When Knowledge Learned to Correct Itself",
       "published": "2026-09-19"
+    },
+    {
+      "number": 11,
+      "slug": "when-knowledge-learned-to-build",
+      "path": "episodes/episode-11-when-knowledge-learned-to-build.json",
+      "title": "When Knowledge Learned to Build",
+      "published": null
     }
   ]
 }
-
