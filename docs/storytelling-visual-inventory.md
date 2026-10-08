@@ -4,11 +4,11 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 
 ## Coverage
 
-- Displayed storytelling image slots: **132**
-- Slots with five-category metadata: **132**
-- Fullscreen/lightbox coverage: **132**
+- Displayed storytelling image slots: **155**
+- Slots with five-category metadata: **155**
+- Fullscreen/lightbox coverage: **155**
 - Active storytelling SVG references: **0**
-- Distribution: **I90-A10 40, I70-A30 26, I50-A50 31, I30-A70 25, I10-A90 10**
+- Distribution: **I90-A10 39, I70-A30 30, I50-A50 39, I30-A70 34, I10-A90 13**
 
 `Injected` means the figure is added by `js/story-visuals.js`; its metadata is applied when the figure is created.
 `EpisodeJSON` means the figure is loaded from an Observation episode data file; its visual category is machine-readable in that slide record and the Observation renderer provides fullscreen behavior.
@@ -164,6 +164,13 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `projects/seed-agent.html` | `/assets/images/story/seed-agent-layered-ownership-hybrid-v2.jpg` | I50-A50 | Injected | Yes |
 | `projects/team-harnesses.html` | `/assets/images/story/team-harnesses-shared-office-hybrid-v2.jpg` | I50-A50 | Injected | Yes |
 | `start-here.html` | `/assets/images/story/start-here-cli-learning-hybrid-v3.jpg` | I70-A30 | Injected | Yes |
+
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/01-when-knowledge-learned-to-build.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/02-when-knowledge-learned-to-build.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/03-when-knowledge-learned-to-build.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/04-when-knowledge-learned-to-build.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/05-when-knowledge-learned-to-build.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-11/06-when-knowledge-learned-to-build.jpg` | I10-A90 | EpisodeJSON | Yes |
 
 ## Exclusions
 
