@@ -1,11 +1,11 @@
-# The Model Is Just a Model — v0.3.0 review record
+# The Model Is Just a Model — v0.4.0 review record
 
-**Date:** 2026-10-05  
+**Date:** 2026-10-08  
 **Status:** founder-review draft; not approved, indexed, narrated, published, or merge-ready  
 **Canonical source:** `blog/principles/the-model-is-just-a-model.md`  
 **Reader page:** `blog/principles/the-model-is-just-a-model.html`  
 **Owning Departments job:** [PR #292](https://github.com/hadi-nayebi/hadosh_academy_departments/pull/292)  
-**Version:** v0.3.0  
+**Version:** v0.4.0  
 **Visible word count:** approximately 2,337 words  
 **Planned reading time:** 12 minutes
 
@@ -120,13 +120,13 @@ Three private companion drafts were created in Departments and were **not** adde
 - `research/2026-10-05-persona-is-a-pipeline-draft.md`;
 - `research/2026-10-05-when-does-an-agentic-system-have-a-biography-draft.md`.
 
-They preserve material removed from the main essay and will become separately bounded writing jobs only when Hadi begins individual iteration. They are not approved for public repository transfer, HTML, navigation, narration, social distribution, or publication.
+They preserve material removed from the main essay. A separate job requires Hadi’s prior awareness and explicit approval of its bounded outcome. They are not approved for public repository transfer, HTML, navigation, narration, social distribution, or publication.
 
 ## Publication planning boundary
 
 The working distribution target is:
 
-- main article: may publish before the social post after founder approval and final website verification;
+- main article: target **Tuesday, October 13, 2026**, after founder approval and final website verification;
 - LinkedIn article post and promotional blackboard image: target **Tuesday, October 13, 2026**;
 - companion articles: no publication date; remain private until individually reviewed.
 
@@ -156,3 +156,10 @@ This is a planning target, not publication authorization.
 ## Current boundary
 
 Website PR #204 is the only public deliverable surface for the main article. The three companion drafts remain private in Departments. Hadi’s review in the originating conversation controls the next revision; no merge, publication, narration, or social distribution is authorized yet.
+
+
+## October 8 — approved v0.4.0 argument revision
+
+Hadi approved the seven-part change map and directed application while keeping the job open. The opening now states whole-context sensitivity and corrects the Pain Axis v2 relief framing. The archive transition distinguishes training from current context. The context section separates retrieved material from persistent parameters, routing and permissions. The text-calculator example now compares the same sentence under different interpretation instructions. A short sourced human comparison bridges interpretation and persistence. Consolidation and inspectable information flows lead the history section; separate persona models remain optional. The system choices overlap, and the conclusion emphasizes assembled context, selected causal history and user control. The second figure now starts with composite context and includes selection before a persistent update.
+
+Canonical Markdown and static HTML are synchronized using the repository body renderer. The obsolete runtime draft-loader is removed. This is an editorial increment, not content lock, merge readiness or publication approval. Final primary-source audit, responsive screenshot inspection, image decision and further founder iteration remain open.
