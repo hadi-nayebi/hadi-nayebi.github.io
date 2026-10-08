@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -39,6 +39,7 @@ jobs:
         env:
           CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
+          git cat-file -e "$CHANGE_BASE^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$CHANGE_BASE"
           episodes=$(git diff --name-only "$CHANGE_BASE" HEAD -- blog/observations/information-system-of-a-planet/episodes/ | sed -nE 's|.*/episode-0*([0-9]+)-.*[.]json$|\1|p' | sort -nu | paste -sd, -)
           echo "OBSERVATION_EPISODES=$episodes" >> "$GITHUB_ENV"
       - name: Verify selected episodes at four widths
