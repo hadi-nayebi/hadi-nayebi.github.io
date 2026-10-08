@@ -23,7 +23,7 @@ jobs:
       - name: Install pinned rendering runtime
         run: |
           npm init -y
-          npm install --no-save playwright@1.55.0 @axe-core/playwright@4.10.2
+          npm install --no-save playwright@1.62.1 @axe-core/playwright@4.10.2
           npx playwright install --with-deps chromium
       - name: Start site and validate content
         run: |
