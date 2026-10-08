@@ -1,0 +1,232 @@
+{
+  "source_session": "https://chatgpt.com/share/6ac6f3de-877c-83e9-bf25-3ef4d0152fae",
+  "baseline_head": "5e7cbd9712e889a8425e90ecd26b02e8b79d7193",
+  "accepted_passages": [
+    {
+      "episode": 1,
+      "slide": 1,
+      "source_group": "first",
+      "source_quote_index": 1,
+      "before": [
+        "Earth is about 4.54 billion years old. For most of that history, there were no brains, no books, no voices. Yet information was already finding ways to survive.",
+        "At least 3.5 billion years ago, microbial life was already here. Somewhere in that immense stretch of time, living chemistry acquired a remarkable ability: patterns could persist by helping produce new generations of life."
+      ],
+      "approved": [
+        "Earth is about 4.54 billion years old. For most of that history, there were no brains, no books, no voices. Yet information was already finding ways to survive.",
+        "At least 3.5 billion years ago, microbial life was already here. Somewhere in that immense stretch of time, living chemistry acquired a remarkable ability: patterns could persist by helping produce new generations of life."
+      ],
+      "status_before": "already exact"
+    },
+    {
+      "episode": 1,
+      "slide": 5,
+      "source_group": "first",
+      "source_quote_index": 3,
+      "before": [
+        "An encounter changes what an animal does next. That is learning: experience leaves a usable trace during one lifetime, without waiting for another generation."
+      ],
+      "approved": [
+        "For billions of years, the long history of life was carried forward through generations. But now something different could happen. An animal could encounter the world, change its behavior, and carry that change into its next encounter.",
+        "Information no longer had to wait for another generation to make a difference."
+      ],
+      "status_before": "wording changed"
+    },
+    {
+      "episode": 2,
+      "slide": 1,
+      "source_group": "first",
+      "source_quote_index": 5,
+      "before": [
+        "An animal discovers a safer route, a new food source, or a way around an obstacle. It learns. It remembers. Eventually, it dies. But if another animal has learned from it, part of that experience can survive the original learner."
+      ],
+      "approved": [
+        "Imagine an animal discovering a safer route, a new food source, or a better way to solve a problem.",
+        "It learns. It remembers. And eventually, it dies.",
+        "But what if another animal had already learned from it?",
+        "The experience could survive, even after the original memory was gone."
+      ],
+      "status_before": "wording changed"
+    },
+    {
+      "episode": 2,
+      "slide": 4,
+      "source_group": "first",
+      "source_quote_index": 7,
+      "before": [
+        "No page crosses the ocean. No permanent recording travels with the whales. Singers hear, learn, repeat, and change the song across encounters and seasons. The pattern can spread between populations thousands of kilometers apart, even when the exact encounters are hidden from us."
+      ],
+      "approved": [
+        "No page crosses the ocean. No permanent recording travels with the whales.",
+        "One whale sings. Another learns. The song changes, spreads, and survives in voices separated by thousands of kilometers.",
+        "The information has no fixed home. It lives in the connections between animals."
+      ],
+      "status_before": "wording changed"
+    },
+    {
+      "episode": 3,
+      "slide": 1,
+      "source_group": "first",
+      "source_quote_index": 9,
+      "before": [
+        "Deep in a forest, a monkey gives an alarm call. Inside a dark hive, a bee dances. Across an ocean, a whale sings. Each sends information into the world, but these messages are not interchangeable: one warns, another points, another carries a learned pattern. What can each message carry, how far can it reach, and how long can it last?"
+      ],
+      "approved": [
+        "Deep in a forest, a monkey gives an alarm call.",
+        "Inside a dark hive, a bee dances.",
+        "Across an ocean, a whale sings.",
+        "Each sends information into the world. But these messages are not interchangeable. Some warn. Some point. Some identify. And every one of them has limits.",
+        "The question is no longer whether information can travel between living bodies. It is how much a message can carry."
+      ],
+      "status_before": "wording changed"
+    },
+    {
+      "episode": 4,
+      "slide": 1,
+      "source_group": "middle",
+      "source_quote_index": 1,
+      "before": [
+        "Somewhere across millions of years of human-lineage history, voices and gestures acquired extraordinary expressive power. No one can point to the first sentence. Language leaves no fossil, and the evidence gives us a broad history rather than a birthday."
+      ],
+      "approved": [
+        "Somewhere across millions of years of human-lineage history, voices and gestures acquired extraordinary expressive power. No one can point to the first sentence. Language leaves no fossil, and the evidence gives us a broad history rather than a birthday."
+      ],
+      "status_before": "already exact"
+    },
+    {
+      "episode": 4,
+      "slide": 3,
+      "source_group": "middle",
+      "source_quote_index": 3,
+      "before": [
+        "A community does not need a separate signal for every possible thought. A limited set of learned sounds, signs, words, and patterns can be recombined into messages no one has heard before."
+      ],
+      "approved": [
+        "A community does not need a separate signal for every possible thought. A limited set of learned sounds, signs, words, and patterns can be recombined into messages no one has heard before."
+      ],
+      "status_before": "already exact"
+    },
+    {
+      "episode": 4,
+      "slide": 3,
+      "source_group": "middle",
+      "source_quote_index": 6,
+      "before": [
+        "A message no longer needs to be one of the messages that came before. Familiar pieces can now express something entirely new."
+      ],
+      "approved": [
+        "A message no longer needs to be one of the messages that came before. Familiar pieces can now express something entirely new."
+      ],
+      "status_before": "already exact"
+    },
+    {
+      "episode": 5,
+      "slide": 1,
+      "source_group": "middle",
+      "source_quote_index": 8,
+      "before": [
+        "A story can cross generations, but only while people keep remembering, performing, teaching, and correcting it. When the voices go quiet, that chain can break. A mark on a surface offers something different: it can remain when its maker walks away."
+      ],
+      "approved": [
+        "A story can cross generations, but only while people keep remembering, performing, teaching, and correcting it. When the voices go quiet, that chain can break. A mark on a surface offers something different: it can remain when its maker walks away."
+      ],
+      "status_before": "already exact"
+    },
+    {
+      "episode": 6,
+      "slide": 1,
+      "source_group": "middle",
+      "source_quote_index": 11,
+      "before": [
+        "Clay can preserve a mark for millennia. But preservation is not understanding. A mark becomes readable only when people share conventions for recognizing and combining signs. The surface might survive perfectly, while the knowledge needed to read it disappears. The message is still there. Its meaning has been lost."
+      ],
+      "approved": [
+        "Clay can preserve a mark for millennia. But preservation is not understanding. A mark becomes readable only when people share conventions for recognizing and combining signs.",
+        "The surface might survive perfectly, while the knowledge needed to read it disappears.",
+        "The message is still there. Its meaning has been lost."
+      ],
+      "status_before": "paragraph boundaries compressed"
+    },
+    {
+      "episode": 7,
+      "slide": 4,
+      "source_group": "middle",
+      "source_quote_index": 14,
+      "before": [
+        "There was no single path from clay to papyrus, parchment, and books. Across the planet, different societies were solving different problems with different materials. Some needed durability. Others needed portability, affordability, or enough room to carry a long message. Earth's external memory was not developing in one place or following one sequence."
+      ],
+      "approved": [
+        "There was no single path from clay to papyrus, parchment, and books. Across the planet, different societies were solving different problems with different materials. Some needed durability. Others needed portability, affordability, or enough room to carry a long message.",
+        "Earth's external memory was not developing in one place or following one sequence."
+      ],
+      "status_before": "paragraph boundaries compressed"
+    },
+    {
+      "episode": 8,
+      "slide": 2,
+      "source_group": "last",
+      "source_quote_index": 1,
+      "before": [
+        "The first copy was not suddenly free. Preparing and correcting a block demanded material, judgment, and highly skilled labor. But once the block existed, another impression no longer required rewriting every line. The expensive work moved to the beginning. Carve the page once, then print it again and again. In computing terms, compile once, run many times. Invest in preparing something reusable, and each additional copy becomes easier."
+      ],
+      "approved": [
+        "The expensive work moved to the beginning. Carve the page once, then print it again and again. In computing terms, compile once, run many times.",
+        "The principle is familiar: invest in preparing something reusable, and each additional copy becomes easier."
+      ],
+      "status_before": "wording changed"
+    },
+    {
+      "episode": 8,
+      "slide": 4,
+      "source_group": "last",
+      "source_quote_index": 3,
+      "before": [
+        "The deeper change was architectural. The page had become programmable. Its pieces could be arranged, used, taken apart, and rearranged into something new. Information no longer had to remain attached to one permanently carved surface."
+      ],
+      "approved": [
+        "The page had become programmable. Its pieces could be arranged, used, taken apart, and rearranged into something new.",
+        "Information no longer had to remain attached to one permanently carved surface."
+      ],
+      "status_before": "paragraph boundaries compressed"
+    },
+    {
+      "episode": 9,
+      "slide": 2,
+      "source_group": "last",
+      "source_quote_index": 5,
+      "before": [
+        "The information itself had not changed, but its access pattern had. The book was becoming a kind of random-access memory. Instead of moving through every line, a reader could jump directly toward the information they needed. The machinery was still fingers, eyes, and paper."
+      ],
+      "approved": [
+        "The book was becoming a kind of random-access memory. Instead of moving through every line, a reader could jump directly toward the information they needed.",
+        "The machinery was still fingers, eyes, and paper."
+      ],
+      "status_before": "paragraph boundaries compressed"
+    },
+    {
+      "episode": 3,
+      "slide": 7,
+      "source_group": "transitions",
+      "source_quote_index": 1,
+      "before": [
+        "Somewhere in the human lineage, communication would become far more open-ended. We cannot date its first sentence. But we can explore what changed when messages could express possibilities no one had described before."
+      ],
+      "approved": [
+        "Somewhere in the human lineage, communication would become far more open-ended. We cannot date its first sentence. But we can explore what changed when messages could express possibilities no one had described before."
+      ],
+      "status_before": "already exact"
+    },
+    {
+      "episode": 6,
+      "slide": 6,
+      "source_group": "transitions",
+      "source_quote_index": 2,
+      "before": [
+        "And before a written message could reach another reader, someone had to carry it. A single tablet might travel easily. An entire library was another matter."
+      ],
+      "approved": [
+        "And before a written message could reach another reader, someone had to carry it. A single tablet might travel easily. An entire library was another matter."
+      ],
+      "status_before": "already exact"
+    }
+  ]
+}

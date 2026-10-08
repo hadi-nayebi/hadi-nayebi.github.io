@@ -30,6 +30,12 @@ Use memorable metaphors, but mark the boundary between metaphor and fact. "Plane
 
 Prefer concrete scenes and plain language before technical vocabulary. Zoom between the individual brain, a group, institutions, civilization, and the planet. Preserve Hadi's willingness to use humor and surprising analogies when they clarify rather than merely decorate.
 
+### Accepted blended signature
+
+Information's changing capabilities are the narrative protagonist: what can persist, travel, be expressed, copied, found or corrected, and what bottleneck remains. Information is not a conscious character. Blend vivid observation, scientifically precise explanation and transformation, varying their order rather than imposing one formula on every slide.
+
+Keep recognizable technical analogies such as bandwidth, storage, network, protocol, programmable pages and random-access memory when they illuminate the mechanism. Do not purge jargon merely because it is technical, or repeatedly apologize for an obvious metaphor. Preserve restrained humor and natural spoken paragraph rhythm; avoid excessive movie-trailer fragments. Keep the four early acts as an internal narrative map, with historical mechanisms determining episode counts rather than fixed bins or automatic public banners.
+
 ## Historical and scientific discipline
 
 This is narrative nonfiction grounded in current evidence.
