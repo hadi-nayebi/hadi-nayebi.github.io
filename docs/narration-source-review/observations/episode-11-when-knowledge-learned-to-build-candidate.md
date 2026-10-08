@@ -21,7 +21,7 @@ Sources:
 
 ### A lens returns an answer
 
-In 1665, Robert Hooke published *Micrographia*. Its engravings opened unfamiliar landscapes inside familiar things: insects, surfaces, structures too small for ordinary sight. The book did not invent the microscope. It made particular observations and methods inspectable to people who had not stood beside Hooke's instrument.
+In 1665, Robert Hooke published Micrographia. Its engravings opened unfamiliar landscapes inside familiar things: insects, surfaces, structures too small for ordinary sight. The book did not invent the microscope. It made particular observations and methods inspectable to people who had not stood beside Hooke's instrument.
 
 Across the North Sea, Antoni van Leeuwenhoek developed remarkable skills in making and using small lenses. His work was his own, not a copy of Hooke's. Yet the circulating record of microscopic observation helped create a world in which one person's instrument could provoke another person's attempt.
 
@@ -36,7 +36,7 @@ Sources:
 
 ### The method travels back
 
-In 1673, Leeuwenhoek's observations began appearing in *Philosophical Transactions*. Letters carried descriptions; correspondents requested specimens and details; investigators attempted to repeat observations. Some claims were difficult to check. Instruments varied. Skill mattered. A drawing could clarify an observation, but it could not transfer the maker's hands.
+In 1673, Leeuwenhoek's observations began appearing in Philosophical Transactions. Letters carried descriptions; correspondents requested specimens and details; investigators attempted to repeat observations. Some claims were difficult to check. Instruments varied. Skill mattered. A drawing could clarify an observation, but it could not transfer the maker's hands.
 
 That difficulty is part of the story. The network was not a machine that automatically converted reports into truth. It was a developing practice of asking, trying, doubting, correcting, and trying again.
 
