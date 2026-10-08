@@ -4,11 +4,11 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 
 ## Coverage
 
-- Displayed storytelling image slots: **167**
-- Slots with five-category metadata: **167**
-- Fullscreen/lightbox coverage: **167**
+- Displayed storytelling image slots: **173**
+- Slots with five-category metadata: **173**
+- Fullscreen/lightbox coverage: **173**
 - Active storytelling SVG references: **0**
-- Distribution: **I90-A10 39, I70-A30 30, I50-A50 43, I30-A70 40, I10-A90 15**
+- Distribution: **I90-A10 39, I70-A30 30, I50-A50 45, I30-A70 43, I10-A90 16**
 
 `Injected` means the figure is added by `js/story-visuals.js`; its metadata is applied when the figure is created.
 `EpisodeJSON` means the figure is loaded from an Observation episode data file; its visual category is machine-readable in that slide record and the Observation renderer provides fullscreen behavior.
@@ -185,6 +185,13 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-13/04-when-information-found-its-routes.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-13/05-when-information-found-its-routes.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-13/06-when-information-found-its-routes.jpg` | I10-A90 | EpisodeJSON | Yes |
+
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-14/01-when-information-outpaced-distance.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-14/02-when-information-outpaced-distance.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-14/03-when-information-outpaced-distance.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-14/04-when-information-outpaced-distance.jpg` | I50-A50 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-14/05-when-information-outpaced-distance.jpg` | I30-A70 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-14/06-when-information-outpaced-distance.jpg` | I10-A90 | EpisodeJSON | Yes |
 
 ## Exclusions
 

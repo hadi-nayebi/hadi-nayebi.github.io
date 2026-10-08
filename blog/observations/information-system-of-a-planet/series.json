@@ -120,6 +120,13 @@
       "path": "episodes/episode-13-when-information-found-its-routes.json",
       "title": "When Information Found Its Routes",
       "published": null
+    },
+    {
+      "number": 14,
+      "slug": "when-information-outpaced-distance",
+      "path": "episodes/episode-14-when-information-outpaced-distance.json",
+      "title": "When Information Outpaced Distance",
+      "published": null
     }
   ]
 }
