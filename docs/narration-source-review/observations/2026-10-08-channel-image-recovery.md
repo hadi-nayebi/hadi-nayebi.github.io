@@ -13,3 +13,8 @@ Prompt: preserve the existing upper forest scene; replace corrupted green bands 
 ## Verification coverage correction
 
 Rendering selection now includes image paths as well as episode JSON. Shared renderer, shell or rendering-workflow changes run the complete manifest rather than defaulting to Episodes 11 onward. This repair runs all fourteen episodes at four widths; automated checks and screenshots must be reviewed before readiness. The accepted-passage record from #216 remains the narration authority.
+
+
+## Workflow repair disposition
+
+A programmatic replacement initially interpreted the shell regex's dollar-sign/quote sequence as a JavaScript replacement token, producing invalid workflow YAML. The branch was repaired before readiness, using a literal callback replacement. YAML and every embedded shell block were syntax-checked; selection probes cover image-only, episode-JSON and shared rendering changes. The series AGENTS.md now requires those checks before a rendering-workflow push. This does not change publication authority or narration.
