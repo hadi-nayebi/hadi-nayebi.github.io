@@ -1,0 +1,98 @@
+# Episode 13: When Information Found Its Routes
+
+## Canonical narration
+
+Human curiosity and practical need interact with scheduled post, recurring news and optical signaling.
+
+### The question beyond the horizon
+
+Has the shipment arrived? Is the road safe? What changed in another city? Has someone found a better method? People asked such questions long before printing. Curiosity, risk, commerce, kinship, and government all made distant information valuable.
+
+A distant answer could change a very local action. A merchant might postpone a purchase; a family might prepare for someone's return; an official might send help or issue an order. The value lay in what people could do with the report, not merely in possessing one more sentence.
+
+Much information arrived through travelers, letters, conversations, and rumor. Such channels were valuable long before they were regular. What a more organized network could add was a better expectation of another answer: a route, a handoff, a return. Once people could plan around that expectation, the channel itself became something they depended on.
+
+The desire to know was old. What changed was the growing system capable of answering it.
+
+Sources:
+
+- [The Postal Museum — Beginning of the postal network](https://www.postalmuseum.org/blog/delivering-the-post-the-beginning-of-the-postal-network/) — British public postal expansion in 1635 and recurring relay routes.
+- [Bibliothèque nationale de France — Gazette and the early press](https://www.bnf.fr/fr/mediatheque/de-la-gazette-de-renaudot-au-premier-empire) — Royal privilege and political control alongside periodic news.
+
+### Old roads, new rhythms
+
+Postal relays and organized messengers existed in many ancient societies. Early modern networks did not invent the post. They expanded particular forms of recurring routes, commercial carriage, and predictable exchange.
+
+Think of the relay rather than only the rider. A horse tires; a person stops; a letter changes hands. Post stations organized those limits into a route that could continue beyond any one carrier. Britain opened its royal postal service to public use in 1635, one particular expansion within a much older worldwide history of organized messages.
+
+A known route changed the practical question from 'Can I find someone going there?' toward 'When does the next carriage leave?' That was still a question about money, access, roads, and reliability. Predictability was an achievement to maintain, not a property automatically possessed by every letter.
+
+A message that once depended on an uncertain traveler could increasingly enter a known route and an expected schedule, although access and reliability varied widely.
+
+Sources:
+
+- [The Postal Museum — Beginning of the postal network](https://www.postalmuseum.org/blog/delivering-the-post-the-beginning-of-the-postal-network/) — British public postal expansion in 1635 and recurring relay routes.
+
+### News learns to return
+
+Printed news did not need to be a single timeless book. Publishers and readers began organizing around successive issues and recurring reports. Postal routes carried correspondence and material that editors could select, package, and circulate again.
+
+France's Gazette began in 1631 under royal privilege. Its political position reminds us that recurring news was never automatically independent or open. Someone chose which reports to include, which to omit, and which claims could safely appear. A regular issue gave that selection a repeated meeting with its readers.
+
+The change was partly temporal. A book might wait on a shelf until needed. News invited an expectation of another installment. Readers could compare what was reported now with what had been reported before. That rhythm gave editors continuing work and made delayed or missing reports more noticeable. The network was learning to keep appointments.
+
+Information became something people could expect to receive repeatedly. The interval between reports became part of the experience.
+
+Sources:
+
+- [Bibliothèque nationale de France — Gazette, 1631](https://catalogue.bnf.fr/ark:/12148/cb32780022t) — Primary periodical catalogue: Renaudot's Gazette and its recurring publication.
+- [Bibliothèque nationale de France — Gazette and the early press](https://www.bnf.fr/fr/mediatheque/de-la-gazette-de-renaudot-au-premier-empire) — Royal privilege and political control alongside periodic news.
+
+### The messenger is still moving
+
+Letters and printed news still traveled with people, horses, carts, and ships. Weather, roads, war, cost, and censorship shaped who received what and when. A recurring schedule improved coordination without eliminating distance.
+
+Imagine a warning sealed inside a mail bag while the bridge ahead is flooded. The information may be urgent and the route well organized; neither quality makes the river disappear. A system of relays could distribute the burden of travel while still depending on the condition of the path.
+
+British mail coaches, introduced in 1784, joined letters to scheduled transport with a driver and armed guard. That arrangement improved a particular service, rather than abolishing its material limits. The message remained attached to the journey. To separate their speeds more radically, another carrier was needed: a visible signal passed from station to station.
+
+The system could circulate more regularly, but some institutions wanted messages to move faster than any vehicle.
+
+Sources:
+
+- [The Postal Museum — Mail coaches](https://www.postalmuseum.org/collections/mail-coaches/) — 1784 introduction, drivers, guards and scheduled physical carriage.
+- [The Postal Museum — Beginning of the postal network](https://www.postalmuseum.org/blog/delivering-the-post-the-beginning-of-the-postal-network/) — British public postal expansion in 1635 and recurring relay routes.
+
+### Signals across the landscape
+
+In late eighteenth-century France, Chappe's optical telegraph used chains of staffed stations and visible signal arms to relay coded messages. Other semaphore networks followed. A message could move between stations without carrying a physical letter across every stretch.
+
+One operator watched the neighboring tower through a telescope. A configuration of arms became a code; another station reproduced it. A whole message could cross the landscape as a sequence of visible states while the paper describing it stayed behind. The trained people and agreed code were as necessary as the wooden apparatus.
+
+The advantage was conditional. Fog could interrupt the chain. Terrain shaped the placement of stations. The state paid for staff and maintained equipment because faster orders were worth the expense. A tower network widened a particular institution's reach; it was not a public conversation spread evenly across the countryside.
+
+Yet the system depended on clear sight, trained operators, agreed codes, and sustained institutional expense. It was powerful, but not an open channel available to everyone.
+
+Sources:
+
+- [Musée des Arts et Métiers — Chappe optical telegraph](https://www.arts-et-metiers.net/musee/modele-telegraphe-optique-systeme-chappe) — Staffed optical relay system and government communication.
+
+### Demand keeps changing the network
+
+Print, postal routes, periodic news, and optical relays did not form one universal machine. They overlapped and served different publics and powers. Together they made a larger share of human activity sensitive to information arriving on time.
+
+A printed sheet needed reports. A report needed a carrier. Readers who came to expect regular news gave publishers another reason to gather it. States seeking quicker coordination supported channels with different costs and restrictions. These relationships reinforced some flows and obstructed others; their overlap mattered more than a tidy sequence of inventions.
+
+Information now had more organized ways to arrive, and people had more activities built around its arrival. That created a new pressure: a report could be valuable precisely because it came before an opportunity vanished. Regularity had changed expectations. Faster signaling would change the interval within which a distant answer could still be useful.
+
+The channels encouraged new habits of inquiry and coordination; those habits created further demand. The next transformation would carry coded signals through electrical circuits rather than across visible towers.
+
+Sources:
+
+- [Bibliothèque nationale de France — Gazette and the early press](https://www.bnf.fr/fr/mediatheque/de-la-gazette-de-renaudot-au-premier-empire) — Royal privilege and political control alongside periodic news.
+- [Musée des Arts et Métiers — Chappe optical telegraph](https://www.arts-et-metiers.net/musee/modele-telegraphe-optique-systeme-chappe) — Staffed optical relay system and government communication.
+- [The Postal Museum — Beginning of the postal network](https://www.postalmuseum.org/blog/delivering-the-post-the-beginning-of-the-postal-network/) — British public postal expansion in 1635 and recurring relay routes.
+
+## Production record
+
+Six historical illustrations are integrated in the episode JSON. Audio paths remain reserved placeholders. Publication date is unset until release. The public renderer reads only the canonical episode JSON; this production record is not narration.

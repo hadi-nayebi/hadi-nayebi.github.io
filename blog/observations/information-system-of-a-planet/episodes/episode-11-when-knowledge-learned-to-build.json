@@ -1,0 +1,224 @@
+{
+  "number": 11,
+  "slug": "when-knowledge-learned-to-build",
+  "title": "When Knowledge Learned to Build",
+  "status": "ready",
+  "published": null,
+  "deckline": "Recorded methods, instruments, craft, and machine tools begin reinforcing each other.",
+  "objective": "Recorded methods, instruments, craft, and machine tools begin reinforcing each other.",
+  "learning_outcomes": [
+    "A recorded method meets material skill, returns new observations or practical results, and becomes a stronger starting point for later work.",
+    "More making and observing requires publishers, money, materials, and people who can receive and use the results."
+  ],
+  "continuity": "Episode 10 established networks that test and correct claims. Episode 11 shows how those records and methods interact with craft, instruments and material processes to produce new capabilities.",
+  "state_change": "A recorded method meets material skill, returns new observations or practical results, and becomes a stronger starting point for later work.",
+  "future_pressure": "More making and observing requires publishers, money, materials, and people who can receive and use the results.",
+  "discussion_term": "observation-1-information-system-of-a-planet-episode-11-when-knowledge-learned-to-build",
+  "slides": [
+    {
+      "id": "scene-01",
+      "title": "The next maker does not start from zero",
+      "read_minutes": 1.2,
+      "image": {
+        "src": "images/episode-11/01-when-knowledge-learned-to-build.jpg",
+        "alt": "Two craftspeople compare a mechanical drawing with a brass assembly and measure a part in a sunlit workshop.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "A useful idea can survive on a page. But a page cannot grind a lens, bore a cylinder, or make a machine work. Someone still has to take the record into a workshop, put their hands on material, and discover which details matter.",
+        "For centuries, craftspeople had learned through practice, apprenticeship, experiment, and the stubborn resistance of wood, glass, iron, and stone. Printed instructions did not replace that knowledge. They offered something new alongside it: a procedure or observation that another person might find, compare with experience, criticize, and improve.",
+        "Imagine two makers opening the same drawing in different workshops. The lines agree; the tools, materials, and hands do not. A written record lets them discuss that difference instead of beginning with two disconnected attempts. The page supplies a common question. Their work supplies answers the page could not contain.",
+        "The information system was beginning to do more than preserve descriptions. It could help the next maker start somewhere beyond the beginning."
+      ],
+      "sources": [
+        {
+          "label": "Royal Society — Micrographia online",
+          "url": "https://royalsociety.org/blog/2020/07/micrographia-online/",
+          "note": "Hooke's 1665 observations, engravings and the wider microscopy tradition."
+        },
+        {
+          "label": "Science Museum Group — Bersham boring mill",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co46455",
+          "note": "Supported boring bar, secured cylinder and Watt engine manufacture."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-01.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-02",
+      "title": "A lens returns an answer",
+      "read_minutes": 1.1,
+      "image": {
+        "src": "images/episode-11/02-when-knowledge-learned-to-build.jpg",
+        "alt": "A seventeenth-century observer examines an insect through a compound microscope beside an open engraved folio.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "In 1665, Robert Hooke published *Micrographia*. Its engravings opened unfamiliar landscapes inside familiar things: insects, surfaces, structures too small for ordinary sight. The book did not invent the microscope. It made particular observations and methods inspectable to people who had not stood beside Hooke's instrument.",
+        "Across the North Sea, Antoni van Leeuwenhoek developed remarkable skills in making and using small lenses. His work was his own, not a copy of Hooke's. Yet the circulating record of microscopic observation helped create a world in which one person's instrument could provoke another person's attempt.",
+        "The illustration mattered because distant readers could inspect it at their own pace. An enlarged insect became a shared object of attention. The instrument supplied a view; the book supplied a route by which that view could enter another person's thinking.",
+        "An improved lens could reveal something new. A description could carry that observation beyond the room. Someone elsewhere could ask: can I see it too?"
+      ],
+      "sources": [
+        {
+          "label": "Royal Society — Micrographia online",
+          "url": "https://royalsociety.org/blog/2020/07/micrographia-online/",
+          "note": "Hooke's 1665 observations, engravings and the wider microscopy tradition."
+        },
+        {
+          "label": "Royal Society — Focus on Leeuwenhoek",
+          "url": "https://royalsociety.org/blog/2023/09/focus-on-leeuwenhoek/",
+          "note": "Correspondence, specimens and attempts to verify microscopic observations."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-02.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-03",
+      "title": "The method travels back",
+      "read_minutes": 1.4,
+      "image": {
+        "src": "images/episode-11/03-when-knowledge-learned-to-build.jpg",
+        "alt": "A Delft observer holds a small single-lens microscope close to his eye while another person records observations in a letter.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "In 1673, Leeuwenhoek's observations began appearing in *Philosophical Transactions*. Letters carried descriptions; correspondents requested specimens and details; investigators attempted to repeat observations. Some claims were difficult to check. Instruments varied. Skill mattered. A drawing could clarify an observation, but it could not transfer the maker's hands.",
+        "That difficulty is part of the story. The network was not a machine that automatically converted reports into truth. It was a developing practice of asking, trying, doubting, correcting, and trying again.",
+        "Leeuwenhoek's letters were intended for the Society's fellows to discuss, not simply admire. Prepared specimens could accompany the descriptions. Readers could examine what had been sent and attempt observations of their own. The record therefore traveled with questions about the practice that produced it.",
+        "That return journey is easy to miss. A letter might move in one direction, but learning could move both ways. A request, objection, or failed attempt altered what the next observer looked for. The network did not need identical instruments to expose differences; it needed enough common ground to make those differences discussable.",
+        "The important loop now ran in both directions: a tool changed what could be seen, and what was seen changed what other people tried to build."
+      ],
+      "sources": [
+        {
+          "label": "Royal Society — Focus on Leeuwenhoek",
+          "url": "https://royalsociety.org/blog/2023/09/focus-on-leeuwenhoek/",
+          "note": "Correspondence, specimens and attempts to verify microscopic observations."
+        },
+        {
+          "label": "Royal Society — Micrographia online",
+          "url": "https://royalsociety.org/blog/2020/07/micrographia-online/",
+          "note": "Hooke's 1665 observations, engravings and the wider microscopy tradition."
+        },
+        {
+          "label": "UC Berkeley — Antony van Leeuwenhoek",
+          "url": "https://ucmp.berkeley.edu/history/leeuwenhoek.html",
+          "note": "1673 correspondence and publication of translated letters."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-03.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-04",
+      "title": "A design reaches the workshop",
+      "read_minutes": 1.3,
+      "image": {
+        "src": "images/episode-11/04-when-knowledge-learned-to-build.jpg",
+        "alt": "Two makers compare a piston with the rough interior of a large iron cylinder beside a steam-engine drawing.",
+        "category": "I50-A50"
+      },
+      "paragraphs": [
+        "Now move from a lens to an engine. James Watt's separate condenser addressed a serious loss of heat in earlier steam engines. The idea was powerful. But an efficient design still needed a cylinder and piston that fit closely enough to do their job.",
+        "A cylinder that leaked steam could defeat the advantage of the design. On paper, the machine might be ingenious. In iron, it could still fail.",
+        "The separate condenser kept condensation away from the main working cylinder, reducing repeated heating and cooling there. That addressed one source of wasted heat. It did not abolish friction, leakage, bad workmanship, or the need to assemble a dependable machine.",
+        "Consider the difference between knowing the shape you want and repeatedly making that shape. A diagram can specify a close fit. The foundry and workshop must produce it in heavy metal. The gap between those two achievements is where manufacturing skill becomes part of the knowledge system.",
+        "Here the information system meets a limit that cannot be solved by better words alone. The answer must be cut into metal."
+      ],
+      "sources": [
+        {
+          "label": "Science Museum Group — Boring bar and head",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co46448",
+          "note": "Surviving machine-tool component and the need for cylinder accuracy."
+        },
+        {
+          "label": "Science Museum Group — Bersham boring mill",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co46455",
+          "note": "Supported boring bar, secured cylinder and Watt engine manufacture."
+        },
+        {
+          "label": "Science Museum — Watt and the separate condenser",
+          "url": "https://blog.sciencemuseum.org.uk/james-watt-and-the-separate-condenser/",
+          "note": "Separating condensation from the working cylinder and turning the design into a machine."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-04.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-05",
+      "title": "Precision becomes capability",
+      "read_minutes": 1.5,
+      "image": {
+        "src": "images/episode-11/05-when-knowledge-learned-to-build.jpg",
+        "alt": "Machinists inspect a secured iron cylinder on a water-driven boring machine with a supported bar through its center.",
+        "category": "I30-A70"
+      },
+      "paragraphs": [
+        "Around 1775, John Wilkinson's boring machinery made it possible to produce large iron cylinders with substantially improved accuracy. A supported boring bar and secured cylinder brought a new level of control to a difficult manufacturing operation. Watt's engines depended on accurate cylinders, and Wilkinson's work was a critical enabling contribution.",
+        "The breakthrough was not simply a clever drawing or a heroic inventor. It was the fit between an idea, a material process, skilled makers, and machinery capable of producing the required precision.",
+        "Supporting a long bar at both ends helped resist the movement that spoiled a cut. Securing the cylinder gave the operation another stable reference. The improvement was physical discipline: constrain the tool and workpiece so the intended shape can emerge more consistently.",
+        "This is information embodied in an arrangement. The maker's understanding does not remain only in a head or drawing. It appears in bearings, supports, fixtures, and the path of a cutting tool. Later workers inherit a machine that makes a useful practice easier to repeat.",
+        "A machine tool helped make another machine practical. The result could power work that had previously been limited by muscle, water, or older engines. Making had begun to expand the conditions for more making."
+      ],
+      "sources": [
+        {
+          "label": "Science Museum Group — Bersham boring mill",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co46455",
+          "note": "Supported boring bar, secured cylinder and Watt engine manufacture."
+        },
+        {
+          "label": "Science Museum Group — Boring bar and head",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co46448",
+          "note": "Surviving machine-tool component and the need for cylinder accuracy."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-05.mp3",
+        "status": "placeholder"
+      }
+    },
+    {
+      "id": "scene-06",
+      "title": "Capability compounds",
+      "read_minutes": 1.2,
+      "image": {
+        "src": "images/episode-11/06-when-knowledge-learned-to-build.jpg",
+        "alt": "Makers examine specimens, read illustrated records and assemble machinery across connected benches at dusk.",
+        "category": "I10-A90"
+      },
+      "paragraphs": [
+        "Return to the two scenes: a lens and an iron cylinder. They seem to belong to different histories. One changes what can be observed; the other changes what can be manufactured. But both reveal the same pattern.",
+        "Records allow practices to travel. Makers adapt them. Instruments and machines extend what people can observe and do. Results return as new descriptions, measurements, disputes, and improved methods. Not every attempt succeeds, and the gains are never equally shared. Yet later work can increasingly begin from earlier work.",
+        "Information is no longer only surviving, speaking, waiting, and multiplying. In the hands of people and institutions, it is helping to reshape the physical world—and that changed world produces more information in return.",
+        "But every new instrument, workshop, edition, and claim needs materials, money, skilled labor, and people willing to receive it. The next question is not only what can be built. It is how a growing public comes together around what is made and printed."
+      ],
+      "sources": [
+        {
+          "label": "Royal Society — Focus on Leeuwenhoek",
+          "url": "https://royalsociety.org/blog/2023/09/focus-on-leeuwenhoek/",
+          "note": "Correspondence, specimens and attempts to verify microscopic observations."
+        },
+        {
+          "label": "Science Museum Group — Bersham boring mill",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co46455",
+          "note": "Supported boring bar, secured cylinder and Watt engine manufacture."
+        }
+      ],
+      "audio": {
+        "src": "audio/episode-11/slide-06.mp3",
+        "status": "placeholder"
+      }
+    }
+  ]
+}
