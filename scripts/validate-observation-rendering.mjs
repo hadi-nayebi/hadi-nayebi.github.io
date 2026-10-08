@@ -8,7 +8,7 @@ const base = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const route = '/blog/observations/information-system-of-a-planet/';
 const series = JSON.parse(fs.readFileSync('blog/observations/information-system-of-a-planet/series.json', 'utf8'));
 const selected = process.env.OBSERVATION_EPISODES?.split(',').filter(Boolean).map(Number);
-const targets = series.episode_index.filter(item => selected?.length ? selected.includes(item.number) : item.number >= 11);
+const targets = series.episode_index.filter(item => selected?.length ? selected.includes(item.number) : true);
 assert(targets.length, 'No Observation episode is selected');
 const output = 'artifacts/observation-rendering';
 fs.mkdirSync(output, { recursive: true });

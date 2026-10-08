@@ -38,7 +38,7 @@ Canonical inventory for the images displayed as storytelling assets on Hadosh Ac
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/06-living-archive.jpg` | I30-A70 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-02/07-bridge-horizon.jpg` | I10-A90 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-03/01-many-bridges.jpg` | I30-A70 | EpisodeJSON | Yes |
-| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-03/02-channel-physics.jpg` | I70-A30 | EpisodeJSON | Yes |
+| `blog/observations/information-system-of-a-planet/index.html` | `images/episode-03/02-channel-physics-restored.jpg` | I70-A30 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-03/03-danger-categories.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-03/04-dance-map.jpg` | I50-A50 | EpisodeJSON | Yes |
 | `blog/observations/information-system-of-a-planet/index.html` | `images/episode-03/05-identity-whistle.jpg` | I30-A70 | EpisodeJSON | Yes |

@@ -40,7 +40,25 @@ jobs:
           CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
           git cat-file -e "$CHANGE_BASE^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$CHANGE_BASE"
-          episodes=$(git diff --name-only "$CHANGE_BASE" HEAD -- blog/observations/information-system-of-a-planet/episodes/ | sed -nE 's|.*/episode-0*([0-9]+)-.*[.]json$|\1|p' | sort -nu | paste -sd, -)
+          changed=$(git diff --name-only "$CHANGE_BASE" HEAD)
+          if printf '%s\n' "$changed" | grep -Eq '^scripts/validate-observation-rendering[.]mjs$|^[.]github/workflows/observation-rendering[.]yml$|^blog/observations/information-system-of-a-planet/(observation[.](js|css)|index[.]html)
+          echo "OBSERVATION_EPISODES=$episodes" >> "$GITHUB_ENV"
+      - name: Verify selected episodes at four widths
+        run: node scripts/validate-observation-rendering.mjs
+      - name: Upload rendering evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-rendering
+          path: artifacts/observation-rendering
+          if-no-files-found: error
+          retention-days: 14
+
+; then
+            episodes=''
+          else
+            episodes=$(printf '%s\n' "$changed" | sed -nE 's|^blog/observations/information-system-of-a-planet/episodes/episode-0*([0-9]+)-.*[.]json$|\1|p; s|^blog/observations/information-system-of-a-planet/images/episode-0*([0-9]+)/.*$|\1|p' | sort -nu | paste -sd, -)
+          fi
           echo "OBSERVATION_EPISODES=$episodes" >> "$GITHUB_ENV"
       - name: Verify selected episodes at four widths
         run: node scripts/validate-observation-rendering.mjs
