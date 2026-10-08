@@ -21,6 +21,7 @@ try {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(base + route + '#episode-' + targets[0].number + '-slide-1');
     await page.waitForSelector('#episode-' + targets[0].number + ':not([hidden]) .slide-copy');
+    await page.evaluate(() => document.fonts.ready);
     for (const item of targets) {
       const episode = JSON.parse(fs.readFileSync(path.join('blog/observations/information-system-of-a-planet', item.path), 'utf8'));
       for (let index = 0; index < episode.slides.length; index += 1) {
@@ -79,6 +80,19 @@ try {
       await page.waitForFunction(number => location.hash === '#episode-' + number + '-slide-2', item.number);
       await page.keyboard.press('ArrowLeft');
       await page.waitForFunction(number => location.hash === '#episode-' + number + '-slide-1', item.number);
+      const active = page.locator('#episode-' + item.number + ':not([hidden])');
+      await active.locator('.slide-next').click();
+      await page.waitForFunction(number => location.hash === '#episode-' + number + '-slide-2', item.number);
+      await active.locator('.slide-prev').click();
+      await page.waitForFunction(number => location.hash === '#episode-' + number + '-slide-1', item.number);
+      if (width > 760) {
+        await active.locator('.slide-dot').nth(2).click();
+        await page.waitForFunction(number => location.hash === '#episode-' + number + '-slide-3', item.number);
+      }
+      await active.locator('.episode-select').selectOption('10');
+      await page.waitForSelector('#episode-10:not([hidden])');
+      await page.locator('#episode-10:not([hidden]) .episode-select').selectOption(String(item.number));
+      await page.waitForSelector('#episode-' + item.number + ':not([hidden])');
     }
     await context.close();
   }
@@ -88,4 +102,3 @@ try {
   await browser.close();
 }
 console.log('Verified ' + results.length + ' Observation slide/width states with image loading, narration parity, sources, lightbox, keyboard, menu and accessibility checks.');
-
