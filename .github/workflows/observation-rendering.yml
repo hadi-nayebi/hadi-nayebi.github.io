@@ -1,0 +1,46 @@
+name: Observation rendering
+on:
+  pull_request:
+    paths:
+      - 'blog/observations/information-system-of-a-planet/**'
+      - 'scripts/validate-observation-rendering.mjs'
+      - '.github/workflows/observation-rendering.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'blog/observations/information-system-of-a-planet/**'
+      - 'scripts/validate-observation-rendering.mjs'
+      - '.github/workflows/observation-rendering.yml'
+jobs:
+  observation-rendering:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned rendering runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0 @axe-core/playwright@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Start site and validate content
+        run: |
+          node blog/observations/information-system-of-a-planet/validate-observation.mjs
+          python3 -m http.server 4173 > /tmp/observation-site.log 2>&1 &
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/blog/observations/information-system-of-a-planet/series.json > /dev/null && break
+            sleep 1
+          done
+      - name: Verify every new slide at four widths
+        run: node scripts/validate-observation-rendering.mjs
+      - name: Upload rendering evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-rendering
+          path: artifacts/observation-rendering
+          if-no-files-found: error
+          retention-days: 14
+
