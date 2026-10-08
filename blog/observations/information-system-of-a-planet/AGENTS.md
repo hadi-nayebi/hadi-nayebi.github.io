@@ -153,6 +153,10 @@ Support:
 
 Do not auto-advance text-only slides. The reader controls pacing.
 
+## Accepted editorial wording
+
+For revisions based on approved before/after narration, compare the accepted passage with the canonical paragraph array, including paragraph boundaries. Preserve approved wording unless Hadi authorizes a further revision or a factual correction requires a disclosed change. Distinguish accepted-proposal-to-diff verification from merged-diff-to-live verification; deployment parity alone does not establish that the agreed narration was implemented.
+
 ## Publication and PR discipline
 
 For a daily episode run:

@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -36,8 +36,10 @@ jobs:
             sleep 1
           done
       - name: Select episodes changed by this revision
+        env:
+          CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
-          episodes=$(git diff --name-only HEAD^ HEAD -- blog/observations/information-system-of-a-planet/episodes/ | sed -nE 's|.*/episode-0*([0-9]+)-.*[.]json$|\1|p' | sort -nu | paste -sd, -)
+          episodes=$(git diff --name-only "$CHANGE_BASE" HEAD -- blog/observations/information-system-of-a-planet/episodes/ | sed -nE 's|.*/episode-0*([0-9]+)-.*[.]json$|\1|p' | sort -nu | paste -sd, -)
           echo "OBSERVATION_EPISODES=$episodes" >> "$GITHUB_ENV"
       - name: Verify selected episodes at four widths
         run: node scripts/validate-observation-rendering.mjs
