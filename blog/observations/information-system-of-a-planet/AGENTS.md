@@ -180,6 +180,10 @@ For a daily episode run:
 
 Do not create an episode merely to satisfy the daily cadence. If evidence, continuity, an open dependency, or Hadi's pending twentieth-century guidance blocks a responsible next episode, report the blocker and create no PR.
 
+### Rendering-workflow changes
+
+Before pushing an Observation rendering-workflow edit, parse its YAML and syntax-check each embedded shell block. Exercise episode selection with an image-only change, an episode-JSON change and a shared-renderer change. Image-only edits must select their owning episode; shared rendering changes must verify the complete manifest. When constructing replacement strings programmatically, preserve literal shell dollar signs and regex anchors rather than allowing replacement-template expansion.
+
 ## Instruction learning
 
 At the end of every episode run, review whether this production contract caused avoidable friction, weak sourcing, repetitive rhythm, inconsistent objectives, image/text mismatch, excessive slide length, or review churn.
