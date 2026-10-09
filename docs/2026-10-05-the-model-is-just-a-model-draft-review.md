@@ -100,6 +100,7 @@ The Pain Axis result remains the opening case. The article now states the core e
 | [4] | Ouyang et al., InstructGPT | Demonstrations, preference rankings, reward modeling, and reinforcement learning used for instruction following | The broader harness argument is Academy synthesis. |
 | [5] | Yao et al., ReAct | Reasoning, actions, and observations can be interleaved so later steps depend on earlier production | The article does not claim every model exposes reasoning in this form. |
 | [6] | Chen et al., Persona Vectors | Trait-related activation directions can monitor and influence persona shifts | Used to motivate inspectable pathways, not a hidden complete person. |
+| [7] | International Association for the Study of Pain, revised pain definition and notes | Human pain is personal, shaped by biological, psychological, and social factors, and learned through life experience | Used only for the human comparison; no human-to-model mechanism equivalence is claimed. |
 
 ## Visual system
 
@@ -110,7 +111,7 @@ The main article now uses two diagrams:
 
 The prior checkpoint-versus-system diagram was removed because the new active-context/durable-context prose and second figure now carry the same function more economically.
 
-Both retained SVGs already have accessible title/description metadata, article alt text, and captions. Final rendered inspection must be repeated after the prose stabilizes and static HTML is generated.
+Both retained SVGs have accessible title/description metadata, article alt text, and captions. Raster inspection at the v0.4.0 exact head found one overflow in the left outcome box of the context-to-history figure; the explanation is now wrapped across two lines within the box. XML parsing and a second raster inspection pass after the repair. Article-page inspection at phone and desktop widths remains open because the shared responsive workflow does not currently include this unpublished route.
 
 ## Companion-article boundary
 
@@ -134,11 +135,13 @@ This is a planning target, not publication authorization.
 
 ## Verification completed
 
-- canonical main Markdown and Departments mirror synchronized to v0.3.0;
-- approximately 2,337 visible words / 12 minutes;
+- canonical main Markdown and Departments mirror synchronized to v0.4.0 at the same content blob;
+- approximately 2,537 visible words / 13 minutes;
 - one embedded privacy-enhanced YouTube video;
 - two captioned figures with nonempty alt text;
-- six numbered source pointers and six matching end references;
+- seven numbered source pointers and seven matching end references;
+- all seven public references resolve, and the sentence-level claims remain within their cited primary-source boundaries;
+- narrative Markdown and static HTML parity confirmed; metadata and flow blocks are represented in their intended HTML structures;
 - title, subtitle, version, read time, description, structured data, and sidebar card synchronized;
 - draft remains `noindex,nofollow` and absent from content index, feed, sitemap, and What’s New;
 - no narration, LinkedIn post, promotional image, merge, or publication action taken.
@@ -146,10 +149,8 @@ This is a planning target, not publication authorization.
 ## Remaining before merge or publication
 
 - founder website reading and argument review;
-- primary-source sentence-level recheck after final prose edits;
-- repository Markdown-to-static-HTML synchronization;
 - responsive phone and desktop inspection of the final committed page;
-- final link, citation, image, accessibility, and layout validation;
+- article-route accessibility and layout validation after any further founder edit;
 - article-specific Open Graph / LinkedIn image decision;
 - explicit publication and merge authority from Hadi.
 
@@ -162,4 +163,4 @@ Website PR #204 is the only public deliverable surface for the main article. The
 
 Hadi approved the seven-part change map and directed application while keeping the job open. The opening now states whole-context sensitivity and corrects the Pain Axis v2 relief framing. The archive transition distinguishes training from current context. The context section separates retrieved material from persistent parameters, routing and permissions. The text-calculator example now compares the same sentence under different interpretation instructions. A short sourced human comparison bridges interpretation and persistence. Consolidation and inspectable information flows lead the history section; separate persona models remain optional. The system choices overlap, and the conclusion emphasizes assembled context, selected causal history and user control. The second figure now starts with composite context and includes selection before a persistent update.
 
-Canonical Markdown and static HTML are synchronized using the repository body renderer. The obsolete runtime draft-loader is removed. This is an editorial increment, not content lock, merge readiness or publication approval. Final primary-source audit, responsive screenshot inspection, image decision and further founder iteration remain open.
+Canonical Markdown and static HTML are synchronized using the repository body renderer. The obsolete runtime draft-loader is removed. The final primary-source audit passes against all seven public references, and both SVGs have been raster-inspected; the context-to-history overflow found during that inspection is repaired. This is an editorial increment, not content lock, merge readiness or publication approval. Article-route responsive inspection, image decision and further founder iteration remain open.
