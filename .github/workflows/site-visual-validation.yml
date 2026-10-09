@@ -17,6 +17,8 @@ jobs:
           node --check blog/observations/information-system-of-a-planet/observation.js
       - name: Validate storytelling assets and Observations
         run: |
+          node scripts/test-observation-narration-hashes.mjs
+          node scripts/audit-narration-source-corpus.mjs
           node scripts/validate-storytelling-visuals.mjs
           for validator in blog/observations/*/validate-observation.mjs; do
             node "$validator"

@@ -1,7 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "path": "blog/observations/information-system-of-a-planet/episodes/episode-02-when-experience-found-another-body.json",
-  "source_sha256": "b2bc24f8edb91f751f3b6a24668f378e90b0bae362290a27356c1395fee625e9",
+  "artifact_sha256": "aa2ec30f85e97eaf7a1bef75d04a00cf6a0514b6c69713f1c8eb8113bb248a90",
+  "narration_sha256": "6ea58ea9438e202cd94ddcf02877d7bcc27a75d17af55dd8a970ef1bbe58fa7f",
   "reviewed_at": "2026-09-11",
   "report": "docs/narration-source-review/observations/episode-02-when-experience-found-another-body.md",
   "review": {
