@@ -28,9 +28,10 @@
     </g>
     <path d="M680 630 C520 630 470 660 390 710" fill="none" stroke="#ff9f7a" stroke-width="5" marker-end="url(#arrowRed)"/>
     <text x="555" y="615" text-anchor="middle" font-size="27" font-weight="700" fill="#ff9f7a">NO</text>
-    <rect x="100" y="714" width="520" height="92" rx="22" fill="#231816" stroke="#ff9f7a" stroke-width="4"/>
-    <text x="360" y="752" text-anchor="middle" font-size="29" font-weight="700">CONTEXT CLOSES</text>
-    <text x="360" y="787" text-anchor="middle" font-size="24" fill="#e8c0b1">no selected consequence changes later operation</text>
+    <rect x="100" y="704" width="520" height="112" rx="22" fill="#231816" stroke="#ff9f7a" stroke-width="4"/>
+    <text x="360" y="740" text-anchor="middle" font-size="29" font-weight="700">CONTEXT CLOSES</text>
+    <text x="360" y="775" text-anchor="middle" font-size="20" fill="#e8c0b1">no selected consequence</text>
+    <text x="360" y="807" text-anchor="middle" font-size="20" fill="#e8c0b1">changes later operation</text>
     <path d="M920 630 C1080 630 1130 660 1210 710" fill="none" stroke="#86efac" stroke-width="5" marker-end="url(#arrowGreen)"/>
     <text x="1045" y="615" text-anchor="middle" font-size="27" font-weight="700" fill="#86efac">YES</text>
     <rect x="980" y="704" width="520" height="112" rx="22" fill="#17231f" stroke="#86efac" stroke-width="4"/>
