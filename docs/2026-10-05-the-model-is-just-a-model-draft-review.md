@@ -111,7 +111,7 @@ The main article now uses two diagrams:
 
 The prior checkpoint-versus-system diagram was removed because the new active-context/durable-context prose and second figure now carry the same function more economically.
 
-Both retained SVGs have accessible title/description metadata, article alt text, and captions. Raster inspection at the v0.4.0 exact head found one overflow in the left outcome box of the context-to-history figure; the explanation is now wrapped across two lines within the box. XML parsing and a second raster inspection pass after the repair. Article-page inspection at phone and desktop widths remains open because the shared responsive workflow does not currently include this unpublished route.
+Both retained SVGs have accessible title/description metadata, article alt text, and captions. Raster inspection at the v0.4.0 exact head found one overflow in the left outcome box of the context-to-history figure; the explanation is now wrapped across two lines within the box. XML parsing and a second raster inspection pass after the repair. Dedicated article-page inspection at four widths completed on October 10; rerun it after any further founder edit.
 
 ## Companion-article boundary
 
@@ -149,7 +149,6 @@ This is a planning target, not publication authorization.
 ## Remaining before merge or publication
 
 - founder website reading and argument review;
-- responsive phone and desktop inspection of the final committed page;
 - article-route accessibility and layout validation after any further founder edit;
 - article-specific Open Graph / LinkedIn image decision;
 - explicit publication and merge authority from Hadi.
@@ -163,4 +162,12 @@ Website PR #204 is the only public deliverable surface for the main article. The
 
 Hadi approved the seven-part change map and directed application while keeping the job open. The opening now states whole-context sensitivity and corrects the Pain Axis v2 relief framing. The archive transition distinguishes training from current context. The context section separates retrieved material from persistent parameters, routing and permissions. The text-calculator example now compares the same sentence under different interpretation instructions. A short sourced human comparison bridges interpretation and persistence. Consolidation and inspectable information flows lead the history section; separate persona models remain optional. The system choices overlap, and the conclusion emphasizes assembled context, selected causal history and user control. The second figure now starts with composite context and includes selection before a persistent update.
 
-Canonical Markdown and static HTML are synchronized using the repository body renderer. The obsolete runtime draft-loader is removed. The final primary-source audit passes against all seven public references, and both SVGs have been raster-inspected; the context-to-history overflow found during that inspection is repaired. This is an editorial increment, not content lock, merge readiness or publication approval. Article-route responsive inspection, image decision and further founder iteration remain open.
+Canonical Markdown and static HTML are synchronized using the repository body renderer. The obsolete runtime draft-loader is removed. The final primary-source audit passes against all seven public references, and both SVGs have been raster-inspected; the context-to-history overflow found during that inspection is repaired. This is an editorial increment, not content lock, merge readiness or publication approval. Article-route responsive inspection is now complete; the image decision and further founder iteration remain open.
+
+## October 10 — dedicated article-route render and citation repair
+
+The unpublished page was rendered directly from website PR #204 head `afbca70f6071f6b1b096ef46b1651055a184964c` at 360, 412, 768, and 1440 px. Fold, full-page, and opened-mobile-navigation screenshots were manually inspected. The page returned 200, retained `noindex,nofollow`, had no horizontal overflow, loaded both article figures, opened mobile navigation at both phone widths, and produced no axe accessibility violations.
+
+That inspection found seven numbered references displayed as raw Markdown—for example, `[[1]](#ref-1)`—even though the targets existed. The repository Markdown renderer accepted ordinary labels but not a single nested bracket pair used by citation labels. The renderer now supports that bounded label shape, and site-navigation validation fails when a rendered article body contains a raw numbered citation. The new assertion was demonstrated failing against the old HTML, then passing after regeneration. The repaired page has eight citation links (seven prose pointers plus the Figure 1 pointer), no raw citation text, and no missing reference targets at all four widths.
+
+Local rendering could not load Google Fonts, the privacy-enhanced YouTube iframe, or Giscus because this execution environment blocks those external hosts. These are recorded environment limits rather than branch defects: local layout used the fallback font; the video and comment request failures do not affect the article's static citation, figure, overflow, or accessibility results. Publication, merge, narration, LinkedIn release, and the article-specific Open Graph decision remain outside this increment.
