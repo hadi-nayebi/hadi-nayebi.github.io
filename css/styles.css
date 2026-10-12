@@ -2948,17 +2948,16 @@ body.lightbox-open {
 
     /* --- Blog Layout --- */
     .blog-layout {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .sidebar {
         position: static;
-        top: auto;
-        width: 100%;
     }
 
     .article-content {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
         padding: 2rem 1.5rem;
     }
 
