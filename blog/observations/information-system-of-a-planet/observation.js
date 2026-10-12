@@ -274,6 +274,7 @@
             if (next >= 0 && next < episode.slides.length) {
                 event.preventDefault();
                 renderSlide(episode, next);
+                section.querySelector('.slide-copy')?.focus({ preventScroll: true });
             }
         });
     };
@@ -331,3 +332,4 @@
 
     init();
 })();
+

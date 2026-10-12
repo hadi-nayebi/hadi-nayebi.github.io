@@ -63,6 +63,10 @@ for (const item of series.episode_index) {
     if (!Array.isArray(slide.paragraphs) || slide.paragraphs.length === 0 || slide.paragraphs.some((p) => typeof p !== 'string' || !p.trim())) {
       fail(`episode ${item.number} slide ${slide.id} needs non-empty narration paragraphs`);
     }
+    const productionLeak = /\b(?:production (?:note|instruction|handoff)|asset not yet created|planned illustration|merge.ready|owning departments|this PR|remaining production)\b/i;
+    if (slide.paragraphs.some((p) => productionLeak.test(p))) {
+      fail(`episode ${item.number} slide ${slide.id} exposes internal production notes in narration`);
+    }
     if (!slide.image || !slide.image.src || !slide.image.alt || !visualCategories.has(slide.image.category)) {
       fail(`episode ${item.number} slide ${slide.id} image metadata is incomplete`);
     }
@@ -86,3 +90,4 @@ for (const item of series.episode_index) {
 }
 
 console.log(`Observation validation passed: ${series.episode_index.length} episode(s).`);
+

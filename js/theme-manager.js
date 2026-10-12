@@ -1,8 +1,8 @@
-// Version: v0.4.4
+// Version: v0.4.5
 /**
  * Hadosh Academy theme + lightweight shared presentation behavior.
- * The homepage intentionally changes on refresh: visual theme, hero language,
- * profile image, and wheel emphasis vary while the underlying mission stays stable.
+ * The homepage keeps its institutional framing stable while the visual theme,
+ * profile image, and wheel emphasis can vary on refresh.
  */
 
 const themes = [
@@ -38,77 +38,19 @@ function applyRandomTheme() {
     }
 }
 
-// Each refresh can tell the same mission from a different angle.
-const heroMessages = [
-    {
-        line1: 'See the System.',
-        line2: 'Make It Yours.',
-        description: 'Your AI agent already has a system around it. How much of that system can you see, change, and keep? Hadosh Academy helps you build a harness that grows around your work and stays under your control.'
-    },
-    {
-        line1: 'Own the Harness,',
-        line2: 'Change the Model',
-        description: 'Explore a portable cognition layer that can outlive one model session, provider, or CLI runtime.'
-    },
-    {
-        line1: 'Build a Digital Cortex',
-        line2: 'You Can Inspect',
-        description: 'Where does a correction go after you make it? How does the agent know which work is still open, or when it must ask before acting? Build those answers into a harness you can inspect.'
-    },
-    {
-        line1: 'Open Architecture,',
-        line2: 'Real Experiments',
-        description: 'A public pattern should show what it does and what evidence supports it. Explore the Seed repositories and project experiments, then decide what belongs in your own harness.'
-    },
-    {
-        line1: 'Your AI Can Change.',
-        line2: 'Your Cortex Can Stay.',
-        description: 'Keep the durable personalization layer in files and structures you can inspect, version, move, and keep evolving.'
-    },
-    {
-        line1: 'Turn General Intelligence',
-        line2: 'Into Your System',
-        description: 'Use an LLM as the engine while your own harness carries the memory, behavior, authority, and working methods.'
-    },
-    {
-        line1: 'Teach the Harness',
-        line2: 'How You Work',
-        description: 'Externalize repeatable judgment into jobs, plugins, phases, memory, and interfaces that improve through use.'
-    },
-    {
-        line1: 'Build Once.',
-        line2: 'Keep the Cognition.',
-        description: 'Let the model provider change while the architecture you cultivated around your work remains your asset.'
-    },
-    {
-        line1: 'From Empty CLI',
-        line2: 'To Personal Cortex',
-        description: 'Start with Codex, Claude Code, OpenCode, Qwen Code, or another CLI agent and grow the harness around your work.'
-    },
-    {
-        line1: 'Make Agent Behavior',
-        line2: 'Inspectable',
-        description: 'Move important cognition out of invisible prompt residue and into durable jobs, state, interfaces, rules, and tests.'
-    },
-    {
-        line1: 'Learn the Architecture.',
-        line2: 'Let the Agent Build It.',
-        description: 'Use a small shared vocabulary to guide your CLI agent while the implementation burden stays increasingly machine-side.'
-    },
-    {
-        line1: 'One Harness Idea,',
-        line2: 'Many Human Scales',
-        description: 'Explore personal Seeds, team cortices, family worlds, and collective systems built around user-owned cognition.'
-    }
-];
+// The homepage's organizing promise is deliberate public positioning, not rotating copy.
+const homepageHero = {
+    line1: 'Understand It.',
+    line2: 'Build It. Live Through It.',
+    description: 'Learn what Agentic AI is made of. Build with open primitives. Turn those ideas into user-owned projects and a harness that grows around your work—visible, changeable, and yours to keep.'
+};
 
-function applyRandomHero() {
+function applyHomepageHero() {
     const h1 = document.querySelector('.central-circle-content h1');
     const desc = document.querySelector('.central-circle-content .hero-description');
     if (!h1 || !desc) return;
-    const msg = heroMessages[Math.floor(Math.random() * heroMessages.length)];
-    h1.innerHTML = msg.line1 + ' <br><span>' + msg.line2 + '</span>';
-    desc.textContent = msg.description;
+    h1.innerHTML = homepageHero.line1 + ' <br><span>' + homepageHero.line2 + '</span>';
+    desc.textContent = homepageHero.description;
 }
 
 function ensureCoreNavigation() {
@@ -146,7 +88,7 @@ function loadStoryVisuals() {
 }
 
 applyRandomTheme();
-applyRandomHero();
+applyHomepageHero();
 ensureCoreNavigation();
 loadStoryVisuals();
 

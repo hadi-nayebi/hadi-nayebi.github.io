@@ -1,0 +1,60 @@
+name: Observation rendering
+on:
+  pull_request:
+    paths:
+      - 'blog/observations/information-system-of-a-planet/**'
+      - 'scripts/validate-observation-rendering.mjs'
+      - '.github/workflows/observation-rendering.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'blog/observations/information-system-of-a-planet/**'
+      - 'scripts/validate-observation-rendering.mjs'
+      - '.github/workflows/observation-rendering.yml'
+jobs:
+  observation-rendering:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pinned rendering runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.62.1 @axe-core/playwright@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Start site and validate content
+        run: |
+          node blog/observations/information-system-of-a-planet/validate-observation.mjs
+          python3 -m http.server 4173 > /tmp/observation-site.log 2>&1 &
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/blog/observations/information-system-of-a-planet/series.json > /dev/null && break
+            sleep 1
+          done
+      - name: Select episodes changed by this revision
+        env:
+          CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          git cat-file -e "$CHANGE_BASE^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$CHANGE_BASE"
+          changed=$(git diff --name-only "$CHANGE_BASE" HEAD)
+          if printf '%s\n' "$changed" | grep -Eq '^scripts/validate-observation-rendering[.]mjs$|^[.]github/workflows/observation-rendering[.]yml$|^blog/observations/information-system-of-a-planet/(observation[.](js|css)|index[.]html)$'; then
+            episodes=''
+          else
+            episodes=$(printf '%s\n' "$changed" | sed -nE 's|^blog/observations/information-system-of-a-planet/episodes/episode-0*([0-9]+)-.*[.]json$|\1|p; s|^blog/observations/information-system-of-a-planet/images/episode-0*([0-9]+)/.*$|\1|p' | sort -nu | paste -sd, -)
+          fi
+          echo "OBSERVATION_EPISODES=$episodes" >> "$GITHUB_ENV"
+      - name: Verify selected episodes at four widths
+        run: node scripts/validate-observation-rendering.mjs
+      - name: Upload rendering evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: observation-rendering
+          path: artifacts/observation-rendering
+          if-no-files-found: error
+          retention-days: 14
+
