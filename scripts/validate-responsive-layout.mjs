@@ -188,6 +188,25 @@ for (const viewport of viewports) {
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
       );
       if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+      if (viewport.width <= 768) {
+        const mobileFlow = await page.evaluate(() => {
+          const article = document.querySelector('.article-content');
+          const sidebar = document.querySelector('.sidebar');
+          if (!article || !sidebar) return null;
+          const articleRect = article.getBoundingClientRect();
+          const sidebarRect = sidebar.getBoundingClientRect();
+          return {
+            articleBottom: articleRect.bottom + window.scrollY,
+            sidebarTop: sidebarRect.top + window.scrollY
+          };
+        });
+        if (!mobileFlow) {
+          failures.push(`${route.path} @ ${viewport.width}px: article or sidebar is missing`);
+        } else {
+          const mobileGap = Math.round(mobileFlow.sidebarTop - mobileFlow.articleBottom);
+          if (mobileGap < 0 || mobileGap > 80) failures.push(`${route.path} @ ${viewport.width}px: article-to-sidebar gap is ${mobileGap}px; expected 0–80px`);
+        }
+      }
     }
 
 
