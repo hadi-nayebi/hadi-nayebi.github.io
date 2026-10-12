@@ -24,6 +24,7 @@ const routes = [
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
   { name: 'circle-of-competence', path: '/blog/observations/hadosh-through-mental-models/03-circle-of-competence.html', kind: 'story' },
   { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
+  { name: 'model-is-just-a-model', path: '/blog/principles/the-model-is-just-a-model.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'whats-new', path: '/whats-new.html', kind: 'whats-new' },
   { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
@@ -164,6 +165,25 @@ for (const viewport of viewports) {
       if (await page.locator('.article-body a[href$="03_1-the-folder-is-alive.html"]').count() !== 1) failures.push(`${route.path}: next essay link missing`);
       if (await page.locator('.blog-series-mobile-nav a').count() !== 3) failures.push(`${route.path}: complete mobile series navigation missing`);
       if ((await page.locator('.article-authors').innerText()).trim() !== 'By Hadi Nayebi & Claude Opus 4.8') failures.push(`${route.path}: current co-author byline missing`);
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+
+    if (route.name === 'model-is-just-a-model') {
+      const robots = (await page.locator('meta[name="robots"]').getAttribute('content') || '').toLowerCase();
+      if (!robots.includes('noindex') || !robots.includes('nofollow')) failures.push(`${route.path}: unpublished article lost noindex,nofollow`);
+      if ((await page.locator('h1').innerText()).trim() !== 'The Model Is Just a Model') failures.push(`${route.path}: article title changed`);
+      if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected two teaching figures`);
+      const citations = page.locator('.article-body a[href^="#ref-"]');
+      if (await citations.count() !== 8) failures.push(`${route.path}: expected eight working citation links`);
+      const rawCitation = /\[\[\d+\]\]\(#ref-\d+\)/.test(await page.locator('.article-body').innerText());
+      if (rawCitation) failures.push(`${route.path}: raw Markdown citation leaked into rendered prose`);
+      for (const href of await citations.evaluateAll(links => links.map(link => link.getAttribute('href')))) {
+        if (!href || await page.locator(href).count() !== 1) failures.push(`${route.path}: citation target missing for ${href || 'empty href'}`);
+      }
       const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
       );
