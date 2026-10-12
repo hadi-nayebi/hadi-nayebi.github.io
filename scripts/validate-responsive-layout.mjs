@@ -195,8 +195,11 @@ for (const viewport of viewports) {
           if (!article || !sidebar) return null;
           const articleRect = article.getBoundingClientRect();
           const sidebarRect = sidebar.getBoundingClientRect();
+          const articleStyle = getComputedStyle(article);
           return {
             articleBottom: articleRect.bottom + window.scrollY,
+            articleHeight: articleRect.height,
+            articleBackdropFilter: articleStyle.backdropFilter || articleStyle.webkitBackdropFilter || 'none',
             sidebarTop: sidebarRect.top + window.scrollY
           };
         });
@@ -205,6 +208,9 @@ for (const viewport of viewports) {
         } else {
           const mobileGap = Math.round(mobileFlow.sidebarTop - mobileFlow.articleBottom);
           if (mobileGap < 0 || mobileGap > 80) failures.push(`${route.path} @ ${viewport.width}px: article-to-sidebar gap is ${mobileGap}px; expected 0–80px`);
+          if (mobileFlow.articleHeight > 14000 && mobileFlow.articleBackdropFilter !== 'none') {
+            failures.push(`${route.path} @ ${viewport.width}px: ${Math.round(mobileFlow.articleHeight)}px article still uses ${mobileFlow.articleBackdropFilter} backdrop filtering and risks tall-layer paint clipping`);
+          }
         }
       }
     }
