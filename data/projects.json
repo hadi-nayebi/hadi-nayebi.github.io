@@ -28,6 +28,15 @@
       "summary": "Each project improves the reusable harness, participation workflow, milestone system, and governance model for the next one.",
       "page": null,
       "subscription": "closed"
+    },
+    {
+      "id": "who-owns-your-toaster",
+      "name": "Who Owns Your Toaster?",
+      "status": "public-example",
+      "status_label": "Music and production context",
+      "summary": "A music video and reusable context for song and video production.",
+      "page": "projects/who-owns-your-toaster.html",
+      "subscription": "open"
     }
   ]
 }
