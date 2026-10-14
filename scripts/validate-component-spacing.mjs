@@ -13,16 +13,16 @@ function htmlFiles(dir) {
     return entry.isDirectory() ? htmlFiles(file) : entry.name.endsWith('.html') ? [file] : [];
   });
 }
-const routes = htmlFiles(root).map(file => '/' + path.relative(root, file).split(path.sep).join('/'));
+const routes = htmlFiles(root).map(file => '/' + path.relative(root, file).split(path.sep).join('/')).filter(route => !process.env.SPACING_ROUTES || process.env.SPACING_ROUTES.split(',').includes(route));
 const report = [];
 const failures = [];
 const changedRoutes = new Set(JSON.parse(fs.readFileSync('scripts/component-spacing-routes.json', 'utf8')));
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, ...(process.env.CHROMIUM_EXECUTABLE ? { executablePath: process.env.CHROMIUM_EXECUTABLE } : {}) });
 for (const width of [360, 412, 768, 1440]) {
   const context = await browser.newContext({ viewport: { width, height: width === 360 ? 800 : 900 } });
   for (const route of routes) {
     const page = await context.newPage();
-    await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, request => request.abort());
+    await page.route(url => ['http:', 'https:'].includes(url.protocol) && url.origin !== new URL(base).origin, request => request.abort());
     await page.goto(base + route, { waitUntil: 'load' });
     // JSON-backed readers and collections must finish rendering before geometry is inspected.
     await page.waitForLoadState('networkidle');
