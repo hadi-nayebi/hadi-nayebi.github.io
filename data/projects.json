@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-10-03T17:00:00.000Z",
+  "updated_at": "2026-10-14T00:00:00.000Z",
   "projects": [
     {
       "id": "crime-cartography",
@@ -36,7 +36,13 @@
       "status_label": "Music and production context",
       "summary": "A music video and reusable context for song and video production.",
       "page": "projects/who-owns-your-toaster.html",
-      "subscription": "open"
+      "subscription": "open",
+      "video_url": "https://youtu.be/fg2cV8sh3kY",
+      "repository_url": "https://github.com/hadi-nayebi/hadosh-production-contexts",
+      "dashboard_branches": {
+        "song": "https://github.com/hadi-nayebi/hadosh-production-contexts/tree/song-production",
+        "video": "https://github.com/hadi-nayebi/hadosh-production-contexts/tree/video-production"
+      }
     }
   ]
 }
