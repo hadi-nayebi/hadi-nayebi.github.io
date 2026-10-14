@@ -3,13 +3,13 @@ title: "The Model Is Just a Model"
 date: "October 2026"
 slug: "the-model-is-just-a-model"
 subtitle: "Pain representations, growing context, and the systems we choose to build"
-read_time: "13 min"
+read_time: "14 min"
 tags: [Agentic AI, Models, Training, Persona, Ownership]
 audience: everyone
-og_image: "assets/images/digital-cortex-2-og.jpg"
+og_image: "blog/principles/images/the-model-is-just-a-model/social-card.png"
 series: "Hadosh Academy – Principles & Perspectives"
-version: v0.4.0
-status: draft
+version: v0.5.0
+status: published
 ---
 
 # The Model Is Just a Model
@@ -37,6 +37,8 @@ A representation does not act alone. The model’s response depends on the full 
 The intervention establishes causal influence under the tested conditions. It does not establish a fixed motive across all contexts.
 
 And neither one, by itself, establishes a suffering entity.
+
+Taking the video’s question seriously means examining the whole system. The same model and the same pain-related representation can participate in different systems, depending on how we interpret outputs, constrain effects, and construct feedback loops. A representation alone does not make one developmental pathway inevitable.
 
 So before asking whether the model feels pain, I want to ask a wider question:
 
@@ -314,7 +316,26 @@ It does not settle whether the event was experienced.
 
 ## What Kind of System Are We Choosing to Build?
 
-The same general model capability can support very different systems. These possibilities can overlap; they are not a required release ladder.
+Keep the model fixed. Keep its pain-related representation. Now change the system around it.
+
+One design can treat the resulting response as temporary, restrict its effects, and carry no pain-related interpretation into future work. Another can preserve an interpretation, feed it into later context, and let it shape memory, instructions, evaluations, or training. The same model can participate in either design.
+
+This is an architectural comparison, not a claim that the paper tested these two complete systems. The experiment establishes influence under its tested conditions. It does not determine every system we could build around that model.
+
+Taking the video’s question seriously therefore requires following the complete pathway: what triggers the representation, what it can influence, what gets retained, and which feedback loops make those effects matter later.
+
+We can choose whether and how to build those pathways. They can also arise through defaults or overlooked feedback, so their absence must be checked rather than assumed. Preventing one update does not erase the model’s learned dispositions or eliminate every possible consequence.
+
+Finding the representation does not make a particular developmental future inevitable. Designing, permitting, or restricting its continuing influence is a responsibility of the surrounding system’s architecture. Whether anything is subjectively experienced remains a separate question.
+
+<!-- RAW_HTML -->
+<figure class="blog-image" data-visual-style="I90-A10" data-information-weight="90" data-artistic-weight="10" data-visual-role="storytelling" style="margin:2.25rem 0;">
+  <img src="images/the-model-is-just-a-model/02-same-model-different-systems.svg" alt="The same language model and pain-related representation are placed in two possible architectures. One retains no pain-related update for later work. The other selects and retains an interpretation, then feeds it into later context.">
+  <figcaption><strong>Figure 3.</strong> Hold the model fixed and change the surrounding system. Selection, persistence, and feedback determine which consequences carry forward. These are design possibilities; neither establishes subjective experience.</figcaption>
+</figure>
+<!-- /RAW_HTML -->
+
+These possibilities can overlap; they are not a required release ladder.
 
 A **utility-only system** can improve tools, procedures, memory, and verification without developing a persona.
 
@@ -349,6 +370,8 @@ The Pain Axis research found something real and worth studying.
 But the mere presence of a pain-related representation inside a language model is not the mystery. Humanity trained the model on a language saturated with pain.
 
 The more consequential question is what the surrounding system does with that representation.
+
+The same model can sit inside different architectures. Its representation does not, by itself, decide what gets retained, which effects are permitted, or what feedback returns next time. Taking the concern seriously means tracing those choices across the complete system.
 
 Does it disappear when the context closes?
 
@@ -405,3 +428,4 @@ What we allow that history to become is an architectural choice.
   <li id="ref-7">International Association for the Study of Pain. Revised definition of pain and accompanying notes, 2020. <a href="https://www.iasp-pain.org/resources/terminology/">Definition and notes</a>.</li>
 </ol>
 <!-- /RAW_HTML -->
+

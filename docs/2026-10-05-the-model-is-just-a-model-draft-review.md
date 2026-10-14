@@ -1,10 +1,32 @@
+# The Model Is Just a Model — v0.5.0 publication review
+
+**Date:** 2026-10-14
+**Authority:** Hadi approved the listening summary and explicitly requested final adjustments, article images and publication in the October 14 Project session.
+**Current status:** publication candidate; awaiting exact-head hosted validation and deployment evidence.
+
+## Current changes and evidence
+
+- Retained the accepted v0.4.0 article, source video, seven references and two existing figures.
+- Made the same-model/different-system comparison explicit in the opening, system-choice section and conclusion. It is labeled an architectural comparison rather than a reported experiment. Feedback choices do not settle subjective experience; defaults and overlooked feedback remain possible.
+- Added Figure 3, an accessible diagram of temporary versus retained feedback effects; added a dedicated 1200×630 social image. Existing figures remain unchanged.
+- Publication metadata uses October 14; indexing, Content discovery, newest sidebar, RSS and sitemap are synchronized. The weekly What's New cadence is unchanged; this release has its own RSS entry.
+- Preserved related-writing navigation with the existing page-level opt-out, preventing replacement with a single-item series.
+- Found a desktop full-page paint failure after the tall article crossed a compositor threshold. Restricted the repair to this article's reading surface, disabling backdrop filtering at every width. Added a desktop-inclusive validator assertion; the old style fails that assertion while the fixed style passes.
+- Canonical Markdown and HTML are synchronized by the repository renderer. Independent editorial review found no blockers.
+- Checked the Pain Axis v2 primary paper and Persona Vectors primary abstract. New architecture claims remain explicitly interpretive. No claims of subjective experience or its absence were added.
+- Local responsive workflow script passes the article and Content routes at 360, 412, 768 and 1440 pixels, including serious/critical WCAG checks. Initial/full-page evidence inspected on phone and desktop; article renders continuously through references and discussion after the paint repair.
+- Local rendering uses actual repository files through Playwright route fulfillment because this environment's browser cannot connect to its loopback server. External video playback and Giscus are excluded from that local transport check. Source-video embed identity remains unchanged.
+
+Historical v0.4.0 records below preserve the pre-publication baseline and no longer define current authority or status.
+
+---
+
 # The Model Is Just a Model — v0.4.0 review record
 
 **Date:** 2026-10-08  
 **Status:** founder-review draft; not approved, indexed, narrated, published, or merge-ready  
 **Canonical source:** `blog/principles/the-model-is-just-a-model.md`  
 **Reader page:** `blog/principles/the-model-is-just-a-model.html`  
-**Owning Departments job:** [PR #292](https://github.com/hadi-nayebi/hadosh_academy_departments/pull/292)  
 **Version:** v0.4.0  
 **Visible word count:** approximately 2,537 words  
 **Planned reading time:** 13 minutes
@@ -171,3 +193,4 @@ The unpublished page was rendered directly from website PR #204 head `afbca70f60
 That inspection found seven numbered references displayed as raw Markdown—for example, `[[1]](#ref-1)`—even though the targets existed. The repository Markdown renderer accepted ordinary labels but not a single nested bracket pair used by citation labels. The renderer now supports that bounded label shape, and site-navigation validation fails when a rendered article body contains a raw numbered citation. The new assertion was demonstrated failing against the old HTML, then passing after regeneration. The repaired page has eight citation links (seven prose pointers plus the Figure 1 pointer), no raw citation text, and no missing reference targets at all four widths.
 
 Local rendering could not load Google Fonts, the privacy-enhanced YouTube iframe, or Giscus because this execution environment blocks those external hosts. These are recorded environment limits rather than branch defects: local layout used the fallback font; the video and comment request failures do not affect the article's static citation, figure, overflow, or accessibility results. Publication, merge, narration, LinkedIn release, and the article-specific Open Graph decision remain outside this increment.
+

@@ -174,9 +174,12 @@ for (const viewport of viewports) {
 
     if (route.name === 'model-is-just-a-model') {
       const robots = (await page.locator('meta[name="robots"]').getAttribute('content') || '').toLowerCase();
-      if (!robots.includes('noindex') || !robots.includes('nofollow')) failures.push(`${route.path}: unpublished article lost noindex,nofollow`);
+      if (robots.includes('noindex') || robots.includes('nofollow')) failures.push(`${route.path}: published article is still excluded from indexing`);
       if ((await page.locator('h1').innerText()).trim() !== 'The Model Is Just a Model') failures.push(`${route.path}: article title changed`);
-      if (await page.locator('.article-body figure').count() !== 2) failures.push(`${route.path}: expected two teaching figures`);
+      if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected three teaching figures`);
+      if (await page.locator('.sidebar a.article-card-link').count() < 4) failures.push(`${route.path}: related-writing navigation was replaced by a single-item series`);
+      const articlePaint = await page.locator('.article-content').evaluate(element => ({height: element.getBoundingClientRect().height, filter: getComputedStyle(element).backdropFilter || getComputedStyle(element).webkitBackdropFilter || 'none'}));
+      if (articlePaint.height > 14000 && articlePaint.filter !== 'none') failures.push(`${route.path} @ ${viewport.width}px: tall article still has a backdrop-filter compositor layer`);
       const citations = page.locator('.article-body a[href^="#ref-"]');
       if (await citations.count() !== 8) failures.push(`${route.path}: expected eight working citation links`);
       const rawCitation = /\[\[\d+\]\]\(#ref-\d+\)/.test(await page.locator('.article-body').innerText());
@@ -541,3 +544,4 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(`Responsive layout validation passed: ${selectedRoutes.length} pages across ${viewports.length} viewports; every term was captured at phone and desktop sizes in ${path.relative(process.cwd(), artifactDir)}.`);
+
