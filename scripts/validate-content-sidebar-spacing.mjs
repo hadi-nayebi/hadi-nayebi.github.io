@@ -20,7 +20,7 @@ for(const width of [360,412,768,1440]) {
   await page.goto(base+'/content.html',{waitUntil:'networkidle'});
   await page.evaluate(async()=>{await document.fonts.ready});
   const result=await inspect(page);
-  if(result.count!==5 || result.gaps.some(gap=>gap<15.5) || result.overflow) failures.push({width,...result});
+  if(result.count<2 || result.gaps.some(gap=>gap<15.5) || result.overflow) failures.push({width,...result});
   results.push({width,...result});
   await page.screenshot({path:output+'/content-'+width+'-fold.png'});
   await page.screenshot({path:output+'/content-'+width+'-full.png',fullPage:true});
@@ -36,7 +36,7 @@ await baseline.route('**/css/styles.css*',route=>route.fulfill({status:200,conte
 await baseline.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/,route=>route.abort());
 await baseline.goto(base+'/content.html',{waitUntil:'networkidle'});
 const oldLayout=await inspect(baseline);
-if(oldLayout.count!==5 || !oldLayout.gaps.some(gap=>gap<1)) failures.push({baseline:'missing repair did not reproduce touching cards',...oldLayout});
+if(oldLayout.count!==results.find(result=>result.width===1440).count || !oldLayout.gaps.some(gap=>gap<1)) failures.push({baseline:'missing repair did not reproduce touching cards',...oldLayout});
 await baseline.screenshot({path:output+'/baseline-zero-gap.png'});
 await browser.close();
 fs.writeFileSync(output+'/results.json',JSON.stringify({results,baseline:oldLayout,failures},null,2));

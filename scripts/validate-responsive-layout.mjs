@@ -24,6 +24,7 @@ const routes = [
   { name: 'map-territory', path: '/blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html', kind: 'copy' },
   { name: 'circle-of-competence', path: '/blog/observations/hadosh-through-mental-models/03-circle-of-competence.html', kind: 'story' },
   { name: 'ai-that-grows-with-you', path: '/blog/principles/the-ai-that-grows-with-you.html', kind: 'copy' },
+  { name: 'model-is-just-a-model', path: '/blog/principles/the-model-is-just-a-model.html', kind: 'copy' },
   { name: 'ai-use-map', path: '/blog/practical-guides/02-audit-ai-harness-portability.html', kind: 'guide' },
   { name: 'whats-new', path: '/whats-new.html', kind: 'whats-new' },
   { name: 'private-github-home', path: '/blog/practical-guides/03-give-your-ai-work-a-private-github-home.html', kind: 'guide' },
@@ -168,6 +169,53 @@ for (const viewport of viewports) {
         elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
       );
       if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+    }
+
+
+    if (route.name === 'model-is-just-a-model') {
+      const robots = (await page.locator('meta[name="robots"]').getAttribute('content') || '').toLowerCase();
+      if (robots.includes('noindex') || robots.includes('nofollow')) failures.push(`${route.path}: published article is still excluded from indexing`);
+      if ((await page.locator('h1').innerText()).trim() !== 'The Model Is Just a Model') failures.push(`${route.path}: article title changed`);
+      if (await page.locator('.article-body figure').count() !== 3) failures.push(`${route.path}: expected three teaching figures`);
+      if (await page.locator('.sidebar a.article-card-link').count() < 4) failures.push(`${route.path}: related-writing navigation was replaced by a single-item series`);
+      const articlePaint = await page.locator('.article-content').evaluate(element => ({height: element.getBoundingClientRect().height, filter: getComputedStyle(element).backdropFilter || getComputedStyle(element).webkitBackdropFilter || 'none'}));
+      if (articlePaint.height > 14000 && articlePaint.filter !== 'none') failures.push(`${route.path} @ ${viewport.width}px: tall article still has a backdrop-filter compositor layer`);
+      const citations = page.locator('.article-body a[href^="#ref-"]');
+      if (await citations.count() !== 8) failures.push(`${route.path}: expected eight working citation links`);
+      const rawCitation = /\[\[\d+\]\]\(#ref-\d+\)/.test(await page.locator('.article-body').innerText());
+      if (rawCitation) failures.push(`${route.path}: raw Markdown citation leaked into rendered prose`);
+      for (const href of await citations.evaluateAll(links => links.map(link => link.getAttribute('href')))) {
+        if (!href || await page.locator(href).count() !== 1) failures.push(`${route.path}: citation target missing for ${href || 'empty href'}`);
+      }
+      const tagOverflow = await page.locator('.article-meta-tags .tag').evaluateAll(elements =>
+        elements.some(element => element.getBoundingClientRect().right > window.innerWidth + 1)
+      );
+      if (tagOverflow) failures.push(`${route.path} @ ${viewport.width}px: article tags leave the viewport`);
+      if (viewport.width <= 768) {
+        const mobileFlow = await page.evaluate(() => {
+          const article = document.querySelector('.article-content');
+          const sidebar = document.querySelector('.sidebar');
+          if (!article || !sidebar) return null;
+          const articleRect = article.getBoundingClientRect();
+          const sidebarRect = sidebar.getBoundingClientRect();
+          const articleStyle = getComputedStyle(article);
+          return {
+            articleBottom: articleRect.bottom + window.scrollY,
+            articleHeight: articleRect.height,
+            articleBackdropFilter: articleStyle.backdropFilter || articleStyle.webkitBackdropFilter || 'none',
+            sidebarTop: sidebarRect.top + window.scrollY
+          };
+        });
+        if (!mobileFlow) {
+          failures.push(`${route.path} @ ${viewport.width}px: article or sidebar is missing`);
+        } else {
+          const mobileGap = Math.round(mobileFlow.sidebarTop - mobileFlow.articleBottom);
+          if (mobileGap < 0 || mobileGap > 80) failures.push(`${route.path} @ ${viewport.width}px: article-to-sidebar gap is ${mobileGap}px; expected 0–80px`);
+          if (mobileFlow.articleHeight > 14000 && mobileFlow.articleBackdropFilter !== 'none') {
+            failures.push(`${route.path} @ ${viewport.width}px: ${Math.round(mobileFlow.articleHeight)}px article still uses ${mobileFlow.articleBackdropFilter} backdrop filtering and risks tall-layer paint clipping`);
+          }
+        }
+      }
     }
 
 
@@ -496,3 +544,4 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(`Responsive layout validation passed: ${selectedRoutes.length} pages across ${viewports.length} viewports; every term was captured at phone and desktop sizes in ${path.relative(process.cwd(), artifactDir)}.`);
+

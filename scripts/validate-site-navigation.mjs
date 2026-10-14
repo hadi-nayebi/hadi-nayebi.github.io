@@ -222,6 +222,9 @@ for (const file of publicHtml) {
     const bodyMatch = html.match(/<div class=["']article-body["'][^>]*>([\s\S]*?)<\/div>\s*(?:<!-- Comments|<div class=["']article-comments)/i);
     if (bodyMatch) {
       const footer = bodyMatch[1];
+      if (/\[\[\d+\]\]\(#ref-[^)]+\)/.test(footer)) {
+        errors.push(`${fileRel}: rendered article body contains a raw Markdown citation link`);
+      }
       const hasPrev = /Previous:/i.test(footer);
       const hasNext = /Next:/i.test(footer);
       const onlyPracticalGuide = fileRel.startsWith('blog/practical-guides/') && practicalGuidePages.length === 1;
