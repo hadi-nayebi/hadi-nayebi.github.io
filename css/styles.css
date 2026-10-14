@@ -2956,6 +2956,8 @@ body.lightbox-open {
     }
 
     .article-content {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
         padding: 2rem 1.5rem;
     }
 

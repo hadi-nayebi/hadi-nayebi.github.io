@@ -5,8 +5,16 @@
     <link>https://hadi-nayebi.github.io/content.html</link>
     <description>Practical guides, principles, observations, agent architecture, and interactive diagrams for building user-owned systems.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 16:49:14 GMT</lastBuildDate>
     <atom:link href="https://hadi-nayebi.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Model Is Just a Model</title>
+      <link>https://hadi-nayebi.github.io/blog/principles/the-model-is-just-a-model.html</link>
+      <guid>https://hadi-nayebi.github.io/blog/principles/the-model-is-just-a-model.html</guid>
+      <pubDate>Wed, 14 Oct 2026 16:49:14 GMT</pubDate>
+      <description>A pain-related representation is one component. Examine the whole system to understand how context, persistence, and feedback shape its consequences.</description>
+    </item>
 
     <item>
       <title>Hadosh Academy Through Circle of Competence</title>
@@ -461,3 +469,4 @@
     </item>
   </channel>
 </rss>
+

@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://hadi-nayebi.github.io/projects/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -630,5 +630,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://hadi-nayebi.github.io/projects/who-owns-your-toaster.html</loc><lastmod>2026-10-13</lastmod></url>
+  <url>
+    <loc>https://hadi-nayebi.github.io/blog/principles/the-model-is-just-a-model.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><loc>https://hadi-nayebi.github.io/projects/who-owns-your-toaster.html</loc><lastmod>2026-10-14</lastmod></url>
 </urlset>
+

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">When does context become history?</title>
+  <desc id="desc">Composite active context shapes computation and the current response. A selection step determines whether any consequence becomes a persistent change to memory, instructions, evaluations, or a model that influences later operation.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#e8eadf"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#ff9f7a"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#86efac"/></marker>
+    <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="1" seed="19" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="0.6"/></filter>
+  </defs>
+  <rect width="1600" height="900" rx="28" fill="#111816"/>
+  <rect x="28" y="28" width="1544" height="844" rx="24" fill="none" stroke="#35433d" stroke-width="3"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#f2f0e6">
+    <text x="800" y="82" text-anchor="middle" font-size="46" font-weight="700" letter-spacing="2">WHEN DOES CONTEXT BECOME HISTORY?</text>
+    <line x1="160" y1="112" x2="1440" y2="112" stroke="#53645d" stroke-width="3"/>
+    <g filter="url(#chalk)">
+      <rect x="500" y="145" width="600" height="92" rx="26" fill="#291a17" stroke="#ff9f7a" stroke-width="4"/>
+      <text x="800" y="202" text-anchor="middle" font-size="32" font-weight="700">COMPOSITE ACTIVE CONTEXT</text>
+      <line x1="800" y1="240" x2="800" y2="292" stroke="#e8eadf" stroke-width="5" marker-end="url(#arrow)"/>
+      <rect x="535" y="300" width="530" height="74" rx="20" fill="#172722" stroke="#74d4e8" stroke-width="4"/>
+      <text x="800" y="347" text-anchor="middle" font-size="24" font-weight="700">CONTEXT-CONDITIONED COMPUTATION</text>
+      <line x1="800" y1="377" x2="800" y2="425" stroke="#e8eadf" stroke-width="5" marker-end="url(#arrow)"/>
+      <rect x="535" y="433" width="530" height="74" rx="20" fill="#172722" stroke="#f4d35e" stroke-width="4"/>
+      <text x="800" y="480" text-anchor="middle" font-size="24" font-weight="700">INTERPRETATION + CURRENT RESPONSE</text>
+      <line x1="800" y1="510" x2="800" y2="554" stroke="#e8eadf" stroke-width="5" marker-end="url(#arrow)"/>
+      <path d="M800 560 L920 630 L800 700 L680 630 Z" fill="#172722" stroke="#f2f0e6" stroke-width="4"/>
+      <text x="800" y="621" text-anchor="middle" font-size="27" font-weight="700">SELECT</text>
+      <text x="800" y="655" text-anchor="middle" font-size="27" font-weight="700">TO KEEP?</text>
+    </g>
+    <path d="M680 630 C520 630 470 660 390 710" fill="none" stroke="#ff9f7a" stroke-width="5" marker-end="url(#arrowRed)"/>
+    <text x="555" y="615" text-anchor="middle" font-size="27" font-weight="700" fill="#ff9f7a">NO</text>
+    <rect x="100" y="704" width="520" height="112" rx="22" fill="#231816" stroke="#ff9f7a" stroke-width="4"/>
+    <text x="360" y="740" text-anchor="middle" font-size="29" font-weight="700">CONTEXT CLOSES</text>
+    <text x="360" y="775" text-anchor="middle" font-size="20" fill="#e8c0b1">no selected consequence</text>
+    <text x="360" y="807" text-anchor="middle" font-size="20" fill="#e8c0b1">changes later operation</text>
+    <path d="M920 630 C1080 630 1130 660 1210 710" fill="none" stroke="#86efac" stroke-width="5" marker-end="url(#arrowGreen)"/>
+    <text x="1045" y="615" text-anchor="middle" font-size="27" font-weight="700" fill="#86efac">YES</text>
+    <rect x="980" y="704" width="520" height="112" rx="22" fill="#17231f" stroke="#86efac" stroke-width="4"/>
+    <text x="1240" y="740" text-anchor="middle" font-size="23" font-weight="700">MEMORY / INSTRUCTIONS / EVALUATIONS</text>
+    <text x="1240" y="775" text-anchor="middle" font-size="24" font-weight="700">ADAPTER OR MODEL UPDATE</text>
+    <text x="1240" y="807" text-anchor="middle" font-size="20" fill="#c9d6cf">later interpretation and behavior change</text>
+    <rect x="145" y="824" width="1310" height="46" rx="16" fill="#0c1210" stroke="#60746b" stroke-width="3"/>
+    <text x="800" y="855" text-anchor="middle" font-size="21" font-weight="700">SELECTED CONSEQUENCES BECOME HISTORY WHEN THEY INFLUENCE LATER OPERATION.</text>
+  </g>
+</svg>
