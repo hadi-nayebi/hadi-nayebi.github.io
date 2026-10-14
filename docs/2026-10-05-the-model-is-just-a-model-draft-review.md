@@ -17,6 +17,8 @@
 - Local responsive workflow script passes the article and Content routes at 360, 412, 768 and 1440 pixels, including serious/critical WCAG checks. Initial/full-page evidence inspected on phone and desktop; article renders continuously through references and discussion after the paint repair.
 - Local rendering uses actual repository files through Playwright route fulfillment because this environment's browser cannot connect to its loopback server. External video playback and Giscus are excluded from that local transport check. Source-video embed identity remains unchanged.
 
+Additional source-bound interaction evidence: the repaired desktop article is 17,539 px tall with `backdrop-filter: none`; removing only the page repair restores `blur(12px)`, reproducing the validator's rejected condition. Phone and desktop lightbox open/Escape, mobile navigation, and reference-region inspection passed. The supplied social image is 1200×630 pixels.
+
 Historical v0.4.0 records below preserve the pre-publication baseline and no longer define current authority or status.
 
 ---
