@@ -1,7 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "path": "blog/observations/information-system-of-a-planet/episodes/episode-01-when-life-learned-before-it-died.json",
-  "source_sha256": "d5dc66d7f891b42ae90c92ce6769eb027e6482a4aae63e341587d492e1c2d5ee",
+  "artifact_sha256": "f18f27a12ec7ca13ada5e29e68852269eae34d18c5e9cb4bcde08ad3e312902a",
+  "narration_sha256": "7440c4827cffec86db65bb66bf5ef4ce5d6047e270b0d9d2b9aac5378a25c2ef",
   "reviewed_at": "2026-09-11",
   "report": "docs/narration-source-review/observations/episode-01-when-life-learned-before-it-died.md",
   "review": {
