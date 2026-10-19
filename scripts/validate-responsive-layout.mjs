@@ -6,6 +6,7 @@ import AxeBuilder from '@axe-core/playwright';
 const baseUrl = process.env.SITE_BASE_URL || 'http://127.0.0.1:4173';
 const library = JSON.parse(fs.readFileSync('data/abstraction-library.json', 'utf8'));
 const routes = [
+  { name: 'toaster', path: '/projects/who-owns-your-toaster.html', kind: 'copy' },
   { name: 'cartography', path: '/projects/cartography.html', kind: 'copy' },
   { name: 'projects', path: '/projects/index.html', kind: 'copy' },
   { name: 'home', path: '/index.html', kind: 'copy' },
@@ -101,8 +102,12 @@ for (const viewport of viewports) {
     if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
     if (route.name === 'home-open-architecture') await page.addInitScript(() => { Math.random = () => 0.28; });
     if (route.name === 'home-digital-cortex') await page.addInitScript(() => { Math.random = () => 0.2; });
-    await page.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
+    await page.route(url => ['http:', 'https:'].includes(url.protocol) && url.origin !== new URL(baseUrl).origin, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
+    if (route.name === 'toaster') {
+      const clearance = await page.evaluate(() => document.querySelector('main > p').getBoundingClientRect().top - document.querySelector('#site-header').getBoundingClientRect().bottom);
+      if (clearance < 0) failures.push(`toaster header overlaps content at ${viewport.width}px`);
+    }
     await page.waitForTimeout(150);
     await page.addStyleTag({ content: '.fb-bubble, .fb-panel, .fb-toast { display: none !important; }' });
 
@@ -495,7 +500,7 @@ for (const viewport of viewports) {
         if (await page.locator('#' + target).count() !== 1) failures.push('Cartography: missing anchor ' + target);
       }
       const redirect = await context.newPage();
-      await redirect.route(/^https?:\/\/(?!127\.0\.0\.1:4173)/, requestRoute => requestRoute.abort());
+      await redirect.route(url => ['http:', 'https:'].includes(url.protocol) && url.origin !== new URL(baseUrl).origin, requestRoute => requestRoute.abort());
       await redirect.goto(baseUrl + '/projects/crime-cartography.html?source=legacy#understand');
       await redirect.waitForURL('**/cartography.html?source=legacy#understand');
       await redirect.close();
@@ -544,4 +549,5 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(`Responsive layout validation passed: ${selectedRoutes.length} pages across ${viewports.length} viewports; every term was captured at phone and desktop sizes in ${path.relative(process.cwd(), artifactDir)}.`);
+
 
