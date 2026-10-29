@@ -2,7 +2,7 @@
 
 # Hadosh Academy
 
-**Engineer agents, not chatbots. Build externalized agency that belongs to the user.**
+**Expand your agency. Build a harness you can inspect, change, and keep.**
 
 [Hadosh Academy](https://hadi-nayebi.github.io/) is an open learning and project library for user-owned AI harnesses: the persistent memory, jobs, rules, tools, workflows, permissions, interfaces, verification, and accumulated experience that turn a general model into a system shaped around a person or team.
 

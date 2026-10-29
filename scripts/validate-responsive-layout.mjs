@@ -32,6 +32,10 @@ const routes = [
   { name: 'library', path: '/agents/abstractions/', kind: 'library' },
   ...library.terms.map(term => ({ name: `term-${term.slug}`, path: `/agents/abstractions/terms/${term.slug}.html`, kind: 'term' }))
 ];
+// Exercise every hero pair so the randomized copy cannot hide a layout regression.
+for (let index = 0; index < 13; index += 1) {
+  routes.push({ name: `home-variant-${index}`, path: '/index.html', kind: 'copy', heroIndex: index });
+}
 const selectedRoutes = process.env.LAYOUT_ROUTES ? routes.filter(route => process.env.LAYOUT_ROUTES.split(',').includes(route.name)) : routes;
 const viewports = [
   { name: 'phone-small', width: 360, height: 800 },
@@ -99,9 +103,10 @@ for (const viewport of viewports) {
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, colorScheme: 'dark' });
   for (const route of selectedRoutes) {
     const page = await context.newPage();
-    if (route.name === 'home') await page.addInitScript(() => { Math.random = () => 0; });
-    if (route.name === 'home-open-architecture') await page.addInitScript(() => { Math.random = () => 0.28; });
-    if (route.name === 'home-digital-cortex') await page.addInitScript(() => { Math.random = () => 0.2; });
+    if (route.name.startsWith('home')) {
+      const index = route.heroIndex ?? ({ home: 1, 'home-open-architecture': 4, 'home-digital-cortex': 3 }[route.name]);
+      await page.addInitScript(index => { Math.random = () => (index + 0.5) / 13; }, index);
+    }
     await page.route(url => ['http:', 'https:'].includes(url.protocol) && url.origin !== new URL(baseUrl).origin, requestRoute => requestRoute.abort());
     await page.goto(baseUrl + route.path, { waitUntil: 'domcontentloaded' });
     if (route.name === 'toaster') {
@@ -114,12 +119,10 @@ for (const viewport of viewports) {
     if (route.name.startsWith('home')) {
       const heroCopy = await page.locator('.hero-description').innerText();
       const heroHeading = await page.locator('.central-circle-content h1').innerText();
-      if (!heroHeading.includes('Understand It.') || !heroHeading.includes('Build It. Live Through It.')) {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: Understand → Build → Live homepage heading was replaced at runtime`);
-      }
-      const expectedHeroCopy = 'Learn what Agentic AI is made of. Build with open primitives. Turn those ideas into user-owned projects and a harness that grows around your work—visible, changeable, and yours to keep.';
-      if (heroCopy !== expectedHeroCopy) {
-        failures.push(`${route.path} @ ${viewport.width}x${viewport.height}: accepted Understand → Build → Live hero wording was replaced at runtime`);
+      const index = route.heroIndex ?? ({ home: 1, 'home-open-architecture': 4, 'home-digital-cortex': 3 }[route.name]);
+      const expected = await page.evaluate(index => heroMessages[index], index);
+      if (!heroHeading.includes(expected.line1) || !heroHeading.includes(expected.line2) || heroCopy !== expected.description) {
+        failures.push(`${route.path} @ ${viewport.width}px: hero variant ${index} did not render its complete message pair`);
       }
     }
 

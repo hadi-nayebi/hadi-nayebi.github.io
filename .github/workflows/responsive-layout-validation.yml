@@ -10,6 +10,7 @@ on:
       - 'services.html'
       - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
       - 'js/theme-manager.js'
+      - 'scripts/test-homepage-hero.mjs'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
@@ -41,6 +42,7 @@ on:
       - 'services.html'
       - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
       - 'js/theme-manager.js'
+      - 'scripts/test-homepage-hero.mjs'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
@@ -64,14 +66,50 @@ on:
       - '.github/workflows/responsive-layout-validation.yml'
 
 jobs:
+  homepage-heroes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify homepage selection
+        run: node --test scripts/test-homepage-hero.mjs
+      - name: Install pinned browser test runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0 @axe-core/playwright@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Render every homepage hero at four widths
+        env:
+          LAYOUT_ROUTES: 'home-variant-0,home-variant-1,home-variant-2,home-variant-3,home-variant-4,home-variant-5,home-variant-6,home-variant-7,home-variant-8,home-variant-9,home-variant-10,home-variant-11,home-variant-12'
+        run: |
+          python3 -m http.server 4173 > /tmp/homepage-heroes.log 2>&1 &
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null && break
+            sleep 1
+          done
+          node scripts/validate-responsive-layout.mjs
+      - name: Upload homepage hero screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-heroes
+          path: artifacts/responsive-layout/home-variant-*.png
+          if-no-files-found: error
+          retention-days: 14
+
   responsive-layout:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Verify randomized homepage message selection
+        run: node --test scripts/test-homepage-hero.mjs
       - name: Install pinned browser test runtime
         run: |
           npm init -y
@@ -232,7 +270,7 @@ jobs:
 
 
   content-sidebar-spacing:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
