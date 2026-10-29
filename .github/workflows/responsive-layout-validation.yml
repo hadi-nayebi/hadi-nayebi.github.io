@@ -10,6 +10,7 @@ on:
       - 'services.html'
       - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
       - 'js/theme-manager.js'
+      - 'scripts/test-homepage-hero.mjs'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
@@ -41,6 +42,7 @@ on:
       - 'services.html'
       - 'blog/practical-guides/03-give-your-ai-work-a-private-github-home.html'
       - 'js/theme-manager.js'
+      - 'scripts/test-homepage-hero.mjs'
       - 'blog/b5/05_4-job-core.html'
       - 'blog/observations/hadosh-through-mental-models/02-map-is-not-territory.html'
       - 'blog/principles/the-ai-that-grows-with-you.html'
@@ -77,6 +79,8 @@ jobs:
           npm init -y
           npm install --no-save playwright@1.55.0 @axe-core/playwright@4.10.2
           npx playwright install --with-deps chromium
+      - name: Verify randomized homepage message selection
+        run: node --test scripts/test-homepage-hero.mjs
       - name: Start local site
         run: |
           python3 -m http.server 4173 > /tmp/hadosh-site.log 2>&1 &

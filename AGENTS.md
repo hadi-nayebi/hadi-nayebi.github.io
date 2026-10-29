@@ -98,6 +98,12 @@ Do not change older work merely for consistency theater, and do not invent an an
 - Do not expose private repository names, private domain material, credentials, or unpublished
   implementation history.
 
+## Homepage hero contract
+
+- Select one complete headline/description pair randomly from the approved set on each page load. Preserve variety when revising positioning; do not replace the set with one fixed message.
+- Center Academy positioning on expanding human agency. Use “Expand Your Agency” rather than the retired “Engineer Agents” slogan.
+- Keep the static fallback and search/social metadata coherent with that positioning. Run `node --test scripts/test-homepage-hero.mjs` and render all hero variants after changes.
+
 ## Verification
 
 ### Rendered layout verification
