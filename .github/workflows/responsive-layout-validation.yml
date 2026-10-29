@@ -66,6 +66,40 @@ on:
       - '.github/workflows/responsive-layout-validation.yml'
 
 jobs:
+  homepage-heroes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify homepage selection
+        run: node --test scripts/test-homepage-hero.mjs
+      - name: Install pinned browser test runtime
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.55.0 @axe-core/playwright@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Render every homepage hero at four widths
+        env:
+          LAYOUT_ROUTES: 'home-variant-0,home-variant-1,home-variant-2,home-variant-3,home-variant-4,home-variant-5,home-variant-6,home-variant-7,home-variant-8,home-variant-9,home-variant-10,home-variant-11,home-variant-12'
+        run: |
+          python3 -m http.server 4173 > /tmp/homepage-heroes.log 2>&1 &
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/index.html > /dev/null && break
+            sleep 1
+          done
+          node scripts/validate-responsive-layout.mjs
+      - name: Upload homepage hero screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-heroes
+          path: artifacts/responsive-layout/home-variant-*.png
+          if-no-files-found: error
+          retention-days: 14
+
   responsive-layout:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
