@@ -1,7 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "path": "blog/observations/information-system-of-a-planet/episodes/episode-03-how-much-can-a-message-carry.json",
-  "source_sha256": "f405ebfae1979c5b250bdd86f62173411b543e31381416ae3b421338ff58dc4d",
+  "artifact_sha256": "702ef7b7dee8c8b1b8d2278c05ad66ebacbd78d26a6f5c6d5fd029754a5569fd",
+  "narration_sha256": "1c4996e8939d0b117fee7eea052a0b7c5d14e52eb547c351a78a6936c3d8136a",
   "reviewed_at": "2026-09-11",
   "report": "docs/narration-source-review/observations/episode-03-how-much-can-a-message-carry.md",
   "review": {
