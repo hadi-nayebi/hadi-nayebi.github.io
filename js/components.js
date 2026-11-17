@@ -135,6 +135,15 @@
         var copyright = inner.querySelector('p');
         if (copyright) inner.insertBefore(links, copyright);
         else inner.appendChild(links);
+
+        // Licence line (Q4, decided 2026-11-08): the writings are CC BY 4.0.
+        // Covers the writings only, not the code (Origin MIT, Seed Agent MIT,
+        // Q-Seed Apache 2.0). Added with the LICENSE file, same PR.
+        var license = document.createElement('div');
+        license.className = 'footer-license';
+        license.innerHTML = 'All writings are free to reuse with credit to Hadi Nayebi (<a href="/LICENSE">CC BY 4.0</a>).';
+        if (copyright) inner.insertBefore(license, copyright);
+        else inner.appendChild(license);
     }
 
     function injectFeedbackWidget() {

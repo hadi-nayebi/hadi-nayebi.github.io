@@ -3299,6 +3299,26 @@ body.lightbox-open {
     color: var(--primary);
 }
 
+/* Footer licence line — injected by components.js (enhanceFooter).
+   The link must carry an explicit colour: with no rule it falls back to
+   the browser default blue, which fails the axe colour-contrast check
+   (4.5:1) on the dark footer background. --text-muted measures 8.02:1
+   against --bg-core, the same colour the passing footer links use. */
+.footer-license {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+.footer-license a {
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+
+.footer-license a:hover {
+    color: var(--text-main);
+}
+
 /* ===========================================================
    Agents page — featured card + soft support nudge
    =========================================================== */
@@ -6941,3 +6961,4 @@ body.lightbox-open {
         grid-row: auto;
     }
 }
+
