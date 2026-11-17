@@ -8,7 +8,7 @@ on:
       - 'js/components.js'
 jobs:
   sidebar-evidence:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     strategy:
       fail-fast: false
@@ -100,3 +100,4 @@ jobs:
             artifacts/sidebar-evidence/blog_b1_01-llms-are-not-the-agents.html-full.png
           if-no-files-found: error
           retention-days: 14
+
